@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const plugin = require('tailwindcss/plugin')
-const breakpoints = require('../../config/breakpoints.json')
+const breakpoints = require('./config/breakpoints.json')
 
 const defaultSizes = {
   '6xs': '2rem',
