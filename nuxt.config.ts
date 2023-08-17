@@ -11,6 +11,7 @@ export default defineNuxtConfig({
   modules: ["nuxt-svgo", "@nuxt/image"],
   svgo: {
     autoImportPath: "./assets/icons",
+    defaultImport: "component",
   },
   image: {
     domains: ["https://a.storyblok.com"],
