@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="h-[600px]">
+      {{ $t("global.user_greeting", { name: appUser }) }}
       <p>Nuxt Img</p>
       <nuxt-img
         class="h-5/6"
@@ -11,4 +12,8 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const appUser = ["AYK", "Connor", "Rob"][
+  Math.floor(Math.random() * (2 - 0 + 1) + 0)
+];
+</script>
