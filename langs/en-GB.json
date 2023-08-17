@@ -1,0 +1,278 @@
+{
+  "global": {
+    "title_default": "Demo Shop | Official Online Shop",
+    "title_template": "{title} | Demo Shop | Official Online Shop",
+    "login_request": "Sign in now",
+    "register": "Register",
+    "sold_out": "Sold out",
+    "gender": {
+      "women": "Women",
+      "men": "Men",
+      "kids": "Kids"
+    },
+    "home": "Home",
+    "user_greeting": "Hi {name}",
+    "you_are_not_user": "Not {name}?",
+    "not_registered": "Not a customer yet?",
+    "sign_in": "Log In",
+    "sign_out": "Log Out",
+    "product_recommendation": "Combine with",
+    "seconds": "second | seconds",
+    "minutes": "minute | minutes",
+    "hours": "hour | hours",
+    "days": "day | days",
+    "back": "Back"
+  },
+  "validation": {
+    "email": "The {field} field must be a valid email",
+    "password": "The {field} field must have an uppercase letter, a special character, a number and no spaces",
+    "required": "The {field} field is required",
+    "same_as": "The {field} field must be the same as {otherField} field",
+    "max_length": "The {field} field must be {max} or less",
+    "date": "The {field} field must be a valid date",
+    "future_date": "The {field} field cannot have date that is in future",
+    "name": "The {field} field is not correctly formatted"
+  },
+  "form_fields": {
+    "first_name": "First name",
+    "last_name": "Last name",
+    "birth_date": "Your date of birth",
+    "email": "Email address",
+    "old_password": "Current password",
+    "new_password": "New Password",
+    "repeated_password": "Confirm password",
+    "male": "Male",
+    "female": "Female"
+  },
+  "error": {
+    "continue_shopping": "Continue shopping"
+  },
+  "availability": {
+    "available": "Available immediately",
+    "available_some": "Only {quantity} available",
+    "available_from": "Expected delivery from {date}",
+    "available_asap": "Delivery as quickly as possible.",
+    "not_available": "Sold out",
+    "available_soon_from": "Expected to be available again from {date}",
+    "available_soon": "Soon available again"
+  },
+  "badge_labels": {
+    "new": "New",
+    "premium": "Premium",
+    "sustainable": "Sustainable",
+    "sold_out": "Sold out",
+    "online_exclusive": "Online Exclusive"
+  },
+  "navigation": {
+    "my_account": "My Account",
+    "sign_in": "Sign in",
+    "wishlist": "Wishlist",
+    "basket": "Basket"
+  },
+  "search": {
+    "placeholder": "Search for product, category or brand",
+    "recent_searches": "Recent searches",
+    "search_results": "Display all matches",
+    "no_result": "Deine Suchanfrage ergab keine Treffer.",
+    "search_term_match_count": "{count} Result for  \"{term}\" | {count} Results for  \"{term}\"",
+    "result": "Deine Suche nach {term} ergab {resultsCount} Treffer.",
+    "search_try_again": "Try again using a different term",
+    "search_try_again_description": "Search for items or brands",
+    "product": "Produkt",
+    "categories": "Kategorie",
+    "more": "More"
+  },
+  "promises": {
+    "pay_with_invoice": "Pay with invoice",
+    "free_return_and_shipping": "Free return and shipping",
+    "return_policy": "100 days free return policy"
+  },
+  "banner": {
+    "close": "Close"
+  },
+  "wishlist": {
+    "heading": "Wishlist",
+    "no_items_info": "You have no products on your wishlist.",
+    "continue_shopping_info": "Shop our newest products or sign in to see saved products.",
+    "continue_shopping_label": "Continue shopping",
+    "products_count": "0 products | {count} product | {count} products",
+    "sign_in_label": "Sign in",
+    "product": "Produkt",
+    "notification": {
+      "add_to_wishlist": "{productName} has been added to your wishlist",
+      "remove_from_wishlist": "{productName} has been removed from your wishlist"
+    },
+    "change_size_label": "Choose size"
+  },
+  "wishlist_card": {
+    "change_size_label": "Change"
+  },
+  "basket": {
+    "heading": "Basket",
+    "empty_title": "Your shopping cart is empty.",
+    "empty_description": "Your products will appear as soon as you add them to your cart.",
+    "continue_shopping_info": "Shop our newest products or sign in to see saved products.",
+    "continue_shopping_label": "Continue shopping",
+    "shipping_free": "Free",
+    "sign_in_label": "Sign in",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping cost",
+    "including_vat": "incl. VAT",
+    "checkout_label": "Go to Checkout",
+    "notification": {
+      "select_size": "Please select size before adding to basket",
+      "add_to_basket_success": "{productName} has been added to your basket",
+      "add_to_basket_error": "{productName} could not be added to your basket"
+    },
+    "to_checkout": "to checkout",
+    "no_items_info": "You have no products in your basket."
+  },
+  "basket_card": {
+    "size_label": "Size",
+    "color_label": "Color",
+    "remove_label": "Remove",
+    "add_to_wishlist_label": "Wishlist",
+    "remove_from_wishlist_label": "Wishlist",
+    "confirm_remove_question": "Are you sure you want to remove this item?",
+    "cancel": "Cancel",
+    "remove_short": "Remove",
+    "remove_long": "Remove item",
+    "quantity_label": "Quantity"
+  },
+  "incl_tax": "incl. VAT.",
+  "my_account": {
+    "navigation": "Account",
+    "redirecting": "Redirecting",
+    "profile_menu": "Account settings",
+    "password": "Password",
+    "orders_menu": "Your orders",
+    "orders_count": "0 Orders | 1 Order | {count} Orders",
+    "personal_data_title": "Change your personal data",
+    "no_orders_found": "No orders found",
+    "orders": {
+      "overview": "Order summary",
+      "back": "Back to summary",
+      "order_summary_header": "Order from {date}",
+      "order_detail_header": "Order from {date}",
+      "order_select": "Please select an order",
+      "paid_with": "Paid with",
+      "order_value": "Order value",
+      "shipping": "Shipping costs",
+      "shipping_free": "Free",
+      "subtotal": "Subtotal",
+      "residual_value": "Remaining value",
+      "item_count": "1 item | {count} items",
+      "address_label": "Shipping and billing address",
+      "shipping_address_label": "Shipping address",
+      "billing_address_label": "Billing address",
+      "expected_delivery_from": "Expected",
+      "delivery": "Delivery",
+      "shipment_detail": "Shipment Detail",
+      "details": "Details"
+    },
+    "user": {
+      "save_message": "Your information has been succesfully saved",
+      "save_label": "Save",
+      "save_error": "The information could not be saved",
+      "update_password_label": "Update password",
+      "password_update_success": "Password updated",
+      "password_update_error": "The password update did not work, try again!",
+      "password_pattern_hint": "Requires an uppercase letter, a special character, a number and no spaces",
+      "email_change_hint": "Please contact customer service to change your email."
+    }
+  },
+  "pdp": {
+    "color_heading": "Color",
+    "size_heading": "Size",
+    "add_label": "Add to cart",
+    "product_info_heading": "Product information",
+    "fitting": "Fit",
+    "neckline": "Neckline",
+    "upper_length": "Length",
+    "sleeve_length": "Sleeve length",
+    "shirt_cut": "Cut",
+    "shorts_length": "Length",
+    "trousers_length": "Length",
+    "skirt_length": "Length",
+    "trousers_cut": "Cut",
+    "select_size": "Select a size",
+    "composition_care_heading": "Composition and care",
+    "product_detail_heading": "Product Detail",
+    "shipping_return_heading": "Shipping and return",
+    "shipping": {
+      "general_info": "The postage for shipping and return of the articles as well as the costs for packaging will be paid by ABOUT YOU. For orders with several products may result in partial occur.",
+      "dhl_headline": "DHL Standard Shipping - 0,00 EUR",
+      "dhl_paragraph": "Immediately available items are usually delivered by DHL within 1-3 business days.",
+      "hermes_headline": "Hermes – 0,00 EUR",
+      "hermes_paragraph": "Immediately available items Hermes usually delivers within 1-3 business days.",
+      "return_information": "If the return label is missing in your delivery, you can request a new one from our request a new one from our customer service at any time. For questions please contact:"
+    },
+    "seo": {
+      "buy_online": "Buy online",
+      "description": "{productName} buy online. Free shipping and 100 days free returns. Discover the wide selection of other branded products on the Demo Shop"
+    }
+  },
+  "price": {
+    "starting_from": "from",
+    "including_vat": "incl. VAT.",
+    "best_price_30d": "30-Tage-Bestpreis**:",
+    "best_price_hint": "**niedrigster Gesamtpreis der letzten 30 Tage vor der Preisermäßigung"
+  },
+  "lookbooks": {
+    "back": "Back",
+    "products": "Products"
+  },
+  "plp": {
+    "filter": "Filter",
+    "seo_description": "Buy {categoryName} for {gender} online at Demo Shop. Discover the wide range in {categoryName}"
+  },
+  "sorting_select": {
+    "topseller": "Recommendations",
+    "date_newest": "Newest",
+    "price_desc": "Price descending",
+    "price_asc": "Price ascending",
+    "reduction_desc": "Reduction descending",
+    "reduction_asc": "Reduction ascending"
+  },
+  "filter": {
+    "title": "Filters",
+    "size": "Size",
+    "brands": "Brands",
+    "colors": "Colors",
+    "price": "Price",
+    "only_sale": "Show sale",
+    "delete": "delete",
+    "show_all": "Show all",
+    "show_results_count": "Show ({count})",
+    "reset": "Reset",
+    "reset_all": "Reset all",
+    "show_results": "Show Results",
+    "to": "to",
+    "all_label": "All"
+  },
+  "osp": {
+    "account": "Account",
+    "order_details": "Order details",
+    "customer_id": "Customer nr.",
+    "deliver_costs": "Shipping costs",
+    "deliver_date": "Delivery address",
+    "email_send": "The order confirmation has been sent to the email address you provided.",
+    "estimated_deliver_date": "Estimated delivery",
+    "intro": "Thank you for your order,",
+    "net_price": "Total",
+    "order_data": "Order data",
+    "order_date": "Date",
+    "order_nr": "Order nr.",
+    "order_overview": "Order overview",
+    "payment": "Payment method",
+    "quantity_label": "Quantity",
+    "size": "Size",
+    "tax": "19% VAT",
+    "total": "Total"
+  },
+  "main_nav": {
+    "back_to": "Back to \"{name}\"",
+    "main_menu": "Main menu"
+  }
+}
