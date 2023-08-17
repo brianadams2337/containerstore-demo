@@ -1,5 +1,6 @@
 <template>
   <div class="p-4">
-    Hello World
+    <AppHeader class="mb-4" />
+    <slot />
   </div>
 </template>
