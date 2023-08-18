@@ -38,7 +38,13 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: ["nuxt-svgo", "@nuxt/image", "@nuxtjs/i18n", "nuxt-lazy-hydrate"],
+  modules: [
+    "nuxt-svgo",
+    "@nuxt/image",
+    "@nuxtjs/i18n",
+    "nuxt-lazy-hydrate",
+    "nuxt-jsonld",
+  ],
   svgo: {
     autoImportPath: "./assets/icons",
     defaultImport: "component",

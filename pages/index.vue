@@ -18,4 +18,14 @@
 const appUser = ["AYK", "Connor", "Rob"][
   Math.floor(Math.random() * (2 - 0 + 1) + 0)
 ];
+
+const count = ref(0);
+const countUp = () => {
+  count.value += 1;
+};
+useJsonld(() => ({
+  "@context": "https://schema.org",
+  "@type": "Thing",
+  name: `reactive json: count is ${count.value}`,
+}));
 </script>
