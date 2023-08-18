@@ -5,6 +5,7 @@
         <SvgoLogo class="w-32" :font-controlled="false" />
       </nuxt-link>
       <div class="flex-1 flex justify-end space-x-2">
+        <HeaderSearch />
         <NuxtLink to="women">Women</NuxtLink>
         <NuxtLink to="men">Men</NuxtLink>
         <NuxtLink to="sale">Sale</NuxtLink>

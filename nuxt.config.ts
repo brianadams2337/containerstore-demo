@@ -44,6 +44,7 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "nuxt-lazy-hydrate",
     "nuxt-jsonld",
+    "@vueuse/nuxt",
   ],
   svgo: {
     autoImportPath: "./assets/icons",
