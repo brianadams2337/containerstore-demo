@@ -14,7 +14,10 @@
     "lint": "yarn lint:script && yarn lint:style && yarn format && yarn typecheck",
     "typecheck": "vue-tsc --noEmit",
     "format": "prettier --ignore-unknown --log-level warn --write .",
-    "format:fix": "prettier --ignore-unknown --log-level warn --write ."
+    "format:fix": "prettier --ignore-unknown --log-level warn --write .",
+    "cy:open": "cypress open",
+    "cy:run:mobile": "cypress run --env mobile=true",
+    "cy:run": "cypress run"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
@@ -24,6 +27,8 @@
     "@scayle/prettier-config-storefront": "^2.0.1",
     "@types/node": "^18.17.3",
     "autoprefixer": "^10.4.15",
+    "cypress": "^12.17.4",
+    "cypress-real-events": "^1.10.0",
     "eslint": "^8.47.0",
     "eslint-plugin-cypress": "^2.14.0",
     "eslint-plugin-nuxt": "^4.0.0",
@@ -48,6 +53,7 @@
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.3",
     "@vueuse/nuxt": "^10.3.0",
+    "dotenv": "^16.3.1",
     "nuxt-jsonld": "^2.0.8",
     "nuxt-lazy-hydrate": "^1.0.0",
     "ufo": "^1.2.0"
