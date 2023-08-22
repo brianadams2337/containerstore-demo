@@ -46,7 +46,6 @@ module.exports = defineConfig({
     experimentalModifyObstructiveThirdPartyCode: true,
     includeShadowDom: true,
   },
-
   component: {
     devServer: {
       framework: "nuxt",
