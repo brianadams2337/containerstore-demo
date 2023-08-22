@@ -50,7 +50,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useVuelidate } from "@vuelidate/core";
 import { required, email } from "@vuelidate/validators";
 
@@ -87,4 +87,10 @@ useJsonld(() => ({
   "@type": "Thing",
   name: `reactive json: count is ${count.value}`,
 }));
+</script>
+
+<script lang="ts">
+export default {
+  name: "HomePage",
+};
 </script>
