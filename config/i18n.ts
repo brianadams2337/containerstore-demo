@@ -1,5 +1,6 @@
+const DE_DOMAIN_FILE = "de-De.json";
+
 const locales = [
-  /* eslint-disable sonarjs/no-duplicate-string */
   {
     code: "en",
     iso: "en-GB",
@@ -10,22 +11,21 @@ const locales = [
     code: "de",
     iso: "de-DE",
     domain: "",
-    file: "de-DE.json",
+    file: DE_DOMAIN_FILE,
     shopId: 1001,
   },
   {
     code: "de-at",
     iso: "de-AT",
     domain: "",
-    file: "de-DE.json",
+    file: DE_DOMAIN_FILE,
   },
   {
     code: "de-ch",
     iso: "de-CH",
     domain: "",
-    file: "de-DE.json",
+    file: DE_DOMAIN_FILE,
   },
-  /* eslint-enable sonarjs/no-duplicate-string */
 ];
 
 export default {
