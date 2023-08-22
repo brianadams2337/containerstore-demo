@@ -13,7 +13,8 @@
     "lint:style": "stylelint **/*.{vue,css,scss} --ignore-path .gitignore",
     "lint": "yarn lint:script && yarn lint:style && yarn format && yarn typecheck",
     "typecheck": "vue-tsc --noEmit",
-    "format": "prettier --ignore-unknown --loglevel warn --write ."
+    "format": "prettier --ignore-unknown --loglevel warn --write .",
+    "format:fix": "prettier --ignore-unknown --log-level warn --write ."
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",

@@ -3,12 +3,12 @@
 </template>
 
 <script setup lang="ts">
-const { params } = useRoute();
-const slug = computed(() => params.category);
+const { params } = useRoute()
+const slug = computed(() => params.category)
 </script>
 
 <script lang="ts">
 export default {
-  name: "ProductListingPage",
-};
+  name: 'ProductListingPage',
+}
 </script>

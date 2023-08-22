@@ -9,8 +9,8 @@ With vite you can include svg icons by simply prefixing it with the <Svgo\* /> o
 export default defineNuxtConfig({
   devtools: { enabled: true },
   svgo: {
-    autoImportPath: "./assets/icons",
-    defaultImport: "component", // this enables you to style things as you want: https://github.com/cpsoinos/nuxt-svgo/issues/122#issuecomment-1595264212
+    autoImportPath: './assets/icons',
+    defaultImport: 'component', // this enables you to style things as you want: https://github.com/cpsoinos/nuxt-svgo/issues/122#issuecomment-1595264212
   },
-});
+})
 ```
