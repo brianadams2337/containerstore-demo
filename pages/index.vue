@@ -72,14 +72,14 @@ const v$ = useVuelidate(
       required,
     },
   },
-  formPayload
+  formPayload,
 );
 
 watch(
   () => v$.value,
   () => {
     console.log({ validations: v$.value });
-  }
+  },
 );
 
 useJsonld(() => ({

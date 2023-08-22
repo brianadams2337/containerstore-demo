@@ -38,8 +38,8 @@ export function getImage(src: any, { modifiers, baseURL }: any = {}) {
           "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // validate port and path
           "(\\?[;&a-z\\d%_.~+=-]*)?" + // validate query string
           "(\\#[-a-z\\d_]*)?$",
-        "i"
-      )
+        "i",
+      ),
     ) !== null;
 
   const url = isURL(src)
