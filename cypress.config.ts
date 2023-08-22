@@ -9,7 +9,12 @@ const { BASE_URL } = cleanEnv(process.env, { BASE_URL: url() });
 const USER_AGENT =
   "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1";
 
-module.exports = defineConfig({
+const DefaultViewport = {
+  WIDTH: 1440,
+  HEIGHT: 900,
+};
+
+export default defineConfig({
   pageLoadTimeout: 20000,
   defaultCommandTimeout: 20000,
   modifyObstructiveCode: false,
@@ -22,12 +27,13 @@ module.exports = defineConfig({
     openMode: 0,
   },
   projectId: "fzuayb",
-  viewportWidth: 1440,
-  viewportHeight: 900,
+  viewportWidth: DefaultViewport.WIDTH,
+  viewportHeight: DefaultViewport.HEIGHT,
   env: {
     lang: "en-EN",
   },
   e2e: {
+    // @ts-ignore
     setupNodeEvents(_on, config) {
       if (config.env.mobile === true) {
         return {
@@ -37,8 +43,8 @@ module.exports = defineConfig({
         };
       }
       return {
-        viewportWidth: 1440,
-        viewportHeight: 900,
+        viewportWidth: DefaultViewport.WIDTH,
+        viewportHeight: DefaultViewport.HEIGHT,
       };
     },
     baseUrl: `${BASE_URL}/en`,
@@ -48,7 +54,7 @@ module.exports = defineConfig({
   },
   component: {
     devServer: {
-      framework: "nuxt",
+      framework: "vue",
       bundler: "vite",
     },
   },

@@ -21,6 +21,7 @@ There are a couple of points that are important to highlight when setting up cyp
 
 - Now we use `BASE_URL` which comes from `.env`, and we also validate the url when setting up the cypress config.
   Therefore, if you have not installed it beforehand, starting cypress will not work.
+- Cypress config is now written in TypeScript
 - It is important to note that, since we are using `Vite`, we need to set the following in the cypress config:
 
 ```
@@ -28,11 +29,11 @@ ts
 module.exports = defineConfig({
   component: {
     devServer: {
-      framework: 'nuxt',
-      bundler: 'vite',
+      framework: 'vue',
+      bundler: 'Vite',
     },
   },
 });
 ```
 
-The options above make sure that the bundler is `Vite` and the framework that we're using is `nuxt`
+The options above make sure that the bundler is `Vite` and the framework that we're using is `vue`
