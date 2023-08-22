@@ -33,19 +33,19 @@ export default defineConfig({
     lang: "en-EN",
   },
   e2e: {
-    // @ts-ignore
     setupNodeEvents(_on, config) {
-      if (config.env.mobile === true) {
-        return {
-          viewportWidth: 390,
-          viewportHeight: 844,
-          userAgent: USER_AGENT,
-        };
-      }
-      return {
-        viewportWidth: DefaultViewport.WIDTH,
-        viewportHeight: DefaultViewport.HEIGHT,
-      };
+      return config.env.mobile
+        ? {
+            ...config,
+            viewportWidth: 390,
+            viewportHeight: 844,
+            userAgent: USER_AGENT,
+          }
+        : {
+            ...config,
+            viewportWidth: DefaultViewport.WIDTH,
+            viewportHeight: DefaultViewport.HEIGHT,
+          };
     },
     baseUrl: `${BASE_URL}/en`,
     experimentalRunAllSpecs: true,
