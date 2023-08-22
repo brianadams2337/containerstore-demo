@@ -1,7 +1,10 @@
 import { defineConfig } from "cypress";
+import { url, cleanEnv } from "envalid";
 import * as dotenv from "dotenv";
 
 dotenv.config();
+
+const { BASE_URL } = cleanEnv(process.env, { BASE_URL: url() });
 
 const USER_AGENT =
   "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1";
@@ -38,7 +41,7 @@ module.exports = defineConfig({
         viewportHeight: 900,
       };
     },
-    baseUrl: `${process.env.BASE_URL}/en`,
+    baseUrl: `${BASE_URL}/en`,
     experimentalRunAllSpecs: true,
     experimentalModifyObstructiveThirdPartyCode: true,
     includeShadowDom: true,
