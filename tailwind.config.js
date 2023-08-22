@@ -16,13 +16,13 @@ const defaultSizes = {
 }
 
 module.exports = {
-   content: [
-    "./components/**/*.{js,vue,ts}",
-    "./layouts/**/*.vue",
-    "./pages/**/*.vue",
-    "./plugins/**/*.{js,ts}",
-    "./nuxt.config.{js,ts}",
-    "./app.vue",
+  content: [
+    './components/**/*.{js,vue,ts}',
+    './layouts/**/*.vue',
+    './pages/**/*.vue',
+    './plugins/**/*.{js,ts}',
+    './nuxt.config.{js,ts}',
+    './app.vue',
   ],
   theme: {
     screens: {
@@ -130,7 +130,7 @@ module.exports = {
       },
     },
   },
-  plugins: [  
+  plugins: [
     plugin(function ({ addUtilities }) {
       const utilities = {
         '.anchor-scrolling-none': {
@@ -184,4 +184,3 @@ module.exports = {
     }),
   ],
 }
-

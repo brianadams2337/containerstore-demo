@@ -1,57 +1,57 @@
 module.exports = {
   extends: [
     // https://github.com/stylelint/stylelint-config-standard
-    "stylelint-config-standard",
+    'stylelint-config-standard',
     // https://github.com/prettier/stylelint-config-prettier
-    "stylelint-config-prettier",
+    'stylelint-config-prettier',
   ],
   // https://github.com/kristerkari/stylelint-high-performance-animation
-  plugins: ["stylelint-high-performance-animation"],
+  plugins: ['stylelint-high-performance-animation'],
   // https://stylelint.io/user-guide/configure#rules
   rules: {
     // Color Rules
-    "color-hex-length": "long",
-    "color-function-notation": "modern",
+    'color-hex-length': 'long',
+    'color-function-notation': 'modern',
 
     // Values
-    "alpha-value-notation": "number",
+    'alpha-value-notation': 'number',
 
     // Nesting Rules
-    "max-nesting-depth": 3,
+    'max-nesting-depth': 3,
 
     // Import (string / url)
-    "import-notation": "string",
+    'import-notation': 'string',
 
     // Declaration & Import Rules
-    "at-rule-no-unknown": undefined,
-    "declaration-block-no-redundant-longhand-properties": [
+    'at-rule-no-unknown': undefined,
+    'declaration-block-no-redundant-longhand-properties': [
       true,
-      { ignoreShorthands: ["/flex/"] },
+      { ignoreShorthands: ['/flex/'] },
     ],
 
     // Animation Rules
-    "plugin/no-low-performance-animation-properties": true,
+    'plugin/no-low-performance-animation-properties': true,
   },
   // https://stylelint.io/user-guide/configure#overrides
   overrides: [
     {
       // Use SCSS config only for SCSS files
-      files: ["**/*.scss"],
+      files: ['**/*.scss'],
       // https://github.com/stylelint-scss/stylelint-config-standard-scss
-      extends: ["stylelint-config-standard-scss"],
+      extends: ['stylelint-config-standard-scss'],
       rules: {
         // SCSS Rules
-        "scss/at-rule-no-unknown": true,
-        "scss/dollar-variable-pattern": undefined,
-        "scss/at-mixin-pattern": undefined,
-        "scss/no-global-function-names": undefined,
+        'scss/at-rule-no-unknown': true,
+        'scss/dollar-variable-pattern': undefined,
+        'scss/at-mixin-pattern': undefined,
+        'scss/no-global-function-names': undefined,
       },
     },
     {
       // Use Vue/SCSS config only for Vue SFC files
-      files: ["**/*.vue"],
+      files: ['**/*.vue'],
       // https://github.com/ota-meshi/stylelint-config-recommended-vue
-      extends: ["stylelint-config-recommended-vue/scss"],
+      extends: ['stylelint-config-recommended-vue/scss'],
     },
   ],
-};
+}

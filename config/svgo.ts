@@ -1,4 +1,4 @@
 export default {
-  autoImportPath: "./assets/icons",
-  defaultImport: "component",
-};
+  autoImportPath: './assets/icons',
+  defaultImport: 'component' as const,
+}
