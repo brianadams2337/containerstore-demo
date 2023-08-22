@@ -8,7 +8,7 @@ module.exports = {
     // We need to load the SCAYLE shared eslint configs after all
     // 3rd party shared eslint configs to avoid import order incompatibilities
     // within internally merged eslint config and prettier.
-    "@scayle/eslint-config-storefront/nuxt/nuxt2",
+    "@scayle/eslint-config-storefront/nuxt/nuxt",
     "@scayle/eslint-config-storefront",
   ],
   // https://eslint.org/docs/latest/use/configure/ignore#ignorepatterns-in-config-files
