@@ -22,4 +22,8 @@ export default defineNuxtConfig({
   svgo,
   image,
   i18n,
+  components: {
+    global: true,
+    dirs: [{ path: '~/components', pathPrefix: false, extensions: ['.vue'] }],
+  },
 })

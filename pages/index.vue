@@ -11,6 +11,22 @@
       </div>
     </NuxtLazyHydrate>
 
+    <br />
+    <br />
+    <AppButton> Test primary </AppButton>
+
+    <br />
+    <br />
+    <AppButton type="secondary"> Test secondary </AppButton>
+
+    <br />
+    <br />
+    <AppButton type="tertiary"> Test tertiary</AppButton>
+
+    <br />
+    <br />
+    <AppButton type="ghost"> Test ghost </AppButton>
+
     <div class="mt-20">
       <h3 class="my-5">Form validations with Vuelidate</h3>
       <form
