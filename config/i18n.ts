@@ -1,4 +1,5 @@
-const DE_DOMAIN_FILE = 'de-De.json'
+const DE_DOMAIN_FILE = 'de-DE.json'
+
 const locales = [
   {
     code: 'en',
@@ -31,7 +32,7 @@ export default {
   locales,
   differentDomains: false,
   detectBrowserLanguage: false as const,
-  defaultLocale: 'de',
+  defaultLocale: 'en',
   langDir: 'langs/',
   lazy: true,
   strategy: 'prefix' as const,

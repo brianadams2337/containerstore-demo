@@ -10,6 +10,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  plugins: ['~/plugins/validation'],
   modules: [
     'nuxt-svgo',
     '@nuxt/image',

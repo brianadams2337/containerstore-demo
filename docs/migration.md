@@ -24,8 +24,7 @@ There are a couple of points that are important to highlight when setting up cyp
 - Cypress config is now written in TypeScript
 - It is important to note that, since we are using `Vite`, we need to set the following in the cypress config:
 
-```
-ts
+```ts
 module.exports = defineConfig({
   component: {
     devServer: {
@@ -33,7 +32,22 @@ module.exports = defineConfig({
       bundler: 'Vite',
     },
   },
-});
+})
 ```
 
 The options above make sure that the bundler is `Vite` and the framework that we're using is `vue`
+
+### Vuelidate
+
+The approach that we're using in Nuxt 3 is almost the same as it was in Nuxt 2.
+When it comes to the rule message localization there is one thing to keep in mind.
+In Nuxt 2, when defining the validation plugin, we accessed the global `i18n`
+instance within the context argument. Now we need to access it via `useNuxtApp`
+composable.
+
+```ts
+export default defineNuxtPlugin(() => {
+  const { $i18n } = useNuxtApp()
+  // ...
+})
+```

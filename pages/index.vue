@@ -26,19 +26,21 @@
         </div>
         <div
           class="flex"
-          :class="{ 'border border-red-400 p-1': v$.password.$errors.length }">
+          :class="{
+            'border border-red-400 p-1': v$.oldPassword.$errors.length,
+          }">
           <label class="mr-5" for="password">Password</label>
           <input
             id="password"
-            v-model="formPayload.password"
+            v-model="formPayload.oldPassword"
             placeholder="Enter Password"
             class="flex-1 px-3 py-1"
             type="text"
-            @keyup="v$.password.$touch" />
+            @keyup="v$.oldPassword.$touch" />
         </div>
 
-        <p v-if="v$.password.$errors.length">
-          Password {{ v$.password.$errors[0].$message }}
+        <p v-if="v$.oldPassword.$errors.length">
+          Password {{ v$.oldPassword.$errors[0].$message }}
         </p>
       </form>
     </div>
@@ -47,7 +49,8 @@
 
 <script setup lang="ts">
 import { useVuelidate } from '@vuelidate/core'
-import { required, email } from '@vuelidate/validators'
+
+const { $validation } = useNuxtApp()
 
 const appUser = ['AYK', 'Connor', 'Rob'][
   Math.floor(Math.random() * (2 - 0 + 1) + 0)
@@ -57,18 +60,18 @@ const count = ref(0)
 
 const formPayload = reactive({
   email: '',
-  password: '',
+  oldPassword: '',
 })
 
-const v$ = useVuelidate(
-  {
-    email: { email, required },
-    password: {
-      required,
-    },
+const rules = {
+  email: {
+    email: $validation.rule.email,
+    required: $validation.rule.required,
   },
-  formPayload,
-)
+  oldPassword: { required: $validation.rule.required },
+}
+
+const v$ = useVuelidate(rules, formPayload)
 
 watch(
   () => v$.value,
