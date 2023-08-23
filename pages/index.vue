@@ -2,7 +2,6 @@
   <div>
     <NuxtLazyHydrate when-visible>
       <div class="h-[600px]">
-        {{ $t('global.user_greeting', { name: appUser }) }}
         <p>Nuxt Img</p>
         <nuxt-img
           class="h-full"
@@ -31,33 +30,23 @@
       <h3 class="my-5">Form validations with Vuelidate</h3>
       <form
         class="flex w-[500px] flex-col space-y-3 rounded-md border p-6 shadow-sm">
-        <div class="flex">
-          <label class="mr-5" for="email">Email</label>
-          <input
-            id="email"
-            v-model="formPayload.email"
-            placeholder="Enter Email"
-            class="flex-1 px-3 py-1"
-            type="text" />
-        </div>
-        <div
-          class="flex"
-          :class="{
-            'border border-red-400 p-1': v$.oldPassword.$errors.length,
-          }">
-          <label class="mr-5" for="password">Password</label>
-          <input
-            id="password"
-            v-model="formPayload.oldPassword"
-            placeholder="Enter Password"
-            class="flex-1 px-3 py-1"
-            type="text"
-            @keyup="v$.oldPassword.$touch" />
-        </div>
-
-        <p v-if="v$.oldPassword.$errors.length">
-          Password {{ v$.oldPassword.$errors[0].$message }}
-        </p>
+        <CheckBox id="newsletter" v-model="payload.brands" />
+        <RadioGroup
+          v-model="payload.gender"
+          :items="genderItems"
+          title="Gender" />
+        <TextInput v-model="payload.email" placeholder="Email" />
+        <ValidatedInputGroup
+          v-slot="{ isValid }"
+          :errors="v$.oldPassword.$errors">
+          <TextInput
+            v-model="payload.oldPassword"
+            :placeholder="$t('form_fields.old_password')"
+            :has-errors="!isValid"
+            type="password"
+            required
+            @change="v$.oldPassword.$touch" />
+        </ValidatedInputGroup>
       </form>
     </div>
   </div>
@@ -66,17 +55,15 @@
 <script setup lang="ts">
 import { useVuelidate } from '@vuelidate/core'
 
-const { $validation } = useNuxtApp()
-
-const appUser = ['AYK', 'Connor', 'Rob'][
-  Math.floor(Math.random() * (2 - 0 + 1) + 0)
-]
+const { $validation, $i18n } = useNuxtApp()
 
 const count = ref(0)
 
-const formPayload = reactive({
+const payload = reactive({
   email: '',
   oldPassword: '',
+  gender: '',
+  brands: [],
 })
 
 const rules = {
@@ -87,14 +74,18 @@ const rules = {
   oldPassword: { required: $validation.rule.required },
 }
 
-const v$ = useVuelidate(rules, formPayload)
+const v$ = useVuelidate(rules, payload)
 
-watch(
-  () => v$.value,
-  () => {
-    console.log({ validations: v$.value })
+const genderItems = computed(() => [
+  {
+    value: 'm',
+    label: $i18n.t('form_fields.male'),
   },
-)
+  {
+    value: 'f',
+    label: $i18n.t('form_fields.female'),
+  },
+])
 
 useJsonld(() => ({
   '@context': 'https://schema.org',

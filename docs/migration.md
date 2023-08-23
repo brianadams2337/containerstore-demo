@@ -60,6 +60,25 @@ export default defineNuxtPlugin(() => {
 - Furthermore, we don't need to manually override the types as we did in Nuxt 2
   with `Context` interface. Rule types will work now automatically.
 
+### UI components
+
+## Radio Input
+
+- In Nuxt 2 we had only one `Radio` component and we repeated it for each radio.
+  Now we introduced `RadioGroup` component, which has `RadioItem`s in it. Now we
+  just need to use radio group which will be v-modeled and pass `items` that are
+  typed like this:
+
+```ts
+export type Item = { label: string; value: string }
+```
+
+- Usage:
+
+```ts
+ <RadioGroup v-model="gender" :items="genders" title="Gender" />
+```
+
 ### Additions
 
 #### Packages
