@@ -16,6 +16,7 @@
 </template>
 
 <script setup lang="ts">
+// TODO: Refactor and improve this component
 const props = defineProps({
   modelValue: {
     type: Array as PropType<object[]>,

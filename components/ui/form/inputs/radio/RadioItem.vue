@@ -3,16 +3,13 @@
     class="group relative flex cursor-pointer items-center text-sm font-medium">
     <input
       v-model="selected"
-      :value="value"
-      :name="name"
+      v-bind="{ value, name }"
       type="radio"
       class="absolute left-0 top-0 z-0 opacity-0" />
     <div
       class="z-10 inline-flex h-5 w-5 items-center justify-center rounded-full border-2"
       :class="
-        isActive
-          ? 'border-primary bg-primary'
-          : 'border-secondary-700 bg-white '
+        isActive ? 'border-primary bg-primary' : 'border-secondary-700 bg-white'
       ">
       <span
         v-show="isActive"
@@ -50,8 +47,8 @@ const emit = defineEmits(['update:modelValue', 'selectedValue'])
 
 const selected = computed({
   get: () => props.modelValue,
-  set: (value: string | undefined) => emit('update:modelValue', value),
+  set: (value?: string) => emit('update:modelValue', value),
 })
 
-const isActive = computed(() => props.modelValue?.toString() === props.value)
+const isActive = computed(() => String(props.modelValue) === props.value)
 </script>
