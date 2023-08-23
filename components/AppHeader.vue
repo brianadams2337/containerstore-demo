@@ -2,15 +2,15 @@
   <header>
     <div class="flex items-center border-b py-4">
       <nuxt-link to="/">
-        <IconUiLogo class="w-32" :font-controlled="false" />
+        <SvgoUiLogo class="w-32" :font-controlled="false" />
       </nuxt-link>
       <div class="flex flex-1 items-center justify-end space-x-3">
         <HeaderSearch />
         <NuxtLink to="women">Women</NuxtLink>
         <NuxtLink to="men">Men</NuxtLink>
         <NuxtLink to="sale">Sale</NuxtLink>
-        <IconUiUser class="w-4" />
-        <IconUiBasket class="h-5 w-5" />
+        <SvgoUiUser class="w-4" />
+        <SvgoUiBasket class="h-5 w-5" />
       </div>
     </div>
   </header>
