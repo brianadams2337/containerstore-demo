@@ -30,12 +30,11 @@
       <h3 class="my-5">Form validations with Vuelidate</h3>
       <form
         class="flex w-[500px] flex-col space-y-3 rounded-md border p-6 shadow-sm">
-        <div class="flex items-center">
-          <RadioGroup
-            v-model="payload.gender"
-            :items="genderItems"
-            title="Gender" />
-        </div>
+        <CheckBox id="newsletter" v-model="payload.brands" />
+        <RadioGroup
+          v-model="payload.gender"
+          :items="genderItems"
+          title="Gender" />
         <TextInput v-model="payload.email" placeholder="Email" />
         <ValidatedInputGroup
           v-slot="{ isValid }"
@@ -64,6 +63,7 @@ const payload = reactive({
   email: '',
   oldPassword: '',
   gender: '',
+  brands: [],
 })
 
 const rules = {

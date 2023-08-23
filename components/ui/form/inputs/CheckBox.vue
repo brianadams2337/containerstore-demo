@@ -23,7 +23,7 @@ const props = defineProps({
   },
   item: {
     type: Object as PropType<object>,
-    default: () => {},
+    default: undefined,
   },
   id: {
     type: String as PropType<string>,
