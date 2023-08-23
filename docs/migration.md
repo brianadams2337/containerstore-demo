@@ -59,3 +59,10 @@ export default defineNuxtPlugin(() => {
 
 - Furthermore, we don't need to manually override the types as we did in Nuxt 2
   with `Context` interface. Rule types will work now automatically.
+
+### Additions
+
+#### Packages
+
+- [utility-types](https://www.npmjs.com/package/utility-types) for complex
+  TypeScript types simplification
