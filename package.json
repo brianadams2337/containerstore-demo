@@ -57,6 +57,7 @@
     "@vueuse/nuxt": "^10.3.0",
     "dotenv": "^16.3.1",
     "envalid": "^7.3.1",
+    "maska": "^2.1.10",
     "nuxt-jsonld": "^2.0.8",
     "nuxt-lazy-hydrate": "^1.0.0",
     "radash": "^11.0.0",
