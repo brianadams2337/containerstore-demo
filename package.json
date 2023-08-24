@@ -60,7 +60,7 @@
     "maska": "^2.1.10",
     "nuxt-jsonld": "^2.0.8",
     "nuxt-lazy-hydrate": "^1.0.0",
-    "nuxt-swiper": "^1.2.0",
+    "nuxt-swiper": "^1.2.1",
     "radash": "^11.0.0",
     "ufo": "^1.2.0"
   }
