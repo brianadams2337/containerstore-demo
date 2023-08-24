@@ -8,16 +8,16 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "typecheck": "vue-tsc --noEmit",
     "lint:fix": "yarn lint:script --fix && yarn lint:style --fix && yarn typecheck",
     "lint:script": "eslint --ignore-path .gitignore .",
     "lint:style": "stylelint **/*.{vue,css,scss} --ignore-path .gitignore",
     "lint": "yarn lint:script && yarn lint:style && yarn format && yarn typecheck",
+    "typecheck": "vue-tsc --noEmit",
+    "format": "prettier --ignore-unknown --log-level warn --write .",
+    "format:fix": "prettier --ignore-unknown --log-level warn --write .",
     "cy:open": "cypress open",
     "cy:run:mobile": "cypress run --env mobile=true",
-    "cy:run": "cypress run",
-    "format": "prettier --ignore-unknown --log-level warn --write .",
-    "format:fix": "prettier --ignore-unknown --log-level warn --write ."
+    "cy:run": "cypress run"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",

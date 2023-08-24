@@ -1617,19 +1617,19 @@
   integrity sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==
 
 "@types/node@*":
-  version "20.5.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.5.2.tgz#02850ed821c8113fd6ed9ae5c744b7f7cd6d6f51"
-  integrity sha512-5j/lXt7unfPOUlrKC34HIaedONleyLtwkKggiD/0uuMfT8gg2EOpg0dz4lCD15Ga7muC+1WzJZAjIB9simWd6Q==
+  version "20.5.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.5.1.tgz#178d58ee7e4834152b0e8b4d30cbfab578b9bb30"
+  integrity sha512-4tT2UrL5LBqDwoed9wZ6N3umC4Yhz3W3FloMmiiG4JwmUJWpie0c7lcnUNd4gtMKuDEO4wRVS8B6Xa0uMRsMKg==
 
 "@types/node@^16.18.39":
-  version "16.18.42"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.42.tgz#3530c4e6e3f1d90e8494ef37d02fdfe5615ff4b3"
-  integrity sha512-IrFfX/1oxDFQNpQzgt/BoP/hbMuQT68DPsNwzJmw8y3K8lfnPp0XymVN9GLFz+LobFmJGZ/peRzq+9wXYfCCtw==
+  version "16.18.41"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.41.tgz#61b14360fd3f7444b326ac3207c83005371e3f8a"
+  integrity sha512-YZJjn+Aaw0xihnpdImxI22jqGbp0DCgTFKRycygjGx/Y27NnWFJa5FJ7P+MRT3u07dogEeMVh70pWpbIQollTA==
 
 "@types/node@^18.17.3":
-  version "18.17.7"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.17.7.tgz#8be4a95467c4f2a94cae65f30ee1cf98760525cb"
-  integrity sha512-WJj/p/cIg6zUsxv1n2leZHpvn8hr9TYuLQxAZxZcK/7+5t5ukmJGelOLGOy3L1MLhAO/sapTJGd1V7kvoIuzUg==
+  version "18.17.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.17.6.tgz#0296e9a30b22d2a8fcaa48d3c45afe51474ca55b"
+  integrity sha512-fGmT/P7z7ecA6bv/ia5DlaWCH4YeZvAQMNpUhrJjtAhOhZfoxS1VLUgU2pdk63efSjQaOJWdXMuAJsws+8I6dg==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -6541,10 +6541,10 @@ node-domexception@^1.0.0:
   resolved "https://registry.yarnpkg.com/node-domexception/-/node-domexception-1.0.0.tgz#6888db46a1f71c0b76b3f7555016b63fe64766e5"
   integrity sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==
 
-node-fetch-native@^1.0.2, node-fetch-native@^1.1.1, node-fetch-native@^1.2.0, node-fetch-native@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/node-fetch-native/-/node-fetch-native-1.3.0.tgz#87badfbaa460278197678d077e60fa2877870385"
-  integrity sha512-4AvgYFJ6VG+UF5Sm1LMq8Wvo8RTMZ1kTLqgZW3m5HjHfoUCHSkquyP3wwMQ82PW9SSwT+kWM2bXZyR0c2obqqw==
+node-fetch-native@^1.0.2, node-fetch-native@^1.1.1, node-fetch-native@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/node-fetch-native/-/node-fetch-native-1.2.0.tgz#13ec6df98f33168958dbfb6945f10aedf42e7ea8"
+  integrity sha512-5IAMBTl9p6PaAjYCnMv5FmqIF6GcZnawAVnzaCG0rX2aYZJ4CxEkZNtVPuTRug7fL7wyM5BQYTlAzcyMPi6oTQ==
 
 node-fetch@^2.6.7:
   version "2.6.13"
@@ -6926,13 +6926,13 @@ object.values@^1.1.6:
     es-abstract "^1.20.4"
 
 ofetch@^1.1.1:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/ofetch/-/ofetch-1.2.0.tgz#ddc6082873c303de28c507d0fe9978c427042412"
-  integrity sha512-R8CM00cUpy/+PS8jyf/8ijTgKNSOhrAap77DJD5hck6eNChMvJkz/lmN7HaxZW0BlCIVMWmgmDYRwALsc5ypPw==
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/ofetch/-/ofetch-1.1.1.tgz#a0e5117500f4ac02e2c61ec1bb754bc54d5ba44d"
+  integrity sha512-SSMoktrp9SNLi20BWfB/BnnKcL0RDigXThD/mZBeQxkIRv1xrd9183MtLdsqRYLYSqW0eTr5t8w8MqjNhvoOQQ==
   dependencies:
-    destr "^2.0.1"
-    node-fetch-native "^1.3.0"
-    ufo "^1.2.0"
+    destr "^2.0.0"
+    node-fetch-native "^1.2.0"
+    ufo "^1.1.2"
 
 ohash@^1.1.2:
   version "1.1.3"
@@ -6987,9 +6987,9 @@ open@^9.1.0:
     is-wsl "^2.2.0"
 
 openapi-typescript@^6.2.8:
-  version "6.5.3"
-  resolved "https://registry.yarnpkg.com/openapi-typescript/-/openapi-typescript-6.5.3.tgz#8dc5e5e7f4e07ecdfb917a4ea2548d26f94bd54d"
-  integrity sha512-iVOgf1wf/6R73Cg9wcxMAD/P3+/TJ8HQruLyv3WRDu29Pwnmp7ZUJ897Kb401jW7Ao/L4JjisropHQJW62BXtA==
+  version "6.5.2"
+  resolved "https://registry.yarnpkg.com/openapi-typescript/-/openapi-typescript-6.5.2.tgz#622e54e6de25bd65c65a1f129be42193160e6e42"
+  integrity sha512-Zz41utYZ3BAyr32QhOATSnN9zcWMsJeA4Jdq7xQjfYOdZbQfI8Fvsvx41Doe9Wvoho1aj5cP9b5Z7kHtG6mYvg==
   dependencies:
     ansi-colors "^4.1.3"
     fast-glob "^3.3.1"
@@ -9197,9 +9197,9 @@ undici@^5.23.0:
     busboy "^1.6.0"
 
 unenv@^1.5.1, unenv@^1.7.1:
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/unenv/-/unenv-1.7.2.tgz#34e6a8e37998d6412a284b2efca52bd1d15c3445"
-  integrity sha512-tPyMGAo53szTd7J1g6mvFqaZc0QjgpnyWxOlOrmmFZ2iqCutjfZ2iBRGY5AKAxCw1tmEbCJPf8iXJ3xXnMc69Q==
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/unenv/-/unenv-1.7.1.tgz#76dc9432243a3cd2d1b75bc0f61f9dec57e01a2f"
+  integrity sha512-iINrdDcqoAjGqoIeOW85TIfI13KGgW1VWwqNO/IzcvvZ/JGBApMAQPZhWcKhE5oC/woFSpCSXg5lc7r1UaLPng==
   dependencies:
     consola "^3.2.3"
     defu "^6.1.2"
