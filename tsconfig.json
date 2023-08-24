@@ -1,9 +1,6 @@
 {
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    "types": [
-      "cypress",
-      "cypress-real-events"
-    ]
+    "types": ["cypress", "cypress-real-events"]
   }
 }
