@@ -79,6 +79,10 @@ export type Item = { label: string; value: string }
  <RadioGroup v-model="gender" :items="genders" title="Gender" />
 ```
 
+### Vue-slick-carousel replaced with Swiper
+
+We are moving away from the vue-slick-carousel in favor of Swiper. Nuxt has a module for swiper which is easy to integrate and configure and supports SSR. All details related to configurations can be found at [Swiper Docs](https://nuxt.com/modules/swiper)
+
 ### Additions
 
 #### Packages

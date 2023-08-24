@@ -12,6 +12,18 @@
 
     <br />
     <br />
+
+    <h3>Slideshow</h3>
+    <div class="mt-4 w-1/2 border py-4">
+      <Slideshow
+        :slides="slides"
+        :autoplay="{ delay: 5000, disableOnInteraction: false }"
+        navigation
+        loop />
+    </div>
+
+    <br />
+    <br />
     <AppButton> Test primary </AppButton>
 
     <br />
@@ -55,10 +67,8 @@
 <script setup lang="ts">
 import { useVuelidate } from '@vuelidate/core'
 
+// validations
 const { $validation, $i18n } = useNuxtApp()
-
-const count = ref(0)
-
 const payload = reactive({
   email: '',
   oldPassword: '',
@@ -87,11 +97,20 @@ const genderItems = computed(() => [
   },
 ])
 
+// jsonld
+const count = ref(0)
 useJsonld(() => ({
   '@context': 'https://schema.org',
   '@type': 'Thing',
   name: `reactive json: count is ${count.value}`,
 }))
+
+// swiper
+const slides = [
+  'images/1bef383677e1873e174d75f52fc51a2a.jpg',
+  'images/9ded160420d5cb605253138f2a945b9a.jpg',
+  'images/df37f64895689731f2c6654b41fff39d.jpg',
+]
 </script>
 
 <script lang="ts">
