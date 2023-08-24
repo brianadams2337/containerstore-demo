@@ -41,13 +41,13 @@ defineProps({
 const swiperRef = ref()
 </script>
 
-<style lang="css">
-.swiper-button-next::after {
-  --swiper-navigation-size: 20px;
+<style lang="css" scoped>
+:deep(.swiper-button-next::after) {
+  --swiper-navigation-size: 1.5rem;
   color: black;
 }
-.swiper-button-prev::after {
-  --swiper-navigation-size: 20px;
+:deep(.swiper-button-prev::after) {
+  --swiper-navigation-size: 1.5rem;
   color: black;
 }
 </style>
