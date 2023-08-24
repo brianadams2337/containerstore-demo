@@ -41,6 +41,12 @@ defineProps({
 const swiperRef = ref()
 </script>
 
+<script lang="ts">
+export default {
+  name: 'AppSlideshow',
+}
+</script>
+
 <style lang="css" scoped>
 :deep(.swiper-button-next::after) {
   --swiper-navigation-size: 1.5rem;

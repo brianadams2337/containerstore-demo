@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { i18n, image, svgo, swiper } from './config'
+import { i18n, image, svgo } from './config'
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -27,5 +27,9 @@ export default defineNuxtConfig({
     global: true,
     dirs: [{ path: '~/components', pathPrefix: false, extensions: ['.vue'] }],
   },
-  swiper,
+  // use dedicated config file once type are exposed from the module https://github.com/cpreston321/nuxt-swiper/issues/82
+  swiper: {
+    prefix: 'Swiper',
+    modules: ['navigation', 'autoplay', 'pagination'],
+  },
 })
