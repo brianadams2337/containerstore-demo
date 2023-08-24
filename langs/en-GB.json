@@ -42,7 +42,9 @@
     "new_password": "New Password",
     "repeated_password": "Confirm password",
     "male": "Male",
-    "female": "Female"
+    "female": "Female",
+    "divers": "Divers",
+    "password": "Password"
   },
   "error": {
     "continue_shopping": "Continue shopping"
@@ -123,7 +125,8 @@
     "notification": {
       "select_size": "Please select size before adding to basket",
       "add_to_basket_success": "{productName} has been added to your basket",
-      "add_to_basket_error": "{productName} could not be added to your basket"
+      "add_to_basket_error": "{productName} could not be added to your basket",
+      "add_to_basket": "{productName} has been added to your basket"
     },
     "to_checkout": "to checkout",
     "no_items_info": "You have no products in your basket."
@@ -269,10 +272,86 @@
     "quantity_label": "Quantity",
     "size": "Size",
     "tax": "19% VAT",
-    "total": "Total"
+    "total": "Total",
+    "quatity_label": ""
   },
   "main_nav": {
     "back_to": "Back to \"{name}\"",
     "main_menu": "Main menu"
+  },
+  "login_page": {
+    "forget_password": {
+      "description": "Please enter your email address. We will send you an email so you can reset your password.",
+      "cancel": "Back",
+      "status": {
+        "error": {
+          "400_bad_request": "Your request resulted in an error",
+          "401_unauthorized": "Authorization Required",
+          "403_user_deactivated": "This user is deactivated.",
+          "404_not_found": "Ooops! E-Mail not found."
+        },
+        "success": "An email was sent to reset your password"
+      },
+      "submit": "Submit",
+      "title": "Forgot password?"
+    },
+    "guest_login": {
+      "cancel": "Create a free user account",
+      "status": {
+        "error": {
+          "400_bad_request": "Your request resulted in an error",
+          "401_unauthorized": "Authorization Required",
+          "409_non_guest_customer": "You are not using a guest account.",
+          "500_server_error": "Your request resulted in an error"
+        },
+        "success": "Guest-Log-In was successful."
+      },
+      "submit": "Continue without advantages",
+      "title": "Continue as guest"
+    },
+    "login": {
+      "status": {
+        "error": {
+          "400_bad_request": "Your request resulted in an error",
+          "401_unauthorized": "Authorization Required",
+          "404_not_found": "Your email address or password is incorrect. Please try again.",
+          "500_server_error": "Your request resulted in an error"
+        },
+        "success": "Log-In was successful"
+      },
+      "title": "Sign In"
+    },
+    "reset_password": {
+      "cancel": "Back",
+      "status": {
+        "error": {
+          "400_bad_request": "Your request resulted in an error",
+          "401_unauthorized": "Authorization Required",
+          "406_hash_has_expired": "Your token has been already used or has been expired. Please request a new password reset email."
+        },
+        "success": "Your password has been successfully reset. Use your new password to log in."
+      },
+      "submit": "Submit",
+      "title": "Reset password",
+      "validation": {
+        "required": "This field is required"
+      }
+    },
+    "sign_up": {
+      "status": {
+        "error": {
+          "400_bad_request": "Your request resulted in an error",
+          "401_unauthorized": "Authorization Required",
+          "409_already_exists": "This account already exists."
+        },
+        "success": "Yey! Registration was successful"
+      },
+      "submit": "Register now",
+      "title": "Create an Account"
+    },
+    "welcome_back": {
+      "not_user": "Not {username}? Log in with another user account",
+      "title": "Welcome back, {username}!"
+    }
   }
 }

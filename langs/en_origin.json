@@ -38,11 +38,13 @@
     "last_name": "Last name",
     "birth_date": "Your date of birth",
     "email": "Email address",
+    "password": "Password",
     "old_password": "Current password",
     "new_password": "New Password",
     "repeated_password": "Confirm password",
     "male": "Male",
-    "female": "Female"
+    "female": "Female",
+    "divers": "Divers"
   },
   "error": {
     "continue_shopping": "Continue shopping"
@@ -166,7 +168,8 @@
       "expected_delivery_from": "Expected",
       "delivery": "Delivery",
       "shipment_detail": "Shipment Detail",
-      "details": "Details"
+      "details": "Details",
+      "subtotal": "Subtotal"
     },
     "user": {
       "save_message": "Your information has been succesfully saved",
@@ -271,5 +274,80 @@
   "main_nav": {
     "back_to": "Back to \"{name}\"",
     "main_menu": "Main menu"
+  },
+  "login_page": {
+    "login": {
+      "title": "Sign In",
+      "status": {
+        "success": "Log-In was successful",
+        "error": {
+          "400_bad_request": "Your request resulted in an error",
+          "401_unauthorized": "Authorization Required",
+          "404_not_found": "Your email address or password is incorrect. Please try again."
+        }
+      }
+    },
+    "sign_up": {
+      "title": "Create an Account",
+      "submit": "Register now",
+      "status": {
+        "success": "Yey! Registration was successful",
+        "error": {
+          "400_bad_request": "Your request resulted in an error",
+          "401_unauthorized": "Authorization Required",
+          "409_already_exists": "This account already exists."
+        }
+      }
+    },
+    "guest_login": {
+      "title": "Continue as guest",
+      "submit": "Continue without advantages",
+      "cancel": "Create a free user account",
+      "status": {
+        "success": "Guest-Log-In was successful.",
+        "error": {
+          "400_bad_request": "Your request resulted in an error",
+          "401_unauthorized": "Authorization Required",
+          "409_non_guest_customer": "You are not using a guest account.",
+          "500_server_error": "Your request resulted in an error"
+        }
+      }
+    },
+    "welcome_back": {
+      "title": "Welcome back, {username}!",
+      "not_user": "Not {username}? Log in with another user account"
+    },
+    "forget_password": {
+      "title": "Forgot password?",
+      "description": "Please enter your email address. We will send you an email so you can reset your password.",
+      "submit": "Submit",
+      "cancel": "Back",
+      "status": {
+        "success": "An email was sent to reset your password",
+        "error": {
+          "400_bad_request": "Your request resulted in an error",
+          "401_unauthorized": "Authorization Required",
+          "403_user_deactivated": "This user is deactivated.",
+          "404_not_found": "Ooops! E-Mail not found.",
+          "500_server_error": "Your request resulted in an error"
+        }
+      }
+    },
+    "reset_password": {
+      "title": "Reset password",
+      "submit": "Submit",
+      "cancel": "Back",
+      "validation": {
+        "required": "This field is required"
+      },
+      "status": {
+        "success": "Your password has been successfully reset. Use your new password to log in.",
+        "error": {
+          "400_bad_request": "Your request resulted in an error",
+          "401_unauthorized": "Authorization Required",
+          "406_hash_has_expired": "Your token has been already used or has been expired. Please request a new password reset email."
+        }
+      }
+    }
   }
 }

@@ -51,7 +51,7 @@
     "vue-tsc": "^1.8.8"
   },
   "dependencies": {
-    "@scayle/storefront-nuxt": "^7.2.0",
+    "@scayle/storefront-nuxt": "^7.3.1",
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.3",
     "@vueuse/nuxt": "^10.3.0",
