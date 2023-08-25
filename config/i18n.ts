@@ -1,3 +1,7 @@
+import { NuxtConfig } from '@nuxt/schema'
+
+type ModuleOptions = NuxtConfig['i18n']
+
 const DE_DOMAIN_FILE = 'de-DE.json'
 
 const locales = [
@@ -28,13 +32,15 @@ const locales = [
   },
 ]
 
-export default {
+const options: ModuleOptions = {
   locales,
   differentDomains: false,
-  detectBrowserLanguage: false as const,
+  detectBrowserLanguage: false,
   defaultLocale: 'en',
   langDir: 'langs/',
   lazy: true,
-  strategy: 'prefix' as const,
+  strategy: 'prefix',
   vueI18n: './i18n.config.ts',
 }
+
+export default options

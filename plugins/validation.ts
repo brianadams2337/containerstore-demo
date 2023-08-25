@@ -49,11 +49,9 @@ export default defineNuxtPlugin(() => {
   const withI18nMessage = createI18nMessage({
     t: $i18n.t.bind($i18n),
     messagePath: ({ $validator }) => `validation.${snakeCase($validator)}`,
-    // @ts-ignore
-    // TS ignore is needed since the return type is not correct here.
-    // https://github.com/vuelidate/vuelidate/issues/1180
     messageParams: ({ field, max, otherName, property, ...params }) => ({
       ...params,
+      property,
       field: $i18n.t(`form_fields.${snakeCase(field || property)}`),
       max,
       otherField: otherName,

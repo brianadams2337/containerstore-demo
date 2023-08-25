@@ -3,12 +3,9 @@
     <Swiper
       v-if="slides?.length"
       ref="swiperRef"
+      v-bind="{ loop, slidesPerView, navigation, autoplay }"
       :modules="[SwiperAutoplay, SwiperNavigation, SwiperPagination]"
-      :slides-per-view="slidesPerView"
-      :loop="loop"
-      :pagination="{ clickable: true }"
-      :navigation="navigation"
-      :autoplay="autoplay">
+      :pagination="{ clickable: true }">
       <SwiperSlide v-for="slide in slides" :key="`demo-slide-${slide}`">
         <nuxt-img :src="slide" provider="default" />
       </SwiperSlide>
@@ -22,12 +19,18 @@ type AutoplayOptions =
   | { delay: number; disableOnInteraction: boolean }
 
 defineProps({
-  slides: { type: Array<any>, default: () => [] },
+  slides: {
+    type: Array<any>,
+    default: () => [],
+  },
   autoplay: {
     type: Object as PropType<AutoplayOptions>,
     default: () => ({}),
   },
-  loop: { type: Boolean, default: false },
+  loop: {
+    type: Boolean,
+    default: false,
+  },
   slidesPerView: {
     type: Number,
     default: 1,

@@ -1,6 +1,8 @@
 import { ModuleOptions } from 'nuxt-swiper'
 
-export default {
+const options: Partial<ModuleOptions> = {
   prefix: 'Swiper',
   modules: ['navigation', 'autoplay', 'pagination'],
-} as ModuleOptions
+}
+
+export default options
