@@ -1,4 +1,6 @@
-export default {
+import { ModuleOptions } from '@nuxt/image'
+
+const options: Partial<ModuleOptions> = {
   domains: ['https://a.storyblok.com'],
   storyblok: {
     baseURL: 'https://a.storyblok.com',
@@ -26,3 +28,5 @@ export default {
     '2xl': 1536,
   },
 }
+
+export default options

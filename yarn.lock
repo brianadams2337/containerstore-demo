@@ -2048,10 +2048,10 @@
   dependencies:
     vue-demi "^0.13.11"
 
-"@vuelidate/validators@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@vuelidate/validators/-/validators-2.0.3.tgz#f55d168adeb91ac25a3045c942a2354516226667"
-  integrity sha512-P4WtmczPRbwmVihKlSAs3pIjIil4xjHW+Qoi58MCw7vnKuYr/IHarOFkwp0K8eIIqiQqY4URM5Gb4aeDjna6Yw==
+"@vuelidate/validators@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@vuelidate/validators/-/validators-2.0.4.tgz#0a88a7b2b18f15fd9c384095593f369a6f7384e9"
+  integrity sha512-odTxtUZ2JpwwiQ10t0QWYJkkYrfd0SyFYhdHH44QQ1jDatlZgTh/KRzrWVmn/ib9Gq7H4hFD4e8ahoo5YlUlDw==
   dependencies:
     vue-demi "^0.13.11"
 
@@ -6788,6 +6788,14 @@ nuxt-svgo@^3.4.0:
     mini-svg-data-uri "^1.4.4"
     svgo "^3.0.2"
 
+nuxt-swiper@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/nuxt-swiper/-/nuxt-swiper-1.2.1.tgz#771289bab9eb8824315cf46b27995cc0b01e65ac"
+  integrity sha512-PwfEWz9or1bb7Fh+SxcW20TtY8Alchoan8XsZ8EFjDYk1j//8PZ56DCNv1jH33DHVBryA9kL1qH+fOtl7y62tw==
+  dependencies:
+    "@nuxt/kit" "^3.6.5"
+    swiper "^10.2.0"
+
 nuxt@^3.6.5:
   version "3.6.5"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-3.6.5.tgz#8c919dbf4bb16c67af2bb1d2c50427469a17321a"
@@ -8760,6 +8768,11 @@ svgo@^3.0.2:
     css-tree "^2.2.1"
     csso "^5.0.5"
     picocolors "^1.0.0"
+
+swiper@^10.2.0:
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-10.2.0.tgz#e7369ff56f4e10069f2244a4436f732b8925deb0"
+  integrity sha512-nktQsOtBInJjr3f5DicxC8eHYGcLXDVIGPSon0QoXRaO6NjKnATCbQ8SZsD3dN1Ph1RH4EhVPwSYCcuDRFWHGQ==
 
 symbol-tree@^3.2.4:
   version "3.2.4"

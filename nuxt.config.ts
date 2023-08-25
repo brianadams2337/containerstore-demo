@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { i18n, image, svgo } from './config'
+import { i18n, image, svgo, swiper } from './config'
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     'nuxt-lazy-hydrate',
     'nuxt-jsonld',
     '@vueuse/nuxt',
+    'nuxt-swiper',
   ],
   svgo,
   image,
@@ -26,4 +27,5 @@ export default defineNuxtConfig({
     global: true,
     dirs: [{ path: '~/components', pathPrefix: false, extensions: ['.vue'] }],
   },
+  swiper,
 })
