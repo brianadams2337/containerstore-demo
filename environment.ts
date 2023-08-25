@@ -19,8 +19,6 @@ export default cleanEnv(
     CHECKOUT_SECRET_1001: str(),
     CHECKOUT_HOST: str({ default: '' }),
 
-    GTM_ID: str({ default: '' }),
-
     BASIC_AUTH: str({ default: '' }),
 
     CAMPAIGN_KEY_PREFIX: str(),
