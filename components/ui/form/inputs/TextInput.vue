@@ -8,14 +8,7 @@
       :data-maska="dataMaska"
       v-bind="{ required, readonly, type, placeholder, autocomplete }"
       class="w-full rounded border-2 p-3 text-sm font-medium placeholder:text-secondary focus:outline-none focus:ring-0"
-      :class="[
-        content ? 'border-primary' : 'border-transparent bg-secondary-450',
-        {
-          'bg-secondary-450': readonly,
-          'border-red-500 text-red-500 placeholder:text-red-500 focus:border-red-500':
-            hasErrors,
-        },
-      ]"
+      :class="classes"
       :maxlength="maxLength" />
     <p v-if="hint" class="mt-1 text-xs">{{ hint }}</p>
   </div>
@@ -79,4 +72,13 @@ const dataMaska = computed(() => {
   // String conversion is needed in order to make it work properly
   return Array.isArray(props.mask) ? JSON.stringify(props.mask) : props.mask
 })
+
+const classes = computed(() => [
+  content.value ? 'border-primary' : 'border-transparent bg-secondary-450',
+  {
+    'bg-secondary-450': props.readonly,
+    'border-red-500 text-red-500 placeholder:text-red-500 focus:border-red-500':
+      props.hasErrors,
+  },
+])
 </script>

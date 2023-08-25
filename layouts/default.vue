@@ -1,6 +1,8 @@
 <template>
-  <div class="p-4">
+  <div
+    class="flex min-h-screen flex-col text-primary antialiased anchor-scrolling-none">
     <AppHeader class="mb-4" />
+    <ToastContainer />
     <slot />
   </div>
 </template>

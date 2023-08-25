@@ -25,7 +25,7 @@
 
     <br />
     <br />
-    <AppButton> Test primary </AppButton>
+    <AppButton @click="toggleToastAndTrack"> toggle toast and track </AppButton>
 
     <br />
     <br />
@@ -67,9 +67,11 @@
 
 <script setup lang="ts">
 import { useVuelidate } from '@vuelidate/core'
+import { Action } from '~/constants/toast'
 
-// validations
-const { $validation, $i18n } = useNuxtApp()
+const { $validation, $i18n, $alert } = useNuxtApp()
+// const gtm = useGtm()
+
 const payload = reactive({
   email: '',
   oldPassword: '',
@@ -97,6 +99,11 @@ const genderItems = computed(() => [
     label: $i18n.t('form_fields.female'),
   },
 ])
+
+const toggleToastAndTrack = () => {
+  $alert.show('Toast success', Action.CONFIRM)
+  // gtm.trackEvent({ name: 'test event' })
+}
 
 // jsonld
 const count = ref(0)
