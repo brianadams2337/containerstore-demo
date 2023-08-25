@@ -10,7 +10,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  plugins: ['~/plugins/validation'],
+  plugins: ['~/plugins/validation', '~/plugins/toast'],
   modules: [
     'nuxt-svgo',
     '@nuxt/image',
@@ -23,9 +23,9 @@ export default defineNuxtConfig({
   svgo,
   image,
   i18n,
+  swiper,
   components: {
     global: true,
     dirs: [{ path: '~/components', pathPrefix: false, extensions: ['.vue'] }],
   },
-  swiper,
 })

@@ -1,6 +1,6 @@
 <template>
-  <header>
-    <div class="flex items-center border-b py-4">
+  <header class="sticky top-0 z-50 bg-white">
+    <div class="flex items-center border-b p-4">
       <nuxt-link to="/">
         <SvgoUiLogo class="w-32" :font-controlled="false" />
       </nuxt-link>
