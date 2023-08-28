@@ -84,19 +84,23 @@ export default () => {
 
   const closeFlyoutMenu = (event: MouseEvent, force = false) => {
     const relatedTarget = event.relatedTarget as Element
-    if (
+    const shouldClose =
       ![
         'flyout-menu',
         'flyout-menu-items-container',
         'flyout-overscroll-container',
         'flyout-menu-items-container-content',
-      ].includes(relatedTarget?.id) ||
-      force
-    ) {
+      ].includes(relatedTarget?.id) || force
+
+    if (!shouldClose) {
+      return
+    }
+
+    setTimeout(() => {
       uiState.flyoutMenuOpen = false
       uiState.flyoutMenuCategory = DEFAULT_FLYOUT_CATEGORY
       uiState.flyoutNavigationItem = DEFAULT_FLYOUT_NAVIGATION_ITEM
-    }
+    }, 200)
   }
   const openFlyoutMenu = ({ children, name, path, slug, id }: Category) => {
     if (children?.length === 0) {
