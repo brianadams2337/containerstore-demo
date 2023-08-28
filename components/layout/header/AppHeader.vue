@@ -35,103 +35,8 @@
       @mouseleave="closeFlyoutMenu">
       <!--- THE ID's ARE IMPORTANT TO NOT CLOSE FLYOUT WHILE FAST MOVING MOUSE TO ITEMS -->
       <div id="flyout-menu-items-container" class="flex space-x-20">
-        <div
-          id="flyout-menu-items-container-content"
-          :key="flyoutMenuCategory.slug">
-          <Headline size="sm" tag="p" type="loud" :is-uppercase="false">
-            <DefaultLink
-              :to="{ name: route.routes.home.name }"
-              type="quiet"
-              class="text-sm"
-              @click="forceCloseFlyout">
-              {{ flyoutMenuCategory.name }}
-            </DefaultLink>
-          </Headline>
-          <TwoColumnList :items="childlessCategoryItems" class="mt-3">
-            <template #item="{ item }">
-              <DefaultLink
-                :to="item.path"
-                badge-placement="top"
-                badge-size="sm"
-                type="quieter"
-                class="text-gray-750"
-                @click="forceCloseFlyout">
-                {{ item.name }}
-              </DefaultLink>
-            </template>
-          </TwoColumnList>
-        </div>
-        <template v-for="category in flyoutMenuCategory.children">
-          <div
-            v-if="category.children?.length"
-            :id="'flyout-menu-items-container-content-' + category.slug"
-            :key="category.slug">
-            <Headline size="sm" tag="p" type="loud" :is-uppercase="false">
-              <DefaultLink
-                :to="category.path"
-                type="quiet"
-                @click="forceCloseFlyout">
-                {{ category.name }}
-              </DefaultLink>
-            </Headline>
-            <TwoColumnList :items="category.children" class="mt-4">
-              <template #item="{ item }">
-                <DefaultLink
-                  :to="item.path"
-                  badge-placement="top"
-                  badge-size="sm"
-                  type="quieter"
-                  @click="forceCloseFlyout">
-                  {{ item.name }}
-                </DefaultLink>
-              </template>
-            </TwoColumnList>
-          </div>
-        </template>
-
-        <!-- navigation flyout -->
-
-        <div
-          id="flyout-menu-items-container-content"
-          :key="flyoutNavigationItem.id">
-          <Headline size="sm" tag="p" type="loud" :is-uppercase="false">
-            <NavigationTreeItem
-              type="quiet"
-              class="text-sm"
-              :navigation-item="flyoutNavigationItem"
-              @click:navigation-item="closeFlyoutMenu" />
-          </Headline>
-          <TwoColumnList :items="childlessNavigationItems" class="mt-4">
-            <template #item="{ item }">
-              <NavigationTreeItem
-                :navigation-item="item"
-                type="quieter"
-                class="text-gray-750"
-                @click:navigation-item="closeFlyoutMenu" />
-            </template>
-          </TwoColumnList>
-        </div>
-
-        <template v-for="navigationItem in flyoutNavigationItem.children">
-          <div
-            v-if="navigationItem.children.length"
-            :id="'flyout-menu-items-container-content-' + navigationItem.id"
-            :key="navigationItem.id">
-            <Headline size="sm" tag="p" type="loud" :is-uppercase="false">
-              <NavigationTreeItem
-                :navigation-item="navigationItem"
-                @click:navigation-item="closeFlyoutMenu" />
-            </Headline>
-            <TwoColumnList :items="navigationItem.children" class="mt-4">
-              <template #item="{ item }">
-                <NavigationTreeItem
-                  type="quieter"
-                  :navigation-item="item"
-                  @click:navigation-item="closeFlyoutMenu" />
-              </template>
-            </TwoColumnList>
-          </div>
-        </template>
+        <CategoryFlyout />
+        <NavigationFlyout />
       </div>
       <template #teaser>
         <slot name="flyout-teaser" />
@@ -141,11 +46,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  Category,
-  NavigationTree,
-  NavigationItems,
-} from '@scayle/storefront-nuxt'
+import { Category, NavigationTree } from '@scayle/storefront-nuxt'
 
 defineProps({
   rootCategories: {
@@ -165,24 +66,11 @@ defineProps({
 const {
   isFlyoutMenuOpen,
   closeFlyoutMenu,
-  flyoutMenuCategory,
   isSideNavigationOpen,
   openFlyoutMenu,
   toggleSideNavigation,
   openFlyoutMenuForNavigationTree,
-  flyoutNavigationItem,
 } = useUiState()
-
-const hasChildrenItems = (item: Category | NavigationItems[0]) =>
-  item.children?.length === 0
-
-const childlessCategoryItems = computed(() => {
-  return flyoutMenuCategory.value.children.filter(hasChildrenItems)
-})
-
-const childlessNavigationItems = computed(() => {
-  return flyoutNavigationItem.value.children.filter(hasChildrenItems)
-})
 
 const isCheckoutPage = computed(() => {
   return false
@@ -190,12 +78,4 @@ const isCheckoutPage = computed(() => {
   //     ignoreQuery: false,
   //   }),
 })
-
-const forceCloseFlyout = (event: MouseEvent) => closeFlyoutMenu(event, true)
-</script>
-
-<script lang="ts">
-export default {
-  name: 'AppHeader',
-}
 </script>
