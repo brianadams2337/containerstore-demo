@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-primary h-[30px] w-full">
+  <div class="h-[30px] w-full bg-primary">
     <div class="flex h-full justify-end">
-      <ShopSwitcher class="bg-primary mr-2 text-white" />
+      <ShopSwitcher class="mr-2 bg-primary text-white" />
     </div>
   </div>
 </template>
