@@ -158,6 +158,20 @@ We are moving away from the vue-slick-carousel in favor of Swiper.
 Nuxt has a module for swiper which is easy to integrate and configure and supports SSR.
 All details related to configurations can be found at [Swiper Docs](https://nuxt.com/modules/swiper)
 
+### `radash` replaced with `nuxt-lodash`
+
+We are now moving to the [nuxt-lodash](https://nuxt.com/modules/lodash/changelog)
+that's recommended by the nuxt community. It supports auto imports and it's easy
+to configure via nuxt config. We stick with the `use` prefix as it is the default
+setting.
+
+```ts
+// plugins/validation.ts
+// Usage:
+...
+    messagePath: ({ $validator }) => `validation.${useSnakeCase($validator)}`,
+```
+
 ### Additions
 
 #### Packages
@@ -165,4 +179,4 @@ All details related to configurations can be found at [Swiper Docs](https://nuxt
 - [utility-types](https://www.npmjs.com/package/utility-types) for complex
   TypeScript types simplification
 - [nuxt-lodash](https://github.com/cipami/nuxt-lodash#readme) as a `lodash`
-  nuxt module wrapper which supports auto-imports
+  nuxt module
