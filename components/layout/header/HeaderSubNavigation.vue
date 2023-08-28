@@ -1,7 +1,7 @@
 <template>
   <div
     data-test-id="nav-categories"
-    class="scrollbar-hide hidden overflow-x-auto border-b border-gray-200 md:block">
+    class="hidden overflow-x-auto border-b border-gray-200 scrollbar-hide md:block">
     <div
       v-if="!fetchingCategories"
       class="container flex items-center space-x-16">
