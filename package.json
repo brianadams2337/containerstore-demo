@@ -29,7 +29,7 @@
     "@types/node": "^18.17.3",
     "autoprefixer": "10.4.15",
     "cypress": "12.17.4",
-    "cypress-real-events": "1.10.0",
+    "cypress-real-events": "1.10.1",
     "eslint": "8.48.0",
     "eslint-plugin-cypress": "2.14.0",
     "eslint-plugin-nuxt": "4.0.0",
