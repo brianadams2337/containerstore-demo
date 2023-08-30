@@ -8,7 +8,7 @@
       <form
         class="flex w-[500px] flex-col space-y-3 rounded-md border p-6 shadow-sm">
         <CheckBox
-          v-if="viewport.isLessThan('tablet')"
+          v-if="viewport.isLessThan('sm')"
           id="newsletter"
           v-model="payload.brands" />
         <RadioGroup
