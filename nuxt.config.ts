@@ -29,8 +29,7 @@ export default defineNuxtConfig({
   i18n,
   swiper,
   viewport,
-  components: {
-    global: true,
-    dirs: [{ path: '~/components', pathPrefix: false, extensions: ['.vue'] }],
-  },
+  components: [
+    { path: '~/components', pathPrefix: false, extensions: ['.vue'] },
+  ],
 })
