@@ -14,17 +14,40 @@ export default cleanEnv(
     BAPI_TOKEN: str(),
 
     AY_CACHE_DISABLED: bool({ default: false }),
+    STORYBLOK_ACCESS_TOKEN: str(),
+    DEBUG_LEVEL: str({
+      default: '',
+      choices: ['fatal', 'error', 'warn', 'info', 'debug', ''],
+    }),
 
+    DOMAIN_EN: str({ default: '' }),
+    DOMAIN_DE_DE: str({ default: '' }),
+    DOMAIN_DE_AT: str({ default: '' }),
+    DOMAIN_DE_CH: str({ default: '' }),
     DOMAIN_DEFAULT: str({ default: '' }),
+    DOMAIN_PER_LOCALE: bool({ default: true }),
 
-    CHECKOUT_USER_1001: str(),
+    CHECKOUT_ACCESS_HEADER: str({ default: undefined }),
+
+    CHECKOUT_HOST: str({ default: '' }),
     CHECKOUT_TOKEN_1001: str(),
     CHECKOUT_SECRET_1001: str(),
-    CHECKOUT_HOST: str({ default: '' }),
+
+    GOOGLE_TAG_MANAGER_ID: str({ default: '' }),
 
     BASIC_AUTH: str({ default: '' }),
-
+ 
     CAMPAIGN_KEY_PREFIX: str(),
+
+    HTTPS_KEY: str({ default: '' }),
+    HTTPS_CERT: str({ default: '' }),
+
+    ACTIVE_LPL_1001: bool({ default: false }),
+    STORYBLOK_WEBHOOK_SECRET: str({
+      default: 'hereupon-caviar-nicety-wanton',
+    }),
+
+    SENTRY_DSN: str({ default: '' }),
   },
   {
     reporter: (options) => {

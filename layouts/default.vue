@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex min-h-screen flex-col text-primary antialiased anchor-scrolling-none">
+    class="text-primary anchor-scrolling-none flex min-h-screen flex-col antialiased">
     <HeaderMetaBar />
     <AppHeader
       :fetching-categories="fetchingCategories"

@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --development",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
@@ -17,7 +17,8 @@
     "format:fix": "prettier --ignore-unknown --log-level warn --write .",
     "cy:open": "cypress open",
     "cy:run:mobile": "cypress run --env mobile=true",
-    "cy:run": "cypress run"
+    "cy:run": "cypress run",
+    "generate-sb-types": "storyblok-generate-ts source=./components.122095.json target=./storyblok/types/component-types-sb"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
@@ -42,6 +43,7 @@
     "postcss-import": "15.1.0",
     "prettier": "3.0.2",
     "prettier-plugin-tailwindcss": "0.5.3",
+    "storyblok-generate-ts": "^1.15.1",
     "stylelint": "15.10.3",
     "stylelint-config-prettier": "9.0.5",
     "stylelint-config-standard": "34.0.0",
@@ -54,6 +56,7 @@
   },
   "dependencies": {
     "@scayle/storefront-nuxt": "7.3.3",
+    "@storyblok/nuxt": "^5.6.6",
     "@vuelidate/core": "2.0.3",
     "@vuelidate/validators": "2.0.4",
     "@vueuse/nuxt": "10.4.1",
