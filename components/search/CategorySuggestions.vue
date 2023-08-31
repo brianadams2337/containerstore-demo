@@ -12,10 +12,10 @@
         :to="brandOrCategorySuggestion.category.path"
         @click:result="emit('click:result', brandOrCategorySuggestion)">
         <div class="overflow-hidden">
-          <div class="text-2xs text-secondary truncate font-medium">
+          <div class="truncate text-2xs font-medium text-secondary">
             {{ brandOrCategorySuggestion.category.path }}
           </div>
-          <div class="text-primary truncate text-sm font-semibold">
+          <div class="truncate text-sm font-semibold text-primary">
             {{ brandOrCategorySuggestion.category.name }}
           </div>
         </div>

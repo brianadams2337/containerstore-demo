@@ -26,12 +26,10 @@ defineProps({
     type: Boolean as PropType<boolean>,
     default: false,
   },
-
   disablePopoverContent: {
     type: Boolean as PropType<boolean>,
     default: false,
   },
-
   contentWrapperClass: {
     type: [String, Object] as PropType<string | object>,
     default: '',

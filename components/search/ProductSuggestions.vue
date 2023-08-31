@@ -27,11 +27,11 @@
             <div
               v-if="productSuggestion.product.priceRange"
               class="ml-auto shrink-0">
-              {{
-                price.toCurrency(
-                  productSuggestion.product.priceRange.min.withTax,
-                )
-              }}
+              USD
+              <!-- TODO: Use this after we implemented this utility within the SFC -->
+              <!--   {{ price.toCurrency( -->
+              <!--     productSuggestion.product.priceRange.min.withTax, -->
+              <!--   ) }} -->
             </div>
           </div>
         </div>

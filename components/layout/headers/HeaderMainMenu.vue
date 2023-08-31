@@ -18,5 +18,6 @@
 </template>
 
 <script setup lang="ts">
-const { count: wishlistCount } = await useCurrentWishlist()
+// const { count: wishlistCount } = await useCurrentWishlist()
+const wishlistCount = 0
 </script>

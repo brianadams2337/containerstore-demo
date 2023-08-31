@@ -17,7 +17,6 @@
             {{ $t('search.more') }}
           </NuxtLink>
         </div>
-
         <section
           v-else-if="!resultsCount && searchTerm !== ''"
           class="px-8 py-4 text-center">
