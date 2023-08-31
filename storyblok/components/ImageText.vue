@@ -1,0 +1,81 @@
+<template>
+  <div
+    v-if="blok"
+    v-editable="blok"
+    class="relative overflow-hidden bg-[#a6a6a6]">
+    <NuxtImg
+      v-if="imageSource && imageSource.src"
+      class="h-full w-full object-cover"
+      provider="storyblok"
+      :sizes="sizes"
+      :src="imageSource.src"
+      :alt="imageSource.alt"
+      loading="lazy" />
+
+    <div
+      class="absolute top-0 flex h-full w-full overflow-hidden p-5 text-white md:p-[60px]">
+      <div
+        class="flex h-full flex-col overflow-hidden"
+        :class="[...align, ...justify]">
+        <div
+          v-if="blok.topline"
+          class="text-xs font-semibold leading-loose md:text-base">
+          {{ blok.topline }}
+        </div>
+        <Headline
+          v-if="blok.headline"
+          class="!block leading-tight md:text-[40px]">
+          {{ blok.headline }}
+        </Headline>
+        <p v-if="blok.text" class="mt-3 overflow-auto text-xs md:pt-5">
+          {{ blok.text }}
+        </p>
+        <AppButton
+          v-if="hasCta && blok.cta_link"
+          class="mt-10 shrink-0"
+          :to="blok.cta_link?.cached_url">
+          {{ blok.cta }}
+        </AppButton>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { useStoryblokImageSanitizer } from '../composables/useStoryblokImage'
+import useCmsAlignment from '../composables/useCmsAlignment'
+import { ImageTextStoryblok } from '../types/component-types-sb'
+
+const props = defineProps({
+  blok: {
+    type: Object as PropType<ImageTextStoryblok>,
+    required: true,
+  },
+  sizes: {
+    type: String as PropType<string>,
+    default: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
+  },
+})
+
+const { sanitize } = useStoryblokImageSanitizer()
+
+const imageSource = computed(() => {
+  if (props.blok?.image.length) {
+    return sanitize(props.blok?.image?.[0])
+  }
+})
+
+const { align, justify } = useCmsAlignment(props.blok)
+
+const hasCta = computed(() => props.blok?.cta && props.blok?.cta_link)
+</script>
+<style lang="css" scoped>
+.gradient {
+  background-image: linear-gradient(
+      to bottom,
+      rgb(0 0 0 / 0.14),
+      rgb(0 0 0 / 0.14)
+    ),
+    linear-gradient(to bottom, rgb(0 0 0 / 0.11), rgb(0 0 0 / 0));
+}
+</style>

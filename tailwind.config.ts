@@ -15,6 +15,7 @@ const defaultSizes = {
 }
 
 export default {
+  content: ['storyblok/**/*.{vue,js, ts}'],
   theme: {
     screens: {
       ...breakpoints,

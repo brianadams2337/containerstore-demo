@@ -5,7 +5,8 @@
       ref="element"
       provider="storyblok"
       class="picture picture-contain h-full bg-gray-200"
-      :src="imageSource?.src" />
+      :src="imageSource?.src"
+      loading="lazy" />
   </div>
 </template>
 
