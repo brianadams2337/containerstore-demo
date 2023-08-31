@@ -5,7 +5,7 @@
     @mouseenter="isGreatedThanMd && openUserFlyout()"
     @mouseleave="isGreatedThanMd && closeUserFlyout()">
     <template #action>
-      <SvgoUser class="h-5 w-5 cursor-pointer" @click="redirectToMyAccount" />
+      <IconUser class="h-5 w-5 cursor-pointer" @click="redirectToMyAccount" />
       <div
         v-if="isUserFlyoutOpen"
         class="absolute -bottom-3 left-2 h-0.5 w-8 bg-black" />

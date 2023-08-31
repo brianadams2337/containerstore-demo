@@ -12,8 +12,8 @@
             type="ghost"
             data-test-id="side-navigation-button"
             @click="toggleSideNavigation">
-            <SvgoClose v-if="isSideNavigationOpen" class="h-6 w-6" />
-            <SvgoBurger v-else class="h-6 w-6" />
+            <IconClose v-if="isSideNavigationOpen" class="h-6 w-6" />
+            <IconBurger v-else class="h-6 w-6" />
           </AppButton>
         </div>
         <Logo class="ml-4 flex-initial" :width="138" :height="32" />

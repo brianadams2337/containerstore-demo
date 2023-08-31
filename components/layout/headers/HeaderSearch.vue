@@ -10,7 +10,7 @@
     @click="inputActive = true"
     @keydown.esc="resetAndClose">
     <label class="sr-only">{{ $t('search.placeholder') }}</label>
-    <SvgoSearch
+    <IconSearch
       class="absolute inset-y-2.5 left-2.5 h-6 w-6"
       :class="inputActive ? 'pointer-events-none' : 'cursor-pointer'"
       @click="inputActive = true" />
@@ -19,7 +19,7 @@
       <span
         v-if="searchQuery !== ''"
         class="absolute right-0 flex h-full cursor-pointer items-center justify-center px-2.5 py-2">
-        <SvgoCloseBold
+        <IconCloseBold
           class="h-4 w-4"
           @click="resetSearch"
           @mousedown.prevent />

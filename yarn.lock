@@ -4818,9 +4818,9 @@ formdata-polyfill@^4.0.10:
     fetch-blob "^3.1.2"
 
 fraction.js@^4.2.0:
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.3.2.tgz#ea144a08ed23a284bf9067153075f212771a92d9"
-  integrity sha512-9VLF466MqX1OUP7/d9r7/Vsvu6Hpp+taXBLmiR5x6mEYfT0BDkGVBt5TyA1aDu1WzIE1sF8F66evOFaz7iAEGQ==
+  version "4.3.4"
+  resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.3.4.tgz#b2bac8249a610c3396106da97c5a71da75b94b1c"
+  integrity sha512-pwiTgt0Q7t+GHZA4yaLjObx4vXmmdcS0iSJ19o8d/goUGgItX9UZWKWNnLHehxviD8wU2IWRsnR8cD5+yOJP2Q==
 
 fresh@0.5.2, fresh@~0.5.2:
   version "0.5.2"
@@ -7218,10 +7218,10 @@ nuxt-lodash@^2.5.0:
     "@types/lodash-es" "^4.17.7"
     lodash-es "^4.17.21"
 
-nuxt-svgo@3.4.1:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/nuxt-svgo/-/nuxt-svgo-3.4.1.tgz#d758cfb4464a48df5fe1da01558adae08f4fe9ca"
-  integrity sha512-wIxSfHVzmFN6+Vp4n3CVJAmxYRIbZlFDjg4K3M8LQ+RPIeNV2mAIBADnAx6JB2NrJy1Jwrt9xBNqXHHsS6qjkw==
+nuxt-svgo@3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/nuxt-svgo/-/nuxt-svgo-3.5.0.tgz#b3b65172e18b334a8ccd06fbf81efc05f6895751"
+  integrity sha512-3wch7+a0DEqh75Ny+VTVtEDdJAO2j/NH6clIvwdCq4H7+Xagh45Gq/Bdg8dfFcTPyKoS5noeHFA5MZOldr45ig==
   dependencies:
     "@nuxt/kit" "^3.4.0"
     "@vue/compiler-sfc" "^3.2.47"

@@ -11,7 +11,7 @@
         <FloatingBadge v-show="wishlistCount" class="-right-2 -top-2">
           {{ wishlistCount }}
         </FloatingBadge>
-        <SvgoHeart class="h-8 w-8" />
+        <IconHeart class="h-8 w-8" />
       </DefaultLink>
     </div>
   </div>
