@@ -12,13 +12,13 @@
             type="ghost"
             data-test-id="side-navigation-button"
             @click="toggleSideNavigation">
-            <SvgoUiClose v-if="isSideNavigationOpen" class="h-6 w-6" />
-            <SvgoUiBurger v-else class="h-6 w-6" />
+            <SvgoClose v-if="isSideNavigationOpen" class="h-6 w-6" />
+            <SvgoBurger v-else class="h-6 w-6" />
           </AppButton>
         </div>
         <Logo class="ml-4 flex-initial" :width="138" :height="32" />
         <div class="flex flex-1 justify-end">
-          <!-- <HeaderMainMenu v-if="!isCheckoutPage" /> -->
+          <HeaderMainMenu v-if="!isCheckoutPage" />
         </div>
       </div>
     </div>

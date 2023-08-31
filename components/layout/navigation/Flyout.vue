@@ -14,7 +14,7 @@
 <script setup lang="ts">
 defineProps({
   isOpen: {
-    type: Boolean as PropType<boolean>,
+    type: Boolean,
     default: false,
   },
 })
