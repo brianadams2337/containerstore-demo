@@ -54,7 +54,7 @@ const props = defineProps({
   },
 })
 
-const ACTIVE_CLASS = 'font-bold'
+const ACTIVE_CLASS = '!font-bold'
 
 const variantClass = computed(() => LinkTypeClass[props.type])
 const activeClass = computed(() => (!props.onlyExactActive ? ACTIVE_CLASS : ''))
