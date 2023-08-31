@@ -1,6 +1,6 @@
 import {
   getAttributeValue,
-  getImageFromList,
+  // getImageFromList,
   isImageType,
   ProductImage,
 } from '@scayle/storefront-nuxt'
@@ -26,28 +26,14 @@ const getFirstModelImage = (images: ProductImage[], index = 0) => {
     }
   }
 
-  let firstImage = getImage(baseImages, 'modeloutfit_image', 'front')
-
-  if (!firstImage) {
-    firstImage = getImage(baseImages, 'modeloutfit_image', 'front', true)
-  }
-
-  if (!firstImage) {
-    firstImage = getImage(baseImages, 'model_image', 'front', true)
-  }
-  if (!firstImage) {
-    firstImage = getImage(baseImages, 'bust_image', 'front', true)
-  }
-
-  if (!firstImage) {
-    firstImage = baseImages[0]
-  }
-
-  if (!firstImage) {
-    firstImage = images[0]
-  }
-
-  return firstImage
+  return (
+    getImage(baseImages, 'modeloutfit_image', 'front') ||
+    getImage(baseImages, 'modeloutfit_image', 'front', true) ||
+    getImage(baseImages, 'model_image', 'front', true) ||
+    getImage(baseImages, 'bust_image', 'front', true) ||
+    baseImages[0] ||
+    images[0]
+  )
 }
 
 const getDetailPageImages = (images: ProductImage[]) => {
@@ -127,24 +113,20 @@ const getImage = (
   )
 }
 
+const getModelImages = (images: ProductImage[]) => {
+  return getDetailPageImages(images).slice(1)
+}
+
+const getAttribute = (image: ProductImage, key: string) => {
+  return (image.attributes?.[key]?.values as any)?.value
+}
+
 export default {
-  getImageFromList,
+  // getImageFromList,
   isImageType,
-
   getDetailPageImages,
-
   getFirstModelImage,
   getBasketImage,
-
-  showDividerTag(index: number, arrayLength: number) {
-    return index >= 0 && arrayLength > 1 && index < arrayLength - 1
-  },
-
-  getModelImages: (images: ProductImage[]) => {
-    return getDetailPageImages(images).slice(1)
-  },
-
-  getAttribute(image: ProductImage, key: string) {
-    return (image.attributes?.[key]?.values as any)?.value
-  },
+  getModelImages,
+  getAttribute,
 }

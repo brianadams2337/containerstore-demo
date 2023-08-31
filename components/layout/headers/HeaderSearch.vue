@@ -2,7 +2,7 @@
   <div
     class="relative z-30 h-12 rounded border border-primary/0 transition-all duration-500"
     :class="{
-      'w-[335px]': inputActive,
+      'w-[21rem]': inputActive,
       'w-12': !inputActive,
       'border-primary/100': inputActive,
       'delay-100': !inputActive,
@@ -12,10 +12,7 @@
     <label class="sr-only">{{ $t('search.placeholder') }}</label>
     <SvgoSearch
       class="absolute inset-y-2.5 left-2.5 h-6 w-6"
-      :class="{
-        'cursor-pointer': !inputActive,
-        'pointer-events-none': inputActive,
-      }"
+      :class="inputActive ? 'pointer-events-none' : 'cursor-pointer'"
       @click="inputActive = true" />
 
     <FadeInTransition :duration="100">
@@ -65,7 +62,6 @@ import {
   BrandOrCategorySuggestion,
   ProductSuggestion,
 } from '@scayle/storefront-nuxt'
-
 import {
   DEBOUNCED_SEARCH_DURATION,
   MIN_CHARS_FOR_SEARCH,
@@ -103,11 +99,11 @@ watch(inputActive, (val) => {
 
 const { products, categories, brands } = useTypeaheadSuggestions(data)
 
-const debouncedSearch = useDebounce((value: string) => {
+const debouncedSearch = useDebounce(async (value: string) => {
   if (value === '' || value.length < MIN_CHARS_FOR_SEARCH) {
     return
   }
-  search({
+  await search({
     term: searchQuery.value,
     productLimit: PRODUCT_LIMIT,
   })

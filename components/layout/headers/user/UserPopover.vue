@@ -11,14 +11,14 @@
         class="absolute -bottom-3 left-2 h-0.5 w-8 bg-black" />
     </template>
     <template v-if="user" #content>
-      <client-only>
+      <ClientOnly>
         <UserContent />
-      </client-only>
+      </ClientOnly>
     </template>
     <template v-else #content>
-      <client-only>
+      <ClientOnly>
         <GuestContent />
-      </client-only>
+      </ClientOnly>
     </template>
   </Popover>
 </template>

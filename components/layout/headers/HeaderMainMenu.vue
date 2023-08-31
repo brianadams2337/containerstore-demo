@@ -8,9 +8,9 @@
         data-test-id="wishlist-link"
         class="relative"
         type="loud">
-        <!-- <FloatingBadge v-show="wishlistCount" class="-right-2 -top-2"> -->
-        <!--   {{ wishlistCount }} -->
-        <!-- </FloatingBadge> -->
+        <FloatingBadge v-show="wishlistCount" class="-right-2 -top-2">
+          {{ wishlistCount }}
+        </FloatingBadge>
         <SvgoHeart class="h-8 w-8" />
       </DefaultLink>
     </div>
@@ -18,5 +18,5 @@
 </template>
 
 <script setup lang="ts">
-// const { count: wishlistCount } = await useCurrentWishlist()
+const { count: wishlistCount } = await useCurrentWishlist()
 </script>

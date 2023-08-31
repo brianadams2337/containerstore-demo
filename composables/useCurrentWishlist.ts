@@ -1,8 +1,8 @@
 import { WISHLIST_WITH } from '~/constants/withParams'
 
-export default () => {
+export default async () => {
   /**
    * Provide promotion key: `with: { ...WISHLIST_WITH, pricePromotionKey },`
    */
-  return Promise.resolve(useWishlist(WISHLIST_WITH))
+  return await useWishlist(WISHLIST_WITH, { immediate: true })
 }
