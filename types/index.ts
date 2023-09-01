@@ -1,4 +1,4 @@
-import { Category } from '@scayle/storefront-nuxt'
+import { Category, Value } from '@scayle/storefront-nuxt'
 
 export type FlyoutMenuCategory = {
   name: string
@@ -7,3 +7,5 @@ export type FlyoutMenuCategory = {
   id: number
   children: Category[]
 }
+
+export type ListboxValue = Value & { disabled: boolean }
