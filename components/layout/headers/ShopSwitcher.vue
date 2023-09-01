@@ -8,7 +8,7 @@
       class="h-full"
       :list-name="list"
       data-test-id="language-listbox">
-      <div class="text-gray-350 text-xs uppercase">
+      <div class="text-xs uppercase text-gray-350">
         <span v-if="selectedCountry">{{ selectedCountry }}</span>
         <span v-if="selectedCountry" class="mx-1">|</span>
         <span class="opacity-60">{{ selectedLanguage }}</span>
@@ -21,7 +21,7 @@
         leave-to-class="opacity-0">
         <ListboxOptions
           v-if="isOpen"
-          class="z-60 absolute right-0 top-0 max-h-32 w-32 overflow-y-auto bg-white shadow-md">
+          class="absolute right-0 top-0 z-60 max-h-32 w-32 overflow-y-auto bg-white shadow-md">
           <ListboxOption
             v-for="{ shopId, path, locale, domain } in availableShops"
             :key="shopId"
