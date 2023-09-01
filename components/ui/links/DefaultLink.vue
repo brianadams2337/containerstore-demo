@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    v-bind="{ to, openInNewTab, activeClass, exactActiveClass }"
+    v-bind="{ to: target, openInNewTab, activeClass, exactActiveClass }"
     :class="variantClass"
     class="inline-flex items-center gap-2 whitespace-nowrap text-xs leading-5 tracking-wide transition duration-200 ease-linear">
     <slot />
@@ -60,5 +60,14 @@ const variantClass = computed(() => LinkTypeClass[props.type])
 const activeClass = computed(() => (!props.onlyExactActive ? ACTIVE_CLASS : ''))
 const exactActiveClass = computed(() => {
   return props.onlyExactActive ? ACTIVE_CLASS : ''
+})
+
+const localePath = useLocalePath()
+const router = useRouter()
+const target = computed(() => {
+  if (typeof props.to === 'string' && props.to.startsWith('http')) {
+    return props.to
+  }
+  return localePath(router.resolve(props.to))
 })
 </script>

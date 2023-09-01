@@ -8,19 +8,23 @@
           'font-bold text-black': item.name === selected,
         }"
         :to="{
+          name,
           params: { ...$route.params },
           query: { ...$route.query, sort: item.query },
         }"
-        @click.native="emit('click:item', item)"
-        >{{ $t(`sorting_select.${item.name}`) }}</DefaultLink
-      >
+        @click.native="emit('click:item', item)">
+        {{ $t(`sorting_select.${item.name}`) }}
+      </DefaultLink>
     </li>
   </ul>
 </template>
 
 <script setup lang="ts">
 import { SortValue } from '@scayle/storefront-nuxt'
+const route = useRoute()
+const baseName = useRouteBaseName()
 
+const name = computed(() => baseName(route))
 defineProps({
   items: {
     type: Array as PropType<SortValue[]>,

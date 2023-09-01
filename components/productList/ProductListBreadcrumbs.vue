@@ -11,7 +11,7 @@
           :to="link.to"
           size="sm"
           type="quieter"
-          class="capitalize hover:underline"
+          class="capitalize !text-black hover:underline"
           only-exact-active>
           <Headline v-if="isActive(link.to)" size="sm" :is-uppercase="false">
             {{ link.value }}
@@ -19,29 +19,31 @@
           <template v-else>
             {{ link.value }}
           </template>
-          <span
-            v-if="showDividerTag(idx, items.length)"
-            :key="`span-${link.value}`"
-            class="-ml-1 text-sm font-light">
-            /
-          </span>
         </DefaultLink>
+        <span
+          v-if="showDividerTag(idx, items.length)"
+          :key="`span-${link.value}`"
+          class="-ml-1 text-sm font-light">
+          /
+        </span>
       </template>
     </template>
   </HorizontalItemsDivider>
 </template>
 
 <script setup lang="ts">
-import { BreadcrumbItem, getBreadcrumbsFromPath } from '@scayle/storefront-nuxt'
-
+import { getBreadcrumbsFromPath } from '@scayle/storefront-nuxt'
+import type { BreadcrumbItem } from '@scayle/storefront-nuxt'
 const route = useRoute()
+const currentShop = useCurrentShop()
 
-const breadcrumbs = computed<BreadcrumbItem[]>(() => {
-  return getBreadcrumbsFromPath(route.path)
+const breadcrumbs = computed(() => {
+  return getBreadcrumbsFromPath(route.path, currentShop.value?.path)
 })
 
 const isActive = (url: string) => {
-  return isExactActiveRoute(route, url, { ignoreQuery: false })
+  const { isExactActive } = useLink({ to: url })
+  return isExactActive.value
 }
 
 const asCrumbs = (items: any) => items as BreadcrumbItem[]

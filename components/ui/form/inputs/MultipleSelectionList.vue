@@ -63,7 +63,7 @@ const toggleItem = (item: Item) => {
 }
 
 const isActive = (item: Item): boolean => {
-  return selected.value.findIndex((i) => i === item) !== -1
+  return selected.value.findIndex((i) => i.value === item.value) !== -1
 }
 
 const selectItem = (item: Item) => {
@@ -71,7 +71,7 @@ const selectItem = (item: Item) => {
 }
 
 const deselectItem = (item: Item) => {
-  const index = selected.value.findIndex((i) => i === item)
+  const index = selected.value.findIndex((i) => i.value === item.value)
 
   if (index !== -1) {
     selected.value.splice(index, 1)

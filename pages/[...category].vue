@@ -5,16 +5,12 @@
   <PageContent>
     <div class="sm:flex">
       <div v-if="viewport.isGreaterOrEquals('md')" class="-ml-4 w-1/3 lg:w-1/5">
-        <!-- <Lazy
-          v-if="categories && 'children' in categories && categories.children"
-          ssr> -->
         <SideNavigation
           v-if="categories && 'children' in categories && categories.children"
           :categories="categories.children"
           :fetching="categoriesStatus === 'pending'"
           :root-category="categories"
           show-nested-categories />
-        <!-- </Lazy> -->
       </div>
       <div class="w-full">
         <!-- <template v-if="preListingContent && isFirstPage">
@@ -25,7 +21,6 @@
               :blok="preContent" />
           </template> -->
 
-        <!-- <Lazy ssr> -->
         <div
           class="flex flex-col items-start justify-between overflow-x-hidden">
           <ProductListBreadcrumbs />
@@ -54,7 +49,6 @@
             </div>
           </div>
         </div>
-        <!-- </Lazy> -->
 
         <!-- <ProductList
           :loading="fetchingProducts"
@@ -64,14 +58,15 @@
           class="mt-8 grid w-auto grid-cols-12 gap-1"
           @click:product="trackProductClick"
           @intersect:row="trackViewListing" /> -->
-        <!-- <Lazy> -->
-        <Pagination
-          v-if="pagination"
-          class="mt-16"
-          :current-page="pagination.page"
-          :first-page="pagination.first"
-          :last-page="pagination.last" />
-        <!-- </Lazy> -->
+        <div class="h-96" />
+        <NuxtLazyHydrate :when-visible="{ rootMargin: '100px' }">
+          <Pagination
+            v-if="pagination"
+            class="mt-16"
+            :current-page="pagination.page"
+            :first-page="pagination.first"
+            :last-page="pagination.last" />
+        </NuxtLazyHydrate>
 
         <!-- <template v-if="postListingContent && isFirstPage">
           <component
@@ -105,6 +100,8 @@ import {
   groupFilterableValuesByKey,
 } from '@scayle/storefront-nuxt'
 import { sustainabilityAttributes } from '~/constants/attributes'
+import {} from '#components'
+
 const listingMetaData = {
   name: 'Category Product List',
   id: 'CategoryProductList',
