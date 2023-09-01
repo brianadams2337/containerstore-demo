@@ -319,8 +319,8 @@ const resetFilters = () => {
 
 const currentShop = useCurrentShop()
 
-const locale = currentShop.value?.locale?.replace('_', '-')
-const currencyCode = currentShop.value?.currency || ''
+const locale = currentShop.value!.locale?.replace('_', '-')
+const currencyCode = currentShop.value!.currency
 
 const isSaleActive = computed(
   () =>
