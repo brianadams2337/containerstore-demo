@@ -26,7 +26,7 @@
           class="absolute left-0 top-[40%] rounded-sm bg-black text-white disabled:hidden sm:left-14"
           :disabled="!isPrevEnabled"
           @click="prev(sliderOffset)">
-          <SvgoUiArrowLeft />
+          <IconArrowLeft />
         </button>
       </template>
       <template #nextButton="{ next, isNextEnabled }">
@@ -34,7 +34,7 @@
           class="absolute right-0 top-[40%] rounded-sm bg-black text-white disabled:hidden sm:right-14"
           :disabled="!isNextEnabled"
           @click="next(sliderOffset)">
-          <SvgoUiArrowRight />
+          <IconArrowRight />
         </button>
       </template>
     </HorizontalItemsSlider>
