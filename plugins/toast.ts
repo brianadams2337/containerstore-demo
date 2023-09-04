@@ -1,5 +1,5 @@
 import { RouteLocationRaw } from '#vue-router'
-import { Action } from '~/constants/toast'
+import { Action } from '~/constants'
 
 type ToastObject = { close: () => void }
 

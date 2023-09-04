@@ -11,7 +11,7 @@ import {
   getAppliedReductionsByCategory,
   Variant,
 } from '@scayle/storefront-nuxt'
-import { ColorMap } from '~/constants/product'
+import { ColorMap } from '~/constants'
 
 export interface VariantAvailability {
   available: boolean
