@@ -1,11 +1,13 @@
 #### SVG Handling
 
-With vite you can include svg icons by simply prefixing it with the <Svgo\* />
+With vite you can include svg icons by simply prefixing it with the `<Icon\* />`
+which is configured in the svgo config (default is `<Svgo\* />`.
+
 otherwise you need to import the svg explicitly and use it as a component.
 
 - On issue you might stumble on is using this module you can't size your icons
   as you might wish to with tailwind classes. By default there is a prop `fontControlled`
-  which you hve to disable like so: `<Svgo* :fontControlled="false"/>`.
+  which you hve to disable like so: `<Icon* :fontControlled="false"/>`.
   If the use-case is to have the flexibility of applying classes throughout the
   app then you need to make a change in the `nuxt.config`
 
@@ -16,6 +18,7 @@ export default defineNuxtConfig({
   svgo: {
     autoImportPath: './assets/icons',
     defaultImport: 'component', // this enables you to style things as you want: https://github.com/cpsoinos/nuxt-svgo/issues/122#issuecomment-1595264212
+    componentPrefix: 'Icon', // Default is 'Svgo'
   },
 })
 ```
@@ -172,11 +175,40 @@ setting.
     messagePath: ({ $validator }) => `validation.${useSnakeCase($validator)}`,
 ```
 
+### Replace our custom `breakpoints` solution with the `nuxt-viewport` module
+
+- In Nuxt 3 we will use [nuxt-viewport](https://nuxt.com/modules/nuxt-viewport) which
+  we use for the viewport/breakpoints handling. We added the `./config/breakpoints.ts`
+  file where we have all the breakpoints defined. We use that for the `tailwind` and
+  for the `nuxt-viewport` config so that we have those two in sync.
+  Current usage of the breakpoint handling is different which will be seen in the
+  example bellow:
+
+```vue
+<template>
+  <div v-if="viewport.isLessThan('sm')">Content</div>
+</template>
+
+<script setup lang="ts">
+import { useVuelidate } from '@vuelidate/core'
+
+const viewport = useViewport()
+// Other usage:
+// const { $viewport } = useNuxtApp()
+</script>
+```
+
 ### Additions
 
 #### Packages
 
-- [utility-types](https://www.npmjs.com/package/utility-types) for complex
-  TypeScript types simplification
-- [nuxt-lodash](https://github.com/cipami/nuxt-lodash#readme) as a `lodash`
+- [utility-types](https://www.npmjs.com/package/utility-types) - complex
+  TypeScript types simplification utils
+- [nuxt-lodash](https://github.com/cipami/nuxt-lodash#readme) - `lodash`
   nuxt module
+- [nuxt-viewport](https://nuxt.com/modules/nuxt-viewport) - module for handling
+  the breakpoints
+
+```
+
+```

@@ -1,5 +1,5 @@
 import plugin from 'tailwindcss/plugin'
-import breakpoints from './config/breakpoints.json'
+import breakpoints from './config/breakpoints'
 
 const defaultSizes = {
   '6xs': '2rem',
@@ -14,13 +14,20 @@ const defaultSizes = {
   '3xl': '48rem',
 }
 
+type Breakpoints = keyof typeof breakpoints
+
+const screens = Object.entries(breakpoints).reduce(
+  (acc, [breakpointName, size]) => {
+    Object.assign(acc, { [breakpointName]: `${size}px` })
+    return acc
+  },
+  {} as Record<Breakpoints, number>,
+)
+
 export default {
   content: ['storyblok/**/*.{vue,js, ts}'],
   theme: {
-    screens: {
-      ...breakpoints,
-      '2xl': breakpoints.xxl,
-    },
+    screens,
     container: {
       center: true,
       padding: '1rem',

@@ -1,10 +1,92 @@
-type Link = 'home' | 'checkout'
+import {
+  Category,
+  getFirstAttributeValue,
+  Product,
+  slugify,
+  ProductSuggestion,
+  BrandOrCategorySuggestion,
+} from '@scayle/storefront-nuxt'
+import { RouteLocationRaw } from '#vue-router'
+
+const getProductDetailRoute = (
+  product: Product,
+  id?: number,
+): RouteLocationRaw => {
+  const name = getFirstAttributeValue(product.attributes, 'name')?.label
+  return {
+    name: 'p-slug',
+    params: {
+      slug: `${slugify(name)}-${id || product.id}`,
+    },
+  }
+}
+
+const getProductDetailPath = (product: Product, id?: number) => {
+  const name = getFirstAttributeValue(product.attributes, 'name')?.label
+  return `/p/${slugify(name)}-${id || product.id}`
+}
+
+const getSearchRoute = (term: string): RouteLocationRaw => {
+  return {
+    name: 'search',
+    query: { term },
+  }
+}
+
+const getCategoryPath = (category: Category) => {
+  if (!category) {
+    return
+  }
+  return `${category.path}`
+}
+
+const getSearchSuggestionPath = (
+  suggestion: ProductSuggestion | BrandOrCategorySuggestion,
+) => {
+  if (!suggestion) {
+    return
+  }
+
+  const product = (suggestion as ProductSuggestion).product
+  if (product) {
+    return getProductDetailPath(product)
+  }
+
+  const category = (suggestion as BrandOrCategorySuggestion).category
+  const brand = (suggestion as BrandOrCategorySuggestion).brand
+  if (category && brand) {
+    return `${getCategoryPath(category)}?brand=${brand?.id}`
+  }
+
+  return getCategoryPath(category)
+}
+
+type Link =
+  | 'home'
+  | 'checkout'
+  | 'wishlist'
+  | 'basket'
+  | 'signin'
+  | 'user'
+  | 'order'
+  | 'account'
 
 export type LinkList = Record<Link, { name: string; path: string }>
 
 const routes: LinkList = {
   home: { name: 'index', path: '/' },
   checkout: { name: 'checkout', path: '/checkout' },
+  wishlist: { name: 'wishlist', path: '/wishlist' },
+  basket: { name: 'basket', path: '/basket' },
+  signin: { name: 'signin', path: '/signin' },
+  order: { name: 'account-order', path: '/account/order' },
+  user: { name: 'account-user', path: '/account/user' },
+  account: { name: 'account', path: '/account' },
 } as const
 
-export default { routes }
+export default {
+  routes,
+  getProductDetailRoute,
+  getSearchRoute,
+  getSearchSuggestionPath,
+}

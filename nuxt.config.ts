@@ -1,6 +1,5 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 import environment from './environment'
-import { i18n, image, svgo, swiper, storefront } from './config'
+import { i18n, image, svgo, swiper, viewport, storefront } from './config'
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -24,16 +23,13 @@ export default defineNuxtConfig({
     'nuxt-swiper',
     'nuxt-lodash',
     '@storyblok/nuxt',
+    'nuxt-viewport',
   ],
   storefront,
   svgo,
   image,
   i18n,
   swiper,
-  components: {
-    global: true,
-    dirs: [{ path: '~/components', pathPrefix: false, extensions: ['.vue'] }],
-  },
   storyblok: {
     accessToken: environment.STORYBLOK_ACCESS_TOKEN,
     devtools: true,
@@ -41,4 +37,8 @@ export default defineNuxtConfig({
   vue: {
     compilerOptions: {},
   },
+  viewport,
+  components: [
+    { path: '~/components', pathPrefix: false, extensions: ['.vue'] },
+  ],
 })
