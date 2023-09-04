@@ -86,12 +86,12 @@
                   <template #item="{ item }">
                     <NuxtLink :to="getProductDetailRoute(product, item.id)">
                       <!-- TODO: Implement color chip component -->
-                      <!-- <ColorChip -->
-                      <!--   v-if="item.colors.length" -->
-                      <!--   data-test-id="product-card-color-circle" -->
-                      <!--   :color="item.colors[0]" -->
-                      <!--   :size="colorChipSize" -->
-                      <!--   :rounded="colorChipRoundedSize" /> -->
+                      <ColorChip
+                        v-if="item.colors.length"
+                        data-test-id="product-card-color-circle"
+                        :color="item.colors[0]"
+                        :size="colorChipSize"
+                        :rounded="colorChipRoundedSize" />
                     </NuxtLink>
                   </template>
                 </ProductSiblingPicker>
