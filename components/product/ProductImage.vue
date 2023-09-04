@@ -1,11 +1,11 @@
 <template>
   <NuxtPicture
-    data-test-id="product-image"
     v-bind="{ alt, quality, background, sizes, modifiers }"
     :src="image.hash"
     :loading="imageLoading"
     :class="classes"
     provider="default"
+    data-test-id="product-image"
     class="picture block mix-blend-darken"
     @load="load" />
 </template>
