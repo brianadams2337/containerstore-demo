@@ -1,9 +1,6 @@
 <template>
   <div>
-    <slot
-      :price="price"
-      :applied-reductions="appliedReductions"
-      :to-currency="currencyForShop">
+    <slot v-bind="{ price, appliedReductions }">
       <slot name="relative-reductions">
         <span
           v-if="showBadge && totalReductions"
@@ -23,19 +20,16 @@
           'text-red-500': appliedReductions.length,
         }"
         data-test-id="price">
-        <template v-if="showPriceFrom">{{
-          $t('price.starting_from')
-        }}</template>
-        {{ currencyForShop(price.withTax) }}
-
+        <template v-if="showPriceFrom">
+          {{ $t('price.starting_from') }}
+        </template>
+        {{ getCurrency(price.withTax) }}
         <span
           v-if="totalReductions.absoluteWithTax"
           class="text-primary text-sm font-medium line-through"
-          data-test-id="initialProductPrice"
-          >{{
-            currencyForShop(price.withTax + totalReductions.absoluteWithTax)
-          }}</span
-        >
+          data-test-id="initialProductPrice">
+          {{ getCurrency(price.withTax + totalReductions.absoluteWithTax) }}
+        </span>
       </p>
       <slot name="tax-info">
         <div
@@ -45,17 +39,11 @@
         </div>
       </slot>
       <p
-        v-if="
-          $currentShop.activeLpl &&
-          appliedReductions.length &&
-          hasLowestPriorPrice
-        "
+        v-if="appliedReductions.length && hasLowestPriorPrice"
         class="mt-0.5 text-sm text-gray-700">
         {{ $t('price.best_price_30d') }}
-        {{ currencyForShop(lowestPriorPrice.withTax ?? 0) }} ({{
-          (lowestPriorPrice.relativeDifferenceToPrice ?? 0) * 100
-        }}
-        %)
+        {{ getCurrency(lowestPriorPrice.withTax ?? 0) }}
+        ({{ (lowestPriorPrice.relativeDifferenceToPrice ?? 0) * 100 }}%)
       </p>
     </slot>
   </div>
@@ -63,15 +51,11 @@
 
 <script setup lang="ts">
 import {
-  Price,
   getTotalAppliedReductions,
-  toCurrency,
+  Price,
+  LowestPriorPrice,
+  AppliedReduction,
 } from '@scayle/storefront-nuxt'
-type AppliedReduction = {
-  category: string
-  type: string
-  amount: { relative: number; absoluteWithTax: number }
-}
 
 const props = defineProps({
   appliedReductions: {
@@ -83,7 +67,7 @@ const props = defineProps({
     required: true,
   },
   lowestPriorPrice: {
-    type: Object as PropType<any>,
+    type: Object as PropType<LowestPriorPrice>,
     default: () => ({
       withTax: null,
       relativeDifferenceToPrice: null,
@@ -111,7 +95,22 @@ const props = defineProps({
   },
 })
 
-const { $currentShop } = useNuxtApp()
+const currentShop = useCurrentShop()
+
+const getCurrency = (value: number): string => {
+  if (!currentShop.value) {
+    return ''
+  }
+
+  return toCurrency(
+    value,
+    usePick(currentShop.value, [
+      'locale',
+      'currency',
+      'currencyFractionDigits',
+    ]),
+  )
+}
 
 const totalReductions = computed(() => getTotalAppliedReductions(props.price))
 
@@ -120,15 +119,7 @@ const showBadge = computed(
 )
 const hasLowestPriorPrice = computed(
   () =>
-    props.lowestPriorPrice &&
-    props.lowestPriorPrice.withTax &&
-    props.lowestPriorPrice.relativeDifferenceToPrice,
+    props.lowestPriorPrice?.withTax &&
+    props.lowestPriorPrice?.relativeDifferenceToPrice,
 )
-
-const currencyForShop = (value: number) => {
-  return toCurrency(value, {
-    currency: $currentShop?.currency || 'EUR',
-    locale: 'de',
-  })
-}
 </script>

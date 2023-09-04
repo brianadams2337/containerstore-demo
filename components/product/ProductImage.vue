@@ -1,19 +1,12 @@
 <template>
   <NuxtPicture
-    data-test-id="product-image"
-    :quality="quality"
-    :background="background"
+    v-bind="{ alt, quality, background, sizes, modifiers }"
     :src="image.hash"
-    :modifiers="{ ...(shouldTrim && { trim: 1 }), brightness }"
-    :sizes="sizes"
-    provider="default"
     :loading="imageLoading"
+    :class="classes"
+    provider="default"
+    data-test-id="product-image"
     class="picture block mix-blend-darken"
-    :class="{
-      'picture-contain': fit === 'contain',
-      'picture-cover': fit === 'cover',
-      'm-auto h-[90%]': isCentered,
-    }"
     @load="load" />
 </template>
 
@@ -23,7 +16,6 @@ import { ProductImage, getAttributeValue } from '@scayle/storefront-nuxt'
 const props = defineProps({
   sizes: {
     type: String,
-    required: false,
     default: '',
   },
   image: {
@@ -31,23 +23,23 @@ const props = defineProps({
     required: true,
   },
   shouldTrim: {
-    type: Boolean as PropType<boolean>,
+    type: Boolean,
     default: false,
   },
   fit: {
-    type: String as PropType<String>,
+    type: String,
     default: 'contain',
   },
   isCentered: {
-    type: Boolean as PropType<boolean>,
+    type: Boolean,
     default: false,
   },
   alt: {
-    type: String as PropType<String>,
-    default: '',
+    type: String,
+    default: undefined,
   },
   quality: {
-    type: Number as PropType<number>,
+    type: Number,
     default: 75,
   },
   load: {
@@ -60,30 +52,34 @@ const props = defineProps({
   },
 })
 
+const imageBackground = computed(() => {
+  return getAttributeValue(props.image.attributes, 'imageBackground')
+})
+
 const brightness = computed(() => {
-  const background = getAttributeValue(
-    props.image.attributes,
-    'imageBackground',
-  )
-  if (background === 'white') {
+  if (imageBackground.value === 'white') {
     return 0.96
-  } else if (background === 'grey') {
+  }
+  if (imageBackground.value === 'grey') {
     return 1.06
   }
   return 1
 })
-const background = computed(() => {
-  const background = getAttributeValue(
-    props.image.attributes,
-    'imageBackground',
-  )
 
-  if (background === 'transparent') {
-    return 'F4F4F4'
-  } else {
-    return 'FFFFFF'
-  }
+const modifiers = computed(() => ({
+  ...(props.shouldTrim && { trim: 1 }),
+  brightness: brightness.value,
+}))
+
+const background = computed(() => {
+  return imageBackground.value === 'transparent' ? 'f4f4f4' : 'ffffff'
 })
+
+const classes = computed(() => ({
+  'picture-contain': props.fit === 'contain',
+  'picture-cover': props.fit === 'cover',
+  'm-auto h-[90%]': props.isCentered,
+}))
 </script>
 
 <style>

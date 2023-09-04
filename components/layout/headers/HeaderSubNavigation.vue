@@ -7,7 +7,7 @@
       class="container flex items-center space-x-16">
       <DefaultLink
         class="border-b-2 border-transparent py-2.5 font-normal hover:border-black sm:text-sm sm:font-semibold"
-        :to="{ name: route.routes.home.name }"
+        :to="{ name: routeList.home.name }"
         type="quiet">
         {{ $t('global.home') }}
       </DefaultLink>

@@ -1,11 +1,8 @@
-import {
-  getAttributeValue,
-  getImageFromList,
-  isImageType,
-  ProductImage,
-} from '@scayle/storefront-nuxt'
+import { getAttributeValue, ProductImage } from '@scayle/storefront-nuxt'
 
-const getFirstModelImage = (images: ProductImage[], index = 0) => {
+export { getImageFromList, isImageType } from '@scayle/storefront-nuxt'
+
+export const getFirstModelImage = (images: ProductImage[], index = 0) => {
   const baseImages = images.filter(
     (image: ProductImage) =>
       getAttributeValue(image.attributes, 'imageBackground') === 'grey',
@@ -36,7 +33,7 @@ const getFirstModelImage = (images: ProductImage[], index = 0) => {
   )
 }
 
-const getDetailPageImages = (images: ProductImage[]) => {
+export const getDetailPageImages = (images: ProductImage[]) => {
   const baseImages = images.filter(
     (image: ProductImage) =>
       getAttributeValue(image.attributes, 'imageBackground') === 'grey',
@@ -88,11 +85,11 @@ const getDetailPageImages = (images: ProductImage[]) => {
   return [...new Set(returnImages)]
 }
 
-const getBasketImage = (images: ProductImage[]) => {
+export const getBasketImage = (images: ProductImage[]) => {
   return getDetailPageImages(images)[0]?.hash
 }
 
-const getImage = (
+export const getImage = (
   images: ProductImage[],
   imageKind: string,
   imageView: string,
@@ -113,20 +110,10 @@ const getImage = (
   )
 }
 
-const getModelImages = (images: ProductImage[]) => {
+export const getModelImages = (images: ProductImage[]) => {
   return getDetailPageImages(images).slice(1)
 }
 
-const getAttribute = (image: ProductImage, key: string) => {
+export const getAttribute = (image: ProductImage, key: string) => {
   return (image.attributes?.[key]?.values as any)?.value
-}
-
-export default {
-  getImageFromList,
-  isImageType,
-  getDetailPageImages,
-  getFirstModelImage,
-  getBasketImage,
-  getModelImages,
-  getAttribute,
 }

@@ -40,8 +40,8 @@ const redirectToMyAccount = async () => {
   }
   await router.push(
     user.value
-      ? { name: route.routes.account.name }
-      : { name: route.routes.signin.name },
+      ? { name: routeList.account.name }
+      : { name: routeList.signin.name },
   )
 }
 </script>

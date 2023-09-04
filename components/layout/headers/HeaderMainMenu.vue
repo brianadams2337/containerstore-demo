@@ -4,7 +4,7 @@
     <UserPopover class="w-12" data-test-id="user-popover" />
     <div class="flex w-12 justify-center">
       <DefaultLink
-        :to="{ name: route.routes.wishlist.name }"
+        :to="{ name: routeList.wishlist.name }"
         data-test-id="wishlist-link"
         class="relative"
         type="loud">

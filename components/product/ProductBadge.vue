@@ -7,13 +7,7 @@
 
 <script setup lang="ts">
 defineProps({
-  badgeLabel: {
-    type: String,
-    default: null,
-  },
-  translate: {
-    type: Boolean,
-    default: true,
-  },
+  badgeLabel: { type: String, default: null },
+  translate: { type: Boolean, default: true },
 })
 </script>

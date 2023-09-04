@@ -74,6 +74,6 @@ const {
 
 // TODO: Check if this really works when we start touching checkout related stuff
 const { isExactActive: isCheckoutPage } = useLink({
-  to: route.routes.checkout.path,
+  to: routeList.checkout.path,
 })
 </script>

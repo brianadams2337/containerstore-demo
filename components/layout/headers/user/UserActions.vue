@@ -2,14 +2,14 @@
   <div class="relative w-64">
     <div v-if="!isGuestCustomer" class="space-y-2 p-3">
       <AppButton
-        :to="{ name: route.routes.user.name }"
+        :to="{ name: routeList.user.name }"
         type="secondary"
         class="w-full"
         @click="closeUserFlyout">
         {{ $t('my_account.profile_menu') }}
       </AppButton>
       <AppButton
-        :to="{ name: route.routes.order.name }"
+        :to="{ name: routeList.order.name }"
         type="secondary"
         class="w-full"
         @click="closeUserFlyout">
