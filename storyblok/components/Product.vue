@@ -3,6 +3,7 @@
     <ProductCard
       :id="product.id"
       :key="`product-disruptor-${product.id}`"
+      :index="product.id"
       :badge-label="
         $helpers.product.getBadgeLabel({
           isNew: product.isNew,
@@ -35,24 +36,6 @@
       "
       class="col-span-full"
       @intersect:product="emit('intersect:product', product)">
-      <template #description="{ name, price, lowestPriorPrice, link }">
-        <RawLink
-          :to="link"
-          class="flex grow flex-col px-[10px] py-[6px] sm:p-[10px]">
-          <div
-            class="grow text-2xs leading-4 text-primary opacity-50 sm:text-xs sm:leading-[18px]">
-            {{ name }}
-          </div>
-          <div>
-            <ProductPrice
-              :price="price"
-              :lowest-prior-price="lowestPriorPrice"
-              :applied-reductions="price.appliedReductions"
-              type="whisper"
-              :size="sm ? 'sm' : 'xs'" />
-          </div>
-        </RawLink>
-      </template>
     </ProductCard>
   </div>
 </template>
