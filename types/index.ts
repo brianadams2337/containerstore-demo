@@ -7,3 +7,10 @@ export type FlyoutMenuCategory = {
   id: number
   children: Category[]
 }
+
+export type PaymentIcon = {
+  component: any
+  width: number
+}
+
+export type PaymentIconsMap = { [key: string]: PaymentIcon }
