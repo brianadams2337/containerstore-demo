@@ -1,4 +1,5 @@
 import plugin from 'tailwindcss/plugin'
+import aspectRatioPlugin from '@tailwindcss/aspect-ratio'
 import breakpoints from './config/breakpoints'
 
 const defaultSizes = {
@@ -129,6 +130,7 @@ export default {
     },
   },
   plugins: [
+    aspectRatioPlugin,
     plugin(({ addUtilities }) => {
       const utilities = {
         '.anchor-scrolling-none': {
