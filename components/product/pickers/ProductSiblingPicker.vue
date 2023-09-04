@@ -48,15 +48,18 @@ const props = defineProps({
     type: String as PropType<'default' | 'narrow'>,
     default: 'default',
   },
+  limit: {
+    type: Number,
+    default: 3,
+  },
 })
 
-const limit = 3
 const isLimiting = ref(true)
 
 const itemsToShow = computed(() => {
-  return isLimiting.value ? props.items.slice(0, limit) : props.items
+  return isLimiting.value ? props.items.slice(0, props.limit) : props.items
 })
-const furtherItemsCount = computed(() => props.items.length - limit)
+const furtherItemsCount = computed(() => props.items.length - props.limit)
 
 const colorLabel = computed(() => itemsToShow.value[0].colors[0]?.label || '')
 
