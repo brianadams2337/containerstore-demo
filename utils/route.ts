@@ -14,9 +14,9 @@ export const getProductDetailRoute = (
 ): RouteLocationRaw => {
   const name = getFirstAttributeValue(product.attributes, 'name')?.label
   return {
-    name: 'p-slug',
+    name: 'p-productId',
     params: {
-      slug: `${slugify(name)}-${id || product.id}`,
+      productId: `${slugify(name)}-${id || product.id}`,
     },
   }
 }
