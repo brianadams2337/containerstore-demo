@@ -10,7 +10,7 @@
       <article :id="`product-${product.id}`" class="flex h-full flex-col">
         <slot name="header">
           <div
-            class="max-h-md group relative flex items-center justify-center bg-gray-200"
+            class="group relative flex max-h-md items-center justify-center bg-gray-200"
             @mouseover="onMouseOver"
             @mouseleave="onMouseLeave">
             <slot v-if="product" name="header-actions">
@@ -62,7 +62,7 @@
           <div class="my-2 px-2.5 md:my-2.5">
             <NuxtLink
               :to="link"
-              class="text-2xs text-primary font-medium uppercase leading-tight opacity-50 md:text-xs"
+              class="text-2xs font-medium uppercase leading-tight text-primary opacity-50 md:text-xs"
               @click.capture="$emit('click:product')">
               <p class="uppercase">{{ title }}</p>
               <p class="mb-1" data-test-id="product-card-product-name">

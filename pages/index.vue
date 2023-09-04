@@ -29,6 +29,26 @@
         </ValidatedInputGroup>
       </form>
     </div>
+
+    <div>
+      <ProductCard
+        v-for="(product, index) in data.products"
+        v-bind="{ product, index }"
+        :key="`product-${product.id}`"
+        :loading="pending"
+        class="mb-7"
+        data-test-id="product-item"
+        color-chip-size="sm"
+        color-chip-rounded-size="sm"
+        sibling-spacing="narrow">
+        <template #header-badge>
+          <div class="flex h-max w-max flex-col">
+            <ProductBadge v-if="true" badge-label="sustainable" />
+            <ProductBadge v-if="product.isNew" badge-label="new" />
+          </div>
+        </template>
+      </ProductCard>
+    </div>
   </div>
 </template>
 
@@ -38,6 +58,14 @@ import { useVuelidate } from '@vuelidate/core'
 const { $validation, $i18n } = useNuxtApp()
 
 const viewport = useViewport()
+
+const { data, pending } = await useProducts(
+  {
+    category: '/',
+    sort: {},
+  },
+  { immediate: true },
+)
 
 const payload = reactive({
   email: '',
