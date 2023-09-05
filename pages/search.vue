@@ -54,10 +54,12 @@ import {
 import { Action } from '~/constants/toast'
 
 const PRODUCTS_PER_PAGE = 24
+
 const route = useRoute()
+
 const localePath = useLocalePath()
 const { $i18n, $alert } = useNuxtApp()
-const term = computed(() => (route.query.value as any)?.term || '')
+const term = computed(() => route.query.term || '')
 const { toggle: toggleFilter } = useSlideIn('FilterSlideIn')
 
 // const wishlist = useWishlist()
@@ -213,9 +215,7 @@ const updateFilterCount = async (filter: Record<string, any>) => {
 }
 
 const sortingValues = Object.values(getSortingValues())
-const selectedSort = computed(() => {
-  return getSortByValue((route.query.value as any)?.sort || '').name
-})
+const selectedSort = computed(() => getSortByValue(route.query.sort || '').name)
 
 const resultsCount = computed(() => pagination.value?.total)
 const filteredCount = computed(() => productCountData.value?.count ?? 0)
