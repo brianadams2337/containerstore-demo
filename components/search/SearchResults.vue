@@ -1,17 +1,17 @@
 <template>
   <div class="flex flex-col">
-    <SearchResultGroup
+    <CategorySuggestions
       v-if="categories.length"
-      :items="categories.slice(0, 5)"
+      :items="categories.slice(0, limit.category)"
       :search-term="term"
       :label="showLabels ? $t('search.categories') : ''"
       @click:result="emit('click:result', $event)">
       <template #label> {{ resultsCount }} Results for {{ term }}</template>
-    </SearchResultGroup>
-    <SearchResultGroup
+    </CategorySuggestions>
+    <ProductSuggestions
       v-if="productSuggestions.length"
       class="mt-4"
-      :items="productSuggestions.slice(0, PRODUCT_LIMIT)"
+      :items="productSuggestions.slice(0, limit.product)"
       :search-term="term"
       :label="$t('search.product')"
       show-images
@@ -26,12 +26,12 @@ import {
   TypeaheadBrandOrCategorySuggestion,
   TypeaheadProductSuggestion,
 } from '@scayle/storefront-nuxt'
-import { PRODUCT_LIMIT } from '~/constants/search'
+import { CATEGORY_LIMIT, PRODUCT_LIMIT } from '~/constants/search'
 
 defineProps({
   limit: {
-    type: Number,
-    default: PRODUCT_LIMIT,
+    type: Object as PropType<Record<'product' | 'category', number>>,
+    default: () => ({ product: PRODUCT_LIMIT, cateogory: CATEGORY_LIMIT }),
   },
   term: {
     type: String,

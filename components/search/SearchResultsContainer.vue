@@ -1,13 +1,12 @@
 <template>
   <div
     id="search-results"
-    class="absolute top-12 mt-2 w-full overflow-y-auto overscroll-none rounded border border-primary bg-white px-5">
+    class="absolute top-12 mt-2 w-full overflow-y-auto overscroll-none rounded border border-primary bg-white p-5">
     <FadeInTransition>
       <SearchResultSkeleton v-if="fetching" />
       <div v-else>
         <SearchResults
-          :product-suggestions="productSuggestions"
-          :categories="categories"
+          v-bind="{ productSuggestions, categories }"
           :term="searchTerm" />
         <div v-if="resultsCount > 0" class="my-2 flex">
           <NuxtLink
