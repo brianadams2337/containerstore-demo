@@ -47,3 +47,9 @@ onMounted(() => {
 
 onUnmounted(() => clearInterval(intervalId))
 </script>
+
+<script lang="ts">
+export default {
+  name: 'AppCountdown',
+}
+</script>

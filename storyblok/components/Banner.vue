@@ -113,3 +113,9 @@ const { stop } = useIntersectionObserver(
   },
 )
 </script>
+
+<script lang="ts">
+export default {
+  name: 'CmsBanner',
+}
+</script>

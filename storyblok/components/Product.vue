@@ -67,3 +67,9 @@ defineProps({
 
 const emit = defineEmits(['intersect:product'])
 </script>
+
+<script lang="ts">
+export default {
+  name: 'CmsProduct',
+}
+</script>
