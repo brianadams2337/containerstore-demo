@@ -79,8 +79,11 @@ const { data, search, searchQuery, resetSearch, pending } = useSearch({
     },
   },
 })
+
+const localePath = useLocalePath()
 const router = useRouter()
 const input = ref()
+
 const showSuggestions = computed(
   () => searchQuery.value.length >= MIN_CHARS_FOR_SEARCH,
 )
@@ -127,7 +130,8 @@ const trackSuggestionClickAndClose = (
 }
 
 const openSearchPage = async () => {
-  await router.push(getSearchRoute(searchQuery.value))
+  const route = localePath(router.resolve(getSearchRoute(searchQuery.value)))
+  await router.push(route)
   resetAndClose()
 }
 
