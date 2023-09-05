@@ -14,9 +14,10 @@ export const getProductDetailRoute = (
 ): RouteLocationRaw => {
   const name = getFirstAttributeValue(product.attributes, 'name')?.label
   return {
-    name: 'p-slug',
+    name: 'p-name-id',
     params: {
-      slug: `${slugify(name)}-${id || product.id}`,
+      name: `${slugify(name)}`,
+      id: id || product.id,
     },
   }
 }
@@ -70,6 +71,7 @@ type Link =
   | 'user'
   | 'order'
   | 'account'
+  | 'pdp'
 
 export type LinkList = Record<Link, { name: string; path: string }>
 
@@ -82,4 +84,5 @@ export const routeList: LinkList = {
   order: { name: 'account-order', path: '/account/order' },
   user: { name: 'account-user', path: '/account/user' },
   account: { name: 'account', path: '/account' },
+  pdp: { name: 'p-name-id', path: '/p/' },
 } as const

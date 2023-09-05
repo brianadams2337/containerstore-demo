@@ -32,4 +32,9 @@ export default defineNuxtConfig({
   components: [
     { path: '~/components', pathPrefix: false, extensions: ['.vue'] },
   ],
+  vite: {
+    optimizeDeps: {
+      include: ['@scayle/storefront-nuxt', '@scayle/storefront-core'],
+    },
+  },
 })

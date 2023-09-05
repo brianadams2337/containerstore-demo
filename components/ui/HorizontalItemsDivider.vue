@@ -14,16 +14,13 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+  generic="T extends { value: string; label?: string; to?: RouteLocationRaw }">
 import { RouteLocationRaw } from '#vue-router'
 
 type DividerItemType = 'p' | 'RawLink' | 'NuxtLink'
-
-type DividerItem = {
-  value: string
-  label?: string
-  to?: RouteLocationRaw
-}
 
 defineProps({
   tag: {
@@ -31,7 +28,7 @@ defineProps({
     default: 'p',
   },
   items: {
-    type: Array as PropType<DividerItem[]>,
+    type: Array as PropType<T[]>,
     default: () => [],
   },
 })
