@@ -1,6 +1,6 @@
 import { BasketWithOptions, WishlistWithOptions } from '@scayle/storefront-nuxt'
 
-export const WISHLIST_WITH = {
+const WISHLIST_WITH: WishlistWithOptions = {
   items: {
     variant: {
       attributes: {
@@ -23,6 +23,11 @@ export const WISHLIST_WITH = {
       lowestPriorPrice: true,
     },
   },
-} as WishlistWithOptions
+}
 
-export const BASKET_WITH = WISHLIST_WITH as BasketWithOptions
+const BASKET_WITH: BasketWithOptions = WISHLIST_WITH
+
+export default {
+  wishlist: WISHLIST_WITH,
+  basket: BASKET_WITH,
+}

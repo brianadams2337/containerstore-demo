@@ -1,6 +1,7 @@
 import { HashAlgorithm, ModuleOptions } from '@scayle/storefront-nuxt'
 import environment from '../environment'
 import * as customRpcMethods from '../rpcMethods'
+import withParams from '../constants/withParams'
 
 const baseShopConfig = {
   domain: environment.DOMAIN_DEFAULT,
@@ -54,6 +55,7 @@ const options: Partial<ModuleOptions> = {
     host: environment.BAPI_HOST,
     token: environment.BAPI_TOKEN,
   },
+  withParams,
   rpcMethodNames: Object.keys(customRpcMethods),
   publicShopData: ['paymentProviders'],
   shopSelector: 'path',
