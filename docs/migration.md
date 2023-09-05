@@ -210,7 +210,7 @@ const viewport = useViewport()
 ### With parameters
 
 - Storefront config now supports `withParams` option so that we can pass the
-  with parameters through the shop and set them as default parameters within the
+  `with` parameters through the shop and set them as default parameters within the
   certain composables (e.g `useWishlist`). This way we don't need an additional
   composable wrapper that we used in Nuxt 2 just to pass the with parameters.
 
