@@ -8,18 +8,7 @@
           -{{ totalReductions.relative * 100 }}%
         </span>
       </slot>
-      <p
-        class="leading-snug"
-        :class="{
-          'mt-2': showBadge,
-          'text-xl': size === 'xl',
-          'text-sm': size === 'sm',
-          'text-xs': size === 'xs',
-          'font-bold': type === 'loud',
-          'font-semibold': type === 'whisper',
-          'text-red-500': appliedReductions.length,
-        }"
-        data-test-id="price">
+      <p class="leading-snug" :class="classes" data-test-id="price">
         <template v-if="showPriceFrom">
           {{ $t('price.starting_from') }}
         </template>
@@ -56,6 +45,7 @@ import {
   LowestPriorPrice,
   AppliedReduction,
 } from '@scayle/storefront-nuxt'
+import { Size } from '~/constants/ui'
 
 const props = defineProps({
   appliedReductions: {
@@ -86,8 +76,8 @@ const props = defineProps({
     default: false,
   },
   size: {
-    type: String as PropType<'xl' | 'md' | 'sm' | 'xs'>,
-    default: 'xl',
+    type: String as PropType<Size>,
+    default: Size.XL,
   },
   type: {
     type: String as PropType<'normal' | 'whisper' | 'loud'>,
@@ -114,12 +104,26 @@ const getCurrency = (value: number): string => {
 
 const totalReductions = computed(() => getTotalAppliedReductions(props.price))
 
-const showBadge = computed(
-  () => props.appliedReductions && props.showPriceReductionBadge,
-)
-const hasLowestPriorPrice = computed(
-  () =>
+const showBadge = computed(() => {
+  return props.appliedReductions && props.showPriceReductionBadge
+})
+
+const hasLowestPriorPrice = computed(() => {
+  return (
     props.lowestPriorPrice?.withTax &&
-    props.lowestPriorPrice?.relativeDifferenceToPrice,
-)
+    props.lowestPriorPrice?.relativeDifferenceToPrice
+  )
+})
+
+const classes = computed(() => ({
+  'mt-2': showBadge.value,
+  'text-xl': props.size === Size.XL,
+  'text-lg': props.size === Size.LG,
+  'text-sm': props.size === Size.SM,
+  'text-md': props.size === Size.MD,
+  'text-xs': props.size === Size.XS,
+  'font-bold': props.type === 'loud',
+  'font-semibold': props.type === 'whisper',
+  'text-red-500': props.appliedReductions.length,
+}))
 </script>

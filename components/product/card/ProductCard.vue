@@ -72,7 +72,7 @@
                 <ProductPrice
                   v-if="price"
                   v-bind="{ price, lowestPriorPrice }"
-                  :applied-reductions="price?.appliedReductions ?? []"
+                  :applied-reductions="price?.appliedReductions"
                   :size="viewport.isGreaterThan('md') ? 'sm' : 'xs'"
                   type="whisper" />
               </slot>

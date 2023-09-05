@@ -8,7 +8,7 @@
         :to="{ name: 'product' }"
         class="text-sm font-light uppercase leading-none">
         {{ item.label || item.value }}
-        <template v-if="ui.showDividerTag(idx, items.length)">/</template>
+        <template v-if="showDividerTag(idx, items.length)">/</template>
       </component>
     </slot>
   </div>
