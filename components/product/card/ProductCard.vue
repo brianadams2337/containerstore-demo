@@ -5,7 +5,7 @@
     class="group relative">
     <slot>
       <article
-        :id="`product-${product.id}`" 
+        :id="`product-${product.id}`"
         ref="article"
         class="flex h-full flex-col">
         <slot name="header">
@@ -239,8 +239,11 @@ const emit = defineEmits<{
 
 const article = ref(null)
 
-useIntersectionObserver(article, () => {
-  emit('intersect:product', props.product.id)
-}, { threshold: [0, 0.2]})
-
+useIntersectionObserver(
+  article,
+  () => {
+    emit('intersect:product', props.product.id)
+  },
+  { threshold: [0, 0.2] },
+)
 </script>

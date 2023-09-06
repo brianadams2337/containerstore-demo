@@ -68,7 +68,7 @@ export type ButtonType = ValuesType<typeof ButtonType>
 
 export const SlideInType = {
   DEFAULT: 'default',
-  FROM_BOTTOM: 'fromBottom'
+  FROM_BOTTOM: 'fromBottom',
 }
 export type SlideInType = ValuesType<typeof SlideInType>
 

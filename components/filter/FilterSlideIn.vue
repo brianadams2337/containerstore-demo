@@ -21,7 +21,7 @@
       </div>
     </template>
     <template #slideInBody>
-      <FilterSlideInBody :active-filters="activeFilters" :filters="filters"/>
+      <FilterSlideInBody :active-filters="activeFilters" :filters="filters" />
       <div>Hallo</div>
     </template>
 
@@ -52,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { TransformedFilter, ProductFilter} from '@scayle/storefront-nuxt';
+import { TransformedFilter, ProductFilter } from '@scayle/storefront-nuxt'
 
 const props = defineProps({
   filters: {
@@ -80,23 +80,17 @@ const props = defineProps({
 const { filters: filterableValues, activeFilters } = toRefs(props)
 
 const emit = defineEmits<{
-
-  ( e: 'filter:apply', filter: Record<string, any>): void,
-  ( e: 'filter:state-changed', filter: Record<string, any>): void,
-  ( e: 'filter:reset'): void,
+  (e: 'filter:apply', filter: Record<string, any>): void
+  (e: 'filter:state-changed', filter: Record<string, any>): void
+  (e: 'filter:reset'): void
 }>()
 
-const { 
-  onSlideInOpen,
-  trackFilterFlyout,
-  resetFilters,
-  applyFilters,
-} = useFilterSlideIn({
-  filterableValues,
-  activeFilters,
-  onFilterApply: (filter) => emit('filter:apply', filter),
-  onFilterReset: () => emit('filter:reset'),
-  onStateChange: (filter) => emit('filter:state-changed', filter)
-})
-
+const { onSlideInOpen, trackFilterFlyout, resetFilters, applyFilters } =
+  useFilterSlideIn({
+    filterableValues,
+    activeFilters,
+    onFilterApply: (filter) => emit('filter:apply', filter),
+    onFilterReset: () => emit('filter:reset'),
+    onStateChange: (filter) => emit('filter:state-changed', filter),
+  })
 </script>

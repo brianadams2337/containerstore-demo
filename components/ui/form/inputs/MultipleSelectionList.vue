@@ -22,8 +22,10 @@
   </div>
 </template>
 
-<script setup lang="ts" generic="Item extends { value: string | number; [key: string]: any }">
-
+<script
+  setup
+  lang="ts"
+  generic="Item extends { value: string | number; [key: string]: any }">
 const props = defineProps({
   items: {
     type: Array as PropType<Item[]>,

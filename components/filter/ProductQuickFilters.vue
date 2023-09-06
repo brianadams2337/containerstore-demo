@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { TransformedFilter } from '@scayle/storefront-nuxt';
+import { TransformedFilter } from '@scayle/storefront-nuxt'
 
 defineProps({
   loading: {

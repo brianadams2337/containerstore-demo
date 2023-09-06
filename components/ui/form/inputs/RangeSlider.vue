@@ -98,4 +98,4 @@ const changeRangeAtIndex = (newRangeValue: number, index: 0 | 1) => {
 }
 </script>
 
-<style lang="scss" src="@/assets/css/slider/default.scss"/>
+<style lang="scss" src="@/assets/css/slider/default.scss" />

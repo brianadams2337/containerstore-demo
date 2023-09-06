@@ -1,6 +1,9 @@
 <template>
   <ul>
-    <li v-for="item in listItems" :key="item.name" data-test-id="sorting-option">
+    <li
+      v-for="item in listItems"
+      :key="item.name"
+      data-test-id="sorting-option">
       <DefaultLink
         type="whisper"
         :only-exact-active="true"
@@ -19,7 +22,6 @@
 import { SortValue } from '@scayle/storefront-nuxt'
 const route = useRoute()
 const baseName = useRouteBaseName()
-
 
 const props = defineProps({
   items: {

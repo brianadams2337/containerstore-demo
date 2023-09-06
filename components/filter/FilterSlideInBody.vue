@@ -101,7 +101,7 @@
 </template>
 
 <script setup lang="ts">
-import { ProductFilter } from '@scayle/storefront-nuxt';
+import { ProductFilter } from '@scayle/storefront-nuxt'
 
 const props = defineProps({
   filters: {
@@ -126,5 +126,5 @@ const {
   currencyCode,
   locale,
   isSaleActive,
-} = useFilterSlideIn({filterableValues, activeFilters })
+} = useFilterSlideIn({ filterableValues, activeFilters })
 </script>

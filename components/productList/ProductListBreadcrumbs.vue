@@ -1,11 +1,7 @@
 <template>
-  <HorizontalItemsDivider
-    v-if="breadcrumbs.length"
-    :items="breadcrumbs">
+  <HorizontalItemsDivider v-if="breadcrumbs.length" :items="breadcrumbs">
     <template #default="{ items }">
-      <template
-        v-for="(link, idx) in items"
-        :key="`breadcrumb-${idx}`">
+      <template v-for="(link, idx) in items" :key="`breadcrumb-${idx}`">
         <DefaultLink
           :to="link.to"
           size="sm"

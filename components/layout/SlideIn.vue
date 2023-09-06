@@ -40,8 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { SlideInType } from '~/constants/ui';
-
+import { SlideInType } from '~/constants/ui'
 
 const props = defineProps({
   name: {
@@ -52,7 +51,7 @@ const props = defineProps({
     type: String,
     default: '',
   },
-  slideType: { 
+  slideType: {
     type: String as PropType<SlideInType>,
     default: SlideInType.DEFAULT,
     validator: (val: SlideInType) => Object.values(SlideInType).includes(val),
