@@ -66,7 +66,7 @@ import {
   DEBOUNCED_SEARCH_DURATION,
   MIN_CHARS_FOR_SEARCH,
   PRODUCT_LIMIT,
-} from '~/constants/search'
+} from '~/constants'
 
 const { data, search, searchQuery, resetSearch, pending } = useSearch({
   key: 'header-search',

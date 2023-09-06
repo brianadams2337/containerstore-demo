@@ -1,3 +1,6 @@
-export * from './product'
 export * from './ui'
 export * from './toast'
+export * from './color'
+export * from './attributes'
+export * from './search'
+export { default } from './withParams'

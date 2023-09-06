@@ -45,7 +45,7 @@ import {
   LowestPriorPrice,
   AppliedReduction,
 } from '@scayle/storefront-nuxt'
-import { Size } from '~/constants/ui'
+import { Size } from '~/constants'
 
 const props = defineProps({
   appliedReductions: {

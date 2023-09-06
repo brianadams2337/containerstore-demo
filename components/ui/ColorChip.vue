@@ -33,8 +33,7 @@
 <script setup lang="ts">
 import { ProductColor } from '@scayle/storefront-nuxt'
 import Color from 'color'
-import { Size } from '~/constants/ui'
-import { ColorMap } from '~/constants/color'
+import { Size, ColorMap } from '~/constants'
 
 const props = defineProps({
   size: {

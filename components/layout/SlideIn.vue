@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { SlideInType } from '~/constants/ui'
+import { SlideInType } from '~/constants'
 
 const props = defineProps({
   name: {

@@ -123,7 +123,7 @@ export type Size = ValuesType<typeof Size>
 
 // Usage example:
 
-import { Size } from '~/constants/ui'
+import { Size } from '~/constants'
 
 const props = defineProps({
   size: {
