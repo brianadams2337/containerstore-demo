@@ -32,11 +32,13 @@
     </NuxtLazyHydrate>
     <FilterSlideIn
       v-if="filters?.length"
-      :active-filters="activeFilters"
-      :filters="filters"
-      :is-active-filter="isActiveFilter"
-      :filtered-count="filteredCount"
-      :unfiltered-count="unfilteredCount"
+      v-bind="{
+        activeFilters,
+        filters,
+        isActiveFilter,
+        filteredCount,
+        unfilteredCount,
+      }"
       :fetching-filtered-count="productCountPending"
       @filter:apply="applyFilter($event)"
       @filter:state-changed="updateFilterCount($event)" />
@@ -206,7 +208,6 @@ const applyFilter = (filter: Record<string, any>) => {
 
 const updateFilterCount = async (filter: Record<string, any>) => {
   await refreshProductCount({
-    category: '/',
     where: {
       ...transformToWhereCondition(filter),
       term: term.value.toString(),

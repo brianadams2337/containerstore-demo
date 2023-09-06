@@ -133,27 +133,25 @@ const useFilterSlideIn = (
     debouncedStateChangedEvent()
   })
 
+  const prepareFilterData = () => ({
+    ...transformStateToFilters(useOmit(state.value, ['prices', 'sale'])),
+    ...(priceChanged.value &&
+      transformMinAndMaxPriceToFilter(state.value.prices)),
+    ...(state.value.sale && { sale: true }),
+  })
+
   const emitFilterEvent = (event: 'filter:apply' | 'filter:state-changed') => {
     if (event === 'filter:apply' && onFilterApply) {
-      onFilterApply({
-        ...transformStateToFilters(useOmit(state.value, ['prices', 'sale'])),
-        ...(priceChanged.value &&
-          transformMinAndMaxPriceToFilter(state.value.prices)),
-        ...(state.value.sale && { sale: true }),
-      })
-    } else if (event === 'filter:state-changed' && onStateChange) {
-      onStateChange({
-        ...transformStateToFilters(useOmit(state.value, ['prices', 'sale'])),
-        ...(priceChanged.value &&
-          transformMinAndMaxPriceToFilter(state.value.prices)),
-        ...(state.value.sale && { sale: true }),
-      })
+      return onFilterApply(prepareFilterData())
+    }
+    if (event === 'filter:state-changed' && onStateChange) {
+      onStateChange(prepareFilterData())
     }
   }
 
   const resetFilter = (key: keyof FilterState) => {
     // @ts-ignore
-    state[key] = [...initialState.value[key]]
+    state.value[key] = [...initialState.value[key]]
   }
 
   const resetFilters = () => {
