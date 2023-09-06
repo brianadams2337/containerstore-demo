@@ -170,12 +170,14 @@ yarn add nuxt-swiper
 Once installed you need to add this module to nuxt.config.ts and provide some configurations
 
 ```ts
+import swiper from './config'
 // nuxt.config.ts
 modules: [
   ...,
     'nuxt-swiper',
   ],
-
+...
+swiper // configuration file below
 ```
 
 ### **Module Options**
@@ -284,3 +286,49 @@ const viewport = useViewport()
     },
   })
   ```
+
+## CMS with Storyblok
+
+### Module configuration
+
+The module configuration for `@storyblok/nuxt` are identical to nuxt 2, you need to add it to the modules array and provide your storyblok access token in the module options
+
+```ts
+
+import storyblok from './config'
+
+  // nuxt.config.ts
+  modules: [
+    '@storyblok/nuxt',
+  ],
+  ...
+  storyblok // configuration file below
+
+  //config/storyblok.ts
+  export default {
+    accessToken: environment.STORYBLOK_ACCESS_TOKEN,
+  },
+```
+
+### Auto-imported components
+
+Storblok components are auto imported. You need to create a `storyblok` directory at the root and the components will be made available. Be mindful of component name collisions. If your component in the `~/components` director is named same as the one inside `~/storyblok` there can be issues with the storyblok auto-imported components.
+
+The `StoryBlokComponent` is also auto-imported and can be used out of the box.
+
+### useAsyncStoryblok composable
+
+With this module the `useAsyncStoryblok` composable is also auto-imported and is enough to fetch content from storyblok. You do not need a plugin or custom composables for the basic implementation. If you'd need a plugin the guide can be found [here](https://github.com/storyblok/storyblok-nuxt#options).
+
+With this composable you can provide `bridge` & `ApiOptions` in one place
+
+```ts
+const story = await useAsyncStoryblok(
+  'vue',
+  { version: 'draft', resolve_relations: 'Article.author' }, // API Options
+  { resolveRelations: ['Article.author'], resolveLinks: 'url' }, // Bridge Options
+)
+```
+
+_Minor Note_
+For now the `useCms` composable is not needed but this might change as the migration is approaches completion.
