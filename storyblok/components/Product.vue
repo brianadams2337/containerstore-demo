@@ -4,12 +4,7 @@
       :id="product.id"
       :key="`product-disruptor-${product.id}`"
       :index="product.id"
-      :badge-label="
-        $helpers.product.getBadgeLabel({
-          isNew: product.isNew,
-          isSoldOut: product.isSoldOut,
-        })
-      "
+      :badge-label="badgeLabel"
       :class="{
         'col-span-full': width === '1' || width === undefined,
         'col-span-full md:col-span-4 md:col-start-3':
@@ -18,22 +13,18 @@
       }"
       :colors="getAttributeValueTuples(product.attributes, 'color')"
       :name="getFirstAttributeValue(product.attributes, 'name')?.label"
-      :link="$helpers.route.getProductDetailRoute(product)"
-      :image="$helpers.image.getFirstModelImage(product.images)"
-      :hover-images="$helpers.image.getModelImages(product.images).reverse()"
+      :link="getProductDetailRoute(product)"
+      :image="getFirstModelImage(product.images)"
+      :hover-images="getModelImages(product.images).reverse()"
       :show-add-to-cart="false"
       :loading="fetching"
-      :price="$helpers.product.getLowestPrice(product.variants ?? [])"
+      :price="getLowestPrice(product.variants ?? [])"
       :lowest-prior-price="
-        $helpers.product.getVariantWithLowestPrice(product.variants)
-          ?.lowestPriorPrice
+        getVariantWithLowestPrice(product.variants)?.lowestPriorPrice
       "
       :product="product"
       :variants="product.variants"
-      :title="
-        $helpers.attribute.getFirstAttributeValue(product.attributes, 'brand')
-          ?.label
-      "
+      :title="getFirstAttributeValue(product.attributes, 'brand')?.label"
       class="col-span-full"
       @intersect:product="emit('intersect:product', product)">
     </ProductCard>
@@ -42,17 +33,17 @@
 
 <script setup lang="ts">
 import {
+  getLowestPrice,
+  getBadgeLabel,
   getFirstAttributeValue,
   getAttributeValueTuples,
   Product as BapiProduct,
 } from '@scayle/storefront-nuxt'
-
-const { $helpers } = useNuxtApp()
 const { listingColumns } = useListingUiState()
 
-defineProps({
+const props = defineProps({
   width: {
-    type: String as PropType<string>,
+    type: String,
     default: undefined,
   },
   fetching: {
@@ -66,6 +57,12 @@ defineProps({
 })
 
 const emit = defineEmits(['intersect:product'])
+const badgeLabel = computed(() =>
+  getBadgeLabel({
+    isNew: props.product.isNew,
+    isSoldOut: props.product.isSoldOut,
+  }),
+)
 </script>
 
 <script lang="ts">

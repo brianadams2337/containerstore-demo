@@ -18,7 +18,7 @@ const props = defineProps({
     default: () => null,
   },
   wrapper: {
-    type: String as PropType<string>,
+    type: String,
     default: '',
   },
   type: {

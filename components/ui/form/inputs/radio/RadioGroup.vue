@@ -17,7 +17,7 @@ export type Item = { label: string; value: string }
 
 const props = defineProps({
   modelValue: {
-    type: String as PropType<string>,
+    type: String,
     default: undefined,
   },
   items: {
@@ -25,7 +25,7 @@ const props = defineProps({
     default: undefined,
   },
   title: {
-    type: String as PropType<string>,
+    type: String,
     default: undefined,
   },
 })

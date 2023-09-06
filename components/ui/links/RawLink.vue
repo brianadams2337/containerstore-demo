@@ -32,11 +32,11 @@ const props = defineProps({
     default: false,
   },
   activeClass: {
-    type: String as PropType<string>,
+    type: String,
     default: undefined,
   },
   exactActiveClass: {
-    type: String as PropType<string>,
+    type: String,
     default: undefined,
   },
   openInNewTab: { type: Boolean as PropType<boolean>, default: false },
@@ -48,7 +48,7 @@ const isInternalLink = computed(
 const internalLink = computed(() => ensureStartingWithSlash(props.to as string))
 
 function ensureStartingWithSlash(path: string) {
-  return typeof path === 'string' && path[0] !== '/' ? '/' + path : path
+  return typeof path === 'string' && path[0] !== '/' ? `/${path}` : path
 }
 
 const externalLink = computed(() => {

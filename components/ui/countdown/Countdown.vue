@@ -12,7 +12,7 @@ type CountdownUnit = 'days' | 'hours' | 'minutes' | 'seconds'
 
 const props = defineProps({
   until: {
-    type: String as PropType<string>,
+    type: String,
     required: true,
   },
 })

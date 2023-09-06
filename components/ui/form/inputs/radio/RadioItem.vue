@@ -26,7 +26,7 @@ import { Item } from './RadioGroup.vue'
 
 const props = defineProps({
   modelValue: {
-    type: String as PropType<string>,
+    type: String,
     default: undefined,
   },
   value: {
@@ -38,7 +38,7 @@ const props = defineProps({
     default: undefined,
   },
   name: {
-    type: String as PropType<string>,
+    type: String,
     default: '',
   },
 })

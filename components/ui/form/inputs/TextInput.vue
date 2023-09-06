@@ -19,19 +19,19 @@ import { vMaska } from 'maska'
 
 const props = defineProps({
   modelValue: {
-    type: String as PropType<string>,
+    type: String,
     default: '',
   },
   type: {
-    type: String as PropType<string>,
+    type: String,
     default: 'text',
   },
   placeholder: {
-    type: String as PropType<string>,
+    type: String,
     required: true,
   },
   autocomplete: {
-    type: String as PropType<string>,
+    type: String,
     default: '',
   },
   mask: {
@@ -51,7 +51,7 @@ const props = defineProps({
     default: undefined,
   },
   hint: {
-    type: String as PropType<string>,
+    type: String,
     default: '',
   },
   hasErrors: {
