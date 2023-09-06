@@ -21,7 +21,7 @@
 import { Product as BapiProduct } from '@scayle/storefront-nuxt'
 const { listingColumns } = useListingUiState()
 
-const props = defineProps({
+defineProps({
   width: {
     type: String,
     default: undefined,
