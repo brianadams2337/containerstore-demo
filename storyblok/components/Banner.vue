@@ -59,7 +59,6 @@
 </template>
 
 <script setup lang="ts">
-import { isEmpty } from 'radash'
 import { useIntersectionObserver } from '@vueuse/core'
 import { BannerStoryblok } from '../types/component-types-sb'
 import useBanner from '~/composables/useBanner'
@@ -70,13 +69,13 @@ const props = defineProps({
     required: true,
   },
   type: {
-    type: String as PropType<string>,
+    type: String,
     default: '',
     validator: (value: string) =>
       ['info', 'sale', 'dark', 'alert', ''].includes(value),
   },
   publishedAt: {
-    type: String as PropType<string>,
+    type: String,
     required: true,
   },
 })
