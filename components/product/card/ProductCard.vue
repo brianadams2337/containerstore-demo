@@ -117,7 +117,8 @@ import {
 const props = defineProps({
   index: {
     type: Number,
-    required: true,
+    required: false,
+    default: -1,
   },
   product: {
     type: Object as PropType<Product>,
