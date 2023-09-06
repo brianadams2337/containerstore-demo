@@ -1,4 +1,4 @@
-#### SVG Handling
+## SVG Handling
 
 With vite you can include svg icons by simply prefixing it with the `<Icon\* />`
 which is configured in the svgo config (default is `<Svgo\* />`.
@@ -23,7 +23,7 @@ export default defineNuxtConfig({
 })
 ```
 
-#### Cypress
+## Cypress
 
 There are a couple of points that are important to highlight when setting up cypress.
 
@@ -45,7 +45,7 @@ module.exports = defineConfig({
 
 The options above make sure that the bundler is `Vite` and the framework that we're using is `vue`
 
-### Vuelidate
+## Vuelidate
 
 - The approach that we're using in Nuxt 3 is almost the same as it was in Nuxt 2.
   When it comes to the rule message localization there is one thing to keep in mind.
@@ -73,7 +73,7 @@ export default defineNuxtPlugin(() => {
   onClick: () => Promise.resolve(refreshNuxtData()),
 ```
 
-### Helpers/Utils
+## Helpers/Utils
 
 In Nuxt 2 we had `helpers` folder which exported some of the helper functions.
 We also attached those helpers within the `useContext` so that we can access it
@@ -97,7 +97,7 @@ export const routeList: LinkList = {
  <DefaultLink :to="{ name: routeList.home.name }" />
 ```
 
-### Constants/types
+## Constants/types
 
 One of the major change regarding the re-usable compnents are the usage of constants and types.
 Now we introduced constants that are located under the `constants` folder which are
@@ -134,9 +134,9 @@ const props = defineProps({
 })
 ```
 
-### UI components
+## UI components
 
-## Radio Input
+### Radio Input
 
 - In Nuxt 2 we had only one `Radio` component and we repeated it for each radio.
   Now we introduced `RadioGroup` component, which has `RadioItem`s in it. Now we
@@ -153,19 +153,19 @@ export type Item = { label: string; value: string }
  <RadioGroup v-model="gender" :items="genders" title="Gender" />
 ```
 
-### `vue-slick-carousel` replaced with `Swiper`
+## Carousel Implementation: `vue-slick-carousel` replaced with `Swiper`
 
 Previously for our slide show / carousel components we used vue-slick-carousel. We are now moving towards using `Swiper`. Swiper is available as a nuxt module built on top of swiper.js .There no need to create a custom plugin since the nuxt module is sufficient for our usage.
 
 To migrate the following steps are needed:
 
-#### **Module Installation**
+### **Module Installation**
 
 ```bash
 yarn add nuxt-swiper
 ```
 
-#### **Module Configuration**
+### **Module Configuration**
 
 Once installed you need to add this module to nuxt.config.ts and provide some configurations
 
@@ -178,7 +178,7 @@ modules: [
 
 ```
 
-#### **Module Options**
+### **Module Options**
 
 We are using smaller configuration files to provide module options, but this can also be done within the nuxt.config.ts file is so preferred. In this example I am taking the dedicated file into consideration.
 
@@ -194,7 +194,7 @@ The `Prefix` option can be used to provide a custom prefix and will change the m
 
 The `modules` option can be used to configure what extra functionalities you want with your swiper instance. A full list can be found [here](https://github.com/cpreston321/nuxt-swiper#usage)
 
-#### Usage
+### Usage
 
 Once swiper has been correctly configured the components `<Swiper>` & `<SwiperSlide>` will be auto-imported and available for usage. Your custom slide needs to be wrapped with the `<SwiperSlide>` component
 
@@ -208,7 +208,7 @@ Once swiper has been correctly configured the components `<Swiper>` & `<SwiperSl
 </template>
 ```
 
-#### Lazy loading
+### Lazy loading
 
 An Important note here is the Lazy loading module is no longer supported. Instead you can provide `<swiper-slide lazy=true>` and `<img loading="lazy" />` to lazy load images.
 
@@ -222,7 +222,7 @@ An Important note here is the Lazy loading module is no longer supported. Instea
 </template>
 ```
 
-### `radash` replaced with `nuxt-lodash`
+## `radash` replaced with `nuxt-lodash`
 
 We are now moving to the [nuxt-lodash](https://nuxt.com/modules/lodash/changelog)
 that's recommended by the nuxt community. It supports auto imports and it's easy
@@ -236,7 +236,7 @@ setting.
     messagePath: ({ $validator }) => `validation.${useSnakeCase($validator)}`,
 ```
 
-### Replace our custom `breakpoints` solution with the `nuxt-viewport` module
+## Replace our custom `breakpoints` solution with the `nuxt-viewport` module
 
 - In Nuxt 3 we will use [nuxt-viewport](https://nuxt.com/modules/nuxt-viewport) which
   we use for the viewport/breakpoints handling. We added the `./config/breakpoints.ts`
@@ -259,9 +259,9 @@ const viewport = useViewport()
 </script>
 ```
 
-### Additions
+## Additions
 
-#### Packages
+### Packages
 
 - [utility-types](https://www.npmjs.com/package/utility-types) - complex
   TypeScript types simplification utils
