@@ -2,7 +2,7 @@
   <div class="flex flex-col">
     <CategorySuggestions
       v-if="categories.length"
-      :items="categories.slice(0, limit.category)"
+      :items="categories.slice(0, categoryLimit)"
       :search-term="term"
       :label="showLabels ? $t('search.categories') : ''"
       @click:result="emit('click:result', $event)">
@@ -11,7 +11,7 @@
     <ProductSuggestions
       v-if="productSuggestions.length"
       class="mt-4"
-      :items="productSuggestions.slice(0, limit.product)"
+      :items="productSuggestions.slice(0, productLimit)"
       :search-term="term"
       :label="$t('search.product')"
       show-images
@@ -29,9 +29,13 @@ import {
 import { CATEGORY_LIMIT, PRODUCT_LIMIT } from '~/constants/search'
 
 defineProps({
-  limit: {
-    type: Object as PropType<Record<'product' | 'category', number>>,
-    default: () => ({ product: PRODUCT_LIMIT, cateogory: CATEGORY_LIMIT }),
+  productLimit: {
+    type: Number,
+    default: PRODUCT_LIMIT,
+  },
+  categoryLimit: {
+    type: Number,
+    default: CATEGORY_LIMIT,
   },
   term: {
     type: String,
