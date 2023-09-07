@@ -1,6 +1,5 @@
 <template>
   <DefaultLink
-    raw
     :to="to"
     class="inline-flex items-center px-4 py-2 text-center text-sm"
     :class="{

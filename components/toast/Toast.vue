@@ -5,7 +5,6 @@
       <DefaultLink
         v-if="action.href"
         :key="`link-${action.text}`"
-        raw
         :class="action.class || ''"
         :to="action.href"
         class="underline"

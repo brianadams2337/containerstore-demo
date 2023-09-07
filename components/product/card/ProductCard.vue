@@ -52,7 +52,6 @@
             <slot name="header-badge" :label="badgeLabel">
               <DefaultLink
                 v-if="badgeLabel"
-                raw
                 :to="link"
                 @click.capture="$emit('click:product')">
                 <ProductBadge
@@ -65,7 +64,6 @@
         <slot name="description" v-bind="$props">
           <div class="my-2 px-2.5 md:my-2.5">
             <DefaultLink
-              raw
               :to="link"
               class="text-2xs font-medium uppercase leading-tight text-primary opacity-50 md:text-xs"
               @click.capture="$emit('click:product')">
@@ -89,9 +87,7 @@
                   :spacing="siblingSpacing"
                   class="flex pb-1">
                   <template #item="{ item }">
-                    <DefaultLink
-                      raw
-                      :to="getProductDetailRoute(product, item.id)">
+                    <DefaultLink :to="getProductDetailRoute(product, item.id)">
                       <ColorChip
                         v-if="item.colors.length"
                         data-test-id="product-card-color-circle"

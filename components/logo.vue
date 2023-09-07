@@ -1,5 +1,5 @@
 <template>
-  <DefaultLink raw to="linkTo">
+  <DefaultLink to="linkTo">
     <svg
       v-bind="{ height, width }"
       fill="none"

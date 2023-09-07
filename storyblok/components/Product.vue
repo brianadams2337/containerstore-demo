@@ -8,9 +8,9 @@
           (width === '2' && listingColumns === 3) || listingColumns === 1,
         'col-span-full md:col-span-8': width === '2' && listingColumns === 2,
       }"
+      v-bind="{ product, badgeLabel }"
       :show-add-to-cart="false"
       :loading="fetching"
-      :product="product"
       class="col-span-full"
       @intersect:product="emit('intersect:product', product)">
     </ProductCard>
@@ -18,10 +18,10 @@
 </template>
 
 <script setup lang="ts">
-import { Product as BapiProduct } from '@scayle/storefront-nuxt'
+import { Product as BapiProduct, getBadgeLabel } from '@scayle/storefront-nuxt'
 const { listingColumns } = useListingUiState()
 
-defineProps({
+const props = defineProps({
   width: {
     type: String,
     default: undefined,
@@ -37,6 +37,12 @@ defineProps({
 })
 
 const emit = defineEmits(['intersect:product'])
+const badgeLabel = computed(() =>
+  getBadgeLabel({
+    isNew: props.product.isNew,
+    isSoldOut: props.product.isSoldOut,
+  }),
+)
 </script>
 
 <script lang="ts">
