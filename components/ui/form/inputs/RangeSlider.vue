@@ -32,7 +32,7 @@
         :format-options="{
           minimumFractionDigits: 0,
         }"
-        @update:modelValue="changeRangeAtIndex($event, 0)" />
+        @update:model-value="changeRangeAtIndex($event, 0)" />
       <div class="mx-auto text-center text-xs font-semibold text-secondary">
         {{ $t('filter.to') }}
       </div>
@@ -45,7 +45,7 @@
         :format-options="{
           minimumFractionDigits: 0,
         }"
-        @update:modelValue="changeRangeAtIndex($event, 1)" />
+        @update:model-value="changeRangeAtIndex($event, 1)" />
     </div>
   </div>
 </template>

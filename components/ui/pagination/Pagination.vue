@@ -86,3 +86,9 @@ const {
   visiblePages: visible,
 })
 </script>
+
+<script lang="ts">
+export default {
+  name: 'AppPagination',
+}
+</script>
