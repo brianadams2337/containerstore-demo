@@ -1,5 +1,3 @@
-import { toCurrency } from '@scayle/storefront-nuxt'
-
 export const getShippingNetFee = (appliedFees: any[]): any | null => {
   if (!appliedFees.length) {
     return null
@@ -15,6 +13,5 @@ export const getShippingNetFee = (appliedFees: any[]): any | null => {
   return totalShippingNetFee
 }
 export default {
-  toCurrency,
   getShippingNetFee,
 }

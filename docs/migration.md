@@ -366,3 +366,11 @@ For now the `useCms` composable is not needed but this might change as the migra
     the `yarn dev`.
     In Nuxt 3 we introduced two scripts so that we can run the app in http or https mode.
     `yarn dev` and `yarn dev:https`
+    In order to have the `https` mode work properly we need to set env variables
+    for key and cer file paths which will need to be generated the same as we did
+    in Nuxt 2.
+
+    ```
+    HTTPS_KEY=
+    HTTPS_CERT=
+    ```
