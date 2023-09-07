@@ -1,6 +1,179 @@
 <template>
-  <div>Wishlist</div>
+  <div class="container">
+    <div class="mt-8">
+      <Headline
+        size="xl"
+        :is-uppercase="false"
+        type="loud"
+        class="font-semibold text-primary">
+        {{ $t('wishlist.heading') }}
+      </Headline>
+      <p
+        data-test-id="wishlist-count"
+        class="mt-4 text-xs font-semibold text-secondary">
+        {{ $t('wishlist.products_count', count) }}
+      </p>
+    </div>
+    <template v-if="fetchingBasket">
+      <div class="mt-8 flex flex-wrap">
+        <SkeletonLoader
+          v-for="index in count"
+          :key="`product-loading-${index}`"
+          type="custom"
+          class="mb-40 mr-2 h-96 w-80" />
+      </div>
+    </template>
+    <template v-else>
+      <div v-if="count" class="mt-8 grid w-auto grid-cols-12 gap-2">
+        <WishlistCard
+          v-for="({ key, product, variant }, index) in orderedItems"
+          v-bind="{ product, variant, index }"
+          :key="`product-${key}`"
+          data-test-id="wishlist-card"
+          class="mb-4"
+          @click:add-to-cart="addItemToCart(key, +index)" />
+      </div>
+      <div v-if="count === 0" class="mt-8 space-y-8">
+        <EmptyState
+          :title="$t('wishlist.no_items_info')"
+          :description="$t('wishlist.continue_shopping_info')"
+          icon="card-2">
+          <div class="mt-8 flex justify-center gap-4 md:justify-start">
+            <AppButton :to="{ name: routeList.home.name }" type="tertiary">
+              {{ $t('wishlist.continue_shopping_label') }}
+            </AppButton>
+            <AppButton
+              v-if="!isLoggedIn"
+              :to="{ name: routeList.signin.name }"
+              class="!normal-case">
+              {{ $t('wishlist.sign_in_label') }}
+            </AppButton>
+          </div>
+        </EmptyState>
+      </div>
+    </template>
+  </div>
 </template>
+
+<script setup lang="ts">
+import {
+  WishlistItem,
+  getFirstAttributeValue,
+  Product,
+  Value,
+  getAttributeValue,
+  getVariantBySize,
+} from '@scayle/storefront-nuxt'
+import { Action } from '~/constants/toast'
+import withParams from '~/constants/withParams';
+
+const wishlist = await useWishlist(withParams.wishlist, { immediate: true })
+const basket = await useBasket(undefined, { immediate: true})
+const { isLoggedIn } = await useUser()
+const { $alert, $i18n } = useNuxtApp()
+// TODO Tracking
+// const {
+//   trackViewItemList,
+//   trackWishlist,
+//   trackAddToBasket,
+//   collectProductListItems,
+// } = useTrackingEvents()
+
+
+const addItemToCart = async (itemKey: string, index: number) => {
+  const entry = wishlist.data.value?.items.find((el) => el.key === itemKey)
+
+  if (!entry || !entry.product) {
+    return
+  }
+
+  // @ts-ignore
+  if (!entry.variant && entry.variantId) {
+    // @ts-ignore
+    entry.variant = getVariant(entry.product.variants!, entry.variantId)
+  }
+
+  if (
+    !entry.variant &&
+    entry.product?.variants?.length === 1 &&
+    getAttributeValue(entry.product?.variants[0]?.attributes, 'size') ===
+      'one_size'
+  ) {
+    entry.variant = entry.product?.variants[0]
+  }
+
+  if (!entry.variant?.id) {
+    $alert.show($i18n.t('basket.notification.select_size'), Action.CONFIRM)
+    return
+  }
+
+  await basket.addItem({
+    variantId: entry.variant.id,
+    quantity: 1,
+  })
+  
+  // showBasketFlyOut()
+
+  // const { product } = entry
+  // let { variant = undefined } = entry
+  // if (!variant && product && product.variants?.length) {
+  //   variant = product.variants[0]
+  // }
+
+  // if (product) {
+  //   trackAddToBasket({
+  //     product,
+  //     variant,
+  //     index,
+  //     list: { name: 'WishlistList', id: 'WL' },
+  //   })
+  // }
+}
+
+const orderedItems = computed(() => {
+  const sortedItems = useSortBy(
+    wishlist.items.value || [],
+    (item: WishlistItem) => {
+      return (
+        getFirstAttributeValue(item.product?.attributes, 'name')?.label ?? ''
+      )
+    },
+  ) as WishlistItem[]
+  return sortedItems.filter(
+    (item): item is WishlistItem & { product: Product } => !!item.product,
+  )
+})
+// TODO Meta
+// const metaTags = metaTagGenerator({
+//   robots: 'noindex,follow',
+// })
+
+// useMeta({ title: 'Wishlist', ...metaTags })
+
+onMounted(() => {
+  // if (!wishlist.data.value) {
+  //   return
+  // }
+  // trackWishlist(
+  //   collectProductListItems(wishlist.products.value, {
+  //     listName: 'WishlistList',
+  //     listId: 'WL',
+  //   }),
+  // )
+  // trackViewItemList({
+  //   items: wishlist.products.value,
+  //   listingMetaData: {
+  //     name: 'Wishlist',
+  //     id: 'Wishlist',
+  //   },
+  //   source: 'wishlist',
+  // })
+})
+
+const count = wishlist.count
+const fetching = wishlist.pending
+const fetchingBasket = basket.pending
+</script>
 
 <script lang="ts">
 export default {

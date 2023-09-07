@@ -9,8 +9,7 @@
   </li>
 </template>
 
-<script setup lang="ts">
-import { ListboxValue } from '~/types'
+<script setup lang="ts" generic="T extends { disabled?: boolean }">
 
 const props = defineProps({
   listName: {
@@ -18,14 +17,14 @@ const props = defineProps({
     required: true,
   },
   value: {
-    type: Object as PropType<ListboxValue>,
+    type: Object as PropType<T>,
     default: undefined,
   },
 })
 
-const { activeValue, setActive, toggle } = useListbox(props.listName)
+const { activeValue, setActive, toggle } = useListbox<T>(props.listName)
 
-const handleClick = (value?: ListboxValue) => {
+const handleClick = (value?: T) => {
   if (!value?.disabled) {
     return
   }

@@ -44,3 +44,48 @@ export const getSalesRelativeAmountByCategory = (
     ? getAppliedReductionsByCategory(variantsLowestPrice, category)
     : []
 }
+
+export interface VariantAvailability {
+  available: boolean
+  type: 'immediate' | 'soon' | 'unavailable'
+  text: string
+  textArgs?: any
+}
+
+export function getVariantAvailability(
+  variant: Variant,
+  minimumQuantityForImmediateAvaliability = 5,
+): VariantAvailability {
+  const { quantity, isSellableWithoutStock } = variant.stock
+
+  if (quantity > minimumQuantityForImmediateAvaliability) {
+    return {
+      available: true,
+      type: 'immediate',
+      text: `availability.available`,
+    }
+  }
+
+  if (quantity > 0) {
+    return {
+      available: true,
+      type: 'soon',
+      text: `availability.available_some`,
+      textArgs: { quantity },
+    }
+  }
+
+  if (isSellableWithoutStock) {
+    return {
+      available: true,
+      type: 'soon',
+      text: 'availability.available_asap',
+    }
+  }
+
+  return {
+    available: false,
+    type: 'soon',
+    text: 'availability.available_soon',
+  }
+}

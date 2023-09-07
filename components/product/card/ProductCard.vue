@@ -17,7 +17,7 @@
                   :class="headerActionsClass"
                   class="opacity-100 transition" />
               </slot>
-              <slot name="header-image" :image="image">
+              <slot name="header-image" v-bind="{ image, imageLoading, imageClasses, link, hoverImage, loadHoverImage, name}">
                 <slot name="button"> </slot>
                 <DefaultLink
                   :to="link"
@@ -60,7 +60,7 @@
               </slot>
             </div>
           </slot>
-          <slot name="description" v-bind="$props">
+          <slot name="description" v-bind="{ ...$props, name, price, title, lowestPriorPrice }">
             <div class="my-2 px-2.5 md:my-2.5">
               <DefaultLink
                 :to="link"
@@ -199,7 +199,7 @@ const image = computed(() => {
   return getImageFromList(props.product.images, ProductImageType.BUST, 'front')
 })
 
-const imageLoading = computed(() => (!props.index ? 'eager' : 'lazy'))
+const imageLoading = computed<'eager'|'lazy'>(() => (!props.index ? 'eager' : 'lazy'))
 
 const hoverImage = computed(() => {
   const modelImageOrFirstAvailable = getFirstModelImage(

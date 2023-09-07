@@ -12,8 +12,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-export type Item = { label: string; value: string }
+<script setup lang="ts" generic="Item extends { label: string; value: any }">
 
 const props = defineProps({
   modelValue: {

@@ -4,3 +4,5 @@ export const sustainabilityAttributes = [
   'sustainabilityIcons',
   'sustainabilityMaterials',
 ]
+
+export const ONE_SIZE_KEY = 'one_size'

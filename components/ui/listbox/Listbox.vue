@@ -4,9 +4,8 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup generic="ListboxItem extends { disabled?: boolean}">
 import { onClickOutside } from '@vueuse/core'
-import { ListboxValue } from '~/types'
 
 const emit = defineEmits(['input', 'click:outside'])
 
@@ -16,11 +15,11 @@ const props = defineProps({
     required: true,
   },
   beforeInput: {
-    type: Function as PropType<(value: ListboxValue) => boolean>,
+    type: Function as PropType<(value: ListboxItem) => boolean>,
     default: () => true,
   },
 })
-const { isOpen, activeValue, toggle } = useListbox<ListboxValue>(props.name)
+const { isOpen, activeValue, toggle } = useListbox<ListboxItem>(props.name)
 const listboxRef = ref()
 
 onClickOutside(listboxRef, () => {
