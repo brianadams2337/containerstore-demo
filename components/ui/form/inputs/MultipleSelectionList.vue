@@ -49,11 +49,11 @@ const props = defineProps({
   },
 })
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:model-value'])
 
 const selected = computed({
   get: () => props.modelValue as Item[],
-  set: (newValue: Item[]) => emit('update:modelValue', newValue),
+  set: (newValue: Item[]) => emit('update:model-value', newValue),
 })
 
 const toggleItem = (item: Item) => {

@@ -36,11 +36,11 @@ const props = defineProps({
   },
 })
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:model-value'])
 
 const selected = computed({
   get: () => props.modelValue as object[],
-  set: (newValue: object[]) => emit('update:modelValue', newValue),
+  set: (newValue: object[]) => emit('update:model-value', newValue),
 })
 const isActive = computed(() => {
   return selected.value.findIndex((i: object) => i === props.item) !== -1

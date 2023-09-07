@@ -23,14 +23,20 @@ const props = defineProps({
   },
 })
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:model-value'])
 
 const isActive = computed({
   get: () => props.modelValue as boolean,
-  set: (newValue: boolean) => emit('update:modelValue', newValue),
+  set: (newValue: boolean) => emit('update:model-value', newValue),
 })
 
 const toggle = () => {
   isActive.value = !isActive.value
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'AppToggle',
 }
 </script>

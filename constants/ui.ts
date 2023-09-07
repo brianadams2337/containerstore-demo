@@ -1,7 +1,5 @@
 import { ValuesType } from 'utility-types'
 
-/* eslint-enable @typescript-eslint/no-redeclare */
-
 /* eslint-disable @typescript-eslint/no-redeclare */
 /* intentionally naming the variables the same as the type */
 

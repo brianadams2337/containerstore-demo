@@ -30,10 +30,10 @@ const props = defineProps({
   },
 })
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:model-value'])
 
 const value = computed({
   get: () => props.modelValue,
-  set: (value: string | undefined) => emit('update:modelValue', value),
+  set: (value: string | undefined) => emit('update:model-value', value),
 })
 </script>

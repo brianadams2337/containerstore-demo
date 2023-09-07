@@ -32,7 +32,7 @@
         :format-options="{
           minimumFractionDigits: 0,
         }"
-        @update:modelValue="changeRangeAtIndex($event, 0)" />
+        @update:model-value="changeRangeAtIndex($event, 0)" />
       <div class="mx-auto text-center text-xs font-semibold text-secondary">
         {{ $t('filter.to') }}
       </div>
@@ -45,7 +45,7 @@
         :format-options="{
           minimumFractionDigits: 0,
         }"
-        @update:modelValue="changeRangeAtIndex($event, 1)" />
+        @update:model-value="changeRangeAtIndex($event, 1)" />
     </div>
   </div>
 </template>
@@ -78,7 +78,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: RangeTuple): void
+  (e: 'update:model-value', value: RangeTuple): void
   (e: 'change'): void
   (e: 'drag-start'): void
   (e: 'drag-end'): void
@@ -88,7 +88,7 @@ const emit = defineEmits<{
 
 const range = computed({
   get: (): RangeTuple => props.modelValue,
-  set: (newValue: RangeTuple) => emit('update:modelValue', newValue),
+  set: (newValue: RangeTuple) => emit('update:model-value', newValue),
 })
 
 const changeRangeAtIndex = (newRangeValue: number, index: 0 | 1) => {
