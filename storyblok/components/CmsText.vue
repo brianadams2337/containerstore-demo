@@ -24,7 +24,6 @@ const props = defineProps({
 
 const content = computed(() =>
   // @ts-ignore
-  // TODO: Fix types
   props.blok.body ? renderRichText(props.blok.body) : null,
 )
 </script>
