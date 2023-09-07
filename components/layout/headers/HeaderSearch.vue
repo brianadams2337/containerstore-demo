@@ -129,7 +129,7 @@ const trackSuggestionClickAndClose = (
 }
 
 const openSearchPage = async () => {
-  await router.push(toLocalePath(getSearchRoute(searchQuery.value)))
+  await router.push(toLocalePath(searchQuery.value))
   resetAndClose()
 }
 

@@ -72,9 +72,8 @@ const exactActiveClass = computed(() => {
 })
 
 const target = computed(() => {
-  if (typeof props.to === 'string' && props.to.startsWith('http')) {
-    return props.to
-  }
-  return toLocalePath(props.to)
+  const isExternal = typeof props.to === 'string' && props.to.startsWith('http')
+
+  return isExternal ? props.to : toLocalePath(props.to)
 })
 </script>

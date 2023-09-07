@@ -38,10 +38,11 @@ const redirectToMyAccount = async () => {
   if (isGreatedThanMd.value) {
     return
   }
-  await router.push(
+  const route = toLocalePath(
     user.value
       ? { name: routeList.account.name }
       : { name: routeList.signin.name },
   )
+  await router.push(route)
 }
 </script>
