@@ -1,6 +1,7 @@
 <template>
   <NuxtLink
-    v-bind="{ to: target, openInNewTab, activeClass, exactActiveClass }"
+    v-bind="{ openInNewTab, activeClass, exactActiveClass }"
+    :to="target"
     :class="variantClass"
     class="inline-flex items-center gap-2 whitespace-nowrap text-xs leading-5 tracking-wide transition duration-200 ease-linear">
     <slot />
@@ -36,11 +37,11 @@ const props = defineProps({
     required: true,
   },
   badge: {
-    type: [Number, String] as PropType<number | string>,
+    type: [Number, String],
     default: undefined,
   },
   onlyExactActive: {
-    type: Boolean as PropType<boolean>,
+    type: Boolean,
     default: false,
   },
   type: {
@@ -49,25 +50,31 @@ const props = defineProps({
     validator: (val: LinkVariant) => Object.values(LinkVariant).includes(val),
   },
   openInNewTab: {
-    type: Boolean as PropType<boolean>,
+    type: Boolean,
+    default: false,
+  },
+  raw: {
+    type: Boolean,
     default: false,
   },
 })
 
 const ACTIVE_CLASS = '!font-bold'
 
-const variantClass = computed(() => LinkTypeClass[props.type])
+const variantClass = computed(() => {
+  return !props.raw ? LinkTypeClass[props.type] : {}
+})
+
 const activeClass = computed(() => (!props.onlyExactActive ? ACTIVE_CLASS : ''))
+
 const exactActiveClass = computed(() => {
   return props.onlyExactActive ? ACTIVE_CLASS : ''
 })
 
-const localePath = useLocalePath()
-const router = useRouter()
 const target = computed(() => {
   if (typeof props.to === 'string' && props.to.startsWith('http')) {
     return props.to
   }
-  return localePath(router.resolve(props.to))
+  return toLocalePath(props.to)
 })
 </script>

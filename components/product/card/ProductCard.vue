@@ -21,7 +21,10 @@
             </slot>
             <slot name="header-image" :image="image">
               <slot name="button"> </slot>
-              <NuxtLink :to="link" @click.capture="$emit('click:product')">
+              <DefaultLink
+                :to="link"
+                raw
+                @click.capture="$emit('click:product')">
                 <ProductImage
                   v-if="image"
                   v-bind="{ image, imageLoading }"
@@ -44,7 +47,7 @@
                       class="absolute inset-0" />
                   </FadeInTransition>
                 </div>
-              </NuxtLink>
+              </DefaultLink>
             </slot>
             <slot name="header-badge" :label="badgeLabel">
               <NuxtLink

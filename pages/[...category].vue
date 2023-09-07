@@ -83,7 +83,7 @@
           :unfiltered-count="unfilteredCount"
           :fetching-filtered-count="productCountStatus === 'pending'"
           @filter:apply="applyFilter"
-          @filter:state-changed="updateFilterCount" />
+          @filter:state-changed="refreshProductCount" />
       </div>
     </div>
   </PageContent>
@@ -189,7 +189,6 @@ const sortingValues = Object.values(getSortingValues())
 const {
   applyFilters: _applyFilter,
   productConditions,
-  isActiveFilter,
   activeFilters,
 } = useQueryFilterState({ defaultSort: DEFAULT_SORTING_KEY })
 
@@ -223,7 +222,6 @@ const fetchParameters = computed(() => ({
 }))
 
 await fetchProducts(fetchParameters.value)
-await refreshProductCount()
 // TODO CMS
 // const {
 //   content: cmsContent,
@@ -238,10 +236,6 @@ watch(
     await fetchProducts(fetchParameters.value)
   },
 )
-
-const updateFilterCount = async (filter: Record<string, any>) => {
-  await refreshProductCount()
-}
 
 const trackProductClick = (product: Product) => {
   console.log('Track product click', product)

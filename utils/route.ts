@@ -8,6 +8,12 @@ import {
 } from '@scayle/storefront-nuxt'
 import { RouteLocationRaw } from '#vue-router'
 
+export const toLocalePath = (route: RouteLocationRaw): RouteLocationRaw => {
+  const localePath = useLocalePath()
+  const router = useRouter()
+  return localePath(router.resolve(route))
+}
+
 export const getProductDetailRoute = (
   product: Product,
   id?: number,
@@ -55,11 +61,9 @@ export const getSearchSuggestionPath = (
 
   const category = (suggestion as BrandOrCategorySuggestion).category
   const brand = (suggestion as BrandOrCategorySuggestion).brand
-  if (category && brand) {
-    return `${getCategoryPath(category)}?brand=${brand?.id}`
-  }
-
-  return getCategoryPath(category)
+  return category && brand
+    ? `${getCategoryPath(category)}?brand=${brand?.id}`
+    : getCategoryPath(category)
 }
 
 type Link =

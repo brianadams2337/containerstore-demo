@@ -1,12 +1,7 @@
 <template>
   <div
     class="relative z-30 h-12 rounded border border-primary/0 transition-all duration-500"
-    :class="{
-      'w-[21rem]': inputActive,
-      'w-12': !inputActive,
-      'border-primary/100': inputActive,
-      'delay-100': !inputActive,
-    }"
+    :class="inputActive ? 'w-[21rem] border-primary/100' : 'w-12 delay-100'"
     @click="inputActive = true"
     @keydown.esc="resetAndClose">
     <label class="sr-only">{{ $t('search.placeholder') }}</label>
@@ -17,7 +12,7 @@
 
     <FadeInTransition :duration="100">
       <span
-        v-if="searchQuery !== ''"
+        v-if="searchQuery"
         class="absolute right-0 flex h-full cursor-pointer items-center justify-center px-2.5 py-2">
         <IconCloseBold
           class="h-4 w-4"
@@ -41,7 +36,7 @@
       @focus="showSuggestions = true"
       @keydown.enter="openSearchPage" />
 
-    <Flyout :is-open="openFlyout">
+    <Flyout :is-open="isFlyoutOpened">
       <SearchResultsContainer
         v-if="showSuggestions"
         :brands="brands"
@@ -84,8 +79,10 @@ const { data, search, searchQuery, resetSearch, pending } = useSearch({
     },
   },
 })
+
 const router = useRouter()
 const input = ref()
+
 const showSuggestions = computed(
   () => searchQuery.value.length >= MIN_CHARS_FOR_SEARCH,
 )
@@ -132,12 +129,12 @@ const trackSuggestionClickAndClose = (
 }
 
 const openSearchPage = async () => {
-  await router.push(getSearchRoute(searchQuery.value))
+  await router.push(toLocalePath(getSearchRoute(searchQuery.value)))
   resetAndClose()
 }
 
 const count = computed(() => data?.value?.suggestions.length)
-const openFlyout = computed(() => {
+const isFlyoutOpened = computed(() => {
   return !!(
     products.value.length ||
     categories.value.length ||

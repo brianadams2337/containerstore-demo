@@ -79,7 +79,7 @@
     "search_term_match_count": "{count} treffer für  \"{term}\"",
     "search_try_again": "Versuch es mit einem anderen Begriff",
     "search_try_again_description": "Suche nach Artikel oder Marken",
-    "result": "Deine Suche nach {term} ergab {resultsCount} Treffer.",
+    "result": "Deine Suche nach \"{term}\" ergab {resultsCount} Treffer.",
     "product": "Produkt",
     "categories": "Kategorie",
     "more": "Mehr"

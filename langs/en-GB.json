@@ -77,7 +77,7 @@
     "search_results": "Display all matches",
     "no_result": "Deine Suchanfrage ergab keine Treffer.",
     "search_term_match_count": "{count} Result for  \"{term}\" | {count} Results for  \"{term}\"",
-    "result": "Deine Suche nach {term} ergab {resultsCount} Treffer.",
+    "result": "Your search for \"{term}\" returned {resultsCount} hits.",
     "search_try_again": "Try again using a different term",
     "search_try_again_description": "Search for items or brands",
     "product": "Produkt",
