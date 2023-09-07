@@ -120,7 +120,6 @@ import {
 const props = defineProps({
   index: {
     type: Number,
-    required: false,
     default: -1,
   },
   product: {
@@ -129,7 +128,6 @@ const props = defineProps({
   },
   loading: {
     type: Boolean,
-    default: false,
   },
   badgeLabel: {
     type: String,
@@ -141,7 +139,6 @@ const props = defineProps({
   },
   isWishlistCard: {
     type: Boolean,
-    default: false,
   },
   wishlistRemoveIcon: {
     type: String as PropType<'heart' | 'close'>,
