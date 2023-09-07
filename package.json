@@ -44,12 +44,11 @@
     "postcss": "8.4.29",
     "postcss-custom-properties": "13.3.0",
     "postcss-html": "1.5.0",
-    "postcss-import": "15.1.0", 
+    "postcss-import": "15.1.0",
     "prettier": "3.0.3",
     "prettier-plugin-tailwindcss": "0.5.4",
-    "storyblok-generate-ts": "^1.15.1",
     "sass": "1.66.1",
- 
+    "storyblok-generate-ts": "^1.15.1",
     "stylelint": "15.10.3",
     "stylelint-config-prettier": "9.0.5",
     "stylelint-config-standard": "34.0.0",
@@ -61,11 +60,11 @@
     "vue-tsc": "1.8.10"
   },
   "dependencies": {
+    "@scayle/storefront-nuxt": "^7.9.0",
     "@storyblok/nuxt": "^5.6.6",
-    "@scayle/storefront-nuxt": "7.8.1", 
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.6",
-    "@tailwindcss/typography": "^0.5.9", 
+    "@tailwindcss/typography": "^0.5.9",
     "@vuelidate/core": "2.0.3",
     "@vuelidate/validators": "2.0.4",
     "@vueuse/core": "10.4.1",

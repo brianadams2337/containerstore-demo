@@ -2,6 +2,7 @@
   <component
     v-bind="useWindowHistory ? {} : { to }"
     :is="componentName"
+    :raw="componentName === Component.DEFAULT_LINK"
     data-test-id="back-button"
     class="absolute z-30 flex items-center gap-2 text-primary"
     v-on="backClickEventHandling">
@@ -24,12 +25,17 @@ const props = defineProps({
   },
 })
 
+const Component = {
+  BUTTON: 'Button',
+  DEFAULT_LINK: 'DefaultLink',
+}
+
 const backClickEventHandling = computed(() => {
   return props.useWindowHistory ? { click: goBack } : {}
 })
 
 const componentName = computed(() => {
-  return props.useWindowHistory ? 'button' : 'NuxtLink'
+  return props.useWindowHistory ? Component.BUTTON : Component.DEFAULT_LINK
 })
 
 const goBack = () => window?.history.back()

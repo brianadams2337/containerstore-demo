@@ -11,6 +11,7 @@
         <div v-if="resultsCount > 0" class="my-2 flex">
           <DefaultLink
             :to="{ name: 'search', query: { term: searchTerm } }"
+            raw
             class="mx-auto rounded px-4 py-2 text-xs font-semibold underline transition-all duration-200 ease-in-out hover:bg-secondary-450 hover:font-bold"
             @click="emit('close')">
             {{ $t('search.more') }}

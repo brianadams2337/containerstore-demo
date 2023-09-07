@@ -1,17 +1,20 @@
 <template>
   <DefaultLink
+    data-test-id="paginationButton"
     :to="to"
-    class="inline-flex items-center px-4 py-2 text-center text-sm"
     :class="{
       'font-bold': isActive,
     }"
-    data-test-id="paginationButton"
+    raw
+    class="inline-flex items-center px-4 py-2 text-center text-sm"
     @click="scrollToTop">
     <slot />
   </DefaultLink>
 </template>
 
 <script setup lang="ts">
+import { RouteLocationRaw } from '#vue-router'
+
 const props = defineProps({
   disabled: {
     type: Boolean,
@@ -30,10 +33,7 @@ const props = defineProps({
 const route = useRoute()
 
 const to = computed(() => {
-  const attributes: {
-    path: string
-    query: Record<string | number, string | (string | null)[]>
-  } = {
+  const attributes: Partial<RouteLocationRaw> = {
     path: route.path,
     query: {
       ...route.query,
@@ -42,16 +42,11 @@ const to = computed(() => {
   }
 
   if (props.page === 1) {
-    delete attributes.query.page
+    delete attributes?.query?.page
   }
 
   return attributes
 })
 
-const scrollToTop = () => {
-  window.scroll({
-    behavior: 'smooth',
-    top: 0,
-  })
-}
+const scrollToTop = () => window.scroll({ behavior: 'smooth', top: 0 })
 </script>

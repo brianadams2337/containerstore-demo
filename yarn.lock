@@ -1774,10 +1774,10 @@
     ufo "^1.1.1"
     utility-types "^3.10.0"
 
-"@scayle/storefront-nuxt@7.8.1":
-  version "7.8.1"
-  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.8.1.tgz#0d00c491e48d5d2a242762d10e72d79d988656d9"
-  integrity sha1-DQDEkeSNXSokJ2LRDnLXnZiGVtk=
+"@scayle/storefront-nuxt@^7.9.0":
+  version "7.9.0"
+  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.9.0.tgz#81f995391c9e9d7dea49d669823babbe68a5d976"
+  integrity sha1-gfmVORyenX3qSdZpgjurvmil2XY=
   dependencies:
     "@nuxt/kit" "3.7.1"
     "@scayle/h3-session" "0.2.0"

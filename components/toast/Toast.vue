@@ -7,6 +7,7 @@
         :key="`link-${action.text}`"
         :class="action.class || ''"
         :to="action.href"
+        raw
         class="underline"
         @click="onClick($event, action)">
         {{ action.text }}

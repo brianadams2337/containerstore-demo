@@ -74,4 +74,11 @@ export const SlideInType = {
 }
 export type SlideInType = ValuesType<typeof SlideInType>
 
+export const DividerItemTag = {
+  DEFAULT_LINK: 'DefaultLink',
+  NUXT_LINK: 'NuxtLink',
+  PARAGRAPH: 'p',
+}
+export type DividerItemTag = ValuesType<typeof DividerItemTag>
+
 /* eslint-enable @typescript-eslint/no-redeclare */
