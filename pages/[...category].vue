@@ -222,7 +222,6 @@ const fetchParameters = computed(() => ({
 }))
 
 await fetchProducts(fetchParameters.value)
-await refreshProductCount()
 // TODO CMS
 // const {
 //   content: cmsContent,

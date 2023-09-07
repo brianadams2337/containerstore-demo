@@ -36,11 +36,11 @@ const props = defineProps({
     required: true,
   },
   badge: {
-    type: [Number, String] as PropType<number | string>,
+    type: [Number, String],
     default: undefined,
   },
   onlyExactActive: {
-    type: Boolean as PropType<boolean>,
+    type: Boolean,
     default: false,
   },
   type: {
@@ -49,15 +49,23 @@ const props = defineProps({
     validator: (val: LinkVariant) => Object.values(LinkVariant).includes(val),
   },
   openInNewTab: {
-    type: Boolean as PropType<boolean>,
+    type: Boolean,
+    default: false,
+  },
+  raw: {
+    type: Boolean,
     default: false,
   },
 })
 
 const ACTIVE_CLASS = '!font-bold'
 
-const variantClass = computed(() => LinkTypeClass[props.type])
+const variantClass = computed(() => {
+  return !props.raw ? LinkTypeClass[props.type] : {}
+})
+
 const activeClass = computed(() => (!props.onlyExactActive ? ACTIVE_CLASS : ''))
+
 const exactActiveClass = computed(() => {
   return props.onlyExactActive ? ACTIVE_CLASS : ''
 })
