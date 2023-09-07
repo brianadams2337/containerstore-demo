@@ -1,7 +1,6 @@
 <template>
   <DefaultLink
     v-if="url"
-    raw
     :to="url"
     :target="blok.open_in_new_tab ? '_blank' : '_self'">
     {{ blok.label }}

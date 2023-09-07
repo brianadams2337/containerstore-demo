@@ -25,7 +25,7 @@
           v-for="link in group.links"
           :key="link._uid"
           :blok="link"
-          class="block py-2 text-xs font-semibold text-gray-750 md:py-1" />
+          class="!block py-2 text-xs font-semibold text-gray-750 md:py-1" />
       </div>
       <div
         v-for="tree in footerNavigationTrees"
@@ -46,7 +46,6 @@
         <DefaultLink
           v-for="social in footerContent.social_media"
           :key="social._uid"
-          raw
           :to="social.url?.cached_url">
           <component :is="`IconSocial${getSocialName(social.type)}`" />
         </DefaultLink>
