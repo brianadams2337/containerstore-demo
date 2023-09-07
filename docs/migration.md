@@ -332,3 +332,30 @@ const story = await useAsyncStoryblok(
 
 _Minor Note_
 For now the `useCms` composable is not needed but this might change as the migration is approaches completion.
+
+## Route localization
+
+- In Nuxt 3 we introduced `toLocalePath` route utility which is a `useLocalePath`
+  wrapper with some additional stuff. The main difference in Nuxt 3 is that we centralized
+  the localization through the `DefaultLink` component and localized every route
+  helper so that we don't need to repeat the localization process for each
+  component or router action. Unfortunately, this solution is not ideal because
+  developer still has the responsibility to pay attention when managing the routing.
+  Now we need to take care to always use `DefaultLink` or route utils.
+  If there's some custom route that we need to use it, we'll need to manually use
+  `toLocalePath` in order to have it working.
+  Furthermore, we also introduced `raw` property on `DefaultLink` component which
+  is basically a replacement for the whole `RawLink` component that was used in Nuxt 2.
+
+  ```ts
+  // Raw link (without any styles) usage
+  <DefaultLink :to="{ name: 'home' }" raw>Home</DefaultLink>
+
+  // Custom link localization usage
+  const router = useRouter()
+  const customRoute = '/some-custom-route'
+  await router.push(toLocalePath(customRoute))
+
+  // Router action with route utility usage
+  await router.push(getSearchRoute(searchQuery.value))
+  ```
