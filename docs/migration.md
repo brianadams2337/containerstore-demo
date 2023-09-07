@@ -359,3 +359,10 @@ For now the `useCms` composable is not needed but this might change as the migra
   // Router action with route utility usage
   await router.push(getSearchRoute(searchQuery.value))
   ```
+
+  ### HTTPS vs HTTP development mode
+
+  - In Nuxt 2 we used the HTTPS certificates and we always used `HTTPS` mode for
+    the `yarn dev`.
+    In Nuxt 3 we introduced two scripts so that we can run the app in http or https mode.
+    `yarn dev` and `yarn dev:https`
