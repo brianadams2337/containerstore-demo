@@ -50,21 +50,23 @@
               </DefaultLink>
             </slot>
             <slot name="header-badge" :label="badgeLabel">
-              <NuxtLink
+              <DefaultLink
                 v-if="badgeLabel"
                 :to="link"
+                raw
                 @click.capture="$emit('click:product')">
                 <ProductBadge
                   :badge-label="badgeLabel"
                   class="absolute left-0 top-0" />
-              </NuxtLink>
+              </DefaultLink>
             </slot>
           </div>
         </slot>
         <slot name="description" v-bind="$props">
           <div class="my-2 px-2.5 md:my-2.5">
-            <NuxtLink
+            <DefaultLink
               :to="link"
+              raw
               class="text-2xs font-medium uppercase leading-tight text-primary opacity-50 md:text-xs"
               @click.capture="$emit('click:product')">
               <p class="uppercase">{{ title }}</p>
@@ -79,7 +81,7 @@
                   :size="viewport.isGreaterThan('md') ? 'sm' : 'xs'"
                   type="whisper" />
               </slot>
-            </NuxtLink>
+            </DefaultLink>
             <div class="mt-2">
               <slot name="description-action" :colors="colors">
                 <ProductSiblingPicker
@@ -87,14 +89,16 @@
                   :spacing="siblingSpacing"
                   class="flex pb-1">
                   <template #item="{ item }">
-                    <NuxtLink :to="getProductDetailRoute(product, item.id)">
+                    <DefaultLink
+                      :to="getProductDetailRoute(product, item.id)"
+                      raw>
                       <ColorChip
                         v-if="item.colors.length"
                         data-test-id="product-card-color-circle"
                         :color="asProductColor(item.colors[0])"
                         :size="colorChipSize"
                         :rounded="colorChipRoundedSize" />
-                    </NuxtLink>
+                    </DefaultLink>
                   </template>
                 </ProductSiblingPicker>
               </slot>

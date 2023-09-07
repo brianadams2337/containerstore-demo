@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="linkTo">
+  <DefaultLink :to="linkTo" raw>
     <svg
       v-bind="{ height, width }"
       fill="none"
@@ -22,7 +22,7 @@
         fill="#14FFA8"
         fill-rule="evenodd" />
     </svg>
-  </NuxtLink>
+  </DefaultLink>
 </template>
 
 <script setup lang="ts">

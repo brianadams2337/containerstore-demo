@@ -2,15 +2,16 @@
   <div class="m-2 flex w-max max-w-[90vw] space-x-2 bg-black p-2 text-white">
     <span>{{ alert.message }}</span>
     <template v-for="action in alert.actions">
-      <NuxtLink
+      <DefaultLink
         v-if="action.href"
         :key="`link-${action.text}`"
         :class="action.class || ''"
         :to="action.href"
+        raw
         class="underline"
         @click="onClick($event, action)">
         {{ action.text }}
-      </NuxtLink>
+      </DefaultLink>
       <div
         v-else
         :key="action.text"

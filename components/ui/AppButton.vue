@@ -2,6 +2,7 @@
   <component
     :is="componentName"
     v-bind="{ to, disabled }"
+    raw
     :class="baseClasses"
     class="group inline-flex items-center justify-center gap-2 truncate whitespace-nowrap rounded-md text-sm transition duration-100 ease-linear disabled:cursor-not-allowed disabled:opacity-30"
     @click.prevent="emit('click')"
@@ -75,7 +76,7 @@ const isGhost = computed(() => props.type === ButtonType.GHOST)
 
 const { isSize } = useUiSize(props.size)
 
-const componentName = computed(() => (props.to ? 'NuxtLink' : 'Button'))
+const componentName = computed(() => (props.to ? 'DefaultLink' : 'Button'))
 
 const emit = defineEmits<{
   (e: 'click'): void
