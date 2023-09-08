@@ -43,11 +43,11 @@ const props = defineProps({
   },
 })
 
-const emit = defineEmits(['update:modelValue', 'selectedValue'])
+const emit = defineEmits(['update:model-value'])
 
 const selected = computed({
   get: () => props.modelValue,
-  set: (value?: string) => emit('update:modelValue', value),
+  set: (value?: string) => emit('update:model-value', value),
 })
 
 const isActive = computed(() => String(props.modelValue) === props.value)

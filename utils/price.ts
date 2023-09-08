@@ -1,17 +1,18 @@
-export const getShippingNetFee = (appliedFees: any[]): any | null => {
-  if (!appliedFees.length) {
+import { Order } from '@scayle/storefront-nuxt'
+
+type AppliedFees = Order['cost']['appliedFees']
+
+export const getShippingNetFee = (appliedFees: AppliedFees): number | null => {
+  if (!appliedFees?.length) {
     return null
   }
 
-  const shippingNetFees = appliedFees?.filter(
-    (fee) => fee.category === 'delivery',
-  )
-  let totalShippingNetFee = 0
-  shippingNetFees?.forEach(
-    (fee) => (totalShippingNetFee += fee.amount.withoutTax),
-  )
-  return totalShippingNetFee
-}
-export default {
-  getShippingNetFee,
+  const shippingNetFees = appliedFees?.filter((fee) => {
+    return fee.category === 'delivery'
+  })
+
+  return shippingNetFees.reduce((total, fee) => {
+    total += fee.amount.withoutTax
+    return total
+  }, 0)
 }

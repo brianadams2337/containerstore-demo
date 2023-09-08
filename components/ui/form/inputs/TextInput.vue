@@ -60,11 +60,11 @@ const props = defineProps({
   },
 })
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:model-value'])
 
 const content = computed({
   get: () => props.modelValue,
-  set: (newValue: string): void => emit('update:modelValue', newValue),
+  set: (newValue: string): void => emit('update:model-value', newValue),
 })
 
 const dataMaska = computed(() => {

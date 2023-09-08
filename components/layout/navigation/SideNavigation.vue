@@ -22,7 +22,7 @@
           :key="`side_navigation_list_item_${category.id}`"
           class="mb-3 ml-0 px-5 last:mb-0 md:ml-3 md:px-12"
           :class="{ 'text-pink-neon': category.path === '/sale' }"
-          @click="emit('click:navigationItem')">
+          @click="emit('click:navigation-item')">
           <DefaultLink class="text-base" :to="category.path">
             {{ category.name }}
           </DefaultLink>
@@ -74,6 +74,6 @@ defineProps({
 })
 
 const emit = defineEmits<{
-  (e: 'click:navigationItem'): void
+  (e: 'click:navigation-item'): void
 }>()
 </script>

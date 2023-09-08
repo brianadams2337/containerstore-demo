@@ -40,7 +40,7 @@ export default defineComponent({
       default: null,
     },
   },
-  emits: ['update:modelValue', 'focus', 'blur'],
+  emits: ['update:model-value', 'focus', 'blur'],
   setup(props, { emit }) {
     const isActive = ref(false)
     const root = ref<HTMLInputElement>()
@@ -97,7 +97,7 @@ export default defineComponent({
       adjustedValue = Math.min(Math.max(props.min, adjustedValue), props.max)
 
       if (!isNaN(adjustedValue)) {
-        emit('update:modelValue', adjustedValue)
+        emit('update:model-value', adjustedValue)
       }
     }
 
