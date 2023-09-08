@@ -17,8 +17,7 @@
 </template>
 
 <script setup lang="ts">
-const { data: rootCategories, pending: fetchingCategories } =
-  await useCategories({ path: '/' }, { immediate: true })
+const { data: rootCategories, fetching: fetchingCategories } = await useCategories({ path: '/' }, { autoFetch: true })
 </script>
 
 <script lang="ts">

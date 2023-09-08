@@ -8,7 +8,7 @@
         <SideNavigation
           v-if="categories && 'children' in categories && categories.children"
           :categories="categories.children"
-          :fetching="categoriesStatus === 'pending'"
+          :fetching="categoriesFetching"
           :root-category="categories"
           show-nested-categories />
       </div>
@@ -28,7 +28,7 @@
             class="mt-2 flex w-full flex-col justify-between space-y-2 md:flex-row">
             <ProductQuickFilters
               :filters="quickFilters"
-              :loading="filtersStatus === 'pending'"
+              :loading="filtersFetching"
               :total-count="unfilteredCount"
               @click:selected-filter="applyFilter($event, true)" />
             <div class="order-1 flex items-center space-x-4 text-sm">
@@ -49,10 +49,10 @@
           </div>
         </div>
         <ProductList
-          :loading="productsStatus === 'pending'"
+          :loading="productsFetching"
           :per-page="PRODUCTS_PER_PAGE"
           :products="products"
-          :refreshing="productsStatus === 'pending'"
+          :refreshing="productsFetching"
           class="mt-8 grid w-auto grid-cols-12 gap-1"
           @click:product="trackProductClick"
           @intersect:row="trackViewListing" />
@@ -81,7 +81,7 @@
           :filters="filters"
           :filtered-count="filteredProductsCount"
           :unfiltered-count="unfilteredCount"
-          :fetching-filtered-count="productCountStatus === 'pending'"
+          :fetching-filtered-count="productCountFetching"
           @filter:apply="applyFilter"
           @filter:state-changed="refreshProductCount" />
       </div>
@@ -124,18 +124,18 @@ const includedQuickFilters = ['sale', 'isNew', 'styleGroup']
 const DEFAULT_SORTING_KEY = 'dateNewest'
 const {
   products,
-  productsStatus,
-  categoriesStatus,
+  productsFetching,
+  categoriesFetching,
   categories,
   selectedCategory,
   fetchProducts,
   pagination,
   filters,
-  filtersStatus,
+  filtersFetching,
   unfilteredCount,
   productCountData,
   refreshProductCount,
-  productCountStatus,
+  productCountFetching,
 } = await useFacet(`useFacet-${categoryPath.value}`, {
   with: {
     product: {

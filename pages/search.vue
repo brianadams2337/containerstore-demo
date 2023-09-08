@@ -17,10 +17,10 @@
       </div>
     </div>
     <ProductList
-      :loading="productsPending"
+      :loading="productsFetching"
       :per-page="PRODUCTS_PER_PAGE"
       :products="products"
-      :refreshing="productsPending"
+      :refreshing="productsFetching"
       class="mt-8 grid w-auto grid-cols-12 gap-2"
       @click:toggle-product-wishlist="toggleItem($event)" />
     <NuxtLazyHydrate>
@@ -39,7 +39,7 @@
         filteredCount,
         unfilteredCount,
       }"
-      :fetching-filtered-count="productCountPending"
+      :fetching-filtered-count="productCountFetching"
       @filter:apply="applyFilter($event)"
       @filter:state-changed="updateFilterCount($event)" />
   </PageContent>
@@ -75,12 +75,12 @@ const wishlist = {
 
 const {
   products,
-  productsPending,
+  productsFetching,
   pagination,
   filters,
   fetchProducts,
   productCountData,
-  productCountPending,
+  productCountFetching,
   refreshProductCount,
   unfilteredCount,
 } = await useFacet('useSearchFacet', {
