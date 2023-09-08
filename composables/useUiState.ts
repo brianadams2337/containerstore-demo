@@ -25,6 +25,7 @@ type UiState = Record<
 const DEFAULT_FLYOUT_NAVIGATION_ITEM: NavigationItemExternal = {
   id: 1,
   children: [],
+  name: '',
   type: 'external',
   assets: {},
   languages: {},

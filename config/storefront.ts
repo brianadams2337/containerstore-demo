@@ -15,6 +15,9 @@ const baseShopConfig = {
     'klarna',
     'paypal',
   ],
+  auth: {
+    resetPasswordUrl: '',
+  },
   storeCampaignKeyword: environment.CAMPAIGN_KEY_PREFIX,
   appKeys: {
     wishlistKey: 'wishlist_{shopId}_{userId}',

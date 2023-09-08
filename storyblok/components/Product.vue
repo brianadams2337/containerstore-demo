@@ -18,7 +18,8 @@
 </template>
 
 <script setup lang="ts">
-import { Product as BapiProduct, getBadgeLabel } from '@scayle/storefront-nuxt'
+import { Product, getBadgeLabel } from '@scayle/storefront-nuxt'
+
 const { listingColumns } = useListingUiState()
 
 const props = defineProps({
@@ -31,7 +32,7 @@ const props = defineProps({
     default: false,
   },
   product: {
-    type: Object as PropType<BapiProduct>,
+    type: Object as PropType<Product>,
     default: () => ({}),
   },
 })

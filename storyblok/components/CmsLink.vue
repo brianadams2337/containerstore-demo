@@ -1,17 +1,18 @@
 <template>
-  <DefaultLink
+  <StoryblokLink
     v-if="url"
     :to="url"
     :target="blok.open_in_new_tab ? '_blank' : '_self'">
     {{ blok.label }}
-  </DefaultLink>
+  </StoryblokLink>
 </template>
+
 <script lang="ts" setup>
-import { LinkStoryblok } from '../types/component-types-sb'
+import { SbLink } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {
-    type: Object as PropType<LinkStoryblok>,
+    type: Object as PropType<SbLink>,
     required: true,
   },
 })

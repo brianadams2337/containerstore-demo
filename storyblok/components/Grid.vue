@@ -15,11 +15,11 @@
 
 <script setup lang="ts">
 import useStoryblokMargins from '../composables/useStoryblokMargins'
-import { GridStoryblok } from '../types/storyblok'
+import { SbGrid } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {
-    type: Object as PropType<GridStoryblok>,
+    type: Object as PropType<SbGrid>,
     required: true,
   },
 })

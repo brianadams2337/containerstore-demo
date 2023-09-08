@@ -1,8 +1,10 @@
 <template>
-  <DefaultLink v-if="!isInEditorMode" raw :to="to" :target="target"
-    ><slot />
+  <DefaultLink v-if="!isInEditorMode" raw :to="to" :target="target">
+    <slot />
   </DefaultLink>
-  <div v-else :to="to"><slot /></div>
+  <div v-else :to="to">
+    <slot />
+  </div>
 </template>
 
 <script lang="ts" setup>

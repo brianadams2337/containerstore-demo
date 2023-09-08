@@ -1,11 +1,4 @@
 <template>
-  <!-- TODO Bring back intersection observer -->
-  <!-- <Intersect 
-    :parent="$parent?.$el"
-    root-margin="25px 100px 25px 100px"
-    @enter="isInViewport = true">
-    
-  </Intersect > -->
   <article v-editable="blok" class="box-border w-4/5 shrink-0 sm:w-1/4">
     <div class="aspect-h-4 aspect-w-3">
       <NuxtImg
@@ -39,11 +32,11 @@
 </template>
 
 <script setup lang="ts">
-import { ImageSliderSlideStoryblok } from '../types/component-types-sb'
+import { SbImageSliderSlide } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {
-    type: Object as PropType<ImageSliderSlideStoryblok>,
+    type: Object as PropType<SbImageSliderSlide>,
     required: true,
   },
 })

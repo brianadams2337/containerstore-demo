@@ -20,12 +20,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import { SlideShowStoryblok } from '../types/component-types-sb'
-import useStoryblokMargins from '../composables/useStoryblokMargins'
+import { SbSlideShow } from '~/storyblok/types/storyblok'
+import useStoryblokMargins from '~/storyblok/composables/useStoryblokMargins'
 
 const props = defineProps({
   blok: {
-    type: Object as PropType<SlideShowStoryblok>,
+    type: Object as PropType<SbSlideShow>,
     required: true,
   },
 })

@@ -1917,7 +1917,7 @@
       "name": "SocialMediaLink",
       "display_name": null,
       "created_at": "2023-01-13T13:26:43.782Z",
-      "updated_at": "2023-08-22T09:14:51.613Z",
+      "updated_at": "2023-08-22T07:56:55.078Z",
       "id": 3307409,
       "schema": {
         "type": {
@@ -1959,7 +1959,7 @@
         },
         "isActive": {
           "type": "boolean",
-          "required": false,
+          "required": true,
           "default_value": true
         }
       },

@@ -6,5 +6,3 @@
 const { params } = useRoute()
 const slug = computed(() => params.productId)
 </script>
-
-<style lang="scss" scoped></style>

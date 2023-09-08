@@ -11,7 +11,7 @@
       <slot />
     </div>
     <template v-if="withArrows">
-      <slot name="prevButton" :prev="prev" :is-prev-enabled="isPrevEnabled">
+      <slot name="prev-button" :prev="prev" :is-prev-enabled="isPrevEnabled">
         <button
           class="absolute left-0 top-[40%] rounded-sm bg-black text-white disabled:hidden"
           :disabled="!isPrevEnabled"
@@ -19,7 +19,7 @@
           <IconArrowLeft class="h-8 w-8 p-1" />
         </button>
       </slot>
-      <slot name="nextButton" :next="next" :is-next-enabled="isNextEnabled">
+      <slot name="next-button" :next="next" :is-next-enabled="isNextEnabled">
         <button
           class="absolute right-0 top-[40%] rounded-sm bg-black text-white disabled:hidden"
           :disabled="!isNextEnabled"

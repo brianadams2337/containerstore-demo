@@ -1,13 +1,13 @@
 <template>
   <div v-editable="blok" :class="marginClasses">
     <div class="flex w-full justify-between px-5 sm:px-14">
-      <Headline v-if="blok.headline" tag="p" size="base" type="loud">{{
-        blok.headline
-      }}</Headline>
+      <Headline v-if="blok.headline" tag="p" size="base" type="loud">
+        {{ blok.headline }}
+      </Headline>
 
-      <DefaultLink v-if="blok.cta_url && blok.cta_label" :to="blok.cta_url">{{
-        blok.cta_label
-      }}</DefaultLink>
+      <DefaultLink v-if="blok.cta_url && blok.cta_label" :to="blok.cta_url">
+        {{ blok.cta_label }}
+      </DefaultLink>
     </div>
 
     <HorizontalItemsSlider
@@ -21,7 +21,7 @@
         :product="product"
         :fetching="pending" />
 
-      <template #prevButton="{ prev, isPrevEnabled }">
+      <template #prev-button="{ prev, isPrevEnabled }">
         <button
           class="absolute left-0 top-[40%] rounded-sm bg-black text-white disabled:hidden sm:left-14"
           :disabled="!isPrevEnabled"
@@ -29,7 +29,7 @@
           <IconArrowLeft />
         </button>
       </template>
-      <template #nextButton="{ next, isNextEnabled }">
+      <template #next-button="{ next, isNextEnabled }">
         <button
           class="absolute right-0 top-[40%] rounded-sm bg-black text-white disabled:hidden sm:right-14"
           :disabled="!isNextEnabled"
@@ -43,11 +43,11 @@
 
 <script setup lang="ts">
 import useStoryblokMargins from '../composables/useStoryblokMargins'
-import { ProductSliderStoryblok } from '../types/component-types-sb'
+import { SbProductSlider } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {
-    type: Object as PropType<ProductSliderStoryblok>,
+    type: Object as PropType<SbProductSlider>,
     required: true,
   },
 })

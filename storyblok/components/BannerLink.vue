@@ -7,24 +7,24 @@
       :key="blok._uid"
       raw
       :to="blok.cta_url?.cached_url"
-      @click="clickObserver(blok)"
-      >{{ blok.label }}</DefaultLink
-    >
+      @click="clickObserver(blok)">
+      {{ blok.label }}
+    </DefaultLink>
   </div>
 </template>
 
 <script setup lang="ts">
-import { BannerStoryblok } from '../types/component-types-sb'
+import { SbBannerLink } from '~/storyblok/types/storyblok'
 
 defineProps({
   blok: {
-    type: Object as PropType<BannerStoryblok>,
+    type: Object as PropType<SbBannerLink>,
     required: true,
   },
 })
 
 //   const { trackPromotion } = useTrackingEvents()
-const clickObserver = (link: BannerStoryblok) => {
+const clickObserver = (link: SbBannerLink) => {
   if (link.promotion_id) {
     //   trackPromotion('select_promotion', link)
   }

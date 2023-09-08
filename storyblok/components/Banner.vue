@@ -8,7 +8,7 @@
     class="sticky text-sm">
     <slot :close="close">
       <transition
-        leave-class="opacity-100 translate-y-0"
+        leave-from-class="opacity-100 translate-y-0"
         leave-to-class="opacity-0 -translate-y-4"
         leave-active-class="transform transition ease-out duration-300 ">
         <div
@@ -26,7 +26,12 @@
             :class="{ 'sm:flex-col': hasScrollableLinks }">
             <slot name="body">
               <div class="md:flex md:w-full md:items-center md:justify-center">
-                <CmsText :blok="blok" />
+                <CmsText
+                  :blok="{
+                    body: blok.body,
+                    _uid: blok._uid,
+                    component: 'CmsText',
+                  }" />
                 <Countdown
                   v-if="blok.countdown_until"
                   :until="blok.countdown_until"
@@ -60,12 +65,12 @@
 
 <script setup lang="ts">
 import { useIntersectionObserver } from '@vueuse/core'
-import { BannerStoryblok } from '../types/component-types-sb'
+import { SbBanner } from '~/storyblok/types/storyblok'
 import useBanner from '~/composables/useBanner'
 
 const props = defineProps({
   blok: {
-    type: Object as PropType<BannerStoryblok>,
+    type: Object as PropType<SbBanner>,
     required: true,
   },
   type: {

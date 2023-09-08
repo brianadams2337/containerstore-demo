@@ -11,15 +11,15 @@
 </template>
 
 <script setup lang="ts">
-import { SlideStoryblok } from '../types/component-types-sb'
+import { SbSlide } from '~/storyblok/types/storyblok'
 
 defineProps({
   blok: {
-    type: Object as PropType<SlideStoryblok>,
+    type: Object as PropType<SbSlide>,
     required: true,
   },
   preload: {
-    type: Boolean as PropType<boolean>,
+    type: Boolean,
     default: false,
   },
 })

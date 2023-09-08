@@ -90,4 +90,4 @@ export interface CmsFetchOptions {
   version?: StoriesParams['version']
 }
 
-export * from './component-types-sb'
+export * from './storyblok.gen'

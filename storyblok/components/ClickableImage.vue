@@ -33,11 +33,11 @@
 <script setup lang="ts">
 import { useStoryblokImageSanitizer } from '../composables/useStoryblokImage'
 import useStoryblokMargins from '../composables/useStoryblokMargins'
-import { ClickableImageStoryblok } from '../types/component-types-sb'
+import { SbClickableImage } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {
-    type: Object as PropType<ClickableImageStoryblok>,
+    type: Object as PropType<SbClickableImage>,
     required: true,
   },
   sizes: {

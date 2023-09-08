@@ -1,4 +1,4 @@
-import { CmsImageStoryblok } from '../types/component-types-sb'
+import { SbCmsImage } from '~/storyblok/types/storyblok'
 
 type SanitizedImage = {
   src: string
@@ -12,7 +12,7 @@ const isMobile = () => {
 }
 
 export const useStoryblokImageSanitizer = () => {
-  const sanitize = (img: CmsImageStoryblok): SanitizedImage => {
+  const sanitize = (img: SbCmsImage): SanitizedImage => {
     return {
       src: img[isMobile() ? 'mobile_image' : 'desktop_image']?.filename || '',
       alt: img?.desktop_image?.alt || '',

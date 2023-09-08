@@ -7,18 +7,19 @@
 </template>
 
 <script setup lang="ts">
-import { BannerLinkStoryblok } from '~/storyblok/types/component-types-sb'
+import { SbBannerLink } from '~/storyblok/types/storyblok'
+
 defineProps({
   links: {
-    type: Array as PropType<BannerLinkStoryblok[]>,
+    type: Array as PropType<SbBannerLink[]>,
     required: true,
   },
   hasMarginTop: {
-    type: Boolean as PropType<boolean>,
+    type: Boolean,
     default: false,
   },
   fullWidth: {
-    type: Boolean as PropType<boolean>,
+    type: Boolean,
     default: false,
   },
 })

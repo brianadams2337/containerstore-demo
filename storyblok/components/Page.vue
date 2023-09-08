@@ -4,21 +4,20 @@
     :key="content._uid"
     v-editable="blok"
     :important="index < 2"
-    :placeholder-ratio="md ? '16/9' : '9/16'"
+    :placeholder-ratio="viewport.isGreaterThan('md') ? '16/9' : '9/16'"
     placeholder-class="container">
     <component :is="content.component" :blok="content" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { PageStoryblok } from '../types/component-types-sb'
+import { SbPage } from '~/storyblok/types/storyblok'
 
-// const { md } = useBreakpoints()
-const md = ref(true)
+const viewport = useViewport()
 
 defineProps({
   blok: {
-    type: Object as PropType<PageStoryblok>,
+    type: Object as PropType<SbPage>,
     required: true,
   },
 })

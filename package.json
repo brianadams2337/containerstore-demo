@@ -19,9 +19,13 @@
     "cy:open": "cypress open",
     "cy:run:mobile": "cypress run --env mobile=true",
     "cy:run": "cypress run",
-    "generate-sb-types": "storyblok-generate-ts source=./components.122095.json target=./storyblok/types/component-types-sb"
+    "storyblok:download": "env-cmd -f .env.storyblok -x storyblok pull-components --space \\$STORYBLOK_SPACE_ID",
+    "storyblok:generate": "node scripts/storyblok-generate.cjs ",
+    "storyblok:login": "env-cmd -f .env.storyblok -x storyblok login --token \\$STORYBLOK_PERSONAL_TOKEN --region eu",
+    "storyblok:unused": "node scripts/storyblok-unused.cjs"
   },
   "devDependencies": {
+    "@aboutyou/storyblok-generate-ts": "1.14.0",
     "@nuxt/devtools": "latest",
     "@nuxt/image": "1.0.0-rc.1",
     "@nuxtjs/i18n": "8.0.0-rc.3",
@@ -33,6 +37,7 @@
     "autoprefixer": "10.4.15",
     "cypress": "12.17.4",
     "cypress-real-events": "1.10.1",
+    "env-cmd": "^10.1.0",
     "eslint": "8.48.0",
     "eslint-plugin-cypress": "2.14.0",
     "eslint-plugin-nuxt": "4.0.0",
@@ -48,7 +53,7 @@
     "prettier": "3.0.3",
     "prettier-plugin-tailwindcss": "0.5.4",
     "sass": "1.66.1",
-    "storyblok-generate-ts": "^1.15.1",
+    "storyblok": "^3.25.2",
     "stylelint": "15.10.3",
     "stylelint-config-prettier": "9.0.5",
     "stylelint-config-standard": "34.0.0",
@@ -76,6 +81,7 @@
     "nuxt-jsonld": "2.0.8",
     "nuxt-lazy-hydrate": "1.0.0",
     "nuxt-swiper": "1.2.2",
+    "storyblok-js-client": "^6.0.0",
     "ufo": "1.3.0",
     "vue-slider-component": "4.1.0-beta.7",
     "yn": "5.0.0"

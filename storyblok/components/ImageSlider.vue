@@ -25,11 +25,11 @@
 
 <script setup lang="ts">
 import useStoryblokMargins from '../composables/useStoryblokMargins'
-import { ImageSliderStoryblok } from '../types/component-types-sb'
+import { SbImageSlider } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {
-    type: Object as PropType<ImageSliderStoryblok>,
+    type: Object as PropType<SbImageSlider>,
     required: true,
   },
 })

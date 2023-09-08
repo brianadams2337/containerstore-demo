@@ -10,7 +10,11 @@
           'order-last': footerContent.align_right,
         }">
         <CmsText
-          :blok="{ body: footerContent.text }"
+          :blok="{
+            body: footerContent.text,
+            _uid: footerContent._uid,
+            component: 'CmsText',
+          }"
           class="text-xs"
           no-margin-top />
       </div>
@@ -46,7 +50,7 @@
         <DefaultLink
           v-for="social in footerContent.social_media"
           :key="social._uid"
-          :to="social.url?.cached_url">
+          :to="social.url?.cached_url ?? {}">
           <component :is="`IconSocial${getSocialName(social.type)}`" />
         </DefaultLink>
       </div>
@@ -61,8 +65,8 @@
 
 <script setup lang="ts">
 import { NavigationTree } from '@scayle/storefront-nuxt'
-import { StoryblokStory } from 'storyblok-generate-ts'
-import { FooterStoryblok } from '~/storyblok/types/component-types-sb'
+import { StoryblokStory } from '@aboutyou/storyblok-generate-ts'
+import { SbFooter } from '~/storyblok/types/storyblok'
 
 defineProps({
   navigationTrees: {
@@ -72,11 +76,11 @@ defineProps({
 })
 
 // TODO fix typings
-const cmsData: Ref<StoryblokStory<FooterStoryblok>> =
+const cmsData: Ref<StoryblokStory<SbFooter>> =
   await useAsyncStoryblok('global/footer')
 const footerContent = computed(() => cmsData.value.content)
 
-const { data, refresh } = await useNavigationTrees()
+const { data, refresh } = await useNavigationTrees({})
 const footerNavigationTrees = ref<NavigationTree[]>([])
 
 onMounted(async () => {

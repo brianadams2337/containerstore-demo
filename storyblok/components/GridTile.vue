@@ -20,12 +20,11 @@
 </template>
 
 <script setup lang="ts">
-import { GridTileStoryblok } from '../types/component-types-sb'
-// import StoryblokLink from '~/components/ui/links/StoryblokLink.vue'
+import { SbGridTile } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {
-    type: Object as PropType<GridTileStoryblok>,
+    type: Object as PropType<SbGridTile>,
     required: true,
   },
   sizes: {

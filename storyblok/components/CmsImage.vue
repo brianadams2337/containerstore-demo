@@ -11,15 +11,15 @@
 </template>
 
 <script setup lang="ts">
-import { CmsImageStoryblok } from '../types/component-types-sb'
 import {
   getTeaserImage,
   useStoryblokImageSanitizer,
 } from '../composables/useStoryblokImage'
+import { SbCmsImage } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   preload: {
-    type: Boolean as PropType<boolean>,
+    type: Boolean,
     default: false,
   },
   sizes: {
@@ -27,11 +27,11 @@ const props = defineProps({
     default: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
   },
   isTeaser: {
-    type: Boolean as PropType<boolean>,
+    type: Boolean,
     default: false,
   },
   blok: {
-    type: Object as PropType<CmsImageStoryblok>,
+    type: Object as PropType<SbCmsImage>,
     required: true,
   },
 })

@@ -7,7 +7,7 @@
       :modules="[SwiperAutoplay, SwiperNavigation, SwiperPagination]"
       :pagination="{ clickable: true }">
       <SwiperSlide v-for="slide in slides" :key="`demo-slide-${slide}`">
-        <nuxt-img :src="slide" provider="default" />
+        <NuxtImg :src="slide" provider="default" />
       </SwiperSlide>
     </Swiper>
   </div>
@@ -53,10 +53,13 @@ export default {
 <style lang="css" scoped>
 :deep(.swiper-button-next::after) {
   --swiper-navigation-size: 1.5rem;
+
   color: black;
 }
+
 :deep(.swiper-button-prev::after) {
   --swiper-navigation-size: 1.5rem;
+
   color: black;
 }
 </style>
