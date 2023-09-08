@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
+    "assert-mandatory-env-vars": "echo 'skipped'",
     "build": "nuxt build",
     "dev": "nuxt dev --development",
     "dev:https": "nuxt dev --https",
