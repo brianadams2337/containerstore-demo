@@ -28,7 +28,7 @@
     "@aboutyou/storyblok-generate-ts": "1.14.0",
     "@nuxt/devtools": "latest",
     "@nuxt/image": "1.0.0-rc.1",
-    "@nuxtjs/i18n": "8.0.0-rc.3",
+    "@nuxtjs/i18n": "8.0.0-rc.4",
     "@nuxtjs/tailwindcss": "6.8.0",
     "@scayle/eslint-config-storefront": "3.2.3",
     "@scayle/prettier-config-storefront": "2.0.1",
