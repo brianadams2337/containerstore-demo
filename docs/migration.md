@@ -3,11 +3,9 @@
 With vite you can include svg icons by simply prefixing it with the `<Icon\* />` which is configured in the svgo config (default is `<Svgo\* />`.
 Otherwise you need to import the svg explicitly and use it as a component.
 
-- On issue you might stumble on is using this module you can't size your icons
-  as you might wish to with tailwind classes. By default there is a prop `fontControlled`
-  which you hve to disable like so: `<Icon* :fontControlled="false"/>`.
-  If the use-case is to have the flexibility of applying classes throughout the
-  app then you need to make a change in the `nuxt.config`
+One issue you might stumble on is using this module you can't size your icons as you might wish to with tailwind classes.
+By default there is a prop `fontControlled` which you hve to disable like so: `<Icon* :fontControlled="false"/>`.
+If the use-case is to have the flexibility of applying classes throughout the app then you need to make a change in the `nuxt.config`
 
 ```ts
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -45,11 +43,10 @@ The options above make sure that the bundler is `vite` and the framework that we
 
 ## Vuelidate
 
-- The approach that we're using in Nuxt 3 is almost the same as it was in Nuxt 2.
-  When it comes to the rule message localization there is one thing to keep in mind.
-  In Nuxt 2, when defining the validation plugin, we accessed the global `i18n`
-  instance within the context argument. Now we need to access it via `useNuxtApp`
-  composable.
+The approach that we're using in Nuxt 3 is almost the same as it was in Nuxt 2.
+When it comes to the rule message localization there is one thing to keep in mind.
+In Nuxt 2, when defining the validation plugin, we accessed the global `i18n` instance within the context argument.
+Now we need to access it via `useNuxtApp` composable.
 
 ```ts
 export default defineNuxtPlugin(() => {
@@ -58,14 +55,12 @@ export default defineNuxtPlugin(() => {
 })
 ```
 
-- Furthermore, we don't need to manually override the types as we did in Nuxt 2
-  with `Context` interface. Rule types will work now automatically.
+Furthermore, we don't need to manually override the types as we did in Nuxt 2 with `Context` interface. Rule types will work now automatically.
 
 ## Toast
 
-- Toast plugin with its UI components remains almost the same. The only thing that
-  changed is that we need to use `refreshNuxtData` instead of `$nuxt.refresh()`
-  within the `reload` toast action
+Toast plugin with its UI components remains almost the same.
+The only thing that changed is that we need to use `refreshNuxtData` instead of `$nuxt.refresh()` within the `reload` toast action:
 
 ```ts
   onClick: () => Promise.resolve(refreshNuxtData()),
@@ -131,10 +126,9 @@ const props = defineProps({
 
 ### Radio Input
 
-- In Nuxt 2 we had only one `Radio` component and we repeated it for each radio.
-  Now we introduced `RadioGroup` component, which has `RadioItem`s in it. Now we
-  just need to use radio group which will be v-modeled and pass `items` that are
-  typed like this:
+In Nuxt 2 we had only one `Radio` component and we repeated it for each radio.
+Now we introduced `RadioGroup` component, which has `RadioItem`s in it.
+Now we just need to use radio group which will be v-modeled and pass `items` that are typed like this:
 
 ```ts
 export type Item = { label: string; value: string }
@@ -238,12 +232,10 @@ It supports auto imports and it's easy to configure via nuxt config. We stick wi
 
 ## Replace our custom `breakpoints` solution with the `nuxt-viewport` module
 
-- In Nuxt 3 we will use [nuxt-viewport](https://nuxt.com/modules/nuxt-viewport) which
-  we use for the viewport/breakpoints handling. We added the `./config/breakpoints.ts`
-  file where we have all the breakpoints defined. We use that for the `tailwind` and
-  for the `nuxt-viewport` config so that we have those two in sync.
-  Current usage of the breakpoint handling is different which will be seen in the
-  example bellow:
+In Nuxt 3 we will use [nuxt-viewport](https://nuxt.com/modules/nuxt-viewport) which we use for the viewport/breakpoints handling.
+We added the `./config/breakpoints.ts` file where we have all the breakpoints defined.
+We use that for the `tailwind` and for the `nuxt-viewport` config so that we have those two in sync.
+Current usage of the breakpoint handling is different which will be seen in the example bellow:
 
 ```vue
 <template>
@@ -263,27 +255,23 @@ const viewport = useViewport()
 
 ### Packages
 
-- [utility-types](https://www.npmjs.com/package/utility-types) - complex
-  TypeScript types simplification utils
-- [nuxt-lodash](https://github.com/cipami/nuxt-lodash#readme) - `lodash`
-  nuxt module
-- [nuxt-viewport](https://nuxt.com/modules/nuxt-viewport) - module for handling
-  the breakpoints
+- [utility-types](https://www.npmjs.com/package/utility-types) - complex TypeScript types simplification utils
+- [nuxt-lodash](https://github.com/cipami/nuxt-lodash#readme) - `lodash` nuxt module
+- [nuxt-viewport](https://nuxt.com/modules/nuxt-viewport) - module for handling the breakpoints
 
 ### With parameters
 
-- Storefront config now supports `withParams` option so that we can pass the
-  `with` parameters through the shop and set them as default parameters within the
-  certain composables (e.g `useWishlist`). This way we don't need an additional
-  composable wrapper that we used in Nuxt 2 just to pass the with parameters.
+Storefront config now supports `withParams` option so that we can pass the `with` parameters through the shop.
+This allows to set them as default parameters within certain composables (e.g `useWishlist`).
+This way we don't need an additional composable wrapper that we used in Nuxt 2 just to pass the with parameters.
 
-  ```ts
-  export default defineNuxtConfig({
-    storefront: {
-      withParams,
-    },
-  })
-  ```
+```ts
+export default defineNuxtConfig({
+  storefront: {
+    withParams,
+  },
+})
+```
 
 ## CMS with Storyblok
 
@@ -335,42 +323,38 @@ For now the `useCms` composable is not needed but this might change as the migra
 
 ## Route localization
 
-- In Nuxt 3 we introduced `toLocalePath` route utility which is a `useLocalePath`
-  wrapper with some additional stuff. The main difference in Nuxt 3 is that we centralized
-  the localization through the `DefaultLink` component and localized every route
-  helper so that we don't need to repeat the localization process for each
-  component or router action. Unfortunately, this solution is not ideal because
-  developer still has the responsibility to pay attention when managing the routing.
-  Now we need to take care to always use `DefaultLink` or route utils.
-  If there's some custom route that we need to use it, we'll need to manually use
-  `toLocalePath` in order to have it working.
-  Furthermore, we also introduced `raw` property on `DefaultLink` component which
-  is basically a replacement for the whole `RawLink` component that was used in Nuxt 2.
+In Nuxt 3 we introduced `toLocalePath` route utility which is a `useLocalePath` wrapper with some additional stuff.
+The main difference being that we centralized the localization through the `DefaultLink` component and localized every route helper.
+Through this change we don't need to repeat the localization process for each component or router action.
 
-  ```ts
-  // Raw link (without any styles) usage
-  <DefaultLink :to="{ name: 'home' }" raw>Home</DefaultLink>
+Unfortunately, this solution is not ideal because developer still has the responsibility to pay attention when managing the routing.
+Now we need to take care to always use `DefaultLink` or route utils.
+If there's some custom route that we need to use it, we'll need to manually use `toLocalePath` in order to have it working.
+Furthermore, we also introduced `raw` property on `DefaultLink` component which is basically a replacement for the whole `RawLink` component that was used in Nuxt 2.
 
-  // Custom link localization usage
-  const router = useRouter()
-  const customRoute = '/some-custom-route'
-  await router.push(toLocalePath(customRoute))
+```ts
+// Raw link (without any styles) usage
+<DefaultLink :to="{ name: 'home' }" raw>Home</DefaultLink>
 
-  // Router action with route utility usage
-  await router.push(getSearchRoute(searchQuery.value))
-  ```
+// Custom link localization usage
+const router = useRouter()
+const customRoute = '/some-custom-route'
+await router.push(toLocalePath(customRoute))
 
-  ### HTTPS vs HTTP development mode
+// Router action with route utility usage
+await router.push(getSearchRoute(searchQuery.value))
+```
 
-  - In Nuxt 2 we used the `https certificates` and we always used `https` mode for
-    the `yarn dev`.
-    In Nuxt 3 we introduced two scripts so that we can run the app in http or https mode.
-    `yarn dev` and `yarn dev:https`
-    In order to have the `https` mode work properly we need to set env variables
-    for key and cer file paths which will need to be generated the same as we did
-    in Nuxt 2.
+### HTTPS vs HTTP development mode
 
-    ```
-    HTTPS_KEY=
-    HTTPS_CERT=
-    ```
+In Nuxt 2 we used the `https certificates` and we always used `https` mode for the `yarn dev`.
+As part of Nuxt 3 we introduced two scripts so that we can run the app in http or https mode:
+
+`yarn dev` and `yarn dev:https`
+
+In order to have the `https` mode work properly we need to set env variables for key and cer file paths which will need to be generated the same as we did in Nuxt 2.
+
+```text
+HTTPS_KEY=
+HTTPS_CERT=
+```
