@@ -45,7 +45,7 @@
     "eslint-plugin-tailwindcss": "3.13.0",
     "nuxt": "3.7.1",
     "nuxt-lodash": "2.5.0",
-    "nuxt-svgo": "3.5.0",
+    "nuxt-svgo": "3.5.1",
     "nuxt-viewport": "2.0.6",
     "postcss": "8.4.29",
     "postcss-custom-properties": "13.3.0",

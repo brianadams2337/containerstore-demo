@@ -8138,10 +8138,10 @@ nuxt-lodash@2.5.0:
     "@types/lodash-es" "^4.17.7"
     lodash-es "^4.17.21"
 
-nuxt-svgo@3.5.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/nuxt-svgo/-/nuxt-svgo-3.5.0.tgz#b3b65172e18b334a8ccd06fbf81efc05f6895751"
-  integrity sha512-3wch7+a0DEqh75Ny+VTVtEDdJAO2j/NH6clIvwdCq4H7+Xagh45Gq/Bdg8dfFcTPyKoS5noeHFA5MZOldr45ig==
+nuxt-svgo@3.5.1:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/nuxt-svgo/-/nuxt-svgo-3.5.1.tgz#bc519a697456e5d15c42a0b641ba1e597c26133a"
+  integrity sha512-2n48A9u6lNh9FCIeQBA89MiF3hY13uj8q9v7YvAm0fwcaGI1F1s8Y0bALdFpIYQMD1cgNZLfs41JYVKwd4TwLg==
   dependencies:
     "@nuxt/kit" "^3.4.0"
     "@vue/compiler-sfc" "^3.2.47"
