@@ -20,7 +20,7 @@
     "cy:open": "cypress open",
     "cy:run:mobile": "cypress run --env mobile=true",
     "cy:run": "cypress run",
-    "ssr:serve": "yarn start",
+    "ssr:serve": "node .output/server/index.mjs",
     "storyblok:download": "env-cmd -f .env.storyblok -x storyblok pull-components --space \\$STORYBLOK_SPACE_ID",
     "storyblok:generate": "node scripts/storyblok-generate.cjs ",
     "storyblok:login": "env-cmd -f .env.storyblok -x storyblok login --token \\$STORYBLOK_PERSONAL_TOKEN --region eu",
