@@ -1809,10 +1809,10 @@
     ufo "^1.1.1"
     utility-types "^3.10.0"
 
-"@scayle/storefront-nuxt@^7.10.0":
-  version "7.10.0"
-  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.10.0.tgz#2684148d73c1dfeae3393cfff6795dfa4c65d7be"
-  integrity sha1-JoQUjXPB3+rjOTz/9nld+kxl174=
+"@scayle/storefront-nuxt@7.11.0":
+  version "7.11.0"
+  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.11.0.tgz#8f74c1748aa0066d7f547454d2bc1bdb87bc737a"
+  integrity sha1-j3TBdIqgBm1/VHRU0rwb24e8c3o=
   dependencies:
     "@nuxt/kit" "3.7.1"
     "@scayle/h3-session" "0.2.0"
@@ -1890,10 +1890,10 @@
   dependencies:
     storyblok-js-client "^5.14.2"
 
-"@storyblok/nuxt@^5.6.6":
-  version "5.6.11"
-  resolved "https://registry.yarnpkg.com/@storyblok/nuxt/-/nuxt-5.6.11.tgz#62ce9e1f1a504731cd692d2aed2cf268b92fe36e"
-  integrity sha512-07txF8gguLXJ8wkdiLK+DIkG64AjyH6XsTYEqjxseclDh5IcVqkXMJcJl0juF7aX45Vl7Nvq7y5TtOw0NH5P/w==
+"@storyblok/nuxt@5.6.6":
+  version "5.6.6"
+  resolved "https://registry.yarnpkg.com/@storyblok/nuxt/-/nuxt-5.6.6.tgz#c98f88a37caca5ad2d423f2949f30cfe41c1e026"
+  integrity sha512-SvSYJwSA0A/e+yj0kvzjSh61W5Bol6F9hTgHOjkdr0O9pKSJPHx3ZPJDFZRZLuYh6vFfi9rqmSJBv+H3WfTZZQ==
   dependencies:
     "@nuxt/kit" "^3.6.5"
     "@storyblok/vue" "^7.1.11"
@@ -1913,19 +1913,19 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@tailwindcss/aspect-ratio@^0.4.2":
+"@tailwindcss/aspect-ratio@0.4.2":
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/@tailwindcss/aspect-ratio/-/aspect-ratio-0.4.2.tgz#9ffd52fee8e3c8b20623ff0dcb29e5c21fb0a9ba"
   integrity sha512-8QPrypskfBa7QIMuKHg2TA7BqES6vhBrDLOv8Unb6FcFyd3TjKbc6lcmb9UPQHxfl24sXoJ41ux/H7qQQvfaSQ==
 
-"@tailwindcss/forms@^0.5.6":
+"@tailwindcss/forms@0.5.6":
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/@tailwindcss/forms/-/forms-0.5.6.tgz#29c6c2b032b363e0c5110efed1499867f6d7e868"
   integrity sha512-Fw+2BJ0tmAwK/w01tEFL5TiaJBX1NLT1/YbWgvm7ws3Qcn11kiXxzNTEQDMs5V3mQemhB56l3u0i9dwdzSQldA==
   dependencies:
     mini-svg-data-uri "^1.2.3"
 
-"@tailwindcss/typography@^0.5.9":
+"@tailwindcss/typography@0.5.9":
   version "0.5.9"
   resolved "https://registry.yarnpkg.com/@tailwindcss/typography/-/typography-0.5.9.tgz#027e4b0674929daaf7c921c900beee80dbad93e8"
   integrity sha512-t8Sg3DyynFysV9f4JDOVISGsjazNb48AeIYQwcL+Bsq5uf4RYL75C1giZ43KISjeDGBaTN3Kxh7Xj/vRSMJUUg==
@@ -1978,7 +1978,7 @@
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
 
-"@types/color@^3.0.4":
+"@types/color@3.0.4":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@types/color/-/color-3.0.4.tgz#53ceca0946660c7779442948878172c6ace13777"
   integrity sha512-OpisS4bqJJwbkkQRrMvURf3DOxBoAg9mysHYI7WgrWpSYHqHGKYBULHdz4ih77SILcLDo/zyHGFyfIl9yb8NZQ==
@@ -2113,6 +2113,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.5.9.tgz#a70ec9d8fa0180a314c3ede0e20ea56ff71aed9a"
   integrity sha512-PcGNd//40kHAS3sTlzKB9C9XL4K0sTup8nbG5lC14kzEteTNuAFh9u5nA0o5TWnSG2r/JNPRXFVcHJIIeRlmqQ==
 
+"@types/node@18.17.3":
+  version "18.17.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.17.3.tgz#409febdc84478b452306a8112c692e800ad9f6fe"
+  integrity sha512-2x8HWtFk0S99zqVQABU9wTpr8wPoaDHZUcAkoTKH+nL7kPv3WUI9cRi/Kk5Mz4xdqXSqTkKP7IWNoQQYCnDsTA==
+
 "@types/node@^14.0.1":
   version "14.18.58"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.58.tgz#547e64027defb95f34824794574dabf5417bc615"
@@ -2122,11 +2127,6 @@
   version "16.18.48"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.48.tgz#3bc872236cdb31cb51024d8875d655e25db489a4"
   integrity sha512-mlaecDKQ7rIZrYD7iiKNdzFb6e/qD5I9U1rAhq+Fd+DWvYVs+G2kv74UFHmSOlg5+i/vF3XxuR522V4u8BqO+Q==
-
-"@types/node@^18.17.3":
-  version "18.17.14"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.17.14.tgz#a621ad26e7eb076d6846dd3d39557ddf9d89f04b"
-  integrity sha512-ZE/5aB73CyGqgQULkLG87N9GnyGe5TcQjv34pwS8tfBs1IkCh0ASM69mydb2znqd6v0eX+9Ytvk6oQRqu8T1Vw==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -4546,7 +4546,7 @@ entities@^4.2.0, entities@^4.4.0:
   resolved "https://registry.yarnpkg.com/entities/-/entities-4.5.0.tgz#5d268ea5e7113ec74c4d033b79ea5a35a488fb48"
   integrity sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==
 
-env-cmd@^10.1.0:
+env-cmd@10.1.0:
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/env-cmd/-/env-cmd-10.1.0.tgz#c7f5d3b550c9519f137fdac4dd8fb6866a8c8c4b"
   integrity sha512-mMdWTT9XKN7yNth/6N6g2GuKuJTsKMDHlQFUDacb/heQRRWOTIZ42t1rMHnQu4jYxU1ajdTeJM+9eEETlqToMA==
@@ -10153,17 +10153,17 @@ std-env@^3.3.3, std-env@^3.4.3:
   resolved "https://registry.yarnpkg.com/std-env/-/std-env-3.4.3.tgz#326f11db518db751c83fd58574f449b7c3060910"
   integrity sha512-f9aPhy8fYBuMN+sNfakZV18U39PbalgjXG3lLB9WkaYTxijru61wb57V9wxxNthXM5Sd88ETBWi29qLAsHO52Q==
 
+storyblok-js-client@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-6.0.0.tgz#e1a8b7dcc95ba310cb3c46226937ece27fe1fb88"
+  integrity sha512-NVk2r3EhKJ3Uh+wlPccfvgxyUSv0/LW20tifgkTV8JiIwHT9L/hvAnP8vxEZ+xrLCSskQ6ZrN+0p5WjGrv9WXw==
+
 storyblok-js-client@^5.14.0, storyblok-js-client@^5.14.2:
   version "5.14.4"
   resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-5.14.4.tgz#bfc69995bc4ca40a9bd1e5745a651b4eca591b08"
   integrity sha512-9yY33tvfO3Cbe25h/l6K0T3IxJeOOyGl/pCwsd55woT0ZEBhIiEZoMumpRsyLjD5AedW9KXLbLjMXhHazkepCA==
 
-storyblok-js-client@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-6.0.0.tgz#e1a8b7dcc95ba310cb3c46226937ece27fe1fb88"
-  integrity sha512-NVk2r3EhKJ3Uh+wlPccfvgxyUSv0/LW20tifgkTV8JiIwHT9L/hvAnP8vxEZ+xrLCSskQ6ZrN+0p5WjGrv9WXw==
-
-storyblok@^3.25.2:
+storyblok@3.25.2:
   version "3.25.2"
   resolved "https://registry.yarnpkg.com/storyblok/-/storyblok-3.25.2.tgz#66f9f0fc5b3f327e0455a647adfe3d5ed56563ce"
   integrity sha512-vj4uR4kFBiL82SenqAIBg8NywAF5TAIdZd528uOJXJh8QjadtNn56j/5F36kbEwq2cj6cXnB4wGXWchvXxCGOw==
