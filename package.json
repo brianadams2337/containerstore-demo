@@ -40,7 +40,7 @@
     "@types/node": "18.17.15",
     "autoprefixer": "10.4.15",
     "cypress": "12.17.4",
-    "cypress-real-events": "1.10.1",
+    "cypress-real-events": "1.10.2",
     "env-cmd": "10.1.0",
     "eslint": "8.49.0",
     "eslint-plugin-cypress": "2.14.0",
