@@ -35,7 +35,7 @@
     "@scayle/eslint-config-storefront": "3.2.3",
     "@scayle/prettier-config-storefront": "2.0.1",
     "@types/color": "3.0.4",
-    "@types/node": "18.17.14",
+    "@types/node": "18.17.15",
     "autoprefixer": "10.4.15",
     "cypress": "12.17.4",
     "cypress-real-events": "1.10.1",
