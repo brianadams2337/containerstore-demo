@@ -3,7 +3,6 @@
     <Intersect class="aspect-h-4 aspect-w-3" @enter="onIntersect">
       <NuxtImg
         v-if="isInViewport"
-        ref="element"
         :src="blok.image.filename"
         sizes="xs:80vw sm:25vw md:25vw lg:25vw xl:25vw xxl:25vw 2xl:25vw"
         provider="storyblok"

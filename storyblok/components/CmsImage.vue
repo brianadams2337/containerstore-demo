@@ -1,5 +1,5 @@
 <template>
-  <Intersect v-editable="blok">
+  <Intersect v-editable="blok" @enter="onIntersect">
     <NuxtPicture
       v-if="imageSource?.src"
       provider="storyblok"
@@ -44,16 +44,11 @@ const imageSource = computed(() =>
   props.isTeaser ? getTeaserImage(props.blok) : sanitize(props.blok),
 )
 
-// const { stop } = useIntersectionObserver(
-//   element,
-//   ([{ isIntersecting }]) => {
-//     if (isIntersecting && props.blok.promotion_id) {
-//       // trackPromotion('view_promotion', props.blok)
-//       stop()
-//     }
-//   },
-//   {
-//     threshold: 0.5,
-//   },
-// )
+const onIntersect = (_: IntersectionObserverEntry, stop: () => void) => {
+  if (!props.blok.promotion_id) {
+    return
+  }
+  //   trackPromotion('view_promotion', props.blok)
+  stop()
+}
 </script>
