@@ -3,8 +3,8 @@
     role="option"
     :aria-selected="isActive"
     tabindex="0"
-    @click="handleClick(value)"
-    @keydown.enter="handleClick(value)">
+    @click="handleClick"
+    @keydown.enter="handleClick">
     <slot :is-active="isActive" />
   </li>
 </template>
@@ -24,11 +24,11 @@ const props = defineProps({
 
 const { activeValue, setActive, toggle } = useListbox<T>(props.listName)
 
-const handleClick = (value?: T) => {
-  if (!value?.disabled) {
+const handleClick = () => {
+  if (!props?.value || ('disabled' in props.value && !props?.value?.disabled)) {
     return
   }
-  setActive(value)
+  setActive(props.value as T)
   toggle()
 }
 
