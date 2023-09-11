@@ -83,7 +83,7 @@
     "nuxt-jsonld": "2.0.8",
     "nuxt-lazy-hydrate": "1.0.0",
     "nuxt-swiper": "1.2.2",
-    "storyblok-js-client": "6.0.0",
+    "storyblok-js-client": "6.1.0",
     "ufo": "1.3.0",
     "vue-slider-component": "4.1.0-beta.7",
     "yn": "5.0.0"
