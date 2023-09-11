@@ -57,11 +57,12 @@ const options: Partial<ModuleOptions> = {
   bapi: {
     host: environment.BAPI_HOST,
     token: environment.BAPI_TOKEN,
+    // TODO: Is shopId required here for tenants that need to separate shop/customer data?
   },
   withParams,
   rpcMethodNames: Object.keys(customRpcMethods),
   publicShopData: ['paymentProviders'],
-  shopSelector: 'path',
+  shopSelector: environment.DOMAIN_PER_LOCALE ? 'domain' : 'path',
   stores: shops.map((shop) => ({
     ...baseShopConfig,
     shopId: shop.shopId,
@@ -86,14 +87,26 @@ const options: Partial<ModuleOptions> = {
     password: process.env.REDIS_PASSWORD,
   },
   log: {
-    name: 'demo-nuxt3',
+    name: 'storefront-boilerplate-nuxt',
   },
   cache: {
     auth: {
       username: 'max',
       password: 'mustermann',
     },
+    // TODO: Check following if required:
+    // enabled: process.env.AY_CACHE_DISABLED !== 'true',
+    // ttl: 60 * 60,
+    // sendCacheControlHeaders: true,
+    // maxAge: 60 * 60,
+    // staleWhileRevalidate: 60 * 60 * 24,
+    // generateCacheKey: () =>
   },
+  session: {
+    sameSite: process.env.APP_ENV !== 'production' ? 'none' : 'lax',
+    maxAge: 2419200000, // four weeks in milliseconds
+  },
+  imageBaseUrl: 'https://brb-demo.cdn.aboutyou.cloud/',
 }
 
 export default options

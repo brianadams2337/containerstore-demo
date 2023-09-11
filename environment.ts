@@ -20,6 +20,7 @@ export default cleanEnv(
     DOMAIN_DE_AT: str({ default: '' }),
     DOMAIN_DE_CH: str({ default: '' }),
     DOMAIN_DEFAULT: str({ default: '' }),
+    DOMAIN_PER_LOCALE: bool({ default: true }),
 
     CHECKOUT_HOST: str({ default: '' }),
     CHECKOUT_TOKEN_1001: str(),
@@ -34,10 +35,14 @@ export default cleanEnv(
     HTTPS_KEY: str({ default: '' }),
     HTTPS_CERT: str({ default: '' }),
 
+    GOOGLE_TAG_MANAGER_ID: str({ default: '' }),
+
     STORYBLOK_ACCESS_TOKEN: str(),
     STORYBLOK_WEBHOOK_SECRET: str({
       default: 'hereupon-caviar-nicety-wanton',
     }),
+
+    SENTRY_DSN: str({ default: '' }),
   },
   {
     reporter: (options) => {
