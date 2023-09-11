@@ -3885,10 +3885,10 @@ cuint@^0.2.2:
   resolved "https://registry.yarnpkg.com/cuint/-/cuint-0.2.2.tgz#408086d409550c2631155619e9fa7bcadc3b991b"
   integrity sha512-d4ZVpCW31eWwCMe1YT3ur7mUDnTXbgwyzaL320DrcRT45rfjYxkt5QWLrmOJ+/UEAI2+fQgKe/fCjR8l4TpRgw==
 
-cypress-real-events@1.10.1:
-  version "1.10.1"
-  resolved "https://registry.yarnpkg.com/cypress-real-events/-/cypress-real-events-1.10.1.tgz#289f2cb4a1d452e54a19e1ecd02931016b41b8ff"
-  integrity sha512-l4WvEymhup8EAheXVPqEi5gofBTCvhyYL/i3fOcJtL32prfpZ6jhnnXSLJsxOAl/RlmygIEP1ZeRpqrrDPgGIA==
+cypress-real-events@1.10.2:
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/cypress-real-events/-/cypress-real-events-1.10.2.tgz#caabf694fb173a3a6cc250c42190160e60aaa403"
+  integrity sha512-q+Bc63PNIyBlXgzKFatd7gjWj9hw+kqkLpckX8UbXSDEmEuH8BJgua8LMd0do0pDIGvzueO5RVVLaR201HXC3A==
 
 cypress@12.17.4:
   version "12.17.4"
