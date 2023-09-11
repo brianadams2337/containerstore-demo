@@ -28,9 +28,7 @@ const viewport = useViewport()
 
 const { openUserFlyout, closeUserFlyout, isUserFlyoutOpen } = useUiState()
 const router = useRouter()
-// const { user } = useUser()
-
-const user = ref({})
+const { user } = await useUser()
 
 const isGreatedThanMd = computed(() => viewport.isGreaterOrEquals('md'))
 

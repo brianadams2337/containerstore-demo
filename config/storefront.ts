@@ -15,9 +15,6 @@ const baseShopConfig = {
     'klarna',
     'paypal',
   ],
-  auth: {
-    resetPasswordUrl: '',
-  },
   storeCampaignKeyword: environment.CAMPAIGN_KEY_PREFIX,
   appKeys: {
     wishlistKey: 'wishlist_{shopId}_{userId}',
@@ -53,6 +50,12 @@ const shops = [
   },
 ]
 
+const protocol =
+  (environment.HTTPS_KEY && environment.HTTPS_CERT) ||
+  process.env.NODE_ENV === 'production'
+    ? 'https://'
+    : 'http://'
+
 const options: Partial<ModuleOptions> = {
   bapi: {
     host: environment.BAPI_HOST,
@@ -68,6 +71,9 @@ const options: Partial<ModuleOptions> = {
     shopId: shop.shopId,
     path: shop.path,
     locale: shop.locale,
+    auth: {
+      resetPasswordUrl: `${protocol}${shop.locale}/signin/`,
+    },
     currency: shop.currency,
     checkout: {
       shopId: shop.shopId,
