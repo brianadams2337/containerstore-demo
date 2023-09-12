@@ -36,14 +36,9 @@ export const useAuthentication = async (
 
   const { auth: authConfig } = useRuntimeConfig().public
 
-  //
   // const { trackAuthenticated, trackLogout } = useTrackingEvents()
 
-  const {
-    user,
-    // customerType,
-    fetch: refreshUser,
-  } = await useUser({ autoFetch: false })
+  const { user, fetch: refreshUser } = await useUser({ autoFetch: false })
   const { fetch: refreshWishlist } = await useWishlist()
   const { fetch: refreshBasket } = await useBasket()
 
