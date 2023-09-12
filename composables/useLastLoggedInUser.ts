@@ -3,64 +3,58 @@ export interface LastLoggedInUser {
   email: string
 }
 
-const LAST_LOGGED_IN_USER_KEY = 'last_logged_in_user'
-export const NO_LAST_LOGGED_IN_USER: LastLoggedInUser = {
+const USER_KEY = 'last_logged_in_user'
+
+export const setUserDefault = (): LastLoggedInUser => ({
   firstName: '',
   email: '',
-}
+})
 
 export const useLastLoggedInUser = async () => {
   const { user, isLoggedIn } = await useUser({ autoFetch: false })
-  const lastLoggedInUser = useState(
-    LAST_LOGGED_IN_USER_KEY,
-    () => NO_LAST_LOGGED_IN_USER,
-  )
+  const lastLoggedInUser = useState(USER_KEY, setUserDefault)
+
+  const isLocalStorageActionable = () => {
+    const isLocalStorageAvailable =
+      window.localStorage && 'localStorage' in window
+
+    const isWindowAvailable = typeof window !== 'undefined'
+
+    return process.client && isWindowAvailable && isLocalStorageAvailable
+  }
 
   const getLastLoggedInUser = () => {
-    if (
-      process.client &&
-      typeof window !== 'undefined' &&
-      'localStorage' in window &&
-      window.localStorage
-    ) {
-      const entry = window.localStorage.getItem(LAST_LOGGED_IN_USER_KEY)
-      if (entry) {
-        return JSON.parse(atob(entry))
-      }
+    if (isLocalStorageActionable()) {
+      const entry = window.localStorage.getItem(USER_KEY)
+      return entry && JSON.parse(atob(entry))
     }
 
-    return NO_LAST_LOGGED_IN_USER
+    return setUserDefault()
   }
 
   const setLastLoggedInUser = (user: LastLoggedInUser) => {
-    if (
-      process.client &&
-      typeof window !== 'undefined' &&
-      'localStorage' in window &&
-      window.localStorage
-    ) {
-      return window.localStorage.setItem(
-        LAST_LOGGED_IN_USER_KEY,
-        btoa(JSON.stringify(user)),
-      )
+    if (isLocalStorageActionable()) {
+      return window.localStorage.setItem(USER_KEY, btoa(JSON.stringify(user)))
     }
   }
 
   const removeLastLoggedInUser = () => {
-    setLastLoggedInUser(NO_LAST_LOGGED_IN_USER)
-    lastLoggedInUser.value = NO_LAST_LOGGED_IN_USER
+    setLastLoggedInUser(setUserDefault())
+    lastLoggedInUser.value = setUserDefault()
   }
 
   watch(isLoggedIn, () => {
     if (isLoggedIn.value) {
       const isGuest = user.value?.status?.isGuestCustomer
 
-      if (!isGuest) {
-        setLastLoggedInUser({
-          firstName: user.value!.firstName,
-          email: user.value!.email || '',
-        })
+      if (isGuest) {
+        return
       }
+
+      setLastLoggedInUser({
+        firstName: user.value!.firstName,
+        email: user.value!.email || '',
+      })
     }
   })
 

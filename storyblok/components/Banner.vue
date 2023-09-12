@@ -82,21 +82,27 @@ const props = defineProps({
 
 const { close, isOpen, shouldBeVisible: _shouldBeVisible } = useBanner()
 // const { trackPromotion } = useTrackingEvents()
-const isActive = computed(() =>
-  isEmpty(props.blok) ? true : props.blok.is_active,
-)
+const isActive = computed(() => {
+  return isEmpty(props.blok) ? true : props.blok.is_active
+})
 
 const shouldBeVisible = computed(() => _shouldBeVisible(props.publishedAt))
 
-const is = (value: string | string[]) =>
-  (props.type && value.includes(props.type)) ||
-  (props.blok.type && value.includes(props.blok.type))
+const is = (value: string | string[]) => {
+  return (
+    (props.type && value.includes(props.type)) ||
+    (props.blok.type && value.includes(props.blok.type))
+  )
+}
+
 const hasScrollableLinks = computed(() => !isEmpty(props.blok?.links))
 const cachedUrl = computed(() => props.blok.cta_url?.cached_url)
-const baseTag = computed(() => (cachedUrl.value ? 'StoryblokLink' : 'div'))
-const bindings = computed(() =>
-  cachedUrl.value ? { to: cachedUrl.value } : {},
-)
+const baseTag = computed(() => {
+  return cachedUrl.value ? resolveComponent('StoryblokLink') : 'div'
+})
+const bindings = computed(() => {
+  return cachedUrl.value ? { to: cachedUrl.value } : {}
+})
 
 const classes = computed(() => ({
   'bg-tertiary-1-500 text-black': is('info'),

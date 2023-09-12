@@ -20,13 +20,11 @@
         </template>
       </VerticalAccordion>
 
-      <ForgottenPasswordForm
-        v-if="showForgottenPassword"
-        @close="closeModal()" />
+      <ForgottenPasswordForm v-if="showForgottenPassword" @close="closeModal" />
 
       <UpdatePasswordByHashForm
         v-if="showUpdatePasswordByHash"
-        @close="closeModal()" />
+        @close="closeModal" />
     </div>
   </ClientOnly>
 </template>

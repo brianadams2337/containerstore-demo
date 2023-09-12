@@ -62,6 +62,11 @@ const options: Partial<ModuleOptions> = {
     token: environment.BAPI_TOKEN,
     // TODO: Is shopId required here for tenants that need to separate shop/customer data?
   },
+  oauth: {
+    host: environment.OAUTH_API_HOST,
+    clientId: environment.OAUTH_CLIENT_ID,
+    clientSecret: environment.OAUTH_CLIENT_SECRET,
+  },
   withParams,
   rpcMethodNames: Object.keys(customRpcMethods),
   publicShopData: ['paymentProviders'],

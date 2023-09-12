@@ -28,6 +28,10 @@ export default cleanEnv(
     CHECKOUT_USER_1001: str(),
     CHECKOUT_ACCESS_HEADER: str({ default: undefined }),
 
+    OAUTH_API_HOST: str({ default: '' }),
+    OAUTH_CLIENT_ID: str({ default: '' }),
+    OAUTH_CLIENT_SECRET: str({ default: '' }),
+
     BASIC_AUTH: str({ default: '' }),
 
     CAMPAIGN_KEY_PREFIX: str(),
