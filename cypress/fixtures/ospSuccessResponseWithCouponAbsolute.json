@@ -1,0 +1,619 @@
+{
+  "address": {
+    "billing": {
+      "additional": "2 OG",
+      "city": "München",
+      "countryCode": "DEU",
+      "createdAt": "2022-09-20T11:46:56+02:00",
+      "houseNumber": "27",
+      "id": 77,
+      "isBillingAddress": false,
+      "isDefault": {
+        "billing": false,
+        "shipping": false
+      },
+      "isShippingAddress": true,
+      "recipient": {
+        "firstName": "Cassio",
+        "gender": "m",
+        "lastName": "Cabral",
+        "type": "personal"
+      },
+      "street": "Mainstr",
+      "updatedAt": "2022-09-20T11:46:56+02:00",
+      "zipCode": "81379"
+    },
+    "shipping": {
+      "additional": "2 OG",
+      "city": "München",
+      "countryCode": "DEU",
+      "createdAt": "2022-09-20T11:46:56+02:00",
+      "houseNumber": "27",
+      "id": 77,
+      "isBillingAddress": false,
+      "isDefault": {
+        "billing": false,
+        "shipping": false
+      },
+      "isShippingAddress": true,
+      "recipient": {
+        "firstName": "Cassio",
+        "gender": "m",
+        "lastName": "Cabral",
+        "type": "personal"
+      },
+      "street": "Mainstr",
+      "updatedAt": "2022-09-20T11:46:56+02:00",
+      "zipCode": "81379"
+    }
+  },
+  "basketKey": "biNATOGBAWpAvj98zsBaXihWqSuKPCJI",
+  "confirmedAt": "2022-10-20T15:54:33+02:00",
+  "contacts": [
+    {
+      "type": "carrier"
+    }
+  ],
+  "cost": {
+    "appliedReductions": [
+      {
+        "amount": {
+          "absoluteWithTax": 500,
+          "relative": 0.032679738562091505
+        },
+        "category": "voucher",
+        "type": "absolute"
+      }
+    ],
+    "tax": {
+      "vat": {
+        "amount": 2523
+      }
+    },
+    "withTax": 15800,
+    "withoutTax": 13277
+  },
+  "createdAt": "2022-10-20T15:53:32+02:00",
+  "currencyCode": "EUR",
+  "customData": {
+    "campaignKey": "Test_EDT",
+    "ipCountry": {
+      "origin": "INTERNAL",
+      "value": "DE"
+    },
+    "originDevice": "desktop",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+  },
+  "customer": {
+    "authentication": {
+      "type": "password"
+    },
+    "createdAt": "2022-08-29T16:55:17+02:00",
+    "email": "cassioscabral@gmail.com",
+    "firstName": "Cassio",
+    "gender": "m",
+    "id": 88,
+    "ipAddress": "54.74.228.207",
+    "lastName": "Cabral",
+    "status": {
+      "isActive": true,
+      "isGuestCustomer": false,
+      "isTestCustomer": false
+    },
+    "type": "personal",
+    "updatedAt": "2022-10-20T15:51:57+02:00",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+  },
+  "id": 439,
+  "items": [
+    {
+      "createdAt": "2022-10-20T15:53:32+02:00",
+      "currency": "EUR",
+      "id": 1198,
+      "key": "c54e7837e0cd0ced286cb5995327d1ab",
+      "merchant": {
+        "id": 1
+      },
+      "packageId": 1,
+      "price": {
+        "overrideWithTax": 0,
+        "overrideWithoutTax": 0,
+        "tax": {
+          "vat": {
+            "amount": 543,
+            "rate": 0.19
+          }
+        },
+        "undiscountedWithOutTax": 2857,
+        "undiscountedWithTax": 3400,
+        "withTax": 3400,
+        "withoutTax": 2857
+      },
+      "product": {
+        "advancedAttributes": {
+          "productName": {
+            "key": "productName",
+            "label": "Produktname",
+            "values": [
+              {
+                "fieldSet": [
+                  [
+                    {
+                      "value": "Batist-Blusentop"
+                    }
+                  ]
+                ]
+              }
+            ]
+          },
+          "siblings": {
+            "key": "siblings",
+            "label": "siblings",
+            "values": [
+              {
+                "fieldSet": [
+                  [
+                    {
+                      "isSoldOut": false,
+                      "productId": 1100
+                    },
+                    {
+                      "isSoldOut": false,
+                      "productId": 1101
+                    }
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "attributes": {
+          "brand": {
+            "key": "brand",
+            "label": "Marke",
+            "multiSelect": false,
+            "values": {
+              "id": 598,
+              "label": "s.Oliver",
+              "value": "soliver_1"
+            }
+          },
+          "brandLogo": {
+            "key": "brandLogo",
+            "label": "Brand logo",
+            "multiSelect": false,
+            "values": {
+              "id": 598,
+              "label": "s.Oliver"
+            }
+          },
+          "category": {
+            "key": "category",
+            "label": "Master Categories (AG)",
+            "multiSelect": true,
+            "values": [
+              {
+                "id": 14,
+                "label": "Bekleidung",
+                "value": "1"
+              },
+              {
+                "id": 18,
+                "label": "Bekleidung|Damen",
+                "value": "5"
+              },
+              {
+                "id": 20,
+                "label": "Bekleidung|Damen|Shirts",
+                "value": "7"
+              }
+            ]
+          },
+          "color": {
+            "key": "color",
+            "label": "Color",
+            "multiSelect": false,
+            "values": {
+              "id": 12,
+              "label": "Gelb",
+              "value": "gelb"
+            }
+          },
+          "colorHex": {
+            "key": "colorHex",
+            "label": "Farbcode",
+            "multiSelect": false,
+            "values": {
+              "id": 44,
+              "label": "FFFF00",
+              "value": "ffff00"
+            }
+          },
+          "description": {
+            "key": "description",
+            "label": "Description",
+            "multiSelect": false
+          },
+          "name": {
+            "key": "name",
+            "label": "Name",
+            "multiSelect": false,
+            "values": {
+              "label": "Batist-Blusentop"
+            }
+          }
+        },
+        "categories": [
+          [
+            {
+              "categoryHidden": false,
+              "categoryId": 2045,
+              "categoryName": "Women",
+              "categorySlug": "women",
+              "categoryUrl": "/women"
+            }
+          ],
+          [
+            {
+              "categoryHidden": false,
+              "categoryId": 2045,
+              "categoryName": "Women",
+              "categorySlug": "women",
+              "categoryUrl": "/women"
+            },
+            {
+              "categoryHidden": true,
+              "categoryId": 2048,
+              "categoryName": "Clothing",
+              "categorySlug": "clothing",
+              "categoryUrl": "/women/clothing"
+            }
+          ],
+          [
+            {
+              "categoryHidden": false,
+              "categoryId": 2045,
+              "categoryName": "Women",
+              "categorySlug": "women",
+              "categoryUrl": "/women"
+            },
+            {
+              "categoryHidden": true,
+              "categoryId": 2048,
+              "categoryName": "Clothing",
+              "categorySlug": "clothing",
+              "categoryUrl": "/women/clothing"
+            },
+            {
+              "categoryHidden": false,
+              "categoryId": 2055,
+              "categoryName": "Shirts",
+              "categorySlug": "shirts",
+              "categoryUrl": "/women/clothing/shirts"
+            }
+          ]
+        ],
+        "createdAt": "2022-08-26T15:13:24+00:00",
+        "id": 1099,
+        "images": [
+          {
+            "hash": "images/275d1c55d269e12584b78923f4644023.jpg"
+          },
+          {
+            "hash": "images/488582581d43cef7245dd6ca26227d26.jpg"
+          },
+          {
+            "hash": "images/413d109627161422267ecb7f49ff7aba.jpg"
+          },
+          {
+            "hash": "images/5fea25cbdda63ffb183568e6d4a6685d.jpg"
+          }
+        ],
+        "masterKey": "14905134276-86",
+        "name": "Batist-Blusentop",
+        "updatedAt": "2022-08-29T08:41:16+00:00"
+      },
+      "reservationKey": "4560",
+      "status": "available",
+      "updatedAt": "2022-10-20T15:54:34+02:00",
+      "variant": {
+        "attributes": {
+          "size": {
+            "key": "size",
+            "label": "Size",
+            "multiSelect": false,
+            "values": {
+              "id": 597,
+              "label": "36",
+              "value": "36"
+            }
+          }
+        },
+        "createdAt": "2022-08-26T15:13:24+00:00",
+        "id": 4805,
+        "referenceKey": "DEMO_V_32",
+        "stock": {
+          "isSellableWithoutStock": false,
+          "quantity": 997,
+          "supplierId": 1,
+          "warehouseId": 1
+        },
+        "updatedAt": "2022-08-30T12:07:21+00:00"
+      },
+      "warehouseId": 1
+    },
+    {
+      "createdAt": "2022-10-20T15:53:32+02:00",
+      "currency": "EUR",
+      "id": 1199,
+      "key": "4d2e7bd33c475784381a64e43e50922f",
+      "merchant": {
+        "id": 1
+      },
+      "packageId": 1,
+      "price": {
+        "overrideWithTax": 0,
+        "overrideWithoutTax": 0,
+        "tax": {
+          "vat": {
+            "amount": 2060,
+            "rate": 0.19
+          }
+        },
+        "undiscountedWithOutTax": 10840,
+        "undiscountedWithTax": 12900,
+        "withTax": 12900,
+        "withoutTax": 10840
+      },
+      "product": {
+        "advancedAttributes": {
+          "productName": {
+            "key": "productName",
+            "label": "Produktname",
+            "values": [
+              {
+                "fieldSet": [
+                  [
+                    {
+                      "value": "Polo Ralph Lauren Bluse 'HEIDI'"
+                    }
+                  ]
+                ]
+              }
+            ]
+          },
+          "siblings": {
+            "key": "siblings",
+            "label": "siblings",
+            "values": [
+              {
+                "fieldSet": [
+                  [
+                    {
+                      "isSoldOut": false,
+                      "productId": 1079
+                    },
+                    {
+                      "isSoldOut": false,
+                      "productId": 1080
+                    }
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "attributes": {
+          "brand": {
+            "key": "brand",
+            "label": "Marke",
+            "multiSelect": false,
+            "values": {
+              "id": 61,
+              "label": "Polo Ralph Lauren",
+              "value": "polo_ralph_lauren"
+            }
+          },
+          "brandLogo": {
+            "key": "brandLogo",
+            "label": "Brand logo",
+            "multiSelect": false,
+            "values": {
+              "id": 61,
+              "label": "Polo Ralph Lauren"
+            }
+          },
+          "category": {
+            "key": "category",
+            "label": "Master Categories (AG)",
+            "multiSelect": true,
+            "values": [
+              {
+                "id": 14,
+                "label": "Bekleidung",
+                "value": "1"
+              },
+              {
+                "id": 65,
+                "label": "Bekleidung|Damen|Blusen",
+                "value": "26"
+              },
+              {
+                "id": 18,
+                "label": "Bekleidung|Damen",
+                "value": "5"
+              }
+            ]
+          },
+          "color": {
+            "key": "color",
+            "label": "Color",
+            "multiSelect": false,
+            "values": {
+              "id": 62,
+              "label": "Rosa",
+              "value": "rosa"
+            }
+          },
+          "colorHex": {
+            "key": "colorHex",
+            "label": "Farbcode",
+            "multiSelect": false,
+            "values": {
+              "id": 624,
+              "label": "FFC0CB",
+              "value": "ffc0cb"
+            }
+          },
+          "description": {
+            "key": "description",
+            "label": "Description",
+            "multiSelect": false
+          },
+          "name": {
+            "key": "name",
+            "label": "Name",
+            "multiSelect": false,
+            "values": {
+              "label": "Polo Ralph Lauren Bluse 'HEIDI'"
+            }
+          },
+          "producttype": {
+            "key": "producttype",
+            "label": "Produkttyp",
+            "multiSelect": false,
+            "values": {
+              "id": 68,
+              "label": "Bluse",
+              "value": "bluse"
+            }
+          }
+        },
+        "categories": [
+          [
+            {
+              "categoryHidden": false,
+              "categoryId": 2045,
+              "categoryName": "Women",
+              "categorySlug": "women",
+              "categoryUrl": "/women"
+            }
+          ],
+          [
+            {
+              "categoryHidden": false,
+              "categoryId": 2045,
+              "categoryName": "Women",
+              "categorySlug": "women",
+              "categoryUrl": "/women"
+            },
+            {
+              "categoryHidden": true,
+              "categoryId": 2048,
+              "categoryName": "Clothing",
+              "categorySlug": "clothing",
+              "categoryUrl": "/women/clothing"
+            }
+          ]
+        ],
+        "createdAt": "2022-04-26T14:35:23+00:00",
+        "id": 5,
+        "images": [
+          {
+            "hash": "images/da13bccc737197c0aa226bacf3cbf46a.png"
+          },
+          {
+            "hash": "images/46d75beec25acded3f219539d2ab5920.png"
+          },
+          {
+            "hash": "images/7ddebf6136a1992583b48bd9cf59075f.png"
+          },
+          {
+            "hash": "images/5843f4324eece5d454b97a50f7a7b5a2.png"
+          }
+        ],
+        "masterKey": "PRL0210004000001",
+        "name": "Polo Ralph Lauren Bluse 'HEIDI'",
+        "updatedAt": "2022-08-26T13:58:48+00:00"
+      },
+      "reservationKey": "4559",
+      "status": "available",
+      "updatedAt": "2022-10-20T15:54:34+02:00",
+      "variant": {
+        "attributes": {
+          "size": {
+            "key": "size",
+            "label": "Size",
+            "multiSelect": false,
+            "values": {
+              "id": 40,
+              "label": "S",
+              "value": "s"
+            }
+          }
+        },
+        "createdAt": "2022-04-26T14:35:23+00:00",
+        "id": 11,
+        "referenceKey": "123456789123",
+        "stock": {
+          "isSellableWithoutStock": false,
+          "quantity": 457,
+          "supplierId": 1,
+          "warehouseId": 1
+        },
+        "updatedAt": "2022-05-05T15:05:27+00:00"
+      },
+      "warehouseId": 1
+    }
+  ],
+  "packages": [
+    {
+      "carrierKey": "DEFAULT",
+      "deliveryDate": {
+        "maximum": "2022-10-24",
+        "minimum": "2022-10-21"
+      },
+      "deliveryStatus": "delegation_pending",
+      "id": 1
+    }
+  ],
+  "payment": [
+    {
+      "amount": 15800,
+      "data": {
+        "success": true,
+        "transaction_id": "b2b_635153193d90f"
+      },
+      "key": "accounting",
+      "transactionKey": "b2b_635153193d90f"
+    }
+  ],
+  "shipping": {
+    "policy": "earliest_shipping"
+  },
+  "shop": {
+    "country": "DEU",
+    "id": 1001,
+    "language": "de"
+  },
+  "status": "payment_reserved",
+  "updatedAt": "2022-10-20T15:54:34+02:00",
+  "vouchers": [
+    {
+      "applicableItems": [
+        {
+          "isApplied": true,
+          "key": "c54e7837e0cd0ced286cb5995327d1ab"
+        },
+        {
+          "isApplied": false,
+          "key": "4d2e7bd33c475784381a64e43e50922f"
+        }
+      ],
+      "code": "Gift-Card-5EUR",
+      "id": 9,
+      "type": "absolute",
+      "value": 500
+    }
+  ]
+}

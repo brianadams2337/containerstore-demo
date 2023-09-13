@@ -47,11 +47,11 @@ export default defineNuxtPlugin(() => {
 
   const withI18nMessage = createI18nMessage({
     t: $i18n.t.bind($i18n),
-    messagePath: ({ $validator }) => `validation.${useSnakeCase($validator)}`,
+    messagePath: ({ $validator }) => `validation.${useSnake($validator)}`,
     messageParams: ({ field, max, otherName, property, ...params }) => ({
       ...params,
       property,
-      field: $i18n.t(`form_fields.${useSnakeCase(field || property)}`),
+      field: $i18n.t(`form_fields.${useSnake(field || property)}`),
       max,
       otherField: otherName,
     }),

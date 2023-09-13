@@ -1,0 +1,810 @@
+{
+  "address": {
+    "billing": {
+      "additional": "2 OG",
+      "city": "München",
+      "countryCode": "DEU",
+      "createdAt": "2022-09-14T14:36:35+02:00",
+      "houseNumber": "27",
+      "id": 77,
+      "isBillingAddress": false,
+      "isDefault": {
+        "billing": false,
+        "shipping": false
+      },
+      "isShippingAddress": true,
+      "recipient": {
+        "firstName": "Cassio",
+        "gender": "m",
+        "lastName": "Cabral",
+        "type": "personal"
+      },
+      "street": "Mainstr",
+      "updatedAt": "2022-09-14T14:36:35+02:00",
+      "zipCode": "81379"
+    },
+    "shipping": {
+      "additional": "2 OG",
+      "city": "München",
+      "countryCode": "DEU",
+      "createdAt": "2022-09-14T14:36:35+02:00",
+      "houseNumber": "27",
+      "id": 77,
+      "isBillingAddress": false,
+      "isDefault": {
+        "billing": false,
+        "shipping": false
+      },
+      "isShippingAddress": true,
+      "recipient": {
+        "firstName": "Cassio",
+        "gender": "m",
+        "lastName": "Cabral",
+        "type": "personal"
+      },
+      "street": "Mainstr",
+      "updatedAt": "2022-09-14T14:36:35+02:00",
+      "zipCode": "81379"
+    }
+  },
+  "basketKey": "3f897f39ea909abdff994105a99f5af5",
+  "confirmedAt": "2022-09-14T14:37:01+02:00",
+  "contacts": [
+    {
+      "type": "carrier"
+    }
+  ],
+  "cost": {
+    "tax": {
+      "vat": {
+        "amount": 2244
+      }
+    },
+    "withTax": 14051,
+    "withoutTax": 11807
+  },
+  "createdAt": "2022-09-14T14:31:00+02:00",
+  "currencyCode": "EUR",
+  "customData": {
+    "campaignKey": "Test_EDT",
+    "ipCountry": {
+      "origin": "INTERNAL",
+      "value": "DE"
+    },
+    "originDevice": "desktop",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+  },
+  "customer": {
+    "authentication": {
+      "type": "password"
+    },
+    "createdAt": "2022-08-29T16:55:17+02:00",
+    "email": "cassioscabral@gmail.com",
+    "firstName": "Cassio",
+    "gender": "m",
+    "id": 88,
+    "ipAddress": "54.74.228.207",
+    "lastName": "Cabral",
+    "status": {
+      "isActive": true,
+      "isGuestCustomer": false,
+      "isTestCustomer": false
+    },
+    "type": "personal",
+    "updatedAt": "2022-09-14T14:35:26+02:00",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+  },
+  "id": 399,
+  "items": [
+    {
+      "createdAt": "2022-09-14T14:31:00+02:00",
+      "currency": "EUR",
+      "id": 1117,
+      "key": "0eec27c419d0fe24e53c90338cdc8bc6",
+      "merchant": {
+        "id": 1
+      },
+      "packageId": 1,
+      "price": {
+        "overrideWithTax": 0,
+        "overrideWithoutTax": 0,
+        "tax": {
+          "vat": {
+            "amount": 1116,
+            "rate": 0.19
+          }
+        },
+        "undiscountedWithOutTax": 5874,
+        "undiscountedWithTax": 6990,
+        "withTax": 6990,
+        "withoutTax": 5874
+      },
+      "product": {
+        "advancedAttributes": {
+          "productName": {
+            "key": "productName",
+            "label": "Produktname",
+            "values": [
+              {
+                "fieldSet": [
+                  [
+                    {
+                      "value": "Uhr 'Moneypenny Royale'"
+                    }
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "attributes": {
+          "brand": {
+            "key": "brand",
+            "label": "Marke",
+            "multiSelect": false,
+            "values": {
+              "id": 593,
+              "label": "Komono",
+              "value": "komono"
+            }
+          },
+          "brandLogo": {
+            "key": "brandLogo",
+            "label": "Brand logo",
+            "multiSelect": false,
+            "values": {
+              "id": 593,
+              "label": "Komono"
+            }
+          },
+          "category": {
+            "key": "category",
+            "label": "Master Categories (AG)",
+            "multiSelect": true,
+            "values": [
+              {
+                "id": 28,
+                "label": "Accessiors",
+                "value": "15"
+              },
+              {
+                "id": 33,
+                "label": "Accessiors|Herren",
+                "value": "20"
+              },
+              {
+                "id": 34,
+                "label": "Accessiors|Herren|Uhren",
+                "value": "21"
+              }
+            ]
+          },
+          "color": {
+            "key": "color",
+            "label": "Color",
+            "multiSelect": false,
+            "values": {
+              "id": 594,
+              "label": "gold",
+              "value": "gold"
+            }
+          },
+          "colorHex": {
+            "key": "colorHex",
+            "label": "Farbcode",
+            "multiSelect": false,
+            "values": {
+              "id": 626,
+              "label": "FFD700",
+              "value": "ffd700"
+            }
+          },
+          "description": {
+            "key": "description",
+            "label": "Description",
+            "multiSelect": false
+          },
+          "name": {
+            "key": "name",
+            "label": "Name",
+            "multiSelect": false,
+            "values": {
+              "label": "Uhr 'Moneypenny Royale'"
+            }
+          }
+        },
+        "categories": [
+          [
+            {
+              "categoryHidden": false,
+              "categoryId": 2054,
+              "categoryName": "Sale",
+              "categoryProperties": [
+                {
+                  "name": "sale",
+                  "value": "Sale"
+                }
+              ],
+              "categorySlug": "sale",
+              "categoryUrl": "/sale"
+            }
+          ],
+          [
+            {
+              "categoryHidden": false,
+              "categoryId": 2046,
+              "categoryName": "Men",
+              "categorySlug": "men",
+              "categoryUrl": "/men"
+            }
+          ],
+          [
+            {
+              "categoryHidden": false,
+              "categoryId": 2046,
+              "categoryName": "Men",
+              "categorySlug": "men",
+              "categoryUrl": "/men"
+            },
+            {
+              "categoryHidden": false,
+              "categoryId": 2053,
+              "categoryName": "Accessories",
+              "categorySlug": "accessories",
+              "categoryUrl": "/men/accessories"
+            }
+          ]
+        ],
+        "createdAt": "2022-08-26T11:45:38+00:00",
+        "id": 1091,
+        "images": [
+          {
+            "hash": "images/40eaf072df721c28e77b08d107fa848c.jpg"
+          },
+          {
+            "hash": "images/304ed46065fe6e3e70b179c82552ad34.jpg"
+          }
+        ],
+        "masterKey": "KOM0005-5",
+        "name": "Uhr 'Moneypenny Royale'",
+        "updatedAt": "2022-08-26T15:02:00+00:00"
+      },
+      "reservationKey": "4391",
+      "status": "available",
+      "updatedAt": "2022-09-14T14:37:01+02:00",
+      "variant": {
+        "attributes": {
+          "size": {
+            "key": "size",
+            "label": "Size",
+            "multiSelect": false,
+            "values": {
+              "id": 589,
+              "label": "One Size",
+              "value": "one_size"
+            }
+          }
+        },
+        "createdAt": "2022-08-26T11:45:38+00:00",
+        "id": 4797,
+        "referenceKey": "DEMO_V_24",
+        "stock": {
+          "isSellableWithoutStock": false,
+          "quantity": 1000,
+          "supplierId": 1,
+          "warehouseId": 1
+        },
+        "updatedAt": "2022-08-30T12:07:06+00:00"
+      },
+      "warehouseId": 1
+    },
+    {
+      "createdAt": "2022-09-14T14:31:00+02:00",
+      "currency": "EUR",
+      "id": 1118,
+      "key": "c60d060b946d6dd6145dcbad5c4ccf6f",
+      "merchant": {
+        "id": 1
+      },
+      "packageId": 1,
+      "price": {
+        "overrideWithTax": 0,
+        "overrideWithoutTax": 0,
+        "tax": {
+          "vat": {
+            "amount": 543,
+            "rate": 0.19
+          }
+        },
+        "undiscountedWithOutTax": 2857,
+        "undiscountedWithTax": 3400,
+        "withTax": 3400,
+        "withoutTax": 2857
+      },
+      "product": {
+        "advancedAttributes": {
+          "productName": {
+            "key": "productName",
+            "label": "Produktname",
+            "values": [
+              {
+                "fieldSet": [
+                  [
+                    {
+                      "value": "Batist-Blusentop"
+                    }
+                  ]
+                ]
+              }
+            ]
+          },
+          "siblings": {
+            "key": "siblings",
+            "label": "siblings",
+            "values": [
+              {
+                "fieldSet": [
+                  [
+                    {
+                      "isSoldOut": false,
+                      "productId": 1099
+                    },
+                    {
+                      "isSoldOut": false,
+                      "productId": 1100
+                    }
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "attributes": {
+          "brand": {
+            "key": "brand",
+            "label": "Marke",
+            "multiSelect": false,
+            "values": {
+              "id": 598,
+              "label": "s.Oliver",
+              "value": "soliver_1"
+            }
+          },
+          "brandLogo": {
+            "key": "brandLogo",
+            "label": "Brand logo",
+            "multiSelect": false,
+            "values": {
+              "id": 598,
+              "label": "s.Oliver"
+            }
+          },
+          "category": {
+            "key": "category",
+            "label": "Master Categories (AG)",
+            "multiSelect": true,
+            "values": [
+              {
+                "id": 14,
+                "label": "Bekleidung",
+                "value": "1"
+              },
+              {
+                "id": 18,
+                "label": "Bekleidung|Damen",
+                "value": "5"
+              },
+              {
+                "id": 20,
+                "label": "Bekleidung|Damen|Shirts",
+                "value": "7"
+              }
+            ]
+          },
+          "color": {
+            "key": "color",
+            "label": "Color",
+            "multiSelect": false,
+            "values": {
+              "id": 10,
+              "label": "Blau",
+              "value": "blau"
+            }
+          },
+          "colorHex": {
+            "key": "colorHex",
+            "label": "Farbcode",
+            "multiSelect": false,
+            "values": {
+              "id": 50,
+              "label": "0000FF",
+              "value": "0000ff"
+            }
+          },
+          "description": {
+            "key": "description",
+            "label": "Description",
+            "multiSelect": false
+          },
+          "name": {
+            "key": "name",
+            "label": "Name",
+            "multiSelect": false,
+            "values": {
+              "label": "Batist-Blusentop"
+            }
+          }
+        },
+        "categories": [
+          [
+            {
+              "categoryHidden": false,
+              "categoryId": 2045,
+              "categoryName": "Women",
+              "categorySlug": "women",
+              "categoryUrl": "/women"
+            }
+          ],
+          [
+            {
+              "categoryHidden": false,
+              "categoryId": 2045,
+              "categoryName": "Women",
+              "categorySlug": "women",
+              "categoryUrl": "/women"
+            },
+            {
+              "categoryHidden": true,
+              "categoryId": 2048,
+              "categoryName": "Clothing",
+              "categorySlug": "clothing",
+              "categoryUrl": "/women/clothing"
+            }
+          ],
+          [
+            {
+              "categoryHidden": false,
+              "categoryId": 2054,
+              "categoryName": "Sale",
+              "categoryProperties": [
+                {
+                  "name": "sale",
+                  "value": "Sale"
+                }
+              ],
+              "categorySlug": "sale",
+              "categoryUrl": "/sale"
+            }
+          ],
+          [
+            {
+              "categoryHidden": false,
+              "categoryId": 2045,
+              "categoryName": "Women",
+              "categorySlug": "women",
+              "categoryUrl": "/women"
+            },
+            {
+              "categoryHidden": true,
+              "categoryId": 2048,
+              "categoryName": "Clothing",
+              "categorySlug": "clothing",
+              "categoryUrl": "/women/clothing"
+            },
+            {
+              "categoryHidden": false,
+              "categoryId": 2055,
+              "categoryName": "Shirts",
+              "categorySlug": "shirts",
+              "categoryUrl": "/women/clothing/shirts"
+            }
+          ]
+        ],
+        "createdAt": "2022-08-26T15:13:29+00:00",
+        "id": 1101,
+        "images": [
+          {
+            "hash": "images/c2e9f8e369271e389392cdc398ddee85.jpg"
+          },
+          {
+            "hash": "images/0dbc900833e3bc398628c16acf0e4dcd.jpg"
+          },
+          {
+            "hash": "images/5c6d37ccc2492af794d00905a0c05e7e.jpg"
+          },
+          {
+            "hash": "images/7be20a3ce99be202807eaea07c5bfa7f.jpg"
+          }
+        ],
+        "masterKey": "14905134276-86",
+        "name": "Batist-Blusentop",
+        "updatedAt": "2022-08-29T08:44:32+00:00"
+      },
+      "reservationKey": "4390",
+      "status": "available",
+      "updatedAt": "2022-09-14T14:37:01+02:00",
+      "variant": {
+        "attributes": {
+          "size": {
+            "key": "size",
+            "label": "Size",
+            "multiSelect": false,
+            "values": {
+              "id": 77,
+              "label": "38",
+              "value": "38"
+            }
+          }
+        },
+        "createdAt": "2022-08-26T15:13:29+00:00",
+        "id": 4807,
+        "referenceKey": "DEMO_V_34",
+        "stock": {
+          "isSellableWithoutStock": false,
+          "quantity": 1000,
+          "supplierId": 1,
+          "warehouseId": 1
+        },
+        "updatedAt": "2022-08-30T12:07:05+00:00"
+      },
+      "warehouseId": 1
+    },
+    {
+      "createdAt": "2022-09-14T14:31:00+02:00",
+      "currency": "EUR",
+      "id": 1119,
+      "key": "8597a6cfa74defcbde3047c891d78f90",
+      "merchant": {
+        "id": 1
+      },
+      "packageId": 1,
+      "price": {
+        "appliedReductions": [
+          {
+            "amount": {
+              "absoluteWithTax": 1569,
+              "relative": 0.3
+            },
+            "category": "campaign",
+            "type": "relative"
+          }
+        ],
+        "overrideWithTax": 0,
+        "overrideWithoutTax": 0,
+        "tax": {
+          "vat": {
+            "amount": 585,
+            "rate": 0.19
+          }
+        },
+        "undiscountedWithOutTax": 3076,
+        "undiscountedWithTax": 3661,
+        "withTax": 3661,
+        "withoutTax": 3076
+      },
+      "product": {
+        "advancedAttributes": {
+          "productName": {
+            "key": "productName",
+            "label": "Produktname",
+            "values": [
+              {
+                "fieldSet": [
+                  [
+                    {
+                      "value": "S.Oliver Sweater"
+                    }
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "attributes": {
+          "brand": {
+            "key": "brand",
+            "label": "Marke",
+            "multiSelect": false,
+            "values": {
+              "id": 57,
+              "label": "S.Oliver",
+              "value": "soliver"
+            }
+          },
+          "brandLogo": {
+            "key": "brandLogo",
+            "label": "Brand logo",
+            "multiSelect": false,
+            "values": {
+              "id": 57,
+              "label": "S.Oliver"
+            }
+          },
+          "category": {
+            "key": "category",
+            "label": "Master Categories (AG)",
+            "multiSelect": true,
+            "values": [
+              {
+                "id": 14,
+                "label": "Bekleidung",
+                "value": "1"
+              },
+              {
+                "id": 64,
+                "label": "Bekleidung|Damen|Sweatshirts",
+                "value": "25"
+              },
+              {
+                "id": 18,
+                "label": "Bekleidung|Damen",
+                "value": "5"
+              }
+            ]
+          },
+          "color": {
+            "key": "color",
+            "label": "Color",
+            "multiSelect": false,
+            "values": {
+              "id": 10,
+              "label": "Blau",
+              "value": "blau"
+            }
+          },
+          "colorHex": {
+            "key": "colorHex",
+            "label": "Farbcode",
+            "multiSelect": false,
+            "values": {
+              "id": 50,
+              "label": "0000FF",
+              "value": "0000ff"
+            }
+          },
+          "description": {
+            "key": "description",
+            "label": "Description",
+            "multiSelect": false
+          },
+          "name": {
+            "key": "name",
+            "label": "Name",
+            "multiSelect": false,
+            "values": {
+              "label": "S.Oliver Sweater"
+            }
+          },
+          "producttype": {
+            "key": "producttype",
+            "label": "Produkttyp",
+            "multiSelect": false,
+            "values": {
+              "id": 72,
+              "label": "Sweatshirt",
+              "value": "sweatshirt"
+            }
+          }
+        },
+        "categories": [
+          [
+            {
+              "categoryHidden": false,
+              "categoryId": 2045,
+              "categoryName": "Women",
+              "categorySlug": "women",
+              "categoryUrl": "/women"
+            }
+          ],
+          [
+            {
+              "categoryHidden": false,
+              "categoryId": 2045,
+              "categoryName": "Women",
+              "categorySlug": "women",
+              "categoryUrl": "/women"
+            },
+            {
+              "categoryHidden": true,
+              "categoryId": 2048,
+              "categoryName": "Clothing",
+              "categorySlug": "clothing",
+              "categoryUrl": "/women/clothing"
+            }
+          ],
+          [
+            {
+              "categoryHidden": false,
+              "categoryId": 2054,
+              "categoryName": "Sale",
+              "categoryProperties": [
+                {
+                  "name": "sale",
+                  "value": "Sale"
+                }
+              ],
+              "categorySlug": "sale",
+              "categoryUrl": "/sale"
+            }
+          ]
+        ],
+        "createdAt": "2022-04-07T14:54:10+00:00",
+        "id": 2,
+        "images": [
+          {
+            "hash": "images/33b3387c82325ef32137f6069b28e612.jpeg"
+          },
+          {
+            "hash": "images/18937281f8cb57e3f0b5ffbc969e8fd7.png"
+          },
+          {
+            "hash": "images/80b2279be5d128360809c4d70736064a.png"
+          }
+        ],
+        "masterKey": "2117816.5959.32",
+        "name": "S.Oliver Sweater",
+        "updatedAt": "2022-08-18T10:48:15+00:00"
+      },
+      "reservationKey": "4392",
+      "status": "available",
+      "updatedAt": "2022-09-14T14:37:01+02:00",
+      "variant": {
+        "attributes": {
+          "size": {
+            "key": "size",
+            "label": "Size",
+            "multiSelect": false,
+            "values": {
+              "id": 38,
+              "label": "L",
+              "value": "l"
+            }
+          }
+        },
+        "createdAt": "2022-04-07T14:54:10+00:00",
+        "id": 4,
+        "referenceKey": "2117816.5959.32_42",
+        "stock": {
+          "isSellableWithoutStock": false,
+          "quantity": 477,
+          "supplierId": 1,
+          "warehouseId": 1
+        },
+        "updatedAt": "2022-05-05T15:04:59+00:00"
+      },
+      "warehouseId": 1
+    }
+  ],
+  "packages": [
+    {
+      "carrierKey": "DEFAULT",
+      "deliveryDate": {
+        "maximum": "2022-09-17",
+        "minimum": "2022-09-15"
+      },
+      "deliveryStatus": "delegation_pending",
+      "id": 1
+    }
+  ],
+  "payment": [
+    {
+      "amount": 14051,
+      "data": {
+        "success": true,
+        "transaction_id": "b2b_6321caec7aff5"
+      },
+      "key": "accounting",
+      "transactionKey": "b2b_6321caec7aff5"
+    }
+  ],
+  "shipping": {
+    "policy": "earliest_shipping"
+  },
+  "shop": {
+    "country": "DEU",
+    "id": 1001,
+    "language": "de"
+  },
+  "status": "payment_reserved",
+  "updatedAt": "2022-09-14T14:37:01+02:00"
+}

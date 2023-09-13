@@ -1,3 +1,12 @@
+# SCAYLE Storefront Boilerplate - Nuxt 3 Migration
+
+This document outlines all changes from the former Nuxt 2-based DemoShop to the new Nuxt 3-based Storefront Boilerplate.
+Please keep in mind that this documentation is still being extended and will be regularly updated.
+
+_Last updated: 11. September 2023_
+
+[[TOC]]
+
 ## SVG Handling
 
 With vite you can include svg icons by simply prefixing it with the `<Icon\* />` which is configured in the svgo config (default is `<Svgo\* />`.
@@ -218,10 +227,12 @@ Instead you can provide `<swiper-slide lazy=true>` and `<img loading="lazy" />` 
 </template>
 ```
 
-## `radash` replaced with `nuxt-lodash`
+## `radash` enhanced with `nuxt-radash`
 
-We are now moving to the [nuxt-lodash](https://nuxt.com/modules/lodash/changelog) that's recommended by the nuxt community.
-It supports auto imports and it's easy to configure via nuxt config. We stick with the `use` prefix as it is the default setting.
+We are now enhancing the usage of radash by adding the
+[nuxt-radash](https://github.com/bbg/nuxt-radash) that's recommended by the nuxt
+community. It supports auto imports and it's easy to configure via nuxt config.
+We stick with the `use` prefix as it is the default setting.
 
 ```ts
 // plugins/validation.ts
