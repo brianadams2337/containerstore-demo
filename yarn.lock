@@ -1824,10 +1824,10 @@
     uncrypto "^0.1.3"
     utility-types "^3.10.0"
 
-"@scayle/storefront-nuxt@7.14.0":
-  version "7.14.0"
-  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.14.0.tgz#52569fd15c5b1e4caf2e6276a357c8eaff40a90d"
-  integrity sha1-Ulaf0VxbHkyvLmJ2o1fI6v9AqQ0=
+"@scayle/storefront-nuxt@7.15.0":
+  version "7.15.0"
+  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.15.0.tgz#811973d8325b1346aec9a8e5ab9e49ba989836bc"
+  integrity sha1-gRlz2DJbE0auyajlq55JupiYNrw=
   dependencies:
     "@nuxt/kit" "3.7.2"
     "@scayle/h3-session" "0.3.0"
@@ -1838,7 +1838,7 @@
     defu "^6.1.2"
     h3 "1.8.1"
     jose "^4.14.4"
-    lodash-es "^4.17.21"
+    radash "^11.0.0"
     uncrypto "^0.1.3"
     vue-router "4.2.4"
 
@@ -7011,11 +7011,6 @@ locate-path@^6.0.0:
   integrity sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==
   dependencies:
     p-locate "^5.0.0"
-
-lodash-es@^4.17.21:
-  version "4.17.21"
-  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
-  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
 
 lodash.camelcase@^4.3.0:
   version "4.3.0"
