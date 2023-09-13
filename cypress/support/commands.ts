@@ -3,10 +3,7 @@ const _get = Cypress._.get // Cypress has lodash available
 // some tracking events are not mapped in the core type but used in this shop
 type FilterTrackingEvent = 'filter_slider'
 type PurchaseTrackingEvent = 'purchase'
-type DemoShopTrackingEvent =
-  | FilterTrackingEvent
-  | PurchaseTrackingEvent
-//  | TrackingEvent
+type DemoShopTrackingEvent = FilterTrackingEvent | PurchaseTrackingEvent | any //  | TrackingEvent
 type DataLayer = Array<{ [key: string]: any }>
 declare global {
   namespace Cypress {
