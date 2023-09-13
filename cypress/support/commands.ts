@@ -6,7 +6,7 @@ type PurchaseTrackingEvent = 'purchase'
 type DemoShopTrackingEvent =
   | FilterTrackingEvent
   | PurchaseTrackingEvent
-//  | TrackingEvent
+  | any //  | TrackingEvent
 type DataLayer = Array<{ [key: string]: any }>
 declare global {
   namespace Cypress {
