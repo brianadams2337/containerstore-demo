@@ -28,7 +28,7 @@ export default defineNuxtConfig({
       domains,
       gtmId: process.env.GOOGLE_TAG_MANAGER_ID,
       baseUrl: process.env.BASE_URL,
-    }
+    },
   },
 
   app: {

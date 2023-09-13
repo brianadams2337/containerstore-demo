@@ -22,7 +22,7 @@ export type AuthEvent =
   | 'login'
   | 'logout'
   | 'sign_up'
-  | 'forget_password'
+  | 'forgot_password'
   | 'reset_password'
   | 'guest_login'
 

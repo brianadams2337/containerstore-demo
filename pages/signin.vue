@@ -60,3 +60,12 @@ const closeModal = async () => {
   await router.push(toLocalePath({ name: routeList.signin.name }))
 }
 </script>
+
+<script lang="ts">
+export default {
+  name: 'SigninPage',
+  meta: {
+    pageType: 'signin_page',
+  },
+}
+</script>
