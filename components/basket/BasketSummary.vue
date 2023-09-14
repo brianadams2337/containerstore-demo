@@ -1,0 +1,110 @@
+<template>
+  <div class="xl:w-[32rem]">
+    <div class="rounded border-primary p-6 md:border">
+      <Headline tag="div" size="xl" :is-uppercase="false">{{
+        $t('basket.total')
+      }}</Headline>
+      <div class="mt-6 space-y-4">
+        <div
+          class="flex flex-col justify-between gap-2 text-sm font-bold text-gray-800">
+          <div class="flex justify-between">
+            <div class="opacity-50">{{ $t('basket.subtotal') }}</div>
+            <div v-if="totalCost">{{ getCurrency(totalCost) }}</div>
+          </div>
+
+          <div class="flex justify-between">
+            <div class="opacity-50">{{ $t('basket.shipping') }}</div>
+            <div class="">
+              {{
+                shippingCost
+                  ? getCurrency(shippingCost)
+                  : $t('basket.shipping_free')
+              }}
+            </div>
+          </div>
+
+          <hr class="col-span-full my-4 border border-gray-350" />
+
+          <div class="flex justify-between">
+            <div class="opacity-50">
+              {{ $t('basket.total') }}
+            </div>
+            <div class="">
+              <div v-if="totalCost" class="text-xl">
+                {{ getCurrency(totalCost) }}
+              </div>
+              <div class="text-2xs opacity-50">
+                {{ $t('basket.including_vat') }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <AppButton
+          data-test-id="checkout-link"
+          is-full-width
+          type="primary"
+          class="!normal-case"
+          @click="onClickToCheckoutOrder">
+          {{ $t('basket.to_checkout') }}
+        </AppButton>
+
+        <div
+          v-if="sellingPoints?.length"
+          class="flex flex-col gap-2 rounded bg-secondary-450 p-4 text-xs">
+          <p class="flex justify-center gap-1 text-2xs text-gray-750">
+            <IconCheckmark
+              class="h-4 w-4 rounded-full border border-gray-750" />
+            {{ $t('promises.pay_with_invoice') }}
+          </p>
+          <p class="flex justify-center gap-1 text-2xs text-gray-750">
+            <IconCheckmark
+              class="h-4 w-4 rounded-full border border-gray-750" />
+            {{ $t('promises.free_return_and_shipping') }}
+          </p>
+          <p class="flex justify-center gap-1 text-2xs text-gray-750">
+            <IconCheckmark
+              class="h-4 w-4 rounded-full border border-gray-750" />
+            {{ $t('promises.return_policy') }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script lang="ts" setup>
+const basket = await useBasket()
+const router = useRouter()
+const { $i18n } = useNuxtApp()
+// TODO tracking
+// const { trackBeginCheckout } = useTrackingEvents()
+
+const totalCost = computed(() => basket.data.value?.cost.withTax)
+const shippingCost = computed(() => 0)
+
+const onClickToCheckoutOrder = () => {
+  // trackBeginCheckout(basket.data.value?.items, 'BasketList', 'BL')
+  router.push({ path: '/checkout' })
+}
+
+const sellingPoints = computed(() => [
+  { icon: 'IconInvoice', text: $i18n.t('promises.pay_with_invoice') },
+  { icon: 'IconDelivery', text: $i18n.t('promises.free_return_and_shipping') },
+  { icon: 'IconReturn', text: $i18n.t('promises.return_policy') },
+])
+
+const currentShop = useCurrentShop()
+const getCurrency = (value: number): string => {
+  if (!currentShop.value) {
+    return ''
+  }
+
+  return toCurrency(
+    value,
+    usePick(currentShop.value, [
+      'locale',
+      'currency',
+      'currencyFractionDigits',
+    ]),
+  )
+}
+</script>

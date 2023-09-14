@@ -30,6 +30,7 @@ export default cleanEnv(
     CHECKOUT_SECRET_1001: str(),
     CHECKOUT_USER_1001: str(),
     CHECKOUT_ACCESS_HEADER: str({ default: undefined }),
+    IS_LOWEST_PREVIOUS_PRICE_ACTIVE_1001: bool({ default: false }),
 
     OAUTH_API_HOST: str({ default: '' }),
     OAUTH_CLIENT_ID: str({ default: '' }),

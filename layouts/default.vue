@@ -23,6 +23,7 @@ const { data: rootCategories, fetching: fetchingCategories } =
   await useCategories({ path: '/' }, { autoFetch: true })
 
 const _wishlist = await useWishlist(withParams.wishlist, { autoFetch: true })
+const _basket = await useBasket(withParams.basket, { autoFetch: true })
 </script>
 
 <script lang="ts">

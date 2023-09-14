@@ -64,9 +64,8 @@ import {
 } from '@scayle/storefront-nuxt'
 import { ONE_SIZE_KEY } from '~/constants'
 import { Action } from '~/constants/toast'
-import withParams from '~/constants/withParams'
 
-const wishlist = await useWishlist(withParams.wishlist, { autoFetch: true })
+const wishlist = await useWishlist()
 const basket = await useBasket(undefined, { autoFetch: true })
 const { isLoggedIn } = await useUser()
 const { $alert, $i18n } = useNuxtApp()
@@ -110,7 +109,7 @@ const addItemToCart = async (itemKey: string, index: number) => {
     quantity: 1,
   })
 
-  // showBasketFlyOut()
+  showBasketFlyOut()
 
   // const { product } = entry
   // let { variant = undefined } = entry

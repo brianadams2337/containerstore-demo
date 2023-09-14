@@ -15,11 +15,11 @@
 <script setup lang="ts">
 const props = defineProps({
   appear: {
-    type: Boolean as PropType<boolean>,
+    type: Boolean,
     default: true,
   },
   duration: {
-    type: Number as PropType<number>,
+    type: Number,
     default: 200,
   },
 })

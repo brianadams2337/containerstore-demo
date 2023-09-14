@@ -31,6 +31,12 @@ declare module '@scayle/storefront-nuxt' {
   export interface AdditionalShopConfig {
     paymentProviders: string[]
     appKeys: (typeof baseShopConfig)['appKeys']
+    isLowestPreviousPriceActive?: boolean
+  }
+  // Extend PublicShopConfig to make types available on currentShop
+  export interface PublicShopConfig {
+    isLowestPreviousPriceActive?: boolean
+    paymentProviders: string[]
   }
 }
 
@@ -69,13 +75,15 @@ const options: Partial<ModuleOptions> = {
   },
   withParams,
   rpcMethodNames: Object.keys(customRpcMethods),
-  publicShopData: ['paymentProviders'],
+  publicShopData: ['paymentProviders', 'isLowestPreviousPriceActive'],
   shopSelector: environment.DOMAIN_PER_LOCALE ? 'domain' : 'path',
   stores: shops.map((shop) => ({
     ...baseShopConfig,
     shopId: shop.shopId,
     path: shop.path,
     locale: shop.locale,
+    isLowestPreviousPriceActive:
+      environment.IS_LOWEST_PREVIOUS_PRICE_ACTIVE_1001,
     auth: {
       resetPasswordUrl: `${protocol}${shop.locale}/signin/`,
     },
@@ -116,6 +124,7 @@ const options: Partial<ModuleOptions> = {
   session: {
     sameSite: process.env.APP_ENV !== 'production' ? 'none' : 'lax',
     maxAge: 2419200000, // four weeks in milliseconds
+    provider: 'redis',
   },
   imageBaseUrl: 'https://brb-demo.cdn.aboutyou.cloud/',
 }

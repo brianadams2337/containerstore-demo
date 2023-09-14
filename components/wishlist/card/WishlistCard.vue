@@ -103,7 +103,7 @@
                 class="justify-center"
                 :variants="product?.variants || []"
                 :value="selectedSize?.value"
-                @selectSize="onSelectSize"
+                @select-size="onSelectSize"
                 @click:outside="isChangingSize = false" />
             </div>
             <AppButton
@@ -269,7 +269,7 @@ const changeSizeAndAddToBasket = async (
   //   list: { name: 'WishlistList', id: 'WL' },
   // })
 
-  // basketUtils.showAddToBasketToast(true, product)
+  showAddToBasketToast(true, product)
 
   sizeSavingId.value = null
 }

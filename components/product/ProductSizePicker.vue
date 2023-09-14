@@ -80,7 +80,7 @@ const props = defineProps({
     default: (v: Variant) => getVariantAvailability(v).available,
   },
 })
-const emit = defineEmits(['selectSize', 'input'])
+const emit = defineEmits(['select-size', 'input'])
 
 const handleBeforeInput = (value: any) =>
   isVariantInStock(props.variants, value, 'size')
@@ -120,7 +120,7 @@ const selectedSize: Ref<VariantSize | undefined> = ref<VariantSize | undefined>(
 )
 
 const selectSize = (newSize: VariantSize) => {
-  emit('selectSize', newSize)
+  emit('select-size', newSize)
 
   emit(
     'input',
