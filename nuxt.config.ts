@@ -70,9 +70,9 @@ export default defineNuxtConfig({
   storefront: {
     ...storefront,
     redis: {
-      host: environment.REDIS_HOST,
-      port: environment.REDIS_PORT,
-      prefix: environment.REDIS_PREFIX,
+      host: process.env.REDIS_HOST,
+      port: process.env.REDIS_PORT,
+      prefix: process.env.REDIS_PREFIX,
       user: process.env.REDIS_USER,
       password: process.env.REDIS_PASSWORD,
     },
