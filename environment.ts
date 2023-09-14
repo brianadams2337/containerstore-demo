@@ -1,6 +1,9 @@
 import { bool, cleanEnv, defaultReporter, num, host, str, url } from 'envalid'
 import yn from 'yn'
 
+console.log(">>>", process.env.REDIS_HOST)
+console.log(">>>", process.env.REDIS_BAPI_HOST)
+
 export default cleanEnv(
   process.env,
   {
