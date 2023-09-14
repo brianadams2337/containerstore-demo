@@ -67,7 +67,16 @@ export default defineNuxtConfig({
     'nuxt-viewport',
   ],
 
-  storefront,
+  storefront: {
+    ...storefront,
+    redis: {
+      host: environment.REDIS_HOST,
+      port: environment.REDIS_PORT,
+      prefix: environment.REDIS_PREFIX,
+      user: process.env.REDIS_USER,
+      password: process.env.REDIS_PASSWORD,
+    },
+  },
   svgo,
   image,
   i18n,
