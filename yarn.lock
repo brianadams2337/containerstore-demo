@@ -7960,10 +7960,10 @@ nuxt-radash@1.0.0:
     "@nuxt/kit" "^3.6.5"
     radash "^11.0.0"
 
-nuxt-svgo@3.5.2:
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/nuxt-svgo/-/nuxt-svgo-3.5.2.tgz#78888996f220e39f0ddea956482f019e2aea3b54"
-  integrity sha512-O9Yshbu8Z50dQeNbzNgP35vFrX0P+h3EU9zH1hAYkYPznOmZmUBebD9ilp4IiWxGYFunF3rxi2H+0pJvAy9MnQ==
+nuxt-svgo@3.5.3:
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/nuxt-svgo/-/nuxt-svgo-3.5.3.tgz#9099fdca3469230404b1f5416b9b1f4c6474ec50"
+  integrity sha512-JQNiy8zlt9P6UkUX2A+b4U3SmDE4pVKx+a6kutwmJFHXCQZR2nwohwhbT2w4Wwu7KqXHYPVGb8nzDiQcoLBl3Q==
   dependencies:
     "@nuxt/kit" "^3.4.0"
     "@vue/compiler-sfc" "^3.2.47"
