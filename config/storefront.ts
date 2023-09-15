@@ -62,7 +62,12 @@ const protocol =
     ? 'https://'
     : 'http://'
 
-const options: Partial<ModuleOptions> = {
+export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
+  session: {
+    sameSite: process.env.APP_ENV !== 'production' ? 'none' : 'lax',
+    maxAge: 2419200000, // four weeks in milliseconds
+    provider: 'redis',
+  },
   bapi: {
     host: environment.BAPI_HOST,
     token: environment.BAPI_TOKEN,
@@ -73,8 +78,6 @@ const options: Partial<ModuleOptions> = {
     clientId: environment.OAUTH_CLIENT_ID,
     clientSecret: environment.OAUTH_CLIENT_SECRET,
   },
-  withParams,
-  rpcMethodNames: Object.keys(customRpcMethods),
   publicShopData: ['paymentProviders', 'isLowestPreviousPriceActive'],
   shopSelector: environment.DOMAIN_PER_LOCALE ? 'domain' : 'path',
   stores: shops.map((shop) => ({
@@ -105,9 +108,6 @@ const options: Partial<ModuleOptions> = {
     user: process.env.REDIS_USER,
     password: process.env.REDIS_PASSWORD,
   },
-  log: {
-    name: 'storefront-boilerplate-nuxt',
-  },
   cache: {
     auth: {
       username: 'max',
@@ -120,13 +120,18 @@ const options: Partial<ModuleOptions> = {
     // maxAge: 60 * 60,
     // staleWhileRevalidate: 60 * 60 * 24,
     // generateCacheKey: () =>
-  },
-  session: {
-    sameSite: process.env.APP_ENV !== 'production' ? 'none' : 'lax',
-    maxAge: 2419200000, // four weeks in milliseconds
-    provider: 'redis',
+  }
+}
+
+export const storefrontRuntimeConfigPublic: Partial<ModuleOptions> = {
+  withParams,
+  log: {
+    name: 'storefront-boilerplate-nuxt',
   },
   imageBaseUrl: 'https://brb-demo.cdn.aboutyou.cloud/',
 }
 
-export default options
+
+export const storefrontBuildtimeConfig: Partial<ModuleOptions> = {
+  rpcMethodNames: Object.keys(customRpcMethods),
+}

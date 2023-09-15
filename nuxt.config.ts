@@ -6,8 +6,10 @@ import {
   svgo,
   swiper,
   viewport,
-  storefront,
-  storyblok,
+  storefrontRuntimeConfigPrivate,
+  storefrontRuntimeConfigPublic,
+  storefrontBuildtimeConfig,
+  storyblokRuntimeConfigPrivate,
 } from './config'
 import { domains } from './config/domains'
 
@@ -21,16 +23,19 @@ export default defineNuxtConfig({
     checkout: {
       accessHeader: environment.CHECKOUT_ACCESS_HEADER,
     },
-    storyblok: {
-      accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
-    },
+    storyblok: storyblokRuntimeConfigPrivate,
+    '$storefront': storefrontRuntimeConfigPrivate as any, // TODO: Extend SFC runtimeConfig type
     public: {
       domains,
       gtmId: process.env.GOOGLE_TAG_MANAGER_ID,
       baseUrl: process.env.BASE_URL,
+      ...storefrontRuntimeConfigPublic as any,  // TODO: Extend SFC runtimeConfig type
     },
   },
 
+  // NOTE: Configuration outside of runtimeConfig is being filled in during
+  // build time and will be serialized as part of the bundling process.
+  // Execution of functions, etc during runtime is not possible.
   app: {
     head: {
       meta: [
@@ -67,18 +72,21 @@ export default defineNuxtConfig({
     'nuxt-viewport',
   ],
 
-  storefront,
+  storefront: storefrontBuildtimeConfig,
   svgo,
   image,
   i18n,
   swiper,
-  storyblok,
   viewport,
 
+  // Allow auto-import for vue components
   components: [
     { path: '~/components', pathPrefix: false, extensions: ['.vue'] },
   ],
 
+  // Explicitly add storefront-related dependencies to be pre-bundled by vite
+  // NOTE: Can be removed with next SFC version, as this is now part of the
+  // SFC module setup!
   vite: {
     optimizeDeps: {
       include: [
