@@ -108,12 +108,7 @@ watch(orders, () => updateSlicedOrders())
 // this can only happen when order data is loaded before mounting.
 // usually this means: being rendered on the server
 onMounted(async () => {
-  if (
-    !route.params?.id &&
-    !props.isAccountPage &&
-    currentOrderId.value &&
-    viewport.isGreaterOrEquals('md')
-  ) {
+  if (!route.params?.id && !props.isAccountPage && currentOrderId.value) {
     await router.push(getOrderDetailsRoute(currentOrderId.value))
   }
   updateSlicedOrders()
