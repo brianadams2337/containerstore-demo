@@ -41,7 +41,7 @@
     "cypress-real-events": "1.10.3",
     "env-cmd": "10.1.0",
     "eslint": "8.49.0",
-    "eslint-plugin-cypress": "2.14.0",
+    "eslint-plugin-cypress": "2.15.1",
     "eslint-plugin-nuxt": "4.0.0",
     "eslint-plugin-tailwindcss": "3.13.0",
     "nuxt": "3.7.3",
