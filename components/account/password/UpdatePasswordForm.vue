@@ -6,7 +6,6 @@
       <h3 class="mb-4 text-left text-2xl font-bold">
         {{ $t('my_account.password') }}
       </h3>
-
       <ValidatedInputGroup v-slot="{ isValid }" :errors="v.oldPassword.$errors">
         <TextInput
           v-model="payload.oldPassword"
@@ -29,7 +28,6 @@
           @input="v.newPassword.$touch" />
         <PasswordMeter :value="payload.newPassword" class="mx-4 mb-2 mt-3" />
       </ValidatedInputGroup>
-
       <ValidatedInputGroup
         v-slot="{ isValid }"
         :errors="v.repeatedPassword.$errors">
@@ -41,8 +39,6 @@
           required
           @input="v.repeatedPassword.$touch" />
       </ValidatedInputGroup>
-
-      <!-- save password -->
       <div class="mt-2 flex w-full items-center justify-center">
         <AppButton
           class="w-full capitalize md:w-auto md:min-w-[50%]"
