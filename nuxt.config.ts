@@ -22,16 +22,16 @@ export default defineNuxtConfig({
   runtimeConfig: {
     // Following keys are overridable using prefix NUXT_CHECKOUT_
     checkout: {
-      accessHeader: environment.CHECKOUT_ACCESS_HEADER,
+      accessHeader: environment.NUXT_CHECKOUT_ACCESS_HEADER,
     },
     // Following keys are overridable using prefix NUXT_STORYBLOK_
     storyblok: storyblokRuntimeConfigPrivate,
     // Following keys are overridable using prefix NUXT_$STOREFRONT_
-    $storefront: storefrontRuntimeConfigPrivate as any, // TODO: Extend SFC runtimeConfig type
+    storefront: storefrontRuntimeConfigPrivate as any, // TODO: Extend SFC runtimeConfig type
     // Following keys are overridable using prefix NUXT_PUBLIC_
     public: {
       domains,
-      gtmId: process.env.GOOGLE_TAG_MANAGER_ID,
+      gtmId: environment.NUXT_PUBLIC_GTM_ID,
       baseUrl: process.env.BASE_URL,
       // Following keys are overridable using prefix NUXT_PUBLIC_
       ...storefrontRuntimeConfigPublic as any,  // TODO: Extend SFC runtimeConfig type
@@ -78,7 +78,7 @@ export default defineNuxtConfig({
   ],
 
   storyblok: {
-    accessToken: environment.STORYBLOK_ACCESS_TOKEN,
+    accessToken: environment.NUXT_STORYBLOK_ACCESS_TOKEN,
   },
   storefront: storefrontBuildtimeConfig,
   svgo,
@@ -91,20 +91,6 @@ export default defineNuxtConfig({
   components: [
     { path: '~/components', pathPrefix: false, extensions: ['.vue'] },
   ],
-
-  // Explicitly add storefront-related dependencies to be pre-bundled by vite
-  // NOTE: Can be removed with next SFC version, as this is now part of the
-  // SFC module setup!
-  vite: {
-    optimizeDeps: {
-      include: [
-        '@scayle/storefront-nuxt',
-        '@scayle/storefront-core',
-        'isomorphic-dompurify',
-        'slugify',
-      ],
-    },
-  },
   vue: {
     compilerOptions: {
       isCustomElement: (tag) => tag.startsWith('ay-'),

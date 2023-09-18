@@ -3,7 +3,7 @@
 This document outlines all changes from the former Nuxt 2-based DemoShop to the new Nuxt 3-based Storefront Boilerplate.
 Please keep in mind that this documentation is still being extended and will be regularly updated.
 
-_Last updated: 11. September 2023_
+_Last updated: 19. September 2023_
 
 [[TOC]]
 
@@ -372,31 +372,22 @@ HTTPS_CERT=
 
 ## Intersection observer
 
-- The same as in Nuxt 2 we introduced the `Intersect` component which handles
-  and implements observer intersection. In the past we used our custom
-  implementation with the native `IntersectionObserver` API. Now we use
-  `useIntersectionObserver` composable that comes from `vueuse` and by doing that
-  we simplified the solution a bit. One of the things that's worth mentioning is
-  that now we expose `stop` function through the slot and event which can stop the
-  intersection.
+The same as in Nuxt 2 we introduced the `Intersect` component which handles and implements observer intersection.
+In the past we used our custom implementation with the native `IntersectionObserver` API.
+Now we use `useIntersectionObserver` composable that comes from `vueuse` and by doing that we simplified the solution a bit.
+One of the things that's worth mentioning is that now we expose `stop` function through the slot and event which can stop the intersection.
 
-  ```vue
-  <Intersect :threshold="0.5" @enter="onIntersect">
+```vue
+<Intersect :threshold="0.5" @enter="onIntersect">
   // ...
-  </Intersect>
+</Intersect>
 
-  <script setup lang="ts">
-  const onIntersect = (_: IntersectionObserverEntry, stop: () => void) => {
-    if (!props.blok.promotion_id) {
-      return
-    }
-    stop()
+<script setup lang="ts">
+const onIntersect = (_: IntersectionObserverEntry, stop: () => void) => {
+  if (!props.blok.promotion_id) {
+    return
   }
-  </script>
-  ```
-
+  stop()
+}
 </script>
-
-```
-
 ```

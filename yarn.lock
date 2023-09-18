@@ -1804,10 +1804,10 @@
     uncrypto "^0.1.3"
     utility-types "^3.10.0"
 
-"@scayle/storefront-nuxt@7.17.0":
-  version "7.17.0"
-  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.17.0.tgz#2b67a7f457d19feb64f8229a04f93e92d9493b31"
-  integrity sha1-K2en9FfRn+tk+CKaBPk+ktlJOzE=
+"@scayle/storefront-nuxt@7.18.0":
+  version "7.18.0"
+  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.18.0.tgz#1bf0ec9b2dec77576aa2f2b3e1876782d1682b90"
+  integrity sha1-G/Dsmy3sd1dqovKz4YdngtFoK5A=
   dependencies:
     "@nuxt/kit" "3.7.3"
     "@scayle/h3-session" "0.3.1"
@@ -8654,7 +8654,7 @@ path@^0.12.7:
     process "^0.11.1"
     util "^0.10.3"
 
-pathe@^1.0.0, pathe@^1.1.0, pathe@^1.1.1:
+pathe@1.1.1, pathe@^1.0.0, pathe@^1.1.0, pathe@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/pathe/-/pathe-1.1.1.tgz#1dd31d382b974ba69809adc9a7a347e65d84829a"
   integrity sha512-d+RQGp0MAYTIaDBIMmOfMwz3E+LOZnxx1HZd5R18mmCZY0QBlK0LDZfPc8FW8Ed2DlvsuE6PRjroDY+wg4+j/Q==

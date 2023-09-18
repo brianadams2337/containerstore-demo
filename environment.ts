@@ -4,50 +4,63 @@ import yn from 'yn'
 export default cleanEnv(
   process.env,
   {
+    /** Global Configuration */
     BASE_URL: url(),
-
-    REDIS_HOST: host({ default: 'localhost' }),
-    REDIS_PORT: num({ default: 6379 }),
-    REDIS_PREFIX: str({ default: '' }),
-
-    BAPI_HOST: url(),
-    BAPI_TOKEN: str(),
+    NUXT_PUBLIC_IMAGE_BASE_URL: url({ default: 'https://brb-demo.cdn.aboutyou.cloud/' }),
 
     AY_CACHE_DISABLED: bool({ default: false }),
 
-    DOMAIN_EN: str({ default: '' }),
-    DOMAIN_DE_DE: str({ default: '' }),
-    DOMAIN_DE_AT: str({ default: '' }),
-    DOMAIN_DE_CH: str({ default: '' }),
-    DOMAIN_DEFAULT: str({ default: '' }),
-    DOMAIN_PER_LOCALE: bool({ default: true }),
+    NUXT_CHECKOUT_ACCESS_HEADER: str({ default: undefined }),
 
-    CHECKOUT_HOST: str({ default: '' }),
-    CHECKOUT_TOKEN_1001: str(),
-    CHECKOUT_SECRET_1001: str(),
-    CHECKOUT_USER_1001: str(),
-    CHECKOUT_ACCESS_HEADER: str({ default: undefined }),
-    IS_LOWEST_PREVIOUS_PRICE_ACTIVE_1001: bool({ default: false }),
+    NUXT_STOREFRONT_REDIS_HOST: host({ default: 'localhost' }),
+    NUXT_STOREFRONT_REDIS_PORT: num({ default: 6379 }),
+    NUXT_STOREFRONT_REDIS_PREFIX: str({ default: '' }),
 
-    OAUTH_API_HOST: str({ default: '' }),
-    OAUTH_CLIENT_ID: str({ default: '' }),
-    OAUTH_CLIENT_SECRET: str({ default: '' }),
+    NUXT_STOREFRONT_REDIRECTS_ENABLED: bool({ default: false }),
 
-    BASIC_AUTH: str({ default: '' }),
+    NUXT_STOREFRONT_BAPI_HOST: url(),
+    NUXT_STOREFRONT_BAPI_TOKEN: str(),
 
-    CAMPAIGN_KEY_PREFIX: str(),
+    NUXT_STOREFRONT_OAUTH_API_HOST: str({ default: '' }),
+    NUXT_STOREFRONT_OAUTH_CLIENT_ID: str({ default: '' }),
+    NUXT_STOREFRONT_OAUTH_CLIENT_SECRET: str({ default: '' }),
 
-    HTTPS_KEY: str({ default: '' }),
-    HTTPS_CERT: str({ default: '' }),
+    NUXT_STOREFRONT_DOMAIN_DEFAULT: str({ default: '' }),
+    NUXT_STOREFRONT_DOMAIN_PER_LOCALE: bool({ default: true }),
 
-    GOOGLE_TAG_MANAGER_ID: str({ default: '' }),
+    NUXT_PUBLIC_GTM_ID: str({ default: '' }),
 
-    STORYBLOK_ACCESS_TOKEN: str(),
-    STORYBLOK_WEBHOOK_SECRET: str({
+    /* Store-specific Configuration */
+    // NOTE: Replace {YOUR_SHOP_ID} with your actual shopId or if you need to support
+    // multiple shop with the same shopId, use your locale value (e.g. EN_US or DE_DE).
+    // We only need a set of default value here to be prefilled during buildtime,
+    // actual configuration will haben through environment variables.
+    // See .env for potential environment variables setup
+
+    // DE_DE / 1001
+    NUXT_STOREFRONT_STORES_EN_US_CHECKOUT_HOST: str({ default: '' }),
+    NUXT_STOREFRONT_STORES_EN_US_CHECKOUT_TOKEN: str(),
+    NUXT_STOREFRONT_STORES_EN_US_CHECKOUT_SECRET: str(),
+    NUXT_STOREFRONT_STORES_EN_US_CHECKOUT_USER: str(),
+
+    NUXT_STOREFRONT_STORES_EN_US_DOMAIN: str({ default: '' }),
+
+    NUXT_STOREFRONT_STORES_EN_US_CAMPAIGN_KEYWORD: str(),
+
+    NUXT_STOREFRONT_STORES_EN_US_IS_LOWEST_PREVIOUS_PRICE_ACTIVE: bool({ default: false }),
+
+    /* Storyblok-specific Configuration */
+    NUXT_STORYBLOK_ACCESS_TOKEN: str(),
+    NUXT_STORYBLOK_WEBHOOK_SECRET: str({
       default: 'hereupon-caviar-nicety-wanton',
     }),
 
-    SENTRY_DSN: str({ default: '' }),
+    /* Sentry-specific Configuration */
+    NUXT_SENTRY_DSN: str({ default: '' }),
+
+    /* Local Development */
+    HTTPS_KEY: str({ default: '' }),
+    HTTPS_CERT: str({ default: '' }),
   },
   {
     reporter: (options) => {
