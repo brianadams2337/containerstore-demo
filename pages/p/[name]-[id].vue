@@ -1,5 +1,5 @@
 <template>
-  <ProductDetailSkeleton v-if="pending" />
+  <ProductDetailSkeleton v-if="fetching" />
   <PageContent v-else>
     <GoBackLink use-window-history class="mt-4 md:ml-7 md:mt-7" />
     <div class="flex flex-1 flex-col items-start md:flex-row md:gap-3">
@@ -160,7 +160,7 @@ const productId = computed(() =>
   (id as string).substring(id.lastIndexOf('-') + 1),
 )
 
-const { data: product, pending } = await useProduct(
+const { data: product, fetching } = await useProduct(
   {
     id: parseInt(productId.value),
     with: {
@@ -220,7 +220,7 @@ const { data: product, pending } = await useProduct(
       lowestPriorPrice: true,
     },
   },
-  { immediate: true },
+  { autoFetch: true },
 )
 
 const productCategories = computed(() =>
