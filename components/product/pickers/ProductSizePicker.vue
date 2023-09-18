@@ -5,7 +5,7 @@
     :name="`product-size-picker-menu-${id}`"
     :before-input="handleBeforeInput"
     class="w-full"
-    v-on="$attrs">
+    v-bind="$attrs">
     <ListboxButton
       :list-name="list"
       data-test-id="product-size-picker-toggle"
@@ -119,9 +119,7 @@ const selectedSize = ref<ISize | undefined>(
 )
 
 watch(selectedSize, (value) => {
-  debugger
   emit('selectSize', value)
-
   emit(
     'input',
     props.variants.find((variant: Variant) => variant.id === value?.variantId),

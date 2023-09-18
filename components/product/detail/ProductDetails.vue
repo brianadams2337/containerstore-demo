@@ -27,8 +27,6 @@
         <ProductShippingAndReturn
           v-if="tabs[selectedIndex] === 'pdp.shipping_return_heading'" />
       </div>
-
-      DESKTOP PRODUCT DETAILS
     </div>
 
     <!-- mobile accordion -->
