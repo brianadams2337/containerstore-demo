@@ -63,6 +63,11 @@ const protocol =
     : 'http://'
 
 export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
+  // Following keys are overridable using prefix NUXT_$STOREFRONT_REDIRECTS
+  redirects: {
+    enabled: Boolean(process.env.NUXT_$STOREFRONT_REDIRECTS_ENABLED),
+    queryParamWhitelist: [],
+  },
   // Following keys are overridable using prefix NUXT_$STOREFRONT_SESSION
   session: {
     sameSite: process.env.APP_ENV !== 'production' ? 'none' : 'lax',
@@ -114,6 +119,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
     prefix: environment.REDIS_PREFIX,
     user: process.env.REDIS_USER,
     password: process.env.REDIS_PASSWORD,
+    sslTransit: Boolean(process.env.SSL_TRANSIT)
   },
   // Following keys are overridable using prefix NUXT_$STOREFRONT_CACHE
   cache: {

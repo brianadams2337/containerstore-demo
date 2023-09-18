@@ -1,7 +1,8 @@
 {
-  "name": "nuxt-app",
+  "name": "@scayle/storefront-boilerplate-nuxt",
+  "description": "SCAYLE demo shop application based on Nuxt 3",
+  "version": "1.0.0-alpha.1",
   "private": true,
-  "version": "1.0.0",
   "scripts": {
     "assert-mandatory-env-vars": "echo 'skipped'",
     "build": "nuxt build",
@@ -22,7 +23,7 @@
     "cy:run": "cypress run",
     "start:node": "node .output/server/index.mjs",
     "storyblok:download": "env-cmd -f .env.storyblok -x storyblok pull-components --space \\$STORYBLOK_SPACE_ID",
-    "storyblok:generate": "node scripts/storyblok-generate.cjs ",
+    "storyblok:generate": "node scripts/storyblok-generate.cjs",
     "storyblok:login": "env-cmd -f .env.storyblok -x storyblok login --token \\$STORYBLOK_PERSONAL_TOKEN --region eu",
     "storyblok:unused": "node scripts/storyblok-unused.cjs"
   },

@@ -27,7 +27,7 @@ export default defineNuxtConfig({
     // Following keys are overridable using prefix NUXT_STORYBLOK_
     storyblok: storyblokRuntimeConfigPrivate,
     // Following keys are overridable using prefix NUXT_$STOREFRONT_
-    '$storefront': storefrontRuntimeConfigPrivate as any, // TODO: Extend SFC runtimeConfig type
+    $storefront: storefrontRuntimeConfigPrivate as any, // TODO: Extend SFC runtimeConfig type
     // Following keys are overridable using prefix NUXT_PUBLIC_
     public: {
       domains,
@@ -77,6 +77,9 @@ export default defineNuxtConfig({
     'nuxt-viewport',
   ],
 
+  storyblok: {
+    accessToken: environment.STORYBLOK_ACCESS_TOKEN,
+  },
   storefront: storefrontBuildtimeConfig,
   svgo,
   image,
