@@ -5,6 +5,7 @@ import {
   getAppliedReductionsByCategory,
 } from '@scayle/storefront-nuxt'
 import { ColorMap } from '~/constants'
+import { VariantAvailability } from '~/types'
 
 export { ProductImageType } from '@scayle/storefront-nuxt'
 
@@ -33,6 +34,44 @@ export const getColorCodeForId = (id: number): string | string[] => {
   console.log('No color found for', id)
 
   return ColorMap.WHITE.hex
+}
+
+export function getVariantAvailability(
+  variant: Variant,
+  minimumQuantityForImmediateAvaliability = 5,
+): VariantAvailability {
+  const { quantity, isSellableWithoutStock } = variant.stock
+
+  if (quantity > minimumQuantityForImmediateAvaliability) {
+    return {
+      available: true,
+      type: 'immediate',
+      text: `availability.available`,
+    }
+  }
+
+  if (quantity > 0) {
+    return {
+      available: true,
+      type: 'soon',
+      text: `availability.available_some`,
+      textArgs: { quantity },
+    }
+  }
+
+  if (isSellableWithoutStock) {
+    return {
+      available: true,
+      type: 'soon',
+      text: 'availability.available_asap',
+    }
+  }
+
+  return {
+    available: false,
+    type: 'soon',
+    text: 'availability.available_soon',
+  }
 }
 
 export const getSalesRelativeAmountByCategory = (
