@@ -82,9 +82,6 @@ const progressLevel = computed<number>(() => {
   return DeliveryProgress[props.status] || 5
 })
 
-// const router = useRouter()
-// router.push({ params: { id: 2 } })
-
 const progressType = computed<'success' | 'warn' | 'danger'>(() => {
   return props.status !== Status.CANCELLATION_COMPLETED ? 'success' : 'danger'
 })
