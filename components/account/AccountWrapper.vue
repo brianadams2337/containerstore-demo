@@ -66,7 +66,6 @@ const ORDERS_PER_PAGE = 8
 
 const route = useRoute()
 const router = useRouter()
-const viewport = useViewport()
 
 const { user } = await useUser()
 

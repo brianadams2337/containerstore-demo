@@ -23,7 +23,7 @@
         </Headline>
       </div>
     </div>
-    <div v-if="viewport.isGreaterOrEquals('md')" class="mt-5">
+    <div v-if="!viewport.isGreaterOrEquals('md')" class="mt-5">
       <ProgressBar
         :progress="progressLevel"
         class="mb-1 mt-2"
