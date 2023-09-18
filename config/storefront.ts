@@ -63,23 +63,29 @@ const protocol =
     : 'http://'
 
 export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
+  // Following keys are overridable using prefix NUXT_$STOREFRONT_SESSION
   session: {
     sameSite: process.env.APP_ENV !== 'production' ? 'none' : 'lax',
     maxAge: 2419200000, // four weeks in milliseconds
     provider: 'redis',
   },
+  // Following keys are overridable using prefix NUXT_$STOREFRONT_BAPI
   bapi: {
     host: environment.BAPI_HOST,
     token: environment.BAPI_TOKEN,
     // TODO: Is shopId required here for tenants that need to separate shop/customer data?
   },
+  // Following keys are overridable using prefix NUXT_$STOREFRONT_OAUTH
   oauth: {
     host: environment.OAUTH_API_HOST,
     clientId: environment.OAUTH_CLIENT_ID,
     clientSecret: environment.OAUTH_CLIENT_SECRET,
   },
+  // Following keys are overridable using prefix NUXT_STOREFRONT_PUBLIC_SHOP_DATA
   publicShopData: ['paymentProviders', 'isLowestPreviousPriceActive'],
+  // Following keys are overridable using prefix NUXT_$STOREFRONT_SHOP_SELECTOR
   shopSelector: environment.DOMAIN_PER_LOCALE ? 'domain' : 'path',
+  // Following keys are overridable using prefix NUXT_$STOREFRONT_STORES
   stores: shops.map((shop) => ({
     ...baseShopConfig,
     shopId: shop.shopId,
@@ -101,6 +107,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
       user: environment.CHECKOUT_USER_1001,
     },
   })),
+  // Following keys are overridable using prefix NUXT_$STOREFRONT_REDIS
   redis: {
     host: environment.REDIS_HOST,
     port: environment.REDIS_PORT,
@@ -108,6 +115,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
     user: process.env.REDIS_USER,
     password: process.env.REDIS_PASSWORD,
   },
+  // Following keys are overridable using prefix NUXT_$STOREFRONT_CACHE
   cache: {
     auth: {
       username: 'max',
@@ -124,10 +132,12 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
 }
 
 export const storefrontRuntimeConfigPublic: Partial<ModuleOptions> = {
+  // Following keys are overridable using prefix NUXT_PUBLIC_WITH_PARAMS
   withParams,
   log: {
     name: 'storefront-boilerplate-nuxt',
   },
+  // Following keys are overridable using prefix NUXT_PUBLIC_IMAGE_BASE_URL
   imageBaseUrl: 'https://brb-demo.cdn.aboutyou.cloud/',
 }
 

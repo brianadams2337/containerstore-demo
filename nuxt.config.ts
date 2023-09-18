@@ -20,15 +20,20 @@ export default defineNuxtConfig({
   // Any key/value pair outside of the `public` key are private/server-side only
   // https://nuxt.com/docs/guide/going-further/runtime-config
   runtimeConfig: {
+    // Following keys are overridable using prefix NUXT_CHECKOUT_
     checkout: {
       accessHeader: environment.CHECKOUT_ACCESS_HEADER,
     },
+    // Following keys are overridable using prefix NUXT_STORYBLOK_
     storyblok: storyblokRuntimeConfigPrivate,
+    // Following keys are overridable using prefix NUXT_$STOREFRONT_
     '$storefront': storefrontRuntimeConfigPrivate as any, // TODO: Extend SFC runtimeConfig type
+    // Following keys are overridable using prefix NUXT_PUBLIC_
     public: {
       domains,
       gtmId: process.env.GOOGLE_TAG_MANAGER_ID,
       baseUrl: process.env.BASE_URL,
+      // Following keys are overridable using prefix NUXT_PUBLIC_
       ...storefrontRuntimeConfigPublic as any,  // TODO: Extend SFC runtimeConfig type
     },
   },
