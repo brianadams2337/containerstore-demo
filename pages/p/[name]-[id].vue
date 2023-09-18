@@ -108,22 +108,24 @@
                 </template>
               </AppButton>
             </div>
+            <!-- 
             <div class="mt-3">
               <ProductDetailGroup
-                v-if="true"
+                v-if="sliderProducts.length"
                 data-test-id="combine-with-slider">
                 <template #headline>
                   {{ $t('global.product_recommendation') }}
                 </template>
                 <p>Recommendation Slider</p>
-                <!-- <ProductRecommendations
+                  <ProductRecommendations
                   size="4xs"
                   :products="sliderProducts"
                   :loading="fetchingCombineWithProducts"
                   @intersect:column="trackViewListing"
-                  @click:recommendation="trackRecommendationClick" /> -->
+                  @click:recommendation="trackRecommendationClick" /> 
               </ProductDetailGroup>
             </div>
+                  -->
           </div>
         </div>
       </div>
@@ -316,21 +318,29 @@ const onToggleWishlist = () => {}
 //   product: product.value as Product,
 //   property: 'combineWith',
 // })
-// const combineWithProductIds = combineWithProductValues
-//   ? combineWithProductValues
-//       .split(',')
-//       .map((productId: string) => parseInt(productId, 10))
-//   : []
+// const combineWithProductIds = computed(() =>
+//   combineWithProductValues
+//     ? combineWithProductValues
+//         .split(',')
+//         .map((productId: string) => parseInt(productId, 10))
+//     : [],
+// )
+// const recommendationsFetchParams = ref<FetchProductsParams>({ ids: [] })
 
-// const idsToFetch = ref<FetchProductsParams>({
-//   ids: [1115],
-// })
+// watch(
+//   () => combineWithProductIds.value,
+//   (ids) => {
+//     recommendationsFetchParams.value = { ids }
+//   },
+// )
+
 // const { data: combineWithProducts, pending: fetchingCombineWithProducts } =
 //   await useProductsByIds(
-//     idsToFetch,
-//     { immediate: false },
+//     recommendationsFetchParams,
+//     undefined,
 //     `products-pdpSlider-combineWith-${productId}`,
 //   )
+
 // const combineWith = computed(() => combineWithProducts.value || [])
 // const sliderProducts = computed(() =>
 //   combineWith.value.length
