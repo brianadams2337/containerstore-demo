@@ -1,4 +1,4 @@
-import { Category, CentAmount, Value } from '@scayle/storefront-nuxt'
+import { Category, CentAmount } from '@scayle/storefront-nuxt'
 
 export type FlyoutMenuCategory = {
   name: string

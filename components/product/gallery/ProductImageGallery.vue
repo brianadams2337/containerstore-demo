@@ -90,9 +90,11 @@ const emit = defineEmits<{
 const { md } = useViewportBreakpoints()
 
 const activeSlide = ref(0)
-const setActiveSlide = (slide: number) => {
-  activeSlide.value = slide
-}
+
+// TODO wire up with intersect
+// const setActiveSlide = (slide: number) => {
+//   activeSlide.value = slide
+// }
 
 const getSpanWith = (index: number, imagesPerRow: number[]) => {
   const tiles = imagesPerRow.map((perRow) => Array(perRow).fill(12 / perRow))

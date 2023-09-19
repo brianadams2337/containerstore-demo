@@ -22,11 +22,11 @@
         }"
         :name="getFirstAttributeValue(recommendation.attributes, 'name')?.label"
         :class="{
-          'min-w-4xs': size === '4xs',
-          'min-w-xs': size === 'xs',
-          'min-w-md': size === 'md',
-          'min-w-lg': size === 'lg',
-          'min-w-xl': size === 'xl',
+          'min-w-4xs': size === Size['4XS'],
+          'min-w-xs': size === Size.XS,
+          'min-w-md': size === Size.MD,
+          'min-w-lg': size === Size.LG,
+          'min-w-xl': size === Size.XL,
         }"
         :link="getProductDetailRoute(recommendation)"
         :image="getImageFromList(recommendation.images, 'model', 'front')"

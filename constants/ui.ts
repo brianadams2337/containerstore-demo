@@ -5,6 +5,7 @@ import { ValuesType } from 'utility-types'
 // TODO why is the intentional naming needed as the constants should follow all caps convention
 
 export const Size = {
+  '4XS': '4xs',
   XS: 'xs',
   SM: 'sm',
   MD: 'md',

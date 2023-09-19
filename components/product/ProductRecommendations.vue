@@ -10,7 +10,7 @@
       <IconArrowLeft class="h-5 w-5" />
     </button>
     <div ref="carousel" class="flex space-x-2" :style="carouselStyles">
-      <!-- <ProductCard
+      <ProductCard
         v-for="(recommendation, idx) in products"
         :id="recommendation.id"
         :key="`product-recommendation-${recommendation.id}`"
@@ -22,11 +22,11 @@
         }"
         :name="getFirstAttributeValue(recommendation.attributes, 'name')?.label"
         :class="{
-          'min-w-4xs': size === '4xs',
-          'min-w-xs': size === 'xs',
-          'min-w-md': size === 'md',
-          'min-w-lg': size === 'lg',
-          'min-w-xl': size === 'xl',
+          'min-w-4xs': size === Size['4XS'],
+          'min-w-xs': size === Size.XS,
+          'min-w-md': size === Size.MD,
+          'min-w-lg': size === Size.LG,
+          'min-w-xl': size === Size.XL,
         }"
         :link="getProductDetailRoute(recommendation)"
         :image="getImageFromList(recommendation.images, 'model', 'front')"
@@ -38,7 +38,7 @@
         :show-add-to-wishlist="false"
         :show-available-colors="false"
         @intersect:product="collectColumnIntersection($event, idx)"
-        @click.capture="emit('click:recommendation', recommendation, idx)" /> -->
+        @click.capture="emit('click:recommendation', recommendation, idx)" />
     </div>
     <button
       v-if="isLookbookProducts"
