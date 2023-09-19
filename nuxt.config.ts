@@ -84,7 +84,11 @@ export default defineNuxtConfig({
       include: ['@scayle/storefront-nuxt', '@scayle/storefront-core'],
     },
   },
-
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('ay-'),
+    },
+  },
   devServer: {
     https: {
       key: path.resolve(__dirname, environment.HTTPS_KEY),
