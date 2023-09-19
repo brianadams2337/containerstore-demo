@@ -81,7 +81,12 @@ export default defineNuxtConfig({
 
   vite: {
     optimizeDeps: {
-      include: ['@scayle/storefront-nuxt', '@scayle/storefront-core'],
+      include: [
+        '@scayle/storefront-nuxt',
+        '@scayle/storefront-core',
+        'isomorphic-dompurify',
+        'slugify',
+      ],
     },
   },
   vue: {
