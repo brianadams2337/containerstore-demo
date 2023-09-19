@@ -139,9 +139,9 @@
             </div>
             <div class="flex justify-end border-b px-5 pb-3">
               <div class="text-right">
-                <strong class="block text-sm">{{
-                  getCurrency(price.withTax)
-                }}</strong>
+                <strong class="block text-sm">
+                  {{ toCurrency(price.withTax) }}
+                </strong>
                 <div class="text-xs text-secondary">
                   {{ $t('price.including_vat') }}
                 </div>
@@ -301,21 +301,5 @@ const onSelectSize = (size: Value): void => {
     changeSize(props.product, size)
   }
   isChangingSize.value = false
-}
-
-const currentShop = useCurrentShop()
-const getCurrency = (value: number): string => {
-  if (!currentShop.value) {
-    return ''
-  }
-
-  return toCurrency(
-    value,
-    usePick(currentShop.value, [
-      'locale',
-      'currency',
-      'currencyFractionDigits',
-    ]),
-  )
 }
 </script>

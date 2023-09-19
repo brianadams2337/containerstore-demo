@@ -21,11 +21,11 @@
     </div>
     <div class="text-right text-xs font-bold">
       <div v-if="reducedPrice" class="line-through">
-        {{ getCurrency(price + reducedPrice) }}
+        {{ toCurrency(price + reducedPrice) }}
       </div>
-      <div v-else>{{ getCurrency(price) }}</div>
+      <div v-else>{{ toCurrency(price) }}</div>
       <div v-if="reducedPrice" class="text-red-500">
-        {{ getCurrency(price) }}
+        {{ toCurrency(price) }}
       </div>
       <p class="text-2xs font-medium opacity-50">
         {{ $t('incl_tax') }}
@@ -68,20 +68,4 @@ const reducedPrice = computed(() => {
 })
 
 const price = computed(() => props.addOn.price.total.withTax)
-
-const currentShop = useCurrentShop()
-const getCurrency = (value: number): string => {
-  if (!currentShop.value) {
-    return ''
-  }
-
-  return toCurrency(
-    value,
-    usePick(currentShop.value, [
-      'locale',
-      'currency',
-      'currencyFractionDigits',
-    ]),
-  )
-}
 </script>

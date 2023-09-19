@@ -7,7 +7,7 @@
         :class="{ 'rotate-180': isOpen }" />
       <FadeInTransition :duration="300">
         <div class="flex-1 text-right" :class="{ 'opacity-0': isOpen }">
-          <p class="text-xs font-bold">{{ getCurrency(totalCostOfAddOns) }}</p>
+          <p class="text-xs font-bold">{{ toCurrency(totalCostOfAddOns) }}</p>
           <p class="text-2xs font-medium opacity-50">
             {{ $t('incl_tax') }}
           </p>
@@ -47,20 +47,4 @@ const getPrice = (item: BasketItem) => item.price.total.withTax
 const totalCostOfAddOns = computed(() => {
   return props.items.reduce((total, item) => total + getPrice(item), 0)
 })
-
-const currentShop = useCurrentShop()
-const getCurrency = (value: number): string => {
-  if (!currentShop.value) {
-    return ''
-  }
-
-  return toCurrency(
-    value,
-    usePick(currentShop.value, [
-      'locale',
-      'currency',
-      'currencyFractionDigits',
-    ]),
-  )
-}
 </script>

@@ -12,12 +12,12 @@
         <template v-if="showPriceFrom">
           {{ $t('price.starting_from') }}
         </template>
-        {{ getCurrency(price.withTax) }}
+        {{ toCurrency(price.withTax) }}
         <span
           v-if="totalReductions.absoluteWithTax"
           class="text-sm font-medium text-primary line-through"
           data-test-id="initialProductPrice">
-          {{ getCurrency(price.withTax + totalReductions.absoluteWithTax) }}
+          {{ toCurrency(price.withTax + totalReductions.absoluteWithTax) }}
         </span>
       </p>
       <slot name="tax-info">
@@ -31,7 +31,7 @@
         v-if="appliedReductions.length && hasLowestPriorPrice"
         class="mt-0.5 text-sm text-gray-700">
         {{ $t('price.best_price_30d') }}
-        {{ getCurrency(lowestPriorPrice.withTax ?? 0) }}
+        {{ toCurrency(lowestPriorPrice.withTax ?? 0) }}
         ({{ (lowestPriorPrice.relativeDifferenceToPrice ?? 0) * 100 }}%)
       </p>
     </slot>
@@ -84,23 +84,6 @@ const props = defineProps({
     default: 'loud',
   },
 })
-
-const currentShop = useCurrentShop()
-
-const getCurrency = (value: number): string => {
-  if (!currentShop.value) {
-    return ''
-  }
-
-  return toCurrency(
-    value,
-    usePick(currentShop.value, [
-      'locale',
-      'currency',
-      'currencyFractionDigits',
-    ]),
-  )
-}
 
 const totalReductions = computed(() => getTotalAppliedReductions(props.price))
 

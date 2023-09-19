@@ -61,14 +61,14 @@
               priceWithTax > -1
             "
             class="text-sm text-gray-500 line-through">
-            {{ getCurrency(priceWithTax + reducedPrice) }}
+            {{ toCurrency(priceWithTax + reducedPrice) }}
           </p>
           <Headline
             v-if="priceWithTax"
             tag="p"
             size="base"
             :class="{ 'text-red-500': reducedPrice }">
-            {{ getCurrency(priceWithTax) }}
+            {{ toCurrency(priceWithTax) }}
           </Headline>
           <p class="text-xs text-secondary">
             {{ $t('incl_tax') }}
@@ -192,20 +192,4 @@ const badgeLabel = computed(() => {
 const addOnItems = computed(() =>
   props.items.filter((item) => item.itemGroup && !item.itemGroup.isMainItem),
 )
-
-const currentShop = useCurrentShop()
-const getCurrency = (value: number): string => {
-  if (!currentShop.value) {
-    return ''
-  }
-
-  return toCurrency(
-    value,
-    usePick(currentShop.value, [
-      'locale',
-      'currency',
-      'currencyFractionDigits',
-    ]),
-  )
-}
 </script>

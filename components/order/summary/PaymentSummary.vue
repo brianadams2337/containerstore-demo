@@ -9,11 +9,11 @@
           <p class="text-secondary">
             {{ $t('my_account.orders.order_value') }}
           </p>
-          <p>{{ getCurrency(totalAmount) }}</p>
+          <p>{{ toCurrency(totalAmount) }}</p>
         </div>
         <div class="mb-4 flex flex-row justify-between">
           <p class="text-secondary">{{ $t('my_account.orders.shipping') }}</p>
-          <p v-if="deliveryCost > 0">{{ getCurrency(deliveryCost) }}</p>
+          <p v-if="deliveryCost > 0">{{ toCurrency(deliveryCost) }}</p>
           <p v-else class="text-green-neon">{{ $t('basket.shipping_free') }}</p>
         </div>
       </div>
@@ -24,7 +24,7 @@
           {{ $t('my_account.orders.residual_value') }}
         </p>
         <div class="flex flex-col">
-          <p class="text-xl font-bold">{{ getCurrency(totalAmount) }}</p>
+          <p class="text-xl font-bold">{{ toCurrency(totalAmount) }}</p>
           <p class="text-right text-[10px] font-medium text-secondary">
             {{ $t('incl_tax') }}
           </p>
@@ -46,25 +46,8 @@
 
 <script setup lang="ts">
 defineProps({
-  totalAmount: { type: Number as PropType<number>, required: true },
-  paidWith: { type: String as PropType<string>, default: null },
-  deliveryCost: { type: Number as PropType<number>, default: 0 },
+  totalAmount: { type: Number, required: true },
+  paidWith: { type: String, default: null },
+  deliveryCost: { type: Number, default: 0 },
 })
-
-const currentShop = useCurrentShop()
-
-const getCurrency = (value: number): string => {
-  if (!currentShop.value) {
-    return ''
-  }
-
-  return toCurrency(
-    value,
-    usePick(currentShop.value, [
-      'locale',
-      'currency',
-      'currencyFractionDigits',
-    ]),
-  )
-}
 </script>

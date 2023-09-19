@@ -33,13 +33,13 @@
               'line-through': reducedPrice !== undefined,
             }">
             {{
-              getCurrency(
+              toCurrency(
                 quantity * (reducedPrice ? price + reducedPrice : price),
               )
             }}
           </p>
           <p v-if="reducedPrice" class="text-right text-red-500">
-            {{ getCurrency(quantity * price) }}
+            {{ toCurrency(quantity * price) }}
           </p>
           <p
             v-if="
@@ -49,7 +49,7 @@
             "
             class="mt-0.5 text-right text-sm text-gray-400">
             {{ $t('price.best_price_30d') }}
-            {{ getCurrency(lowestPriorPrice.withTax) }}
+            {{ toCurrency(lowestPriorPrice.withTax) }}
             ({{ lowestPriorPrice.relativeDifferenceToPrice * 100 }}%)
           </p>
         </div>
@@ -85,8 +85,6 @@ const props = defineProps({
   },
 })
 
-const currentShop = useCurrentShop()
-
 const name = computed(() => props.product.name)
 
 const color = computed(() => props.product.attributes.color.label)
@@ -106,19 +104,4 @@ const reducedPrice = computed(() => {
 })
 
 const lowestPriorPrice = computed(() => props.variant.lowestPriorPrice)
-
-const getCurrency = (value: number): string => {
-  if (!currentShop.value) {
-    return ''
-  }
-
-  return toCurrency(
-    value,
-    usePick(currentShop.value, [
-      'locale',
-      'currency',
-      'currencyFractionDigits',
-    ]),
-  )
-}
 </script>

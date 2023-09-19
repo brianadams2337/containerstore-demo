@@ -50,11 +50,11 @@
             </div>
             <div class="text-right font-bold">
               <div v-if="reducedPrice" class="line-through">
-                {{ getCurrency(price + reducedPrice) }}
+                {{ toCurrency(price + reducedPrice) }}
               </div>
-              <div v-else>{{ getCurrency(price) }}</div>
+              <div v-else>{{ toCurrency(price) }}</div>
               <div v-if="reducedPrice" class="text-red-500">
-                {{ getCurrency(price) }}
+                {{ toCurrency(price) }}
               </div>
               <p
                 v-if="
@@ -65,7 +65,7 @@
                 "
                 class="mt-0.5 text-sm text-gray-700">
                 {{ $t('price.best_price_30d') }}
-                {{ getCurrency(lowestPriorPrice.withTax) }}
+                {{ toCurrency(lowestPriorPrice.withTax) }}
                 ({{ lowestPriorPrice.relativeDifferenceToPrice * 100 }})%
               </p>
               <p class="text-2xs font-medium opacity-50">
@@ -172,6 +172,7 @@ const basket = await useBasket()
 //   trackRemoveFromBasket,
 // } = useTrackingEvents()
 const viewport = useViewport()
+const currentShop = useCurrentShop()
 const state = ref('default')
 
 // const index = toRef(props, 'index')
@@ -350,20 +351,4 @@ const changeQuantity = async (newQuantity: number) => {
 const isLowestPreviousPriceActive = computed(
   () => !!currentShop.value?.isLowestPreviousPriceActive,
 )
-
-const currentShop = useCurrentShop()
-const getCurrency = (value: number): string => {
-  if (!currentShop.value) {
-    return ''
-  }
-
-  return toCurrency(
-    value,
-    usePick(currentShop.value, [
-      'locale',
-      'currency',
-      'currencyFractionDigits',
-    ]),
-  )
-}
 </script>
