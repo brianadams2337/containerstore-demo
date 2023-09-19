@@ -2,8 +2,7 @@
   <NuxtLink
     v-bind="{ openInNewTab, activeClass, exactActiveClass, target }"
     :to="resolvedLink"
-    :class="variantClass"
-    class="inline-flex items-center gap-2 whitespace-nowrap text-xs leading-5 tracking-wide transition duration-200 ease-linear">
+    :class="variantClass">
     <slot />
     <slot name="badge" :badge="badge">
       <FadeInTransition>
@@ -66,7 +65,11 @@ const props = defineProps({
 const ACTIVE_CLASS = '!font-bold'
 
 const variantClass = computed(() => {
-  return !props.raw ? LinkTypeClass[props.type] : {}
+  const defaultClass = `
+    inline-flex items-center gap-2 whitespace-nowrap text-xs
+    leading-5 tracking-wide transition duration-200 ease-linear
+   `
+  return !props.raw ? [defaultClass, LinkTypeClass[props.type]] : {}
 })
 
 const activeClass = computed(() => (!props.onlyExactActive ? ACTIVE_CLASS : ''))

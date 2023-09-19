@@ -77,19 +77,18 @@
               <DefaultLink
                 :to="link"
                 raw
-                class="text-2xs font-medium uppercase leading-tight text-primary opacity-50 md:text-xs"
+                class="flex flex-wrap whitespace-pre-line break-words text-2xs font-medium uppercase leading-tight text-primary opacity-50 sm:leading-4 md:text-xs"
                 @click.capture="$emit('click:product')">
-                <p class="uppercase">{{ title }}</p>
-                <p class="mb-1" data-test-id="product-card-product-name">
-                  {{ name }}
-                </p>
+                <p class="overflow-hidden uppercase">{{ title }}</p>
+                <p data-test-id="product-card-product-name">{{ name }}</p>
                 <slot name="description-price" :price="price">
                   <ProductPrice
                     v-if="price"
                     v-bind="{ price, lowestPriorPrice }"
                     :applied-reductions="price?.appliedReductions"
                     :size="viewport.isGreaterThan('md') ? 'sm' : 'xs'"
-                    type="whisper" />
+                    type="whisper"
+                    class="ml-1" />
                 </slot>
               </DefaultLink>
               <div class="mt-2">

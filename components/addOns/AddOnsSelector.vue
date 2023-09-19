@@ -34,13 +34,21 @@ const emit = defineEmits(['click:service-selection'])
 
 const keyPostfix = computed(() => props.addOnVariantIds.join('-'))
 
-const { data: variants, fetch: fetchVariants } = await useVariant(() => ({
-  ids: props.addOnVariantIds.map((addOn) => parseInt(addOn.toString())),
-}), undefined, `addonVariants-${keyPostfix.value}`)
+const { data: variants, fetch: fetchVariants } = await useVariant(
+  () => ({
+    ids: props.addOnVariantIds.map((addOn) => parseInt(addOn.toString())),
+  }),
+  undefined,
+  `addonVariants-${keyPostfix.value}`,
+)
 
-const { data: products, fetch: fetchProducts } = await useProductsByIds(() => ({
-  ids: variants.value?.map((variant) => variant.productId),
-}), undefined, `addonProducts-${keyPostfix.value}`)
+const { data: products, fetch: fetchProducts } = await useProductsByIds(
+  () => ({
+    ids: variants.value?.map((variant) => variant.productId),
+  }),
+  undefined,
+  `addonProducts-${keyPostfix.value}`,
+)
 const computedAddOns = ref<AddOnItem[]>([])
 
 onMounted(() => {

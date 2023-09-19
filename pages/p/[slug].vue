@@ -164,12 +164,13 @@ const productId = computed(
   () => (slug as string)?.substring(slug.lastIndexOf('-') + 1),
 )
 
-const { data: product, fetching } = await useProduct(() =>({
+const { data: product, fetching } = await useProduct(
+  () => ({
     id: parseInt(productId.value),
     with: PRODUCT_WITH_PARAMS,
   }),
   { autoFetch: true },
-  `useProduct-${productId.value}`
+  `useProduct-${productId.value}`,
 )
 
 const productCategories = computed(() =>

@@ -141,7 +141,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
     prefix: '', // Override: NUXT_STOREFRONT_REDIS_PREFIX,
     user: process.env.NUXT_STOREFRONT_REDIS_USER,
     password: process.env.NUXT_STOREFRONT_REDIS_PASSWORD,
-    sslTransit: Boolean(process.env.NUXT_STOREFRONT_SSL_TRANSIT)
+    sslTransit: Boolean(process.env.NUXT_STOREFRONT_SSL_TRANSIT),
   },
   // Following keys are overridable using prefix NUXT_STOREFRONT_CACHE
   cache: {
@@ -156,7 +156,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
     // maxAge: 60 * 60,
     // staleWhileRevalidate: 60 * 60 * 24,
     // generateCacheKey: () =>
-  }
+  },
 }
 
 export const storefrontRuntimeConfigPublic: Partial<ModuleOptions> = {
@@ -169,7 +169,6 @@ export const storefrontRuntimeConfigPublic: Partial<ModuleOptions> = {
   // Following keys are overridable using prefix NUXT_PUBLIC_IMAGE_BASE_URL
   imageBaseUrl: 'https://brb-demo.cdn.aboutyou.cloud/', // Override: NUXT_PUBLIC_IMAGE_BASE_URL,
 }
-
 
 export const storefrontBuildtimeConfig: Partial<ModuleOptions> = {
   rpcMethodNames: Object.keys(customRpcMethods),
