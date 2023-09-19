@@ -57,6 +57,7 @@ import {
   Product,
 } from '@scayle/storefront-nuxt'
 import { IconArrowLeft } from '#build/components'
+import { Size } from '~/constants'
 
 const props = defineProps({
   loading: {
@@ -68,10 +69,8 @@ const props = defineProps({
     default: () => [],
   },
   size: {
-    type: String as PropType<string>,
-    validator: (value: string) =>
-      ['4xs', 'xs', 'md', 'lg', 'xl'].includes(value),
-    default: 'md',
+    type: String as PropType<Size>,
+    default: Size.MD,
   },
   isLookbookProducts: {
     type: Boolean,

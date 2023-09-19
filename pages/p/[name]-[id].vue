@@ -153,7 +153,7 @@ import {
   getProductSiblings,
   flattenFieldSet,
 } from '@scayle/storefront-nuxt'
-import { Size } from '~/constants'
+import { Size, PRODUCT_WITH_PARAMS } from '~/constants'
 const {
   params: { id = '-1' },
 } = useRoute()
@@ -165,62 +165,7 @@ const productId = computed(() =>
 const { data: product, fetching } = await useProduct(
   {
     id: parseInt(productId.value),
-    with: {
-      attributes: {
-        withKey: [
-          'color',
-          'brand',
-          'name',
-          'fastenerType',
-          'design',
-          'extras',
-          'material',
-          'print',
-          'careInstructions',
-          'fitting',
-          'upperLength',
-          'sleeveLength',
-          'shirtCut',
-          'shortsLength',
-          'trousersLength',
-          'skirtLength',
-          'neckline',
-          'trousersCut',
-        ],
-      },
-      advancedAttributes: {
-        withKey: [
-          'materialCompositionTextile',
-          'productDescription',
-          'combineWith',
-          'additionalService',
-        ],
-      },
-      variants: {
-        attributes: {
-          withKey: ['price', 'size'],
-        },
-        lowestPriorPrice: true,
-      },
-      images: {
-        attributes: {
-          withKey: ['imageType', 'imageView', 'imageBackground'],
-        },
-      },
-      categories: 'all',
-      siblings: {
-        images: {
-          attributes: {
-            withKey: ['imageType', 'imageView', 'imageBackground'],
-          },
-        },
-        attributes: {
-          withKey: ['color', 'name', 'brand'],
-        },
-      },
-      priceRange: true,
-      lowestPriorPrice: true,
-    },
+    with: PRODUCT_WITH_PARAMS,
   },
   { autoFetch: true },
 )
@@ -352,9 +297,9 @@ const onToggleWishlist = () => {}
 //     : [],
 // )
 
-// tracking
-const trackViewListing = () => {}
-const trackRecommendationClick = () => {}
+// TODO wire up tracking
+// const trackViewListing = () => {}
+// const trackRecommendationClick = () => {}
 </script>
 
 <script lang="ts">

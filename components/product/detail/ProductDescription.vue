@@ -47,7 +47,7 @@ defineProps({
     default: '',
   },
   productInfos: {
-    type: Array,
+    type: Array as PropType<string[]>,
     default: () => [],
   },
   fitInfos: {

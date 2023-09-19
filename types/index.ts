@@ -14,7 +14,6 @@ export type PaymentIcon = {
 }
 
 export type PaymentIconsMap = { [key: string]: PaymentIcon }
-export type ListboxValue = Value & { disabled: boolean }
 
 export interface VariantAvailability {
   available: boolean

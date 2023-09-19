@@ -2,6 +2,7 @@ import { ValuesType } from 'utility-types'
 
 /* eslint-disable @typescript-eslint/no-redeclare */
 /* intentionally naming the variables the same as the type */
+// TODO why is the intentional naming needed as the constants should follow all caps convention
 
 export const Size = {
   XS: 'xs',
