@@ -77,7 +77,7 @@
             <AddOnsSelector
               v-if="availableAddOns.length"
               class="mt-8"
-              :add-ons="availableAddOns"
+              :add-on-variant-ids="availableAddOns"
               :class="{ hidden: !activeVariant }"
               @click:service-selection="onAddOnSelected" />
             <div class="mt-4 flex h-12">

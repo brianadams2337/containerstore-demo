@@ -24,7 +24,7 @@ import { getFirstAttributeValue } from '@scayle/storefront-nuxt'
 import { AddOnItem } from '~/types'
 
 const props = defineProps({
-  addOns: {
+  addOnVariantIds: {
     type: Array as PropType<number[]>,
     required: true,
   },
@@ -32,7 +32,7 @@ const props = defineProps({
 
 const emit = defineEmits(['click:service-selection'])
 const { data: variants, fetch: fetchVariants } = await useVariant(() => ({
-  ids: props.addOns.map((addOn) => parseInt(addOn.toString())),
+  ids: props.addOnVariantIds.map((addOn) => parseInt(addOn.toString())),
 }))
 
 const { data: products, fetch: fetchProducts } = await useProductsByIds(() => ({
