@@ -260,7 +260,7 @@
     "order_details": "Bestelldetails",
     "customer_id": "Kunden-Nr.",
     "deliver_costs": "Versandkosten",
-    "deliver_date": "Lieferadresse",
+    "deliver_address": "Lieferadresse",
     "email_send": "Die Bestellbestätigung wurde an Deine hinterlegte E-Mail-Adresse gesendet.",
     "estimated_deliver_date": "Vorraussichtliche Lieferung",
     "intro": "Vielen Dank für Deine Bestellung,",
