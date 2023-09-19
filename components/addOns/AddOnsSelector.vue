@@ -36,11 +36,11 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['click:service-selection'])
-const { data: variants, refresh: fetchVariants } = await useVariant({
+const { data: variants, fetch: fetchVariants } = await useVariant({
   ids: props.addOns.map((addOn) => parseInt(addOn.toString())),
 })
 const productIds = variants.value?.map((variant) => variant.productId)
-const { data: products, refresh: fetchProducts } = await useProductsByIds({
+const { data: products, fetch: fetchProducts } = await useProductsByIds({
   ids: productIds,
 })
 const computedAddOns = ref<AddOnItem[]>([])
