@@ -32,25 +32,21 @@
   <div v-else class="relative w-full md:w-1/2 xl:w-2/3">
     <HorizontalItemsSlider
       class="-mx-4 aspect-[5/6] snap-x snap-mandatory border-b">
-      <!-- TODO Handle intersect -->
-      <!-- <intersect
-      v-for="(item, idx) in images"
-      :key="item.hash"
-      :threshold="[0.5]"
-      @enter="setActiveSlide(idx)"> -->
-      <div
+      <intersect
         v-for="(item, idx) in images"
         :key="item.hash"
+        :threshold="[0.5]"
         class="relative min-w-full snap-start snap-always"
-        @click="emit('click:image', idx)">
-        <ProductImage
-          :image="item"
-          sizes="xs:100vw sm:100vw md:100vw"
-          fit="cover"
-          class="absolute inset-0"
-          :image-loading="idx === 0 ? 'eager' : 'lazy'" />
-      </div>
-      <!-- </intersect> -->
+        @enter="setActiveSlide(idx)">
+        <div @click="emit('click:image', idx)">
+          <ProductImage
+            :image="item"
+            sizes="xs:100vw sm:100vw md:100vw"
+            fit="cover"
+            class="absolute inset-0"
+            :image-loading="idx === 0 ? 'eager' : 'lazy'" />
+        </div>
+      </intersect>
     </HorizontalItemsSlider>
     <FadeInTransition>
       <div class="absolute bottom-4 flex w-full justify-center space-x-2">
@@ -90,11 +86,9 @@ const emit = defineEmits<{
 const { md } = useViewportBreakpoints()
 
 const activeSlide = ref(0)
-
-// TODO wire up with intersect
-// const setActiveSlide = (slide: number) => {
-//   activeSlide.value = slide
-// }
+const setActiveSlide = (slide: number) => {
+  activeSlide.value = slide
+}
 
 const getSpanWith = (index: number, imagesPerRow: number[]) => {
   const tiles = imagesPerRow.map((perRow) => Array(perRow).fill(12 / perRow))
