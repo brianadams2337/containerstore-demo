@@ -86,7 +86,7 @@ const _listingMetaData = {
 //   collectProductListItems,
 // } = useTrackingEvents()
 
-const { bundleByGroup } = useBasketGroup()
+const { bundleByGroup } = await useBasketGroup()
 
 // onMounted(() => {
 //   if (basket.items.value) {

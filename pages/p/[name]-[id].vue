@@ -78,7 +78,8 @@
               v-if="availableAddOns.length"
               class="mt-8"
               :add-ons="availableAddOns"
-              @click:service-selection="() => {}" />
+              :class="{ hidden: !activeVariant }"
+              @click:service-selection="onAddOnSelected" />
             <div class="mt-4 flex h-12">
               <!-- add to basket -->
               <AppButton
@@ -153,7 +154,7 @@ import {
   getProductSiblings,
   flattenFieldSet,
 } from '@scayle/storefront-nuxt'
-import { Size, PRODUCT_WITH_PARAMS } from '~/constants'
+import { Size, PRODUCT_WITH_PARAMS, Action } from '~/constants'
 const {
   params: { id = '-1' },
 } = useRoute()
@@ -250,15 +251,94 @@ const availableAddOns = computed<number[]>(() => {
 
   return flattenedValues.map((val) => parseInt(val))
 })
+const addOnsSelected = ref<{ [id: number]: boolean }>({})
+const onAddOnSelected = ({
+  isSelected,
+  variantId,
+}: {
+  isSelected: boolean
+  variantId: number
+}) => {
+  addOnsSelected.value = {
+    ...addOnsSelected.value,
+    [variantId]: isSelected,
+  }
+}
+
+const isAnyAddOnSelected = computed(() => {
+  const anySelected = Object.keys(addOnsSelected.value).find(
+    (key) => addOnsSelected.value[key as any],
+  )
+  return Boolean(anySelected)
+})
 
 // TODO basket
-const basketIdle = ref(false)
-const addItemToBasket = () => {}
+const { $alert, $i18n } = useNuxtApp()
+const { fetching: basketIdle, addItem: addBasketItem } = await useBasket()
+const { addGroupToBasket } = await useBasketGroup()
+const addItemToBasket = async () => {
+  if (hasOneSizeVariantOnly.value && product.value?.variants) {
+    activeVariant.value = product.value?.variants[0]
+  }
 
-// TODO wishlist
-const fetchingWishlist = ref(false)
-const isInWishlist = ref(false)
-const onToggleWishlist = () => {}
+  if (activeVariant.value === undefined) {
+    $alert.show($i18n.t('basket.notification.select_size'), Action.CONFIRM)
+    return
+  }
+
+  const productName =
+    getFirstAttributeValue(product.value?.attributes, 'name')?.label ||
+    $i18n.t('wishlist.product')
+
+
+    try {
+        isAnyAddOnSelected.value
+          ? await addGroupToBasket({
+              mainItem: { variantId: activeVariant.value.id, quantity: 1 },
+              items: [
+                ...Object.keys(addOnsSelected.value).map((v) => ({
+                  variantId: parseInt(v),
+                  quantity: 1,
+                })),
+              ],
+            })
+          : await addBasketItem({ variantId: activeVariant.value.id, quantity: 1 })
+        showBasketFlyOut()
+
+        showAddToBasketToast(true, product.value)
+        
+        // TODO tracking
+        // if (product.value) {
+        //   trackAddToBasket({
+        //     product: product.value,
+        //     variant: activeVariant.value,
+        //     index: 1,
+        //   })
+        // }
+      } catch {
+        $alert.show(
+          $i18n.t('basket.notification.add_to_basket_error', { productName }),
+          Action.CONFIRM,
+        )
+      }
+}
+
+// wishlist
+const {
+  fetching: fetchingWishlist,
+  contains: wishlistContains,
+  toggleItem: toggleWishlistItem,
+} = await useWishlist()
+const isInWishlist = computed(() => {
+  return wishlistContains({ productId: parseInt(productId.value, 10) })
+})
+const onToggleWishlist = async () => {
+  const productIdAsNumber = parseInt(productId.value, 10)
+  const wasInWishlist = wishlistContains({ productId: productIdAsNumber })
+  // TODO  Add tracking meta
+  await toggleWishlistItem({ productId: productIdAsNumber })
+  showWishlistToast(!wasInWishlist, product.value)
+}
 
 // Reco Slider
 // const combineWithProductValues = getAdvancedAttributes({

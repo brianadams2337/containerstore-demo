@@ -63,7 +63,7 @@ const { openBasketFlyout, closeBasketFlyout, isBasketFlyoutOpen } = useUiState()
 const groupIds = computed(() => Object.keys(basketItems.value.groups))
 
 const { items } = await useBasket()
-const { bundleByGroup } = useBasketGroup()
+const { bundleByGroup } = await useBasketGroup()
 
 const basketItems = computed(() => {
   const standAlone: BasketItem[] = []
