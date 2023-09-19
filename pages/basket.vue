@@ -176,3 +176,9 @@ const fetching = basket.fetching
 const basketData = basket.data
 const basketCount = basket.count
 </script>
+
+<script lang="ts">
+export default {
+  name: 'BasketPage',
+}
+</script>

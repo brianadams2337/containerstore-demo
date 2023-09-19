@@ -32,7 +32,7 @@
                 v-if="productSuggestion.product.priceRange"
                 class="ml-auto shrink-0">
                 {{
-                  getCurrency(productSuggestion.product.priceRange.min.withTax)
+                  toCurrency(productSuggestion.product.priceRange.min.withTax)
                 }}
               </div>
             </div>
@@ -67,23 +67,6 @@ const props = defineProps({
     default: false,
   },
 })
-
-const currentShop = useCurrentShop()
-
-const getCurrency = (value: number): string => {
-  if (!currentShop.value) {
-    return ''
-  }
-
-  return toCurrency(
-    value,
-    usePick(currentShop.value, [
-      'locale',
-      'currency',
-      'currencyFractionDigits',
-    ]),
-  )
-}
 
 const getCategoryName = (productSuggestion: ProductSuggestion) => {
   return productSuggestion.product.categories?.[0]?.at(-1)?.categoryName

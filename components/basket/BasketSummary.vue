@@ -1,15 +1,15 @@
 <template>
   <div class="xl:w-[32rem]">
     <div class="rounded border-primary p-6 md:border">
-      <Headline tag="div" size="xl" :is-uppercase="false">{{
-        $t('basket.total')
-      }}</Headline>
+      <Headline tag="div" size="xl" :is-uppercase="false">
+        {{ $t('basket.total') }}
+      </Headline>
       <div class="mt-6 space-y-4">
         <div
           class="flex flex-col justify-between gap-2 text-sm font-bold text-gray-800">
           <div class="flex justify-between">
             <div class="opacity-50">{{ $t('basket.subtotal') }}</div>
-            <div v-if="totalCost">{{ getCurrency(totalCost) }}</div>
+            <div v-if="totalCost">{{ toCurrency(totalCost) }}</div>
           </div>
 
           <div class="flex justify-between">
@@ -17,7 +17,7 @@
             <div class="">
               {{
                 shippingCost
-                  ? getCurrency(shippingCost)
+                  ? toCurrency(shippingCost)
                   : $t('basket.shipping_free')
               }}
             </div>
@@ -31,7 +31,7 @@
             </div>
             <div class="">
               <div v-if="totalCost" class="text-xl">
-                {{ getCurrency(totalCost) }}
+                {{ toCurrency(totalCost) }}
               </div>
               <div class="text-2xs opacity-50">
                 {{ $t('basket.including_vat') }}
@@ -91,20 +91,4 @@ const sellingPoints = computed(() => [
   { icon: 'IconDelivery', text: $i18n.t('promises.free_return_and_shipping') },
   { icon: 'IconReturn', text: $i18n.t('promises.return_policy') },
 ])
-
-const currentShop = useCurrentShop()
-const getCurrency = (value: number): string => {
-  if (!currentShop.value) {
-    return ''
-  }
-
-  return toCurrency(
-    value,
-    usePick(currentShop.value, [
-      'locale',
-      'currency',
-      'currencyFractionDigits',
-    ]),
-  )
-}
 </script>

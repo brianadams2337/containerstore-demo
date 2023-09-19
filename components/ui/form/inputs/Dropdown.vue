@@ -75,3 +75,9 @@ watch(isDropdownVisible, () => {
   }
 })
 </script>
+
+<script lang="ts">
+export default {
+  name: 'AppDropdown',
+}
+</script>
