@@ -10,12 +10,7 @@
         @change="(event) => onSelectionChanged(event, addOn)" />
       <p>
         {{ addOn.label }}
-        {{
-          toCurrency(addOn.price, {
-            currency: 'EUR',
-            locale: 'de',
-          })
-        }}
+        {{ toCurrency(addOn.price) }}
         <span class="text-2xs">
           {{ $t('price.including_vat') }}
         </span>
