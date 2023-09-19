@@ -66,27 +66,31 @@ const productIds = computed(
   () => props.blok.product_ids?.split(',').map((id: string) => parseInt(id)),
 )
 
-const { data, fetch, fetching } = await useProductsByIds({
-  ids: productIds.value || [],
-  with: {
-    attributes: {
-      withKey: ['color', 'brand', 'name'],
-    },
-    variants: {
+const { data, fetch, fetching } = await useProductsByIds(
+  {
+    ids: productIds.value || [],
+    with: {
       attributes: {
-        withKey: ['price', 'size'],
+        withKey: ['color', 'brand', 'name'],
       },
+      variants: {
+        attributes: {
+          withKey: ['price', 'size'],
+        },
+        lowestPriorPrice: true,
+      },
+      images: {
+        attributes: {
+          withKey: ['imageType', 'imageView', 'imageBackground', 'imageKind'],
+        },
+      },
+      priceRange: true,
       lowestPriorPrice: true,
     },
-    images: {
-      attributes: {
-        withKey: ['imageType', 'imageView', 'imageBackground', 'imageKind'],
-      },
-    },
-    priceRange: true,
-    lowestPriorPrice: true,
   },
-}, undefined, `productSlider-${props.blok._uid}`)
+  undefined,
+  `productSlider-${props.blok._uid}`,
+)
 
 onMounted(() => fetch())
 

@@ -33,7 +33,7 @@ export default defineNuxtConfig({
       gtmId: '', // Override: NUXT_PUBLIC_GTM_ID,
       baseUrl: process.env.BASE_URL, // Override: NUXT_PUBLIC_BASE_URL
       // Following keys are overridable using prefix NUXT_PUBLIC_
-      ...storefrontRuntimeConfigPublic as any,  // TODO: Extend SFC runtimeConfig type
+      ...(storefrontRuntimeConfigPublic as any), // TODO: Extend SFC runtimeConfig type
     },
   },
 
