@@ -155,11 +155,12 @@ import {
 } from '@scayle/storefront-nuxt'
 import { Size, PRODUCT_WITH_PARAMS } from '~/constants'
 const {
-  params: { id = '-1' },
+  params: { slug = '-1' },
 } = useRoute()
 
-const productId = computed(() =>
-  (id as string).substring(id.lastIndexOf('-') + 1),
+// TODO slug is a stringified productName + productId combination. this can be automatically split into name and id by using the route structure name_id with an underscore in the route.ts helper
+const productId = computed(
+  () => (slug as string)?.substring(slug.lastIndexOf('-') + 1),
 )
 
 const { data: product, fetching } = await useProduct(
@@ -183,7 +184,8 @@ const brandName = computed(
 const productName = getFirstAttributeValue(product.value?.attributes, 'name')
   ?.label
 
-const { md } = useViewportBreakpoints()
+const { isGreaterOrEquals } = useViewport()
+const md = computed(() => isGreaterOrEquals('md'))
 const activeVariant = ref<Variant>()
 const variantWithLowestPrice = computed(() =>
   getVariantWithLowestPrice(product.value?.variants || []),

@@ -28,10 +28,9 @@ export const getProductDetailRoute = (
 ): RouteLocationRaw => {
   const name = getFirstAttributeValue(product.attributes, 'name')?.label
   return toLocalePath({
-    name: 'p-name-id',
+    name: 'p-slug',
     params: {
-      name: slugify(name),
-      id: id || product.id,
+      slug: `${slugify(name)}-${id || product.id}`,
     },
   })
 }
@@ -42,10 +41,9 @@ export const getOrderProductDetailRoute = (
 ): RouteLocationRaw => {
   const name = product.attributes.name.label
   return toLocalePath({
-    name: 'p-name-id',
+    name: 'p-slug',
     params: {
-      name: slugify(name),
-      id: id || product.id,
+      slug: `${slugify(name)}-${id || product.id}`,
     },
   })
 }
