@@ -115,9 +115,9 @@ watch(
   { immediate: true },
 )
 
-const selectedSize: Ref<VariantSize | undefined> = ref<VariantSize | undefined>(
-  _sizes.value.find((s) => s.value === props.value),
-)
+const selectedSize: ComputedRef<VariantSize | undefined> = computed<
+  VariantSize | undefined
+>(() => _sizes.value.find((s) => s.value === props.value))
 
 const selectSize = (newSize: VariantSize) => {
   emit('select-size', newSize)

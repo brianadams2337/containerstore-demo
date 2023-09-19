@@ -63,13 +63,15 @@
               </ProductSiblingPicker>
             </ProductDetailGroup>
 
-            <!-- TODO event listener not working -->
             <ProductSizePicker
               v-if="!hasOneSizeVariantOnly"
               :id="product.id"
+              :value="
+                getFirstAttributeValue(activeVariant?.attributes, 'size')?.value
+              "
               class="mt-8"
               :variants="product.variants ?? []"
-              @selectSize="handleSelectedSize" />
+              @select-size="handleSelectedSize" />
 
             <!-- ComputedAddOns == [] -->
             <AddOnsSelector
