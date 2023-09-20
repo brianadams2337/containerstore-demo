@@ -1,5 +1,4 @@
 import path from 'path'
-import environment from './environment'
 import {
   i18n,
   image,
@@ -22,7 +21,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     // Following keys are overridable using prefix NUXT_CHECKOUT_
     checkout: {
-      accessHeader: environment.NUXT_CHECKOUT_ACCESS_HEADER,
+      accessHeader: undefined, // Override: NUXT_CHECKOUT_ACCESS_HEADER
     },
     // Following keys are overridable using prefix NUXT_STORYBLOK_
     storyblok: storyblokRuntimeConfigPrivate,
@@ -31,8 +30,8 @@ export default defineNuxtConfig({
     // Following keys are overridable using prefix NUXT_PUBLIC_
     public: {
       domains,
-      gtmId: environment.NUXT_PUBLIC_GTM_ID,
-      baseUrl: process.env.BASE_URL,
+      gtmId: '', // Override: NUXT_PUBLIC_GTM_ID,
+      baseUrl: process.env.BASE_URL, // Override: NUXT_PUBLIC_BASE_URL
       // Following keys are overridable using prefix NUXT_PUBLIC_
       ...(storefrontRuntimeConfigPublic as any), // TODO: Extend SFC runtimeConfig type
     },
@@ -78,7 +77,7 @@ export default defineNuxtConfig({
   ],
 
   storyblok: {
-    accessToken: environment.NUXT_STORYBLOK_ACCESS_TOKEN,
+    accessToken: process.env.NUXT_STORYBLOK_ACCESS_TOKEN,
   },
   storefront: storefrontBuildtimeConfig,
   svgo,
@@ -98,8 +97,8 @@ export default defineNuxtConfig({
   },
   devServer: {
     https: {
-      key: path.resolve(__dirname, environment.HTTPS_KEY),
-      cert: path.resolve(__dirname, environment.HTTPS_CERT),
+      key: path.resolve(__dirname, process.env.HTTPS_KEY || ''),
+      cert: path.resolve(__dirname, process.env.HTTPS_CERT || ''),
     },
   },
 })

@@ -1,7 +1,7 @@
 export const domains = {
-  en: process.env.NUXT_STOREFRONT_DOMAIN_EN!,
-  de: process.env.NUXT_STOREFRONT_DOMAIN_DE_DE!,
-  'de-at': process.env.NUXT_STOREFRONT_DOMAIN_DE_AT!,
-  'de-ch': process.env.NUXT_STOREFRONT_DOMAIN_DE_CH!,
+  en: process.env.NUXT_STOREFRONT_STORES_EN_US_DOMAIN!,
+  de: process.env.NUXT_STOREFRONT_STORES_DE_DE_DOMAIN!,
+  'de-at': process.env.NUXT_STOREFRONT_STORES_DE_AT_DOMAIN!,
+  'de-ch': process.env.NUXT_STOREFRONT_STORES_DE_CH_DOMAIN!,
   default: process.env.NUXT_STOREFRONT_DOMAIN_DEFAULT!,
 }

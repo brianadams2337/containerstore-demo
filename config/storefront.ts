@@ -1,10 +1,9 @@
 import { HashAlgorithm, ModuleOptions } from '@scayle/storefront-nuxt'
-import environment from '../environment'
 import * as customRpcMethods from '../rpcMethods'
 import withParams from '../constants/withParams'
 
 const baseShopConfig = {
-  domain: environment.NUXT_STOREFRONT_DOMAIN_DEFAULT,
+  domain: '', // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_DOMAIN,
   paymentProviders: [
     'lastschrift',
     'visa',
@@ -68,7 +67,7 @@ const shops = [
 ]
 
 const protocol =
-  (environment.HTTPS_KEY && environment.HTTPS_CERT) ||
+  (process.env.HTTPS_KEY && process.env.HTTPS_CERT) ||
   process.env.NODE_ENV === 'production'
     ? 'https://'
     : 'http://'
@@ -76,40 +75,35 @@ const protocol =
 export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
   // Following keys are overridable using prefix NUXT_PUBLIC_PUBLIC_SHOP_DATA
   publicShopData: ['paymentProviders', 'isLowestPreviousPriceActive'],
-  // Following keys are overridable using prefix NUXT_STOREFRONT_REDIRECTS
+  // Following keys are overridable using prefix NUXT_STOREFRONT_REDIRECTS_
   redirects: {
-    enabled: Boolean(process.env.NUXT_STOREFRONT_REDIRECTS_ENABLED),
-    queryParamWhitelist: [],
+    enabled: false, // Override: NUXT_STOREFRONT_REDIRECTS_ENABLED
+    queryParamWhitelist: [], // Override: NUXT_STOREFRONT_REDIRECTS_QUERY_PARAM_WHITELIST
   },
-  // Following keys are overridable using prefix NUXT_STOREFRONT_SESSION
+  // Following keys are overridable using prefix NUXT_STOREFRONT_SESSION_
   session: {
     sameSite: process.env.APP_ENV !== 'production' ? 'none' : 'lax',
     maxAge: 2419200000, // four weeks in milliseconds
     provider: 'redis',
   },
-  // Following keys are overridable using prefix NUXT_STOREFRONT_BAPI
   bapi: {
-    host: environment.NUXT_STOREFRONT_BAPI_HOST,
-    token: environment.NUXT_STOREFRONT_BAPI_TOKEN,
-    // TODO: Is shopId required here for tenants that need to separate shop/customer data?
+    host: '', // Override: NUXT_STOREFRONT_BAPI_HOST,
+    token: '', // Override: NUXT_STOREFRONT_BAPI_TOKEN,
   },
-  // Following keys are overridable using prefix NUXT_STOREFRONT_OAUTH
   oauth: {
-    host: environment.NUXT_STOREFRONT_OAUTH_API_HOST,
-    clientId: environment.NUXT_STOREFRONT_OAUTH_CLIENT_ID,
-    clientSecret: environment.NUXT_STOREFRONT_OAUTH_CLIENT_SECRET,
+    host: '', // Override: NUXT_STOREFRONT_OAUTH_API_HOST,
+    clientId: '', // Override: NUXT_STOREFRONT_OAUTH_CLIENT_ID,
+    clientSecret: '', // Override: NUXT_STOREFRONT_OAUTH_CLIENT_SECRET,
   },
-  // Following keys are overridable using prefix NUXT_STOREFRONT_SHOP_SELECTOR
-  shopSelector: environment.NUXT_STOREFRONT_DOMAIN_PER_LOCALE
+  shopSelector: process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE
     ? 'domain'
-    : 'path',
+    : 'path', // Override: NUXT_STOREFRONT_SHOP_SELECTOR
   // Following keys are overridable using prefix NUXT_STOREFRONT_STORES
   stores: shops.reduce(
     (previousShopConfigs, shop) => ({
       // Values within `storefront.stores` are overridable by using their locale as identifier.
       // Example of an runtimeConfig override: NUXT_STOREFRONT_STORES_EN_US_PATH=someValue
-      // We use environment.NUXT_STOREFRONT_STORES_{LOCALE}_SOME_VALUE only to set some empty default,
-      // as all values should be provided through runtime using NUXT_ environment variable overrides.
+      // All values should be provided through runtime using NUXT_ environment variable overrides.
       // https://nuxt.com/docs/guide/going-further/runtime-config#example
       ...previousShopConfigs,
       // We can use shop.locale instead of shop.shopId to avoid conflicts if we use the same shopId for multiple shop.
@@ -120,35 +114,33 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
       // Example if `[shop.shopId]` is used -> overridable environment variable: NUXT_STOREFRONT_STORES_1001_CHECKOUT_USER.
       [shop.locale]: {
         ...baseShopConfig,
-        shopId: shop.shopId,
-        path: shop.path,
-        locale: shop.locale,
-        isLowestPreviousPriceActive:
-          environment.NUXT_STOREFRONT_STORES_EN_US_IS_LOWEST_PREVIOUS_PRICE_ACTIVE,
+        shopId: shop.shopId, // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_SHOP_ID
+        path: shop.path, // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_PATH
+        locale: shop.locale, // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_LOCALE
+        isLowestPreviousPriceActive: false, // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_IS_LOWEST_PREVIOUS_PRICE_ACTIVE,
         auth: {
+          // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_AUTH_RESET_PASSWORD_URL
           resetPasswordUrl: `${protocol}${shop.locale}/signin/`,
         },
-        storeCampaignKeyword:
-          environment.NUXT_STOREFRONT_STORES_EN_US_STORE_CAMPAIGN_KEYWORD,
-        currency: shop.currency,
+        storeCampaignKeyword: '', // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_STORE_CAMPAIGN_KEYWORD,
+        currency: shop.currency, // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_CURRENCY
         checkout: {
-          shopId: shop.shopId,
+          shopId: shop.shopId, // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_CHECKOUT_SHOP_ID
           // Checkout probably isn't configured for the non-DE shops
           // but the main goal is testing storefront
-          token: environment.NUXT_STOREFRONT_STORES_EN_US_CHECKOUT_TOKEN,
-          secret: environment.NUXT_STOREFRONT_STORES_EN_US_CHECKOUT_SECRET,
-          host: environment.NUXT_STOREFRONT_STORES_EN_US_CHECKOUT_HOST,
-          user: environment.NUXT_STOREFRONT_STORES_EN_US_CHECKOUT_USER,
+          token: '', // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_CHECKOUT_TOKEN,
+          secret: '', // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_CHECKOUT_SECRET,
+          host: '', // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_CHECKOUT_HOST,
+          user: '', // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_CHECKOUT_USER,
         },
       },
     }),
     {},
   ),
-  // Following keys are overridable using prefix NUXT_STOREFRONT_REDIS
   redis: {
-    host: environment.NUXT_STOREFRONT_REDIS_HOST,
-    port: environment.NUXT_STOREFRONT_REDIS_PORT,
-    prefix: environment.NUXT_STOREFRONT_REDIS_PREFIX,
+    host: 'localhost', // Override: NUXT_STOREFRONT_REDIS_HOST,
+    port: 6379, // Override: NUXT_STOREFRONT_REDIS_PORT,
+    prefix: '', // Override: NUXT_STOREFRONT_REDIS_PREFIX,
     user: process.env.NUXT_STOREFRONT_REDIS_USER,
     password: process.env.NUXT_STOREFRONT_REDIS_PASSWORD,
     sslTransit: Boolean(process.env.NUXT_STOREFRONT_SSL_TRANSIT),
@@ -177,7 +169,7 @@ export const storefrontRuntimeConfigPublic: Partial<ModuleOptions> = {
     name: 'storefront-boilerplate-nuxt',
   },
   // Following keys are overridable using prefix NUXT_PUBLIC_IMAGE_BASE_URL
-  imageBaseUrl: environment.NUXT_PUBLIC_IMAGE_BASE_URL,
+  imageBaseUrl: 'https://brb-demo.cdn.aboutyou.cloud/', // Override: NUXT_PUBLIC_IMAGE_BASE_URL,
 }
 
 export const storefrontBuildtimeConfig: Partial<ModuleOptions> = {

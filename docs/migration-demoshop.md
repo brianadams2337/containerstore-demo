@@ -302,7 +302,7 @@ import storyblok from './config'
 
   //config/storyblok.ts
   export default {
-    accessToken: environment.STORYBLOK_ACCESS_TOKEN,
+    accessToken: process.env.NUXT_STORYBLOK_ACCESS_TOKEN,
   },
 ```
 

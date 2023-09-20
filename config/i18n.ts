@@ -1,5 +1,4 @@
 import { NuxtConfig } from '@nuxt/schema'
-import environment from '../environment'
 import { domains } from './domains'
 
 type ModuleOptions = NuxtConfig['i18n']
@@ -10,7 +9,8 @@ const locales = [
   {
     code: 'en',
     iso: 'en-GB',
-    domain: environment.NUXT_STOREFRONT_DOMAIN_PER_LOCALE
+    // TODO: Investigate runtimeConfig behaviour, as we want build independence
+    domain: process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE
       ? domains.en
       : domains.default,
     file: 'en-GB.json',
@@ -18,7 +18,8 @@ const locales = [
   {
     code: 'de',
     iso: 'de-DE',
-    domain: environment.NUXT_STOREFRONT_DOMAIN_PER_LOCALE
+    // TODO: Investigate runtimeConfig behaviour, as we want build independence
+    domain: process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE
       ? domains.de
       : domains.default,
     file: DE_DOMAIN_FILE,
@@ -27,7 +28,8 @@ const locales = [
   {
     code: 'de-at',
     iso: 'de-AT',
-    domain: environment.NUXT_STOREFRONT_DOMAIN_PER_LOCALE
+    // TODO: Investigate runtimeConfig behaviour, as we want build independence
+    domain: process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE
       ? domains['de-at']
       : domains.default,
     file: DE_DOMAIN_FILE,
@@ -35,7 +37,8 @@ const locales = [
   {
     code: 'de-ch',
     iso: 'de-CH',
-    domain: environment.NUXT_STOREFRONT_DOMAIN_PER_LOCALE
+    // TODO: Investigate runtimeConfig behaviour, as we want build independence
+    domain: process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE
       ? domains['de-ch']
       : domains.default,
     file: DE_DOMAIN_FILE,

@@ -47,7 +47,7 @@ A new top-level config option has been added for controlling the log behavior. S
 
 ### apiBaseUrl
 
-The apiBaseUrl configuration is no longer available.
+The apiBaseUrl configuration is no longer available, but will be reintroduced in a future update.
 
 ### sessionCookieDomain
 

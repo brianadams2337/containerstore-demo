@@ -1,8 +1,5 @@
-import environment from '../environment'
-
 // https://github.com/storyblok/storyblok-nuxt#options
 export const storyblokRuntimeConfigPrivate = {
-  // Following keys are overridable using prefix NUXT_STORYBLOK_ACCESS_TOKEN
-  accessToken: process.env.NUXT_STORYBLOK_ACCESS_TOKEN,
-  webhookSecret: environment.NUXT_STORYBLOK_WEBHOOK_SECRET,
+  accessToken: process.env.NUXT_STORYBLOK_ACCESS_TOKEN, // Override: NUXT_STORYBLOK_ACCESS_TOKEN
+  webhookSecret: '', // Override: NUXT_STORYBLOK_WEBHOOK_SECRET,
 }
