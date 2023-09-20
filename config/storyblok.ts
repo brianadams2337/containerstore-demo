@@ -1,4 +1,4 @@
-import environment from "../environment";
+import environment from '../environment'
 
 // https://github.com/storyblok/storyblok-nuxt#options
 export const storyblokRuntimeConfigPrivate = {

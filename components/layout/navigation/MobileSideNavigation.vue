@@ -81,15 +81,15 @@ const emit = defineEmits<{
   (e: 'click:navigationItem'): void
 }>()
 
-const { route } = useContext()
+const route = useRoute()
 const activeParentCategory = ref<Category>()
 const nestedCategoryViewIsActive = ref<boolean>(false)
 
 onMounted(() => {
   activeParentCategory.value = (props.categories as Category[]).find(
-    (category) => category.path === `/${route.value.path.split('/')[1]}`,
+    (category) => category.path === `/${route.path.split('/')[1]}`,
   )
-  if (route.value.path.split('/').length > 2) {
+  if (route.path.split('/').length > 2) {
     nestedCategoryViewIsActive.value = true
   }
 })
