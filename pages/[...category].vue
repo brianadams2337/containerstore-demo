@@ -320,15 +320,11 @@ try {
     },
   )
 } catch (e) {
-  console.error(e)
+  console.warn(e)
 }
 
-const {
-  content,
-  hasTeaserImage,
-  postListingContent,
-  preListingContent,
-} = useCmsListingContent(cmsData)
+const { content, hasTeaserImage, postListingContent, preListingContent } =
+  useCmsListingContent(cmsData)
 
 const cmsContent = content as unknown as SbCmsImage
 

@@ -12,7 +12,7 @@ const useCmsListingContent = (data: Ref<StoryblokStory<SbListingPage>>) => {
       () => data.value?.content?.post_listing_content || [],
     ),
     hasTeaserImage: computed(() =>
-      Boolean(content.value.teaser_image?.filename),
+      Boolean(content.value?.teaser_image?.filename),
     ),
   }
 }
