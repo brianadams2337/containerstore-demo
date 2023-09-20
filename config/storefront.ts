@@ -73,14 +73,14 @@ const protocol =
     : 'http://'
 
 export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
-  // Following keys are overridable using prefix NUXT_PUBLIC_PUBLIC_SHOP_DATA
+  // Following keys are Overrideable using prefix NUXT_PUBLIC_PUBLIC_SHOP_DATA
   publicShopData: ['paymentProviders', 'isLowestPreviousPriceActive'],
-  // Following keys are overridable using prefix NUXT_STOREFRONT_REDIRECTS_
+  // Following keys are Overrideable using prefix NUXT_STOREFRONT_REDIRECTS_
   redirects: {
     enabled: false, // Override: NUXT_STOREFRONT_REDIRECTS_ENABLED
     queryParamWhitelist: [], // Override: NUXT_STOREFRONT_REDIRECTS_QUERY_PARAM_WHITELIST
   },
-  // Following keys are overridable using prefix NUXT_STOREFRONT_SESSION_
+  // Following keys are Overrideable using prefix NUXT_STOREFRONT_SESSION_
   session: {
     sameSite: process.env.APP_ENV !== 'production' ? 'none' : 'lax',
     maxAge: 2419200000, // four weeks in milliseconds
@@ -96,20 +96,20 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
     clientSecret: '', // Override: NUXT_STOREFRONT_OAUTH_CLIENT_SECRET,
   },
   shopSelector: process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE ? 'domain' : 'path', // Override: NUXT_STOREFRONT_SHOP_SELECTOR
-  // Following keys are overridable using prefix NUXT_STOREFRONT_STORES
+  // Following keys are Overrideable using prefix NUXT_STOREFRONT_STORES
   stores: shops.reduce(
     (previousShopConfigs, shop) => ({
-      // Values within `storefront.stores` are overridable by using their locale as identifier.
+      // Values within `storefront.stores` are Overrideable by using their locale as identifier.
       // Example of an runtimeConfig override: NUXT_STOREFRONT_STORES_EN_US_PATH=someValue
       // All values should be provided through runtime using NUXT_ environment variable overrides.
       // https://nuxt.com/docs/guide/going-further/runtime-config#example
       ...previousShopConfigs,
       // We can use shop.locale instead of shop.shopId to avoid conflicts if we use the same shopId for multiple shop.
-      // The key [shop.locale] is connected to the overridable environment variables like NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_CHECKOUT_USER.
+      // The key [shop.locale] is connected to the Overrideable environment variables like NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_CHECKOUT_USER.
       // Depending on what key will be used here, the variables need use either the locale or shopId as{UNIQUE_IDENTIFIER}.
       // NOTE: We recommend to use the shopId as {UNIQUE_IDENTIFIER}!
-      // Example if `[shop.locale]` is used -> overridable environment variable: NUXT_STOREFRONT_STORES_EN_US_CHECKOUT_USER.
-      // Example if `[shop.shopId]` is used -> overridable environment variable: NUXT_STOREFRONT_STORES_1001_CHECKOUT_USER.
+      // Example if `[shop.locale]` is used -> Overrideable environment variable: NUXT_STOREFRONT_STORES_EN_US_CHECKOUT_USER.
+      // Example if `[shop.shopId]` is used -> Overrideable environment variable: NUXT_STOREFRONT_STORES_1001_CHECKOUT_USER.
       [shop.locale]: {
         ...baseShopConfig,
         shopId: shop.shopId, // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_SHOP_ID
@@ -143,7 +143,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
     password: process.env.NUXT_STOREFRONT_REDIS_PASSWORD,
     sslTransit: Boolean(process.env.NUXT_STOREFRONT_SSL_TRANSIT),
   },
-  // Following keys are overridable using prefix NUXT_STOREFRONT_CACHE
+  // Following keys are Overrideable using prefix NUXT_STOREFRONT_CACHE
   cache: {
     auth: {
       username: 'max',
@@ -160,13 +160,13 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
 }
 
 export const storefrontRuntimeConfigPublic: Partial<ModuleOptions> = {
-  // Following keys are overridable using prefix NUXT_PUBLIC_WITH_PARAMS
+  // Following keys are Overrideable using prefix NUXT_PUBLIC_WITH_PARAMS
   withParams,
-  // Following keys are overridable using prefix NUXT_PUBLIC_LOG
+  // Following keys are Overrideable using prefix NUXT_PUBLIC_LOG
   log: {
     name: 'storefront-boilerplate-nuxt',
   },
-  // Following keys are overridable using prefix NUXT_PUBLIC_IMAGE_BASE_URL
+  // Following keys are Overrideable using prefix NUXT_PUBLIC_IMAGE_BASE_URL
   imageBaseUrl: 'https://brb-demo.cdn.aboutyou.cloud/', // Override: NUXT_PUBLIC_IMAGE_BASE_URL,
 }
 

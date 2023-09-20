@@ -55,23 +55,23 @@ export default defineNuxtConfig({
   // Any key/value pair outside of the `public` key are private/server-side only
   // https://nuxt.com/docs/guide/going-further/runtime-config
   runtimeConfig: {
-    // Following keys are overridable using prefix NUXT_CHECKOUT_
+    // Following keys are Overrideable using prefix NUXT_CHECKOUT_
     checkout: {
       accessHeader: undefined, // Override: NUXT_CHECKOUT_ACCESS_HEADER
     },
-    // Following keys are overridable using prefix NUXT_STORYBLOK_
+    // Following keys are Overrideable using prefix NUXT_STORYBLOK_
     storyblok: {
       accessToken: process.env.NUXT_STORYBLOK_ACCESS_TOKEN, // Override: NUXT_STORYBLOK_ACCESS_TOKEN
       webhookSecret: '', // Override: NUXT_STORYBLOK_WEBHOOK_SECRET,
     },
-    // Following keys are overridable using prefix NUXT_$STOREFRONT_
+    // Following keys are Overrideable using prefix NUXT_$STOREFRONT_
     storefront: storefrontRuntimeConfigPrivate as any, // TODO: Extend SFC runtimeConfig type
-    // Following keys are overridable using prefix NUXT_PUBLIC_
+    // Following keys are Overrideable using prefix NUXT_PUBLIC_
     public: {
       domains,
       gtmId: '', // Override: NUXT_PUBLIC_GTM_ID,
       baseUrl: process.env.BASE_URL, // Override: NUXT_PUBLIC_BASE_URL
-      // Following keys are overridable using prefix NUXT_PUBLIC_
+      // Following keys are Overrideable using prefix NUXT_PUBLIC_
       ...(storefrontRuntimeConfigPublic as any), // TODO: Extend SFC runtimeConfig type
     },
   },

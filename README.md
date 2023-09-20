@@ -29,7 +29,7 @@ Before starting with this Boilerplate, we recommend to get familiar with Nuxt 3 
 
 ### Access
 
-Make sure you have access to the private package registry to access packages like `@scayle/storefront-nuxt2`.
+Make sure you have access to the private package registry to access packages like `@scayle/storefront-nuxt` and `@scayle/storefront-core`.
 If not already done, see "Common Issues / Troubleshooting" section > [## Adding @aboutyou package registry](#adding-aboutyou-package-registry).
 
 ### Software
