@@ -56,7 +56,6 @@ import {
   isFirstIndexOfRow,
   Product,
 } from '@scayle/storefront-nuxt'
-import { IconArrowLeft } from '#build/components'
 import { Size } from '~/constants'
 
 // TODO use computed property for dynamic class bindings on line 24

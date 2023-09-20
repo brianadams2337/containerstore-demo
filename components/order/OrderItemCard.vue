@@ -87,9 +87,9 @@ const props = defineProps({
 
 const name = computed(() => props.product.name)
 
-const color = computed(() => props.product.attributes.color.label)
+const color = computed(() => props.product?.attributes?.color?.label)
 
-const size = computed(() => props.variant.attributes.size.label)
+const size = computed(() => props.variant?.attributes?.size?.label)
 
 const imageHash = computed(() => props.product.images[0].hash)
 
