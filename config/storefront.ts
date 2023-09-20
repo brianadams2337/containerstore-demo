@@ -91,7 +91,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
     token: '', // Override: NUXT_STOREFRONT_BAPI_TOKEN,
   },
   oauth: {
-    host: '', // Override: NUXT_STOREFRONT_OAUTH_API_HOST,
+    apiHost: '', // Override: NUXT_STOREFRONT_OAUTH_API_HOST,
     clientId: '', // Override: NUXT_STOREFRONT_OAUTH_CLIENT_ID,
     clientSecret: '', // Override: NUXT_STOREFRONT_OAUTH_CLIENT_SECRET,
   },
