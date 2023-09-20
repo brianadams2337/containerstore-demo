@@ -1,0 +1,12 @@
+# these settings are needed for old store -> new store redirects we have for some tenants
+# see for example CAD-1535
+# see: https://stackoverflow.com/a/29354648
+# see: https://serverfault.com/a/893663
+# see: http://nginx.org/en/docs/http/ngx_http_map_module.html#map_hash_bucket_size
+# see: http://nginx.org/en/docs/hash.html
+map_hash_bucket_size 32; # should be multiple of 32
+map_hash_max_size 32768; # should be multiple of 2048
+
+map $request_uri $new_uri {
+  include /etc/nginx/conf.d/global/redirects/*.map;
+}

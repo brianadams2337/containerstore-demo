@@ -1,0 +1,6 @@
+# these settings are needed for old store -> new store redirects we have for some tenants
+# see for example CAD-1535
+# see: https://stackoverflow.com/a/29354648
+if ($new_uri != "") {
+  return 301 $new_uri;
+}
