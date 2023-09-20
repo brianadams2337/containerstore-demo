@@ -57,7 +57,7 @@
                     <ColorChip
                       :is-active="item.id === product.id"
                       :size="md ? Size.LG : Size.XL"
-                      :color="item.colors[0]" />
+                      :color="(item.colors[0] as ProductColor)" />
                   </DefaultLink>
                 </template>
               </ProductSiblingPicker>
@@ -153,6 +153,7 @@ import {
   getBreadcrumbs,
   getProductSiblings,
   flattenFieldSet,
+  ProductColor,
 } from '@scayle/storefront-nuxt'
 import { Size, PRODUCT_WITH_PARAMS, Action } from '~/constants'
 const {
