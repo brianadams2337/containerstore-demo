@@ -1,13 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="132px" height="185px" viewBox="0 0 132 185" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>X / Atoms / Parts / Desktop / Illustration / Empty State Search</title>
-    <g id="X-/-Atoms-/-Parts-/-Desktop-/-Illustration-/-Empty-State-Search" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Rectangle" fill="#F2F0F0" x="0" y="0" width="132" height="185" rx="6"></rect>
-        <rect id="Rectangle" fill="#FFFFFF" x="10" y="10" width="112" height="145" rx="4"></rect>
-        <rect id="Rectangle-Copy" fill="#FFFFFF" x="10" y="160" width="48" height="6" rx="2"></rect>
-        <rect id="Rectangle-Copy-2" fill="#FFFFFF" x="10" y="169" width="58" height="6" rx="2"></rect>
-        <path d="M57.5857864,71.2867966 L71.9705627,85.6715729 C73.5326599,87.23367 73.5326599,89.76633 71.9705627,91.3284271 C71.2204172,92.0785726 70.2030016,92.5 69.1421356,92.5 L40.372583,92.5 C38.163444,92.5 36.372583,90.709139 36.372583,88.5 C36.372583,87.439134 36.7940104,86.4217184 37.5441559,85.6715729 L51.9289322,71.2867966 C53.4910294,69.7246994 56.0236893,69.7246994 57.5857864,71.2867966 Z" id="Rectangle" fill="#F2F0F0"></path>
-        <path d="M76.8103548,68.0930192 L93.5183254,84.8009898 C95.332707,86.6153714 95.332707,89.5570652 93.5183254,91.3714468 C92.6470286,92.2427436 91.4652966,92.732233 90.2330968,92.732233 L56.8171557,92.732233 C54.2512326,92.732233 52.171141,90.6521414 52.171141,88.0862183 C52.171141,86.8540186 52.6606304,85.6722866 53.5319272,84.8009898 L70.2398978,68.0930192 C72.0542794,66.2786376 74.9959732,66.2786376 76.8103548,68.0930192 Z" id="Rectangle-Copy-3" fill="#F2F0F0"></path>
-        <circle id="Oval" fill="#F2F0F0" cx="57" cy="61" r="4"></circle>
-    </g>
-</svg>
+<svg width="132" height="185" viewBox="0 0 132 185" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><rect fill="#F2F0F0" width="132" height="185" rx="6"/><rect fill="#FFF" x="10" y="10" width="112" height="145" rx="4"/><rect fill="#FFF" x="10" y="160" width="48" height="6" rx="2"/><rect fill="#FFF" x="10" y="169" width="58" height="6" rx="2"/><path d="M57.586 71.287 71.97 85.672a4 4 0 0 1-2.829 6.828h-28.77a4 4 0 0 1-2.828-6.828L51.93 71.287a4 4 0 0 1 5.657 0Z" fill="#F2F0F0"/><path d="m76.81 68.093 16.708 16.708a4.646 4.646 0 0 1-3.285 7.931H56.817a4.646 4.646 0 0 1-3.285-7.931L70.24 68.093a4.646 4.646 0 0 1 6.57 0Z" fill="#F2F0F0"/><circle fill="#F2F0F0" cx="57" cy="61" r="4"/></g></svg>

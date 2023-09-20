@@ -6,7 +6,7 @@
     @mouseleave="isGreaterThanMd && closeUserFlyout()">
     <template #action>
       <DefaultLink :to="link" raw>
-        <IconUser class="h-5 w-5 cursor-pointer" />
+        <IconAccount class="h-7 w-7 cursor-pointer" />
       </DefaultLink>
       <div
         v-if="isUserFlyoutOpen"

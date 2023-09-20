@@ -5,8 +5,8 @@
     @click="inputActive = true"
     @keydown.esc="resetAndClose">
     <label class="sr-only">{{ $t('search.placeholder') }}</label>
-    <IconSearch
-      class="absolute inset-y-2.5 left-2.5 h-6 w-6"
+    <IconSearchBold
+      class="absolute inset-y-[0.625rem] left-[0.625rem] h-6 w-6"
       :class="inputActive ? 'pointer-events-none' : 'cursor-pointer'"
       @click="inputActive = true" />
 

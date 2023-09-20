@@ -8,7 +8,7 @@
         <div class="mt-16 space-y-2">
           <Headline size="lg" type="loud" class="block">
             <div class="flex items-center sm:text-lg">
-              <IconUiCheckmark class="relative top-[-2px] mr-2 h-5 w-5" />
+              <IconCheckmark class="relative top-[-2px] mr-2 h-5 w-5" />
               {{ $t('osp.intro') }}
               {{ orderData.customer?.firstName }}
             </div>

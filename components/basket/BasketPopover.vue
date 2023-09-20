@@ -14,7 +14,7 @@
         <FloatingBadge v-if="items?.length" class="-right-2 -top-2">
           {{ items?.length }}
         </FloatingBadge>
-        <IconTempBasket class="h-8 w-8" />
+        <IconCart class="h-8 w-8" />
       </DefaultLink>
       <div
         v-if="isBasketFlyoutOpen"

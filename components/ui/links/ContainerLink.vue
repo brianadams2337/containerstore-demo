@@ -8,7 +8,7 @@
         <p>{{ header }}</p>
         <p v-if="subheader" class="text-xs text-secondary">{{ subheader }}</p>
       </div>
-      <IconUiArrowRight class="h-4 w-4" />
+      <IconArrowRight class="h-4 w-4" />
     </div>
   </DefaultLink>
 </template>

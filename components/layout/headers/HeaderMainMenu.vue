@@ -11,7 +11,7 @@
         <FloatingBadge v-if="wishlistCount" class="-right-2 -top-2">
           {{ wishlistCount }}
         </FloatingBadge>
-        <IconHeart class="h-8 w-8" />
+        <IconHeartBold class="mt-[1px] h-[1.625rem] w-[1.625rem]" />
       </DefaultLink>
     </div>
     <BasketPopover />
