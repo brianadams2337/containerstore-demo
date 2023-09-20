@@ -6,9 +6,7 @@ export default cleanEnv(
   {
     /** Global Configuration */
     BASE_URL: url(),
-    NUXT_PUBLIC_IMAGE_BASE_URL: url({
-      default: 'https://brb-demo.cdn.aboutyou.cloud/',
-    }),
+    NUXT_PUBLIC_IMAGE_BASE_URL: url({ default: 'https://brb-demo.cdn.aboutyou.cloud/' }),
 
     AY_CACHE_DISABLED: bool({ default: false }),
 
@@ -51,9 +49,7 @@ export default cleanEnv(
 
     NUXT_STOREFRONT_STORES_EN_US_CAMPAIGN_KEYWORD: str(),
 
-    NUXT_STOREFRONT_STORES_EN_US_IS_LOWEST_PREVIOUS_PRICE_ACTIVE: bool({
-      default: false,
-    }),
+    NUXT_STOREFRONT_STORES_EN_US_IS_LOWEST_PREVIOUS_PRICE_ACTIVE: bool({ default: false }),
 
     /* Storyblok-specific Configuration */
     NUXT_STORYBLOK_ACCESS_TOKEN: str(),

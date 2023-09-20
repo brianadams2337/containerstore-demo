@@ -23,7 +23,6 @@ Should you encounter any errors, please reach out to your Scayle representative 
 ## Prerequisites
 
 Before starting with this Boilerplate, we recommend to get familiar with Nuxt 3 and Vue 3, if this is not already the case:
-
 - [Nuxt 3 Introduction](https://nuxt.com/docs/getting-started/introduction)
 - [Vue 3 Introduction](https://vuejs.org/guide/introduction.html)
 
@@ -63,7 +62,7 @@ brew install redis
 1. You need to create a .env file in the main directory or rename the .env.example file.
    We will provide the credentials and URLs
 
-2. Start the `redis-server` either locally
+2. Start the `redis-server`  either locally
 
 ```sh
 redis-server
@@ -83,7 +82,14 @@ yarn install # Install local dependencies
 yarn dev # Run local dev server of shop
 ```
 
-4. Use http://localhost:3000/ to open the shop-
+4. Use http://localhost:3000/ to open the shop.
+
+### Run in in production-like preview
+
+Run `yarn build` to build the latest changes and run `yarn preview`.
+Keep in mind that `redis-server` needs to be running.
+This will run the generated nuxt application from the `.output/` directory, similar to how the application will be deployed on a production server.
+Only difference here is that all relevant `NUXT_` runtimeConfig override values are sourced from the local `.env` file.
 
 ## How to turn on HTTPS
 
@@ -115,7 +121,8 @@ FATAL  error:1C800064:Provider routines::bad decrypt
 
 #### Alternative Certificate Creation
 
-If the previous creation command fail or the certificate can't be decrypted by Nuxt, try creating the necessary key file and certificate using an intermediate "Certificate Signing Request" file:
+If the previous creation command fail or the certificate can't be decrypted by Nuxt,
+try creating the necessary key file and certificate using an intermediate "Certificate Signing Request" file:
 
 ```sh
 openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:4096 -out localhost.pem # Create RSA key file
@@ -167,7 +174,8 @@ Use http://localhost:3000/ to open the shop
 
 ## Adding @scayle and @aboutyou package registry
 
-Certain NPM package prefixed with `@aboutyou` and `@scayle` are not publicly available through `npmjs.org` but will be installed from our own internal package registry.
+Certain NPM package prefixed with `@aboutyou` and `@scayle` are not publicly available through `npmjs.org`,
+or other public package registries, but will be installed from our own internal package registry.
 Therefore we need to create a personal deploy token to get access to this registry.
 
 The deploy token will be created for you.
@@ -186,7 +194,7 @@ npm config set -- '//gitlab.com/api/v4/projects/29746107/packages/npm/:_authToke
 
 Your global local `~/.npmrc` file should look similar to this afterwards:
 
-```
+```text
 @aboutyou:registry=https://gitlab.com/api/v4/projects/29746107/packages/npm/
 @scayle:registry=https://gitlab.com/api/v4/projects/29746107/packages/npm/
 //gitlab.com/api/v4/packages/npm/:_authToken=<TOKEN>
@@ -212,7 +220,6 @@ yarn install # Install dependencies
 yarn dev # Run local dev server
 
 ```
-
 ## Lazy Loading with NuxtLazyHydrate
 
 `NuxtLazyHydrate` helps defer the rendering of a component to improve performance. Any component within will be rendered only as it enters the viewport of the browser. To learn more about the properties, please take a look at the implementation itself (Lazy.vue).
@@ -220,7 +227,9 @@ yarn dev # Run local dev server
 This example shows a grey placeholder 16:9 on desktop and square (1:1) on mobile. As the users scrolls the page and the placeholder enters the viewport, the components within are getting rendered. No rendering on server-side.
 
 ```html
-<NuxtLazyHydrate :placeholder-ratio="md ? '16/9' : '1/1'">
+<NuxtLazyHydrate
+  :placeholder-ratio="md ? '16/9' : '1/1'"
+>
   ...
 </NuxtLazyHydrate>
 ```
@@ -234,7 +243,8 @@ This example renders products in 2 columns on mobile and 4 columns on desktop. I
   :important="index < (md ? 8 : 2)"
   class="col-span-6 md:col-span-3"
   placeholder-class="mb-24"
-  placeholder-ratio="3/4">
+  placeholder-ratio="3/4"
+>
   ...
 </NuxtLazyHydrate>
 ```

@@ -55,13 +55,13 @@ const shops = [
   },
   {
     locale: 'de-AT',
-    path: 'de',
+    path: 'at',
     shopId: 1001,
     currency: 'EUR',
   },
   {
     locale: 'de-CH',
-    path: 'de',
+    path: 'ch',
     shopId: 1001,
     currency: 'EUR',
   },
@@ -100,9 +100,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
     clientSecret: environment.NUXT_STOREFRONT_OAUTH_CLIENT_SECRET,
   },
   // Following keys are overridable using prefix NUXT_STOREFRONT_SHOP_SELECTOR
-  shopSelector: environment.NUXT_STOREFRONT_DOMAIN_PER_LOCALE
-    ? 'domain'
-    : 'path',
+  shopSelector: environment.NUXT_STOREFRONT_DOMAIN_PER_LOCALE ? 'domain' : 'path',
   // Following keys are overridable using prefix NUXT_STOREFRONT_STORES
   stores: shops.reduce(
     (previousShopConfigs, shop) => ({
@@ -123,8 +121,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
         auth: {
           resetPasswordUrl: `${protocol}${shop.locale}/signin/`,
         },
-        storeCampaignKeyword:
-          environment.NUXT_STOREFRONT_STORES_EN_US_CAMPAIGN_KEYWORD,
+        storeCampaignKeyword: environment.NUXT_STOREFRONT_STORES_EN_US_CAMPAIGN_KEYWORD,
         currency: shop.currency,
         checkout: {
           shopId: shop.shopId,
@@ -134,10 +131,10 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
           secret: environment.NUXT_STOREFRONT_STORES_EN_US_CHECKOUT_SECRET,
           host: environment.NUXT_STOREFRONT_STORES_EN_US_CHECKOUT_HOST,
           user: environment.NUXT_STOREFRONT_STORES_EN_US_CHECKOUT_USER,
-        },
-      },
-    }),
-    {},
+        }
+      }}
+      ),
+    {}
   ),
   // Following keys are overridable using prefix NUXT_STOREFRONT_REDIS
   redis: {
@@ -146,7 +143,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
     prefix: environment.NUXT_STOREFRONT_REDIS_PREFIX,
     user: process.env.NUXT_STOREFRONT_REDIS_USER,
     password: process.env.NUXT_STOREFRONT_REDIS_PASSWORD,
-    sslTransit: Boolean(process.env.NUXT_STOREFRONT_SSL_TRANSIT),
+    sslTransit: Boolean(process.env.NUXT_STOREFRONT_SSL_TRANSIT)
   },
   // Following keys are overridable using prefix NUXT_STOREFRONT_CACHE
   cache: {
@@ -161,7 +158,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
     // maxAge: 60 * 60,
     // staleWhileRevalidate: 60 * 60 * 24,
     // generateCacheKey: () =>
-  },
+  }
 }
 
 export const storefrontRuntimeConfigPublic: Partial<ModuleOptions> = {
@@ -174,6 +171,7 @@ export const storefrontRuntimeConfigPublic: Partial<ModuleOptions> = {
   // Following keys are overridable using prefix NUXT_PUBLIC_IMAGE_BASE_URL
   imageBaseUrl: environment.NUXT_PUBLIC_IMAGE_BASE_URL,
 }
+
 
 export const storefrontBuildtimeConfig: Partial<ModuleOptions> = {
   rpcMethodNames: Object.keys(customRpcMethods),
