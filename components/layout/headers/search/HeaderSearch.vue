@@ -96,15 +96,18 @@ watch(inputActive, (val) => {
 
 const { products, categories, brands } = useTypeaheadSuggestions(data)
 
-const debouncedSearch = useDebounce(async (value: string) => {
-  if (value === '' || value.length < MIN_CHARS_FOR_SEARCH) {
-    return
-  }
-  await search({
-    term: searchQuery.value,
-    productLimit: PRODUCT_LIMIT,
-  })
-}, DEBOUNCED_SEARCH_DURATION)
+const debouncedSearch = useDebounce(
+  { delay: DEBOUNCED_SEARCH_DURATION },
+  async (value: string) => {
+    if (value === '' || value.length < MIN_CHARS_FOR_SEARCH) {
+      return
+    }
+    await search({
+      term: searchQuery.value,
+      productLimit: PRODUCT_LIMIT,
+    })
+  },
+)
 
 watch(searchQuery, () => {
   const { value: query = '' } = searchQuery

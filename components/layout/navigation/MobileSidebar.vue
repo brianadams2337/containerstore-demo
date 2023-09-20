@@ -18,12 +18,12 @@
             @keydown:enter="openSearchPage" />
           <template v-if="mobileSearchIsActive">
             <Headline
-              v-show="totalCount > 0 && !searching"
-              class="mt-4"
+              v-if="totalCount > 0 && !searching"
+              class="my-4"
               size="sm"
               :is-uppercase="false">
               {{
-                $tc('search.search_term_match_count', totalCount, {
+                $t('search.search_term_match_count', {
                   count: products.length,
                   term: searchQuery,
                 })

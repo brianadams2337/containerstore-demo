@@ -6,7 +6,6 @@
       </span>
       <input
         id="search"
-        ref="inputRef"
         v-model="content"
         :placeholder="$t('search.placeholder')"
         autocomplete="off"
@@ -14,7 +13,7 @@
         type="search"
         class="w-full appearance-none rounded border border-transparent bg-gray-100 px-2 pl-10 text-sm outline-0 ring-0 transition-colors duration-200 ease-linear placeholder:text-gray-800 focus:border-black focus:bg-white focus:outline-none focus:ring-0 md:border-none"
         @focus="emit('focus')"
-        @blur="content.length ? emit('blur') : emit('cancel')"
+        @blur="!content.length ? emit('cancel') : emit('blur')"
         @keydown.exact.enter="emit('keydown:enter')" />
     </label>
   </div>

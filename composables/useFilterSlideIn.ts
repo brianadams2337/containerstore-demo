@@ -124,9 +124,8 @@ const useFilterSlideIn = (
     toggle()
   }
 
-  const debouncedStateChangedEvent = useDebounce(
-    () => emitFilterEvent('filter:state-changed'),
-    50,
+  const debouncedStateChangedEvent = useDebounce({ delay: 50 }, () =>
+    emitFilterEvent('filter:state-changed'),
   )
 
   watch(state, () => {
