@@ -2,12 +2,14 @@
   <div
     class="flex min-h-screen flex-col text-primary antialiased anchor-scrolling-none">
     <HeaderMetaBar />
-    <AppHeader v-bind="{ rootCategories, fetchingCategories }" class="mb-4" />
+    <AppHeader v-bind="{ rootCategories, fetchingCategories }" />
     <ToastContainer />
     <MobileSidebar
       v-if="viewport.isLessThan('md')"
       v-bind="{ rootCategories, fetchingCategories }" />
-    <slot />
+    <div class="mt-4 grow">
+      <slot />
+    </div>
     <AppFooter class="mt-16" />
   </div>
 </template>

@@ -2,7 +2,7 @@
   <SlideInFromLeftTransition>
     <nav
       v-if="isSideNavigationOpen"
-      class="sticky inset-0 z-50 min-h-screen overflow-hidden overflow-y-auto overscroll-none bg-white"
+      class="sticky inset-1 z-50 min-h-screen overflow-hidden overflow-y-auto overscroll-none bg-white"
       :class="{ 'animate-pulse': fetchingCategories }">
       <div class="h-full" :style="{ 'max-height': 'calc(100% - 80px)' }">
         <MobileSidebarAccountContent
