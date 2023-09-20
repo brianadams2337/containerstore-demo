@@ -313,9 +313,10 @@ const quickFilters = computed(() =>
 const cmsData = await useAsyncStoryblok(
   `categories/${selectedCategory.value?.id}`,
   {
-    version: 'draft',
+    version: getStoryblokContentVersion(),
   },
 )
+
 const {
   content: cmsContent,
   hasTeaserImage,
