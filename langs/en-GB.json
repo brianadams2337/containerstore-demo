@@ -47,7 +47,11 @@
     "password": "Password"
   },
   "error": {
-    "continue_shopping": "Continue shopping"
+    "continue_shopping": "Continue shopping",
+    "not_found_code": "Oh - 404",
+    "not_found_message": "Oh - something went wrong",
+    "page_does_not_exist": "Unfortunately this page no longer exists.",
+    "request_not_processed": "Your request could not be processed, please try again."
   },
   "availability": {
     "available": "Available immediately",

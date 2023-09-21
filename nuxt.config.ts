@@ -1,4 +1,5 @@
 import path from 'path'
+import yn from 'yn'
 import {
   storefrontRuntimeConfigPrivate,
   storefrontRuntimeConfigPublic,
@@ -21,7 +22,7 @@ const locales = [
     code: 'en',
     iso: 'en-GB',
     // TODO: Investigate runtimeConfig behaviour, as we want build independence
-    domain: process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE
+    domain: yn(process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE)
       ? domains.en
       : domains.default,
     file: 'en-GB.json',
@@ -30,7 +31,7 @@ const locales = [
     code: 'de',
     iso: 'de-DE',
     // TODO: Investigate runtimeConfig behaviour, as we want build independence
-    domain: process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE
+    domain: yn(process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE)
       ? domains.de
       : domains.default,
     file: DE_DOMAIN_FILE,
@@ -40,7 +41,7 @@ const locales = [
     code: 'de-at',
     iso: 'de-AT',
     // TODO: Investigate runtimeConfig behaviour, as we want build independence
-    domain: process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE
+    domain: yn(process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE)
       ? domains['de-at']
       : domains.default,
     file: DE_DOMAIN_FILE,
@@ -49,7 +50,7 @@ const locales = [
     code: 'de-ch',
     iso: 'de-CH',
     // TODO: Investigate runtimeConfig behaviour, as we want build independence
-    domain: process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE
+    domain: yn(process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE)
       ? domains['de-ch']
       : domains.default,
     file: DE_DOMAIN_FILE,
@@ -170,7 +171,7 @@ export default defineNuxtConfig({
   // https://v8.i18n.nuxtjs.org/getting-started/basic-usage
   i18n: {
     locales,
-    differentDomains: false,
+    differentDomains: yn(process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE),
     detectBrowserLanguage: false,
     defaultLocale: 'en',
     langDir: 'langs/',
