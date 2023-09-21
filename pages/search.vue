@@ -64,12 +64,7 @@ const { $i18n, $alert } = useNuxtApp()
 const term = computed(() => route.query.term || '')
 const { toggle: toggleFilter } = useSlideIn('FilterSlideIn')
 
-// const wishlist = useWishlist()
-// TODO: Remove mock after the wishlist implementation (with generated key for session)
-const wishlist = {
-  findItem: ({ productId }: { productId: number }) => ({ productId }),
-  toggleItem: ({ productId }: { productId: number }) => ({ productId }),
-}
+const wishlist = await useWishlist()
 // const { trackFilterApply, trackAddToWishlist, trackRemoveFromWishlist } =
 //   useTrackingEvents()
 
@@ -83,35 +78,38 @@ const {
   productCountFetching,
   refreshProductCount,
   unfilteredCount,
-} = await useFacet('useSearchFacet', {
-  with: {
-    product: {
-      attributes: {
-        withKey: ['color', 'brand', 'name'],
-      },
-      variants: {
+} = await useFacet({
+  key: 'useSearchFacet',
+  params: {
+    with: {
+      product: {
         attributes: {
-          withKey: ['price', 'size'],
+          withKey: ['color', 'brand', 'name'],
         },
-        lowestPriorPrice: true,
-      },
-      images: {
-        attributes: {
-          withKey: ['imageType', 'imageView', 'imageBackground', 'imageKind'],
+        variants: {
+          attributes: {
+            withKey: ['price', 'size'],
+          },
+          lowestPriorPrice: true,
         },
-      },
-      siblings: {
         images: {
           attributes: {
-            withKey: ['imageType', 'imageView', 'imageBackground'],
+            withKey: ['imageType', 'imageView', 'imageBackground', 'imageKind'],
           },
         },
-        attributes: {
-          withKey: ['color', 'name', 'brand'],
+        siblings: {
+          images: {
+            attributes: {
+              withKey: ['imageType', 'imageView', 'imageBackground'],
+            },
+          },
+          attributes: {
+            withKey: ['color', 'name', 'brand'],
+          },
         },
+        priceRange: true,
+        lowestPriorPrice: true,
       },
-      priceRange: true,
-      lowestPriorPrice: true,
     },
   },
 })

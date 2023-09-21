@@ -60,11 +60,10 @@ const props = defineProps({
   },
 })
 
-const { data: variant } = await useVariant(
-  undefined,
-  { autoFetch: false },
-  `variant-${props.id}`,
-)
+const { data: variant } = await useVariant({
+  options: { autoFetch: false },
+  key: `variant-${props.id}`,
+})
 
 const uniqueItems = computed(() => {
   return useUnique(props.orderItems, (it: OrderItems[0]) => it.variant.id)

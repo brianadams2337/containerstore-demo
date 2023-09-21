@@ -19,13 +19,14 @@
 </template>
 
 <script setup lang="ts">
-const { data: rootCategoriesData, fetching: fetchingCategories } =
-  await useCategories({ path: '/' }, { autoFetch: true })
-
-await useWishlist(undefined, {
-  autoFetch: true,
+await useWishlist({ options: { autoFetch: true } })
+await useBasket({ options: { autoFetch: true } })
+const categoryData = await useCategories({
+  params: { path: '/' },
+  options: { autoFetch: true },
 })
-await useBasket(undefined, { autoFetch: true })
+
+const { data: rootCategoriesData, fetching: fetchingCategories } = categoryData
 
 const viewport = useViewport()
 

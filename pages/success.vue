@@ -89,7 +89,11 @@ const cbdToken = String(route.query.cbd)
 const { data: orderData, fetching } = await useOrderConfirmation<
   OrderProduct,
   OrderVariant
->({ cbdToken }, { autoFetch: true }, `orderConfirmation-${cbdToken}`)
+>({
+  params: { cbdToken },
+  options: { autoFetch: true },
+  key: `orderConfirmation-${cbdToken}`,
+})
 const user = await useUser()
 
 // const { trackPurchaseEvent } = useTrackingEvents()

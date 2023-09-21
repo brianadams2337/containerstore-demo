@@ -36,22 +36,22 @@ const paramId = computed(() => +route.params.id)
 
 const viewport = useViewport()
 
-const { data: orderDetails, fetching } = await useOrder(
-  { orderId: paramId.value },
-  { autoFetch: true },
-  `orderId-${paramId.value}`,
-)
+const { data: orderDetails, fetching } = await useOrder({
+  params: { orderId: paramId.value },
+  options: { autoFetch: true },
+  key: `orderId-${paramId.value}`,
+})
 const variantIds = computed(() => {
   const ids =
     orderDetails.value?.items?.map((it) => it.variant.id as number) ?? []
   return useUnique(ids)
 })
 
-await useVariant(
-  { ids: variantIds.value },
-  { autoFetch: true },
-  `variant-${paramId.value}`,
-)
+await useVariant({
+  params: { ids: variantIds.value },
+  options: { autoFetch: true },
+  key: `variant-${paramId.value}`,
+})
 
 const totalAmount = computed(() => orderDetails.value?.cost.withTax ?? 0)
 

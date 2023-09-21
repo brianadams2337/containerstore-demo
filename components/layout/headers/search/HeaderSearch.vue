@@ -65,17 +65,19 @@ import {
 
 const { data, search, searchQuery, resetSearch, pending } = useSearch({
   key: 'header-search',
-  with: {
-    products: {
-      attributes: {
-        withKey: ['color', 'brand', 'name'],
+  params: {
+    with: {
+      products: {
+        attributes: {
+          withKey: ['color', 'brand', 'name'],
+        },
+        priceRange: true,
+        categories: 'all',
       },
-      priceRange: true,
-      categories: 'all',
-    },
-    categories: {
-      parents: 'all',
-      children: 10,
+      categories: {
+        parents: 'all',
+        children: 10,
+      },
     },
   },
 })
