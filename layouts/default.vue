@@ -15,13 +15,16 @@
 </template>
 
 <script setup lang="ts">
-import withParams from '~/constants/withParams'
+const {
+  data: rootCategoriesData,
+  fetching: fetchingCategories,
+  error: categoriesError,
+} = await useCategories({ path: '/' }, { autoFetch: true })
 
-const { data: rootCategoriesData, fetching: fetchingCategories, error: categoriesError } =
-  await useCategories({ path: '/' }, { autoFetch: true })
-
-const { error: wishlistErrror}  = await useWishlist(withParams.wishlist, { autoFetch: true })
-const {error: basketError } = await useBasket(withParams.basket, { autoFetch: true })
+const { error: wishlistError } = await useWishlist(undefined, {
+  autoFetch: true,
+})
+const { error: basketError } = await useBasket(undefined, { autoFetch: true })
 
 const viewport = useViewport()
 
@@ -31,7 +34,7 @@ const rootCategories = computed(() => {
     : [rootCategoriesData.value.categories]
 })
 
-watch([categoriesError, wishlistErrror, basketError], (newErrors) => {
+watch([categoriesError, wishlistError, basketError], (newErrors) => {
   const firstError = newErrors.find((e) => e)
   showError(handleError(firstError))
 })

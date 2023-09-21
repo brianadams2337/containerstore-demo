@@ -318,12 +318,8 @@ const cmsData = await useAsyncStoryblok(
   },
 )
 
-const {
-  content,
-  hasTeaserImage,
-  postListingContent,
-  preListingContent,
-} = useCmsListingContent(cmsData)
+const { content, hasTeaserImage, postListingContent, preListingContent } =
+  useCmsListingContent(cmsData)
 
 const cmsContent = content as unknown as SbCmsImage
 
