@@ -1,5 +1,5 @@
 <template>
-  <Intersect v-editable="blok" @enter="onIntersect">
+  <Intersect v-if="blok" v-editable="blok" @enter="onIntersect">
     <NuxtPicture
       v-if="imageSource?.src"
       provider="storyblok"
