@@ -44,7 +44,7 @@ const shops = [
   {
     locale: 'en-US',
     path: 'en',
-    shopId: 1001, // 1028,
+    shopId: 1028,
     currency: 'USD',
   },
   {
@@ -56,13 +56,13 @@ const shops = [
   {
     locale: 'de-AT',
     path: 'at',
-    shopId: 1001,
+    shopId: 1018,
     currency: 'EUR',
   },
   {
     locale: 'de-CH',
     path: 'ch',
-    shopId: 1001,
+    shopId: 1019,
     currency: 'EUR',
   },
 ]
