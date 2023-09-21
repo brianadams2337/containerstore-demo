@@ -8,7 +8,6 @@
         class="mx-4 flex h-[4.375rem] items-center justify-between gap-1 md:container sm:gap-4">
         <div class="flex-1">
           <AppButton
-            v-if="!isOnErrorPage"
             class="md:hidden"
             type="ghost"
             data-test-id="side-navigation-button"
@@ -19,19 +18,19 @@
         </div>
         <Logo class="ml-4 flex-initial" :width="138" :height="32" />
         <div class="flex flex-1 justify-end">
-          <HeaderMainMenu v-if="!isCheckoutPage && !isOnErrorPage" />
+          <HeaderMainMenu v-if="!isCheckoutPage" />
         </div>
       </div>
     </div>
     <HeaderSubNavigation
-      v-if="!isCheckoutPage && !isOnErrorPage"
+      v-if="!isCheckoutPage"
       v-bind="{ rootCategories, fetchingCategories }"
       :navigation-tree="navigationTrees[0]"
       @mouseenter:item="openFlyoutMenu"
       @mouseleave="closeFlyoutMenu"
       @mouseenter:navigation-item="openFlyoutMenuForNavigationTree" />
     <FlyoutMenu
-      v-if="!isCheckoutPage && !isOnErrorPage"
+      v-if="!isCheckoutPage"
       :is-open="isFlyoutMenuOpen"
       @mouseleave="closeFlyoutMenu">
       <!--- THE ID's ARE IMPORTANT TO NOT CLOSE FLYOUT WHILE FAST MOVING MOUSE TO ITEMS -->
@@ -61,10 +60,6 @@ defineProps({
   navigationTrees: {
     type: Array as PropType<NavigationTree[]>,
     default: () => [],
-  },
-  isOnErrorPage: {
-    type: Boolean,
-    default: false,
   },
 })
 

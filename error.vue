@@ -1,7 +1,14 @@
 <template>
   <div
     class="flex min-h-screen flex-col text-primary antialiased anchor-scrolling-none">
-    <AppHeader is-on-error-page />
+    <div class="border-b border-gray-200">
+      <div
+        class="mx-4 flex h-[4.375rem] items-center justify-center gap-1 md:container sm:gap-4">
+        
+        <Logo class="ml-4 flex-initial" :width="138" :height="32" />
+        
+      </div>
+    </div>
     <div class="mt-4 grow">
       <ErrorLayout :error="error" @clear-error="resetErrorState()" />
     </div>
