@@ -5,7 +5,7 @@
       <Headline>{{ title }}</Headline>
       <Headline class="mt-2" size="sm" tag="h2">{{ message }}</Headline>
     </section>
-    <section class="mt-6">
+    <section class="mt-6 flex justify-center">
       <AppButton @click="clearError({ redirect })">
         {{ $t('error.continue_shopping') }}
       </AppButton>

@@ -5,6 +5,7 @@ import {
   AddOrUpdateItemType,
   BasketItem,
 } from '@scayle/storefront-nuxt'
+import { nanoid } from 'nanoid'
 
 type AggregateGroupParams = {
   mainItem: AddOrUpdateItemType
@@ -14,8 +15,7 @@ type AggregateGroupParams = {
 export async function useBasketGroup(
   withParams?: MaybeRefOrGetter<BasketWithOptions>,
 ) {
-  const groupId = Math.floor(Math.random() * 100000000).toString()
-
+  const groupId = nanoid()
   const nuxtApp = useNuxtApp()
   const { fetch: refreshBasket } = await useBasket()
 
@@ -32,12 +32,12 @@ export async function useBasketGroup(
     return [
       {
         ...mainItem,
-        customData: { id: groupId, isMainItem: true, isRequired: true },
+        customData: { id: groupId, isMainItem: true, isRequired: false },
         itemGroup: { id: groupId, isMainItem: true, isRequired: true },
       },
       ...items.map((item) => ({
         ...item,
-        customData: { id: groupId, isMainItem: true, isRequired: true },
+        customData: { id: groupId, isMainItem: true, isRequired: false },
         itemGroup: { id: groupId, isMainItem: false, isRequired: true },
       })),
     ]
