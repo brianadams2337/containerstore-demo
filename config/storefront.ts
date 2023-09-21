@@ -113,7 +113,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
       // NOTE: We recommend to use the shopId as {UNIQUE_IDENTIFIER}!
       // Example if `[shop.locale]` is used -> Overrideable environment variable: NUXT_STOREFRONT_STORES_EN_US_CHECKOUT_USER.
       // Example if `[shop.shopId]` is used -> Overrideable environment variable: NUXT_STOREFRONT_STORES_1001_CHECKOUT_USER.
-      [shop.locale]: {
+      [shop.shopId]: {
         ...baseShopConfig,
         shopId: shop.shopId, // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_SHOP_ID
         path: shop.path, // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_PATH
