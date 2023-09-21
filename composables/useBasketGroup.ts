@@ -32,12 +32,10 @@ export async function useBasketGroup(
     return [
       {
         ...mainItem,
-        customData: { id: groupId, isMainItem: true, isRequired: false },
         itemGroup: { id: groupId, isMainItem: true, isRequired: true },
       },
       ...items.map((item) => ({
         ...item,
-        customData: { id: groupId, isMainItem: true, isRequired: false },
         itemGroup: { id: groupId, isMainItem: false, isRequired: true },
       })),
     ]
