@@ -70,6 +70,10 @@ import {
 
 const basket = await useBasket(undefined, { autoFetch: true })
 
+if (basket.error.value) {
+  throw createError(basket.error.value)
+}
+
 // const wishlist = await useWishlist(undefined, { autoFetch: true })
 // const { route, store, params } = useContext()
 

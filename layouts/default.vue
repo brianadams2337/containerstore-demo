@@ -8,28 +8,24 @@
       v-if="viewport.isLessThan('md')"
       v-bind="{ rootCategories, fetchingCategories }" />
     <div class="mt-4 grow">
-      <template v-if="hasError">
-        <ErrorLayout :error="error" @clear-error="resetErrorState" />
-      </template>
-      <template v-else>
-        <slot />
-      </template>
+      <ErrorLayout
+        v-if="hasError"
+        :error="error"
+        @clear-error="resetErrorState" />
+      <slot v-else />
     </div>
     <AppFooter class="mt-16" />
   </div>
 </template>
 
 <script setup lang="ts">
-const {
-  data: rootCategoriesData,
-  fetching: fetchingCategories,
-  error: categoriesError,
-} = await useCategories({ path: '/' }, { autoFetch: true })
+const { data: rootCategoriesData, fetching: fetchingCategories } =
+  await useCategories({ path: '/' }, { autoFetch: true })
 
-const { error: wishlistError } = await useWishlist(undefined, {
+await useWishlist(undefined, {
   autoFetch: true,
 })
-const { error: basketError } = await useBasket(undefined, { autoFetch: true })
+await useBasket(undefined, { autoFetch: true })
 
 const viewport = useViewport()
 
@@ -39,13 +35,13 @@ const rootCategories = computed(() => {
     : [rootCategoriesData.value.categories]
 })
 
-const error = useState('app:error')
+const error = ref()
 const hasError = computed(() => Boolean(error.value))
 const nuxtApp = useNuxtApp()
 
 onErrorCaptured((err, target, info) => {
   nuxtApp.hooks.callHook('vue:error', err, target, info)
-  error.value = createError(err)
+  error.value = err
   return false
 })
 
@@ -61,12 +57,6 @@ const resetErrorState = async () => {
   const redirect = toLocalePath({ name: routeList.home.name }).toString()
   await clearError({ redirect })
   error.value = undefined
-}
-
-if (categoriesError.value || wishlistError.value || basketError.value) {
-  error.value = createError(
-    categoriesError.value || wishlistError.value || basketError.value,
-  )
 }
 </script>
 

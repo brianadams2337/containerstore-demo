@@ -7,8 +7,8 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
 
+<script setup lang="ts">
 const error = useError()
 const resetErrorState = async () => {
   const redirect = toLocalePath({ name: routeList.home.name }).toString()
@@ -17,6 +17,6 @@ const resetErrorState = async () => {
 </script>
 <script lang="ts">
 export default {
-  name: 'AppFullscreenError',
+  name: 'GlobalError',
 }
 </script>

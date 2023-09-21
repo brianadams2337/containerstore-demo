@@ -12,7 +12,7 @@
     </section>
     <div v-if="isInDevMode">
       <div>{{ statusCode }} {{ statusMessage }}</div>
-      <!-- eslint-disable-next-line vue/no-v-html --> 
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <code v-if="stack" v-html="stack" />
     </div>
   </div>
@@ -74,10 +74,4 @@ const statusMessage =
 const stack = props.error && 'stack' in props.error && props.error?.stack
 
 useHead({ title: title.value })
-</script>
-
-<script lang="ts">
-export default {
-  name: 'ErrorLayout',
-}
 </script>
