@@ -65,7 +65,7 @@ import {
 import { ONE_SIZE_KEY } from '~/constants'
 import { Action } from '~/constants/toast'
 
-const wishlist = await useWishlist()
+const wishlist = await useWishlist(undefined, { autoFetch: true })
 const basket = await useBasket(undefined, { autoFetch: true })
 const { isLoggedIn } = await useUser()
 const { $alert, $i18n } = useNuxtApp()
@@ -76,6 +76,10 @@ const { $alert, $i18n } = useNuxtApp()
 //   trackAddToBasket,
 //   collectProductListItems,
 // } = useTrackingEvents()
+
+if (wishlist.error.value) {
+  throw createError(wishlist.error.value)
+}
 
 const addItemToCart = async (itemKey: string, index: number) => {
   const entry = wishlist.data.value?.items.find((el) => el.key === itemKey)

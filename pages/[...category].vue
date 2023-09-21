@@ -138,6 +138,9 @@ const {
   productCountData,
   refreshProductCount,
   productCountFetching,
+  productError,
+  filterError,
+  categoriesError,
 } = await useFacet(`useFacet-${categoryPath.value}`, {
   with: {
     product: {
@@ -222,6 +225,11 @@ const fetchParameters = computed(() => ({
 }))
 
 await fetchProducts(fetchParameters.value)
+if (productError.value || filterError.value || categoriesError.value) {
+  throw createError(
+    productError.value || filterError.value || categoriesError.value,
+  )
+}
 
 watch(
   () => route.query,
