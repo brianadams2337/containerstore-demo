@@ -16,6 +16,8 @@
 </template>
 
 <script setup lang="ts">
+import { HttpStatusCode } from '@scayle/storefront-nuxt'
+
 const error = useError()
 const { $i18n } = useNuxtApp()
 
@@ -23,7 +25,7 @@ const isNotFoundError = computed(() => {
   return (
     error?.value &&
     'statusCode' in error.value &&
-    error.value.statusCode === 404
+    error.value.statusCode === HttpStatusCode.NOT_FOUND
   )
 })
 const title = computed(() => {
