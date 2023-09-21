@@ -1805,10 +1805,10 @@
     uncrypto "^0.1.3"
     utility-types "^3.10.0"
 
-"@scayle/storefront-nuxt@7.20.0":
-  version "7.20.0"
-  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.20.0.tgz#7bc8dbbbda2d74c25bb210a4faf55b9e48b3e3b3"
-  integrity sha1-e8jbu9otdMJbshCk+vVbnkiz47M=
+"@scayle/storefront-nuxt@7.20.1":
+  version "7.20.1"
+  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.20.1.tgz#35033d830fc4ccec7470d2a1e602b43f0ed62f7c"
+  integrity sha1-NQM9gw/EzOx0cNKh5gK0Pw7WL3w=
   dependencies:
     "@nuxt/kit" "3.7.3"
     "@scayle/h3-session" "0.3.2"
