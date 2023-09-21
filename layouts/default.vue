@@ -8,7 +8,12 @@
       v-if="viewport.isLessThan('md')"
       v-bind="{ rootCategories, fetchingCategories }" />
     <div class="mt-4 grow">
-      <slot />
+      <template v-if="hasError">
+        <ErrorLayout :error="error" @clear-error="resetErrorState" />
+      </template>
+      <template v-else>
+        <slot />
+      </template>
     </div>
     <AppFooter class="mt-16" />
   </div>
@@ -34,10 +39,35 @@ const rootCategories = computed(() => {
     : [rootCategoriesData.value.categories]
 })
 
-watch([categoriesError, wishlistError, basketError], (newErrors) => {
-  const firstError = newErrors.find((e) => e)
-  showError(handleError(firstError))
+const error = useState('app:error')
+const hasError = computed(() => Boolean(error.value))
+const nuxtApp = useNuxtApp()
+
+onErrorCaptured((err, target, info) => {
+  nuxtApp.hooks.callHook('vue:error', err, target, info)
+  error.value = createError(err)
+  return false
 })
+
+const router = useRouter()
+router.afterEach(async () => {
+  if (error.value) {
+    error.value = undefined
+    await clearError()
+  }
+})
+
+const resetErrorState = async () => {
+  const redirect = toLocalePath({ name: routeList.home.name }).toString()
+  await clearError({ redirect })
+  error.value = undefined
+}
+
+if (categoriesError.value || wishlistError.value || basketError.value) {
+  error.value = createError(
+    categoriesError.value || wishlistError.value || basketError.value,
+  )
+}
 </script>
 
 <script lang="ts">
