@@ -1,5 +1,4 @@
 import { HashAlgorithm, ModuleOptions } from '@scayle/storefront-nuxt'
-import yn from 'yn'
 import * as customRpcMethods from '../rpcMethods'
 import withParams from '../constants/withParams'
 
@@ -44,7 +43,7 @@ const shops = [
   {
     locale: 'en-US',
     path: 'en',
-    shopId: 1001, // 1028,
+    shopId: 1028,
     currency: 'USD',
   },
   {
@@ -56,13 +55,13 @@ const shops = [
   {
     locale: 'de-AT',
     path: 'at',
-    shopId: 1001,
+    shopId: 1018,
     currency: 'EUR',
   },
   {
     locale: 'de-CH',
     path: 'ch',
-    shopId: 1001,
+    shopId: 1019,
     currency: 'EUR',
   },
 ]
@@ -96,9 +95,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
     clientId: '', // Override: NUXT_STOREFRONT_OAUTH_CLIENT_ID,
     clientSecret: '', // Override: NUXT_STOREFRONT_OAUTH_CLIENT_SECRET,
   },
-  shopSelector: yn(process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE)
-    ? 'domain'
-    : 'path', // Override: NUXT_STOREFRONT_SHOP_SELECTOR
+  shopSelector: 'path', // Override: NUXT_STOREFRONT_SHOP_SELECTOR
   // Following keys are Overrideable using prefix NUXT_STOREFRONT_STORES
   stores: shops.reduce(
     (previousShopConfigs, shop) => ({
@@ -113,7 +110,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
       // NOTE: We recommend to use the shopId as {UNIQUE_IDENTIFIER}!
       // Example if `[shop.locale]` is used -> Overrideable environment variable: NUXT_STOREFRONT_STORES_EN_US_CHECKOUT_USER.
       // Example if `[shop.shopId]` is used -> Overrideable environment variable: NUXT_STOREFRONT_STORES_1001_CHECKOUT_USER.
-      [shop.locale]: {
+      [shop.shopId]: {
         ...baseShopConfig,
         shopId: shop.shopId, // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_SHOP_ID
         path: shop.path, // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_PATH
