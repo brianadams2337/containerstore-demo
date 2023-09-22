@@ -82,6 +82,13 @@ const footerContent = computed(() => cmsData.value.content)
 
 const { data } = await useNavigationTrees()
 
+const filterNavigationTree = (prefixToMatch = '') => {
+  const filterRegex = new RegExp(`^${prefixToMatch?.toLowerCase()}`)
+  return data.value?.filter((tree) =>
+    filterRegex.test(tree.name?.toLowerCase()),
+  )
+}
+
 const footerNavigationTrees = useState<NavigationTree[]>(() => {
   return filterNavigationTree('footer')
 })
@@ -89,12 +96,5 @@ const footerNavigationTrees = useState<NavigationTree[]>(() => {
 const getSocialName = (name: string) => {
   const firstLetter = name.substring(0, 1)
   return firstLetter.toUpperCase() + name.substring(1)
-}
-
-const filterNavigationTree = (prefixToMatch = '') => {
-  const filterRegex = new RegExp(`^${prefixToMatch?.toLowerCase()}`)
-  return data.value?.filter((tree) =>
-    filterRegex.test(tree.name?.toLowerCase()),
-  )
 }
 </script>
