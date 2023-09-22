@@ -1,5 +1,4 @@
 import path from 'path'
-import yn from 'yn'
 import {
   storefrontRuntimeConfigPrivate,
   storefrontRuntimeConfigPublic,
@@ -8,12 +7,14 @@ import {
 import breakpoints from './config/breakpoints'
 
 const domains = {
-  en: process.env.NUXT_STOREFRONT_STORES_EN_US_DOMAIN!,
-  de: process.env.NUXT_STOREFRONT_STORES_DE_DE_DOMAIN!,
-  'de-at': process.env.NUXT_STOREFRONT_STORES_DE_AT_DOMAIN!,
-  'de-ch': process.env.NUXT_STOREFRONT_STORES_DE_CH_DOMAIN!,
+  en: process.env.NUXT_STOREFRONT_STORES_1028_DOMAIN!,
+  de: process.env.NUXT_STOREFRONT_STORES_1001_DOMAIN!,
+  'de-at': process.env.NUXT_STOREFRONT_STORES_1018_DOMAIN!,
+  'de-ch': process.env.NUXT_STOREFRONT_STORES_1019_DOMAIN!,
   default: process.env.NUXT_STOREFRONT_DOMAIN_DEFAULT!,
 }
+
+const DOMAIN_PER_LOCALE = false
 
 const DE_DOMAIN_FILE = 'de-DE.json'
 
@@ -22,7 +23,7 @@ const locales = [
     code: 'en',
     iso: 'en-GB',
     // TODO: Investigate runtimeConfig behaviour, as we want build independence
-    domain: yn(process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE)
+    domain: DOMAIN_PER_LOCALE
       ? domains.en
       : domains.default,
     file: 'en-GB.json',
@@ -31,17 +32,16 @@ const locales = [
     code: 'de',
     iso: 'de-DE',
     // TODO: Investigate runtimeConfig behaviour, as we want build independence
-    domain: yn(process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE)
+    domain: DOMAIN_PER_LOCALE
       ? domains.de
       : domains.default,
     file: DE_DOMAIN_FILE,
-    shopId: 1001,
   },
   {
     code: 'de-at',
     iso: 'de-AT',
     // TODO: Investigate runtimeConfig behaviour, as we want build independence
-    domain: yn(process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE)
+    domain: DOMAIN_PER_LOCALE
       ? domains['de-at']
       : domains.default,
     file: DE_DOMAIN_FILE,
@@ -50,7 +50,7 @@ const locales = [
     code: 'de-ch',
     iso: 'de-CH',
     // TODO: Investigate runtimeConfig behaviour, as we want build independence
-    domain: yn(process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE)
+    domain: DOMAIN_PER_LOCALE
       ? domains['de-ch']
       : domains.default,
     file: DE_DOMAIN_FILE,
@@ -171,7 +171,7 @@ export default defineNuxtConfig({
   // https://v8.i18n.nuxtjs.org/getting-started/basic-usage
   i18n: {
     locales,
-    differentDomains: yn(process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE),
+    differentDomains: DOMAIN_PER_LOCALE,
     detectBrowserLanguage: false,
     defaultLocale: 'en',
     langDir: 'langs/',
