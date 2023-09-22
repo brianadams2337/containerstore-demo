@@ -391,3 +391,18 @@ const onIntersect = (_: IntersectionObserverEntry, stop: () => void) => {
 }
 </script>
 ```
+
+## Storyblok fetching multiple stories
+
+For Nuxt 3 we have used the `useAsyncStoryblok` composable, there is a limitation to this composable that it isn't able to fetch multiple stories. A common usecase would be fetching `lookbooks`. There is a reported issue on storyblok nuxt repository that also explains a work around by using the `useStoryblokApi` composable.
+
+```ts
+// https://github.com/storyblok/storyblok-nuxt/issues/547#issuecomment-1697844103
+
+const storyblokApi = useStoryblokApi()
+const {
+  data: { stories },
+} = await storyblokApi.getStories({
+  starts_with: folder, // matches stories eg by passing {starts_with: 'lookbooks'} you can fetch lookbooks-1, lookbooks-2, ... lookbooks-n
+})
+```
