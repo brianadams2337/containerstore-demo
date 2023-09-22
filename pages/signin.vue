@@ -38,7 +38,7 @@ const props = defineProps({
 })
 
 const { $i18n } = useNuxtApp()
-const { isLoggedIn, fetching } = await useUser({ autoFetch: false })
+const { isLoggedIn, fetching } = await useUser()
 const { lastLoggedInUser } = await useLastLoggedInUser()
 
 const router = useRouter()

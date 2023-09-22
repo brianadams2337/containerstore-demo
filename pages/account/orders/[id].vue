@@ -18,7 +18,7 @@
           <AddressSummary
             v-if="shippingAddress || billingAddress"
             v-bind="{ shippingAddress, billingAddress }" />
-          <OrderItems v-bind="{ orderItems, packages, id: paramId }" />
+          <OrderItems v-bind="{ orderItems, packages, variants }" />
           <PaymentSummary
             v-bind="{ totalAmount, deliveryCost }"
             :paid-with="orderDetails.payment && orderDetails.payment[0].key" />
@@ -36,22 +36,20 @@ const paramId = computed(() => +route.params.id)
 
 const viewport = useViewport()
 
-const { data: orderDetails, fetching } = await useOrder(
-  { orderId: paramId.value },
-  { autoFetch: true },
-  `orderId-${paramId.value}`,
-)
+const { data: orderDetails, fetching } = await useOrder({
+  params: { orderId: paramId.value },
+  key: `orderId-${paramId.value}`,
+})
 const variantIds = computed(() => {
   const ids =
     orderDetails.value?.items?.map((it) => it.variant.id as number) ?? []
   return useUnique(ids)
 })
 
-await useVariant(
-  { ids: variantIds.value },
-  { autoFetch: true },
-  `variant-${paramId.value}`,
-)
+const { data: variants } = await useVariant({
+  params: { ids: variantIds.value },
+  key: `variant-${paramId.value}`,
+})
 
 const totalAmount = computed(() => orderDetails.value?.cost.withTax ?? 0)
 

@@ -104,15 +104,17 @@ const {
   pending: searching,
 } = useSearch({
   key,
-  with: {
-    products: {
-      attributes: {
-        withKey: ['color', 'brand', 'name'],
+  params: {
+    with: {
+      products: {
+        attributes: {
+          withKey: ['color', 'brand', 'name'],
+        },
       },
-    },
-    categories: {
-      parents: 'all',
-      children: 10,
+      categories: {
+        parents: 'all',
+        children: 10,
+      },
     },
   },
 })

@@ -141,36 +141,39 @@ const {
   productError,
   filterError,
   categoriesError,
-} = await useFacet(`useFacet-${categoryPath.value}`, {
-  with: {
-    product: {
-      attributes: {
-        withKey: ['color', 'brand', 'name', ...sustainabilityAttributes],
-      },
-      variants: {
+} = await useFacet({
+  key: `useFacet-${categoryPath.value}`,
+  params: {
+    with: {
+      product: {
         attributes: {
-          withKey: ['price'],
+          withKey: ['color', 'brand', 'name', ...sustainabilityAttributes],
         },
+        variants: {
+          attributes: {
+            withKey: ['price'],
+          },
+          lowestPriorPrice: true,
+        },
+        siblings: {
+          attributes: { withKey: ['color', 'brand', 'name'] },
+        },
+        images: {
+          attributes: {
+            withKey: ['imageType', 'imageView', 'imageBackground', 'imageKind'],
+          },
+        },
+        priceRange: true,
         lowestPriorPrice: true,
-      },
-      siblings: {
-        attributes: { withKey: ['color', 'brand', 'name'] },
-      },
-      images: {
-        attributes: {
-          withKey: ['imageType', 'imageView', 'imageBackground', 'imageKind'],
-        },
-      },
-      priceRange: true,
-      lowestPriorPrice: true,
-      categories: {
-        properties: {
-          withName: ['baseCategories'],
+        categories: {
+          properties: {
+            withName: ['baseCategories'],
+          },
         },
       },
     },
+    includedFilters: includedQuickFilters,
   },
-  includedFilters: includedQuickFilters,
 })
 
 const customDefaultSorting = computed(

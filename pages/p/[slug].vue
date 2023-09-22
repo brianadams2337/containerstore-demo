@@ -111,7 +111,7 @@
                 </template>
               </AppButton>
             </div>
-            <!-- 
+            <!--
             <div class="mt-3">
               <ProductDetailGroup
                 v-if="sliderProducts.length"
@@ -125,7 +125,7 @@
                   :products="sliderProducts"
                   :loading="fetchingCombineWithProducts"
                   @intersect:column="trackViewListing"
-                  @click:recommendation="trackRecommendationClick" /> 
+                  @click:recommendation="trackRecommendationClick" />
               </ProductDetailGroup>
             </div>
                   -->
@@ -161,28 +161,27 @@ const {
 } = useRoute()
 
 // TODO slug is a stringified productName + productId combination. this can be automatically split into name and id by using the route structure name_id with an underscore in the route.ts helper
-const productId = computed(
-  () => (slug as string)?.substring(slug.lastIndexOf('-') + 1),
-)
+const productId = computed(() => {
+  return String(slug)?.substring(slug.lastIndexOf('-') + 1)
+})
 
-const { data: product, fetching } = await useProduct(
-  () => ({
+const { data: product, fetching } = await useProduct({
+  params: {
     id: parseInt(productId.value),
     with: PRODUCT_WITH_PARAMS,
-  }),
-  { autoFetch: true },
-  `useProduct-${productId.value}`,
-)
+  },
+  key: `useProduct-${productId.value}`,
+})
 
-const productCategories = computed(() =>
-  product.value ? getCategoriesByRoute(product.value, null) : [],
-)
+const productCategories = computed(() => {
+  return product.value ? getCategoriesByRoute(product.value, null) : []
+})
 
 const breadcrumbs = computed(() => getBreadcrumbs(productCategories.value))
 
-const brandName = computed(
-  () => getFirstAttributeValue(product.value?.attributes, 'brand')?.label,
-)
+const brandName = computed(() => {
+  return getFirstAttributeValue(product.value?.attributes, 'brand')?.label
+})
 
 const productName = getFirstAttributeValue(product.value?.attributes, 'name')
   ?.label
@@ -206,13 +205,13 @@ const price = computed(() =>
     : variantWithLowestPrice.value?.price,
 )
 
-const hasSpecial = computed(() =>
-  Boolean(!activeVariant.value && price.value?.appliedReductions.length),
-)
+const hasSpecial = computed(() => {
+  return Boolean(!activeVariant.value && price.value?.appliedReductions.length)
+})
 
-const productSiblings = computed(() =>
-  getProductSiblings(product.value, 'color'),
-)
+const productSiblings = computed(() => {
+  return getProductSiblings(product.value, 'color')
+})
 
 const handleSelectedSize = (value: Value) => {
   if (product.value?.variants) {
@@ -386,7 +385,6 @@ const onToggleWishlist = async () => {
 </script>
 
 <script lang="ts">
-// name script tag
 export default {
   name: 'ProductDetailPage',
 }

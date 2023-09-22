@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-const { user } = await useUser({ autoFetch: false })
+const { user } = await useUser()
 const { closeSideNavigation } = useUiState()
 const userSettingsActive = ref(false)
 </script>

@@ -53,7 +53,7 @@ import { Action, dateOfBirthFormats } from '~/constants'
 const { $alert, $i18n, $validation } = useNuxtApp()
 const currentShop = useCurrentShop()
 
-const { user, updateUser } = await useUser({ autoFetch: false })
+const { user, updateUser } = await useUser()
 
 const dobFormat = computed(() => {
   const locale = currentShop.value?.locale.replace('-', '_')

@@ -15,10 +15,9 @@
 
 <script setup lang="ts">
 useCheckoutWebComponent()
-const { data: basketData, fetch: fetchBasket } = await useBasket(undefined, {
-  autoFetch: true,
-})
-const { user, fetch: fetchUser } = await useUser({ autoFetch: true })
+const { data: basketData, fetch: fetchBasket } = await useBasket()
+
+const { user, fetch: fetchUser } = await useUser()
 
 const { logger } = useLog('CheckoutPage')
 // TODO tracking
@@ -29,9 +28,9 @@ const checkoutRef = ref(null)
 const { data: campaignKey, fetch: fetchCampaignKey } = await useCampaign()
 
 const showCheckout = ref(false)
-const accessToken = computed(
-  () => user.value?.authentication?.storefrontAccessToken,
-)
+const accessToken = computed(() => {
+  return user.value?.authentication?.storefrontAccessToken
+})
 
 onMounted(async () => {
   try {

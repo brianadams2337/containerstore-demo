@@ -53,9 +53,11 @@ const props = defineProps({
 })
 
 const { marginClasses } = useStoryblokMargins(props.blok as any)
-// const { md } = useBreakpoints()
-const md = ref(true)
-const sliderOffset = computed(() => (md.value ? 56 : 20))
+const viewport = useViewport()
+
+const sliderOffset = computed(() => {
+  return viewport.isGreaterOrEquals('md') ? 56 : 20
+})
 
 // const listingMetaData = {
 //   name: `ProductSlider-${props.blok.headline}`,
@@ -66,8 +68,8 @@ const productIds = computed(
   () => props.blok.product_ids?.split(',').map((id: string) => parseInt(id)),
 )
 
-const { data, fetch, fetching } = await useProductsByIds(
-  {
+const { data, fetch, fetching } = await useProductsByIds({
+  params: {
     ids: productIds.value || [],
     with: {
       attributes: {
@@ -88,9 +90,8 @@ const { data, fetch, fetching } = await useProductsByIds(
       lowestPriorPrice: true,
     },
   },
-  undefined,
-  `productSlider-${props.blok._uid}`,
-)
+  key: `productSlider-${props.blok._uid}`,
+})
 
 onMounted(() => fetch())
 
@@ -164,7 +165,7 @@ onMounted(() => fetch())
 //   }
 // }
 
-// const columns = computed(() => (md.value ? 5 : 2))
+// const columns = computed(() => (viewport.isGreaterOrEquals('md') ? 5 : 2))
 
 // const trackIntersection = ({
 //   product,

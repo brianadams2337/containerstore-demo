@@ -11,7 +11,7 @@ export const setUserDefault = (): LastLoggedInUser => ({
 })
 
 export const useLastLoggedInUser = async () => {
-  const { user, isLoggedIn } = await useUser({ autoFetch: false })
+  const { user, isLoggedIn } = await useUser()
   const lastLoggedInUser = useState(USER_KEY, setUserDefault)
 
   const isLocalStorageActionable = () => {

@@ -11,10 +11,10 @@
           :title="$t('basket.empty_title')"
           :description="$t('basket.empty_description')">
           <div class="mt-8 flex justify-center gap-4 md:justify-start">
-            <AppButton type="primary" :to="{ name: 'signin' }">
+            <AppButton type="primary" :to="{ name: routeList.signin.name }">
               {{ $t('basket.sign_in_label') }}
             </AppButton>
-            <AppButton :to="'/'" type="tertiary">
+            <AppButton :to="{ name: routeList.home.name }" type="tertiary">
               {{ $t('basket.continue_shopping_label') }}
             </AppButton>
           </div>
@@ -68,19 +68,20 @@ import {
 } from '@scayle/storefront-nuxt'
 // import { metaTagGenerator } from '~/helpers/seo'
 
-const basket = await useBasket(undefined, { autoFetch: true })
+const basket = await useBasket()
+// const wishlist = await useWishlist()
 
 if (basket.error.value) {
   throw createError(basket.error.value)
 }
 
-// const wishlist = await useWishlist(undefined, { autoFetch: true })
-// const { route, store, params } = useContext()
+// const { store } = useNuxtApp()
+// const route = useRoute()
 
-const _listingMetaData = {
-  name: 'Basket List',
-  id: 'BL',
-}
+// const _listingMetaData = {
+//   name: 'Basket List',
+//   id: 'BL',
+// }
 // const {
 //   trackViewBasket,
 //   collectBasketItems,

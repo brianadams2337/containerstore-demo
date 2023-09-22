@@ -55,7 +55,7 @@
 import useVuelidate from '@vuelidate/core'
 import { Action } from '~/constants/toast'
 
-const { updatePassword, fetch: refresh } = await useUser({ autoFetch: false })
+const { updatePassword, fetch: refresh } = await useUser()
 const { $alert, $i18n, $validation } = useNuxtApp()
 
 const initPayload = () => ({

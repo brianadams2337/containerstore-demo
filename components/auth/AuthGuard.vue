@@ -10,5 +10,5 @@
 </template>
 
 <script setup lang="ts">
-const { isLoggedIn } = await useUser({ autoFetch: false })
+const { isLoggedIn } = await useUser()
 </script>

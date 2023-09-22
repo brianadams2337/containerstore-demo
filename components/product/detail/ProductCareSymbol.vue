@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import { Value } from '@scayle/storefront-nuxt'
-import { useCareIcons } from '~/composables/useCareIcons'
+
 const props = defineProps({
   symbol: {
     type: Object as PropType<Value>,

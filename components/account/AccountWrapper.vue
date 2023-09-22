@@ -71,7 +71,7 @@ const ORDERS_PER_PAGE = 8
 const route = useRoute()
 const router = useRouter()
 
-const { user } = await useUser({ autoFetch: false })
+const { user } = await useUser()
 
 const currentPage = ref<number>(1)
 
