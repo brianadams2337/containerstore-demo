@@ -391,3 +391,24 @@ const onIntersect = (_: IntersectionObserverEntry, stop: () => void) => {
 }
 </script>
 ```
+
+## Error handling 
+
+In the Nuxt3 Demo shop we have two ways to display error pages. A global error page and displaying errors as pages. 
+
+### Global error page: 
+
+The global error page is defined in `~/error.vue`. It is shown whenever an error happens within `~/layout/default.vue` or you call the Nuxt 3 build in [`showError`](https://nuxt.com/docs/getting-started/error-handling#showerror).
+To hide the error page again, you just need to call build in [`clearError`](https://nuxt.com/docs/getting-started/error-handling#clearerror) function with some redirect.
+
+![Global error page](img/globalError.jpeg)
+
+### Displaying errors inline:
+
+Displaying errors inline is preferable, as it allows the user continue shopping with less friction as the global error page. 
+To display errors inline, you just call [createError](https://nuxt.com/docs/getting-started/error-handling#createerror) and throw the returned NuxtError (e. g. `throw createError(new Error('test'))`). 
+This works in every child the default layout.
+
+To clear the error you also need to call [`clearError`](https://nuxt.com/docs/getting-started/error-handling#clearerror) and additionally set the `error` ref within `~/layout/default.vue` to `undefined`.
+
+![Display error inline](img/inlineError.jpeg)
