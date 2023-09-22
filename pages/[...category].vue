@@ -301,7 +301,7 @@ const quickFilters = computed(() =>
 )
 
 // CMS
-const { fetchBySlug, cmsData } = useCms(`ListingPage-${route.path}`)
+const { fetchBySlug, data: cmsData } = useCms(`ListingPage-${route.path}`)
 await fetchBySlug(`categories/${selectedCategory.value?.id}`)
 
 const { content, hasTeaserImage, postListingContent, preListingContent } =

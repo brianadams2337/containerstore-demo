@@ -41,7 +41,7 @@ export default (key: string) => {
         ...options,
       })
       // TODO fix type
-      data.value = stories
+      data.value = stories as any
     } catch (e) {
       console.error(`Error fetching CMS Folder`, e)
     } finally {
