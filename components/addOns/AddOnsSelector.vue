@@ -34,14 +34,14 @@ const emit = defineEmits(['click:service-selection'])
 
 const keyPostfix = computed(() => props.addOnVariantIds.join('-'))
 
-const { data: variants, fetch: fetchVariants } = await useVariant({
+const { data: variants } = await useVariant({
   params: {
     ids: props.addOnVariantIds.map((addOn) => parseInt(addOn.toString())),
   },
   key: `addonVariants-${keyPostfix.value}`,
 })
 
-const { data: products, fetch: fetchProducts } = await useProductsByIds({
+const { data: products } = await useProductsByIds({
   params: {
     ids: variants.value?.map((variant) => variant.productId),
   },
@@ -58,9 +58,7 @@ const onSelectionChanged = (event: any, { variantId }: AddOnItem) => {
   })
 }
 
-const resolveVariantInfo = async () => {
-  await fetchVariants()
-  await fetchProducts()
+const resolveVariantInfo = () => {
   // sorting by productId ensures 1-1 mapping by index for later computation of label and price
   products.value?.sort((a, b) => a.id - b.id)
   variants.value?.sort((a, b) => a.productId - b.productId)
