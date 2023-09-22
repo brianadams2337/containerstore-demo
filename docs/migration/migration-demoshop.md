@@ -392,11 +392,11 @@ const onIntersect = (_: IntersectionObserverEntry, stop: () => void) => {
 </script>
 ```
 
-## Error handling 
+## Error handling
 
-In the Nuxt3 Demo shop we have two ways to display error pages. A global error page and displaying errors as pages. 
+In the Nuxt3 Demo shop we have two ways to display error pages. A global error page and displaying errors as pages.
 
-### Global error page: 
+### Global error page:
 
 The global error page is defined in `~/error.vue`. It is shown whenever an error happens within `~/layout/default.vue` or you call the Nuxt 3 build in [`showError`](https://nuxt.com/docs/getting-started/error-handling#showerror).
 To hide the error page again, you just need to call build in [`clearError`](https://nuxt.com/docs/getting-started/error-handling#clearerror) function with some redirect.
@@ -405,10 +405,25 @@ To hide the error page again, you just need to call build in [`clearError`](http
 
 ### Displaying errors inline:
 
-Displaying errors inline is preferable, as it allows the user continue shopping with less friction as the global error page. 
-To display errors inline, you just call [createError](https://nuxt.com/docs/getting-started/error-handling#createerror) and throw the returned NuxtError (e. g. `throw createError(new Error('test'))`). 
+Displaying errors inline is preferable, as it allows the user continue shopping with less friction as the global error page.
+To display errors inline, you just call [createError](https://nuxt.com/docs/getting-started/error-handling#createerror) and throw the returned NuxtError (e. g. `throw createError(new Error('test'))`).
 This works in every child the default layout.
 
 To clear the error you also need to call [`clearError`](https://nuxt.com/docs/getting-started/error-handling#clearerror) and additionally set the `error` ref within `~/layout/default.vue` to `undefined`.
 
 ![Display error inline](img/inlineError.jpeg)
+
+## Storyblok fetching multiple stories
+
+For Nuxt 3 we have used the `useAsyncStoryblok` composable, there is a limitation to this composable that it isn't able to fetch multiple stories. A common usecase would be fetching `lookbooks`. There is a reported issue on storyblok nuxt repository that also explains a work around by using the `useStoryblokApi` composable.
+
+```ts
+// https://github.com/storyblok/storyblok-nuxt/issues/547#issuecomment-1697844103
+
+const storyblokApi = useStoryblokApi()
+const {
+  data: { stories },
+} = await storyblokApi.getStories({
+  starts_with: folder, // matches stories eg by passing {starts_with: 'lookbooks'} you can fetch lookbooks-1, lookbooks-2, ... lookbooks-n
+})
+```

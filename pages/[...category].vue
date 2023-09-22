@@ -299,6 +299,19 @@ const quickFilters = computed(() =>
       )
     : [],
 )
+
+// CMS
+const { fetchBySlug, data: cmsData } = useCms(`ListingPage-${route.path}`)
+await fetchBySlug(`categories/${selectedCategory.value?.id}`)
+
+const { content, hasTeaserImage, postListingContent, preListingContent } =
+  useCmsListingContent(cmsData)
+
+const cmsContent = content as unknown as SbCmsImage
+
+const isFirstPage = computed(() => pagination.value?.page === 1)
+const filteredProductsCount = computed(() => productCountData.value?.count || 0)
+
 // TODO SEO
 // useMeta(() => {
 //   const isFiltered = !!productConditions.value.where?.attributes?.length
@@ -320,28 +333,6 @@ const quickFilters = computed(() =>
 
 //   return { title, ...metaTags }
 // })
-
-// CMS Content, TODO move error handling to composable
-let cmsData = ref()
-try {
-  cmsData = await useAsyncStoryblok(
-    `categories/${selectedCategory.value?.id}`,
-    {
-      version: getStoryblokContentVersion(),
-    },
-  )
-} catch (e) {
-  console.warn(e)
-}
-
-const { content, hasTeaserImage, postListingContent, preListingContent } =
-  useCmsListingContent(cmsData)
-
-const cmsContent = content as unknown as SbCmsImage
-
-const isFirstPage = computed(() => pagination.value?.page === 1)
-
-const filteredProductsCount = computed(() => productCountData.value?.count || 0)
 </script>
 
 <script lang="ts">

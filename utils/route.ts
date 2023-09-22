@@ -101,8 +101,12 @@ type Link =
   | 'pdp'
   | 'orderDetail'
   | 'search'
+  | 'lookbooks'
 
-export type LinkList = Record<Link, { name: string; path: string }>
+export type LinkList = Record<
+  Link,
+  { name: string; path: string; parameter?: string }
+>
 
 export const routeList: LinkList = {
   home: { name: 'index', path: '/' },
@@ -116,6 +120,11 @@ export const routeList: LinkList = {
   account: { name: 'account', path: '/account' },
   pdp: { name: 'p-name-id', path: '/p/' },
   orderDetail: { name: 'account-orders-id', path: '/account/orders/' },
+  lookbooks: {
+    name: 'lookbooks-slug',
+    path: '/lookbooks',
+    parameter: 'slug',
+  },
 } as const
 
 export { getCategoryPath }
