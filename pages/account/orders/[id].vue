@@ -18,7 +18,7 @@
           <AddressSummary
             v-if="shippingAddress || billingAddress"
             v-bind="{ shippingAddress, billingAddress }" />
-          <OrderItems v-bind="{ orderItems, packages, id: paramId }" />
+          <OrderItems v-bind="{ orderItems, packages, variants }" />
           <PaymentSummary
             v-bind="{ totalAmount, deliveryCost }"
             :paid-with="orderDetails.payment && orderDetails.payment[0].key" />
@@ -46,7 +46,7 @@ const variantIds = computed(() => {
   return useUnique(ids)
 })
 
-await useVariant({
+const { data: variants } = await useVariant({
   params: { ids: variantIds.value },
   key: `variant-${paramId.value}`,
 })

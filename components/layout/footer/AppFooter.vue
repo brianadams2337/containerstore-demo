@@ -80,12 +80,10 @@ const cmsData: Ref<StoryblokStory<SbFooter>> =
   await useAsyncStoryblok('global/footer')
 const footerContent = computed(() => cmsData.value.content)
 
-const { data, fetch: fetchNavigationTree } = await useNavigationTrees()
-const footerNavigationTrees = ref<NavigationTree[]>([])
+const { data } = await useNavigationTrees()
 
-onMounted(async () => {
-  await fetchNavigationTree()
-  footerNavigationTrees.value = filterNavigationTree('footer')
+const footerNavigationTrees = useState<NavigationTree[]>(() => {
+  return filterNavigationTree('footer')
 })
 
 const getSocialName = (name: string) => {

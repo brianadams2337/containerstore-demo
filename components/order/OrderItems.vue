@@ -4,7 +4,7 @@
       v-for="(map, carrierId, idx) in carrierBundledItemsMap"
       :key="`delivery-block-carrier-${carrierId}`"
       class="rounded-t-md border border-gray-350 border-b-transparent bg-white md:mb-4 md:rounded-md md:border-b-gray-350">
-      <div v-if="variant" id="imageHeader">
+      <div v-if="variants" id="imageHeader">
         <OrderStatusBar
           v-bind="map.deliveryInfo"
           :index="idx"
@@ -26,6 +26,7 @@
 
 <script setup lang="ts">
 import { ListOfPackages, Order } from '@scayle/storefront-nuxt'
+import { PropType } from 'nuxt/dist/app/compat/capi'
 import { OrderProduct, OrderVariant } from '~/types/osp'
 
 type Package = ListOfPackages[0]
@@ -46,9 +47,9 @@ type CarrierMap = Record<
 >
 
 const props = defineProps({
-  id: {
-    type: Number,
-    required: true,
+  variants: {
+    type: Array as PropType<OrderVariant[]>,
+    default: undefined,
   },
   orderItems: {
     type: Array as PropType<OrderItems>,
@@ -59,8 +60,6 @@ const props = defineProps({
     default: () => [],
   },
 })
-
-const { data: variant } = await useVariant({ key: `variant-${props.id}` })
 
 const uniqueItems = computed(() => {
   return useUnique(props.orderItems, (it: OrderItems[0]) => it.variant.id)
