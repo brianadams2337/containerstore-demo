@@ -142,6 +142,7 @@ export default defineNuxtConfig({
         quality: '85',
       },
     },
+    provider: 'default',
     providers: {
       default: {
         name: 'default',
