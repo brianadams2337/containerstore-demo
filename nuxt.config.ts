@@ -23,36 +23,28 @@ const locales = [
     code: 'en',
     iso: 'en-GB',
     // TODO: Investigate runtimeConfig behaviour, as we want build independence
-    domain: DOMAIN_PER_LOCALE
-      ? domains.en
-      : domains.default,
+    domain: DOMAIN_PER_LOCALE ? domains.en : domains.default,
     file: 'en-GB.json',
   },
   {
     code: 'de',
     iso: 'de-DE',
     // TODO: Investigate runtimeConfig behaviour, as we want build independence
-    domain: DOMAIN_PER_LOCALE
-      ? domains.de
-      : domains.default,
+    domain: DOMAIN_PER_LOCALE ? domains.de : domains.default,
     file: DE_DOMAIN_FILE,
   },
   {
     code: 'de-at',
     iso: 'de-AT',
     // TODO: Investigate runtimeConfig behaviour, as we want build independence
-    domain: DOMAIN_PER_LOCALE
-      ? domains['de-at']
-      : domains.default,
+    domain: DOMAIN_PER_LOCALE ? domains['de-at'] : domains.default,
     file: DE_DOMAIN_FILE,
   },
   {
     code: 'de-ch',
     iso: 'de-CH',
     // TODO: Investigate runtimeConfig behaviour, as we want build independence
-    domain: DOMAIN_PER_LOCALE
-      ? domains['de-ch']
-      : domains.default,
+    domain: DOMAIN_PER_LOCALE ? domains['de-ch'] : domains.default,
     file: DE_DOMAIN_FILE,
   },
 ]

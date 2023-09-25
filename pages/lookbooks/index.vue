@@ -38,9 +38,13 @@
 
 <script setup lang="ts">
 import { slugify } from '@scayle/storefront-nuxt'
-import { SbListingPage } from '~/storyblok/types/storyblok.gen';
+import { SbListingPage } from '~/storyblok/types/storyblok.gen'
 
-const { fetchByFolder, data: lookbooksData, fetching } = useCms<SbListingPage>('lookbooks')
+const {
+  fetchByFolder,
+  data: lookbooksData,
+  fetching,
+} = useCms<SbListingPage>('lookbooks')
 await fetchByFolder('lookbooks', { per_page: 5 })
 
 const prepareForUrl = (path: string) => slugify(path)

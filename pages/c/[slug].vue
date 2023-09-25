@@ -29,11 +29,15 @@
 </template>
 
 <script setup lang="ts">
-import { SbContentPage } from '~/storyblok/types/storyblok.gen';
+import { SbContentPage } from '~/storyblok/types/storyblok.gen'
 
 const route = useRoute()
 const slug = computed(() => route.params.slug)
-const { fetching, fetchBySlug, data: story } = useCms<SbContentPage>(`content-page-${slug}`)
+const {
+  fetching,
+  fetchBySlug,
+  data: story,
+} = useCms<SbContentPage>(`content-page-${slug}`)
 await fetchBySlug(`c/${slug.value as string}`)
 </script>
 
