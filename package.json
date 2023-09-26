@@ -40,7 +40,7 @@
     "@scayle/prettier-config-storefront": "2.0.1",
     "@types/color": "3.0.4",
     "@types/node": "18.17.17",
-    "@zadigetvoltaire/nuxt-gtm": "^0.0.13",
+    "@zadigetvoltaire/nuxt-gtm": "0.0.13",
     "autoprefixer": "10.4.16",
     "cypress": "13.2.0",
     "cypress-real-events": "1.10.3",

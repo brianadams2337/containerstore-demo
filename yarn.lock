@@ -2649,7 +2649,7 @@
   dependencies:
     vue-demi ">=0.14.5"
 
-"@zadigetvoltaire/nuxt-gtm@^0.0.13":
+"@zadigetvoltaire/nuxt-gtm@0.0.13":
   version "0.0.13"
   resolved "https://registry.yarnpkg.com/@zadigetvoltaire/nuxt-gtm/-/nuxt-gtm-0.0.13.tgz#f4d6e504ef58a108fde6dc3669ab8861fea51978"
   integrity sha512-7SgXtIB8uLdLGJaoUAQSGCSbRnNzplNkNVFKIHaVI4We0vqghstBoVPlJCJ9VdwsfdNyk3/C+Lh1uKpzTrtEuw==
