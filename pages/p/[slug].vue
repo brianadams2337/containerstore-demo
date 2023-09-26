@@ -405,7 +405,7 @@ const trackRecommendationClick = (product: Product, index: number) => {
     },
     listingMetaData,
     index,
-    source: `${String(route.name)}|RecommendationSlider`,
+    ...(route.name && { source: `${String(route.name)}|RecommendationSlider` }),
     soldOut: product.isSoldOut,
     pagePayload: {
       content_name: route.fullPath,
@@ -415,13 +415,13 @@ const trackRecommendationClick = (product: Product, index: number) => {
   })
 }
 
-onMounted(() => {
+onMounted(async () => {
   store.value.pageTypeId = productId.value
-
-  setTimeout(
-    () => product.value && trackViewItem({ product: product.value }),
-    1000,
-  )
+  if (!product.value) {
+    return
+  }
+  await useSleep(1000)
+  trackViewItem({ product: product.value })
 })
 
 definePageMeta({ pageType: 'pdp' })
