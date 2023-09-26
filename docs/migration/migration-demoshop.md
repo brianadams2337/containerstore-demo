@@ -262,14 +262,6 @@ const viewport = useViewport()
 </script>
 ```
 
-## Additions
-
-### Packages
-
-- [utility-types](https://www.npmjs.com/package/utility-types) - complex TypeScript types simplification utils
-- [nuxt-lodash](https://github.com/cipami/nuxt-lodash#readme) - `lodash` nuxt module
-- [nuxt-viewport](https://nuxt.com/modules/nuxt-viewport) - module for handling the breakpoints
-
 ### With parameters
 
 Storefront config now supports `withParams` option so that we can pass the `with` parameters through the shop.
@@ -427,3 +419,24 @@ const {
   starts_with: folder, // matches stories eg by passing {starts_with: 'lookbooks'} you can fetch lookbooks-1, lookbooks-2, ... lookbooks-n
 })
 ```
+
+## Tracking
+
+In the Nuxt 3 tracking implementation is almost the same as in Nuxt 2. There are
+frew differences that are worth mentioning.
+
+- Now we're using [@zadigetvoltaire/nuxt-gtm](https://github.com/zadigetvoltaire/nuxt-gtm)
+  which is basically a `@gtm-support/vue-gtm` wrapper. Usage of this module is the
+  same as `@nuxtjs/gtm` that we used in Nuxt 2.
+- Tracking composables are a bit simplified. Now we don't pass the `shopConfig`,
+  `localePath`, etc. as we did in the Nuxt 2 for some of the composables because
+  we have that auto-imported.
+
+## Additions
+
+### Packages
+
+- [utility-types](https://www.npmjs.com/package/utility-types) - complex TypeScript types simplification utils
+- [nuxt-lodash](https://github.com/cipami/nuxt-lodash#readme) - `lodash` nuxt module
+- [nuxt-viewport](https://nuxt.com/modules/nuxt-viewport) - module for handling the breakpoints
+- [@zadigetvoltaire/nuxt-gtm](https://github.com/zadigetvoltaire/nuxt-gtm) - GTM module
