@@ -7,60 +7,47 @@ import {
   ProductListData,
 } from '~/types/tracking'
 
+const getCategoryData = (category: { id?: number; name?: string }) => {
+  const { id = -1, name = '' } = category
+  return { id: id >= 0 ? id.toString() : '', name }
+}
+
+const processPayload = (
+  data: TrackRemoveFromWishListParams | TrackAddToWishListParams,
+  currencyCode: string,
+): ProductActionData => {
+  const {
+    product,
+    quantity = 1,
+    listingMetaData,
+    category,
+    index = 1,
+    pagePayload,
+    variant,
+  } = data
+
+  return {
+    product: { ...product, index },
+    quantity,
+    list: listingMetaData,
+    currencyCode,
+    ...(category && { category: getCategoryData(category) }),
+    ...(variant && { variant }),
+    pagePayload,
+  }
+}
+
 const useWishlistEvents = (
   track: (event: TrackingEvent, payload: TrackingPayload) => any,
 ) => {
   const currencyCode = useCurrentShop().value!.currency
 
   return {
-    trackRemoveFromWishlist: ({
-      product,
-      quantity = 1,
-      listingMetaData,
-      category,
-      index = 1,
-      pagePayload,
-    }: TrackRemoveFromWishListParams) => {
-      const payload: ProductActionData = {
-        product: { ...product, index },
-        quantity,
-        list: listingMetaData,
-        currencyCode,
-      }
-      if (category) {
-        const { id = -1, name = '' } = category
-        payload.category = { id: id > -1 ? id.toString() : '', name }
-      }
-
-      payload.pagePayload = pagePayload
-      track('remove_from_wishlist', payload)
+    trackRemoveFromWishlist: (data: TrackRemoveFromWishListParams) => {
+      track('remove_from_wishlist', processPayload(data, currencyCode))
     },
-    trackAddToWishlist: ({
-      product,
-      quantity = 1,
-      listingMetaData,
-      category,
-      variant,
-      index = 1,
-      pagePayload,
-    }: TrackAddToWishListParams) => {
-      const payload: ProductActionData = {
-        product: { ...product, index },
-        quantity,
-        list: listingMetaData,
-        currencyCode,
-      }
-
-      if (category) {
-        const { id = -1, name = '' } = category
-        payload.category = { id: id > -1 ? id.toString() : '', name }
-      }
-      if (variant) {
-        payload.variant = variant
-      }
-
-      payload.pagePayload = pagePayload
-      track('add_to_wishlist', payload)
+    trackAddToWishlist: (data: TrackAddToWishListParams) => {
+      track('add_to_wishlist', processPayload(data, currencyCode))
     },
     trackWishlist: (items: ProductListData[]) => {
       track('wishlist', {

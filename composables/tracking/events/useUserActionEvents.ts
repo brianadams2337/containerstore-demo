@@ -16,6 +16,8 @@ export type AuthTrackingEventData = {
   status?: 'successful' | 'error'
 }
 
+const METHOD_DEFAULT = 'none'
+
 const useUserActionEvents = (
   track: (event: TrackingEvent, payload: TrackingPayload) => any,
 ) => ({
@@ -38,7 +40,7 @@ const useUserActionEvents = (
       payload.event || 'login',
       mapCustomerInfoToTrackingPayload({
         customer_id: customerId,
-        method: method || 'none', // TODO fix
+        method: method || METHOD_DEFAULT,
         eh,
         customer_type: customerType, // TODO: CO should add this to payload as well
         status,
@@ -56,7 +58,7 @@ const useUserActionEvents = (
       'sign_up',
       mapCustomerInfoToTrackingPayload({
         customer_id: customerId,
-        method: method || 'none',
+        method: method || METHOD_DEFAULT,
         eh,
         status,
       }),
