@@ -187,6 +187,12 @@ const fetching = basket.fetching
 const basketData = basket.data
 const basketCount = basket.count
 
+const { $i18n } = useNuxtApp()
+useSeoMeta({
+  title: $i18n.t('navigation.basket'),
+  robots: 'noindex,follow',
+})
+
 definePageMeta({ pageType: 'basket_page' })
 </script>
 

@@ -151,12 +151,11 @@ const orderedItems = computed(() => {
     },
   )
 })
-// TODO Meta
-// const metaTags = metaTagGenerator({
-//   robots: 'noindex,follow',
-// })
 
-// useMeta({ title: 'Wishlist', ...metaTags })
+useSeoMeta({
+  robots: 'noindex,follow',
+  title: $i18n.t('navigation.wishlist'),
+})
 
 onMounted(() => {
   if (!wishlist.data.value) {

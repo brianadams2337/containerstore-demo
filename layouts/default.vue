@@ -19,6 +19,7 @@
 </template>
 
 <script setup lang="ts">
+// Initialize data
 await useWishlist()
 await useBasket()
 const categoryData = await useCategories({
@@ -37,7 +38,7 @@ const rootCategories = computed(() => {
     ? rootCategoriesData.value.categories
     : [rootCategoriesData.value.categories]
 })
-
+// Error handling
 const error = ref()
 const hasError = computed(() => Boolean(error.value))
 const nuxtApp = useNuxtApp()
@@ -65,6 +66,17 @@ const resetErrorState = async () => {
 trackShopInit()
 await listenToUserItemsChanges()
 await listenToCustomerDataChanges()
+
+// meta tags
+const { isSideNavigationOpen, isModalOpen } = useUiState()
+useHead({
+  bodyAttrs: () => ({
+    class:
+      isSideNavigationOpen.value || isModalOpen.value
+        ? 'overflow-hidden h-full'
+        : '',
+  }),
+})
 </script>
 
 <script lang="ts">

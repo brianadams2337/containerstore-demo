@@ -138,9 +138,10 @@
 </template>
 
 <script setup lang="ts">
-import {
+import { 
   FetchProductsParams,
   Product,
+  ProductImage ,
   Value,
   getVariantBySize,
   flattenDeep,
@@ -154,6 +155,7 @@ import {
   getProductSiblings,
   flattenFieldSet,
   ProductColor,
+  isInStock,
 } from '@scayle/storefront-nuxt'
 import { Size, PRODUCT_WITH_PARAMS, Action } from '~/constants'
 
@@ -161,15 +163,11 @@ const listingMetaData = {
   name: 'ADP',
   id: 'ADP',
 }
-
-const {
-  params: { slug = '-1' },
-} = useRoute()
-
 const route = useRoute()
+
 const store = useStore()
 
-const { $alert, $i18n } = useNuxtApp()
+const { $alert, $i18n, $config } = useNuxtApp()
 const { fetching: basketIdle, addItem: addBasketItem } = await useBasket()
 const { addGroupToBasket } = await useBasketGroup()
 const {
@@ -183,7 +181,9 @@ const { trackAddToBasket, trackViewItemList, trackViewItem, trackSelectItem } =
 
 // TODO slug is a stringified productName + productId combination. this can be automatically split into name and id by using the route structure name_id with an underscore in the route.ts helper
 const productId = computed(() => {
-  return String(slug)?.substring(slug.lastIndexOf('-') + 1)
+  return String(route.params.slug)?.substring(
+    route.params.slug.lastIndexOf('-') + 1,
+  )
 })
 
 const { data: product, fetching } = await useProduct({
@@ -425,6 +425,56 @@ onMounted(async () => {
 })
 
 definePageMeta({ pageType: 'pdp' })
+
+const metaDescription = computed(() =>
+  $i18n.t('pdp.seo.description', { productName }),
+)
+
+useSeoMeta({
+  robots: 'index,follow',
+  title: `${productName} ${$i18n.t('pdp.seo.buy_online')}`,
+  description: metaDescription.value,
+})
+
+const currentShop = useCurrentShop()
+
+const sanitizedCanonicalURL = sanitizeCanonical(
+  `${$config.public.baseUrl}${route.fullPath}`,
+)
+
+const img = useImage()
+const imageOptions = {
+  sizes: 'sm:100vw md:100vw',
+  modifiers: { quality: '75' },
+  provider: 'default',
+}
+const images = product.value.images?.map(
+  (image: ProductImage) => img?.getImage(image.hash, imageOptions).url,
+)
+
+useJsonld(() =>
+  generateProductSchema({
+    price: formatPrice(price.value?.withTax || 0),
+    productName: productName || '',
+    brandName:
+      getFirstAttributeValue(product.value.attributes, 'brand')?.label || '',
+    url: sanitizedCanonicalURL,
+    isInStock: product.value?.variants?.some(isInStock),
+    images,
+    priceCurrency: currentShop.value?.currency,
+  }),
+)
+
+useHead({
+  link: [
+    {
+      rel: 'canonical',
+      href: sanitizeCanonical(
+        `${$config.baseUrl}${getProductDetailRoute(product?.value)}`,
+      ),
+    },
+  ],
+})
 </script>
 
 <script lang="ts">

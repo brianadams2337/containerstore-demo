@@ -326,27 +326,35 @@ watch(
   { immediate: true },
 )
 
-// TODO SEO
-// useMeta(() => {
-//   const isFiltered = !!productConditions.value.where?.attributes?.length
-//   const robots = isFiltered ? 'noindex,follow' : 'index,follow'
+const { $i18n, $config } = useNuxtApp()
+const isFiltered = computed(
+  () => !!productConditions.value.where?.attributes?.length,
+)
+const robots = computed(() =>
+  isFiltered.value ? 'noindex,follow' : 'index,follow',
+)
 
-//   const description = i18n.t('plp.seo_description', {
-//     categoryName: selectedCategory.value?.name,
-//     gender: 'women',
-//   })
+useSeoMeta({
+  robots: robots.value,
+  description: $i18n.t('plp.seo_description', {
+    categoryName: selectedCategory.value?.name,
+    gender: 'women',
+  }),
+  title: `${$i18n.t('global.gender.women')} ${selectedCategory.value?.name}`,
+})
 
-//   const metaTags = metaTagGenerator({
-//     description,
-//     robots,
-//     canonical: `${$config.baseUrl}${route?.value.fullPath}`,
-//   })
-
-//   const title = `${i18n.t('global.gender.women')} ${selectedCategory.value
-//     ?.name}`
-
-//   return { title, ...metaTags }
-// })
+useHead(() => ({
+  link: robots.value?.includes('noindex')
+    ? []
+    : [
+        {
+          rel: 'canonical',
+          href: prepareCanonicalURL(
+            `${$config.public.baseUrl}${route?.fullPath}`,
+          ),
+        },
+      ],
+}))
 
 definePageMeta({ pageType: 'category_page' })
 </script>

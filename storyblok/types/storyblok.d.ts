@@ -1,4 +1,5 @@
 import '@nuxt/types'
+import { SbPage } from './storyblok.gen'
 
 export type MarginKey =
   | ''
@@ -91,3 +92,16 @@ export interface CmsFetchOptions {
 }
 
 export * from './storyblok.gen'
+
+export type SbSeo = Partial<{
+  _uid: string
+  title: string
+  plugin: string
+  og_image: string
+  og_title: string
+  description: string
+  twitter_image: string
+  twitter_title: string
+  og_description: string
+  twitter_description: string
+}>

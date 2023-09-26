@@ -9,6 +9,20 @@
 <script setup lang="ts">
 const data = await useAsyncStoryblok('home')
 
+const { $config } = useNuxtApp()
+const route = useRoute()
+useSeoMeta({
+  robots: 'index,follow',
+})
+useHead({
+  link: [
+    {
+      rel: 'canonical',
+      href: sanitizeCanonical(`${$config.public.baseUrl}${route?.fullPath}`),
+    },
+  ],
+})
+
 definePageMeta({ pageType: 'homepage' })
 </script>
 
