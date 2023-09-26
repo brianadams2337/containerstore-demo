@@ -1,6 +1,9 @@
 <template>
   <div>
-    <CmsImage v-if="hasTeaserImage" :blok="content" is-teaser />
+    <CmsImage
+      v-if="hasTeaserImage"
+      :blok="{ ...content, component: 'CmsImage' }"
+      is-teaser />
     <component
       :is="preContent.component"
       v-for="preContent in preListingContent"
@@ -12,66 +15,92 @@
       v-for="postContent in postListingContent"
       :key="postContent._uid"
       :blok="postContent" />
-    <!-- <keep-alive>
-    </keep-alive>
-
 
     <PageContent>
       <div class="relative">
         <Intersect @enter="trackViewListing">
           <ProductList
             class="mt-4 grid w-auto grid-cols-12 gap-1"
-            :refreshing="fetchingProducts"
-            :loading="fetchingProducts"
+            :refreshing="productsFetching"
+            :loading="productsFetching"
             :products="products" />
         </Intersect>
       </div>
-      <Lazy>
-        <Pagination
-          v-if="pagination"
-          :current-page="pagination.page"
-          :first-page="pagination.first"
-          :last-page="pagination.last" />
-      </Lazy>
-    </PageContent>
 
- -->
+      <LazyPagination
+        v-if="pagination"
+        :current-page="pagination.page"
+        :first-page="pagination.first"
+        :last-page="pagination.last" />
+    </PageContent>
   </div>
 </template>
+
 <script setup lang="ts">
+import { SbListingPage } from '~/storyblok/types/storyblok.gen'
+
 const route = useRoute()
-const slug = computed(() => route.params.slug)
-console.log({ route: route.fullPath })
-// const { products, fetchProducts } = await useFacet({
-//   key: 'lookbooks-plp-1',
-//   params: {
-//     with: {
-//       product: {
-//         attributes: {
-//           withKey: ['brand', 'name'],
-//         },
-//         variants: {
-//           attributes: {
-//             withKey: ['price'],
-//           },
-//           lowestPriorPrice: true,
-//         },
-//         images: {
-//           attributes: {
-//             withKey: ['imageType', 'imageView', 'imageBackground'],
-//           },
-//         },
-//       },
-//     },
-//   },
-// })
+const lookbookCategoryCategoryPath = computed(
+  () => `/lookbooks/${route.params.slug}`,
+)
+const { data: categories } = await useCategories({
+  params: { path: lookbookCategoryCategoryPath.value, children: 0 },
+  key: lookbookCategoryCategoryPath.value,
+})
 
-// fetchProducts({ path: '/lookbooks/winter-wonderland' })
+const cmsPath = computed(() => {
+  return `/lookbooks/${categories.value.activeNode?.id}`
+})
 
-const { fetchBySlug, data: cmsData } = useCms(`lookbooks-plp-${slug.value}`)
-await fetchBySlug('lookbooks/3026')
+const { products, fetchProducts, productsFetching, pagination } =
+  await useFacet({
+    key: 'lookbooks-plp-1',
+    params: {
+      with: {
+        product: {
+          attributes: {
+            withKey: ['brand', 'name'],
+          },
+          variants: {
+            attributes: {
+              withKey: ['price'],
+            },
+            lowestPriorPrice: true,
+          },
+          images: {
+            attributes: {
+              withKey: ['imageType', 'imageView', 'imageBackground'],
+            },
+          },
+        },
+      },
+    },
+  })
+
+await fetchProducts({ path: lookbookCategoryCategoryPath.value })
+
+const { fetchBySlug, data: cmsData } = useCms<SbListingPage>(
+  `lookbooks-plp-${lookbookCategoryCategoryPath.value}`,
+)
+await fetchBySlug(cmsPath.value)
 const { content, hasTeaserImage, preListingContent, postListingContent } =
   useCmsListingContent(cmsData)
+
+const trackViewListing = () => {
+  // TODO tracking
+  // const positionOffset = ((pagination.value?.page || 1) - 1) * 24
+  // trackViewItemList({
+  //   items: products.value as any,
+  //   category: {
+  //     name: selectedCategory.value?.name || '',
+  //     id: selectedCategory.value?.id.toString() || '',
+  //   },
+  //   listingMetaData,
+  //   positionOffset,
+  //   source: `lookbooks|${selectedCategory.value}`,
+  //   paginationOffset: positionOffset > -1 ? positionOffset : -1,
+  // })
+}
 </script>
 
 <script lang="ts">

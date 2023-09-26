@@ -24,6 +24,7 @@ await useWishlist()
 await useBasket()
 const categoryData = await useCategories({
   params: { path: '/' },
+  key: 'categoryNavigation',
 })
 
 const { data: rootCategoriesData, fetching: fetchingCategories } = categoryData
