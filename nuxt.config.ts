@@ -89,6 +89,11 @@ export default defineNuxtConfig({
         'view_item',
         'purchase',
       ],
+      gtm: {
+        id: process.env.NUXT_PUBLIC_GTM_ID,
+        loadScript: true,
+        debug: !isProd,
+      },
       // Following keys are Overrideable using prefix NUXT_PUBLIC_
       ...(storefrontRuntimeConfigPublic as any), // TODO: Extend SFC runtimeConfig type
     },
@@ -203,12 +208,6 @@ export default defineNuxtConfig({
       Object.keys(breakpoints).map((name) => [name, name]),
     ),
     fallbackBreakpoint: 'lg',
-  },
-
-  gtm: {
-    id: process.env.NUXT_PUBLIC_GTM_ID,
-    loadScript: true,
-    debug: !isProd,
   },
 
   // Allow auto-import for vue components
