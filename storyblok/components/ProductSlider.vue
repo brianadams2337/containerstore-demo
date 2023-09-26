@@ -44,11 +44,8 @@
 </template>
 
 <script setup lang="ts">
-import {
-  getLatestCategory,
-  Product,
-  isFirstIndexOfRow,
-} from '@scayle/storefront-nuxt'
+import { getLatestCategory, isFirstIndexOfRow } from '@scayle/storefront-nuxt'
+import type { Product } from '@scayle/storefront-nuxt'
 import useStoryblokMargins from '../composables/useStoryblokMargins'
 import { SbProductSlider } from '~/storyblok/types/storyblok'
 
