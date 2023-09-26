@@ -51,8 +51,8 @@ export default defineNuxtPlugin(() => {
       gtm.push({
         event,
         ...(contentName && { content_name: contentName }),
-        page_type: pageType,
-        page_type_id: String(store.value.pageTypeId || pageTypeId),
+        page_type: pageType || store.value.pageType,
+        page_type_id: pageTypeId || store.value.pageTypeId,
         ...data,
       })
     })

@@ -186,6 +186,10 @@ const sortBasketItems = (items: BasketItem[]) => {
 const fetching = basket.fetching
 const basketData = basket.data
 const basketCount = basket.count
+
+definePageMeta({
+  pageType: 'BasketPage',
+})
 </script>
 
 <script lang="ts">

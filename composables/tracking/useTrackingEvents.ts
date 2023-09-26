@@ -23,6 +23,7 @@ export const useTrackingEvents = () => {
       eventData.page_type = store.value.pageType
       eventData.page_type_id = store.value.pageTypeId
     }
+
     return $tracking.push(eventData)
   }
 

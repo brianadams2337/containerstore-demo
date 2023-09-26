@@ -171,13 +171,12 @@ const store = useStore()
 
 const { $alert, $i18n } = useNuxtApp()
 const { fetching: basketIdle, addItem: addBasketItem } = await useBasket()
+const { addGroupToBasket } = await useBasketGroup()
 const {
   fetching: fetchingWishlist,
   contains: wishlistContains,
   toggleItem: toggleWishlistItem,
 } = await useWishlist()
-
-const { addGroupToBasket } = await useBasketGroup()
 
 const { trackAddToBasket, trackViewItemList, trackViewItem, trackSelectItem } =
   useTrackingEvents()

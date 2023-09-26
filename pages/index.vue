@@ -8,6 +8,10 @@
 
 <script setup lang="ts">
 const data = await useAsyncStoryblok('home')
+
+definePageMeta({
+  pageType: 'HomePage',
+})
 </script>
 
 <script lang="ts">

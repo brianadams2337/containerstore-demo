@@ -1,11 +1,9 @@
-import { getLowestPrice, WishlistItem } from '@scayle/storefront-nuxt'
 import {
   ProductActionData,
   TrackAddToWishListParams,
   TrackRemoveFromWishListParams,
   TrackingEvent,
   TrackingPayload,
-  WishlistData,
   ProductListData,
 } from '~/types/tracking'
 
@@ -15,40 +13,6 @@ const useWishlistEvents = (
   const currencyCode = useCurrentShop().value!.currency
 
   return {
-    trackWishlistItems: (items: WishlistItem[] = []) => {
-      const wishlistPayload: WishlistData = {
-        items: items || [],
-        total_campaign_reduction_with_tax: 0.0,
-        total_sale_reduction_with_tax: 0.0,
-        total_with_tax: 0.0,
-        total_without_tax: 0.0,
-      }
-
-      items.forEach((wishlistItem) => {
-        const appliedReductions =
-          wishlistItem.variant?.price?.appliedReductions ?? []
-
-        wishlistPayload.total_sale_reduction_with_tax +=
-          sumReductionsByCategory(appliedReductions, 'sale')
-        wishlistPayload.total_campaign_reduction_with_tax +=
-          sumReductionsByCategory(appliedReductions, 'campaign')
-
-        if (wishlistItem.variant) {
-          wishlistPayload.total_with_tax +=
-            wishlistItem.variant?.price.withTax || 0.0
-          wishlistPayload.total_without_tax +=
-            wishlistItem.variant?.price.withoutTax || 0.0
-        } else if (wishlistItem.product?.variants) {
-          const { withTax = 0.0, withoutTax = 0.0 } = getLowestPrice(
-            wishlistItem.product.variants,
-          )
-          wishlistPayload.total_with_tax += withTax
-          wishlistPayload.total_without_tax += withoutTax
-        }
-      })
-
-      track('wishlist', wishlistPayload)
-    },
     trackRemoveFromWishlist: ({
       product,
       quantity = 1,
