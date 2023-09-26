@@ -424,6 +424,10 @@ onMounted(() => {
     1000,
   )
 })
+
+definePageMeta({
+  pageType: 'ProductDetailPage',
+})
 </script>
 
 <script lang="ts">
