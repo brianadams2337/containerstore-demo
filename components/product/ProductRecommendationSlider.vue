@@ -82,7 +82,7 @@ const emit = defineEmits<{
   (e: 'click:recommendation', value: BapiProduct, i: number): void
 }>()
 
-const { md } = useViewportBreakpoints()
+const { md } = useBreakpoints()
 
 const trackingCollector = ref<BapiProduct[]>([])
 const carousel = ref<HTMLDivElement>()

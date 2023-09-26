@@ -29,7 +29,7 @@
             </div>
           </div>
           <OspDeliveryDate
-            v-if="orderData.packages && viewport.isLessThan('sm')"
+            v-if="orderData.packages && xs"
             :delivery-date="orderData.packages[0].deliveryDate" />
           <div class="my-8 flex space-x-4 sm:mt-12">
             <AppButton type="tertiary" :to="{ name: routeList.home.name }">
@@ -81,7 +81,7 @@
 <script setup lang="ts">
 import { OrderProduct, OrderVariant } from '~/types/osp'
 
-const viewport = useViewport()
+const { xs } = useBreakpoints()
 
 const route = useRoute()
 const cbdToken = String(route.query.cbd)

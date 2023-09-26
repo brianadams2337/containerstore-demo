@@ -67,7 +67,7 @@
 
 <script setup lang="ts">
 import { ProductImage as BapiProductImage } from '@scayle/storefront-nuxt'
-import useViewportBreakpoints from '~/composables/useViewportBreakpoints'
+
 defineProps({
   images: {
     type: Array as PropType<BapiProductImage[]>,
@@ -83,7 +83,7 @@ const emit = defineEmits<{
   (e: 'click:image', value: number): void
 }>()
 
-const { md } = useViewportBreakpoints()
+const { md } = useBreakpoints()
 
 const activeSlide = ref(0)
 const setActiveSlide = (slide: number) => {

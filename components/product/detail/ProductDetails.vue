@@ -72,6 +72,8 @@ const props = defineProps({
   },
 })
 
+const { md } = useBreakpoints()
+
 const productInfos = computed(() => {
   const keys = [
     'productDescription',
@@ -146,7 +148,4 @@ const selectedIndex = ref(0)
 const slidingWindowOffset = computed(
   () => (100 / tabs.length) * selectedIndex.value,
 )
-
-const { isGreaterOrEquals } = useViewport()
-const md = computed(() => isGreaterOrEquals('md'))
 </script>

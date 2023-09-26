@@ -5,11 +5,7 @@ type SanitizedImage = {
   alt: string
 }
 
-// TODO clean up, make this reactive
-const isMobile = () => {
-  const { isLessThan } = useViewport()
-  return isLessThan('md')
-}
+const isMobile = () => useBreakpoints().sm
 
 export const useStoryblokImageSanitizer = () => {
   const sanitize = (img: SbCmsImage): SanitizedImage => {

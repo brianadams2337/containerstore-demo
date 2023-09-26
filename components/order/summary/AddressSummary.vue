@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white">
     <AddressCards
-      v-if="viewport.isGreaterOrEquals('md')"
+      v-if="md"
       v-bind="{ items, shippingAddress, billingAddress }"
       class="mb-4" />
     <AddressTabs v-else :items="items" tabs-class="-mx-5" class="mb-8">
@@ -34,7 +34,7 @@ const props = defineProps({
   },
 })
 
-const viewport = useViewport()
+const { md } = useBreakpoints()
 const { $i18n } = useNuxtApp()
 
 const isShippingSameAsBillingAddress = computed(() => {

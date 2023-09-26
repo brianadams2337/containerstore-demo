@@ -241,12 +241,14 @@ We stick with the `use` prefix as it is the default setting.
     messagePath: ({ $validator }) => `validation.${useSnakeCase($validator)}`,
 ```
 
-## Replace our custom `breakpoints` solution with the `nuxt-viewport` module
+## Breakpoints handling
 
-In Nuxt 3 we will use [nuxt-viewport](https://nuxt.com/modules/nuxt-viewport) which we use for the viewport/breakpoints handling.
+In Nuxt 3 we will use [nuxt-viewport](https://nuxt.com/modules/nuxt-viewport).
 We added the `./config/breakpoints.ts` file where we have all the breakpoints defined.
 We use that for the `tailwind` and for the `nuxt-viewport` config so that we have those two in sync.
-Current usage of the breakpoint handling is different which will be seen in the example bellow:
+As for the usage, it remains the same since we introduced the `useBreakpoints`
+composable wrapper, but still you have the option to use `viewport` directly as it
+is shown in the example bellow:
 
 ```vue
 <template>

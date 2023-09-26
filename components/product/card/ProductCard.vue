@@ -86,7 +86,7 @@
                     v-if="price"
                     v-bind="{ price, lowestPriorPrice }"
                     :applied-reductions="price?.appliedReductions"
-                    :size="viewport.isGreaterThan('md') ? 'sm' : 'xs'"
+                    :size="md ? 'sm' : 'xs'"
                     type="whisper" />
                 </slot>
               </DefaultLink>
@@ -178,7 +178,7 @@ const props = defineProps({
 const loadHoverImage = ref(false)
 const shouldHoverImage = ref(false)
 
-const viewport = useViewport()
+const { md } = useBreakpoints()
 
 const onMouseOver = () => {
   loadHoverImage.value = true

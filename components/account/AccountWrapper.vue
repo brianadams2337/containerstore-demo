@@ -75,6 +75,8 @@ const { user } = await useUser()
 
 const currentPage = ref<number>(1)
 
+const { md } = useBreakpoints()
+
 const orders = computed(() => user?.value?.orderSummary ?? [])
 const currentOrderId = computed(() => {
   return +route.params.id || (orders.value.length && orders.value[0].id)
@@ -111,13 +113,12 @@ watch(orders, () => updateSlicedOrders())
 // this can only happen when order data is loaded before mounting.
 // usually this means: being rendered on the server
 
-const viewport = useViewport()
 onMounted(async () => {
   if (
     !route.params?.id &&
     !props.isAccountPage &&
     currentOrderId.value &&
-    viewport.isGreaterOrEquals('md') // On mobile the user should first see the order list
+    md.value // On mobile the user should first see the order list
   ) {
     await router.push(getOrderDetailsRoute(currentOrderId.value))
   }
