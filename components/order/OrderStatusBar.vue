@@ -73,7 +73,7 @@ const props = defineProps({
   },
 })
 
-const { md } = useBreakpoints()
+const { md } = useViewportBreakpoints()
 
 const progressLevel = computed<number>(() => {
   return DeliveryProgress[props.deliveryStatus] || 5

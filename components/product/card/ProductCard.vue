@@ -178,7 +178,7 @@ const props = defineProps({
 const loadHoverImage = ref(false)
 const shouldHoverImage = ref(false)
 
-const { md } = useBreakpoints()
+const { md } = useViewportBreakpoints()
 
 const onMouseOver = () => {
   loadHoverImage.value = true

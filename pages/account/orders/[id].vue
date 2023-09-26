@@ -34,7 +34,7 @@ import { Order } from '~/types/osp'
 const route = useRoute()
 const paramId = computed(() => +route.params.id)
 
-const { md } = useBreakpoints()
+const { md } = useViewportBreakpoints()
 
 const { data: orderDetails, fetching } = await useOrder({
   params: { orderId: paramId.value },

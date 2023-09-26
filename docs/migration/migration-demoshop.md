@@ -245,10 +245,11 @@ We stick with the `use` prefix as it is the default setting.
 
 In Nuxt 3 we will use [nuxt-viewport](https://nuxt.com/modules/nuxt-viewport).
 We added the `./config/breakpoints.ts` file where we have all the breakpoints defined.
-We use that for the `tailwind` and for the `nuxt-viewport` config so that we have those two in sync.
-As for the usage, it remains the same since we introduced the `useBreakpoints`
-composable wrapper, but still you have the option to use `viewport` directly as it
-is shown in the example bellow:
+We use that for the `tailwind` and for the `nuxt-viewport` config so that we
+have those two in sync. As for the usage, it remains the same since we introduced
+the `useViewportBreakpoints` (composable name only changed) composable wrapper,
+but still you have the option to use `viewport` directly as it is shown in
+the example bellow:
 
 ```vue
 <template>

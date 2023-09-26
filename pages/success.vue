@@ -81,7 +81,7 @@
 <script setup lang="ts">
 import { OrderProduct, OrderVariant } from '~/types/osp'
 
-const { xs } = useBreakpoints()
+const { xs } = useViewportBreakpoints()
 
 const route = useRoute()
 const cbdToken = String(route.query.cbd)

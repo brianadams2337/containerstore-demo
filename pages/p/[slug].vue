@@ -207,7 +207,7 @@ const brandName = computed(() => {
 const productName = getFirstAttributeValue(product.value?.attributes, 'name')
   ?.label
 
-const { md } = useBreakpoints()
+const { md } = useViewportBreakpoints()
 const activeVariant = ref<Variant>()
 const variantWithLowestPrice = computed(() =>
   getVariantWithLowestPrice(product.value?.variants || []),

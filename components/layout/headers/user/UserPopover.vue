@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-const { md } = useBreakpoints()
+const { md } = useViewportBreakpoints()
 
 const { openUserFlyout, closeUserFlyout, isUserFlyoutOpen } = useUiState()
 const { user } = await useUser()

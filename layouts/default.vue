@@ -28,7 +28,7 @@ const { data: rootCategoriesData, fetching: fetchingCategories } = categoryData
 const { trackShopInit, listenToUserItemsChanges, listenToCustomerDataChanges } =
   useTrackingEvents()
 
-const { sm } = useBreakpoints()
+const { sm } = useViewportBreakpoints()
 
 const rootCategories = computed(() => {
   return Array.isArray(rootCategoriesData.value.categories)

@@ -75,7 +75,7 @@ const { user } = await useUser()
 
 const currentPage = ref<number>(1)
 
-const { md } = useBreakpoints()
+const { md } = useViewportBreakpoints()
 
 const orders = computed(() => user?.value?.orderSummary ?? [])
 const currentOrderId = computed(() => {

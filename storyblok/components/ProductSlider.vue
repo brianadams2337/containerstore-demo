@@ -63,7 +63,7 @@ const listingMetaData = {
 
 const { marginClasses } = useStoryblokMargins(props.blok)
 
-const { md } = useBreakpoints()
+const { md } = useViewportBreakpoints()
 const route = useRoute()
 const store = useStore()
 

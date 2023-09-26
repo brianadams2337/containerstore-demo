@@ -108,7 +108,7 @@ const listingMetaData = {
   id: 'CategoryProductList',
 }
 
-const { md } = useBreakpoints()
+const { md } = useViewportBreakpoints()
 
 const route = useRoute()
 const store = useStore()

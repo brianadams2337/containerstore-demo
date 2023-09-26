@@ -187,7 +187,7 @@ const props = defineProps({
   },
 })
 
-const { lg } = useBreakpoints()
+const { lg } = useViewportBreakpoints()
 
 const { fetching: isWishlistFetching, replaceItem: replaceWishlistItem } =
   await useWishlist()

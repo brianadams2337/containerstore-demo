@@ -56,7 +56,7 @@ const listingMetadata = {
   name: CategoryListingMetadata.NAME,
 }
 
-const { md, lg } = useBreakpoints()
+const { md, lg } = useViewportBreakpoints()
 
 const props = defineProps({
   products: {

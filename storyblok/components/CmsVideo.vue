@@ -25,7 +25,7 @@ const props = defineProps({
   },
 })
 
-const { sm } = useBreakpoints()
+const { sm } = useViewportBreakpoints()
 const { marginClasses } = useStoryblokMargins(props.blok)
 const { trackPromotion } = useTrackingEvents()
 

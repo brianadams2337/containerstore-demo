@@ -83,7 +83,7 @@ const emit = defineEmits<{
   (e: 'click:image', value: number): void
 }>()
 
-const { md } = useBreakpoints()
+const { md } = useViewportBreakpoints()
 
 const activeSlide = ref(0)
 const setActiveSlide = (slide: number) => {

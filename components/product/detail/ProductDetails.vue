@@ -72,7 +72,7 @@ const props = defineProps({
   },
 })
 
-const { md } = useBreakpoints()
+const { md } = useViewportBreakpoints()
 
 const productInfos = computed(() => {
   const keys = [

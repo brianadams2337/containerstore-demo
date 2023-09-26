@@ -34,7 +34,7 @@ const props = defineProps({
   },
 })
 
-const { md } = useBreakpoints()
+const { md } = useViewportBreakpoints()
 const { $i18n } = useNuxtApp()
 
 const isShippingSameAsBillingAddress = computed(() => {

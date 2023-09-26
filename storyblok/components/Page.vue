@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import { SbPage } from '~/storyblok/types/storyblok'
 
-const { md } = useBreakpoints()
+const { md } = useViewportBreakpoints()
 
 defineProps({
   blok: {

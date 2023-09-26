@@ -83,7 +83,7 @@ const emit = defineEmits<{
   (e: 'click:recommendation', value: Product, i: number): void
 }>()
 
-const { md } = useBreakpoints()
+const { md } = useViewportBreakpoints()
 
 const trackingCollector = ref<Product[]>([])
 const carousel = ref<HTMLDivElement>()

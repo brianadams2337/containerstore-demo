@@ -163,7 +163,7 @@ const {
   trackRemoveFromBasket,
 } = useTrackingEvents()
 
-const { lg } = useBreakpoints()
+const { lg } = useViewportBreakpoints()
 const currentShop = useCurrentShop()
 const store = useStore()
 const route = useRoute()

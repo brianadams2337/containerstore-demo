@@ -40,7 +40,7 @@ const props = defineProps({
   },
 })
 
-const { sm } = useBreakpoints()
+const { sm } = useViewportBreakpoints()
 const { trackPromotion } = useTrackingEvents()
 
 const isInViewport = ref(true)

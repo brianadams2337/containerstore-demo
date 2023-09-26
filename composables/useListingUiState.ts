@@ -1,5 +1,5 @@
 export default () => {
-  const { md } = useBreakpoints()
+  const { md } = useViewportBreakpoints()
 
   const listingUiState = reactive({
     columns: 0,

@@ -5,7 +5,7 @@ type SanitizedImage = {
   alt: string
 }
 
-const isMobile = () => useBreakpoints().sm
+const isMobile = () => useViewportBreakpoints().sm
 
 export const useStoryblokImageSanitizer = () => {
   const sanitize = (img: SbCmsImage): SanitizedImage => {
