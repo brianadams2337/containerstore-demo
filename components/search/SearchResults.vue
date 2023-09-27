@@ -1,13 +1,19 @@
 <template>
   <div class="flex flex-col">
+    <span class="mb-2.5 block text-sm font-semibold">
+      {{
+        $t('search.search_term_match_count', {
+          count: resultsCount,
+          term,
+        })
+      }}
+    </span>
     <CategorySuggestions
       v-if="categories.length"
       :items="categories.slice(0, categoryLimit)"
       :search-term="term"
       :label="showLabels ? $t('search.categories') : ''"
-      @click:result="emit('click:result', $event)">
-      <template #label> {{ resultsCount }} Results for {{ term }}</template>
-    </CategorySuggestions>
+      @click:result="emit('click:result', $event)" />
     <ProductSuggestions
       v-if="productSuggestions.length"
       class="mt-4"
@@ -56,6 +62,10 @@ defineProps({
   categories: {
     type: Array as PropType<TypeaheadBrandOrCategorySuggestion[]>,
     default: () => [],
+  },
+  fetching: {
+    type: Boolean,
+    default: false,
   },
 })
 

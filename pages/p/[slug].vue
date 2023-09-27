@@ -138,10 +138,10 @@
 </template>
 
 <script setup lang="ts">
-import { 
+import {
   FetchProductsParams,
   Product,
-  ProductImage ,
+  ProductImage,
   Value,
   getVariantBySize,
   flattenDeep,
