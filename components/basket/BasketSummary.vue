@@ -73,6 +73,8 @@
 </template>
 
 <script lang="ts" setup>
+import { BasketListingMetadata } from '~/constants'
+
 const basket = await useBasket()
 const router = useRouter()
 const { $i18n } = useNuxtApp()
@@ -82,9 +84,13 @@ const { trackBeginCheckout } = useTrackingEvents()
 const totalCost = computed(() => basket.data.value?.cost.withTax)
 const shippingCost = computed(() => 0)
 
-const onClickToCheckoutOrder = () => {
-  trackBeginCheckout(basket.data.value?.items, 'BasketList', 'BL')
-  router.push({ path: '/checkout' })
+const onClickToCheckoutOrder = async () => {
+  trackBeginCheckout(
+    basket.data.value?.items,
+    BasketListingMetadata.NAME,
+    BasketListingMetadata.ID,
+  )
+  await router.push(toLocalePath({ name: routeList.checkout.name }))
 }
 
 const sellingPoints = computed(() => [
