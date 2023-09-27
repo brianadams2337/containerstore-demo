@@ -1,6 +1,6 @@
 # SCAYLE Storefront Core - Nuxt 3 Migration
 
-This document outlines all changes from the former Nuxt 2-based `@scayle/storefront-nuxt2` pacgae to the new Nuxt 3-based `@scayle/storefront-nuxt`.
+This document outlines all changes from the former Nuxt 2-based `@scayle/storefront-nuxt2` package to the new Nuxt 3-based `@scayle/storefront-nuxt`.
 Please keep in mind that this documentation is still being extended and will be regularly updated.
 
 _Last updated: 19. September 2023_
