@@ -152,7 +152,7 @@ const useFilterSlideIn = (
   }
 
   const resetFilters = () => {
-    Object.assign(state, structuredClone(initialState.value))
+    Object.assign(state, JSON.parse(JSON.stringify(initialState.value)))
     onFilterReset && onFilterReset()
   }
 
