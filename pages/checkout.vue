@@ -63,7 +63,7 @@ const handleError = (payload = {}) => {
   })
 }
 
-definePageMeta({ name: 'checkout' })
+definePageMeta({ pageType: 'checkout' })
 </script>
 
 <script lang="ts">
