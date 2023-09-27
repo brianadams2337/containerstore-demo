@@ -5,10 +5,10 @@
     <FadeInTransition>
       <SearchResultSkeleton v-if="fetching" />
       <div v-else>
-        <SearchResults
-          v-bind="{ productSuggestions, categories, resultsCount }"
-          :term="searchTerm" />
-        <div v-if="resultsCount > 0" class="my-2 flex">
+        <div v-if="resultsCount > 0" class="my-2 flex flex-col">
+          <SearchResults
+            v-bind="{ productSuggestions, categories, resultsCount }"
+            :term="searchTerm" />
           <DefaultLink
             :to="getSearchRoute(searchTerm)"
             raw
