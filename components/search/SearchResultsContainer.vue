@@ -6,7 +6,7 @@
       <SearchResultSkeleton v-if="fetching" />
       <div v-else>
         <SearchResults
-          v-bind="{ productSuggestions, categories }"
+          v-bind="{ productSuggestions, categories, resultsCount }"
           :term="searchTerm" />
         <div v-if="resultsCount > 0" class="my-2 flex">
           <DefaultLink
