@@ -128,9 +128,7 @@ const useFilterSlideIn = (
     emitFilterEvent('filter:state-changed'),
   )
 
-  watch(state, () => {
-    debouncedStateChangedEvent()
-  })
+  watch(state, () => debouncedStateChangedEvent(), { deep: true })
 
   const prepareFilterData = () => ({
     ...transformStateToFilters(useOmit(state.value, ['prices', 'sale'])),

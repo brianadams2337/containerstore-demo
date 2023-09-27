@@ -82,7 +82,7 @@
           :unfiltered-count="unfilteredCount"
           :fetching-filtered-count="productCountFetching"
           @filter:apply="applyFilter"
-          @filter:state-changed="refreshProductCount" />
+          @filter:state-changed="updateFilterCount($event)" />
       </div>
     </PageContent>
   </div>
@@ -95,6 +95,7 @@ import {
   getSortByValue,
   getSortingValues,
   groupFilterableValuesByKey,
+  transformToWhereCondition,
 } from '@scayle/storefront-nuxt'
 import { SbCmsImage, SbListingPage } from '../storyblok/types/storyblok'
 import { sustainabilityAttributes } from '~/constants'
@@ -178,6 +179,12 @@ const {
     includedFilters: INCLUDED_QUICK_FILTERS,
   },
 })
+
+const updateFilterCount = async (filter: Record<string, any>) => {
+  await refreshProductCount({
+    where: transformToWhereCondition(filter),
+  })
+}
 
 const customDefaultSorting = computed(
   () => selectedCategory.value?.shopLevelCustomData?.defaultSorting,
