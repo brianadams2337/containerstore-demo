@@ -13,7 +13,7 @@ With vite you can include svg icons by simply prefixing it with the `<Icon\* />`
 Otherwise you need to import the svg explicitly and use it as a component.
 
 One issue you might stumble on is using this module you can't size your icons as you might wish to with tailwind classes.
-By default there is a prop `fontControlled` which you hve to disable like so: `<Icon* :fontControlled="false"/>`.
+By default there is a prop `fontControlled` which you have to disable like so: `<Icon* :fontControlled="false"/>`.
 If the use-case is to have the flexibility of applying classes throughout the app then you need to make a change in the `nuxt.config`
 
 ```ts
@@ -153,7 +153,7 @@ export type Item = { label: string; value: string }
 
 Previously for our slide show / carousel components we used vue-slick-carousel. We are now moving towards using `Swiper`.
 Swiper is available as a nuxt module built on top of `swiper.js`.
-There no need to create a custom plugin since the nuxt module is sufficient for our usage.
+There is no need to create a custom plugin since the nuxt module is sufficient for our usage.
 
 To migrate the following steps are needed:
 

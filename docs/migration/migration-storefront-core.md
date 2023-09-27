@@ -31,11 +31,13 @@ SSR-specific options are moved under `cache.ssr`. For example, instead of using 
 
 The redis configuration can now be defined at the top-level. The top-level configuration will apply for all shops that don't specify their own redis configuration.
 
-### bapi
+### bapi (Storefront API)
 
-The bapi configuration can now be defined at the top-level. The top-level configuration will apply for all shops that don't specify their own bapi configuration.
+The `bapi` (Storefront API) configuration option can be defined at the top-level now. The top-level configuration will apply for all shops that don't specify their own `bapi` configuration.
 
-The only options on the BAPI config are now `host` and `token`. Specifying `username` and `password` and using Basic authentication is no longer supported.
+The only options on the `bapi` config are now `host` and `token`. Specifying `username` and `password` and using Basic authentication is no longer supported.
+
+Please note that the term `bapi` is deprecated and only used to ensure compatibility. It will be updated in a later version.
 
 ### oauth
 
@@ -43,7 +45,7 @@ A new top-level option has been added for oauth configuration. See [Checkout log
 
 ### log
 
-A new top-level config option has been added for controlling the log behavior. See [Logging](#logging) for more details.
+A new top-level config option has been added for controlling the log behaviour. See [Logging](#logging) for more details.
 
 ### apiBaseUrl
 
@@ -51,11 +53,11 @@ The apiBaseUrl configuration is no longer available, but will be reintroduced in
 
 ### sessionCookieDomain
 
-The sessionCookieDomain option has been removed. This is a leftover option that was never actually used in `storefront-nuxt2` either. The proper way to configure the domain of a session cookie is through the `session.domain` option.
+The sessionCookieDomain option has been removed. This is a leftover option that was never used in `storefront-nuxt2` either. The best way to configure the domain of a session cookie is through the `session.domain` option.
 
 ### rpcMethods, rpcDir and rpcMethodNames
 
-RPC methods are no longer passed directly to the storefront module config. Instead, `rpcDir` and `rpcMethodNames` must be configured to properly load custom RPC methods. See [RPC Methods](#rpc-methods) for more information.
+RPC methods are no longer passed directly to the storefront module config. Instead, `rpcDir` and `rpcMethodNames` must be configured to load custom RPC methods. See [RPC Methods](#rpc-methods) for more information.
 
 ### shopSelector
 
@@ -67,10 +69,8 @@ Fetching store configurations on demand is not supported in `storefront-nuxt` at
 
 ### withParameters
 
-Storefront config now supports `withParams` option so that we can pass the
-`with` parameters through the shop and set them as default parameters within the
-certain composables (e.g `useWishlist`). Furthermore, as a third default, the
-`min with` parameters constant is set where it's needed.
+Storefront config now supports `withParams` option so that we can pass the `with` parameters through the shop and set them as default parameters within certain composables (e.g `useWishlist`).
+Furthermore, as a third default, the `min with` parameters constant is set for the composables where it's needed.
 
 ```ts
 const defaultWithParams = useNuxtApp().$runtimeConfig.public.withParams.wishlist
@@ -98,7 +98,9 @@ In `storefront-nuxt` `shopId` and `oauthHost` have been removed from the shop ch
 
 #### Extending the ShopConfig with additional properties
 
-It's possible to add extra metadata to each shop configuration. How that data is typed has changed in `storefront-nuxt`. In `storefront-nuxt2`, `ModuleOptions` accepted a generic parameter `CustomStoreConfig` which defined the additional properties. In `storefront-nuxt` the public interface `AdditionalShopConfig` should be extended with the additional properties.
+It's possible to add extra metadata to each shop configuration. How that data has to be typed has changed in `@scayle/storefront-nuxt`.
+In `@scayle/storefront-nuxt2`, `ModuleOptions` accepted a generic parameter `CustomStoreConfig` which defined the additional properties.
+In `@scayle/storefront-nuxt` the public interface `AdditionalShopConfig` should be extended with the additional properties.
 
 e.g.
 
