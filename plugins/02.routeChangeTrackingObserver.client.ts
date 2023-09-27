@@ -4,10 +4,6 @@ export default defineNuxtPlugin(() => {
   const { $tracking } = useNuxtApp()
 
   router?.afterEach((to, from) => {
-    if (process.server) {
-      return
-    }
-
     $tracking.push(
       mapTrackingDataForEvent('content_view', {
         content_name: to.path,
