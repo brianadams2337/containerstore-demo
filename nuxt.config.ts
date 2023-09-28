@@ -91,7 +91,6 @@ export default defineNuxtConfig({
       ],
       gtm: {
         id: process.env.NUXT_PUBLIC_GTM_ID,
-        loadScript: true,
         debug: !isProd,
       },
       // Following keys are Overrideable using prefix NUXT_PUBLIC_
