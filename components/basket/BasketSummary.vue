@@ -76,6 +76,7 @@
 import { BasketListingMetadata } from '~/constants'
 
 const basket = await useBasket()
+const { isLoggedIn } = await useUser()
 const router = useRouter()
 const { $i18n } = useNuxtApp()
 
@@ -90,7 +91,11 @@ const onClickToCheckoutOrder = async () => {
     BasketListingMetadata.NAME,
     BasketListingMetadata.ID,
   )
-  await router.push(toLocalePath({ name: routeList.checkout.name }))
+  const routeName = isLoggedIn.value
+    ? routeList.checkout.name
+    : routeList.signin.name
+
+  await router.push(toLocalePath({ name: routeName }))
 }
 
 const sellingPoints = computed(() => [
