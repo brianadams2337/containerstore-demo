@@ -1,7 +1,6 @@
 <template>
   <Listbox
     v-slot="{ isOpen, list }"
-    :value="selectedSize"
     :name="`product-size-picker-menu-${id}`"
     :before-input="handleBeforeInput"
     class="w-full">
@@ -32,6 +31,7 @@
             v-slot="{ isActive }"
             :key="idx"
             :list-name="list"
+            :value="{ ...size, disabled: !size.isAvailable }"
             data-test-id="product-size"
             class="cursor-pointer px-4 py-2 hover:bg-gray-200"
             :class="{ 'cursor-not-allowed': !size.isAvailable }">
@@ -43,7 +43,7 @@
                 'font-bold': isActive,
                 'font-normal text-gray-400 line-through': !size.isAvailable,
               }"
-              @click="selectSize(size)">
+              @click.capture="selectSize(size)">
               {{ size.label }}
             </AppButton>
           </ListboxOption>
@@ -121,7 +121,6 @@ const selectedSize: ComputedRef<VariantSize | undefined> = computed<
 
 const selectSize = (newSize: VariantSize) => {
   emit('select-size', newSize)
-
   emit(
     'input',
     props.variants.find(
