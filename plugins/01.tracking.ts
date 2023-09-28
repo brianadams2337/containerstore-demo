@@ -3,7 +3,7 @@ import { Log } from '@scayle/storefront-nuxt'
 const WAIT_TIME = 1000
 
 // TODO Handle tracking events when `gtm` is not initialized (server-side)
-const nonInitializedTracking = (log: Log) => ({
+const handleNonInitializedTracking = (log: Log) => ({
   push: (data: any) => {
     log.warn(`Gtm was not initialized yet. Event: ${JSON.stringify(data)}`)
   },
@@ -16,7 +16,7 @@ export default defineNuxtPlugin(() => {
 
   if (!gtm) {
     return {
-      provide: { tracking: nonInitializedTracking(log) },
+      provide: { tracking: handleNonInitializedTracking(log) },
     }
   }
 
