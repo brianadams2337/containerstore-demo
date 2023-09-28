@@ -6,19 +6,17 @@
     <div v-else-if="orderData" class="sm:mx-auto sm:flex">
       <div class="container sm:mx-16 sm:pr-20">
         <div class="mt-16 space-y-2">
-          <Headline size="lg" type="loud" class="block">
-            <div class="flex items-center sm:text-lg">
-              <IconCheckmark class="relative top-[-2px] mr-2 h-5 w-5" />
-              {{ $t('osp.intro') }}
-              {{ orderData.customer?.firstName }}
-            </div>
+          <Headline size="lg" type="loud" class="flex items-center">
+            <IconCheckmark class="relative top-[-2px] mr-2 h-5 w-5" />
+            {{ $t('osp.intro') }}
+            {{ orderData.customer?.firstName }}
           </Headline>
         </div>
         <div class="max-w-xl text-sm sm:grid">
           <div class="text-sm">
             {{ $t('osp.email_send') }}
           </div>
-          <div class="mt-10 grid w-full grid-cols-2 gap-y-8 sm:grid-cols-3">
+          <div class="mt-10 grid w-full grid-cols-2 gap-y-8 lg:grid-cols-3">
             <OspBasicOrderData v-bind="orderData" />
             <OspAddressInformation :address="orderData.address" />
             <div v-if="orderData.payment?.[0].key">

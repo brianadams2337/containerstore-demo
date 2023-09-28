@@ -1,12 +1,21 @@
 const WAIT_TIME = 1000
 
 export default defineNuxtPlugin(() => {
+  // NOTE: use gtm will only return a gtm instance on client side.
   const gtm = useGtm()
-
-  gtm?.enable()
+  const log = useLog('tracking')
 
   if (!gtm) {
-    return
+    // TODO Handle tracking events when `gtm` is not initialized (server-side)
+    return {
+      tracking: {
+        push: (data: any) => {
+          log.warn(
+            `Gtm was not initialized yet. Event: ${JSON.stringify(data)}`,
+          )
+        },
+      },
+    }
   }
 
   type Push = typeof gtm.push
