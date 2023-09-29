@@ -26,7 +26,10 @@
 
     <div class="py-2 text-right">
       <DefaultLink
-        to="/signin?forgotten-password=true"
+        :to="{
+          name: routeList.signin.name,
+          query: { ['forgotten-password']: 'true' },
+        }"
         raw
         class="group relative text-sm text-gray-800 hover:text-black">
         <span>{{ $t('login_page.forget_password.title') }}</span>

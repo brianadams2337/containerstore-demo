@@ -1,5 +1,5 @@
 <template>
-  <Modal :show-close-button="false">
+  <Modal hide-close-button>
     <template #headline>
       <div>
         <Headline :is-uppercase="false" size="xl" tag="h2" class="mb-4">

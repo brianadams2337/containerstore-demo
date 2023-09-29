@@ -1,7 +1,5 @@
 <template>
-  <ContentModal
-    @click:close-modal="emit('click:close-zoom-gallery')"
-    @esc:close-modal="emit('click:close-zoom-gallery')">
+  <Modal full-screen @close="emit('click:close-zoom-gallery')">
     <div class="relative flex h-full w-full flex-col">
       <!-- slides -->
       <div class="relative h-full flex-1 overflow-hidden">
@@ -45,7 +43,7 @@
           @click:thumbnail="handleThumbnailClick($event)" />
       </div>
     </div>
-  </ContentModal>
+  </Modal>
 </template>
 
 <script setup lang="ts">
