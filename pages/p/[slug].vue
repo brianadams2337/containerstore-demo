@@ -436,11 +436,11 @@ const metaDescription = computed(() =>
   $i18n.t('pdp.seo.description', { productName: productName.value }),
 )
 
-useSeoMeta({
+useSeoMeta(() => ({
   robots: 'index,follow',
   title: `${productName.value} ${$i18n.t('pdp.seo.buy_online')}`,
   description: metaDescription.value,
-})
+}))
 
 const currentShop = useCurrentShop()
 
