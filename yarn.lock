@@ -1834,10 +1834,10 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.23.0":
-  version "7.23.0"
-  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.23.0.tgz#f34e0951958544272e2e75e75f8507340299b866"
-  integrity sha1-804JUZWFRCcuLnXnX4UHNAKZuGY=
+"@scayle/storefront-nuxt@7.24.0":
+  version "7.24.0"
+  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.24.0.tgz#793cfd7c45f88c92fb574fb71078d7609b457c2c"
+  integrity sha1-eTz9fEX4jJL7V0+3EHjXYJtFfCw=
   dependencies:
     "@nuxt/kit" "3.7.3"
     "@scayle/h3-session" "0.3.2"
