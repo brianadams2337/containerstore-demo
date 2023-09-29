@@ -156,7 +156,9 @@ export default () => {
     uiState.userFlyout = false
   }
 
-  const setModalOpenState = (isOpen: boolean) => (uiState.modalOpen = isOpen)
+  const setModalOpenState = (isOpen: boolean) => {
+    uiState.modalOpen = isOpen
+  }
 
   const mobileSearchIsActive = computed(() => uiState.mobileSearchIsActive)
 

@@ -54,10 +54,7 @@
           v-for="(item, slideIdx) in images"
           :key="item.hash"
           class="h-1 w-1 rounded-full"
-          :class="{
-            'bg-primary': activeSlide === slideIdx,
-            'bg-secondary': activeSlide !== slideIdx,
-          }">
+          :class="activeSlide === slideIdx ? 'bg-primary' : 'bg-secondary'">
           &nbsp;
         </div>
       </div>
@@ -66,11 +63,11 @@
 </template>
 
 <script setup lang="ts">
-import { ProductImage as BapiProductImage } from '@scayle/storefront-nuxt'
+import type { ProductImage } from '@scayle/storefront-nuxt'
 
 defineProps({
   images: {
-    type: Array as PropType<BapiProductImage[]>,
+    type: Array as PropType<ProductImage[]>,
     default: () => [],
   },
   imagesPerRow: {

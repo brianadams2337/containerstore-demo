@@ -3,7 +3,14 @@
   <PageContent v-else>
     <GoBackLink use-window-history class="mt-4 md:ml-7 md:mt-7" />
     <div class="flex flex-1 flex-col items-start md:flex-row md:gap-3">
-      <ProductImageGallery :images="product?.images" />
+      <ProductImageGallery
+        :images="product?.images"
+        @click:image="toggleZoomGallery(true, $event)" />
+      <ZoomGallery
+        v-if="zoomGallery.display"
+        :images="product.images"
+        :active-index="zoomGallery.index"
+        @click:close-zoom-gallery="toggleZoomGallery(false)" />
       <div class="sticky right-0 top-0 mt-5 w-full md:w-1/2 md:px-9 xl:w-1/3">
         <div class="w-full bg-white">
           <div v-if="product.isSoldOut" class="left-0 top-0">
@@ -178,6 +185,9 @@ const {
   contains: wishlistContains,
   toggleItem: toggleWishlistItem,
 } = await useWishlist({ options: { lazy: true, autoFetch: true } })
+
+const { state: zoomGallery, toggle: toggleZoomGallery } =
+  useZoomGalleryActions()
 
 const { trackAddToBasket, trackViewItemList, trackViewItem, trackSelectItem } =
   useTrackingEvents()
