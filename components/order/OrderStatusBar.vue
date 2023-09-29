@@ -23,7 +23,7 @@
         </Headline>
       </div>
     </div>
-    <div v-show="isLessThan('md')" class="mt-5 hidden md:block">
+    <div v-show="isLessThan('md')" class="mt-5">
       <ProgressBar
         :progress="progressLevel"
         class="mb-1 mt-2"
