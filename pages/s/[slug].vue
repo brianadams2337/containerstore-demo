@@ -27,10 +27,12 @@ const slug = computed(() => route.params.slug)
 const {
   fetchBySlug,
   fetching,
+  status,
   data: story,
 } = useCms<SbContentPage>(`services-page-${slug.value}`)
-
-await fetchBySlug(`s/${slug.value}`)
+if (status.value === 'idle') {
+  await fetchLazy(fetchBySlug(`s/${slug.value}`))
+}
 </script>
 
 <script lang="ts">

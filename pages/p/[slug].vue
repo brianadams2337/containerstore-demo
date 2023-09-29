@@ -3,7 +3,7 @@
   <PageContent v-else>
     <GoBackLink use-window-history class="mt-4 md:ml-7 md:mt-7" />
     <div class="flex flex-1 flex-col items-start md:flex-row md:gap-3">
-      <ProductImageGallery :images="product.images" />
+      <ProductImageGallery :images="product?.images" />
       <div class="sticky right-0 top-0 mt-5 w-full md:w-1/2 md:px-9 xl:w-1/3">
         <div class="w-full bg-white">
           <div v-if="product.isSoldOut" class="left-0 top-0">
@@ -169,13 +169,15 @@ const route = useRoute()
 const store = useStore()
 
 const { $alert, $i18n, $config } = useNuxtApp()
-const { fetching: basketIdle, addItem: addBasketItem } = await useBasket()
+const { fetching: basketIdle, addItem: addBasketItem } = await useBasket({
+  options: { lazy: true, autoFetch: true },
+})
 const { addGroupToBasket } = await useBasketGroup()
 const {
   fetching: fetchingWishlist,
   contains: wishlistContains,
   toggleItem: toggleWishlistItem,
-} = await useWishlist()
+} = await useWishlist({ options: { lazy: true, autoFetch: true } })
 
 const { trackAddToBasket, trackViewItemList, trackViewItem, trackSelectItem } =
   useTrackingEvents()
@@ -192,6 +194,9 @@ const { data: product, fetching } = await useProduct({
     id: parseInt(productId.value),
     with: PRODUCT_WITH_PARAMS,
   },
+  options: {
+    lazy: true,
+  },
   key: `useProduct-${productId.value}`,
 })
 
@@ -207,8 +212,9 @@ const brandName = computed(() => {
   return getFirstAttributeValue(product.value?.attributes, 'brand')?.label
 })
 
-const productName = getFirstAttributeValue(product.value?.attributes, 'name')
-  ?.label
+const productName = computed(() => {
+  return getFirstAttributeValue(product.value?.attributes, 'name')?.label
+})
 
 const { isGreaterOrEquals } = useViewport()
 const activeVariant = ref<Variant>()
@@ -239,7 +245,7 @@ const productSiblings = computed(() => {
 const handleSelectedSize = (value: Value) => {
   if (product.value?.variants) {
     activeVariant.value = getVariantBySize(
-      product.value.variants,
+      product.value?.variants,
       value,
       'size',
     )
@@ -432,14 +438,14 @@ onMounted(async () => {
 definePageMeta({ pageType: 'pdp' })
 
 const metaDescription = computed(() =>
-  $i18n.t('pdp.seo.description', { productName }),
+  $i18n.t('pdp.seo.description', { productName: productName.value }),
 )
 
-useSeoMeta({
+useSeoMeta(() => ({
   robots: 'index,follow',
-  title: `${productName} ${$i18n.t('pdp.seo.buy_online')}`,
+  title: `${productName.value} ${$i18n.t('pdp.seo.buy_online')}`,
   description: metaDescription.value,
-})
+}))
 
 const currentShop = useCurrentShop()
 
@@ -453,32 +459,41 @@ const imageOptions = {
   modifiers: { quality: '75' },
   provider: 'default',
 }
-const images = product.value.images?.map(
-  (image: ProductImage) => img?.getImage(image.hash, imageOptions).url,
-)
+const images = computed(() => {
+  return (
+    product.value?.images?.map(
+      (image: ProductImage) => img?.getImage(image.hash, imageOptions).url,
+    ) || []
+  )
+})
 
 useJsonld(() =>
   generateProductSchema({
     price: formatPrice(price.value?.withTax || 0),
-    productName: productName || '',
+    productName: productName.value || '',
     brandName:
-      getFirstAttributeValue(product.value.attributes, 'brand')?.label || '',
+      getFirstAttributeValue(product.value?.attributes, 'brand')?.label || '',
     url: sanitizedCanonicalURL,
     isInStock: product.value?.variants?.some(isInStock),
-    images,
+    images: images.value,
     priceCurrency: currentShop.value?.currency,
   }),
 )
 
-useHead({
-  link: [
-    {
-      rel: 'canonical',
-      href: sanitizeCanonical(
-        `${$config.baseUrl}${getProductDetailRoute(product?.value)}`,
-      ),
-    },
-  ],
+useHead(() => {
+  if (!product.value) {
+    return {}
+  }
+  return {
+    link: [
+      {
+        rel: 'canonical',
+        href: sanitizeCanonical(
+          `${$config.baseUrl}${getProductDetailRoute(product?.value)}`,
+        ),
+      },
+    ],
+  }
 })
 </script>
 

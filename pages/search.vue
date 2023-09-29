@@ -122,17 +122,19 @@ const {
   productConditions,
 } = useQueryFilterState()
 
-await fetchProducts({
-  // TODO: get current slug women,men,kids
-  path: '/',
-  ...productConditions.value,
-  perPage: PRODUCTS_PER_PAGE,
-  where: {
-    ...productConditions.value.where,
-    term: term.value.toString(),
-  },
-  sort: {},
-})
+await fetchLazy(
+  fetchProducts({
+    // TODO: get current slug women,men,kids
+    path: '/',
+    ...productConditions.value,
+    perPage: PRODUCTS_PER_PAGE,
+    where: {
+      ...productConditions.value.where,
+      term: term.value.toString(),
+    },
+    sort: {},
+  }),
+)
 
 watch(
   () => route.query,

@@ -84,10 +84,14 @@ const {
 
 await fetchProducts({ path: lookbookCategoryCategoryPath.value })
 
-const { fetchBySlug, data: cmsData } = useCms<SbListingPage>(
-  `lookbooks-plp-${lookbookCategoryCategoryPath.value}`,
-)
-await fetchBySlug(cmsPath.value)
+const {
+  fetchBySlug,
+  data: cmsData,
+  status,
+} = useCms<SbListingPage>(`lookbooks-plp-${lookbookCategoryCategoryPath.value}`)
+if (status.value === 'idle') {
+  await fetchLazy(fetchBySlug(cmsPath.value))
+}
 const { content, hasTeaserImage, preListingContent, postListingContent } =
   useCmsListingContent(cmsData)
 

@@ -70,8 +70,8 @@ const listingMetaData = {
   name: WishlistListingMetadata.NAME,
 } as const
 
-const wishlist = await useWishlist()
-const basket = await useBasket()
+const wishlist = await useWishlist({ options: { lazy: true } })
+const basket = await useBasket({ options: { lazy: true } })
 const { isLoggedIn } = await useUser()
 const { $alert, $i18n } = useNuxtApp()
 

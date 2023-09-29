@@ -131,6 +131,9 @@ const { trackViewItemList, trackSelectItem, trackFilterApply } =
 const {
   products,
   productsFetching,
+  productStatus,
+  categoriesStatus,
+  filterStatus,
   categoriesFetching,
   categories,
   selectedCategory,
@@ -235,13 +238,6 @@ const fetchParameters = computed(() => ({
   },
 }))
 
-await fetchProducts(fetchParameters.value)
-if (productError.value || filterError.value || categoriesError.value) {
-  throw createError(
-    productError.value || filterError.value || categoriesError.value,
-  )
-}
-
 watch(
   () => route.query,
   async () => {
@@ -307,10 +303,30 @@ const quickFilters = computed(() =>
 )
 
 // CMS
-const { fetchBySlug, data: cmsData } = useCms<SbListingPage>(
-  `ListingPage-${route.path}`,
-)
-await fetchBySlug(`categories/${selectedCategory.value?.id}`)
+const {
+  fetchBySlug,
+  data: cmsData,
+  status: cmsStatus,
+} = useCms<SbListingPage>(`ListingPage-${route.path}`)
+
+const fetchData = async () => {
+  await fetchProducts(fetchParameters.value)
+  await fetchBySlug(`categories/${selectedCategory.value?.id}`)
+  if (productError.value || filterError.value || categoriesError.value) {
+    throw createError(
+      productError.value || filterError.value || categoriesError.value,
+    )
+  }
+}
+
+if (
+  productStatus.value === 'idle' ||
+  filterStatus.value === 'idle' ||
+  categoriesStatus.value === 'idle' ||
+  cmsStatus.value === 'idle'
+) {
+  await fetchLazy(fetchData())
+}
 
 const { content, hasTeaserImage, postListingContent, preListingContent } =
   useCmsListingContent(cmsData)
@@ -339,14 +355,14 @@ const robots = computed(() =>
   isFiltered.value ? 'noindex,follow' : 'index,follow',
 )
 
-useSeoMeta({
+useSeoMeta(() => ({
   robots: robots.value,
   description: $i18n.t('plp.seo_description', {
     categoryName: selectedCategory.value?.name,
     gender: 'women',
   }),
   title: `${$i18n.t('global.gender.women')} ${selectedCategory.value?.name}`,
-})
+}))
 
 useHead(() => ({
   link: robots.value?.includes('noindex')

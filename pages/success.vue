@@ -83,19 +83,28 @@ const { isLessThan } = useViewport()
 
 const route = useRoute()
 const cbdToken = String(route.query.cbd)
-
 const { data: orderData, fetching } = await useOrderConfirmation<
   OrderProduct,
   OrderVariant
 >({
   params: { cbdToken },
+  options: { lazy: true },
   key: `orderConfirmation-${cbdToken}`,
 })
+
 const user = await useUser()
 
 const { trackPurchaseEvent } = useTrackingEvents()
 
-onMounted(() => trackPurchaseEvent(orderData.value))
+watch(
+  fetching,
+  (isFetching) => {
+    if (!isFetching) {
+      trackPurchaseEvent(orderData.value)
+    }
+  },
+  { immediate: true },
+)
 
 watch(user.fetching, async (isFetching) => {
   if (!isFetching && user.isLoggedIn) {

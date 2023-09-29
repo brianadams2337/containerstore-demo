@@ -58,6 +58,6 @@ const { detailItem, products, fetching, fetch } = await useLookbookDetail({
   slug: cmsPath.value,
   id: itemId.value,
 })
-await fetch()
+await fetchLazy(fetch())
 definePageMeta({ pageType: 'lookbooks' })
 </script>

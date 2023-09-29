@@ -44,9 +44,11 @@ const {
   fetchByFolder,
   data: lookbooksData,
   fetching,
+  status,
 } = useCms<SbListingPage>('lookbooks')
-await fetchByFolder('lookbooks', { per_page: 5 })
-
+if (status.value === 'idle') {
+  await fetchLazy(fetchByFolder('lookbooks', { per_page: 5 }))
+}
 const prepareForUrl = (path: string) => slugify(path)
 definePageMeta({ pageType: 'lookbooks' })
 </script>
