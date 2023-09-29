@@ -194,7 +194,6 @@ const { data: product, fetching } = await useProduct({
     with: PRODUCT_WITH_PARAMS,
   },
   options: {
-    autoFetch: true,
     lazy: true,
   },
   key: `useProduct-${productId.value}`,

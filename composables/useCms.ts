@@ -1,7 +1,6 @@
 import { StoryblokStory } from '@aboutyou/storyblok-generate-ts'
 import { ISbStoriesParams } from 'storyblok-js-client'
 
-
 type Status = 'idle' | 'pending' | 'success' | 'error'
 
 export default <T = unknown>(key: string) => {
@@ -31,10 +30,7 @@ export default <T = unknown>(key: string) => {
   // Limitation of useStoryblokAsync not being able to fetch multiple stories, thus as a work around using storyblokApi
   // https://github.com/storyblok/storyblok-nuxt/issues/547#issuecomment-1697844103
   const storyblokApi = useStoryblokApi()
-  async function fetchByFolder(
-    folder: string,
-    options?: ISbStoriesParams,
-  ) {
+  async function fetchByFolder(folder: string, options?: ISbStoriesParams) {
     fetching.value = true
     status.value = 'pending'
     try {

@@ -469,3 +469,22 @@ plugins/
 - [nuxt-lodash](https://github.com/cipami/nuxt-lodash#readme) - `lodash` nuxt module
 - [nuxt-viewport](https://nuxt.com/modules/nuxt-viewport) - module for handling the breakpoints
 - [@zadigetvoltaire/nuxt-gtm](https://github.com/zadigetvoltaire/nuxt-gtm) - GTM module
+
+### Skeleton loaders
+
+Under the hood, Nuxt 3 uses [<Suspense>](https://vuejs.org/guide/built-ins/suspense.html#suspense), to block navigation until all `async setup()` and `suspensible` components are resolved. This means, by default you would never see any loading state, because once the navigation happens all the data is already fetched.
+
+If you want to show a loading state, you need to unblock `async setup()`. When using `useRpc` or composables based on that, this can be done by setting `lazy: true`.
+
+```ts
+const basket = await useBasket({ options: { autoFetch: true, lazy: true } })
+```
+
+If you fetch data in a different way (e. g. when fetching cms data) or don't want to use `autoFetch: true`, you can use the `fetchLazy` helper.
+Only while SSR this will wait for the promise to be resolved, in order to return a prerendered page instead of the loading state.
+
+```ts
+const { fetchBySlug } = useCms<SbContentPage>('some-key')
+
+await fetchLazy(fetchBySlug('some-slug'))
+```

@@ -88,7 +88,7 @@ const { data: orderData, fetching } = await useOrderConfirmation<
   OrderVariant
 >({
   params: { cbdToken },
-  options: { autoFetch: true, lazy: true },
+  options: { lazy: true },
   key: `orderConfirmation-${cbdToken}`,
 })
 

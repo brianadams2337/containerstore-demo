@@ -40,7 +40,7 @@ const {
   status,
 } = useCms<SbContentPage>(`content-page-${slug}`)
 if (status.value === 'idle') {
-  await fetchLazy(fetchBySlug(`c/${slug.value as string}`))
+  await fetchLazy(fetchBySlug(`c/${slug.value}`))
 }
 definePageMeta({ pageType: 'content_pages' })
 </script>

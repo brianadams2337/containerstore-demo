@@ -67,10 +67,9 @@ import {
   Product,
 } from '@scayle/storefront-nuxt'
 import { BasketListingMetadata, WishlistListingMetadata } from '~/constants'
-// import { metaTagGenerator } from '~/helpers/seo'
 
-const basket = await useBasket({ options: { autoFetch: true, lazy: true } })
-const wishlist = await useWishlist({ options: { autoFetch: true, lazy: true } })
+const basket = await useBasket({ options: { lazy: true } })
+const wishlist = await useWishlist({ options: { lazy: true } })
 
 if (basket.error.value) {
   throw createError(basket.error.value)
@@ -123,12 +122,6 @@ onMounted(() => {
     )
   }
 })
-
-// const metaTags = metaTagGenerator({
-//   robots: 'noindex,follow',
-// })
-
-// useMeta(() => ({ title: `Basket`, ...metaTags }))
 
 const trackProductClick = ({ product }: { product: Product }) => {
   trackSelectItem({
