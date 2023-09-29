@@ -59,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-import { getTotalAppliedReductions } from '@scayle/storefront-nuxt'
+import { getFirstAttributeValue , getTotalAppliedReductions } from '@scayle/storefront-nuxt'
 import { OrderPrice, OrderProduct, OrderVariant } from '~/types/osp'
 
 const props = defineProps({
@@ -87,9 +87,13 @@ const props = defineProps({
 
 const name = computed(() => props.product.name)
 
-const color = computed(() => props.product?.attributes?.color?.label)
+const color = computed(
+  () => getFirstAttributeValue(props?.product.attributes, 'color')?.label,
+)
 
-const size = computed(() => props.variant?.attributes?.size?.label)
+const size = computed(
+  () => getFirstAttributeValue(props.variant?.attributes, 'size')?.label,
+)
 
 const imageHash = computed(() => props.product.images[0].hash)
 
