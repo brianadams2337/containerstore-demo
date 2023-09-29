@@ -104,6 +104,7 @@
                     : 'add-item-to-wishlist-button'
                 "
                 rounded
+                :disabled="isWishlistToggling"
                 @click="onToggleWishlist">
                 <template #icon="{ _class }">
                   <IconHeartFull v-if="isInWishlist" :class="_class" />
@@ -193,6 +194,8 @@ const { data: product, fetching } = await useProduct({
   },
   key: `useProduct-${productId.value}`,
 })
+
+const isWishlistToggling = ref(false)
 
 const productCategories = computed(() => {
   return product.value ? getCategoriesByRoute(product.value, null) : []
@@ -353,7 +356,10 @@ const onToggleWishlist = async () => {
     variant: activeVariant.value,
   })
 
+  isWishlistToggling.value = true
   await toggleWishlistItem({ productId: id })
+  isWishlistToggling.value = false
+
   showWishlistToast(isNewItemInWishlist, product.value)
 }
 

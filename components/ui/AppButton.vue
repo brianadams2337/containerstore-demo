@@ -4,7 +4,7 @@
     v-bind="{ to, disabled }"
     raw
     :class="baseClasses"
-    class="group inline-flex items-center justify-center gap-2 truncate whitespace-nowrap rounded-md text-sm transition duration-100 ease-linear disabled:cursor-not-allowed disabled:opacity-30"
+    class="group inline-flex items-center justify-center gap-2 truncate whitespace-nowrap rounded-md text-sm transition duration-100 ease-linear disabled:opacity-30"
     @click.prevent="emit('click')"
     @click.stop="emit('click:stop')">
     <slot name="icon" :_class="iconClasses" />

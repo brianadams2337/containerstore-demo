@@ -9,6 +9,7 @@
           : 'product-card-action-add-item-to-wishlist-button'
       "
       :loading="fetching"
+      :disabled="isWishlistToggling"
       class="opacity-50"
       type="ghost"
       @click="toggleItemInWishlist">
@@ -44,6 +45,7 @@ const props = defineProps({
   },
 })
 
+const isWishlistToggling = ref(false)
 const product = toRef(props, 'product')
 const productId = computed(() => product.value.id)
 
@@ -57,7 +59,10 @@ const toggleItemInWishlist = async () => {
     listingMetaData: props.listingMetaData,
   })
 
+  isWishlistToggling.value = true
   await toggleItem({ productId: productId.value })
+  isWishlistToggling.value = false
+
   showWishlistToast(!wasInWishlist, product.value)
 }
 
