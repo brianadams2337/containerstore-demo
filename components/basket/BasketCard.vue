@@ -77,37 +77,29 @@
       </div>
       <div class="flex justify-end pt-4">
         <BasketCardAction
-          v-if="!isInWishlist"
-          data-test-id="basket-add-to-wishlist-button"
-          :class="{ 'absolute right-0 top-0 !p-4': isLessThan('lg') }"
-          @click="addToWishlist">
+          :data-test-id="
+            isInWishlist
+              ? 'basket-remove-from-wishlist-button'
+              : 'basket-add-to-wishlist-button'
+          "
+          :disabled="isWishlistToggling"
+          @click="toggleWishlist">
           <template #icon="{ _class }">
-            <IconHeart :class="_class" />
+            <IconHeartFull v-if="isInWishlist" :class="_class" />
+            <IconHeart v-else :class="_class" />
           </template>
-          {{
-            isGreaterOrEquals('lg')
-              ? $t('basket_card.add_to_wishlist_label')
-              : ''
-          }}
-        </BasketCardAction>
-
-        <BasketCardAction
-          v-if="isInWishlist"
-          :class="{ 'absolute right-0 top-0 !p-4': isGreaterOrEquals('lg') }"
-          data-test-id="basket-remove-from-wishlist-button"
-          @click="removeFromWishlist">
-          <template #icon="{ _class }">
-            <IconHeartFull :class="_class" />
+          <template v-if="isGreaterOrEquals('lg')">
+            {{
+              isInWishlist
+                ? $t('basket_card.remove_from_wishlist_label')
+                : $t('basket_card.add_to_wishlist_label')
+            }}
           </template>
-          {{
-            isGreaterOrEquals('lg')
-              ? $t('basket_card.remove_from_wishlist_label')
-              : ''
-          }}
         </BasketCardAction>
 
         <BasketCardAction
           data-test-id="basket-remove-item-button"
+          class="ml-1"
           @click="onPressDelete">
           <template #icon="{ _class }">
             <IconCloseS :class="_class" />
@@ -171,12 +163,13 @@ const {
   trackRemoveFromBasket,
 } = useTrackingEvents()
 
-const { isGreaterOrEquals, isLessThan } = useViewport()
+const { isGreaterOrEquals } = useViewport()
 const currentShop = useCurrentShop()
 const store = useStore()
 const route = useRoute()
-const state = ref('default')
 
+const state = ref('default')
+const isWishlistToggling = ref(false)
 const index = toRef(props, 'index')
 
 const product = computed(() => mainItem.value!.product)
@@ -242,6 +235,12 @@ const isInWishlist = computed(() =>
     productId: product.value.id,
   }),
 )
+
+const toggleWishlist = async () => {
+  isWishlistToggling.value = true
+  await (isInWishlist.value ? removeFromWishlist() : addToWishlist())
+  isWishlistToggling.value = false
+}
 
 const addToWishlist = async () => {
   if (!mainItem.value) {

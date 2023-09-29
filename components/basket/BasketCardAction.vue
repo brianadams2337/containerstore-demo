@@ -1,7 +1,7 @@
 <template>
   <AppButton
     no-padding
-    :icon="icon"
+    v-bind="{ icon, disabled }"
     size="sm"
     type="ghost"
     class="relative !gap-1 text-xs font-bold"
@@ -12,11 +12,16 @@
     <slot />
   </AppButton>
 </template>
+
 <script setup lang="ts">
 defineProps({
   icon: {
     type: String,
     default: '',
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
   },
 })
 
