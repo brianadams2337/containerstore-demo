@@ -1,14 +1,15 @@
 import { StoryblokStory } from '@aboutyou/storyblok-generate-ts'
 import { ISbStoriesParams } from 'storyblok-js-client'
 
-type StoryblokFolder = 'lookbooks' | 'test'
+
+type Status = 'idle' | 'pending' | 'success' | 'error'
 
 export default <T = unknown>(key: string) => {
   const log = useLog(`useCms ${key}`)
   const data = useState<StoryblokStory<T>>(`cms-data-${key}`)
   const fetching = useState<boolean>(`fetching-${key}`)
   const status = useState<Status>(`status-${key}`, () => 'idle')
-  const error = useState<Status>(`error-${key}`)
+  const error = useState(`error-${key}`)
 
   async function fetchBySlug(slug: string) {
     status.value = 'pending'
@@ -31,7 +32,7 @@ export default <T = unknown>(key: string) => {
   // https://github.com/storyblok/storyblok-nuxt/issues/547#issuecomment-1697844103
   const storyblokApi = useStoryblokApi()
   async function fetchByFolder(
-    folder: StoryblokFolder,
+    folder: string,
     options?: ISbStoriesParams,
   ) {
     fetching.value = true
@@ -44,8 +45,7 @@ export default <T = unknown>(key: string) => {
         version: getStoryblokContentVersion(),
         ...options,
       })
-      // TODO fix type
-      data.value = stories as any
+      data.value = stories as unknown as StoryblokStory<T>
     } catch (e) {
       error.value = e
       log.error(`Error fetching CMS Folder`, e)
