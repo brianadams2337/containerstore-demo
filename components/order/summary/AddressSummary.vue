@@ -4,7 +4,7 @@
       v-show="isGreaterOrEquals('md')"
       v-bind="{ items, shippingAddress, billingAddress }"
       class="mb-4" />
-    <AddressTabs v-else :items="items" tabs-class="-mx-5" class="mb-8">
+    <AddressTabs v-show="!isGreaterOrEquals('md')" :items="items" tabs-class="-mx-5" class="mb-8">
       <template #shipping>
         <AddressInformation v-bind="shippingAddress" />
       </template>
