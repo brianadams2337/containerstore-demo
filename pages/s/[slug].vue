@@ -30,7 +30,7 @@ const {
   status,
   data: story,
 } = useCms<SbContentPage>(`services-page-${slug.value}`)
-if(status.value === 'idle') {
+if (status.value === 'idle') {
   await fetchLazy(fetchBySlug(`s/${slug.value}`))
 }
 </script>

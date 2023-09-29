@@ -18,7 +18,6 @@ export default <T = unknown>(key: string) => {
         version: getStoryblokContentVersion(),
       })
       data.value = storyData.value
-
     } catch (e) {
       error.value = e
       log.error(`Error fetching CMS Slug`, e)

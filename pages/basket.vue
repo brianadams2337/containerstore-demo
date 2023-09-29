@@ -69,8 +69,8 @@ import {
 import { BasketListingMetadata, WishlistListingMetadata } from '~/constants'
 // import { metaTagGenerator } from '~/helpers/seo'
 
-const basket = await useBasket({ options: { autoFetch: true, lazy: true }})
-const wishlist = await useWishlist({ options: { autoFetch: true, lazy: true }})
+const basket = await useBasket({ options: { autoFetch: true, lazy: true } })
+const wishlist = await useWishlist({ options: { autoFetch: true, lazy: true } })
 
 if (basket.error.value) {
   throw createError(basket.error.value)
