@@ -79,8 +79,14 @@ const exactActiveClass = computed(() => {
 })
 
 const resolvedLink = computed(() => {
-  const isExternal = typeof props.to === 'string' && props.to.startsWith('http')
+  const isExternal = isString(props.to) && props.to.startsWith('http')
 
-  return isExternal ? props.to : toLocalePath(props.to)
+  if (isExternal) {
+    return props.to
+  }
+
+  const isNotValidRoutePath = isString(props.to) && !props.to.startsWith('/')
+
+  return toLocalePath(isNotValidRoutePath ? `/${props.to}` : props.to)
 })
 </script>
