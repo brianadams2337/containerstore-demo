@@ -9,9 +9,7 @@
       <ContainerLink
         :to="{ name: routeList.orders.name }"
         :header="$t('my_account.orders_menu')"
-        :subheader="
-          $t('my_account.orders_count', { count: user?.orderSummary?.length })
-        "
+        :subheader="$t('my_account.orders_count', { count: orderCount })"
         class="w-full" />
       <ContainerLink
         :to="{ name: routeList.user.name }"
@@ -27,6 +25,8 @@
 
 <script setup lang="ts">
 const { user } = await useUser()
+
+const orderCount = computed(() => user.value?.orderSummary?.length || 0)
 
 definePageMeta({ pageType: 'account_area' })
 </script>
