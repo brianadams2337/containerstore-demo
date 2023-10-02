@@ -8,13 +8,11 @@
 </template>
 
 <script lang="ts" setup>
-import { RouteLocationRaw } from '#vue-router'
-
 const { isInEditorMode } = useStoryblokHelpers()
 
 defineProps({
   to: {
-    type: [String, Object] as PropType<RouteLocationRaw>,
+    type: [String, Object] as PropType<string | object>,
     required: true,
   },
   target: {
