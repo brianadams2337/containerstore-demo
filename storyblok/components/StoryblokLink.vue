@@ -1,5 +1,5 @@
 <template>
-  <DefaultLink v-if="!isInEditorMode" raw :to="to" :target="target">
+  <DefaultLink v-if="!isInEditorMode" raw v-bind="{ to, target }">
     <slot />
   </DefaultLink>
   <div v-else :to="to">
