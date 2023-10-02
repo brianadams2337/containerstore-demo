@@ -284,7 +284,7 @@
     "main_menu": "Main menu"
   },
   "login_page": {
-    "forget_password": {
+    "forgot_password": {
       "description": "Please enter your email address. We will send you an email so you can reset your password.",
       "cancel": "Back",
       "status": {
@@ -292,7 +292,7 @@
           "400_bad_request": "Your request resulted in an error",
           "401_unauthorized": "Authorization Required",
           "403_user_deactivated": "This user is deactivated.",
-          "404_not_found": "Ooops! E-Mail not found."
+          "404_not_found": "Oops! E-Mail not found."
         },
         "success": "An email was sent to reset your password"
       },

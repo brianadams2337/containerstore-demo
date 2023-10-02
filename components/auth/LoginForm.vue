@@ -32,7 +32,7 @@
         }"
         raw
         class="group relative text-sm text-gray-800 hover:text-black">
-        <span>{{ $t('login_page.forget_password.title') }}</span>
+        <span>{{ $t('login_page.forgot_password.title') }}</span>
         <span
           class="absolute inset-x-[0px] bottom-[-2px] h-[1px] bg-gray-800 transition-all group-hover:inset-x-[-5px] group-hover:bg-black" />
       </DefaultLink>

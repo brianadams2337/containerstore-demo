@@ -3,10 +3,10 @@
     <template #headline>
       <div>
         <Headline :is-uppercase="false" size="xl" tag="h2" class="mb-4">
-          {{ $t('login_page.forget_password.title') }}
+          {{ $t('login_page.forgot_password.title') }}
         </Headline>
         <p class="mb-4 text-sm">
-          {{ $t('login_page.forget_password.description') }}
+          {{ $t('login_page.forgot_password.description') }}
         </p>
       </div>
     </template>
@@ -29,14 +29,14 @@
           :disabled="isSubmitting || success"
           :loading="isSubmitting"
           @click="onSubmit()">
-          {{ $t('login_page.forget_password.submit') }}
+          {{ $t('login_page.forgot_password.submit') }}
         </AppButton>
         <AppButton
           type="tertiary"
           :disabled="isSubmitting"
           :loading="isSubmitting"
           @click="$emit('close')">
-          {{ $t('login_page.forget_password.cancel') }}
+          {{ $t('login_page.forgot_password.cancel') }}
         </AppButton>
       </div>
     </form>
