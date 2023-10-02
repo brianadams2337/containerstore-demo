@@ -285,7 +285,7 @@
     "main_menu": "Main menu"
   },
   "login_page": {
-    "forget_password": {
+    "forgot_password": {
       "description": "Geben Sie bitte Ihre Email-Adresse ein. Wir senden Ihnen eine E-Mail, damit Sie Ihr Passwort zurücksetzen können.",
       "cancel": "Zurück",
       "status": {

@@ -321,7 +321,7 @@
       "title": "Welcome back, {username}!",
       "not_user": "Not {username}? Log in with another user account"
     },
-    "forget_password": {
+    "forgot_password": {
       "title": "Forgot password?",
       "description": "Please enter your email address. We will send you an email so you can reset your password.",
       "submit": "Submit",
