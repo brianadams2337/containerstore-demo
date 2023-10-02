@@ -39,6 +39,7 @@
               v-if="size"
               type="ghost"
               class="w-full !justify-start"
+              :disabled="!size.isAvailable"
               :class="{
                 'font-bold': isActive,
                 'font-normal text-gray-400 line-through': !size.isAvailable,
