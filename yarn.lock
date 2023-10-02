@@ -1787,10 +1787,10 @@
   dependencies:
     prettier-config-standard "^5.0.0"
 
-"@scayle/storefront-core@7.14.3":
-  version "7.14.3"
-  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-core/-/@scayle/storefront-core-7.14.3.tgz#f8623b15a87386fc3e4a670f33be910773119260"
-  integrity sha1-+GI7Fahzhvw+SmcPM76RB3MRkmA=
+"@scayle/storefront-core@7.15.0":
+  version "7.15.0"
+  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-core/-/@scayle/storefront-core-7.15.0.tgz#da1eb12e3536abd15b0109f981ad290fe4ae450f"
+  integrity sha1-2h6xLjU2q9FbAQn5ga0pD+SuRQ8=
   dependencies:
     "@aboutyou/backbone" "15.10.0"
     "@types/connect-redis" "^0.0.21"
@@ -1806,20 +1806,18 @@
     ufo "^1.1.1"
     uncrypto "^0.1.3"
     utility-types "^3.10.0"
-  optionalDependencies:
-    redis "4"
 
-"@scayle/storefront-nuxt@7.25.2":
-  version "7.25.2"
-  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.25.2.tgz#d2a53bcb96a2b77d9b7708926bf50d0b4fe7abae"
-  integrity sha1-0qU7y5ait32bdwiSa/UNC0/nq64=
+"@scayle/storefront-nuxt@7.25.3":
+  version "7.25.3"
+  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.25.3.tgz#2373736bbb09b66bff9c763cd52327f816de2913"
+  integrity sha1-I3Nza7sJtmv/nHY81SMn+BbeKRM=
   dependencies:
     "@nuxt/kit" "3.7.3"
     "@scayle/h3-session" "0.3.2"
-    "@scayle/storefront-core" "7.14.3"
+    "@scayle/storefront-core" "7.15.0"
     "@vueuse/core" "10.4.1"
     consola "3.2.3"
-    core-js "3.32.2"
+    core-js "3.33.0"
     defu "6.1.2"
     h3 "1.8.2"
     jose "4.14.6"
@@ -3676,10 +3674,10 @@ cookies@~0.8.0:
     depd "~2.0.0"
     keygrip "~1.1.0"
 
-core-js@3.32.2:
-  version "3.32.2"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.32.2.tgz#172fb5949ef468f93b4be7841af6ab1f21992db7"
-  integrity sha512-pxXSw1mYZPDGvTQqEc5vgIb83jGQKFGYWY76z4a7weZXUolw3G+OvpZqSRcfYOoOVUQJYEPsWeQK8pKEnUtWxQ==
+core-js@3.33.0:
+  version "3.33.0"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.33.0.tgz#70366dbf737134761edb017990cf5ce6c6369c40"
+  integrity sha512-HoZr92+ZjFEKar5HS6MC776gYslNOKHt75mEBKWKnPeFDpZ6nH5OeF3S6HFT1mUAUZKrzkez05VboaX8myjSuw==
 
 core-util-is@1.0.2:
   version "1.0.2"
@@ -9145,7 +9143,7 @@ redis-parser@^3.0.0:
   dependencies:
     redis-errors "^1.0.0"
 
-redis@4, redis@4.6.10:
+redis@4.6.10:
   version "4.6.10"
   resolved "https://registry.yarnpkg.com/redis/-/redis-4.6.10.tgz#07f6ea2b2c5455b098e76d1e8c9b3376114e9458"
   integrity sha512-mmbyhuKgDiJ5TWUhiKhBssz+mjsuSI/lSZNPI9QvZOYzWvYGejtb+W3RlDDf8LD6Bdl5/mZeG8O1feUGhXTxEg==
