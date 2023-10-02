@@ -91,7 +91,7 @@
     "nuxt-lazy-hydrate": "1.0.0",
     "nuxt-swiper": "1.2.2",
     "pathe": "1.1.1",
-    "radash-nuxt": "^1.0.2",
+    "radash-nuxt": "1.0.2",
     "redis": "4.6.10",
     "schema-dts": "1.1.2",
     "storyblok-js-client": "6.2.0",

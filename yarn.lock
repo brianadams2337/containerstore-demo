@@ -8977,7 +8977,7 @@ quick-lru@^5.1.1:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
 
-radash-nuxt@^1.0.2:
+radash-nuxt@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/radash-nuxt/-/radash-nuxt-1.0.2.tgz#b654eacf0946a0c6782354591ea27635fb6ed630"
   integrity sha512-KpbFEWm4jj1UZouk6wm25frb9fXN7Cjxsg1dhGhC1HxvnTDbNekbZJh8qIG3v9hefTHxw2+mQ4HZ9xdP0cig1A==
@@ -9145,7 +9145,7 @@ redis-parser@^3.0.0:
   dependencies:
     redis-errors "^1.0.0"
 
-redis@4.6.10:
+redis@4, redis@4.6.10:
   version "4.6.10"
   resolved "https://registry.yarnpkg.com/redis/-/redis-4.6.10.tgz#07f6ea2b2c5455b098e76d1e8c9b3376114e9458"
   integrity sha512-mmbyhuKgDiJ5TWUhiKhBssz+mjsuSI/lSZNPI9QvZOYzWvYGejtb+W3RlDDf8LD6Bdl5/mZeG8O1feUGhXTxEg==
