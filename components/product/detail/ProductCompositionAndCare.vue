@@ -1,12 +1,11 @@
 <template>
-  <div>
+  <div v-if="hasInfos">
     <div>
       <p v-for="(group, idx) in materialInfo" :key="idx">
         {{ group.materialGroupName }}:
         {{ group.values }}
       </p>
     </div>
-
     <div class="mt-2 flex flex-wrap gap-1">
       <ProductCareSymbol
         v-for="symbol in careInfo"
@@ -14,7 +13,11 @@
         :symbol="symbol" />
     </div>
   </div>
+  <div v-else>
+    <p class="whitespace-pre-line">No information provided.</p>
+  </div>
 </template>
+
 <script setup lang="ts">
 type CareInfo = {
   id?: number
@@ -27,11 +30,18 @@ type MaterialInfo = {
   values: string
 }
 
-defineProps({
-  materialInfo: { type: Array as PropType<MaterialInfo[]>, required: true },
+const props = defineProps({
+  materialInfo: {
+    type: Array as PropType<MaterialInfo[]>,
+    default: () => [],
+  },
   careInfo: {
     type: Array as PropType<CareInfo[]>,
-    required: true,
+    default: () => [],
   },
+})
+
+const hasInfos = computed(() => {
+  return props.materialInfo.length || props.careInfo.length
 })
 </script>

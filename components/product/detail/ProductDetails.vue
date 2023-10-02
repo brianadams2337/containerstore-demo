@@ -17,7 +17,7 @@
       <div class="mt-9 min-h-2xs leading-normal md:text-xs">
         <ProductDescription
           v-if="tabs[selectedIndex] === 'pdp.product_info_heading'"
-          v-bind="{ productDescriptionInfo, productInfos, fitInfos }" />
+          v-bind="{ description, baseInfos, fitInfos }" />
         <ProductCompositionAndCare
           v-if="tabs[selectedIndex] === 'pdp.composition_care_heading'"
           v-bind="{ materialInfo, careInfo }" />
@@ -31,8 +31,7 @@
       <div class="max-w-3xl">
         <div class="divide-y divide-gray-300">
           <ProductDetailAccordionEntry :title="$t('pdp.product_info_heading')">
-            <ProductDescription
-              v-bind="{ productDescriptionInfo, productInfos, fitInfos }" />
+            <ProductDescription v-bind="{ description, baseInfos, fitInfos }" />
           </ProductDetailAccordionEntry>
           <ProductDetailAccordionEntry
             :title="$t('pdp.composition_care_heading')">
@@ -66,7 +65,7 @@ const props = defineProps({
 
 const { isGreaterOrEquals } = useViewport()
 
-const productInfos = computed(() => {
+const baseInfos = computed(() => {
   const keys = [
     'productDescription',
     'fastenerType',
@@ -117,7 +116,7 @@ const materialInfo = computed(() => {
   })
 })
 
-const productDescriptionInfo = computed(() => {
+const description = computed(() => {
   if (
     props.product?.advancedAttributes?.productDescription?.values[0].fieldSet
   ) {

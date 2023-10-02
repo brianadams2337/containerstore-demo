@@ -1,13 +1,11 @@
 <template>
-  <div>
-    <div class="whitespace-pre-line">{{ productDescriptionInfo }}</div>
-
+  <div v-if="hasInfos">
+    <div v-if="description" class="whitespace-pre-line">{{ description }}</div>
     <br />
-
-    <p v-for="(info, i) in productInfos" :key="i">{{ info }}</p>
-
+    <template v-if="baseInfos.length">
+      <p v-for="(info, i) in baseInfos" :key="i">{{ info }}</p>
+    </template>
     <br />
-
     <div>
       <p v-if="fitInfos.fitting">
         {{ $t('pdp.fitting') }}: {{ fitInfos.fitting }}
@@ -38,15 +36,18 @@
       </p>
     </div>
   </div>
+  <div v-else>
+    <p class="whitespace-pre-line">No information provided.</p>
+  </div>
 </template>
 
 <script setup lang="ts">
-defineProps({
-  productDescriptionInfo: {
+const props = defineProps({
+  description: {
     type: String,
     default: '',
   },
-  productInfos: {
+  baseInfos: {
     type: Array as PropType<string[]>,
     default: () => [],
   },
@@ -54,5 +55,9 @@ defineProps({
     type: Object as PropType<{ [key: string]: string }>,
     default: () => ({}),
   },
+})
+
+const hasInfos = computed(() => {
+  return props.description || props.baseInfos.length || props.fitInfos.length
 })
 </script>
