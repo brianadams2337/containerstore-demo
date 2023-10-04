@@ -461,16 +461,7 @@ plugins/
 
 ```
 
-## Additions
-
-### Packages
-
-- [utility-types](https://www.npmjs.com/package/utility-types) - complex TypeScript types simplification utils
-- [nuxt-lodash](https://github.com/cipami/nuxt-lodash#readme) - `lodash` nuxt module
-- [nuxt-viewport](https://nuxt.com/modules/nuxt-viewport) - module for handling the breakpoints
-- [@zadigetvoltaire/nuxt-gtm](https://github.com/zadigetvoltaire/nuxt-gtm) - GTM module
-
-### Skeleton loaders
+## Skeleton loaders
 
 Under the hood, Nuxt 3 uses [<Suspense>](https://vuejs.org/guide/built-ins/suspense.html#suspense), to block navigation until all `async setup()` and `suspensible` components are resolved. This means, by default you would never see any loading state, because once the navigation happens all the data is already fetched.
 
@@ -488,3 +479,18 @@ const { fetchBySlug } = useCms<SbContentPage>('some-key')
 
 await fetchLazy(fetchBySlug('some-slug'))
 ```
+
+## Auth guard
+
+- In Nuxt 2 we used `AuthGuard` component as a wrapper for the protected auth
+  routes such as account area, checkout etc. In Nuxt 3 we introduced a `authGurad.global.ts`
+  global middleware that handles the guarding the protected auth routes.
+
+## Additions
+
+### Packages
+
+- [utility-types](https://www.npmjs.com/package/utility-types) - complex TypeScript types simplification utils
+- [nuxt-lodash](https://github.com/cipami/nuxt-lodash#readme) - `lodash` nuxt module
+- [nuxt-viewport](https://nuxt.com/modules/nuxt-viewport) - module for handling the breakpoints
+- [@zadigetvoltaire/nuxt-gtm](https://github.com/zadigetvoltaire/nuxt-gtm) - GTM module
