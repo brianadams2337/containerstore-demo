@@ -130,6 +130,10 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
           secret: '', // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_CHECKOUT_SECRET,
           host: '', // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_CHECKOUT_HOST,
           user: '', // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_CHECKOUT_USER,
+          /**
+           * The number of seconds that a CBD token should be considered valid since issued
+           */
+          cbdExpiration: 60 * 60 * 2, // 2 hours
         },
       },
     }),
