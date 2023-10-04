@@ -23,6 +23,7 @@
 
 <script setup lang="ts">
 import { Size, ButtonType } from '~/constants'
+import { RouteLocationRaw } from '#vue-router'
 
 const props = defineProps({
   type: {
@@ -55,7 +56,7 @@ const props = defineProps({
     default: 0,
   },
   to: {
-    type: [String, Object] as PropType<string | object>,
+    type: [String, Object] as PropType<RouteLocationRaw>,
     default: undefined,
   },
   rounded: {

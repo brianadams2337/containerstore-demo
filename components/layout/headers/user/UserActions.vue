@@ -1,15 +1,15 @@
 <template>
   <div class="relative w-64">
-    <div v-if="!isGuestCustomer" class="space-y-2 p-3">
+    <div v-if="!isGuest" class="space-y-2 p-3">
       <AppButton
-        :to="{ name: routeList.user.name }"
+        :to="routeList.user"
         type="secondary"
         class="w-full"
         @click="closeUserFlyout">
         {{ $t('my_account.profile_menu') }}
       </AppButton>
       <AppButton
-        :to="{ name: routeList.orders.name }"
+        :to="routeList.orders"
         type="secondary"
         class="w-full"
         @click="closeUserFlyout">
@@ -35,6 +35,5 @@ const { closeUserFlyout } = useUiState()
 const { user } = await useUser()
 const { logout, isSubmitting } = await useAuthentication('logout')
 
-// TODO: clarify what we want to do with this component for guest customers
-const isGuestCustomer = computed(() => user.value?.status?.isGuestCustomer)
+const isGuest = computed(() => user.value?.status?.isGuestCustomer)
 </script>

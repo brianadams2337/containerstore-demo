@@ -4,7 +4,7 @@
       <AppButton
         type="secondary"
         class="w-full"
-        :to="{ name: routeList.signin.name }"
+        :to="routeList.signin"
         @click="closeUserFlyout">
         {{ $t('global.sign_in') }}
       </AppButton>
@@ -15,7 +15,7 @@
       </span>
       <AppButton
         type="ghost"
-        :to="{ name: routeList.signin.name }"
+        :to="routeList.signin"
         class="text-xs font-semibold leading-5 !tracking-wide">
         {{ $t('global.register') }}
       </AppButton>

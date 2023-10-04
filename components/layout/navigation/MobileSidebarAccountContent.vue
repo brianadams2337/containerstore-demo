@@ -4,28 +4,26 @@
       <div class="flex space-x-1 text-center font-semibold">
         <DefaultLink
           type="normal"
-          :to="{ name: routeList.signin.name }"
+          :to="routeList.signin"
           @click="closeSideNavigation">
           {{ $t('global.sign_in') }}
         </DefaultLink>
         <span>/</span>
         <DefaultLink
           type="normal"
-          :to="{ name: routeList.signin.name }"
+          :to="routeList.signin"
           @click="closeSideNavigation">
           {{ $t('global.register') }}
         </DefaultLink>
       </div>
     </div>
-    <div
-      v-else-if="!userSettingsActive"
-      class="flex flex-wrap items-center justify-between py-2">
+    <div v-else class="flex flex-wrap items-center justify-between py-2">
       <div class="break-all py-1 text-xs font-semibold text-primary">
         {{ $t('global.user_greeting', { name: user.firstName }) }}
       </div>
-      <div v-if="!userSettingsActive" class="text-xs font-medium text-primary">
+      <div v-if="!isGuest" class="text-xs font-medium text-primary">
         <DefaultLink
-          :to="{ name: routeList.account.name }"
+          :to="routeList.account"
           type="normal"
           @click="closeSideNavigation">
           <div class="inline-flex items-center">
@@ -41,5 +39,6 @@
 <script setup lang="ts">
 const { user } = await useUser()
 const { closeSideNavigation } = useUiState()
-const userSettingsActive = ref(false)
+
+const isGuest = computed(() => user.value?.status?.isGuestCustomer)
 </script>

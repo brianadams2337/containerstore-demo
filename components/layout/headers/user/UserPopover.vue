@@ -27,9 +27,5 @@ const { isGreaterOrEquals } = useViewport()
 const { openUserFlyout, closeUserFlyout, isUserFlyoutOpen } = useUiState()
 const { user } = await useUser()
 
-const link = computed(() => {
-  return user.value
-    ? { name: routeList.account.name }
-    : { name: routeList.signin.name }
-})
+const link = computed(() => (user.value ? routeList.account : routeList.signin))
 </script>
