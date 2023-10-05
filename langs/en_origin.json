@@ -21,7 +21,9 @@
     "minutes": "minute | minutes",
     "hours": "hour | hours",
     "days": "day | days",
-    "back": "Back"
+    "back": "Back",
+    "continue_shopping_label": "Continue shopping",
+    "sign_in_label": "Sign in"
   },
   "validation": {
     "email": "The {field} field must be a valid email",
@@ -100,9 +102,7 @@
     "heading": "Wishlist",
     "no_items_info": "You have no products on your wishlist.",
     "continue_shopping_info": "Shop our newest products or sign in to see saved products.",
-    "continue_shopping_label": "Continue shopping",
     "products_count": "0 products | {count} product | {count} products",
-    "sign_in_label": "Sign in",
     "product": "Produkt",
     "notification": {
       "add_to_wishlist": "{productName} has been added to your wishlist",
@@ -118,8 +118,6 @@
     "empty_title": "Your shopping cart is empty.",
     "empty_description": "Your products will appear as soon as you add them to your cart.",
     "continue_shopping_info": "Shop our newest products or sign in to see saved products.",
-    "continue_shopping_label": "Continue shopping",
-    "sign_in_label": "Sign in",
     "total": "Total",
     "shipping": "Shipping cost",
     "shipping_free": "Free",

@@ -37,19 +37,8 @@
         <EmptyState
           :title="$t('wishlist.no_items_info')"
           :description="$t('wishlist.continue_shopping_info')"
-          icon="IconEmptyWishlist">
-          <div class="mt-8 flex justify-center gap-4 md:justify-start">
-            <AppButton :to="{ name: routeList.home.name }" type="tertiary">
-              {{ $t('wishlist.continue_shopping_label') }}
-            </AppButton>
-            <AppButton
-              v-if="!isLoggedIn"
-              :to="{ name: routeList.signin.name }"
-              class="!normal-case">
-              {{ $t('wishlist.sign_in_label') }}
-            </AppButton>
-          </div>
-        </EmptyState>
+          icon="IconEmptyWishlist"
+          show-default-actions />
       </div>
     </template>
   </div>
@@ -72,7 +61,6 @@ const listingMetaData = {
 
 const wishlist = await useWishlist({ options: { lazy: true } })
 const basket = await useBasket({ options: { lazy: true } })
-const { isLoggedIn } = await useUser()
 const { $alert, $i18n } = useNuxtApp()
 
 const {

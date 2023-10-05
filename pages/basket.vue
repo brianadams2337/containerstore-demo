@@ -9,16 +9,8 @@
       <div>
         <EmptyState
           :title="$t('basket.empty_title')"
-          :description="$t('basket.empty_description')">
-          <div class="mt-8 flex justify-center gap-4 md:justify-start">
-            <AppButton type="primary" :to="{ name: routeList.signin.name }">
-              {{ $t('basket.sign_in_label') }}
-            </AppButton>
-            <AppButton :to="{ name: routeList.home.name }" type="tertiary">
-              {{ $t('basket.continue_shopping_label') }}
-            </AppButton>
-          </div>
-        </EmptyState>
+          :description="$t('basket.empty_description')"
+          show-default-actions />
       </div>
     </div>
     <div

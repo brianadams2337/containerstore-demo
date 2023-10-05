@@ -15,6 +15,16 @@
         class="mt-4 !block text-gray-700">
         {{ description }}
       </Headline>
+      <div
+        v-if="showDefaultActions"
+        class="mt-8 flex justify-center gap-4 md:justify-start">
+        <AppButton v-if="!isLoggedIn" :to="routeList.signin">
+          {{ $t('global.sign_in_label') }}
+        </AppButton>
+        <AppButton :to="routeList.home" type="tertiary">
+          {{ $t('global.continue_shopping_label') }}
+        </AppButton>
+      </div>
       <slot />
     </div>
   </div>
@@ -34,5 +44,11 @@ defineProps({
     type: String as PropType<'IconEmptyWishlist' | 'IconEmptyBasket'>,
     default: 'IconEmptyBasket',
   },
+  showDefaultActions: {
+    type: Boolean,
+    default: false,
+  },
 })
+
+const { isLoggedIn } = await useUser()
 </script>
