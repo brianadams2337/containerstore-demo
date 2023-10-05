@@ -275,7 +275,8 @@
     "size": "Size",
     "tax": "19% VAT",
     "total": "Total",
-    "quatity_label": ""
+    "no_order_found": "The order information could not be found.",
+    "continue_shopping_label": "Continue shopping"
   },
   "main_nav": {
     "back_to": "Back to \"{name}\"",

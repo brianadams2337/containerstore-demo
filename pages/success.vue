@@ -73,6 +73,15 @@
         </div>
       </div>
     </div>
+    <div v-else>
+      <EmptyState :title="$t('osp.no_order_found')">
+        <div class="mt-8 flex justify-center gap-4 md:justify-start">
+          <AppButton :to="{ name: routeList.home.name }" type="tertiary">
+            {{ $t('osp.continue_shopping_label') }}
+          </AppButton>
+        </div>
+      </EmptyState>
+    </div>
   </div>
 </template>
 
@@ -99,7 +108,7 @@ const { trackPurchaseEvent } = useTrackingEvents()
 watch(
   fetching,
   (isFetching) => {
-    if (!isFetching) {
+    if (!isFetching && orderData.value) {
       trackPurchaseEvent(orderData.value)
     }
   },
