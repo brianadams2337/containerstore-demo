@@ -68,12 +68,26 @@ const ORDERS_PER_PAGE = 8
 
 const route = useRoute()
 const router = useRouter()
+const { isGreaterOrEquals } = useViewport()
+
+// when mounted determines the first order that should be shown - if possible
+// this can only happen when order data is loaded before mounting.
+// usually this means: being rendered on the server
+onMounted(async () => {
+  if (
+    !route.params?.id &&
+    !props.isAccountPage &&
+    currentOrderId.value &&
+    isGreaterOrEquals('md') // On mobile the user should first see the order list
+  ) {
+    await router.push(getOrderDetailsRoute(currentOrderId.value))
+  }
+  updateSlicedOrders()
+})
 
 const { user } = await useUser()
 
 const currentPage = ref<number>(1)
-
-const { isGreaterOrEquals } = useViewport()
 
 const orders = computed(() => user?.value?.orderSummary ?? [])
 const currentOrderId = computed(() => {
@@ -110,20 +124,4 @@ const shouldDisplayOrderOverview = computed(
 // in case the orders are not yet fetchen when mounting, we need to later
 // set these values. Use Case: client-side navigation to the page
 watch(orders, () => updateSlicedOrders())
-
-// when mounted determines the first order that should be shown - if possible
-// this can only happen when order data is loaded before mounting.
-// usually this means: being rendered on the server
-
-onMounted(async () => {
-  if (
-    !route.params?.id &&
-    !props.isAccountPage &&
-    currentOrderId.value &&
-    isGreaterOrEquals('md') // On mobile the user should first see the order list
-  ) {
-    await router.push(getOrderDetailsRoute(currentOrderId.value))
-  }
-  updateSlicedOrders()
-})
 </script>

@@ -9,16 +9,8 @@
       <div>
         <EmptyState
           :title="$t('basket.empty_title')"
-          :description="$t('basket.empty_description')">
-          <div class="mt-8 flex justify-center gap-4 md:justify-start">
-            <AppButton type="primary" :to="{ name: routeList.signin.name }">
-              {{ $t('basket.sign_in_label') }}
-            </AppButton>
-            <AppButton :to="{ name: routeList.home.name }" type="tertiary">
-              {{ $t('basket.continue_shopping_label') }}
-            </AppButton>
-          </div>
-        </EmptyState>
+          :description="$t('basket.empty_description')"
+          show-default-actions />
       </div>
     </div>
     <div
@@ -68,32 +60,6 @@ import {
 } from '@scayle/storefront-nuxt'
 import { BasketListingMetadata, WishlistListingMetadata } from '~/constants'
 
-const basket = await useBasket({ options: { lazy: true } })
-const wishlist = await useWishlist({ options: { lazy: true } })
-
-if (basket.error.value) {
-  throw createError(basket.error.value)
-}
-
-const store = useStore()
-const route = useRoute()
-
-const listingMetaData = {
-  id: BasketListingMetadata.ID,
-  name: BasketListingMetadata.NAME,
-}
-const {
-  trackViewBasket,
-  trackRemoveFromBasket,
-  collectBasketItems,
-  trackSelectItem,
-  trackBasket,
-  trackWishlist,
-  collectProductListItems,
-} = useTrackingEvents()
-
-const { bundleByGroup } = await useBasketGroup()
-
 onMounted(() => {
   if (basket.items.value) {
     trackViewBasket(
@@ -122,6 +88,32 @@ onMounted(() => {
     )
   }
 })
+
+const basket = await useBasket({ options: { lazy: true } })
+const wishlist = await useWishlist({ options: { lazy: true } })
+
+if (basket.error.value) {
+  throw createError(basket.error.value)
+}
+
+const store = useStore()
+const route = useRoute()
+
+const listingMetaData = {
+  id: BasketListingMetadata.ID,
+  name: BasketListingMetadata.NAME,
+}
+const {
+  trackViewBasket,
+  trackRemoveFromBasket,
+  collectBasketItems,
+  trackSelectItem,
+  trackBasket,
+  trackWishlist,
+  collectProductListItems,
+} = useTrackingEvents()
+
+const { bundleByGroup } = await useBasketGroup()
 
 const trackProductClick = ({ product }: { product: Product }) => {
   trackSelectItem({

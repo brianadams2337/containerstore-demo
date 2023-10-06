@@ -184,10 +184,19 @@ const productId = computed(() => {
   )
 })
 
+onMounted(async () => {
+  store.value.pageTypeId = productId.value
+  if (!product.value) {
+    return
+  }
+  await useSleep(1000)
+  trackViewItem({ product: product.value })
+})
+
 const {
   data: product,
-  fetching,
   error,
+  fetching,
 } = await useProduct({
   params: {
     id: parseInt(productId.value),
@@ -443,15 +452,6 @@ const trackRecommendationClick = (product: Product, index: number) => {
     },
   })
 }
-
-onMounted(async () => {
-  store.value.pageTypeId = productId.value
-  if (!product.value) {
-    return
-  }
-  await useSleep(1000)
-  trackViewItem({ product: product.value })
-})
 
 definePageMeta({ pageType: 'pdp' })
 
