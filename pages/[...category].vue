@@ -196,7 +196,6 @@ const fetchParameters = computed(() => ({
 // CMS
 const {
   fetchBySlug,
-<<<<<<< HEAD
   data: cmsData,
   status: cmsStatus,
 } = useCms<SbListingPage>(`ListingPage-${route.path}`)
@@ -206,17 +205,6 @@ const fetchData = async () => {
     fetchProducts(fetchParameters.value),
     fetchBySlug(`categories/${selectedCategory.value?.id}`),
   ])
-=======
-  fetching: cmsFetching,
-  data: cmsData,
-  status: cmsStatus,
-  error: cmsError,
-} = useCms<SbListingPage>(`ListingPage-${route.path}`)
-
-const fetchData = async () => {
-  await fetchProducts(fetchParameters.value)
-  await fetchBySlug(`categories/${selectedCategory.value?.id}`)
->>>>>>> d98c5555 (Handled category and service pages errors)
 }
 
 if (
@@ -228,7 +216,6 @@ if (
   await fetchLazy(fetchData())
 }
 
-<<<<<<< HEAD
 const error = computed(() => {
   return productError.value || filterError.value || categoriesError.value
 })
@@ -238,29 +225,6 @@ if (error.value) {
 }
 
 const viewport = useViewport()
-=======
-if (
-  productError.value ||
-  filterError.value ||
-  categoriesError.value ||
-  cmsError.value
-) {
-  throw (
-    productError.value ||
-    filterError.value ||
-    categoriesError.value ||
-    cmsError.value
-  )
-}
-
-const { isGreaterOrEquals } = useViewport()
-
-const isFetched = computed(() => {
-  return (
-    !productsFetching && !categoriesFetching && !filtersFetching && !cmsFetching
-  )
-})
->>>>>>> d98c5555 (Handled category and service pages errors)
 
 const updateFilterCount = async (filter: Record<string, any>) => {
   await refreshProductCount({
