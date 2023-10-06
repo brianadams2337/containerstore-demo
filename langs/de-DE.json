@@ -272,11 +272,11 @@
     "order_nr": "Order-Nr.",
     "order_overview": "Bestellübersicht",
     "payment": "Zahlungsmethode",
-    "quatity_label": "Anzahl",
     "size": "Größe",
     "tax": "19% MwSt.",
     "total": "Summe",
-    "quantity_label": "Anzahl"
+    "quantity_label": "Anzahl",
+    "no_order_found": "Die Bestelldaten wurden nicht gefunden."
   },
   "main_nav": {
     "back_to": "Back to \"{name}\"",

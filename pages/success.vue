@@ -73,6 +73,9 @@
         </div>
       </div>
     </div>
+    <div v-else>
+      <EmptyState :title="$t('osp.no_order_found')" show-default-actions />
+    </div>
   </div>
 </template>
 
@@ -99,7 +102,7 @@ const { trackPurchaseEvent } = useTrackingEvents()
 watch(
   fetching,
   (isFetching) => {
-    if (!isFetching) {
+    if (!isFetching && orderData.value) {
       trackPurchaseEvent(orderData.value)
     }
   },
