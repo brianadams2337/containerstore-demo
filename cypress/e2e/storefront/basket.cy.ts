@@ -28,8 +28,8 @@ describe('Basket Feature', () => {
     Header.assertShoppingBagCounter(0)
     ProductListingPage.assertHeaderName(locale.basket.empty_title)
     cy.contains(locale.basket.empty_description)
-    cy.contains(locale.basket.continue_shopping_label)
-    cy.contains(locale.basket.sign_in_label)
+    cy.contains(locale.global.continue_shopping_label)
+    cy.contains(locale.global.sign_in_label)
   })
 
   it('check base fields presence on Basket page', () => {
@@ -111,8 +111,8 @@ describe('Basket Feature', () => {
     BasketPage.removeProductFromCart()
     cy.contains(locale.basket.empty_title)
     cy.contains(locale.basket.empty_description)
-    cy.contains(locale.basket.continue_shopping_label)
-    cy.contains(locale.basket.sign_in_label)
+    cy.contains(locale.global.continue_shopping_label)
+    cy.contains(locale.global.sign_in_label)
   })
 
   // ToDo: unskip the test after fix SCPF-4398 https://aboutyou.atlassian.net/browse/SCPF-4398
@@ -130,8 +130,8 @@ describe('Basket Feature', () => {
       BasketPage.removeProductFromCartBySwipe(0)
       cy.contains(locale.basket.empty_title)
       cy.contains(locale.basket.empty_description)
-      cy.contains(locale.basket.continue_shopping_label)
-      cy.contains(locale.basket.sign_in_label)
+      cy.contains(locale.global.continue_shopping_label)
+      cy.contains(locale.global.sign_in_label)
     })
   }
 

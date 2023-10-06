@@ -116,7 +116,7 @@ class WishlistPage extends BasePage {
             cy.wrap($el).click()
           })
           .then(() => {
-            cy.contains(locale.wishlist.continue_shopping_label)
+            cy.contains(locale.global.continue_shopping_label)
           })
       }
     })
@@ -128,14 +128,12 @@ class WishlistPage extends BasePage {
 
   assertThatContinueShoppingButtonIsPresent() {
     cy.get(this.pageElements.continueShoppingButton).contains(
-      locale.wishlist.continue_shopping_label,
+      locale.global.continue_shopping_label,
     )
   }
 
   assertThatSignInButtonIsPresent() {
-    cy.get(this.pageElements.signInButton).contains(
-      locale.wishlist.sign_in_label,
-    )
+    cy.get(this.pageElements.signInButton).contains(locale.global.sign_in_label)
   }
 
   assertThatWishlistIsEmpty() {
@@ -148,7 +146,7 @@ class WishlistPage extends BasePage {
   assertThatSignInButtonIsNotPresent() {
     cy.get(this.pageElements.emptyWishlistButtons)
       .children('a')
-      .should('not.contain', locale.wishlist.sign_in_label)
+      .should('not.contain', locale.global.sign_in_label)
   }
 }
 export default new WishlistPage()

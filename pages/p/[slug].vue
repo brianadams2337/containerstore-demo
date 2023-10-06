@@ -1,6 +1,6 @@
 <template>
   <ProductDetailSkeleton v-if="fetching" />
-  <PageContent v-else>
+  <PageContent v-else-if="product">
     <GoBackLink use-window-history class="mt-4 md:ml-7 md:mt-7" />
     <div class="flex flex-1 flex-col items-start md:flex-row md:gap-3">
       <ProductImageGallery
@@ -176,6 +176,32 @@ const route = useRoute()
 const store = useStore()
 
 const { $alert, $i18n, $config } = useNuxtApp()
+
+// TODO slug is a stringified productName + productId combination. this can be automatically split into name and id by using the route structure name_id with an underscore in the route.ts helper
+const productId = computed(() => {
+  return String(route.params.slug)?.substring(
+    route.params.slug.lastIndexOf('-') + 1,
+  )
+})
+
+const {
+  data: product,
+  error,
+  fetching,
+} = await useProduct({
+  params: {
+    id: parseInt(productId.value),
+  },
+  options: {
+    lazy: true,
+  },
+  key: `useProduct-${productId.value}`,
+})
+
+if (error.value) {
+  throw createError(error.value)
+}
+
 const { fetching: basketIdle, addItem: addBasketItem } = await useBasket({
   options: { lazy: true, autoFetch: true },
 })
@@ -191,23 +217,6 @@ const { state: zoomGallery, toggle: toggleZoomGallery } =
 
 const { trackAddToBasket, trackViewItemList, trackViewItem, trackSelectItem } =
   useTrackingEvents()
-
-// TODO slug is a stringified productName + productId combination. this can be automatically split into name and id by using the route structure name_id with an underscore in the route.ts helper
-const productId = computed(() => {
-  return String(route.params.slug)?.substring(
-    route.params.slug.lastIndexOf('-') + 1,
-  )
-})
-
-const { data: product, fetching } = await useProduct({
-  params: {
-    id: parseInt(productId.value),
-  },
-  options: {
-    lazy: true,
-  },
-  key: `useProduct-${productId.value}`,
-})
 
 const isWishlistToggling = ref(false)
 
