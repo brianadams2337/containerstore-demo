@@ -10,26 +10,27 @@ export default <T = unknown>(key: string) => {
   const status = useState<Status>(`status-${key}`, () => 'idle')
   const error = useState(`error-${key}`)
 
+  const storyblokApi = useStoryblokApi()
+
   async function fetchBySlug(slug: string) {
     status.value = 'pending'
     fetching.value = true
     try {
-      const storyData = await useAsyncStoryblok(slug, {
-        version: getStoryblokContentVersion(),
-      })
-      data.value = storyData.value
+      const { data: storyData } = await storyblokApi.get(
+        `cdn/stories/${slug}`, {
+          version: getStoryblokContentVersion(),
+        }
+      );
+      data.value = storyData.story
     } catch (e) {
       error.value = e
-      log.error(`Error fetching CMS Slug`, e)
+      log.error(`Error fetching CMS Slug: ${slug}`, e)
     } finally {
       fetching.value = false
       status.value = error.value ? 'error' : 'success'
     }
   }
 
-  // Limitation of useStoryblokAsync not being able to fetch multiple stories, thus as a work around using storyblokApi
-  // https://github.com/storyblok/storyblok-nuxt/issues/547#issuecomment-1697844103
-  const storyblokApi = useStoryblokApi()
   async function fetchByFolder(folder: string, options?: ISbStoriesParams) {
     fetching.value = true
     status.value = 'pending'
