@@ -1222,30 +1222,6 @@
   optionalDependencies:
     ipx "^2.0.0-1"
 
-"@nuxt/kit@3.7.3":
-  version "3.7.3"
-  resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.7.3.tgz#24a32bdf2eaa3f8f6c81079fb2a3543980b55d26"
-  integrity sha512-bhP02i6CNti15Z4ix3LpR3fd1ANtTcpfS3CDSaCja24hDt3UxIasyp52mqD9LRC+OxrUVHJziB18EwUtS6RLDQ==
-  dependencies:
-    "@nuxt/schema" "3.7.3"
-    c12 "^1.4.2"
-    consola "^3.2.3"
-    defu "^6.1.2"
-    globby "^13.2.2"
-    hash-sum "^2.0.0"
-    ignore "^5.2.4"
-    jiti "^1.20.0"
-    knitwork "^1.0.0"
-    mlly "^1.4.2"
-    pathe "^1.1.1"
-    pkg-types "^1.0.3"
-    scule "^1.0.0"
-    semver "^7.5.4"
-    ufo "^1.3.0"
-    unctx "^2.3.1"
-    unimport "^3.3.0"
-    untyped "^1.4.0"
-
 "@nuxt/kit@3.7.4", "@nuxt/kit@^3.3.2", "@nuxt/kit@^3.4.0", "@nuxt/kit@^3.5.1", "@nuxt/kit@^3.5.3", "@nuxt/kit@^3.6.5", "@nuxt/kit@^3.7.0", "@nuxt/kit@^3.7.4":
   version "3.7.4"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.7.4.tgz#31c0bd57397cc56a1098af5d6504353cc2e855a2"
@@ -1283,22 +1259,6 @@
     postcss-loader "^4.1.0"
     postcss-url "^10.1.1"
     semver "^7.3.4"
-
-"@nuxt/schema@3.7.3":
-  version "3.7.3"
-  resolved "https://registry.yarnpkg.com/@nuxt/schema/-/schema-3.7.3.tgz#84b2ee481200f764ac76201ba92de0a2fa04f3f1"
-  integrity sha512-Uqe3Z9RnAROzv5owQo//PztD9d4csKK6ulwQO1hIAinCh34X7z2zrv9lhm14hlRYU1n7ISEi4S7UeHgL/r8d8A==
-  dependencies:
-    "@nuxt/ui-templates" "^1.3.1"
-    defu "^6.1.2"
-    hookable "^5.5.3"
-    pathe "^1.1.1"
-    pkg-types "^1.0.3"
-    postcss-import-resolver "^2.0.0"
-    std-env "^3.4.3"
-    ufo "^1.3.0"
-    unimport "^3.3.0"
-    untyped "^1.4.0"
 
 "@nuxt/schema@3.7.4", "@nuxt/schema@^3.7.4":
   version "3.7.4"
