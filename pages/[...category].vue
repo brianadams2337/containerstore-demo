@@ -3,87 +3,85 @@
     <div v-if="hasTeaserImage">
       <CmsImage :blok="cmsContent" is-teaser />
     </div>
-    <PageContent v-if="isFetched">
-      <div class="sm:flex">
-        <div v-if="isGreaterOrEquals('md')" class="-ml-4 w-1/3 lg:w-1/5">
-          <SideNavigation
-            v-if="categories && 'children' in categories && categories.children"
-            :categories="categories.children"
-            :fetching="categoriesFetching"
-            :root-category="categories"
-            show-nested-categories />
-        </div>
-        <div class="w-full">
-          <template v-if="preListingContent && isFirstPage">
-            <component
-              :is="preContent.component"
-              v-for="preContent in preListingContent"
-              :key="preContent._uid"
-              :blok="preContent" />
-          </template>
+    <PageContent v-if="products?.length" class="sm:flex">
+      <div v-if="viewport.isGreaterOrEquals('md')" class="-ml-4 w-1/3 lg:w-1/5">
+        <SideNavigation
+          v-if="categories && 'children' in categories && categories.children"
+          :categories="categories.children"
+          :fetching="categoriesFetching"
+          :root-category="categories"
+          show-nested-categories />
+      </div>
+      <div class="w-full">
+        <template v-if="preListingContent && isFirstPage">
+          <component
+            :is="preContent.component"
+            v-for="preContent in preListingContent"
+            :key="preContent._uid"
+            :blok="preContent" />
+        </template>
 
+        <div
+          class="flex flex-col items-start justify-between overflow-x-hidden">
+          <ProductListBreadcrumbs />
           <div
-            class="flex flex-col items-start justify-between overflow-x-hidden">
-            <ProductListBreadcrumbs />
-            <div
-              class="mt-2 flex w-full flex-col justify-between space-y-2 md:flex-row">
-              <ProductQuickFilters
-                :filters="quickFilters"
-                :loading="filtersFetching"
-                :total-count="unfilteredCount"
-                @click:selected-filter="applyFilter($event, true)" />
-              <div class="order-1 flex items-center space-x-4 text-sm">
-                <SortingMenu
-                  :selected="selectedSort.name"
-                  :values="sortingValues" />
-                <AppButton
-                  data-test-id="filter-toggle-button"
-                  type="tertiary"
-                  size="sm"
-                  @click="toggleFilter">
-                  <template #icon="{ _class }">
-                    <IconFilter :class="_class" />
-                  </template>
-                  {{ $t('plp.filter') }}
-                </AppButton>
-              </div>
+            class="mt-2 flex w-full flex-col justify-between space-y-2 md:flex-row">
+            <ProductQuickFilters
+              :filters="quickFilters"
+              :loading="filtersFetching"
+              :total-count="unfilteredCount"
+              @click:selected-filter="applyFilter($event, true)" />
+            <div class="order-1 flex items-center space-x-4 text-sm">
+              <SortingMenu
+                :selected="selectedSort.name"
+                :values="sortingValues" />
+              <AppButton
+                data-test-id="filter-toggle-button"
+                type="tertiary"
+                size="sm"
+                @click="toggleFilter">
+                <template #icon="{ _class }">
+                  <IconFilter :class="_class" />
+                </template>
+                {{ $t('plp.filter') }}
+              </AppButton>
             </div>
           </div>
-          <ProductList
-            :loading="productsFetching"
-            :per-page="PRODUCTS_PER_PAGE"
-            :products="products"
-            :refreshing="productsFetching"
-            class="mt-8 grid w-auto grid-cols-12 gap-1"
-            @click:product="trackProductClick"
-            @intersect:row="trackViewListing" />
-          <NuxtLazyHydrate :when-visible="{ rootMargin: '100px' }">
-            <Pagination
-              v-if="pagination"
-              class="mt-16"
-              :current-page="pagination.page"
-              :first-page="pagination.first"
-              :last-page="pagination.last" />
-          </NuxtLazyHydrate>
-
-          <template v-if="postListingContent && isFirstPage">
-            <component
-              :is="preContent.component"
-              v-for="preContent in postListingContent"
-              :key="preContent._uid"
-              :blok="preContent" />
-          </template>
         </div>
-        <FilterSlideIn
-          v-if="filters"
-          :active-filters="activeFilters"
-          :filters="filters"
-          :filtered-count="filteredProductsCount"
-          :unfiltered-count="unfilteredCount"
-          :fetching-filtered-count="productCountFetching"
-          @filter:apply="applyFilter"
-          @filter:state-changed="updateFilterCount($event)" />
+        <ProductList
+          :loading="productsFetching"
+          :per-page="PRODUCTS_PER_PAGE"
+          :products="products"
+          :refreshing="productsFetching"
+          class="mt-8 grid w-auto grid-cols-12 gap-1"
+          @click:product="trackProductClick"
+          @intersect:row="trackViewListing" />
+        <NuxtLazyHydrate :when-visible="{ rootMargin: '100px' }">
+          <Pagination
+            v-if="pagination"
+            class="mt-16"
+            :current-page="pagination.page"
+            :first-page="pagination.first"
+            :last-page="pagination.last" />
+        </NuxtLazyHydrate>
+
+        <template v-if="postListingContent && isFirstPage">
+          <component
+            :is="preContent.component"
+            v-for="preContent in postListingContent"
+            :key="preContent._uid"
+            :blok="preContent" />
+        </template>
       </div>
+      <FilterSlideIn
+        v-if="filters"
+        :active-filters="activeFilters"
+        :filters="filters"
+        :filtered-count="filteredProductsCount"
+        :unfiltered-count="unfilteredCount"
+        :fetching-filtered-count="productCountFetching"
+        @filter:apply="applyFilter"
+        @filter:state-changed="updateFilterCount($event)" />
     </PageContent>
   </div>
 </template>
@@ -233,10 +231,8 @@ const fetchParameters = computed(() => ({
 // CMS
 const {
   fetchBySlug,
-  fetching: cmsFetching,
   data: cmsData,
   status: cmsStatus,
-  error: cmsError,
 } = useCms<SbListingPage>(`ListingPage-${route.path}`)
 
 const fetchData = async () => {
@@ -253,27 +249,15 @@ if (
   await fetchLazy(fetchData())
 }
 
-if (
-  productError.value ||
-  filterError.value ||
-  categoriesError.value ||
-  cmsError.value
-) {
-  throw (
-    productError.value ||
-    filterError.value ||
-    categoriesError.value ||
-    cmsError.value
-  )
+const error = computed(() => {
+  return productError.value || filterError.value || categoriesError.value
+})
+
+if (error.value) {
+  throw error.value
 }
 
-const { isGreaterOrEquals } = useViewport()
-
-const isFetched = computed(() => {
-  return (
-    !productsFetching && !categoriesFetching && !filtersFetching && !cmsFetching
-  )
-})
+const viewport = useViewport()
 
 const updateFilterCount = async (filter: Record<string, any>) => {
   await refreshProductCount({
@@ -283,9 +267,7 @@ const updateFilterCount = async (filter: Record<string, any>) => {
 
 watch(
   () => route.query,
-  async () => {
-    await fetchProducts(fetchParameters.value)
-  },
+  async () => await fetchProducts(fetchParameters.value),
 )
 
 const trackProductClick = (product: Product) => {
