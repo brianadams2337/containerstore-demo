@@ -3,7 +3,7 @@
     <div v-if="hasTeaserImage">
       <CmsImage :blok="cmsContent" is-teaser />
     </div>
-    <PageContent>
+    <PageContent v-if="isFetched">
       <div class="sm:flex">
         <div v-if="isGreaterOrEquals('md')" class="-ml-4 w-1/3 lg:w-1/5">
           <SideNavigation
@@ -109,8 +109,6 @@ const listingMetaData = {
   id: 'CategoryProductList',
 }
 
-const { isGreaterOrEquals } = useViewport()
-
 const route = useRoute()
 const store = useStore()
 
@@ -183,12 +181,6 @@ const {
   },
 })
 
-const updateFilterCount = async (filter: Record<string, any>) => {
-  await refreshProductCount({
-    where: transformToWhereCondition(filter),
-  })
-}
-
 const customDefaultSorting = computed(
   () => selectedCategory.value?.shopLevelCustomData?.defaultSorting,
 )
@@ -237,6 +229,57 @@ const fetchParameters = computed(() => ({
     ...selectedSort.value,
   },
 }))
+
+// CMS
+const {
+  fetchBySlug,
+  fetching: cmsFetching,
+  data: cmsData,
+  status: cmsStatus,
+  error: cmsError,
+} = useCms<SbListingPage>(`ListingPage-${route.path}`)
+
+const fetchData = async () => {
+  await fetchProducts(fetchParameters.value)
+  await fetchBySlug(`categories/${selectedCategory.value?.id}`)
+}
+
+if (
+  productStatus.value === 'idle' ||
+  filterStatus.value === 'idle' ||
+  categoriesStatus.value === 'idle' ||
+  cmsStatus.value === 'idle'
+) {
+  await fetchLazy(fetchData())
+}
+
+if (
+  productError.value ||
+  filterError.value ||
+  categoriesError.value ||
+  cmsError.value
+) {
+  throw (
+    productError.value ||
+    filterError.value ||
+    categoriesError.value ||
+    cmsError.value
+  )
+}
+
+const { isGreaterOrEquals } = useViewport()
+
+const isFetched = computed(() => {
+  return (
+    !productsFetching && !categoriesFetching && !filtersFetching && !cmsFetching
+  )
+})
+
+const updateFilterCount = async (filter: Record<string, any>) => {
+  await refreshProductCount({
+    where: transformToWhereCondition(filter),
+  })
+}
 
 watch(
   () => route.query,
@@ -301,32 +344,6 @@ const quickFilters = computed(() =>
       )
     : [],
 )
-
-// CMS
-const {
-  fetchBySlug,
-  data: cmsData,
-  status: cmsStatus,
-} = useCms<SbListingPage>(`ListingPage-${route.path}`)
-
-const fetchData = async () => {
-  await fetchProducts(fetchParameters.value)
-  await fetchBySlug(`categories/${selectedCategory.value?.id}`)
-  if (productError.value || filterError.value || categoriesError.value) {
-    throw createError(
-      productError.value || filterError.value || categoriesError.value,
-    )
-  }
-}
-
-if (
-  productStatus.value === 'idle' ||
-  filterStatus.value === 'idle' ||
-  categoriesStatus.value === 'idle' ||
-  cmsStatus.value === 'idle'
-) {
-  await fetchLazy(fetchData())
-}
 
 const { content, hasTeaserImage, postListingContent, preListingContent } =
   useCmsListingContent(cmsData)
