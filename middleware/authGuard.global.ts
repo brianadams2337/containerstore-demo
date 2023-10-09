@@ -43,10 +43,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
     })
   }
   if (isLoggedIn.value && isProtectRouteForGuest) {
-    let redirectPath = routeList.home.path
-    if (to.query.redirectUrl) {
-      redirectPath = to.query.redirectUrl as string
-    }
+    const redirectPath = (to.query.redirectUrl as string) || routeList.home.path
     return navigateTo({ path: redirectPath })
   }
 })
