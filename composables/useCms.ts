@@ -17,10 +17,11 @@ export default <T = unknown>(key: string) => {
     fetching.value = true
     try {
       const { data: storyData } = await storyblokApi.get(
-        `cdn/stories/${slug}`, {
+        `cdn/stories/${slug}`,
+        {
           version: getStoryblokContentVersion(),
-        }
-      );
+        },
+      )
       data.value = storyData.story
     } catch (e) {
       error.value = e

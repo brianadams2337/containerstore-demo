@@ -28,7 +28,8 @@
   background-color: rgb(0 0 0 / 0.16);
 }
 
-.vue-slider-mark:first-child .vue-slider-mark-step, .vue-slider-mark:last-child .vue-slider-mark-step {
+.vue-slider-mark:first-child .vue-slider-mark-step,
+.vue-slider-mark:last-child .vue-slider-mark-step {
   display: none;
 }
 
@@ -71,7 +72,7 @@
 }
 
 .vue-slider-dot-tooltip-inner::after {
-  content: "";
+  content: '';
   position: absolute;
 }
 
