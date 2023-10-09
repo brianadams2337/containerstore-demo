@@ -53,7 +53,7 @@ The apiBaseUrl configuration is no longer available, but will be reintroduced in
 
 ### sessionCookieDomain
 
-The sessionCookieDomain option has been removed. This is a leftover option that was never used in `storefront-nuxt2` either. The best way to configure the domain of a session cookie is through the `session.domain` option.
+The `sessionCookieDomain` option has been removed. This is a leftover option that was never used in `storefront-nuxt2` either. The best way to configure the domain of a session cookie is through the `session.domain` option.
 
 ### rpcMethods, rpcDir and rpcMethodNames
 
@@ -70,7 +70,7 @@ Fetching store configurations on demand is not supported in `storefront-nuxt` at
 ### withParameters
 
 Storefront config now supports `withParams` option so that we can pass the `with` parameters through the shop and set them as default parameters within certain composables (e.g `useWishlist`).
-Furthermore, as a third default, the `min with` parameters constant is set for the composables where it's needed.
+Furthermore, as a third default, the min with (e.g `MIN_WITH_PARAMS_BASKET`) parameters constant is set for the composables where it's needed.
 
 ```ts
 const defaultWithParams = useNuxtApp().$runtimeConfig.public.withParams.wishlist
