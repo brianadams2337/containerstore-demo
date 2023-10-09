@@ -1,7 +1,11 @@
 export default defineNuxtRouteMiddleware(async (to) => {
   const { isLoggedIn, user } = await useUser()
-
-  const localePath = useLocalePath()
+  const localePath = (routePath: LinkList[keyof LinkList]['path']) => {
+    const getLocalPath = useLocalePath({
+      route: routePath,
+    })
+    return getLocalPath(routePath) || routePath
+  }
 
   const getProtectedRoutes = (exclude: (keyof LinkList)[] = []) => {
     const routes = Object.entries(
