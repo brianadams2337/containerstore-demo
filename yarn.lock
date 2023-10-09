@@ -9015,7 +9015,7 @@ redis-parser@^3.0.0:
   dependencies:
     redis-errors "^1.0.0"
 
-redis@4.6.10:
+redis@4, redis@4.6.10:
   version "4.6.10"
   resolved "https://registry.yarnpkg.com/redis/-/redis-4.6.10.tgz#07f6ea2b2c5455b098e76d1e8c9b3376114e9458"
   integrity sha512-mmbyhuKgDiJ5TWUhiKhBssz+mjsuSI/lSZNPI9QvZOYzWvYGejtb+W3RlDDf8LD6Bdl5/mZeG8O1feUGhXTxEg==
@@ -10498,7 +10498,7 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@^5.0.0, typescript@^5.1.6:
+typescript@5.2.2, typescript@^5.0.0, typescript@^5.1.6:
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.2.2.tgz#5ebb5e5a5b75f085f22bc3f8460fba308310fa78"
   integrity sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==
