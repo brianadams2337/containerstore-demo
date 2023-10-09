@@ -56,14 +56,14 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 
 ### Component: `SlideShow`
 
-- *Options:*
+- _Options:_
   - `h1`: accepts a string
   - `slides`: accepts a list of `SbSlide`
   - `margin_top`: accepts a string
 
 ### Component: `Slide`
 
-- *Options:*
+- _Options:_
   - `image`: accepts an image or video
   - `topline`: accepts a string
   - `headline`: accepts a string
@@ -75,7 +75,7 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 
 ### Component: `ImageSlider`
 
-- *Options:*
+- _Options:_
   - `headline`: accepts an string
   - `cta_label`: accepts an string
   - `cta_url`: accepts an string
@@ -84,23 +84,23 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 
 ### Component: `ImageSliderSlide`
 
-- *Options:*
+- _Options:_
   - `image`: accepts an image or video
-  - `topline`: accepts a  string
-  - `headline`: accepts a  string
-  - `is_new`: accepts a  boolean
-  - `cta_label`: accepts a  string
+  - `topline`: accepts a string
+  - `headline`: accepts a string
+  - `is_new`: accepts a boolean
+  - `cta_label`: accepts a string
   - `cta_url`: accepts a link
-  - `item_id`: accepts a  string
-  - `item_name`: accepts a  string
-  - `promotion_id`: accepts a  string
-  - `promotion_name`: accepts a  string
-  - `creative_name`: accepts a  string
-  - `creative_slot`: accepts a  string
+  - `item_id`: accepts a string
+  - `item_name`: accepts a string
+  - `promotion_id`: accepts a string
+  - `promotion_name`: accepts a string
+  - `creative_name`: accepts a string
+  - `creative_slot`: accepts a string
 
 ### Component: `Grid`
 
-- *Options:*
+- _Options:_
   - `margin_top`: accepts a string
   - `is_containered`: accepts a boolean
   - `is_containered_desktop`: accepts a boolean
@@ -109,7 +109,7 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 
 ### Component: `GridTile`
 
-- *Options:*
+- _Options:_
   - `content`: accepts a reference to a placable Storyblok component
   - `headline`: accepts a string
   - `cta`: accepts a string
@@ -117,7 +117,7 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 
 ### Component: `ImageText`
 
-- *Options:*
+- _Options:_
   - `align`: accepts a string
   - `image`: accepts a list of `SbCmsImage`
   - `topline`: accepts a string
@@ -129,7 +129,7 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 
 ### Component: `ProductSlider`
 
-- *Options:*
+- _Options:_
   - `headline`: accepts a string
   - `cta_label`: accepts a string
   - `cta_url`: accepts a string
@@ -138,7 +138,7 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 
 ### Component: `Banner`
 
-- *Options:*
+- _Options:_
   - `is_active`: accepts a boolean
   - `type`: accepts a string
   - `body`: accepts richtext
@@ -156,7 +156,7 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 
 ### Component: `Story`
 
-- *Options:*
+- _Options:_
   - `color`: accepts a string
   - `image`: accepts an image or video
   - `label`: accepts a string
@@ -166,7 +166,7 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 
 #### Component: `Footer`
 
-- *Options:*
+- _Options:_
   - `text`: accepts richtext
   - `align_right`: boolean
   - `link_groups`: accepts a list of `SbLinkGroup`
@@ -175,13 +175,13 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 
 #### Component: `LinkGroup`
 
-- *Options:*
+- _Options:_
   - `title`: accepts a string
   - `links`: accepts a list of links
 
 #### Component: `Link`
 
-- *Options:*
+- _Options:_
   - `label`: accepts a string
   - `cta_url`: accepts a link
   - `open_in_new_tab`: accepts a boolean
@@ -190,7 +190,7 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 
 #### Component: `ListingPage`
 
-- *Options:*
+- _Options:_
   - `teaser_image`: accepts an image or video
   - `teaser_image_mobile`: accepts an image or video
   - `pre_listing_content`: accepts a list of references to placable Storyblok components
@@ -202,14 +202,14 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 
 #### Component: `Accordion`
 
-- *Options:*
+- _Options:_
   - `has_link_list`: accepts a boolean
   - `entries`: accept a list of `SbAccordionEntry`
   - `margin_top`: accepts a string
 
 #### Component: `AccordionEntry`
 
-- *Options:*
+- _Options:_
   - `title`: accepts a string
   - `link_title`: accepts a string
   - `body`: accepts richtext
@@ -218,7 +218,7 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 
 ### Component: `Content Page`
 
-- *Options:*
+- _Options:_
   - `teaser_image`: accepts an image or video
   - `teaser_image_mobile`: accepts an image or video
   - `headline`: accepts a string
@@ -231,7 +231,7 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 
 ### Component: `Video`
 
-- *Options:*
+- _Options:_
   - `margin_top:` accepts a string
   - `control_color`: accepts a string
   - `autoplay`: accepts a boolean
@@ -252,7 +252,7 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 
 ### Component: `ClickableImage`
 
-- *Options:*
+- _Options:_
   - `item_id`: accepts a string
   - `image`: accepts an image
   - `cta_url`: accepts a link
@@ -267,7 +267,7 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 
 ### Component: `CmsImage`
 
-- *Options:*
+- _Options:_
   - `desktop_image`: accepts an image
   - `mobile_image`: accepts an image
   - `item_id`: accepts a string
@@ -281,19 +281,19 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 
 ### Component: `CmsText`
 
-- *Options:*
+- _Options:_
   - `body`: accepts richtext
 
 ### Component: `DoubleColumn`
 
-- *Options:*
+- _Options:_
   - `column_left`: accepts references to placable Storyblok components
   - `column_left`: accepts references to placable Storyblok components
   - `margin_top`: accepts a string
 
 ### Component: `Paragraph`
 
-- *Options:*
+- _Options:_
   - `headline`: accepts a string
   - `cta`: accepts a link
   - `body`: accepts richtext

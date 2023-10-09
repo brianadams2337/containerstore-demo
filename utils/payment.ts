@@ -6,7 +6,13 @@ import IconPaymentDinersclub from '@/assets/icons/payment/dinersclub.svg'
 import IconPaymentRatepay from '@/assets/icons/payment/ratepay.svg'
 import IconPaymentKlarna from '@/assets/icons/payment/klarna.svg'
 import IconPaymentPaypal from '@/assets/icons/payment/paypal.svg'
-import { PaymentIconsMap } from '~/types'
+
+export type PaymentIcon = {
+  component: any
+  width: number
+}
+
+export type PaymentIconsMap = { [key: string]: PaymentIcon }
 
 const paymentIconsMap: PaymentIconsMap = {
   ratepay_directdebit: {

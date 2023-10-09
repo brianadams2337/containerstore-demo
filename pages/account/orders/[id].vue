@@ -25,8 +25,6 @@
 </template>
 
 <script setup lang="ts">
-import { Order } from '~/types/osp'
-
 const route = useRoute()
 const paramId = computed(() => +route.params.id)
 

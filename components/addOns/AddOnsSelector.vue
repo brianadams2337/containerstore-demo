@@ -20,8 +20,16 @@
 </template>
 
 <script setup lang="ts">
-import { getFirstAttributeValue } from '@scayle/storefront-nuxt'
-import { AddOnItem } from '~/types'
+import {
+  getFirstAttributeValue,
+  type CentAmount,
+} from '@scayle/storefront-nuxt'
+
+type AddOnItem = {
+  label: string
+  price: CentAmount
+  variantId: number
+}
 
 const props = defineProps({
   addOnVariantIds: {

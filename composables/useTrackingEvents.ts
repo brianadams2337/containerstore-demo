@@ -1,5 +1,3 @@
-import { TrackingEvent, TrackingPayload } from '~/types/tracking'
-
 /**
  * Higher order composable which serves as a single entry point to unify different ecommerce tracking events
  */

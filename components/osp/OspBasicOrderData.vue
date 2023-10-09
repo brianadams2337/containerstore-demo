@@ -18,8 +18,6 @@
 </template>
 
 <script setup lang="ts">
-import { Order } from '~/types/osp'
-
 const props = defineProps({
   id: {
     type: Number as PropType<Order['id']>,

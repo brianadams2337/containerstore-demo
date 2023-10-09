@@ -1,5 +1,3 @@
-import { PageType } from '~/types/tracking'
-
 type Store = {
   pageType: PageType
   pageTypeId: string

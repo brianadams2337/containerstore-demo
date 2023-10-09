@@ -29,8 +29,6 @@
 </template>
 
 <script setup lang="ts">
-import { Order } from '~/types/osp'
-
 defineProps({
   cost: {
     type: Object as PropType<Order['cost']>,

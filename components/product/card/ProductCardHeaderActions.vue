@@ -28,7 +28,6 @@
 
 <script setup lang="ts">
 import { Product } from '@scayle/storefront-nuxt'
-import { ListItem } from '~/types/tracking'
 
 const props = defineProps({
   product: {

@@ -2,11 +2,6 @@ import {
   BrandOrCategorySuggestion,
   ProductSuggestion,
 } from '@scayle/storefront-nuxt'
-import {
-  TrackSearchEventParams,
-  TrackingEvent,
-  TrackingPayload,
-} from '~/types/tracking'
 
 const useSearchEvents = (
   track: (event: TrackingEvent, payload: TrackingPayload) => any,

@@ -14,22 +14,6 @@ import {
   AppliedReduction,
   WishlistResponseData,
 } from '@scayle/storefront-nuxt'
-import {
-  CustomerData,
-  CustomerInfo,
-  ProductActionData,
-  TrackingCategory,
-  ProductInfo,
-  ProductListData,
-  ProductViewData,
-  TrackingEvent,
-  TrackingPayload,
-  AdditionalInfo,
-  ViewInfo,
-  AdditionalTrackingEvent,
-  MultipleActionData,
-  EcommerceTrackingEvent,
-} from '~/types/tracking'
 
 // TODO: Add tests
 

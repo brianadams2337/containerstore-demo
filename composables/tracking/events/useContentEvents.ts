@@ -1,5 +1,3 @@
-import { PageType, TrackingEvent, TrackingPayload } from '~/types/tracking'
-
 const useContentEvents = (
   track: (event: TrackingEvent, payload: TrackingPayload) => any,
 ) => ({

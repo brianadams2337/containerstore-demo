@@ -4,15 +4,6 @@ import {
   Variant,
   BasketTotalPrice,
 } from '@scayle/storefront-nuxt'
-import {
-  BasketData,
-  BasicViewData,
-  ProductActionData,
-  ProductListData,
-  TrackAddToBasketParams,
-  TrackingEvent,
-  TrackingPayload,
-} from '~/types/tracking'
 
 const useBasketEvents = (
   track: (event: TrackingEvent, payload: TrackingPayload) => any,

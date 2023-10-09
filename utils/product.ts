@@ -4,10 +4,16 @@ import {
   getLowestPrice,
   getAppliedReductionsByCategory,
 } from '@scayle/storefront-nuxt'
-import { VariantAvailability } from '~/types'
 import { ColorMap, MINIMUM_QUANTITY_IMMEDIATE_AVAILABILITY } from '~/constants'
 
 export { ProductImageType } from '@scayle/storefront-nuxt'
+
+export type VariantAvailability = {
+  available: boolean
+  type: 'immediate' | 'soon' | 'unavailable'
+  text: string
+  textArgs?: any
+}
 
 export const getLowestPriceBetweenVariants = (product: Product) => {
   return product.variants && getLowestPrice(product.variants)

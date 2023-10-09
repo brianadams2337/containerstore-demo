@@ -8,7 +8,6 @@ import {
   Product,
   ProductCategory,
 } from '@scayle/storefront-nuxt'
-import { OrderItemProduct, OrderItemVariant } from '~/types/tracking'
 
 const getItems = (orderData: Order, currency?: string) => {
   const defaultEmptyValue = ''

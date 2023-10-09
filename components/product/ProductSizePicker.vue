@@ -60,7 +60,6 @@ import {
   isVariantInStock,
   Variant,
 } from '@scayle/storefront-nuxt'
-import { VariantSize } from '~/types/product'
 import { getVariantAvailability } from '~/utils/product'
 
 const props = defineProps({
@@ -116,19 +115,16 @@ watch(
   { immediate: true },
 )
 
-const selectedSize: ComputedRef<VariantSize | undefined> = computed<
-  VariantSize | undefined
->(() => _sizes.value.find((s) => s.value === props.value))
+const sizes = computed(() => getVariantSizes(props.variants))
+const selectedSize = computed(() => {
+  return _sizes.value.find((s) => s.value === props.value)
+})
 
 const selectSize = (newSize: VariantSize) => {
   emit('select-size', newSize)
-  emit(
-    'input',
-    props.variants.find(
-      (variant: Variant) => variant.id === newSize?.variantId,
-    ),
+  const found = props.variants.find(
+    (variant: Variant) => variant.id === newSize?.variantId,
   )
+  emit('input', found)
 }
-
-const sizes = computed(() => getVariantSizes(props.variants))
 </script>

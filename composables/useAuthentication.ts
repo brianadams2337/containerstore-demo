@@ -7,7 +7,6 @@ import {
 } from '@scayle/storefront-nuxt'
 import { FetchError } from 'ofetch'
 import { Action } from '~/constants'
-import { AuthTrackingEvent, AuthenticationType } from '~/types/tracking'
 
 const httpErrorMessages: Record<number, string> = {
   400: '400_bad_request',
