@@ -94,13 +94,13 @@ Cypress.Commands.add('getBySelector', getBySelector)
 Cypress.Commands.add('signInWithEnvUser', signInWithEnvUser)
 
 export function signInWithEnvUser() {
-  cy.get('[placeholder="Email address"]')
+  cy.getBySelector('login-email')
     .click()
     .type(Cypress.env('username'))
-    .get('[placeholder=Password]')
+    .getBySelector('login-password')
     .click()
     .type(Cypress.env('password'), { log: false })
-    .get('div.mt-4 button')
+    .getBySelector('login-submit')
     .click()
 }
 /**

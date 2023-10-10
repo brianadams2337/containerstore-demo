@@ -56,7 +56,7 @@ export default defineConfig({
             viewportHeight: DefaultViewport.HEIGHT,
           }
     },
-    baseUrl: `${BASE_URL}`,
+    baseUrl: BASE_URL,
     experimentalRunAllSpecs: true,
     experimentalModifyObstructiveThirdPartyCode: true,
     includeShadowDom: true,
