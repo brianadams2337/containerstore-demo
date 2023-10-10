@@ -27,7 +27,7 @@
             </div>
           </div>
           <OspDeliveryDate
-            v-show="orderData.packages && isLessThan('sm')"
+            v-show="deliveryDate && isLessThan('sm')"
             :delivery-date="deliveryDate" />
           <div class="my-8 flex space-x-4 sm:mt-12">
             <AppButton type="tertiary" :to="{ name: routeList.home.name }">
@@ -45,9 +45,7 @@
       <div class="w-3/4 max-sm:container sm:bg-gray-100">
         <div class="container py-4 text-sm sm:p-10 md:px-20">
           <div class="divide-y divide-gray-500">
-            <OspDeliveryDate
-              v-if="orderData.packages"
-              :delivery-date="deliveryDate" />
+            <OspDeliveryDate v-if="deliveryDate" v-bind="{ deliveryDate }" />
             <div class="space-y-2">
               <Headline
                 size="sm"
