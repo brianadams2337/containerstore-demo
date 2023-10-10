@@ -19,7 +19,7 @@ export async function useBasketGroup(
   const nuxtApp = useNuxtApp()
   const { fetch: refreshBasket } = await useBasket()
 
-  const defaultParams = nuxtApp.$config.public?.withParams
+  const defaultParams = nuxtApp.$config.storefront?.withParams
     ?.basket as BasketWithOptions
   const basketParams = computed(() => {
     return toValue(withParams) || defaultParams || MIN_WITH_PARAMS_BASKET
