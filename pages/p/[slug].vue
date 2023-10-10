@@ -164,7 +164,7 @@ import {
   ProductColor,
   isInStock,
 } from '@scayle/storefront-nuxt'
-import { Size, Action, PRODUCT_WITH_PARAMS } from '~/constants'
+import { Size, Action } from '~/constants'
 
 const listingMetaData = {
   name: 'ADP',
@@ -190,7 +190,6 @@ const {
 } = await useProduct({
   params: {
     id: parseInt(productId.value),
-    with: PRODUCT_WITH_PARAMS,
   },
   options: {
     lazy: true,
@@ -405,7 +404,7 @@ watch(
   (ids) => {
     recommendationsFetchParams.value = { ids }
   },
-  { immediate: true }
+  { immediate: true },
 )
 
 const { data: combineWithProducts, fetching: fetchingCombineWithProducts } =

@@ -161,11 +161,11 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
     // staleWhileRevalidate: 60 * 60 * 24,
     // generateCacheKey: () =>
   },
+  // Following keys are Overrideable using prefix NUXT_PUBLIC_WITH_PARAMS
+  withParams,
 }
 
 export const storefrontRuntimeConfigPublic: Partial<ModuleOptions> = {
-  // Following keys are Overrideable using prefix NUXT_PUBLIC_WITH_PARAMS
-  withParams,
   // Following keys are Overrideable using prefix NUXT_PUBLIC_LOG
   log: {
     name: 'storefront-boilerplate-nuxt',
