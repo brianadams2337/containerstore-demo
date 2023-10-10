@@ -4,25 +4,44 @@
       <CmsImage :blok="cmsContent" is-teaser />
     </div>
     <PageContent v-if="products" class="sm:flex">
-      <div v-show="viewport.isGreaterOrEquals('md')" class="-ml-4 w-1/3 lg:w-1/5">
-        <SideNavigation v-if="categories && 'children' in categories && categories.children"
-          :categories="categories.children" :fetching="categoriesFetching" :root-category="categories"
+      <div
+        v-show="viewport.isGreaterOrEquals('md')"
+        class="-ml-4 w-1/3 lg:w-1/5">
+        <SideNavigation
+          v-if="categories && 'children' in categories && categories.children"
+          :categories="categories.children"
+          :fetching="categoriesFetching"
+          :root-category="categories"
           show-nested-categories />
       </div>
       <div class="w-full">
         <template v-if="preListingContent && isFirstPage">
-          <component :is="preContent.component" v-for="preContent in preListingContent" :key="preContent._uid"
+          <component
+            :is="preContent.component"
+            v-for="preContent in preListingContent"
+            :key="preContent._uid"
             :blok="preContent" />
         </template>
 
-        <div class="flex flex-col items-start justify-between overflow-x-hidden">
+        <div
+          class="flex flex-col items-start justify-between overflow-x-hidden">
           <ProductListBreadcrumbs />
-          <div class="mt-2 flex w-full flex-col justify-between space-y-2 md:flex-row">
-            <ProductQuickFilters :filters="quickFilters" :loading="filtersFetching" :total-count="unfilteredCount"
+          <div
+            class="mt-2 flex w-full flex-col justify-between space-y-2 md:flex-row">
+            <ProductQuickFilters
+              :filters="quickFilters"
+              :loading="filtersFetching"
+              :total-count="unfilteredCount"
               @click:selected-filter="applyFilter($event, true)" />
             <div class="order-1 flex items-center space-x-4 text-sm">
-              <SortingMenu :selected="selectedSort.name" :values="sortingValues" />
-              <AppButton data-test-id="filter-toggle-button" type="tertiary" size="sm" @click="toggleFilter">
+              <SortingMenu
+                :selected="selectedSort.name"
+                :values="sortingValues" />
+              <AppButton
+                data-test-id="filter-toggle-button"
+                type="tertiary"
+                size="sm"
+                @click="toggleFilter">
                 <template #icon="{ _class }">
                   <IconFilter :class="_class" />
                 </template>
@@ -31,21 +50,36 @@
             </div>
           </div>
         </div>
-        <ProductList :loading="productsFetching" :per-page="PRODUCTS_PER_PAGE" :products="products"
-          :refreshing="productsFetching" class="mt-8 grid w-auto grid-cols-12 gap-1" @click:product="trackProductClick"
+        <ProductList
+          :loading="productsFetching"
+          :per-page="PRODUCTS_PER_PAGE"
+          :products="products"
+          :refreshing="productsFetching"
+          class="mt-8 grid w-auto grid-cols-12 gap-1"
+          @click:product="trackProductClick"
           @intersect:row="trackViewListing" />
         <NuxtLazyHydrate :when-visible="{ rootMargin: '100px' }">
-          <Pagination v-if="pagination" class="mt-16" :current-page="pagination.page" :first-page="pagination.first"
+          <Pagination
+            v-if="pagination"
+            class="mt-16"
+            :current-page="pagination.page"
+            :first-page="pagination.first"
             :last-page="pagination.last" />
         </NuxtLazyHydrate>
 
         <template v-if="postListingContent && isFirstPage">
-          <component :is="preContent.component" v-for="preContent in postListingContent" :key="preContent._uid"
+          <component
+            :is="preContent.component"
+            v-for="preContent in postListingContent"
+            :key="preContent._uid"
             :blok="preContent" />
         </template>
       </div>
-      <FilterSlideIn v-if="filters" v-bind="{ activeFilters, filters, filteredCount, unfilteredCount }"
-        :fetching-filtered-count="productCountFetching" @filter:apply="applyFilter"
+      <FilterSlideIn
+        v-if="filters"
+        v-bind="{ activeFilters, filters, filteredCount, unfilteredCount }"
+        :fetching-filtered-count="productCountFetching"
+        @filter:apply="applyFilter"
         @filter:state-changed="updateFilterCount($event)" />
     </PageContent>
   </div>
@@ -289,8 +323,8 @@ const parseAndPreserveAttributeFilters = () => {
 const quickFilters = computed(() =>
   filters.value
     ? groupFilterableValuesByKey(filters.value, INCLUDED_QUICK_FILTERS).filter(
-      (filter) => !!filter.count,
-    )
+        (filter) => !!filter.count,
+      )
     : [],
 )
 
@@ -334,13 +368,13 @@ useHead(() => ({
   link: robots.value?.includes('noindex')
     ? []
     : [
-      {
-        rel: 'canonical',
-        href: prepareCanonicalURL(
-          `${$config.public.baseUrl}${route?.fullPath}`,
-        ),
-      },
-    ],
+        {
+          rel: 'canonical',
+          href: prepareCanonicalURL(
+            `${$config.public.baseUrl}${route?.fullPath}`,
+          ),
+        },
+      ],
 }))
 
 definePageMeta({ pageType: 'category_page' })
