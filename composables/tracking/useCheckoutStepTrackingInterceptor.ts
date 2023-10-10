@@ -1,5 +1,3 @@
-import { PageType } from '~/types/tracking'
-
 const getPageType = (hash: string): PageType => {
   if (hash.endsWith('#/auth')) {
     return 'checkout:#/auth'

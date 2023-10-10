@@ -53,7 +53,6 @@ import {
   Attributes,
   getFirstAttributeValue,
 } from '@scayle/storefront-nuxt'
-import { OrderProduct, OrderVariant, OrderPrice } from '~/types/osp'
 
 const props = defineProps({
   product: {

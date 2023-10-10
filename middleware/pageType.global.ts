@@ -1,5 +1,3 @@
-import { PageType } from '~/types/tracking'
-
 export default defineNuxtRouteMiddleware((to) => {
   const store = useStore()
 

@@ -20,8 +20,6 @@
 </template>
 
 <script setup lang="ts">
-import { OrderAddress } from '~/types/osp'
-
 export type SummaryItem = {
   name: 'shipping' | 'billing'
   label: string

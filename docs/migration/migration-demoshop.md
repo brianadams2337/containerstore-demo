@@ -262,7 +262,7 @@ const viewport = useViewport()
 </script>
 ```
 
-### With parameters
+## WITH parameters
 
 Storefront config now supports `withParams` option so that we can pass the `with` parameters through the shop.
 This allows to set them as default parameters within certain composables (e.g `useWishlist`).
@@ -422,19 +422,15 @@ const {
 
 ## Tracking
 
-In the Nuxt 3 tracking implementation is almost the same as in Nuxt 2. There are
-frew differences that are worth mentioning.
+The Nuxt 3 tracking implementation is almost identical as for the Nuxt 2-based DemoShop. There are a few differences that are worth mentioning.
 
-- Now we're using [@zadigetvoltaire/nuxt-gtm](https://github.com/zadigetvoltaire/nuxt-gtm)
-  which is basically a `@gtm-support/vue-gtm` wrapper. Usage of this module is the
-  same as `@nuxtjs/gtm` that we used in Nuxt 2.
-- Tracking composables are a bit simplified. Now we don't pass the `shopConfig`,
-  `localePath`, etc. as we did in the Nuxt 2 for some of the composables because
-  we have that auto-imported.
+- We're now using [@zadigetvoltaire/nuxt-gtm](https://github.com/zadigetvoltaire/nuxt-gtm), which acts as a `@gtm-support/vue-gtm` wrapper. Usage of this module is similar to `@nuxtjs/gtm` that was used for Nuxt 2.
+- Tracking composables are a bit simplified. We don't pass the `shopConfig`,
+  `localePath`, etc. anymore, as we did for the Nuxt 2-based DemoShop for some of the composables as those have now been auto-imported.
 
 ## Store
 
-- In Nuxt 2 store was implemeneted out of the box. In Nuxt 3 that's not the case.
+- In Nuxt 2 store was implemented out of the box. In Nuxt 3 that's not the case.
   There are several options on how to achieve state management (Pinia, xstate, etc).
   Since our needs are pretty basic and simple, we'll just use the basic `useStore`
   composable that uses `useState` under the hood.

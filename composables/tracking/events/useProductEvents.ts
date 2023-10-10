@@ -1,13 +1,4 @@
 import { Product } from '@scayle/storefront-nuxt'
-import {
-  TrackSelectItemEventParams,
-  TrackViewItemListEventParams,
-  TrackViewItemParams,
-  TrackingEvent,
-  TrackingPayload,
-  ProductListData,
-  ProductViewData,
-} from '~/types/tracking'
 
 const collectProductListItems = (
   items: Product[],

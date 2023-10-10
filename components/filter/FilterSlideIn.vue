@@ -52,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { TransformedFilter, ProductFilter } from '@scayle/storefront-nuxt'
+import { Filter, ProductFilter } from '@scayle/storefront-nuxt'
 
 const props = defineProps({
   filters: {
@@ -60,7 +60,7 @@ const props = defineProps({
     default: () => [],
   },
   activeFilters: {
-    type: Object as PropType<Record<string, TransformedFilter[]>>,
+    type: Object as PropType<Filter>,
     default: () => {},
   },
   filteredCount: {

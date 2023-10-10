@@ -1,4 +1,3 @@
-import { TrackingEvent, TrackingPayload } from '~/types/tracking'
 import { StoryblokTrackingContent } from '~/storyblok/types/storyblok'
 
 const usePromotionEvents = (

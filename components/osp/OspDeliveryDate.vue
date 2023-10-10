@@ -12,7 +12,6 @@
 
 <script setup lang="ts">
 import { formatDate } from '@scayle/storefront-nuxt'
-import { DeliveryDate } from '~/types/osp'
 
 defineProps({
   deliveryDate: {

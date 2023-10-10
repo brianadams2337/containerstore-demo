@@ -128,7 +128,6 @@ import {
   getFirstAttributeValue,
   Value,
 } from '@scayle/storefront-nuxt'
-import { ListItem } from '~/types/tracking'
 
 const props = defineProps({
   index: {

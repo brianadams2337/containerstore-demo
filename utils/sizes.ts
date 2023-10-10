@@ -6,7 +6,15 @@ import {
 
 export const ONE_SIZE_KEY = 'one_size'
 
-export const getVariantSizes = (variants: Variant[] | undefined) => {
+export type VariantSize = {
+  variantId: number
+  label: string
+  value?: string
+  isAvailable: boolean
+  [key: string]: unknown
+}
+
+export const getVariantSizes = (variants?: Variant[]) => {
   return [...(variants || [])]
     .filter((variant) => {
       return variant.attributes && Object.keys(variant.attributes).length > 0

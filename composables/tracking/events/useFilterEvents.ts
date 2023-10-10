@@ -1,5 +1,3 @@
-import { TrackingEvent, TrackingPayload } from '~/types/tracking'
-
 const useFilterEvents = (
   track: (event: TrackingEvent, payload: TrackingPayload) => any,
 ) => ({

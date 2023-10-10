@@ -7,7 +7,6 @@ import {
   BrandOrCategorySuggestion,
 } from '@scayle/storefront-nuxt'
 import { RouteLocationRaw } from '#vue-router'
-import { OrderProduct } from '~/types/osp'
 
 const getCategoryPath = (category: Category) => {
   if (!category) {

@@ -1,12 +1,3 @@
-import {
-  ProductActionData,
-  TrackAddToWishListParams,
-  TrackRemoveFromWishListParams,
-  TrackingEvent,
-  TrackingPayload,
-  ProductListData,
-} from '~/types/tracking'
-
 const getCategoryData = (category: { id?: number; name?: string }) => {
   const { id = -1, name = '' } = category
   return { id: id >= 0 ? id.toString() : '', name }

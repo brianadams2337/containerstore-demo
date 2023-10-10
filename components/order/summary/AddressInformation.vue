@@ -8,8 +8,6 @@
 </template>
 
 <script setup lang="ts">
-import { OrderAddress } from '~/types/osp'
-
 const props = defineProps({
   recipient: {
     type: Object as PropType<OrderAddress['recipient']>,

@@ -1,14 +1,20 @@
 import { StoryblokStory } from '@aboutyou/storyblok-generate-ts'
-import { ISbStoriesParams } from 'storyblok-js-client'
+import { NuxtError } from 'nuxt/app'
+import { ISbStoriesParams, ISbError } from 'storyblok-js-client'
 
 type Status = 'idle' | 'pending' | 'success' | 'error'
+
+const handleCmsError = (error: any): NuxtError => {
+  const { status, message } = JSON.parse(error) as ISbError
+  return createError({ statusCode: status, statusMessage: message })
+}
 
 export default <T = unknown>(key: string) => {
   const log = useLog(`useCms ${key}`)
   const data = useState<StoryblokStory<T>>(`cms-data-${key}`)
   const fetching = useState<boolean>(`fetching-${key}`)
   const status = useState<Status>(`status-${key}`, () => 'idle')
-  const error = useState(`error-${key}`)
+  const error = useState<NuxtError | undefined>(`error-${key}`, () => undefined)
 
   const storyblokApi = useStoryblokApi()
 
@@ -17,13 +23,14 @@ export default <T = unknown>(key: string) => {
     fetching.value = true
     try {
       const { data: storyData } = await storyblokApi.get(
-        `cdn/stories/${slug}`, {
+        `cdn/stories/${slug}`,
+        {
           version: getStoryblokContentVersion(),
-        }
-      );
+        },
+      )
       data.value = storyData.story
     } catch (e) {
-      error.value = e
+      error.value = handleCmsError(e)
       log.error(`Error fetching CMS Slug: ${slug}`, e)
     } finally {
       fetching.value = false
@@ -44,7 +51,7 @@ export default <T = unknown>(key: string) => {
       })
       data.value = stories as unknown as StoryblokStory<T>
     } catch (e) {
-      error.value = e
+      error.value = handleCmsError(e)
       log.error(`Error fetching CMS Folder`, e)
     } finally {
       fetching.value = false

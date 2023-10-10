@@ -8,13 +8,14 @@
       </div>
     </div>
     <div class="mt-4 grow">
-      <ErrorLayout :error="error" @clear-error="resetErrorState()" />
+      <ErrorLayout :error="error" @clear-error="resetErrorState" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 const error = useError()
+
 const resetErrorState = async () => {
   const redirect = toLocalePath({ name: routeList.home.name }).toString()
   await clearError({ redirect })

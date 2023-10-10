@@ -25,21 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import { ListOfPackages, Order } from '@scayle/storefront-nuxt'
-import { PropType } from 'nuxt/dist/app/compat/capi'
-import { OrderProduct, OrderVariant } from '~/types/osp'
-
-type Package = ListOfPackages[0]
-
 export type DeliveryInfo = Package & { formattedStatus: string }
-
-type OrderItems = (Exclude<
-  Exclude<Order['items'], undefined>[number],
-  'product' | 'variant'
-> & {
-  product: OrderProduct
-  variant: OrderVariant
-})[]
 
 type CarrierMap = Record<
   string,
@@ -56,7 +42,7 @@ const props = defineProps({
     default: () => [],
   },
   packages: {
-    type: Array as PropType<ListOfPackages>,
+    type: Array as PropType<Package[]>,
     default: () => [],
   },
 })

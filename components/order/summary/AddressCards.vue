@@ -16,7 +16,6 @@
 
 <script setup lang="ts">
 import { SummaryItem } from './AddressSummary.vue'
-import { OrderAddress } from '~/types/osp'
 
 defineProps({
   items: {

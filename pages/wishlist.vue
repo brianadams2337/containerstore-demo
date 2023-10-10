@@ -71,7 +71,7 @@ const {
 } = useTrackingEvents()
 
 if (wishlist.error.value) {
-  throw createError(wishlist.error.value)
+  throw wishlist.error.value
 }
 
 const addItemToCart = async (itemKey: string, index: number) => {

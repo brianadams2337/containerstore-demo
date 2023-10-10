@@ -21,6 +21,7 @@
 <script setup lang="ts">
 import { HttpStatusCode } from '@scayle/storefront-nuxt'
 import { NuxtError } from 'nuxt/app'
+
 type AppError =
   | NuxtError
   | Error

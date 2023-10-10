@@ -1,10 +1,3 @@
-import {
-  AuthenticationType,
-  TrackingEvent,
-  TrackingPayload,
-  TrackCustomerDataParams,
-} from '~/types/tracking'
-
 const useCustomerEvents = (
   track: (event: TrackingEvent, payload: TrackingPayload) => any,
 ) => ({

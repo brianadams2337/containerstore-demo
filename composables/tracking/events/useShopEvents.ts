@@ -1,5 +1,4 @@
 import { version } from '../../../package.json'
-import { TrackingEvent, TrackingPayload } from '~/types/tracking'
 
 const SHOP_GENDER: 'male' | 'female' | 'other' | '' = ''
 

@@ -3,7 +3,6 @@ import {
   getFirstAttributeValue,
   Variant,
 } from '@scayle/storefront-nuxt'
-import { ListItem } from '~/types/tracking'
 import { Action } from '~/constants'
 
 export const getWishlistToastMessage = (

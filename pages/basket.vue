@@ -64,7 +64,7 @@ const basket = await useBasket({ options: { lazy: true } })
 const wishlist = await useWishlist({ options: { lazy: true } })
 
 if (basket.error.value) {
-  throw createError(basket.error.value)
+  throw basket.error.value
 }
 
 const store = useStore()

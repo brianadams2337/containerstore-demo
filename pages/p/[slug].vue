@@ -199,7 +199,7 @@ const {
 })
 
 if (error.value) {
-  throw createError(error.value)
+  throw error.value
 }
 
 const { fetching: basketIdle, addItem: addBasketItem } = await useBasket({

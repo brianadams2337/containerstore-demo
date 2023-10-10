@@ -3,7 +3,14 @@ import {
   NavigationItems,
   NavigationItemExternal,
 } from '@scayle/storefront-nuxt'
-import { FlyoutMenuCategory } from '~/types'
+
+export type FlyoutMenuCategory = {
+  name: string
+  path: string
+  slug: string
+  id: number
+  children: Category[]
+}
 
 type NavigationItem = NavigationItems[0]
 

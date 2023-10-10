@@ -80,8 +80,6 @@
 </template>
 
 <script setup lang="ts">
-import { OrderProduct, OrderVariant } from '~/types/osp'
-
 const { isLessThan } = useViewport()
 
 const route = useRoute()
