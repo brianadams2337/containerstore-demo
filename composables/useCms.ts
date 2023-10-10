@@ -2,12 +2,6 @@ import { StoryblokStory } from '@aboutyou/storyblok-generate-ts'
 import { NuxtError } from 'nuxt/app'
 import { ISbStoriesParams, ISbError } from 'storyblok-js-client'
 
-const handleCmsError = (error: any): NuxtError => {
-  const err = JSON.parse(error) as { status: number; message: string }
-  const parsedError = { statusCode: err.status, statusMessage: err.message }
-  return createError(parsedError)
-}
-
 type Status = 'idle' | 'pending' | 'success' | 'error'
 
 const handleCmsError = (error: any): NuxtError => {
