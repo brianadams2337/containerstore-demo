@@ -7,11 +7,11 @@ class MyOrdersPage extends BasePage {
     mobileAddress: '[id="content-shipping"]',
     item: '[data-test-id="order-item-card"]',
     totalPrice: '[id="paymentHeader"] [class="p-5"]',
-    mobileOrder: 'a[href*="/account/order/"]',
+    mobileOrder: 'a[href*="/account/orders/"]',
   }
 
   open() {
-    cy.visit('/account/order')
+    cy.visit('/account/orders')
     this.openOrderByIndex()
     this.waitForMyOrdersPageIsDisplayed()
   }

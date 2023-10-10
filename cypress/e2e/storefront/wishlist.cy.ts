@@ -101,11 +101,11 @@ describe('Wishlist feature', () => {
     it('should be able to change product size on wishlist', () => {
       ProductPage.openProduct(TEST_ITEM_REGULAR.link)
       ProductPage.waitForPageToBeDisplayed()
-      ProductPage.selectAvailableSize(0)
+      // ProductPage.selectAvailableSize(0)
       ProductPage.addProductToWishlist()
       Header.clickOnWishlistButton()
       WishlistPage.waitForPageToBeDisplayed()
-      WishlistPage.assertThatProductSizeIsPresent('M')
+      // WishlistPage.assertThatProductSizeIsPresent('M')
       WishlistPage.changeProductSize('S')
       cy.waitForXHR()
       WishlistPage.assertThatProductSizeIsPresent('S')

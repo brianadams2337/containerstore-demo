@@ -17,7 +17,7 @@ class CheckoutPage extends BasePage {
   }
 
   waitForPageToBeDisplayed(): void {
-    cy.get('[data-test-id="authOptions-signIn"]', { timeout: 60000 })
+    cy.get('[data-test-id="login-submit"]', { timeout: 60000 })
   }
 
   signOut(): void {

@@ -8,7 +8,7 @@ class HomePage extends BasePage {
     homePageContent: '[data-test-id="home-page-content"]',
     highlightsProductSlider: '[data-test-id="horizontal-product-slider"]',
     countrySwitcher: '[data-test-id="language-listbox"]',
-    languageOption: '[role="option"] a',
+    languageOption: '[role="option"] button',
   }
 
   open(waitForDisplayed = true): void {

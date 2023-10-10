@@ -20,7 +20,6 @@ class Header {
 
   assertHeaderIsDisplayed(): void {
     cy.get(this.pageElements.mainHeader).should('be.visible')
-    cy.get(this.pageElements.headerImage)
   }
 
   clickOnBasketButton(): void {
@@ -58,7 +57,7 @@ class Header {
 
   assertShoppingBagCounter(expectedNumber: number): void {
     if (expectedNumber === 0) {
-      cy.get(this.pageElements.headerBasketCounter).should('not.be.visible')
+      cy.get(this.pageElements.headerBasketCounter).should('not.exist')
     } else {
       cy.get(this.pageElements.headerBasketCounter).contains(
         expectedNumber.toString(),

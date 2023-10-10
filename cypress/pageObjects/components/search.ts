@@ -15,7 +15,8 @@ class Search {
       Header.clickOnSideNavButton()
       cy.get(this.pageElements.mobileSearchInput).should('be.visible')
     } else {
-      cy.get(this.pageElements.desktopSearchButton).click()
+      cy.wait(1000)
+      cy.get(this.pageElements.desktopSearchButton).click({ force: true })
       cy.get(this.pageElements.desktopSearchInput).should('be.visible')
     }
   }

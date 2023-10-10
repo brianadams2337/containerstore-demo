@@ -99,11 +99,13 @@ class ProductListingPage extends BasePage {
   }
 
   clickOnSorting() {
+    cy.wait(1000)
     cy.get(this.pageElements.sorting.sortingButton).click({ force: true })
   }
 
   clickOnProductCountButton() {
-    cy.get(this.pageElements.productCountButton).click()
+    cy.wait(1000)
+    cy.get(this.pageElements.productCountButton).click({ force: true })
   }
 
   waitForSortingOptions() {

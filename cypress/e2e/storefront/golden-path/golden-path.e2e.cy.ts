@@ -15,7 +15,7 @@ describe('From home to checkout a.k.a. "Golden Path"', () => {
     ProductListingPage.openTestCategory()
     cy.log('navigate to PDP by clicking on first product')
     ProductListingPage.waitForPageToBeDisplayed()
-    ProductListingPage.openProductByIndex(0)
+    ProductListingPage.openProductByIndex(3)
 
     cy.log('add product to basket and wishlist and navigate to wishlist page')
     ProductPage.waitForPageToBeDisplayed()

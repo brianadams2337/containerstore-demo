@@ -6,9 +6,9 @@ class Footer {
     shoppingPromises: '[id="shopping-promises"]',
     blackBlock: 'footer [class="bg-black"]',
     grayBlock: 'footer [class="bg-gray-400 py-2"]',
-    faqButton: 'a[href="/s/faq"]',
-    imprintButton: 'a[href="/s/imprint"]',
-    storyblok: '[id="footer"] [class*="storyblok"]',
+    faqButton: 'a[href*="/s/faq"]',
+    imprintButton: 'a[href*="/s/imprint"]',
+    storyblok: '[class*= "order-last"]',
   }
 
   textStrings = {

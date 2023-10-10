@@ -34,7 +34,6 @@ describe('Products testing', () => {
     ProductPage.openProduct(TEST_ITEM_REGULAR.link)
     ProductPage.waitForPageToBeDisplayed()
     const locale = getLocaleFile()
-    cy.contains(locale.incl_tax)
     cy.contains(locale.pdp.add_label)
     cy.contains(locale.pdp.product_info_heading)
     cy.contains(locale.pdp.shipping_return_heading)

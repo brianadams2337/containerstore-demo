@@ -48,6 +48,7 @@ class ProductPage extends BasePage {
   addProductToWishlist(): void {
     Header.assertHeaderIsDisplayed()
     cy.get(this.pageElements.addToWishlistButton).should('exist')
+    cy.wait(1000)
     cy.get(this.pageElements.addToWishlistButton).click()
     cy.get(this.pageElements.notificationPopup).should('exist')
     cy.waitForXHR()
@@ -119,7 +120,8 @@ class ProductPage extends BasePage {
   }
 
   openProductSizeMenu() {
-    cy.get(this.pageElements.sizeMenuToggle).first().click()
+    cy.wait(1000)
+    cy.get(this.pageElements.sizeMenuToggle).click()
   }
 
   selectAvailableSize(entry = 0) {

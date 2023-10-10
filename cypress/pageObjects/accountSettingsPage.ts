@@ -34,6 +34,7 @@ class AccountSettingsPage extends BasePage {
   }
 
   setNewPassword(password: string): void {
+    cy.get(this.pageElements.newPassword).scrollIntoView()
     cy.get(this.pageElements.newPassword).type(password, {
       force: Cypress.env().mobile === true,
     })
