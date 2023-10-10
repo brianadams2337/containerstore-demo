@@ -73,7 +73,8 @@ Storefront config now supports `withParams` option so that we can pass the `with
 Furthermore, as a third default, the min with (e.g `MIN_WITH_PARAMS_BASKET`) parameters constant is set for the composables where it's needed.
 
 ```ts
-const defaultWithParams = useNuxtApp().$runtimeConfig.public.withParams.wishlist
+const defaultWithParams =
+  useNuxtApp().$runtimeConfig.storefront.withParams.wishlist
 const withParams =
   toValue(params) || defaultWithParams || MIN_WITH_PARAMS_WISHLIST
 ```
