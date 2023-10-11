@@ -101,7 +101,9 @@
     "product": "Artikel",
     "notification": {
       "add_to_wishlist": "{productName} wurde zur Wunschliste hinzugefügt",
-      "remove_from_wishlist": "{productName} wurde von der Wunschliste entfernt"
+      "remove_from_wishlist": "{productName} wurde von der Wunschliste entfernt",
+      "added_to_wishlist": "Zur Wunschliste hinzufügt",
+      "removed_from_wishlist": "Von Wunschliste entfernt"
     },
     "change_size_label": "Wähle Größe"
   },

@@ -101,7 +101,9 @@
     "product": "Produkt",
     "notification": {
       "add_to_wishlist": "{productName} has been added to your wishlist",
-      "remove_from_wishlist": "{productName} has been removed from your wishlist"
+      "remove_from_wishlist": "{productName} has been removed from your wishlist",
+      "added_to_wishlist": "Added to wishlist",
+      "removed_from_wishlist": "Removed from wishlist"
     },
     "change_size_label": "Choose size"
   },

@@ -96,23 +96,9 @@
                 @click="addItemToBasket">
                 {{ $t('pdp.add_label') }}
               </AppButton>
-              <AppButton
-                v-if="!fetchingWishlist"
-                class="ml-2 box-border border border-gray-350 !px-2"
-                type="ghost"
-                :data-test-id="
-                  isInWishlist
-                    ? 'remove-item-from-wishlist-button'
-                    : 'add-item-to-wishlist-button'
-                "
-                rounded
-                :disabled="isWishlistToggling"
-                @click="onToggleWishlist">
-                <template #icon="{ _class }">
-                  <IconHeartFull v-if="isInWishlist" :class="_class" />
-                  <IconHeart v-else :class="_class" />
-                </template>
-              </AppButton>
+              <client-only>
+                <WishlistToggle class="ml-2 box-border h-full border border-gray-350 !px-2" :product="product" />
+              </client-only>
             </div>
             <div class="mt-3">
               <ProductDetailGroup
@@ -201,11 +187,6 @@ const { fetching: basketIdle, addItem: addBasketItem } = await useBasket({
   options: { lazy: true, autoFetch: true },
 })
 const { addGroupToBasket } = await useBasketGroup()
-const {
-  fetching: fetchingWishlist,
-  contains: wishlistContains,
-  toggleItem: toggleWishlistItem,
-} = await useWishlist({ options: { lazy: true, autoFetch: true } })
 
 const { openBasketFlyout } = useFlyouts()
 
@@ -214,8 +195,6 @@ const { state: zoomGallery, toggle: toggleZoomGallery } =
 
 const { trackAddToBasket, trackViewItemList, trackViewItem, trackSelectItem } =
   useTrackingEvents()
-
-const isWishlistToggling = ref(false)
 
 const productCategories = computed(() => {
   return product.value ? getCategoriesByRoute(product.value, null) : []
@@ -362,30 +341,6 @@ const addItemToBasket = async () => {
       'CONFIRM',
     )
   }
-}
-
-const isInWishlist = computed(() => {
-  return wishlistContains({ productId: parseInt(productId.value, 10) })
-})
-
-const onToggleWishlist = async () => {
-  const id = parseInt(productId.value, 10)
-  const isNewItemInWishlist = !isInWishlist.value
-
-  trackWishlistEvent(isNewItemInWishlist ? 'added' : 'removed', {
-    product: product.value,
-    variant: activeVariant.value,
-  })
-
-  isWishlistToggling.value = true
-  try {
-    await toggleWishlistItem({ productId: id })
-    showWishlistToast(isNewItemInWishlist, product.value)
-  } catch (e) {
-    $alert.show($i18n.t('error.request_not_processed'), 'CONFIRM')
-    console.error(e)
-  }
-  isWishlistToggling.value = false
 }
 
 const combineWithProductValues = getAdvancedAttributes({
