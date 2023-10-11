@@ -121,6 +121,7 @@ export default defineNuxtConfig({
   },
 
   modules: [
+    'nuxt-vitest',
     '@scayle/storefront-nuxt/module',
     '@nuxtjs/tailwindcss',
     'nuxt-svgo',
