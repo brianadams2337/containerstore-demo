@@ -6,9 +6,7 @@
     @close="trackFilterFlyout('close', 'true')">
     <template #slideInHeader="{ toggle: toggleItem }">
       <div class="flex w-full items-center justify-between">
-        <Headline :is-uppercase="false" size="xl" tag="p"
-          >{{ $t('filter.title') }}
-        </Headline>
+        <Headline size="xl" tag="p">{{ $t('filter.title') }} </Headline>
         <AppButton
           type="ghost"
           size="xs"

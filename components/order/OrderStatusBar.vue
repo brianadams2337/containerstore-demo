@@ -3,16 +3,10 @@
     <div class="flex flex-row-reverse items-center md:flex-row">
       <IconDelivery class="mr-0 h-6 w-14 md:mr-4" />
       <div class="grow">
-        <Headline
-          tag="h2"
-          size="sm"
-          type="loud"
-          is-bold
-          :is-uppercase="false"
-          class="mb-1">
+        <Headline tag="h2" size="sm" is-bold class="mb-1">
           {{ $t('my_account.orders.delivery') }} {{ index + 1 }}
         </Headline>
-        <Headline tag="h3" size="xs" :is-uppercase="false" class="!font-normal">
+        <Headline tag="h3" size="xs" class="!font-normal">
           {{ $t('my_account.orders.expected_delivery_from') }}:
           <span class="font-semibold">
             {{

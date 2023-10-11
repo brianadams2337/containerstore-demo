@@ -1,13 +1,13 @@
 <template>
   <div v-editable="blok" class="sm:mx-14" :class="marginClasses">
     <div class="flex w-full justify-between px-6 sm:px-0">
-      <Headline v-if="blok.headline" tag="p" size="base" type="loud">{{
-        blok.headline
-      }}</Headline>
+      <Headline v-if="blok.headline" tag="p" size="base" is-uppercase>
+        {{ blok.headline }}
+      </Headline>
 
-      <DefaultLink v-if="blok.cta_url && blok.cta_label" :to="blok.cta_url">{{
-        blok.cta_label
-      }}</DefaultLink>
+      <DefaultLink v-if="blok.cta_url && blok.cta_label" :to="blok.cta_url">
+        {{ blok.cta_label }}
+      </DefaultLink>
     </div>
     <HorizontalItemsSlider
       with-arrows

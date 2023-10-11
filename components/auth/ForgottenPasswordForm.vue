@@ -2,7 +2,7 @@
   <Modal @close="$emit('close')">
     <template #headline>
       <div>
-        <Headline :is-uppercase="false" size="xl" tag="h2" class="mb-4">
+        <Headline size="xl" tag="h2" class="mb-4">
           {{ $t('login_page.forgot_password.title') }}
         </Headline>
         <p class="mb-4 text-sm">

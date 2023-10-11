@@ -67,6 +67,7 @@
             v-if="priceWithTax"
             tag="p"
             size="base"
+            is-uppercase
             :class="{ 'text-red-500': reducedPrice }">
             {{ toCurrency(priceWithTax) }}
           </Headline>

@@ -3,7 +3,7 @@
     <div
       id="flyout-menu-items-container-content"
       :key="flyoutNavigationItem.id">
-      <Headline size="sm" tag="p" type="loud" :is-uppercase="false">
+      <Headline size="sm" tag="p">
         <NavigationTreeItem
           :navigation-item="flyoutNavigationItem"
           type="quiet"
@@ -26,7 +26,7 @@
         v-if="navigationItem.children.length"
         :id="`flyout-menu-items-container-content-${navigationItem.id}`"
         :key="navigationItem.id">
-        <Headline :is-uppercase="false" size="sm" tag="p" type="loud">
+        <Headline size="sm" tag="p">
           <NavigationTreeItem
             :navigation-item="navigationItem"
             @click:navigation-item="closeFlyoutMenu" />

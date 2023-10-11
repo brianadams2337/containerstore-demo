@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Headline size="sm" tag="h2" type="loud" class="mb-3">
+    <Headline size="sm" tag="h2" is-uppercase class="mb-3">
       {{ $t('osp.deliver_address') }}
     </Headline>
     <p>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Headline size="sm" tag="h2" type="loud" class="mb-3">
+    <Headline size="sm" tag="h2" is-uppercase class="mb-3">
       {{ $t('osp.order_data') }}
     </Headline>
     <p v-if="orderConfirmedAt">

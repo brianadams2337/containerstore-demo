@@ -2,8 +2,10 @@
   <div
     class="container mt-10 flex flex-col items-center justify-center text-primary">
     <section class="flex flex-col items-center">
-      <Headline>{{ title }}</Headline>
-      <Headline class="mt-2" size="sm" tag="h2">{{ message }}</Headline>
+      <Headline is-uppercase>{{ title }}</Headline>
+      <Headline class="mt-2" size="sm" tag="h2" is-uppercase>
+        {{ message }}
+      </Headline>
     </section>
     <section class="mt-6">
       <AppButton @click="$emit('clear-error')">

@@ -2,11 +2,7 @@
   <section class="pb-10 pt-4">
     <div class="flex items-center justify-between">
       <slot name="label">
-        <Headline
-          tag="h4"
-          size="sm"
-          :is-uppercase="false"
-          class="leading-normal">
+        <Headline tag="h4" size="sm" class="leading-normal">
           {{ label }}{{ badge ? ` (${badge})` : '' }}
         </Headline>
       </slot>

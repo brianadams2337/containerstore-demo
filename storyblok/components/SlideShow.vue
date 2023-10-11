@@ -1,6 +1,6 @@
 <template>
   <div v-editable="blok" :class="marginClasses">
-    <Headline v-if="blok.h1" tag="h1">{{ blok.h1 }}</Headline>
+    <Headline v-if="blok.h1" tag="h1" is-uppercase>{{ blok.h1 }}</Headline>
     <Swiper
       v-if="blok.slides?.length"
       ref="sliderRef"

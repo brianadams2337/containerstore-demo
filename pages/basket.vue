@@ -17,7 +17,7 @@
       v-else
       class="flex flex-col-reverse gap-8 md:flex-row xl:gap-32 2xl:gap-64">
       <div class="flex-1 space-y-4">
-        <Headline size="2xl" class="mb-6" :is-uppercase="false">
+        <Headline size="2xl" class="mb-6">
           {{ $t('basket.heading') }} ({{ basketCount }})
         </Headline>
         <template v-if="orderedItems.standAlone">

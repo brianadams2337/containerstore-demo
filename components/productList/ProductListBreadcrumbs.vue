@@ -8,7 +8,7 @@
           type="quieter"
           class="capitalize !text-black hover:underline"
           only-exact-active>
-          <Headline v-if="isActive(link.to)" size="sm" :is-uppercase="false">
+          <Headline v-if="isActive(link.to)" size="sm">
             {{ link.value }}
           </Headline>
           <template v-else>

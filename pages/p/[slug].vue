@@ -34,7 +34,6 @@
             <div class="flex items-start justify-between md:flex-col">
               <Headline
                 :size="isGreaterOrEquals('md') ? '2xl' : 'xl'"
-                :is-uppercase="false"
                 class="!leading-snug"
                 data-test-id="pdp-product-name"
                 tag="h1">

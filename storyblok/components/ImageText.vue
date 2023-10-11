@@ -24,6 +24,7 @@
         </div>
         <Headline
           v-if="blok.headline"
+          is-uppercase
           class="!block leading-tight md:text-[40px]">
           {{ blok.headline }}
         </Headline>

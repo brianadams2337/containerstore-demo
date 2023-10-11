@@ -1,11 +1,6 @@
 <template>
   <div class="bg-white pb-4 pt-5">
-    <Headline
-      class="mb-4 break-all"
-      tag="h2"
-      size="xl"
-      type="loud"
-      :is-uppercase="false">
+    <Headline class="mb-4 break-all" tag="h2" size="xl">
       {{ headline }}
     </Headline>
     <p class="break-all font-semibold text-secondary">

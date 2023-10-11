@@ -1,11 +1,7 @@
 <template>
   <div class="container">
     <div class="mt-8">
-      <Headline
-        size="xl"
-        :is-uppercase="false"
-        type="loud"
-        class="font-semibold text-primary">
+      <Headline size="xl" class="font-semibold text-primary">
         {{ $t('wishlist.heading') }}
       </Headline>
       <p

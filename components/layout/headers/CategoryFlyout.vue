@@ -3,7 +3,7 @@
     <div
       id="flyout-menu-items-container-content"
       :key="flyoutMenuCategory.slug">
-      <Headline size="sm" tag="p" type="loud" :is-uppercase="false">
+      <Headline size="sm" tag="p">
         <DefaultLink
           :to="{ name: routeList.home.name }"
           type="quiet"
@@ -31,7 +31,7 @@
         v-if="category.children?.length"
         :id="`flyout-menu-items-container-content-${category.slug}`"
         :key="category.slug">
-        <Headline :is-uppercase="false" size="sm" tag="p" type="loud">
+        <Headline size="sm" tag="p">
           <DefaultLink
             :to="category.path"
             type="quiet"

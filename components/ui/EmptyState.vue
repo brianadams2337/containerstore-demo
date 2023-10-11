@@ -5,14 +5,10 @@
       <component :is="icon" class="w-full" />
     </div>
     <div class="px-8 text-center md:w-[32rem] md:px-0 md:text-start">
-      <Headline v-if="title" class="!block" size="xl" :is-uppercase="false">
+      <Headline v-if="title" class="!block" size="xl">
         {{ title }}
       </Headline>
-      <Headline
-        v-if="description"
-        size="sm"
-        :is-uppercase="false"
-        class="mt-4 !block text-gray-700">
+      <Headline v-if="description" size="sm" class="mt-4 !block text-gray-700">
         {{ description }}
       </Headline>
       <div

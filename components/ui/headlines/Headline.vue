@@ -23,7 +23,7 @@ const props = defineProps({
   },
   isUppercase: {
     type: Boolean as PropType<boolean>,
-    default: true,
+    default: false,
   },
   hidden: {
     type: Boolean as PropType<boolean>,

@@ -1,7 +1,7 @@
 <template>
   <div v-editable="blok" :class="marginClasses">
     <div class="flex w-full justify-between px-5 sm:px-14">
-      <Headline v-if="blok.headline" tag="p" size="base" type="loud">
+      <Headline v-if="blok.headline" tag="p" size="base" is-uppercase>
         {{ blok.headline }}
       </Headline>
 

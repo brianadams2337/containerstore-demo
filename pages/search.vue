@@ -1,7 +1,9 @@
 <template>
   <PageContent>
     <div class="flex w-full justify-between">
-      <Headline>{{ $t('search.result', { term, resultsCount }) }}</Headline>
+      <Headline is-uppercase>
+        {{ $t('search.result', { term, resultsCount }) }}
+      </Headline>
       <div
         v-if="filters?.length"
         class="order-1 flex items-center space-x-4 text-sm">

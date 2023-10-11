@@ -2,7 +2,7 @@
   <Modal hide-close-button>
     <template #headline>
       <div>
-        <Headline :is-uppercase="false" size="xl" tag="h2" class="mb-4">
+        <Headline size="xl" tag="h2" class="mb-4">
           {{ $t('login_page.reset_password.title') }}
         </Headline>
       </div>

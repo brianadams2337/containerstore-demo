@@ -1,7 +1,7 @@
 <template>
   <div class="xl:w-[32rem]">
     <div class="rounded border-primary p-6 md:border">
-      <Headline tag="div" size="xl" :is-uppercase="false">
+      <Headline tag="div" size="xl">
         {{ $t('basket.total') }}
       </Headline>
       <div class="mt-6 space-y-4">

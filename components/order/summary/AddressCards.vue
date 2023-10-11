@@ -5,7 +5,7 @@
       :key="`headline-${name}-${idx}`"
       class="w-full rounded-md border border-gray-350 p-5 md:w-1/2"
       data-test-id="address-card">
-      <Headline tag="h3" size="sm" class="mb-2.5">
+      <Headline tag="h3" size="sm" class="mb-2.5" is-uppercase>
         {{ label }}
       </Headline>
       <AddressInformation

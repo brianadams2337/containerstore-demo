@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Headline v-bind="{ tag, size }">
+    <Headline v-bind="{ tag, size }" is-uppercase>
       <slot name="headline" />
     </Headline>
     <div class="mt-3">

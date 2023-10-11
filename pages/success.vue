@@ -6,7 +6,7 @@
     <div v-else-if="orderData" class="sm:mx-auto sm:flex">
       <div class="container sm:mx-16 sm:pr-20">
         <div class="mt-16 space-y-2">
-          <Headline size="lg" type="loud" class="flex items-center">
+          <Headline size="lg" is-uppercase class="flex items-center">
             <IconCheckmark class="relative top-[-2px] mr-2 h-5 w-5" />
             {{ $t('osp.intro') }}
             {{ orderData.customer?.firstName }}
@@ -20,7 +20,7 @@
             <OspBasicOrderData v-bind="orderData" />
             <OspAddressInformation :address="orderData.address" />
             <div v-if="orderData.payment?.[0].key">
-              <Headline size="sm" tag="h2" type="loud" class="mb-3">
+              <Headline size="sm" tag="h2" is-uppercase class="mb-3">
                 {{ $t('osp.payment') }}
               </Headline>
               <PaymentIcon :paid-with="orderData.payment[0].key" />
@@ -50,7 +50,7 @@
               <Headline
                 size="sm"
                 tag="h2"
-                type="loud"
+                is-uppercase
                 class="mb-3 mt-8 block sm:hidden">
                 {{ $t('osp.order_overview') }}
               </Headline>

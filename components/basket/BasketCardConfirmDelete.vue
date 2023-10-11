@@ -11,7 +11,7 @@
     <div class="flex grow flex-col justify-center">
       <div class="space-y-2">
         <div class="mb-8 flex justify-center sm:justify-start md:mb-4">
-          <Headline tag="p" size="base">
+          <Headline tag="p" size="base" is-uppercase>
             {{ $t('basket_card.confirm_remove_question') }}
           </Headline>
         </div>

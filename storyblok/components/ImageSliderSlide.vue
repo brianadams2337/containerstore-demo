@@ -14,9 +14,10 @@
         {{ blok.topline || '&nbsp;' }}
       </div>
       <Headline
-        tag="p"
         :size="headlineSize"
-        :badge="blok.is_new ? 'NEW' : undefined">
+        :badge="blok.is_new ? 'NEW' : undefined"
+        is-uppercase
+        tag="p">
         {{ blok.headline }}
       </Headline>
       <DefaultLink

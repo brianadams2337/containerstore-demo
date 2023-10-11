@@ -20,8 +20,7 @@
             <Headline
               v-if="totalCount > 0 && !searching"
               class="my-4"
-              size="sm"
-              :is-uppercase="false">
+              size="sm">
               {{
                 $t('search.search_term_match_count', {
                   count: products.length,
