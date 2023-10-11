@@ -28,7 +28,9 @@
     "storyblok:download": "env-cmd -f .env.storyblok -x storyblok pull-components --space \\$STORYBLOK_SPACE_ID",
     "storyblok:generate": "node scripts/storyblok-generate.cjs",
     "storyblok:login": "env-cmd -f .env.storyblok -x storyblok login --token \\$STORYBLOK_PERSONAL_TOKEN --region eu",
-    "storyblok:unused": "node scripts/storyblok-unused.cjs"
+    "storyblok:unused": "node scripts/storyblok-unused.cjs",
+    "test": "vitest",
+    "test:run": "vitest --run"
   },
   "devDependencies": {
     "@aboutyou/storyblok-generate-ts": "1.14.0",
@@ -50,8 +52,10 @@
     "eslint-plugin-nuxt": "4.0.0",
     "eslint-plugin-tailwindcss": "3.13.0",
     "nuxt": "3.7.4",
+    "happy-dom": "^12.9.1",
     "nuxt-svgo": "3.5.5",
     "nuxt-viewport": "2.0.6",
+    "nuxt-vitest": "^0.11.0",
     "ofetch": "1.3.3",
     "postcss": "8.4.31",
     "postcss-custom-properties": "13.3.2",
@@ -69,7 +73,8 @@
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2",
     "utility-types": "3.10.0",
-    "vue-tsc": "1.8.19"
+    "vue-tsc": "1.8.19",
+    "vitest": "^0.34.6"
   },
   "dependencies": {
     "@scayle/storefront-nuxt": "7.30.0",
