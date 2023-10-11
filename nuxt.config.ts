@@ -239,7 +239,6 @@ export default defineNuxtConfig({
     // Don't cache API routes.
     '/api/**': { cache: false, swr: false },
     // Do not cache pages with user-specific information
-    '/p/**': { cache: false, swr: false },
     '/wishlist': { cache: false, swr: false },
     '/basket': { cache: false, swr: false },
     '/checkout': { cache: false, swr: false },
