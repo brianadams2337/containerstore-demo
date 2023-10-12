@@ -15,9 +15,7 @@ export default () => {
 
   const isSideNavigationOpen = computed(() => state.isOpen)
   const isSideNavigationActive = computed(() => state.active)
-  const selectedSideNavigationItem = computed(() => {
-    return state.selectedItem
-  })
+  const selectedSideNavigationItem = computed(() => state.selectedItem)
 
   const selectSideNavigationItem = (item: Category) => {
     state.selectedItem = item
