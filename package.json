@@ -39,7 +39,7 @@
     "@scayle/eslint-config-storefront": "3.2.3",
     "@scayle/prettier-config-storefront": "2.0.1",
     "@types/color": "3.0.4",
-    "@types/node": "18.18.4",
+    "@types/node": "18.18.5",
     "@zadigetvoltaire/nuxt-gtm": "0.0.13",
     "autoprefixer": "10.4.16",
     "cypress": "13.3.1",
