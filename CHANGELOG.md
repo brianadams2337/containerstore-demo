@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- Replaced `useUiState` with smaller composables => `useFlyouts`, `useMobileSearch`, `useModal` & `useSideNavigation`).
+- Replaced `useUiState` with smaller composables which are: `useFlyouts`, `useMobileSearch`, `useModal` & `useSideNavigation`.
 
 ### Patch Changes
 
