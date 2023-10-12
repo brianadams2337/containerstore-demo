@@ -30,36 +30,23 @@ const LinkTypeClass = {
   [LinkVariant.QUIET]: 'text-sm font-semibold tracking-normal',
 } as const
 
-const props = defineProps({
-  to: {
-    type: [String, Object] as PropType<RouteLocationRaw>,
-    required: true,
-  },
-  badge: {
-    type: [Number, String],
-    default: undefined,
-  },
-  onlyExactActive: {
-    type: Boolean,
-    default: false,
-  },
-  type: {
-    type: String as PropType<LinkVariant>,
-    default: LinkVariant.NORMAL,
-    validator: (val: LinkVariant) => Object.values(LinkVariant).includes(val),
-  },
-  openInNewTab: {
-    type: Boolean,
-    default: false,
-  },
-  raw: {
-    type: Boolean,
-    default: false,
-  },
-  target: {
-    type: String as PropType<'_self' | '_blank' | '_parent' | '_top'>,
-    default: '_self',
-  },
+interface DefaultLinkProps {
+  to: RouteLocationRaw
+  badge?: number | string
+  onlyExactActive?: boolean
+  type?: LinkVariant
+  openInNewTab?: boolean
+  raw?: boolean
+  target?: '_self' | '_blank' | '_parent' | '_top'
+}
+
+const props = withDefaults(defineProps<DefaultLinkProps>(), {
+  badge: undefined,
+  onlyExactActive: false,
+  type: LinkVariant.NORMAL,
+  openInNewTab: false,
+  raw: false,
+  target: '_self',
 })
 
 const ACTIVE_CLASS = '!font-bold'

@@ -20,6 +20,7 @@ export default defineVitestConfig({
   resolve: {
     alias: {
       '@': './',
+      '~': './',
     },
   },
 })
