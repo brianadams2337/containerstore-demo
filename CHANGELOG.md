@@ -1,9 +1,17 @@
 # @scayle/storefront-boilerplate-nuxt
 
-## Replaced `useUiState` with smaller specific composables
+## 1.0.0-rc.02
 
-- In Nuxt 2 we had the `useUiState` composables that was bloated with the mixed
-  logic for flyouts, modal, side navigation and mobile search. Now we removed the
-  ui state composable and replaced it with the dedicated ones
-  (`useFlyouts`, `useMobileSearch`, `useModal` & `useSideNavigation`). Now we have
-  claner code and the composables with the dedicated purpose.
+### Minor Changes
+
+- Replaced `useUiState` with smaller composables => `useFlyouts`, `useMobileSearch`, `useModal` & `useSideNavigation`).
+
+### Patch Changes
+
+-
+
+## 1.0.0-rc.01
+
+### Major Changes
+
+- Introduce Nuxt 3
