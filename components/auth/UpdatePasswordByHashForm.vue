@@ -32,7 +32,7 @@
           type="tertiary"
           :disabled="isSubmitting"
           :loading="isSubmitting"
-          @click="$emit('close')">
+          @click="$emit('close:modal')">
           {{ $t('login_page.reset_password.cancel') }}
         </AppButton>
       </div>
@@ -43,7 +43,7 @@
 <script setup lang="ts">
 import useVuelidate from '@vuelidate/core'
 
-defineEmits(['close'])
+defineEmits(['close:modal'])
 
 const route = useRoute()
 const { $validation } = useNuxtApp()

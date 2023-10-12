@@ -16,11 +16,7 @@
           <div v-if="product.isSoldOut" class="left-0 top-0">
             <ProductBadge
               class="ml-0"
-              :badge-label="
-                getBadgeLabel({
-                  isSoldOut: product.isSoldOut,
-                })
-              " />
+              :badge-label="getBadgeLabel({ isSoldOut: product.isSoldOut })" />
           </div>
           <div class="my-2 max-w-xs md:mt-1">
             <div class="mb-2">
@@ -211,6 +207,8 @@ const {
   toggleItem: toggleWishlistItem,
 } = await useWishlist({ options: { lazy: true, autoFetch: true } })
 
+const { openBasketFlyout } = useFlyouts()
+
 const { state: zoomGallery, toggle: toggleZoomGallery } =
   useZoomGalleryActions()
 
@@ -347,7 +345,7 @@ const addItemToBasket = async () => {
           ],
         })
       : await addBasketItem({ variantId: activeVariant.value.id, quantity: 1 })
-    showBasketFlyOut()
+    openBasketFlyout()
 
     showAddToBasketToast(true, product.value)
 

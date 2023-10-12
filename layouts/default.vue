@@ -4,9 +4,7 @@
     <HeaderMetaBar />
     <AppHeader v-bind="{ rootCategories, fetchingCategories }" />
     <ToastContainer />
-    <MobileSidebar
-      v-show="isLessThan('md')"
-      v-bind="{ rootCategories, fetchingCategories }" />
+    <MobileSidebar v-bind="{ rootCategories, fetchingCategories }" />
     <div class="mt-4 grow">
       <ErrorLayout
         v-if="hasError"
@@ -33,8 +31,6 @@ const { data: rootCategoriesData, fetching: fetchingCategories } = categoryData
 
 const { trackShopInit, listenToUserItemsChanges, listenToCustomerDataChanges } =
   useTrackingEvents()
-
-const { isLessThan } = useViewport()
 
 const rootCategories = computed(() => {
   return Array.isArray(rootCategoriesData.value.categories)
@@ -72,7 +68,9 @@ await listenToUserItemsChanges()
 await listenToCustomerDataChanges()
 
 // Meta tags
-const { isSideNavigationOpen, isModalOpen } = useUiState()
+const { isSideNavigationOpen } = useSideNavigation()
+const { isOpen: isModalOpen } = useModal()
+
 useHead({
   bodyAttrs: () => ({
     class:

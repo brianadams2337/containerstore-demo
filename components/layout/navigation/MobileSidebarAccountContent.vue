@@ -39,7 +39,7 @@
 
 <script setup lang="ts">
 const { user } = await useUser()
-const { closeSideNavigation } = useUiState()
+const { closeSideNavigation } = useSideNavigation()
 
 const { logout, isSubmitting } = await useAuthentication('logout')
 

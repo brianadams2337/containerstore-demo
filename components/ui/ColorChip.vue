@@ -4,17 +4,7 @@
     :data-color-id="color.id"
     :style="backgroundColorStyle"
     class="relative col-span-1 flex items-center justify-center overflow-hidden border border-transparent bg-white"
-    :class="{
-      '!border-gray-500': hasGrayBorder,
-      'h-2 w-2': isSize('xs'),
-      'h-3 w-3': isSize('sm'),
-      'h-4 w-4': isSize('md'),
-      'h-6 w-6': isSize('lg'),
-      'h-8 w-8': isSize('xl'),
-      rounded: rounded === 'default',
-      'rounded-sm': rounded === 'sm',
-      '!border-black': hasMixedColors,
-    }">
+    :class="classes">
     <IconCheckmark
       v-if="isActive"
       class="absolute inset-x-0 m-auto h-5 w-5"
@@ -85,5 +75,17 @@ const backgroundColorStyle = computed(() => ({
   backgroundColor: hasMixedColors.value
     ? 'transparent'
     : (colorCode.value as string),
+}))
+
+const classes = computed(() => ({
+  '!border-gray-500': hasGrayBorder.value,
+  'h-2 w-2': isSize('xs'),
+  'h-3 w-3': isSize('sm'),
+  'h-4 w-4': isSize('md'),
+  'h-6 w-6': isSize('lg'),
+  'h-8 w-8': isSize('xl'),
+  rounded: props.rounded === 'default',
+  'rounded-sm': props.rounded === 'sm',
+  '!border-black': hasMixedColors.value,
 }))
 </script>

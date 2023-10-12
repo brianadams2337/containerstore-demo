@@ -66,11 +66,11 @@ defineProps({
 const {
   isFlyoutMenuOpen,
   closeFlyoutMenu,
-  isSideNavigationOpen,
   openFlyoutMenu,
-  toggleSideNavigation,
   openFlyoutMenuForNavigationTree,
-} = useUiState()
+} = useFlyouts()
+
+const { isSideNavigationOpen, toggleSideNavigation } = useSideNavigation()
 
 // TODO: Check if this really works when we start touching checkout related stuff
 const { isExactActive: isCheckoutPage } = useLink({

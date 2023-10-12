@@ -57,7 +57,7 @@
 </template>
 
 <script setup lang="ts">
-const { closeFlyoutMenu, flyoutMenuCategory } = useUiState()
+const { closeFlyoutMenu, flyoutMenuCategory } = useFlyouts()
 
 const childlessCategoryItems = computed(() => {
   return flyoutMenuCategory.value.children.filter((item) => {

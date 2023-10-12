@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-const { closeFlyoutMenu, flyoutNavigationItem } = useUiState()
+const { closeFlyoutMenu, flyoutNavigationItem } = useFlyouts()
 
 const childlessNavigationItems = computed(() => {
   return flyoutNavigationItem.value.children.filter((item) => {

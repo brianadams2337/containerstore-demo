@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-const { closeUserFlyout } = useUiState()
+const { closeUserFlyout } = useFlyouts()
 const { user } = await useUser()
 const { logout, isSubmitting } = await useAuthentication('logout')
 

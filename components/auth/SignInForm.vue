@@ -20,11 +20,13 @@
         </template>
       </VerticalAccordion>
 
-      <ForgottenPasswordForm v-if="showForgottenPassword" @close="closeModal" />
+      <ForgotPasswordForm
+        v-if="isForgotPasswordShown"
+        @close:modal="goToSignInPage" />
 
       <UpdatePasswordByHashForm
-        v-if="showUpdatePasswordByHash"
-        @close="closeModal" />
+        v-if="isUpdatePasswordByHashShown"
+        @close:modal="goToSignInPage" />
     </div>
   </ClientOnly>
 </template>
@@ -50,13 +52,13 @@ const tabs = computed(() => [
   ...(props.showGuestLogin ? [$i18n.t('login_page.guest_login.title')] : []),
 ])
 
-const showForgottenPassword = computed(() => {
-  return !!route.query['forgotten-password'] && !route.query.hash
+const isForgotPasswordShown = computed(() => {
+  return !!route.query['forgot-password'] && !route.query.hash
 })
 
-const showUpdatePasswordByHash = computed(() => !!route.query.hash)
+const isUpdatePasswordByHashShown = computed(() => !!route.query.hash)
 
-const closeModal = async () => {
+const goToSignInPage = async () => {
   await router.push(toLocalePath({ name: routeList.signin.name }))
 }
 </script>

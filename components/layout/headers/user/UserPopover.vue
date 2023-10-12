@@ -24,7 +24,7 @@
 <script setup lang="ts">
 const { isGreaterOrEquals } = useViewport()
 
-const { openUserFlyout, closeUserFlyout, isUserFlyoutOpen } = useUiState()
+const { openUserFlyout, closeUserFlyout, isUserFlyoutOpen } = useFlyouts()
 const { user } = await useUser()
 
 const link = computed(() => (user.value ? routeList.account : routeList.signin))

@@ -59,6 +59,8 @@ const wishlist = await useWishlist({ options: { lazy: true } })
 const basket = await useBasket({ options: { lazy: true } })
 const { $alert, $i18n } = useNuxtApp()
 
+const { openBasketFlyout } = useFlyouts()
+
 const {
   trackViewItemList,
   trackWishlist,
@@ -102,7 +104,7 @@ const addItemToCart = async (itemKey: string, index: number) => {
     quantity: 1,
   })
 
-  showBasketFlyOut()
+  openBasketFlyout()
 
   const { product } = entry
   let { variant = undefined } = entry

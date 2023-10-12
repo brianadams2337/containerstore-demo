@@ -30,7 +30,7 @@
       <DefaultLink
         :to="{
           name: routeList.signin.name,
-          query: { ['forgotten-password']: 'true' },
+          query: { ['forgot-password']: 'true' },
         }"
         raw
         class="group relative text-sm text-gray-800 hover:text-black">
@@ -78,7 +78,6 @@ const v = useVuelidate(
 )
 
 const onSubmit = async () => {
-  // validate all inputs
   const isValid = await v.value.$validate()
   if (!isValid) {
     return

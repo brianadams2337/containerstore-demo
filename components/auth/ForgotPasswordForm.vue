@@ -1,5 +1,5 @@
 <template>
-  <Modal @close="$emit('close')">
+  <Modal @close="$emit('close:modal')">
     <template #headline>
       <div>
         <Headline size="xl" tag="h2" class="mb-4">
@@ -35,7 +35,7 @@
           type="tertiary"
           :disabled="isSubmitting"
           :loading="isSubmitting"
-          @click="$emit('close')">
+          @click="$emit('close:modal')">
           {{ $t('login_page.forgot_password.cancel') }}
         </AppButton>
       </div>
@@ -46,7 +46,7 @@
 <script setup lang="ts">
 import useVuelidate from '@vuelidate/core'
 
-defineEmits(['close'])
+defineEmits(['close:modal'])
 
 const { $validation } = useNuxtApp()
 const { forgotPassword, isSubmitting } =
@@ -59,7 +59,6 @@ const model = reactive({
 })
 
 const onSubmit = async () => {
-  // validate all inputs
   const isValid = await v.value.$validate()
   if (isValid) {
     success.value = await forgotPassword({ email: model.email })
