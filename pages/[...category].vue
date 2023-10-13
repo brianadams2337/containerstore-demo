@@ -371,6 +371,7 @@ useHead(() => ({
     : [
         {
           rel: 'canonical',
+          key: 'canonical',
           href: prepareCanonicalURL(
             `${$config.public.baseUrl}${route?.fullPath}`,
           ),

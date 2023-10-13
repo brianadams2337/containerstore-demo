@@ -18,6 +18,7 @@ useHead({
   link: [
     {
       rel: 'canonical',
+      key: 'canonical',
       href: sanitizeCanonical(`${$config.public.baseUrl}${route?.fullPath}`),
     },
   ],

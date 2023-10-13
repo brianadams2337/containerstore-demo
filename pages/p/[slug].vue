@@ -504,6 +504,7 @@ useHead(() => {
     link: [
       {
         rel: 'canonical',
+        key: 'canonical',
         href: sanitizeCanonical(
           `${$config.baseUrl}${getProductDetailRoute(product?.value)}`,
         ),
