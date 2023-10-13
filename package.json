@@ -30,7 +30,8 @@
     "storyblok:login": "env-cmd -f .env.storyblok -x storyblok login --token \\$STORYBLOK_PERSONAL_TOKEN --region eu",
     "storyblok:unused": "node scripts/storyblok-unused.cjs",
     "test": "vitest",
-    "test:run": "vitest --run"
+    "test:run": "vitest run",
+    "coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@aboutyou/storyblok-generate-ts": "1.14.0",
@@ -42,6 +43,7 @@
     "@scayle/prettier-config-storefront": "2.0.1",
     "@types/color": "3.0.5",
     "@types/node": "18.18.6",
+    "@vitest/coverage-v8": "^0.34.6",
     "@zadigetvoltaire/nuxt-gtm": "0.0.13",
     "autoprefixer": "10.4.16",
     "cypress": "13.3.1",
@@ -51,8 +53,8 @@
     "eslint-plugin-cypress": "2.15.1",
     "eslint-plugin-nuxt": "4.0.0",
     "eslint-plugin-tailwindcss": "3.13.0",
-    "nuxt": "3.7.4",
     "happy-dom": "^12.9.1",
+    "nuxt": "3.7.4",
     "nuxt-svgo": "3.5.5",
     "nuxt-viewport": "2.0.6",
     "nuxt-vitest": "^0.11.0",
@@ -73,8 +75,8 @@
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2",
     "utility-types": "3.10.0",
-    "vue-tsc": "1.8.19",
-    "vitest": "^0.34.6"
+    "vitest": "0.33",
+    "vue-tsc": "1.8.19"
   },
   "dependencies": {
     "@scayle/storefront-nuxt": "7.31.0",
@@ -89,7 +91,7 @@
     "check-password-strength": "2.0.7",
     "color": "4.2.3",
     "dotenv": "16.3.1",
-    "envalid": "7.3.1",
+    "envalid": "8.0.0",
     "maska": "2.1.10",
     "nanoid": "5.0.2",
     "nuxt-jsonld": "2.0.8",
