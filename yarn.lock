@@ -1672,10 +1672,10 @@
   dependencies:
     prettier-config-standard "^5.0.0"
 
-"@scayle/storefront-core@7.18.0":
-  version "7.18.0"
-  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-core/-/@scayle/storefront-core-7.18.0.tgz#80007cf71414962efd5a9e0dc141ac124212fa44"
-  integrity sha1-gAB89xQUli79Wp4NwUGsEkIS+kQ=
+"@scayle/storefront-core@7.19.0":
+  version "7.19.0"
+  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-core/-/@scayle/storefront-core-7.19.0.tgz#dabdccd3a98e7604c57ba581f9545bd795cfe53d"
+  integrity sha1-2r3M06mOdgTFe6WB+VRb15XP5T0=
   dependencies:
     "@aboutyou/backbone" "15.11.0"
     crypto-js "4.1.1"
@@ -1687,17 +1687,15 @@
     ufo "^1.1.1"
     uncrypto "^0.1.3"
     utility-types "^3.10.0"
-  optionalDependencies:
-    redis "4"
 
-"@scayle/storefront-nuxt@7.30.1":
-  version "7.30.1"
-  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.30.1.tgz#f015101cd5608db5dee05b899da4ffe12e87c2a8"
-  integrity sha1-8BUQHNVgjbXe4FuJnaT/4S6Hwqg=
+"@scayle/storefront-nuxt@7.31.0":
+  version "7.31.0"
+  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.31.0.tgz#4badb3ea74f4435dfb88216c55ce3b38ec57ac72"
+  integrity sha1-S62z6nT0Q137iCFsVc47OOxXrHI=
   dependencies:
     "@nuxt/kit" "3.7.4"
     "@scayle/h3-session" "0.3.2"
-    "@scayle/storefront-core" "7.18.0"
+    "@scayle/storefront-core" "7.19.0"
     "@vueuse/core" "10.5.0"
     consola "3.2.3"
     core-js "3.33.0"
@@ -8851,7 +8849,7 @@ redis-parser@^3.0.0:
   dependencies:
     redis-errors "^1.0.0"
 
-redis@4, redis@4.6.10:
+redis@4.6.10:
   version "4.6.10"
   resolved "https://registry.yarnpkg.com/redis/-/redis-4.6.10.tgz#07f6ea2b2c5455b098e76d1e8c9b3376114e9458"
   integrity sha512-mmbyhuKgDiJ5TWUhiKhBssz+mjsuSI/lSZNPI9QvZOYzWvYGejtb+W3RlDDf8LD6Bdl5/mZeG8O1feUGhXTxEg==
