@@ -78,6 +78,8 @@ const exactActiveClass = computed(() => {
   return props.onlyExactActive ? ACTIVE_CLASS : ''
 })
 
+const shopPathPrefix = useCurrentShop().value?.path
+
 const resolvedLink = computed(() => {
   const isExternal = isString(props.to) && props.to.startsWith('http')
 
@@ -85,8 +87,16 @@ const resolvedLink = computed(() => {
     return props.to
   }
 
-  const isNotValidRoutePath = isString(props.to) && !props.to.startsWith('/')
+  if (isString(props.to)) {
+    const normalizedPath = !props.to.startsWith('/') ? `/${props.to}` : props.to
 
-  return toLocalePath(isNotValidRoutePath ? `/${props.to}` : props.to)
+    // Avoid double-prefixing the path
+    if (normalizedPath.startsWith(`/${shopPathPrefix}`)) {
+      return normalizedPath
+    }
+    return toLocalePath(normalizedPath)
+  }
+
+  return toLocalePath(props.to)
 })
 </script>
