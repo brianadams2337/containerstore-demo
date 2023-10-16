@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { SbBannerLink } from '~/storyblok/types/storyblok'
+import type { SbBannerLink } from '~/storyblok/types/storyblok'
 
 defineProps({
   blok: {

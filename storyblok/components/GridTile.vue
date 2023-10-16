@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { SbGridTile } from '~/storyblok/types/storyblok'
+import type { SbGridTile } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {

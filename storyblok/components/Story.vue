@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { SbSeo } from '../types/storyblok'
+import type { SbSeo } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   story: {

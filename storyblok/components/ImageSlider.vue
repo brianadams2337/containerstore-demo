@@ -24,8 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import useStoryblokMargins from '../composables/useStoryblokMargins'
-import { SbImageSlider } from '~/storyblok/types/storyblok'
+import type { SbImageSlider } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {

@@ -209,7 +209,7 @@ export default defineNuxtConfig({
     fallbackBreakpoint: 'lg',
   },
   imports: {
-    dirs: ['./constants'],
+    dirs: ['./constants', './storyblok/composables'],
   },
 
   // Allow auto-import for vue components

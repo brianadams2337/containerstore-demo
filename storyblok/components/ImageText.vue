@@ -43,9 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import { useStoryblokImageSanitizer } from '../composables/useStoryblokImage'
-import useCmsAlignment from '../composables/useCmsAlignment'
-import { SbImageText } from '~/storyblok/types/storyblok'
+import type { SbImageText } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {

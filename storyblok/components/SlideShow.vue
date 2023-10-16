@@ -19,9 +19,9 @@
     </Swiper>
   </div>
 </template>
+
 <script setup lang="ts">
-import { SbSlideShow } from '~/storyblok/types/storyblok'
-import useStoryblokMargins from '~/storyblok/composables/useStoryblokMargins'
+import type { SbSlideShow } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {

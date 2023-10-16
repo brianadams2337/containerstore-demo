@@ -20,9 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { useStoryblokImageSanitizer } from '../composables/useStoryblokImage'
-import useStoryblokMargins from '../composables/useStoryblokMargins'
-import { SbClickableImage } from '~/storyblok/types/storyblok'
+import type { SbClickableImage } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {

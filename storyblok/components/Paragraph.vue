@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { SbParagraph } from '~/storyblok/types/storyblok'
+import type { SbParagraph } from '~/storyblok/types/storyblok'
 
 defineProps({
   blok: {

@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts" setup>
-import { SbCmsText } from '~/storyblok/types/storyblok'
+import type { SbCmsText } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {

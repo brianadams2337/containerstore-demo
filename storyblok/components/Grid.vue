@@ -14,8 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import useStoryblokMargins from '../composables/useStoryblokMargins'
-import { SbGrid } from '~/storyblok/types/storyblok'
+import type { SbGrid } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {

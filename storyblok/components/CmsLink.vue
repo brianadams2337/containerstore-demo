@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-import { SbLink } from '~/storyblok/types/storyblok'
+import type { SbLink } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {

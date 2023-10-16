@@ -1,4 +1,4 @@
-import { SbCmsImage } from '~/storyblok/types/storyblok'
+import type { SbCmsImage } from '~/storyblok/types/storyblok'
 
 type SanitizedImage = {
   src: string

@@ -44,10 +44,12 @@
 </template>
 
 <script setup lang="ts">
-import { getLatestCategory, isFirstIndexOfRow } from '@scayle/storefront-nuxt'
-import type { Product } from '@scayle/storefront-nuxt'
-import useStoryblokMargins from '../composables/useStoryblokMargins'
-import { SbProductSlider } from '~/storyblok/types/storyblok'
+import {
+  getLatestCategory,
+  isFirstIndexOfRow,
+  type Product,
+} from '@scayle/storefront-nuxt'
+import type { SbProductSlider } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {

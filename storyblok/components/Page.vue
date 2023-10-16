@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { SbPage } from '~/storyblok/types/storyblok'
+import type { SbPage } from '~/storyblok/types/storyblok'
 
 const { isGreaterThan } = useViewport()
 

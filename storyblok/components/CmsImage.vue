@@ -10,11 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  getTeaserImage,
-  useStoryblokImageSanitizer,
-} from '../composables/useStoryblokImage'
-import { SbCmsImage } from '~/storyblok/types/storyblok'
+import type { SbCmsImage } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   preload: {

@@ -22,8 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import useStoryblokMargins from '../../composables/useStoryblokMargins'
-import { SbDoubleColumn } from '~/storyblok/types/storyblok'
+import type { SbDoubleColumn } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {

@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { SbImageSliderSlide } from '~/storyblok/types/storyblok'
+import type { SbImageSliderSlide } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {

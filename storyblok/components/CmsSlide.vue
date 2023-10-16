@@ -42,7 +42,6 @@
 </template>
 
 <script setup lang="ts">
-import useCmsAlignment from '../composables/useCmsAlignment'
 import type { SbCmsImage, SbSlide, SbVideo } from '~/storyblok/types/storyblok'
 
 const props = defineProps({

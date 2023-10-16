@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { SbDetailImage } from '../types/storyblok'
+import type { SbDetailImage } from '~/storyblok/types/storyblok'
 
 defineProps({
   blok: {

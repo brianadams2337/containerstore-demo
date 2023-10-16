@@ -1,4 +1,4 @@
-import { Alignment } from '../types/storyblok'
+import type { Alignment } from '~/storyblok/types/storyblok'
 
 const useCmsAlignment = (blok: Partial<Alignment>) => {
   return {

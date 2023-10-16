@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { SbAccordionEntry } from '../types/storyblok.gen'
+import type { SbAccordionEntry } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {

@@ -1,4 +1,4 @@
-import { MarginKey } from '../types/storyblok'
+import type { MarginKey } from '~/storyblok/types/storyblok'
 
 const useStoryblokMargins = (content: Partial<{ margin_top: MarginKey }>) => {
   const margins: Record<MarginKey, string> = {

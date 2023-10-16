@@ -24,8 +24,7 @@
 
 <script setup lang="ts">
 import { slugify } from '@scayle/storefront-nuxt'
-import { SbAccordion } from '../types/storyblok.gen'
-import useStoryblokMargins from '../composables/useStoryblokMargins'
+import type { SbAccordion } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {

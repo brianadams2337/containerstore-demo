@@ -60,8 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import { SbBanner } from '~/storyblok/types/storyblok'
-import useBanner from '~/composables/useBanner'
+import type { SbBanner } from '~/storyblok/types/storyblok'
 
 const props = defineProps({
   blok: {
