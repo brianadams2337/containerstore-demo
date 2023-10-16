@@ -5,7 +5,7 @@
       :key="flyoutMenuCategory.slug">
       <Headline size="sm" tag="p">
         <DefaultLink
-          :to="{ name: routeList.home.name }"
+          :to="routeList.home"
           type="quiet"
           class="text-sm"
           @click="forceCloseFlyout">

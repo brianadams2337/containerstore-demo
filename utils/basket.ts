@@ -16,9 +16,5 @@ export const showAddToBasketToast = (
 
   const action = isAddedToBasket ? 'ROUTE' : 'CONFIRM'
 
-  $alert.show(
-    message,
-    action,
-    isAddedToBasket ? { name: routeList.basket.name } : undefined,
-  )
+  $alert.show(message, action, isAddedToBasket ? routeList.basket : undefined)
 }

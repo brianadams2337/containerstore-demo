@@ -3,10 +3,7 @@
     <AppButton type="primary" :to="checkoutOrHomeRoute" class="w-full">
       {{ $t('basket.checkout_label') }}
     </AppButton>
-    <AppButton
-      type="secondary"
-      :to="{ name: routeList.basket.name }"
-      class="w-full">
+    <AppButton type="secondary" :to="routeList.basket" class="w-full">
       {{ $t('basket.heading') }}
     </AppButton>
   </div>
@@ -15,7 +12,7 @@
 <script setup lang="ts">
 const { isLoggedIn } = await useUser()
 
-const checkoutOrHomeRoute = computed(() => ({
-  name: isLoggedIn.value ? routeList.checkout.name : routeList.signin.name,
-}))
+const checkoutOrHomeRoute = computed(() => {
+  return isLoggedIn.value ? routeList.checkout : routeList.signin
+})
 </script>

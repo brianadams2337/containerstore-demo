@@ -11,7 +11,7 @@
     <div class="py-4">
       <Breadcrumbs
         :items="[
-          { value: 'Home', to: routeList.home.name },
+          { value: 'Home', to: routeList.home },
           { value: story.name, to: story.slug },
         ]" />
     </div>

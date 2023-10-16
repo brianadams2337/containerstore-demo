@@ -58,7 +58,7 @@ router.afterEach(async () => {
 })
 
 const resetErrorState = async () => {
-  const redirect = toLocalePath({ name: routeList.home.name }).toString()
+  const redirect = toLocalePath(routeList.home).toString()
   await clearError({ redirect })
   error.value = undefined
 }

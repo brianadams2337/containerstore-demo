@@ -37,7 +37,7 @@ export const showWishlistToast = (
   $alert.show(
     message,
     action,
-    isAddedToWishlist ? { name: routeList.wishlist.name } : undefined,
+    isAddedToWishlist ? routeList.wishlist : undefined,
   )
 }
 

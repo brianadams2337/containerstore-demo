@@ -1,7 +1,7 @@
 <template>
   <div class="inline-flex h-full w-full items-center justify-center">
     <DefaultLink
-      :to="{ name: routeList.wishlist.name }"
+      :to="routeList.wishlist"
       data-test-id="wishlist-link"
       class="relative"
       type="loud">

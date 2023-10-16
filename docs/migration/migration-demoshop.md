@@ -94,7 +94,7 @@ export const routeList: LinkList = {
 } as const
 
 // In component usage
- <DefaultLink :to="{ name: routeList.home.name }" />
+ <DefaultLink :to="routeList.home" />
 ```
 
 ## Constants/types

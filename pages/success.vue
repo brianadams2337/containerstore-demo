@@ -30,7 +30,7 @@
             v-show="deliveryDate && isLessThan('sm')"
             :delivery-date="deliveryDate" />
           <div class="my-8 flex space-x-4 sm:mt-12">
-            <AppButton type="tertiary" :to="{ name: routeList.home.name }">
+            <AppButton type="tertiary" :to="routeList.home">
               {{ $t('basket.continue_shopping_label') }}
             </AppButton>
             <AppButton

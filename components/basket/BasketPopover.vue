@@ -8,7 +8,7 @@
     <template #action>
       <DefaultLink
         data-test-id="basket-link"
-        :to="{ name: routeList.basket.name }"
+        :to="routeList.basket"
         class="relative"
         type="loud">
         <FloatingBadge v-if="items?.length" class="-right-2 -top-2">

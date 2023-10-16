@@ -31,7 +31,7 @@ import { RouteLocationRaw } from '#vue-router'
 defineProps({
   linkTo: {
     type: [Object, String] as PropType<RouteLocationRaw>,
-    default: () => ({ name: routeList.home.name }),
+    default: () => routeList.home,
   },
   width: {
     type: Number as PropType<number>,
