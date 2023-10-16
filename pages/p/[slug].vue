@@ -378,10 +378,14 @@ const onToggleWishlist = async () => {
   })
 
   isWishlistToggling.value = true
-  await toggleWishlistItem({ productId: id })
+  try {
+    await toggleWishlistItem({ productId: id })
+    showWishlistToast(isNewItemInWishlist, product.value)
+  } catch (e) {
+    $alert.show($i18n.t('error.request_not_processed'), 'CONFIRM')
+    console.error(e)
+  }
   isWishlistToggling.value = false
-
-  showWishlistToast(isNewItemInWishlist, product.value)
 }
 
 const combineWithProductValues = getAdvancedAttributes({

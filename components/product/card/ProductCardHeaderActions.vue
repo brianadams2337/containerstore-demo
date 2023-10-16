@@ -49,6 +49,7 @@ const product = toRef(props, 'product')
 const productId = computed(() => product.value.id)
 
 const { toggleItem, fetching, contains } = await useWishlist()
+const { $alert, $i18n } = useNuxtApp()
 
 const toggleItemInWishlist = async () => {
   const wasInWishlist = contains({ productId: productId.value })
@@ -59,10 +60,16 @@ const toggleItemInWishlist = async () => {
   })
 
   isWishlistToggling.value = true
-  await toggleItem({ productId: productId.value })
-  isWishlistToggling.value = false
 
-  showWishlistToast(!wasInWishlist, product.value)
+  try {
+    await toggleItem({ productId: productId.value })
+    showWishlistToast(!wasInWishlist, product.value)
+  } catch (e) {
+    $alert.show($i18n.t('error.request_not_processed'), 'CONFIRM')
+    console.error(e)
+  }
+
+  isWishlistToggling.value = false
 }
 
 const isInWishlist = computed(() => {
