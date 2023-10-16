@@ -90,7 +90,6 @@ const resolvedLink = computed(() => {
   }
 
   const normalizedPath = !props.to.startsWith('/') ? `/${props.to}` : props.to
-
   return toLocalePath(normalizedPath)
 })
 </script>
