@@ -5,11 +5,6 @@
     "login_request": "Sign in now",
     "register": "Register",
     "sold_out": "Sold out",
-    "gender": {
-      "women": "Women",
-      "men": "Men",
-      "kids": "Kids"
-    },
     "home": "Home",
     "user_greeting": "Hi {name}",
     "you_are_not_user": "Not {name}?",
@@ -227,7 +222,7 @@
   },
   "plp": {
     "filter": "Filter",
-    "seo_description": "Buy {categoryName} for {gender} online at Demo Shop. Discover the wide range in {categoryName}"
+    "seo_description": "Buy within the {categoryName} category online at Demo Shop. Discover the wide range in {categoryName} category"
   },
   "sorting_select": {
     "topseller": "Recommendations",

@@ -359,10 +359,9 @@ const robots = computed(() =>
 useSeoMeta(() => ({
   robots: robots.value,
   description: $i18n.t('plp.seo_description', {
-    categoryName: selectedCategory.value?.name,
-    gender: 'women',
+    categoryName: selectedCategory.value?.name.toLowerCase(),
   }),
-  title: `${$i18n.t('global.gender.women')} ${selectedCategory.value?.name}`,
+  title: selectedCategory.value?.name,
 }))
 
 useHead(() => ({

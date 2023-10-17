@@ -5,11 +5,6 @@
     "login_request": "Melde Dich jetzt an",
     "register": "Registrieren",
     "sold_out": "Ausverkauft",
-    "gender": {
-      "women": "Damen",
-      "men": "Herren",
-      "kids": "Kinder"
-    },
     "home": "Home",
     "user_greeting": "Hallo {name}",
     "you_are_not_user": "Nicht {name}?",
@@ -231,7 +226,7 @@
   },
   "plp": {
     "filter": "Filter",
-    "seo_description": "{categoryName} für {gender} online im Demo Shop. Jetzt eine große Vielfalt entdecken in: {categoryName}"
+    "seo_description": "Kaufen Sie in der Kategorie {categoryName} online im Demo Shop ein. Entdecken Sie das große Sortiment in der Kategorie {categoryName}"
   },
   "sorting_select": {
     "topseller": "Empfehlungen",
