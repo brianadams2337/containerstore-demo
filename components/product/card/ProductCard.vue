@@ -12,10 +12,12 @@
               @mouseover="onMouseOver"
               @mouseleave="onMouseLeave">
               <slot v-if="product" name="header-actions">
-                <ProductCardHeaderActions
-                  v-bind="{ product, wishlistRemoveIcon, listingMetaData }"
-                  :class="headerActionsClass"
-                  class="opacity-100 transition" />
+                <ClientOnly>
+                  <ProductCardHeaderActions
+                    v-bind="{ product, wishlistRemoveIcon, listingMetaData }"
+                    :class="headerActionsClass"
+                    class="opacity-100 transition" />
+                </ClientOnly>
               </slot>
               <slot
                 name="header-image"

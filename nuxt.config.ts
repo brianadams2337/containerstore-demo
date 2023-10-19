@@ -233,4 +233,20 @@ export default defineNuxtConfig({
       cert: path.resolve(__dirname, process.env.HTTPS_CERT || ''),
     },
   },
+
+  // https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering
+  routeRules: {
+    // How rules are merged
+    // https://github.com/unjs/nitro/blob/ae253596a847f764e275f7e0450ffdfcdcd8957e/src/runtime/route-rules.ts#L69
+    // Page generated on-demand, revalidates in background
+    '/**': { swr: true },
+    // Don't cache API routes.
+    '/api/**': { cache: false, swr: false },
+    // Do not cache pages with user-specific information
+    '/wishlist': { cache: false, swr: false },
+    '/basket': { cache: false, swr: false },
+    '/checkout': { cache: false, swr: false },
+    '/signin': { cache: false, swr: false },
+    '/account/**': { cache: false, swr: false },
+  }
 })
