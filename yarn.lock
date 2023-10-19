@@ -7951,10 +7951,10 @@ nuxt-lazy-hydrate@1.0.0:
     "@nuxt/kit" "^3.3.2"
     vue3-lazy-hydration "^1.2.1"
 
-nuxt-svgo@3.5.5:
-  version "3.5.5"
-  resolved "https://registry.yarnpkg.com/nuxt-svgo/-/nuxt-svgo-3.5.5.tgz#03b2e630a68497f4c361e894bd0fbf0aaa3f9e27"
-  integrity sha512-0Wo6j4z3vLsT9QhV6F5lV8GBco50OwJ5Talxgy+Cu9ta4ACC8UHfjZBUpTlmMlWCZeys9SzLLHEg3aJDUn9bgw==
+nuxt-svgo@3.5.6:
+  version "3.5.6"
+  resolved "https://registry.yarnpkg.com/nuxt-svgo/-/nuxt-svgo-3.5.6.tgz#747cc1881f1a0ea9be1b9d8ce81961d8fe9ae9db"
+  integrity sha512-DR4/MX0WSrh4+VkmNUvp8Jfa/xzjS7Ca/8MWFbtLyPav/jzlsQE3paCbxoJengL2601D3Dtd3E4rwy7nNCgNTQ==
   dependencies:
     "@nuxt/kit" "^3.4.0"
     "@vue/compiler-sfc" "^3.2.47"
