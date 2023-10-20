@@ -97,7 +97,9 @@
                 {{ $t('pdp.add_label') }}
               </AppButton>
               <client-only>
-                <WishlistToggle class="ml-2 box-border h-full border border-gray-350 !px-2" :product="product" />
+                <WishlistToggle
+                  class="ml-2 box-border h-full border border-gray-350 !px-2"
+                  :product="product" />
               </client-only>
             </div>
             <div class="mt-3">

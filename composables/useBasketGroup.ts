@@ -17,6 +17,7 @@ export async function useBasketGroup(
 ) {
   const groupId = nanoid()
   const nuxtApp = useNuxtApp()
+  const currentShop = useCurrentShop()
   const { fetch: refreshBasket } = await useBasket()
 
   const defaultParams = nuxtApp.$config.storefront?.withParams
@@ -49,6 +50,7 @@ export async function useBasketGroup(
     await rpcCall(
       nuxtApp,
       'addGroupToBasket',
+      currentShop.value,
     )({ items: aggregatedGroup, with: basketParams.value })
     await refreshBasket()
   }

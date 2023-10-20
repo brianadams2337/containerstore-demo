@@ -16,8 +16,7 @@
           ? $t('basket_card.remove_from_wishlist_label')
           : $t('basket_card.add_to_wishlist_label')
       "
-      @click="onToggleWishlist"
-    >
+      @click="onToggleWishlist">
       <template #icon="{ _class }">
         <IconHeartFull v-if="isInWishlist" :class="_class" />
         <IconHeart v-else :class="_class" />
@@ -26,8 +25,7 @@
     <div
       v-if="tooltipVisible"
       data-test-id="wishlist-toggle-tooltip"
-      class="absolute right-full top-0 z-20 whitespace-nowrap rounded border border-black bg-white px-3 py-1 text-base before:absolute before:left-full before:top-1/2 before:mt-[-6px] before:border-[6px] before:border-transparent before:border-l-black after:absolute after:left-full after:top-1/2 after:mt-[-5px] after:border-[5px] after:border-transparent after:border-l-white"
-    >
+      class="absolute right-full top-0 z-20 whitespace-nowrap rounded border border-black bg-white px-3 py-1 text-base before:absolute before:left-full before:top-1/2 before:mt-[-6px] before:border-[6px] before:border-transparent before:border-l-black after:absolute after:left-full after:top-1/2 after:mt-[-5px] after:border-[5px] after:border-transparent after:border-l-white">
       {{
         isInWishlist
           ? $t('wishlist.notification.added_to_wishlist')
@@ -56,7 +54,7 @@ const props = defineProps({
 })
 
 defineOptions({
-  inheritAttrs: false
+  inheritAttrs: false,
 })
 
 const tooltipVisible = ref(false)
@@ -64,7 +62,9 @@ const isWishlistToggling = ref(false)
 const product = toRef(props, 'product')
 const productId = computed(() => product.value.id)
 
-const { toggleItem, fetching, contains, fetch } = await useWishlist({ options: { autoFetch: false }})
+const { toggleItem, fetching, contains, fetch } = await useWishlist({
+  options: { autoFetch: false },
+})
 
 onMounted(() => {
   fetch()

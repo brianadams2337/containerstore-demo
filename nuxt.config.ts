@@ -248,5 +248,5 @@ export default defineNuxtConfig({
     '/checkout': { cache: false, swr: false },
     '/signin': { cache: false, swr: false },
     '/account/**': { cache: false, swr: false },
-  }
+  },
 })
