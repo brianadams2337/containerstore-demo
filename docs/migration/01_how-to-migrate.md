@@ -359,24 +359,37 @@ the integral part of the migration process is the migration and refactoring of a
 
 We recommend doing a page by page approach, which can be parallelized to reduce time constraints and dependencies. Based on initial feedback a potential page migration order might look as follows:
 
-| 1. | 2. | 3. | 4. | 5. | 6. |
-| --- | --- | --- | --- | --- | --- |
-| Implement default Nuxt layout |  |  |  |  |  |
-| Implement Base UI components |  |  |  |  |  |
-| Prepare Storyblok |  |  |  |  |  |
-|  | Header |  |  |  |  |
-|  | Search |  |  |  |  |
-|  | Footer |  |  |  |  |
-|  |  | Homepage |  |  |  |
-|  |  | PDP |  |  |  |
-|  |  | Wishlist |  |  |  |
-|  |  |  | Account area |  |  |
-|  |  |  | PLP |  |  |
-|  |  |  | Basket |  |  |
-|  |  |  |  | Checkout |  |
-|  |  |  |  | OSP |  |
-|  |  |  |  | Service pages |  |
-|  |  |  |  |  | Other project-specific pages |
+<!-- ![Proposal: Page Migration Parallelization](img/scayle_sfb_nuxt3-migration-page-gantt-diagram.png) -->
+
+```mermaid
+gantt
+    title Proposal: Page Migration Parallelization
+    dateFormat X
+    axisFormat %s
+    section Step 1
+    Implement default Nuxt layout :0, 17
+    Implement Base UI components :0, 17
+    Prepare Storyblok integration :0, 17
+    section Step 2
+    Header :17, 34
+    Search :17, 34
+    Footer :17, 34
+    section Step 3
+    Homepage :34, 51
+    PDP :34, 51
+    Wishlist :34, 51
+    section Step 4
+    Sign-in, Sign-out, Registration :51, 68
+    PLP :51, 68
+    Basket :51, 68
+    section Step 5
+    Checkout :68, 84
+    OSP :68, 84
+    Account Area :68, 84
+    section Step 6
+    Service pages :84, 100
+    Other project-specific pages :84, 100
+```
 
 ## 3.1. Base UI components
 
