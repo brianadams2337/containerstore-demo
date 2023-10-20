@@ -17,7 +17,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-defineOptions({ name: 'FooterPromises' })
-</script>

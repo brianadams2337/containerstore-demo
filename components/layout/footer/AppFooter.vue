@@ -1,6 +1,6 @@
 <template>
   <footer id="footer" class="w-full">
-    <Promises />
+    <FooterPromises />
     <div
       class="container flex flex-col justify-between gap-6 px-6 py-8 md:flex-row xl:gap-16">
       <div
