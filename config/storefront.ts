@@ -83,7 +83,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
   // Following keys are Overrideable using prefix NUXT_STOREFRONT_SESSION_
   session: {
     sameSite: process.env.APP_ENV !== 'production' ? 'none' : 'lax',
-    maxAge: 2419200000, // four weeks in milliseconds
+    maxAge: 2419200, // four weeks in seconds
     provider: 'redis',
   },
   bapi: {
