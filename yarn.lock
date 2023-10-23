@@ -1691,15 +1691,15 @@
     typescript "^5.1.6"
     yaml-eslint-parser "^1.2.2"
 
-"@scayle/h3-session@0.3.2":
-  version "0.3.2"
-  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/h3-session/-/@scayle/h3-session-0.3.2.tgz#1469961f5a9f1e89949c375529f4f463cffac3ef"
-  integrity sha1-FGmWH1qfHomUnDdVKfT0Y8/6w+8=
+"@scayle/h3-session@0.3.3":
+  version "0.3.3"
+  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/h3-session/-/@scayle/h3-session-0.3.3.tgz#8f9e813620e7bd041935a7b71a21b5dc036657e3"
+  integrity sha1-j56BNiDnvQQZNae3GiG13ANmV+M=
   dependencies:
     defu "6.1.2"
     uncrypto "0.1.3"
     unstorage "1.9.0"
-    zod "3.22.2"
+    zod "3.22.4"
 
 "@scayle/prettier-config-storefront@2.0.1":
   version "2.0.1"
@@ -1724,17 +1724,17 @@
     uncrypto "^0.1.3"
     utility-types "^3.10.0"
 
-"@scayle/storefront-nuxt@7.32.2":
-  version "7.32.2"
-  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.32.2.tgz#9039b5e0b84715874ba8d7c2d0d6cb9c8254acde"
-  integrity sha1-kDm14LhHFYdLqNfC0NbLnIJUrN4=
+"@scayle/storefront-nuxt@7.32.3":
+  version "7.32.3"
+  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.32.3.tgz#f7c9afb7af8cae73e78e90db5b7d9d61d93782ba"
+  integrity sha1-98mvt6+MrnPnjpDbW32dYdk3gro=
   dependencies:
     "@nuxt/kit" "3.7.4"
-    "@scayle/h3-session" "0.3.2"
+    "@scayle/h3-session" "0.3.3"
     "@scayle/storefront-core" "7.20.0"
     "@vueuse/core" "10.5.0"
     consola "3.2.3"
-    core-js "3.33.0"
+    core-js "3.33.1"
     defu "6.1.2"
     h3 "1.8.2"
     jose "4.15.4"
@@ -3630,10 +3630,10 @@ cookies@~0.8.0:
     depd "~2.0.0"
     keygrip "~1.1.0"
 
-core-js@3.33.0:
-  version "3.33.0"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.33.0.tgz#70366dbf737134761edb017990cf5ce6c6369c40"
-  integrity sha512-HoZr92+ZjFEKar5HS6MC776gYslNOKHt75mEBKWKnPeFDpZ6nH5OeF3S6HFT1mUAUZKrzkez05VboaX8myjSuw==
+core-js@3.33.1:
+  version "3.33.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.33.1.tgz#ef3766cfa382482d0a2c2bc5cb52c6d88805da52"
+  integrity sha512-qVSq3s+d4+GsqN0teRCJtM6tdEEXyWxjzbhVrCHmBS5ZTM0FS2MOS0D13dUXAWDUN6a+lHI/N1hF9Ytz6iLl9Q==
 
 core-util-is@1.0.2:
   version "1.0.2"
@@ -11748,7 +11748,7 @@ zip-stream@^5.0.1:
     compress-commons "^5.0.1"
     readable-stream "^3.6.0"
 
-zod@3.22.2:
-  version "3.22.2"
-  resolved "https://registry.yarnpkg.com/zod/-/zod-3.22.2.tgz#3add8c682b7077c05ac6f979fea6998b573e157b"
-  integrity sha512-wvWkphh5WQsJbVk1tbx1l1Ly4yg+XecD+Mq280uBGt9wa5BKSWf4Mhp6GmrkPixhMxmabYY7RbzlwVP32pbGCg==
+zod@3.22.4:
+  version "3.22.4"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.22.4.tgz#f31c3a9386f61b1f228af56faa9255e845cf3fff"
+  integrity sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==
