@@ -2,7 +2,7 @@
   <div class="flex gap-2 text-sm">
     <div v-for="(value, key) in countdown" :key="key" class="flex gap-1">
       <span :class="value && value > 9 ? 'w-4' : 'w-2'">{{ value }}</span>
-      {{ $tc(`global.${key}`) }}
+      {{ $t(`global.${key}`) }}
     </div>
   </div>
 </template>
