@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@aashutoshrathi/word-wrap/-/word-wrap-1.2.6.tgz#bd9154aec9983f77b3a034ecaa015c2e4201f6cf"
   integrity sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==
 
-"@aboutyou/backbone@15.12.1":
-  version "15.12.1"
-  resolved "https://registry.yarnpkg.com/@aboutyou/backbone/-/backbone-15.12.1.tgz#e900b0b4e2a296902404bbfcd01a59533b3cc8f8"
-  integrity sha512-Wvur56gB83aMS6REhFXPQJ5vGlwiqe/4xNw4XatSHbZ1X0Fxvkib+mv9KZ4o1WNpF6dixHZbBWbYogF++vAwTQ==
+"@aboutyou/backbone@15.14.0":
+  version "15.14.0"
+  resolved "https://registry.yarnpkg.com/@aboutyou/backbone/-/backbone-15.14.0.tgz#ce16574d11620ec36078113dec7cbc8c9a4892d5"
+  integrity sha512-PNusAP11gclGLg8IZHoOAkVsRCqymq9XyZ0tZu3Gt9ZmFKL7cx1EZO6SBplglFiEEu5X2B19Vc+ZNICRF3aZAw==
   dependencies:
     axios ">=0.18.0 <1.0.0"
     query-string "^6.2.0"
@@ -1708,12 +1708,12 @@
   dependencies:
     prettier-config-standard "^5.0.0"
 
-"@scayle/storefront-core@7.20.0":
-  version "7.20.0"
-  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-core/-/@scayle/storefront-core-7.20.0.tgz#42bf39a3ecf3620640369e84f912be2418f78c5f"
-  integrity sha1-Qr85o+zzYgZANp6E+RK+JBj3jF8=
+"@scayle/storefront-core@7.21.0":
+  version "7.21.0"
+  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-core/-/@scayle/storefront-core-7.21.0.tgz#3c675d489be4120f40dbb9e525cbc48b59cce5ff"
+  integrity sha1-PGddSJvkEg9A27nlJcvEi1nM5f8=
   dependencies:
-    "@aboutyou/backbone" "15.12.1"
+    "@aboutyou/backbone" "15.14.0"
     crypto-js "4.1.1"
     isomorphic-dompurify "^1.5.0"
     jose "^4.14.4"
@@ -1724,14 +1724,14 @@
     uncrypto "^0.1.3"
     utility-types "^3.10.0"
 
-"@scayle/storefront-nuxt@7.32.3":
-  version "7.32.3"
-  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.32.3.tgz#f7c9afb7af8cae73e78e90db5b7d9d61d93782ba"
-  integrity sha1-98mvt6+MrnPnjpDbW32dYdk3gro=
+"@scayle/storefront-nuxt@7.33.0":
+  version "7.33.0"
+  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.33.0.tgz#f695f095edfb8a7ccf94c446d17f307c03e36811"
+  integrity sha1-9pXwle37inzPlMRG0X8wfAPjaBE=
   dependencies:
     "@nuxt/kit" "3.7.4"
     "@scayle/h3-session" "0.3.3"
-    "@scayle/storefront-core" "7.20.0"
+    "@scayle/storefront-core" "7.21.0"
     "@vueuse/core" "10.5.0"
     consola "3.2.3"
     core-js "3.33.1"
