@@ -1,11 +1,9 @@
 <template>
   <div class="relative w-80 min-w-xs overflow-hidden rounded-md border p-2">
+    <PromotionActiveChip v-if="isActive" />
     <div
-      class="absolute left-0 top-0 flex rounded-br-md bg-white px-1 text-xs font-semibold text-black">
-      <IconCheckmark class="mr-0.5 h-4 w-4" />
-      {{ $t('promotion.active_label') }}
-    </div>
-    <div class="mb-2 flex flex-col items-start rounded-md bg-blue p-4">
+      class="mb-2 flex flex-col items-start rounded-md p-4"
+      :class="colorClass">
       <Headline tag="h2" size="base" class="whitespace-pre-wrap">
         {{ customData.headerText }}
       </Headline>
@@ -52,7 +50,7 @@ const props = defineProps({
   },
   customData: {
     type: Object as PropType<Promotion['customData']>,
-    required: true,
+    default: () => ({}),
   },
   schedule: {
     type: Object as PropType<Promotion['schedule']>,
@@ -61,6 +59,11 @@ const props = defineProps({
 })
 
 const areTermsShown = useState(`terms-${props.id}`, () => false)
+
+const colorClass = computed(() => {
+  const color = props.customData.cardColor
+  return color ? `bg-${color}` : 'bg-blue'
+})
 
 const toggleTerms = () => {
   areTermsShown.value = !areTermsShown.value

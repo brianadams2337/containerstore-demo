@@ -1,7 +1,9 @@
 <template>
   <div
     class="flex min-h-screen flex-col text-primary antialiased anchor-scrolling-none">
-    <PromotionBanner />
+    <PromotionBanner
+      v-if="!isPromotionDataFetching"
+      :promotions="promotionData.entities" />
     <HeaderMetaBar />
     <AppHeader v-bind="{ rootCategories, fetchingCategories }" />
     <ToastContainer />
@@ -27,6 +29,9 @@ const categoryData = await useCategories({
   params: { path: '/' },
   key: 'categoryNavigation',
 })
+
+const { data: promotionData, fetching: isPromotionDataFetching } =
+  await useCurrentPromotions()
 
 const { data: rootCategoriesData, fetching: fetchingCategories } = categoryData
 

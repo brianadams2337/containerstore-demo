@@ -23,7 +23,8 @@
   "promotion": {
     "progress_left": "{amount} left",
     "terms": "Promotion Terms & Conditions",
-    "active_label": "Active"
+    "active_label": "Active",
+    "show_deals_label": "Show deal items"
   },
   "validation": {
     "email": "The {field} field must be a valid email",

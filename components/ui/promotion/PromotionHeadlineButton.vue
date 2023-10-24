@@ -4,7 +4,9 @@
     class="flex items-center text-white"
     @click="togglePromotionList()">
     <Headline tag="h1" size="lg">{{ title }}</Headline>
-    <IconInfoOutline class="ml-2 h-5 w-5" />
+    <template #append-icon>
+      <IconInfoOutline class="h-5 w-5" />
+    </template>
   </AppButton>
 </template>
 

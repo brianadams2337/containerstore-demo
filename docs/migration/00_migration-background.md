@@ -25,7 +25,7 @@ to SCAYLE Storefront Boilerplate (Nuxt 3) migration.
 - **New HTTP framework**: Instead of `express`, middlewares and endpoints use [h3](https://github.com/unjs/h3)
 - **New session library**: @scayle/h3-session instead of express-session
 - **Standalone build**: No node_modules are included in the deployed application
-- **Runtime env**: Runtime environment variables must be defined in runtimeConfig and follow the NUXT_ format. All other env variables will be evaluated at compile time
+- **Runtime env**: Runtime environment variables must be defined in runtimeConfig and follow the NUXT\_ format. All other env variables will be evaluated at compile time
 - **Config limitations**: The configuration must be serializable and functions can no longer be passed as module options
 - **No Vuex support**: There’s a built-in useState composable, or you can manually install vuex or pinia
 - **Redevelopment**: Nuxt 3 is not a continuation of Nuxt.js 2, but a full redevelopment with different underlying technologies and architecture

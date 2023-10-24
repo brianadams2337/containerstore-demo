@@ -117,32 +117,32 @@ The following list provides an overview of all formerly used Nuxt 2 modules of t
 and their Nuxt 3 migration resolution. Should other 3rd-party modules be used in a project,
 it is required to investigate their Nuxt 3 support before the start of a respective Nuxt 3 project migration.
 
-| Package / Module | Usage | Nuxt 3 compatible | Resolution |
-| --- | --- | --- | --- |
-| `@nuxt/typescript-runtime` | Provides TypeScript integration for Nuxt 2 | ❌ | **Module not required for Nuxt 3**, native with Nuxt 3 |
-| `@nuxtjs/composition-api` | Provides Composition API support for Vue 2 | ❌ | **Module not required for Nuxt 3**, native with Vue 3 |
-| `@nuxtjs/google-fonts` | Provides Google Fonts integration | ✅ | _Update to v3 of module_ |
-| `@nuxtjs/gtm` | Provides Google Tag Manager integration | ❌ | Use Nuxt 3 alternative `@zadigetvoltaire/nuxt-gtm` |
-| `@nuxtjs/i18n` | Provides internationalization capabilities | ✅ | _Update to v8 of module_ |
-| `@nuxt/image` | Provides plug-and-play image optimization | ✅ | _Update to v1.0 (RC) of module_ |
-| `@nuxtjs/robots` | Provides robots.txt support | ✅ | _Update to v3 of module_ |
-| `@nuxtjs/sentry` | Provides Sentry.io monitoring and tracing integration | ❌ | [Custom plugin implementation required](https://www.lichter.io/articles/nuxt3-sentry-recipe/) |
-| `@nuxtjs/storybook` | Provides Storybook integration | ✅ | _Update to v7 of module_ |
-| `@nuxtjs/tailwindcss` | Provides TailwindCSS integration | ✅ | Parallel support for Nuxt 2 and Nuxt 3 |
-| `@nuxtjs/toast` | Provides toast notification | ❌ | Custom implementation required (See SFB reference implementation) |
-| `@storyblok/nuxt-2` | Provides Storyblok CMS integration | ✅ | Use Nuxt 3 module `@storyblok/nuxt` |
-| `nuxt-jsonld` | Provides JSON-LD for SEO purposes | ✅ | _Update to v2 of module_ |
-| `nuxt-svg-loader` | Provides handling of SVG files as Vue components | ❌ | Use Nuxt 3 alternative `nuxt-svgo` |
-| `vueuse` | Provides helper and utility functions as Vue composables | ✅ | Parallel support for Nuxt 2 and Nuxt 3 |
-| `vue-fragment` | Provides multi-root-node support for Vue components | ❌ | **Module not required for Nuxt 3**, native with Vue 3 |
-| `vue-lazy-hydration` | Provides delayed client-side hydration functionality | ❌ | Use Nuxt 3 alternative `nuxt-lazy-hydrate` |
-| `vue-observe-visibility` | Provides client-side visibility observer | ❌ | Use `Intersect.vue` from SFB or `useIntersectionObserver` from `vueUse` |
-| `vue-slick-carousel` | Provides carousel / slideshow integration | ❌ | Use Nuxt 3 alternative `nuxt-swiper` |
-| `vue-slider-component` | Provides a range slider Vue component | ✅ | _Update to v4.0 (Beta)_ |
-| `@vue/test-utils` | Provides test utilities for Vue | ✅ | _Update to v2 of package_ |
-| `@vue/vue2-jest` | Provides Vue component transformer for Jest | ❌ | Migrate from `jest` to `vitest` |
-| `vue-the-mask` | Provides string masking functionality | ❌ | Migrate to `maska` |
-| `vuelidate` | Provide input validation wit Vue v-model support | ✅ | Parallel support for Vue 2 and Vue 3 |
+| Package / Module           | Usage                                                    | Nuxt 3 compatible | Resolution                                                                                    |
+| -------------------------- | -------------------------------------------------------- | ----------------- | --------------------------------------------------------------------------------------------- |
+| `@nuxt/typescript-runtime` | Provides TypeScript integration for Nuxt 2               | ❌                | **Module not required for Nuxt 3**, native with Nuxt 3                                        |
+| `@nuxtjs/composition-api`  | Provides Composition API support for Vue 2               | ❌                | **Module not required for Nuxt 3**, native with Vue 3                                         |
+| `@nuxtjs/google-fonts`     | Provides Google Fonts integration                        | ✅                | _Update to v3 of module_                                                                      |
+| `@nuxtjs/gtm`              | Provides Google Tag Manager integration                  | ❌                | Use Nuxt 3 alternative `@zadigetvoltaire/nuxt-gtm`                                            |
+| `@nuxtjs/i18n`             | Provides internationalization capabilities               | ✅                | _Update to v8 of module_                                                                      |
+| `@nuxt/image`              | Provides plug-and-play image optimization                | ✅                | _Update to v1.0 (RC) of module_                                                               |
+| `@nuxtjs/robots`           | Provides robots.txt support                              | ✅                | _Update to v3 of module_                                                                      |
+| `@nuxtjs/sentry`           | Provides Sentry.io monitoring and tracing integration    | ❌                | [Custom plugin implementation required](https://www.lichter.io/articles/nuxt3-sentry-recipe/) |
+| `@nuxtjs/storybook`        | Provides Storybook integration                           | ✅                | _Update to v7 of module_                                                                      |
+| `@nuxtjs/tailwindcss`      | Provides TailwindCSS integration                         | ✅                | Parallel support for Nuxt 2 and Nuxt 3                                                        |
+| `@nuxtjs/toast`            | Provides toast notification                              | ❌                | Custom implementation required (See SFB reference implementation)                             |
+| `@storyblok/nuxt-2`        | Provides Storyblok CMS integration                       | ✅                | Use Nuxt 3 module `@storyblok/nuxt`                                                           |
+| `nuxt-jsonld`              | Provides JSON-LD for SEO purposes                        | ✅                | _Update to v2 of module_                                                                      |
+| `nuxt-svg-loader`          | Provides handling of SVG files as Vue components         | ❌                | Use Nuxt 3 alternative `nuxt-svgo`                                                            |
+| `vueuse`                   | Provides helper and utility functions as Vue composables | ✅                | Parallel support for Nuxt 2 and Nuxt 3                                                        |
+| `vue-fragment`             | Provides multi-root-node support for Vue components      | ❌                | **Module not required for Nuxt 3**, native with Vue 3                                         |
+| `vue-lazy-hydration`       | Provides delayed client-side hydration functionality     | ❌                | Use Nuxt 3 alternative `nuxt-lazy-hydrate`                                                    |
+| `vue-observe-visibility`   | Provides client-side visibility observer                 | ❌                | Use `Intersect.vue` from SFB or `useIntersectionObserver` from `vueUse`                       |
+| `vue-slick-carousel`       | Provides carousel / slideshow integration                | ❌                | Use Nuxt 3 alternative `nuxt-swiper`                                                          |
+| `vue-slider-component`     | Provides a range slider Vue component                    | ✅                | _Update to v4.0 (Beta)_                                                                       |
+| `@vue/test-utils`          | Provides test utilities for Vue                          | ✅                | _Update to v2 of package_                                                                     |
+| `@vue/vue2-jest`           | Provides Vue component transformer for Jest              | ❌                | Migrate from `jest` to `vitest`                                                               |
+| `vue-the-mask`             | Provides string masking functionality                    | ❌                | Migrate to `maska`                                                                            |
+| `vuelidate`                | Provide input validation wit Vue v-model support         | ✅                | Parallel support for Vue 2 and Vue 3                                                          |
 
 ## 1. Setup
 
@@ -165,59 +165,59 @@ DemoShop and a Nuxt 3-based SCAYLE Storefront Boilerplate.
 
 Following a list of Nuxt 2-based DemoShop devDependencies and if they need to be migrated to Nuxt 3:
 
-| Package / Module | Required for Nuxt 3 | Note |
-| --- | --- | --- |
-| `@aboutyou/storyblok-generate-ts` | ✅ |  |
-| `@babel/core` | ❌ | Not required anymore for Nuxt 3 build setup |
-| `@babel/plugin-proposal-nullish-coalescing-operator` | ❌ | Not required anymore for Nuxt 3 build setup  |
-| `@babel/plugin-proposal-optional-chaining` | ❌ | Not required anymore for Nuxt 3 build setup  |
-| `@babel/plugin-transform-class-properties` | ❌ | Not required anymore for Nuxt 3 build setup  |
-| `@babel/plugin-transform-runtime` | ❌ | Not required anymore for Nuxt 3 build setup  |
-| `@babel/preset-typescript` | ❌ | Not required anymore for Nuxt 3 build setup  |
-| `@nuxt/image` | ✅ |  |
-| `@nuxt/types` | ✅ |  |
-| `@nuxtjs/eslint-config-typescript` | ❌ | Included in `@scayle/eslint-config-storefront` |
-| `@nuxtjs/storybook` | 🤷 | Optional, depending on project requirement |
-| `@nuxtjs/tailwindcss` | ✅ |  |
-| `@scayle/eslint-config-storefront` | ✅ |  |
-| `@scayle/prettier-config-storefront` | ✅ |  |
-| `@types/color` | ✅ |  |
-| `@types/express-session` | ❌ | Replaced by `@scayle/h3-session` including types |
-| `@types/tailwindcss` | 🤷 | Optional, depending on project requirement |
-| `@vue/test-utils` | ✅ |  |
-| `@vue/vue2-jest` | ❌ | `jest` should be replaced by `vitest` |
-| `babel-jest` | ❌ | Not required anymore for Nuxt 3 test setup with `vitest`  |
-| `cypress` | ✅ |  |
-| `cypress-real-events` | ✅ |  |
-| `env-cmd` | ✅ |  |
-| `eslint` | ✅ |  |
-| `eslint-plugin-cypress` | ✅ |  |
-| `eslint-plugin-nuxt` | ✅ |  |
-| `eslint-plugin-tailwindcss` | ✅ |  |
-| `jest` | ❌ | `jest` should be replaced by `vitest` |
-| `postcss-html` | ✅ |  |
-| `prettier` | ✅ |  |
-| `prettier-plugin-tailwindcss` | ✅ |  |
-| `sass` | 🤷 | Optional, depending on project requirement |
-| `sass-loader` | ❌ | Not required, `vite` has built-in `sass` support |
-| `schema-dts` | ✅ |  |
-| `speed-measure-webpack-plugin` | ❌ | `vite` is now used as Nuxt 3 build tool |
-| `start-server-and-test` | ✅ |  |
-| `storyblok` | ✅ |  |
-| `storybook-addon-mock` | 🤷 | Optional, depending on project requirement |
-| `stylelint` | ✅ |  |
-| `stylelint-config-prettier` | ✅ |  |
-| `stylelint-config-standard` | ✅ |  |
-| `stylelint-config-standard-scss` | ✅ |  |
-| `stylelint-config-standard-vue` | ✅ |  |
-| `stylelint-high-performance-animation` | ✅ |  |
-| `tailwindcss` | ✅ |  |
-| `ts-jest` | ❌ | `jest` should be replaced by `vitest` |
-| `ts-loader` | ❌ | Nuxt 3 provides Out-of-the-box TypeScript support |
-| `ts-node` | ❌ | Nuxt 3 provides Out-of-the-box TypeScript support |
-| `typescript` | ✅ |  |
-| `vue-eslint-parser` | ❌ | Included in `@scayle/eslint-config-storefront` |
-| `vue-tsc` | ✅ |  |
+| Package / Module                                     | Required for Nuxt 3 | Note                                                     |
+| ---------------------------------------------------- | ------------------- | -------------------------------------------------------- |
+| `@aboutyou/storyblok-generate-ts`                    | ✅                  |                                                          |
+| `@babel/core`                                        | ❌                  | Not required anymore for Nuxt 3 build setup              |
+| `@babel/plugin-proposal-nullish-coalescing-operator` | ❌                  | Not required anymore for Nuxt 3 build setup              |
+| `@babel/plugin-proposal-optional-chaining`           | ❌                  | Not required anymore for Nuxt 3 build setup              |
+| `@babel/plugin-transform-class-properties`           | ❌                  | Not required anymore for Nuxt 3 build setup              |
+| `@babel/plugin-transform-runtime`                    | ❌                  | Not required anymore for Nuxt 3 build setup              |
+| `@babel/preset-typescript`                           | ❌                  | Not required anymore for Nuxt 3 build setup              |
+| `@nuxt/image`                                        | ✅                  |                                                          |
+| `@nuxt/types`                                        | ✅                  |                                                          |
+| `@nuxtjs/eslint-config-typescript`                   | ❌                  | Included in `@scayle/eslint-config-storefront`           |
+| `@nuxtjs/storybook`                                  | 🤷                  | Optional, depending on project requirement               |
+| `@nuxtjs/tailwindcss`                                | ✅                  |                                                          |
+| `@scayle/eslint-config-storefront`                   | ✅                  |                                                          |
+| `@scayle/prettier-config-storefront`                 | ✅                  |                                                          |
+| `@types/color`                                       | ✅                  |                                                          |
+| `@types/express-session`                             | ❌                  | Replaced by `@scayle/h3-session` including types         |
+| `@types/tailwindcss`                                 | 🤷                  | Optional, depending on project requirement               |
+| `@vue/test-utils`                                    | ✅                  |                                                          |
+| `@vue/vue2-jest`                                     | ❌                  | `jest` should be replaced by `vitest`                    |
+| `babel-jest`                                         | ❌                  | Not required anymore for Nuxt 3 test setup with `vitest` |
+| `cypress`                                            | ✅                  |                                                          |
+| `cypress-real-events`                                | ✅                  |                                                          |
+| `env-cmd`                                            | ✅                  |                                                          |
+| `eslint`                                             | ✅                  |                                                          |
+| `eslint-plugin-cypress`                              | ✅                  |                                                          |
+| `eslint-plugin-nuxt`                                 | ✅                  |                                                          |
+| `eslint-plugin-tailwindcss`                          | ✅                  |                                                          |
+| `jest`                                               | ❌                  | `jest` should be replaced by `vitest`                    |
+| `postcss-html`                                       | ✅                  |                                                          |
+| `prettier`                                           | ✅                  |                                                          |
+| `prettier-plugin-tailwindcss`                        | ✅                  |                                                          |
+| `sass`                                               | 🤷                  | Optional, depending on project requirement               |
+| `sass-loader`                                        | ❌                  | Not required, `vite` has built-in `sass` support         |
+| `schema-dts`                                         | ✅                  |                                                          |
+| `speed-measure-webpack-plugin`                       | ❌                  | `vite` is now used as Nuxt 3 build tool                  |
+| `start-server-and-test`                              | ✅                  |                                                          |
+| `storyblok`                                          | ✅                  |                                                          |
+| `storybook-addon-mock`                               | 🤷                  | Optional, depending on project requirement               |
+| `stylelint`                                          | ✅                  |                                                          |
+| `stylelint-config-prettier`                          | ✅                  |                                                          |
+| `stylelint-config-standard`                          | ✅                  |                                                          |
+| `stylelint-config-standard-scss`                     | ✅                  |                                                          |
+| `stylelint-config-standard-vue`                      | ✅                  |                                                          |
+| `stylelint-high-performance-animation`               | ✅                  |                                                          |
+| `tailwindcss`                                        | ✅                  |                                                          |
+| `ts-jest`                                            | ❌                  | `jest` should be replaced by `vitest`                    |
+| `ts-loader`                                          | ❌                  | Nuxt 3 provides Out-of-the-box TypeScript support        |
+| `ts-node`                                            | ❌                  | Nuxt 3 provides Out-of-the-box TypeScript support        |
+| `typescript`                                         | ✅                  |                                                          |
+| `vue-eslint-parser`                                  | ❌                  | Included in `@scayle/eslint-config-storefront`           |
+| `vue-tsc`                                            | ✅                  |                                                          |
 
 Following a list of devDependencies that should ba additionally added as part of the Nuxt 3 migration preparations:
 
@@ -236,56 +236,56 @@ Following a list of Nuxt 2-based DemoShop dependencies and if they need to be mi
 
 ✅❌
 
-| Package / Module | Required for Nuxt 3 | Note |
-| --- | --- | --- |
-| `@crowdin/cli` | 🤷 | Optional, depending on project requirement |
-| `@nuxt/typescript-runtime` | ❌ | Nuxt 3 provides Out-of-the-box TypeScript support |
-| `@nuxtjs/composition-api` | ❌ | Vue 3 provides Out-of-the-box Composition API support |
-| `@nuxtjs/google-fonts` | 🤷 | Optional, depending on project requirement |
-| `@nuxtjs/gtm` | ✅ | Use alternative package `@zadigetvoltaire/nuxt-gtm` |
-| `@nuxtjs/i18n` | ✅ |  |
-| `@nuxtjs/robots` | ✅ |  |
-| `@nuxtjs/sentry` | ❌ | [Custom plugin implementation required](https://www.lichter.io/articles/nuxt3-sentry-recipe/) |
-| `@scayle/omnichannel-nuxt` | ❌ | Not yet supported with Nuxt 3 Storefront Boilerplate |
-| `@scayle/storefront-nuxt2` | ➡️ | Migrate to `@scayle/storefront-nuxt` |
-| `@storyblok/nuxt-2` | ➡️ | Migrate to `@storyblok/nuxt` |
-| `@tailwindcss/aspect-ratio` | ✅ |  |
-| `@tailwindcss/forms` | ✅ |  |
-| `@tailwindcss/typography` | ✅ |  |
-| `@types/consola` | 🤷 | Optional, depending on project requirement |
-| `@vuelidate/core` | ✅ |  |
-| `@vuelidate/validators` | ✅ |  |
-| `@vueuse/core` | ✅ |  |
-| `@vueuse/nuxt` | ✅ |  |
-| `axios` | 🤷 | We recommend to use `ofetch`, which is used by Nuxt 3 itself |
-| `body-parser` | ❌ | Express plugin that is not necessary with h3 |
-| `check-password-strength` | ✅ |  |
-| `color` | ✅ |  |
-| `consola` | 🤷 | Optional, depending on project requirement |
-| `dotenv` | ✅ |  |
-| `envalid` | ❌ | No runtime env validation possible |
-| `express` | ❌ | `express` has ben replaced by `nitropack` and `h3` within Nuxt 3, not required |
-| `express-session` | ➡️ | Migrate to `@scayle/h3-session` |
-| `jws` | 🤷 | Optional, depending on project requirement |
-| `maska` | ✅ |  |
-| `mobile-detect` | ❌ | Replaced by `nuxt-viewport` |
-| `nuxt` | ✅ |  |
-| `nuxt-jsonld` | ✅ |  |
-| `nuxt-svg-loader` | ❌ | Replaced by `nuxt-svgo` |
-| `portal-vue` | ❌ | Native Vue 3 functionality |
-| `postcss` | ✅ |  |
-| `postcss-import` | ✅ |  |
-| `radash` | ➡️ | Migrate to `radash-nuxt` |
-| `slugify` | ❌ |  |
-| `storyblok-js-client` | ✅ |  |
-| `ufo` | ✅ |  |
-| `vue` | 🤷 | Optional, depending on project requirement |
-| `vue-lazy-hydration` | ➡️ | Replaced by `nuxt-lazy-hydrate` |
-| `vue-router` | ❌ |  |
-| `vue-slick-carousel` | ➡️ | Replaced by `nuxt-swiper` |
-| `vue-slider-component` | ✅ |  |
-| `vue-swipe-actions` | ❌ | No replacement |
-| `vue-text-highlight` | ❌ |  |
+| Package / Module            | Required for Nuxt 3 | Note                                                                                          |
+| --------------------------- | ------------------- | --------------------------------------------------------------------------------------------- |
+| `@crowdin/cli`              | 🤷                  | Optional, depending on project requirement                                                    |
+| `@nuxt/typescript-runtime`  | ❌                  | Nuxt 3 provides Out-of-the-box TypeScript support                                             |
+| `@nuxtjs/composition-api`   | ❌                  | Vue 3 provides Out-of-the-box Composition API support                                         |
+| `@nuxtjs/google-fonts`      | 🤷                  | Optional, depending on project requirement                                                    |
+| `@nuxtjs/gtm`               | ✅                  | Use alternative package `@zadigetvoltaire/nuxt-gtm`                                           |
+| `@nuxtjs/i18n`              | ✅                  |                                                                                               |
+| `@nuxtjs/robots`            | ✅                  |                                                                                               |
+| `@nuxtjs/sentry`            | ❌                  | [Custom plugin implementation required](https://www.lichter.io/articles/nuxt3-sentry-recipe/) |
+| `@scayle/omnichannel-nuxt`  | ❌                  | Not yet supported with Nuxt 3 Storefront Boilerplate                                          |
+| `@scayle/storefront-nuxt2`  | ➡️                  | Migrate to `@scayle/storefront-nuxt`                                                          |
+| `@storyblok/nuxt-2`         | ➡️                  | Migrate to `@storyblok/nuxt`                                                                  |
+| `@tailwindcss/aspect-ratio` | ✅                  |                                                                                               |
+| `@tailwindcss/forms`        | ✅                  |                                                                                               |
+| `@tailwindcss/typography`   | ✅                  |                                                                                               |
+| `@types/consola`            | 🤷                  | Optional, depending on project requirement                                                    |
+| `@vuelidate/core`           | ✅                  |                                                                                               |
+| `@vuelidate/validators`     | ✅                  |                                                                                               |
+| `@vueuse/core`              | ✅                  |                                                                                               |
+| `@vueuse/nuxt`              | ✅                  |                                                                                               |
+| `axios`                     | 🤷                  | We recommend to use `ofetch`, which is used by Nuxt 3 itself                                  |
+| `body-parser`               | ❌                  | Express plugin that is not necessary with h3                                                  |
+| `check-password-strength`   | ✅                  |                                                                                               |
+| `color`                     | ✅                  |                                                                                               |
+| `consola`                   | 🤷                  | Optional, depending on project requirement                                                    |
+| `dotenv`                    | ✅                  |                                                                                               |
+| `envalid`                   | ❌                  | No runtime env validation possible                                                            |
+| `express`                   | ❌                  | `express` has ben replaced by `nitropack` and `h3` within Nuxt 3, not required                |
+| `express-session`           | ➡️                  | Migrate to `@scayle/h3-session`                                                               |
+| `jws`                       | 🤷                  | Optional, depending on project requirement                                                    |
+| `maska`                     | ✅                  |                                                                                               |
+| `mobile-detect`             | ❌                  | Replaced by `nuxt-viewport`                                                                   |
+| `nuxt`                      | ✅                  |                                                                                               |
+| `nuxt-jsonld`               | ✅                  |                                                                                               |
+| `nuxt-svg-loader`           | ❌                  | Replaced by `nuxt-svgo`                                                                       |
+| `portal-vue`                | ❌                  | Native Vue 3 functionality                                                                    |
+| `postcss`                   | ✅                  |                                                                                               |
+| `postcss-import`            | ✅                  |                                                                                               |
+| `radash`                    | ➡️                  | Migrate to `radash-nuxt`                                                                      |
+| `slugify`                   | ❌                  |                                                                                               |
+| `storyblok-js-client`       | ✅                  |                                                                                               |
+| `ufo`                       | ✅                  |                                                                                               |
+| `vue`                       | 🤷                  | Optional, depending on project requirement                                                    |
+| `vue-lazy-hydration`        | ➡️                  | Replaced by `nuxt-lazy-hydrate`                                                               |
+| `vue-router`                | ❌                  |                                                                                               |
+| `vue-slick-carousel`        | ➡️                  | Replaced by `nuxt-swiper`                                                                     |
+| `vue-slider-component`      | ✅                  |                                                                                               |
+| `vue-swipe-actions`         | ❌                  | No replacement                                                                                |
+| `vue-text-highlight`        | ❌                  |                                                                                               |
 
 Following a list of dependencies that should ba additionally added as part of the Nuxt 3 migration preparations:
 
@@ -333,7 +333,7 @@ Check the [Pinia Documentation](https://pinia.vuejs.org/core-concepts/) for more
 
 Refer to [Nuxt 3 Migration Guide / Plugins and Middleware](https://nuxt.com/docs/migration/plugins-and-middleware) or [Nuxt 3 Migration Guide / Modules](https://nuxt.com/docs/migration/module-authors) for Nuxt 3 specific migration steps.
 
-*NOTE: Please note that the format for plugins, modules and router middleware has changed and former Nuxt 2 modules will not be compatible!*
+_NOTE: Please note that the format for plugins, modules and router middleware has changed and former Nuxt 2 modules will not be compatible!_
 
 Due to the nature of the open source ecosystem, not every module that has been used as part of the Nuxt 2-based DemoShop, will be available as part of the Nuxt 3-based Storefront Boilerplate or will have a drop-in replacement.
 

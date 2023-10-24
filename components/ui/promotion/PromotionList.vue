@@ -2,8 +2,8 @@
   <FadeInFromBottomTransition :duration="500">
     <div
       v-if="isShown"
-      class="absolute top-[3.25rem] z-60 h-full w-full bg-black/40">
-      <div ref="promotionListRef" class="relative bg-black p-5 text-white">
+      class="absolute top-[3.25rem] z-50 h-[100vh] w-full bg-primary/50">
+      <div ref="promotionListRef" class="relative bg-primary p-5 text-white">
         <div class="flex w-full items-start justify-center overflow-x-scroll">
           <PromotionItem
             v-for="item in items"
@@ -41,5 +41,4 @@ const { isPromotionListShown: isShown, togglePromotionList: toggle } =
   usePromotionActions()
 
 const promotionListRef = ref()
-onClickOutside(promotionListRef, () => toggle())
 </script>
