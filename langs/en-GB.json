@@ -22,7 +22,8 @@
   },
   "promotion": {
     "progress_left": "{amount} left",
-    "terms": "Promotion Terms & Conditions"
+    "terms": "Promotion Terms & Conditions",
+    "active_label": "Active"
   },
   "validation": {
     "email": "The {field} field must be a valid email",

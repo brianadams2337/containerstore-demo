@@ -17,7 +17,7 @@
           fab
           no-padding
           class="absolute -bottom-3 right-[50%] z-[200] bg-black !p-1"
-          @click="close">
+          @click="toggle()">
           <template #icon="{ _class }">
             <IconCloseBold :class="_class" class="text-white" />
           </template>
@@ -31,20 +31,15 @@
 import { Promotion } from '@scayle/storefront-nuxt'
 
 defineProps({
-  isShown: {
-    type: Boolean,
-    required: true,
-  },
   items: {
     type: Array as PropType<Promotion[]>,
     required: true,
   },
 })
 
-const emit = defineEmits(['close'])
-
-const close = () => emit('close')
+const { isPromotionListShown: isShown, togglePromotionList: toggle } =
+  usePromotionActions()
 
 const promotionListRef = ref()
-onClickOutside(promotionListRef, close)
+onClickOutside(promotionListRef, () => toggle())
 </script>
