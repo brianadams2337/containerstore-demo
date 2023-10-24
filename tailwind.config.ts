@@ -80,6 +80,10 @@ export default {
           ...colors.pink,
           DEFAULT: '#ff7df4',
         },
+        purple: {
+          ...colors.purple,
+          DEFAULT: '811fff',
+        },
         blue: {
           50: '#5da8ff', // light-10
           100: '#c6e0ff', // light-20
