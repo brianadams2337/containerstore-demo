@@ -9,7 +9,7 @@
       </span>
       <span class="mx-1.5">
         <template v-if="showUnits">{{ $t(`global.${key}`) }}</template>
-        <template v-else-if="key !== Object.keys(countdown).pop()">
+        <template v-else-if="key !== useLast(Object.keys(countdown))">
           :
         </template>
       </span>
@@ -33,7 +33,8 @@ const props = defineProps({
 
 const emit = defineEmits(['finished'])
 
-let intervalId: any
+let intervalId: NodeJS.Timeout
+
 const until = computed(() => Date.parse(props.until))
 const countdown = ref<{ [k in CountdownUnit]?: number }>({})
 
@@ -59,8 +60,11 @@ const formatValue = (value: number) => {
 }
 
 onMounted(() => {
+  console.log({ jej: props.until })
   update()
   intervalId = setInterval(update, 1000)
+
+  console.log({ intervalId })
 })
 
 onUnmounted(() => clearInterval(intervalId))
