@@ -1,5 +1,5 @@
 <template>
-  <div class="flex pl-1.5 text-sm">
+  <div class="flex pl-1.5 text-xs">
     <div
       v-for="(value, key) in countdown"
       :key="key"
@@ -7,7 +7,7 @@
       <span v-if="value !== undefined" class="w-4">
         {{ formatValue(value) }}
       </span>
-      <span class="mx-1.5">
+      <span class="mx-1">
         <template v-if="showUnits">{{ $t(`global.${key}`) }}</template>
         <template v-else-if="key !== useLast(Object.keys(countdown))">
           :

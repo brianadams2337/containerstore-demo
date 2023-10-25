@@ -8,8 +8,9 @@
         v-if="customData.headlineChunks"
         :headline-chunks="customData.headlineChunks"
         size="sm"
-        is-column />
-      <PromotionCountdown :until="schedule.to" class="mt-2" />
+        is-column
+        class="mb-2" />
+      <PromotionCountdown :until="schedule.to" />
     </div>
 
     <div class="mt-1 text-gray-500">
