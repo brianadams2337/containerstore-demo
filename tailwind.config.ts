@@ -82,7 +82,7 @@ export default {
         },
         purple: {
           ...colors.purple,
-          DEFAULT: '811fff',
+          DEFAULT: '#811fff',
         },
         blue: {
           50: '#5da8ff', // light-10

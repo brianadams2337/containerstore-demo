@@ -64,8 +64,7 @@ const props = defineProps({
 const areTermsShown = useState(`terms-${props.id}`, () => false)
 
 const colorClass = computed(() => {
-  const color = props.customData.cardColor
-  return color ? `bg-${color}` : 'bg-blue'
+  return props.customData.cardBackgroundClass || 'bg-blue'
 })
 
 const toggleTerms = () => {
