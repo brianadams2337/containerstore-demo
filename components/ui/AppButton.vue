@@ -68,6 +68,10 @@ const props = defineProps({
     type: Boolean as PropType<boolean>,
     default: false,
   },
+  isUppercase: {
+    type: Boolean as PropType<boolean>,
+    default: false,
+  },
   size: {
     type: String as PropType<Size>,
     default: Size.MD,
@@ -107,6 +111,7 @@ const baseClasses = computed(() => ({
   'animate-pulse cursor-not-allowed': props.loading,
   '!rounded': props.rounded,
   '!rounded-full': props.fab,
+  uppercase: props.isUppercase,
 }))
 
 const textColorClasses = computed(() => ({
