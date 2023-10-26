@@ -1,9 +1,9 @@
 <template>
   <div
     class="sticky top-0 z-[80] flex h-[3.25rem] cursor-pointer items-center justify-between gap-1 overflow-hidden bg-blue py-2 pl-4 text-sm text-white"
-    @click="togglePromotionList()">
+    :style="backgroundColorStyle">
     <div class="flex-1">
-      <PromotionCountdown :until="firstPromotion.schedule.to" />
+      <PromotionCountdown :until="currentPromotion.schedule.to" />
     </div>
     <PromotionHeadline
       v-if="headlineParts"
@@ -37,19 +37,23 @@ const props = defineProps({
   },
 })
 
-const { togglePromotionList } = usePromotionActions()
-
-const firstPromotion = computed(() => props.promotions[2])
+const { currentPromotion } = usePromotionChange(props.promotions)
 
 const headlineParts = computed(() => {
-  return firstPromotion.value.customData.headlineChunks as string[]
+  return currentPromotion.value.customData.headlineChunks as string[]
 })
 
 const minOrderValue = computed(() => {
-  return firstPromotion.value.customData.minOrderValue as number
+  return currentPromotion.value.customData.minOrderValue as number
 })
 
 const category = computed(() => {
-  return firstPromotion.value.customData.category as string
+  return currentPromotion.value.customData.category as string
+})
+
+const backgroundColorStyle = computed(() => {
+  const cardColorHex = currentPromotion.value.customData.cardColorHex
+
+  return { ...(!!cardColorHex && { backgroundColor: String(cardColorHex) }) }
 })
 </script>
