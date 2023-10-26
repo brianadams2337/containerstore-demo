@@ -1,7 +1,7 @@
 <template>
   <div class="mt-3 flex w-full items-center space-x-4 overflow-x-auto">
     <template v-if="loading">
-      <slot name="loading" v-bind="loading">
+      <slot name="loading" v-bind="{ loading }">
         <SkeletonLoader
           v-for="n in filters.length + 1"
           :key="n"
