@@ -6,19 +6,19 @@
       <PromotionCountdown :until="firstPromotion.schedule.to" />
     </div>
     <PromotionHeadline
-      v-if="firstPromotion.customData.headlineChunks"
-      :headline-chunks="firstPromotion.customData.headlineChunks"
+      v-if="headlineParts"
+      :headline-parts="headlineParts"
       is-all-uppercased
       show-info-icon
       class="flex-1 justify-center" />
     <div class="flex-1">
       <div class="mr-[7.25rem] flex h-full justify-end">
         <PromotionProgressBar
-          v-if="firstPromotion.customData.minOrderValue"
-          :min-order-value="+firstPromotion.customData.minOrderValue" />
+          v-if="minOrderValue"
+          :min-order-value="minOrderValue" />
         <ShowDealsButton
-          v-else-if="firstPromotion.customData.category"
-          :category="String(firstPromotion.customData.category)"
+          v-else-if="category"
+          :category="category"
           class="mr-3" />
       </div>
     </div>
@@ -40,4 +40,16 @@ const props = defineProps({
 const { togglePromotionList } = usePromotionActions()
 
 const firstPromotion = computed(() => props.promotions[2])
+
+const headlineParts = computed(() => {
+  return firstPromotion.value.customData.headlineChunks as string[]
+})
+
+const minOrderValue = computed(() => {
+  return firstPromotion.value.customData.minOrderValue as number
+})
+
+const category = computed(() => {
+  return firstPromotion.value.customData.category as string
+})
 </script>

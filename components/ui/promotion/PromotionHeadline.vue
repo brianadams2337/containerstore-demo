@@ -22,8 +22,8 @@
 
 <script setup lang="ts">
 const props = defineProps({
-  headlineChunks: {
-    type: Array as PropType<unknown>,
+  headlineParts: {
+    type: Array as PropType<string[]>,
     required: true,
   },
   showInfoIcon: {
@@ -45,7 +45,7 @@ const props = defineProps({
 })
 
 const headline = computed(() => {
-  const [offerText, conditionText] = props.headlineChunks as string[]
+  const [offerText, conditionText] = props.headlineParts
   return { offerText, conditionText }
 })
 </script>

@@ -5,8 +5,8 @@
       class="mb-2 flex flex-col items-start rounded-md bg-blue p-4"
       :style="colorStyle">
       <PromotionHeadline
-        v-if="customData.headlineChunks"
-        :headline-chunks="customData.headlineChunks"
+        v-if="headlineParts"
+        :headline-parts="headlineParts"
         size="sm"
         is-column
         class="mb-2" />
@@ -67,6 +67,10 @@ const colorStyle = computed(() => {
   const cardColorHex = props.customData.cardColorHex
 
   return { ...(!!cardColorHex && { backgroundColor: String(cardColorHex) }) }
+})
+
+const headlineParts = computed(() => {
+  return props.customData.headlineChunks as string[]
 })
 
 const toggleTerms = () => {
