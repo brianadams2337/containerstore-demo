@@ -170,8 +170,6 @@ export const storefrontRuntimeConfigPublic: Partial<ModuleOptions> = {
   log: {
     name: 'storefront-boilerplate-nuxt',
   },
-  // Following keys are Overrideable using prefix NUXT_PUBLIC_IMAGE_BASE_URL
-  imageBaseUrl: 'https://brb-demo.cdn.aboutyou.cloud/', // Override: NUXT_PUBLIC_IMAGE_BASE_URL,
 }
 
 export const storefrontBuildtimeConfig: Partial<ModuleOptions> = {
