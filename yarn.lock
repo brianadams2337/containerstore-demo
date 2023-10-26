@@ -1726,10 +1726,10 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.35.0":
-  version "7.35.0"
-  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.35.0.tgz#b15b0976b68c6618cec26b6f35e5b313e1a0302b"
-  integrity sha1-sVsJdraMZhjOwmtvNeWzE+GgMCs=
+"@scayle/storefront-nuxt@7.36.0":
+  version "7.36.0"
+  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.36.0.tgz#5c4bdd9613cc1c13f99f49c9f429524ee86802c0"
+  integrity sha1-XEvdlhPMHBP5n0nJ9ClSTuhoAsA=
   dependencies:
     "@nuxt/kit" "3.7.4"
     "@scayle/h3-session" "0.3.3"
@@ -9271,7 +9271,7 @@ redis-parser@^3.0.0:
   dependencies:
     redis-errors "^1.0.0"
 
-redis@4.6.10:
+redis@4, redis@4.6.10:
   version "4.6.10"
   resolved "https://registry.yarnpkg.com/redis/-/redis-4.6.10.tgz#07f6ea2b2c5455b098e76d1e8c9b3376114e9458"
   integrity sha512-mmbyhuKgDiJ5TWUhiKhBssz+mjsuSI/lSZNPI9QvZOYzWvYGejtb+W3RlDDf8LD6Bdl5/mZeG8O1feUGhXTxEg==
