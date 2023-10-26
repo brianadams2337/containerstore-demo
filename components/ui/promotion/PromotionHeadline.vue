@@ -8,7 +8,7 @@
       <span class="mr-2 font-bold uppercase" :class="offerTextClass">
         {{ headline.offerText }}
       </span>
-      <span class="text-base font-semibold" :class="conditionTextClass">
+      <span class="text-xs font-semibold">
         {{ headline.conditionText }}
       </span>
     </h1>
@@ -52,9 +52,5 @@ const headline = computed(() => {
 
 const offerTextClass = computed(() => {
   return props.size !== PromotionHeadlineSize.SM ? 'text-lg' : 'text-md'
-})
-
-const conditionTextClass = computed(() => {
-  return props.size !== PromotionHeadlineSize.SM ? 'text-sm' : 'text-xs'
 })
 </script>
