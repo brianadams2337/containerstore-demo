@@ -14,7 +14,7 @@
       class="flex-1 justify-center" />
     <div class="flex-1">
       <div class="mr-[7.25rem] flex h-full justify-end">
-        <PromotionProgressBar
+        <PromotionProgress
           v-if="minOrderValue"
           :min-order-value="minOrderValue" />
         <ShowDealsButton

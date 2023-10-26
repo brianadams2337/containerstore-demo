@@ -25,7 +25,12 @@
     "terms": "Promotion Terms & Conditions",
     "active_label": "Active",
     "show_deals_label": "Show deal items",
-    "my_deals_label": "My deals"
+    "my_deals_label": "My deals",
+    "full_progress_message": {
+      "first_part": "You are",
+      "middle_part": "saving {amount}",
+      "last_part": "on your order"
+    }
   },
   "validation": {
     "email": "Das Feld {field} muss eine gültige E-Mail Adresse sein",

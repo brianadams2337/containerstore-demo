@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@aashutoshrathi/word-wrap/-/word-wrap-1.2.6.tgz#bd9154aec9983f77b3a034ecaa015c2e4201f6cf"
   integrity sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==
 
-"@aboutyou/backbone@15.14.0":
-  version "15.14.0"
-  resolved "https://registry.yarnpkg.com/@aboutyou/backbone/-/backbone-15.14.0.tgz#ce16574d11620ec36078113dec7cbc8c9a4892d5"
-  integrity sha512-PNusAP11gclGLg8IZHoOAkVsRCqymq9XyZ0tZu3Gt9ZmFKL7cx1EZO6SBplglFiEEu5X2B19Vc+ZNICRF3aZAw==
+"@aboutyou/backbone@15.14.1":
+  version "15.14.1"
+  resolved "https://registry.yarnpkg.com/@aboutyou/backbone/-/backbone-15.14.1.tgz#4b239b9cea793b41fcc733d9444b94f96d0363b5"
+  integrity sha512-5NhjSR9CGqZ3Va6t1hxLt4vc6zFV5xGHlbIVUCmPnje8Eg8bt0M6waZpjCuud+DR4HkdLxqzZanhG3PkRauJOQ==
   dependencies:
     axios ">=0.18.0 <1.0.0"
     query-string "^6.2.0"
@@ -1708,13 +1708,13 @@
   dependencies:
     prettier-config-standard "^5.0.0"
 
-"@scayle/storefront-core@7.21.0":
-  version "7.21.0"
-  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-core/-/@scayle/storefront-core-7.21.0.tgz#3c675d489be4120f40dbb9e525cbc48b59cce5ff"
-  integrity sha1-PGddSJvkEg9A27nlJcvEi1nM5f8=
+"@scayle/storefront-core@7.22.0":
+  version "7.22.0"
+  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-core/-/@scayle/storefront-core-7.22.0.tgz#f806b2f87b2a7d402ee8c4c80d82bf2e9cdfb139"
+  integrity sha1-+Aay+HsqfUAu6MTIDYK/LpzfsTk=
   dependencies:
-    "@aboutyou/backbone" "15.14.0"
-    crypto-js "4.1.1"
+    "@aboutyou/backbone" "15.14.1"
+    crypto-js "4.2.0"
     isomorphic-dompurify "^1.5.0"
     jose "^4.14.4"
     radash "^11.0.0"
@@ -1726,14 +1726,14 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.36.0":
-  version "7.36.0"
-  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.36.0.tgz#5c4bdd9613cc1c13f99f49c9f429524ee86802c0"
-  integrity sha1-XEvdlhPMHBP5n0nJ9ClSTuhoAsA=
+"@scayle/storefront-nuxt@7.36.1":
+  version "7.36.1"
+  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@scayle/storefront-nuxt/-/@scayle/storefront-nuxt-7.36.1.tgz#f144b8a503646ce71f205ef18cb3021f3b226a05"
+  integrity sha1-8US4pQNkbOcfIF7xjLMCHzsiagU=
   dependencies:
     "@nuxt/kit" "3.7.4"
     "@scayle/h3-session" "0.3.3"
-    "@scayle/storefront-core" "7.21.0"
+    "@scayle/storefront-core" "7.22.0"
     "@vueuse/core" "10.5.0"
     consola "3.2.3"
     core-js "3.33.1"
@@ -3697,10 +3697,10 @@ cross-spawn@^7.0.0, cross-spawn@^7.0.2, cross-spawn@^7.0.3:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
-crypto-js@4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-4.1.1.tgz#9e485bcf03521041bd85844786b83fb7619736cf"
-  integrity sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==
+crypto-js@4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-4.2.0.tgz#4d931639ecdfd12ff80e8186dba6af2c2e856631"
+  integrity sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==
 
 crypto-random-string@^2.0.0:
   version "2.0.0"
@@ -9271,7 +9271,7 @@ redis-parser@^3.0.0:
   dependencies:
     redis-errors "^1.0.0"
 
-redis@4, redis@4.6.10:
+redis@4.6.10:
   version "4.6.10"
   resolved "https://registry.yarnpkg.com/redis/-/redis-4.6.10.tgz#07f6ea2b2c5455b098e76d1e8c9b3376114e9458"
   integrity sha512-mmbyhuKgDiJ5TWUhiKhBssz+mjsuSI/lSZNPI9QvZOYzWvYGejtb+W3RlDDf8LD6Bdl5/mZeG8O1feUGhXTxEg==
