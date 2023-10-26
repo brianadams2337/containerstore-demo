@@ -1,8 +1,10 @@
 <template>
   <div
     class="flex items-center text-white"
-    :class="{ uppercase: isAllUppercased }">
-    <h1 class="mr-1 flex items-center" :class="{ 'flex-col': isColumn }">
+    :class="{ uppercase: isAllUppercased, '!items-start': isColumn }">
+    <h1
+      class="mr-1 flex flex-wrap items-center"
+      :class="{ 'flex-col !items-start': isColumn }">
       <span
         class="mr-2 font-bold uppercase"
         :class="size !== 'sm' ? 'text-lg' : 'text-md'">
