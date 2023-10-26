@@ -1,7 +1,7 @@
 {
   "name": "@scayle/storefront-boilerplate-nuxt",
   "description": "SCAYLE demo shop application based on Nuxt 3",
-  "version": "1.0.0-rc.02",
+  "version": "1.0.0-rc.03",
   "private": true,
   "engines": {
     "node": ">= 20.7.0"
@@ -80,7 +80,7 @@
     "vue-tsc": "1.8.22"
   },
   "dependencies": {
-    "@scayle/storefront-nuxt": "7.35.0",
+    "@scayle/storefront-nuxt": "7.36.1",
     "@storyblok/nuxt": "5.7.4",
     "@tailwindcss/aspect-ratio": "0.4.2",
     "@tailwindcss/forms": "0.5.6",
