@@ -40,8 +40,6 @@
 </template>
 
 <script setup lang="ts">
-import { Promotion } from '@scayle/storefront-nuxt'
-
 const props = defineProps({
   id: {
     type: String as PropType<Promotion['id']>,

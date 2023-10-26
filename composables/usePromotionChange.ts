@@ -1,5 +1,3 @@
-import { Promotion } from '@scayle/storefront-nuxt'
-
 const SHOW_PROMOTIONS_DELAY = 5000
 
 export default (promotions: Promotion[]) => {

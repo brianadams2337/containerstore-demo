@@ -3,7 +3,7 @@
     <IconClockOutline class="ml-1.5 h-5 w-5 text-white" />
     <ClientOnly>
       <template #fallback>
-        <div class="mx-0.5 flex">
+        <div class="mx-1 flex">
           <SkeletonLoader
             v-for="n in 4"
             :key="n"
@@ -11,7 +11,7 @@
             class="mx-1.5 h-3 !w-3.5 rounded-md" />
         </div>
       </template>
-      <FadeInTransition>
+      <FadeInTransition :duration="300">
         <Countdown :until="until" />
       </FadeInTransition>
     </ClientOnly>

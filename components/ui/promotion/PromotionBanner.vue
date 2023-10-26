@@ -29,8 +29,6 @@
 </template>
 
 <script setup lang="ts">
-import { Promotion } from '@scayle/storefront-nuxt'
-
 const props = defineProps({
   promotions: {
     type: Object as PropType<Promotion[]>,
@@ -42,20 +40,20 @@ const { currentPromotion } = usePromotionChange(props.promotions)
 const { togglePromotionList } = usePromotionActions()
 
 const headlineParts = computed(() => {
-  return currentPromotion.value.customData.headlineChunks as string[]
+  return currentPromotion.value.customData.headlineChunks
 })
 
 const minOrderValue = computed(() => {
-  return currentPromotion.value.customData.minOrderValue as number
+  return currentPromotion.value.customData.minOrderValue
 })
 
 const category = computed(() => {
-  return currentPromotion.value.customData.category as string
+  return currentPromotion.value.customData.category
 })
 
 const backgroundColorStyle = computed(() => {
   const cardColorHex = currentPromotion.value.customData.cardColorHex
 
-  return { ...(!!cardColorHex && { backgroundColor: String(cardColorHex) }) }
+  return { ...(!!cardColorHex && { backgroundColor: cardColorHex }) }
 })
 </script>
