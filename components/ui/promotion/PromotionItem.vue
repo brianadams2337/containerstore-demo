@@ -16,11 +16,11 @@
     <div class="mt-1 text-gray-500">
       <AppButton
         type="raw"
-        class="flex items-center justify-between whitespace-pre-line !pl-0 text-start text-xs font-semibold text-gray-500"
+        class="flex !items-start justify-between whitespace-pre-line !pl-0 text-start text-xs font-semibold text-gray-500"
         is-full-width
         size="xs"
         @click="toggleTerms">
-        <span class="inline-flex items-center">
+        <span class="inline-flex items-start">
           <IconInfoOutline class="mr-1 h-4 w-4" />
           {{ $t('promotion.terms') }}
         </span>
