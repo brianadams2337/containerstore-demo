@@ -1,7 +1,8 @@
 <template>
   <div
     class="sticky top-0 z-[80] flex h-[3.25rem] cursor-pointer items-center justify-between gap-1 overflow-hidden bg-blue py-2 pl-4 text-sm text-white"
-    :style="backgroundColorStyle">
+    :style="backgroundColorStyle"
+    @click="togglePromotionList()">
     <div class="flex-1">
       <PromotionCountdown :until="currentPromotion.schedule.to" />
     </div>
@@ -38,6 +39,7 @@ const props = defineProps({
 })
 
 const { currentPromotion } = usePromotionChange(props.promotions)
+const { togglePromotionList } = usePromotionActions()
 
 const headlineParts = computed(() => {
   return currentPromotion.value.customData.headlineChunks as string[]
