@@ -16,7 +16,7 @@
     <div class="mt-1 text-gray-500">
       <AppButton
         type="raw"
-        class="flex !items-start justify-between whitespace-pre-line !pl-0 text-start text-xs font-semibold text-gray-500"
+        class="flex !items-start justify-between whitespace-pre-line !px-1.5 text-start text-xs font-semibold text-gray-500"
         is-full-width
         size="xs"
         @click="toggleTerms">
@@ -31,9 +31,9 @@
       </AppButton>
 
       <FadeInFromBottomTransition>
-        <div v-if="areTermsShown" class="text-2xs">
+        <p v-if="areTermsShown" class="px-1.5 text-2xs">
           {{ customData.terms }}
-        </div>
+        </p>
       </FadeInFromBottomTransition>
     </div>
   </div>

@@ -15,7 +15,8 @@
     <div class="flex h-full flex-1 justify-end">
       <PromotionProgress
         v-if="minOrderValue"
-        :min-order-value="minOrderValue" />
+        :min-order-value="minOrderValue"
+        class="mr-2.5" />
       <ShowDealsButton v-else-if="category" :category="category" class="mr-3" />
       <MyDealsButton class="self-center" />
     </div>
