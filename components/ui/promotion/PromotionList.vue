@@ -9,17 +9,7 @@
             v-bind="item"
             class="mr-4" />
         </div>
-        <AppButton
-          type="raw"
-          size="xs"
-          fab
-          no-padding
-          class="absolute -bottom-3 right-[50%] z-[200] bg-primary !p-1"
-          @click="toggle()">
-          <template #icon="{ _class }">
-            <IconCloseBold :class="_class" class="text-white" />
-          </template>
-        </AppButton>
+        <ClosePromotionListButton />
       </div>
     </div>
   </SlideInFromTopTransition>

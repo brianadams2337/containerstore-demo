@@ -1,14 +1,17 @@
 <template>
-  <div class="flex w-[19.5rem] items-center justify-center">
+  <div
+    class="flex items-center justify-center"
+    :class="isFullWidth ? 'w-full' : 'w-[19.5rem]'">
     <template v-if="!isFullProgress">
       <ProgressBar
         :progress="progress"
         rounded
         slanted
         type="neutral"
-        background-color="bg-white/20"
-        class="mr-2 !max-w-[12.5rem]" />
-      <span class="w-28 font-semibold">
+        :full-width="isFullWidth"
+        :class="!isFullWidth && '!max-w-[12.5rem]'"
+        background-color="bg-white/20" />
+      <span v-if="isGreaterOrEquals('md')" class="ml-2 w-28 font-semibold">
         {{ $t('promotion.progress_left', { amount: formattedAmount }) }}
       </span>
     </template>
@@ -33,7 +36,13 @@ const props = defineProps({
     type: Number,
     required: true,
   },
+  isFullWidth: {
+    type: Boolean,
+    default: false,
+  },
 })
+
+const { isGreaterOrEquals } = useViewport()
 
 const { data: basketData } = await useBasket()
 

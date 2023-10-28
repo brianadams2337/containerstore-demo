@@ -2,7 +2,7 @@
   <div
     class="flex min-h-screen flex-col text-primary antialiased anchor-scrolling-none">
     <PromotionBanner
-      v-if="!isPromotionDataFetching"
+      v-if="!isPromotionDataFetching && isGreaterOrEquals('md')"
       :promotions="promotionData.entities" />
     <HeaderMetaBar />
     <AppHeader v-bind="{ rootCategories, fetchingCategories }" />
@@ -15,6 +15,9 @@
         @clear-error="resetErrorState" />
       <slot v-else />
     </div>
+    <PromotionMobileBanner
+      v-if="!isPromotionDataFetching && !isGreaterOrEquals('md')"
+      :promotions="promotionData.entities" />
     <NuxtLazyHydrate placeholder-ratio="16/9" when-visible>
       <AppFooter class="mt-16" />
     </NuxtLazyHydrate>
@@ -34,6 +37,8 @@ const { data: promotionData, fetching: isPromotionDataFetching } =
   await useCurrentPromotions()
 
 const { data: rootCategoriesData, fetching: fetchingCategories } = categoryData
+
+const { isGreaterOrEquals } = useViewport()
 
 const { trackShopInit, listenToUserItemsChanges, listenToCustomerDataChanges } =
   useTrackingEvents()
