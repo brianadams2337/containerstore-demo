@@ -6,8 +6,6 @@ import {
 } from './config/storefront'
 import breakpoints from './config/breakpoints'
 
-const isProd = process.env.NODE_ENV === 'production'
-
 const domains = {
   en: process.env.NUXT_STOREFRONT_STORES_1028_DOMAIN!,
   de: process.env.NUXT_STOREFRONT_STORES_1001_DOMAIN!,
@@ -62,11 +60,6 @@ export default defineNuxtConfig({
     checkout: {
       accessHeader: undefined, // Override: NUXT_CHECKOUT_ACCESS_HEADER
     },
-    // Following keys are Overrideable using prefix NUXT_STORYBLOK_
-    storyblok: {
-      accessToken: process.env.NUXT_STORYBLOK_ACCESS_TOKEN, // Override: NUXT_STORYBLOK_ACCESS_TOKEN
-      webhookSecret: '', // Override: NUXT_STORYBLOK_WEBHOOK_SECRET,
-    },
     // Following keys are Overrideable using prefix NUXT_$STOREFRONT_
     storefront: storefrontRuntimeConfigPrivate as any, // TODO: Extend SFC runtimeConfig type
     // Following keys are Overrideable using prefix NUXT_PUBLIC_
@@ -91,12 +84,17 @@ export default defineNuxtConfig({
       ],
       gtm: {
         id: process.env.NUXT_PUBLIC_GTM_ID,
-        debug: !isProd,
+        debug: process.env.NUXT_PUBLIC_GTM_DEBUG,
       },
       // Following keys are Overrideable using prefix NUXT_PUBLIC_IMAGE_BASE_URL
       imageBaseUrl: 'https://brb-demo.cdn.aboutyou.cloud/',
       // Following keys are Overrideable using prefix NUXT_PUBLIC_
       ...(storefrontRuntimeConfigPublic as any), // TODO: Extend SFC runtimeConfig type
+      // Following keys are Overrideable using prefix NUXT_PUBLIC_STORYBLOK_
+      storyblok: {
+        accessToken: '', // Override: NUXT_PUBLIC_STORYBLOK_ACCESS_TOKEN
+        webhookSecret: '', // Override: NUXT_PUBLIC_STORYBLOK_WEBHOOK_SECRET,
+      },
     },
   },
 
@@ -147,7 +145,6 @@ export default defineNuxtConfig({
   // https://github.com/storyblok/storyblok-nuxt#options
   storyblok: {
     bridge: true,
-    accessToken: process.env.NUXT_STORYBLOK_ACCESS_TOKEN,
   },
 
   // https://github.com/cpsoinos/nuxt-svgo/blob/main/README.md#usage
