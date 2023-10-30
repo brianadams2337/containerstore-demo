@@ -1,0 +1,42 @@
+proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=sfa:15m inactive=60m;
+
+server {
+  listen       80;
+  server_name  _;
+
+  error_log /dev/stderr info;
+
+  listen              443 ssl;
+  ssl_certificate     $HTTPS_CERT;
+  ssl_certificate_key $HTTPS_KEY;
+
+  proxy_buffering on;
+  proxy_cache_key "$http_x_forwarded_proto$request_method$host$request_uri";
+
+  gzip on;
+  gzip_types text/plain text/css application/json application/xml application/javascript;
+  gzip_proxied no-cache no-store private expired auth;
+
+  server_tokens off;
+
+  root /app/dist/browser;
+
+  include /etc/nginx/conf.d/locations/*.conf;
+
+  location ~* \.(?:ico|gif|jpe?g|png|ttf|svg|webp|woff2?|css|js)$ {
+    proxy_cache sfa;
+    proxy_cache_methods GET HEAD;
+    proxy_cache_valid 200 5m;
+    proxy_cache_background_update on;
+
+    add_header X-Proxy-Cache $upstream_cache_status;
+
+    include /etc/nginx/conf.d/common/proxy.conf;
+  }
+
+  location / {
+    add_header X-Proxy-Cache $upstream_cache_status;
+
+    include /etc/nginx/conf.d/common/proxy.conf;
+  }
+}
