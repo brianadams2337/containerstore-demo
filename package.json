@@ -43,7 +43,7 @@
     "@scayle/eslint-config-storefront": "3.2.4",
     "@scayle/prettier-config-storefront": "2.0.1",
     "@types/color": "3.0.5",
-    "@types/node": "20.8.9",
+    "@types/node": "20.8.10",
     "@vitest/coverage-v8": "0.34.6",
     "@zadigetvoltaire/nuxt-gtm": "0.0.13",
     "autoprefixer": "10.4.16",
