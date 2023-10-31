@@ -32,7 +32,6 @@ const props = defineProps({
   },
 })
 
-console.log('MOBILE')
 const { currentPromotion } = usePromotionChange(props.promotions)
 const { togglePromotionList, isPromotionListShown } = usePromotionActions()
 
