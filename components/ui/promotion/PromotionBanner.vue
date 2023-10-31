@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sticky top-0 z-[80] flex h-[3.25rem] cursor-pointer items-center justify-between gap-1 overflow-hidden bg-blue py-2 pl-4 text-sm text-white"
+    class="sticky top-0 z-[80] hidden h-[3.25rem] cursor-pointer items-center justify-between gap-1 overflow-hidden bg-blue py-2 pl-4 text-sm text-white md:flex"
     :style="backgroundColorStyle"
     @click="togglePromotionList()">
     <div class="flex-1">

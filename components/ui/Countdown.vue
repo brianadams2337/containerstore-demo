@@ -33,7 +33,7 @@ const props = defineProps({
 
 const emit = defineEmits(['finished'])
 
-let intervalId: NodeJS.Timeout
+const intervalId = ref<NodeJS.Timeout>()
 
 const until = computed(() => Date.parse(props.until))
 const countdown = ref<{ [k in CountdownUnit]?: number }>({})
@@ -50,7 +50,7 @@ const update = () => {
   }
 
   if (remaining <= 0) {
-    clearInterval(intervalId)
+    clearInterval(intervalId.value)
     emit('finished')
   }
 }
@@ -61,10 +61,10 @@ const formatValue = (value: number) => {
 
 onMounted(() => {
   update()
-  intervalId = setInterval(update, 1000)
+  intervalId.value = setInterval(update, 1000)
 })
 
-onUnmounted(() => clearInterval(intervalId))
+onUnmounted(() => clearInterval(intervalId.value))
 
 defineOptions({ name: 'AppCountdown' })
 </script>

@@ -16,7 +16,7 @@
       <slot v-else />
     </div>
     <PromotionMobileBanner
-      v-if="!isPromotionDataFetching && !isGreaterOrEquals('md')"
+      v-if="!isPromotionDataFetching && isLessThan('md')"
       :promotions="promotionData.entities" />
     <NuxtLazyHydrate placeholder-ratio="16/9" when-visible>
       <AppFooter class="mt-16" />
@@ -36,9 +36,9 @@ const categoryData = await useCategories({
 const { data: promotionData, fetching: isPromotionDataFetching } =
   await useCurrentPromotions()
 
-const { data: rootCategoriesData, fetching: fetchingCategories } = categoryData
+const { isGreaterOrEquals, isLessThan } = useViewport()
 
-const { isGreaterOrEquals } = useViewport()
+const { data: rootCategoriesData, fetching: fetchingCategories } = categoryData
 
 const { trackShopInit, listenToUserItemsChanges, listenToCustomerDataChanges } =
   useTrackingEvents()

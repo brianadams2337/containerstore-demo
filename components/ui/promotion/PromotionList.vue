@@ -1,6 +1,8 @@
 <template>
   <SlideInFromTopTransition>
-    <div v-if="isShown" class="fixed right-0 top-[3.25rem] z-60 w-full">
+    <div
+      v-if="isShown"
+      class="fixed right-0 top-[3.25rem] z-60 hidden w-full md:block">
       <div class="relative bg-primary p-5 text-white">
         <div class="flex w-full items-start justify-center overflow-x-scroll">
           <PromotionItem

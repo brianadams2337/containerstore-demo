@@ -1,5 +1,7 @@
 <template>
-  <div class="fixed bottom-0 right-0 z-60 w-full overflow-hidden rounded-t-xl">
+  <div
+    ref="promotionList"
+    class="fixed bottom-0 right-0 z-60 w-full overflow-hidden rounded-t-xl md:hidden">
     <div class="relative flex flex-col bg-primary px-4 pb-4 text-white">
       <div class="flex justify-center p-4">
         <Headline tag="h2" size="lg">
@@ -27,7 +29,11 @@ const props = defineProps({
   },
 })
 
+const promotionList = ref()
+
 const { togglePromotionList: toggle } = usePromotionActions()
 
 onServerPrefetch(() => props.items.length > 1 && toggle())
+
+onClickOutside(promotionList, () => toggle())
 </script>
