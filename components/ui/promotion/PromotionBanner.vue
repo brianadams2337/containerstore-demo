@@ -1,7 +1,7 @@
 <template>
   <div
     class="sticky top-0 z-[80] flex h-[3.25rem] cursor-pointer items-center justify-between gap-1 overflow-hidden bg-blue py-2 pl-4 text-sm text-white"
-    :style="backgroundColorStyle"
+    :style="getBackgroundColorStyle(currentPromotion.customData.colorHex)"
     @click="togglePromotionList()">
     <div class="flex-1">
       <PromotionCountdown :until="currentPromotion.schedule.to" />
@@ -45,11 +45,5 @@ const minOrderValue = computed(() => {
 
 const category = computed(() => {
   return currentPromotion.value.customData.category
-})
-
-const backgroundColorStyle = computed(() => {
-  const color = currentPromotion.value.customData.colorHex
-
-  return { ...(!!color && { backgroundColor: color }) }
 })
 </script>

@@ -3,7 +3,7 @@
     <PromotionActiveChip v-if="isActive" />
     <div
       class="mb-2 flex flex-col items-start rounded-md bg-blue p-4"
-      :style="colorStyle">
+      :style="getBackgroundColorStyle(customData.colorHex)">
       <PromotionHeadline
         v-if="headlineParts"
         :headline-parts="headlineParts"
@@ -12,30 +12,10 @@
         class="mb-2" />
       <PromotionCountdown :until="schedule.to" />
     </div>
-
-    <div v-if="customData.terms" class="mt-1 text-gray-500">
-      <AppButton
-        type="raw"
-        class="flex !items-start justify-between whitespace-pre-line !px-1.5 text-start text-xs font-semibold text-gray-500"
-        is-full-width
-        size="xs"
-        @click="toggleTerms">
-        <span class="inline-flex items-start">
-          <IconInfoOutline class="mr-1 h-4 w-4" />
-          {{ $t('promotion.terms') }}
-        </span>
-        <template #append-icon="{ _class }">
-          <IconChevronUp v-if="areTermsShown" :class="_class" />
-          <IconChevronDown v-else :class="_class" />
-        </template>
-      </AppButton>
-
-      <FadeInFromBottomTransition>
-        <p v-if="areTermsShown" class="px-1.5 text-2xs">
-          {{ customData.terms }}
-        </p>
-      </FadeInFromBottomTransition>
-    </div>
+    <PromotionItemTerms
+      v-if="customData.terms"
+      :content="customData.terms"
+      :promotion-id="id" />
   </div>
 </template>
 
@@ -59,17 +39,5 @@ const props = defineProps({
   },
 })
 
-const areTermsShown = useState(`terms-${props.id}`, () => false)
-
-const colorStyle = computed(() => {
-  const color = props.customData.colorHex
-
-  return { ...(!!color && { backgroundColor: String(color) }) }
-})
-
 const headlineParts = computed(() => props.customData.headlineParts)
-
-const toggleTerms = () => {
-  areTermsShown.value = !areTermsShown.value
-}
 </script>
