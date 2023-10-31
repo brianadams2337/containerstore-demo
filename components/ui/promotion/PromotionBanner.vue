@@ -36,7 +36,7 @@ const { currentPromotion } = usePromotionChange(props.promotions)
 const { togglePromotionList } = usePromotionActions()
 
 const headlineParts = computed(() => {
-  return currentPromotion.value.customData.headlineChunks
+  return currentPromotion.value.customData.headlineParts
 })
 
 const minOrderValue = computed(() => {
@@ -48,8 +48,8 @@ const category = computed(() => {
 })
 
 const backgroundColorStyle = computed(() => {
-  const cardColorHex = currentPromotion.value.customData.cardColorHex
+  const color = currentPromotion.value.customData.colorHex
 
-  return { ...(!!cardColorHex && { backgroundColor: cardColorHex }) }
+  return { ...(!!color && { backgroundColor: color }) }
 })
 </script>

@@ -7,11 +7,11 @@ import {
 // change the types here so that it reflects the `customData` response payload
 type CustomData = PromotionCustomData &
   Partial<{
-    headlineChunks: string[]
+    headlineParts: string[]
     terms: string
     minOrderValue: number
     category: string
-    cardColorHex: string
+    colorHex: string
   }>
 
 export {}

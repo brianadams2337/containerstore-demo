@@ -13,7 +13,7 @@
       <PromotionCountdown :until="schedule.to" />
     </div>
 
-    <div class="mt-1 text-gray-500">
+    <div v-if="customData.terms" class="mt-1 text-gray-500">
       <AppButton
         type="raw"
         class="flex !items-start justify-between whitespace-pre-line !px-1.5 text-start text-xs font-semibold text-gray-500"
@@ -62,14 +62,12 @@ const props = defineProps({
 const areTermsShown = useState(`terms-${props.id}`, () => false)
 
 const colorStyle = computed(() => {
-  const cardColorHex = props.customData.cardColorHex
+  const color = props.customData.colorHex
 
-  return { ...(!!cardColorHex && { backgroundColor: String(cardColorHex) }) }
+  return { ...(!!color && { backgroundColor: String(color) }) }
 })
 
-const headlineParts = computed(() => {
-  return props.customData.headlineChunks as string[]
-})
+const headlineParts = computed(() => props.customData.headlineParts)
 
 const toggleTerms = () => {
   areTermsShown.value = !areTermsShown.value
