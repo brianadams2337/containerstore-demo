@@ -184,14 +184,13 @@ Therefore we need to create a personal deploy token to get access to this regist
 
 The deploy token will be created for you.
 
-Afterwards, please configure your local `npm` setup to allow access to the private `@aboutyou` and `@scayle` package registry.
+Afterwards, please configure your local `npm` setup to allow access to the private `@aboutyou` package registry.
 The following command should be executed in your terminal and will modify your local `~/.npmrc` file but not the projects `.npmrc` file:
 
 - [Gitlab Docs: Project Level NPM Endpoint](https://docs.gitlab.com/ee/user/packages/npm_registry/#project-level-npm-endpoint)
 
 ```sh
 npm config set @aboutyou:registry https://gitlab.com/api/v4/projects/29746107/packages/npm/
-npm config set @scayle:registry https://gitlab.com/api/v4/projects/29746107/packages/npm/
 npm config set -- '//gitlab.com/api/v4/packages/npm/:_authToken' "<TOKEN>"
 npm config set -- '//gitlab.com/api/v4/projects/29746107/packages/npm/:_authToken' "<TOKEN>"
 ```
@@ -200,7 +199,6 @@ Your global local `~/.npmrc` file should look similar to this afterwards:
 
 ```ini
 @aboutyou:registry=https://gitlab.com/api/v4/projects/29746107/packages/npm/
-@scayle:registry=https://gitlab.com/api/v4/projects/29746107/packages/npm/
 //gitlab.com/api/v4/packages/npm/:_authToken=<TOKEN>
 //gitlab.com/api/v4/projects/29746107/packages/npm/:_authToken=<TOKEN>
 ```
