@@ -26,7 +26,7 @@
     "cy:run": "cypress run",
     "start:node": "node .output/server/index.mjs",
     "storyblok:download": "env-cmd -f .env.storyblok -x storyblok pull-components --space \\$STORYBLOK_SPACE_ID",
-    "storyblok:generate": "node scripts/storyblok-generate.cjs",
+    "storyblok:generate": "node scripts/storyblok-generate.cjs && prettier --write cms/storyblok/types/storyblok.gen.d.ts",
     "storyblok:login": "env-cmd -f .env.storyblok -x storyblok login --token \\$STORYBLOK_PERSONAL_TOKEN --region eu",
     "storyblok:unused": "node scripts/storyblok-unused.cjs",
     "test": "vitest",
