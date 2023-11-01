@@ -65,7 +65,7 @@
 
 <script setup lang="ts">
 import { NavigationTree } from '@scayle/storefront-nuxt'
-import { StoryblokStory } from '@aboutyou/storyblok-generate-ts'
+import { StoryblokStory } from 'storyblok-generate-ts'
 import { SbFooter } from '~/storyblok/types/storyblok'
 
 defineProps({

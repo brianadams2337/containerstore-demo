@@ -1,4 +1,4 @@
-import { StoryblokStory } from '@aboutyou/storyblok-generate-ts'
+import { StoryblokStory } from 'storyblok-generate-ts'
 import { SbListingPage } from '~/storyblok/types/storyblok.gen'
 
 const useCmsListingContent = (data: Ref<StoryblokStory<SbListingPage>>) => {

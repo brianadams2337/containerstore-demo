@@ -1,4 +1,4 @@
-import { StoryblokStory } from '@aboutyou/storyblok-generate-ts'
+import { StoryblokStory } from 'storyblok-generate-ts'
 import { NuxtError } from 'nuxt/app'
 import { ISbStoriesParams, ISbError } from 'storyblok-js-client'
 

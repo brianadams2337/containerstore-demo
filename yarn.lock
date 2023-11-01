@@ -15,16 +15,6 @@
     axios ">=0.18.0 <1.0.0"
     query-string "^6.2.0"
 
-"@aboutyou/storyblok-generate-ts@1.14.0":
-  version "1.14.0"
-  resolved "https://gitlab.com/api/v4/projects/29746107/packages/npm/@aboutyou/storyblok-generate-ts/-/@aboutyou/storyblok-generate-ts-1.14.0.tgz#b23be923696525fcad5bf0f156e2b3d315b0a1dd"
-  integrity sha1-sjvpI2llJfytW/DxVuKz0xWwod0=
-  dependencies:
-    camelcase "^6.3.0"
-    json-schema-to-typescript "^11.0.1"
-    ts-command-line-args "^2.3.1"
-    tsup "^6.4.0"
-
 "@alloc/quick-lru@^5.2.0":
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@alloc/quick-lru/-/quick-lru-5.2.0.tgz#7bf68b20c0a350f936915fcae06f58e32007ce30"
@@ -10037,6 +10027,16 @@ std-env@^3.3.3, std-env@^3.4.3:
   version "3.4.3"
   resolved "https://registry.yarnpkg.com/std-env/-/std-env-3.4.3.tgz#326f11db518db751c83fd58574f449b7c3060910"
   integrity sha512-f9aPhy8fYBuMN+sNfakZV18U39PbalgjXG3lLB9WkaYTxijru61wb57V9wxxNthXM5Sd88ETBWi29qLAsHO52Q==
+
+storyblok-generate-ts@1.15.1:
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/storyblok-generate-ts/-/storyblok-generate-ts-1.15.1.tgz#0d994b8615f49ea51a17a5ffaf76eb8eac5c073d"
+  integrity sha512-9Hdfdn1SVnh+w6zusvyY4nwb01HP+S+ZXm5QjvUh0FC0UugJNxX1v3An7coP/nzGYzzxxzgkixHcbim6fBoV+A==
+  dependencies:
+    camelcase "^6.3.0"
+    json-schema-to-typescript "^11.0.1"
+    ts-command-line-args "^2.3.1"
+    tsup "^6.4.0"
 
 storyblok-js-client@6.2.0:
   version "6.2.0"

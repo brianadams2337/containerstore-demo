@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { StoryblokStory, Richtext } from '@aboutyou/storyblok-generate-ts'
+import { StoryblokStory, Richtext } from 'storyblok-generate-ts'
 
 /* eslint-disable */
 /**
