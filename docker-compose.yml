@@ -7,7 +7,7 @@ services:
       - '6379:6379'
     restart: always
 
-  web:
+  nginx:
     build:
       context: ./
       dockerfile: docker/nginx/Dockerfile
@@ -15,8 +15,8 @@ services:
       - bun
     env_file: .env
     environment:
-      - NODE_HOST=bun
-      - NODE_PORT=3001
+      - APP_HOST=bun
+      - APP_PORT=3001
     ports:
       - '80:80'
       - '443:443'
@@ -43,7 +43,6 @@ services:
 #      - '3000:3000'
 #    restart: always
 #    volumes:
-#      - ./.output:/app/.output
 #      - ./.env:/app/.env
 
   bun:
@@ -64,5 +63,4 @@ services:
       - '3001:3001'
     restart: always
     volumes:
-      - ./.output:/app/.output
       - ./.env:/app/.env
