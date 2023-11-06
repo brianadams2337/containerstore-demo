@@ -94,7 +94,7 @@
     "dotenv": "16.3.1",
     "envalid": "8.0.0",
     "maska": "2.1.10",
-    "nanoid": "5.0.2",
+    "nanoid": "5.0.3",
     "nuxt-jsonld": "2.0.8",
     "nuxt-lazy-hydrate": "1.0.0",
     "nuxt-swiper": "1.2.2",
