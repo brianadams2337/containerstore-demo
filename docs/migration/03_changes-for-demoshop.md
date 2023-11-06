@@ -309,7 +309,7 @@ import storyblok from './config'
 Storyblok components are auto imported. You need to create a `storyblok` directory at the root and the components will be made available.
 Be mindful of component name collisions. If your component in the `~/components` director is named same as the one inside `~/storyblok` there can be issues with the storyblok auto-imported components.
 
-The `StoryBlokComponent` is also auto-imported and can be used out of the box.
+The `StoryblokComponent` is also auto-imported and can be used out of the box.
 
 ### useAsyncStoryblok composable
 

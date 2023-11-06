@@ -13,7 +13,7 @@ it is the one we recommend to new customers.
 ### Quick links
 
 - [Developer Guides](https://www.storyblok.com/docs/guide/introduction)
-- [Editor Guides](https://www.storyblok.com/docs/editor-guideshttps://www.storyblok.com/docs/editor-guides)
+- [Editor Guides](https://www.storyblok.com/docs/editor-guides)
 - [Storyblok Walkthrough (YouTube)](https://www.youtube.com/watch?v=902M1Pt6yW8)
 
 ## Out-of-the-Box components
@@ -105,12 +105,12 @@ _NOTE:_ For an actual reference which values are optional and what value types a
   - `is_containered`: accepts a boolean
   - `is_containered_desktop`: accepts a boolean
   - `is_spaced`: accepts a boolean
-  - `columns`: accepts a reference to a placable Storyblok component
+  - `columns`: accepts a reference to a Storyblok component
 
 ### Component: `GridTile`
 
 - _Options:_
-  - `content`: accepts a reference to a placable Storyblok component
+  - `content`: accepts a reference to a Storyblok component
   - `headline`: accepts a string
   - `cta`: accepts a string
   - `cta_link`: accepts a link
@@ -193,10 +193,10 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 - _Options:_
   - `teaser_image`: accepts an image or video
   - `teaser_image_mobile`: accepts an image or video
-  - `pre_listing_content`: accepts a list of references to placable Storyblok components
+  - `pre_listing_content`: accepts a list of references to Storyblok components
   - `listing`: accepts a list of `SbListingDisruptor`
   - `SEO`: accepts a meta data object
-  - `post_listing_content`: accepts a list of references to placable Storyblok components
+  - `post_listing_content`: accepts a list of references to Storyblok components
 
 ### Area: Service Pages
 
@@ -223,7 +223,7 @@ _NOTE:_ For an actual reference which values are optional and what value types a
   - `teaser_image_mobile`: accepts an image or video
   - `headline`: accepts a string
   - `subline`: accepts a string
-  - `content`: accepts a list of references to placable Storyblok components
+  - `content`: accepts a list of references to Storyblok components
   - `listing`: accepts a list of `SbListingDisruptor`
   - `SEO`: accepts a meta data object
 
@@ -287,8 +287,8 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 ### Component: `DoubleColumn`
 
 - _Options:_
-  - `column_left`: accepts references to placable Storyblok components
-  - `column_left`: accepts references to placable Storyblok components
+  - `column_left`: accepts references to Storyblok components
+  - `column_left`: accepts references to Storyblok components
   - `margin_top`: accepts a string
 
 ### Component: `Paragraph`
@@ -302,7 +302,7 @@ _NOTE:_ For an actual reference which values are optional and what value types a
 
 ## Technical Implementation Details
 
-The Storyblok integration with the SCAYLE Storefront Boilerplate can be separated by concerns of local development (using `storyblok` cli) and shop runtime (using `@storyblok/nuxt`).
+The Storyblok integration with the SCAYLE Storefront Boilerplate can be separated by concerns of local development (using `storyblok` CLI) and shop runtime (using `@storyblok/nuxt`).
 
 ### Initial development setup
 
@@ -331,9 +331,9 @@ As part of the Storefront Boilerplate `package.json`, some additional scripts ar
 - `storyblok:generate`
   - Uses the downloaded components JSON schema and transforms it into TypeScript types (See section ["Type Definitions"](#type-definitions))
 - `storyblok:login`
-  - Authenticated local development environment with Storyblok CLI
+  - Authenticates local development environment with Storyblok CLI
 - `storyblok:unused`
-  - Outputs overview used and unused Storyblok components
+  - Outputs overview of used and unused Storyblok components
 
 While `storyblok:download` and `storyblok:login` are directly utilizing the Storyblok CLI,
 `storyblok:generate` and `storyblok:unused` are executing dedicated `.cjs` scripts.
@@ -345,7 +345,7 @@ The JSON schema needs to be downloaded before running this command.
 
 The generated TypeScript type definition will be located at `storyblok/types/storyblok.gen.d.ts`.
 
-To create the generated type definition, the script uses a custom internal NPM package called `@aboutyou/storyblok-generate-ts`, which provides a configurable transformation function `storyblokToTypescript()`.This function facilitates the actual transformation of the JSON schema and outputs the type definition based on the passed configuration object, which is pre-configured for usage with the SCAYLE Storefront Boilerplate.
+To create the generated type definition, the script uses a NPM package called `storyblok-generate-ts`, which provides a configurable transformation function `storyblokToTypescript()`.This function facilitates the actual transformation of the JSON schema and outputs the type definition based on the passed configuration object, which is pre-configured for usage with the SCAYLE Storefront Boilerplate.
 
 #### storyblok:unused
 
@@ -367,6 +367,18 @@ To synchronize a project that is based on the SCAYLE Storefront Boilerplate duri
 ![scayle-sfb_storyblok-local-dev-flow.png](img/scayle-sfb_storyblok-local-dev-flow.png)
 
 ```mermaid
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#00E48C',
+      'primaryTextColor': '#000',
+      'primaryBorderColor': '#00E48C',
+      'tertiaryColor': '#fff',
+      'edgeLabelBackground': '#fff'
+    }
+  }
+}%%
 flowchart TD
     A[SCAYLE Storefront Boilerplate] -->|get personal token and space id| B(create .env.storyblok)
     B -->|run storyblok:login| C(login with Storyblok CLI)
@@ -378,7 +390,7 @@ flowchart TD
 ### Basic Composables and Helpers
 
 To simplify the usage of certain functionalities with Storyblok components, the SCAYLE Storefront Boilerplate
-included a few simple reusable composables:
+includes a few simple reusable composables:
 
 - `storyblok/composables/useCmsAlignment.ts`
   - Provides Tailwind-compatible alignment classes to be used with Storyblok components
@@ -397,24 +409,24 @@ The configuration can be extended under the `storyblok` key as part of the `nuxt
 Please refer to the [official Storyblok module documentation](https://github.com/storyblok/storyblok-nuxt#options) for more information and configuration options.
 
 The default configuration only set the `STORYBLOK_ACCESS_TOKEN` and enables the `bridge` option.
-The `bridge` option his used for integration with the Nuxt framework and with the Storyblok visual editor.
+The `bridge` option is used for integrating with the Nuxt framework and with the Storyblok visual editor.
 
 The integration additionally relies on the `@nuxt/image` module (See [NuxtImage module documentation](https://image.nuxt.com/)) to handle images used with Storyblok components.
 
 ### Deployment Requirements
 
-At the current time, the `@storyblok/nuxt` module does not provide integration with the Nuxt RuntimeConfig functionality. This means that the `STORYBLOK_ACCESS_TOKEN` needs to be set during build time of the application as an environment variable.
+The `@storyblok/nuxt` module does provide integration with the Nuxt RuntimeConfig functionality. This means that the `NUXT_STORYBLOK_ACCESS_TOKEN` can be set during runtime time of the application as an environment variable, instead of build time.
 
 ### Auto-imported components
 
 Storyblok components are auto imported from the `storyblok/` directory at the root of the project and the components are made available throughout the project.
 Be mindful of component name collisions. If your component in the `~/components` director is named same as the one inside `~/storyblok` there can be issues with the storyblok auto-imported components.
 
-The `StoryBlokComponent` is also auto-imported and can be used out of the box.
+The `StoryblokComponent` is also auto-imported and can be used out of the box.
 
 ### Fetching Storyblok content
 
-Te SCAYLE Storefront Boilerplate provides multiple different way to fetch content from Storyblok.
+The SCAYLE Storefront Boilerplate provides multiple ways to fetch content from Storyblok.
 
 #### useAsyncStoryblok composable
 
@@ -430,8 +442,23 @@ const story = await useAsyncStoryblok(
 
 #### useCms composable
 
-As content from Storyblok allows to be referenced with data provided by SCAYLE, e.g. product data, the SCAYLE Storefront Boilerplate features the `useCms` composable.
-This composable internally relies on the `storyblok-js-client` package to fetch
+As content from Storyblok allows references to data provided by SCAYLE, e.g. product data, the SCAYLE Storefront Boilerplate features the `useCms` composable.
+This composable internally relies on the `storyblok-js-client` package to fetch.
+
+An example usage for getting relevant content might look as follows:
+
+```ts
+const {
+  fetching,
+  fetchBySlug,
+  data: story,
+  status,
+} = useCms(`{content-page-${slug}}`)
+
+if (status.value === 'idle') {
+  await fetchLazy(fetchBySlug(`c/${slug.value}`))
+}
+```
 
 The composable exposes the following data and functions:
 
