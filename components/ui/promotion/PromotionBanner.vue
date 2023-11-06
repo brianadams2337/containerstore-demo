@@ -2,7 +2,8 @@
   <div
     class="sticky top-0 z-[80] flex h-[3.25rem] cursor-pointer items-center justify-between gap-1 overflow-hidden bg-blue py-2 pl-4 text-sm text-white"
     :style="getBackgroundColorStyle(currentPromotion.customData.colorHex)"
-    @click="togglePromotionList()">
+    @click="togglePromotionList()"
+  >
     <div class="flex-1">
       <PromotionCountdown :until="currentPromotion.schedule.to" />
     </div>
@@ -11,12 +12,14 @@
       :headline-parts="headlineParts"
       is-all-uppercased
       show-info-icon
-      class="flex-1 justify-center" />
+      class="flex-1 justify-center"
+    />
     <div class="flex h-full flex-1 justify-end">
       <PromotionProgress
         v-if="minOrderValue"
         :min-order-value="minOrderValue"
-        class="mr-2.5" />
+        class="mr-2.5"
+      />
       <ShowDealsButton v-else-if="category" :category="category" class="mr-3" />
       <MyDealsButton class="self-center" />
     </div>
@@ -43,7 +46,5 @@ const minOrderValue = computed(() => {
   return currentPromotion.value.customData.minOrderValue
 })
 
-const category = computed(() => {
-  return currentPromotion.value.customData.category
-})
+const category = computed(() => currentPromotion.value.customData.category)
 </script>

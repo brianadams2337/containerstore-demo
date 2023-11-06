@@ -1,13 +1,17 @@
 <template>
   <SlideInFromTopTransition>
-    <div v-if="isShown" class="fixed right-0 top-[3.25rem] z-60 w-full">
+    <div
+      v-if="isPromotionListShown"
+      class="fixed right-0 top-[3.25rem] z-60 w-full"
+    >
       <div class="relative bg-primary p-5 text-white">
         <div class="flex w-full items-start justify-center overflow-x-scroll">
           <PromotionItem
             v-for="item in items"
             :key="item.id"
             v-bind="item"
-            class="mr-4" />
+            class="mr-4"
+          />
         </div>
         <AppButton
           type="raw"
@@ -15,7 +19,8 @@
           fab
           no-padding
           class="absolute -bottom-3 right-[50%] z-[200] bg-primary !p-1"
-          @click="toggle()">
+          @click="togglePromotionList()"
+        >
           <template #icon="{ _class }">
             <IconCloseBold :class="_class" class="text-white" />
           </template>
@@ -23,7 +28,7 @@
       </div>
     </div>
   </SlideInFromTopTransition>
-  <Overlay v-if="isShown" />
+  <Overlay v-if="isPromotionListShown" />
 </template>
 
 <script setup lang="ts">
@@ -34,8 +39,7 @@ const props = defineProps({
   },
 })
 
-const { isPromotionListShown: isShown, togglePromotionList: toggle } =
-  usePromotionActions()
+const { isPromotionListShown, togglePromotionList } = usePromotionActions()
 
-onServerPrefetch(() => props.items.length > 1 && toggle())
+onServerPrefetch(() => props.items.length > 1 && togglePromotionList())
 </script>
