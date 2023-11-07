@@ -5,7 +5,8 @@
       class="flex !items-start justify-between whitespace-pre-line !px-1.5 text-start text-xs font-semibold text-gray-500"
       is-full-width
       size="xs"
-      @click="toggleTerms">
+      @click="toggleTerms"
+    >
       <span class="inline-flex items-start">
         <IconInfoOutline class="mr-1 h-4 w-4" />
         {{ $t('promotion.terms') }}
@@ -23,16 +24,10 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  promotionId: {
-    type: String as PropType<Promotion['id']>,
-    required: true,
-  },
-  content: {
-    type: String,
-    required: true,
-  },
-})
+const props = defineProps<{
+  promotionId: Promotion['id']
+  content: string
+}>()
 
 const areTermsShown = useState(`terms-${props.promotionId}`, () => false)
 

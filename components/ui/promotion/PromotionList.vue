@@ -32,12 +32,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  items: {
-    type: Array as PropType<Promotion[]>,
-    required: true,
-  },
-})
+const props = defineProps<{ items: Promotion[] }>()
 
 const { isPromotionListShown, togglePromotionList } = usePromotionActions()
 

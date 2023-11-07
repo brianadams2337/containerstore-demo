@@ -28,23 +28,18 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  promotions: {
-    type: Array as PropType<Promotion[]>,
-    required: true,
-  },
-})
+const props = defineProps<{ promotions: Promotion[] }>()
 
 const { currentPromotion } = usePromotionChange(props.promotions)
 const { togglePromotionList } = usePromotionActions()
 
 const headlineParts = computed(() => {
-  return currentPromotion.value.customData.headlineParts
+  return currentPromotion.value?.customData?.headlineParts
 })
 
 const minOrderValue = computed(() => {
-  return currentPromotion.value.customData.minOrderValue
+  return currentPromotion.value?.customData?.minOrderValue
 })
 
-const category = computed(() => currentPromotion.value.customData.category)
+const category = computed(() => currentPromotion.value?.customData?.category)
 </script>

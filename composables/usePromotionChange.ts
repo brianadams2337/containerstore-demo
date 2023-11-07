@@ -1,5 +1,3 @@
-const SHOW_PROMOTIONS_DELAY = 5000
-
 export default (promotions: Promotion[]) => {
   const currentPromotion = useState<Promotion>(
     'current-promotion',
@@ -8,13 +6,13 @@ export default (promotions: Promotion[]) => {
 
   const timeoutId = ref<NodeJS.Timeout>()
 
-  const showNextPromotion = (currentIndex = -1) => {
+  const showNextPromotion = (currentIndex = 0) => {
     timeoutId.value = setTimeout(() => {
       const isLast = currentIndex === promotions.length - 1
       const idx = isLast ? 0 : currentIndex + 1
       currentPromotion.value = promotions[currentIndex]
       showNextPromotion(idx)
-    }, SHOW_PROMOTIONS_DELAY)
+    }, PROMOTIONS_CHANGE_DELAY)
   }
 
   onMounted(() => showNextPromotion())

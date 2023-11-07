@@ -3,7 +3,8 @@
     type="secondary"
     size="xs"
     class="pr-1 text-xs"
-    @click="goToCategory()">
+    @click="goToCategory()"
+  >
     <template #append-icon="{ _class }">
       {{ $t('promotion.show_deals_label') }}
       <IconChevronRight :class="_class" />
@@ -12,12 +13,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  category: {
-    type: String as PropType<string>,
-    required: true,
-  },
-})
+const props = defineProps<{ category: string }>()
 
 const { isPromotionListShown, togglePromotionList } = usePromotionActions()
 

@@ -20,10 +20,5 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  until: {
-    type: String,
-    required: true,
-  },
-})
+defineProps<{ until: string }>()
 </script>

@@ -7,7 +7,8 @@
         slanted
         type="neutral"
         background-color="bg-white/20"
-        class="mr-2 !max-w-[12.5rem]" />
+        class="mr-2 !max-w-[12.5rem]"
+      />
       <span class="w-28 font-semibold">
         {{ $t('promotion.progress_left', { amount: formattedAmount }) }}
       </span>
@@ -28,12 +29,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  minOrderValue: {
-    type: Number,
-    required: true,
-  },
-})
+const props = defineProps<{ minOrderValue: number }>()
 
 const { data: basketData } = await useBasket()
 
