@@ -41,7 +41,7 @@ const props = defineProps({
 
 const { isGreaterOrEquals, isLessThan } = useViewport()
 const { currentPromotion } = usePromotionChange(props.promotions)
-const { isFullProgress } = await usePromotionProgress(currentPromotion.value)
+const { isFullProgress } = await usePromotionProgress(currentPromotion)
 
 const { togglePromotionList, isPromotionListShown } = usePromotionActions()
 

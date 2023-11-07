@@ -1,8 +1,10 @@
-export default async (currentPromotion: Promotion) => {
+export default async (promotion: MaybeRefOrGetter<Promotion>) => {
   const { data: basketData } = await useBasket()
 
+  const currentPromotion = isRef(promotion) ? promotion : toRef(promotion)
+
   const minOrderValue = computed(() => {
-    return currentPromotion.customData?.minOrderValue || 0
+    return currentPromotion.value.customData?.minOrderValue || 0
   })
   const minOrderAmount = computed(() => divideWithHundred(minOrderValue.value))
 
@@ -13,7 +15,9 @@ export default async (currentPromotion: Promotion) => {
     return basketData.value.cost.withTax / minOrderAmount.value
   })
 
-  const isFullProgress = computed(() => progress.value && progress.value >= 100)
+  const isFullProgress = computed(() => {
+    return !!progress.value && progress.value >= 100
+  })
 
   const formattedAmount = computed(() => toCurrency(minOrderValue.value))
 
