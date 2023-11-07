@@ -1,4 +1,4 @@
-import { HashAlgorithm, ModuleOptions } from '@scayle/storefront-nuxt'
+import { HashAlgorithm, type ModuleOptions } from '@scayle/storefront-nuxt'
 import * as customRpcMethods from '../rpcMethods'
 import withParams from '../constants/withParams'
 
@@ -66,12 +66,6 @@ const shops = [
   },
 ]
 
-const protocol =
-  (process.env.HTTPS_KEY && process.env.HTTPS_CERT) ||
-  process.env.NODE_ENV === 'production'
-    ? 'https://'
-    : 'http://'
-
 export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
   // Following keys are Overrideable using prefix NUXT_PUBLIC_PUBLIC_SHOP_DATA
   publicShopData: ['paymentProviders', 'isLowestPreviousPriceActive'],
@@ -82,7 +76,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
   },
   // Following keys are Overrideable using prefix NUXT_STOREFRONT_SESSION_
   session: {
-    sameSite: process.env.APP_ENV !== 'production' ? 'none' : 'lax',
+    sameSite: 'none',
     maxAge: 2419200, // four weeks in seconds
     provider: 'redis',
   },
@@ -118,7 +112,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
         isLowestPreviousPriceActive: false, // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_IS_LOWEST_PREVIOUS_PRICE_ACTIVE,
         auth: {
           // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_AUTH_RESET_PASSWORD_URL
-          resetPasswordUrl: `${protocol}${shop.locale}/signin/`,
+          resetPasswordUrl: `https://${baseShopConfig.domain}/${shop.locale}/signin/`,
         },
         storeCampaignKeyword: '', // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_STORE_CAMPAIGN_KEYWORD,
         currency: shop.currency, // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_CURRENCY
@@ -145,7 +139,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
     prefix: '', // Override: NUXT_STOREFRONT_REDIS_PREFIX,
     user: '', // Override: NUXT_STOREFRONT_REDIS_USER,
     password: '', // Override: NUXT_STOREFRONT_REDIS_PASSWORD,
-    sslTransit: Boolean(process.env.NUXT_STOREFRONT_SSL_TRANSIT),
+    sslTransit: false, // Override: NUXT_STOREFRONT_REDIS_SSL_TRANSIT),
   },
   // Following keys are Overrideable using prefix NUXT_STOREFRONT_CACHE
   cache: {
@@ -153,13 +147,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
       username: 'max',
       password: 'mustermann',
     },
-    // TODO: Check following if required:
-    // enabled: process.env.AY_CACHE_DISABLED !== 'true',
-    // ttl: 60 * 60,
-    // sendCacheControlHeaders: true,
-    // maxAge: 60 * 60,
-    // staleWhileRevalidate: 60 * 60 * 24,
-    // generateCacheKey: () =>
+    enabled: true,
   },
   // Following keys are Overrideable using prefix NUXT_PUBLIC_WITH_PARAMS
   withParams,
