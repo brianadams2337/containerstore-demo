@@ -1,9 +1,11 @@
 <template>
   <div
-    class="flex min-h-screen flex-col text-primary antialiased anchor-scrolling-none">
+    class="flex min-h-screen flex-col text-primary antialiased anchor-scrolling-none"
+  >
     <PromotionBanner
-      v-if="!isPromotionDataFetching"
-      :promotions="promotionData.entities" />
+      v-if="!isPromotionDataFetching && promotionData.entities.length"
+      :promotions="promotionData.entities"
+    />
     <HeaderMetaBar />
     <AppHeader v-bind="{ rootCategories, fetchingCategories }" />
     <ToastContainer />
@@ -12,7 +14,8 @@
       <ErrorLayout
         v-if="hasError"
         :error="error"
-        @clear-error="resetErrorState" />
+        @clear-error="resetErrorState"
+      />
       <slot v-else />
     </div>
     <NuxtLazyHydrate placeholder-ratio="16/9" when-visible>
