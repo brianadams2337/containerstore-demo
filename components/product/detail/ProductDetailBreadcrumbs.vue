@@ -1,5 +1,5 @@
 <template>
-  <HorizontalItemsDivider tag="RawLink" :items="links">
+  <HorizontalItemsDivider tag="DefaultLink" :items="links">
     <template #default="{ items }">
       <DefaultLink
         v-for="(link, idx) in asLinks(items)"

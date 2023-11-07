@@ -1,11 +1,13 @@
 <template>
   <div
-    class="w-full overflow-hidden bg-secondary-450"
-    :class="{ ...heightClasses, 'rounded-md': rounded }">
+    class="relative w-full overflow-hidden"
+    :class="[{ ...heightClasses, 'rounded-md': rounded }, backgroundColor]"
+  >
     <div
-      :class="colorClasses"
+      :class="[colorClasses, slantedBarClass]"
       :style="{ width: `${progress}%` }"
-      class="h-full max-w-full" />
+      class="h-full max-w-full"
+    />
   </div>
 </template>
 
@@ -17,7 +19,9 @@ const props = defineProps({
   },
   type: {
     type: String,
-    validator: (type: string) => ['success', 'warn', 'danger'].includes(type),
+    validator: (type: string) => {
+      return ['success', 'warn', 'danger', 'neutral'].includes(type)
+    },
     default: 'success',
   },
   fullWidth: {
@@ -33,6 +37,14 @@ const props = defineProps({
     validator: (height: string) => ['xs', 'sm', 'md'].includes(height),
     default: 'sm',
   },
+  backgroundColor: {
+    type: String,
+    default: 'bg-secondary-450',
+  },
+  slanted: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const heightClasses = computed(() => ({
@@ -45,5 +57,13 @@ const colorClasses = computed(() => ({
   'bg-green-500': props.type === 'success',
   'bg-yellow-400': props.type === 'warn',
   'bg-red-500': props.type === 'danger',
+  'bg-white': props.type === 'neutral',
 }))
+
+const slantedBarClass = computed(() => {
+  if (!props.progress || !props.slanted) {
+    return ''
+  }
+  return '!h-0 border-t-[14px] border-r-[14px] border-white border-r-transparent bg-white/0'
+})
 </script>

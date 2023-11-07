@@ -22,5 +22,7 @@ export const BASKET_WITH_PARAMS: BasketWithOptions = {
       priceRange: true,
       lowestPriorPrice: true,
     },
+    promotion: true,
   },
+  applicablePromotions: true,
 }

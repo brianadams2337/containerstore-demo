@@ -1,8 +1,5 @@
 <template>
-  <div
-    id="header"
-    class="sticky top-0 z-50 bg-white"
-    data-test-id="main-header">
+  <div id="header" class="bg-white" data-test-id="main-header">
     <div class="border-b border-gray-200">
       <div
         class="mx-4 flex h-[4.375rem] items-center justify-between gap-1 md:container sm:gap-4">

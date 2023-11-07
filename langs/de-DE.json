@@ -20,6 +20,18 @@
     "continue_shopping_label": "Weiter einkaufen",
     "sign_in_label": "Anmelden"
   },
+  "promotion": {
+    "progress_left": "{amount} übrig",
+    "terms": "Allgemeine Geschäftsbedingungen für Werbeaktionen",
+    "active_label": "Aktiv",
+    "show_deals_label": "Deal-Artikel anzeigen",
+    "my_deals_label": "Meine Angebote",
+    "full_progress_message": {
+      "first_part": "Sie",
+      "middle_part": "sparen {amount}",
+      "last_part": "bei Ihrer Bestellung"
+    }
+  },
   "validation": {
     "email": "Das Feld {field} muss eine gültige E-Mail Adresse sein",
     "password": "Das {field} Feld erfordert einen Großbuchstaben, ein Sonderzeichen, eine Zahl und keine Leerzeichen.",

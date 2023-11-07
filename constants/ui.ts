@@ -63,6 +63,7 @@ export const ButtonType = {
   SECONDARY: 'secondary',
   TERTIARY: 'tertiary',
   GHOST: 'ghost',
+  RAW: 'raw',
 } as const
 
 export type ButtonType = ValuesType<typeof ButtonType>
@@ -70,14 +71,16 @@ export type ButtonType = ValuesType<typeof ButtonType>
 export const SlideInType = {
   DEFAULT: 'default',
   FROM_BOTTOM: 'fromBottom',
-}
+} as const
+
 export type SlideInType = ValuesType<typeof SlideInType>
 
 export const DividerItemTag = {
   DEFAULT_LINK: 'DefaultLink',
   NUXT_LINK: 'NuxtLink',
   PARAGRAPH: 'p',
-}
+} as const
+
 export type DividerItemTag = ValuesType<typeof DividerItemTag>
 
 /* eslint-enable @typescript-eslint/no-redeclare */

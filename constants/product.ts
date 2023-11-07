@@ -7,6 +7,7 @@ export const PRODUCT_WITH_PARAMS: ProductWith = {
       'color',
       'brand',
       'name',
+      'promotion',
       'fastenerType',
       'design',
       'extras',

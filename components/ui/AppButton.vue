@@ -9,6 +9,7 @@
     @click.stop="emit('click:stop')">
     <slot name="icon" :_class="iconClasses" />
     <slot />
+    <slot name="append-icon" :_class="iconClasses" />
     <slot name="badge" :badge="badge">
       <transition
         enter-to-class="opacity-100"
@@ -63,6 +64,14 @@ const props = defineProps({
     type: Boolean as PropType<boolean>,
     default: false,
   },
+  fab: {
+    type: Boolean as PropType<boolean>,
+    default: false,
+  },
+  isUppercase: {
+    type: Boolean as PropType<boolean>,
+    default: false,
+  },
   size: {
     type: String as PropType<Size>,
     default: Size.MD,
@@ -74,6 +83,7 @@ const isPrimary = computed(() => props.type === ButtonType.PRIMARY)
 const isSecondary = computed(() => props.type === ButtonType.SECONDARY)
 const isTertiary = computed(() => props.type === ButtonType.TERTIARY)
 const isGhost = computed(() => props.type === ButtonType.GHOST)
+const isRaw = computed(() => props.type === ButtonType.RAW)
 
 const { isSize } = useUiSize(props.size)
 
@@ -89,6 +99,8 @@ const emit = defineEmits<{
 const baseClasses = computed(() => ({
   'p-3': !props.noPadding && isSize('md'),
   'px-3 py-1': !props.noPadding && isSize('sm'),
+  'px-3 py-1.5': !props.noPadding && isSize('xs'),
+  'px-0': isRaw.value,
   'px-0 text-primary-400 hover:text-primary': isGhost.value,
   'border border-primary bg-primary font-semibold text-white hover:bg-primary-400':
     isPrimary.value,
@@ -99,6 +111,8 @@ const baseClasses = computed(() => ({
   'w-full': props.isFullWidth,
   'animate-pulse cursor-not-allowed': props.loading,
   '!rounded': props.rounded,
+  '!rounded-full': props.fab,
+  uppercase: props.isUppercase,
 }))
 
 const textColorClasses = computed(() => ({

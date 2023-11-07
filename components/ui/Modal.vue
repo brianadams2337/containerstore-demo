@@ -25,8 +25,6 @@
 </template>
 
 <script setup lang="ts">
-import { onClickOutside } from '@vueuse/core'
-
 const props = defineProps({
   hideCloseButton: {
     type: Boolean,

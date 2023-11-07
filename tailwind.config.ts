@@ -1,5 +1,6 @@
 import plugin from 'tailwindcss/plugin'
 import aspectRatioPlugin from '@tailwindcss/aspect-ratio'
+import colors from 'tailwindcss/colors'
 import breakpoints from './config/breakpoints'
 
 const defaultSizes = {
@@ -67,6 +68,29 @@ export default {
         'pink-neon': '#ff7df4',
         flamingo: '#d891a8',
         'green-neon': '#00bd14',
+        red: {
+          ...colors.red,
+          DEFAULT: '#f14949',
+        },
+        yellow: {
+          ...colors.yellow,
+          DEFAULT: '#ffd343',
+        },
+        pink: {
+          ...colors.pink,
+          DEFAULT: '#ff7df4',
+        },
+        purple: {
+          ...colors.purple,
+          DEFAULT: '#811fff',
+        },
+        blue: {
+          50: '#5da8ff', // light-10
+          100: '#c6e0ff', // light-20
+          800: '#004ca5', // dark-10
+          900: '#001732', // dark-20
+          DEFAULT: '#0277ff',
+        },
 
         secondary: {
           100: '#fbfbfb',

@@ -20,6 +20,18 @@
     "continue_shopping_label": "Continue shopping",
     "sign_in_label": "Sign in"
   },
+  "promotion": {
+    "progress_left": "{amount} left",
+    "terms": "Promotion Terms & Conditions",
+    "active_label": "Active",
+    "show_deals_label": "Show deal items",
+    "my_deals_label": "My deals",
+    "full_progress_message": {
+      "first_part": "You are",
+      "middle_part": "saving {amount}",
+      "last_part": "on your order"
+    }
+  },
   "validation": {
     "email": "The {field} field must be a valid email",
     "password": "The {field} field must have an uppercase letter, a special character, a number and no spaces",

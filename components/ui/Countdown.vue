@@ -1,8 +1,18 @@
 <template>
-  <div class="flex gap-2 text-sm">
-    <div v-for="(value, key) in countdown" :key="key" class="flex gap-1">
-      <span :class="value && value > 9 ? 'w-4' : 'w-2'">{{ value }}</span>
-      {{ $t(`global.${key}`) }}
+  <div class="flex pl-1.5 text-xs">
+    <div
+      v-for="(value, key) in countdown"
+      :key="key"
+      class="flex text-center font-semibold">
+      <span v-if="value !== undefined" class="w-4">
+        {{ formatValue(value) }}
+      </span>
+      <span class="mx-1">
+        <template v-if="showUnits">{{ $t(`global.${key}`) }}</template>
+        <template v-else-if="key !== useLast(Object.keys(countdown))">
+          :
+        </template>
+      </span>
     </div>
   </div>
 </template>
@@ -15,11 +25,16 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  showUnits: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const emit = defineEmits(['finished'])
 
-let intervalId: any
+let intervalId: NodeJS.Timeout
+
 const until = computed(() => Date.parse(props.until))
 const countdown = ref<{ [k in CountdownUnit]?: number }>({})
 
@@ -38,6 +53,10 @@ const update = () => {
     clearInterval(intervalId)
     emit('finished')
   }
+}
+
+const formatValue = (value: number) => {
+  return value <= 9 && value >= 0 ? `0${value}` : value
 }
 
 onMounted(() => {
