@@ -5,18 +5,21 @@
     <div class="flex flex-1 flex-col items-start md:flex-row md:gap-3">
       <ProductImageGallery
         :images="product?.images"
-        @click:image="toggleZoomGallery(true, $event)" />
+        @click:image="toggleZoomGallery(true, $event)"
+      />
       <ZoomGallery
         v-if="zoomGallery.display"
         :images="product.images"
         :active-index="zoomGallery.index"
-        @click:close-zoom-gallery="toggleZoomGallery(false)" />
+        @click:close-zoom-gallery="toggleZoomGallery(false)"
+      />
       <div class="sticky right-0 top-0 mt-5 w-full md:w-1/2 md:px-9 xl:w-1/3">
         <div class="w-full bg-white">
           <div v-if="product.isSoldOut" class="left-0 top-0">
             <ProductBadge
               class="ml-0"
-              :badge-label="getBadgeLabel({ isSoldOut: product.isSoldOut })" />
+              :badge-label="getBadgeLabel({ isSoldOut: product.isSoldOut })"
+            />
           </div>
           <div class="my-2 max-w-xs md:mt-1">
             <div class="mb-2">
@@ -24,7 +27,8 @@
             </div>
             <div
               class="text-xs font-semibold text-secondary"
-              data-test-id="pdp-product-brand">
+              data-test-id="pdp-product-brand"
+            >
               {{ brandName }}
             </div>
             <div class="flex items-start justify-between md:flex-col">
@@ -32,7 +36,8 @@
                 :size="isGreaterOrEquals('md') ? '2xl' : 'xl'"
                 class="!leading-snug"
                 data-test-id="pdp-product-name"
-                tag="h1">
+                tag="h1"
+              >
                 {{ productName }}
               </Headline>
               <ProductPrice
@@ -45,7 +50,8 @@
                 :applied-reductions="price?.appliedReductions"
                 show-tax-info
                 :show-price-from="hasSpecial"
-                :show-price-reduction-badge="hasSpecial" />
+                :show-price-reduction-badge="hasSpecial"
+              />
             </div>
           </div>
           <div class="w-full md:w-3/4">
@@ -55,11 +61,13 @@
                   <DefaultLink
                     raw
                     class="flex items-center justify-center"
-                    :to="getProductDetailRoute(product, item.id)">
+                    :to="getProductDetailRoute(product, item.id)"
+                  >
                     <ColorChip
                       :is-active="item.id === product.id"
                       :size="isGreaterOrEquals('md') ? Size.LG : Size.XL"
-                      :color="item.colors[0] as ProductColor" />
+                      :color="item.colors[0] as ProductColor"
+                    />
                   </DefaultLink>
                 </template>
               </ProductSiblingPicker>
@@ -73,7 +81,8 @@
               "
               class="mt-8"
               :variants="product.variants ?? []"
-              @select-size="handleSelectedSize" />
+              @select-size="handleSelectedSize"
+            />
 
             <!-- ComputedAddOns == [] -->
             <AddOnsSelector
@@ -81,7 +90,8 @@
               class="mt-8"
               :add-on-variant-ids="availableAddOns"
               :class="{ hidden: !activeVariant }"
-              @click:service-selection="onAddOnSelected" />
+              @click:service-selection="onAddOnSelected"
+            />
             <div class="mt-4 flex h-12">
               <!-- add to basket -->
               <AppButton
@@ -93,19 +103,22 @@
                 :loading="basketIdle"
                 class="text-sm !normal-case"
                 border-sm
-                @click="addItemToBasket">
+                @click="addItemToBasket"
+              >
                 {{ $t('pdp.add_label') }}
               </AppButton>
               <client-only>
                 <WishlistToggle
                   class="ml-2 box-border h-full border border-gray-350 !px-2"
-                  :product="product" />
+                  :product="product"
+                />
               </client-only>
             </div>
             <div class="mt-3">
               <ProductDetailGroup
                 v-if="sliderProducts.length"
-                data-test-id="combine-with-slider">
+                data-test-id="combine-with-slider"
+              >
                 <template #headline>
                   {{ $t('global.product_recommendation') }}
                 </template>
@@ -114,7 +127,8 @@
                   :products="sliderProducts"
                   :loading="fetchingCombineWithProducts"
                   @intersect:column="trackViewListing"
-                  @click:recommendation="trackRecommendationClick" />
+                  @click:recommendation="trackRecommendationClick"
+                />
               </ProductDetailGroup>
             </div>
           </div>
@@ -329,11 +343,7 @@ const addItemToBasket = async () => {
             })),
           ],
         })
-      : await addBasketItem({
-          promotionId: '65327bbae74de6e4b61dd68f',
-          variantId: activeVariant.value.id,
-          quantity: 1,
-        })
+      : await addBasketItem({ variantId: activeVariant.value.id, quantity: 1 })
 
     console.log({ basketData: basketData.value })
     openBasketFlyout()
