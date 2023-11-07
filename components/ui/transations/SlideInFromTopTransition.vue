@@ -11,11 +11,8 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  duration: {
-    type: Number,
-    default: 500,
-  },
+const props = withDefaults(defineProps<{ duration: number }>(), {
+  duration: 500,
 })
 
 const activeClasses = computed(() => ({
