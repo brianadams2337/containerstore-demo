@@ -1739,10 +1739,10 @@
   dependencies:
     prettier-config-standard "^7.0.0"
 
-"@scayle/storefront-core@7.24.0":
-  version "7.24.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.24.0.tgz#310a1c552c4f531d449ec98349080c294971524a"
-  integrity sha512-x+KbzFpIjRfTuOv8ZlfOo1tnwNVogAuiot8COasKjOuk3A5jRDtfgl2WWVUOo13w+jriaNv6p5eeWw03guivRQ==
+"@scayle/storefront-core@7.24.1":
+  version "7.24.1"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.24.1.tgz#6388bc8d641c0efc3eee7e2d44c6c94070c496aa"
+  integrity sha512-zsYCGnGBu+Abr2aGSvg5foJsYc1oHbCQiJx1i+twKjbdXUrhG7Y4OmvpUJjsGyJV0zeRwTBDXSOw8gwERMk4zQ==
   dependencies:
     "@aboutyou/backbone" "15.14.1"
     crypto-js "4.2.0"
@@ -1756,14 +1756,14 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.37.1":
-  version "7.37.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.37.1.tgz#30b6f04ea42a6b20a48bd2ac1059b76e3299a37f"
-  integrity sha512-dSqZJ9gOMQcYdp2WndH4XslHsg76s9eDf26KlABjvxTwnBfjlbzyBpzdYo/GxPYXvkmFnvsjhRdQXyyWB3JKaQ==
+"@scayle/storefront-nuxt@7.37.2":
+  version "7.37.2"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.37.2.tgz#d1ce889979bf612993203444fec086137578262a"
+  integrity sha512-KchrStCIFHviqCz2NN33kMQg6PTlkyNxar7hchmhcBNh581auUvzT1y5AB10McednuHka4txO6by2cf4lzNoBA==
   dependencies:
     "@nuxt/kit" "3.7.4"
     "@scayle/h3-session" "0.3.4"
-    "@scayle/storefront-core" "7.24.0"
+    "@scayle/storefront-core" "7.24.1"
     "@vueuse/core" "10.5.0"
     consola "3.2.3"
     core-js "3.33.2"
