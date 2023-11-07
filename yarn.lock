@@ -1827,10 +1827,10 @@
   dependencies:
     storyblok-js-client "^5.14.2"
 
-"@storyblok/nuxt@5.7.5":
-  version "5.7.5"
-  resolved "https://registry.yarnpkg.com/@storyblok/nuxt/-/nuxt-5.7.5.tgz#6bc7a752a23d6a2e21dc4ee6d0c3aee1fbdcff91"
-  integrity sha512-ebfvheYmrZOPuuBft622g1xQ0d5aif+JHEy1P7WSavsv2NwVmJsiRRHKOp4M2dY7slL43bMM2DFcpVS5sZhwmg==
+"@storyblok/nuxt@5.7.6":
+  version "5.7.6"
+  resolved "https://registry.yarnpkg.com/@storyblok/nuxt/-/nuxt-5.7.6.tgz#463eadcd6be9a301b932902ed5cfaa81615b19b5"
+  integrity sha512-zhGRmZz//e+blQqGdrQzgrOlAv6ZP5eXwZ9N06W79klHCXlsiqlxKwK15oN+go6Zwnswco2v2SwGT1ZS0ajztQ==
   dependencies:
     "@nuxt/kit" "^3.8.0"
     "@storyblok/vue" "^7.3.1"
