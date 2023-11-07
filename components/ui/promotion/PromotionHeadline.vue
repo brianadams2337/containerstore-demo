@@ -10,7 +10,7 @@
       <span class="mr-2 font-bold uppercase" :class="offerTextClass">
         {{ headline.offerText }}
       </span>
-      <span class="text-xs font-semibold"> {{ headline.conditionText }}</span>
+      <span class="text-xs font-semibold">{{ headline.conditionText }}</span>
     </h1>
     <IconInfoOutline v-if="showInfoIcon" class="h-5 w-5" />
   </div>

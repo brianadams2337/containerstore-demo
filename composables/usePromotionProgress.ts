@@ -21,10 +21,15 @@ export default async (promotion: MaybeRefOrGetter<Promotion>) => {
 
   const formattedAmount = computed(() => toCurrency(minOrderValue.value))
 
+  const formattedAmountLeft = computed(() => {
+    return toCurrency(minOrderValue.value - basketData.value.cost.withTax)
+  })
+
   return {
     minOrderAmount,
     progress,
     isFullProgress,
     formattedAmount,
+    formattedAmountLeft,
   }
 }

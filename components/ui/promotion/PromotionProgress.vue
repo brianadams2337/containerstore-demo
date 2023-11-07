@@ -14,7 +14,7 @@
         background-color="bg-white/20"
       />
       <span v-if="isGreaterOrEquals('md')" class="ml-2 w-28 font-semibold">
-        {{ $t('promotion.progress_left', { amount: formattedAmount }) }}
+        {{ $t('promotion.progress_left', { amount: formattedAmountLeft }) }}
       </span>
     </template>
     <PromotionFullProgressLabel
@@ -35,6 +35,6 @@ const props = withDefaults(defineProps<Props>(), { isFullWidth: false })
 
 const { isGreaterOrEquals, isLessThan } = useViewport()
 
-const { progress, isFullProgress, formattedAmount } =
+const { progress, isFullProgress, formattedAmountLeft } =
   await usePromotionProgress(props.currentPromotion)
 </script>

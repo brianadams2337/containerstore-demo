@@ -25,7 +25,7 @@ type Props = {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  type: 'success',
+  type: ProgressType.SUCCESS,
   height: 'sm',
   backgroundColor: 'bg-secondary-450',
   fullWidth: true,
