@@ -3,7 +3,7 @@
     class="flex min-h-screen flex-col text-primary antialiased anchor-scrolling-none"
   >
     <PromotionBanner
-      v-if="!isPromotionDataFetching && isGreaterOrEquals('md')"
+      v-if="promotionData.entities.length && isGreaterOrEquals('md')"
       :promotions="promotionData.entities"
     />
     <HeaderMetaBar />
@@ -22,7 +22,7 @@
       <AppFooter class="mt-16" />
     </NuxtLazyHydrate>
     <PromotionMobileBanner
-      v-if="!isPromotionDataFetching && isLessThan('md')"
+      v-if="promotionData.entities.length && isLessThan('md')"
       :promotions="promotionData.entities"
     />
   </div>
@@ -37,8 +37,7 @@ const categoryData = await useCategories({
   key: 'categoryNavigation',
 })
 
-const { data: promotionData, fetching: isPromotionDataFetching } =
-  await useCurrentPromotions()
+const { data: promotionData } = await useCurrentPromotions()
 
 const { isGreaterOrEquals, isLessThan } = useViewport()
 

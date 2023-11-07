@@ -1,4 +1,3 @@
-import path from 'path'
 import {
   storefrontRuntimeConfigPrivate,
   storefrontRuntimeConfigPublic,
@@ -227,9 +226,9 @@ export default defineNuxtConfig({
   },
 
   devServer: {
-    https: {
-      key: path.resolve(__dirname, process.env.HTTPS_KEY || ''),
-      cert: path.resolve(__dirname, process.env.HTTPS_CERT || ''),
+    https: !process.env.HTTPS_KEY || !process.env.HTTPS_CERT ? false : {
+      key: process.env.HTTPS_KEY,
+      cert: process.env.HTTPS_CERT,
     },
   },
 
