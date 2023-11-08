@@ -1,14 +1,14 @@
 <template>
   <div class="flex items-center text-white">
     <h1 class="mr-1 flex flex-wrap items-center text-xs font-medium">
-      {{ $t('promotion.headline.add_label') }}
+      {{ $t('promotion.automatic_discount_headline.add_label') }}
       <span v-if="progress > 0" class="ml-1">
-        {{ $t('promotion.headline.another_label') }}
+        {{ $t('promotion.automatic_discount_headline.another_label') }}
       </span>
       <span class="mx-1 font-bold">{{ formattedAmountLeft }}</span>
-      {{ $t('promotion.headline.save_indicator_label') }}
+      {{ $t('promotion.automatic_discount_headline.save_indicator_label') }}
       <span v-if="discount" class="mx-1 font-bold uppercase">
-        {{ $t('promotion.headline.offer', { discount }) }}
+        {{ $t('promotion.automatic_discount_headline.offer', { discount }) }}
       </span>
     </h1>
     <IconInfoOutline class="h-4 w-4" />
