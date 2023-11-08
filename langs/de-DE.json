@@ -30,6 +30,12 @@
       "first_part": "Sie",
       "middle_part": "sparen {amount}",
       "last_part": "bei Ihrer Bestellung"
+    },
+    "headline": {
+      "add_label": "Add",
+      "another_label": "another",
+      "save_indicator_label": "to save",
+      "offer": "{discount}% extra"
     }
   },
   "validation": {

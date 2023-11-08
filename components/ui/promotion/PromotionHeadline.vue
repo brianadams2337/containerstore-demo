@@ -10,7 +10,14 @@
       <span class="mr-2 font-bold uppercase" :class="offerTextClass">
         {{ headline.offerText }}
       </span>
-      <span class="text-xs font-semibold">{{ headline.conditionText }}</span>
+      <span
+        class="text-xs"
+        :class="
+          isExtraSmall ? 'font-medium first-letter:capitalize' : 'font-semibold'
+        "
+      >
+        {{ headline.conditionText }}
+      </span>
     </h1>
     <IconInfoOutline v-if="showInfoIcon" class="h-5 w-5" />
   </div>
@@ -39,7 +46,11 @@ const headline = computed(() => {
   return { offerText, conditionText }
 })
 
-const offerTextClass = computed(() => {
-  return props.size !== PromotionHeadlineSize.SM ? 'text-lg' : 'text-md'
-})
+const isExtraSmall = computed(() => props.size === PromotionHeadlineSize.XS)
+
+const offerTextClass = computed(() => ({
+  'text-lg': props.size === PromotionHeadlineSize.BASE,
+  'text-sm': props.size === PromotionHeadlineSize.SM,
+  'text-xs': isExtraSmall.value,
+}))
 </script>

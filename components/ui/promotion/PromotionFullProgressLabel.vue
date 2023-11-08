@@ -1,5 +1,5 @@
 <template>
-  <p class="font-medium">
+  <p class="font-medium" :class="{ 'text-xs leading-5': isSmall }">
     🎉
     {{ $t('promotion.full_progress_message.first_part') }}
     <span class="font-bold">
@@ -14,7 +14,11 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ currentPromotion: Promotion }>()
+type Props = {
+  currentPromotion: Promotion
+  isSmall?: boolean
+}
+const props = withDefaults(defineProps<Props>(), { isSmall: false })
 
 const { formattedAmount } = await usePromotionProgress(props.currentPromotion)
 </script>

@@ -1,7 +1,7 @@
 export default (promotions: Promotion[]) => {
   const currentPromotion = useState<Promotion>(
     'current-promotion',
-    () => promotions[0],
+    () => promotions[1],
   )
 
   const timeoutId = ref<NodeJS.Timeout>()
