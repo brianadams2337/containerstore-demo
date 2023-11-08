@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-withDefaults(defineProps<{ positionClass: string }>(), {
+withDefaults(defineProps<{ positionClass?: string }>(), {
   positionClass: '-bottom-3 right-[50%]',
 })
 

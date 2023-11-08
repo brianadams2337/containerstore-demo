@@ -20,17 +20,16 @@
       </div>
     </div>
   </div>
-  <Overlay />
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ items: Promotion[] }>()
+defineProps<{ items: Promotion[] }>()
 
 const promotionList = ref()
 
+const viewport = useViewport()
+
 const { togglePromotionList: toggle } = usePromotionActions()
 
-onServerPrefetch(() => props.items.length > 1 && toggle())
-
-onClickOutside(promotionList, () => toggle())
+onClickOutside(promotionList, () => viewport.isLessThan('md') && toggle())
 </script>

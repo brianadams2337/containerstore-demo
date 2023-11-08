@@ -25,13 +25,15 @@
     </div>
   </div>
   <PromotionList :items="promotions" />
+  <Overlay v-if="isPromotionListShown" />
+  <PromotionMobileBanner :promotions="promotions" />
 </template>
 
 <script setup lang="ts">
 const props = defineProps<{ promotions: Promotion[] }>()
 
 const { currentPromotion } = usePromotionChange(props.promotions)
-const { togglePromotionList } = usePromotionActions()
+const { togglePromotionList, isPromotionListShown } = usePromotionActions()
 
 const headlineParts = computed(() => {
   return currentPromotion.value.customData?.headlineParts
@@ -42,4 +44,6 @@ const minOrderValue = computed(() => {
 })
 
 const category = computed(() => currentPromotion.value.customData?.category)
+
+onServerPrefetch(() => props.promotions.length > 1 && togglePromotionList())
 </script>

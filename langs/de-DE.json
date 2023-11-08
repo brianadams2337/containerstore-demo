@@ -32,10 +32,10 @@
       "last_part": "bei Ihrer Bestellung"
     },
     "automatic_discount_headline": {
-      "add_label": "Add",
-      "another_label": "another",
-      "save_indicator_label": "to save",
-      "offer": "{discount}% extra"
+      "add_label": "Fügen Sie",
+      "another_label": "weitere",
+      "save_indicator_label": "hinzu, um",
+      "offer": "{discount}% zusätzlich zu sparen"
     }
   },
   "validation": {

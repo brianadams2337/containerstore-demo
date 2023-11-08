@@ -17,13 +17,10 @@
       </div>
     </div>
   </SlideInFromTopTransition>
-  <Overlay v-if="isPromotionListShown" />
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ items: Promotion[] }>()
+defineProps<{ items: Promotion[] }>()
 
-const { isPromotionListShown, togglePromotionList } = usePromotionActions()
-
-onServerPrefetch(() => props.items.length > 1 && togglePromotionList())
+const { isPromotionListShown } = usePromotionActions()
 </script>

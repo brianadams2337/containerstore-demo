@@ -1,26 +1,25 @@
 <template>
-  <div
-    class="flex items-center text-white"
-    :class="{ uppercase: isAllUppercased, '!items-start': isColumn }"
+  <h1
+    class="mr-1 flex flex-wrap items-center text-white"
+    :class="{
+      'flex-col !items-start': isColumn,
+      uppercase: isAllUppercased,
+      '!items-start': isColumn,
+    }"
   >
-    <h1
-      class="mr-1 flex flex-wrap items-center"
-      :class="{ 'flex-col !items-start': isColumn }"
+    <span class="mr-2 font-bold uppercase" :class="offerTextClass">
+      {{ headline.offerText }}
+    </span>
+    <span
+      class="text-xs"
+      :class="
+        isExtraSmall ? 'font-medium first-letter:capitalize' : 'font-semibold'
+      "
     >
-      <span class="mr-2 font-bold uppercase" :class="offerTextClass">
-        {{ headline.offerText }}
-      </span>
-      <span
-        class="text-xs"
-        :class="
-          isExtraSmall ? 'font-medium first-letter:capitalize' : 'font-semibold'
-        "
-      >
-        {{ headline.conditionText }}
-      </span>
-    </h1>
-    <IconInfoOutline v-if="showInfoIcon" class="h-5 w-5" />
-  </div>
+      {{ headline.conditionText }}
+    </span>
+    <IconInfoOutline v-if="showInfoIcon" class="ml-1 h-5 w-5" />
+  </h1>
 </template>
 
 <script setup lang="ts">

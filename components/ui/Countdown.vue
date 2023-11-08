@@ -3,7 +3,8 @@
     <div
       v-for="(value, key) in countdown"
       :key="key"
-      class="flex text-center font-semibold">
+      class="flex text-center font-semibold"
+    >
       <span v-if="value !== undefined" class="w-4">
         {{ formatValue(value) }}
       </span>
