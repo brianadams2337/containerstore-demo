@@ -2,7 +2,7 @@
   <SlideInFromTopTransition>
     <div
       v-if="isPromotionListShown"
-      class="fixed right-0 top-[3.25rem] z-60 hidden w-full md:block"
+      class="fixed right-0 top-[3.25rem] z-60 hidden w-full lg:block"
     >
       <div class="relative bg-primary p-5 text-white">
         <div class="flex w-full items-start justify-center overflow-x-scroll">

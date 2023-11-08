@@ -3,7 +3,7 @@
     class="flex items-center justify-center"
     :class="isFullWidth ? 'w-full !justify-start' : 'w-[19.5rem]'"
   >
-    <template v-if="!isFullProgress || isLessThan('md')">
+    <template v-if="!isFullProgress || isLessThan('lg')">
       <ProgressBar
         :progress="progress"
         rounded
@@ -13,12 +13,12 @@
         :class="!isFullWidth && '!max-w-[12.5rem]'"
         background-color="bg-white/20"
       />
-      <span v-if="isGreaterOrEquals('md')" class="ml-2 w-28 font-semibold">
+      <span v-if="isGreaterOrEquals('lg')" class="ml-2 w-28 font-semibold">
         {{ $t('promotion.progress_left', { amount: formattedAmountLeft }) }}
       </span>
     </template>
     <PromotionFullProgressLabel
-      v-if="isFullProgress && isGreaterOrEquals('md')"
+      v-if="isFullProgress && isGreaterOrEquals('lg')"
       v-bind="{ minOrderValue, currentPromotion }"
     />
   </div>

@@ -1,7 +1,7 @@
 <template>
   <div
     ref="promotionList"
-    class="fixed bottom-0 right-0 z-60 w-full overflow-hidden rounded-t-xl md:hidden"
+    class="fixed bottom-0 right-0 z-60 w-full overflow-hidden rounded-t-xl lg:hidden"
   >
     <div class="relative flex flex-col bg-primary px-4 pb-4 text-white">
       <div class="flex justify-center p-4">
@@ -31,5 +31,5 @@ const viewport = useViewport()
 
 const { togglePromotionList: toggle } = usePromotionActions()
 
-onClickOutside(promotionList, () => viewport.isLessThan('md') && toggle())
+onClickOutside(promotionList, () => viewport.isLessThan('lg') && toggle())
 </script>

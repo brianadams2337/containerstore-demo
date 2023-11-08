@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sticky top-0 z-[80] hidden h-[3.25rem] cursor-pointer items-center justify-between gap-1 overflow-hidden bg-blue py-2 pl-4 text-sm text-white md:flex"
+    class="sticky top-0 z-[80] hidden h-[3.25rem] cursor-pointer items-center justify-between gap-1 overflow-hidden bg-blue py-2 pl-4 text-sm text-white lg:flex"
     :style="getBackgroundColorStyle(currentPromotion.customData.colorHex)"
     @click="togglePromotionList()"
   >
