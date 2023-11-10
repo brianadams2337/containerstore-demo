@@ -1,6 +1,6 @@
 <template>
   <div class="relative w-80 min-w-xs overflow-hidden rounded-md border p-2">
-    <PromotionActiveChip v-if="isActive" />
+    <PromotionActiveBadge v-if="isActive" />
     <div
       class="mb-2 flex flex-col items-start rounded-md bg-blue p-4"
       :style="getBackgroundColorStyle(customData.colorHex)"
