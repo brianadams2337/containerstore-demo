@@ -1,46 +1,81 @@
-# SCAYLE Storefront Boilerplate Nuxt (Demo Shop)
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://scayle.dev/en/dev/storefront-core/introduction">
+    <img src="docs/images/scayle.svg" alt="Logo" height="80">
+  </a>
 
-The SCAYLE Storefront Boilerplate Nuxt is based on the [Nuxt 3 framework](https://nuxt.com/docs/getting-started/introduction).
-Compared to the [Nuxt 2](https://v2.nuxt.com/) based DemoShop, there have been a multitude of changes due to the difference in overall framework architecture and more modern best practices,
-while trying to keep the most possible similarities / compatibilities with the old Nuxt 2 based DemoShop.
+  <h3 align="center">SCAYLE Storefront Boilerplate Nuxt</h3>
+
+  <p align="center">
+    A <a href="https://nuxt.com/docs/getting-started/introduction" target="_blank" >Nuxt 3</a>-based Boilerplate to kick-start your SCAYLE Storefront application development.
+    <br />
+    <a href="https://scayle.dev/en/dev/storefront-core/introduction"><strong>Explore the docs »</strong></a>
+    <br />
+</div>
+
+<!-- ABOUT THE PROJECT -->
+## About Storefront Core and Storefront Boilerplate
+
+Storefront Core is an all-in-one starter kit for building high-performance e-commerce shops for the SCAYLE Commerce Engine. It makes it quick and easy to build a best-in-class shop frontend. The latest version of Storefront Core is based on Nuxt and Vue 3 and consists of two parts:
+
+- Storefront Core (*SFC*) The headless storefront that provides design-agnostic business logic and integrations with the SCAYLE backend.
+- Storefront Boilerplate (*SFB*) A complete starter Nuxt application that includes the Storefront Core along with all features and pages that are required for a modern e-commerce frontend.
+
+Storefront Core is built in a way that makes it easy to change or extend the shop design. An advantage of this approach is that the effort for launching a new e-commerce shop is drastically reduced because you only have to focus on the UI and design layer.
 
 Should you encounter any errors, please reach out to your Scayle representative or the Storefront Core team for quick support.
 
-## Prerequisites
+### Built With
 
-Before starting with the SCAYLE Storefront Boilerplate, we recommend to get familiar with Nuxt 3, Vue 3 and Tailwind, if this is not already the case:
+- [![Nuxt](https://img.shields.io/badge/Nuxt-002E3B?style=for-the-badge&logo=nuxtdotjs&logoColor=#00DC82)](https://nuxt.com/docs/getting-started/introduction)
+- [![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)](https://vuejs.org/guide/introduction.html)
+- [![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/docs/installation)
 
-- [Nuxt 3 Introduction](https://nuxt.com/docs/getting-started/introduction)
-- [Vue 3 Introduction](https://vuejs.org/guide/introduction.html)
-- [Tailwind Introduction](https://tailwindcss.com/docs/installation)
+## Getting Started
 
-### Software
+The following outline should provide you with an overview of how to get your local development environment using the Storefront Boilerplate up and running.
+For more in-depth explanations and How-to guides, please consult the [SCAYLE Resource Center](https://scayle.dev/en/dev/storefront-core/introduction).
 
-- `nvm`
+### Prerequisites
+
 - `node` >= 20.7.0
 - `yarn` (v1)
-- `redis`
 
-#### Install supported Node.js Version
+  ```sh
+  npm install --global yarn
+  ```
 
-To install the supported `Node.js` version, we recommend the usage of the **Node Version Manager**, short `nvm`.
+* `redis`
 
-#### Using Redis locally
+  Depending on the circumstances the usage of redis `docker` image for the local setup might not be necessary or might result in degraded performance. In this case, it is sufficient to have a locally installed version of `redis` / `redis-server` available.
 
-Depending on the circumstances the usage of redis `docker` image for the local setup might not be necessary or might result in degraded performance.
-In this cases it is sufficient to have a locally installed version of `redis` / `redis-server` available.
+### Installation
 
-## Starting the application
+1. Get the required SCAYLE credentials and API Keys via your SCAYLE Customer Success Manager. If they are not yet provided to you, please reach out to your respective SCAYLE representative.
+2. Use your provided SCAYEL credentials and API Keys to create a local `.env` file in the main directory based on the provided `.env.example` file.
 
-1. Create a local `.env` file in the main directory or rename the existing `.env.example` file.
-   The relevant SCAYLE credentials should be provided to you by the projects SCAYLE project manager. If this is not yet the case, please reach out to the respective SCAYLE representative.
-   For a in-depth explanation of the required environment variables, please consult the [SCAYLE Resource Center](https://scayle.dev/en/dev/storefront-core/introduction).
-2. Install dependencies using `yarn install`
-3. Create a local HTTPS certificate
-   1. [How to turn on local HTTPS](#how-to-turn-on-local-https)
-4. Start the `redis-server`
-5. Start local dev server of SCAYLE Storefront Boilerplate / Nuxt 3 using `yarn dev`
-6. Open the SCAYLE Storefront Boilerplate running under <http://localhost:3000/>
+   *For an in-depth explanation of the required environment variables, please consult the [SCAYLE Resource Center](https://scayle.dev/en/dev/storefront-core/introduction).*
+3. Install dependency packages
+
+   ```sh
+     yarn install
+   ```
+
+4. Create a local HTTPS certificate, as feature like Checkout will require a working HTTPS connection
+
+   *Check [How to turn on local HTTPS](#how-to-turn-on-local-https) for detailed instructions.*
+
+## Usage
+
+1. Start a local `redis-server` instance
+2. Start the local dev server of Storefront Boilerplate / Nuxt 3
+
+   ```sh
+     yarn dev
+   ```
+
+3. Open the Storefront Boilerplate running under <http://localhost:3000/>
 
 ## How to turn on local HTTPS
 
@@ -79,9 +114,76 @@ Use <http://localhost:3000/> to open the shop
 Run `yarn build` to build the latest changes and followed by `yarn preview`.
 Keep in mind that a `redis-server` needs to be running.
 This will run the generated nuxt application from the `.output/` directory, similar to how the application will be deployed on a production server.
-Only difference here is that all relevant `NUXT_` runtimeConfig override values are sourced from the local `.env` file.
+The only difference here is that all relevant `NUXT_` runtimeConfig override values are sourced from the local `.env` file.
 
 ## Testing
 
-For testing with Nuxt 3 we provide a [nuxt-vitest](https://github.com/danielroe/nuxt-vitest) integration. It allows us to use a Nuxt environment in [vitest](https://vitest.dev/).
+For testing with Nuxt 3, we provide a [nuxt-vitest](https://github.com/danielroe/nuxt-vitest) integration. It allows us to use a Nuxt environment in [vitest](https://vitest.dev/).
 For ease of use we use `.nuxt.test.ts` or `.nuxt.spec.ts` file suffix for our tests to use nuxt env.
+
+## Storyblok Scripts
+
+As part of the Storefront Boilerplate `package.json`, some additional scripts are included to interact with Storyblok.
+
+To interact with Storyblok, a `STORYBLOK_PERSONAL_TOKEN` and the `STORYBLOK_SPACE_ID` need to be set as part of a dedicated `.env.storyblok` file.
+Check [scayle.dev/.../storefront-core/cms-integration-overview#initial-development-setup](<https://scayle.dev/en/dev/storefront-core/cms-integration-overview#initial-development-setup>) for more details.
+
+- `storyblok:download`
+  - Downloads the latest components from the respective Storyblok space using Storyblok CLI
+- `storyblok:generate`
+  - Uses the downloaded components JSON schema and transforms it into TypeScript types (See [scayle.dev/.../storefront-core/cms-integration-overview#type-definitions]([#type-definitions](https://scayle.dev/en/dev/storefront-core/cms-integration-overview#type-definitions)))
+- `storyblok:login`
+  - Authenticates local development environment with Storyblok CLI
+- `storyblok:unused`
+  - Outputs overview of used and unused Storyblok components
+
+While `storyblok:download` and `storyblok:login` are directly utilizing the Storyblok CLI,
+`storyblok:generate` and `storyblok:unused` are executing dedicated `.cjs` scripts.
+
+### Script: storyblok:generate
+
+The `storyblok:generate` script, located at `scripts/storyblok-generate.cjs`, creates a TypeScript type definition based on the local Storyblok components JSON schema.
+The JSON schema needs to be downloaded before running this command.
+
+The generated TypeScript type definition will be located at `storyblok/types/storyblok.gen.d.ts`.
+
+To create the generated type definition, the script uses a NPM package called `storyblok-generate-ts`, which provides a configurable transformation function `storyblokToTypescript()`.This function facilitates the actual transformation of the JSON schema and outputs the type definition based on the passed configuration object, which is pre-configured for usage with the SCAYLE Storefront Boilerplate.
+
+### Script: storyblok:unused
+
+The `storyblok:unused` script, located at `scripts/storyblok-unused.cjs`, creates a list of all unused components of a space by utilizing the Storyblok management API.
+
+The script is taken from <https://www.storyblok.com/faq/how-to-get-all-unused-components>.
+
+## Viewing Storefront API calls for debugging
+
+Depending on the task at hand its necessary to intercept and debug api calls from SFC.
+For this purpose it is recommended to use an interactive HTTP(S) proxy that allows to inspect the made api calls.
+
+### Recommendation: mitmproxy
+
+[`mitmproxy`](https://mitmproxy.org/) is a free and open source interactive HTTPS proxy,
+licensed under the [MIT license](https://github.com/mitmproxy/mitmproxy/blob/main/LICENSE).
+It is available for MacOS, Linux and Windows.
+
+Some of its features include:
+
+- Intercept HTTP & HTTPS requests and responses and modify them on the fly
+- Save complete HTTP conversations for later replay and analysis
+- Transparent proxy mode on macOS and Linux
+- SSL/TLS certificates for interception are generated on the fly
+- and [more features](https://docs.mitmproxy.org/stable/overview-features/)
+
+#### Use mitmproxy
+
+Firstly follow the [official install instruction](https://docs.mitmproxy.org/stable/overview-installation/) to install `mitmproxy`.
+To intercept and debug API calls, we will be relying on `mitmproxy`'s core tool [`mitmweb`](https://docs.mitmproxy.org/stable/#mitmweb).
+
+For `mitmproxy` to be able to intercept HTTP(S) requests, we need to configure our shop `.env` file and add the following two values:
+
+```ini
+https_proxy=http://127.0.0.1:8080
+http_proxy=http://127.0.0.1:8080
+```
+
+After starting both `mitmproxy` and our shop, we should be able to now see all relevant HTTP(S) requests and API calls in the `mitmweb` tab.
