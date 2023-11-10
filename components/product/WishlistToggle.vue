@@ -2,7 +2,7 @@
   <div class="relative">
     <AppButton
       v-bind="$attrs"
-      :class="!noOpacity && 'opacity-50'"
+      class="opacity-50"
       no-padding
       type="ghost"
       :data-test-id="
@@ -40,23 +40,15 @@
 <script setup lang="ts">
 import { Product } from '@scayle/storefront-nuxt'
 
-const props = defineProps({
-  product: {
-    type: Object as PropType<Product>,
-    required: true,
-  },
-  wishlistRemoveIcon: {
-    type: String as PropType<'heart' | 'close'>,
-    default: 'heart',
-  },
-  listingMetaData: {
-    type: Object as PropType<ListItem>,
-    default: () => ({}),
-  },
-  noOpacity: {
-    type: Boolean,
-    default: false,
-  },
+type Props = {
+  product: Product
+  wishlistRemoveIcon?: 'heart' | 'close'
+  listingMetaData?: ListItem
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  wishlistRemoveIcon: 'heart',
+  listingMetaData: undefined,
 })
 
 defineOptions({
@@ -81,7 +73,7 @@ const onToggleWishlist = async () => {
 
   trackWishlistEvent(wasInWishlist ? 'added' : 'removed', {
     product: product.value,
-    listingMetaData: props.listingMetaData,
+    ...(props.listingMetaData && { listingMetaData: props.listingMetaData }),
   })
 
   isWishlistToggling.value = true
