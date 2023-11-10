@@ -1,10 +1,10 @@
 <template>
   <ProductDetailSkeleton v-if="fetching" />
   <PageContent v-else-if="product">
-    <GoBackLink use-window-history class="mt-4 md:ml-7 md:mt-7" />
+    <GoBackLink use-window-history class="ml-1 mt-4 md:ml-4 md:mt-7" />
     <div class="flex flex-1 flex-col items-start md:flex-row md:gap-3">
       <ProductImageGallery
-        :images="product?.images"
+        :product="product"
         @click:image="toggleZoomGallery(true, $event)"
       />
       <ZoomGallery
@@ -73,16 +73,28 @@
               </ProductSiblingPicker>
             </ProductDetailGroup>
 
-            <ProductSizePicker
-              v-if="!hasOneSizeVariantOnly"
-              :id="product.id"
-              :value="
-                getFirstAttributeValue(activeVariant?.attributes, 'size')?.value
-              "
-              class="mt-8"
-              :variants="product.variants ?? []"
-              @select-size="handleSelectedSize"
-            />
+            <div class="mt-8 flex">
+              <ProductSizePicker
+                v-if="!hasOneSizeVariantOnly"
+                :id="product.id"
+                :value="
+                  getFirstAttributeValue(activeVariant?.attributes, 'size')
+                    ?.value
+                "
+                :variants="product.variants ?? []"
+                class="mr-2"
+                @select-size="handleSelectedSize"
+              />
+
+              <Dropdown
+                :model-value="quantity"
+                :items="availableQuantity"
+                :disabled="!activeVariant"
+                is-large
+                class="h-full"
+                @update:model-value="quantity = $event"
+              />
+            </div>
 
             <!-- ComputedAddOns == [] -->
             <AddOnsSelector
@@ -199,14 +211,16 @@ if (error.value) {
   throw error.value
 }
 
-const {
-  fetching: basketIdle,
-  data: basketData,
-  addItem: addBasketItem,
-} = await useBasket({
+const { fetching: basketIdle, addItem: addBasketItem } = await useBasket({
   options: { lazy: true, autoFetch: true },
 })
 const { addGroupToBasket } = await useBasketGroup()
+
+const quantity = ref(1)
+
+const availableQuantity = computed(() => {
+  return getQuantitySelectionList(activeVariant.value?.stock.quantity, true)
+})
 
 const { openBasketFlyout } = useFlyouts()
 
@@ -343,9 +357,11 @@ const addItemToBasket = async () => {
             })),
           ],
         })
-      : await addBasketItem({ variantId: activeVariant.value.id, quantity: 1 })
+      : await addBasketItem({
+          variantId: activeVariant.value.id,
+          quantity: quantity.value,
+        })
 
-    console.log({ basketData: basketData.value })
     openBasketFlyout()
 
     showAddToBasketToast(true, product.value)

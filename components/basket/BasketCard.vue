@@ -3,22 +3,26 @@
     <div
       v-if="state === 'default'"
       data-test-id="basket-card"
-      class="w-full rounded border border-gray-350 p-4 text-sm lg:p-5">
+      class="w-full rounded border border-gray-350 p-4 text-sm lg:p-5"
+    >
       <div class="flex w-full" :class="{ 'opacity-50': !inStock }">
         <div
           class="flex w-28 items-center pr-3 lg:w-48 lg:p-0 lg:pr-6"
-          @click.capture="selectItem">
+          @click.capture="selectItem"
+        >
           <DefaultLink :to="getProductDetailRoute(product)">
             <NuxtPicture
               :src="imageHash"
               :alt="name"
               provider="default"
               class="object-cover"
-              sizes="xl:100vw lg:100vw lg:100vw lg:100vw xs:100vw" />
+              sizes="xl:100vw lg:100vw lg:100vw lg:100vw xs:100vw"
+            />
           </DefaultLink>
         </div>
         <div
-          class="flex flex-1 flex-col justify-center gap-2 lg:flex-row lg:gap-0 lg:p-0">
+          class="flex flex-1 flex-col justify-center gap-2 lg:flex-row lg:gap-0 lg:p-0"
+        >
           <div class="flex grow flex-col justify-between gap-2 lg:pt-4">
             <div @click.capture="selectItem">
               <DefaultLink :to="getProductDetailRoute(product)" class="block">
@@ -26,17 +30,20 @@
                   v-if="brand && name"
                   :label="brand"
                   :value="name"
-                  primary />
+                  primary
+                />
               </DefaultLink>
             </div>
             <BasketCardDetail
               v-if="size"
               :label="$t('basket_card.size_label')"
-              :value="size" />
+              :value="size"
+            />
             <BasketCardDetail
               v-if="color"
               :label="$t('basket_card.color_label')"
-              :value="color" />
+              :value="color"
+            />
             <div v-if="!inStock" class="flex gap-2 text-gray-800">
               <p class="pr-3">{{ $t('global.sold_out') }}</p>
             </div>
@@ -47,7 +54,8 @@
                 v-if="inStock"
                 :model-value="quantity"
                 :items="availableQuantity"
-                @update:model-value="changeQuantity($event)" />
+                @update:model-value="changeQuantity($event)"
+              />
             </div>
             <div class="text-right font-bold">
               <div v-if="reducedPrice" class="line-through">
@@ -64,7 +72,8 @@
                   lowestPriorPrice?.withTax &&
                   lowestPriorPrice?.relativeDifferenceToPrice
                 "
-                class="mt-0.5 text-sm text-gray-700">
+                class="mt-0.5 text-sm text-gray-700"
+              >
                 {{ $t('price.best_price_30d') }}
                 {{ toCurrency(lowestPriorPrice.withTax) }}
                 ({{ lowestPriorPrice.relativeDifferenceToPrice * 100 }})%
@@ -84,7 +93,8 @@
               : 'basket-add-to-wishlist-button'
           "
           :disabled="isWishlistToggling"
-          @click="toggleWishlist">
+          @click="toggleWishlist"
+        >
           <template #icon="{ _class }">
             <IconHeartFull v-if="isInWishlist" :class="_class" />
             <IconHeart v-else :class="_class" />
@@ -101,7 +111,8 @@
         <BasketCardAction
           data-test-id="basket-remove-item-button"
           class="ml-1"
-          @click="onPressDelete">
+          @click="onPressDelete"
+        >
           <template #icon="{ _class }">
             <IconCloseS :class="_class" />
           </template>
@@ -118,7 +129,8 @@
       :name="name ?? ''"
       :image-hash="imageHash"
       @click:confirm="onConfirmDelete"
-      @click:cancel="onCancelDelete" />
+      @click:cancel="onCancelDelete"
+    />
   </FadeInTransition>
 </template>
 
@@ -222,18 +234,13 @@ const lowestPriorPrice = computed(
   () => mainItem.value?.variant.lowestPriorPrice,
 )
 const quantity = computed(() => mainItem.value?.quantity)
-const availableQuantity = computed(() => {
-  const quantity = Math.max(
-    Math.min(mainItem.value?.availableQuantity || 0, 9),
-    0,
-  )
 
-  return Array.from({ length: quantity }, (_, i) => i)
+const availableQuantity = computed(() => {
+  return getQuantitySelectionList(mainItem.value?.quantity)
 })
+
 const isInWishlist = computed(() =>
-  wishlist.contains({
-    productId: product.value.id,
-  }),
+  wishlist.contains({ productId: product.value.id }),
 )
 
 const toggleWishlist = async () => {

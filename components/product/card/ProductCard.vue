@@ -34,7 +34,7 @@
                   name,
                 }"
               >
-                <slot name="button"> </slot>
+                <slot name="button" />
                 <DefaultLink
                   :to="link"
                   raw
