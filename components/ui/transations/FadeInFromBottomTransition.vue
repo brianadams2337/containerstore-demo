@@ -2,24 +2,15 @@
   <Transition
     :enter-active-class="`transform transition duration-${duration} ease-in-out`"
     :leave-active-class="`transform transition duration-${duration} ease-in-out`"
-    :appear="appear"
     enter-from-class="translate-y-2 opacity-0"
     enter-to-class="opacity-100 translate-y-0"
     leave-from-class="opacity-100 translate-y-0"
-    leave-to-class="opacity-0 translate-y-2">
+    leave-to-class="opacity-0 translate-y-2"
+  >
     <slot />
   </Transition>
 </template>
 
 <script setup lang="ts">
-defineProps({
-  appear: {
-    type: Boolean,
-    default: false,
-  },
-  duration: {
-    type: Number,
-    default: 200,
-  },
-})
+withDefaults(defineProps<{ duration?: number }>(), { duration: 200 })
 </script>

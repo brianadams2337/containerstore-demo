@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(defineProps<{ duration: number }>(), {
+const props = withDefaults(defineProps<{ duration?: number }>(), {
   duration: 500,
 })
 

@@ -3,7 +3,7 @@
     class="flex min-h-screen flex-col text-primary antialiased anchor-scrolling-none"
   >
     <PromotionBanner
-      v-if="!isPromotionDataFetching && promotionData.entities.length"
+      v-if="promotionData.entities.length"
       :promotions="promotionData.entities"
     />
     <HeaderMetaBar />
@@ -33,8 +33,7 @@ const categoryData = await useCategories({
   key: 'categoryNavigation',
 })
 
-const { data: promotionData, fetching: isPromotionDataFetching } =
-  await useCurrentPromotions()
+const { data: promotionData } = await useCurrentPromotions()
 
 const { data: rootCategoriesData, fetching: fetchingCategories } = categoryData
 

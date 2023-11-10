@@ -83,4 +83,13 @@ export const DividerItemTag = {
 
 export type DividerItemTag = ValuesType<typeof DividerItemTag>
 
+export const ProgressType = {
+  SUCCESS: 'success',
+  WARN: 'warn',
+  DANGER: 'danger',
+  NEUTRAL: 'neutral',
+} as const
+
+export type ProgressType = ValuesType<typeof ProgressType>
+
 /* eslint-enable @typescript-eslint/no-redeclare */

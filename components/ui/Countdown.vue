@@ -3,7 +3,8 @@
     <div
       v-for="(value, key) in countdown"
       :key="key"
-      class="flex text-center font-semibold">
+      class="flex text-center font-semibold"
+    >
       <span v-if="value !== undefined" class="w-4">
         {{ formatValue(value) }}
       </span>
@@ -20,20 +21,16 @@
 <script setup lang="ts">
 type CountdownUnit = 'days' | 'hours' | 'minutes' | 'seconds'
 
-const props = defineProps({
-  until: {
-    type: String,
-    required: true,
-  },
-  showUnits: {
-    type: Boolean,
-    default: false,
-  },
-})
+type Props = {
+  until: string
+  showUnits?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), { showUnits: false })
 
 const emit = defineEmits(['finished'])
 
-let intervalId: NodeJS.Timeout
+const intervalId = ref<NodeJS.Timeout>()
 
 const until = computed(() => Date.parse(props.until))
 const countdown = ref<{ [k in CountdownUnit]?: number }>({})
@@ -50,7 +47,7 @@ const update = () => {
   }
 
   if (remaining <= 0) {
-    clearInterval(intervalId)
+    clearInterval(intervalId.value)
     emit('finished')
   }
 }
@@ -61,10 +58,10 @@ const formatValue = (value: number) => {
 
 onMounted(() => {
   update()
-  intervalId = setInterval(update, 1000)
+  intervalId.value = setInterval(update, 1000)
 })
 
-onUnmounted(() => clearInterval(intervalId))
+onUnmounted(() => clearInterval(intervalId.value))
 
 defineOptions({ name: 'AppCountdown' })
 </script>
