@@ -236,11 +236,13 @@ const lowestPriorPrice = computed(
 const quantity = computed(() => mainItem.value?.quantity)
 
 const availableQuantity = computed(() => {
-  return getQuantitySelectionList(mainItem.value?.quantity)
+  return getQuantitySelectionList(mainItem.value?.availableQuantity)
 })
 
 const isInWishlist = computed(() =>
-  wishlist.contains({ productId: product.value.id }),
+  wishlist.contains({
+    productId: product.value.id,
+  }),
 )
 
 const toggleWishlist = async () => {

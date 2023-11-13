@@ -1,11 +1,9 @@
 export const getQuantitySelectionList = (quantity = 0, excludeZero = false) => {
-  const processedQuantity = Math.max(Math.min(quantity, 9), 0)
+  const length = Math.max(Math.min(quantity, 9), 0)
 
-  const quantityList = Array.from({ length: processedQuantity }, (_, i) => i)
+  const quantityList = Array.from({ length }, (_, index) => index)
 
-  if (excludeZero) {
-    quantityList.shift()
-  }
+  const [_zero, ...quantityListWithoutZero] = quantityList
 
-  return quantityList
+  return excludeZero ? quantityListWithoutZero : quantityList
 }

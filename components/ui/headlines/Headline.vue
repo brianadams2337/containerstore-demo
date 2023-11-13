@@ -5,7 +5,8 @@
     v-else
     data-test-id="headline"
     class="flex items-center gap-2 font-semibold leading-tight"
-    :class="classes">
+    :class="classes"
+  >
     <slot />
     <slot :badge="badge" name="badge">
       <HeadlineBadge v-if="badge" :badge="badge" />
@@ -16,37 +17,24 @@
 <script setup lang="ts">
 import { HeadlineSize, HeadlineTag } from '#imports'
 
-const props = defineProps({
-  loading: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  isUppercase: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  hidden: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  badge: {
-    type: [Number, String] as PropType<number | string>,
-    default: 0,
-  },
-  size: {
-    type: String as PropType<HeadlineSize>,
-    default: HeadlineSize['2XL'],
-    validator: (val: HeadlineSize) => Object.values(HeadlineSize).includes(val),
-  },
-  tag: {
-    type: String as PropType<HeadlineTag>,
-    default: HeadlineTag.P,
-    validator: (val: HeadlineTag) => Object.values(HeadlineTag).includes(val),
-  },
-  isBold: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
+type Props = {
+  loading?: boolean
+  isUppercase?: boolean
+  hidden?: boolean
+  isBold?: boolean
+  badge?: number
+  size?: HeadlineSize
+  tag?: HeadlineTag
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  loading: false,
+  isUppercase: false,
+  hidden: false,
+  badge: 0,
+  size: HeadlineSize['2XL'],
+  tag: HeadlineTag.P,
+  isBold: false,
 })
 
 const sizeClass = computed(() => {
@@ -59,7 +47,7 @@ const classes = computed(() => [
   {
     uppercase: props.isUppercase,
     'visually-hidden': props.hidden,
-    'font-bold': props.isBold,
+    '!font-bold': props.isBold,
   },
 ])
 

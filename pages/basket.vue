@@ -1,21 +1,27 @@
 <template>
-  <div class="container sm:py-10" data-test-id="basket-container">
+  <div
+    class="container max-sm:max-w-none sm:py-10"
+    data-test-id="basket-container"
+  >
     <div v-if="fetching || !basketData" class="grid grid-cols-12 gap-2">
       <ProductCardSkeleton
         v-for="index in 20"
-        :key="`product-loading-${index}`" />
+        :key="`product-loading-${index}`"
+      />
     </div>
     <div v-else-if="basketCount === 0" class="space-y-8">
       <div>
         <EmptyState
           :title="$t('basket.empty_title')"
           :description="$t('basket.empty_description')"
-          show-default-actions />
+          show-default-actions
+        />
       </div>
     </div>
     <div
       v-else
-      class="flex flex-col-reverse gap-8 md:flex-row xl:gap-32 2xl:gap-64">
+      class="flex flex-col-reverse gap-8 md:flex-row xl:gap-32 2xl:gap-64"
+    >
       <div class="flex-1 space-y-4">
         <Headline size="2xl" class="mb-6">
           {{ $t('basket.heading') }} ({{ basketCount }})
@@ -24,13 +30,15 @@
           <SwipeDelete
             v-for="(item, index) in orderedItems.standAlone"
             :key="item.key"
-            @delete="removeItem(item)">
+            @delete="removeItem(item)"
+          >
             <BasketCard
               class="w-full"
               :item="item"
               :index="index"
               @item:remove="removeItem(item)"
-              @item:select="trackProductClick(item)" />
+              @item:select="trackProductClick(item)"
+            />
           </SwipeDelete>
         </template>
 
@@ -42,7 +50,8 @@
             :items-group="orderedItems.groupedItems[groupId]"
             :index="index"
             @item:remove="removeItem"
-            @item:select="trackProductClick" />
+            @item:select="trackProductClick"
+          />
         </div>
       </div>
 

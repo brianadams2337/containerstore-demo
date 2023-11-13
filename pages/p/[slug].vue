@@ -13,7 +13,9 @@
         :active-index="zoomGallery.index"
         @click:close-zoom-gallery="toggleZoomGallery(false)"
       />
-      <div class="sticky right-0 top-0 mt-5 w-full md:w-1/2 md:px-9 xl:w-1/3">
+      <div
+        class="sticky right-0 top-0 mt-5 w-full md:w-1/2 md:pl-4 lg:px-9 xl:w-1/3"
+      >
         <div class="w-full bg-white">
           <div v-if="product.isSoldOut" class="left-0 top-0">
             <ProductBadge
@@ -54,7 +56,7 @@
               />
             </div>
           </div>
-          <div class="w-full md:w-3/4">
+          <div class="w-full">
             <ProductDetailGroup class="mt-6">
               <ProductSiblingPicker :items="productSiblings" with-values>
                 <template #item="{ item }">
@@ -114,7 +116,6 @@
                 :title="product.isSoldOut ? $t('badge_labels.sold_out') : ''"
                 :loading="basketIdle"
                 class="text-sm !normal-case"
-                border-sm
                 @click="addItemToBasket"
               >
                 {{ $t('pdp.add_label') }}
@@ -126,6 +127,13 @@
                 />
               </client-only>
             </div>
+
+            <ProductPromotionGifts
+              v-if="isBuyXGetY"
+              :product="product"
+              class="mt-6"
+            />
+
             <div class="mt-3">
               <ProductDetailGroup
                 v-if="sliderProducts.length"
@@ -215,6 +223,8 @@ const { fetching: basketIdle, addItem: addBasketItem } = await useBasket({
   options: { lazy: true, autoFetch: true },
 })
 const { addGroupToBasket } = await useBasketGroup()
+
+const { applicablePromotion, isBuyXGetY } = await useProductPromotion(product)
 
 const quantity = ref(1)
 
@@ -337,7 +347,7 @@ const addItemToBasket = async () => {
     activeVariant.value = product.value?.variants[0]
   }
 
-  if (activeVariant.value === undefined) {
+  if (!activeVariant.value) {
     $alert.show($i18n.t('basket.notification.select_size'), 'CONFIRM')
     return
   }
@@ -360,6 +370,7 @@ const addItemToBasket = async () => {
       : await addBasketItem({
           variantId: activeVariant.value.id,
           quantity: quantity.value,
+          promotionId: applicablePromotion.value.id,
         })
 
     openBasketFlyout()

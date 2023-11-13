@@ -231,6 +231,12 @@
     "seo": {
       "buy_online": "Buy online",
       "description": "{productName} buy online. Free shipping and 100 days free returns. Discover the wide selection of other branded products on the Demo Shop"
+    },
+    "promotion": {
+      "free_gift_headline": "Your free gift",
+      "free_label": "Free",
+      "free_gift_hint": "Will be added to your bag when conditions are met",
+      "gift_added_label": "Already added to bag"
     }
   },
   "price": {

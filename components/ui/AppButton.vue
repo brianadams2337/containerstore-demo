@@ -4,9 +4,10 @@
     v-bind="{ to, disabled }"
     raw
     :class="baseClasses"
-    class="group inline-flex items-center justify-center gap-2 truncate whitespace-nowrap rounded-md text-sm transition duration-100 ease-linear disabled:opacity-30"
+    class="group inline-flex items-center justify-center gap-2 truncate whitespace-nowrap rounded-md text-sm transition duration-100 ease-linear disabled:opacity-50"
     @click.prevent="emit('click')"
-    @click.stop="emit('click:stop')">
+    @click.stop="emit('click:stop')"
+  >
     <slot name="icon" :_class="iconClasses" />
     <slot />
     <slot name="append-icon" :_class="iconClasses" />
@@ -15,7 +16,8 @@
         enter-to-class="opacity-100"
         enter-active-class="transition ease-linear duration-200"
         leave-active-class="transition ease-linear duration-200"
-        leave-to-class="opacity-0">
+        leave-to-class="opacity-0"
+      >
         <span v-show="badge" :class="textColorClasses">({{ badge }})</span>
       </transition>
     </slot>
@@ -26,57 +28,34 @@
 import { Size, ButtonType } from '#imports'
 import { RouteLocationRaw } from '#vue-router'
 
-const props = defineProps({
-  type: {
-    type: String as PropType<ButtonType>,
-    default: ButtonType.PRIMARY,
-    validator: (val: ButtonType) => Object.values(ButtonType).includes(val),
-  },
-  noPadding: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  animateIcon: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  disabled: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  isFullWidth: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  loading: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  badge: {
-    type: Number as PropType<number>,
-    default: 0,
-  },
-  to: {
-    type: [String, Object] as PropType<RouteLocationRaw>,
-    default: undefined,
-  },
-  rounded: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  fab: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  isUppercase: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  size: {
-    type: String as PropType<Size>,
-    default: Size.MD,
-    validator: (val: Size) => Object.values(Size).includes(val),
-  },
+type Props = {
+  type?: ButtonType
+  size?: Size
+  to?: RouteLocationRaw
+  badge?: number
+  noPadding?: boolean
+  disabled?: boolean
+  isFullWidth?: boolean
+  loading?: boolean
+  animateIcon?: boolean
+  rounded?: boolean
+  fab?: boolean
+  isUppercase?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  type: ButtonType.PRIMARY,
+  size: Size.MD,
+  noPadding: false,
+  disabled: false,
+  animateIcon: false,
+  isFullWidth: false,
+  loading: false,
+  rounded: false,
+  fab: false,
+  isUppercase: false,
+  badge: 0,
+  to: undefined,
 })
 
 const isPrimary = computed(() => props.type === ButtonType.PRIMARY)

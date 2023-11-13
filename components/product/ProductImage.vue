@@ -7,7 +7,8 @@
     provider="default"
     data-test-id="product-image"
     class="picture block mix-blend-darken"
-    @load="load" />
+    @load="load"
+  />
 </template>
 
 <script setup lang="ts">

@@ -1,7 +1,6 @@
 <template>
   <div
-    v-show="isGreaterOrEquals('md')"
-    class="grid w-full flex-1 grid-cols-12 gap-1"
+    class="hidden w-full flex-1 grid-cols-12 gap-1 md:grid"
     data-test-id="tilled-gallery"
   >
     <div
@@ -31,17 +30,13 @@
         :image-loading="idx === 0 ? 'eager' : 'lazy'"
       />
       <ProductPromotionBadge
-        v-if="promotionLabel && productPromotionId && idx === 0"
-        :label="promotionLabel"
-        :product-promotion-id="productPromotionId"
+        v-if="idx === 0"
+        :product="product"
         class="absolute bottom-3 left-3"
       />
     </div>
   </div>
-  <div
-    v-show="!isGreaterOrEquals('md')"
-    class="relative w-full md:w-1/2 xl:w-2/3"
-  >
+  <div class="relative block w-full md:hidden md:w-1/2 xl:w-2/3">
     <HorizontalItemsSlider
       class="-mx-4 aspect-[5/6] snap-x snap-mandatory border-b"
     >
@@ -64,9 +59,7 @@
       </intersect>
     </HorizontalItemsSlider>
     <ProductPromotionBadge
-      v-if="promotionLabel && productPromotionId"
-      :label="promotionLabel"
-      :product-promotion-id="productPromotionId"
+      :product="product"
       class="absolute bottom-3 left-0 top-auto"
     />
     <FadeInTransition>
@@ -85,7 +78,7 @@
 </template>
 
 <script setup lang="ts">
-import { type Product, getFirstAttributeValue } from '@scayle/storefront-nuxt'
+import type { Product } from '@scayle/storefront-nuxt'
 
 const props = defineProps({
   product: {
@@ -102,8 +95,6 @@ const emit = defineEmits<{
   (e: 'click:image', value: number): void
 }>()
 
-const { isGreaterOrEquals } = useViewport()
-
 const images = computed(() => props.product.images)
 
 const activeSlide = ref(0)
@@ -115,12 +106,4 @@ const getSpanWith = (index: number, imagesPerRow: number[]) => {
   const tiles = imagesPerRow.map((perRow) => Array(perRow).fill(12 / perRow))
   return tiles.flat()[index]
 }
-
-const promotionLabel = computed(() => {
-  return getFirstAttributeValue(props.product.attributes, 'promotion')?.label
-})
-
-const productPromotionId = computed(() => {
-  return getFirstAttributeValue(props.product.attributes, 'promotion')?.id
-})
 </script>

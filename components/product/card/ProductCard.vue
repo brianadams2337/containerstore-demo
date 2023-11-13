@@ -67,18 +67,10 @@
                   </div>
                 </DefaultLink>
               </slot>
-              <slot
-                name="promotion-badge"
-                :label="promotionLabel"
-                :product-promotion-id="productPromotionId"
-              >
-                <ProductPromotionBadge
-                  v-if="promotionLabel && productPromotionId"
-                  :label="promotionLabel"
-                  :product-promotion-id="productPromotionId"
-                  class="absolute bottom-3 left-3 top-auto"
-                />
-              </slot>
+              <ProductPromotionBadge
+                :product="product"
+                class="absolute bottom-3 left-3 top-auto"
+              />
 
               <slot name="header-badge" :label="badgeLabel">
                 <DefaultLink
@@ -94,6 +86,7 @@
                 </DefaultLink>
               </slot>
             </div>
+            NuxtPicture
           </slot>
           <slot
             name="description"
@@ -242,14 +235,6 @@ const colors = computed(() => {
 
 const image = computed(() => {
   return getImageFromList(props.product.images, ProductImageType.BUST, 'front')
-})
-
-const promotionLabel = computed(() => {
-  return getFirstAttributeValue(props.product.attributes, 'promotion')?.label
-})
-
-const productPromotionId = computed(() => {
-  return getFirstAttributeValue(props.product.attributes, 'promotion')?.id
 })
 
 const imageLoading = computed<'eager' | 'lazy'>(() =>

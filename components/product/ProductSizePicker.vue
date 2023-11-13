@@ -7,6 +7,7 @@
   >
     <ListboxButton
       :list-name="list"
+      :disabled="disabled"
       data-test-id="product-size-picker-toggle"
       class="flex h-12 w-full items-center justify-between rounded-md border border-gray-350 px-4 py-2 text-sm font-semibold"
     >
@@ -63,30 +64,25 @@
 
 <script setup lang="ts">
 import {
+  type Variant,
   getFirstAttributeValue,
   isVariantInStock,
-  Variant,
 } from '@scayle/storefront-nuxt'
-import { getVariantAvailability } from '~/utils/product'
 
-const props = defineProps({
-  id: {
-    type: Number,
-    required: true,
-  },
-  variants: {
-    type: Array as PropType<Variant[]>,
-    required: true,
-  },
-  value: {
-    type: String,
-    default: undefined,
-  },
-  availabilityBy: {
-    type: Function as PropType<(v: Variant) => boolean>,
-    default: (v: Variant) => getVariantAvailability(v).available,
-  },
+type Props = {
+  id: number
+  variants: Variant[]
+  value?: string
+  disabled?: boolean
+  availabilityBy?: (v: Variant) => boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  value: undefined,
+  disabled: false,
+  availabilityBy: (v: Variant) => getVariantAvailability(v).available,
 })
+
 const emit = defineEmits(['select-size', 'input'])
 
 const handleBeforeInput = (value: any) =>

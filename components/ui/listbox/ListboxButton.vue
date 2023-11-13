@@ -1,16 +1,23 @@
 <template>
-  <button
+  <AppButton
     :aria-expanded="isOpen"
+    :disabled="disabled"
+    type="ghost"
     aria-haspopup="true"
     aria-controls="scayle-listbox-options"
-    @click="toggle">
+    @click="toggle"
+  >
     <slot />
-  </button>
+  </AppButton>
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  listName: { type: String, required: true },
-})
+type Props = {
+  listName: string
+  disabled?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), { disabled: false })
+
 const { toggle, isOpen } = useListbox(props.listName)
 </script>
