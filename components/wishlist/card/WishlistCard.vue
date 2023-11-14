@@ -188,20 +188,13 @@ import {
   getVariantBySize,
 } from '@scayle/storefront-nuxt'
 
-const props = defineProps({
-  index: {
-    type: Number,
-    required: true,
-  },
-  product: {
-    type: Object as PropType<Product>,
-    default: () => ({}),
-  },
-  variant: {
-    type: Object as PropType<Variant>,
-    default: null,
-  },
-})
+type Props = {
+  index: number
+  product: Product
+  variant?: Variant
+}
+
+const props = withDefaults(defineProps<Props>(), { variant: undefined })
 
 const { fetching: isWishlistFetching, replaceItem: replaceWishlistItem } =
   await useWishlist()
