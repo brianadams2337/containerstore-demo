@@ -86,7 +86,6 @@
                 </DefaultLink>
               </slot>
             </div>
-            NuxtPicture
           </slot>
           <slot
             name="description"

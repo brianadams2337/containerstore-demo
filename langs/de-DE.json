@@ -234,10 +234,10 @@
       "description": "{productName} online bestellen. Kostenloser Versand und 100 Tage kostenlose Rückgabe. Entdecken Sie die große Auswahl an weiteren Markenprodukten im Demo Shop."
     },
     "promotion": {
-      "free_gift_headline": "Your free gift",
-      "free_label": "Free",
-      "free_gift_hint": "Will be added to your bag when conditions are met",
-      "gift_added_label": "Already added to bag"
+      "free_gift_headline": "Ihr kostenloses Geschenk",
+      "free_label": "Frei",
+      "free_gift_hint": "Wird Ihrer Tasche hinzugefügt, wenn die Bedingungen erfüllt sind",
+      "gift_added_label": "Bereits zur Tasche hinzugefügt"
     }
   },
   "price": {
