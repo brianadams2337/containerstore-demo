@@ -22,7 +22,7 @@ type Props = {
   isUppercase?: boolean
   hidden?: boolean
   isBold?: boolean
-  badge?: number
+  badge?: number | string
   size?: HeadlineSize
   tag?: HeadlineTag
 }
