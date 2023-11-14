@@ -147,7 +147,7 @@
         slide-type="fromBottom"
         slide-class="w-full xl:max-w-none h-auto xl:max-h-none top-auto left-0 p-0 pt-0"
       >
-        <template #slideInContent>
+        <template #slide-in-content>
           <div>
             <div
               class="flex cursor-pointer justify-center py-3"

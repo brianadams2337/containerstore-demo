@@ -5,13 +5,13 @@
     @open="onSlideInOpen"
     @close="trackFilterFlyout('close', 'true')"
   >
-    <template #slideInHeader="{ toggle: toggleItem }">
+    <template #slide-in-header="{ toggle: toggleItem }">
       <FiltersHeader :toggle-item="toggleItem" />
     </template>
-    <template #slideInBody>
+    <template #slide-in-body>
       <FilterSlideInBody />
     </template>
-    <template #slideInActions>
+    <template #slide-in-actions>
       <FilterActions />
     </template>
   </SlideIn>
