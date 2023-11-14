@@ -34,10 +34,7 @@
             <div
               class="mt-2 flex w-full flex-col justify-between space-y-2 md:flex-row"
             >
-              <ProductQuickFilters
-                :loading="filtersFetching"
-                :total-count="unfilteredCount"
-              />
+              <ProductQuickFilters />
               <div class="order-1 flex items-center space-x-4 text-sm">
                 <SortingMenu
                   :selected="selectedSort.name"
@@ -85,11 +82,7 @@
           />
         </template>
       </div>
-      <FilterSlideIn
-        v-if="filters"
-        v-bind="{ filteredCount, unfilteredCount }"
-        :fetching-filtered-count="productCountFetching"
-      />
+      <FilterSlideIn v-if="filters" />
     </PageContent>
   </div>
 </template>
@@ -118,10 +111,6 @@ const {
   fetchProducts,
   pagination,
   filters,
-  filtersFetching,
-  unfilteredCount,
-  productCountData,
-  productCountFetching,
   productError,
   filterError,
   categoriesError,
@@ -199,7 +188,6 @@ const { content, hasTeaserImage, postListingContent, preListingContent } =
 const cmsContent = content as unknown as SbCmsImage
 
 const isFirstPage = computed(() => pagination.value?.page === 1)
-const filteredCount = computed(() => productCountData.value?.count || 0)
 
 watch(
   () => selectedCategory.value?.id,

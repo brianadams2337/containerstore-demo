@@ -31,8 +31,14 @@ export default async (
 ) => {
   const route = useRoute()
 
-  const { refreshProductCount, filters: filterableValues } =
-    await useProductList()
+  const {
+    refreshProductCount,
+    filters: filterableValues,
+    filterStatus,
+    filtersFetching,
+    unfilteredCount,
+    productCountData,
+  } = await useProductList()
 
   const availableFilterValues = computed(() => {
     // TODO fix in core
@@ -246,6 +252,8 @@ export default async (
     return !!productConditions.value.where?.attributes?.length
   })
 
+  const filteredCount = computed(() => productCountData.value?.count || 0)
+
   return {
     onSlideInOpen,
     resetFilter,
@@ -265,5 +273,9 @@ export default async (
     filterableValues,
     trackFilterFlyout,
     isFiltered,
+    filterStatus,
+    unfilteredCount,
+    filteredCount,
+    filtersFetching,
   }
 }

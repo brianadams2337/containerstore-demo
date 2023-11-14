@@ -52,21 +52,12 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  filteredCount: {
-    type: Number,
-    default: 0,
-  },
-  unfilteredCount: {
-    type: Number,
-    default: 0,
-  },
-  fetchingFilteredCount: {
-    type: Boolean,
-    default: false,
-  },
-})
-
-const { onSlideInOpen, trackFilterFlyout, resetFilters, applyFilters } =
-  await useFilter()
+const {
+  onSlideInOpen,
+  trackFilterFlyout,
+  resetFilters,
+  applyFilters,
+  unfilteredCount,
+  filteredCount,
+} = await useFilter()
 </script>

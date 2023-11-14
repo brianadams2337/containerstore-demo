@@ -47,18 +47,12 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  loading: {
-    type: Boolean,
-    default: false,
-  },
-  totalCount: {
-    type: Number,
-    default: 0,
-  },
-})
-
-const { applyFilters, quickFilters: filters } = await useFilter()
+const {
+  applyFilters,
+  quickFilters: filters,
+  unfilteredCount: totalCount,
+  filtersFetching: loading,
+} = await useFilter()
 
 const onFilterApply = (filters?: Record<string, any>) => {
   applyFilters({
