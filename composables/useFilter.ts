@@ -15,7 +15,7 @@ export type FilterState = {
   brand: []
   size: []
   color: []
-  prices: [CentAmount, CentAmount]
+  prices: [CentAmount | undefined, CentAmount | undefined]
   sale: boolean
 }
 
@@ -178,19 +178,18 @@ export default async (
     )
 
     if (activeFilters.value.minPrice || activeFilters.value.maxPrice) {
-      setActivePriceRangeInState(
+      return setActivePriceRangeInState(
         // TODO: fix types
         parseInt(activeFilters.value.minPrice as any) as CentAmount,
         parseInt(activeFilters.value.maxPrice as any) as CentAmount,
       )
-    } else {
-      state.value.prices = [minPrice.value, maxPrice.value]
     }
+    state.value.prices = [minPrice.value, maxPrice.value]
   }
 
-  const priceChanged = computed(
-    () => !isEqual(initialState.value.prices, state.value.prices),
-  )
+  const priceChanged = computed(() => {
+    return !isEqual(initialState.value.prices, state.value.prices)
+  })
 
   const applyFilters = ({
     preserveAttributeFilters = false,
@@ -232,11 +231,11 @@ export default async (
   const locale = currentShop.value!.locale?.replace('_', '-')
   const currencyCode = currentShop.value!.currency
 
-  const isSaleActive = computed(
-    () =>
-      (availableFilterValues.value.sale || []).length &&
-      !!availableFilterValues.value.sale[0].count,
-  )
+  const isSaleActive = computed(() => {
+    const sale = availableFilterValues.value.sale || []
+    const saleCount = !!availableFilterValues.value.sale[0].count
+    return sale.length && saleCount
+  })
 
   const onSlideInOpen = () => {
     setStateFromUrlParams()

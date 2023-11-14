@@ -66,20 +66,21 @@ quickFilter = {
 
 ### Filter values
 
-All possible filterable values are stored in `filterableValues`
+All possible filterable values are stored in `filterableValues` that's coming from
+`useFilter` composable.
 
 ```ts
-const { filters: filterableValues, activeFilters } = toRefs(props)
+const { filterableValues, activeFilters } = await useFilter()
 ```
 
 <a name="filter-state"></a>
 
 ### Filter state
 
-To give the user feedback which filter is active and which not we need to use a state. Our state should be synced with
-the query params.
+To give the user feedback which filter is active and which not we need to use a state.
+Our state should be synced with the query params.
 
-In our demo shop the filter state looks like this:
+In our `storefront-boilerplate` the filter state looks like this:
 
 ```ts
 interface FilterState {
@@ -100,8 +101,19 @@ find out which is the `minPrice` and `maxPrice`, to achieve this we make use of 
 property `availableFilterValues`. It includes all possible values for our filters.
 
 ```ts
-const minPrice = computed(() => availableFilterValues.value.prices[0].value.min)
-const maxPrice = computed(() => availableFilterValues.value.prices[0].value.max)
+const minPrice = computed(() => {
+  return (
+    availableFilterValues.value &&
+    getFilterablePriceValue(availableFilterValues.value, 'min')
+  )
+})
+
+const maxPrice = computed(() => {
+  return (
+    availableFilterValues.value &&
+    getFilterablePriceValue(availableFilterValues.value, 'max')
+  )
+})
 ```
 
 <a name="inital-state"></a>
@@ -235,7 +247,8 @@ Example to use a mutliple selection value in template
 <FilterGroup
   :badge="state.gender.length"
   :label="$t('filter.gender')"
-  @click:reset="resetFilter('gender')">
+  @click:reset="resetFilter('gender')"
+>
 <MultipleSelectionList
   v-model="state.gender"
   :items="availableFilterValues.gender"
@@ -248,7 +261,8 @@ Example to use a mutliple selection value in template
       class="mr-2 mb-2 text-xs"
       type="ghost"
       @click="toggleItem(item)"
-    >{{ item.displayName }}
+    >
+      {{ item.displayName }}
     </AppButton>
   </template>
 </MultipleSelectionList>

@@ -14,7 +14,8 @@
           :class="{
             'opacity-0': !(badge > 0 || showAction),
           }"
-          @click="emit('click:reset')">
+          @click="emit('click:reset')"
+        >
           {{ resetLabel ?? $t('filter.reset') }}
         </AppButton>
       </slot>
@@ -27,26 +28,18 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  label: {
-    type: String,
-    default: '',
-  },
-  resetLabel: {
-    type: String,
-    default: null,
-  },
-  badge: {
-    type: Number,
-    default: 0,
-  },
-  showAction: {
-    type: Boolean,
-    default: false,
-  },
+type Props = {
+  label?: string
+  resetLabel?: string
+  badge?: number
+  showAction?: boolean
+}
+withDefaults(defineProps<Props>(), {
+  label: '',
+  resetLabel: undefined,
+  badge: 0,
+  showAction: false,
 })
 
-const emit = defineEmits<{
-  (e: 'click:reset'): void
-}>()
+const emit = defineEmits<{ (e: 'click:reset'): void }>()
 </script>
