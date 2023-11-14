@@ -5,7 +5,8 @@
         v-for="index in 20"
         :key="`product-loading-${index}`"
         type="custom"
-        :class="columnClasses" />
+        :class="columnClasses"
+      />
     </slot>
 
     <template v-else>
@@ -14,12 +15,14 @@
         name="product"
         :product="product"
         :loading="loading"
-        :refreshing="refreshing">
+        :refreshing="refreshing"
+      >
         <NuxtLazyHydrate
           :when-visible="{ rootMargin: '100px' }"
           :when-triggered="index < (isGreaterOrEquals('md') ? 8 : 2)"
           placeholder-class="mb-24"
-          placeholder-ratio="3/4">
+          placeholder-ratio="3/4"
+        >
           <ProductCard
             :key="`product-${product.id}`"
             class="mb-7"
@@ -32,7 +35,8 @@
             sibling-spacing="narrow"
             :listing-meta-data="listingMetadata"
             @click:product="$emit('click:product', product, index)"
-            @intersect:product="collectRowIntersection(index)">
+            @intersect:product="collectRowIntersection(index)"
+          >
             <template #header-badge>
               <ProductListHeaderBadges :product="product" />
             </template>
@@ -45,32 +49,29 @@
 
 <script setup lang="ts">
 import {
-  Product,
+  type Product,
   getRowByIndex,
   isFirstIndexOfRow,
 } from '@scayle/storefront-nuxt'
 
-const listingMetadata = {
-  id: CategoryListingMetadata.ID,
-  name: CategoryListingMetadata.NAME,
+type Props = {
+  products?: Product[]
+  loading?: boolean
+  refreshing?: boolean
+  perPage?: number
 }
+
+const props = withDefaults(defineProps<Props>(), {
+  products: () => [],
+  loading: false,
+  refreshing: false,
+  perPage: PRODUCTS_PER_PAGE,
+})
+
+const { listingMetadata } = await useProductList()
 
 const { isGreaterOrEquals } = useViewport()
 
-const props = defineProps({
-  products: {
-    type: Array as PropType<Product[]>,
-    default: () => [],
-  },
-  loading: {
-    type: Boolean,
-    default: false,
-  },
-  refreshing: {
-    type: Boolean,
-    default: false,
-  },
-})
 const emit = defineEmits<{
   (e: 'intersect:row', value: { row: number; items: Product[] }): void
   (e: 'click:product', value: Product, i: number): void
