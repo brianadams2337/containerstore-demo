@@ -33,7 +33,7 @@
             color-chip-size="sm"
             color-chip-rounded-size="sm"
             sibling-spacing="narrow"
-            :listing-meta-data="listingMetadata"
+            :listing-meta-data="listingMetaData"
             @click:product="$emit('click:product', product, index)"
             @intersect:product="collectRowIntersection(index)"
           >
@@ -68,7 +68,7 @@ const props = withDefaults(defineProps<Props>(), {
   perPage: PRODUCTS_PER_PAGE,
 })
 
-const { listingMetadata } = await useProductList()
+const { listingMetaData } = await useProductList()
 
 const { isGreaterOrEquals } = useViewport()
 
