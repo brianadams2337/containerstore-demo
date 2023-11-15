@@ -219,7 +219,6 @@ export default async (
 
   const resetFilters = () => {
     Object.assign(state.value, deepClone(initialState.value))
-    applyFilter()
   }
 
   const onSlideInOpen = () => {
