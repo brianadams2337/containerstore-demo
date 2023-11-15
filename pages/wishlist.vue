@@ -42,9 +42,9 @@
 
 <script setup lang="ts">
 import {
-  WishlistItem,
+  type WishlistItem,
   getFirstAttributeValue,
-  Product,
+  type Product,
   getAttributeValue,
 } from '@scayle/storefront-nuxt'
 

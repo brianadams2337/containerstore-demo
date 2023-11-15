@@ -1,4 +1,4 @@
-import { BasketItem, Product, Variant } from '@scayle/storefront-nuxt'
+import type { BasketItem, Product, Variant } from '@scayle/storefront-nuxt'
 
 const collectBasketItems = (
   items: BasketItem<Product, Variant>[] = [],

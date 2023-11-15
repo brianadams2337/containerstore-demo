@@ -53,7 +53,7 @@
 
 <script setup lang="ts">
 import { useFocus } from '@vueuse/core'
-import {
+import type {
   BrandOrCategorySuggestion,
   ProductSuggestion,
 } from '@scayle/storefront-nuxt'

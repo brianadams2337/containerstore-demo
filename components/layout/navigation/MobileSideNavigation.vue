@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import { Category } from '@scayle/storefront-nuxt'
+import type { Category } from '@scayle/storefront-nuxt'
 
 const props = defineProps({
   categories: {

@@ -50,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { Filter, ProductFilter } from '@scayle/storefront-nuxt'
+import type { Filter, ProductFilter } from '@scayle/storefront-nuxt'
 
 const props = defineProps({
   filters: {

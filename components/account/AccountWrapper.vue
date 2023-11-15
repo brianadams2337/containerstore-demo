@@ -47,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { OrderSummary } from '@scayle/storefront-nuxt'
+import type { OrderSummary } from '@scayle/storefront-nuxt'
 
 const props = defineProps({
   title: {

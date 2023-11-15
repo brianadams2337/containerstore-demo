@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { Value } from '@scayle/storefront-nuxt'
+import type { Value } from '@scayle/storefront-nuxt'
 
 const props = defineProps({
   symbol: {

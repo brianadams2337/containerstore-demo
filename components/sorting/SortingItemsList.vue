@@ -19,7 +19,8 @@
 </template>
 
 <script setup lang="ts">
-import { SortValue } from '@scayle/storefront-nuxt'
+import type { SortValue } from '@scayle/storefront-nuxt'
+
 const route = useRoute()
 const baseName = useRouteBaseName()
 

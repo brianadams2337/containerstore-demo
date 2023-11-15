@@ -1,7 +1,7 @@
 import {
-  Product,
   getFirstAttributeValue,
-  Variant,
+  type Product,
+  type Variant,
 } from '@scayle/storefront-nuxt'
 
 export const getWishlistToastMessage = (

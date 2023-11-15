@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { ProductImage, getAttributeValue } from '@scayle/storefront-nuxt'
+import { type ProductImage, getAttributeValue } from '@scayle/storefront-nuxt'
 
 const props = defineProps({
   sizes: {

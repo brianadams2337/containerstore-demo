@@ -1,4 +1,4 @@
-import { ValuesType } from 'utility-types'
+import type { ValuesType } from 'utility-types'
 
 export const Status: Record<string, Package['deliveryStatus']> = {
   OPEN: 'open',

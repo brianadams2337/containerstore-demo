@@ -62,7 +62,7 @@
 
 <script setup lang="ts">
 import useVuelidate from '@vuelidate/core'
-import { Gender } from '@scayle/storefront-nuxt'
+import type { Gender } from '@scayle/storefront-nuxt'
 
 const { register, isSubmitting } = await useAuthentication('sign_up')
 const { $validation } = useNuxtApp()

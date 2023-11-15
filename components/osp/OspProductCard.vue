@@ -49,8 +49,8 @@
 <script setup lang="ts">
 import {
   getTotalAppliedReductions,
-  AttributeGroup,
-  Attributes,
+  type AttributeGroup,
+  type Attributes,
   getFirstAttributeValue,
 } from '@scayle/storefront-nuxt'
 

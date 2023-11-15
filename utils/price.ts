@@ -1,4 +1,4 @@
-import { Order } from '@scayle/storefront-nuxt'
+import type { Order } from '@scayle/storefront-nuxt'
 
 type AppliedFees = Order['cost']['appliedFees']
 

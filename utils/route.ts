@@ -1,13 +1,13 @@
 import {
-  Category,
+  type Category,
   getFirstAttributeValue,
-  Product,
+  type Product,
   slugify,
-  ProductSuggestion,
-  BrandOrCategorySuggestion,
+  type ProductSuggestion,
+  type BrandOrCategorySuggestion,
 } from '@scayle/storefront-nuxt'
-import { NavigateToOptions } from 'nuxt/dist/app/composables/router'
-import { RouteLocationRaw } from '#vue-router'
+import type { NavigateToOptions } from 'nuxt/dist/app/composables/router'
+import type { RouteLocationRaw } from '#vue-router'
 
 const getCategoryPath = (category: Category) => {
   if (!category) {

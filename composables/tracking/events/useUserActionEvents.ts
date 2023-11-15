@@ -1,4 +1,4 @@
-import { ShopUser } from '@scayle/storefront-nuxt'
+import type { ShopUser } from '@scayle/storefront-nuxt'
 
 export type AuthTrackingEventData = {
   customer_id?: number

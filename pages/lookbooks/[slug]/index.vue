@@ -37,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import { SbListingPage } from '~/storyblok/types/storyblok.gen'
+import type { SbListingPage } from '~/storyblok/types/storyblok.gen'
 
 const route = useRoute()
 const lookbookCategoryCategoryPath = computed(

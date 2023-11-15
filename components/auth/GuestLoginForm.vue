@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { Gender } from '@scayle/storefront-nuxt'
+import type { Gender } from '@scayle/storefront-nuxt'
 import useVuelidate from '@vuelidate/core'
 
 const { guestLogin, isSubmitting } = await useAuthentication('guest_login')

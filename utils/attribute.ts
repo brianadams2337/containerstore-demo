@@ -2,7 +2,7 @@ import {
   getAttributeValue,
   getAttributeValueTuples,
   getFirstAttributeValue,
-  Product,
+  type Product,
   getFlattenedVariantCrosssellings,
 } from '@scayle/storefront-nuxt'
 

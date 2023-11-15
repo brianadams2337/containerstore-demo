@@ -152,12 +152,12 @@
 
 <script setup lang="ts">
 import {
-  ProductColor,
-  Product,
+  type ProductColor,
+  type Product,
   getProductAndSiblingsColors,
   getProductSiblings,
   getFirstAttributeValue,
-  Value,
+  type Value,
 } from '@scayle/storefront-nuxt'
 
 const props = defineProps({

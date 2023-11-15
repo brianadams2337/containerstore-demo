@@ -101,14 +101,14 @@
 
 <script setup lang="ts">
 import {
-  Product,
-  SortValue,
+  type Product,
+  type SortValue,
   getSortByValue,
   getSortingValues,
   groupFilterableValuesByKey,
   transformToWhereCondition,
 } from '@scayle/storefront-nuxt'
-import { SbCmsImage, SbListingPage } from '../storyblok/types/storyblok'
+import type { SbCmsImage, SbListingPage } from '../storyblok/types/storyblok'
 
 const PRODUCTS_PER_PAGE = 24
 const DEFAULT_SORTING_KEY = 'dateNewest'

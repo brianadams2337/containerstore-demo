@@ -1,7 +1,7 @@
 import {
   getFirstAttributeValue,
   isInStock,
-  Variant,
+  type Variant,
 } from '@scayle/storefront-nuxt'
 
 export type VariantSize = {

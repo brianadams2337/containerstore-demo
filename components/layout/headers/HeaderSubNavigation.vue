@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { NavigationTree, Category } from '@scayle/storefront-nuxt'
+import type { NavigationTree, Category } from '@scayle/storefront-nuxt'
 
 type NavigationItem = NavigationTree['items'][0]
 

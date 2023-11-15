@@ -58,7 +58,7 @@
 import {
   getFirstAttributeValue,
   isVariantInStock,
-  Variant,
+  type Variant,
 } from '@scayle/storefront-nuxt'
 import { getVariantAvailability } from '~/utils/product'
 

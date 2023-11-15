@@ -41,9 +41,9 @@
 <script setup lang="ts">
 import {
   getTotalAppliedReductions,
-  Price,
-  LowestPriorPrice,
-  AppliedReduction,
+  type Price,
+  type LowestPriorPrice,
+  type AppliedReduction,
 } from '@scayle/storefront-nuxt'
 import { Size } from '#imports'
 

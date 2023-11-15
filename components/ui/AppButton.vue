@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import { Size, ButtonType } from '#imports'
-import { RouteLocationRaw } from '#vue-router'
+import type { RouteLocationRaw } from '#vue-router'
 
 const props = defineProps({
   type: {
