@@ -53,10 +53,10 @@ For more in-depth explanations and How-to guides, please consult the [SCAYLE Res
 ### Installation
 
 1. Get the required SCAYLE credentials and API Keys via your SCAYLE Customer Success Manager. If they are not yet provided to you, please reach out to your respective SCAYLE representative.
-2. Use your provided SCAYEL credentials and API Keys to create a local `.env` file in the main directory based on the provided `.env.example` file.
+2. Use your provided SCAYLE credentials and API Keys to create a local `.env` file in the main directory based on the provided `.env.example` file.
 
    *For an in-depth explanation of the required environment variables, please consult the [SCAYLE Resource Center](https://scayle.dev/en/dev/storefront-core/introduction).*
-3. Install dependency packages
+3. Install dependencies
 
    ```sh
      yarn install
