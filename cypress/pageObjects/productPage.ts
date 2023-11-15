@@ -1,7 +1,5 @@
 import { BasePage } from './basePage'
 import Header from './components/header'
-import Chainable = Cypress.Chainable
-
 class ProductPage extends BasePage {
   private pageElements = {
     zoomGallery: '[data-test-id="zoom-gallery"]',
@@ -55,7 +53,7 @@ class ProductPage extends BasePage {
     cy.get(this.pageElements.removeFromWishlistButton).should('exist')
   }
 
-  getProductName(): Chainable {
+  getProductName(): Cypress.Chainable {
     return cy.get(this.pageElements.productName)
   }
 
@@ -67,7 +65,7 @@ class ProductPage extends BasePage {
       })
   }
 
-  getProductPrice(): Chainable {
+  getProductPrice(): Cypress.Chainable {
     return cy.get(this.pageElements.price)
   }
 
@@ -107,7 +105,7 @@ class ProductPage extends BasePage {
     cy.get(this.pageElements.sizeMenuToggle).should('exist')
   }
 
-  getProductCategory(): Chainable {
+  getProductCategory(): Cypress.Chainable {
     return cy.get(this.pageElements.category)
   }
 

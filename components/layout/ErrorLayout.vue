@@ -1,6 +1,6 @@
 <template>
   <div
-    class="container mt-10 flex flex-col items-center justify-center text-primary">
+    class="text-primary container mt-10 flex flex-col items-center justify-center">
     <section class="flex flex-col items-center">
       <Headline is-uppercase>{{ title }}</Headline>
       <Headline class="mt-2" size="sm" tag="h2" is-uppercase>
@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 import { HttpStatusCode } from '@scayle/storefront-nuxt'
-import { NuxtError } from 'nuxt/app'
+import type { NuxtError } from 'nuxt/app'
 
 type AppError =
   | NuxtError

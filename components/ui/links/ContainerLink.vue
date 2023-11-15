@@ -2,11 +2,11 @@
   <DefaultLink
     :to="to"
     size="sm"
-    class="rounded-md border border-gray-350 px-5 py-6">
+    class="border-gray-350 rounded-md border px-5 py-6">
     <div class="flex w-full items-center justify-between">
       <div class="mr-4 text-base font-semibold">
         <p>{{ header }}</p>
-        <p v-if="subheader" class="text-xs text-secondary">{{ subheader }}</p>
+        <p v-if="subheader" class="text-secondary text-xs">{{ subheader }}</p>
       </div>
       <IconArrowRight class="h-4 w-4" />
     </div>
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { RouteLocationRaw } from '#vue-router'
+import type { RouteLocationRaw } from '#vue-router'
 
 defineProps({
   to: {

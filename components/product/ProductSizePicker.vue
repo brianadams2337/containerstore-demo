@@ -7,14 +7,14 @@
     <ListboxButton
       :list-name="list"
       data-test-id="product-size-picker-toggle"
-      class="flex h-12 w-full items-center justify-between rounded border border-gray-350 px-4 py-2 text-sm font-semibold">
+      class="border-gray-350 flex h-12 w-full items-center justify-between rounded border px-4 py-2 text-sm font-semibold">
       <span v-if="selectedSize">
         {{ selectedSize.label }}
       </span>
       <span v-else>{{ $t('pdp.select_size') }}</span>
       <span>
         <IconDown
-          class="h-6 w-6 text-primary"
+          class="text-primary h-6 w-6"
           :class="{ 'rotate-180': isOpen }" />
       </span>
     </ListboxButton>
@@ -58,7 +58,7 @@
 import {
   getFirstAttributeValue,
   isVariantInStock,
-  Variant,
+  type Variant,
 } from '@scayle/storefront-nuxt'
 import { getVariantAvailability } from '~/utils/product'
 

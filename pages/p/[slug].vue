@@ -26,7 +26,7 @@
               <ProductDetailBreadcrumbs :links="breadcrumbs" />
             </div>
             <div
-              class="text-xs font-semibold text-secondary"
+              class="text-secondary text-xs font-semibold"
               data-test-id="pdp-product-brand"
             >
               {{ brandName }}
@@ -109,7 +109,7 @@
               </AppButton>
               <client-only>
                 <WishlistToggle
-                  class="ml-2 box-border h-full border border-gray-350 !px-2"
+                  class="border-gray-350 ml-2 box-border h-full border !px-2"
                   :product="product"
                 />
               </client-only>
@@ -143,14 +143,14 @@
 
 <script setup lang="ts">
 import {
-  FetchProductsParams,
-  Product,
-  ProductImage,
-  Value,
+  type FetchProductsParams,
+  type Product,
+  type ProductImage,
+  type Value,
   getVariantBySize,
   flattenDeep,
   getAttributeValue,
-  Variant,
+  type Variant,
   getFirstAttributeValue,
   getCategoriesByRoute,
   getBadgeLabel,
@@ -158,7 +158,7 @@ import {
   getBreadcrumbs,
   getProductSiblings,
   flattenFieldSet,
-  ProductColor,
+  type ProductColor,
   isInStock,
 } from '@scayle/storefront-nuxt'
 import { Size } from '#imports'

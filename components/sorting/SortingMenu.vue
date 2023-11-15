@@ -18,7 +18,7 @@
     <template #menuContent="{ close }">
       <FadeInTransition>
         <div
-          class="mt-2 min-w-48 max-w-[6.25rem] bg-white px-4 pb-5 pt-3 shadow"
+          class="min-w-48 mt-2 max-w-[6.25rem] bg-white px-4 pb-5 pt-3 shadow"
           data-test-id="sorting-options-container">
           <SortingItemsList
             :items="values"
@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { SortValue } from '@scayle/storefront-nuxt'
+import type { SortValue } from '@scayle/storefront-nuxt'
 
 defineProps({
   values: {

@@ -20,11 +20,11 @@
           :image-url="getImageUrl(productSuggestion)"
           @click:result="emit('click:result', productSuggestion)">
           <div class="w-full overflow-hidden">
-            <div class="truncate text-2xs font-medium text-secondary">
+            <div class="text-2xs text-secondary truncate font-medium">
               {{ getCategoryName(productSuggestion) }}
             </div>
             <div
-              class="flex overflow-hidden text-sm font-semibold text-primary">
+              class="text-primary flex overflow-hidden text-sm font-semibold">
               <div class="shrink truncate">
                 {{ productSuggestion.suggestion }}
               </div>
@@ -44,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-import {
+import type {
   ProductSuggestion,
   TypeaheadProductSuggestion,
 } from '@scayle/storefront-nuxt'

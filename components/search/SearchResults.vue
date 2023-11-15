@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import {
+import type {
   BrandOrCategorySuggestion,
   ProductSuggestion,
   TypeaheadBrandOrCategorySuggestion,

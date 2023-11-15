@@ -1,4 +1,4 @@
-import { getAttributeValue, ProductImage } from '@scayle/storefront-nuxt'
+import { getAttributeValue, type ProductImage } from '@scayle/storefront-nuxt'
 
 export { getImageFromList, isImageType } from '@scayle/storefront-nuxt'
 

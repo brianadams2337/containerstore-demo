@@ -3,7 +3,7 @@
     <nav
       role="tablist"
       :class="tabsClass"
-      class="flex flex-wrap justify-center border-b border-b-secondary-450 px-5 text-center text-sm font-semibold">
+      class="border-b-secondary-450 flex flex-wrap justify-center border-b px-5 text-center text-sm font-semibold">
       <div
         v-for="({ name, label }, idx) in items"
         :key="`tab-${name}-${idx}`"
@@ -18,7 +18,7 @@
           @click="toggleTab(idx)">
           {{ label }}
         </AppButton>
-        <div v-if="activeTab === idx" class="mx-auto h-0.5 w-8 bg-primary" />
+        <div v-if="activeTab === idx" class="bg-primary mx-auto h-0.5 w-8" />
       </div>
     </nav>
     <section id="content" aria-live="polite" role="region" class="mt-6 text-sm">
@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { SummaryItem } from './AddressSummary.vue'
+import type { SummaryItem } from './AddressSummary.vue'
 
 defineProps({
   items: {

@@ -51,7 +51,7 @@
         class="absolute bottom-0 left-0 top-auto z-40 hidden h-auto w-full p-3 lg:block">
         <AppButton
           type="secondary"
-          class="w-full border-gray-350 bg-white p-3 text-xs font-semibold transition"
+          class="border-gray-350 w-full bg-white p-3 text-xs font-semibold transition"
           :class="isAddToBasketButtonShown ? 'opacity-1' : 'opacity-0'"
           data-test-id="wishlist-card-add-to-cart"
           @click="emit('click:add-to-cart')">
@@ -80,7 +80,7 @@
       <div>
         <div>
           <div
-            class="mt-2 w-full justify-between py-2 text-xs font-medium text-primary opacity-50">
+            class="text-primary mt-2 w-full justify-between py-2 text-xs font-medium opacity-50">
             <p>{{ title }}</p>
             <p>{{ name }}</p>
           </div>
@@ -142,7 +142,7 @@
                 <strong class="block text-sm">
                   {{ toCurrency(price.withTax) }}
                 </strong>
-                <div class="text-xs text-secondary">
+                <div class="text-secondary text-xs">
                   {{ $t('price.including_vat') }}
                 </div>
               </div>
@@ -159,11 +159,11 @@
 
 <script setup lang="ts">
 import {
-  LowestPriorPrice,
-  Price,
-  Product,
-  Value,
-  Variant,
+  type LowestPriorPrice,
+  type Price,
+  type Product,
+  type Value,
+  type Variant,
   getAttributeValue,
   getLowestPrice,
   getSizeFromVariant,

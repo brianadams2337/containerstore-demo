@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { BasketItem } from '@scayle/storefront-nuxt'
+import type { BasketItem } from '@scayle/storefront-nuxt'
 
 const props = defineProps({
   items: {

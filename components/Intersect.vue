@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { MaybeComputedElementRef } from '@vueuse/core'
+import type { MaybeComputedElementRef } from '@vueuse/core'
 
 const props = defineProps({
   threshold: {

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative m-3 flex flex-col rounded border p-3 text-primary hover:bg-secondary-450">
+    class="text-primary hover:bg-secondary-450 relative m-3 flex flex-col rounded border p-3">
     <DefaultLink
       v-if="mainItem"
       :to="getProductDetailRoute(mainItem.product)"
@@ -22,28 +22,28 @@
           class="ml-2 flex grow flex-col justify-center"
           :class="{ 'flex-row': isLightVariant }">
           <p class="text-sm font-semibold">
-            <span v-if="name" class="text-xs text-secondary">{{ name }}</span>
+            <span v-if="name" class="text-secondary text-xs">{{ name }}</span>
             <br />
             <span v-if="title">{{ title }}</span>
           </p>
-          <div class="text-xs text-secondary">
+          <div class="text-secondary text-xs">
             <p>
               {{ $t('basket_card.size_label') }}:
-              <span class="font-bold text-primary">{{ size }}</span>
+              <span class="text-primary font-bold">{{ size }}</span>
             </p>
             <p v-if="mainItem.variant?.attributes?.cupsize">
               {{ $t('basket_card.cup_size_label') }}:
-              <span class="font-bold text-primary">{{ cupsizeLabel }}</span>
+              <span class="text-primary font-bold">{{ cupsizeLabel }}</span>
             </p>
             <p>
               {{ $t('basket_card.quantity_label') }}:
-              <span class="font-bold text-primary">
+              <span class="text-primary font-bold">
                 {{ mainItem.quantity }}
               </span>
             </p>
             <p>
               {{ $t('basket_card.color_label') }}:
-              <span class="font-bold text-primary">{{ color }}</span>
+              <span class="text-primary font-bold">{{ color }}</span>
             </p>
             <p v-if="isSoldOut">
               <ProductBadge class="ml-0" :badge-label="badgeLabel" />
@@ -71,7 +71,7 @@
             :class="{ 'text-red-500': reducedPrice }">
             {{ toCurrency(priceWithTax) }}
           </Headline>
-          <p class="text-xs text-secondary">
+          <p class="text-secondary text-xs">
             {{ $t('incl_tax') }}
           </p>
         </section>
@@ -85,7 +85,7 @@
 
 <script setup lang="ts">
 import {
-  BasketItem,
+  type BasketItem,
   getAppliedReductionsByCategory,
   getBadgeLabel,
   getFirstAttributeValue,

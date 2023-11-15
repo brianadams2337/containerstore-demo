@@ -50,7 +50,7 @@
       </ul>
       <DefaultLink
         v-if="rootCategory && rootCategory.path !== '/sale'"
-        class="px-12 !text-xl text-pink-neon"
+        class="text-pink-neon px-12 !text-xl"
         only-exact-active
         to="/sale">
         Sale
@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import { Category } from '@scayle/storefront-nuxt'
+import type { Category } from '@scayle/storefront-nuxt'
 
 const props = defineProps({
   categories: {

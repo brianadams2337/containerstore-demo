@@ -101,7 +101,7 @@
 </template>
 
 <script setup lang="ts">
-import { ProductFilter } from '@scayle/storefront-nuxt'
+import type { ProductFilter } from '@scayle/storefront-nuxt'
 
 const props = defineProps({
   filters: {

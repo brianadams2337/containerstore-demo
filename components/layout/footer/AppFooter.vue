@@ -29,7 +29,7 @@
           v-for="link in group.links"
           :key="link._uid"
           :blok="link"
-          class="!block py-2 text-xs font-semibold text-gray-750 md:py-1" />
+          class="text-gray-750 !block py-2 text-xs font-semibold md:py-1" />
       </div>
       <div
         v-for="tree in footerNavigationTrees"
@@ -42,7 +42,7 @@
           v-for="navTree in tree.items"
           :key="`footer-navigation-sub-tree-${navTree.id}`"
           :navigation-item="navTree"
-          class="block py-2 text-xs font-semibold text-gray-750 md:py-1" />
+          class="text-gray-750 block py-2 text-xs font-semibold md:py-1" />
       </div>
     </div>
     <div v-if="footerContent.social_media" class="container pb-8">
@@ -57,16 +57,16 @@
     </div>
     <div
       v-if="footerContent.text_bottom"
-      class="bg-primary p-2 text-center text-xs text-secondary">
+      class="bg-primary text-secondary p-2 text-center text-xs">
       {{ footerContent.text_bottom }}
     </div>
   </footer>
 </template>
 
 <script setup lang="ts">
-import { NavigationTree } from '@scayle/storefront-nuxt'
-import { StoryblokStory } from 'storyblok-generate-ts'
-import { SbFooter } from '~/storyblok/types/storyblok'
+import type { NavigationTree } from '@scayle/storefront-nuxt'
+import type { StoryblokStory } from 'storyblok-generate-ts'
+import type { SbFooter } from '~/storyblok/types/storyblok'
 
 defineProps({
   navigationTrees: {

@@ -53,9 +53,9 @@
 
 <script setup lang="ts">
 import {
-  BasketItem,
+  type BasketItem,
   getFirstAttributeValue,
-  Product,
+  type Product,
 } from '@scayle/storefront-nuxt'
 
 const basket = await useBasket({ options: { lazy: true } })

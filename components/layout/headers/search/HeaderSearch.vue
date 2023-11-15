@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative z-30 h-12 rounded border border-primary/0 transition-all duration-500"
+    class="border-primary/0 relative z-30 h-12 rounded border transition-all duration-500"
     :class="inputActive ? 'w-[21rem] border-primary/100' : 'w-12 delay-100'"
     @click="inputActive = true"
     @keydown.esc="resetAndClose">
@@ -28,7 +28,7 @@
       data-test-id="header-search-input"
       type="search"
       autocomplete="off"
-      class="w-full appearance-none overflow-hidden rounded border border-none border-transparent py-3 pl-10 pr-4 text-sm font-medium outline-none search-decoration-none focus:ring-0"
+      class="search-decoration-none w-full appearance-none overflow-hidden rounded border border-none border-transparent py-3 pl-10 pr-4 text-sm font-medium outline-none focus:ring-0"
       :class="{
         'pr-10': searchQuery,
         'w-0': !inputActive,
@@ -53,7 +53,7 @@
 
 <script setup lang="ts">
 import { useFocus } from '@vueuse/core'
-import {
+import type {
   BrandOrCategorySuggestion,
   ProductSuggestion,
 } from '@scayle/storefront-nuxt'

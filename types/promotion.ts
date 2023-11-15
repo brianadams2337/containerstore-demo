@@ -1,4 +1,4 @@
-import {
+import type {
   Promotion as CorePromotion,
   PromotionCustomData,
 } from '@scayle/storefront-nuxt'

@@ -1,6 +1,6 @@
 import {
-  Variant,
-  Product,
+  type Variant,
+  type Product,
   getLowestPrice,
   getAppliedReductionsByCategory,
 } from '@scayle/storefront-nuxt'

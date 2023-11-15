@@ -1,8 +1,8 @@
 <template>
   <div
-    class="cursor-pointer border border-transparent bg-white p-5 transition-all ease-in-out hover:rounded-md hover:border hover:border-primary"
+    class="hover:border-primary cursor-pointer border border-transparent bg-white p-5 transition-all ease-in-out hover:rounded-md hover:border"
     :class="{
-      'rounded-md !border-primary': id === paramId,
+      '!border-primary rounded-md': id === paramId,
     }">
     <DefaultLink
       raw
@@ -15,7 +15,7 @@
           })
         }}
       </div>
-      <div class="text-xs font-semibold text-secondary">
+      <div class="text-secondary text-xs font-semibold">
         <span>{{ shopId }} - {{ id }}</span>
         <span>{{ ' · ' }}</span>
         <span v-if="itemCount">
@@ -34,7 +34,7 @@
         </p>
         <DefaultLink
           :to="getOrderDetailsRoute(id)"
-          class="w-full justify-center rounded bg-primary px-5 py-3 text-xs font-semibold text-white md:w-auto md:px-8"
+          class="bg-primary w-full justify-center rounded px-5 py-3 text-xs font-semibold text-white md:w-auto md:px-8"
           is-full-width>
           {{ $t('my_account.orders.details') }}
         </DefaultLink>
@@ -44,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-import { OrderSummary } from '@scayle/storefront-nuxt'
+import type { OrderSummary } from '@scayle/storefront-nuxt'
 
 const props = defineProps({
   id: {

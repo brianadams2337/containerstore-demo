@@ -3,7 +3,7 @@
     <div
       v-for="({ label, name }, idx) in items"
       :key="`headline-${name}-${idx}`"
-      class="w-full rounded-md border border-gray-350 p-5 md:w-1/2"
+      class="border-gray-350 w-full rounded-md border p-5 md:w-1/2"
       data-test-id="address-card">
       <Headline tag="h3" size="sm" class="mb-2.5" is-uppercase>
         {{ label }}
@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { SummaryItem } from './AddressSummary.vue'
+import type { SummaryItem } from './AddressSummary.vue'
 
 defineProps({
   items: {

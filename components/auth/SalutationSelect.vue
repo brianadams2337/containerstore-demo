@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { Gender } from '@scayle/storefront-nuxt'
+import type { Gender } from '@scayle/storefront-nuxt'
 
 defineProps({
   value: {

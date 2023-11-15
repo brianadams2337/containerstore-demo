@@ -10,7 +10,7 @@
           @click:hide-categories="setSideNavigationActiveState(false)"
           @click:show-categories="setSideNavigationActiveState(true)" />
 
-        <div class="mt-4 flex flex-col border-b border-gray-350 px-5 pb-4">
+        <div class="border-gray-350 mt-4 flex flex-col border-b px-5 pb-4">
           <MobileSearchInput
             v-model="searchQuery"
             class="mb-3"
@@ -70,7 +70,7 @@
 </template>
 
 <script setup lang="ts">
-import {
+import type {
   Category,
   BrandOrCategorySuggestion,
   ProductSuggestion,

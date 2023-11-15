@@ -19,10 +19,10 @@
           :to="brandOrCategorySuggestion.category.path"
           @click:result="emit('click:result', brandOrCategorySuggestion)">
           <div class="overflow-hidden">
-            <div class="truncate text-2xs font-medium text-secondary">
+            <div class="text-2xs text-secondary truncate font-medium">
               {{ brandOrCategorySuggestion.category.path }}
             </div>
-            <div class="truncate text-sm font-semibold text-primary">
+            <div class="text-primary truncate text-sm font-semibold">
               {{ brandOrCategorySuggestion.category.name }}
             </div>
           </div>
@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import {
+import type {
   BrandOrCategorySuggestion,
   TypeaheadBrandOrCategorySuggestion,
 } from '@scayle/storefront-nuxt'

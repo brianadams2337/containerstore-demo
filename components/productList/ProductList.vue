@@ -45,7 +45,7 @@
 
 <script setup lang="ts">
 import {
-  Product,
+  type Product,
   getRowByIndex,
   isFirstIndexOfRow,
 } from '@scayle/storefront-nuxt'

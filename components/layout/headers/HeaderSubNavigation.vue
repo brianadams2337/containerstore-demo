@@ -1,7 +1,7 @@
 <template>
   <div
     data-test-id="nav-categories"
-    class="hidden overflow-x-auto border-b border-gray-200 scrollbar-hide md:block">
+    class="scrollbar-hide hidden overflow-x-auto border-b border-gray-200 md:block">
     <div
       v-if="!fetchingCategories"
       class="container flex items-center space-x-16">
@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { NavigationTree, Category } from '@scayle/storefront-nuxt'
+import type { NavigationTree, Category } from '@scayle/storefront-nuxt'
 
 type NavigationItem = NavigationTree['items'][0]
 

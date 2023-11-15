@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import {
-  BasketItem,
+  type BasketItem,
   getFirstAttributeValue,
   getTotalAppliedReductions,
 } from '@scayle/storefront-nuxt'

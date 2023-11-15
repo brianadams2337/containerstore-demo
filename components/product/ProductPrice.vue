@@ -15,7 +15,7 @@
         {{ toCurrency(price.withTax) }}
         <span
           v-if="totalReductions.absoluteWithTax"
-          class="text-sm font-medium text-primary line-through"
+          class="text-primary text-sm font-medium line-through"
           data-test-id="initialProductPrice">
           {{ toCurrency(price.withTax + totalReductions.absoluteWithTax) }}
         </span>
@@ -41,9 +41,9 @@
 <script setup lang="ts">
 import {
   getTotalAppliedReductions,
-  Price,
-  LowestPriorPrice,
-  AppliedReduction,
+  type Price,
+  type LowestPriorPrice,
+  type AppliedReduction,
 } from '@scayle/storefront-nuxt'
 import { Size } from '#imports'
 

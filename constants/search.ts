@@ -1,4 +1,4 @@
-import { SearchWith } from '@scayle/storefront-nuxt'
+import type { SearchWith } from '@scayle/storefront-nuxt'
 
 export const DEBOUNCED_SEARCH_DURATION = 500 // in milliseconds
 export const MIN_CHARS_FOR_SEARCH = 3

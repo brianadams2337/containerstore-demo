@@ -54,7 +54,7 @@ import {
   getLowestPrice,
   getFirstAttributeValue,
   isFirstIndexOfRow,
-  Product,
+  type Product,
 } from '@scayle/storefront-nuxt'
 import { Size } from '#imports'
 

@@ -1,13 +1,13 @@
 import {
-  AddOrUpdateItemType,
-  BasketResponseData,
-  BasketWithOptions,
   ExistingItemHandling,
-  Product,
-  RpcContext,
-  RpcHandler,
-  Variant,
   rpcMethods,
+  type AddOrUpdateItemType,
+  type BasketResponseData,
+  type BasketWithOptions,
+  type Product,
+  type RpcContext,
+  type RpcHandler,
+  type Variant,
 } from '@scayle/storefront-nuxt'
 
 export const addGroupToBasket: RpcHandler<

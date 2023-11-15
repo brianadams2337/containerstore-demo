@@ -1,6 +1,6 @@
 <template>
   <li
-    class="h-auto break-all rounded border p-2 transition-colors hover:border-primary hover:bg-secondary-450">
+    class="hover:border-primary hover:bg-secondary-450 h-auto break-all rounded border p-2 transition-colors">
     <DefaultLink
       class="flex w-full flex-1 items-center transition-colors duration-100 ease-in-out"
       :to="to"
@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { RouteLocationRaw } from '#vue-router'
+import type { RouteLocationRaw } from '#vue-router'
 
 defineProps({
   term: {

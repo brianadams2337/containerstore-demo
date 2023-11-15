@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { Product, getBadgeLabel } from '@scayle/storefront-nuxt'
+import { type Product, getBadgeLabel } from '@scayle/storefront-nuxt'
 
 const { listingColumns } = useListingUiState()
 

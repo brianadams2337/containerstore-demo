@@ -9,7 +9,7 @@
         <article :id="`product-${product.id}`" class="flex h-full flex-col">
           <slot name="header">
             <div
-              class="group aspect-h-4 aspect-w-3 relative flex max-h-md items-center justify-center bg-gray-200"
+              class="aspect-h-4 aspect-w-3 max-h-md group relative flex items-center justify-center bg-gray-200"
               @mouseover="onMouseOver"
               @mouseleave="onMouseLeave"
             >
@@ -103,7 +103,7 @@
               <DefaultLink
                 :to="link"
                 raw
-                class="flex flex-col whitespace-pre-line break-words text-2xs font-medium uppercase leading-tight text-primary opacity-50 sm:leading-4 md:text-xs"
+                class="text-2xs text-primary flex flex-col whitespace-pre-line break-words font-medium uppercase leading-tight opacity-50 sm:leading-4 md:text-xs"
                 @click.capture="$emit('click:product')"
               >
                 <p class="overflow-hidden uppercase">{{ title }}</p>
@@ -152,12 +152,12 @@
 
 <script setup lang="ts">
 import {
-  ProductColor,
-  Product,
+  type ProductColor,
+  type Product,
   getProductAndSiblingsColors,
   getProductSiblings,
   getFirstAttributeValue,
-  Value,
+  type Value,
 } from '@scayle/storefront-nuxt'
 
 const props = defineProps({
