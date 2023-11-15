@@ -1827,10 +1827,10 @@
   dependencies:
     storyblok-js-client "^5.14.2"
 
-"@storyblok/nuxt@5.7.6":
-  version "5.7.6"
-  resolved "https://registry.yarnpkg.com/@storyblok/nuxt/-/nuxt-5.7.6.tgz#463eadcd6be9a301b932902ed5cfaa81615b19b5"
-  integrity sha512-zhGRmZz//e+blQqGdrQzgrOlAv6ZP5eXwZ9N06W79klHCXlsiqlxKwK15oN+go6Zwnswco2v2SwGT1ZS0ajztQ==
+"@storyblok/nuxt@5.7.7":
+  version "5.7.7"
+  resolved "https://registry.yarnpkg.com/@storyblok/nuxt/-/nuxt-5.7.7.tgz#86912e00ff3fd7139aaf6fc11ed7bf9027fe389c"
+  integrity sha512-1I/dDbnaEVGCUUqRGz99zXYP9s5rwyR4Epyrx3GKznylqlct0DYrURPzhGeKW2qzFZDUSHAMRkoaf7AX8S7Exw==
   dependencies:
     "@nuxt/kit" "^3.8.0"
     "@storyblok/vue" "^7.3.1"
@@ -1855,10 +1855,10 @@
   resolved "https://registry.yarnpkg.com/@tailwindcss/aspect-ratio/-/aspect-ratio-0.4.2.tgz#9ffd52fee8e3c8b20623ff0dcb29e5c21fb0a9ba"
   integrity sha512-8QPrypskfBa7QIMuKHg2TA7BqES6vhBrDLOv8Unb6FcFyd3TjKbc6lcmb9UPQHxfl24sXoJ41ux/H7qQQvfaSQ==
 
-"@tailwindcss/forms@0.5.6":
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/forms/-/forms-0.5.6.tgz#29c6c2b032b363e0c5110efed1499867f6d7e868"
-  integrity sha512-Fw+2BJ0tmAwK/w01tEFL5TiaJBX1NLT1/YbWgvm7ws3Qcn11kiXxzNTEQDMs5V3mQemhB56l3u0i9dwdzSQldA==
+"@tailwindcss/forms@0.5.7":
+  version "0.5.7"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/forms/-/forms-0.5.7.tgz#db5421f062a757b5f828bc9286ba626c6685e821"
+  integrity sha512-QE7X69iQI+ZXwldE+rzasvbJiyV/ju1FGHH0Qn2W3FKbuYtqp8LKcy6iSw79fVUT5/Vvf+0XgLCeYVG+UV6hOw==
   dependencies:
     mini-svg-data-uri "^1.2.3"
 
@@ -3883,10 +3883,10 @@ cypress-real-events@1.11.0:
   resolved "https://registry.yarnpkg.com/cypress-real-events/-/cypress-real-events-1.11.0.tgz#292fe5281c5b6e955524e766ab7fec46930c7763"
   integrity sha512-4LXVRsyq+xBh5TmlEyO1ojtBXtN7xw720Pwb9rEE9rkJuXmeH3VyoR1GGayMGr+Itqf11eEjfDewtDmcx6PWPQ==
 
-cypress@13.5.0:
-  version "13.5.0"
-  resolved "https://registry.yarnpkg.com/cypress/-/cypress-13.5.0.tgz#8c149074186130972f08b2cdce6ded41f014bacd"
-  integrity sha512-oh6U7h9w8wwHfzNDJQ6wVcAeXu31DlIYlNOBvfd6U4CcB8oe4akawQmH+QJVOMZlM42eBoCne015+svVqdwdRQ==
+cypress@13.5.1:
+  version "13.5.1"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-13.5.1.tgz#8b19bf0b9f31ea43f78980b2479bd3f25197d5cc"
+  integrity sha512-yqLViT0D/lPI8Kkm7ciF/x/DCK/H/DnogdGyiTnQgX4OVR2aM30PtK+kvklTOD1u3TuItiD9wUQAF8EYWtyZug==
   dependencies:
     "@cypress/request" "^3.0.0"
     "@cypress/xvfb" "^1.2.4"
@@ -7971,10 +7971,10 @@ nuxt-lazy-hydrate@1.0.0:
     "@nuxt/kit" "^3.3.2"
     vue3-lazy-hydration "^1.2.1"
 
-nuxt-svgo@3.5.6:
-  version "3.5.6"
-  resolved "https://registry.yarnpkg.com/nuxt-svgo/-/nuxt-svgo-3.5.6.tgz#747cc1881f1a0ea9be1b9d8ce81961d8fe9ae9db"
-  integrity sha512-DR4/MX0WSrh4+VkmNUvp8Jfa/xzjS7Ca/8MWFbtLyPav/jzlsQE3paCbxoJengL2601D3Dtd3E4rwy7nNCgNTQ==
+nuxt-svgo@3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/nuxt-svgo/-/nuxt-svgo-3.6.0.tgz#784f09002e19c123ae19f6fdce6b5429e5339778"
+  integrity sha512-mRl4340S6sGMhIfcCJa96PxpoZdSf2jj5j5FscbxgNtiWU5eQhCDO18aiPmks9CDZrFGpbv67Bd+9ZYI7jva6A==
   dependencies:
     "@nuxt/kit" "^3.4.0"
     "@vue/compiler-sfc" "^3.2.47"

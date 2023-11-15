@@ -89,6 +89,7 @@
               />
 
               <Dropdown
+                v-if="!availableAddOns.length && !hasOneSizeVariantOnly"
                 :model-value="quantity"
                 :items="availableQuantity"
                 :disabled="!activeVariant"
