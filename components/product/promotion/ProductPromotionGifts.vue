@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Product } from '@scayle/storefront-nuxt'
+import type { Product, BuyXGetYEffect } from '@scayle/storefront-nuxt'
 
 const props = defineProps<{ product: Product }>()
 
@@ -30,8 +30,7 @@ const { backgroundColorStyle, applicablePromotion } = await useProductPromotion(
 )
 
 const additionalData = computed(() => {
-  return applicablePromotion.value.effect
-    .additionalData as BuyXGetYAdditonalData
+  return (applicablePromotion.value.effect as BuyXGetYEffect).additionalData
 })
 
 const variantIds = computed(() => {

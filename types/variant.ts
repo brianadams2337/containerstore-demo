@@ -1,4 +1,4 @@
-import { Product, Variant } from '@scayle/storefront-nuxt'
+import type { Product, Variant } from '@scayle/storefront-nuxt'
 
 export {}
 
