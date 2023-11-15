@@ -150,19 +150,15 @@ const listingMetaData = {
   name: BasketListingMetadata.NAME,
 }
 
-const props = defineProps({
-  item: {
-    type: Object as PropType<BasketItem>,
-    default: undefined,
-  },
-  index: {
-    type: Number,
-    required: true,
-  },
-  itemsGroup: {
-    type: Array as PropType<BasketItem[]>,
-    default: undefined,
-  },
+type Props = {
+  index: number
+  item?: BasketItem
+  itemsGroup?: BasketItem[]
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  item: undefined,
+  itemsGroup: undefined,
 })
 
 const { $i18n, $alert } = useNuxtApp()
