@@ -27,7 +27,7 @@ const { resetFilters, applyFilters, unfilteredCount, filteredCount } =
 
 const showResultsLabel = computed(() => {
   return filteredCount.value !== unfilteredCount.value
-    ? $i18n.t('filter.show_results_count', { count: filteredCount })
+    ? $i18n.t('filter.show_results_count', { count: filteredCount.value })
     : $i18n.t('filter.show_results')
 })
 </script>

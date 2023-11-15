@@ -40,29 +40,6 @@ export default async (
     productCountData,
   } = await useProductList()
 
-  const initialState = useState<FilterState>(key, () => ({
-    size: [],
-    brand: [],
-    color: [],
-    prices: [minPrice.value, maxPrice.value],
-    sale: false,
-  }))
-
-  const state = useState<FilterState>(`state-${key}`, () => ({
-    ...initialState.value,
-  }))
-
-  const { toggle } = useSlideIn('FilterSlideIn')
-  const { trackFilterApply, trackFilterFlyout } = useTrackingEvents()
-
-  const {
-    applyFilters: _applyFilters,
-    activeFilters,
-    productConditions,
-  } = useQueryFilterState({
-    defaultSort: DEFAULT_SORTING_KEY,
-  })
-
   const availableFilterValues = computed(() => {
     // TODO fix in core
     return (
@@ -94,21 +71,29 @@ export default async (
     return !!(activeFilters.value.maxPrice || activeFilters.value.minPrice)
   })
 
-  const priceChanged = computed(() => {
-    return !isEqual(initialState.value.prices, state.value.prices)
-  })
+  const initialState = useState<FilterState>(key, () => ({
+    size: [],
+    brand: [],
+    color: [],
+    prices: [minPrice.value, maxPrice.value],
+    sale: false,
+  }))
 
-  const isSaleActive = computed(() => {
-    const sale = availableFilterValues.value.sale || []
-    const saleCount = !!availableFilterValues.value.sale[0].count
-    return sale.length && saleCount
-  })
+  // user's selected conditions
+  const state = useState<FilterState>(`state-${key}`, () => ({
+    ...initialState.value,
+  }))
 
-  const isFiltered = computed(() => {
-    return !!productConditions.value.where?.attributes?.length
-  })
+  const { toggle } = useSlideIn('FilterSlideIn')
+  const { trackFilterApply, trackFilterFlyout } = useTrackingEvents()
 
-  const filteredCount = computed(() => productCountData.value?.count || 0)
+  const {
+    applyFilters: _applyFilter,
+    activeFilters,
+    productConditions,
+  } = useQueryFilterState({
+    defaultSort: DEFAULT_SORTING_KEY,
+  })
 
   const applyFilter = (
     preserveAttributeFilters = false,
@@ -132,7 +117,7 @@ export default async (
       })
     }
 
-    _applyFilters(combinedFilters)
+    _applyFilter(combinedFilters)
   }
 
   // TODO: Refactor to consolidate logic and remove non-presentation logic to helpers
@@ -242,10 +227,26 @@ export default async (
     trackFilterFlyout('open', 'true')
   }
 
+  const priceChanged = computed(() => {
+    return !isEqual(initialState.value.prices, state.value.prices)
+  })
+
+  const isSaleActive = computed(() => {
+    const sale = availableFilterValues.value.sale || []
+    const saleCount = !!availableFilterValues.value.sale[0]?.count
+    return sale.length && saleCount
+  })
+
   const updateFilterCount = async () => {
     const filters = prepareFilterData()
     await refreshProductCount({ where: transformToWhereCondition(filters) })
   }
+
+  const isFiltered = computed(() => {
+    return !!productConditions.value.where?.attributes?.length
+  })
+
+  const filteredCount = computed(() => productCountData.value?.count || 0)
 
   return {
     onSlideInOpen,
