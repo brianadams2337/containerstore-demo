@@ -1,6 +1,6 @@
-import { StoryblokStory } from 'storyblok-generate-ts'
-import { NuxtError } from 'nuxt/app'
-import { ISbStoriesParams, ISbError } from 'storyblok-js-client'
+import type { StoryblokStory } from 'storyblok-generate-ts'
+import type { NuxtError } from 'nuxt/app'
+import type { ISbStoriesParams, ISbError } from 'storyblok-js-client'
 
 type Status = 'idle' | 'pending' | 'success' | 'error'
 

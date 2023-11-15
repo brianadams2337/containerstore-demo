@@ -38,7 +38,7 @@
 
 <script setup lang="ts">
 import { slugify } from '@scayle/storefront-nuxt'
-import { SbListingPage } from '~/storyblok/types/storyblok.gen'
+import type { SbListingPage } from '~/storyblok/types/storyblok.gen'
 
 const {
   fetchByFolder,

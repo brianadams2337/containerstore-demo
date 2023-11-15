@@ -1,4 +1,4 @@
-import { getFirstAttributeValue, Product } from '@scayle/storefront-nuxt'
+import { getFirstAttributeValue, type Product } from '@scayle/storefront-nuxt'
 
 export const isProductSustainable = (product: Product): boolean => {
   return SUSTAINABILITY_ATTRIBUTES.some((attr) => {

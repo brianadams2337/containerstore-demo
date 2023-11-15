@@ -1,132 +1,89 @@
-# SCAYLE Storefront Boilerplate Nuxt (Demo Shop)
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://scayle.dev/en/dev/storefront-core/introduction">
+    <img src="docs/images/scayle.svg" alt="Logo" height="80">
+  </a>
 
-The SCAYLE Storefront Boilerplate Nuxt is based on the [ Nuxt 3 framework](https://nuxt.com/docs/getting-started/introduction).
-Compared to the [Nuxt 2](https://v2.nuxt.com/) based DemoShop, there have been a multitude of changes due to the difference in overall framework architecture and more modern best practices,
-while trying to keep the most possible similarities / compatibilities with the old Nuxt 2 based DemoShop.
+  <h3 align="center">SCAYLE Storefront Boilerplate Nuxt</h3>
 
-PLEASE NOTE: The SCAYLE Storefront Boilerplate Nuxt and Storefront Core Nuxt have been newly developed and does not yet support all extended features as the Nuxt 2 based DemoShop currently does.
+  <p align="center">
+    A <a href="https://nuxt.com/docs/getting-started/introduction" target="_blank" >Nuxt 3</a>-based Boilerplate to kick-start your SCAYLE Storefront application development.
+    <br />
+    <a href="https://scayle.dev/en/dev/storefront-core/introduction"><strong>Explore the docs »</strong></a>
+    <br />
+</div>
+
+<!-- ABOUT THE PROJECT -->
+## About Storefront Core and Storefront Boilerplate
+
+Storefront Core is an all-in-one starter kit for building high-performance e-commerce shops for the SCAYLE Commerce Engine. It makes it quick and easy to build a best-in-class shop frontend. The latest version of Storefront Core is based on Nuxt and Vue 3 and consists of two parts:
+
+- Storefront Core (*SFC*) The headless storefront that provides design-agnostic business logic and integrations with the SCAYLE backend.
+- Storefront Boilerplate (*SFB*) A complete starter Nuxt application that includes the Storefront Core along with all features and pages that are required for a modern e-commerce frontend.
+
+Storefront Core is built in a way that makes it easy to change or extend the shop design. An advantage of this approach is that the effort for launching a new e-commerce shop is drastically reduced because you only have to focus on the UI and design layer.
 
 Should you encounter any errors, please reach out to your Scayle representative or the Storefront Core team for quick support.
 
-## Current feature set
+### Built With
 
-- Homepage / Landing page
-- Product Listing Page
-- Product Detail Page
-- Basket
-- Wishlist
-- Checkout
-- Order Success Page
-- Order Detail Page
-- Login / Logout (token-based only)
-- Account Area
-- Storyblok CMS Integration
-- Page Caching using Route Rules
+- [![Nuxt](https://img.shields.io/badge/Nuxt-002E3B?style=for-the-badge&logo=nuxtdotjs&logoColor=#00DC82)](https://nuxt.com/docs/getting-started/introduction)
+- [![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)](https://vuejs.org/guide/introduction.html)
+- [![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/docs/installation)
 
-## Prerequisites
+## Getting Started
 
-Before starting with this Boilerplate, we recommend to get familiar with Nuxt 3 and Vue 3, if this is not already the case:
+The following outline should provide you with an overview of how to get your local development environment using the Storefront Boilerplate up and running.
+For more in-depth explanations and How-to guides, please consult the [SCAYLE Resource Center](https://scayle.dev/en/dev/storefront-core/introduction).
 
-- [Nuxt 3 Introduction](https://nuxt.com/docs/getting-started/introduction)
-- [Vue 3 Introduction](https://vuejs.org/guide/introduction.html)
+### Prerequisites
 
-### Software
-
-- `nvm`
 - `node` >= 20.7.0
 - `yarn` (v1)
-- `redis`
+
+  ```sh
+  npm install --global yarn
+  ```
+
+* `redis`
+
+  Depending on the circumstances the usage of redis `docker` image for the local setup might not be necessary or might result in degraded performance. In this case, it is sufficient to have a locally installed version of `redis` / `redis-server` available.
 
 ### Installation
 
-#### Install supported Node.js Version
+1. Get the required SCAYLE credentials and API Keys via your SCAYLE Customer Success Manager. If they are not yet provided to you, please reach out to your respective SCAYLE representative.
+2. Use your provided SCAYLE credentials and API Keys to create a local `.env` file in the main directory based on the provided `.env.example` file.
 
-To install the supported `Node.js` version, we recommend the usage of the **Node Version Manager**, short `nvm`.
-After successful setup of `nvm`, run `nvm install 20.7` or `nvm install lts/*` for to download and install the latest supported `Node.js` version.
+   *For an in-depth explanation of the required environment variables, please consult the [SCAYLE Resource Center](https://scayle.dev/en/dev/storefront-core/introduction).*
+3. Install dependencies
 
-#### Using Redis locally
+   ```sh
+     yarn install
+   ```
 
-Depending on the circumstances the usage of `docker` for the local setup might not be necessary or might result in degraded performance.
-In this cases it is sufficient to have a locally installed version of `redis` / `redis-server` available.
+4. Create a local HTTPS certificate, as feature like Checkout will require a working HTTPS connection
 
-For MacOS this can be installed using `homebrew`
+   *Check [How to turn on local HTTPS](#how-to-turn-on-local-https) for detailed instructions.*
 
-```sh
-brew install redis
+## Usage
 
-```
+1. Start a local `redis-server` instance
+2. Start the local dev server of Storefront Boilerplate / Nuxt 3
 
-## Starting the application
+   ```sh
+     yarn dev
+   ```
 
-1. You need to create a .env file in the main directory or rename the .env.example file.
-   We will provide the credentials and URLs
+3. Open the Storefront Boilerplate running under <http://localhost:3000/>
 
-2. Start the `redis-server` either locally
-
-```sh
-redis-server
-```
-
-or as a continuously running service under MacOS
-
-```sh
-brew services start redis
-```
-
-3. Start vue application using node version 18:
-
-```sh
-nvm use # Use specific node version specified in .nvmrc
-yarn install # Install local dependencies
-yarn dev # Run local dev server of shop
-```
-
-4. Use http://localhost:3000/ to open the shop.
-
-### Run in in production-like preview
-
-Run `yarn build` to build the latest changes and run `yarn preview`.
-Keep in mind that `redis-server` needs to be running.
-This will run the generated nuxt application from the `.output/` directory, similar to how the application will be deployed on a production server.
-Only difference here is that all relevant `NUXT_` runtimeConfig override values are sourced from the local `.env` file.
-
-## How to turn on HTTPS
+## How to turn on local HTTPS
 
 To generate a certificate and key, run the following command in your project folder and follow the prompt to provide the certificate with dummy data in the terminal.
 You can use `.` to fill out the certificate creation with blank data, as there is no need to input any actual data (e.g. `Country Name (2 letter code) []:.`).
 
 ```sh
 openssl req -x509 -newkey rsa:4096 -keyout localhost.pem -out localhost.crt -sha256 -days 365
-```
-
-### Problems with Certificate Creation
-
-The creation of a locally unsigned certificate might fail due to different circumstances.
-Here are a few issues that have been encountered, followed by an alternative way of creation the required certificate.
-
-#### Example: Certificate Creation fails on MacOS
-
-```sh
-8242600768:error:28FFF065:lib(40):CRYPTO_internal:result too small:((shortened...)):You must type in 4 to 1023 characters
-8242600768:error:09FFF06D:PEM routines:CRYPTO_internal:problems getting password:(shortened...):115:
-8242600768:error:09FFF06F:PEM routines:CRYPTO_internal:read key:(shortened...):129:
-```
-
-#### Example: Certificate can't be decrypted by Nuxt/Node.js SSL
-
-```sh
-FATAL  error:1C800064:Provider routines::bad decrypt
-```
-
-#### Alternative Certificate Creation
-
-If the previous creation command fail or the certificate can't be decrypted by Nuxt,
-try creating the necessary key file and certificate using an intermediate "Certificate Signing Request" file:
-
-```sh
-openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:4096 -out localhost.pem # Create RSA key file
-openssl req -new -key localhost.pem -out localhost.csr # Create Certificate Signing Request file
-openssl x509 -req -days 365 -in localhost.csr -signkey localhost.pem -out localhost.crt # Create Certificate
 ```
 
 After generating the local key and certificate file, add both to your `.env`-file as follows
@@ -136,128 +93,72 @@ HTTPS_KEY=localhost.pem
 HTTPS_CERT=localhost.crt
 ```
 
-The `.csr` is not needed afterwards and can be deleted.
+Your project will now be served on <https://localhost:3000>.
+Please keep in mind that the shop accessed through <http://localhost:3000> might not be reachable anymore.
 
-Your project will now be served on https://localhost:3000.
-Please keep in mind that the shop accessed through http://localhost:3000 might not be reachable.
-
-### How to turn off HTTPS
+### How to turn off local HTTPS
 
 As the local HTTPS encryption is directly coupled to the `HTTPS_KEY` and `HTTPS_CERT`,
 simply remove or comment out the entries in your `.env`-file, like this:
 
 ```ini
-# HTTPS_KEY=localhost.pem
+# HTTPS_KEY=localhost.key
 # HTTPS_CERT=localhost.crt
 SOME_OTHER_ACTIVE_KEY=someValue
 ```
 
-### Common Issues / Troubleshooting
+Use <http://localhost:3000/> to open the shop
 
-#### 'localhost has refused the connection' after login
+## Running a production-like preview
 
-- Probably it has something todo with the config try with:
+Run `yarn build` to build the latest changes and followed by `yarn preview`.
+Keep in mind that a `redis-server` needs to be running.
+This will run the generated nuxt application from the `.output/` directory, similar to how the application will be deployed on a production server.
+The only difference here is that all relevant `NUXT_` runtimeConfig override values are sourced from the local `.env` file.
 
-```sh
-https://de-de.localhost:3000
-```
+## Testing
 
-## Build for production and launch server
-
-```sh
-yarn build
-yarn start
-```
-
-Use http://localhost:3000/ to open the shop
-
-## Using @scayle/storefront-nuxt package locally
-
-```sh
-cd storefront-core-v2 # Navigate to mono repo
-yarn install # Install dependencies
-yarn build # Build @scayle/storefront-nuxt2 and @scayle/storefront-core sub-packages
-
-cd packages/storefront-nuxt # Navigate to @scayle/storefront-nuxt2 sub-package
-yarn link # Link @scayle/storefront-nuxt2 sub-package
-cd ../storefront-core # Navigate to proper @scayle/storefront-core sub-package
-yarn link # Link @scayle/storefront-core sub-package
-
-cd ../../.. # Navigate outside of project directory
-cd ay-cloud-shop-application-demo-v2/ # Navigate to demo shop directory
-yarn link '@scayle/storefront-nuxt' '@scayle/storefront-core' # Link packages to demo shop
-yarn install # Install dependencies
-yarn dev # Run local dev server
-
-```
-
-## Lazy Loading with NuxtLazyHydrate
-
-In Nuxt 2 we used the `vue-lazy-hydration` within our custom `Lazy` component
-implementation. In Nuxt 3 we use `NuxtLazyHydrate` directly. It helps us defer
-the rendering of a component to improve performance.
-
-This example shows a grey placeholder 16:9 on desktop and square (1:1) on mobile.
-As the users scrolls the page and the placeholder enters the viewport,
-the components within are getting rendered. No rendering on server-side.
-
-```vue
-<NuxtLazyHydrate :placeholder-ratio="md ? '16/9' : '1/1'">
-  ...
-</NuxtLazyHydrate>
-```
-
-This example renders products in 2 columns on mobile and 4 columns on desktop.
-It skips the lazy-loading for the first row on mobile and 2 rows on desktop,
-because those are the ones visible to the user on page-load.
-
-```vue
-<NuxtLazyHydrate
-  v-for="(product, index) in products"
-  :key="product.id"
-  :when-visible="{ rootMargin: '100px' }"
-  :when-triggered="index < (isGreaterOrEquals('md') ? 8 : 2)"
-  class="col-span-6 md:col-span-3"
-  placeholder-class="mb-24"
-  placeholder-ratio="3/4">
-  ...
-</NuxtLazyHydrate>
-```
-
-### When and how to pre-render on server-side (never hydrate)?
-
-_How_?
-
-```vue
-// Usage:
-<NuxtLazyHydrate>
-  // Content will never be hydrated
-</NuxtLazyHydrate>
-```
-
-_When?_
-
-- If the component is within the browser viewport on page-load.
-- If the generated HTML contains important things for SEO (e.g. h1).
-- If it takes a long time to render, it might be better to show the pre-rendered version first.
+For testing with Nuxt 3, we provide a [nuxt-vitest](https://github.com/danielroe/nuxt-vitest) integration. It allows us to use a Nuxt environment in [vitest](https://vitest.dev/).
+For ease of use we use `.nuxt.test.ts` or `.nuxt.spec.ts` file suffix for our tests to use nuxt env.
 
 ## Storyblok Scripts
 
-There are some extra `package.json` scripts for working with Storyblok.
-They depend on having `STORYBLOK_PERSONAL_TOKEN` and `STORYBLOK_SPACE_ID` in your .env.storyblok file.
+As part of the Storefront Boilerplate `package.json`, some additional scripts are included to interact with Storyblok.
 
-`STORYBLOK_PERSONAL_TOKEN` can be created here.
-`STORYBLOK_SPACE_ID` can be found in the URL when logged into storyblok.com
+To interact with Storyblok, a `STORYBLOK_PERSONAL_TOKEN` and the `STORYBLOK_SPACE_ID` need to be set as part of a dedicated `.env.storyblok` file.
+Check [scayle.dev/.../storefront-core/cms-integration-overview#initial-development-setup](<https://scayle.dev/en/dev/storefront-core/cms-integration-overview#initial-development-setup>) for more details.
 
-- `yarn storyblok:unused` - reports the usage of Storyblok components
-- `yarn storyblok:login` - logs in to the storyblok cli (required for the download task)
-- `yarn storyblok:download` - downloads the current JSON schema of the storyblok components
-- `yarn storyblok:generate` - transforms the JSON schema into TypeScript types
+- `storyblok:download`
+  - Downloads the latest components from the respective Storyblok space using Storyblok CLI
+- `storyblok:generate`
+  - Uses the downloaded components JSON schema and transforms it into TypeScript types (See [scayle.dev/.../storefront-core/cms-integration-overview#type-definitions]([#type-definitions](https://scayle.dev/en/dev/storefront-core/cms-integration-overview#type-definitions)))
+- `storyblok:login`
+  - Authenticates local development environment with Storyblok CLI
+- `storyblok:unused`
+  - Outputs overview of used and unused Storyblok components
 
-## Intercept API calls from SFC for debugging purposes
+While `storyblok:download` and `storyblok:login` are directly utilizing the Storyblok CLI,
+`storyblok:generate` and `storyblok:unused` are executing dedicated `.cjs` scripts.
 
-Depending on the task at hand its necessary to intercept and debug api calls from SFC.
-For this purpose it is recommended to use an interactive HTTP(S) proxy that allows to inspect the made api calls.
+### Script: storyblok:generate
+
+The `storyblok:generate` script, located at `scripts/storyblok-generate.cjs`, creates a TypeScript type definition based on the local Storyblok components JSON schema.
+The JSON schema needs to be downloaded before running this command.
+
+The generated TypeScript type definition will be located at `storyblok/types/storyblok.gen.d.ts`.
+
+To create the generated type definition, the script uses a NPM package called `storyblok-generate-ts`, which provides a configurable transformation function `storyblokToTypescript()`.This function facilitates the actual transformation of the JSON schema and outputs the type definition based on the passed configuration object, which is pre-configured for usage with the SCAYLE Storefront Boilerplate.
+
+### Script: storyblok:unused
+
+The `storyblok:unused` script, located at `scripts/storyblok-unused.cjs`, creates a list of all unused components of a space by utilizing the Storyblok management API.
+
+The script is taken from <https://www.storyblok.com/faq/how-to-get-all-unused-components>.
+
+## Viewing Storefront API calls for debugging
+
+Depending on the task at hand its necessary to intercept and debug API calls from SFC.
+For this purpose it is recommended to use an interactive HTTP(S) proxy that allows to inspect the made API calls.
 
 ### Recommendation: mitmproxy
 
@@ -286,9 +187,3 @@ http_proxy=http://127.0.0.1:8080
 ```
 
 After starting both `mitmproxy` and our shop, we should be able to now see all relevant HTTP(S) requests and API calls in the `mitmweb` tab.
-
-## Testing
-
-For testing in Nuxt 3 we can use [Nuxt-Vitest](https://github.com/danielroe/nuxt-vitest).
-It is a Nuxt 3 module that allows us to use Nuxt environment in [Vitest](https://vitest.dev/).
-For ease of use we use `.nuxt.test.ts` or `.nuxt.spec.ts` file suffix for our tests to use nuxt env.

@@ -1,7 +1,7 @@
 import {
-  CentAmount,
-  ProductFilter,
-  TransformedFilter,
+  type CentAmount,
+  type ProductFilter,
+  type TransformedFilter,
   getActiveFilters,
   getFilterablePriceValue,
   getGroupedFilterableValues,

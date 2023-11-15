@@ -1,4 +1,4 @@
-import { ProductWith } from '@scayle/storefront-nuxt'
+import type { ProductWith } from '@scayle/storefront-nuxt'
 
 export const MINIMUM_QUANTITY_IMMEDIATE_AVAILABILITY = 5
 export const PRODUCT_WITH_PARAMS: ProductWith = {

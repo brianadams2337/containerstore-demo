@@ -1,9 +1,9 @@
 import {
-  BasketWithOptions,
+  type BasketWithOptions,
   MIN_WITH_PARAMS_BASKET,
   rpcCall,
-  AddOrUpdateItemType,
-  BasketItem,
+  type AddOrUpdateItemType,
+  type BasketItem,
 } from '@scayle/storefront-nuxt'
 import { nanoid } from 'nanoid'
 

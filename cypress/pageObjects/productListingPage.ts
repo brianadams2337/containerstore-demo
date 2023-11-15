@@ -1,7 +1,6 @@
 import { HEADER_TEST_CATEGORY_WOMEN } from '../support/constants'
 import { BasePage } from './basePage'
 import Header from './components/header'
-import Chainable = Cypress.Chainable
 
 class ProductListingPage extends BasePage {
   pageElements = {
@@ -82,11 +81,11 @@ class ProductListingPage extends BasePage {
     ).click({ force: true })
   }
 
-  getTotalItems(): Chainable {
+  getTotalItems(): Cypress.Chainable {
     return cy.get(this.pageElements.productItem)
   }
 
-  getPaginationButtons(): Chainable {
+  getPaginationButtons(): Cypress.Chainable {
     cy.scrollTo('bottom')
     return cy.get(this.pageElements.paginationButtons)
   }

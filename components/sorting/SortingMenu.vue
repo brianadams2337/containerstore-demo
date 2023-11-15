@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { SortValue } from '@scayle/storefront-nuxt'
+import type { SortValue } from '@scayle/storefront-nuxt'
 
 defineProps({
   values: {

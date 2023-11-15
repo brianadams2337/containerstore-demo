@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { RouteLocationRaw } from '#vue-router'
+import type { RouteLocationRaw } from '#vue-router'
 
 type Link = { value: string; to: RouteLocationRaw }
 

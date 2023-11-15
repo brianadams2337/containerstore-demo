@@ -19,7 +19,7 @@
   setup
   lang="ts"
   generic="T extends { value: string; label?: string; to?: RouteLocationRaw }">
-import { RouteLocationRaw } from '#vue-router'
+import type { RouteLocationRaw } from '#vue-router'
 import { DividerItemTag } from '#imports'
 
 defineProps({

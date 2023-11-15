@@ -53,7 +53,7 @@ import {
   getFirstAttributeValue,
   getFlattenedMaterialComposition,
   flattenFieldSet,
-  Product,
+  type Product,
 } from '@scayle/storefront-nuxt'
 
 const props = defineProps({

@@ -164,14 +164,14 @@
 
 <script setup lang="ts">
 import {
-  FetchProductsParams,
-  Product,
-  ProductImage,
-  Value,
+  type FetchProductsParams,
+  type Product,
+  type ProductImage,
+  type Value,
   getVariantBySize,
   flattenDeep,
   getAttributeValue,
-  Variant,
+  type Variant,
   getFirstAttributeValue,
   getCategoriesByRoute,
   getBadgeLabel,
@@ -179,7 +179,7 @@ import {
   getBreadcrumbs,
   getProductSiblings,
   flattenFieldSet,
-  ProductColor,
+  type ProductColor,
   isInStock,
 } from '@scayle/storefront-nuxt'
 import { Size } from '#imports'

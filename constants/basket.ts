@@ -1,4 +1,4 @@
-import { BasketWithOptions } from '@scayle/storefront-nuxt'
+import type { BasketWithOptions } from '@scayle/storefront-nuxt'
 
 export const BASKET_WITH_PARAMS: BasketWithOptions = {
   items: {

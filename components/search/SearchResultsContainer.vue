@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import {
+import type {
   TypeaheadBrandOrCategorySuggestion,
   TypeaheadProductSuggestion,
 } from '@scayle/storefront-nuxt'

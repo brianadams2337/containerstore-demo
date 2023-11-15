@@ -1,4 +1,4 @@
-import {
+import type {
   BrandOrCategorySuggestion,
   ProductSuggestion,
 } from '@scayle/storefront-nuxt'

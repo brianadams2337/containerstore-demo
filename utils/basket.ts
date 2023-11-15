@@ -1,4 +1,4 @@
-import { Product, getFirstAttributeValue } from '@scayle/storefront-nuxt'
+import { type Product, getFirstAttributeValue } from '@scayle/storefront-nuxt'
 
 export const showAddToBasketToast = (
   isAddedToBasket: boolean,

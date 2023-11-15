@@ -1,4 +1,4 @@
-import { Category } from '@scayle/storefront-nuxt'
+import type { Category } from '@scayle/storefront-nuxt'
 
 type SideNavigationState = {
   isOpen: boolean

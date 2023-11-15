@@ -70,7 +70,7 @@
 </template>
 
 <script setup lang="ts">
-import {
+import type {
   Category,
   BrandOrCategorySuggestion,
   ProductSuggestion,

@@ -1,4 +1,4 @@
-import { WishlistWithOptions } from '@scayle/storefront-nuxt'
+import type { WishlistWithOptions } from '@scayle/storefront-nuxt'
 
 export const WISHLIST_WITH_PARAMS: WishlistWithOptions = {
   items: {

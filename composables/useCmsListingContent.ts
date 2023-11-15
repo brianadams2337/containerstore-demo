@@ -1,5 +1,5 @@
-import { StoryblokStory } from 'storyblok-generate-ts'
-import { SbListingPage } from '~/storyblok/types/storyblok.gen'
+import type { StoryblokStory } from 'storyblok-generate-ts'
+import type { SbListingPage } from '~/storyblok/types/storyblok.gen'
 
 const useCmsListingContent = (data: Ref<StoryblokStory<SbListingPage>>) => {
   const content = computed(() => data.value?.content)

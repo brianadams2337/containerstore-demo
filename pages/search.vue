@@ -51,7 +51,7 @@
 import {
   getFirstAttributeValue,
   getSortByValue,
-  Product,
+  type Product,
   getSortingValues,
   transformToWhereCondition,
 } from '@scayle/storefront-nuxt'

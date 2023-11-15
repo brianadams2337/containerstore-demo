@@ -1,4 +1,4 @@
-import { RouteLocationRaw } from '#vue-router'
+import type { RouteLocationRaw } from '#vue-router'
 
 export default defineNuxtPlugin(() => {
   const alerts = ref<Alert[]>([])

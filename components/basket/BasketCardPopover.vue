@@ -85,7 +85,7 @@
 
 <script setup lang="ts">
 import {
-  BasketItem,
+  type BasketItem,
   getAppliedReductionsByCategory,
   getBadgeLabel,
   getFirstAttributeValue,

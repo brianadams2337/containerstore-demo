@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import { Category, NavigationTree } from '@scayle/storefront-nuxt'
+import type { Category, NavigationTree } from '@scayle/storefront-nuxt'
 
 defineProps({
   rootCategories: {

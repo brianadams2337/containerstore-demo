@@ -1,4 +1,4 @@
-import { Product } from '@scayle/storefront-nuxt'
+import type { Product } from '@scayle/storefront-nuxt'
 
 const collectProductListItems = (
   items: Product[],

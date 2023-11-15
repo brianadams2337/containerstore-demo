@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { SummaryItem } from './AddressSummary.vue'
+import type { SummaryItem } from './AddressSummary.vue'
 
 defineProps({
   items: {

@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { Product } from '@scayle/storefront-nuxt'
+import type { Product } from '@scayle/storefront-nuxt'
 
 const props = defineProps({
   product: {

@@ -1,1 +1,0 @@
-# SCAYLE Storefront Boilerplate - Troubleshooting

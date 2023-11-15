@@ -35,19 +35,6 @@ module.exports = {
   // https://stylelint.io/user-guide/configure#overrides
   overrides: [
     {
-      // Use SCSS config only for SCSS files
-      files: ['**/*.scss'],
-      // https://github.com/stylelint-scss/stylelint-config-standard-scss
-      extends: ['stylelint-config-standard-scss'],
-      rules: {
-        // SCSS Rules
-        'scss/at-rule-no-unknown': true,
-        'scss/dollar-variable-pattern': undefined,
-        'scss/at-mixin-pattern': undefined,
-        'scss/no-global-function-names': undefined,
-      },
-    },
-    {
       // Use Vue/SCSS config only for Vue SFC files
       files: ['**/*.vue'],
       // https://github.com/ota-meshi/stylelint-config-recommended-vue
