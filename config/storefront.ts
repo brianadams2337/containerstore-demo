@@ -1,4 +1,5 @@
-import { HashAlgorithm, type ModuleOptions } from '@scayle/storefront-nuxt'
+import { HashAlgorithm } from '@scayle/storefront-nuxt'
+import type { IDPConfig, ModuleOptions } from '@scayle/storefront-nuxt'
 import * as customRpcMethods from '../rpcMethods'
 import withParams from '../constants/withParams'
 
@@ -30,11 +31,13 @@ declare module '@scayle/storefront-nuxt' {
     paymentProviders: string[]
     appKeys: (typeof baseShopConfig)['appKeys']
     isLowestPreviousPriceActive?: boolean
+    idp?: IDPConfig
   }
   // Extend PublicShopConfig to make types available on currentShop
   export interface PublicShopConfig {
     isLowestPreviousPriceActive?: boolean
     paymentProviders: string[]
+    idp?: IDPConfig
   }
 }
 
@@ -89,6 +92,11 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
     clientId: '', // Override: NUXT_STOREFRONT_OAUTH_CLIENT_ID,
     clientSecret: '', // Override: NUXT_STOREFRONT_OAUTH_CLIENT_SECRET,
   },
+  idp: {
+    enabled: true,
+    idpKeys: ['google', 'facebook', 'apple'],
+    idpRedirectURL: `${protocol}localhost:3000/signin/`,
+  },
   shopSelector: 'path', // Override: NUXT_STOREFRONT_SHOP_SELECTOR
   // Following keys are Overrideable using prefix NUXT_STOREFRONT_STORES
   stores: shops.reduce(
@@ -116,6 +124,11 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
         },
         storeCampaignKeyword: '', // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_STORE_CAMPAIGN_KEYWORD,
         currency: shop.currency, // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_CURRENCY
+        idp: {
+          enabled: true,
+          idpKeys: ['google', 'facebook', 'apple'],
+          idpRedirectURL: `${protocol}${shop.locale}/signin/`,
+        },
         checkout: {
           shopId: shop.shopId, // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_CHECKOUT_SHOP_ID
           // Checkout probably isn't configured for the non-DE shops

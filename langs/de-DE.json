@@ -18,7 +18,8 @@
     "days": "Tag | Tage",
     "back": "Zurück",
     "continue_shopping_label": "Weiter einkaufen",
-    "sign_in_label": "Anmelden"
+    "sign_in_label": "Anmelden",
+    "or": "Oder"
   },
   "promotion": {
     "progress_left": "{amount} übrig",
@@ -377,6 +378,12 @@
     "welcome_back": {
       "not_user": "Nicht {name}? Melden Sie sich mit einem anderen Benutzerkonto an",
       "title": "Willkommen zurück, {name}!"
+    },
+    "idp": {
+      "google": "Mit Google anmelden",
+      "facebook": "Mit Facebook anmelden",
+      "apple": "Mit Apple anmelden",
+      "okta": "Mit Okta anmelden"
     }
   }
 }

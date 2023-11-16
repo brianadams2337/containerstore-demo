@@ -58,9 +58,12 @@ export const useLastLoggedInUser = async () => {
     }
   })
 
-  onBeforeMount(() => {
+  tryOnBeforeMount(() => {
     // we need to set default value onMounted to avoid possible race conditions with local storage
-    lastLoggedInUser.value = getLastLoggedInUser()
+    lastLoggedInUser.value = getLastLoggedInUser() || {
+      email: '',
+      firstName: '',
+    }
   })
 
   return {

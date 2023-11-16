@@ -90,6 +90,29 @@ export default {
           800: '#004ca5', // dark-10
           900: '#001732', // dark-20
           DEFAULT: '#0277ff',
+        google: {
+          normal: '#4285F4',
+          hover: '#3869c1',
+        },
+        facebook: {
+          normal: '#1877F2',
+          hover: '#165dbb',
+        },
+        keycloak: {
+          normal: '#C43A31',
+          hover: '#a32b26',
+        },
+        apple: {
+          normal: '#000000',
+          hover: '#1f1f21',
+        },
+        okta: {
+          normal: '#0061F2',
+          hover: '#004ecb',
+        },
+        idp: {
+          normal: '#008aaa',
+          hover: '#006788',
         },
 
         secondary: {
