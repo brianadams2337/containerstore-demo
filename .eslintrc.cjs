@@ -42,4 +42,14 @@ module.exports = {
       },
     },
   ],
+  settings: {
+    /**
+     * Minimize the globbing scope to improve performance
+     * @see https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/276
+     * @see https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/174
+     */
+    tailwindcss: {
+      cssFiles: ['assets/css/**/*.css'],
+    },
+  },
 }
