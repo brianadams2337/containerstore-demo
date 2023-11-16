@@ -9,18 +9,22 @@
       v-if="variants"
       class="rounded-b-md border border-gray-350 bg-white px-3.5 py-4"
     >
-      <div
-        v-for="variant in variantsWithProducts"
-        :key="variant.id"
-        class="mb-4 flex items-center"
-      >
-        <RadioItem
-          v-if="hasMultipleFreeGifts"
-          v-model="selectedVariantId"
-          :value="variant.id"
-          class="mr-3"
-        />
-        <ProductPromotionGiftItem v-bind="{ variant, backgroundColorStyle }" />
+      <div class="max-h-96 overflow-y-scroll">
+        <div
+          v-for="variant in variantsWithProducts"
+          :key="variant.id"
+          class="mb-4 flex items-center"
+        >
+          <RadioItem
+            v-if="hasMultipleFreeGifts"
+            v-model="selectedVariantId"
+            :value="variant.id"
+            class="mr-3"
+          />
+          <ProductPromotionGiftItem
+            v-bind="{ variant, backgroundColorStyle }"
+          />
+        </div>
       </div>
       <div class="mt-4 rounded-md bg-secondary-450 px-4 py-2 text-center">
         <p class="text-2xs font-medium uppercase text-gray-750">
