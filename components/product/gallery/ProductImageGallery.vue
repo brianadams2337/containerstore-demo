@@ -40,23 +40,23 @@
     <HorizontalItemsSlider
       class="-mx-4 aspect-[5/6] snap-x snap-mandatory border-b"
     >
-      <intersect
-        v-for="(item, index) in images"
+      <Intersect
+        v-for="(item, imageIndex) in images"
         :key="item.hash"
         :threshold="[0.5]"
         class="relative min-w-full snap-start snap-always"
-        @enter="setActiveSlide(index)"
+        @enter="setActiveSlide(imageIndex)"
       >
-        <div @click="emit('click:image', index)">
+        <div @click="emit('click:image', imageIndex)">
           <ProductImage
             :image="item"
             sizes="xs:100vw sm:100vw md:100vw"
             fit="cover"
             class="absolute inset-0"
-            :image-loading="index === 0 ? 'eager' : 'lazy'"
+            :image-loading="imageIndex === 0 ? 'eager' : 'lazy'"
           />
         </div>
-      </intersect>
+      </Intersect>
     </HorizontalItemsSlider>
     <ProductPromotionBadge
       :product="product"

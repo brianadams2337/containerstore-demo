@@ -19,7 +19,7 @@ type Props = {
   sizes?: string
   fit?: string
   alt?: string
-  imageLoading: 'lazy' | 'eager'
+  imageLoading?: 'lazy' | 'eager'
   quality?: number
   load?: () => void
   shouldTrim?: boolean

@@ -1,5 +1,6 @@
 import {
   type Product,
+  type BuyXGetYEffect,
   PromotionEffectType,
   getFirstAttributeValue,
 } from '@scayle/storefront-nuxt'
@@ -39,6 +40,14 @@ export default async (productItem: MaybeRefOrGetter<Product>) => {
     return effectType === PromotionEffectType.BUY_X_GET_Y
   })
 
+  const hasMultipleFreeGifts = computed(() => {
+    if (!isBuyXGetY.value) {
+      return false
+    }
+    const effect = applicablePromotion.value?.effect as BuyXGetYEffect
+    return effect.additionalData.variantIds.length > 1
+  })
+
   return {
     promotionLabel,
     productPromotionId,
@@ -46,5 +55,6 @@ export default async (productItem: MaybeRefOrGetter<Product>) => {
     backgroundColorStyle,
     isAutomaticDiscount,
     isBuyXGetY,
+    hasMultipleFreeGifts,
   }
 }
