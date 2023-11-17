@@ -59,3 +59,5 @@ export const PRODUCT_WITH_PARAMS: ProductWith = {
   priceRange: true,
   lowestPriorPrice: true,
 }
+
+export const PRODUCT_IMAGE_QUALITY_MODIFIER = '75'

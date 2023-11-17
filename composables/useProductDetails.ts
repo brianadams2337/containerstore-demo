@@ -80,16 +80,16 @@ export default async () => {
     )
   })
 
-  const img = useImage()
+  const image = useImage()
 
   const images = computed(() => {
     const options = {
       sizes: 'sm:100vw md:100vw',
-      modifiers: { quality: '75' },
+      modifiers: { quality: PRODUCT_IMAGE_QUALITY_MODIFIER },
       provider: 'default',
     }
     const images = product.value?.images
-    return images.map(({ hash }) => img?.getImage(hash, options).url) || []
+    return images.map(({ hash }) => image?.getImage(hash, options).url) || []
   })
 
   const siblings = computed(() => {
