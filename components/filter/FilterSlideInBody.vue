@@ -3,12 +3,14 @@
     <FilterGroup
       :badge="state.size.length"
       :label="$t('filter.size')"
-      @click:reset="resetFilter('size')">
+      @click:reset="resetFilter('size')"
+    >
       <MultipleSelectionList
         v-model="state.size"
         :items="availableFilterValues.size"
         class="flex flex-wrap"
-        name="FilterSelectSize">
+        name="FilterSelectSize"
+      >
         <template #item="{ item, toggleItem, isActive }">
           <AppButton
             :class="
@@ -29,21 +31,24 @@
     <FilterGroup
       :badge="state.brand.length"
       :label="$t('filter.brands')"
-      @click:reset="resetFilter('brand')">
+      @click:reset="resetFilter('brand')"
+    >
       <MultipleSelectionList
         v-model="state.brand"
         :items="availableFilterValues.brand"
         :limit="6"
         selected-first
         class="grid grid-cols-2 gap-3"
-        name="FilterSelectBrand">
+        name="FilterSelectBrand"
+      >
         <template #item="{ item }">
           <li class="mb-2 list-none">
             <CheckBox
               :id="item.displayName"
               v-model="state.brand"
               :item="item"
-              :label="item.displayName" />
+              :label="item.displayName"
+            />
           </li>
         </template>
       </MultipleSelectionList>
@@ -52,17 +57,20 @@
     <FilterGroup
       :badge="state.color.length"
       :label="$t('filter.colors')"
-      @click:reset="resetFilter('color')">
+      @click:reset="resetFilter('color')"
+    >
       <MultipleSelectionList
         v-model="state.color"
         :items="availableFilterValues.color"
         class="flex flex-wrap gap-3"
-        name="FilterSelectColors">
+        name="FilterSelectColors"
+      >
         <template #item="{ item, toggleItem, isActive }">
           <button
             :aria-label="`select color ${item.displayName}`"
             class="appearance-none focus:outline-none"
-            @click="toggleItem(item)">
+            @click="toggleItem(item)"
+          >
             <ColorChip
               data-test-id="filter-color-circle"
               :color="{
@@ -71,7 +79,8 @@
                 label: item.displayName,
               }"
               class="h-5 w-5"
-              :is-active="isActive" />
+              :is-active="isActive"
+            />
           </button>
         </template>
       </MultipleSelectionList>
@@ -80,16 +89,16 @@
     <FilterGroup
       v-if="hasPriceRange"
       :label="$t('filter.price')"
-      :show-action="
-        (activeFilters.maxPrice || activeFilters.minPrice) && priceChanged
-      "
-      @click:reset="resetFilter('prices')">
+      :show-action="hasActivePrices && priceChanged"
+      @click:reset="resetFilter('prices')"
+    >
       <RangeSlider
         v-model="state.prices"
         :max="maxPrice"
         :min="minPrice"
         :currency-code="currencyCode"
-        :locale="locale" />
+        :locale="locale"
+      />
     </FilterGroup>
 
     <FilterGroup v-if="isSaleActive" :label="$t('filter.only_sale')">
@@ -101,20 +110,6 @@
 </template>
 
 <script setup lang="ts">
-import type { ProductFilter } from '@scayle/storefront-nuxt'
-
-const props = defineProps({
-  filters: {
-    type: Array as PropType<ProductFilter[]>,
-    default: () => [],
-  },
-  activeFilters: {
-    type: Object as PropType<Record<string, any>>,
-    default: () => {},
-  },
-})
-
-const { filters: filterableValues, activeFilters } = toRefs(props)
 const {
   state,
   resetFilter,
@@ -123,8 +118,12 @@ const {
   priceChanged,
   maxPrice,
   minPrice,
-  currencyCode,
-  locale,
   isSaleActive,
-} = useFilterSlideIn({ filterableValues, activeFilters })
+  hasActivePrices,
+} = await useFilter()
+
+const currentShop = useCurrentShop()
+
+const locale = currentShop.value!.locale?.replace('_', '-')
+const currencyCode = currentShop.value!.currency
 </script>
