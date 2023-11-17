@@ -5,7 +5,8 @@
       ref="swiperRef"
       v-bind="{ loop, slidesPerView, navigation, autoplay }"
       :modules="[SwiperAutoplay, SwiperNavigation, SwiperPagination]"
-      :pagination="{ clickable: true }">
+      :pagination="{ clickable: true }"
+    >
       <SwiperSlide v-for="slide in slides" :key="`demo-slide-${slide}`">
         <NuxtImg :src="slide" provider="default" />
       </SwiperSlide>

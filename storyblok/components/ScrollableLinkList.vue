@@ -1,7 +1,8 @@
 <template>
   <div
     :class="{ 'mt-4': hasMarginTop, 'w-full': fullWidth }"
-    class="flex space-x-4 overflow-y-auto scrollbar-hide sm:justify-center">
+    class="flex space-x-4 overflow-y-auto scrollbar-hide sm:justify-center"
+  >
     <BannerLink v-for="link in links" :key="link._uid" :blok="link" />
   </div>
 </template>

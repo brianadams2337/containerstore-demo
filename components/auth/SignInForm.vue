@@ -22,11 +22,13 @@
 
       <ForgotPasswordForm
         v-if="isForgotPasswordShown"
-        @close:modal="goToSignInPage" />
+        @close:modal="goToSignInPage"
+      />
 
       <UpdatePasswordByHashForm
         v-if="isUpdatePasswordByHashShown"
-        @close:modal="goToSignInPage" />
+        @close:modal="goToSignInPage"
+      />
     </div>
   </ClientOnly>
 </template>

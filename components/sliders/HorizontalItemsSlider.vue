@@ -7,7 +7,8 @@
         container,
         'space-x-4': spacedItems,
       }"
-      @scroll="onScroll">
+      @scroll="onScroll"
+    >
       <slot />
     </div>
     <template v-if="withArrows">
@@ -15,7 +16,8 @@
         <button
           class="absolute left-0 top-[40%] rounded-sm bg-black text-white disabled:hidden"
           :disabled="!isPrevEnabled"
-          @click="prev()">
+          @click="prev()"
+        >
           <IconArrowLeft class="h-8 w-8 p-1" />
         </button>
       </slot>
@@ -23,7 +25,8 @@
         <button
           class="absolute right-0 top-[40%] rounded-sm bg-black text-white disabled:hidden"
           :disabled="!isNextEnabled"
-          @click="next()">
+          @click="next()"
+        >
           <IconArrowRight class="h-8 w-8 p-1" />
         </button>
       </slot>

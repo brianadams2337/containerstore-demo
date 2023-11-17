@@ -6,7 +6,8 @@
       </Headline>
       <p
         data-test-id="wishlist-count"
-        class="mt-4 text-xs font-semibold text-secondary">
+        class="mt-4 text-xs font-semibold text-secondary"
+      >
         {{ $t('wishlist.products_count', count) }}
       </p>
     </div>
@@ -16,7 +17,8 @@
           v-for="index in count"
           :key="`product-loading-${index}`"
           type="custom"
-          class="mb-40 mr-2 h-96 w-80" />
+          class="mb-40 mr-2 h-96 w-80"
+        />
       </div>
     </template>
     <template v-else>
@@ -27,14 +29,16 @@
           :key="`product-${key}`"
           data-test-id="wishlist-card"
           class="mb-4"
-          @click:add-to-cart="addItemToCart(key, +index)" />
+          @click:add-to-cart="addItemToCart(key, +index)"
+        />
       </div>
       <div v-if="count === 0" class="mt-8 space-y-8">
         <EmptyState
           :title="$t('wishlist.no_items_info')"
           :description="$t('wishlist.continue_shopping_info')"
           icon="IconEmptyWishlist"
-          show-default-actions />
+          show-default-actions
+        />
       </div>
     </template>
   </div>

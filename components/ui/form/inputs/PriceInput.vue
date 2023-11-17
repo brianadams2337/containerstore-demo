@@ -10,7 +10,8 @@
     "
     @focus="focus"
     @blur="blur"
-    @change="inputChange($event)" />
+    @change="inputChange($event)"
+  />
 </template>
 
 <script setup lang="ts">

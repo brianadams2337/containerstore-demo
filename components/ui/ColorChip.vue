@@ -4,18 +4,21 @@
     :data-color-id="color.id"
     :style="backgroundColorStyle"
     class="relative col-span-1 flex items-center justify-center overflow-hidden border border-transparent bg-white"
-    :class="classes">
+    :class="classes"
+  >
     <IconCheckmark
       v-if="isActive"
       class="absolute inset-x-0 m-auto h-5 w-5"
-      :class="isLightColor ? 'text-primary' : 'text-white'" />
+      :class="isLightColor ? 'text-primary' : 'text-white'"
+    />
     <span v-if="hasMixedColors" class="grid h-full w-full grid-cols-2">
       <span
         v-for="(hex, idx) in colorCode"
         :key="`${idx}-${hex}`"
         :style="{ backgroundColor: hex }"
         :class="{ 'last-of-type:col-span-full': isNumberOfMixColorsOdd }"
-        class="h-full w-full" />
+        class="h-full w-full"
+      />
     </span>
   </span>
 </template>

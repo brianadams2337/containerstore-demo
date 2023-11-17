@@ -6,7 +6,8 @@
       </Headline>
       <div class="mt-6 space-y-4">
         <div
-          class="flex flex-col justify-between gap-2 text-sm font-bold text-gray-800">
+          class="flex flex-col justify-between gap-2 text-sm font-bold text-gray-800"
+        >
           <div class="flex justify-between">
             <div class="opacity-50">{{ $t('basket.subtotal') }}</div>
             <div v-if="totalCost">{{ toCurrency(totalCost) }}</div>
@@ -44,26 +45,31 @@
           is-full-width
           type="primary"
           class="!normal-case"
-          @click="onClickToCheckoutOrder">
+          @click="onClickToCheckoutOrder"
+        >
           {{ $t('basket.to_checkout') }}
         </AppButton>
 
         <div
           v-if="sellingPoints?.length"
-          class="flex flex-col gap-2 rounded bg-secondary-450 p-4 text-xs">
+          class="flex flex-col gap-2 rounded bg-secondary-450 p-4 text-xs"
+        >
           <p class="flex justify-center gap-1 text-2xs text-gray-750">
             <IconCheckmark
-              class="h-4 w-4 rounded-full border border-gray-750" />
+              class="h-4 w-4 rounded-full border border-gray-750"
+            />
             {{ $t('promises.pay_with_invoice') }}
           </p>
           <p class="flex justify-center gap-1 text-2xs text-gray-750">
             <IconCheckmark
-              class="h-4 w-4 rounded-full border border-gray-750" />
+              class="h-4 w-4 rounded-full border border-gray-750"
+            />
             {{ $t('promises.free_return_and_shipping') }}
           </p>
           <p class="flex justify-center gap-1 text-2xs text-gray-750">
             <IconCheckmark
-              class="h-4 w-4 rounded-full border border-gray-750" />
+              class="h-4 w-4 rounded-full border border-gray-750"
+            />
             {{ $t('promises.return_policy') }}
           </p>
         </div>

@@ -1,6 +1,7 @@
 <template>
   <div
-    class="container mt-10 flex flex-col items-center justify-center text-primary">
+    class="container mt-10 flex flex-col items-center justify-center text-primary"
+  >
     <section class="flex flex-col items-center">
       <Headline is-uppercase>{{ title }}</Headline>
       <Headline class="mt-2" size="sm" tag="h2" is-uppercase>

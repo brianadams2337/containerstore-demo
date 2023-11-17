@@ -8,7 +8,8 @@
           :has-errors="!isValid"
           :placeholder="$t('form_fields.first_name')"
           required
-          @input="v.firstName.$touch" />
+          @input="v.firstName.$touch"
+        />
       </ValidatedInputGroup>
       <ValidatedInputGroup v-slot="{ isValid }" :errors="v.lastName.$errors">
         <TextInput
@@ -16,7 +17,8 @@
           :has-errors="!isValid"
           :placeholder="$t('form_fields.last_name')"
           required
-          @input="v.lastName.$touch" />
+          @input="v.lastName.$touch"
+        />
       </ValidatedInputGroup>
       <ValidatedInputGroup v-slot="{ isValid }" :errors="v.birthDate.$errors">
         <TextInput
@@ -24,20 +26,24 @@
           :placeholder="dobFormat.placeholder"
           :mask="dobFormat.mask"
           :has-errors="!isValid"
-          @input="v.birthDate.$touch" />
+          @input="v.birthDate.$touch"
+        />
       </ValidatedInputGroup>
       <TextInput
         v-model="payload.email"
         :placeholder="$t('form_fields.email')"
         :hint="$t('my_account.user.email_change_hint')"
-        readonly />
+        readonly
+      />
       <div
         class="mt-6 flex w-full items-center justify-center"
-        data-test-id="save-button">
+        data-test-id="save-button"
+      >
         <AppButton
           class="w-full capitalize md:w-auto md:min-w-[50%]"
           :disabled="isUpdating || v.$error"
-          @click="update">
+          @click="update"
+        >
           {{ $t('my_account.user.save_label') }}
         </AppButton>
       </div>

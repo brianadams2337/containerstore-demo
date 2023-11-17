@@ -7,13 +7,15 @@
       <div
         class="flex flex-wrap items-center"
         data-test-id="siblingColorsSelector"
-        :class="spacing === 'narrow' ? 'space-x-2' : 'space-x-3'">
+        :class="spacing === 'narrow' ? 'space-x-2' : 'space-x-3'"
+      >
         <slot name="items" :items="itemsToShow">
           <slot v-for="item in itemsToShow" name="item" :item="item">
             <span
               :key="`color-picker-color-${item.id}`"
               :style="`background-color:${item.id}`"
-              class="inline-block h-4 w-4 rounded-full border border-black bg-white" />
+              class="inline-block h-4 w-4 rounded-full border border-black bg-white"
+            />
           </slot>
         </slot>
         <slot name="further-items" :count="furtherItemsCount">

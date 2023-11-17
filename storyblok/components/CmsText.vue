@@ -4,7 +4,8 @@
       :class="{
         '[&>p:first-child]:!mt-0': noMarginTop,
       }"
-      v-html="content" />
+      v-html="content"
+    />
   </div>
 </template>
 

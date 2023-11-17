@@ -3,7 +3,8 @@
     <option
       v-for="(gender, index) in genders"
       :key="index"
-      :value="gender.value">
+      :value="gender.value"
+    >
       {{ gender.label }}
     </option>
   </select>

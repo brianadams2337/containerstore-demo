@@ -6,7 +6,8 @@
           provider="storyblok"
           :src="detailItem.image.filename"
           :alt="detailItem.image.alt"
-          class="w-full object-cover" />
+          class="w-full object-cover"
+        />
       </div>
 
       <div class="px-5 md:w-1/2 md:pl-0 md:pr-10">
@@ -19,7 +20,8 @@
                 [routeList.lookbooks.parameter]: $route.params.slug,
               },
             }"
-            class="hidden items-center gap-2 align-middle md:flex">
+            class="hidden items-center gap-2 align-middle md:flex"
+          >
             <IconBack class="h-4 w-4" /> {{ $t('lookbooks.back') }}
           </DefaultLink>
         </div>
@@ -28,7 +30,8 @@
           :refreshing="fetching"
           :loading="fetching"
           :products="products"
-          :show-add-to-cart="true" />
+          :show-add-to-cart="true"
+        />
       </div>
     </div>
   </div>

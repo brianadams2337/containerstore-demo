@@ -2,14 +2,16 @@
   <section
     v-editable="blok"
     class="grid auto-cols-fr py-0.5 md:grid-flow-col md:px-16"
-    :class="[marginClasses[0], containerClasses]">
+    :class="[marginClasses[0], containerClasses]"
+  >
     <!-- Image is not allowed as a component so we have to rename it here -->
     <component
       :is="column.component"
       v-for="column in blok.columns"
       :key="column._uid"
       :blok="column"
-      :sizes="sizes" />
+      :sizes="sizes"
+    />
   </section>
 </template>
 

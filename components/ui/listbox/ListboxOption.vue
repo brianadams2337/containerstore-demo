@@ -4,7 +4,8 @@
     :aria-selected="isActive"
     tabindex="0"
     @click.capture="handleClick"
-    @keydown.enter="handleClick">
+    @keydown.enter="handleClick"
+  >
     <slot :is-active="isActive" />
   </li>
 </template>

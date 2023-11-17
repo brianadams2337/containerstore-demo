@@ -2,7 +2,8 @@
   <div class="pt-0 text-center">
     <form
       ref="passwordUpdateForm"
-      class="mx-auto mt-8 flex w-full flex-col md:mx-0 lg:w-[400px]">
+      class="mx-auto mt-8 flex w-full flex-col md:mx-0 lg:w-[400px]"
+    >
       <h3 class="mb-4 text-left text-2xl font-bold">
         {{ $t('my_account.password') }}
       </h3>
@@ -13,37 +14,43 @@
           :has-errors="!isValid"
           type="password"
           required
-          @input="v.oldPassword.$touch" />
+          @input="v.oldPassword.$touch"
+        />
       </ValidatedInputGroup>
       <ValidatedInputGroup
         v-slot="{ isValid }"
         :errors="v.newPassword.$errors"
-        class="!h-28">
+        class="!h-28"
+      >
         <TextInput
           v-model="payload.newPassword"
           :placeholder="$t('form_fields.new_password')"
           :has-errors="!isValid"
           type="password"
           required
-          @input="v.newPassword.$touch" />
+          @input="v.newPassword.$touch"
+        />
         <PasswordMeter :value="payload.newPassword" class="mx-4 mb-2 mt-3" />
       </ValidatedInputGroup>
       <ValidatedInputGroup
         v-slot="{ isValid }"
-        :errors="v.repeatedPassword.$errors">
+        :errors="v.repeatedPassword.$errors"
+      >
         <TextInput
           v-model="payload.repeatedPassword"
           :placeholder="$t('form_fields.repeated_password')"
           :has-errors="!isValid"
           type="password"
           required
-          @input="v.repeatedPassword.$touch" />
+          @input="v.repeatedPassword.$touch"
+        />
       </ValidatedInputGroup>
       <div class="mt-2 flex w-full items-center justify-center">
         <AppButton
           class="w-full capitalize md:w-auto md:min-w-[50%]"
           :disabled="v.$error || isUpdating"
-          @click="updateUserPassword">
+          @click="updateUserPassword"
+        >
           {{ $t('my_account.user.update_password_label') }}
         </AppButton>
       </div>

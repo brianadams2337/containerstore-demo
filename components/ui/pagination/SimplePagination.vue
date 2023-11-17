@@ -1,11 +1,13 @@
 <template>
   <div class="flex justify-center">
     <div
-      class="relative inline-flex items-center justify-center space-x-1 bg-white p-4">
+      class="relative inline-flex items-center justify-center space-x-1 bg-white p-4"
+    >
       <span
         v-show="currentPage > 1"
         class="absolute -left-6 top-1/2 inline-block -translate-y-1/2 cursor-pointer p-2"
-        @click="changePage(currentPage - 1)">
+        @click="changePage(currentPage - 1)"
+      >
         <IconArrowLeft class="h-4 w-4" />
       </span>
 
@@ -14,7 +16,8 @@
         :key="page"
         class="inline-block cursor-pointer p-2 text-center"
         :class="{ 'font-bold': page === currentPage }"
-        @click="changePageAndScroll(page)">
+        @click="changePageAndScroll(page)"
+      >
         {{ page }}
       </span>
 
@@ -25,7 +28,8 @@
         :key="page"
         class="inline-block cursor-pointer p-2 text-center"
         :class="{ 'font-bold': page === currentPage }"
-        @click="changePageAndScroll(page)">
+        @click="changePageAndScroll(page)"
+      >
         {{ page }}
       </span>
 
@@ -35,7 +39,8 @@
         :key="page"
         class="inline-block cursor-pointer p-2 text-center"
         :class="{ 'font-bold': page === currentPage }"
-        @click="changePageAndScroll(page)">
+        @click="changePageAndScroll(page)"
+      >
         {{ page }}
       </span>
 
@@ -43,7 +48,8 @@
         v-show="currentPage && lastPage"
         size="sm"
         class="absolute -right-6 top-1/2 inline-block -translate-y-1/2 cursor-pointer p-2"
-        @click="changePage(currentPage + 1)">
+        @click="changePage(currentPage + 1)"
+      >
         <IconArrowRight class="h-4 w-4" />
       </span>
     </div>

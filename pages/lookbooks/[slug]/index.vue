@@ -3,18 +3,21 @@
     <CmsImage
       v-if="hasTeaserImage"
       :blok="{ ...content, component: 'CmsImage' }"
-      is-teaser />
+      is-teaser
+    />
     <component
       :is="preContent.component"
       v-for="preContent in preListingContent"
       :key="preContent._uid"
-      :blok="preContent" />
+      :blok="preContent"
+    />
 
     <component
       :is="postContent.component"
       v-for="postContent in postListingContent"
       :key="postContent._uid"
-      :blok="postContent" />
+      :blok="postContent"
+    />
 
     <PageContent>
       <div class="relative">
@@ -23,7 +26,8 @@
             class="mt-4 grid w-auto grid-cols-12 gap-1"
             :refreshing="productsFetching"
             :loading="productsFetching"
-            :products="products" />
+            :products="products"
+          />
         </Intersect>
       </div>
 
@@ -31,7 +35,8 @@
         v-if="pagination"
         :current-page="pagination.page"
         :first-page="pagination.first"
-        :last-page="pagination.last" />
+        :last-page="pagination.last"
+      />
     </PageContent>
   </div>
 </template>

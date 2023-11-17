@@ -3,7 +3,8 @@
     <SideNavigationSkeleton
       v-for="index in 5"
       :key="`category-loading-${index}`"
-      :index="index" />
+      :index="index"
+    />
   </div>
   <div v-else class="mr-4" :class="{ 'animate-pulse': fetching }">
     <div>
@@ -11,28 +12,33 @@
         v-if="rootCategory"
         class="mb-4 px-12 !text-xl !font-bold"
         only-exact-active
-        :to="rootCategory.path">
+        :to="rootCategory.path"
+      >
         {{ rootCategory.name }}
       </DefaultLink>
       <ul
         v-if="'length' in categories && categories.length"
-        class="my-4 md:mt-0">
+        class="my-4 md:mt-0"
+      >
         <li
           v-for="category in categories"
           :key="`side_navigation_list_item_${category.id}`"
           class="mb-3 ml-0 px-5 last:mb-0 md:ml-3 md:px-12"
           :class="{ 'text-pink-neon': category.path === '/sale' }"
-          @click="emit('click:navigation-item')">
+          @click="emit('click:navigation-item')"
+        >
           <DefaultLink class="text-base" :to="category.path">
             {{ category.name }}
           </DefaultLink>
           <ul
             v-if="showNestedCategories && category.children?.length"
-            class="my-4">
+            class="my-4"
+          >
             <li
               v-for="child in category.children"
               :key="`side_navigation_list_item_${child.id}`"
-              class="mb-3 ml-3 last:mb-0">
+              class="mb-3 ml-3 last:mb-0"
+            >
               <DefaultLink class="!text-sm" :to="child.path">
                 {{ child.name }}
               </DefaultLink>
@@ -44,7 +50,8 @@
         v-if="rootCategory && rootCategory.path !== '/sale'"
         class="px-12 !text-xl text-pink-neon"
         only-exact-active
-        to="/sale">
+        to="/sale"
+      >
         Sale
       </DefaultLink>
     </div>

@@ -8,7 +8,8 @@
       :items="categories.slice(0, categoryLimit)"
       :search-term="term"
       :label="showLabels ? $t('search.categories') : ''"
-      @click:result="emit('click:result', $event)" />
+      @click:result="emit('click:result', $event)"
+    />
     <ProductSuggestions
       v-if="productSuggestions.length"
       class="mt-4"
@@ -16,7 +17,8 @@
       :search-term="term"
       :label="$t('search.product')"
       show-images
-      @click:result="emit('click:result', $event)" />
+      @click:result="emit('click:result', $event)"
+    />
   </div>
 </template>
 

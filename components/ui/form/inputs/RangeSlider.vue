@@ -14,10 +14,12 @@
       @drag-start="emit('drag-start')"
       @drag-end="emit('drag-end')"
       @dragging="emit('dragging')"
-      @error="emit('error')">
+      @error="emit('error')"
+    >
       <template #dot>
         <button
-          class="flex h-4 w-4 cursor-pointer rounded-full bg-primary focus:outline-none">
+          class="flex h-4 w-4 cursor-pointer rounded-full bg-primary focus:outline-none"
+        >
           <div class="m-auto h-2 w-2 rounded-full bg-white" />
         </button>
       </template>
@@ -32,7 +34,8 @@
         :format-options="{
           minimumFractionDigits: 0,
         }"
-        @update:model-value="changeRangeAtIndex($event, 0)" />
+        @update:model-value="changeRangeAtIndex($event, 0)"
+      />
       <div class="mx-auto text-center text-xs font-semibold text-secondary">
         {{ $t('filter.to') }}
       </div>
@@ -45,7 +48,8 @@
         :format-options="{
           minimumFractionDigits: 0,
         }"
-        @update:model-value="changeRangeAtIndex($event, 1)" />
+        @update:model-value="changeRangeAtIndex($event, 1)"
+      />
     </div>
   </div>
 </template>

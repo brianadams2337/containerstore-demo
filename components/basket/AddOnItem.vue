@@ -4,19 +4,22 @@
       :class="{
         'w-9': sizeMode === 'sm',
         'w-12': sizeMode === 'md',
-      }">
+      }"
+    >
       <NuxtImg
         v-if="imageHash"
         :src="imageHash"
         provider="default"
-        class="object-cover" />
+        class="object-cover"
+      />
     </div>
     <div
       class="flex-1 font-bold"
       :class="{
         'ml-4 text-xs': sizeMode === 'sm',
         'ml-8 text-sm ': sizeMode === 'md',
-      }">
+      }"
+    >
       {{ name }}
     </div>
     <div class="text-right text-xs font-bold">

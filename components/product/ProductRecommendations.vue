@@ -2,11 +2,13 @@
   <HorizontalItemsSlider
     :hide-overflow="isLookbookProducts"
     spaced-items
-    spaced-width="sm">
+    spaced-width="sm"
+  >
     <button
       v-if="isLookbookProducts && activeIndex !== 0"
       class="absolute left-0 top-60 z-10 hidden text-gray-700 focus:outline-none sm:inline-block"
-      @click="prev">
+      @click="prev"
+    >
       <IconArrowLeft class="h-5 w-5" />
     </button>
     <div ref="carousel" class="flex space-x-2" :style="carouselStyles">
@@ -38,12 +40,14 @@
         :show-add-to-wishlist="false"
         :show-available-colors="false"
         @intersect:product="collectColumnIntersection($event, idx)"
-        @click.capture="emit('click:recommendation', recommendation, idx)" />
+        @click.capture="emit('click:recommendation', recommendation, idx)"
+      />
     </div>
     <button
       v-if="isLookbookProducts"
       class="absolute right-0 top-60 hidden text-gray-700 focus:outline-none sm:inline-block"
-      @click="next">
+      @click="next"
+    >
       <IconArrowRight class="h-5 w-5" />
     </button>
   </HorizontalItemsSlider>

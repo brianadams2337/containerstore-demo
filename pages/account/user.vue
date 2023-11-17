@@ -2,7 +2,8 @@
   <AccountWrapper
     :title="$t('my_account.profile_menu')"
     is-account-page
-    class="mb-6">
+    class="mb-6"
+  >
     <Headline class="mt-8 hidden md:block" size="xl" tag="h3">
       {{ $t('my_account.profile_menu') }}
     </Headline>

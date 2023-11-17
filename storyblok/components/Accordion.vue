@@ -17,7 +17,8 @@
         v-for="entry in blok.entries"
         :key="entry._uid"
         :blok="entry"
-        :collapsed="collapseByAnchorSlug(entry.link_title)" />
+        :collapsed="collapseByAnchorSlug(entry.link_title)"
+      />
     </div>
   </div>
 </template>

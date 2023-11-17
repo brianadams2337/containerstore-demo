@@ -10,7 +10,8 @@
       <ProductCareSymbol
         v-for="symbol in careInfo"
         :key="symbol.id"
-        :symbol="symbol" />
+        :symbol="symbol"
+      />
     </div>
   </div>
   <div v-else>

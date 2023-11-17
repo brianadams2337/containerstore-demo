@@ -4,13 +4,15 @@
     :disable-popover-content="isPopoverContentDisabled"
     content-wrapper-class="mt-8"
     @mouseenter="openBasketFlyout"
-    @mouseleave="closeBasketFlyout">
+    @mouseleave="closeBasketFlyout"
+  >
     <template #action>
       <DefaultLink
         data-test-id="basket-link"
         :to="routeList.basket"
         class="relative"
-        type="loud">
+        type="loud"
+      >
         <FloatingBadge v-if="items?.length" class="-right-2 -top-2">
           {{ countWithoutSoldOutItems }}
         </FloatingBadge>
@@ -18,29 +20,34 @@
       </DefaultLink>
       <div
         v-if="isBasketFlyoutOpen"
-        class="absolute -bottom-3 h-0.5 w-8 bg-black" />
+        class="absolute -bottom-3 h-0.5 w-8 bg-black"
+      />
     </template>
     <template #content>
       <client-only>
         <div
           v-if="basketItems?.standAlone?.length"
-          class="max-h-xs overflow-y-auto overscroll-none">
+          class="max-h-xs overflow-y-auto overscroll-none"
+        >
           <article v-for="item in basketItems?.standAlone" :key="item.key">
             <BasketCardPopover :items="[item]" is-light-variant />
           </article>
         </div>
         <div
           v-if="groupIds?.length"
-          class="max-h-xs overflow-y-auto overscroll-none">
+          class="max-h-xs overflow-y-auto overscroll-none"
+        >
           <article v-for="groupId in groupIds" :key="groupId">
             <BasketCardPopover
               :items="basketItems.groups[groupId]"
-              is-light-variant />
+              is-light-variant
+            />
           </article>
         </div>
         <div
           v-if="!items?.length"
-          class="flex w-full flex-col items-center justify-center py-4">
+          class="flex w-full flex-col items-center justify-center py-4"
+        >
           <div class="w-2/3">
             <p class="text-center text-sm">
               {{ $t('basket.no_items_info') }}

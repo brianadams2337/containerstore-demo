@@ -7,7 +7,8 @@
     }"
     raw
     class="inline-flex items-center px-4 py-2 text-center text-sm"
-    @click="scrollToTop">
+    @click="scrollToTop"
+  >
     <slot />
   </DefaultLink>
 </template>

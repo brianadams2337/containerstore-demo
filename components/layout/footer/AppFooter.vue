@@ -2,13 +2,15 @@
   <footer id="footer" class="w-full">
     <FooterPromises />
     <div
-      class="container flex flex-col justify-between gap-6 px-6 py-8 md:flex-row xl:gap-16">
+      class="container flex flex-col justify-between gap-6 px-6 py-8 md:flex-row xl:gap-16"
+    >
       <div
         v-if="footerContent.text"
         class="md:pr-16"
         :class="{
           'order-last': footerContent.align_right,
-        }">
+        }"
+      >
         <CmsText
           :blok="{
             body: footerContent.text,
@@ -16,12 +18,14 @@
             component: 'CmsText',
           }"
           class="text-xs"
-          no-margin-top />
+          no-margin-top
+        />
       </div>
       <div
         v-for="group in footerContent.link_groups"
         :key="group._uid"
-        class="md:pr-8">
+        class="md:pr-8"
+      >
         <h5 v-if="group.title" class="mb-3 text-sm font-bold">
           {{ group.title }}
         </h5>
@@ -29,12 +33,14 @@
           v-for="link in group.links"
           :key="link._uid"
           :blok="link"
-          class="!block py-2 text-xs font-semibold text-gray-750 md:py-1" />
+          class="!block py-2 text-xs font-semibold text-gray-750 md:py-1"
+        />
       </div>
       <div
         v-for="tree in footerNavigationTrees"
         :key="`footer-navigation-tree-${tree.id}`"
-        class="flex flex-col">
+        class="flex flex-col"
+      >
         <h5 class="mb-3 text-sm font-bold">
           {{ tree.name }}
         </h5>
@@ -42,7 +48,8 @@
           v-for="navTree in tree.items"
           :key="`footer-navigation-sub-tree-${navTree.id}`"
           :navigation-item="navTree"
-          class="block py-2 text-xs font-semibold text-gray-750 md:py-1" />
+          class="block py-2 text-xs font-semibold text-gray-750 md:py-1"
+        />
       </div>
     </div>
     <div v-if="footerContent.social_media" class="container pb-8">
@@ -50,14 +57,16 @@
         <DefaultLink
           v-for="social in footerContent.social_media"
           :key="social._uid"
-          :to="social.url?.cached_url ?? {}">
+          :to="social.url?.cached_url ?? {}"
+        >
           <component :is="`IconSocial${getSocialName(social.type)}`" />
         </DefaultLink>
       </div>
     </div>
     <div
       v-if="footerContent.text_bottom"
-      class="bg-primary p-2 text-center text-xs text-secondary">
+      class="bg-primary p-2 text-center text-xs text-secondary"
+    >
       {{ footerContent.text_bottom }}
     </div>
   </footer>

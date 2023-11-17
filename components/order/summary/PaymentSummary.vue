@@ -1,10 +1,12 @@
 <template>
   <div
     id="paymentHeader"
-    class="rounded-t-none border border-gray-350 bg-white md:rounded-md">
+    class="rounded-t-none border border-gray-350 bg-white md:rounded-md"
+  >
     <div class="px-5 pt-5 text-xs">
       <div
-        class="flex flex-col border-b border-gray-350 font-semibold text-primary">
+        class="flex flex-col border-b border-gray-350 font-semibold text-primary"
+      >
         <div class="mb-3 flex flex-row justify-between">
           <p class="text-secondary">
             {{ $t('my_account.orders.order_value') }}
@@ -33,12 +35,14 @@
     </div>
     <div
       v-if="paidWith"
-      class="border-t border-t-gray-350 bg-secondary-450 px-5 py-7">
+      class="border-t border-t-gray-350 bg-secondary-450 px-5 py-7"
+    >
       <p class="text-xs font-semibold text-secondary">
         {{ $t('my_account.orders.paid_with') }}:
         <PaymentIcon
           :paid-with="paidWith"
-          class="text-sm font-bold text-primary" />
+          class="text-sm font-bold text-primary"
+        />
       </p>
     </div>
   </div>

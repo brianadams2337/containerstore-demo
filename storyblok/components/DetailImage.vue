@@ -6,7 +6,8 @@
         provider="storyblok"
         :src="blok.image.filename"
         :alt="blok.image.alt"
-        :sizes="sizes" />
+        :sizes="sizes"
+      />
     </StoryblokLink>
   </div>
 </template>

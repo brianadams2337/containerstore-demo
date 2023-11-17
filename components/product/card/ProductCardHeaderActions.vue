@@ -1,6 +1,7 @@
 <template>
   <div
-    class="absolute left-auto right-0 top-0 z-20 flex h-8 w-auto cursor-pointer p-1 md:p-3">
+    class="absolute left-auto right-0 top-0 z-20 flex h-8 w-auto cursor-pointer p-1 md:p-3"
+  >
     <client-only>
       <WishlistToggle :product="product" />
     </client-only>

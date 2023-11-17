@@ -4,7 +4,8 @@
       <slot name="relative-reductions">
         <span
           v-if="showBadge && totalReductions"
-          class="inline-block rounded-sm bg-red-500 px-2 py-1 text-sm text-white">
+          class="inline-block rounded-sm bg-red-500 px-2 py-1 text-sm text-white"
+        >
           -{{ totalReductions.relative * 100 }}%
         </span>
       </slot>
@@ -16,20 +17,23 @@
         <span
           v-if="totalReductions.absoluteWithTax"
           class="text-sm font-medium text-primary line-through"
-          data-test-id="initialProductPrice">
+          data-test-id="initialProductPrice"
+        >
           {{ toCurrency(price.withTax + totalReductions.absoluteWithTax) }}
         </span>
       </p>
       <slot name="tax-info">
         <div
           v-if="showTaxInfo"
-          class="text-right text-xs text-gray-700 md:text-left">
+          class="text-right text-xs text-gray-700 md:text-left"
+        >
           {{ $t('price.including_vat') }}
         </div>
       </slot>
       <p
         v-if="appliedReductions.length && hasLowestPriorPrice"
-        class="mt-0.5 text-sm text-gray-700">
+        class="mt-0.5 text-sm text-gray-700"
+      >
         {{ $t('price.best_price_30d') }}
         {{ toCurrency(lowestPriorPrice.withTax ?? 0) }}
         ({{ (lowestPriorPrice.relativeDifferenceToPrice ?? 0) * 100 }}%)

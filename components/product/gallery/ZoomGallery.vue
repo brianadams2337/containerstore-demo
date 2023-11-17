@@ -5,18 +5,21 @@
       <div class="relative h-full flex-1 overflow-hidden">
         <button
           class="absolute bottom-3 z-10 ml-10 text-lg sm:bottom-auto sm:top-2/4"
-          @click="navigateToImage('prev')">
+          @click="navigateToImage('prev')"
+        >
           <IconArrowLeft class="h-5 w-5" />
         </button>
         <div
           ref="zoomGalleryRef"
-          class="flex h-full snap-x snap-mandatory overflow-x-auto scrollbar-hide">
+          class="flex h-full snap-x snap-mandatory overflow-x-auto scrollbar-hide"
+        >
           <div
             v-for="(image, idx) in images"
             :key="image.hash"
             class="max-h-full min-w-full snap-center transition-transform"
             :class="getClasses(idx)"
-            :style="style">
+            :style="style"
+          >
             <Intersect :threshold="0.5" @enter="handleIntersect(idx)">
               <ProductImage
                 :hash="image.hash"
@@ -24,23 +27,27 @@
                 class="m-auto h-full"
                 sizes="xs:100vw sm:100vw md:100vw"
                 @mousemove="updateZoomYOffset"
-                @click="toggleDoubleZoom" />
+                @click="toggleDoubleZoom"
+              />
             </Intersect>
           </div>
         </div>
         <button
           class="absolute bottom-3 right-0 z-10 mr-10 text-lg sm:bottom-auto sm:top-2/4"
-          @click="navigateToImage('next')">
+          @click="navigateToImage('next')"
+        >
           <IconArrowRight class="h-5 w-5" />
         </button>
       </div>
 
       <div
-        class="absolute bottom-0 left-2/4 w-full -translate-x-2/4 sm:bottom-6 sm:w-auto">
+        class="absolute bottom-0 left-2/4 w-full -translate-x-2/4 sm:bottom-6 sm:w-auto"
+      >
         <ThumbnailSlider
           :images="images"
           :active-index="currentIndex"
-          @click:thumbnail="handleThumbnailClick($event)" />
+          @click:thumbnail="handleThumbnailClick($event)"
+        />
       </div>
     </div>
   </Modal>

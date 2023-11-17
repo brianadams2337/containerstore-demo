@@ -7,14 +7,16 @@
             :is="leftColumn.component"
             v-for="leftColumn in blok.column_left"
             :key="leftColumn._uid"
-            :blok="leftColumn" />
+            :blok="leftColumn"
+          />
         </div>
         <div class="w-full">
           <component
             :is="rightColumn.component"
             v-for="rightColumn in blok.column_right"
             :key="rightColumn._uid"
-            :blok="rightColumn" />
+            :blok="rightColumn"
+          />
         </div>
       </div>
     </div>

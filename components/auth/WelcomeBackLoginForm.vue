@@ -1,12 +1,14 @@
 <template>
   <VerticalAccordion
     v-if="lastLoggedInUser.email"
-    :tabs="[$t('login_page.welcome_back.title', { name })]">
+    :tabs="[$t('login_page.welcome_back.title', { name })]"
+  >
     <template #0>
       <LoginForm />
       <Button
         class="group relative text-left text-sm text-gray-600 hover:text-black"
-        @click="removeLastLoggedInUser()">
+        @click="removeLastLoggedInUser()"
+      >
         <span>
           {{ $t('login_page.welcome_back.not_user', { name }) }}
         </span>

@@ -12,7 +12,8 @@
             v-for="index in 3"
             :key="`image-loading-${index}`"
             type="headline"
-            is-full-width />
+            is-full-width
+          />
         </div>
       </div>
     </div>

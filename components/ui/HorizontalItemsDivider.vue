@@ -7,7 +7,8 @@
         :key="item.value"
         :to="{ name: 'product' }"
         :raw="tag === DividerItemTag.DEFAULT_LINK"
-        class="text-sm font-light uppercase leading-none">
+        class="text-sm font-light uppercase leading-none"
+      >
         {{ item.label || item.value }}
         <template v-if="showDividerTag(idx, items.length)">/</template>
       </component>
@@ -18,7 +19,8 @@
 <script
   setup
   lang="ts"
-  generic="T extends { value: string; label?: string; to?: RouteLocationRaw }">
+  generic="T extends { value: string; label?: string; to?: RouteLocationRaw }"
+>
 import type { RouteLocationRaw } from '#vue-router'
 import { DividerItemTag } from '#imports'
 

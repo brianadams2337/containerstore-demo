@@ -13,7 +13,8 @@
         :has-errors="!isValid"
         required
         :readonly="isSubmitting"
-        @change="v.email.$touch()" />
+        @change="v.email.$touch()"
+      />
     </ValidatedInputGroup>
 
     <ValidatedInputGroup v-slot="{ isValid }" :errors="v.first_name.$errors">
@@ -24,7 +25,8 @@
         :has-errors="!isValid"
         required
         :readonly="isSubmitting"
-        @change="v.email.$touch()" />
+        @change="v.email.$touch()"
+      />
     </ValidatedInputGroup>
 
     <ValidatedInputGroup v-slot="{ isValid }" :errors="v.last_name.$errors">
@@ -35,14 +37,16 @@
         :has-errors="!isValid"
         required
         :readonly="isSubmitting"
-        @change="v.email.$touch()" />
+        @change="v.email.$touch()"
+      />
     </ValidatedInputGroup>
 
     <AppButton
       class="w-full"
       :disabled="isSubmitting"
       :loading="isSubmitting"
-      @click="onSubmit()">
+      @click="onSubmit()"
+    >
       {{ $t('login_page.guest_login.submit') }}
     </AppButton>
   </form>

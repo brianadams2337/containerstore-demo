@@ -10,7 +10,8 @@
       :loop="blok.loop"
       :src="blok.video.filename"
       :poster="videoPoster"
-      @click="clickObserver" />
+      @click="clickObserver"
+    />
   </div>
 </template>
 

@@ -1,11 +1,13 @@
 <template>
   <div
-    class="relative m-3 flex flex-col rounded border p-3 text-primary hover:bg-secondary-450">
+    class="relative m-3 flex flex-col rounded border p-3 text-primary hover:bg-secondary-450"
+  >
     <DefaultLink
       v-if="mainItem"
       :to="getProductDetailRoute(mainItem.product)"
       class="flex text-sm"
-      :class="{ 'opacity-40': isSoldOut }">
+      :class="{ 'opacity-40': isSoldOut }"
+    >
       <div class="mr-5 flex flex-1">
         <div class="flex-none shrink-0">
           <div class="w-16">
@@ -15,12 +17,14 @@
               :alt="name"
               provider="default"
               class="object-cover"
-              height="144" />
+              height="144"
+            />
           </div>
         </div>
         <div
           class="ml-2 flex grow flex-col justify-center"
-          :class="{ 'flex-row': isLightVariant }">
+          :class="{ 'flex-row': isLightVariant }"
+        >
           <p class="text-sm font-semibold">
             <span v-if="name" class="text-xs text-secondary">{{ name }}</span>
             <br />
@@ -60,7 +64,8 @@
               priceWithTax &&
               priceWithTax > -1
             "
-            class="text-sm text-gray-500 line-through">
+            class="text-sm text-gray-500 line-through"
+          >
             {{ toCurrency(priceWithTax + reducedPrice) }}
           </p>
           <Headline
@@ -68,7 +73,8 @@
             tag="p"
             size="base"
             is-uppercase
-            :class="{ 'text-red-500': reducedPrice }">
+            :class="{ 'text-red-500': reducedPrice }"
+          >
             {{ toCurrency(priceWithTax) }}
           </Headline>
           <p class="text-xs text-secondary">

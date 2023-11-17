@@ -2,17 +2,20 @@
   <div
     class="relative h-full"
     @mouseenter="emit('mouseenter')"
-    @mouseleave="emit('mouseleave')">
+    @mouseleave="emit('mouseleave')"
+  >
     <div class="inline-flex h-full w-full items-center justify-center">
       <slot name="action" />
     </div>
     <FadeInFromBottomTransition appear>
       <div
         v-show="!disablePopoverContent && isOpen"
-        class="absolute right-0 z-30 min-w-max overflow-hidden">
+        class="absolute right-0 z-30 min-w-max overflow-hidden"
+      >
         <div
           class="overflow-hidden rounded border border-black bg-white"
-          :class="contentWrapperClass">
+          :class="contentWrapperClass"
+        >
           <slot name="content" />
         </div>
       </div>

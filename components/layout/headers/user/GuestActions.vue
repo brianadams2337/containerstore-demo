@@ -5,7 +5,8 @@
         type="secondary"
         class="w-full"
         :to="routeList.signin"
-        @click="closeUserFlyout">
+        @click="closeUserFlyout"
+      >
         {{ $t('global.sign_in') }}
       </AppButton>
     </div>
@@ -16,7 +17,8 @@
       <AppButton
         type="ghost"
         :to="routeList.signin"
-        class="text-xs font-semibold leading-5 !tracking-wide">
+        class="text-xs font-semibold leading-5 !tracking-wide"
+      >
         {{ $t('global.register') }}
       </AppButton>
     </div>

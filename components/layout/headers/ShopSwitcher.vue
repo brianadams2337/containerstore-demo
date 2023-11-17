@@ -3,11 +3,13 @@
     v-slot="{ isOpen, list }"
     :value="currentShop?.path"
     name="language-switch"
-    class="shrink-0">
+    class="shrink-0"
+  >
     <ListboxButton
       class="h-full"
       :list-name="list"
-      data-test-id="language-listbox">
+      data-test-id="language-listbox"
+    >
       <div class="text-xs uppercase text-gray-350">
         <span v-if="selectedCountry">{{ selectedCountry }}</span>
         <span v-if="selectedCountry" class="mx-1">|</span>
@@ -18,22 +20,26 @@
       <transition
         leave-active-class="transition ease-in duration-100"
         leave-from-class="opacity-100"
-        leave-to-class="opacity-0">
+        leave-to-class="opacity-0"
+      >
         <ListboxOptions
           v-if="isOpen"
-          class="absolute right-0 top-0 z-60 max-h-32 w-32 overflow-y-auto bg-white shadow-md">
+          class="absolute right-0 top-0 z-60 max-h-32 w-32 overflow-y-auto bg-white shadow-md"
+        >
           <ListboxOption
             v-for="{ shopId, path, locale } in availableShops"
             :key="shopId"
             class="text-xs"
-            :list-name="list">
+            :list-name="list"
+          >
             <AppButton
               :key="`${locale}-locale`"
               type="ghost"
               is-full-width
               class="!justify-start rounded-none px-4 py-2 text-xs uppercase hover:bg-gray-200"
               :class="{ 'font-bold': locale === currentShop?.locale }"
-              @click="changeShop(path)">
+              @click="changeShop(path)"
+            >
               {{ getShopName(locale) }}
             </AppButton>
           </ListboxOption>

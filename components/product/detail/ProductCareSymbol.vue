@@ -5,7 +5,8 @@
       v-if="iconComponentName"
       :key="symbol.label"
       class="h-5 w-5 md:h-6 md:w-6"
-      :alt="symbol.label" />
+      :alt="symbol.label"
+    />
   </div>
 </template>
 

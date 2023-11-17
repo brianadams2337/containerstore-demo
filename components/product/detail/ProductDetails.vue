@@ -3,26 +3,32 @@
     <!-- desktop tabular -->
     <div v-show="isGreaterOrEquals('sm')" class="mt-10 xl:w-[827px]">
       <div
-        class="relative box-border flex h-12 justify-between rounded-md border border-gray-350">
+        class="relative box-border flex h-12 justify-between rounded-md border border-gray-350"
+      >
         <div
           class="absolute h-full w-1/3 rounded-md border border-gray-900 transition-all duration-300 ease-in-out"
-          :style="{ left: slidingWindowOffset + '%' }" />
+          :style="{ left: slidingWindowOffset + '%' }"
+        />
         <ProductDetailTabHeading
           v-for="(tab, idx) in tabs"
           :key="tab"
           :heading="$t(tab)"
           :is-active="selectedIndex === idx"
-          @click:tab="selectedIndex = idx" />
+          @click:tab="selectedIndex = idx"
+        />
       </div>
       <div class="mt-9 min-h-2xs leading-normal md:text-xs">
         <ProductDescription
           v-if="tabs[selectedIndex] === 'pdp.product_info_heading'"
-          v-bind="{ description, baseInfos, fitInfos }" />
+          v-bind="{ description, baseInfos, fitInfos }"
+        />
         <ProductCompositionAndCare
           v-if="tabs[selectedIndex] === 'pdp.composition_care_heading'"
-          v-bind="{ materialInfo, careInfo }" />
+          v-bind="{ materialInfo, careInfo }"
+        />
         <ProductShippingAndReturn
-          v-if="tabs[selectedIndex] === 'pdp.shipping_return_heading'" />
+          v-if="tabs[selectedIndex] === 'pdp.shipping_return_heading'"
+        />
       </div>
     </div>
 
@@ -34,11 +40,13 @@
             <ProductDescription v-bind="{ description, baseInfos, fitInfos }" />
           </ProductDetailAccordionEntry>
           <ProductDetailAccordionEntry
-            :title="$t('pdp.composition_care_heading')">
+            :title="$t('pdp.composition_care_heading')"
+          >
             <ProductCompositionAndCare v-bind="{ materialInfo, careInfo }" />
           </ProductDetailAccordionEntry>
           <ProductDetailAccordionEntry
-            :title="$t('pdp.shipping_return_heading')">
+            :title="$t('pdp.shipping_return_heading')"
+          >
             <ProductShippingAndReturn />
           </ProductDetailAccordionEntry>
         </div>

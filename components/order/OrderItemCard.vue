@@ -10,7 +10,8 @@
             :modifiers="{ bg: 'F8F8F8' }"
             provider="default"
             class="h-full object-contain"
-            sizes="xs:80px sm:112px lg:192px" />
+            sizes="xs:80px sm:112px lg:192px"
+          />
         </div>
         <div class="my-3 flex w-3/5 grow flex-col space-y-0.5">
           <p class="whitespace-normal text-sm font-semibold">
@@ -31,7 +32,8 @@
             class="text-right"
             :class="{
               'line-through': reducedPrice !== undefined,
-            }">
+            }"
+          >
             {{
               toCurrency(
                 quantity * (reducedPrice ? price + reducedPrice : price),
@@ -47,7 +49,8 @@
               lowestPriorPrice?.withTax &&
               lowestPriorPrice?.relativeDifferenceToPrice
             "
-            class="mt-0.5 text-right text-sm text-gray-400">
+            class="mt-0.5 text-right text-sm text-gray-400"
+          >
             {{ $t('price.best_price_30d') }}
             {{ toCurrency(lowestPriorPrice.withTax) }}
             ({{ lowestPriorPrice.relativeDifferenceToPrice * 100 }}%)

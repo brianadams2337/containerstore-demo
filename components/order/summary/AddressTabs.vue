@@ -3,11 +3,13 @@
     <nav
       role="tablist"
       :class="tabsClass"
-      class="flex flex-wrap justify-center border-b border-b-secondary-450 px-5 text-center text-sm font-semibold">
+      class="flex flex-wrap justify-center border-b border-b-secondary-450 px-5 text-center text-sm font-semibold"
+    >
       <div
         v-for="({ name, label }, idx) in items"
         :key="`tab-${name}-${idx}`"
-        class="mx-auto">
+        class="mx-auto"
+      >
         <AppButton
           :id="`tab-${name}-${idx}`"
           :aria-controls="`content-${name}`"
@@ -15,7 +17,8 @@
           type="ghost"
           class="!p-3.5"
           :class="activeTab === idx ? 'text-primary' : 'text-secondary'"
-          @click="toggleTab(idx)">
+          @click="toggleTab(idx)"
+        >
           {{ label }}
         </AppButton>
         <div v-if="activeTab === idx" class="mx-auto h-0.5 w-8 bg-primary" />
@@ -27,7 +30,8 @@
         :id="`content-${name}`"
         :key="`content-${name}`"
         role="tabpanel"
-        tabindex="-1">
+        tabindex="-1"
+      >
         <slot v-if="activeTab === idx" :name="name"></slot>
       </article>
     </section>

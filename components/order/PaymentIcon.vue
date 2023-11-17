@@ -3,7 +3,8 @@
     :is="icon.component"
     v-if="icon.component"
     class="h-8"
-    :class="{ 'w-10': icon.width === 10, 'w-20': icon.width === 20 }" />
+    :class="{ 'w-10': icon.width === 10, 'w-20': icon.width === 20 }"
+  />
   <span v-else class="capitalize">{{ paidWith }}</span>
 </template>
 

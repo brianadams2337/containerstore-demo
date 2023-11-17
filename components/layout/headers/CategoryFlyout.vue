@@ -2,13 +2,15 @@
   <div>
     <div
       id="flyout-menu-items-container-content"
-      :key="flyoutMenuCategory.slug">
+      :key="flyoutMenuCategory.slug"
+    >
       <Headline size="sm" tag="p">
         <DefaultLink
           :to="routeList.home"
           type="quiet"
           class="text-sm"
-          @click="forceCloseFlyout">
+          @click="forceCloseFlyout"
+        >
           {{ flyoutMenuCategory.name }}
         </DefaultLink>
       </Headline>
@@ -20,7 +22,8 @@
             badge-size="sm"
             type="quieter"
             class="text-gray-750"
-            @click="forceCloseFlyout">
+            @click="forceCloseFlyout"
+          >
             {{ item.name }}
           </DefaultLink>
         </template>
@@ -30,12 +33,14 @@
       <div
         v-if="category.children?.length"
         :id="`flyout-menu-items-container-content-${category.slug}`"
-        :key="category.slug">
+        :key="category.slug"
+      >
         <Headline size="sm" tag="p">
           <DefaultLink
             :to="category.path"
             type="quiet"
-            @click="forceCloseFlyout">
+            @click="forceCloseFlyout"
+          >
             {{ category.name }}
           </DefaultLink>
         </Headline>
@@ -46,7 +51,8 @@
               badge-placement="top"
               badge-size="sm"
               type="quieter"
-              @click="forceCloseFlyout">
+              @click="forceCloseFlyout"
+            >
               {{ item.name }}
             </DefaultLink>
           </template>

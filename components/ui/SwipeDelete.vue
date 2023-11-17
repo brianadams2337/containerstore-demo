@@ -1,18 +1,21 @@
 <template>
   <div
     ref="container"
-    class="relative m-auto flex w-full items-center justify-center overflow-hidden">
+    class="relative m-auto flex w-full items-center justify-center overflow-hidden"
+  >
     <div
       ref="content"
       class="z-10 flex h-full w-full items-center justify-center bg-white"
       :class="{ 'transition-all duration-200 ease-linear': !isSwiping }"
-      :style="{ transform: `translateX(${contentOffset})`, opacity }">
+      :style="{ transform: `translateX(${contentOffset})`, opacity }"
+    >
       <slot></slot>
     </div>
     <div
       v-show="isSwiping"
       class="absolute right-0 flex h-full items-center justify-center bg-red-500"
-      :style="{ width: actionWidth, opacity }">
+      :style="{ width: actionWidth, opacity }"
+    >
       <IconTrash class="h-5 w-5" />
     </div>
   </div>

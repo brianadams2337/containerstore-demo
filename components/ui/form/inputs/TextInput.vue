@@ -9,7 +9,8 @@
       v-bind="{ required, readonly, type, placeholder, autocomplete }"
       class="w-full rounded border-2 p-3 text-sm font-medium placeholder:text-secondary focus:outline-none focus:ring-0"
       :class="classes"
-      :maxlength="maxLength" />
+      :maxlength="maxLength"
+    />
     <p v-if="hint" class="mt-1 text-xs">{{ hint }}</p>
   </div>
 </template>

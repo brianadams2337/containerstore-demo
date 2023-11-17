@@ -7,7 +7,8 @@
           size="sm"
           type="quieter"
           class="capitalize !text-black hover:underline"
-          only-exact-active>
+          only-exact-active
+        >
           <Headline v-if="isActive(link.to)" size="sm">
             {{ link.value }}
           </Headline>
@@ -18,7 +19,8 @@
         <span
           v-if="showDividerTag(idx, items.length)"
           :key="`span-${link.value}`"
-          class="-ml-1 text-sm font-light">
+          class="-ml-1 text-sm font-light"
+        >
           /
         </span>
       </template>

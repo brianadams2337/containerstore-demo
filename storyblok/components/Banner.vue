@@ -5,21 +5,25 @@
     v-bind="bindings"
     id="banner"
     v-editable="blok"
-    class="sticky text-sm">
+    class="sticky text-sm"
+  >
     <slot :close="close">
       <transition
         leave-from-class="opacity-100 translate-y-0"
         leave-to-class="opacity-0 -translate-y-4"
-        leave-active-class="transform transition ease-out duration-300 ">
+        leave-active-class="transform transition ease-out duration-300 "
+      >
         <Intersect
           v-if="isOpen"
           :threshold="0.5"
           class="relative z-50 flex w-full items-center"
           :class="classes"
-          @enter="onIntersect">
+          @enter="onIntersect"
+        >
           <section
             class="container flex flex-col items-center justify-center gap-2 text-center sm:relative sm:flex-row"
-            :class="{ 'sm:flex-col': hasScrollableLinks }">
+            :class="{ 'sm:flex-col': hasScrollableLinks }"
+          >
             <slot name="body">
               <div class="md:flex md:w-full md:items-center md:justify-center">
                 <CmsText
@@ -27,16 +31,19 @@
                     body: blok.body,
                     _uid: blok._uid,
                     component: 'CmsText',
-                  }" />
+                  }"
+                />
                 <Countdown
                   v-if="blok.countdown_until"
                   :until="blok.countdown_until"
                   class="my-4 md:ml-5"
-                  @finished="close" />
+                  @finished="close"
+                />
                 <ScrollableLinkList
                   v-if="hasScrollableLinks"
                   class="ml-5"
-                  :links="blok.links ?? []" />
+                  :links="blok.links ?? []"
+                />
               </div>
             </slot>
 
@@ -46,7 +53,8 @@
                 size="xs"
                 type="ghost"
                 class="absolute right-6"
-                @click="close">
+                @click="close"
+              >
                 <template #icon="{ _class }">
                   <IconClose :class="_class" />
                 </template>

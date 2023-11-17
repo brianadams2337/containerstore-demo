@@ -5,7 +5,8 @@
         <NuxtImg
           :src="imageHash"
           provider="default"
-          class="max-h-full max-w-full" />
+          class="max-h-full max-w-full"
+        />
       </div>
       <div class="my-2 flex w-3/5 flex-col justify-between">
         <p class="text-sm">
@@ -36,7 +37,8 @@
             lowestPriorPrice?.withTax &&
             lowestPriorPrice?.relativeDifferenceToPrice
           "
-          class="mt-0.5 text-right text-sm text-gray-700">
+          class="mt-0.5 text-right text-sm text-gray-700"
+        >
           {{ $t('price.best_price_30d') }}
           {{ toCurrency(lowestPriorPrice.withTax) }}
           ({{ lowestPriorPrice.relativeDifferenceToPrice * 100 }} %)

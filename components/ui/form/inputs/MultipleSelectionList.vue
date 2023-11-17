@@ -9,14 +9,16 @@
           selectItem,
           deselectItem,
           isActive: isActive(item),
-        }" />
+        }"
+      />
     </div>
     <AppButton
       v-if="limit != null && !showAll && items.length > limit"
       size="sm"
       type="ghost"
       class="mr-auto py-0 text-xs font-semibold text-secondary"
-      @click="showAll = true">
+      @click="showAll = true"
+    >
       {{ $t('filter.show_all') }}
     </AppButton>
   </div>
@@ -25,7 +27,8 @@
 <script
   setup
   lang="ts"
-  generic="Item extends { value: string | number; [key: string]: any }">
+  generic="Item extends { value: string | number; [key: string]: any }"
+>
 const props = defineProps({
   items: {
     type: Array as PropType<Item[]>,

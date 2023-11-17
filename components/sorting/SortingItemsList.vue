@@ -3,7 +3,8 @@
     <li
       v-for="item in listItems"
       :key="item.name"
-      data-test-id="sorting-option">
+      data-test-id="sorting-option"
+    >
       <DefaultLink
         type="whisper"
         :only-exact-active="true"
@@ -11,7 +12,8 @@
           'font-bold text-gray-800': item.name === selected,
         }"
         :to="item.target"
-        @click="emit('click:item', item)">
+        @click="emit('click:item', item)"
+      >
         {{ $t(`sorting_select.${item.name}`) }}
       </DefaultLink>
     </li>

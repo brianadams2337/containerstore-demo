@@ -28,7 +28,8 @@
           </div>
           <OspDeliveryDate
             v-show="deliveryDate && isLessThan('sm')"
-            :delivery-date="deliveryDate" />
+            :delivery-date="deliveryDate"
+          />
           <div class="my-8 flex space-x-4 sm:mt-12">
             <AppButton type="tertiary" :to="routeList.home">
               {{ $t('basket.continue_shopping_label') }}
@@ -36,7 +37,8 @@
             <AppButton
               v-if="orderData.id"
               type="primary"
-              :to="getOrderDetailsRoute(orderData.id)">
+              :to="getOrderDetailsRoute(orderData.id)"
+            >
               {{ $t('osp.order_details') }}
             </AppButton>
           </div>
@@ -51,18 +53,21 @@
                 size="sm"
                 tag="h2"
                 is-uppercase
-                class="mb-3 mt-8 block sm:hidden">
+                class="mb-3 mt-8 block sm:hidden"
+              >
                 {{ $t('osp.order_overview') }}
               </Headline>
 
               <ul v-if="orderItems">
                 <li
                   v-for="({ variant, product, price }, idx) in orderItems"
-                  :key="idx">
+                  :key="idx"
+                >
                   <OspProductCard
                     v-if="product.advancedAttributes"
                     v-bind="{ variant, product, price }"
-                    :quantity="getItemQuantity(variant.id)" />
+                    :quantity="getItemQuantity(variant.id)"
+                  />
                 </li>
               </ul>
             </div>

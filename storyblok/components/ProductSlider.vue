@@ -13,7 +13,8 @@
     <HorizontalItemsSlider
       class="mt-4"
       with-arrows
-      data-test-id="horizontal-product-slider">
+      data-test-id="horizontal-product-slider"
+    >
       <Product
         v-for="(product, index) in products"
         :key="`product-slider-item-${product.id}`"
@@ -21,13 +22,15 @@
         :product="product"
         :fetching="fetching"
         @click:product="trackProductClick({ product: $event, index })"
-        @intersect:product="trackIntersection({ product: $event, index })" />
+        @intersect:product="trackIntersection({ product: $event, index })"
+      />
 
       <template #prev-button="{ prev, isPrevEnabled }">
         <button
           class="absolute left-0 top-[40%] rounded-sm bg-black text-white disabled:hidden sm:left-14"
           :disabled="!isPrevEnabled"
-          @click="prev(sliderOffset)">
+          @click="prev(sliderOffset)"
+        >
           <IconArrowLeft class="h-8 w-8 p-1.5" />
         </button>
       </template>
@@ -35,7 +38,8 @@
         <button
           class="absolute right-0 top-[40%] rounded-sm bg-black text-white disabled:hidden sm:right-14"
           :disabled="!isNextEnabled"
-          @click="next(sliderOffset)">
+          @click="next(sliderOffset)"
+        >
           <IconArrowRight class="h-8 w-8 p-1.5" />
         </button>
       </template>

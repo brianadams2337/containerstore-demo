@@ -4,7 +4,8 @@
     :to="pathParams.path"
     :type="type"
     :open-in-new-tab="pathParams.openInNew"
-    @mouseenter="$emit('mouseenter:navigation-item')">
+    @mouseenter="$emit('mouseenter:navigation-item')"
+  >
     {{ displayName }}
   </DefaultLink>
 </template>

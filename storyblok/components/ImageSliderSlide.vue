@@ -6,25 +6,29 @@
         :src="blok.image.filename"
         sizes="xs:80vw sm:25vw md:25vw lg:25vw xl:25vw xxl:25vw 2xl:25vw"
         provider="storyblok"
-        class="w-full" />
+        class="w-full"
+      />
     </Intersect>
     <div class="mt-4 flex flex-col">
       <div
-        class="pb-1 text-2xs font-bold leading-4 sm:pb-0 sm:text-xs sm:leading-6">
+        class="pb-1 text-2xs font-bold leading-4 sm:pb-0 sm:text-xs sm:leading-6"
+      >
         {{ blok.topline || '&nbsp;' }}
       </div>
       <Headline
         :size="headlineSize"
         :badge="blok.is_new ? 'NEW' : undefined"
         is-uppercase
-        tag="p">
+        tag="p"
+      >
         {{ blok.headline }}
       </Headline>
       <DefaultLink
         v-if="blok.cta_url.cached_url"
         class="mt-5 text-base font-bold underline"
         :to="blok.cta_url.cached_url"
-        @click="clickObserver">
+        @click="clickObserver"
+      >
         {{ blok.cta_label }}
       </DefaultLink>
     </div>

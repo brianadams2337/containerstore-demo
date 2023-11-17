@@ -20,13 +20,15 @@
           v-if="isGuest"
           type="ghost"
           class="text-xs"
-          @click="!isSubmitting && logout()">
+          @click="!isSubmitting && logout()"
+        >
           {{ $t('global.sign_out') }}
         </AppButton>
         <DefaultLink
           v-else
           :to="routeList.account"
-          @click="closeSideNavigation">
+          @click="closeSideNavigation"
+        >
           <div class="inline-flex items-center">
             <IconUserSecondary class="mr-1 h-3 w-3" />
             <span class="font-medium">{{ $t('navigation.my_account') }}</span>

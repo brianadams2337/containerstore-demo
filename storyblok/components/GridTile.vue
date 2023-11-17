@@ -4,16 +4,19 @@
       :is="content.component"
       :key="blok._uid"
       :blok="content"
-      :sizes="sizes" />
+      :sizes="sizes"
+    />
     <div
       v-if="blok.headline"
-      class="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center text-3xl font-bold leading-tight text-white">
+      class="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center text-3xl font-bold leading-tight text-white"
+    >
       {{ blok.headline }}
     </div>
     <StoryblokLink
       v-if="hasCta && blok.cta_link"
       :to="blok.cta_link"
-      class="absolute bottom-8 left-1/2 w-full -translate-x-1/2 text-center font-bold leading-6 text-white underline underline-offset-2">
+      class="absolute bottom-8 left-1/2 w-full -translate-x-1/2 text-center font-bold leading-6 text-white underline underline-offset-2"
+    >
       {{ blok.cta }}
     </StoryblokLink>
   </div>

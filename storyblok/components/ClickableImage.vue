@@ -5,7 +5,8 @@
       :target="isLinkTypeUrl ? '_blank' : '_self'"
       :to="blok.cta_url.cached_url"
       raw
-      @click="clickObserver">
+      @click="clickObserver"
+    >
       <Intersect :threshold="0.5" @enter="onIntersect">
         <NuxtImg
           provider="storyblok"
@@ -13,7 +14,8 @@
           :src="imageSource.src"
           :alt="imageSource.alt"
           loading="lazy"
-          :sizes="sizes" />
+          :sizes="sizes"
+        />
       </Intersect>
     </DefaultLink>
   </div>

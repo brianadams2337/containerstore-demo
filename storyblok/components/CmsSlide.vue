@@ -6,34 +6,39 @@
       :key="image._uid"
       class="aspect-[1/1] md:aspect-[9/4]"
       :blok="image"
-      :preload="preload" />
+      :preload="preload"
+    />
   </div>
   <div class="pointer-events-none absolute top-0 flex h-full w-full p-5">
     <div class="flex h-full flex-col" :class="[...justify, ...align]">
       <h3
         v-if="blok.topline"
         class="text-[14px] font-bold md:text-[16px]"
-        :class="blok.is_dark ? 'text-primary' : 'text-white'">
+        :class="blok.is_dark ? 'text-primary' : 'text-white'"
+      >
         {{ blok.topline }}
       </h3>
 
       <h2
         v-if="blok.headline"
         class="text-[32px] font-bold md:text-[40px]"
-        :class="blok.is_dark ? 'text-primary' : 'text-white'">
+        :class="blok.is_dark ? 'text-primary' : 'text-white'"
+      >
         {{ blok.headline }}
       </h2>
 
       <DefaultLink
         v-if="blok.cta_url?.cached_url && blok.cta_label"
         :to="blok.cta_url.cached_url"
-        class="mt-10">
+        class="mt-10"
+      >
         <button
           v-if="blok.cta_label"
           class="pointer-events-auto rounded px-6 py-3.5 text-sm font-bold"
           :class="
             blok.is_dark ? 'bg-primary text-white' : 'bg-white text-primary'
-          ">
+          "
+        >
           {{ blok.cta_label }}
         </button>
       </DefaultLink>

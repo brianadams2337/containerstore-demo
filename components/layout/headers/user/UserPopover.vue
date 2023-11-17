@@ -3,14 +3,16 @@
     :is-open="isUserFlyoutOpen"
     content-wrapper-class="mt-8"
     @mouseenter="isGreaterOrEquals('md') && openUserFlyout()"
-    @mouseleave="isGreaterOrEquals('md') && closeUserFlyout()">
+    @mouseleave="isGreaterOrEquals('md') && closeUserFlyout()"
+  >
     <template #action>
       <DefaultLink :to="link" raw>
         <IconAccount class="h-6 w-6" />
       </DefaultLink>
       <div
         v-if="isUserFlyoutOpen"
-        class="absolute -bottom-3 h-0.5 w-8 bg-black" />
+        class="absolute -bottom-3 h-0.5 w-8 bg-black"
+      />
     </template>
     <template #content>
       <ClientOnly>

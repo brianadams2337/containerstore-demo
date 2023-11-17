@@ -3,21 +3,25 @@
     class="relative z-30 h-12 rounded border border-primary/0 transition-all duration-500"
     :class="inputActive ? 'w-[21rem] border-primary/100' : 'w-12 delay-100'"
     @click="inputActive = true"
-    @keydown.esc="resetAndClose">
+    @keydown.esc="resetAndClose"
+  >
     <label class="sr-only">{{ $t('search.placeholder') }}</label>
     <IconSearchBold
       class="absolute inset-y-2.5 left-2 h-6 w-6"
       :class="inputActive ? 'pointer-events-none' : 'cursor-pointer'"
-      @click="inputActive = true" />
+      @click="inputActive = true"
+    />
 
     <FadeInTransition :duration="100">
       <span
         v-if="searchQuery"
-        class="absolute right-0 flex h-full cursor-pointer items-center justify-center px-2.5 py-2">
+        class="absolute right-0 flex h-full cursor-pointer items-center justify-center px-2.5 py-2"
+      >
         <IconCloseBold
           class="h-4 w-4"
           @click="resetSearch"
-          @mousedown.prevent />
+          @mousedown.prevent
+        />
       </span>
     </FadeInTransition>
     <input
@@ -34,7 +38,8 @@
         'w-0': !inputActive,
       }"
       @focus="showSuggestions = true"
-      @keydown.enter="openSearchPage" />
+      @keydown.enter="openSearchPage"
+    />
 
     <Flyout :is-open="isFlyoutOpened">
       <SearchResultsContainer
@@ -46,7 +51,8 @@
         :results-count="count"
         :search-term="searchQuery"
         @close="resetAndClose"
-        @click:result="trackSuggestionClickAndClose" />
+        @click:result="trackSuggestionClickAndClose"
+      />
     </Flyout>
   </div>
 </template>

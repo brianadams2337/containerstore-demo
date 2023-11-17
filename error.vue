@@ -1,9 +1,11 @@
 <template>
   <div
-    class="flex min-h-screen flex-col text-primary antialiased anchor-scrolling-none">
+    class="flex min-h-screen flex-col text-primary antialiased anchor-scrolling-none"
+  >
     <div class="border-b border-gray-200">
       <div
-        class="mx-4 flex h-[4.375rem] items-center justify-center gap-1 md:container sm:gap-4">
+        class="mx-4 flex h-[4.375rem] items-center justify-center gap-1 md:container sm:gap-4"
+      >
         <Logo class="ml-4 flex-initial" :width="138" :height="32" />
       </div>
     </div>

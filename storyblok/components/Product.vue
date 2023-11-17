@@ -12,7 +12,8 @@
       :show-add-to-cart="false"
       :loading="fetching"
       class="col-span-full"
-      @intersect:product="emit('intersect:product', product)">
+      @intersect:product="emit('intersect:product', product)"
+    >
     </ProductCard>
   </div>
 </template>

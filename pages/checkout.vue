@@ -7,7 +7,8 @@
       :basket-id="basketKey"
       :campaign-key="campaignKey"
       header-element="#header"
-      @error="handleError" />
+      @error="handleError"
+    />
   </div>
 </template>
 

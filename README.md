@@ -15,12 +15,13 @@
 </div>
 
 <!-- ABOUT THE PROJECT -->
+
 ## About Storefront Core and Storefront Boilerplate
 
 Storefront Core is an all-in-one starter kit for building high-performance e-commerce shops for the SCAYLE Commerce Engine. It makes it quick and easy to build a best-in-class shop frontend. The latest version of Storefront Core is based on Nuxt and Vue 3 and consists of two parts:
 
-- Storefront Core (*SFC*) The headless storefront that provides design-agnostic business logic and integrations with the SCAYLE backend.
-- Storefront Boilerplate (*SFB*) A complete starter Nuxt application that includes the Storefront Core along with all features and pages that are required for a modern e-commerce frontend.
+- Storefront Core (_SFC_) The headless storefront that provides design-agnostic business logic and integrations with the SCAYLE backend.
+- Storefront Boilerplate (_SFB_) A complete starter Nuxt application that includes the Storefront Core along with all features and pages that are required for a modern e-commerce frontend.
 
 Storefront Core is built in a way that makes it easy to change or extend the shop design. An advantage of this approach is that the effort for launching a new e-commerce shop is drastically reduced because you only have to focus on the UI and design layer.
 
@@ -55,7 +56,8 @@ For more in-depth explanations and How-to guides, please consult the [SCAYLE Res
 1. Get the required SCAYLE credentials and API Keys via your SCAYLE Customer Success Manager. If they are not yet provided to you, please reach out to your respective SCAYLE representative.
 2. Use your provided SCAYLE credentials and API Keys to create a local `.env` file in the main directory based on the provided `.env.example` file.
 
-   *For an in-depth explanation of the required environment variables, please consult the [SCAYLE Resource Center](https://scayle.dev/en/dev/storefront-core/introduction).*
+   _For an in-depth explanation of the required environment variables, please consult the [SCAYLE Resource Center](https://scayle.dev/en/dev/storefront-core/introduction)._
+
 3. Install dependencies
 
    ```sh
@@ -64,7 +66,7 @@ For more in-depth explanations and How-to guides, please consult the [SCAYLE Res
 
 4. Create a local HTTPS certificate, as feature like Checkout will require a working HTTPS connection
 
-   *Check [How to turn on local HTTPS](#how-to-turn-on-local-https) for detailed instructions.*
+   _Check [How to turn on local HTTPS](#how-to-turn-on-local-https) for detailed instructions._
 
 ## Usage
 
@@ -126,12 +128,12 @@ For ease of use we use `.nuxt.test.ts` or `.nuxt.spec.ts` file suffix for our te
 As part of the Storefront Boilerplate `package.json`, some additional scripts are included to interact with Storyblok.
 
 To interact with Storyblok, a `STORYBLOK_PERSONAL_TOKEN` and the `STORYBLOK_SPACE_ID` need to be set as part of a dedicated `.env.storyblok` file.
-Check [scayle.dev/.../storefront-core/cms-integration-overview#initial-development-setup](<https://scayle.dev/en/dev/storefront-core/cms-integration-overview#initial-development-setup>) for more details.
+Check [scayle.dev/.../storefront-core/cms-integration-overview#initial-development-setup](https://scayle.dev/en/dev/storefront-core/cms-integration-overview#initial-development-setup) for more details.
 
 - `storyblok:download`
   - Downloads the latest components from the respective Storyblok space using Storyblok CLI
 - `storyblok:generate`
-  - Uses the downloaded components JSON schema and transforms it into TypeScript types (See [scayle.dev/.../storefront-core/cms-integration-overview#type-definitions]([#type-definitions](https://scayle.dev/en/dev/storefront-core/cms-integration-overview#type-definitions)))
+  - Uses the downloaded components JSON schema and transforms it into TypeScript types (See [scayle.dev/.../storefront-core/cms-integration-overview#type-definitions](<[#type-definitions](https://scayle.dev/en/dev/storefront-core/cms-integration-overview#type-definitions)>))
 - `storyblok:login`
   - Authenticates local development environment with Storyblok CLI
 - `storyblok:unused`

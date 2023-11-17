@@ -10,7 +10,8 @@
         required
         :readonly="isSubmitting"
         data-test-id="login-email"
-        @change="v.email.$touch()" />
+        @change="v.email.$touch()"
+      />
     </ValidatedInputGroup>
 
     <ValidatedInputGroup v-slot="{ isValid }" :errors="v.password.$errors">
@@ -23,7 +24,8 @@
         required
         :readonly="isSubmitting"
         data-test-id="login-password"
-        @change="v.email.$touch()" />
+        @change="v.email.$touch()"
+      />
     </ValidatedInputGroup>
 
     <div class="py-2 text-right">
@@ -33,10 +35,12 @@
           query: { ['forgot-password']: 'true' },
         }"
         raw
-        class="group relative text-sm text-gray-800 hover:text-black">
+        class="group relative text-sm text-gray-800 hover:text-black"
+      >
         <span>{{ $t('login_page.forgot_password.title') }}</span>
         <span
-          class="absolute inset-x-[0px] bottom-[-2px] h-[1px] bg-gray-800 transition-all group-hover:inset-x-[-5px] group-hover:bg-black" />
+          class="absolute inset-x-[0px] bottom-[-2px] h-[1px] bg-gray-800 transition-all group-hover:inset-x-[-5px] group-hover:bg-black"
+        />
       </DefaultLink>
     </div>
 
@@ -45,7 +49,8 @@
       :disabled="isSubmitting"
       :loading="isSubmitting"
       data-test-id="login-submit"
-      @click="onSubmit()">
+      @click="onSubmit()"
+    >
       {{ $t('global.sign_in') }}
     </AppButton>
   </form>

@@ -3,7 +3,8 @@
     <Headline size="xs" tag="h3">{{ blok.headline }}</Headline>
     <div
       v-if="blok.cta?.linktype === 'email'"
-      class="grid grid-cols-2 justify-items-start gap-8">
+      class="grid grid-cols-2 justify-items-start gap-8"
+    >
       <AppButton type="tertiary" is-full-width>{{ blok.cta.email }}</AppButton>
       <div class="max-w-lg">
         <CmsText :blok="{ ...blok, component: 'CmsText' }" />
@@ -14,17 +15,20 @@
       <div
         v-for="paragraphImage in blok.images"
         :key="`store-${paragraphImage.id}`"
-        class="flex flex-row space-x-8">
+        class="flex flex-row space-x-8"
+      >
         <StoryblokLink
           v-if="paragraphImage.name"
           :to="paragraphImage.name"
-          target="_blank">
+          target="_blank"
+        >
           <NuxtPicture
             class="cms-picture picture-contain"
             height="25px"
             provider="storyblok"
             :src="paragraphImage.filename"
-            :alt="paragraphImage.alt" />
+            :alt="paragraphImage.alt"
+          />
         </StoryblokLink>
         <NuxtPicture
           v-else
@@ -32,7 +36,8 @@
           height="25px"
           provider="storyblok"
           :src="paragraphImage.filename"
-          :alt="paragraphImage.alt" />
+          :alt="paragraphImage.alt"
+        />
       </div>
     </div>
     <div class="max-w-lg text-sm text-gray-700">

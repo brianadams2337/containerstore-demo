@@ -6,7 +6,8 @@
         :alt="name"
         provider="default"
         class="object-cover"
-        sizes="xl:100vw lg:100vw lg:100vw lg:100vw xs:100vw" />
+        sizes="xl:100vw lg:100vw lg:100vw lg:100vw xs:100vw"
+      />
     </div>
     <div class="flex grow flex-col justify-center">
       <div class="space-y-2">
@@ -20,7 +21,8 @@
           <AppButton
             type="tertiary"
             is-full-width
-            @click="emit('click:cancel')">
+            @click="emit('click:cancel')"
+          >
             {{ $t('basket_card.cancel') }}
           </AppButton>
           <AppButton
@@ -28,7 +30,8 @@
             data-test-id="basket-remove-item-confirm-button"
             no-padding
             is-full-width
-            @click="emit('click:confirm')">
+            @click="emit('click:confirm')"
+          >
             <span class="sm:hidden">
               {{ $t('basket_card.remove_short') }}
             </span>

@@ -1,7 +1,8 @@
 <template>
   <div
     v-if="lastPage !== 1"
-    class="flex flex-row items-stretch justify-center space-x-2">
+    class="flex flex-row items-stretch justify-center space-x-2"
+  >
     <slot v-bind="{ canNavigateLeft, previousPage }" name="previous-button">
       <PaginationButton v-if="canNavigateLeft" :page="previousPage">
         <IconArrowLeft class="h-3 w-3" />
@@ -10,7 +11,8 @@
 
     <slot
       name="first-page-button"
-      v-bind="{ canNavigateLeft, previousPage, showFirst }">
+      v-bind="{ canNavigateLeft, previousPage, showFirst }"
+    >
       <PaginationButton v-if="showFirst" :page="firstPage">
         {{ firstPage }}
       </PaginationButton>
@@ -25,7 +27,8 @@
         v-for="page in limitedPageNumbers"
         :key="page"
         :is-active="currentPage === page"
-        :page="page">
+        :page="page"
+      >
         {{ page }}
       </PaginationButton>
     </slot>

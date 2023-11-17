@@ -20,7 +20,8 @@
           :items="[
             { value: 'Home', to: routeList.home.name },
             { value: story.name, to: story.slug },
-          ]">
+          ]"
+        >
         </Breadcrumbs>
       </div>
       <Story :story="story" />

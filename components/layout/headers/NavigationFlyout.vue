@@ -2,13 +2,15 @@
   <div>
     <div
       id="flyout-menu-items-container-content"
-      :key="flyoutNavigationItem.id">
+      :key="flyoutNavigationItem.id"
+    >
       <Headline size="sm" tag="p">
         <NavigationTreeItem
           :navigation-item="flyoutNavigationItem"
           type="quiet"
           class="text-sm"
-          @click:navigation-item="closeFlyoutMenu" />
+          @click:navigation-item="closeFlyoutMenu"
+        />
       </Headline>
       <TwoColumnList :items="childlessNavigationItems" class="mt-4">
         <template #item="{ item }">
@@ -16,7 +18,8 @@
             :navigation-item="item"
             type="quieter"
             class="text-gray-750"
-            @click:navigation-item="closeFlyoutMenu" />
+            @click:navigation-item="closeFlyoutMenu"
+          />
         </template>
       </TwoColumnList>
     </div>
@@ -25,18 +28,21 @@
       <div
         v-if="navigationItem.children.length"
         :id="`flyout-menu-items-container-content-${navigationItem.id}`"
-        :key="navigationItem.id">
+        :key="navigationItem.id"
+      >
         <Headline size="sm" tag="p">
           <NavigationTreeItem
             :navigation-item="navigationItem"
-            @click:navigation-item="closeFlyoutMenu" />
+            @click:navigation-item="closeFlyoutMenu"
+          />
         </Headline>
         <TwoColumnList :items="navigationItem.children" class="mt-4">
           <template #item="{ item }">
             <NavigationTreeItem
               :navigation-item="item"
               type="quieter"
-              @click:navigation-item="closeFlyoutMenu" />
+              @click:navigation-item="closeFlyoutMenu"
+            />
           </template>
         </TwoColumnList>
       </div>

@@ -22,7 +22,8 @@
         :progress="progressLevel"
         class="mb-1 mt-2"
         rounded
-        :type="progressType" />
+        :type="progressType"
+      />
       <h3 class="mt-1 text-xs">
         Status:
         <span class="font-bold capitalize">{{ formattedStatus }}</span>
@@ -33,7 +34,8 @@
       <DefaultLink
         target="_blank"
         class="w-full justify-center rounded bg-primary px-5 py-3 text-xs font-semibold text-white md:w-auto md:px-8"
-        to="">
+        to=""
+      >
         {{ $t('my_account.orders.shipment_detail') }}
       </DefaultLink>
     </div>

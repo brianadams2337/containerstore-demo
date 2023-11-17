@@ -1,7 +1,8 @@
 <template>
   <div
     class="ml-4 mt-2 block h-4 w-1/2 animate-pulse bg-gray-400"
-    :class="classes" />
+    :class="classes"
+  />
 </template>
 
 <script setup lang="ts">

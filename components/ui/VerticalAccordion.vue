@@ -5,7 +5,8 @@
       :key="`accordion-tab-${index}`"
       class="flex flex-col gap-3.5 border p-3.5 first:rounded-t last:rounded-b"
       :class="getClasses(index)"
-      @click="activeIndex = index">
+      @click="activeIndex = index"
+    >
       <div class="text-sm" :class="{ 'font-bold': activeIndex === index }">
         {{ tab }}
       </div>
@@ -13,7 +14,8 @@
       <slot
         v-if="index === activeIndex"
         :name="index"
-        :activate-tab="changeActiveTab" />
+        :activate-tab="changeActiveTab"
+      />
     </div>
   </div>
 </template>

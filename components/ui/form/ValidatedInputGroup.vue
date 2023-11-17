@@ -5,7 +5,8 @@
       <p
         v-if="!isValid"
         data-test-id="validation-error-text"
-        class="mt-1 text-start text-xs leading-[0.875rem] text-red-500">
+        class="mt-1 text-start text-xs leading-[0.875rem] text-red-500"
+      >
         {{ errorMessages[0] }}
       </p>
     </FadeInFromBottomTransition>

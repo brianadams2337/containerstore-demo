@@ -1,14 +1,17 @@
 <template>
   <div
     data-test-id="nav-categories"
-    class="hidden overflow-x-auto border-b border-gray-200 scrollbar-hide md:block">
+    class="hidden overflow-x-auto border-b border-gray-200 scrollbar-hide md:block"
+  >
     <div
       v-if="!fetchingCategories"
-      class="container flex items-center space-x-16">
+      class="container flex items-center space-x-16"
+    >
       <DefaultLink
         class="border-b-2 border-transparent py-2.5 font-normal hover:border-black sm:text-sm sm:font-semibold"
         :to="routeList.home"
-        type="quiet">
+        type="quiet"
+      >
         {{ $t('global.home') }}
       </DefaultLink>
       <template v-if="Array.isArray(rootCategories)">
@@ -18,7 +21,8 @@
           class="border-b-2 border-transparent py-2.5 font-normal hover:border-black sm:text-sm sm:font-semibold"
           :class="{ 'text-flamingo': category.slug === 'sale' }"
           :to="category.path"
-          @mouseenter="emit('mouseenter:item', category)">
+          @mouseenter="emit('mouseenter:item', category)"
+        >
           {{ category.name }}
         </DefaultLink>
       </template>
@@ -30,9 +34,8 @@
           :key="`navigation-tree-item-${idx}`"
           class="border-b-2 border-transparent py-2.5 font-normal hover:border-black sm:text-sm sm:font-semibold"
           :navigation-item="item"
-          @mouseenter:navigation-item="
-            emit('mouseenter:navigation-item', item)
-          " />
+          @mouseenter:navigation-item="emit('mouseenter:navigation-item', item)"
+        />
       </template>
     </div>
   </div>

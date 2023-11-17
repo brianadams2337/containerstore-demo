@@ -9,7 +9,8 @@
         :to="action.href"
         raw
         class="underline"
-        @click="onClick($event, action)">
+        @click="onClick($event, action)"
+      >
         {{ action.text }}
       </DefaultLink>
       <div
@@ -17,7 +18,8 @@
         :key="action.text"
         :class="['cursor-pointer', action.class || '']"
         class="underline"
-        @click="onClick($event, action)">
+        @click="onClick($event, action)"
+      >
         {{ action.text }}
       </div>
     </template>

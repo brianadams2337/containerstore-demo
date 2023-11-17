@@ -2,7 +2,8 @@
   <DefaultLink
     :to="to"
     size="sm"
-    class="rounded-md border border-gray-350 px-5 py-6">
+    class="rounded-md border border-gray-350 px-5 py-6"
+  >
     <div class="flex w-full items-center justify-between">
       <div class="mr-4 text-base font-semibold">
         <p>{{ header }}</p>

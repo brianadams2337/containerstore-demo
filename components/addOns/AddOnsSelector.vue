@@ -3,11 +3,13 @@
     <div
       v-for="addOn in computedAddOns"
       :key="`${addOn.variantId}`"
-      class="mb-3 flex items-center last:mb-0">
+      class="mb-3 flex items-center last:mb-0"
+    >
       <input
         class="!focus:border-none m-0 mr-3 focus:outline-0"
         type="checkbox"
-        @change="(event) => onSelectionChanged(event, addOn)" />
+        @change="(event) => onSelectionChanged(event, addOn)"
+      />
       <p>
         {{ addOn.label }}
         {{ toCurrency(addOn.price) }}

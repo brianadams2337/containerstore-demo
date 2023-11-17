@@ -2,7 +2,8 @@
   <div v-editable="blok">
     <button
       class="flex w-full justify-between py-8 text-3xl"
-      @click.self="isCollapsed = !isCollapsed">
+      @click.self="isCollapsed = !isCollapsed"
+    >
       {{ blok.title }}
     </button>
     <FadeInTransition>

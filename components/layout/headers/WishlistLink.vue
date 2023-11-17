@@ -4,7 +4,8 @@
       :to="routeList.wishlist"
       data-test-id="wishlist-link"
       class="relative"
-      type="loud">
+      type="loud"
+    >
       <FloatingBadge v-if="count" class="-right-2 -top-2">
         {{ count }}
       </FloatingBadge>

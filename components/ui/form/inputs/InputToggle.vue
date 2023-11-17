@@ -1,13 +1,15 @@
 <template>
   <div
     class="relative inline-block h-4 w-8 rounded-full transition-colors duration-200 ease-in-out"
-    :class="isActive ? 'bg-primary' : 'bg-gray-500'">
+    :class="isActive ? 'bg-primary' : 'bg-gray-500'"
+  >
     <slot name="trigger" :is-active="isActive" @toggle="toggle">
       <button
         class="absolute -mt-1 inline-block h-6 w-6 rounded-full bg-white shadow transition duration-200 ease-linear focus:outline-none"
         :class="isActive ? 'translate-x-4' : 'left-0 -ml-2 bg-primary'"
         role="switch"
-        @click="toggle" />
+        @click="toggle"
+      />
     </slot>
   </div>
 </template>

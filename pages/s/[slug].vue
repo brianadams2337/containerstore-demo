@@ -13,7 +13,8 @@
         :items="[
           { value: 'Home', to: routeList.home },
           { value: story.name, to: story.slug },
-        ]" />
+        ]"
+      />
     </div>
     <Story :story="story" />
   </div>

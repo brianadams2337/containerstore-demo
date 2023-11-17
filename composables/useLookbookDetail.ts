@@ -1,4 +1,7 @@
-import type { SbDetailImage, SbListingPage } from '~/storyblok/types/storyblok.gen'
+import type {
+  SbDetailImage,
+  SbListingPage,
+} from '~/storyblok/types/storyblok.gen'
 
 const findElement = (
   nodes: Record<string, any>[],

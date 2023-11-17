@@ -4,7 +4,8 @@
       <BasketCardDetail label="Add Ons" primary />
       <IconDropdown
         class="ml-2.5 h-2.5 w-2.5"
-        :class="{ 'rotate-180': isOpen }" />
+        :class="{ 'rotate-180': isOpen }"
+      />
       <FadeInTransition :duration="300">
         <div class="flex-1 text-right" :class="{ 'opacity-0': isOpen }">
           <p class="text-xs font-bold">{{ toCurrency(totalCostOfAddOns) }}</p>
@@ -20,7 +21,8 @@
           v-for="item in items"
           :key="`add-on-item-${item.key}`"
           :add-on="item"
-          :size-mode="sizeMode" />
+          :size-mode="sizeMode"
+        />
       </div>
     </FadeInTransition>
   </div>

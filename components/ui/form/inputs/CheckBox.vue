@@ -1,14 +1,16 @@
 <template>
   <label
     :for="id"
-    class="group flex cursor-pointer items-center space-x-2 text-xs font-medium">
+    class="group flex cursor-pointer items-center space-x-2 text-xs font-medium"
+  >
     <input
       :id="id"
       v-model="selected"
       :value="item"
       class="h-5 w-5 rounded border border-gray-500 text-black focus:outline-none focus:ring-0"
       :class="{ 'group-hover:bg-gray-200': !isActive }"
-      type="checkbox" />
+      type="checkbox"
+    />
     <span>
       <slot name="label">{{ label }}</slot>
     </span>

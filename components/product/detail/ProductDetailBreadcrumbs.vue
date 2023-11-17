@@ -7,7 +7,8 @@
         raw
         class="inline text-sm font-light uppercase leading-5"
         data-test-id="categoryOnProductDetailPage"
-        :to="link.to">
+        :to="link.to"
+      >
         {{ link.value }}
         <template v-if="showDividerTag(idx, items.length)"> / </template>
       </DefaultLink>

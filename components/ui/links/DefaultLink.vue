@@ -2,14 +2,16 @@
   <NuxtLink
     v-bind="{ openInNewTab, activeClass, exactActiveClass, target }"
     :to="resolvedLink"
-    :class="variantClass">
+    :class="variantClass"
+  >
     <slot />
     <slot name="badge" :badge="badge">
       <FadeInTransition>
         <span
           v-if="badge"
           :data-badge-content="badge"
-          class="rounded-xl bg-black px-2 text-white">
+          class="rounded-xl bg-black px-2 text-white"
+        >
           {{ badge }}
         </span>
       </FadeInTransition>

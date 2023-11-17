@@ -5,7 +5,8 @@
         v-for="(link, idx) in breadcrumbItems"
         :key="link.value"
         only-exact-active
-        :to="link.to">
+        :to="link.to"
+      >
         {{ link.value }}
         <template v-if="showDividerTag(idx, breadcrumbItems.length)">
           /

@@ -6,7 +6,8 @@
       </Headline>
       <div
         v-if="filters?.length"
-        class="order-1 flex items-center space-x-4 text-sm">
+        class="order-1 flex items-center space-x-4 text-sm"
+      >
         <section>
           <SortingMenu :selected="selectedSort" :values="sortingValues" />
         </section>
@@ -24,13 +25,15 @@
       :products="products"
       :refreshing="productsFetching"
       class="mt-8 grid w-auto grid-cols-12 gap-2"
-      @click:toggle-product-wishlist="toggleItem($event)" />
+      @click:toggle-product-wishlist="toggleItem($event)"
+    />
     <NuxtLazyHydrate>
       <Pagination
         v-if="pagination"
         :current-page="pagination.page"
         :first-page="pagination.first"
-        :last-page="pagination.last" />
+        :last-page="pagination.last"
+      />
     </NuxtLazyHydrate>
     <FilterSlideIn
       v-if="filters?.length"
@@ -43,7 +46,8 @@
       }"
       :fetching-filtered-count="productCountFetching"
       @filter:apply="applyFilter($event)"
-      @filter:state-changed="updateFilterCount($event)" />
+      @filter:state-changed="updateFilterCount($event)"
+    />
   </PageContent>
 </template>
 

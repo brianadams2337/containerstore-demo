@@ -1,4 +1,9 @@
-import { type Brand, type Offer, type WithContext, type Product } from 'schema-dts'
+import {
+  type Brand,
+  type Offer,
+  type WithContext,
+  type Product,
+} from 'schema-dts'
 
 const CANONICAL_PARAM_WHITELIST = [
   'page',

@@ -3,7 +3,8 @@
     <label
       v-if="label"
       class="mb-2.5 block text-sm font-semibold"
-      :for="`${label}-category-list`">
+      :for="`${label}-category-list`"
+    >
       <slot name="label">{{ label }}</slot>
     </label>
     <ul :id="`${label}-category-list`" class="space-y-2.5">
@@ -11,13 +12,15 @@
         v-for="{ brandOrCategorySuggestion } in items"
         name="item"
         :item="brandOrCategorySuggestion"
-        :search-term="searchTerm">
+        :search-term="searchTerm"
+      >
         <SearchResultItem
           v-if="brandOrCategorySuggestion"
           :key="brandOrCategorySuggestion.category.id"
           :term="searchTerm"
           :to="brandOrCategorySuggestion.category.path"
-          @click:result="emit('click:result', brandOrCategorySuggestion)">
+          @click:result="emit('click:result', brandOrCategorySuggestion)"
+        >
           <div class="overflow-hidden">
             <div class="truncate text-2xs font-medium text-secondary">
               {{ brandOrCategorySuggestion.category.path }}

@@ -21,21 +21,24 @@
           :has-errors="!isValid"
           required
           :readonly="isSubmitting || success"
-          @input="v.email.$touch" />
+          @input="v.email.$touch"
+        />
       </ValidatedInputGroup>
 
       <div class="flex flex-row-reverse justify-between">
         <AppButton
           :disabled="isSubmitting || success"
           :loading="isSubmitting"
-          @click="onSubmit()">
+          @click="onSubmit()"
+        >
           {{ $t('login_page.forgot_password.submit') }}
         </AppButton>
         <AppButton
           type="tertiary"
           :disabled="isSubmitting"
           :loading="isSubmitting"
-          @click="$emit('close:modal')">
+          @click="$emit('close:modal')"
+        >
           {{ $t('login_page.forgot_password.cancel') }}
         </AppButton>
       </div>

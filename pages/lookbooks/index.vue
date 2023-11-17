@@ -18,19 +18,22 @@
           params: {
             [routeList.lookbooks.parameter]: prepareForUrl(story.name),
           },
-        }">
+        }"
+      >
         <NuxtPicture
           class="picture picture-contain hidden w-full sm:block"
           height="800px"
           provider="storyblok"
           :src="story.content.teaser_image.filename"
-          :alt="story.content.teaser_image.alt" />
+          :alt="story.content.teaser_image.alt"
+        />
         <NuxtPicture
           v-if="story.content.teaser_image_mobile"
           class="picture picture-contain w-full sm:hidden"
           provider="storyblok"
           :src="story.content.teaser_image_mobile.filename"
-          :alt="story.content.teaser_image_mobile.alt" />
+          :alt="story.content.teaser_image_mobile.alt"
+        />
       </DefaultLink>
     </div>
   </div>
