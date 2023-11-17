@@ -30,7 +30,7 @@
         :image-loading="index === 0 ? 'eager' : 'lazy'"
       />
       <ProductPromotionBadge
-        v-if="index === 0"
+        v-if="index === 0 && isBuyXGetY"
         :product="product"
         class="absolute bottom-3 left-3"
       />
@@ -59,6 +59,7 @@
       </Intersect>
     </HorizontalItemsSlider>
     <ProductPromotionBadge
+      v-if="isBuyXGetY"
       :product="product"
       class="absolute bottom-3 left-0 top-auto"
     />
@@ -88,6 +89,8 @@ type Props = {
 const props = withDefaults(defineProps<Props>(), {
   imagesPerRow: () => [2, 2, 2, 3, 3],
 })
+
+const { isBuyXGetY } = await useProductPromotion(props.product)
 
 const emit = defineEmits<{
   (e: 'click:image', value: number): void

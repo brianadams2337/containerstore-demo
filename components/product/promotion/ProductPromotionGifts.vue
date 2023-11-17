@@ -6,11 +6,11 @@
       </Headline>
     </div>
     <div class="rounded-b-md border border-gray-350 bg-white py-4">
-      <div class="max-h-72 overflow-y-scroll px-3.5">
+      <div class="max-h-44 overflow-y-scroll px-3.5" @scroll="onScroll">
         <div
           v-for="variant in variantsWithProducts"
           :key="variant.id"
-          class="mb-4 flex items-center last-of-type:mb-2"
+          class="mb-4 flex items-center last-of-type:mb-0"
         >
           <RadioItem
             v-if="hasMultipleFreeGifts"
@@ -24,7 +24,8 @@
         </div>
       </div>
       <div
-        class="relative z-20 mx-3.5 mt-4 rounded-md bg-secondary-450 px-4 py-2 text-center shadow-[0_-22px_10px_0_#fff]"
+        class="relative z-20 mx-3.5 mt-4 rounded-md bg-secondary-450 px-4 py-2 text-center"
+        :class="shadowClass"
       >
         <p class="text-2xs font-medium uppercase text-gray-750">
           {{ $t('pdp.promotion.free_gift_hint') }}
@@ -43,6 +44,20 @@ const { promotionEngineFeatureEnabled } = useRuntimeConfig().public
 
 const { backgroundColorStyle, applicablePromotion, hasMultipleFreeGifts } =
   await useProductPromotion(props.product)
+
+const hasScrolledToBottom = ref(false)
+
+const onScroll = (element: any) => {
+  hasScrolledToBottom.value = isScrolledToBottom(element)
+}
+
+const shadowClass = computed(() => {
+  return (
+    hasMultipleFreeGifts.value &&
+    !hasScrolledToBottom.value &&
+    'shadow-[0_-22px_10px_0_#fff]'
+  )
+})
 
 const variantIds = computed(() => {
   const { additionalData } = applicablePromotion.value.effect as BuyXGetYEffect
