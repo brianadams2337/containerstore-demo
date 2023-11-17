@@ -7,12 +7,14 @@
     wishlist-remove-icon="close"
     is-wishlist-card
     @productimage:mouseover="isAddToBasketButtonShown = true"
-    @productimage:mouseleave="isAddToBasketButtonShown = false">
+    @productimage:mouseleave="isAddToBasketButtonShown = false"
+  >
     <template #header-badge>
       <div class="flex h-max w-max flex-col">
         <ProductBadge
           v-if="isProductSustainable(product)"
-          badge-label="sustainable" />
+          badge-label="sustainable"
+        />
         <ProductBadge v-if="product.isNew" badge-label="new" />
         <ProductBadge
           v-for="(campaign, idx) in getSalesRelativeAmountByCategory(
@@ -22,7 +24,8 @@
           :key="`campaign-${idx}`"
           class="w-max bg-[#ff6e17]"
           :badge-label="`-${campaign.amount.relative * 100}% EXTRA`"
-          :translate="false" />
+          :translate="false"
+        />
         <ProductBadge
           v-for="(sale, idx) in getSalesRelativeAmountByCategory(
             product,
@@ -31,7 +34,8 @@
           :key="`sale-${idx}`"
           class="w-max bg-red-500"
           :badge-label="`-${sale.amount.relative * 100}%`"
-          :translate="false" />
+          :translate="false"
+        />
       </div>
     </template>
     <template #header-image="{ link, image, imageLoading, name }">
@@ -44,34 +48,40 @@
           fit="contain"
           sizes="sm:100vw"
           is-centered
-          class="absolute inset-0" />
+          class="absolute inset-0"
+        />
       </DefaultLink>
       <div
         v-if="isAvailable"
-        class="absolute bottom-0 left-0 top-auto z-40 hidden h-auto w-full p-3 lg:block">
+        class="absolute bottom-0 left-0 top-auto z-40 hidden h-auto w-full p-3 lg:block"
+      >
         <AppButton
           type="secondary"
           class="w-full border-gray-350 bg-white p-3 text-xs font-semibold transition"
           :class="isAddToBasketButtonShown ? 'opacity-1' : 'opacity-0'"
           data-test-id="wishlist-card-add-to-cart"
-          @click="emit('click:add-to-cart')">
+          @click="emit('click:add-to-cart')"
+        >
           {{ $t('pdp.add_label') }}
         </AppButton>
       </div>
       <div
         v-else
-        class="absolute inset-y-0 flex w-full items-center justify-center">
+        class="absolute inset-y-0 flex w-full items-center justify-center"
+      >
         <p class="text-xl font-semibold text-[#424144]">
           {{ $t('global.sold_out') }}
         </p>
       </div>
       <div
         v-if="isAvailable"
-        class="absolute bottom-0 right-0 top-auto z-30 flex h-auto justify-end pb-[20px] pr-4 lg:hidden">
+        class="absolute bottom-0 right-0 top-auto z-30 flex h-auto justify-end pb-[20px] pr-4 lg:hidden"
+      >
         <div
           class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-gray-100 bg-white"
           data-test-id="wishlist-card-add-to-cart-mobile"
-          @click="showSizePicker">
+          @click="showSizePicker"
+        >
           <IconAddToCart class="h-5 w-5" />
         </div>
       </div>
@@ -80,7 +90,8 @@
       <div>
         <div>
           <div
-            class="mt-2 w-full justify-between py-2 text-xs font-medium text-primary opacity-50">
+            class="mt-2 w-full justify-between py-2 text-xs font-medium text-primary opacity-50"
+          >
             <p>{{ title }}</p>
             <p>{{ name }}</p>
           </div>
@@ -91,27 +102,31 @@
               :applied-reductions="price.appliedReductions"
               type="whisper"
               size="sm"
-              class="text-primary" />
+              class="text-primary"
+            />
           </div>
           <div v-if="isAvailable" class="hidden lg:block">
             <div
               v-if="!hasOneSizeVariantOnly && isChangingSize"
               :key="product.id"
-              class="items-center space-x-2 py-4">
+              class="items-center space-x-2 py-4"
+            >
               <ProductSizePicker
                 :id="product.id"
                 class="justify-center"
                 :variants="product?.variants || []"
                 :value="selectedSize?.value"
                 @select-size="onSelectSize"
-                @click:outside="isChangingSize = false" />
+                @click:outside="isChangingSize = false"
+              />
             </div>
             <AppButton
               v-if="!hasOneSizeVariantOnly && !isChangingSize"
               data-test-id="wishlist-card-product-size"
               type="secondary"
               class="mr-2 mt-4"
-              @click="isChangingSize = !isChangingSize">
+              @click="isChangingSize = !isChangingSize"
+            >
               {{ selectedSize?.label || $t('wishlist.change_size_label') }}
             </AppButton>
             <AppButton
@@ -119,7 +134,8 @@
               :disabled="sizeSavingId === product.id"
               data-test-id="wishlist-card-add-to-cart"
               class="mt-4"
-              @click="emit('click:add-to-cart')">
+              @click="emit('click:add-to-cart')"
+            >
               {{ $t('pdp.add_label') }}
             </AppButton>
           </div>
@@ -129,12 +145,14 @@
         v-show="isLessThan('lg')"
         :name="`wishlistcard_${product.id}`"
         slide-type="fromBottom"
-        slide-class="w-full xl:max-w-none h-auto xl:max-h-none top-auto left-0 p-0 pt-0">
+        slide-class="w-full xl:max-w-none h-auto xl:max-h-none top-auto left-0 p-0 pt-0"
+      >
         <template #slideInContent>
           <div>
             <div
               class="flex cursor-pointer justify-center py-3"
-              @click="toggleFilter">
+              @click="toggleFilter"
+            >
               <IconAngleDown class="h-4 w-4" />
             </div>
             <div class="flex justify-end border-b px-5 pb-3">
@@ -170,20 +188,13 @@ import {
   getVariantBySize,
 } from '@scayle/storefront-nuxt'
 
-const props = defineProps({
-  index: {
-    type: Number,
-    required: true,
-  },
-  product: {
-    type: Object as PropType<Product>,
-    default: () => ({}),
-  },
-  variant: {
-    type: Object as PropType<Variant>,
-    default: null,
-  },
-})
+type Props = {
+  index: number
+  product: Product
+  variant?: Variant
+}
+
+const props = withDefaults(defineProps<Props>(), { variant: undefined })
 
 const { fetching: isWishlistFetching, replaceItem: replaceWishlistItem } =
   await useWishlist()

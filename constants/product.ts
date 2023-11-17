@@ -1,5 +1,6 @@
 import type { ProductWith } from '@scayle/storefront-nuxt'
 
+export const PRODUCTS_PER_PAGE = 24
 export const MINIMUM_QUANTITY_IMMEDIATE_AVAILABILITY = 5
 export const PRODUCT_WITH_PARAMS: ProductWith = {
   attributes: {
@@ -58,3 +59,5 @@ export const PRODUCT_WITH_PARAMS: ProductWith = {
   priceRange: true,
   lowestPriorPrice: true,
 }
+
+export const PRODUCT_IMAGE_QUALITY_MODIFIER = '75'

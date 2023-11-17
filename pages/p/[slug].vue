@@ -31,7 +31,7 @@
               class="max-w-xs text-xs font-semibold text-secondary"
               data-test-id="pdp-product-brand"
             >
-              {{ brandName }}
+              {{ brand }}
             </div>
             <div class="flex items-start justify-between md:flex-col">
               <Headline
@@ -68,7 +68,7 @@
           </div>
           <div class="w-full">
             <ProductDetailGroup class="mt-6">
-              <ProductSiblingPicker :items="productSiblings" with-values>
+              <ProductSiblingPicker :items="siblings" with-values>
                 <template #item="{ item }">
                   <DefaultLink
                     raw
@@ -127,7 +127,7 @@
                 :title="product.isSoldOut ? $t('badge_labels.sold_out') : ''"
                 :loading="basketIdle"
                 class="text-sm !normal-case"
-                @click="addItemToBasket"
+                @click="addItemToBasket()"
               >
                 {{ $t('pdp.add_label') }}
               </AppButton>
@@ -174,297 +174,61 @@
 
 <script setup lang="ts">
 import {
-  type FetchProductsParams,
   type Product,
-  type ProductImage,
-  type Value,
-  getVariantBySize,
-  flattenDeep,
-  getAttributeValue,
-  type Variant,
-  getFirstAttributeValue,
-  getCategoriesByRoute,
-  getBadgeLabel,
-  getPrice,
-  getBreadcrumbs,
-  getProductSiblings,
-  flattenFieldSet,
   type ProductColor,
+  getFirstAttributeValue,
+  getBadgeLabel,
   isInStock,
 } from '@scayle/storefront-nuxt'
-import { Size } from '#imports'
 
-const listingMetaData = {
-  name: 'ADP',
-  id: 'ADP',
-}
 const route = useRoute()
-
 const store = useStore()
-
-const { $alert, $i18n, $config } = useNuxtApp()
-
-// TODO slug is a stringified productName + productId combination. this can be automatically split into name and id by using the route structure name_id with an underscore in the route.ts helper
-const productId = computed(() => {
-  return String(route.params.slug)?.substring(
-    route.params.slug.lastIndexOf('-') + 1,
-  )
-})
+const { $i18n, $config } = useNuxtApp()
 
 const {
-  data: product,
-  error,
+  product,
+  activeVariant,
+  quantity,
+  availableQuantity,
+  hasOneSizeVariantOnly,
+  brand,
+  name: productName,
+  images,
+  breadcrumbs,
+  siblings,
+  hasSpecial,
+  price,
+  handleSelectedSize,
+  lowestPriorPrice,
   fetching,
-} = await useProduct({
-  params: {
-    id: parseInt(productId.value),
-    with: PRODUCT_WITH_PARAMS,
-  },
-  options: {
-    lazy: true,
-  },
-  key: `useProduct-${productId.value}`,
-})
+  listingMetaData,
+} = await useProductDetails()
 
-if (error.value) {
-  throw error.value
-}
+const { addItemToBasket, basketIdle } = await useProductDetailsBasketActions()
 
-const { fetching: basketIdle, addItem: addBasketItem } = await useBasket({
-  options: { lazy: true, autoFetch: true },
-})
-const { addGroupToBasket } = await useBasketGroup()
+const { isBuyXGetY } = await useProductPromotion(product)
 
-const { applicablePromotion, isBuyXGetY } = await useProductPromotion(product)
+const {
+  sliderProducts,
+  fetchingCombineWithProducts,
+  trackRecommendationClick,
+} = await useProductRecommendations()
 
-const quantity = ref(1)
-
-const availableQuantity = computed(() => {
-  return getQuantitySelectionList(activeVariant.value?.stock.quantity, true)
-})
-
-const { openBasketFlyout } = useFlyouts()
+const { availableAddOns, onAddOnSelected } = useProductDetailsAddOns(product)
 
 const { state: zoomGallery, toggle: toggleZoomGallery } =
   useZoomGalleryActions()
 
-const { trackAddToBasket, trackViewItemList, trackViewItem, trackSelectItem } =
-  useTrackingEvents()
-
-const productCategories = computed(() => {
-  return product.value ? getCategoriesByRoute(product.value, null) : []
-})
-
-const breadcrumbs = computed(() => getBreadcrumbs(productCategories.value))
-
-const brandName = computed(() => {
-  return getFirstAttributeValue(product.value?.attributes, 'brand')?.label
-})
-
-const productName = computed(() => {
-  return getFirstAttributeValue(product.value?.attributes, 'name')?.label
-})
+const { trackViewItemList, trackViewItem } = useTrackingEvents()
 
 const { isGreaterOrEquals } = useViewport()
-const activeVariant = ref<Variant>()
-const variantWithLowestPrice = computed(() =>
-  getVariantWithLowestPrice(product.value?.variants || []),
-)
-const lowestPriorPrice = computed(
-  () =>
-    activeVariant.value?.lowestPriorPrice ||
-    variantWithLowestPrice.value?.lowestPriorPrice ||
-    product.value?.lowestPriorPrice,
-)
-
-const price = computed(() =>
-  activeVariant.value
-    ? getPrice(activeVariant.value)
-    : variantWithLowestPrice.value?.price,
-)
-
-const hasSpecial = computed(() => {
-  return Boolean(!activeVariant.value && price.value?.appliedReductions.length)
-})
-
-const productSiblings = computed(() => {
-  return getProductSiblings(product.value, 'color')
-})
-
-const handleSelectedSize = (value: Value) => {
-  if (product.value?.variants) {
-    activeVariant.value = getVariantBySize(
-      product.value?.variants,
-      value,
-      'size',
-    )
-  }
-}
-
-const hasOneSizeVariantOnly = computed(() => {
-  const variants = product.value?.variants
-  return (
-    variants?.length === 1 &&
-    getAttributeValue(variants[0].attributes, 'size') === ONE_SIZE_KEY
-  )
-})
-
-// add ons
-const addOnServiceAttribute = computed(() => {
-  return product.value?.advancedAttributes
-    ? product.value?.advancedAttributes.additionalService ?? null
-    : null
-})
-
-const availableAddOns = computed<number[]>(() => {
-  if (!addOnServiceAttribute.value) {
-    return []
-  }
-
-  const flattenedValues = addOnServiceAttribute.value.values
-    .map((value) => ({
-      ...flattenDeep(flattenFieldSet(value.fieldSet))[0],
-      values: flattenDeep(
-        value.groupSet.map((g) => flattenFieldSet(g.fieldSet)),
-      ),
-    }))
-    .map((flattened: any) => flattened.value)
-
-  return flattenedValues.map((val) => parseInt(val))
-})
-const addOnsSelected = ref<{ [id: number]: boolean }>({})
-const onAddOnSelected = ({
-  isSelected,
-  variantId,
-}: {
-  isSelected: boolean
-  variantId: number
-}) => {
-  addOnsSelected.value = {
-    ...addOnsSelected.value,
-    [variantId]: isSelected,
-  }
-}
-
-const isAnyAddOnSelected = computed(() => {
-  const anySelected = Object.keys(addOnsSelected.value).find(
-    (key) => addOnsSelected.value[key as any],
-  )
-  return !!anySelected
-})
-
-const addItemToBasket = async () => {
-  if (hasOneSizeVariantOnly.value && product.value?.variants) {
-    activeVariant.value = product.value?.variants[0]
-  }
-
-  if (!activeVariant.value) {
-    $alert.show($i18n.t('basket.notification.select_size'), 'CONFIRM')
-    return
-  }
-
-  const productName =
-    getFirstAttributeValue(product.value?.attributes, 'name')?.label ||
-    $i18n.t('wishlist.product')
-
-  try {
-    isAnyAddOnSelected.value
-      ? await addGroupToBasket({
-          mainItem: { variantId: activeVariant.value.id, quantity: 1 },
-          items: [
-            ...Object.keys(addOnsSelected.value).map((v) => ({
-              variantId: parseInt(v),
-              quantity: 1,
-            })),
-          ],
-        })
-      : await addBasketItem({
-          variantId: activeVariant.value.id,
-          quantity: quantity.value,
-          ...(applicablePromotion.value && {
-            promotionId: applicablePromotion.value.id,
-          }),
-        })
-
-    openBasketFlyout()
-
-    showAddToBasketToast(true, product.value)
-
-    if (product.value) {
-      trackAddToBasket({
-        product: product.value,
-        variant: activeVariant.value,
-        index: 1,
-      })
-    }
-  } catch {
-    $alert.show(
-      $i18n.t('basket.notification.add_to_basket_error', { productName }),
-      'CONFIRM',
-    )
-  }
-}
-
-const combineWithProductValues = getAdvancedAttributes({
-  product: product.value as Product,
-  property: 'combineWith',
-})
-const combineWithProductIds = computed(() =>
-  combineWithProductValues
-    ? combineWithProductValues
-        .split(',')
-        .map((productId: string) => parseInt(productId, 10))
-    : [],
-)
-const recommendationsFetchParams = ref<FetchProductsParams>({ ids: [] })
-
-watch(
-  () => combineWithProductIds.value,
-  (ids) => {
-    recommendationsFetchParams.value = { ids }
-  },
-  { immediate: true },
-)
-
-const { data: combineWithProducts, fetching: fetchingCombineWithProducts } =
-  await useProductsByIds({
-    params: recommendationsFetchParams,
-    key: `products-pdpSlider-combineWith-${productId}`,
-  })
-
-const combineWith = computed(() => combineWithProducts.value || [])
-const sliderProducts = computed(() =>
-  combineWith.value.length
-    ? combineWith.value.filter(
-        (product) => product.isActive && !product.isSoldOut,
-      )
-    : [],
-)
 
 const trackViewListing = ({ items }: { row: number; items: Product[] }) => {
   trackViewItemList({ items, listingMetaData })
 }
 
-const trackRecommendationClick = (product: Product, index: number) => {
-  trackSelectItem({
-    product,
-    category: {
-      ...getDeepestCategoryForTracking(product.categories),
-    },
-    listingMetaData,
-    index,
-    ...(route.name && { source: `${String(route.name)}|RecommendationSlider` }),
-    soldOut: product.isSoldOut,
-    pagePayload: {
-      content_name: route.fullPath,
-      page_type: store.value.pageType,
-      page_type_id: productId.value.toString() || '',
-    },
-  })
-}
-
 onMounted(async () => {
-  store.value.pageTypeId = productId.value
+  store.value.pageTypeId = String(product.value.id)
   if (!product.value) {
     return
   }
@@ -490,26 +254,11 @@ const sanitizedCanonicalURL = sanitizeCanonical(
   `${$config.public.baseUrl}${route.fullPath}`,
 )
 
-const img = useImage()
-const imageOptions = {
-  sizes: 'sm:100vw md:100vw',
-  modifiers: { quality: '75' },
-  provider: 'default',
-}
-const images = computed(() => {
-  return (
-    product.value?.images?.map(
-      (image: ProductImage) => img?.getImage(image.hash, imageOptions).url,
-    ) || []
-  )
-})
-
 useJsonld(() =>
   generateProductSchema({
     price: formatPrice(price.value?.withTax || 0),
     productName: productName.value || '',
-    brandName:
-      getFirstAttributeValue(product.value?.attributes, 'brand')?.label || '',
+    brandName: brand.value || '',
     url: sanitizedCanonicalURL,
     isInStock: product.value?.variants?.some(isInStock),
     images: images.value,

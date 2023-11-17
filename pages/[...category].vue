@@ -62,7 +62,6 @@
         </NuxtLazyHydrate>
         <ProductList
           :loading="productsFetching"
-          :per-page="PRODUCTS_PER_PAGE"
           :products="products"
           :refreshing="productsFetching"
           class="mt-8 grid w-auto grid-cols-12 gap-1"
@@ -102,34 +101,13 @@
 <script setup lang="ts">
 import {
   type Product,
-  type SortValue,
-  getSortByValue,
-  getSortingValues,
   groupFilterableValuesByKey,
   transformToWhereCondition,
 } from '@scayle/storefront-nuxt'
 import type { SbCmsImage, SbListingPage } from '../storyblok/types/storyblok'
 
-const PRODUCTS_PER_PAGE = 24
-const DEFAULT_SORTING_KEY = 'dateNewest'
-const INCLUDED_QUICK_FILTERS = ['sale', 'isNew', 'styleGroup']
-
-const listingMetaData = {
-  name: 'Category Product List',
-  id: 'CategoryProductList',
-}
-
 const route = useRoute()
 const store = useStore()
-
-const term = computed(() => route.query.term || '')
-
-const categoryPath = computed(() => {
-  if (Array.isArray(route.params.category)) {
-    return `/${route.params.category.join('/')}`
-  }
-  return `/${route.params.category}`
-})
 
 const { toggle: toggleFilter } = useSlideIn('FilterSlideIn')
 
@@ -156,62 +134,11 @@ const {
   productError,
   filterError,
   categoriesError,
-} = await useFacet({
-  key: `useFacet-${categoryPath.value}`,
-  params: {
-    with: {
-      product: {
-        attributes: {
-          withKey: [
-            'color',
-            'brand',
-            'name',
-            'promotion',
-            ...SUSTAINABILITY_ATTRIBUTES,
-          ],
-        },
-        variants: {
-          attributes: {
-            withKey: ['price'],
-          },
-          lowestPriorPrice: true,
-        },
-        siblings: {
-          attributes: { withKey: ['color', 'brand', 'name'] },
-        },
-        images: {
-          attributes: {
-            withKey: ['imageType', 'imageView', 'imageBackground', 'imageKind'],
-          },
-        },
-        priceRange: true,
-        lowestPriorPrice: true,
-        categories: {
-          properties: {
-            withName: ['baseCategories'],
-          },
-        },
-      },
-    },
-    includedFilters: INCLUDED_QUICK_FILTERS,
-  },
-})
+  fetchParameters,
+  listingMetaData,
+} = await useProductList()
 
-const customDefaultSorting = computed(
-  () => selectedCategory.value?.shopLevelCustomData?.defaultSorting,
-)
-
-const selectedSort = computed(() => {
-  if (route.query.sort || !customDefaultSorting.value) {
-    return getSortByValue(
-      route.query.sort || '',
-      DEFAULT_SORTING_KEY,
-    ) as SortValue
-  }
-  return getSortByValue(customDefaultSorting.value)
-})
-
-const sortingValues = Object.values(getSortingValues())
+const { selectedSort, sortingValues } = useProductListSort(selectedCategory)
 
 const {
   applyFilters: _applyFilter,
@@ -228,23 +155,6 @@ const trackViewListing = ({ items }: { row: number; items: Product[] }) => {
     source: `category|${selectedCategory.value?.id}`,
   })
 }
-
-const fetchParameters = computed(() => ({
-  path: categoryPath.value,
-  ...productConditions.value,
-  where: {
-    ...productConditions?.value?.where,
-    term: term.value.toString(),
-  },
-  perPage: PRODUCTS_PER_PAGE,
-  cache: {
-    ttl: 1000,
-    cacheKeyPrefix: `PLP:${categoryPath}`,
-  },
-  sort: {
-    ...selectedSort.value,
-  },
-}))
 
 // CMS
 const {

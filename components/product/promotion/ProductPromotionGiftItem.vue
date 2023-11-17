@@ -50,22 +50,9 @@ const props = defineProps<{
   backgroundColorStyle: { backgroundColor?: string }
 }>()
 
-const name = computed(() => {
-  return (
-    getFirstAttributeValue(props.variant.product.attributes, 'name')?.label ??
-    ''
-  )
-})
+const { name, image } = useProductBaseInfo(props.variant.product)
 
 const size = computed(() => {
   return getFirstAttributeValue(props.variant.attributes, 'size')?.value
-})
-
-const image = computed(() => {
-  return getImageFromList(
-    props.variant.product.images,
-    ProductImageType.BUST,
-    'front',
-  )
 })
 </script>

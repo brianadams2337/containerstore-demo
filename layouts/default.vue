@@ -16,7 +16,7 @@
         :error="error"
         @clear-error="resetErrorState"
       />
-      <slot v-else />
+      <NuxtPage v-else />
     </div>
     <NuxtLazyHydrate placeholder-ratio="16/9" when-visible>
       <AppFooter class="mt-16" />
