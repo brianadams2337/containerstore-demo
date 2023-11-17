@@ -25,7 +25,7 @@
 
 <script setup lang="ts" generic="Item extends { label: string; value: any }">
 type Props = {
-  modelValue?: any
+  modelValue?: string | number
   value?: Item['value']
   label?: Item['label']
   name?: string
@@ -41,7 +41,7 @@ const emit = defineEmits(['update:model-value'])
 
 const selected = computed({
   get: () => props.modelValue,
-  set: (value?: string) => emit('update:model-value', value),
+  set: (value?: string | number) => emit('update:model-value', value),
 })
 
 const isActive = computed(() => props.modelValue === props.value)

@@ -21,7 +21,7 @@
     </DefaultLink>
     <div class="flex w-full flex-col justify-between">
       <Headline size="base" tag="h3" class="mt-2">{{ name }}</Headline>
-      <div class="flex justify-between">
+      <div class="flex items-center justify-between">
         <ProductSizePicker
           :id="variant.id"
           :value="size"

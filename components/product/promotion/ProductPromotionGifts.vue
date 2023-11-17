@@ -5,15 +5,12 @@
         {{ $t('pdp.promotion.free_gift_headline') }}
       </Headline>
     </div>
-    <div
-      v-if="variants"
-      class="rounded-b-md border border-gray-350 bg-white px-3.5 py-4"
-    >
-      <div class="max-h-64 overflow-y-scroll">
+    <div class="rounded-b-md border border-gray-350 bg-white py-4">
+      <div class="max-h-72 overflow-y-scroll px-3.5">
         <div
           v-for="variant in variantsWithProducts"
           :key="variant.id"
-          class="mb-4 flex items-center last-of-type:mb-0"
+          class="mb-4 flex items-center last-of-type:mb-2"
         >
           <RadioItem
             v-if="hasMultipleFreeGifts"
@@ -26,7 +23,9 @@
           />
         </div>
       </div>
-      <div class="mt-4 rounded-md bg-secondary-450 px-4 py-2 text-center">
+      <div
+        class="relative z-20 mx-3.5 mt-4 rounded-md bg-secondary-450 px-4 py-2 text-center shadow-[0_-22px_10px_0_#fff]"
+      >
         <p class="text-2xs font-medium uppercase text-gray-750">
           {{ $t('pdp.promotion.free_gift_hint') }}
         </p>
@@ -55,7 +54,7 @@ const { data: variants } = await useVariant({
   key: `promotion-variants-${applicablePromotion.value.id}`,
 })
 
-const selectedVariantId = useState<Variant>(
+const selectedVariantId = useState<Variant['id']>(
   'selected-gift',
   () => variants.value[0].id,
 )
