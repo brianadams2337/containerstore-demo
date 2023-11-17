@@ -4,7 +4,7 @@
       <slot name="relative-reductions">
         <span
           v-if="showBadge && totalReductions"
-          class="inline-block rounded-sm bg-red-500 px-2 py-1 text-sm text-white"
+          class="inline-block rounded-md bg-red-500 px-2 py-1 text-sm text-white"
         >
           -{{ totalReductions.relative * 100 }}%
         </span>

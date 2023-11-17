@@ -17,12 +17,6 @@
         class="sticky right-0 top-0 mt-5 w-full md:w-1/2 md:pl-4 xl:w-1/3 xl:pl-6"
       >
         <div class="w-full bg-white">
-          <div v-if="product.isSoldOut" class="left-0 top-0">
-            <ProductBadge
-              class="ml-0"
-              :badge-label="getBadgeLabel({ isSoldOut: product.isSoldOut })"
-            />
-          </div>
           <div class="my-2 md:mt-1">
             <div class="mb-2">
               <ProductDetailBreadcrumbs :links="breadcrumbs" />
@@ -47,14 +41,20 @@
                 class="mt-2 xs:hidden md:flex"
               />
               <div class="flex flex-col">
-                <ProductPromotionBadge
-                  :product="product"
-                  class="mb-2 md:hidden"
-                />
+                <div class="flex gap-2 xs:flex-col-reverse md:flex-col">
+                  <ProductPromotionBadge :product="product" class="md:hidden" />
+                  <ProductBadge
+                    v-if="product.isSoldOut"
+                    :badge-label="
+                      getBadgeLabel({ isSoldOut: product.isSoldOut })
+                    "
+                  />
+                </div>
+
                 <ProductPrice
                   v-if="price"
                   size="xl"
-                  class="md:mt-6"
+                  class="mt-3"
                   :type="isGreaterOrEquals('md') ? 'normal' : 'loud'"
                   :price="price"
                   :lowest-prior-price="lowestPriorPrice"
@@ -131,12 +131,12 @@
               >
                 {{ $t('pdp.add_label') }}
               </AppButton>
-              <client-only>
+              <ClientOnly>
                 <WishlistToggle
                   class="ml-2 box-border h-full border border-gray-350 !px-2"
                   :product="product"
                 />
-              </client-only>
+              </ClientOnly>
             </div>
 
             <ProductPromotionGifts

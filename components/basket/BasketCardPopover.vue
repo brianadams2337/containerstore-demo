@@ -50,7 +50,7 @@
               <span class="font-bold text-primary">{{ color }}</span>
             </p>
             <p v-if="isSoldOut">
-              <ProductBadge class="ml-0" :badge-label="badgeLabel" />
+              <ProductBadge class="mt-2" :badge-label="badgeLabel" />
             </p>
           </div>
         </div>

@@ -3,7 +3,7 @@
     <div ref="button">
       <AppButton
         type="ghost"
-        class="inline-flex w-full justify-center gap-6 rounded border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow-sm"
+        class="inline-flex w-full min-w-[4.75rem] justify-between gap-0 rounded border border-gray-300 bg-white px-[0.875rem] py-2 text-sm font-medium shadow-sm"
         :disabled="disabled"
         :class="isLarge && 'py-[0.825rem]'"
         @click="isDropdownVisible = !isDropdownVisible"
