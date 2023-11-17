@@ -11,11 +11,11 @@ export default async (productItem: MaybeRefOrGetter<Product>) => {
   const product = toRef(productItem)
 
   const promotionLabel = computed(() => {
-    return getFirstAttributeValue(product.value.attributes, 'promotion')?.label
+    return getFirstAttributeValue(product.value?.attributes, 'promotion')?.label
   })
 
   const productPromotionId = computed(() => {
-    return getFirstAttributeValue(product.value.attributes, 'promotion')?.id
+    return getFirstAttributeValue(product.value?.attributes, 'promotion')?.id
   })
 
   const applicablePromotion = computed<Promotion>(() => {

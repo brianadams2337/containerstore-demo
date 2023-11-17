@@ -1,5 +1,8 @@
 <template>
-  <div class="inline-flex h-6 items-center rounded border p-px">
+  <div
+    class="inline-flex h-6 items-center p-px"
+    :class="!borderless && 'rounded border'"
+  >
     <IconClockOutline class="ml-1.5 h-5 w-5 text-white" />
     <ClientOnly>
       <template #fallback>
@@ -20,5 +23,12 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{ until: string }>()
+type Props = {
+  until: string
+  borderless?: boolean
+}
+
+withDefaults(defineProps<Props>(), {
+  borderless: false,
+})
 </script>

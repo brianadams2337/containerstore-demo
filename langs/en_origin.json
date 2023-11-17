@@ -35,7 +35,8 @@
       "add_label": "Add",
       "another_label": "another",
       "save_indicator_label": "to save",
-      "offer": "{discount}% extra"
+      "offer": "{discount}% extra",
+      "hurry_to_save": "Hurry to save"
     }
   },
   "validation": {

@@ -35,7 +35,8 @@
       "add_label": "Fügen Sie",
       "another_label": "weitere",
       "save_indicator_label": "hinzu, um",
-      "offer": "{discount}% zusätzlich zu sparen"
+      "offer": "{discount}% zusätzlich zu sparen",
+      "hurry_to_save": "Beeilen Sie sich, um zu sparen"
     }
   },
   "validation": {
