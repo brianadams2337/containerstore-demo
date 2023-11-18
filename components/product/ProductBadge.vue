@@ -7,8 +7,9 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  badgeLabel: { type: String, default: null },
-  translate: { type: Boolean, default: true },
-})
+type Props = {
+  badgeLabel?: string
+  translate?: boolean
+}
+withDefaults(defineProps<Props>(), { badgeLabel: undefined, translate: true })
 </script>

@@ -29,10 +29,5 @@
 <script setup lang="ts">
 import type { Product } from '@scayle/storefront-nuxt'
 
-defineProps({
-  product: {
-    type: Object as PropType<Product>,
-    default: () => ({}),
-  },
-})
+defineProps<{ product: Product }>()
 </script>

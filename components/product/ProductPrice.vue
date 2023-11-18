@@ -44,49 +44,35 @@
 
 <script setup lang="ts">
 import {
-  getTotalAppliedReductions,
   type Price,
   type LowestPriorPrice,
   type AppliedReduction,
+  getTotalAppliedReductions,
 } from '@scayle/storefront-nuxt'
 import { Size } from '#imports'
 
-const props = defineProps({
-  appliedReductions: {
-    type: Array as PropType<AppliedReduction[]>,
-    default: () => [],
-  },
-  price: {
-    type: Object as PropType<Price>,
-    required: true,
-  },
-  lowestPriorPrice: {
-    type: Object as PropType<LowestPriorPrice>,
-    default: () => ({
-      withTax: null,
-      relativeDifferenceToPrice: null,
-    }),
-  },
-  showTaxInfo: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  showPriceFrom: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  showPriceReductionBadge: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  size: {
-    type: String as PropType<Size>,
-    default: Size.XL,
-  },
-  type: {
-    type: String as PropType<'normal' | 'whisper' | 'loud'>,
-    default: 'loud',
-  },
+type Props = {
+  price: Price
+  appliedReductions?: AppliedReduction[]
+  lowestPriorPrice?: LowestPriorPrice
+  showTaxInfo?: boolean
+  showPriceFrom?: boolean
+  showPriceReductionBadge?: boolean
+  size?: Size
+  type?: 'normal' | 'whisper' | 'loud'
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  appliedReductions: () => [],
+  lowestPriorPrice: () => ({
+    withTax: null,
+    relativeDifferenceToPrice: null,
+  }),
+  showTaxInfo: false,
+  showPriceFrom: false,
+  showPriceReductionBadge: false,
+  size: Size.XL,
+  type: 'loud',
 })
 
 const totalReductions = computed(() => getTotalAppliedReductions(props.price))
