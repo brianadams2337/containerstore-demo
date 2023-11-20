@@ -2,7 +2,7 @@
   <div
     class="z-10 inline-block w-max rounded-md bg-black p-2 text-xs font-bold uppercase leading-none text-white md:mt-3"
   >
-    {{ $t((translate ? 'badge_labels.' : '') + badgeLabel) }}
+    {{ label }}
   </div>
 </template>
 
@@ -11,5 +11,15 @@ type Props = {
   badgeLabel?: string
   translate?: boolean
 }
-withDefaults(defineProps<Props>(), { badgeLabel: undefined, translate: true })
+
+const props = withDefaults(defineProps<Props>(), {
+  badgeLabel: undefined,
+  translate: true,
+})
+
+const { $i18n } = useNuxtApp()
+
+const label = computed(() => {
+  return $i18n.t((props.translate ? 'badge_labels.' : '') + props.badgeLabel)
+})
 </script>
