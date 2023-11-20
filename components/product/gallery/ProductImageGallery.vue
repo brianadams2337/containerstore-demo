@@ -29,11 +29,6 @@
         fit="cover"
         :image-loading="index === 0 ? 'eager' : 'lazy'"
       />
-      <ProductPromotionBadge
-        v-if="index === 0 && isBuyXGetY"
-        :product="product"
-        class="absolute bottom-3 left-3"
-      />
     </div>
   </div>
   <div class="relative block w-full md:hidden md:w-1/2 xl:w-2/3">
@@ -58,11 +53,6 @@
         </div>
       </Intersect>
     </HorizontalItemsSlider>
-    <ProductPromotionBadge
-      v-if="isBuyXGetY"
-      :product="product"
-      class="absolute bottom-3 left-0 top-auto"
-    />
     <FadeInTransition>
       <div class="absolute bottom-4 flex w-full justify-center space-x-2">
         <div
@@ -89,8 +79,6 @@ type Props = {
 const props = withDefaults(defineProps<Props>(), {
   imagesPerRow: () => [2, 2, 2, 3, 3],
 })
-
-const { isBuyXGetY } = await useProductPromotion(props.product)
 
 const emit = defineEmits<{
   (e: 'click:image', value: number): void

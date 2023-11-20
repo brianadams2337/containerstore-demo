@@ -42,8 +42,9 @@ const props = defineProps<{ product: Product }>()
 
 const { promotionEngineFeatureEnabled } = useRuntimeConfig().public
 
-const { backgroundColorStyle, applicablePromotion, hasMultipleFreeGifts } =
-  await useProductPromotion(props.product)
+const { buyXGetYPromotion, hasMultipleFreeGifts } = await useProductPromotions(
+  props.product,
+)
 
 const hasScrolledToBottom = ref(false)
 
@@ -60,13 +61,17 @@ const shadowClass = computed(() => {
 })
 
 const variantIds = computed(() => {
-  const { additionalData } = applicablePromotion.value.effect as BuyXGetYEffect
+  const { additionalData } = buyXGetYPromotion.value?.effect as BuyXGetYEffect
   return additionalData.variantIds.slice(0, additionalData.maxCount)
+})
+
+const backgroundColorStyle = computed(() => {
+  return getBackgroundColorStyle(buyXGetYPromotion.value?.customData.colorHex)
 })
 
 const { data: variants } = await useVariant({
   params: { ids: variantIds.value },
-  key: `promotion-variants-${applicablePromotion.value.id}`,
+  key: `promotion-variants-${buyXGetYPromotion.value?.id}`,
 })
 
 const selectedVariantId = useState<Variant['id']>(

@@ -1,19 +1,7 @@
 <template>
   <div class="relative w-80 min-w-xs overflow-hidden rounded-md border p-2">
-    <PromotionActiveBadge v-if="isActive" />
-    <div
-      class="mb-2 flex flex-col items-start rounded-md bg-blue p-4"
-      :style="getBackgroundColorStyle(customData.colorHex)"
-    >
-      <PromotionHeadline
-        v-if="headlineParts"
-        :headline-parts="headlineParts"
-        size="sm"
-        is-column
-        class="mb-2"
-      />
-      <PromotionCountdown :until="schedule.to" />
-    </div>
+    <PromotionActiveBadge v-if="isActive" class="absolute left-0 top-0 z-20" />
+    <PromotionItemContent v-bind="{ customData, schedule }" class="mb-2" />
     <PromotionItemTerms
       v-if="customData.terms"
       :content="customData.terms"
@@ -30,9 +18,5 @@ type Props = {
   schedule: Promotion['schedule']
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  customData: () => ({}),
-})
-
-const headlineParts = computed(() => props.customData.headlineParts)
+withDefaults(defineProps<Props>(), { customData: () => ({}) })
 </script>

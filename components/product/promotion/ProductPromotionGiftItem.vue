@@ -22,13 +22,7 @@
     <div class="flex w-full flex-col justify-between">
       <Headline size="base" tag="h3" class="mt-2">{{ name }}</Headline>
       <div class="flex items-center justify-between">
-        <ProductSizePicker
-          :id="variant.id"
-          :value="size"
-          :variants="[]"
-          disabled
-          class="mr-4 !w-auto"
-        />
+        <span class="text-lg font-bold uppercase text-black"> {{ size }}</span>
         <div class="flex flex-col items-end">
           <span class="text-xs text-gray-600 line-through">
             {{ toCurrency(variant.price.withTax) }}

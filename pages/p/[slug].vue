@@ -36,13 +36,16 @@
               >
                 {{ productName }}
               </Headline>
-              <ProductAutomaticDiscountBanner
+              <ProductPromotionBanners
                 :product="product"
                 class="mt-2 xs:hidden md:flex"
               />
               <div class="flex flex-col">
                 <div class="flex gap-2 xs:flex-col-reverse md:flex-col">
-                  <ProductPromotionBadge :product="product" class="md:hidden" />
+                  <ProductPromotionBadges
+                    :product="product"
+                    class="md:hidden"
+                  />
                   <ProductBadge
                     v-if="product.isSoldOut"
                     :badge-label="
@@ -53,6 +56,7 @@
 
                 <ProductPrice
                   v-if="price"
+                  :product="product"
                   size="xl"
                   class="mt-3"
                   :type="isGreaterOrEquals('md') ? 'normal' : 'loud'"
@@ -140,7 +144,7 @@
             </div>
 
             <ProductPromotionGifts
-              v-if="isBuyXGetY"
+              v-if="hasBuyXGetY"
               :product="product"
               class="mt-6"
             />
@@ -206,7 +210,7 @@ const {
 
 const { addItemToBasket, basketIdle } = await useProductDetailsBasketActions()
 
-const { isBuyXGetY } = await useProductPromotion(product)
+const { hasBuyXGetY } = await useProductPromotions(product)
 
 const {
   sliderProducts,

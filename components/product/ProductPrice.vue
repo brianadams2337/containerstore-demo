@@ -13,9 +13,9 @@
         <template v-if="showPriceFrom">
           {{ $t('price.starting_from') }}
         </template>
-        {{ toCurrency(price.withTax) }}
+        {{ totalPrice }}
         <span
-          v-if="totalReductions.absoluteWithTax"
+          v-if="totalReductions.absoluteWithTax || automaticDiscountPromotion"
           class="text-sm font-medium text-primary line-through"
           data-test-id="initialProductPrice"
         >
@@ -47,11 +47,13 @@ import {
   type Price,
   type LowestPriorPrice,
   type AppliedReduction,
+  type Product,
   getTotalAppliedReductions,
 } from '@scayle/storefront-nuxt'
 import { Size } from '#imports'
 
 type Props = {
+  product: Product
   price: Price
   appliedReductions?: AppliedReduction[]
   lowestPriorPrice?: LowestPriorPrice
@@ -73,6 +75,15 @@ const props = withDefaults(defineProps<Props>(), {
   showPriceReductionBadge: false,
   size: Size.XL,
   type: 'loud',
+})
+
+const { automaticDiscountPromotion, getAppliedAutomaticDiscountPrice } =
+  await useProductPromotions(props.product)
+
+const totalPrice = computed(() => {
+  return automaticDiscountPromotion.value
+    ? toCurrency(getAppliedAutomaticDiscountPrice(props.price) as number)
+    : toCurrency(props.price.withTax)
 })
 
 const totalReductions = computed(() => getTotalAppliedReductions(props.price))
@@ -97,6 +108,7 @@ const classes = computed(() => ({
   'text-xs': props.size === Size.XS,
   'font-bold': props.type === 'loud',
   'font-semibold': props.type === 'whisper',
-  'text-red-500': props.appliedReductions.length,
+  'text-red-500':
+    props.appliedReductions.length || automaticDiscountPromotion.value,
 }))
 </script>

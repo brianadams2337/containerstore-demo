@@ -180,6 +180,9 @@ const state = ref('default')
 const isWishlistToggling = ref(false)
 const index = toRef(props, 'index')
 
+const { buyXGetYPromotion, automaticDiscountPromotion } =
+  await useProductPromotions()
+
 const product = computed(() => mainItem.value!.product)
 const variant = computed(() => mainItem.value!.variant)
 const inStock = computed(() => isInStock(variant.value))
@@ -329,6 +332,9 @@ const changeQuantity = async (newQuantity: number) => {
     return
   }
 
+  const promotionId =
+    buyXGetYPromotion.value?.id || automaticDiscountPromotion.value?.id
+
   if (basketItem.quantity < newQuantity) {
     trackAddToBasket({
       product: product.value,
@@ -350,6 +356,7 @@ const changeQuantity = async (newQuantity: number) => {
     variantId: variant.value.id,
     quantity: newQuantity,
     existingItemHandling: ExistingItemHandling.ReplaceExisting,
+    ...(promotionId && { promotionId }),
   })
 }
 
