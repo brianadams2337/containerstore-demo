@@ -240,19 +240,36 @@ export default defineNuxtConfig({
   },
 
   // https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering
-  routeRules: {
-    // How rules are merged
-    // https://github.com/unjs/nitro/blob/ae253596a847f764e275f7e0450ffdfcdcd8957e/src/runtime/route-rules.ts#L69
-    // Page generated on-demand, revalidates in background
-    '/**': { swr: true },
-    // Don't cache API routes.
-    '**/api/**': { cache: false, swr: false },
-    // Do not cache pages with user-specific information
-    '**/wishlist': { cache: false, swr: false },
-    '**/basket': { cache: false, swr: false },
-    '**/checkout': { cache: false, swr: false },
-    '**/signin': { cache: false, swr: false },
-    '**/account/**': { cache: false, swr: false },
-    '**/orders/**': { cache: false, swr: false },
-  },
+  routeRules: (() => {
+    if (process.env.NITRO_PRESET === 'vercel') {
+      // We need some different route definitions for vercel which uses a regex syntax when you want to match `**/`
+      return {
+        // Page generated on-demand, revalidates in background
+        '/**': { isr: true },
+        // Don't cache API routes.
+        '.*/api/**': { isr: false },
+        // Do not cache pages with user-specific information
+        '.*/wishlist': { isr: false },
+        '.*/basket': { isr: false },
+        '.*/checkout': { isr: false },
+        '.*/signin': { isr: false },
+        '.*/account/**': { isr: false },
+        '.*/orders/**': { isr: false },
+      }
+    }
+
+    return {
+      // Page generated on-demand, revalidates in background
+      '/**': { swr: true },
+      // Don't cache API routes.
+      '**/api/**': { cache: false, swr: false },
+      // Do not cache pages with user-specific information
+      '**/wishlist': { cache: false, swr: false },
+      '**/basket': { cache: false, swr: false },
+      '**/checkout': { cache: false, swr: false },
+      '**/signin': { cache: false, swr: false },
+      '**/account/**': { cache: false, swr: false },
+      '**/orders/**': { cache: false, swr: false },
+    }
+  })(),
 })
