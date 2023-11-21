@@ -1,5 +1,5 @@
 <template>
-  <Modal @close="emit('close')">
+  <Modal @close="close">
     <PageContent>
       <div class="flex flex-1 flex-row items-start gap-8">
         <ProductPromotionGiftImageGallery :images="images" class="w-1/2" />
@@ -70,11 +70,11 @@
                 data-test-id="add-item-to-basket-button"
                 is-full-width
                 type="primary"
-                :disabled="product.isSoldOut"
+                :disabled="product.isSoldOut || !activeVariant"
                 :title="product.isSoldOut ? $t('badge_labels.sold_out') : ''"
                 :loading="basketIdle"
                 class="text-sm !normal-case"
-                @click="addItemToBasket()"
+                @click="addToBasket"
               >
                 {{ $t('pdp.add_label') }}
               </AppButton>
@@ -101,121 +101,34 @@
 </template>
 
 <script setup lang="ts">
-import {
-  type ProductColor,
-  type Variant,
-  type Product,
-  type Value,
-  getAttributeValue,
-  getFirstAttributeValue,
-  getPrice,
-  getVariantBySize,
-  getProductSiblings,
-} from '@scayle/storefront-nuxt'
+import type { ProductColor, Product } from '@scayle/storefront-nuxt'
 
 const props = defineProps<{ product: Product }>()
 
 const emit = defineEmits(['close'])
 
-const { $alert, $i18n } = useNuxtApp()
-
-const { fetching: basketIdle, addItem: addBasketItem } = await useBasket()
-
-const { trackAddToBasket } = useTrackingEvents()
-
-const { openBasketFlyout } = useFlyouts()
+const {
+  basketIdle,
+  lowestPriorPrice,
+  activeVariant,
+  price,
+  productName,
+  handleSelectedSize,
+  size,
+  brand,
+  hasOneSizeVariantOnly,
+  addItemToBasket,
+  hasSpecial,
+  images,
+  siblings,
+} = await usePromotionGift(props.product)
 
 const { isGreaterOrEquals } = useViewport()
 
-const activeVariant = useState<Variant | undefined>(
-  `active-gift-variant-${props.product.id}`,
-)
+const close = () => emit('close')
 
-const {
-  brand,
-  name: productName,
-  variantWithLowestPrice,
-} = useProductBaseInfo(props.product)
-
-const lowestPriorPrice = computed(
-  () =>
-    activeVariant.value?.lowestPriorPrice ||
-    variantWithLowestPrice.value?.lowestPriorPrice ||
-    props.product?.lowestPriorPrice,
-)
-
-const price = computed(() =>
-  activeVariant.value
-    ? getPrice(activeVariant.value)
-    : variantWithLowestPrice.value?.price,
-)
-
-const handleSelectedSize = (value: Value) => {
-  if (props.product?.variants) {
-    activeVariant.value = getVariantBySize(
-      props.product?.variants,
-      value,
-      'size',
-    )
-  }
+const addToBasket = async () => {
+  await addItemToBasket()
+  close()
 }
-
-const size = computed(() => {
-  return getFirstAttributeValue(activeVariant.value?.attributes, 'size')?.value
-})
-
-const hasOneSizeVariantOnly = computed(() => {
-  const variants = props.product?.variants
-  return (
-    variants?.length === 1 &&
-    getAttributeValue(variants[0].attributes, 'size') === ONE_SIZE_KEY
-  )
-})
-
-const hasSpecial = computed(() => {
-  return Boolean(!activeVariant.value && price.value?.appliedReductions.length)
-})
-
-const siblings = computed(() => {
-  return getProductSiblings(props.product, 'color') || []
-})
-
-const addItemToBasket = async () => {
-  if (hasOneSizeVariantOnly.value && props.product?.variants) {
-    activeVariant.value = props.product.variants[0]
-  }
-
-  if (!activeVariant.value) {
-    $alert.show($i18n.t('basket.notification.select_size'), 'CONFIRM')
-    return
-  }
-
-  const productName = brand.value || $i18n.t('wishlist.product')
-
-  try {
-    await addBasketItem({
-      variantId: activeVariant.value.id,
-      quantity: 1,
-    })
-
-    openBasketFlyout()
-
-    showAddToBasketToast(true, props.product)
-
-    if (props.product) {
-      trackAddToBasket({
-        product: props.product,
-        variant: activeVariant.value,
-        index: 1,
-      })
-    }
-  } catch {
-    $alert.show(
-      $i18n.t('basket.notification.add_to_basket_error', { productName }),
-      'CONFIRM',
-    )
-  }
-}
-
-const images = computed(() => props.product.images)
 </script>

@@ -3,7 +3,7 @@
     <FadeInTransition>
       <div
         v-if="isOpen"
-        class="fixed right-0 top-0 z-[51] flex w-full bg-black/50"
+        class="fixed right-0 top-0 z-[100] flex w-full bg-black/50"
         :class="fullScreen ? 'h-full' : 'min-h-screen'"
       >
         <div
@@ -28,19 +28,15 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  hideCloseButton: {
-    type: Boolean,
-    default: false,
-  },
-  fullScreen: {
-    type: Boolean,
-    default: false,
-  },
-  closeOnOutside: {
-    type: Boolean,
-    default: true,
-  },
+type Props = {
+  hideCloseButton?: boolean
+  fullScreen?: boolean
+  closeOnOutside?: boolean
+}
+const props = withDefaults(defineProps<Props>(), {
+  hideCloseButton: false,
+  fullScreen: false,
+  closeOnOutside: true,
 })
 
 const emit = defineEmits(['close'])

@@ -32,14 +32,24 @@
           <span class="text-base font-bold text-black">
             {{ toCurrency(0) }}
           </span>
+          <span class="text-xs text-gray-700">
+            {{ $t('price.including_vat') }}
+          </span>
         </div>
       </div>
     </div>
-    <ProductPromotionGiftModal
-      v-if="isModalOpened"
-      :product="variant.product"
-      @close="isModalOpened = false"
-    />
+    <template v-if="isModalOpened">
+      <ProductPromotionGiftModal
+        v-if="isGreaterOrEquals('md')"
+        :product="variant.product"
+        @close="isModalOpened = false"
+      />
+      <ProductPromotionGiftSizeSelection
+        v-else
+        :product="variant.product"
+        @close="isModalOpened = false"
+      />
+    </template>
   </div>
 </template>
 
@@ -50,6 +60,7 @@ const props = defineProps<{
 }>()
 
 const isModalOpened = ref(false)
+const { isGreaterOrEquals } = useViewport()
 
 const { name, image } = useProductBaseInfo(props.variant.product)
 </script>

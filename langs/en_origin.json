@@ -236,7 +236,10 @@
       "free_label": "Free",
       "free_gift_hint": "Will be added to your bag when conditions are met",
       "gift_added_label": "Already added to bag",
-      "add_for_free_label": "Add for free"
+      "add_for_free_label": "Add for free",
+      "select_size_label": "Select your size",
+      "select_size_add_label": "Add",
+      "select_size_cancel": "Cancel"
     }
   },
   "price": {
