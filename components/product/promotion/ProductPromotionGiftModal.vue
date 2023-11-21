@@ -22,10 +22,6 @@
                   {{ productName }}
                 </Headline>
                 <div class="flex flex-col">
-                  <ProductPromotionBadges
-                    :product="product"
-                    class="md:hidden"
-                  />
                   <ProductPrice
                     v-if="price"
                     :product="product"
@@ -82,6 +78,20 @@
               >
                 {{ $t('pdp.add_label') }}
               </AppButton>
+              <div class="mt-4 flex justify-end">
+                <AppButton
+                  type="ghost"
+                  no-padding
+                  size="xs"
+                  :to="getProductDetailRoute(product)"
+                  class="font-semibold"
+                >
+                  {{ $t('pdp.details_label') }}
+                  <template #append-icon="{ _class }">
+                    <IconForward :class="_class" />
+                  </template>
+                </AppButton>
+              </div>
             </div>
           </div>
         </div>
@@ -107,17 +117,19 @@ const props = defineProps<{ product: Product }>()
 
 const emit = defineEmits(['close'])
 
+const { $alert, $i18n } = useNuxtApp()
+
 const { fetching: basketIdle, addItem: addBasketItem } = await useBasket()
 
 const { trackAddToBasket } = useTrackingEvents()
 
 const { openBasketFlyout } = useFlyouts()
 
+const { isGreaterOrEquals } = useViewport()
+
 const activeVariant = useState<Variant | undefined>(
   `active-gift-variant-${props.product.id}`,
 )
-
-const { $alert, $i18n } = useNuxtApp()
 
 const {
   brand,
@@ -167,8 +179,6 @@ const hasSpecial = computed(() => {
 const siblings = computed(() => {
   return getProductSiblings(props.product, 'color') || []
 })
-
-const { isGreaterOrEquals } = useViewport()
 
 const addItemToBasket = async () => {
   if (hasOneSizeVariantOnly.value && props.product?.variants) {
