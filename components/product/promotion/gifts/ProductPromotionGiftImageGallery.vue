@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex w-1/2 flex-col">
+  <div class="relative flex flex-col">
     <HorizontalItemsSlider
       class="aspect-[5/6] snap-x snap-mandatory rounded-md bg-gray-200"
       with-arrows

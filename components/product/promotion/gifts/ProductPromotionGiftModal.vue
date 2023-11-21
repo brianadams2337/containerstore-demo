@@ -2,7 +2,7 @@
   <Modal @close="emit('close')">
     <PageContent>
       <div class="flex flex-1 flex-row items-start gap-8">
-        <ProductPromotionGiftImageGallery :images="images" />
+        <ProductPromotionGiftImageGallery :images="images" class="w-1/2" />
         <div class="mt-5 w-1/2">
           <div class="w-full bg-white">
             <div class="my-2 md:mt-1">
