@@ -143,11 +143,13 @@
               </ClientOnly>
             </div>
 
-            <ProductPromotionGifts
-              v-if="hasBuyXGetY && !isGiftAddedToBasket"
-              :product="product"
-              class="mt-6"
-            />
+            <FadeInTransition>
+              <ProductPromotionGifts
+                v-if="hasBuyXGetY && !isGiftAddedToBasket"
+                :product="product"
+                class="mt-6"
+              />
+            </FadeInTransition>
 
             <div class="mt-3">
               <ProductDetailGroup
