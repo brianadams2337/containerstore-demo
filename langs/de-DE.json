@@ -35,9 +35,10 @@
       "add_label": "Fügen Sie",
       "another_label": "weitere",
       "save_indicator_label": "hinzu, um",
-      "offer": "{discount}% zusätzlich zu sparen",
-      "hurry_to_save": "Beeilen Sie sich, um zu sparen"
-    }
+      "offer": "{discount}% zusätzlich zu sparen"
+    },
+    "hurry_to_save": "Beeilen Sie sich, um zu sparen",
+    "save_your_free_gift": "Speichern Sie Ihr kostenloses Geschenk"
   },
   "validation": {
     "email": "Das Feld {field} muss eine gültige E-Mail Adresse sein",

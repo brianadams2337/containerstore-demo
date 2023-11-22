@@ -35,9 +35,10 @@
       "add_label": "Add",
       "another_label": "another",
       "save_indicator_label": "to save",
-      "offer": "{discount}% extra",
-      "hurry_to_save": "Hurry to save"
-    }
+      "offer": "{discount}% extra"
+    },
+    "hurry_to_save": "Hurry to save",
+    "save_your_free_gift": "Save your free gift"
   },
   "validation": {
     "email": "The {field} field must be a valid email",

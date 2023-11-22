@@ -9,8 +9,10 @@ import {
   getProductSiblings,
 } from '@scayle/storefront-nuxt'
 
-export default async (productItem: Product) => {
+export default async (productGift: Product) => {
   const { $alert, $i18n } = useNuxtApp()
+
+  const { product } = await useProductDetails()
 
   const { fetching: basketIdle, addItem: addBasketItem } = await useBasket()
 
@@ -18,14 +20,16 @@ export default async (productItem: Product) => {
 
   const { openBasketFlyout } = useFlyouts()
 
-  const product = toRef(productItem)
+  const gift = toRef(productGift)
+
+  const { buyXGetYPromotion } = await useProductPromotions(product)
 
   const activeVariant = useState<Variant | null | undefined>(
-    `active-gift-variant-${product.value.id}`,
+    `active-gift-variant-${gift.value.id}`,
   )
 
   const isSelectionShown = useState(
-    `gift-selection-${product.value.id}`,
+    `gift-selection-${gift.value.id}`,
     () => false,
   )
 
@@ -39,13 +43,13 @@ export default async (productItem: Product) => {
     brand,
     name: productName,
     variantWithLowestPrice,
-  } = useProductBaseInfo(product)
+  } = useProductBaseInfo(gift)
 
   const lowestPriorPrice = computed(
     () =>
       activeVariant.value?.lowestPriorPrice ||
       variantWithLowestPrice.value?.lowestPriorPrice ||
-      product.value?.lowestPriorPrice,
+      gift.value?.lowestPriorPrice,
   )
 
   const price = computed(() =>
@@ -55,12 +59,8 @@ export default async (productItem: Product) => {
   )
 
   const handleSelectedSize = (value: Value) => {
-    if (product.value.variants) {
-      activeVariant.value = getVariantBySize(
-        product.value.variants,
-        value,
-        'size',
-      )
+    if (gift.value.variants) {
+      activeVariant.value = getVariantBySize(gift.value.variants, value, 'size')
     }
   }
 
@@ -70,7 +70,7 @@ export default async (productItem: Product) => {
   })
 
   const hasOneSizeVariantOnly = computed(() => {
-    const variants = product.value.variants
+    const variants = gift.value.variants
     return (
       variants?.length === 1 &&
       getAttributeValue(variants[0].attributes, 'size') === ONE_SIZE_KEY
@@ -84,14 +84,14 @@ export default async (productItem: Product) => {
   })
 
   const siblings = computed(() => {
-    return getProductSiblings(product.value, 'color') || []
+    return getProductSiblings(gift.value, 'color') || []
   })
 
-  const images = computed(() => product.value.images)
+  const images = computed(() => gift.value.images)
 
   const addItemToBasket = async () => {
-    if (hasOneSizeVariantOnly.value && product.value?.variants) {
-      activeVariant.value = product.value.variants[0]
+    if (hasOneSizeVariantOnly.value && gift.value?.variants) {
+      activeVariant.value = gift.value.variants[0]
     }
 
     if (!activeVariant.value) {
@@ -105,15 +105,18 @@ export default async (productItem: Product) => {
       await addBasketItem({
         variantId: activeVariant.value.id,
         quantity: 1,
+        ...(buyXGetYPromotion.value && {
+          promotionId: buyXGetYPromotion.value.id,
+        }),
       })
 
       openBasketFlyout()
 
-      showAddToBasketToast(true, product.value)
+      showAddToBasketToast(true, gift.value)
 
-      if (product.value) {
+      if (gift.value) {
         trackAddToBasket({
-          product: product.value,
+          product: gift.value,
           variant: activeVariant.value,
           index: 1,
         })
