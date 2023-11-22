@@ -9,7 +9,7 @@
         <article :id="`product-${product.id}`" class="flex h-full flex-col">
           <slot name="header">
             <div
-              class="group relative flex aspect-[4/3] max-h-md items-center justify-center bg-gray-200"
+              class="group relative flex aspect-[3/4] max-h-md items-center justify-center bg-gray-200"
               @mouseover="onMouseOver"
               @mouseleave="onMouseLeave"
             >

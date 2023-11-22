@@ -6,7 +6,7 @@
         :src="blok.image.filename"
         sizes="xs:80vw sm:25vw md:25vw lg:25vw xl:25vw xxl:25vw 2xl:25vw"
         provider="storyblok"
-        class="aspect-[4/3] w-full"
+        class="aspect-[3/4] w-full"
       />
     </Intersect>
     <div class="mt-4 flex flex-col">
