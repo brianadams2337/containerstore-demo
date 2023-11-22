@@ -24,6 +24,17 @@ export default async (productItem: Product) => {
     `active-gift-variant-${product.value.id}`,
   )
 
+  const isSelectionShown = useState(
+    `gift-selection-${product.value.id}`,
+    () => false,
+  )
+
+  const toggleGiftSelection = () => {
+    isSelectionShown.value = !isSelectionShown.value
+  }
+
+  const isGiftSelectionShown = computed(() => isSelectionShown.value)
+
   const {
     brand,
     name: productName,
@@ -129,5 +140,7 @@ export default async (productItem: Product) => {
     price,
     hasOneSizeVariantOnly,
     activeVariant,
+    isGiftSelectionShown,
+    toggleGiftSelection,
   }
 }

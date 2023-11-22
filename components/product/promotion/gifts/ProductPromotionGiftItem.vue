@@ -25,7 +25,7 @@
         <AppButton
           size="sm"
           :disabled="!isProductAddedToBasket"
-          @click="isModalOpened = true"
+          @click="toggleGiftSelection()"
         >
           {{ $t('pdp.promotion.add_for_free_label') }}
         </AppButton>
@@ -42,18 +42,11 @@
         </div>
       </div>
     </div>
-    <template v-if="isModalOpened">
-      <ProductPromotionGiftModal
-        v-if="isGreaterOrEquals('md')"
-        :product="variant.product"
-        @close="isModalOpened = false"
-      />
-      <ProductPromotionGiftSizeSelection
-        v-else
-        :product="variant.product"
-        @close="isModalOpened = false"
-      />
-    </template>
+    <ProductPromotionGiftSelectionModal
+      v-if="isGreaterOrEquals('md')"
+      :product="variant.product"
+    />
+    <ProductPromotionGiftSizeSelection v-else :product="variant.product" />
   </div>
 </template>
 
@@ -64,7 +57,8 @@ const props = defineProps<{
   isProductAddedToBasket: boolean
 }>()
 
-const isModalOpened = ref(false)
+const { toggleGiftSelection } = await usePromotionGift(props.variant.product)
+
 const { isGreaterOrEquals } = useViewport()
 
 const { name, image } = useProductBaseInfo(props.variant.product)

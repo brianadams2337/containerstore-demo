@@ -1,9 +1,11 @@
 export default () => {
-  const isPromotionListShown = useState('promotion-list-shown', () => false)
+  const isShown = useState('promotion-list-shown', () => false)
 
   const togglePromotionList = () => {
-    isPromotionListShown.value = !isPromotionListShown.value
+    isShown.value = !isShown.value
   }
+
+  const isPromotionListShown = computed(() => isShown.value)
 
   return {
     togglePromotionList,

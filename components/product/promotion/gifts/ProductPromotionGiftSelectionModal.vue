@@ -1,5 +1,5 @@
 <template>
-  <Modal @close="close">
+  <Modal v-if="isGiftSelectionShown" @close="toggleGiftSelection()">
     <PageContent>
       <div class="flex flex-1 flex-row items-start gap-8">
         <ProductPromotionGiftImageGallery :images="images" class="w-1/2" />
@@ -14,7 +14,7 @@
               </div>
               <div class="flex items-start justify-between md:flex-col">
                 <Headline
-                  :size="isGreaterOrEquals('md') ? '2xl' : 'xl'"
+                  size="2xl"
                   class="!leading-snug"
                   data-test-id="pdp-product-name"
                   tag="h1"
@@ -24,16 +24,14 @@
                 <div class="flex flex-col">
                   <ProductPrice
                     v-if="price"
-                    :product="product"
-                    size="xl"
-                    class="mt-3"
-                    :type="isGreaterOrEquals('md') ? 'normal' : 'loud'"
-                    :price="price"
-                    :lowest-prior-price="lowestPriorPrice"
+                    v-bind="{ product, price, lowestPriorPrice }"
                     :applied-reductions="price?.appliedReductions"
-                    show-tax-info
                     :show-price-from="hasSpecial"
                     :show-price-reduction-badge="hasSpecial"
+                    size="xl"
+                    type="normal"
+                    show-tax-info
+                    class="mt-3"
                   />
                 </div>
               </div>
@@ -49,7 +47,7 @@
                     >
                       <ColorChip
                         :is-active="item.id === product.id"
-                        :size="isGreaterOrEquals('md') ? Size.LG : Size.XL"
+                        :size="Size.LG"
                         :color="item.colors[0] as ProductColor"
                       />
                     </DefaultLink>
@@ -105,8 +103,6 @@ import type { ProductColor, Product } from '@scayle/storefront-nuxt'
 
 const props = defineProps<{ product: Product }>()
 
-const emit = defineEmits(['close'])
-
 const {
   basketIdle,
   lowestPriorPrice,
@@ -121,14 +117,12 @@ const {
   hasSpecial,
   images,
   siblings,
+  toggleGiftSelection,
+  isGiftSelectionShown,
 } = await usePromotionGift(props.product)
-
-const { isGreaterOrEquals } = useViewport()
-
-const close = () => emit('close')
 
 const addToBasket = async () => {
   await addItemToBasket()
-  close()
+  toggleGiftSelection()
 }
 </script>
