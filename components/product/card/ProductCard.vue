@@ -45,7 +45,6 @@
                     v-bind="{ image, imageLoading }"
                     :alt="name"
                     :class="imageClasses"
-                    fit="contain"
                     sizes="sm:100vw"
                     is-centered
                     class="absolute inset-0 transition duration-200"

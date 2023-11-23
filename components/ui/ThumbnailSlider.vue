@@ -11,7 +11,6 @@
       :hash="image.hash"
       :image="image"
       sizes="sm:50vw"
-      fit="contain"
       :quality="30"
       @click="emit('click:thumbnail', idx)"
     />

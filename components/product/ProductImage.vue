@@ -17,7 +17,7 @@ import { type ProductImage, getAttributeValue } from '@scayle/storefront-nuxt'
 type Props = {
   image: ProductImage
   sizes?: string
-  fit?: string
+  fit?: 'contain' | 'cover'
   alt?: string
   imageLoading?: 'lazy' | 'eager'
   quality?: number

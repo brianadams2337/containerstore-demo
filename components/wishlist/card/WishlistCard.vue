@@ -46,7 +46,6 @@
           :image="image"
           :image-loading="imageLoading"
           :alt="name"
-          fit="contain"
           sizes="sm:100vw"
           is-centered
           class="absolute inset-0"
@@ -99,7 +98,8 @@
           <div>
             <ProductPrice
               data-test-id="wishlist-product-price"
-              v-bind="{ price, lowestPriorPrice }"
+              v-bind="{ price, lowestPriorPrice, product }"
+              :lowest-prior-price="lowestPriorPrice"
               :applied-reductions="price.appliedReductions"
               type="whisper"
               size="sm"
