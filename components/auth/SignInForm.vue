@@ -1,6 +1,6 @@
 <template>
   <ClientOnly>
-    <div v-if="!isLoggedIn && !fetching">
+    <div v-if="!isLoggedIn && !isFetching">
       <WelcomeBackLoginForm v-if="lastLoggedInUser.email" class="mt-10 px-2" />
 
       <VerticalAccordion v-else class="mt-10 px-2" :tabs="tabs">
@@ -42,8 +42,7 @@ const props = defineProps({
 })
 
 const { $i18n } = useNuxtApp()
-const { isLoggedIn, fetching } = await useUser()
-const { lastLoggedInUser } = await useLastLoggedInUser()
+const { lastLoggedInUser, isLoggedIn, isFetching } = await useLastLoggedInUser()
 
 const route = useRoute()
 

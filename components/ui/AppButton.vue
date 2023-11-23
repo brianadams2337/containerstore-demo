@@ -66,7 +66,7 @@ const isRaw = computed(() => props.type === ButtonType.RAW)
 const { isSize } = useUiSize(props.size)
 
 const componentName = computed(() => {
-  return props.to ? resolveComponent('DefaultLink') : 'Button'
+  return props.to ? resolveComponent('DefaultLink') : 'button'
 })
 
 const emit = defineEmits<{

@@ -5,14 +5,14 @@
   >
     <template #0>
       <LoginForm />
-      <Button
+      <button
         class="group relative text-left text-sm text-gray-600 hover:text-black"
         @click="removeLastLoggedInUser()"
       >
         <span>
           {{ $t('login_page.welcome_back.not_user', { name }) }}
         </span>
-      </Button>
+      </button>
     </template>
   </VerticalAccordion>
 </template>

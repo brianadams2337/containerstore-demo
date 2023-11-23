@@ -1,3 +1,5 @@
+import { useStorage } from '@vueuse/core'
+
 export interface LastLoggedInUser {
   firstName: string
   email: string
@@ -11,62 +13,55 @@ export const setUserDefault = (): LastLoggedInUser => ({
 })
 
 export const useLastLoggedInUser = async () => {
-  const { user, isLoggedIn } = await useUser()
+  const { user, isLoggedIn, fetching } = await useUser()
   const lastLoggedInUser = useState(USER_KEY, setUserDefault)
 
-  const isLocalStorageActionable = () => {
-    const isLocalStorageAvailable =
-      window.localStorage && 'localStorage' in window
-
-    const isWindowAvailable = typeof window !== 'undefined'
-
-    return process.client && isWindowAvailable && isLocalStorageAvailable
-  }
-
-  const getLastLoggedInUser = () => {
-    if (isLocalStorageActionable()) {
-      const entry = window.localStorage.getItem(USER_KEY)
-      return entry && JSON.parse(atob(entry))
-    }
-
-    return setUserDefault()
-  }
-
-  const setLastLoggedInUser = (user: LastLoggedInUser) => {
-    if (isLocalStorageActionable()) {
-      return window.localStorage.setItem(USER_KEY, btoa(JSON.stringify(user)))
-    }
-  }
+  const storage = useStorage<LastLoggedInUser>(
+    USER_KEY,
+    setUserDefault(),
+    window.localStorage,
+    {
+      serializer: {
+        read: (value: any) => (value ? JSON.parse(atob(value)) : null),
+        write: (value: any) => btoa(JSON.stringify(value)),
+      },
+    },
+  )
 
   const removeLastLoggedInUser = () => {
-    setLastLoggedInUser(setUserDefault())
+    storage.value = setUserDefault()
     lastLoggedInUser.value = setUserDefault()
   }
 
-  watch(isLoggedIn, () => {
-    if (isLoggedIn.value) {
+  watch(
+    () => isLoggedIn.value,
+    (value) => {
+      if (!value) {
+        return
+      }
+
       const isGuest = user.value?.status?.isGuestCustomer
 
       if (isGuest) {
         return
       }
 
-      setLastLoggedInUser({
+      storage.value = {
         firstName: user.value!.firstName,
         email: user.value!.email || '',
-      })
-    }
-  })
+      }
+    },
+  )
 
-  onBeforeMount(() => {
-    // we need to set default value onMounted to avoid possible race conditions with local storage
-    lastLoggedInUser.value = getLastLoggedInUser()
+  tryOnBeforeMount(() => {
+    lastLoggedInUser.value = storage.value
   })
 
   return {
     lastLoggedInUser,
-    getLastLoggedInUser,
-    setLastLoggedInUser,
     removeLastLoggedInUser,
+    user,
+    isLoggedIn,
+    isFetching: fetching,
   }
 }

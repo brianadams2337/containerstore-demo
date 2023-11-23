@@ -18,7 +18,7 @@ const { data: basketData, fetch: fetchBasket } = await useBasket()
 
 const { user, fetch: fetchUser } = await useUser()
 
-const { logger } = useLog('CheckoutPage')
+const log = useLog('CheckoutPage')
 
 const { listenToCheckoutStepChanges } = useTrackingEvents()
 listenToCheckoutStepChanges()
@@ -36,11 +36,7 @@ onMounted(async () => {
   try {
     await useRetry({ times: 5, delay: 100 }, fetchCampaignKey)
   } catch (error: any) {
-    logger({
-      message: `[checkout.vue] Error at getting campaign key`,
-      level: 'error',
-      extras: error,
-    })
+    log.error(`[checkout.vue] Error at getting campaign key`, error)
   }
   showCheckout.value = true
 })
@@ -55,11 +51,7 @@ const handleError = (payload = {}) => {
     userId: user.value?.id,
     basketKey: basketKey.value,
   })
-  logger({
-    message: ` [onCheckoutError]`,
-    level: 'error',
-    extras: loggingPayload,
-  })
+  log.error(` [onCheckoutError]`, loggingPayload)
 }
 
 defineOptions({ name: 'CheckoutPage' })
