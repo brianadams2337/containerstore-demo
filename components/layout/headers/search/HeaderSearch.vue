@@ -87,9 +87,11 @@ const input = ref()
 
 const { trackSearchSuggestionClick } = useTrackingEvents()
 
-const showSuggestions = computed(
-  () => searchQuery.value.length >= MIN_CHARS_FOR_SEARCH,
-)
+const showSuggestions = ref(false)
+watchEffect(() => {
+  showSuggestions.value = searchQuery.value.length >= MIN_CHARS_FOR_SEARCH
+})
+
 const { focused: inputActive } = useFocus(input)
 
 watch(inputActive, (val) => !val && resetSearch())
