@@ -10,12 +10,15 @@
           class="flex w-28 items-center pr-3 lg:w-48 lg:p-0 lg:pr-6"
           @click.capture="selectItem"
         >
-          <DefaultLink :to="getProductDetailRoute(product)">
-            <NuxtPicture
-              :src="imageHash"
+          <DefaultLink
+            :to="getProductDetailRoute(product)"
+            class="relative h-full rounded-md bg-gray-200 p-1"
+          >
+            <ProductImage
+              v-if="image"
+              :image="image"
               :alt="name"
-              provider="default"
-              class="object-cover"
+              fit="cover"
               sizes="xl:100vw lg:100vw lg:100vw lg:100vw xs:100vw"
             />
           </DefaultLink>
@@ -124,10 +127,10 @@
       </div>
     </div>
     <BasketCardConfirmDelete
-      v-else-if="state === 'confirmDelete' && imageHash"
+      v-else-if="state === 'confirmDelete' && image?.hash"
       key="confirmDelete"
       :name="name ?? ''"
-      :image-hash="imageHash"
+      :image-hash="image.hash"
       @click:confirm="onConfirmDelete"
       @click:cancel="onCancelDelete"
     />
@@ -180,8 +183,9 @@ const state = ref('default')
 const isWishlistToggling = ref(false)
 const index = toRef(props, 'index')
 
-const { buyXGetYPromotion, automaticDiscountPromotion } =
-  await useProductPromotions(props.item?.product)
+const { highestPriorityPromotion } = await useProductPromotions(
+  props.item?.product,
+)
 
 const product = computed(() => mainItem.value!.product)
 const variant = computed(() => mainItem.value!.variant)
@@ -199,13 +203,12 @@ const color = computed(() =>
   getProductColors(mainItem.value!.product, 'color').join('/'),
 )
 
-const imageHash = computed(
-  () =>
-    getImageFromList(
-      mainItem.value!.product.images,
-      ProductImageType.BUST,
-      'front',
-    )?.hash,
+const image = computed(() =>
+  getImageFromList(
+    mainItem.value!.product.images,
+    ProductImageType.BUST,
+    'front',
+  ),
 )
 
 const mainItem = computed(() => {
@@ -332,8 +335,7 @@ const changeQuantity = async (newQuantity: number) => {
     return
   }
 
-  const promotionId =
-    buyXGetYPromotion.value?.id || automaticDiscountPromotion.value?.id
+  const promotionId = highestPriorityPromotion.value?.id
 
   if (basketItem.quantity < newQuantity) {
     trackAddToBasket({

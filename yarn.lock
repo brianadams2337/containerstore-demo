@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@aashutoshrathi/word-wrap/-/word-wrap-1.2.6.tgz#bd9154aec9983f77b3a034ecaa015c2e4201f6cf"
   integrity sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==
 
-"@aboutyou/backbone@15.14.2":
-  version "15.14.2"
-  resolved "https://registry.yarnpkg.com/@aboutyou/backbone/-/backbone-15.14.2.tgz#0fb22c456134bf683dc1f1b3babe8fc1c2d0147d"
-  integrity sha512-U7c9XySFDG+RMOjQZNMgedmiK6eh5SKf9VN+PMOmVxza6fdaUYyKXCbDaYR9QfdUpAcf9bkv4jV7Cuv27+7ewg==
+"@aboutyou/backbone@15.14.3":
+  version "15.14.3"
+  resolved "https://registry.yarnpkg.com/@aboutyou/backbone/-/backbone-15.14.3.tgz#abcca5c4c9d1a90f721dbbf3be8df094ac0827bd"
+  integrity sha512-SaPEVUnL2vT5HkudjXGqcakx0AxqRGw+TLgGzIxW4LNEy1Zj2xNmRHfCx+wnZZ7obVdYaMHzVcyKjtI+ZHv4iw==
   dependencies:
     axios ">=0.18.0 <1.0.0"
     query-string "^6.2.0"
@@ -1702,12 +1702,12 @@
   dependencies:
     prettier-config-standard "^7.0.0"
 
-"@scayle/storefront-core@7.26.0":
-  version "7.26.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.26.0.tgz#1632dc4065356de3c6c8aa3ec761d6b6551fe58f"
-  integrity sha512-ZgkJg7X8P7a0eII37M5GxWdyOPFogSUSn3LLXfoIh0zRk68wEF83tX5BuB5jp01XC0Yj6wIMUgUWnqBh/dlAEw==
+"@scayle/storefront-core@7.27.0":
+  version "7.27.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.27.0.tgz#e769aad49ae4bb38f3f65b6472bf8d376ee1eee7"
+  integrity sha512-QUFodi3xVtXQu7SkzX2FyoL+Zl7alWZoZrejlcKXKUC52m1pRzEcjhBYvLaJgOImFRmy3ddnYyEoZKXL5rf+0Q==
   dependencies:
-    "@aboutyou/backbone" "15.14.2"
+    "@aboutyou/backbone" "15.14.3"
     crypto-js "4.2.0"
     jose "^4.14.4"
     radash "^11.0.0"
@@ -1719,19 +1719,19 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.40.1":
-  version "7.40.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.40.1.tgz#ee824140fa31da54862a8f9cdfa1a60e599a91be"
-  integrity sha512-LIUDVoBB9j69nOfh2KribjMO363xZtyXtGTRL+UIyvuGqp+t0npsNbYvUBf6FDmhcmOhwCFfwNzwal3dDneb3g==
+"@scayle/storefront-nuxt@7.40.2":
+  version "7.40.2"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.40.2.tgz#9ee8c1ccc21bbec872b7bf083dc4541f792bb613"
+  integrity sha512-rYCIOcVOCfiRpmrNKAYorOMUvoUXGdBitVb2hOFLa/JYFLukua47w1MV8P91+TI/1079ynB1QtEd5N3Bi66hZA==
   dependencies:
     "@nuxt/kit" "3.8.1"
     "@scayle/h3-session" "0.3.4"
-    "@scayle/storefront-core" "7.26.0"
+    "@scayle/storefront-core" "7.27.0"
     "@vueuse/core" "10.6.1"
     consola "3.2.3"
-    core-js "3.33.2"
+    core-js "3.33.3"
     defu "6.1.3"
-    h3 "1.8.2"
+    h3 "1.9.0"
     jose "4.15.4"
     ofetch "1.3.3"
     radash "11.0.0"
@@ -3611,10 +3611,10 @@ cookies@~0.8.0:
     depd "~2.0.0"
     keygrip "~1.1.0"
 
-core-js@3.33.2:
-  version "3.33.2"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.33.2.tgz#312bbf6996a3a517c04c99b9909cdd27138d1ceb"
-  integrity sha512-XeBzWI6QL3nJQiHmdzbAOiMYqjrb7hwU7A39Qhvd/POSa/t9E1AeZyEZx3fNvp/vtM8zXwhoL0FsiS0hD0pruQ==
+core-js@3.33.3:
+  version "3.33.3"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.33.3.tgz#3c644a323f0f533a0d360e9191e37f7fc059088d"
+  integrity sha512-lo0kOocUlLKmm6kv/FswQL8zbkH7mVsLJ/FULClOhv8WRVmKLVcs6XPNQAzstfeJTCHMyButEwG+z1kHxHoDZw==
 
 core-util-is@1.0.2:
   version "1.0.2"
@@ -5647,7 +5647,21 @@ gzip-size@^7.0.0:
   dependencies:
     duplexer "^0.1.2"
 
-h3@1.8.2, h3@^1.7.1, h3@^1.8.1, h3@^1.8.2:
+h3@1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/h3/-/h3-1.9.0.tgz#c5f512a93026df9837db6f30c9ef51135dd46752"
+  integrity sha512-+F3ZqrNV/CFXXfZ2lXBINHi+rM4Xw3CDC5z2CDK3NMPocjonKipGLLDSkrqY9DOrioZNPTIdDMWfQKm//3X2DA==
+  dependencies:
+    cookie-es "^1.0.0"
+    defu "^6.1.3"
+    destr "^2.0.2"
+    iron-webcrypto "^1.0.0"
+    radix3 "^1.1.0"
+    ufo "^1.3.2"
+    uncrypto "^0.1.3"
+    unenv "^1.7.4"
+
+h3@^1.7.1, h3@^1.8.1, h3@^1.8.2:
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/h3/-/h3-1.8.2.tgz#69ea8ca0285c1bb268cd08b9a7017e02939f88b7"
   integrity sha512-1Ca0orJJlCaiFY68BvzQtP2lKLk46kcLAxVM8JgYbtm2cUg6IY7pjpYgWMwUvDO9QI30N5JAukOKoT8KD3Q0PQ==
@@ -10754,7 +10768,7 @@ ua-parser-js@^1.0.35:
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-1.0.37.tgz#b5dc7b163a5c1f0c510b08446aed4da92c46373f"
   integrity sha512-bhTyI94tZofjo+Dn8SN6Zv8nBDvyXTymAdM3LDI/0IboIUwTu1rEhW7v2TfiVsoYWgkQ4kOVqnI8APUFbIQIFQ==
 
-ufo@1.3.2:
+ufo@1.3.2, ufo@^1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/ufo/-/ufo-1.3.2.tgz#c7d719d0628a1c80c006d2240e0d169f6e3c0496"
   integrity sha512-o+ORpgGwaYQXgqGDwd+hkS4PuZ3QnmqMMxRuajK/a38L6fTpcE5GPIfrf+L/KemFzfUpeUQc1rRS1iDBozvnFA==

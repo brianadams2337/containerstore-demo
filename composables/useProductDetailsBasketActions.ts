@@ -8,8 +8,7 @@ export default async () => {
     options: { lazy: true },
   })
 
-  const { buyXGetYPromotion, automaticDiscountPromotion } =
-    await useProductPromotions(product)
+  const { highestPriorityPromotion } = await useProductPromotions(product)
 
   const { addGroupToBasket } = await useBasketGroup()
 
@@ -31,8 +30,7 @@ export default async () => {
     }
 
     const productName = brand.value || $i18n.t('wishlist.product')
-    const promotionId =
-      buyXGetYPromotion.value?.id || automaticDiscountPromotion.value?.id
+    const promotionId = highestPriorityPromotion.value?.id
 
     try {
       isAnyAddOnSelected.value
