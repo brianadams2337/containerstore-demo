@@ -43,6 +43,7 @@ export default async (key = 'product-details') => {
   const activeVariant = useState<Variant | null | undefined>(
     `active-variant-${key}-${productId.value}`,
   )
+
   const quantity = useState<number>(
     `product-quantity-${key}-${productId.value}`,
     () => 1,

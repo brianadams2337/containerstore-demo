@@ -18,12 +18,18 @@ import type { Product } from '@scayle/storefront-nuxt'
 
 const props = defineProps<{ product: Product }>()
 
-const { applicablePromotions, highestPriorityPromotion } =
-  await useProductPromotions(props.product)
+const {
+  applicablePromotions,
+  highestPriorityPromotion,
+  hasMultipleApplicablePromotions,
+} = await useProductPromotions(props.product)
 
 const { promotionEngineFeatureEnabled } = useRuntimeConfig().public
 
 const isHighestPriority = (priority: number) => {
-  return highestPriorityPromotion.value.priority === priority
+  return (
+    hasMultipleApplicablePromotions.value &&
+    highestPriorityPromotion.value?.priority === priority
+  )
 }
 </script>

@@ -47,6 +47,10 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
     return useMin(applicablePromotions.value, (it) => it.priority)
   })
 
+  const hasMultipleApplicablePromotions = computed(() => {
+    return applicablePromotions.value.length > 1
+  })
+
   const hasBuyXGetY = computed(() => !!buyXGetYPromotion.value)
 
   const hasMultipleFreeGifts = computed(() => {
@@ -91,5 +95,6 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
     isProductAddedToBasket,
     isGiftAddedToBasket,
     highestPriorityPromotion,
+    hasMultipleApplicablePromotions,
   }
 }
