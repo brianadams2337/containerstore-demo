@@ -53,12 +53,11 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
 
   const hasBuyXGetY = computed(() => !!buyXGetYPromotion.value)
 
-  const hasMultipleFreeGifts = computed(() => {
-    if (!hasBuyXGetY.value) {
-      return false
-    }
-    const effect = buyXGetYPromotion.value?.effect as BuyXGetYEffect
-    return effect.additionalData.variantIds.length > 1
+  const isBuyXGetYPrioritized = computed(() => {
+    return (
+      highestPriorityPromotion.value?.effect.type ===
+      PromotionEffectType.BUY_X_GET_Y
+    )
   })
 
   const getAppliedAutomaticDiscountPrice = (price: Price) => {
@@ -67,7 +66,8 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
     }
     const { additionalData } = automaticDiscountPromotion.value
       ?.effect as AutomaticDiscountEffect
-    const discount = divideWithHundred(price.withTax * additionalData.value)
+    const discount =
+      divideWithHundred(price.withTax) * divideWithHundred(additionalData.value)
     return price.withTax - discount
   }
 
@@ -88,7 +88,6 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
     productPromotionId,
     automaticDiscountPromotion,
     hasBuyXGetY,
-    hasMultipleFreeGifts,
     applicablePromotions,
     buyXGetYPromotion,
     getAppliedAutomaticDiscountPrice,
@@ -96,5 +95,6 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
     isGiftAddedToBasket,
     highestPriorityPromotion,
     hasMultipleApplicablePromotions,
+    isBuyXGetYPrioritized,
   }
 }

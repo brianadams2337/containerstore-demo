@@ -145,7 +145,7 @@
 
             <FadeInTransition>
               <ProductPromotionGifts
-                v-if="hasBuyXGetY && !isGiftAddedToBasket"
+                v-if="isBuyXGetYPrioritized && !isGiftAddedToBasket"
                 :product="product"
                 class="mt-6"
               />
@@ -212,7 +212,8 @@ const {
 
 const { addItemToBasket, basketIdle } = await useProductDetailsBasketActions()
 
-const { hasBuyXGetY, isGiftAddedToBasket } = await useProductPromotions(product)
+const { isBuyXGetYPrioritized, isGiftAddedToBasket } =
+  await useProductPromotions(product)
 
 const {
   sliderProducts,
