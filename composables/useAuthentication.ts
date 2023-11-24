@@ -47,7 +47,7 @@ export const useAuthentication = async (
     $i18n.t(`login_page.${event}.status.success`),
   )
 
-  const login = async (data: LoginRequest) => {
+  const login = async (data: Omit<LoginRequest, 'shop_id'>) => {
     isSubmitting.value = true
 
     try {
@@ -61,7 +61,7 @@ export const useAuthentication = async (
     isSubmitting.value = false
   }
 
-  const guestLogin = async (data: GuestRequest) => {
+  const guestLogin = async (data: Omit<GuestRequest, 'shop_id'>) => {
     isSubmitting.value = true
 
     try {
@@ -75,7 +75,7 @@ export const useAuthentication = async (
     isSubmitting.value = false
   }
 
-  const register = async (data: RegisterRequest) => {
+  const register = async (data: Omit<RegisterRequest, 'shop_id'>) => {
     isSubmitting.value = true
 
     try {
@@ -106,7 +106,9 @@ export const useAuthentication = async (
     return hasSuccess
   }
 
-  const resetPasswordByHash = async (data: UpdatePasswordByHashRequest) => {
+  const resetPasswordByHash = async (
+    data: Omit<UpdatePasswordByHashRequest, 'shop_id'>,
+  ) => {
     isSubmitting.value = true
 
     try {
