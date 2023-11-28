@@ -18,11 +18,8 @@
         />
       </div>
     </div>
-    <div
-      v-else
-      class="flex flex-col-reverse gap-8 md:flex-row xl:gap-32 2xl:gap-64"
-    >
-      <div class="max-w-xl flex-1 space-y-4">
+    <div v-else class="flex flex-col-reverse gap-8 md:flex-row xl:gap-32">
+      <div class="w-full flex-1 space-y-4 md:w-3/5 lg:w-2/3">
         <Headline size="2xl" class="mb-6">
           {{ $t('basket.heading') }} ({{ basketCount }})
         </Headline>
@@ -32,12 +29,6 @@
             v-for="(item, index) in orderedItems.standAlone"
             :key="item.key"
           >
-            <FadeInTransition>
-              <BasketAutomaticDiscountBanner
-                v-if="item.promotion"
-                :basket-item="item"
-              />
-            </FadeInTransition>
             <SwipeDelete @delete="removeItem(item)">
               <BasketCard
                 class="w-full"
@@ -47,6 +38,12 @@
                 @item:select="trackProductClick(item)"
               />
             </SwipeDelete>
+            <FadeInTransition>
+              <BasketAutomaticDiscountBanner
+                v-if="item.promotion"
+                :basket-item="item"
+              />
+            </FadeInTransition>
             <FadeInTransition>
               <BasketPromotionGifts v-if="item.promotion" :basket-item="item" />
             </FadeInTransition>
@@ -66,7 +63,7 @@
         </div>
       </div>
 
-      <BasketSummary />
+      <BasketSummary class="w-full md:w-2/5 lg:w-1/3" />
     </div>
   </div>
 </template>

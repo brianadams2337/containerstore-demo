@@ -1,6 +1,6 @@
 <template>
-  <div class="xl:w-[32rem]">
-    <div class="rounded border-primary p-6 md:border">
+  <div>
+    <div class="rounded border-primary p-0 md:border md:p-6">
       <Headline tag="div" size="xl">
         {{ $t('basket.total') }}
       </Headline>
