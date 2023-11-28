@@ -15,10 +15,7 @@
         <PromotionCountdown v-if="promotion" :until="promotion.schedule.to" />
       </div>
       <div class="p-4">
-        <BasketPromotionProductsSlider
-          :basket-item="basketItem"
-          :products="productsData.data.value.products"
-        />
+        <BasketPromotionProductsSlider v-bind="{ basketItem, products }" />
       </div>
     </div>
   </FadeInTransition>
@@ -47,6 +44,8 @@ const params = computed(() => ({
 }))
 
 const productsData = await useProducts({ params: params.value })
+
+const products = computed(() => productsData.data?.value?.products)
 
 const isSliderShown = computed(() => {
   return promotion.value && isAutomaticDiscount.value
