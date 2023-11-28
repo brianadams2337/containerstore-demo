@@ -35,9 +35,16 @@
       type="whisper"
     />
   </div>
-  <AppButton size="sm" class="mt-2" @click="() => {}">
+  <AppButton size="sm" class="mt-2" @click="toggleGiftSelection()">
     {{ $t(isFree ? 'basket.promotion.add_free_gift' : 'basket.product.add') }}
   </AppButton>
+  <template v-if="promotion">
+    <ProductPromotionSelectionModal
+      v-if="isGreaterOrEquals('md')"
+      v-bind="{ product, promotion }"
+    />
+    <ProductPromotionSizeSelection v-else v-bind="{ product, promotion }" />
+  </template>
 </template>
 
 <script setup lang="ts">
@@ -52,7 +59,13 @@ type Props = {
 
 const props = withDefaults(defineProps<Props>(), { isFree: false })
 
-const { backgroundColorStyle } = useBasketItemPromotion(toRef(props.basketItem))
+const { toggleGiftSelection } = await usePromotionGiftSelection(props.product)
+
+const { isGreaterOrEquals } = useViewport()
+
+const { backgroundColorStyle, promotion } = useBasketItemPromotion(
+  toRef(props.basketItem),
+)
 
 const { image, price, brand, name, lowestPriorPrice } = useProductBaseInfo(
   props.product,

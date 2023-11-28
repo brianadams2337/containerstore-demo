@@ -32,6 +32,12 @@
             v-for="(item, index) in orderedItems.standAlone"
             :key="item.key"
           >
+            <FadeInTransition>
+              <BasketAutomaticDiscountBanner
+                v-if="item.promotion"
+                :basket-item="item"
+              />
+            </FadeInTransition>
             <SwipeDelete @delete="removeItem(item)">
               <BasketCard
                 class="w-full"
@@ -41,8 +47,9 @@
                 @item:select="trackProductClick(item)"
               />
             </SwipeDelete>
-            <BasketPromotionGifts :basket-item="item" />
-            <BasketPromotionCategoryProducts :basket-item="item" />
+            <FadeInTransition>
+              <BasketPromotionGifts v-if="item.promotion" :basket-item="item" />
+            </FadeInTransition>
           </template>
         </template>
 

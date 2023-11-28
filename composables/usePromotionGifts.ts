@@ -33,7 +33,7 @@ export default async (product: Product) => {
   })
 
   const products = computed(() => {
-    const items = useUnique(data.value, (it) => it.id)
+    const items = useUnique(data.value || [], (it) => it.id)
     return items.map((it) => {
       const filteredVariants = it.variants?.filter(({ id }) => {
         return variantIds.value.includes(id)

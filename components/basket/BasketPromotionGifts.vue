@@ -1,28 +1,25 @@
 <template>
-  <FadeInTransition>
-    <div v-if="isSliderShown" class="rounded-md border">
-      <div
-        class="flex justify-between rounded-t-md px-4 py-2 text-white"
-        :style="backgroundColorStyle"
-      >
-        <Headline size="xs" is-bold>
-          {{ $t('basket.promotion.choose_free_gift') }}
-        </Headline>
-        <PromotionCountdown
-          v-if="promotion"
-          :until="promotion.schedule.to"
-          borderless
-        />
-      </div>
-      <div class="p-4">
-        <BasketPromotionProductsSlider
-          :basket-item="basketItem"
-          :products="products"
-          is-free
-        />
-      </div>
+  <div v-if="isSliderShown" class="rounded-md border">
+    <div
+      class="flex justify-between rounded-t-md px-4 py-2 text-white"
+      :style="backgroundColorStyle"
+    >
+      <Headline size="xs" is-bold>
+        {{ $t('basket.promotion.choose_free_gift') }}
+      </Headline>
+      <PromotionCountdown
+        v-if="promotion"
+        :until="promotion.schedule.to"
+        borderless
+      />
     </div>
-  </FadeInTransition>
+    <div class="p-4">
+      <BasketPromotionProductsSlider
+        v-bind="{ basketItem, products }"
+        is-free
+      />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -54,7 +51,6 @@ const isGiftAlreadyAdded = computed(() => {
 
 const isSliderShown = computed(() => {
   return (
-    promotion.value &&
     isBuyXGetY.value &&
     !isGiftAlreadyAdded.value &&
     !isFreeGift.value &&

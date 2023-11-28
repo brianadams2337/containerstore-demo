@@ -27,15 +27,10 @@ export default (basketItem: Ref<BasketItem>) => {
     return !!basketItem.value?.promotion?.failedConditions?.length
   })
 
-  const headlineParts = computed(() => {
-    return promotion.value?.customData.headlineParts
-  })
-
   return {
     isBuyXGetY,
     isAutomaticDiscount,
     backgroundColorStyle,
-    headlineParts,
     isFreeGift,
     promotion,
     hasFailedConditions,

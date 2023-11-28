@@ -4,9 +4,7 @@ export default async () => {
   const { product, hasOneSizeVariantOnly, activeVariant, quantity, brand } =
     await useProductDetails()
 
-  const { fetching: basketIdle, addItem: addBasketItem } = await useBasket({
-    options: { lazy: true },
-  })
+  const { fetching: basketIdle, addItem: addBasketItem } = await useBasket()
 
   const { highestPriorityPromotion } = await useProductPromotions(product)
 

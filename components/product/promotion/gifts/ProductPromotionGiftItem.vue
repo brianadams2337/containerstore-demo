@@ -43,11 +43,13 @@
         </div>
       </div>
     </div>
-    <ProductPromotionSelectionModal
-      v-if="isGreaterOrEquals('md')"
-      :product="product"
-    />
-    <ProductPromotionSizeSelection v-else :product="product" />
+    <template v-if="promotion">
+      <ProductPromotionSelectionModal
+        v-if="isGreaterOrEquals('md')"
+        v-bind="{ product, promotion }"
+      />
+      <ProductPromotionSizeSelection v-else v-bind="{ product, promotion }" />
+    </template>
   </div>
 </template>
 
@@ -59,6 +61,11 @@ const props = defineProps<{
   backgroundColorStyle: { backgroundColor?: string }
   isProductAddedToBasket: boolean
 }>()
+
+const { product: promotedProduct } = await useProductDetails()
+
+const { buyXGetYPromotion: promotion } =
+  await useProductPromotions(promotedProduct)
 
 const { toggleGiftSelection } = await usePromotionGiftSelection(props.product)
 

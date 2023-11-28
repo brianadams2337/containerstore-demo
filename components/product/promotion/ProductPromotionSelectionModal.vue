@@ -54,7 +54,7 @@
                 :title="product.isSoldOut ? $t('badge_labels.sold_out') : ''"
                 :loading="basketIdle"
                 class="text-sm !normal-case"
-                @click="addItemToBasket()"
+                @click="addItemToBasket(promotion.id)"
               >
                 {{ $t('pdp.add_label') }}
               </AppButton>
@@ -83,7 +83,7 @@
 <script setup lang="ts">
 import type { Product } from '@scayle/storefront-nuxt'
 
-const props = defineProps<{ product: Product }>()
+const props = defineProps<{ product: Product; promotion: Promotion }>()
 
 const {
   basketIdle,
