@@ -9,7 +9,7 @@
         :key="`product-loading-${index}`"
       />
     </div>
-    <div v-else-if="basketCount === 0" class="space-y-8">
+    <div v-else-if="isBasketEmpty" class="space-y-8">
       <div>
         <EmptyState
           :title="$t('basket.empty_title')"
@@ -30,13 +30,7 @@
             :key="item.key"
           >
             <SwipeDelete @delete="removeItem(item)">
-              <BasketCard
-                class="w-full"
-                :item="item"
-                :index="index"
-                @item:remove="removeItem(item)"
-                @item:select="trackProductClick(item)"
-              />
+              <BasketCard class="w-full" v-bind="{ item, index }" />
             </SwipeDelete>
             <FadeInTransition>
               <BasketAutomaticDiscountBanner
@@ -60,8 +54,6 @@
             class="my-4"
             :items-group="orderedItems.groupedItems[groupId]"
             :index="index"
-            @item:remove="removeItem"
-            @item:select="trackProductClick"
           />
         </div>
       </div>
@@ -72,11 +64,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  type BasketItem,
-  type Product,
-  getFirstAttributeValue,
-} from '@scayle/storefront-nuxt'
+import { type BasketItem } from '@scayle/storefront-nuxt'
 
 const basket = await useBasket()
 const wishlist = await useWishlist()
@@ -88,21 +76,24 @@ if (basket.error.value) {
 const store = useStore()
 const route = useRoute()
 
-const listingMetaData = {
-  id: BasketListingMetadata.ID,
-  name: BasketListingMetadata.NAME,
-}
+const {
+  listingMetaData,
+  orderedItems,
+  fetching,
+  basketItems,
+  basketData,
+  basketCount,
+  isBasketEmpty,
+  removeItem,
+} = await useBasketActions()
+
 const {
   trackViewBasket,
-  trackRemoveFromBasket,
   collectBasketItems,
-  trackSelectItem,
   trackBasket,
   trackWishlist,
   collectProductListItems,
 } = useTrackingEvents()
-
-const { bundleByGroup } = await useBasketGroup()
 
 const isFreeGift = (basketItem: BasketItem) => {
   const variantIds = getVariantIds(basketItem.promotion)
@@ -110,7 +101,7 @@ const isFreeGift = (basketItem: BasketItem) => {
 }
 
 onMounted(() => {
-  if (basket.items.value) {
+  if (basketItems.value) {
     trackViewBasket(
       collectBasketItems(basket.items.value || [], {
         listId: listingMetaData.id,
@@ -137,63 +128,6 @@ onMounted(() => {
     )
   }
 })
-
-const trackProductClick = ({ product }: { product: Product }) => {
-  trackSelectItem({
-    product,
-    listingMetaData,
-    pagePayload: {
-      content_name: route.fullPath,
-      page_type: store.value.pageType,
-      page_type_id: route.params.id?.toString() || '',
-    },
-  })
-}
-
-const removeItem = async (item: BasketItem) => {
-  await basket.removeItem({ variantId: item.variant.id })
-
-  trackRemoveFromBasket(item.product, item.quantity, item.variant)
-  trackBasket(
-    collectBasketItems(basket.items.value || [], {
-      listId: listingMetaData.id,
-      listName: listingMetaData.name,
-    }),
-  )
-}
-
-// Remove this to use bapi default: order by updated quantity
-const orderedItems = computed(() => {
-  const items = basket.items.value || []
-  const standAlone: BasketItem[] = []
-  const itemsWithGroups: BasketItem[] = []
-
-  items.forEach((item: BasketItem) =>
-    item.itemGroup?.id ? itemsWithGroups.push(item) : standAlone.push(item),
-  )
-
-  return {
-    standAlone: sortBasketItems(standAlone),
-    groupedItems: bundleByGroup(sortBasketItems(itemsWithGroups)),
-  }
-})
-
-const sortBasketItems = (items: BasketItem[]) => {
-  const sortedAlphabetically = useAlphabetical(
-    items,
-    (item: BasketItem) =>
-      getFirstAttributeValue(item.product.attributes, 'name')?.label ?? '',
-  )
-  return useSort(
-    sortedAlphabetically,
-    (item: BasketItem) =>
-      getFirstAttributeValue(item.variant?.attributes, 'size')?.id ?? 0,
-  )
-}
-
-const fetching = basket.fetching
-const basketData = basket.data
-const basketCount = basket.count
 
 const { $i18n } = useNuxtApp()
 useSeoMeta({

@@ -86,41 +86,23 @@
 </template>
 
 <script setup lang="ts">
-import {
-  type BasketItem,
-  getTotalAppliedReductions,
-  getBadgeLabel,
-  getFirstAttributeValue,
-  getProductColors,
-  getSizeFromVariant,
-} from '@scayle/storefront-nuxt'
+import { type BasketItem } from '@scayle/storefront-nuxt'
 
-const props = defineProps({
-  items: {
-    type: Array as PropType<BasketItem[]>,
-    required: true,
-    default: () => [],
-  },
-  isOnWishlist: {
-    type: Boolean,
-    default: false,
-  },
-  hasBasketAction: {
-    type: Boolean,
-    default: false,
-  },
-  hasWishlistAction: {
-    type: Boolean,
-    default: false,
-  },
-  hasQuantityAction: {
-    type: Boolean,
-    default: false,
-  },
-  isLightVariant: {
-    type: Boolean,
-    default: false,
-  },
+type Props = {
+  items: BasketItem[]
+  isOnWishlist?: boolean
+  hasBasketAction?: boolean
+  hasWishlistAction?: boolean
+  hasQuantityAction?: boolean
+  isLightVariant?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  isOnWishlist: false,
+  hasBasketAction: false,
+  hasWishlistAction: false,
+  hasQuantityAction: false,
+  isLightVariant: false,
 })
 
 defineEmits([
@@ -138,64 +120,20 @@ const mainItem = computed(() => {
   return basketItem as BasketItem
 })
 
+const {
+  name,
+  brand: title,
+  size,
+  image,
+  color,
+  price: priceWithTax,
+  cupsizeLabel,
+  reducedPrice,
+  isSoldOut,
+  badgeLabel,
+} = await useBasketItem(mainItem)
+
 const { isFreeGift, backgroundColorStyle } = useBasketItemPromotion(mainItem)
-
-const title = computed(() => {
-  return getFirstAttributeValue(mainItem.value?.product?.attributes, 'brand')
-    ?.label
-})
-
-const name = computed(() => {
-  return getFirstAttributeValue(mainItem.value?.product?.attributes, 'name')
-    ?.label
-})
-
-const color = computed(() => {
-  return (
-    mainItem.value &&
-    getProductColors(mainItem.value?.product, 'color').join('/')
-  )
-})
-
-const priceWithTax = computed(() => mainItem.value?.price.total.withTax ?? 0)
-
-const reducedPrice = computed(() => {
-  const total = mainItem.value?.price.total
-  if (!total) {
-    return
-  }
-  return getTotalAppliedReductions(total)?.absoluteWithTax
-})
-
-const isSoldOut = computed(() => mainItem.value?.product.isSoldOut)
-
-const image = computed(() => {
-  return (
-    mainItem.value &&
-    getImageFromList(
-      mainItem.value?.product.images,
-      ProductImageType.BUST,
-      'front',
-    )
-  )
-})
-
-const size = computed(() => {
-  return (
-    mainItem.value && getSizeFromVariant(mainItem.value?.variant, 'size')?.label
-  )
-})
-
-const cupsizeLabel = computed(() => {
-  return getFirstAttributeValue(mainItem.value?.variant.attributes, 'cupsize')
-    ?.label
-})
-
-const badgeLabel = computed(() => {
-  return getBadgeLabel({
-    isSoldOut: mainItem.value?.product.isSoldOut,
-  })
-})
 
 const addOnItems = computed(() =>
   props.items.filter((item) => item.itemGroup && !item.itemGroup.isMainItem),

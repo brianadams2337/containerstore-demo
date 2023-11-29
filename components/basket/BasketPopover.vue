@@ -39,7 +39,7 @@
         >
           <article v-for="groupId in groupIds" :key="groupId">
             <BasketCardPopover
-              :items="basketItems.groups[groupId]"
+              :items="getBasketItemsFromGroup(groupId)"
               is-light-variant
             />
           </article>
@@ -86,8 +86,13 @@ const basketItems = computed(() => {
   }
 })
 
-const sortBasketItems = (items: BasketItem[]) =>
-  items.sort(
-    (a, b) => Number(a.product.isSoldOut) - Number(b.product.isSoldOut),
-  )
+const getBasketItemsFromGroup = (groupId: string) => {
+  return basketItems.value.groups[groupId] as BasketItem[]
+}
+
+const sortBasketItems = (items: BasketItem[]) => {
+  return items.sort((a, b) => {
+    return Number(a.product.isSoldOut) - Number(b.product.isSoldOut)
+  })
+}
 </script>
