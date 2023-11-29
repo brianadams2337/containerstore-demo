@@ -51,6 +51,7 @@
                 <div class="flex gap-2 xs:flex-col-reverse md:flex-col">
                   <ProductPromotionBadges
                     :product="product"
+                    is-priority-label-shown
                     class="md:hidden"
                   />
                   <ProductBadge
