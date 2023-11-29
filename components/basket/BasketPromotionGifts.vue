@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isSliderShown" class="rounded-md border">
+  <div v-if="!isGiftAlreadyAdded" class="rounded-md border">
     <div
       class="flex justify-between rounded-t-md px-4 py-2 text-white"
       :style="backgroundColorStyle"
@@ -31,13 +31,7 @@ const { items: basketItems } = await useBasket()
 
 const basketItem = computed(() => props.basketItem)
 
-const {
-  isBuyXGetY,
-  backgroundColorStyle,
-  isFreeGift,
-  promotion,
-  hasFailedConditions,
-} = useBasketItemPromotion(basketItem)
+const { backgroundColorStyle, promotion } = useBasketItemPromotion(basketItem)
 
 const { products, variantIds } = await usePromotionGifts(
   props.basketItem.product,
@@ -47,14 +41,5 @@ const isGiftAlreadyAdded = computed(() => {
   return basketItems.value.some((item) => {
     return variantIds.value?.includes(item.variant.id)
   })
-})
-
-const isSliderShown = computed(() => {
-  return (
-    isBuyXGetY.value &&
-    !isGiftAlreadyAdded.value &&
-    !isFreeGift.value &&
-    !hasFailedConditions.value
-  )
 })
 </script>

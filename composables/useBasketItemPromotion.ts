@@ -1,26 +1,18 @@
-import { PromotionEffectType, type BasketItem } from '@scayle/storefront-nuxt'
+import type { BasketItem } from '@scayle/storefront-nuxt'
 
 export default (basketItem: Ref<BasketItem>) => {
   const promotion = computed<BasketPromotion | undefined>(() => {
     return basketItem.value?.promotion
   })
 
-  const isBuyXGetY = computed(() => {
-    return promotion.value?.effect.type === PromotionEffectType.BUY_X_GET_Y
-  })
+  const isBuyXGetY = computed(() => isBuyXGetYType(promotion.value))
 
   const isAutomaticDiscount = computed(() => {
-    return (
-      promotion.value?.effect.type === PromotionEffectType.AUTOMATIC_DISCOUNT
-    )
+    return isAutomaticDiscountType(promotion.value)
   })
 
   const backgroundColorStyle = computed(() => {
     return getBackgroundColorStyle(promotion.value?.customData?.colorHex)
-  })
-
-  const isFreeGift = computed(() => {
-    return isBuyXGetY.value && basketItem.value.price.total.withTax === 0
   })
 
   const hasFailedConditions = computed(() => {
@@ -31,7 +23,6 @@ export default (basketItem: Ref<BasketItem>) => {
     isBuyXGetY,
     isAutomaticDiscount,
     backgroundColorStyle,
-    isFreeGift,
     promotion,
     hasFailedConditions,
   }

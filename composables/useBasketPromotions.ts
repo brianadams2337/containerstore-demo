@@ -1,5 +1,3 @@
-import { PromotionEffectType } from '@scayle/storefront-nuxt'
-
 export default async () => {
   const basket = await useBasket()
 
@@ -10,15 +8,11 @@ export default async () => {
   })
 
   const buyXGetYPromotions = computed(() => {
-    return appliedPromotions.value.filter((it) => {
-      return it.effect.type === PromotionEffectType.BUY_X_GET_Y
-    })
+    return appliedPromotions.value.filter((it) => isBuyXGetYType(it))
   })
 
   const automaticDiscountPromotions = computed(() => {
-    return appliedPromotions.value.filter((it) => {
-      return it.effect.type === PromotionEffectType.AUTOMATIC_DISCOUNT
-    })
+    return appliedPromotions.value.filter((it) => isAutomaticDiscountType(it))
   })
 
   return {

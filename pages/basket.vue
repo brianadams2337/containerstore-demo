@@ -40,12 +40,15 @@
             </SwipeDelete>
             <FadeInTransition>
               <BasketAutomaticDiscountBanner
-                v-if="item.promotion"
+                v-if="isAutomaticDiscountType(item.promotion)"
                 :basket-item="item"
               />
             </FadeInTransition>
             <FadeInTransition>
-              <BasketPromotionGifts v-if="item.promotion" :basket-item="item" />
+              <BasketPromotionGifts
+                v-if="isBuyXGetYType(item.promotion) && !isFreeGift(item)"
+                :basket-item="item"
+              />
             </FadeInTransition>
           </template>
         </template>
@@ -100,6 +103,11 @@ const {
 } = useTrackingEvents()
 
 const { bundleByGroup } = await useBasketGroup()
+
+const isFreeGift = (basketItem: BasketItem) => {
+  const variantIds = getVariantIds(basketItem.promotion)
+  return variantIds.includes(basketItem.variant.id)
+}
 
 onMounted(() => {
   if (basket.items.value) {

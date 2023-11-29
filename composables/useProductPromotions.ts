@@ -1,10 +1,7 @@
 import {
   type Product,
-  type BuyXGetYEffect,
-  type AutomaticDiscountEffect,
   type Price,
   getFirstAttributeValue,
-  PromotionEffectType,
 } from '@scayle/storefront-nuxt'
 
 export default async (productItem?: MaybeRefOrGetter<Product>) => {
@@ -32,15 +29,13 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
   })
 
   const buyXGetYPromotion = computed(() => {
-    const items = applicablePromotions.value.filter((it) => {
-      return it.effect.type === PromotionEffectType.BUY_X_GET_Y
-    })
+    const items = applicablePromotions.value.filter((it) => isBuyXGetYType(it))
     return useMin(items, (it) => it.priority)
   })
 
   const automaticDiscountPromotion = computed(() => {
     const items = applicablePromotions.value.filter((it) => {
-      return it.effect.type === PromotionEffectType.AUTOMATIC_DISCOUNT
+      return isAutomaticDiscountType(it)
     })
     return useMin(items, (it) => it.priority)
   })
@@ -56,20 +51,17 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
   const hasBuyXGetY = computed(() => !!buyXGetYPromotion.value)
 
   const isBuyXGetYPrioritized = computed(() => {
-    return (
-      highestPriorityPromotion.value?.effect.type ===
-      PromotionEffectType.BUY_X_GET_Y
-    )
+    return isBuyXGetYType(highestPriorityPromotion.value)
   })
 
-  const getAppliedAutomaticDiscountPrice = (price: Price) => {
-    if (!automaticDiscountPromotion.value) {
+  const getAppliedAutomaticDiscountPrice = (
+    price: Price,
+  ): number | undefined => {
+    const value = getAdditionalDataValue(automaticDiscountPromotion.value)
+    if (!value) {
       return
     }
-    const { additionalData } = automaticDiscountPromotion.value
-      ?.effect as AutomaticDiscountEffect
-    const discount =
-      divideWithHundred(price.withTax) * divideWithHundred(additionalData.value)
+    const discount = divideWithHundred(price.withTax) * divideWithHundred(value)
     return price.withTax - discount
   }
 
@@ -79,8 +71,9 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
 
   const isGiftAddedToBasket = computed(() => {
     return basket.items.value.some((it) => {
-      const effect = buyXGetYPromotion.value?.effect as BuyXGetYEffect
-      return effect?.additionalData?.variantIds?.includes(it.variant.id)
+      const variantIds = getVariantIds(buyXGetYPromotion.value)
+      const hasVariantId = variantIds.includes(it.variant.id)
+      return isBuyXGetYType(it.promotion) && hasVariantId
     })
   })
 
