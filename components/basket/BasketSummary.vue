@@ -5,7 +5,7 @@
         {{ $t('basket.total') }}
       </Headline>
       <FadeInTransition>
-        <PromotionHurryToSaveBanners class="mt-4" />
+        <PromotionHurryToSaveBanners v-if="hasAppliedPromotions" class="mt-4" />
       </FadeInTransition>
       <div class="space-y-4" :class="hasAppliedPromotions ? 'mt-2' : 'mt-6'">
         <div

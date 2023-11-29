@@ -8,6 +8,8 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
   const promotionData = await useCurrentPromotions()
   const basket = await useBasket()
 
+  const { appliedPromotions } = await useBasketPromotions()
+
   const product = toRef(productItem)
 
   const promotionLabel = computed(() => {
@@ -42,6 +44,12 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
 
   const highestPriorityPromotion = computed(() => {
     return useMin(applicablePromotions.value, (it) => it.priority)
+  })
+
+  const isHighestPriorityPromotionApplied = computed(() => {
+    return appliedPromotions.value.some((it) => {
+      return it.id === highestPriorityPromotion.value?.id
+    })
   })
 
   const hasMultipleApplicablePromotions = computed(() => {
@@ -90,5 +98,6 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
     highestPriorityPromotion,
     hasMultipleApplicablePromotions,
     isBuyXGetYPrioritized,
+    isHighestPriorityPromotionApplied,
   }
 }

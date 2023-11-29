@@ -1,5 +1,5 @@
 <template>
-  <div v-if="hasAppliedPromotions" class="flex flex-col">
+  <div class="flex flex-col">
     <div
       v-for="{ id, customData, schedule } in automaticDiscountPromotions"
       :key="`automatic-discount-banner-${id}`"
@@ -27,9 +27,6 @@
 </template>
 
 <script setup lang="ts">
-const {
-  hasAppliedPromotions,
-  buyXGetYPromotions,
-  automaticDiscountPromotions,
-} = await useBasketPromotions()
+const { buyXGetYPromotions, automaticDiscountPromotions } =
+  await useBasketPromotions()
 </script>
