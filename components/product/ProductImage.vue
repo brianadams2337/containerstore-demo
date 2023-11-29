@@ -1,6 +1,6 @@
 <template>
   <NuxtPicture
-    v-bind="{ alt, quality, background, sizes, modifiers }"
+    v-bind="{ alt, quality, background, sizes, modifiers, height }"
     :src="image.hash"
     :loading="imageLoading"
     :class="classes"
@@ -24,6 +24,7 @@ type Props = {
   load?: () => void
   shouldTrim?: boolean
   isCentered?: boolean
+  height?: number | string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -34,6 +35,7 @@ const props = withDefaults(defineProps<Props>(), {
   imageLoading: 'lazy',
   alt: undefined,
   quality: 75,
+  height: undefined,
   load: () => {},
 })
 

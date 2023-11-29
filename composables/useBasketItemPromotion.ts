@@ -15,6 +15,11 @@ export default (basketItem: Ref<BasketItem>) => {
     return getBackgroundColorStyle(promotion.value?.customData?.colorHex)
   })
 
+  const isFreeGift = computed(() => {
+    const variantIds = getVariantIds(promotion.value)
+    return variantIds.includes(basketItem.value.variant.id)
+  })
+
   const hasFailedConditions = computed(() => {
     return !!promotion.value?.failedConditions?.length
   })
@@ -23,6 +28,7 @@ export default (basketItem: Ref<BasketItem>) => {
     isBuyXGetY,
     isAutomaticDiscount,
     backgroundColorStyle,
+    isFreeGift,
     promotion,
     hasFailedConditions,
   }

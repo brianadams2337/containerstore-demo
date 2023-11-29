@@ -9,17 +9,22 @@
       :class="{ 'opacity-40': isSoldOut }"
     >
       <div class="mr-5 flex flex-1">
-        <div class="flex-none shrink-0">
-          <div class="w-16">
-            <NuxtImg
-              v-if="imageHash"
-              :src="imageHash"
-              :alt="name"
-              provider="default"
-              class="object-cover"
-              height="144"
-            />
-          </div>
+        <div
+          class="relative w-20 flex-none shrink-0 rounded-md bg-gray-200 p-2"
+        >
+          <ProductImage
+            v-if="image"
+            :image="image"
+            :alt="name"
+            fit="cover"
+            height="144"
+            sizes="xl:100vw lg:100vw lg:100vw lg:100vw xs:100vw"
+          />
+          <ProductPromotionFreeGiftBadge
+            v-if="isFreeGift"
+            v-bind="{ backgroundColorStyle }"
+            class="absolute bottom-2 left-2"
+          />
         </div>
         <div
           class="ml-2 flex grow flex-col justify-center"
@@ -57,19 +62,10 @@
       </div>
       <div class="flex items-end">
         <section class="flex flex-col items-end justify-end">
-          <p
-            v-if="
-              reducedPrice &&
-              reducedPrice > -1 &&
-              priceWithTax &&
-              priceWithTax > -1
-            "
-            class="text-sm text-gray-500 line-through"
-          >
+          <p v-if="reducedPrice" class="text-sm text-gray-500 line-through">
             {{ toCurrency(priceWithTax + reducedPrice) }}
           </p>
           <Headline
-            v-if="priceWithTax"
             tag="p"
             size="base"
             is-uppercase
@@ -92,7 +88,7 @@
 <script setup lang="ts">
 import {
   type BasketItem,
-  getAppliedReductionsByCategory,
+  getTotalAppliedReductions,
   getBadgeLabel,
   getFirstAttributeValue,
   getProductColors,
@@ -134,10 +130,15 @@ defineEmits([
 ])
 
 const mainItem = computed(() => {
-  return props.items.length === 1
-    ? props.items[0]
-    : props.items.find((item) => item.itemGroup?.isMainItem)
+  const basketItem =
+    props.items.length === 1
+      ? props.items[0]
+      : props.items.find((item) => item.itemGroup?.isMainItem)
+
+  return basketItem as BasketItem
 })
+
+const { isFreeGift, backgroundColorStyle } = useBasketItemPromotion(mainItem)
 
 const title = computed(() => {
   return getFirstAttributeValue(mainItem.value?.product?.attributes, 'brand')
@@ -156,26 +157,26 @@ const color = computed(() => {
   )
 })
 
-const priceWithTax = computed(() => mainItem.value?.price.total.withTax)
+const priceWithTax = computed(() => mainItem.value?.price.total.withTax ?? 0)
 
 const reducedPrice = computed(() => {
-  return (
-    mainItem.value &&
-    getAppliedReductionsByCategory(mainItem.value?.price.total, 'sale')[0]
-      ?.amount.absoluteWithTax
-  )
+  const total = mainItem.value?.price.total
+  if (!total) {
+    return
+  }
+  return getTotalAppliedReductions(total)?.absoluteWithTax
 })
 
 const isSoldOut = computed(() => mainItem.value?.product.isSoldOut)
 
-const imageHash = computed(() => {
+const image = computed(() => {
   return (
     mainItem.value &&
     getImageFromList(
       mainItem.value?.product.images,
       ProductImageType.BUST,
       'front',
-    )?.hash
+    )
   )
 })
 
