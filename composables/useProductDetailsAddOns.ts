@@ -7,7 +7,10 @@ import {
 export default (productItem: MaybeRefOrGetter<Product>) => {
   const product = toRef(productItem)
 
-  const selectedAddOns = ref<{ [id: number]: boolean }>({})
+  const selectedAddOns = useState<{ [id: number]: boolean }>(
+    `selected-add-on-${product.value.id}`,
+    () => ({}),
+  )
 
   const addOnServiceAttribute = computed(() => {
     return product.value?.advancedAttributes
