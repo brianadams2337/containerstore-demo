@@ -10067,10 +10067,10 @@ storyblok-generate-ts@1.16.0:
     ts-command-line-args "^2.3.1"
     tsup "^6.4.0"
 
-storyblok-js-client@6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-6.2.0.tgz#8f9914f091bc2a9cadeb3b4f0c137ff7a2bf8e31"
-  integrity sha512-8JzizWOsE7WIHzm7BjEgCcRDP/CJ2u7G+JYq0kGj/2TrlQQes+IKzHxfMHq2SwVj2zyBlKlT+368iQlOmPg41g==
+storyblok-js-client@6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-6.3.0.tgz#47cf157fe2dccb1bbcb88b7c990dba122d32c350"
+  integrity sha512-hOaAoDoUC3ncCwhHbtJ+YkcmKGTAjJomO4kW0LB8dZ0tIoQfDC2B9Q6y5Nw6/bBdxvU37Xg4FwHRVYqKuhEkvw==
 
 storyblok-js-client@^5.14.0, storyblok-js-client@^5.14.2:
   version "5.14.4"
