@@ -29,8 +29,9 @@ const props = defineProps<{ product: Product }>()
 
 const { promotionEngineFeatureEnabled } = useRuntimeConfig().public
 
-const { buyXGetYPromotion, hasMultipleFreeGifts, isProductAddedToBasket } =
+const { buyXGetYPromotion, isProductAddedToBasket } =
   await useProductPromotions(props.product)
+const { hasMultipleFreeGifts } = await usePromotionGifts(props.product)
 
 const hasScrolledToBottom = ref(false)
 

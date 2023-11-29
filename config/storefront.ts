@@ -157,6 +157,7 @@ export const storefrontRuntimeConfigPublic: Partial<ModuleOptions> = {
   // Following keys are Overrideable using prefix NUXT_PUBLIC_LOG
   log: {
     name: 'storefront-boilerplate-nuxt',
+    level: 'debug',
   },
 }
 
