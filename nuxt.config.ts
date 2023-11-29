@@ -46,7 +46,10 @@ const locales = [
 ]
 
 export default defineNuxtConfig({
+  // https://nuxt.com/docs/api/nuxt-config#devtools
   devtools: { enabled: true },
+
+  // https://nuxt.com/docs/api/nuxt-config#telemetry
   telemetry: false,
 
   // Any key/value pair outside of the `public` key are private/server-side only
@@ -56,12 +59,18 @@ export default defineNuxtConfig({
     checkout: {
       accessHeader: undefined, // Override: NUXT_CHECKOUT_ACCESS_HEADER
     },
-    // Following keys are Overrideable using prefix NUXT_$STOREFRONT_
+    // https://scayle.dev/en/dev/storefront-core/module-configuration
     storefront: storefrontRuntimeConfigPrivate as any,
     // Following keys are Overrideable using prefix NUXT_PUBLIC_
     public: {
+      ...(storefrontRuntimeConfigPublic as any),
       domains,
+      /** Nuxt - Base URL
+       * https://nuxt.com/docs/api/nuxt-config#baseurl */
       baseUrl: process.env.BASE_URL, // Override: NUXT_PUBLIC_BASE_URL
+
+      /** Storefront Boilerplate - Tracking Event Order
+       * Used in: templates/nuxt/plugins/01.tracking.ts */
       trackingEventOrder: [
         'shop_init',
         'customer_data',
@@ -78,18 +87,18 @@ export default defineNuxtConfig({
         'view_item',
         'purchase',
       ],
+      /** nuxt-gtm Module Runtime Configuration
+       * https://github.com/zadigetvoltaire/nuxt-gtm#readme */
       gtm: {
         id: process.env.NUXT_PUBLIC_GTM_ID, // Override: NUXT_PUBLIC_GTM_ID
         debug: process.env.NUXT_PUBLIC_GTM_DEBUG, // Override: NUXT_PUBLIC_GTM_DEBUG
       },
+
       promotionEngineFeatureEnabled: yn(
         process.env.PROMOTION_ENGINE_FEATURE_ENABLED, // Override: NUXT_PUBLIC_PROMOTION_ENGINE_FEATURE_ENABLED
       ),
-      // Following keys are Overrideable using prefix NUXT_PUBLIC_IMAGE_BASE_URL
-      imageBaseUrl: 'https://brb-demo.cdn.aboutyou.cloud/',
-      // Following keys are Overrideable using prefix NUXT_PUBLIC_
-      ...(storefrontRuntimeConfigPublic as any),
-      // Following keys are Overrideable using prefix NUXT_PUBLIC_STORYBLOK_
+      /** Storyblok Runtime Configuration
+       * https://scayle.dev/en/dev/storefront-core/module-configuration */
       storyblok: {
         accessToken: '', // Override: NUXT_PUBLIC_STORYBLOK_ACCESS_TOKEN
         webhookSecret: '', // Override: NUXT_PUBLIC_STORYBLOK_WEBHOOK_SECRET,
@@ -97,10 +106,15 @@ export default defineNuxtConfig({
     },
   },
 
-  // NOTE: Configuration outside of runtimeConfig is being filled in during
-  // build time and will be serialized as part of the bundling process.
-  // Execution of functions, etc during runtime is not possible.
+  /**
+   * NOTE: Configuration outside of runtimeConfig is being filled in during
+   *  build time and will be serialized as part of the bundling process.
+   * Execution of functions, etc during runtime is not possible.
+   */
+
+  // https://nuxt.com/docs/api/nuxt-config#app
   app: {
+    // https://nuxt.com/docs/api/nuxt-config#head
     head: {
       meta: [
         { charset: 'utf-8' },
@@ -110,8 +124,10 @@ export default defineNuxtConfig({
     },
   },
 
+  // https://nuxt.com/docs/api/nuxt-config#css
   css: ['~/assets/css/main.css'],
 
+  // https://nuxt.com/docs/api/nuxt-config#postcss
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -119,6 +135,7 @@ export default defineNuxtConfig({
     },
   },
 
+  // https://nuxt.com/docs/api/nuxt-config#modules-1
   modules: [
     '@scayle/storefront-nuxt/module',
     '@nuxtjs/tailwindcss',
@@ -136,9 +153,13 @@ export default defineNuxtConfig({
     'nuxt-vitest',
   ],
 
+  // https://nuxt.com/docs/api/nuxt-config#build
   build: {
+    // https://nuxt.com/docs/api/nuxt-config#transpile
     transpile: ['@scayle/storefront-nuxt'],
   },
+
+  // https://scayle.dev/en/dev/storefront-core/build-configuration
   storefront: storefrontBuildtimeConfig,
 
   // https://github.com/storyblok/storyblok-nuxt#options
@@ -210,22 +231,30 @@ export default defineNuxtConfig({
     ),
     fallbackBreakpoint: 'lg',
   },
+
+  // https://nuxt.com/docs/api/nuxt-config#imports
   imports: {
+    // https://nuxt.com/docs/api/nuxt-config#dirs
     dirs: ['./constants', './storyblok/composables'],
   },
 
   // Allow auto-import for vue components
+  // https://nuxt.com/docs/api/nuxt-config#components
   components: [
     { path: '~/components', pathPrefix: false, extensions: ['.vue'] },
   ],
 
+  // https://nuxt.com/docs/api/nuxt-config#vue-1
   vue: {
+    // https://nuxt.com/docs/api/nuxt-config#compileroptions-1
     compilerOptions: {
       isCustomElement: (tag) => tag.startsWith('ay-'),
     },
   },
 
+  // https://nuxt.com/docs/api/nuxt-config#devserver
   devServer: {
+    // https://nuxt.com/docs/api/nuxt-config#https
     https:
       !process.env.HTTPS_KEY || !process.env.HTTPS_CERT
         ? false
@@ -235,8 +264,12 @@ export default defineNuxtConfig({
           },
   },
 
+  // Page Caching
+  // https://nuxt.com/docs/api/nuxt-config#routerules-1
   // https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering
+  // https://nitro.unjs.io/guide/cache#route-rules
   routeRules: (() => {
+    // Vercel-specific routeRules for using ISR with Vercel CDN as page caching setup
     if (
       process.env.NITRO_PRESET &&
       process.env.NITRO_PRESET.includes('vercel')
@@ -247,7 +280,7 @@ export default defineNuxtConfig({
         '/**': { isr: true },
         // Don't cache API routes.
         '.*/api/**': { isr: false },
-        // Do not cache pages with user-specific information
+        // Don't cache pages with user-specific information
         '.*/wishlist': { isr: false },
         '.*/basket': { isr: false },
         '.*/checkout': { isr: false },
@@ -257,28 +290,31 @@ export default defineNuxtConfig({
       }
     }
 
+    // Default routeRules for using SWR and `storefront-cache` storage for page caching setup
     return {
       // Page generated on-demand, revalidates in background
       '/*': {
         cache: {
           swr: true, // Enable stale-while-revalidate
-          // base: "redis", // Define nitro.storage.redis as cache driver
           maxAge: 60 * 60, // Default: 1h
           staleMaxAge: 60 * 60 * 24, // Default: 24h / 1d
           group: 'ssr', // Cache group name
-          name: 'page',
+          name: 'page', // Set prefix name
+          // Use storefront storage mount
+          // Depending on your configuration this might be `redis` or another database driver
+          // https://scayle.dev/en/dev/storefront-core/module-configuration#storage
           base: 'storefront-cache',
         },
       },
       // Don't cache API routes.
-      '**/api/**': { cache: false, swr: false },
-      // Do not cache pages with user-specific information
-      '**/wishlist': { cache: false, swr: false },
-      '**/basket': { cache: false, swr: false },
-      '**/checkout': { cache: false, swr: false },
-      '**/signin': { cache: false, swr: false },
-      '**/account/**': { cache: false, swr: false },
-      '**/orders/**': { cache: false, swr: false },
+      '**/api/**': { cache: false },
+      // Don't cache pages with user-specific information
+      '**/wishlist': { cache: false },
+      '**/basket': { cache: false },
+      '**/checkout': { cache: false },
+      '**/signin': { cache: false },
+      '**/account/**': { cache: false },
+      '**/orders/**': { cache: false },
     }
   })(),
 })
