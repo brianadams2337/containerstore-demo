@@ -4,7 +4,10 @@
       <Headline tag="div" size="xl">
         {{ $t('basket.total') }}
       </Headline>
-      <div class="mt-6 space-y-4">
+      <FadeInTransition>
+        <PromotionHurryToSaveBanners class="mt-4" />
+      </FadeInTransition>
+      <div class="space-y-4" :class="hasAppliedPromotions ? 'mt-2' : 'mt-6'">
         <div
           class="flex flex-col justify-between gap-2 text-sm font-bold text-gray-800"
         >
@@ -92,6 +95,8 @@ const onClickToCheckoutOrder = async () => {
 
   await localizedNavigateTo({ name: routeName })
 }
+
+const { hasAppliedPromotions } = await useBasketPromotions()
 
 const sellingPoints = computed(() => [
   { icon: 'IconInvoice', text: $i18n.t('promises.pay_with_invoice') },

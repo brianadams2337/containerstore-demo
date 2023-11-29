@@ -3,7 +3,7 @@
     class="flex min-h-screen flex-col text-primary antialiased anchor-scrolling-none"
   >
     <PromotionBanner
-      v-if="promotionData.entities.length && promotionEngineFeatureEnabled"
+      v-if="promotionData.entities.length"
       :promotions="promotionData.entities"
     />
     <HeaderMetaBar />
@@ -32,8 +32,6 @@ const categoryData = await useCategories({
   params: { path: '/' },
   key: 'categoryNavigation',
 })
-
-const { promotionEngineFeatureEnabled } = useRuntimeConfig().public
 
 const { data: promotionData } = await useCurrentPromotions()
 

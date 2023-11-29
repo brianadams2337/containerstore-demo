@@ -1,4 +1,3 @@
-import yn from 'yn'
 import {
   storefrontRuntimeConfigPrivate,
   storefrontRuntimeConfigPublic,
@@ -86,9 +85,6 @@ export default defineNuxtConfig({
         id: process.env.NUXT_PUBLIC_GTM_ID,
         debug: process.env.NUXT_PUBLIC_GTM_DEBUG,
       },
-      promotionEngineFeatureEnabled: yn(
-        process.env.PROMOTION_ENGINE_FEATURE_ENABLED,
-      ),
       // Following keys are Overrideable using prefix NUXT_PUBLIC_IMAGE_BASE_URL
       imageBaseUrl: 'https://brb-demo.cdn.aboutyou.cloud/',
       // Following keys are Overrideable using prefix NUXT_PUBLIC_

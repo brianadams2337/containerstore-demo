@@ -77,13 +77,11 @@ const props = withDefaults(defineProps<Props>(), {
   type: 'loud',
 })
 
-const { promotionEngineFeatureEnabled } = useRuntimeConfig().public
-
 const { automaticDiscountPromotion, getAppliedAutomaticDiscountPrice } =
   await useProductPromotions(props.product)
 
 const totalPrice = computed(() => {
-  return automaticDiscountPromotion.value && promotionEngineFeatureEnabled
+  return automaticDiscountPromotion.value
     ? toCurrency(getAppliedAutomaticDiscountPrice(props.price) as number)
     : toCurrency(props.price.withTax)
 })
@@ -111,7 +109,6 @@ const classes = computed(() => ({
   'font-bold': props.type === 'loud',
   'font-semibold': props.type === 'whisper',
   'text-red-500':
-    props.appliedReductions.length ||
-    (automaticDiscountPromotion.value && promotionEngineFeatureEnabled),
+    props.appliedReductions.length || automaticDiscountPromotion.value,
 }))
 </script>

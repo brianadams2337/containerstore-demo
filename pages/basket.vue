@@ -18,8 +18,8 @@
         />
       </div>
     </div>
-    <div v-else class="flex flex-col-reverse gap-8 md:flex-row xl:gap-32">
-      <div class="w-full flex-1 space-y-4 md:w-3/5 lg:w-2/3">
+    <div v-else class="flex flex-col-reverse gap-8 md:flex-row xl:gap-16">
+      <div class="w-full flex-1 space-y-4 md:w-3/5 2xl:w-2/3">
         <Headline size="2xl" class="mb-6">
           {{ $t('basket.heading') }} ({{ basketCount }})
         </Headline>
@@ -66,7 +66,7 @@
         </div>
       </div>
 
-      <BasketSummary class="w-full md:w-2/5 lg:w-1/3" />
+      <BasketSummary class="w-full md:w-2/5 2xl:w-1/3" />
     </div>
   </div>
 </template>

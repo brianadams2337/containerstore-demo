@@ -15,9 +15,12 @@ export default async () => {
     return appliedPromotions.value.filter((it) => isAutomaticDiscountType(it))
   })
 
+  const hasAppliedPromotions = computed(() => !!appliedPromotions.value.length)
+
   return {
     appliedPromotions,
     buyXGetYPromotions,
     automaticDiscountPromotions,
+    hasAppliedPromotions,
   }
 }

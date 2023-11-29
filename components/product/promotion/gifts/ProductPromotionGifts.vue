@@ -1,5 +1,5 @@
 <template>
-  <div v-if="promotionEngineFeatureEnabled">
+  <div>
     <div :style="backgroundColorStyle" class="rounded-t-md px-3.5 py-3">
       <Headline tag="h2" size="sm" class="text-white" is-bold>
         {{ $t('pdp.promotion.free_gift_headline') }}
@@ -27,8 +27,6 @@
 import type { Product } from '@scayle/storefront-nuxt'
 
 const props = defineProps<{ product: Product }>()
-
-const { promotionEngineFeatureEnabled } = useRuntimeConfig().public
 
 const { isProductAddedToBasket } = await useProductPromotions(props.product)
 

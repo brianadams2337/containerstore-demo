@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-if="promotionEngineFeatureEnabled"
-    class="flex w-full max-w-sm flex-col"
-  >
+  <div class="flex w-full max-w-sm flex-col">
     <PromotionItemContent
       v-for="{ id, customData, schedule, priority } in applicablePromotions"
       :key="id"
@@ -23,8 +20,6 @@ const {
   highestPriorityPromotion,
   hasMultipleApplicablePromotions,
 } = await useProductPromotions(props.product)
-
-const { promotionEngineFeatureEnabled } = useRuntimeConfig().public
 
 const isHighestPriority = (priority: number) => {
   return (

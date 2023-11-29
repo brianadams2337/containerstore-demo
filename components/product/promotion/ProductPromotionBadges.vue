@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-if="productPromotionId && promotionEngineFeatureEnabled"
-    class="flex h-fit flex-col"
-  >
+  <div v-if="productPromotionId" class="flex h-fit flex-col">
     <template v-for="{ id, customData } in applicablePromotions">
       <div
         v-if="customData.product?.badgeLabel"
@@ -23,6 +20,4 @@ const props = defineProps<{ product: Product }>()
 const { productPromotionId, applicablePromotions } = await useProductPromotions(
   props.product,
 )
-
-const { promotionEngineFeatureEnabled } = useRuntimeConfig().public
 </script>
