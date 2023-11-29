@@ -81,11 +81,11 @@ For more in-depth explanations and How-to guides, please consult the [SCAYLE Res
 
 ## How to turn on local HTTPS
 
-To generate a certificate and key, run the following command in your project folder and follow the prompt to provide the certificate with dummy data in the terminal.
-You can use `.` to fill out the certificate creation with blank data, as there is no need to input any actual data (e.g. `Country Name (2 letter code) []:.`).
+To generate a certificate and key we recommend using the [mkcert](https://github.com/FiloSottile/mkcert) tool.  
+First follow the installation instructions on the Github repository, and afterwards you can run:
 
 ```sh
-openssl req -x509 -newkey rsa:4096 -keyout localhost.pem -out localhost.crt -sha256 -days 365
+mkcert --key-file localhost.pem --cert-file localhost.crt localhost
 ```
 
 After generating the local key and certificate file, add both to your `.env`-file as follows
