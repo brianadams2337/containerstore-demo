@@ -8,7 +8,7 @@ import {
   getVariantBySize,
 } from '@scayle/storefront-nuxt'
 
-export default async (gift: Product) => {
+export default async (gift: Product, promotedProduct: Product) => {
   const { $alert, $i18n } = useNuxtApp()
 
   const { fetching: basketIdle, addItem: addBasketItem } = await useBasket()
@@ -18,10 +18,13 @@ export default async (gift: Product) => {
   const { openBasketFlyout } = useFlyouts()
 
   const activeVariant = useState<Variant | null | undefined>(
-    `active-gift-variant-${gift.id}`,
+    `active-gift-variant-${gift.id}-${promotedProduct.id}`,
   )
 
-  const isSelectionShown = useState(`gift-selection-${gift.id}`, () => false)
+  const isSelectionShown = useState(
+    `gift-selection-${gift.id}-${promotedProduct.id}`,
+    () => false,
+  )
 
   const toggleGiftSelection = () => {
     isSelectionShown.value = !isSelectionShown.value
@@ -91,7 +94,6 @@ export default async (gift: Product) => {
       await addBasketItem({
         variantId: activeVariant.value.id,
         quantity: 1,
-
         ...(promotionId && { promotionId }),
       })
 

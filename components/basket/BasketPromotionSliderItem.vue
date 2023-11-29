@@ -41,9 +41,12 @@
   <template v-if="promotion">
     <ProductPromotionSelectionModal
       v-if="isGreaterOrEquals('md')"
-      v-bind="{ product, promotion }"
+      v-bind="{ product, promotion, promotedProduct }"
     />
-    <ProductPromotionSizeSelection v-else v-bind="{ product, promotion }" />
+    <ProductPromotionSizeSelection
+      v-else
+      v-bind="{ product, promotion, promotedProduct }"
+    />
   </template>
 </template>
 
@@ -59,7 +62,12 @@ type Props = {
 
 const props = withDefaults(defineProps<Props>(), { isFree: false })
 
-const { toggleGiftSelection } = await usePromotionGiftSelection(props.product)
+const promotedProduct = computed(() => props.basketItem.product)
+
+const { toggleGiftSelection } = await usePromotionGiftSelection(
+  props.product,
+  promotedProduct.value,
+)
 
 const { isGreaterOrEquals } = useViewport()
 

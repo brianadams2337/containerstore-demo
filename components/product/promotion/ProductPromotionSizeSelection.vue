@@ -57,7 +57,11 @@
 <script setup lang="ts">
 import type { Product } from '@scayle/storefront-nuxt'
 
-const props = defineProps<{ product: Product; promotion: Promotion }>()
+const props = defineProps<{
+  product: Product
+  promotedProduct: Product
+  promotion: Promotion
+}>()
 
 const {
   handleSelectedSize,
@@ -65,7 +69,7 @@ const {
   addItemToBasket,
   toggleGiftSelection,
   isGiftSelectionShown,
-} = await usePromotionGiftSelection(props.product)
+} = await usePromotionGiftSelection(props.product, props.promotedProduct)
 
 const sizeSelection = ref()
 
