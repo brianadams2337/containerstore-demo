@@ -84,9 +84,13 @@ defineProps({
   },
 })
 
+const storyblokOptions = useDefaultStoryblokOptions()
+
 // TODO fix typings
-const cmsData: Ref<StoryblokStory<SbFooter>> =
-  await useAsyncStoryblok('global/footer')
+const cmsData: Ref<StoryblokStory<SbFooter>> = await useAsyncStoryblok(
+  'global/footer',
+  storyblokOptions,
+)
 const footerContent = computed(() => cmsData.value.content)
 
 const { data } = await useNavigationTrees()

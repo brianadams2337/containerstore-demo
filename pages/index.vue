@@ -7,7 +7,8 @@
 </template>
 
 <script setup lang="ts">
-const data = await useAsyncStoryblok('home')
+const storyblokOptions = useDefaultStoryblokOptions()
+const data = await useAsyncStoryblok('home', storyblokOptions)
 
 const { $config } = useNuxtApp()
 const route = useRoute()

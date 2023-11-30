@@ -103,6 +103,8 @@ export default defineNuxtConfig({
         accessToken: '', // Override: NUXT_PUBLIC_STORYBLOK_ACCESS_TOKEN
         webhookSecret: '', // Override: NUXT_PUBLIC_STORYBLOK_WEBHOOK_SECRET,
       },
+
+      appEnv: process.env.APP_ENV, // Override: NUXT_PUBLIC_APP_ENV,
     },
   },
 
