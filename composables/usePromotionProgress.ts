@@ -6,12 +6,15 @@ export default async () => {
   const minOrderValue = computed(() => {
     return currentPromotion.value?.customData?.minOrderValue || 0
   })
+
   const minOrderAmount = computed(() => divideWithHundred(minOrderValue.value))
 
   const basketTotalForPromotion = computed(() => {
-    return basketData.value.items
-      .filter((it) => it.promotionId === currentPromotion.value?.id)
-      .reduce((total, it) => total + it.price.total.withTax, 0)
+    const isBasketItemPromoted = basketData.value.items.some((it) => {
+      return it.promotionId === currentPromotion.value?.id
+    })
+
+    return isBasketItemPromoted ? basketData.value.cost.withTax : 0
   })
 
   const progress = computed(() => {
