@@ -36,7 +36,7 @@
   "devDependencies": {
     "@crowdin/cli": "3.15.0",
     "@nuxt/image": "1.1.0",
-    "@nuxtjs/i18n": "8.0.0-rc.5",
+    "@nuxtjs/i18n": "8.0.0-rc.6",
     "@nuxtjs/tailwindcss": "6.9.5",
     "@scayle/eslint-config-storefront": "3.2.5",
     "@scayle/prettier-config-storefront": "2.0.2",
