@@ -36,7 +36,7 @@
     />
   </div>
   <AppButton size="sm" class="mt-2" @click="toggleGiftSelection()">
-    {{ $t(isFree ? 'basket.promotion.add_free_gift' : 'basket.product.add') }}
+    {{ toggleGiftSelectionLabel }}
   </AppButton>
   <template v-if="promotion">
     <ProductPromotionSelectionModal
@@ -62,6 +62,8 @@ type Props = {
 
 const props = withDefaults(defineProps<Props>(), { isFree: false })
 
+const i18n = useI18n()
+
 const promotedProduct = computed(() => props.basketItem.product)
 
 const { toggleGiftSelection } = await usePromotionGiftSelection(
@@ -74,6 +76,12 @@ const { isGreaterOrEquals } = useViewport()
 const { backgroundColorStyle, promotion } = useBasketItemPromotion(
   toRef(props.basketItem),
 )
+
+const toggleGiftSelectionLabel = computed(() => {
+  return i18n.t(
+    props.isFree ? 'basket.promotion.add_free_gift' : 'basket.product.add',
+  )
+})
 
 const { image, price, brand, name, lowestPriorPrice } = useProductBaseInfo(
   props.product,
