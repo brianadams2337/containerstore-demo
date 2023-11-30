@@ -47,7 +47,7 @@ For more in-depth explanations and How-to guides, please consult the [SCAYLE Res
   npm install --global yarn
   ```
 
-* `redis`
+- `redis`
 
   Depending on the circumstances the usage of redis `docker` image for the local setup might not be necessary or might result in degraded performance. In this case, it is sufficient to have a locally installed version of `redis` / `redis-server` available.
 
@@ -68,7 +68,7 @@ For more in-depth explanations and How-to guides, please consult the [SCAYLE Res
 
    _Check [How to turn on local HTTPS](#how-to-turn-on-local-https) for detailed instructions._
 
-## Usage
+### Usage
 
 1. Start a local `redis-server` instance
 2. Start the local dev server of Storefront Boilerplate / Nuxt 3
@@ -79,7 +79,9 @@ For more in-depth explanations and How-to guides, please consult the [SCAYLE Res
 
 3. Open the Storefront Boilerplate running under <http://localhost:3000/>
 
-## How to turn on local HTTPS
+## Local HTTPS
+
+### How to turn on local HTTPS
 
 To generate a certificate and key we recommend using the [mkcert](https://github.com/FiloSottile/mkcert) tool.  
 Follow the [mkcert installation instructions (Github)](https://github.com/FiloSottile/mkcert/blob/master/README.md#installation) and afterwards run:
