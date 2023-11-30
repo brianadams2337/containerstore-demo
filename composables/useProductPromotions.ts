@@ -8,6 +8,8 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
   const promotionData = await useCurrentPromotions()
   const basket = await useBasket()
 
+  const { appliedPromotions } = await useBasketPromotions()
+
   const product = toRef(productItem)
 
   const promotionLabel = computed(() => {
@@ -44,6 +46,12 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
     return useMin(applicablePromotions.value, (it) => it.priority)
   })
 
+  const isHighestPriorityPromotionApplied = computed(() => {
+    return appliedPromotions.value.some((it) => {
+      return it.id === highestPriorityPromotion.value?.id
+    })
+  })
+
   const hasMultipleApplicablePromotions = computed(() => {
     return applicablePromotions.value.length > 1
   })
@@ -53,17 +61,6 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
   const isBuyXGetYPrioritized = computed(() => {
     return isBuyXGetYType(highestPriorityPromotion.value)
   })
-
-  const getAppliedAutomaticDiscountPrice = (
-    price: Price,
-  ): number | undefined => {
-    const value = getAdditionalDataValue(automaticDiscountPromotion.value)
-    if (!value) {
-      return
-    }
-    const discount = divideWithHundred(price.withTax) * divideWithHundred(value)
-    return price.withTax - discount
-  }
 
   const isProductAddedToBasket = computed(() => {
     return basket.items.value.some((it) => it.product.id === product.value?.id)
@@ -76,6 +73,24 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
       return isBuyXGetYType(it.promotion) && hasVariantId
     })
   })
+
+  const isHighestPriority = (priority: number): boolean => {
+    return (
+      hasMultipleApplicablePromotions.value &&
+      highestPriorityPromotion.value?.priority === priority
+    )
+  }
+
+  const getAppliedAutomaticDiscountPrice = (
+    price: Price,
+  ): number | undefined => {
+    const value = getAdditionalDataValue(automaticDiscountPromotion.value)
+    if (!value) {
+      return
+    }
+    const discount = divideWithHundred(price.withTax) * divideWithHundred(value)
+    return price.withTax - discount
+  }
 
   return {
     promotionLabel,
@@ -90,5 +105,7 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
     highestPriorityPromotion,
     hasMultipleApplicablePromotions,
     isBuyXGetYPrioritized,
+    isHighestPriorityPromotionApplied,
+    isHighestPriority,
   }
 }

@@ -20,11 +20,8 @@ export const getVariantIds = (promotion?: Promotion | null): number[] => {
   if (!isBuyXGetYType(promotion) || !promotion) {
     return []
   }
-  const effect = promotion.effect as BuyXGetYEffect
-  return effect.additionalData.variantIds.slice(
-    0,
-    effect.additionalData.maxCount,
-  )
+  const { additionalData } = promotion.effect as BuyXGetYEffect
+  return additionalData.variantIds.slice(0, additionalData.maxCount)
 }
 
 export const getAdditionalDataValue = (

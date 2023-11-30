@@ -14,9 +14,10 @@
         <ProductImage
           :image="item"
           sizes="xs:100vw sm:100vw md:100vw"
+          height="311"
           fit="cover"
+          image-loading="eager"
           class="absolute inset-0"
-          :image-loading="!imageIndex ? 'eager' : 'lazy'"
         />
       </Intersect>
     </HorizontalItemsSlider>
@@ -24,14 +25,14 @@
       <div
         v-for="(image, imageIndex) in images"
         :key="image.hash"
-        class="mr-2 cursor-pointer rounded-md bg-gray-200 last-of-type:mr-0"
+        class="mr-2 h-[99px] cursor-pointer rounded-md bg-gray-200 last-of-type:mr-0"
         @click="handleThumbnailClick(imageIndex)"
       >
         <ProductImage
           :image="image"
           sizes="xs:100vw sm:100vw md:100vw"
           fit="cover"
-          :image-loading="!imageIndex ? 'eager' : 'lazy'"
+          image-loading="eager"
         />
       </div>
     </div>

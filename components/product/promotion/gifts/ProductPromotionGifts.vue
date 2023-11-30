@@ -8,9 +8,10 @@
     <div class="rounded-b-md border border-gray-350 bg-white pt-4">
       <div class="max-h-72 overflow-y-scroll px-3.5" @scroll="onScroll">
         <ProductPromotionGiftItem
-          v-for="item in products"
+          v-for="(item, index) in products"
           :key="item.id"
           v-bind="{ backgroundColorStyle, isProductAddedToBasket }"
+          :eager-image-loading="index < 2"
           :product="item"
           class="mb-4 last-of-type:mb-0"
         />

@@ -36,15 +36,23 @@
               >
                 {{ productName }}
               </Headline>
-              <ProductPromotionBanners
-                :product="product"
-                class="mt-2 xs:hidden md:flex"
-              />
-              <div class="flex flex-col">
+              <FadeInTransition>
+                <PromotionHurryToSaveBanners
+                  v-if="isHighestPriorityPromotionApplied"
+                  class="mt-2 w-full xs:hidden md:flex"
+                />
+                <ProductPromotionBanners
+                  v-else
+                  :product="product"
+                  class="mt-2 xs:hidden md:flex"
+                />
+              </FadeInTransition>
+              <div class="flex flex-col items-end">
                 <div class="flex gap-2 xs:flex-col-reverse md:flex-col">
                   <ProductPromotionBadges
                     :product="product"
-                    class="md:hidden"
+                    is-priority-label-shown
+                    class="items-end md:hidden"
                   />
                   <ProductBadge
                     v-if="product.isSoldOut"
@@ -212,8 +220,11 @@ const {
 
 const { addItemToBasket, basketIdle } = await useProductDetailsBasketActions()
 
-const { isBuyXGetYPrioritized, isGiftAddedToBasket } =
-  await useProductPromotions(product)
+const {
+  isBuyXGetYPrioritized,
+  isGiftAddedToBasket,
+  isHighestPriorityPromotionApplied,
+} = await useProductPromotions(product)
 
 const {
   sliderProducts,

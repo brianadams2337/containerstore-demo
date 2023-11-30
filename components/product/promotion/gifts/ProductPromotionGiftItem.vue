@@ -9,6 +9,7 @@
         v-if="image"
         :image="image"
         :alt="name"
+        :image-loading="eagerImageLoading ? 'eager' : 'lazy'"
         sizes="xl:100vw lg:100vw lg:100vw lg:100vw xs:100vw"
         fit="cover"
       />
@@ -46,9 +47,12 @@
     <template v-if="promotion">
       <ProductPromotionSelectionModal
         v-if="isGreaterOrEquals('md')"
-        v-bind="{ product, promotion }"
+        v-bind="{ product, promotion, promotedProduct }"
       />
-      <ProductPromotionSizeSelection v-else v-bind="{ product, promotion }" />
+      <ProductPromotionSizeSelection
+        v-else
+        v-bind="{ product, promotion, promotedProduct }"
+      />
     </template>
   </div>
 </template>
@@ -60,6 +64,7 @@ const props = defineProps<{
   product: Product
   backgroundColorStyle: { backgroundColor?: string }
   isProductAddedToBasket: boolean
+  eagerImageLoading: boolean
 }>()
 
 const { product: promotedProduct } = await useProductDetails()
@@ -67,7 +72,10 @@ const { product: promotedProduct } = await useProductDetails()
 const { buyXGetYPromotion: promotion } =
   await useProductPromotions(promotedProduct)
 
-const { toggleGiftSelection } = await usePromotionGiftSelection(props.product)
+const { toggleGiftSelection } = await usePromotionGiftSelection(
+  props.product,
+  promotedProduct.value,
+)
 
 const { isGreaterOrEquals } = useViewport()
 

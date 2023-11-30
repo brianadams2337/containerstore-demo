@@ -20,9 +20,14 @@
       <MyDealsButton class="self-center" />
     </div>
   </div>
-  <PromotionList :items="promotions" />
+
+  <SlideInFromTopTransition>
+    <PromotionList v-if="isPromotionListShown" :items="promotions" />
+  </SlideInFromTopTransition>
   <Overlay v-if="isPromotionListShown" />
-  <PromotionMobileBanner :promotions="promotions" />
+  <FadeInTransition>
+    <PromotionMobileBanner :promotions="promotions" />
+  </FadeInTransition>
 </template>
 
 <script setup lang="ts">
