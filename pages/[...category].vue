@@ -26,35 +26,33 @@
           />
         </template>
 
-        <NuxtLazyHydrate>
+        <div
+          class="flex flex-col items-start justify-between overflow-x-hidden"
+        >
+          <ProductListBreadcrumbs />
           <div
-            class="flex flex-col items-start justify-between overflow-x-hidden"
+            class="mt-2 flex w-full flex-col justify-between space-y-2 md:flex-row"
           >
-            <ProductListBreadcrumbs />
-            <div
-              class="mt-2 flex w-full flex-col justify-between space-y-2 md:flex-row"
-            >
-              <ProductQuickFilters />
-              <div class="order-1 flex items-center space-x-4 text-sm">
-                <SortingMenu
-                  :selected="selectedSort.name"
-                  :values="sortingValues"
-                />
-                <AppButton
-                  data-test-id="filter-toggle-button"
-                  type="tertiary"
-                  size="sm"
-                  @click="toggleFilter"
-                >
-                  <template #icon="{ _class }">
-                    <IconFilter :class="_class" />
-                  </template>
-                  {{ $t('plp.filter') }}
-                </AppButton>
-              </div>
+            <ProductQuickFilters />
+            <div class="order-1 flex items-center space-x-4 text-sm">
+              <SortingMenu
+                :selected="selectedSort.name"
+                :values="sortingValues"
+              />
+              <AppButton
+                data-test-id="filter-toggle-button"
+                type="tertiary"
+                size="sm"
+                @click="toggleFilter"
+              >
+                <template #icon="{ _class }">
+                  <IconFilter :class="_class" />
+                </template>
+                {{ $t('plp.filter') }}
+              </AppButton>
             </div>
           </div>
-        </NuxtLazyHydrate>
+        </div>
         <ProductList
           :loading="productsFetching"
           :products="products"
