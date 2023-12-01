@@ -1,7 +1,7 @@
 <template>
   <Popover
     :is-open="isBasketFlyoutOpen"
-    :disable-popover-content="isPopoverContentDisabled"
+    :disable-popover-content="isLessThan('md')"
     content-wrapper-class="mt-8"
     @mouseenter="openBasketFlyout"
     @mouseleave="closeBasketFlyout"
@@ -13,7 +13,7 @@
         class="relative"
         type="loud"
       >
-        <FloatingBadge v-if="items?.length" class="-right-2 -top-2">
+        <FloatingBadge v-if="!isEmpty" class="-right-2 -top-2">
           {{ countWithoutSoldOutItems }}
         </FloatingBadge>
         <IconCart class="h-6 w-6" />
@@ -24,75 +24,18 @@
       />
     </template>
     <template #content>
-      <client-only>
-        <div
-          v-if="basketItems?.standAlone?.length"
-          class="max-h-xs overflow-y-auto overscroll-none"
-        >
-          <article v-for="item in basketItems?.standAlone" :key="item.key">
-            <BasketCardPopover :items="[item]" is-light-variant />
-          </article>
-        </div>
-        <div
-          v-if="groupIds?.length"
-          class="max-h-xs overflow-y-auto overscroll-none"
-        >
-          <article v-for="groupId in groupIds" :key="groupId">
-            <BasketCardPopover
-              :items="getBasketItemsFromGroup(groupId)"
-              is-light-variant
-            />
-          </article>
-        </div>
-        <div
-          v-if="!items?.length"
-          class="flex w-full flex-col items-center justify-center py-4"
-        >
-          <div class="w-2/3">
-            <p class="text-center text-sm">
-              {{ $t('basket.no_items_info') }}
-            </p>
-          </div>
-        </div>
-        <BasketPopoverCta v-if="items?.length" />
-      </client-only>
+      <ClientOnly>
+        <BasketPopoverItems />
+        <BasketPopoverActions v-if="!isEmpty" />
+      </ClientOnly>
     </template>
   </Popover>
 </template>
 
 <script setup lang="ts">
-import type { BasketItem } from '@scayle/storefront-nuxt'
-
 const { isLessThan } = useViewport()
 
-const isPopoverContentDisabled = computed(() => isLessThan('md'))
 const { openBasketFlyout, closeBasketFlyout, isBasketFlyoutOpen } = useFlyouts()
 
-const groupIds = computed(() => Object.keys(basketItems.value.groups))
-
-const { items, countWithoutSoldOutItems } = await useBasket()
-const { bundleByGroup } = await useBasketGroup()
-
-const basketItems = computed(() => {
-  const standAlone: BasketItem[] = []
-  const groups: BasketItem[] = []
-  items.value?.forEach((item: BasketItem) =>
-    item.itemGroup?.id ? groups.push(item) : standAlone.push(item),
-  )
-
-  return {
-    standAlone: sortBasketItems(standAlone),
-    groups: bundleByGroup(sortBasketItems(groups)),
-  }
-})
-
-const getBasketItemsFromGroup = (groupId: string) => {
-  return basketItems.value.groups[groupId] as BasketItem[]
-}
-
-const sortBasketItems = (items: BasketItem[]) => {
-  return items.sort((a, b) => {
-    return Number(a.product.isSoldOut) - Number(b.product.isSoldOut)
-  })
-}
+const { isEmpty, countWithoutSoldOutItems } = await useBasket()
 </script>
