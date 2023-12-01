@@ -25,7 +25,7 @@ export default async (basketItem: Ref<BasketItem>) => {
   const { trackAddToBasket, trackRemoveFromBasket, trackSelectItem } =
     useTrackingEvents()
 
-  const { setUiState, uiState } = useBasketItemUiState()
+  const { setUiState, uiState } = useBasketItemUiState(basketItem.value.key)
 
   const { name, brand, image } = useProductBaseInfo(product.value)
 
