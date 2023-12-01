@@ -118,7 +118,7 @@ const {
 
 const { selectedSort, sortingValues } = useProductListSort(selectedCategory)
 
-const { isFiltered } = await useFilter()
+const { isFiltered, resetFilters, applyFilters } = await useFilter()
 
 const trackViewListing = ({ items }: { row: number; items: Product[] }) => {
   const paginationOffset = ((pagination.value?.page || 1) - 1) * 24
@@ -186,6 +186,18 @@ const { content, hasTeaserImage, postListingContent, preListingContent } =
 const cmsContent = content as unknown as SbCmsImage
 
 const isFirstPage = computed(() => pagination.value?.page === 1)
+
+watch(
+  () => route.path,
+  async () => {
+    resetFilters()
+    await applyFilters({ shouldToggle: false })
+    useRouter().replace({ query: {} })
+  },
+  {
+    immediate: true,
+  },
+)
 
 watch(
   () => selectedCategory.value?.id,

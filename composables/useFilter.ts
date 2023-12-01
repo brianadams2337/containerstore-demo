@@ -95,7 +95,7 @@ export default async (
     defaultSort: DEFAULT_SORTING_KEY,
   })
 
-  const applyFilter = (
+  const applyFilter = async (
     preserveAttributeFilters = false,
     quickFilters?: Record<string, any>,
   ) => {
@@ -117,7 +117,7 @@ export default async (
       })
     }
 
-    _applyFilter(combinedFilters)
+    await _applyFilter(combinedFilters)
   }
 
   // TODO: Refactor to consolidate logic and remove non-presentation logic to helpers
@@ -187,15 +187,19 @@ export default async (
     state.value.prices = [minPrice.value, maxPrice.value]
   }
 
-  const applyFilters = ({
+  const applyFilters = async ({
     preserveAttributeFilters = false,
     quickFilters,
+    shouldToggle = true,
   }: {
     preserveAttributeFilters?: boolean
     quickFilters?: Record<string, any>
+    shouldToggle?: boolean
   } = {}) => {
-    applyFilter(preserveAttributeFilters, quickFilters)
-    toggle()
+    await applyFilter(preserveAttributeFilters, quickFilters)
+    if (shouldToggle) {
+      toggle()
+    }
   }
 
   const debouncedStateChangedEvent = useDebounce(
