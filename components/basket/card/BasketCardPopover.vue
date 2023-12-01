@@ -105,12 +105,6 @@ const props = withDefaults(defineProps<Props>(), {
   isLightVariant: false,
 })
 
-defineEmits([
-  'click:delete',
-  'click:add-to-wishlist',
-  'click:remove-from-wishlist',
-])
-
 const mainItem = computed(() => {
   const basketItem =
     props.items.length === 1
@@ -135,7 +129,7 @@ const {
 
 const { isFreeGift, backgroundColorStyle } = useBasketItemPromotion(mainItem)
 
-const addOnItems = computed(() =>
-  props.items.filter((item) => item.itemGroup && !item.itemGroup.isMainItem),
-)
+const addOnItems = computed(() => {
+  return props.items.filter((item) => !item.itemGroup?.isMainItem)
+})
 </script>

@@ -1,7 +1,7 @@
 <template>
   <AppButton
-    no-padding
     v-bind="{ icon, disabled }"
+    no-padding
     size="sm"
     type="ghost"
     class="relative !gap-1 text-xs font-bold"
@@ -15,16 +15,12 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  icon: {
-    type: String,
-    default: '',
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-})
+type Props = {
+  icon?: string
+  disabled?: boolean
+}
+
+withDefaults(defineProps<Props>(), { icon: '', disabled: false })
 
 const emit = defineEmits<{
   (e: 'click'): void
