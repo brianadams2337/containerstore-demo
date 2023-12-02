@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full max-w-sm flex-col">
+  <div class="flex w-full flex-col">
     <PromotionItemContent
       v-for="{ id, customData, schedule, priority } in applicablePromotions"
       :key="id"

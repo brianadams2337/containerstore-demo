@@ -60,6 +60,7 @@
             <div>
               <Dropdown
                 v-if="inStock"
+                :disabled="isFreeGift"
                 :model-value="quantity"
                 :items="availableQuantity"
                 @update:model-value="changeQuantity($event)"

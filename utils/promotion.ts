@@ -9,11 +9,11 @@ export const getBackgroundColorStyle = (color?: string) => {
 }
 
 export const isBuyXGetYType = (promotion?: Promotion | null) => {
-  return promotion?.effect.type === PromotionEffectType.BUY_X_GET_Y
+  return promotion?.effect?.type === PromotionEffectType.BUY_X_GET_Y
 }
 
 export const isAutomaticDiscountType = (promotion?: Promotion | null) => {
-  return promotion?.effect.type === PromotionEffectType.AUTOMATIC_DISCOUNT
+  return promotion?.effect?.type === PromotionEffectType.AUTOMATIC_DISCOUNT
 }
 
 export const getVariantIds = (promotion?: Promotion | null): number[] => {

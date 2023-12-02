@@ -11,6 +11,8 @@ import {
 export default async (gift: Product, promotedProduct: Product) => {
   const { $alert, $i18n } = useNuxtApp()
 
+  const route = useRoute()
+
   const { fetching: basketIdle, addItem: addBasketItem } = await useBasket()
 
   const { trackAddToBasket } = useTrackingEvents()
@@ -99,7 +101,9 @@ export default async (gift: Product, promotedProduct: Product) => {
 
       openBasketFlyout()
 
-      showAddToBasketToast(true, gift)
+      if (route.path !== toLocalePath(routeList.basket)) {
+        showAddToBasketToast(true, gift)
+      }
 
       if (gift) {
         trackAddToBasket({

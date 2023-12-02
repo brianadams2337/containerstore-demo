@@ -38,7 +38,8 @@
               </Headline>
               <FadeInTransition>
                 <PromotionHurryToSaveBanners
-                  v-if="isHighestPriorityPromotionApplied"
+                  v-if="areHurryToSaveBannersShown"
+                  :product="product"
                   class="mt-2 w-full xs:hidden md:flex"
                 />
                 <ProductPromotionBanners
@@ -64,16 +65,14 @@
 
                 <ProductPrice
                   v-if="price"
-                  :product="product"
                   size="xl"
                   class="mt-3"
+                  v-bind="{ product, lowestPriorPrice, price }"
                   :type="isGreaterOrEquals('md') ? 'normal' : 'loud'"
-                  :price="price"
-                  :lowest-prior-price="lowestPriorPrice"
-                  :applied-reductions="price?.appliedReductions"
-                  show-tax-info
+                  :show-automatic-discount="!isBuyXGetYPrioritized"
                   :show-price-from="hasSpecial"
                   :show-price-reduction-badge="hasSpecial"
+                  show-tax-info
                 />
               </div>
             </div>
@@ -121,7 +120,6 @@
               />
             </div>
 
-            <!-- ComputedAddOns == [] -->
             <AddOnsSelector
               v-if="availableAddOns.length"
               class="mt-8"
@@ -129,8 +127,8 @@
               :class="{ hidden: !activeVariant }"
               @click:service-selection="onAddOnSelected"
             />
+
             <div class="mt-4 flex h-12">
-              <!-- add to basket -->
               <AppButton
                 data-test-id="add-item-to-basket-button"
                 is-full-width
@@ -223,7 +221,7 @@ const { addItemToBasket, basketIdle } = await useProductDetailsBasketActions()
 const {
   isBuyXGetYPrioritized,
   isGiftAddedToBasket,
-  isHighestPriorityPromotionApplied,
+  areHurryToSaveBannersShown,
 } = await useProductPromotions(product)
 
 const {

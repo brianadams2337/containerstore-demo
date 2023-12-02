@@ -103,7 +103,6 @@
                   <ProductPrice
                     v-if="price"
                     v-bind="{ price, lowestPriorPrice, product }"
-                    :applied-reductions="price?.appliedReductions"
                     :size="isGreaterOrEquals('md') ? 'sm' : 'xs'"
                     type="whisper"
                   />
