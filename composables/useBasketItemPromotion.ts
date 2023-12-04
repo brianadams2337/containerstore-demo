@@ -15,13 +15,14 @@ export default (basketItem: Ref<BasketItem>) => {
     return getBackgroundColorStyle(promotion.value?.customData?.colorHex)
   })
 
-  const isFreeGift = computed(() => {
-    const variantIds = getVariantIds(promotion.value)
-    return variantIds.includes(basketItem.value.variant.id)
-  })
-
   const hasFailedConditions = computed(() => {
     return !!promotion.value?.failedConditions?.length
+  })
+
+  const isFreeGift = computed(() => {
+    const variantIds = getVariantIds(promotion.value)
+    const hasVariantId = variantIds.includes(basketItem.value.variant.id)
+    return !hasFailedConditions.value && hasVariantId
   })
 
   return {
