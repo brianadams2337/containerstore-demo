@@ -99,8 +99,6 @@
             <ProductPrice
               data-test-id="wishlist-product-price"
               v-bind="{ price, lowestPriorPrice, product }"
-              :lowest-prior-price="lowestPriorPrice"
-              :applied-reductions="price.appliedReductions"
               type="whisper"
               size="sm"
               class="text-primary"

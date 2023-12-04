@@ -25,7 +25,6 @@
                   <ProductPrice
                     v-if="price"
                     v-bind="{ product, price, lowestPriorPrice }"
-                    :applied-reductions="price?.appliedReductions"
                     :show-price-from="hasSpecial"
                     :show-price-reduction-badge="hasSpecial"
                     size="xl"

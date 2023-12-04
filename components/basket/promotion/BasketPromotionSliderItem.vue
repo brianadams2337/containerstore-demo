@@ -28,9 +28,7 @@
     </Headline>
     <ProductPrice
       v-if="price && !isFree"
-      v-bind="{ price, lowestPriorPrice }"
-      :product="product"
-      :applied-reductions="price?.appliedReductions"
+      v-bind="{ product, price, lowestPriorPrice }"
       size="xs"
       type="whisper"
     />

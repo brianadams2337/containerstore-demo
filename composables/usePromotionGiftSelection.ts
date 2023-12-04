@@ -2,6 +2,7 @@ import {
   type Variant,
   type Product,
   type Value,
+  ExistingItemHandling,
   getAttributeValue,
   getFirstAttributeValue,
   getPrice,
@@ -10,6 +11,8 @@ import {
 
 export default async (gift: Product, promotedProduct: Product) => {
   const { $alert, $i18n } = useNuxtApp()
+
+  const route = useRoute()
 
   const { fetching: basketIdle, addItem: addBasketItem } = await useBasket()
 
@@ -94,12 +97,15 @@ export default async (gift: Product, promotedProduct: Product) => {
       await addBasketItem({
         variantId: activeVariant.value.id,
         quantity: 1,
+        existingItemHandling: ExistingItemHandling.ReplaceExisting,
         ...(promotionId && { promotionId }),
       })
 
       openBasketFlyout()
 
-      showAddToBasketToast(true, gift)
+      if (route.path !== toLocalePath(routeList.basket)) {
+        showAddToBasketToast(true, gift)
+      }
 
       if (gift) {
         trackAddToBasket({
