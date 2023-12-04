@@ -2,6 +2,7 @@ import {
   type Variant,
   type Product,
   type Value,
+  ExistingItemHandling,
   getAttributeValue,
   getFirstAttributeValue,
   getPrice,
@@ -96,6 +97,7 @@ export default async (gift: Product, promotedProduct: Product) => {
       await addBasketItem({
         variantId: activeVariant.value.id,
         quantity: 1,
+        existingItemHandling: ExistingItemHandling.ReplaceExisting,
         ...(promotionId && { promotionId }),
       })
 

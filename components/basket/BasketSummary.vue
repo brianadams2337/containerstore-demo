@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="rounded border-primary p-0 md:border md:p-6">
-      <Headline tag="div" size="xl">{{ $t('basket.total') }}</Headline>
+      <Headline tag="h1" size="xl">{{ $t('basket.total') }}</Headline>
       <FadeInTransition>
         <PromotionHurryToSaveBanners v-if="hasAppliedPromotions" class="mt-4" />
       </FadeInTransition>
