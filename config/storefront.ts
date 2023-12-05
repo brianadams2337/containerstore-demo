@@ -189,7 +189,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
       prefix: '', // Override: NUXT_STOREFRONT_STORAGE_CACHE_PREFIX
       user: '', // Override: NUXT_STOREFRONT_STORAGE_CACHE_USER
       password: '', // Override: NUXT_STOREFRONT_STORAGE_CACHE_PASSWORD
-      sslTransit: false, // Override: NUXT_STOREFRONT_STORAGE_CACHE_SSL_TRANSIT
+      tls: false, // Override: NUXT_STOREFRONT_STORAGE_CACHE_TLS
     },
     session: {
       driver: 'redis', // Override: NUXT_STOREFRONT_STORAGE_SESSION_PROVIDER
@@ -199,7 +199,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
       user: '', // Override: NUXT_STOREFRONT_STORAGE_SESSION_USER
       db: 1, // Override: NUXT_STOREFRONT_STORAGE_SESSION_DB
       password: '', // Override: NUXT_STOREFRONT_STORAGE_SESSION_PASSWORD
-      sslTransit: false, // Override: NUXT_STOREFRONT_STORAGE_SESSION_SSL_TRANSIT
+      tls: false, // Override: NUXT_STOREFRONT_STORAGE_SESSION_TLS
     },
   },
   /** [OPTIONAL] Storefront Core - Internal cache behaviour configurations
