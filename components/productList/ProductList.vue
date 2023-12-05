@@ -17,31 +17,24 @@
         :loading="loading"
         :refreshing="refreshing"
       >
-        <NuxtLazyHydrate
-          :when-visible="{ rootMargin: '100px' }"
-          :when-triggered="index < (isGreaterOrEquals('md') ? 8 : 2)"
-          placeholder-class="mb-24"
-          placeholder-ratio="3/4"
+        <ProductCard
+          :key="`product-${product.id}`"
+          class="mb-7"
+          :class="columnClasses"
+          data-test-id="product-item"
+          :index="index"
+          :product="product"
+          color-chip-size="sm"
+          color-chip-rounded-size="sm"
+          sibling-spacing="narrow"
+          :listing-meta-data="listingMetaData"
+          @click:product="$emit('click:product', product, index)"
+          @intersect:product="collectRowIntersection(index)"
         >
-          <ProductCard
-            :key="`product-${product.id}`"
-            class="mb-7"
-            :class="columnClasses"
-            data-test-id="product-item"
-            :index="index"
-            :product="product"
-            color-chip-size="sm"
-            color-chip-rounded-size="sm"
-            sibling-spacing="narrow"
-            :listing-meta-data="listingMetaData"
-            @click:product="$emit('click:product', product, index)"
-            @intersect:product="collectRowIntersection(index)"
-          >
-            <template #header-badge>
-              <ProductListHeaderBadges :product="product" />
-            </template>
-          </ProductCard>
-        </NuxtLazyHydrate>
+          <template #header-badge>
+            <ProductListHeaderBadges :product="product" />
+          </template>
+        </ProductCard>
       </slot>
     </template>
   </div>

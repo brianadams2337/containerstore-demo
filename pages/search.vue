@@ -27,14 +27,12 @@
       class="mt-8 grid w-auto grid-cols-12 gap-2"
       @click:toggle-product-wishlist="toggleItem($event)"
     />
-    <NuxtLazyHydrate>
-      <Pagination
-        v-if="pagination"
-        :current-page="pagination.page"
-        :first-page="pagination.first"
-        :last-page="pagination.last"
-      />
-    </NuxtLazyHydrate>
+    <Pagination
+      v-if="pagination"
+      :current-page="pagination.page"
+      :first-page="pagination.first"
+      :last-page="pagination.last"
+    />
     <FilterSlideIn
       v-if="filters?.length"
       v-bind="{

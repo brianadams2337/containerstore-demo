@@ -18,9 +18,7 @@
       />
       <NuxtPage v-else />
     </div>
-    <NuxtLazyHydrate placeholder-ratio="16/9" when-visible>
-      <AppFooter class="mt-16" />
-    </NuxtLazyHydrate>
+    <AppFooter class="mt-16" />
   </div>
 </template>
 

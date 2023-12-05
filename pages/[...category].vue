@@ -61,15 +61,13 @@
           @click:product="trackProductClick"
           @intersect:row="trackViewListing"
         />
-        <NuxtLazyHydrate :when-visible="{ rootMargin: '100px' }">
-          <Pagination
-            v-if="pagination"
-            class="mt-16"
-            :current-page="pagination.page"
-            :first-page="pagination.first"
-            :last-page="pagination.last"
-          />
-        </NuxtLazyHydrate>
+        <Pagination
+          v-if="pagination"
+          class="mt-16"
+          :current-page="pagination.page"
+          :first-page="pagination.first"
+          :last-page="pagination.last"
+        />
 
         <template v-if="postListingContent && isFirstPage">
           <component

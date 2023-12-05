@@ -97,7 +97,6 @@
     "nanoid": "5.0.4",
     "nuxi": "3.10.0",
     "nuxt-jsonld": "2.0.8",
-    "nuxt-lazy-hydrate": "1.0.0",
     "nuxt-swiper": "1.2.2",
     "radash-nuxt": "1.0.2",
     "redis": "4.6.11",

@@ -139,7 +139,6 @@ export default defineNuxtConfig({
     'nuxt-svgo',
     '@nuxt/image',
     '@nuxtjs/i18n',
-    'nuxt-lazy-hydrate',
     'nuxt-jsonld',
     '@vueuse/nuxt',
     'nuxt-swiper',
