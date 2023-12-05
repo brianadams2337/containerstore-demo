@@ -1,7 +1,7 @@
 <template>
   <FadeInTransition>
     <div
-      v-if="state === 'default'"
+      v-if="uiState === 'default'"
       data-test-id="basket-card"
       class="w-full rounded border border-gray-350 p-4 text-sm lg:p-5"
     >
@@ -63,7 +63,7 @@
                 :disabled="isFreeGift"
                 :model-value="quantity"
                 :items="availableQuantity"
-                @update:model-value="changeQuantity($event)"
+                @update:model-value="changeQuantity($event, index)"
               />
             </div>
             <div class="text-right font-bold">
@@ -133,7 +133,7 @@
       </div>
     </div>
     <BasketCardConfirmDelete
-      v-else-if="state === 'confirmDelete' && image?.hash"
+      v-else-if="uiState === 'confirmDelete' && image?.hash"
       key="confirmDelete"
       :name="name ?? ''"
       :image-hash="image.hash"
@@ -144,20 +144,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  type BasketItem,
-  getFirstAttributeValue,
-  getTotalAppliedReductions,
-  ExistingItemHandling,
-  isInStock,
-  getSizeFromVariant,
-  getProductColors,
-} from '@scayle/storefront-nuxt'
-
-const listingMetaData = {
-  id: BasketListingMetadata.ID,
-  name: BasketListingMetadata.NAME,
-}
+import { type BasketItem } from '@scayle/storefront-nuxt'
 
 type Props = {
   index: number
@@ -170,29 +157,6 @@ const props = withDefaults(defineProps<Props>(), {
   itemsGroup: undefined,
 })
 
-const { $i18n, $alert } = useNuxtApp()
-const wishlist = await useWishlist()
-const basket = await useBasket()
-const {
-  trackRemoveFromWishlist,
-  trackAddToWishlist,
-  trackAddToBasket,
-  trackRemoveFromBasket,
-} = useTrackingEvents()
-
-const { isGreaterOrEquals } = useViewport()
-const currentShop = useCurrentShop()
-const store = useStore()
-const route = useRoute()
-
-const state = ref('default')
-const isWishlistToggling = ref(false)
-const index = toRef(props, 'index')
-
-const { highestPriorityPromotion } = await useProductPromotions(
-  props.item?.product,
-)
-
 const mainItem = computed(() => {
   const basketItem = props.itemsGroup
     ? props.itemsGroup.find((item) => item.itemGroup?.isMainItem)
@@ -201,31 +165,42 @@ const mainItem = computed(() => {
   return basketItem as BasketItem
 })
 
+const {
+  uiState,
+  name,
+  brand,
+  size,
+  inStock,
+  image,
+  color,
+  onCancelDelete,
+  onConfirmDelete,
+  isLowestPreviousPriceActive,
+  changeQuantity,
+  price,
+  availableQuantity,
+  onPressDelete,
+  quantity,
+  lowestPriorPrice,
+  reducedPrice,
+  product,
+  variant,
+  selectItem,
+  listingMetaData,
+} = await useBasketItem(mainItem)
+
+const { $i18n, $alert } = useNuxtApp()
+const wishlist = await useWishlist()
+const { trackRemoveFromWishlist, trackAddToWishlist } = useTrackingEvents()
+
+const { isGreaterOrEquals } = useViewport()
+const store = useStore()
+const route = useRoute()
+
+const isWishlistToggling = ref(false)
+const index = toRef(props, 'index')
+
 const { isFreeGift, backgroundColorStyle } = useBasketItemPromotion(mainItem)
-
-const product = computed(() => mainItem.value!.product)
-const variant = computed(() => mainItem.value!.variant)
-const inStock = computed(() => isInStock(variant.value))
-const name = computed(
-  () => getFirstAttributeValue(product.value.attributes, 'name')?.label,
-)
-const brand = computed(
-  () => getFirstAttributeValue(product.value.attributes, 'brand')?.label,
-)
-const size = computed(
-  () => getSizeFromVariant(mainItem.value!.variant, 'size')?.label,
-)
-const color = computed(() =>
-  getProductColors(mainItem.value!.product, 'color').join('/'),
-)
-
-const image = computed(() =>
-  getImageFromList(
-    mainItem.value!.product.images,
-    ProductImageType.BUST,
-    'front',
-  ),
-)
 
 const addOnItems = computed(() =>
   props.itemsGroup
@@ -233,29 +208,9 @@ const addOnItems = computed(() =>
     : [],
 )
 
-const reducedPrice = computed(() => {
-  const total = mainItem.value?.price.total
-  if (!total) {
-    return
-  }
-  return getTotalAppliedReductions(total)?.absoluteWithTax
+const isInWishlist = computed(() => {
+  return wishlist.contains({ productId: product.value.id })
 })
-
-const price = computed(() => mainItem.value?.price.total.withTax ?? 0)
-const lowestPriorPrice = computed(
-  () => mainItem.value?.variant.lowestPriorPrice,
-)
-const quantity = computed(() => mainItem.value?.quantity)
-
-const availableQuantity = computed(() => {
-  return getQuantitySelectionList(mainItem.value?.availableQuantity)
-})
-
-const isInWishlist = computed(() =>
-  wishlist.contains({
-    productId: product.value.id,
-  }),
-)
 
 const toggleWishlist = async () => {
   isWishlistToggling.value = true
@@ -267,12 +222,11 @@ const addToWishlist = async () => {
   if (!mainItem.value) {
     return
   }
-  const { product, variant, quantity = 1 } = mainItem.value
 
   trackAddToWishlist({
-    product,
-    variant,
-    quantity,
+    product: product.value,
+    variant: variant.value,
+    quantity: quantity.value,
     listingMetaData,
     index: index.value,
     pagePayload: {
@@ -282,7 +236,7 @@ const addToWishlist = async () => {
     },
   })
 
-  await wishlist.addItem({ productId: product.id })
+  await wishlist.addItem({ productId: product.value.id })
   const message = $i18n.t('wishlist.notification.add_to_wishlist', {
     productName: name.value || $i18n.t('wishlist.product'),
   })
@@ -316,63 +270,4 @@ const removeFromWishlist = async () => {
 
   $alert.show(message, 'CONFIRM')
 }
-
-const emit = defineEmits(['item:remove', 'item:select'])
-
-const removeItem = () => emit('item:remove', mainItem.value)
-
-const selectItem = () => emit('item:select', mainItem.value)
-
-const onPressDelete = () => {
-  state.value = 'confirmDelete'
-}
-
-const onCancelDelete = () => {
-  state.value = 'default'
-}
-
-const onConfirmDelete = () => {
-  state.value = 'default'
-  removeItem()
-}
-
-const changeQuantity = async (newQuantity: number) => {
-  if (newQuantity === 0) {
-    return onPressDelete()
-  }
-  const basketItem = basket.findItem({ variantId: variant.value.id })
-  if (!basketItem) {
-    return
-  }
-
-  const promotionId = highestPriorityPromotion.value?.id
-
-  if (basketItem.quantity < newQuantity) {
-    trackAddToBasket({
-      product: product.value,
-      quantity: newQuantity - basketItem.quantity,
-      variant: variant.value,
-      index: index.value,
-      list: listingMetaData,
-    })
-  } else if (basketItem.quantity > newQuantity) {
-    trackRemoveFromBasket(
-      product.value,
-      basketItem.quantity - newQuantity,
-      variant.value,
-      index.value,
-    )
-  }
-
-  await basket.addItem({
-    variantId: variant.value.id,
-    quantity: newQuantity,
-    existingItemHandling: ExistingItemHandling.ReplaceExisting,
-    ...(promotionId && { promotionId }),
-  })
-}
-
-const isLowestPreviousPriceActive = computed(
-  () => !!currentShop.value?.isLowestPreviousPriceActive,
-)
 </script>

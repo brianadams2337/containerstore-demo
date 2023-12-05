@@ -1,7 +1,7 @@
 <template>
   <div class="flex py-4 text-sm">
     <div class="w-28 pr-6">
-      <nuxt-img
+      <NuxtImg
         :src="imageHash"
         :alt="name"
         provider="default"
@@ -26,7 +26,6 @@
             {{ $t('basket_card.cancel') }}
           </AppButton>
           <AppButton
-            type="primary"
             data-test-id="basket-remove-item-confirm-button"
             no-padding
             is-full-width
@@ -47,16 +46,7 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  name: {
-    type: String,
-    required: true,
-  },
-  imageHash: {
-    type: String,
-    required: true,
-  },
-})
+defineProps<{ name: string; imageHash: string }>()
 
 const emit = defineEmits<{
   (e: 'click:confirm'): void
