@@ -77,7 +77,7 @@
     "typescript": "5.3.2",
     "utility-types": "3.10.0",
     "vitest": "0.33.0",
-    "vue-tsc": "1.8.24"
+    "vue-tsc": "1.8.25"
   },
   "dependencies": {
     "@scayle/storefront-nuxt": "7.42.2",
