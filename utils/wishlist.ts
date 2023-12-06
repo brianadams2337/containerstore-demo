@@ -51,30 +51,24 @@ export const trackWishlistEvent = (
 ) => {
   const { trackRemoveFromWishlist, trackAddToWishlist } = useTrackingEvents()
   const route = useRoute()
-  const store = useStore()
+  const { pageState } = usePageState()
   const { product, variant, listingMetaData } = params
   if (!product) {
     return
   }
 
+  const payload = {
+    product,
+    ...(action === 'added' && { variant }),
+    listingMetaData,
+    pagePayload: {
+      content_name: route.fullPath,
+      page_type: pageState.value.type,
+      page_type_id: route.params.id?.toString() || '',
+    },
+  }
+
   return action === 'added'
-    ? trackAddToWishlist({
-        product,
-        variant,
-        listingMetaData,
-        pagePayload: {
-          content_name: route.fullPath,
-          page_type: store.value.pageType,
-          page_type_id: route.params.id?.toString() || '',
-        },
-      })
-    : trackRemoveFromWishlist({
-        product,
-        listingMetaData,
-        pagePayload: {
-          content_name: route.fullPath,
-          page_type: store.value.pageType,
-          page_type_id: route.params.id?.toString() || '',
-        },
-      })
+    ? trackAddToWishlist(payload)
+    : trackRemoveFromWishlist(payload)
 }

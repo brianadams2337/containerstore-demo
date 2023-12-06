@@ -73,7 +73,7 @@ if (basket.error.value) {
   throw basket.error.value
 }
 
-const store = useStore()
+const { pageState } = usePageState()
 const route = useRoute()
 
 const {
@@ -109,7 +109,7 @@ onMounted(() => {
       }),
       {
         content_name: route.fullPath,
-        page_type: store.value.pageType,
+        page_type: pageState.value.type,
         page_type_id: route.params.id?.toString() || '',
       },
       basket.cost.value,

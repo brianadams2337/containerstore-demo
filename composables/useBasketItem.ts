@@ -19,7 +19,7 @@ export default async (basketItem: Ref<BasketItem>) => {
   const basket = await useBasket()
 
   const route = useRoute()
-  const store = useStore()
+  const { pageState } = usePageState()
   const currentShop = useCurrentShop()
 
   const { trackAddToBasket, trackRemoveFromBasket, trackSelectItem } =
@@ -121,7 +121,7 @@ export default async (basketItem: Ref<BasketItem>) => {
       listingMetaData,
       pagePayload: {
         content_name: route.fullPath,
-        page_type: store.value.pageType,
+        page_type: pageState.value.type,
         page_type_id: route.params.id?.toString() || '',
       },
     })

@@ -6,7 +6,7 @@ export default async () => {
   const { trackSelectItem } = useTrackingEvents()
 
   const route = useRoute()
-  const store = useStore()
+  const { pageState } = usePageState()
 
   const combineWithProductValues = getAdvancedAttributes({
     product: product.value,
@@ -52,7 +52,7 @@ export default async () => {
       soldOut: product.isSoldOut,
       pagePayload: {
         content_name: route.fullPath,
-        page_type: store.value.pageType,
+        page_type: pageState.value.type,
         page_type_id: productId.value.toString() || '',
       },
     })

@@ -44,7 +44,7 @@ export default defineNuxtPlugin(() => {
   }
 
   const flush = () => {
-    const store = useStore()
+    const { pageState } = usePageState()
     const sorted = queue.sort((a, b) => a.index - b.index)
     sorted.forEach((item) => {
       if ('ecommerce' in item.data) {
@@ -62,8 +62,8 @@ export default defineNuxtPlugin(() => {
       gtm.push({
         event,
         ...(contentName && { content_name: contentName }),
-        page_type: pageType || store.value.pageType,
-        page_type_id: pageTypeId || store.value.pageTypeId,
+        page_type: pageType || pageState.value.type,
+        page_type_id: pageTypeId || pageState.value.typeId,
         ...data,
       })
     })

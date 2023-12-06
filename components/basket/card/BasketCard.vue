@@ -194,7 +194,7 @@ const wishlist = await useWishlist()
 const { trackRemoveFromWishlist, trackAddToWishlist } = useTrackingEvents()
 
 const { isGreaterOrEquals } = useViewport()
-const store = useStore()
+const { pageState } = usePageState()
 const route = useRoute()
 
 const isWishlistToggling = ref(false)
@@ -231,7 +231,7 @@ const addToWishlist = async () => {
     index: index.value,
     pagePayload: {
       content_name: route.fullPath,
-      page_type: store.value.pageType,
+      page_type: pageState.value.type,
       page_type_id: route.params.id?.toString() || '',
     },
   })
@@ -254,10 +254,9 @@ const removeFromWishlist = async () => {
     quantity: quantity.value,
     index: index.value,
     listingMetaData: { ...listingMetaData, index: index.value },
-
     pagePayload: {
       content_name: route.fullPath,
-      page_type: store.value.pageType,
+      page_type: pageState.value.type,
       page_type_id: route.params.id?.toString() || '',
     },
   })

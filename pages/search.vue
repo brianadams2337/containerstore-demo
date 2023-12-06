@@ -63,7 +63,7 @@ const PRODUCTS_PER_PAGE = 24
 const route = useRoute()
 
 const { $i18n, $alert } = useNuxtApp()
-const store = useStore()
+const { pageState } = usePageState()
 const term = computed(() => route.query.term || '')
 const { toggle: toggleFilter } = useSlideIn('FilterSlideIn')
 
@@ -176,7 +176,7 @@ const toggleItem = (product: Product) => {
         product,
         pagePayload: {
           content_name: route.fullPath,
-          page_type: store.value.pageType,
+          page_type: pageState.value.type,
           page_type_id: route.params.id?.toString() || '',
         },
       })
@@ -184,7 +184,7 @@ const toggleItem = (product: Product) => {
         product,
         pagePayload: {
           content_name: route.fullPath,
-          page_type: store.value.pageType,
+          page_type: pageState.value.type,
           page_type_id: route.params.id?.toString() || '',
         },
       })
