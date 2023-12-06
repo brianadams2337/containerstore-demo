@@ -6,7 +6,7 @@
       <div
         class="mx-4 flex h-[4.375rem] items-center justify-center gap-1 md:container sm:gap-4"
       >
-        <Logo class="ml-4 flex-initial" :width="138" :height="32" />
+        <AppLogo class="ml-4 flex-initial" :width="138" :height="32" />
       </div>
     </div>
     <div class="mt-4 grow">
