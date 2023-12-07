@@ -181,32 +181,54 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
   ),
   /** Storefront Core - Storage Configuration for `cache` and `session` mountpoints
    * https://scayle.dev/en/dev/storefront-core/module-configuration#storage */
-  storage: {
-    cache: {
-      // Redis Options: https://redis.github.io/ioredis/index.html#RedisOptions
-      driver: 'redis', // Override: NUXT_STOREFRONT_STORAGE_CACHE_PROVIDER
-      compression: 'gzip', // Override: NUXT_STOREFRONT_STORAGE_CACHE_COMPRESSION
-      host: 'localhost', // Override: NUXT_STOREFRONT_STORAGE_CACHE_HOST
-      port: 6379, // Override: NUXT_STOREFRONT_STORAGE_CACHE_PORT
-      username: '', // Override: NUXT_STOREFRONT_STORAGE_CACHE_USERNAME
-      password: '', // Override: NUXT_STOREFRONT_STORAGE_CACHE_PASSWORD
-      tls: false, // Override: NUXT_STOREFRONT_STORAGE_CACHE_TLS,
-      // Required to resolve connection issues with AWS ElastiCache
-      checkServerIdentity: undefined, // Override: NUXT_STOREFRONT_STORAGE_CACHE_CHECK_SERVER_INTEGRITY,
-    },
-    session: {
-      // Redis Options: https://redis.github.io/ioredis/index.html#RedisOptions
-      driver: 'redis', // Override: NUXT_STOREFRONT_STORAGE_SESSION_PROVIDER
-      host: 'localhost', // Override: NUXT_STOREFRONT_STORAGE_SESSION_HOST
-      port: 6379, // Override: NUXT_STOREFRONT_STORAGE_SESSION_PORT
-      db: 1, // Override: NUXT_STOREFRONT_STORAGE_SESSION_DB
-      username: '', // Override: NUXT_STOREFRONT_STORAGE_SESSION_USERNAME
-      password: '', // Override: NUXT_STOREFRONT_STORAGE_SESSION_PASSWORD
-      tls: false, // Override: NUXT_STOREFRONT_STORAGE_SESSION_TLS,
-      // Required to resolve connection issues with AWS ElastiCache
-      checkServerIdentity: undefined, // Override: NUXT_STOREFRONT_STORAGE_SESSION_CHECK_SERVER_INTEGRITY,
-    },
-  },
+  storage: (() => {
+    if (
+      process.env.NITRO_PRESET &&
+      process.env.NITRO_PRESET.includes('vercel')
+    ) {
+      return {
+        cache: {
+          driver: 'vercelKV',
+          // Set at runtime, using KV_REST_API_URL and KV_REST_API_TOKEN
+          url: '',
+          token: '',
+        },
+        session: {
+          driver: 'vercelKV',
+          // Set at runtime, using KV_REST_API_URL and KV_REST_API_TOKEN
+          url: '',
+          token: '',
+        },
+      }
+    }
+
+    return {
+      cache: {
+        // Redis Options: https://redis.github.io/ioredis/index.html#RedisOptions
+        driver: 'redis', // Override: NUXT_STOREFRONT_STORAGE_CACHE_PROVIDER
+        compression: 'gzip', // Override: NUXT_STOREFRONT_STORAGE_CACHE_COMPRESSION
+        host: 'localhost', // Override: NUXT_STOREFRONT_STORAGE_CACHE_HOST
+        port: 6379, // Override: NUXT_STOREFRONT_STORAGE_CACHE_PORT
+        username: '', // Override: NUXT_STOREFRONT_STORAGE_CACHE_USERNAME
+        password: '', // Override: NUXT_STOREFRONT_STORAGE_CACHE_PASSWORD
+        tls: false, // Override: NUXT_STOREFRONT_STORAGE_CACHE_TLS,
+        // Required to resolve connection issues with AWS ElastiCache
+        checkServerIdentity: undefined, // Override: NUXT_STOREFRONT_STORAGE_CACHE_CHECK_SERVER_INTEGRITY,
+      },
+      session: {
+        // Redis Options: https://redis.github.io/ioredis/index.html#RedisOptions
+        driver: 'redis', // Override: NUXT_STOREFRONT_STORAGE_SESSION_PROVIDER
+        host: 'localhost', // Override: NUXT_STOREFRONT_STORAGE_SESSION_HOST
+        port: 6379, // Override: NUXT_STOREFRONT_STORAGE_SESSION_PORT
+        db: 1, // Override: NUXT_STOREFRONT_STORAGE_SESSION_DB
+        username: '', // Override: NUXT_STOREFRONT_STORAGE_SESSION_USERNAME
+        password: '', // Override: NUXT_STOREFRONT_STORAGE_SESSION_PASSWORD
+        tls: false, // Override: NUXT_STOREFRONT_STORAGE_SESSION_TLS,
+        // Required to resolve connection issues with AWS ElastiCache
+        checkServerIdentity: undefined, // Override: NUXT_STOREFRONT_STORAGE_SESSION_CHECK_SERVER_INTEGRITY,
+      },
+    }
+  })(),
   /** [OPTIONAL] Storefront Core - Internal cache behaviour configurations
    * https://scayle.dev/en/dev/storefront-core/module-configuration#cache */
   cache: {
