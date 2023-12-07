@@ -183,20 +183,20 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
    * https://scayle.dev/en/dev/storefront-core/module-configuration#storage */
   storage: {
     cache: {
-      // Redis Options: https://github.com/redis/ioredis/blob/main/lib/cluster/util.ts#L8
+      // Redis Options: https://redis.github.io/ioredis/index.html#RedisOptions
       driver: 'redis', // Override: NUXT_STOREFRONT_STORAGE_CACHE_PROVIDER
       host: 'localhost', // Override: NUXT_STOREFRONT_STORAGE_CACHE_HOST
       port: 6379, // Override: NUXT_STOREFRONT_STORAGE_CACHE_PORT
-      username: '', // Override: NUXT_STOREFRONT_STORAGE_CACHE_USER
+      username: '', // Override: NUXT_STOREFRONT_STORAGE_CACHE_USERNAME
       password: '', // Override: NUXT_STOREFRONT_STORAGE_CACHE_PASSWORD
       tls: false, // Override: NUXT_STOREFRONT_STORAGE_CACHE_TLS
     },
     session: {
-      // Redis Options: https://github.com/redis/ioredis/blob/main/lib/cluster/util.ts#L8
+      // Redis Options: https://redis.github.io/ioredis/index.html#RedisOptions
       driver: 'redis', // Override: NUXT_STOREFRONT_STORAGE_SESSION_PROVIDER
       host: 'localhost', // Override: NUXT_STOREFRONT_STORAGE_SESSION_HOST
       port: 6379, // Override: NUXT_STOREFRONT_STORAGE_SESSION_PORT
-      username: '', // Override: NUXT_STOREFRONT_STORAGE_SESSION_USER
+      username: '', // Override: NUXT_STOREFRONT_STORAGE_SESSION_USERNAME
       db: 1, // Override: NUXT_STOREFRONT_STORAGE_SESSION_DB
       password: '', // Override: NUXT_STOREFRONT_STORAGE_SESSION_PASSWORD
       tls: false, // Override: NUXT_STOREFRONT_STORAGE_SESSION_TLS
