@@ -190,11 +190,8 @@ watch(
   async () => {
     resetFilters()
     await applyFilters({ shouldToggle: false })
-    useRouter().replace({ query: {} })
   },
-  {
-    immediate: true,
-  },
+  { immediate: true },
 )
 
 watch(
