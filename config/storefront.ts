@@ -185,6 +185,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
     cache: {
       // Redis Options: https://redis.github.io/ioredis/index.html#RedisOptions
       driver: 'redis', // Override: NUXT_STOREFRONT_STORAGE_CACHE_PROVIDER
+      compression: 'gzip', // Override: NUXT_STOREFRONT_STORAGE_CACHE_COMPRESSION
       host: 'localhost', // Override: NUXT_STOREFRONT_STORAGE_CACHE_HOST
       port: 6379, // Override: NUXT_STOREFRONT_STORAGE_CACHE_PORT
       username: '', // Override: NUXT_STOREFRONT_STORAGE_CACHE_USERNAME
