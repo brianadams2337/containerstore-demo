@@ -1,8 +1,28 @@
-import type { BasketItem } from '@scayle/storefront-nuxt'
+import {
+  type BasketItem,
+  getFirstAttributeValue,
+} from '@scayle/storefront-nuxt'
 
-export default (basketItem: Ref<BasketItem>) => {
+export default async (basketItem: Ref<BasketItem>) => {
+  const promotionData = await useCurrentPromotions()
+
+  const applicablePromotions = computed(() => {
+    return promotionData.data.value.entities
+  })
+
   const promotion = computed<BasketPromotion | undefined>(() => {
     return basketItem.value?.promotion
+  })
+
+  const giftPromotion = computed<Promotion>(() => {
+    const id = getFirstAttributeValue(
+      basketItem.value.product?.attributes,
+      'promotion',
+    )?.id
+    return applicablePromotions.value.find((promotion) => {
+      const isFreeGift = isBuyXGetYType(promotion)
+      return isFreeGift && promotion.customData?.product?.promotionId === id
+    })
   })
 
   const isBuyXGetY = computed(() => isBuyXGetYType(promotion.value))
@@ -12,7 +32,10 @@ export default (basketItem: Ref<BasketItem>) => {
   })
 
   const backgroundColorStyle = computed(() => {
-    return getBackgroundColorStyle(promotion.value?.customData?.colorHex)
+    const color =
+      promotion.value?.customData.colorHex ||
+      giftPromotion.value.customData.colorHex
+    return getBackgroundColorStyle(color)
   })
 
   const hasFailedConditions = computed(() => {
@@ -21,8 +44,10 @@ export default (basketItem: Ref<BasketItem>) => {
 
   const isFreeGift = computed(() => {
     const variantIds = getVariantIds(promotion.value)
-    const hasVariantId = variantIds.includes(basketItem.value.variant.id)
-    return !hasFailedConditions.value && hasVariantId
+    return (
+      variantIds.includes(basketItem.value.variant.id) &&
+      promotion.value?.isValid
+    )
   })
 
   return {
@@ -32,5 +57,6 @@ export default (basketItem: Ref<BasketItem>) => {
     isFreeGift,
     promotion,
     hasFailedConditions,
+    giftPromotion,
   }
 }

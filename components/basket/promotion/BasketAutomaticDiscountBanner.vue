@@ -23,5 +23,5 @@ const props = defineProps<{ basketItem: BasketItem }>()
 const basketItem = computed(() => props.basketItem)
 
 const { promotion, backgroundColorStyle, hasFailedConditions } =
-  useBasketItemPromotion(basketItem)
+  await useBasketItemPromotion(basketItem)
 </script>

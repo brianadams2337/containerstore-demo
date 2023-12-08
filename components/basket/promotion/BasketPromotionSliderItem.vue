@@ -36,14 +36,16 @@
   <AppButton size="sm" class="mt-2" @click="toggleGiftSelection()">
     {{ toggleGiftSelectionLabel }}
   </AppButton>
-  <template v-if="promotion">
+  <template v-if="giftPromotion">
     <ProductPromotionSelectionModal
       v-if="isGreaterOrEquals('md')"
-      v-bind="{ product, promotion, promotedProduct }"
+      v-bind="{ product, promotedProduct }"
+      :promotion="giftPromotion"
     />
     <ProductPromotionSizeSelection
       v-else
-      v-bind="{ product, promotion, promotedProduct }"
+      v-bind="{ product, promotedProduct }"
+      :promotion="giftPromotion"
     />
   </template>
 </template>
@@ -71,7 +73,7 @@ const { toggleGiftSelection } = await usePromotionGiftSelection(
 
 const { isGreaterOrEquals } = useViewport()
 
-const { backgroundColorStyle, promotion } = useBasketItemPromotion(
+const { giftPromotion, backgroundColorStyle } = await useBasketItemPromotion(
   toRef(props.basketItem),
 )
 

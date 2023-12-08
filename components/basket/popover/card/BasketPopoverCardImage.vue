@@ -25,5 +25,6 @@ const basketItem = computed(() => props.item)
 
 const { image, name } = await useBasketItem(basketItem)
 
-const { isFreeGift, backgroundColorStyle } = useBasketItemPromotion(basketItem)
+const { isFreeGift, backgroundColorStyle } =
+  await useBasketItemPromotion(basketItem)
 </script>

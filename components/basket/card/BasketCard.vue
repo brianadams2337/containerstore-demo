@@ -21,11 +21,13 @@
               fit="cover"
               sizes="xl:100vw lg:100vw lg:100vw lg:100vw xs:100vw"
             />
-            <ProductPromotionFreeGiftBadge
-              v-if="isFreeGift"
-              v-bind="{ backgroundColorStyle }"
-              class="absolute bottom-2 left-2"
-            />
+            <FadeInTransition>
+              <ProductPromotionFreeGiftBadge
+                v-if="isFreeGift"
+                v-bind="{ backgroundColorStyle }"
+                class="absolute bottom-2 left-2"
+              />
+            </FadeInTransition>
           </DefaultLink>
         </div>
         <div
@@ -200,7 +202,8 @@ const route = useRoute()
 const isWishlistToggling = ref(false)
 const index = toRef(props, 'index')
 
-const { isFreeGift, backgroundColorStyle } = useBasketItemPromotion(mainItem)
+const { isFreeGift, backgroundColorStyle } =
+  await useBasketItemPromotion(mainItem)
 
 const addOnItems = computed(() =>
   props.itemsGroup

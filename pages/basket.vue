@@ -40,7 +40,7 @@
             </FadeInTransition>
             <FadeInTransition>
               <BasketPromotionGifts
-                v-if="isBuyXGetYType(item.promotion) && !isFreeGift(item)"
+                v-if="isGiftApplicableItem(item)"
                 :basket-item="item"
               />
             </FadeInTransition>
@@ -64,7 +64,10 @@
 </template>
 
 <script setup lang="ts">
-import { type BasketItem } from '@scayle/storefront-nuxt'
+import {
+  type BasketItem,
+  getFirstAttributeValue,
+} from '@scayle/storefront-nuxt'
 
 const basket = await useBasket()
 const wishlist = await useWishlist()
@@ -95,9 +98,15 @@ const {
   collectProductListItems,
 } = useTrackingEvents()
 
-const isFreeGift = (basketItem: BasketItem) => {
-  const variantIds = getVariantIds(basketItem.promotion)
-  return variantIds.includes(basketItem.variant.id)
+const promotionData = await useCurrentPromotions()
+
+const isGiftApplicableItem = ({ product }: BasketItem) => {
+  const id = getFirstAttributeValue(product?.attributes, 'promotion')?.id
+  const promotions = promotionData.data.value.entities
+  return promotions.some((promotion) => {
+    const isFreeGift = isBuyXGetYType(promotion)
+    return isFreeGift && promotion.customData?.product?.promotionId === id
+  })
 }
 
 onMounted(() => {

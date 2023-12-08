@@ -5,8 +5,7 @@ export default async () => {
     return basket.items.value
       .filter(({ promotion, variant }) => {
         const variantIds = getVariantIds(promotion)
-        const isFreeGift = variantIds.includes(variant.id)
-        return !isFreeGift && !promotion?.failedConditions.length
+        return !variantIds.includes(variant.id)
       })
       .map(({ promotion, product }) => ({
         ...promotion,

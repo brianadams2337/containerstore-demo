@@ -11,7 +11,8 @@ import {
 
 export default async (basketItem: Ref<BasketItem>) => {
   const product = computed(() => basketItem.value.product)
-  const { highestPriorityPromotion } = await useProductPromotions(product.value)
+  const { highestPriorityPromotion, isBuyXGetYPrioritized } =
+    await useProductPromotions(product.value)
 
   const { removeItem: removeBasketItem, listingMetaData } =
     await useBasketActions()
@@ -75,6 +76,11 @@ export default async (basketItem: Ref<BasketItem>) => {
     return getTotalAppliedReductions(total)?.absoluteWithTax
   })
 
+  const isFreeGift = computed(() => {
+    const variantIds = getVariantIds(basketItem.value.promotion)
+    return variantIds.includes(basketItem.value.variant.id)
+  })
+
   const changeQuantity = async (newQuantity: number, index: number) => {
     if (newQuantity === 0) {
       return onPressDelete()
@@ -107,7 +113,9 @@ export default async (basketItem: Ref<BasketItem>) => {
       variantId: variant.value.id,
       quantity: newQuantity,
       existingItemHandling: ExistingItemHandling.ReplaceExisting,
-      ...(promotionId && { promotionId }),
+      ...(promotionId &&
+        !isBuyXGetYPrioritized.value &&
+        !isFreeGift.value && { promotionId }),
     })
   }
 
@@ -167,5 +175,6 @@ export default async (basketItem: Ref<BasketItem>) => {
     cupsizeLabel,
     isSoldOut,
     listingMetaData,
+    isFreeGift,
   }
 }

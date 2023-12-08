@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-if="!isGiftAlreadyAdded && !hasFailedConditions"
-    class="rounded-md border"
-  >
+  <div v-if="!isGiftAlreadyAdded" class="rounded-md border">
     <div
       class="flex justify-between rounded-t-md px-4 py-2 text-white"
       :style="backgroundColorStyle"
@@ -11,8 +8,8 @@
         {{ $t('basket.promotion.choose_free_gift') }}
       </Headline>
       <PromotionCountdown
-        v-if="promotion"
-        :until="promotion.schedule.to"
+        v-if="giftPromotion"
+        :until="giftPromotion.schedule.to"
         borderless
       />
     </div>
@@ -34,8 +31,8 @@ const { items: basketItems } = await useBasket()
 
 const basketItem = computed(() => props.basketItem)
 
-const { backgroundColorStyle, promotion, hasFailedConditions } =
-  useBasketItemPromotion(basketItem)
+const { giftPromotion, backgroundColorStyle } =
+  await useBasketItemPromotion(basketItem)
 
 const { products, variantIds } = await usePromotionGifts(
   props.basketItem.product,

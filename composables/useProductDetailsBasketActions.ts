@@ -6,7 +6,8 @@ export default async () => {
 
   const { fetching: basketIdle, addItem: addBasketItem } = await useBasket()
 
-  const { highestPriorityPromotion } = await useProductPromotions(product)
+  const { highestPriorityPromotion, isBuyXGetYPrioritized } =
+    await useProductPromotions(product)
 
   const { addGroupToBasket } = await useBasketGroup()
 
@@ -44,7 +45,7 @@ export default async () => {
         : await addBasketItem({
             variantId: activeVariant.value.id,
             quantity: quantity.value,
-            ...(promotionId && { promotionId }),
+            ...(promotionId && !isBuyXGetYPrioritized.value && { promotionId }),
           })
 
       openBasketFlyout()
