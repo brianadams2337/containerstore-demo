@@ -17,6 +17,7 @@ export default <T = unknown>(key: string) => {
   const error = useState<NuxtError | undefined>(`error-${key}`, () => undefined)
 
   const storyblokApi = useStoryblokApi()
+  const storyblokOptions = useDefaultStoryblokOptions()
 
   async function fetchBySlug(slug: string) {
     status.value = 'pending'
@@ -24,9 +25,7 @@ export default <T = unknown>(key: string) => {
     try {
       const { data: storyData } = await storyblokApi.get(
         `cdn/stories/${slug}`,
-        {
-          version: getStoryblokContentVersion(),
-        },
+        storyblokOptions,
       )
       data.value = storyData.story
     } catch (e) {
@@ -45,6 +44,7 @@ export default <T = unknown>(key: string) => {
       const {
         data: { stories },
       } = await storyblokApi.getStories({
+        ...storyblokOptions,
         starts_with: folder,
         version: getStoryblokContentVersion(),
         ...options,
