@@ -1738,10 +1738,10 @@
   dependencies:
     prettier-config-standard "^7.0.0"
 
-"@scayle/storefront-core@7.28.2":
-  version "7.28.2"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.28.2.tgz#151d90fd2ede7e4af88b071a274124c6e66a3efe"
-  integrity sha512-N2w5f8mz+HlP3xG06HLL6Y/gYeTbmCwQwkWodZKHZgtDd0/TMp30FsYW0GbUMsWyHKwWff3hF9V62VdR/hmzMg==
+"@scayle/storefront-core@7.29.0":
+  version "7.29.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.29.0.tgz#893cd8a5bc7ef8a01226023131c5dfcfcb94c7f7"
+  integrity sha512-EDM/rlU0x4FzF3wLornF2NQ563QKYgWO17hWKFn4l4H5vBROCegz//YorVocPpZ52oNHqlofigs3Lwx39ouldw==
   dependencies:
     "@aboutyou/backbone" "15.14.3"
     crypto-js "4.2.0"
@@ -1754,14 +1754,15 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.42.3":
-  version "7.42.3"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.42.3.tgz#075112ffc204dea1c93bfadbce7a6b77565b573f"
-  integrity sha512-EP43YwQg9aHJnEbciwmbysLfLO+ryAiz8sZqvjmEzBh7qNCEZbl/6snIdR+97iDomc2C0ab9fcnu09LsEaPdjg==
+"@scayle/storefront-nuxt@7.43.0":
+  version "7.43.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.43.0.tgz#beaac54e954ca50a5597870650c7eba7fb8c0ae0"
+  integrity sha512-K7UalppDMiggh5fusKMiVyjEI/0OfRH2gMHJ/L1sjY3ZN5m8cSKjYBD28I0HWjEV23O6hBMQX21a6d9a+3rMIA==
   dependencies:
     "@nuxt/kit" "3.8.2"
     "@scayle/h3-session" "0.3.4"
-    "@scayle/storefront-core" "7.28.2"
+    "@scayle/storefront-core" "7.29.0"
+    "@scayle/unstorage-compression-driver" "0.1.1"
     "@vueuse/core" "10.7.0"
     consola "3.2.3"
     core-js "3.34.0"
@@ -1776,6 +1777,14 @@
     unstorage "1.10.1"
     vue-router "4.2.5"
     yn "5.0.0"
+
+"@scayle/unstorage-compression-driver@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@scayle/unstorage-compression-driver/-/unstorage-compression-driver-0.1.1.tgz#f9efc1b69c19710f26aefd1f3814669bb2292df6"
+  integrity sha512-8dc9V7kzMxVDwbczNMmh+AfH691ruMcpYNeYf95SxwcbYVBP1/m83LGNPeZxXsqr5qQeml3NXf3O5gZ74ivKsQ==
+  dependencies:
+    destr "2.0.2"
+    unstorage "1.10.1"
 
 "@sigstore/bundle@^2.1.0":
   version "2.1.0"
@@ -4111,7 +4120,7 @@ depd@~1.1.2:
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
   integrity sha512-7emPTl6Dpo6JRXOXjLRxck+FlLRX5847cLKEn00PLAgc3g2hTZZgr+e4c2v6QpSmLeFP3n5yUo7ft6avBK/5jQ==
 
-destr@^2.0.0, destr@^2.0.1, destr@^2.0.2:
+destr@2.0.2, destr@^2.0.0, destr@^2.0.1, destr@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/destr/-/destr-2.0.2.tgz#8d3c0ee4ec0a76df54bc8b819bca215592a8c218"
   integrity sha512-65AlobnZMiCET00KaFFjUefxDX0khFA/E4myqZ7a6Sq1yZtR8+FVIvilVX66vF2uobSumxooYZChiRPCKNqhmg==
