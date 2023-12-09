@@ -45,9 +45,17 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
   })
 
   const isHighestPriorityPromotionApplied = computed(() => {
-    return appliedPromotions.value.some(({ id, productId }) => {
-      const isSameProduct = productId === product.value?.id
-      return id === highestPriorityPromotion.value?.id && isSameProduct
+    return appliedPromotions.value.some((promotion) => {
+      const isValid = promotion.isValid
+      const isSamePromotionId =
+        promotion.id === highestPriorityPromotion.value?.id
+
+      if (isBuyXGetYType(promotion)) {
+        return isSamePromotionId && isValid
+      }
+
+      const isSameProduct = promotion.productId === product.value?.id
+      return isSamePromotionId && isSameProduct && isValid
     })
   })
 

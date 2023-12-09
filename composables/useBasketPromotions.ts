@@ -3,14 +3,11 @@ export default async () => {
 
   const appliedPromotions = computed(() => {
     return basket.items.value
-      .filter(({ promotion, variant }) => {
-        const variantIds = getVariantIds(promotion)
-        return !variantIds.includes(variant.id)
-      })
+      .filter(({ promotion }) => promotion?.isValid)
       .map(({ promotion, product }) => ({
         ...promotion,
         productId: product.id,
-      })) as (Promotion & { productId: number })[]
+      })) as (BasketPromotion & { productId: number })[]
   })
 
   const buyXGetYPromotions = computed(() => {

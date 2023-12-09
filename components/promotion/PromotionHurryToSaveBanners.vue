@@ -7,7 +7,7 @@
         schedule,
         productId,
       } in automaticDiscountPromotions"
-      v-show="shouldShowBanner(productId)"
+      v-show="shouldShowAutomaticDiscountBanner(productId)"
       :key="`automatic-discount-banner-${id}`"
       class="mb-1 flex h-fit items-center justify-between rounded-md bg-blue px-2 py-1 text-xs font-semibold text-white"
       :style="getBackgroundColorStyle(customData.colorHex)"
@@ -19,8 +19,8 @@
       <PromotionCountdown :until="schedule.to" borderless />
     </div>
     <div
-      v-for="{ id, customData, schedule, productId } in buyXGetYPromotions"
-      v-show="shouldShowBanner(productId)"
+      v-for="{ id, customData, schedule } in buyXGetYPromotions"
+      v-show="shouldShowBuyXGetYBanner(customData?.product?.promotionId)"
       :key="`buy-x-get-y-banner-${id}`"
       class="mb-2 flex h-fit items-center justify-between rounded-md bg-blue px-2 py-1 text-xs font-semibold text-white last-of-type:mb-0"
       :style="getBackgroundColorStyle(customData.colorHex)"
@@ -42,12 +42,18 @@ const props = withDefaults(defineProps<{ product?: Product }>(), {
 
 const route = useRoute()
 
+const { productPromotionId } = await useProductPromotions(props.product)
+
 const isBasketPage = computed(() => {
   return route.path === toLocalePath(routeList.basket)
 })
 
-const shouldShowBanner = (productId: number) => {
+const shouldShowAutomaticDiscountBanner = (productId: number) => {
   return isBasketPage.value || productId === props.product?.id
+}
+
+const shouldShowBuyXGetYBanner = (promotionId?: number) => {
+  return isBasketPage.value || promotionId === productPromotionId.value
 }
 
 const { buyXGetYPromotions, automaticDiscountPromotions } =
