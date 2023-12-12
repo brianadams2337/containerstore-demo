@@ -55,7 +55,7 @@ const mainItem = computed(() => {
 
   return basketItem as BasketItem
 })
-
+const { getProductDetailRoute } = useRouteHelpers()
 const { isSoldOut } = await useBasketItem(mainItem)
 
 const addOnItems = computed(() =>

@@ -152,6 +152,7 @@ watch(
     })
   },
 )
+const localePath = useLocalePath()
 
 const toggleItem = (product: Product) => {
   const wasInWishlist = !!wishlist.findItem({ productId: product.id })
@@ -193,7 +194,7 @@ const toggleItem = (product: Product) => {
   $alert.show(
     message,
     action,
-    !wasInWishlist ? toLocalePath(routeList.wishlist) : undefined,
+    !wasInWishlist ? localePath(routeList.wishlist) : undefined,
   )
 }
 

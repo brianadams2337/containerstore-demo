@@ -17,6 +17,7 @@ export default async (gift: Product, promotedProduct: Product) => {
   const { fetching: basketIdle, addItem: addBasketItem } = await useBasket()
 
   const { trackAddToBasket } = useTrackingEvents()
+  const localePath = useLocalePath()
 
   const { openBasketFlyout } = useFlyouts()
 
@@ -103,7 +104,7 @@ export default async (gift: Product, promotedProduct: Product) => {
 
       openBasketFlyout()
 
-      if (route.path !== toLocalePath(routeList.basket)) {
+      if (route.path !== localePath(routeList.basket)) {
         showAddToBasketToast(true, gift)
       }
 

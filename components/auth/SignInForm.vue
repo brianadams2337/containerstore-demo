@@ -57,6 +57,6 @@ const isForgotPasswordShown = computed(() => {
 })
 
 const isUpdatePasswordByHashShown = computed(() => !!route.query.hash)
-
+const { localizedNavigateTo } = useRouteHelpers()
 const goToSignInPage = () => localizedNavigateTo(routeList.signin)
 </script>

@@ -7,6 +7,7 @@ import {
 
 export default (productItem: MaybeRefOrGetter<Product>) => {
   const product = toRef(productItem)
+  const { getProductDetailRoute } = useRouteHelpers()
 
   const brand = computed(() => {
     return getFirstAttributeValue(product.value.attributes, 'brand')?.label

@@ -104,7 +104,7 @@ const {
   toggleGiftSelection,
   isGiftSelectionShown,
 } = await usePromotionGiftSelection(props.product, props.promotedProduct)
-
+const { getProductDetailRoute } = useRouteHelpers()
 const close = () => {
   activeVariant.value = null
   toggleGiftSelection()

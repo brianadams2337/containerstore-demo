@@ -78,6 +78,7 @@ const { user } = await useUser()
 const currentPage = ref<number>(1)
 
 const { isGreaterOrEquals } = useViewport()
+const { getOrderDetailsRoute, localizedNavigateTo } = useRouteHelpers()
 
 const orders = computed(() => user?.value?.orderSummary ?? [])
 const currentOrderId = computed(() => {

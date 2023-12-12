@@ -41,11 +41,11 @@ const props = withDefaults(defineProps<{ product?: Product }>(), {
 })
 
 const route = useRoute()
-
+const localePath = useLocalePath()
 const { productPromotionId } = await useProductPromotions(props.product)
 
 const isBasketPage = computed(() => {
-  return route.path === toLocalePath(routeList.basket)
+  return route.path === localePath(routeList.basket)
 })
 
 const shouldShowAutomaticDiscountBanner = (productId: number) => {

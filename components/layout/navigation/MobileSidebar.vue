@@ -118,7 +118,7 @@ const {
 } = useSearch({ key: 'header-search' })
 
 const { trackSearchSuggestionClick } = useTrackingEvents()
-
+const { localizedNavigateTo } = useRouteHelpers()
 const { products, categories, totalCount, noSuggestions } =
   useTypeaheadSuggestions(data)
 
@@ -128,7 +128,7 @@ const trackSuggestionClickAndClose = (
   trackSearchSuggestionClick(searchQuery.value, suggestion)
   resetAndClose()
 }
-
+const { getSearchRoute } = useRouteHelpers()
 const openSearchPage = async () => {
   await localizedNavigateTo(getSearchRoute(searchQuery.value))
   resetAndClose()

@@ -86,6 +86,7 @@ const { data, search, searchQuery, resetSearch, pending } = useSearch({
 const input = ref()
 
 const { trackSearchSuggestionClick } = useTrackingEvents()
+const { localizedNavigateTo } = useRouteHelpers()
 
 const showSuggestions = ref(false)
 watchEffect(() => {
@@ -131,6 +132,7 @@ const trackSuggestionClickAndClose = (
   trackSearchSuggestionClick(searchQuery.value, suggestion)
   resetAndClose()
 }
+const { getSearchRoute } = useRouteHelpers()
 
 const openSearchPage = async () => {
   await localizedNavigateTo(getSearchRoute(searchQuery.value))

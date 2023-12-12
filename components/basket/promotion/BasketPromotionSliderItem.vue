@@ -55,6 +55,7 @@ type Props = {
 const props = defineProps<Props>()
 
 const i18n = useI18n()
+const { getProductDetailRoute } = useRouteHelpers()
 
 const promotedProduct = computed(() => props.basketItem.product)
 

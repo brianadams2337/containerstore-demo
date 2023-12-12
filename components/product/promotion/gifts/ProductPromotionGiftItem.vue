@@ -78,6 +78,7 @@ const { toggleGiftSelection } = await usePromotionGiftSelection(
 )
 
 const { isGreaterOrEquals } = useViewport()
+const { getProductDetailRoute } = useRouteHelpers()
 
 const { name, image, variantWithLowestPrice } = useProductBaseInfo(
   props.product,

@@ -174,6 +174,7 @@ const loadHoverImage = ref(false)
 const shouldHoverImage = ref(false)
 
 const { isGreaterOrEquals } = useViewport()
+const { getProductDetailRoute } = useRouteHelpers()
 
 const onMouseOver = () => {
   loadHoverImage.value = true

@@ -87,7 +87,7 @@ const emit = defineEmits<{
 }>()
 
 const { isGreaterOrEquals } = useViewport()
-
+const { getProductDetailRoute } = useRouteHelpers()
 const trackingCollector = ref<Product[]>([])
 const carousel = ref<HTMLDivElement>()
 const carouselStyles = ref({

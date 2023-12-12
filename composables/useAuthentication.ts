@@ -38,7 +38,8 @@ export const useAuthentication = async (
   }
 
   const session = useSession()
-
+  const localePath = useLocalePath()
+  const { localizedNavigateTo } = useRouteHelpers()
   const log = useLog('useAuthentication')
 
   const isSubmitting = ref(false)
@@ -161,7 +162,7 @@ export const useAuthentication = async (
       )
 
       const isSignInPathWithoutRedirect =
-        route.fullPath === toLocalePath(routeList.signin.path)
+        route.fullPath === localePath(routeList.signin.path)
       const homePath = authConfig?.redirect.home || routeList.home.path
 
       let redirectTo = route.path
