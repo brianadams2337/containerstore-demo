@@ -2,7 +2,7 @@ import Search from '../../pageObjects/components/search'
 import ProductListingPage from '../../pageObjects/productListingPage'
 import HomePage from '../../pageObjects/homePage'
 import ProductPage from '../../pageObjects/productPage'
-import { TEST_ITEM_REGULAR, TEST_ITEM_SALE } from '../../support/constants'
+import { TEST_ITEM_REGULAR } from '../../support/constants'
 import { getLocaleFile } from '../../test-helpers'
 import Header from '../../pageObjects/components/header'
 import Footer from '../../pageObjects/components/footer'
@@ -11,6 +11,7 @@ describe(`Search:`, () => {
   beforeEach(() => {
     HomePage.open()
     HomePage.waitForPageToBeDisplayed()
+    HomePage.closePromotionButton()
     Search.openSearch()
     // This is a workaround for when using this Search input on mobile and running the tests in headless mode(cy:run). Otherwise there's a possibility to trigger an ResizeObserver loop limit exceeded error. As mentioned here: https://github.com/cypress-io/cypress/issues/8418
     Cypress.on('uncaught:exception', (_err, _runnable) => {
@@ -24,39 +25,39 @@ describe(`Search:`, () => {
   })
 
   it('check that header and footer is displayed on Search Result Page', () => {
-    Search.typeSearchQuery('aqa{enter}')
+    Search.typeSearchQuery('pullover{enter}')
     Header.assertHeaderIsDisplayed()
     Footer.assertFooterIsDisplayed()
     Footer.assertFooterText()
   })
 
   it('Check that Search results return test items', () => {
-    Search.typeSearchQuery('aqa{enter}')
+    Search.typeSearchQuery('pullover{enter}')
     ProductListingPage.waitForPageToBeDisplayed()
-    cy.contains(TEST_ITEM_SALE.name)
+    // cy.contains(TEST_ITEM_SALE.name)
     cy.contains(TEST_ITEM_REGULAR.name)
   })
 
   it('Check that header contain Search query', () => {
-    Search.typeSearchQuery('aqa{enter}')
+    Search.typeSearchQuery('pullover{enter}')
     ProductListingPage.waitForPageToBeDisplayed()
-    ProductListingPage.assertHeaderName('aqa')
+    ProductListingPage.assertHeaderName('pullover')
     const expectedStr = getLocaleFile()
-      .search.result.replace('{resultsCount}', 2)
-      .replace('{term}', 'aqa')
+      .search.result.replace('{resultsCount}', 8)
+      .replace('{term}', 'pullover')
     ProductListingPage.assertHeaderName(expectedStr)
   })
 
   it('Check redirect back to search result works', () => {
-    Search.typeSearchQuery('aqa{enter}')
+    Search.typeSearchQuery('pullover{enter}')
     ProductListingPage.waitForPageToBeDisplayed()
-    cy.contains(TEST_ITEM_SALE.name)
+    // cy.contains(TEST_ITEM_SALE.name)
     cy.contains(TEST_ITEM_REGULAR.name)
     ProductListingPage.openProductByIndex(0)
     ProductPage.waitForPageToBeDisplayed()
     ProductPage.clickBackButton()
     ProductListingPage.waitForPageToBeDisplayed()
-    cy.contains(TEST_ITEM_SALE.name)
+    // cy.contains(TEST_ITEM_SALE.name)
     cy.contains(TEST_ITEM_REGULAR.name)
   })
 

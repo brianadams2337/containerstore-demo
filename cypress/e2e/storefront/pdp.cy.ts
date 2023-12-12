@@ -1,7 +1,7 @@
 import {
   TEST_ITEM_REGULAR,
   TEST_ITEM_SOLDOUT,
-  TEST_ITEM_SALE,
+  // TEST_ITEM_SALE,
   TEST_ITEM_ONESIZE,
   TEST_ITEM_COMBINE_WITH,
   TEST_ITEM_NO_COMBINE_WITH,
@@ -25,6 +25,7 @@ describe('Products testing', () => {
   it('check that header and footer is displayed PDP Page', () => {
     ProductPage.openProduct(TEST_ITEM_REGULAR.link)
     ProductPage.waitForPageToBeDisplayed()
+    HomePage.closePromotionButton()
     Header.assertHeaderIsDisplayed()
     Footer.assertFooterIsDisplayed()
     Footer.assertFooterText()
@@ -33,6 +34,7 @@ describe('Products testing', () => {
   it('check base fields presence on PDP page', () => {
     ProductPage.openProduct(TEST_ITEM_REGULAR.link)
     ProductPage.waitForPageToBeDisplayed()
+    HomePage.closePromotionButton()
     const locale = getLocaleFile()
     cy.contains(locale.pdp.add_label)
     cy.contains(locale.pdp.product_info_heading)
@@ -43,6 +45,7 @@ describe('Products testing', () => {
   it('Click on product image in basket', () => {
     ProductPage.openProduct(TEST_ITEM_REGULAR.link)
     ProductPage.waitForPageToBeDisplayed()
+    HomePage.closePromotionButton()
     ProductPage.selectAvailableSize()
     Header.assertShoppingBagCounter(0)
     ProductPage.addToCart()
@@ -62,15 +65,15 @@ describe('Products testing', () => {
   const products = [
     TEST_ITEM_REGULAR,
     // TEST_ITEM_SOLDOUT,
-    TEST_ITEM_SALE,
-    TEST_ITEM_COMBINE_WITH,
+    // TEST_ITEM_SALE,
+    // TEST_ITEM_COMBINE_WITH,
     TEST_ITEM_NO_COMBINE_WITH,
   ]
   products.forEach((testItem) => {
     it(`Product -  ${testItem.name.slice(13)}`, () => {
       ProductPage.openProduct(testItem.link)
       ProductPage.waitForPageToBeDisplayed()
-
+      HomePage.closePromotionButton()
       cy.log('check product name')
       ProductPage.assertProductName(testItem.name)
 

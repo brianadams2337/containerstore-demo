@@ -8,7 +8,7 @@ class BasketPage extends BasePage {
     addToWishlistButton: '[data-test-id="basket-add-to-wishlist-button"]',
     removeFromWishlistButton:
       '[data-test-id="basket-remove-from-wishlist-button"]',
-    productImage: 'picture[class="object-cover"]',
+    productImage: '[data-test-id="product-image"]',
     removeItemButton: '[data-test-id="basket-remove-item-button"]',
     removeItemConfirmationButton:
       '[data-test-id="basket-remove-item-confirm-button"]',

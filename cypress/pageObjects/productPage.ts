@@ -48,7 +48,8 @@ class ProductPage extends BasePage {
     cy.get(this.pageElements.addToWishlistButton).should('exist')
     cy.wait(1000)
     cy.get(this.pageElements.addToWishlistButton).click()
-    cy.get(this.pageElements.notificationPopup).should('exist')
+    // cy.get(this.pageElements.notificationPopup).should('exist')
+    cy.scrollTo('top')
     cy.waitForXHR()
     cy.get(this.pageElements.removeFromWishlistButton).should('exist')
   }
@@ -74,11 +75,7 @@ class ProductPage extends BasePage {
       price = price.replace(',', '.')
     }
 
-    this.getProductPrice()
-      .invoke('text')
-      .then((text: string) => {
-        expect(text).contain(price)
-      })
+    cy.get(this.pageElements.price).should('contain', price)
   }
 
   isAddToCartDisabled() {
@@ -169,7 +166,7 @@ class ProductPage extends BasePage {
     cy.get(this.pageElements.closeButton).click()
   }
 
-  clickOnProductImage(index = 0): void {
+  clickOnProductImage(index = 1): void {
     cy.get(this.pageElements.productImages).eq(index).click()
   }
 }

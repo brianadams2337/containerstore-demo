@@ -20,6 +20,8 @@ const productCount = expectedRowsCount * expectedColumnsCount
 describe('Product Listing Page: products visibility', () => {
   beforeEach(() => {
     HomePage.open()
+    HomePage.closePromotionButton()
+    cy.contains('Women').trigger('mouseenter')
     ProductListingPage.openTestCategory()
     ProductListingPage.waitForPageToBeDisplayed()
     cy.scrollTo('bottom', { duration: 4000 })
@@ -38,6 +40,8 @@ describe('Product Listing Page: products visibility', () => {
 describe('Product Listing Page', { testIsolation: false }, () => {
   before(() => {
     HomePage.open()
+    HomePage.closePromotionButton()
+    cy.contains('Women').trigger('mouseenter')
     ProductListingPage.openTestCategory()
     ProductListingPage.waitForPageToBeDisplayed()
     cy.scrollTo('bottom', { duration: 4000 })
@@ -137,6 +141,8 @@ describe('Product Listing Page', { testIsolation: false }, () => {
 
   it('Open product by color sibling', () => {
     HomePage.open()
+    HomePage.closePromotionButton()
+    cy.contains('Women').trigger('mouseenter')
     ProductListingPage.openTestCategory()
     ProductListingPage.waitForPageToBeDisplayed()
     ProductListingPage.openProductBySiblingColor(
@@ -148,8 +154,10 @@ describe('Product Listing Page', { testIsolation: false }, () => {
 })
 
 describe('Filters', { testIsolation: false }, () => {
-  before(() => {
+  beforeEach(() => {
     HomePage.open()
+    HomePage.closePromotionButton()
+    cy.contains('Women').trigger('mouseenter')
     ProductListingPage.openTestCategory()
     ProductListingPage.waitForPageToBeDisplayed()
     cy.scrollTo('bottom', { duration: 4000 })

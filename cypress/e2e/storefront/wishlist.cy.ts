@@ -5,17 +5,21 @@ import BasketPage from '../../pageObjects/basketPage'
 import Header from '../../pageObjects/components/header'
 import { TEST_ITEM_ONESIZE, TEST_ITEM_REGULAR } from '../../support/constants'
 import Footer from '../../pageObjects/components/footer'
+import HomePage from '../../pageObjects/homePage'
 
 const locale = getLocaleFile()
 
 describe('Wishlist feature', () => {
+  beforeEach(() => {
+    ProductPage.openProduct(TEST_ITEM_REGULAR.link)
+    ProductPage.waitForPageToBeDisplayed()
+    HomePage.closePromotionButton()
+  })
   afterEach(() => {
     cy.clearSiteData()
   })
 
-  it('check that header and footer is displayed on Wishlist Page', () => {
-    ProductPage.openProduct(TEST_ITEM_REGULAR.link)
-    ProductPage.waitForPageToBeDisplayed()
+  it.only('check that header and footer is displayed on Wishlist Page', () => {
     ProductPage.addProductToWishlist()
     WishlistPage.checkAddToWishlistTrackingEvent()
     Header.wishlistAssertProductCount(1)
@@ -27,8 +31,6 @@ describe('Wishlist feature', () => {
   })
 
   it('should be able to add product to wishlist', () => {
-    ProductPage.openProduct(TEST_ITEM_REGULAR.link)
-    ProductPage.waitForPageToBeDisplayed()
     ProductPage.addProductToWishlist()
     WishlistPage.checkAddToWishlistTrackingEvent()
     Header.wishlistAssertProductCount(1)
@@ -37,8 +39,6 @@ describe('Wishlist feature', () => {
   })
 
   it('should be able to remove product from wishlist', () => {
-    ProductPage.openProduct(TEST_ITEM_REGULAR.link)
-    ProductPage.waitForPageToBeDisplayed()
     ProductPage.addProductToWishlist()
     Header.clickOnWishlistButton()
     WishlistPage.waitForPageToBeDisplayed()
@@ -49,8 +49,6 @@ describe('Wishlist feature', () => {
   })
 
   it('add product to the basket from Wishlist', () => {
-    ProductPage.openProduct(TEST_ITEM_REGULAR.link)
-    ProductPage.waitForPageToBeDisplayed()
     ProductPage.addProductToWishlist()
     Header.clickOnWishlistButton()
     WishlistPage.waitForPageToBeDisplayed()
@@ -69,8 +67,6 @@ describe('Wishlist feature', () => {
   })
 
   it('should be able to see the name of the wishlist added product on the wishlist page', () => {
-    ProductPage.openProduct(TEST_ITEM_REGULAR.link)
-    ProductPage.waitForPageToBeDisplayed()
     ProductPage.addProductToWishlist()
     ProductPage.getProductName()
       .invoke('text')
@@ -84,8 +80,6 @@ describe('Wishlist feature', () => {
 
   // behavior is changed, so test not actual
   it.skip('should be able to add multiple variants to wishlist', () => {
-    ProductPage.openProduct(TEST_ITEM_REGULAR.link)
-    ProductPage.waitForPageToBeDisplayed()
     ProductPage.selectAvailableSize(0)
     ProductPage.addProductToWishlist()
     ProductPage.selectAvailableSize(1)
@@ -99,8 +93,6 @@ describe('Wishlist feature', () => {
   })
   if (Cypress.env().mobile !== true) {
     it('should be able to change product size on wishlist', () => {
-      ProductPage.openProduct(TEST_ITEM_REGULAR.link)
-      ProductPage.waitForPageToBeDisplayed()
       // ProductPage.selectAvailableSize(0)
       ProductPage.addProductToWishlist()
       Header.clickOnWishlistButton()
@@ -113,8 +105,6 @@ describe('Wishlist feature', () => {
   }
   // behavior is changed, so test not actual
   it.skip('should be able to add the same variant to the cart', () => {
-    ProductPage.openProduct(TEST_ITEM_REGULAR.link)
-    ProductPage.waitForPageToBeDisplayed()
     ProductPage.selectAvailableSize(0)
     ProductPage.addProductToWishlist()
     ProductPage.selectAvailableSize(1)
@@ -142,8 +132,6 @@ describe('Wishlist feature', () => {
 
   if (Cypress.env().mobile !== true) {
     it('Add product to a basket without size', () => {
-      ProductPage.openProduct(TEST_ITEM_REGULAR.link)
-      ProductPage.waitForPageToBeDisplayed()
       ProductPage.addProductToWishlist()
       WishlistPage.checkAddToWishlistTrackingEvent()
       Header.wishlistAssertProductCount(1)

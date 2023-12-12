@@ -9,7 +9,7 @@
           class="mr-4"
         />
       </div>
-      <ClosePromotionListButton />
+      <ClosePromotionListButton data-test-id="close-promotion-button" />
     </div>
   </div>
 </template>

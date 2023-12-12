@@ -30,5 +30,10 @@ class HomePage extends BasePage {
   selectCountryByIndex(index = 0) {
     cy.get(this.pageElements.languageOption).eq(index).click()
   }
+
+  closePromotionButton() {
+    cy.request('builds/meta/dev.json')
+    cy.get('[data-test-id="close-promotion-button"]').click()
+  }
 }
 export default new HomePage()

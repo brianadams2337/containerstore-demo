@@ -1,14 +1,14 @@
 // TODO: there is no such concept in cypress as constants: https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests
 // TODO: use Cypress.env instead? See: https://docs.cypress.io/api/cypress-api/env
 
-export const HEADER_TEST_CATEGORY_WOMEN = 'Women'
+export const HEADER_TEST_CATEGORY_WOMEN = 'Women/clothing'
 export const PLP_CATEGORY_WOMEN = '/women'
 export const TEST_ITEM_REGULAR = {
-  link: '/p/poloshirt-1088',
+  link: 'p/pullover-aus-grobstrick-1115',
   id: 1088,
   colorOptionPink: 62,
-  name: 'AQA-TestItem-InStock',
-  price: '16,00',
+  name: 'Pullover aus Grobstrick',
+  price: '19,90',
   initialPrice: null,
   category: 'women',
 }
