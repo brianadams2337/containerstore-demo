@@ -66,7 +66,7 @@ const activeClass = computed(() => (!props.onlyExactActive ? ACTIVE_CLASS : ''))
 const exactActiveClass = computed(() => {
   return props.onlyExactActive ? ACTIVE_CLASS : ''
 })
-
+const localePath = useLocalePath()
 const resolvedLink = computed(() => {
   const isExternal = isString(props.to) && props.to.startsWith('http')
 
@@ -75,10 +75,10 @@ const resolvedLink = computed(() => {
   }
 
   if (!isString(props.to)) {
-    return toLocalePath(props.to)
+    return localePath(props.to)
   }
 
   const normalizedPath = !props.to.startsWith('/') ? `/${props.to}` : props.to
-  return toLocalePath(normalizedPath)
+  return localePath(normalizedPath)
 })
 </script>

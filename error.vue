@@ -17,9 +17,10 @@
 
 <script setup lang="ts">
 const error = useError()
+const localePath = useLocalePath()
 
 const resetErrorState = async () => {
-  const redirect = toLocalePath(routeList.home).toString()
+  const redirect = localePath(routeList.home).toString()
   await clearError({ redirect })
 }
 

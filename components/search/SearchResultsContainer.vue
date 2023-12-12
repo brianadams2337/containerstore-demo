@@ -67,4 +67,5 @@ defineProps({
 const emit = defineEmits<{
   (e: 'close'): void
 }>()
+const { getSearchRoute } = useRouteHelpers()
 </script>

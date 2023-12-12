@@ -79,6 +79,7 @@ const props = defineProps({
 
 const route = useRoute()
 const paramId = computed(() => +route.params.id)
+const { getOrderDetailsRoute } = useRouteHelpers()
 
 const progressLevel = computed<number>(() => {
   // @ts-ignore

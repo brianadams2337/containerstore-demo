@@ -196,6 +196,7 @@ import {
 const route = useRoute()
 const store = useStore()
 const { $i18n, $config } = useNuxtApp()
+const { getProductDetailRoute } = useRouteHelpers()
 
 const {
   product,

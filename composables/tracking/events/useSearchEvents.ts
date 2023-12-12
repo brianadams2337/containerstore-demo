@@ -19,7 +19,8 @@ const useSearchEvents = (
       search_destination: searchDestination,
     })
   }
-
+  const localePath = useLocalePath()
+  const { getSearchSuggestionPath } = useRouteHelpers()
   return {
     trackSearch,
 
@@ -37,7 +38,7 @@ const useSearchEvents = (
         suggestion: suggestion.suggestion,
         searchAction: product ? 'suggested_product' : 'suggested_category',
         searchDestination: String(
-          toLocalePath(getSearchSuggestionPath(suggestion) || ''),
+          localePath(getSearchSuggestionPath(suggestion) || ''),
         ),
       })
     },

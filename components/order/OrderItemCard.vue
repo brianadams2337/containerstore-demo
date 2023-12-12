@@ -89,7 +89,7 @@ const props = defineProps({
     default: 1,
   },
 })
-
+const { getOrderProductDetailRoute } = useRouteHelpers()
 const name = computed(() => props.product.name)
 
 const color = computed(
