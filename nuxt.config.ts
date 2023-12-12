@@ -292,8 +292,8 @@ export default defineNuxtConfig({
       '/*': {
         cache: {
           swr: true, // Enable stale-while-revalidate
-          maxAge: 60 * 60, // Default: 1h
-          staleMaxAge: 60 * 60 * 24, // Default: 24h / 1d
+          maxAge: 10 * 60, // Default: 10min
+          staleMaxAge: 10 * 60, // Default: 10min
           group: 'ssr', // Cache group name
           name: 'page', // Set prefix name
           // Use storefront storage mount
