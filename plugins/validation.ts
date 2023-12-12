@@ -6,7 +6,7 @@ import {
   maxLength,
 } from '@vuelidate/validators'
 import { getPayloadDate, dateValidator } from '@scayle/storefront-nuxt'
-import { useNuxtApp } from '#app'
+import { useNuxtApp } from '#imports'
 
 const isValidDate = (date: Date) => new Date(date).toString() !== 'Invalid Date'
 
