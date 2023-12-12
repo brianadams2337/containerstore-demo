@@ -1,5 +1,4 @@
 import type { Product } from '@scayle/storefront-nuxt'
-import { useRouteHelpers } from '~/utils/route'
 
 const collectProductListItems = (
   items: Product[],

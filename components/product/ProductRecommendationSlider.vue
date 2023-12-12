@@ -61,7 +61,6 @@ import {
   type Product,
 } from '@scayle/storefront-nuxt'
 import { Size } from '#imports'
-import { useRouteHelpers } from '~/utils/route'
 
 const props = defineProps({
   loading: {

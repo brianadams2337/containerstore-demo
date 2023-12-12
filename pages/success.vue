@@ -83,8 +83,6 @@
 </template>
 
 <script setup lang="ts">
-import { useRouteHelpers } from '~/utils/route'
-
 const { isLessThan } = useViewport()
 
 const route = useRoute()

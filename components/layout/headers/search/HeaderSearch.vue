@@ -63,7 +63,6 @@ import type {
   BrandOrCategorySuggestion,
   ProductSuggestion,
 } from '@scayle/storefront-nuxt'
-import { useRouteHelpers } from '~/utils/route'
 
 const { data, search, searchQuery, resetSearch, pending } = useSearch({
   key: 'header-search',

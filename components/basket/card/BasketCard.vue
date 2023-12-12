@@ -147,7 +147,6 @@
 
 <script setup lang="ts">
 import { type BasketItem } from '@scayle/storefront-nuxt'
-import { useRouteHelpers } from '~/utils/route'
 
 type Props = {
   index: number

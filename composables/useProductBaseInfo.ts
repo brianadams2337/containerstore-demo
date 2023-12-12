@@ -4,7 +4,6 @@ import {
   getProductAndSiblingsColors,
   getProductSiblings,
 } from '@scayle/storefront-nuxt'
-import { useRouteHelpers } from '~/utils/route'
 
 export default (productItem: MaybeRefOrGetter<Product>) => {
   const product = toRef(productItem)

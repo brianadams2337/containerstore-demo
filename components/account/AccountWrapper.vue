@@ -53,7 +53,6 @@
 
 <script setup lang="ts">
 import type { OrderSummary } from '@scayle/storefront-nuxt'
-import { useRouteHelpers } from '~/utils/route'
 
 const props = defineProps({
   title: {

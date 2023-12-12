@@ -13,8 +13,6 @@
 </template>
 
 <script setup lang="ts">
-import { useRouteHelpers } from '~/utils/route'
-
 const props = defineProps<{ category: string }>()
 
 const { isPromotionListShown, togglePromotionList } = usePromotionActions()

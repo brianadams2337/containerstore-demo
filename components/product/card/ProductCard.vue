@@ -142,7 +142,6 @@
 
 <script setup lang="ts">
 import type { ProductColor, Product } from '@scayle/storefront-nuxt'
-import { useRouteHelpers } from '~/utils/route'
 
 type Props = {
   product: Product

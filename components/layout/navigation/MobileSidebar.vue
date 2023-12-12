@@ -83,7 +83,6 @@ import type {
   BrandOrCategorySuggestion,
   ProductSuggestion,
 } from '@scayle/storefront-nuxt'
-import { useRouteHelpers } from '~/utils/route'
 
 defineProps({
   rootCategories: {

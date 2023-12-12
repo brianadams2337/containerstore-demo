@@ -2,7 +2,6 @@ import type {
   BrandOrCategorySuggestion,
   ProductSuggestion,
 } from '@scayle/storefront-nuxt'
-import { useRouteHelpers } from '~/utils/route'
 
 const useSearchEvents = (
   track: (event: TrackingEvent, payload: TrackingPayload) => any,

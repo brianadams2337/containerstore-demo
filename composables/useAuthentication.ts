@@ -6,7 +6,6 @@ import type {
   UpdatePasswordByHashRequest,
 } from '@scayle/storefront-nuxt'
 import { FetchError } from 'ofetch'
-import { useRouteHelpers } from '~/utils/route'
 
 const httpErrorMessages: Record<number, string> = {
   400: '400_bad_request',

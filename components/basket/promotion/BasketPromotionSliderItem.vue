@@ -45,7 +45,6 @@
 
 <script setup lang="ts">
 import type { Product, BasketItem } from '@scayle/storefront-nuxt'
-import { useRouteHelpers } from '~/utils/route'
 
 type Props = {
   product: Product

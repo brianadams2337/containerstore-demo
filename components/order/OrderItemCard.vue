@@ -66,7 +66,6 @@ import {
   getFirstAttributeValue,
   getTotalAppliedReductions,
 } from '@scayle/storefront-nuxt'
-import { useRouteHelpers } from '~/utils/route'
 
 const props = defineProps({
   product: {

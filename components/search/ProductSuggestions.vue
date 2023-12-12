@@ -53,7 +53,6 @@ import type {
   ProductSuggestion,
   TypeaheadProductSuggestion,
 } from '@scayle/storefront-nuxt'
-import { useRouteHelpers } from '~/utils/route'
 
 const props = defineProps({
   label: {

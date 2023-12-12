@@ -81,7 +81,6 @@
 
 <script setup lang="ts">
 import type { Product } from '@scayle/storefront-nuxt'
-import { useRouteHelpers } from '~/utils/route'
 
 const props = defineProps<{
   product: Product
