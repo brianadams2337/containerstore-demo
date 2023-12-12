@@ -20,7 +20,6 @@ const useProductEvents = (
   track: (event: TrackingEvent, payload: TrackingPayload) => any,
 ) => {
   const currencyCode = useCurrentShop().value!.currency
-  const localePath = useLocalePath()
   const { getProductDetailRoute } = useRouteHelpers()
 
   return {
@@ -37,7 +36,7 @@ const useProductEvents = (
     }: TrackSelectItemEventParams) => {
       const payload: any = {
         product,
-        destinationUrl: localePath(getProductDetailRoute(product)),
+        destinationUrl: getProductDetailRoute(product),
         destination: `product|${product.id}`,
         quantity,
       }
@@ -100,9 +99,7 @@ const useProductEvents = (
               positionOffset > -1
                 ? positionOffset + product.index + 1
                 : undefined,
-            destinationUrl: String(
-              localePath(getProductDetailRoute(product as Product)),
-            ),
+            destinationUrl: String(getProductDetailRoute(product as Product)),
             destination: `product|${product.id}`,
             source:
               source ||
