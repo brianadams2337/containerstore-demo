@@ -4,7 +4,7 @@
 export const useTrackingEvents = () => {
   const { $tracking } = useNuxtApp()
 
-  const store = useStore()
+  const { pageState } = usePageState()
   const track = (event: TrackingEvent, payload: TrackingPayload) => {
     if (process.server) {
       return
@@ -18,8 +18,8 @@ export const useTrackingEvents = () => {
     }> = mapTrackingDataForEvent(event, payload)
     if ('ecommerce' in eventData) {
       eventData.content_name = document.location.pathname
-      eventData.page_type = store.value.pageType
-      eventData.page_type_id = store.value.pageTypeId
+      eventData.page_type = pageState.value.type
+      eventData.page_type_id = pageState.value.typeId
     }
 
     return $tracking.push(eventData)

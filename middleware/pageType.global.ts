@@ -1,7 +1,7 @@
 export default defineNuxtRouteMiddleware((to) => {
-  const store = useStore()
+  const { setPageState } = usePageState()
 
-  store.value.pageType = to.meta.pageType as PageType
+  setPageState('type', to.meta.pageType as PageType)
   // reset page type id before each navigation
-  store.value.pageTypeId = ''
+  setPageState('typeId', '')
 })

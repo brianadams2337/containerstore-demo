@@ -88,7 +88,7 @@ import type { Product } from '@scayle/storefront-nuxt'
 import type { SbCmsImage, SbListingPage } from '../storyblok/types/storyblok'
 
 const route = useRoute()
-const store = useStore()
+const { pageState, setPageState } = usePageState()
 const { $i18n, $config } = useNuxtApp()
 
 const { toggle: toggleFilter } = useSlideIn('FilterSlideIn')
@@ -172,7 +172,7 @@ const trackProductClick = (product: Product) => {
     listingMetaData,
     pagePayload: {
       content_name: route.fullPath,
-      page_type: store.value.pageType,
+      page_type: pageState.value.type,
       page_type_id: route.params.id?.toString() || '',
     },
   })
@@ -196,12 +196,7 @@ watch(
 
 watch(
   () => selectedCategory.value?.id,
-  (id) => {
-    if (!id) {
-      return
-    }
-    store.value.pageTypeId = String(id)
-  },
+  (id) => id && setPageState('typeId', String(id)),
   { immediate: true },
 )
 

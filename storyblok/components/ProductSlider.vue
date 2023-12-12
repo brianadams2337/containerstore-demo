@@ -71,7 +71,7 @@ const { marginClasses } = useStoryblokMargins(props.blok)
 
 const { isGreaterOrEquals } = useViewport()
 const route = useRoute()
-const store = useStore()
+const { pageState } = usePageState()
 
 const { trackSelectItem, trackViewItemList } = useTrackingEvents()
 
@@ -132,7 +132,7 @@ const trackProductClick = (payload: { product: Product; index: number }) => {
     source: trackingSource.value,
     pagePayload: {
       content_name: route.fullPath,
-      page_type: store.value.pageType,
+      page_type: pageState.value.type,
       page_type_id: route.params.id?.toString() || '',
     },
   })

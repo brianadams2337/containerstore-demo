@@ -60,7 +60,7 @@ const getItems = (orderData: Order, currency?: string) => {
 const usePurchaseEvents = (): {
   trackPurchaseEvent: (orderData: Order) => void
 } => {
-  const store = useStore()
+  const { pageState } = usePageState()
   const { $tracking } = useNuxtApp()
 
   return {
@@ -115,8 +115,8 @@ const usePurchaseEvents = (): {
         event: 'purchase',
         ecommerce,
         content_name: document.location.pathname,
-        page_type: store.value.pageType,
-        page_type_id: store.value.pageTypeId,
+        page_type: pageState.value.type,
+        page_type_id: pageState.value.typeId,
       })
     },
   }

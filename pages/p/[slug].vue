@@ -194,9 +194,10 @@ import {
 } from '@scayle/storefront-nuxt'
 
 const route = useRoute()
-const store = useStore()
 const { $i18n, $config } = useNuxtApp()
 const { getProductDetailRoute } = useRouteHelpers()
+
+const { setPageState } = usePageState()
 
 const {
   product,
@@ -245,7 +246,7 @@ const trackViewListing = ({ items }: { row: number; items: Product[] }) => {
 }
 
 onMounted(async () => {
-  store.value.pageTypeId = String(product.value.id)
+  setPageState('typeId', String(product.value.id))
   if (!product.value) {
     return
   }
