@@ -25,28 +25,21 @@ type Options = {
   supportedFilters?: string[]
 }
 
-export default async (
+export default (
   { supportedFilters = SUPPORTED_FILTERS }: Options = {},
   key = 'filter',
 ) => {
   const route = useRoute()
 
-  const {
-    refreshProductCount,
-    filters: filterableValues,
-    filterStatus,
-    filtersFetching,
-    unfilteredCount,
-    productCountData,
-  } = await useProductList()
+  const filterContext = useFilterContext()
 
   const availableFilterValues = computed(() => {
     // TODO fix in core
     return (
-      filterableValues.value &&
+      filterContext?.filterableValues.value &&
       (getGroupedFilterableValues(
         supportedFilters,
-        filterableValues.value,
+        filterContext.filterableValues.value,
       ) as Record<string, TransformedFilter[]>)
     )
   })
@@ -137,9 +130,9 @@ export default async (
   }
 
   const quickFilters = computed(() => {
-    return filterableValues.value
+    return filterContext?.filterableValues.value
       ? groupFilterableValuesByKey(
-          filterableValues.value,
+          filterContext?.filterableValues.value,
           INCLUDED_QUICK_FILTERS,
         ).filter((filter) => !!filter.count)
       : []
@@ -174,7 +167,7 @@ export default async (
 
   const setStateFromUrlParams = () => {
     setActiveFiltersInState(
-      getActiveFilters(availableFilterValues.value, activeFilters.value),
+      getActiveFilters(availableFilterValues.value!, activeFilters.value),
     )
 
     if (hasActivePrices.value) {
@@ -235,21 +228,25 @@ export default async (
   })
 
   const isSaleActive = computed(() => {
-    const sale = availableFilterValues.value.sale || []
-    const saleCount = !!availableFilterValues.value.sale[0]?.count
+    const sale = availableFilterValues.value?.sale || []
+    const saleCount = !!availableFilterValues.value?.sale[0]?.count
     return sale.length && saleCount
   })
 
   const updateFilterCount = async () => {
     const filters = prepareFilterData()
-    await refreshProductCount({ where: transformToWhereCondition(filters) })
+    await filterContext?.refreshProductCount({
+      where: transformToWhereCondition(filters),
+    })
   }
 
   const isFiltered = computed(() => {
     return !!productConditions.value.where?.attributes?.length
   })
 
-  const filteredCount = computed(() => productCountData.value?.count || 0)
+  const filteredCount = computed(
+    () => filterContext?.productCountData.value?.count || 0,
+  )
 
   return {
     onSlideInOpen,
@@ -266,12 +263,12 @@ export default async (
     quickFilters,
     activeFilters,
     availableFilterValues,
-    filterableValues,
+    filterableValues: filterContext?.filterableValues,
     trackFilterFlyout,
     isFiltered,
-    filterStatus,
-    unfilteredCount,
+    filterStatus: filterContext?.filterStatus,
+    unfilteredCount: filterContext?.unfilteredCount,
     filteredCount,
-    filtersFetching,
+    filtersFetching: filterContext?.filtersFetching,
   }
 }

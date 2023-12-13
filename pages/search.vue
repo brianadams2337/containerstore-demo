@@ -4,10 +4,7 @@
       <Headline is-uppercase>
         {{ $t('search.result', { term, resultsCount }) }}
       </Headline>
-      <div
-        v-if="filters?.length"
-        class="order-1 flex items-center space-x-4 text-sm"
-      >
+      <div v-if="true" class="order-1 flex items-center space-x-4 text-sm">
         <section>
           <SortingMenu :selected="selectedSort" :values="sortingValues" />
         </section>
@@ -34,7 +31,7 @@
       :last-page="pagination.last"
     />
     <FilterSlideIn
-      v-if="filters?.length"
+      v-if="true"
       v-bind="{
         activeFilters,
         filters,
@@ -58,8 +55,6 @@ import {
   transformToWhereCondition,
 } from '@scayle/storefront-nuxt'
 
-const PRODUCTS_PER_PAGE = 24
-
 const route = useRoute()
 
 const { $i18n, $alert } = useNuxtApp()
@@ -77,6 +72,8 @@ const {
   productsFetching,
   pagination,
   filters,
+  filtersFetching,
+  filterStatus,
   fetchProducts,
   productCountData,
   productCountFetching,
@@ -116,6 +113,15 @@ const {
       },
     },
   },
+})
+
+createFilterContext({
+  filterableValues: filters,
+  filtersFetching,
+  filterStatus,
+  productCountData,
+  refreshProductCount,
+  unfilteredCount,
 })
 
 const {
@@ -198,7 +204,7 @@ const toggleItem = (product: Product) => {
   )
 }
 
-const applyFilter = (filter: Record<string, any>) => {
+const applyFilter = async (filter: Record<string, any>) => {
   if (!isEmpty(filter)) {
     Object.keys(filter).forEach((key: string) => {
       const values = Array.isArray(filter[key])
@@ -208,7 +214,7 @@ const applyFilter = (filter: Record<string, any>) => {
     })
   }
 
-  _applyFilter(filter)
+  await _applyFilter(filter)
 }
 
 const updateFilterCount = async (filter: Record<string, any>) => {

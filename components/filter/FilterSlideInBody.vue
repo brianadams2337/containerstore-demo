@@ -120,7 +120,7 @@ const {
   minPrice,
   isSaleActive,
   hasActivePrices,
-} = await useFilter()
+} = useFilter()
 
 const currentShop = useCurrentShop()
 
