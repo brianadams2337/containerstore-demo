@@ -5,7 +5,8 @@ import {
 } from '@scayle/storefront-nuxt'
 
 export const getBackgroundColorStyle = (color?: string) => {
-  return { ...(!!color && { backgroundColor: String(color) }) }
+  const fallbackColor = '#007aff'
+  return { backgroundColor: color || fallbackColor }
 }
 
 export const isBuyXGetYType = (promotion?: Promotion | null) => {

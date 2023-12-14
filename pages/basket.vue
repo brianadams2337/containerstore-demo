@@ -105,7 +105,10 @@ const {
 
 const { allCurrentPromotions } = await useBasketPromotions()
 
-const isGiftApplicableItem = ({ product }: BasketItem) => {
+const isGiftApplicableItem = ({ product, promotionId }: BasketItem) => {
+  if (promotionId) {
+    return false
+  }
   const id = getFirstAttributeValue(product?.attributes, 'promotion')?.id
   return allCurrentPromotions.value.some((promotion) => {
     const isFreeGift = isBuyXGetYType(promotion)
