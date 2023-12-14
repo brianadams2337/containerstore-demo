@@ -13,7 +13,7 @@
         class="h-44 w-32 p-1"
       />
       <ProductPromotionFreeGiftBadge
-        :background-color-style="backgroundColorStyle"
+        :background-color-style="giftBackgroundColorStyle"
         class="absolute bottom-2 left-2"
       />
     </DefaultLink>
@@ -66,9 +66,8 @@ const { toggleGiftSelection } = await usePromotionGiftSelection(
 
 const { isGreaterOrEquals } = useViewport()
 
-const { giftPromotion, backgroundColorStyle } = await useBasketItemPromotion(
-  toRef(props.basketItem),
-)
+const { giftPromotion, giftBackgroundColorStyle } =
+  await useBasketItemPromotion(toRef(props.basketItem))
 
 const toggleGiftSelectionLabel = computed(() => {
   return i18n.t('basket.promotion.add_free_gift')

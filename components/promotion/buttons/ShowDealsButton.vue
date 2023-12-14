@@ -16,9 +16,11 @@
 const props = defineProps<{ category: string }>()
 
 const { isPromotionListShown, togglePromotionList } = usePromotionActions()
+
 const { localizedNavigateTo } = useRouteHelpers()
+
 const goToCategory = async () => {
-  await localizedNavigateTo(props.category)
+  await localizedNavigateTo(normalizePathRoute(props.category))
   isPromotionListShown.value && togglePromotionList()
 }
 </script>

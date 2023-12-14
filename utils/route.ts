@@ -7,6 +7,10 @@ const getCategoryPath = (category: Category) => {
   return `${category.path}`
 }
 
+export const normalizePathRoute = (path: string) => {
+  return path.startsWith('/') ? path : `/${path}`
+}
+
 type Link =
   | 'home'
   | 'checkout'

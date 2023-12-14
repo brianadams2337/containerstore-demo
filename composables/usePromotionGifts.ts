@@ -9,7 +9,7 @@ export default async (product: Product) => {
   const isGiftAlreadyAdded = computed(() => {
     return basketData.data.value.items.some((item) => {
       const isGift = variantIds.value?.includes(item.variant.id)
-      return isGift && item.promotionId
+      return isGift && item.promotionId && isBuyXGetYType(item.promotion)
     })
   })
 
