@@ -17,12 +17,15 @@
         <span
           v-if="
             totalReductions.absoluteWithTax ||
-            isAutomaticDiscountPriceApplicable
+            isAutomaticDiscountPriceApplicable ||
+            isFree
           "
           class="text-sm font-medium text-primary line-through"
           data-test-id="initialProductPrice"
         >
-          {{ toCurrency(price.withTax + totalReductions.absoluteWithTax) }}
+          {{
+            toCurrency(props.price.withTax + totalReductions.absoluteWithTax)
+          }}
         </span>
       </p>
       <slot name="tax-info">
@@ -34,7 +37,7 @@
         </div>
       </slot>
       <p
-        v-if="appliedReductions.length && hasLowestPriorPrice"
+        v-if="appliedReductions.length && hasLowestPriorPrice && !isFree"
         class="mt-0.5 text-sm text-gray-700"
       >
         {{ $t('price.best_price_30d') }}
@@ -62,6 +65,7 @@ type Props = {
   showPriceFrom?: boolean
   showAutomaticDiscount?: boolean
   showPriceReductionBadge?: boolean
+  isFree?: boolean
   size?: Size
   type?: 'normal' | 'whisper' | 'loud'
 }
@@ -74,6 +78,7 @@ const props = withDefaults(defineProps<Props>(), {
   showTaxInfo: false,
   showPriceFrom: false,
   showPriceReductionBadge: false,
+  isFree: false,
   size: Size.XL,
   type: 'loud',
 })
@@ -99,6 +104,9 @@ const isAutomaticDiscountPriceApplicable = computed(() => {
 })
 
 const totalPrice = computed(() => {
+  if (props.isFree) {
+    return toCurrency(0)
+  }
   return isAutomaticDiscountPriceApplicable.value
     ? toCurrency(getAppliedAutomaticDiscountPrice(props.price) as number)
     : toCurrency(props.price.withTax)
@@ -127,6 +135,8 @@ const classes = computed(() => ({
   'font-bold': props.type === 'loud',
   'font-semibold': props.type === 'whisper',
   'text-red-500':
-    appliedReductions.value.length || isAutomaticDiscountPriceApplicable.value,
+    appliedReductions.value.length ||
+    isAutomaticDiscountPriceApplicable.value ||
+    props.isFree,
 }))
 </script>
