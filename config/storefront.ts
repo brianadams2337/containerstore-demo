@@ -186,16 +186,20 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
       process.env.NITRO_PRESET &&
       process.env.NITRO_PRESET.includes('vercel')
     ) {
+      // No driver options are necessary for vercelKV
+      // It supports url, token and others, but if they are
+      // not preset, it will use KV_REST_API_URL and KV_REST_API_TOKEN
+      // which are added automatically when Vercel KV is enabled.
+      // If for some reason, different values are necessary, you can still
+      // use NUXT_STOREFRONT_STORAGE_SESSION_x variables.
       return {
         cache: {
           driver: 'vercelKV',
-          // Set at runtime, using KV_REST_API_URL and KV_REST_API_TOKEN
           url: '',
           token: '',
         },
         session: {
           driver: 'vercelKV',
-          // Set at runtime, using KV_REST_API_URL and KV_REST_API_TOKEN
           url: '',
           token: '',
         },
