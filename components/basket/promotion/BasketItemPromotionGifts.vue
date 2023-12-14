@@ -2,7 +2,7 @@
   <div v-if="!isGiftAlreadyAdded" class="rounded-md border">
     <div
       class="flex justify-between rounded-t-md px-4 py-2 text-white"
-      :style="backgroundColorStyle"
+      :style="giftBackgroundColorStyle"
     >
       <Headline size="xs" is-bold>
         {{ $t('basket.promotion.choose_free_gift') }}
@@ -26,7 +26,7 @@ const props = defineProps<{ basketItem: BasketItem }>()
 
 const basketItem = computed(() => props.basketItem)
 
-const { giftPromotion, backgroundColorStyle } =
+const { giftPromotion, giftBackgroundColorStyle } =
   await useBasketItemPromotion(basketItem)
 
 const { products, isGiftAlreadyAdded } = await usePromotionGifts(

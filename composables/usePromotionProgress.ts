@@ -14,7 +14,22 @@ export default async () => {
       return it.promotionId === currentPromotion.value?.id
     })
 
-    return isBasketItemPromoted ? basketData.value.cost.withTax : 0
+    if (!isBasketItemPromoted) {
+      return 0
+    }
+
+    return useSum(
+      basketData.value.items.map((item) => {
+        const withTax = item.price.total.withTax
+        const promotionReduction = item.price.total.appliedReductions.find(
+          ({ category }) => category === 'promotion',
+        )
+        if (!promotionReduction) {
+          return withTax
+        }
+        return withTax + promotionReduction?.amount.absoluteWithTax
+      }),
+    )
   })
 
   const progress = computed(() => {

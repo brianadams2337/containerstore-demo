@@ -24,7 +24,7 @@
             <FadeInTransition>
               <ProductPromotionFreeGiftBadge
                 v-if="isFreeGift"
-                v-bind="{ backgroundColorStyle }"
+                :background-color-style="giftBackgroundColorStyle"
                 class="absolute bottom-2 left-2"
               />
             </FadeInTransition>
@@ -202,7 +202,7 @@ const route = useRoute()
 const isWishlistToggling = ref(false)
 const index = toRef(props, 'index')
 
-const { isFreeGift, backgroundColorStyle } =
+const { isFreeGift, giftBackgroundColorStyle } =
   await useBasketItemPromotion(mainItem)
 
 const addOnItems = computed(() =>

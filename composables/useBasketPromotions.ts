@@ -14,11 +14,17 @@ export default async () => {
   })
 
   const buyXGetYPromotions = computed(() => {
-    return appliedPromotions.value.filter(isBuyXGetYType)
+    return useUnique(
+      appliedPromotions.value.filter(isBuyXGetYType),
+      ({ id }) => id,
+    )
   })
 
   const automaticDiscountPromotions = computed(() => {
-    return appliedPromotions.value.filter(isAutomaticDiscountType)
+    return useUnique(
+      appliedPromotions.value.filter(isAutomaticDiscountType),
+      ({ id }) => id,
+    )
   })
 
   const hasAppliedPromotions = computed(() => !!appliedPromotions.value.length)

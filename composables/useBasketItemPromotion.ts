@@ -40,10 +40,12 @@ export default async (basketItem: Ref<BasketItem>) => {
   })
 
   const backgroundColorStyle = computed(() => {
-    const color =
-      promotion.value?.customData?.colorHex ||
-      giftPromotion.value?.customData?.colorHex
+    const color = promotion.value?.customData?.colorHex
     return getBackgroundColorStyle(color)
+  })
+
+  const giftBackgroundColorStyle = computed(() => {
+    return getBackgroundColorStyle(giftPromotion.value?.customData?.colorHex)
   })
 
   const hasFailedConditions = computed(() => {
@@ -68,5 +70,6 @@ export default async (basketItem: Ref<BasketItem>) => {
     giftPromotion,
     headlineParts,
     giftConditions,
+    giftBackgroundColorStyle,
   }
 }
