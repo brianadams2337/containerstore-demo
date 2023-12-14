@@ -25,7 +25,7 @@ const { resetFilters, applyFilters, unfilteredCount, filteredCount } =
   useFilter()
 
 const showResultsLabel = computed(() => {
-  return filteredCount.value !== unfilteredCount.value
+  return filteredCount.value !== unfilteredCount?.value
     ? $i18n.t('filter.show_results_count', { count: filteredCount.value })
     : $i18n.t('filter.show_results')
 })
