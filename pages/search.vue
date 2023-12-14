@@ -33,19 +33,7 @@
       :first-page="pagination.first"
       :last-page="pagination.last"
     />
-    <FilterSlideIn
-      v-if="filters?.length"
-      v-bind="{
-        activeFilters,
-        filters,
-        isActiveFilter,
-        filteredCount,
-        unfilteredCount,
-      }"
-      :fetching-filtered-count="productCountFetching"
-      @filter:apply="applyFilter($event)"
-      @filter:state-changed="updateFilterCount($event)"
-    />
+    <FilterSlideIn v-if="filters?.length" />
   </PageContent>
 </template>
 
@@ -55,7 +43,6 @@ import {
   getSortByValue,
   type Product,
   getSortingValues,
-  transformToWhereCondition,
 } from '@scayle/storefront-nuxt'
 
 const route = useRoute()
@@ -67,8 +54,7 @@ const { toggle: toggleFilter } = useSlideIn('FilterSlideIn')
 
 const wishlist = await useWishlist()
 
-const { trackFilterApply, trackAddToWishlist, trackRemoveFromWishlist } =
-  useTrackingEvents()
+const { trackAddToWishlist, trackRemoveFromWishlist } = useTrackingEvents()
 
 const {
   products,
@@ -79,7 +65,6 @@ const {
   filterStatus,
   fetchProducts,
   productCountData,
-  productCountFetching,
   refreshProductCount,
   unfilteredCount,
 } = await useFacet({
@@ -127,12 +112,7 @@ createFilterContext({
   unfilteredCount,
 })
 
-const {
-  applyFilters: _applyFilter,
-  activeFilters,
-  isActiveFilter,
-  productConditions,
-} = useQueryFilterState()
+const { applyFilters: _applyFilter, productConditions } = useQueryFilterState()
 
 await fetchLazy(
   fetchProducts({
@@ -207,33 +187,10 @@ const toggleItem = (product: Product) => {
   )
 }
 
-const applyFilter = async (filter: Record<string, any>) => {
-  if (!isEmpty(filter)) {
-    Object.keys(filter).forEach((key: string) => {
-      const values = Array.isArray(filter[key])
-        ? filter[key].join('|')
-        : filter[key]
-      trackFilterApply(key, values)
-    })
-  }
-
-  await _applyFilter(filter)
-}
-
-const updateFilterCount = async (filter: Record<string, any>) => {
-  await refreshProductCount({
-    where: {
-      ...transformToWhereCondition(filter),
-      term: term.value.toString(),
-    },
-  })
-}
-
 const sortingValues = Object.values(getSortingValues())
 const selectedSort = computed(() => getSortByValue(route.query.sort || '').name)
 
 const resultsCount = computed(() => pagination.value?.total)
-const filteredCount = computed(() => productCountData.value?.count ?? 0)
 
 defineOptions({ name: 'SearchPage' })
 definePageMeta({ pageType: 'search_result_page' })
