@@ -6,7 +6,6 @@
       :class="{
         container,
         'space-x-4': spacedItems,
-        '!justify-center': isCentered && isNotScrollable,
       }"
       @scroll="onScroll"
     >
@@ -38,7 +37,6 @@
 <script setup lang="ts">
 type Props = {
   container?: boolean
-  isCentered?: boolean
   spacedItems?: boolean
   withArrows?: boolean
 }
@@ -46,18 +44,10 @@ withDefaults(defineProps<Props>(), {
   container: false,
   spacedItems: false,
   withArrows: false,
-  isCentered: false,
 })
 
-const {
-  sliderRef,
-  next,
-  prev,
-  isNextEnabled,
-  isPrevEnabled,
-  onScroll,
-  isNotScrollable,
-} = useHorizontalItemsSlider()
+const { sliderRef, next, prev, isNextEnabled, isPrevEnabled, onScroll } =
+  useHorizontalItemsSlider()
 
 nextTick(() => onScroll())
 useResizeObserver(sliderRef, () => onScroll())
