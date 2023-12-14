@@ -25,8 +25,7 @@
                   <ProductPrice
                     v-if="price"
                     v-bind="{ product, price, lowestPriorPrice }"
-                    :show-price-from="hasSpecial"
-                    :show-price-reduction-badge="hasSpecial"
+                    :is-free="areConditionsMet"
                     size="xl"
                     type="normal"
                     show-tax-info
@@ -80,7 +79,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Product } from '@scayle/storefront-nuxt'
+import { type Product, getFirstAttributeValue } from '@scayle/storefront-nuxt'
 
 const props = defineProps<{
   product: Product
@@ -99,12 +98,32 @@ const {
   brand,
   hasOneSizeVariantOnly,
   addItemToBasket,
-  hasSpecial,
   images,
   toggleGiftSelection,
   isGiftSelectionShown,
 } = await usePromotionGiftSelection(props.product, props.promotedProduct)
+
+const { data: basketData } = await useBasket()
+
+const areConditionsMet = computed(() => {
+  const basketItem = basketData.value.items.find((item) => {
+    return (
+      getFirstAttributeValue(item.product?.attributes, 'promotion')?.id ===
+      getFirstAttributeValue(props.promotedProduct?.attributes, 'promotion')?.id
+    )
+  })
+
+  const minQuantity = props.promotion.customData?.giftConditions?.minQuantity
+
+  if (!basketItem || !minQuantity) {
+    return false
+  }
+
+  return basketItem?.quantity >= minQuantity
+})
+
 const { getProductDetailRoute } = useRouteHelpers()
+
 const close = () => {
   activeVariant.value = null
   toggleGiftSelection()

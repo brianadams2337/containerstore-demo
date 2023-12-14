@@ -13,6 +13,14 @@ export default async (product: Product) => {
     })
   })
 
+  const isGiftApplied = computed(() => {
+    return basketData.data.value.items.some((item) => {
+      const isGift = variantIds.value?.includes(item.variant.id)
+      const isValid = item.promotion?.isValid
+      return isGift && isBuyXGetYType(item.promotion) && isValid
+    })
+  })
+
   const backgroundColorStyle = computed(() => {
     return getBackgroundColorStyle(buyXGetYPromotion.value?.customData.colorHex)
   })
@@ -45,5 +53,6 @@ export default async (product: Product) => {
     backgroundColorStyle,
     hasMultipleFreeGifts,
     isGiftAlreadyAdded,
+    isGiftApplied,
   }
 }
