@@ -33,7 +33,8 @@ export default (promotions: Promotion[] = []) => {
   const isBuyXGetY = computed(() => isBuyXGetYType(currentPromotion.value))
 
   const automaticDiscount = computed(() => {
-    return getAdditionalDataValue(currentPromotion.value)
+    const value = getAdditionalDataValue(currentPromotion.value)
+    return value ? divideWithHundred(value) : undefined
   })
 
   return {
