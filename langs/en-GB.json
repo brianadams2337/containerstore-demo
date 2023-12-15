@@ -148,6 +148,7 @@
       "add_to_basket_error": "{productName} could not be added to your basket",
       "add_to_basket": "{productName} has been added to your basket"
     },
+    "discount": "Discount",
     "to_checkout": "to checkout",
     "no_items_info": "You have no products in your basket.",
     "promotion": {

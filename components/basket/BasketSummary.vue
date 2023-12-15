@@ -25,6 +25,13 @@
             </div>
           </div>
 
+          <div class="flex justify-between">
+            <div class="opacity-50">{{ $t('basket.discount') }}</div>
+            <div v-if="totalDiscount" class="text-red-500">
+              {{ toCurrency(totalDiscount) }}
+            </div>
+          </div>
+
           <hr class="col-span-full my-4 border border-gray-350" />
 
           <div class="flex justify-between">
@@ -93,6 +100,13 @@ const onClickToCheckoutOrder = async () => {
 
   await localizedNavigateTo({ name: routeName })
 }
+
+const totalDiscount = computed(() => {
+  const discounts = basket.data.value.cost.appliedReductions.map(
+    ({ amount }) => amount.absoluteWithTax,
+  )
+  return useSum(discounts)
+})
 
 const { hasAppliedPromotions } = await useBasketPromotions()
 

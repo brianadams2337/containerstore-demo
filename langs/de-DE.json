@@ -148,6 +148,7 @@
       "add_to_basket_error": "{productName} konnte nicht zum Warenkorb hinzugefügt werden",
       "add_to_basket": "{productName} wurde Ihrem Warenkorb hinzugefügt"
     },
+    "discount": "Rabatt",
     "to_checkout": "Zur Kasse",
     "no_items_info": "Sie haben keine Produkte in Ihrem Warenkorb.",
     "promotion": {
