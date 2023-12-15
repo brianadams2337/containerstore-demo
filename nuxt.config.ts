@@ -1,3 +1,4 @@
+import type { NuxtConfig } from 'nuxt/schema'
 import {
   storefrontRuntimeConfigPrivate,
   storefrontRuntimeConfigPublic,
@@ -12,6 +13,8 @@ const domains = {
   'de-ch': process.env.NUXT_STOREFRONT_STORES_1019_DOMAIN!,
   en: process.env.NUXT_STOREFRONT_STORES_1028_DOMAIN!,
 }
+
+type NitroRouteConfig = NuxtConfig['routeRules']
 
 const DOMAIN_PER_LOCALE = false
 
@@ -297,9 +300,9 @@ export default defineNuxtConfig({
       // Depending on your configuration this might be `redis` or another database driver
       // https://scayle.dev/en/dev/storefront-core/module-configuration#storage
       base: 'storefront-cache',
-    }
+    } as const
 
-    const NO_CACHE = { swr: false, cache: false }
+    const NO_CACHE = { swr: false, cache: false } as const
 
     // Default routeRules for using SWR and `storefront-cache` storage for page caching setup
     // TODO: Test
@@ -318,8 +321,9 @@ export default defineNuxtConfig({
           '/orders/*': NO_CACHE,
         }
       : locales.reduce(
-          (rules, locale) => {
-            Object.assign(rules, {
+          (rules: NitroRouteConfig, locale) => {
+            const newRules: NitroRouteConfig = {
+              ...rules,
               [`/${locale.code}`]: CACHE_PAGE, // home page
               [`/${locale.code}/**`]: CACHE_PAGE, // other pages
               // Don't cache API routes.
@@ -331,8 +335,8 @@ export default defineNuxtConfig({
               [`/${locale.code}/signin`]: NO_CACHE,
               [`/${locale.code}/account/*`]: NO_CACHE,
               [`/${locale.code}/orders/*`]: NO_CACHE,
-            })
-            return rules
+            }
+            return newRules
           },
           {
             '/api/**': NO_CACHE, // Top-level API routes, like /api/up
