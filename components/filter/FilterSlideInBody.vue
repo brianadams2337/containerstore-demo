@@ -7,7 +7,7 @@
     >
       <MultipleSelectionList
         v-model="state.size"
-        :items="availableFilterValues.size"
+        :items="availableFilterValues?.size"
         class="flex flex-wrap"
         name="FilterSelectSize"
       >
@@ -35,7 +35,7 @@
     >
       <MultipleSelectionList
         v-model="state.brand"
-        :items="availableFilterValues.brand"
+        :items="availableFilterValues?.brand"
         :limit="6"
         selected-first
         class="grid grid-cols-2 gap-3"
@@ -61,7 +61,7 @@
     >
       <MultipleSelectionList
         v-model="state.color"
-        :items="availableFilterValues.color"
+        :items="availableFilterValues?.color"
         class="flex flex-wrap gap-3"
         name="FilterSelectColors"
       >
@@ -120,7 +120,7 @@ const {
   minPrice,
   isSaleActive,
   hasActivePrices,
-} = await useFilter()
+} = useFilter()
 
 const currentShop = useCurrentShop()
 

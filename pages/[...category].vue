@@ -90,7 +90,6 @@ import type { SbCmsImage, SbListingPage } from '../storyblok/types/storyblok'
 const route = useRoute()
 const { pageState, setPageState } = usePageState()
 const { $i18n, $config } = useNuxtApp()
-
 const { toggle: toggleFilter } = useSlideIn('FilterSlideIn')
 
 const { trackViewItemList, trackSelectItem } = useTrackingEvents()
@@ -112,11 +111,24 @@ const {
   categoriesError,
   fetchParameters,
   listingMetaData,
+  filtersFetching,
+  productCountData,
+  refreshProductCount,
+  unfilteredCount,
 } = await useProductList()
+
+createFilterContext({
+  filterableValues: filters,
+  filtersFetching,
+  filterStatus,
+  productCountData,
+  refreshProductCount,
+  unfilteredCount,
+})
 
 const { selectedSort, sortingValues } = useProductListSort(selectedCategory)
 
-const { isFiltered, resetFilters, applyFilters } = await useFilter()
+const { isFiltered, resetFilters, applyFilters } = useFilter()
 
 const trackViewListing = ({ items }: { row: number; items: Product[] }) => {
   const paginationOffset = ((pagination.value?.page || 1) - 1) * 24
@@ -190,6 +202,7 @@ watch(
   async () => {
     resetFilters()
     await applyFilters({ shouldToggle: false })
+    await fetchProducts(fetchParameters.value)
   },
   { immediate: true },
 )

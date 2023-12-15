@@ -18,5 +18,5 @@
 </template>
 
 <script setup lang="ts">
-const { onSlideInOpen, trackFilterFlyout } = await useFilter()
+const { onSlideInOpen, trackFilterFlyout } = useFilter()
 </script>

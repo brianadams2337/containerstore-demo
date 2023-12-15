@@ -106,6 +106,6 @@ const iconClasses = computed(() => [
     'w-4 h-4': isSize('xs'),
     'group-hover:animate-ping-small': props.animateIcon,
   },
-  textColorClasses,
+  textColorClasses.value,
 ])
 </script>

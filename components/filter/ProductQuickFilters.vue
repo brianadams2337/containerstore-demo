@@ -52,7 +52,7 @@ const {
   quickFilters: filters,
   unfilteredCount: totalCount,
   filtersFetching: loading,
-} = await useFilter()
+} = useFilter()
 
 const onFilterApply = (filters?: Record<string, any>) => {
   applyFilters({

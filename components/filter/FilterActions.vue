@@ -21,12 +21,11 @@
 
 <script setup lang="ts">
 const { $i18n } = useNuxtApp()
-
 const { resetFilters, applyFilters, unfilteredCount, filteredCount } =
-  await useFilter()
+  useFilter()
 
 const showResultsLabel = computed(() => {
-  return filteredCount.value !== unfilteredCount.value
+  return filteredCount.value !== unfilteredCount?.value
     ? $i18n.t('filter.show_results_count', { count: filteredCount.value })
     : $i18n.t('filter.show_results')
 })
