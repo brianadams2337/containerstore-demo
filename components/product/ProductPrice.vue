@@ -88,14 +88,19 @@ const appliedReductions = computed(() => props.price?.appliedReductions)
 const { automaticDiscountPromotion, getAppliedAutomaticDiscountPrice } =
   await useProductPromotions(props.product)
 
-const { automaticDiscountPromotions } = await useBasketPromotions()
+const { data: basketData } = await useBasket()
 
 const isAutomaticDiscountApplied = computed(() => {
   if (!automaticDiscountPromotion.value) {
     return false
   }
-  return automaticDiscountPromotions.value.some(({ id }) => {
-    return id === automaticDiscountPromotion.value?.id
+
+  return basketData.value.items.some(({ promotion, promotionId, product }) => {
+    return (
+      props.product.id === product.id &&
+      promotionId === automaticDiscountPromotion.value?.id &&
+      promotion?.isValid
+    )
   })
 })
 
