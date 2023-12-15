@@ -1,4 +1,5 @@
 import type { NuxtConfig } from 'nuxt/schema'
+import yn from 'yn'
 import {
   storefrontRuntimeConfigPrivate,
   storefrontRuntimeConfigPublic,
@@ -16,7 +17,7 @@ const domains = {
 
 type NitroRouteConfig = NuxtConfig['routeRules']
 
-const DOMAIN_PER_LOCALE = false
+const DOMAIN_PER_LOCALE = yn(process.env.DOMAIN_PER_LOCALE)
 
 const DE_DOMAIN_FILE = 'de-DE.json'
 
@@ -207,7 +208,7 @@ export default defineNuxtConfig({
   // https://v8.i18n.nuxtjs.org/getting-started/basic-usage
   i18n: {
     locales,
-    differentDomains: false,
+    differentDomains: DOMAIN_PER_LOCALE,
     detectBrowserLanguage: false,
     defaultLocale: 'en',
     langDir: 'langs/',
