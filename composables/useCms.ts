@@ -46,7 +46,6 @@ export default <T = unknown>(key: string) => {
       } = await storyblokApi.getStories({
         ...storyblokOptions,
         starts_with: folder,
-        version: getStoryblokContentVersion(),
         ...options,
       })
       data.value = stories as unknown as StoryblokStory<T>
