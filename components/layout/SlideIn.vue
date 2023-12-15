@@ -7,11 +7,8 @@
     leave-from-class="opacity-100"
     leave-to-class="opacity-0"
   >
-    <div v-show="isOpen" class="absolute inset-0 z-50 overflow-hidden">
-      <div
-        class="fixed inset-0 inline-block bg-gray-200 opacity-50"
-        @click="toggle"
-      />
+    <div v-show="isOpen" class="absolute inset-0 z-[100] overflow-hidden">
+      <div class="fixed inset-0 inline-block bg-primary/50" @click="toggle" />
 
       <Transition
         :enter-from-class="slideTypes[slideType].enterClasses"
@@ -23,7 +20,7 @@
       >
         <div
           v-if="isOpen"
-          class="fixed bottom-0 z-50 max-h-md w-full overflow-y-auto bg-white p-5 shadow-sm xl:right-0 xl:max-h-full xl:max-w-[22.5rem]"
+          class="fixed bottom-0 z-50 max-h-md w-full overflow-y-auto rounded-t-xl bg-white p-5 shadow-sm xl:right-0 xl:max-h-full xl:max-w-[22.5rem]"
           :class="slideClass"
         >
           <div class="relative flex h-full flex-col">

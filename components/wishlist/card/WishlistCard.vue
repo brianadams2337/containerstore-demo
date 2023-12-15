@@ -141,7 +141,7 @@
         </div>
       </div>
       <SlideIn
-        v-show="isLessThan('lg')"
+        v-if="isLessThan('lg')"
         :name="`wishlistcard_${product.id}`"
         slide-type="fromBottom"
         slide-class="w-full xl:max-w-none h-auto xl:max-h-none top-auto left-0 p-0 pt-0"
@@ -154,7 +154,9 @@
             >
               <IconAngleDown class="h-4 w-4" />
             </div>
-            <div class="flex justify-end border-b px-5 pb-3">
+            <div
+              class="flex justify-end border-b border-b-secondary-700 px-5 pb-3"
+            >
               <div class="text-right">
                 <strong class="block text-sm">
                   {{ toCurrency(price.withTax) }}
@@ -164,7 +166,7 @@
                 </div>
               </div>
             </div>
-            <div class="px-5 pb-2 pt-3">
+            <div class="px-5 pt-4">
               <RadioGroup :items="sizes" @update:model-value="sizeSelected" />
             </div>
           </div>
