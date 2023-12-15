@@ -274,6 +274,10 @@ export default defineNuxtConfig({
       process.env.NITRO_PRESET &&
       process.env.NITRO_PRESET.includes('vercel')
     ) {
+      // Disable routeRules for Vercel edge
+      if (process.env.NITRO_PRESET === 'vercel_edge') {
+        return {}
+      }
       // We need some different route definitions for vercel which uses a regex syntax when you want to match `**/`
       return {
         // Page generated on-demand, revalidates in background

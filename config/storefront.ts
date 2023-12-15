@@ -181,32 +181,58 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
   ),
   /** Storefront Core - Storage Configuration for `cache` and `session` mountpoints
    * https://scayle.dev/en/dev/storefront-core/module-configuration#storage */
-  storage: {
-    cache: {
-      // Redis Options: https://redis.github.io/ioredis/index.html#RedisOptions
-      driver: 'redis', // Override: NUXT_STOREFRONT_STORAGE_CACHE_PROVIDER
-      compression: 'gzip', // Override: NUXT_STOREFRONT_STORAGE_CACHE_COMPRESSION
-      host: 'localhost', // Override: NUXT_STOREFRONT_STORAGE_CACHE_HOST
-      port: 6379, // Override: NUXT_STOREFRONT_STORAGE_CACHE_PORT
-      username: '', // Override: NUXT_STOREFRONT_STORAGE_CACHE_USERNAME
-      password: '', // Override: NUXT_STOREFRONT_STORAGE_CACHE_PASSWORD
-      tls: false, // Override: NUXT_STOREFRONT_STORAGE_CACHE_TLS,
-      // Required to resolve connection issues with AWS ElastiCache
-      checkServerIdentity: undefined, // Override: NUXT_STOREFRONT_STORAGE_CACHE_CHECK_SERVER_INTEGRITY,
-    },
-    session: {
-      // Redis Options: https://redis.github.io/ioredis/index.html#RedisOptions
-      driver: 'redis', // Override: NUXT_STOREFRONT_STORAGE_SESSION_PROVIDER
-      host: 'localhost', // Override: NUXT_STOREFRONT_STORAGE_SESSION_HOST
-      port: 6379, // Override: NUXT_STOREFRONT_STORAGE_SESSION_PORT
-      db: 1, // Override: NUXT_STOREFRONT_STORAGE_SESSION_DB
-      username: '', // Override: NUXT_STOREFRONT_STORAGE_SESSION_USERNAME
-      password: '', // Override: NUXT_STOREFRONT_STORAGE_SESSION_PASSWORD
-      tls: false, // Override: NUXT_STOREFRONT_STORAGE_SESSION_TLS,
-      // Required to resolve connection issues with AWS ElastiCache
-      checkServerIdentity: undefined, // Override: NUXT_STOREFRONT_STORAGE_SESSION_CHECK_SERVER_INTEGRITY,
-    },
-  },
+  storage: (() => {
+    if (
+      process.env.NITRO_PRESET &&
+      process.env.NITRO_PRESET.includes('vercel')
+    ) {
+      // No driver options are necessary for vercelKV
+      // It supports url, token and others, but if they are
+      // not preset, it will use KV_REST_API_URL and KV_REST_API_TOKEN
+      // which are added automatically when Vercel KV is enabled.
+      // If for some reason, different values are necessary, you can still
+      // use NUXT_STOREFRONT_STORAGE_SESSION_x variables.
+      return {
+        cache: {
+          driver: 'vercelKV',
+          url: '',
+          token: '',
+        },
+        session: {
+          driver: 'vercelKV',
+          url: '',
+          token: '',
+        },
+      }
+    }
+
+    return {
+      cache: {
+        // Redis Options: https://redis.github.io/ioredis/index.html#RedisOptions
+        driver: 'redis', // Override: NUXT_STOREFRONT_STORAGE_CACHE_PROVIDER
+        compression: 'gzip', // Override: NUXT_STOREFRONT_STORAGE_CACHE_COMPRESSION
+        host: 'localhost', // Override: NUXT_STOREFRONT_STORAGE_CACHE_HOST
+        port: 6379, // Override: NUXT_STOREFRONT_STORAGE_CACHE_PORT
+        username: '', // Override: NUXT_STOREFRONT_STORAGE_CACHE_USERNAME
+        password: '', // Override: NUXT_STOREFRONT_STORAGE_CACHE_PASSWORD
+        tls: false, // Override: NUXT_STOREFRONT_STORAGE_CACHE_TLS,
+        // Required to resolve connection issues with AWS ElastiCache
+        checkServerIdentity: undefined, // Override: NUXT_STOREFRONT_STORAGE_CACHE_CHECK_SERVER_INTEGRITY,
+      },
+      session: {
+        // Redis Options: https://redis.github.io/ioredis/index.html#RedisOptions
+        driver: 'redis', // Override: NUXT_STOREFRONT_STORAGE_SESSION_PROVIDER
+        host: 'localhost', // Override: NUXT_STOREFRONT_STORAGE_SESSION_HOST
+        port: 6379, // Override: NUXT_STOREFRONT_STORAGE_SESSION_PORT
+        db: 1, // Override: NUXT_STOREFRONT_STORAGE_SESSION_DB
+        username: '', // Override: NUXT_STOREFRONT_STORAGE_SESSION_USERNAME
+        password: '', // Override: NUXT_STOREFRONT_STORAGE_SESSION_PASSWORD
+        tls: false, // Override: NUXT_STOREFRONT_STORAGE_SESSION_TLS,
+        // Required to resolve connection issues with AWS ElastiCache
+        checkServerIdentity: undefined, // Override: NUXT_STOREFRONT_STORAGE_SESSION_CHECK_SERVER_INTEGRITY,
+      },
+    }
+  })(),
   /** [OPTIONAL] Storefront Core - Internal cache behaviour configurations
    * https://scayle.dev/en/dev/storefront-core/module-configuration#cache */
   cache: {

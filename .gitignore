@@ -98,3 +98,4 @@ cypress/videos
 
 # Redis
 *.rdb
+.vercel
