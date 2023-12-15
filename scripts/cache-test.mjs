@@ -19,17 +19,47 @@ const getHeaders = async (url) => {
   })
 }
 
+function parseCacheControl(header) {
+  const result = {}
+  const directives = header.split(',').map(d => d.trim())
+
+  directives.forEach(directive => {
+    if (directive.includes('=')) {
+      const [property, value] = directive.split('=')
+      result[property.trim()] = value.trim()
+    } else {
+      result[directive] = true
+    }
+  })
+
+  return result
+}
+
 function assertCacheHeaders(headers) {
-  if (!headers['cache-control']) {
-    assert.fail('Cache headers are missing!')
-    console.log({ headers })
+  try {
+    if (!headers['cache-control']) {
+      assert.fail('Cache headers are missing!')
+    }
+
+    const cacheControl = parseCacheControl(headers['cache-control'])
+
+    if (isNaN(parseInt(cacheControl['s-maxage']))) {
+      assert.fail('Missing s-maxage directive in cache-control header')
+    }
+
+    if (cacheControl['stale-while-revalidate'] !== 'true' && isNaN(parseInt(cacheControl['stale-while-revalidate']))) {
+      assert.fail('Missing stale-while-revalidate directive in cache-control header')
+    }
+  } catch (e) {
+    console.error(headers)
+    throw e
   }
 }
 
 function assertNoCacheHeaders(headers) {
   if (headers['cache-control']) {
+    console.error({ headers })
     assert.fail('Cache headers should not be present!')
-    console.log({ headers })
   }
 }
 
