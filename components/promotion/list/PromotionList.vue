@@ -5,7 +5,7 @@
   >
     <div class="relative bg-primary p-5 text-white">
       <div class="overflow-x-scroll scrollbar-hide">
-        <div class="mx-auto flex w-max items-start overflow-x-scroll">
+        <div class="mx-auto flex w-max items-start">
           <PromotionItem
             v-for="item in items"
             :key="item.id"
