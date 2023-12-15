@@ -7,12 +7,11 @@
   resolved "https://registry.yarnpkg.com/@aashutoshrathi/word-wrap/-/word-wrap-1.2.6.tgz#bd9154aec9983f77b3a034ecaa015c2e4201f6cf"
   integrity sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==
 
-"@aboutyou/backbone@15.14.3":
-  version "15.14.3"
-  resolved "https://registry.yarnpkg.com/@aboutyou/backbone/-/backbone-15.14.3.tgz#abcca5c4c9d1a90f721dbbf3be8df094ac0827bd"
-  integrity sha512-SaPEVUnL2vT5HkudjXGqcakx0AxqRGw+TLgGzIxW4LNEy1Zj2xNmRHfCx+wnZZ7obVdYaMHzVcyKjtI+ZHv4iw==
+"@aboutyou/backbone@16.0.1":
+  version "16.0.1"
+  resolved "https://registry.yarnpkg.com/@aboutyou/backbone/-/backbone-16.0.1.tgz#fccdaffb1bbc6e09bcdd98c65c1400baff7ae811"
+  integrity sha512-iKD/68crJ3dk+yi9GbOkE8+N//chY7oud8EvxC/5mcmFS+l5/v55+T8+/iX+44IM3DBEAH/ZM3SFteV3b0Wsew==
   dependencies:
-    axios ">=0.18.0 <1.0.0"
     query-string "^6.2.0"
 
 "@alloc/quick-lru@^5.2.0":
@@ -1785,12 +1784,12 @@
   dependencies:
     prettier-config-standard "^7.0.0"
 
-"@scayle/storefront-core@7.30.0":
-  version "7.30.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.30.0.tgz#3a9e54a334fc0fc898bec8f93a54567c5e8ef356"
-  integrity sha512-vrR2QsQaOdwYowIcLosg+M+n3ZbySwXGHw7JI6Vemy/tOEARoYtGo7BvjGmh0WBMAKUqp8papsrxwdDW5PlTCA==
+"@scayle/storefront-core@7.31.0":
+  version "7.31.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.31.0.tgz#76931cf5e8e0a7af8f865abe7e2b315d34447aa5"
+  integrity sha512-OuOH6fKEcBt2ULBz+a7OMSywsCRorB6ZjA8vG4+vQXPKkA+KkEAnirsCuAc5GSdM5TU2VCvuf3753kU9Sa8fdA==
   dependencies:
-    "@aboutyou/backbone" "15.14.3"
+    "@aboutyou/backbone" "16.0.1"
     crypto-js "4.2.0"
     jose "^4.14.4"
     radash "^11.0.0"
@@ -1801,14 +1800,14 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.43.1":
-  version "7.43.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.43.1.tgz#df0e8f7c4b791fea3161aff22bff061f2321698b"
-  integrity sha512-PIssWOvpQ9r8yQWZk71sI2mXhjLKb7pYtlvlWCX62udF6DMPJM2C1xyOdPM3K6csx8QX+dFvKGbHJrTVlYrliw==
+"@scayle/storefront-nuxt@7.44.0":
+  version "7.44.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.44.0.tgz#1bbb4b91ec721d95b47d49b7ca0ff86bcc88a640"
+  integrity sha512-7D0bEbdUgkWgDBlpInSHRymmnF8BfTAG7HZJ9Ce98VEMfPOPEIjSn495qB1C9lUWXgPm6y6cG4YA+VvCVG2N7w==
   dependencies:
     "@nuxt/kit" "3.8.2"
     "@scayle/h3-session" "0.3.4"
-    "@scayle/storefront-core" "7.30.0"
+    "@scayle/storefront-core" "7.31.0"
     "@scayle/unstorage-compression-driver" "0.1.1"
     "@vueuse/core" "10.7.0"
     consola "3.2.3"
@@ -2950,7 +2949,7 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.12.0.tgz#ce1c9d143389679e253b314241ea9aa5cec980d3"
   integrity sha512-NmWvPnx0F1SfrQbYwOi7OeaNGokp9XhzNioJ/CSBs8Qa4vxug81mhJEAVZwxXuBmYB5KDRfMq/F3RR0BIU7sWg==
 
-"axios@>=0.18.0 <1.0.0", axios@^0.27.2:
+axios@^0.27.2:
   version "0.27.2"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.27.2.tgz#207658cc8621606e586c85db4b41a750e756d972"
   integrity sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==
