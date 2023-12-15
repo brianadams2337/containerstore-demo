@@ -286,31 +286,57 @@ export default defineNuxtConfig({
       }
     }
 
-    // Default routeRules for using SWR and `storefront-cache` storage for page caching setup
-    return {
-      // Page generated on-demand, revalidates in background
-      '/*': {
-        cache: {
-          swr: true, // Enable stale-while-revalidate
-          maxAge: 10 * 60, // Default: 10min
-          staleMaxAge: 10 * 60, // Default: 10min
-          group: 'ssr', // Cache group name
-          name: 'page', // Set prefix name
-          // Use storefront storage mount
-          // Depending on your configuration this might be `redis` or another database driver
-          // https://scayle.dev/en/dev/storefront-core/module-configuration#storage
-          base: 'storefront-cache',
-        },
-      },
-      // Don't cache API routes.
-      '**/api/**': { cache: false, swr: false },
-      // Don't cache pages with user-specific information
-      '**/wishlist': { cache: false, swr: false },
-      '**/basket': { cache: false, swr: false },
-      '**/checkout': { cache: false, swr: false },
-      '**/signin': { cache: false, swr: false },
-      '**/account/**': { cache: false, swr: false },
-      '**/orders/**': { cache: false, swr: false },
+    // Page generated on-demand, revalidates in background
+    const CACHE_PAGE = {
+      swr: true, // Enable stale-while-revalidate
+      maxAge: 10 * 60, // Default: 10min
+      staleMaxAge: 10 * 60, // Default: 10min
+      group: 'ssr', // Cache group name
+      name: 'page', // Set prefix name
+      // Use storefront storage mount
+      // Depending on your configuration this might be `redis` or another database driver
+      // https://scayle.dev/en/dev/storefront-core/module-configuration#storage
+      base: 'storefront-cache',
     }
+
+    const NO_CACHE = { swr: false, cache: false }
+
+    // Default routeRules for using SWR and `storefront-cache` storage for page caching setup
+    // TODO: Test
+    return DOMAIN_PER_LOCALE
+      ? {
+          // Cache most pages by default
+          '/**': CACHE_PAGE,
+          // Don't cache API routes.
+          '/api/**': NO_CACHE,
+          // Don't cache pages with user-specific information
+          '/wishlist': NO_CACHE,
+          '/basket': NO_CACHE,
+          '/checkout': NO_CACHE,
+          '/signin': NO_CACHE,
+          '/account/*': NO_CACHE,
+          '/orders/*': NO_CACHE,
+        }
+      : locales.reduce(
+          (rules, locale) => {
+            Object.assign(rules, {
+              [`/${locale.code}`]: CACHE_PAGE, // home page
+              [`/${locale.code}/**`]: CACHE_PAGE, // other pages
+              // Don't cache API routes.
+              [`/${locale.code}/api/**`]: NO_CACHE,
+              // Don't cache pages with user-specific information
+              [`/${locale.code}/wishlist`]: NO_CACHE,
+              [`/${locale.code}/basket`]: NO_CACHE,
+              [`/${locale.code}/checkout`]: NO_CACHE,
+              [`/${locale.code}/signin`]: NO_CACHE,
+              [`/${locale.code}/account/*`]: NO_CACHE,
+              [`/${locale.code}/orders/*`]: NO_CACHE,
+            })
+            return rules
+          },
+          {
+            '/api/**': NO_CACHE, // Top-level API routes, like /api/up
+          },
+        )
   })(),
 })
