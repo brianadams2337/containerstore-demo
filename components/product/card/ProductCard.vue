@@ -104,6 +104,7 @@
                     v-if="price"
                     v-bind="{ price, lowestPriorPrice, product }"
                     :size="isGreaterOrEquals('md') ? 'sm' : 'xs'"
+                    :show-automatic-discount="!isBuyXGetYPrioritized"
                     type="whisper"
                   />
                 </slot>
@@ -175,6 +176,8 @@ const shouldHoverImage = ref(false)
 
 const { isGreaterOrEquals } = useViewport()
 const { getProductDetailRoute } = useRouteHelpers()
+
+const { isBuyXGetYPrioritized } = await useProductPromotions(props.product)
 
 const onMouseOver = () => {
   loadHoverImage.value = true
