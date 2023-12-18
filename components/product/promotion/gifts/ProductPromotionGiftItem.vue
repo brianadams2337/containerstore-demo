@@ -33,10 +33,10 @@
             v-if="variantWithLowestPrice"
             class="text-xs text-gray-600 line-through"
           >
-            {{ toCurrency(variantWithLowestPrice.price.withTax) }}
+            {{ formatCurrency(variantWithLowestPrice.price.withTax) }}
           </span>
           <span class="text-base font-bold text-black">
-            {{ toCurrency(0) }}
+            {{ formatCurrency(0) }}
           </span>
           <span class="text-xs text-gray-700">
             {{ $t('price.including_vat') }}
@@ -68,6 +68,7 @@ const props = defineProps<{
 }>()
 
 const { product: promotedProduct } = await useProductDetails()
+const { formatCurrency } = useFormatHelpers()
 
 const { buyXGetYPromotion: promotion } =
   await useProductPromotions(promotedProduct)

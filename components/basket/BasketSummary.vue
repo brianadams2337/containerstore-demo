@@ -11,7 +11,7 @@
         >
           <div class="flex justify-between">
             <div class="opacity-50">{{ $t('basket.subtotal') }}</div>
-            <div v-if="totalCost">{{ toCurrency(totalCost) }}</div>
+            <div v-if="totalCost">{{ formatCurrency(totalCost) }}</div>
           </div>
 
           <div class="flex justify-between">
@@ -19,7 +19,7 @@
             <div class="">
               {{
                 shippingCost
-                  ? toCurrency(shippingCost)
+                  ? formatCurrency(shippingCost)
                   : $t('basket.shipping_free')
               }}
             </div>
@@ -28,7 +28,7 @@
           <div class="flex justify-between">
             <div class="opacity-50">{{ $t('basket.discount') }}</div>
             <div v-if="totalDiscount" class="text-red-500">
-              {{ toCurrency(totalDiscount) }}
+              {{ formatCurrency(totalDiscount) }}
             </div>
           </div>
 
@@ -40,7 +40,7 @@
             </div>
             <div class="">
               <div v-if="totalCost" class="text-xl">
-                {{ toCurrency(totalCost) }}
+                {{ formatCurrency(totalCost) }}
               </div>
               <div class="text-2xs opacity-50">
                 {{ $t('basket.including_vat') }}
@@ -85,6 +85,7 @@ const { $i18n } = useNuxtApp()
 
 const { trackBeginCheckout } = useTrackingEvents()
 const { localizedNavigateTo } = useRouteHelpers()
+const { formatCurrency } = useFormatHelpers()
 const totalCost = computed(() => basket.data.value?.cost.withTax)
 const shippingCost = computed(() => 0)
 

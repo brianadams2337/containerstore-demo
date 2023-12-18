@@ -12,7 +12,7 @@
       />
       <p>
         {{ addOn.label }}
-        {{ toCurrency(addOn.price) }}
+        {{ formatCurrency(addOn.price) }}
         <span class="text-2xs">
           {{ $t('price.including_vat') }}
         </span>
@@ -43,7 +43,7 @@ const props = defineProps({
 const emit = defineEmits(['click:service-selection'])
 
 const keyPostfix = computed(() => props.addOnVariantIds.join('-'))
-
+const { formatCurrency } = useFormatHelpers()
 const { data: variants } = await useVariant({
   params: {
     ids: props.addOnVariantIds.map((addOn) => parseInt(addOn.toString())),

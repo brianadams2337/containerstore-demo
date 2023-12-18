@@ -8,7 +8,9 @@
       />
       <FadeInTransition :duration="300">
         <div class="flex-1 text-right" :class="{ 'opacity-0': isOpen }">
-          <p class="text-xs font-bold">{{ toCurrency(totalCostOfAddOns) }}</p>
+          <p class="text-xs font-bold">
+            {{ formatCurrency(totalCostOfAddOns) }}
+          </p>
           <p class="text-2xs font-medium opacity-50">
             {{ $t('incl_tax') }}
           </p>
@@ -41,6 +43,8 @@ const props = defineProps({
     default: 'md',
   },
 })
+
+const { formatCurrency } = useFormatHelpers()
 
 const isOpen = ref(false)
 

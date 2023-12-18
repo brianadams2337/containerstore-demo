@@ -25,11 +25,13 @@
       <div class="flex flex-col justify-end">
         <p class="text-right" :class="{ 'line-through': reducedPrice }">
           {{
-            toCurrency(quantity * (reducedPrice ? price + reducedPrice : price))
+            formatCurrency(
+              quantity * (reducedPrice ? price + reducedPrice : price),
+            )
           }}
         </p>
         <p v-if="reducedPrice" class="text-right text-red-500">
-          {{ toCurrency(quantity * price) }}
+          {{ formatCurrency(quantity * price) }}
         </p>
         <p
           v-if="
@@ -40,7 +42,7 @@
           class="mt-0.5 text-right text-sm text-gray-700"
         >
           {{ $t('price.best_price_30d') }}
-          {{ toCurrency(lowestPriorPrice.withTax) }}
+          {{ formatCurrency(lowestPriorPrice.withTax) }}
           ({{ lowestPriorPrice.relativeDifferenceToPrice * 100 }} %)
         </p>
       </div>
@@ -55,7 +57,6 @@ import {
   type Attributes,
   getFirstAttributeValue,
 } from '@scayle/storefront-nuxt'
-
 const props = defineProps({
   product: {
     type: Object as PropType<OrderProduct>,
@@ -74,6 +75,8 @@ const props = defineProps({
     default: 1,
   },
 })
+
+const { formatCurrency } = useFormatHelpers()
 
 const name = computed(() => props.product.name)
 

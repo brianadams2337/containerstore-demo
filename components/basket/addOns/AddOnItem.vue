@@ -24,11 +24,11 @@
     </div>
     <div class="text-right text-xs font-bold">
       <div v-if="reducedPrice" class="line-through">
-        {{ toCurrency(price + reducedPrice) }}
+        {{ formatCurrency(price + reducedPrice) }}
       </div>
-      <div v-else>{{ toCurrency(price) }}</div>
+      <div v-else>{{ formatCurrency(price) }}</div>
       <div v-if="reducedPrice" class="text-red-500">
-        {{ toCurrency(price) }}
+        {{ formatCurrency(price) }}
       </div>
       <p class="text-2xs font-medium opacity-50">
         {{ $t('incl_tax') }}
@@ -54,6 +54,8 @@ const props = defineProps({
     default: 'md',
   },
 })
+
+const { formatCurrency } = useFormatHelpers()
 
 const imageHash = computed(() => {
   return (

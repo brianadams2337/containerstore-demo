@@ -24,7 +24,9 @@
           data-test-id="initialProductPrice"
         >
           {{
-            toCurrency(props.price.withTax + totalReductions.absoluteWithTax)
+            formatCurrency(
+              props.price.withTax + totalReductions.absoluteWithTax,
+            )
           }}
         </span>
       </p>
@@ -41,7 +43,7 @@
         class="mt-0.5 text-sm text-gray-700"
       >
         {{ $t('price.best_price_30d') }}
-        {{ toCurrency(lowestPriorPrice.withTax ?? 0) }}
+        {{ formatCurrency(lowestPriorPrice.withTax ?? 0) }}
         ({{ (lowestPriorPrice.relativeDifferenceToPrice ?? 0) * 100 }}%)
       </p>
     </slot>
@@ -83,6 +85,7 @@ const props = withDefaults(defineProps<Props>(), {
   type: 'loud',
 })
 
+const { formatCurrency } = useFormatHelpers()
 const appliedReductions = computed(() => props.price?.appliedReductions)
 
 const { automaticDiscountPromotion, getAppliedAutomaticDiscountPrice } =
@@ -110,11 +113,11 @@ const isAutomaticDiscountPriceApplicable = computed(() => {
 
 const totalPrice = computed(() => {
   if (props.isFree) {
-    return toCurrency(0)
+    return formatCurrency(0)
   }
   return isAutomaticDiscountPriceApplicable.value
-    ? toCurrency(getAppliedAutomaticDiscountPrice(props.price) as number)
-    : toCurrency(props.price.withTax)
+    ? formatCurrency(getAppliedAutomaticDiscountPrice(props.price) as number)
+    : formatCurrency(props.price.withTax)
 })
 
 const totalReductions = computed(() => getTotalAppliedReductions(props.price))

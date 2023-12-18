@@ -35,13 +35,13 @@
             }"
           >
             {{
-              toCurrency(
+              formatCurrency(
                 quantity * (reducedPrice ? price + reducedPrice : price),
               )
             }}
           </p>
           <p v-if="reducedPrice" class="text-right text-red-500">
-            {{ toCurrency(quantity * price) }}
+            {{ formatCurrency(quantity * price) }}
           </p>
           <p
             v-if="
@@ -52,7 +52,7 @@
             class="mt-0.5 text-right text-sm text-gray-400"
           >
             {{ $t('price.best_price_30d') }}
-            {{ toCurrency(lowestPriorPrice.withTax) }}
+            {{ formatCurrency(lowestPriorPrice.withTax) }}
             ({{ lowestPriorPrice.relativeDifferenceToPrice * 100 }}%)
           </p>
         </div>
@@ -90,6 +90,7 @@ const props = defineProps({
   },
 })
 const { getOrderProductDetailRoute } = useRouteHelpers()
+const { formatCurrency } = useFormatHelpers()
 const name = computed(() => props.product.name)
 
 const color = computed(

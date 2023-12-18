@@ -37,7 +37,9 @@
                 class="ml-auto shrink-0"
               >
                 {{
-                  toCurrency(productSuggestion.product.priceRange.min.withTax)
+                  formatCurrency(
+                    productSuggestion.product.priceRange.min.withTax,
+                  )
                 }}
               </div>
             </div>
@@ -72,6 +74,7 @@ const props = defineProps({
     default: false,
   },
 })
+const { formatCurrency } = useFormatHelpers()
 const { getProductDetailRoute } = useRouteHelpers()
 
 const getCategoryName = (productSuggestion: ProductSuggestion) => {

@@ -273,6 +273,7 @@ useSeoMeta(() => ({
 }))
 
 const currentShop = useCurrentShop()
+const { formatCurrency } = useFormatHelpers()
 
 const sanitizedCanonicalURL = sanitizeCanonical(
   `${$config.public.baseUrl}${route.fullPath}`,
@@ -280,7 +281,7 @@ const sanitizedCanonicalURL = sanitizeCanonical(
 
 useJsonld(() =>
   generateProductSchema({
-    price: formatPrice(price.value?.withTax || 0),
+    price: formatCurrency(price.value?.withTax || 0, { style: 'decimal' }),
     productName: productName.value || '',
     brandName: brand.value || '',
     url: sanitizedCanonicalURL,

@@ -2,6 +2,7 @@ export default async () => {
   const { data: basketData } = await useBasket()
 
   const { currentPromotion } = useCurrentPromotion()
+  const { formatCurrency } = useFormatHelpers()
 
   const minOrderValue = computed(() => {
     return currentPromotion.value?.customData?.minOrderValue || 0
@@ -46,13 +47,13 @@ export default async () => {
     return !!progress.value && progress.value >= 100
   })
 
-  const formattedAmount = computed(() => toCurrency(minOrderValue.value))
+  const formattedAmount = computed(() => formatCurrency(minOrderValue.value))
 
   const formattedAmountLeft = computed(() => {
     if (!minOrderValue.value) {
       return
     }
-    return toCurrency(minOrderValue.value - basketTotalForPromotion.value)
+    return formatCurrency(minOrderValue.value - basketTotalForPromotion.value)
   })
 
   return {

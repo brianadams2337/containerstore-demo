@@ -70,11 +70,11 @@
             </div>
             <div class="text-right font-bold">
               <div v-if="reducedPrice" class="line-through">
-                {{ toCurrency(price + reducedPrice) }}
+                {{ formatCurrency(price + reducedPrice) }}
               </div>
-              <div v-else>{{ toCurrency(price) }}</div>
+              <div v-else>{{ formatCurrency(price) }}</div>
               <div v-if="reducedPrice" class="text-red-500">
-                {{ toCurrency(price) }}
+                {{ formatCurrency(price) }}
               </div>
               <p
                 v-if="
@@ -86,7 +86,7 @@
                 class="mt-0.5 text-sm text-gray-700"
               >
                 {{ $t('price.best_price_30d') }}
-                {{ toCurrency(lowestPriorPrice.withTax) }}
+                {{ formatCurrency(lowestPriorPrice.withTax) }}
                 ({{ lowestPriorPrice.relativeDifferenceToPrice * 100 }})%
               </p>
               <p class="text-2xs font-medium opacity-50">
@@ -158,6 +158,7 @@ const props = withDefaults(defineProps<Props>(), {
   item: undefined,
   itemsGroup: undefined,
 })
+const { formatCurrency } = useFormatHelpers()
 const { getProductDetailRoute } = useRouteHelpers()
 const mainItem = computed(() => {
   const basketItem = props.itemsGroup

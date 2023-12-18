@@ -159,7 +159,7 @@
             >
               <div class="text-right">
                 <strong class="block text-sm">
-                  {{ toCurrency(price.withTax) }}
+                  {{ formatCurrency(price.withTax) }}
                 </strong>
                 <div class="text-xs text-secondary">
                   {{ $t('price.including_vat') }}
@@ -197,6 +197,7 @@ type Props = {
 
 const props = withDefaults(defineProps<Props>(), { variant: undefined })
 
+const { formatCurrency } = useFormatHelpers()
 const { fetching: isWishlistFetching, replaceItem: replaceWishlistItem } =
   await useWishlist()
 const basket = await useBasket()
