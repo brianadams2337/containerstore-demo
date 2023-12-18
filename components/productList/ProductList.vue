@@ -85,11 +85,7 @@ const columns = computed(() => {
   return isGreaterOrEquals('md') ? 3 : 2
 })
 
-const columnClasses = computed(() => ({
-  'col-span-6': columns.value === 2,
-  'col-span-4': columns.value === 3,
-  'col-span-3': columns.value === 4,
-}))
+const columnClasses = 'col-span-6 md:col-span-4 lg:col-span-3'
 
 const _getRowByIndex = (index: number) =>
   getRowByIndex(index, {
