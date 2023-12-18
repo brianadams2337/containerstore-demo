@@ -33,9 +33,8 @@ class HomePage extends BasePage {
 
   closePromotionButton() {
     // cy.intercept('GET', 'builds/meta/dev.json').as('getPromotions')
-    cy.intercept('**/events').as('getPromotions')
+    cy.intercept('**/Countdown.vue.7c965c28.js').as('getPromotions')
     cy.wait('@getPromotions')
-    // cy.request('builds/meta/dev.json')
     cy.get('[data-test-id="close-promotion-button"]').click()
   }
 }

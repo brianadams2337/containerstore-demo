@@ -86,4 +86,4 @@ export const LOGGED_IN_USER_DATA = {
   password: 'Aqa-temp-pass!',
 }
 export const LOGGED_IN_USER_SESSION =
-  's%3A124%3A90435957-d38e-4ab9-8076-f95131360d43.6a6F375wDAfQgxS6h8FKhD1xkNB1T4sKV%2FgqtK%2FW3e8'
+  's%3A124%3Af97ee66d-d6c7-4dbd-95bf-a63332d29cc1.5AEHUSY2YWQadwqiMZwU5RnqR4zVOD%2BA68GYEyOK5ls'
