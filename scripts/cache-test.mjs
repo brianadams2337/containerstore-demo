@@ -13,17 +13,19 @@ const BASE_URL = process.env.BASE_URL ?? 'http://localhost:3000/en'
 
 const getHeaders = async (url) => {
   return new Promise((resolve, reject) => {
-    http.get(url, res => {
-      resolve(res.headers)
-    }).on('error', (e) => reject(e))
+    http
+      .get(url, (res) => {
+        resolve(res.headers)
+      })
+      .on('error', (e) => reject(e))
   })
 }
 
 function parseCacheControl(header) {
   const result = {}
-  const directives = header.split(',').map(d => d.trim())
+  const directives = header.split(',').map((d) => d.trim())
 
-  directives.forEach(directive => {
+  directives.forEach((directive) => {
     if (directive.includes('=')) {
       const [property, value] = directive.split('=')
       result[property.trim()] = value.trim()
@@ -47,8 +49,13 @@ function assertCacheHeaders(headers) {
       assert.fail('Missing s-maxage directive in cache-control header')
     }
 
-    if (cacheControl['stale-while-revalidate'] !== 'true' && isNaN(parseInt(cacheControl['stale-while-revalidate']))) {
-      assert.fail('Missing stale-while-revalidate directive in cache-control header')
+    if (
+      cacheControl['stale-while-revalidate'] !== 'true' &&
+      isNaN(parseInt(cacheControl['stale-while-revalidate']))
+    ) {
+      assert.fail(
+        'Missing stale-while-revalidate directive in cache-control header',
+      )
     }
   } catch (e) {
     console.error(headers)
@@ -79,7 +86,12 @@ test('product list has cache headers', async () => {
 })
 
 test('product page has cache headers', async () => {
-  const headers = await getHeaders(join(BASE_URL, '/p/ribbed-tank-top-with-10-images-and-2-color-variations-1078'))
+  const headers = await getHeaders(
+    join(
+      BASE_URL,
+      '/p/ribbed-tank-top-with-10-images-and-2-color-variations-1078',
+    ),
+  )
   assertCacheHeaders(headers)
 })
 

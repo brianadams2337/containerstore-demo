@@ -22,11 +22,13 @@ export default <T = unknown>(key: string) => {
   async function fetchBySlug(slug: string) {
     status.value = 'pending'
     fetching.value = true
+
     try {
       const { data: storyData } = await storyblokApi.get(
         `cdn/stories/${slug}`,
         storyblokOptions,
       )
+
       data.value = storyData.story
     } catch (e) {
       error.value = handleCmsError(e)
@@ -40,6 +42,7 @@ export default <T = unknown>(key: string) => {
   async function fetchByFolder(folder: string, options?: ISbStoriesParams) {
     fetching.value = true
     status.value = 'pending'
+
     try {
       const {
         data: { stories },
@@ -48,6 +51,7 @@ export default <T = unknown>(key: string) => {
         starts_with: folder,
         ...options,
       })
+
       data.value = stories as unknown as StoryblokStory<T>
     } catch (e) {
       error.value = handleCmsError(e)

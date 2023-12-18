@@ -190,7 +190,11 @@ export default defineNuxtConfig({
       default: {
         name: 'default',
         provider: '~/providers/default',
-        options: { baseURL: 'https://brb-demo.cdn.aboutyou.cloud/' },
+        options: {
+          baseURL:
+            process.env.NUXT_PUBLIC_IMAGE_BASE_URL ??
+            'https://brb-demo.cdn.aboutyou.cloud/',
+        },
       },
     },
     intersectOptions: { rootMargin: '50px' },

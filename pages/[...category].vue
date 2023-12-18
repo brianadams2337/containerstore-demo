@@ -150,7 +150,9 @@ const {
 const fetchData = async () => {
   await Promise.all([
     fetchProducts(fetchParameters.value),
-    fetchBySlug(`categories/${selectedCategory.value?.id}`),
+    ...(selectedCategory.value?.id
+      ? [fetchBySlug(`categories/${selectedCategory.value?.id}`)]
+      : []),
   ])
 }
 

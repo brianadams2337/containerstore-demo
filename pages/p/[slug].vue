@@ -87,6 +87,7 @@
                     :to="getProductDetailRoute(product, item.id)"
                   >
                     <ColorChip
+                      v-if="item.colors.length"
                       :is-active="item.id === product.id"
                       :size="isGreaterOrEquals('md') ? Size.LG : Size.XL"
                       :color="item.colors[0] as ProductColor"
