@@ -141,7 +141,7 @@
         </div>
       </div>
       <SlideIn
-        v-if="isLessThan('lg')"
+        class="lg:hidden"
         :name="`wishlistcard_${product.id}`"
         slide-type="fromBottom"
         slide-class="w-full xl:max-w-none h-auto xl:max-h-none top-auto left-0 p-0 pt-0"
@@ -201,8 +201,6 @@ const { formatCurrency } = useFormatHelpers()
 const { fetching: isWishlistFetching, replaceItem: replaceWishlistItem } =
   await useWishlist()
 const basket = await useBasket()
-
-const { isLessThan } = useViewport()
 
 const { trackAddToBasket } = useTrackingEvents()
 

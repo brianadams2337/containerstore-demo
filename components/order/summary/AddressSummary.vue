@@ -1,16 +1,10 @@
 <template>
   <div class="bg-white">
     <AddressCards
-      v-show="isGreaterOrEquals('md')"
       v-bind="{ items, shippingAddress, billingAddress }"
-      class="mb-4"
+      class="mb-4 max-sm:hidden"
     />
-    <AddressTabs
-      v-show="!isGreaterOrEquals('md')"
-      :items="items"
-      tabs-class="-mx-5"
-      class="mb-8"
-    >
+    <AddressTabs :items="items" tabs-class="-mx-5" class="mb-8 md:hidden">
       <template #shipping>
         <AddressInformation v-bind="shippingAddress" />
       </template>
@@ -37,8 +31,6 @@ const props = defineProps({
     default: null,
   },
 })
-
-const { isGreaterOrEquals } = useViewport()
 
 const { $i18n } = useNuxtApp()
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- desktop tabular -->
-    <div v-show="isGreaterOrEquals('sm')" class="mt-10 xl:w-[827px]">
+    <div class="mt-10 hidden sm:block xl:w-[827px]">
       <div
         class="relative box-border flex h-12 justify-between rounded-md border border-gray-350"
       >
@@ -33,7 +33,7 @@
     </div>
 
     <!-- mobile accordion -->
-    <div v-show="!isGreaterOrEquals('sm')" class="mx-auto max-w-6xl md:mx-0">
+    <div class="mx-auto max-w-6xl sm:hidden md:mx-0">
       <div class="max-w-3xl">
         <div class="divide-y divide-gray-300">
           <ProductDetailAccordionEntry :title="$t('pdp.product_info_heading')">
@@ -70,8 +70,6 @@ const props = defineProps({
     default: null,
   },
 })
-
-const { isGreaterOrEquals } = useViewport()
 
 const baseInfos = computed(() => {
   const keys = [

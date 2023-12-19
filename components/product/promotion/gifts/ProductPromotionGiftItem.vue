@@ -46,11 +46,11 @@
     </div>
     <template v-if="promotion">
       <ProductPromotionSelectionModal
-        v-if="isGreaterOrEquals('md')"
+        class="max-sm:hidden"
         v-bind="{ product, promotion, promotedProduct }"
       />
       <ProductPromotionSizeSelection
-        v-else
+        class="md:hidden"
         v-bind="{ product, promotion, promotedProduct }"
       />
     </template>
@@ -78,7 +78,6 @@ const { toggleGiftSelection } = await usePromotionGiftSelection(
   promotedProduct.value,
 )
 
-const { isGreaterOrEquals } = useViewport()
 const { getProductDetailRoute } = useRouteHelpers()
 
 const { name, image, variantWithLowestPrice } = useProductBaseInfo(
