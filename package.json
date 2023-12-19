@@ -42,7 +42,7 @@
     "@scayle/prettier-config-storefront": "2.0.2",
     "@types/color": "3.0.6",
     "@types/node": "20.10.5",
-    "@upstash/redis": "1.25.2",
+    "@upstash/redis": "1.27.1",
     "@vitest/coverage-v8": "0.34.6",
     "@zadigetvoltaire/nuxt-gtm": "0.0.13",
     "autoprefixer": "10.4.16",
