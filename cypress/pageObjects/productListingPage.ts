@@ -125,7 +125,7 @@ class ProductListingPage extends BasePage {
 
   closeFilters() {
     cy.get(this.pageElements.filters.closeCross).click()
-    cy.get(this.pageElements.filters.applyFilterButton).should('not.be.visible')
+    cy.get(this.pageElements.filters.applyFilterButton).should('not.exist')
   }
 
   selectTestColour() {

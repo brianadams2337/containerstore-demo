@@ -30,6 +30,7 @@ if (Cypress.env().mobile !== true) {
     beforeEach(() => {
       HomePage.open()
       HomePage.waitForPageToBeDisplayed()
+      HomePage.closePromotionButton()
     })
 
     afterEach(() => {

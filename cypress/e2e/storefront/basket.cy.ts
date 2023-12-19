@@ -99,7 +99,6 @@ describe('Basket Feature', () => {
     BasketPage.waitForPageToBeDisplayed()
     BasketPage.assertThatProductIsPresent()
     Header.assertShoppingBagCounter(1)
-    cy.pause()
     cy.log('Checking basket count to stay consistent on reload')
     cy.reload()
     BasketPage.waitForPageToBeDisplayed()

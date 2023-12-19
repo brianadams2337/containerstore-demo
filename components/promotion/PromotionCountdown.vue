@@ -16,7 +16,7 @@
         </div>
       </template>
       <FadeInTransition :duration="300">
-        <Countdown :until="until" />
+        <Countdown :until="until" data-test-id="countdown" />
       </FadeInTransition>
     </ClientOnly>
   </div>

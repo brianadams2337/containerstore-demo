@@ -139,19 +139,6 @@ describe('Product Listing Page', { testIsolation: false }, () => {
 })
 
 describe('Filters', { testIsolation: false }, () => {
-  beforeEach(() => {
-    HomePage.open()
-    HomePage.closePromotionButton()
-    cy.contains('Women').trigger('mouseenter')
-    ProductListingPage.openTestCategory()
-    ProductListingPage.waitForPageToBeDisplayed()
-    cy.scrollTo('bottom', { duration: 4000 })
-  })
-
-  afterEach(() => {
-    cy.clearSiteData()
-  })
-
   it('verify that after all filter elements are shown on a page', () => {
     ProductListingPage.openFilters()
     const strings = getLocaleFile()
@@ -175,6 +162,7 @@ describe('Filters', { testIsolation: false }, () => {
       ProductListingPage.clickApplyFilters()
 
       cy.log('check that filter is reset back after click on category:')
+      cy.contains('Women').trigger('mouseenter')
       ProductListingPage.openTestCategory()
       ProductListingPage.waitForPageToBeDisplayed()
       cy.scrollTo('bottom', { duration: 4000 })
@@ -245,6 +233,8 @@ describe('Filters', { testIsolation: false }, () => {
   it(' Filter should reset in flyout after clicking on "ALL" button', () => {
     cy.clearSiteData()
     HomePage.open()
+    HomePage.closePromotionButton()
+    cy.contains('Women').trigger('mouseenter')
     ProductListingPage.openTestCategory()
     ProductListingPage.waitForPageToBeDisplayed()
     cy.scrollTo('bottom', { duration: 4000 })
@@ -266,22 +256,6 @@ describe('Filters', { testIsolation: false }, () => {
   })
 })
 describe('Sorting', { testIsolation: false }, () => {
-  before(() => {
-    HomePage.open()
-    ProductListingPage.openTestCategory()
-    ProductListingPage.waitForPageToBeDisplayed()
-    cy.scrollTo('bottom', { duration: 2000 })
-    cy.scrollTo('top', { duration: 1000 })
-  })
-
-  beforeEach(() => {
-    cy.reload()
-  })
-
-  afterEach(() => {
-    cy.clearSiteData()
-  })
-
   it('Click on sorting button > Sorting menu is shown', () => {
     cy.log('assert that default sorting is: Newest')
     ProductListingPage.assertSortingButtonText(
@@ -335,9 +309,6 @@ if (Cypress.env().mobile !== true) {
   describe('Scroll', () => {
     it('Check scroll position when going back from PDP to PLP', () => {
       const productIndex = 12
-      HomePage.open()
-      ProductListingPage.openTestCategory()
-      ProductListingPage.waitForPageToBeDisplayed()
       cy.scrollTo('bottom', { duration: 2000 })
       ProductListingPage.checkThatProductIsVisible(productIndex)
 
