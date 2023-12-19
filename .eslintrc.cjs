@@ -12,7 +12,7 @@ module.exports = {
     '@scayle/eslint-config-storefront',
   ],
   // https://eslint.org/docs/latest/use/configure/ignore#ignorepatterns-in-config-files
-  ignorePatterns: ['**/fixtures/**/*'],
+  ignorePatterns: ['cypress/', '**/fixtures/**/*'],
   rules: {
     'tailwindcss/no-custom-classname': [
       'warn',
@@ -30,18 +30,6 @@ module.exports = {
     'tailwindcss/classnames-order': 'error',
     'vue/multi-word-component-names': 'warn',
   },
-  overrides: [
-    {
-      files: ['cypress/**/*'],
-      extends: ['plugin:cypress/recommended'],
-      plugins: ['cypress'],
-      rules: {
-        'cypress/no-unnecessary-waiting': 'off',
-        'cypress/unsafe-to-chain-command': 'off',
-        'sonarjs/no-duplicate-string': 1,
-      },
-    },
-  ],
   settings: {
     /**
      * Minimize the globbing scope to improve performance
