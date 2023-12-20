@@ -122,7 +122,7 @@ The only difference here is that all relevant `NUXT_` runtimeConfig override val
 
 ## Testing
 
-For testing with Nuxt 3, we provide a [nuxt-vitest](https://github.com/danielroe/nuxt-vitest) integration. It allows us to use a Nuxt environment in [vitest](https://vitest.dev/).
+For testing with Nuxt 3, we provide a [@nuxt/test-utils](https://github.com/nuxt/test-utils) integration. It allows us to use a Nuxt environment in [vitest](https://vitest.dev/).
 For ease of use we use `.nuxt.test.ts` or `.nuxt.spec.ts` file suffix for our tests to use nuxt env.
 
 ## Storyblok Scripts

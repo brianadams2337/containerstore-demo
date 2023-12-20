@@ -150,7 +150,7 @@ export default defineNuxtConfig({
     '@storyblok/nuxt',
     'nuxt-viewport',
     '@zadigetvoltaire/nuxt-gtm',
-    'nuxt-vitest',
+    '@nuxt/test-utils/module',
   ],
 
   // https://nuxt.com/docs/api/nuxt-config#build
