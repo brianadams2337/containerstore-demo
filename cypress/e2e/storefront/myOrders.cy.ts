@@ -3,18 +3,22 @@ import MyOrdersPage from '../../pageObjects/myOrdersPage'
 import Header from '../../pageObjects/components/header'
 import Footer from '../../pageObjects/components/footer'
 import { TEST_ORDER } from '../../support/constants'
-import { useLoggedInUser } from '../../test-helpers'
+import SignInPage from '../../pageObjects/signInPage'
 
-describe(`my orders`, () => {
-  beforeEach(() => {
-    useLoggedInUser()
+describe(`my orders`, { testIsolation: false }, () => {
+  before(() => {
     HomePage.open()
     HomePage.waitForPageToBeDisplayed()
     HomePage.closePromotionButton()
+    Header.clickOnSignInButton()
+    SignInPage.waitForPageToBeDisplayed()
+    SignInPage.login()
+    HomePage.waitForPageToBeDisplayed()
+    Header.clickOnAccountSettingsButton()
     MyOrdersPage.open()
   })
 
-  afterEach(() => {
+  after(() => {
     cy.clearSiteData()
   })
 

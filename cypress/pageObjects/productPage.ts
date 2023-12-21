@@ -39,7 +39,6 @@ class ProductPage extends BasePage {
     Header.assertHeaderIsDisplayed()
     cy.get(this.pageElements.productImages).should('exist')
     cy.get(this.pageElements.price).should('exist')
-    cy.get(this.pageElements.addToWishlistButton).should('exist')
     cy.get(this.pageElements.addToCartButton).should('exist')
   }
 

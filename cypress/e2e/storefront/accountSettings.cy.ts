@@ -2,20 +2,24 @@ import HomePage from '../../pageObjects/homePage'
 import Header from '../../pageObjects/components/header'
 import Footer from '../../pageObjects/components/footer'
 import AccountSettingsPage from '../../pageObjects/accountSettingsPage'
-import { getLocaleFile, useLoggedInUser } from '../../test-helpers'
+import { getLocaleFile } from '../../test-helpers'
 import { LOGGED_IN_USER_DATA } from '../../support/constants'
+import SignInPage from '../../pageObjects/signInPage'
 
-describe(`Account settings:`, () => {
-  beforeEach(() => {
-    useLoggedInUser()
+describe(`Account settings:`, { testIsolation: false }, () => {
+  before(() => {
     HomePage.open()
     HomePage.waitForPageToBeDisplayed()
     HomePage.closePromotionButton()
+    Header.clickOnSignInButton()
+    SignInPage.waitForPageToBeDisplayed()
+    SignInPage.login()
+    HomePage.waitForPageToBeDisplayed()
     Header.clickOnAccountSettingsButton()
     AccountSettingsPage.assertAccountSettingPageIsDisplayed()
   })
 
-  afterEach(() => {
+  after(() => {
     cy.clearSiteData()
   })
 
@@ -40,7 +44,7 @@ describe(`Account settings:`, () => {
   it('Account Settings - password is weak error check', () => {
     AccountSettingsPage.setNewPassword('1')
     AccountSettingsPage.assertNewPasswordValidationError(
-      getLocaleFile().validation.password.replace('{field}', 'New Password'),
+      getLocaleFile().validation.password.replace('{field}', 'Neues Passwort'),
     )
   })
 
@@ -49,8 +53,8 @@ describe(`Account settings:`, () => {
     AccountSettingsPage.setRepeatNewPassword('1')
     AccountSettingsPage.assertNewPasswordValidationError(
       getLocaleFile()
-        .validation.same_as.replace('{field}', 'Confirm password')
-        .replace('{otherField}', 'New Password'),
+        .validation.same_as.replace('{field}', 'Bestätige das Passwort')
+        .replace('{otherField}', 'Neues Passwort'),
     )
   })
 })

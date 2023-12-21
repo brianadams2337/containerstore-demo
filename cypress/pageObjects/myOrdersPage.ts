@@ -11,7 +11,6 @@ class MyOrdersPage extends BasePage {
   }
 
   open() {
-    cy.visit('/account/orders')
     this.openOrderByIndex()
     this.waitForMyOrdersPageIsDisplayed()
   }

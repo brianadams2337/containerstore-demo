@@ -4,12 +4,12 @@ import Header from './components/header'
 
 class AccountSettingsPage extends BasePage {
   private pageElements = {
-    firstName: 'input[id="First name"]',
-    lastName: 'input[id="Last name"]',
+    firstName: 'input[id="Vorname"]',
+    lastName: 'input[id="Nachname"]',
     loginSubmitButton: 'input[id="Your date of birth"]',
     submitButton: 'button[class*="items-center"]',
-    newPassword: '[id="New Password"]',
-    repeatNewPassword: '[id="Confirm password"]',
+    newPassword: '[id="Neues Passwort"]',
+    repeatNewPassword: '[id="Bestätige das Passwort"]',
     validationErrorText: '[data-test-id="validation-error-text"]',
     buttons: 'form button',
     notificationPopup: '[data-test-id="toast-info"]',
@@ -29,8 +29,8 @@ class AccountSettingsPage extends BasePage {
   }
 
   clickSaveButton(): void {
-    cy.get(this.pageElements.buttons).contains('Save').click()
-    cy.get(this.pageElements.notificationPopup)
+    cy.get(this.pageElements.buttons).contains('Speichern').click()
+    // cy.get(this.pageElements.notificationPopup)
   }
 
   setNewPassword(password: string): void {

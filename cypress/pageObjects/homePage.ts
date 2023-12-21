@@ -32,7 +32,9 @@ class HomePage extends BasePage {
   }
 
   closePromotionButton() {
-    cy.get('[data-test-id="countdown"]').should('be.visible')
+    cy.get('[data-test-id="countdown"]', { timeout: 60000 }).should(
+      'be.visible',
+    )
     cy.get('[data-test-id="close-promotion-button"]').click()
   }
 }

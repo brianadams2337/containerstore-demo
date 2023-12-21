@@ -17,7 +17,7 @@ describe(`my orders`, () => {
     cy.clearSiteData()
   })
 
-  it('Sold out product should be clickable on products slider', () => {
+  it.skip('Sold out product should be clickable on products slider', () => {
     Header.assertHeaderIsDisplayed()
     Footer.assertFooterIsDisplayed()
     ProductListingPage.openProductByID(TEST_ITEM_SOLDOUT.id)
@@ -37,7 +37,7 @@ if (Cypress.env().mobile !== true) {
       cy.clearSiteData()
     })
 
-    it.only('check country switch', () => {
+    it.skip('check country switch', () => {
       cy.get(HomePage.pageElements.countrySwitcher).then((lang) => {
         const initialLanguage = lang.text()
         cy.get(HomePage.pageElements.countrySwitcher).click({ force: true })

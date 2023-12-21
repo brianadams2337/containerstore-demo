@@ -1,4 +1,4 @@
-import { cleanText, getLocaleFile, useLoggedInUser } from '../../test-helpers'
+import { cleanText, getLocaleFile } from '../../test-helpers'
 import ProductPage from '../../pageObjects/productPage'
 import WishlistPage from '../../pageObjects/wishlistPage'
 import BasketPage from '../../pageObjects/basketPage'
@@ -6,6 +6,7 @@ import Header from '../../pageObjects/components/header'
 import { TEST_ITEM_ONESIZE, TEST_ITEM_REGULAR } from '../../support/constants'
 import Footer from '../../pageObjects/components/footer'
 import HomePage from '../../pageObjects/homePage'
+import SignInPage from '../../pageObjects/signInPage'
 
 const locale = getLocaleFile()
 
@@ -168,7 +169,13 @@ describe('Wishlist feature', () => {
   })
 
   it('check buttons on empty wishlist for logged in user', () => {
-    useLoggedInUser()
+    HomePage.open()
+    HomePage.waitForPageToBeDisplayed()
+    HomePage.closePromotionButton()
+    Header.clickOnSignInButton()
+    SignInPage.waitForPageToBeDisplayed()
+    SignInPage.login()
+    HomePage.waitForPageToBeDisplayed()
     ProductPage.openProduct(TEST_ITEM_ONESIZE.link)
     ProductPage.waitForPageToBeDisplayed()
     HomePage.closePromotionButton()

@@ -6,9 +6,9 @@ class Header {
     headerSearchInput: 'input[id="search"]',
     navBarOverflow: 'nav[class*="overflow-y-auto"]',
     headerUserButton: '[data-test-id="user-popover"]',
-    logInButton: 'a[href="/signin"]',
-    userAccountButton: 'a[href="/account/user"]',
-    userOrdersButton: 'a[href="/account/order"]',
+    logInButton: 'a[href*="/signin"]',
+    userAccountButton: 'a[href*="/account/user"]',
+    userOrdersButton: 'a[href*="/account/order"]',
     headerWishlistLink: '[data-test-id="wishlist-link"]',
     headerBasketButton: '[data-test-id="basket-link"]',
     headerBasketCounter:
@@ -36,7 +36,7 @@ class Header {
     cy.get(this.pageElements.headerLoginButton).click({
       force: true,
     })
-    cy.get(this.pageElements.logInButton).should('be.visible').click()
+    cy.get(this.pageElements.logInButton).first().click({ force: true })
   }
 
   clickOnAccountSettingsButton(): void {

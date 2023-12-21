@@ -1,11 +1,13 @@
+import { LOGGED_IN_USER_DATA } from '../support/constants'
 import { BasePage } from './basePage'
 import Header from './components/header'
+import HomePage from './homePage'
 
 class SignInPage extends BasePage {
   private pageElements = {
-    email: '#email',
-    password: '#password',
-    loginSubmitButton: "[data-test-id='login-submit']",
+    email: 'input[type="email"]',
+    password: 'input[type="password"]',
+    loginSubmitButton: 'button[class*="p-3 border border-primary"]',
   }
 
   getLoginIFrameBody() {
@@ -18,30 +20,27 @@ class SignInPage extends BasePage {
 
   waitForPageToBeDisplayed(): void {
     Header.assertHeaderIsDisplayed()
-    cy.wait(5000)
-    this.getLoginIFrameBody().find(this.pageElements.email).should('exist')
-    this.getLoginIFrameBody().find(this.pageElements.password).should('exist')
-    this.getLoginIFrameBody()
-      .find(this.pageElements.loginSubmitButton)
-      .should('exist')
+    cy.get(this.pageElements.email).should('be.visible')
+    cy.get(this.pageElements.password).should('be.visible')
   }
 
   fillLoginData(email: string, password: string) {
-    this.getLoginIFrameBody()
-      .find(this.pageElements.email)
-      .should('exist')
-      .type(email)
-    this.getLoginIFrameBody()
-      .find(this.pageElements.password)
-      .should('exist')
-      .type(password)
+    cy.get(this.pageElements.email).type(email)
+    cy.get(this.pageElements.password).type(password)
   }
 
   clickSubmitButton() {
-    this.getLoginIFrameBody()
-      .find(this.pageElements.loginSubmitButton)
-      .should('exist')
-      .click()
+    cy.get(this.pageElements.loginSubmitButton).click()
+  }
+
+  login(
+    email = LOGGED_IN_USER_DATA.email,
+    password = LOGGED_IN_USER_DATA.password,
+  ) {
+    this.waitForPageToBeDisplayed()
+    this.fillLoginData(email, password)
+    this.clickSubmitButton()
+    HomePage.waitForPageToBeDisplayed()
   }
 }
 export default new SignInPage()

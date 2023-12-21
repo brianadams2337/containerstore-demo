@@ -2,7 +2,7 @@
 // TODO: use Cypress.env instead? See: https://docs.cypress.io/api/cypress-api/env
 
 export const HEADER_TEST_CATEGORY_WOMEN = 'Women/clothing'
-export const PLP_CATEGORY_WOMEN = '/women'
+export const PLP_CATEGORY_WOMEN = 'Women'
 export const TEST_ITEM_REGULAR = {
   link: 'p/pullover-aus-grobstrick-1115',
   id: 1088,
@@ -67,14 +67,14 @@ export const PLP_CATEGORY_SALE = '/sale'
 export const TEST_COLOR = 10
 
 export const TEST_ORDER = {
-  delivery: 'Delivery 1',
+  delivery: 'Lieferung 1',
   deliveryStartDate: '23.11.2022',
   deliveryEndDate: '23.11.2022',
   address: 'test AQA',
   price: '16',
-  size: 'Size',
-  quantity: 'Quantity: 1',
-  deliveryCost: 'Free',
+  size: 'Größe',
+  quantity: 'Anzahl: 1',
+  deliveryCost: 'Kostenlos',
   paymentMethod: 'accounting',
 }
 
@@ -86,4 +86,4 @@ export const LOGGED_IN_USER_DATA = {
   password: 'Aqa-temp-pass!',
 }
 export const LOGGED_IN_USER_SESSION =
-  's%3A124%3Af97ee66d-d6c7-4dbd-95bf-a63332d29cc1.5AEHUSY2YWQadwqiMZwU5RnqR4zVOD%2BA68GYEyOK5ls'
+  's%3A124%3A06241d0f-a813-4658-b361-f7fcacce0d08.u1Bro%2FspNawS0bU8UpHSuTN2siqLOIlsnN2EzMHuHyI'

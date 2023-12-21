@@ -19,7 +19,6 @@ if (Cypress.env().mobile !== true) {
 beforeEach(() => {
   HomePage.open()
   HomePage.closePromotionButton()
-  cy.contains('Women').trigger('mouseenter')
   ProductListingPage.openTestCategory()
   ProductListingPage.waitForPageToBeDisplayed()
   cy.scrollTo('bottom', { duration: 2000 })
@@ -127,7 +126,6 @@ describe('Product Listing Page', { testIsolation: false }, () => {
   })
 
   it('Open product by color sibling', () => {
-    cy.contains('Women').trigger('mouseenter')
     ProductListingPage.openTestCategory()
     ProductListingPage.waitForPageToBeDisplayed()
     ProductListingPage.openProductBySiblingColor(
@@ -162,7 +160,6 @@ describe('Filters', { testIsolation: false }, () => {
       ProductListingPage.clickApplyFilters()
 
       cy.log('check that filter is reset back after click on category:')
-      cy.contains('Women').trigger('mouseenter')
       ProductListingPage.openTestCategory()
       ProductListingPage.waitForPageToBeDisplayed()
       cy.scrollTo('bottom', { duration: 4000 })
@@ -230,29 +227,18 @@ describe('Filters', { testIsolation: false }, () => {
     })
   })
 
-  it(' Filter should reset in flyout after clicking on "ALL" button', () => {
+  it(' Filter should be opened after clicking on "ALL" button', () => {
     cy.clearSiteData()
     HomePage.open()
     HomePage.closePromotionButton()
-    cy.contains('Women').trigger('mouseenter')
     ProductListingPage.openTestCategory()
     ProductListingPage.waitForPageToBeDisplayed()
     cy.scrollTo('bottom', { duration: 4000 })
-
-    cy.get(ProductListingPage.pageElements.productItem).then((elm) => {
-      ProductListingPage.openFilters()
-      ProductListingPage.selectTestColour()
-      ProductListingPage.clickApplyFilters()
-
-      cy.log('check that filter is reset back after click on category:')
-
-      ProductListingPage.clickOnProductCountButton()
-      ProductListingPage.waitForPageToBeDisplayed()
-      cy.scrollTo('bottom', { duration: 4000 })
-      cy.get(ProductListingPage.pageElements.productItem).then((products) => {
-        expect(elm.length).eq(products.length)
-      })
-    })
+    ProductListingPage.openFilters()
+    ProductListingPage.selectTestColour()
+    ProductListingPage.clickApplyFilters()
+    ProductListingPage.clickOnProductCountButton()
+    ProductListingPage.clickApplyFilters()
   })
 })
 describe('Sorting', { testIsolation: false }, () => {

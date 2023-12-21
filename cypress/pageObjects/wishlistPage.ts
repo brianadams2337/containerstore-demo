@@ -113,6 +113,7 @@ class WishlistPage extends BasePage {
         cy.get(this.pageElements.removeFromListButton)
           .each(($el) => {
             cy.wrap($el).click()
+            cy.wait(500)
           })
           .then(() => {
             cy.contains(locale.global.continue_shopping_label)
