@@ -273,6 +273,11 @@ export default defineNuxtConfig({
   // https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering
   // https://nitro.unjs.io/guide/cache#route-rules
   routeRules: (() => {
+    // Allow for disabling the SSR Cache via an environment flag
+    if (process.env.DISABLE_SSR_CACHE === 'true') {
+      return {}
+    }
+
     // Vercel-specific routeRules for using ISR with Vercel CDN as page caching setup
     if (
       process.env.NITRO_PRESET &&
@@ -314,10 +319,6 @@ export default defineNuxtConfig({
     } as const
 
     const NO_CACHE = { swr: false, cache: false } as const
-
-    if (process.env.DISABLE_SSR_CACHE === 'true') {
-      return {}
-    }
 
     // Default routeRules for using SWR and `storefront-cache` storage for page caching setup
     return DOMAIN_PER_LOCALE
