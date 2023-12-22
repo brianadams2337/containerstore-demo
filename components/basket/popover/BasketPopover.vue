@@ -37,5 +37,11 @@ const { isLessThan } = useViewport()
 
 const { openBasketFlyout, closeBasketFlyout, isBasketFlyoutOpen } = useFlyouts()
 
-const { isEmpty, countWithoutSoldOutItems } = await useBasket()
+const { isEmpty, fetch, countWithoutSoldOutItems } = await useBasket({
+  options: { autoFetch: false },
+})
+
+onMounted(() => {
+  fetch()
+})
 </script>
