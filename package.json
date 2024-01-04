@@ -39,7 +39,7 @@
     "@nuxt/image": "1.1.0",
     "@nuxt/test-utils": "3.9.0",
     "@nuxtjs/i18n": "8.0.0",
-    "@nuxtjs/tailwindcss": "6.9.5",
+    "@nuxtjs/tailwindcss": "6.10.3",
     "@scayle/eslint-config-storefront": "3.2.6",
     "@scayle/prettier-config-storefront": "2.0.2",
     "@types/color": "3.0.6",
