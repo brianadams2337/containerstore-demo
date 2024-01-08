@@ -32,7 +32,10 @@
           @intersect:product="collectRowIntersection(index)"
         >
           <template #header-badge>
-            <ProductListHeaderBadges :product="product" />
+            <ProductListHeaderBadges
+              :product="product"
+              class="absolute left-2 top-0"
+            />
           </template>
         </ProductCard>
       </slot>
