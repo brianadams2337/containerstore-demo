@@ -77,7 +77,7 @@
   },
   "dependencies": {
     "@scayle/storefront-nuxt": "7.48.0",
-    "@storyblok/nuxt": "5.7.10",
+    "@storyblok/nuxt": "6.0.0",
     "@tailwindcss/forms": "0.5.7",
     "@tailwindcss/typography": "0.5.10",
     "@vercel/kv": "1.0.1",

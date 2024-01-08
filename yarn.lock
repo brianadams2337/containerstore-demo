@@ -1170,7 +1170,7 @@
     unimport "^3.5.0"
     untyped "^1.4.0"
 
-"@nuxt/kit@3.9.1", "@nuxt/kit@^3.4.0", "@nuxt/kit@^3.5.1", "@nuxt/kit@^3.7.0", "@nuxt/kit@^3.7.4", "@nuxt/kit@^3.8.0", "@nuxt/kit@^3.8.2", "@nuxt/kit@^3.9.0", "@nuxt/kit@^3.9.1":
+"@nuxt/kit@3.9.1", "@nuxt/kit@^3.4.0", "@nuxt/kit@^3.5.1", "@nuxt/kit@^3.7.0", "@nuxt/kit@^3.7.4", "@nuxt/kit@^3.8.2", "@nuxt/kit@^3.9.0", "@nuxt/kit@^3.9.1":
   version "3.9.1"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.9.1.tgz#12ec2f38fad35c4f777e21bf1f5671c5824cd1b6"
   integrity sha512-QvwZ4QmxmKEnGXXwhLapfogW8enIX30GD7nbmasAkcDIf4GdP2IWUwhd068mrXMbzdZupRLV1J5E74Dr516o5g==
@@ -1815,28 +1815,26 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/merge-streams/-/merge-streams-1.0.0.tgz#9cd84cc15bc865a5ca35fcaae198eb899f7b5c90"
   integrity sha512-rUV5WyJrJLoloD4NDN1V1+LDMDWOa4OTsT4yYJwQNpTU6FWxkxHpL7eu4w+DmiH8x/EAM1otkPE1+LaspIbplw==
 
-"@storyblok/js@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@storyblok/js/-/js-2.3.0.tgz#be2a9eb0cfb1de2b26c6b7733529c95f2a7cad10"
-  integrity sha512-xI69Ec0hVtg6Z6asI38UU/Ztag0CYEfFlFY6ti/TcJiaJeOFAvSUnRXwZ4yb86V8jjsNPaWt37oFk7Jr+isy4g==
+"@storyblok/js@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@storyblok/js/-/js-3.0.0.tgz#d4d04f1fc9e0496894638978b7ba67b6efc79339"
+  integrity sha512-caeS9sHRh/7Kpemdk5mcaH7SrrNpuynmiR+WPHxKCLJ8DDbVljzPPaivAV8WJMHXOFz/9dw9qd63eevMUOp2eg==
   dependencies:
-    storyblok-js-client "^5.14.2"
+    storyblok-js-client "^6.4.1"
 
-"@storyblok/nuxt@5.7.10":
-  version "5.7.10"
-  resolved "https://registry.yarnpkg.com/@storyblok/nuxt/-/nuxt-5.7.10.tgz#c9a3cfd853a9f839eaa73adde2d7bc0fa15f509d"
-  integrity sha512-g0qgBW6KJu2h8WamyB3iBcy5qfIveU8fWEe26O97DTt0teS3s/6z2SKektj89S85f4oZFiENgfP0f7LEK1PYdQ==
+"@storyblok/nuxt@6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@storyblok/nuxt/-/nuxt-6.0.0.tgz#006ef51d34a1007c383f15e8a57f0e3e60f9c612"
+  integrity sha512-lsujj0ayAjS/K/0z4jiw4wTZBUZ1nH4Vzz9D6tIYj0huq8713DhKsiGU83QCBmhD5HldJ5WsOT/Gg6WY7jMxEA==
   dependencies:
-    "@nuxt/kit" "^3.8.0"
-    "@storyblok/vue" "^7.3.1"
-    prettier "^3.0.3"
+    "@storyblok/vue" "^8.0.0"
 
-"@storyblok/vue@^7.3.1":
-  version "7.3.2"
-  resolved "https://registry.yarnpkg.com/@storyblok/vue/-/vue-7.3.2.tgz#90759281fc05e455d9743df4f3d7a4f8c32a06ae"
-  integrity sha512-LvRZ9tsJqgx4STSdVLMcVfrVFpCnGbHfu7kGnybYiDMZ3YYgbbNTvxgjNRXs4RJ9trX7NY08Qwou9/QmiXAY7A==
+"@storyblok/vue@^8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@storyblok/vue/-/vue-8.0.0.tgz#7c2f2850f805bd75369af663be72e817741a75fd"
+  integrity sha512-kxz5gxq5otz7X05swvVcNW+w8YoatN5rkfloB18xry6e2n3wA9bhrWQ5G2gR/Pj46gYiImXTtrXcWQj7RAnytg==
   dependencies:
-    "@storyblok/js" "^2.3.0"
+    "@storyblok/js" "^3.0.0"
 
 "@szmarczak/http-timer@^1.1.2":
   version "1.1.2"
@@ -8438,11 +8436,6 @@ prettier@^2.6.2:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.8.tgz#e8c5d7e98a4305ffe3de2e1fc4aca1a71c28b1da"
   integrity sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==
 
-prettier@^3.0.3:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.1.1.tgz#6ba9f23165d690b6cbdaa88cb0807278f7019848"
-  integrity sha512-22UbSzg8luF4UuZtzgiUOfcGM8s4tjBv6dJRT7j275NXsy2jb4aJa4NNveul5x4eqlF1wuhuR2RElK71RvmVaw==
-
 pretty-bytes@^5.6.0:
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-5.6.0.tgz#356256f643804773c82f64723fe78c92c62beaeb"
@@ -9417,12 +9410,12 @@ storyblok-generate-ts@2.0.1:
     ts-command-line-args "^2.3.1"
     tsup "^6.4.0"
 
-storyblok-js-client@6.4.1:
+storyblok-js-client@6.4.1, storyblok-js-client@^6.4.1:
   version "6.4.1"
   resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-6.4.1.tgz#c3f16fefd9dd59e5340a9947ee4011068f21b5a3"
   integrity sha512-Gcwh/1nX3B7Vv5uTgJ2vATwiK/Y57gs+bKPXfsPOUr3Us475u1x2nlS8Sfe3zc+hDRUTD0WmwBNqI0qJLyp7kg==
 
-storyblok-js-client@^5.14.0, storyblok-js-client@^5.14.2:
+storyblok-js-client@^5.14.0:
   version "5.14.4"
   resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-5.14.4.tgz#bfc69995bc4ca40a9bd1e5745a651b4eca591b08"
   integrity sha512-9yY33tvfO3Cbe25h/l6K0T3IxJeOOyGl/pCwsd55woT0ZEBhIiEZoMumpRsyLjD5AedW9KXLbLjMXhHazkepCA==
