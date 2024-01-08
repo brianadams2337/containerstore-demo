@@ -58,6 +58,7 @@ const onFilterApply = (filters?: Record<string, any>) => {
   applyFilters({
     preserveAttributeFilters: true,
     ...(filters && { quickFilters: filters }),
+    shouldToggle: false,
   })
 }
 </script>
