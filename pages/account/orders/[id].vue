@@ -69,7 +69,7 @@ const billingAddress = computed(() => {
 })
 const itemCount = computed(() => orderDetails.value?.items?.length || 0)
 const packages = computed(() => orderDetails.value?.packages)
-const orderItems = computed(() => (orderDetails.value as Order)?.items)
+const orderItems = computed(() => orderDetails.value.items)
 
 defineOptions({ name: 'OrderDetailsView' })
 definePageMeta({ pageType: 'account_area:order_id' })

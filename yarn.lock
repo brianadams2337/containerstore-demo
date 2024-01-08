@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@aashutoshrathi/word-wrap/-/word-wrap-1.2.6.tgz#bd9154aec9983f77b3a034ecaa015c2e4201f6cf"
   integrity sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==
 
-"@aboutyou/backbone@16.0.1":
-  version "16.0.1"
-  resolved "https://registry.yarnpkg.com/@aboutyou/backbone/-/backbone-16.0.1.tgz#fccdaffb1bbc6e09bcdd98c65c1400baff7ae811"
-  integrity sha512-iKD/68crJ3dk+yi9GbOkE8+N//chY7oud8EvxC/5mcmFS+l5/v55+T8+/iX+44IM3DBEAH/ZM3SFteV3b0Wsew==
+"@aboutyou/backbone@16.0.2":
+  version "16.0.2"
+  resolved "https://registry.yarnpkg.com/@aboutyou/backbone/-/backbone-16.0.2.tgz#77fe00c14e04452c7f47b7afebb9b8974985eade"
+  integrity sha512-nH4HmWbd+9Wn1uYcgucVRNtthaw7g5bZAUEuNVWwWQFGuacTD6umF3wVw0+UcUtQLKls+8Akqr30a7br1WwJlg==
   dependencies:
     query-string "^6.2.0"
 
@@ -1872,12 +1872,12 @@
   dependencies:
     prettier-config-standard "^7.0.0"
 
-"@scayle/storefront-core@7.34.1":
-  version "7.34.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.34.1.tgz#7fa0b6a470cfc7a27e5a88a25f1d206eba7d9838"
-  integrity sha512-SK+vIt4o2JviAP8Ebb9geUX2JDl571tPy5VqKUz4SKTjsCcQ/F/4YNEyH+3xhMzPpp79kSMeNFnkgMwNVrqt8Q==
+"@scayle/storefront-core@7.35.0":
+  version "7.35.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.35.0.tgz#210b461385d920cab57c69d27df603b4284e816c"
+  integrity sha512-AJ7XflokPWpAb/taZ/jBv/c1RoSR75AEQfjLi9fjbQTvIE9ikLnjXU4WEz2+n1itNQZwaaJOXBELPVWa4LgA0A==
   dependencies:
-    "@aboutyou/backbone" "16.0.1"
+    "@aboutyou/backbone" "16.0.2"
     crypto-js "4.2.0"
     jose "^4.14.4"
     radash "^11.0.0"
@@ -1888,19 +1888,19 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.48.1":
-  version "7.48.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.48.1.tgz#fa702f6061eaa205675fcacfd09d7c2f291747c0"
-  integrity sha512-/EoEF3b10q/IlDi5x4gOYpKpMfQgQhca6uE8pYmNBnXSyupFaaQNongiXfTmyS3D0eo0rDTEE5N6JqirWx41Zg==
+"@scayle/storefront-nuxt@7.48.2":
+  version "7.48.2"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.48.2.tgz#52408632f163c30e1afa9ef3f8caf860d2193665"
+  integrity sha512-jSlBfYEH0c7w4O5zqcaYAWdrvXFPRUxIWwwnxTZVdW0bXTECK3Dm20PtkvDXHxVgMn02pXQz0OSgZGRx0CyS9A==
   dependencies:
     "@nuxt/kit" "3.8.2"
     "@scayle/h3-session" "0.3.4"
-    "@scayle/storefront-core" "7.34.1"
+    "@scayle/storefront-core" "7.35.0"
     "@scayle/unstorage-compression-driver" "0.1.1"
     "@vueuse/core" "10.7.1"
     consola "3.2.3"
     core-js "3.35.0"
-    defu "6.1.3"
+    defu "6.1.4"
     h3 "1.9.0"
     jose "4.15.4"
     knitwork "1.0.0"
@@ -4146,6 +4146,11 @@ defu@6.1.3, defu@^6.0.0, defu@^6.1.2, defu@^6.1.3:
   version "6.1.3"
   resolved "https://registry.yarnpkg.com/defu/-/defu-6.1.3.tgz#6d7f56bc61668e844f9f593ace66fd67ef1205fd"
   integrity sha512-Vy2wmG3NTkmHNg/kzpuvHhkqeIx3ODWqasgCRbKtbXEN0G+HpEEv9BtJLp7ZG1CZloFaC41Ah3ZFbq7aqCqMeQ==
+
+defu@6.1.4:
+  version "6.1.4"
+  resolved "https://registry.yarnpkg.com/defu/-/defu-6.1.4.tgz#4e0c9cf9ff68fe5f3d7f2765cc1a012dfdcb0479"
+  integrity sha512-mEQCMmwJu317oSz8CwdIOdwf3xMif1ttiM8LTufzc3g6kR+9Pe236twL8j3IYT1F7GfRgGcW6MWxzZjLIkuHIg==
 
 delayed-stream@~1.0.0:
   version "1.0.0"

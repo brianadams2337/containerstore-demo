@@ -2,7 +2,6 @@ import type {
   GuestRequest,
   LoginRequest,
   RegisterRequest,
-  SendResetPasswordEmailRequest,
   UpdatePasswordByHashRequest,
 } from '@scayle/storefront-nuxt'
 import { FetchError } from 'ofetch'
@@ -90,13 +89,13 @@ export const useAuthentication = async (
     isSubmitting.value = false
   }
 
-  const forgotPassword = async (data: SendResetPasswordEmailRequest) => {
+  const forgotPassword = async (email: string) => {
     let hasSuccess = true
 
     isSubmitting.value = true
 
     try {
-      await session.forgetPassword(data)
+      await session.forgetPassword({ email })
       $alert.show(successMessage.value, 'CONFIRM')
     } catch (error) {
       handleError(error)

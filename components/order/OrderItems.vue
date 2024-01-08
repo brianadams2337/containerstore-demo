@@ -34,19 +34,16 @@ type CarrierMap = Record<
   { items: OrderItems; deliveryInfo: DeliveryInfo }
 >
 
-const props = defineProps({
-  variants: {
-    type: Array as PropType<OrderVariant[]>,
-    default: undefined,
-  },
-  orderItems: {
-    type: Array as PropType<OrderItems>,
-    default: () => [],
-  },
-  packages: {
-    type: Array as PropType<Package[]>,
-    default: () => [],
-  },
+type Props = {
+  variants?: OrderVariant[]
+  orderItems?: OrderItems
+  packages?: Package[]
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  variants: undefined,
+  orderItems: () => [],
+  packages: () => [],
 })
 
 const uniqueItems = computed(() => {

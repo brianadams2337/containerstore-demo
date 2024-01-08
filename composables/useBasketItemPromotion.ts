@@ -14,7 +14,7 @@ export default async (basketItem: Ref<BasketItem>) => {
     return promotion.value?.customData.headlineParts
   })
 
-  const giftPromotion = computed<Promotion>(() => {
+  const giftPromotion = computed<Promotion | undefined>(() => {
     const id = getFirstAttributeValue(
       basketItem.value.product?.attributes,
       'promotion',
@@ -31,7 +31,7 @@ export default async (basketItem: Ref<BasketItem>) => {
   })
 
   const giftConditions = computed(() => {
-    return giftPromotion.value.customData.giftConditions
+    return giftPromotion.value?.customData.giftConditions
   })
 
   const isBuyXGetY = computed(() => isBuyXGetYType(promotion.value))

@@ -64,13 +64,16 @@ const model = reactive({
 const onSubmit = async () => {
   const isValid = await v.value.$validate()
   if (isValid) {
-    success.value = await forgotPassword({ email: model.email })
+    success.value = await forgotPassword(model.email)
   }
 }
 
-watch(lastLoggedInUser, (user) => {
-  model.email = user.email
-})
+watch(
+  () => lastLoggedInUser.value,
+  (user) => {
+    model.email = user.email
+  },
+)
 
 const v = useVuelidate(
   {

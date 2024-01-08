@@ -2,7 +2,9 @@ export default async () => {
   const basket = await useBasket()
   const promotionData = await useCurrentPromotions()
 
-  const allCurrentPromotions = computed(() => promotionData.data.value.entities)
+  const allCurrentPromotions = computed<Promotion[]>(() => {
+    return promotionData.data.value.entities
+  })
 
   const appliedPromotions = computed(() => {
     return basket.items.value
