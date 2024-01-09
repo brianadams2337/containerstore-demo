@@ -1170,7 +1170,7 @@
     unimport "^3.5.0"
     untyped "^1.4.0"
 
-"@nuxt/kit@3.9.1", "@nuxt/kit@^3.4.0", "@nuxt/kit@^3.5.1", "@nuxt/kit@^3.7.0", "@nuxt/kit@^3.7.4", "@nuxt/kit@^3.8.2", "@nuxt/kit@^3.9.0":
+"@nuxt/kit@3.9.1", "@nuxt/kit@^3.4.0", "@nuxt/kit@^3.5.1", "@nuxt/kit@^3.7.0", "@nuxt/kit@^3.7.4", "@nuxt/kit@^3.8.2", "@nuxt/kit@^3.9.0", "@nuxt/kit@^3.9.1":
   version "3.9.1"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.9.1.tgz#12ec2f38fad35c4f777e21bf1f5671c5824cd1b6"
   integrity sha512-QvwZ4QmxmKEnGXXwhLapfogW8enIX30GD7nbmasAkcDIf4GdP2IWUwhd068mrXMbzdZupRLV1J5E74Dr516o5g==
@@ -1942,10 +1942,17 @@
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-5.1.2.tgz#07508b45797cb81ec3f273011b054cd0755eddca"
   integrity sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==
 
-"@types/node@*", "@types/node@20.10.7":
+"@types/node@*":
   version "20.10.7"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.10.7.tgz#40fe8faf25418a75de9fe68a8775546732a3a901"
   integrity sha512-fRbIKb8C/Y2lXxB5eVMj4IU7xpdox0Lh8bUPEdtLysaylsml1hOOx1+STloRs/B9nf7C6kPRmmg/V7aQW7usNg==
+  dependencies:
+    undici-types "~5.26.4"
+
+"@types/node@20.10.8":
+  version "20.10.8"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.10.8.tgz#f1e223cbde9e25696661d167a5b93a9b2a5d57c7"
+  integrity sha512-f8nQs3cLxbAFc00vEU59yf9UyGUftkPaLGfvbVOIDdx2i1b8epBqj2aNGyP19fiyXWvlmZ7qC1XLjAzw/OKIeA==
   dependencies:
     undici-types "~5.26.4"
 
