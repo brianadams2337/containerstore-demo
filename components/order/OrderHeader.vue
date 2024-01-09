@@ -14,24 +14,13 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  orderId: {
-    type: Number,
-    required: true,
-  },
-  shopId: {
-    type: Number,
-    required: true,
-  },
-  itemCount: {
-    type: Number,
-    required: true,
-  },
-  orderDate: {
-    type: String,
-    required: true,
-  },
-})
+type Props = {
+  orderId: number
+  shopId: number
+  itemCount: number
+  orderDate: string
+}
+const props = defineProps<Props>()
 
 const { $i18n } = useNuxtApp()
 

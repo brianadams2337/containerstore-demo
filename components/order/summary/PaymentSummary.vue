@@ -34,13 +34,13 @@
       </div>
     </div>
     <div
-      v-if="paidWith"
+      v-if="paymentKey"
       class="border-t border-t-gray-350 bg-secondary-450 px-5 py-7"
     >
       <p class="text-xs font-semibold text-secondary">
         {{ $t('my_account.orders.paid_with') }}:
         <PaymentIcon
-          :paid-with="paidWith"
+          :paid-with="paymentKey"
           class="text-sm font-bold text-primary"
         />
       </p>
@@ -49,10 +49,7 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  totalAmount: { type: Number, required: true },
-  paidWith: { type: String, default: null },
-  deliveryCost: { type: Number, default: 0 },
-})
 const { formatCurrency } = useFormatHelpers()
+
+const { totalAmount, deliveryCost, paymentKey } = await useOrders()
 </script>

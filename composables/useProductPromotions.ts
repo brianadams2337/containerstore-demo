@@ -6,11 +6,16 @@ import {
 
 export default async (productItem?: MaybeRefOrGetter<Product>) => {
   const promotionData = await useCurrentPromotions()
+
   const basket = await useBasket()
 
   const { appliedPromotions } = await useBasketPromotions()
 
   const product = toRef(productItem)
+
+  const promotions = computed<Promotion[]>(() => {
+    return promotionData.data.value.entities
+  })
 
   const promotionLabel = computed(() => {
     return getFirstAttributeValue(product.value?.attributes, 'promotion')?.label
@@ -21,8 +26,7 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
   })
 
   const applicablePromotions = computed<Promotion[]>(() => {
-    const promotions = promotionData.data.value.entities
-    return promotions.filter(({ customData }) => {
+    return promotions.value.filter(({ customData }) => {
       if (!productPromotionId.value || !customData.product?.promotionId) {
         return false
       }

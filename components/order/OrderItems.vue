@@ -5,7 +5,7 @@
       :key="`delivery-block-carrier-${carrierId}`"
       class="rounded-t-md border border-gray-350 border-b-transparent bg-white md:mb-4 md:rounded-md md:border-b-gray-350"
     >
-      <div v-if="variants" id="imageHeader">
+      <div v-if="orderVariants" id="imageHeader">
         <OrderStatusBar
           v-bind="map.deliveryInfo"
           :index="idx"
@@ -34,31 +34,18 @@ type CarrierMap = Record<
   { items: OrderItems; deliveryInfo: DeliveryInfo }
 >
 
-const props = defineProps({
-  variants: {
-    type: Array as PropType<OrderVariant[]>,
-    default: undefined,
-  },
-  orderItems: {
-    type: Array as PropType<OrderItems>,
-    default: () => [],
-  },
-  packages: {
-    type: Array as PropType<Package[]>,
-    default: () => [],
-  },
-})
+const { orderVariants, orderItems, packages } = await useOrders()
 
 const uniqueItems = computed(() => {
-  return useUnique(props.orderItems, (it) => it.variant.id)
+  return useUnique(orderItems.value, (it) => it.variant.id)
 })
 
-const carrierBundledItemsMap = computed<CarrierMap>(() => {
+const carrierBundledItemsMap = computed<CarrierMap | undefined>(() => {
   // every item has a packageId
   // every carrier has a package id
-  return props.packages.reduce((carrierMap: CarrierMap, pkg: Package) => {
+  return packages.value?.reduce((carrierMap: CarrierMap, pkg: Package) => {
     const items = uniqueItems.value?.filter(
-      (it: OrderItems[0]) => it.packageId === pkg.id,
+      (it: OrderItem) => it.packageId === pkg.id,
     )
     const formattedStatus = pkg.deliveryStatus?.split('_').join(' ') || ''
     const deliveryInfo = { ...pkg, formattedStatus }
@@ -68,6 +55,6 @@ const carrierBundledItemsMap = computed<CarrierMap>(() => {
 })
 
 const getItemQuantity = (variantId: number | unknown): number | undefined => {
-  return props.orderItems?.filter((it) => it.variant.id === variantId).length
+  return orderItems?.value.filter((it) => it.variant.id === variantId).length
 }
 </script>
