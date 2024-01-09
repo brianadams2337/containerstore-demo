@@ -86,7 +86,7 @@ const emit = defineEmits<{
   (e: 'click:recommendation', value: Product, i: number): void
 }>()
 
-const { isGreaterOrEquals } = useViewport()
+const { isGreaterOrEqual } = useDefaultBreakpoints()
 const { getProductDetailRoute } = useRouteHelpers()
 const trackingCollector = ref<Product[]>([])
 const carousel = ref<HTMLDivElement>()
@@ -132,7 +132,7 @@ const collectColumnIntersection = (productId: number, index: number) => {
   const isTracked =
     trackingCollector.value.findIndex((p) => p.id === productId) !== -1
 
-  const columns = isGreaterOrEquals('md') ? 2 : 4
+  const columns = isGreaterOrEqual('md') ? 2 : 4
   const isFirstItemInRow = isFirstIndexOfRow(index, columns)
 
   if (isFirstItemInRow && !isTracked) {

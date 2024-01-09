@@ -25,7 +25,7 @@ const props = defineProps({
   },
 })
 
-const { isLessThan } = useViewport()
+const { isSmaller } = useDefaultBreakpoints()
 
 const { marginClasses } = useStoryblokMargins(props.blok)
 const { trackPromotion } = useTrackingEvents()
@@ -38,7 +38,7 @@ const containerClasses = computed(() => ({
 
 const videoPoster = computed(() => {
   if (props.blok.preview_desktop_image || props.blok.preview_mobile_image) {
-    const key = isLessThan('md')
+    const key = isSmaller('md')
       ? 'preview_mobile_image'
       : 'preview_desktop_image'
 

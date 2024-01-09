@@ -31,12 +31,12 @@
   </AppButton>
   <template v-if="giftPromotion">
     <ProductPromotionSelectionModal
-      v-if="isGreaterOrEquals('md')"
+      class="max-sm:hidden"
       v-bind="{ product, promotedProduct }"
       :promotion="giftPromotion"
     />
     <ProductPromotionSizeSelection
-      v-else
+      class="md:hidden"
       v-bind="{ product, promotedProduct }"
       :promotion="giftPromotion"
     />
@@ -63,8 +63,6 @@ const { toggleGiftSelection } = await usePromotionGiftSelection(
   props.product,
   promotedProduct.value,
 )
-
-const { isGreaterOrEquals } = useViewport()
 
 const { giftPromotion, giftBackgroundColorStyle } =
   await useBasketItemPromotion(toRef(props.basketItem))

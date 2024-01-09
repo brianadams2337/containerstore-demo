@@ -4,10 +4,7 @@
       <CmsImage :blok="cmsContent" is-teaser />
     </div>
     <PageContent v-if="products" class="sm:flex">
-      <div
-        v-show="viewport.isGreaterOrEquals('md')"
-        class="-ml-4 w-1/3 lg:w-1/5"
-      >
+      <div class="-ml-4 hidden w-1/3 md:block lg:w-1/5">
         <SideNavigation
           v-if="categories && 'children' in categories && categories.children"
           :categories="categories.children"
@@ -170,8 +167,6 @@ const error = computed(() => {
 if (error.value) {
   throw error.value
 }
-
-const viewport = useViewport()
 
 watch(
   () => route.query,

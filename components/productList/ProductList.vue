@@ -66,7 +66,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const { listingMetaData } = await useProductList()
 
-const { isGreaterOrEquals } = useViewport()
+const { isGreaterOrEqual } = useDefaultBreakpoints()
 
 const emit = defineEmits<{
   (e: 'intersect:row', value: { row: number; items: Product[] }): void
@@ -79,17 +79,13 @@ const route = useRoute()
 const currentPage = computed(() => parseInt(route.query.page as string) || 1)
 
 const columns = computed(() => {
-  if (isGreaterOrEquals('lg')) {
+  if (isGreaterOrEqual('lg')) {
     return 4
   }
-  return isGreaterOrEquals('md') ? 3 : 2
+  return isGreaterOrEqual('md') ? 3 : 2
 })
 
-const columnClasses = computed(() => ({
-  'col-span-6': columns.value === 2,
-  'col-span-4': columns.value === 3,
-  'col-span-3': columns.value === 4,
-}))
+const columnClasses = 'col-span-6 md:col-span-4 lg:col-span-3'
 
 const _getRowByIndex = (index: number) =>
   getRowByIndex(index, {

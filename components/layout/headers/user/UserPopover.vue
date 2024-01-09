@@ -2,8 +2,8 @@
   <Popover
     :is-open="isUserFlyoutOpen"
     content-wrapper-class="mt-8"
-    @mouseenter="isGreaterOrEquals('md') && openUserFlyout()"
-    @mouseleave="isGreaterOrEquals('md') && closeUserFlyout()"
+    @mouseenter="isGreaterOrEqual('md') && openUserFlyout()"
+    @mouseleave="isGreaterOrEqual('md') && closeUserFlyout()"
   >
     <template #action>
       <DefaultLink :to="link" raw>
@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-const { isGreaterOrEquals } = useViewport()
+const { isGreaterOrEqual } = useDefaultBreakpoints()
 
 const { openUserFlyout, closeUserFlyout, isUserFlyoutOpen } = useFlyouts()
 const { user, fetch } = await useUser({ autoFetch: false })

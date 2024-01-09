@@ -27,9 +27,9 @@ defineProps<{ items: Promotion[] }>()
 
 const promotionList = ref()
 
-const viewport = useViewport()
+const viewport = useDefaultBreakpoints()
 
 const { togglePromotionList: toggle } = usePromotionActions()
 
-onClickOutside(promotionList, () => viewport.isLessThan('lg') && toggle())
+onClickOutside(promotionList, () => viewport.isSmaller('lg') && toggle())
 </script>

@@ -7,7 +7,7 @@
           v-if="itemCount && orderDetails.shop?.id && orderDetails.confirmedAt"
         >
           <OrderHeader
-            v-show="isGreaterOrEquals('md')"
+            class="max-sm:hidden"
             :order-id="orderDetails.id"
             :shop-id="orderDetails.shop.id"
             :item-count="itemCount"
@@ -28,8 +28,6 @@
 <script setup lang="ts">
 const route = useRoute()
 const paramId = computed(() => +route.params.id)
-
-const { isGreaterOrEquals } = useViewport()
 
 const { orderDetails, fetching, shippingAddress, billingAddress, itemCount } =
   await useOrders()

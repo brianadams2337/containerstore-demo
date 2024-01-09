@@ -27,7 +27,8 @@
             </div>
           </div>
           <OspDeliveryDate
-            v-show="deliveryDate && isLessThan('sm')"
+            v-if="deliveryDate"
+            class="sm:hidden"
             :delivery-date="deliveryDate"
           />
           <div class="my-8 flex space-x-4 sm:mt-12">
@@ -83,8 +84,6 @@
 </template>
 
 <script setup lang="ts">
-const { isLessThan } = useViewport()
-
 const route = useRoute()
 const cbdToken = String(route.query.cbd)
 const { data: orderData, fetching } = await useOrderConfirmation<

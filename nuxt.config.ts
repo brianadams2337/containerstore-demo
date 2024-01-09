@@ -5,7 +5,6 @@ import {
   storefrontRuntimeConfigPublic,
   storefrontBuildtimeConfig,
 } from './config/storefront'
-import breakpoints from './config/breakpoints'
 
 const domains = {
   default: process.env.NUXT_STOREFRONT_DOMAIN_DEFAULT!,
@@ -148,7 +147,6 @@ export default defineNuxtConfig({
     'nuxt-swiper',
     'radash-nuxt',
     '@storyblok/nuxt',
-    'nuxt-viewport',
     '@zadigetvoltaire/nuxt-gtm',
     '@nuxt/test-utils/module',
   ],
@@ -225,15 +223,6 @@ export default defineNuxtConfig({
   swiper: {
     prefix: 'Swiper',
     modules: ['navigation', 'autoplay', 'pagination'],
-  },
-
-  // https://github.com/mvrlin/nuxt-viewport#usage
-  viewport: {
-    breakpoints,
-    defaultBreakpoints: Object.fromEntries(
-      Object.keys(breakpoints).map((name) => [name, name]),
-    ),
-    fallbackBreakpoint: 'lg',
   },
 
   // https://nuxt.com/docs/api/nuxt-config#imports

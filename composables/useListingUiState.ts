@@ -1,12 +1,12 @@
 export default () => {
-  const { isGreaterOrEquals } = useViewport()
+  const { isGreaterOrEqual } = useDefaultBreakpoints()
 
   const listingUiState = reactive({
     columns: 0,
   })
 
   if (listingUiState.columns === 0) {
-    listingUiState.columns = !isGreaterOrEquals('md') ? 2 : 3
+    listingUiState.columns = !isGreaterOrEqual('md') ? 2 : 3
   }
   const listingColumns = computed(() => listingUiState.columns)
 

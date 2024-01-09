@@ -21,18 +21,17 @@
 
 <script setup lang="ts">
 import type { MaybeElementRef } from '@vueuse/core'
-
 defineProps<{ items: Promotion[] }>()
 
 const promotionListRef = ref()
 
-const viewport = useViewport()
+const viewport = useDefaultBreakpoints()
 
 const { togglePromotionList: toggle, topBannerRef } = usePromotionActions()
 
 onClickOutside(
   promotionListRef,
-  () => viewport.isGreaterOrEquals('lg') && toggle(),
+  () => viewport.isGreaterOrEqual('lg') && toggle(),
   { ignore: [topBannerRef as MaybeElementRef] },
 )
 </script>

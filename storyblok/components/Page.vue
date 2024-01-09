@@ -4,7 +4,7 @@
     :key="content._uid"
     v-editable="blok"
     :important="index < 2"
-    :placeholder-ratio="isGreaterThan('md') ? '16/9' : '9/16'"
+    :placeholder-ratio="isGreater('md') ? '16/9' : '9/16'"
     placeholder-class="container"
   >
     <component :is="content.component" :blok="content" />
@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import type { SbPage } from '~/storyblok/types/storyblok'
 
-const { isGreaterThan } = useViewport()
+const { isGreater } = useDefaultBreakpoints()
 
 defineProps({
   blok: {

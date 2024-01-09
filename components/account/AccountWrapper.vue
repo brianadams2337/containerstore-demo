@@ -77,7 +77,7 @@ const { user } = await useUser()
 
 const currentPage = ref<number>(1)
 
-const { isGreaterOrEquals } = useViewport()
+const { isGreaterOrEqual } = useDefaultBreakpoints()
 const { getOrderDetailsRoute, localizedNavigateTo } = useRouteHelpers()
 
 const orders = computed(() => user?.value?.orderSummary ?? [])
@@ -125,7 +125,7 @@ onMounted(async () => {
     !route.params?.id &&
     !props.isAccountPage &&
     currentOrderId.value &&
-    isGreaterOrEquals('md') // On mobile the user should first see the order list
+    isGreaterOrEqual('md') // On mobile the user should first see the order list
   ) {
     await localizedNavigateTo(getOrderDetailsRoute(currentOrderId.value))
   }

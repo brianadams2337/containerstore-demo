@@ -2,8 +2,7 @@
   <SlideInFromLeftTransition>
     <nav
       v-if="isSideNavigationOpen"
-      v-show="isLessThanMdBreakpoint"
-      class="sticky inset-1 z-[100] min-h-screen overflow-hidden overflow-y-auto overscroll-none bg-white"
+      class="sticky inset-1 z-[100] min-h-screen overflow-hidden overflow-y-auto overscroll-none bg-white md:hidden"
       :class="{ 'animate-pulse': fetchingCategories }"
     >
       <div class="h-full" :style="{ 'max-height': 'calc(100% - 80px)' }">
@@ -95,9 +94,9 @@ defineProps({
   },
 })
 
-const { isLessThan } = useViewport()
+const { isSmaller } = useDefaultBreakpoints()
 
-const isLessThanMdBreakpoint = computed(() => isLessThan('md'))
+const isLessThanMdBreakpoint = computed(() => isSmaller('md'))
 
 const {
   closeSideNavigation,

@@ -1,7 +1,7 @@
 <template>
   <Popover
     :is-open="isBasketFlyoutOpen"
-    :disable-popover-content="isLessThan('md')"
+    :disable-popover-content="isSmaller('md')"
     content-wrapper-class="mt-8"
     @mouseenter="openBasketFlyout"
     @mouseleave="closeBasketFlyout"
@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-const { isLessThan } = useViewport()
+const { isSmaller } = useDefaultBreakpoints()
 
 const { openBasketFlyout, closeBasketFlyout, isBasketFlyoutOpen } = useFlyouts()
 

@@ -110,7 +110,7 @@
             <IconHeartFull v-if="isInWishlist" :class="_class" />
             <IconHeart v-else :class="_class" />
           </template>
-          <span v-show="isGreaterOrEquals('lg')">
+          <span class="max-md:hidden">
             {{
               isInWishlist
                 ? $t('basket_card.remove_from_wishlist_label')
@@ -196,7 +196,6 @@ const { $i18n, $alert } = useNuxtApp()
 const wishlist = await useWishlist()
 const { trackRemoveFromWishlist, trackAddToWishlist } = useTrackingEvents()
 
-const { isGreaterOrEquals } = useViewport()
 const { pageState } = usePageState()
 const route = useRoute()
 

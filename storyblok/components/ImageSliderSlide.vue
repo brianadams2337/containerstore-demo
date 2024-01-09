@@ -45,7 +45,7 @@ const props = defineProps({
   },
 })
 
-const { isLessThan } = useViewport()
+const { isSmaller } = useDefaultBreakpoints()
 const { trackPromotion } = useTrackingEvents()
 
 const isInViewport = ref(true)
@@ -63,5 +63,5 @@ const clickObserver = () => {
     trackPromotion('select_promotion', props.blok)
   }
 }
-const headlineSize = computed(() => (isLessThan('md') ? 'xl' : '2xl'))
+const headlineSize = computed(() => (isSmaller('md') ? 'xl' : '2xl'))
 </script>
