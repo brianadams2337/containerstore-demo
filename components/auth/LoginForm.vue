@@ -105,6 +105,6 @@ const onSubmit = async () => {
 }
 
 watch(lastLoggedInUser, (user) => {
-  editableUser.email = user.value.email
+  editableUser.email = user.email
 })
 </script>
