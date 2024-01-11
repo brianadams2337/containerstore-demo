@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest'
 
-describe('useCmsListingContent()', () => {
+describe('useCMSListingContent()', () => {
   // TODO: Remove this demo test
   test('Demo test', () => {
     expect(true).toEqual(true)

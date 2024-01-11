@@ -60,7 +60,7 @@ const props = defineProps({
   },
 })
 
-const { justify, align } = useCmsAlignment(props.blok)
+const { justify, align } = useCMSAlignment(props.blok)
 
 // TODO Rename "Video" to "CmsVideo" inside storyblok
 const getCmsComponentName = (img: SbVideo | SbCmsImage) => {

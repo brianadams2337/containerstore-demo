@@ -93,12 +93,12 @@ const {
   fetchBySlug,
   data: cmsData,
   status,
-} = useCms<SbListingPage>(`lookbooks-plp-${lookbookCategoryCategoryPath.value}`)
+} = useCMS<SbListingPage>(`lookbooks-plp-${lookbookCategoryCategoryPath.value}`)
 if (status.value === 'idle') {
   await fetchLazy(fetchBySlug(cmsPath.value))
 }
 const { content, hasTeaserImage, preListingContent, postListingContent } =
-  useCmsListingContent(cmsData)
+  useCMSListingContent(cmsData)
 
 const listingMetaData = {
   name: 'Lookbooks',

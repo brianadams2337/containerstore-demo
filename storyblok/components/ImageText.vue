@@ -71,7 +71,7 @@ const imageSource = computed(() => {
   }
 })
 
-const { align, justify } = useCmsAlignment(props.blok)
+const { align, justify } = useCMSAlignment(props.blok)
 
 const hasCta = computed(() => props.blok?.cta && props.blok?.cta_link)
 </script>

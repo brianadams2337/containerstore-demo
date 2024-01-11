@@ -1,6 +1,6 @@
 import type { Alignment } from '~/storyblok/types/storyblok'
 
-const useCmsAlignment = (blok: Partial<Alignment>) => {
+const useCMSAlignment = (blok: Partial<Alignment>) => {
   return {
     align: computed(() => {
       switch (blok.align) {
@@ -28,4 +28,4 @@ const useCmsAlignment = (blok: Partial<Alignment>) => {
   }
 }
 
-export default useCmsAlignment
+export default useCMSAlignment

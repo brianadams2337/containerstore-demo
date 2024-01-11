@@ -48,7 +48,7 @@ const {
   data: lookbooksData,
   fetching,
   status,
-} = useCms<SbListingPage>('lookbooks')
+} = useCMS<SbListingPage>('lookbooks')
 if (status.value === 'idle') {
   await fetchLazy(fetchByFolder('lookbooks', { per_page: 5 }))
 }

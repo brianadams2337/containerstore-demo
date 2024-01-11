@@ -45,7 +45,7 @@ export async function useLookbookDetail({
     data: cmsData,
     fetchBySlug,
     fetching,
-  } = useCms<SbListingPage>(slug + id)
+  } = useCMS<SbListingPage>(slug + id)
 
   const { data: products, fetch: fetchProducts } = await useProductsByIds({
     params: () => ({
