@@ -59,11 +59,11 @@ const { data: products } = await useProductsByIds({
 })
 
 const sortedProductsById = computed(() => {
-  return products.value?.sort((a, b) => a.id - b.id)
+  return useSort(products.value || [], ({ id }) => id)
 })
 
 const sortedVariantsByProductId = computed(() => {
-  return variants.value?.sort((a, b) => a.productId - b.productId)
+  return useSort(variants.value || [], ({ productId }) => productId)
 })
 
 const computedAddOns = computed(() => {
