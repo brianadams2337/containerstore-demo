@@ -62,7 +62,7 @@ import useVuelidate from '@vuelidate/core'
 const { login, isSubmitting } = await useAuthentication('login')
 const { lastLoggedInUser } = await useLastLoggedInUser()
 
-const { $validation } = useNuxtApp()
+const validationRules = useValidationRules()
 
 const editableUser = reactive({
   email: '',
@@ -72,11 +72,11 @@ const editableUser = reactive({
 const v = useVuelidate(
   {
     email: {
-      required: $validation.rule.required,
-      email: $validation.rule.email,
+      required: validationRules.required,
+      email: validationRules.email,
     },
     password: {
-      required: $validation.rule.required,
+      required: validationRules.required,
     },
   },
   editableUser,

@@ -42,7 +42,7 @@ const validateName = (value: string | undefined): boolean => {
   return hasValidUnicodeLetters && hasValidBoundaries && !hasPunctuationStreak
 }
 
-export default defineNuxtPlugin(() => {
+export default () => {
   const { $i18n } = useNuxtApp()
 
   const withI18nMessage = createI18nMessage({
@@ -57,7 +57,7 @@ export default defineNuxtPlugin(() => {
     }),
   })
 
-  const rule = {
+  return {
     required: withI18nMessage(required),
     email: withI18nMessage(email),
     date: withI18nMessage(validateDate),
@@ -67,6 +67,4 @@ export default defineNuxtPlugin(() => {
     sameAs: withI18nMessage(sameAs, { withArguments: true }),
     maxLength: withI18nMessage(maxLength, { withArguments: true }),
   }
-
-  return { provide: { validation: { rule } } }
-})
+}

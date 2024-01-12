@@ -22,11 +22,7 @@
 <script setup lang="ts">
 import { passwordStrength } from 'check-password-strength'
 
-const props = defineProps({
-  value: {
-    type: String,
-    required: true,
-  },
-})
+const props = defineProps<{ value: string }>()
+
 const strength = computed(() => passwordStrength(props.value))
 </script>

@@ -55,10 +55,11 @@
 import { formatDate, getPayloadDate } from '@scayle/storefront-nuxt'
 import useVuelidate from '@vuelidate/core'
 
-const { $alert, $i18n, $validation } = useNuxtApp()
-const currentShop = useCurrentShop()
-
 const { user, updateUser } = await useUser()
+
+const { $alert, $i18n } = useNuxtApp()
+const currentShop = useCurrentShop()
+const validationRules = useValidationRules()
 
 const dobFormat = computed(() => {
   const locale = currentShop.value?.locale.replace('-', '_')
@@ -80,19 +81,19 @@ const isUpdating = ref(false)
 
 const rules = computed(() => ({
   firstName: {
-    name: $validation.rule.name,
-    required: $validation.rule.required,
-    maxLength: $validation.rule.maxLength(30),
+    name: validationRules.name,
+    required: validationRules.required,
+    maxLength: validationRules.maxLength(30),
   },
   lastName: {
-    name: $validation.rule.name,
-    required: $validation.rule.required,
-    maxLength: $validation.rule.maxLength(50),
+    name: validationRules.name,
+    required: validationRules.required,
+    maxLength: validationRules.maxLength(50),
   },
   birthDate: {
-    required: $validation.rule.required,
-    date: $validation.rule.date,
-    futureDate: $validation.rule.futureDate,
+    required: validationRules.required,
+    date: validationRules.date,
+    futureDate: validationRules.futureDate,
   },
 }))
 

@@ -10,7 +10,6 @@
         </p>
       </div>
     </template>
-
     <form>
       <ValidatedInputGroup v-slot="{ isValid }" :errors="v.email.$errors">
         <TextInput
@@ -51,15 +50,14 @@ import useVuelidate from '@vuelidate/core'
 
 defineEmits(['close:modal'])
 
-const { $validation } = useNuxtApp()
 const { forgotPassword, isSubmitting } =
   await useAuthentication('forgot_password')
 const { lastLoggedInUser } = await useLastLoggedInUser()
 
+const validationRules = useValidationRules()
+
 const success = ref(false)
-const model = reactive({
-  email: '',
-})
+const model = reactive({ email: '' })
 
 const onSubmit = async () => {
   const isValid = await v.value.$validate()
@@ -70,18 +68,13 @@ const onSubmit = async () => {
 
 watch(
   () => lastLoggedInUser.value,
-  (user) => {
-    model.email = user.email
-  },
+  (user) => Object.assign(model.email, user.email),
 )
 
-const v = useVuelidate(
-  {
-    email: {
-      required: $validation.rule.required,
-      email: $validation.rule.email,
-    },
-  },
-  model,
-)
+const emailRules = {
+  required: validationRules.required,
+  email: validationRules.email,
+}
+
+const v = useVuelidate({ email: emailRules }, model)
 </script>

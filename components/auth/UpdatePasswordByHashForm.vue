@@ -49,23 +49,21 @@ import useVuelidate from '@vuelidate/core'
 defineEmits(['close:modal'])
 
 const route = useRoute()
-const { $validation } = useNuxtApp()
 const { resetPasswordByHash, isSubmitting } =
   await useAuthentication('reset_password')
 
-const model = reactive({
-  password: '',
-})
+const validationRules = useValidationRules()
 
-const v = useVuelidate(
-  {
-    password: {
-      required: $validation.rule.required,
-      password: $validation.rule.password,
-    },
+const model = reactive({ password: '' })
+
+const rules = {
+  password: {
+    required: validationRules.required,
+    password: validationRules.password,
   },
-  model,
-)
+}
+
+const v = useVuelidate(rules, model)
 
 const hash = computed(() => {
   const value = route.query.hash
