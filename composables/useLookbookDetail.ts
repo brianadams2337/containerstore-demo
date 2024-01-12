@@ -41,12 +41,9 @@ export async function useLookbookDetail({
         .map((id) => parseInt(id, 10)) || []
     )
   })
-  const {
-    data: cmsData,
-    fetchBySlug,
-    fetching,
-  } = useCMS<SbListingPage>(slug + id)
-
+  const { fetchBySlug } = useCMS<SbListingPage>(slug + id)
+  const cmsData = ref()
+  const fetching = ref()
   const { data: products, fetch: fetchProducts } = await useProductsByIds({
     params: () => ({
       ids: productIds.value,
@@ -55,7 +52,10 @@ export async function useLookbookDetail({
     options: { autoFetch: false },
   })
   const fetch = async () => {
-    await fetchBySlug(slug)
+    const { data, pending, execute: _fetchBySlug } = await fetchBySlug(slug)
+    await _fetchBySlug()
+    fetching.value = pending
+    cmsData.value = data
     if (!cmsData.value.content.pre_listing_content) {
       return
     }

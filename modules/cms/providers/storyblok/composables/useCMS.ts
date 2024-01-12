@@ -20,17 +20,30 @@ export default function useCMS<_T = unknown>(key: string) {
   const storyblokApi = useStoryblokApi()
   const storyblokOptions = useDefaultStoryblokOptions()
 
-  async function fetchBySlug(slug: string) {
+  async function fetchBySlug(
+    slug: string,
+    options: {
+      immediate: boolean
+    } = {
+      immediate: false,
+    },
+  ) {
     return await useAsyncData(
       key,
       () => storyblokApi.get(`cdn/stories/${slug}`, storyblokOptions),
-      {
-        immediate: false,
-      },
+      options,
     )
   }
 
-  async function fetchByFolder(folder: string, options?: ISbStoriesParams) {
+  async function fetchByFolder(
+    folder: string,
+    options?: ISbStoriesParams,
+    asyncDataOption: {
+      immediate: boolean
+    } = {
+      immediate: false,
+    },
+  ) {
     return await useAsyncData(
       key,
       () =>
@@ -39,9 +52,7 @@ export default function useCMS<_T = unknown>(key: string) {
           starts_with: folder,
           ...options,
         }),
-      {
-        immediate: false,
-      },
+      asyncDataOption,
     )
   }
 
