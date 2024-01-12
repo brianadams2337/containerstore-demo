@@ -34,15 +34,21 @@ import type { SbContentPage } from '~/storyblok/types/storyblok.gen'
 
 const route = useRoute()
 const slug = computed(() => route.params.slug)
-const {
-  fetching,
-  fetchBySlug,
-  data: story,
-  status,
-} = useCMS<SbContentPage>(`content-page-${slug}`)
-
+const { fetchBySlug } = useCMS<SbContentPage>(`content-page-${slug}`)
+const fetching = ref()
+const story = ref()
+const status = ref()
 if (status.value === 'idle') {
-  await fetchLazy(fetchBySlug(`c/${slug.value}`))
+  const {
+    data,
+    pending,
+    status: _status,
+    execute: _fetchBySlug,
+  } = await fetchBySlug(`c/${slug.value}`)
+  story.value = data.value
+  fetching.value = pending.value
+  status.value = _status.value
+  await fetchLazy(_fetchBySlug())
 }
 
 defineOptions({ name: 'ContentPage' })
