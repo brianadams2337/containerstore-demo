@@ -4,7 +4,7 @@ import type { ModuleOptions } from './types'
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: '@storefront/cms',
+    name: '@scayle/storefront-cms',
     configKey: 'cms',
     version: '0.0.1',
     compatibility: {
@@ -12,7 +12,6 @@ export default defineNuxtModule<ModuleOptions>({
       nuxt: '>=3.9',
     },
   },
-  // Default configuration options of the Nuxt module
   defaults: {
     provider: 'storyblok',
   },

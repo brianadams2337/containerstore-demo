@@ -137,16 +137,22 @@ const trackViewListing = ({ items }: { row: number; items: Product[] }) => {
   })
 }
 
-const {
-  fetchBySlug,
-  data: cmsData,
-  status: cmsStatus,
-} = useCMS<SbListingPage>(`ListingPage-${route.path}`)
+const { fetchBySlug } = useCMS<SbListingPage>(`ListingPage-${route.path}`)
+
+const cmsStatus = ref('')
+const cmsData = ref()
 
 const fetchData = async () => {
   await fetchProducts(fetchParameters.value)
   if (selectedCategory.value?.id) {
-    await fetchBySlug(`categories/${selectedCategory.value?.id}`)
+    const {
+      status,
+      execute: _fetchBySlug,
+      data,
+    } = await fetchBySlug(`categories/${selectedCategory.value?.id}`)
+    await _fetchBySlug()
+    cmsStatus.value = status.value
+    cmsData.value = data.value
   }
 }
 
