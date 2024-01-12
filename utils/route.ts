@@ -11,6 +11,11 @@ export const normalizePathRoute = (path: string) => {
   return path.startsWith('/') ? path : `/${path}`
 }
 
+export const hasLocalePrefix = (path: string, prefix?: string) => {
+  const components = path.split('/')
+  return components[1] && components[1] === prefix
+}
+
 type Link =
   | 'home'
   | 'checkout'
