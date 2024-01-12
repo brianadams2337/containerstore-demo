@@ -9,13 +9,10 @@
   <div v-else class="mr-4" :class="{ 'animate-pulse': fetching }">
     <div
       v-if="
-        nestedCategoryViewIsActive && activeParentCategory?.children?.length
+        isNestedCategoryViewActive && activeParentCategory?.children?.length
       "
     >
-      <div
-        class="mb-5 ml-5 mt-6 flex items-center text-xs"
-        @click="nestedCategoryViewIsActive = false"
-      >
+      <div class="mb-5 ml-5 mt-6 flex items-center text-xs">
         <IconBack class="mr-1 h-3 w-3" />
         <p>Back to "{{ activeParentCategory.name }}"</p>
       </div>
@@ -39,10 +36,7 @@
       >
         {{ rootCategory.name }}
       </DefaultLink>
-      <ul
-        v-if="'length' in categories && categories.length"
-        class="my-4 md:mt-0"
-      >
+      <ul v-if="categories?.length" class="my-4 md:mt-0">
         <li
           v-for="category in categories"
           :key="`side_navigation_list_item_${category.id}`"
@@ -70,43 +64,32 @@
 <script setup lang="ts">
 import type { Category } from '@scayle/storefront-nuxt'
 
-const props = defineProps({
-  categories: {
-    type: [Array, Object] as PropType<Category[] | Category>,
-    default: () => [],
-  },
-  fetching: {
-    type: Boolean,
-    required: true,
-  },
-  rootCategory: {
-    type: Object as PropType<Category>,
-    default: null,
-  },
+type Props = {
+  categories?: Category[]
+  rootCategory?: Category
+  fetching: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  categories: () => [],
+  rootCategory: undefined,
 })
 
-const emit = defineEmits<{
-  (e: 'click:navigationItem'): void
-}>()
+const emit = defineEmits<{ (e: 'click:navigationItem'): void }>()
 
 const route = useRoute()
 const activeParentCategory = ref<Category>()
-const nestedCategoryViewIsActive = ref<boolean>(false)
 
-onMounted(() => {
-  activeParentCategory.value = (props.categories as Category[]).find(
-    (category) => category.path === `/${route.path.split('/')[1]}`,
-  )
-  if (route.path.split('/').length > 2) {
-    nestedCategoryViewIsActive.value = true
-  }
+const pathParts = computed(() => route.path.split('/'))
+
+const isNestedCategoryViewActive = computed(() => pathParts.value.length > 2)
+
+activeParentCategory.value = props.categories.find(({ path }) => {
+  return path === `/${pathParts.value[0]}`
 })
 
 const setActiveParentCategory = (category: Category) => {
   activeParentCategory.value = category
-  nestedCategoryViewIsActive.value = true
-  if (!category.children?.length) {
-    emit('click:navigationItem')
-  }
+  return !category.children?.length && emit('click:navigationItem')
 }
 </script>

@@ -43,31 +43,17 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  index: {
-    type: Number as PropType<number>,
-    required: true,
-  }, // zero based index
-  carrierKey: {
-    type: String as PropType<DeliveryInfo['carrierKey']>,
-    required: true,
-  },
-  formattedStatus: {
-    type: String as PropType<DeliveryInfo['formattedStatus']>,
-    required: true,
-  },
-  deliveryStatus: {
-    type: String as PropType<DeliveryInfo['deliveryStatus']>,
-    required: true,
-  },
-  deliveryDate: {
-    type: Object as PropType<DeliveryInfo['deliveryDate']>,
-    required: true,
-  },
-})
+type Props = {
+  index: number
+  carrierKey: DeliveryInfo['carrierKey']
+  formattedStatus: DeliveryInfo['formattedStatus']
+  deliveryStatus: DeliveryInfo['deliveryStatus']
+  deliveryDate: DeliveryInfo['deliveryDate']
+}
+const props = defineProps<Props>()
 
 const progressLevel = computed<number>(() => {
-  return DeliveryProgress[props.deliveryStatus] || 5
+  return DeliveryProgress[props.deliveryStatus] || DeliveryProgress.DEFAULT
 })
 
 const progressType = computed<'success' | 'warn' | 'danger'>(() => {

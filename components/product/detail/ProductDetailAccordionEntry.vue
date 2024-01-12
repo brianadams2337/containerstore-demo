@@ -17,16 +17,6 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  collapsed: {
-    type: Boolean,
-    default: true,
-  },
-})
-
-const isCollapsed = ref(props.collapsed)
+const props = defineProps<{ title: string; collapsed: boolean }>()
+const isCollapsed = toRef(props.collapsed)
 </script>

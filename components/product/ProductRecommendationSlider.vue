@@ -23,13 +23,7 @@
           id: 'ProductRecommendationList',
         }"
         :name="getFirstAttributeValue(recommendation.attributes, 'name')?.label"
-        :class="{
-          'min-w-4xs': size === Size['4XS'],
-          'min-w-xs': size === Size.XS,
-          'min-w-md': size === Size.MD,
-          'min-w-lg': size === Size.LG,
-          'min-w-xl': size === Size.XL,
-        }"
+        :class="sizeClasses"
         :link="getProductDetailRoute(recommendation)"
         :image="getImageFromList(recommendation.images, 'model', 'front')"
         :price="getLowestPrice(recommendation.variants ?? [])"
@@ -62,23 +56,18 @@ import {
 } from '@scayle/storefront-nuxt'
 import { Size } from '#imports'
 
-const props = defineProps({
-  loading: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  products: {
-    type: Array as PropType<Product[]>,
-    default: () => [],
-  },
-  size: {
-    type: String as PropType<Size>,
-    default: Size.MD,
-  },
-  isLookbookProducts: {
-    type: Boolean,
-    default: false,
-  },
+type Props = {
+  loading?: boolean
+  products?: Product[]
+  size?: Size
+  isLookbookProducts?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  loading: false,
+  products: () => [],
+  size: Size.MD,
+  isLookbookProducts: false,
 })
 
 const emit = defineEmits<{
@@ -148,4 +137,12 @@ const collectColumnIntersection = (productId: number, index: number) => {
     trackingCollector.value.push(...itemsInSliderRow)
   }
 }
+
+const sizeClasses = computed(() => ({
+  'min-w-4xs': props.size === Size['4XS'],
+  'min-w-xs': props.size === Size.XS,
+  'min-w-md': props.size === Size.MD,
+  'min-w-lg': props.size === Size.LG,
+  'min-w-xl': props.size === Size.XL,
+}))
 </script>
