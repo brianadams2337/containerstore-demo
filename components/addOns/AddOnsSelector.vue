@@ -33,51 +33,52 @@ type AddOnItem = {
   variantId: number
 }
 
-const props = defineProps({
-  addOnVariantIds: {
-    type: Array as PropType<number[]>,
-    required: true,
-  },
-})
+const props = defineProps<{ addOnVariantIds: number[] }>()
 
 const emit = defineEmits(['click:service-selection'])
 
+const variantsIds = computed(() => {
+  return props.addOnVariantIds.map((addOn) => parseInt(addOn.toString()))
+})
+
 const keyPostfix = computed(() => props.addOnVariantIds.join('-'))
 const { formatCurrency } = useFormatHelpers()
+
 const { data: variants } = await useVariant({
-  params: {
-    ids: props.addOnVariantIds.map((addOn) => parseInt(addOn.toString())),
-  },
+  params: { ids: variantsIds.value },
   key: `addonVariants-${keyPostfix.value}`,
 })
 
+const productIds = computed(() => {
+  return variants.value?.map((variant) => variant.productId)
+})
+
 const { data: products } = await useProductsByIds({
-  params: {
-    ids: variants.value?.map((variant) => variant.productId),
-  },
+  params: { ids: productIds.value },
   key: `addonProducts-${keyPostfix.value}`,
 })
-const computedAddOns = ref<AddOnItem[]>([])
 
-onMounted(() => resolveVariantInfo())
+const sortedProductsById = computed(() => {
+  return products.value?.sort((a, b) => a.id - b.id)
+})
+
+const sortedVariantsByProductId = computed(() => {
+  return variants.value?.sort((a, b) => a.productId - b.productId)
+})
+
+const computedAddOns = computed(() => {
+  return sortedProductsById.value.map((product, idx) => ({
+    label:
+      getFirstAttributeValue(product.attributes, 'name')?.label ?? 'add on',
+    price: sortedVariantsByProductId.value![idx]?.price.withoutTax,
+    variantId: sortedVariantsByProductId.value![idx].id,
+  }))
+})
 
 const onSelectionChanged = (event: any, { variantId }: AddOnItem) => {
   emit('click:service-selection', {
     isSelected: event.target.checked,
     variantId,
   })
-}
-
-const resolveVariantInfo = () => {
-  // sorting by productId ensures 1-1 mapping by index for later computation of label and price
-  products.value?.sort((a, b) => a.id - b.id)
-  variants.value?.sort((a, b) => a.productId - b.productId)
-
-  computedAddOns.value = (products.value || []).map((product, idx) => ({
-    label:
-      getFirstAttributeValue(product.attributes, 'name')?.label ?? 'add on',
-    price: variants.value![idx]?.price.withoutTax,
-    variantId: variants.value![idx].id,
-  }))
 }
 </script>
