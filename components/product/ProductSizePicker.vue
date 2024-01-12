@@ -87,7 +87,6 @@ const emit = defineEmits(['select-size', 'input'])
 
 const handleBeforeInput = (value: any) =>
   isVariantInStock(props.variants, value, 'size')
-const _sizes = ref<VariantSize[]>([]) //
 const variants = toRef(props, 'variants')
 
 const getSizeFromVariant = (variant: Variant) => {
@@ -100,23 +99,14 @@ const getSizeFromVariant = (variant: Variant) => {
   }
 }
 
-watch(
-  variants,
-  () => {
-    if (!variants.value?.length) {
-      return
-    }
-    _sizes.value = [...props.variants]
-      .sort((a, b) => {
-        const left = getFirstAttributeValue(a.attributes, 'sort')?.value || '0'
-        const right = getFirstAttributeValue(b.attributes, 'sort')?.value || '0'
-
-        return parseInt(left, 10) - parseInt(right, 10)
-      })
-      .map(getSizeFromVariant)
-  },
-  { immediate: true },
-)
+const _sizes = computed(() => {
+  if (!variants.value?.length) {
+    return []
+  }
+  return useSort([...props.variants], ({ attributes }) => {
+    return Number(getFirstAttributeValue(attributes, 'sort')?.value || '0')
+  }).map(getSizeFromVariant)
+})
 
 const sizes = computed(() => getVariantSizes(props.variants))
 const selectedSize = computed(() => {

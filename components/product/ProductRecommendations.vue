@@ -79,6 +79,7 @@ const emit = defineEmits<{
 const { isGreaterOrEqual } = useDefaultBreakpoints()
 const { getProductDetailRoute } = useRouteHelpers()
 
+// TODO: Extract logic to a composable
 const trackingCollector = ref<Product[]>([])
 const carousel = ref<HTMLDivElement>()
 const carouselStyles = ref({
