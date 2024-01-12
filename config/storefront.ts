@@ -1,4 +1,5 @@
-import { HashAlgorithm, type ModuleOptions } from '@scayle/storefront-nuxt'
+import { HashAlgorithm } from '@scayle/storefront-nuxt'
+import type { IDPConfig, ModuleOptions } from '@scayle/storefront-nuxt'
 import * as customRpcMethods from '../rpcMethods'
 import withParams from '../constants/withParams'
 
@@ -12,11 +13,13 @@ declare module '@scayle/storefront-nuxt' {
     paymentProviders: string[]
     appKeys: typeof DEFAULT_APP_KEYS
     isLowestPreviousPriceActive?: boolean
+    idp?: IDPConfig
   }
   // Extend PublicShopConfig to make types available on currentShop
   export interface PublicShopConfig {
     isLowestPreviousPriceActive?: boolean
     paymentProviders: string[]
+    idp?: IDPConfig
   }
 }
 
@@ -98,6 +101,11 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
     clientId: '', // Override: NUXT_STOREFRONT_OAUTH_CLIENT_ID
     clientSecret: '', // Override: NUXT_STOREFRONT_OAUTH_CLIENT_SECRET
   },
+  idp: {
+    enabled: false,
+    idpKeys: [],
+    idpRedirectURL: '',
+  },
 
   /** Storefront Core - Configure shop switching based on selected routing option (`domain` or `path`-based)
    * https://scayle.dev/en/dev/storefront-core/module-configuration#path-and-domain  */
@@ -120,6 +128,11 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
        * Example if `[shop.locale]` is used -> Overrideable environment variable: NUXT_STOREFRONT_STORES_EN_US_CHECKOUT_USER.
        * Example if `[shop.shopId]` is used -> Overrideable environment variable: NUXT_STOREFRONT_STORES_1001_CHECKOUT_USER. */
       [shop.shopId]: {
+        idp: {
+          enabled: false,
+          idpKeys: [],
+          idpRedirectURL: '',
+        },
         /** Storefront Core - Numeric SCAYLE ShopId (usually 5 digits) */
         shopId: shop.shopId, // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_SHOP_ID
 

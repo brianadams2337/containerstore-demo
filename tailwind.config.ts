@@ -90,7 +90,6 @@ export default {
           900: '#001732', // dark-20
           DEFAULT: '#0277ff',
         },
-
         secondary: {
           100: '#fbfbfb',
           200: '#fafafa',
