@@ -16,7 +16,10 @@
   </div>
 </template>
 
-<script setup lang="ts">
-const props = defineProps<{ title: string; collapsed: boolean }>()
+<script setup lang="ts" ii>
+const props = withDefaults(
+  defineProps<{ title: string; collapsed?: boolean }>(),
+  { collapsed: false },
+)
 const isCollapsed = toRef(props.collapsed)
 </script>
