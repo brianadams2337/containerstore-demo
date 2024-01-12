@@ -11,13 +11,25 @@ import { getCategoryPath, routeList } from '~/utils/route'
 
 export default () => {
   const localePath = useLocalePath()
+  const currentShop = useCurrentShop()
 
   const localizedNavigateTo = (
     route: RouteLocationRaw,
     options?: NavigateToOptions,
   ) => {
-    const routePath = localePath(route)
-    return navigateTo(routePath, options)
+    if (!isString(route)) {
+      return navigateTo(localePath(route), options)
+    }
+
+    const normalizedPath = normalizePathRoute(route)
+    const dedupedLocalePath = hasLocalePrefix(
+      normalizedPath,
+      currentShop.value?.path,
+    )
+      ? normalizedPath
+      : localePath(normalizedPath)
+
+    return navigateTo(dedupedLocalePath, options)
   }
 
   const getProductDetailRoute = (

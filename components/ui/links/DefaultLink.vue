@@ -70,11 +70,6 @@ const exactActiveClass = computed(() => {
 const localePath = useLocalePath()
 const currentShop = useCurrentShop()
 
-const hasLocalePrefix = (path: string, prefix?: string) => {
-  const components = path.split('/')
-  return components[1] && components[1] === prefix
-}
-
 const resolvedLink = computed(() => {
   const isExternal = isString(props.to) && props.to.startsWith('http')
 
@@ -86,7 +81,7 @@ const resolvedLink = computed(() => {
     return localePath(props.to)
   }
 
-  const normalizedPath = !props.to.startsWith('/') ? `/${props.to}` : props.to
+  const normalizedPath = normalizePathRoute(props.to)
 
   return hasLocalePrefix(normalizedPath, currentShop.value?.path)
     ? normalizedPath
