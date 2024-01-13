@@ -11,21 +11,16 @@
 </template>
 
 <script setup lang="ts" generic="T extends { disabled?: boolean }">
-const props = defineProps({
-  listName: {
-    type: String,
-    required: true,
-  },
-  value: {
-    type: Object as PropType<T>,
-    default: undefined,
-  },
-})
+type Props = {
+  listName: string
+  value?: T
+}
+const props = withDefaults(defineProps<Props>(), { value: undefined })
 
 const { activeValue, setActive, toggle } = useListbox<T>(props.listName)
 
 const handleClick = () => {
-  if (!props?.value || ('disabled' in props.value && props?.value?.disabled)) {
+  if (!props.value || ('disabled' in props.value && props.value?.disabled)) {
     return
   }
   setActive(props.value as T)
