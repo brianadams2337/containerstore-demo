@@ -16,7 +16,7 @@ const domains = {
 
 type NitroRouteConfig = NuxtConfig['routeRules']
 
-const DOMAIN_PER_LOCALE = yn(process.env.DOMAIN_PER_LOCALE)
+const DOMAIN_PER_LOCALE = yn(process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE)
 
 const DE_DOMAIN_FILE = 'de-DE.json'
 
@@ -53,6 +53,9 @@ export default defineNuxtConfig({
 
   // https://nuxt.com/docs/api/nuxt-config#telemetry
   telemetry: false,
+
+  // https://nuxt.com/docs/api/nuxt-config#debug
+  debug: true,
 
   // Any key/value pair outside of the `public` key are private/server-side only
   // https://nuxt.com/docs/guide/going-further/runtime-config

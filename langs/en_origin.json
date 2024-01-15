@@ -18,7 +18,8 @@
     "days": "day | days",
     "back": "Back",
     "continue_shopping_label": "Continue shopping",
-    "sign_in_label": "Sign in"
+    "sign_in_label": "Sign in",
+    "or": "Or"
   },
   "promotion": {
     "progress_left": "{amount} left",
@@ -386,6 +387,12 @@
           "406_hash_has_expired": "Your token has been already used or has been expired. Please request a new password reset email."
         }
       }
+    },
+    "idp": {
+      "google": "Sign in with Google",
+      "facebook": "Sign in with Facebook",
+      "apple": "Sign in with Apple",
+      "okta": "Sign in with Okta"
     }
   }
 }
