@@ -1,4 +1,4 @@
 export interface StoryblokProvider {
   provider: 'storyblok'
-  accessToken?: string
+  accessToken: string
 }
