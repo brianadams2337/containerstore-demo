@@ -4,7 +4,7 @@
       <CmsImage :blok="cmsContent" is-teaser />
     </div>
     <PageContent v-if="products" class="sm:flex">
-      <div class="-ml-4 hidden w-1/3 md:block lg:w-1/5">
+      <div class="-ml-4 hidden w-1/3 md:block md:w-2/5 lg:w-3/12">
         <SideNavigation
           v-if="categories && 'children' in categories && categories.children"
           :categories="categories.children"
