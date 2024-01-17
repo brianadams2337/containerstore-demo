@@ -2,7 +2,7 @@
   <div>
     <video
       ref="element"
-      class="h-full w-full object-contain object-center"
+      class="size-full object-contain object-center"
       :class="[marginClasses[0], containerClasses]"
       :controls="blok.has_controls"
       :disable-picture-in-picture="!blok.has_controls"

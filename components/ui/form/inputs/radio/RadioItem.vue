@@ -9,12 +9,12 @@
       class="absolute left-0 top-0 z-0 opacity-0"
     />
     <div
-      class="z-10 inline-flex h-5 w-5 items-center justify-center rounded-full border-2 bg-white"
+      class="z-10 inline-flex size-5 items-center justify-center rounded-full border-2 bg-white"
       :class="isActive ? 'border-primary' : 'border-secondary-700'"
     >
       <span
         v-show="isActive"
-        class="inline-block h-2 w-2 rounded-full bg-black"
+        class="inline-block size-2 rounded-full bg-black"
       />
     </div>
     <span v-if="label" class="ml-2">

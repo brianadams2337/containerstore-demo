@@ -6,7 +6,7 @@
   >
     <NuxtImg
       v-if="imageSource && imageSource.src"
-      class="h-full w-full object-cover"
+      class="size-full object-cover"
       provider="storyblok"
       :sizes="sizes"
       :src="imageSource.src"
@@ -15,7 +15,7 @@
     />
 
     <div
-      class="absolute top-0 flex h-full w-full overflow-hidden p-5 text-white md:p-[60px]"
+      class="absolute top-0 flex size-full overflow-hidden p-5 text-white md:p-[60px]"
     >
       <div
         class="flex h-full flex-col overflow-hidden"

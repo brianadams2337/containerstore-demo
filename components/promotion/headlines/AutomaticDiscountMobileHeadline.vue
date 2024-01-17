@@ -15,7 +15,7 @@
         })
       }}
     </span>
-    <IconInfoOutline class="ml-1 h-4 w-4" />
+    <IconInfoOutline class="ml-1 size-4" />
   </h1>
 </template>
 

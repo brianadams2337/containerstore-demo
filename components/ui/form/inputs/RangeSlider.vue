@@ -18,9 +18,9 @@
     >
       <template #dot>
         <button
-          class="flex h-4 w-4 cursor-pointer rounded-full bg-primary focus:outline-none"
+          class="flex size-4 cursor-pointer rounded-full bg-primary focus:outline-none"
         >
-          <div class="m-auto h-2 w-2 rounded-full bg-white" />
+          <div class="m-auto size-2 rounded-full bg-white" />
         </button>
       </template>
     </VueSlider>

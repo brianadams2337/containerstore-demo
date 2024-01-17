@@ -7,7 +7,7 @@
     class="absolute z-20 flex items-center gap-2 text-primary"
     v-on="backClickEventHandling"
   >
-    <IconBack class="h-4 w-4" />
+    <IconBack class="size-4" />
     <span class="text-xs font-semibold">{{ $t('global.back') }}</span>
   </component>
 </template>

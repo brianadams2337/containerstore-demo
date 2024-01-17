@@ -9,7 +9,7 @@
       :preload="preload"
     />
   </div>
-  <div class="pointer-events-none absolute top-0 flex h-full w-full p-5">
+  <div class="pointer-events-none absolute top-0 flex size-full p-5">
     <div class="flex h-full flex-col" :class="[...justify, ...align]">
       <h3
         v-if="blok.topline"

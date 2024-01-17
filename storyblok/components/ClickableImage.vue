@@ -10,7 +10,7 @@
       <Intersect :threshold="0.5" @enter="onIntersect">
         <NuxtImg
           provider="storyblok"
-          class="h-full w-full object-cover"
+          class="size-full object-cover"
           :src="imageSource.src"
           :alt="imageSource.alt"
           loading="lazy"

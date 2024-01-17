@@ -16,7 +16,7 @@
         <FloatingBadge v-if="!isEmpty" class="-right-2 -top-2">
           {{ countWithoutSoldOutItems }}
         </FloatingBadge>
-        <IconCart class="h-6 w-6" />
+        <IconCart class="size-6" />
       </DefaultLink>
       <div
         v-if="isBasketFlyoutOpen"

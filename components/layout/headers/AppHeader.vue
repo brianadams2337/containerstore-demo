@@ -11,8 +11,8 @@
             data-test-id="side-navigation-button"
             @click="toggleSideNavigation"
           >
-            <IconClose v-if="isSideNavigationOpen" class="h-6 w-6" />
-            <IconBurger v-else class="h-6 w-6" />
+            <IconClose v-if="isSideNavigationOpen" class="size-6" />
+            <IconBurger v-else class="size-6" />
           </AppButton>
         </div>
         <AppLogo class="ml-4 flex-initial" :width="138" :height="32" />

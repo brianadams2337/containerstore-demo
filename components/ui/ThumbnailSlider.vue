@@ -17,7 +17,7 @@
     <div
       v-for="(image, idx) in images"
       :key="`thumbnail-rounded-${image.hash}`"
-      class="h-2 w-2 rounded-full sm:hidden"
+      class="size-2 rounded-full sm:hidden"
       :class="idx === activeIndex ? 'bg-black' : 'bg-gray-500'"
     />
   </div>

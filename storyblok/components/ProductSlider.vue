@@ -31,7 +31,7 @@
           :disabled="!isPrevEnabled"
           @click="prev(sliderOffset)"
         >
-          <IconArrowLeft class="h-8 w-8 p-1.5" />
+          <IconArrowLeft class="size-8 p-1.5" />
         </button>
       </template>
       <template #next-button="{ next, isNextEnabled }">
@@ -40,7 +40,7 @@
           :disabled="!isNextEnabled"
           @click="next(sliderOffset)"
         >
-          <IconArrowRight class="h-8 w-8 p-1.5" />
+          <IconArrowRight class="size-8 p-1.5" />
         </button>
       </template>
     </HorizontalItemsSlider>

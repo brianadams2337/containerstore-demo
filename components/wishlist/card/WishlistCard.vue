@@ -10,7 +10,7 @@
     @productimage:mouseleave="isAddToBasketButtonShown = false"
   >
     <template #header-badge>
-      <div class="flex h-max w-max flex-col">
+      <div class="flex size-max flex-col">
         <ProductBadge
           v-if="isProductSustainable(product)"
           badge-label="sustainable"
@@ -78,11 +78,11 @@
         class="absolute bottom-0 right-0 top-auto z-30 flex h-auto justify-end pb-[20px] pr-4 lg:hidden"
       >
         <div
-          class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-gray-100 bg-white"
+          class="flex size-8 cursor-pointer items-center justify-center rounded-full border border-gray-100 bg-white"
           data-test-id="wishlist-card-add-to-cart-mobile"
           @click="showSizePicker"
         >
-          <IconAddToCart class="h-5 w-5" />
+          <IconAddToCart class="size-5" />
         </div>
       </div>
     </template>
@@ -152,7 +152,7 @@
               class="flex cursor-pointer justify-center py-3"
               @click="toggleFilter"
             >
-              <IconAngleDown class="h-4 w-4" />
+              <IconAngleDown class="size-4" />
             </div>
             <div
               class="flex justify-end border-b border-b-secondary-700 px-5 pb-3"

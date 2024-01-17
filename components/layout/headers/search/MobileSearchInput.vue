@@ -2,7 +2,7 @@
   <div class="relative w-full">
     <label class="relative flex w-full items-center">
       <span class="absolute left-3 top-[50%] flex translate-y-[-50%]">
-        <IconSearch class="h-5 w-5" />
+        <IconSearch class="size-5" />
       </span>
       <input
         id="search"

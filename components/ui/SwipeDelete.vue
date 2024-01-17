@@ -5,7 +5,7 @@
   >
     <div
       ref="content"
-      class="z-10 flex h-full w-full items-center justify-center bg-white"
+      class="z-10 flex size-full items-center justify-center bg-white"
       :class="{ 'transition-all duration-200 ease-linear': !isSwiping }"
       :style="{ transform: `translateX(${contentOffset})`, opacity }"
     >
@@ -16,7 +16,7 @@
       class="absolute right-0 flex h-full items-center justify-center bg-red-500"
       :style="{ width: actionWidth, opacity }"
     >
-      <IconTrash class="h-5 w-5" />
+      <IconTrash class="size-5" />
     </div>
   </div>
 </template>

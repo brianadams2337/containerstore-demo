@@ -7,7 +7,7 @@
   >
     <template #action>
       <DefaultLink :to="link" raw>
-        <IconAccount class="h-6 w-6" />
+        <IconAccount class="size-6" />
       </DefaultLink>
       <div
         v-if="isUserFlyoutOpen"

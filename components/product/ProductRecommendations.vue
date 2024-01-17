@@ -9,7 +9,7 @@
       class="absolute left-0 top-60 z-10 hidden text-gray-700 focus:outline-none sm:inline-block"
       @click="prev"
     >
-      <IconArrowLeft class="h-5 w-5" />
+      <IconArrowLeft class="size-5" />
     </button>
     <div ref="carousel" class="flex space-x-2" :style="carouselStyles">
       <ProductCard
@@ -48,7 +48,7 @@
       class="absolute right-0 top-60 hidden text-gray-700 focus:outline-none sm:inline-block"
       @click="next"
     >
-      <IconArrowRight class="h-5 w-5" />
+      <IconArrowRight class="size-5" />
     </button>
   </HorizontalItemsSlider>
 </template>

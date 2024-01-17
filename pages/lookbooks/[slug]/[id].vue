@@ -22,7 +22,7 @@
             }"
             class="hidden items-center gap-2 align-middle md:flex"
           >
-            <IconBack class="h-4 w-4" /> {{ $t('lookbooks.back') }}
+            <IconBack class="size-4" /> {{ $t('lookbooks.back') }}
           </DefaultLink>
         </div>
         <ProductList

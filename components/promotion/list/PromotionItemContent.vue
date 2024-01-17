@@ -11,7 +11,7 @@
       class="mb-2"
     />
     <PromotionCountdown :until="schedule.to" />
-    <IconInfoOutline class="absolute right-3.5 top-3 h-5 w-5" />
+    <IconInfoOutline class="absolute right-3.5 top-3 size-5" />
     <div
       v-if="isPriorityBadgeShown"
       class="absolute bottom-3 right-4 rounded-md border px-2 py-1 text-2xs font-semibold uppercase"

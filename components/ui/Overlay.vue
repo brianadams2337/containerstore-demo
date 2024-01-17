@@ -1,6 +1,6 @@
 <template>
   <Teleport to="body">
-    <div class="absolute top-0 z-50 h-full w-full" :class="backgroundClass" />
+    <div class="absolute top-0 z-50 size-full" :class="backgroundClass" />
   </Teleport>
 </template>
 

@@ -10,7 +10,7 @@
       >
         {{ modelValue }}
         <IconDropdown
-          class="ml-0.5 mt-0.5 h-3 w-3 transition"
+          class="ml-0.5 mt-0.5 size-3 transition"
           :class="{ 'rotate-180': isDropdownVisible }"
         />
       </AppButton>

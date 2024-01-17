@@ -1,13 +1,13 @@
 <template>
   <Modal full-screen @close="emit('click:close-zoom-gallery')">
-    <div class="relative flex h-full w-full flex-col">
+    <div class="relative flex size-full flex-col">
       <!-- slides -->
       <div class="relative h-full flex-1 overflow-hidden">
         <button
           class="absolute bottom-3 z-10 ml-10 text-lg sm:bottom-auto sm:top-2/4"
           @click="navigateToImage('prev')"
         >
-          <IconArrowLeft class="h-5 w-5" />
+          <IconArrowLeft class="size-5" />
         </button>
         <div
           ref="zoomGalleryRef"
@@ -36,7 +36,7 @@
           class="absolute bottom-3 right-0 z-10 mr-10 text-lg sm:bottom-auto sm:top-2/4"
           @click="navigateToImage('next')"
         >
-          <IconArrowRight class="h-5 w-5" />
+          <IconArrowRight class="size-5" />
         </button>
       </div>
 
