@@ -78,7 +78,7 @@
                 value: `${item.value}`,
                 label: item.displayName,
               }"
-              class="h-5 w-5"
+              class="size-5"
               :is-active="isActive"
             />
           </button>

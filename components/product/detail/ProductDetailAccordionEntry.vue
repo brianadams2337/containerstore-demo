@@ -5,8 +5,8 @@
       @click="isCollapsed = !isCollapsed"
     >
       <span>{{ title }}</span>
-      <IconPlus v-if="isCollapsed" class="h-4 w-4 text-primary" />
-      <IconMinus v-else class="h-4 w-4 text-primary" />
+      <IconPlus v-if="isCollapsed" class="size-4 text-primary" />
+      <IconMinus v-else class="size-4 text-primary" />
     </button>
     <FadeInTransition>
       <div v-if="!isCollapsed" class="py-4 text-xs text-secondary">

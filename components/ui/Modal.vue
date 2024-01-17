@@ -8,7 +8,7 @@
       >
         <div
           ref="modalRef"
-          class="relative m-auto h-full w-full rounded-md bg-white p-8 md:w-[46.875rem]"
+          class="relative m-auto size-full rounded-md bg-white p-8 md:w-[46.875rem]"
           :class="{ '!h-[95%] !w-[95%]': fullScreen }"
         >
           <slot name="headline" />
@@ -18,7 +18,7 @@
             class="absolute right-6 top-6 z-50 cursor-pointer p-3"
             @click="close"
           >
-            <IconCloseBold class="h-5 w-5" />
+            <IconCloseBold class="size-5" />
           </button>
           <slot />
         </div>

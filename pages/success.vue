@@ -7,7 +7,7 @@
       <div class="container sm:mx-16 sm:pr-20">
         <div class="mt-16 space-y-2">
           <Headline size="lg" is-uppercase class="flex items-center">
-            <IconCheckmark class="relative top-[-2px] mr-2 h-5 w-5" />
+            <IconCheckmark class="relative top-[-2px] mr-2 size-5" />
             {{ $t('osp.intro') }}
             {{ orderData.customer?.firstName }}
           </Headline>

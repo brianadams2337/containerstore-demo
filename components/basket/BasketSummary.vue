@@ -67,9 +67,7 @@
             :key="text"
             class="flex justify-center gap-1 text-2xs text-gray-750"
           >
-            <IconCheckmark
-              class="h-4 w-4 rounded-full border border-gray-750"
-            />
+            <IconCheckmark class="size-4 rounded-full border border-gray-750" />
             {{ text }}
           </p>
         </div>

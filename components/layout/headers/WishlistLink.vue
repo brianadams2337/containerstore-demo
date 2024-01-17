@@ -1,5 +1,5 @@
 <template>
-  <div class="inline-flex h-full w-full items-center justify-center">
+  <div class="inline-flex size-full items-center justify-center">
     <DefaultLink
       :to="routeList.wishlist"
       data-test-id="wishlist-link"
@@ -9,7 +9,7 @@
       <FloatingBadge v-if="count" class="-right-2 -top-2">
         {{ count }}
       </FloatingBadge>
-      <IconHeartBold class="h-6 w-6" />
+      <IconHeartBold class="size-6" />
     </DefaultLink>
   </div>
 </template>

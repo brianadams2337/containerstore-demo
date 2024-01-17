@@ -30,7 +30,7 @@
           @click="closeSideNavigation"
         >
           <div class="inline-flex items-center">
-            <IconUserSecondary class="mr-1 h-3 w-3" />
+            <IconUserSecondary class="mr-1 size-3" />
             <span class="font-medium">{{ $t('navigation.my_account') }}</span>
           </div>
         </DefaultLink>

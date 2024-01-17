@@ -8,7 +8,7 @@
         class="absolute -left-6 top-1/2 inline-block -translate-y-1/2 cursor-pointer p-2"
         @click="changePage(currentPage - 1)"
       >
-        <IconArrowLeft class="h-4 w-4" />
+        <IconArrowLeft class="size-4" />
       </span>
 
       <span
@@ -50,7 +50,7 @@
         class="absolute -right-6 top-1/2 inline-block -translate-y-1/2 cursor-pointer p-2"
         @click="changePage(currentPage + 1)"
       >
-        <IconArrowRight class="h-4 w-4" />
+        <IconArrowRight class="size-4" />
       </span>
     </div>
   </div>

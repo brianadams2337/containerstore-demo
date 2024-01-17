@@ -6,7 +6,7 @@
     <span class="text-xs" :class="conditionTextClass">
       {{ headline.conditionText }}
     </span>
-    <IconInfoOutline v-if="showInfoIcon" class="ml-1 h-5 w-5" />
+    <IconInfoOutline v-if="showInfoIcon" class="ml-1 size-5" />
   </h1>
 </template>
 

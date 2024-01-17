@@ -17,7 +17,7 @@
       <span v-else>{{ $t('pdp.select_size') }}</span>
       <span>
         <IconDropdown
-          class="h-3 w-3 text-primary transition"
+          class="size-3 text-primary transition"
           :class="{ 'rotate-180': isOpen }"
         />
       </span>

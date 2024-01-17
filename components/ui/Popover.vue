@@ -4,7 +4,7 @@
     @mouseenter="emit('mouseenter')"
     @mouseleave="emit('mouseleave')"
   >
-    <div class="inline-flex h-full w-full items-center justify-center">
+    <div class="inline-flex size-full items-center justify-center">
       <slot name="action" />
     </div>
     <FadeInFromBottomTransition appear>

@@ -8,16 +8,16 @@
   >
     <IconCheckmark
       v-if="isActive"
-      class="absolute inset-x-0 m-auto h-5 w-5"
+      class="absolute inset-x-0 m-auto size-5"
       :class="isLightColor ? 'text-primary' : 'text-white'"
     />
-    <span v-if="hasMixedColors" class="grid h-full w-full grid-cols-2">
+    <span v-if="hasMixedColors" class="grid size-full grid-cols-2">
       <span
         v-for="(hex, idx) in colorCode"
         :key="`${idx}-${hex}`"
         :style="{ backgroundColor: hex }"
         :class="{ 'last-of-type:col-span-full': isNumberOfMixColorsOdd }"
-        class="h-full w-full"
+        class="size-full"
       />
     </span>
   </span>

@@ -14,7 +14,7 @@
             <span
               :key="`color-picker-color-${item.id}`"
               :style="`background-color:${item.id}`"
-              class="inline-block h-4 w-4 rounded-full border border-black bg-white"
+              class="inline-block size-4 rounded-full border border-black bg-white"
             />
           </slot>
         </slot>

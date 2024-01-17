@@ -5,7 +5,7 @@
   >
     <slot name="trigger" :is-active="isActive" @toggle="toggle">
       <button
-        class="absolute -mt-1 inline-block h-6 w-6 rounded-full bg-white shadow transition duration-200 ease-linear focus:outline-none"
+        class="absolute -mt-1 inline-block size-6 rounded-full bg-white shadow transition duration-200 ease-linear focus:outline-none"
         :class="isActive ? 'translate-x-4' : 'left-0 -ml-2 bg-primary'"
         role="switch"
         @click="toggle"

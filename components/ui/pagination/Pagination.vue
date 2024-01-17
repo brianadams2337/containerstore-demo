@@ -5,7 +5,7 @@
   >
     <slot v-bind="{ canNavigateLeft, previousPage }" name="previous-button">
       <PaginationButton v-if="canNavigateLeft" :page="previousPage">
-        <IconArrowLeft class="h-3 w-3" />
+        <IconArrowLeft class="size-3" />
       </PaginationButton>
     </slot>
 
@@ -45,7 +45,7 @@
 
     <slot name="next-button" v-bind="{ canNavigateRight, nextPage }">
       <PaginationButton v-if="canNavigateRight" :page="nextPage">
-        <IconArrowRight class="h-3 w-3" />
+        <IconArrowRight class="size-3" />
       </PaginationButton>
     </slot>
   </div>

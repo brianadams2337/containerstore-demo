@@ -8,7 +8,7 @@
       @click="toggleTerms"
     >
       <span class="inline-flex items-start">
-        <IconInfoOutline class="mr-1 h-4 w-4" />
+        <IconInfoOutline class="mr-1 size-4" />
         {{ $t('promotion.terms') }}
       </span>
       <template #append-icon="{ _class }">

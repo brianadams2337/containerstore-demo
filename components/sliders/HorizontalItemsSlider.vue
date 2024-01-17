@@ -2,7 +2,7 @@
   <div class="relative">
     <div
       ref="sliderRef"
-      class="flex h-full w-full shrink-0 snap-x snap-mandatory overflow-x-auto overflow-y-hidden scrollbar-hide"
+      class="flex size-full shrink-0 snap-x snap-mandatory overflow-x-auto overflow-y-hidden scrollbar-hide"
       :class="{
         container,
         'space-x-4': spacedItems,
@@ -18,7 +18,7 @@
           :disabled="!isPrevEnabled"
           @click="prev()"
         >
-          <IconArrowLeft class="h-5 w-5 p-1" />
+          <IconArrowLeft class="size-5 p-1" />
         </button>
       </slot>
       <slot name="next-button" :next="next" :is-next-enabled="isNextEnabled">
@@ -27,7 +27,7 @@
           :disabled="!isNextEnabled"
           @click="next()"
         >
-          <IconArrowRight class="h-5 w-5 p-1" />
+          <IconArrowRight class="size-5 p-1" />
         </button>
       </slot>
     </template>

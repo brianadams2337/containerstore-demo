@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-max w-max flex-col">
+  <div class="flex size-max flex-col">
     <ProductBadge
       v-if="isProductSustainable(product)"
       badge-label="sustainable"

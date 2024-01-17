@@ -58,7 +58,7 @@
         <div
           v-for="(item, slideIndex) in images"
           :key="item.hash"
-          class="h-1 w-1 rounded-full"
+          class="size-1 rounded-full"
           :class="activeSlide === slideIndex ? 'bg-primary' : 'bg-secondary'"
         >
           &nbsp;
