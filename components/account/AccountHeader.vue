@@ -18,14 +18,10 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  icon: {
-    type: String,
-    default: '',
-  },
-})
+type Props = {
+  title: string
+  icon?: string
+}
+
+withDefaults(defineProps<Props>(), { icon: '' })
 </script>

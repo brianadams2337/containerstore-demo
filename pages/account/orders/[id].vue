@@ -1,5 +1,5 @@
 <template>
-  <PageContent>
+  <PageContent class="p-0 md:mt-0">
     <div v-if="paramId">
       <OrderLoadingState v-if="fetching" />
       <template v-else-if="orderDetails && !fetching">

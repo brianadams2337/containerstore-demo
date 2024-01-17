@@ -1,14 +1,14 @@
 <template>
-  <div class="bg-white pb-4 pt-5">
+  <div class="bg-white pb-4">
     <Headline class="mb-4 break-all" tag="h2" size="xl">
       {{ headline }}
     </Headline>
     <p class="break-all font-semibold text-secondary">
       <span>{{ shopId }} - {{ orderId }}</span>
       <span>{{ ' · ' }}</span>
-      <span>{{
-        $t('my_account.orders.item_count', { count: itemCount })
-      }}</span>
+      <span>
+        {{ $t('my_account.orders.item_count', { count: itemCount }) }}
+      </span>
     </p>
   </div>
 </template>

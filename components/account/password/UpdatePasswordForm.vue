@@ -62,7 +62,8 @@
 import useVuelidate from '@vuelidate/core'
 
 const { updatePassword, fetch: refresh } = await useUser()
-const { $alert, $i18n, $validation } = useNuxtApp()
+const { $alert, $i18n } = useNuxtApp()
+const validationRules = useValidationRules()
 
 const initPayload = () => ({
   oldPassword: '',
@@ -76,16 +77,16 @@ const payload = reactive(initPayload())
 
 const rules = computed(() => ({
   oldPassword: {
-    required: $validation.rule.required,
+    required: validationRules.required,
   },
   newPassword: {
-    required: $validation.rule.required,
-    password: $validation.rule.password,
-    maxLength: $validation.rule.maxLength(70),
+    required: validationRules.required,
+    password: validationRules.password,
+    maxLength: validationRules.maxLength(70),
   },
   repeatedPassword: {
-    required: $validation.rule.required,
-    sameAs: $validation.rule.sameAs(
+    required: validationRules.required,
+    sameAs: validationRules.sameAs(
       computed(() => payload.newPassword),
       $i18n.t(`form_fields.new_password`),
     ),

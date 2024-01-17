@@ -83,16 +83,12 @@ import type {
   ProductSuggestion,
 } from '@scayle/storefront-nuxt'
 
-defineProps({
-  rootCategories: {
-    type: [Array, Object] as PropType<Category[] | Category>,
-    default: () => [],
-  },
-  fetchingCategories: {
-    type: Boolean,
-    required: true,
-  },
-})
+type Props = {
+  rootCategories?: Category[]
+  fetchingCategories: boolean
+}
+
+withDefaults(defineProps<Props>(), { rootCategories: () => [] })
 
 const { isSmaller } = useDefaultBreakpoints()
 

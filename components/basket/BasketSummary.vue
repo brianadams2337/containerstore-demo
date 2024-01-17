@@ -16,13 +16,7 @@
 
           <div class="flex justify-between">
             <div class="opacity-50">{{ $t('basket.shipping') }}</div>
-            <div class="">
-              {{
-                shippingCost
-                  ? formatCurrency(shippingCost)
-                  : $t('basket.shipping_free')
-              }}
-            </div>
+            <div>{{ $t('basket.shipping_free') }}</div>
           </div>
 
           <div class="flex justify-between">
@@ -84,8 +78,8 @@ const { $i18n } = useNuxtApp()
 const { trackBeginCheckout } = useTrackingEvents()
 const { localizedNavigateTo } = useRouteHelpers()
 const { formatCurrency } = useFormatHelpers()
+
 const totalCost = computed(() => basket.data.value?.cost.withTax)
-const shippingCost = computed(() => 0)
 
 const onClickToCheckoutOrder = async () => {
   trackBeginCheckout(

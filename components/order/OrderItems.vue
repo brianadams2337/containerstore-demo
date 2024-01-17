@@ -14,7 +14,7 @@
         <div
           v-for="{ key, ...data } in map.items"
           :key="key"
-          class="flex space-x-4 px-5 pb-5"
+          class="flex space-x-4 p-5 pb-0 last-of-type:pb-5"
         >
           <OrderItemCard
             v-bind="data"

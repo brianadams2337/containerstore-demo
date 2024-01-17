@@ -17,4 +17,5 @@ export const DeliveryProgress = {
   [Status.DELEGATION_PENDING]: 75,
   [Status.SHIPMENT_COMPLETED]: 100,
   [Status.CANCELLATION_COMPLETED]: 100,
-} as Readonly<Record<Status, number>>
+  DEFAULT: 5,
+} as Readonly<Record<Status, number> & { DEFAULT: number }>

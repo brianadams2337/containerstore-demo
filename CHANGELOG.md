@@ -53,7 +53,7 @@ Storefront Boilerplate does now support deployment to Vercel Edge, besides Docke
 - Replaced `nuxt-vitest` with `@nuxt/test-utils@3.9.0` as the projects have been officially been merged together (_For detailed changes see [Changelog of @nuxt/test-utils](https://github.com/nuxt/test-utils/releases/tag/v3.9.0)_)
   - Introduced `vitest-environment-nuxt@1.0.0`
 - Remove unsupported `imageBaseUrl` option key from `storefrontRuntimeConfigPublic` in `config/storefront.ts`
-- Removed usage of `process.env` from `nuxt.config` and `config/storefront.ts`, relying on using runtime environment variables instead (_For details see [Nuxt Documentation - runtimeConfig / Environment Variables](https://nuxt.com/docs/guide/going-further/runtime-config#environment-variables))
+- Removed usage of `process.env` from `nuxt.config` and `config/storefront.ts`, relying on using runtime environment variables instead (_For details see [Nuxt Documentation - runtimeConfig / Environment Variables](https://nuxt.com/docs/guide/going-further/runtime-config#environment-variables)_)
 - Allowing to use HTTP during local development mode
 - Extend `.env.example` with updated environment variables for locale development purposes
 - Added documentation reference links into `nuxt.config.ts`

@@ -41,7 +41,5 @@ const { isEmpty, fetch, countWithoutSoldOutItems } = await useBasket({
   options: { autoFetch: false },
 })
 
-onMounted(() => {
-  fetch()
-})
+onMounted(() => fetch())
 </script>

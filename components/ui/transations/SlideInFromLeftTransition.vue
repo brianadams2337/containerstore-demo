@@ -1,12 +1,22 @@
 <template>
   <Transition
+    :enter-active-class="easeInOutClass"
+    :leave-active-class="easeInOutClass"
     enter-from-class="-translate-x-full"
     enter-to-class="translate-x-0"
-    enter-active-class="transform transition duration-500 ease-in-out"
     leave-from-class="translate-x-0"
     leave-to-class="-translate-x-full"
-    leave-active-class="transform transition duration-500 ease-in-out"
   >
     <slot />
   </Transition>
 </template>
+
+<script setup lang="ts">
+const props = withDefaults(defineProps<{ duration?: number }>(), {
+  duration: 200,
+})
+
+const easeInOutClass = computed(() => {
+  return `transition transition duration-${props.duration} ease-in-out`
+})
+</script>

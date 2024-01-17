@@ -1,23 +1,20 @@
 <template>
   <div>
     <AccountHeader :title="title" />
-    <div class="container px-5 md:mt-6 md:px-4">
-      <div class="flex flex-col md:flex-row md:pt-5">
+    <PageContent>
+      <div class="flex flex-col md:flex-row">
         <div
           class="mt-6 w-full pb-10 md:mt-0 md:w-1/3 lg:w-1/4"
           :class="{ 'hidden md:block': route.params.id || isAccountPage }"
         >
           <OrderOverviewHeader :orders-count="orders.length" />
-          <div
-            v-if="shouldDisplayOrderOverview"
-            class="rounded-md border border-gray-350"
-          >
+          <div v-if="shouldDisplayOrderOverview">
             <OrderHistoryItem
               v-for="(order, idx) in slicedOrders"
               :key="order.id"
               v-bind="order"
               :is-latest-order="!idx"
-              :class="{ 'border-t border-t-gray-350': idx }"
+              class="border border-gray-350 first-of-type:rounded-t-md last-of-type:rounded-b-md hover:border hover:border-primary"
             />
           </div>
           <div v-else class="bg-slate-100 p-10 text-center">
@@ -43,30 +40,26 @@
             />
           </div>
         </div>
-        <div class="w-full md:w-2/3 md:pl-28 lg:w-3/4">
+        <div class="w-full md:w-2/3 md:pl-14 lg:w-3/4 lg:pl-28">
           <slot />
         </div>
       </div>
-    </div>
+    </PageContent>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { OrderSummary } from '@scayle/storefront-nuxt'
 
-const props = defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  icon: {
-    type: String,
-    default: '',
-  },
-  isAccountPage: {
-    type: Boolean,
-    default: false,
-  },
+type Props = {
+  title: string
+  icon?: string
+  isAccountPage?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  icon: '',
+  isAccountPage: false,
 })
 
 const ORDERS_PER_PAGE = 8
@@ -85,6 +78,13 @@ const currentOrderId = computed(() => {
   return +route.params.id || (orders.value.length && orders.value[0].id)
 })
 
+const slicedOrders = computed(() => {
+  return orders.value?.slice(
+    (currentPage.value - 1) * ORDERS_PER_PAGE,
+    (currentPage.value - 1) * ORDERS_PER_PAGE + ORDERS_PER_PAGE,
+  )
+})
+
 if (currentOrderId.value) {
   const index =
     (orders.value?.findIndex(
@@ -95,31 +95,17 @@ if (currentOrderId.value) {
   }
 }
 
-const slicedOrders = ref<OrderSummary[] | undefined>()
-
-const updateSlicedOrders = () => {
-  slicedOrders.value = orders.value?.slice(
-    (currentPage.value - 1) * ORDERS_PER_PAGE,
-    (currentPage.value - 1) * ORDERS_PER_PAGE + ORDERS_PER_PAGE,
-  )
-}
 const changePage = (page: number): void => {
   currentPage.value = page
-  updateSlicedOrders()
 }
 
-const shouldDisplayOrderOverview = computed(
-  () => Boolean(orders?.value?.length) && Boolean(slicedOrders?.value?.length),
-)
-
-// in case the orders are not yet fetchen when mounting, we need to later
-// set these values. Use Case: client-side navigation to the page
-watch(orders, () => updateSlicedOrders())
+const shouldDisplayOrderOverview = computed(() => {
+  return !!orders?.value?.length && !!slicedOrders?.value?.length
+})
 
 // when mounted determines the first order that should be shown - if possible
 // this can only happen when order data is loaded before mounting.
 // usually this means: being rendered on the server
-
 onMounted(async () => {
   if (
     !route.params?.id &&
@@ -129,6 +115,5 @@ onMounted(async () => {
   ) {
     await localizedNavigateTo(getOrderDetailsRoute(currentOrderId.value))
   }
-  updateSlicedOrders()
 })
 </script>

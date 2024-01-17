@@ -108,13 +108,10 @@ const debouncedSearch = useDebounce(
   },
 )
 
-watch(searchQuery, () => {
-  const { value: query = '' } = searchQuery
-  if (!query) {
-    return resetSearch()
-  }
-  debouncedSearch(searchQuery.value)
-})
+watch(
+  () => searchQuery.value,
+  (query) => (!query ? resetSearch() : debouncedSearch(query)),
+)
 
 const resetAndClose = () => {
   searchQuery.value = ''

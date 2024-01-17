@@ -2,12 +2,12 @@
   <div class="flex flex-col justify-between md:flex-row">
     <div class="flex flex-row-reverse items-center md:flex-row">
       <IconDelivery class="mr-0 h-6 w-14 md:mr-4" />
-      <div class="grow">
+      <div class="mr-2 flex grow flex-col">
         <Headline tag="h2" size="sm" is-bold class="mb-1">
           {{ $t('my_account.orders.delivery') }} {{ index + 1 }}
         </Headline>
-        <Headline tag="h3" size="xs" class="!font-normal">
-          {{ $t('my_account.orders.expected_delivery_from') }}:
+        <Headline tag="h3" size="xs" class="flex flex-wrap !font-normal">
+          <span>{{ $t('my_account.orders.expected_delivery_from') }}:</span>
           <span class="font-semibold">
             {{
               ` ${localeFormattedDate(deliveryDate.minimum)}
@@ -43,31 +43,17 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  index: {
-    type: Number as PropType<number>,
-    required: true,
-  }, // zero based index
-  carrierKey: {
-    type: String as PropType<DeliveryInfo['carrierKey']>,
-    required: true,
-  },
-  formattedStatus: {
-    type: String as PropType<DeliveryInfo['formattedStatus']>,
-    required: true,
-  },
-  deliveryStatus: {
-    type: String as PropType<DeliveryInfo['deliveryStatus']>,
-    required: true,
-  },
-  deliveryDate: {
-    type: Object as PropType<DeliveryInfo['deliveryDate']>,
-    required: true,
-  },
-})
+type Props = {
+  index: number
+  carrierKey: DeliveryInfo['carrierKey']
+  formattedStatus: DeliveryInfo['formattedStatus']
+  deliveryStatus: DeliveryInfo['deliveryStatus']
+  deliveryDate: DeliveryInfo['deliveryDate']
+}
+const props = defineProps<Props>()
 
 const progressLevel = computed<number>(() => {
-  return DeliveryProgress[props.deliveryStatus] || 5
+  return DeliveryProgress[props.deliveryStatus] || DeliveryProgress.DEFAULT
 })
 
 const progressType = computed<'success' | 'warn' | 'danger'>(() => {

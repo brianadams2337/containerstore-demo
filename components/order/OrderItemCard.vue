@@ -2,7 +2,7 @@
   <DefaultLink :to="getOrderProductDetailRoute(product)" class="w-full">
     <div class="w-full divide-y divide-gray-500">
       <div class="flex h-28 justify-between space-x-4 md:space-x-0">
-        <div class="w-1/5 flex-none">
+        <div class="mr-2 w-1/5 flex-none">
           <NuxtImg
             :src="imageHash"
             :alt="name"
@@ -67,34 +67,22 @@ import {
   getTotalAppliedReductions,
 } from '@scayle/storefront-nuxt'
 
-const props = defineProps({
-  product: {
-    type: Object as PropType<OrderProduct>,
-    default: () => ({}),
-  },
-  variant: {
-    type: Object as PropType<OrderVariant>,
-    default: null,
-  },
-  price: {
-    type: Object as PropType<OrderPrice>,
-    required: true,
-  },
-  deliveryStatus: {
-    type: String,
-    required: true,
-  },
-  quantity: {
-    type: Number,
-    default: 1,
-  },
-})
+type Props = {
+  product: OrderProduct
+  variant: OrderVariant
+  price: OrderPrice
+  deliveryStatus: string
+  quantity?: number
+}
+
+const props = withDefaults(defineProps<Props>(), { quantity: 1 })
+
 const { getOrderProductDetailRoute } = useRouteHelpers()
 const { formatCurrency } = useFormatHelpers()
 const name = computed(() => props.product.name)
 
 const color = computed(
-  () => getFirstAttributeValue(props?.product.attributes, 'color')?.label,
+  () => getFirstAttributeValue(props.product.attributes, 'color')?.label,
 )
 
 const size = computed(

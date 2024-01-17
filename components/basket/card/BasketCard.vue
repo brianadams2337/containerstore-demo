@@ -158,6 +158,7 @@ const props = withDefaults(defineProps<Props>(), {
   item: undefined,
   itemsGroup: undefined,
 })
+
 const { formatCurrency } = useFormatHelpers()
 const { getProductDetailRoute } = useRouteHelpers()
 const mainItem = computed(() => {

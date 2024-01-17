@@ -6,6 +6,7 @@ export default async () => {
     params: { orderId: paramId.value },
     key: `orderId-${paramId.value}`,
   })
+
   const variantIds = computed(() => {
     const ids =
       orderDetails.value?.items?.map((it) => it.variant.id as number) ?? []

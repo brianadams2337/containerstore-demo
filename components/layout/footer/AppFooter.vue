@@ -102,9 +102,10 @@ const filterNavigationTree = (prefixToMatch = '') => {
   )
 }
 
-const footerNavigationTrees = useState<NavigationTree[]>(() => {
-  return filterNavigationTree('footer')
-})
+const footerNavigationTrees = useState<NavigationTree[]>(
+  'footer-navigation-trees',
+  () => filterNavigationTree('footer'),
+)
 
 const getSocialName = (name: string) => {
   const firstLetter = name.substring(0, 1)

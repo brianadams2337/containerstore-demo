@@ -1,9 +1,7 @@
 <template>
   <div
-    class="cursor-pointer border border-transparent bg-white p-5 transition-all ease-in-out hover:rounded-md hover:border hover:border-primary"
-    :class="{
-      'rounded-md !border-primary': id === paramId,
-    }"
+    class="cursor-pointer bg-white p-5 transition-all ease-in-out"
+    :class="{ '!border-primary': id === paramId }"
   >
     <DefaultLink
       raw
@@ -50,31 +48,20 @@
 <script setup lang="ts">
 import type { OrderSummary } from '@scayle/storefront-nuxt'
 
-const props = defineProps({
-  id: {
-    type: Number as PropType<OrderSummary['id']>,
-    required: true,
-  },
-  shopId: {
-    type: Number as PropType<OrderSummary['shopId']>,
-    required: true,
-  },
-  itemCount: {
-    type: Number as PropType<OrderSummary['itemCount']>,
-    default: undefined,
-  },
-  confirmedAt: {
-    type: String as PropType<OrderSummary['confirmedAt']>,
-    default: undefined,
-  },
-  status: {
-    type: String as PropType<OrderSummary['status']>,
-    default: undefined,
-  },
-  isLatestOrder: {
-    type: Boolean,
-    default: false,
-  },
+type Props = {
+  id: OrderSummary['id']
+  shopId: OrderSummary['shopId']
+  itemCount?: OrderSummary['itemCount']
+  confirmedAt?: OrderSummary['confirmedAt']
+  status?: OrderSummary['status']
+  isLatestOrder?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  itemCount: undefined,
+  confirmedAt: undefined,
+  status: undefined,
+  isLatestOrder: false,
 })
 
 const route = useRoute()
@@ -83,7 +70,7 @@ const { getOrderDetailsRoute } = useRouteHelpers()
 
 const progressLevel = computed<number>(() => {
   // @ts-ignore
-  return DeliveryProgress[props.status] || 5
+  return DeliveryProgress[props.status] || DeliveryProgress.DEFAULT
 })
 
 const progressType = computed<'success' | 'warn' | 'danger'>(() => {

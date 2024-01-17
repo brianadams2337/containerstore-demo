@@ -23,7 +23,9 @@ export const showAddToBasketToast = (
   $alert.show(message, action, isAddedToBasket ? routeList.basket : undefined)
 }
 
-export const sortBasketItems = (items: BasketItem[]): BasketItem[] => {
+export const sortBasketItemsByNameAndSize = (
+  items: BasketItem[],
+): BasketItem[] => {
   const sortedAlphabetically = useAlphabetical(
     items,
     (item: BasketItem) =>
@@ -33,5 +35,23 @@ export const sortBasketItems = (items: BasketItem[]): BasketItem[] => {
     sortedAlphabetically,
     (item: BasketItem) =>
       getFirstAttributeValue(item.variant?.attributes, 'size')?.id ?? 0,
+  )
+}
+
+export const sortBasketItemsByIsSoldOut = (
+  items: BasketItem[],
+): BasketItem[] => {
+  return useSort(items, ({ product }) => Number(product.isSoldOut))
+}
+
+export const getPartitionedBasketItems = (items: BasketItem[] = []) => {
+  return items.reduce<Record<'standAlone' | 'groupedItems', BasketItem[]>>(
+    (acc, item: BasketItem) => {
+      item.itemGroup?.id
+        ? acc.groupedItems.push(item)
+        : acc.standAlone.push(item)
+      return acc
+    },
+    { standAlone: [], groupedItems: [] },
   )
 }

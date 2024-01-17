@@ -35,20 +35,12 @@ export async function useBasketActions() {
   })
 
   const updateBasketItems = (items: BasketItem[]) => {
-    const data = items.reduce<
-      Record<'standAlone' | 'groupedItems', BasketItem[]>
-    >(
-      (acc, item: BasketItem) => {
-        item.itemGroup?.id
-          ? acc.groupedItems.push(item)
-          : acc.standAlone.push(item)
-        return acc
-      },
-      { standAlone: [], groupedItems: [] },
-    )
+    const data = getPartitionedBasketItems(items)
     return {
-      standAlone: sortBasketItems(data.standAlone),
-      groupedItems: bundleByGroup(sortBasketItems(data.groupedItems)),
+      standAlone: sortBasketItemsByNameAndSize(data.standAlone),
+      groupedItems: bundleByGroup(
+        sortBasketItemsByNameAndSize(data.groupedItems),
+      ),
     }
   }
 

@@ -28,7 +28,5 @@ type Props = {
   borderless?: boolean
 }
 
-withDefaults(defineProps<Props>(), {
-  borderless: false,
-})
+withDefaults(defineProps<Props>(), { borderless: false })
 </script>

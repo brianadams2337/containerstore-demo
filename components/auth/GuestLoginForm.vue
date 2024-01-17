@@ -57,7 +57,7 @@ import type { Gender } from '@scayle/storefront-nuxt'
 import useVuelidate from '@vuelidate/core'
 
 const { guestLogin, isSubmitting } = await useAuthentication('guest_login')
-const { $validation } = useNuxtApp()
+const validationRules = useValidationRules()
 
 const editableUser = reactive({
   gender: 'f' as Gender,
@@ -69,16 +69,16 @@ const editableUser = reactive({
 const v = useVuelidate(
   {
     first_name: {
-      required: $validation.rule.required,
-      maxLength: $validation.rule.maxLength(30),
+      required: validationRules.required,
+      maxLength: validationRules.maxLength(30),
     },
     last_name: {
-      required: $validation.rule.required,
-      maxLength: $validation.rule.maxLength(50),
+      required: validationRules.required,
+      maxLength: validationRules.maxLength(50),
     },
     email: {
-      required: $validation.rule.required,
-      email: $validation.rule.email,
+      required: validationRules.required,
+      email: validationRules.email,
     },
   },
   editableUser,

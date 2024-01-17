@@ -37,13 +37,18 @@ const props = withDefaults(defineProps<Props>(), {
   isBold: false,
 })
 
-const sizeClass = computed(() => {
-  const size = Object.values(HeadlineSize).find((it) => it === props.size)
-  return `text-${size}`
-})
+const HeadlineClass = {
+  [HeadlineSize['4XL']]: 'text-4xl',
+  [HeadlineSize['2XL']]: 'text-2xl',
+  [HeadlineSize.XL]: 'text-xl',
+  [HeadlineSize.LG]: 'text-lg',
+  [HeadlineSize.MD]: 'text-base',
+  [HeadlineSize.SM]: 'text-sm',
+  [HeadlineSize.XS]: 'text-xs',
+} as Record<HeadlineSize, string>
 
 const classes = computed(() => [
-  sizeClass.value,
+  HeadlineClass[props.size],
   {
     uppercase: props.isUppercase,
     'visually-hidden': props.hidden,

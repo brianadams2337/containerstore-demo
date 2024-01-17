@@ -65,24 +65,27 @@ import useVuelidate from '@vuelidate/core'
 const { data: externalIDPRedirects, handleIDPLoginCallback } = await useIDP()
 const { login, isSubmitting } = await useAuthentication('login')
 const { lastLoggedInUser } = await useLastLoggedInUser()
-const { $validation } = useNuxtApp()
+
+const validationRules = useValidationRules()
+
 const route = useRoute()
+
 const editableUser = reactive({
   email: '',
   password: '',
 })
-const v = useVuelidate(
-  {
-    email: {
-      required: $validation.rule.required,
-      email: $validation.rule.email,
-    },
-    password: {
-      required: $validation.rule.required,
-    },
+
+const rules = {
+  email: {
+    required: validationRules.required,
+    email: validationRules.email,
   },
-  editableUser,
-)
+  password: {
+    required: validationRules.required,
+  },
+}
+
+const v = useVuelidate(rules, editableUser)
 
 watch(
   () => route.query,
@@ -91,9 +94,7 @@ watch(
       await handleIDPLoginCallback(query.code)
     }
   },
-  {
-    immediate: true,
-  },
+  { immediate: true },
 )
 const onSubmit = async () => {
   const isValid = await v.value.$validate()

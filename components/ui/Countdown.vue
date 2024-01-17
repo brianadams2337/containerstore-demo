@@ -5,14 +5,12 @@
       :key="key"
       class="flex text-center font-semibold"
     >
-      <span v-if="value !== undefined" class="w-4">
+      <span v-if="typeof value !== 'undefined'" class="min-w-4">
         {{ formatValue(value) }}
       </span>
       <span class="mx-1">
         <template v-if="showUnits">{{ $t(`global.${key}`) }}</template>
-        <template v-else-if="key !== useLast(Object.keys(countdown))">
-          :
-        </template>
+        <template v-else-if="!isSeconds(key)">:</template>
       </span>
     </div>
   </div>
@@ -30,38 +28,31 @@ const props = withDefaults(defineProps<Props>(), { showUnits: false })
 
 const emit = defineEmits(['finished'])
 
-const intervalId = ref<NodeJS.Timeout>()
-
 const until = computed(() => Date.parse(props.until))
 const countdown = ref<{ [k in CountdownUnit]?: number }>({})
-
-const update = () => {
-  const remaining = until.value - Date.now()
-  const prep = (n: number) => Math.max(Math.floor(n), 0)
-
-  countdown.value = {
-    days: prep(remaining / (1000 * 60 * 60 * 24)),
-    hours: prep((remaining / (1000 * 60 * 60)) % 24),
-    minutes: prep((remaining / 1000 / 60) % 60),
-    seconds: prep((remaining / 1000) % 60),
-  }
-
-  if (remaining <= 0) {
-    clearInterval(intervalId.value)
-    emit('finished')
-  }
-}
 
 const formatValue = (value: number) => {
   return value <= 9 && value >= 0 ? `0${value}` : value
 }
 
-onMounted(() => {
-  update()
-  intervalId.value = setInterval(update, 1000)
-})
+const isSeconds = (key: string) => key === useLast(Object.keys(countdown.value))
 
-onUnmounted(() => clearInterval(intervalId.value))
+const start = () => {
+  const remaining = until.value - Date.now()
+
+  countdown.value = {
+    days: Math.floor(remaining / (SECOND * MINUTE * HOURS * DAY)),
+    hours: Math.floor((remaining / (SECOND * MINUTE * HOURS)) % DAY),
+    minutes: Math.floor((remaining / SECOND / MINUTE) % HOURS),
+    seconds: Math.floor((remaining / SECOND) % MINUTE),
+  }
+
+  if (remaining <= 0) {
+    emit('finished')
+  }
+}
+
+useIntervalFn(start, SECOND, { immediateCallback: true })
 
 defineOptions({ name: 'AppCountdown' })
 </script>
