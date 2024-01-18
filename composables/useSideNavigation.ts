@@ -6,7 +6,7 @@ type SideNavigationState = {
   selectedItem?: Category
 }
 
-export default () => {
+export function useSideNavigation() {
   const state = useState<SideNavigationState>(() => ({
     isOpen: false,
     selectedItem: undefined,

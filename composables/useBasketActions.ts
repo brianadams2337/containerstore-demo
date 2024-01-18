@@ -12,7 +12,6 @@ type OrderedItems<T> = {
 
 export async function useBasketActions() {
   const basket = await useBasket()
-  const { bundleByGroup } = await useBasketGroup()
 
   const { trackRemoveFromBasket, trackBasket, collectBasketItems } =
     useTrackingEvents()
@@ -38,7 +37,7 @@ export async function useBasketActions() {
     const data = getPartitionedBasketItems(items)
     return {
       standAlone: sortBasketItemsByNameAndSize(data.standAlone),
-      groupedItems: bundleByGroup(
+      groupedItems: bundleBasketItemsByGroup(
         sortBasketItemsByNameAndSize(data.groupedItems),
       ),
     }

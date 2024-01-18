@@ -16,10 +16,10 @@ const httpErrorMessages: Record<number, string> = {
   500: '500_server_error',
 } as const
 
-export const useAuthentication = async (
+export async function useAuthentication(
   event: AuthTrackingEvent,
   method: AuthenticationType = 'email',
-) => {
+) {
   const { $alert, $i18n } = useNuxtApp()
   const route = useRoute()
   const router = useRouter()

@@ -1,4 +1,4 @@
-export default async () => {
+export async function usePromotionProgress() {
   const { data: basketData } = await useBasket()
 
   const { currentPromotion } = useCurrentPromotion()

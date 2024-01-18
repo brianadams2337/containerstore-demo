@@ -4,7 +4,9 @@ import {
   flattenFieldSet,
 } from '@scayle/storefront-nuxt'
 
-export default (productItem: MaybeRefOrGetter<Product>) => {
+export function useProductDetailsAddOns(
+  productItem: MaybeRefOrGetter<Product>,
+) {
   const product = toRef(productItem)
 
   const selectedAddOns = useState<{ [id: number]: boolean }>(

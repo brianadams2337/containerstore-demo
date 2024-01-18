@@ -7,7 +7,9 @@ import {
 
 export const DEFAULT_SORTING_KEY = 'dateNewest'
 
-export default (selectedCategory?: MaybeRefOrGetter<Category | undefined>) => {
+export function useProductListSort(
+  selectedCategory?: MaybeRefOrGetter<Category | undefined>,
+) {
   const route = useRoute()
   const category = toRef(selectedCategory)
 

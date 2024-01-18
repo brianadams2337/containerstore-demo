@@ -6,7 +6,7 @@ const listingMetaData = {
   name: CategoryListingMetadata.NAME,
 }
 
-export default async () => {
+export async function useProductList() {
   const route = useRoute()
 
   const categoryPath = computed(() => {

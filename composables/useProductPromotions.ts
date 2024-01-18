@@ -4,7 +4,9 @@ import {
   getFirstAttributeValue,
 } from '@scayle/storefront-nuxt'
 
-export default async (productItem?: MaybeRefOrGetter<Product>) => {
+export async function useProductPromotions(
+  productItem?: MaybeRefOrGetter<Product>,
+) {
   const promotionData = await useCurrentPromotions()
 
   const basket = await useBasket()

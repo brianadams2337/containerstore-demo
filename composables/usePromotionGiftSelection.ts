@@ -9,7 +9,10 @@ import {
   getVariantBySize,
 } from '@scayle/storefront-nuxt'
 
-export default async (gift: Product, promotedProduct: Product) => {
+export async function usePromotionGiftSelection(
+  gift: Product,
+  promotedProduct: Product,
+) {
   const { $alert, $i18n } = useNuxtApp()
 
   const route = useRoute()

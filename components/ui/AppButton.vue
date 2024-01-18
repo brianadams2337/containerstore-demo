@@ -63,7 +63,7 @@ const isTertiary = computed(() => props.type === ButtonType.TERTIARY)
 const isGhost = computed(() => props.type === ButtonType.GHOST)
 const isRaw = computed(() => props.type === ButtonType.RAW)
 
-const { isSize } = useUiSize(props.size)
+const { isSize } = sizeUtils(props.size)
 
 const componentName = computed(() => {
   return props.to ? resolveComponent('DefaultLink') : 'button'

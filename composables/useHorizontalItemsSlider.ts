@@ -1,4 +1,4 @@
-export default () => {
+export function useHorizontalItemsSlider() {
   const sliderRef = useState<any>('slider')
   /**
    * This is because scrollTop/scrollLeft are non-rounded

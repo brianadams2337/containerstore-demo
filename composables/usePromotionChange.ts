@@ -1,4 +1,4 @@
-export default (promotions: Promotion[]) => {
+export function usePromotionChange(promotions: Promotion[]) {
   const { setCurrentPromotion } = useCurrentPromotion(promotions)
 
   const timeoutId = ref<NodeJS.Timeout>()

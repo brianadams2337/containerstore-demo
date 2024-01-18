@@ -28,27 +28,20 @@ import type { ProductColor } from '@scayle/storefront-nuxt'
 import Color from 'color'
 import { Size } from '#imports'
 
-const props = defineProps({
-  size: {
-    type: String as PropType<Size>,
-    default: Size.MD,
-    validator: (val: Size) => Object.values(Size).includes(val),
-  },
-  color: {
-    type: Object as PropType<ProductColor>,
-    required: true,
-  },
-  isActive: {
-    type: Boolean,
-    default: false,
-  },
-  rounded: {
-    type: String as PropType<'default' | 'sm' | 'md'>,
-    default: 'default',
-  },
+type Props = {
+  color: ProductColor
+  size?: Size
+  isActive?: boolean
+  rounded?: 'default' | 'sm' | 'md'
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  size: Size.MD,
+  isActive: false,
+  rounded: 'default',
 })
 
-const { isSize } = useUiSize(props.size)
+const { isSize } = sizeUtils(props.size)
 
 const colorCode = computed<string | string[]>(() => {
   return getColorCodeForId(props.color.id)

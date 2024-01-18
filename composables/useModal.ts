@@ -1,16 +1,12 @@
-export default () => {
-  const state = useState<{ isOpen: boolean }>('modal-state', () => ({
-    isOpen: false,
-  }))
+export function useModal() {
+  const isOpen = useState<boolean>('is-modal-open', () => false)
 
-  const toggle = (isOpen: boolean) => {
-    state.value.isOpen = isOpen
+  const toggle = (value: boolean) => {
+    isOpen.value = value
   }
 
-  const isOpen = computed(() => state.value.isOpen)
-
   return {
-    isOpen,
+    isOpen: readonly(isOpen),
     toggle,
   }
 }

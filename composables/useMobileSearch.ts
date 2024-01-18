@@ -1,5 +1,5 @@
-export default () => {
-  const isActive = ref<boolean>(false)
+export function useMobileSearch() {
+  const isActive = ref(false)
 
   const setActive = (value: boolean) => {
     isActive.value = value
@@ -7,6 +7,6 @@ export default () => {
 
   return {
     setActive,
-    isActive: computed(() => isActive.value),
+    isActive: readonly(isActive),
   }
 }

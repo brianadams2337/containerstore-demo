@@ -14,7 +14,7 @@ const listingMetaData = {
   id: 'PDP',
 }
 
-export default async (key = 'product-details') => {
+export async function useProductDetails(key = 'product-details') {
   const route = useRoute()
 
   const productId = computed(() => {

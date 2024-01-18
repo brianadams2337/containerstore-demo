@@ -1,4 +1,4 @@
-export default () => {
+export function usePromotionActions() {
   const isShown = useState('promotion-list-shown', () => false)
 
   const topBannerRef = useState<HTMLElement | null>(

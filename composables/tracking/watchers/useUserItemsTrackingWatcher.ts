@@ -1,4 +1,3 @@
-// @function tracks basket and wishlist changes
 export const useUserItemsTrackingWatcher = async () => {
   const { data: basket } = await useBasket()
   const { data: wishlist, products: wishlistProducts } = await useWishlist()
@@ -11,7 +10,7 @@ export const useUserItemsTrackingWatcher = async () => {
   const route = useRoute()
 
   watch(
-    () => deepClone(basket.value),
+    () => basket.value,
     (newValues, oldValues) => {
       const isBasketPage = route.fullPath.includes('/basket')
       if (
@@ -29,7 +28,7 @@ export const useUserItemsTrackingWatcher = async () => {
   )
 
   watch(
-    () => deepClone(wishlist.value),
+    () => wishlist.value,
     (newValues, oldValues) => {
       if (didWishlistOrBasketDataChange(oldValues, newValues)) {
         trackWishlist(

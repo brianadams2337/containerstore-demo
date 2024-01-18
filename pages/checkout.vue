@@ -21,6 +21,7 @@ const { user, fetch: fetchUser } = await useUser()
 const log = useLog('CheckoutPage')
 
 const { listenToCheckoutStepChanges } = useTrackingEvents()
+
 listenToCheckoutStepChanges()
 
 const basketKey = computed(() => basketData?.value?.key)

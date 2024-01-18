@@ -1,6 +1,6 @@
 import type { Product } from '@scayle/storefront-nuxt'
 
-export default async (product: Product) => {
+export async function usePromotionGifts(product: Product) {
   const { buyXGetYPromotion } = await useProductPromotions(product)
   const basketData = await useBasket()
 

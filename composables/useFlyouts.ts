@@ -45,7 +45,7 @@ const DEFAULT_FLYOUT_CATEGORY: FlyoutMenuCategory = {
   children: [],
 }
 
-export default () => {
+export function useFlyouts() {
   const state = useState<FlyoutsState>('use-flyouts-state', () => ({
     flyoutMenuOpen: false,
     flyoutMenuCategory: DEFAULT_FLYOUT_CATEGORY,

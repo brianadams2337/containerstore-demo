@@ -5,9 +5,9 @@ import type {
   TypeaheadSuggestion,
 } from '@scayle/storefront-nuxt'
 
-const useTypeaheadSuggestions = (
+export function useTypeaheadSuggestions(
   data: Ref<TypeaheadSuggestionsEndpointResponseData | undefined>,
-) => {
+) {
   const allSuggestions = computed(() => {
     return [data.value?.topMatch, ...(data?.value?.suggestions ?? [])].filter(
       (a) => a,
@@ -54,5 +54,3 @@ const useTypeaheadSuggestions = (
     totalCount,
   }
 }
-
-export default useTypeaheadSuggestions

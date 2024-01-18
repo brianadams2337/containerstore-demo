@@ -1,4 +1,4 @@
-export default async () => {
+export async function useOrders() {
   const route = useRoute()
   const paramId = computed(() => +route.params.id)
 

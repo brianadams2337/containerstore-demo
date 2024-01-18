@@ -5,7 +5,7 @@ import {
   getProductSiblings,
 } from '@scayle/storefront-nuxt'
 
-export default (productItem: MaybeRefOrGetter<Product>) => {
+export function useProductBaseInfo(productItem: MaybeRefOrGetter<Product>) {
   const product = toRef(productItem)
   const { getProductDetailRoute } = useRouteHelpers()
 

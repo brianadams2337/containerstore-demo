@@ -5,12 +5,12 @@ interface Options {
   visiblePages: Ref<number>
 }
 
-export default ({
+export function usePagination({
   visiblePages,
   firstPage,
   currentPage,
   lastPage,
-}: Options) => {
+}: Options) {
   const pageNumbersList = computed(() =>
     Array.from(Array(lastPage.value), (_, i) => i + 1),
   )

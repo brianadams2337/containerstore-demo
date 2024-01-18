@@ -19,7 +19,7 @@ export type Customer = {
   groups: string[]
 }
 
-const useCheckoutWebComponent = () => {
+export function useCheckoutWebComponent() {
   const currentShop = useCurrentShop()
 
   useHead({
@@ -34,5 +34,3 @@ const useCheckoutWebComponent = () => {
     ],
   })
 }
-
-export default useCheckoutWebComponent

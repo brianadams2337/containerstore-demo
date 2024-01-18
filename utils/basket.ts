@@ -4,6 +4,8 @@ import {
   type BasketItem,
 } from '@scayle/storefront-nuxt'
 
+export type BundledBasketItems<T = unknown> = Partial<Record<string, T[]>>
+
 export const showAddToBasketToast = (
   isAddedToBasket: boolean,
   item: Product | null,
@@ -54,4 +56,10 @@ export const getPartitionedBasketItems = (items: BasketItem[] = []) => {
     },
     { standAlone: [], groupedItems: [] },
   )
+}
+
+export const bundleBasketItemsByGroup = (
+  items: BasketItem[] = [],
+): BundledBasketItems<BasketItem> => {
+  return useGroup(items, (item: BasketItem) => item.itemGroup?.id ?? '-1')
 }

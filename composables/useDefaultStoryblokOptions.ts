@@ -2,7 +2,7 @@ import type { ISbStoriesParams } from 'storyblok-js-client'
 
 const DRAFT_ALLOWED_ENVS = ['staging', 'integration', 'development']
 
-export const useDefaultStoryblokOptions = (): Partial<ISbStoriesParams> => {
+export function useDefaultStoryblokOptions(): Partial<ISbStoriesParams> {
   const route = useRoute()
   const config = useRuntimeConfig()
   const currentShop = useCurrentShop()

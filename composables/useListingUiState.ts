@@ -1,4 +1,4 @@
-export default () => {
+export function useListingUiState() {
   const { isGreaterOrEqual } = useDefaultBreakpoints()
 
   const listingUiState = reactive({

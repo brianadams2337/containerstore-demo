@@ -30,16 +30,17 @@
 <script setup lang="ts">
 import type { BasketItem } from '@scayle/storefront-nuxt'
 
-const groupIds = computed(() => Object.keys(basketItems.value.groups))
-
 const { items } = await useBasket()
-const { bundleByGroup } = await useBasketGroup()
+
+const groupIds = computed(() => Object.keys(basketItems.value.groups))
 
 const basketItems = computed(() => {
   const data = getPartitionedBasketItems(items.value)
   return {
     standAlone: sortBasketItemsByIsSoldOut(data.standAlone),
-    groups: bundleByGroup(sortBasketItemsByIsSoldOut(data.groupedItems)),
+    groups: bundleBasketItemsByGroup(
+      sortBasketItemsByIsSoldOut(data.groupedItems),
+    ),
   }
 })
 

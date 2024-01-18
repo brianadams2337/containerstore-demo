@@ -3,6 +3,7 @@ import type {
   SbListingPage,
 } from '~/storyblok/types/storyblok.gen'
 
+// TODO: Improve types as nodes can be falsy
 const findElement = (
   nodes: Record<string, any>[],
   id: string,
@@ -24,13 +25,13 @@ const findElement = (
   }
 }
 
-export const useLookbookDetail = async ({
+export async function useLookbookDetail({
   slug,
   id,
 }: {
   slug: string
   id: string
-}) => {
+}) {
   const detailItem = useState<SbDetailImage>(slug + id + 'detailItem')
   const productIds = computed(() => {
     return (

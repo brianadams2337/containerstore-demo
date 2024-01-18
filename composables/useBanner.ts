@@ -1,8 +1,9 @@
-export default () => {
-  const isOpen = ref<boolean>(true)
+export function useBanner() {
+  const isOpen = ref(true)
   const localKey = 'bannerLastCloseAt'
+
   const shouldBeVisible = (lastUpdatedAt: string): boolean => {
-    if (process.server) {
+    if (import.meta.server) {
       return false
     }
 
@@ -12,6 +13,7 @@ export default () => {
     }
     return true
   }
+
   const close = () => {
     const currentTime = Date.parse(new Date().toString())
     localStorage.setItem(localKey, currentTime.toString())

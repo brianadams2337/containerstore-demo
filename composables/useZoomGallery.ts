@@ -1,4 +1,4 @@
-export default (imageCount: number) => {
+export function useZoomGallery(imageCount: number) {
   const containerRef: Ref<HTMLElement | null> = ref(null)
   const doubleZoomActive = ref(false)
   const doubleZoomOffsetY: Ref<null | number> = ref(null)

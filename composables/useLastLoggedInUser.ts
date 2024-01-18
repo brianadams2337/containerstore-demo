@@ -12,7 +12,7 @@ export const setUserDefault = (): LastLoggedInUser => ({
   email: '',
 })
 
-export const useLastLoggedInUser = async () => {
+export async function useLastLoggedInUser() {
   const { user, isLoggedIn, fetching } = await useUser()
   const lastLoggedInUser = useState(USER_KEY, setUserDefault)
 

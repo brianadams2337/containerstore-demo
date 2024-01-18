@@ -9,7 +9,7 @@ import type { RouteLocationRaw } from '#vue-router'
 import type { NavigateToOptions } from '#app/composables/router'
 import { getCategoryPath, routeList } from '~/utils/route'
 
-export default () => {
+export function useRouteHelpers() {
   const localePath = useLocalePath()
   const currentShop = useCurrentShop()
 

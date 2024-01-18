@@ -1,6 +1,6 @@
 type UiState = 'default' | 'confirmDelete'
 
-export default (key: string) => {
+export function useBasketItemUiState(key: string) {
   const state = useState<UiState>(
     `basket-item-ui-state-${key}`,
     () => 'default',
@@ -9,7 +9,8 @@ export default (key: string) => {
   const setUiState = (value: UiState) => {
     state.value = value
   }
-  const uiState = computed(() => state.value)
+
+  const uiState = readonly(state)
 
   return {
     uiState,

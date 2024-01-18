@@ -1,21 +1,19 @@
-const useZoomGalleryActions = () => {
-  const state = reactive({
+export function useZoomGalleryActions() {
+  const state = ref({
     display: false,
     index: -1,
   })
 
   const toggle = (display: boolean, index?: number) => {
-    state.display = display
+    state.value.display = display
 
     if (index) {
-      state.index = index
+      state.value.index = index
     }
   }
 
   return {
-    state,
+    state: readonly(state),
     toggle,
   }
 }
-
-export default useZoomGalleryActions

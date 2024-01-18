@@ -1,9 +1,7 @@
 import {
   type BasketWithOptions,
-  MIN_WITH_PARAMS_BASKET,
   rpcCall,
   type AddOrUpdateItemType,
-  type BasketItem,
 } from '@scayle/storefront-nuxt'
 import { nanoid } from 'nanoid'
 
@@ -12,8 +10,6 @@ type AggregateGroupParams = {
   items: AddOrUpdateItemType[]
 }
 
-export type BundledBasketItems<T = unknown> = Partial<Record<string, T[]>>
-
 export async function useBasketGroup(
   withParams?: MaybeRefOrGetter<BasketWithOptions>,
 ) {
@@ -21,12 +17,6 @@ export async function useBasketGroup(
   const nuxtApp = useNuxtApp()
   const currentShop = useCurrentShop()
   const { fetch: refreshBasket } = await useBasket()
-
-  const defaultParams = nuxtApp.$config.storefront?.withParams
-    ?.basket as BasketWithOptions
-  const basketParams = computed(() => {
-    return toValue(withParams) || defaultParams || MIN_WITH_PARAMS_BASKET
-  })
 
   const aggregateAsGroup = ({
     mainItem,
@@ -53,15 +43,9 @@ export async function useBasketGroup(
       nuxtApp,
       'addGroupToBasket',
       currentShop.value,
-    )({ items: aggregatedGroup, with: basketParams.value })
+    )({ items: aggregatedGroup, with: toValue(withParams) })
     await refreshBasket()
   }
 
-  const bundleByGroup = (
-    items: BasketItem[] = [],
-  ): BundledBasketItems<BasketItem> => {
-    return useGroup(items, (item: BasketItem) => item.itemGroup?.id ?? '-1')
-  }
-
-  return { addGroupToBasket, bundleByGroup }
+  return { addGroupToBasket }
 }

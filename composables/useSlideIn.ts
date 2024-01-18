@@ -1,9 +1,12 @@
-export default (name: string) => {
+export function useSlideIn(name: string) {
   const isOpen = useState(`${name}-slide-in`, () => false)
 
   const toggle = () => {
     isOpen.value = !isOpen.value
   }
 
-  return { isOpen, toggle }
+  return {
+    isOpen: readonly(isOpen),
+    toggle,
+  }
 }

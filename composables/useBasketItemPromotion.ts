@@ -3,7 +3,7 @@ import {
   getFirstAttributeValue,
 } from '@scayle/storefront-nuxt'
 
-export default async (basketItem: Ref<BasketItem>) => {
+export async function useBasketItemPromotion(basketItem: Ref<BasketItem>) {
   const { allCurrentPromotions } = await useBasketPromotions()
 
   const promotion = computed<BasketPromotion | undefined>(() => {

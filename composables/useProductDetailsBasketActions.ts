@@ -1,4 +1,4 @@
-export default async () => {
+export async function useProductDetailsBasketActions() {
   const { $alert, $i18n } = useNuxtApp()
 
   const { product, hasOneSizeVariantOnly, activeVariant, quantity, brand } =

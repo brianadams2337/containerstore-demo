@@ -1,4 +1,4 @@
-const useListbox = <T = object>(name: string) => {
+export function useListbox<T = object>(name: string) {
   const isOpen = useState<boolean>(`${name}-open`, () => false)
   const _activeValue = useState<T>(`${name}-value`, () => ({}) as T)
 
@@ -12,5 +12,3 @@ const useListbox = <T = object>(name: string) => {
 
   return { activeValue: _activeValue, isOpen, toggle, setActive }
 }
-
-export default useListbox

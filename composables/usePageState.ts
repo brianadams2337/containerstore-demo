@@ -3,7 +3,7 @@ export type PageState = {
   typeId: string
 }
 
-export default () => {
+export function usePageState() {
   const state = useState<PageState>('page-type-state', () => ({
     type: '',
     typeId: '',
@@ -13,7 +13,7 @@ export default () => {
     state.value[key] = value
   }
 
-  const pageState = computed(() => state.value)
+  const pageState = readonly(state)
 
   return {
     setPageState,

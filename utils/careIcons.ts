@@ -1,4 +1,4 @@
-const symbolMap: Record<number, string> = {
+export const CareIconSymbolMap: Record<number, string> = {
   720: 'machine-wash-30-gentle-or-delicate',
   741: 'machine-wash-30-permanent-press',
   739: 'machine-wash-30',
@@ -33,15 +33,11 @@ const symbolMap: Record<number, string> = {
   745: 'tumble-dry-at-normal-temperature',
   768: 'tumble-dry',
   777: 'drip-dry',
-}
+} as const
 
-export function useCareIcons() {
-  return {
-    iconComponent(iconId?: number): string | undefined {
-      if (!iconId || !(iconId in symbolMap)) {
-        return undefined
-      }
-      return `IconCare${usePascal(symbolMap[iconId])}`
-    },
+export const getCareIconComponent = (iconId?: number): string | undefined => {
+  if (!iconId || !(iconId in CareIconSymbolMap)) {
+    return undefined
   }
+  return `IconCare${usePascal(CareIconSymbolMap[iconId])}`
 }

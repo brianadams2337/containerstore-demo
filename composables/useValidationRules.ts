@@ -42,7 +42,7 @@ const validateName = (value: string | undefined): boolean => {
   return hasValidUnicodeLetters && hasValidBoundaries && !hasPunctuationStreak
 }
 
-export default () => {
+export function useValidationRules() {
   const { $i18n } = useNuxtApp()
 
   const withI18nMessage = createI18nMessage({

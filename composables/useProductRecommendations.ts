@@ -1,6 +1,6 @@
 import type { Product, FetchProductsParams } from '@scayle/storefront-nuxt'
 
-export default async () => {
+export async function useProductRecommendations() {
   const { product, productId, listingMetaData } = await useProductDetails()
 
   const { trackSelectItem } = useTrackingEvents()

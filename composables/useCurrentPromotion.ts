@@ -1,4 +1,4 @@
-export default (promotions: Promotion[] = []) => {
+export function useCurrentPromotion(promotions: Promotion[] = []) {
   const promotion = useState<Promotion | null>(
     'current-promotion',
     () => promotions[0] || null,

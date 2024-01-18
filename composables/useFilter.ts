@@ -25,10 +25,10 @@ type Options = {
   supportedFilters?: string[]
 }
 
-export default (
+export function useFilter(
   { supportedFilters = SUPPORTED_FILTERS }: Options = {},
   key = 'filter',
-) => {
+) {
   const route = useRoute()
 
   const filterContext = useFilterContext()

@@ -1,7 +1,25 @@
+import {
+  useShopEvents,
+  useBasketEvents,
+  useWishlistEvents,
+  useProductEvents,
+  useSearchEvents,
+  usePurchaseEvents,
+  usePromotionEvents,
+  useUserActionEvents,
+  useUserItemsTrackingWatcher,
+  useCheckoutStepTrackingInterceptor,
+  useCheckoutEvents,
+  useCustomerDataChangeWatcher,
+  useContentEvents,
+  useFilterEvents,
+  useCustomerEvents,
+} from './tracking'
+
 /**
  * Higher order composable which serves as a single entry point to unify different ecommerce tracking events
  */
-export const useTrackingEvents = () => {
+export function useTrackingEvents() {
   const { $tracking } = useNuxtApp()
 
   const { pageState } = usePageState()

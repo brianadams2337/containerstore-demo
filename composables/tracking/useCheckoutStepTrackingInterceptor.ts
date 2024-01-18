@@ -20,7 +20,7 @@ export const useCheckoutStepTrackingInterceptor = () => {
 
   let lastPageType: PageType | undefined
 
-  if (process.client) {
+  onMounted(() => {
     pushStateNative = window.history.pushState
     replaceStateNative = window.history.replaceState
 
@@ -55,7 +55,7 @@ export const useCheckoutStepTrackingInterceptor = () => {
     window.history.replaceState = new Proxy(window.history.replaceState, {
       apply,
     })
-  }
+  })
 
   onUnmounted(() => {
     // cleanup history methods
