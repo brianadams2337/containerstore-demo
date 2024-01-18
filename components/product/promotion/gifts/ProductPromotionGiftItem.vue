@@ -23,7 +23,7 @@
       <div class="flex items-end justify-between">
         <AppButton
           size="sm"
-          :disabled="!isProductAddedToBasket"
+          :disabled="!isProductAddedToBasket || !areGiftConditionsMet"
           @click="toggleGiftSelection()"
         >
           {{ $t('pdp.promotion.add_for_free_label') }}
@@ -72,7 +72,7 @@ const { formatCurrency } = useFormatHelpers()
 
 const { md: isGreaterThanMd } = useDefaultBreakpoints()
 
-const { buyXGetYPromotion: promotion } =
+const { buyXGetYPromotion: promotion, areGiftConditionsMet } =
   await useProductPromotions(promotedProduct)
 
 const { toggleGiftSelection } = await usePromotionGiftSelection(

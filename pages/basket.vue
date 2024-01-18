@@ -34,7 +34,7 @@
                 v-if="isAutomaticDiscountType(item.promotion)"
                 :basket-item="item"
               />
-              <BasketGiftBanner
+              <BasketGiftConditionBanner
                 v-if="isGiftApplicableItem(item)"
                 :basket-item="item"
               />

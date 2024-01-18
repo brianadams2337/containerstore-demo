@@ -21,6 +21,7 @@
 
 <script setup lang="ts">
 import type { MaybeElementRef } from '@vueuse/core'
+
 defineProps<{ items: Promotion[] }>()
 
 const promotionListRef = ref()

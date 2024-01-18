@@ -4,7 +4,7 @@
       <div
         v-if="customData.product?.badgeLabel"
         :key="id"
-        class="mb-1 flex size-fit items-center rounded-md bg-blue p-1 px-2 text-xs font-semibold text-white last-of-type:mb-0"
+        class="mb-1 flex size-max flex-wrap items-center rounded-md bg-blue p-1 px-2 text-xs font-semibold text-white last-of-type:mb-0"
         :style="getBackgroundColorStyle(customData.colorHex)"
       >
         {{ customData.product?.badgeLabel }}

@@ -42,6 +42,10 @@
                   :product="product"
                   class="mt-2 w-full xs:hidden md:flex"
                 />
+                <ProductPromotionGiftConditionBanner
+                  v-else-if="!areGiftConditionsMet && isGiftAddedToBasket"
+                  :product="product"
+                />
                 <ProductPromotionBanners
                   v-else
                   :product="product"
@@ -152,7 +156,7 @@
 
             <FadeInTransition>
               <ProductPromotionGifts
-                v-if="areGiftConditionsMet && !isGiftAddedToBasket"
+                v-if="isBuyXGetYPrioritized && !isGiftAddedToBasket"
                 :product="product"
                 class="mt-6"
               />
@@ -224,8 +228,8 @@ const { addItemToBasket, basketIdle } = await useProductDetailsBasketActions()
 const {
   isBuyXGetYPrioritized,
   areHurryToSaveBannersShown,
-  areGiftConditionsMet,
   isGiftAddedToBasket,
+  areGiftConditionsMet,
 } = await useProductPromotions(product)
 
 const {

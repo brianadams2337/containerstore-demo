@@ -54,19 +54,38 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
     )
   })
 
+  const giftConditions = computed(() => {
+    return buyXGetYPromotion.value?.customData?.giftConditions
+  })
+
   const areGiftConditionsMet = computed(() => {
     if (!isBuyXGetYPrioritized.value) {
       return false
     }
 
-    const minPromotionQuantity =
-      buyXGetYPromotion.value?.customData?.giftConditions?.minQuantity
+    const minPromotionQuantity = giftConditions.value?.minQuantity
 
     if (!minPromotionQuantity || !addedProductBasketItem.value) {
       return false
     }
 
     return addedProductBasketItem.value?.quantity >= minPromotionQuantity
+  })
+
+  const quantityLeftForGiftConditions = computed(() => {
+    if (!giftConditions.value?.minQuantity || !addedProductBasketItem.value) {
+      return
+    }
+    return (
+      giftConditions.value.minQuantity - addedProductBasketItem.value.quantity
+    )
+  })
+
+  const hasQuantityLeftForGiftConditions = computed(() => {
+    return (
+      quantityLeftForGiftConditions.value &&
+      quantityLeftForGiftConditions.value > 0
+    )
   })
 
   const isHighestPriorityPromotionApplied = computed(() => {
@@ -154,5 +173,9 @@ export default async (productItem?: MaybeRefOrGetter<Product>) => {
     isHighestPriority,
     areHurryToSaveBannersShown,
     areGiftConditionsMet,
+    giftConditions,
+    addedProductBasketItem,
+    quantityLeftForGiftConditions,
+    hasQuantityLeftForGiftConditions,
   }
 }

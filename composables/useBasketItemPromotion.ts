@@ -70,6 +70,20 @@ export default async (basketItem: Ref<BasketItem>) => {
     )
   })
 
+  const quantityLeftForGiftConditions = computed(() => {
+    if (!giftConditions.value?.minQuantity) {
+      return
+    }
+    return giftConditions.value.minQuantity - basketItem.value.quantity
+  })
+
+  const hasQuantityLeftForGiftConditions = computed(() => {
+    return (
+      quantityLeftForGiftConditions.value &&
+      quantityLeftForGiftConditions.value > 0
+    )
+  })
+
   return {
     isBuyXGetY,
     isAutomaticDiscount,
@@ -82,5 +96,7 @@ export default async (basketItem: Ref<BasketItem>) => {
     giftConditions,
     giftBackgroundColorStyle,
     areGiftConditionsMet,
+    quantityLeftForGiftConditions,
+    hasQuantityLeftForGiftConditions,
   }
 }

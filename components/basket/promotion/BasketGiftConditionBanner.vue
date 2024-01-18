@@ -22,17 +22,10 @@ const props = defineProps<{ basketItem: BasketItem }>()
 
 const basketItem = computed(() => props.basketItem)
 
-const { giftPromotion, giftBackgroundColorStyle, giftConditions } =
-  await useBasketItemPromotion(basketItem)
-
-const quantityLeft = computed(() => {
-  if (!giftConditions.value?.minQuantity) {
-    return
-  }
-  return giftConditions.value.minQuantity - basketItem.value.quantity
-})
-
-const hasQuantityLeft = computed(() => {
-  return quantityLeft.value && quantityLeft.value > 0
-})
+const {
+  giftPromotion,
+  giftBackgroundColorStyle,
+  hasQuantityLeftForGiftConditions: hasQuantityLeft,
+  quantityLeftForGiftConditions: quantityLeft,
+} = await useBasketItemPromotion(basketItem)
 </script>
