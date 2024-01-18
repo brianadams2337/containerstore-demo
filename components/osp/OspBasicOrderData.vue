@@ -18,19 +18,14 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  id: {
-    type: Number as PropType<Order['id']>,
-    default: undefined,
-  },
-  customer: {
-    type: Object as PropType<Order['customer']>,
-    default: undefined,
-  },
-  confirmedAt: {
-    type: String as PropType<Order['confirmedAt']>,
-    default: undefined,
-  },
+type Props = {
+  id: Order['id']
+  customer?: Order['customer']
+  confirmedAt?: Order['confirmedAt']
+}
+const props = withDefaults(defineProps<Props>(), {
+  customer: undefined,
+  confirmedAt: undefined,
 })
 
 const currentShop = useCurrentShop()
