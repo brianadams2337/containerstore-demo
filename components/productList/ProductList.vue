@@ -31,10 +31,10 @@
           @click:product="$emit('click:product', product, index)"
           @intersect:product="collectRowIntersection(index)"
         >
-          <template #header-badge>
-            <ProductListHeaderBadges
+          <template #badge>
+            <ProductBadges
               :product="product"
-              class="absolute left-2 top-0"
+              class="absolute bottom-2 left-2"
             />
           </template>
         </ProductCard>

@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest'
 
-describe('<ProductListHeaderBadges />', () => {
+describe('<ProductBadges />', () => {
   // TODO: Remove this demo test
   test('Demo test', () => {
     expect(true).toEqual(true)

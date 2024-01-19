@@ -9,35 +9,8 @@
     @productimage:mouseover="isAddToBasketButtonShown = true"
     @productimage:mouseleave="isAddToBasketButtonShown = false"
   >
-    <template #header-badge>
-      <div class="flex size-max flex-col">
-        <ProductBadge
-          v-if="isProductSustainable(product)"
-          badge-label="sustainable"
-          class="ml-2"
-        />
-        <ProductBadge v-if="product.isNew" badge-label="new" class="ml-2" />
-        <ProductBadge
-          v-for="(campaign, idx) in getSalesRelativeAmountByCategory(
-            product,
-            'campaign',
-          )"
-          :key="`campaign-${idx}`"
-          class="mx-2 w-max bg-[#ff6e17] last-of-type:mr-0"
-          :badge-label="`-${campaign.amount.relative * 100}% EXTRA`"
-          :translate="false"
-        />
-        <ProductBadge
-          v-for="(sale, idx) in getSalesRelativeAmountByCategory(
-            product,
-            'sale',
-          )"
-          :key="`sale-${idx}`"
-          class="mx-2 w-max bg-red-500"
-          :badge-label="`-${sale.amount.relative * 100}%`"
-          :translate="false"
-        />
-      </div>
+    <template #badge>
+      <ProductBadges :product="product" class="absolute bottom-2 left-2" />
     </template>
     <template #header-image="{ link, image, imageLoading, name }">
       <DefaultLink :to="link" raw>

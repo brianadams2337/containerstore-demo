@@ -66,12 +66,7 @@
                   </div>
                 </DefaultLink>
               </slot>
-              <ProductPromotionBadges
-                :product="product"
-                class="absolute bottom-3 left-3 top-auto"
-              />
-
-              <slot name="header-badge" :label="badgeLabel">
+              <slot name="badge" :label="badgeLabel">
                 <DefaultLink
                   v-if="badgeLabel"
                   :to="link"
