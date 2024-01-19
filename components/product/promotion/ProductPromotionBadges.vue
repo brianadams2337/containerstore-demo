@@ -35,6 +35,6 @@ const { productPromotionId, applicablePromotions, isHighestPriority } =
   await useProductPromotions(props.product)
 
 const orderedPromotions = computed(() => {
-  return _sort(applicablePromotions.value, (it) => it.priority, true)
+  return _sort(applicablePromotions.value, (it) => it.priority)
 })
 </script>
