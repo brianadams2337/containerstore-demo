@@ -432,12 +432,13 @@
       "name": "CmsImage",
       "display_name": "Image",
       "created_at": "2021-08-05T15:15:16.711Z",
-      "updated_at": "2023-04-04T09:45:13.509Z",
+      "updated_at": "2023-09-26T08:04:24.986Z",
       "id": 1693403,
       "schema": {
         "desktop_image": {
           "type": "asset",
-          "filetypes": ["images"]
+          "filetypes": ["images"],
+          "display_name": "Your Headline"
         },
         "mobile_image": {
           "type": "asset",
@@ -535,7 +536,7 @@
       "name": "ContentPage",
       "display_name": null,
       "created_at": "2021-08-05T15:15:10.628Z",
-      "updated_at": "2022-04-11T13:36:52.056Z",
+      "updated_at": "2023-11-13T18:48:05.642Z",
       "id": 1693387,
       "schema": {
         "teaser_image": {
@@ -567,7 +568,27 @@
             "b8bbf4d3-4703-47e6-bbf5-8168c7ba8ecf",
             "34f3a37e-e981-405f-acea-e1dcbd8bea05"
           ],
-          "pos": 4
+          "pos": 4,
+          "field_type": "sb-shopify",
+          "options": [
+            {
+              "name": "endpoint",
+              "value": ""
+            },
+            {
+              "name": "token",
+              "value": ""
+            },
+            {
+              "name": "limit",
+              "value": ""
+            },
+            {
+              "name": "selectOnly",
+              "value": ""
+            }
+          ],
+          "display_name": ""
         },
         "tab-cee38d23-6238-49e6-8fd8-d7ef6d6326c5": {
           "type": "tab",
@@ -1427,6 +1448,43 @@
       "component_group_name": "layout"
     },
     {
+      "name": "Mammut-ce",
+      "display_name": null,
+      "created_at": "2023-11-02T09:32:52.990Z",
+      "updated_at": "2023-11-02T09:35:34.057Z",
+      "id": 4823248,
+      "schema": {
+        "image": {
+          "type": "asset",
+          "pos": 0
+        },
+        "headline": {
+          "type": "text",
+          "pos": 2
+        },
+        "cta": {
+          "type": "text",
+          "pos": 3
+        },
+        "cta_link": {
+          "type": "multilink",
+          "pos": 4
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Mammut-ce",
+      "component_group_uuid": "b8bbf4d3-4703-47e6-bbf5-8168c7ba8ecf",
+      "color": null,
+      "icon": null,
+      "component_group_name": "content"
+    },
+    {
       "name": "Newsletter",
       "display_name": null,
       "created_at": "2021-08-05T15:15:12.134Z",
@@ -1744,7 +1802,7 @@
       "name": "Slide",
       "display_name": null,
       "created_at": "2021-08-05T15:15:17.084Z",
-      "updated_at": "2023-03-23T15:47:43.898Z",
+      "updated_at": "2023-10-31T17:10:36.357Z",
       "id": 1693404,
       "schema": {
         "image": {
@@ -1752,7 +1810,9 @@
           "filetypes": ["videos"],
           "pos": 0,
           "restrict_components": true,
-          "component_whitelist": ["CmsImage", "Video"]
+          "component_whitelist": ["CmsImage", "Video"],
+          "maximum": 1,
+          "display_name": "bt1"
         },
         "tab-65e456a2-9865-47ec-bf50-3bd4841fe3ce": {
           "display_name": "Settings",
@@ -1917,7 +1977,7 @@
       "name": "SocialMediaLink",
       "display_name": null,
       "created_at": "2023-01-13T13:26:43.782Z",
-      "updated_at": "2023-08-22T07:56:55.078Z",
+      "updated_at": "2023-08-22T09:14:51.613Z",
       "id": 3307409,
       "schema": {
         "type": {
@@ -1959,7 +2019,7 @@
         },
         "isActive": {
           "type": "boolean",
-          "required": true,
+          "required": false,
           "default_value": true
         }
       },

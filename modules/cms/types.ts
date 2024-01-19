@@ -1,5 +1,7 @@
 import type { ContentfulProvider } from './providers/contentful/types'
 import type { StoryblokProvider } from './providers/storyblok/types'
+export type * from './providers/contentful/types'
+export type * from './providers/storyblok/types'
 
 export type CMSProviders = 'storyblok' | 'contentful'
 

@@ -12,10 +12,7 @@
 const storyblokOptions = useDefaultStoryblokOptions()
 const data = await useAsyncStoryblok('home', storyblokOptions)
 
-const client = useContentful()
-const data2 = await client.getEntry('2cayfg7wVF5WezADCHgSgL')
-
-const { $config } = useNuxtApp()
+const config = useRuntimeConfig()
 const route = useRoute()
 useSeoMeta({
   robots: 'index,follow',
@@ -25,7 +22,7 @@ useHead({
     {
       rel: 'canonical',
       key: 'canonical',
-      href: sanitizeCanonical(`${$config.public.baseUrl}${route?.fullPath}`),
+      href: sanitizeCanonical(`${config.public.baseUrl}${route?.fullPath}`),
     },
   ],
 })

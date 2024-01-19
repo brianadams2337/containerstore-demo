@@ -1,4 +1,4 @@
-import { createClient } from 'contentful' // for SSR, SSG
+import { createClient } from 'contentful'
 export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig()
   const client = createClient({

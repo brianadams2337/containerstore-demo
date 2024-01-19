@@ -11,5 +11,23 @@ export async function setupStoryblok(options: ModuleOptions, nuxt: Nuxt) {
   ) {
     await installModule('@storyblok/nuxt')
   }
+  nuxt.options.storyblok = {
+    accessToken: options.accessToken ?? '',
+    enableSudoMode: options.enableSudoMode ?? false,
+    usePlugin: options.usePlugin ?? false,
+    bridge: options.bridge,
+    devtools: options.devtools! ?? false,
+    apiOptions: options.apiOptions ?? {},
+    componentsDir: options.componentsDir ?? '',
+  }
+
   addImportsDir(resolver.resolve('./composables'))
+
+  await addComponentsDir({
+    path: resolver.resolve('./components'),
+  })
+
+  nuxt.hook('prepare:types', ({ references }) => {
+    references.push({ path: resolver.resolve('./types/storyblok.d.ts') })
+  })
 }
