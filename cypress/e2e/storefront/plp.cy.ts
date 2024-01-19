@@ -323,7 +323,6 @@ describe('canonical URl check', () => {
     ProductListingPage.openFilters()
     ProductListingPage.selectTestColour()
     ProductListingPage.clickApplyFilters()
-
     cy.get(ProductListingPage.pageElements.uniqueProductLinks).then(
       (initProducts) => {
         const credentials = Cypress.config('baseUrl')!.split('@')[0] + '@'

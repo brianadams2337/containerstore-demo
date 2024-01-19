@@ -22,7 +22,6 @@ describe('Wishlist feature', () => {
 
   it('check that header and footer is displayed on Wishlist Page', () => {
     ProductPage.addProductToWishlist()
-    // WishlistPage.checkAddToWishlistTrackingEvent()
     Header.wishlistAssertProductCount(1)
     Header.clickOnWishlistButton()
     WishlistPage.waitForPageToBeDisplayed()
@@ -134,7 +133,6 @@ describe('Wishlist feature', () => {
   if (Cypress.env().mobile !== true) {
     it('Add product to a basket without size', () => {
       ProductPage.addProductToWishlist()
-      // WishlistPage.checkAddToWishlistTrackingEvent()
       Header.wishlistAssertProductCount(1)
       Header.clickOnWishlistButton()
       WishlistPage.waitForPageToBeDisplayed()
@@ -148,7 +146,6 @@ describe('Wishlist feature', () => {
     ProductPage.waitForPageToBeDisplayed()
     HomePage.closePromotionButton()
     ProductPage.addProductToWishlist()
-    // WishlistPage.checkAddToWishlistTrackingEvent()
     Header.wishlistAssertProductCount(1)
     Header.clickOnWishlistButton()
     WishlistPage.waitForPageToBeDisplayed()

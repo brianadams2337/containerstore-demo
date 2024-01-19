@@ -38,7 +38,7 @@ class ProductListingPage extends BasePage {
     siblingColors: {
       siblingColorsSelector: '[data-test-id="siblingColorsSelector"]',
     },
-    canonicalTag: '[data-hid="canonical"]',
+    canonicalTag: '[rel="canonical"]',
   }
 
   waitForPageToBeDisplayed(): void {
