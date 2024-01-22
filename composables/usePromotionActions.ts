@@ -10,15 +10,13 @@ export function usePromotionActions() {
     isShown.value = !isShown.value
   }
 
-  const isPromotionListShown = computed(() => isShown.value)
-
   const setBannerRef = (element: HTMLElement | null) => {
     topBannerRef.value = element
   }
 
   return {
     togglePromotionList,
-    isPromotionListShown,
+    isPromotionListShown: readonly(isShown),
     topBannerRef,
     setBannerRef,
   }

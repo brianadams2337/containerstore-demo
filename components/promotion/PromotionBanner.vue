@@ -46,5 +46,5 @@ const {
 const { togglePromotionList, isPromotionListShown, setBannerRef } =
   usePromotionActions()
 
-onServerPrefetch(() => props.promotions.length > 1 && togglePromotionList())
+onNuxtReady(() => props.promotions.length > 1 && togglePromotionList())
 </script>
