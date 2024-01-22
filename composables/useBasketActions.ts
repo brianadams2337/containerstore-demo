@@ -1,4 +1,8 @@
-import { type BasketItem } from '@scayle/storefront-nuxt'
+import {
+  type BasketItem,
+  type Product,
+  getFirstAttributeValue,
+} from '@scayle/storefront-nuxt'
 
 const listingMetaData = {
   id: BasketListingMetadata.ID,
@@ -11,10 +15,29 @@ type OrderedItems<T> = {
 }
 
 export async function useBasketActions() {
+  const { $alert, $i18n } = useNuxtApp()
+
   const basket = await useBasket()
 
   const { trackRemoveFromBasket, trackBasket, collectBasketItems } =
     useTrackingEvents()
+
+  const showAddToBasketToast = (
+    isAddedToBasket: boolean,
+    item: Product | null,
+  ) => {
+    const productName =
+      getFirstAttributeValue(item?.attributes, 'name')?.label ||
+      $i18n.t('wishlist.product')
+
+    const message = $i18n.t('basket.notification.add_to_basket_success', {
+      productName,
+    })
+
+    const action = isAddedToBasket ? 'ROUTE' : 'CONFIRM'
+
+    $alert.show(message, action, isAddedToBasket ? routeList.basket : undefined)
+  }
 
   const removeItem = async (item: BasketItem) => {
     await basket.removeItem({ variantId: item.variant.id })
@@ -62,5 +85,6 @@ export async function useBasketActions() {
     listingMetaData,
     basketItems,
     isBasketEmpty,
+    showAddToBasketToast,
   }
 }

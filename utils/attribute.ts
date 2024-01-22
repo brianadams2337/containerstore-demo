@@ -6,7 +6,8 @@ import {
   getFlattenedVariantCrosssellings,
 } from '@scayle/storefront-nuxt'
 
-const validObject = (entry: any) => 'value' in entry
+const hasValueInEntry = (entry: any) => 'value' in entry
+
 export const getAdvancedAttributes = ({
   product,
   property,
@@ -14,15 +15,13 @@ export const getAdvancedAttributes = ({
   product: Product
   property: string
 }) => {
-  const valueList: { value: string }[] = getFlattenedVariantCrosssellings(
+  const valueList = getFlattenedVariantCrosssellings(
     product?.advancedAttributes?.[property]?.values || [],
-  ) as unknown as { value: string }[]
-  return product
-    ? valueList
-        .filter(validObject)
-        ?.map(({ value }) => value)
-        .join(',')
-    : null
+  )
+  return valueList
+    .filter(hasValueInEntry)
+    .map((item) => 'value' in item && item.value)
+    .join(',')
 }
 
 export default {

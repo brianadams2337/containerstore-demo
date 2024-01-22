@@ -79,7 +79,7 @@ const useBasketEvents = (
       track('view_cart', {
         currencyCode,
         items,
-        valueWithoutTax: divideWithHundred(valueWithoutTax?.withoutTax || 0),
+        valueWithoutTax: divideByHundred(valueWithoutTax?.withoutTax || 0),
         pagePayload,
       })
     },

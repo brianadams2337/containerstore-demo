@@ -64,9 +64,9 @@ const { toggleItem, fetching, contains, fetch } = await useWishlist({
   options: { autoFetch: false },
 })
 
-onMounted(() => {
-  fetch()
-})
+const { trackWishlistEvent } = useWishlistActions()
+
+onMounted(() => fetch())
 
 const onToggleWishlist = async () => {
   const wasInWishlist = contains({ productId: productId.value })

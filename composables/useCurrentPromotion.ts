@@ -34,7 +34,7 @@ export function useCurrentPromotion(promotions: Promotion[] = []) {
 
   const automaticDiscount = computed(() => {
     const value = getAdditionalDataValue(currentPromotion.value)
-    return value ? divideWithHundred(value) : undefined
+    return value ? divideByHundred(value) : undefined
   })
 
   return {

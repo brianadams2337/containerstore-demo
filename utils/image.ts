@@ -2,6 +2,18 @@ import { getAttributeValue, type ProductImage } from '@scayle/storefront-nuxt'
 
 export { getImageFromList, isImageType } from '@scayle/storefront-nuxt'
 
+const getBreakerImage = (
+  baseImages: ProductImage[],
+): ProductImage | undefined => {
+  return (
+    baseImages.find(
+      (image: ProductImage) =>
+        getAttributeValue(image.attributes, 'image1stView') ===
+        '1st_model_image',
+    ) || getImage(baseImages, 'model_image', 'front')
+  )
+}
+
 export const getFirstModelImage = (images: ProductImage[], index = 0) => {
   const baseImages = images.filter(
     (image: ProductImage) =>
@@ -11,13 +23,7 @@ export const getFirstModelImage = (images: ProductImage[], index = 0) => {
   const needsBreakerImage = (index + 1) % 5 === 0
 
   if (needsBreakerImage) {
-    const breakerImage =
-      baseImages.find(
-        (image: ProductImage) =>
-          getAttributeValue(image.attributes, 'image1stView') ===
-          '1st_model_image',
-      ) || getImage(baseImages, 'model_image', 'front')
-
+    const breakerImage = getBreakerImage(baseImages)
     if (breakerImage) {
       return breakerImage
     }
@@ -46,9 +52,9 @@ export const getDetailPageImages = (images: ProductImage[]) => {
 
   const hasModelImages = getImage(baseImages, 'model_image', 'front', true)
 
-  let usingBustImages = false
-  if (!firstImage && !hasModelImages) {
-    usingBustImages = true
+  const usingBustImages = !firstImage && !hasModelImages
+
+  if (usingBustImages) {
     firstImage = getImage(baseImages, 'bust_image', 'front', true)
   }
 
@@ -114,6 +120,13 @@ export const getModelImages = (images: ProductImage[]) => {
   return getDetailPageImages(images).slice(1)
 }
 
-export const getAttribute = (image: ProductImage, key: string) => {
-  return (image.attributes?.[key]?.values as any)?.value
+export const getAttribute = (
+  image: ProductImage,
+  key: string,
+): string | undefined => {
+  const values = image.attributes?.[key]?.values
+  if (!values || Array.isArray(values)) {
+    return
+  }
+  return values.value
 }

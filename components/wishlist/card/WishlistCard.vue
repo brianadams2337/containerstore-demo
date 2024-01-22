@@ -175,6 +175,8 @@ const { fetching: isWishlistFetching, replaceItem: replaceWishlistItem } =
   await useWishlist()
 const basket = await useBasket()
 
+const { showAddToBasketToast } = await useBasketActions()
+
 const { trackAddToBasket } = useTrackingEvents()
 
 const { toggle: toggleFilter } = useSlideIn(`wishlistcard_${props.product.id}`)

@@ -68,7 +68,7 @@ export const mapProductToTrackingPayload = (
     price: Price,
     type: 'sale' | 'campaign',
   ) =>
-    divideWithHundred(
+    divideByHundred(
       getAppliedReductionsByCategory(price, type)[0]?.amount.absoluteWithTax,
     ) || 0.0
 
@@ -80,14 +80,14 @@ export const mapProductToTrackingPayload = (
   return {
     item_id: product.id.toString(),
     item_name: getFirstAttributeValue(product.attributes, 'name')!.label,
-    price: divideWithHundred(price.withoutTax),
+    price: divideByHundred(price.withoutTax),
     sale_discount: getFloatedReducedPriceForCategoryOrNull(price, 'sale'),
     campaign_discount: getFloatedReducedPriceForCategoryOrNull(
       price,
       'campaign',
     ),
-    original_price: divideWithHundred(getOriginalPrice(price)),
-    tax: divideWithHundred(getOriginalPrice(price) - price.withoutTax),
+    original_price: divideByHundred(getOriginalPrice(price)),
+    tax: divideByHundred(getOriginalPrice(price) - price.withoutTax),
     item_brand: itemBrand,
     item_brand_id: itemBrandId,
   }
@@ -234,7 +234,7 @@ export const mapTrackingDataForEvent = (
             ...(currency ? { currency } : {}),
             ...mapProductToTrackingPayload(payload.product),
             ...mapAdditionalInfo(payload),
-            tax: divideWithHundred(price?.tax?.vat?.amount || 0),
+            tax: divideByHundred(price?.tax?.vat?.amount || 0),
           }
         }),
       },
@@ -250,7 +250,7 @@ export const mapTrackingDataForEvent = (
             ...(currency ? { currency } : {}),
             ...mapProductToTrackingPayload(payload.product),
             ...mapAdditionalInfo(payload),
-            tax: divideWithHundred(price?.tax?.vat?.amount || 0),
+            tax: divideByHundred(price?.tax?.vat?.amount || 0),
           }
         }),
       },
@@ -291,7 +291,7 @@ export const mapTrackingDataForEvent = (
               'variant' in payload ? payload.variant : undefined,
             ),
             ...mapAdditionalInfo(payload),
-            tax: divideWithHundred(price?.tax.vat.amount || 0),
+            tax: divideByHundred(price?.tax.vat.amount || 0),
           },
         ],
       },
@@ -390,7 +390,7 @@ export const formatPriceWithCurrency = (
     currency,
   }).resolvedOptions().maximumFractionDigits
 
-  return divideWithHundred(value).toLocaleString(locale, {
+  return divideByHundred(value).toLocaleString(locale, {
     minimumFractionDigits: currencyFractionDigits,
   })
 }
@@ -489,10 +489,10 @@ export const getCouponReductionWithTax = ({
     return 0
   }
   if (orderVoucherType === 'absolute') {
-    return divideWithHundred(orderData.vouchers[0].value)
+    return divideByHundred(orderData.vouchers[0].value)
   }
   if (orderVoucherType === 'relative') {
-    return divideWithHundred(
+    return divideByHundred(
       sumReductionsFromAllOrderItemsPerCategory(orderData.items, 'voucher'),
     )
   }

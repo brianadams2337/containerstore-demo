@@ -16,6 +16,8 @@ const CANONICAL_PARAM_WHITELIST = [
   'categoryShopFilterSizes',
 ]
 
+// TODO: Use `UFO` for url manipulation
+
 /**
  * Strips off all parameters (except page) from input canonical url string
  * @param url canonical
@@ -25,9 +27,7 @@ export const sanitizeCanonical = (url: string | undefined): string => {
   if (!url) {
     return ''
   }
-  const baseAndParams = url?.split('?')
-  const baseUrl = baseAndParams?.[0]
-  const parametersPart = baseAndParams?.[1] // part of url after '?'
+  const [baseUrl, parametersPart] = url.split('?') ?? []
 
   if (!parametersPart) {
     // no url parameters exist, so return the original url

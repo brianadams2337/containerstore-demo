@@ -8,7 +8,7 @@ export async function usePromotionProgress() {
     return currentPromotion.value?.customData?.minOrderValue || 0
   })
 
-  const minOrderAmount = computed(() => divideWithHundred(minOrderValue.value))
+  const minOrderAmount = computed(() => divideByHundred(minOrderValue.value))
 
   const basketTotalWithoutPromotionReductions = computed(() => {
     return _sum(

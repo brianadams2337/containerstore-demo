@@ -23,8 +23,8 @@ const getItems = (orderData: Order, currency?: string) => {
     return {
       item_id: product.id,
       item_name: product.name,
-      price: divideWithHundred(price?.withTax),
-      tax: divideWithHundred(price?.tax?.vat?.amount || 0),
+      price: divideByHundred(price?.withTax),
+      tax: divideByHundred(price?.tax?.vat?.amount || 0),
       currency,
       item_brand: brandValue.label || defaultEmptyValue,
       item_brand_id: brandValue.id || defaultEmptyValue,
@@ -38,19 +38,19 @@ const getItems = (orderData: Order, currency?: string) => {
       carrier:
         getCarrier(orderData.packages, orderItem.packageId)?.carrierKey ||
         defaultEmptyValue,
-      sale_discount: divideWithHundred(
+      sale_discount: divideByHundred(
         sumReductionsByCategory(price?.appliedReductions, 'sale'),
       ),
-      campaign_discount: divideWithHundred(
+      campaign_discount: divideByHundred(
         sumReductionsByCategory(price?.appliedReductions, 'campaign'),
       ),
       original_price:
         price.appliedReductions?.length > 0
-          ? divideWithHundred(
+          ? divideByHundred(
               getTotalAppliedReductions(price)?.absoluteWithTax +
                 (price?.withTax ?? 0),
             )
-          : divideWithHundred(price?.withTax),
+          : divideByHundred(price?.withTax),
 
       ...(product.isSoldOut && { sold_out: true }),
     }
@@ -88,11 +88,11 @@ const usePurchaseEvents = (): {
       const ecommerce = {
         transaction_id: String(orderData.id),
         customer_id: String(orderData.customer?.id),
-        value: divideWithHundred(orderData.cost.withoutTax),
-        sale_reduction_with_tax: divideWithHundred(
+        value: divideByHundred(orderData.cost.withoutTax),
+        sale_reduction_with_tax: divideByHundred(
           sumReductionsFromAllOrderItemsPerCategory(orderData.items, 'sale'),
         ),
-        campaign_reduction_with_tax: divideWithHundred(
+        campaign_reduction_with_tax: divideByHundred(
           sumReductionsFromAllOrderItemsPerCategory(
             orderData.items,
             'campaign',
@@ -103,10 +103,10 @@ const usePurchaseEvents = (): {
         coupon_code: coupon,
         // giftcard === "<amount><currency>" e.g. 10€ mentioned here: https://aboutyou.atlassian.net/wiki/spaces/AYC/pages/979207502/SFC+v2+Tracking+Integration
         giftcard,
-        tax: divideWithHundred(orderData.cost.tax.vat?.amount ?? 0),
+        tax: divideByHundred(orderData.cost.tax.vat?.amount ?? 0),
         shipping: shippingNetFee
-          ? divideWithHundred(shippingNetFee)
-          : divideWithHundred(orderData?.shipping?.deliveryCosts || 0),
+          ? divideByHundred(shippingNetFee)
+          : divideByHundred(orderData?.shipping?.deliveryCosts || 0),
         payment_type: paymentType,
         items,
       }

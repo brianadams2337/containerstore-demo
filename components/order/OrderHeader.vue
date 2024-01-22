@@ -22,10 +22,12 @@ type Props = {
 }
 const props = defineProps<Props>()
 
-const { $i18n } = useNuxtApp()
+const i18n = useI18n()
+
+const { formatLocaleDate } = useFormatDate()
 
 const headline = computed(() => {
-  const date = localeFormattedDate(props.orderDate)
-  return $i18n.t('my_account.orders.order_summary_header', { date })
+  const date = formatLocaleDate(props.orderDate)
+  return i18n.t('my_account.orders.order_summary_header', { date })
 })
 </script>

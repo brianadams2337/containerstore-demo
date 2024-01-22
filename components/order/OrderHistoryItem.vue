@@ -11,7 +11,7 @@
       <div class="mb-2 text-sm font-bold">
         {{
           $t('my_account.orders.order_summary_header', {
-            date: localeFormattedDate(confirmedAt),
+            date: formatLocaleDate(confirmedAt),
           })
         }}
       </div>
@@ -65,6 +65,9 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const route = useRoute()
+
+const { formatLocaleDate } = useFormatDate()
+
 const paramId = computed(() => +route.params.id)
 const { getOrderDetailsRoute } = useRouteHelpers()
 

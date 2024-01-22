@@ -156,7 +156,7 @@ export async function useProductPromotions(
     if (!value) {
       return
     }
-    const discount = divideWithHundred(price.withTax) * divideWithHundred(value)
+    const discount = divideByHundred(price.withTax) * divideByHundred(value)
     return price.withTax - discount
   }
 

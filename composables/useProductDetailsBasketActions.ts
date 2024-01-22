@@ -6,6 +6,8 @@ export async function useProductDetailsBasketActions() {
 
   const { fetching: basketIdle, addItem: addBasketItem } = await useBasket()
 
+  const { showAddToBasketToast } = await useBasketActions()
+
   const { highestPriorityPromotion, isBuyXGetYPrioritized } =
     await useProductPromotions(product)
 
