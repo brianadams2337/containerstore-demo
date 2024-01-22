@@ -10,8 +10,8 @@
           <span>{{ $t('my_account.orders.expected_delivery_from') }}:</span>
           <span class="font-semibold">
             {{
-              ` ${localeFormattedDate(deliveryDate.minimum)}
-              - ${localeFormattedDate(deliveryDate.maximum)}`
+              ` ${formatLocaleDate(deliveryDate.minimum)}
+              - ${formatLocaleDate(deliveryDate.maximum)}`
             }}
           </span>
         </Headline>
@@ -51,6 +51,8 @@ type Props = {
   deliveryDate: DeliveryInfo['deliveryDate']
 }
 const props = defineProps<Props>()
+
+const { formatLocaleDate } = useFormatDate()
 
 const progressLevel = computed<number>(() => {
   return DeliveryProgress[props.deliveryStatus] || DeliveryProgress.DEFAULT

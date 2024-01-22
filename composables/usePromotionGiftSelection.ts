@@ -19,6 +19,8 @@ export async function usePromotionGiftSelection(
 
   const { fetching: basketIdle, addItem: addBasketItem } = await useBasket()
 
+  const { showAddToBasketToast } = await useBasketActions()
+
   const { trackAddToBasket } = useTrackingEvents()
   const localePath = useLocalePath()
 

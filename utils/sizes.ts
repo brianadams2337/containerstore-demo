@@ -12,28 +12,24 @@ export type VariantSize = {
   [key: string]: unknown
 }
 
-export const getVariantSizes = (variants?: Variant[]) => {
-  return [...(variants || [])]
-    .filter((variant) => {
-      return variant.attributes && Object.keys(variant.attributes).length > 0
-    })
-    .sort((a, b) => {
-      const left = getFirstAttributeValue(a.attributes, 'sort')?.value
-      const right = getFirstAttributeValue(b.attributes, 'sort')?.value
+export const getVariantSizes = (variants: Variant[] = []) => {
+  const variantsWithAttributes = [...variants].filter(({ attributes }) => {
+    return attributes && Object.keys(attributes).length > 0
+  })
 
-      if (!left || !right) {
-        return 0
-      }
-      return parseInt(left, 10) < parseInt(right, 10) ? -1 : 1
-    })
-    .map((variant) => {
-      const size = getFirstAttributeValue(variant.attributes, 'size')
+  const orderedVariants = _sort(variantsWithAttributes, ({ attributes }) => {
+    const sortAttribute = getFirstAttributeValue(attributes, 'sort')?.value
+    return sortAttribute ? Number(sortAttribute) : 0
+  })
 
-      return {
-        variantId: variant.id,
-        label: size!.label,
-        value: size!.value,
-        isAvailable: isInStock(variant),
-      }
-    })
+  return orderedVariants.map((variant) => {
+    const size = getFirstAttributeValue(variant.attributes, 'size')!
+
+    return {
+      variantId: variant.id,
+      label: size.label,
+      value: size.value,
+      isAvailable: isInStock(variant),
+    }
+  })
 }
