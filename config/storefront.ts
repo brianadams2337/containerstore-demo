@@ -266,8 +266,8 @@ export const storefrontRuntimeConfigPublic: Partial<ModuleOptions> = {
   /** Storefront Core - Internal logger configuration
    * https://scayle.dev/en/dev/storefront-core/module-configuration#log */
   log: {
-    name: 'storefront-boilerplate-nuxt', // Override: NUXT_PUBLIC_LOG_NAME
-    level: 'debug', // Override: NUXT_PUBLIC_LOG_LEVEL
+    name: 'storefront-boilerplate-nuxt', // Override: NUXT_PUBLIC_STOREFRONT_LOG_NAME
+    level: 'debug', // Override: NUXT_PUBLIC_STOREFRONT_LOG_LEVEL
   },
 }
 

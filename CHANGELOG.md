@@ -1,5 +1,88 @@
 # @scayle/storefront-boilerplate-nuxt
 
+## 1.0.0-rc.06
+
+This release focuses on stabilization and refactoring, to improve the technical foundation and developer experience.
+
+### 💅 Minor Changes
+
+- Extracted sorting and grouping basket helpers to `utils`
+- Properly resolve `basketGroup` RPC with params
+- Removed wishlist utils and moved them to the `useWishlistActions` composable
+- Replaced `validation` plugin with `useValidationRules` composable
+- Replaced `toast` plugin with `useNotification` composable
+- Replaces `tracking` plugin with `useTracking` composable
+- Renamed `divideWithHundred` price utility to `divideByHundred`
+- Renamed `localeFormattedDate` date utility to `formatLocaleDate`
+- Enforced using tracking sub-composables through the `useTrackingEvents` by turning off auto-import for sub-composables
+- Simplified `Countdown` component logic by using `useIntervalFn` from `vueuse`
+- Changed `radash` utils prefix to be underscore (`_`) instead of `use`, to avoid confusion between `radash` utilities and Vue composables. Resulting in e.g. `useSleep` to become `_sleep`.
+- Used radash `_sort` (`useSort`) instead of native `sort` to avoid side effects
+- Export composables as named functions
+- Refactored components to use `withDefaults` and type generics to define component properties
+- Refactored product and navigation components to reduce complexity
+- Refactored account area component to reduce complexity and improve UI experience
+  - `components/account/AccountHeader.vue`
+  - `components/account/AccountWrapper.vue`
+  - `components/addOns/AddOnsSelector.vue`
+  - `components/order/OrderHeader.vue`
+  - `components/order/OrderItemCard.vue`
+  - `components/order/OrderOverviewHeader.vue`
+  - `components/order/OrderStatusBar.vue`
+  - `pages/account/orders.vue`
+  - `pages/account/user.vue`
+  - `pages/account/orders/[id].vue`
+- Refactored account area orders components to reduce complexity and improve UI experience
+  - `components/account/AccountWrapper.vue`
+  - `components/order/OrderHistoryItem.vue`
+  - `components/order/OrderItems.vue`
+  - `composables/useOrders.ts`
+- Refactored used Tailwind classes across the Storefront Boilerplate to comply with used Tailwind version
+- Tweaked Promotion Engine implementation and UI experience across the Storefront Boilerplate
+- Tweaked Order Success Page (OSP) complexity and UI experience
+
+### 🩹 Patch Changes
+
+- Refactored `slicedOrders` to be a `computed` property in `components/account/AccountWrapper.vue`
+- Refactored `_sizes` to be a `computed` property in `components/product/ProductSizePicker.vue`
+- Refactored `components/addOns/AddOnsSelector.vue` to use `computed` properties instead of `ref` and dedicated update functions
+- Refactored `basketItems` to have an empty array as fallback in `components/basket/popover/BasketPopoverItems.vue`
+- Added missing state key for `footerNavigationTrees` in `components/layout/footer/AppFooter.vue`
+- Simplified watcher for `searchQuery` in `components/layout/headers/search/HederSearch.vue`
+- Refactored Nuxt-specific imports to import from `#app` instead of `nuxt/app`
+- Added `collapsed` component property to `components/product/detail/ProductDetailAccordionEntry.vue`
+- Use object for lookup of headline sizes instead of `computed` property in `components/ui/headlines/Headline.vue`
+- Fixed desktop sidebar overlapping navigation in `pages/[...category].vue`
+- Added `time` constants in `constants/time.ts` and used it in `components/ui/Countdown.vue`
+- Refactored `PromotionBanner` to be displayed on `onNuxtReady` instead of `onServerPrefetch` to avoid missing interactivity during page load and hydration
+
+### 🏡 Dependency Updates
+
+#### 🏘️ devDependencies
+
+- Updated to `@crowdin/cli@3.16.1`
+- Updated to `@nuxt/image@1.3.0`
+- Updated to `@nuxt/test-utils@3.10.0`
+- Updated to `@nuxtjs/tailwindcss@6.11.0`
+- Updated to `@types/node@20.11.5`
+- Updated to `@upstash/redis@1.28.2`
+- Updated to `@vitest/coverage-v8@1.2.1`
+- Updated to `autoprefixer@10.4.17`
+- Updated to `cypress@13.6.3`
+- Updated to `eslint-plugin-tailwindcss@3.14.0`
+- Updated to `happy-dom@13.2.1`
+- Updated to `nuxt@3.9.3` (*​For detailed changes see [Release Notes for Nuxt](https://github.com/nuxt/nuxt/releases)*​)
+- Updated to `utility-types@3.11.0`
+- Updated to `vitest@1.2.1`
+
+#### 🏠 dependencies
+
+- Updated to `@scayle/storefront-nuxt@7.52.0`
+- Updated to `@storyblok/nuxt@6.0.4`
+- Updated to `dotenv@16.3.2`
+- Updated to `storyblok-js-client@6.6.3`
+- Updated to `vue@3.4.15` (*​For detailed changes see [Changelog for Vue](https://github.com/vuejs/core/blob/main/CHANGELOG.md)*​)
+
 ## 1.0.0-rc.05
 
 ### 🔥 Highlights
@@ -15,7 +98,7 @@ and the [Official Vue 3.4 Announcement Blog](https://blog.vuejs.org/posts/vue-3-
 The Promotion Engine presents the user with various promotions that have specific conditions for receiving the discount.
 The Storefront Boilerplate currently support the two types `Automatic discount` and `Buy X get Y` by default as promotions.
 
-- [SCAYLE Resource Center - Storefront Boilerplate / Promotion Engine](https://scayle.dev/en/dev/storefront-core/promotion-engine)
+- [SCAYLE Resource Center - Storefront Boilerplate / Promotion Engine](https://scayle.dev/en/dev/storefront-core/promotions)
 
 #### 👥 Identity Provider support for Token-based Authentication
 

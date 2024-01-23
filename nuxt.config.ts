@@ -68,7 +68,7 @@ export default defineNuxtConfig({
     storefront: storefrontRuntimeConfigPrivate as any,
     // Following keys are Overrideable using prefix NUXT_PUBLIC_
     public: {
-      ...(storefrontRuntimeConfigPublic as any),
+      storefront: storefrontRuntimeConfigPublic as any,
       domains,
       /** Nuxt - Base URL
        * https://nuxt.com/docs/api/nuxt-config#baseurl */
