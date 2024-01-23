@@ -95,14 +95,13 @@ export default defineNuxtConfig({
       /** nuxt-gtm Module Runtime Configuration
        * https://github.com/zadigetvoltaire/nuxt-gtm#readme */
       gtm: {
-        id: process.env.NUXT_PUBLIC_GTM_ID, // Override: NUXT_PUBLIC_GTM_ID
-        debug: process.env.NUXT_PUBLIC_GTM_DEBUG, // Override: NUXT_PUBLIC_GTM_DEBUG
+        id: process.env.NUXT_PUBLIC_GTM_ID ?? '', // Override: NUXT_PUBLIC_GTM_ID
+        debug: yn(process.env.NUXT_PUBLIC_GTM_DEBUG), // Override: NUXT_PUBLIC_GTM_DEBUG
       },
       /** Storyblok Runtime Configuration
        * https://scayle.dev/en/dev/storefront-core/module-configuration */
       storyblok: {
         accessToken: '', // Override: NUXT_PUBLIC_STORYBLOK_ACCESS_TOKEN
-        webhookSecret: '', // Override: NUXT_PUBLIC_STORYBLOK_WEBHOOK_SECRET,
       },
 
       appEnv: process.env.APP_ENV, // Override: NUXT_PUBLIC_APP_ENV,

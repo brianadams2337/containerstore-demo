@@ -55,6 +55,8 @@ This release focuses on stabilization and refactoring, to improve the technical 
 - Fixed desktop sidebar overlapping navigation in `pages/[...category].vue`
 - Added `time` constants in `constants/time.ts` and used it in `components/ui/Countdown.vue`
 - Refactored `PromotionBanner` to be displayed on `onNuxtReady` instead of `onServerPrefetch` to avoid missing interactivity during page load and hydration
+- Removed `runtimeConfig.public.storyblok.webhookSecret` from `nuxt.config.ts`, as it is not supported by the `storyblok-nuxt` module
+- Use `yn` to typecast potential build value of `runtimeConfig.public.gtm.debug` via `yn(process.env.NUXT_PUBLIC_GTM_DEBUG)` in `nuxt.config.ts`
 
 ### 🏡 Dependency Updates
 

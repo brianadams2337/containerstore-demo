@@ -26,7 +26,7 @@ export async function useAuthentication(
 
   const notification = useNotification()
 
-  const { auth: authConfig } = useRuntimeConfig().public
+  const { auth: authConfig } = useRuntimeConfig().public.storefront
 
   const { trackAuthenticated, trackLogout } = useTrackingEvents()
 
