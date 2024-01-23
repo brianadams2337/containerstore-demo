@@ -1,6 +1,10 @@
 <template>
   <div>
-    <div v-for="item in sortedItems" :key="item.value" class="flex items-start">
+    <div
+      v-for="item in sortedItems"
+      :key="item.value"
+      class="flex items-start break-all"
+    >
       <slot
         name="item"
         v-bind="{
@@ -29,27 +33,18 @@
   lang="ts"
   generic="Item extends { value: string | number; [key: string]: any }"
 >
-const props = defineProps({
-  items: {
-    type: Array as PropType<Item[]>,
-    default: () => [],
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  modelValue: {
-    type: Array as PropType<Item[]>,
-    default: () => [],
-  },
-  limit: {
-    type: Number,
-    default: null,
-  },
-  selectedFirst: {
-    type: Boolean,
-    default: false,
-  },
+type Props = {
+  name: string
+  items?: Item[]
+  modelValue?: Item[]
+  limit?: number
+  selectedFirst?: boolean
+}
+const props = withDefaults(defineProps<Props>(), {
+  items: () => [],
+  modelValue: () => [],
+  limit: undefined,
+  selectedFirst: false,
 })
 
 const emit = defineEmits(['update:model-value'])
