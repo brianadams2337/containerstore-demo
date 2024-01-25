@@ -10,7 +10,7 @@
             v-for="item in items"
             :key="item.id"
             v-bind="item"
-            class="mr-4 last-of-type:mr-0"
+            class="mr-4 last:mr-0"
           />
         </div>
         <ClosePromotionListButton data-test-id="close-promotion-button" />
