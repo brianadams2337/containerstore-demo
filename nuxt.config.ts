@@ -7,7 +7,7 @@ import {
 } from './config/storefront'
 
 const domains = {
-  default: process.env.NUXT_STOREFRONT_DOMAIN_DEFAULT!,
+  default: process.env.DOMAIN_DEFAULT!,
   de: process.env.NUXT_STOREFRONT_STORES_1001_DOMAIN!,
   'de-at': process.env.NUXT_STOREFRONT_STORES_1018_DOMAIN!,
   'de-ch': process.env.NUXT_STOREFRONT_STORES_1019_DOMAIN!,
@@ -16,7 +16,7 @@ const domains = {
 
 type NitroRouteConfig = NuxtConfig['routeRules']
 
-const DOMAIN_PER_LOCALE = yn(process.env.NUXT_STOREFRONT_DOMAIN_PER_LOCALE)
+const DOMAIN_PER_LOCALE = yn(process.env.DOMAIN_PER_LOCALE)
 
 const DE_DOMAIN_FILE = 'de-DE.json'
 
@@ -271,7 +271,7 @@ export default defineNuxtConfig({
   // https://nitro.unjs.io/guide/cache#route-rules
   routeRules: (() => {
     // Allow for disabling the SSR Cache via an environment flag
-    if (process.env.DISABLE_SSR_CACHE === 'true') {
+    if (process.env.DISABLE_PAGE_CACHE === 'true') {
       return {}
     }
 

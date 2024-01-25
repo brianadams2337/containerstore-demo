@@ -40,6 +40,9 @@ This release focuses on stabilization and refactoring, to improve the technical 
 - Refactored used Tailwind classes across the Storefront Boilerplate to comply with used Tailwind version
 - Tweaked Promotion Engine implementation and UI experience across the Storefront Boilerplate
 - Tweaked Order Success Page (OSP) complexity and UI experience
+- Renamed buildtime environment variable `NUXT_STOREFRONT_DOMAIN_DEFAULT` to `DOMAIN_DEFAULT`
+- Renamed buildtime environment variable `NUXT_STOREFRONT_DOMAIN_PER_LOCALE` to `DOMAIN_PER_LOCALE`
+- Renamed buildtime environment variable `DISABLE_SSR_CACHE` to `DISABLE_PAGE_CACHE`
 
 ### 🩹 Patch Changes
 
