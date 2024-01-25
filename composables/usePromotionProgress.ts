@@ -14,7 +14,7 @@ export async function usePromotionProgress() {
     return _sum(
       basketData.value.items.map((item) => {
         const withTax = item.price.total.withTax
-        const promotionReduction = item.price.total.appliedReductions.find(
+        const promotionReduction = basketData.value.cost.appliedReductions.find(
           ({ category }) => category === 'promotion',
         )
         if (!promotionReduction) {
