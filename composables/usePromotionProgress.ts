@@ -11,18 +11,13 @@ export async function usePromotionProgress() {
   const minOrderAmount = computed(() => divideByHundred(minOrderValue.value))
 
   const basketTotal = computed(() => {
-    return _sum(
-      basketData.value.items.map((item) => {
-        const withTax = item.price.total.withTax
-        const promotionReduction = basketData.value.cost.appliedReductions.find(
-          ({ category }) => category === 'promotion',
-        )
-        if (!promotionReduction) {
-          return withTax
-        }
-        return withTax + promotionReduction?.amount.absoluteWithTax
-      }),
+    const promotionReductions = _sum(
+      basketData.value.cost.appliedReductions
+        .filter(({ category }) => category === 'promotion')
+        .map(({ amount }) => amount.absoluteWithTax),
     )
+
+    return basketData.value.cost.withTax + promotionReductions
   })
 
   const progress = computed(() => {
