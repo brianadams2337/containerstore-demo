@@ -55,7 +55,7 @@ export default defineNuxtConfig({
   telemetry: false,
 
   // https://nuxt.com/docs/api/nuxt-config#debug
-  debug: true,
+  debug: yn(process.env.ENABLE_NUXT_DEBUGGING),
 
   // Any key/value pair outside of the `public` key are private/server-side only
   // https://nuxt.com/docs/guide/going-further/runtime-config

@@ -3,7 +3,8 @@
 - [Official Cypress Documentation ](https://docs.cypress.io/guides/overview/why-cypress)
 
 ## In a nutshell
-> Cypress is a next generation front end testing tool built for the modern web.
+
+> Cypress is a next-generation frontend testing tool built for the modern web.
 > Cypress addresses the key pain points developers and QA engineers face when testing modern applications.
 >
 > Cypress makes it possible to:
@@ -70,17 +71,17 @@ it might be required to set the following configurations for the respective CI j
 
 ```yaml
 .test_e2e_cypress-base:
-  stage: "Post Deploy"
+  stage: 'Post Deploy'
   image:
     name: cypress/included:cypress-13.6.2-node-20.10.0-chrome-118.0.5993.88-1-ff-118.0.2-edge-118.0.2088.46-1
   variables:
     BROWSER: chrome
-    MOBILE: "false"
+    MOBILE: 'false'
     CYPRESS_COMMERCIAL_RECOMMENDATIONS: 0 # Disable Cypress Telemetry
     CYPRESS_CRASH_REPORTS: 0 # Disable Cypress Telemetry
     CI_NODE_TOTAL: ${CI_NODE_TOTAL} # Required for cypress test suite splitting
     CI_NODE_INDEX: ${CI_NODE_INDEX} # Required for cypress test suite splitting
-    SPLIT: "true" # Required for cypress test suite splitting
+    SPLIT: 'true' # Required for cypress test suite splitting
   parallel: 3
   script:
     - npm run cy:run --record false --browser ${BROWSER} --env split=${SPLIT},mobile=${MOBILE}

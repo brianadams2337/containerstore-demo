@@ -15,7 +15,7 @@ module.exports = {
   ignorePatterns: ['**/fixtures/**/*'],
   rules: {
     'cypress/no-unnecessary-waiting': 'off',
-        'cypress/unsafe-to-chain-command': 'off',
-        'sonarjs/no-duplicate-string': 1,
+    'cypress/unsafe-to-chain-command': 'off',
+    'sonarjs/no-duplicate-string': 1,
   },
 }

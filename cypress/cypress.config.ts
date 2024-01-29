@@ -5,7 +5,7 @@ import cypressSplit from 'cypress-split'
 /* END: Remove if relying on Cypress Dashboard */
 import * as dotenv from 'dotenv'
 
-dotenv.config({path: '../'})
+dotenv.config({ path: '../' })
 
 const USER_AGENT =
   'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'
@@ -24,10 +24,10 @@ export default defineConfig({
   modifyObstructiveCode: false,
   reporter: 'mochawesome',
   reporterOptions: {
-    reportDir: "results",
+    reportDir: 'results',
     overwrite: false,
     html: false,
-    json: true
+    json: true,
   },
   video: false,
   videosFolder: './videos',
@@ -74,7 +74,7 @@ export default defineConfig({
             ...config,
             viewportWidth: DefaultViewport.WIDTH,
             viewportHeight: DefaultViewport.HEIGHT,
-        }
+          }
     },
     // https://docs.cypress.io/guides/references/best-practices#Cypress-configuration-file
     baseUrl: BASE_URL, // Overridable in CI with CYPRESS_BASE_URL

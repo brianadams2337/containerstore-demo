@@ -39,7 +39,7 @@ class HomePage extends BasePage {
       if ($body.find('[data-test-id="promotion-banner"]').length) {
         cy.get('[data-test-id="promotion-banner"]').should('be.visible')
         cy.get('[data-test-id="close-promotion-button"]').click()
-        cy.get('[data-test-id="promotion-banner"]').should('not.be.visible')
+        cy.get('[data-test-id="promotion-list"]').should('not.be.visible')
       }
     })
   }
