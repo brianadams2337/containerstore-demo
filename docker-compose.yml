@@ -1,49 +1,39 @@
 version: '3'
 
+networks:
+  storefront-boilerplate: {}
+
 services:
   redis:
     image: redis
     ports:
       - '6379:6379'
     restart: always
+    networks:
+      - storefront-boilerplate
 
-  nginx:
+  node:
     build:
       context: ./
-      dockerfile: docker/nginx/Dockerfile
+      dockerfile: docker/node/Dockerfile
     depends_on:
-      - bun
-    env_file: .env
+      - redis
     environment:
-      - APP_HOST=bun
-      - APP_PORT=3001
+      - NITRO_HOST=node
+      - NITRO_PORT=3000
+      - NITRO_SSL_CERT=${SSL_CERT}
+      - NITRO_SSL_KEY=${SSL_KEY}
+      - NUXT_STOREFRONT_STORAGE_CACHE_HOST=redis
+      - NUXT_STOREFRONT_STORAGE_SESSION_HOST=redis
     ports:
-      - '80:80'
-      - '443:443'
+      - '3000:3000'
+    profiles:
+      - node
     restart: always
     volumes:
-      - ./docker/nginx/templates/global:/etc/nginx/templates/global
-      - ./docker/nginx/templates/server:/etc/nginx/templates/server
-
-  #  node:
-  #    build:
-  #      context: ./
-  #      dockerfile: docker/node/Dockerfile
-  #    depends_on:
-  #      - redis
-  #    environment:
-  #      - HTTPS_KEY=
-  #      - HTTPS_CERT=
-  #      - NITRO_HOST=node
-  #      - NITRO_PORT=3000
-  #      - NUXT_STOREFRONT_REDIS_HOST=redis
-  #      - NUXT_STOREFRONT_REDIS_PORT=6379
-  #      - NUXT_STOREFRONT_REDIS_PREFIX=redis://
-  #    ports:
-  #      - '3000:3000'
-  #    restart: always
-  #    volumes:
-  #      - ./.env:/app/.env
+      - ./.env:/app/.env
+    networks:
+      - storefront-boilerplate
 
   bun:
     build:
@@ -52,15 +42,18 @@ services:
     depends_on:
       - redis
     environment:
-      - HTTPS_KEY=
-      - HTTPS_CERT=
       - NITRO_HOST=bun
-      - NITRO_PORT=3001
-      - NUXT_STOREFRONT_REDIS_HOST=redis
-      - NUXT_STOREFRONT_REDIS_PORT=6379
-      - NUXT_STOREFRONT_REDIS_PREFIX=redis://
+      - NITRO_PORT=3000
+      - NITRO_SSL_CERT=${SSL_CERT}
+      - NITRO_SSL_KEY=${SSL_KEY}
+      - NUXT_STOREFRONT_STORAGE_CACHE_HOST=redis
+      - NUXT_STOREFRONT_STORAGE_SESSION_HOST=redis
     ports:
-      - '3001:3001'
+      - '3000:3000'
     restart: always
+    profiles:
+      - bun
     volumes:
       - ./.env:/app/.env
+    networks:
+      - storefront-boilerplate

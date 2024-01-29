@@ -64,7 +64,7 @@ For more in-depth explanations and How-to guides, please consult the [SCAYLE Res
      yarn install
    ```
 
-4. Create a local HTTPS certificate, as feature like Checkout will require a working HTTPS connection
+4. Create a local HTTPS certificate, as features like Checkout will require a working HTTPS connection
 
    _Check [How to turn on local HTTPS](#how-to-turn-on-local-https) for detailed instructions._
 
@@ -79,12 +79,26 @@ For more in-depth explanations and How-to guides, please consult the [SCAYLE Res
 
 3. Open the Storefront Boilerplate running under <http://localhost:3000/>
 
+#### Docker Compose
+
+Suppose you don't need to develop and make changes to the application; we provide a simple docker-compose setup to run the application without installing the dependencies locally on your machine.
+
+```sh
+# Without SSL setup
+docker compose --profile node up --build
+
+# With SSL setup
+SSL_CERT=$(cat ./localhost.crt) SSL_KEY=$(cat ./localhost.pem) docker compose --profile node up --build
+```
+
+Depending on your SSL setup open either <http://localhost:3000> or <https://localhost:3000>
+
 ## Local HTTPS
 
 ### How to turn on local HTTPS
 
-To generate a certificate and key we recommend using the [mkcert](https://github.com/FiloSottile/mkcert) tool.  
-Follow the [mkcert installation instructions (Github)](https://github.com/FiloSottile/mkcert/blob/master/README.md#installation) and afterwards run:
+To generate a certificate and key, we recommend using the [mkcert](https://github.com/FiloSottile/mkcert) tool.  
+Follow the [mkcert installation instructions (Github)](https://github.com/FiloSottile/mkcert/blob/master/README.md#installation) and afterward run:
 
 ```sh
 mkcert --key-file localhost.pem --cert-file localhost.crt localhost
