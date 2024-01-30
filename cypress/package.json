@@ -18,7 +18,7 @@
     "cypress-on-fix": "1.0.2",
     "cypress-real-events": "1.11.0",
     "cypress-split": "1.18.2",
-    "dotenv": "16.3.1",
+    "dotenv": "16.4.1",
     "eslint": "8.56.0",
     "eslint-plugin-cypress": "2.15.1",
     "mocha": "10.2.0",
