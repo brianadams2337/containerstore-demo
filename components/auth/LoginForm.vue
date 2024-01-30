@@ -55,7 +55,7 @@
         {{ $t('global.sign_in') }}
       </AppButton>
     </form>
-    <IDPForm v-if="externalIDPRedirects" :redirects="externalIDPRedirects" />
+    <IDPForm v-if="!!externalIDPRedirects" :redirects="externalIDPRedirects" />
   </div>
 </template>
 

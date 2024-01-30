@@ -3,7 +3,16 @@
     "target": "es5",
     "lib": ["es5", "dom"],
     "types": ["cypress", "cypress-real-events", "node"],
-    "resolveJsonModule": true
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "baseUrl": "."
   },
-  "include": ["**/*.ts"]
+  "ts-node": {
+    // https://github.com/TypeStrong/ts-node/issues/1997
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  },
+  "include": ["**/*.ts", "support/*.ts"],
+  "exclude": ["node_modules"]
 }

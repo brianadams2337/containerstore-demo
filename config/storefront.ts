@@ -101,6 +101,9 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
     clientId: '', // Override: NUXT_STOREFRONT_OAUTH_CLIENT_ID
     clientSecret: '', // Override: NUXT_STOREFRONT_OAUTH_CLIENT_SECRET
   },
+
+  /** Storefront Core - Identity Provider support for Token-based (OAuth) Authentication
+   * https://scayle.dev/en/dev/storefront-core/authentication#support-for-identity-provider */
   idp: {
     enabled: false,
     idpKeys: [],
@@ -128,11 +131,14 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
        * Example if `[shop.locale]` is used -> Overrideable environment variable: NUXT_STOREFRONT_STORES_EN_US_CHECKOUT_USER.
        * Example if `[shop.shopId]` is used -> Overrideable environment variable: NUXT_STOREFRONT_STORES_1001_CHECKOUT_USER. */
       [shop.shopId]: {
+        /** Storefront Core - Identity Provider support for Token-based (OAuth) Authentication
+         * https://scayle.dev/en/dev/storefront-core/authentication#support-for-identity-provider */
         idp: {
           enabled: false,
           idpKeys: [],
           idpRedirectURL: '',
         },
+
         /** Storefront Core - Numeric SCAYLE ShopId (usually 5 digits) */
         shopId: shop.shopId, // Override: NUXT_STOREFRONT_STORES_{UNIQUE_IDENTIFIER}_SHOP_ID
 
