@@ -82,7 +82,7 @@ const addItemToCart = async (
   {
     promotionId,
     isBuyXGetYPrioritized,
-  }: { promotionId?: string; isBuyXGetYPrioritized?: boolean },
+  }: { promotionId?: string; isBuyXGetYPrioritized?: boolean } = {},
 ) => {
   const entry = wishlist.data.value?.items.find((el) => el.key === itemKey)
 
