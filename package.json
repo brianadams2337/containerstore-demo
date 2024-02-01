@@ -42,7 +42,7 @@
     "@scayle/eslint-config-storefront": "3.2.6",
     "@scayle/prettier-config-storefront": "2.0.2",
     "@types/color": "3.0.6",
-    "@types/node": "20.11.14",
+    "@types/node": "20.11.15",
     "@upstash/redis": "1.28.2",
     "@vitest/coverage-v8": "1.2.2",
     "@zadigetvoltaire/nuxt-gtm": "0.0.13",
