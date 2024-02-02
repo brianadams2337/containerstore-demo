@@ -2,7 +2,7 @@ import { joinURL } from 'ufo'
 
 export default () => {}
 
-export function getImage(src: any, { modifiers, baseURL }: any = {}) {
+export function getImage(src: any, { modifiers }: any = {}) {
   const keyMap = {
     width: 'width',
     height: 'height',
@@ -10,6 +10,8 @@ export function getImage(src: any, { modifiers, baseURL }: any = {}) {
     background: 'bg',
     // format: 'format',
   }
+
+  const baseURL = useRuntimeConfig().public.cdnUrl
 
   if (modifiers.width && !modifiers.height) {
     modifiers.height = Math.ceil((modifiers.width * 4) / 3)

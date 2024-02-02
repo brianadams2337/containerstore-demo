@@ -6,6 +6,12 @@ import {
   storefrontBuildtimeConfig,
 } from './config/storefront'
 
+declare module '@nuxt/schema' {
+  interface PublicRuntimeConfig {
+    cdnUrl: string
+  }
+}
+
 const domains = {
   default: process.env.DOMAIN_DEFAULT!,
   de: process.env.NUXT_STOREFRONT_STORES_1001_DOMAIN!,
@@ -73,6 +79,9 @@ export default defineNuxtConfig({
       /** Nuxt - Base URL
        * https://nuxt.com/docs/api/nuxt-config#baseurl */
       baseUrl: process.env.BASE_URL, // Override: NUXT_PUBLIC_BASE_URL
+
+      // Override: NUXT_PUBLIC_CDN_URL
+      cdnUrl: '',
 
       /** Storefront Boilerplate - Tracking Event Order
        * Used in: templates/nuxt/plugins/01.tracking.ts */
@@ -196,11 +205,6 @@ export default defineNuxtConfig({
       default: {
         name: 'default',
         provider: '~/providers/default',
-        options: {
-          baseURL:
-            process.env.NUXT_PUBLIC_IMAGE_BASE_URL ??
-            'https://brb-demo.cdn.aboutyou.cloud/',
-        },
       },
     },
     intersectOptions: { rootMargin: '50px' },
