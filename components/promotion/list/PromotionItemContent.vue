@@ -11,7 +11,16 @@
       class="mb-2"
     />
     <PromotionCountdown :until="schedule.to" />
-    <IconInfoOutline class="absolute right-3.5 top-3 size-5" />
+    <AppButton
+      type="raw"
+      no-padding
+      size="sm"
+      class="absolute right-3.5 top-3 cursor-auto"
+    >
+      <template #icon="{ _class }">
+        <IconInfoOutline :class="_class" aria-label="promotion-information" />
+      </template>
+    </AppButton>
     <div
       v-if="isPriorityBadgeShown"
       class="absolute bottom-3 right-4 rounded-md border px-2 py-1 text-2xs font-semibold uppercase"
