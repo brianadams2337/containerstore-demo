@@ -13,7 +13,6 @@
       v-if="headlineParts"
       :headline-parts="headlineParts"
       is-all-uppercased
-      show-info-icon
       class="flex-1 justify-center"
     />
     <div class="flex h-full flex-1 justify-end">
