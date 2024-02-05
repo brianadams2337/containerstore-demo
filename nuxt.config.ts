@@ -78,7 +78,6 @@ export default defineNuxtConfig({
       domains,
       cms: {
         accessToken: process.env.NUXT_PUBLIC_CMS_ACCESS_TOKEN,
-        space: process.env.NUXT_PUBLIC_CMS_SPACE,
       },
       /** Nuxt - Base URL
        * https://nuxt.com/docs/api/nuxt-config#baseurl */

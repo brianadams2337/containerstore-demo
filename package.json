@@ -82,7 +82,7 @@
     "@vueuse/core": "10.7.2",
     "@vueuse/nuxt": "10.7.2",
     "check-password-strength": "2.0.7",
-    "citty": "^0.1.5",
+    "citty": "0.1.5",
     "color": "4.2.3",
     "dotenv": "16.4.1",
     "global": "4.4.0",
