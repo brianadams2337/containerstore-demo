@@ -33,6 +33,9 @@
 <script setup lang="ts">
 const props = defineProps<{ promotions: Promotion[] }>()
 
+const route = useRoute()
+const localePath = useLocalePath()
+
 usePromotionChange(props.promotions)
 
 const {
@@ -46,5 +49,10 @@ const {
 const { togglePromotionList, isPromotionListShown, setBannerRef } =
   usePromotionActions()
 
-onNuxtReady(() => props.promotions.length > 1 && togglePromotionList())
+onNuxtReady(() => {
+  const isOrderSuccessPage = route.path === localePath(routeList.osp.path)
+  if (!isOrderSuccessPage && props.promotions.length > 1) {
+    togglePromotionList()
+  }
+})
 </script>
