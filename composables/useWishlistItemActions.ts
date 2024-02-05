@@ -54,11 +54,11 @@ export async function useWishlistItemActions(
 
     if (
       !item.value.variant &&
-      product?.variants?.length === 1 &&
-      getAttributeValue(product?.variants[0]?.attributes, 'size') ===
+      product.variants?.length === 1 &&
+      getAttributeValue(product.variants[0]?.attributes, 'size') ===
         ONE_SIZE_KEY
     ) {
-      item.value.variant = product?.variants[0]
+      item.value.variant = product.variants[0]
     }
 
     if (!item.value.variant?.id) {
@@ -69,24 +69,23 @@ export async function useWishlistItemActions(
     await basket.addItem({
       variantId: item.value.variant.id,
       quantity: 1,
+      ...(!promotionId.value && { promotionId: null }),
       ...(promotionId.value &&
         !isBuyXGetYPrioritized.value && { promotionId: promotionId.value }),
     })
 
     openBasketFlyout()
 
-    if (!item.value.variant && product && product.variants?.length) {
+    if (!item.value.variant && product.variants?.length) {
       item.value.variant = product.variants[0]
     }
 
-    if (product) {
-      trackAddToBasket({
-        product,
-        variant: item.value.variant,
-        index,
-        list: wishlistListingMetadata,
-      })
-    }
+    trackAddToBasket({
+      product,
+      variant: item.value.variant,
+      index,
+      list: wishlistListingMetadata,
+    })
   }
 
   const { toggle: toggleFilter } = useSlideIn(`wishlistcard_${product.id}`)
@@ -113,6 +112,7 @@ export async function useWishlistItemActions(
     await basket.addItem({
       variantId: newVariant!.id,
       quantity: 1,
+      ...(!promotionId.value && { promotionId: null }),
       ...(promotionId.value &&
         !isBuyXGetYPrioritized.value && { promotionId: promotionId.value }),
     })

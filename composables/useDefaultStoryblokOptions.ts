@@ -2,7 +2,10 @@ import type { ISbStoriesParams } from 'storyblok-js-client'
 
 const DRAFT_ALLOWED_ENVS = ['staging', 'integration', 'development']
 
-export function useDefaultStoryblokOptions(): Partial<ISbStoriesParams> {
+export function useDefaultStoryblokOptions(): Pick<
+  ISbStoriesParams,
+  'language' | 'version'
+> {
   const route = useRoute()
   const config = useRuntimeConfig()
   const currentShop = useCurrentShop()
@@ -13,6 +16,6 @@ export function useDefaultStoryblokOptions(): Partial<ISbStoriesParams> {
       env && DRAFT_ALLOWED_ENVS.includes(env) && route.query._storyblok
         ? 'draft'
         : 'published',
-    language: currentShop.value.locale,
+    language: currentShop.value.locale ?? '',
   }
 }

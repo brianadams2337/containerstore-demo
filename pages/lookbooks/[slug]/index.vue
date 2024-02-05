@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import type { SbListingPage } from '~/storyblok/types/storyblok.gen'
+import type { SbListingPage } from '~/modules/cms/providers/storyblok/types/storyblok.gen'
 
 const route = useRoute()
 const lookbookCategoryCategoryPath = computed(
@@ -89,16 +89,23 @@ const {
 
 await fetchProducts({ path: lookbookCategoryCategoryPath.value })
 
-const {
-  fetchBySlug,
-  data: cmsData,
-  status,
-} = useCms<SbListingPage>(`lookbooks-plp-${lookbookCategoryCategoryPath.value}`)
+const { fetchBySlug } = useCMS<SbListingPage>(
+  `lookbooks-plp-${lookbookCategoryCategoryPath.value}`,
+)
+const cmsData = ref()
+const status = ref()
 if (status.value === 'idle') {
-  await fetchLazy(fetchBySlug(cmsPath.value))
+  const {
+    data,
+    status: _status,
+    execute: _fetchBySlug,
+  } = await fetchBySlug(cmsPath.value)
+  cmsData.value = data.value
+  status.value = _status.value
+  await fetchLazy(_fetchBySlug())
 }
 const { content, hasTeaserImage, preListingContent, postListingContent } =
-  useCmsListingContent(cmsData)
+  useCMSListingContent(cmsData)
 
 const listingMetaData = {
   name: 'Lookbooks',

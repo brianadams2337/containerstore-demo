@@ -6,7 +6,6 @@
     <span class="text-xs" :class="conditionTextClass">
       {{ headline.conditionText }}
     </span>
-    <IconInfoOutline v-if="showInfoIcon" class="ml-1 size-5" />
   </h1>
 </template>
 
@@ -16,14 +15,12 @@ import { PromotionHeadlineSize } from '#imports'
 type Props = {
   headlineParts: string[]
   size?: PromotionHeadlineSize
-  showInfoIcon?: boolean
   isColumn?: boolean
   isAllUppercased?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   size: PromotionHeadlineSize.BASE,
-  showInfoIcon: false,
   isColumn: false,
   isAllUppercased: false,
 })

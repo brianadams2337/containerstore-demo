@@ -13,7 +13,6 @@
         v-else-if="headlineParts"
         :headline-parts="headlineParts"
         size="xs"
-        show-info-icon
         class="mr-4 flex-1"
       />
       <PromotionCountdown v-if="expirationDate" :until="expirationDate" />

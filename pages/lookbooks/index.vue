@@ -41,16 +41,26 @@
 
 <script setup lang="ts">
 import { slugify } from '@scayle/storefront-nuxt'
-import type { SbListingPage } from '~/storyblok/types/storyblok.gen'
+import type { SbListingPage } from '~/modules/cms/providers/storyblok/types/storyblok.gen'
 
-const {
-  fetchByFolder,
-  data: lookbooksData,
-  fetching,
-  status,
-} = useCms<SbListingPage>('lookbooks')
+const { fetchByFolder } = useCMS<SbListingPage>('lookbooks')
+const lookbooksData = ref()
+const fetching = ref()
+const status = ref()
+
 if (status.value === 'idle') {
-  await fetchLazy(fetchByFolder('lookbooks', { per_page: 5 }))
+  const {
+    data,
+    pending,
+    status: _status,
+    execute: _fetchByFolder,
+  } = await fetchByFolder('lookbooks', {
+    per_page: 5,
+  })
+  lookbooksData.value = data.value
+  fetching.value = pending.value
+  status.value = _status.value
+  await fetchLazy(_fetchByFolder())
 }
 const prepareForUrl = (path: string) => slugify(path)
 

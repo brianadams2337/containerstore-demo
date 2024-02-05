@@ -13,7 +13,6 @@
       v-if="headlineParts"
       :headline-parts="headlineParts"
       is-all-uppercased
-      show-info-icon
       class="flex-1 justify-center"
     />
     <div class="flex h-full flex-1 justify-end">
@@ -34,6 +33,9 @@
 <script setup lang="ts">
 const props = defineProps<{ promotions: Promotion[] }>()
 
+const route = useRoute()
+const localePath = useLocalePath()
+
 usePromotionChange(props.promotions)
 
 const {
@@ -47,5 +49,10 @@ const {
 const { togglePromotionList, isPromotionListShown, setBannerRef } =
   usePromotionActions()
 
-onNuxtReady(() => props.promotions.length > 1 && togglePromotionList())
+onNuxtReady(() => {
+  const isOrderSuccessPage = route.path === localePath(routeList.osp.path)
+  if (!isOrderSuccessPage && props.promotions.length > 1) {
+    togglePromotionList()
+  }
+})
 </script>

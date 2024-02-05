@@ -82,7 +82,10 @@
 
 <script setup lang="ts">
 import type { Product } from '@scayle/storefront-nuxt'
-import type { SbCmsImage, SbListingPage } from '../storyblok/types/storyblok'
+import type {
+  SbCmsImage,
+  SbListingPage,
+} from '~/modules/cms/providers/storyblok/types/storyblok'
 
 const route = useRoute()
 const { pageState, setPageState } = usePageState()
@@ -137,17 +140,24 @@ const trackViewListing = ({ items }: { row: number; items: Product[] }) => {
   })
 }
 
-// CMS
-const {
-  fetchBySlug,
-  data: cmsData,
-  status: cmsStatus,
-} = useCms<SbListingPage>(`ListingPage-${route.path}`)
+const { fetchBySlug } = useCMS<SbListingPage>(`ListingPage-${route.path}`)
+
+const cmsStatus = ref('')
+const cmsData = ref()
 
 const fetchData = async () => {
   await fetchProducts(fetchParameters.value)
   if (selectedCategory.value?.id) {
-    await fetchBySlug(`categories/${selectedCategory.value?.id}`)
+    const {
+      status,
+      execute: _fetchBySlug,
+      data,
+    } = await fetchBySlug(`categories/${selectedCategory.value?.id}`)
+
+    await _fetchBySlug()
+
+    cmsStatus.value = status.value
+    cmsData.value = data.value
   }
 }
 
@@ -186,7 +196,7 @@ const trackProductClick = (product: Product) => {
 }
 
 const { content, hasTeaserImage, postListingContent, preListingContent } =
-  useCmsListingContent(cmsData)
+  useCMSListingContent(cmsData)
 
 const cmsContent = content as unknown as SbCmsImage
 
