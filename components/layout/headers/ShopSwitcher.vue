@@ -95,6 +95,9 @@ const getShopName = (locale: string) => {
 }
 
 const changeShop = (value?: string) => {
+  if (!value) {
+    throw new Error('Shop has no path configured')
+  }
   trackShopChange()
   window.location.replace(switchLocalePath(value))
 }

@@ -1,8 +1,8 @@
 export default defineNuxtRouteMiddleware(async (to) => {
   const { isLoggedIn, user } = await useUser()
+  const getLocalePath = useLocalePath()
 
   const localePath = (routePath: LinkList[keyof LinkList]['path']) => {
-    const getLocalePath = useLocalePath({ route: routePath })
     return getLocalePath(routePath) || routePath
   }
 
