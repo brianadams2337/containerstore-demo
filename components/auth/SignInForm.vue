@@ -3,7 +3,7 @@
     <div v-if="!isLoggedIn && !isFetching">
       <WelcomeBackLoginForm v-if="lastLoggedInUser.email" class="mt-10 px-2" />
 
-      <VerticalAccordion v-else class="mt-10 px-2" :tabs="tabs">
+      <VerticalAccordion v-else class="mt-10 px-2" :initial-index :tabs="tabs">
         <template #0>
           <LoginForm />
         </template>
@@ -54,6 +54,10 @@ const tabs = computed(() => [
 
 const isForgotPasswordShown = computed(() => {
   return !!route.query['forgot-password'] && !route.query.hash
+})
+
+const initialIndex = computed(() => {
+  return route.query.register ? 1 : 0
 })
 
 const isUpdatePasswordByHashShown = computed(() => !!route.query.hash)

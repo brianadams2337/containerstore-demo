@@ -16,7 +16,7 @@
       </span>
       <AppButton
         type="ghost"
-        :to="routeList.signin"
+        :to="{ ...routeList.signin, query: { ['register']: 'true' } }"
         class="text-xs font-semibold leading-5 !tracking-wide"
       >
         {{ $t('global.register') }}
