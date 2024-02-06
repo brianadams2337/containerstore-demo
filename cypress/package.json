@@ -17,7 +17,7 @@
     "cypress": "13.6.4",
     "cypress-on-fix": "1.0.2",
     "cypress-real-events": "1.11.0",
-    "cypress-split": "1.19.0",
+    "cypress-split": "1.19.1",
     "dotenv": "16.4.1",
     "eslint": "8.56.0",
     "eslint-plugin-cypress": "2.15.1",
