@@ -3,7 +3,12 @@
     <div v-if="!isLoggedIn && !isFetching">
       <WelcomeBackLoginForm v-if="lastLoggedInUser.email" class="mt-10 px-2" />
 
-      <VerticalAccordion v-else class="mt-10 px-2" :initial-index :tabs="tabs">
+      <VerticalAccordion
+        v-else
+        class="mt-10 px-2"
+        :initial-index="initialIndex"
+        :tabs="tabs"
+      >
         <template #0>
           <LoginForm />
         </template>
