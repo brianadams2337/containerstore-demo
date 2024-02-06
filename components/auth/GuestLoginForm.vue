@@ -25,7 +25,7 @@
         :has-errors="!isValid"
         required
         :readonly="isSubmitting"
-        @change="v.email.$touch()"
+        @change="v.first_name.$touch()"
       />
     </ValidatedInputGroup>
 
@@ -37,7 +37,7 @@
         :has-errors="!isValid"
         required
         :readonly="isSubmitting"
-        @change="v.email.$touch()"
+        @change="v.last_name.$touch()"
       />
     </ValidatedInputGroup>
 

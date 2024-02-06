@@ -25,7 +25,7 @@
           required
           :readonly="isSubmitting"
           data-test-id="login-password"
-          @change="v.email.$touch()"
+          @change="v.password.$touch()"
         />
       </ValidatedInputGroup>
 

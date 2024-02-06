@@ -1,5 +1,9 @@
 <template>
-  <select class="w-full" :value="value" @input="triggerInputEvent($event)">
+  <select
+    class="w-full rounded border-2 border-transparent bg-secondary-450 p-3 text-sm font-medium placeholder:text-secondary focus:outline-none focus:ring-0"
+    :value="value"
+    @input="triggerInputEvent($event)"
+  >
     <option
       v-for="(gender, index) in genders"
       :key="index"
