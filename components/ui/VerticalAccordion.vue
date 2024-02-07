@@ -23,10 +23,13 @@
 <script setup lang="ts">
 type Props = {
   tabs: Array<string>
+  initialIndex?: number
+}
+  tabs: Array<string>
   initialIndex: number
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), { initialIndex: 0 })
   tabs: () => [],
   initialIndex: 0,
 })
