@@ -25,14 +25,8 @@ type Props = {
   tabs: Array<string>
   initialIndex?: number
 }
-  tabs: Array<string>
-  initialIndex: number
-}
 
 const props = withDefaults(defineProps<Props>(), { initialIndex: 0 })
-  tabs: () => [],
-  initialIndex: 0,
-})
 
 const activeIndex = ref(props.initialIndex)
 
