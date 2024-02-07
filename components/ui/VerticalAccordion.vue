@@ -21,15 +21,14 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  tabs: {
-    type: Array<string>,
-    default: () => [],
-  },
-  initialIndex: {
-    type: Number,
-    default: 0,
-  },
+type Props = {
+  tabs: Array<string>
+  initialIndex: number
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  tabs: () => [],
+  initialIndex: 0,
 })
 
 const activeIndex = ref(props.initialIndex)
