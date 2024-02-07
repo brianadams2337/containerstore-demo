@@ -21,4 +21,8 @@ WORKDIR /app
 
 COPY --from=build /app/.output /app/.output
 
-CMD ["node", "--env-file=.env", "./.output/server/index.mjs"]
+RUN apk add --no-cache jq bash
+COPY ./docker/node/entrypoint.sh /
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["node", "./.output/server/index.mjs"]
