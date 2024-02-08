@@ -1,27 +1,44 @@
 export const useCustomerDataChangeWatcher = async () => {
-  const { isLoggedIn, customerType, user } = await useUser()
+  const { isLoggedIn, forceRefresh, customerType, user } = await useUser()
 
   const { trackCustomerData } = useTrackingEvents()
-  // set initially to -1, to ensure that the event get triggered on shop init
-  const currentUserId = useState<number | undefined>(
-    'current-user-id',
-    () => -1,
-  )
+
+  const currentUserId = useState<number | undefined>('current-user-id')
 
   watch(
     () => user.value,
-    () => {
-      if (currentUserId.value === user.value?.id) {
+    (userData) => {
+      if (!userData) {
+        currentUserId.value = undefined
+      }
+
+      if (currentUserId.value === userData?.id) {
         return
       }
 
-      currentUserId.value = user.value?.id
+      currentUserId.value = userData?.id
 
       trackCustomerData({
         isLoggedIn: isLoggedIn.value,
         customerType: customerType.value,
-        user: user.value,
+        user: userData,
       })
     },
   )
+
+  tryOnMounted(async () => {
+    if (!isLoggedIn.value) {
+      await forceRefresh()
+    }
+
+    if (currentUserId.value) {
+      return
+    }
+
+    trackCustomerData({
+      isLoggedIn: isLoggedIn.value,
+      customerType: customerType.value,
+      user: user.value,
+    })
+  })
 }
