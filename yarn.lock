@@ -1385,10 +1385,10 @@
     vite-plugin-checker "^0.6.2"
     vue-bundle-renderer "^2.0.0"
 
-"@nuxtjs/i18n@8.0.2":
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/i18n/-/i18n-8.0.2.tgz#dab84669ec2bb0b83f658fc9b3ac8895a5be252b"
-  integrity sha512-cIZc6PvSjSJ15FTol6XT8AV9jwF8OKu5pmPje/wsQeG41phQAqEGcLwv+3hrhZgBZhQ3k9w/asWl/uTWGqTgFw==
+"@nuxtjs/i18n@8.1.0":
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/i18n/-/i18n-8.1.0.tgz#f2ae0aa898d482528ce72d4388dd31e778277d47"
+  integrity sha512-4J3rvqb8TAAwMWgQxU4qzu+61bJBm/4531ISN1dDG498zT4ozpwHC72noAd9h2iV6BpRA4wFASiqFMSMnFBBZQ==
   dependencies:
     "@intlify/h3" "^0.5.0"
     "@intlify/shared" "^9.9.0"
