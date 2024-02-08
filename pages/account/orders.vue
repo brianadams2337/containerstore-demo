@@ -6,7 +6,7 @@
         : $t('my_account.orders.overview')
     "
   >
-    <div v-show="$route.params.id" class="w-full lg:w-3/4">
+    <div v-show="$route.params.id">
       <NuxtPage />
     </div>
   </AccountWrapper>
