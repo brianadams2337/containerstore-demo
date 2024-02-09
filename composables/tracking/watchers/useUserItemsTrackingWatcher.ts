@@ -13,10 +13,7 @@ export const useUserItemsTrackingWatcher = async () => {
     () => basket.value,
     (newValues, oldValues) => {
       const isBasketPage = route.fullPath.includes('/basket')
-      if (
-        didWishlistOrBasketDataChange(oldValues, newValues) &&
-        !isBasketPage
-      ) {
+      if (didBasketDataChange(oldValues, newValues) && !isBasketPage) {
         trackBasket(
           collectBasketItems(basket.value?.items, {
             listId: BasketListingMetadata.ID,
@@ -30,7 +27,7 @@ export const useUserItemsTrackingWatcher = async () => {
   watch(
     () => wishlist.value,
     (newValues, oldValues) => {
-      if (didWishlistOrBasketDataChange(oldValues, newValues)) {
+      if (didWishlistDataChange(oldValues, newValues)) {
         trackWishlist(
           collectProductListItems(wishlistProducts.value, {
             listId: WishlistListingMetadata.ID,
