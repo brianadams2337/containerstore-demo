@@ -1804,10 +1804,10 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.55.0":
-  version "7.55.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.55.0.tgz#04d703834549b558699ee60b78e42446e523019a"
-  integrity sha512-u8wMHSoqcrcKGoS6jY2R/nd9jJP1tgtzt/neLoBZ5xfe9O/iJ/YfMgUFzwz3xexq5hm8LQWIVf5Uurq48hFT7A==
+"@scayle/storefront-nuxt@7.55.1":
+  version "7.55.1"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.55.1.tgz#ccb09809c9073ba084a9bda543c8df3dd1a52dc1"
+  integrity sha512-4EKn3d7u7c2EqMMyOHMyu/hQlfpBZd2WpmY7GUnlNPlA9GWzl8VxivCe/c2hmlsm2kf7c14wW/10L4/t/5e9kg==
   dependencies:
     "@nuxt/kit" "3.9.3"
     "@scayle/h3-session" "0.3.5"
