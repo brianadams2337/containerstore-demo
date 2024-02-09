@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@aashutoshrathi/word-wrap/-/word-wrap-1.2.6.tgz#bd9154aec9983f77b3a034ecaa015c2e4201f6cf"
   integrity sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==
 
-"@aboutyou/backbone@16.1.0":
-  version "16.1.0"
-  resolved "https://registry.yarnpkg.com/@aboutyou/backbone/-/backbone-16.1.0.tgz#e6893764d0090d9eda9b8f45e2fabd8e2d2b36e0"
-  integrity sha512-ExS4eVc4q+qtXc3kZKaX6j8CTzUIGvkdw0R1qC5EkdWfj3Uig+mFXV+TYA0pt3kVOzGrlhxuX33TPRhSSHFCkw==
+"@aboutyou/backbone@16.1.1":
+  version "16.1.1"
+  resolved "https://registry.yarnpkg.com/@aboutyou/backbone/-/backbone-16.1.1.tgz#15c19d2178e825222bcd43ce826b394b41da9132"
+  integrity sha512-pJhMnj58/gkrMitMK+UFFFkIaYvON21RWMaJ036p3BQdIYEUXRDHpxrGb62oF4W++9p1rjF4UcZNRfoAR2uVcQ==
   dependencies:
     query-string "^6.2.0"
 
@@ -1788,30 +1788,30 @@
   dependencies:
     prettier-config-standard "^7.0.0"
 
-"@scayle/storefront-core@7.39.0":
-  version "7.39.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.39.0.tgz#7f7e28f42c03ac252932fe91dc248ed85d75349d"
-  integrity sha512-CqMJy/QqtjkIXHbGqw9YqtDDiw2qcM9vGOEes9fHnGSP4p/BAGGSuyLVIgxxsDXjFsLDcHBUXIIxSYc3OPZBaA==
+"@scayle/storefront-core@7.39.1":
+  version "7.39.1"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.39.1.tgz#3a9ac84705cd5d35ff289c7eff34b51a5b5292e3"
+  integrity sha512-j3bt7tLt43hrCYcpp0zp49wu1gqASS9yUOf5LqGET34zzLth0OWKLLIYQuyMTYulKwCSuY+tBTzIix7ntfwC8A==
   dependencies:
-    "@aboutyou/backbone" "16.1.0"
+    "@aboutyou/backbone" "16.1.1"
     crypto-js "4.2.0"
-    jose "5.2.0"
+    jose "5.2.1"
     radash "11.0.0"
     slugify "1.6.6"
-    ufo "1.3.2"
+    ufo "1.4.0"
     uncrypto "0.1.3"
     utility-types "3.11.0"
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.55.1":
-  version "7.55.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.55.1.tgz#ccb09809c9073ba084a9bda543c8df3dd1a52dc1"
-  integrity sha512-4EKn3d7u7c2EqMMyOHMyu/hQlfpBZd2WpmY7GUnlNPlA9GWzl8VxivCe/c2hmlsm2kf7c14wW/10L4/t/5e9kg==
+"@scayle/storefront-nuxt@7.55.2":
+  version "7.55.2"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.55.2.tgz#299370ce380ca276b207477b00a2989f731550dd"
+  integrity sha512-ttNCvtPhamaYdwAxsDX+Nc0CXKwhfrYmb+4GzZKWb6qyGXhW0VA9rFMbkVMwe+LcszAy/QT325m8lTnVndaKmg==
   dependencies:
     "@nuxt/kit" "3.9.3"
     "@scayle/h3-session" "0.3.5"
-    "@scayle/storefront-core" "7.39.0"
+    "@scayle/storefront-core" "7.39.1"
     "@scayle/unstorage-compression-driver" "0.1.1"
     "@vueuse/core" "10.7.2"
     consola "3.2.3"
@@ -5951,7 +5951,12 @@ jiti@^1.19.1, jiti@^1.21.0:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.21.0.tgz#7c97f8fe045724e136a397f7340475244156105d"
   integrity sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==
 
-jose@5.2.0, jose@^5.2.0:
+jose@5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/jose/-/jose-5.2.1.tgz#ec3befe173896e592e2d9ef5f267d061ffb203c5"
+  integrity sha512-qiaQhtQRw6YrOaOj0v59h3R6hUY9NvxBmmnMfKemkqYmBB0tEc97NbLP7ix44VP5p9/0YHG8Vyhzuo5YBNwviA==
+
+jose@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/jose/-/jose-5.2.0.tgz#d0ffd7f7e31253f633eefb190a930cd14a916995"
   integrity sha512-oW3PCnvyrcm1HMvGTzqjxxfnEs9EoFOFWi2HsEGhlFVOXxTE3K9GKWVMFoFw06yPUqwpvEWic1BmtUZBI/tIjw==
@@ -9592,15 +9597,15 @@ typical@^5.2.0:
   resolved "https://registry.yarnpkg.com/typical/-/typical-5.2.0.tgz#4daaac4f2b5315460804f0acf6cb69c52bb93066"
   integrity sha512-dvdQgNDNJo+8B2uBQoqdb11eUCE1JQXhvjC/CZtgvZseVd5TYMXnq0+vuUemXbd/Se29cTaUuPX3YIc2xgbvIg==
 
-ufo@1.3.2, ufo@^1.1.2, ufo@^1.2.0, ufo@^1.3.0, ufo@^1.3.1, ufo@^1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/ufo/-/ufo-1.3.2.tgz#c7d719d0628a1c80c006d2240e0d169f6e3c0496"
-  integrity sha512-o+ORpgGwaYQXgqGDwd+hkS4PuZ3QnmqMMxRuajK/a38L6fTpcE5GPIfrf+L/KemFzfUpeUQc1rRS1iDBozvnFA==
-
 ufo@1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/ufo/-/ufo-1.4.0.tgz#39845b31be81b4f319ab1d99fd20c56cac528d32"
   integrity sha512-Hhy+BhRBleFjpJ2vchUNN40qgkh0366FWJGqVLYBHev0vpHTrXSA0ryT+74UiW6KWsldNurQMKGqCm1M2zBciQ==
+
+ufo@^1.1.2, ufo@^1.2.0, ufo@^1.3.0, ufo@^1.3.1, ufo@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/ufo/-/ufo-1.3.2.tgz#c7d719d0628a1c80c006d2240e0d169f6e3c0496"
+  integrity sha512-o+ORpgGwaYQXgqGDwd+hkS4PuZ3QnmqMMxRuajK/a38L6fTpcE5GPIfrf+L/KemFzfUpeUQc1rRS1iDBozvnFA==
 
 ultrahtml@^1.5.2:
   version "1.5.2"
