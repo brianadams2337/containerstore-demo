@@ -1,16 +1,5 @@
 <template>
-  <HorizontalItemsSlider
-    :hide-overflow="isLookbookProducts"
-    spaced-items
-    spaced-width="sm"
-  >
-    <button
-      v-if="isLookbookProducts && activeIndex !== 0"
-      class="absolute left-0 top-60 z-10 hidden text-gray-700 focus:outline-none sm:inline-block"
-      @click="prev"
-    >
-      <IconArrowLeft class="size-5" />
-    </button>
+  <HorizontalItemsSlider spaced-items spaced-width="sm">
     <div ref="carousel" class="flex space-x-2" :style="carouselStyles">
       <ProductCard
         v-for="(recommendation, idx) in products"
@@ -37,13 +26,6 @@
         @click.capture="emit('click:recommendation', recommendation, idx)"
       />
     </div>
-    <button
-      v-if="isLookbookProducts"
-      class="absolute right-0 top-60 hidden text-gray-700 focus:outline-none sm:inline-block"
-      @click="next"
-    >
-      <IconArrowRight class="size-5" />
-    </button>
   </HorizontalItemsSlider>
 </template>
 
@@ -60,7 +42,6 @@ type Props = {
   loading?: boolean
   products?: Product[]
   size?: Size
-  isLookbookProducts?: boolean
 }
 
 // TODO use computed property for dynamic class bindings on line 24
@@ -68,7 +49,6 @@ const props = withDefaults(defineProps<Props>(), {
   loading: false,
   products: () => [],
   size: Size.MD,
-  isLookbookProducts: false,
 })
 
 const emit = defineEmits<{
@@ -86,39 +66,6 @@ const carouselStyles = ref({
   transition: '1s ease',
   transform: 'translateX(0)',
 })
-const activeIndex = ref(0) // This keeps track of how many times the user has scrolled
-
-const next = () => {
-  const carouselWidth = carousel?.value?.scrollWidth
-  // The check is because typescript complains that carouselWidth is possibly null
-  const productCardWidth = carouselWidth
-    ? carouselWidth / props.products.length
-    : 0
-  const numberOfCardsShown = Math.floor(window.innerWidth / productCardWidth)
-
-  const targetScrollPosition =
-    productCardWidth * numberOfCardsShown * (activeIndex.value + 1)
-  if (carouselWidth && targetScrollPosition < carouselWidth) {
-    carouselStyles.value.transform = `translateX(-${targetScrollPosition}px)`
-    activeIndex.value++
-  }
-}
-
-const prev = () => {
-  const carouselWidth = carousel?.value?.scrollWidth
-  // The check is because typescript complains that carouselWidth is possibly null
-  const productCardWidth = carouselWidth
-    ? carouselWidth / props.products.length
-    : 0
-  const numberOfCardsShown = Math.floor(window.innerWidth / productCardWidth)
-
-  const targetScrollPosition =
-    productCardWidth * numberOfCardsShown * (activeIndex.value - 1)
-  if (targetScrollPosition >= 0) {
-    carouselStyles.value.transform = `translateX(-${targetScrollPosition}px)`
-    activeIndex.value--
-  }
-}
 
 const collectColumnIntersection = (productId: number, index: number) => {
   const isTracked =
