@@ -30,11 +30,11 @@ const props = withDefaults(defineProps<{ modelValue?: string }>(), {
 })
 
 const emit = defineEmits<{
-  (e: 'update:model-value', value: string): void
-  (e: 'cancel'): void
-  (e: 'focus'): void
-  (e: 'blur'): void
-  (e: 'keydown:enter'): void
+  'update:model-value': [string]
+  'keydown:enter': []
+  cancel: []
+  focus: []
+  blur: []
 }>()
 
 const content = computed({
