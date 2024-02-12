@@ -1,7 +1,7 @@
 <template>
   <div
     id="search-results"
-    class="absolute top-12 mt-2 w-full overflow-y-auto overscroll-none rounded border border-primary bg-white p-5"
+    class="absolute top-12 mt-2 w-full overflow-y-auto overscroll-none rounded border border-primary bg-white px-5 pb-1.5 pt-4"
   >
     <FadeInTransition>
       <SearchResultSkeleton v-if="fetching" />
@@ -10,11 +10,12 @@
           <SearchResults
             v-bind="{ productSuggestions, categories, resultsCount }"
             :term="searchTerm"
+            @click:result="emit('click:result', $event)"
           />
           <DefaultLink
             :to="getSearchRoute(searchTerm)"
             raw
-            class="mx-auto rounded px-4 py-2 text-xs font-semibold underline transition-all duration-200 ease-in-out hover:bg-secondary-450 hover:font-bold"
+            class="mx-auto mt-3 rounded px-4 py-2 text-xs font-semibold underline transition-all duration-200 ease-in-out hover:bg-secondary-450 hover:font-bold"
             @click="emit('close')"
           >
             {{ $t('search.more') }}
@@ -35,37 +36,33 @@
 import type {
   TypeaheadBrandOrCategorySuggestion,
   TypeaheadProductSuggestion,
+  BrandOrCategorySuggestion,
+  ProductSuggestion,
 } from '@scayle/storefront-nuxt'
 
-defineProps({
-  fetching: {
-    type: Boolean,
-    default: false,
-  },
-  brands: {
-    type: Array as PropType<any[]>,
-    default: () => [],
-  },
-  productSuggestions: {
-    type: Array as PropType<TypeaheadProductSuggestion[]>,
-    default: () => [],
-  },
-  categories: {
-    type: Array as PropType<TypeaheadBrandOrCategorySuggestion[]>,
-    default: () => [],
-  },
-  searchTerm: {
-    type: String,
-    default: '',
-  },
-  resultsCount: {
-    type: Number,
-    default: 0,
-  },
+type Suggestion = BrandOrCategorySuggestion | ProductSuggestion
+
+type Props = {
+  fetching?: boolean
+  brands?: TypeaheadBrandOrCategorySuggestion[]
+  searchTerm?: string
+  resultsCount?: number
+  productSuggestions?: TypeaheadProductSuggestion[]
+  categories?: TypeaheadBrandOrCategorySuggestion[]
+}
+
+withDefaults(defineProps<Props>(), {
+  fetching: false,
+  brands: () => [],
+  productSuggestions: () => [],
+  categories: () => [],
+  searchTerm: '',
+  resultsCount: 0,
 })
 
 const emit = defineEmits<{
-  (e: 'close'): void
+  close: []
+  'click:result': [event: Suggestion]
 }>()
 const { getSearchRoute } = useRouteHelpers()
 </script>

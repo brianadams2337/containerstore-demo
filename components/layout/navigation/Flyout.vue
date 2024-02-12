@@ -15,12 +15,7 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
-  isOpen: {
-    type: Boolean,
-    default: false,
-  },
-})
+withDefaults(defineProps<{ isOpen?: boolean }>(), { isOpen: false })
 
 defineOptions({ name: 'AppFlyout' })
 </script>

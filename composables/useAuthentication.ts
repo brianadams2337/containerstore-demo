@@ -129,7 +129,7 @@ export async function useAuthentication(
     try {
       await session.revokeToken()
       if (user.value) {
-        await trackLogout(user.value.id, user.value.email)
+        trackLogout()
       }
     } catch (error) {
       handleError(error)

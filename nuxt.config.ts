@@ -278,7 +278,7 @@ export default defineNuxtConfig({
   // https://nitro.unjs.io/guide/cache#route-rules
   routeRules: (() => {
     // Allow for disabling the SSR Cache via an environment flag
-    if (process.env.DISABLE_PAGE_CACHE === 'true') {
+    if (yn(process.env.DISABLE_PAGE_CACHE)) {
       return {}
     }
 

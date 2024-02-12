@@ -5,47 +5,36 @@
       class="mb-2.5 block text-sm font-semibold"
       :for="`${label}-product-list`"
     >
-      <slot name="label">{{ label }}</slot>
+      {{ label }}
     </label>
     <ul :id="`${label}-product-list`" class="space-y-2.5">
-      <slot
+      <SearchResultItem
         v-for="{ productSuggestion } in items"
-        name="item"
-        :item="productSuggestion"
-        :search-term="searchTerm"
+        :key="productSuggestion.product.id"
+        :term="searchTerm"
+        :to="getProductDetailRoute(productSuggestion.product)"
+        :image-url="getImageUrl(productSuggestion)"
+        @click:result="emit('click:result', productSuggestion)"
       >
-        <SearchResultItem
-          v-if="productSuggestion"
-          :key="productSuggestion.product.id"
-          :term="searchTerm"
-          :to="getProductDetailRoute(productSuggestion.product)"
-          :image-url="getImageUrl(productSuggestion)"
-          @click:result="emit('click:result', productSuggestion)"
-        >
-          <div class="w-full overflow-hidden">
-            <div class="truncate text-2xs font-medium text-secondary">
-              {{ getCategoryName(productSuggestion) }}
+        <div class="w-full overflow-hidden">
+          <div class="truncate text-2xs font-medium text-secondary">
+            {{ getCategoryName(productSuggestion) }}
+          </div>
+          <div class="flex overflow-hidden text-sm font-semibold text-primary">
+            <div class="shrink truncate">
+              {{ productSuggestion.suggestion }}
             </div>
             <div
-              class="flex overflow-hidden text-sm font-semibold text-primary"
+              v-if="productSuggestion.product.priceRange"
+              class="ml-auto shrink-0"
             >
-              <div class="shrink truncate">
-                {{ productSuggestion.suggestion }}
-              </div>
-              <div
-                v-if="productSuggestion.product.priceRange"
-                class="ml-auto shrink-0"
-              >
-                {{
-                  formatCurrency(
-                    productSuggestion.product.priceRange.min.withTax,
-                  )
-                }}
-              </div>
+              {{
+                formatCurrency(productSuggestion.product.priceRange.min.withTax)
+              }}
             </div>
           </div>
-        </SearchResultItem>
-      </slot>
+        </div>
+      </SearchResultItem>
     </ul>
   </section>
 </template>
@@ -56,24 +45,19 @@ import type {
   TypeaheadProductSuggestion,
 } from '@scayle/storefront-nuxt'
 
-const props = defineProps({
-  label: {
-    type: String,
-    required: true,
-  },
-  items: {
-    type: Array as PropType<TypeaheadProductSuggestion[]>,
-    default: () => [],
-  },
-  searchTerm: {
-    type: String,
-    default: '',
-  },
-  showImages: {
-    type: Boolean,
-    default: false,
-  },
+type Props = {
+  label: string
+  items: TypeaheadProductSuggestion[]
+  searchTerm?: string
+  showImages?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  items: () => [],
+  searchTerm: '',
+  showImages: false,
 })
+
 const { formatCurrency } = useFormatHelpers()
 const { getProductDetailRoute } = useRouteHelpers()
 
@@ -87,7 +71,5 @@ const getImageUrl = (productSuggestion: ProductSuggestion) => {
     : ''
 }
 
-const emit = defineEmits<{
-  (e: 'click:result', value: ProductSuggestion): void
-}>()
+const emit = defineEmits<{ 'click:result': [value: ProductSuggestion] }>()
 </script>

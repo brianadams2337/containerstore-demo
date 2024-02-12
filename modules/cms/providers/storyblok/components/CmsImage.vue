@@ -13,23 +13,17 @@
 <script setup lang="ts">
 import type { SbCmsImage } from '../types/storyblok'
 
-const props = defineProps({
-  preload: {
-    type: Boolean,
-    default: false,
-  },
-  sizes: {
-    type: String,
-    default: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
-  },
-  isTeaser: {
-    type: Boolean,
-    default: false,
-  },
-  blok: {
-    type: Object as PropType<SbCmsImage>,
-    required: true,
-  },
+type Props = {
+  blok: SbCmsImage
+  preload?: boolean
+  isTeaser?: boolean
+  sizes?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  preload: false,
+  isTeaser: false,
+  sizes: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
 })
 
 const { trackPromotion } = useTrackingEvents()

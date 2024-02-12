@@ -1,9 +1,4 @@
-import type {
-  BasketItem,
-  Product,
-  Variant,
-  BasketTotalPrice,
-} from '@scayle/storefront-nuxt'
+import type { BasketItem, BasketTotalPrice } from '@scayle/storefront-nuxt'
 
 const useBasketEvents = (
   track: (event: TrackingEvent, payload: TrackingPayload) => any,
@@ -39,6 +34,7 @@ const useBasketEvents = (
     },
 
     trackAddToBasket: ({
+      products,
       product,
       quantity = 1,
       variant,
@@ -46,24 +42,28 @@ const useBasketEvents = (
       list,
     }: TrackAddToBasketParams) => {
       track('add_to_cart', {
-        product: { ...product, index },
+        ...(product && { product: { ...product, index } }),
+        products,
         variant,
         quantity,
         currencyCode,
         list,
-      } as ProductActionData)
+      })
     },
 
-    trackRemoveFromBasket: (
-      product: Product,
-      quantity: number,
-      variant: Variant,
+    trackRemoveFromBasket: ({
+      product,
+      products,
+      quantity,
+      variant,
       index = 1,
-    ) => {
+    }: TrackRemoveFromBasketParams) => {
       track('remove_from_cart', {
-        product: { ...product, index },
+        ...(product && { product: { ...product, index } }),
+        products,
         variant,
         quantity,
+        currencyCode,
       })
     },
 

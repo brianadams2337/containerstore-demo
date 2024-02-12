@@ -6,7 +6,11 @@ export async function useProductDetailsBasketActions() {
   const { product, hasOneSizeVariantOnly, activeVariant, quantity, brand } =
     await useProductDetails()
 
-  const { fetching: basketIdle, addItem: addBasketItem } = await useBasket()
+  const {
+    fetching: basketIdle,
+    addItem: addBasketItem,
+    items: basketItems,
+  } = await useBasket()
 
   const { showAddToBasketToast } = await useBasketActions()
 
@@ -15,16 +19,27 @@ export async function useProductDetailsBasketActions() {
 
   const { addGroupToBasket } = await useBasketGroup()
 
-  const { selectedAddOns, isAnyAddOnSelected } =
+  const { selectedAddOnVariantIds, isAnyAddOnSelected } =
     useProductDetailsAddOns(product)
 
   const { trackAddToBasket } = useTrackingEvents()
 
   const { openBasketFlyout } = useFlyouts()
 
+  const getBasketAddOnProducts = () => {
+    return _unique(
+      basketItems.value
+        .filter(({ variant }) =>
+          selectedAddOnVariantIds.value.includes(variant.id),
+        )
+        .map(({ product }) => product),
+      (product) => product.id,
+    )
+  }
+
   const addItemToBasket = async () => {
-    if (hasOneSizeVariantOnly.value && product.value?.variants) {
-      activeVariant.value = product.value?.variants[0]
+    if (hasOneSizeVariantOnly.value && product.value.variants) {
+      activeVariant.value = product.value.variants[0]
     }
 
     if (!activeVariant.value) {
@@ -40,8 +55,8 @@ export async function useProductDetailsBasketActions() {
         ? await addGroupToBasket({
             mainItem: { variantId: activeVariant.value.id, quantity: 1 },
             items: [
-              ...Object.keys(selectedAddOns.value).map((v) => ({
-                variantId: parseInt(v),
+              ...selectedAddOnVariantIds.value.map((variantId) => ({
+                variantId,
                 quantity: 1,
               })),
             ],
@@ -57,10 +72,19 @@ export async function useProductDetailsBasketActions() {
 
       showAddToBasketToast(true, product.value)
 
-      if (product.value) {
+      if (isAnyAddOnSelected.value) {
+        const products = [product.value, ...getBasketAddOnProducts()].map(
+          (product, index) => ({
+            ...product,
+            index: index + 1,
+          }),
+        )
+        trackAddToBasket({ products })
+      } else {
         trackAddToBasket({
           product: product.value,
           variant: activeVariant.value,
+          quantity: quantity.value,
           index: 1,
         })
       }

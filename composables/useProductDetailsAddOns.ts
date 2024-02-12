@@ -37,11 +37,18 @@ export function useProductDetailsAddOns(
 
     return flattenedValues.map((val) => parseInt(val))
   })
+
   const isAnyAddOnSelected = computed(() => {
     const anySelected = Object.keys(selectedAddOns.value).find(
       (key) => selectedAddOns.value[key as any],
     )
     return !!anySelected
+  })
+
+  const selectedAddOnVariantIds = computed(() => {
+    return Object.entries(selectedAddOns.value)
+      .filter(([_, isSelected]) => isSelected)
+      .map(([variantId]) => +variantId)
   })
 
   const onAddOnSelected = ({
@@ -62,6 +69,7 @@ export function useProductDetailsAddOns(
     availableAddOns,
     isAnyAddOnSelected,
     onAddOnSelected,
-    selectedAddOns,
+    selectedAddOns: readonly(selectedAddOns),
+    selectedAddOnVariantIds,
   }
 }

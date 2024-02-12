@@ -41,10 +41,31 @@ export async function useBasketActions() {
     })
   }
 
-  const removeItem = async (item: BasketItem) => {
-    await basket.removeItem({ variantId: item.variant.id })
+  const getGroupedProducts = (itemGroupId?: string) => {
+    if (!itemGroupId) {
+      return
+    }
+    return basket.items.value
+      .filter(({ itemGroup }) => itemGroup?.id === itemGroupId)
+      .map(({ product }) => product)
+  }
 
-    trackRemoveFromBasket(item.product, item.quantity, item.variant)
+  const removeItem = async ({
+    product,
+    variant,
+    quantity,
+    itemGroup,
+  }: BasketItem) => {
+    const groupedProducts = getGroupedProducts(itemGroup?.id)
+
+    await basket.removeItem({ variantId: variant.id })
+
+    if (!itemGroup) {
+      trackRemoveFromBasket({ product, quantity, variant })
+    } else {
+      trackRemoveFromBasket({ products: groupedProducts })
+    }
+
     trackBasket(
       collectBasketItems(basket.items.value || [], {
         listId: listingMetaData.id,

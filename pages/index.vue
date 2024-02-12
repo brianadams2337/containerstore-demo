@@ -12,9 +12,14 @@ const data = await useAsyncStoryblok('home', storyblokOptions)
 
 const config = useRuntimeConfig()
 const route = useRoute()
-useSeoMeta({
-  robots: 'index,follow',
-})
+
+const wishlist = await useWishlist()
+
+const { hasEventInQueue } = useTracking()
+
+const { trackWishlist, collectProductListItems } = useTrackingEvents()
+
+useSeoMeta({ robots: 'index,follow' })
 useHead({
   link: [
     {
@@ -23,6 +28,18 @@ useHead({
       href: sanitizeCanonical(`${config.public.baseUrl}${route?.fullPath}`),
     },
   ],
+})
+
+onMounted(() => {
+  if (hasEventInQueue('wishlist')) {
+    return
+  }
+  trackWishlist(
+    collectProductListItems(wishlist.products.value, {
+      listId: wishlistListingMetadata.id,
+      listName: wishlistListingMetadata.name,
+    }),
+  )
 })
 
 defineOptions({ name: 'HomePage' })

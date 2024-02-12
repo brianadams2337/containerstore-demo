@@ -34,13 +34,12 @@ export function useFilter(
   const filterContext = useFilterContext()
 
   const availableFilterValues = computed(() => {
-    // TODO fix in core
     return (
       filterContext?.filterableValues.value &&
-      (getGroupedFilterableValues(
+      getGroupedFilterableValues(
         supportedFilters,
         filterContext.filterableValues.value,
-      ) as Record<string, TransformedFilter[]>)
+      )
     )
   })
 
