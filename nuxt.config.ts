@@ -163,6 +163,7 @@ export default defineNuxtConfig({
     '@storyblok/nuxt',
     '@zadigetvoltaire/nuxt-gtm',
     '@nuxt/test-utils/module',
+    './modules/cms',
   ],
 
   // https://github.com/lukasaric/radash-nuxt
@@ -243,7 +244,7 @@ export default defineNuxtConfig({
   // https://nuxt.com/docs/api/nuxt-config#imports
   imports: {
     // https://nuxt.com/docs/api/nuxt-config#dirs
-    dirs: ['./constants', './storyblok/composables'],
+    dirs: ['./constants'],
   },
 
   // Allow auto-import for vue components

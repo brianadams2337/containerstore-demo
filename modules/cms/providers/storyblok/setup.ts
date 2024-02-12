@@ -1,31 +1,32 @@
-import type { Nuxt } from 'nuxt/schema'
+import type { Nuxt } from '@nuxt/schema'
 import {
   installModule,
   createResolver,
   addImportsDir,
   addComponentsDir,
 } from '@nuxt/kit'
+import { type ModuleOptions } from '@storyblok/nuxt'
 import type { ModuleOptions as CMSModuleOptions } from '../../types'
 export async function setupStoryblok(options: CMSModuleOptions, nuxt: Nuxt) {
   const resolver = createResolver(import.meta.url)
   await import('./schema')
-  if (!nuxt.options.modules.includes('@storybook/nuxt')) {
+  if (!nuxt.options.modules.includes('@storyblok/nuxt')) {
     await installModule('@storyblok/nuxt')
   }
+
+  if (!nuxt.options.storyblok) {
+    nuxt.options.storyblok = {} as ModuleOptions
+  }
   nuxt.options.storyblok = {
-    accessToken: options.accessToken ?? '',
-    enableSudoMode: options.enableSudoMode ?? false,
-    usePlugin: options.usePlugin ?? false,
-    bridge: options.bridge ?? false,
-    devtools: options.devtools! ?? false,
-    apiOptions: options.apiOptions ?? {},
-    componentsDir: options.componentsDir ?? '',
+    ...nuxt.options.storyblok,
+    componentsDir: resolver.resolve('./composables'),
   }
 
   addImportsDir(resolver.resolve('./composables'))
 
   await addComponentsDir({
     path: resolver.resolve('./components'),
+    global: true,
   })
 
   nuxt.hook('prepare:types', ({ references }) => {
