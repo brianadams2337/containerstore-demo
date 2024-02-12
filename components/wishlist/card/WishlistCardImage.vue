@@ -47,16 +47,12 @@
 </template>
 
 <script setup lang="ts">
-import type {
-  ProductImage,
-  Product,
-  WishlistItem,
-} from '@scayle/storefront-nuxt'
+import type { ProductImage, WishlistItem } from '@scayle/storefront-nuxt'
 import type { RouteLocationRaw } from '#vue-router'
 
 type Props = {
   index: number
-  item: WishlistItem & { product: Product }
+  item: WishlistItem
   link: RouteLocationRaw
   image: ProductImage | null
   imageLoading: 'lazy' | 'eager'
