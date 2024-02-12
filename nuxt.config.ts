@@ -336,8 +336,7 @@ export default defineNuxtConfig({
           '/basket': NO_CACHE,
           '/checkout': NO_CACHE,
           '/signin': NO_CACHE,
-          '/account/*': NO_CACHE,
-          '/orders/*': NO_CACHE,
+          '/account/**': NO_CACHE,
         }
       : locales.reduce(
           (rules: NitroRouteConfig, locale) => {
@@ -352,8 +351,7 @@ export default defineNuxtConfig({
               [`/${locale.code}/basket`]: NO_CACHE,
               [`/${locale.code}/checkout`]: NO_CACHE,
               [`/${locale.code}/signin`]: NO_CACHE,
-              [`/${locale.code}/account/*`]: NO_CACHE,
-              [`/${locale.code}/orders/*`]: NO_CACHE,
+              [`/${locale.code}/account/**`]: NO_CACHE,
             }
             return newRules
           },
