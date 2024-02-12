@@ -32,13 +32,9 @@
 </template>
 
 <script setup lang="ts">
-import type { Product, WishlistItem } from '@scayle/storefront-nuxt'
+import type { WishlistItem } from '@scayle/storefront-nuxt'
 
-type Props = {
-  item: WishlistItem & { product: Product }
-}
-
-const props = defineProps<Props>()
+const props = defineProps<{ item: WishlistItem }>()
 
 const { formatCurrency } = useFormatHelpers()
 

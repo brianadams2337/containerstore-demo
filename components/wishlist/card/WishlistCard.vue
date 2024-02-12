@@ -26,11 +26,11 @@
 </template>
 
 <script setup lang="ts">
-import type { Product, WishlistItem } from '@scayle/storefront-nuxt'
+import type { WishlistItem } from '@scayle/storefront-nuxt'
 
 type Props = {
   index: number
-  item: WishlistItem & { product: Product }
+  item: WishlistItem
 }
 
 const props = defineProps<Props>()
