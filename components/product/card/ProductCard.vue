@@ -98,7 +98,7 @@
                   <ProductPrice
                     v-if="price"
                     v-bind="{ price, lowestPriorPrice, product }"
-                    :size="isGreaterOrEqual('md') ? 'sm' : 'xs'"
+                    size="sm"
                     :show-automatic-discount="!isBuyXGetYPrioritized"
                     type="whisper"
                   />
@@ -169,7 +169,6 @@ const props = withDefaults(defineProps<Props>(), {
 const loadHoverImage = ref(false)
 const shouldHoverImage = ref(false)
 
-const { isGreaterOrEqual } = useDefaultBreakpoints()
 const { getProductDetailRoute } = useRouteHelpers()
 
 const { isBuyXGetYPrioritized } = await useProductPromotions(props.product)
