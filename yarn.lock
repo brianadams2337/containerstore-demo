@@ -1787,14 +1787,14 @@
   dependencies:
     prettier-config-standard "^7.0.0"
 
-"@scayle/storefront-core@7.39.1":
-  version "7.39.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.39.1.tgz#3a9ac84705cd5d35ff289c7eff34b51a5b5292e3"
-  integrity sha512-j3bt7tLt43hrCYcpp0zp49wu1gqASS9yUOf5LqGET34zzLth0OWKLLIYQuyMTYulKwCSuY+tBTzIix7ntfwC8A==
+"@scayle/storefront-core@7.40.0":
+  version "7.40.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.40.0.tgz#bbd623bfb36e06161c145797e9ababab02763c09"
+  integrity sha512-GzcmZIrxqBwP976lnBgAzy3Wanh3njwGxDwArJ97W8wLkRBDkihNvrmU40LvosZBpsrXME0g6bthL8aPFqgaHg==
   dependencies:
     "@aboutyou/backbone" "16.1.1"
     crypto-js "4.2.0"
-    jose "5.2.1"
+    jose "5.2.2"
     radash "11.0.0"
     slugify "1.6.6"
     ufo "1.4.0"
@@ -1803,14 +1803,14 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.55.2":
-  version "7.55.2"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.55.2.tgz#299370ce380ca276b207477b00a2989f731550dd"
-  integrity sha512-ttNCvtPhamaYdwAxsDX+Nc0CXKwhfrYmb+4GzZKWb6qyGXhW0VA9rFMbkVMwe+LcszAy/QT325m8lTnVndaKmg==
+"@scayle/storefront-nuxt@7.55.3":
+  version "7.55.3"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.55.3.tgz#6e47c8545363d77ea783e9c1f3572fdfe06adfe0"
+  integrity sha512-0ZPwLgPPSjnYYmqFsjO+rCC5fBe8IS+k7WCgTjM0xHSetQNx8ZcMfvaXs1J9V/DoTuYk2PfCnNJ2KNu2kvY5Nw==
   dependencies:
     "@nuxt/kit" "3.9.3"
     "@scayle/h3-session" "0.3.5"
-    "@scayle/storefront-core" "7.39.1"
+    "@scayle/storefront-core" "7.40.0"
     "@scayle/unstorage-compression-driver" "0.1.1"
     "@vueuse/core" "10.7.2"
     consola "3.2.3"
@@ -5955,10 +5955,10 @@ jiti@^1.19.1, jiti@^1.21.0:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.21.0.tgz#7c97f8fe045724e136a397f7340475244156105d"
   integrity sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==
 
-jose@5.2.1:
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/jose/-/jose-5.2.1.tgz#ec3befe173896e592e2d9ef5f267d061ffb203c5"
-  integrity sha512-qiaQhtQRw6YrOaOj0v59h3R6hUY9NvxBmmnMfKemkqYmBB0tEc97NbLP7ix44VP5p9/0YHG8Vyhzuo5YBNwviA==
+jose@5.2.2:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/jose/-/jose-5.2.2.tgz#b91170e9ba6dbe609b0c0a86568f9a1fbe4335c0"
+  integrity sha512-/WByRr4jDcsKlvMd1dRJnPfS1GVO3WuKyaurJ/vvXcOaUQO8rnNObCQMlv/5uCceVQIq5Q4WLF44ohsdiTohdg==
 
 jose@^5.2.0:
   version "5.2.0"
