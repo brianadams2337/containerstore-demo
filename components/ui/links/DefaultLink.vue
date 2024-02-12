@@ -78,7 +78,11 @@ const resolvedLink = computed(() => {
   }
 
   if (!isString(props.to)) {
-    return localePath(props.to)
+    const isLocalePath =
+      'path' in props.to &&
+      hasLocalePrefix(props.to.path, currentShop.value.path)
+
+    return isLocalePath ? props.to : localePath(props.to)
   }
 
   const normalizedPath = normalizePathRoute(props.to)
