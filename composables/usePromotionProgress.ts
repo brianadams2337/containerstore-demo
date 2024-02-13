@@ -32,8 +32,6 @@ export async function usePromotionProgress() {
     return !!progress.value && progress.value >= 100
   })
 
-  const formattedAmount = computed(() => formatCurrency(minOrderValue.value))
-
   const formattedAmountLeft = computed(() => {
     if (!minOrderValue.value) {
       return
@@ -61,7 +59,6 @@ export async function usePromotionProgress() {
     minOrderAmount,
     progress,
     isFullProgress,
-    formattedAmount,
     formattedAmountLeft,
     formattedDiscount,
   }
