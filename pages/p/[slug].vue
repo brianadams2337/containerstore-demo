@@ -29,7 +29,7 @@
             </div>
             <div class="flex items-start justify-between md:flex-col">
               <Headline
-                :size="isGreaterOrEqual('md') ? '2xl' : 'xl'"
+                size="xl"
                 class="!leading-snug"
                 data-test-id="pdp-product-name"
                 tag="h1"
@@ -72,7 +72,7 @@
                   size="xl"
                   class="mt-3"
                   v-bind="{ product, lowestPriorPrice, price }"
-                  :type="isGreaterOrEqual('md') ? 'normal' : 'loud'"
+                  type="normal"
                   :show-automatic-discount="!isBuyXGetYPrioritized"
                   :show-price-from="hasSpecial"
                   :show-price-reduction-badge="hasSpecial"
@@ -93,7 +93,7 @@
                     <ColorChip
                       v-if="item.colors.length"
                       :is-active="item.id === product.id"
-                      :size="isGreaterOrEqual('md') ? Size.LG : Size.XL"
+                      :size="Size.LG"
                       :color="item.colors[0] as ProductColor"
                     />
                   </DefaultLink>
@@ -244,8 +244,6 @@ const { state: zoomGallery, toggle: toggleZoomGallery } =
   useZoomGalleryActions()
 
 const { trackViewItemList, trackViewItem } = useTrackingEvents()
-
-const { isGreaterOrEqual } = useDefaultBreakpoints()
 
 const trackViewListing = ({ items }: { row: number; items: Product[] }) => {
   trackViewItemList({ items, listingMetaData })
