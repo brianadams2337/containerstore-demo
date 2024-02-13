@@ -6,7 +6,10 @@
     :style="backgroundColorStyle"
     @click="togglePromotionList()"
   >
-    <div class="flex w-full justify-between" :class="minOrderValue && 'mb-2.5'">
+    <div
+      class="flex w-full items-center justify-between"
+      :class="minOrderValue && 'mb-2.5'"
+    >
       <PromotionFullProgressLabel v-if="isFullProgress" is-small />
       <AutomaticDiscountMobileHeadline v-else-if="minOrderValue" />
       <PromotionHeadline
