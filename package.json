@@ -86,7 +86,7 @@
     "check-password-strength": "2.0.7",
     "citty": "0.1.5",
     "color": "4.2.3",
-    "dotenv": "16.4.3",
+    "dotenv": "16.4.4",
     "global": "4.4.0",
     "maska": "2.1.11",
     "nanoid": "5.0.5",
