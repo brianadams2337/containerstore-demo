@@ -81,7 +81,7 @@ export async function useProductDetails(key = 'product-details') {
     )
   })
 
-  const image = useImage()
+  const { getImage } = useImage()
 
   const images = computed(() => {
     const options = {
@@ -90,7 +90,7 @@ export async function useProductDetails(key = 'product-details') {
       provider: 'default',
     }
     const images = product.value?.images
-    return images.map(({ hash }) => image?.getImage(hash, options).url) || []
+    return images.map(({ hash }) => getImage(hash, options).url) || []
   })
 
   const siblings = computed(() => {
