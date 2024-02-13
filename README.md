@@ -212,5 +212,6 @@ In some cases, patches to third-party packages are required. The Storefront Boil
 
 ### Current applied patches
 
-`@nuxt/image` - Support providing the base URL through runtime configuration
-`unstorage` - Log the driver name instead of `undefined` when VercelKV is used
+- `@nuxt/image` - Support providing the base URL through runtime configuration
+- `unstorage` - Log the driver name instead of `undefined` when VercelKV is used
+- `nitropack` - Support page caching
