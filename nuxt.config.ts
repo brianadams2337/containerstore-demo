@@ -9,6 +9,7 @@ import {
 declare module '@nuxt/schema' {
   interface PublicRuntimeConfig {
     cdnUrl: string
+    googleMapsApiKey: string
   }
 }
 
@@ -92,6 +93,9 @@ export default defineNuxtConfig({
 
       // Override: NUXT_PUBLIC_CDN_URL
       cdnUrl: '',
+
+      // Override: NUXT_PUBLIC_GOOGLE_MAPS_API_KEY
+      googleMapsApiKey: '',
 
       /** Storefront Boilerplate - Tracking Event Order
        * Used in: templates/nuxt/plugins/01.tracking.ts */
