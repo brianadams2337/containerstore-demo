@@ -5,26 +5,10 @@
   >
     <template v-if="isMOVPromotionApplied">
       🎉
-      {{ $t('promotion.full_progress_message.first_part') }}
-      <span class="font-bold">
-        {{
-          $t('promotion.full_progress_message.middle_part', {
-            amount: formattedDiscount,
-          })
-        }}
-      </span>
-      {{ $t('promotion.full_progress_message.last_part') }}
+      {{ $t('promotion.full_progress_message', { amount: formattedDiscount }) }}
     </template>
     <template v-else>
-      {{ $t('promotion.cart_reached.first_part') }}
-      <span class="font-bold">
-        {{
-          $t('promotion.cart_reached.middle_part', {
-            discount: automaticDiscount,
-          })
-        }}
-      </span>
-      {{ $t('promotion.cart_reached.last_part') }}
+      {{ $t('promotion.cart_reached', { discount: automaticDiscount }) }}
     </template>
   </p>
 </template>

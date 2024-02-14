@@ -31,16 +31,8 @@
     "terms": "Promotion Terms & Conditions",
     "show_deals_label": "Show deal items",
     "my_deals_label": "My deals",
-    "cart_reached": {
-      "first_part": "Shopping cart reached! Add promotional products and get",
-      "middle_part": "{discount}% discount",
-      "last_part": "on them"
-    },
-    "full_progress_message": {
-      "first_part": "You are",
-      "middle_part": "saving {amount}",
-      "last_part": "on your order"
-    },
+    "cart_reached": "Shopping cart reached! Add promotional products and get {discount}% discount on them",
+    "full_progress_message": "You are saving {amount} on your order",
     "automatic_discount_headline": {
       "add_label": "Add",
       "another_label": "another",
