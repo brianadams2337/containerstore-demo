@@ -1031,16 +1031,16 @@ cypress-real-events@1.11.0:
   resolved "https://registry.yarnpkg.com/cypress-real-events/-/cypress-real-events-1.11.0.tgz#292fe5281c5b6e955524e766ab7fec46930c7763"
   integrity sha512-4LXVRsyq+xBh5TmlEyO1ojtBXtN7xw720Pwb9rEE9rkJuXmeH3VyoR1GGayMGr+Itqf11eEjfDewtDmcx6PWPQ==
 
-cypress-split@1.20.0:
-  version "1.20.0"
-  resolved "https://registry.yarnpkg.com/cypress-split/-/cypress-split-1.20.0.tgz#64ee58b398b213963946c910827351e1d3177e1d"
-  integrity sha512-/97VZzZZb8etGh3016hG44hQLuPnhURetp+HxQeYDoasfWCBmt3ReIGJoJ5LBNbh6INF2icgo2pS5bXTEez0SQ==
+cypress-split@1.20.1:
+  version "1.20.1"
+  resolved "https://registry.yarnpkg.com/cypress-split/-/cypress-split-1.20.1.tgz#8842ffa17664d8c170e96e319f24b2169277a322"
+  integrity sha512-S9eD07QmKBYUINwCPUvhuSh9qATTapIxfZPXih2sbtAczg3TLlsDFBquxnSnWBmUmCThWHj4F6lXuaApVTK8Ow==
   dependencies:
     "@actions/core" "^1.10.0"
     arg "^5.0.2"
     console.table "^0.10.0"
     debug "^4.3.4"
-    find-cypress-specs "1.42.0"
+    find-cypress-specs "1.43.1"
     globby "^11.1.0"
     humanize-duration "^3.28.0"
 
@@ -1941,10 +1941,10 @@ fill-range@^7.0.1:
   dependencies:
     to-regex-range "^5.0.1"
 
-find-cypress-specs@1.42.0:
-  version "1.42.0"
-  resolved "https://registry.yarnpkg.com/find-cypress-specs/-/find-cypress-specs-1.42.0.tgz#fb218c9b53f84dc33121384d524d075b081bff4a"
-  integrity sha512-7N0AsiL8zMBfLIc7vVQb/SR1lNPqunxACq9ZVZulGgoiYs46IJ8hPEc+gPO5BU8gV5aE8EQ6EKp+XrJbnxLiQw==
+find-cypress-specs@1.43.1:
+  version "1.43.1"
+  resolved "https://registry.yarnpkg.com/find-cypress-specs/-/find-cypress-specs-1.43.1.tgz#54a1a6c629f3894f0d155c2865753cc43018b95f"
+  integrity sha512-vJKnUL7qCrFyf8LkwIlJEHRUg+P/syBNtkxAi/vdShgA1ugAVscQKiZGqQ9ad/gXWvywmwczMVM2SP7btG5RPg==
   dependencies:
     "@actions/core" "^1.10.0"
     arg "^5.0.1"
