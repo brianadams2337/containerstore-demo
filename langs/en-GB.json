@@ -99,7 +99,7 @@
     "home": "Home",
     "search": "Search",
     "checkout": "Checkout",
-    "osp": "Order Success"
+    "osp": "Order Confirmation"
   },
   "search": {
     "placeholder": "Search for product, category or brand",
