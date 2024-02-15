@@ -37,9 +37,6 @@
 <script setup lang="ts">
 const props = defineProps<{ promotions: Promotion[] }>()
 
-const route = useRoute()
-const localePath = useLocalePath()
-
 usePromotionChange(props.promotions)
 
 const {
@@ -61,12 +58,5 @@ const showDealsButton = computed<boolean>(() => {
       (!minOrderValue.value ||
         (!isMOVPromotionApplied.value && isFullProgress.value)),
   )
-})
-
-onNuxtReady(() => {
-  const isOrderSuccessPage = route.path === localePath(routeList.osp.path)
-  if (!isOrderSuccessPage && props.promotions.length > 1) {
-    togglePromotionList()
-  }
 })
 </script>
