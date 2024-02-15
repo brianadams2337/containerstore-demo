@@ -11,12 +11,7 @@
     <ToastContainer />
     <MobileSidebar v-bind="{ rootCategories, fetchingCategories }" />
     <div class="mt-4 grow">
-      <ErrorLayout
-        v-if="hasError"
-        :error="error"
-        @clear-error="resetErrorState"
-      />
-      <NuxtPage v-else />
+      <NuxtPage />
     </div>
     <AppFooter class="mt-16" />
   </div>
@@ -43,32 +38,6 @@ const rootCategories = computed(() => {
     ? rootCategoriesData.value.categories
     : [rootCategoriesData.value.categories]
 })
-
-// Error handling
-const error = ref()
-const hasError = computed(() => Boolean(error.value))
-const nuxtApp = useNuxtApp()
-
-onErrorCaptured((err, target, info) => {
-  nuxtApp.hooks.callHook('vue:error', err, target, info)
-  error.value = err
-  return false
-})
-
-const router = useRouter()
-router.afterEach(async () => {
-  if (error.value) {
-    error.value = undefined
-    await clearError()
-  }
-})
-const localePath = useLocalePath()
-
-const resetErrorState = async () => {
-  const redirect = localePath(routeList.home).toString()
-  await clearError({ redirect })
-  error.value = undefined
-}
 
 trackShopInit()
 await listenToUserItemsChanges()
