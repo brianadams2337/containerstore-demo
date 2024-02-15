@@ -6,9 +6,9 @@ This release focuses on stabilization and modularization, to improve the technic
 
 ### 🔥 Highlights
 
-#### ✨ Update to Nuxt 3.10.1 and Vue 3.4.19
+#### ✨ Update to Nuxt 3.10.2 and Vue 3.4.19
 
-Storefront Boilerplate now runs on both the latest Nuxt `v3.10.1` and Vue `v3.4.19` and benefits from a multitude of improvements.
+Storefront Boilerplate now runs on both the latest Nuxt `v3.10.2` and Vue `v3.4.19` and benefits from a multitude of improvements.
 To get more details about all the changes see the [Official Nuxt 3.10 Announcement Blog](https://nuxt.com/blog/v3-10)
 and the [Official Vue 3.4.19 Changelogs](https://github.com/vuejs/core/blob/main/CHANGELOG.md#3419-2024-02-13).
 

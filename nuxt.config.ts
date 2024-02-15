@@ -368,4 +368,13 @@ export default defineNuxtConfig({
           },
         )
   })(),
+
+  // The production build does not work when linking (dev mode is fine)
+  // This workaround resolves the issue:
+  // https://github.com/vitejs/vite/issues/11657#issuecomment-1385932066
+  vite: {
+    resolve: {
+      preserveSymlinks: true,
+    },
+  },
 })
