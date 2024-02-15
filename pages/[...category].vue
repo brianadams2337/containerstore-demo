@@ -91,6 +91,7 @@ const route = useRoute()
 const { pageState, setPageState } = usePageState()
 const { $i18n, $config } = useNuxtApp()
 const { toggle: toggleFilter } = useSlideIn('FilterSlideIn')
+const localPath = useLocalePath()
 
 const { trackViewItemList, trackSelectItem } = useTrackingEvents()
 
@@ -144,6 +145,21 @@ const { fetchBySlug } = useCMS<SbListingPage>(`ListingPage-${route.path}`)
 
 const cmsStatus = ref('')
 const cmsData = ref()
+const { data: rootCategoriesData } = await useCategories({
+  params: { path: route.path },
+  key: 'categoryNavigation',
+})
+
+const rootCategories = computed(() => {
+  return Array.isArray(rootCategoriesData.value.categories)
+    ? rootCategoriesData.value.categories
+    : [rootCategoriesData.value.categories]
+})
+const categoryNotFound = computed(() => {
+  return rootCategories.value.find(
+    (category) => localPath(category.path) === route.path,
+  )
+})
 
 const fetchData = async () => {
   await fetchProducts(fetchParameters.value)
@@ -175,6 +191,9 @@ const error = computed(() => {
 })
 
 if (error.value) {
+  if (!categoryNotFound.value) {
+    throw createError({ statusCode: 404, fatal: true })
+  }
   throw error.value
 }
 
