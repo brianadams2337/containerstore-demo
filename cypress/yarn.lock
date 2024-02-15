@@ -1031,10 +1031,10 @@ cypress-real-events@1.11.0:
   resolved "https://registry.yarnpkg.com/cypress-real-events/-/cypress-real-events-1.11.0.tgz#292fe5281c5b6e955524e766ab7fec46930c7763"
   integrity sha512-4LXVRsyq+xBh5TmlEyO1ojtBXtN7xw720Pwb9rEE9rkJuXmeH3VyoR1GGayMGr+Itqf11eEjfDewtDmcx6PWPQ==
 
-cypress-split@1.19.2:
-  version "1.19.2"
-  resolved "https://registry.yarnpkg.com/cypress-split/-/cypress-split-1.19.2.tgz#2251aadf47221efa1b9bc2a54d668535f2c4a148"
-  integrity sha512-QlxmXoXbO2+Ju0IJJBPEi9Jtqt24s2bONpitwjO4Vw5XSm4mYjvBqHBmQDfbcDYinC/oV/OWutL8z02GAtQR8w==
+cypress-split@1.20.0:
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/cypress-split/-/cypress-split-1.20.0.tgz#64ee58b398b213963946c910827351e1d3177e1d"
+  integrity sha512-/97VZzZZb8etGh3016hG44hQLuPnhURetp+HxQeYDoasfWCBmt3ReIGJoJ5LBNbh6INF2icgo2pS5bXTEez0SQ==
   dependencies:
     "@actions/core" "^1.10.0"
     arg "^5.0.2"
