@@ -77,6 +77,7 @@ The included tracking implementation has been refactored and received various im
 - Fixed UX / UI issues for Order details page in `pages/account/orders.vue`
 - Fixed UX / UI issues with login and registration forms
 - Fixed window scrolling on PLP pagination in `components/ui/pagination/PaginationButton.vue`
+- Disabled `swr` for page caching by default to mitigate potential broken pages and hydration issues
 
 ### 🏡 Dependency Updates
 
