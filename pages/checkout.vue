@@ -18,6 +18,8 @@ const { data: basketData, fetch: fetchBasket } = await useBasket()
 
 const { user, fetch: fetchUser } = await useUser()
 
+const { $i18n } = useNuxtApp()
+
 const log = useLog('CheckoutPage')
 
 const { listenToCheckoutStepChanges } = useTrackingEvents()
@@ -62,6 +64,10 @@ const handleError = (payload = {}) => {
   log.error('[onCheckoutError]', loggingPayload)
 }
 
+useSeoMeta({
+  robots: 'index,follow',
+  title: $i18n.t('navigation.checkout'),
+})
 defineOptions({ name: 'CheckoutPage' })
 definePageMeta({ pageType: 'checkout' })
 </script>

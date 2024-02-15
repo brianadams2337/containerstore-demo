@@ -97,7 +97,8 @@
     "wishlist": "Wishlist",
     "basket": "Basket",
     "home": "Home",
-    "search": "Search"
+    "search": "Search",
+    "checkout": "Checkout"
   },
   "search": {
     "placeholder": "Search for product, category or brand",
