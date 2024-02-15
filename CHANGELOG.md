@@ -37,8 +37,10 @@ The included tracking implementation has been refactored and received various im
 
 ### 🚀 Major Changes
 
+- **BREAKING:** The Image CDN config key has now moved to runtimeConfig under `public.cdnUrl`
+  - The environment variable `NUXT_PUBLIC_IMAGE_BASE_URL` has been replaced by `NUXT_PUBLIC_CDN_URL`
 - **BREAKING:** Added patch files for automatic dependency patching with [`patch-package`](https://www.npmjs.com/package/patch-package).
-    The tool will run in `postinstall` and apply any patches present in the `patches/` directory to the respective dependency. Extended `README.md` with a section regarding `Patches` to explain the details and currently applied patches
+  The tool will run in `postinstall` and apply any patches present in the `patches/` directory to the respective dependency. Extended `README.md` with a section regarding `Patches` to explain the details and currently applied patches
   - Patched support for runtimeConfig with `@nuxt/image`
   - Patched missing (`undefined`) driver name in `unstorage` if using `VercelKV` as caching driver
   - Patches `nitro` (`nitropack`) to resolve session issues with page caching enabled
