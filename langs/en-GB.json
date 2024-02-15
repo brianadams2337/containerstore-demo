@@ -98,7 +98,8 @@
     "basket": "Basket",
     "home": "Home",
     "search": "Search",
-    "checkout": "Checkout"
+    "checkout": "Checkout",
+    "osp": "Order Success"
   },
   "search": {
     "placeholder": "Search for product, category or brand",

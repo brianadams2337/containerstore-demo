@@ -30,6 +30,8 @@ const { data: orderData, fetching } = await useOrderConfirmation<
 
 const user = await useUser()
 
+const { $i18n } = useNuxtApp()
+
 const { trackPurchaseEvent } = useTrackingEvents()
 
 watch(
@@ -58,6 +60,11 @@ watch(
 const deliveryDate = computed(() => {
   const [pkg] = orderData.value.packages || []
   return pkg?.deliveryDate
+})
+
+useSeoMeta({
+  robots: 'index,follow',
+  title: $i18n.t('navigation.osp'),
 })
 
 defineOptions({ name: 'OrderSuccessPage' })

@@ -98,7 +98,8 @@
     "basket": "Warenkorb",
     "home": "Heim",
     "search": "Suchen",
-    "checkout": "Kasse"
+    "checkout": "Kasse",
+    "osp": "Bestellerfolg"
   },
   "search": {
     "placeholder": "Suche Produkte, Kategorien oder Marken",
