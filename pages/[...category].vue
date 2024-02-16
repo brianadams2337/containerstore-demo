@@ -81,7 +81,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Product } from '@scayle/storefront-nuxt'
+import { HttpStatusCode, type Product } from '@scayle/storefront-nuxt'
 import type {
   SbCmsImage,
   SbListingPage,
@@ -191,7 +191,7 @@ const error = computed(() => {
 })
 
 if (!categoryNotFound.value) {
-  throw createError({ statusCode: 404, fatal: true })
+  throw createError({ statusCode: HttpStatusCode.NOT_FOUND, fatal: true })
 }
 
 if (error.value) {
