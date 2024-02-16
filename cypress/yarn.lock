@@ -1026,10 +1026,10 @@ cypress-on-fix@1.0.2:
   resolved "https://registry.yarnpkg.com/cypress-on-fix/-/cypress-on-fix-1.0.2.tgz#2bf2d87f1f8403936956653fe915286fda521811"
   integrity sha512-oN/PW7FsC3Y7xC9Z76KzAVXWH5VNPrt+FWjMlSYDPQtEOYedVNBLu7dz9CEU6Ntt5kD0MHuXAyO8Ov2YNBf9lg==
 
-cypress-real-events@1.11.0:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/cypress-real-events/-/cypress-real-events-1.11.0.tgz#292fe5281c5b6e955524e766ab7fec46930c7763"
-  integrity sha512-4LXVRsyq+xBh5TmlEyO1ojtBXtN7xw720Pwb9rEE9rkJuXmeH3VyoR1GGayMGr+Itqf11eEjfDewtDmcx6PWPQ==
+cypress-real-events@1.12.0:
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/cypress-real-events/-/cypress-real-events-1.12.0.tgz#ffeb2b23686ba5b16ac91dd9bc3b6785d36d38d3"
+  integrity sha512-oiy+4kGKkzc2PT36k3GGQqkGxNiVypheWjMtfyi89iIk6bYmTzeqxapaLHS3pnhZOX1IEbTDUVxh8T4Nhs1tyQ==
 
 cypress-split@1.20.1:
   version "1.20.1"
