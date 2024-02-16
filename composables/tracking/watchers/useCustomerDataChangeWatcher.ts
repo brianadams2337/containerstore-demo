@@ -1,5 +1,5 @@
 export const useCustomerDataChangeWatcher = async () => {
-  const { isLoggedIn, forceRefresh, customerType, user } = await useUser()
+  const { isLoggedIn, customerType, user } = await useUser()
 
   const { trackCustomerData } = useTrackingEvents()
 
@@ -26,11 +26,7 @@ export const useCustomerDataChangeWatcher = async () => {
     },
   )
 
-  tryOnMounted(async () => {
-    if (!isLoggedIn.value) {
-      await forceRefresh()
-    }
-
+  onNuxtReady(() => {
     if (currentUserId.value) {
       return
     }
