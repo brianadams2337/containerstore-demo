@@ -29,7 +29,6 @@ type Link =
   | 'pdp'
   | 'orderDetail'
   | 'search'
-  | 'lookbooks'
   | 'osp'
 
 export type LinkList = Record<
@@ -56,11 +55,6 @@ export const routeList: LinkList = {
   pdp: { name: 'p-name-id', path: '/p/' },
   orderDetail: { name: 'account-orders-id', path: '/account/orders/' },
   osp: { name: 'success', path: '/success' },
-  lookbooks: {
-    name: 'lookbooks-slug',
-    path: '/lookbooks',
-    parameter: 'slug',
-  },
 } as const
 
 export { getCategoryPath }

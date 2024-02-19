@@ -55,7 +55,6 @@ declare global {
   type PageType =
     | 'homepage'
     | 'access'
-    | 'lookbooks'
     | 'checkout'
     | 'checkout:#/shipping'
     | 'checkout:#/payment'

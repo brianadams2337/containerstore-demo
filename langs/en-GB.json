@@ -269,10 +269,6 @@
     "best_price_30d": "30-Tage-Bestpreis**:",
     "best_price_hint": "**niedrigster Gesamtpreis der letzten 30 Tage vor der Preisermäßigung"
   },
-  "lookbooks": {
-    "back": "Back",
-    "products": "Products"
-  },
   "plp": {
     "filter": "Filter",
     "seo_description": "Buy within the {categoryName} category online at Demo Shop. Discover the wide range in {categoryName} category"
