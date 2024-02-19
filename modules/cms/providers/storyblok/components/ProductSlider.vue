@@ -80,7 +80,9 @@ const productIds = computed(() => {
 })
 
 const productReferenceKeys = computed(() => {
-  return props.blok.products?.map((elm) => elm.referenceKey).filter(Boolean)
+  return props.blok.products?
+     .map((product) => product.referenceKey)
+     .filter(Boolean)
 })
 
 const withParams = {
