@@ -1,6 +1,5 @@
 import {
   getFirstAttributeValue,
-  type Product,
   type WishlistItem,
 } from '@scayle/storefront-nuxt'
 
@@ -23,19 +22,11 @@ export async function useWishlistPage() {
   }
 
   const orderedItems = computed(() => {
-    const sortedItems = _alphabetical(
-      wishlist.items.value || [],
-      (item: WishlistItem) => {
-        return (
-          getFirstAttributeValue(item.product?.attributes, 'name')?.label ?? ''
-        )
-      },
-    )
-    return sortedItems.filter(
-      (item: WishlistItem): item is WishlistItem & { product: Product } => {
-        return !!item.product
-      },
-    )
+    return _alphabetical(wishlist.items.value || [], (item: WishlistItem) => {
+      return (
+        getFirstAttributeValue(item.product?.attributes, 'name')?.label ?? ''
+      )
+    })
   })
 
   useSeoMeta({

@@ -31,11 +31,8 @@
     "terms": "Promotion Terms & Conditions",
     "show_deals_label": "Show deal items",
     "my_deals_label": "My deals",
-    "full_progress_message": {
-      "first_part": "You are",
-      "middle_part": "saving {amount}",
-      "last_part": "on your order"
-    },
+    "cart_reached": "Shopping cart reached! Add promotional products and get {discount}% discount on them",
+    "full_progress_message": "You are saving {amount} on your order",
     "automatic_discount_headline": {
       "add_label": "Add",
       "another_label": "another",
@@ -94,9 +91,15 @@
   },
   "navigation": {
     "my_account": "My Account",
+    "my_orders": "My Orders",
+    "user_settings": "User Settings",
     "sign_in": "Sign in",
+    "search": "Search",
     "wishlist": "Wishlist",
-    "basket": "Basket"
+    "basket": "Basket",
+    "home": "Home",
+    "checkout": "Checkout",
+    "osp": "Order Confirmation"
   },
   "search": {
     "placeholder": "Search for product, category or brand",
@@ -109,7 +112,8 @@
     "search_try_again_description": "Search for items or brands",
     "product": "Produkt",
     "categories": "Kategorie",
-    "more": "More"
+    "more": "More",
+    "seo_title": "Your search for \"{term}\" has {count} results"
   },
   "promises": {
     "pay_with_invoice": "Pay with invoice",

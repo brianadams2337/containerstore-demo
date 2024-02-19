@@ -13,50 +13,61 @@ const METHOD_DEFAULT = 'none'
 
 const useUserActionEvents = (
   track: (event: TrackingEvent, payload: TrackingPayload) => any,
-) => ({
-  trackLogout: async (customerId: number, email = '') => {
-    track('logout', {
-      customer_id: customerId,
-      eh: email ? await getEmailHash(email) : '',
-    })
-  },
+) => {
+  const route = useRoute()
 
-  trackAuthenticated: async (payload: AuthTrackingEventData, email = '') => {
-    const eh = payload.eh || (email && (await getEmailHash(email)))
-    const {
-      customer_id: customerId,
-      method,
-      status,
-      customer_type: customerType = 'new',
-    } = payload
-    track(
-      payload.event || 'login',
-      mapCustomerInfoToTrackingPayload({
-        customer_id: customerId,
-        method: method || METHOD_DEFAULT,
-        eh,
-        customer_type: customerType, // TODO: CO should add this to payload as well
-        status,
-      }),
-    )
-  },
+  return {
+    trackLogout: () => {
+      track('logout', {
+        customer_id: undefined,
+        eh: undefined,
+        content_name: route.fullPath,
+      })
+    },
 
-  trackRegister: async (
-    payload: AuthTrackingEventData,
-    user?: ShopUser | null,
-  ) => {
-    const { customer_id: customerId, method, status } = payload
-    const eh = await getEmailHash(user?.email)
-    track(
-      'sign_up',
-      mapCustomerInfoToTrackingPayload({
+    trackAuthenticated: async (payload: AuthTrackingEventData, email = '') => {
+      const eh = payload.eh || (email && (await getEmailHash(email)))
+      const {
         customer_id: customerId,
-        method: method || METHOD_DEFAULT,
-        eh,
+        method,
         status,
-      }),
-    )
-  },
-})
+        customer_type: customerType = 'new',
+      } = payload
+
+      const isLoginEvent = payload.event === 'login'
+      const methodKeyName = isLoginEvent ? 'login_method' : 'method'
+
+      track(
+        payload.event || 'login',
+        mapCustomerInfoToTrackingPayload({
+          customer_id: customerId,
+          [methodKeyName]: method || METHOD_DEFAULT,
+          eh,
+          customer_type: customerType, // TODO: CO should add this to payload as well
+          status,
+          content_name: route.fullPath,
+        }),
+      )
+    },
+
+    trackRegister: async (
+      payload: AuthTrackingEventData,
+      user?: ShopUser | null,
+    ) => {
+      const { customer_id: customerId, method, status } = payload
+      const eh = await getEmailHash(user?.email)
+      track(
+        'sign_up',
+        mapCustomerInfoToTrackingPayload({
+          customer_id: customerId,
+          method: method || METHOD_DEFAULT,
+          eh,
+          status,
+          content_name: route.fullPath,
+        }),
+      )
+    },
+  }
+}
 
 export default useUserActionEvents

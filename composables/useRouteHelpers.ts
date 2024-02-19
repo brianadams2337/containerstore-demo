@@ -17,19 +17,7 @@ export function useRouteHelpers() {
     route: RouteLocationRaw,
     options?: NavigateToOptions,
   ) => {
-    if (!isString(route)) {
-      return navigateTo(localePath(route), options)
-    }
-
-    const normalizedPath = normalizePathRoute(route)
-    const dedupedLocalePath = hasLocalePrefix(
-      normalizedPath,
-      currentShop.value?.path,
-    )
-      ? normalizedPath
-      : localePath(normalizedPath)
-
-    return navigateTo(dedupedLocalePath, options)
+    return navigateTo(getLocalizedRoute(route), options)
   }
 
   const getProductDetailRoute = (
@@ -97,6 +85,21 @@ export function useRouteHelpers() {
     })
   }
 
+  const getLocalizedRoute = (route: RouteLocationRaw) => {
+    if (!isString(route)) {
+      const isLocalePath =
+        'path' in route && hasLocalePrefix(route.path, currentShop.value?.path)
+
+      return isLocalePath ? route : localePath(route)
+    }
+
+    const normalizedPath = normalizePathRoute(route)
+
+    return hasLocalePrefix(normalizedPath, currentShop.value?.path)
+      ? normalizedPath
+      : localePath(normalizedPath)
+  }
+
   return {
     localizedNavigateTo,
     getProductDetailRoute,
@@ -104,5 +107,6 @@ export function useRouteHelpers() {
     getSearchRoute,
     getSearchSuggestionPath,
     getOrderDetailsRoute,
+    getLocalizedRoute,
   }
 }

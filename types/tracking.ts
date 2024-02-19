@@ -126,7 +126,8 @@ declare global {
   }
 
   interface ProductActionData {
-    product: Product & { index?: number }
+    product?: Product & { index?: number }
+    products?: Product[]
     variant?: Variant
     category?: TrackingCategory
     quantity?: number
@@ -248,25 +249,29 @@ declare global {
   interface CustomerData {
     customer_id?: number
     customer_type?: CustomerType
+    login_method?: string
     login?: boolean
-    method: AuthenticationType
+    method?: AuthenticationType
     bi_vp?: boolean
     bi_sc?: number
-    eh: string
     status?: StatusType
+    eh: string
+    content_name: string
   }
 
   interface CustomerInfo {
     customer_id?: number
     customer_type: CustomerType
-    method: AuthenticationType
-    eh: string
+    method?: AuthenticationType
+    login_method?: string
     status?: StatusType
+    eh: string
+    content_name: string
   }
 
   interface CustomerLogoutData {
     customer_id?: number
-    eh: string
+    eh?: string
   }
 
   type TrackingPayload =
@@ -299,11 +304,20 @@ declare global {
   }
 
   type TrackAddToBasketParams = {
-    product: Product
+    products?: Product[]
+    product?: Product
     quantity?: number
     variant?: Variant
     index?: number
     list?: ListItem
+  }
+
+  type TrackRemoveFromBasketParams = {
+    products?: Product[]
+    product?: Product
+    quantity?: number
+    variant?: Variant
+    index?: number
   }
 
   type TrackCustomerDataParams = {

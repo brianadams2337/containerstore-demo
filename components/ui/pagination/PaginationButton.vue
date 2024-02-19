@@ -49,5 +49,7 @@ const to = computed(() => {
   return attributes
 })
 
-const scrollToTop = () => window.scroll({ behavior: 'smooth', top: 0 })
+const scrollToTop = () => {
+  setTimeout(() => window.scroll({ behavior: 'smooth', top: 0 }), 100)
+}
 </script>

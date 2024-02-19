@@ -9,11 +9,11 @@
     >
       <NuxtImg
         v-if="imageUrl"
-        class="mr-3 rounded border"
+        :src="imageUrl"
         height="48"
         width="38"
         provider="default"
-        :src="imageUrl"
+        class="mr-3 rounded border"
       />
       <slot />
     </DefaultLink>
@@ -23,22 +23,13 @@
 <script setup lang="ts">
 import type { RouteLocationRaw } from '#vue-router'
 
-defineProps({
-  term: {
-    type: String,
-    default: '',
-  },
-  imageUrl: {
-    type: String,
-    default: '',
-  },
-  to: {
-    type: [Object, String] as PropType<RouteLocationRaw>,
-    default: '',
-  },
-})
+type Props = {
+  term?: string
+  imageUrl?: string
+  to?: RouteLocationRaw
+}
 
-const emit = defineEmits<{
-  (e: 'click:result'): void
-}>()
+withDefaults(defineProps<Props>(), { term: '', imageUrl: '', to: '' })
+
+const emit = defineEmits<{ 'click:result': [] }>()
 </script>

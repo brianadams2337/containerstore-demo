@@ -15,6 +15,13 @@
 <script setup lang="ts">
 await useUser()
 
+const { $i18n } = useNuxtApp()
+
+useSeoMeta({
+  robots: 'index,follow',
+  title: $i18n.t('navigation.user_settings'),
+})
+
 defineOptions({ name: 'UserAccountDetailsPage' })
 definePageMeta({ pageType: 'account_area:user' })
 </script>

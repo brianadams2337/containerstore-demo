@@ -30,7 +30,11 @@
 <script setup lang="ts">
 const { user } = await useUser()
 
+const { $i18n } = useNuxtApp()
+
 const orderCount = computed(() => user.value?.orderSummary?.length || 0)
+
+useSeoMeta({ robots: 'index,follow', title: $i18n.t('navigation.my_account') })
 
 defineOptions({ name: 'AccountOverview' })
 definePageMeta({ pageType: 'account_area' })

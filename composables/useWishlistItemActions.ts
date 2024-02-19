@@ -7,9 +7,7 @@ import {
   getVariant,
 } from '@scayle/storefront-nuxt'
 
-export async function useWishlistItemActions(
-  item: Ref<WishlistItem & { product: Product }>,
-) {
+export async function useWishlistItemActions(item: Ref<WishlistItem>) {
   const { $i18n } = useNuxtApp()
 
   const { replaceItem: replaceWishlistItem } = await useWishlist()
@@ -45,11 +43,8 @@ export async function useWishlistItemActions(
   const promotionId = computed(() => highestPriorityPromotion.value?.id)
 
   const addItemToCart = async (index: number) => {
-    if (!item.value.variant && 'variantId' in item && item.variantId) {
-      item.value.variant = getVariant(
-        product.variants!,
-        item.variantId as number,
-      )
+    if (!item.value.variant && item.value.variantId) {
+      item.value.variant = getVariant(product.variants!, item.value.variantId)
     }
 
     if (

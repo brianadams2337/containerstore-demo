@@ -5,32 +5,25 @@
       class="mb-2.5 block text-sm font-semibold"
       :for="`${label}-category-list`"
     >
-      <slot name="label">{{ label }}</slot>
+      {{ label }}
     </label>
     <ul :id="`${label}-category-list`" class="space-y-2.5">
-      <slot
+      <SearchResultItem
         v-for="{ brandOrCategorySuggestion } in items"
-        name="item"
-        :item="brandOrCategorySuggestion"
-        :search-term="searchTerm"
+        :key="brandOrCategorySuggestion.category.id"
+        :term="searchTerm"
+        :to="brandOrCategorySuggestion.category.path"
+        @click:result="emit('click:result', brandOrCategorySuggestion)"
       >
-        <SearchResultItem
-          v-if="brandOrCategorySuggestion"
-          :key="brandOrCategorySuggestion.category.id"
-          :term="searchTerm"
-          :to="brandOrCategorySuggestion.category.path"
-          @click:result="emit('click:result', brandOrCategorySuggestion)"
-        >
-          <div class="overflow-hidden">
-            <div class="truncate text-2xs font-medium text-secondary">
-              {{ brandOrCategorySuggestion.category.path }}
-            </div>
-            <div class="truncate text-sm font-semibold text-primary">
-              {{ brandOrCategorySuggestion.category.name }}
-            </div>
+        <div class="overflow-hidden">
+          <div class="truncate text-2xs font-medium text-secondary">
+            {{ brandOrCategorySuggestion.category.path }}
           </div>
-        </SearchResultItem>
-      </slot>
+          <div class="truncate text-sm font-semibold text-primary">
+            {{ brandOrCategorySuggestion.category.name }}
+          </div>
+        </div>
+      </SearchResultItem>
     </ul>
   </section>
 </template>
@@ -41,22 +34,15 @@ import type {
   TypeaheadBrandOrCategorySuggestion,
 } from '@scayle/storefront-nuxt'
 
-defineProps({
-  label: {
-    type: String,
-    required: true,
-  },
-  items: {
-    type: Array as PropType<TypeaheadBrandOrCategorySuggestion[]>,
-    default: () => [],
-  },
-  searchTerm: {
-    type: String,
-    default: '',
-  },
-})
+type Props = {
+  label: string
+  searchTerm?: string
+  items?: TypeaheadBrandOrCategorySuggestion[]
+}
+
+withDefaults(defineProps<Props>(), { items: () => [], searchTerm: '' })
 
 const emit = defineEmits<{
-  (e: 'click:result', value: BrandOrCategorySuggestion): void
+  'click:result': [value: BrandOrCategorySuggestion]
 }>()
 </script>

@@ -4,13 +4,15 @@ export async function usePromotionProgress() {
   const { currentPromotion } = useCurrentPromotion()
   const { formatCurrency } = useFormatHelpers()
 
-  const minOrderValue = computed(() => {
+  const minOrderValue = computed<number>(() => {
     return currentPromotion.value?.customData?.minOrderValue || 0
   })
 
-  const minOrderAmount = computed(() => divideByHundred(minOrderValue.value))
+  const minOrderAmount = computed<number>(() => {
+    return divideByHundred(minOrderValue.value)
+  })
 
-  const basketTotal = computed(() => {
+  const basketTotal = computed<number>(() => {
     const promotionReductions = _sum(
       basketData.value.cost.appliedReductions
         .filter(({ category }) => category === 'promotion')
@@ -20,7 +22,7 @@ export async function usePromotionProgress() {
     return basketData.value.cost.withTax + promotionReductions
   })
 
-  const progress = computed(() => {
+  const progress = computed<number>(() => {
     if (!minOrderValue.value) {
       return 0
     }
@@ -28,24 +30,48 @@ export async function usePromotionProgress() {
     return basketTotal.value / minOrderAmount.value
   })
 
-  const isFullProgress = computed(() => {
+  const isFullProgress = computed<boolean>(() => {
     return !!progress.value && progress.value >= 100
   })
 
-  const formattedAmount = computed(() => formatCurrency(minOrderValue.value))
-
-  const formattedAmountLeft = computed(() => {
+  const formattedAmountLeft = computed<string | undefined>(() => {
     if (!minOrderValue.value) {
       return
     }
     return formatCurrency(minOrderValue.value - basketTotal.value)
   })
 
+  const formattedDiscount = computed<string | undefined>(() => {
+    const promotedItem = basketData.value.items.find(
+      (item) => item.promotionId === currentPromotion.value?.id,
+    )
+
+    const reduction = promotedItem?.price.total.appliedReductions.find(
+      ({ category }) => category === 'promotion',
+    )
+
+    if (!reduction) {
+      return
+    }
+
+    return formatCurrency(reduction?.amount.absoluteWithTax)
+  })
+
+  const isMOVPromotionApplied = computed<boolean>(() => {
+    if (!minOrderValue.value) {
+      return false
+    }
+    return basketData.value.items.some(({ promotionId }) => {
+      return promotionId === currentPromotion.value?.id
+    })
+  })
+
   return {
     minOrderAmount,
     progress,
     isFullProgress,
-    formattedAmount,
     formattedAmountLeft,
+    formattedDiscount,
+    isMOVPromotionApplied,
   }
 }

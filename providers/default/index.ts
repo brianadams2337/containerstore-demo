@@ -1,8 +1,13 @@
 import { joinURL } from 'ufo'
+import type { ProviderGetImage } from '@nuxt/image'
 
 export default () => {}
 
-export function getImage(src: any, { modifiers }: any = {}) {
+export const getImage: ProviderGetImage = (
+  src,
+  { modifiers = {} } = {},
+  ctx,
+) => {
   const keyMap = {
     width: 'width',
     height: 'height',
@@ -11,7 +16,7 @@ export function getImage(src: any, { modifiers }: any = {}) {
     // format: 'format',
   }
 
-  const baseURL = useRuntimeConfig().public.cdnUrl
+  const baseURL = ctx.options.runtimeConfig.public.cdnUrl
 
   if (modifiers.width && !modifiers.height) {
     modifiers.height = Math.ceil((modifiers.width * 4) / 3)

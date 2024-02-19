@@ -63,6 +63,13 @@ export default defineNuxtConfig({
   // https://nuxt.com/docs/api/nuxt-config#debug
   debug: yn(process.env.ENABLE_NUXT_DEBUGGING),
 
+  // https://nuxt.com/blog/v3-10#bundler-module-resolution
+  // Some dependencies are currently not yet compatible with `moduleResolution: bundler`:
+  // - nuxt-gtm
+  future: {
+    typescriptBundlerResolution: false,
+  },
+
   // Any key/value pair outside of the `public` key are private/server-side only
   // https://nuxt.com/docs/guide/going-further/runtime-config
   runtimeConfig: {
@@ -108,7 +115,7 @@ export default defineNuxtConfig({
        * https://github.com/zadigetvoltaire/nuxt-gtm#readme */
       gtm: {
         id: process.env.NUXT_PUBLIC_GTM_ID ?? '', // Override: NUXT_PUBLIC_GTM_ID
-        debug: yn(process.env.NUXT_PUBLIC_GTM_DEBUG), // Override: NUXT_PUBLIC_GTM_DEBUG
+        debug: process.env.NUXT_PUBLIC_GTM_DEBUG, // Override: NUXT_PUBLIC_GTM_DEBUG
       },
       /** Storyblok Runtime Configuration
        * https://scayle.dev/en/dev/storefront-core/module-configuration */
@@ -163,6 +170,7 @@ export default defineNuxtConfig({
     '@storyblok/nuxt',
     '@zadigetvoltaire/nuxt-gtm',
     '@nuxt/test-utils/module',
+    './modules/cms',
   ],
 
   // https://github.com/lukasaric/radash-nuxt
@@ -243,7 +251,7 @@ export default defineNuxtConfig({
   // https://nuxt.com/docs/api/nuxt-config#imports
   imports: {
     // https://nuxt.com/docs/api/nuxt-config#dirs
-    dirs: ['./constants', './storyblok/composables'],
+    dirs: ['./constants'],
   },
 
   // Allow auto-import for vue components
@@ -278,7 +286,7 @@ export default defineNuxtConfig({
   // https://nitro.unjs.io/guide/cache#route-rules
   routeRules: (() => {
     // Allow for disabling the SSR Cache via an environment flag
-    if (process.env.DISABLE_PAGE_CACHE === 'true') {
+    if (yn(process.env.DISABLE_PAGE_CACHE)) {
       return {}
     }
 
@@ -310,7 +318,9 @@ export default defineNuxtConfig({
     // Page generated on-demand, revalidates in background
     const CACHE_PAGE = {
       cache: {
-        swr: true, // Enable stale-while-revalidate
+        // SWR currently leads to some bugs in the Nitro caching implementation that it will continue to serve outdated data in case the SSR handler crashes
+        // We recommend to keep this disabled currently.
+        swr: false, // Disable stale-while-revalidate
         maxAge: 10 * 60, // Default: 10min
         staleMaxAge: 10 * 60, // Default: 10min
         group: 'ssr', // Cache group name
@@ -336,8 +346,7 @@ export default defineNuxtConfig({
           '/basket': NO_CACHE,
           '/checkout': NO_CACHE,
           '/signin': NO_CACHE,
-          '/account/*': NO_CACHE,
-          '/orders/*': NO_CACHE,
+          '/account**': NO_CACHE,
         }
       : locales.reduce(
           (rules: NitroRouteConfig, locale) => {
@@ -352,8 +361,7 @@ export default defineNuxtConfig({
               [`/${locale.code}/basket`]: NO_CACHE,
               [`/${locale.code}/checkout`]: NO_CACHE,
               [`/${locale.code}/signin`]: NO_CACHE,
-              [`/${locale.code}/account/*`]: NO_CACHE,
-              [`/${locale.code}/orders/*`]: NO_CACHE,
+              [`/${locale.code}/account**`]: NO_CACHE,
             }
             return newRules
           },
@@ -362,4 +370,13 @@ export default defineNuxtConfig({
           },
         )
   })(),
+
+  // The production build does not work when linking (dev mode is fine)
+  // This workaround resolves the issue:
+  // https://github.com/vitejs/vite/issues/11657#issuecomment-1385932066
+  vite: {
+    resolve: {
+      preserveSymlinks: true,
+    },
+  },
 })

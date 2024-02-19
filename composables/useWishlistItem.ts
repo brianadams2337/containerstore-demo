@@ -2,15 +2,12 @@ import {
   type WishlistItem,
   type Price,
   type LowestPriorPrice,
-  type Product,
   type Value,
   getLowestPrice,
   getSizeFromVariant,
 } from '@scayle/storefront-nuxt'
 
-export function useWishlistItem(
-  item: Ref<WishlistItem & { product: Product }>,
-) {
+export function useWishlistItem(item: Ref<WishlistItem>) {
   const hasOneSizeVariantOnly = computed(() => {
     return hasOneSizeProductVariantOnly(item.value.product)
   })

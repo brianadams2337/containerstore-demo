@@ -7,6 +7,11 @@ const handleNonInitializedTracking = (log: Log) => ({
   push: (data: any) => {
     log.warn(`Gtm was not initialized yet. Event: ${JSON.stringify(data)}`)
   },
+  hasEventInQueue: (eventName: string) => {
+    log.warn(
+      `Gtm was not initialized yet. "${eventName} does not exist in queue`,
+    )
+  },
 })
 
 export function useTracking() {
@@ -67,9 +72,13 @@ export function useTracking() {
     queue.value.length = 0
   }
 
+  const hasEventInQueue = (eventName: string) => {
+    return queue.value.some((item) => item.data.event === eventName)
+  }
+
   const flushDebounced = _debounce({ delay: WAIT_TIME }, flush)
 
   useEventListener('beforeunload', flush)
 
-  return { push }
+  return { push, hasEventInQueue }
 }

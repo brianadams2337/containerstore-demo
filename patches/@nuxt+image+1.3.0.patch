@@ -1,0 +1,32 @@
+diff --git a/node_modules/@nuxt/image/dist/module.d.ts b/node_modules/@nuxt/image/dist/module.d.ts
+index 94e5231..253d290 100644
+--- a/node_modules/@nuxt/image/dist/module.d.ts
++++ b/node_modules/@nuxt/image/dist/module.d.ts
+@@ -1,5 +1,5 @@
+ import * as _nuxt_schema from '@nuxt/schema';
+-import { Nuxt } from '@nuxt/schema';
++import { Nuxt, RuntimeConfig } from '@nuxt/schema';
+ import { IPXOptions as IPXOptions$1, HTTPStorageOptions, NodeFSSOptions } from 'ipx';
+ 
+ interface ImageModifiers {
+@@ -46,6 +46,7 @@ interface CreateImageOptions {
+     densities: number[];
+     format: string[];
+     quality?: number;
++    runtimeConfig: RuntimeConfig;
+ }
+ interface ImageInfo {
+     width: number;
+diff --git a/node_modules/@nuxt/image/dist/runtime/composables.mjs b/node_modules/@nuxt/image/dist/runtime/composables.mjs
+index e8cbade..8d45874 100644
+--- a/node_modules/@nuxt/image/dist/runtime/composables.mjs
++++ b/node_modules/@nuxt/image/dist/runtime/composables.mjs
+@@ -8,6 +8,7 @@ export const useImage = () => {
+     ...imageOptions,
+     nuxt: {
+       baseURL: config.app.baseURL
+-    }
++    },
++    runtimeConfig: config,
+   }));
+ };

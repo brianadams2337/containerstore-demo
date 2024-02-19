@@ -1,17 +1,19 @@
-export default defineNuxtPlugin(() => {
-  const router = useRouter()
+const TIMEOUT_DELAY = 500
+
+export default defineNuxtRouteMiddleware((to, from) => {
   const { pageState } = usePageState()
   const tracking = useTracking()
 
-  router?.afterEach((to, from) => {
+  // We need to add delay because title is not properly retrieved from "document".
+  setTimeout(() => {
     tracking.push(
       mapTrackingDataForEvent('content_view', {
         content_name: to.path,
-        title: (typeof document !== 'undefined' && document.title) || '',
+        title: document.title || '',
         page_type: pageState.value.type,
         page_type_id: pageState.value.typeId,
         click_origin: from?.fullPath,
       }),
     )
-  })
+  }, TIMEOUT_DELAY)
 })

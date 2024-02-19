@@ -101,12 +101,12 @@ export async function useBasketItem(basketItem: Ref<BasketItem>) {
         list: listingMetaData,
       })
     } else if (basketItem.quantity > newQuantity) {
-      trackRemoveFromBasket(
-        product.value,
-        basketItem.quantity - newQuantity,
-        variant.value,
+      trackRemoveFromBasket({
+        product: product.value,
+        quantity: basketItem.quantity - newQuantity,
+        variant: variant.value,
         index,
-      )
+      })
     }
 
     await basket.addItem({

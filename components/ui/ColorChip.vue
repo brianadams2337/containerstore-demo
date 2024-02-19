@@ -8,7 +8,7 @@
   >
     <IconCheckmark
       v-if="isActive"
-      class="absolute inset-x-0 m-auto size-5"
+      class="absolute inset-x-0 m-auto"
       :class="isLightColor ? 'text-primary' : 'text-white'"
     />
     <span v-if="hasMixedColors" class="grid size-full grid-cols-2">

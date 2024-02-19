@@ -25,6 +25,11 @@ const getBreadcrumbTitle = (id: number) => {
     : $i18n.t('my_account.orders.overview')
 }
 
+useSeoMeta({
+  robots: 'index,follow',
+  title: $i18n.t('navigation.my_orders'),
+})
+
 defineOptions({ name: 'OrderHistoryPage' })
 definePageMeta({ pageType: 'account_area:orders' })
 </script>

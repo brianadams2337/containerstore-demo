@@ -24,7 +24,7 @@ export function useTrackingEvents() {
 
   const { pageState } = usePageState()
   const track = (event: TrackingEvent, payload: TrackingPayload) => {
-    if (process.server) {
+    if (import.meta.server) {
       return
     }
     const eventData: Partial<{

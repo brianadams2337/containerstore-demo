@@ -29,7 +29,7 @@
             </div>
             <div class="flex items-start justify-between md:flex-col">
               <Headline
-                :size="isGreaterOrEqual('md') ? '2xl' : 'xl'"
+                size="xl"
                 class="!leading-snug"
                 data-test-id="pdp-product-name"
                 tag="h1"
@@ -72,7 +72,7 @@
                   size="xl"
                   class="mt-3"
                   v-bind="{ product, lowestPriorPrice, price }"
-                  :type="isGreaterOrEqual('md') ? 'normal' : 'loud'"
+                  type="normal"
                   :show-automatic-discount="!isBuyXGetYPrioritized"
                   :show-price-from="hasSpecial"
                   :show-price-reduction-badge="hasSpecial"
@@ -93,7 +93,7 @@
                     <ColorChip
                       v-if="item.colors.length"
                       :is-active="item.id === product.id"
-                      :size="isGreaterOrEqual('md') ? Size.LG : Size.XL"
+                      :size="Size.LG"
                       :color="item.colors[0] as ProductColor"
                     />
                   </DefaultLink>
@@ -245,8 +245,6 @@ const { state: zoomGallery, toggle: toggleZoomGallery } =
 
 const { trackViewItemList, trackViewItem } = useTrackingEvents()
 
-const { isGreaterOrEqual } = useDefaultBreakpoints()
-
 const trackViewListing = ({ items }: { row: number; items: Product[] }) => {
   trackViewItemList({ items, listingMetaData })
 }
@@ -265,17 +263,9 @@ onUnmounted(() => {
   quantity.value = 1
 })
 
-definePageMeta({ pageType: 'pdp' })
-
 const metaDescription = computed(() =>
   $i18n.t('pdp.seo.description', { productName: productName.value }),
 )
-
-useSeoMeta(() => ({
-  robots: 'index,follow',
-  title: `${productName.value} ${$i18n.t('pdp.seo.buy_online')}`,
-  description: metaDescription.value,
-}))
 
 const currentShop = useCurrentShop()
 const { formatCurrency } = useFormatHelpers()
@@ -296,11 +286,15 @@ useJsonld(() =>
   }),
 )
 
+useSeoMeta(() => ({ robots: 'index,follow' }))
+
 useHead(() => {
   if (!product.value) {
     return {}
   }
   return {
+    title: `${productName.value} ${$i18n.t('pdp.seo.buy_online')}`,
+    meta: [{ name: 'description', content: metaDescription.value }],
     link: [
       {
         rel: 'canonical',
@@ -314,4 +308,5 @@ useHead(() => {
 })
 
 defineOptions({ name: 'ProductDetailPage' })
+definePageMeta({ pageType: 'pdp' })
 </script>

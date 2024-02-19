@@ -205,3 +205,13 @@ http_proxy=http://127.0.0.1:8080
 ```
 
 After starting both `mitmproxy` and our shop, we should be able to now see all relevant HTTP(S) requests and API calls in the `mitmweb` tab.
+
+## Patches
+
+In some cases, patches to third-party packages are required. The Storefront Boilerplate uses [`patch-package`](https://www.npmjs.com/package/patch-package) to manage patching. The tool will run in `postinstall` and apply any patches present in the `patches/` directory.
+
+### Current applied patches
+
+- `@nuxt/image` - Support providing the base URL through runtime configuration
+- `unstorage` - Log the driver name instead of `undefined` when VercelKV is used
+- `nitropack` - Support page caching

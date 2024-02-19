@@ -31,11 +31,8 @@
     "terms": "Allgemeine Geschäftsbedingungen für Werbeaktionen",
     "show_deals_label": "Deal-Artikel anzeigen",
     "my_deals_label": "Meine Angebote",
-    "full_progress_message": {
-      "first_part": "Sie",
-      "middle_part": "sparen {amount}",
-      "last_part": "bei Ihrer Bestellung"
-    },
+    "cart_reached": "Warenkorb erreicht! Fügen Sie Promotion Produkte hinzu und erhalten Sie {discount}% Rabatt darauf",
+    "full_progress_message": "Sie sparen {amount} bei Ihrer Bestellung",
     "automatic_discount_headline": {
       "add_label": "Fügen Sie",
       "another_label": "weitere",
@@ -94,9 +91,15 @@
   },
   "navigation": {
     "my_account": "Mein Konto",
+    "my_orders": "Meine Bestellungen",
+    "user_settings": "Benutzereinstellungen",
     "sign_in": "Einloggen",
     "wishlist": "Wunschliste",
-    "basket": "Warenkorb"
+    "basket": "Warenkorb",
+    "home": "Home",
+    "search": "Suchen",
+    "checkout": "Kasse",
+    "osp": "Bestellbestätigung"
   },
   "search": {
     "placeholder": "Suche Produkte, Kategorien oder Marken",
@@ -109,7 +112,8 @@
     "result": "Deine Suche nach \"{term}\" ergab {resultsCount} Treffer.",
     "product": "Produkt",
     "categories": "Kategorie",
-    "more": "Mehr"
+    "more": "Mehr",
+    "seo_title": "Ihre Suche nach \"{term}\" ergab {count} Ergebnisse"
   },
   "promises": {
     "pay_with_invoice": "Per Rechnung bezahlen",

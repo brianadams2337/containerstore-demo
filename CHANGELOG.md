@@ -1,5 +1,113 @@
 # @scayle/storefront-boilerplate-nuxt
 
+## 1.0.0-rc.07
+
+This release focuses on stabilization and modularization, to improve the technical foundation and developer experience.
+
+### 🔥 Highlights
+
+#### ✨ Update to Nuxt 3.10.2 and Vue 3.4.19
+
+Storefront Boilerplate now runs on both the latest Nuxt `v3.10.2` and Vue `v3.4.19` and benefits from a multitude of improvements.
+To get more details about all the changes see the [Official Nuxt 3.10 Announcement Blog](https://nuxt.com/blog/v3-10)
+and the [Official Vue 3.4.19 Changelogs](https://github.com/vuejs/core/blob/main/CHANGELOG.md#3419-2024-02-13).
+
+#### 🧪 Modularization: Extracting Cypress into dedicated sub-package
+
+The Cypress testing solution has been extracted into a dedicated child package located at `cypress/`. This decouples the dependencies from the main Storefront application. To install all relevant Cypress dependencies, execute `yarn install` within the `cypress/` directory.
+By default the current Cypress integration does not rely anymore on the commercial Cypress Dashboard integration.
+Please check the dedicated Readme file located at `cypress/README.md` for more details.
+
+The following dependencies have moved from `package.json` to `cypress/package.json`:
+
+- `cypress`
+- `cypress-real-events`
+- `eslint-plugin-cypress`
+
+#### 🧱 Modularization: Extracting Storyblok Integration into local module
+
+The Storyblok integration has been extracted into a dedicated local Nuxt module `storefront-cms`.
+This allows to combine all CMS provider relevant functionalities within a central Nuxt module and allows for simple future inclusion of additional CMS providers.
+
+The new local Nuxt module can be found under `modules/cms/` and its path has been added to `nuxt.config.ts` to the `modules` list.
+
+### 🧲 Tracking Refactoring and Improvements
+
+The included tracking implementation has been refactored and received various improvements to increase the tracking data quality, as well as tracking data reliability.
+
+### 🚀 Major Changes
+
+- **BREAKING:** The Image CDN config key has now moved to runtimeConfig under `public.cdnUrl`
+  - The environment variable `NUXT_PUBLIC_IMAGE_BASE_URL` has been replaced by `NUXT_PUBLIC_CDN_URL`
+- **BREAKING:** Added patch files for automatic dependency patching with [`patch-package`](https://www.npmjs.com/package/patch-package).
+  The tool will run in `postinstall` and apply any patches present in the `patches/` directory to the respective dependency. Extended `README.md` with a section regarding `Patches` to explain the details and currently applied patches
+  - Patched support for runtimeConfig with `@nuxt/image`
+  - Patched missing (`undefined`) driver name in `unstorage` if using `VercelKV` as caching driver
+  - Patches `nitro` (`nitropack`) to resolve session issues with page caching enabled
+- Added full support for an easy way of running the application through docker compose
+
+### 💅 Minor Changes
+
+- Refactored Wishlist
+  - Added `WishlistCardSlideIn`, `WishlistCardImage` and `WishlistCardDescription` components
+  - Added `useWishlistPage`, `useWishlistItem` and `useWishlistItemActions` composables
+- Fixed an issue with Guest User being able to access the Account page, even though it did not have any content
+- Fixed an issue with the Order pages not properly displaying content due to page caching issues while using path-based routing
+- Fixed various UX/UI issues for the new Promotion Engine feature
+- Fixed hydration issues related to viewport-dependent font-size classes on PDP in `pages/p/[slug].vue`
+- Fixed hydration issues related to viewport-dependent font-size classes on PLP in `components/product/card/ProductCard.vue`
+- Refactored various components to use new Vue v3 `defineEmits` syntax for events
+  - `components/layout/headers/search/MobileSearchInput.vue`
+  - `components/search/CategorySuggestions.vue`
+  - `components/search/ProductSuggestions.vue`
+  - `components/search/SearchResultItem.vue`
+  - `components/search/SearchResults.vue`
+  - `components/search/SearchResultsContainer.vue`
+- Fixed `DefaultLink` behaviour with path-based routing in `components/ui/links/DefaultLink.vue`
+- Fixed client-side validation behaviour for login and registration forms
+  - `components/auth/GuestLoginForm.vue`
+  - `components/auth/LoginForm.vue`
+  - `components/auth/RegisterForm.vue`
+  - `components/auth/SalutationSelect.vue`
+- Fixed "Register" link to open the "Registration" tab within the `SignInForm` in `components/auth/SignInForm.vue`
+
+### 🩹 Patch Changes
+
+- Added `hasOneSizeProductVariantOnly` helper within `sizes` util
+- Fixed UX / UI issues for Order details page in `pages/account/orders.vue`
+- Fixed UX / UI issues with login and registration forms
+- Fixed window scrolling on PLP pagination in `components/ui/pagination/PaginationButton.vue`
+- Disabled `swr` for page caching by default to mitigate potential broken pages and hydration issues
+
+### 🏡 Dependency Updates
+
+#### 🏘️ devDependencies
+
+- Updated to `@crowdin/cli@3.18.0`
+- Updated to `@nuxt/test-utils@3.11.0`
+- Updated to `@nuxtjs/i18n@8.1.0`
+- Updated to `@nuxtjs/tailwindcss@6.11.4`
+- Updated to `@types/node@20.11.17`
+- Updated to `@upstash/redis@1.28.3`
+- Updated to `@vitest/coverage-v8@1.2.2`
+- Updated to `eslint-plugin-tailwindcss@3.14.2`
+- Updated to `happy-dom@13.3.8`
+- Updated to `lint-staged@15.2.2`
+- Updated to `nuxt@3.10.1`
+- Updated to `postcss@8.4.35`
+- Updated to `vitest@1.2.2`
+
+#### 🏠 dependencies
+
+- Updated to `@scayle/storefront-nuxt@7.57.1`
+- Updated to `citty@0.1.5`
+- Updated to `dotenv@16.4.3`
+- Updated to `nanoid@5.0.5`
+- Updated to `redis@4.6.13`
+- Updated to `storyblok-js-client@6.6.7`
+- Updated to `ufo@1.4.0`
+- Updated to `vue@3.4.19`
+
 ## 1.0.0-rc.06
 
 This release focuses on stabilization and refactoring, to improve the technical foundation and developer experience.

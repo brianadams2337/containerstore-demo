@@ -54,7 +54,6 @@
 </template>
 
 <script setup lang="ts">
-import { useFocus } from '@vueuse/core'
 import type {
   BrandOrCategorySuggestion,
   ProductSuggestion,
@@ -85,13 +84,18 @@ const { trackSearchSuggestionClick } = useTrackingEvents()
 const { getSearchRoute, localizedNavigateTo } = useRouteHelpers()
 
 const showSuggestions = ref(false)
+
 watchEffect(() => {
   showSuggestions.value = searchQuery.value.length >= MIN_CHARS_FOR_SEARCH
 })
 
 const { focused: inputActive } = useFocus(input)
 
-watch(inputActive, (val) => !val && resetSearch())
+watch(inputActive, (val) => {
+  if (!val) {
+    _debounce({ delay: 500 }, resetSearch)
+  }
+})
 
 const { products, categories, brands } = useTypeaheadSuggestions(data)
 
@@ -132,6 +136,7 @@ const openSearchPage = async () => {
 }
 
 const count = computed(() => data?.value?.suggestions.length)
+
 const isFlyoutOpened = computed(() => {
   return !!(
     products.value.length ||

@@ -30,41 +30,27 @@ import type {
   TypeaheadProductSuggestion,
 } from '@scayle/storefront-nuxt'
 
-defineProps({
-  productLimit: {
-    type: Number,
-    default: PRODUCT_LIMIT,
-  },
-  categoryLimit: {
-    type: Number,
-    default: CATEGORY_LIMIT,
-  },
-  term: {
-    type: String,
-    default: '',
-  },
-  resultsCount: {
-    type: Number,
-    default: 0,
-  },
-  showLabels: {
-    type: Boolean,
-    default: true,
-  },
-  productSuggestions: {
-    type: Array as PropType<TypeaheadProductSuggestion[]>,
-    default: () => [],
-  },
-  categories: {
-    type: Array as PropType<TypeaheadBrandOrCategorySuggestion[]>,
-    default: () => [],
-  },
+type Suggestion = BrandOrCategorySuggestion | ProductSuggestion
+
+type Props = {
+  productLimit?: number
+  categoryLimit?: number
+  term?: string
+  resultsCount?: number
+  showLabels?: boolean
+  productSuggestions?: TypeaheadProductSuggestion[]
+  categories?: TypeaheadBrandOrCategorySuggestion[]
+}
+
+withDefaults(defineProps<Props>(), {
+  productLimit: PRODUCT_LIMIT,
+  categoryLimit: CATEGORY_LIMIT,
+  term: '',
+  resultsCount: 0,
+  showLabels: true,
+  productSuggestions: () => [],
+  categories: () => [],
 })
 
-const emit = defineEmits<{
-  (
-    e: 'click:result',
-    value: BrandOrCategorySuggestion | ProductSuggestion,
-  ): void
-}>()
+const emit = defineEmits<{ 'click:result': [value: Suggestion] }>()
 </script>

@@ -1,0 +1,25 @@
+diff --git a/node_modules/nitropack/dist/runtime/cache.mjs b/node_modules/nitropack/dist/runtime/cache.mjs
+index 87e3fef..04f346a 100644
+--- a/node_modules/nitropack/dist/runtime/cache.mjs
++++ b/node_modules/nitropack/dist/runtime/cache.mjs
+@@ -4,7 +4,8 @@ import {
+   defineEventHandler,
+   createEvent,
+   isEvent,
+-  splitCookiesString
++  splitCookiesString,
++  fetchWithEvent
+ } from "h3";
+ import { parseURL } from "ufo";
+ import { useStorage } from "./storage.mjs";
+@@ -210,6 +211,10 @@ export function defineCachedEventHandler(handler, opts = defaultCacheOptions) {
+         }
+       });
+       const event = createEvent(reqProxy, resProxy);
++      event.fetch = (req, init) => fetchWithEvent(event, req, init, { fetch: useNitroApp().localFetch });
++      event.$fetch = (req, init) => fetchWithEvent(event, req, init, {
++        fetch: globalThis.$fetch
++      });
+       event.context = incomingEvent.context;
+       const body = await handler(event) || _resSendBody;
+       const headers = event.node.res.getHeaders();

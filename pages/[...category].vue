@@ -221,16 +221,16 @@ watch(
 const robots = computed(() =>
   isFiltered.value ? 'noindex,follow' : 'index,follow',
 )
-
-useSeoMeta(() => ({
-  robots: robots.value,
-  description: $i18n.t('plp.seo_description', {
+const metaDescription = computed(() => {
+  return $i18n.t('plp.seo_description', {
     categoryName: selectedCategory.value?.name.toLowerCase(),
-  }),
-  title: selectedCategory.value?.name,
-}))
+  })
+})
 
 useHead(() => ({
+  robots: robots.value,
+  title: selectedCategory.value?.name,
+  meta: [{ name: 'description', content: metaDescription.value }],
   link: robots.value?.includes('noindex')
     ? []
     : [

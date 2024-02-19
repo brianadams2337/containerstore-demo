@@ -71,7 +71,7 @@ onMounted(() => fetch())
 const onToggleWishlist = async () => {
   const wasInWishlist = contains({ productId: productId.value })
 
-  trackWishlistEvent(wasInWishlist ? 'added' : 'removed', {
+  trackWishlistEvent(!wasInWishlist ? 'added' : 'removed', {
     product: product.value,
     ...(props.listingMetaData && { listingMetaData: props.listingMetaData }),
   })

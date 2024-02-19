@@ -17,7 +17,11 @@
     />
     <div class="flex h-full flex-1 justify-end">
       <PromotionProgress v-if="minOrderValue" class="mr-2.5" />
-      <ShowDealsButton v-else-if="category" :category="category" class="mr-3" />
+      <ShowDealsButton
+        v-if="showDealsButton"
+        :category="category"
+        class="mr-3"
+      />
       <MyDealsButton class="self-center" />
     </div>
   </div>
@@ -33,9 +37,6 @@
 <script setup lang="ts">
 const props = defineProps<{ promotions: Promotion[] }>()
 
-const route = useRoute()
-const localePath = useLocalePath()
-
 usePromotionChange(props.promotions)
 
 const {
@@ -49,10 +50,13 @@ const {
 const { togglePromotionList, isPromotionListShown, setBannerRef } =
   usePromotionActions()
 
-onNuxtReady(() => {
-  const isOrderSuccessPage = route.path === localePath(routeList.osp.path)
-  if (!isOrderSuccessPage && props.promotions.length > 1) {
-    togglePromotionList()
-  }
+const { isMOVPromotionApplied, isFullProgress } = await usePromotionProgress()
+
+const showDealsButton = computed<boolean>(() => {
+  return Boolean(
+    category.value &&
+      (!minOrderValue.value ||
+        (!isMOVPromotionApplied.value && isFullProgress.value)),
+  )
 })
 </script>

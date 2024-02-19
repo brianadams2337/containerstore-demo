@@ -158,9 +158,7 @@ const toggleItem = (product: Product) => {
     `wishlist.notification.${
       !wasInWishlist ? 'add_to_wishlist' : 'remove_from_wishlist'
     }`,
-    {
-      productName: name,
-    },
+    { productName: name },
   )
 
   wasInWishlist
@@ -191,6 +189,14 @@ const sortingValues = Object.values(getSortingValues())
 const selectedSort = computed(() => getSortByValue(route.query.sort || '').name)
 
 const resultsCount = computed(() => pagination.value?.total)
+
+useSeoMeta({
+  robots: 'index,follow',
+  title: `${$i18n.t('search.seo_title', {
+    term: term.value.toString(),
+    count: resultsCount.value.toString(),
+  })}`,
+})
 
 defineOptions({ name: 'SearchPage' })
 definePageMeta({ pageType: 'search_result_page' })

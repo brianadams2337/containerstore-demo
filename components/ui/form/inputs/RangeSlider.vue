@@ -64,6 +64,7 @@ https://nightcatsama.github.io/vue-slider-component/#/?hash=server-side-renderin
 // @ts-ignore
 import VueSlider from 'vue-slider-component/dist-css/vue-slider-component.umd.min.js'
 import 'vue-slider-component/dist-css/vue-slider-component.css'
+import '@/assets/css/slider/default.css'
 
 type RangeTuple = [start: number, end: number]
 
@@ -101,5 +102,3 @@ const changeRangeAtIndex = (newRangeValue: number, index: 0 | 1) => {
   range.value = updatedRange as RangeTuple
 }
 </script>
-
-<style src="@/assets/css/slider/default.css" />

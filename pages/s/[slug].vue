@@ -49,5 +49,11 @@ if (error.value) {
   throw error.value
 }
 
+useSeoMeta({
+  robots: 'index,follow',
+  title: _capitalize(slug.value.toString()),
+})
+
 defineOptions({ name: 'ServicesPage' })
+definePageMeta({ pageType: 'service_pages' })
 </script>

@@ -138,7 +138,7 @@ const classes = computed(() => ({
   'text-xl': props.size === Size.XL,
   'text-lg': props.size === Size.LG,
   'text-sm': props.size === Size.SM,
-  'text-md': props.size === Size.MD,
+  'text-base': props.size === Size.MD,
   'text-xs': props.size === Size.XS,
   'font-bold': props.type === 'loud',
   'font-semibold': props.type === 'whisper',
