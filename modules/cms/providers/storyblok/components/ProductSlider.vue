@@ -80,9 +80,9 @@ const productIds = computed(() => {
 })
 
 const productReferenceKeys = computed(() => {
-  return props.blok.products?
-     .map((product) => product.referenceKey)
-     .filter(Boolean)
+  return props.blok.products
+    ?.map((product) => product.referenceKey)
+    .filter(Boolean)
 })
 
 const withParams = {
@@ -104,26 +104,29 @@ const withParams = {
   lowestPriorPrice: true,
 }
 
-const { data, fetching } =
-  props.blok.products && props.blok.products.length > 0
-    ? await useProductsByReferenceKeys({
-        params: {
-          referenceKeys: productReferenceKeys.value || [],
-          with: withParams,
-        },
-        key: `productSlider-${props.blok._uid}`,
-      })
-    : await useProductsByIds({
-        params: {
-          ids: productIds.value || [],
-          with: withParams,
-        },
-        key: `productSlider-${props.blok._uid}`,
-      })
+const isUsingReferenceKeys = computed(() => {
+  return props.blok.products && props.blok.products.length > 0
+})
+
+const { data, fetching } = isUsingReferenceKeys.value
+  ? await useProductsByReferenceKeys({
+      params: {
+        referenceKeys: productReferenceKeys.value || [],
+        with: withParams,
+      },
+      key: `productSlider-${props.blok._uid}`,
+    })
+  : await useProductsByIds({
+      params: {
+        ids: productIds.value || [],
+        with: withParams,
+      },
+      key: `productSlider-${props.blok._uid}`,
+    })
 
 const trackingCollector = ref<Product[]>([])
 const products = computed(() => {
-  if (props.blok.products && props.blok.products.length > 0) {
+  if (isUsingReferenceKeys.value) {
     // If products are fetched by reference keys, maintain the same order
     return productReferenceKeys.value
       ?.map(
