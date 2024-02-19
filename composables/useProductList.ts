@@ -7,7 +7,7 @@ const listingMetaData = {
 }
 
 export async function useProductList(
-  categoryPath: string | undefined = undefined,
+  categoryPath?: string
 ) {
   const route = useRoute()
 
