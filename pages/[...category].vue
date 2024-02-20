@@ -149,11 +149,9 @@ const { fetchBySlug } = useCMS<SbListingPage>(`ListingPage-${route.path}`)
 const cmsStatus = ref('')
 const cmsData = ref()
 
-const pathWithoutLocale =
-  hasLocalePrefix(route.path, currentShop.value?.path) &&
-  currentShop.value?.path
-    ? stripShopLocaleFromPath(currentShop.value?.path, route.path)
-    : route.path
+const pathWithoutLocale = currentShop.value?.path
+  ? stripShopLocaleFromPath(currentShop.value?.path, route.path)
+  : route.path
 const { data: category } = await useCategoryByPath({
   params: { path: normalizePathRoute(pathWithoutLocale), children: 0 },
   key: 'category',
