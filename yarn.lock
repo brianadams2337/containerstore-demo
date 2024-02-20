@@ -1877,10 +1877,10 @@
   dependencies:
     prettier-config-standard "^7.0.0"
 
-"@scayle/storefront-core@7.41.3":
-  version "7.41.3"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.41.3.tgz#e6ccd81fb546a05f2e74d55d7b0caadede29d72b"
-  integrity sha512-scnBl987gyZXRLJB4ubPLFqluatrAfU7CDABrhoTXlKCW69DP0zcruvUYABvYZfsL8WyrCwLux3DyoJA+y29jA==
+"@scayle/storefront-core@7.42.0":
+  version "7.42.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.42.0.tgz#ae993a04e74022785e423e9ab35332828a3989dc"
+  integrity sha512-lVC53wXLHy6OWGlbcOqaqwP+1CjS5Rb5f0944C8Z6XqTNdKQoGtYsDsdBI7hA39dIkog4sfz9bIbNQJmBwvzFQ==
   dependencies:
     "@aboutyou/backbone" "16.1.2"
     crypto-js "4.2.0"
@@ -1893,20 +1893,19 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.57.4":
-  version "7.57.4"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.57.4.tgz#5b726427581fbfbdd1f03367bcef5f0b603a48e5"
-  integrity sha512-nA/rMIfIjxRcWLH4WIgde2OyeXy73FZJ2zxaVQGim0NLSJKJiM7Msp6zeaLVSkyFCtV3VmhD6tUWu5W9To4FWQ==
+"@scayle/storefront-nuxt@7.58.0":
+  version "7.58.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.58.0.tgz#d43fd6bab41e897807cedae0f33779143071ce99"
+  integrity sha512-ACP7Bvs/5B09lFzcGjAR/IEhxmi8s9kMiNctZVeJOsHoM/65Ep2dCRmDBUFmN0wCIP1O6en/St/Rv3plrn4VIQ==
   dependencies:
     "@nuxt/kit" "3.10.2"
     "@scayle/h3-session" "0.3.5"
-    "@scayle/storefront-core" "7.41.3"
-    "@scayle/unstorage-compression-driver" "0.1.1"
+    "@scayle/storefront-core" "7.42.0"
+    "@scayle/unstorage-compression-driver" "0.1.2"
     "@vueuse/core" "10.7.2"
     consola "3.2.3"
     core-js "3.36.0"
     defu "6.1.4"
-    h3 "1.10.1"
     jose "^5.2.0"
     knitwork "1.0.0"
     nitropack "2.8.1"
@@ -1917,10 +1916,10 @@
     vue-router "4.2.5"
     yn "5.0.0"
 
-"@scayle/unstorage-compression-driver@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@scayle/unstorage-compression-driver/-/unstorage-compression-driver-0.1.1.tgz#f9efc1b69c19710f26aefd1f3814669bb2292df6"
-  integrity sha512-8dc9V7kzMxVDwbczNMmh+AfH691ruMcpYNeYf95SxwcbYVBP1/m83LGNPeZxXsqr5qQeml3NXf3O5gZ74ivKsQ==
+"@scayle/unstorage-compression-driver@0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@scayle/unstorage-compression-driver/-/unstorage-compression-driver-0.1.2.tgz#d41065ce0c6437183ebb6e45aec3db07f9b9f72e"
+  integrity sha512-X2NBRrAkxLuz8qyHLt5P8tE5AI2zZt3YksNJH+f+IMk/WcnW3Uh54u2TE7ENWLdpDayuSrM20J4PtSXO4vULVw==
   dependencies:
     destr "2.0.2"
     unstorage "1.10.1"
@@ -5360,7 +5359,7 @@ gzip-size@^7.0.0:
   dependencies:
     duplexer "^0.1.2"
 
-h3@1.10.1, h3@^1.10.0, h3@^1.10.1, h3@^1.8.2, h3@^1.9.0:
+h3@^1.10.0, h3@^1.10.1, h3@^1.8.2, h3@^1.9.0:
   version "1.10.1"
   resolved "https://registry.yarnpkg.com/h3/-/h3-1.10.1.tgz#221634ca9bdb216a6b359bd2915be466a179b8a1"
   integrity sha512-UBAUp47hmm4BB5/njB4LrEa9gpuvZj4/Qf/ynSMzO6Ku2RXaouxEfiG2E2IFnv6fxbhAkzjasDxmo6DFdEeXRg==
