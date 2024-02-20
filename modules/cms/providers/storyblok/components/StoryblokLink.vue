@@ -8,18 +8,16 @@
 </template>
 
 <script lang="ts" setup>
-const { isInEditorMode } = useStoryblokHelpers()
+import type { RouteLocationRaw } from '#vue-router'
 
-const props = defineProps({
-  to: {
-    type: [String, Object] as PropType<string | object>,
-    required: true,
-  },
-  target: {
-    type: String as PropType<'_self' | '_blank' | '_parent' | '_top'>,
-    default: '',
-  },
-})
+type Props = {
+  to: RouteLocationRaw
+  target?: '_self' | '_blank' | '_parent' | '_top'
+}
+
+const props = withDefaults(defineProps<Props>(), { target: '_self' })
+
+const { isInEditorMode } = useStoryblokHelpers()
 
 const resolvedLink = computed(() => {
   if (!isString(props.to)) {

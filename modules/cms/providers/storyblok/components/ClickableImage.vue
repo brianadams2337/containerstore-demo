@@ -1,10 +1,9 @@
 <template>
   <div v-if="blok && imageSource.src" v-editable="blok" :class="marginClasses">
-    <DefaultLink
+    <StoryblokLink
       v-if="blok.cta_url.cached_url"
       :target="isLinkTypeUrl ? '_blank' : '_self'"
       :to="blok.cta_url.cached_url"
-      raw
       @click="clickObserver"
     >
       <Intersect :threshold="0.5" @enter="onIntersect">
@@ -17,22 +16,20 @@
           :sizes="sizes"
         />
       </Intersect>
-    </DefaultLink>
+    </StoryblokLink>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { SbClickableImage } from '../types/storyblok'
 
-const props = defineProps({
-  blok: {
-    type: Object as PropType<SbClickableImage>,
-    required: true,
-  },
-  sizes: {
-    type: String,
-    default: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
-  },
+type Props = {
+  blok: SbClickableImage
+  sizes?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  sizes: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
 })
 
 const { marginClasses } = useStoryblokMargins(props.blok)

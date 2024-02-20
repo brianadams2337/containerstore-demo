@@ -14,7 +14,7 @@
     </div>
     <StoryblokLink
       v-if="hasCta && blok.cta_link"
-      :to="blok.cta_link"
+      :to="blok.cta_link.cached_url"
       class="absolute bottom-8 left-1/2 w-full -translate-x-1/2 text-center font-bold leading-6 text-white underline underline-offset-2"
     >
       {{ blok.cta }}
