@@ -5,7 +5,7 @@ export const filterNavigationTree = (
   prefixToMatch = '',
 ): NavigationTree[] => {
   const normalizedPrefix = prefixToMatch.toLowerCase()
-  return treeItems.filter(({ name }) => {
-    return name?.toLowerCase().startsWith(normalizedPrefix)
+  return treeItems.filter(({ name = '' }) => {
+    return name.toLowerCase().startsWith(normalizedPrefix)
   })
 }
