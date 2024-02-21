@@ -78,6 +78,11 @@ export default defineNuxtConfig({
     checkout: {
       accessHeader: undefined, // Override: NUXT_CHECKOUT_ACCESS_HEADER
     },
+    // Configuration for the omnichannel add-on
+    omnichannel: {
+      token: '', // Overide: NUXT_OMNICHANNEL__API_TOKEN
+      apiHost: '', // Overide: NUXT_OMNICHANNEL_API_HOST
+    },
     // https://scayle.dev/en/dev/storefront-core/module-configuration
     storefront: storefrontRuntimeConfigPrivate as any,
     // Following keys are Overrideable using prefix NUXT_PUBLIC_
