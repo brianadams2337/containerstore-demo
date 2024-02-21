@@ -5,7 +5,7 @@
     <section class="flex flex-col items-center">
       <Headline is-uppercase>{{ title }}</Headline>
       <Headline class="mt-2" size="sm" tag="h2" is-uppercase>
-        {{ message }}
+        {{ userMessage }}
       </Headline>
     </section>
     <section class="mt-6">
@@ -15,6 +15,7 @@
     </section>
     <div v-if="isInDevMode">
       <div>{{ statusCode }} {{ statusMessage }}</div>
+      <pre class="font-bold">{{ errorMessage }}</pre>
       <!-- eslint-disable-next-line vue/no-v-html -->
       <code v-if="stack" v-html="stack" />
     </div>
@@ -62,7 +63,7 @@ const title = computed(() => {
     : $i18n.t('error.not_found_message')
 })
 
-const message = computed(() => {
+const userMessage = computed(() => {
   return isNotFoundError.value
     ? $i18n.t('error.page_does_not_exist')
     : $i18n.t('error.request_not_processed')
@@ -75,7 +76,10 @@ const statusMessage =
   props.error instanceof Error
     ? props.error?.message
     : props.error?.statusMessage
+
 const stack = props.error && 'stack' in props.error && props.error?.stack
+const errorMessage =
+  props.error && 'message' in props.error && props.error.message
 
 useHead({ title: title.value })
 </script>
