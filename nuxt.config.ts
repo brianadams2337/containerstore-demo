@@ -80,7 +80,7 @@ export default defineNuxtConfig({
     },
     // Configuration for the omnichannel add-on
     omnichannel: {
-      token: '', // Overide: NUXT_OMNICHANNEL__API_TOKEN
+      apiToken: '', // Overide: NUXT_OMNICHANNEL_API_TOKEN
       apiHost: '', // Overide: NUXT_OMNICHANNEL_API_HOST
     },
     // https://scayle.dev/en/dev/storefront-core/module-configuration
