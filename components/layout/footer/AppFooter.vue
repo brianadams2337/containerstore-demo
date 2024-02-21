@@ -37,7 +37,7 @@
         />
       </div>
       <div
-        v-for="tree in footerNavigationTrees"
+        v-for="tree in navigationTreeItems"
         :key="`footer-navigation-tree-${tree.id}`"
         class="flex flex-col"
       >
@@ -85,7 +85,7 @@ const cmsData: Ref<StoryblokStory<SbFooter>> = await useAsyncStoryblok(
 )
 const footerContent = computed(() => cmsData.value.content)
 
-const { footerNavigationTrees } = await useFooterNavigationTrees()
+const { navigationTreeItems } = await useNavigationTreeItems('footer')
 
 const getSocialName = (name: string) => {
   const firstLetter = name.substring(0, 1)

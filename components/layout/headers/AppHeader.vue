@@ -23,7 +23,7 @@
     </div>
     <HeaderSubNavigation
       v-if="!isCheckoutPage"
-      :navigation-tree="headerNavigationTrees[0]"
+      :navigation-tree="navigationTreeItems[0]"
     />
     <FlyoutMenu
       v-if="!isCheckoutPage"
@@ -47,7 +47,7 @@ const { isFlyoutMenuOpen, closeFlyoutMenu } = useFlyouts()
 
 const { isSideNavigationOpen, toggleSideNavigation } = useSideNavigation()
 
-const { headerNavigationTrees } = await useHeaderNavigationTrees()
+const { navigationTreeItems } = await useNavigationTreeItems('header')
 
 // TODO: Check if this really works when we start touching checkout related stuff
 const { isExactActive: isCheckoutPage } = useLink({
