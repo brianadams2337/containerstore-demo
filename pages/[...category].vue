@@ -116,8 +116,6 @@ const {
   unfilteredCount,
 } = await useProductList()
 
-const { category } = await useCategory()
-
 createFilterContext({
   filterableValues: filters,
   filtersFetching,
@@ -174,6 +172,10 @@ if (
 const error = computed(() => {
   return productError.value || filterError.value || categoriesError.value
 })
+
+const { category, fetch: fetchCategory } = await useCategory()
+
+await fetchCategory()
 
 if (!category.value) {
   throw createError({ statusCode: HttpStatusCode.NOT_FOUND, fatal: true })
