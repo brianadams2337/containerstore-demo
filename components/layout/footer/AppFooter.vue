@@ -48,7 +48,7 @@
           v-for="navTree in tree.items"
           :key="`footer-navigation-sub-tree-${navTree.id}`"
           :navigation-item="navTree"
-          class="block py-2 text-xs font-semibold text-gray-750 md:py-1"
+          class="block py-2 text-xs font-semibold !leading-4 text-gray-750 md:py-1"
         />
       </div>
     </div>

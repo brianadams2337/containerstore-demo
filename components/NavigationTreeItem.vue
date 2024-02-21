@@ -4,7 +4,7 @@
     :to="pathParams.path"
     :type="type"
     :open-in-new-tab="pathParams.openInNew"
-    @mouseenter="$emit('mouseenter:navigation-item')"
+    @mouseenter="emit('mouseenter:navigation-item')"
   >
     {{ displayName }}
   </DefaultLink>
@@ -26,7 +26,7 @@ const props = withDefaults(defineProps<Props>(), {
   type: undefined,
 })
 
-defineEmits(['mouseenter:navigation-item'])
+const emit = defineEmits<{ 'mouseenter:navigation-item': [] }>()
 
 const pathParams = computed(() => {
   if (!props.navigationItem) {
