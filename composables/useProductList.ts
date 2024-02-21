@@ -9,11 +9,7 @@ const listingMetaData = {
 export async function useProductList() {
   const route = useRoute()
 
-  const categoryPath = computed(() => {
-    return Array.isArray(route.params.category)
-      ? `/${route.params.category.join('/')}`
-      : `/${route.params.category}`
-  })
+  const { categoryPath } = await useCategory()
 
   const facetData = await useFacet({
     key: `useFacet-${categoryPath.value}`,

@@ -1,15 +1,10 @@
-import { stripShopLocaleFromPath } from '@scayle/storefront-nuxt'
-
 export async function useCategory() {
-  const currentShop = useCurrentShop()
   const route = useRoute()
 
   const categoryPath = computed(() => {
-    const pathWithoutLocale = currentShop.value?.path
-      ? stripShopLocaleFromPath(currentShop.value?.path, route.path)
-      : route.path
-
-    return normalizePathRoute(pathWithoutLocale)
+    const { category } = route.params
+    const path = Array.isArray(category) ? category.join('/') : category
+    return normalizePathRoute(path)
   })
 
   const { data: category } = await useCategoryByPath({
