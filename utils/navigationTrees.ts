@@ -1,9 +1,11 @@
 import type { NavigationTree } from '@scayle/storefront-nuxt'
 
 export const filterNavigationTree = (
-  items: NavigationTree[],
+  treeItems: NavigationTree[],
   prefixToMatch = '',
 ): NavigationTree[] => {
-  const filterRegex = new RegExp(`^${prefixToMatch?.toLowerCase()}`)
-  return items.filter((tree) => filterRegex.test(tree.name?.toLowerCase()))
+  const normalizedPrefix = prefixToMatch.toLowerCase()
+  return treeItems.filter(({ name }) => {
+    return name?.toLowerCase().startsWith(normalizedPrefix)
+  })
 }
