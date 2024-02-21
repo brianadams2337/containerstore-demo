@@ -1,11 +1,17 @@
 <template>
-  <div ref="googleMapContainer" class="h-full w-full"></div>
+  <div ref="googleMapContainer" class="size-full"></div>
 </template>
 
 <script setup lang="ts">
 import { Loader } from '@googlemaps/js-api-loader'
 
-const getDistanceUnit = (num: number): string => { return num + ' km' } // TODO
+const currentShop = useCurrentShop()
+const formatter = new Intl.NumberFormat(currentShop.value.locale, {
+  maximumSignificantDigits: 3,
+})
+const formatDistance = (num: number): string => {
+  return num < 2000 ? num + ' m' : formatter.format(num / 1000) + ' km'
+}
 
 const props = defineProps({
   stores: {
@@ -22,10 +28,6 @@ const props = defineProps({
   },
 })
 
-const emit = defineEmits(['markerclick'])
-
-// const currentShop = useCurrentShop()
-
 const mapSettings = {
   clickableIcons: false,
   streetViewControl: false,
@@ -39,14 +41,13 @@ const mapSettings = {
     lat: 53.550734392966135,
     lng: 9.993024893651084,
   },
-  // center: currentShop.value.baseCoord,
 }
 
 const googleMapContainer = ref<HTMLElement>()
 const map = ref<google.maps.Map>()
 const infoWindows = ref<{ [key: number]: google.maps.InfoWindow }>({})
-const advancedMarkerElements = ref<{
-  [key: number]: google.maps.marker.AdvancedMarkerElement
+const markers = ref<{
+  [key: number]: google.maps.Marker
 }>({})
 
 onMounted(async () => {
@@ -58,10 +59,34 @@ onMounted(async () => {
 
   // init google map
   map.value = new google.maps.Map(googleMapContainer.value!, mapSettings)
+
+  watch(
+    () => props.stores,
+    () => {
+      if (!process.server && window.google) {
+        removeOldMarkers()
+        setMarkers()
+      }
+    },
+    { immediate: true },
+  )
+
+  watch(
+    () => props.selectedStoreId,
+    (storeId) => {
+      if (storeId) {
+        selectStoreMarker(storeId)
+      }
+    },
+  )
 })
 
 const removeOldMarkers = () => {
-  // TODO: implement me
+  Object.values(markers.value).forEach((marker) => marker.setMap(null))
+  Object.values(infoWindows.value).forEach((info) => info.close())
+
+  markers.value = {}
+  infoWindows.value = {}
 }
 
 const setMarkers = () => {
@@ -69,11 +94,10 @@ const setMarkers = () => {
 
   props.stores.forEach((store: any) => {
     // map marker represents an arrow on the google map
-    const advancedMarkerElement = new google.maps.marker.AdvancedMarkerElement({
+    const marker = new google.maps.Marker({
       map: map.value,
-      position: { lat: store.geoPoint.lat, lng: store.geoPoint.lng },
       title: store.name,
-      content: getMarkerIconElement(),
+      position: store.geoPoint,
     })
 
     // infoWindow is a tooltip above the map marker, which shows the name of the store
@@ -81,28 +105,21 @@ const setMarkers = () => {
       content: getInfoWindowMarkup(store.name, store.distance),
     })
 
-    advancedMarkerElement.addListener('click', () =>
-      emit('markerclick', store.id),
-    )
+    marker.addListener('click', () => {
+      infoWindow.open(map.value, marker)
+    })
 
     // set the position of the google map, to make all markers visible
-    if (advancedMarkerElement.position) {
-      bounds.extend(advancedMarkerElement?.position)
+    const position = marker.getPosition()
+    if (position) {
+      bounds.extend(position)
       map.value!.fitBounds(bounds, { left: 500, top: 0, right: 300, bottom: 0 })
     }
 
-    // save infoWindows & advancedMarkerElements for later access
+    // save infoWindows & markers for later access
     infoWindows.value[store.id] = infoWindow
-    advancedMarkerElements.value[store.id] = advancedMarkerElement
+    markers.value[store.id] = marker
   })
-}
-
-// we need to create an image element for each marker
-const getMarkerIconElement = () => {
-  const markerIcon = document.createElement('img')
-
-  markerIcon.src = '/icons/map_marker.svg'
-  return markerIcon
 }
 
 const getInfoWindowMarkup = (title: string, distance: number) =>
@@ -111,13 +128,13 @@ const getInfoWindowMarkup = (title: string, distance: number) =>
       ${title}
     </span>
     <span class="ml-4 inline-block bg-gray-100 py-2 px-3 rounded-3xl">
-      ${getDistanceUnit(distance)}
+      ${formatDistance(distance)}
     </span>
   </div>`
 
 const selectStoreMarker = (storeId: number) => {
   const infoWindow = infoWindows.value[storeId]
-  const advancedMarkerElement = advancedMarkerElements.value[storeId]
+  const advancedMarkerElement = markers.value[storeId]
 
   // close all info windows
   Object.values(infoWindows.value).forEach((infoWindow) => infoWindow.close())
@@ -126,21 +143,4 @@ const selectStoreMarker = (storeId: number) => {
     infoWindow.open({ anchor: advancedMarkerElement, map: map.value })
   }
 }
-
-/*
-watch(
-  () => props.stores,
-  () => {
-    removeOldMarkers()
-    setMarkers()
-  },
-)
-
-watch(
-  () => props.selectedStoreId,
-  (storeId) => {
-    selectStoreMarker(storeId)
-  },
-)
-*/
 </script>
