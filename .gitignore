@@ -86,6 +86,7 @@ storybook-static
 *.crt
 *.csr
 *.key
+*.cer
 
 # crowdIn
 .env_crowdin.yml
