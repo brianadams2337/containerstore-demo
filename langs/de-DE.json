@@ -403,5 +403,40 @@
       "apple": "Mit Apple anmelden",
       "okta": "Mit Okta anmelden"
     }
+  },
+  "store_locator": {
+    "headline": "Shop auswählen",
+    "modal_headline": "Store in Deiner Nähe finden",
+    "subline": "Bitte geben Sie Ihre Postleitzahl oder Stadt ein, um Stores in Deiner Nähe anzuzeigen.",
+    "buttons": {
+      "choose_store": "Shop wählen",
+      "change_store": "Store ändern",
+      "select_store": "Store wählen",
+      "search": "Suchen",
+      "opening_hours": "Öffnungszeiten"
+    },
+    "input_placeholder": "Suchen Sie nach Stadt oder Postleitzahl",
+    "no_results": "Keine Ergebnisse",
+    "show_only_available": "Sofortige Verfügbarkeit",
+    "labels": {
+      "available": "Verfügbar",
+      "not_available": "Nicht verfügbar",
+      "low_stock": "geringer Bestand",
+      "store_closed": "geschlossen",
+      "store_open": "offen",
+      "store_closes_in": "schließt in {hours}h {minutes}Min",
+      "later_available": "Nach der Bestellung ab dem {date} zur Abholung bereit",
+      "store_availability": "Verfügbarkeit im Geschäft",
+      "store_availability_subline": "Bitte wählen Sie einen Store aus"
+    },
+    "opening_times": {
+      "mon": "Montag",
+      "tue": "Dienstag",
+      "wed": "Mittwoch",
+      "thu": "Donnerstag",
+      "fri": "Freitag",
+      "sat": "Samstag",
+      "sun": "Sonntag"
+    }
   }
 }

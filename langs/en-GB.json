@@ -402,5 +402,39 @@
       "apple": "Sign in with Apple",
       "okta": "Sign in with Okta"
     }
+  },
+  "store_locator": {
+    "headline": "Choose store",
+    "subline": "Please enter your zip code or city to see stores near you.",
+    "buttons": {
+      "choose_store": "Choose store",
+      "change_store": "Change store",
+      "select_store": "Select store",
+      "search": "Search",
+      "opening_hours": "Opening hours"
+    },
+    "input_placeholder": "Search for city or zip code",
+    "no_results": "No results",
+    "show_only_available": "Only available",
+    "labels": {
+      "available": "Available",
+      "not_available": "Not available",
+      "low_stock": "Low stock",
+      "store_closed": "Closed",
+      "store_open": "Open",
+      "store_closes_in": "closes in {hours}h {minutes}min",
+      "later_available": "Ready for collection from {date} after ordering",
+      "store_availability": "Store Availability",
+      "store_availability_subline": "Please select a store"
+    },
+    "opening_times": {
+      "mon": "Monday",
+      "tue": "Tuesday",
+      "wed": "Wednesday",
+      "thu": "Thursday",
+      "fri": "Friday",
+      "sat": "Saturday",
+      "sun": "Sunday"
+    }
   }
 }
