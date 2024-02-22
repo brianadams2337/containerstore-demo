@@ -22,7 +22,6 @@
           >{{ $t('store_locator.modal_headline') }}
         </Headline>
         <p class="mb-5 text-sm">{{ $t('store_locator.subline') }}</p>
-        <p class="text-xs">{{ $t('store_locator.input_placeholder') }}</p>
         <div class="mt-3 flex items-center justify-evenly">
           <AppButton
             class="flex size-12 cursor-pointer items-center justify-center"
@@ -36,11 +35,10 @@
           <TextInput
             v-model="searchAddress"
             class="mr-2"
-            :label="$t('store_locator.input_placeholder')"
             type="text"
             required
             :readonly="searching"
-            placeholder="search"
+            :placeholder="$t('store_locator.input_placeholder')"
             @keydown.enter="
               !searching && searchAddress.length && searchForStores()
             "
