@@ -93,8 +93,7 @@ const stores = computed(() => storesData.value ?? [])
 const selectedStoreId = ref<number | undefined>(undefined)
 const searching = ref(false)
 
-// TODO: change defaults
-const searchAddress = ref('20095')
+const searchAddress = ref('')
 const searchRadius = ref(5000)
 
 onMounted(() =>
