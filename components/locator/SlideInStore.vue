@@ -10,15 +10,7 @@
         <div v-if="distance" class="rounded-full bg-secondary-400 px-2 py-1">
           {{ formatDistance(distance) }}
         </div>
-        <div
-          v-if="quantity !== undefined"
-          class="rounded-full px-2 py-1"
-          :class="{
-            'bg-stock-locator-available': quantity >= 5,
-            'bg-stock-locator-unavailable': quantity <= 0,
-            'bg-stock-locator-low-stock': quantity < 5,
-          }"
-        >
+        <div v-if="quantity !== undefined" class="rounded-full px-2 py-1">
           {{
             quantity < 5
               ? $t('store_locator.labels.low_stock')
