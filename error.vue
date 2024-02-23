@@ -18,10 +18,15 @@
 <script setup lang="ts">
 const error = useError()
 const localePath = useLocalePath()
+const currentShop = useCurrentShop()
 
 const resetErrorState = async () => {
   const redirect = localePath(routeList.home).toString()
-  await clearError({ redirect })
+  if (currentShop.value) {
+    await clearError({ redirect })
+  }
+
+  window.location.href = redirect
 }
 
 defineOptions({ name: 'GlobalError' })

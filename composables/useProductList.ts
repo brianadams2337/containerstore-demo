@@ -6,19 +6,14 @@ const listingMetaData = {
   name: CategoryListingMetadata.NAME,
 }
 
-export async function useProductList(
-  categoryPath?: string
-) {
+export async function useProductList(categoryPath?: string) {
   const route = useRoute()
 
-  const _categoryPath = computed(() => {
-    if (categoryPath) {
-      return categoryPath
-    }
-    return Array.isArray(route.params.category)
-      ? `/${route.params.category.join('/')}`
-      : `/${route.params.category}`
-  })
+  const category = await useCategory()
+
+  const _categoryPath = computed(
+    () => categoryPath || category.categoryPath.value,
+  )
 
   const facetData = await useFacet({
     key: `useFacet-${_categoryPath.value}`,

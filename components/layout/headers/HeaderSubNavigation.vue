@@ -14,27 +14,25 @@
       >
         {{ $t('global.home') }}
       </DefaultLink>
-      <template v-if="Array.isArray(rootCategories)">
-        <DefaultLink
-          v-for="category in rootCategories"
-          :key="`nav_link_${category.id}`"
-          class="border-b-2 border-transparent py-2.5 font-normal hover:border-black sm:text-sm sm:font-semibold"
-          :class="{ 'text-flamingo': category.slug === 'sale' }"
-          :to="category.path"
-          @mouseenter="emit('mouseenter:item', category)"
-        >
-          {{ category.name }}
-        </DefaultLink>
-      </template>
 
-      <!-- navigation trees -->
+      <DefaultLink
+        v-for="category in rootCategories"
+        :key="`nav-link-${category.id}`"
+        class="border-b-2 border-transparent py-2.5 font-normal hover:border-black sm:text-sm sm:font-semibold"
+        :class="{ 'text-flamingo': category.slug === 'sale' }"
+        :to="category.path"
+        @mouseenter="openFlyoutMenu(category)"
+      >
+        {{ category.name }}
+      </DefaultLink>
+
       <template v-if="navigationTree">
         <NavigationTreeItem
-          v-for="(item, idx) in navigationTree.items"
-          :key="`navigation-tree-item-${idx}`"
+          v-for="item in navigationTree.items"
+          :key="`navigation-tree-item-${item.id}`"
           class="border-b-2 border-transparent py-2.5 font-normal hover:border-black sm:text-sm sm:font-semibold"
           :navigation-item="item"
-          @mouseenter:navigation-item="emit('mouseenter:navigation-item', item)"
+          @mouseenter:navigation-item="openFlyoutMenuForNavigationTree(item)"
         />
       </template>
     </div>
@@ -42,27 +40,13 @@
 </template>
 
 <script setup lang="ts">
-import type { NavigationTree, Category } from '@scayle/storefront-nuxt'
+import type { NavigationTree } from '@scayle/storefront-nuxt'
 
-type NavigationItem = NavigationTree['items'][0]
-
-defineProps({
-  rootCategories: {
-    type: [Array, Object] as PropType<Category[] | Category>,
-    required: true,
-  },
-  navigationTree: {
-    type: Object as PropType<NavigationTree>,
-    default: () => null,
-  },
-  fetchingCategories: {
-    type: Boolean,
-    required: true,
-  },
+withDefaults(defineProps<{ navigationTree?: NavigationTree }>(), {
+  navigationTree: undefined,
 })
 
-const emit = defineEmits<{
-  (e: 'mouseenter:item', value: Category): void
-  (e: 'mouseenter:navigation-item', value: NavigationItem): void
-}>()
+const { rootCategories, fetchingCategories } = await useRootCategories()
+
+const { openFlyoutMenuForNavigationTree, openFlyoutMenu } = useFlyouts()
 </script>

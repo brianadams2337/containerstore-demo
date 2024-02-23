@@ -23,11 +23,7 @@
           class="text-sm font-medium text-primary line-through"
           data-test-id="initialProductPrice"
         >
-          {{
-            formatCurrency(
-              props.price.withTax + totalReductions.absoluteWithTax,
-            )
-          }}
+          {{ formatCurrency(price.withTax + totalReductions.absoluteWithTax) }}
         </span>
       </p>
       <slot name="tax-info">
@@ -98,7 +94,7 @@ const isAutomaticDiscountApplied = computed(() => {
     return false
   }
 
-  return basketData.value.items.some(({ promotion, promotionId, product }) => {
+  return basketData.value?.items.some(({ promotion, promotionId, product }) => {
     return (
       props.product.id === product.id &&
       promotionId === automaticDiscountPromotion.value?.id &&

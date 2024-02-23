@@ -81,7 +81,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Product } from '@scayle/storefront-nuxt'
+import { HttpStatusCode, type Product } from '@scayle/storefront-nuxt'
 import type {
   SbCmsImage,
   SbListingPage,
@@ -93,7 +93,6 @@ const route = useRoute()
 const { pageState, setPageState } = usePageState()
 const { $i18n, $config } = useNuxtApp()
 const { toggle: toggleFilter } = useSlideIn('FilterSlideIn')
-
 const { trackViewItemList, trackSelectItem } = useTrackingEvents()
 
 let path = Array.isArray(route.params.category)
@@ -192,6 +191,14 @@ if (
 const error = computed(() => {
   return productError.value || filterError.value || categoriesError.value
 })
+
+const { category, fetch: fetchCategory } = await useCategory()
+
+await fetchCategory()
+
+if (!category.value) {
+  throw createError({ statusCode: HttpStatusCode.NOT_FOUND, fatal: true })
+}
 
 if (error.value) {
   throw error.value

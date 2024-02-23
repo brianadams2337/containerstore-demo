@@ -4,7 +4,7 @@
     :to="pathParams.path"
     :type="type"
     :open-in-new-tab="pathParams.openInNew"
-    @mouseenter="$emit('mouseenter:navigation-item')"
+    @mouseenter="emit('mouseenter:navigation-item')"
   >
     {{ displayName }}
   </DefaultLink>
@@ -14,24 +14,24 @@
 import type { NavigationTreeItem } from '@scayle/storefront-nuxt'
 import { LinkVariant } from '#imports'
 
-const props = defineProps({
-  navigationItem: {
-    type: Object as PropType<NavigationTreeItem>,
-    default: () => null,
-  },
-  wrapper: {
-    type: String,
-    default: '',
-  },
-  type: {
-    type: String as PropType<LinkVariant>,
-    default: undefined,
-    validator: (val: LinkVariant) => Object.values(LinkVariant).includes(val),
-  },
+type Props = {
+  navigationItem: NavigationTreeItem | null
+  wrapper?: string
+  type?: LinkVariant
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  navigationItem: null,
+  wrapper: '',
+  type: undefined,
 })
-defineEmits(['mouseenter:navigation-item'])
+
+const emit = defineEmits<{ 'mouseenter:navigation-item': [] }>()
 
 const pathParams = computed(() => {
+  if (!props.navigationItem) {
+    return
+  }
   if (props.navigationItem.type === 'category') {
     return { path: props.navigationItem.category?.path, openInNew: false }
   }
@@ -44,8 +44,5 @@ const pathParams = computed(() => {
     openInNew: props.navigationItem.options?.isOpenInNewWindows ?? false,
   }
 })
-const displayName = computed(() => {
-  // @ts-ignore
-  return props.navigationItem.name
-})
+const displayName = computed(() => props.navigationItem?.name)
 </script>

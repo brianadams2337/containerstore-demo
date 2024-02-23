@@ -23,11 +23,7 @@
     </div>
     <HeaderSubNavigation
       v-if="!isCheckoutPage"
-      v-bind="{ rootCategories, fetchingCategories }"
-      :navigation-tree="navigationTrees[0]"
-      @mouseenter:item="openFlyoutMenu"
-      @mouseleave="closeFlyoutMenu"
-      @mouseenter:navigation-item="openFlyoutMenuForNavigationTree"
+      :navigation-tree="navigationTreeItems[0]"
     />
     <FlyoutMenu
       v-if="!isCheckoutPage"
@@ -47,31 +43,11 @@
 </template>
 
 <script setup lang="ts">
-import type { Category, NavigationTree } from '@scayle/storefront-nuxt'
-
-defineProps({
-  rootCategories: {
-    type: [Array, Object] as PropType<Category[] | Category>,
-    default: () => [],
-  },
-  fetchingCategories: {
-    type: Boolean,
-    default: () => false,
-  },
-  navigationTrees: {
-    type: Array as PropType<NavigationTree[]>,
-    default: () => [],
-  },
-})
-
-const {
-  isFlyoutMenuOpen,
-  closeFlyoutMenu,
-  openFlyoutMenu,
-  openFlyoutMenuForNavigationTree,
-} = useFlyouts()
+const { isFlyoutMenuOpen, closeFlyoutMenu } = useFlyouts()
 
 const { isSideNavigationOpen, toggleSideNavigation } = useSideNavigation()
+
+const { navigationTreeItems } = await useNavigationTreeItems('header')
 
 // TODO: Check if this really works when we start touching checkout related stuff
 const { isExactActive: isCheckoutPage } = useLink({

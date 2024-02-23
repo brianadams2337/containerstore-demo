@@ -77,21 +77,15 @@
 
 <script setup lang="ts">
 import type {
-  Category,
   BrandOrCategorySuggestion,
   ProductSuggestion,
 } from '@scayle/storefront-nuxt'
 
-type Props = {
-  rootCategories?: Category[]
-  fetchingCategories: boolean
-}
-
-withDefaults(defineProps<Props>(), { rootCategories: () => [] })
-
 const { isSmaller } = useDefaultBreakpoints()
 
 const isLessThanMdBreakpoint = computed(() => isSmaller('md'))
+
+const { rootCategories, fetchingCategories } = await useRootCategories()
 
 const {
   closeSideNavigation,

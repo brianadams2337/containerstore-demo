@@ -34,7 +34,10 @@
         >
           {{ blok.headline }}
         </Headline>
-        <p v-if="blok.text" class="mt-3 overflow-auto text-xs md:pt-5">
+        <p
+          v-if="blok.text"
+          class="mt-3 overflow-auto text-xs scrollbar-hide md:pt-5"
+        >
           {{ blok.text }}
         </p>
         <AppButton

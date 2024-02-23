@@ -37,7 +37,7 @@
         />
       </div>
       <div
-        v-for="tree in footerNavigationTrees"
+        v-for="tree in navigationTreeItems"
         :key="`footer-navigation-tree-${tree.id}`"
         class="flex flex-col"
       >
@@ -48,7 +48,7 @@
           v-for="navTree in tree.items"
           :key="`footer-navigation-sub-tree-${navTree.id}`"
           :navigation-item="navTree"
-          class="block py-2 text-xs font-semibold text-gray-750 md:py-1"
+          class="block py-2 text-xs font-semibold !leading-4 text-gray-750 md:py-1"
         />
       </div>
     </div>
@@ -73,16 +73,8 @@
 </template>
 
 <script setup lang="ts">
-import type { NavigationTree } from '@scayle/storefront-nuxt'
 import type { StoryblokStory } from 'storyblok-generate-ts'
 import type { SbFooter } from '~/modules/cms/providers/storyblok/types/storyblok'
-
-defineProps({
-  navigationTrees: {
-    type: Array as PropType<NavigationTree[]>,
-    default: () => [],
-  },
-})
 
 const storyblokOptions = useDefaultStoryblokOptions()
 
@@ -93,19 +85,7 @@ const cmsData: Ref<StoryblokStory<SbFooter>> = await useAsyncStoryblok(
 )
 const footerContent = computed(() => cmsData.value.content)
 
-const { data } = await useNavigationTrees()
-
-const filterNavigationTree = (prefixToMatch = '') => {
-  const filterRegex = new RegExp(`^${prefixToMatch?.toLowerCase()}`)
-  return data.value?.filter((tree) =>
-    filterRegex.test(tree.name?.toLowerCase()),
-  )
-}
-
-const footerNavigationTrees = useState<NavigationTree[]>(
-  'footer-navigation-trees',
-  () => filterNavigationTree('footer'),
-)
+const { navigationTreeItems } = await useNavigationTreeItems('footer')
 
 const getSocialName = (name: string) => {
   const firstLetter = name.substring(0, 1)

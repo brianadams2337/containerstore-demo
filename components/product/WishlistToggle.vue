@@ -16,6 +16,7 @@
           ? $t('basket_card.remove_from_wishlist_label')
           : $t('basket_card.add_to_wishlist_label')
       "
+      :disabled="isWishlistToggling"
       @click="onToggleWishlist"
     >
       <template #icon="{ _class }">

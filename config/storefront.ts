@@ -235,6 +235,10 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
         username: '', // Override: NUXT_STOREFRONT_STORAGE_CACHE_USERNAME
         password: '', // Override: NUXT_STOREFRONT_STORAGE_CACHE_PASSWORD
         tls: false, // Override: NUXT_STOREFRONT_STORAGE_CACHE_TLS,
+        // Default TTL of 10 minutes for the cache. This is required so that the SSR cache also expires at some point.
+        //
+        // Override: NUXT_STOREFRONT_STORAGE_CACHE_TTL
+        ttl: 10 * 60,
         // Required to resolve connection issues with AWS ElastiCache
         checkServerIdentity: undefined, // Override: NUXT_STOREFRONT_STORAGE_CACHE_CHECK_SERVER_INTEGRITY,
       },
