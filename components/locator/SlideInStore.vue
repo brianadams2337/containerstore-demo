@@ -7,7 +7,7 @@
       <div
         class="flex grow basis-1/2 flex-row flex-nowrap items-center justify-between text-xs font-bold"
       >
-        <div class="rounded-full bg-secondary-400 px-2 py-1">
+        <div v-if="distance" class="rounded-full bg-secondary-400 px-2 py-1">
           {{ formatDistance(distance) }}
         </div>
         <div
@@ -73,7 +73,7 @@ interface Props {
   id: number
   name: string
   index: number
-  distance: number
+  distance?: number
   quantity: number
   address: StoreAddress
   customData: Partial<{ phone: string }>
