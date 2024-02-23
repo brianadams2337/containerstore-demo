@@ -67,39 +67,22 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  id: {
-    type: Number,
-    required: true,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  index: {
-    type: Number,
-    default: 0,
-  },
-  distance: {
-    type: Number,
-    required: true,
-  },
-  quantity: {
-    type: Number,
-    default: undefined, // TODO: check whats going on here
-  },
-  address: {
-    type: Object,
-    required: true,
-  },
-  customData: {
-    type: Object as PropType<Partial<{ phone: string }>>,
-    required: true,
-  },
-  openingTimes: {
-    type: Object,
-    required: true,
-  },
+import type { OpeningTimes, StoreAddress } from '@scayle/omnichannel-nuxt'
+
+interface Props {
+  id: number
+  name: string
+  index: number
+  distance: number
+  quantity: number
+  address: StoreAddress
+  customData: Partial<{ phone: string }>
+  openingTimes: OpeningTimes
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  quantity: undefined,
+  index: 0,
 })
 
 const formatDistance = useFormatDistance()
