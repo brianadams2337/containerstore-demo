@@ -24,6 +24,7 @@
     <HeaderSubNavigation
       v-if="!isCheckoutPage"
       :navigation-tree="navigationTreeItems[0]"
+      @mouseleave="closeFlyoutMenu"
     />
     <FlyoutMenu
       v-if="!isCheckoutPage"
