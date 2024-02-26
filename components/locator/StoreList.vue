@@ -24,12 +24,11 @@
 <script setup lang="ts">
 import type { Store } from '@scayle/omnichannel-nuxt'
 
-defineProps({
-  stores: {
-    type: Array as PropType<Store[]>,
-    default: () => [],
-  },
-})
+interface Props {
+  stores: Store[]
+}
+
+withDefaults(defineProps<Props>(), { stores: () => [] })
 
 const selectedStoreId = defineModel('selectedStoreId', {
   type: Number,

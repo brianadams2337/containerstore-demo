@@ -4,19 +4,16 @@
 
 <script setup lang="ts">
 import { Loader } from '@googlemaps/js-api-loader'
+import type { Store } from '@scayle/omnichannel-nuxt'
 
 const formatDistance = useFormatDistance()
 
-const props = defineProps({
-  stores: {
-    type: Array, // TODO: add type
-    default: () => [],
-  },
-  apiKey: {
-    type: String,
-    default: '',
-  },
-})
+interface Props {
+  stores: Store[]
+  apiKey: string
+}
+
+const props = defineProps<Props>()
 
 const selectedStoreId = defineModel('selectedStoreId', {
   type: Number,

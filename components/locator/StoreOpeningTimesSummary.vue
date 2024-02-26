@@ -34,12 +34,12 @@
 </template>
 <script setup lang="ts">
 import type { OpeningTimes } from '@scayle/omnichannel-nuxt'
-defineProps({
-  openingTimes: {
-    type: Object as PropType<OpeningTimes>,
-    required: true,
-  },
-})
+
+interface Props {
+  openingTimes: OpeningTimes
+}
+
+defineProps<Props>()
 
 const openingHoursOpen = ref(false)
 

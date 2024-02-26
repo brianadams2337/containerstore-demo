@@ -11,12 +11,10 @@
   </button>
 </template>
 <script setup lang="ts">
-const props = defineProps({
-  storeId: {
-    type: Number,
-    required: true,
-  },
-})
+interface Props {
+  storeId: number
+}
+const props = defineProps<Props>()
 const favoriteStoreId = useFavoriteStore()
 const isFavoriteStore = computed(() => favoriteStoreId.value === props.storeId)
 </script>
