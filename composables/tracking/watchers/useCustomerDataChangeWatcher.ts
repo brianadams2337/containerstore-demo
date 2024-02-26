@@ -12,11 +12,9 @@ export const useCustomerDataChangeWatcher = async () => {
         currentUserId.value = undefined
       }
 
-      if (currentUserId.value === userData?.id) {
-        return
+      if (currentUserId.value !== userData?.id) {
+        currentUserId.value = userData?.id
       }
-
-      currentUserId.value = userData?.id
 
       trackCustomerData({
         isLoggedIn: isLoggedIn.value,

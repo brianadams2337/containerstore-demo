@@ -98,18 +98,19 @@ export default defineNuxtConfig({
       trackingEventOrder: [
         'shop_init',
         'customer_data',
+        'content_view',
+        'cart',
+        'wishlist',
         'view_cart',
         'select_item',
-        'content_view',
         'remove_from_cart',
         'add_to_cart',
-        'cart',
         'remove_from_wishlist',
         'add_to_wishlist',
-        'wishlist',
         'view_item_list',
         'view_item',
         'purchase',
+        'view_promotion',
       ],
       /** nuxt-gtm Module Runtime Configuration
        * https://github.com/zadigetvoltaire/nuxt-gtm#readme */

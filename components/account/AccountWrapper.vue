@@ -65,6 +65,14 @@ const props = withDefaults(defineProps<Props>(), {
 const ORDERS_PER_PAGE = 8
 
 const route = useRoute()
+const wishlist = await useWishlist()
+const basket = await useBasket()
+const {
+  trackWishlist,
+  collectProductListItems,
+  trackBasket,
+  collectBasketItems,
+} = useTrackingEvents()
 
 const { user } = await useUser()
 
@@ -107,6 +115,19 @@ const shouldDisplayOrderOverview = computed(() => {
 // this can only happen when order data is loaded before mounting.
 // usually this means: being rendered on the server
 onMounted(async () => {
+  trackWishlist(
+    collectProductListItems(wishlist.products.value, {
+      listId: wishlistListingMetadata.id,
+      listName: wishlistListingMetadata.name,
+    }),
+  )
+  trackBasket(
+    collectBasketItems(basket.data.value?.items, {
+      listId: BasketListingMetadata.ID,
+      listName: BasketListingMetadata.NAME,
+    }),
+  )
+
   if (
     !route.params?.id &&
     !props.isAccountPage &&
