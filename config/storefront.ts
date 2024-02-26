@@ -82,7 +82,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
   /** Storefront Core - Configuration of session handling and cookie
    * https://scayle.dev/en/dev/storefront-core/module-configuration#sessions */
   session: {
-    sameSite: 'none', // Override: NUXT_STOREFRONT_SESSION_SAME_SITE
+    sameSite: 'lax', // Override: NUXT_STOREFRONT_SESSION_SAME_SITE
     maxAge: 2419200, // 4 weeks in seconds | Override: NUXT_STOREFRONT_SESSION_MAX_AGE
   },
 
