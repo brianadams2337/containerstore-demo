@@ -2100,10 +2100,10 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/google.maps@3.53.0":
-  version "3.53.0"
-  resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.53.0.tgz#45b50fd2b0b2868f96ba0346f906ca9127ba797c"
-  integrity sha512-ME6n+u0qHJ+zx7Tc+HK4YgHB2N5CBCP0BMsY3e5/FXoVG9SndE4JJpD7oP0YrNBBU6i9jMAKqPRDeAZPHhViBQ==
+"@types/google.maps@3.55.3":
+  version "3.55.3"
+  resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.55.3.tgz#15ec847b64d80fe3602fda77a5ab8dfff3a0dee1"
+  integrity sha512-UF1nfj8h/Vj4wEcdjv5v314HkDB6AWaN34Fr/u+6Oaj+GSRlG+k4c3DnJNKv7S23RvDdvIPt4ON6ONJpzNnarA==
 
 "@types/http-proxy@^1.17.14":
   version "1.17.14"
