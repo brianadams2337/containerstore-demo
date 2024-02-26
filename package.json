@@ -75,7 +75,7 @@
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "1.16.2",
-    "@scayle/omnichannel-nuxt": "2.0.0",
+    "@scayle/omnichannel-nuxt": "2.1.1",
     "@scayle/storefront-nuxt": "7.58.3",
     "@storyblok/nuxt": "6.0.4",
     "@tailwindcss/forms": "0.5.7",
