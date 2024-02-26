@@ -22,6 +22,7 @@ export const useCustomerDataChangeWatcher = async () => {
         user: userData,
       })
     },
+    { immediate: true },
   )
 
   onNuxtReady(() => {
