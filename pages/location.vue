@@ -55,7 +55,7 @@
           </AppButton>
         </div>
       </div>
-      <StoreList v-if="stores.length" />
+      <StoreList v-if="stores.length" :stores="stores" />
     </div>
   </div>
 </template>
