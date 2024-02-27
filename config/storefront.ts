@@ -1,5 +1,9 @@
 import { HashAlgorithm } from '@scayle/storefront-nuxt'
-import type { IDPConfig, ModuleOptions } from '@scayle/storefront-nuxt'
+import type {
+  IDPConfig,
+  ModuleOptions,
+  ModulePublicRuntimeConfig,
+} from '@scayle/storefront-nuxt'
 import * as customRpcMethods from '../rpcMethods'
 import withParams from '../constants/withParams'
 
@@ -272,7 +276,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
 
 /** Storefront Core - Public Runtime Configuration
  * https://scayle.dev/en/dev/storefront-core/module-configuration  */
-export const storefrontRuntimeConfigPublic: Partial<ModuleOptions> = {
+export const storefrontRuntimeConfigPublic: ModulePublicRuntimeConfig = {
   /** Storefront Core - Internal logger configuration
    * https://scayle.dev/en/dev/storefront-core/module-configuration#log */
   log: {

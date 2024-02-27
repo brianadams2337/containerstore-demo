@@ -2122,15 +2122,15 @@
   dependencies:
     prettier-config-standard "^7.0.0"
 
-"@scayle/storefront-core@7.42.1":
-  version "7.42.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.42.1.tgz#f355eab6c63fde7c4e69f87c515bf0ba1de42b6b"
-  integrity sha512-mChVFiisRAzGN/lbWASFK3Vyk0Jg9yl50pF8OPWfBItm8GxL2QN4/aMFGa1vBoEMv8X8wcudHtluQXuAJk+pMQ==
+"@scayle/storefront-core@7.43.0":
+  version "7.43.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.43.0.tgz#ee6da9509bb513c667fee8822b120b47e829bb73"
+  integrity sha512-bPXAFT9HX8tLm/qfMS1YqeNP2TdQybe7org92SqgXO1R9Nm3mSbMr/cuLpcs/QUAVJJMK9mGDYMO6UZBD+AgUQ==
   dependencies:
     "@aboutyou/backbone" "16.1.2"
     crypto-js "4.2.0"
     jose "5.2.2"
-    radash "11.0.0"
+    radash "12.0.0"
     slugify "1.6.6"
     ufo "1.4.0"
     uncrypto "0.1.3"
@@ -2138,14 +2138,14 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.58.3":
-  version "7.58.3"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.58.3.tgz#9d1f50dcb100b6863bccb5a860fe100f82c64e49"
-  integrity sha512-FG9utQJlwjcw2uNKDN079IU1z+eSR15FL4bd/2zIr/JlNO2WhEZpL+v86aulaV/2iUyDnkghSQ2Gwe0S3G2UKg==
+"@scayle/storefront-nuxt@7.60.0":
+  version "7.60.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.60.0.tgz#b4dacc2e0182eed3d93571ce82298b01612dc5f7"
+  integrity sha512-f8WMCuQnnVumR0kyAQcHbHwA98jiFFynlzY83fVUsuqVeMaPapb8kN6gnnKdZbQWcM+a7NpjnzN8Bf6zPHYUOw==
   dependencies:
     "@nuxt/kit" "3.10.2"
     "@scayle/h3-session" "0.3.5"
-    "@scayle/storefront-core" "7.42.1"
+    "@scayle/storefront-core" "7.43.0"
     "@scayle/unstorage-compression-driver" "0.1.2"
     "@vueuse/core" "10.8.0"
     consola "3.2.3"
@@ -8974,15 +8974,15 @@ radash-nuxt@1.0.2:
     "@nuxt/kit" "^3.7.4"
     radash "^11.0.0"
 
-radash@11.0.0, radash@^11.0.0:
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/radash/-/radash-11.0.0.tgz#925698e94b554336fc159c253ac33a9a49881835"
-  integrity sha512-CRWxTFTDff0IELGJ/zz58yY4BDgyI14qSM5OLNKbCItJrff7m7dXbVF0kWYVCXQtPb3SXIVhXvAImH6eT7VLSg==
-
 radash@12.0.0:
   version "12.0.0"
   resolved "https://registry.yarnpkg.com/radash/-/radash-12.0.0.tgz#d64a47cce173684d1f351dfe4e97831f7352a374"
   integrity sha512-CiemtIwEZH9XZAzl+/X6CQndV8lCcP8sMHCFs4ryI1011Y/PeWHYQwkOs4nyqFMNnqrbVL8WuvVlexqDceG29Q==
+
+radash@^11.0.0:
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/radash/-/radash-11.0.0.tgz#925698e94b554336fc159c253ac33a9a49881835"
+  integrity sha512-CRWxTFTDff0IELGJ/zz58yY4BDgyI14qSM5OLNKbCItJrff7m7dXbVF0kWYVCXQtPb3SXIVhXvAImH6eT7VLSg==
 
 radix3@^1.1.0:
   version "1.1.0"
