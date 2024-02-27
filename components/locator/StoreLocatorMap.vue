@@ -39,7 +39,7 @@ const googleMapContainer = ref<HTMLElement>()
 const map = ref<google.maps.Map>()
 const infoWindows = ref<{ [key: number]: google.maps.InfoWindow }>({})
 const markers = ref<{
-  [key: number]: google.maps.Marker
+  [key: number]: google.maps.marker.AdvancedMarkerElement
 }>({})
 
 onMounted(async () => {
@@ -74,7 +74,7 @@ onMounted(async () => {
 })
 
 const removeOldMarkers = () => {
-  Object.values(markers.value).forEach((marker) => marker.setMap(null))
+  Object.values(markers.value).forEach((marker) => (marker.map = null))
   Object.values(infoWindows.value).forEach((info) => info.close())
 
   markers.value = {}
@@ -86,10 +86,11 @@ const setMarkers = () => {
 
   props.stores.forEach((store: any) => {
     // map marker represents an arrow on the google map
-    const marker = new google.maps.Marker({
-      map: map.value,
+    const marker = new google.maps.marker.AdvancedMarkerElement({
+      map: toRaw(map.value), // Important: If the Map is proxied, it will not work
       title: store.name,
       position: store.geoPoint,
+      content: getMarkerIconElement(),
     })
 
     // infoWindow is a tooltip above the map marker, which shows the name of the store
@@ -107,7 +108,7 @@ const setMarkers = () => {
     })
 
     // set the position of the google map, to make all markers visible
-    const position = marker.getPosition()
+    const position = marker.position
     if (position) {
       bounds.extend(position)
       map.value!.fitBounds(bounds, { left: 500, top: 0, right: 300, bottom: 0 })
@@ -117,6 +118,12 @@ const setMarkers = () => {
     infoWindows.value[store.id] = infoWindow
     markers.value[store.id] = marker
   })
+}
+
+const getMarkerIconElement = () => {
+  const markerIcon = document.createElement('img')
+  markerIcon.src = '/icons/map_marker.svg'
+  return markerIcon
 }
 
 const getInfoWindowMarkup = (title: string, distance: number) =>

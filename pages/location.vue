@@ -47,7 +47,7 @@
             type="primary"
             class="ml-auto rounded border-4 border-black p-2 text-xs !normal-case"
             rounded
-            :disabled="!searchAddress.length || searching"
+            :disabled="!searchAddress?.length || searching"
             :loading="searching"
             @click="searchForStores()"
           >
