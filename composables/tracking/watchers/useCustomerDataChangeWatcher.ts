@@ -3,19 +3,9 @@ export const useCustomerDataChangeWatcher = async () => {
 
   const { trackCustomerData } = useTrackingEvents()
 
-  const currentUserId = useState<number | undefined>('current-user-id')
-
   watch(
     () => user.value,
     (userData) => {
-      if (!userData) {
-        currentUserId.value = undefined
-      }
-
-      if (currentUserId.value !== userData?.id) {
-        currentUserId.value = userData?.id
-      }
-
       trackCustomerData({
         isLoggedIn: isLoggedIn.value,
         customerType: customerType.value,
@@ -25,14 +15,13 @@ export const useCustomerDataChangeWatcher = async () => {
   )
 
   onNuxtReady(() => {
-    if (currentUserId.value) {
+    if (isLoggedIn.value) {
       return
     }
 
     trackCustomerData({
-      isLoggedIn: isLoggedIn.value,
-      customerType: customerType.value,
-      user: user.value,
+      isLoggedIn: false,
+      customerType: 'guest',
     })
   })
 }
