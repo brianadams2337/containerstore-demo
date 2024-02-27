@@ -1877,10 +1877,10 @@
     unstorage "1.10.1"
     zod "3.22.4"
 
-"@scayle/omnichannel-nuxt@2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@scayle/omnichannel-nuxt/-/omnichannel-nuxt-2.1.1.tgz#4b4d99920d84a036028ec68d85efcd27f9cd179f"
-  integrity sha512-1nKX68dOjb1w3E6Lwt9h1uiDeUAcoi/a397id8ROxmbXP238FxzzdGfp0+5I6g5zZ0VwFv+eYLCzFZDmD4zZaw==
+"@scayle/omnichannel-nuxt@2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@scayle/omnichannel-nuxt/-/omnichannel-nuxt-2.1.2.tgz#a724c2b6ed4296bdef7cbb7159eb9a81b8634181"
+  integrity sha512-eOuUXUeHzCMWLVizqQl+Pwdi0bspEvPEahnCssCNXcxAuVTlc4HUtp29u+EQ11BBWOfvaRZ1F7iCXtUEoTeVPA==
   dependencies:
     "@nuxt/kit" "3.10.2"
     body-parser "1.20.2"
