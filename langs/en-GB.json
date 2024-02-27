@@ -405,6 +405,7 @@
   },
   "store_locator": {
     "headline": "Choose store",
+    "modal_headline": "Find a store near you",
     "subline": "Please enter your zip code or city to see stores near you.",
     "buttons": {
       "choose_store": "Choose store",
