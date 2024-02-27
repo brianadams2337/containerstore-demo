@@ -9211,10 +9211,10 @@ std-env@^3.5.0, std-env@^3.7.0:
   resolved "https://registry.yarnpkg.com/std-env/-/std-env-3.7.0.tgz#c9f7386ced6ecf13360b6c6c55b8aaa4ef7481d2"
   integrity sha512-JPbdCEQLj1w5GilpiHAx3qJvFndqybBysA3qUOnznweH4QbNYUsW/ea8QzSrnh0vNsezMMw5bcVool8lM0gwzg==
 
-storyblok-generate-ts@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/storyblok-generate-ts/-/storyblok-generate-ts-2.0.1.tgz#3d2cd98add3612abc773661110a8608c868dfb99"
-  integrity sha512-w/XFAji+zbLoL/G7bj7ZjTI3AxjzyRChJdaHn9n+CixehEzdkRrUDIjhCzXmhanmBuzAHlff7E1Fwq2AbZDQxA==
+storyblok-generate-ts@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/storyblok-generate-ts/-/storyblok-generate-ts-2.0.2.tgz#b5063ce117eb981b820797b13a77455903381988"
+  integrity sha512-iML9/T1ascEJjLs2r8fgl9wrF3GgvznV7vFbYm7LpsH/uyNQ+mdIElbJp1R25GlQt12MpM+9sPzI681IRvASxw==
   dependencies:
     camelcase "^6.3.0"
     json-schema-to-typescript "^11.0.1"
