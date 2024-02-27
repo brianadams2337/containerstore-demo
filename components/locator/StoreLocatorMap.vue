@@ -90,6 +90,7 @@ const setMarkers = () => {
       map: toRaw(map.value), // Important: If the Map is proxied, it will not work
       title: store.name,
       position: store.geoPoint,
+      content: getMarkerIconElement(),
     })
 
     // infoWindow is a tooltip above the map marker, which shows the name of the store
@@ -117,6 +118,12 @@ const setMarkers = () => {
     infoWindows.value[store.id] = infoWindow
     markers.value[store.id] = marker
   })
+}
+
+const getMarkerIconElement = () => {
+  const markerIcon = document.createElement('img')
+  markerIcon.src = '/icons/map_marker.svg'
+  return markerIcon
 }
 
 const getInfoWindowMarkup = (title: string, distance: number) =>
