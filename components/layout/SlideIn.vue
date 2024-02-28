@@ -25,11 +25,11 @@
         >
           <div class="relative flex h-full flex-col">
             <slot v-bind="toggle" name="slide-in-content">
-              <div class="sticky -top-5 z-10 -m-5 bg-white p-5">
+              <div class="sticky -top-5 z-10 bg-white">
                 <slot name="slide-in-header" :toggle="toggle" />
               </div>
               <slot name="slide-in-body" />
-              <div class="sticky -bottom-5 z-10 -m-5 bg-white p-5">
+              <div class="sticky -bottom-5 z-10 bg-white p-5">
                 <slot name="slide-in-actions" />
               </div>
             </slot>

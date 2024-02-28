@@ -7,15 +7,28 @@
       <div
         class="flex grow basis-1/2 flex-row flex-nowrap items-center justify-between text-xs font-bold"
       >
-        <div v-if="distance" class="rounded-full bg-secondary-400 px-2 py-1">
-          {{ formatDistance(distance) }}
-        </div>
-        <div v-if="quantity !== undefined" class="rounded-full px-2 py-1">
-          {{
-            quantity < 5
-              ? $t('store_locator.labels.low_stock')
-              : $t('store_locator.labels.available')
-          }}
+        <div class="flex flex-col gap-2">
+          <div
+            v-if="distance"
+            class="w-fit rounded-full bg-secondary-400 px-2 py-1"
+          >
+            {{ formatDistance(distance) }}
+          </div>
+          <div
+            v-if="quantity !== undefined"
+            class="w-fit rounded-full px-2 py-1"
+            :class="{
+              'bg-green-neon': quantity >= 5,
+              'bg-red': quantity <= 0,
+              'bg-yellow': quantity < 5,
+            }"
+          >
+            {{
+              quantity < 5
+                ? $t('store_locator.labels.low_stock')
+                : $t('store_locator.labels.available')
+            }}
+          </div>
         </div>
         <StoreFavoriteToggle :store-id="id" />
       </div>
