@@ -15,7 +15,7 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const selectedStoreId = defineModel('selectedStoreId', {
+const selectedStoreId = defineModel<number | undefined>('selectedStoreId', {
   type: Number,
   default: undefined,
 })
@@ -66,10 +66,9 @@ onMounted(async () => {
   watch(
     () => selectedStoreId.value,
     (storeId) => {
-      if (storeId) {
-        selectStoreMarker(storeId)
-      }
+      selectStoreMarker(storeId)
     },
+    { immediate: true },
   )
 })
 
@@ -99,7 +98,11 @@ const setMarkers = () => {
     })
 
     marker.addListener('click', () => {
-      selectedStoreId.value = store.id
+      if (selectedStoreId.value === store.id) {
+        selectedStoreId.value = undefined
+      } else {
+        selectedStoreId.value = store.id
+      }
     })
 
     infoWindow.addListener('closeclick', () => {
@@ -136,12 +139,16 @@ const getInfoWindowMarkup = (title: string, distance: number) =>
     </span>
   </div>`
 
-const selectStoreMarker = (storeId: number) => {
-  const infoWindow = infoWindows.value[storeId]
-  const marker = markers.value[storeId]
-
+const selectStoreMarker = (storeId: number | undefined) => {
   // close all info windows
   Object.values(infoWindows.value).forEach((infoWindow) => infoWindow.close())
+
+  if (storeId === undefined) {
+    return
+  }
+
+  const infoWindow = infoWindows.value[storeId]
+  const marker = markers.value[storeId]
 
   if (infoWindow && marker) {
     infoWindow.open({ anchor: marker, map: map.value })

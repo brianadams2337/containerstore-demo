@@ -15,7 +15,7 @@
           v-bind="store"
           :index="index + 1"
           :opening-times="store.openingTimes"
-          @click.prevent="selectedStoreId = store.id"
+          @click.prevent="clickStore(store.id)"
         />
       </div>
     </div>
@@ -30,8 +30,16 @@ interface Props {
 
 withDefaults(defineProps<Props>(), { stores: () => [] })
 
-const selectedStoreId = defineModel('selectedStoreId', {
+const selectedStoreId = defineModel<number | undefined>('selectedStoreId', {
   type: Number,
   default: undefined,
 })
+
+const clickStore = (storeId: number) => {
+  if (selectedStoreId.value === storeId) {
+    selectedStoreId.value = undefined
+  } else {
+    selectedStoreId.value = storeId
+  }
+}
 </script>

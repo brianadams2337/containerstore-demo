@@ -66,13 +66,14 @@ interface Props {
   name: string
   index: number
   distance?: number
-  quantity: number
+  quantity?: number
   address: StoreAddress
   customData: Partial<{ phone: string }>
   openingTimes: OpeningTimes
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  distance: undefined,
   quantity: undefined,
   index: 0,
 })

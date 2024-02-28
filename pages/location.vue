@@ -55,7 +55,11 @@
           </AppButton>
         </div>
       </div>
-      <StoreList v-if="stores.length" :stores="stores" />
+      <StoreList
+        v-if="stores.length"
+        v-model:selectedStoreId="selectedStoreId"
+        :stores="stores"
+      />
     </div>
   </div>
 </template>
@@ -117,4 +121,10 @@ const findStoresInUserLocation = async () => {
   } catch {}
   searching.value = false
 }
+
+const { t } = useI18n()
+useSeoMeta({ robots: 'index,follow', title: t('navigation.location') })
+
+defineOptions({ name: 'LocationPage' })
+definePageMeta({ pageType: 'location_page' })
 </script>
