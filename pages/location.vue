@@ -121,4 +121,10 @@ const findStoresInUserLocation = async () => {
   } catch {}
   searching.value = false
 }
+
+const { t } = useI18n()
+useSeoMeta({ robots: 'index,follow', title: t('navigation.location') })
+
+defineOptions({ name: 'LocationPage' })
+definePageMeta({ pageType: 'location_page' })
 </script>

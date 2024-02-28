@@ -99,7 +99,8 @@
     "basket": "Basket",
     "home": "Home",
     "checkout": "Checkout",
-    "osp": "Order Confirmation"
+    "osp": "Order Confirmation",
+    "location": "Find a Store"
   },
   "search": {
     "placeholder": "Search for product, category or brand",
