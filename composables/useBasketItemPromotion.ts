@@ -35,6 +35,27 @@ export async function useBasketItemPromotion(basketItem: Ref<BasketItem>) {
     return giftPromotion.value?.customData?.giftConditions
   })
 
+  const giftMov = computed(() => {
+    return giftPromotion.value?.customData?.minOrderValue
+  })
+
+  const isMovReached = computed(() => {
+    if (!giftMov.value) {
+      return false
+    }
+    const basketTotal = getBasketTotalWithoutPromotions(basket.data.value.cost)
+    return basketTotal >= giftMov.value
+  })
+
+  const movLeft = computed(() => {
+    if (!giftMov.value) {
+      return 0
+    }
+    const basketTotal = getBasketTotalWithoutPromotions(basket.data.value.cost)
+    const valueLeft = giftMov.value - basketTotal
+    return valueLeft >= 0 ? valueLeft : 0
+  })
+
   const areGiftConditionsMet = computed(() => {
     const minQuantity = giftConditions.value?.minQuantity
     if (!minQuantity) {
@@ -43,16 +64,11 @@ export async function useBasketItemPromotion(basketItem: Ref<BasketItem>) {
 
     const quantityCondition = basketItem.value?.quantity >= minQuantity
 
-    const mov = promotion.value?.customData?.minOrderValue
-
-    if (!mov) {
+    if (!giftMov.value) {
       return quantityCondition
     }
 
-    const basketTotal = getBasketTotalWithoutPromotions(basket.data.value.cost)
-    const isBasketReached = basketTotal >= mov
-
-    return isBasketReached && quantityCondition
+    return isMovReached.value && quantityCondition
   })
 
   const isBuyXGetY = computed(() => isBuyXGetYType(promotion.value))
@@ -89,13 +105,6 @@ export async function useBasketItemPromotion(basketItem: Ref<BasketItem>) {
     return giftConditions.value.minQuantity - basketItem.value.quantity
   })
 
-  const hasQuantityLeftForGiftConditions = computed(() => {
-    return (
-      quantityLeftForGiftConditions.value &&
-      quantityLeftForGiftConditions.value > 0
-    )
-  })
-
   return {
     isBuyXGetY,
     isAutomaticDiscount,
@@ -109,6 +118,6 @@ export async function useBasketItemPromotion(basketItem: Ref<BasketItem>) {
     giftBackgroundColorStyle,
     areGiftConditionsMet,
     quantityLeftForGiftConditions,
-    hasQuantityLeftForGiftConditions,
+    movLeft,
   }
 }

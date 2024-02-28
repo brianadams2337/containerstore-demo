@@ -162,7 +162,9 @@
     "promotion": {
       "choose_free_gift": "Choose free gift",
       "add_free_gift": "Add for free",
-      "gift_conditional_label": "Add {quantityLeft} more to get free gift"
+      "quantity_left": "Add {quantityLeft} more to get free gift",
+      "mov": "Spend {cost} more to get free gift",
+      "quantity_and_mov": "Add {quantityLeft} & spend {cost} more to get free gift"
     },
     "product": {
       "add": "Add"
