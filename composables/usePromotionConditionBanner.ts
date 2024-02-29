@@ -6,21 +6,24 @@ export function usePromotionConditionBanner(
   const { formatCurrency } = useFormatHelpers()
 
   const label = computed(() => {
-    const formattedMovLeft = formatCurrency(minOrderValueLeft.value)
+    const formattedMinOrderValueLeft = formatCurrency(minOrderValueLeft.value)
 
     const quantityLabel = $i18n.t('basket.promotion.quantity', {
       quantityLeft: quantityLeft.value,
     })
     const minOrderValueLabel = $i18n.t('basket.promotion.mov', {
-      minOrderValueLeft: formattedMovLeft,
+      minOrderValueLeft: formattedMinOrderValueLeft,
     })
-    const quantityAndMovLabels = $i18n.t('basket.promotion.quantity_and_mov', {
-      quantityLeft: quantityLeft.value,
-      minOrderValueLeft: formattedMovLeft,
-    })
+    const quantityAndMinOrderValueLabels = $i18n.t(
+      'basket.promotion.quantity_and_mov',
+      {
+        quantityLeft: quantityLeft.value,
+        minOrderValueLeft: formattedMinOrderValueLeft,
+      },
+    )
 
     if (minOrderValueLeft.value && quantityLeft.value) {
-      return quantityAndMovLabels
+      return quantityAndMinOrderValueLabels
     }
 
     return minOrderValueLeft.value ? minOrderValueLabel : quantityLabel
