@@ -1,5 +1,5 @@
 export const useCustomerDataChangeWatcher = async () => {
-  const { isLoggedIn, customerType, user } = await useUser()
+  const { isLoggedIn, customerType, user, fetching } = await useUser()
 
   const { trackCustomerData } = useTrackingEvents()
 
@@ -23,6 +23,7 @@ export const useCustomerDataChangeWatcher = async () => {
       return
     }
     console.log('track nuxt ready')
+    console.log(fetching.value)
     trackCustomerData({
       isLoggedIn: false,
       customerType: 'guest',
