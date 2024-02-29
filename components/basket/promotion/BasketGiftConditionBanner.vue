@@ -17,10 +17,10 @@ const basketItem = computed(() => props.basketItem)
 const {
   giftPromotion,
   giftBackgroundColorStyle,
-  movLeft,
+  minOrderValueLeft,
   quantityLeftForGiftConditions: quantityLeft,
   areGiftConditionsMet,
 } = await useBasketItemPromotion(basketItem)
 
-const { label } = usePromotionConditionBanner(movLeft, quantityLeft)
+const { label } = usePromotionConditionBanner(minOrderValueLeft, quantityLeft)
 </script>

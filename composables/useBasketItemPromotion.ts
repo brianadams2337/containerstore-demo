@@ -35,24 +35,24 @@ export async function useBasketItemPromotion(basketItem: Ref<BasketItem>) {
     return giftPromotion.value?.customData?.giftConditions
   })
 
-  const giftMov = computed(() => {
+  const minimumOrderValueForGift = computed(() => {
     return giftPromotion.value?.customData?.minOrderValue
   })
 
-  const isMovReached = computed(() => {
-    if (!giftMov.value) {
+  const isMinOrderValueReached = computed(() => {
+    if (!minimumOrderValueForGift.value) {
       return false
     }
     const basketTotal = getBasketTotalWithoutPromotions(basket.data.value.cost)
-    return basketTotal >= giftMov.value
+    return basketTotal >= minimumOrderValueForGift.value
   })
 
-  const movLeft = computed(() => {
-    if (!giftMov.value) {
+  const minOrderValueLeft = computed(() => {
+    if (!minimumOrderValueForGift.value) {
       return 0
     }
     const basketTotal = getBasketTotalWithoutPromotions(basket.data.value.cost)
-    const valueLeft = giftMov.value - basketTotal
+    const valueLeft = minimumOrderValueForGift.value - basketTotal
     return valueLeft >= 0 ? valueLeft : 0
   })
 
@@ -64,11 +64,11 @@ export async function useBasketItemPromotion(basketItem: Ref<BasketItem>) {
 
     const quantityCondition = basketItem.value?.quantity >= minQuantity
 
-    if (!giftMov.value) {
+    if (!minimumOrderValueForGift.value) {
       return quantityCondition
     }
 
-    return isMovReached.value && quantityCondition
+    return isMinOrderValueReached.value && quantityCondition
   })
 
   const isBuyXGetY = computed(() => isBuyXGetYType(promotion.value))
@@ -118,6 +118,6 @@ export async function useBasketItemPromotion(basketItem: Ref<BasketItem>) {
     giftBackgroundColorStyle,
     areGiftConditionsMet,
     quantityLeftForGiftConditions,
-    movLeft,
+    minOrderValueLeft,
   }
 }

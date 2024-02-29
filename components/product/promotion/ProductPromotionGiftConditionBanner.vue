@@ -14,7 +14,7 @@ const props = defineProps<{ product: Product }>()
 const {
   buyXGetYPromotion: promotion,
   quantityLeftForGiftConditions: quantityLeft,
-  movLeft,
+  minOrderValueLeft,
 } = await useProductPromotions(props.product)
 
 const backgroundColor = computed(() => {
@@ -22,5 +22,5 @@ const backgroundColor = computed(() => {
   return getBackgroundColorStyle(colorHex).backgroundColor
 })
 
-const { label } = usePromotionConditionBanner(movLeft, quantityLeft)
+const { label } = usePromotionConditionBanner(minOrderValueLeft, quantityLeft)
 </script>

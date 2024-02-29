@@ -1,29 +1,29 @@
 export function usePromotionConditionBanner(
-  movLeft: Ref<number>,
+  minOrderValueLeft: Ref<number>,
   quantityLeft: Ref<number | undefined>,
 ) {
   const { $i18n } = useNuxtApp()
   const { formatCurrency } = useFormatHelpers()
 
   const label = computed(() => {
-    const formattedMovLeft = formatCurrency(movLeft.value)
+    const formattedMovLeft = formatCurrency(minOrderValueLeft.value)
 
     const quantityLabel = $i18n.t('basket.promotion.quantity', {
       quantityLeft: quantityLeft.value,
     })
-    const movLabel = $i18n.t('basket.promotion.mov', {
-      movLeft: formattedMovLeft,
+    const minOrderValueLabel = $i18n.t('basket.promotion.mov', {
+      minOrderValueLeft: formattedMovLeft,
     })
     const quantityAndMovLabels = $i18n.t('basket.promotion.quantity_and_mov', {
       quantityLeft: quantityLeft.value,
-      movLeft: formattedMovLeft,
+      minOrderValueLeft: formattedMovLeft,
     })
 
-    if (movLeft.value && quantityLeft.value) {
+    if (minOrderValueLeft.value && quantityLeft.value) {
       return quantityAndMovLabels
     }
 
-    return movLeft.value ? movLabel : quantityLabel
+    return minOrderValueLeft.value ? minOrderValueLabel : quantityLabel
   })
 
   return { label }

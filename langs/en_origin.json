@@ -163,8 +163,8 @@
       "choose_free_gift": "Choose free gift",
       "add_free_gift": "Add for free",
       "quantity": "Add {quantityLeft} more to get free gift",
-      "mov": "Spend {movLeft} more to get free gift",
-      "quantity_and_mov": "Add {quantityLeft} & spend {movLeft} more to get free gift"
+      "mov": "Spend {minOrderValueLeft} more to get free gift",
+      "quantity_and_mov": "Add {quantityLeft} & spend {minOrderValueLeft} more to get free gift"
     },
     "product": {
       "add": "Add"
