@@ -6,6 +6,10 @@ export const useCustomerDataChangeWatcher = async () => {
   watch(
     () => user.value,
     (userData) => {
+      if (!isLoggedIn.value) {
+        return
+      }
+
       trackCustomerData({
         isLoggedIn: isLoggedIn.value,
         customerType: customerType.value,
