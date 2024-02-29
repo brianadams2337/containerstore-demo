@@ -10,7 +10,6 @@ describe(`Account settings:`, { testIsolation: false }, () => {
   before(() => {
     HomePage.open()
     HomePage.waitForPageToBeDisplayed()
-    HomePage.closePromotionButton()
     Header.clickOnSignInButton()
     SignInPage.waitForPageToBeDisplayed()
     SignInPage.login()

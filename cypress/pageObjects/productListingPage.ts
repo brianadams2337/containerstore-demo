@@ -1,7 +1,4 @@
-import {
-  HEADER_TEST_CATEGORY_WOMEN,
-  PLP_CATEGORY_WOMEN,
-} from '../support/constants'
+import { HEADER_TEST_CATEGORY_WOMEN } from '../support/constants'
 import { BasePage } from './basePage'
 import Header from './components/header'
 
@@ -176,7 +173,7 @@ class ProductListingPage extends BasePage {
   }
 
   openTestCategory() {
-    cy.contains(PLP_CATEGORY_WOMEN).trigger('mouseenter')
+    cy.get('[data-test-id="nav-link-2045"]').scrollIntoView().click()
     Header.selectCategoryOnNavBar(HEADER_TEST_CATEGORY_WOMEN.toLowerCase())
     if (Cypress.env().mobile === true) {
       Header.selectCategoryOnNavBar(HEADER_TEST_CATEGORY_WOMEN.toLowerCase())

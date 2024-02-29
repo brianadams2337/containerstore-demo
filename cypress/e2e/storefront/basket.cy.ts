@@ -6,7 +6,6 @@ import ProductPage from '../../pageObjects/productPage'
 import BasketPage from '../../pageObjects/basketPage'
 import { getLocaleFile } from '../../test-helpers'
 import WishlistPage from '../../pageObjects/wishlistPage'
-import HomePage from '../../pageObjects/homePage'
 
 const locale = getLocaleFile()
 
@@ -18,7 +17,6 @@ describe('Basket Feature', () => {
   it('check that header and footer is displayed on Basket Page', () => {
     BasketPage.open()
     BasketPage.waitForPageToBeDisplayed()
-    HomePage.closePromotionButton()
     Header.assertHeaderIsDisplayed()
     Footer.assertFooterIsDisplayed()
     Footer.assertFooterText()
@@ -27,7 +25,6 @@ describe('Basket Feature', () => {
   it('empty Basket Page content check', () => {
     BasketPage.open()
     BasketPage.waitForPageToBeDisplayed()
-    HomePage.closePromotionButton()
     Header.assertShoppingBagCounter(0)
     ProductListingPage.assertHeaderName(locale.basket.empty_title)
     cy.contains(locale.basket.empty_description)
@@ -38,7 +35,6 @@ describe('Basket Feature', () => {
   it('check base fields presence on Basket page', () => {
     ProductPage.openProduct(TEST_ITEM_REGULAR.link)
     ProductPage.waitForPageToBeDisplayed()
-    HomePage.closePromotionButton()
     ProductPage.selectAvailableSize()
     Header.assertShoppingBagCounter(0)
     ProductPage.addToCart()
@@ -57,7 +53,6 @@ describe('Basket Feature', () => {
   it('check product attributes in Basket page', () => {
     ProductPage.openProduct(TEST_ITEM_REGULAR.link)
     ProductPage.waitForPageToBeDisplayed()
-    HomePage.closePromotionButton()
     ProductPage.selectAvailableSize()
     Header.assertShoppingBagCounter(0)
     ProductPage.addToCart()
@@ -74,7 +69,6 @@ describe('Basket Feature', () => {
   it('add to wishlist from Basket Page', () => {
     ProductPage.openProduct(TEST_ITEM_REGULAR.link)
     ProductPage.waitForPageToBeDisplayed()
-    HomePage.closePromotionButton()
     ProductPage.selectAvailableSize()
     Header.assertShoppingBagCounter(0)
     ProductPage.addToCart()
@@ -91,7 +85,6 @@ describe('Basket Feature', () => {
   it('should be able to add an item to the basket and it stays consistent on reload', () => {
     ProductPage.openProduct(TEST_ITEM_REGULAR.link)
     ProductPage.waitForPageToBeDisplayed()
-    HomePage.closePromotionButton()
     ProductPage.selectAvailableSize()
     Header.assertShoppingBagCounter(0)
     ProductPage.addToCart()
@@ -102,14 +95,12 @@ describe('Basket Feature', () => {
     cy.log('Checking basket count to stay consistent on reload')
     cy.reload()
     BasketPage.waitForPageToBeDisplayed()
-    HomePage.closePromotionButton()
     BasketPage.assertThatProductIsPresent()
   })
 
   it('should be able to remove item from basket > Click on Remove', () => {
     ProductPage.openProduct(TEST_ITEM_REGULAR.link)
     ProductPage.waitForPageToBeDisplayed()
-    HomePage.closePromotionButton()
     ProductPage.selectAvailableSize()
     Header.assertShoppingBagCounter(0)
     ProductPage.addToCart()
@@ -148,7 +139,6 @@ describe('Basket Feature', () => {
     it('should be able to remove item from basket > Click on Cancel', () => {
       ProductPage.openProduct(TEST_ITEM_REGULAR.link)
       ProductPage.waitForPageToBeDisplayed()
-      HomePage.closePromotionButton()
       ProductPage.selectAvailableSize()
       ProductPage.addToCart()
       Header.clickOnBasketButton()

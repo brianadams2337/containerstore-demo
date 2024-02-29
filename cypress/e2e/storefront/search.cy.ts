@@ -11,7 +11,6 @@ describe(`Search:`, () => {
   beforeEach(() => {
     HomePage.open()
     HomePage.waitForPageToBeDisplayed()
-    HomePage.closePromotionButton()
     Search.openSearch()
     // This is a workaround for when using this Search input on mobile and running the tests in headless mode(cy:run). Otherwise there's a possibility to trigger an ResizeObserver loop limit exceeded error. As mentioned here: https://github.com/cypress-io/cypress/issues/8418
     Cypress.on('uncaught:exception', (_err, _runnable) => {

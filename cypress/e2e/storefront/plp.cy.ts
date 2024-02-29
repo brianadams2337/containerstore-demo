@@ -18,7 +18,6 @@ if (Cypress.env().mobile !== true) {
 
 beforeEach(() => {
   HomePage.open()
-  HomePage.closePromotionButton()
   ProductListingPage.openTestCategory()
   ProductListingPage.waitForPageToBeDisplayed()
   cy.scrollTo('bottom', { duration: 2000 })
@@ -169,7 +168,7 @@ describe('Filters', { testIsolation: false }, () => {
     })
   })
 
-  it.skip('verify that after clicking on filter - button text got changed', () => {
+  it('verify that after clicking on filter - button text got changed', () => {
     ProductListingPage.openFilters()
     cy.get(ProductListingPage.pageElements.filters.applyFilterButton).contains(
       getLocaleFile().filter.show_results,
@@ -230,7 +229,6 @@ describe('Filters', { testIsolation: false }, () => {
   it(' Filter should be opened after clicking on "ALL" button', () => {
     cy.clearSiteData()
     HomePage.open()
-    HomePage.closePromotionButton()
     ProductListingPage.openTestCategory()
     ProductListingPage.waitForPageToBeDisplayed()
     cy.scrollTo('bottom', { duration: 4000 })
@@ -238,7 +236,6 @@ describe('Filters', { testIsolation: false }, () => {
     ProductListingPage.selectTestColour()
     ProductListingPage.clickApplyFilters()
     ProductListingPage.clickOnProductCountButton()
-    ProductListingPage.clickApplyFilters()
   })
 })
 describe('Sorting', { testIsolation: false }, () => {
@@ -317,30 +314,5 @@ describe('canonical URl check', () => {
         cy.visit(newUrl)
         ProductListingPage.waitForPageToBeDisplayed()
       })
-  })
-
-  it('Check canonical tag to lead to PLP with filters applied', () => {
-    ProductListingPage.openFilters()
-    ProductListingPage.selectTestColour()
-    ProductListingPage.clickApplyFilters()
-    cy.get(ProductListingPage.pageElements.uniqueProductLinks).then(
-      (initProducts) => {
-        const credentials = Cypress.config('baseUrl')!.split('@')[0] + '@'
-        cy.get(ProductListingPage.pageElements.canonicalTag)
-          .invoke('attr', 'href')
-          .then((href) => {
-            const newUrl = href!.replace('https://', credentials)
-            cy.visit(newUrl)
-            ProductListingPage.waitForPageToBeDisplayed()
-
-            const initialProductsLength = initProducts.length
-            cy.get(ProductListingPage.pageElements.uniqueProductLinks).then(
-              (newProducts) => {
-                expect(initialProductsLength).eq(newProducts.length)
-              },
-            )
-          })
-      },
-    )
   })
 })

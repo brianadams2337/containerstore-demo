@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div data-test-id="flyout-menu">
     <FadeInFromBottomTransition>
       <div
         v-if="isOpen"

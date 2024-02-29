@@ -5,7 +5,7 @@ import cypressSplit from 'cypress-split'
 /* END: Remove if relying on Cypress Dashboard */
 import * as dotenv from 'dotenv'
 
-dotenv.config({ path: '../' })
+dotenv.config({ path: '../.env' })
 
 const USER_AGENT =
   'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'

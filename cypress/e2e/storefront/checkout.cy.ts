@@ -3,18 +3,14 @@ import { TEST_ITEM_REGULAR } from '../../support/constants'
 import ProductPage from '../../pageObjects/productPage'
 import Header from '../../pageObjects/components/header'
 import BasketPage from '../../pageObjects/basketPage'
-import HomePage from '../../pageObjects/homePage'
 
-describe('Checkout:', function () {
-  beforeEach(function () {
-    cy.clearSiteData()
-  })
+describe('Checkout:', () => {
+  beforeEach(() => cy.clearSiteData())
 
   if (Cypress.env().mobile !== true) {
     it('Check that checkout is opened in Iframe', function () {
       ProductPage.openProduct(TEST_ITEM_REGULAR.link)
       ProductPage.waitForPageToBeDisplayed()
-      HomePage.closePromotionButton()
       ProductPage.selectAvailableSize()
       ProductPage.addToCart()
       Header.clickOnBasketButton()

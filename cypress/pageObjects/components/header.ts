@@ -16,6 +16,7 @@ class Header {
     headerLoginButton: '[data-test-id="user-popover"]',
     headerNavBar: '[data-test-id="nav-categories"]',
     mobileNavigationButton: '[data-test-id="side-navigation-button"]',
+    flyoutMenu: '[data-test-id="flyout-menu"]',
   }
 
   assertHeaderIsDisplayed(): void {
@@ -67,7 +68,7 @@ class Header {
 
   selectCategoryOnNavBar(categoryName: string): void {
     if (Cypress.env().mobile !== true) {
-      cy.get(this.pageElements.headerNavBar)
+      cy.get(this.pageElements.flyoutMenu)
         .get(`a[href*='/${categoryName}']`)
         .first()
         .click()

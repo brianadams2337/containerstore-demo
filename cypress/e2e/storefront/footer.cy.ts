@@ -1,13 +1,11 @@
 import { TEST_ITEM_REGULAR } from '../../support/constants'
 import Footer from '../../pageObjects/components/footer'
 import ProductPage from '../../pageObjects/productPage'
-import HomePage from '../../pageObjects/homePage'
 
 describe('Footer', () => {
   beforeEach(() => {
     ProductPage.openProduct(TEST_ITEM_REGULAR.link)
     ProductPage.waitForPageToBeDisplayed()
-    HomePage.closePromotionButton()
   })
 
   afterEach(() => {
