@@ -33,6 +33,20 @@ describe('Product Listing Page: products visibility', () => {
     ProductListingPage.openProductByClickingOnImage(0)
     ProductPage.waitForPageToBeDisplayed()
   })
+
+  it('Check pagination is working correctly', () => {
+    ProductListingPage.getPaginationButtons()
+    ProductListingPage.clickPaginationButton()
+    ProductListingPage.waitForPageToBeDisplayed()
+    cy.url().should('contain', '?page=2')
+    cy.scrollTo('top')
+    ProductListingPage.checkBreadcrumbsAreVisible()
+  })
+
+  it('Check if breadcrumbs are visible', () => {
+    cy.scrollTo('top')
+    ProductListingPage.checkBreadcrumbsAreVisible()
+  })
 })
 
 describe('Product Listing Page', { testIsolation: false }, () => {

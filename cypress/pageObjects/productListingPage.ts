@@ -36,6 +36,7 @@ class ProductListingPage extends BasePage {
       siblingColorsSelector: '[data-test-id="siblingColorsSelector"]',
     },
     canonicalTag: '[rel="canonical"]',
+    breadcrumbs: '.items-start > .flex-wrap',
   }
 
   waitForPageToBeDisplayed(): void {
@@ -88,6 +89,14 @@ class ProductListingPage extends BasePage {
   getPaginationButtons(): Cypress.Chainable {
     cy.scrollTo('bottom')
     return cy.get(this.pageElements.paginationButtons)
+  }
+
+  clickPaginationButton() {
+    cy.get(this.pageElements.paginationButtons).eq(2).click()
+  }
+
+  checkBreadcrumbsAreVisible() {
+    cy.get(this.pageElements.breadcrumbs).should('be.visible')
   }
 
   openFilters() {

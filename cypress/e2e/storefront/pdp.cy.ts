@@ -1,7 +1,7 @@
 import {
   TEST_ITEM_REGULAR,
   TEST_ITEM_SOLDOUT,
-  // TEST_ITEM_SALE,
+  TEST_ITEM_SALE,
   TEST_ITEM_ONESIZE,
   TEST_ITEM_COMBINE_WITH,
   TEST_ITEM_NO_COMBINE_WITH,
@@ -61,8 +61,8 @@ describe('Products testing', () => {
 
   const products = [
     TEST_ITEM_REGULAR,
-    // TEST_ITEM_SOLDOUT,
-    // TEST_ITEM_SALE,
+    TEST_ITEM_SOLDOUT,
+    TEST_ITEM_SALE,
     // TEST_ITEM_COMBINE_WITH,
     TEST_ITEM_NO_COMBINE_WITH,
   ]

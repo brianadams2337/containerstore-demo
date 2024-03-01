@@ -14,18 +14,18 @@ export const TEST_ITEM_REGULAR = {
 }
 
 export const TEST_ITEM_SALE = {
-  link: '/p/aqa-testitem-sale-2',
-  name: 'AQA-TestItem-Sale',
-  price: '36,61',
-  initialPrice: '52,30',
-  category: 'women',
+  link: 'p/kochsalz-losung-1132',
+  name: 'Kochsalz Lösung',
+  price: '9,00',
+  initialPrice: '15,00',
+  category: 'sale',
 }
 
 export const TEST_ITEM_SOLDOUT = {
   link: '/p/aqa-testitem-soldout-3',
   id: 3,
   name: 'AQA-TESTITEM-SOLDOUT',
-  price: '99.90',
+  price: '60,00',
   initialPrice: null,
   category: 'women',
 }
