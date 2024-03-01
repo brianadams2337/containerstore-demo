@@ -36,6 +36,7 @@
               >
                 {{ productName }}
               </Headline>
+
               <FadeInTransition>
                 <PromotionHurryToSaveBanners
                   v-if="areHurryToSaveBannersShown"
@@ -53,6 +54,7 @@
                   class="mt-2 xs:hidden md:flex"
                 />
               </FadeInTransition>
+
               <div class="flex flex-col items-end">
                 <div class="flex gap-2 xs:flex-col-reverse md:flex-col">
                   <ProductPromotionBadges

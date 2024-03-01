@@ -53,7 +53,7 @@ export async function useProductPromotions(
   })
 
   const addedProductBasketItem = computed(() => {
-    return basket.items.value.find(
+    return basket.items.value?.find(
       (item) => item.product.id === product.value?.id,
     )
   })
@@ -144,7 +144,7 @@ export async function useProductPromotions(
     if (!isBuyXGetYPrioritized.value) {
       return false
     }
-    return basket.items.value.some(({ promotion, variant }) => {
+    return basket.items.value?.some(({ promotion, variant }) => {
       const variantIds = getVariantIds(buyXGetYPromotion.value)
       const hasVariantId = variantIds.includes(variant.id)
       return (
