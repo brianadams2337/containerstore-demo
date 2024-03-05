@@ -7,16 +7,16 @@
     <SkeletonLoader type="custom" class="h-6 w-96" />
     <SkeletonLoader type="custom" class="h-6 w-72" />
   </div>
-  <div v-else-if="data?.data.story" class="container">
+  <div v-else-if="story" class="container">
     <div class="py-4">
       <Breadcrumbs
         :items="[
           { value: 'Home', to: routeList.home },
-          { value: data?.data.story.name, to: data?.data.story.slug },
+          { value: story.name, to: story.slug },
         ]"
       />
     </div>
-    <Story :story="data?.data.story" />
+    <Story :story="story" />
   </div>
 </template>
 
@@ -35,6 +35,8 @@ const {
 } = await fetchBySlug(`s/${slug.value}`)
 
 await fetchLazy(_fetchBySlug())
+
+const story = computed(() => data.value?.data.story)
 
 if (error.value) {
   throw error.value
