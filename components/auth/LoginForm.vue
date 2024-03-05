@@ -98,7 +98,6 @@ watch(
       return
     }
 
-    console.log(code, isSubmitting.value)
     if (isString(code)) {
       await loginIDP(code)
     }
