@@ -11,7 +11,7 @@
         v-for="provider in providers"
         :key="provider.title"
         class="group inline-flex w-full items-center justify-center gap-2 truncate whitespace-nowrap rounded-md border p-3 text-sm font-semibold leading-5 tracking-wide text-white transition duration-100 ease-linear focus:ring-1 disabled:opacity-30"
-        :class="getDynamicClasses(provider.classes)"
+        :class="provider.classes"
         :to="provider.url"
         raw
       >
@@ -36,19 +36,15 @@ const props = defineProps<{
 
 const providers = computed<{ title: string; url: string; classes: string }[]>(
   () => {
-    return Object.keys(props.redirects).map((idpKey: string) => {
+    return Object.entries(props.redirects).map(([key, url]) => {
       return {
-        title: idpKey,
-        url: props.redirects?.[idpKey] ?? '',
+        title: key,
+        url,
         classes:
-          idpClasses[idpKey] ??
-          'bg-primary text-white hover:bg-primary focus:bg-primary',
+          idpClasses[key] ??
+          'bg-primary hover:bg-primary-400 focus:bg-primary-400',
       }
     })
   },
 )
-
-function getDynamicClasses(classes: string) {
-  return classes ?? 'bg-primary hover:bg-primary-400 focus:bg-primary-400'
-}
 </script>

@@ -63,12 +63,10 @@
 import useVuelidate from '@vuelidate/core'
 
 const { data: externalIDPRedirects } = await useIDP()
-const { login, isSubmitting, loginIDP } = await useAuthentication('login')
+const { login, isSubmitting } = await useAuthentication('login')
 const { lastLoggedInUser } = await useLastLoggedInUser()
 
 const validationRules = useValidationRules()
-
-const route = useRoute()
 
 const editableUser = reactive({
   email: '',
@@ -90,20 +88,6 @@ const v = useVuelidate(rules, editableUser)
 watch(editableUser, () => {
   v.value.$touch()
 })
-
-watch(
-  () => route.query.code,
-  async (code) => {
-    if (isSubmitting.value) {
-      return
-    }
-
-    if (isString(code)) {
-      await loginIDP(code)
-    }
-  },
-  { immediate: true },
-)
 
 watch(lastLoggedInUser, (user) => {
   editableUser.email = user.email
