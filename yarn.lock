@@ -2339,6 +2339,11 @@
   dependencies:
     "@storyblok/vue" "^8.0.0"
 
+"@storyblok/region-helper@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@storyblok/region-helper/-/region-helper-1.0.0.tgz#5a75506a264b728da640b3c2e85680bec6cd6a1a"
+  integrity sha512-02B4J3XzD6CLK8DAQbK63fSar8oGYqBJxdx+7Ya0C3uJwMU5DzOMix6ShtUo1iDSd9rOl8aA5wDoCC0wh0YHMw==
+
 "@storyblok/vue@^8.0.0":
   version "8.0.5"
   resolved "https://registry.yarnpkg.com/@storyblok/vue/-/vue-8.0.5.tgz#f3466fddce2b0e7ec8dd2fcaec46a24f062077ba"
@@ -10185,11 +10190,12 @@ storyblok-js-client@^6.6.3:
   resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-6.6.7.tgz#6aced8dd848ac1bc6d35705def5490d016aae3d0"
   integrity sha512-QNCGGOUf3cgkflffNStCZNt3C7RkdYRD/vENm6iv1pC+0ZCj42kDeB/WgljWojcNWydEMyUnmGXWi2XUEkkAAQ==
 
-storyblok@3.26.0:
-  version "3.26.0"
-  resolved "https://registry.yarnpkg.com/storyblok/-/storyblok-3.26.0.tgz#0206e2ffbab6a1288c7d86fb4200a198441c106a"
-  integrity sha512-fFdBgRiPgRIwuQCVUH30Yfi6aRNqkeSv0x5Si2/vppx01CNJ5C02i09jhpPmmay5Kp+/USw1OLOPn9Uvqwvxvw==
+storyblok@3.27.0:
+  version "3.27.0"
+  resolved "https://registry.yarnpkg.com/storyblok/-/storyblok-3.27.0.tgz#d82097837e601bc885cac44439b47f900420d85f"
+  integrity sha512-dDo2yBfsf1ifJoMqj/UoULr3IdFnCz0a9Iij0XUD9xvLSRKtSmYCJksXMs5f6Fq7pHdvA+Y+oWTK4N1ntK0fag==
   dependencies:
+    "@storyblok/region-helper" "^1.0.0"
     axios "^0.27.2"
     chalk "^4.1.0"
     clear "0.1.0"
