@@ -137,9 +137,9 @@
             />
 
             <StoreVariantAvailability
-              v-if="hasOneSizeVariantOnly || activeVariant"
+              v-if="activeVariant?.id"
               :selected-store-id="selectedStoreId"
-              :variant-id="activeVariant?.id"
+              :variant-id="activeVariant.id"
             />
 
             <div class="mt-4 flex h-12">

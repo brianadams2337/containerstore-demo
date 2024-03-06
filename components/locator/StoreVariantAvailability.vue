@@ -49,8 +49,8 @@
 
 <script setup lang="ts">
 interface Props {
-  selectedStoreId?: number
-  variantId?: number
+  selectedStoreId: number | undefined
+  variantId: number
 }
 
 interface StoreVariantInfo {
