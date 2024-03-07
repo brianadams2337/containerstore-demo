@@ -4,11 +4,5 @@
   "initialVersions": {
     "@scayle/storefront-boilerplate-nuxt": "0.0.1"
   },
-  "changesets": [
-    "loud-readers-fold",
-    "patch-packages",
-    "sharp-ties-speak",
-    "thirty-pans-collect",
-    "vercel-kv"
-  ]
+  "changesets": []
 }

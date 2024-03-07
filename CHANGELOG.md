@@ -1,20 +1,5 @@
 # @scayle/storefront-boilerplate-nuxt
 
-## 1.0.0-rc.8
-
-### Minor Changes
-
-- a2416d6: Add Store Locator page based on Google Maps and SCAYLE Omnichannel
-- ff47243: Add `patch-packages` for managing patches to third party packages. See README.md or the `patches/` directory for an up-to-date listing of currently applied patches.
-- 9b44f99: Add store availability to the PDP using SCYALE Omnichannel
-- 215e640: - Upgraded `@scayle/storefront-nuxt` to `7.60.0`
-  - Changed the public runtime config type to `ModulePublicRuntimeConfig`
-  - Removed the `useRuntimeConfig().public.storefront.auth` field
-
-### Patch Changes
-
-- 5827ac1: Patch `unstorage` so the VercelKV driver is not logged as `undefined`
-
 ## 1.0.0-rc.07
 
 This release focuses on stabilization and modularization, to improve the technical foundation and developer experience.

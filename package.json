@@ -1,7 +1,7 @@
 {
   "name": "@scayle/storefront-boilerplate-nuxt",
   "description": "SCAYLE Storefront demo shop application based on Nuxt 3",
-  "version": "1.0.0-rc.8",
+  "version": "1.0.0-rc.7",
   "private": true,
   "engines": {
     "node": ">= 20.7.0"
