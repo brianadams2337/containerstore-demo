@@ -13,7 +13,7 @@
         {{ $t('error.continue_shopping') }}
       </AppButton>
     </section>
-    <div v-if="isInDevMode">
+    <div v-if="isInDevMode" class="max-w-full overflow-auto">
       <div>{{ statusCode }} {{ statusMessage }}</div>
       <pre class="font-bold">{{ errorMessage }}</pre>
       <!-- eslint-disable-next-line vue/no-v-html -->
