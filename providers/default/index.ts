@@ -36,20 +36,8 @@ export const getImage: ProviderGetImage = (
       return formatter(mappedKey, value as any)
     })
     .join('&')
-  const isURL = (src: string): boolean =>
-    src.toLowerCase().match(
-      new RegExp(
-        '^(https?:\\/\\/)?' + // validate protocol
-          '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
-          '((\\d{1,3}\\.){3}\\d{1,3}))' + // validate OR ip (v4) address
-          '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
-          '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
-          '(\\#[-a-z\\d_]*)?$',
-        'i',
-      ),
-    ) !== null
 
-  const url = isURL(src)
+  const url = URL.canParse(src)
     ? src + (operations ? `?${operations}` : '')
     : joinURL(baseURL, src + (operations ? `?${operations}` : ''))
   return {
