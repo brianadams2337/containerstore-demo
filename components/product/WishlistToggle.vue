@@ -61,9 +61,7 @@ const isWishlistToggling = ref(false)
 const product = toRef(props, 'product')
 const productId = computed(() => product.value.id)
 
-const { toggleItem, fetching, contains, fetch } = await useWishlist({
-  options: { autoFetch: false },
-})
+const { toggleItem, fetching, contains, fetch } = await useWishlist()
 
 const { trackWishlistEvent } = useWishlistActions()
 
