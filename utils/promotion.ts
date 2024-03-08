@@ -37,7 +37,7 @@ export const getAdditionalDataValue = (
 }
 
 export const getBasketTotalWithoutPromotions = (
-  basket: BasketResponseData | undefined,
+  basket?: BasketResponseData,
 ) => {
   if (!basket) {
     return 0
