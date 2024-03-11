@@ -1,0 +1,96 @@
+---
+'@scayle/storefront-boilerplate-nuxt': minor
+---
+
+- **BREAKING:** Refactored default `sameSite` cookie settings from `none` to `lax` in `config/storefront.ts`
+- Added `StoreLocator` page based on Google Maps and `SCAYLE Omnichannel`
+- Added `StoreAvailability` to Product Detail Page using `SCAYLE Omnichannel`
+- Added `patch-packages` for managing patches to third party packages.
+  See `README.md` or the `patches/` directory for an up-to-date listing of currently applied patches.
+  - Patched `unstorage` so the VercelKV driver is not logged as `undefined`
+- Removed `auth` config in `composables/useAuthentication.ts` and `useRuntimeConfig().public.storefront.auth` field in `config/storefront.ts`
+- Changed public `runtimeConfig` type to `ModulePublicRuntimeConfig`
+- Fixed caching behaviour for account area via `routeRules` in `nuxt.config.ts`
+- Fixed wishlist toggle if wishlist data is being toggled and fetched in `components/product/WishlistToggle.vue`
+- Refactored error message handling during local development mode to show actual error with stack trace
+- Fixed product detail page and product listing page (category page) behaviour if basket data is undefined
+- Fixed Storyblok CMS data handling in `pages/s/[slug].vue`
+- Fixed Storyblok CMS components handling in `pages/c/[slug].vue`
+- Renamed `categoryNotFound` to `foundCategoryByPath` in `pages/[...category].vue`
+- Fixed error handling for non existing category slug by throwing a `404` error and removed error handling from `layouts/defaults.vue`
+- Fixed redirection from error page to homepage
+- Converted `routeChangeTrackingObserver` to the route middleware and added delayed execution
+- Fixed redirection behaviour on login from checkout, as it will now redirect after login back to checkout
+- Used `onNuxtReady` instead of `tryOnMounted` for `composables/tracking/watchers/useCustomerDataChangeWatcher.ts` and removed user force refresh
+- Fixed links on Storyblok grid tile, clickable image and banner link
+  - `modules/cms/providers/storyblok/components/BannerLink.vue`
+  - `modules/cms/providers/storyblok/components/ClickableImage.vue`
+  - `modules/cms/providers/storyblok/components/GridTile.vue`
+  - `modules/cms/providers/storyblok/components/StoryblokLink.vue`
+- Fixed category behaviour by using new composable `useCategoryByPath` to source category data in `pages/[...category].vue`
+- Fixed category behaviour by using `stripShopLocaleFromPath` and remove computed value in `pages/[...category].vue`
+- Refactored root categories logic and implement app navigation trees
+  - Added `composables/useCategory.ts`
+  - Added `composables/useNavigationTreeItems.ts`
+  - Added `composables/useRootCategories.ts`
+  - Refactored `components/layout/footer/AppFooter.vue`
+  - Refactored `components/layout/headers/AppHeader.vue`
+  - Refactored `components/layout/headers/HeaderSubNavigation.vue`
+  - Refactored `components/layout/navigation/MobileSidebar.vue`
+  - Refactored `composables/useProductList.ts`
+  - Refactored `pages/[...category].vue`
+- Improved tracking behaviour
+  - Refactored `composables/tracking/events/useUserActionEvents.ts`
+  - Refactored `composables/tracking/watchers/useCustomerDataChangeWatcher.ts`
+  - Refactored `composables/useWishlistPage.ts`
+  - Refactored `nuxt.config.ts`
+- Fixed promotion handling and hides gifts if minimum order value (`mov`) is not satisfied
+  - Refactored `composables/useBasketItemPromotion.ts`
+  - Refactored `composables/useProductPromotions.ts`
+  - Refactored `composables/usePromotionProgress.ts`
+  - Refactored `utils/promotion.ts`
+- Adjusted promotion basket gift conditional banner labels
+  - Refactored `components/basket/promotion/BasketGiftConditionBanner.vue`
+  - Refactored `composables/useBasketItemPromotion.ts`
+  - Refactored `langs/de-DE.json`
+  - Refactored `langs/en-GB.json`
+  - Refactored `langs/en_origin.json`
+- Adjusted promotion conditional banner on product detail page
+  - `components/basket/promotion/BasketGiftConditionBanner.vue`
+  - `components/product/promotion/ProductPromotionGiftConditionBanner.vue`
+  - `composables/useProductPromotions.ts`
+  - `pages/p/[slug].vue`
+- Reduced duplicate promotion quantity and cost logic
+  - Added `composables/usePromotionConditionBanner.ts`
+  - Refactored `components/basket/promotion/BasketGiftConditionBanner.vue`
+  - Refactored `components/product/promotion/ProductPromotionGiftConditionBanner.vue`
+  - Refactored `langs/de-DE.json`
+  - Refactored `langs/en-GB.json`
+  - Refactored `langs/en_origin.json`
+- Extracted promotion condition banner to unified component and reuse it
+  - Added `components/promotion/PromotionGiftConditionBanner.vue`
+  - Refactored `components/basket/promotion/BasketGiftConditionBanner.vue`
+  - Refactored `components/product/promotion/ProductPromotionGiftConditionBanner.vue`
+- Replaced used promotion `mov` abbreviation with full keyword `minOrderValue` to reduce complexity
+  - Refactored `components/basket/promotion/BasketGiftConditionBanner.vue`
+  - Refactored `components/product/promotion/ProductPromotionGiftConditionBanner.vue`
+  - Refactored `composables/useBasketItemPromotion.ts`
+  - Refactored `composables/useProductPromotions.ts`
+  - Refactored `composables/usePromotionConditionBanner.ts`
+  - Refactored `langs/de-DE.json`
+  - Refactored `langs/en-GB.json`
+  - Refactored `langs/en_origin.json`
+- Extended End-to-End testing behaviour with promotion features
+  - Refactored `components/product/promotion/ProductPromotionSelectionModal.vue`
+  - Refactored `components/promotion/PromotionHurryToSaveBanners.vue`
+  - Refactored `composables/useBasketPromotions.ts`
+  - Refactored `composables/useProductPromotions.ts`
+  - Refactored `composables/usePromotionGifts.ts`
+  - Refactored `pages/p/[slug].vue`
+- Fixed and refactored Identity Provider support
+  - Added `components/auth/IDPCallback.vue`
+  - Refactored `components/auth/IDPForm.vue`
+  - Refactored `components/auth/SignInForm.vue`
+  - Refactored `components/auth/LoginForm.vue`
+  - Refactored `composables/useAuthentication.ts`
+  - Refactored `config/storefront.ts`

@@ -1,0 +1,41 @@
+---
+'@scayle/storefront-boilerplate-nuxt': patch
+---
+
+- Aligned check icon within color chip
+- Fixed missing flyout close for sub-navigation in `components/layout/headers/AppHeader.vue`
+- Replaced default Nuxt favicon with SCAYLE favicon in `public/favicon.ico`
+- Added `immediate: true` to watcher and refactored `composables/tracking/watchers/useCustomerDataChangeWatcher.ts` to avoid delayed execution and wrongly reported tracking data
+- Fixed application crash during server-side rendering while trying to access `window.localStorage` in `composables/useLastLoggedInUser.ts`
+- Fixed rendering issues with product price by using optional chaining `basketData.value?.items` in `components/product/ProductPrice.vue`
+- Set default TTL of the cache storage provider with redis to `10` minutes to avoid unlimited cache keys
+- Replaced translation `Sicht` with `Ansehen` for notification CTA
+- Fixed wrong config type for `gtm.debug` in `nuxt.config.ts`
+- Fixed incorrect triggering of `content_view` tracking event during server-rendering in `middleware/routeChangeTrackingObserver.global.ts`
+- Hide scrollbar on homepage collection content
+- Updated to `@types/node@30.11.25`
+- Updated to `@upstash/redis@1.28.4`
+- Updated to `@vitest/coverage-v8@1.3.1`
+- Updated to `autoprefixer@10.4.18`
+- Updated to `eslint@8.57.0`
+- Updated to `eslint-plugin-tailwindcss@3.15.0`
+- Updated to `happy-dom@13.7.3`
+- Updated to `nuxt@3.10.3` (*​For detailed changes see [Release Notes for Nuxt](https://github.com/nuxt/nuxt/releases)*​)
+- Updated to `postcss-custom-properties@13.3.5`
+- Updated to `prettier-plugin-tailwindcss@0.5.12`
+- Updated to `storyblok@3.27.0`
+- Updated to `storyblok-generate-ts@2.0.2`
+- Updated to `typescript@5.4.2`
+- Updated to `vitest@1.3.1`
+- Updated to `vue-tsc@2.0.6`
+- Added `@googlemaps/js-api-loader@1.16.6`
+- Added `@scayle/omnichannel-nuxt@2.1.3`
+- Added `@types/google.maps@3.55.4`
+- Updated to `@scayle/storefront-nuxt@7.61.3`
+- Updated to `@storyblok/nuxt@6.0.6`
+- Updated to `@vueuse/core@10.9.0`
+- Updated to `@vueuse/nuxt@10.9.0`
+- Updated to `dotenv@16.4.5`
+- Updated to `nanoid@5.0.6`
+- Updated to `storyblok-js-client@6.7.1`
+- Updated to `vue@3.4.21` (*​For detailed changes see [Changelog for Vue](https://github.com/vuejs/core/blob/main/CHANGELOG.md)*​)
