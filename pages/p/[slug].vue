@@ -305,7 +305,7 @@ useJsonld(() =>
   }),
 )
 
-useSeoMeta(() => ({ robots: 'index,follow' }))
+useServerSeoMeta({ robots: 'index,follow' })
 
 useHead(() => {
   if (!product.value) {

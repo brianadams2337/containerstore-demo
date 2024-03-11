@@ -13,7 +13,7 @@ export async function usePromotionProgress() {
   })
 
   const basketTotal = computed<number>(() => {
-    return getBasketTotalWithoutPromotions(basketData.value)
+    return getBasketTotalWithoutPromotions(basketData.value ?? undefined)
   })
 
   const progress = computed<number>(() => {

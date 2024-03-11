@@ -70,7 +70,9 @@ export async function useProductPromotions(
     if (!minimumOrderValueForGift.value) {
       return false
     }
-    const basketTotal = getBasketTotalWithoutPromotions(basket.data.value)
+    const basketTotal = getBasketTotalWithoutPromotions(
+      basket.data.value ?? undefined,
+    )
     return basketTotal >= minimumOrderValueForGift.value
   })
 
@@ -78,7 +80,9 @@ export async function useProductPromotions(
     if (!minimumOrderValueForGift.value) {
       return 0
     }
-    const basketTotal = getBasketTotalWithoutPromotions(basket.data.value)
+    const basketTotal = getBasketTotalWithoutPromotions(
+      basket.data.value ?? undefined,
+    )
     const valueLeft = minimumOrderValueForGift.value - basketTotal
     return valueLeft >= 0 ? valueLeft : 0
   })
