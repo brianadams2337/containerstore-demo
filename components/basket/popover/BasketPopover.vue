@@ -37,9 +37,7 @@ const { isSmaller } = useDefaultBreakpoints()
 
 const { openBasketFlyout, closeBasketFlyout, isBasketFlyoutOpen } = useFlyouts()
 
-const { isEmpty, fetch, countWithoutSoldOutItems } = await useBasket({
-  options: { autoFetch: false },
-})
+const { isEmpty, fetch, countWithoutSoldOutItems } = await useBasket()
 
 onMounted(() => fetch())
 </script>

@@ -37,13 +37,16 @@ export const getAdditionalDataValue = (
 }
 
 export const getBasketTotalWithoutPromotions = (
-  cost: BasketResponseData['cost'],
+  basket?: BasketResponseData,
 ) => {
+  if (!basket) {
+    return 0
+  }
   const promotionReductions = _sum(
-    cost.appliedReductions
+    basket.cost.appliedReductions
       .filter(({ category }) => category === 'promotion')
       .map(({ amount }) => amount.absoluteWithTax),
   )
 
-  return cost.withTax + promotionReductions
+  return basket.cost.withTax + promotionReductions
 }

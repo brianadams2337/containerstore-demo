@@ -9,8 +9,8 @@ export const wishlistListingMetadata = {
 } as const
 
 export async function useWishlistPage() {
-  const wishlist = await useWishlist({ options: { lazy: true } })
-  const basket = await useBasket({ options: { lazy: true } })
+  const wishlist = await useWishlist()
+  const basket = await useBasket()
 
   const { $i18n } = useNuxtApp()
 

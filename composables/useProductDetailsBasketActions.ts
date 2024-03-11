@@ -28,7 +28,7 @@ export async function useProductDetailsBasketActions() {
 
   const getBasketAddOnProducts = () => {
     return _unique(
-      basketItems.value
+      (basketItems.value ?? [])
         .filter(({ variant }) =>
           selectedAddOnVariantIds.value.includes(variant.id),
         )

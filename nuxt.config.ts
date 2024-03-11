@@ -125,7 +125,7 @@ export default defineNuxtConfig({
        * https://github.com/zadigetvoltaire/nuxt-gtm#readme */
       gtm: {
         id: process.env.NUXT_PUBLIC_GTM_ID ?? '', // Override: NUXT_PUBLIC_GTM_ID
-        debug: yn(process.env.NUXT_PUBLIC_GTM_DEBUG), // Override: NUXT_PUBLIC_GTM_DEBUG
+        debug: false, // Override: NUXT_PUBLIC_GTM_DEBUG
       },
       /** Storyblok Runtime Configuration
        * https://scayle.dev/en/dev/storefront-core/module-configuration */

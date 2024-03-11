@@ -7,7 +7,7 @@ export async function usePromotionGifts(product: Product) {
   const variantIds = computed(() => getVariantIds(buyXGetYPromotion.value))
 
   const isGiftAlreadyAdded = computed(() => {
-    return basketData.data.value.items?.some((item) => {
+    return (basketData.data.value?.items ?? []).some((item) => {
       const isGift = variantIds.value?.includes(item.variant.id)
       return (
         isGift &&

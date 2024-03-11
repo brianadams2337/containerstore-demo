@@ -45,7 +45,7 @@ const { formatCurrency } = useFormatHelpers()
 const totalCost = computed(() => basket.data.value?.cost.withTax)
 
 const totalDiscount = computed(() => {
-  const discounts = basket.data.value.cost.appliedReductions.map(
+  const discounts = (basket.data.value?.cost.appliedReductions ?? []).map(
     ({ amount }) => amount.absoluteWithTax,
   )
   return _sum(discounts)
