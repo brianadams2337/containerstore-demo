@@ -1,5 +1,142 @@
 # @scayle/storefront-boilerplate-nuxt
 
+## 1.0.0-rc.8
+
+### Minor Changes
+
+- 1af14a0: - **BREAKING:** Refactored default `sameSite` cookie settings from `none` to `lax` in `config/storefront.ts`
+  - Added `StoreLocator` page based on Google Maps and `SCAYLE Omnichannel`
+  - Added `StoreAvailability` to Product Detail Page using `SCAYLE Omnichannel`
+  - Added `patch-packages` for managing patches to third party packages.
+    See `README.md` or the `patches/` directory for an up-to-date listing of currently applied patches.
+    - Patched `unstorage` so the VercelKV driver is not logged as `undefined`
+  - Removed `auth` config in `composables/useAuthentication.ts` and `useRuntimeConfig().public.storefront.auth` field in `config/storefront.ts`
+  - Changed public `runtimeConfig` type to `ModulePublicRuntimeConfig`
+  - Fixed caching behaviour for account area via `routeRules` in `nuxt.config.ts`
+  - Fixed wishlist toggle if wishlist data is being toggled and fetched in `components/product/WishlistToggle.vue`
+  - Refactored error message handling during local development mode to show actual error with stack trace
+  - Fixed product detail page and product listing page (category page) behaviour if basket data is undefined
+  - Fixed Storyblok CMS data handling in `pages/s/[slug].vue`
+  - Fixed Storyblok CMS components handling in `pages/c/[slug].vue`
+  - Renamed `categoryNotFound` to `foundCategoryByPath` in `pages/[...category].vue`
+  - Fixed error handling for non existing category slug by throwing a `404` error and removed error handling from `layouts/defaults.vue`
+  - Fixed redirection from error page to homepage
+  - Converted `routeChangeTrackingObserver` to the route middleware and added delayed execution
+  - Fixed redirection behaviour on login from checkout, as it will now redirect after login back to checkout
+  - Used `onNuxtReady` instead of `tryOnMounted` for `composables/tracking/watchers/useCustomerDataChangeWatcher.ts` and removed user force refresh
+  - Fixed links on Storyblok grid tile, clickable image and banner link
+    - `modules/cms/providers/storyblok/components/BannerLink.vue`
+    - `modules/cms/providers/storyblok/components/ClickableImage.vue`
+    - `modules/cms/providers/storyblok/components/GridTile.vue`
+    - `modules/cms/providers/storyblok/components/StoryblokLink.vue`
+  - Fixed category behaviour by using new composable `useCategoryByPath` to source category data in `pages/[...category].vue`
+  - Fixed category behaviour by using `stripShopLocaleFromPath` and remove computed value in `pages/[...category].vue`
+  - Refactored root categories logic and implement app navigation trees
+    - Added `composables/useCategory.ts`
+    - Added `composables/useNavigationTreeItems.ts`
+    - Added `composables/useRootCategories.ts`
+    - Refactored `components/layout/footer/AppFooter.vue`
+    - Refactored `components/layout/headers/AppHeader.vue`
+    - Refactored `components/layout/headers/HeaderSubNavigation.vue`
+    - Refactored `components/layout/navigation/MobileSidebar.vue`
+    - Refactored `composables/useProductList.ts`
+    - Refactored `pages/[...category].vue`
+  - Improved tracking behaviour
+    - Refactored `composables/tracking/events/useUserActionEvents.ts`
+    - Refactored `composables/tracking/watchers/useCustomerDataChangeWatcher.ts`
+    - Refactored `composables/useWishlistPage.ts`
+    - Refactored `nuxt.config.ts`
+  - Fixed promotion handling and hides gifts if minimum order value (`mov`) is not satisfied
+    - Refactored `composables/useBasketItemPromotion.ts`
+    - Refactored `composables/useProductPromotions.ts`
+    - Refactored `composables/usePromotionProgress.ts`
+    - Refactored `utils/promotion.ts`
+  - Adjusted promotion basket gift conditional banner labels
+    - Refactored `components/basket/promotion/BasketGiftConditionBanner.vue`
+    - Refactored `composables/useBasketItemPromotion.ts`
+    - Refactored `langs/de-DE.json`
+    - Refactored `langs/en-GB.json`
+    - Refactored `langs/en_origin.json`
+  - Adjusted promotion conditional banner on product detail page
+    - `components/basket/promotion/BasketGiftConditionBanner.vue`
+    - `components/product/promotion/ProductPromotionGiftConditionBanner.vue`
+    - `composables/useProductPromotions.ts`
+    - `pages/p/[slug].vue`
+  - Reduced duplicate promotion quantity and cost logic
+    - Added `composables/usePromotionConditionBanner.ts`
+    - Refactored `components/basket/promotion/BasketGiftConditionBanner.vue`
+    - Refactored `components/product/promotion/ProductPromotionGiftConditionBanner.vue`
+    - Refactored `langs/de-DE.json`
+    - Refactored `langs/en-GB.json`
+    - Refactored `langs/en_origin.json`
+  - Extracted promotion condition banner to unified component and reuse it
+    - Added `components/promotion/PromotionGiftConditionBanner.vue`
+    - Refactored `components/basket/promotion/BasketGiftConditionBanner.vue`
+    - Refactored `components/product/promotion/ProductPromotionGiftConditionBanner.vue`
+  - Replaced used promotion `mov` abbreviation with full keyword `minOrderValue` to reduce complexity
+    - Refactored `components/basket/promotion/BasketGiftConditionBanner.vue`
+    - Refactored `components/product/promotion/ProductPromotionGiftConditionBanner.vue`
+    - Refactored `composables/useBasketItemPromotion.ts`
+    - Refactored `composables/useProductPromotions.ts`
+    - Refactored `composables/usePromotionConditionBanner.ts`
+    - Refactored `langs/de-DE.json`
+    - Refactored `langs/en-GB.json`
+    - Refactored `langs/en_origin.json`
+  - Extended End-to-End testing behaviour with promotion features
+    - Refactored `components/product/promotion/ProductPromotionSelectionModal.vue`
+    - Refactored `components/promotion/PromotionHurryToSaveBanners.vue`
+    - Refactored `composables/useBasketPromotions.ts`
+    - Refactored `composables/useProductPromotions.ts`
+    - Refactored `composables/usePromotionGifts.ts`
+    - Refactored `pages/p/[slug].vue`
+  - Fixed and refactored Identity Provider support
+    - Added `components/auth/IDPCallback.vue`
+    - Refactored `components/auth/IDPForm.vue`
+    - Refactored `components/auth/SignInForm.vue`
+    - Refactored `components/auth/LoginForm.vue`
+    - Refactored `composables/useAuthentication.ts`
+    - Refactored `config/storefront.ts`
+
+### Patch Changes
+
+- 1af14a0: - Aligned check icon within color chip
+  - Fixed missing flyout close for sub-navigation in `components/layout/headers/AppHeader.vue`
+  - Replaced default Nuxt favicon with SCAYLE favicon in `public/favicon.ico`
+  - Added `immediate: true` to watcher and refactored `composables/tracking/watchers/useCustomerDataChangeWatcher.ts` to avoid delayed execution and wrongly reported tracking data
+  - Fixed application crash during server-side rendering while trying to access `window.localStorage` in `composables/useLastLoggedInUser.ts`
+  - Fixed rendering issues with product price by using optional chaining `basketData.value?.items` in `components/product/ProductPrice.vue`
+  - Set default TTL of the cache storage provider with redis to `10` minutes to avoid unlimited cache keys
+  - Replaced translation `Sicht` with `Ansehen` for notification CTA
+  - Fixed wrong config type for `gtm.debug` in `nuxt.config.ts`
+  - Fixed incorrect triggering of `content_view` tracking event during server-rendering in `middleware/routeChangeTrackingObserver.global.ts`
+  - Hide scrollbar on homepage collection content
+  - Updated to `@types/node@30.11.25`
+  - Updated to `@upstash/redis@1.28.4`
+  - Updated to `@vitest/coverage-v8@1.3.1`
+  - Updated to `autoprefixer@10.4.18`
+  - Updated to `eslint@8.57.0`
+  - Updated to `eslint-plugin-tailwindcss@3.15.0`
+  - Updated to `happy-dom@13.7.3`
+  - Updated to `nuxt@3.10.3` (*​For detailed changes see [Release Notes for Nuxt](https://github.com/nuxt/nuxt/releases)*​)
+  - Updated to `postcss-custom-properties@13.3.5`
+  - Updated to `prettier-plugin-tailwindcss@0.5.12`
+  - Updated to `storyblok@3.27.0`
+  - Updated to `storyblok-generate-ts@2.0.2`
+  - Updated to `typescript@5.4.2`
+  - Updated to `vitest@1.3.1`
+  - Updated to `vue-tsc@2.0.6`
+  - Added `@googlemaps/js-api-loader@1.16.6`
+  - Added `@scayle/omnichannel-nuxt@2.1.3`
+  - Added `@types/google.maps@3.55.4`
+  - Updated to `@scayle/storefront-nuxt@7.61.3`
+  - Updated to `@storyblok/nuxt@6.0.6`
+  - Updated to `@vueuse/core@10.9.0`
+  - Updated to `@vueuse/nuxt@10.9.0`
+  - Updated to `dotenv@16.4.5`
+  - Updated to `nanoid@5.0.6`
+  - Updated to `storyblok-js-client@6.7.1`
+  - Updated to `vue@3.4.21` (*​For detailed changes see [Changelog for Vue](https://github.com/vuejs/core/blob/main/CHANGELOG.md)*​)
+
 ## 1.0.0-rc.07
 
 This release focuses on stabilization and modularization, to improve the technical foundation and developer experience.

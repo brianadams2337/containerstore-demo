@@ -4,5 +4,5 @@
   "initialVersions": {
     "@scayle/storefront-boilerplate-nuxt": "0.0.1"
   },
-  "changesets": []
+  "changesets": ["funny-flowers-shop", "tough-donkeys-lay"]
 }
