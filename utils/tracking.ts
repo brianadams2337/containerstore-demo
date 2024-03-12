@@ -368,8 +368,8 @@ export const getDeepestCategoryForTracking = (
 }
 
 export const didBasketDataChange = (
-  oldData: BasketResponseData | null,
-  newData: BasketResponseData | null,
+  oldData: BasketResponseData | null | undefined,
+  newData: BasketResponseData | null | undefined,
 ) => {
   return !isEqual(
     {
@@ -396,8 +396,8 @@ export const didBasketDataChange = (
 }
 
 export const didWishlistDataChange = (
-  oldData: WishlistResponseData | null,
-  newData: WishlistResponseData | null,
+  oldData: WishlistResponseData | null | undefined,
+  newData: WishlistResponseData | null | undefined,
 ) => {
   return !isEqual(
     {
