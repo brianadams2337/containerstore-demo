@@ -1,5 +1,3 @@
-import type { ShopUser } from '@scayle/storefront-nuxt'
-
 export type AuthTrackingEventData = {
   customer_id?: number
   customer_type?: CustomerType
@@ -34,8 +32,9 @@ const useUserActionEvents = (
         customer_type: customerType = 'new',
       } = payload
 
-      const isLoginEvent = payload.event === 'login'
-      const methodKeyName = isLoginEvent ? 'login_method' : 'method'
+      const isLoginOrSignUpEvent =
+        payload.event === 'login' || payload.event === 'sign_up'
+      const methodKeyName = isLoginOrSignUpEvent ? 'login_method' : 'method'
 
       track(
         payload.event || 'login',
@@ -44,24 +43,6 @@ const useUserActionEvents = (
           [methodKeyName]: method || METHOD_DEFAULT,
           eh,
           customer_type: customerType, // TODO: CO should add this to payload as well
-          status,
-          content_name: route.fullPath,
-        }),
-      )
-    },
-
-    trackRegister: async (
-      payload: AuthTrackingEventData,
-      user?: ShopUser | null,
-    ) => {
-      const { customer_id: customerId, method, status } = payload
-      const eh = await getEmailHash(user?.email)
-      track(
-        'sign_up',
-        mapCustomerInfoToTrackingPayload({
-          customer_id: customerId,
-          method: method || METHOD_DEFAULT,
-          eh,
           status,
           content_name: route.fullPath,
         }),

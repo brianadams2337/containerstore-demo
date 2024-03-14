@@ -189,13 +189,16 @@ const sortingValues = Object.values(getSortingValues())
 const selectedSort = computed(() => getSortByValue(route.query.sort || '').name)
 
 const resultsCount = computed(() => pagination.value?.total)
+const title = computed(() => {
+  return `${$i18n.t('search.seo_title', {
+    term: term.value.toString(),
+    count: resultsCount.value?.toString(),
+  })}`
+})
 
 useSeoMeta({
   robots: 'index,follow',
-  title: `${$i18n.t('search.seo_title', {
-    term: term.value.toString(),
-    count: resultsCount.value.toString(),
-  })}`,
+  title,
 })
 
 defineOptions({ name: 'SearchPage' })

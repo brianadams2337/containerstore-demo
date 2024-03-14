@@ -4,6 +4,9 @@ export async function useCategory(autoFetch = false) {
 
   const categoryPath = computed<string>(() => {
     const { category } = route.params
+    if (!category) {
+      return '/'
+    }
     const path = Array.isArray(category) ? category.join('/') : category
     return normalizePathRoute(path)
   })

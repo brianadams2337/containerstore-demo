@@ -1,4 +1,4 @@
-import { useStorage } from '@vueuse/core'
+import { useLocalStorage } from '@vueuse/core'
 
 export interface LastLoggedInUser {
   firstName: string
@@ -16,10 +16,9 @@ export async function useLastLoggedInUser() {
   const { user, isLoggedIn, fetching } = await useUser()
   const lastLoggedInUser = useState(USER_KEY, setUserDefault)
 
-  const localStorage = useStorage<LastLoggedInUser>(
+  const localStorage = useLocalStorage<LastLoggedInUser>(
     USER_KEY,
     setUserDefault(),
-    window.localStorage,
     {
       serializer: {
         read: (value: any) => (value ? JSON.parse(atob(value)) : null),

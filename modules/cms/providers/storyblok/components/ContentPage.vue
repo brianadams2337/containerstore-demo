@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import type { BlokProps, SbContentPage } from '../../types/storyblok'
+import type { BlokProps, SbContentPage } from '../types/storyblok'
 
 defineProps<BlokProps<SbContentPage>>()
 </script>

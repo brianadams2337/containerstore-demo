@@ -9,13 +9,18 @@ export const wishlistListingMetadata = {
 } as const
 
 export async function useWishlistPage() {
-  const wishlist = await useWishlist({ options: { lazy: true } })
-  const basket = await useBasket({ options: { lazy: true } })
+  const wishlist = await useWishlist()
+  const basket = await useBasket()
 
   const { $i18n } = useNuxtApp()
 
-  const { trackViewItemList, trackWishlist, collectProductListItems } =
-    useTrackingEvents()
+  const {
+    trackViewItemList,
+    trackWishlist,
+    collectProductListItems,
+    trackBasket,
+    collectBasketItems,
+  } = useTrackingEvents()
 
   if (wishlist.error.value) {
     throw wishlist.error.value
@@ -44,6 +49,13 @@ export async function useWishlistPage() {
         listName: wishlistListingMetadata.name,
       }),
     )
+    trackBasket(
+      collectBasketItems(basket.data.value?.items, {
+        listId: BasketListingMetadata.ID,
+        listName: BasketListingMetadata.NAME,
+      }),
+    )
+
     trackViewItemList({
       items: wishlist.products.value,
       listingMetaData: wishlistListingMetadata,

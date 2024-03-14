@@ -9,6 +9,7 @@ import {
 declare module '@nuxt/schema' {
   interface PublicRuntimeConfig {
     cdnUrl: string
+    googleMapsApiKey: string
   }
 }
 
@@ -77,6 +78,11 @@ export default defineNuxtConfig({
     checkout: {
       accessHeader: undefined, // Override: NUXT_CHECKOUT_ACCESS_HEADER
     },
+    // Configuration for the omnichannel add-on
+    omnichannel: {
+      apiToken: '', // Overide: NUXT_OMNICHANNEL_API_TOKEN
+      apiHost: '', // Overide: NUXT_OMNICHANNEL_API_HOST
+    },
     // https://scayle.dev/en/dev/storefront-core/module-configuration
     storefront: storefrontRuntimeConfigPrivate as any,
     // Following keys are Overrideable using prefix NUXT_PUBLIC_
@@ -93,29 +99,33 @@ export default defineNuxtConfig({
       // Override: NUXT_PUBLIC_CDN_URL
       cdnUrl: '',
 
+      // Override: NUXT_PUBLIC_GOOGLE_MAPS_API_KEY
+      googleMapsApiKey: '',
+
       /** Storefront Boilerplate - Tracking Event Order
        * Used in: templates/nuxt/plugins/01.tracking.ts */
       trackingEventOrder: [
         'shop_init',
         'customer_data',
+        'content_view',
+        'cart',
+        'wishlist',
         'view_cart',
         'select_item',
-        'content_view',
         'remove_from_cart',
         'add_to_cart',
-        'cart',
         'remove_from_wishlist',
         'add_to_wishlist',
-        'wishlist',
         'view_item_list',
         'view_item',
         'purchase',
+        'view_promotion',
       ],
       /** nuxt-gtm Module Runtime Configuration
        * https://github.com/zadigetvoltaire/nuxt-gtm#readme */
       gtm: {
         id: process.env.NUXT_PUBLIC_GTM_ID ?? '', // Override: NUXT_PUBLIC_GTM_ID
-        debug: yn(process.env.NUXT_PUBLIC_GTM_DEBUG), // Override: NUXT_PUBLIC_GTM_DEBUG
+        debug: false, // Override: NUXT_PUBLIC_GTM_DEBUG
       },
       /** Storyblok Runtime Configuration
        * https://scayle.dev/en/dev/storefront-core/module-configuration */
@@ -159,6 +169,7 @@ export default defineNuxtConfig({
   // https://nuxt.com/docs/api/nuxt-config#modules-1
   modules: [
     '@scayle/storefront-nuxt/module',
+    '@scayle/omnichannel-nuxt/module',
     '@nuxtjs/tailwindcss',
     'nuxt-svgo',
     '@nuxt/image',

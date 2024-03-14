@@ -87,6 +87,8 @@ const props = defineProps<{
   promotion: Promotion
 }>()
 
+const { getProductDetailRoute } = useRouteHelpers()
+
 const {
   basketIdle,
   lowestPriorPrice,
@@ -106,7 +108,7 @@ const {
 const { data: basketData } = await useBasket()
 
 const areConditionsMet = computed(() => {
-  const basketItem = basketData.value.items.find((item) => {
+  const basketItem = (basketData.value?.items ?? []).find((item) => {
     return (
       getFirstAttributeValue(item.product?.attributes, 'promotion')?.id ===
       getFirstAttributeValue(props.promotedProduct?.attributes, 'promotion')?.id
@@ -121,8 +123,6 @@ const areConditionsMet = computed(() => {
 
   return basketItem?.quantity >= minQuantity
 })
-
-const { getProductDetailRoute } = useRouteHelpers()
 
 const close = () => {
   activeVariant.value = null

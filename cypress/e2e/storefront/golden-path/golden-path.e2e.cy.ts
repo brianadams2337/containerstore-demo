@@ -6,13 +6,10 @@ import BasketPage from '../../../pageObjects/basketPage'
 import WishlistPage from '../../../pageObjects/wishlistPage'
 
 describe('From home to checkout a.k.a. "Golden Path"', () => {
-  afterEach(() => {
-    cy.clearSiteData()
-  })
+  afterEach(() => cy.clearSiteData())
 
   it('should be able to go from home to checkout with a product in the basket', () => {
     HomePage.open()
-    HomePage.closePromotionButton()
     ProductListingPage.openTestCategory()
     cy.log('navigate to PDP by clicking on first product')
     ProductListingPage.waitForPageToBeDisplayed()

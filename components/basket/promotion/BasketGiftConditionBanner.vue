@@ -1,18 +1,10 @@
 <template>
-  <div
-    v-if="hasQuantityLeft"
-    class="flex justify-between rounded-md px-4 py-2 text-white"
-    :style="giftBackgroundColorStyle"
-  >
-    <Headline size="xs" is-bold>
-      {{ $t('basket.promotion.gift_conditional_label', { quantityLeft }) }}
-    </Headline>
-    <PromotionCountdown
-      v-if="giftPromotion"
-      :until="giftPromotion.schedule.to"
-      borderless
-    />
-  </div>
+  <PromotionGiftConditionBanner
+    v-if="giftPromotion && !areGiftConditionsMet"
+    :background-color="giftBackgroundColorStyle.backgroundColor"
+    :schedule-to="giftPromotion.schedule.to"
+    :label="label"
+  />
 </template>
 
 <script setup lang="ts">
@@ -25,7 +17,10 @@ const basketItem = computed(() => props.basketItem)
 const {
   giftPromotion,
   giftBackgroundColorStyle,
-  hasQuantityLeftForGiftConditions: hasQuantityLeft,
+  minOrderValueLeft,
   quantityLeftForGiftConditions: quantityLeft,
+  areGiftConditionsMet,
 } = await useBasketItemPromotion(basketItem)
+
+const { label } = usePromotionConditionBanner(minOrderValueLeft, quantityLeft)
 </script>

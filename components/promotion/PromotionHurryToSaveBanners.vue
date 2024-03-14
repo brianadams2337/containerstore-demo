@@ -42,6 +42,10 @@ const props = withDefaults(defineProps<{ product?: Product }>(), {
 
 const route = useRoute()
 const localePath = useLocalePath()
+
+const { buyXGetYPromotions, automaticDiscountPromotions } =
+  await useBasketPromotions()
+
 const { productPromotionId } = await useProductPromotions(props.product)
 
 const isBasketPage = computed(() => {
@@ -55,7 +59,4 @@ const shouldShowAutomaticDiscountBanner = (productId: number) => {
 const shouldShowBuyXGetYBanner = (promotionId?: number) => {
   return isBasketPage.value || promotionId === productPromotionId.value
 }
-
-const { buyXGetYPromotions, automaticDiscountPromotions } =
-  await useBasketPromotions()
 </script>

@@ -2,6 +2,7 @@ import {
   PromotionEffectType,
   type BuyXGetYEffect,
   type AutomaticDiscountEffect,
+  type BasketResponseData,
 } from '@scayle/storefront-nuxt'
 
 export const getBackgroundColorStyle = (color?: string) => {
@@ -33,4 +34,19 @@ export const getAdditionalDataValue = (
   }
   const { additionalData } = promotion.effect as AutomaticDiscountEffect
   return additionalData.value
+}
+
+export const getBasketTotalWithoutPromotions = (
+  basket?: BasketResponseData,
+) => {
+  if (!basket) {
+    return 0
+  }
+  const promotionReductions = _sum(
+    basket.cost.appliedReductions
+      .filter(({ category }) => category === 'promotion')
+      .map(({ amount }) => amount.absoluteWithTax),
+  )
+
+  return basket.cost.withTax + promotionReductions
 }

@@ -26,8 +26,6 @@ export async function useAuthentication(
 
   const notification = useNotification()
 
-  const { auth: authConfig } = useRuntimeConfig().public.storefront
-
   const { trackAuthenticated, trackLogout } = useTrackingEvents()
 
   const { user, fetch: refreshUser, customerType } = await useUser()
@@ -57,6 +55,19 @@ export async function useAuthentication(
       await authenticated()
     } catch (error) {
       trackFailedAuthentication(data.email)
+      handleError(error)
+    }
+
+    isSubmitting.value = false
+  }
+
+  const loginIDP = async (code: string) => {
+    isSubmitting.value = true
+
+    try {
+      await session.loginWithIDP({ code })
+      await authenticated()
+    } catch (error) {
       handleError(error)
     }
 
@@ -139,8 +150,7 @@ export async function useAuthentication(
 
     isSubmitting.value = false
 
-    const logoutRedirect = authConfig?.redirect.logout || routeList.home.path
-    redirectUser(logoutRedirect)
+    redirectUser(routeList.home.path)
   }
 
   /**
@@ -162,14 +172,8 @@ export async function useAuthentication(
         user.value.email,
       )
 
-      const isSignInPathWithoutRedirect =
-        route.fullPath === localePath(routeList.signin.path)
-      const homePath = authConfig?.redirect.home || routeList.home.path
+      let redirectTo = localePath(routeList.home.path)
 
-      let redirectTo = route.path
-      if (isSignInPathWithoutRedirect) {
-        redirectTo = homePath
-      }
       if (route.query.redirectUrl) {
         redirectTo = route.query.redirectUrl as string
       }
@@ -225,5 +229,6 @@ export async function useAuthentication(
     forgotPassword,
     resetPasswordByHash,
     isSubmitting,
+    loginIDP,
   }
 }

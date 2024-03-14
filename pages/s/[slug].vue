@@ -1,5 +1,5 @@
 <template>
-  <div v-if="fetching" class="container space-y-2 py-4">
+  <div v-if="pending" class="container space-y-2 py-4">
     <SkeletonLoader type="headline" class="mb-10" />
 
     <SkeletonLoader type="custom" class="h-6 w-72" />
@@ -26,24 +26,17 @@ import type { SbContentPage } from '~/modules/cms/providers/storyblok/types/stor
 const route = useRoute()
 const slug = computed(() => route.params.slug)
 const { fetchBySlug } = useCMS<SbContentPage>(`services-page-${slug.value}`)
-const fetching = ref()
-const status = ref()
-const story = ref()
-const error = ref()
-if (status.value === 'idle') {
-  const {
-    data,
-    pending,
-    status: _status,
-    error: _error,
-    execute: _fetchBySlug,
-  } = await fetchBySlug(`s/${slug.value}`)
-  story.value = data.value
-  fetching.value = pending.value
-  status.value = _status.value
-  error.value = _error.value
-  await fetchLazy(_fetchBySlug())
-}
+
+const {
+  data,
+  pending,
+  error,
+  execute: _fetchBySlug,
+} = await fetchBySlug(`s/${slug.value}`)
+
+await fetchLazy(_fetchBySlug())
+
+const story = computed(() => data.value?.data.story)
 
 if (error.value) {
   throw error.value

@@ -53,13 +53,38 @@ export async function useProductPromotions(
   })
 
   const addedProductBasketItem = computed(() => {
-    return basket.items.value.find(
+    return basket.items.value?.find(
       (item) => item.product.id === product.value?.id,
     )
   })
 
   const giftConditions = computed(() => {
     return buyXGetYPromotion.value?.customData?.giftConditions
+  })
+
+  const minimumOrderValueForGift = computed(() => {
+    return buyXGetYPromotion.value?.customData?.minOrderValue
+  })
+
+  const isMinOrderValueReached = computed(() => {
+    if (!minimumOrderValueForGift.value) {
+      return false
+    }
+    const basketTotal = getBasketTotalWithoutPromotions(
+      basket.data.value ?? undefined,
+    )
+    return basketTotal >= minimumOrderValueForGift.value
+  })
+
+  const minOrderValueLeft = computed(() => {
+    if (!minimumOrderValueForGift.value) {
+      return 0
+    }
+    const basketTotal = getBasketTotalWithoutPromotions(
+      basket.data.value ?? undefined,
+    )
+    const valueLeft = minimumOrderValueForGift.value - basketTotal
+    return valueLeft >= 0 ? valueLeft : 0
   })
 
   const areGiftConditionsMet = computed(() => {
@@ -73,7 +98,14 @@ export async function useProductPromotions(
       return false
     }
 
-    return addedProductBasketItem.value?.quantity >= minPromotionQuantity
+    const quantityCondition =
+      addedProductBasketItem.value?.quantity >= minPromotionQuantity
+
+    if (!minimumOrderValueForGift.value) {
+      return quantityCondition
+    }
+
+    return isMinOrderValueReached.value && quantityCondition
   })
 
   const quantityLeftForGiftConditions = computed(() => {
@@ -82,13 +114,6 @@ export async function useProductPromotions(
     }
     return (
       giftConditions.value.minQuantity - addedProductBasketItem.value.quantity
-    )
-  })
-
-  const hasQuantityLeftForGiftConditions = computed(() => {
-    return (
-      quantityLeftForGiftConditions.value &&
-      quantityLeftForGiftConditions.value > 0
     )
   })
 
@@ -123,7 +148,7 @@ export async function useProductPromotions(
     if (!isBuyXGetYPrioritized.value) {
       return false
     }
-    return basket.items.value.some(({ promotion, variant }) => {
+    return basket.items.value?.some(({ promotion, variant }) => {
       const variantIds = getVariantIds(buyXGetYPromotion.value)
       const hasVariantId = variantIds.includes(variant.id)
       return (
@@ -180,6 +205,6 @@ export async function useProductPromotions(
     giftConditions,
     addedProductBasketItem,
     quantityLeftForGiftConditions,
-    hasQuantityLeftForGiftConditions,
+    minOrderValueLeft,
   }
 }

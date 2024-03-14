@@ -13,13 +13,7 @@ export async function usePromotionProgress() {
   })
 
   const basketTotal = computed<number>(() => {
-    const promotionReductions = _sum(
-      basketData.value.cost.appliedReductions
-        .filter(({ category }) => category === 'promotion')
-        .map(({ amount }) => amount.absoluteWithTax),
-    )
-
-    return basketData.value.cost.withTax + promotionReductions
+    return getBasketTotalWithoutPromotions(basketData.value ?? undefined)
   })
 
   const progress = computed<number>(() => {
@@ -42,7 +36,7 @@ export async function usePromotionProgress() {
   })
 
   const formattedDiscount = computed<string | undefined>(() => {
-    const promotedItem = basketData.value.items.find(
+    const promotedItem = (basketData.value?.items ?? []).find(
       (item) => item.promotionId === currentPromotion.value?.id,
     )
 
@@ -61,7 +55,7 @@ export async function usePromotionProgress() {
     if (!minOrderValue.value) {
       return false
     }
-    return basketData.value.items.some(({ promotionId }) => {
+    return (basketData.value?.items ?? []).some(({ promotionId }) => {
       return promotionId === currentPromotion.value?.id
     })
   })

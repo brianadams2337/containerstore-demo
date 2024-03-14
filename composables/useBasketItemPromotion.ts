@@ -4,6 +4,7 @@ import {
 } from '@scayle/storefront-nuxt'
 
 export async function useBasketItemPromotion(basketItem: Ref<BasketItem>) {
+  const basket = await useBasket()
   const { allCurrentPromotions } = await useBasketPromotions()
 
   const promotion = computed<BasketPromotion | undefined>(() => {
@@ -34,13 +35,44 @@ export async function useBasketItemPromotion(basketItem: Ref<BasketItem>) {
     return giftPromotion.value?.customData?.giftConditions
   })
 
+  const minimumOrderValueForGift = computed(() => {
+    return giftPromotion.value?.customData?.minOrderValue
+  })
+
+  const isMinOrderValueReached = computed(() => {
+    if (!minimumOrderValueForGift.value) {
+      return false
+    }
+    const basketTotal = getBasketTotalWithoutPromotions(
+      basket.data.value ?? undefined,
+    )
+    return basketTotal >= minimumOrderValueForGift.value
+  })
+
+  const minOrderValueLeft = computed(() => {
+    if (!minimumOrderValueForGift.value) {
+      return 0
+    }
+    const basketTotal = getBasketTotalWithoutPromotions(
+      basket.data.value ?? undefined,
+    )
+    const valueLeft = minimumOrderValueForGift.value - basketTotal
+    return valueLeft >= 0 ? valueLeft : 0
+  })
+
   const areGiftConditionsMet = computed(() => {
     const minQuantity = giftConditions.value?.minQuantity
     if (!minQuantity) {
       return false
     }
 
-    return basketItem.value?.quantity >= minQuantity
+    const quantityCondition = basketItem.value?.quantity >= minQuantity
+
+    if (!minimumOrderValueForGift.value) {
+      return quantityCondition
+    }
+
+    return isMinOrderValueReached.value && quantityCondition
   })
 
   const isBuyXGetY = computed(() => isBuyXGetYType(promotion.value))
@@ -77,13 +109,6 @@ export async function useBasketItemPromotion(basketItem: Ref<BasketItem>) {
     return giftConditions.value.minQuantity - basketItem.value.quantity
   })
 
-  const hasQuantityLeftForGiftConditions = computed(() => {
-    return (
-      quantityLeftForGiftConditions.value &&
-      quantityLeftForGiftConditions.value > 0
-    )
-  })
-
   return {
     isBuyXGetY,
     isAutomaticDiscount,
@@ -97,6 +122,6 @@ export async function useBasketItemPromotion(basketItem: Ref<BasketItem>) {
     giftBackgroundColorStyle,
     areGiftConditionsMet,
     quantityLeftForGiftConditions,
-    hasQuantityLeftForGiftConditions,
+    minOrderValueLeft,
   }
 }

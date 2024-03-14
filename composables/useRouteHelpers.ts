@@ -88,7 +88,9 @@ export function useRouteHelpers() {
   const getLocalizedRoute = (route: RouteLocationRaw) => {
     if (!isString(route)) {
       const isLocalePath =
-        'path' in route && hasLocalePrefix(route.path, currentShop.value?.path)
+        'path' in route &&
+        route.path !== undefined &&
+        hasLocalePrefix(route.path, currentShop.value?.path)
 
       return isLocalePath ? route : localePath(route)
     }

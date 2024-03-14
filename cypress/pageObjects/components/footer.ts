@@ -1,5 +1,5 @@
 import { getLocaleFile } from '../../test-helpers'
-import header from './header'
+import head from './head'
 class Footer {
   private pageElements = {
     mainFooter: '#footer > .justify-between',
@@ -12,23 +12,24 @@ class Footer {
   }
 
   textStrings = {
-    imprint: 'Impressum',
+    imprint: 'Imprint',
     storyblok: {
       companyName: 'About You SE & Co. KG',
       address: 'Domstraße 10',
       city: '20095 Hamburg',
       country: 'Germany',
     },
+    faq: 'Faq',
   }
 
   openFaq() {
     cy.get(this.pageElements.faqButton).click()
-    cy.get(header.pageElements.pageHeadline).contains('FAQ')
+    cy.get(head.pageElements.title).contains(this.textStrings.faq)
   }
 
   openImprint() {
     cy.get(this.pageElements.imprintButton).first().click()
-    cy.contains(this.textStrings.imprint)
+    cy.get(head.pageElements.title).contains(this.textStrings.imprint)
   }
 
   assertStoryblokContent(): void {

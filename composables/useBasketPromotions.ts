@@ -3,10 +3,13 @@ export async function useBasketPromotions() {
   const promotionData = await useCurrentPromotions()
 
   const allCurrentPromotions = computed<Promotion[]>(() => {
-    return promotionData.data.value.entities
+    return promotionData.data?.value?.entities
   })
 
   const appliedPromotions = computed(() => {
+    if (!basket.items.value) {
+      return []
+    }
     return basket.items.value
       .filter(({ promotion }) => promotion?.isValid)
       .map(({ promotion, product }) => ({

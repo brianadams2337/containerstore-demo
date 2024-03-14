@@ -5,6 +5,7 @@
         {{ $t('wishlist.heading') }}
       </Headline>
       <p
+        v-if="count !== undefined"
         data-test-id="wishlist-count"
         class="mt-4 text-xs font-semibold text-secondary"
       >

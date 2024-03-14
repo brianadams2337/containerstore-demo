@@ -1,18 +1,9 @@
 <template>
-  <div
-    v-if="hasQuantityLeft"
-    class="flex justify-between rounded-md px-4 py-2 text-white"
-    :style="getBackgroundColorStyle(promotion?.customData.colorHex)"
-  >
-    <Headline size="xs" is-bold>
-      {{ $t('basket.promotion.gift_conditional_label', { quantityLeft }) }}
-    </Headline>
-    <PromotionCountdown
-      v-if="promotion"
-      :until="promotion.schedule.to"
-      borderless
-    />
-  </div>
+  <PromotionGiftConditionBanner
+    v-if="promotion"
+    v-bind="{ backgroundColor, label }"
+    :schedule-to="promotion.schedule.to"
+  />
 </template>
 
 <script setup lang="ts">
@@ -22,7 +13,14 @@ const props = defineProps<{ product: Product }>()
 
 const {
   buyXGetYPromotion: promotion,
-  hasQuantityLeftForGiftConditions: hasQuantityLeft,
   quantityLeftForGiftConditions: quantityLeft,
+  minOrderValueLeft,
 } = await useProductPromotions(props.product)
+
+const backgroundColor = computed(() => {
+  const colorHex = promotion.value?.customData.colorHex
+  return getBackgroundColorStyle(colorHex).backgroundColor
+})
+
+const { label } = usePromotionConditionBanner(minOrderValueLeft, quantityLeft)
 </script>

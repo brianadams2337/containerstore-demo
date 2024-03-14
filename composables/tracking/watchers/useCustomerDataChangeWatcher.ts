@@ -1,23 +1,14 @@
 export const useCustomerDataChangeWatcher = async () => {
-  const { isLoggedIn, customerType, user } = await useUser()
+  const { isLoggedIn, customerType, user, fetching } = await useUser()
 
   const { trackCustomerData } = useTrackingEvents()
-
-  const currentUserId = useState<number | undefined>('current-user-id')
 
   watch(
     () => user.value,
     (userData) => {
-      if (!userData) {
-        currentUserId.value = undefined
-      }
-
-      if (currentUserId.value === userData?.id) {
+      if (!isLoggedIn.value) {
         return
       }
-
-      currentUserId.value = userData?.id
-
       trackCustomerData({
         isLoggedIn: isLoggedIn.value,
         customerType: customerType.value,
@@ -26,15 +17,21 @@ export const useCustomerDataChangeWatcher = async () => {
     },
   )
 
+  // TODO: This is just a workaround. On Latest and Test user is not fetched yet. So long term solution will be initializing user data much earlier.
+  // Remove the watcher and test this again after another solution is implemented.
   onNuxtReady(() => {
-    if (currentUserId.value) {
-      return
-    }
-
-    trackCustomerData({
-      isLoggedIn: isLoggedIn.value,
-      customerType: customerType.value,
-      user: user.value,
-    })
+    watch(
+      () => fetching.value,
+      (newFetching) => {
+        if (newFetching || isLoggedIn.value) {
+          return
+        }
+        trackCustomerData({
+          isLoggedIn: false,
+          customerType: 'guest',
+        })
+      },
+      { once: true },
+    )
   })
 }

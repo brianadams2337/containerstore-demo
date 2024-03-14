@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import type { BlokProps, SbDoubleColumn } from '../../types/storyblok'
+import type { BlokProps, SbDoubleColumn } from '../types/storyblok'
 
 const props = defineProps<BlokProps<SbDoubleColumn>>()
 

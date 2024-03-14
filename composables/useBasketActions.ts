@@ -45,7 +45,7 @@ export async function useBasketActions() {
     if (!itemGroupId) {
       return
     }
-    return basket.items.value
+    return (basket.items.value ?? [])
       .filter(({ itemGroup }) => itemGroup?.id === itemGroupId)
       .map(({ product }) => product)
   }
@@ -90,7 +90,7 @@ export async function useBasketActions() {
   }
 
   watchPostEffect(() => {
-    orderedItems.value = updateBasketItems(basket.items.value)
+    orderedItems.value = updateBasketItems(basket.items.value ?? [])
   })
 
   const fetching = basket.fetching

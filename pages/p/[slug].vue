@@ -36,6 +36,7 @@
               >
                 {{ productName }}
               </Headline>
+
               <FadeInTransition>
                 <PromotionHurryToSaveBanners
                   v-if="areHurryToSaveBannersShown"
@@ -45,6 +46,7 @@
                 <ProductPromotionGiftConditionBanner
                   v-else-if="!areGiftConditionsMet && isGiftAddedToBasket"
                   :product="product"
+                  class="mt-2"
                 />
                 <ProductPromotionBanners
                   v-else
@@ -52,6 +54,7 @@
                   class="mt-2 xs:hidden md:flex"
                 />
               </FadeInTransition>
+
               <div class="flex flex-col items-end">
                 <div class="flex gap-2 xs:flex-col-reverse md:flex-col">
                   <ProductPromotionBadges
@@ -133,6 +136,12 @@
               @click:service-selection="onAddOnSelected"
             />
 
+            <StoreVariantAvailability
+              v-if="activeVariant?.id"
+              :selected-store-id="selectedStoreId"
+              :variant-id="activeVariant.id"
+            />
+
             <div class="mt-4 flex h-12">
               <AppButton
                 data-test-id="add-item-to-basket-button"
@@ -186,6 +195,11 @@
     <div class="w-full">
       <ProductDetails :product="product" />
     </div>
+    <StoreLocatorSlideIn
+      v-if="activeVariant?.id"
+      v-model:selectedStoreId="selectedStoreId"
+      :variant-id="activeVariant.id"
+    />
   </PageContent>
 </template>
 
@@ -222,6 +236,11 @@ const {
   fetching,
   listingMetaData,
 } = await useProductDetails()
+
+const favoriteStoreId = useFavoriteStore()
+const selectedStoreId = ref<number | undefined>(
+  favoriteStoreId.value ?? undefined,
+)
 
 const { addItemToBasket, basketIdle } = await useProductDetailsBasketActions()
 
@@ -286,7 +305,7 @@ useJsonld(() =>
   }),
 )
 
-useSeoMeta(() => ({ robots: 'index,follow' }))
+useServerSeoMeta({ robots: 'index,follow' })
 
 useHead(() => {
   if (!product.value) {

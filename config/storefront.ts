@@ -1,5 +1,9 @@
 import { HashAlgorithm } from '@scayle/storefront-nuxt'
-import type { IDPConfig, ModuleOptions } from '@scayle/storefront-nuxt'
+import type {
+  IDPConfig,
+  ModuleOptions,
+  ModulePublicRuntimeConfig,
+} from '@scayle/storefront-nuxt'
 import * as customRpcMethods from '../rpcMethods'
 import withParams from '../constants/withParams'
 
@@ -82,7 +86,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
   /** Storefront Core - Configuration of session handling and cookie
    * https://scayle.dev/en/dev/storefront-core/module-configuration#sessions */
   session: {
-    sameSite: 'none', // Override: NUXT_STOREFRONT_SESSION_SAME_SITE
+    sameSite: 'lax', // Override: NUXT_STOREFRONT_SESSION_SAME_SITE
     maxAge: 2419200, // 4 weeks in seconds | Override: NUXT_STOREFRONT_SESSION_MAX_AGE
   },
 
@@ -135,7 +139,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
          * https://scayle.dev/en/dev/storefront-core/authentication#support-for-identity-provider */
         idp: {
           enabled: false,
-          idpKeys: [],
+          idpKeys: ['google'],
           idpRedirectURL: '',
         },
 
@@ -272,7 +276,7 @@ export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
 
 /** Storefront Core - Public Runtime Configuration
  * https://scayle.dev/en/dev/storefront-core/module-configuration  */
-export const storefrontRuntimeConfigPublic: Partial<ModuleOptions> = {
+export const storefrontRuntimeConfigPublic: ModulePublicRuntimeConfig = {
   /** Storefront Core - Internal logger configuration
    * https://scayle.dev/en/dev/storefront-core/module-configuration#log */
   log: {
