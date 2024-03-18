@@ -102,8 +102,6 @@ const { trackViewItemList, trackSelectItem } = useTrackingEvents()
 const {
   products,
   productsFetching,
-  productStatus,
-  categoriesStatus,
   filterStatus,
   categoriesFetching,
   categories,
@@ -147,33 +145,22 @@ const trackViewListing = ({ items }: { row: number; items: Product[] }) => {
 
 const { fetchBySlug } = useCMS<SbListingPage>(`ListingPage-${route.path}`)
 
-const cmsStatus = ref('')
 const cmsData = ref()
 
 const fetchData = async () => {
   await fetchProducts(fetchParameters.value)
   if (selectedCategory.value?.id) {
-    const {
-      status,
-      execute: _fetchBySlug,
-      data,
-    } = await fetchBySlug(`categories/${selectedCategory.value?.id}`)
+    const { execute: _fetchBySlug, data } = await fetchBySlug(
+      `categories/${selectedCategory.value?.id}`,
+    )
 
     await _fetchBySlug()
 
-    cmsStatus.value = status.value
-    cmsData.value = data.value
+    cmsData.value = data.value?.data.story
   }
 }
 
-if (
-  productStatus.value === 'idle' ||
-  filterStatus.value === 'idle' ||
-  categoriesStatus.value === 'idle' ||
-  cmsStatus.value === 'idle'
-) {
-  await fetchLazy(fetchData())
-}
+await fetchLazy(fetchData())
 
 const error = computed(() => {
   return productError.value || filterError.value || categoriesError.value
