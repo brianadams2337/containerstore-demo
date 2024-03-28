@@ -201,6 +201,8 @@
     "orders_count": "0 Orders | 1 Order | {count} Orders",
     "personal_data_title": "Change your personal data",
     "no_orders_found": "No orders found",
+    "subscriptions_menu": "Your subscriptions",
+    "subscriptions_subtitle": "Change your subscriptions",
     "orders": {
       "overview": "Order summary",
       "back": "Back to summary",
@@ -454,6 +456,7 @@
     "firstDay": "1"
   },
   "subscription": {
+    "title": "Subscription",
     "one_time_purchase": "One-Time Purchase",
     "subscribe": "Subscribe & Save",
     "subscribe_with_reduction": "Subscribe & Save up to {percentage}%",
@@ -463,6 +466,7 @@
     "day_of_month_selection_caption": "Ever {dayOfMonth} of the month",
     "or": "----- or -----",
     "select_size_message": "Select size to see options",
-    "not_eligible_message": "The selected size is not eligible for a subscription"
+    "not_eligible_message": "The selected size is not eligible for a subscription",
+    "term": "Term"
   }
 }

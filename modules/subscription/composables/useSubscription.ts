@@ -5,6 +5,7 @@ import {
   getPrice,
   getAttributeValue,
   getTotalAppliedReductions,
+  getFirstAttributeValue,
 } from '@scayle/storefront-nuxt'
 
 import type { Ref } from 'vue'
@@ -53,11 +54,14 @@ export async function useSubscription(
   )
 
   const subscriptionTerm = computed(() =>
-    getAttributeValue(selectedVariant.value?.attributes, SUBSCRIPTION_TERM),
+    getFirstAttributeValue(
+      selectedVariant.value?.attributes,
+      SUBSCRIPTION_TERM,
+    ),
   )
 
   const subscriptionCancellationPolicy = computed(() =>
-    getAttributeValue(
+    getFirstAttributeValue(
       selectedVariant.value?.attributes,
       SUBSCRIPTION_CANCELLATION_POLICY,
     ),
@@ -77,8 +81,9 @@ export async function useSubscription(
       subscriptionDefinition: {
         subscriptionInterval: selectedInterval.value?.value,
         subscriptionDeliveryDate: selectedPreferredDeliveryDate.value?.day,
-        subscriptionTerm: subscriptionTerm.value,
-        subscriptionCancellationPolicy: subscriptionCancellationPolicy.value,
+        subscriptionTerm: subscriptionTerm.value?.value,
+        subscriptionCancellationPolicy:
+          subscriptionCancellationPolicy.value?.value,
       },
       pricePromotionKey: pricePromotionKey.value,
     }
@@ -89,32 +94,32 @@ export async function useSubscription(
   )
 
   const displayData = computed(() => {
+    const intervalValue = `${$i18n.t(
+      'subscription.interval',
+    )}: ${selectedInterval.value?.label}`
+
+    const deliveryValue = `${$i18n.t(
+      'subscription.follow_up_delivery',
+    )}: ${$i18n.t('subscription.day_of_month_selection_caption', {
+      dayOfMonth:
+        selectedPreferredDeliveryDate.value?.day +
+        $i18n.t(`global.ordinal_suffixes.${ordinalSuffixKey.value}`),
+    })}`
+
+    const term = `${$i18n.t('subscription.term')}: ${subscriptionTerm.value
+      ?.label}`
+
     return {
       'attribute-1': {
-        key: 'subscriptionDeliveryDate',
-        label: $i18n.t('subscription.follow_up_delivery'),
-        value: $i18n.t('subscription.day_of_month_selection_caption', {
-          dayOfMonth:
-            selectedPreferredDeliveryDate.value?.day +
-            $i18n.t(`global.ordinal_suffixes.${ordinalSuffixKey.value}`),
-        }),
-      },
-      'attribute-2': {
-        key: 'subscriptionInterval',
-        label: $i18n.t('subscription.interval'),
-        value: selectedInterval.value?.label,
+        key: 'subscriptionDefinition',
+        label: $i18n.t('subscription.title'),
+        value: `${intervalValue} | ${deliveryValue} | ${term}`,
       },
     }
   })
 
   const subscriptionPrice = computed(() =>
     selectedVariant.value ? getPrice(selectedVariant.value) : undefined,
-  )
-
-  const showPriceFromSubscription = computed(
-    () =>
-      !selectedVariant.value &&
-      !!subscriptionPrice.value?.appliedReductions.length,
   )
 
   const subscriptionVariantEligible = computed(
@@ -146,7 +151,6 @@ export async function useSubscription(
     selectedPreferredDeliveryDate,
     itemToAdd,
     subscriptionPrice,
-    showPriceFromSubscription,
     subscriptionVariantEligible,
     totalReductions,
     ordinalSuffixKey,

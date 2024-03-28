@@ -201,6 +201,8 @@
     "orders_count": "0 Bestellungen | 1 Bestellung | {count} Bestellungen",
     "personal_data_title": "Ändere deine persönlichen Daten",
     "no_orders_found": "Keine Bestellungen gefunden",
+    "subscriptions_menu": "Deine Abonnements",
+    "subscriptions_subtitle": "Ändere deine Abonnements",
     "orders": {
       "overview": "Bestellübersicht",
       "back": "Zurück zur Übersicht",
@@ -455,6 +457,7 @@
     "firstDay": "1"
   },
   "subscription": {
+    "title": "Abonnement",
     "one_time_purchase": "Einmalige Lieferung",
     "subscribe": "Abonnieren & Sparen",
     "subscribe_with_reduction": "Abonnieren & Sparen bis zu {percentage}%",
@@ -464,6 +467,7 @@
     "day_of_month_selection_caption": "Jeden {dayOfMonth} des Monats",
     "or": "----- oder -----",
     "select_size_message": "Wählen Sie eine andere Größe für weitere Optionen",
-    "not_eligible_message": "Die ausgewählte Größe ist nicht für ein Abonnement geeignet."
+    "not_eligible_message": "Die ausgewählte Größe ist nicht für ein Abonnement geeignet.",
+    "term": "Bedingungen"
   }
 }

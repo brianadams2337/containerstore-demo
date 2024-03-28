@@ -9,7 +9,6 @@ import {
 export const SUBSCRIPTION_ELIGIBILITY_ATTRIBUTE_NAME = 'subscriptionEligibility'
 export const SUBSCRIPTION_INTERVALS_ATTRIBUTE_NAME =
   'subscriptionAvailableIntervals'
-export const LAST_SELECTABLE_DELIVERY_DATE = 31
 export const SUBSCRIPTION_TERM = 'subscriptionTerm'
 export const SUBSCRIPTION_CANCELLATION_POLICY = 'subscriptionCancellationPolicy'
 

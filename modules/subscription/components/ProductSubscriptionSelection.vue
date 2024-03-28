@@ -19,7 +19,6 @@
         :lowest-prior-price="selectedVariant?.lowestPriorPrice"
         :applied-reductions="subscriptionPrice?.appliedReductions"
         show-tax-info
-        :show-price-from="showPriceFromSubscription"
       />
       <div>
         <div class="text-xs font-semibold">
@@ -123,7 +122,6 @@ const {
   selectedInterval,
   itemToAdd,
   selectedPreferredDeliveryDate,
-  showPriceFromSubscription,
   subscriptionPrice,
   subscriptionVariantEligible,
   ordinalSuffixKey,

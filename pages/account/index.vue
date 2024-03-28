@@ -20,6 +20,12 @@
         :subheader="$t('my_account.personal_data_title')"
         class="w-full"
       />
+      <ContainerLink
+        :to="routeList.subscriptionOverview"
+        :header="$t('my_account.subscriptions_menu')"
+        :subheader="$t('my_account.subscriptions_subtitle')"
+        class="w-full"
+      />
     </div>
     <div class="mt-2 px-4">
       <LogoutButton data-test-id="add-item-to-basket-button" />

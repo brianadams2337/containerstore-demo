@@ -134,6 +134,11 @@ export default defineNuxtConfig({
       },
 
       appEnv: process.env.APP_ENV, // Override: NUXT_PUBLIC_APP_ENV,
+
+      subscription: {
+        webHost: process.env.NUXT_PUBLIC_SUBSCRIPTION_OVERVIEW_WEB_HOST ?? '', // Override: NUXT_PUBLIC_SUBSCRIPTION_OVERVIEW_WEB_HOST
+        apiUrl: process.env.NUXT_PUBLIC_SUBSCRIPTION_API_URL ?? '', // Override: NUXT_PUBLIC_SUBSCRIPTION_API_URL
+      },
     },
   },
 
@@ -183,6 +188,10 @@ export default defineNuxtConfig({
     '@nuxt/test-utils/module',
     './modules/cms',
   ],
+
+  subscription: {
+    pagePath: '/account/subscription',
+  },
 
   // https://github.com/lukasaric/radash-nuxt
   radash: {
