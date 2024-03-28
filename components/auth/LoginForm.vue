@@ -40,7 +40,7 @@
         >
           <span>{{ $t('login_page.forgot_password.title') }}</span>
           <span
-            class="absolute inset-x-[0px] bottom-[-2px] h-[1px] bg-gray-800 transition-all group-hover:inset-x-[-5px] group-hover:bg-black"
+            class="absolute inset-x-0 bottom-[-2px] h-px bg-gray-800 transition-all group-hover:inset-x-[-5px] group-hover:bg-black"
           />
         </DefaultLink>
       </div>
