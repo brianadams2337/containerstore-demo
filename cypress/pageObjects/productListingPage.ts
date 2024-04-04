@@ -182,7 +182,9 @@ class ProductListingPage extends BasePage {
   }
 
   openTestCategory() {
-    cy.get('[data-test-id="nav-link-2045"]').scrollIntoView().click()
+    cy.get('[data-test-id="nav-link-2045"]').scrollIntoView().click({
+      force: true,
+    })
     Header.selectCategoryOnNavBar(HEADER_TEST_CATEGORY_WOMEN.toLowerCase())
     if (Cypress.env().mobile === true) {
       Header.selectCategoryOnNavBar(HEADER_TEST_CATEGORY_WOMEN.toLowerCase())

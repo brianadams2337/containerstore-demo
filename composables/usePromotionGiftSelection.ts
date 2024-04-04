@@ -10,7 +10,7 @@ import {
 
 export async function usePromotionGiftSelection(
   gift: Product,
-  promotedProduct: Product,
+  promotedProduct?: Product,
 ) {
   const { $i18n } = useNuxtApp()
   const notification = useNotification()
@@ -27,11 +27,11 @@ export async function usePromotionGiftSelection(
   const { openBasketFlyout } = useFlyouts()
 
   const activeVariant = useState<Variant | null | undefined>(
-    `active-gift-variant-${gift.id}-${promotedProduct.id}`,
+    `active-gift-variant-${gift.id}-${promotedProduct?.id ?? ''}`,
   )
 
   const isSelectionShown = useState(
-    `gift-selection-${gift.id}-${promotedProduct.id}`,
+    `gift-selection-${gift.id}-${promotedProduct?.id ?? ''}`,
     () => false,
   )
 

@@ -3,7 +3,13 @@
     <div v-if="hasTeaserImage">
       <CmsImage :blok="cmsContent" is-teaser />
     </div>
-    <PageContent v-if="products" class="sm:flex">
+    <PageContent v-if="products?.length === 0">
+      <Headline class="!block" size="xl">{{ $t('plp.no_results') }}</Headline>
+      <Headline size="sm" class="mt-4 !block text-gray-700">
+        {{ $t('plp.no_products') }}
+      </Headline>
+    </PageContent>
+    <PageContent v-else class="sm:flex">
       <div class="-ml-4 hidden w-1/3 md:block md:w-2/5 lg:w-3/12">
         <SideNavigation
           v-if="categories && 'children' in categories && categories.children"
@@ -75,7 +81,7 @@
           />
         </template>
       </div>
-      <FilterSlideIn v-if="filters" />
+      <FilterSlideIn v-if="filters && products" />
     </PageContent>
   </div>
 </template>
@@ -101,8 +107,6 @@ if (!category.value) {
 const {
   products,
   productsFetching,
-  productStatus,
-  categoriesStatus,
   filterStatus,
   categoriesFetching,
   categories,
@@ -146,33 +150,22 @@ const trackViewListing = ({ items }: { row: number; items: Product[] }) => {
 
 const { fetchBySlug } = useCMS<SbListingPage>(`ListingPage-${route.path}`)
 
-const cmsStatus = ref('')
 const cmsData = ref()
 
 const fetchData = async () => {
   await fetchProducts(fetchParameters.value)
   if (selectedCategory.value?.id) {
-    const {
-      status,
-      execute: _fetchBySlug,
-      data,
-    } = await fetchBySlug(`categories/${selectedCategory.value?.id}`)
+    const { execute: _fetchBySlug, data } = await fetchBySlug(
+      `categories/${selectedCategory.value?.id}`,
+    )
 
     await _fetchBySlug()
 
-    cmsStatus.value = status.value
     cmsData.value = data.value?.data.story
   }
 }
 
-if (
-  productStatus.value === 'idle' ||
-  filterStatus.value === 'idle' ||
-  categoriesStatus.value === 'idle' ||
-  cmsStatus.value === 'idle'
-) {
-  await fetchLazy(fetchData())
-}
+await fetchLazy(fetchData())
 
 const error = computed(() => {
   return productError.value || filterError.value || categoriesError.value

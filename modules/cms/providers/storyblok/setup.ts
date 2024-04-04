@@ -11,7 +11,7 @@ export async function setupStoryblok(options: CMSModuleOptions, nuxt: Nuxt) {
   const resolver = createResolver(import.meta.url)
   await import('./schema')
   if (!nuxt.options.modules.includes('@storyblok/nuxt')) {
-    await installModule('@storyblok/nuxt')
+    await installModule('@storyblok/nuxt', { componentsDir: '' })
   }
 
   if (!nuxt.options.storyblok) {
@@ -19,7 +19,7 @@ export async function setupStoryblok(options: CMSModuleOptions, nuxt: Nuxt) {
   }
   nuxt.options.storyblok = {
     ...nuxt.options.storyblok,
-    componentsDir: resolver.resolve('./composables'),
+    componentsDir: '',
   }
 
   addImportsDir(resolver.resolve('./composables'))

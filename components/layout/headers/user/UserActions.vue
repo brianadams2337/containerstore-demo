@@ -17,6 +17,14 @@
       >
         {{ $t('my_account.orders_menu') }}
       </AppButton>
+      <AppButton
+        :to="routeList.subscriptionOverview"
+        type="secondary"
+        class="w-full"
+        @click="closeUserFlyout"
+      >
+        {{ $t('my_account.subscriptions_menu') }}
+      </AppButton>
     </div>
     <div
       class="flex flex-wrap items-center justify-center bg-secondary-450 p-3"

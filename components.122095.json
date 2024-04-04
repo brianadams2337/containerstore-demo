@@ -106,11 +106,13 @@
       "name": "Banner",
       "display_name": null,
       "created_at": "2021-08-05T15:15:10.999Z",
-      "updated_at": "2023-03-23T16:10:12.340Z",
+      "updated_at": "2024-02-26T21:51:02.512Z",
       "id": 1693388,
       "schema": {
         "is_active": {
-          "type": "boolean"
+          "type": "boolean",
+          "key": "is_active",
+          "pos": 0
         },
         "type": {
           "type": "option",
@@ -131,7 +133,9 @@
           ],
           "description": "",
           "default_value": "",
-          "exclude_empty_option": false
+          "exclude_empty_option": false,
+          "key": "type",
+          "pos": 1
         },
         "body": {
           "type": "richtext",
@@ -143,19 +147,61 @@
               "value": "text-center",
               "name": "text center"
             }
-          ]
+          ],
+          "key": "body",
+          "pos": 2
         },
         "countdown_until": {
           "type": "datetime",
           "description": "Adds a countdown to the banner",
           "display_name": "",
-          "default_value": ""
+          "default_value": "",
+          "key": "countdown_until",
+          "pos": 3
         },
         "links": {
           "type": "bloks",
           "maximum": "",
           "restrict_components": true,
-          "component_whitelist": ["BannerLink"]
+          "component_whitelist": ["BannerLink"],
+          "key": "links",
+          "pos": 4
+        },
+        "cta_url": {
+          "type": "multilink",
+          "field_type": "scayle-plugin",
+          "options": [
+            {
+              "_uid": "4da191d1-f1b0-40a6-97c4-3c08864f4d5e",
+              "name": "endpoint",
+              "value": "http://storyblok-integration.cloud-panel.aboutyou.test:8080/api/1000"
+            },
+            {
+              "_uid": "09bc8308-ffdb-4698-90cc-fa0caa36ab12",
+              "value": "product",
+              "name": "pluginType"
+            }
+          ],
+          "display_name": "CTA Url",
+          "key": "scayle_test_plugin",
+          "pos": 5
+        },
+        "scayle_plugin_test": {
+          "type": "custom",
+          "field_type": "scayle-plugin",
+          "options": [
+            {
+              "_uid": "3b0d638f-8eb3-4fc4-9f33-42d37ec8c247",
+              "name": "endpoint",
+              "value": "https://immense-flamingo-honestly.ngrok-free.app/api/1000"
+            },
+            {
+              "_uid": "518af7d6-6945-44a1-8bb5-8813839c575a",
+              "value": "product",
+              "name": "pluginType"
+            }
+          ],
+          "pos": 6
         },
         "tab-6b637a5d-c349-4e1d-8e4b-1ea0fb627809": {
           "type": "tab",
@@ -170,45 +216,59 @@
             "location_id",
             "index"
           ],
-          "pos": 0
+          "pos": 7,
+          "key": "tab-6b637a5d-c349-4e1d-8e4b-1ea0fb627809"
         },
         "item_id": {
           "type": "text",
-          "required": true
+          "required": true,
+          "key": "item_id",
+          "pos": 8
         },
         "item_name": {
           "type": "text",
-          "required": true
+          "required": true,
+          "key": "item_name",
+          "pos": 9
         },
         "promotion_id": {
           "type": "text",
-          "required": true
+          "required": true,
+          "key": "promotion_id",
+          "pos": 10
         },
         "promotion_name": {
           "type": "text",
-          "required": true
+          "required": true,
+          "key": "promotion_name",
+          "pos": 11
         },
         "creative_name": {
           "type": "text",
-          "required": true
+          "required": true,
+          "key": "creative_name",
+          "pos": 12
         },
         "creative_slot": {
           "type": "text",
-          "required": true
+          "required": true,
+          "key": "creative_slot",
+          "pos": 13
         },
         "location_id": {
           "type": "text",
-          "required": true
+          "required": true,
+          "key": "location_id",
+          "pos": 14
         },
         "index": {
           "type": "text",
           "default_value": "0",
           "regex": "\\d+",
           "description": "",
-          "required": true
-        },
-        "cta_url": {
-          "type": "multilink"
+          "required": true,
+          "key": "index",
+          "pos": 15
         }
       },
       "image": null,
@@ -903,7 +963,7 @@
       "name": "GridTile",
       "display_name": null,
       "created_at": "2023-01-10T10:55:07.591Z",
-      "updated_at": "2023-01-19T09:24:04.283Z",
+      "updated_at": "2024-02-07T15:16:08.598Z",
       "id": 3292921,
       "schema": {
         "content": {
@@ -927,7 +987,8 @@
         },
         "cta": {
           "type": "text",
-          "pos": 3
+          "pos": 3,
+          "translatable": true
         },
         "cta_link": {
           "type": "multilink",
@@ -1573,36 +1634,56 @@
       "name": "Paragraph",
       "display_name": null,
       "created_at": "2021-08-05T15:15:09.861Z",
-      "updated_at": "2021-08-11T08:21:09.508Z",
+      "updated_at": "2024-03-12T11:20:05.679Z",
       "id": 1693385,
       "schema": {
+        "background_color": {
+          "type": "text",
+          "description": "Hex value (#aeaeae)",
+          "pos": 0
+        },
+        "full_width": {
+          "type": "boolean"
+        },
         "headline": {
           "type": "text",
           "required": false,
           "translatable": true,
-          "pos": 0
+          "pos": 1
+        },
+        "anchor_id": {
+          "type": "text",
+          "show_anchor": false,
+          "pos": 2,
+          "description": "Will be translated to ID of the paragraph to be used by anchors."
         },
         "cta": {
           "type": "multilink",
-          "pos": 1,
+          "pos": 3,
           "email_link_type": true,
           "translatable": true
         },
         "body": {
           "type": "richtext",
           "translatable": true,
-          "pos": 2
+          "pos": 4
         },
         "sub_title": {
           "type": "textarea",
-          "pos": 3,
+          "pos": 5,
           "translatable": true
         },
         "images": {
           "type": "multiasset",
           "filetypes": ["images"],
-          "pos": 4,
+          "pos": 6,
           "translatable": true
+        },
+        "tab-067c7dc3-929c-4010-b3ae-340e2109082a": {
+          "display_name": "Settings",
+          "keys": ["background_color", "full_width"],
+          "pos": 7,
+          "type": "tab"
         }
       },
       "image": "//a.storyblok.com/f/112281/x/ba9cb8f8c2/bildschirmfoto-2021-06-07-um-14-13-06.png",

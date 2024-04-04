@@ -29,3 +29,25 @@ const content = computed(() =>
   props.blok.body ? renderRichText(props.blok.body) : null,
 )
 </script>
+
+<style>
+h4,
+h4 span {
+  font-size: 1.125rem /* 18px */;
+  line-height: 1.75rem /* 28px */;
+}
+h3,
+h3 span {
+  font-size: 1.25rem /* 20px */;
+  line-height: 1.75rem /* 28px */;
+  font-weight: 700;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6:has(span[id]) {
+  scroll-margin-block-start: 32px;
+}
+</style>

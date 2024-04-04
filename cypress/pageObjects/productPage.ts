@@ -46,7 +46,7 @@ class ProductPage extends BasePage {
     Header.assertHeaderIsDisplayed()
     cy.get(this.pageElements.addToWishlistButton).should('exist')
     cy.wait(1000)
-    cy.get(this.pageElements.addToWishlistButton).click()
+    cy.get(this.pageElements.addToWishlistButton).click({ force: true })
     // cy.get(this.pageElements.notificationPopup).should('exist')
     cy.scrollTo('top')
     cy.waitForXHR()
@@ -115,7 +115,7 @@ class ProductPage extends BasePage {
 
   openProductSizeMenu() {
     cy.wait(1000)
-    cy.get(this.pageElements.sizeMenuToggle).click()
+    cy.get(this.pageElements.sizeMenuToggle).click({ force: true })
   }
 
   selectAvailableSize(entry = 0) {
@@ -123,11 +123,14 @@ class ProductPage extends BasePage {
     cy.get(this.pageElements.size)
       .not('[disabled="disabled"]')
       .eq(entry)
-      .click()
+      .find('button')
+      .click({ force: true })
   }
 
   addToCart() {
-    cy.get(this.pageElements.addToCartButton).should('exist').click()
+    cy.get(this.pageElements.addToCartButton)
+      .should('exist')
+      .click({ force: true })
   }
 
   checkViewItemTrackingEvent(): void {

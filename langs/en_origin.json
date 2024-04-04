@@ -271,7 +271,9 @@
   },
   "plp": {
     "filter": "Filter",
-    "seo_description": "Buy within the {categoryName} category online at Demo Shop. Discover the wide range in {categoryName} category"
+    "seo_description": "Buy within the {categoryName} category online at Demo Shop. Discover the wide range in {categoryName} category",
+    "no_products": "There's no products for this category",
+    "no_results": "No results"
   },
   "sorting_select": {
     "topseller": "Recommendations",

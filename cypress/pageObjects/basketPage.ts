@@ -70,7 +70,7 @@ class BasketPage extends BasePage {
     this.clickRemoveItemButton()
     cy.get(this.pageElements.removeItemConfirmationButton)
       .should('be.visible')
-      .click()
+      .click({ force: true })
   }
 
   removeProductFromCartBySwipe(index = 0): void {

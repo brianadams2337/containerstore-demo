@@ -190,6 +190,12 @@
             </div>
           </div>
         </div>
+        <ProductSubscription
+          v-if="isProductSubscriptionEligible(product)"
+          :product="product"
+          :variant="activeVariant"
+          @add-item-to-basket="addItemToBasket($event)"
+        />
       </div>
     </div>
     <div class="w-full">
@@ -235,6 +241,7 @@ const {
   lowestPriorPrice,
   fetching,
   listingMetaData,
+  productId,
 } = await useProductDetails()
 
 const favoriteStoreId = useFavoriteStore()
@@ -257,7 +264,10 @@ const {
   trackRecommendationClick,
 } = await useProductRecommendations()
 
-const { availableAddOns, onAddOnSelected } = useProductDetailsAddOns(product)
+const { availableAddOns, onAddOnSelected } = useProductDetailsAddOns(
+  productId.value,
+  product,
+)
 
 const { state: zoomGallery, toggle: toggleZoomGallery } =
   useZoomGalleryActions()
@@ -269,18 +279,17 @@ const trackViewListing = ({ items }: { row: number; items: Product[] }) => {
 }
 
 onMounted(async () => {
-  setPageState('typeId', String(product.value.id))
   if (!product.value) {
     return
   }
+  setPageState('typeId', String(product.value.id))
   await _sleep(1000)
   trackViewItem({ product: product.value })
 })
 
-onUnmounted(() => {
-  activeVariant.value = null
-  quantity.value = 1
-})
+activeVariant.value = hasOneSizeVariantOnly.value
+  ? product.value?.variants?.[0]
+  : undefined
 
 const metaDescription = computed(() =>
   $i18n.t('pdp.seo.description', { productName: productName.value }),

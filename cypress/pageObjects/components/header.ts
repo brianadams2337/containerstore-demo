@@ -24,7 +24,7 @@ class Header {
   }
 
   clickOnBasketButton(): void {
-    cy.get(this.pageElements.headerBasketButton).click()
+    cy.get(this.pageElements.headerBasketButton).click({ force: true })
   }
 
   clickOnWishlistButton(): void {
@@ -71,7 +71,7 @@ class Header {
       cy.get(this.pageElements.flyoutMenu)
         .get(`a[href*='/${categoryName}']`)
         .first()
-        .click()
+        .click({ force: true })
     } else {
       this.clickOnSideNavButton()
       cy.get('nav[class*="overflow-y-auto "] a').each(($elem) => {

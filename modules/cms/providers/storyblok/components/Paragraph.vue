@@ -1,5 +1,11 @@
 <template>
-  <div v-editable="blok" class="prose mb-10 flex w-full flex-col">
+  <div
+    :id="blok.anchor_id"
+    v-editable="blok"
+    class="prose mb-10 flex w-full flex-col"
+    :class="{ 'scroll-mt-8': blok.anchor_id }"
+    :style="style"
+  >
     <Headline size="xs" tag="h3">{{ blok.headline }}</Headline>
     <div
       v-if="blok.cta?.linktype === 'email'"
@@ -49,12 +55,18 @@
 <script setup lang="ts">
 import type { SbParagraph } from '../types/storyblok'
 
-defineProps({
+const props = defineProps({
   blok: {
     type: Object as PropType<SbParagraph>,
     required: true,
   },
 })
+
+const style = computed(() =>
+  props.blok?.background_color
+    ? { backgroundColor: props.blok?.background_color }
+    : undefined,
+)
 
 defineOptions({ name: 'CmsParagraph' })
 </script>

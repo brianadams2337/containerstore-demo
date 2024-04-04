@@ -39,7 +39,7 @@ export async function useProductDetails(key = 'product-details') {
 
   const { brand, name, variantWithLowestPrice } = useProductBaseInfo(product)
 
-  const activeVariant = useState<Variant | null | undefined>(
+  const activeVariant = useState<Variant | undefined>(
     `active-variant-${key}-${productId.value}`,
   )
 
@@ -72,7 +72,7 @@ export async function useProductDetails(key = 'product-details') {
   }
 
   const hasOneSizeVariantOnly = computed(() => {
-    return hasOneSizeProductVariantOnly(product.value)
+    return product.value && hasOneSizeProductVariantOnly(product.value)
   })
 
   const hasSpecial = computed(() => {
@@ -89,8 +89,8 @@ export async function useProductDetails(key = 'product-details') {
       modifiers: { quality: PRODUCT_IMAGE_QUALITY_MODIFIER },
       provider: 'default',
     }
-    const images = product.value?.images
-    return images.map(({ hash }) => getImage(hash, options).url) || []
+    const images = product.value?.images ?? []
+    return images.map(({ hash }) => getImage(hash, options).url)
   })
 
   const siblings = computed(() => {

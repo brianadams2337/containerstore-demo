@@ -13,6 +13,7 @@ export const setUserDefault = (): LastLoggedInUser => ({
 })
 
 export async function useLastLoggedInUser() {
+  const scope = getCurrentScope()
   const { user, isLoggedIn, fetching } = await useUser()
   const lastLoggedInUser = useState(USER_KEY, setUserDefault)
 
@@ -32,25 +33,27 @@ export async function useLastLoggedInUser() {
     lastLoggedInUser.value = setUserDefault()
   }
 
-  watch(
-    () => isLoggedIn.value,
-    (value) => {
-      if (!value) {
-        return
-      }
+  scope?.run(() => {
+    watch(
+      () => isLoggedIn.value,
+      (value) => {
+        if (!value) {
+          return
+        }
 
-      const isGuest = user.value?.status?.isGuestCustomer
+        const isGuest = user.value?.status?.isGuestCustomer
 
-      if (isGuest) {
-        return
-      }
+        if (isGuest) {
+          return
+        }
 
-      localStorage.value = {
-        firstName: user.value!.firstName,
-        email: user.value!.email || '',
-      }
-    },
-  )
+        localStorage.value = {
+          firstName: user.value!.firstName,
+          email: user.value!.email || '',
+        }
+      },
+    )
+  })
 
   tryOnBeforeMount(() => {
     lastLoggedInUser.value = localStorage.value

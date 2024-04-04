@@ -14,7 +14,7 @@
 
     <FadeInTransition :duration="100">
       <span
-        v-if="searchQuery"
+        v-if="searchQuery && inputActive"
         class="absolute right-0 flex h-full cursor-pointer items-center justify-center px-2.5 py-2"
       >
         <IconCloseBold class="size-4" @click="resetSearch" @mousedown.prevent />
@@ -37,7 +37,7 @@
       @keydown.enter="openSearchPage"
     />
 
-    <Flyout :is-open="isFlyoutOpened">
+    <Flyout :is-open="isFlyoutOpened && inputActive">
       <SearchResultsContainer
         v-if="showSuggestions"
         :brands="brands"

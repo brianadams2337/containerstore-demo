@@ -36,7 +36,7 @@ export const PRODUCT_WITH_PARAMS: ProductWith = {
   },
   variants: {
     attributes: {
-      withKey: ['price', 'size'],
+      withKey: ['price', 'size', 'subscriptionEligibility'],
     },
     lowestPriorPrice: true,
   },

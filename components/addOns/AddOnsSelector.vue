@@ -54,7 +54,7 @@ const productIds = computed(() => {
 })
 
 const { data: products } = await useProductsByIds({
-  params: { ids: productIds.value },
+  params: { ids: productIds.value ?? [] },
   key: `addonProducts-${keyPostfix.value}`,
 })
 

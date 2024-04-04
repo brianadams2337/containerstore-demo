@@ -45,7 +45,41 @@
 </template>
 
 <script setup lang="ts">
-const { count, fetching, orderedItems } = await useWishlistPage()
+const { data, products, count, fetching, orderedItems } =
+  await useWishlistPage()
+const basket = await useBasket()
+
+const {
+  trackViewItemList,
+  trackWishlist,
+  collectProductListItems,
+  trackBasket,
+  collectBasketItems,
+} = useTrackingEvents()
+
+onMounted(() => {
+  if (!data.value) {
+    return
+  }
+  trackWishlist(
+    collectProductListItems(products.value, {
+      listId: wishlistListingMetadata.id,
+      listName: wishlistListingMetadata.name,
+    }),
+  )
+  trackBasket(
+    collectBasketItems(basket.data.value?.items, {
+      listId: BasketListingMetadata.ID,
+      listName: BasketListingMetadata.NAME,
+    }),
+  )
+
+  trackViewItemList({
+    items: products.value,
+    listingMetaData: wishlistListingMetadata,
+    source: 'wishlist',
+  })
+})
 
 defineOptions({ name: 'WishlistPage' })
 definePageMeta({ pageType: 'wishlist_page' })

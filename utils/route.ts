@@ -1,6 +1,6 @@
 import type { Category } from '@scayle/storefront-nuxt'
 
-const getCategoryPath = (category: Category) => {
+export const getCategoryPath = (category: Category) => {
   if (!category) {
     return
   }
@@ -31,12 +31,14 @@ type Link =
   | 'search'
   | 'osp'
   | 'location'
+  | 'subscriptionOverview'
 
 export type LinkList = Record<
   Link,
   {
     name: string
     path: string
+    isProtected?: boolean
     parameter?: string
     query?: { [key: string]: string }
   }
@@ -44,19 +46,38 @@ export type LinkList = Record<
 
 export const routeList: LinkList = {
   home: { name: 'index', path: '/' },
-  checkout: { name: 'checkout', path: '/checkout' },
+  checkout: { name: 'checkout', path: '/checkout', isProtected: true },
   search: { name: 'search', path: '/search' },
   wishlist: { name: 'wishlist', path: '/wishlist' },
   basket: { name: 'basket', path: '/basket' },
   signin: { name: 'signin', path: '/signin' },
   signup: { name: 'signin', path: '/signin', query: { register: 'true' } },
-  orders: { name: 'account-orders', path: '/account/orders' },
-  user: { name: 'account-user', path: '/account/user' },
-  account: { name: 'account', path: '/account' },
+  orders: {
+    name: 'account-orders',
+    path: '/account/orders',
+    isProtected: true,
+  },
+  user: { name: 'account-user', path: '/account/user', isProtected: true },
+  account: { name: 'account', path: '/account', isProtected: true },
   pdp: { name: 'p-name-id', path: '/p/' },
-  orderDetail: { name: 'account-orders-id', path: '/account/orders/' },
+  orderDetail: {
+    name: 'account-orders-id',
+    path: '/account/orders/',
+    isProtected: true,
+  },
   osp: { name: 'success', path: '/success' },
   location: { name: 'location', path: '/location' },
+  subscriptionOverview: {
+    name: 'subscription-overview',
+    path: '/account/subscription',
+    isProtected: true,
+  },
 } as const
 
-export { getCategoryPath }
+export const getProtectedRouteList = (exclude?: string): Array<string> => {
+  return Object.entries(routeList)
+    .filter(([key, value]) => value.isProtected && exclude !== key)
+    .map(([, value]) => {
+      return value.path
+    })
+}

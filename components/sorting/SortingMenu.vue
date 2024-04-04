@@ -37,16 +37,13 @@
 <script setup lang="ts">
 import type { SortValue } from '@scayle/storefront-nuxt'
 
-defineProps({
-  values: {
-    type: Array as PropType<SortValue[]>,
-    required: true,
-  },
-  selected: {
-    type: String,
-    default: '',
-  },
-})
+type Props = {
+  values: SortValue[]
+  selected?: string
+}
+
+withDefaults(defineProps<Props>(), { selected: '' })
+
 const { trackFilterApply } = useTrackingEvents()
 
 const trackSort = ({ name }: SortValue): void => trackFilterApply('sort', name)

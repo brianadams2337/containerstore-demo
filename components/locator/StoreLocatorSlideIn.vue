@@ -63,7 +63,7 @@
         data-test-id="choose-store-button"
         type="primary"
         is-full-width
-        class="fit-content rounded border border-black p-2 text-xs !normal-case"
+        class="w-fit rounded border border-black p-2 text-xs !normal-case"
         rounded
         :disabled="stores.length === 0 || currentSelectedStoreId === undefined"
         @click="selectStore"

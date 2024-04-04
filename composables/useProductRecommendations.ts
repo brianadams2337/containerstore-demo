@@ -1,17 +1,20 @@
 import type { Product, FetchProductsParams } from '@scayle/storefront-nuxt'
 
 export async function useProductRecommendations() {
-  const { product, productId, listingMetaData } = await useProductDetails()
+  const scope = getCurrentScope()
 
   const { trackSelectItem } = useTrackingEvents()
-
   const route = useRoute()
   const { pageState } = usePageState()
 
-  const combineWithProductValues = getAdvancedAttributes({
-    product: product.value,
-    property: 'combineWith',
-  })
+  const { product, productId, listingMetaData } = await useProductDetails()
+
+  const combineWithProductValues = product.value
+    ? getAdvancedAttributes({
+        product: product.value,
+        property: 'combineWith',
+      })
+    : ''
 
   const combineWithProductIds = computed(() =>
     combineWithProductValues
@@ -58,11 +61,13 @@ export async function useProductRecommendations() {
     })
   }
 
-  watch(
-    combineWithProductIds,
-    (ids) => Object.assign(recommendationsFetchParams.value, { ids }),
-    { immediate: true },
-  )
+  scope?.run(() => {
+    watch(
+      combineWithProductIds,
+      (ids) => Object.assign(recommendationsFetchParams.value, { ids }),
+      { immediate: true },
+    )
+  })
 
   return {
     sliderProducts,

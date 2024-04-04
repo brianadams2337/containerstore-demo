@@ -30,7 +30,7 @@ export async function usePromotionGifts(product: Product) {
   })
 
   const { data } = await useProductsByIds({
-    params: { ids: variants.value?.map(({ productId }) => productId) },
+    params: { ids: variants.value?.map(({ productId }) => productId) ?? [] },
     key: `promotion-products-${buyXGetYPromotion.value?.id}`,
   })
 

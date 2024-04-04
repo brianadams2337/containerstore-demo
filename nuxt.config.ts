@@ -134,6 +134,11 @@ export default defineNuxtConfig({
       },
 
       appEnv: process.env.APP_ENV, // Override: NUXT_PUBLIC_APP_ENV,
+
+      subscription: {
+        overviewWebHost: '', // Override: NUXT_PUBLIC_SUBSCRIPTION_OVERVIEW_WEB_HOST
+        apiUrl: '', // Override: NUXT_PUBLIC_SUBSCRIPTION_API_URL
+      },
     },
   },
 
@@ -152,6 +157,9 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { hid: 'description', name: 'description', content: '' },
       ],
+      htmlAttrs: {
+        style: 'scroll-behavior: smooth;', // Used for adding smooth scrolling to every page
+      },
     },
   },
 
@@ -183,6 +191,10 @@ export default defineNuxtConfig({
     '@nuxt/test-utils/module',
     './modules/cms',
   ],
+
+  subscription: {
+    pagePath: '/account/subscription',
+  },
 
   // https://github.com/lukasaric/radash-nuxt
   radash: {
@@ -306,24 +318,12 @@ export default defineNuxtConfig({
       process.env.NITRO_PRESET &&
       process.env.NITRO_PRESET.includes('vercel')
     ) {
-      // Disable routeRules for Vercel edge
-      if (process.env.NITRO_PRESET === 'vercel_edge') {
-        return {}
-      }
-      // We need some different route definitions for vercel which uses a regex syntax when you want to match `**/`
-      return {
-        // Page generated on-demand, revalidates in background
-        '/**': { isr: true },
-        // Don't cache API routes.
-        '.*/api/**': { isr: false },
-        // Don't cache pages with user-specific information
-        '.*/wishlist': { isr: false },
-        '.*/basket': { isr: false },
-        '.*/checkout': { isr: false },
-        '.*/signin': { isr: false },
-        '.*/account/**': { isr: false },
-        '.*/orders/**': { isr: false },
-      }
+      // Disable route rules for any vercel deployment
+      //
+      // Vercel Edge currently doesn't work at all with route rules,
+      // the normal Vercel Serverless function has some issues with caching + session handling
+      // so we for now need to disable caching completely.
+      return {}
     }
 
     // Page generated on-demand, revalidates in background

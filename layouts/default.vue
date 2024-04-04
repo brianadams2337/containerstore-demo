@@ -3,8 +3,8 @@
     class="flex min-h-screen flex-col text-primary antialiased anchor-scrolling-none"
   >
     <PromotionBanner
-      v-if="promotionData.entities.length"
-      :promotions="promotionData.entities"
+      v-if="allCurrentPromotions.length"
+      :promotions="allCurrentPromotions"
     />
     <HeaderMetaBar />
     <AppHeader />
@@ -22,8 +22,7 @@
 await useWishlist()
 await useBasket()
 await useRootCategories()
-
-const { data: promotionData } = await useCurrentPromotions()
+const { allCurrentPromotions } = await useBasketPromotions()
 
 const { trackShopInit, listenToUserItemsChanges, listenToCustomerDataChanges } =
   useTrackingEvents()

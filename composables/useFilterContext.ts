@@ -10,8 +10,8 @@ export interface FilterContext {
   filterableValues: Awaited<ReturnType<typeof useFacet>>['filters']
   filterStatus: Awaited<ReturnType<typeof useRpc>>['status']
   filtersFetching: Ref<boolean>
-  unfilteredCount: ComputedRef<number>
-  productCountData: Ref<FetchProductsCountResponse>
+  unfilteredCount: ComputedRef<number | undefined>
+  productCountData: Ref<FetchProductsCountResponse | undefined>
 }
 
 const FilterContextKey: InjectionKey<FilterContext> = Symbol('FilterContext')

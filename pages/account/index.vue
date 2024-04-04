@@ -20,6 +20,12 @@
         :subheader="$t('my_account.personal_data_title')"
         class="w-full"
       />
+      <ContainerLink
+        :to="routeList.subscriptionOverview"
+        :header="$t('my_account.subscriptions_menu')"
+        :subheader="$t('my_account.subscriptions_subtitle')"
+        class="w-full"
+      />
     </div>
     <div class="mt-2 px-4">
       <LogoutButton data-test-id="add-item-to-basket-button" />
@@ -29,10 +35,22 @@
 
 <script setup lang="ts">
 const { user } = await useUser()
+const wishlist = await useWishlist()
+
+const { trackWishlist, collectProductListItems } = useTrackingEvents()
 
 const { $i18n } = useNuxtApp()
 
 const orderCount = computed(() => user.value?.orderSummary?.length || 0)
+
+onMounted(() => {
+  trackWishlist(
+    collectProductListItems(wishlist.products.value, {
+      listId: wishlistListingMetadata.id,
+      listName: wishlistListingMetadata.name,
+    }),
+  )
+})
 
 useSeoMeta({ robots: 'index,follow', title: $i18n.t('navigation.my_account') })
 

@@ -10,6 +10,9 @@ export async function useRootCategories() {
     categoryData
 
   const rootCategories = computed<Category[]>(() => {
+    if (!rootCategoriesData.value) {
+      return []
+    }
     return Array.isArray(rootCategoriesData.value.categories)
       ? rootCategoriesData.value.categories
       : [rootCategoriesData.value.categories]

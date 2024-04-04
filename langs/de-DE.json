@@ -19,7 +19,13 @@
     "back": "Zurück",
     "continue_shopping_label": "Weiter einkaufen",
     "sign_in_label": "Anmelden",
-    "or": "Oder"
+    "or": "Oder",
+    "ordinal_suffixes": {
+      "one": ".",
+      "two": ".",
+      "few": ".",
+      "other": "."
+    }
   },
   "notification": {
     "ok": "OK",
@@ -156,7 +162,8 @@
       "select_size": "Bitte Größe wählen, um zum Warenkorb hinzuzufügen.",
       "add_to_basket_success": "{productName} wurde zum Warenkorb hinzugefügt",
       "add_to_basket_error": "{productName} konnte nicht zum Warenkorb hinzugefügt werden",
-      "add_to_basket": "{productName} wurde Ihrem Warenkorb hinzugefügt"
+      "add_to_basket": "{productName} wurde Ihrem Warenkorb hinzugefügt",
+      "subscription_already_in_basket_error": "{productName} befindet sich bereits im Warenkorb. Ein Artikel kann nicht mehr als einmal als Abonnement in einer Bestellung enthalten sein."
     },
     "discount": "Rabatt",
     "to_checkout": "Zur Kasse",
@@ -194,6 +201,8 @@
     "orders_count": "0 Bestellungen | 1 Bestellung | {count} Bestellungen",
     "personal_data_title": "Ändere deine persönlichen Daten",
     "no_orders_found": "Keine Bestellungen gefunden",
+    "subscriptions_menu": "Deine Abonnements",
+    "subscriptions_subtitle": "Ändere deine Abonnements",
     "orders": {
       "overview": "Bestellübersicht",
       "back": "Zurück zur Übersicht",
@@ -275,7 +284,9 @@
   },
   "plp": {
     "filter": "Filter",
-    "seo_description": "Kaufen Sie in der Kategorie {categoryName} online im Demo Shop ein. Entdecken Sie das große Sortiment in der Kategorie {categoryName}"
+    "seo_description": "Kaufen Sie in der Kategorie {categoryName} online im Demo Shop ein. Entdecken Sie das große Sortiment in der Kategorie {categoryName}",
+    "no_products": "Für diese Kategorie gibt es keine Produkte",
+    "no_results": "Keine Ergebnisse"
   },
   "sorting_select": {
     "topseller": "Empfehlungen",
@@ -444,5 +455,19 @@
   },
   "intl": {
     "firstDay": "1"
+  },
+  "subscription": {
+    "title": "Abonnement",
+    "one_time_purchase": "Einmalige Lieferung",
+    "subscribe": "Abonnieren & Sparen",
+    "subscribe_with_reduction": "Abonnieren & Sparen bis zu {percentage}%",
+    "interval": "Interval",
+    "choose_interval": "Interval wählen",
+    "follow_up_delivery": "Folgelieferung",
+    "day_of_month_selection_caption": "Jeden {dayOfMonth} des Monats",
+    "or": "----- oder -----",
+    "select_size_message": "Wählen Sie eine andere Größe für weitere Optionen",
+    "not_eligible_message": "Die ausgewählte Größe ist nicht für ein Abonnement geeignet.",
+    "term": "Bedingungen"
   }
 }

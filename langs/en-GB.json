@@ -19,7 +19,13 @@
     "back": "Back",
     "continue_shopping_label": "Continue shopping",
     "sign_in_label": "Sign in",
-    "or": "Or"
+    "or": "Or",
+    "ordinal_suffixes": {
+      "one": "st",
+      "two": "nd",
+      "few": "rd",
+      "other": "th"
+    }
   },
   "notification": {
     "ok": "OK",
@@ -156,7 +162,8 @@
       "select_size": "Please select size before adding to basket",
       "add_to_basket_success": "{productName} has been added to your basket",
       "add_to_basket_error": "{productName} could not be added to your basket",
-      "add_to_basket": "{productName} has been added to your basket"
+      "add_to_basket": "{productName} has been added to your basket",
+      "subscription_already_in_basket_error": "{productName} is already in the basket. An item cannot be in an order more than once as a subscription."
     },
     "discount": "Discount",
     "to_checkout": "to checkout",
@@ -194,6 +201,8 @@
     "orders_count": "0 Orders | 1 Order | {count} Orders",
     "personal_data_title": "Change your personal data",
     "no_orders_found": "No orders found",
+    "subscriptions_menu": "Your subscriptions",
+    "subscriptions_subtitle": "Change your subscriptions",
     "orders": {
       "overview": "Order summary",
       "back": "Back to summary",
@@ -274,7 +283,9 @@
   },
   "plp": {
     "filter": "Filter",
-    "seo_description": "Buy within the {categoryName} category online at Demo Shop. Discover the wide range in {categoryName} category"
+    "seo_description": "Buy within the {categoryName} category online at Demo Shop. Discover the wide range in {categoryName} category",
+    "no_products": "There's no products for this category",
+    "no_results": "No results"
   },
   "sorting_select": {
     "topseller": "Recommendations",
@@ -443,5 +454,19 @@
   },
   "intl": {
     "firstDay": "1"
+  },
+  "subscription": {
+    "title": "Subscription",
+    "one_time_purchase": "One-Time Purchase",
+    "subscribe": "Subscribe & Save",
+    "subscribe_with_reduction": "Subscribe & Save up to {percentage}%",
+    "interval": "Interval",
+    "choose_interval": "Choose Interval",
+    "follow_up_delivery": "Follow-up delivery",
+    "day_of_month_selection_caption": "Ever {dayOfMonth} of the month",
+    "or": "----- or -----",
+    "select_size_message": "Select size to see options",
+    "not_eligible_message": "The selected size is not eligible for a subscription",
+    "term": "Term"
   }
 }

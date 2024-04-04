@@ -5,7 +5,11 @@
       <p class="my-8">{{ blok.subline }}</p>
     </div>
     <div v-for="content in blok.content" :key="content._uid">
-      <component :is="content.component" :blok="content" />
+      <component
+        :is="content.component"
+        :blok="content"
+        :important="content.component === 'Paragraph'"
+      />
     </div>
   </div>
 </template>

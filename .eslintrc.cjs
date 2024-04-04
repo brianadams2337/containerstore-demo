@@ -13,6 +13,7 @@ module.exports = {
   ],
   // https://eslint.org/docs/latest/use/configure/ignore#ignorepatterns-in-config-files
   ignorePatterns: ['cypress/', '**/fixtures/**/*'],
+  plugins: ['@scayle/vue-composable'],
   rules: {
     'tailwindcss/no-custom-classname': [
       'warn',
@@ -28,7 +29,11 @@ module.exports = {
       },
     ],
     'tailwindcss/classnames-order': 'error',
+    'tailwindcss/no-unnecessary-arbitrary-value': 'error',
     'vue/multi-word-component-names': 'warn',
+    '@scayle/vue-composable/no-composable-after-await': 'warn',
+    '@scayle/vue-composable/no-lifecycle-after-await': 'error',
+    '@scayle/vue-composable/no-watch-after-await': 'error',
   },
   settings: {
     /**

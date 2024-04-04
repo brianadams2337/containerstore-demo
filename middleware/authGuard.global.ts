@@ -1,3 +1,5 @@
+import type { LinkList } from '~/utils/route'
+
 export default defineNuxtRouteMiddleware(async (to) => {
   const { isLoggedIn, user } = await useUser()
   const getLocalePath = useLocalePath()
@@ -6,34 +8,19 @@ export default defineNuxtRouteMiddleware(async (to) => {
     return getLocalePath(routePath) || routePath
   }
 
-  const getProtectedRoutes = (exclude: (keyof LinkList)[] = []) => {
-    const routes = Object.entries(
-      _pick(routeList, [
-        'account',
-        'orders',
-        'orderDetail',
-        'checkout',
-        'user',
-      ]),
-    ).reduce((routeMap, [name, value]) => {
-      if (exclude.some((routeName) => routeName === name)) {
-        return routeMap
-      }
+  const isProtectedRoute = (exclude?: string) => {
+    const routes = getProtectedRouteList(exclude)
 
-      Object.assign(routeMap, { [name]: value })
-      return routeMap
-    }, {} as Partial<LinkList>)
-
-    return Object.values(routes).map((it) => localePath(it.path))
+    return routes.find(
+      (protectedRoute) => localePath(protectedRoute) === to.path,
+    )
   }
 
   const isGuest = !!user.value?.status?.isGuestCustomer
 
-  const isProtectedRoute = getProtectedRoutes().some((path) => to.path === path)
-  const isProtectRouteForGuest =
-    isGuest && getProtectedRoutes(['checkout']).some((path) => to.path === path)
+  const isProtectRouteForGuest = isGuest && isProtectedRoute('checkout')
 
-  if (!isLoggedIn.value && isProtectedRoute) {
+  if (!isLoggedIn.value && isProtectedRoute()) {
     return navigateTo({
       path: localePath(routeList.signin.path),
       query: {

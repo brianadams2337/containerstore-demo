@@ -3,12 +3,12 @@
     <div ref="button">
       <AppButton
         type="ghost"
-        class="inline-flex w-full min-w-[4.75rem] justify-between gap-0 rounded border border-gray-300 bg-white px-[0.875rem] py-2 text-sm font-medium shadow-sm"
+        class="inline-flex w-full min-w-[4.75rem] justify-between gap-0 rounded border border-gray-300 bg-white px-3.5 py-2 text-sm font-medium shadow-sm"
         :disabled="disabled"
         :class="isLarge && 'py-[0.825rem]'"
         @click="isDropdownVisible = !isDropdownVisible"
       >
-        {{ modelValue }}
+        <slot name="default">{{ modelValue }}</slot>
         <IconDropdown
           class="ml-0.5 mt-0.5 size-3 transition"
           :class="{ 'rotate-180': isDropdownVisible }"

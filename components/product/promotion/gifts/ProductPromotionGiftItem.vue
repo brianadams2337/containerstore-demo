@@ -44,7 +44,7 @@
         </div>
       </div>
     </div>
-    <template v-if="promotion">
+    <template v-if="promotion && product && promotedProduct">
       <ProductPromotionSelectionModal
         v-if="isGreaterThanMd"
         v-bind="{ product, promotion, promotedProduct }"

@@ -5,19 +5,26 @@ import {
   getProductSiblings,
 } from '@scayle/storefront-nuxt'
 
-export function useProductBaseInfo(productItem: MaybeRefOrGetter<Product>) {
+export function useProductBaseInfo(
+  productItem: MaybeRefOrGetter<Product | undefined>,
+) {
   const product = toRef(productItem)
   const { getProductDetailRoute } = useRouteHelpers()
 
   const brand = computed(() => {
-    return getFirstAttributeValue(product.value.attributes, 'brand')?.label
+    return getFirstAttributeValue(product.value?.attributes, 'brand')?.label
   })
 
   const name = computed(() => {
-    return getFirstAttributeValue(product.value.attributes, 'name')?.label ?? ''
+    return (
+      getFirstAttributeValue(product.value?.attributes, 'name')?.label ?? ''
+    )
   })
 
   const price = computed(() => {
+    if (!product.value) {
+      return
+    }
     return getLowestPriceBetweenVariants(product.value)
   })
 
@@ -30,10 +37,16 @@ export function useProductBaseInfo(productItem: MaybeRefOrGetter<Product>) {
   })
 
   const colors = computed(() => {
+    if (!product.value) {
+      return
+    }
     return getProductAndSiblingsColors(product.value, 'color')
   })
 
   const image = computed(() => {
+    if (!product.value) {
+      return
+    }
     return getImageFromList(
       product.value.images,
       ProductImageType.BUST,
@@ -45,7 +58,12 @@ export function useProductBaseInfo(productItem: MaybeRefOrGetter<Product>) {
     return getProductSiblings(product.value, 'color') || []
   })
 
-  const link = computed(() => getProductDetailRoute(product.value))
+  const link = computed(() => {
+    if (!product.value) {
+      return
+    }
+    return getProductDetailRoute(product.value)
+  })
 
   return {
     brand,

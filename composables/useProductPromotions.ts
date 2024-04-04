@@ -5,7 +5,7 @@ import {
 } from '@scayle/storefront-nuxt'
 
 export async function useProductPromotions(
-  productItem?: MaybeRefOrGetter<Product>,
+  productItem?: MaybeRefOrGetter<Product | undefined>,
 ) {
   const promotionData = await useCurrentPromotions()
 
@@ -16,7 +16,7 @@ export async function useProductPromotions(
   const product = toRef(productItem)
 
   const promotions = computed<Promotion[]>(() => {
-    return promotionData.data.value.entities
+    return promotionData.data?.value?.entities ?? []
   })
 
   const promotionLabel = computed(() => {

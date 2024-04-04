@@ -1,6 +1,6 @@
 <template>
   <label class="relative flex w-full items-center">
-    <IconSearch class="absolute left-3 top-[50%] size-5 translate-y-[-50%]" />
+    <IconSearch class="absolute left-3 top-1/2 size-5 -translate-y-1/2" />
     <input
       id="search"
       v-model="content"
@@ -13,7 +13,7 @@
       @keydown.exact.enter="emit('keydown:enter')"
     />
     <AppButton
-      class="absolute right-2 top-[50%] size-4 translate-y-[-50%]"
+      class="absolute right-2 top-1/2 size-4 -translate-y-1/2"
       type="raw"
       @click="clear"
     >

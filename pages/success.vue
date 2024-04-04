@@ -3,10 +3,7 @@
     <div v-if="fetching" class="container flex gap-2">
       <ProductCardSkeleton v-for="index in 2" :key="`osp-loading-${index}`" />
     </div>
-    <div
-      v-else-if="orderData"
-      class="px-6 sm:mx-auto sm:flex sm:flex-wrap md:px-0"
-    >
+    <div v-if="orderData" class="px-6 sm:mx-auto sm:flex sm:flex-wrap md:px-0">
       <OspBasicDataSection v-bind="{ orderData, deliveryDate }" />
       <OspSummarySection v-bind="{ orderData, deliveryDate }" />
     </div>
@@ -19,6 +16,7 @@
 <script setup lang="ts">
 const route = useRoute()
 const cbdToken = String(route.query.cbd)
+
 const { data: orderData, fetching } = await useOrderConfirmation<
   OrderProduct,
   OrderVariant
