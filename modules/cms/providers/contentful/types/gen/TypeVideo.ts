@@ -37,10 +37,14 @@ export function isTypeVideo<
   return entry.sys.contentType.sys.id === 'video'
 }
 
-export type TypeVideoWithoutLinkResolutionResponse =
-  TypeVideo<'WITHOUT_LINK_RESOLUTION', LocaleCode>
-export type TypeVideoWithoutUnresolvableLinksResponse =
-  TypeVideo<'WITHOUT_UNRESOLVABLE_LINKS', LocaleCode>
+export type TypeVideoWithoutLinkResolutionResponse = TypeVideo<
+  'WITHOUT_LINK_RESOLUTION',
+  LocaleCode
+>
+export type TypeVideoWithoutUnresolvableLinksResponse = TypeVideo<
+  'WITHOUT_UNRESOLVABLE_LINKS',
+  LocaleCode
+>
 export type TypeVideoWithAllLocalesResponse<
   Locales extends LocaleCode = LocaleCode,
 > = TypeVideo<'WITH_ALL_LOCALES', Locales>

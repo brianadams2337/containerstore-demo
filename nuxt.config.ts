@@ -310,7 +310,7 @@ export default defineNuxtConfig({
       return {}
     }
 
-    // Page generated on-demand, revalidates in background.
+    // Page generated on-demand, revalidates in background
     const CACHE_PAGE = {
       cache: {
         // SWR currently leads to some bugs in the Nitro caching implementation that it will continue to serve outdated data in case the SSR handler crashes

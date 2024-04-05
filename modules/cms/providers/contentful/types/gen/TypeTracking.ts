@@ -35,10 +35,14 @@ export function isTypeTracking<
   return entry.sys.contentType.sys.id === 'tracking'
 }
 
-export type TypeTrackingWithoutLinkResolutionResponse =
-  TypeTracking<'WITHOUT_LINK_RESOLUTION', LocaleCode>
-export type TypeTrackingWithoutUnresolvableLinksResponse =
-  TypeTracking<'WITHOUT_UNRESOLVABLE_LINKS', LocaleCode>
+export type TypeTrackingWithoutLinkResolutionResponse = TypeTracking<
+  'WITHOUT_LINK_RESOLUTION',
+  LocaleCode
+>
+export type TypeTrackingWithoutUnresolvableLinksResponse = TypeTracking<
+  'WITHOUT_UNRESOLVABLE_LINKS',
+  LocaleCode
+>
 export type TypeTrackingWithAllLocalesResponse<
   Locales extends LocaleCode = LocaleCode,
 > = TypeTracking<'WITH_ALL_LOCALES', Locales>

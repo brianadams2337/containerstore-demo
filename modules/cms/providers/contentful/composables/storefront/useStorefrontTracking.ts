@@ -1,6 +1,8 @@
-import { USE_TRACKING_EVENTS_KEY, useContext } from '~/composables/cms/useProviderContext'
-
+import {
+  USE_TRACKING_EVENTS_KEY,
+  useContext,
+} from '~/composables/cms/useProviderContext'
 
 export const useStorefrontTracking = () => {
-  return useContext(USE_TRACKING_EVENTS_KEY);
+  return useContext(USE_TRACKING_EVENTS_KEY)
 }
