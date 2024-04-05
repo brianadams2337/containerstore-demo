@@ -1,5 +1,4 @@
 import { createConsola } from 'consola'
-import { pascalCase } from 'change-case'
 import { CMSProvidersMap } from './config'
 
 export const moduleName = '@scayle/storefront-cms'
@@ -35,7 +34,7 @@ export function getComponentName(
   if (name.startsWith('Cms')) {
     name = name.replace('Cms', '')
   }
-  return `${prefix}${pascalCase(name)}`
+  return `${prefix}${_pascal(name)}`
 }
 
 export const formatter = new Intl.ListFormat('en', {

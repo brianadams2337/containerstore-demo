@@ -96,7 +96,6 @@
     "@vueuse/nuxt": "10.9.0",
     "axios": "1.6.8",
     "cf-content-types-generator": "2.15.0",
-    "change-case": "5.4.3",
     "check-password-strength": "2.0.10",
     "citty": "0.1.6",
     "color": "4.2.3",

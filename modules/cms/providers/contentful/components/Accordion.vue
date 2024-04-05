@@ -30,18 +30,18 @@
 </template>
 
 <script setup lang="ts">
-import { kebabCase } from 'change-case'
 import type { CMSAccordionProps } from '~/modules/cms/providers/contentful/types'
 import { getComponentName } from '~/modules/cms/utils/helpers'
 import { useContentfulMargins } from '~/modules/cms/providers/contentful/composables/useContentfulMargins'
-defineOptions({ name: 'CMSAccordion' })
 const props = defineProps<CMSAccordionProps>()
 
 const route = useRoute()
 
 const collapseByAnchorSlug = (linkTitle: string) => {
-  return `#${kebabCase(linkTitle)}` !== route.hash
+  return `#${_dash(linkTitle)}` !== route.hash
 }
 
 const { marginClasses } = useContentfulMargins(props.blok?.fields.marginTop)
+
+defineOptions({ name: 'CMSAccordion' })
 </script>
