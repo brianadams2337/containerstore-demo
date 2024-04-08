@@ -34,7 +34,11 @@ export function getComponentName(
   if (name.startsWith('Cms')) {
     name = name.replace('Cms', '')
   }
-  return `${prefix}${_pascal(name)}`
+  // Radash _pascal fails to convert some
+  // camelCase names to PascalCase, so we need
+  // to convert them to dash-case first
+  // https://github.com/rayepps/radash/issues/292
+  return `${prefix}${_pascal(_dash(name))}`
 }
 
 export const formatter = new Intl.ListFormat('en', {
