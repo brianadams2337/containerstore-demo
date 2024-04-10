@@ -2118,14 +2118,14 @@
   resolved "https://registry.yarnpkg.com/@scayle/eslint-plugin-vue-composable/-/eslint-plugin-vue-composable-0.1.1.tgz#7a4d1b59152625566716ab5866d23e2528bfcbd7"
   integrity sha512-gSww15uLssqyDvV9NM8NRAZ2pzw9M6Z3SaGZhTVP6XpmCfrlBOlzWDKIx0Je/Ep7Smb9hTZfrdsGhfrktqdBpA==
 
-"@scayle/h3-session@0.3.5":
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/@scayle/h3-session/-/h3-session-0.3.5.tgz#00c204608e83f81dfcdcbdedaf1b0f955ad07737"
-  integrity sha512-h4AGcuBHgfA0ZQfdaaOUbvJdLWDQ3N2cbDMdOKU1ZF6IdR9iLG/Kyig3X21prkWUJ6PkXDviCGYyecan/PufAA==
+"@scayle/h3-session@0.3.6":
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/@scayle/h3-session/-/h3-session-0.3.6.tgz#a9bf52b08c63e4936d6301a1e9e7af7997104830"
+  integrity sha512-r2zSe8MHzh/cJQtRtlzQykjyb4a3XV9WNxk7RaTIvgZV68QGZxTFsPvfKCCl3zdv3w75BU5nEmaOIGI6bkW+Ug==
   dependencies:
     defu "6.1.4"
     uncrypto "0.1.3"
-    unstorage "1.10.1"
+    unstorage "1.10.2"
     zod "3.22.4"
 
 "@scayle/omnichannel-nuxt@2.1.4":
@@ -2161,15 +2161,15 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.64.0":
-  version "7.64.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.64.0.tgz#81b8abdf2f67e1145215e00d80b3e032598fc2f3"
-  integrity sha512-Oo7x1H2oAq9N9KdoKoWy+o5q2iMhZNtT5eIkSR/1iAFykjhYAKDodVxMmv8QuBPC+8/nTEkfUc68RDQQ1a0wPA==
+"@scayle/storefront-nuxt@7.64.1":
+  version "7.64.1"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.64.1.tgz#d656652bef272390651477d32995d27d631659ae"
+  integrity sha512-iE4SIpMI44CTc5ZBJJSQW1T9TgJfh/40viXFTjOfmzYMce3NR50Upec/+JRbE34VRB87y+ckKJZMGPEEUOSYDg==
   dependencies:
     "@nuxt/kit" "3.11.1"
-    "@scayle/h3-session" "0.3.5"
+    "@scayle/h3-session" "0.3.6"
     "@scayle/storefront-core" "7.48.0"
-    "@scayle/unstorage-compression-driver" "0.1.2"
+    "@scayle/unstorage-compression-driver" "0.1.3"
     "@vueuse/core" "10.9.0"
     consola "3.2.3"
     core-js "3.36.1"
@@ -2184,13 +2184,13 @@
     vue-router "4.3.0"
     yn "5.0.0"
 
-"@scayle/unstorage-compression-driver@0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@scayle/unstorage-compression-driver/-/unstorage-compression-driver-0.1.2.tgz#d41065ce0c6437183ebb6e45aec3db07f9b9f72e"
-  integrity sha512-X2NBRrAkxLuz8qyHLt5P8tE5AI2zZt3YksNJH+f+IMk/WcnW3Uh54u2TE7ENWLdpDayuSrM20J4PtSXO4vULVw==
+"@scayle/unstorage-compression-driver@0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@scayle/unstorage-compression-driver/-/unstorage-compression-driver-0.1.3.tgz#62cd4d65cec2cb1230f0687e2ec372192ccd919a"
+  integrity sha512-5BJuWx2EthLhA+SpNkegX3d1yhVRcLHjs2wm6Jmp/H56iIcCbrV5bfkwcnH13PQw2Jwid0O7BxkOIxkIjL6U1g==
   dependencies:
-    destr "2.0.2"
-    unstorage "1.10.1"
+    destr "2.0.3"
+    unstorage "1.10.2"
 
 "@sigstore/bundle@^2.3.0", "@sigstore/bundle@^2.3.1":
   version "2.3.1"
@@ -4785,12 +4785,7 @@ depd@~1.1.2:
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
   integrity sha512-7emPTl6Dpo6JRXOXjLRxck+FlLRX5847cLKEn00PLAgc3g2hTZZgr+e4c2v6QpSmLeFP3n5yUo7ft6avBK/5jQ==
 
-destr@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/destr/-/destr-2.0.2.tgz#8d3c0ee4ec0a76df54bc8b819bca215592a8c218"
-  integrity sha512-65AlobnZMiCET00KaFFjUefxDX0khFA/E4myqZ7a6Sq1yZtR8+FVIvilVX66vF2uobSumxooYZChiRPCKNqhmg==
-
-destr@^2.0.2, destr@^2.0.3:
+destr@2.0.3, destr@^2.0.2, destr@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/destr/-/destr-2.0.3.tgz#7f9e97cb3d16dbdca7be52aca1644ce402cfe449"
   integrity sha512-2N3BOUU4gYMpTP24s5rF5iP7BDr7uNTCs4ozw3kf/eKfvWSIu93GEBi5m427YoyJoeOzQ5smuu4nNAPGb8idSQ==
@@ -6344,7 +6339,7 @@ gzip-size@^7.0.0:
   dependencies:
     duplexer "^0.1.2"
 
-h3@^1.10.0, h3@^1.10.1, h3@^1.10.2, h3@^1.11.1, h3@^1.8.2:
+h3@^1.10.0, h3@^1.10.1, h3@^1.10.2, h3@^1.11.1:
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/h3/-/h3-1.11.1.tgz#e9414ae6f2a076a345ea07256b320edb29bab9f7"
   integrity sha512-AbaH6IDnZN6nmbnJOH72y3c5Wwh9P97soSVdGSBbcDACRdkC0FEWf25pzx4f/NuOCK6quHmW18yF2Wx+G4Zi1A==
@@ -7630,7 +7625,7 @@ lint-staged@15.2.2:
     string-argv "0.3.2"
     yaml "2.3.4"
 
-listhen@^1.5.5, listhen@^1.6.0, listhen@^1.7.2:
+listhen@^1.6.0, listhen@^1.7.2:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/listhen/-/listhen-1.7.2.tgz#66b81740692269d5d8cafdc475020f2fc51afbae"
   integrity sha512-7/HamOm5YD9Wb7CFgAZkKgVPA96WwhcTQoqtm2VTZGVbVVn3IWKRBTgrU7cchA3Q8k9iCsG8Osoi9GX4JsGM9g==
@@ -7926,7 +7921,7 @@ lowercase-keys@^2.0.0:
   resolved "https://registry.yarnpkg.com/lowercase-keys/-/lowercase-keys-2.0.0.tgz#2603e78b7b4b0006cbca2fbcc8a3202558ac9479"
   integrity sha512-tqNXrS78oMOE73NMxK4EMLQsQowWf8jKooH9g7xPavRT706R6bkQJ6DY2Te7QukaZsulxa30wQ7bk0pm4XiHmA==
 
-lru-cache@^10.0.1, lru-cache@^10.0.2, lru-cache@^10.2.0:
+lru-cache@^10.0.1, lru-cache@^10.2.0:
   version "10.2.0"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-10.2.0.tgz#0bd445ca57363465900f4d1f9bd8db343a4d95c3"
   integrity sha512-2bIM8x+VAf6JT4bKAljS1qUWgMsqZRPGJS6FSahIMPVvctcNhyVp7AJu7quxOW9jwkryBReKZY5tY5JYv2n/7Q==
@@ -8480,7 +8475,7 @@ node-addon-api@^7.0.0:
   resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-7.1.0.tgz#71f609369379c08e251c558527a107107b5e0fdb"
   integrity sha512-mNcltoe1R8o7STTegSOHdnJNN7s5EUvhoS7ShnTHDyOSd+8H+UdWODq6qSv67PjC8Zc5JRT8+oLAMCr0SIXw7g==
 
-node-fetch-native@^1.4.1, node-fetch-native@^1.6.1, node-fetch-native@^1.6.2, node-fetch-native@^1.6.3, node-fetch-native@^1.6.4:
+node-fetch-native@^1.6.1, node-fetch-native@^1.6.2, node-fetch-native@^1.6.3, node-fetch-native@^1.6.4:
   version "1.6.4"
   resolved "https://registry.yarnpkg.com/node-fetch-native/-/node-fetch-native-1.6.4.tgz#679fc8fd8111266d47d7e72c379f1bed9acff06e"
   integrity sha512-IhOigYzAKHd244OC0JIMIUrjzctirCmPkaIfhDeGcEETWof5zKYUW7e7MYvChGWh/4CJeXEgsRyGzuF334rOOQ==
@@ -11714,23 +11709,6 @@ unplugin@^1.1.0, unplugin@^1.10.0, unplugin@^1.3.1, unplugin@^1.5.0, unplugin@^1
     chokidar "^3.6.0"
     webpack-sources "^3.2.3"
     webpack-virtual-modules "^0.6.1"
-
-unstorage@1.10.1:
-  version "1.10.1"
-  resolved "https://registry.yarnpkg.com/unstorage/-/unstorage-1.10.1.tgz#bf8cc00a406e40a6293e893da9807057d95875b0"
-  integrity sha512-rWQvLRfZNBpF+x8D3/gda5nUCQL2PgXy2jNG4U7/Rc9BGEv9+CAJd0YyGCROUBKs9v49Hg8huw3aih5Bf5TAVw==
-  dependencies:
-    anymatch "^3.1.3"
-    chokidar "^3.5.3"
-    destr "^2.0.2"
-    h3 "^1.8.2"
-    ioredis "^5.3.2"
-    listhen "^1.5.5"
-    lru-cache "^10.0.2"
-    mri "^1.2.0"
-    node-fetch-native "^1.4.1"
-    ofetch "^1.3.3"
-    ufo "^1.3.1"
 
 unstorage@1.10.2, unstorage@^1.10.1, unstorage@^1.10.2:
   version "1.10.2"
