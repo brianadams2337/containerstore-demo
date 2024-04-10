@@ -1039,15 +1039,16 @@ cypress-real-events@1.12.0:
   resolved "https://registry.yarnpkg.com/cypress-real-events/-/cypress-real-events-1.12.0.tgz#ffeb2b23686ba5b16ac91dd9bc3b6785d36d38d3"
   integrity sha512-oiy+4kGKkzc2PT36k3GGQqkGxNiVypheWjMtfyi89iIk6bYmTzeqxapaLHS3pnhZOX1IEbTDUVxh8T4Nhs1tyQ==
 
-cypress-split@1.21.2:
-  version "1.21.2"
-  resolved "https://registry.yarnpkg.com/cypress-split/-/cypress-split-1.21.2.tgz#8260757866dfc3216e51586ca670c940ea5041d6"
-  integrity sha512-T77bGygwYT4KlJ7PfqDWhu1fdRCXa/Rf463l+pTJhJ0vqHljHo6bj7sE2JPkkkgZZKEAvxAiuEs6AxXuqO+z1w==
+cypress-split@1.23.0:
+  version "1.23.0"
+  resolved "https://registry.yarnpkg.com/cypress-split/-/cypress-split-1.23.0.tgz#7f37d88b00a33818c4913df11dcb1d4bb578c1e1"
+  integrity sha512-tZazy4dZ4fIzsTYv1MNk6Lc0DaTAAsHUBIdfDbRGBl8QY2lvRcdYjlBs9gnOOwphjXgNTPXTT3KVbnStp0kZbQ==
   dependencies:
     "@actions/core" "^1.10.0"
     arg "^5.0.2"
     console.table "^0.10.0"
     debug "^4.3.4"
+    fast-shuffle "^6.1.0"
     find-cypress-specs "1.43.1"
     globby "^11.1.0"
     humanize-duration "^3.28.0"
@@ -1969,6 +1970,13 @@ fast-levenshtein@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==
+
+fast-shuffle@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/fast-shuffle/-/fast-shuffle-6.1.0.tgz#39e2a01fbbdb45e55b91ea5d1813fdbe1b76de6c"
+  integrity sha512-3aj8oO6bvZFKYDGvXNmmEuxyOjre8trCpIbtFSM/DSKd+o3iSbQQPb5BZQeJ7SPYVivn9EeW3gKh0QdnD027MQ==
+  dependencies:
+    pcg "1.0.0"
 
 fastq@^1.6.0:
   version "1.17.1"
@@ -2949,6 +2957,11 @@ log-update@^4.0.0:
     slice-ansi "^4.0.0"
     wrap-ansi "^6.2.0"
 
+long@5.2.3:
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/long/-/long-5.2.3.tgz#a3ba97f3877cf1d778eccbcb048525ebb77499e1"
+  integrity sha512-lcHwpNoggQTObv5apGNCTdJrO69eHOZMi4BNC+rTLER8iHAqGrUVeLh/irVIM7zTw2bOXA8T6uNPeujwOLg/2Q==
+
 loose-envify@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
@@ -3351,6 +3364,14 @@ path-type@^4.0.0:
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
 
+pcg@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/pcg/-/pcg-1.0.0.tgz#4882ea14adb3fcc49928df108365c374ddc1c9bd"
+  integrity sha512-6wjoSJZ4TEJhI0rLDOKd5mOu6TwS4svn9oBaRsD1PCrhlDNLWAaTimWJgBABmIGJxzkI+RbaHJYRLGVf9QFE5Q==
+  dependencies:
+    long "5.2.3"
+    ramda "0.29.0"
+
 pend@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/pend/-/pend-1.2.0.tgz#7a57eb550a6783f9115331fcf4663d5c8e007a50"
@@ -3498,6 +3519,11 @@ quote-unquote@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/quote-unquote/-/quote-unquote-1.0.0.tgz#67a9a77148effeaf81a4d428404a710baaac8a0b"
   integrity sha512-twwRO/ilhlG/FIgYeKGFqyHhoEhqgnKVkcmqMKi2r524gz3ZbDTcyFt38E9xjJI2vT+KbRNHVbnJ/e0I25Azwg==
+
+ramda@0.29.0:
+  version "0.29.0"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.29.0.tgz#fbbb67a740a754c8a4cbb41e2a6e0eb8507f55fb"
+  integrity sha512-BBea6L67bYLtdbOqfp8f58fPMqEwx0doL+pAi8TZyp2YWz8R9G8z9x75CZI8W+ftqhFHCpEX2cRnUUXK130iKA==
 
 randombytes@^2.1.0:
   version "2.1.0"
