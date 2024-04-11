@@ -34,8 +34,6 @@
         v-if="isUpdatePasswordByHashShown"
         @close:modal="goToSignInPage"
       />
-
-      <IDPCallback v-if="idpCode" :code="idpCode" />
     </div>
   </ClientOnly>
 </template>
@@ -68,10 +66,7 @@ const initialIndex = computed(() => {
 })
 
 const isUpdatePasswordByHashShown = computed(() => !!route.query.hash)
-const idpCode = computed(() => {
-  const code = route.query.code
-  return isString(code) ? code : undefined
-})
+
 const { localizedNavigateTo } = useRouteHelpers()
 const goToSignInPage = () => localizedNavigateTo(routeList.signin)
 </script>

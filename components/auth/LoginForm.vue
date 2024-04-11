@@ -55,16 +55,35 @@
         {{ $t('global.sign_in') }}
       </AppButton>
     </form>
-    <IDPForm v-if="!!externalIDPRedirects" :redirects="externalIDPRedirects" />
+    <IDPForm v-if="hasIDPs" :redirects="externalIDPRedirects" />
   </div>
 </template>
 
 <script setup lang="ts">
 import useVuelidate from '@vuelidate/core'
 
-const { data: externalIDPRedirects } = await useIDP()
+const route = useRoute()
+
+const idpParams = computed(() => {
+  if (isString(route.query.redirectUrl)) {
+    return {
+      queryParams: { redirectUrl: route.query.redirectUrl },
+    }
+  }
+
+  return { queryParams: undefined }
+})
+
+const { data: externalIDPRedirects } = await useIDP(idpParams)
+
 const { login, isSubmitting } = await useAuthentication('login')
 const { lastLoggedInUser } = await useLastLoggedInUser()
+
+const hasIDPs = computed(
+  () =>
+    externalIDPRedirects.value &&
+    Object.keys(externalIDPRedirects.value).length > 0,
+)
 
 const validationRules = useValidationRules()
 
