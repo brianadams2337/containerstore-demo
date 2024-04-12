@@ -376,4 +376,19 @@ export default defineNuxtConfig({
       preserveSymlinks: true,
     },
   },
+  // This hook enables build-time configuration logging, controlled by the feature flag ENABLE_CONFIG_LOG_BUILD.
+  hooks: yn(process.env.ENABLE_CONFIG_LOG_BUILD)
+    ? {
+        'nitro:init': (nitroConfig) => {
+          const configToPrint = yn(process.env.ENABLE_CONFIG_LOG_PRETTIER)
+            ? JSON.stringify(nitroConfig.options.runtimeConfig, null, 2)
+            : JSON.stringify(nitroConfig.options.runtimeConfig)
+
+          console.log(
+            '[storefront-boilerplate] runtimeConfig after nitro initialisation:',
+            configToPrint,
+          )
+        },
+      }
+    : {},
 })
