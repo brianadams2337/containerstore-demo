@@ -314,7 +314,7 @@
   "osp": {
     "account": "Account",
     "order_details": "Order details",
-    "customer_id": "Customer nr.",
+    "customer_id": "Customer no.",
     "deliver_costs": "Shipping costs",
     "deliver_address": "Delivery address",
     "email_send": "The order confirmation has been sent to the email address you provided.",
@@ -323,7 +323,7 @@
     "net_price": "Total",
     "order_data": "Order data",
     "order_date": "Date",
-    "order_nr": "Order nr.",
+    "order_nr": "Order no.",
     "order_overview": "Order overview",
     "payment": "Payment method",
     "quantity_label": "Quantity",
