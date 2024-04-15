@@ -7,5 +7,5 @@ export default {
   wishlist: WISHLIST_WITH_PARAMS,
   basket: BASKET_WITH_PARAMS,
   product: PRODUCT_WITH_PARAMS,
-  search: SEARCH_WITH_PARAMS,
+  searchV2: SEARCH_WITH_PARAMS,
 }

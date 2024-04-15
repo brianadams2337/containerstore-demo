@@ -17,33 +17,16 @@
             class="mb-2"
             @focus="setMobileSearchActive(true)"
             @cancel="setMobileSearchActive(false)"
-            @keydown:enter="openSearchPage"
+            @keydown:enter="resolveSearchAndClose"
           />
           <template v-if="isMobileSearchActive">
-            <Headline
-              v-if="totalCount > 0 && !searching"
-              class="my-4"
-              size="sm"
-            >
-              {{
-                $t('search.search_term_match_count', {
-                  count: products.length,
-                  term: searchQuery,
-                })
-              }}
-            </Headline>
-            <SearchResultSkeleton v-if="searching" />
-            <LazySearchResults
-              v-else-if="validInput && !noSuggestions"
-              :product-suggestions="products"
-              :categories="categories"
-              :fetching="searching"
-              :show-labels="false"
-              :results-count="totalCount"
-              :term="searchQuery"
+            <SearchResultSkeleton v-if="showSuggestionsLoader" />
+            <SearchResults
+              v-else-if="hasSearchQuery && !noSuggestions"
+              v-bind="{ categories, products }"
               @click:result="trackSuggestionClickAndClose"
             />
-            <div v-else-if="validInput && noSuggestions" class="mt-4">
+            <div v-else-if="hasSearchQuery && noSuggestions" class="mt-4">
               <EmptyState
                 :title="$t('search.search_try_again')"
                 :description="$t('search.search_try_again_description')"
@@ -53,8 +36,7 @@
               <div v-if="totalCount" class="flex justify-center">
                 <DefaultLink
                   class="ml-4 mt-4 border-b border-b-black"
-                  :to="getSearchRoute(searchQuery)"
-                  @click="openSearchPage"
+                  @click="resolveSearchAndClose"
                 >
                   {{ $t('search.more') }}
                 </DefaultLink>
@@ -76,10 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import type {
-  BrandOrCategorySuggestion,
-  ProductSuggestion,
-} from '@scayle/storefront-nuxt'
+import type { SearchEntity } from '@scayle/storefront-nuxt'
 
 const { isSmaller } = useDefaultBreakpoints()
 
@@ -98,27 +77,28 @@ const { isActive: isMobileSearchActive, setActive: setMobileSearchActive } =
   useMobileSearch()
 
 const {
-  data,
-  search,
+  debouncedSearch,
+  hasSearchQuery,
   searchQuery,
   resetSearch,
-  pending: searching,
-} = useSearch({ key: 'header-search' })
+  fetching,
+  products,
+  categories,
+  totalCount,
+  noSuggestions,
+  resolveSearchAndRedirect,
+  showSuggestionsLoader,
+} = useSearchData()
 
 const { trackSearchSuggestionClick } = useTrackingEvents()
-const { localizedNavigateTo } = useRouteHelpers()
-const { products, categories, totalCount, noSuggestions } =
-  useTypeaheadSuggestions(data)
 
-const trackSuggestionClickAndClose = (
-  suggestion: ProductSuggestion | BrandOrCategorySuggestion,
-) => {
+const trackSuggestionClickAndClose = (suggestion: SearchEntity) => {
   trackSearchSuggestionClick(searchQuery.value, suggestion)
   resetAndClose()
 }
-const { getSearchRoute } = useRouteHelpers()
-const openSearchPage = async () => {
-  await localizedNavigateTo(getSearchRoute(searchQuery.value))
+
+const resolveSearchAndClose = async () => {
+  await resolveSearchAndRedirect()
   resetAndClose()
 }
 
@@ -130,23 +110,8 @@ const resetAndClose = () => {
 
 onBeforeUnmount(() => resetAndClose())
 
-const validInput = computed(() => {
-  return (searchQuery.value?.length || 0) >= MIN_CHARS_FOR_SEARCH
-})
-
-const debouncedSearch = _debounce(
-  { delay: DEBOUNCED_SEARCH_DURATION },
-  async () => {
-    if (!validInput.value) {
-      searching.value = false
-      return
-    }
-    await search({ term: searchQuery.value })
-  },
-)
-
 watch(searchQuery, () => {
-  searching.value = true
+  fetching.value = true
   debouncedSearch()
 })
 

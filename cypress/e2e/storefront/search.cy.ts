@@ -19,12 +19,10 @@ describe(`Search:`, () => {
     })
   })
 
-  afterEach(() => {
-    cy.clearSiteData()
-  })
+  afterEach(() => cy.clearSiteData())
 
   it('check that header and footer is displayed on Search Result Page', () => {
-    Search.typeSearchQuery('pullover{enter}')
+    Search.typeSearchQuery('shirt{enter}')
     Header.assertHeaderIsDisplayed()
     Footer.assertFooterIsDisplayed()
     Footer.assertFooterText()
@@ -76,7 +74,7 @@ describe(`Search:`, () => {
       const searchQuery = 'test'
       Search.checkSearchIconDisplayed()
       Search.typeSearchQuery(searchQuery)
-      Search.clickCrossButton()
+      Search.clickCloseSearchButton()
       Search.checkSearchIconDisplayed()
     })
   }

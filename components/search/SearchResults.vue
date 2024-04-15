@@ -1,20 +1,14 @@
 <template>
   <div class="flex flex-col">
-    <span class="mb-2.5 block text-sm font-semibold">
-      {{ $t('search.search_term_match_count', { count: resultsCount, term }) }}
-    </span>
     <CategorySuggestions
       v-if="categories.length"
-      :items="categories.slice(0, categoryLimit)"
-      :search-term="term"
-      :label="showLabels ? $t('search.categories') : ''"
+      :items="categories"
+      :label="$t('search.categories')"
       @click:result="emit('click:result', $event)"
     />
     <ProductSuggestions
-      v-if="productSuggestions.length"
-      class="mt-4"
-      :items="productSuggestions.slice(0, productLimit)"
-      :search-term="term"
+      v-if="products.length"
+      :items="products"
       :label="$t('search.product')"
       show-images
       @click:result="emit('click:result', $event)"
@@ -24,33 +18,20 @@
 
 <script setup lang="ts">
 import type {
-  BrandOrCategorySuggestion,
-  ProductSuggestion,
-  TypeaheadBrandOrCategorySuggestion,
-  TypeaheadProductSuggestion,
+  CategorySearchSuggestion,
+  ProductSearchSuggestion,
+  SearchEntity,
 } from '@scayle/storefront-nuxt'
 
-type Suggestion = BrandOrCategorySuggestion | ProductSuggestion
-
 type Props = {
-  productLimit?: number
-  categoryLimit?: number
-  term?: string
-  resultsCount?: number
-  showLabels?: boolean
-  productSuggestions?: TypeaheadProductSuggestion[]
-  categories?: TypeaheadBrandOrCategorySuggestion[]
+  products?: ProductSearchSuggestion[]
+  categories?: CategorySearchSuggestion[]
 }
 
 withDefaults(defineProps<Props>(), {
-  productLimit: PRODUCT_LIMIT,
-  categoryLimit: CATEGORY_LIMIT,
-  term: '',
-  resultsCount: 0,
-  showLabels: true,
-  productSuggestions: () => [],
+  products: () => [],
   categories: () => [],
 })
 
-const emit = defineEmits<{ 'click:result': [value: Suggestion] }>()
+const emit = defineEmits<{ 'click:result': [value: SearchEntity] }>()
 </script>

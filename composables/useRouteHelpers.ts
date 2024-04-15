@@ -1,13 +1,13 @@
 import {
-  type BrandOrCategorySuggestion,
-  getFirstAttributeValue,
+  type CategorySearchSuggestion,
   type Product,
-  type ProductSuggestion,
+  type SearchEntity,
   slugify,
+  serializeFilters,
+  getFirstAttributeValue,
 } from '@scayle/storefront-nuxt'
 import type { RouteLocationRaw } from '#vue-router'
 import type { NavigateToOptions } from '#app/composables/router'
-import { getCategoryPath, routeList } from '~/utils/route'
 
 export function useRouteHelpers() {
   const localePath = useLocalePath()
@@ -58,24 +58,29 @@ export function useRouteHelpers() {
     })
   }
 
-  const getSearchSuggestionPath = (
-    suggestion: ProductSuggestion | BrandOrCategorySuggestion,
-  ) => {
-    if (!suggestion) {
+  const buildCategorySuggestionRoute = ({
+    categorySuggestion,
+  }: CategorySearchSuggestion) => {
+    const { category, filters } = categorySuggestion
+    const query = filters.length
+      ? serializeFilters(groupSearchCategoryFiltersByKey(filters))
+      : undefined
+    return { path: category.path, ...(query && { query }) }
+  }
+
+  const getSearchSuggestionPath = (suggestion: SearchEntity) => {
+    if (!suggestion?.type) {
       return
     }
 
-    if ('product' in suggestion) {
-      return getProductDetailPath(suggestion.product)
+    if (isProductSuggestion(suggestion)) {
+      return getProductDetailPath(suggestion.productSuggestion.product)
     }
 
-    const { category, brand } = suggestion
-    const route =
-      category && brand
-        ? `${getCategoryPath(category)}?brand=${brand?.id}`
-        : getCategoryPath(category)
-
-    return route && localePath(route)
+    if (isCategorySuggestion(suggestion)) {
+      const route = buildCategorySuggestionRoute(suggestion)
+      return localePath(route)
+    }
   }
 
   const getOrderDetailsRoute = (id: number): RouteLocationRaw => {
@@ -110,5 +115,6 @@ export function useRouteHelpers() {
     getSearchSuggestionPath,
     getOrderDetailsRoute,
     getLocalizedRoute,
+    buildCategorySuggestionRoute,
   }
 }

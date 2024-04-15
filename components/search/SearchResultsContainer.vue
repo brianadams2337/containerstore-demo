@@ -1,19 +1,18 @@
 <template>
   <div
     id="search-results"
-    class="absolute top-12 mt-2 w-full overflow-y-auto overscroll-none rounded border border-primary bg-white px-5 pb-1.5 pt-4"
+    class="absolute top-12 mt-2 w-full overflow-y-auto overscroll-none rounded border border-primary bg-white p-4"
   >
     <FadeInTransition>
-      <SearchResultSkeleton v-if="fetching" />
+      <SearchResultSkeleton v-if="showSuggestionsLoader" />
       <div v-else>
-        <div v-if="resultsCount > 0" class="my-2 flex flex-col">
+        <div v-if="resultsCount > 0" class="flex flex-col">
           <SearchResults
-            v-bind="{ productSuggestions, categories, resultsCount }"
-            :term="searchTerm"
+            v-bind="{ products, categories, resultsCount }"
             @click:result="emit('click:result', $event)"
           />
           <DefaultLink
-            :to="getSearchRoute(searchTerm)"
+            :to="getSearchRoute(searchQuery)"
             raw
             class="mx-auto mt-3 rounded px-4 py-2 text-xs font-semibold underline transition-all duration-200 ease-in-out hover:bg-secondary-450 hover:font-bold"
             @click="emit('close')"
@@ -22,7 +21,7 @@
           </DefaultLink>
         </div>
         <section
-          v-else-if="!resultsCount && searchTerm !== ''"
+          v-else-if="!resultsCount && searchQuery"
           class="px-8 py-4 text-center"
         >
           <p>{{ $t('search.no_result') }}</p>
@@ -33,36 +32,20 @@
 </template>
 
 <script setup lang="ts">
-import type {
-  TypeaheadBrandOrCategorySuggestion,
-  TypeaheadProductSuggestion,
-  BrandOrCategorySuggestion,
-  ProductSuggestion,
-} from '@scayle/storefront-nuxt'
-
-type Suggestion = BrandOrCategorySuggestion | ProductSuggestion
-
-type Props = {
-  fetching?: boolean
-  brands?: TypeaheadBrandOrCategorySuggestion[]
-  searchTerm?: string
-  resultsCount?: number
-  productSuggestions?: TypeaheadProductSuggestion[]
-  categories?: TypeaheadBrandOrCategorySuggestion[]
-}
-
-withDefaults(defineProps<Props>(), {
-  fetching: false,
-  brands: () => [],
-  productSuggestions: () => [],
-  categories: () => [],
-  searchTerm: '',
-  resultsCount: 0,
-})
+import type { SearchEntity } from '@scayle/storefront-nuxt'
 
 const emit = defineEmits<{
   close: []
-  'click:result': [event: Suggestion]
+  'click:result': [event: SearchEntity]
 }>()
+
 const { getSearchRoute } = useRouteHelpers()
+
+const {
+  showSuggestionsLoader,
+  categories,
+  products,
+  searchQuery,
+  totalCount: resultsCount,
+} = useSearchData()
 </script>

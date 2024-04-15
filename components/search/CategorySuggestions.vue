@@ -2,47 +2,38 @@
   <section>
     <label
       v-if="label"
-      class="mb-2.5 block text-sm font-semibold"
+      class="mb-3 mt-1 block text-sm font-semibold"
       :for="`${label}-category-list`"
     >
       {{ label }}
     </label>
     <ul :id="`${label}-category-list`" class="space-y-2.5">
       <SearchResultItem
-        v-for="{ brandOrCategorySuggestion } in items"
-        :key="brandOrCategorySuggestion.category.id"
-        :term="searchTerm"
-        :to="brandOrCategorySuggestion.category.path"
-        @click:result="emit('click:result', brandOrCategorySuggestion)"
+        v-for="item in items"
+        :key="item.categorySuggestion.category.id"
+        :to="buildCategorySuggestionRoute(item)"
+        :filters="item.categorySuggestion.filters"
+        @click:result="emit('click:result', item)"
       >
-        <div class="overflow-hidden">
-          <div class="truncate text-2xs font-medium text-secondary">
-            {{ brandOrCategorySuggestion.category.path }}
-          </div>
-          <div class="truncate text-sm font-semibold text-primary">
-            {{ brandOrCategorySuggestion.category.name }}
-          </div>
-        </div>
+        <CategorySuggestionContent v-bind="item.categorySuggestion" />
       </SearchResultItem>
     </ul>
   </section>
 </template>
 
 <script setup lang="ts">
-import type {
-  BrandOrCategorySuggestion,
-  TypeaheadBrandOrCategorySuggestion,
-} from '@scayle/storefront-nuxt'
+import { type CategorySearchSuggestion } from '@scayle/storefront-nuxt'
 
 type Props = {
   label: string
-  searchTerm?: string
-  items?: TypeaheadBrandOrCategorySuggestion[]
+  items?: CategorySearchSuggestion[]
 }
 
-withDefaults(defineProps<Props>(), { items: () => [], searchTerm: '' })
+withDefaults(defineProps<Props>(), { items: () => [] })
+
+const { buildCategorySuggestionRoute } = useRouteHelpers()
 
 const emit = defineEmits<{
-  'click:result': [value: BrandOrCategorySuggestion]
+  'click:result': [value: CategorySearchSuggestion]
 }>()
 </script>

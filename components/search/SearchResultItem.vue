@@ -24,12 +24,11 @@
 import type { RouteLocationRaw } from '#vue-router'
 
 type Props = {
-  term?: string
   imageUrl?: string
   to?: RouteLocationRaw
 }
 
-withDefaults(defineProps<Props>(), { term: '', imageUrl: '', to: '' })
+withDefaults(defineProps<Props>(), { imageUrl: '', to: '' })
 
 const emit = defineEmits<{ 'click:result': [] }>()
 </script>

@@ -5,22 +5,36 @@
     @keydown.esc="closeInput"
   >
     <label class="sr-only">{{ $t('search.placeholder') }}</label>
-    <IconSearchBold
-      class="absolute inset-y-2.5 left-2 size-6"
-      :class="inputActive ? 'pointer-events-none' : 'cursor-pointer'"
+    <AppButton
+      type="raw"
+      data-test-id="header-search-button"
+      aria-label="Open search input"
       @click="inputActive = true"
-    />
+    >
+      <IconSearchBold
+        aria-hidden="true"
+        class="absolute inset-y-2.5 left-2 size-6"
+        :class="inputActive ? 'pointer-events-none' : 'cursor-pointer'"
+      />
+    </AppButton>
 
     <FadeInTransition :duration="100">
-      <span
+      <AppButton
         v-if="searchQuery"
+        type="raw"
+        aria-label="Close search input"
+        data-test-id="close-search-button"
         class="absolute right-0 flex h-full cursor-pointer items-center justify-center px-2.5 py-2"
       >
-        <IconCloseBold class="size-4" @click="resetSearch" @mousedown.prevent />
-      </span>
+        <IconCloseBold
+          aria-hidden="true"
+          class="size-4"
+          @click="resetSearch"
+          @mousedown.prevent
+        />
+      </AppButton>
     </FadeInTransition>
     <input
-      id="search"
       ref="input"
       v-model="searchQuery"
       :placeholder="$t('search.placeholder')"
@@ -33,18 +47,12 @@
         'w-0': !inputActive,
       }"
       @focus="showSuggestions = true"
-      @keydown.enter="openSearchPage"
+      @keydown.enter="resolveSearchAndClose"
     />
 
     <Flyout ref="suggestionsFlyout" :is-open="isFlyoutOpened">
       <SearchResultsContainer
         v-if="showSuggestions"
-        :brands="brands"
-        :categories="categories"
-        :fetching="pending"
-        :product-suggestions="products"
-        :results-count="totalCount"
-        :search-term="searchQuery"
         @close="closeInput"
         @click:result="trackSuggestionClickAndClose"
       />
@@ -54,34 +62,19 @@
 
 <script setup lang="ts">
 import type {
-  BrandOrCategorySuggestion,
-  ProductSuggestion,
+  ProductSearchSuggestion,
+  CategorySearchSuggestion,
 } from '@scayle/storefront-nuxt'
 
-const { data, search, searchQuery, resetSearch, pending } = useSearch({
-  key: 'header-search',
-  params: {
-    with: {
-      products: {
-        attributes: {
-          withKey: ['color', 'brand', 'name'],
-        },
-        priceRange: true,
-        categories: 'all',
-      },
-      categories: {
-        parents: 'all',
-        children: 10,
-      },
-    },
-  },
-})
-
-const { totalCount, products, categories, brands } =
-  useTypeaheadSuggestions(data)
+const {
+  debouncedSearch,
+  searchQuery,
+  resetSearch,
+  totalCount,
+  resolveSearchAndRedirect,
+} = useSearchData()
 
 const { trackSearchSuggestionClick } = useTrackingEvents()
-const { getSearchRoute, localizedNavigateTo } = useRouteHelpers()
 
 const suggestionsFlyout = ref<HTMLElement | null>(null)
 const input = ref<HTMLElement | null>(null)
@@ -92,40 +85,33 @@ const closeInput = () => {
   inputActive.value = false
 }
 
-const debouncedSearch = _debounce(
-  { delay: DEBOUNCED_SEARCH_DURATION },
-  async (value: string) => {
-    if (value === '' || value.length < MIN_CHARS_FOR_SEARCH) {
-      return
-    }
-    await search({
-      term: searchQuery.value,
-      productLimit: PRODUCT_LIMIT,
-    })
-  },
-)
-
 onClickOutside(input, closeInput, { ignore: [suggestionsFlyout] })
 watch(inputActive, (active) => (active ? input.value?.focus() : resetSearch()))
 
 watch(
   () => searchQuery.value,
-  (query) => (query ? debouncedSearch(query) : resetSearch()),
+  (query) => {
+    if (!query) {
+      return resetSearch()
+    }
+    inputActive.value = true
+    debouncedSearch()
+  },
 )
 
 watchEffect(() => {
-  showSuggestions.value = searchQuery.value.length >= MIN_CHARS_FOR_SEARCH
+  showSuggestions.value = !!searchQuery.value.length
 })
 
 const trackSuggestionClickAndClose = (
-  suggestion: ProductSuggestion | BrandOrCategorySuggestion,
+  suggestion: ProductSearchSuggestion | CategorySearchSuggestion,
 ) => {
   trackSearchSuggestionClick(searchQuery.value, suggestion)
   closeInput()
 }
 
-const openSearchPage = async () => {
-  await localizedNavigateTo(getSearchRoute(searchQuery.value))
+const resolveSearchAndClose = async () => {
+  await resolveSearchAndRedirect()
   closeInput()
 }
 

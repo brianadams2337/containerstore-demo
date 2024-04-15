@@ -2,11 +2,10 @@ import Header from '../../pageObjects/components/header'
 
 class Search {
   private pageElements = {
-    mobileSearchInput: '[data-test-id="search-input"]',
-    desktopSearchButton: '[class*="relative z-30"]',
-    desktopSearchInput: '#search',
-    crossButton: 'svg[class*="text-white"]',
-    searchIcon: '[class*="border-gray-400"] svg[class*="w-6 h-6"]',
+    mobileSearchInput: 'input[data-test-id="sidebar-search-input"]',
+    desktopSearchInput: 'input[data-test-id="header-search-input"]',
+    desktopSearchButton: 'button[data-test-id="header-search-button"]',
+    closeButton: 'button[data-test-id="close-search-button"]',
   }
 
   openSearch(): void {
@@ -15,7 +14,7 @@ class Search {
       Header.clickOnSideNavButton()
       cy.get(this.pageElements.mobileSearchInput).should('be.visible')
     } else {
-      cy.wait(1000)
+      cy.wait(3000)
       cy.get(this.pageElements.desktopSearchButton).click({ force: true })
       cy.get(this.pageElements.desktopSearchInput).should('be.visible')
     }
@@ -37,16 +36,16 @@ class Search {
     })
   }
 
-  clickCrossButton(): void {
-    cy.get(this.pageElements.crossButton).click()
+  clickCloseSearchButton(): void {
+    cy.get(this.pageElements.closeButton).click()
   }
 
   checkSearchIconDisplayed(): void {
-    cy.get(this.pageElements.searchIcon).should('be.visible')
+    cy.get(this.pageElements.desktopSearchButton).should('be.visible')
   }
 
   checkSearchIconNotDisplayed(): void {
-    cy.get(this.pageElements.searchIcon).should('not.exist')
+    cy.get(this.pageElements.desktopSearchButton).should('not.exist')
   }
 }
 

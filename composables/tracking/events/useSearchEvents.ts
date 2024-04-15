@@ -1,7 +1,4 @@
-import type {
-  BrandOrCategorySuggestion,
-  ProductSuggestion,
-} from '@scayle/storefront-nuxt'
+import type { SearchEntity } from '@scayle/storefront-nuxt'
 
 const useSearchEvents = (
   track: (event: TrackingEvent, payload: TrackingPayload) => any,
@@ -19,27 +16,25 @@ const useSearchEvents = (
       search_destination: searchDestination,
     })
   }
-  const localePath = useLocalePath()
   const { getSearchSuggestionPath } = useRouteHelpers()
+
   return {
     trackSearch,
-
     trackSearchSuggestionClick: (
       searchTerm: string,
-      suggestion: ProductSuggestion | BrandOrCategorySuggestion,
+      suggestion: SearchEntity,
     ) => {
-      if (!suggestion) {
+      if (!suggestion.type) {
         return
       }
-      const product = (suggestion as ProductSuggestion).product
 
       trackSearch({
         searchTerm,
-        suggestion: suggestion.suggestion,
-        searchAction: product ? 'suggested_product' : 'suggested_category',
-        searchDestination: String(
-          localePath(getSearchSuggestionPath(suggestion) || ''),
-        ),
+        suggestion: getSuggestionName(suggestion),
+        searchAction: isProductSuggestion(suggestion)
+          ? 'suggested_product'
+          : 'suggested_category',
+        searchDestination: getSearchSuggestionPath(suggestion) || '',
       })
     },
   }
