@@ -1,7 +1,7 @@
 # Nuxt 3-based Storefront-Boilerplate (DemoShop) Dockerfile for Bun
 
 # Build
-FROM node:20.7.0-alpine3.18 as build
+FROM node:20.12.1-alpine3.19 as build
 
 WORKDIR /app
 

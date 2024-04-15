@@ -1,30 +1,29 @@
 <template>
   <div>
-    <StoryblokComponent :blok="story.content" />
+    <CMSStoryblokComponent :blok="story.content" />
   </div>
 </template>
 
 <script setup lang="ts">
-import type { SbSeo } from '../types/storyblok'
+import type { SbSeo } from '~/modules/cms/providers/storyblok/types'
 
-const props = defineProps({
+const props = defineProps<{
   story: {
-    type: Object as PropType<{ [key: string]: any }>,
-    required: true,
-  },
-})
+    [key: string]: any
+  }
+}>()
+const seo = computed<SbSeo>(() => props.story.content.seo)
 
-const cmsSeoContent = props.story.content.SEO as SbSeo
 useSeoMeta({
-  description: cmsSeoContent?.description,
+  description: seo.value?.description,
   robots: 'index,follow',
-  twitterTitle: cmsSeoContent?.twitter_description,
-  twitterDescription: cmsSeoContent?.twitter_description,
-  twitterImage: cmsSeoContent?.twitter_image,
-  ogTitle: cmsSeoContent?.og_title,
-  ogDescription: cmsSeoContent?.og_description,
-  ogImage: cmsSeoContent?.og_image,
+  twitterTitle: seo.value?.twitter_description,
+  twitterDescription: seo.value?.twitter_description,
+  twitterImage: seo.value?.twitter_image,
+  ogTitle: seo.value?.og_title,
+  ogDescription: seo.value?.og_description,
+  ogImage: seo.value?.og_image,
 })
 
-defineOptions({ name: 'CmsStory' })
+defineOptions({ name: 'CMSStory' })
 </script>

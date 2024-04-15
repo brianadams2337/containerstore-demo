@@ -13,17 +13,17 @@
     >
       <AppButton type="tertiary" is-full-width>{{ blok.cta.email }}</AppButton>
       <div class="max-w-lg">
-        <CmsText :blok="{ ...blok, component: 'CmsText' }" />
+        <CMSText :blok="{ ...blok, component: 'CmsText' }" />
       </div>
     </div>
-    <CmsText v-else :blok="{ ...blok, component: 'CmsText' }" />
+    <CMSText v-else :blok="{ ...blok, component: 'CmsText' }" />
     <div class="flex flex-row space-x-8">
       <div
         v-for="paragraphImage in blok.images"
         :key="`store-${paragraphImage.id}`"
         class="flex flex-row space-x-8"
       >
-        <StoryblokLink
+        <CMSStoryblokLink
           v-if="paragraphImage.name"
           :to="paragraphImage.name"
           target="_blank"
@@ -35,7 +35,7 @@
             :src="paragraphImage.filename"
             :alt="paragraphImage.alt"
           />
-        </StoryblokLink>
+        </CMSStoryblokLink>
         <NuxtPicture
           v-else
           class="cms-picture picture-contain"
@@ -53,14 +53,9 @@
 </template>
 
 <script setup lang="ts">
-import type { SbParagraph } from '../types/storyblok'
+import type { CMSParagraphProps } from '~/modules/cms/providers/storyblok/types/storyblok'
 
-const props = defineProps({
-  blok: {
-    type: Object as PropType<SbParagraph>,
-    required: true,
-  },
-})
+const props = defineProps<CMSParagraphProps>()
 
 const style = computed(() =>
   props.blok?.background_color

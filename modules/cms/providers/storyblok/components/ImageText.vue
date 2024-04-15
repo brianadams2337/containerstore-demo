@@ -53,17 +53,10 @@
 </template>
 
 <script setup lang="ts">
-import type { SbImageText } from '../types/storyblok'
-
-const props = defineProps({
-  blok: {
-    type: Object as PropType<SbImageText>,
-    required: true,
-  },
-  sizes: {
-    type: String,
-    default: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
-  },
+import type { CMSImageTextProps } from '~/modules/cms/providers/storyblok/types'
+import { useStoryblokImageSanitizer } from '~/modules/cms/providers/storyblok/composables/useStoryblokImage'
+const props = withDefaults(defineProps<CMSImageTextProps>(), {
+  sizes: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
 })
 
 const { sanitize } = useStoryblokImageSanitizer()
@@ -77,6 +70,8 @@ const imageSource = computed(() => {
 const { align, justify } = useCMSAlignment(props.blok)
 
 const hasCta = computed(() => props.blok?.cta && props.blok?.cta_link)
+
+defineOptions({ name: 'CMSImageText' })
 </script>
 <style lang="css" scoped>
 .gradient {

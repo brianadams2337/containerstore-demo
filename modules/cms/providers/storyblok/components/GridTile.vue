@@ -1,7 +1,7 @@
 <template>
   <div v-editable="blok" class="relative">
     <component
-      :is="content.component"
+      :is="getComponentName(content.component)"
       :key="blok._uid"
       :blok="content"
       :sizes="sizes"
@@ -12,29 +12,25 @@
     >
       {{ blok.headline }}
     </div>
-    <StoryblokLink
+    <CMSStoryblokLink
       v-if="hasCta && blok.cta_link?.cached_url"
       :to="blok.cta_link.cached_url"
       class="absolute bottom-8 left-1/2 w-full -translate-x-1/2 text-center font-bold leading-6 text-white underline underline-offset-2"
     >
       {{ blok.cta }}
-    </StoryblokLink>
+    </CMSStoryblokLink>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { SbGridTile } from '../types/storyblok'
+import type { CMSGridTileProps } from '~/modules/cms/providers/storyblok/types'
+import { getComponentName } from '~/modules/cms/utils/helpers'
 
-const props = defineProps({
-  blok: {
-    type: Object as PropType<SbGridTile>,
-    required: true,
-  },
-  sizes: {
-    type: String,
-    default: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
-  },
+const props = withDefaults(defineProps<CMSGridTileProps>(), {
+  sizes: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
 })
+
 const content = computed(() => props.blok?.content?.[0])
 const hasCta = computed(() => props.blok?.cta && props.blok?.cta_link)
+defineOptions({ name: 'CMSGridTile' })
 </script>

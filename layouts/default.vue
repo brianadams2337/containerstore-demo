@@ -13,23 +13,34 @@
     <div class="mt-4 grow">
       <NuxtPage />
     </div>
-    <AppFooter class="mt-16" />
+    <CMSAppFooterData class="mt-16" />
   </div>
 </template>
 
 <script setup lang="ts">
+import {
+  USE_BANNER_KEY,
+  USE_DEFAULT_BREAKPOINTS_KEY,
+  USE_TRACKING_EVENTS_KEY,
+  createContext,
+} from '~/composables/cms/useProviderContext'
+
 // Initialize data
 await useWishlist()
 await useBasket()
 await useRootCategories()
 const { allCurrentPromotions } = await useBasketPromotions()
+const trackingEvents = useTrackingEvents()
 
-const { trackShopInit, listenToUserItemsChanges, listenToCustomerDataChanges } =
-  useTrackingEvents()
+createContext(USE_TRACKING_EVENTS_KEY, trackingEvents)
+createContext(USE_DEFAULT_BREAKPOINTS_KEY, useDefaultBreakpoints())
+createContext(USE_BANNER_KEY, useBanner())
 
-trackShopInit()
-await listenToUserItemsChanges()
-await listenToCustomerDataChanges()
+const { data: _promotionData } = await useCurrentPromotions()
+
+trackingEvents.trackShopInit()
+await trackingEvents.listenToUserItemsChanges()
+await trackingEvents.listenToCustomerDataChanges()
 
 // Meta tags
 const { isSideNavigationOpen } = useSideNavigation()

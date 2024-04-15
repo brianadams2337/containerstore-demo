@@ -1,6 +1,6 @@
 <template>
   <div v-if="blok && imageSource.src" v-editable="blok" :class="marginClasses">
-    <StoryblokLink
+    <CMSStoryblokLink
       v-if="blok.cta_url.cached_url"
       :target="isLinkTypeUrl ? '_blank' : '_self'"
       :to="blok.cta_url.cached_url"
@@ -16,24 +16,20 @@
           :sizes="sizes"
         />
       </Intersect>
-    </StoryblokLink>
+    </CMSStoryblokLink>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { SbClickableImage } from '../types/storyblok'
-
-type Props = {
-  blok: SbClickableImage
-  sizes?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
+import type { CMSClickableImageProps } from '~/modules/cms/providers/storyblok/types'
+import { useStoryblokMargins } from '~/modules/cms/providers/storyblok/composables/useStoryblokMargins'
+import { useStoryblokImageSanitizer } from '~/modules/cms/providers/storyblok/composables/useStoryblokImage'
+const props = withDefaults(defineProps<CMSClickableImageProps>(), {
   sizes: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
 })
 
 const { marginClasses } = useStoryblokMargins(props.blok)
-const { trackPromotion } = useTrackingEvents()
+const tracking = useStorefrontTracking()
 const image = computed(() => props.blok?.image[0])
 const { sanitize } = useStoryblokImageSanitizer()
 const imageSource = computed(() => sanitize(image.value))
@@ -44,11 +40,13 @@ const onIntersect = (_: IntersectionObserverEntry, stop: () => void) => {
   if (!props.blok.promotion_id) {
     return
   }
-  trackPromotion('view_promotion', props.blok)
+  tracking && tracking.trackPromotion('view_promotion', props.blok)
   stop()
 }
 
 const clickObserver = image.value.promotion_id
-  ? () => trackPromotion('select_promotion', image.value)
+  ? () => tracking && tracking.trackPromotion('select_promotion', image.value)
   : () => {}
+
+defineOptions({ name: 'CMSClickableImage' })
 </script>

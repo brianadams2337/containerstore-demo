@@ -4,24 +4,24 @@
     :key="content._uid"
     v-editable="blok"
     :important="index < 2"
-    :placeholder-ratio="isGreater('md') ? '16/9' : '9/16'"
+    :placeholder-ratio="
+      storefrontBreakpoints && storefrontBreakpoints.isGreater('md')
+        ? '16/9'
+        : '9/16'
+    "
     placeholder-class="container"
   >
-    <component :is="content.component" :blok="content" />
+    <component :is="getComponentName(content.component)" :blok="content" />
   </div>
 </template>
 
 <script setup lang="ts">
-import type { SbPage } from '../types/storyblok'
+import type { CMSPageProps } from '~/modules/cms/providers/storyblok/types'
+import { getComponentName } from '~/modules/cms/utils/helpers'
 
-const { isGreater } = useDefaultBreakpoints()
+const storefrontBreakpoints = useStorefrontBreakpoints()
 
-defineProps({
-  blok: {
-    type: Object as PropType<SbPage>,
-    required: true,
-  },
-})
+defineProps<CMSPageProps>()
 
-defineOptions({ name: 'CmsPage' })
+defineOptions({ name: 'CMSPage' })
 </script>

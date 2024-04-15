@@ -2,8 +2,7 @@
   <div
     class="relative z-30 h-12 rounded border border-primary/0 transition-all duration-500"
     :class="inputActive ? 'w-[21rem] border-primary/100' : 'w-12 delay-100'"
-    @click="inputActive = true"
-    @keydown.esc="resetAndClose"
+    @keydown.esc="closeInput"
   >
     <label class="sr-only">{{ $t('search.placeholder') }}</label>
     <IconSearchBold
@@ -14,7 +13,7 @@
 
     <FadeInTransition :duration="100">
       <span
-        v-if="searchQuery && inputActive"
+        v-if="searchQuery"
         class="absolute right-0 flex h-full cursor-pointer items-center justify-center px-2.5 py-2"
       >
         <IconCloseBold class="size-4" @click="resetSearch" @mousedown.prevent />
@@ -37,16 +36,16 @@
       @keydown.enter="openSearchPage"
     />
 
-    <Flyout :is-open="isFlyoutOpened && inputActive">
+    <Flyout ref="suggestionsFlyout" :is-open="isFlyoutOpened">
       <SearchResultsContainer
         v-if="showSuggestions"
         :brands="brands"
         :categories="categories"
         :fetching="pending"
         :product-suggestions="products"
-        :results-count="count"
+        :results-count="totalCount"
         :search-term="searchQuery"
-        @close="resetAndClose"
+        @close="closeInput"
         @click:result="trackSuggestionClickAndClose"
       />
     </Flyout>
@@ -78,26 +77,20 @@ const { data, search, searchQuery, resetSearch, pending } = useSearch({
   },
 })
 
-const input = ref()
+const { totalCount, products, categories, brands } =
+  useTypeaheadSuggestions(data)
 
 const { trackSearchSuggestionClick } = useTrackingEvents()
 const { getSearchRoute, localizedNavigateTo } = useRouteHelpers()
 
+const suggestionsFlyout = ref<HTMLElement | null>(null)
+const input = ref<HTMLElement | null>(null)
 const showSuggestions = ref(false)
+const inputActive = ref(false)
 
-watchEffect(() => {
-  showSuggestions.value = searchQuery.value.length >= MIN_CHARS_FOR_SEARCH
-})
-
-const { focused: inputActive } = useFocus(input)
-
-watch(inputActive, (val) => {
-  if (!val) {
-    _debounce({ delay: 500 }, resetSearch)
-  }
-})
-
-const { products, categories, brands } = useTypeaheadSuggestions(data)
+const closeInput = () => {
+  inputActive.value = false
+}
 
 const debouncedSearch = _debounce(
   { delay: DEBOUNCED_SEARCH_DURATION },
@@ -112,36 +105,29 @@ const debouncedSearch = _debounce(
   },
 )
 
+onClickOutside(input, closeInput, { ignore: [suggestionsFlyout] })
+watch(inputActive, (active) => (active ? input.value?.focus() : resetSearch()))
+
 watch(
   () => searchQuery.value,
-  (query) => (!query ? resetSearch() : debouncedSearch(query)),
+  (query) => (query ? debouncedSearch(query) : resetSearch()),
 )
 
-const resetAndClose = () => {
-  searchQuery.value = ''
-  resetSearch()
-  inputActive.value = false
-}
+watchEffect(() => {
+  showSuggestions.value = searchQuery.value.length >= MIN_CHARS_FOR_SEARCH
+})
 
 const trackSuggestionClickAndClose = (
   suggestion: ProductSuggestion | BrandOrCategorySuggestion,
 ) => {
   trackSearchSuggestionClick(searchQuery.value, suggestion)
-  resetAndClose()
+  closeInput()
 }
 
 const openSearchPage = async () => {
   await localizedNavigateTo(getSearchRoute(searchQuery.value))
-  resetAndClose()
+  closeInput()
 }
 
-const count = computed(() => data?.value?.suggestions.length)
-
-const isFlyoutOpened = computed(() => {
-  return !!(
-    products.value.length ||
-    categories.value.length ||
-    searchQuery.value.length
-  )
-})
+const isFlyoutOpened = computed(() => !!totalCount.value)
 </script>

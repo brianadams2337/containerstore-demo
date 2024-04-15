@@ -16,25 +16,23 @@
         v-for="(slide, index) in blok.slides"
         :key="`cms-slide-${slide._uid}`"
       >
-        <CmsSlide :blok="slide" :preload="index === 0" />
+        <CMSSlide :blok="slide" :preload="index === 0" />
       </SwiperSlide>
     </Swiper>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { SbSlideShow } from '../types/storyblok'
-
-const props = defineProps({
-  blok: {
-    type: Object as PropType<SbSlideShow>,
-    required: true,
-  },
-})
+import type { CMSSlideShowProps } from '~/modules/cms/providers/storyblok/types'
+import { useStoryblokMargins } from '~/modules/cms/providers/storyblok/composables/useStoryblokMargins'
+import CMSSlide from '~/modules/cms/providers/storyblok/components/Slide.vue'
+const props = defineProps<CMSSlideShowProps>()
 
 const sliderRef = ref()
 
 const isDark = ref(true)
 
 const { marginClasses } = useStoryblokMargins(props.blok)
+
+defineOptions({ name: 'CMSSlideShow' })
 </script>

@@ -15,7 +15,7 @@
       with-arrows
       data-test-id="horizontal-product-slider"
     >
-      <Product
+      <CMSProduct
         v-for="(product, index) in products"
         :key="`product-slider-item-${product.id}`"
         class="box-content w-1/2 shrink-0 snap-start snap-always px-px first:pl-5 last:pr-5 sm:w-1/5 sm:px-0.5 sm:first:pl-14 sm:last:pr-14"
@@ -53,14 +53,9 @@ import {
   isFirstIndexOfRow,
   type Product,
 } from '@scayle/storefront-nuxt'
-import type { SbProductSlider } from '../types/storyblok'
-
-const props = defineProps({
-  blok: {
-    type: Object as PropType<SbProductSlider>,
-    required: true,
-  },
-})
+import type { CMSProductSliderProps } from '~/modules/cms/providers/storyblok/types'
+import { useStoryblokMargins } from '~/modules/cms/providers/storyblok/composables/useStoryblokMargins'
+const props = defineProps<CMSProductSliderProps>()
 
 const listingMetaData = {
   name: `ProductSlider-${props.blok.headline}`,
@@ -69,11 +64,11 @@ const listingMetaData = {
 
 const { marginClasses } = useStoryblokMargins(props.blok)
 
-const { isGreaterOrEqual } = useDefaultBreakpoints()
+const storefrontBreakpoints = useStorefrontBreakpoints()
 const route = useRoute()
 const { pageState } = usePageState()
 
-const { trackSelectItem, trackViewItemList } = useTrackingEvents()
+const storefrontTracking = useStorefrontTracking()
 
 const productIds = computed(() => {
   return props.blok.product_ids?.split(',').map(Number).filter(Boolean)
@@ -138,8 +133,14 @@ const products = computed(() => {
 
   return data.value
 })
-const sliderOffset = computed(() => (isGreaterOrEqual('md') ? 56 : 20))
-const columns = computed(() => (isGreaterOrEqual('md') ? 5 : 2))
+const sliderOffset = computed(() =>
+  storefrontBreakpoints && storefrontBreakpoints.isGreaterOrEqual('md')
+    ? 56
+    : 20,
+)
+const columns = computed(() =>
+  storefrontBreakpoints && storefrontBreakpoints.isGreaterOrEqual('md') ? 5 : 2,
+)
 
 const trackingSource = computed(() => {
   const routePath = String(route.fullPath === '/' ? 'home' : route.name)
@@ -153,21 +154,22 @@ const trackProductClick = (payload: { product: Product; index: number }) => {
     return
   }
 
-  trackSelectItem({
-    product,
-    category: {
-      name: category?.categoryName || '',
-      id: category?.categoryId,
-    },
-    listingMetaData,
-    index,
-    source: trackingSource.value,
-    pagePayload: {
-      content_name: route.fullPath,
-      page_type: pageState.value.type,
-      page_type_id: route.params.id?.toString() || '',
-    },
-  })
+  storefrontTracking &&
+    storefrontTracking.trackSelectItem({
+      product,
+      category: {
+        name: category?.categoryName || '',
+        id: category?.categoryId,
+      },
+      listingMetaData,
+      index,
+      source: trackingSource.value,
+      pagePayload: {
+        content_name: route.fullPath,
+        page_type: pageState.value.type,
+        page_type_id: route.params.id?.toString() || '',
+      },
+    })
 }
 
 const trackIntersection = (payload: { product: Product; index: number }) => {
@@ -185,11 +187,14 @@ const trackIntersection = (payload: { product: Product; index: number }) => {
     .slice(index, index + columns.value)
     .map((item, idx) => ({ ...item, index: index + idx }))
 
-  trackViewItemList({
-    items: itemsInSliderRow,
-    listingMetaData,
-    source: trackingSource.value,
-  })
+  storefrontTracking &&
+    storefrontTracking.trackViewItemList({
+      items: itemsInSliderRow,
+      listingMetaData,
+      source: trackingSource.value,
+    })
   trackingCollector.value.push(...itemsInSliderRow)
 }
+
+defineOptions({ name: 'CMSProductSlider' })
 </script>

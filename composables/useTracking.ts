@@ -25,7 +25,7 @@ export function useTracking() {
 
   const { pageState } = usePageState()
 
-  const { trackingEventOrder } = useRuntimeConfig().public
+  const config = useRuntimeConfig()
 
   type Push = typeof gtm.push
 
@@ -37,7 +37,8 @@ export function useTracking() {
   )
 
   const push: Push = (data) => {
-    const index = data.event ? trackingEventOrder.indexOf(data.event) ?? -1 : -1
+    const trackingEvents = (config.public.trackingEventOrder as string[]) ?? []
+    const index = data.event ? trackingEvents.indexOf(data.event) ?? -1 : -1
     if (index === -1) {
       return queue.value.push({ data, index: lastIndex })
     }

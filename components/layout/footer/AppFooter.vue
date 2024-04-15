@@ -74,11 +74,16 @@
 
 <script setup lang="ts">
 import type { StoryblokStory } from 'storyblok-generate-ts'
-import type { SbFooter } from '~/modules/cms/providers/storyblok/types/storyblok'
+import type { SbFooter } from '~/modules/cms/providers/storyblok/types'
 
 const storyblokOptions = useDefaultStoryblokOptions()
 
 // TODO fix typings
+onMounted(() => {
+  console.error('This component deprecated. Use `<CMSAppFooterData>` instead.')
+})
+
+// @ts-ignore
 const cmsData: Ref<StoryblokStory<SbFooter>> = await useAsyncStoryblok(
   'global/footer',
   storyblokOptions,

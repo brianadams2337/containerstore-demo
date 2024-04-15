@@ -9,7 +9,7 @@ export function useDefaultStoryblokOptions(): Pick<
   const route = useRoute()
   const config = useRuntimeConfig()
   const currentShop = useCurrentShop()
-  const env = config.public.appEnv
+  const env = config.public.appEnv as string | undefined
 
   return {
     version:

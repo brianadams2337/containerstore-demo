@@ -7,7 +7,7 @@
     @click="togglePromotionList()"
   >
     <div
-      class="flex w-full items-center justify-between"
+      class="flex w-full flex-wrap items-center justify-between gap-1"
       :class="minOrderValue && 'mb-2.5'"
     >
       <PromotionFullProgressLabel v-if="isFullProgress" is-small />

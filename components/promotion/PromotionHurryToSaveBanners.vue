@@ -9,14 +9,24 @@
       } in automaticDiscountPromotions"
       v-show="shouldShowAutomaticDiscountBanner(productId)"
       :key="`automatic-discount-banner-${id}`"
-      class="mb-1 flex h-fit items-center justify-between rounded-md bg-blue px-2 py-1 text-xs font-semibold text-white"
+      class="mb-1 flex h-fit flex-wrap items-center justify-between gap-y-[.125rem] rounded-md bg-blue px-2 py-1 text-xs font-semibold text-white"
       :style="getBackgroundColorStyle(customData.colorHex)"
     >
-      <Headline tag="h2" size="xs" is-bold is-uppercase>
+      <Headline
+        tag="h2"
+        size="xs"
+        is-bold
+        is-uppercase
+        class="text-balance lg:basis-5/12 xl:basis-7/12"
+      >
         {{ $t('promotion.hurry_to_save') }}
         {{ customData.product?.badgeLabel }}
       </Headline>
-      <PromotionCountdown :until="schedule.to" borderless />
+      <PromotionCountdown
+        :until="schedule.to"
+        borderless
+        class="lg:basis-7/12 lg:justify-end xl:basis-5/12"
+      />
     </div>
     <div
       v-for="{ id, customData, schedule } in buyXGetYPromotions"
@@ -25,10 +35,20 @@
       class="mb-2 flex h-fit items-center justify-between rounded-md bg-blue px-2 py-1 text-xs font-semibold text-white last-of-type:mb-0"
       :style="getBackgroundColorStyle(customData.colorHex)"
     >
-      <Headline tag="h2" size="xs" is-bold is-uppercase>
+      <Headline
+        tag="h2"
+        size="xs"
+        is-bold
+        is-uppercase
+        class="text-balance lg:basis-5/12 xl:basis-7/12"
+      >
         {{ $t('promotion.save_your_free_gift') }}
       </Headline>
-      <PromotionCountdown :until="schedule.to" borderless />
+      <PromotionCountdown
+        :until="schedule.to"
+        borderless
+        class="lg:basis-7/12 lg:justify-end xl:basis-5/12"
+      />
     </div>
   </div>
 </template>

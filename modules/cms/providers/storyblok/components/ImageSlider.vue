@@ -14,7 +14,7 @@
       class="mt-4 box-border flex overflow-x-auto overflow-y-hidden scrollbar-hide"
     >
       <component
-        :is="entry.component"
+        :is="getComponentName(entry.component)"
         v-for="entry in blok.slides"
         ref="slideElements"
         :key="entry._uid"
@@ -26,13 +26,10 @@
 </template>
 
 <script setup lang="ts">
-import type { SbImageSlider } from '../types/storyblok'
-
-const props = defineProps({
-  blok: {
-    type: Object as PropType<SbImageSlider>,
-    required: true,
-  },
-})
+import { getComponentName } from '~/modules/cms/utils/helpers'
+import type { CMSImageSliderProps } from '~/modules/cms/providers/storyblok/types'
+import { useStoryblokMargins } from '~/modules/cms/providers/storyblok/composables/useStoryblokMargins'
+const props = defineProps<CMSImageSliderProps>()
 const { marginClasses } = useStoryblokMargins(props.blok)
+defineOptions({ name: 'CMSImageSlider' })
 </script>

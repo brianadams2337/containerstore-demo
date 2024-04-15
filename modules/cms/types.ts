@@ -1,8 +1,10 @@
-import type { StoryblokProvider } from './providers/storyblok/types'
-export type * from './providers/storyblok/types'
+import type { ContentfulModuleOptions } from './providers/contentful/types'
+import type { StoryblokModuleOptions } from './providers/storyblok/types'
+import type { CMSProviders } from './utils/config'
 
-export type CMSProviders = 'storyblok'
+export type CMSModuleOptions = {
+  provider?: CMSProviders
+  componentPrefix?: string
+} & (StoryblokModuleOptions | ContentfulModuleOptions)
 
-export type ModuleOptions = {
-  provider: CMSProviders
-} & StoryblokProvider
+export type ModuleOptions = CMSModuleOptions

@@ -6,7 +6,7 @@
     </div>
     <div v-for="content in blok.content" :key="content._uid">
       <component
-        :is="content.component"
+        :is="getComponentName(content.component)"
         :blok="content"
         :important="content.component === 'Paragraph'"
       />
@@ -15,7 +15,8 @@
 </template>
 
 <script setup lang="ts">
-import type { BlokProps, SbContentPage } from '../types/storyblok'
-
-defineProps<BlokProps<SbContentPage>>()
+import type { CMSContentPageProps } from '~/modules/cms/providers/storyblok/types'
+import { getComponentName } from '~/modules/cms/utils/helpers'
+defineProps<CMSContentPageProps>()
+defineOptions({ name: 'CMSContentPage' })
 </script>

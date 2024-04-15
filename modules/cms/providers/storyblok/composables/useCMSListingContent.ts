@@ -1,18 +1,19 @@
-import type { StoryblokStory } from 'storyblok-generate-ts'
-import type { SbListingPage } from './../types/storyblok.gen'
+import type {
+  SbListingPage,
+  SbStory,
+} from '~/modules/cms/providers/storyblok/types'
 
-export function useCMSListingContent(data: Ref<StoryblokStory<SbListingPage>>) {
-  const content = computed(() => data.value?.content)
+export function useCMSListingContent(data: Ref<SbStory<SbListingPage> | null>) {
   return {
-    content,
+    content: computed(() => data.value?.data.story.content || {}),
     preListingContent: computed(
-      () => data.value?.content?.pre_listing_content || [],
+      () => data.value?.data.story.content?.pre_listing_content || [],
     ),
     postListingContent: computed(
-      () => data.value?.content?.post_listing_content || [],
+      () => data.value?.data.story.content?.post_listing_content || [],
     ),
     hasTeaserImage: computed(() =>
-      Boolean(content.value?.teaser_image?.filename),
+      Boolean(data.value?.data.story.content.teaser_image?.filename),
     ),
   }
 }

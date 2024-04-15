@@ -36,17 +36,12 @@
 </template>
 
 <script setup lang="ts">
-import type { SbImageSliderSlide } from '../types/storyblok'
+import type { CMSImageSliderSlideProps } from '~/modules/cms/providers/storyblok/types'
 
-const props = defineProps({
-  blok: {
-    type: Object as PropType<SbImageSliderSlide>,
-    required: true,
-  },
-})
+const props = defineProps<CMSImageSliderSlideProps>()
 
-const { isSmaller } = useDefaultBreakpoints()
-const { trackPromotion } = useTrackingEvents()
+const storefrontBreakpoints = useStorefrontBreakpoints()
+const tracking = useStorefrontTracking()
 
 const isInViewport = ref(true)
 
@@ -54,14 +49,17 @@ const onIntersect = (_: IntersectionObserverEntry, stop: () => void) => {
   if (!props.blok.promotion_id) {
     return
   }
-  trackPromotion('view_promotion', props.blok)
+  tracking && tracking.trackPromotion('view_promotion', props.blok)
   stop()
 }
 
 const clickObserver = () => {
   if (props.blok.promotion_id) {
-    trackPromotion('select_promotion', props.blok)
+    tracking && tracking.trackPromotion('select_promotion', props.blok)
   }
 }
-const headlineSize = computed(() => (isSmaller('md') ? 'xl' : '2xl'))
+const headlineSize = computed(() =>
+  storefrontBreakpoints && storefrontBreakpoints.isSmaller('md') ? 'xl' : '2xl',
+)
+defineOptions({ name: 'CMSImageSliderSlide' })
 </script>

@@ -1,0 +1,110 @@
+<template>
+  <component
+    :is="baseTag"
+    v-if="isActive && shouldBeVisible"
+    v-bind="bindings"
+    id="banner"
+    class="sticky text-sm"
+  >
+    <slot :close="close">
+      <transition
+        leave-from-class="opacity-100 translate-y-0"
+        leave-to-class="opacity-0 -translate-y-4"
+        leave-active-class="transform transition ease-out duration-300 "
+      >
+        <Intersect
+          v-if="isOpen"
+          :threshold="0.5"
+          class="relative z-50 flex w-full items-center"
+          :class="classes"
+          @enter="onIntersect"
+        >
+          <section
+            class="container flex flex-col items-center justify-center gap-2 text-center sm:relative sm:flex-row"
+            :class="{ 'sm:flex-col': hasScrollableLinks }"
+          >
+            <slot name="body">
+              <div class="md:flex md:w-full md:items-center md:justify-center">
+                <CMSText :blok="blok?.fields.body ?? null" />
+                <Countdown
+                  v-if="blok?.fields.countdownUntil"
+                  :until="blok?.fields.countdownUntil"
+                  class="my-4 md:ml-5"
+                  @finished="close"
+                />
+                <CMSScrollableLinkList
+                  v-if="hasScrollableLinks"
+                  class="ml-5"
+                  :links="[...blok?.fields.links]"
+                />
+              </div>
+            </slot>
+
+            <slot name="action" :close="close">
+              <AppButton
+                no-padding
+                size="xs"
+                type="ghost"
+                class="absolute right-6"
+                @click="close"
+              >
+                <template #icon="{ _class }">
+                  <IconClose :class="_class" />
+                </template>
+              </AppButton>
+            </slot>
+          </section>
+        </Intersect>
+      </transition>
+    </slot>
+  </component>
+</template>
+
+<script setup lang="ts">
+import type { CMSBannerProps } from '~/modules/cms/providers/contentful/types'
+import CMSText from '~/modules/cms/providers/contentful/components/Text.vue'
+const props = withDefaults(defineProps<CMSBannerProps>(), {
+  type: '',
+})
+
+const { close, isOpen, shouldBeVisible: _shouldBeVisible } = useBanner()
+const { trackPromotion } = useTrackingEvents()
+const isActive = computed(() => {
+  return isEmpty(props.blok) ? true : props.blok?.fields.isActive
+})
+
+const shouldBeVisible = computed(() => _shouldBeVisible(props.publishedAt))
+
+const is = (value: string | string[]) => {
+  return (
+    (props.type && value.includes(props.type)) ||
+    (props.blok?.fields.type && value.includes(props.blok?.fields.type))
+  )
+}
+
+const hasScrollableLinks = computed(() => !isEmpty(props.blok?.fields.links))
+const cachedUrl = computed(() => props.blok?.fields.ctaUrl)
+const baseTag = computed(() => {
+  return cachedUrl.value ? resolveComponent('CMSContentfulLink') : 'div'
+})
+const bindings = computed(() => {
+  return cachedUrl.value ? { to: cachedUrl.value } : {}
+})
+
+const classes = computed(() => ({
+  'bg-tertiary-1-500 text-black': is('info'),
+  'bg-tertiary-2-500 text-white': is('sale'),
+  'bg-tertiary-3-500 text-black': is('highlight'),
+  'bg-black text-white': is('alert'),
+}))
+
+const onIntersect = (_: IntersectionObserverEntry, stop: () => void) => {
+  if (!props.blok?.fields.tracking?.fields.promotion_id) {
+    return
+  }
+  trackPromotion('view_promotion', props.blok.fields.tracking.fields)
+  stop()
+}
+
+defineOptions({ name: 'CMSBanner' })
+</script>

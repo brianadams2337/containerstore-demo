@@ -13,7 +13,7 @@
     </div>
     <div class="divide-y divide-gray-300" :class="{ marginClasses }">
       <component
-        :is="entry.component"
+        :is="getComponentName(entry.component) ?? 'CMSAccordionEntry'"
         v-for="entry in blok.entries"
         :key="entry._uid"
         :blok="entry"
@@ -25,14 +25,11 @@
 
 <script setup lang="ts">
 import { slugify } from '@scayle/storefront-nuxt'
-import type { SbAccordion } from '../types/storyblok'
+import type { CMSAccordionProps } from '~/modules/cms/providers/storyblok/types'
+import { getComponentName } from '~/modules/cms/utils/helpers'
+import { useStoryblokMargins } from '~/modules/cms/providers/storyblok/composables/useStoryblokMargins'
 
-const props = defineProps({
-  blok: {
-    type: Object as PropType<SbAccordion>,
-    required: true,
-  },
-})
+const props = defineProps<CMSAccordionProps>()
 const collapseByAnchorSlug = (linkTitle: string) => {
   return `#${prepareForUrl(linkTitle)}` !== route.hash
 }
@@ -43,5 +40,5 @@ const prepareForUrl = (title: string) => {
 const route = useRoute()
 const { marginClasses } = useStoryblokMargins(props.blok)
 
-defineOptions({ name: 'CmsAccordion' })
+defineOptions({ name: 'CMSAccordion' })
 </script>

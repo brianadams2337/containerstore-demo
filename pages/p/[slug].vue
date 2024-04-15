@@ -143,19 +143,20 @@
             />
 
             <div class="mt-4 flex h-12">
-              <AppButton
-                data-test-id="add-item-to-basket-button"
-                is-full-width
-                type="primary"
-                :disabled="product.isSoldOut"
-                :title="product.isSoldOut ? $t('badge_labels.sold_out') : ''"
-                :loading="basketIdle"
-                class="text-sm !normal-case"
-                @click="addItemToBasket()"
-              >
-                {{ $t('pdp.add_label') }}
-              </AppButton>
               <ClientOnly>
+                <AppButton
+                  data-test-id="add-item-to-basket-button"
+                  is-full-width
+                  type="primary"
+                  :disabled="product.isSoldOut"
+                  :title="product.isSoldOut ? $t('badge_labels.sold_out') : ''"
+                  :loading="basketIdle"
+                  class="text-sm !normal-case"
+                  @click="addItemToBasket()"
+                >
+                  {{ $t('pdp.add_label') }}
+                </AppButton>
+
                 <WishlistToggle
                   class="ml-2 box-border h-full border border-gray-350 !px-2"
                   :product="product"
@@ -218,12 +219,6 @@ import {
   isInStock,
 } from '@scayle/storefront-nuxt'
 
-const route = useRoute()
-const { $i18n, $config } = useNuxtApp()
-const { getProductDetailRoute } = useRouteHelpers()
-
-const { setPageState } = usePageState()
-
 const {
   product,
   activeVariant,
@@ -244,11 +239,6 @@ const {
   productId,
 } = await useProductDetails()
 
-const favoriteStoreId = useFavoriteStore()
-const selectedStoreId = ref<number | undefined>(
-  favoriteStoreId.value ?? undefined,
-)
-
 const { addItemToBasket, basketIdle } = await useProductDetailsBasketActions()
 
 const {
@@ -263,6 +253,17 @@ const {
   fetchingCombineWithProducts,
   trackRecommendationClick,
 } = await useProductRecommendations()
+
+const route = useRoute()
+const { $i18n, $config } = useNuxtApp()
+const { getProductDetailRoute } = useRouteHelpers()
+
+const { setPageState } = usePageState()
+
+const favoriteStoreId = useFavoriteStore()
+const selectedStoreId = ref<number | undefined>(
+  favoriteStoreId.value ?? undefined,
+)
 
 const { availableAddOns, onAddOnSelected } = useProductDetailsAddOns(
   productId.value,

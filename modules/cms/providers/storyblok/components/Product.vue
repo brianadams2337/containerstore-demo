@@ -21,21 +21,16 @@
 <script setup lang="ts">
 import { type Product, getBadgeLabel } from '@scayle/storefront-nuxt'
 
+type CMSProductProps = {
+  width?: string
+  fetching?: boolean
+  product: Product
+}
 const { listingColumns } = useListingUiState()
 
-const props = defineProps({
-  width: {
-    type: String,
-    default: undefined,
-  },
-  fetching: {
-    type: Boolean as PropType<boolean>,
-    default: false,
-  },
-  product: {
-    type: Object as PropType<Product>,
-    default: () => ({}),
-  },
+const props = withDefaults(defineProps<CMSProductProps>(), {
+  fetching: false,
+  width: undefined,
 })
 
 const emit = defineEmits(['intersect:product'])
@@ -46,5 +41,5 @@ const badgeLabel = computed(() =>
   }),
 )
 
-defineOptions({ name: 'CmsProduct' })
+defineOptions({ name: 'CMSProduct' })
 </script>

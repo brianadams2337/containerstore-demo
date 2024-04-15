@@ -1,17 +1,19 @@
 <template>
-  <div class="flex pl-1.5 text-xs">
+  <div class="flex px-1.5 text-xs">
     <div
       v-for="(value, key) in countdown"
       :key="key"
       class="flex text-center font-semibold"
     >
-      <span v-if="typeof value !== 'undefined'" class="min-w-4">
-        {{ formatValue(value) }}
-      </span>
-      <span class="mx-1">
-        <template v-if="showUnits">{{ $t(`global.${key}`) }}</template>
-        <template v-else-if="!isSeconds(key)">:</template>
-      </span>
+      <div v-if="shouldShowValue(key, value)" class="inline-flex">
+        <span v-if="shouldShowSeparator(key)" class="mx-[.125rem]">:</span>
+        <span v-if="value !== undefined" class="min-w-[2ch]">
+          {{ formatValue(value) }}
+        </span>
+        <span v-if="showUnits">
+          <span>{{ renderUnit($t(`global.${key}`)) }}</span>
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -22,9 +24,13 @@ type CountdownUnit = 'days' | 'hours' | 'minutes' | 'seconds'
 type Props = {
   until: string
   showUnits?: boolean
+  unitSize?: 'short' | 'long'
 }
 
-const props = withDefaults(defineProps<Props>(), { showUnits: false })
+const props = withDefaults(defineProps<Props>(), {
+  showUnits: false,
+  unitSize: 'long',
+})
 
 const emit = defineEmits(['finished'])
 
@@ -35,7 +41,23 @@ const formatValue = (value: number) => {
   return value <= 9 && value >= 0 ? `0${value}` : value
 }
 
-const isSeconds = (key: string) => key === _last(Object.keys(countdown.value))
+const renderUnit = (unit: string) => {
+  return props.unitSize === 'short' ? unit.substring(0, 1).toUpperCase() : unit
+}
+
+const shouldShowValue = (key: CountdownUnit, value?: number) => {
+  if (value === 0 && key === 'days') {
+    return false
+  }
+  return !(key === 'seconds' && countdown.value.days !== 0)
+}
+
+const shouldShowSeparator = (key: CountdownUnit) => {
+  if (key === 'days') {
+    return false
+  }
+  return !(key === 'hours' && countdown.value.days === 0)
+}
 
 const start = () => {
   const remaining = until.value - Date.now()

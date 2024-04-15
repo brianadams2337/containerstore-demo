@@ -1,15 +1,16 @@
 <template>
   <div>
     <div data-test-id="home-page-content">
-      <Story v-if="data" :story="data" />
+      <CMSIndexData slug="home">
+        <template #default="{ data }">
+          <CMSStory v-if="data" :story="data" />
+        </template>
+      </CMSIndexData>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const storyblokOptions = useDefaultStoryblokOptions()
-const data = await useAsyncStoryblok('home', storyblokOptions)
-
 const config = useRuntimeConfig()
 const route = useRoute()
 

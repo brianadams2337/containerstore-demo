@@ -1,0 +1,47 @@
+<template>
+  <div v-if="blok">
+    <div v-if="blok?.fields.hasLinkList" class="max-w-lg">
+      <ul class="grid grid-cols-2 justify-items-start">
+        <li
+          v-for="b in blok.fields.entries"
+          :key="b?.sys.id"
+          class="my-1 font-bold"
+        >
+          <DefaultLink raw to="#" class="inline-flex items-center">
+            <IconDropdown class="my-1 mr-2 size-2.5" />
+            {{ b?.fields.linkTitle }}
+          </DefaultLink>
+        </li>
+      </ul>
+      <hr class="mt-8" />
+    </div>
+    <div class="divide-y divide-gray-300" :class="{ marginClasses }">
+      <component
+        :is="
+          getComponentName(entry?.sys.contentType.sys.id) ?? 'CMSAccordionEntry'
+        "
+        v-for="entry in blok.fields.entries"
+        :key="entry?.fields.uid"
+        :blok="entry"
+        :collapsed="collapseByAnchorSlug(entry?.fields.linkTitle ?? '')"
+      />
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import type { CMSAccordionProps } from '~/modules/cms/providers/contentful/types'
+import { getComponentName } from '~/modules/cms/utils/helpers'
+import { useContentfulMargins } from '~/modules/cms/providers/contentful/composables/useContentfulMargins'
+const props = defineProps<CMSAccordionProps>()
+
+const route = useRoute()
+
+const collapseByAnchorSlug = (linkTitle: string) => {
+  return `#${_dash(linkTitle)}` !== route.hash
+}
+
+const { marginClasses } = useContentfulMargins(props.blok?.fields.marginTop)
+
+defineOptions({ name: 'CMSAccordion' })
+</script>

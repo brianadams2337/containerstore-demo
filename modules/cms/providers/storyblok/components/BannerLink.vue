@@ -4,24 +4,29 @@
     v-editable="blok"
     class="border border-white px-7 py-3.5 text-sm leading-normal text-white"
   >
-    <StoryblokLink
+    <CMSStoryblokLink
       :key="blok._uid"
       :to="blok.cta_url?.cached_url"
       @click="clickObserver(blok)"
     >
       {{ blok.label }}
-    </StoryblokLink>
+    </CMSStoryblokLink>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { SbBannerLink } from '../types/storyblok'
+import type { SbBannerLink } from '~/modules/cms/providers/storyblok/types'
 
 defineProps<{ blok: SbBannerLink }>()
 
-const { trackPromotion } = useTrackingEvents()
+const tracking = useStorefrontTracking()
 
 const clickObserver = (link: SbBannerLink) => {
-  return link.promotion_id && trackPromotion('select_promotion', link)
+  return (
+    link.promotion_id &&
+    tracking &&
+    tracking.trackPromotion('select_promotion', link)
+  )
 }
+defineOptions({ name: 'CMSBannerLink' })
 </script>

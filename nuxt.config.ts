@@ -91,6 +91,7 @@ export default defineNuxtConfig({
       domains,
       cms: {
         accessToken: process.env.NUXT_PUBLIC_CMS_ACCESS_TOKEN,
+        space: process.env.NUXT_PUBLIC_CMS_SPACE,
       },
       /** Nuxt - Base URL
        * https://nuxt.com/docs/api/nuxt-config#baseurl */
@@ -186,16 +187,13 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-swiper',
     'radash-nuxt',
-    '@storyblok/nuxt',
     '@zadigetvoltaire/nuxt-gtm',
     '@nuxt/test-utils/module',
-    './modules/cms',
   ],
 
-  subscription: {
-    pagePath: '/account/subscription',
+  cms: {
+    provider: 'contentful',
   },
-
   // https://github.com/lukasaric/radash-nuxt
   radash: {
     prefix: '_',
@@ -211,11 +209,6 @@ export default defineNuxtConfig({
   // https://scayle.dev/en/dev/storefront-core/build-configuration
   storefront: storefrontBuildtimeConfig,
 
-  // https://github.com/storyblok/storyblok-nuxt#options
-  storyblok: {
-    bridge: true,
-  },
-
   // https://github.com/cpsoinos/nuxt-svgo/blob/main/README.md#usage
   svgo: {
     autoImportPath: './assets/icons',
@@ -225,15 +218,6 @@ export default defineNuxtConfig({
 
   // https://image.nuxt.com/get-started/configuration
   image: {
-    domains: ['https://a.storyblok.com'],
-    storyblok: {
-      baseURL: 'https://a.storyblok.com',
-      modifiers: {
-        // set default quality as modifier. This will force also storyblok to use webp if the client supports it.
-        // Setting the format via the format modifier will force the format even when it's not supported by the client.
-        quality: '85',
-      },
-    },
     provider: 'default',
     providers: {
       default: {
@@ -392,4 +376,19 @@ export default defineNuxtConfig({
       preserveSymlinks: true,
     },
   },
+  // This hook enables build-time configuration logging, controlled by the feature flag ENABLE_CONFIG_LOG_BUILD.
+  hooks: yn(process.env.ENABLE_CONFIG_LOG_BUILD)
+    ? {
+        'nitro:init': (nitroConfig) => {
+          const configToPrint = yn(process.env.ENABLE_CONFIG_LOG_PRETTIER)
+            ? JSON.stringify(nitroConfig.options.runtimeConfig, null, 2)
+            : JSON.stringify(nitroConfig.options.runtimeConfig)
+
+          console.log(
+            '[storefront-boilerplate] runtimeConfig after nitro initialisation:',
+            configToPrint,
+          )
+        },
+      }
+    : {},
 })

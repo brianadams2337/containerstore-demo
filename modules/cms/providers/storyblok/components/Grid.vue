@@ -6,7 +6,7 @@
   >
     <!-- Image is not allowed as a component so we have to rename it here -->
     <component
-      :is="column.component"
+      :is="getComponentName(column.component) ?? 'div'"
       v-for="column in blok.columns"
       :key="column._uid"
       :blok="column"
@@ -16,14 +16,10 @@
 </template>
 
 <script setup lang="ts">
-import type { SbGrid } from '../types/storyblok'
-
-const props = defineProps({
-  blok: {
-    type: Object as PropType<SbGrid>,
-    required: true,
-  },
-})
+import type { CMSGridProps } from '~/modules/cms/providers/storyblok/types'
+import { getComponentName } from '~/modules/cms/utils/helpers'
+import { useStoryblokMargins } from '~/modules/cms/providers/storyblok/composables/useStoryblokMargins'
+const props = defineProps<CMSGridProps>()
 const { marginClasses } = useStoryblokMargins(props.blok)
 
 const containerClasses = computed(() => ({
@@ -37,5 +33,5 @@ const sizes = computed(() => {
   return `xs:100vw sm:100vw md:100vw lg:${vw}vw  xl:${vw}vw  xxl:${vw}vw 2xl:${vw}vw `
 })
 
-defineOptions({ name: 'CmsGrid' })
+defineOptions({ name: 'CMSGrid' })
 </script>

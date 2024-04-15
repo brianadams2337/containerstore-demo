@@ -8,25 +8,20 @@
     </button>
     <FadeInTransition>
       <div v-if="!isCollapsed">
-        <CmsText :blok="{ ...blok, component: 'CmsText' }" />
+        <CMSText :blok="{ ...blok, component: 'CmsText' }" />
       </div>
     </FadeInTransition>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { SbAccordionEntry } from '../types/storyblok'
+import type { CMSAccordionEntryProps } from '~/modules/cms/providers/storyblok/types'
+import CMSText from '~/modules/cms/providers/storyblok/components/Text.vue'
 
-const props = defineProps({
-  blok: {
-    type: Object as PropType<SbAccordionEntry>,
-    required: true,
-  },
-  collapsed: {
-    type: Boolean,
-    default: true,
-  },
+const props = withDefaults(defineProps<CMSAccordionEntryProps>(), {
+  collapsed: true,
 })
 
 const isCollapsed = ref(props.collapsed)
+defineOptions({ name: 'CMSAccordionEntry' })
 </script>

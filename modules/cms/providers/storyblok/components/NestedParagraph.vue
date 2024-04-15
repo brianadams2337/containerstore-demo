@@ -1,17 +1,17 @@
 <template>
   <div
-    :id="blok.anchor_id"
+    :id="trimAnchorSymbol(blok.anchor_id)"
     v-editable="blok"
     class="prose mb-10 flex w-full flex-col last:mb-0"
     :class="{
       'scroll-mt-8': blok.anchor_id,
-      '': blok.nested_items?.length,
     }"
     :style="style"
   >
     <Headline
       :tag="blok.headline_tag ? blok.headline_tag : 'h3'"
       :size="getHeadlineSize(blok.headline_tag)"
+      class="mb-2"
       >{{ blok.headline }}</Headline
     >
     <div
@@ -26,7 +26,7 @@
     <CmsText v-else :blok="{ ...blok, component: 'CmsText' }" />
     <template v-if="blok.nested_items">
       <component
-        :is="nestedItem.component"
+        :is="getComponentName(nestedItem.component)"
         v-for="nestedItem in blok.nested_items"
         :key="nestedItem._uid"
         :blok="nestedItem"
@@ -69,7 +69,7 @@
 
 <script setup lang="ts">
 import type { SbNestedParagraph } from '../types/storyblok'
-
+import { getComponentName } from '~/modules/cms/utils/helpers'
 const props = defineProps({
   blok: {
     type: Object as PropType<SbNestedParagraph>,
@@ -77,13 +77,20 @@ const props = defineProps({
   },
 })
 
+function trimAnchorSymbol(anchorId?: string): string | undefined {
+  if (!anchorId) {
+    return undefined
+  }
+  return anchorId.startsWith('#') ? anchorId.substring(1) : anchorId
+}
+
 const style = computed(() =>
   props.blok?.background_color
     ? { backgroundColor: props.blok?.background_color }
     : undefined,
 )
 
-function getHeadlineSize(size: string | undefined) {
+function getHeadlineSize(size?: string) {
   if (!size) {
     return 'sm'
   }
@@ -101,5 +108,5 @@ function getHeadlineSize(size: string | undefined) {
   }
 }
 
-defineOptions({ name: 'CmsParagraph' })
+defineOptions({ name: 'CMSNestedParagraph' })
 </script>

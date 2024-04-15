@@ -8,14 +8,10 @@
 </template>
 
 <script lang="ts" setup>
-import type { RouteLocationRaw } from '#vue-router'
+import type { CMSStoryblokLink } from '~/modules/cms/providers/storyblok/types'
+import { useStoryblokHelpers } from '~/modules/cms/providers/storyblok/composables/useStoryblokHelpers'
 
-type Props = {
-  to: RouteLocationRaw
-  target?: '_self' | '_blank' | '_parent' | '_top'
-}
-
-const props = withDefaults(defineProps<Props>(), { target: '_self' })
+const props = withDefaults(defineProps<CMSStoryblokLink>(), { target: '_self' })
 
 const { isInEditorMode } = useStoryblokHelpers()
 
@@ -27,4 +23,5 @@ const resolvedLink = computed(() => {
 
   return isPathRoute ? props.to : routeList[props.to as keyof LinkList].path
 })
+defineOptions({ name: 'CMSStoryblokLink' })
 </script>

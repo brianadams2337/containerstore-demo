@@ -114,7 +114,7 @@ const usePurchaseEvents = (): {
       tracking.push({
         event: 'purchase',
         ecommerce,
-        content_name: document.location.pathname,
+        content_name: import.meta.client ? document.location.pathname : '',
         page_type: pageState.value.type,
         page_type_id: pageState.value.typeId,
       })

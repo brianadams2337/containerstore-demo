@@ -1,104 +1,110 @@
 <template>
-  <div>
-    <div v-if="hasTeaserImage">
-      <CmsImage :blok="cmsContent" is-teaser />
-    </div>
-    <PageContent v-if="products?.length === 0">
-      <Headline class="!block" size="xl">{{ $t('plp.no_results') }}</Headline>
-      <Headline size="sm" class="mt-4 !block text-gray-700">
-        {{ $t('plp.no_products') }}
-      </Headline>
-    </PageContent>
-    <PageContent v-else class="sm:flex">
-      <div class="-ml-4 hidden w-1/3 md:block md:w-2/5 lg:w-3/12">
-        <SideNavigation
-          v-if="categories && 'children' in categories && categories.children"
-          :categories="categories.children"
-          :fetching="categoriesFetching"
-          :root-category="categories"
-          show-nested-categories
-        />
+  <CMSCategoryData :selected-category="selectedCategory?.id">
+    <template
+      #default="{
+        content,
+        hasTeaserImage,
+        postListingContent,
+        preListingContent,
+      }"
+    >
+      <div v-if="hasTeaserImage">
+        <CMSImage :blok="content" is-teaser />
       </div>
-      <div class="w-full">
-        <template v-if="preListingContent && isFirstPage">
-          <component
-            :is="preContent.component"
-            v-for="preContent in preListingContent"
-            :key="preContent._uid"
-            :blok="preContent"
+      <PageContent v-if="products?.length === 0">
+        <Headline class="!block" size="xl">{{ $t('plp.no_results') }}</Headline>
+        <Headline size="sm" class="mt-4 !block text-gray-700">
+          {{ $t('plp.no_products') }}
+        </Headline>
+      </PageContent>
+      <PageContent v-else class="sm:flex">
+        <div class="-ml-4 hidden w-1/3 md:block md:w-2/5 lg:w-3/12">
+          <SideNavigation
+            v-if="categories && 'children' in categories && categories.children"
+            :categories="categories.children"
+            :fetching="categoriesFetching"
+            :root-category="categories"
+            show-nested-categories
           />
-        </template>
+        </div>
+        <div class="w-full">
+          <template v-if="preListingContent && isFirstPage">
+            <component
+              :is="preContent.component"
+              v-for="preContent in preListingContent"
+              :key="preContent._uid"
+              :blok="preContent"
+            />
+          </template>
 
-        <div
-          class="flex flex-col items-start justify-between overflow-x-hidden"
-        >
-          <ProductListBreadcrumbs />
           <div
-            class="mt-2 flex w-full flex-col justify-between space-y-2 md:flex-row"
+            class="flex flex-col items-start justify-between overflow-x-hidden"
           >
-            <ProductQuickFilters />
-            <div class="order-1 flex items-center space-x-4 text-sm">
-              <SortingMenu
-                :selected="selectedSort.name"
-                :values="sortingValues"
-              />
-              <AppButton
-                data-test-id="filter-toggle-button"
-                type="tertiary"
-                size="sm"
-                @click="toggleFilter"
-              >
-                <template #icon="{ _class }">
-                  <IconFilter :class="_class" />
-                </template>
-                {{ $t('plp.filter') }}
-              </AppButton>
+            <ProductListBreadcrumbs />
+            <div
+              class="mt-2 flex w-full flex-col justify-between space-y-2 md:flex-row"
+            >
+              <ProductQuickFilters />
+              <div class="order-1 flex items-center space-x-4 text-sm">
+                <SortingMenu
+                  :selected="selectedSort.name"
+                  :values="sortingValues"
+                />
+                <AppButton
+                  data-test-id="filter-toggle-button"
+                  type="tertiary"
+                  size="sm"
+                  @click="toggleFilter"
+                >
+                  <template #icon="{ _class }">
+                    <IconFilter :class="_class" />
+                  </template>
+                  {{ $t('plp.filter') }}
+                </AppButton>
+              </div>
             </div>
           </div>
-        </div>
-        <ProductList
-          :loading="productsFetching"
-          :products="products"
-          :refreshing="productsFetching"
-          class="mt-8 grid w-auto grid-cols-12 gap-1"
-          @click:product="trackProductClick"
-          @intersect:row="trackViewListing"
-        />
-        <Pagination
-          v-if="pagination"
-          class="mt-16"
-          :current-page="pagination.page"
-          :first-page="pagination.first"
-          :last-page="pagination.last"
-        />
-
-        <template v-if="postListingContent && isFirstPage">
-          <component
-            :is="preContent.component"
-            v-for="preContent in postListingContent"
-            :key="preContent._uid"
-            :blok="preContent"
+          <ProductList
+            :loading="productsFetching"
+            :products="products"
+            :refreshing="productsFetching"
+            class="mt-8 grid w-auto grid-cols-12 gap-1"
+            @click:product="trackProductClick"
+            @intersect:row="trackViewListing"
           />
-        </template>
-      </div>
-      <FilterSlideIn v-if="filters && products" />
-    </PageContent>
-  </div>
+          <Pagination
+            v-if="pagination"
+            class="mt-16"
+            :current-page="pagination.page"
+            :first-page="pagination.first"
+            :last-page="pagination.last"
+          />
+
+          <template v-if="postListingContent && isFirstPage">
+            <component
+              :is="preContent.component"
+              v-for="preContent in postListingContent"
+              :key="preContent._uid"
+              :blok="preContent"
+            />
+          </template>
+        </div>
+        <FilterSlideIn v-if="filters && products" />
+      </PageContent>
+    </template>
+  </CMSCategoryData>
 </template>
 
 <script setup lang="ts">
 import { HttpStatusCode, type Product } from '@scayle/storefront-nuxt'
-import type {
-  SbCmsImage,
-  SbListingPage,
-} from '~/modules/cms/providers/storyblok/types/storyblok'
-
 const route = useRoute()
 const { pageState, setPageState } = usePageState()
 const { $i18n, $config } = useNuxtApp()
 const { toggle: toggleFilter } = useSlideIn('FilterSlideIn')
 const { trackViewItemList, trackSelectItem } = useTrackingEvents()
-const { category } = await useCategory(true)
+const { category, fetch: fetchCategory } = await useCategory()
+
+await fetchCategory()
 
 if (!category.value) {
   throw createError({ statusCode: HttpStatusCode.NOT_FOUND, fatal: true })
@@ -125,6 +131,8 @@ const {
   unfilteredCount,
 } = await useProductList(category.value.path)
 
+await fetchProducts(fetchParameters.value)
+
 createFilterContext({
   filterableValues: filters,
   filtersFetching,
@@ -147,25 +155,6 @@ const trackViewListing = ({ items }: { row: number; items: Product[] }) => {
     source: `category|${selectedCategory.value?.id}`,
   })
 }
-
-const { fetchBySlug } = useCMS<SbListingPage>(`ListingPage-${route.path}`)
-
-const cmsData = ref()
-
-const fetchData = async () => {
-  await fetchProducts(fetchParameters.value)
-  if (selectedCategory.value?.id) {
-    const { execute: _fetchBySlug, data } = await fetchBySlug(
-      `categories/${selectedCategory.value?.id}`,
-    )
-
-    await _fetchBySlug()
-
-    cmsData.value = data.value?.data.story
-  }
-}
-
-await fetchLazy(fetchData())
 
 const error = computed(() => {
   return productError.value || filterError.value || categoriesError.value
@@ -191,11 +180,6 @@ const trackProductClick = (product: Product) => {
     },
   })
 }
-
-const { content, hasTeaserImage, postListingContent, preListingContent } =
-  useCMSListingContent(cmsData)
-
-const cmsContent = content as unknown as SbCmsImage
 
 const isFirstPage = computed(() => pagination.value?.page === 1)
 
