@@ -127,6 +127,6 @@
     "./**/*{.md,.json,.css}\"": "prettier --write "
   },
   "volta": {
-    "node": "20.12.1"
+    "node": "20.12.2"
   }
 }
