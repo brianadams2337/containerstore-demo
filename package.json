@@ -113,7 +113,7 @@
     "radash-nuxt": "1.0.2",
     "redis": "4.6.13",
     "schema-dts": "1.1.2",
-    "storyblok-js-client": "6.7.1",
+    "storyblok-js-client": "6.7.2",
     "ufo": "1.5.3",
     "vue": "3.4.21",
     "vue-slider-component": "4.1.0-beta.7",
