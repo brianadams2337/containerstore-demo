@@ -12,7 +12,7 @@ export function useHorizontalItemsSlider() {
   const x = ref(0)
 
   const onScroll = () => {
-    if (process.server) {
+    if (import.meta.server) {
       return
     }
     const scrollLeft = sliderRef.value?.scrollLeft
