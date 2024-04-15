@@ -18,7 +18,14 @@
         size="xs"
         class="mr-4 flex-1"
       />
-      <PromotionCountdown v-if="expirationDate" :until="expirationDate" />
+      <div class="flex flex-col gap-y-3">
+        <PromotionCountdown v-if="expirationDate" :until="expirationDate" />
+        <ShowDealsButton
+          v-if="showDealsButtonVisible"
+          class="w-full"
+          :category="category"
+        />
+      </div>
     </div>
     <PromotionProgress
       v-if="minOrderValue"
@@ -29,7 +36,14 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{ promotions: Promotion[] }>()
+defineProps<{
+  promotions: Promotion[]
+  showDealsButtonVisible?: boolean
+  category?: {
+    ctaLabel: string
+    to: string
+  }
+}>()
 
 const { isFullProgress } = await usePromotionProgress()
 

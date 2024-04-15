@@ -30,7 +30,11 @@
   </SlideInFromTopTransition>
   <Overlay v-if="isPromotionListShown" />
   <FadeInTransition>
-    <PromotionMobileBanner :promotions="promotions" />
+    <PromotionMobileBanner
+      :promotions="promotions"
+      :show-deals-button-visible="showDealsButton"
+      :category="category"
+    />
   </FadeInTransition>
 </template>
 
