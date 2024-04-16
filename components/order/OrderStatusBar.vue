@@ -30,14 +30,7 @@
       </h3>
     </div>
     <div class="mt-5 text-center md:mt-2">
-      <!-- TODO: On hold needs clarification from checkout, then can bind to properties correctly -->
-      <DefaultLink
-        target="_blank"
-        class="w-full justify-center rounded bg-primary px-5 py-3 text-xs font-semibold text-white md:w-auto md:px-8"
-        to=""
-      >
-        {{ $t('my_account.orders.shipment_detail') }}
-      </DefaultLink>
+      <!-- NOTE: This space can be used to insert a custom shipment detail link using the DefaultLink component -->
     </div>
   </div>
 </template>
