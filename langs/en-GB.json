@@ -254,6 +254,7 @@
     "product_detail_heading": "Product Detail",
     "shipping_return_heading": "Shipping and return",
     "details_label": "Details",
+    "no_product_information_provided": "No information provided.",
     "shipping": {
       "general_info": "The postage for shipping and return of the articles as well as the costs for packaging will be paid by ABOUT YOU. For orders with several products may result in partial occur.",
       "dhl_headline": "DHL Standard Shipping - 0,00 EUR",

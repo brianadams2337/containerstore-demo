@@ -37,7 +37,9 @@
     </div>
   </div>
   <div v-else>
-    <p class="whitespace-pre-line">No information provided.</p>
+    <p class="whitespace-pre-line">
+      {{ $t('pdp.no_product_information_provided') }}
+    </p>
   </div>
 </template>
 

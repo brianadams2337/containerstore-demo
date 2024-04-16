@@ -255,6 +255,7 @@
     "skirt_length": "Länge",
     "trousers_cut": "Cut",
     "details_label": "Einzelheiten",
+    "no_product_information_provided": "Es stehen aktuell keine Information zur Verfügung.",
     "shipping": {
       "general_info": "Das Porto für den Versand und die Rücksendung der Artikel sowie die Kosten für die Verpackung trägt ABOUT YOU. Bei Bestellungen mit mehreren Produkten kann es zu Teillieferungen kommen.",
       "dhl_headline": "DHL Standard Versand - 0,00 EUR",
