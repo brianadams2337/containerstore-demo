@@ -2,149 +2,155 @@
 
 ## 1.0.0-rc.9
 
-### Major Changes
+### 🔥 Highlights
 
-- 3fdc8af: Implemented and replaced the whole search flow based on new `Search Engine V2`.
-  This includes:
+#### 📖 Introducing Contentful as new CMS Provider for StorefrontCMS
 
-  - Overall UI and UX adaptations (header search input, suggestions dropdown, applicable filter indicator, search within mobile sidebar, etc.)
-  - Category suggestions that can have filters applied
-  - Product suggestions that are resolved only by entering the exact ID
-  - Refined flow when resolving the search term
-  - Search page usage only as a fallback
+We've added a Contentful integration as alternative to using Storyblok as CMS provider. This allows you to fetch data from Contentful and use it in your SFB.
+To use this feature, you need to provide your Contentful space ID and access token in the `.env` file. You can find these values in your Contentful account settings.
 
-### Minor Changes
+```sh
+NUXT_PUBLIC_CMS_ACCESS_TOKEN=your-access-token
+NUXT_PUBLIC_CMS_SPACE=your-space-id
+```
 
-- 1d49f44: tweaked account index page to be visually consistent with other account page layouts
-- 20536e9: Introduced a new feature for logging both build and runtime configurations
+Once you have added these values, you can use Contentful by selecting the `contentful` option in the `cms.provider` field of the `nuxt.config.ts` file.
 
-  Configuration logging can now be toggled on or off using the `ENABLE_CONFIG_LOG_BUILD` and `ENABLE_CONFIG_LOG_RUNTIME` environment variables.
+```ts
+export default defineNuxtConfig({
+  // ...
+  cms: {
+    provider: 'contentful',
+  },
+  // ...
+})
+```
 
-- 832ae78: Add `@scayle/eslint-plugin-vue-composable`
+Now you have access to `useCMS` composables and fetch data from Contentful in your SFB. `useCMS` accepts a string as an argument that will be used for caching purposes and returns a `fetchBySlug` function that you can use to fetch data by slug. `fetchBySlug` is a wrapper around Nuxt's `useAsyncData` and accepts a generic type that you can use to define the shape of the data you are fetching. Here is and example of how you can use this feature:
 
-  This plugin includes three rules `@scayle/vue-composable/no-composable-after-await`, `@scayle/vue-composable/no-lifecycle-after-await`, `@scayle/vue-composable/no-watch-after-await` which catch common errors in composables. You can read more about the plugin [here](https://www.npmjs.com/package/@scayle/eslint-plugin-vue-composable).
+```ts
+import type { TypeListingPageSkeleton } from '~/modules/cms/providers/contentful/types/contentful-defs'
 
-- 467e325: Added Subscription Addon as a local module
-- 18bbb0c: Fixed an issue where an empty IDP component was shown when no IDPs are enabled.
+const props = defineProps<{
+  selectedCategory: number | undefined
+}>()
 
+const route = useRoute()
+
+if (!props.selectedCategory) {
+  console.log('No category selected')
+}
+const { fetchBySlug } = useCMS(`ListingPage-${route.path}`)
+
+const { data } = await fetchBySlug<TypeListingPageSkeleton>(
+  `categories/${props.selectedCategory}`,
+)
+```
+
+#### 🔎 Introducing Search Engine v2
+
+We've implemented and replaced the whole search flow based on the new `Search Engine v2`.
+This includes:
+
+- Overall UI and UX adaptations (header search input, suggestions dropdown, applicable filter indicator, search within mobile sidebar, etc.)
+- Category suggestions that can have filters applied
+- Product suggestions that are resolved only by entering the exact ID
+- Refined flow when resolving the search term
+- Search page usage only as a fallback
+
+#### Added Subscription Addon
+
+We've implemented the Subscription Addons as a local module.
+The subscription feature enables customers to subscribe to a specific variant of a product, which is then delivered at regular intervals on a chosen day.
+This convenience allows customers to make regular purchases effortlessly.
+
+### 🚀 Major Changes
+
+- Fixed an issue where an empty IDP component was shown when no IDPs are enabled.
   The `useIDP` composable now returns an empty object when the IDP integration is not enabled.
-
   Ensure that the user is redirected to CO when entering the sign-in page with a `redirectUrl` parameter.
   This is now possible with the `@scayle/storefront-nuxt@{version}`.
-
   We refactored the IDP callback to have its own page to ensure we only call the IDP login RPC once.
-
-- 7e03544: Disable caching for Vercel Deployments
-
+- Improved Storyblok integration through SCAYLE Panel Add-on and plugin
+- Disabled caching for Vercel Deployments
   Vercel's CDN Caching works slightly differently from the default Nuxt Page caching, which is currently incompatible with our Session handling.
   To disable all caching for Vercel Deployments, remove any `routeRules` you have configured in your `nuxt.config.ts`.
-
-- a013f9d: Improve Storyblok integration through Panel Add-on and plugin
-- 50bed6e: Fix promotion automatic discount price on PDP
-
-### Patch Changes
-
-- f7cae17: Modified paddings of PromotionHurryToSaveBanners to have visual consistency with PromotionItemContent
-- 693af88: Fixed a german translation issue for "save_your_free_gift"
-- 8631db7: Removed full capitalization of PromotionHurryToSaveBanner label
-- 7932fdf: Handle possible `undefined` results from `useRpc` calls
-- 318d31b: Introducing Contentful integration
-
-  We've added a Contentful integration as alternative to using Storyblok as CMS provider. This allows you to fetch data from Contentful and use it in your SFB.
-  To use this feature, you need to provide your Contentful space ID and access token in the `.env` file. You can find these values in your Contentful account settings.
-
-  ```sh
-  NUXT_PUBLIC_CMS_ACCESS_TOKEN=your-access-token
-  NUXT_PUBLIC_CMS_SPACE=your-space-id
-  ```
-
-  Once you have added these values, you can use Contentful by selecting the `contentful` option in the `cms.provider` field of the `nuxt.config.ts` file.
-
-  ```ts
-  export default defineNuxtConfig({
-    // ...
-    cms: {
-      provider: 'contentful',
-    },
-    // ...
-  })
-  ```
-
-  Now you have access to `useCMS` composables and fetch data from Contentful in your SFB. `useCMS` accepts a string as an argument that will be used for caching purposes and returns a `fetchBySlug` function that you can use to fetch data by slug. `fetchBySlug` is a wrapper around Nuxt's `useAsyncData` and accepts a generic type that you can use to define the shape of the data you are fetching. Here is and example of how you can use this feature:
-
-  ```ts
-  import type { TypeListingPageSkeleton } from '~/modules/cms/providers/contentful/types/contentful-defs'
-
-  const props = defineProps<{
-    selectedCategory: number | undefined
-  }>()
-
-  const route = useRoute()
-
-  if (!props.selectedCategory) {
-    console.log('No category selected')
-  }
-  const { fetchBySlug } = useCMS(`ListingPage-${route.path}`)
-
-  const { data } = await fetchBySlug<TypeListingPageSkeleton>(
-    `categories/${props.selectedCategory}`,
-  )
-  ```
-
-- b5cdc88: Add store address, phone and open status to the map marker card
-- 3d2711a: - Added `@contentful/rich-text-html-renderer@16.3.5`
-  - Added `@storyblok/vue@8.0.7`
-  - Added `axios@1.6.8`
-  - Added `cf-content-types-generator@2.15.0`
-  - Added `consola@3.2.3`
-  - Added `contentful-export@7.19.144`
-  - Added `contentful@10.8.7`
-  - Added `globby@14.0.1`
-  - Removed `prettier-plugin-tailwindcss@0.5.13`
-  - Updated to `@scayle/omnichannel-nuxt@2.1.4`
-  - Updated to `@scayle/storefront-nuxt@7.66.0`
-  - Updated to `@tailwindcss/typography@0.5.12`
-  - Updated to `@types/google.maps@3.55.7`
-  - Updated to `nanoid@5.0.7`
-  - Updated to `nuxi@3.11.1`
-  - Updated to `storyblok-js-client@6.7.2`
-  - Updated to `ufo@1.5.3`
-- 3d2711a: - Added `@scayle/eslint-plugin-vue-composable@0.1.1`
-  - Updated to `@crowdin/cli@3.19.2"`
-  - Updated to `@nuxt/test-utils@3.12.0`
-  - Updated to `@nuxtjs/i18n@8.3.0`
-  - Updated to `@scayle/eslint-config-storefront@3.2.7`
-  - Updated to `@types/node@20.12.7`
-  - Updated to `@typescript-eslint/eslint-plugin@7.7.0`
-  - Updated to `@typescript-eslint/parser@7.7.0`
-  - Updated to `@upstash/redis@1.29.0`
-  - Updated to `@vitest/coverage-v8@1.5.0`
-  - Updated to `autoprefixer@10.4.19`
-  - Updated to `eslint-plugin-tailwindcss@3.15.1`
-  - Updated to `nuxt@3.11.1`
-  - Updated to `ofetch@1.3.4`
-  - Updated to `postcss-custom-properties@13.3.7`
-  - Updated to `postcss-import@16.1.0`
-  - Updated to `postcss@8.4.38`
-  - Updated to `prettier-plugin-tailwindcss@0.5.13`
-  - Updated to `tailwindcss@3.4.3`
-  - Updated to `vitest@1.5.0`
-  - Updated to `vue-tsc@2.0.13`
-- d3227d5: Fix StoreLocator map covering navigation flyout
-- a082481: Fixed a z-index issue with the ToastContainer so that notifications are not partially displayed underneath the Promotion Banner
-- e5724f9: Added ability to scroll to anchor links on the same page.
-
+- Added ability to scroll to anchor links on the same page.
   The `Paragraph` component now supports an `anchor` prop that will be used to create an anchor target for that paragraph.
   If you have a Table of Contents and want to link to a specific paragraph, you can use the create links function on any text in your Content to create a link to it. When the user clicks on the link, he will scroll to the paragraph on the page.
   We also introduced a new component, `NestedParagraph,` that allows adding nested paragraphs, for example, for ordered lists.
 
-- 6517d83: Adds missing Promotion Banner Link to Promotion Category on mobile view
-- e53415e: Removed dummy non-functional shipment detail link from OrderStatusBar
-- e56ad6e: Improved user experience of time box element within Promotion Banner.
+### 💅 Minor Changes
+
+- Tweaked account index page to be visually consistent with other account page layouts
+- Introduced a new feature for logging both build and runtime configurations
+  Configuration logging can now be toggled on or off using the `ENABLE_CONFIG_LOG_BUILD` and `ENABLE_CONFIG_LOG_RUNTIME` environment variables.
+- Added `@scayle/eslint-plugin-vue-composable`
+  This plugin includes three rules `@scayle/vue-composable/no-composable-after-await`, `@scayle/vue-composable/no-lifecycle-after-await`, `@scayle/vue-composable/no-watch-after-await` which catch common errors in composables. You can read more about the plugin [here](https://www.npmjs.com/package/@scayle/eslint-plugin-vue-composable).
+- Improved user experience of time box element within Promotion Banner.
   Adds a clear understanding of the time left for the promotion to end by providing indicators of the time unit in the time box element for countdowns.
   The format of the time box element is changed to be more user-friendly with `(D : H : M)` format, or `(H : M : S)` format if the promotion lasts less than `24H`.
-- 26e41f3: An error has been fixed where an attempt was made to access the "document" object during server-side rendering, resulting in an inaccessible Order Success Page (_OSP_).
-- e79223f: Added translatable string 'pdp.no_product_information_provided' for ProductDescription and ProductCompositionAndCare components instead of static string
+
+### Patch Changes
+
+- Modified paddings of PromotionHurryToSaveBanners to have visual consistency with PromotionItemContent
+- Fixed a german translation issue for "save_your_free_gift"
+- Fixed promotion automatic discount price on PDP
+- Removed full capitalization of PromotionHurryToSaveBanner label
+- Handle possible `undefined` results from `useRpc` calls
+- Add store address, phone and open status to the map marker card
+- Fixed StoreLocator map covering navigation flyout
+- Fixed a z-index issue with the ToastContainer so that notifications are not partially displayed underneath the Promotion Banner
+- Adds missing Promotion Banner Link to Promotion Category on mobile view
+- Removed dummy non-functional shipment detail link from OrderStatusBar
+- An error has been fixed where an attempt was made to access the "document" object during server-side rendering, resulting in an inaccessible Order Success Page (_OSP_).
+- Added translatable string 'pdp.no_product_information_provided' for ProductDescription and ProductCompositionAndCare components instead of static string
+
+### 🏡 Dependency Updates
+
+#### 🏘️ devDependencies
+
+- Added `@scayle/eslint-plugin-vue-composable@0.1.1`
+- Updated to `@crowdin/cli@3.19.2"`
+- Updated to `@nuxt/test-utils@3.12.0`
+- Updated to `@nuxtjs/i18n@8.3.0`
+- Updated to `@scayle/eslint-config-storefront@3.2.7`
+- Updated to `@types/node@20.12.7`
+- Updated to `@typescript-eslint/eslint-plugin@7.7.0`
+- Updated to `@typescript-eslint/parser@7.7.0`
+- Updated to `@upstash/redis@1.29.0`
+- Updated to `@vitest/coverage-v8@1.5.0`
+- Updated to `autoprefixer@10.4.19`
+- Updated to `eslint-plugin-tailwindcss@3.15.1`
+- Updated to `nuxt@3.11.1`
+- Updated to `ofetch@1.3.4`
+- Updated to `postcss-custom-properties@13.3.7`
+- Updated to `postcss-import@16.1.0`
+- Updated to `postcss@8.4.38`
+- Updated to `prettier-plugin-tailwindcss@0.5.13`
+- Updated to `tailwindcss@3.4.3`
+- Updated to `vitest@1.5.0`
+- Updated to `vue-tsc@2.0.13`
+
+#### 🏠 dependencies
+
+- Added `@contentful/rich-text-html-renderer@16.3.5`
+- Added `@storyblok/vue@8.0.7`
+- Added `axios@1.6.8`
+- Added `cf-content-types-generator@2.15.0`
+- Added `consola@3.2.3`
+- Added `contentful-export@7.19.144`
+- Added `contentful@10.8.7`
+- Added `globby@14.0.1`
+- Removed `prettier-plugin-tailwindcss@0.5.13`
+- Updated to `@scayle/omnichannel-nuxt@2.1.4`
+- Updated to `@scayle/storefront-nuxt@7.66.0`
+- Updated to `@tailwindcss/typography@0.5.12`
+- Updated to `@types/google.maps@3.55.7`
+- Updated to `nanoid@5.0.7`
+- Updated to `nuxi@3.11.1`
+- Updated to `storyblok-js-client@6.7.2`
+- Updated to `ufo@1.5.3`
 
 ## 1.0.0-rc.8
 
@@ -179,7 +185,7 @@ The included tracking implementation has been refactored and received various im
 
 ### 💅 Minor Changes
 
-- - Fixed caching behaviour for account area via `routeRules` in `nuxt.config.ts`
+- Fixed caching behaviour for account area via `routeRules` in `nuxt.config.ts`
 - Fixed wishlist toggle if wishlist data is being toggled and fetched in `components/product/WishlistToggle.vue`
 - Refactored error message handling during local development mode to show actual error with stack trace
 - Fixed product detail page and product listing page (category page) behaviour if basket data is undefined

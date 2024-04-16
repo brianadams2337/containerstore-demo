@@ -4,32 +4,5 @@
   "initialVersions": {
     "@scayle/storefront-boilerplate-nuxt": "0.0.1"
   },
-  "changesets": [
-    "beige-pears-stare",
-    "brown-boxes-warn",
-    "chatty-olives-attend",
-    "eight-cheetahs-cough",
-    "fresh-fireants-crash",
-    "gorgeous-bears-drum",
-    "happy-ties-watch",
-    "hip-roses-hope",
-    "hip-sloths-build",
-    "honest-plums-sell",
-    "hungry-moose-thank",
-    "large-birds-eat",
-    "moody-rockets-walk",
-    "odd-insects-say",
-    "odd-insects-tell",
-    "orange-papayas-grab",
-    "perfect-bees-return",
-    "plenty-houses-serve",
-    "red-kids-sing",
-    "small-planes-jog",
-    "strange-dogs-carry",
-    "three-apricots-cover",
-    "tricky-colts-nail",
-    "warm-lies-sort",
-    "wet-zoos-stare",
-    "wicked-dancers-give"
-  ]
+  "changesets": []
 }
