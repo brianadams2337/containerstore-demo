@@ -9,7 +9,7 @@
       } in automaticDiscountPromotions"
       v-show="shouldShowAutomaticDiscountBanner(productId)"
       :key="`automatic-discount-banner-${id}`"
-      class="mb-1 flex h-fit flex-wrap items-center justify-between gap-y-[.125rem] rounded-md bg-blue px-2 py-1 text-xs font-semibold text-white"
+      class="mb-1 flex h-fit flex-wrap items-center justify-between gap-y-[.125rem] rounded-md bg-blue px-4 py-3 text-xs font-semibold text-white"
       :style="getBackgroundColorStyle(customData.colorHex)"
     >
       <Headline
@@ -32,7 +32,7 @@
       v-for="{ id, customData, schedule } in buyXGetYPromotions"
       v-show="shouldShowBuyXGetYBanner(customData?.product?.promotionId)"
       :key="`buy-x-get-y-banner-${id}`"
-      class="mb-2 flex h-fit items-center justify-between rounded-md bg-blue px-2 py-1 text-xs font-semibold text-white last-of-type:mb-0"
+      class="mb-2 flex h-fit items-center justify-between rounded-md bg-blue px-4 py-3 text-xs font-semibold text-white last-of-type:mb-0"
       :style="getBackgroundColorStyle(customData.colorHex)"
     >
       <Headline
