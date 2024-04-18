@@ -1,7 +1,7 @@
 <template>
   <div
     ref="container"
-    class="relative m-auto flex w-full items-center justify-center overflow-hidden"
+    class="relative m-auto flex w-full items-center justify-center"
   >
     <div
       ref="content"
