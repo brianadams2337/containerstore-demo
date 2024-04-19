@@ -83,7 +83,7 @@
     "@googlemaps/js-api-loader": "1.16.6",
     "@scayle/omnichannel-nuxt": "2.1.4",
     "@scayle/storefront-nuxt": "7.66.1",
-    "@storyblok/nuxt": "6.0.9",
+    "@storyblok/nuxt": "6.0.10",
     "@storyblok/vue": "8.0.8",
     "@tailwindcss/forms": "0.5.7",
     "@tailwindcss/typography": "0.5.12",
