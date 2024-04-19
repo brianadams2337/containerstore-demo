@@ -1,9 +1,18 @@
 <template>
   <div>
     <div :style="backgroundColorStyle" class="rounded-t-md px-3.5 py-3">
-      <Headline tag="h2" size="sm" class="text-white" is-bold>
-        {{ $t('pdp.promotion.free_gift_headline') }}
-      </Headline>
+      <div class="flex items-center gap-1">
+        <span class="flex h-[1.125rem] w-auto items-center justify-center">
+          <IconLock class="size-3 text-white" />
+        </span>
+        <Headline tag="h2" size="sm" class="text-white" is-bold>
+          {{ promotionGiftsHeadline }}
+        </Headline>
+      </div>
+
+      <p class="mt-1 text-2xs text-white">
+        {{ promotionGiftsDescription }}
+      </p>
     </div>
     <div class="rounded-b-md border border-gray-350 bg-white pt-4">
       <div class="max-h-72 overflow-y-scroll px-3.5" @scroll="onScroll">
@@ -26,10 +35,11 @@
 
 <script setup lang="ts">
 import type { Product } from '@scayle/storefront-nuxt'
-
+const i18n = useI18n()
 const props = defineProps<{ product: Product }>()
 
-const { isProductAddedToBasket } = await useProductPromotions(props.product)
+const { isProductAddedToBasket, areGiftConditionsMet } =
+  await useProductPromotions(props.product)
 
 const { backgroundColorStyle, products, hasMultipleFreeGifts } =
   await usePromotionGifts(props.product)
@@ -39,6 +49,18 @@ const hasScrolledToBottom = ref(false)
 const onScroll = (element: any) => {
   hasScrolledToBottom.value = isScrolledToBottom(element)
 }
+
+const promotionGiftsHeadline = computed(() => {
+  return areGiftConditionsMet.value
+    ? i18n.t('pdp.promotion.free_gift_conditions_met.headline')
+    : i18n.t('pdp.promotion.free_gift_conditions_not_met.headline')
+})
+
+const promotionGiftsDescription = computed(() => {
+  return areGiftConditionsMet.value
+    ? i18n.t('pdp.promotion.free_gift_conditions_met.description')
+    : i18n.t('pdp.promotion.free_gift_conditions_not_met.description')
+})
 
 const shadowClass = computed(() => {
   return (

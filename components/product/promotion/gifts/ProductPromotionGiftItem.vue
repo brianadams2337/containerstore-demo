@@ -12,6 +12,9 @@
         :image-loading="eagerImageLoading ? 'eager' : 'lazy'"
         sizes="xl:100vw lg:100vw lg:100vw lg:100vw xs:100vw"
         fit="cover"
+        :class="{
+          grayscale: !areGiftConditionsMet,
+        }"
       />
       <ProductPromotionFreeGiftBadge
         v-bind="{ backgroundColorStyle }"
@@ -19,7 +22,15 @@
       />
     </DefaultLink>
     <div class="flex w-full flex-col justify-between">
-      <Headline size="base" tag="h3" class="mt-2">{{ name }}</Headline>
+      <Headline
+        size="base"
+        tag="h3"
+        class="mt-2"
+        :class="{
+          'text-secondary': !areGiftConditionsMet,
+        }"
+        >{{ name }}</Headline
+      >
       <div class="flex items-end justify-between">
         <AppButton
           size="sm"
@@ -32,13 +43,26 @@
           <span
             v-if="variantWithLowestPrice"
             class="text-xs text-gray-600 line-through"
+            :class="{
+              'text-secondary': !areGiftConditionsMet,
+            }"
           >
             {{ formatCurrency(variantWithLowestPrice.price.withTax) }}
           </span>
-          <span class="text-base font-bold text-black">
+          <span
+            class="text-base font-bold text-black"
+            :class="{
+              'text-secondary': !areGiftConditionsMet,
+            }"
+          >
             {{ formatCurrency(0) }}
           </span>
-          <span class="text-xs text-gray-700">
+          <span
+            class="text-xs text-gray-700"
+            :class="{
+              'text-secondary': !areGiftConditionsMet,
+            }"
+          >
             {{ $t('price.including_vat') }}
           </span>
         </div>

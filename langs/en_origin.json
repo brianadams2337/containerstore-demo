@@ -256,7 +256,14 @@
       "description": "{productName} buy online. Free shipping and 100 days free returns. Discover the wide selection of other branded products on the Demo Shop"
     },
     "promotion": {
-      "free_gift_headline": "Your free gift",
+      "free_gift_conditions_met": {
+        "headline": "Redeem your free gift",
+        "description": "You fulfilled the condition. Feel free to choose a free gift."
+      },
+      "free_gift_conditions_not_met": {
+        "free_gift_headline": "Unlock your free gift",
+        "free_gift_description": "Fulfill the promotion conditions to choose a free gift."
+      },
       "free_label": "Free",
       "add_for_free_label": "Add for free",
       "select_size_label": "Select your size",
