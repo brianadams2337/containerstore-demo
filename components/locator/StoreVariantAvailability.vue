@@ -58,7 +58,10 @@ interface StoreVariantInfo {
   storeName: string
 }
 
-const { storeVariantData, refreshStoreVariant } = useStoreLocator()
+const { storeVariantData, refreshStoreVariant } = useStoreLocator(
+  'useStoreLocator',
+  ['openingTimes'],
+)
 
 const { toggle: toggleStoreLocator } = useSlideIn('StoreLocatorSlideIn')
 

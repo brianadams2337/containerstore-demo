@@ -66,7 +66,9 @@
 <script setup lang="ts">
 const config = useRuntimeConfig()
 const googleMapsKey = config.public.googleMapsApiKey
-const { storesData, refreshStores } = useStoreLocator()
+const { storesData, refreshStores } = useStoreLocator('useStoreLocator', [
+  'openingTimes',
+])
 
 const stores = computed(() => storesData.value ?? [])
 

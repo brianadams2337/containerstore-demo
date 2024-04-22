@@ -29,7 +29,7 @@
         </div>
         <div>
           <span class="font-bold capitalize">{{
-            store.openingTimes.currentlyOpen
+            store.openingTimes?.currentlyOpen
               ? $t('store_locator.labels.store_open')
               : $t('store_locator.labels.store_closed')
           }}</span>

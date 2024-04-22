@@ -83,7 +83,10 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const { variantStoresData, refreshVariantStores } = useStoreLocator()
+const { variantStoresData, refreshVariantStores } = useStoreLocator(
+  'useStoreLocator',
+  ['openingTimes'],
+)
 const { toggle: toggleStoreLocator } = useSlideIn('StoreLocatorSlideIn')
 
 const address = ref('')
