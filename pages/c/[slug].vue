@@ -26,8 +26,7 @@
                 { value: 'Home', to: routeList.home.name },
                 { value: data.name, to: data.slug },
               ]"
-            >
-            </Breadcrumbs>
+            />
           </div>
           <CMSStory :story="data" />
         </div>

@@ -124,13 +124,15 @@ const materialInfo = computed(() => {
 
 const description = computed(() => {
   if (
-    props.product?.advancedAttributes?.productDescription?.values[0].fieldSet
+    !props.product?.advancedAttributes?.productDescription?.values[0].fieldSet
   ) {
-    return flattenFieldSet(
-      props.product?.advancedAttributes?.productDescription?.values[0].fieldSet,
-      // @ts-ignore
-    )[0].value
+    return
   }
+
+  return flattenFieldSet(
+    props.product?.advancedAttributes?.productDescription?.values[0].fieldSet,
+    // @ts-expect-error Property 'value' does not exist on type '{ [key: string]: string | number | null | undefined; }[]'. Did you mean 'values'? ts-plugin(2551)
+  )[0].value
 })
 
 const careInfo = computed(() =>

@@ -40,5 +40,5 @@ if (!componentFound) {
     :is="componentName"
     ref="blokRef"
     v-bind="{ ...$props, ...$attrs }"
-  ></component>
+  />
 </template>

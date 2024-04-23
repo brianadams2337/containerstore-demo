@@ -13,8 +13,7 @@
       :loading="fetching"
       class="col-span-full"
       @intersect:product="emit('intersect:product', product)"
-    >
-    </ProductCard>
+    />
   </div>
 </template>
 

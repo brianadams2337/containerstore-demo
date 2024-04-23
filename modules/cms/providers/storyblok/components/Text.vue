@@ -17,7 +17,6 @@ const props = withDefaults(defineProps<CMSTextProps>(), {
 })
 
 const content = computed(() =>
-  // @ts-ignore
   // TODO: Fix types / override `renderRichText` definition
   props.blok.body ? renderRichText(props.blok.body) : null,
 )

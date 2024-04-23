@@ -38,7 +38,7 @@ const accessToken = computed(() => {
 
 const onCheckoutUpdate = async (
   event: MessageEvent<CheckoutEvent>,
-  fetching: Boolean,
+  fetching: boolean,
   fetchCallback: () => Promise<void>,
 ) => {
   if (fetching) {

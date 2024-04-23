@@ -1,6 +1,5 @@
 import type { ValuesType } from 'utility-types'
 
-/* eslint-disable @typescript-eslint/no-redeclare */
 /* intentionally naming the variables the same as the type */
 
 export const Size = {
@@ -91,5 +90,3 @@ export const ProgressType = {
 } as const
 
 export type ProgressType = ValuesType<typeof ProgressType>
-
-/* eslint-enable @typescript-eslint/no-redeclare */

@@ -13,7 +13,6 @@ export const phoneNumberFormats: FormatType = {
   nl_NL: { mask: '+## ## ########', placeholder: '+31 ** ********' },
 }
 export const dateOfBirthFormats: FormatType = {
-  /* eslint-disable sonarjs/no-duplicate-string */
   de_DE: { mask: '##.##.####', placeholder: 'dd.mm.yyyy' },
   de_AT: { mask: '##.##.####', placeholder: 'dd.mm.yyyy' },
   de_CH: { mask: '##.##.####', placeholder: 'dd.mm.yyyy' },
@@ -21,5 +20,4 @@ export const dateOfBirthFormats: FormatType = {
   fr_BE: { mask: '##/##/####', placeholder: 'dd/mm/yyyy' },
   nl_BE: { mask: '##/##/####', placeholder: 'dd/mm/yyyy' },
   nl_NL: { mask: '##/##/####', placeholder: 'dd.mm.yyyy' },
-  /* eslint-enable sonarjs/no-duplicate-string */
 }

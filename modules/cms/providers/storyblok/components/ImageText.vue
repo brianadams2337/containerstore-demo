@@ -62,9 +62,11 @@ const props = withDefaults(defineProps<CMSImageTextProps>(), {
 const { sanitize } = useStoryblokImageSanitizer()
 
 const imageSource = computed(() => {
-  if (props.blok?.image.length) {
-    return sanitize(props.blok?.image?.[0])
+  if (!props.blok?.image.length) {
+    return
   }
+
+  return sanitize(props.blok?.image?.[0])
 })
 
 const { align, justify } = useCMSAlignment(props.blok)

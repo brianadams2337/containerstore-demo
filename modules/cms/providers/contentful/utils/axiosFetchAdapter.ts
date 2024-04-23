@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import axios from 'axios'
 import settle from 'axios/unsafe/core/settle.js'
@@ -5,11 +6,7 @@ import buildURL from 'axios/unsafe/helpers/buildURL.js'
 import buildFullPath from 'axios/unsafe/core/buildFullPath.js'
 import * as utils from 'axios/unsafe/utils.js'
 /**
- *
- * Note:
- *
- *   This function is for backward compatible.
- *
+ * NOTE: This function is for backward compatibility.
  *
  * Update an Error with the specified config, error code, and response.
  *
@@ -144,7 +141,7 @@ async function getResponse(request, config) {
 /**
  * This function will create a Request object based on configuration's axios
  */
-// eslint-disable-next-line sonarjs/cognitive-complexity
+
 function createRequest(config) {
   const headers = new Headers(config.headers)
 
@@ -154,7 +151,7 @@ function createRequest(config) {
     const password = config.auth.password
       ? decodeURI(encodeURIComponent(config.auth.password))
       : ''
-    // eslint-disable-next-line sonarjs/no-nested-template-literals
+
     headers.set('Authorization', `Basic ${btoa(`${username}:${password}`)}`)
   }
 

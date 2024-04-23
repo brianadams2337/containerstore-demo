@@ -14,7 +14,6 @@ export const Status: StatusKeys = {
   CANCELLATION_COMPLETED: 'cancellation_completed',
 } as const
 
-/* eslint-disable-next-line @typescript-eslint/no-redeclare */
 export type Status = ValuesType<typeof Status>
 
 export const DeliveryProgress: Readonly<

@@ -59,7 +59,7 @@ const clickObserver = image.value?.tracking?.fields.promotion_id
       tracking &&
       tracking.trackPromotion(
         'select_promotion',
-        image.value?.tracking?.fields!,
+        image.value?.tracking?.fields ?? {},
       )
   : () => {}
 

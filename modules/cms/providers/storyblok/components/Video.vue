@@ -33,15 +33,17 @@ const containerClasses = computed(() => ({
 }))
 
 const videoPoster = computed(() => {
-  if (props.blok.preview_desktop_image || props.blok.preview_mobile_image) {
-    const key = isSmaller('md')
-      ? 'preview_mobile_image'
-      : 'preview_desktop_image'
-
-    return props.blok[key]?.filename
-      ? img(props.blok[key]!.filename, {}, { provider: 'storyblok' })
-      : undefined
+  if (!(props.blok.preview_desktop_image || props.blok.preview_mobile_image)) {
+    return
   }
+
+  const key = isSmaller('md') ? 'preview_mobile_image' : 'preview_desktop_image'
+
+  if (!props.blok[key]?.filename) {
+    return
+  }
+
+  return img(props.blok[key]!.filename, {}, { provider: 'storyblok' })
 })
 
 const element = ref(null)

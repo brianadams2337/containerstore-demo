@@ -32,7 +32,7 @@
         v-for="nestedItem in blok.fields.nestedItems"
         :key="nestedItem?.sys.id"
         :blok="nestedItem"
-      ></component>
+      />
     </template>
     <div class="flex flex-row space-x-8">
       <div

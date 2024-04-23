@@ -9,7 +9,7 @@
       :class="{ 'transition-all duration-200 ease-linear': !isSwiping }"
       :style="{ transform: `translateX(${contentOffset})`, opacity }"
     >
-      <slot></slot>
+      <slot />
     </div>
     <div
       v-show="isSwiping"

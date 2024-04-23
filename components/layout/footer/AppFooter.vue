@@ -80,10 +80,11 @@ const storyblokOptions = useDefaultStoryblokOptions()
 
 // TODO fix typings
 onMounted(() => {
-  console.error('This component deprecated. Use `<CMSAppFooterData>` instead.')
+  console.error(
+    'This component is deprecated. Use `<CMSAppFooterData>` instead.',
+  )
 })
 
-// @ts-ignore
 const cmsData: Ref<StoryblokStory<SbFooter>> = await useAsyncStoryblok(
   'global/footer',
   storyblokOptions,

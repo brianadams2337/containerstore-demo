@@ -8,7 +8,7 @@
             'bg-green-neon': selectedStoreData.available,
             'bg-red': !selectedStoreData.available,
           }"
-        ></div>
+        />
         <div class="flex flex-col">
           <div class="font-bold">
             {{
@@ -65,11 +65,13 @@ const { toggle: toggleStoreLocator } = useSlideIn('StoreLocatorSlideIn')
 const props = defineProps<Props>()
 
 const selectedStoreData = computed<StoreVariantInfo | undefined>(() => {
-  if (storeVariantData.value) {
-    return {
-      available: !!storeVariantData.value.items.length,
-      storeName: storeVariantData.value.name,
-    }
+  if (!storeVariantData.value) {
+    return
+  }
+
+  return {
+    available: !!storeVariantData.value.items.length,
+    storeName: storeVariantData.value.name,
   }
 })
 

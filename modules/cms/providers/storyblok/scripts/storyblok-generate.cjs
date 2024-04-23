@@ -43,7 +43,6 @@ storyblokToTypescript({
   },
   // Support the SEO plugin
   customTypeParser(key, obj) {
-    // eslint-disable-next-line sonarjs/no-small-switch
     switch (obj.field_type) {
       case 'seo-metatags':
         return {

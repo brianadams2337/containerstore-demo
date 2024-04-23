@@ -211,7 +211,7 @@ export function useFilter(
   })
 
   const resetFilter = (key: keyof FilterState) => {
-    // @ts-ignore
+    // @ts-expect-error Type 'any[]' is not assignable to type 'never'.ts(2322)
     state.value[key] = [...initialState.value[key]]
   }
 

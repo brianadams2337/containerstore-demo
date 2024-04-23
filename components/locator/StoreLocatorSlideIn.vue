@@ -55,7 +55,7 @@
           :stores="stores"
           class="mt-5"
         />
-        <div></div>
+        <div />
       </div>
     </template>
     <template #slide-in-actions>

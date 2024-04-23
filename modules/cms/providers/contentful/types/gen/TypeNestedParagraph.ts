@@ -16,7 +16,6 @@ export interface TypeNestedParagraphFields {
   body?: EntryFieldTypes.RichText
   nestedItems?: EntryFieldTypes.Array<
     EntryFieldTypes.EntryLink<
-      // eslint-disable-next-line no-use-before-define
       TypeNestedParagraphSkeleton | TypeParagraphSkeleton
     >
   >

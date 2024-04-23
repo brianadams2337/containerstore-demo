@@ -187,7 +187,6 @@ export const mapCustomerInfoToTrackingPayload = ({
 export const mapTrackingDataForEvent = (
   event: TrackingEvent,
   payload: TrackingPayload,
-  // eslint-disable-next-line sonarjs/cognitive-complexity
 ) => {
   let data = {}
   if (isPromotionTrackingEvent(event)) {
@@ -203,7 +202,7 @@ export const mapTrackingDataForEvent = (
       ...mapAdditionalInfo(payload),
     }))
 
-    // @ts-ignore
+    // @ts-expect-error Property 'items' does not exist on type '{}'.
     data.items = items
     const totalPrice = getTotalPriceInfo(
       items.map((item) => ({
@@ -283,6 +282,7 @@ export const mapTrackingDataForEvent = (
         ],
       },
     }
+    // eslint-disable-next-line no-constant-binary-expression
   } else if ('product' && 'currencyCode' in payload && payload.product) {
     const currency = payload.currencyCode
     const price =
@@ -304,6 +304,7 @@ export const mapTrackingDataForEvent = (
         ],
       },
     }
+    // eslint-disable-next-line no-constant-binary-expression
   } else if ('products' && 'currencyCode' in payload && payload.products) {
     const currency = payload.currencyCode
     const { pagePayload } = payload

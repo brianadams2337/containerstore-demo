@@ -40,7 +40,7 @@ const seoData = computed(() => {
 useSeoMeta({
   description: seoData.value.description,
   title: seoData.value.title,
-  robots: 'index,follow' ?? '',
+  robots: 'index,follow',
   twitterTitle: seoData.value.twitterTitle,
   twitterDescription: seoData.value.twitterDescription,
   twitterImage: seoData.value.twitterImage,

@@ -55,9 +55,11 @@ const props = withDefaults(defineProps<CMSImageText>(), {
 const { sanitize } = useContentfulImageSanitizer()
 
 const imageSource = computed(() => {
-  if (props.blok?.fields.image.length) {
-    return sanitize(props.blok?.fields.image.at(0))
+  if (!props.blok?.fields.image.length) {
+    return
   }
+
+  return sanitize(props.blok?.fields.image.at(0))
 })
 
 const { align, justify } = useCMSAlignment({

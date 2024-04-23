@@ -82,6 +82,7 @@ const searchForStores = async () => {
     await refreshStores({
       filters: { address: searchAddress.value, radius: searchRadius.value },
     })
+    // eslint-disable-next-line no-empty
   } catch {}
 
   searching.value = false
@@ -118,6 +119,7 @@ const findStoresInUserLocation = async () => {
         },
       },
     })
+    // eslint-disable-next-line no-empty
   } catch {}
   searching.value = false
 }

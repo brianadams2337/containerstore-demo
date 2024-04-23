@@ -1,16 +1,10 @@
-import type {
-  Asset,
-  AssetDetails,
-  ResolvedAssetLink,
-  EntryFields,
-  Entry,
-} from 'contentful'
 import type * as Contentful from './gen'
+import type { Document } from '@contentful/rich-text-types'
+
 export type TODO = any
 export type BlokProps<T> = { blok: T | null }
 export type CMSComponentProps<T, R> = T & R
 export * from './gen'
-import type { Document } from '@contentful/rich-text-types'
 
 export type MarginKey =
   | ''

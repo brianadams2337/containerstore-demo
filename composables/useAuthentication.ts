@@ -209,7 +209,7 @@ export async function useAuthentication(
     }
     // remove user data (email, password) from the error object, before logging it
 
-    // @ts-ignore
+    // @ts-expect-error Property 'config' does not exist on type '{}'.ts(2339)
     delete error?.config?.data
 
     log.error(`Error while ${event} was called.`, {

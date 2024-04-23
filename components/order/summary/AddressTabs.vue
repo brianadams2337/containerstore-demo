@@ -32,7 +32,7 @@
         role="tabpanel"
         tabindex="-1"
       >
-        <slot v-if="activeTab === idx" :name="name"></slot>
+        <slot v-if="activeTab === idx" :name="name" />
       </article>
     </section>
   </div>

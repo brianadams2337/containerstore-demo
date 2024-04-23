@@ -12,8 +12,9 @@
       :tag="blok.headline_tag ? blok.headline_tag : 'h3'"
       :size="getHeadlineSize(blok.headline_tag)"
       class="mb-2"
-      >{{ blok.headline }}</Headline
     >
+      {{ blok.headline }}
+    </Headline>
     <div
       v-if="blok.cta?.linktype === 'email'"
       class="grid grid-cols-2 justify-items-start gap-8"
@@ -30,7 +31,7 @@
         v-for="nestedItem in blok.nested_items"
         :key="nestedItem._uid"
         :blok="nestedItem"
-      ></component>
+      />
     </template>
     <div class="flex flex-row space-x-8">
       <div

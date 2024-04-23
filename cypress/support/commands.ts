@@ -8,6 +8,7 @@ type PurchaseTrackingEvent = 'purchase'
 type DemoShopTrackingEvent = FilterTrackingEvent | PurchaseTrackingEvent | any //  | TrackingEvent
 type DataLayer = Array<{ [key: string]: any }>
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Cypress {
     interface ApplicationWindow {
       dataLayer: DataLayer
@@ -126,7 +127,7 @@ Cypress.Commands.add('visitAndWait', (url: string) => {
   if (Cypress.env().mobile === true) {
     cy.visit(normalizedUrl, {
       onBeforeLoad: (win) => {
-        // @ts-ignore
+        // @ts-expect-error Type 'boolean' is not assignable to type '((this: GlobalEventHandlers, ev: TouchEvent) => any) & ((this: Window, ev: TouchEvent) => any)'.
         win.ontouchstart = true
       },
     })
@@ -240,7 +241,6 @@ const iframeFn = ($iframes: any) =>
 
     $iframes.each((_: any, $iframe: any) => {
       loaded.push(
-        // eslint-disable-next-line promise/param-names
         new Promise((subResolve) => {
           if (isIframeLoaded($iframe)) {
             subResolve(($iframe as any).contentDocument.body)

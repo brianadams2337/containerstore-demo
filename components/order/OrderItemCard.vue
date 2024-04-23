@@ -94,11 +94,13 @@ const imageHash = computed(() => props.product.images[0].hash)
 const price = computed(() => props.price.withTax)
 
 const reducedPrice = computed(() => {
-  if (props.price.appliedReductions) {
-    return getTotalAppliedReductions({
-      appliedReductions: props.price.appliedReductions,
-    }).absoluteWithTax
+  if (!props.price.appliedReductions) {
+    return
   }
+
+  return getTotalAppliedReductions({
+    appliedReductions: props.price.appliedReductions,
+  }).absoluteWithTax
 })
 
 const lowestPriorPrice = computed(() => props.variant.lowestPriorPrice)

@@ -33,11 +33,9 @@ export default defineNuxtModule<ModuleOptions>({
     addImportsDir(resolver.resolve('./composables'))
 
     if (isProviderStoryblok(options)) {
-      // @ts-ignore this is probably a bug in the nuxt/kit. nuxt is not typed correctly
       await setupStoryblok(options, nuxt)
     }
     if (isProviderContentful(options)) {
-      // @ts-ignore this is probably a bug in the nuxt/kit. nuxt is not typed correctly
       await setupContentful(options, nuxt)
     }
   },

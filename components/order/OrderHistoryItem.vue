@@ -72,7 +72,7 @@ const paramId = computed(() => +route.params.id)
 const { getOrderDetailsRoute } = useRouteHelpers()
 
 const progressLevel = computed<number>(() => {
-  // @ts-ignore
+  // @ts-expect-error Type 'undefined' cannot be used as an index type.
   return DeliveryProgress[props.status] || DeliveryProgress.DEFAULT
 })
 

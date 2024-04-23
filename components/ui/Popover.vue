@@ -40,8 +40,7 @@ defineProps({
 })
 
 const emit = defineEmits<{
-  (e: 'mouseenter'): void
-  (e: 'mouseleave'): void
+  (e: 'mouseenter' | 'mouseleave'): void
 }>()
 
 defineOptions({ name: 'AppPopover' })
