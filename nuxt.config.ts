@@ -184,19 +184,34 @@ export default defineNuxtConfig({
 
   // https://nuxt.com/docs/api/nuxt-config#modules-1
   modules: [
+    // https://scayle.dev/en/storefront-guide
     '@scayle/storefront-nuxt/module',
+    // https://scayle.dev/en/storefront-guide/integrations/omnichannel
     '@scayle/omnichannel-nuxt/module',
+    // https://tailwindcss.nuxtjs.org/
     '@nuxtjs/tailwindcss',
+    // https://github.com/cpsoinos/nuxt-svgo
     'nuxt-svgo',
+    // https://image.nuxt.com/
     '@nuxt/image',
+    // https://i18n.nuxtjs.org/
     '@nuxtjs/i18n',
+    // https://github.com/ymmooot/nuxt-jsonld
     'nuxt-jsonld',
+    // https://github.com/vueuse/vueuse/tree/main/packages/nuxt
     '@vueuse/nuxt',
+    // https://github.com/cpreston321/nuxt-swiper
     'nuxt-swiper',
+    // https://github.com/lukasaric/radash-nuxt
     'radash-nuxt',
+    // https://github.com/zadigetvoltaire/nuxt-gtm
     '@zadigetvoltaire/nuxt-gtm',
+    // https://nuxt.com/docs/getting-started/testing
     '@nuxt/test-utils/module',
+    // https://eslint.nuxt.com/packages/module
     '@nuxt/eslint',
+    // https://github.com/antfu/nuxt-eslint-auto-explicit-import
+    'nuxt-eslint-auto-explicit-import',
   ],
 
   cms: {

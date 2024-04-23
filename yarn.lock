@@ -3861,7 +3861,7 @@
     "@typescript-eslint/visitor-keys" "7.9.0"
     debug "^4.3.4"
 
-"@typescript-eslint/scope-manager@7.7.1":
+"@typescript-eslint/scope-manager@7.7.1", "@typescript-eslint/scope-manager@^7.4.0":
   version "7.7.1"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/scope-manager/-/scope-manager-7.7.1.tgz#07fe59686ca843f66e3e2b5c151522bc38effab2"
   integrity sha512-PytBif2SF+9SpEUKynYn5g1RHFddJUcyynGpztX3l/ik7KmZEv19WCMhUBkHXPU9es/VWGD3/zg3wg90+Dh2rA==
@@ -7172,6 +7172,17 @@ eslint-plugin-unicorn@^53.0.0:
     regjsparser "^0.10.0"
     semver "^7.6.1"
     strip-indent "^3.0.0"
+
+eslint-plugin-unimport@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-unimport/-/eslint-plugin-unimport-0.0.2.tgz#b12ad445610c3642c1ef49cdb0d3724021516895"
+  integrity sha512-4rwGu+pBitFEfB4azAMN+ZJpg8fKi4yRd3l9P48sTUJLVAXCaAgf2C/KMD2UIU9tA1qlJRNXBfU4H5j5HVXAkg==
+  dependencies:
+    "@typescript-eslint/scope-manager" "^7.4.0"
+    "@typescript-eslint/utils" "^7.4.0"
+    debug "^4.3.4"
+    pathe "^1.1.2"
+    unimport "^3.7.1"
 
 eslint-plugin-unused-imports@^3.2.0:
   version "3.2.0"
@@ -10711,6 +10722,14 @@ nuxi@3.11.1, nuxi@^3.11.0:
   integrity sha512-AW71TpxRHNg8MplQVju9tEFvXPvX42e0wPYknutSStDuAjV99vWTWYed4jxr/grk2FtKAuv2KvdJxcn2W59qyg==
   optionalDependencies:
     fsevents "~2.3.3"
+
+nuxt-eslint-auto-explicit-import@:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/nuxt-eslint-auto-explicit-import/-/nuxt-eslint-auto-explicit-import-0.0.2.tgz#e2e226d0d8321c493a98c78b947e13c1124d3df7"
+  integrity sha512-alrcZpKozWR+1tDlTmBvFfoXrYqNqPwJLVhTe/67U8ei2wNJDM4RVmS4DULSv7OdP43BvC0fciFawEbDV3u3og==
+  dependencies:
+    "@nuxt/kit" "^3.11.1"
+    eslint-plugin-unimport "0.0.2"
 
 nuxt-jsonld@2.0.8:
   version "2.0.8"
