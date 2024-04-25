@@ -1,4 +1,4 @@
-import { describe, test, expect } from 'vitest'
+import { describe, it, expect } from 'vitest'
 const baseAddress: OrderAddress = {
   city: '',
   countryCode: '',
@@ -22,8 +22,8 @@ const baseAddress: OrderAddress = {
 }
 
 describe('getFormattedLocaleAddresses', () => {
-  test('should have correct address format for US', () => {
-    const address = {
+  it('should have correct address format for US', () => {
+    const address: OrderAddress = {
       ...baseAddress,
       city: 'Geneva',
       countryCode: 'USA',
@@ -41,15 +41,14 @@ describe('getFormattedLocaleAddresses', () => {
     const formattedUsAddress = getFormattedLocaleAddresses(address)
 
     expect(formattedUsAddress).toEqual([
-      // eslint-disable-next-line sonarjs/no-duplicate-string
       'FirstName LastName',
       '31 State Rte',
       'Geneva, IL 60134',
     ])
   })
 
-  test('should have correct address format for UK', () => {
-    const address = {
+  it('should have correct address format for UK', () => {
+    const address: OrderAddress = {
       ...baseAddress,
       city: 'London',
       countryCode: 'GBR',
@@ -72,8 +71,8 @@ describe('getFormattedLocaleAddresses', () => {
     ])
   })
 
-  test('should have correct address format for other countries', () => {
-    const address = {
+  it('should have correct address format for other countries', () => {
+    const address: OrderAddress = {
       ...baseAddress,
       city: 'Hamburg',
       countryCode: 'DEU',
@@ -96,8 +95,8 @@ describe('getFormattedLocaleAddresses', () => {
     ])
   })
 
-  test('should show additional data if set', () => {
-    const address = {
+  it('should show additional data if set', () => {
+    const address: OrderAddress = {
       ...baseAddress,
       city: 'Hamburg',
       countryCode: 'DEU',
