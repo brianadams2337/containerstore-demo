@@ -16,6 +16,7 @@ RUN yarn install --frozen-lockfile
 COPY . /app
 
 ENV CMS_PROVIDER=$CMS_PROVIDER
+ENV OTEL_ENABLED=true
 
 RUN yarn nuxt build
 
