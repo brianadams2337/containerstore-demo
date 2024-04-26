@@ -7,12 +7,14 @@
         class="z-10 mb-1 flex flex-nowrap items-center justify-center gap-[1ch] bg-blue px-2 py-[.375rem] text-center text-xs text-white last-of-type:mb-0"
         :class="{
           'last-of-type:rounded-b-md': isFullWidth,
-          rounded: !isFullWidth,
+          'rounded-md': !isFullWidth,
         }"
         :style="getBackgroundColorStyle(customData.colorHex)"
       >
         <span
-          v-if="customData.headlineParts?.length"
+          v-if="
+            customData.headlineParts?.length && !customData.product?.badgeLabel
+          "
           class="hidden truncate font-bold"
           :class="{
             'md:inline-block': !isBasket,
@@ -48,8 +50,9 @@ type Props = {
 }
 
 const route = useRoute()
+const localePath = useLocalePath()
 
-const isBasket = computed(() => route.meta.pageType === 'basket_page')
+const isBasket = computed(() => route.path === localePath(routeList.basket))
 
 const props = withDefaults(defineProps<Props>(), {
   isPriorityLabelShown: false,

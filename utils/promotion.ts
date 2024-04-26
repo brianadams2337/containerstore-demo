@@ -4,10 +4,36 @@ import {
   type AutomaticDiscountEffect,
   type BasketResponseData,
 } from '@scayle/storefront-nuxt'
+import { hexToRGBAColor } from '~/utils/color'
 
-export const getBackgroundColorStyle = (color?: string) => {
+export const getBackgroundColorStyle = (
+  color?: string | unknown,
+  alpha?: number,
+) => {
   const fallbackColor = '#007aff'
-  return { backgroundColor: color || fallbackColor }
+  if (typeof color !== 'string') {
+    return {
+      backgroundColor: fallbackColor,
+    }
+  }
+  const backgroundColor = color ?? fallbackColor
+  return {
+    backgroundColor: alpha
+      ? hexToRGBAColor(backgroundColor, alpha)
+      : backgroundColor,
+  }
+}
+export function getTextColorStyle(color?: unknown, alpha?: number) {
+  const fallbackColor = '#007aff'
+  if (typeof color !== 'string') {
+    return {
+      textColor: fallbackColor,
+    }
+  }
+  const textColor = color ?? fallbackColor
+  return {
+    color: alpha ? hexToRGBAColor(textColor, alpha) : textColor,
+  }
 }
 
 export const isBuyXGetYType = (promotion?: Promotion | null) => {

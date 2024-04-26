@@ -166,6 +166,9 @@
       "mov": "Spend {minOrderValueLeft} more to get free gift",
       "quantity_and_mov": "Add {quantityLeft} & spend {minOrderValueLeft} more to get free gift"
     },
+    "summary": {
+      "sale": "Sale"
+    },
     "product": {
       "add": "Add"
     }

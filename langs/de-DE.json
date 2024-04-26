@@ -175,6 +175,9 @@
       "mov": "Geben Sie {minOrderValueLeft} mehr aus, um ein kostenloses Geschenk zu erhalten",
       "quantity_and_mov": "Fügen Sie {quantityLeft} hinzu und geben Sie {minOrderValueLeft} mehr aus, um ein kostenloses Geschenk zu erhalten"
     },
+    "summary": {
+      "sale": "Verkauf"
+    },
     "product": {
       "add": "Hinzufügen"
     }

@@ -1,14 +1,25 @@
 <template>
   <div>
-    <slot v-bind="{ price, appliedReductions }">
-      <slot name="relative-reductions">
-        <span
-          v-if="showBadge && totalReductions"
-          class="inline-block rounded-md bg-red-500 px-2 py-1 text-sm text-white"
-        >
-          -{{ totalReductions.relative * 100 }}%
-        </span>
-      </slot>
+    <slot name="relative-reductions" v-bind="{ showBadge, totalReductions }">
+      <span
+        v-if="showBadge && totalReductions"
+        class="inline-block rounded-md bg-red-500 px-2 py-1 text-sm text-white"
+      >
+        -{{ totalReductions.relative * 100 }}%
+      </span>
+    </slot>
+    <slot
+      v-bind="{
+        classes,
+        showPriceFrom,
+        totalReductions,
+        isAutomaticDiscountPriceApplicable,
+        isFree,
+        formatCurrency,
+        price,
+        totalPrice,
+      }"
+    >
       <p class="leading-snug" :class="classes" data-test-id="price">
         <template v-if="showPriceFrom">
           {{ $t('price.starting_from') }}
@@ -26,23 +37,24 @@
           {{ formatCurrency(price.withTax + totalReductions.absoluteWithTax) }}
         </span>
       </p>
-      <slot name="tax-info">
-        <div
-          v-if="showTaxInfo"
-          class="text-right text-xs text-gray-700 md:text-left"
-        >
-          {{ $t('price.including_vat') }}
-        </div>
-      </slot>
-      <p
-        v-if="appliedReductions.length && hasLowestPriorPrice && !isFree"
-        class="mt-0.5 text-sm text-gray-700"
-      >
-        {{ $t('price.best_price_30d') }}
-        {{ formatCurrency(lowestPriorPrice.withTax ?? 0) }}
-        ({{ (lowestPriorPrice.relativeDifferenceToPrice ?? 0) * 100 }}%)
-      </p>
     </slot>
+
+    <slot name="tax-info">
+      <div
+        v-if="showTaxInfo"
+        class="text-right text-xs text-gray-700 md:text-left"
+      >
+        {{ $t('price.including_vat') }}
+      </div>
+    </slot>
+    <p
+      v-if="appliedReductions.length && hasLowestPriorPrice && !isFree"
+      class="mt-0.5 text-sm text-gray-700"
+    >
+      {{ $t('price.best_price_30d') }}
+      {{ formatCurrency(lowestPriorPrice.withTax ?? 0) }}
+      ({{ (lowestPriorPrice.relativeDifferenceToPrice ?? 0) * 100 }}%)
+    </p>
   </div>
 </template>
 

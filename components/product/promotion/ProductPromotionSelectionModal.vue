@@ -30,7 +30,50 @@
                     type="normal"
                     show-tax-info
                     class="mt-3"
-                  />
+                  >
+                    <template
+                      #default="{
+                        price: productPriceValue,
+                        classes,
+                        totalReductions,
+                        isAutomaticDiscountPriceApplicable,
+                        isFree,
+                        totalPrice,
+                      }"
+                    >
+                      <p
+                        class="leading-snug inline-flex gap-1 items-end"
+                        :class="classes"
+                        data-test-id="price"
+                      >
+                        <span
+                          :class="{
+                            'inline rounded p-1 text-base leading-5 font-semibold':
+                              areConditionsMet,
+                          }"
+                          :style="styles"
+                        >
+                          {{ totalPrice }}
+                        </span>
+                        <span
+                          v-if="
+                            totalReductions.absoluteWithTax ||
+                            isAutomaticDiscountPriceApplicable ||
+                            isFree
+                          "
+                          class="text-sm font-medium text-primary line-through"
+                          data-test-id="initialProductPrice"
+                        >
+                          {{
+                            formatCurrency(
+                              productPriceValue.withTax +
+                                totalReductions.absoluteWithTax,
+                            )
+                          }}
+                        </span>
+                      </p>
+                    </template>
+                  </ProductPrice>
                 </div>
               </div>
             </div>
@@ -52,7 +95,7 @@
                 :title="product.isSoldOut ? $t('badge_labels.sold_out') : ''"
                 :loading="basketIdle"
                 class="text-sm !normal-case"
-                @click="addItemToBasket(promotion.id)"
+                @click="addItemToBasket(promotion?.id)"
               >
                 {{ $t('pdp.add_label') }}
               </AppButton>
@@ -88,6 +131,7 @@ const props = defineProps<{
 }>()
 
 const { getProductDetailRoute } = useRouteHelpers()
+const { formatCurrency } = useFormatHelpers()
 
 const {
   basketIdle,
@@ -114,7 +158,6 @@ const areConditionsMet = computed(() => {
       getFirstAttributeValue(props.promotedProduct?.attributes, 'promotion')?.id
     )
   })
-
   const minQuantity = props.promotion.customData?.giftConditions?.minQuantity
 
   if (!basketItem || !minQuantity) {
@@ -122,6 +165,22 @@ const areConditionsMet = computed(() => {
   }
 
   return basketItem?.quantity >= minQuantity
+})
+
+const styles = computed(() => {
+  if (areConditionsMet.value) {
+    return {
+      ...getBackgroundColorStyle(
+        props.promotion.customData?.colorHex,
+        AlphaColorMap.ALPHA_10,
+      ),
+      ...getTextColorStyle(
+        props.promotion.customData.colorHex,
+        AlphaColorMap.ALPHA_100,
+      ),
+    }
+  }
+  return null
 })
 
 const close = () => {

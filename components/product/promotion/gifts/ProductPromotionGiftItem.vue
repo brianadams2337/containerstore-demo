@@ -50,9 +50,12 @@
             {{ formatCurrency(variantWithLowestPrice.price.withTax) }}
           </span>
           <span
-            class="text-base font-bold text-black"
+            class="text-base font-bold inline rounded-md p-1 text-base leading-5"
             :class="{
-              'text-secondary': !areGiftConditionsMet,
+              'text-secondary ': !areGiftConditionsMet,
+            }"
+            :style="{
+              ...showGiftStyle,
             }"
           >
             {{ formatCurrency(0) }}
@@ -109,4 +112,29 @@ const { getProductDetailRoute } = useRouteHelpers()
 const { name, image, variantWithLowestPrice } = useProductBaseInfo(
   props.product,
 )
+
+const showGiftStyle = computed(() => {
+  if (areGiftConditionsMet.value) {
+    return {
+      ...getBackgroundColorStyle(
+        promotion.value?.customData.colorHex,
+        AlphaColorMap.ALPHA_10,
+      ),
+      ...getTextColorStyle(
+        promotion.value?.customData.colorHex,
+        AlphaColorMap.ALPHA_100,
+      ),
+    }
+  }
+  return {
+    ...getBackgroundColorStyle(
+      promotion.value?.customData.colorHex,
+      AlphaColorMap.ALPHA_5,
+    ),
+    ...getTextColorStyle(
+      promotion.value?.customData.colorHex,
+      AlphaColorMap.ALPHA_20,
+    ),
+  }
+})
 </script>

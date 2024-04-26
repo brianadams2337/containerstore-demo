@@ -25,8 +25,11 @@
     <ProductBadge
       v-for="(sale, idx) in getSalesRelativeAmountByCategory(product, 'sale')"
       :key="`sale-${idx}`"
-      class="left-4 mx-1 mb-2 ml-2 w-max bg-red-500"
+      class="mb-2 w-max bg-red-500"
       :badge-label="`-${sale.amount.relative * 100}%`"
+      :class="{
+        'ml-2': !isBasketPage,
+      }"
       :translate="false"
     />
     <ProductPromotionBadges
@@ -39,10 +42,17 @@
 <script setup lang="ts">
 import type { Product } from '@scayle/storefront-nuxt'
 
+const route = useRoute()
+const localePath = useLocalePath()
+
 withDefaults(
   defineProps<{ product: Product; isPromotionBadgeFullWidth?: boolean }>(),
   {
     isPromotionBadgeFullWidth: true,
   },
 )
+
+const isBasketPage = computed(() => {
+  return route.path === localePath(routeList.basket)
+})
 </script>

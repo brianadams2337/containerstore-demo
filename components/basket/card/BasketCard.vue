@@ -7,12 +7,12 @@
     >
       <div class="flex w-full" :class="{ 'opacity-50': !inStock }">
         <div
-          class="flex w-28 items-center pr-3 lg:w-48 lg:p-0 lg:pr-6"
+          class="flex w-28 items-center pr-3 lg:w-48 lg:p-0 lg:pr-6 relative"
           @click.capture="selectItem"
         >
           <DefaultLink
             :to="getProductDetailRoute(product)"
-            class="relative h-full rounded-md bg-gray-200 p-2"
+            class="h-full rounded-md bg-gray-200 p-2"
           >
             <ProductImage
               v-if="image"
@@ -63,7 +63,7 @@
               <p class="pr-3">{{ $t('global.sold_out') }}</p>
             </div>
           </div>
-          <div class="flex justify-between gap-2 lg:flex-col">
+          <div class="flex items-end justify-between gap-2 lg:flex-col">
             <div>
               <Dropdown
                 v-if="inStock"
@@ -73,14 +73,55 @@
                 @update:model-value="changeQuantity($event, index)"
               />
             </div>
-            <div class="text-right font-bold">
-              <div v-if="reducedPrice" class="line-through">
-                {{ formatCurrency(price + reducedPrice) }}
-              </div>
-              <div v-else>{{ formatCurrency(price) }}</div>
-              <div v-if="reducedPrice" class="text-red-500">
+            <div
+              class="flex flex-col items-end justify-start text-right font-bold"
+            >
+              <template v-if="reducedPrice">
+                <div
+                  class="flex"
+                  :class="{
+                    'flex-col items-end':
+                      hasSaleReduction(item) && !hasPromotionReduction(item),
+                    'flex-row items-center ':
+                      hasSaleReduction(item) && hasPromotionReduction(item),
+                  }"
+                >
+                  <span
+                    class="text-xs leading-[1.125rem] text-secondary line-through p-1"
+                  >
+                    {{ formatCurrency(price + reducedPrice) }}
+                  </span>
+                  <span
+                    v-if="hasSaleReduction(item)"
+                    class="p-1 text-base leading-5 text-red"
+                    :class="{
+                      'text-xs leading-[1.125rem] text-secondary line-through':
+                        hasPromotionReduction(item),
+                    }"
+                  >
+                    {{ formatCurrency(getItemSaleReductionPrice(item)) }}
+                  </span>
+                </div>
+                <span
+                  v-if="hasPromotionReduction(item)"
+                  class="inline rounded p-1 text-base leading-5"
+                  :style="{
+                    ...getBackgroundColorStyle(
+                      item?.promotion?.customData.colorHex,
+                      10,
+                    ),
+                    ...getTextColorStyle(
+                      item?.promotion?.customData.colorHex,
+                      100,
+                    ),
+                  }"
+                >
+                  {{ formatCurrency(price) }}
+                </span>
+              </template>
+              <span v-else class="text-base leading-5">
                 {{ formatCurrency(price) }}
-              </div>
+              </span>
               <p
                 v-if="
                   isLowestPreviousPriceActive &&
@@ -152,6 +193,7 @@
 
 <script setup lang="ts">
 import { type BasketItem } from '@scayle/storefront-nuxt'
+import { useBasketReductions } from '~/composables/useBasketReductions'
 
 type Props = {
   index: number
@@ -163,8 +205,16 @@ const props = withDefaults(defineProps<Props>(), {
   item: undefined,
   itemsGroup: undefined,
 })
+function getItemSaleReductionPrice(item?: BasketItem) {
+  if (!item) return 0
+  const itemTotalSalePrice = getBasketItemSalePrice(item)
+  const totalWithReduction = price.value + (reducedPrice.value ?? 0)
+  return _sum([totalWithReduction, -itemTotalSalePrice])
+}
 
 const { formatCurrency } = useFormatHelpers()
+const { hasSaleReduction, hasPromotionReduction, getBasketItemSalePrice } =
+  await useBasketReductions()
 const { getProductDetailRoute } = useRouteHelpers()
 const mainItem = computed(() => {
   const basketItem = props.itemsGroup
