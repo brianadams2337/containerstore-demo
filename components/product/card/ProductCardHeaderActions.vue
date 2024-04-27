@@ -2,28 +2,24 @@
   <div
     class="absolute left-auto right-0 top-0 z-20 flex h-8 w-auto cursor-pointer p-1 md:p-3"
   >
-    <client-only>
-      <WishlistToggle :product="product" />
-    </client-only>
+    <ClientOnly>
+      <WishlistToggle v-bind="{ product, listingMetaData }" />
+    </ClientOnly>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { Product } from '@scayle/storefront-nuxt'
 
-const props = defineProps({
-  product: {
-    type: Object as PropType<Product>,
-    required: true,
-  },
-  wishlistRemoveIcon: {
-    type: String as PropType<'heart' | 'close'>,
-    default: 'heart',
-  },
-  listingMetaData: {
-    type: Object as PropType<ListItem>,
-    default: () => ({}),
-  },
+type Props = {
+  product: Product
+  wishlistRemoveIcon?: 'heart' | 'close'
+  listingMetaData?: ListItem
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  wishlistRemoveIcon: 'heart',
+  listingMetaData: undefined,
 })
 
 const product = toRef(props, 'product')
