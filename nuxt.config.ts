@@ -138,6 +138,7 @@ export default defineNuxtConfig({
 
       subscription: {
         overviewWebHost: '', // Override: NUXT_PUBLIC_SUBSCRIPTION_OVERVIEW_WEB_HOST
+        cancellationWebHost: '', // Override: NUXT_PUBLIC_SUBSCRIPTION_OVERVIEW_WEB_HOST
         apiUrl: '', // Override: NUXT_PUBLIC_SUBSCRIPTION_API_URL
       },
     },

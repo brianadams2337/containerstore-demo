@@ -1,7 +1,7 @@
 <template>
   <PageContent>
     <subscription-overview
-      v-if="isSubscriptionWebComponentLoaded"
+      v-if="isSubscriptionOverviewWebComponentLoaded"
       :base-url="apiUrl"
       :customer-token="accessToken"
       :shop-id="shopId"
@@ -15,8 +15,10 @@ const shopId = currentShop.value.shopId
 
 const { user } = await useUser()
 
-const { isSubscriptionWebComponentLoaded, apiUrl } =
+const { isSubscriptionOverviewWebComponentLoaded, apiUrl, loadOverviewPage } =
   useSubscriptionWebComponent()
+
+onMounted(() => loadOverviewPage())
 
 const accessToken = computed(
   () => user?.value?.authentication?.storefrontAccessToken,

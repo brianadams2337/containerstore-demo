@@ -1,30 +1,59 @@
-const isSubscriptionWebComponentLoaded = ref(false)
+const isSubscriptionOverviewWebComponentLoaded = ref(false)
+const isSubscriptionCancellationWebComponentLoaded = ref(false)
 
 export default () => {
   const runtimeConfig = useRuntimeConfig()
-  const { overviewWebHost, apiUrl } = runtimeConfig.public.subscription
+  const { overviewWebHost, cancellationWebHost, apiUrl } =
+    runtimeConfig.public.subscription
 
   const log = useLog('useSubscriptionWebComponent')
 
-  if (overviewWebHost?.length) {
+  const loadOverviewPage = () => {
+    if (!overviewWebHost?.length) {
+      log.error(
+        'Cannot load subscription overview web component, host is not configured as environment variable.',
+      )
+      return
+    }
+
     useHead({
       script: [
         {
-          key: 'subscription-wc',
           defer: true,
-          async: true,
           src: overviewWebHost,
           onload() {
-            isSubscriptionWebComponentLoaded.value = true
+            isSubscriptionOverviewWebComponentLoaded.value = true
           },
         },
       ],
     })
-  } else {
-    log.error(
-      'Cannot load subscription web component, host is not configured as environment variable.',
-    )
+  }
+  const loadCancellationPage = () => {
+    if (!cancellationWebHost?.length) {
+      log.error(
+        'Cannot load subscription cancellation web component, host is not configured as environment variable.',
+      )
+      return
+    }
+
+    useHead({
+      script: [
+        {
+          type: 'module',
+          src: cancellationWebHost,
+          onload() {
+            isSubscriptionCancellationWebComponentLoaded.value = true
+          },
+        },
+      ],
+    })
   }
 
-  return { isSubscriptionWebComponentLoaded, apiUrl }
+  return {
+    isSubscriptionOverviewWebComponentLoaded,
+    isSubscriptionCancellationWebComponentLoaded,
+    loadCancellationPage,
+    loadOverviewPage,
+    apiUrl,
+  }
 }

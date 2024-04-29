@@ -7,7 +7,8 @@ import {
 } from '@nuxt/kit'
 
 type ModuleOptions = {
-  pagePath?: string
+  overviewPagePath?: string
+  cancellationPagePath?: string
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -33,8 +34,17 @@ export default defineNuxtModule<ModuleOptions>({
     extendPages((pages) => {
       pages.push({
         name: 'subscription-overview',
-        path: option.pagePath ?? '/account/subscription',
+        path: option.overviewPagePath ?? '/account/subscription',
         file: resolver.resolve('./pages/subscription.vue'),
+      })
+    })
+
+    extendPages((pages) => {
+      pages.push({
+        name: 'subscription-cancellations',
+        path:
+          option.cancellationPagePath ?? '/account/subscription-cancellations',
+        file: resolver.resolve('./pages/subscription-cancellations.vue'),
       })
     })
   },

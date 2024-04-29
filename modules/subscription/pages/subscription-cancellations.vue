@@ -1,0 +1,24 @@
+<template>
+  <PageContent>
+    <subscription-cancellation
+      v-if="isSubscriptionCancellationWebComponentLoaded"
+      :base-url="apiUrl"
+      :shop-id="shopId"
+    />
+  </PageContent>
+</template>
+
+<script setup lang="ts">
+const currentShop = useCurrentShop()
+const shopId = currentShop.value.shopId
+
+const {
+  apiUrl,
+  isSubscriptionCancellationWebComponentLoaded,
+  loadCancellationPage,
+} = useSubscriptionWebComponent()
+
+loadCancellationPage()
+
+definePageMeta({ pageType: 'subscription-cancellation' })
+</script>
