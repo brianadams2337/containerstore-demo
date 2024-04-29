@@ -217,6 +217,7 @@ export function useFilter(
 
   const resetFilters = () => {
     Object.assign(state.value, deepClone(initialState.value))
+    setStateFromUrlParams()
   }
 
   const onSlideInOpen = () => {
