@@ -5,6 +5,7 @@ import {
   storefrontRuntimeConfigPublic,
   storefrontBuildtimeConfig,
 } from './config/storefront'
+import { nanoid } from 'nanoid'
 
 declare module '@nuxt/schema' {
   interface PublicRuntimeConfig {
@@ -21,7 +22,10 @@ const domains = {
   en: process.env.NUXT_STOREFRONT_STORES_1028_DOMAIN!,
 }
 
-type NitroRouteConfig = NuxtConfig['routeRules']
+type NitroRouteRules = Required<NuxtConfig>['routeRules']
+type NitroRouteConfig = NitroRouteRules extends Record<any, infer Value>
+  ? Value
+  : never
 
 const DOMAIN_PER_LOCALE = yn(process.env.DOMAIN_PER_LOCALE)
 
@@ -319,7 +323,7 @@ export default defineNuxtConfig({
     }
 
     // Page generated on-demand, revalidates in background
-    const CACHE_PAGE = {
+    const CACHE_PAGE: NitroRouteConfig = {
       cache: {
         // SWR currently leads to some bugs in the Nitro caching implementation that it will continue to serve outdated data in case the SSR handler crashes
         // We recommend to keep this disabled currently.
@@ -328,14 +332,22 @@ export default defineNuxtConfig({
         staleMaxAge: 10 * 60, // Default: 10min
         group: 'ssr', // Cache group name
         name: 'page', // Set prefix name
+
+        // Consider the host for the cache key which is required when using domain based shops
+        varies: ['host', 'x-forwarded-host'],
+
+        // Add the version as an integrity so we clear our cache when a new version gets deployed.
+        // If no specific version is supplied, we will generate a unique ID during the build process.
+        integrity: process.env.VERSION ?? nanoid(8),
+
         // Use storefront storage mount
         // Depending on your configuration this might be `redis` or another database driver
         // https://scayle.dev/en/dev/storefront-core/module-configuration#storage
         base: 'storefront-cache',
       },
-    } as const
+    }
 
-    const NO_CACHE = { swr: false, cache: false } as const
+    const NO_CACHE: NitroRouteConfig = { swr: false, cache: false }
 
     // Default routeRules for using SWR and `storefront-cache` storage for page caching setup
     return DOMAIN_PER_LOCALE
@@ -353,8 +365,8 @@ export default defineNuxtConfig({
           '/account/**': NO_CACHE,
         }
       : locales.reduce(
-          (rules: NitroRouteConfig, locale) => {
-            const newRules: NitroRouteConfig = {
+          (rules: NitroRouteRules, locale) => {
+            const newRules: NitroRouteRules = {
               ...rules,
               [`/${locale.code}`]: CACHE_PAGE, // home page
               [`/${locale.code}/**`]: CACHE_PAGE, // other pages
