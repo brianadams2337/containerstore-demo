@@ -4,5 +4,23 @@
   "initialVersions": {
     "@scayle/storefront-boilerplate-nuxt": "0.0.1"
   },
-  "changesets": []
+  "changesets": [
+    "afraid-ducks-report",
+    "chilled-chairs-tie",
+    "chilled-crews-hide",
+    "cuddly-bags-dev",
+    "cuddly-bags-prod",
+    "eight-lies-tickle",
+    "famous-chicken-draw",
+    "hip-pumas-drop",
+    "moody-comics-obey",
+    "nasty-humans-decide",
+    "nine-waves-dream",
+    "proud-moles-lay",
+    "strong-onions-marry",
+    "tasty-impalas-protect",
+    "ten-meals-obey",
+    "tender-eagles-camp",
+    "tidy-cameras-behave"
+  ]
 }
