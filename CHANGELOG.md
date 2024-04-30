@@ -2,79 +2,47 @@
 
 ## 1.0.0-rc.10
 
+### 🔥 Highlights
+
+#### 📡 HTTP Request tracing with OpenTelemetry
+
+The Storefront Boilerplate now includes a built-in integration with [OpenTelemetry](https://opentelemetry.io/).
+To enable the feature, set the environment variable `OTEL_ENABLED` to `true`.
+This will inject additional code into your application's entrypoint which will initialize the OpenTelemetry SDK.
+Automatic instrumentations as well as instrumentations from `storefront-nuxt` will be captured and exported via the OTLP protocol.
+
+Currently, Vercel and Node are the only supported platforms for the OpenTelemetry integration.
+Setting `OTEL_ENABLED` to `true` when building for other platforms will have no effect.
+
+You should also set the runtime variable `OTEL_SERVICE_NAME` to configure the service name used in traces. e.g. `OTEL_SERVICE_NAME=storefront-boilerplate`
+Note: this variable is used directly by the OpenTelemetry libraries and is not available in the Nuxt `runtimeConfiguration`.
+
+#### 🛍️ Improved UX / UI for Promotions
+
+We've redesigned the promotion badges displayed on the Product Listing Page, the Wishlist, and the Basket page.
+The Badge text originates from Storefront APIs `customData`, with `headlineParts` in bold and `badgeLabel` in regular font.
+We now implement ellipsis for long `badgeLabel` texts.
+
+Please Note: Due to space constraints, the basket page shows only `badgeLabel`; if it is missing, it will fallback to `headlineParts`.
+
+We have also improved the user experience on the Product Detail page with free gift options.
+When the condition of a product, that has a free gift option configured, are met,
+a free gift option will be displayed on the page with a grayed-out overlay.
+Once conditions are met, a free gift option will be enabled and the user can add a free gift product to the cart.
+
+#### 🔍 Improved linting setup with ESLint v9
+
+The Storefront Boilerplate now includes an improved linting setup.
+Relying on the new [ESLint 9](https://eslint.org/blog/2024/04/eslint-v9.0.0-released/) and [`@nuxt/eslint` module](https://eslint.nuxt.com/packages/module) to provide more project-aware linting.
+To make configuration more easier the ESLint config has been updated to the new [flat config format](https://eslint.org/blog/2022/08/new-config-system-part-2/), allowing for simpler customization and overriding of rules.
+Additionally the default Storefront ESLint config `@scayle/eslint-config-storefront` v4 is now using a subset of opinionated rules of [`@antfu/eslint-config`](https://github.com/antfu/eslint-config).
+
 ### Minor Changes
 
-- 8773106: Add integration with the OpenTelemtry SDK
-
-  The Storefront Boilerplate now includes a built-in integration with OpenTelemtry. To enable the feature, set the environment variable `OTEL_ENABLED` to true. You can read more about the support for OpenTelemtry in README.md.
-
-- 4550f1d: Added subscription cancellation page to the subscription module
-- d5db84e: Implemented a new utility function to format addresses dynamically.
-
-  The function adjusts the address format according to the countryCode
-
-- 1a03622: Update @scayle/omnichannel-nuxt to v3 to be compatible with latest Omnichannel API
-- 968ab05: Introduce improved linting setup (using `eslint@9`, `@nuxt/eslint` & `@scayle/eslint-config-storefront@4`) and adapt linting recommendations.
-
-### Patch Changes
-
-- 9ff69d4: devDependencies
-
-  - Added `"@eslint/eslintrc@3.0.2",`
-  - Added `@nuxt/eslint@0.3.10`
-  - Updated to `@nuxt/test-utils@3.12.1`
-  - Updated to `@nuxtjs/i18n@8.3.1`
-  - Updated to `@nuxtjs/tailwindcss@6.12.0`
-  - Updated to `@scayle/eslint-config-storefront@4.0.0`
-  - Updated to `@upstash/redis@1.30.0`
-  - Updated to `@vitest/coverage-v8@1.5.2`
-  - Updated to `eslint@9.1.1`
-  - Updated to `postcss-custom-properties@13.3.8`
-  - Updated to `vitest@1.5.2`
-  - Updated to `vue-tsc@2.0.15`
-
-- 9ff69d4: Dependencies
-
-  - Added `@opentelemetry/api": "1.8.0`
-  - Added `@opentelemetry/auto-instrumentations-node": "0.45.0`
-  - Added `@opentelemetry/exporter-trace-otlp-proto": "0.51.0`
-  - Added `@opentelemetry/instrumentation": "0.51.0`
-  - Added `@opentelemetry/resources": "1.24.0`
-  - Added `@opentelemetry/sdk-node": "0.51.0`
-  - Added `@opentelemetry/semantic-conventions": "1.24.0`
-  - Added `@vercel/otel": "1.8.2`
-  - Added `knitwork": "1.1.0`
-  - Updated to `@scayle/omnichannel-nuxt": "3.0.0`
-  - Updated to `@scayle/storefront-nuxt": "7.66.4`
-  - Updated to `@storyblok/nuxt": "6.0.10`
-  - Updated to `@storyblok/vue": "8.0.8`
-  - Updated to `@tailwindcss/typography": "0.5.13`
-  - Updated to `cf-content-types-generator": "2.15.1`
-  - Updated to `contentful": "10.9.0`
-  - Updated to `storyblok-js-client": "6.7.3`
-
-- 0a6a202: New Price addoptions for basket page for promotions
-- 01c353b: Resolved a bug that affected the fetching of `combineWith` products
-- 2acc4da: Resolved the issue where the welcome login tab was displayed instead of the registration tab upon clicking the register link.
-- 3145ad0: ### Adds new Promotion Badges on PLP, Wishlist and Basket page
-
-  New design of promotion badges on PLP, Wishlist, and Basket page.
-
-  - The Badge text comes from Storefront APIs `customData`, with `headlineParts` in bold and `badgeLabel` in regular font.
-  - Implements ellipsis for long `badgeLabel`.
-  - Due to space constraints, the basket page shows only `badgeLabel`; if it is missing, it will fallback to `headlineParts`.
-
-  ```
-
-  ```
-
-- ec24c0f: Increased eslint `no-composable-after-await` rule error level and fix the issues
-- 306b9b4: ### Improves UX on PDP page with free gift options
-
-  When on the PDP page with products that have a free gift include if conditions are met. A free gift option will be displayed on the page with a grayed-out overlay. Once conditions are met, a free gift option will be enabled and the user can add a free gift product to the cart.
-
-- a76d1a5: Removed an unnecessary CSS property which caused a visual bug on basket page
-- fa81406: Fix caching for domain-based setups where we now consider the host for the SSR cache key.
+- Added subscription cancellation page to the subscription module
+- New Price adoptions for basket page for promotions
+- Increased eslint `no-composable-after-await` rule error level and fix the issues
+- Fix caching for domain-based setups where we now consider the host for the SSR cache key.
 
   Additionally, we now set an `integrity` value that invalidates the SSR cache automatically when a new build is deployed.
   You can control the value through the `VERSION` environment variable, which should be set to your current Git short commit sha.
@@ -87,9 +55,53 @@
 
   or when using the docker image
 
-  ```
+  ```sh
   docker build --build-arg VERSION=${GIT_SHORT_COMMIT_SHA} -f docker/node/Dockerfile .
   ```
+
+### Patch Changes
+
+- Removed an unnecessary CSS property which caused a visual bug on basket page
+- Resolved a bug that affected the fetching of `combineWith` products
+- Resolved the issue where the welcome login tab was displayed instead of the registration tab upon clicking the register link.
+- Implemented a new utility function to format addresses dynamically. The function adjusts the address format according to the countryCode
+
+### 🏡 Dependency Updates
+
+#### 🏘️ devDependencies
+
+- Added `"@eslint/eslintrc@3.0.2",`
+- Added `@nuxt/eslint@0.3.10`
+- Updated to `@nuxt/test-utils@3.12.1`
+- Updated to `@nuxtjs/i18n@8.3.1`
+- Updated to `@nuxtjs/tailwindcss@6.12.0`
+- Updated to `@scayle/eslint-config-storefront@4.0.0`
+- Updated to `@upstash/redis@1.30.0`
+- Updated to `@vitest/coverage-v8@1.5.2`
+- Updated to `eslint@9.1.1`
+- Updated to `postcss-custom-properties@13.3.8`
+- Updated to `vitest@1.5.2`
+- Updated to `vue-tsc@2.0.15`
+
+#### 🏠 dependencies
+
+- Added `@opentelemetry/api": "1.8.0`
+- Added `@opentelemetry/auto-instrumentations-node": "0.45.0`
+- Added `@opentelemetry/exporter-trace-otlp-proto": "0.51.0`
+- Added `@opentelemetry/instrumentation": "0.51.0`
+- Added `@opentelemetry/resources": "1.24.0`
+- Added `@opentelemetry/sdk-node": "0.51.0`
+- Added `@opentelemetry/semantic-conventions": "1.24.0`
+- Added `@vercel/otel": "1.8.2`
+- Added `knitwork": "1.1.0`
+- Updated to `@scayle/omnichannel-nuxt": "3.0.0` to be compatible with latest Omnichannel API
+- Updated to `@scayle/storefront-nuxt": "7.66.4`
+- Updated to `@storyblok/nuxt": "6.0.10`
+- Updated to `@storyblok/vue": "8.0.8`
+- Updated to `@tailwindcss/typography": "0.5.13`
+- Updated to `cf-content-types-generator": "2.15.1`
+- Updated to `contentful": "10.9.0`
+- Updated to `storyblok-js-client": "6.7.3`
 
 ## 1.0.0-rc.9
 

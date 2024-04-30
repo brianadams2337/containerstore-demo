@@ -178,34 +178,6 @@ The script is taken from <https://www.storyblok.com/faq/how-to-get-all-unused-co
 Depending on the task at hand its necessary to intercept and debug API calls from SFC.
 For this purpose it is recommended to use an interactive HTTP(S) proxy that allows to inspect the made API calls.
 
-### Recommendation: mitmproxy
-
-[`mitmproxy`](https://mitmproxy.org/) is a free and open source interactive HTTPS proxy,
-licensed under the [MIT license](https://github.com/mitmproxy/mitmproxy/blob/main/LICENSE).
-It is available for MacOS, Linux and Windows.
-
-Some of its features include:
-
-- Intercept HTTP & HTTPS requests and responses and modify them on the fly
-- Save complete HTTP conversations for later replay and analysis
-- Transparent proxy mode on macOS and Linux
-- SSL/TLS certificates for interception are generated on the fly
-- and [more features](https://docs.mitmproxy.org/stable/overview-features/)
-
-#### Use mitmproxy
-
-Firstly follow the [official install instruction](https://docs.mitmproxy.org/stable/overview-installation/) to install `mitmproxy`.
-To intercept and debug API calls, we will be relying on `mitmproxy`'s core tool [`mitmweb`](https://docs.mitmproxy.org/stable/#mitmweb).
-
-For `mitmproxy` to be able to intercept HTTP(S) requests, we need to configure our shop `.env` file and add the following two values:
-
-```ini
-https_proxy=http://127.0.0.1:8080
-http_proxy=http://127.0.0.1:8080
-```
-
-After starting both `mitmproxy` and our shop, we should be able to now see all relevant HTTP(S) requests and API calls in the `mitmweb` tab.
-
 ## Patches
 
 In some cases, patches to third-party packages are required. The Storefront Boilerplate uses [`patch-package`](https://www.npmjs.com/package/patch-package) to manage patching. The tool will run in `postinstall` and apply any patches present in the `patches/` directory.
@@ -216,8 +188,8 @@ An overview of the currently included patches can be found [here](./patches/INFO
 
 The Storefront Boilerplate includes an experimental integration with OpenTelemetry.
 
-To enable OpenTelemetry, set the buildtime environment variable `ENABLE_OTEL` to true. This will inject additional code into your application's entrypoint which will initialize the OpenTelemetry SDK. Automatic instrumentations as well as instrumentations from `storefront-nuxt` will be captured and exported via the OTLP protocol.
+To enable OpenTelemetry, set the buildtime environment variable `OTEL_ENABLED` to true. This will inject additional code into your application's entrypoint which will initialize the OpenTelemetry SDK. Automatic instrumentations as well as instrumentations from `storefront-nuxt` will be captured and exported via the OTLP protocol.
 
-Currently, Vercel and Node are the only supported platforms for the OpenTelemetry integration. Setting `ENABLE_OTEL` to true when building for other platforms will have no effect.
+Currently, Vercel and Node are the only supported platforms for the OpenTelemetry integration. Setting `OTEL_ENABLED` to true when building for other platforms will have no effect.
 
 You should also set the runtime variable `OTEL_SERVICE_NAME` to configure the service name used in traces. e.g. `OTEL_SERVICE_NAME=storefront-boilerplate` Note: this variable is used directly by the OpenTelemetry libraries and is not available in the Nuxt `runtimeConfiguration`.
