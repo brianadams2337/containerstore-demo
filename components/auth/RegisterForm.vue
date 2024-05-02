@@ -4,8 +4,8 @@
       <SalutationSelect v-model="editableUser.gender" />
     </div>
 
-    <ValidatedInputGroup v-slot="{ isValid }" :errors="v.first_name.$errors">
-      <TextInput
+    <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.first_name.$errors">
+      <SFTextInput
         v-model="editableUser.first_name"
         autocomplete="given-name"
         :placeholder="$t('form_fields.first_name')"
@@ -14,10 +14,10 @@
         :readonly="isSubmitting"
         @change="v.first_name.$touch()"
       />
-    </ValidatedInputGroup>
+    </SFValidatedInputGroup>
 
-    <ValidatedInputGroup v-slot="{ isValid }" :errors="v.last_name.$errors">
-      <TextInput
+    <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.last_name.$errors">
+      <SFTextInput
         v-model="editableUser.last_name"
         autocomplete="family-name"
         :placeholder="$t('form_fields.last_name')"
@@ -26,10 +26,10 @@
         :readonly="isSubmitting"
         @change="v.last_name.$touch()"
       />
-    </ValidatedInputGroup>
+    </SFValidatedInputGroup>
 
-    <ValidatedInputGroup v-slot="{ isValid }" :errors="v.email.$errors">
-      <TextInput
+    <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.email.$errors">
+      <SFTextInput
         v-model="editableUser.email"
         autocomplete="usernaasdme"
         :placeholder="$t('form_fields.email')"
@@ -39,10 +39,10 @@
         :readonly="isSubmitting"
         @change="v.email.$touch()"
       />
-    </ValidatedInputGroup>
+    </SFValidatedInputGroup>
 
-    <ValidatedInputGroup v-slot="{ isValid }" :errors="v.password.$errors">
-      <TextInput
+    <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.password.$errors">
+      <SFTextInput
         v-model="editableUser.password"
         autocomplete="new-password"
         :placeholder="$t('form_fields.password')"
@@ -52,16 +52,16 @@
         :readonly="isSubmitting"
         @change="v.password.$touch()"
       />
-    </ValidatedInputGroup>
+    </SFValidatedInputGroup>
 
-    <AppButton
+    <SFButton
       class="mt-3 w-full"
       :disabled="isSubmitting"
       :loading="isSubmitting"
       @click="onSubmit"
     >
       {{ $t('login_page.sign_up.submit') }}
-    </AppButton>
+    </SFButton>
   </form>
 </template>
 

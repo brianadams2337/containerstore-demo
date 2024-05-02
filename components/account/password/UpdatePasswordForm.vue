@@ -7,8 +7,11 @@
       <h3 class="mb-4 text-left text-2xl font-bold">
         {{ $t('my_account.password') }}
       </h3>
-      <ValidatedInputGroup v-slot="{ isValid }" :errors="v.oldPassword.$errors">
-        <TextInput
+      <SFValidatedInputGroup
+        v-slot="{ isValid }"
+        :errors="v.oldPassword.$errors"
+      >
+        <SFTextInput
           v-model="payload.oldPassword"
           :placeholder="$t('form_fields.old_password')"
           :has-errors="!isValid"
@@ -16,13 +19,13 @@
           required
           @input="v.oldPassword.$touch"
         />
-      </ValidatedInputGroup>
-      <ValidatedInputGroup
+      </SFValidatedInputGroup>
+      <SFValidatedInputGroup
         v-slot="{ isValid }"
         :errors="v.newPassword.$errors"
         class="!h-28"
       >
-        <TextInput
+        <SFTextInput
           v-model="payload.newPassword"
           :placeholder="$t('form_fields.new_password')"
           :has-errors="!isValid"
@@ -31,12 +34,12 @@
           @input="v.newPassword.$touch"
         />
         <PasswordMeter :value="payload.newPassword" class="mx-4 mb-2 mt-3" />
-      </ValidatedInputGroup>
-      <ValidatedInputGroup
+      </SFValidatedInputGroup>
+      <SFValidatedInputGroup
         v-slot="{ isValid }"
         :errors="v.repeatedPassword.$errors"
       >
-        <TextInput
+        <SFTextInput
           v-model="payload.repeatedPassword"
           :placeholder="$t('form_fields.repeated_password')"
           :has-errors="!isValid"
@@ -44,15 +47,15 @@
           required
           @input="v.repeatedPassword.$touch"
         />
-      </ValidatedInputGroup>
+      </SFValidatedInputGroup>
       <div class="mt-2 flex w-full items-center justify-center">
-        <AppButton
+        <SFButton
           class="w-full capitalize md:w-auto md:min-w-[50%]"
           :disabled="v.$error || isUpdating"
           @click="updateUserPassword"
         >
           {{ $t('my_account.user.update_password_label') }}
-        </AppButton>
+        </SFButton>
       </div>
     </form>
   </div>

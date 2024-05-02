@@ -8,7 +8,7 @@
     />
     <HeaderMetaBar />
     <AppHeader />
-    <ToastContainer />
+    <SFToastContainer />
     <MobileSidebar />
     <div class="mt-4 grow">
       <NuxtPage />

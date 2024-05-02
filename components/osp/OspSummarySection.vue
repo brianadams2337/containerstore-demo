@@ -4,14 +4,14 @@
       <div class="divide-y divide-gray-500">
         <OspDeliveryDate v-if="deliveryDate" v-bind="{ deliveryDate }" />
         <div class="space-y-2">
-          <Headline
+          <SFHeadline
             size="sm"
             tag="h2"
             is-uppercase
             class="mb-3 mt-8 block sm:hidden"
           >
             {{ $t('osp.order_overview') }}
-          </Headline>
+          </SFHeadline>
 
           <ul v-if="orderItems">
             <li

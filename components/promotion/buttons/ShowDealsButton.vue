@@ -1,5 +1,5 @@
 <template>
-  <AppButton
+  <SFButton
     type="secondary"
     size="xs"
     class="pr-1 text-xs"
@@ -9,7 +9,7 @@
       {{ props.category?.ctaLabel || $t('promotion.show_deals_label') }}
       <IconChevronRight :class="_class" />
     </template>
-  </AppButton>
+  </SFButton>
 </template>
 
 <script setup lang="ts">

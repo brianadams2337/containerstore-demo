@@ -46,7 +46,7 @@
     </div>
     <div v-if="footerContent?.socialMedia" class="container pb-8">
       <div class="flex justify-end gap-4">
-        <DefaultLink
+        <SFLink
           v-for="social in footerContent.socialMedia"
           :key="social?.sys.id"
           :to="social?.fields.url ?? {}"
@@ -54,7 +54,7 @@
           <component
             :is="`IconSocial${getSocialName(social?.fields.type ?? '')}`"
           />
-        </DefaultLink>
+        </SFLink>
       </div>
     </div>
     <div

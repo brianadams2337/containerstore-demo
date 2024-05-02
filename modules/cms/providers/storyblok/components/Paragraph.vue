@@ -6,12 +6,12 @@
     :class="{ 'scroll-mt-8': blok.anchor_id }"
     :style="style"
   >
-    <Headline size="xs" tag="h3">{{ blok.headline }}</Headline>
+    <SFHeadline size="xs" tag="h3">{{ blok.headline }}</SFHeadline>
     <div
       v-if="blok.cta?.linktype === 'email'"
       class="grid grid-cols-2 justify-items-start gap-8"
     >
-      <AppButton type="tertiary" is-full-width>{{ blok.cta.email }}</AppButton>
+      <SFButton type="tertiary" is-full-width>{{ blok.cta.email }}</SFButton>
       <div class="max-w-lg">
         <CMSText :blok="{ ...blok, component: 'CmsText' }" />
       </div>

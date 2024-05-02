@@ -10,7 +10,7 @@
         :key="`tab-${name}-${idx}`"
         class="mx-auto"
       >
-        <AppButton
+        <SFButton
           :id="`tab-${name}-${idx}`"
           :aria-controls="`content-${name}`"
           role="tab"
@@ -20,7 +20,7 @@
           @click="toggleTab(idx)"
         >
           {{ label }}
-        </AppButton>
+        </SFButton>
         <div v-if="activeTab === idx" class="mx-auto h-0.5 w-8 bg-primary" />
       </div>
     </nav>

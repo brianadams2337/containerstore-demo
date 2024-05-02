@@ -1,7 +1,7 @@
 <template>
   <div class="flex w-full items-center justify-between">
-    <Headline size="xl" tag="p">{{ $t('filter.title') }}</Headline>
-    <AppButton
+    <SFHeadline size="xl" tag="p">{{ $t('filter.title') }}</SFHeadline>
+    <SFButton
       type="ghost"
       size="xs"
       data-test-id="closeCross"
@@ -10,7 +10,7 @@
       <template #icon="{ _class }">
         <IconClose :class="_class" />
       </template>
-    </AppButton>
+    </SFButton>
   </div>
 </template>
 

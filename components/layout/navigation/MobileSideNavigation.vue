@@ -23,19 +23,19 @@
           class="mb-3 ml-0 px-5 last:mb-0"
           @click="emit('click:navigationItem')"
         >
-          <DefaultLink :to="child.path"> {{ child.name }}</DefaultLink>
+          <SFLink :to="child.path"> {{ child.name }}</SFLink>
         </li>
       </ul>
     </div>
     <div v-else>
-      <DefaultLink
+      <SFLink
         v-if="rootCategory"
         class="mb-4 px-12 !text-xl !font-bold"
         only-exact-active
         :to="rootCategory.path"
       >
         {{ rootCategory.name }}
-      </DefaultLink>
+      </SFLink>
       <ul v-if="categories?.length" class="my-4 md:mt-0">
         <li
           v-for="category in categories"
@@ -44,19 +44,19 @@
           :class="{ 'text-pink-neon': category.path === '/sale' }"
           @click="setActiveParentCategory(category)"
         >
-          <DefaultLink class="text-base" :to="category.path">
+          <SFLink class="text-base" :to="category.path">
             {{ category.name }}
-          </DefaultLink>
+          </SFLink>
         </li>
       </ul>
-      <DefaultLink
+      <SFLink
         v-if="rootCategory && rootCategory.path !== '/sale'"
         class="px-12 !text-xl text-pink-neon"
         only-exact-active
         to="/sale"
       >
         Sale
-      </DefaultLink>
+      </SFLink>
     </div>
   </div>
 </template>

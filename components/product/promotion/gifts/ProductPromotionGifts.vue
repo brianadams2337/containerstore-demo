@@ -5,9 +5,9 @@
         <span class="flex h-[1.125rem] w-auto items-center justify-center">
           <IconLock class="size-3 text-white" />
         </span>
-        <Headline tag="h2" size="sm" class="text-white" is-bold>
+        <SFHeadline tag="h2" size="sm" class="text-white" is-bold>
           {{ promotionGiftsHeadline }}
-        </Headline>
+        </SFHeadline>
       </div>
 
       <p class="mt-1 text-2xs text-white">

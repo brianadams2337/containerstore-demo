@@ -1,15 +1,15 @@
 <template>
   <div v-editable="blok" class="sm:mx-14" :class="marginClasses">
     <div class="flex w-full justify-between px-6 sm:px-0">
-      <Headline v-if="blok.headline" tag="p" size="base" is-uppercase>
+      <SFHeadline v-if="blok.headline" tag="p" size="base" is-uppercase>
         {{ blok.headline }}
-      </Headline>
+      </SFHeadline>
 
-      <DefaultLink v-if="blok.cta_url && blok.cta_label" :to="blok.cta_url">
+      <SFLink v-if="blok.cta_url && blok.cta_label" :to="blok.cta_url">
         {{ blok.cta_label }}
-      </DefaultLink>
+      </SFLink>
     </div>
-    <HorizontalItemsSlider
+    <SFHorizontalItemsSlider
       with-arrows
       class="mt-4 box-border flex overflow-x-auto overflow-y-hidden scrollbar-hide"
     >
@@ -21,7 +21,7 @@
         class="box-content shrink-0 snap-start snap-always px-0.5 first:pl-5 last:pr-5 sm:box-border sm:first:pl-0 sm:last:pr-0"
         :blok="entry"
       />
-    </HorizontalItemsSlider>
+    </SFHorizontalItemsSlider>
   </div>
 </template>
 
@@ -29,7 +29,9 @@
 import { getComponentName } from '~/modules/cms/utils/helpers'
 import type { CMSImageSliderProps } from '~/modules/cms/providers/storyblok/types'
 import { useStoryblokMargins } from '~/modules/cms/providers/storyblok/composables/useStoryblokMargins'
+
 const props = defineProps<CMSImageSliderProps>()
 const { marginClasses } = useStoryblokMargins(props.blok)
+
 defineOptions({ name: 'CMSImageSlider' })
 </script>

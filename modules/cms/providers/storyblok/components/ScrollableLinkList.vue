@@ -10,9 +10,11 @@
 <script setup lang="ts">
 import type { CMSScrollableLinkProps } from '~/modules/cms/providers/storyblok/types'
 import CMSBannerLink from '~/modules/cms/providers/storyblok/components/BannerLink.vue'
+
 withDefaults(defineProps<CMSScrollableLinkProps>(), {
   hasMarginTop: false,
   fullWidth: false,
 })
+
 defineOptions({ name: 'CMSScrollableLinkList' })
 </script>

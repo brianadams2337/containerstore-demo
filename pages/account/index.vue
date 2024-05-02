@@ -9,22 +9,22 @@
         v-if="user"
         class="flex flex-col justify-center space-x-0 space-y-4 sm:flex-row sm:space-x-8 sm:space-y-0"
       >
-        <ContainerLink
+        <SFContainerLink
           :to="routeList.orders"
           :header="$t('my_account.orders_menu')"
-          :subheader="$t('my_account.orders_count', { count: orderCount })"
+          :sub-header="$t('my_account.orders_count', { count: orderCount })"
           class="w-full"
         />
-        <ContainerLink
+        <SFContainerLink
           :to="routeList.user"
           :header="$t('my_account.profile_menu')"
-          :subheader="$t('my_account.personal_data_title')"
+          :sub-header="$t('my_account.personal_data_title')"
           class="w-full"
         />
-        <ContainerLink
+        <SFContainerLink
           :to="routeList.subscriptionOverview"
           :header="$t('my_account.subscriptions_menu')"
-          :subheader="$t('my_account.subscriptions_subtitle')"
+          :sub-header="$t('my_account.subscriptions_subtitle')"
           class="w-full"
         />
       </div>

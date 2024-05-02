@@ -5,7 +5,7 @@
       :key="item.name"
       data-test-id="sorting-option"
     >
-      <DefaultLink
+      <SFLink
         type="whisper"
         :only-exact-active="true"
         :class="{
@@ -15,7 +15,7 @@
         @click="emit('click:item', item)"
       >
         {{ $t(`sorting_select.${item.name}`) }}
-      </DefaultLink>
+      </SFLink>
     </li>
   </ul>
 </template>

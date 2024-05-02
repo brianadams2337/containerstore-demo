@@ -1,14 +1,14 @@
 <template>
-  <Popover
+  <SFPopover
     :is-open="isUserFlyoutOpen"
     content-wrapper-class="mt-8"
     @mouseenter="isGreaterOrEqual('md') && openUserFlyout()"
     @mouseleave="isGreaterOrEqual('md') && closeUserFlyout()"
   >
     <template #action>
-      <DefaultLink :to="link" raw>
+      <SFLink :to="link" raw>
         <IconAccount class="size-6" />
-      </DefaultLink>
+      </SFLink>
       <div
         v-if="isUserFlyoutOpen"
         class="absolute -bottom-3 h-0.5 w-8 bg-black"
@@ -20,7 +20,7 @@
         <GuestActions v-else />
       </ClientOnly>
     </template>
-  </Popover>
+  </SFPopover>
 </template>
 
 <script setup lang="ts">

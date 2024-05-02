@@ -8,16 +8,17 @@
     }"
     :style="style"
   >
-    <Headline
+    <SFHeadline
       :tag="blok?.fields.headlineTag ? blok?.fields.headlineTag : 'h3'"
       :size="getHeadlineSize(blok?.fields.headlineTag)"
       class="mb-2"
-      >{{ blok?.fields.headline }}</Headline
     >
+      {{ blok?.fields.headline }}
+    </SFHeadline>
     <div v-if="isCtaEmail" class="grid grid-cols-2 justify-items-start gap-8">
-      <AppButton type="tertiary" is-full-width>{{
-        blok?.fields.cta
-      }}</AppButton>
+      <SFButton type="tertiary" is-full-width>
+        {{ blok?.fields.cta }}
+      </SFButton>
       <div class="max-w-lg">
         <CMSText v-if="blok?.fields.body" :blok="blok?.fields.body" />
       </div>

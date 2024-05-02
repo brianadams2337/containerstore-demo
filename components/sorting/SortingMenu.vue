@@ -1,8 +1,8 @@
 <template>
-  <AppMenu>
+  <SFMenu>
     <template #label="{ toggle }">
       <div class="flex justify-end">
-        <AppButton
+        <SFButton
           data-test-id="sorting-button"
           type="tertiary"
           size="sm"
@@ -12,12 +12,12 @@
           <template #icon="{ _class }">
             <IconUpdown :class="_class" />
           </template>
-        </AppButton>
+        </SFButton>
       </div>
     </template>
 
     <template #menuContent="{ close }">
-      <FadeInTransition>
+      <SFFadeInTransition>
         <div
           class="mt-2 min-w-48 max-w-[6.25rem] bg-white px-4 pb-5 pt-3 shadow"
           data-test-id="sorting-options-container"
@@ -29,9 +29,9 @@
             @click:item="selectSorting($event, close)"
           />
         </div>
-      </FadeInTransition>
+      </SFFadeInTransition>
     </template>
-  </AppMenu>
+  </SFMenu>
 </template>
 
 <script setup lang="ts">

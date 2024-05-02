@@ -12,7 +12,7 @@
       class="mb-1 flex h-fit flex-wrap items-center justify-between gap-y-[.125rem] rounded-md bg-blue px-4 py-3 text-xs font-semibold text-white"
       :style="getBackgroundColorStyle(customData.colorHex)"
     >
-      <Headline
+      <SFHeadline
         tag="h2"
         size="xs"
         is-bold
@@ -20,7 +20,7 @@
       >
         {{ $t('promotion.hurry_to_save') }}
         {{ customData.product?.badgeLabel }}
-      </Headline>
+      </SFHeadline>
       <PromotionCountdown
         :until="schedule.to"
         borderless
@@ -34,14 +34,14 @@
       class="mb-2 flex h-fit items-center justify-between rounded-md bg-blue px-4 py-3 text-xs font-semibold text-white last-of-type:mb-0"
       :style="getBackgroundColorStyle(customData.colorHex)"
     >
-      <Headline
+      <SFHeadline
         tag="h2"
         size="xs"
         is-bold
         class="text-balance lg:basis-5/12 xl:basis-7/12"
       >
         {{ $t('promotion.save_your_free_gift') }}
-      </Headline>
+      </SFHeadline>
       <PromotionCountdown
         :until="schedule.to"
         borderless

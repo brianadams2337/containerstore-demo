@@ -12,20 +12,16 @@
     <div class="flex grow flex-col justify-center">
       <div class="space-y-2">
         <div class="mb-8 flex justify-center sm:justify-start md:mb-4">
-          <Headline tag="p" size="base" is-uppercase>
+          <SFHeadline tag="p" size="base" is-uppercase>
             {{ $t('basket_card.confirm_remove_question') }}
-          </Headline>
+          </SFHeadline>
         </div>
 
         <div class="flex space-x-4 sm:max-w-md">
-          <AppButton
-            type="tertiary"
-            is-full-width
-            @click="emit('click:cancel')"
-          >
+          <SFButton type="tertiary" is-full-width @click="emit('click:cancel')">
             {{ $t('basket_card.cancel') }}
-          </AppButton>
-          <AppButton
+          </SFButton>
+          <SFButton
             data-test-id="basket-remove-item-confirm-button"
             no-padding
             is-full-width
@@ -37,7 +33,7 @@
             <span class="hidden sm:block">
               {{ $t('basket_card.remove_long') }}
             </span>
-          </AppButton>
+          </SFButton>
         </div>
       </div>
     </div>

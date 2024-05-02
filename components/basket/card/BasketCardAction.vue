@@ -1,5 +1,5 @@
 <template>
-  <AppButton
+  <SFButton
     v-bind="{ icon, disabled }"
     no-padding
     size="sm"
@@ -11,7 +11,7 @@
       <slot name="icon" :_class="_class" />
     </template>
     <slot />
-  </AppButton>
+  </SFButton>
 </template>
 
 <script setup lang="ts">

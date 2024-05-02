@@ -2,7 +2,7 @@
   <li
     class="h-auto break-all rounded border p-2 transition-colors hover:border-primary hover:bg-secondary-450"
   >
-    <DefaultLink
+    <SFLink
       class="flex w-full flex-1 items-center transition-colors duration-100 ease-in-out"
       :to="to"
       @click="emit('click:result')"
@@ -16,7 +16,7 @@
         class="mr-3 rounded border"
       />
       <slot />
-    </DefaultLink>
+    </SFLink>
   </li>
 </template>
 

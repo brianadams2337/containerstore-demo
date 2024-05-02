@@ -32,7 +32,7 @@
             @click:outside="isChangingSize = false"
           />
         </div>
-        <AppButton
+        <SFButton
           v-if="!hasOneSizeVariantOnly && !isChangingSize"
           data-test-id="wishlist-card-product-size"
           type="secondary"
@@ -40,8 +40,8 @@
           @click="isChangingSize = !isChangingSize"
         >
           {{ selectedSize?.label || $t('wishlist.change_size_label') }}
-        </AppButton>
-        <AppButton
+        </SFButton>
+        <SFButton
           v-if="!isChangingSize"
           :disabled="sizeSavingId === item.product.id"
           data-test-id="wishlist-card-add-to-cart"
@@ -49,7 +49,7 @@
           @click="addItemToCart(index)"
         >
           {{ $t('pdp.add_label') }}
-        </AppButton>
+        </SFButton>
       </div>
     </div>
   </div>

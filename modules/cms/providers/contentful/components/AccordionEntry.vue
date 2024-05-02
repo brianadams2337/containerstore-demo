@@ -6,11 +6,11 @@
     >
       {{ blok?.fields.title }}
     </button>
-    <FadeInTransition>
+    <SFFadeInTransition>
       <div v-if="!isCollapsed">
         <CMSText v-if="blok.fields.body" :blok="blok.fields.body" />
       </div>
-    </FadeInTransition>
+    </SFFadeInTransition>
   </div>
 </template>
 

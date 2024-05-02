@@ -1,9 +1,9 @@
 <template>
   <PageContent>
     <div class="flex w-full justify-between">
-      <Headline is-uppercase>
+      <SFHeadline is-uppercase>
         {{ $t('search.result', { term, resultsCount }) }}
-      </Headline>
+      </SFHeadline>
       <div
         v-if="filters?.length"
         class="order-1 flex items-center space-x-4 text-sm"
@@ -11,12 +11,12 @@
         <section>
           <SortingMenu :selected="selectedSort" :values="sortingValues" />
         </section>
-        <AppButton type="tertiary" size="sm" @click="toggleFilter">
+        <SFButton type="tertiary" size="sm" @click="toggleFilter">
           {{ $t('plp.filter') }}
           <template #icon="{ _class }">
             <IconFilter :class="_class" />
           </template>
-        </AppButton>
+        </SFButton>
       </div>
     </div>
     <ProductList
@@ -27,7 +27,7 @@
       class="mt-8 grid w-auto grid-cols-12 gap-2"
       @click:toggle-product-wishlist="toggleItem($event)"
     />
-    <Pagination
+    <SFPagination
       v-if="pagination"
       :current-page="pagination.page"
       :first-page="pagination.first"

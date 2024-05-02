@@ -1,5 +1,5 @@
 <template>
-  <Popover
+  <SFPopover
     :is-open="isBasketFlyoutOpen"
     :disable-popover-content="isSmaller('md')"
     content-wrapper-class="mt-8"
@@ -7,7 +7,7 @@
     @mouseleave="closeBasketFlyout"
   >
     <template #action>
-      <DefaultLink
+      <SFLink
         data-test-id="basket-link"
         :to="routeList.basket"
         class="relative"
@@ -17,7 +17,7 @@
           {{ countWithoutSoldOutItems }}
         </FloatingBadge>
         <IconCart class="size-6" />
-      </DefaultLink>
+      </SFLink>
       <div
         v-if="isBasketFlyoutOpen"
         class="absolute -bottom-3 h-0.5 w-8 bg-black"
@@ -29,7 +29,7 @@
         <BasketPopoverActions v-if="!isEmpty" />
       </ClientOnly>
     </template>
-  </Popover>
+  </SFPopover>
 </template>
 
 <script setup lang="ts">

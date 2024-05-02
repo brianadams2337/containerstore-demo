@@ -7,10 +7,10 @@
           :key="b?.sys.id"
           class="my-1 font-bold"
         >
-          <DefaultLink raw to="#" class="inline-flex items-center">
+          <SFLink raw to="#" class="inline-flex items-center">
             <IconDropdown class="my-1 mr-2 size-2.5" />
             {{ b?.fields.linkTitle }}
-          </DefaultLink>
+          </SFLink>
         </li>
       </ul>
       <hr class="mt-8" />

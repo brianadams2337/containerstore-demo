@@ -4,7 +4,7 @@
     :class="isFullWidth ? 'w-full !justify-start' : 'w-[19.5rem]'"
   >
     <template v-if="!isFullProgress || isSmaller('lg')">
-      <ProgressBar
+      <SFProgressBar
         :progress="progress"
         rounded
         slanted

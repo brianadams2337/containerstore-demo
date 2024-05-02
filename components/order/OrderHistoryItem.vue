@@ -3,7 +3,7 @@
     class="cursor-pointer bg-white p-5 transition-all ease-in-out"
     :class="{ '!border-primary': id === paramId }"
   >
-    <DefaultLink
+    <SFLink
       raw
       :to="getOrderDetailsRoute(id)"
       class="flex flex-col items-baseline"
@@ -23,7 +23,7 @@
         </span>
       </div>
       <div :class="isLatestOrder ? 'xs:block sm:hidden' : 'hidden'">
-        <ProgressBar
+        <SFProgressBar
           :progress="progressLevel"
           :type="progressType"
           class="my-2"
@@ -33,15 +33,15 @@
           Status:
           <span class="font-bold">{{ status?.split('_').join(' ') }}</span>
         </p>
-        <DefaultLink
+        <SFLink
           :to="getOrderDetailsRoute(id)"
           class="w-full justify-center rounded bg-primary px-5 py-3 text-xs font-semibold text-white md:w-auto md:px-8"
           is-full-width
         >
           {{ $t('my_account.orders.details') }}
-        </DefaultLink>
+        </SFLink>
       </div>
-    </DefaultLink>
+    </SFLink>
   </div>
 </template>
 

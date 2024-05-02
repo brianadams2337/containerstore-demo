@@ -1,5 +1,5 @@
 <template>
-  <HorizontalItemsSlider class="w-full snap-x snap-mandatory" with-arrows>
+  <SFHorizontalItemsSlider class="w-full snap-x snap-mandatory" with-arrows>
     <div
       v-for="(product, index) in products"
       :key="product.id"
@@ -10,7 +10,7 @@
         v-bind="{ product, index, basketItem }"
       />
     </div>
-  </HorizontalItemsSlider>
+  </SFHorizontalItemsSlider>
 </template>
 
 <script setup lang="ts">

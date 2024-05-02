@@ -2,7 +2,7 @@
   <div
     class="relative m-3 flex flex-col rounded border p-3 text-primary hover:bg-secondary-450"
   >
-    <DefaultLink
+    <SFLink
       v-if="mainItem"
       :to="getProductDetailRoute(mainItem.product)"
       class="flex text-sm"
@@ -17,7 +17,7 @@
         />
       </div>
       <BasketPopoverCardPrice :item="mainItem" />
-    </DefaultLink>
+    </SFLink>
     <AddOnItems
       v-if="addOnItems.length"
       :items="addOnItems"

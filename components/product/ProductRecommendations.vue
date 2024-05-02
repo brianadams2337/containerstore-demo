@@ -1,5 +1,5 @@
 <template>
-  <HorizontalItemsSlider
+  <SFHorizontalItemsSlider
     class="space-x-2"
     spaced-items
     spaced-width="sm"
@@ -29,7 +29,7 @@
       @intersect:product="collectColumnIntersection($event, idx)"
       @click.capture="trackRecommendationClick(recommendation, idx)"
     />
-  </HorizontalItemsSlider>
+  </SFHorizontalItemsSlider>
 </template>
 
 <script setup lang="ts">
@@ -40,16 +40,15 @@ import {
   type Product,
 } from '@scayle/storefront-nuxt'
 import { productListingMetaData, Size } from '#imports'
+import { computed } from 'vue'
 
 type Props = {
-  combineWithProductIds: Array<number>
+  combineWithProductIds: number[]
   size?: Size
 }
 
 // TODO use computed property for dynamic class bindings on line 24
-const props = withDefaults(defineProps<Props>(), {
-  size: Size.MD,
-})
+const props = withDefaults(defineProps<Props>(), { size: Size.MD })
 
 const {
   sliderProducts,

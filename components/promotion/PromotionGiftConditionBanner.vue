@@ -3,11 +3,11 @@
     class="flex items-center justify-between gap-y-[.125rem] rounded-md px-4 py-2 text-white md:items-center lg:flex-nowrap"
     :style="{ backgroundColor }"
   >
-    <Headline
+    <SFHeadline
       size="xs"
       is-bold
       class="text-balance md:basis-1/2 lg:basis-5/12 xl:basis-7/12"
-      >{{ label }}</Headline
+      >{{ label }}</SFHeadline
     >
     <PromotionCountdown
       :until="scheduleTo"

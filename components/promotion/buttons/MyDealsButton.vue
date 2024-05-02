@@ -1,5 +1,5 @@
 <template>
-  <AppButton
+  <SFButton
     type="raw"
     size="sm"
     is-uppercase
@@ -12,7 +12,7 @@
       <IconCloseSBold v-if="isPromotionListShown" :class="_class" />
       <IconEquals v-else :class="_class" />
     </template>
-  </AppButton>
+  </SFButton>
 </template>
 
 <script setup lang="ts">

@@ -8,14 +8,14 @@
   </div>
   <div v-else class="mr-4" :class="{ 'animate-pulse': fetching }">
     <div>
-      <DefaultLink
+      <SFLink
         v-if="rootCategory"
         class="mb-4 px-12 !text-xl !font-bold"
         only-exact-active
         :to="rootCategory.path"
       >
         {{ rootCategory.name }}
-      </DefaultLink>
+      </SFLink>
       <ul
         v-if="'length' in categories && categories.length"
         class="my-4 md:mt-0"
@@ -27,9 +27,9 @@
           :class="{ 'text-pink-neon': category.path === '/sale' }"
           @click="emit('click:navigation-item')"
         >
-          <DefaultLink class="text-base" :to="category.path">
+          <SFLink class="text-base" :to="category.path">
             {{ category.name }}
-          </DefaultLink>
+          </SFLink>
           <ul
             v-if="showNestedCategories && category.children?.length"
             class="my-4"
@@ -39,21 +39,21 @@
               :key="`side_navigation_list_item_${child.id}`"
               class="mb-3 ml-3 last:mb-0"
             >
-              <DefaultLink class="!text-sm" :to="child.path">
+              <SFLink class="!text-sm" :to="child.path">
                 {{ child.name }}
-              </DefaultLink>
+              </SFLink>
             </li>
           </ul>
         </li>
       </ul>
-      <DefaultLink
+      <SFLink
         v-if="rootCategory && rootCategory.path !== '/sale'"
         class="px-12 !text-xl text-pink-neon"
         only-exact-active
         to="/sale"
       >
         Sale
-      </DefaultLink>
+      </SFLink>
     </div>
   </div>
 </template>

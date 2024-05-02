@@ -8,11 +8,11 @@
       <IconPlus v-if="isCollapsed" class="size-4 text-primary" />
       <IconMinus v-else class="size-4 text-primary" />
     </button>
-    <FadeInTransition>
+    <SFFadeInTransition>
       <div v-if="!isCollapsed" class="py-4 text-xs text-secondary">
         <slot />
       </div>
-    </FadeInTransition>
+    </SFFadeInTransition>
   </div>
 </template>
 

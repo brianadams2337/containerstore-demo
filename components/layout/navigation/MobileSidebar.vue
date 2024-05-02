@@ -1,5 +1,5 @@
 <template>
-  <SlideInFromLeftTransition>
+  <SFSlideInFromLeftTransition>
     <nav
       v-if="isSideNavigationOpen"
       class="sticky inset-1 z-[100] min-h-screen overflow-hidden overflow-y-auto overscroll-none bg-white md:hidden"
@@ -26,22 +26,22 @@
               v-bind="{ categories, products }"
               @click:result="trackSuggestionClickAndClose"
             />
-            <div v-else-if="hasSearchQuery && noSuggestions" class="mt-4">
-              <EmptyState
-                :title="$t('search.search_try_again')"
-                :description="$t('search.search_try_again_description')"
-              />
-            </div>
-            <FadeInTransition>
+            <EmptyState
+              v-else-if="hasSearchQuery && noSuggestions"
+              :title="$t('search.search_try_again')"
+              :description="$t('search.search_try_again_description')"
+              class="mt-4"
+            />
+            <SFFadeInTransition>
               <div v-if="totalCount" class="flex justify-center">
-                <DefaultLink
+                <SFLink
                   class="ml-4 mt-4 border-b border-b-black"
                   @click="resolveSearchAndClose"
                 >
                   {{ $t('search.more') }}
-                </DefaultLink>
+                </SFLink>
               </div>
-            </FadeInTransition>
+            </SFFadeInTransition>
           </template>
         </div>
 
@@ -54,7 +54,7 @@
         />
       </div>
     </nav>
-  </SlideInFromLeftTransition>
+  </SFSlideInFromLeftTransition>
 </template>
 
 <script setup lang="ts">

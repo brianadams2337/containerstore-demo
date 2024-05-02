@@ -1,21 +1,21 @@
 <template>
   <div class="grid grid-cols-2 gap-2">
-    <AppButton
+    <SFButton
       data-test-id="reset-filter-button"
       type="tertiary"
       class="!capitalize"
       @click="resetFilters()"
     >
       {{ $t('filter.reset_all') }}
-    </AppButton>
-    <AppButton
+    </SFButton>
+    <SFButton
       data-test-id="apply-filter-button"
       is-full-width
       class="!capitalize"
       @click="applyFilters()"
     >
       {{ showResultsLabel }}
-    </AppButton>
+    </SFButton>
   </div>
 </template>
 

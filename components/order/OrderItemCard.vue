@@ -1,5 +1,5 @@
 <template>
-  <DefaultLink :to="getOrderProductDetailRoute(product)" class="w-full">
+  <SFLink :to="getOrderProductDetailRoute(product)" class="w-full">
     <div class="w-full divide-y divide-gray-500">
       <div class="flex h-28 justify-between space-x-4 md:space-x-0">
         <div class="mr-2 w-1/5 flex-none">
@@ -58,7 +58,7 @@
         </div>
       </div>
     </div>
-  </DefaultLink>
+  </SFLink>
 </template>
 
 <script setup lang="ts">

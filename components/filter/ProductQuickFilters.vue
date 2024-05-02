@@ -2,7 +2,7 @@
   <div class="mt-3 flex w-full items-center space-x-4 overflow-x-auto">
     <template v-if="loading">
       <slot name="loading" v-bind="{ loading }">
-        <SkeletonLoader
+        <SFSkeletonLoader
           v-for="n in filters.length + 1"
           :key="n"
           type="button"
@@ -12,7 +12,7 @@
     <template v-else>
       <slot name="body" v-bind="{ totalCount }">
         <slot name="default" v-bind="{ totalCount }">
-          <AppButton
+          <SFButton
             class="text-sm"
             data-test-id="totalCount"
             :badge="totalCount"
@@ -23,14 +23,14 @@
             <slot name="filters-button-default-label">
               {{ $t('filter.all_label') }}
             </slot>
-          </AppButton>
+          </SFButton>
         </slot>
         <slot
           v-for="(filter, idx) in filters"
           name="buttons"
           v-bind="{ filter, totalCount }"
         >
-          <AppButton
+          <SFButton
             :key="idx"
             class="text-sm"
             :badge="filter.count"
@@ -39,7 +39,7 @@
             @click="onFilterApply({ [filter.key]: filter.value })"
           >
             {{ filter.displayName }}
-          </AppButton>
+          </SFButton>
         </slot>
       </slot>
     </template>

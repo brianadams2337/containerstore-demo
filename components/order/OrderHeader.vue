@@ -1,8 +1,8 @@
 <template>
   <div class="bg-white pb-4">
-    <Headline class="mb-4 break-all" tag="h2" size="xl">
+    <SFHeadline class="mb-4 break-all" tag="h2" size="xl">
       {{ headline }}
-    </Headline>
+    </SFHeadline>
     <p class="break-all font-semibold text-secondary">
       <span>{{ shopId }} - {{ orderId }}</span>
       <span>{{ ' · ' }}</span>

@@ -7,9 +7,9 @@
       class="flex justify-between rounded-t-md px-4 py-2 text-white"
       :style="giftBackgroundColorStyle"
     >
-      <Headline size="xs" is-bold>
+      <SFHeadline size="xs" is-bold>
         {{ $t('basket.promotion.choose_free_gift') }}
-      </Headline>
+      </SFHeadline>
       <PromotionCountdown
         v-if="giftPromotion"
         :until="giftPromotion.schedule.to"

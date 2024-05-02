@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="rounded border-primary p-0 md:border md:p-6">
-      <Headline tag="h1" size="xl">{{ $t('basket.total') }}</Headline>
-      <FadeInTransition>
+      <SFHeadline tag="h1" size="xl">{{ $t('basket.total') }}</SFHeadline>
+      <SFFadeInTransition>
         <PromotionHurryToSaveBanners v-if="hasAppliedPromotions" class="mt-4" />
-      </FadeInTransition>
+      </SFFadeInTransition>
       <div class="mt-4 space-y-4">
         <BasketSummaryDetails />
-        <AppButton
+        <SFButton
           data-test-id="checkout-link"
           is-full-width
           type="primary"
@@ -15,7 +15,7 @@
           @click="onClickToCheckoutOrder"
         >
           {{ $t('basket.to_checkout') }}
-        </AppButton>
+        </SFButton>
         <BasketSummarySellingPoints />
       </div>
     </div>

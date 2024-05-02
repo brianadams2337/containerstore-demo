@@ -28,11 +28,13 @@
           <IconClock />
         </div>
         <div>
-          <span class="font-bold capitalize">{{
-            store.openingTimes?.currentlyOpen
-              ? $t('store_locator.labels.store_open')
-              : $t('store_locator.labels.store_closed')
-          }}</span>
+          <span class="font-bold capitalize">
+            {{
+              store.openingTimes?.currentlyOpen
+                ? $t('store_locator.labels.store_open')
+                : $t('store_locator.labels.store_closed')
+            }}
+          </span>
         </div>
       </div>
     </div>

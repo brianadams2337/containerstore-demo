@@ -3,13 +3,13 @@
     <template #default="{ data, pending }">
       <div v-if="pending" class="container mx-auto space-y-2 py-4">
         <div class="w-full max-w-xl">
-          <SkeletonLoader class="mb-10 w-full" full-width />
+          <SFSkeletonLoader class="mb-10 w-full" full-width />
         </div>
-        <SkeletonLoader type="custom" class="h-6 w-72" />
-        <SkeletonLoader type="custom" class="h-6 w-48" />
+        <SFSkeletonLoader type="custom" class="h-6 w-72" />
+        <SFSkeletonLoader type="custom" class="h-6 w-48" />
 
-        <SkeletonLoader type="custom" class="mb-10 h-6 w-72" />
-        <SkeletonLoader type="custom" class="h-40 w-full" />
+        <SFSkeletonLoader type="custom" class="mb-10 h-6 w-72" />
+        <SFSkeletonLoader type="custom" class="h-40 w-full" />
       </div>
 
       <div v-else-if="data">
@@ -21,7 +21,7 @@
         </div>
         <div class="container">
           <div class="py-4">
-            <Breadcrumbs
+            <SFBreadcrumbs
               :items="[
                 { value: 'Home', to: routeList.home.name },
                 { value: data.name, to: data.slug },

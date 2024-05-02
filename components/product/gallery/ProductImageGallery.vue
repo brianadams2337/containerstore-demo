@@ -32,7 +32,7 @@
     </div>
   </div>
   <div class="relative block w-full md:hidden md:w-1/2 xl:w-2/3">
-    <HorizontalItemsSlider
+    <SFHorizontalItemsSlider
       class="-mx-4 aspect-[5/6] snap-x snap-mandatory border-b"
     >
       <Intersect
@@ -52,8 +52,8 @@
           />
         </div>
       </Intersect>
-    </HorizontalItemsSlider>
-    <FadeInTransition>
+    </SFHorizontalItemsSlider>
+    <SFFadeInTransition>
       <div class="absolute bottom-4 flex w-full justify-center space-x-2">
         <div
           v-for="(item, slideIndex) in images"
@@ -64,7 +64,7 @@
           &nbsp;
         </div>
       </div>
-    </FadeInTransition>
+    </SFFadeInTransition>
   </div>
 </template>
 

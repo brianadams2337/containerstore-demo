@@ -23,23 +23,23 @@
         >
           {{ blok.fields.topline }}
         </div>
-        <Headline
+        <SFHeadline
           v-if="blok.fields.headline"
           is-uppercase
           class="!block leading-tight md:text-[40px]"
         >
           {{ blok.fields.headline }}
-        </Headline>
+        </SFHeadline>
         <p v-if="blok.fields.text" class="mt-3 overflow-auto text-xs md:pt-5">
           {{ blok.fields.text }}
         </p>
-        <AppButton
+        <SFButton
           v-if="hasCta && blok.fields.ctaLink"
           class="mt-10 shrink-0"
           :to="blok.fields.ctaLink"
         >
           {{ blok.fields.cta }}
-        </AppButton>
+        </SFButton>
       </div>
     </div>
   </div>
@@ -48,6 +48,7 @@
 <script setup lang="ts">
 import type { CMSImageText } from '~/modules/cms/providers/contentful/types'
 import { useContentfulImageSanitizer } from '~/modules/cms/providers/contentful/composables/useContentfulImage'
+
 const props = withDefaults(defineProps<CMSImageText>(), {
   sizes: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
 })

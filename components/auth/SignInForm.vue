@@ -6,7 +6,7 @@
         class="mt-10 px-2"
       />
 
-      <VerticalAccordion
+      <SFVerticalAccordion
         v-else
         class="mt-10 px-2"
         :initial-index="initialIndex"
@@ -22,11 +22,11 @@
 
         <template v-if="showGuestLogin" #2="{ activateTab }">
           <GuestLoginForm />
-          <AppButton type="tertiary" class="w-full" @click="activateTab(0)">
+          <SFButton type="tertiary" class="w-full" @click="activateTab(0)">
             {{ $t('login_page.guest_login.cancel') }}
-          </AppButton>
+          </SFButton>
         </template>
-      </VerticalAccordion>
+      </SFVerticalAccordion>
 
       <ForgotPasswordForm
         v-if="isForgotPasswordShown"
@@ -42,11 +42,8 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  showGuestLogin: {
-    type: Boolean,
-    default: true,
-  },
+const props = withDefaults(defineProps<{ showGuestLogin?: boolean }>(), {
+  showGuestLogin: true,
 })
 
 const { $i18n } = useNuxtApp()
@@ -64,9 +61,7 @@ const isForgotPasswordShown = computed(() => {
   return !!route.query['forgot-password'] && !route.query.hash
 })
 
-const initialIndex = computed(() => {
-  return route.query.register ? 1 : 0
-})
+const initialIndex = computed(() => (route.query.register ? 1 : 0))
 
 const isUpdatePasswordByHashShown = computed(() => !!route.query.hash)
 

@@ -5,8 +5,7 @@
     @keydown.esc="closeInput"
   >
     <label class="sr-only">{{ $t('search.placeholder') }}</label>
-    <AppButton
-      type="raw"
+    <button
       data-test-id="header-search-button"
       aria-label="Open search input"
       @click="inputActive = true"
@@ -16,10 +15,10 @@
         class="absolute inset-y-2.5 left-2 size-6"
         :class="inputActive ? 'pointer-events-none' : 'cursor-pointer'"
       />
-    </AppButton>
+    </button>
 
-    <FadeInTransition :duration="100">
-      <AppButton
+    <SFFadeInTransition :duration="100">
+      <SFButton
         v-if="searchQuery"
         type="raw"
         aria-label="Close search input"
@@ -32,8 +31,8 @@
           @click="resetSearch"
           @mousedown.prevent
         />
-      </AppButton>
-    </FadeInTransition>
+      </SFButton>
+    </SFFadeInTransition>
     <input
       ref="input"
       v-model="searchQuery"
@@ -50,13 +49,13 @@
       @keydown.enter="resolveSearchAndClose"
     />
 
-    <Flyout ref="suggestionsFlyout" :is-open="isFlyoutOpened">
+    <SFFlyout ref="suggestionsFlyout" :is-open="isFlyoutOpened">
       <SearchResultsContainer
         v-if="showSuggestions"
         @close="closeInput"
         @click:result="trackSuggestionClickAndClose"
       />
-    </Flyout>
+    </SFFlyout>
   </div>
 </template>
 

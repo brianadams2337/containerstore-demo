@@ -28,7 +28,7 @@
         {{ blok?.fields.headline }}
       </h2>
 
-      <DefaultLink
+      <SFLink
         v-if="blok?.fields.ctaUrl && blok?.fields.ctaLabel"
         :to="blok?.fields.ctaUrl"
         class="mt-10"
@@ -44,7 +44,7 @@
         >
           {{ blok?.fields.ctaLabel }}
         </button>
-      </DefaultLink>
+      </SFLink>
     </div>
   </div>
 </template>

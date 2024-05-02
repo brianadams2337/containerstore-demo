@@ -1,5 +1,5 @@
 <template>
-  <SlideIn
+  <SFSlideIn
     class="lg:hidden"
     :name="`wishlistcard_${wishlistItem.product.id}`"
     slide-type="fromBottom"
@@ -24,11 +24,11 @@
           </div>
         </div>
         <div class="px-5 pt-4">
-          <RadioGroup :items="sizes" @update:model-value="selectRadioSize" />
+          <SFRadioGroup :items="sizes" @update:model-value="selectRadioSize" />
         </div>
       </div>
     </template>
-  </SlideIn>
+  </SFSlideIn>
 </template>
 
 <script setup lang="ts">

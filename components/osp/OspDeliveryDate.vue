@@ -1,8 +1,8 @@
 <template>
   <div class="hidden space-y-2 py-6 sm:block">
-    <Headline size="sm" tag="h2" is-uppercase class="mb-3">
+    <SFHeadline size="sm" tag="h2" is-uppercase class="mb-3">
       {{ $t('osp.estimated_deliver_date') }}
-    </Headline>
+    </SFHeadline>
     <div class="text-gray-800">
       {{ formatDate(deliveryDate.minimum) }} -
       {{ formatDate(deliveryDate.maximum) }}

@@ -3,7 +3,7 @@
     <div class="flex items-center">
       <BasketCardDetail label="Add Ons" primary />
       <IconDropdown class="ml-2.5 size-2.5" :class="{ 'rotate-180': isOpen }" />
-      <FadeInTransition :duration="300">
+      <SFFadeInTransition :duration="300">
         <div class="flex-1 text-right" :class="{ 'opacity-0': isOpen }">
           <p class="text-xs font-bold">
             {{ formatCurrency(totalCostOfAddOns) }}
@@ -12,9 +12,9 @@
             {{ $t('incl_tax') }}
           </p>
         </div>
-      </FadeInTransition>
+      </SFFadeInTransition>
     </div>
-    <FadeInTransition>
+    <SFFadeInTransition>
       <div v-if="isOpen">
         <AddOnItem
           v-for="item in items"
@@ -23,7 +23,7 @@
           :size-mode="sizeMode"
         />
       </div>
-    </FadeInTransition>
+    </SFFadeInTransition>
   </div>
 </template>
 

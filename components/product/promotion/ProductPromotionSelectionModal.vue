@@ -1,5 +1,5 @@
 <template>
-  <Modal v-if="isGiftSelectionShown" @close="close">
+  <SFModal v-if="isGiftSelectionShown" @close="close">
     <PageContent>
       <div class="flex flex-1 flex-row items-start gap-8">
         <ProductPromotionGiftImageGallery :images="images" class="w-1/2" />
@@ -13,14 +13,14 @@
                 {{ brand }}
               </div>
               <div class="flex items-start justify-between md:flex-col">
-                <Headline
+                <SFHeadline
                   size="2xl"
                   class="!leading-snug"
                   data-test-id="pdp-product-name"
                   tag="h1"
                 >
                   {{ productName }}
-                </Headline>
+                </SFHeadline>
                 <div class="flex flex-col">
                   <ProductPrice
                     v-if="price"
@@ -87,7 +87,7 @@
                 @select-size="handleSelectedSize"
               />
 
-              <AppButton
+              <SFButton
                 data-test-id="add-item-to-basket-button"
                 is-full-width
                 type="primary"
@@ -98,9 +98,9 @@
                 @click="addItemToBasket(promotion?.id)"
               >
                 {{ $t('pdp.add_label') }}
-              </AppButton>
+              </SFButton>
               <div class="mt-4 flex justify-end">
-                <AppButton
+                <SFButton
                   type="ghost"
                   no-padding
                   size="xs"
@@ -111,14 +111,14 @@
                   <template #append-icon="{ _class }">
                     <IconForward :class="_class" />
                   </template>
-                </AppButton>
+                </SFButton>
               </div>
             </div>
           </div>
         </div>
       </div>
     </PageContent>
-  </Modal>
+  </SFModal>
 </template>
 
 <script setup lang="ts">

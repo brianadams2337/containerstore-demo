@@ -1,5 +1,5 @@
 <template>
-  <VerticalAccordion :tabs="[$t('login_page.welcome_back.title', { name })]">
+  <SFVerticalAccordion :tabs="[$t('login_page.welcome_back.title', { name })]">
     <template #0>
       <LoginForm />
       <button
@@ -11,7 +11,7 @@
         </span>
       </button>
     </template>
-  </VerticalAccordion>
+  </SFVerticalAccordion>
 </template>
 
 <script setup lang="ts">

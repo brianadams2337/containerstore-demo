@@ -1,18 +1,18 @@
 <template>
-  <Modal @close="$emit('close:modal')">
+  <SFModal @close="$emit('close:modal')">
     <template #headline>
       <div>
-        <Headline size="xl" tag="h2" class="mb-4">
+        <SFHeadline size="xl" tag="h2" class="mb-4">
           {{ $t('login_page.forgot_password.title') }}
-        </Headline>
+        </SFHeadline>
         <p class="mb-4 text-sm">
           {{ $t('login_page.forgot_password.description') }}
         </p>
       </div>
     </template>
     <form>
-      <ValidatedInputGroup v-slot="{ isValid }" :errors="v.email.$errors">
-        <TextInput
+      <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.email.$errors">
+        <SFTextInput
           v-model="model.email"
           autocomplete="username"
           :placeholder="$t('form_fields.email')"
@@ -22,27 +22,27 @@
           :readonly="isSubmitting || success"
           @input="v.email.$touch"
         />
-      </ValidatedInputGroup>
+      </SFValidatedInputGroup>
 
       <div class="flex flex-row-reverse justify-between">
-        <AppButton
+        <SFButton
           :disabled="isSubmitting || success"
           :loading="isSubmitting"
           @click="onSubmit()"
         >
           {{ $t('login_page.forgot_password.submit') }}
-        </AppButton>
-        <AppButton
+        </SFButton>
+        <SFButton
           type="tertiary"
           :disabled="isSubmitting"
           :loading="isSubmitting"
           @click="$emit('close:modal')"
         >
           {{ $t('login_page.forgot_password.cancel') }}
-        </AppButton>
+        </SFButton>
       </div>
     </form>
-  </Modal>
+  </SFModal>
 </template>
 
 <script setup lang="ts">

@@ -1,6 +1,6 @@
 <template>
   <div class="relative">
-    <AppButton
+    <SFButton
       v-bind="$attrs"
       class="opacity-50"
       no-padding
@@ -23,7 +23,7 @@
         <IconHeartFull v-if="isInWishlist" :class="_class" />
         <IconHeart v-else :class="_class" />
       </template>
-    </AppButton>
+    </SFButton>
     <div
       v-if="tooltipVisible"
       data-test-id="wishlist-toggle-tooltip"

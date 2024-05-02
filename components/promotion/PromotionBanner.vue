@@ -25,17 +25,17 @@
       <MyDealsButton class="self-center" />
     </div>
   </div>
-  <SlideInFromTopTransition>
+  <SFSlideInFromTopTransition>
     <PromotionList v-if="isPromotionListShown" :items="promotions" />
-  </SlideInFromTopTransition>
-  <Overlay v-if="isPromotionListShown" />
-  <FadeInTransition>
+  </SFSlideInFromTopTransition>
+  <SFOverlay v-if="isPromotionListShown" />
+  <SFFadeInTransition>
     <PromotionMobileBanner
       :promotions="promotions"
       :show-deals-button-visible="showMobileDealsButton"
       :category="category"
     />
-  </FadeInTransition>
+  </SFFadeInTransition>
 </template>
 
 <script setup lang="ts">

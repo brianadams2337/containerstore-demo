@@ -61,4 +61,10 @@ export default withNuxt(
       'vue/html-self-closing': 'off',
     },
   },
+  {
+    ignores: ['./modules/ui/**/*'],
+    rules: {
+      'vue/multi-word-component-names': 'off',
+    },
+  },
 )

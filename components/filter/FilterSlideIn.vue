@@ -1,5 +1,5 @@
 <template>
-  <SlideIn
+  <SFSlideIn
     name="FilterSlideIn"
     slide-class="mt-[7rem] border-t border-l border-primary xl:inset-y-0"
     @open="onSlideInOpen"
@@ -14,7 +14,7 @@
     <template #slide-in-actions>
       <FilterActions />
     </template>
-  </SlideIn>
+  </SFSlideIn>
 </template>
 
 <script setup lang="ts">

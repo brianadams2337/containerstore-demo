@@ -8,18 +8,18 @@
     }"
     :style="style"
   >
-    <Headline
+    <SFHeadline
       :tag="blok.headline_tag ? blok.headline_tag : 'h3'"
       :size="getHeadlineSize(blok.headline_tag)"
       class="mb-2"
     >
       {{ blok.headline }}
-    </Headline>
+    </SFHeadline>
     <div
       v-if="blok.cta?.linktype === 'email'"
       class="grid grid-cols-2 justify-items-start gap-8"
     >
-      <AppButton type="tertiary" is-full-width>{{ blok.cta.email }}</AppButton>
+      <SFButton type="tertiary" is-full-width>{{ blok.cta.email }}</SFButton>
       <div class="max-w-lg">
         <CmsText :blok="{ ...blok, component: 'CmsText' }" />
       </div>

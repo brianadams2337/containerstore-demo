@@ -27,26 +27,26 @@
         >
           {{ blok.topline }}
         </div>
-        <Headline
+        <SFHeadline
           v-if="blok.headline"
           is-uppercase
           class="!block leading-tight md:text-[40px]"
         >
           {{ blok.headline }}
-        </Headline>
+        </SFHeadline>
         <p
           v-if="blok.text"
           class="mt-3 overflow-auto text-xs scrollbar-hide md:pt-5"
         >
           {{ blok.text }}
         </p>
-        <AppButton
+        <SFButton
           v-if="hasCta && blok.cta_link"
           class="mt-10 shrink-0"
           :to="blok.cta_link?.cached_url"
         >
           {{ blok.cta }}
-        </AppButton>
+        </SFButton>
       </div>
     </div>
   </div>

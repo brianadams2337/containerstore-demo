@@ -1,16 +1,16 @@
 <template>
-  <Modal hide-close-button>
+  <SFModal hide-close-button>
     <template #headline>
       <div>
-        <Headline size="xl" tag="h2" class="mb-4">
+        <SFHeadline size="xl" tag="h2" class="mb-4">
           {{ $t('login_page.reset_password.title') }}
-        </Headline>
+        </SFHeadline>
       </div>
     </template>
 
     <form>
-      <ValidatedInputGroup v-slot="{ isValid }" :errors="v.password.$errors">
-        <TextInput
+      <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.password.$errors">
+        <SFTextInput
           v-model="model.password"
           autocomplete="current-password"
           :placeholder="$t('form_fields.new_password')"
@@ -20,27 +20,27 @@
           :readonly="isSubmitting"
           @input="v.password.$touch"
         />
-      </ValidatedInputGroup>
+      </SFValidatedInputGroup>
 
       <div class="flex flex-row-reverse justify-between">
-        <AppButton
+        <SFButton
           :disabled="isSubmitting"
           :loading="isSubmitting"
           @click="onSubmit"
         >
           {{ $t('login_page.reset_password.submit') }}
-        </AppButton>
-        <AppButton
+        </SFButton>
+        <SFButton
           type="tertiary"
           :disabled="isSubmitting"
           :loading="isSubmitting"
           @click="$emit('close:modal')"
         >
           {{ $t('login_page.reset_password.cancel') }}
-        </AppButton>
+        </SFButton>
       </div>
     </form>
-  </Modal>
+  </SFModal>
 </template>
 
 <script setup lang="ts">

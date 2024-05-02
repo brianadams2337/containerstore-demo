@@ -8,7 +8,7 @@
     class="sticky text-sm"
   >
     <slot :close="storefrontBanner && storefrontBanner.close">
-      <transition
+      <Transition
         leave-from-class="opacity-100 translate-y-0"
         leave-to-class="opacity-0 -translate-y-4"
         leave-active-class="transform transition ease-out duration-300 "
@@ -33,7 +33,7 @@
                     component: 'CmsText',
                   }"
                 />
-                <Countdown
+                <SFCountdown
                   v-if="blok.countdown_until"
                   :until="blok.countdown_until"
                   class="my-4 md:ml-5"
@@ -51,7 +51,7 @@
               name="action"
               :close="storefrontBanner && storefrontBanner.close"
             >
-              <AppButton
+              <SFButton
                 no-padding
                 size="xs"
                 type="ghost"
@@ -61,11 +61,11 @@
                 <template #icon="{ _class }">
                   <IconClose :class="_class" />
                 </template>
-              </AppButton>
+              </SFButton>
             </slot>
           </section>
         </Intersect>
-      </transition>
+      </Transition>
     </slot>
   </component>
 </template>

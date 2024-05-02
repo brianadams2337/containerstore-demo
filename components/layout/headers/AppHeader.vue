@@ -5,7 +5,7 @@
         class="mx-4 flex h-[4.375rem] items-center justify-between gap-1 md:container sm:gap-4"
       >
         <div class="flex-1">
-          <AppButton
+          <SFButton
             class="md:hidden"
             type="ghost"
             data-test-id="side-navigation-button"
@@ -13,7 +13,7 @@
           >
             <IconClose v-if="isSideNavigationOpen" class="size-6" />
             <IconBurger v-else class="size-6" />
-          </AppButton>
+          </SFButton>
         </div>
         <AppLogo class="ml-4 flex-initial" :width="138" :height="32" />
         <div class="flex flex-1 justify-end">
@@ -26,7 +26,7 @@
       :navigation-tree="navigationTreeItems[0]"
       @mouseleave="closeFlyoutMenu"
     />
-    <FlyoutMenu
+    <SFFlyoutMenu
       v-if="!isCheckoutPage"
       :is-open="isFlyoutMenuOpen"
       @mouseleave="closeFlyoutMenu"
@@ -39,7 +39,7 @@
       <template #teaser>
         <slot name="flyout-teaser" />
       </template>
-    </FlyoutMenu>
+    </SFFlyoutMenu>
   </div>
 </template>
 
@@ -47,11 +47,12 @@
 const { isFlyoutMenuOpen, closeFlyoutMenu } = useFlyouts()
 
 const { isSideNavigationOpen, toggleSideNavigation } = useSideNavigation()
+const { getLocalizedRoute } = useRouteHelpers()
 
 const { navigationTreeItems } = await useNavigationTreeItems('header')
 
 // TODO: Check if this really works when we start touching checkout related stuff
 const { isExactActive: isCheckoutPage } = useLink({
-  to: routeList.checkout.path,
+  to: getLocalizedRoute(routeList.checkout.path),
 })
 </script>

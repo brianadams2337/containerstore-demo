@@ -1,21 +1,21 @@
 <template>
-  <HorizontalItemsDivider v-if="breadcrumbs.length" :items="breadcrumbs">
+  <SFHorizontalItemsDivider v-if="breadcrumbs.length" :items="breadcrumbs">
     <template #default="{ items }">
       <template v-for="(link, idx) in items" :key="`breadcrumb-${idx}`">
-        <DefaultLink
+        <SFLink
           :to="link.to"
           size="sm"
           type="quieter"
           class="capitalize !text-black hover:underline"
           only-exact-active
         >
-          <Headline v-if="isActive(link.to)" size="sm">
+          <SFHeadline v-if="isActive(link.to)" size="sm">
             {{ link.value }}
-          </Headline>
+          </SFHeadline>
           <template v-else>
             {{ link.value }}
           </template>
-        </DefaultLink>
+        </SFLink>
         <span
           v-if="showDividerTag(idx, items.length)"
           :key="`span-${link.value}`"
@@ -25,11 +25,12 @@
         </span>
       </template>
     </template>
-  </HorizontalItemsDivider>
+  </SFHorizontalItemsDivider>
 </template>
 
 <script setup lang="ts">
 import { getBreadcrumbsFromPath } from '@scayle/storefront-nuxt'
+import { SFHorizontalItemsDivider, SFLink, SFHeadline } from '#components'
 
 const route = useRoute()
 const currentShop = useCurrentShop()

@@ -1,5 +1,5 @@
 <template>
-  <DefaultLink :to="linkTo" raw>
+  <SFLink :to="linkTo" raw>
     <svg
       v-bind="{ height, width }"
       fill="none"
@@ -26,7 +26,7 @@
         fill-rule="evenodd"
       />
     </svg>
-  </DefaultLink>
+  </SFLink>
 </template>
 
 <script setup lang="ts">

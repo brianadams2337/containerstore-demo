@@ -12,10 +12,12 @@
         <CMSImage :blok="content" is-teaser />
       </div>
       <PageContent v-if="products?.length === 0">
-        <Headline class="!block" size="xl">{{ $t('plp.no_results') }}</Headline>
-        <Headline size="sm" class="mt-4 !block text-gray-700">
+        <SFHeadline class="!block" size="xl">
+          {{ $t('plp.no_results') }}
+        </SFHeadline>
+        <SFHeadline size="sm" class="mt-4 !block text-gray-700">
           {{ $t('plp.no_products') }}
-        </Headline>
+        </SFHeadline>
       </PageContent>
       <PageContent v-else class="sm:flex">
         <div class="-ml-4 hidden w-1/3 md:block md:w-2/5 lg:w-3/12">
@@ -50,7 +52,7 @@
                   :selected="selectedSort.name"
                   :values="sortingValues"
                 />
-                <AppButton
+                <SFButton
                   data-test-id="filter-toggle-button"
                   type="tertiary"
                   size="sm"
@@ -60,7 +62,7 @@
                     <IconFilter :class="_class" />
                   </template>
                   {{ $t('plp.filter') }}
-                </AppButton>
+                </SFButton>
               </div>
             </div>
           </div>
@@ -72,7 +74,7 @@
             @click:product="trackProductClick"
             @intersect:row="trackViewListing"
           />
-          <Pagination
+          <SFPagination
             v-if="pagination"
             class="mt-16"
             :current-page="pagination.page"

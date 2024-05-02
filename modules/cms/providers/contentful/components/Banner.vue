@@ -7,7 +7,7 @@
     class="sticky text-sm"
   >
     <slot :close="close">
-      <transition
+      <Transition
         leave-from-class="opacity-100 translate-y-0"
         leave-to-class="opacity-0 -translate-y-4"
         leave-active-class="transform transition ease-out duration-300 "
@@ -26,7 +26,7 @@
             <slot name="body">
               <div class="md:flex md:w-full md:items-center md:justify-center">
                 <CMSText :blok="blok?.fields.body ?? null" />
-                <Countdown
+                <SFCountdown
                   v-if="blok?.fields.countdownUntil"
                   :until="blok?.fields.countdownUntil"
                   class="my-4 md:ml-5"
@@ -41,7 +41,7 @@
             </slot>
 
             <slot name="action" :close="close">
-              <AppButton
+              <SFButton
                 no-padding
                 size="xs"
                 type="ghost"
@@ -51,11 +51,11 @@
                 <template #icon="{ _class }">
                   <IconClose :class="_class" />
                 </template>
-              </AppButton>
+              </SFButton>
             </slot>
           </section>
         </Intersect>
-      </transition>
+      </Transition>
     </slot>
   </component>
 </template>
@@ -63,6 +63,7 @@
 <script setup lang="ts">
 import type { CMSBannerProps } from '~/modules/cms/providers/contentful/types'
 import CMSText from '~/modules/cms/providers/contentful/components/Text.vue'
+
 const props = withDefaults(defineProps<CMSBannerProps>(), {
   type: '',
 })

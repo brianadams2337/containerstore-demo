@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col gap-6">
     <form v-if="v">
-      <ValidatedInputGroup v-slot="{ isValid }" :errors="v.email.$errors">
-        <TextInput
+      <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.email.$errors">
+        <SFTextInput
           v-model="editableUser.email"
           autocomplete="username"
           :placeholder="$t('form_fields.email')"
@@ -13,10 +13,10 @@
           data-test-id="login-email"
           @change="v.email.$touch()"
         />
-      </ValidatedInputGroup>
+      </SFValidatedInputGroup>
 
-      <ValidatedInputGroup v-slot="{ isValid }" :errors="v.password.$errors">
-        <TextInput
+      <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.password.$errors">
+        <SFTextInput
           v-model="editableUser.password"
           autocomplete="current-password"
           :placeholder="$t('form_fields.password')"
@@ -27,10 +27,10 @@
           data-test-id="login-password"
           @change="v.password.$touch()"
         />
-      </ValidatedInputGroup>
+      </SFValidatedInputGroup>
 
       <div class="py-2 text-right">
-        <DefaultLink
+        <SFLink
           :to="{
             name: routeList.signin.name,
             query: { ['forgot-password']: 'true' },
@@ -42,10 +42,10 @@
           <span
             class="absolute inset-x-0 bottom-[-2px] h-px bg-gray-800 transition-all group-hover:inset-x-[-5px] group-hover:bg-black"
           />
-        </DefaultLink>
+        </SFLink>
       </div>
 
-      <AppButton
+      <SFButton
         class="w-full"
         :disabled="isSubmitting"
         :loading="isSubmitting"
@@ -53,7 +53,7 @@
         @click="onSubmit()"
       >
         {{ $t('global.sign_in') }}
-      </AppButton>
+      </SFButton>
     </form>
     <IDPForm v-if="hasIDPs" :redirects="externalIDPRedirects" />
   </div>

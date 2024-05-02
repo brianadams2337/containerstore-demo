@@ -3,15 +3,15 @@
     class="container mt-10 flex flex-col items-center justify-center text-primary"
   >
     <section class="flex flex-col items-center">
-      <Headline is-uppercase>{{ title }}</Headline>
-      <Headline class="mt-2" size="sm" tag="h2" is-uppercase>
+      <SFHeadline is-uppercase>{{ title }}</SFHeadline>
+      <SFHeadline class="mt-2" size="sm" tag="h2" is-uppercase>
         {{ userMessage }}
-      </Headline>
+      </SFHeadline>
     </section>
     <section class="mt-6">
-      <AppButton @click="$emit('clear-error')">
+      <SFButton @click="$emit('clear-error')">
         {{ $t('error.continue_shopping') }}
-      </AppButton>
+      </SFButton>
     </section>
     <div v-if="isInDevMode" class="max-w-full overflow-auto">
       <div>{{ statusCode }} {{ statusMessage }}</div>

@@ -26,7 +26,7 @@ const screens = Object.entries(breakpoints).reduce(
 )
 
 export default {
-  content: ['modules/cms/**/*.{vue,js, ts}'],
+  content: ['modules/**/*.{vue,js, ts}'],
   theme: {
     screens,
     container: {

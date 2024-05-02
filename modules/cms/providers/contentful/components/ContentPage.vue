@@ -1,9 +1,9 @@
 <template>
   <div v-if="blok?.fields">
     <div class="my-8">
-      <Headline size="xl" tag="h1" is-uppercase>
+      <SFHeadline size="xl" tag="h1" is-uppercase>
         {{ blok?.fields.headline }}
-      </Headline>
+      </SFHeadline>
       <p class="my-8">
         {{ blok?.fields.subline }}
       </p>

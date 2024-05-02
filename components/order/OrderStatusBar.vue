@@ -3,10 +3,10 @@
     <div class="flex flex-row-reverse items-center md:flex-row">
       <IconDelivery class="mr-0 h-6 w-14 md:mr-4" />
       <div class="mr-2 flex grow flex-col">
-        <Headline tag="h2" size="sm" is-bold class="mb-1">
+        <SFHeadline tag="h2" size="sm" is-bold class="mb-1">
           {{ $t('my_account.orders.delivery') }} {{ index + 1 }}
-        </Headline>
-        <Headline tag="h3" size="xs" class="flex flex-wrap !font-normal">
+        </SFHeadline>
+        <SFHeadline tag="h3" size="xs" class="flex flex-wrap !font-normal">
           <span>{{ $t('my_account.orders.expected_delivery_from') }}:</span>
           <span class="font-semibold">
             {{
@@ -14,11 +14,11 @@
               - ${formatLocaleDate(deliveryDate.maximum)}`
             }}
           </span>
-        </Headline>
+        </SFHeadline>
       </div>
     </div>
     <div class="mt-5 md:hidden">
-      <ProgressBar
+      <SFProgressBar
         :progress="progressLevel"
         class="mb-1 mt-2"
         rounded
@@ -30,7 +30,7 @@
       </h3>
     </div>
     <div class="mt-5 text-center md:mt-2">
-      <!-- NOTE: This space can be used to insert a custom shipment detail link using the DefaultLink component -->
+      <!-- NOTE: This space can be used to insert a custom shipment detail link using the Link component -->
     </div>
   </div>
 </template>

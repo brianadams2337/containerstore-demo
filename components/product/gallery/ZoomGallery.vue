@@ -1,5 +1,5 @@
 <template>
-  <Modal full-screen @close="emit('click:close-zoom-gallery')">
+  <SFModal full-screen @close="emit('click:close-zoom-gallery')">
     <div class="relative flex size-full flex-col">
       <!-- slides -->
       <div class="relative h-full flex-1 overflow-hidden">
@@ -43,14 +43,14 @@
       <div
         class="absolute bottom-0 left-2/4 w-full -translate-x-2/4 sm:bottom-6 sm:w-auto"
       >
-        <ThumbnailSlider
+        <SFThumbnailSlider
           :images="images"
           :active-index="currentIndex"
           @click:thumbnail="handleThumbnailClick($event)"
         />
       </div>
     </div>
-  </Modal>
+  </SFModal>
 </template>
 
 <script setup lang="ts">

@@ -1,8 +1,8 @@
 <template>
-  <HorizontalItemsDivider tag="DefaultLink" :items="links">
+  <SFHorizontalItemsDivider tag="SFLink" :items="links">
     <template #default="{ items }">
-      <DefaultLink
-        v-for="(link, idx) in asLinks(items)"
+      <SFLink
+        v-for="(link, idx) in items"
         :key="link.value"
         raw
         class="inline text-sm font-light uppercase leading-5"
@@ -10,21 +10,19 @@
         :to="link.to"
       >
         {{ link.value }}
-        <template v-if="showDividerTag(idx, items.length)"> / </template>
-      </DefaultLink>
+        <template v-if="showDividerTag(idx, items.length)">/</template>
+      </SFLink>
     </template>
-  </HorizontalItemsDivider>
+  </SFHorizontalItemsDivider>
 </template>
 
-<script setup lang="ts">
-type Link = { value: string; to: any }
+<script
+  setup
+  lang="ts"
+  generic="Link extends { value: string; to: RouteLocationRaw }"
+>
+import { SFHorizontalItemsDivider } from '#components'
+import type { RouteLocationRaw } from '#vue-router'
 
-defineProps({
-  links: {
-    type: Array as PropType<Link[]>,
-    required: true,
-  },
-})
-
-const asLinks = (items: any) => items as Link[]
+defineProps<{ links: Link[] }>()
 </script>

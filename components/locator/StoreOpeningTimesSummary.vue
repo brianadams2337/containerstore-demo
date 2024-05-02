@@ -1,14 +1,14 @@
 <template>
   <details class="mt-5 rounded bg-secondary-450 px-2" :open="openingHoursOpen">
     <summary>
-      <AppButton
+      <SFButton
         type="ghost"
         class="flex-row-reverse text-xs !normal-case"
         rounded
         @click="openingHoursOpen = !openingHoursOpen"
       >
         {{ $t('store_locator.buttons.opening_hours') }}
-      </AppButton>
+      </SFButton>
     </summary>
     <div class="pb-2">
       <div v-for="day in daysOfWeek" :key="day" class="mb-1">

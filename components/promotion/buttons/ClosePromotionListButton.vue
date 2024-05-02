@@ -1,5 +1,5 @@
 <template>
-  <AppButton
+  <SFButton
     type="raw"
     size="xs"
     fab
@@ -11,7 +11,7 @@
     <template #icon="{ _class }">
       <IconCloseBold :class="_class" class="text-white" />
     </template>
-  </AppButton>
+  </SFButton>
 </template>
 
 <script setup lang="ts">

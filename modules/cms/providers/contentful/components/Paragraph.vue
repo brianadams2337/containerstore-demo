@@ -1,12 +1,12 @@
 <template>
   <div class="prose mb-10 flex w-full flex-col">
-    <Headline size="xs" tag="h3">
+    <SFHeadline size="xs" tag="h3">
       {{ blok?.fields.headline }}
-    </Headline>
+    </SFHeadline>
     <div v-if="isCtaEmail" class="grid grid-cols-2 justify-items-start gap-8">
-      <AppButton type="tertiary" is-full-width>
+      <SFButton type="tertiary" is-full-width>
         {{ blok?.fields.cta }}
-      </AppButton>
+      </SFButton>
       <div class="max-w-lg">
         <CMSText v-if="blok?.fields.body" :blok="blok?.fields.body" />
       </div>

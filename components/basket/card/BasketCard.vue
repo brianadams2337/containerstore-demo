@@ -1,5 +1,5 @@
 <template>
-  <FadeInTransition>
+  <SFFadeInTransition>
     <div
       v-if="uiState === 'default'"
       data-test-id="basket-card"
@@ -10,7 +10,7 @@
           class="flex w-28 items-center pr-3 lg:w-48 lg:p-0 lg:pr-6 relative"
           @click.capture="selectItem"
         >
-          <DefaultLink
+          <SFLink
             :to="getProductDetailRoute(product)"
             class="h-full rounded-md bg-gray-200 p-2"
           >
@@ -26,28 +26,28 @@
               :is-promotion-badge-full-width="false"
               class="absolute"
             />
-            <FadeInTransition>
+            <SFFadeInTransition>
               <ProductPromotionFreeGiftBadge
                 v-if="isFreeGift"
                 :background-color-style="giftBackgroundColorStyle"
                 class="absolute bottom-2 left-2"
               />
-            </FadeInTransition>
-          </DefaultLink>
+            </SFFadeInTransition>
+          </SFLink>
         </div>
         <div
           class="flex flex-1 flex-col justify-center gap-2 lg:flex-row lg:gap-0 lg:p-0"
         >
           <div class="flex grow flex-col justify-between gap-2 lg:pt-4">
             <div @click.capture="selectItem">
-              <DefaultLink :to="getProductDetailRoute(product)" class="block">
+              <SFLink :to="getProductDetailRoute(product)" class="block">
                 <BasketCardDetail
                   v-if="brand && name"
                   :label="brand"
                   :value="name"
                   primary
                 />
-              </DefaultLink>
+              </SFLink>
             </div>
             <BasketCardDetail
               v-if="size"
@@ -65,7 +65,7 @@
           </div>
           <div class="flex items-end justify-between gap-2 lg:flex-col">
             <div>
-              <Dropdown
+              <SFDropdown
                 v-if="inStock"
                 :disabled="isFreeGift"
                 :model-value="quantity"
@@ -188,7 +188,7 @@
       @click:confirm="onConfirmDelete"
       @click:cancel="onCancelDelete"
     />
-  </FadeInTransition>
+  </SFFadeInTransition>
 </template>
 
 <script setup lang="ts">

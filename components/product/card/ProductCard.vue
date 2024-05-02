@@ -35,11 +35,7 @@
                 }"
               >
                 <slot name="button" />
-                <DefaultLink
-                  :to="link"
-                  raw
-                  @click.capture="$emit('click:product')"
-                >
+                <SFLink :to="link" raw @click.capture="$emit('click:product')">
                   <ProductImage
                     v-if="image"
                     v-bind="{ image, imageLoading }"
@@ -53,7 +49,7 @@
                     v-if="hoverImage && loadHoverImage"
                     class="opacity-0 transition duration-300 group-hover:opacity-100"
                   >
-                    <FadeInTransition :duration="300">
+                    <SFFadeInTransition :duration="300">
                       <ProductImage
                         :image="hoverImage"
                         :image-loading="imageLoading"
@@ -62,12 +58,12 @@
                         fit="cover"
                         class="absolute inset-0"
                       />
-                    </FadeInTransition>
+                    </SFFadeInTransition>
                   </div>
-                </DefaultLink>
+                </SFLink>
               </slot>
               <slot name="badge" :label="badgeLabel">
-                <DefaultLink
+                <SFLink
                   v-if="badgeLabel"
                   :to="link"
                   raw
@@ -77,7 +73,7 @@
                     :badge-label="badgeLabel"
                     class="absolute left-0 top-0"
                   />
-                </DefaultLink>
+                </SFLink>
               </slot>
             </div>
           </slot>
@@ -86,7 +82,7 @@
             v-bind="{ ...$props, name, price, title, lowestPriorPrice }"
           >
             <div class="my-2 px-2.5 md:my-2.5">
-              <DefaultLink
+              <SFLink
                 :to="link"
                 raw
                 class="flex flex-col whitespace-pre-line break-words text-2xs font-medium uppercase leading-tight text-primary opacity-50 sm:leading-4 md:text-xs"
@@ -103,7 +99,7 @@
                     type="whisper"
                   />
                 </slot>
-              </DefaultLink>
+              </SFLink>
               <div class="mt-2">
                 <slot name="description-action" :colors="colors">
                   <ProductSiblingPicker
@@ -112,18 +108,15 @@
                     class="flex pb-1"
                   >
                     <template #item="{ item }">
-                      <DefaultLink
-                        :to="getProductDetailRoute(product, item.id)"
-                        raw
-                      >
-                        <ColorChip
+                      <SFLink :to="getProductDetailRoute(product, item.id)" raw>
+                        <SFColorChip
                           v-if="item.colors.length"
                           data-test-id="product-card-color-circle"
                           :color="item.colors[0] as ProductColor"
                           :size="colorChipSize"
                           :rounded="colorChipRoundedSize"
                         />
-                      </DefaultLink>
+                      </SFLink>
                     </template>
                   </ProductSiblingPicker>
                 </slot>

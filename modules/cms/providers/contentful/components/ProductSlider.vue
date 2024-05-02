@@ -1,19 +1,19 @@
 <template>
   <div v-if="blok && !fetching" :class="marginClasses">
     <div class="flex w-full justify-between px-5 sm:px-14">
-      <Headline v-if="blok?.fields.headline" tag="p" size="base" is-uppercase>
+      <SFHeadline v-if="blok?.fields.headline" tag="p" size="base" is-uppercase>
         {{ blok.fields.headline }}
-      </Headline>
+      </SFHeadline>
 
-      <DefaultLink
+      <SFLink
         v-if="blok?.fields.ctaUrl && blok.fields.ctaLabel"
         :to="blok.fields.ctaUrl"
       >
         {{ blok.fields.ctaLabel }}
-      </DefaultLink>
+      </SFLink>
     </div>
 
-    <HorizontalItemsSlider
+    <SFHorizontalItemsSlider
       class="mt-4"
       with-arrows
       data-test-id="horizontal-product-slider"
@@ -46,7 +46,7 @@
           <IconArrowRight class="size-8 p-1.5" />
         </button>
       </template>
-    </HorizontalItemsSlider>
+    </SFHorizontalItemsSlider>
   </div>
 </template>
 

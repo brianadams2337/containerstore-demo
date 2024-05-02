@@ -4,8 +4,8 @@
       <SalutationSelect v-model="editableUser.gender" />
     </div>
 
-    <ValidatedInputGroup v-slot="{ isValid }" :errors="v.email.$errors">
-      <TextInput
+    <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.email.$errors">
+      <SFTextInput
         v-model="editableUser.email"
         autocomplete="username"
         :placeholder="$t('form_fields.email')"
@@ -15,10 +15,10 @@
         :readonly="isSubmitting"
         @change="v.email.$touch()"
       />
-    </ValidatedInputGroup>
+    </SFValidatedInputGroup>
 
-    <ValidatedInputGroup v-slot="{ isValid }" :errors="v.first_name.$errors">
-      <TextInput
+    <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.first_name.$errors">
+      <SFTextInput
         v-model="editableUser.first_name"
         autocomplete="given-name"
         :placeholder="$t('form_fields.first_name')"
@@ -27,10 +27,10 @@
         :readonly="isSubmitting"
         @change="v.first_name.$touch()"
       />
-    </ValidatedInputGroup>
+    </SFValidatedInputGroup>
 
-    <ValidatedInputGroup v-slot="{ isValid }" :errors="v.last_name.$errors">
-      <TextInput
+    <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.last_name.$errors">
+      <SFTextInput
         v-model="editableUser.last_name"
         autocomplete="family-name"
         :placeholder="$t('form_fields.last_name')"
@@ -39,16 +39,16 @@
         :readonly="isSubmitting"
         @change="v.last_name.$touch()"
       />
-    </ValidatedInputGroup>
+    </SFValidatedInputGroup>
 
-    <AppButton
+    <SFButton
       class="w-full"
       :disabled="isSubmitting"
       :loading="isSubmitting"
       @click="onSubmit()"
     >
       {{ $t('login_page.guest_login.submit') }}
-    </AppButton>
+    </SFButton>
   </form>
 </template>
 

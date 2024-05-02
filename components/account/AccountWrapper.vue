@@ -22,16 +22,16 @@
               {{ $t('my_account.no_orders_found') }}
             </div>
             <div class="border-t border-t-gray-350 bg-secondary-450 p-5">
-              <DefaultLink
+              <SFLink
                 :to="routeList.home"
                 class="!block w-full rounded bg-white px-4 py-2 text-center text-xs"
               >
                 {{ $t('error.continue_shopping') }}
-              </DefaultLink>
+              </SFLink>
             </div>
           </div>
           <div v-if="orders?.length" class="text-center">
-            <SimplePagination
+            <SFSimplePagination
               v-if="orders.length > ORDERS_PER_PAGE"
               :current-page="currentPage"
               :per-page="ORDERS_PER_PAGE"

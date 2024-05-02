@@ -7,15 +7,15 @@
       v-if="!fetchingCategories"
       class="container flex items-center space-x-16"
     >
-      <DefaultLink
+      <SFLink
         class="border-b-2 border-transparent py-2.5 font-normal hover:border-black sm:text-sm sm:font-semibold"
         :to="routeList.home"
         type="quiet"
       >
         {{ $t('global.home') }}
-      </DefaultLink>
+      </SFLink>
 
-      <DefaultLink
+      <SFLink
         v-for="category in rootCategories"
         :key="`nav-link-${category.id}`"
         :data-test-id="`nav-link-${category.id}`"
@@ -25,7 +25,7 @@
         @mouseenter="openFlyoutMenu(category)"
       >
         {{ category.name }}
-      </DefaultLink>
+      </SFLink>
 
       <template v-if="navigationTree">
         <NavigationTreeItem

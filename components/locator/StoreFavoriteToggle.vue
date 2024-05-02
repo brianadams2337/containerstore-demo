@@ -10,10 +10,12 @@
     <IconSelection class="size-4" />
   </button>
 </template>
+
 <script setup lang="ts">
 interface Props {
   storeId: number
 }
+
 const props = defineProps<Props>()
 const favoriteStoreId = useFavoriteStore()
 const isFavoriteStore = computed(() => favoriteStoreId.value === props.storeId)

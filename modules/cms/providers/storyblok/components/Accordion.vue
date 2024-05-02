@@ -3,10 +3,10 @@
     <div v-if="blok.has_link_list" class="max-w-lg">
       <ul class="grid grid-cols-2 justify-items-start">
         <li v-for="b in blok.entries" :key="b._uid" class="my-1 font-bold">
-          <DefaultLink raw to="#" class="inline-flex items-center">
+          <SFLink raw to="#" class="inline-flex items-center">
             <IconDropdown class="my-1 mr-2 size-2.5" />
             {{ b.link_title }}
-          </DefaultLink>
+          </SFLink>
         </li>
       </ul>
       <hr class="mt-8" />

@@ -1,7 +1,7 @@
 <template>
-  <DefaultLink v-if="!isInEditorMode" raw :to="resolvedLink" :target="target">
+  <SFLink v-if="!isInEditorMode" raw :to="resolvedLink" :target="target">
     <slot />
-  </DefaultLink>
+  </SFLink>
   <div v-else :to="to">
     <slot />
   </div>

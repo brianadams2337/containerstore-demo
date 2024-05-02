@@ -1,6 +1,6 @@
 <template>
   <div class="relative flex flex-col">
-    <HorizontalItemsSlider
+    <SFHorizontalItemsSlider
       class="aspect-[5/6] snap-x snap-mandatory rounded-md bg-gray-200"
       with-arrows
     >
@@ -20,7 +20,7 @@
           class="absolute inset-0"
         />
       </Intersect>
-    </HorizontalItemsSlider>
+    </SFHorizontalItemsSlider>
     <div class="mt-2 flex justify-center">
       <div
         v-for="(image, imageIndex) in images"

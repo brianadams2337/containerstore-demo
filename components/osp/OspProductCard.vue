@@ -8,7 +8,7 @@
           class="max-h-full max-w-full"
         />
       </div>
-      <div class="my-2 flex w-3/5 flex-col justify-between">
+      <div class="my-2 ml-3 flex w-3/5 flex-col justify-between">
         <p class="text-sm">
           {{ name }}
           <span v-if="color" class="sm:hidden"> - {{ color }}</span>

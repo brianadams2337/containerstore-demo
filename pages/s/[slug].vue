@@ -2,21 +2,18 @@
   <CMSServicePageData :slug="slug">
     <template #default="{ data, pending }">
       <div v-if="pending" class="container space-y-2 py-4">
-        <SkeletonLoader type="headline" class="mb-10" />
-        <SkeletonLoader type="custom" class="h-6 w-72" />
-        <SkeletonLoader type="custom" class="h-6 w-48" />
-        <SkeletonLoader type="custom" class="h-6 w-96" />
-        <SkeletonLoader type="custom" class="h-6 w-72" />
+        <SFSkeletonLoader type="headline" class="mb-10" />
+        <SFSkeletonLoader type="custom" class="h-6 w-72" />
+        <SFSkeletonLoader type="custom" class="h-6 w-48" />
+        <SFSkeletonLoader type="custom" class="h-6 w-96" />
+        <SFSkeletonLoader type="custom" class="h-6 w-72" />
       </div>
       <div v-else-if="data" class="container">
         <div class="py-4">
-          <Breadcrumbs
+          <SFBreadcrumbs
             :items="[
               { value: 'Home', to: routeList.home },
-              {
-                value: data.name,
-                to: data.slug,
-              },
+              { value: data.name, to: data.slug },
             ]"
           />
         </div>

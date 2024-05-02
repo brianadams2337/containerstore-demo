@@ -1,16 +1,16 @@
 <template>
   <div v-editable="blok" :class="marginClasses">
     <div class="flex w-full justify-between px-5 sm:px-14">
-      <Headline v-if="blok.headline" tag="p" size="base" is-uppercase>
+      <SFHeadline v-if="blok.headline" tag="p" size="base" is-uppercase>
         {{ blok.headline }}
-      </Headline>
+      </SFHeadline>
 
-      <DefaultLink v-if="blok.cta_url && blok.cta_label" :to="blok.cta_url">
+      <SFLink v-if="blok.cta_url && blok.cta_label" :to="blok.cta_url">
         {{ blok.cta_label }}
-      </DefaultLink>
+      </SFLink>
     </div>
 
-    <HorizontalItemsSlider
+    <SFHorizontalItemsSlider
       class="mt-4"
       with-arrows
       data-test-id="horizontal-product-slider"
@@ -43,7 +43,7 @@
           <IconArrowRight class="size-8 p-1.5" />
         </button>
       </template>
-    </HorizontalItemsSlider>
+    </SFHorizontalItemsSlider>
   </div>
 </template>
 
@@ -55,6 +55,7 @@ import {
 } from '@scayle/storefront-nuxt'
 import type { CMSProductSliderProps } from '~/modules/cms/providers/storyblok/types'
 import { useStoryblokMargins } from '~/modules/cms/providers/storyblok/composables/useStoryblokMargins'
+
 const props = defineProps<CMSProductSliderProps>()
 
 const listingMetaData = {

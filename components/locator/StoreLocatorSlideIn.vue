@@ -1,15 +1,15 @@
 <template>
-  <SlideIn
+  <SFSlideIn
     name="StoreLocatorSlideIn"
     slide-class="border-t border-l border-primary xl:inset-y-0 !p-0 bg-secondary-50"
   >
     <template #slide-in-header="{ toggle: toggleItem }">
       <div class="bg-white p-5 shadow-[0_3px_24px_0_rgba(0,0,0,0.12)]">
         <div class="flex items-center justify-between">
-          <Headline :is-uppercase="false" size="lg" tag="p"
+          <SFHeadline :is-uppercase="false" size="lg" tag="p"
             >{{ $t('store_locator.headline') }}
-          </Headline>
-          <AppButton
+          </SFHeadline>
+          <SFButton
             type="ghost"
             size="xs"
             data-test-id="closeCross"
@@ -18,20 +18,20 @@
             <template #icon="{ _class }">
               <IconCloseBold :class="_class" />
             </template>
-          </AppButton>
+          </SFButton>
         </div>
         <div>
           <p class="mt-5 text-xs">{{ $t('store_locator.subline') }}</p>
         </div>
         <div class="mt-3 flex items-center justify-center gap-4">
-          <TextInput
+          <SFTextInput
             v-model="address"
             autocomplete="username"
             :placeholder="$t('store_locator.input_placeholder')"
             type="text"
             required
           />
-          <AppButton
+          <SFButton
             data-test-id="choose-store-button"
             type="primary"
             class="ml-auto rounded border border-black p-2 text-xs !normal-case"
@@ -40,7 +40,7 @@
             @click="searchStore"
           >
             {{ $t('store_locator.buttons.search') }}
-          </AppButton>
+          </SFButton>
         </div>
       </div>
     </template>
@@ -59,7 +59,7 @@
       </div>
     </template>
     <template #slide-in-actions>
-      <AppButton
+      <SFButton
         data-test-id="choose-store-button"
         type="primary"
         is-full-width
@@ -69,9 +69,9 @@
         @click="selectStore"
       >
         {{ $t('store_locator.buttons.select_store') }}
-      </AppButton>
+      </SFButton>
     </template>
-  </SlideIn>
+  </SFSlideIn>
 </template>
 
 <script setup lang="ts">

@@ -4,15 +4,15 @@
       id="flyout-menu-items-container-content"
       :key="flyoutNavigationItem.id"
     >
-      <Headline size="sm" tag="p">
+      <SFHeadline size="sm" tag="p">
         <NavigationTreeItem
           :navigation-item="flyoutNavigationItem"
           type="quiet"
           class="text-sm"
           @click:navigation-item="closeFlyoutMenu"
         />
-      </Headline>
-      <TwoColumnList :items="childlessNavigationItems" class="mt-4">
+      </SFHeadline>
+      <SFTwoColumnList :items="childlessNavigationItems" class="mt-4">
         <template #item="{ item }">
           <NavigationTreeItem
             :navigation-item="item"
@@ -21,7 +21,7 @@
             @click:navigation-item="closeFlyoutMenu"
           />
         </template>
-      </TwoColumnList>
+      </SFTwoColumnList>
     </div>
 
     <template v-for="navigationItem in flyoutNavigationItem.children">
@@ -30,13 +30,13 @@
         :id="`flyout-menu-items-container-content-${navigationItem.id}`"
         :key="navigationItem.id"
       >
-        <Headline size="sm" tag="p">
+        <SFHeadline size="sm" tag="p">
           <NavigationTreeItem
             :navigation-item="navigationItem"
             @click:navigation-item="closeFlyoutMenu"
           />
-        </Headline>
-        <TwoColumnList :items="navigationItem.children" class="mt-4">
+        </SFHeadline>
+        <SFTwoColumnList :items="navigationItem.children" class="mt-4">
           <template #item="{ item }">
             <NavigationTreeItem
               :navigation-item="item"
@@ -44,7 +44,7 @@
               @click:navigation-item="closeFlyoutMenu"
             />
           </template>
-        </TwoColumnList>
+        </SFTwoColumnList>
       </div>
     </template>
   </div>

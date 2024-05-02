@@ -24,7 +24,7 @@
         <div class="text-xs font-semibold">
           {{ $t('subscription.interval') }}
         </div>
-        <Dropdown
+        <SFDropdown
           v-model="selectedInterval"
           class="w-full"
           :items="subscriptionIntervals"
@@ -41,13 +41,13 @@
               {{ item.label }}
             </div>
           </template>
-        </Dropdown>
+        </SFDropdown>
       </div>
       <div>
         <div class="text-xs font-semibold">
           {{ $t('subscription.follow_up_delivery') }}
         </div>
-        <Dropdown
+        <SFDropdown
           v-model="selectedPreferredDeliveryDate"
           class="w-full"
           :items="preferredDeliveryDate"
@@ -76,7 +76,7 @@
               }}
             </div>
           </template>
-        </Dropdown>
+        </SFDropdown>
       </div>
     </div>
     <div
@@ -85,7 +85,7 @@
     >
       {{ $t('subscription.not_eligible_message') }}
     </div>
-    <AppButton
+    <SFButton
       data-test-id="add-item-to-basket-button"
       is-full-width
       type="primary"
@@ -95,7 +95,7 @@
       @click="$emit('addItemToBasket', itemToAdd)"
     >
       {{ $t('pdp.add_label') }}
-    </AppButton>
+    </SFButton>
   </div>
 </template>
 <script setup lang="ts">

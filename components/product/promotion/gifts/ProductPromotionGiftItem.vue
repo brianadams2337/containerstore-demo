@@ -1,6 +1,6 @@
 <template>
   <div class="flex w-full">
-    <DefaultLink
+    <SFLink
       :to="getProductDetailRoute(product)"
       raw
       class="relative mr-3 flex w-32 items-center rounded-md bg-gray-200"
@@ -20,25 +20,26 @@
         v-bind="{ backgroundColorStyle }"
         class="absolute bottom-2 left-2"
       />
-    </DefaultLink>
+    </SFLink>
     <div class="flex w-full flex-col justify-between">
-      <Headline
+      <SFHeadline
         size="base"
         tag="h3"
         class="mt-2"
         :class="{
           'text-secondary': !areGiftConditionsMet,
         }"
-        >{{ name }}</Headline
       >
+        {{ name }}
+      </SFHeadline>
       <div class="flex items-end justify-between">
-        <AppButton
+        <SFButton
           size="sm"
           :disabled="!isProductAddedToBasket || !areGiftConditionsMet"
           @click="toggleGiftSelection()"
         >
           {{ $t('pdp.promotion.add_for_free_label') }}
-        </AppButton>
+        </SFButton>
         <div class="flex flex-col items-end">
           <span
             v-if="variantWithLowestPrice"

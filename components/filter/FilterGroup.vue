@@ -2,12 +2,12 @@
   <section class="pb-10 pt-4">
     <div class="flex items-center justify-between">
       <slot name="label">
-        <Headline tag="h4" size="sm" class="leading-normal">
+        <SFHeadline tag="h4" size="sm" class="leading-normal">
           {{ label }}{{ badge ? ` (${badge})` : '' }}
-        </Headline>
+        </SFHeadline>
       </slot>
       <slot name="action">
-        <AppButton
+        <SFButton
           size="sm"
           type="ghost"
           class="py-0 text-xs font-semibold text-secondary"
@@ -17,7 +17,7 @@
           @click="emit('click:reset')"
         >
           {{ resetLabel ?? $t('filter.reset') }}
-        </AppButton>
+        </SFButton>
       </slot>
     </div>
     <div class="mt-4">

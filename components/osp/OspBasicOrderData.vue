@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Headline size="sm" tag="h2" is-uppercase class="mb-3">
+    <SFHeadline size="sm" tag="h2" is-uppercase class="mb-3">
       {{ $t('osp.order_data') }}
-    </Headline>
+    </SFHeadline>
     <p v-if="orderConfirmedAt">
       <b>{{ $t('osp.order_date') }}:</b>
       {{ orderConfirmedAt }}

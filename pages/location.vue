@@ -18,19 +18,19 @@
         class="flex flex-col items-stretch justify-between rounded bg-white p-5"
         :class="{ 'shadow-[0_3px_24px_0_rgba(0,0,0,0.12)]': stores.length }"
       >
-        <Headline :is-uppercase="false" size="xl" tag="p" class="mb-5"
+        <SFHeadline :is-uppercase="false" size="xl" tag="p" class="mb-5"
           >{{ $t('store_locator.modal_headline') }}
-        </Headline>
+        </SFHeadline>
         <p class="mb-5 text-sm">{{ $t('store_locator.subline') }}</p>
         <div class="mt-3 flex items-center justify-evenly">
-          <AppButton
+          <SFButton
             class="mr-2 flex size-12 cursor-pointer items-center justify-center border-2 border-black"
             type="ghost"
             :disabled="searching"
             @click="findStoresInUserLocation()"
           >
             <IconLocation class="size-8" />
-          </AppButton>
+          </SFButton>
 
           <TextInput
             v-model="searchAddress"
@@ -43,7 +43,7 @@
               !searching && searchAddress.length && searchForStores()
             "
           />
-          <AppButton
+          <SFButton
             type="primary"
             class="ml-auto rounded border-4 border-black p-2 text-xs !normal-case"
             rounded
@@ -52,7 +52,7 @@
             @click="searchForStores()"
           >
             {{ $t('store_locator.buttons.search') }}
-          </AppButton>
+          </SFButton>
         </div>
       </div>
       <StoreList

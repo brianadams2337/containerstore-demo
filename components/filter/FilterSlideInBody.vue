@@ -5,14 +5,14 @@
       :label="$t('filter.size')"
       @click:reset="resetFilter('size')"
     >
-      <MultipleSelectionList
+      <SFMultipleSelectionList
         v-model="state.size"
         :items="availableFilterValues?.size"
         class="flex flex-wrap"
         name="FilterSelectSize"
       >
         <template #item="{ item, toggleItem, isActive }">
-          <AppButton
+          <SFButton
             :class="
               isActive
                 ? 'border-[#2d2c2f] !bg-white text-primary'
@@ -23,9 +23,9 @@
             no-padding
             @click="toggleItem(item)"
             >{{ item.displayName }}
-          </AppButton>
+          </SFButton>
         </template>
-      </MultipleSelectionList>
+      </SFMultipleSelectionList>
     </FilterGroup>
 
     <FilterGroup
@@ -33,7 +33,7 @@
       :label="$t('filter.brands')"
       @click:reset="resetFilter('brand')"
     >
-      <MultipleSelectionList
+      <SFMultipleSelectionList
         v-model="state.brand"
         :items="availableFilterValues?.brand"
         :limit="6"
@@ -43,7 +43,7 @@
       >
         <template #item="{ item }">
           <li class="mb-2 list-none">
-            <CheckBox
+            <SFCheckbox
               :id="item.displayName"
               v-model="state.brand"
               :item="item"
@@ -51,7 +51,7 @@
             />
           </li>
         </template>
-      </MultipleSelectionList>
+      </SFMultipleSelectionList>
     </FilterGroup>
 
     <FilterGroup
@@ -59,7 +59,7 @@
       :label="$t('filter.colors')"
       @click:reset="resetFilter('color')"
     >
-      <MultipleSelectionList
+      <SFMultipleSelectionList
         v-model="state.color"
         :items="availableFilterValues?.color"
         class="flex flex-wrap gap-3"
@@ -71,7 +71,7 @@
             class="appearance-none focus:outline-none"
             @click="toggleItem(item)"
           >
-            <ColorChip
+            <SFColorChip
               data-test-id="filter-color-circle"
               :color="{
                 id: +item.value,
@@ -83,7 +83,7 @@
             />
           </button>
         </template>
-      </MultipleSelectionList>
+      </SFMultipleSelectionList>
     </FilterGroup>
 
     <FilterGroup
@@ -92,7 +92,7 @@
       :show-action="hasActivePrices && priceChanged"
       @click:reset="resetFilter('prices')"
     >
-      <RangeSlider
+      <SFRangeSlider
         v-model="state.prices"
         :max="maxPrice"
         :min="minPrice"
@@ -103,7 +103,7 @@
 
     <FilterGroup v-if="isSaleActive" :label="$t('filter.only_sale')">
       <template #action>
-        <InputToggle v-model="state.sale" />
+        <SFInputToggle v-model="state.sale" />
       </template>
     </FilterGroup>
   </div>

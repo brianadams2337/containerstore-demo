@@ -1,6 +1,6 @@
 <template>
   <div>
-    <DefaultLink
+    <SFLink
       :to="getProductDetailRoute(product)"
       class="relative overflow-hidden rounded-md bg-gray-200"
     >
@@ -16,19 +16,19 @@
         :background-color-style="giftBackgroundColorStyle"
         class="absolute bottom-2 left-2"
       />
-    </DefaultLink>
+    </SFLink>
     <p
       class="mt-1 overflow-hidden break-words text-2xs font-medium uppercase text-secondary"
     >
       {{ brand }}
     </p>
-    <Headline tag="h1" size="sm" class="mb-1 font-semibold">
+    <SFHeadline tag="h1" size="sm" class="mb-1 font-semibold">
       {{ name }}
-    </Headline>
+    </SFHeadline>
   </div>
-  <AppButton size="sm" class="mt-2" @click="toggleGiftSelection()">
+  <SFButton size="sm" class="mt-2" @click="toggleGiftSelection()">
     {{ toggleGiftSelectionLabel }}
-  </AppButton>
+  </SFButton>
   <template v-if="giftPromotion">
     <ProductPromotionSelectionModal
       v-if="isGreaterThanMd"

@@ -11,14 +11,14 @@
               hasSaleReduction(item) && hasPromotionReduction(item),
           }"
         >
-          <Headline
+          <SFHeadline
             tag="p"
             size="base"
             class="text-xs leading-[1.125rem] text-secondary line-through p-1"
           >
             {{ formatCurrency(price + reducedPrice) }}
-          </Headline>
-          <Headline
+          </SFHeadline>
+          <SFHeadline
             v-if="hasSaleReduction(item)"
             tag="p"
             size="base"
@@ -30,10 +30,10 @@
             }"
           >
             {{ formatCurrency(getItemSaleReductionPrice(item)) }}
-          </Headline>
+          </SFHeadline>
         </div>
 
-        <Headline
+        <SFHeadline
           v-if="hasPromotionReduction(item)"
           tag="p"
           size="base"
@@ -51,11 +51,11 @@
           }"
         >
           {{ formatCurrency(price) }}
-        </Headline>
+        </SFHeadline>
       </template>
-      <Headline v-else tag="p" size="base" is-uppercase>
+      <SFHeadline v-else tag="p" size="base" is-uppercase>
         {{ formatCurrency(price) }}
-      </Headline>
+      </SFHeadline>
       <p class="text-xs text-secondary">
         {{ $t('incl_tax') }}
       </p>

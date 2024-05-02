@@ -15,22 +15,22 @@
       >
         {{ blok?.fields.topline || '&nbsp;' }}
       </div>
-      <Headline
+      <SFHeadline
         :size="headlineSize"
         :badge="blok?.fields.isNew ? 'NEW' : undefined"
         is-uppercase
         tag="p"
       >
         {{ blok?.fields.headline }}
-      </Headline>
-      <DefaultLink
+      </SFHeadline>
+      <SFLink
         v-if="blok?.fields.ctaUrl"
         class="mt-5 text-base font-bold underline"
         :to="blok?.fields.ctaUrl"
         @click="clickObserver"
       >
         {{ blok?.fields.ctaLabel }}
-      </DefaultLink>
+      </SFLink>
     </div>
   </article>
 </template>

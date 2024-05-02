@@ -1,6 +1,6 @@
 <template>
-  <div class="inline-flex size-full items-center justify-center">
-    <DefaultLink
+  <div class="inline-flex h-full items-center justify-center">
+    <SFLink
       :to="routeList.wishlist"
       data-test-id="wishlist-link"
       class="relative"
@@ -10,7 +10,7 @@
         {{ count }}
       </FloatingBadge>
       <IconHeartBold class="size-6" />
-    </DefaultLink>
+    </SFLink>
   </div>
 </template>
 

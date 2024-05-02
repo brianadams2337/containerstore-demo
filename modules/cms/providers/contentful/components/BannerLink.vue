@@ -3,14 +3,14 @@
     v-if="blok?.fields.ctaUrl"
     class="border border-white px-7 py-3.5 text-sm leading-normal text-white"
   >
-    <DefaultLink
+    <SFLink
       :key="blok?.fields.uid"
       raw
       :to="blok?.fields.ctaUrl"
       @click="clickObserver(blok)"
     >
       {{ blok.fields.label }}
-    </DefaultLink>
+    </SFLink>
   </div>
 </template>
 

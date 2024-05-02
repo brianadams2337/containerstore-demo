@@ -1,30 +1,30 @@
 <template>
   <div class="relative w-64">
     <div v-if="!isGuest" class="space-y-2 p-3">
-      <AppButton
+      <SFButton
         :to="routeList.user"
         type="secondary"
         class="w-full"
         @click="closeUserFlyout"
       >
         {{ $t('my_account.profile_menu') }}
-      </AppButton>
-      <AppButton
+      </SFButton>
+      <SFButton
         :to="routeList.orders"
         type="secondary"
         class="w-full"
         @click="closeUserFlyout"
       >
         {{ $t('my_account.orders_menu') }}
-      </AppButton>
-      <AppButton
+      </SFButton>
+      <SFButton
         :to="routeList.subscriptionOverview"
         type="secondary"
         class="w-full"
         @click="closeUserFlyout"
       >
         {{ $t('my_account.subscriptions_menu') }}
-      </AppButton>
+      </SFButton>
     </div>
     <div
       class="flex flex-wrap items-center justify-center bg-secondary-450 p-3"

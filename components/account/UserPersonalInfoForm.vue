@@ -1,35 +1,39 @@
 <template>
   <form class="mx-auto mt-10 flex w-full flex-col md:mx-0 lg:w-[400px]">
-    <RadioGroup v-model="payload.gender" :items="genders" class="items-start" />
+    <SFRadioGroup
+      v-model="payload.gender"
+      :items="genders"
+      class="items-start"
+    />
     <div class="mt-8">
-      <ValidatedInputGroup v-slot="{ isValid }" :errors="v.firstName.$errors">
-        <TextInput
+      <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.firstName.$errors">
+        <SFTextInput
           v-model="payload.firstName"
           :has-errors="!isValid"
           :placeholder="$t('form_fields.first_name')"
           required
           @input="v.firstName.$touch"
         />
-      </ValidatedInputGroup>
-      <ValidatedInputGroup v-slot="{ isValid }" :errors="v.lastName.$errors">
-        <TextInput
+      </SFValidatedInputGroup>
+      <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.lastName.$errors">
+        <SFTextInput
           v-model="payload.lastName"
           :has-errors="!isValid"
           :placeholder="$t('form_fields.last_name')"
           required
           @input="v.lastName.$touch"
         />
-      </ValidatedInputGroup>
-      <ValidatedInputGroup v-slot="{ isValid }" :errors="v.birthDate.$errors">
-        <TextInput
+      </SFValidatedInputGroup>
+      <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.birthDate.$errors">
+        <SFTextInput
           v-model="payload.birthDate"
           :placeholder="dobFormat.placeholder"
           :mask="dobFormat.mask"
           :has-errors="!isValid"
           @input="v.birthDate.$touch"
         />
-      </ValidatedInputGroup>
-      <TextInput
+      </SFValidatedInputGroup>
+      <SFTextInput
         v-model="payload.email"
         :placeholder="$t('form_fields.email')"
         :hint="$t('my_account.user.email_change_hint')"
@@ -39,13 +43,13 @@
         class="mt-6 flex w-full items-center justify-center"
         data-test-id="save-button"
       >
-        <AppButton
+        <SFButton
           class="w-full capitalize md:w-auto md:min-w-[50%]"
           :disabled="isUpdating || v.$error"
           @click="update"
         >
           {{ $t('my_account.user.save_label') }}
-        </AppButton>
+        </SFButton>
       </div>
     </div>
   </form>

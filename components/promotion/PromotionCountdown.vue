@@ -7,7 +7,7 @@
     <ClientOnly>
       <template #fallback>
         <div class="mx-1 flex">
-          <SkeletonLoader
+          <SFSkeletonLoader
             v-for="n in COUNTDOWN_LOADER_UNITS"
             :key="n"
             type="custom"
@@ -15,14 +15,14 @@
           />
         </div>
       </template>
-      <FadeInTransition :duration="300">
-        <Countdown
+      <SFFadeInTransition :duration="300">
+        <SFCountdown
           :until="until"
           :show-units="true"
           unit-size="short"
           data-test-id="promotion-countdown"
         />
-      </FadeInTransition>
+      </SFFadeInTransition>
     </ClientOnly>
   </div>
 </template>

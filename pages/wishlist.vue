@@ -1,9 +1,9 @@
 <template>
   <div class="container max-sm:max-w-none">
     <div class="mt-8">
-      <Headline size="xl" class="font-semibold text-primary">
+      <SFHeadline size="xl" class="font-semibold text-primary">
         {{ $t('wishlist.heading') }}
-      </Headline>
+      </SFHeadline>
       <p
         v-if="count !== undefined"
         data-test-id="wishlist-count"
@@ -14,7 +14,7 @@
     </div>
     <template v-if="fetching">
       <div class="mt-8 flex flex-wrap">
-        <SkeletonLoader
+        <SFSkeletonLoader
           v-for="index in count"
           :key="`product-loading-${index}`"
           type="custom"
@@ -36,7 +36,7 @@
         <EmptyState
           :title="$t('wishlist.no_items_info')"
           :description="$t('wishlist.continue_shopping_info')"
-          icon="IconEmptyWishlist"
+          icon="EmptyWishlist"
           show-default-actions
         />
       </div>

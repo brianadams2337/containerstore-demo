@@ -1,11 +1,11 @@
 <template>
-  <Listbox
+  <SFListbox
     v-slot="{ isOpen, list }"
     :value="currentShop?.path"
     name="language-switch"
     class="shrink-0"
   >
-    <ListboxButton
+    <SFListboxButton
       class="h-full"
       :list-name="list"
       data-test-id="language-listbox"
@@ -15,24 +15,24 @@
         <span v-if="selectedCountry" class="mx-1">|</span>
         <span class="opacity-60">{{ selectedLanguage }}</span>
       </div>
-    </ListboxButton>
+    </SFListboxButton>
     <div class="relative">
-      <transition
+      <Transition
         leave-active-class="transition ease-in duration-100"
         leave-from-class="opacity-100"
         leave-to-class="opacity-0"
       >
-        <ListboxOptions
+        <SFListboxOptions
           v-if="isOpen"
           class="absolute right-0 top-0 z-60 max-h-32 w-32 overflow-y-auto bg-white shadow-md"
         >
-          <ListboxOption
+          <SFListboxOption
             v-for="{ shopId, path, locale } in availableShops"
             :key="shopId"
             class="text-xs"
             :list-name="list"
           >
-            <AppButton
+            <SFButton
               :key="`${locale}-locale`"
               type="ghost"
               is-full-width
@@ -41,12 +41,12 @@
               @click="changeShop(path)"
             >
               {{ getShopName(locale) }}
-            </AppButton>
-          </ListboxOption>
-        </ListboxOptions>
-      </transition>
+            </SFButton>
+          </SFListboxOption>
+        </SFListboxOptions>
+      </Transition>
     </div>
-  </Listbox>
+  </SFListbox>
 </template>
 
 <script setup lang="ts">

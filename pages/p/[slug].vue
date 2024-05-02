@@ -1,7 +1,7 @@
 <template>
   <ProductDetailSkeleton v-if="fetching" />
   <PageContent v-else-if="product">
-    <GoBackLink use-window-history class="ml-1 mt-4 md:ml-4 md:mt-7" />
+    <SFGoBackLink use-window-history class="ml-1 mt-4 md:ml-4 md:mt-7" />
     <div class="flex flex-1 flex-col items-start md:flex-row md:gap-3">
       <ProductImageGallery
         :product="product"
@@ -28,16 +28,16 @@
               {{ brand }}
             </div>
             <div class="flex items-start justify-between md:flex-col">
-              <Headline
+              <SFHeadline
                 size="xl"
                 class="!leading-snug"
                 data-test-id="pdp-product-name"
                 tag="h1"
               >
                 {{ productName }}
-              </Headline>
+              </SFHeadline>
 
-              <FadeInTransition>
+              <SFFadeInTransition>
                 <PromotionHurryToSaveBanners
                   v-if="areHurryToSaveBannersShown"
                   :product="product"
@@ -53,7 +53,7 @@
                   :product="product"
                   class="mt-2 xs:hidden md:flex"
                 />
-              </FadeInTransition>
+              </SFFadeInTransition>
 
               <div class="flex flex-col items-end">
                 <div class="flex gap-2 xs:flex-col-reverse md:flex-col">
@@ -88,18 +88,18 @@
             <ProductDetailGroup class="mt-6">
               <ProductSiblingPicker :items="siblings" with-values>
                 <template #item="{ item }">
-                  <DefaultLink
+                  <SFLink
                     raw
                     class="flex items-center justify-center"
                     :to="getProductDetailRoute(product, item.id)"
                   >
-                    <ColorChip
+                    <SFColorChip
                       v-if="item.colors.length"
                       :is-active="item.id === product.id"
                       :size="Size.LG"
                       :color="item.colors[0] as ProductColor"
                     />
-                  </DefaultLink>
+                  </SFLink>
                 </template>
               </ProductSiblingPicker>
             </ProductDetailGroup>
@@ -117,7 +117,7 @@
                 @select-size="handleSelectedSize"
               />
 
-              <Dropdown
+              <SFDropdown
                 v-if="!availableAddOns.length && !hasOneSizeVariantOnly"
                 :model-value="quantity"
                 :items="availableQuantity"
@@ -144,7 +144,7 @@
 
             <div class="mt-4 flex h-12">
               <ClientOnly>
-                <AppButton
+                <SFButton
                   data-test-id="add-item-to-basket-button"
                   is-full-width
                   type="primary"
@@ -155,7 +155,7 @@
                   @click="addItemToBasket()"
                 >
                   {{ $t('pdp.add_label') }}
-                </AppButton>
+                </SFButton>
 
                 <WishlistToggle
                   class="ml-2 box-border h-full border border-gray-350 !px-2"
@@ -164,13 +164,13 @@
               </ClientOnly>
             </div>
 
-            <FadeInTransition>
+            <SFFadeInTransition>
               <ProductPromotionGifts
                 v-if="isBuyXGetYPrioritized && !isGiftAddedToBasket"
                 :product="product"
                 class="mt-6"
               />
-            </FadeInTransition>
+            </SFFadeInTransition>
 
             <div v-if="combineWithProductIds.length > 0" class="mt-3">
               <ProductDetailGroup data-test-id="combine-with-slider">

@@ -27,7 +27,7 @@
         {{ blok.headline }}
       </h2>
 
-      <DefaultLink
+      <SFLink
         v-if="blok.cta_url?.cached_url && blok.cta_label"
         :to="blok.cta_url.cached_url"
         class="mt-10"
@@ -41,7 +41,7 @@
         >
           {{ blok.cta_label }}
         </button>
-      </DefaultLink>
+      </SFLink>
     </div>
   </div>
 </template>

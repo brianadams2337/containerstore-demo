@@ -7,9 +7,7 @@
       <OspBasicDataSection v-bind="{ orderData, deliveryDate }" />
       <OspSummarySection v-bind="{ orderData, deliveryDate }" />
     </div>
-    <div v-else>
-      <EmptyState :title="$t('osp.no_order_found')" show-default-actions />
-    </div>
+    <EmptyState v-else :title="$t('osp.no_order_found')" show-default-actions />
   </PageContent>
 </template>
 

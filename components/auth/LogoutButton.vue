@@ -1,7 +1,7 @@
 <template>
-  <AppButton is-full-width :disabled="isSubmitting" @click="logout()">
+  <SFButton is-full-width :disabled="isSubmitting" @click="logout()">
     {{ $t('global.sign_out') }}
-  </AppButton>
+  </SFButton>
 </template>
 
 <script setup lang="ts">

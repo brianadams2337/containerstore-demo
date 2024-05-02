@@ -15,6 +15,8 @@
 </template>
 
 <script setup lang="ts">
+import { SFLink } from '#components'
+
 type Props = {
   id: Promotion['id']
   customData?: Promotion['customData']
@@ -26,9 +28,7 @@ const props = withDefaults(defineProps<Props>(), { customData: () => ({}) })
 
 const to = computed(() => props.customData.category?.to)
 
-const componentName = computed(() => {
-  return to.value ? resolveComponent('DefaultLink') : 'div'
-})
+const componentName = computed(() => (to.value ? SFLink : 'div'))
 
 const attributes = computed(() => {
   return { ...(to.value && { raw: true, to: to.value }) }

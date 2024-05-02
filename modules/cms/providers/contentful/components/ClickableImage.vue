@@ -1,6 +1,6 @@
 <template>
   <div v-if="blok" :class="marginClasses">
-    <DefaultLink
+    <SFLink
       v-if="blok.fields.ctaUrl"
       :target="isLinkTypeUrl ? '_blank' : '_self'"
       :to="blok.fields.ctaUrl"
@@ -18,7 +18,7 @@
           :sizes="sizes"
         />
       </Intersect>
-    </DefaultLink>
+    </SFLink>
   </div>
 </template>
 

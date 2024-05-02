@@ -1,11 +1,11 @@
 <template>
   <div class="w-full md:container md:w-1/2 md:pl-0 md:pr-6 lg:w-3/5">
     <div class="mt-16 space-y-2">
-      <Headline size="lg" is-uppercase class="flex items-center">
+      <SFHeadline size="lg" is-uppercase class="flex items-center">
         <IconCheckmark class="relative top-[-2px] mr-2 size-5" />
         {{ $t('osp.intro') }}
         {{ orderData.customer?.firstName }}
-      </Headline>
+      </SFHeadline>
     </div>
     <div class="max-w-xl text-sm sm:grid">
       <div class="text-sm">
@@ -18,9 +18,9 @@
           :address="orderData.address.shipping"
         />
         <div v-if="orderData.payment?.[0].key">
-          <Headline size="sm" tag="h2" is-uppercase class="mb-3">
+          <SFHeadline size="sm" tag="h2" is-uppercase class="mb-3">
             {{ $t('osp.payment') }}
-          </Headline>
+          </SFHeadline>
           <PaymentIcon :paid-with="orderData.payment[0].key" />
         </div>
       </div>
@@ -30,16 +30,16 @@
         :delivery-date="deliveryDate"
       />
       <div class="my-8 flex space-x-4 sm:mt-12">
-        <AppButton type="tertiary" :to="routeList.home">
+        <SFButton type="tertiary" :to="routeList.home">
           {{ $t('global.continue_shopping_label') }}
-        </AppButton>
-        <AppButton
+        </SFButton>
+        <SFButton
           v-if="orderData.id"
           type="primary"
           :to="getOrderDetailsRoute(orderData.id)"
         >
           {{ $t('osp.order_details') }}
-        </AppButton>
+        </SFButton>
       </div>
     </div>
   </div>

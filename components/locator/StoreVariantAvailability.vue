@@ -31,7 +31,7 @@
         {{ $t('store_locator.labels.store_availability_subline') }}
       </p>
     </div>
-    <AppButton
+    <SFButton
       data-test-id="choose-store-button"
       type="tertiary"
       class="ml-auto rounded border border-black p-2 text-xs !normal-case"
@@ -43,7 +43,7 @@
           ? $t('store_locator.buttons.change_store')
           : $t('store_locator.buttons.choose_store')
       }}
-    </AppButton>
+    </SFButton>
   </div>
 </template>
 

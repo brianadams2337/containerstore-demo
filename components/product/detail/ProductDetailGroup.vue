@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Headline v-bind="{ tag, size }" is-uppercase>
+    <SFHeadline v-bind="{ tag, size }" is-uppercase>
       <slot name="headline" />
-    </Headline>
+    </SFHeadline>
     <div class="mt-3">
       <slot />
     </div>

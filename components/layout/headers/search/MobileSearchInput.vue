@@ -11,7 +11,7 @@
       @blur="!content.length ? emit('cancel') : emit('blur')"
       @keydown.exact.enter="emit('keydown:enter')"
     />
-    <AppButton
+    <SFButton
       class="absolute right-2 top-1/2 size-4 -translate-y-1/2"
       aria-label="Clear search"
       type="raw"
@@ -20,7 +20,7 @@
       <template #icon="{ _class }">
         <IconClose aria-hidden="true" :class="_class" />
       </template>
-    </AppButton>
+    </SFButton>
   </label>
 </template>
 

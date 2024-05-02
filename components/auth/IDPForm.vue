@@ -7,7 +7,7 @@
     </div>
 
     <div class="flex w-full flex-col gap-4">
-      <DefaultLink
+      <SFLink
         v-for="provider in providers"
         :key="provider.title"
         class="group inline-flex w-full items-center justify-center gap-2 truncate whitespace-nowrap rounded-md border p-3 text-sm font-semibold leading-5 tracking-wide text-white transition duration-100 ease-linear focus:ring-1 disabled:opacity-30"
@@ -16,7 +16,7 @@
         raw
       >
         {{ $t(`login_page.idp.${provider.title}`) }}
-      </DefaultLink>
+      </SFLink>
     </div>
   </div>
 </template>

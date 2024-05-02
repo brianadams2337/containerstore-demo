@@ -1,8 +1,8 @@
 <template>
   <div v-if="blok" :class="marginClasses">
-    <Headline v-if="blok.fields.h1 ?? ''" tag="h1" is-uppercase>
+    <SFHeadline v-if="blok.fields.h1 ?? ''" tag="h1" is-uppercase>
       {{ blok.fields.h1 }}
-    </Headline>
+    </SFHeadline>
     <Swiper
       v-if="blok?.fields.slides?.length ?? 0"
       ref="sliderRef"

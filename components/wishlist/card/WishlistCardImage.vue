@@ -1,5 +1,5 @@
 <template>
-  <DefaultLink :to="link" raw>
+  <SFLink :to="link" raw>
     <ProductImage
       v-if="image"
       :image="image"
@@ -9,12 +9,12 @@
       is-centered
       class="absolute inset-0"
     />
-  </DefaultLink>
+  </SFLink>
   <div
     v-if="isAvailable"
     class="absolute bottom-0 left-0 top-auto z-40 hidden h-auto w-full p-3 lg:block"
   >
-    <AppButton
+    <SFButton
       type="secondary"
       class="w-full border-gray-350 bg-white p-3 text-xs font-semibold transition"
       :class="isAddToBasketButtonShown ? 'opacity-1' : 'opacity-0'"
@@ -22,7 +22,7 @@
       @click="addItemToCart(index)"
     >
       {{ $t('pdp.add_label') }}
-    </AppButton>
+    </SFButton>
   </div>
   <div
     v-else

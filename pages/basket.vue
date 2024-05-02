@@ -3,7 +3,7 @@
     class="container max-sm:max-w-none sm:py-10"
     data-test-id="basket-container"
   >
-    <client-only>
+    <ClientOnly>
       <div v-if="fetching || !basketData" class="grid grid-cols-12 gap-2">
         <ProductCardSkeleton
           v-for="index in 20"
@@ -11,26 +11,24 @@
         />
       </div>
       <div v-else-if="isBasketEmpty" class="space-y-8">
-        <div>
-          <EmptyState
-            :title="$t('basket.empty_title')"
-            :description="$t('basket.empty_description')"
-            show-default-actions
-          />
-        </div>
+        <EmptyState
+          :title="$t('basket.empty_title')"
+          :description="$t('basket.empty_description')"
+          show-default-actions
+        />
       </div>
       <div v-else class="flex flex-col-reverse gap-8 md:flex-row xl:gap-16">
         <div class="w-full flex-1 space-y-4 md:w-3/5 2xl:w-2/3">
-          <Headline size="2xl" class="mb-6">
+          <SFHeadline size="2xl" class="mb-6">
             {{ $t('basket.heading') }} ({{ basketCount }})
-          </Headline>
+          </SFHeadline>
 
           <template v-if="orderedItems.standAlone">
             <template
               v-for="(item, index) in orderedItems.standAlone"
               :key="item.key"
             >
-              <FadeInTransition>
+              <SFFadeInTransition>
                 <BasketAutomaticDiscountBanner
                   v-if="isAutomaticDiscountType(item.promotion)"
                   :basket-item="item"
@@ -39,17 +37,17 @@
                   v-if="isGiftApplicableItem(item)"
                   :basket-item="item"
                 />
-              </FadeInTransition>
+              </SFFadeInTransition>
 
-              <SwipeDelete @delete="removeItem(item)">
+              <SFSwipeDelete @delete="removeItem(item)">
                 <BasketCard class="w-full" v-bind="{ item, index }" />
-              </SwipeDelete>
-              <FadeInTransition>
+              </SFSwipeDelete>
+              <SFFadeInTransition>
                 <BasketItemPromotionGifts
                   v-if="isGiftApplicableItem(item)"
                   :basket-item="item"
                 />
-              </FadeInTransition>
+              </SFFadeInTransition>
             </template>
           </template>
 
@@ -66,7 +64,7 @@
 
         <BasketSummary class="w-full md:w-2/5 2xl:w-1/3" />
       </div>
-    </client-only>
+    </ClientOnly>
   </div>
 </template>
 

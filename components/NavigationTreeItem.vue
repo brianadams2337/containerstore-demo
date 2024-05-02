@@ -1,5 +1,5 @@
 <template>
-  <DefaultLink
+  <SFLink
     v-if="pathParams && pathParams.path"
     :to="pathParams.path"
     :type="type"
@@ -7,7 +7,7 @@
     @mouseenter="emit('mouseenter:navigation-item')"
   >
     {{ displayName }}
-  </DefaultLink>
+  </SFLink>
 </template>
 
 <script setup lang="ts">

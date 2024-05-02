@@ -1,16 +1,16 @@
 <template>
   <Teleport to="body">
-    <FadeInFromBottomTransition>
+    <SFFadeInFromBottomTransition>
       <div
         v-if="isGiftSelectionShown"
         ref="sizeSelection"
         class="fixed bottom-0 z-[100] w-full rounded-t-xl bg-white px-4 py-2"
       >
         <div class="relative mt-2 flex items-center justify-center">
-          <Headline size="base" is-bold>
+          <SFHeadline size="base" is-bold>
             {{ $t('pdp.promotion.select_size_label') }}
-          </Headline>
-          <AppButton
+          </SFHeadline>
+          <SFButton
             type="raw"
             size="xs"
             fab
@@ -21,12 +21,12 @@
             <template #icon="{ _class }">
               <IconCloseBold :class="_class" class="text-black" />
             </template>
-          </AppButton>
+          </SFButton>
         </div>
         <div
           class="mt-4 border border-x-transparent border-y-secondary-700 py-4"
         >
-          <RadioItem
+          <SFRadioItem
             v-for="size in sizes"
             :key="size.value"
             :model-value="activeVariant?.id"
@@ -37,21 +37,21 @@
           />
         </div>
         <div class="flex items-center justify-center gap-4 py-4">
-          <AppButton type="secondary" class="w-1/3" @click="cancel">
+          <SFButton type="secondary" class="w-1/3" @click="cancel">
             {{ $t('pdp.promotion.select_size_cancel') }}
-          </AppButton>
-          <AppButton
+          </SFButton>
+          <SFButton
             :disabled="!activeVariant"
             is-full-width
             @click="addItemToBasket(promotion.id)"
           >
             {{ $t('pdp.promotion.select_size_add_label') }}
-          </AppButton>
+          </SFButton>
         </div>
       </div>
-    </FadeInFromBottomTransition>
+    </SFFadeInFromBottomTransition>
   </Teleport>
-  <Overlay v-if="isGiftSelectionShown" />
+  <SFOverlay v-if="isGiftSelectionShown" />
 </template>
 
 <script setup lang="ts">
