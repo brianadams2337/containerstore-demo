@@ -61,7 +61,7 @@
                             isAutomaticDiscountPriceApplicable ||
                             isFree
                           "
-                          class="text-sm font-medium text-primary line-through"
+                          class="text-sm font-medium text-primary leading-5 p-1 line-through"
                           data-test-id="initialProductPrice"
                         >
                           {{
