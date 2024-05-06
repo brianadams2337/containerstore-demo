@@ -11,21 +11,17 @@ const tracer = trace.getTracer(
   // TODO: Add package version, once we have a separate package
 )
 
-function getFilter(pathBlocklist?: string | RegExp): (path: string) => boolean {
+function getFilter(pathBlocklist?: string): (path: string) => boolean {
   if (!pathBlocklist) {
     return (_path: string) => true
   }
 
-  if (typeof pathBlocklist === 'string') {
-    try {
-      const regex = new RegExp(pathBlocklist)
-      return (path: string) => regex.test(path)
-    } catch {
-      return (path: string) => path.includes(pathBlocklist)
-    }
+  try {
+    const regex = new RegExp(pathBlocklist)
+    return (path: string) => regex.test(path)
+  } catch {
+    return (path: string) => path.includes(pathBlocklist)
   }
-
-  return (path: string) => pathBlocklist.test(path)
 }
 
 export default defineNitroPlugin((nitro) => {
