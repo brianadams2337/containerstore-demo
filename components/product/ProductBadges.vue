@@ -1,9 +1,9 @@
 <template>
   <div
-    class="flex flex-col rounded items-start"
+    class="flex flex-col rounded"
     :class="{
-      'bottom-0 left-0 max-w-full': isPromotionBadgeFullWidth,
-      '': !isPromotionBadgeFullWidth,
+      'bottom-0 left-0 max-w-full ': isPromotionBadgeFullWidth,
+      'items-start w-full': !isPromotionBadgeFullWidth,
     }"
   >
     <ProductBadge

@@ -34,7 +34,7 @@
           <template #badge>
             <ProductBadges
               :product="product"
-              class="absolute bottom-0 left-0"
+              class="absolute bottom-0 left-0 w-full"
             />
           </template>
         </ProductCard>
