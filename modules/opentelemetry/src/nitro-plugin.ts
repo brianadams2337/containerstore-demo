@@ -1,5 +1,5 @@
 import { getRequestURL } from 'h3'
-import { trace, type Span, SpanStatusCode } from '@opentelemetry/api'
+import { trace, type Span, SpanStatusCode, context } from '@opentelemetry/api'
 import {
   SEMATTRS_HTTP_HOST,
   SEMATTRS_HTTP_METHOD,
@@ -68,6 +68,9 @@ export default defineNitroPlugin((nitro) => {
         return await router?.handler(event)
       }
 
+      const ctx = context.active()
+      const currentSpan = trace.getSpan(ctx)
+
       return await tracer.startActiveSpan(
         `${event.method} ${replace(event.path)}`,
         {
@@ -96,7 +99,13 @@ export default defineNitroPlugin((nitro) => {
           const matchedVueRoute = event.context.matchedVueRoute?.path
 
           if (matchedRoute) {
-            if (matchedRoute === '/**' && matchedVueRoute) {
+            // For the root nitro span, we use the vue router route
+            if (
+              (!currentSpan ||
+                // @ts-expect-error Property 'instrumentationLibrary' does not exist on type 'Span'.
+                currentSpan.instrumentationLibrary?.name !== 'nitro') &&
+              matchedVueRoute
+            ) {
               span.updateName(`${event.method} ${replace(matchedVueRoute)}`)
               span.setAttribute(SEMATTRS_HTTP_ROUTE, replace(matchedVueRoute))
             } else {
