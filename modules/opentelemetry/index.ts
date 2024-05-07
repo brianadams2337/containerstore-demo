@@ -60,13 +60,15 @@ export default defineNuxtModule<ModuleOptions>({
   },
   defaults: {
     enabled: false,
+    pathBlocklist: undefined,
+    pathReplace: undefined,
   },
   setup(options, nuxt) {
     const resolver = createResolver(import.meta.url)
 
     // Private runtimeConfig
     nuxt.options.runtimeConfig.opentelemetry = defu(
-      { pathBlocklist: undefined },
+      { pathBlocklist: undefined, pathReplace: undefined },
       options,
     )
 
@@ -138,3 +140,10 @@ export default defineNuxtModule<ModuleOptions>({
     })
   },
 })
+
+declare module '@nuxt/schema' {
+  interface RuntimeConfig {
+    // Required because automatically generated types are not correct
+    opentelemetry: ModuleOptions
+  }
+}
