@@ -140,6 +140,6 @@
     "node": "20.12.2"
   },
   "resolutions": {
-    "import-in-the-middle": "1.7.3"
+    "import-in-the-middle": "1.7.4"
   }
 }
