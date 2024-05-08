@@ -99,7 +99,8 @@ export default defineNitroPlugin((nitro) => {
           const matchedVueRoute = event.context.matchedVueRoute?.path
 
           if (matchedRoute) {
-            // For the root nitro span, we use the vue router route
+            // For the top-most nitro span, we use the vue router route if present.
+            // Inner requests sent from the SSR rendering will use the nitro route as their name.
             if (
               (!currentSpan ||
                 // @ts-expect-error Property 'instrumentationLibrary' does not exist on type 'Span'.
