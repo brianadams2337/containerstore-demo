@@ -36,19 +36,25 @@ export async function usePromotionProgress() {
   })
 
   const formattedDiscount = computed<string | undefined>(() => {
-    const promotedItem = (basketData.value?.items ?? []).find(
+    const promotedItems = (basketData.value?.items ?? []).filter(
       (item) => item.promotionId === currentPromotion.value?.id,
     )
 
-    const reduction = promotedItem?.price.total.appliedReductions.find(
-      ({ category }) => category === 'promotion',
-    )
+    const reductions = promotedItems?.reduce<number[]>((previous, current) => {
+      const reduction = current.price.total.appliedReductions.find(
+        ({ category }) => category === 'promotion',
+      )
+      if (reduction) {
+        previous.push(reduction.amount.absoluteWithTax)
+      }
+      return previous
+    }, [])
 
-    if (!reduction) {
+    if (!reductions) {
       return
     }
 
-    return formatCurrency(reduction?.amount.absoluteWithTax)
+    return formatCurrency(_sum(reductions))
   })
 
   const isMOVPromotionApplied = computed<boolean>(() => {
