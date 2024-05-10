@@ -1045,10 +1045,10 @@ cssesc@^3.0.0:
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-3.0.0.tgz#37741919903b868565e1c09ea747445cd18983ee"
   integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
 
-cypress-on-fix@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/cypress-on-fix/-/cypress-on-fix-1.0.2.tgz#2bf2d87f1f8403936956653fe915286fda521811"
-  integrity sha512-oN/PW7FsC3Y7xC9Z76KzAVXWH5VNPrt+FWjMlSYDPQtEOYedVNBLu7dz9CEU6Ntt5kD0MHuXAyO8Ov2YNBf9lg==
+cypress-on-fix@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/cypress-on-fix/-/cypress-on-fix-1.0.3.tgz#7a98c2d7c863a3690a6400c7488441071a0b1a30"
+  integrity sha512-iC+LSKKZM0ppOoSGHK6FOxspHG+K6RaJFWlxUjrjjI5fyzmtgR5xBxEP4dsnoNthS1Lq4v70AN1PRZtJrYgNRw==
 
 cypress-real-events@1.12.0:
   version "1.12.0"
