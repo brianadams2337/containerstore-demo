@@ -1,6 +1,9 @@
 import type { LinkList } from '~/utils/route'
 
 export default defineNuxtRouteMiddleware(async (to) => {
+  if (to.path.includes('/api')) {
+    return
+  }
   const { isLoggedIn, user } = await useUser()
   const getLocalePath = useLocalePath()
 
