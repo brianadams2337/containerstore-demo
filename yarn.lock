@@ -648,10 +648,10 @@
   resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-16.3.5.tgz#927433a84416101ba3dbf19bd0924e755f5e6d65"
   integrity sha512-ZLq6p5uyQXg+i1XGDFu4tAc2VYS12S1KA/jIOyyZjNgC1DvDajsi1JzuiBuOuMEhi1sKEUy6Ry3Yr9jsQtOKuQ==
 
-"@crowdin/cli@3.19.2":
-  version "3.19.2"
-  resolved "https://registry.yarnpkg.com/@crowdin/cli/-/cli-3.19.2.tgz#d81d85c78d7235c6c273bae72c93631dc0aedab6"
-  integrity sha512-eO/BFcLl2m96dRlEth3hsbbPJNsiTZaLqsAkot27eE4DS5+IpkV0NbcBgMsja+t0ugPAPYQ7Crc+AruO5ywvmg==
+"@crowdin/cli@3.19.3":
+  version "3.19.3"
+  resolved "https://registry.yarnpkg.com/@crowdin/cli/-/cli-3.19.3.tgz#1d89bc36c04799f63fc61d1ded2c981ca3bd1d20"
+  integrity sha512-EiWXykoFT0srLFEuIPqFBMGNBR8CXPzNlW3abx/War8cp4Ovrk0Usye/sDv0qoHWNThdJR/eMHgpQx2bVe4mjA==
   dependencies:
     command-exists-promise "^2.0.2"
     node-fetch "2.7.0"
