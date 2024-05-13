@@ -1,6 +1,10 @@
 <template>
   <div
-    class="relative flex flex-col items-start rounded-md bg-blue px-4 py-3 text-white"
+    class="relative flex rounded-md bg-blue px-4 py-3 text-white"
+    :class="{
+      'flex-row items-center justify-between': props.inline,
+      'flex-col items-start': !props.inline,
+    }"
     :style="getBackgroundColorStyle(customData.colorHex)"
   >
     <PromotionHeadline
@@ -25,6 +29,7 @@ type Props = {
   customData?: Promotion['customData']
   isPriorityBadgeShown?: boolean
   schedule: Promotion['schedule']
+  inline?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {

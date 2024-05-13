@@ -13,8 +13,7 @@
     <PromotionCountdown
       v-if="promotion"
       :until="promotion.schedule.to"
-      class="md:basis-1/2 md:items-center md:justify-end lg:basis-7/12 xl:basis-5/12"
-      borderless
+      class="min-w-fit max-w-fit md:basis-1/2 md:items-center md:justify-end lg:basis-7/12 xl:basis-5/12"
     />
   </div>
 </template>

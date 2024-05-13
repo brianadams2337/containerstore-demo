@@ -6,6 +6,7 @@
       v-bind="{ customData, schedule }"
       :is-priority-badge-shown="isHighestPriority(priority)"
       class="mb-2 w-full"
+      inline
     />
   </div>
 </template>

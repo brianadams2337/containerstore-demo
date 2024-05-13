@@ -13,7 +13,6 @@
       <PromotionCountdown
         v-if="giftPromotion"
         :until="giftPromotion.schedule.to"
-        borderless
       />
     </div>
     <div class="p-4">
