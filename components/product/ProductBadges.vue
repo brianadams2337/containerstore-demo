@@ -9,7 +9,7 @@
   >
     <ProductBadge
       v-if="isProductSustainable(product)"
-      badge-label="sustainable"
+      :text="$t('badge_labels.sustainable')"
       class="mb-2"
       :class="{
         'ml-2': !isBasketPage,
@@ -18,7 +18,7 @@
     />
     <ProductBadge
       v-if="product.isNew"
-      badge-label="new"
+      :text="$t('badge_labels.new')"
       class="mb-2"
       :class="{
         'ml-2': !isBasketPage,
@@ -32,22 +32,24 @@
       )"
       :key="`campaign-${idx}`"
       class="mx-2 mb-2 bg-[#ff6e17] truncate"
-      :badge-label="`-${campaign.amount.relative * 100}% EXTRA`"
-      :translate="false"
       :class="{
         'ml-0 mx-0 truncate !max-w-full': isBasketPage,
       }"
+      :text="
+        $t('badge_labels.campaign', {
+          reduction: campaign.amount.relative * 100,
+        })
+      "
     />
     <ProductBadge
       v-for="(sale, idx) in getSalesRelativeAmountByCategory(product, 'sale')"
       :key="`sale-${idx}`"
       class="mb-2 bg-red-500 truncate"
-      :badge-label="`-${sale.amount.relative * 100}%`"
       :class="{
         'ml-2 ': !isBasketPage,
         'mb-2 !max-w-full': isBasketPage,
       }"
-      :translate="false"
+      :text="$t('badge_labels.sale', { reduction: sale.amount.relative * 100 })"
     />
     <ProductPromotionBadges
       :product="product"

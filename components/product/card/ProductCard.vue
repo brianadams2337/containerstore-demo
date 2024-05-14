@@ -70,7 +70,7 @@
                   @click.capture="$emit('click:product')"
                 >
                   <ProductBadge
-                    :badge-label="badgeLabel"
+                    :text="badgeLabel"
                     class="absolute left-0 top-0"
                   />
                 </SFLink>

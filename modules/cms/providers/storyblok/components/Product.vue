@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { type Product, getBadgeLabel } from '@scayle/storefront-nuxt'
+import { type Product } from '@scayle/storefront-nuxt'
 
 type CMSProductProps = {
   width?: string
@@ -26,6 +26,7 @@ type CMSProductProps = {
   product: Product
 }
 const { listingColumns } = useListingUiState()
+const { $i18n } = useNuxtApp()
 
 const props = withDefaults(defineProps<CMSProductProps>(), {
   fetching: false,
@@ -33,12 +34,13 @@ const props = withDefaults(defineProps<CMSProductProps>(), {
 })
 
 const emit = defineEmits(['intersect:product'])
-const badgeLabel = computed(() =>
-  getBadgeLabel({
-    isNew: props.product.isNew,
-    isSoldOut: props.product.isSoldOut,
-  }),
-)
+const badgeLabel = computed(() => {
+  if (props.product.isNew) {
+    return $i18n.t('badge_labels.new')
+  }
+
+  return undefined
+})
 
 defineOptions({ name: 'CMSProduct' })
 </script>

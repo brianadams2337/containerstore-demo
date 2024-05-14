@@ -28,7 +28,7 @@
         <span class="font-bold text-primary">{{ color }}</span>
       </p>
       <p v-if="isSoldOut">
-        <ProductBadge class="mt-2" :badge-label="badgeLabel" />
+        <ProductBadge class="mt-2" :text="$t('badge_labels.sold_out')" />
       </p>
     </div>
   </div>
@@ -55,7 +55,6 @@ const {
   color,
   cupsizeLabel,
   isSoldOut,
-  badgeLabel,
   quantity,
 } = await useBasketItem(basketItem)
 </script>

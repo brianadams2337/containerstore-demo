@@ -65,9 +65,7 @@
                   />
                   <ProductBadge
                     v-if="product.isSoldOut"
-                    :badge-label="
-                      getBadgeLabel({ isSoldOut: product.isSoldOut })
-                    "
+                    :text="$t('badge_labels.sold_out')"
                   />
                 </div>
 
@@ -211,7 +209,6 @@ import { Size } from '#storefront-ui'
 import {
   type ProductColor,
   getFirstAttributeValue,
-  getBadgeLabel,
   isInStock,
 } from '@scayle/storefront-nuxt'
 

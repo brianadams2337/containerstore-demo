@@ -93,7 +93,9 @@
     "premium": "Premium",
     "sustainable": "Nachhaltig",
     "sold_out": "Ausverkauft",
-    "online_exclusive": "Exklusiv online"
+    "online_exclusive": "Exklusiv online",
+    "campaign": "-{reduction}% EXTRA",
+    "sale": "-{reduction}%"
   },
   "navigation": {
     "my_account": "Mein Konto",

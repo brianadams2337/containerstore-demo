@@ -1,6 +1,5 @@
 import {
   type BasketItem,
-  getBadgeLabel,
   getFirstAttributeValue,
   getProductColors,
   getSizeFromVariant,
@@ -59,12 +58,6 @@ export async function useBasketItem(basketItem: Ref<BasketItem>) {
       basketItem.value?.variant.attributes,
       'cupsize',
     )?.label
-  })
-
-  const badgeLabel = computed(() => {
-    return getBadgeLabel({
-      isSoldOut: basketItem.value?.product.isSoldOut,
-    })
   })
 
   const availableQuantity = computed(() => {
@@ -176,7 +169,6 @@ export async function useBasketItem(basketItem: Ref<BasketItem>) {
     product,
     variant,
     selectItem,
-    badgeLabel,
     cupsizeLabel,
     isSoldOut,
     listingMetaData,

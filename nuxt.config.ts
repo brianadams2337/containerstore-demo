@@ -29,26 +29,24 @@ type NitroRouteConfig = NitroRouteRules extends Record<any, infer Value>
 
 const DOMAIN_PER_LOCALE = yn(process.env.DOMAIN_PER_LOCALE)
 
-const DE_DOMAIN_FILE = 'de-DE.json'
-
 const locales = [
   {
     code: 'de',
     iso: 'de-DE',
     domain: DOMAIN_PER_LOCALE ? domains.de : domains.default,
-    file: DE_DOMAIN_FILE,
+    file: 'de-DE.json',
   },
   {
     code: 'at',
     iso: 'de-AT',
     domain: DOMAIN_PER_LOCALE ? domains['de-at'] : domains.default,
-    file: DE_DOMAIN_FILE,
+    file: 'de-DE.json',
   },
   {
     code: 'ch',
     iso: 'de-CH',
     domain: DOMAIN_PER_LOCALE ? domains['de-ch'] : domains.default,
-    file: DE_DOMAIN_FILE,
+    file: 'de-DE.json',
   },
   {
     code: 'en',
