@@ -37,7 +37,19 @@ export const getImage: ProviderGetImage = (
     })
     .join('&')
 
-  const url = URL.canParse(src)
+  const canParse =
+    URL.canParse ??
+    function canParse(url: URL | string, base?: string) {
+      const urlString = url instanceof URL ? url.toString() : url
+      try {
+        new URL(urlString, base)
+        return true
+      } catch (error) {
+        return false
+      }
+    }
+
+  const url = canParse(src)
     ? src + (operations ? `?${operations}` : '')
     : joinURL(baseURL, src + (operations ? `?${operations}` : ''))
   return {
