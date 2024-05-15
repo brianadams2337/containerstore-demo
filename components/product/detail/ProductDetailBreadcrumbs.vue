@@ -23,6 +23,7 @@
 >
 import { SFHorizontalItemsDivider } from '#components'
 import type { RouteLocationRaw } from '#vue-router'
+import { showDividerTag } from '#storefront-ui'
 
 defineProps<{ links: Link[] }>()
 </script>

@@ -31,6 +31,7 @@
 <script setup lang="ts">
 import { getBreadcrumbsFromPath } from '@scayle/storefront-nuxt'
 import { SFHorizontalItemsDivider, SFLink, SFHeadline } from '#components'
+import { showDividerTag } from '#storefront-ui'
 
 const route = useRoute()
 const currentShop = useCurrentShop()
@@ -43,9 +44,5 @@ const breadcrumbs = computed(() => {
 const isActive = (url: string) => {
   const { isExactActive } = useLink({ to: getLocalizedRoute(url) })
   return isExactActive.value
-}
-
-const showDividerTag = (index: number, arrayLength: number) => {
-  return index >= 0 && arrayLength > 1 && index < arrayLength - 1
 }
 </script>

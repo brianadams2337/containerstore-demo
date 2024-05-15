@@ -54,7 +54,7 @@ const { toggle: toggleFilter } = useSlideIn('FilterSlideIn')
 
 const wishlist = await useWishlist()
 
-const notification = useNotification()
+const toast = useToast()
 
 const { trackAddToWishlist, trackRemoveFromWishlist } = useTrackingEvents()
 
@@ -180,7 +180,7 @@ const toggleItem = (product: Product) => {
       })
 
   const action = !wasInWishlist ? 'ROUTE' : 'CONFIRM'
-  notification.show(message, action, {
+  toast.show(message, action, {
     to: !wasInWishlist ? localePath(routeList.wishlist) : undefined,
   })
 }

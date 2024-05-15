@@ -24,7 +24,7 @@
   "
 >
 import type { RouteLocationRaw } from '#vue-router'
-import { DividerItemTag } from '#storefront-ui'
+import { DividerItemTag, showDividerTag } from '#storefront-ui'
 
 type Props = {
   items: Item[]

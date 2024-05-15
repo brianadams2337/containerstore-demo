@@ -68,7 +68,7 @@ const { updatePassword, fetch: refresh } = await useUser()
 const { $i18n } = useNuxtApp()
 const validationRules = useValidationRules()
 
-const notification = useNotification()
+const toast = useToast()
 
 const initPayload = () => ({
   oldPassword: '',
@@ -118,7 +118,7 @@ const updateUserPassword = async () => {
   } catch (err) {
     msg = $i18n.t('my_account.user.password_update_error')
   } finally {
-    notification.show(msg, 'CONFIRM')
+    toast.show(msg, 'CONFIRM')
     isUpdating.value = false
 
     await _sleep(500)

@@ -10,6 +10,19 @@ export default defineVitestConfig({
       provider: 'v8',
       reporter: ['text'],
     },
+    environmentOptions: {
+      nuxt: {
+        overrides: {
+          runtimeConfig: {
+            public: {
+              gtm: {
+                id: 'GTM-123',
+              },
+            },
+          },
+        },
+      },
+    },
     clearMocks: true,
     onConsoleLog: (log) => {
       // Silence logs coming from vue <Suspense> is experimental, and stdout | unknown component before it

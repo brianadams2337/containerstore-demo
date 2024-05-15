@@ -10,7 +10,7 @@ import {
 export async function useWishlistItemActions(item: Ref<WishlistItem>) {
   const { $i18n } = useNuxtApp()
 
-  const notification = useNotification()
+  const toast = useToast()
   const product = item.value.product
 
   const { openBasketFlyout } = useFlyouts()
@@ -61,7 +61,7 @@ export async function useWishlistItemActions(item: Ref<WishlistItem>) {
     }
 
     if (!item.value.variant?.id) {
-      notification.show($i18n.t('basket.notification.select_size'), 'CONFIRM')
+      toast.show($i18n.t('basket.notification.select_size'), 'CONFIRM')
       return
     }
 

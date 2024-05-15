@@ -7,7 +7,7 @@
       <SFLink
         v-if="action.href"
         :key="`link-${action.text}`"
-        :class="action.class || ''"
+        :class="action.class"
         :to="action.href"
         raw
         class="underline"
@@ -15,15 +15,15 @@
       >
         {{ action.text }}
       </SFLink>
-      <div
+      <button
         v-else
         :key="action.text"
         :class="action.class"
-        class="cursor-pointer underline"
+        class="underline"
         @click="onClick($event, action)"
       >
         {{ action.text }}
-      </div>
+      </button>
     </template>
   </div>
 </template>
@@ -31,8 +31,12 @@
 <script setup lang="ts">
 import { useTimeoutFn } from '@vueuse/core'
 import { useNotification } from '#storefront-ui'
+import type {
+  NotificationActionHandler,
+  StorefrontNotification,
+} from '#storefront-ui'
 
-const props = defineProps<{ notification: AppNotification }>()
+const props = defineProps<{ notification: StorefrontNotification }>()
 
 const { close: closeNotification } = useNotification()
 
@@ -44,7 +48,7 @@ const onClick = (event: Event, action: NotificationActionHandler) => {
   }
   event.preventDefault()
   event.stopImmediatePropagation()
-  action?.onClick(event, { ...props.notification, close })
+  action?.onClick({ close })
 }
 
 useTimeoutFn(close, props.notification.duration)

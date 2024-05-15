@@ -255,7 +255,7 @@ const { $i18n } = useNuxtApp()
 const wishlist = await useWishlist()
 const { trackRemoveFromWishlist, trackAddToWishlist } = useTrackingEvents()
 
-const notification = useNotification()
+const toast = useToast()
 
 const { pageState } = usePageState()
 const route = useRoute()
@@ -304,7 +304,7 @@ const addToWishlist = async () => {
   const message = $i18n.t('wishlist.notification.add_to_wishlist', {
     productName: name.value || $i18n.t('wishlist.product'),
   })
-  notification.show(message, 'ROUTE', { to: '/wishlist' })
+  toast.show(message, 'ROUTE', { to: '/wishlist' })
 }
 
 const removeFromWishlist = async () => {
@@ -331,6 +331,6 @@ const removeFromWishlist = async () => {
 
   await wishlist.removeItem(data)
 
-  notification.show(message, 'CONFIRM')
+  toast.show(message, 'CONFIRM')
 }
 </script>

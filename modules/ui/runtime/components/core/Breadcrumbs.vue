@@ -19,6 +19,7 @@
 <script setup lang="ts">
 import type { RouteLocationRaw } from '#vue-router'
 import { SFHorizontalItemsDivider } from '#components'
+import { showDividerTag } from '#storefront-ui'
 
 type Link = { value: string; to: RouteLocationRaw }
 

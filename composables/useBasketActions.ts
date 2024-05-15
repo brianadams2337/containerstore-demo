@@ -17,7 +17,8 @@ type OrderedItems<T> = {
 export async function useBasketActions() {
   const { $i18n } = useNuxtApp()
 
-  const notification = useNotification()
+  const toast = useToast()
+
   const { trackRemoveFromBasket, trackBasket, collectBasketItems } =
     useTrackingEvents()
 
@@ -37,7 +38,7 @@ export async function useBasketActions() {
 
     const action = isAddedToBasket ? 'ROUTE' : 'CONFIRM'
 
-    notification.show(message, action, {
+    toast.show(message, action, {
       ...(isAddedToBasket && { to: routeList.basket }),
     })
   }

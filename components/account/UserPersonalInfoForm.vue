@@ -65,7 +65,7 @@ const { $i18n } = useNuxtApp()
 const currentShop = useCurrentShop()
 const validationRules = useValidationRules()
 
-const notification = useNotification()
+const toast = useToast()
 
 const dobFormat = computed(() => {
   const locale = currentShop.value?.locale.replace('-', '_')
@@ -133,9 +133,9 @@ const update = async () => {
       ...payload,
       birthDate: getPayloadDate(payload.birthDate),
     })
-    notification.show($i18n.t('my_account.user.save_message'), 'CONFIRM')
+    toast.show($i18n.t('my_account.user.save_message'), 'CONFIRM')
   } catch {
-    notification.show(saveError, 'CONFIRM')
+    toast.show(saveError, 'CONFIRM')
   } finally {
     isUpdating.value = false
   }

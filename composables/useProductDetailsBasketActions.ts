@@ -4,7 +4,7 @@ import { isSubscriptionAlreadyInBasket } from '~/modules/subscription/helpers/su
 export async function useProductDetailsBasketActions() {
   const app = useNuxtApp()
 
-  const notification = useNotification()
+  const toast = useToast()
   const { trackAddToBasket } = useTrackingEvents()
   const { openBasketFlyout } = useFlyouts()
 
@@ -53,10 +53,7 @@ export async function useProductDetailsBasketActions() {
     }
 
     if (!activeVariant.value) {
-      notification.show(
-        app.$i18n.t('basket.notification.select_size'),
-        'CONFIRM',
-      )
+      toast.show(app.$i18n.t('basket.notification.select_size'), 'CONFIRM')
       return
     }
 
@@ -67,7 +64,7 @@ export async function useProductDetailsBasketActions() {
         basketItems.value,
       )
     ) {
-      notification.show(
+      toast.show(
         app.$i18n.t(
           'basket.notification.subscription_already_in_basket_error',
           {
@@ -124,7 +121,7 @@ export async function useProductDetailsBasketActions() {
         })
       }
     } catch {
-      notification.show(
+      toast.show(
         app.$i18n.t('basket.notification.add_to_basket_error', {
           productName: name.value,
         }),
