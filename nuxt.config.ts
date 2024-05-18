@@ -283,7 +283,7 @@ export default defineNuxtConfig({
   vue: {
     // https://nuxt.com/docs/api/nuxt-config#compileroptions-1
     compilerOptions: {
-      isCustomElement: (tag) => tag.startsWith('ay-'),
+      isCustomElement: (tag) => tag === 'scayle-checkout',
     },
   },
 

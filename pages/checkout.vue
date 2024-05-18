@@ -1,6 +1,6 @@
 <template>
   <div id="ayCheckoutContainer" class="min-h-[85vh]">
-    <ay-checkout
+    <scayle-checkout
       v-if="accessToken && basketKey && showCheckout"
       ref="checkoutRef"
       :access-token="accessToken"
