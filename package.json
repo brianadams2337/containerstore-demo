@@ -39,7 +39,7 @@
     "coverage": "vitest run --coverage"
   },
   "devDependencies": {
-    "@changesets/cli": "2.27.1",
+    "@changesets/cli": "2.27.3",
     "@eslint/eslintrc": "3.0.2",
     "@nuxt/eslint": "0.3.13",
     "@nuxt/image": "1.7.0",
