@@ -11,7 +11,7 @@
       class="translate-0 transition-transform duration-300 ease-in-out"
       :class="{ 'lg:-translate-y-[3.25rem]': isLayoutTranslated }"
     >
-      <HeaderMetaBar class="md:mt-[3.25rem]" />
+      <HeaderMetaBar />
       <AppHeader />
       <SFToastContainer />
       <MobileSidebar />

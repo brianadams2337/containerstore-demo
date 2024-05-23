@@ -2,7 +2,7 @@
   <div
     ref="promotionListRef"
     data-test-id="promotion-list"
-    class="fixed right-0 top-[3.25rem] z-60 hidden w-full lg:block"
+    class="absolute right-0 top-[3.25rem] z-60 hidden w-full lg:block"
   >
     <div class="relative bg-primary p-5 text-white">
       <div class="overflow-x-scroll scrollbar-hide">
