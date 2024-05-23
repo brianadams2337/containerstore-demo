@@ -3,7 +3,7 @@ export function usePromotionChange(promotions: Promotion[]) {
 
   const timeoutId = ref<NodeJS.Timeout>()
 
-  const showNextPromotion = (currentIndex = 0) => {
+  const showNextPromotion = (currentIndex = 1) => {
     timeoutId.value = setTimeout(() => {
       const isLast = currentIndex === promotions.length - 1
       const idx = isLast ? 0 : currentIndex + 1

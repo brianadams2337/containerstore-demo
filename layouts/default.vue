@@ -9,7 +9,7 @@
     />
     <div
       class="translate-0 transition-transform duration-300 ease-in-out"
-      :class="{ '-translate-y-[3.25rem]': isLayoutTranslated }"
+      :class="{ 'lg:-translate-y-[3.25rem]': isLayoutTranslated }"
     >
       <HeaderMetaBar class="md:mt-[3.25rem]" />
       <AppHeader />
