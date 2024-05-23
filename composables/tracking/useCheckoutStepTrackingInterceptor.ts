@@ -59,9 +59,7 @@ export const useCheckoutStepTrackingInterceptor = () => {
 
   onUnmounted(() => {
     // cleanup history methods
-    if (import.meta.client) {
-      window.history.pushState = pushStateNative
-      window.history.replaceState = replaceStateNative
-    }
+    window.history.pushState = pushStateNative
+    window.history.replaceState = replaceStateNative
   })
 }

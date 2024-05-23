@@ -55,9 +55,11 @@ createContext(USE_BANNER_KEY, useBanner())
 
 const { data: _promotionData } = await useCurrentPromotions()
 
-trackingEvents.trackShopInit()
-await trackingEvents.listenToUserItemsChanges()
-await trackingEvents.listenToCustomerDataChanges()
+onMounted(async () => {
+  trackingEvents.trackShopInit()
+  await trackingEvents.listenToUserItemsChanges()
+  await trackingEvents.listenToCustomerDataChanges()
+})
 
 // Meta tags
 const { isSideNavigationOpen } = useSideNavigation()

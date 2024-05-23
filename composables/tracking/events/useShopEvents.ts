@@ -18,9 +18,9 @@ const useShopEvents = (
         shop_gender: SHOP_GENDER,
         shop_version: version,
         locale: locale?.replace('_', '-'),
-        landing_page: import.meta.client ? window.location.href : '',
-        referrer: import.meta.client ? window.document.referrer : '',
-        parameter: import.meta.client ? window.location.search || '' : '',
+        landing_page: window.location.href ?? '',
+        referrer: window.document.referrer ?? '',
+        parameter: window.location.search ?? '',
         origin: 'web',
       })
     },

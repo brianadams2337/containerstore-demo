@@ -30,15 +30,17 @@ const { $i18n } = useNuxtApp()
 
 const { trackPurchaseEvent } = useTrackingEvents()
 
-watch(
-  fetching,
-  (isFetching) => {
-    if (!isFetching && orderData.value) {
-      trackPurchaseEvent(orderData.value)
-    }
-  },
-  { immediate: true },
-)
+onMounted(() => {
+  watch(
+    fetching,
+    (isFetching) => {
+      if (!isFetching && orderData.value) {
+        trackPurchaseEvent(orderData.value)
+      }
+    },
+    { immediate: true },
+  )
+})
 
 watch(
   user.fetching,

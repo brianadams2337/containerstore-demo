@@ -63,62 +63,61 @@ const usePurchaseEvents = (): {
   const { pageState } = usePageState()
   const tracking = useTracking()
 
+  function trackPurchaseEvent(orderData: Order) {
+    const defaultEmptyValue = ''
+    const paymentType = orderData?.payment?.[0].key
+    const moneyLocale = 'en-EN' // for money formatting analytics requires en-EN so that every shop value is formatted the same way
+    const currency = useCurrentShop().value?.currency
+    const giftcard = getGiftcardAmount({
+      amount: 0, // TODO if giftcard is implemented this should change to the right amount
+      currency: currency ?? 'USD',
+      locale: moneyLocale,
+    })
+    const coupon = orderData.vouchers?.[0]?.code ?? defaultEmptyValue // only one voucher can be applied for now
+    const couponReductionWithTax = getCouponReductionWithTax({
+      orderData,
+    })
+
+    const items = getItems(orderData, currency)
+
+    const shippingNetFee = orderData.cost.appliedFees
+      ? getShippingNetFee(orderData.cost.appliedFees)
+      : null
+
+    const ecommerce = {
+      transaction_id: String(orderData.id),
+      customer_id: String(orderData.customer?.id),
+      value: divideByHundred(orderData.cost.withoutTax),
+      sale_reduction_with_tax: divideByHundred(
+        sumReductionsFromAllOrderItemsPerCategory(orderData.items, 'sale'),
+      ),
+      campaign_reduction_with_tax: divideByHundred(
+        sumReductionsFromAllOrderItemsPerCategory(orderData.items, 'campaign'),
+      ),
+      coupon_reduction_with_tax: couponReductionWithTax,
+      coupon,
+      coupon_code: coupon,
+      // giftcard === "<amount><currency>" e.g. 10€ mentioned here: https://aboutyou.atlassian.net/wiki/spaces/AYC/pages/979207502/SFC+v2+Tracking+Integration
+      giftcard,
+      tax: divideByHundred(orderData.cost.tax.vat?.amount ?? 0),
+      shipping: shippingNetFee
+        ? divideByHundred(shippingNetFee)
+        : divideByHundred(orderData?.shipping?.deliveryCosts || 0),
+      payment_type: paymentType,
+      items,
+    }
+
+    tracking.push({
+      event: 'purchase',
+      ecommerce,
+      content_name: document.location.pathname ?? '',
+      page_type: pageState.value.type,
+      page_type_id: pageState.value.typeId,
+    })
+  }
+
   return {
-    trackPurchaseEvent: (orderData: Order) => {
-      const defaultEmptyValue = ''
-      const paymentType = orderData?.payment?.[0].key
-      const moneyLocale = 'en-EN' // for money formatting analytics requires en-EN so that every shop value is formatted the same way
-      const currency = useCurrentShop().value?.currency
-      const giftcard = getGiftcardAmount({
-        amount: 0, // TODO if giftcard is implemented this should change to the right amount
-        currency: currency ?? 'USD',
-        locale: moneyLocale,
-      })
-      const coupon = orderData.vouchers?.[0]?.code ?? defaultEmptyValue // only one voucher can be applied for now
-      const couponReductionWithTax = getCouponReductionWithTax({
-        orderData,
-      })
-
-      const items = getItems(orderData, currency)
-
-      const shippingNetFee = orderData.cost.appliedFees
-        ? getShippingNetFee(orderData.cost.appliedFees)
-        : null
-
-      const ecommerce = {
-        transaction_id: String(orderData.id),
-        customer_id: String(orderData.customer?.id),
-        value: divideByHundred(orderData.cost.withoutTax),
-        sale_reduction_with_tax: divideByHundred(
-          sumReductionsFromAllOrderItemsPerCategory(orderData.items, 'sale'),
-        ),
-        campaign_reduction_with_tax: divideByHundred(
-          sumReductionsFromAllOrderItemsPerCategory(
-            orderData.items,
-            'campaign',
-          ),
-        ),
-        coupon_reduction_with_tax: couponReductionWithTax,
-        coupon,
-        coupon_code: coupon,
-        // giftcard === "<amount><currency>" e.g. 10€ mentioned here: https://aboutyou.atlassian.net/wiki/spaces/AYC/pages/979207502/SFC+v2+Tracking+Integration
-        giftcard,
-        tax: divideByHundred(orderData.cost.tax.vat?.amount ?? 0),
-        shipping: shippingNetFee
-          ? divideByHundred(shippingNetFee)
-          : divideByHundred(orderData?.shipping?.deliveryCosts || 0),
-        payment_type: paymentType,
-        items,
-      }
-
-      tracking.push({
-        event: 'purchase',
-        ecommerce,
-        content_name: import.meta.client ? document.location.pathname : '',
-        page_type: pageState.value.type,
-        page_type_id: pageState.value.typeId,
-      })
-    },
+    trackPurchaseEvent,
   }
 }
 
