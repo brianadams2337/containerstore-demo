@@ -3144,10 +3144,10 @@
     eslint-plugin-sonarjs "1.0.3"
     local-pkg "0.5.0"
 
-"@scayle/eslint-plugin-vue-composable@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@scayle/eslint-plugin-vue-composable/-/eslint-plugin-vue-composable-0.1.1.tgz#7a4d1b59152625566716ab5866d23e2528bfcbd7"
-  integrity sha512-gSww15uLssqyDvV9NM8NRAZ2pzw9M6Z3SaGZhTVP6XpmCfrlBOlzWDKIx0Je/Ep7Smb9hTZfrdsGhfrktqdBpA==
+"@scayle/eslint-plugin-vue-composable@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@scayle/eslint-plugin-vue-composable/-/eslint-plugin-vue-composable-0.2.0.tgz#692a86a7945c48b44ba0f4d3cf9212fdcd64db44"
+  integrity sha512-dea2UdtBHtWPGyP5eqL4e7fYCTbf4NLWYlEJdMLHzijdBCOBwJrvsfQBzSFo1Ppv6H59z+nFnTQnVPB3Qe9ivA==
 
 "@scayle/h3-session@0.4.0":
   version "0.4.0"
