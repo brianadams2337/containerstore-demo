@@ -1182,17 +1182,17 @@ cypress-real-events@1.12.0:
   resolved "https://registry.yarnpkg.com/cypress-real-events/-/cypress-real-events-1.12.0.tgz#ffeb2b23686ba5b16ac91dd9bc3b6785d36d38d3"
   integrity sha512-oiy+4kGKkzc2PT36k3GGQqkGxNiVypheWjMtfyi89iIk6bYmTzeqxapaLHS3pnhZOX1IEbTDUVxh8T4Nhs1tyQ==
 
-cypress-split@1.23.2:
-  version "1.23.2"
-  resolved "https://registry.yarnpkg.com/cypress-split/-/cypress-split-1.23.2.tgz#68e7e895e824c085e4e4349a13969d19b4cc6c02"
-  integrity sha512-kJeTgrxfH59nE4XD4ZbS8ZQds7J+ShBjyjaPcKfp3akdxcqT41rK/Io/3f4bsV1xMi7QfywgVAc1FoV2WiCLuw==
+cypress-split@1.23.4:
+  version "1.23.4"
+  resolved "https://registry.yarnpkg.com/cypress-split/-/cypress-split-1.23.4.tgz#008c391545d74660a0b21dfafd8c4986cf9b104a"
+  integrity sha512-4p052Dmx30F/SgGrn2FWc1t9poYHRT9xOnh/ImP9itggPDuJodVdB2bySiwlagGQENoZJO3v1wdi8P1heDfkmQ==
   dependencies:
     "@actions/core" "^1.10.0"
     arg "^5.0.2"
     console.table "^0.10.0"
     debug "^4.3.4"
     fast-shuffle "^6.1.0"
-    find-cypress-specs "1.43.2"
+    find-cypress-specs "1.43.3"
     globby "^11.1.0"
     humanize-duration "^3.28.0"
 
@@ -2103,10 +2103,10 @@ fill-range@^7.0.1:
   dependencies:
     to-regex-range "^5.0.1"
 
-find-cypress-specs@1.43.2:
-  version "1.43.2"
-  resolved "https://registry.yarnpkg.com/find-cypress-specs/-/find-cypress-specs-1.43.2.tgz#0c341f9b9f455463e093f08e01fe56609baa8d21"
-  integrity sha512-SNXfIy9CuKx/tdwzzn20kc7WxoJXyXmC4vzmttRD/z4qZ8eOxbN6ywmB/fuQtDLLQXncqNA7zLYsymhhIRcvTQ==
+find-cypress-specs@1.43.3:
+  version "1.43.3"
+  resolved "https://registry.yarnpkg.com/find-cypress-specs/-/find-cypress-specs-1.43.3.tgz#d22b7ef4f93e49f69ae56704289ef1532d44f121"
+  integrity sha512-S/2c8W1SbuwY1MmQD1Md9jYNPm3298o1+VGJNrw70CcPrkjw0ASltDFRddcD0cFLmE8jOT9C/EwdZMi3RaM0jA==
   dependencies:
     "@actions/core" "^1.10.0"
     arg "^5.0.1"
