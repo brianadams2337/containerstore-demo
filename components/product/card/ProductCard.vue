@@ -115,15 +115,14 @@
                     class="flex pb-1"
                   >
                     <template #item="{ item }">
-                      <SFLink :to="getProductDetailRoute(product, item.id)" raw>
-                        <ProductColorChip
-                          v-if="item.colors.length"
-                          data-test-id="product-card-color-circle"
-                          :color="item.colors[0] as ProductColor"
-                          :size="colorChipSize"
-                          :rounded="colorChipRoundedSize"
-                        />
-                      </SFLink>
+                      <ProductColorChip
+                        v-if="item.colors.length"
+                        :to="getProductDetailRoute(product, item.id)"
+                        data-test-id="product-card-color-circle"
+                        :color="item.colors[0] as ProductColor"
+                        :size="colorChipSize"
+                        :rounded="colorChipRoundedSize"
+                      />
                     </template>
                   </ProductSiblingPicker>
                 </slot>

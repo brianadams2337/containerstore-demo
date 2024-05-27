@@ -120,18 +120,13 @@
             <ProductDetailGroup class="mt-6">
               <ProductSiblingPicker :items="siblings" with-values>
                 <template #item="{ item }">
-                  <SFLink
-                    raw
-                    class="flex items-center justify-center"
+                  <ProductColorChip
+                    v-if="item.colors.length"
                     :to="getProductDetailRoute(product, item.id)"
-                  >
-                    <ProductColorChip
-                      v-if="item.colors.length"
-                      :is-active="item.id === product.id"
-                      :size="Size.LG"
-                      :color="item.colors[0] as ProductColor"
-                    />
-                  </SFLink>
+                    :is-active="item.id === product.id"
+                    :size="Size.LG"
+                    :color="item.colors[0] as ProductColor"
+                  />
                 </template>
               </ProductSiblingPicker>
             </ProductDetailGroup>

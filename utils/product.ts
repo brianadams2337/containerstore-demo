@@ -15,6 +15,7 @@ export const ProductColorMap: Record<
   { id: number; hex: ProductColorCode }
 > = {
   WHITE: { id: 6, hex: '#ffffff' },
+  BEIGE: { id: 1564, hex: '#e3dad1' },
   BLACK: { id: 7, hex: '#000000' },
   GRAY: { id: 8, hex: '#888888' },
   DARK_GRAY: { id: 611, hex: '#808080' },

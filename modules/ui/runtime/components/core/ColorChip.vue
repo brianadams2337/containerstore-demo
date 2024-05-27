@@ -1,5 +1,7 @@
 <template>
-  <span
+  <component
+    :is="componentName"
+    v-bind="{ ...(to && { to, raw: true }) }"
     :style="backgroundColorStyle"
     class="relative col-span-1 flex items-center justify-center overflow-hidden border border-transparent bg-white"
     :class="classes"
@@ -18,15 +20,18 @@
         class="size-full"
       />
     </span>
-  </span>
+  </component>
 </template>
 
 <script setup lang="ts">
 import Color from 'color'
 import { computed } from 'vue'
 import { Size, getSizeUtils, ColorChipRoundedType } from '#storefront-ui'
+import type { RouteLocationRaw } from '#vue-router'
+import { SFLink } from '#components'
 
 type Props = {
+  to?: RouteLocationRaw
   colorCode: string | string[]
   size?: Size
   isActive?: boolean
@@ -37,9 +42,12 @@ const props = withDefaults(defineProps<Props>(), {
   size: Size.MD,
   isActive: false,
   rounded: ColorChipRoundedType.DEFAULT,
+  to: undefined,
 })
 
 const { isSize } = getSizeUtils(props.size)
+
+const componentName = computed(() => (props.to ? SFLink : 'button'))
 
 const hasMixedColors = computed(() => Array.isArray(props.colorCode))
 
