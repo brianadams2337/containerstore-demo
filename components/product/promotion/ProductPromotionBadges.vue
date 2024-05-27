@@ -26,7 +26,7 @@
         >
         <span
           v-if="(isPLP || isWishlist) && getBasketLabel(customData)"
-          class="hidden font-medium truncate"
+          class="hidden truncate font-medium"
           :class="{
             'md:inline-block': !isBasket,
             '!inline-block': !getHeadlinePartsText(customData),

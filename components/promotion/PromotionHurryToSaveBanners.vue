@@ -23,7 +23,7 @@
       </SFHeadline>
       <PromotionCountdown
         :until="schedule.to"
-        class="max-w-fit min-w-fit lg:basis-7/12 lg:justify-end xl:basis-5/12"
+        class="min-w-fit max-w-fit lg:basis-7/12 lg:justify-end xl:basis-5/12"
       />
     </div>
     <div

@@ -3,7 +3,7 @@
     <template #fallback>
       <SFSkeletonLoader
         type="custom"
-        class="h-24 mt-2 w-full rounded-md xs:hidden md:block"
+        class="mt-2 h-24 w-full rounded-md xs:hidden md:block"
       />
     </template>
     <SFFadeInTransition>

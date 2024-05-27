@@ -1,5 +1,5 @@
 <template>
-  <div v-if="minOrderAmount" class="flex flex-col items-start w-full">
+  <div v-if="minOrderAmount" class="flex w-full flex-col items-start">
     <SFProgressBar
       class="mb-2 mt-3"
       :progress="progress"
@@ -8,7 +8,7 @@
       type="neutral"
       background-color="bg-white/20"
     />
-    <p class="text-center font-semibold text-xs w-full">
+    <p class="w-full text-center text-xs font-semibold">
       <template v-if="!isFullProgress">
         {{ $t('promotion.progress_left', { amount: amountLeft }) }}
       </template>

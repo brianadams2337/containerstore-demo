@@ -3,7 +3,7 @@
     data-test-id="toggle-promotion-banner-button"
     type="raw"
     size="xs"
-    class="font-semibold min-h-[1.875rem] text-white leading-5 text-xs !w-fit !px-2 !py-1 items-center"
+    class="min-h-[1.875rem] !w-fit items-center !px-2 !py-1 text-xs font-semibold leading-5 text-white"
     :aria-expanded="modelValue.toString()"
     :style="backgroundColorStyle"
     :class="{ [borderClass]: modelValue }"

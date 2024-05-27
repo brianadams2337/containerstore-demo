@@ -7,14 +7,14 @@
           :class="{
             'flex-col justify-end':
               hasSaleReduction(item) && !hasPromotionReduction(item),
-            'flex-row items-center mb-[.125rem]':
+            'mb-[.125rem] flex-row items-center':
               hasSaleReduction(item) && hasPromotionReduction(item),
           }"
         >
           <SFHeadline
             tag="p"
             size="base"
-            class="text-xs leading-[1.125rem] text-secondary line-through p-1"
+            class="p-1 text-xs leading-[1.125rem] text-secondary line-through"
           >
             {{ formatCurrency(price + reducedPrice) }}
           </SFHeadline>
@@ -25,7 +25,7 @@
             is-uppercase
             class="text-red"
             :class="{
-              'text-xs leading-[1.125rem] text-secondary line-through p-1':
+              'p-1 text-xs leading-[1.125rem] text-secondary line-through':
                 hasPromotionReduction(item),
             }"
           >

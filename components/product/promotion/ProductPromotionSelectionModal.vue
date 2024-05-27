@@ -42,13 +42,13 @@
                       }"
                     >
                       <p
-                        class="leading-snug inline-flex gap-1 items-end"
+                        class="inline-flex items-end gap-1 leading-snug"
                         :class="classes"
                         data-test-id="price"
                       >
                         <span
                           :class="{
-                            'inline rounded p-1 text-base leading-5 font-semibold':
+                            'inline rounded p-1 text-base font-semibold leading-5':
                               areConditionsMet,
                           }"
                           :style="styles"
@@ -61,7 +61,7 @@
                             isAutomaticDiscountPriceApplicable ||
                             isFree
                           "
-                          class="text-sm font-medium text-primary leading-5 p-1 line-through"
+                          class="p-1 text-sm font-medium leading-5 text-primary line-through"
                           data-test-id="initialProductPrice"
                         >
                           {{

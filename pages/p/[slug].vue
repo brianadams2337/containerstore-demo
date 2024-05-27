@@ -77,7 +77,7 @@
                     }"
                   >
                     <p
-                      class="leading-snug flex items-end gap-1.5"
+                      class="flex items-end gap-1.5 leading-snug"
                       :class="classes"
                       data-test-id="price"
                     >
@@ -87,7 +87,7 @@
                       <span
                         v-if="!isFree"
                         :class="{
-                          'inline rounded p-1 text-base leading-5 font-semibold':
+                          'inline rounded p-1 text-base font-semibold leading-5':
                             isAutomaticDiscountPriceApplicable,
                         }"
                         :style="styles"
@@ -100,7 +100,7 @@
                           isAutomaticDiscountPriceApplicable ||
                           isFree
                         "
-                        class="text-sm font-medium text-primary leading-5 p-1 line-through"
+                        class="p-1 text-sm font-medium leading-5 text-primary line-through"
                         data-test-id="initialProductPrice"
                       >
                         {{
@@ -180,7 +180,7 @@
               <template #fallback>
                 <SFSkeletonLoader
                   type="custom"
-                  class="h-64 mt-6 w-full rounded-md"
+                  class="mt-6 h-64 w-full rounded-md"
                 />
               </template>
               <SFFadeInTransition>

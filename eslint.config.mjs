@@ -1,5 +1,6 @@
 import withNuxt from './.nuxt/eslint.config.mjs'
 import eslintConfigStorefront from '@scayle/eslint-config-storefront'
+import tailwind from 'eslint-plugin-tailwindcss'
 
 // Workaround for flat config not being supported yet by eslint-plugin-tailwindcss
 // https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/280
@@ -9,37 +10,38 @@ const compat = new FlatCompat()
 
 export default withNuxt(
   eslintConfigStorefront(),
-  // Compatibility handling for legacy eslint@8 config
   // https://github.com/francoismassart/eslint-plugin-tailwindcss
-  ...compat.config({
-    extends: ['plugin:tailwindcss/recommended'],
-    rules: {
-      'tailwindcss/classnames-order': 'error',
-      'tailwindcss/no-unnecessary-arbitrary-value': 'error',
-      'tailwindcss/no-custom-classname': [
-        'warn',
-        {
-          whitelist: [
-            'picture',
-            'cms\\-picture',
-            'picture\\-contain',
-            'picture\\-cover',
-            'card',
-          ],
+  [
+    ...tailwind.configs['flat/recommended'],
+    {
+      rules: {
+        'tailwindcss/classnames-order': 'error',
+        'tailwindcss/no-unnecessary-arbitrary-value': 'error',
+        'tailwindcss/no-custom-classname': [
+          'warn',
+          {
+            whitelist: [
+              'picture',
+              'cms\\-picture',
+              'picture\\-contain',
+              'picture\\-cover',
+              'card',
+            ],
+          },
+        ],
+      },
+      settings: {
+        tailwindcss: {
+          /**
+           * Minimize the globbing scope to improve performance
+           * @see https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/276
+           * @see https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/174
+           */
+          cssFiles: ['assets/css/**/*.css'],
         },
-      ],
-    },
-    settings: {
-      /**
-       * Minimize the globbing scope to improve performance
-       * @see https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/276
-       * @see https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/174
-       */
-      tailwindcss: {
-        cssFiles: ['assets/css/**/*.css'],
       },
     },
-  }),
+  ],
   // Compatibility handling for legacy eslint@8 config
   // @scayle/vue-composable
   ...compat.config({

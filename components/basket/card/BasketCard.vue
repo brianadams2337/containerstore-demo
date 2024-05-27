@@ -7,12 +7,12 @@
     >
       <div class="flex w-full" :class="{ 'opacity-50': !inStock }">
         <div
-          class="flex w-28 items-center pr-3 lg:w-48 lg:p-0 lg:pr-6 relative"
+          class="relative flex w-28 items-center pr-3 lg:w-48 lg:p-0 lg:pr-6"
           @click.capture="selectItem"
         >
           <SFLink
             :to="getProductDetailRoute(product)"
-            class="h-full rounded-md bg-gray-200 p-2 grid grid-cols-1 grid-rows-1"
+            class="grid h-full grid-cols-1 grid-rows-1 rounded-md bg-gray-200 p-2"
           >
             <ProductImage
               v-if="image"
@@ -23,7 +23,7 @@
               class="col-start-1 col-end-1 row-start-1 row-end-1"
             />
             <ProductBadges
-              class="col-start-1 col-end-1 row-start-1 row-end-1 self-end max-w-fit"
+              class="col-start-1 col-end-1 row-start-1 row-end-1 max-w-fit self-end"
               :product="product"
               :is-promotion-badge-full-width="false"
             />
@@ -89,7 +89,7 @@
                   "
                 >
                   <span
-                    class="text-xs leading-[1.125rem] text-secondary line-through p-1"
+                    class="p-1 text-xs leading-[1.125rem] text-secondary line-through"
                   >
                     {{ formatCurrency(price + reducedPrice) }}
                   </span>

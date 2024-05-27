@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex min-h-screen flex-col text-primary antialiased anchor-scrolling-none overflow-hidden"
+    class="flex min-h-screen flex-col overflow-hidden text-primary antialiased anchor-scrolling-none"
   >
     <PromotionBanner
       v-if="allCurrentPromotions.length"

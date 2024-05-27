@@ -14,7 +14,7 @@
       class="mb-2"
       :class="{
         'ml-2': !isBasketPage,
-        'ml-0 truncate !max-w-full': isBasketPage,
+        'ml-0 !max-w-full truncate': isBasketPage,
       }"
     />
     <ProductBadge
@@ -23,7 +23,7 @@
       class="mb-2"
       :class="{
         'ml-2': !isBasketPage,
-        'ml-0 truncate !max-w-full': isBasketPage,
+        'ml-0 !max-w-full truncate': isBasketPage,
       }"
     />
     <ProductBadge
@@ -32,8 +32,8 @@
         'campaign',
       )"
       :key="`campaign-${idx}`"
-      class="mx-2 mb-2 bg-[#ff6e17] truncate"
-      :class="{ 'ml-0 mx-0 truncate !max-w-full': isBasketPage }"
+      class="mx-2 mb-2 truncate bg-[#ff6e17]"
+      :class="{ 'mx-0 !max-w-full truncate': isBasketPage }"
       :text="
         $t('badge_labels.campaign', {
           reduction: getRelativeReduction(campaign),
@@ -43,7 +43,7 @@
     <ProductBadge
       v-for="(sale, idx) in getSalesRelativeAmountByCategory(product, 'sale')"
       :key="`sale-${idx}`"
-      class="mb-2 bg-red-500 truncate"
+      class="mb-2 truncate bg-red-500"
       :class="{
         'ml-2 ': !isBasketPage,
         'mb-2 !max-w-full': isBasketPage,

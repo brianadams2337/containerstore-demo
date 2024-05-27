@@ -3,7 +3,7 @@
     v-if="promotion"
     :promotion="promotion"
     :background-color="backgroundColorStyle.backgroundColor"
-    class="flex flex-col rounded-md px-4 py-2 text-white w-full"
+    class="flex w-full flex-col rounded-md px-4 py-2 text-white"
   >
     <template #default="{ headlineParts, scheduledTo }">
       <div

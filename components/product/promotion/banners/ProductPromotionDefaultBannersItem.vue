@@ -5,7 +5,7 @@
     class="relative flex flex-col items-start rounded-md bg-blue px-4 py-3 text-white"
   >
     <template #default="{ headlineParts, scheduledTo }">
-      <div class="flex items-center justify-between w-full">
+      <div class="flex w-full items-center justify-between">
         <PromotionHeadline
           v-if="headlineParts"
           :headline-parts="headlineParts"
@@ -23,7 +23,7 @@
       </div>
       <ClientOnly>
         <template #fallback>
-          <div v-if="minOrderAmount" class="flex flex-col w-full mt-3.5">
+          <div v-if="minOrderAmount" class="mt-3.5 flex w-full flex-col">
             <SFSkeletonLoader
               v-for="n in 3"
               :key="n"

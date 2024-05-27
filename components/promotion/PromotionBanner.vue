@@ -1,12 +1,12 @@
 <template>
   <div
-    class="relative z-[65] translate-0 transition-all duration-300 ease-in-out"
+    class="translate-0 relative z-[65] transition-all duration-300 ease-in-out"
     :class="{ '-translate-y-[3.25rem]': !isPromotionBannerShown }"
   >
     <div
       :ref="(element) => setBannerRef(element as HTMLElement)"
       data-test-id="promotion-banner"
-      class="sticky w-full top-0 z-[80] hidden h-[3.25rem] cursor-pointer items-center justify-between gap-1 overflow-hidden bg-blue py-2 pl-4 text-sm text-white lg:flex"
+      class="sticky top-0 z-[80] hidden h-[3.25rem] w-full cursor-pointer items-center justify-between gap-1 overflow-hidden bg-blue py-2 pl-4 text-sm text-white lg:flex"
       :style="backgroundColorStyle"
       @click="togglePromotionList()"
     >
@@ -34,7 +34,7 @@
       <TogglePromotionBannerButton
         v-if="!isPromotionListShown"
         v-model="isPromotionBannerShown"
-        class="absolute top-[3.25rem] !rounded-none !rounded-b-md hidden lg:inline-flex"
+        class="absolute top-[3.25rem] hidden !rounded-none !rounded-b-md lg:inline-flex"
         @update:model-value="emit('change', $event)"
       />
     </SFFadeInTransition>

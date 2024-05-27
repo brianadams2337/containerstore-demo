@@ -6,7 +6,7 @@
     class="flex flex-col items-start gap-y-[.125rem] rounded-md px-4 py-2 text-white md:items-center lg:flex-nowrap"
   >
     <template #default="{ headlineParts, scheduledTo }">
-      <div class="flex items-center justify-between w-full">
+      <div class="flex w-full items-center justify-between">
         <PromotionHeadline
           v-if="headlineParts"
           :headline-parts="headlineParts"

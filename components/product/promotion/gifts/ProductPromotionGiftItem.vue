@@ -46,7 +46,7 @@
             {{ formatCurrency(variantWithLowestPrice.price.withTax) }}
           </span>
           <span
-            class="font-bold inline rounded-md p-1 text-base leading-5"
+            class="inline rounded-md p-1 text-base font-bold leading-5"
             :class="{ 'text-secondary ': !areGiftConditionsMet }"
             :style="giftStyle"
           >
