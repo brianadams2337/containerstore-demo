@@ -1,11 +1,10 @@
 <template>
   <div id="ayCheckoutContainer" class="min-h-[85vh]">
     <scayle-checkout
-      v-if="accessToken && basketKey && showCheckout"
+      v-if="accessToken && checkoutJwt"
       ref="checkoutRef"
       :access-token="accessToken"
-      :basket-id="basketKey"
-      :campaign-key="campaignKey"
+      :jwt="checkoutJwt"
       header-element="#header"
       @error="handleError"
     />
@@ -14,8 +13,9 @@
 
 <script setup lang="ts">
 import type { CheckoutEvent } from '@scayle/storefront-nuxt'
-useCheckoutWebComponent()
-const { data: basketData, fetch: fetchBasket, fetching } = await useBasket()
+const { accessToken, checkoutJwt, fetchCheckoutToken } =
+  await useCheckoutWebComponent()
+const { fetch: fetchBasket, fetching } = await useBasket()
 
 const { user, fetch: fetchUser } = await useUser()
 
@@ -27,14 +27,7 @@ const { listenToCheckoutStepChanges } = useTrackingEvents()
 
 listenToCheckoutStepChanges()
 
-const basketKey = computed(() => basketData?.value?.key)
 const checkoutRef = ref(null)
-const { data: campaignKey, fetch: fetchCampaignKey } = await useCampaign()
-
-const showCheckout = ref(false)
-const accessToken = computed(() => {
-  return user.value?.authentication?.storefrontAccessToken
-})
 
 const onCheckoutUpdate = async (
   event: MessageEvent<CheckoutEvent>,
@@ -58,24 +51,15 @@ useEventListener('message', (event) =>
   onCheckoutUpdate(event, fetching.value, fetchBasket),
 )
 
-onMounted(async () => {
-  try {
-    await _retry({ times: 5, delay: 100 }, fetchCampaignKey)
-  } catch (error: any) {
-    log.error('[checkout.vue] Error getting campaign key', error)
-  }
-  showCheckout.value = true
-})
-
 onBeforeMount(async () => {
-  await Promise.all([fetchBasket(), fetchUser()])
+  await Promise.all([fetchBasket(), fetchUser(), fetchCheckoutToken()])
 })
 
 const handleError = (payload = {}) => {
   console.error('Checkout web component ran into an error: ', payload)
   const loggingPayload = JSON.stringify({
     userId: user.value?.id,
-    basketKey: basketKey.value,
+    checkoutJwt,
   })
   log.error('[onCheckoutError]', loggingPayload)
 }
