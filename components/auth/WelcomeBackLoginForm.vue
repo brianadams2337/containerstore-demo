@@ -1,5 +1,7 @@
 <template>
-  <SFVerticalAccordion :tabs="[$t('login_page.welcome_back.title', { name })]">
+  <SFVerticalAccordion
+    :tabs="[$t('login_page.welcome_back.title', { username })]"
+  >
     <template #0>
       <LoginForm />
       <button
@@ -7,7 +9,7 @@
         @click="removeLastLoggedInUser()"
       >
         <span>
-          {{ $t('login_page.welcome_back.not_user', { name }) }}
+          {{ $t('login_page.welcome_back.not_user', { username }) }}
         </span>
       </button>
     </template>
@@ -17,5 +19,5 @@
 <script setup lang="ts">
 const { lastLoggedInUser, removeLastLoggedInUser } = await useLastLoggedInUser()
 
-const name = computed(() => lastLoggedInUser.value.firstName)
+const username = computed(() => lastLoggedInUser.value.firstName)
 </script>

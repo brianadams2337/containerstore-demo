@@ -1,5 +1,4 @@
 import { useLocalStorage } from '@vueuse/core'
-import { getCurrentInstance } from 'vue'
 
 export interface LastLoggedInUser {
   firstName: string
@@ -14,29 +13,26 @@ export const setUserDefault = (): LastLoggedInUser => ({
 })
 
 export async function useLastLoggedInUser() {
-  const scope = getCurrentScope()
-  const instance = getCurrentInstance()
-
-  const lastLoggedInUser = useState(USER_KEY, setUserDefault)
-
-  const localStorage = useLocalStorage<LastLoggedInUser>(
-    USER_KEY,
-    setUserDefault(),
-    {
-      serializer: {
-        read: (value: any) => (value ? JSON.parse(atob(value)) : null),
-        write: (value: any) => btoa(JSON.stringify(value)),
-      },
-    },
-  )
+  const instance = useNuxtApp()
 
   const { user, isLoggedIn, fetching } = await useUser()
-  const removeLastLoggedInUser = () => {
-    localStorage.value = setUserDefault()
-    lastLoggedInUser.value = setUserDefault()
-  }
 
-  scope?.run(() => {
+  return await instance.runWithContext(() => {
+    const localStorage = useLocalStorage<LastLoggedInUser>(
+      USER_KEY,
+      setUserDefault(),
+      {
+        serializer: {
+          read: (value: any) => (value ? JSON.parse(atob(value)) : null),
+          write: (value: any) => btoa(JSON.stringify(value)),
+        },
+      },
+    )
+
+    const removeLastLoggedInUser = () => {
+      localStorage.value = setUserDefault()
+    }
+
     watch(
       () => isLoggedIn.value,
       (value) => {
@@ -56,16 +52,12 @@ export async function useLastLoggedInUser() {
         }
       },
     )
+
+    return {
+      lastLoggedInUser: localStorage,
+      removeLastLoggedInUser,
+      isLoggedIn,
+      isFetching: fetching,
+    }
   })
-
-  onBeforeMount(() => {
-    lastLoggedInUser.value = localStorage.value
-  }, instance)
-
-  return {
-    lastLoggedInUser,
-    removeLastLoggedInUser,
-    isLoggedIn,
-    isFetching: fetching,
-  }
 }
