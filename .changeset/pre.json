@@ -4,5 +4,27 @@
   "initialVersions": {
     "@scayle/storefront-boilerplate-nuxt": "0.0.1"
   },
-  "changesets": []
+  "changesets": [
+    "chilly-buckets-enjoy",
+    "clever-mirrors-itch",
+    "early-rats-laugh",
+    "early-zoos-add",
+    "fast-icons-drive",
+    "fluffy-dots-invite",
+    "funny-jeans-retire",
+    "fuzzy-islands-heal",
+    "great-geckos-suffer",
+    "grumpy-rockets-shout",
+    "hungry-coats-turn",
+    "long-items-sing",
+    "neat-kings-jam",
+    "pretty-geckos-enter",
+    "pretty-geckos-leave",
+    "real-houses-double",
+    "silver-mails-pump",
+    "sixty-mugs-peel",
+    "thirty-impalas-exist",
+    "violet-forks-cheat",
+    "yellow-hats-deliver"
+  ]
 }

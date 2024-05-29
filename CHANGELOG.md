@@ -1,5 +1,78 @@
 # @scayle/storefront-boilerplate-nuxt
 
+## 1.0.0-rc.11
+
+### Major Changes
+
+- 8c7e20e: Introduce `storefront-ui` local module.
+
+  The module will contain every UI common component across the app (most of them were under the `./components/ui` folder).
+  It will also have composables and utils that are closly related to the migrated components.
+
+  Moreover, all of these components are now prefixed with `SF` when using the component in template (prefix can be configurable via `nuxt.config`).
+
+### Minor Changes
+
+- 81c60d0: Create OpenTelemetry spans for Nitro requests
+
+  In addition to initializing the OpenTelemetry SDK, the OpenTelemetry module now instruments incoming requests to the Nitro server. The spans include the matched route name, HTTP method and other request metadata.
+
+- b3f9010: Implemented an early return in `authGuard.global.ts` for API routes to prevent middleware misuse.
+- eda90cb: Remove @crowdin/cli from devDependencies
+- 85eb5e6: - Switched from passing plain `basket-id` and `campaign-key` to passing JWT, containing `basket-id` and `campaign-key` as payload, to `scayle-checkout`
+
+### Patch Changes
+
+- 8fece38: update badges to new arguments to use headlineParts as primary source and fallback to basketLabel if headlineParts are not defined.
+- 738d7b9: Fix `ProductBadge` translation warnings
+- 775b855: fix: banner price calculation for promotion aggregation
+- 266374c: Fix contentful Image.vue and contentful ImageText.vue. Only show image when an src link is available. Both image components now behave similar to the storyblok implementation.
+- 99acb1e: Fix lost reactivity of `lastLoggedInUser` from `useLastLoggedInUser()`
+- 8e54ca5: fix filter reset all button when price is changed
+- ada33a0: fix new icon on free product
+- e10fcc6: adds promotion price overlay on PDP
+- 3f918f5: - Updated to `@opentelemetry/auto-instrumentations-node@0.46.1`
+  - Updated to `@opentelemetry/exporter-trace-otlp-proto@0.51.1`
+  - Updated to `@opentelemetry/instrumentation@0.51.1`
+  - Updated to `@opentelemetry/resources@1.24.1`
+  - Updated to `@opentelemetry/sdk-node@0.51.1`
+  - Updated to `@opentelemetry/semantic-conventions@1.24.1`
+  - Updated to `@scayle/storefront-nuxt@7.72.1`
+  - Updated to `@types/google.maps@3.55.9`
+  - Updated to `@vercel/otel@1.8.3`
+  - Updated to `contentful@10.11.7`
+  - Updated to `contentful-export@7.19.145`
+  - Updated to `import-in-the-middle@1.7.4`
+  - Updated to `redis@4.6.14`
+- 3f918f5: - Added `@vue/test-utils@2.4.6`
+  - Added `happy-dom@14.11.2`
+  - Removed `@crowdin/cli`
+  - Updated to `@changesets/cli@2.27.3`
+  - Updated to `@eslint/eslintrc@3.1.0`
+  - Updated to `@nuxt/eslint@0.3.13`
+  - Updated to `@nuxt/image@1.7.0`
+  - Updated to `@nuxt/test-utils@3.13.1`
+  - Updated to `@scayle/eslint-config-storefront@4.2.0`
+  - Updated to `@scayle/eslint-plugin-vue-composable@0.2.0`
+  - Updated to `@types/node@20.12.12`
+  - Updated to `@upstash/redis@1.31.3`
+  - Updated to `@vitest/coverage-v8@1.6.0`
+  - Updated to `eslint-plugin-tailwindcss@3.17.0`
+  - Updated to `eslint@9.3.0`
+  - Updated to `lint-staged@15.2.5`
+  - Updated to `nuxt-svgo@4.0.1`
+  - Updated to `postcss-custom-properties@13.3.10`
+  - Updated to `postcss-html@1.7.0`
+  - Updated to `storyblok-generate-ts@2.1.0`
+  - Updated to `storyblok@3.31.1`
+  - Updated to `vitest@1.6.0`
+  - Updated to `vue-tsc@2.0.19`
+- 60e469b: improve countdown element style across the basket page and PDP page
+- c313744: fix badges position on mobile
+- d472f48: ability to show and hide promotions
+- bb19d30: chore(checkout): Switch from ay-checkout to scayle-checkout webcomponent
+- 327da85: fix badge styling in product card
+
 ## 1.0.0-rc.10
 
 ### 🔥 Highlights
