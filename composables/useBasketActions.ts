@@ -2,6 +2,7 @@ import {
   type BasketItem,
   type Product,
   getFirstAttributeValue,
+  extendPromise,
 } from '@scayle/storefront-nuxt'
 
 const listingMetaData = {
@@ -14,7 +15,7 @@ type OrderedItems<T> = {
   groupedItems: BundledBasketItems<T>
 }
 
-export async function useBasketActions() {
+export function useBasketActions() {
   const { $i18n } = useNuxtApp()
 
   const toast = useToast()
@@ -22,7 +23,7 @@ export async function useBasketActions() {
   const { trackRemoveFromBasket, trackBasket, collectBasketItems } =
     useTrackingEvents()
 
-  const basket = await useBasket()
+  const basket = useBasket()
 
   const showAddToBasketToast = (
     isAddedToBasket: boolean,
@@ -103,15 +104,18 @@ export async function useBasketActions() {
   const basketCount = basket.count
   const basketItems = basket.items
 
-  return {
-    removeItem,
-    orderedItems,
-    fetching,
-    basketData,
-    basketCount,
-    listingMetaData,
-    basketItems,
-    isBasketEmpty,
-    showAddToBasketToast,
-  }
+  return extendPromise(
+    basket.then(() => ({})),
+    {
+      removeItem,
+      orderedItems,
+      fetching,
+      basketData,
+      basketCount,
+      listingMetaData,
+      basketItems,
+      isBasketEmpty,
+      showAddToBasketToast,
+    },
+  )
 }

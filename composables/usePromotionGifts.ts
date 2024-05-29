@@ -1,4 +1,4 @@
-import type { Product } from '@scayle/storefront-nuxt'
+import { type Product, extendPromise } from '@scayle/storefront-nuxt'
 import { unique } from 'radash'
 
 export async function usePromotionGifts(product: Product, key?: string) {
@@ -6,12 +6,10 @@ export async function usePromotionGifts(product: Product, key?: string) {
     // The key is auto-added so this will only be thrown if a nullish value is passed to the function
     throw Error('missing key argument')
   }
-  const app = useNuxtApp()
 
-  const [basketData, { buyXGetYPromotion }] = await Promise.all([
-    useBasket(),
-    useProductPromotions(product),
-  ])
+  const basketData = useBasket()
+  const productPromotions = useProductPromotions(product)
+  const { buyXGetYPromotion } = productPromotions
 
   const variantIds = computed(() => getVariantIds(buyXGetYPromotion.value))
 
@@ -33,21 +31,17 @@ export async function usePromotionGifts(product: Product, key?: string) {
 
   const hasMultipleFreeGifts = computed(() => variantIds.value.length > 1)
 
-  const { data: variants } = await app.runWithContext(() =>
-    useVariant({
-      params: computed(() => ({ ids: variantIds.value })),
-      key: `promotion-variants-${key}`,
-    }),
-  )
+  const { data: variants } = useVariant({
+    params: computed(() => ({ ids: variantIds.value })),
+    key: `promotion-variants-${key}`,
+  })
 
-  const { data: productsData } = await app.runWithContext(() =>
-    useProductsByIds({
-      params: computed(() => ({
-        ids: variants.value?.map(({ productId }) => productId) ?? [],
-      })),
-      key: `promotion-products-${key}`,
-    }),
-  )
+  const { data: productsData } = useProductsByIds({
+    params: computed(() => ({
+      ids: variants.value?.map(({ productId }) => productId) ?? [],
+    })),
+    key: `promotion-products-${key}`,
+  })
 
   const products = computed(() => {
     const items = unique(productsData.value || [], ({ id }) => id)
@@ -59,11 +53,14 @@ export async function usePromotionGifts(product: Product, key?: string) {
     })
   })
 
-  return {
-    variantIds,
-    products,
-    backgroundColorStyle,
-    hasMultipleFreeGifts,
-    isGiftAlreadyAdded,
-  }
+  return extendPromise(
+    Promise.all([basketData, productPromotions]).then(() => ({})),
+    {
+      variantIds,
+      products,
+      backgroundColorStyle,
+      hasMultipleFreeGifts,
+      isGiftAlreadyAdded,
+    },
+  )
 }

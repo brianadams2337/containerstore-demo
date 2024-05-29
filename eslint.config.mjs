@@ -81,6 +81,7 @@ export default withNuxt(
       '@scayle/vue-composable/no-composable-after-await': 'error',
       '@scayle/vue-composable/no-lifecycle-after-await': 'error',
       '@scayle/vue-composable/no-watch-after-await': 'error',
+      '@scayle/vue-composable/no-computed-after-await': 'error',
     },
   }),
   // Custom Overrides: Storefront Boilerplate rule and config

@@ -1,9 +1,9 @@
+import { extendPromise, type BasketItem } from '@scayle/storefront-nuxt'
 import { sum } from 'radash'
-import type { BasketItem } from '@scayle/storefront-nuxt'
 import { hexToRGBAColor } from '~/utils/color'
 
 export async function useBasketReductions() {
-  const basket = await useBasket()
+  const basket = useBasket()
 
   const withNegativePrefix = (value: string): string => {
     return value.startsWith('-') ? value : `-${value}`
@@ -119,21 +119,24 @@ export async function useBasketReductions() {
     return sum(discounts)
   })
 
-  return {
-    totalCost,
-    totalDiscount,
-    hasItemsWithSaleReductions,
-    hasItemsWithPromotionReductions,
-    aggregatedSalePrice,
-    itemsWithPromotionsReductions,
-    totalCostWithoutReductions,
-    totalSalesReductions,
-    totalPromotionsReductions,
-    getHeadlineParts,
-    getBasketItemSalePrice,
-    withNegativePrefix,
-    hasSaleReduction,
-    hasPromotionReduction,
-    getPromotionTextColor,
-  }
+  return extendPromise(
+    basket.then(() => ({})),
+    {
+      totalCost,
+      totalDiscount,
+      hasItemsWithSaleReductions,
+      hasItemsWithPromotionReductions,
+      aggregatedSalePrice,
+      itemsWithPromotionsReductions,
+      totalCostWithoutReductions,
+      totalSalesReductions,
+      totalPromotionsReductions,
+      getHeadlineParts,
+      getBasketItemSalePrice,
+      withNegativePrefix,
+      hasSaleReduction,
+      hasPromotionReduction,
+      getPromotionTextColor,
+    },
+  )
 }

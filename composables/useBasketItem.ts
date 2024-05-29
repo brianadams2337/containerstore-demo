@@ -6,9 +6,10 @@ import {
   getSizeFromVariant,
   getTotalAppliedReductions,
   isInStock,
+  extendPromise,
 } from '@scayle/storefront-nuxt'
 
-export async function useBasketItem(basketItem: Ref<BasketItem>) {
+export function useBasketItem(basketItem: Ref<BasketItem>) {
   const product = computed(() => basketItem.value.product)
 
   const route = useRoute()
@@ -22,15 +23,12 @@ export async function useBasketItem(basketItem: Ref<BasketItem>) {
 
   const { name, brand, image } = useProductBaseInfo(product.value)
 
-  const [
-    { removeItem: removeBasketItem, listingMetaData },
-    basket,
-    { highestPriorityPromotion, isBuyXGetYPrioritized },
-  ] = await Promise.all([
-    useBasketActions(),
-    useBasket(),
-    useProductPromotions(product.value),
-  ])
+  const basketActions = useBasketActions()
+  const basket = useBasket()
+  const productPromotions = useProductPromotions(product.value)
+
+  const { removeItem: removeBasketItem, listingMetaData } = basketActions
+  const { highestPriorityPromotion, isBuyXGetYPrioritized } = productPromotions
 
   const variant = computed(() => basketItem.value!.variant)
   const inStock = computed(() => isInStock(variant.value))
@@ -146,32 +144,35 @@ export async function useBasketItem(basketItem: Ref<BasketItem>) {
 
   const selectItem = () => trackProductClick()
 
-  return {
-    name,
-    brand,
-    color,
-    price,
-    lowestPriorPrice,
-    quantity,
-    availableQuantity,
-    inStock,
-    isLowestPreviousPriceActive,
-    changeQuantity,
-    trackProductClick,
-    removeItem,
-    uiState,
-    onCancelDelete,
-    onConfirmDelete,
-    onPressDelete,
-    size,
-    image,
-    reducedPrice,
-    product,
-    variant,
-    selectItem,
-    cupsizeLabel,
-    isSoldOut,
-    listingMetaData,
-    isFreeGift,
-  }
+  return extendPromise(
+    Promise.all([basket, basketActions, productPromotions]).then(() => ({})),
+    {
+      name,
+      brand,
+      color,
+      price,
+      lowestPriorPrice,
+      quantity,
+      availableQuantity,
+      inStock,
+      isLowestPreviousPriceActive,
+      changeQuantity,
+      trackProductClick,
+      removeItem,
+      uiState,
+      onCancelDelete,
+      onConfirmDelete,
+      onPressDelete,
+      size,
+      image,
+      reducedPrice,
+      product,
+      variant,
+      selectItem,
+      cupsizeLabel,
+      isSoldOut,
+      listingMetaData,
+      isFreeGift,
+    },
+  )
 }

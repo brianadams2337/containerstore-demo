@@ -6,9 +6,10 @@ import {
   getAttributeValue,
   getVariant,
   getVariantBySize,
+  extendPromise,
 } from '@scayle/storefront-nuxt'
 
-export async function useWishlistItemActions(item: Ref<WishlistItem>) {
+export function useWishlistItemActions(item: Ref<WishlistItem>) {
   const { $i18n } = useNuxtApp()
 
   const toast = useToast()
@@ -31,19 +32,24 @@ export async function useWishlistItemActions(item: Ref<WishlistItem>) {
 
   const { toggle: toggleFilter } = useSlideIn(`wishlistcard_${product.id}`)
 
-  const [
-    { replaceItem: replaceWishlistItem },
-    { sizes, selectedSize },
-    { showAddToBasketToast },
-    { highestPriorityPromotion, isBuyXGetYPrioritized },
+  const wishlist = useWishlist()
+  const wishlistItem = useWishlistItem(item)
+  const basketActions = useBasketActions()
+  const productPromotions = useProductPromotions(product)
+  const basket = useBasket()
+
+  const { replaceItem: replaceWishlistItem } = wishlist
+  const { sizes, selectedSize } = wishlistItem
+  const { showAddToBasketToast } = basketActions
+  const { highestPriorityPromotion, isBuyXGetYPrioritized } = productPromotions
+
+  const collectedPromise = Promise.all([
+    wishlist,
+    wishlistItem,
+    basketActions,
     basket,
-  ] = await Promise.all([
-    useWishlist(),
-    useWishlistItem(item),
-    useBasketActions(),
-    useProductPromotions(product),
-    useBasket(),
-  ])
+    productPromotions,
+  ]).then(() => ({}))
 
   const promotionId = computed(() => highestPriorityPromotion.value?.id)
 
@@ -164,7 +170,7 @@ export async function useWishlistItemActions(item: Ref<WishlistItem>) {
     isChangingSize.value = false
   }
 
-  return {
+  return extendPromise(collectedPromise, {
     addItemToCart,
     toggleFilter,
     showSizePicker,
@@ -173,5 +179,5 @@ export async function useWishlistItemActions(item: Ref<WishlistItem>) {
     isChangingSize,
     sizeSavingId,
     isAddToBasketButtonShown,
-  }
+  })
 }

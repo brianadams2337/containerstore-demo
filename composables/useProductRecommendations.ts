@@ -1,7 +1,11 @@
-import { type FetchProductsParams, type Product } from '@scayle/storefront-nuxt'
+import {
+  type Product,
+  type FetchProductsParams,
+  extendPromise,
+} from '@scayle/storefront-nuxt'
 import { productListingMetaData } from '~/constants/product'
 
-export async function useProductRecommendations(
+export function useProductRecommendations(
   combineWithProductIds: Array<number>,
   key?: string,
 ) {
@@ -13,11 +17,13 @@ export async function useProductRecommendations(
     return { ids: combineWithProductIds }
   })
 
+  const productsByIds = useProductsByIds({
+    params: recommendationsFetchParams,
+    key: `pdp-recommendations-${key}`,
+  })
+
   const { data: combineWithProducts, fetching: fetchingCombineWithProducts } =
-    await useProductsByIds({
-      params: recommendationsFetchParams,
-      key: `pdp-recommendations-${key}`,
-    })
+    productsByIds
 
   const sliderProducts = computed(() =>
     (combineWithProducts.value ?? []).filter(
@@ -45,9 +51,12 @@ export async function useProductRecommendations(
     })
   }
 
-  return {
-    sliderProducts,
-    fetchingCombineWithProducts,
-    trackRecommendationClick,
-  }
+  return extendPromise(
+    productsByIds.then(() => ({})),
+    {
+      sliderProducts,
+      fetchingCombineWithProducts,
+      trackRecommendationClick,
+    },
+  )
 }

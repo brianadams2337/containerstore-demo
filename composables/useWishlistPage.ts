@@ -1,7 +1,8 @@
 import { alphabetical } from 'radash'
 import {
-  type WishlistItem,
   getFirstAttributeValue,
+  extendPromise,
+  type WishlistItem,
 } from '@scayle/storefront-nuxt'
 
 export const wishlistListingMetadata = {
@@ -17,7 +18,8 @@ export async function useWishlistPage() {
     title: app.$i18n.t('navigation.wishlist'),
   })
 
-  const [wishlist, basket] = await Promise.all([useWishlist(), useBasket()])
+  const wishlist = useWishlist()
+  const basket = useBasket()
 
   if (wishlist.error.value) {
     throw wishlist.error.value
@@ -33,11 +35,14 @@ export async function useWishlistPage() {
   const count = wishlist.count
   const fetching = basket.fetching
 
-  return {
-    orderedItems,
-    count,
-    fetching,
-    data: wishlist.data,
-    products: wishlist.products,
-  }
+  return extendPromise(
+    Promise.all([wishlist, basket]).then(() => ({})),
+    {
+      orderedItems,
+      count,
+      fetching,
+      data: wishlist.data,
+      products: wishlist.products,
+    },
+  )
 }

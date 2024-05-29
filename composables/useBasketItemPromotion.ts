@@ -1,13 +1,14 @@
 import {
   type BasketItem,
   getFirstAttributeValue,
+  extendPromise,
 } from '@scayle/storefront-nuxt'
 
-export async function useBasketItemPromotion(basketItem: Ref<BasketItem>) {
-  const [basket, { allCurrentPromotions }] = await Promise.all([
-    useBasket(),
-    useBasketPromotions(),
-  ])
+export function useBasketItemPromotion(basketItem: Ref<BasketItem>) {
+  const basket = useBasket()
+  const basketPromotions = useBasketPromotions()
+
+  const { allCurrentPromotions } = basketPromotions
 
   const promotion = computed<BasketPromotion | undefined>(() => {
     return basketItem.value?.promotion
@@ -112,19 +113,22 @@ export async function useBasketItemPromotion(basketItem: Ref<BasketItem>) {
     })
   })
 
-  return {
-    isBuyXGetY,
-    isAutomaticDiscount,
-    backgroundColorStyle,
-    isFreeGift,
-    promotion,
-    hasFailedConditions,
-    giftPromotion,
-    headlineParts,
-    giftConditions,
-    giftBackgroundColorStyle,
-    areGiftConditionsMet,
-    minOrderValueLeft,
-    isGiftAddedToBasket,
-  }
+  return extendPromise(
+    Promise.all([basket, basketPromotions]).then(() => ({})),
+    {
+      isBuyXGetY,
+      isAutomaticDiscount,
+      backgroundColorStyle,
+      isFreeGift,
+      promotion,
+      hasFailedConditions,
+      giftPromotion,
+      headlineParts,
+      giftConditions,
+      giftBackgroundColorStyle,
+      areGiftConditionsMet,
+      minOrderValueLeft,
+      isGiftAddedToBasket,
+    },
+  )
 }

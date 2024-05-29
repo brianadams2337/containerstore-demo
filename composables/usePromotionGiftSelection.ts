@@ -6,9 +6,10 @@ import {
   getFirstAttributeValue,
   getPrice,
   getVariantBySize,
+  extendPromise,
 } from '@scayle/storefront-nuxt'
 
-export async function usePromotionGiftSelection(
+export function usePromotionGiftSelection(
   gift: Product,
   promotedProduct?: Product,
 ) {
@@ -37,10 +38,11 @@ export async function usePromotionGiftSelection(
     variantWithLowestPrice,
   } = useProductBaseInfo(gift)
 
-  const [
-    { fetching: basketIdle, addItem: addBasketItem },
-    { showAddToBasketToast },
-  ] = await Promise.all([useBasket(), useBasketActions()])
+  const basket = useBasket()
+  const basketActions = useBasketActions()
+
+  const { fetching: basketIdle, addItem: addBasketItem } = basket
+  const { showAddToBasketToast } = basketActions
 
   const toggleGiftSelection = () => {
     isSelectionShown.value = !isSelectionShown.value
@@ -128,20 +130,23 @@ export async function usePromotionGiftSelection(
     }
   }
 
-  return {
-    basketIdle,
-    productName,
-    brand,
-    images,
-    hasSpecial,
-    addItemToBasket,
-    lowestPriorPrice,
-    handleSelectedSize,
-    size,
-    price,
-    hasOneSizeVariantOnly,
-    activeVariant,
-    isGiftSelectionShown,
-    toggleGiftSelection,
-  }
+  return extendPromise(
+    Promise.all([basket, basketActions]).then(() => ({})),
+    {
+      basketIdle,
+      productName,
+      brand,
+      images,
+      hasSpecial,
+      addItemToBasket,
+      lowestPriorPrice,
+      handleSelectedSize,
+      size,
+      price,
+      hasOneSizeVariantOnly,
+      activeVariant,
+      isGiftSelectionShown,
+      toggleGiftSelection,
+    },
+  )
 }

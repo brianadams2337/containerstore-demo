@@ -6,6 +6,7 @@ import {
   getPrice,
   getProductSiblings,
   getVariantBySize,
+  extendPromise,
 } from '@scayle/storefront-nuxt'
 import { getAdvancedAttributes } from '~/utils/attribute'
 
@@ -14,7 +15,7 @@ export async function useProductDetails(key?: string) {
     // The key is auto-added so this will only be thrown if a nullish value is passed to the function
     throw Error('missing key argument')
   }
-  const app = useNuxtApp()
+
   const route = useRoute()
 
   const productId = computed(() => {
@@ -30,11 +31,7 @@ export async function useProductDetails(key?: string) {
 
   const { getImage } = useImage()
 
-  const {
-    data: product,
-    error,
-    fetching,
-  } = await useProduct({
+  const productPromise = useProduct({
     params: {
       id: productId.value,
       with: PRODUCT_WITH_PARAMS,
@@ -42,13 +39,13 @@ export async function useProductDetails(key?: string) {
     key: `useProduct-${key}`,
   })
 
+  const { data: product, error, fetching } = productPromise
+
   if (error.value) {
     throw error.value
   }
 
-  const { brand, name, variantWithLowestPrice } = await app.runWithContext(() =>
-    useProductBaseInfo(product),
-  )
+  const { brand, name, variantWithLowestPrice } = useProductBaseInfo(product)
 
   const lowestPriorPrice = computed(
     () =>
@@ -118,24 +115,27 @@ export async function useProductDetails(key?: string) {
       : []
   })
 
-  return {
-    productId,
-    brand,
-    name,
-    price,
-    lowestPriorPrice,
-    siblings,
-    activeVariant,
-    hasOneSizeVariantOnly,
-    images,
-    hasSpecial,
-    handleSelectedSize,
-    availableQuantity,
-    quantity,
-    categories,
-    breadcrumbs,
-    fetching,
-    product,
-    combineWithProductIds,
-  }
+  return extendPromise(
+    productPromise.then(() => ({})),
+    {
+      productId,
+      brand,
+      name,
+      price,
+      lowestPriorPrice,
+      siblings,
+      activeVariant,
+      hasOneSizeVariantOnly,
+      images,
+      hasSpecial,
+      handleSelectedSize,
+      availableQuantity,
+      quantity,
+      categories,
+      breadcrumbs,
+      fetching,
+      product,
+      combineWithProductIds,
+    },
+  )
 }

@@ -1,7 +1,7 @@
-import type { Category } from '@scayle/storefront-nuxt'
+import { type Category, extendPromise } from '@scayle/storefront-nuxt'
 
 export async function useRootCategories() {
-  const categoryData = await useCategories({
+  const categoryData = useCategories({
     params: { path: '/' },
     key: 'category-navigation',
   })
@@ -18,5 +18,8 @@ export async function useRootCategories() {
       : [rootCategoriesData.value.categories]
   })
 
-  return { fetchingCategories, rootCategories }
+  return extendPromise(
+    categoryData.then(() => ({})),
+    { fetchingCategories, rootCategories },
+  )
 }

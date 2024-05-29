@@ -1,6 +1,7 @@
+import { extendPromise } from '@scayle/storefront-nuxt'
 import { sum } from 'radash'
 
-export async function usePromotionProgress(
+export function usePromotionProgress(
   promotion:
     | ComputedRef<Promotion | null>
     | Ref<Promotion | null>
@@ -8,7 +9,8 @@ export async function usePromotionProgress(
 ) {
   const { formatCurrency } = useFormatHelpers()
 
-  const { data: basketData } = await useBasket()
+  const basket = useBasket()
+  const { data: basketData } = basket
 
   const minOrderValue = computed<number>(() => {
     return promotion.value?.customData?.minOrderValue || 0
@@ -75,13 +77,16 @@ export async function usePromotionProgress(
     })
   })
 
-  return {
-    minOrderAmount,
-    progress,
-    isFullProgress,
-    formattedAmountLeft,
-    formattedDiscount,
-    discount,
-    isMOVPromotionApplied,
-  }
+  return extendPromise(
+    basket.then(() => ({})),
+    {
+      minOrderAmount,
+      progress,
+      isFullProgress,
+      formattedAmountLeft,
+      formattedDiscount,
+      discount,
+      isMOVPromotionApplied,
+    },
+  )
 }

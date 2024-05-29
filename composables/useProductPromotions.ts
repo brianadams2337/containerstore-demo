@@ -4,16 +4,17 @@ import {
   type Price,
   type Product,
   getFirstAttributeValue,
+  extendPromise,
 } from '@scayle/storefront-nuxt'
 
-export async function useProductPromotions(
+export function useProductPromotions(
   productItem?: MaybeRefOrGetter<Product | undefined>,
 ) {
-  const [basket, { appliedPromotions }, promotionData] = await Promise.all([
-    useBasket(),
-    useBasketPromotions(),
-    useCurrentPromotions(),
-  ])
+  const basket = useBasket()
+  const basketPromotions = useBasketPromotions()
+  const promotionData = useCurrentPromotions()
+
+  const { appliedPromotions } = basketPromotions
 
   const product = toRef(productItem)
 
@@ -189,25 +190,28 @@ export async function useProductPromotions(
     return priceTotal >= 0 ? priceTotal : 0
   }
 
-  return {
-    promotionLabel,
-    productPromotionId,
-    automaticDiscountPromotion,
-    hasBuyXGetY,
-    applicablePromotions,
-    buyXGetYPromotion,
-    getAppliedAutomaticDiscountPrice,
-    isProductAddedToBasket,
-    isGiftAddedToBasket,
-    highestPriorityPromotion,
-    hasMultipleApplicablePromotions,
-    isBuyXGetYPrioritized,
-    isHighestPriorityPromotionApplied,
-    isHighestPriority,
-    areHurryToSaveBannersShown,
-    areGiftConditionsMet,
-    giftConditions,
-    addedProductBasketItem,
-    minOrderValueLeft,
-  }
+  return extendPromise(
+    Promise.all([basket, promotionData, basketPromotions]).then(() => ({})),
+    {
+      promotionLabel,
+      productPromotionId,
+      automaticDiscountPromotion,
+      hasBuyXGetY,
+      applicablePromotions,
+      buyXGetYPromotion,
+      getAppliedAutomaticDiscountPrice,
+      isProductAddedToBasket,
+      isGiftAddedToBasket,
+      highestPriorityPromotion,
+      hasMultipleApplicablePromotions,
+      isBuyXGetYPrioritized,
+      isHighestPriorityPromotionApplied,
+      isHighestPriority,
+      areHurryToSaveBannersShown,
+      areGiftConditionsMet,
+      giftConditions,
+      addedProductBasketItem,
+      minOrderValueLeft,
+    },
+  )
 }

@@ -6,6 +6,7 @@ import {
   getFirstAttributeValue,
   getPrice,
   getTotalAppliedReductions,
+  extendPromise,
 } from '@scayle/storefront-nuxt'
 
 import type { Ref } from 'vue'
@@ -22,14 +23,14 @@ import {
 const selectedInterval = ref<Value | undefined>()
 const selectedPreferredDeliveryDate = ref<PreferredDeliveryDate | undefined>()
 
-export async function useSubscription(
+export function useSubscription(
   product: Ref<Product>,
   pricePromotionKey: Ref<string>,
   variant: Ref<Variant | undefined>,
   key?: string,
 ) {
   const { $i18n } = useNuxtApp()
-  const { data: subscriptionProduct } = await useProduct({
+  const productPromise = useProduct({
     params: {
       id: product.value.id,
       with: {
@@ -49,6 +50,8 @@ export async function useSubscription(
     },
     key: `product-subscription-${key}`,
   })
+
+  const { data: subscriptionProduct } = productPromise
 
   const subscriptionIntervals = computed(() =>
     getSubscriptionIntervals(selectedVariant.value),
@@ -144,16 +147,19 @@ export async function useSubscription(
     )
   })
 
-  return {
-    subscriptionProduct,
-    selectedVariant,
-    subscriptionIntervals,
-    selectedInterval,
-    selectedPreferredDeliveryDate,
-    itemToAdd,
-    subscriptionPrice,
-    subscriptionVariantEligible,
-    totalReductions,
-    ordinalSuffixKey,
-  }
+  return extendPromise(
+    productPromise.then(() => ({})),
+    {
+      subscriptionProduct,
+      selectedVariant,
+      subscriptionIntervals,
+      selectedInterval,
+      selectedPreferredDeliveryDate,
+      itemToAdd,
+      subscriptionPrice,
+      subscriptionVariantEligible,
+      totalReductions,
+      ordinalSuffixKey,
+    },
+  )
 }

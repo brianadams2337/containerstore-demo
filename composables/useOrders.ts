@@ -14,11 +14,54 @@ export async function useOrders(key?: string) {
     key: `orderId-${key}`,
   })
 
-  const variantIds = computed(() => {
-    const ids =
-      orderDetails.value?.items?.map((it) => it.variant.id as number) ?? []
-    return unique(ids)
-  })
+  const totalAmount = await app.runWithContext(() =>
+    computed(() => orderDetails.value?.cost.withTax ?? 0),
+  )
+
+  const deliveryCost = await app.runWithContext(() =>
+    computed(() => {
+      return (
+        orderDetails.value?.cost.appliedFees
+          ?.filter(({ category }) => category === 'delivery')
+          ?.reduce((acc, fee) => {
+            return acc + fee.amount.withTax
+          }, 0) || 0
+      )
+    }),
+  )
+
+  const shippingAddress = await app.runWithContext(() =>
+    computed(() => {
+      return orderDetails.value?.address?.shipping
+    }),
+  )
+  const billingAddress = await app.runWithContext(() =>
+    computed(() => {
+      return orderDetails.value?.address?.billing
+    }),
+  )
+  const itemCount = await app.runWithContext(() =>
+    computed(() => orderDetails.value?.items?.length || 0),
+  )
+  const packages = await app.runWithContext(() =>
+    computed(() => orderDetails.value?.packages),
+  )
+  const orderItems = await app.runWithContext(() =>
+    computed(() => orderDetails.value.items as OrderItems),
+  )
+  const paymentKey = await app.runWithContext(() =>
+    computed(() => {
+      return orderDetails.value.payment && orderDetails.value.payment[0].key
+    }),
+  )
+
+  const variantIds = await app.runWithContext(() =>
+    computed(() => {
+      const ids =
+        orderDetails.value?.items?.map((it) => it.variant.id as number) ?? []
+      return unique(ids)
+    }),
+  )
 
   const { data: orderVariants } = await app.runWithContext(() =>
     useVariant({
@@ -26,31 +69,6 @@ export async function useOrders(key?: string) {
       key: `variant-${key}`,
     }),
   )
-
-  const totalAmount = computed(() => orderDetails.value?.cost.withTax ?? 0)
-
-  const deliveryCost = computed(() => {
-    return (
-      orderDetails.value?.cost.appliedFees
-        ?.filter(({ category }) => category === 'delivery')
-        ?.reduce((acc, fee) => {
-          return acc + fee.amount.withTax
-        }, 0) || 0
-    )
-  })
-
-  const shippingAddress = computed(() => {
-    return orderDetails.value?.address?.shipping
-  })
-  const billingAddress = computed(() => {
-    return orderDetails.value?.address?.billing
-  })
-  const itemCount = computed(() => orderDetails.value?.items?.length || 0)
-  const packages = computed(() => orderDetails.value?.packages)
-  const orderItems = computed(() => orderDetails.value.items as OrderItems)
-  const paymentKey = computed(() => {
-    return orderDetails.value.payment && orderDetails.value.payment[0].key
-  })
 
   return {
     orderDetails,

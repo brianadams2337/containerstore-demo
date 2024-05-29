@@ -1,10 +1,12 @@
-import type { NavigationTree } from '@scayle/storefront-nuxt'
+import { type NavigationTree, extendPromise } from '@scayle/storefront-nuxt'
 
-export async function useNavigationTreeItems(prefix = 'base') {
-  const { data } = await useNavigationTrees({
+export function useNavigationTreeItems(prefix = 'base') {
+  const navigatationTrees = useNavigationTrees({
     params: { params: { with: { category: true } } },
     key: `${prefix}-navigation-trees`,
   })
+
+  const { data } = navigatationTrees
 
   const navigationTreeItems = computed<NavigationTree[]>(() => {
     const normalizedPrefix = prefix.toLowerCase()
@@ -13,5 +15,8 @@ export async function useNavigationTreeItems(prefix = 'base') {
     })
   })
 
-  return { navigationTreeItems }
+  return extendPromise(
+    navigatationTrees.then(() => ({})),
+    { navigationTreeItems },
+  )
 }

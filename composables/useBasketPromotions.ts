@@ -1,10 +1,11 @@
+import { extendPromise } from '@scayle/storefront-nuxt'
 import { unique } from 'radash'
 
-export async function useBasketPromotions() {
-  const [{ items: basketItems }, promotionData] = await Promise.all([
-    useBasket(),
-    useCurrentPromotions(),
-  ])
+export function useBasketPromotions() {
+  const basket = useBasket()
+  const promotionData = useCurrentPromotions()
+
+  const { items: basketItems } = basket
 
   const allCurrentPromotions = computed<Promotion[]>(() => {
     return promotionData.data?.value?.entities ?? []
@@ -38,11 +39,14 @@ export async function useBasketPromotions() {
 
   const hasAppliedPromotions = computed(() => !!appliedPromotions.value.length)
 
-  return {
-    appliedPromotions,
-    buyXGetYPromotions,
-    automaticDiscountPromotions,
-    hasAppliedPromotions,
-    allCurrentPromotions,
-  }
+  return extendPromise(
+    Promise.all([basket, promotionData]).then(() => ({})),
+    {
+      appliedPromotions,
+      buyXGetYPromotions,
+      automaticDiscountPromotions,
+      hasAppliedPromotions,
+      allCurrentPromotions,
+    },
+  )
 }
