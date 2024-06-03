@@ -151,7 +151,6 @@ const {
   refreshProductCount,
   unfilteredCount,
 } = await useFacet({
-  key: `useFacet-${categoryPath.value}`,
   params: FACET_PARAMS,
 })
 

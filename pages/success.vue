@@ -29,7 +29,6 @@ const { data: orderData, fetching } = await useOrderConfirmation<
 >({
   params: { cbdToken },
   options: { lazy: true },
-  key: `orderConfirmation-${cbdToken}`,
 })
 
 const user = await useUser()

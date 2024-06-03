@@ -1,13 +1,17 @@
 import { unique } from 'radash'
 
-export async function useOrders() {
+export async function useOrders(key?: string) {
+  if (!key) {
+    // The key is auto-added so this will only be thrown if a nullish value is passed to the function
+    throw Error('missing key argument')
+  }
   const app = useNuxtApp()
   const route = useRoute()
   const paramId = computed(() => +route.params.id)
 
   const { data: orderDetails, fetching } = await useOrder({
-    params: { orderId: paramId.value },
-    key: `orderId-${paramId.value}`,
+    params: computed(() => ({ orderId: paramId.value })),
+    key: `orderId-${key}`,
   })
 
   const variantIds = computed(() => {
@@ -18,8 +22,8 @@ export async function useOrders() {
 
   const { data: orderVariants } = await app.runWithContext(() =>
     useVariant({
-      params: { ids: variantIds.value },
-      key: `variant-${paramId.value}`,
+      params: computed(() => ({ ids: variantIds.value })),
+      key: `variant-${key}`,
     }),
   )
 

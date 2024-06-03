@@ -26,6 +26,7 @@ export async function useSubscription(
   product: Ref<Product>,
   pricePromotionKey: Ref<string>,
   variant: Ref<Variant | undefined>,
+  key?: string,
 ) {
   const { $i18n } = useNuxtApp()
   const { data: subscriptionProduct } = await useProduct({
@@ -46,7 +47,7 @@ export async function useSubscription(
       },
       pricePromotionKey: pricePromotionKey.value,
     },
-    key: `product-${product.value.id}-subscription`,
+    key: `product-subscription-${key}`,
   })
 
   const subscriptionIntervals = computed(() =>

@@ -3,6 +3,7 @@ import { productListingMetaData } from '~/constants/product'
 
 export async function useProductRecommendations(
   combineWithProductIds: Array<number>,
+  key?: string,
 ) {
   const { trackSelectItem } = useTrackingEvents()
   const route = useRoute()
@@ -15,7 +16,7 @@ export async function useProductRecommendations(
   const { data: combineWithProducts, fetching: fetchingCombineWithProducts } =
     await useProductsByIds({
       params: recommendationsFetchParams,
-      key: `pdp-recommendations-${combineWithProductIds.join(',')}`,
+      key: `pdp-recommendations-${key}`,
     })
 
   const sliderProducts = computed(() =>

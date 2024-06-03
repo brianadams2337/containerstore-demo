@@ -9,7 +9,11 @@ import {
 } from '@scayle/storefront-nuxt'
 import { getAdvancedAttributes } from '~/utils/attribute'
 
-export async function useProductDetails(key = 'product-details') {
+export async function useProductDetails(key?: string) {
+  if (!key) {
+    // The key is auto-added so this will only be thrown if a nullish value is passed to the function
+    throw Error('missing key argument')
+  }
   const app = useNuxtApp()
   const route = useRoute()
 
@@ -19,13 +23,10 @@ export async function useProductDetails(key = 'product-details') {
   })
 
   const activeVariant = useState<Variant | undefined>(
-    `active-variant-${key}-${productId.value}`,
+    `product-details-active-variant`,
   )
 
-  const quantity = useState<number>(
-    `product-quantity-${key}-${productId.value}`,
-    () => 1,
-  )
+  const quantity = useState<number>(`product-quantity-${key}`, () => 1)
 
   const { getImage } = useImage()
 
@@ -38,7 +39,7 @@ export async function useProductDetails(key = 'product-details') {
       id: productId.value,
       with: PRODUCT_WITH_PARAMS,
     },
-    key: `useProduct-${productId.value}`,
+    key: `useProduct-${key}`,
   })
 
   if (error.value) {

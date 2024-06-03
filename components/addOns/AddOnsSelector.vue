@@ -47,13 +47,10 @@ const emit = defineEmits(['click:service-selection'])
 const variantsIds = computed(() => {
   return props.addOnVariantIds.map((id) => parseInt(id.toString()))
 })
-
-const keyPostfix = computed(() => props.addOnVariantIds.join('-'))
 const { formatCurrency } = useFormatHelpers()
 
 const { data: variants } = await useVariant({
-  params: { ids: variantsIds.value },
-  key: `addonVariants-${keyPostfix.value}`,
+  params: computed(() => ({ ids: variantsIds.value })),
 })
 
 const productIds = computed(() => {
@@ -61,8 +58,7 @@ const productIds = computed(() => {
 })
 
 const { data: products } = await useProductsByIds({
-  params: { ids: productIds.value ?? [] },
-  key: `addonProducts-${keyPostfix.value}`,
+  params: computed(() => ({ ids: productIds.value ?? [] })),
 })
 
 const sortedProductsById = computed(() => {
