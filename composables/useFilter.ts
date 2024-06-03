@@ -10,6 +10,7 @@ import {
   transformMinAndMaxPriceToFilter,
   transformStateToFilters,
 } from '@scayle/storefront-nuxt'
+import type { FilterContext } from '~/composables/useFilterContext'
 
 export const INCLUDED_QUICK_FILTERS = ['sale', 'isNew', 'styleGroup']
 
@@ -28,12 +29,13 @@ type Options = {
 }
 
 export function useFilter(
+  defaultFilterContext?: FilterContext,
   { supportedFilters = SUPPORTED_FILTERS }: Options = {},
   key = 'filter',
 ) {
   const route = useRoute()
 
-  const filterContext = useFilterContext()
+  const filterContext = defaultFilterContext ?? useFilterContext()
 
   const availableFilterValues = computed(() => {
     return (

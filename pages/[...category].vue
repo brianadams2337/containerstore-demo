@@ -99,6 +99,7 @@
 
 <script setup lang="ts">
 import { HttpStatusCode, type Product } from '@scayle/storefront-nuxt'
+import type { FilterContext } from '~/composables/useFilterContext'
 
 const route = useRoute()
 const { pageState, setPageState } = usePageState()
@@ -162,16 +163,18 @@ const fetchParameters = computed(() => ({
 
 await fetchProducts(fetchParameters.value)
 
-createFilterContext({
+const filterContext: FilterContext = {
   filterableValues: filters,
   filtersFetching,
   filterStatus,
   productCountData,
   refreshProductCount,
   unfilteredCount,
-})
+}
 
-const { isFiltered, resetFilters, applyFilters } = useFilter()
+createFilterContext(filterContext)
+
+const { isFiltered, resetFilters, applyFilters } = useFilter(filterContext)
 
 const trackViewListing = ({ items }: { row: number; items: Product[] }) => {
   const paginationOffset = ((pagination.value?.page || 1) - 1) * 24
