@@ -1,7 +1,7 @@
 <template>
   <SFHorizontalItemsDivider :items="items" tag="SFLink" class="mt-1">
     <template #default="{ items: breadcrumbItems }">
-      <SFLInk
+      <SFLink
         v-for="(link, idx) in breadcrumbItems"
         :key="link.value"
         only-exact-active
@@ -11,7 +11,7 @@
         <template v-if="showDividerTag(idx, breadcrumbItems.length)">
           /
         </template>
-      </SFLInk>
+      </SFLink>
     </template>
   </SFHorizontalItemsDivider>
 </template>
