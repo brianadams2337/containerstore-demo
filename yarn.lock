@@ -3218,14 +3218,14 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-api/-/storefront-api-17.1.0.tgz#43799a63ab49cfea9b8856993e2826fda2c8a132"
   integrity sha512-1AN4Rhr0PasKC8IiPOTWlRfCKrpQWKU0+H0VaTXJ6pKyTwzCPtn9wWKPcU7ueErpQwYOB59kcimpJUmu4C4M7A==
 
-"@scayle/storefront-core@7.52.0":
-  version "7.52.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.52.0.tgz#dfdbae576f16618c1e02ef37f96109b3fbb8d47f"
-  integrity sha512-RRkUeB/Y/Y74AZQDw8gPms90iRzdU+Jyn6Bg1ysLc60fe08PaJryBnN9h8kP9CHsBSR130UShYU4KThJYXU74w==
+"@scayle/storefront-core@7.52.1":
+  version "7.52.1"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.52.1.tgz#b91b930f840aeae1f6e6d80c81c822ef9215e099"
+  integrity sha512-WGXYbs4H86/4dUSUo9KCDk7WtrMp2fNaXCBUJBe4XWEBI3Hd4ieV6+NlZi3AP30/p0iC+CLm36vLHJmgF90pxw==
   dependencies:
     "@scayle/storefront-api" "17.1.0"
     crypto-js "4.2.0"
-    jose "5.3.0"
+    jose "5.4.0"
     radash "12.1.0"
     slugify "1.6.6"
     ufo "1.5.3"
@@ -3234,17 +3234,17 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.72.3":
-  version "7.72.3"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.72.3.tgz#072f96e09c1a913a416f5721e38e3373d49ac32a"
-  integrity sha512-pJQJXzViVe42ep9LCxpGfoNZlUFyZCWHSKGmlMeXM6K6KYVTKjI4NbulXEbRxKQoFxTwxLnCcVDi6r9BJ8sfyQ==
+"@scayle/storefront-nuxt@7.72.4":
+  version "7.72.4"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.72.4.tgz#d2d3ea1781764f0c4f754d1795b765935a06a1e8"
+  integrity sha512-CETn+96VNevbnffQDHjg7MPAhDcRifyMRoPANYOlWuYeRuhD5Cw7DfGj3eEd+wTj+mzBT9CZqdkTTFkedBA+8Q==
   dependencies:
     "@nuxt/kit" "3.11.1"
     "@opentelemetry/api" "1.8.0"
     "@scayle/h3-session" "0.4.0"
-    "@scayle/storefront-core" "7.52.0"
+    "@scayle/storefront-core" "7.52.1"
     "@scayle/unstorage-compression-driver" "0.1.3"
-    "@vueuse/core" "10.9.0"
+    "@vueuse/core" "10.10.0"
     consola "3.2.3"
     core-js "3.37.1"
     defu "6.1.4"
@@ -9060,10 +9060,10 @@ jiti@^1.21.0:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.21.0.tgz#7c97f8fe045724e136a397f7340475244156105d"
   integrity sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==
 
-jose@5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/jose/-/jose-5.3.0.tgz#61dadf6399e0141d621ad18c1b36a0d6ab17a972"
-  integrity sha512-IChe9AtAE79ru084ow8jzkN2lNrG3Ntfiv65Cvj9uOCE2m5LNsdHG+9EbxWxAoWRF9TgDOqLN5jm08++owDVRg==
+jose@5.4.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/jose/-/jose-5.4.0.tgz#4f6c2357e7b3cd4bc10ec65bb29e677d7adfbc84"
+  integrity sha512-6rpxTHPAQyWMb9A35BroFl1Sp0ST3DpPcm5EVIxZxdH+e0Hv9fwhyB3XLKFUcHNpdSDnETmBfuPPTTlYz5+USw==
 
 jose@^5.2.0:
   version "5.2.4"
