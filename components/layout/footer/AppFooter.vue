@@ -74,6 +74,7 @@
 
 <script setup lang="ts">
 import type { StoryblokStory } from 'storyblok-generate-ts'
+import { useDefaultStoryblokOptions } from '~/modules/cms/providers/storyblok/composables/useDefaultStoryblokOptions'
 import type { SbFooter } from '~/modules/cms/providers/storyblok/types'
 
 const storyblokOptions = useDefaultStoryblokOptions()

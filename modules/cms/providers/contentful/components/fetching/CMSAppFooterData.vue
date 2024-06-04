@@ -73,7 +73,8 @@ import type {
 } from '~/modules/cms/providers/contentful/types'
 import { useCMS } from '~/modules/cms/providers/contentful/composables/useCMS'
 import CMSLink from '~/modules/cms/providers/contentful/components/Link.vue'
-import CMSText from '~/modules/cms/providers/contentful/components/Text.vue'
+import { useContentfulEditor } from '~/modules/cms/providers/contentful/composables/useContentfulEditor'
+
 const { fetchBySlug } = useCMS('footer')
 const { data } = await fetchBySlug<TypeFooterSkeleton>({
   content_type: 'footer',
@@ -91,6 +92,7 @@ const getSocialName = (name: string) => {
   return firstLetter.toUpperCase() + name.substring(1)
 }
 
+useContentfulEditor<TypeFooterSkeleton>(data)
 defineOptions({
   name: 'CMSAppFooter',
 })

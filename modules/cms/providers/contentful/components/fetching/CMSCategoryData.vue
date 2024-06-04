@@ -5,6 +5,7 @@ import type {
 } from '~/modules/cms/providers/contentful/types'
 import { useCMS } from '~/modules/cms/providers/contentful/composables/useCMS'
 import { useCMSListingContent } from '~/modules/cms/providers/contentful/composables/useCMSListingContent'
+import { useContentfulEditor } from '~/modules/cms/providers/contentful/composables/useContentfulEditor'
 
 const props = defineProps<{
   selectedCategory: number | undefined
@@ -25,6 +26,8 @@ const { content, hasTeaserImage, postListingContent, preListingContent } =
   useCMSListingContent(
     data as unknown as Ref<TypeListingPageWithoutUnresolvableLinksResponse>,
   )
+
+useContentfulEditor<TypeListingPageSkeleton>(data)
 </script>
 
 <template>

@@ -82,6 +82,7 @@
     "vue-tsc": "2.0.19"
   },
   "dependencies": {
+    "@contentful/live-preview": "4.2.0",
     "@contentful/rich-text-html-renderer": "16.5.2",
     "@googlemaps/js-api-loader": "1.16.6",
     "@opentelemetry/api": "1.8.0",

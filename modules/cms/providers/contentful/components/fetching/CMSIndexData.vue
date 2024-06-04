@@ -4,6 +4,7 @@ import type {
   TypePageWithoutUnresolvableLinksResponse,
 } from '~/modules/cms/providers/contentful/types'
 import { useCMS } from '~/modules/cms/providers/contentful/composables/useCMS'
+import { useContentfulEditor } from '~/modules/cms/providers/contentful/composables/useContentfulEditor'
 
 const props = defineProps<{
   slug: string
@@ -19,6 +20,8 @@ const { data } = await fetchBySlug<TypePageSkeleton>({
 const resData = computed(() => {
   return data.value as TypePageWithoutUnresolvableLinksResponse
 })
+
+useContentfulEditor<TypePageSkeleton>(data)
 </script>
 
 <template>

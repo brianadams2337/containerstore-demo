@@ -1,6 +1,6 @@
 import type { CreateClientParams } from 'contentful'
 
-export type ContentfulRuntimeConfigKeys = 'accessToken' | 'space'
+export type ContentfulRuntimeConfigKeys = 'accessToken' | 'space' | 'host'
 
 export type ContentfulModuleOptions = {
   provider: 'contentful'
@@ -9,5 +9,9 @@ export type ContentfulModuleOptions = {
 export type ContentfulRuntimeConfig = Pick<
   CreateClientParams,
   ContentfulRuntimeConfigKeys
->
+> & {
+  previewAccessToken?: string
+  previewHost?: string
+  host?: string
+}
 export type * from './contentful-defs'

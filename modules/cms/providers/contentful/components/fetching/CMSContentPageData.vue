@@ -4,6 +4,7 @@ import type {
   TypeContentPageWithoutUnresolvableLinksResponse,
 } from '~/modules/cms/providers/contentful/types'
 import { useCMS } from '~/modules/cms/providers/contentful/composables/useCMS'
+import { useContentfulEditor } from '~/modules/cms/providers/contentful/composables/useContentfulEditor'
 
 const props = defineProps<{
   slug: string
@@ -33,6 +34,8 @@ const data = computed(() => {
     seo: res.fields.seo ?? {},
   }
 })
+
+useContentfulEditor<TypeContentPageSkeleton>(responseData)
 </script>
 
 <template>

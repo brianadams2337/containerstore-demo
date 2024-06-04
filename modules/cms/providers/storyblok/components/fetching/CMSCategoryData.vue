@@ -5,6 +5,7 @@ import type {
 } from '~/modules/cms/providers/storyblok/types'
 import { useCMS } from '~/modules/cms/providers/storyblok/composables/useCMS'
 import { useCMSListingContent } from '~/modules/cms/providers/storyblok/composables/useCMSListingContent'
+import { useStoryblokEditor } from '~/modules/cms/providers/storyblok/composables/useStoryblokEditor'
 const props = defineProps<{
   selectedCategory: number | undefined
 }>()
@@ -19,6 +20,7 @@ if (!props.selectedCategory) {
 const { data } = await fetchBySlug<SbListingPage>(
   `categories/${props.selectedCategory}`,
 )
+useStoryblokEditor<SbListingPage>(data)
 
 const { content, hasTeaserImage, postListingContent, preListingContent } =
   useCMSListingContent(data)

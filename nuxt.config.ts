@@ -92,7 +92,10 @@ export default defineNuxtConfig({
       storefront: storefrontRuntimeConfigPublic as any,
       domains,
       cms: {
+        host: process.env.NUXT_PUBLIC_CMS_HOST,
         accessToken: process.env.NUXT_PUBLIC_CMS_ACCESS_TOKEN,
+        previewHost: process.env.NUXT_PUBLIC_CMS_PREVIEW_HOST,
+        previewAccessToken: process.env.NUXT_PUBLIC_CMS_PREVIEW_TOKEN,
         space: process.env.NUXT_PUBLIC_CMS_SPACE,
       },
       /** Nuxt - Base URL
@@ -134,6 +137,7 @@ export default defineNuxtConfig({
        * https://scayle.dev/en/dev/storefront-core/module-configuration */
       storyblok: {
         accessToken: '', // Override: NUXT_PUBLIC_STORYBLOK_ACCESS_TOKEN
+        bridge: true, // Override: NUXT_PUBLIC_STORYBLOK_BRIDGE
       },
 
       appEnv: process.env.APP_ENV, // Override: NUXT_PUBLIC_APP_ENV,

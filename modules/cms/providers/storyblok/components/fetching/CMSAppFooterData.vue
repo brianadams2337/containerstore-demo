@@ -77,8 +77,10 @@ import type { SbFooter } from '~/modules/cms/providers/storyblok/types'
 import { useCMS } from '~/modules/cms/providers/storyblok/composables/useCMS'
 import CMSText from '~/modules/cms/providers/storyblok/components/Text.vue'
 import CMSLink from '~/modules/cms/providers/storyblok/components/Link.vue'
+import { useStoryblokEditor } from '~/modules/cms/providers/storyblok/composables/useStoryblokEditor'
 const { fetchBySlug } = useCMS('footer')
 const { data } = await fetchBySlug<SbFooter>('global/footer')
+useStoryblokEditor<SbFooter>(data)
 
 const footerContent = computed(() => {
   return data.value?.data.story.content
