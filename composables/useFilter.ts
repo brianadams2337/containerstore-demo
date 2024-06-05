@@ -11,12 +11,7 @@ import {
   transformStateToFilters,
 } from '@scayle/storefront-nuxt'
 import type { FilterContext } from '~/composables/useFilterContext'
-import {
-  debounce as _debounce,
-  omit as _omit,
-  isEqual as _isEqual,
-  isEmpty as _isEmpty,
-} from 'radash'
+import { debounce, omit, isEqual, isEmpty } from 'radash'
 
 export const INCLUDED_QUICK_FILTERS = ['sale', 'isNew', 'styleGroup']
 
@@ -110,7 +105,7 @@ export function useFilter(
       string,
       any
     >
-    if (!_isEmpty(combinedFilters)) {
+    if (!isEmpty(combinedFilters)) {
       Object.keys(combinedFilters).forEach((key: string) => {
         const values = Array.isArray(combinedFilters[key])
           ? combinedFilters[key].join('|')
@@ -204,7 +199,7 @@ export function useFilter(
     }
   }
 
-  const debouncedStateChangedEvent = _debounce(
+  const debouncedStateChangedEvent = debounce(
     { delay: 50 },
     async () => await updateFilterCount(),
   )
@@ -212,7 +207,7 @@ export function useFilter(
   watch(state, () => debouncedStateChangedEvent(), { deep: true })
 
   const prepareFilterData = () => ({
-    ...transformStateToFilters(_omit(state.value, ['prices', 'sale'])),
+    ...transformStateToFilters(omit(state.value, ['prices', 'sale'])),
     ...(priceChanged.value &&
       transformMinAndMaxPriceToFilter(state.value.prices)),
     ...(state.value.sale && { sale: true }),
@@ -243,7 +238,7 @@ export function useFilter(
   }
 
   const priceChanged = computed(() => {
-    return !_isEqual(initialState.value.prices, state.value.prices)
+    return !isEqual(initialState.value.prices, state.value.prices)
   })
 
   const isSaleActive = computed(() => {

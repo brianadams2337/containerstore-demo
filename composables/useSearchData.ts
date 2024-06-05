@@ -1,4 +1,4 @@
-import { debounce as _debounce } from 'radash'
+import { debounce } from 'radash'
 import { type SearchV2With } from '@scayle/storefront-nuxt'
 
 type SearchParams = Partial<{ categoryId: number; with: SearchV2With }>
@@ -66,7 +66,7 @@ export function useSearchData(
 
   const hasSearchQuery = computed(() => searchQuery.value?.length)
 
-  const debouncedSearch = _debounce(
+  const debouncedSearch = debounce(
     { delay: DEBOUNCED_SEARCH_DURATION },
     async () => {
       if (!hasSearchQuery.value) {

@@ -1,4 +1,4 @@
-import { sleep as _sleep } from 'radash'
+import { sleep } from 'radash'
 import type { RouterConfig } from '@nuxt/schema'
 
 export default <RouterConfig>{
@@ -11,7 +11,7 @@ export default <RouterConfig>{
       // Handle Suspense resolution
       return new Promise((resolve) => {
         nuxtApp.hooks.hookOnce('page:finish', async () => {
-          await _sleep(50)
+          await sleep(50)
           resolve(savedPosition)
         })
       })
@@ -25,11 +25,11 @@ export default <RouterConfig>{
     return new Promise((resolve) => {
       if (to.path === from.path) {
         el?.scrollIntoView({ behavior: 'smooth', block: 'center' })
-        resolve(_sleep(50).then(() => undefined))
+        resolve(sleep(50).then(() => undefined))
         return
       }
       nuxtApp.hooks.hookOnce('page:finish', async () => {
-        await _sleep(50)
+        await sleep(50)
         el?.scrollIntoView({ behavior: 'smooth', block: 'center' })
         resolve(undefined)
       })

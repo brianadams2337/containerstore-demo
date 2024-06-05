@@ -1,8 +1,4 @@
-import {
-  alphabetical as _alphabetical,
-  group as _group,
-  sort as _sort,
-} from 'radash'
+import { alphabetical, group, sort } from 'radash'
 import {
   getFirstAttributeValue,
   type BasketItem,
@@ -13,12 +9,12 @@ export type BundledBasketItems<T = unknown> = Partial<Record<string, T[]>>
 export const sortBasketItemsByNameAndSize = (
   items: BasketItem[],
 ): BasketItem[] => {
-  const sortedAlphabetically = _alphabetical(
+  const sortedAlphabetically = alphabetical(
     items,
     (item: BasketItem) =>
       getFirstAttributeValue(item.product.attributes, 'name')?.label ?? '',
   )
-  return _sort(
+  return sort(
     sortedAlphabetically,
     (item: BasketItem) =>
       getFirstAttributeValue(item.variant?.attributes, 'size')?.id ?? 0,
@@ -28,7 +24,7 @@ export const sortBasketItemsByNameAndSize = (
 export const sortBasketItemsByIsSoldOut = (
   items: BasketItem[],
 ): BasketItem[] => {
-  return _sort(items, ({ product }) => Number(product.isSoldOut))
+  return sort(items, ({ product }) => Number(product.isSoldOut))
 }
 
 export const getPartitionedBasketItems = (items: BasketItem[] = []) => {
@@ -46,5 +42,5 @@ export const getPartitionedBasketItems = (items: BasketItem[] = []) => {
 export const bundleBasketItemsByGroup = (
   items: BasketItem[] = [],
 ): BundledBasketItems<BasketItem> => {
-  return _group(items, (item: BasketItem) => item.itemGroup?.id ?? '-1')
+  return group(items, (item: BasketItem) => item.itemGroup?.id ?? '-1')
 }

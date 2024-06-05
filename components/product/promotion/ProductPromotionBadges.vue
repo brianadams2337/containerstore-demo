@@ -52,7 +52,7 @@ import { computed } from 'vue'
 import { useLocalePath } from '#i18n'
 import { useRoute } from '#app/composables/router'
 import { getBackgroundColorStyle } from '~/utils/promotion'
-import { sort as _sort } from 'radash'
+import { sort } from 'radash'
 
 import type { Product } from '@scayle/storefront-nuxt'
 
@@ -87,6 +87,6 @@ const { productPromotionId, applicablePromotions, isHighestPriority } =
   await useProductPromotions(props.product)
 
 const orderedPromotions = computed(() => {
-  return _sort(applicablePromotions.value, (it) => it.priority)
+  return sort(applicablePromotions.value, (it) => it.priority)
 })
 </script>

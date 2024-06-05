@@ -1,6 +1,6 @@
 import type { AddOrUpdateItemType } from '@scayle/storefront-nuxt'
 import { isSubscriptionAlreadyInBasket } from '~/modules/subscription/helpers/subscription'
-import { unique as _unique } from 'radash'
+import { unique } from 'radash'
 
 export async function useProductDetailsBasketActions() {
   const app = useNuxtApp()
@@ -35,7 +35,7 @@ export async function useProductDetailsBasketActions() {
   )
 
   const getBasketAddOnProducts = () => {
-    return _unique(
+    return unique(
       (basketItems.value ?? [])
         .filter(({ variant }) =>
           selectedAddOnVariantIds.value.includes(variant.id),

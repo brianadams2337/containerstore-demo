@@ -1,4 +1,4 @@
-import { sum as _sum } from 'radash'
+import { sum } from 'radash'
 
 export async function usePromotionProgress(
   promotion:
@@ -58,7 +58,7 @@ export async function usePromotionProgress(
 
     if (!reductions) return
 
-    return _sum(reductions)
+    return sum(reductions)
   })
 
   const formattedDiscount = computed<string | undefined>(() => {

@@ -1,4 +1,4 @@
-import { isEmpty as _isEmpty } from 'radash'
+import { isEmpty } from 'radash'
 import {
   type WishlistItem,
   type Product,
@@ -98,7 +98,7 @@ export async function useWishlistItemActions(item: Ref<WishlistItem>) {
     index: number,
   ) => {
     const newVariant = getVariantBySize(product.variants || [], size, 'size')
-    if (_isEmpty(newVariant)) {
+    if (isEmpty(newVariant)) {
       return
     }
     sizeSavingId.value = product.id
@@ -144,7 +144,7 @@ export async function useWishlistItemActions(item: Ref<WishlistItem>) {
 
   const changeSize = async (size: Value) => {
     const newVariant = getVariantBySize(product.variants || [], size, 'size')
-    if (_isEmpty(newVariant)) {
+    if (isEmpty(newVariant)) {
       return
     }
     sizeSavingId.value = product.id

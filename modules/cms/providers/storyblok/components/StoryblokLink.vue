@@ -10,7 +10,7 @@
 <script lang="ts" setup>
 import { defineOptions, computed } from 'vue'
 import { type LinkList, routeList } from '~/utils/route'
-import { isString as _isString } from 'radash'
+import { isString } from 'radash'
 import type { CMSStoryblokLink } from '../types'
 import { useStoryblokHelpers } from '../composables/useStoryblokHelpers'
 
@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<CMSStoryblokLink>(), { target: '_self' })
 const { isInEditorMode } = useStoryblokHelpers()
 
 const resolvedLink = computed(() => {
-  if (!_isString(props.to)) {
+  if (!isString(props.to)) {
     return props.to
   }
   const isPathRoute = props.to.includes('/')

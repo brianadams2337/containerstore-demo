@@ -35,7 +35,7 @@
                 />
                 <SFCountdown
                   v-if="blok.countdown_until"
-                  :timeUntil="blok.countdown_until"
+                  :time-until="blok.countdown_until"
                   class="my-4 md:ml-5"
                   @finished="storefrontBanner && storefrontBanner.close"
                 />
@@ -74,7 +74,7 @@
 import { defineOptions, resolveComponent, computed } from 'vue'
 import { useStorefrontTracking } from '../composables/storefront/useStorefrontTracking'
 import { useStorefrontBanner } from '../composables/storefront/useStorefrontBanner'
-import { isEmpty as _isEmpty } from 'radash'
+import { isEmpty } from 'radash'
 import type { CMSBannerProps } from '../types'
 import CMSText from '~/modules/cms/providers/storyblok/components/Text.vue'
 
@@ -85,7 +85,7 @@ const props = withDefaults(defineProps<CMSBannerProps>(), {
 const storefrontBanner = useStorefrontBanner()
 const storefrontTracking = useStorefrontTracking()
 const isActive = computed(() => {
-  return _isEmpty(props.blok) ? true : props.blok.is_active
+  return isEmpty(props.blok) ? true : props.blok.is_active
 })
 
 const shouldBeVisible = computed(
@@ -99,7 +99,7 @@ const is = (value: string | string[]) => {
   )
 }
 
-const hasScrollableLinks = computed(() => !_isEmpty(props.blok?.links))
+const hasScrollableLinks = computed(() => !isEmpty(props.blok?.links))
 const cachedUrl = computed(() => props.blok.cta_url?.cached_url)
 const baseTag = computed(() => {
   return cachedUrl.value ? resolveComponent('CMSStoryblokLink') : 'div'

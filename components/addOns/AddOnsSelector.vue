@@ -28,7 +28,7 @@ import {
   useFormatHelpers,
 } from '#storefront/composables'
 import { computed } from 'vue'
-import { sort as _sort } from 'radash'
+import { sort } from 'radash'
 import {
   getFirstAttributeValue,
   type CentAmount,
@@ -66,11 +66,11 @@ const { data: products } = await useProductsByIds({
 })
 
 const sortedProductsById = computed(() => {
-  return _sort(products.value || [], ({ id }) => id)
+  return sort(products.value || [], ({ id }) => id)
 })
 
 const sortedVariantsByProductId = computed(() => {
-  return _sort(variants.value || [], ({ productId }) => productId)
+  return sort(variants.value || [], ({ productId }) => productId)
 })
 
 const computedAddOns = computed(() => {

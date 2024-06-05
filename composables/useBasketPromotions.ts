@@ -1,4 +1,4 @@
-import { unique as _unique } from 'radash'
+import { unique } from 'radash'
 
 export async function useBasketPromotions() {
   const [{ items: basketItems }, promotionData] = await Promise.all([
@@ -23,14 +23,14 @@ export async function useBasketPromotions() {
   })
 
   const buyXGetYPromotions = computed(() => {
-    return _unique(
+    return unique(
       appliedPromotions.value.filter(isBuyXGetYType),
       ({ id }) => id,
     )
   })
 
   const automaticDiscountPromotions = computed(() => {
-    return _unique(
+    return unique(
       appliedPromotions.value.filter(isAutomaticDiscountType),
       ({ id }) => id,
     )

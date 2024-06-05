@@ -221,8 +221,7 @@
 </template>
 
 <script setup lang="ts">
-import { definePageMeta } from '#imports'
-import { useJsonld } from '#imports'
+import { definePageMeta, useJsonld } from '#imports'
 import { defineOptions, computed, onMounted, ref } from 'vue'
 import { useHead, useServerSeoMeta } from '@unhead/vue'
 import { generateProductSchema, sanitizeCanonical } from '~/utils/seo'
@@ -239,7 +238,7 @@ import { useProductPromotions } from '~/composables/useProductPromotions'
 import { useProductDetailsBasketActions } from '~/composables/useProductDetailsBasketActions'
 import { useProductDetails } from '~/composables/useProductDetails'
 import { isProductSubscriptionEligible } from '~/modules/subscription/helpers/subscription'
-import { sleep as _sleep } from 'radash'
+import { sleep } from 'radash'
 import { ProductColorChip } from '#components'
 import { Size } from '#storefront-ui'
 import {
@@ -299,7 +298,7 @@ onMounted(async () => {
     return
   }
   setPageState('typeId', String(product.value.id))
-  await _sleep(1000)
+  await sleep(1000)
   trackViewItem({ product: product.value })
 })
 

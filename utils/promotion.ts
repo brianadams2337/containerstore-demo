@@ -1,4 +1,4 @@
-import { sum as _sum } from 'radash'
+import { sum } from 'radash'
 import {
   PromotionEffectType,
   type BuyXGetYEffect,
@@ -59,7 +59,7 @@ export const getBasketTotalWithoutPromotions = (
   basket?: BasketResponseData,
 ) => {
   if (!basket) return 0
-  const promotionReductions = _sum(
+  const promotionReductions = sum(
     basket.cost.appliedReductions
       .filter(({ category }) => category === 'promotion')
       .map(({ amount }) => amount.absoluteWithTax),

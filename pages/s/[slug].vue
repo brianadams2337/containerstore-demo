@@ -28,7 +28,7 @@ import { definePageMeta } from '#imports'
 import { defineOptions, computed } from 'vue'
 import { useSeoMeta } from '@unhead/vue'
 import { useRoute } from '#app/composables/router'
-import { capitalize as _capitalize } from 'radash'
+import { capitalize } from 'radash'
 
 const route = useRoute()
 const slug = computed(() =>
@@ -37,7 +37,7 @@ const slug = computed(() =>
 
 useSeoMeta({
   robots: 'index,follow',
-  title: _capitalize(slug.value),
+  title: capitalize(slug.value),
 })
 
 defineOptions({ name: 'ServicesPage' })

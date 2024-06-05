@@ -1,4 +1,4 @@
-import { alphabetical as _alphabetical } from 'radash'
+import { alphabetical } from 'radash'
 import {
   getFirstAttributeValue,
   type WishlistItem,
@@ -24,7 +24,7 @@ export async function useWishlistPage() {
   }
 
   const orderedItems = computed(() => {
-    return _alphabetical(wishlist.items.value || [], (item: WishlistItem) => {
+    return alphabetical(wishlist.items.value || [], (item: WishlistItem) => {
       const attributes = item.product?.attributes
       return getFirstAttributeValue(attributes, 'name')?.label ?? ''
     })

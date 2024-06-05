@@ -1,4 +1,4 @@
-import { unique as _unique } from 'radash'
+import { unique } from 'radash'
 
 export async function useOrders() {
   const app = useNuxtApp()
@@ -13,7 +13,7 @@ export async function useOrders() {
   const variantIds = computed(() => {
     const ids =
       orderDetails.value?.items?.map((it) => it.variant.id as number) ?? []
-    return _unique(ids)
+    return unique(ids)
   })
 
   const { data: orderVariants } = await app.runWithContext(() =>

@@ -1,4 +1,4 @@
-import { min as _min } from 'radash'
+import { min } from 'radash'
 
 import {
   type Product,
@@ -38,16 +38,16 @@ export async function useProductPromotions(
 
   const buyXGetYPromotion = computed(() => {
     const items = applicablePromotions.value.filter(isBuyXGetYType)
-    return _min(items, ({ priority }) => priority)
+    return min(items, ({ priority }) => priority)
   })
 
   const automaticDiscountPromotion = computed(() => {
     const items = applicablePromotions.value.filter(isAutomaticDiscountType)
-    return _min(items, ({ priority }) => priority)
+    return min(items, ({ priority }) => priority)
   })
 
   const highestPriorityPromotion = computed(() => {
-    return _min(applicablePromotions.value, (promotion) => promotion.priority)
+    return min(applicablePromotions.value, (promotion) => promotion.priority)
   })
 
   const addedProductBasketItem = computed(() => {

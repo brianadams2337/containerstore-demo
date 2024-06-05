@@ -1,4 +1,4 @@
-import { isEqual as _isEqual } from 'radash'
+import { isEqual } from 'radash'
 import {
   getAppliedReductionsByCategory,
   getFirstAttributeValue,
@@ -373,7 +373,7 @@ export const didBasketDataChange = (
   oldData: BasketResponseData | null | undefined,
   newData: BasketResponseData | null | undefined,
 ) => {
-  return !_isEqual(
+  return !isEqual(
     {
       items: oldData?.items.map((item) => ({
         productId: item.product?.id,
@@ -401,7 +401,7 @@ export const didWishlistDataChange = (
   oldData: WishlistResponseData | null | undefined,
   newData: WishlistResponseData | null | undefined,
 ) => {
-  return !_isEqual(
+  return !isEqual(
     {
       items: oldData?.items.map((item) => ({
         productId: item.product?.id,

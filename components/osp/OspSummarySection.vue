@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { unique as _unique } from 'radash'
+import { unique } from 'radash'
 
 type Props = {
   orderData: Order
@@ -44,7 +44,7 @@ type Props = {
 const props = defineProps<Props>()
 
 const orderItems = computed(() => {
-  return _unique(props.orderData?.items || [], (it) => it.variant.id)
+  return unique(props.orderData?.items || [], (it) => it.variant.id)
 })
 
 const getItemQuantity = (variantId: number): number | undefined => {

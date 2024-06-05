@@ -66,7 +66,7 @@
 import { type VariantSize, getVariantSizes } from '~/utils/sizes'
 import { computed, toRef } from 'vue'
 import { getVariantAvailability } from '~/utils/product'
-import { sort as _sort } from 'radash'
+import { sort } from 'radash'
 
 import {
   type Variant,
@@ -108,7 +108,7 @@ const _sizes = computed(() => {
   if (!variants.value?.length) {
     return []
   }
-  return _sort([...props.variants], ({ attributes }) => {
+  return sort([...props.variants], ({ attributes }) => {
     return Number(getFirstAttributeValue(attributes, 'sort')?.value || '0')
   }).map(getSizeFromVariant)
 })

@@ -1,6 +1,6 @@
 import { createConsola } from 'consola'
 import { CMSProvidersMap } from './config'
-import { pascal as _pascal, dash as _dash } from 'radash'
+import { pascal, dash } from 'radash'
 
 export const moduleName = '@scayle/storefront-cms'
 export const logger = createConsola({
@@ -42,7 +42,7 @@ export function getComponentName(
   // camelCase names to PascalCase, so we need
   // to convert them to dash-case first
   // https://github.com/rayepps/radash/issues/292
-  return `${prefix}${_pascal(_dash(name))}`
+  return `${prefix}${pascal(dash(name))}`
 }
 
 export const formatter = new Intl.ListFormat('en', {

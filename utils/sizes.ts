@@ -1,4 +1,4 @@
-import { sort as _sort } from 'radash'
+import { sort } from 'radash'
 import {
   getFirstAttributeValue,
   isInStock,
@@ -20,7 +20,7 @@ export const getVariantSizes = (variants: Variant[] = []) => {
     return attributes && Object.keys(attributes).length > 0
   })
 
-  const orderedVariants = _sort(variantsWithAttributes, ({ attributes }) => {
+  const orderedVariants = sort(variantsWithAttributes, ({ attributes }) => {
     const sortAttribute = getFirstAttributeValue(attributes, 'sort')?.value
     return sortAttribute ? Number(sortAttribute) : 0
   })

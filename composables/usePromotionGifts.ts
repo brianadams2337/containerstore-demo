@@ -1,5 +1,5 @@
 import type { Product } from '@scayle/storefront-nuxt'
-import { unique as _unique } from 'radash'
+import { unique } from 'radash'
 
 export async function usePromotionGifts(product: Product) {
   const app = useNuxtApp()
@@ -44,7 +44,7 @@ export async function usePromotionGifts(product: Product) {
   )
 
   const products = computed(() => {
-    const items = _unique(productsData.value || [], ({ id }) => id)
+    const items = unique(productsData.value || [], ({ id }) => id)
     return items.map((item) => {
       const filteredVariants = item.variants?.filter(({ id }) => {
         return variantIds.value.includes(id)

@@ -7,7 +7,7 @@ import {
 } from '@vuelidate/validators'
 import { getPayloadDate, dateValidator } from '@scayle/storefront-nuxt'
 import { useNuxtApp } from '#app/nuxt'
-import { snake as _snake } from 'radash'
+import { snake } from 'radash'
 
 const isValidDate = (date: Date) => new Date(date).toString() !== 'Invalid Date'
 
@@ -48,11 +48,11 @@ export function useValidationRules() {
 
   const withI18nMessage = createI18nMessage({
     t: $i18n.t.bind($i18n),
-    messagePath: ({ $validator }) => `validation.${_snake($validator)}`,
+    messagePath: ({ $validator }) => `validation.${snake($validator)}`,
     messageParams: ({ field, max, otherName, property, ...params }) => ({
       ...params,
       property,
-      field: $i18n.t(`form_fields.${_snake(field || property)}`),
+      field: $i18n.t(`form_fields.${snake(field || property)}`),
       max,
       otherField: otherName,
     }),

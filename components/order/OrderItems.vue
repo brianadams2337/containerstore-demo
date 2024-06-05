@@ -31,7 +31,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useOrders } from '~/composables/useOrders'
-import { unique as _unique } from 'radash'
+import { unique } from 'radash'
 
 type CarrierMap = Record<
   string,
@@ -41,7 +41,7 @@ type CarrierMap = Record<
 const { orderVariants, orderItems, packages } = await useOrders()
 
 const uniqueItems = computed(() => {
-  return _unique(orderItems.value, (it) => it.variant.id)
+  return unique(orderItems.value, (it) => it.variant.id)
 })
 
 const carrierBundledItemsMap = computed<CarrierMap | undefined>(() => {

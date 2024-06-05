@@ -28,7 +28,7 @@
                 <CMSText :blok="blok?.fields.body ?? null" />
                 <SFCountdown
                   v-if="blok?.fields.countdownUntil"
-                  :timeUntil="blok?.fields.countdownUntil"
+                  :time-until="blok?.fields.countdownUntil"
                   class="my-4 md:ml-5"
                   @finished="close"
                 />
@@ -64,7 +64,7 @@
 import { defineOptions, resolveComponent, computed } from 'vue'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
 import { useBanner } from '~/composables/useBanner'
-import { isEmpty as _isEmpty } from 'radash'
+import { isEmpty } from 'radash'
 import type { CMSBannerProps } from '../types'
 import CMSText from '~/modules/cms/providers/contentful/components/Text.vue'
 
@@ -75,7 +75,7 @@ const props = withDefaults(defineProps<CMSBannerProps>(), {
 const { close, isOpen, shouldBeVisible: _shouldBeVisible } = useBanner()
 const { trackPromotion } = useTrackingEvents()
 const isActive = computed(() => {
-  return _isEmpty(props.blok) ? true : props.blok?.fields.isActive
+  return isEmpty(props.blok) ? true : props.blok?.fields.isActive
 })
 
 const shouldBeVisible = computed(() => _shouldBeVisible(props.publishedAt))
@@ -87,7 +87,7 @@ const is = (value: string | string[]) => {
   )
 }
 
-const hasScrollableLinks = computed(() => !_isEmpty(props.blok?.fields.links))
+const hasScrollableLinks = computed(() => !isEmpty(props.blok?.fields.links))
 const cachedUrl = computed(() => props.blok?.fields.ctaUrl)
 const baseTag = computed(() => {
   return cachedUrl.value ? resolveComponent('CMSContentfulLink') : 'div'

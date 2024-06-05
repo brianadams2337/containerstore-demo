@@ -1,4 +1,4 @@
-import { pascal as _pascal } from 'radash'
+import { pascal } from 'radash'
 
 export const CareIconSymbolMap: Record<number, string> = {
   720: 'machine-wash-30-gentle-or-delicate',
@@ -41,5 +41,5 @@ export const getCareIconComponent = (iconId?: number): string | undefined => {
   if (!iconId || !(iconId in CareIconSymbolMap)) {
     return undefined
   }
-  return `IconCare${_pascal(CareIconSymbolMap[iconId])}`
+  return `IconCare${pascal(CareIconSymbolMap[iconId])}`
 }

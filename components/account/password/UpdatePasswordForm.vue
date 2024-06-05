@@ -67,7 +67,7 @@ import { useToast } from '~/composables/useToast'
 import { useValidationRules } from '~/composables/useValidationRules'
 import { useNuxtApp } from '#app/nuxt'
 import { useUser } from '#storefront/composables'
-import { sleep as _sleep } from 'radash'
+import { sleep } from 'radash'
 import useVuelidate from '@vuelidate/core'
 
 const { updatePassword, fetch: refresh } = await useUser()
@@ -127,7 +127,7 @@ const updateUserPassword = async () => {
     toast.show(msg, 'CONFIRM')
     isUpdating.value = false
 
-    await _sleep(500)
+    await sleep(500)
     resetState.value = false
   }
 }

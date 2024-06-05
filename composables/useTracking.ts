@@ -1,4 +1,4 @@
-import { debounce as _debounce } from 'radash'
+import { debounce } from 'radash'
 import type { Log } from '@scayle/storefront-nuxt'
 
 const WAIT_TIME = 1000
@@ -78,7 +78,7 @@ export function useTracking() {
     return queue.value.some((item) => item.data.event === eventName)
   }
 
-  const flushDebounced = _debounce({ delay: WAIT_TIME }, flush)
+  const flushDebounced = debounce({ delay: WAIT_TIME }, flush)
 
   useEventListener('beforeunload', flush)
 

@@ -67,12 +67,12 @@ import { useAuthentication } from '~/composables/useAuthentication'
 import { useIDP } from '#storefront/composables'
 import { useRoute } from '#app/composables/router'
 import useVuelidate from '@vuelidate/core'
-import { isString as _isString } from 'radash'
+import { isString } from 'radash'
 
 const route = useRoute()
 
 const idpParams = computed(() => {
-  if (_isString(route.query.redirectUrl)) {
+  if (isString(route.query.redirectUrl)) {
     return {
       queryParams: { redirectUrl: route.query.redirectUrl },
     }

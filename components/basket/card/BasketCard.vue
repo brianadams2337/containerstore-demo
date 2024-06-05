@@ -205,7 +205,7 @@ import { useWishlist, useFormatHelpers } from '#storefront/composables'
 import { useNuxtApp } from '#app/nuxt'
 import { useBasketItem } from '~/composables/useBasketItem'
 import { useRouteHelpers } from '~/composables/useRouteHelpers'
-import { sum as _sum } from 'radash'
+import { sum } from 'radash'
 import { type BasketItem } from '@scayle/storefront-nuxt'
 import { useBasketReductions } from '~/composables/useBasketReductions'
 
@@ -224,7 +224,7 @@ const getItemSaleReductionPrice = (item?: BasketItem) => {
   if (!item) return 0
   const itemTotalSalePrice = getBasketItemSalePrice(item)
   const totalWithReduction = price.value + (reducedPrice.value ?? 0)
-  return _sum([totalWithReduction, -itemTotalSalePrice])
+  return sum([totalWithReduction, -itemTotalSalePrice])
 }
 
 const { formatCurrency } = useFormatHelpers()

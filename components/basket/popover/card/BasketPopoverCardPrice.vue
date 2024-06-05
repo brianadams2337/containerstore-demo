@@ -64,7 +64,7 @@
 </template>
 
 <script setup lang="ts">
-import { sum as _sum } from 'radash'
+import { sum } from 'radash'
 import { useBasketItem } from '~/composables/useBasketItem'
 import { computed } from 'vue'
 import { useFormatHelpers } from '#storefront/composables'
@@ -81,7 +81,7 @@ function getItemSaleReductionPrice(item?: BasketItem) {
   if (!item) return 0
   const itemTotalSalePrice = getBasketItemSalePrice(item)
   const totalWithReduction = price.value + (reducedPrice.value ?? 0)
-  return _sum([totalWithReduction, -itemTotalSalePrice])
+  return sum([totalWithReduction, -itemTotalSalePrice])
 }
 
 const { hasSaleReduction, hasPromotionReduction, getBasketItemSalePrice } =

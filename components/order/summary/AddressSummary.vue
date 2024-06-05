@@ -19,7 +19,7 @@
 import { computed } from 'vue'
 import { useNuxtApp } from '#app/nuxt'
 import type { PropType } from 'vue'
-import { pick as _pick, isEqual as _isEqual } from 'radash'
+import { pick, isEqual } from 'radash'
 
 export type SummaryItem = {
   name: 'shipping' | 'billing'
@@ -57,14 +57,14 @@ const isShippingSameAsBillingAddress = computed(() => {
     'lastName',
   ] as RecipientProps[]
   const shippingAddressProps = {
-    ..._pick(props.shippingAddress, propertiesToCheck),
-    ..._pick(props.shippingAddress.recipient, recipientPropertiesToCheck),
+    ...pick(props.shippingAddress, propertiesToCheck),
+    ...pick(props.shippingAddress.recipient, recipientPropertiesToCheck),
   }
   const billingAddressProps = {
-    ..._pick(props.billingAddress, propertiesToCheck),
-    ..._pick(props.billingAddress.recipient, recipientPropertiesToCheck),
+    ...pick(props.billingAddress, propertiesToCheck),
+    ...pick(props.billingAddress.recipient, recipientPropertiesToCheck),
   }
-  return _isEqual(shippingAddressProps, billingAddressProps)
+  return isEqual(shippingAddressProps, billingAddressProps)
 })
 
 const items = computed<SummaryItem[]>(() => {

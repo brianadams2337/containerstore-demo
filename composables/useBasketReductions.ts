@@ -1,4 +1,4 @@
-import { sum as _sum } from 'radash'
+import { sum } from 'radash'
 import type { BasketItem } from '@scayle/storefront-nuxt'
 import { hexToRGBAColor } from '~/utils/color'
 
@@ -43,7 +43,7 @@ export async function useBasketReductions() {
     const discounts = (basket.data.value?.cost.appliedReductions ?? []).map(
       ({ amount }) => amount.absoluteWithTax,
     )
-    return _sum(discounts)
+    return sum(discounts)
   })
 
   const totalCost = computed<number | undefined>(() => {
@@ -52,7 +52,7 @@ export async function useBasketReductions() {
 
   const totalCostWithoutReductions = computed<number>(() => {
     const totalCostValue = totalCost.value?.valueOf() ?? 0
-    return _sum([totalCostValue, totalDiscount.value])
+    return sum([totalCostValue, totalDiscount.value])
   })
 
   const aggregatedSalePrice = computed<number>(() => {
@@ -67,7 +67,7 @@ export async function useBasketReductions() {
       },
       [],
     )
-    return _sum(allSaleReductions)
+    return sum(allSaleReductions)
   })
 
   const itemsWithPromotionsReductions = computed(() => {
@@ -109,14 +109,14 @@ export async function useBasketReductions() {
       .filter((item) => item.category === 'sale')
       .map(({ amount }) => amount.absoluteWithTax)
 
-    return _sum(discounts)
+    return sum(discounts)
   })
 
   const totalPromotionsReductions = computed(() => {
     const discounts = (basket.data.value?.cost.appliedReductions ?? [])
       .filter((item) => item.category === 'promotion')
       .map(({ amount }) => amount.absoluteWithTax)
-    return _sum(discounts)
+    return sum(discounts)
   })
 
   return {

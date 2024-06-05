@@ -23,7 +23,7 @@
 import { computed } from 'vue'
 import type { RouteLocationRaw } from '#vue-router'
 import { LinkVariant } from '#storefront-ui'
-import { isString as _isString } from 'radash'
+import { isString } from 'radash'
 import { useRouteHelpers } from '~/composables/useRouteHelpers'
 
 const LinkTypeClass = {
@@ -73,7 +73,7 @@ const exactActiveClass = computed(() => {
 const { getLocalizedRoute } = useRouteHelpers()
 
 const resolvedLink = computed(() => {
-  const isExternal = _isString(props.to) && props.to.startsWith('http')
+  const isExternal = isString(props.to) && props.to.startsWith('http')
 
   if (isExternal) {
     return props.to

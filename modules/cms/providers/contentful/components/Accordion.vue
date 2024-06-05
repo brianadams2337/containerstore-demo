@@ -35,14 +35,14 @@ import { useRoute } from '#app/composables/router'
 import type { CMSAccordionProps } from '../types'
 import { getComponentName } from '../../../utils/helpers'
 import { useContentfulMargins } from '../composables/useContentfulMargins'
-import { dash as _dash } from 'radash'
+import { dash } from 'radash'
 
 const props = defineProps<CMSAccordionProps>()
 
 const route = useRoute()
 
 const collapseByAnchorSlug = (linkTitle: string) => {
-  return `#${_dash(linkTitle)}` !== route.hash
+  return `#${dash(linkTitle)}` !== route.hash
 }
 
 const { marginClasses } = useContentfulMargins(props.blok?.fields.marginTop)
