@@ -31,8 +31,6 @@ export const addGroupToBasket: RpcHandler<
       items: options.items,
       existingItemHandling: ExistingItemHandling.KeepExisting,
       with: resolvedWith,
-      // important to prevent BAPI from bundling additional services as one product with x-quantity
-      considerItemGroupForUniqueness: true,
     },
     context,
   )
