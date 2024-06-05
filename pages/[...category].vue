@@ -98,6 +98,20 @@
 </template>
 
 <script setup lang="ts">
+import { defineOptions , watch , computed } from 'vue'
+import { prepareCanonicalURL } from '~/utils/seo'
+import { useHead } from '@unhead/vue'
+import { useFilter } from '~/composables/useFilter'
+import { createFilterContext } from '~/composables/useFilterContext'
+import { useQueryFilterState , useFacet } from '#storefront/composables'
+import { useProductListSort } from '~/composables/useProductListSort'
+import { createError } from '#app/composables/error'
+import { useCategory } from '~/composables/useCategory'
+import { useTrackingEvents } from '~/composables/useTrackingEvents'
+import { useSlideIn } from '~/modules/ui/runtime/composables/useSlideIn'
+import { useNuxtApp } from '#app/nuxt'
+import { usePageState } from '~/composables/usePageState'
+import { useRoute } from '#app/composables/router'
 import { HttpStatusCode, type Product } from '@scayle/storefront-nuxt'
 import type { FilterContext } from '~/composables/useFilterContext'
 

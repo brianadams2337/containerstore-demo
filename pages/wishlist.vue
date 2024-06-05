@@ -45,6 +45,12 @@
 </template>
 
 <script setup lang="ts">
+import { defineOptions , onMounted } from 'vue'
+import { BasketListingMetadata } from '~/constants/listingMetadata'
+import { wishlistListingMetadata , useWishlistPage } from '~/composables/useWishlistPage'
+import { useTrackingEvents } from '~/composables/useTrackingEvents'
+import { useBasket } from '#storefront/composables'
+
 const { data, products, count, fetching, orderedItems } =
   await useWishlistPage()
 const basket = await useBasket()

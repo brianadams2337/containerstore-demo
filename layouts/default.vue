@@ -27,6 +27,17 @@
 </template>
 
 <script setup lang="ts">
+import { useSideNavigation } from '~/composables/useSideNavigation'
+import { onMounted , ref } from 'vue'
+import { useCurrentPromotions , useWishlist } from '#storefront/composables'
+import { useBanner } from '~/composables/useBanner'
+import { useDefaultBreakpoints } from '~/composables/useDefaultBreakpoints'
+import { useTrackingEvents } from '~/composables/useTrackingEvents'
+import { useRootCategories } from '~/composables/useRootCategories'
+import { useBasketPromotions } from '~/composables/useBasketPromotions'
+import { useModal } from '#storefront-ui/composables'
+import { useHead } from '@unhead/vue'
+import { defineOptions } from 'vue'
 import {
   USE_BANNER_KEY,
   USE_DEFAULT_BREAKPOINTS_KEY,

@@ -65,6 +65,10 @@
 </template>
 
 <script setup lang="ts">
+import { defineOptions , ref , computed } from 'vue'
+import { useSeoMeta } from '@unhead/vue'
+import { useStoreLocator } from '#omnichannel/composables'
+import { useRuntimeConfig } from '#app/nuxt'
 import { useI18n } from '#i18n'
 
 const config = useRuntimeConfig()

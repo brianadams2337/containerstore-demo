@@ -16,6 +16,11 @@
 </template>
 
 <script setup lang="ts">
+import { defineOptions } from 'vue'
+import { clearError , useError } from '#app/composables/error'
+import { routeList } from '~/./utils/route'
+import { useCurrentShop } from '#storefront/composables'
+import { useLocalePath } from '#i18n'
 const error = useError()
 const localePath = useLocalePath()
 const currentShop = useCurrentShop()

@@ -38,6 +38,20 @@
 </template>
 
 <script setup lang="ts">
+import { defineOptions , watch , computed } from 'vue'
+import { useSeoMeta } from '@unhead/vue'
+import { routeList } from '~/utils/route'
+import { useLocalePath } from '#i18n'
+import { fetchLazy } from '~/utils/loading'
+import { useQueryFilterState , useWishlist, useFacet } from '#storefront/composables'
+import { createFilterContext } from '~/composables/useFilterContext'
+import { useTrackingEvents } from '~/composables/useTrackingEvents'
+import { useToast } from '~/composables/useToast'
+import { useSlideIn } from '~/modules/ui/runtime/composables/useSlideIn'
+import { usePageState } from '~/composables/usePageState'
+import { useNuxtApp } from '#app/nuxt'
+import { useRoute } from '#app/composables/router'
+import { PRODUCTS_PER_PAGE } from '~/constants/product'
 import {
   getFirstAttributeValue,
   getSortByValue,

@@ -12,6 +12,13 @@
 </template>
 
 <script setup lang="ts">
+import { useSeoMeta } from '@unhead/vue'
+import { computed , watch , onMounted, defineOptions } from 'vue'
+import { useTrackingEvents } from '~/composables/useTrackingEvents'
+import { useNuxtApp } from '#app/nuxt'
+import { useUser , useOrderConfirmation } from '#storefront/composables'
+import { useRoute } from '#app/composables/router'
+
 const route = useRoute()
 const cbdToken = String(route.query.cbd)
 
