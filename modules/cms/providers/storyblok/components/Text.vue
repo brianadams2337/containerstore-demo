@@ -10,7 +10,9 @@
 </template>
 
 <script lang="ts" setup>
-import type { CMSTextProps } from '~/modules/cms/providers/storyblok/types'
+import { defineOptions , computed } from 'vue'
+import { renderRichText } from '@storyblok/vue'
+import type { CMSTextProps } from '../types'
 
 const props = withDefaults(defineProps<CMSTextProps>(), {
   noMarginTop: false,

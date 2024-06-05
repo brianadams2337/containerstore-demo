@@ -30,9 +30,10 @@
 </template>
 
 <script setup lang="ts">
-import { getComponentName } from '~/modules/cms/utils/helpers'
-import type { CMSDoubleColumnProps } from '~/modules/cms/providers/contentful/types'
-import { useContentfulMargins } from '~/modules/cms/providers/contentful/composables/useContentfulMargins'
+import { defineOptions } from 'vue'
+import { getComponentName } from '../../../utils/helpers'
+import type { CMSDoubleColumnProps } from '../types'
+import { useContentfulMargins } from '../composables/useContentfulMargins'
 const props = defineProps<CMSDoubleColumnProps>()
 
 const { marginClasses } = useContentfulMargins(props.blok?.fields.marginTop)

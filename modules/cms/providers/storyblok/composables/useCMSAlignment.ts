@@ -1,4 +1,4 @@
-import type { Alignment } from '~/modules/cms/providers/storyblok/types/storyblok'
+import type { Alignment } from '../types/storyblok'
 
 export function useCMSAlignment(blok: Partial<Alignment>) {
   return {

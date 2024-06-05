@@ -48,13 +48,19 @@
 </template>
 
 <script setup lang="ts">
+import { ref , computed, defineOptions } from 'vue'
+import { useProductsByIds , useProductsByReferenceKeys } from '#storefront/composables'
+import { useStorefrontTracking } from '../composables/storefront/useStorefrontTracking'
+import { usePageState } from '~/composables/usePageState'
+import { useRoute } from '#app/composables/router'
+import { useStorefrontBreakpoints } from '../composables/storefront/useStorefrontBreakpoints'
 import {
   getLatestCategory,
   isFirstIndexOfRow,
   type Product,
 } from '@scayle/storefront-nuxt'
-import type { CMSProductSliderProps } from '~/modules/cms/providers/storyblok/types'
-import { useStoryblokMargins } from '~/modules/cms/providers/storyblok/composables/useStoryblokMargins'
+import type { CMSProductSliderProps } from '../types'
+import { useStoryblokMargins } from '../composables/useStoryblokMargins'
 
 const props = defineProps<CMSProductSliderProps>()
 
@@ -81,7 +87,7 @@ const productReferenceKeys = computed(() => {
     .filter(Boolean) as string[]
 })
 
-const withParams = {
+const productSliderWithParams = {
   attributes: {
     withKey: ['color', 'brand', 'name'],
   },
@@ -108,14 +114,14 @@ const { data, fetching } = isUsingReferenceKeys.value
   ? await useProductsByReferenceKeys({
       params: {
         referenceKeys: productReferenceKeys.value || [],
-        with: withParams,
+        with: productSliderWithParams,
       },
       key: `productSlider-${props.blok._uid}`,
     })
   : await useProductsByIds({
       params: {
         ids: productIds.value || [],
-        with: withParams,
+        with: productSliderWithParams,
       },
       key: `productSlider-${props.blok._uid}`,
     })

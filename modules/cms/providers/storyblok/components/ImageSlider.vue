@@ -26,9 +26,10 @@
 </template>
 
 <script setup lang="ts">
-import { getComponentName } from '~/modules/cms/utils/helpers'
-import type { CMSImageSliderProps } from '~/modules/cms/providers/storyblok/types'
-import { useStoryblokMargins } from '~/modules/cms/providers/storyblok/composables/useStoryblokMargins'
+import { defineOptions } from 'vue'
+import { getComponentName } from '../../../utils/helpers'
+import type { CMSImageSliderProps } from '../types'
+import { useStoryblokMargins } from '../composables/useStoryblokMargins'
 
 const props = defineProps<CMSImageSliderProps>()
 const { marginClasses } = useStoryblokMargins(props.blok)

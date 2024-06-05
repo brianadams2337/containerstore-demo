@@ -16,9 +16,10 @@
 </template>
 
 <script setup lang="ts">
-import type { CMSGridProps } from '~/modules/cms/providers/storyblok/types'
-import { getComponentName } from '~/modules/cms/utils/helpers'
-import { useStoryblokMargins } from '~/modules/cms/providers/storyblok/composables/useStoryblokMargins'
+import { defineOptions , computed } from 'vue'
+import type { CMSGridProps } from '../types'
+import { getComponentName } from '../../../utils/helpers'
+import { useStoryblokMargins } from '../composables/useStoryblokMargins'
 const props = defineProps<CMSGridProps>()
 const { marginClasses } = useStoryblokMargins(props.blok)
 

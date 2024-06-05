@@ -53,8 +53,10 @@
 </template>
 
 <script setup lang="ts">
-import type { CMSImageTextProps } from '~/modules/cms/providers/storyblok/types'
-import { useStoryblokImageSanitizer } from '~/modules/cms/providers/storyblok/composables/useStoryblokImage'
+import { defineOptions , computed } from 'vue'
+import { useCMSAlignment } from '../composables/useCMSAlignment'
+import type { CMSImageTextProps } from '../types'
+import { useStoryblokImageSanitizer } from '../composables/useStoryblokImage'
 const props = withDefaults(defineProps<CMSImageTextProps>(), {
   sizes: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
 })

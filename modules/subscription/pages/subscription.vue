@@ -10,6 +10,9 @@
 </template>
 
 <script setup lang="ts">
+import { defineOptions , computed , onMounted } from 'vue'
+import useSubscriptionWebComponent from '../composables/useSubscriptionWebComponent'
+import { useUser , useCurrentShop } from '#storefront/composables'
 const currentShop = useCurrentShop()
 const shopId = currentShop.value.shopId
 

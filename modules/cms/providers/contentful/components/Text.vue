@@ -12,8 +12,9 @@
 </template>
 
 <script lang="ts" setup>
+import { defineOptions , computed } from 'vue'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
-import type { CMSTextProps } from '~/modules/cms/providers/contentful/types'
+import type { CMSTextProps } from '../types'
 const props = withDefaults(defineProps<CMSTextProps>(), {
   noMarginTop: false,
 })

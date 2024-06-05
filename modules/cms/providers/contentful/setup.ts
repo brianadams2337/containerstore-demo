@@ -49,6 +49,10 @@ export async function setupContentful(options: ModuleOptions, nuxt: Nuxt) {
   addImportsDir(resolver.resolve('./composables'))
   addImportsDir(resolver.resolve('./composables/storefront'))
 
+  nuxt.options.alias['#storefront-cms/composables'] = resolver.resolve(
+    './components',
+  )
+
   logger.info('Loading up Contentful components...')
   await addComponentsDir({
     path: resolver.resolve('./components'),

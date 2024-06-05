@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ISbComponentType } from 'storyblok-js-client'
 import { ref, resolveDynamicComponent } from 'vue'
-import { getComponentName } from '~/modules/cms/utils/helpers'
+import { getComponentName } from '../../../utils/helpers'
 
 export type SbBlokKeyDataTypes = string | number | object | boolean | undefined
 

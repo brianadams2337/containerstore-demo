@@ -13,9 +13,11 @@
 </template>
 
 <script lang="ts" setup>
+import { defineOptions , computed } from 'vue'
+import type { LinkList , routeList } from '~/utils/route'
 import { isString as _isString } from 'radash'
-import type { CMSContentfulLink } from '~/modules/cms/providers/contentful/types'
-import { useContentfulHelpers } from '~/modules/cms/providers/contentful/composables/useContentfulHelpers'
+import type { CMSContentfulLink } from '../types'
+import { useContentfulHelpers } from '../composables/useContentfulHelpers'
 
 const { isInEditorMode } = useContentfulHelpers()
 const props = withDefaults(defineProps<CMSContentfulLink>(), { target: '' })

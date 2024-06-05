@@ -30,9 +30,11 @@
 </template>
 
 <script setup lang="ts">
-import type { CMSAccordionProps } from '~/modules/cms/providers/contentful/types'
-import { getComponentName } from '~/modules/cms/utils/helpers'
-import { useContentfulMargins } from '~/modules/cms/providers/contentful/composables/useContentfulMargins'
+import { defineOptions } from 'vue'
+import { useRoute } from '#app/composables/router'
+import type { CMSAccordionProps } from '../types'
+import { getComponentName } from '../../../utils/helpers'
+import { useContentfulMargins } from '../composables/useContentfulMargins'
 import { dash as _dash } from 'radash'
 
 const props = defineProps<CMSAccordionProps>()

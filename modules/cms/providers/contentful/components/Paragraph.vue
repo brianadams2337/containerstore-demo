@@ -57,7 +57,8 @@
 </template>
 
 <script setup lang="ts">
-import type { CMSParagraphProps } from '~/modules/cms/providers/contentful/types'
+import { defineOptions , computed } from 'vue'
+import type { CMSParagraphProps } from '../types'
 import CMSText from '~/modules/cms/providers/contentful/components/Text.vue'
 const props = defineProps<CMSParagraphProps>()
 

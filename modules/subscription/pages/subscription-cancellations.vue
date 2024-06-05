@@ -9,6 +9,8 @@
 </template>
 
 <script setup lang="ts">
+import useSubscriptionWebComponent from '../composables/useSubscriptionWebComponent'
+import { useCurrentShop } from '#storefront/composables'
 const currentShop = useCurrentShop()
 const shopId = currentShop.value.shopId
 

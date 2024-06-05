@@ -5,7 +5,9 @@
 </template>
 
 <script setup lang="ts">
-import type { SbSeo } from '~/modules/cms/providers/storyblok/types'
+import { defineOptions , computed } from 'vue'
+import { useSeoMeta } from '@unhead/vue'
+import type { SbSeo } from '../types'
 
 const props = defineProps<{
   story: {

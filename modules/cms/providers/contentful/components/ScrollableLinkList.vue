@@ -12,7 +12,8 @@
 </template>
 
 <script setup lang="ts">
-import type { CMSScrollableLinkProps } from '~/modules/cms/providers/contentful/types'
+import { defineOptions } from 'vue'
+import type { CMSScrollableLinkProps } from '../types'
 
 withDefaults(defineProps<CMSScrollableLinkProps>(), {
   hasMarginTop: false,

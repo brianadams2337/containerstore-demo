@@ -51,13 +51,19 @@
 </template>
 
 <script setup lang="ts">
+import { defineOptions , ref , computed } from 'vue'
+import { useProductsByIds } from '#storefront/composables'
+import { useStorefrontTracking } from '../composables/storefront/useStorefrontTracking'
+import { usePageState } from '~/composables/usePageState'
+import { useRoute } from '#app/composables/router'
+import { useStorefrontBreakpoints } from '../composables/storefront/useStorefrontBreakpoints'
 import {
   getLatestCategory,
   isFirstIndexOfRow,
   type Product,
 } from '@scayle/storefront-nuxt'
-import type { CMSProductSliderProps } from '~/modules/cms/providers/contentful/types'
-import { useContentfulMargins } from '~/modules/cms/providers/contentful/composables/useContentfulMargins'
+import type { CMSProductSliderProps } from '../types'
+import { useContentfulMargins } from '../composables/useContentfulMargins'
 
 const props = defineProps<CMSProductSliderProps>()
 

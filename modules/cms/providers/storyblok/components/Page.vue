@@ -16,8 +16,10 @@
 </template>
 
 <script setup lang="ts">
-import type { CMSPageProps } from '~/modules/cms/providers/storyblok/types'
-import { getComponentName } from '~/modules/cms/utils/helpers'
+import { defineOptions } from 'vue'
+import { useStorefrontBreakpoints } from '../composables/storefront/useStorefrontBreakpoints'
+import type { CMSPageProps } from '../types'
+import { getComponentName } from '../../../utils/helpers'
 
 const storefrontBreakpoints = useStorefrontBreakpoints()
 

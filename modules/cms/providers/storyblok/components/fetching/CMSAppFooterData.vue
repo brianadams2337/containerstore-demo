@@ -73,11 +73,13 @@
 </template>
 
 <script setup lang="ts">
-import type { SbFooter } from '~/modules/cms/providers/storyblok/types'
-import { useCMS } from '~/modules/cms/providers/storyblok/composables/useCMS'
-import CMSText from '~/modules/cms/providers/storyblok/components/Text.vue'
-import CMSLink from '~/modules/cms/providers/storyblok/components/Link.vue'
-import { useStoryblokEditor } from '~/modules/cms/providers/storyblok/composables/useStoryblokEditor'
+import { defineOptions , computed } from 'vue'
+import { useNavigationTreeItems } from '~/composables/useNavigationTreeItems'
+import type { SbFooter } from '../../types'
+import { useCMS } from '../../composables/useCMS'
+import CMSText from '../Text.vue'
+import CMSLink from '../Link.vue'
+import { useStoryblokEditor } from '../../composables/useStoryblokEditor'
 const { fetchBySlug } = useCMS('footer')
 const { data } = await fetchBySlug<SbFooter>('global/footer')
 useStoryblokEditor<SbFooter>(data)

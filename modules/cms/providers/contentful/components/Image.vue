@@ -13,11 +13,14 @@
 </template>
 
 <script setup lang="ts">
+import { defineOptions , computed } from 'vue'
+import { getTeaserImage } from '../composables/useStoryblokImage'
+import { useStorefrontTracking } from '../composables/storefront/useStorefrontTracking'
 import type {
   CMSImageProps,
   TypePageWithoutUnresolvableLinksResponse,
-} from '~/modules/cms/providers/contentful/types'
-import { useContentfulImageSanitizer } from '~/modules/cms/providers/contentful/composables/useContentfulImage'
+} from '../types'
+import { useContentfulImageSanitizer } from '../composables/useContentfulImage'
 
 const props = withDefaults(defineProps<CMSImageProps>(), {
   _uid: '',

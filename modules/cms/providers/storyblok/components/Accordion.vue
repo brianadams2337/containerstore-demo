@@ -24,10 +24,12 @@
 </template>
 
 <script setup lang="ts">
+import { defineOptions } from 'vue'
+import { useRoute } from '#app/composables/router'
 import { slugify } from '@scayle/storefront-nuxt'
-import type { CMSAccordionProps } from '~/modules/cms/providers/storyblok/types'
-import { getComponentName } from '~/modules/cms/utils/helpers'
-import { useStoryblokMargins } from '~/modules/cms/providers/storyblok/composables/useStoryblokMargins'
+import type { CMSAccordionProps } from '../types'
+import { getComponentName } from '../../../utils/helpers'
+import { useStoryblokMargins } from '../composables/useStoryblokMargins'
 
 const props = defineProps<CMSAccordionProps>()
 const collapseByAnchorSlug = (linkTitle: string) => {

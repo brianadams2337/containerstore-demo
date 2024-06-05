@@ -18,8 +18,10 @@
 </template>
 
 <script setup lang="ts">
-import { getComponentName } from '~/modules/cms/utils/helpers'
-import type { CMSPageProps } from '~/modules/cms/providers/contentful/types'
+import { defineOptions } from 'vue'
+import { useStorefrontBreakpoints } from '../composables/storefront/useStorefrontBreakpoints'
+import { getComponentName } from '../../../utils/helpers'
+import type { CMSPageProps } from '../types'
 
 const storefrontBreakpoints = useStorefrontBreakpoints()
 

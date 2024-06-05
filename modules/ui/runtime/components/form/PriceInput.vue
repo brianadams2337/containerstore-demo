@@ -15,6 +15,7 @@
 </template>
 
 <script setup lang="ts">
+import { computed , ref } from 'vue'
 type Props = {
   modelValue: number
   currencyCode: string

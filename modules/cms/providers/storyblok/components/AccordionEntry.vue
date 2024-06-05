@@ -15,7 +15,8 @@
 </template>
 
 <script setup lang="ts">
-import type { CMSAccordionEntryProps } from '~/modules/cms/providers/storyblok/types'
+import { defineOptions , ref } from 'vue'
+import type { CMSAccordionEntryProps } from '../types'
 import CMSText from '~/modules/cms/providers/storyblok/components/Text.vue'
 
 const props = withDefaults(defineProps<CMSAccordionEntryProps>(), {

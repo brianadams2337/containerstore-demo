@@ -67,13 +67,15 @@
 </template>
 
 <script setup lang="ts">
+import { defineOptions , computed } from 'vue'
+import { useNavigationTreeItems } from '~/composables/useNavigationTreeItems'
 import type {
   TypeFooterSkeleton,
   TypeFooterWithoutUnresolvableLinksResponse,
-} from '~/modules/cms/providers/contentful/types'
-import { useCMS } from '~/modules/cms/providers/contentful/composables/useCMS'
-import CMSLink from '~/modules/cms/providers/contentful/components/Link.vue'
-import { useContentfulEditor } from '~/modules/cms/providers/contentful/composables/useContentfulEditor'
+} from '../../types'
+import { useCMS } from '../../composables/useCMS'
+import CMSLink from '../Link.vue'
+import { useContentfulEditor } from '../../composables/useContentfulEditor'
 
 const { fetchBySlug } = useCMS('footer')
 const { data } = await fetchBySlug<TypeFooterSkeleton>({

@@ -47,11 +47,14 @@
 </template>
 
 <script setup lang="ts">
+import { defineOptions } from 'vue'
+import { useCMSAlignment } from '../composables/useCMSAlignment'
+import type { PropType } from 'vue'
 import type {
   SbCmsImage,
   SbSlide,
   SbVideo,
-} from '~/modules/cms/providers/storyblok/types'
+} from '../types'
 
 const props = defineProps({
   blok: {

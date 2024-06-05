@@ -1,7 +1,7 @@
 import type {
   SbListingPage,
   SbStory,
-} from '~/modules/cms/providers/storyblok/types'
+} from '../types'
 
 export function useCMSListingContent(data: Ref<SbStory<SbListingPage> | null>) {
   return {

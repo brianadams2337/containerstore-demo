@@ -23,8 +23,9 @@
 </template>
 
 <script setup lang="ts">
-import type { CMSSlideShowProps } from '~/modules/cms/providers/storyblok/types'
-import { useStoryblokMargins } from '~/modules/cms/providers/storyblok/composables/useStoryblokMargins'
+import { defineOptions , ref } from 'vue'
+import type { CMSSlideShowProps } from '../types'
+import { useStoryblokMargins } from '../composables/useStoryblokMargins'
 import CMSSlide from '~/modules/cms/providers/storyblok/components/Slide.vue'
 const props = defineProps<CMSSlideShowProps>()
 

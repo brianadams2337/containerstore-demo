@@ -9,7 +9,8 @@
 </template>
 
 <script lang="ts" setup>
-import type { CMSLinkTypeProps } from '~/modules/cms/providers/contentful/types'
+import { defineOptions } from 'vue'
+import type { CMSLinkTypeProps } from '../types'
 
 const props = defineProps<CMSLinkTypeProps>()
 

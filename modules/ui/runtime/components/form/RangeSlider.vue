@@ -62,6 +62,7 @@ We can work around this by importing js and styles separately
 https://nightcatsama.github.io/vue-slider-component/#/?hash=server-side-rendering-ssr
 */
 // @ts-expect-error Could not find a declaration file for module 'vue-slider-component/dist-css/vue-slider-component.umd.min.js'. '(...)' implicitly has an 'any' type.
+import { computed } from 'vue'
 import VueSlider from 'vue-slider-component/dist-css/vue-slider-component.umd.min.js'
 import 'vue-slider-component/dist-css/vue-slider-component.css'
 import '@/assets/css/slider/default.css'

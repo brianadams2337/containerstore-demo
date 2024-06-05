@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import type { Ref } from 'vue'
+import { useRoute } from '#app/composables/router'
 import type {
   TypeListingPageSkeleton,
   TypeListingPageWithoutUnresolvableLinksResponse,
-} from '~/modules/cms/providers/contentful/types'
-import { useCMS } from '~/modules/cms/providers/contentful/composables/useCMS'
-import { useCMSListingContent } from '~/modules/cms/providers/contentful/composables/useCMSListingContent'
-import { useContentfulEditor } from '~/modules/cms/providers/contentful/composables/useContentfulEditor'
+} from '../../types'
+import { useCMS } from '../../composables/useCMS'
+import { useCMSListingContent } from '../../composables/useCMSListingContent'
+import { useContentfulEditor } from '../../composables/useContentfulEditor'
 
 const props = defineProps<{
   selectedCategory: number | undefined

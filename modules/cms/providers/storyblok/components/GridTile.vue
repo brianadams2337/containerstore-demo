@@ -23,8 +23,9 @@
 </template>
 
 <script setup lang="ts">
-import type { CMSGridTileProps } from '~/modules/cms/providers/storyblok/types'
-import { getComponentName } from '~/modules/cms/utils/helpers'
+import { defineOptions , computed } from 'vue'
+import type { CMSGridTileProps } from '../types'
+import { getComponentName } from '../../../utils/helpers'
 
 const props = withDefaults(defineProps<CMSGridTileProps>(), {
   sizes: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',

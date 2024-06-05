@@ -1,4 +1,4 @@
-import type { TypeListingPageWithoutUnresolvableLinksResponse } from '~/modules/cms/providers/contentful/types'
+import type { TypeListingPageWithoutUnresolvableLinksResponse } from '../types'
 
 export function useCMSListingContent(
   data: Ref<TypeListingPageWithoutUnresolvableLinksResponse | null>,

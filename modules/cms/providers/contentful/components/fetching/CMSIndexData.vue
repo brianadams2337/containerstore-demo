@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import type {
   TypePageSkeleton,
   TypePageWithoutUnresolvableLinksResponse,
-} from '~/modules/cms/providers/contentful/types'
-import { useCMS } from '~/modules/cms/providers/contentful/composables/useCMS'
-import { useContentfulEditor } from '~/modules/cms/providers/contentful/composables/useContentfulEditor'
+} from '../../types'
+import { useCMS } from '../../composables/useCMS'
+import { useContentfulEditor } from '../../composables/useContentfulEditor'
 
 const props = defineProps<{
   slug: string

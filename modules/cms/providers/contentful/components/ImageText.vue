@@ -46,8 +46,10 @@
 </template>
 
 <script setup lang="ts">
-import type { CMSImageText } from '~/modules/cms/providers/contentful/types'
-import { useContentfulImageSanitizer } from '~/modules/cms/providers/contentful/composables/useContentfulImage'
+import { defineOptions , computed } from 'vue'
+import { useCMSAlignment } from '../composables/useCMSAlignment'
+import type { CMSImageText } from '../types'
+import { useContentfulImageSanitizer } from '../composables/useContentfulImage'
 
 const props = withDefaults(defineProps<CMSImageText>(), {
   sizes: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',

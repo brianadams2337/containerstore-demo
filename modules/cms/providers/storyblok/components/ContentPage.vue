@@ -17,8 +17,9 @@
 </template>
 
 <script setup lang="ts">
-import type { CMSContentPageProps } from '~/modules/cms/providers/storyblok/types'
-import { getComponentName } from '~/modules/cms/utils/helpers'
+import { defineOptions } from 'vue'
+import type { CMSContentPageProps } from '../types'
+import { getComponentName } from '../../../utils/helpers'
 defineProps<CMSContentPageProps>()
 defineOptions({ name: 'CMSContentPage' })
 </script>

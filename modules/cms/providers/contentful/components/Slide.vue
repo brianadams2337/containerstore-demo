@@ -50,17 +50,19 @@
 </template>
 
 <script setup lang="ts">
+import { defineOptions } from 'vue'
+import { useCMSAlignment } from '../composables/useCMSAlignment'
 import type { Entry } from 'contentful'
 import {
   isTypeImage,
   isTypeVideo,
-} from '~/modules/cms/providers/contentful/types/gen/index'
+} from '../types/gen/index'
 
 import type {
   CMSSlideProps,
   TypeImageSkeleton,
   TypeVideoSkeleton,
-} from '~/modules/cms/providers/contentful/types'
+} from '../types'
 
 const props = withDefaults(defineProps<CMSSlideProps>(), {
   preload: false,

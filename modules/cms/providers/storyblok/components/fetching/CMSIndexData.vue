@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { SbPage } from '~/modules/cms/providers/storyblok/types'
-import { useCMS } from '~/modules/cms/providers/storyblok/composables/useCMS'
-import { useStoryblokEditor } from '~/modules/cms/providers/storyblok/composables/useStoryblokEditor'
+import type { SbPage } from '../../types'
+import { useCMS } from '../../composables/useCMS'
+import { useStoryblokEditor } from '../../composables/useStoryblokEditor'
 
 const props = defineProps<{
   slug: string

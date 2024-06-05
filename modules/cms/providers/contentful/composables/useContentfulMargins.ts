@@ -1,7 +1,7 @@
 import type {
   MarginKey,
   TypeMarginWithoutUnresolvableLinksResponse,
-} from '~/modules/cms/providers/contentful/types'
+} from '../types'
 export function useContentfulMargins(
   content: TypeMarginWithoutUnresolvableLinksResponse | undefined,
 ) {

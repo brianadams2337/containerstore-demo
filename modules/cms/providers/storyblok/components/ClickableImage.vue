@@ -21,9 +21,11 @@
 </template>
 
 <script setup lang="ts">
-import type { CMSClickableImageProps } from '~/modules/cms/providers/storyblok/types'
-import { useStoryblokMargins } from '~/modules/cms/providers/storyblok/composables/useStoryblokMargins'
-import { useStoryblokImageSanitizer } from '~/modules/cms/providers/storyblok/composables/useStoryblokImage'
+import { defineOptions , computed } from 'vue'
+import { useStorefrontTracking } from '../composables/storefront/useStorefrontTracking'
+import type { CMSClickableImageProps } from '../types'
+import { useStoryblokMargins } from '../composables/useStoryblokMargins'
+import { useStoryblokImageSanitizer } from '../composables/useStoryblokImage'
 const props = withDefaults(defineProps<CMSClickableImageProps>(), {
   sizes: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
 })

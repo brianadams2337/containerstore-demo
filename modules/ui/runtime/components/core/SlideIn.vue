@@ -41,6 +41,7 @@
 </template>
 
 <script setup lang="ts">
+import { useSlideIn } from '../../composables/useSlideIn'
 import { watch } from 'vue'
 import { SlideInType } from '#storefront-ui'
 

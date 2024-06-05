@@ -16,6 +16,7 @@ export const logger = createConsola({
 
 export function isStringURL(string: string) {
   let url
+
   try {
     url = new URL(string)
   } catch (_) {
@@ -32,9 +33,11 @@ export function getComponentName(
   if (!name) {
     return null
   }
+
   if (name.startsWith('Cms')) {
     name = name.replace('Cms', '')
   }
+
   // Radash _pascal fails to convert some
   // camelCase names to PascalCase, so we need
   // to convert them to dash-case first

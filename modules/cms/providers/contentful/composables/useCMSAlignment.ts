@@ -1,4 +1,4 @@
-import type { Alignment } from '~/modules/cms/providers/contentful/types'
+import type { Alignment } from '../types'
 
 export function useCMSAlignment(alignment: Partial<Alignment>) {
   return {

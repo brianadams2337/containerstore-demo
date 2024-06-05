@@ -11,11 +11,13 @@
 </template>
 
 <script setup lang="ts">
-import type { CMSImageProps } from '~/modules/cms/providers/storyblok/types'
+import { defineOptions , computed } from 'vue'
+import { useStorefrontTracking } from '../composables/storefront/useStorefrontTracking'
+import type { CMSImageProps } from '../types'
 import {
   useStoryblokImageSanitizer,
   getTeaserImage,
-} from '~/modules/cms/providers/storyblok/composables/useStoryblokImage'
+} from '../composables/useStoryblokImage'
 const props = withDefaults(defineProps<CMSImageProps>(), {
   preload: false,
   isTeaser: false,

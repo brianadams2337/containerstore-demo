@@ -61,8 +61,11 @@
 </template>
 
 <script setup lang="ts">
+import { defineOptions , resolveComponent , computed } from 'vue'
+import { useTrackingEvents } from '~/composables/useTrackingEvents'
+import { useBanner } from '~/composables/useBanner'
 import { isEmpty as _isEmpty } from 'radash'
-import type { CMSBannerProps } from '~/modules/cms/providers/contentful/types'
+import type { CMSBannerProps } from '../types'
 import CMSText from '~/modules/cms/providers/contentful/components/Text.vue'
 
 const props = withDefaults(defineProps<CMSBannerProps>(), {

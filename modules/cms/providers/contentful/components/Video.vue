@@ -16,8 +16,12 @@
 </template>
 
 <script setup lang="ts">
-import type { CMSVideoProps } from '~/modules/cms/providers/contentful/types'
-import { useContentfulMargins } from '~/modules/cms/providers/contentful/composables/useContentfulMargins'
+import { defineOptions , ref , computed } from 'vue'
+import { useIntersectionObserver } from '@vueuse/core'
+import { useTrackingEvents } from '~/composables/useTrackingEvents'
+import { useDefaultBreakpoints } from '~/composables/useDefaultBreakpoints'
+import type { CMSVideoProps } from '../types'
+import { useContentfulMargins } from '../composables/useContentfulMargins'
 
 const props = defineProps<CMSVideoProps>()
 

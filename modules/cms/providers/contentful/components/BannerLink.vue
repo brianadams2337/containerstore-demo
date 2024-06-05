@@ -15,7 +15,9 @@
 </template>
 
 <script setup lang="ts">
-import type { CMSBannerLinkProps } from '~/modules/cms/providers/contentful/types'
+import { defineOptions } from 'vue'
+import { useTrackingEvents } from '~/composables/useTrackingEvents'
+import type { CMSBannerLinkProps } from '../types'
 
 defineProps<CMSBannerLinkProps>()
 

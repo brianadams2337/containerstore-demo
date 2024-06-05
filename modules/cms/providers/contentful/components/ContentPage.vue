@@ -18,8 +18,9 @@
 </template>
 
 <script setup lang="ts">
-import { getComponentName } from '~/modules/cms/utils/helpers'
-import type { CMSContentPageProps } from '~/modules/cms/providers/contentful/types'
+import { defineOptions } from 'vue'
+import { getComponentName } from '../../../utils/helpers'
+import type { CMSContentPageProps } from '../types'
 
 defineProps<CMSContentPageProps>()
 defineOptions({ name: 'CMSContentPage' })

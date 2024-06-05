@@ -1,4 +1,4 @@
-import type { SbCmsImage } from '~/modules/cms/providers/storyblok/types/storyblok'
+import type { SbCmsImage } from '../types/storyblok'
 
 type SanitizedImage = {
   src: string

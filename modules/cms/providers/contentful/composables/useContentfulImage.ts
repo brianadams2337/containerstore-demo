@@ -2,7 +2,7 @@ import { useStorefrontBreakpoints } from '../composables/storefront/useStorefron
 import {
   type TypeImageWithoutUnresolvableLinksResponse,
   type TypePageWithoutUnresolvableLinksResponse,
-} from '~/modules/cms/providers/contentful/types'
+} from '../types'
 type CMSImage = TypeImageWithoutUnresolvableLinksResponse
 type TeaserImage = TypePageWithoutUnresolvableLinksResponse
 

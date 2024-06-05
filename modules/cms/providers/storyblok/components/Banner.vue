@@ -71,8 +71,11 @@
 </template>
 
 <script setup lang="ts">
+import { defineOptions , resolveComponent , computed } from 'vue'
+import { useStorefrontTracking } from '../composables/storefront/useStorefrontTracking'
+import { useStorefrontBanner } from '../composables/storefront/useStorefrontBanner'
 import { isEmpty as _isEmpty } from 'radash'
-import type { CMSBannerProps } from '~/modules/cms/providers/storyblok/types'
+import type { CMSBannerProps } from '../types'
 import CMSText from '~/modules/cms/providers/storyblok/components/Text.vue'
 
 const props = withDefaults(defineProps<CMSBannerProps>(), {

@@ -8,7 +8,8 @@
 </template>
 
 <script setup lang="ts">
-import type { CMSScrollableLinkProps } from '~/modules/cms/providers/storyblok/types'
+import { defineOptions } from 'vue'
+import type { CMSScrollableLinkProps } from '../types'
 import CMSBannerLink from '~/modules/cms/providers/storyblok/components/BannerLink.vue'
 
 withDefaults(defineProps<CMSScrollableLinkProps>(), {

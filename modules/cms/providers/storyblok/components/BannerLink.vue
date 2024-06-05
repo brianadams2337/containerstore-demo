@@ -15,7 +15,9 @@
 </template>
 
 <script setup lang="ts">
-import type { SbBannerLink } from '~/modules/cms/providers/storyblok/types'
+import { defineOptions } from 'vue'
+import { useStorefrontTracking } from '../composables/storefront/useStorefrontTracking'
+import type { SbBannerLink } from '../types'
 
 defineProps<{ blok: SbBannerLink }>()
 

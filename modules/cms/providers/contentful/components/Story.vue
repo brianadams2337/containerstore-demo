@@ -5,7 +5,9 @@
 </template>
 
 <script setup lang="ts">
-import type { TypeContentPageWithoutUnresolvableLinksResponse } from '~/modules/cms/providers/contentful/types'
+import { defineOptions , computed } from 'vue'
+import { useSeoMeta } from '@unhead/vue'
+import type { TypeContentPageWithoutUnresolvableLinksResponse } from '../types'
 const props = defineProps<{
   story: any
 }>()

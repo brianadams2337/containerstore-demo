@@ -1,11 +1,12 @@
 <script setup lang="ts">
+import { useRoute } from '#app/composables/router'
 import type {
   SbCmsImage,
   SbListingPage,
-} from '~/modules/cms/providers/storyblok/types'
-import { useCMS } from '~/modules/cms/providers/storyblok/composables/useCMS'
-import { useCMSListingContent } from '~/modules/cms/providers/storyblok/composables/useCMSListingContent'
-import { useStoryblokEditor } from '~/modules/cms/providers/storyblok/composables/useStoryblokEditor'
+} from '../../types'
+import { useCMS } from '../../composables/useCMS'
+import { useCMSListingContent } from '../../composables/useCMSListingContent'
+import { useStoryblokEditor } from '../../composables/useStoryblokEditor'
 const props = defineProps<{
   selectedCategory: number | undefined
 }>()

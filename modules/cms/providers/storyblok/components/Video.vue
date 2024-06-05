@@ -16,8 +16,12 @@
 </template>
 
 <script setup lang="ts">
-import type { CMSVideoProps } from '~/modules/cms/providers/storyblok/types'
-import { useStoryblokMargins } from '~/modules/cms/providers/storyblok/composables/useStoryblokMargins'
+import { defineOptions , ref , computed } from 'vue'
+import { useIntersectionObserver } from '@vueuse/core'
+import { useTrackingEvents } from '~/composables/useTrackingEvents'
+import { useDefaultBreakpoints } from '~/composables/useDefaultBreakpoints'
+import type { CMSVideoProps } from '../types'
+import { useStoryblokMargins } from '../composables/useStoryblokMargins'
 
 const props = defineProps<CMSVideoProps>()
 

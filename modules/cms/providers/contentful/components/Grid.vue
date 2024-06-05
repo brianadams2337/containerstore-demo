@@ -15,9 +15,10 @@
 </template>
 
 <script setup lang="ts">
-import { getComponentName } from '~/modules/cms/utils/helpers'
-import type { CMSGridProps } from '~/modules/cms/providers/contentful/types'
-import { useContentfulMargins } from '~/modules/cms/providers/contentful/composables/useContentfulMargins'
+import { defineOptions , computed } from 'vue'
+import { getComponentName } from '../../../utils/helpers'
+import type { CMSGridProps } from '../types'
+import { useContentfulMargins } from '../composables/useContentfulMargins'
 const props = defineProps<CMSGridProps>()
 const { marginClasses } = useContentfulMargins(props.blok?.fields.marginTop)
 

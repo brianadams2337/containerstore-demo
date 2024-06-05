@@ -36,7 +36,10 @@
 </template>
 
 <script setup lang="ts">
-import type { CMSImageSliderSlideProps } from '~/modules/cms/providers/storyblok/types'
+import { defineOptions , computed , ref } from 'vue'
+import { useStorefrontTracking } from '../composables/storefront/useStorefrontTracking'
+import { useStorefrontBreakpoints } from '../composables/storefront/useStorefrontBreakpoints'
+import type { CMSImageSliderSlideProps } from '../types'
 
 const props = defineProps<CMSImageSliderSlideProps>()
 

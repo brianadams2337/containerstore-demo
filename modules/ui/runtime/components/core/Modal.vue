@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
+import { ref , onMounted, onUnmounted } from 'vue'
 import { onClickOutside, useEventListener } from '@vueuse/core'
 import { useModal } from '#storefront-ui'
 

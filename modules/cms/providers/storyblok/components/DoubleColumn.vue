@@ -24,9 +24,9 @@
 </template>
 
 <script setup lang="ts">
-import type { CMSDoubleColumnProps } from '~/modules/cms/providers/storyblok/types'
-import { getComponentName } from '~/modules/cms/utils/helpers'
-import { useStoryblokMargins } from '~/modules/cms/providers/storyblok/composables/useStoryblokMargins'
+import type { CMSDoubleColumnProps } from '../types'
+import { getComponentName } from '../../../utils/helpers'
+import { useStoryblokMargins } from '../composables/useStoryblokMargins'
 const props = defineProps<CMSDoubleColumnProps>()
 
 const { marginClasses } = useStoryblokMargins(props.blok)

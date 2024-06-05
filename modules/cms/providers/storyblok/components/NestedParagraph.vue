@@ -69,8 +69,10 @@
 </template>
 
 <script setup lang="ts">
+import { defineOptions , computed } from 'vue'
+import type { PropType } from 'vue'
 import type { SbNestedParagraph } from '../types/storyblok'
-import { getComponentName } from '~/modules/cms/utils/helpers'
+import { getComponentName } from '../../../utils/helpers'
 const props = defineProps({
   blok: {
     type: Object as PropType<SbNestedParagraph>,
