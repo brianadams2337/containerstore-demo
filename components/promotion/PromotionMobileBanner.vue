@@ -2,7 +2,7 @@
   <PromotionMobileList v-if="isPromotionListShown" :items="promotions" />
   <div
     v-else
-    class="translate-0 fixed bottom-0 z-[80] flex max-h-32 w-full cursor-pointer flex-col items-center justify-start rounded-tr-lg bg-blue p-4 text-sm text-white transition-transform duration-300 ease-in-out lg:hidden"
+    class="translate--y-0 fixed bottom-0 z-[80] flex max-h-32 w-full cursor-pointer flex-col items-center justify-start rounded-tr-lg bg-blue p-4 text-sm text-white transition-transform duration-300 ease-in-out lg:hidden"
     :style="backgroundColorStyle"
     :class="{ 'translate-y-full': !isPromotionBannerShown }"
     @click="togglePromotionList()"
@@ -46,7 +46,7 @@
     </div>
     <TogglePromotionBannerButton
       v-model="isPromotionBannerShown"
-      class="absolute left-0 -mt-[2.875rem] inline-flex !rounded-none !rounded-t-lg"
+      class="absolute left-0 mt-[-2.875rem] inline-flex !rounded-none !rounded-t-lg"
       is-mobile-view
     />
   </div>

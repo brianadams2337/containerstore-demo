@@ -1,7 +1,6 @@
 import eslintConfigStorefront from '@scayle/eslint-config-storefront'
 import tailwind from 'eslint-plugin-tailwindcss'
 import pluginVueA11y from 'eslint-plugin-vuejs-accessibility'
-
 // Workaround for flat config not being supported yet by eslint-plugin-tailwindcss
 // https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/280
 import { FlatCompat } from '@eslint/eslintrc'
@@ -18,6 +17,7 @@ export default withNuxt(
       rules: {
         'tailwindcss/classnames-order': 'error',
         'tailwindcss/no-unnecessary-arbitrary-value': 'error',
+        'tailwindcss/enforces-negative-arbitrary-values': 'error',
         'tailwindcss/no-custom-classname': [
           'warn',
           {
@@ -27,6 +27,7 @@ export default withNuxt(
               'picture\\-contain',
               'picture\\-cover',
               'card',
+              '',
             ],
           },
         ],

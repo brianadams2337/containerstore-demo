@@ -1,7 +1,7 @@
 <template>
   <div
-    class="translate-0 relative z-[65] transition-all duration-300 ease-in-out"
-    :class="{ '-translate-y-[3.25rem]': !isPromotionBannerShown }"
+    class="relative z-[65] translate-y-0 transition-all duration-300 ease-in-out"
+    :class="{ 'translate-y-[-3.25rem]': !isPromotionBannerShown }"
   >
     <div
       :ref="(element) => setBannerRef(element as HTMLElement)"

@@ -1,6 +1,6 @@
 <template>
   <div class="mb-3 flex items-end self-end">
-    <section class="justify-ends flex flex-col items-end">
+    <section class="flex flex-col items-end justify-end">
       <template v-if="reducedPrice">
         <div
           class="flex"

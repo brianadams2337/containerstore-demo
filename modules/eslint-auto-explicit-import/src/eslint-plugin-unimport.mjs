@@ -231,7 +231,10 @@ const transformPathToImport = (itemFrom, dirName) => {
     return '#omnichannel/composables'
   }
 
-  const normalizedImportPath = partialPath.replace('.mjs', '')
+  // `nuxt-module-builder@0.7.0` changed the file extension for files within
+  // the build `/dist/runtime/` directory from `.mjs` to `.js`.
+  // https://github.com/nuxt/module-builder/commit/dbd05bb
+  const normalizedImportPath = partialPath.replace(/mjs|js/gi, '')
 
   return importsMap[normalizedImportPath] ?? normalizedImportPath
 }

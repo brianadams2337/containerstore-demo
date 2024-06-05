@@ -42,7 +42,7 @@ const props = withDefaults(defineProps<Props>(), {
   hasErrors: false,
 })
 
-const modelValue = defineModel()
+const modelValue = defineModel<string>()
 
 const dataMaska = computed(() => {
   // Maska don't accept array for the dynamic mask approach.

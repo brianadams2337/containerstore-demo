@@ -212,6 +212,7 @@ export default defineNuxtConfig({
     './modules/eslint-auto-explicit-import',
   ],
 
+  // Storefront CMS Module (local)
   cms: {
     // @ts-expect-error provider here expects either `storyblok` or `contentful` but the env variable is typed as string
     provider: process.env.CMS_PROVIDER ?? 'storyblok',
@@ -282,6 +283,8 @@ export default defineNuxtConfig({
   imports: {
     // https://nuxt.com/docs/api/nuxt-config#dirs
     dirs: ['./constants'],
+    // https://nuxt.com/docs/guide/concepts/auto-imports#disabling-auto-imports
+    autoImport: true,
   },
 
   // Allow auto-import for vue components
