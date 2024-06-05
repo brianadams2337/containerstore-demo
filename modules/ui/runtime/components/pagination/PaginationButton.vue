@@ -14,8 +14,8 @@
 </template>
 
 <script setup lang="ts">
-import { type RouteLocationRaw, useRoute } from '#vue-router'
 import { computed } from 'vue'
+import { type RouteLocationRaw, useRoute } from '#vue-router'
 
 type Props = {
   disabled?: boolean

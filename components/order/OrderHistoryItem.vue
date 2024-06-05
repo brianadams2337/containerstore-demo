@@ -47,10 +47,10 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Status, DeliveryProgress } from '~/constants/order'
-import { useRouteHelpers, useFormatDate } from '~/composables'
-import { useRoute } from '#app/composables/router'
 import type { OrderSummary } from '@scayle/storefront-nuxt'
+import { DeliveryProgress, Status } from '~/constants/order'
+import { useFormatDate, useRouteHelpers } from '~/composables'
+import { useRoute } from '#app/composables/router'
 
 type Props = {
   id: OrderSummary['id']

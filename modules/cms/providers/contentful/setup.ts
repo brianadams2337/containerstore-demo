@@ -1,9 +1,9 @@
 import {
-  createResolver,
-  addPlugin,
-  addImportsDir,
   addComponentsDir,
+  addImportsDir,
+  addPlugin,
   addTypeTemplate,
+  createResolver,
 } from '@nuxt/kit'
 import type { Nuxt, NuxtOptions } from 'nuxt/schema'
 import { logger } from '../../utils/helpers'

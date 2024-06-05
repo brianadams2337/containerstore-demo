@@ -62,12 +62,12 @@
 </template>
 
 <script setup lang="ts">
-import { watch, computed, reactive, ref } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
+import { sleep } from 'radash'
+import useVuelidate from '@vuelidate/core'
 import { useToast, useValidationRules } from '~/composables'
 import { useNuxtApp } from '#app/nuxt'
 import { useUser } from '#storefront/composables'
-import { sleep } from 'radash'
-import useVuelidate from '@vuelidate/core'
 
 const { updatePassword, fetch: refresh } = await useUser()
 const { $i18n } = useNuxtApp()

@@ -55,11 +55,11 @@
 </template>
 
 <script setup lang="ts">
-import { getVariantSizes } from '~/utils/sizes'
 import { computed, ref } from 'vue'
 import { onClickOutside } from '@vueuse/core'
-import { usePromotionGiftSelection } from '~/composables'
 import type { Product } from '@scayle/storefront-nuxt'
+import { usePromotionGiftSelection } from '~/composables'
+import { getVariantSizes } from '~/utils/sizes'
 
 const props = defineProps<{
   product: Product

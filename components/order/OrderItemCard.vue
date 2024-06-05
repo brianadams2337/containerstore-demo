@@ -63,12 +63,12 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useFormatHelpers } from '#storefront/composables'
-import { useRouteHelpers } from '~/composables'
 import {
   getFirstAttributeValue,
   getTotalAppliedReductions,
 } from '@scayle/storefront-nuxt'
+import { useFormatHelpers } from '#storefront/composables'
+import { useRouteHelpers } from '~/composables'
 
 type Props = {
   product: OrderProduct

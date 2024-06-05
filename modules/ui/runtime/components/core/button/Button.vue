@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Size, ButtonType, getSizeUtils } from '#storefront-ui'
+import { ButtonType, Size, getSizeUtils } from '#storefront-ui'
 import type { RouteLocationRaw } from '#vue-router'
 import { SFLink } from '#components'
 

@@ -75,19 +75,19 @@
 </template>
 
 <script setup lang="ts">
-import { getTextColorStyle, getBackgroundColorStyle } from '~/utils/promotion'
-import { AlphaColorMap } from '~/constants/color'
 import { computed } from 'vue'
+import type { Product } from '@scayle/storefront-nuxt'
+import { getBackgroundColorStyle, getTextColorStyle } from '~/utils/promotion'
+import { AlphaColorMap } from '~/constants/color'
 import { useFormatHelpers } from '#storefront/composables'
 import {
-  useProductBaseInfo,
-  useRouteHelpers,
-  usePromotionGiftSelection,
-  useProductPromotions,
   useDefaultBreakpoints,
+  useProductBaseInfo,
   useProductDetails,
+  useProductPromotions,
+  usePromotionGiftSelection,
+  useRouteHelpers,
 } from '~/composables'
-import type { Product } from '@scayle/storefront-nuxt'
 
 const props = defineProps<{
   product: Product

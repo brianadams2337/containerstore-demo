@@ -1,13 +1,13 @@
 import {
-  required,
-  email,
   createI18nMessage,
-  sameAs,
+  email,
   maxLength,
+  required,
+  sameAs,
 } from '@vuelidate/validators'
-import { getPayloadDate, dateValidator } from '@scayle/storefront-nuxt'
-import { useNuxtApp } from '#app/nuxt'
+import { dateValidator, getPayloadDate } from '@scayle/storefront-nuxt'
 import { snake } from 'radash'
+import { useNuxtApp } from '#app/nuxt'
 
 const isValidDate = (date: Date) => new Date(date).toString() !== 'Invalid Date'
 

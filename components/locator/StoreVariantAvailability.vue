@@ -48,8 +48,8 @@
 </template>
 
 <script setup lang="ts">
+import { computed, watch } from 'vue'
 import { useStoreLocator } from '#omnichannel/composables'
-import { watch, computed } from 'vue'
 import { useSlideIn } from '~/modules/ui/runtime/composables/useSlideIn'
 
 interface Props {

@@ -1,10 +1,10 @@
 import { sort } from 'radash'
 import {
-  getFirstAttributeValue,
-  isInStock,
-  getAttributeValue,
   type Product,
   type Variant,
+  getAttributeValue,
+  getFirstAttributeValue,
+  isInStock,
 } from '@scayle/storefront-nuxt'
 
 export type VariantSize = {

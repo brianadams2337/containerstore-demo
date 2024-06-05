@@ -14,9 +14,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useSubscription } from '../composables/useSubscription'
 import { toRefs } from 'vue'
 import type { Product, Variant } from '@scayle/storefront-nuxt'
+import { useSubscription } from '../composables/useSubscription'
 import type { PreferredDeliveryDate } from '../helpers/subscription'
 
 type Props = {

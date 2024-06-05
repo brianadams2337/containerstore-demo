@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, computed } from 'vue'
+import { computed, defineOptions } from 'vue'
 import { useStorefrontTracking } from '../composables/storefront/useStorefrontTracking'
 import type { CMSClickableImageProps } from '../types'
 import { useStoryblokMargins } from '../composables/useStoryblokMargins'

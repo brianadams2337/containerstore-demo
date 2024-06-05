@@ -36,8 +36,8 @@
 </template>
 
 <script setup lang="ts">
-import { Status, DeliveryProgress } from '~/constants/order'
 import { computed } from 'vue'
+import { DeliveryProgress, Status } from '~/constants/order'
 import { useFormatDate } from '~/composables'
 
 type Props = {

@@ -32,10 +32,10 @@
 </template>
 
 <script setup lang="ts">
-import { useWishlistItemActions, useWishlistItem } from '~/composables'
 import { computed } from 'vue'
-import { useFormatHelpers } from '#storefront/composables'
 import type { WishlistItem } from '@scayle/storefront-nuxt'
+import { useWishlistItem, useWishlistItemActions } from '~/composables'
+import { useFormatHelpers } from '#storefront/composables'
 
 const props = defineProps<{ item: WishlistItem }>()
 

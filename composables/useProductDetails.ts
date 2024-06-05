@@ -1,8 +1,8 @@
 import {
-  type Variant,
   type Value,
-  getCategoriesByRoute,
+  type Variant,
   getBreadcrumbs,
+  getCategoriesByRoute,
   getPrice,
   getProductSiblings,
   getVariantBySize,

@@ -59,16 +59,16 @@
 </template>
 
 <script setup lang="ts">
-import { watch, onBeforeUnmount, computed } from 'vue'
-import {
-  useTrackingEvents,
-  useSearchData,
-  useMobileSearch,
-  useSideNavigation,
-  useRootCategories,
-  useDefaultBreakpoints,
-} from '~/composables'
+import { computed, onBeforeUnmount, watch } from 'vue'
 import type { SearchEntity } from '@scayle/storefront-nuxt'
+import {
+  useDefaultBreakpoints,
+  useMobileSearch,
+  useRootCategories,
+  useSearchData,
+  useSideNavigation,
+  useTrackingEvents,
+} from '~/composables'
 
 const { isSmaller } = useDefaultBreakpoints()
 

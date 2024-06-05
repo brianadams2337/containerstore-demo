@@ -26,7 +26,7 @@
 <script setup lang="ts">
 import Color from 'color'
 import { computed } from 'vue'
-import { Size, getSizeUtils, ColorChipRoundedType } from '#storefront-ui'
+import { ColorChipRoundedType, Size, getSizeUtils } from '#storefront-ui'
 import type { RouteLocationRaw } from '#vue-router'
 import { SFLink } from '#components'
 

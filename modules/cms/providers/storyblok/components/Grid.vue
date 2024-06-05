@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, computed } from 'vue'
+import { computed, defineOptions } from 'vue'
 import type { CMSGridProps } from '../types'
 import { getComponentName } from '../../../utils/helpers'
 import { useStoryblokMargins } from '../composables/useStoryblokMargins'

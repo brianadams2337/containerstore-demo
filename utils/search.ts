@@ -1,7 +1,7 @@
 import type {
-  SearchEntity,
-  ProductSearchSuggestion,
   CategorySearchSuggestion,
+  ProductSearchSuggestion,
+  SearchEntity,
 } from '@scayle/storefront-nuxt'
 import { getFirstAttributeValue } from '@scayle/storefront-nuxt'
 

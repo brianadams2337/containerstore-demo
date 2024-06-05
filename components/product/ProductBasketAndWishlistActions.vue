@@ -30,8 +30,8 @@
 </template>
 
 <script setup lang="ts">
-import { useProductDetailsBasketActions } from '~/composables'
 import type { Product } from '@scayle/storefront-nuxt'
+import { useProductDetailsBasketActions } from '~/composables'
 
 defineProps<{ product: Product }>()
 

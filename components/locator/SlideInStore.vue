@@ -73,8 +73,8 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useFormatDistance } from '~/composables'
 import type { OpeningTimes, StoreAddress } from '@scayle/omnichannel-nuxt'
+import { useFormatDistance } from '~/composables'
 
 interface Props {
   id: number

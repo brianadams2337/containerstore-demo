@@ -4,15 +4,15 @@
 
 <script setup lang="ts">
 import {
-  toRaw,
-  watch,
+  defineModel,
+  defineProps,
+  getCurrentInstance,
+  h,
   onMounted,
   ref,
-  defineModel,
-  h,
   render,
-  getCurrentInstance,
-  defineProps,
+  toRaw,
+  watch,
 } from 'vue'
 import { Loader } from '@googlemaps/js-api-loader'
 import type { StoreLocation } from '@scayle/omnichannel-nuxt'

@@ -56,13 +56,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed, watch } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
+import { formatDate, getPayloadDate } from '@scayle/storefront-nuxt'
+import useVuelidate from '@vuelidate/core'
 import { dateOfBirthFormats } from '~/constants/mask'
 import { useToast, useValidationRules } from '~/composables'
 import { useCurrentShop, useUser } from '#storefront/composables'
 import { useNuxtApp } from '#app/nuxt'
-import { formatDate, getPayloadDate } from '@scayle/storefront-nuxt'
-import useVuelidate from '@vuelidate/core'
 
 const { user, updateUser } = await useUser()
 

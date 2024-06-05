@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { normalizePathRoute } from '~/utils/route'
-import { useRouteHelpers, usePromotionActions } from '~/composables'
+import { usePromotionActions, useRouteHelpers } from '~/composables'
 
 const props = defineProps<{ category: Promotion['customData']['category'] }>()
 

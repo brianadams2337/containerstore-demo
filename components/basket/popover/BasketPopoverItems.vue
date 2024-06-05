@@ -28,15 +28,15 @@
 </template>
 
 <script setup lang="ts">
-import { watchPostEffect, computed, ref } from 'vue'
+import { computed, ref, watchPostEffect } from 'vue'
+import type { BasketItem } from '@scayle/storefront-nuxt'
 import {
   bundleBasketItemsByGroup,
-  sortBasketItemsByIsSoldOut,
   getPartitionedBasketItems,
+  sortBasketItemsByIsSoldOut,
 } from '~/utils/basket'
 import { useBasket } from '#storefront/composables'
 import type { BundledBasketItems } from '~/utils/basket'
-import type { BasketItem } from '@scayle/storefront-nuxt'
 
 type BasketItems = {
   standAlone: BasketItem[]

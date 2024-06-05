@@ -10,10 +10,10 @@
 </template>
 
 <script setup lang="ts">
-import { definePageMeta } from '#imports'
-import { defineOptions, computed, onMounted } from 'vue'
+import { computed, defineOptions, onMounted } from 'vue'
 import useSubscriptionWebComponent from '../composables/useSubscriptionWebComponent'
-import { useUser, useCurrentShop } from '#storefront/composables'
+import { definePageMeta } from '#imports'
+import { useCurrentShop, useUser } from '#storefront/composables'
 
 const currentShop = useCurrentShop()
 const shopId = currentShop.value.shopId

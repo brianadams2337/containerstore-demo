@@ -54,9 +54,9 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue'
-import { useValidationRules, useAuthentication } from '~/composables'
 import type { Gender } from '@scayle/storefront-nuxt'
 import useVuelidate from '@vuelidate/core'
+import { useAuthentication, useValidationRules } from '~/composables'
 
 const { guestLogin, isSubmitting } = await useAuthentication('guest_login')
 const validationRules = useValidationRules()

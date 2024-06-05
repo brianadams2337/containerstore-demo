@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useRoute } from '#app/composables/router'
 import type { SbCmsImage, SbListingPage } from '../../types'
 import { useCMS } from '../../composables/useCMS'
 import { useCMSListingContent } from '../../composables/useCMSListingContent'
 import { useStoryblokEditor } from '../../composables/useStoryblokEditor'
+import { useRoute } from '#app/composables/router'
 
 const props = defineProps<{
   selectedCategory: number | undefined

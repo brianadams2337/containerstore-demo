@@ -25,11 +25,11 @@
 
 <script setup lang="ts">
 import { defineOptions } from 'vue'
-import { useRoute } from '#app/composables/router'
 import { slugify } from '@scayle/storefront-nuxt'
 import type { CMSAccordionProps } from '../types'
 import { getComponentName } from '../../../utils/helpers'
 import { useStoryblokMargins } from '../composables/useStoryblokMargins'
+import { useRoute } from '#app/composables/router'
 
 const props = defineProps<CMSAccordionProps>()
 const collapseByAnchorSlug = (linkTitle: string) => {

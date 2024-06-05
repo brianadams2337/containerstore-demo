@@ -24,10 +24,10 @@
 </template>
 
 <script setup lang="ts">
-import { routeList } from '~/utils/route'
 import { computed, onMounted } from 'vue'
+import { routeList } from '~/utils/route'
 import { useUser } from '#storefront/composables'
-import { useFlyouts, useDefaultBreakpoints } from '~/composables'
+import { useDefaultBreakpoints, useFlyouts } from '~/composables'
 
 const { isGreaterOrEqual } = useDefaultBreakpoints()
 

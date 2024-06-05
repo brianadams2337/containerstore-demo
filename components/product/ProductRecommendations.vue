@@ -33,20 +33,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 import {
-  useTrackingEvents,
-  useRouteHelpers,
+  type Product,
+  getFirstAttributeValue,
+  getLowestPrice,
+  isFirstIndexOfRow,
+} from '@scayle/storefront-nuxt'
+import {
   useDefaultBreakpoints,
   useProductRecommendations,
+  useRouteHelpers,
+  useTrackingEvents,
 } from '~/composables'
 import { getImageFromList } from '~/utils/image'
-import {
-  getLowestPrice,
-  getFirstAttributeValue,
-  isFirstIndexOfRow,
-  type Product,
-} from '@scayle/storefront-nuxt'
 import { productListingMetaData } from '~/constants/product'
 import { Size } from '#storefront-ui'
 

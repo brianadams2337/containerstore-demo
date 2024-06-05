@@ -43,8 +43,8 @@
 </template>
 
 <script setup lang="ts">
-import { getBackgroundColorStyle } from '~/utils/promotion'
 import { computed, toRef } from 'vue'
+import { getBackgroundColorStyle } from '~/utils/promotion'
 import { usePromotionProgress } from '~/composables'
 
 type Props = {

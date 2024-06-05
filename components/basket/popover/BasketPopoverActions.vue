@@ -10,8 +10,8 @@
 </template>
 
 <script setup lang="ts">
-import { routeList } from '~/utils/route'
 import { computed } from 'vue'
+import { routeList } from '~/utils/route'
 import { useUser } from '#storefront/composables'
 
 const { isLoggedIn } = await useUser()

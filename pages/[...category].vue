@@ -98,24 +98,24 @@
 </template>
 
 <script setup lang="ts">
-import { definePageMeta } from '#imports'
-import { defineOptions, watch, computed } from 'vue'
-import { prepareCanonicalURL } from '~/utils/seo'
+import { computed, defineOptions, watch } from 'vue'
 import { useHead } from '@unhead/vue'
-import { useQueryFilterState, useFacet } from '#storefront/composables'
-import { useRoute } from '#app/composables/router'
 import { HttpStatusCode, type Product } from '@scayle/storefront-nuxt'
+import { definePageMeta } from '#imports'
+import { prepareCanonicalURL } from '~/utils/seo'
+import { useFacet, useQueryFilterState } from '#storefront/composables'
+import { useRoute } from '#app/composables/router'
 import { useSlideIn } from '~/modules/ui/runtime/composables/useSlideIn'
 import { useNuxtApp } from '#app/nuxt'
 import { createError } from '#app/composables/error'
 import {
-  useFilter,
-  createFilterContext,
-  useProductListSort,
-  useCategory,
-  useTrackingEvents,
-  usePageState,
   type FilterContext,
+  createFilterContext,
+  useCategory,
+  useFilter,
+  usePageState,
+  useProductListSort,
+  useTrackingEvents,
 } from '~/composables'
 
 const route = useRoute()

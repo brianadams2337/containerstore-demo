@@ -67,8 +67,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, computed } from 'vue'
-import { useNavigationTreeItems } from '~/composables'
+import { computed, defineOptions } from 'vue'
 import type {
   TypeFooterSkeleton,
   TypeFooterWithoutUnresolvableLinksResponse,
@@ -76,6 +75,7 @@ import type {
 import { useCMS } from '../../composables/useCMS'
 import CMSLink from '../Link.vue'
 import { useContentfulEditor } from '../../composables/useContentfulEditor'
+import { useNavigationTreeItems } from '~/composables'
 
 const { fetchBySlug } = useCMS('footer')
 const { data } = await fetchBySlug<TypeFooterSkeleton>({

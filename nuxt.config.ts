@@ -1,11 +1,11 @@
 import type { NuxtConfig } from 'nuxt/schema'
 import yn from 'yn'
+import { nanoid } from 'nanoid'
 import {
+  storefrontBuildtimeConfig,
   storefrontRuntimeConfigPrivate,
   storefrontRuntimeConfigPublic,
-  storefrontBuildtimeConfig,
 } from './config/storefront'
-import { nanoid } from 'nanoid'
 
 declare module '@nuxt/schema' {
   interface PublicRuntimeConfig {

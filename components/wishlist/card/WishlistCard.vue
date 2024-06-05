@@ -29,10 +29,10 @@
 </template>
 
 <script setup lang="ts">
-import { useWishlistItemActions, useWishlistItem } from '~/composables'
 import { computed } from 'vue'
-import { useWishlist } from '#storefront/composables'
 import type { WishlistItem } from '@scayle/storefront-nuxt'
+import { useWishlistItem, useWishlistItemActions } from '~/composables'
+import { useWishlist } from '#storefront/composables'
 
 type Props = {
   index: number

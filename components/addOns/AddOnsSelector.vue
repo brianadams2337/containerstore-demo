@@ -22,17 +22,17 @@
 </template>
 
 <script setup lang="ts">
-import {
-  useProductsByIds,
-  useVariant,
-  useFormatHelpers,
-} from '#storefront/composables'
 import { computed } from 'vue'
 import { sort } from 'radash'
 import {
-  getFirstAttributeValue,
   type CentAmount,
+  getFirstAttributeValue,
 } from '@scayle/storefront-nuxt'
+import {
+  useFormatHelpers,
+  useProductsByIds,
+  useVariant,
+} from '#storefront/composables'
 
 type AddOnItem = {
   label: string

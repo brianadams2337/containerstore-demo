@@ -36,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, computed, ref } from 'vue'
+import { computed, defineOptions, ref } from 'vue'
 import { useStorefrontTracking } from '../composables/storefront/useStorefrontTracking'
 import { useStorefrontBreakpoints } from '../composables/storefront/useStorefrontBreakpoints'
 import type { CMSImageSliderSlideProps } from '../types'

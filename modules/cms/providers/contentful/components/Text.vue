@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineOptions, computed } from 'vue'
+import { computed, defineOptions } from 'vue'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import type { CMSTextProps } from '../types'
 

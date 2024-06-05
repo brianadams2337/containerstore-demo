@@ -137,13 +137,13 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import type { Product, ProductColor } from '@scayle/storefront-nuxt'
 import { getFirstModelImage } from '~/utils/image'
 import {
   useProductBaseInfo,
   useProductPromotions,
   useRouteHelpers,
 } from '~/composables'
-import type { ProductColor, Product } from '@scayle/storefront-nuxt'
 
 type Props = {
   product: Product

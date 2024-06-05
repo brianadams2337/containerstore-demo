@@ -1,8 +1,8 @@
 import {
   addComponentsDir,
+  addImportsDir,
   createResolver,
   defineNuxtModule,
-  addImportsDir,
 } from '@nuxt/kit'
 
 export type ModuleOptions = {

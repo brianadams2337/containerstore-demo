@@ -26,8 +26,8 @@
 </template>
 
 <script setup lang="ts">
+import { computed, defineOptions } from 'vue'
 import { definePageMeta } from '#imports'
-import { defineOptions, computed } from 'vue'
 import { useOrders } from '~/composables'
 import { useRoute } from '#app/composables/router'
 

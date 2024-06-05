@@ -1,5 +1,5 @@
 import { getRequestURL } from 'h3'
-import { trace, type Span, SpanStatusCode, context } from '@opentelemetry/api'
+import { type Span, SpanStatusCode, context, trace } from '@opentelemetry/api'
 import {
   SEMATTRS_HTTP_HOST,
   SEMATTRS_HTTP_METHOD,

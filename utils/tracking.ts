@@ -1,11 +1,7 @@
 import { isEqual } from 'radash'
 import {
-  getAppliedReductionsByCategory,
-  getFirstAttributeValue,
-  getLowestPrice,
-  getOriginalPrice,
-  getPrice,
   type AppliedReduction,
+  type BasketResponseData,
   type ListOfPackages,
   type Order,
   type PackageReference,
@@ -14,7 +10,11 @@ import {
   type ProductCategory,
   type Variant,
   type WishlistResponseData,
-  type BasketResponseData,
+  getAppliedReductionsByCategory,
+  getFirstAttributeValue,
+  getLowestPrice,
+  getOriginalPrice,
+  getPrice,
 } from '@scayle/storefront-nuxt'
 
 // TODO: Add tests

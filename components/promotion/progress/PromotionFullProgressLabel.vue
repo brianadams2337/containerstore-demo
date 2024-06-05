@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { usePromotionProgress, useCurrentPromotion } from '~/composables'
+import { useCurrentPromotion, usePromotionProgress } from '~/composables'
 
 withDefaults(defineProps<{ isSmall?: boolean }>(), { isSmall: false })
 

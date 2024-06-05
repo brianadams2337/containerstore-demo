@@ -66,9 +66,9 @@
 <script setup lang="ts">
 import { sum } from 'radash'
 import { computed } from 'vue'
-import { useFormatHelpers } from '#storefront/composables'
 import { type BasketItem } from '@scayle/storefront-nuxt'
-import { useBasketReductions, useBasketItem } from '~/composables'
+import { useFormatHelpers } from '#storefront/composables'
+import { useBasketItem, useBasketReductions } from '~/composables'
 
 const props = defineProps<{ item: BasketItem }>()
 

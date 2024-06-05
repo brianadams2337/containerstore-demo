@@ -72,25 +72,25 @@
 </template>
 
 <script setup lang="ts">
-import { definePageMeta } from '#imports'
-import { defineOptions, onMounted, computed } from 'vue'
+import { computed, defineOptions, onMounted } from 'vue'
 import { useSeoMeta } from '@unhead/vue'
-import { useNuxtApp } from '#app/nuxt'
-import { useRoute } from '#app/composables/router'
-import { WishlistListingMetadata } from '~/constants/listingMetadata'
-import { isBuyXGetYType, isAutomaticDiscountType } from '~/utils/promotion'
-import { getPromotionIdFromProductAttributes } from '~/utils/product'
-import {
-  useBasketPromotions,
-  useTrackingEvents,
-  useBasketActions,
-  usePageState,
-} from '~/composables'
-import { useWishlist, useBasket } from '#storefront/composables'
 import {
   type BasketItem,
   getFirstAttributeValue,
 } from '@scayle/storefront-nuxt'
+import { definePageMeta } from '#imports'
+import { useNuxtApp } from '#app/nuxt'
+import { useRoute } from '#app/composables/router'
+import { WishlistListingMetadata } from '~/constants/listingMetadata'
+import { isAutomaticDiscountType, isBuyXGetYType } from '~/utils/promotion'
+import { getPromotionIdFromProductAttributes } from '~/utils/product'
+import {
+  useBasketActions,
+  useBasketPromotions,
+  usePageState,
+  useTrackingEvents,
+} from '~/composables'
+import { useBasket, useWishlist } from '#storefront/composables'
 
 const basket = await useBasket()
 const wishlist = await useWishlist()

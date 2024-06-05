@@ -60,13 +60,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watchEffect, watch, ref } from 'vue'
+import { computed, ref, watch, watchEffect } from 'vue'
 import { onClickOutside } from '@vueuse/core'
-import { useTrackingEvents, useSearchData } from '~/composables'
 import type {
-  ProductSearchSuggestion,
   CategorySearchSuggestion,
+  ProductSearchSuggestion,
 } from '@scayle/storefront-nuxt'
+import { useSearchData, useTrackingEvents } from '~/composables'
 
 const {
   debouncedSearch,

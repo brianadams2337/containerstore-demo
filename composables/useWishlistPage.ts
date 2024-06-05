@@ -1,7 +1,7 @@
 import { alphabetical } from 'radash'
 import {
-  getFirstAttributeValue,
   type WishlistItem,
+  getFirstAttributeValue,
 } from '@scayle/storefront-nuxt'
 
 export const wishlistListingMetadata = {

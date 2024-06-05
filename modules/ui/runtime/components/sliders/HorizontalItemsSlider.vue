@@ -36,8 +36,8 @@
 
 <script setup lang="ts">
 import { useResizeObserver } from '@vueuse/core'
-import { useHorizontalItemsSlider } from '#storefront-ui'
 import { nextTick } from 'vue'
+import { useHorizontalItemsSlider } from '#storefront-ui'
 
 type Props = {
   container?: boolean

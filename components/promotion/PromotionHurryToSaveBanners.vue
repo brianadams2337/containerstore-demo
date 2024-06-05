@@ -51,13 +51,13 @@
 </template>
 
 <script setup lang="ts">
-import { routeList } from '~/utils/route'
 import { computed } from 'vue'
-import { useProductPromotions, useBasketPromotions } from '~/composables'
+import type { Product } from '@scayle/storefront-nuxt'
+import { routeList } from '~/utils/route'
+import { useBasketPromotions, useProductPromotions } from '~/composables'
 import { useLocalePath } from '#i18n'
 import { useRoute } from '#app/composables/router'
 import { getBackgroundColorStyle } from '~/utils/promotion'
-import type { Product } from '@scayle/storefront-nuxt'
 
 const props = withDefaults(defineProps<{ product?: Product }>(), {
   product: undefined,

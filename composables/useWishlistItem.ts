@@ -1,8 +1,8 @@
 import {
-  type WishlistItem,
-  type Price,
   type LowestPriorPrice,
+  type Price,
   type Value,
+  type WishlistItem,
   getLowestPrice,
   getSizeFromVariant,
 } from '@scayle/storefront-nuxt'

@@ -1,7 +1,7 @@
 import { alphabetical, group, sort } from 'radash'
 import {
-  getFirstAttributeValue,
   type BasketItem,
+  getFirstAttributeValue,
 } from '@scayle/storefront-nuxt'
 
 export type BundledBasketItems<T = unknown> = Partial<Record<string, T[]>>

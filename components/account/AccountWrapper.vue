@@ -49,18 +49,18 @@
 </template>
 
 <script setup lang="ts">
+import { computed, onMounted, ref } from 'vue'
+import type { OrderSummary } from '@scayle/storefront-nuxt'
 import { BasketListingMetadata } from '~/constants/listingMetadata'
 import {
-  wishlistListingMetadata,
-  useRouteHelpers,
   useDefaultBreakpoints,
+  useRouteHelpers,
   useTrackingEvents,
+  wishlistListingMetadata,
 } from '~/composables'
-import { onMounted, computed, ref } from 'vue'
-import { useUser, useBasket, useWishlist } from '#storefront/composables'
+import { useBasket, useUser, useWishlist } from '#storefront/composables'
 import { useRoute } from '#app/composables/router'
 import { routeList } from '~/utils/route'
-import type { OrderSummary } from '@scayle/storefront-nuxt'
 
 type Props = {
   title: string

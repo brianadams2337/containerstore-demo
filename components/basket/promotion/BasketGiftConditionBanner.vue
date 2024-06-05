@@ -27,9 +27,9 @@
 </template>
 
 <script setup lang="ts">
-import { useBasketItemPromotion } from '~/composables'
 import { computed } from 'vue'
 import type { BasketItem } from '@scayle/storefront-nuxt'
+import { useBasketItemPromotion } from '~/composables'
 
 const props = defineProps<{ basketItem: BasketItem }>()
 

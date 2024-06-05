@@ -1,8 +1,8 @@
 import {
   type Brand,
   type Offer,
-  type WithContext,
   type Product,
+  type WithContext,
 } from 'schema-dts'
 
 const CANONICAL_PARAM_WHITELIST = [

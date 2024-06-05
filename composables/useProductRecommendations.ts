@@ -1,4 +1,4 @@
-import { type Product, type FetchProductsParams } from '@scayle/storefront-nuxt'
+import { type FetchProductsParams, type Product } from '@scayle/storefront-nuxt'
 import { productListingMetaData } from '~/constants/product'
 
 export async function useProductRecommendations(

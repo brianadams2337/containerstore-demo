@@ -51,19 +51,19 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, ref, computed } from 'vue'
-import { useProductsByIds } from '#storefront/composables'
-import { useStorefrontTracking } from '../composables/storefront/useStorefrontTracking'
-import { usePageState } from '~/composables'
-import { useRoute } from '#app/composables/router'
-import { useStorefrontBreakpoints } from '../composables/storefront/useStorefrontBreakpoints'
+import { computed, defineOptions, ref } from 'vue'
 import {
+  type Product,
   getLatestCategory,
   isFirstIndexOfRow,
-  type Product,
 } from '@scayle/storefront-nuxt'
+import { useStorefrontTracking } from '../composables/storefront/useStorefrontTracking'
+import { useStorefrontBreakpoints } from '../composables/storefront/useStorefrontBreakpoints'
 import type { CMSProductSliderProps } from '../types'
 import { useContentfulMargins } from '../composables/useContentfulMargins'
+import { useProductsByIds } from '#storefront/composables'
+import { usePageState } from '~/composables'
+import { useRoute } from '#app/composables/router'
 
 const props = defineProps<CMSProductSliderProps>()
 

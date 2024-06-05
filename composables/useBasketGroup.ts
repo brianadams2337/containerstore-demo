@@ -1,7 +1,7 @@
 import {
+  type AddOrUpdateItemType,
   type BasketWithOptions,
   rpcCall,
-  type AddOrUpdateItemType,
 } from '@scayle/storefront-nuxt'
 import { nanoid } from 'nanoid'
 

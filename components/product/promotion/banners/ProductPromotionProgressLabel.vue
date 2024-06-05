@@ -46,13 +46,13 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import {
   getAdditionalData,
-  isBuyXGetYType,
   isAutomaticDiscountType,
+  isBuyXGetYType,
 } from '~/utils/promotion'
 import { usePromotionProgress } from '~/composables'
-import { computed } from 'vue'
 
 type Props = {
   promotion: Promotion

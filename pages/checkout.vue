@@ -12,14 +12,14 @@
 </template>
 
 <script setup lang="ts">
-import { definePageMeta } from '#imports'
 import { defineOptions, onBeforeMount, ref } from 'vue'
 import { useSeoMeta } from '@unhead/vue'
 import { useEventListener } from '@vueuse/core'
-import { useTrackingEvents, useCheckoutWebComponent } from '~/composables'
-import { useLog, useUser, useBasket } from '#storefront/composables'
-import { useNuxtApp } from '#app/nuxt'
 import type { CheckoutEvent } from '@scayle/storefront-nuxt'
+import { definePageMeta } from '#imports'
+import { useCheckoutWebComponent, useTrackingEvents } from '~/composables'
+import { useBasket, useLog, useUser } from '#storefront/composables'
+import { useNuxtApp } from '#app/nuxt'
 
 const { accessToken, checkoutJwt, fetchCheckoutToken } =
   await useCheckoutWebComponent()

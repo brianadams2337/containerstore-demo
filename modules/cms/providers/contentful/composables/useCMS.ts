@@ -1,13 +1,13 @@
 import type {
-  ChainModifiers,
-  EntrySkeletonType,
-  EntriesQueries,
-  EntryCollection,
-  LocaleCode,
-  Entry,
-  ContentfulCollection,
-  ContentfulClientApi,
   AddChainModifier,
+  ChainModifiers,
+  ContentfulClientApi,
+  ContentfulCollection,
+  EntriesQueries,
+  Entry,
+  EntryCollection,
+  EntrySkeletonType,
+  LocaleCode,
 } from 'contentful'
 import type { AsyncDataOptions } from 'nuxt/app'
 import { useDefaultCMSOptions } from './useDefaultCMSOptions'

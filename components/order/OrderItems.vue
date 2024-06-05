@@ -30,8 +30,8 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useOrders } from '~/composables'
 import { unique } from 'radash'
+import { useOrders } from '~/composables'
 
 type CarrierMap = Record<
   string,

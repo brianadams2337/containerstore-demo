@@ -11,12 +11,12 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, computed } from 'vue'
+import { computed, defineOptions } from 'vue'
 import { useStorefrontTracking } from '../composables/storefront/useStorefrontTracking'
 import type { CMSImageProps } from '../types'
 import {
-  useStoryblokImageSanitizer,
   getTeaserImage,
+  useStoryblokImageSanitizer,
 } from '../composables/useStoryblokImage'
 
 const props = withDefaults(defineProps<CMSImageProps>(), {

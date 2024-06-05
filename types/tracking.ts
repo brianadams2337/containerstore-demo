@@ -1,8 +1,8 @@
 import {
   type BasketItem,
+  type Price,
   type Product,
   type ShopUser,
-  type Price,
   type Variant,
   type WishlistItem,
 } from '@scayle/storefront-nuxt'

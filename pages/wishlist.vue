@@ -45,13 +45,13 @@
 </template>
 
 <script setup lang="ts">
-import { definePageMeta } from '#imports'
 import { defineOptions, onMounted } from 'vue'
+import { definePageMeta } from '#imports'
 import { BasketListingMetadata } from '~/constants/listingMetadata'
 import {
-  wishlistListingMetadata,
-  useWishlistPage,
   useTrackingEvents,
+  useWishlistPage,
+  wishlistListingMetadata,
 } from '~/composables'
 import { useBasket } from '#storefront/composables'
 

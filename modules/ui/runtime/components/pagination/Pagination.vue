@@ -52,8 +52,8 @@
 </template>
 
 <script setup lang="ts">
-import { usePagination } from '../../composables/usePagination'
 import { toRefs } from 'vue'
+import { usePagination } from '../../composables/usePagination'
 
 type Props = {
   firstPage: number

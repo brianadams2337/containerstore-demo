@@ -1,8 +1,8 @@
 import {
-  type Variant,
+  ExistingItemHandling,
   type Product,
   type Value,
-  ExistingItemHandling,
+  type Variant,
   getFirstAttributeValue,
   getPrice,
   getVariantBySize,

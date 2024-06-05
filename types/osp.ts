@@ -1,11 +1,11 @@
 import type {
-  AttributeGroupSingle,
-  AttributeGroupMulti,
   AdvancedAttribute,
-  LowestPriorPrice,
+  AttributeGroupMulti,
+  AttributeGroupSingle,
+  Attributes,
   Order as BaseOrder,
   ListOfPackages,
-  Attributes,
+  LowestPriorPrice,
 } from '@scayle/storefront-nuxt'
 
 interface OrderCategory {

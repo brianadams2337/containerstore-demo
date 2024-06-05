@@ -53,7 +53,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, computed } from 'vue'
+import { computed, defineOptions } from 'vue'
 import { useCMSAlignment } from '../composables/useCMSAlignment'
 import type { CMSImageTextProps } from '../types'
 import { useStoryblokImageSanitizer } from '../composables/useStoryblokImage'

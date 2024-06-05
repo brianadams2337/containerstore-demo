@@ -11,8 +11,8 @@
 </template>
 
 <script setup lang="ts">
-import { useProductPromotions } from '~/composables'
 import type { Product } from '@scayle/storefront-nuxt'
+import { useProductPromotions } from '~/composables'
 
 const props = defineProps<{ product: Product }>()
 

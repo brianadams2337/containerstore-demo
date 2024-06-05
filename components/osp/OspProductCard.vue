@@ -52,14 +52,14 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useFormatHelpers } from '#storefront/composables'
 import type { PropType } from 'vue'
 import {
-  getTotalAppliedReductions,
   type AttributeGroup,
   type Attributes,
   getFirstAttributeValue,
+  getTotalAppliedReductions,
 } from '@scayle/storefront-nuxt'
+import { useFormatHelpers } from '#storefront/composables'
 
 const props = defineProps({
   product: {

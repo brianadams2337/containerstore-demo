@@ -1,17 +1,17 @@
 import {
   type CentAmount,
   type TransformedFilter,
-  groupFilterableValuesByKey,
-  transformToWhereCondition,
   getActiveFilters,
   getFilterablePriceValue,
   getGroupedFilterableValues,
+  groupFilterableValuesByKey,
   groupFiltersByKey,
   transformMinAndMaxPriceToFilter,
   transformStateToFilters,
+  transformToWhereCondition,
 } from '@scayle/storefront-nuxt'
+import { debounce, isEmpty, isEqual, omit } from 'radash'
 import type { FilterContext } from '~/composables'
-import { debounce, omit, isEqual, isEmpty } from 'radash'
 
 export const INCLUDED_QUICK_FILTERS = ['sale', 'isNew', 'styleGroup']
 

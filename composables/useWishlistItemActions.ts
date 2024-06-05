@@ -1,11 +1,11 @@
 import { isEmpty } from 'radash'
 import {
-  type WishlistItem,
   type Product,
   type Value,
-  getVariantBySize,
+  type WishlistItem,
   getAttributeValue,
   getVariant,
+  getVariantBySize,
 } from '@scayle/storefront-nuxt'
 
 export async function useWishlistItemActions(item: Ref<WishlistItem>) {

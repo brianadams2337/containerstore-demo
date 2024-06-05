@@ -196,19 +196,19 @@
 
 <script setup lang="ts">
 import { sum } from 'radash'
-import { toRef, ref, computed } from 'vue'
+import { computed, ref, toRef } from 'vue'
+import { type BasketItem } from '@scayle/storefront-nuxt'
 import { useRoute } from '#app/composables/router'
 import { useNuxtApp } from '#app/nuxt'
-import { useWishlist, useFormatHelpers } from '#storefront/composables'
-import { type BasketItem } from '@scayle/storefront-nuxt'
+import { useFormatHelpers, useWishlist } from '#storefront/composables'
 import {
+  useBasketItem,
   useBasketItemPromotion,
+  useBasketReductions,
   usePageState,
+  useRouteHelpers,
   useToast,
   useTrackingEvents,
-  useBasketItem,
-  useRouteHelpers,
-  useBasketReductions,
 } from '~/composables'
 
 type Props = {

@@ -99,9 +99,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { watch, computed, toRefs } from 'vue'
-import { useSubscription } from '../composables/useSubscription'
+import { computed, toRefs, watch } from 'vue'
 import type { Product, Variant } from '@scayle/storefront-nuxt'
+import { useSubscription } from '../composables/useSubscription'
 import type { PreferredDeliveryDate } from '../helpers/subscription'
 
 type Props = {

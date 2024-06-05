@@ -60,16 +60,16 @@
 </template>
 
 <script setup lang="ts">
-import { watch, reactive, computed } from 'vue'
+import { computed, reactive, watch } from 'vue'
+import useVuelidate from '@vuelidate/core'
+import { isString } from 'radash'
 import {
-  useValidationRules,
-  useLastLoggedInUser,
   useAuthentication,
+  useLastLoggedInUser,
+  useValidationRules,
 } from '~/composables'
 import { useIDP } from '#storefront/composables'
 import { useRoute } from '#app/composables/router'
-import useVuelidate from '@vuelidate/core'
-import { isString } from 'radash'
 
 const route = useRoute()
 

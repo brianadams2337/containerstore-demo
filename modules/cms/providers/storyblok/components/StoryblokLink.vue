@@ -8,11 +8,11 @@
 </template>
 
 <script lang="ts" setup>
-import { defineOptions, computed } from 'vue'
-import { type LinkList, routeList } from '~/utils/route'
+import { computed, defineOptions } from 'vue'
 import { isString } from 'radash'
 import type { CMSStoryblokLink } from '../types'
 import { useStoryblokHelpers } from '../composables/useStoryblokHelpers'
+import { type LinkList, routeList } from '~/utils/route'
 
 const props = withDefaults(defineProps<CMSStoryblokLink>(), { target: '_self' })
 

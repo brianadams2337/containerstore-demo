@@ -38,33 +38,33 @@
 </template>
 
 <script setup lang="ts">
-import { definePageMeta } from '#imports'
-import { defineOptions, watch, computed } from 'vue'
+import { computed, defineOptions, watch } from 'vue'
 import { useSeoMeta } from '@unhead/vue'
+import {
+  type Product,
+  getFirstAttributeValue,
+  getSortByValue,
+  getSortingValues,
+} from '@scayle/storefront-nuxt'
+import { definePageMeta } from '#imports'
 import { routeList } from '~/utils/route'
 import { useLocalePath } from '#i18n'
 import { fetchLazy } from '~/utils/loading'
 import {
+  useFacet,
   useQueryFilterState,
   useWishlist,
-  useFacet,
 } from '#storefront/composables'
 import { useSlideIn } from '~/modules/ui/runtime/composables/useSlideIn'
 import {
   createFilterContext,
-  useTrackingEvents,
-  useToast,
   usePageState,
+  useToast,
+  useTrackingEvents,
 } from '~/composables'
 import { useNuxtApp } from '#app/nuxt'
 import { useRoute } from '#app/composables/router'
 import { PRODUCTS_PER_PAGE } from '~/constants/product'
-import {
-  getFirstAttributeValue,
-  getSortByValue,
-  type Product,
-  getSortingValues,
-} from '@scayle/storefront-nuxt'
 
 const route = useRoute()
 

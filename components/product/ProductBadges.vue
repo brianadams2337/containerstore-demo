@@ -59,12 +59,12 @@
 </template>
 
 <script setup lang="ts">
-import { routeList } from '~/utils/route'
 import { computed } from 'vue'
+import type { AppliedReduction, Product } from '@scayle/storefront-nuxt'
+import { routeList } from '~/utils/route'
 import { useLocalePath } from '#i18n'
 import { useRoute } from '#app/composables/router'
 import { isProductSustainable } from '~/utils/sustainability'
-import type { AppliedReduction, Product } from '@scayle/storefront-nuxt'
 
 type Props = {
   product: Product

@@ -21,9 +21,9 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { isString } from 'radash'
 import type { RouteLocationRaw } from '#vue-router'
 import { LinkVariant } from '#storefront-ui'
-import { isString } from 'radash'
 import { useRouteHelpers } from '~/composables'
 
 const LinkTypeClass = {

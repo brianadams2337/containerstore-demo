@@ -11,14 +11,14 @@
 </template>
 
 <script setup lang="ts">
-import { definePageMeta } from '#imports'
 import { defineOptions, onMounted } from 'vue'
-import { sanitizeCanonical } from '~/utils/seo'
 import { useHead, useSeoMeta } from '@unhead/vue'
+import { definePageMeta } from '#imports'
+import { sanitizeCanonical } from '~/utils/seo'
 import {
-  wishlistListingMetadata,
-  useTrackingEvents,
   useTracking,
+  useTrackingEvents,
+  wishlistListingMetadata,
 } from '~/composables'
 import { useWishlist } from '#storefront/composables'
 import { useNuxtApp, useRuntimeConfig } from '#app/nuxt'

@@ -63,9 +63,7 @@
 </template>
 
 <script setup lang="ts">
-import { type VariantSize, getVariantSizes } from '~/utils/sizes'
 import { computed, toRef } from 'vue'
-import { getVariantAvailability } from '~/utils/product'
 import { sort } from 'radash'
 
 import {
@@ -73,6 +71,8 @@ import {
   getFirstAttributeValue,
   isVariantInStock,
 } from '@scayle/storefront-nuxt'
+import { getVariantAvailability } from '~/utils/product'
+import { type VariantSize, getVariantSizes } from '~/utils/sizes'
 
 type Props = {
   id: number

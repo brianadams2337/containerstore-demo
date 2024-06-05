@@ -2,13 +2,13 @@ import {
   type CategorySearchSuggestion,
   type Product,
   type SearchEntity,
-  slugify,
-  serializeFilters,
   getFirstAttributeValue,
+  serializeFilters,
+  slugify,
 } from '@scayle/storefront-nuxt'
+import { isString } from 'radash'
 import type { RouteLocationRaw, RouteParams } from '#vue-router'
 import type { NavigateToOptions } from '#app/composables/router'
-import { isString } from 'radash'
 
 export function useRouteHelpers() {
   const localePath = useLocalePath()

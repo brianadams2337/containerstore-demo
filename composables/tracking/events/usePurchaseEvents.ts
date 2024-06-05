@@ -1,12 +1,12 @@
 import {
-  getItemQuantityFromOrder,
-  getUniqueItemsFromOrder,
-  getTotalAppliedReductions,
-  type Value,
-  type Price,
   type Order,
+  type Price,
   type Product,
   type ProductCategory,
+  type Value,
+  getItemQuantityFromOrder,
+  getTotalAppliedReductions,
+  getUniqueItemsFromOrder,
 } from '@scayle/storefront-nuxt'
 
 const getItems = (orderData: Order, currency?: string) => {

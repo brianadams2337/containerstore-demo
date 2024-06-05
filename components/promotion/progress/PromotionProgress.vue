@@ -23,9 +23,9 @@
 
 <script setup lang="ts">
 import {
+  useCurrentPromotion,
   useDefaultBreakpoints,
   usePromotionProgress,
-  useCurrentPromotion,
 } from '~/composables'
 
 withDefaults(defineProps<{ isFullWidth?: boolean }>(), { isFullWidth: false })

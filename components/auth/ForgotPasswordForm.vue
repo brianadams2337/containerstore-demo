@@ -46,13 +46,13 @@
 </template>
 
 <script setup lang="ts">
-import { watch, reactive, ref } from 'vue'
-import {
-  useValidationRules,
-  useLastLoggedInUser,
-  useAuthentication,
-} from '~/composables'
+import { reactive, ref, watch } from 'vue'
 import useVuelidate from '@vuelidate/core'
+import {
+  useAuthentication,
+  useLastLoggedInUser,
+  useValidationRules,
+} from '~/composables'
 
 defineEmits(['close:modal'])
 

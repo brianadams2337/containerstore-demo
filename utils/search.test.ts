@@ -4,7 +4,7 @@ import type {
   Product,
   ProductSearchSuggestion,
 } from '@scayle/storefront-nuxt'
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 const getBaseCategory = (): Category => ({
   id: 2046,

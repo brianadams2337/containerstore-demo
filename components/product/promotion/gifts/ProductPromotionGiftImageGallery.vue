@@ -40,9 +40,9 @@
 </template>
 
 <script setup lang="ts">
-import { useHorizontalItemsSlider } from '~/modules/ui/runtime/composables/useHorizontalItemsSlider'
 import { ref } from 'vue'
 import type { ProductImage } from '@scayle/storefront-nuxt'
+import { useHorizontalItemsSlider } from '~/modules/ui/runtime/composables/useHorizontalItemsSlider'
 
 defineProps<{ images: ProductImage[] }>()
 

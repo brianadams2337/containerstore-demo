@@ -1,4 +1,4 @@
-import { relative, dirname, isAbsolute } from 'pathe'
+import { dirname, isAbsolute, relative } from 'pathe'
 import { ESLintUtils } from '@typescript-eslint/utils'
 import { analyze } from '@typescript-eslint/scope-manager'
 import Debug from 'debug'

@@ -28,9 +28,9 @@
 </template>
 
 <script setup lang="ts">
-import { useBasketItem, useRouteHelpers } from '~/composables'
 import { computed } from 'vue'
 import { type BasketItem } from '@scayle/storefront-nuxt'
+import { useBasketItem, useRouteHelpers } from '~/composables'
 
 type Props = {
   items: BasketItem[]

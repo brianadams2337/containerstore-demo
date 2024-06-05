@@ -1,7 +1,7 @@
 import type {
+  BasketItem,
   Promotion as CorePromotion,
   PromotionCustomData,
-  BasketItem,
 } from '@scayle/storefront-nuxt'
 
 // This data can potentially change per tenant needs so the main goal is to

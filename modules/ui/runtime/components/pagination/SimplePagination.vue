@@ -57,7 +57,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch, toRefs } from 'vue'
+import { computed, ref, toRefs, watch } from 'vue'
 
 type Props = {
   recordCount?: number

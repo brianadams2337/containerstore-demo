@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
-import { useRoute } from '#app/composables/router'
 import type {
   TypeListingPageSkeleton,
   TypeListingPageWithoutUnresolvableLinksResponse,
@@ -8,6 +7,7 @@ import type {
 import { useCMS } from '../../composables/useCMS'
 import { useCMSListingContent } from '../../composables/useCMSListingContent'
 import { useContentfulEditor } from '../../composables/useContentfulEditor'
+import { useRoute } from '#app/composables/router'
 
 const props = defineProps<{
   selectedCategory: number | undefined

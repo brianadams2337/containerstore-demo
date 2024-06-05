@@ -1,10 +1,10 @@
 import {
-  TEST_ITEM_REGULAR,
-  TEST_ITEM_SOLDOUT,
-  TEST_ITEM_SALE,
-  TEST_ITEM_ONESIZE,
   TEST_ITEM_COMBINE_WITH,
   TEST_ITEM_NO_COMBINE_WITH,
+  TEST_ITEM_ONESIZE,
+  TEST_ITEM_REGULAR,
+  TEST_ITEM_SALE,
+  TEST_ITEM_SOLDOUT,
   TEST_ITEM_WITH_FREE_GIFT,
 } from '../../support/constants'
 import ProductPage from '../../pageObjects/productPage'

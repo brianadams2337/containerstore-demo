@@ -1,9 +1,9 @@
 import { sum } from 'radash'
 import {
-  PromotionEffectType,
-  type BuyXGetYEffect,
   type AutomaticDiscountEffect,
   type BasketResponseData,
+  type BuyXGetYEffect,
+  PromotionEffectType,
 } from '@scayle/storefront-nuxt'
 import { hexToRGBAColor } from '~/utils/color'
 

@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup generic="ListboxItem extends { disabled?: boolean }">
-import { watch, ref } from 'vue'
+import { ref, watch } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import { useListbox } from '#storefront-ui'
 

@@ -1,10 +1,10 @@
 import {
-  installModule,
-  createResolver,
-  addImportsDir,
   addComponentsDir,
-  addTypeTemplate,
+  addImportsDir,
   addPlugin,
+  addTypeTemplate,
+  createResolver,
+  installModule,
 } from '@nuxt/kit'
 import type { ModuleOptions as StoryblokDefaultModuleOptions } from '@storyblok/nuxt'
 import type { Nuxt, NuxtOptions } from 'nuxt/schema'

@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, computed } from 'vue'
+import { computed, defineOptions } from 'vue'
 import { useSeoMeta } from '@unhead/vue'
 import type { TypeContentPageWithoutUnresolvableLinksResponse } from '../types'
 

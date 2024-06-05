@@ -3,9 +3,9 @@
 </template>
 
 <script setup lang="ts">
-import { definePageMeta } from '#imports'
 import { defineOptions } from 'vue'
 import { useSeoMeta } from '@unhead/vue'
+import { definePageMeta } from '#imports'
 import { useNuxtApp } from '#app/nuxt'
 
 const { $i18n } = useNuxtApp()

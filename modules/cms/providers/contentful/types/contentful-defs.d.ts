@@ -1,5 +1,5 @@
-import type * as Contentful from './gen'
 import type { Document } from '@contentful/rich-text-types'
+import type * as Contentful from './gen'
 
 export type TODO = any
 export type BlokProps<T> = { blok: T | null }

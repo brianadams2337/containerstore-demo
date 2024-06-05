@@ -69,7 +69,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, computed } from 'vue'
+import { computed, defineOptions } from 'vue'
 import type { PropType } from 'vue'
 import type { SbNestedParagraph } from '../types/storyblok'
 import { getComponentName } from '../../../utils/helpers'

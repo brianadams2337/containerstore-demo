@@ -25,9 +25,9 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
 import { computed } from 'vue'
-import { useNuxtApp } from '#app/nuxt'
 import type { PropType } from 'vue'
 import { HttpStatusCode } from '@scayle/storefront-nuxt'
+import { useNuxtApp } from '#app/nuxt'
 import type { NuxtError } from '#app'
 
 type AppError =

@@ -1,22 +1,22 @@
 import {
   type Product,
-  type Variant,
   type Value,
-  getPrice,
+  type Variant,
   getAttributeValue,
-  getTotalAppliedReductions,
   getFirstAttributeValue,
+  getPrice,
+  getTotalAppliedReductions,
 } from '@scayle/storefront-nuxt'
 
 import type { Ref } from 'vue'
 import {
   type PreferredDeliveryDate,
-  getSubscriptionIntervals,
-  getOrdinalSuffix,
+  SUBSCRIPTION_CANCELLATION_POLICY,
   SUBSCRIPTION_ELIGIBILITY_ATTRIBUTE_NAME,
   SUBSCRIPTION_INTERVALS_ATTRIBUTE_NAME,
   SUBSCRIPTION_TERM,
-  SUBSCRIPTION_CANCELLATION_POLICY,
+  getOrdinalSuffix,
+  getSubscriptionIntervals,
 } from '../helpers/subscription'
 
 const selectedInterval = ref<Value | undefined>()

@@ -1,8 +1,8 @@
 import { min } from 'radash'
 
 import {
-  type Product,
   type Price,
+  type Product,
   getFirstAttributeValue,
 } from '@scayle/storefront-nuxt'
 

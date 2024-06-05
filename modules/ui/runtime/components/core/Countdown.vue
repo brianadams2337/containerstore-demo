@@ -19,9 +19,9 @@
 </template>
 
 <script setup lang="ts">
-import { DAY, HOURS, MINUTE, SECOND } from '~/constants/time'
 import { useIntervalFn } from '@vueuse/core'
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
+import { DAY, HOURS, MINUTE, SECOND } from '~/constants/time'
 
 type CountdownUnit = 'days' | 'hours' | 'minutes' | 'seconds'
 

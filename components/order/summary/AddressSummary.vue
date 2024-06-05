@@ -17,9 +17,9 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useNuxtApp } from '#app/nuxt'
 import type { PropType } from 'vue'
-import { pick, isEqual } from 'radash'
+import { isEqual, pick } from 'radash'
+import { useNuxtApp } from '#app/nuxt'
 
 export type SummaryItem = {
   name: 'shipping' | 'billing'

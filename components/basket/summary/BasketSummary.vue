@@ -26,11 +26,11 @@
 import { routeList } from '~/utils/route'
 import { BasketListingMetadata } from '~/constants/listingMetadata'
 import {
+  useBasketPromotions,
   useRouteHelpers,
   useTrackingEvents,
-  useBasketPromotions,
 } from '~/composables'
-import { useUser, useBasket } from '#storefront/composables'
+import { useBasket, useUser } from '#storefront/composables'
 
 const basket = await useBasket()
 const { isLoggedIn } = await useUser()

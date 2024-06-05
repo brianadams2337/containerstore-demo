@@ -1,8 +1,8 @@
 import {
+  type Product,
   getAttributeValue,
   getAttributeValueTuples,
   getFirstAttributeValue,
-  type Product,
   getFlattenedAdvancedAttribute,
 } from '@scayle/storefront-nuxt'
 

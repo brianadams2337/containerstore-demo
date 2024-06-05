@@ -1,14 +1,14 @@
 import {
-  ExistingItemHandling,
-  rpcMethods,
-  MIN_WITH_PARAMS_BASKET,
   type AddOrUpdateItemType,
   type BasketResponseData,
   type BasketWithOptions,
+  ExistingItemHandling,
+  MIN_WITH_PARAMS_BASKET,
   type Product,
   type RpcContext,
   type RpcHandler,
   type Variant,
+  rpcMethods,
 } from '@scayle/storefront-nuxt'
 
 const getWithParams = (

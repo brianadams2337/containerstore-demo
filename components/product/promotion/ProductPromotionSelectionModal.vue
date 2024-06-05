@@ -122,12 +122,12 @@
 </template>
 
 <script setup lang="ts">
-import { getTextColorStyle, getBackgroundColorStyle } from '~/utils/promotion'
-import { AlphaColorMap } from '~/constants/color'
 import { computed } from 'vue'
+import { type Product, getFirstAttributeValue } from '@scayle/storefront-nuxt'
+import { getBackgroundColorStyle, getTextColorStyle } from '~/utils/promotion'
+import { AlphaColorMap } from '~/constants/color'
 import { useBasket, useFormatHelpers } from '#storefront/composables'
 import { usePromotionGiftSelection, useRouteHelpers } from '~/composables'
-import { type Product, getFirstAttributeValue } from '@scayle/storefront-nuxt'
 
 const props = defineProps<{
   product: Product

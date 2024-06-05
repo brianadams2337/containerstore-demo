@@ -1,10 +1,10 @@
+import { refreshNuxtData } from 'nuxt/app'
 import type {
   NotificationOnClickActions,
   NotificationOptions,
 } from '#storefront-ui'
 import type { RouteLocationRaw } from '#vue-router'
 import { useNotification } from '#storefront-ui'
-import { refreshNuxtData } from 'nuxt/app'
 
 type ToastAction = 'CONFIRM' | 'RELOAD' | 'ROUTE'
 

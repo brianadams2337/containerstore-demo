@@ -60,17 +60,17 @@
 </template>
 
 <script setup lang="ts">
-import { getTextColorStyle, getBackgroundColorStyle } from '~/utils/promotion'
-import { AlphaColorMap } from '~/constants/color'
-import { useBasket, useFormatHelpers } from '#storefront/composables'
-import { useProductPromotions } from '~/composables'
 import { computed } from 'vue'
 import {
-  type Price,
   type LowestPriorPrice,
+  type Price,
   type Product,
   getTotalAppliedReductions,
 } from '@scayle/storefront-nuxt'
+import { getBackgroundColorStyle, getTextColorStyle } from '~/utils/promotion'
+import { AlphaColorMap } from '~/constants/color'
+import { useBasket, useFormatHelpers } from '#storefront/composables'
+import { useProductPromotions } from '~/composables'
 import { Size } from '#storefront-ui'
 import tailwindConfig from '~/tailwind.config'
 

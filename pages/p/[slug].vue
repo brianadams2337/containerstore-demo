@@ -221,33 +221,33 @@
 </template>
 
 <script setup lang="ts">
-import { definePageMeta, useJsonld } from '#imports'
-import { defineOptions, computed, onMounted, ref } from 'vue'
+import { computed, defineOptions, onMounted, ref } from 'vue'
 import { useHead, useServerSeoMeta } from '@unhead/vue'
-import { useNuxtApp } from '#app/nuxt'
-import { useRoute } from '#app/composables/router'
-import { generateProductSchema, sanitizeCanonical } from '~/utils/seo'
-import { useFormatHelpers, useCurrentShop } from '#storefront/composables'
-import {
-  useTrackingEvents,
-  useZoomGalleryActions,
-  useProductDetailsAddOns,
-  useFavoriteStore,
-  usePageState,
-  useRouteHelpers,
-  useProductPromotions,
-  useProductDetailsBasketActions,
-  useProductDetails,
-} from '~/composables'
-import { isProductSubscriptionEligible } from '~/modules/subscription/helpers/subscription'
 import { sleep } from 'radash'
-import { ProductColorChip } from '#components'
-import { Size } from '#storefront-ui'
 import {
   type ProductColor,
   getFirstAttributeValue,
   isInStock,
 } from '@scayle/storefront-nuxt'
+import { definePageMeta, useJsonld } from '#imports'
+import { useNuxtApp } from '#app/nuxt'
+import { useRoute } from '#app/composables/router'
+import { generateProductSchema, sanitizeCanonical } from '~/utils/seo'
+import { useCurrentShop, useFormatHelpers } from '#storefront/composables'
+import {
+  useFavoriteStore,
+  usePageState,
+  useProductDetails,
+  useProductDetailsAddOns,
+  useProductDetailsBasketActions,
+  useProductPromotions,
+  useRouteHelpers,
+  useTrackingEvents,
+  useZoomGalleryActions,
+} from '~/composables'
+import { isProductSubscriptionEligible } from '~/modules/subscription/helpers/subscription'
+import { ProductColorChip } from '#components'
+import { Size } from '#storefront-ui'
 
 const {
   product,

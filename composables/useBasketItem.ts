@@ -1,9 +1,9 @@
 import {
   type BasketItem,
+  ExistingItemHandling,
   getFirstAttributeValue,
   getProductColors,
   getSizeFromVariant,
-  ExistingItemHandling,
   getTotalAppliedReductions,
   isInStock,
 } from '@scayle/storefront-nuxt'

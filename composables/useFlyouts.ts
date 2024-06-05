@@ -1,7 +1,7 @@
 import type {
   Category,
-  NavigationItems,
   NavigationItemExternal,
+  NavigationItems,
 } from '@scayle/storefront-nuxt'
 
 export type FlyoutMenuCategory = {

@@ -27,22 +27,22 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, defineOptions } from 'vue'
+import { defineOptions, onMounted, ref } from 'vue'
+import { useHead } from '@unhead/vue'
 import { useCurrentPromotions, useWishlist } from '#storefront/composables'
 import {
   USE_BANNER_KEY,
   USE_DEFAULT_BREAKPOINTS_KEY,
   USE_TRACKING_EVENTS_KEY,
   createContext,
-  useSideNavigation,
   useBanner,
-  useDefaultBreakpoints,
-  useTrackingEvents,
-  useRootCategories,
   useBasketPromotions,
+  useDefaultBreakpoints,
+  useRootCategories,
+  useSideNavigation,
+  useTrackingEvents,
 } from '~/composables'
 import { useModal } from '#storefront-ui/composables'
-import { useHead } from '@unhead/vue'
 
 // Initialize data
 const [{ allCurrentPromotions }] = await Promise.all([

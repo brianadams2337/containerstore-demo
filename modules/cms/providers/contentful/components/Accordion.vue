@@ -31,11 +31,11 @@
 
 <script setup lang="ts">
 import { defineOptions } from 'vue'
-import { useRoute } from '#app/composables/router'
+import { dash } from 'radash'
 import type { CMSAccordionProps } from '../types'
 import { getComponentName } from '../../../utils/helpers'
 import { useContentfulMargins } from '../composables/useContentfulMargins'
-import { dash } from 'radash'
+import { useRoute } from '#app/composables/router'
 
 const props = defineProps<CMSAccordionProps>()
 

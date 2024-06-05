@@ -1,4 +1,3 @@
-import withNuxt from './.nuxt/eslint.config.mjs'
 import eslintConfigStorefront from '@scayle/eslint-config-storefront'
 import tailwind from 'eslint-plugin-tailwindcss'
 import pluginVueA11y from 'eslint-plugin-vuejs-accessibility'
@@ -6,6 +5,7 @@ import pluginVueA11y from 'eslint-plugin-vuejs-accessibility'
 // Workaround for flat config not being supported yet by eslint-plugin-tailwindcss
 // https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/280
 import { FlatCompat } from '@eslint/eslintrc'
+import withNuxt from './.nuxt/eslint.config.mjs'
 
 const compat = new FlatCompat()
 
@@ -103,6 +103,7 @@ export default withNuxt(
     // Custom code styling not covered by Prettier
     rules: {
       'import/newline-after-import': ['error', { count: 1 }],
+      'import/order': 'error',
     },
   },
 )

@@ -13,9 +13,9 @@
 </template>
 
 <script setup lang="ts">
-import { definePageMeta } from '#imports'
-import { defineOptions, computed } from 'vue'
+import { computed, defineOptions } from 'vue'
 import { useSeoMeta } from '@unhead/vue'
+import { definePageMeta } from '#imports'
 import { useNuxtApp } from '#app/nuxt'
 import { useUser } from '#storefront/composables'
 

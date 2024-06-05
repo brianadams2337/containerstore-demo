@@ -46,15 +46,14 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+import { sort } from 'radash'
+import type { Product } from '@scayle/storefront-nuxt'
 import { useProductPromotions } from '~/composables'
 import { routeList } from '~/utils/route'
-import { computed } from 'vue'
 import { useLocalePath } from '#i18n'
 import { useRoute } from '#app/composables/router'
 import { getBackgroundColorStyle } from '~/utils/promotion'
-import { sort } from 'radash'
-
-import type { Product } from '@scayle/storefront-nuxt'
 
 type Props = {
   product: Product

@@ -3,9 +3,9 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, computed } from 'vue'
-import { useRoute } from '#app/composables/router'
+import { computed, defineOptions } from 'vue'
 import { isString } from 'radash'
+import { useRoute } from '#app/composables/router'
 
 const route = useRoute()
 

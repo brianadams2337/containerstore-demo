@@ -47,10 +47,10 @@
 import { routeList } from '~/utils/route'
 import { useLink } from '#vue-router'
 import {
+  useFlyouts,
   useNavigationTreeItems,
   useRouteHelpers,
   useSideNavigation,
-  useFlyouts,
 } from '~/composables'
 
 const { isFlyoutMenuOpen, closeFlyoutMenu } = useFlyouts()

@@ -42,9 +42,9 @@
 </template>
 
 <script setup lang="ts">
-import { routeList } from '~/utils/route'
-import { useRouteHelpers, useLastLoggedInUser } from '~/composables'
 import { computed } from 'vue'
+import { routeList } from '~/utils/route'
+import { useLastLoggedInUser, useRouteHelpers } from '~/composables'
 import { useRoute } from '#app/composables/router'
 import { useNuxtApp } from '#app/nuxt'
 

@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, computed } from 'vue'
+import { computed, defineOptions } from 'vue'
 import { getComponentName } from '../../../utils/helpers'
 import type { CMSGridTile } from '../types'
 

@@ -35,7 +35,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { useBasket } from '#storefront/composables'
-import { useFlyouts, useDefaultBreakpoints } from '~/composables'
+import { useDefaultBreakpoints, useFlyouts } from '~/composables'
 import { routeList } from '~/utils/route'
 
 const { isSmaller } = useDefaultBreakpoints()

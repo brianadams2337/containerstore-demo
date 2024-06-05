@@ -1,9 +1,9 @@
 import {
-  createResolver,
-  defineNuxtModule,
   addPlugin,
   addServerPlugin,
   addTypeTemplate,
+  createResolver,
+  defineNuxtModule,
 } from '@nuxt/kit'
 import { genImport } from 'knitwork'
 import { defu } from 'defu'

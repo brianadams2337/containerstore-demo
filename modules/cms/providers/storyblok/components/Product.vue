@@ -18,10 +18,10 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, computed } from 'vue'
+import { computed, defineOptions } from 'vue'
+import { type Product } from '@scayle/storefront-nuxt'
 import { useNuxtApp } from '#app/nuxt'
 import { useListingUiState } from '~/composables'
-import { type Product } from '@scayle/storefront-nuxt'
 
 type CMSProductProps = {
   width?: string

@@ -22,9 +22,9 @@
 
 <script setup lang="ts">
 import { onClickOutside } from '@vueuse/core'
-import { usePromotionActions, useDefaultBreakpoints } from '~/composables'
 import { ref } from 'vue'
 import type { MaybeElementRef } from '@vueuse/core'
+import { useDefaultBreakpoints, usePromotionActions } from '~/composables'
 
 defineProps<{ items: Promotion[] }>()
 

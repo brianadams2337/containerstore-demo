@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 describe('showDividerTag', () => {
   it('should return "true" for first item in the array', () => {

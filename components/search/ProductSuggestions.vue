@@ -41,11 +41,11 @@
 </template>
 
 <script setup lang="ts">
+import { type ProductSearchSuggestion } from '@scayle/storefront-nuxt'
 import { getFirstModelImage } from '~/utils/image'
 import { useRouteHelpers } from '~/composables'
 import { useFormatHelpers } from '#storefront/composables'
 import { getSuggestionName } from '~/utils/search'
-import { type ProductSearchSuggestion } from '@scayle/storefront-nuxt'
 
 type Props = {
   label: string

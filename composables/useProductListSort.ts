@@ -1,6 +1,6 @@
 import {
-  type SortValue,
   type Category,
+  type SortValue,
   type SortingValueKey,
   getSortByValue,
   getSortingValues,

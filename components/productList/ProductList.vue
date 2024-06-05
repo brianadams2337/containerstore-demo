@@ -44,15 +44,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, toRefs } from 'vue'
-import { useRoute } from '#app/composables/router'
-import { useDefaultBreakpoints } from '~/composables'
-import { categoryListingMetaData } from '~/constants/listingMetadata'
+import { computed, ref, toRefs } from 'vue'
 import {
   type Product,
   getRowByIndex,
   isFirstIndexOfRow,
 } from '@scayle/storefront-nuxt'
+import { useRoute } from '#app/composables/router'
+import { useDefaultBreakpoints } from '~/composables'
+import { categoryListingMetaData } from '~/constants/listingMetadata'
 
 type Props = {
   products?: Product[]

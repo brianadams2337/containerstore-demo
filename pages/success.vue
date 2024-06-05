@@ -12,12 +12,12 @@
 </template>
 
 <script setup lang="ts">
-import { definePageMeta } from '#imports'
 import { useSeoMeta } from '@unhead/vue'
-import { computed, watch, onMounted, defineOptions } from 'vue'
+import { computed, defineOptions, onMounted, watch } from 'vue'
+import { definePageMeta } from '#imports'
 import { useTrackingEvents } from '~/composables'
 import { useNuxtApp } from '#app/nuxt'
-import { useUser, useOrderConfirmation } from '#storefront/composables'
+import { useOrderConfirmation, useUser } from '#storefront/composables'
 import { useRoute } from '#app/composables/router'
 
 const route = useRoute()

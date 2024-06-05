@@ -1,10 +1,10 @@
 import { sort } from 'radash'
 import {
-  type Variant,
   type Product,
-  getLowestPrice,
+  type Variant,
   getAppliedReductionsByCategory,
   getFirstAttributeValue,
+  getLowestPrice,
 } from '@scayle/storefront-nuxt'
 
 export { ProductImageType } from '@scayle/storefront-nuxt'

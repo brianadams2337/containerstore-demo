@@ -29,8 +29,8 @@
 </template>
 
 <script setup lang="ts">
-import { useFormatHelpers } from '#storefront/composables'
 import type { PropType } from 'vue'
+import { useFormatHelpers } from '#storefront/composables'
 
 defineProps({
   cost: {

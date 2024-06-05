@@ -77,9 +77,9 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, computed } from 'vue'
+import { computed, defineOptions } from 'vue'
 import type { CMSNestedParagraphProps } from '../types/contentful-defs'
-import { getComponentName, EMAIL_REGEX_PATTERN } from '../../../utils/helpers'
+import { EMAIL_REGEX_PATTERN, getComponentName } from '../../../utils/helpers'
 
 const props = defineProps<CMSNestedParagraphProps>()
 

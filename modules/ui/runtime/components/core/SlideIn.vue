@@ -41,8 +41,8 @@
 </template>
 
 <script setup lang="ts">
-import { useSlideIn } from '../../composables/useSlideIn'
 import { watch } from 'vue'
+import { useSlideIn } from '../../composables/useSlideIn'
 import { SlideInType } from '#storefront-ui'
 
 type Props = {

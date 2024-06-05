@@ -1,7 +1,7 @@
 import {
+  type BasketItem,
   type Product,
   type Variant,
-  type BasketItem,
   getAttributeValue,
   getAttributeValueTuples,
 } from '@scayle/storefront-nuxt'

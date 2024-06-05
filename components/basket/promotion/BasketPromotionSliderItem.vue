@@ -44,16 +44,16 @@
 </template>
 
 <script setup lang="ts">
-import { toRef, computed } from 'vue'
+import { computed, toRef } from 'vue'
+import type { BasketItem, Product } from '@scayle/storefront-nuxt'
 import { useI18n } from '#i18n'
 import {
-  useProductBaseInfo,
   useBasketItemPromotion,
-  usePromotionGiftSelection,
   useDefaultBreakpoints,
+  useProductBaseInfo,
+  usePromotionGiftSelection,
   useRouteHelpers,
 } from '~/composables'
-import type { Product, BasketItem } from '@scayle/storefront-nuxt'
 
 type Props = {
   product: Product

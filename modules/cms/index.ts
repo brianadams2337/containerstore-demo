@@ -7,7 +7,7 @@ import {
   isProviderContentful,
   setupContentful,
 } from './providers/contentful/setup'
-import { moduleName, logger, formattedProvidersKeys } from './utils/helpers'
+import { formattedProvidersKeys, logger, moduleName } from './utils/helpers'
 import type { ModuleOptions } from './types'
 
 export type { ModuleOptions }

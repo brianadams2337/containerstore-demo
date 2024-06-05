@@ -43,8 +43,8 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue'
-import { useFormatDistance } from '~/composables'
 import type { StoreLocation } from '@scayle/omnichannel-nuxt'
+import { useFormatDistance } from '~/composables'
 
 type Props = {
   store: StoreLocation

@@ -24,11 +24,11 @@
 </template>
 
 <script setup lang="ts">
-import { definePageMeta } from '#imports'
-import { defineOptions, computed } from 'vue'
+import { computed, defineOptions } from 'vue'
 import { useSeoMeta } from '@unhead/vue'
-import { useRoute } from '#app/composables/router'
 import { capitalize } from 'radash'
+import { useRoute } from '#app/composables/router'
+import { definePageMeta } from '#imports'
 
 const route = useRoute()
 const slug = computed(() =>
