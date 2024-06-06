@@ -522,7 +522,7 @@ export default defineNuxtConfig({
     // https://nuxt.com/docs/api/nuxt-config#dirs
     dirs: ['./constants'],
     // https://nuxt.com/docs/guide/concepts/auto-imports#disabling-auto-imports
-    autoImport: true,
+    autoImport: false,
   },
 
   // Allow auto-import for vue components
