@@ -1,7 +1,7 @@
 import { HashAlgorithm } from '@scayle/storefront-nuxt'
 import type {
   IDPConfig,
-  ModuleOptions,
+  ModuleBaseOptions,
   ModulePublicRuntimeConfig,
 } from '@scayle/storefront-nuxt'
 import * as customRpcMethods from '../rpcMethods'
@@ -71,7 +71,7 @@ const shops = [
 ]
 
 // https://scayle.dev/en/dev/storefront-core/module-configuration
-export const storefrontRuntimeConfigPrivate: Partial<ModuleOptions> = {
+export const storefrontRuntimeConfigPrivate: Partial<ModuleBaseOptions> = {
   /** Storefront Core - Additional server-side context properties exposed to client-side
    * https://scayle.dev/en/dev/storefront-core/module-configuration#public-shop-data */
   publicShopData: ['paymentProviders', 'isLowestPreviousPriceActive'], // Override: NUXT_PUBLIC_PUBLIC_SHOP_DATA
@@ -291,7 +291,7 @@ export const storefrontRuntimeConfigPublic: ModulePublicRuntimeConfig = {
 
 /** Storefront Core - Buildtime Configuration
  * https://scayle.dev/en/dev/storefront-core/module-configuration */
-export const storefrontBuildtimeConfig: Partial<ModuleOptions> = {
+export const storefrontBuildtimeConfig: Partial<ModuleBaseOptions> = {
   // Storefront Core - Custom RPC Methods
   // https://scayle.dev/en/dev/storefront-core/module-configuration#custom-rpc-methods
   rpcMethodNames: Object.keys(customRpcMethods), // NOT OVERRIDABLE AT RUNTIME
