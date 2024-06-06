@@ -267,7 +267,7 @@ const {
   fetching,
   productId,
   combineWithProductIds,
-} = await useProductDetails()
+} = await useProductDetails('[slug].vue')
 
 const { addItemToBasket } = await useProductDetailsBasketActions()
 

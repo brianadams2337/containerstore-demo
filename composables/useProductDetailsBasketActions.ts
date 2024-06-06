@@ -16,7 +16,9 @@ export async function useProductDetailsBasketActions() {
     activeVariant,
     quantity,
     name,
-  } = await app.runWithContext(() => useProductDetails())
+  } = await app.runWithContext(() =>
+    useProductDetails('use-product-details-basket-actions'),
+  )
 
   const [
     { fetching: basketIdle, addItem: addBasketItem, items: basketItems },

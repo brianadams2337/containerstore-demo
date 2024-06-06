@@ -96,7 +96,9 @@ const props = defineProps<{
   eagerImageLoading: boolean
 }>()
 
-const { product: promotedProduct } = await useProductDetails()
+const { product: promotedProduct } = await useProductDetails(
+  'product-promotion-gift-item.vue',
+)
 const { formatCurrency } = useFormatHelpers()
 
 const { md: isGreaterThanMd } = useDefaultBreakpoints()

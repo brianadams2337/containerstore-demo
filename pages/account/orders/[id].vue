@@ -35,7 +35,7 @@ const route = useRoute()
 const paramId = computed(() => +route.params.id)
 
 const { orderDetails, fetching, shippingAddress, billingAddress, itemCount } =
-  await useOrders()
+  await useOrders('[id].vue')
 
 defineOptions({ name: 'OrderDetailsView' })
 definePageMeta({ pageType: 'account_area:order_id' })

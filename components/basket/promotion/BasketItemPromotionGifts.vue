@@ -35,5 +35,6 @@ const { giftPromotion, giftBackgroundColorStyle, areGiftConditionsMet } =
 
 const { products, isGiftAlreadyAdded } = await usePromotionGifts(
   props.basketItem.product,
+  'basket-item-promotion-gifts',
 )
 </script>

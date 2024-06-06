@@ -62,7 +62,10 @@ const {
   sliderProducts,
   fetchingCombineWithProducts,
   trackRecommendationClick,
-} = await useProductRecommendations(props.combineWithProductIds)
+} = await useProductRecommendations(
+  props.combineWithProductIds,
+  'product-recommendations.vue',
+)
 
 const { isGreaterOrEqual } = useDefaultBreakpoints()
 const { getProductDetailRoute } = useRouteHelpers()

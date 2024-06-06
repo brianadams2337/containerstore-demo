@@ -127,7 +127,12 @@ const {
   subscriptionPrice,
   subscriptionVariantEligible,
   ordinalSuffixKey,
-} = await useSubscription(product, pricePromotionKey, variant)
+} = await useSubscription(
+  product,
+  pricePromotionKey,
+  variant,
+  'product-subscription-selection.vue',
+)
 
 const subscriptionState = computed(() => ({
   isInitial: !props.variant,

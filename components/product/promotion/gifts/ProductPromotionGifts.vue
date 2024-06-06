@@ -48,7 +48,7 @@ const { isProductAddedToBasket, areGiftConditionsMet } =
   await useProductPromotions(props.product)
 
 const { backgroundColorStyle, products, hasMultipleFreeGifts } =
-  await usePromotionGifts(props.product)
+  await usePromotionGifts(props.product, 'product-promotion-gifts.vue')
 
 const hasScrolledToBottom = ref(false)
 

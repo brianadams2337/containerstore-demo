@@ -54,5 +54,7 @@ import { useFormatHelpers } from '#storefront/composables'
 
 const { formatCurrency } = useFormatHelpers()
 
-const { totalAmount, deliveryCost, paymentKey } = await useOrders()
+const { totalAmount, deliveryCost, paymentKey } = await useOrders(
+  'payment-summary.vue',
+)
 </script>
