@@ -1,7 +1,7 @@
 <template>
   <PageContent>
     <subscription-overview
-      v-if="isSubscriptionOverviewWebComponentLoaded"
+      v-if="isSubscriptionOverviewWebComponentLoaded && accessToken"
       :base-url="apiUrl"
       :customer-token="accessToken"
       :shop-id="shopId"
@@ -10,24 +10,22 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineOptions, onMounted } from 'vue'
+import { defineOptions, onMounted } from 'vue'
 import useSubscriptionWebComponent from '../composables/useSubscriptionWebComponent'
 import { definePageMeta } from '#imports'
-import { useCurrentShop, useUser } from '#storefront/composables'
+import { useCurrentShop } from '#storefront/composables'
 
 const currentShop = useCurrentShop()
 const shopId = currentShop.value.shopId
 
-const { user } = await useUser()
-
-const { isSubscriptionOverviewWebComponentLoaded, apiUrl, loadOverviewPage } =
-  useSubscriptionWebComponent()
+const {
+  isSubscriptionOverviewWebComponentLoaded,
+  apiUrl,
+  loadOverviewPage,
+  accessToken,
+} = useSubscriptionWebComponent()
 
 onMounted(() => loadOverviewPage())
-
-const accessToken = computed(
-  () => user?.value?.authentication?.storefrontAccessToken,
-)
 
 definePageMeta({ pageType: 'subscription' })
 defineOptions({ name: 'SubscriptionPage' })

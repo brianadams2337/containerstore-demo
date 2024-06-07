@@ -49,11 +49,19 @@ export default () => {
     })
   }
 
+  const { data: accessToken } = useRpc(
+    'getAccessToken',
+    'subscription-accessToken',
+    { forceTokenRefresh: true },
+    { server: false },
+  )
+
   return {
     isSubscriptionOverviewWebComponentLoaded,
     isSubscriptionCancellationWebComponentLoaded,
     loadCancellationPage,
     loadOverviewPage,
     apiUrl,
+    accessToken,
   }
 }
