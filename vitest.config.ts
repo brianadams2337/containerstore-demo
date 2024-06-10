@@ -5,6 +5,7 @@ export default defineVitestConfig({
   // any custom vitest config you require
   test: {
     globals: true,
+    include: ['**/*.test.?(c|m)[jt]s?(x)'],
     coverage: {
       all: true,
       provider: 'v8',

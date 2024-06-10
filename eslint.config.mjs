@@ -86,7 +86,7 @@ export default withNuxt(
   // Custom Overrides: Storefront Boilerplate rule and config
   {
     // https://eslint.org/docs/latest/use/configure/ignore#ignorepatterns-in-config-files
-    ignores: ['cypress/', '**/fixtures/**/*'],
+    ignores: ['cypress/', '**/fixtures/**/*', 'playwright/'],
     rules: {
       '@typescript-eslint/no-explicit-any': 'warn',
       'eslint-comments/no-unlimited-disable': 'warn',

@@ -1,4 +1,4 @@
 {
   "extends": "./.nuxt/tsconfig.json",
-  "exclude": ["./cypress/**/*"]
+  "exclude": ["./cypress/**/*", "./playwright/**/*"]
 }
