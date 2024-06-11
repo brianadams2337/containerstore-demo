@@ -38,7 +38,7 @@ type CarrierMap = Record<
   { items: OrderItems; deliveryInfo: DeliveryInfo }
 >
 
-const { orderVariants, orderItems, packages } = await useOrders('order.vue')
+const { orderVariants, orderItems, packages } = useOrders('order.vue')
 
 const uniqueItems = computed(() => {
   return unique(orderItems.value, (it) => it.variant.id)
