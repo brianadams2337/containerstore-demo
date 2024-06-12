@@ -447,7 +447,7 @@
       "search": "Search",
       "opening_hours": "Opening hours"
     },
-    "input_placeholder": "Search for city or zip code",
+    "input_placeholder": "Enter city or zip code",
     "no_results": "No results",
     "show_only_available": "Only available",
     "labels": {

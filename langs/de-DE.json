@@ -448,7 +448,7 @@
       "search": "Suchen",
       "opening_hours": "Öffnungszeiten"
     },
-    "input_placeholder": "Suchen Sie nach Stadt oder Postleitzahl",
+    "input_placeholder": "Ort oder PLZ eingeben",
     "no_results": "Keine Ergebnisse",
     "show_only_available": "Sofortige Verfügbarkeit",
     "labels": {
