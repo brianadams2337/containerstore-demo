@@ -26,7 +26,7 @@
         <div class="mt-3 flex items-center justify-center gap-4">
           <SFTextInput
             v-model="address"
-            autocomplete="username"
+            autocomplete="off"
             :placeholder="$t('store_locator.input_placeholder')"
             type="text"
             required
