@@ -10,7 +10,7 @@
       is-column
       class="mb-2"
     />
-    <PromotionCountdown :timeUntil="schedule.to" />
+    <PromotionCountdown :time-until="schedule.to" />
   </div>
 </template>
 

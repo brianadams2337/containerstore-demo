@@ -7,7 +7,7 @@
     >
       <div class="flex w-full" :class="{ 'opacity-50': !inStock }">
         <div
-          class="relative flex w-28 items-center pr-3 lg:w-48 lg:p-0 lg:pr-6"
+          class="relative flex w-28 shrink-0 items-center pr-3 lg:w-48 lg:p-0 lg:pr-6"
           @click.capture="selectItem"
         >
           <SFLink
@@ -37,11 +37,14 @@
           </SFLink>
         </div>
         <div
-          class="flex flex-1 flex-col justify-center gap-2 lg:flex-row lg:gap-0 lg:p-0"
+          class="flex flex-1 flex-col justify-center gap-2 overflow-hidden lg:flex-row lg:gap-0 lg:p-0"
         >
           <div class="flex grow flex-col justify-between gap-2 lg:pt-4">
             <div @click.capture="selectItem">
-              <SFLink :to="getProductDetailRoute(product)" class="block">
+              <SFLink
+                :to="getProductDetailRoute(product)"
+                class="block !whitespace-normal"
+              >
                 <BasketCardDetail
                   v-if="brand && name"
                   :label="brand"
