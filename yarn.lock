@@ -1672,7 +1672,7 @@
     unimport "^3.7.1"
     untyped "^1.4.2"
 
-"@nuxt/kit@^3.10.3", "@nuxt/kit@^3.11.1", "@nuxt/kit@^3.11.2", "@nuxt/kit@^3.4.0", "@nuxt/kit@^3.5.1", "@nuxt/kit@^3.7.0":
+"@nuxt/kit@3.11.2", "@nuxt/kit@^3.10.3", "@nuxt/kit@^3.11.1", "@nuxt/kit@^3.11.2", "@nuxt/kit@^3.4.0", "@nuxt/kit@^3.5.1", "@nuxt/kit@^3.7.0":
   version "3.11.2"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.11.2.tgz#dfc43c05992691bcd6aa58c14f88cf43e3abb788"
   integrity sha512-yiYKP0ZWMW7T3TCmsv4H8+jEsB/nFriRAR8bKoSqSV9bkVYWPE36sf7JDux30dQ91jSlQG6LQkB3vCHYTS2cIg==
@@ -3137,17 +3137,17 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.76.1":
-  version "7.76.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.76.1.tgz#b4145ec9cd81ed238d683b5c0d2d326aed44ac5e"
-  integrity sha512-hLIjDeWN3gTW+lWtkrzNYO+W0J8+HP1L4dPLU5KJl5hSARfDfBC4bNcQE7tKsMbXxhycvjE2z2vRf9x3JBJWjg==
+"@scayle/storefront-nuxt@7.76.2":
+  version "7.76.2"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.76.2.tgz#4c26ae6f64977f9685238ea357977dd2ba0dd8fd"
+  integrity sha512-nlRoj0zuh8Bv+EpflDd8BQOLKnZV9H+xVthDmRE0N/qaeqhwd1dbNe1uTqRWUQLPaqzPFHIeDLiFVNml7gmTxw==
   dependencies:
-    "@nuxt/kit" "3.11.1"
+    "@nuxt/kit" "3.11.2"
     "@opentelemetry/api" "1.9.0"
     "@scayle/h3-session" "0.4.0"
     "@scayle/storefront-core" "7.55.0"
     "@scayle/unstorage-compression-driver" "0.1.3"
-    "@vueuse/core" "10.10.1"
+    "@vueuse/core" "10.11.0"
     consola "3.2.3"
     core-js "3.37.1"
     defu "6.1.4"
@@ -4437,16 +4437,6 @@
     "@vueuse/shared" "10.9.0"
     vue-demi ">=0.14.7"
 
-"@vueuse/core@10.10.1":
-  version "10.10.1"
-  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-10.10.1.tgz#8f62ab7574f7d37511090cc22ce88ef704592b59"
-  integrity sha512-8Vr8wxILdK+qfBjbngav8LVI+6UuM2TQCufRKMPz/GrpLHQ6dbY6kL5PLa9Eobq8JRrMaDyArPX9Jj18fMTPew==
-  dependencies:
-    "@types/web-bluetooth" "^0.0.20"
-    "@vueuse/metadata" "10.10.1"
-    "@vueuse/shared" "10.10.1"
-    vue-demi ">=0.14.8"
-
 "@vueuse/core@10.11.0":
   version "10.11.0"
   resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-10.11.0.tgz#b042585a8bf98bb29c177b33999bd0e3fcd9e65d"
@@ -4476,11 +4466,6 @@
     "@vueuse/shared" "10.9.0"
     vue-demi ">=0.14.7"
 
-"@vueuse/metadata@10.10.1":
-  version "10.10.1"
-  resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-10.10.1.tgz#a5a0fed19d1249cfb416464e955092a62d19a830"
-  integrity sha512-dpEL5afVLUqbchwGiLrV6spkl4/6UOKJ3YgxFE+wWLj/LakyIZUC83bfeFgbHkRcNhsAqTQCGR74jImsLfK8pg==
-
 "@vueuse/metadata@10.11.0":
   version "10.11.0"
   resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-10.11.0.tgz#27be47cf115ee98e947a1bfcd0b1b5b35d785fb6"
@@ -4500,13 +4485,6 @@
     "@vueuse/core" "10.11.0"
     "@vueuse/metadata" "10.11.0"
     local-pkg "^0.5.0"
-    vue-demi ">=0.14.8"
-
-"@vueuse/shared@10.10.1":
-  version "10.10.1"
-  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-10.10.1.tgz#79f372630f35e108be0d260fda731d73bb67470f"
-  integrity sha512-edqexI+RQpoeqDxTatqBZa+K87ganbrwpoP++Fd9828U3js5jzwcEDeyrYcUgkKZ5LLL8q7M5SOMvSpMrxBPxg==
-  dependencies:
     vue-demi ">=0.14.8"
 
 "@vueuse/shared@10.11.0":
