@@ -4011,10 +4011,10 @@
     hookable "^5.5.3"
     unhead "1.9.7"
 
-"@upstash/redis@1.31.4":
-  version "1.31.4"
-  resolved "https://registry.yarnpkg.com/@upstash/redis/-/redis-1.31.4.tgz#54aa48e6ac91281d55f2be9c06248456bbebfc95"
-  integrity sha512-roJjsdAOUWGVCuiA5R2ajkR41n0KrO4DGil2ZbRaj3m0F2bMUMZ3d5KaUGgDQshPpGkW2+nwFLzN5M5VQoR1pQ==
+"@upstash/redis@1.31.5":
+  version "1.31.5"
+  resolved "https://registry.yarnpkg.com/@upstash/redis/-/redis-1.31.5.tgz#8d5fe439a2a28638b3a354a23680ecf7f7eb4f54"
+  integrity sha512-2MatqeqftroSJ9Q+pqbyGAIwXX6KEPtUTUna2c/fq09h12ffwvltDTgfppeF+NzJo/SyZfHY8e1RoflduMbz1A==
   dependencies:
     crypto-js "^4.2.0"
 

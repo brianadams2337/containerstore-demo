@@ -53,7 +53,7 @@
     "@types/node": "20.14.2",
     "@typescript-eslint/scope-manager": "7.13.0",
     "@typescript-eslint/utils": "7.13.0",
-    "@upstash/redis": "1.31.4",
+    "@upstash/redis": "1.31.5",
     "@vitest/coverage-v8": "1.6.0",
     "@vue/test-utils": "2.4.6",
     "@zadigetvoltaire/nuxt-gtm": "0.0.13",
