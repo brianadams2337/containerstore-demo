@@ -1,10 +1,10 @@
 import {
-  FetchError,
   type GuestRequest,
   type LoginRequest,
   type RegisterRequest,
   type UpdatePasswordByHashRequest,
 } from '@scayle/storefront-nuxt'
+import { FetchError } from 'ofetch'
 
 const httpErrorMessages: Record<number, string> = {
   400: '400_bad_request',
