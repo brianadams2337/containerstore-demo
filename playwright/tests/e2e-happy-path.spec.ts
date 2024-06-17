@@ -1,8 +1,8 @@
-import { test, expect } from '../fixtures/fixtures'
+import { expect, test } from '../fixtures/fixtures'
 import {
-  E2E_PLP_PRODUCT_ID,
-  E2E_PDP_PRODUCT_URL,
   E2E_BASKET_URL,
+  E2E_PDP_PRODUCT_URL,
+  E2E_PLP_PRODUCT_ID,
   LOGGED_IN_USER_DATA,
   TEST_ITEM_REGULAR,
 } from '../support/constants'
@@ -46,6 +46,5 @@ test('E2E from Home to Checkout - happy path', async ({
   )
   await signinPage.clickLoginButton()
 
-  console.log('Assert if the Checkout page is loaded')
   await checkoutPage.assertCheckoutPageURL()
 })

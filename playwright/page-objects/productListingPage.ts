@@ -1,4 +1,4 @@
-import { type Page } from '@playwright/test'
+import type { Page } from '@playwright/test'
 
 export class ProductListingPage {
   readonly page: Page
@@ -11,7 +11,7 @@ export class ProductListingPage {
 
   async addProductToWishlist(productID: string) {
     const addToWishlistButton = this.page.locator(
-      productID + ' ' + this.wishlistButton,
+      `${productID} ${this.wishlistButton}`,
     )
     await addToWishlistButton.click()
   }

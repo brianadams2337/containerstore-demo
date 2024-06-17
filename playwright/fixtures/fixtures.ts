@@ -9,7 +9,7 @@ import { SignInPage } from '../page-objects/signinPage'
 import { CheckoutPage } from '../page-objects/checkoutPage'
 import { AccountPage } from '../page-objects/accountPage'
 
-type Fixtures = {
+interface Fixtures {
   homePage: HomePage
   mainNavigation: MainNavigation
   productListingPage: ProductListingPage
