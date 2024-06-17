@@ -11,6 +11,13 @@ export const LOGGED_IN_USER_DATA = {
   password: 'Aqa-temp-pass!',
 }
 
+export const LOGIN_WRONG_CREDENTIALS = {
+  firstName: 'test',
+  lastName: 'test',
+  email: 'Aqa.testxx@test.com',
+  password: 'Aqa-wrong-pass',
+}
+
 export const TEST_ITEM_REGULAR = {
   link: 'p/batist-blusentop-1099',
   id: 1099,

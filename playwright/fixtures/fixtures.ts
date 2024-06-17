@@ -8,6 +8,7 @@ import { BasketPage } from '../page-objects/basketPage'
 import { SignInPage } from '../page-objects/signinPage'
 import { CheckoutPage } from '../page-objects/checkoutPage'
 import { AccountPage } from '../page-objects/accountPage'
+import { ToastMessage } from '../page-objects/components/toastMessage'
 
 interface Fixtures {
   homePage: HomePage
@@ -19,6 +20,7 @@ interface Fixtures {
   signinPage: SignInPage
   checkoutPage: CheckoutPage
   accountPage: AccountPage
+  toastMessage: ToastMessage
 }
 
 export const test = base.extend<Fixtures>({
@@ -57,6 +59,10 @@ export const test = base.extend<Fixtures>({
   accountPage: async ({ page }, use) => {
     const accountPage = new AccountPage(page)
     await use(accountPage)
+  },
+  toastMessage: async ({ page }, use) => {
+    const toastMessage = new ToastMessage(page)
+    await use(toastMessage)
   },
 })
 export { expect } from '@playwright/test'
