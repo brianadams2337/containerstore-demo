@@ -256,7 +256,11 @@ import { isProductSubscriptionEligible } from '~/modules/subscription/helpers/su
 import { ProductColorChip } from '#components'
 import { Size } from '#storefront-ui'
 
-const productDetails = await useProductDetails('[slug].vue')
+const route = useRoute()
+
+const productDetails = await useProductDetails(
+  `[slug].vue-${route.params.slug}`,
+)
 const {
   product,
   activeVariant,
@@ -286,7 +290,6 @@ const { addItemToBasket } = useProductDetailsBasketActions(
 const { isBuyXGetYPrioritized, isGiftAddedToBasket } =
   await useProductPromotions(product)
 
-const route = useRoute()
 const { $i18n, $config } = useNuxtApp()
 const { getProductDetailRoute } = useRouteHelpers()
 
