@@ -16,6 +16,7 @@
           :placeholder="$t('form_fields.old_password')"
           :has-errors="!isValid"
           type="password"
+          autocomplete="current-password"
           required
           @input="v.oldPassword.$touch"
         />
@@ -30,6 +31,7 @@
           :placeholder="$t('form_fields.new_password')"
           :has-errors="!isValid"
           type="password"
+          autocomplete="new-password"
           required
           @input="v.newPassword.$touch"
         />
@@ -44,6 +46,7 @@
           :placeholder="$t('form_fields.repeated_password')"
           :has-errors="!isValid"
           type="password"
+          autocomplete="new-password"
           required
           @input="v.repeatedPassword.$touch"
         />

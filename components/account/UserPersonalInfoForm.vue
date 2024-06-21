@@ -1,57 +1,77 @@
 <template>
   <form class="mx-auto mt-10 flex w-full flex-col md:mx-0 lg:w-[400px]">
-    <SFRadioGroup
-      v-model="payload.gender"
-      :items="genders"
-      class="items-start"
-    />
-    <div class="mt-8">
-      <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.firstName.$errors">
-        <SFTextInput
-          v-model="payload.firstName"
-          :has-errors="!isValid"
-          :placeholder="$t('form_fields.first_name')"
-          required
-          @input="v.firstName.$touch"
-        />
-      </SFValidatedInputGroup>
-      <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.lastName.$errors">
-        <SFTextInput
-          v-model="payload.lastName"
-          :has-errors="!isValid"
-          :placeholder="$t('form_fields.last_name')"
-          required
-          @input="v.lastName.$touch"
-        />
-      </SFValidatedInputGroup>
-      <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.birthDate.$errors">
-        <SFTextInput
-          v-model="payload.birthDate"
-          :placeholder="dobFormat.placeholder"
-          :mask="dobFormat.mask"
-          :has-errors="!isValid"
-          @input="v.birthDate.$touch"
-        />
-      </SFValidatedInputGroup>
-      <SFTextInput
-        v-model="payload.email"
-        :placeholder="$t('form_fields.email')"
-        :hint="$t('my_account.user.email_change_hint')"
-        readonly
+    <client-only>
+      <SFRadioGroup
+        v-model="payload.gender"
+        :items="genders"
+        class="items-start"
       />
-      <div
-        class="mt-6 flex w-full items-center justify-center"
-        data-test-id="save-button"
-      >
-        <SFButton
-          class="w-full capitalize md:w-auto md:min-w-[50%]"
-          :disabled="isUpdating || v.$error"
-          @click="update"
+      <div class="mt-8">
+        <SFValidatedInputGroup
+          v-slot="{ isValid }"
+          :errors="v.firstName.$errors"
         >
-          {{ $t('my_account.user.save_label') }}
-        </SFButton>
+          <SFTextInput
+            v-model="payload.firstName"
+            :has-errors="!isValid"
+            :placeholder="$t('form_fields.first_name')"
+            required
+            @input="v.firstName.$touch"
+          />
+        </SFValidatedInputGroup>
+        <SFValidatedInputGroup
+          v-slot="{ isValid }"
+          :errors="v.lastName.$errors"
+        >
+          <SFTextInput
+            v-model="payload.lastName"
+            :has-errors="!isValid"
+            :placeholder="$t('form_fields.last_name')"
+            required
+            @input="v.lastName.$touch"
+          />
+        </SFValidatedInputGroup>
+        <SFValidatedInputGroup
+          v-slot="{ isValid }"
+          :errors="v.birthDate.$errors"
+        >
+          <SFTextInput
+            v-model="payload.birthDate"
+            :placeholder="dobFormat.placeholder"
+            :mask="dobFormat.mask"
+            :has-errors="!isValid"
+            @input="v.birthDate.$touch"
+          />
+        </SFValidatedInputGroup>
+        <SFTextInput
+          v-model="payload.email"
+          :placeholder="$t('form_fields.email')"
+          :hint="$t('my_account.user.email_change_hint')"
+          readonly
+        />
+        <div
+          class="mt-6 flex w-full items-center justify-center"
+          data-test-id="save-button"
+        >
+          <SFButton
+            class="w-full capitalize md:w-auto md:min-w-[50%]"
+            :disabled="isUpdating || v.$error"
+            @click="update"
+          >
+            {{ $t('my_account.user.save_label') }}
+          </SFButton>
+        </div>
       </div>
-    </div>
+      <template #fallback>
+        <div class="w-full space-y-6">
+          <SFSkeletonLoader />
+          <SFSkeletonLoader v-for="i in 4" :key="i" full-width />
+          <div class="flex w-full justify-center pt-4">
+            <SFSkeletonLoader />
+          </div>
+        </div>
+      </template>
+    </client-only>
   </form>
 </template>
 

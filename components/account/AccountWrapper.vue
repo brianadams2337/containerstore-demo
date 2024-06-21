@@ -8,37 +8,50 @@
           :class="{ 'hidden md:block': route.params.id || isAccountPage }"
         >
           <OrderOverviewHeader :orders-count="orders.length" />
-          <div v-if="shouldDisplayOrderOverview">
-            <OrderHistoryItem
-              v-for="(order, idx) in slicedOrders"
-              :key="order.id"
-              v-bind="order"
-              :is-latest-order="!idx"
-              class="border border-gray-350 first-of-type:rounded-t-md last-of-type:rounded-b-md hover:border hover:border-primary"
-            />
-          </div>
-          <div v-else class="bg-slate-100 p-10 text-center">
-            <div class="p-5 text-sm font-bold text-primary">
-              {{ $t('my_account.no_orders_found') }}
+          <client-only>
+            <div v-if="shouldDisplayOrderOverview">
+              <OrderHistoryItem
+                v-for="(order, idx) in slicedOrders"
+                :key="order.id"
+                v-bind="order"
+                :is-latest-order="!idx"
+                class="border border-gray-350 first-of-type:rounded-t-md last-of-type:rounded-b-md hover:border hover:border-primary"
+              />
             </div>
-            <div class="border-t border-t-gray-350 bg-secondary-450 p-5">
-              <SFLink
-                :to="routeList.home"
-                class="!block w-full rounded bg-white px-4 py-2 text-center text-xs"
-              >
-                {{ $t('error.continue_shopping') }}
-              </SFLink>
+            <div v-else class="bg-slate-100 p-10 text-center">
+              <div class="p-5 text-sm font-bold text-primary">
+                {{ $t('my_account.no_orders_found') }}
+              </div>
+              <div class="border-t border-t-gray-350 bg-secondary-450 p-5">
+                <SFLink
+                  :to="routeList.home"
+                  class="!block w-full rounded bg-white px-4 py-2 text-center text-xs"
+                >
+                  {{ $t('error.continue_shopping') }}
+                </SFLink>
+              </div>
             </div>
-          </div>
-          <div v-if="orders?.length" class="text-center">
-            <SFSimplePagination
-              v-if="orders.length > ORDERS_PER_PAGE"
-              :current-page="currentPage"
-              :per-page="ORDERS_PER_PAGE"
-              :record-count="orders.length"
-              @change:page="changePage"
-            />
-          </div>
+            <div v-if="orders?.length" class="text-center">
+              <SFSimplePagination
+                v-if="orders.length > ORDERS_PER_PAGE"
+                :current-page="currentPage"
+                :per-page="ORDERS_PER_PAGE"
+                :record-count="orders.length"
+                @change:page="changePage"
+              />
+            </div>
+            <template #fallback>
+              <div>
+                <SFSkeletonLoader
+                  v-for="i in ORDERS_PER_PAGE"
+                  :key="i"
+                  full-width
+                  type="custom"
+                  class="!h-[86px] first:rounded-md last:rounded-md"
+                />
+              </div>
+            </template>
+          </client-only>
         </div>
         <div class="w-full md:w-2/3 md:pl-14 lg:w-3/4 lg:pl-28">
           <slot />

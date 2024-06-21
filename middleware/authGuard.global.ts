@@ -4,8 +4,12 @@ export default defineNuxtRouteMiddleware(async (to) => {
   if (to.path.includes('/api')) {
     return
   }
-  const { isLoggedIn, user } = await useUser()
+  const nuxt = useNuxtApp()
   const getLocalePath = useLocalePath()
+  const userComposable = await useUser()
+  const user = nuxt?.ssrContext
+    ? nuxt?.ssrContext?.event?.context.$rpcContext.user
+    : userComposable.user.value
 
   const localePath = (routePath: LinkList[keyof LinkList]['path']) => {
     return getLocalePath(routePath) || routePath
@@ -19,11 +23,11 @@ export default defineNuxtRouteMiddleware(async (to) => {
     )
   }
 
-  const isGuest = !!user.value?.status?.isGuestCustomer
+  const isGuest = !!user?.status?.isGuestCustomer
 
   const isProtectRouteForGuest = isGuest && isProtectedRoute('checkout')
 
-  if (!isLoggedIn.value && isProtectedRoute()) {
+  if (!user && isProtectedRoute()) {
     return navigateTo({
       path: localePath(routeList.signin.path),
       query: {
@@ -31,7 +35,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
       },
     })
   }
-  if (isLoggedIn.value && isProtectRouteForGuest) {
+  if (user && isProtectRouteForGuest) {
     const redirectPath =
       (to.query.redirectUrl as string) || localePath(routeList.home.path)
     return navigateTo({ path: redirectPath })
