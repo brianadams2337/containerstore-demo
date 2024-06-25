@@ -139,40 +139,6 @@ The only difference here is that all relevant `NUXT_` runtimeConfig override val
 For testing with Nuxt 3, we provide a [@nuxt/test-utils](https://github.com/nuxt/test-utils) integration. It allows us to use a Nuxt environment in [vitest](https://vitest.dev/).
 For ease of use we use `.nuxt.test.ts` or `.nuxt.spec.ts` file suffix for our tests to use nuxt env.
 
-## Storyblok Scripts
-
-As part of the Storefront Boilerplate `package.json`, some additional scripts are included to interact with Storyblok.
-
-To interact with Storyblok, a `STORYBLOK_PERSONAL_TOKEN` and the `STORYBLOK_SPACE_ID` need to be set as part of a dedicated `.env.storyblok` file.
-Check [scayle.dev/.../storefront-core/cms-integration-overview#initial-development-setup](https://scayle.dev/en/dev/storefront-core/cms-integration-overview#initial-development-setup) for more details.
-
-- `storyblok:download`
-  - Downloads the latest components from the respective Storyblok space using Storyblok CLI
-- `storyblok:generate`
-  - Uses the downloaded components JSON schema and transforms it into TypeScript types (See [scayle.dev/.../storefront-core/cms-integration-overview#type-definitions](<[#type-definitions](https://scayle.dev/en/dev/storefront-core/cms-integration-overview#type-definitions)>))
-- `storyblok:login`
-  - Authenticates local development environment with Storyblok CLI
-- `storyblok:unused`
-  - Outputs overview of used and unused Storyblok components
-
-While `storyblok:download` and `storyblok:login` are directly utilizing the Storyblok CLI,
-`storyblok:generate` and `storyblok:unused` are executing dedicated `.cjs` scripts.
-
-### Script: storyblok:generate
-
-The `storyblok:generate` script, located at `scripts/storyblok-generate.cjs`, creates a TypeScript type definition based on the local Storyblok components JSON schema.
-The JSON schema needs to be downloaded before running this command.
-
-The generated TypeScript type definition will be located at `storyblok/types/storyblok.gen.d.ts`.
-
-To create the generated type definition, the script uses a NPM package called `storyblok-generate-ts`, which provides a configurable transformation function `storyblokToTypescript()`.This function facilitates the actual transformation of the JSON schema and outputs the type definition based on the passed configuration object, which is pre-configured for usage with the SCAYLE Storefront Boilerplate.
-
-### Script: storyblok:unused
-
-The `storyblok:unused` script, located at `scripts/storyblok-unused.cjs`, creates a list of all unused components of a space by utilizing the Storyblok management API.
-
-The script is taken from <https://www.storyblok.com/faq/how-to-get-all-unused-components>.
-
 ## Viewing Storefront API calls for debugging
 
 Depending on the task at hand its necessary to intercept and debug API calls from SFC.
