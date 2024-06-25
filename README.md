@@ -159,3 +159,28 @@ To enable OpenTelemetry, set the buildtime environment variable `OTEL_ENABLED` t
 Currently, Vercel and Node are the only supported platforms for the OpenTelemetry integration. Setting `OTEL_ENABLED` to true when building for other platforms will have no effect.
 
 You should also set the runtime variable `OTEL_SERVICE_NAME` to configure the service name used in traces. e.g. `OTEL_SERVICE_NAME=storefront-boilerplate` Note: this variable is used directly by the OpenTelemetry libraries and is not available in the Nuxt `runtimeConfiguration`.
+
+## Explicit Imports
+
+With the release of the SCAYLE Storefront Boilerplate `v1.2.0`, we have disabled
+the [Nuxt autoImport feature](https://nuxt.com/docs/guide/concepts/auto-imports#disabling-auto-imports) for composables, utils and other dependencies.
+
+With the change we have included a custom local Nuxt module `modules/eslint-auto-explicit-import`,
+based on [`antfu/nuxt-eslint-auto-explicit-import`](https://github.com/antfu/nuxt-eslint-auto-explicit-import).
+This module aims to insert more explicit import statement automatically where possible,
+based on Nuxt internal import resolution using `eslint --fix`.
+
+### Manual Import Paths
+
+As the automatic import path resolution won't work for every case,
+manual checking and tweaking of import paths might be required.
+Following some common cases that should be considered while adding manual imports:
+
+- Use `#nuxt` instead of `nuxt/app` or `#app/nuxt`
+- Use `#vue-router` for router utilities instead of `vue-router`
+- Use `#i18n` for composables instead of `@nuxtjs/i18n`
+- Use `#storefront/composables` for composables instead of `@scayle/storefront-nuxt`
+- Use `#app/composables/{name}` for composables instead of `#imports`
+  - e.g. `import { clearError, useError } from '#app/composables/error'`
+- Use `#imports` for imports within a pure server context
+  - e.g server or nitro plugins (`server/plugins/*` or `modules/opentelemetry/src/runtime/nitro/plugins/*`)

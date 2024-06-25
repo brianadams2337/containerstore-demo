@@ -1,4 +1,5 @@
 import { computed } from 'vue'
+import { extendPromise } from '@scayle/storefront-nuxt'
 import { useRouteHelpers } from '~/composables/useRouteHelpers'
 import { useRoute } from '#app/composables/router'
 import { useCategoryById, useCategoryByPath } from '#storefront/composables'
