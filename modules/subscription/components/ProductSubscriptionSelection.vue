@@ -127,7 +127,7 @@ const {
   subscriptionPrice,
   subscriptionVariantEligible,
   ordinalSuffixKey,
-} = await useSubscription(
+} = useSubscription(
   product,
   pricePromotionKey,
   variant,

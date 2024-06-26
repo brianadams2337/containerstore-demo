@@ -49,7 +49,7 @@ import { useAuthentication, useFlyouts } from '~/composables'
 import { routeList } from '~/utils/route'
 
 const { closeUserFlyout } = useFlyouts()
-const { user } = await useUser()
+const { user } = useUser()
 const { logout, isSubmitting } = useAuthentication('logout')
 
 const isGuest = computed(() => user.value?.status?.isGuestCustomer)

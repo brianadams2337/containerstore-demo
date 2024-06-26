@@ -58,7 +58,6 @@ defineEmits(['close:modal'])
 
 const { forgotPassword, isSubmitting } = useAuthentication('forgot_password')
 const { lastLoggedInUser } = await useLastLoggedInUser()
-
 const validationRules = useValidationRules()
 
 const success = ref(false)

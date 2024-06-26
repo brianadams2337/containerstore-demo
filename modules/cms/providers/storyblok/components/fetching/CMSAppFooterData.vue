@@ -89,7 +89,7 @@ const footerContent = computed(() => {
   return data.value?.data.story.content
 })
 
-const { navigationTreeItems } = await useNavigationTreeItems('footer')
+const { navigationTreeItems } = useNavigationTreeItems('footer')
 
 const getSocialName = (name: string) => {
   const firstLetter = name.substring(0, 1)

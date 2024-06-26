@@ -42,5 +42,5 @@ import { useBasketReductions } from '~/composables'
 
 const { formatCurrency } = useFormatHelpers()
 
-const { totalCost, totalCostWithoutReductions } = await useBasketReductions()
+const { totalCost, totalCostWithoutReductions } = useBasketReductions()
 </script>

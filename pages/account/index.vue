@@ -28,6 +28,17 @@
           class="w-full"
         />
       </div>
+      <div
+        v-else
+        class="flex flex-col justify-center space-x-0 space-y-4 sm:flex-row sm:space-x-8 sm:space-y-0"
+      >
+        <SFSkeletonLoader
+          v-for="i in 3"
+          :key="i"
+          full-width
+          class="mt-2.5 h-20"
+        />
+      </div>
       <div class="mt-4">
         <LogoutButton data-testid="logout-button" />
       </div>
@@ -44,7 +55,7 @@ import { useNuxtApp } from '#app/nuxt'
 import { useUser, useWishlist } from '#storefront/composables'
 import { routeList } from '~/utils/route'
 
-const { user } = await useUser()
+const { user } = useUser()
 const wishlist = await useWishlist()
 
 const { trackWishlist, collectProductListItems } = useTrackingEvents()

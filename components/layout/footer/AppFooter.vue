@@ -96,7 +96,7 @@ const cmsData: Ref<StoryblokStory<SbFooter>> = await useAsyncStoryblok(
 )
 const footerContent = computed(() => cmsData.value.content)
 
-const { navigationTreeItems } = await useNavigationTreeItems('footer')
+const { navigationTreeItems } = useNavigationTreeItems('footer')
 
 const getSocialName = (name: string) => {
   const firstLetter = name.substring(0, 1)

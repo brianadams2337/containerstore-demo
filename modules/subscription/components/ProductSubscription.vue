@@ -38,13 +38,12 @@ const props = withDefaults(defineProps<Props>(), {
 defineEmits(['addItemToBasket'])
 
 const { product, variant, pricePromotionKey } = toRefs(props)
-const { selectedPreferredDeliveryDate, totalReductions } =
-  await useSubscription(
-    product,
-    pricePromotionKey,
-    variant,
-    'product-subscription.vue',
-  )
+const { selectedPreferredDeliveryDate, totalReductions } = useSubscription(
+  product,
+  pricePromotionKey,
+  variant,
+  'product-subscription.vue',
+)
 
 selectedPreferredDeliveryDate.value = props.preferredDeliveryDate[0]
 </script>

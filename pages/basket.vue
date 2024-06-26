@@ -111,7 +111,7 @@ const {
   basketCount,
   isBasketEmpty,
   removeItem,
-} = await useBasketActions()
+} = useBasketActions()
 
 const {
   trackViewBasket,

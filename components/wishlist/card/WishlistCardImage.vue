@@ -68,5 +68,5 @@ const wishlistItem = computed(() => props.item)
 const { isAvailable } = useWishlistItem(wishlistItem)
 
 const { addItemToCart, showSizePicker, isAddToBasketButtonShown } =
-  await useWishlistItemActions(wishlistItem)
+  useWishlistItemActions(wishlistItem)
 </script>

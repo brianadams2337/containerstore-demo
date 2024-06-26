@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineOptions, onMounted, ref, toRef } from 'vue'
+import { computed, defineOptions, ref, toRef } from 'vue'
 import type { Product } from '@scayle/storefront-nuxt'
 import { useWishlistActions } from '~/composables'
 import { useWishlist } from '#storefront/composables'
@@ -64,11 +64,9 @@ const isWishlistToggling = ref(false)
 const product = toRef(props, 'product')
 const productId = computed(() => product.value.id)
 
-const { toggleItem, fetching, contains, fetch } = await useWishlist()
+const { toggleItem, fetching, contains } = useWishlist()
 
 const { trackWishlistEvent } = useWishlistActions()
-
-onMounted(async () => await fetch())
 
 const onToggleWishlist = async () => {
   const wasInWishlist = contains({ productId: productId.value })

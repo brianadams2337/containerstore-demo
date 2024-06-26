@@ -45,6 +45,5 @@ const wishlistItem = computed(() => props.item)
 
 const { price, sizes } = useWishlistItem(wishlistItem)
 
-const { toggleFilter, selectRadioSize } =
-  await useWishlistItemActions(wishlistItem)
+const { toggleFilter, selectRadioSize } = useWishlistItemActions(wishlistItem)
 </script>

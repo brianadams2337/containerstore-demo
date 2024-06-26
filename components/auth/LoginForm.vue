@@ -83,7 +83,7 @@ const idpParams = computed(() => {
   return { queryParams: undefined }
 })
 
-const { data: externalIDPRedirects } = await useIDP(idpParams)
+const { data: externalIDPRedirects } = useIDP(idpParams)
 
 const editableUser = reactive({
   email: '',

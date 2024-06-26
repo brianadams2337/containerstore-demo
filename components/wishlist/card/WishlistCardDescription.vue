@@ -80,5 +80,5 @@ const {
 } = useWishlistItem(wishlistItem)
 
 const { addItemToCart, selectPickerSize, isChangingSize, sizeSavingId } =
-  await useWishlistItemActions(wishlistItem)
+  useWishlistItemActions(wishlistItem)
 </script>

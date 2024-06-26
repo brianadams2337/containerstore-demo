@@ -12,8 +12,8 @@
 <script setup lang="ts">
 import { defineOptions, onMounted } from 'vue'
 import useSubscriptionWebComponent from '../composables/useSubscriptionWebComponent'
-import { definePageMeta } from '#imports'
 import { useCurrentShop } from '#storefront/composables'
+import { definePageMeta } from '#imports'
 
 const currentShop = useCurrentShop()
 const shopId = currentShop.value.shopId

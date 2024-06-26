@@ -21,5 +21,5 @@ const {
   isHighestPriority,
   isGiftAddedToBasket,
   areGiftConditionsMet,
-} = await useProductPromotions(props.product)
+} = useProductPromotions(props.product)
 </script>

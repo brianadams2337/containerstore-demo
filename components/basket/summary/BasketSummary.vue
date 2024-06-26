@@ -56,5 +56,5 @@ const onClickToCheckoutOrder = async () => {
   })
 }
 
-const { hasAppliedPromotions } = await useBasketPromotions()
+const { hasAppliedPromotions } = useBasketPromotions()
 </script>

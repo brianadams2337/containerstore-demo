@@ -57,7 +57,7 @@ const productIds = computed(() => {
   return variants.value?.map((variant) => variant.productId)
 })
 
-const { data: products } = await useProductsByIds({
+const { data: products } = useProductsByIds({
   params: computed(() => ({ ids: productIds.value ?? [] })),
 })
 

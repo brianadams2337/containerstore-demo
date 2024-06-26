@@ -31,9 +31,9 @@ const props = defineProps<{ basketItem: BasketItem }>()
 const basketItem = computed(() => props.basketItem)
 
 const { giftPromotion, giftBackgroundColorStyle, areGiftConditionsMet } =
-  await useBasketItemPromotion(basketItem)
+  useBasketItemPromotion(basketItem)
 
-const { products, isGiftAlreadyAdded } = await usePromotionGifts(
+const { products, isGiftAlreadyAdded } = usePromotionGifts(
   props.basketItem.product,
   'basket-item-promotion-gifts',
 )

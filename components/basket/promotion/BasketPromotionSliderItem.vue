@@ -75,8 +75,9 @@ const { toggleGiftSelection } = await usePromotionGiftSelection(
   promotedProduct.value,
 )
 
-const { giftPromotion, giftBackgroundColorStyle } =
-  await useBasketItemPromotion(toRef(props.basketItem))
+const { giftPromotion, giftBackgroundColorStyle } = useBasketItemPromotion(
+  toRef(props.basketItem),
+)
 
 const toggleGiftSelectionLabel = computed(() => {
   return i18n.t('basket.promotion.add_free_gift')

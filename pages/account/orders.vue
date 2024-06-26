@@ -19,7 +19,7 @@ import { definePageMeta } from '#imports'
 import { useNuxtApp } from '#app/nuxt'
 import { useUser } from '#storefront/composables'
 
-const { user } = await useUser()
+const { user } = useUser()
 const { $i18n } = useNuxtApp()
 
 const orders = computed(() => user.value?.orderSummary ?? [])

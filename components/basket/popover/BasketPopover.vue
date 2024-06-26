@@ -33,7 +33,6 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import { useBasket } from '#storefront/composables'
 import { useDefaultBreakpoints, useFlyouts } from '~/composables'
 import { routeList } from '~/utils/route'
@@ -42,7 +41,5 @@ const { isSmaller } = useDefaultBreakpoints()
 
 const { openBasketFlyout, closeBasketFlyout, isBasketFlyoutOpen } = useFlyouts()
 
-const { isEmpty, fetch, countWithoutSoldOutItems } = await useBasket()
-
-onMounted(() => fetch())
+const { isEmpty, countWithoutSoldOutItems } = useBasket()
 </script>

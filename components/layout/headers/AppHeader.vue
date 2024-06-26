@@ -58,7 +58,7 @@ const { isFlyoutMenuOpen, closeFlyoutMenu } = useFlyouts()
 const { isSideNavigationOpen, toggleSideNavigation } = useSideNavigation()
 const { getLocalizedRoute } = useRouteHelpers()
 
-const { navigationTreeItems } = await useNavigationTreeItems('header')
+const { navigationTreeItems } = useNavigationTreeItems('header')
 
 // TODO: Check if this really works when we start touching checkout related stuff
 const { isExactActive: isCheckoutPage } = useLink({

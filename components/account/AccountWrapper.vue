@@ -98,7 +98,7 @@ const {
   collectBasketItems,
 } = useTrackingEvents()
 
-const { user } = await useUser()
+const { user } = useUser()
 
 const currentPage = ref<number>(1)
 

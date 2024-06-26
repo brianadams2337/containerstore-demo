@@ -31,7 +31,7 @@ const {
   hasItemsWithPromotionReductions,
   totalPromotionsReductions,
   withNegativePrefix,
-} = await useBasketReductions()
+} = useBasketReductions()
 
 const showDiscountSummary = defineModel<boolean>({ default: false })
 

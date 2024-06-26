@@ -60,7 +60,7 @@ const props = withDefaults(defineProps<Props>(), {
   areGiftConditionsMet: false,
 })
 
-const { minOrderAmount } = await usePromotionProgress(toRef(props.promotion))
+const { minOrderAmount } = usePromotionProgress(toRef(props.promotion))
 
 const backgroundColor = computed(() => {
   const colorHex = props.promotion.customData.colorHex

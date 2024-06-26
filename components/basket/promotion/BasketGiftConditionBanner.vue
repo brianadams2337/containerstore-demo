@@ -40,5 +40,5 @@ const {
   giftBackgroundColorStyle,
   isGiftAddedToBasket,
   areGiftConditionsMet,
-} = await useBasketItemPromotion(basketItem)
+} = useBasketItemPromotion(basketItem)
 </script>

@@ -123,8 +123,7 @@ const { pageState, setPageState } = usePageState()
 const { $i18n, $config } = useNuxtApp()
 const { toggle: toggleFilter } = useSlideIn('FilterSlideIn')
 const { trackViewItemList, trackSelectItem } = useTrackingEvents()
-const { category, fetch: fetchCategory } = await useCategory()
-
+const { category, fetch: fetchCategory } = useCategory()
 await fetchCategory()
 
 if (!category.value) {
@@ -150,7 +149,7 @@ const {
   productCountData,
   refreshProductCount,
   unfilteredCount,
-} = await useFacet({
+} = useFacet({
   params: FACET_PARAMS,
 })
 

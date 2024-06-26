@@ -27,5 +27,5 @@ import { useProductPromotions } from '~/composables'
 
 const props = defineProps<{ product: Product }>()
 
-const { areHurryToSaveBannersShown } = await useProductPromotions(props.product)
+const { areHurryToSaveBannersShown } = useProductPromotions(props.product)
 </script>

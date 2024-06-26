@@ -73,7 +73,7 @@ const { pageState } = usePageState()
 const term = computed(() => route.query.term || '')
 const { toggle: toggleFilter } = useSlideIn('FilterSlideIn')
 
-const wishlist = await useWishlist()
+const wishlist = useWishlist()
 
 const toast = useToast()
 
@@ -90,7 +90,7 @@ const {
   productCountData,
   refreshProductCount,
   unfilteredCount,
-} = await useFacet({
+} = useFacet({
   key: 'useSearchFacet',
   params: {
     with: {

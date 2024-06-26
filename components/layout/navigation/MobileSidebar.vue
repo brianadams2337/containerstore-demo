@@ -74,7 +74,7 @@ const { isSmaller } = useDefaultBreakpoints()
 
 const isLessThanMdBreakpoint = computed(() => isSmaller('md'))
 
-const { rootCategories, fetchingCategories } = await useRootCategories()
+const { rootCategories, fetchingCategories } = useRootCategories()
 
 const {
   closeSideNavigation,

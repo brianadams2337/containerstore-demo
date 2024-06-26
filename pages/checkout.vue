@@ -23,9 +23,9 @@ import { useNuxtApp } from '#app/nuxt'
 
 const { accessToken, checkoutJwt, fetchCheckoutToken } =
   await useCheckoutWebComponent()
-const { fetch: fetchBasket, fetching } = await useBasket()
+const { fetch: fetchBasket, fetching } = useBasket()
 
-const { user, fetch: fetchUser } = await useUser()
+const { user, fetch: fetchUser } = useUser()
 
 const { $i18n } = useNuxtApp()
 

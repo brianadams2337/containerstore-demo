@@ -62,7 +62,7 @@ const {
   sliderProducts,
   fetchingCombineWithProducts,
   trackRecommendationClick,
-} = await useProductRecommendations(
+} = useProductRecommendations(
   props.combineWithProductIds,
   `product-recommendations-[${props.combineWithProductIds.join(',')}]`,
 )

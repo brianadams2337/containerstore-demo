@@ -52,7 +52,7 @@ const props = withDefaults(defineProps<Props>(), {
   showDefaultActions: false,
 })
 
-const { isLoggedIn } = await useUser()
+const { isLoggedIn } = useUser()
 
 const iconComponent = computed(() => {
   return props.icon === 'EmptyBasket' ? IconEmptyBasket : IconEmptyWishlist

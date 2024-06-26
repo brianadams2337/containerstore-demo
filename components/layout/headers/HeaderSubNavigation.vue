@@ -49,7 +49,7 @@ withDefaults(defineProps<{ navigationTree?: NavigationTree }>(), {
   navigationTree: undefined,
 })
 
-const { rootCategories, fetchingCategories } = await useRootCategories()
+const { rootCategories, fetchingCategories } = useRootCategories()
 
 const { openFlyoutMenuForNavigationTree, openFlyoutMenu } = useFlyouts()
 </script>

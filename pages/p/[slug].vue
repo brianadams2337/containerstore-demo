@@ -288,7 +288,7 @@ const { addItemToBasket } = useProductDetailsBasketActions(
 )
 
 const { isBuyXGetYPrioritized, isGiftAddedToBasket } =
-  await useProductPromotions(product)
+  useProductPromotions(product)
 
 const { $i18n, $config } = useNuxtApp()
 const { getProductDetailRoute } = useRouteHelpers()

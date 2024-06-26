@@ -74,7 +74,7 @@ const props = defineProps<{ item: BasketItem }>()
 
 const { formatCurrency } = useFormatHelpers()
 const basketItem = computed(() => props.item)
-const { price, reducedPrice } = await useBasketItem(basketItem)
+const { price, reducedPrice } = useBasketItem(basketItem)
 
 function getItemSaleReductionPrice(item?: BasketItem) {
   if (!item) return 0
@@ -84,5 +84,5 @@ function getItemSaleReductionPrice(item?: BasketItem) {
 }
 
 const { hasSaleReduction, hasPromotionReduction, getBasketItemSalePrice } =
-  await useBasketReductions()
+  useBasketReductions()
 </script>

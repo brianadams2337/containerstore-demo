@@ -74,7 +74,7 @@ const {
   formattedDiscount,
   isFullProgress,
   formattedAmountLeft: amountLeft,
-} = await usePromotionProgress(promotion)
+} = usePromotionProgress(promotion)
 
 const isAutomaticDiscount = computed(() =>
   isAutomaticDiscountType(props.promotion),

@@ -84,7 +84,7 @@ const productIds = computed(() => {
   return props.blok?.fields.productIds?.split(',').map(Number).filter(Boolean)
 })
 
-const { data, fetching } = await useProductsByIds({
+const { data, fetching } = useProductsByIds({
   params: {
     ids: productIds.value || [],
     with: {

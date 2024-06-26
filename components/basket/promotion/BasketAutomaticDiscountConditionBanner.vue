@@ -37,9 +37,9 @@ import { useBasketItemPromotion, usePromotionProgress } from '~/composables'
 
 const props = defineProps<{ basketItem: BasketItem }>()
 
-const { promotion, backgroundColorStyle } = await useBasketItemPromotion(
+const { promotion, backgroundColorStyle } = useBasketItemPromotion(
   toRef(props.basketItem),
 )
 
-const { isMOVPromotionApplied } = await usePromotionProgress(promotion)
+const { isMOVPromotionApplied } = usePromotionProgress(promotion)
 </script>

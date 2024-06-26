@@ -41,7 +41,7 @@ import { getTextColorStyle } from '~/utils/promotion'
 import { useBasketReductions } from '~/composables'
 
 const { itemsWithPromotionsReductions, getHeadlineParts, withNegativePrefix } =
-  await useBasketReductions()
+  useBasketReductions()
 
 const { formatCurrency } = useFormatHelpers()
 </script>

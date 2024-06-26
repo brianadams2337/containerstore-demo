@@ -1,6 +1,6 @@
 const STORYBLOK_CATEGORIES_FOLDER = '/categories'
 
-export async function useCategory(autoFetch = false) {
+export function useCategory(autoFetch = false) {
   const route = useRoute()
   const { getCategoryPath } = useRouteHelpers()
 
@@ -29,7 +29,15 @@ export async function useCategory(autoFetch = false) {
         ...baseOptions,
       })
 
-  const { data: category, fetch } = await useResolvedCategory
+  const categoryPromise = useResolvedCategory
+  const { data: category, fetch } = categoryPromise
 
-  return { category, categoryPath, fetch }
+  return extendPromise(
+    categoryPromise.then(() => ({})),
+    {
+      category,
+      categoryPath,
+      fetch,
+    },
+  )
 }

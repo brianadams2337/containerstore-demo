@@ -18,5 +18,5 @@
 import { useWishlist } from '#storefront/composables'
 import { routeList } from '~/utils/route'
 
-const { count } = await useWishlist()
+const { count } = useWishlist()
 </script>

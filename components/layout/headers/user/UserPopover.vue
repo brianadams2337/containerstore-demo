@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 import { routeList } from '~/utils/route'
 import { useUser } from '#storefront/composables'
 import { useDefaultBreakpoints, useFlyouts } from '~/composables'
@@ -32,11 +32,7 @@ import { useDefaultBreakpoints, useFlyouts } from '~/composables'
 const { isGreaterOrEqual } = useDefaultBreakpoints()
 
 const { openUserFlyout, closeUserFlyout, isUserFlyoutOpen } = useFlyouts()
-const { user, fetch } = await useUser({ autoFetch: false })
-
-onMounted(() => {
-  fetch()
-})
+const { user } = useUser()
 
 const link = computed(() => (user.value ? routeList.account : routeList.signin))
 </script>

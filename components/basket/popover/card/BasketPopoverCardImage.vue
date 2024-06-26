@@ -25,8 +25,7 @@ const props = defineProps<{ item: BasketItem }>()
 
 const basketItem = computed(() => props.item)
 
-const { image, name } = await useBasketItem(basketItem)
+const { image, name } = useBasketItem(basketItem)
 
-const { isFreeGift, backgroundColorStyle } =
-  await useBasketItemPromotion(basketItem)
+const { isFreeGift, backgroundColorStyle } = useBasketItemPromotion(basketItem)
 </script>

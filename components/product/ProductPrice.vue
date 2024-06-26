@@ -104,9 +104,9 @@ const { formatCurrency } = useFormatHelpers()
 const appliedReductions = computed(() => props.price?.appliedReductions)
 
 const { automaticDiscountPromotion, getAppliedAutomaticDiscountPrice } =
-  await useProductPromotions(props.product)
+  useProductPromotions(props.product)
 
-const { data: basketData } = await useBasket()
+const { data: basketData } = useBasket()
 
 const isAutomaticDiscountApplied = computed(() => {
   if (!automaticDiscountPromotion.value) {

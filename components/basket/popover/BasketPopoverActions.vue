@@ -14,7 +14,7 @@ import { computed } from 'vue'
 import { routeList } from '~/utils/route'
 import { useUser } from '#storefront/composables'
 
-const { isLoggedIn } = await useUser()
+const { isLoggedIn } = useUser()
 
 const checkoutOrHomeRoute = computed(() => {
   return isLoggedIn.value ? routeList.checkout : routeList.signin

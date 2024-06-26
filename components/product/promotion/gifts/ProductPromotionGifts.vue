@@ -44,11 +44,12 @@ import { useI18n } from '#i18n'
 const i18n = useI18n()
 const props = defineProps<{ product: Product }>()
 
-const { isProductAddedToBasket, areGiftConditionsMet } =
-  await useProductPromotions(props.product)
+const { isProductAddedToBasket, areGiftConditionsMet } = useProductPromotions(
+  props.product,
+)
 
 const { backgroundColorStyle, products, hasMultipleFreeGifts } =
-  await usePromotionGifts(props.product, 'product-promotion-gifts.vue')
+  usePromotionGifts(props.product, 'product-promotion-gifts.vue')
 
 const hasScrolledToBottom = ref(false)
 

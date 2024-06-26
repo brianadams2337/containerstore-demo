@@ -58,5 +58,5 @@ const {
   cupsizeLabel,
   isSoldOut,
   quantity,
-} = await useBasketItem(basketItem)
+} = useBasketItem(basketItem)
 </script>

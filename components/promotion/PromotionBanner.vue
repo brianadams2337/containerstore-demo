@@ -83,7 +83,7 @@ const { togglePromotionList, isPromotionListShown, setBannerRef } =
   usePromotionActions()
 
 const { isMOVPromotionApplied, isFullProgress } =
-  await usePromotionProgress(currentPromotion)
+  usePromotionProgress(currentPromotion)
 
 const isDealsButtonShown = computed<boolean>(() => {
   return Boolean(

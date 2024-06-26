@@ -76,7 +76,7 @@ const {
 } = useCurrentPromotion()
 
 const { isFullProgress, isMOVPromotionApplied } =
-  await usePromotionProgress(currentPromotion)
+  usePromotionProgress(currentPromotion)
 
 const { togglePromotionList, isPromotionListShown } = usePromotionActions()
 

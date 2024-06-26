@@ -234,7 +234,7 @@ const getItemSaleReductionPrice = (item?: BasketItem) => {
 
 const { formatCurrency } = useFormatHelpers()
 const { hasSaleReduction, hasPromotionReduction, getBasketItemSalePrice } =
-  await useBasketReductions()
+  useBasketReductions()
 const { getProductDetailRoute } = useRouteHelpers()
 const mainItem = computed(() => {
   const basketItem = props.itemsGroup
@@ -266,10 +266,10 @@ const {
   variant,
   selectItem,
   listingMetaData,
-} = await useBasketItem(mainItem)
+} = useBasketItem(mainItem)
 
 const { $i18n } = useNuxtApp()
-const wishlist = await useWishlist()
+const wishlist = useWishlist()
 const { trackRemoveFromWishlist, trackAddToWishlist } = useTrackingEvents()
 
 const toast = useToast()
@@ -281,7 +281,7 @@ const isWishlistToggling = ref(false)
 const index = toRef(props, 'index')
 
 const { isFreeGift, giftBackgroundColorStyle } =
-  await useBasketItemPromotion(mainItem)
+  useBasketItemPromotion(mainItem)
 
 const addOnItems = computed(() =>
   props.itemsGroup

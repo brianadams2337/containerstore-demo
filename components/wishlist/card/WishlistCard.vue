@@ -41,11 +41,11 @@ type Props = {
 
 const props = defineProps<Props>()
 
-const { fetching: isWishlistFetching } = await useWishlist()
+const { fetching: isWishlistFetching } = useWishlist()
 
 const wishlistItem = computed(() => props.item)
 
 const { isAvailable } = useWishlistItem(wishlistItem)
 
-const { isAddToBasketButtonShown } = await useWishlistItemActions(wishlistItem)
+const { isAddToBasketButtonShown } = useWishlistItemActions(wishlistItem)
 </script>

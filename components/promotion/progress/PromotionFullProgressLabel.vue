@@ -38,7 +38,7 @@ const {
 } = useCurrentPromotion()
 
 const { formattedDiscount, isMOVPromotionApplied } =
-  await usePromotionProgress(currentPromotion)
+  usePromotionProgress(currentPromotion)
 
 const headline = computed(() => {
   const [offerText, conditionText] = headlineParts.value ?? []

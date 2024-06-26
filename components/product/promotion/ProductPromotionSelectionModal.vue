@@ -152,9 +152,9 @@ const {
   images,
   toggleGiftSelection,
   isGiftSelectionShown,
-} = await usePromotionGiftSelection(props.product, props.promotedProduct)
+} = usePromotionGiftSelection(props.product, props.promotedProduct)
 
-const { data: basketData } = await useBasket()
+const { data: basketData } = useBasket()
 
 const areConditionsMet = computed(() => {
   const basketItem = (basketData.value?.items ?? []).find((item) => {

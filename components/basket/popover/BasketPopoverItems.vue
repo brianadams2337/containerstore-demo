@@ -43,7 +43,7 @@ type BasketItems = {
   groups: BundledBasketItems<BasketItem>
 }
 
-const { items } = await useBasket()
+const { items } = useBasket()
 
 const basketItems = ref<BasketItems>({
   standAlone: [],

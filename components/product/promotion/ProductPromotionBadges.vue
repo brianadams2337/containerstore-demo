@@ -83,7 +83,7 @@ function getBasketLabel(customData: Promotion['customData']) {
 }
 
 const { productPromotionId, applicablePromotions, isHighestPriority } =
-  await useProductPromotions(props.product)
+  useProductPromotions(props.product)
 
 const orderedPromotions = computed(() => {
   return sort(applicablePromotions.value, (it) => it.priority)

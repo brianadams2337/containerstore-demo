@@ -18,5 +18,5 @@ import { useBasketReductions } from '~/composables'
 const { formatCurrency } = useFormatHelpers()
 
 const { hasItemsWithSaleReductions, aggregatedSalePrice, withNegativePrefix } =
-  await useBasketReductions()
+  useBasketReductions()
 </script>

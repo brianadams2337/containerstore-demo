@@ -104,9 +104,9 @@ const { formatCurrency } = useFormatHelpers()
 const { md: isGreaterThanMd } = useDefaultBreakpoints()
 
 const { buyXGetYPromotion: promotion, areGiftConditionsMet } =
-  await useProductPromotions(promotedProduct)
+  useProductPromotions(promotedProduct)
 
-const { toggleGiftSelection } = await usePromotionGiftSelection(
+const { toggleGiftSelection } = usePromotionGiftSelection(
   props.product,
   promotedProduct.value,
 )

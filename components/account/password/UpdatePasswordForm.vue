@@ -72,7 +72,7 @@ import { useToast, useValidationRules } from '~/composables'
 import { useNuxtApp } from '#app/nuxt'
 import { useUser } from '#storefront/composables'
 
-const { updatePassword, fetch: refresh } = await useUser()
+const { updatePassword, fetch: refresh } = useUser()
 const { $i18n } = useNuxtApp()
 const validationRules = useValidationRules()
 

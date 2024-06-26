@@ -114,14 +114,14 @@ const isUsingReferenceKeys = computed(() => {
 })
 
 const { data, fetching } = isUsingReferenceKeys.value
-  ? await useProductsByReferenceKeys({
+  ? useProductsByReferenceKeys({
       params: {
         referenceKeys: productReferenceKeys.value || [],
         with: productSliderWithParams,
       },
       key: `productSlider-${props.blok._uid}`,
     })
-  : await useProductsByIds({
+  : useProductsByIds({
       params: {
         ids: productIds.value || [],
         with: productSliderWithParams,
