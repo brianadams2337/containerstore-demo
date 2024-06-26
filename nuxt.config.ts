@@ -1,11 +1,7 @@
 import type { NuxtConfig } from 'nuxt/schema'
 import yn from 'yn'
 import { nanoid } from 'nanoid'
-import {
-  type IDPConfig,
-  HashAlgorithm,
-  type ModuleBaseOptions,
-} from '@scayle/storefront-nuxt'
+import { HashAlgorithm, type ModuleBaseOptions } from '@scayle/storefront-nuxt'
 import * as customRpcMethods from './rpcMethods'
 import withParams from './constants/withParams'
 import { shops } from './config/shops'
@@ -35,13 +31,11 @@ declare module '@scayle/storefront-nuxt' {
     paymentProviders: string[]
     appKeys: typeof DEFAULT_APP_KEYS
     isLowestPreviousPriceActive?: boolean
-    idp?: IDPConfig
   }
   // Extend PublicShopConfig to make types available on currentShop
   export interface PublicShopConfig {
     isLowestPreviousPriceActive?: boolean
     paymentProviders: string[]
-    idp?: IDPConfig
   }
 }
 
