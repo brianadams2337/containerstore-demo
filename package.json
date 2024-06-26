@@ -106,7 +106,7 @@
     "@tailwindcss/typography": "0.5.13",
     "@types/google.maps": "3.55.10",
     "@vercel/kv": "2.0.0",
-    "@vercel/otel": "1.8.3",
+    "@vercel/otel": "1.9.1",
     "@vuelidate/core": "2.0.3",
     "@vuelidate/validators": "2.0.4",
     "@vueuse/core": "10.11.0",
