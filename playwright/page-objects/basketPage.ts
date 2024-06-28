@@ -23,14 +23,4 @@ export class BasketPage {
     await expect(this.productInBasket.first()).toBeVisible()
     await expect(this.productImage.first()).toBeVisible()
   }
-
-  async assertBasketProductDetails(
-    productName: string,
-    productPrice: string,
-    productBrand: string,
-  ) {
-    expect(this.basketProductCard).toContainText(productName)
-    expect(this.basketProductCard).toContainText(productPrice)
-    expect(this.basketProductCard).toContainText(productBrand)
-  }
 }

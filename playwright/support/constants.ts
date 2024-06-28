@@ -1,8 +1,5 @@
-export const E2E_PLP_PRODUCT_ID = '#product-1099'
-export const E2E_PDP_PRODUCT_URL = /\/batist-blusentop-1099/
 export const E2E_BASKET_URL = /\/basket/
 export const E2E_CHECKOUT_URL = /\/checkout/
-export const E2E_PDP_PRODUCT_SIZE = '36'
 
 export const LOGGED_IN_USER_DATA = {
   firstName: 'test',
