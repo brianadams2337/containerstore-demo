@@ -20,7 +20,7 @@ test('Verify User login and log out', async ({
     LOGGED_IN_USER_DATA.password,
   )
   await signinPage.clickLoginButton()
-  await page.waitForURL('/')
+  await page.waitForURL('/de')
 
   await header.clickLoginHeaderButton()
   await toastMessage.assertToastInfoIsVisible()
