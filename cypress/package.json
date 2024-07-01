@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@scayle/eslint-config-storefront": "4.2.0",
-    "cypress": "13.12.0",
+    "cypress": "13.13.0",
     "cypress-on-fix": "1.0.3",
     "cypress-real-events": "1.13.0",
     "cypress-split": "1.24.0",
