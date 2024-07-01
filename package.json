@@ -131,7 +131,7 @@
     "radash": "12.1.0",
     "redis": "4.6.14",
     "schema-dts": "1.1.2",
-    "storyblok-js-client": "6.7.3",
+    "storyblok-js-client": "6.8.0",
     "ufo": "1.5.3",
     "vue": "3.4.31",
     "vue-slider-component": "4.1.0-beta.7",
