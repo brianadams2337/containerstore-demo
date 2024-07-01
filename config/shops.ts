@@ -2,7 +2,7 @@ interface ShopAndLocaleConfig {
   /** A BCP-47 format locale code (e.g. 'de-DE') */
   locale: string
   /** A unique identifying code for the shop/locale. Also used to create the shop's default path prefix. (e.g. 'de') */
-  code: string
+  code: string | string[]
   /** The shopId */
   shopId: number
   /** The ISO 4217 currency code for the shop (e.g. 'EUR') */
@@ -46,7 +46,7 @@ export const shops: ShopAndLocaleConfig[] = [
   },
   {
     locale: 'en-US',
-    code: 'en',
+    code: ['en', 'en-us'],
     shopId: 1028,
     currency: 'USD',
     isDefault: false,

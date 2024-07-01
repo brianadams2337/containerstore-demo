@@ -52,12 +52,30 @@ const SHOP_SELECTOR_MODE = 'path' as ModuleBaseOptions['shopSelector']
 const DOMAIN_PER_LOCALE = SHOP_SELECTOR_MODE === 'domain'
 
 // Generate the i18n locales from the shop config
-const locales = shops.map((shop) => ({
-  code: shop.code,
-  iso: shop.locale,
-  domain: BASE_SHOP_DOMAIN,
-  file: shop.translationFile,
-}))
+interface LocaleConfig {
+  code: string
+  iso: string
+  domain: string
+  file: string
+}
+
+const locales: LocaleConfig[] = shops.flatMap((shop) => {
+  if (Array.isArray(shop.code)) {
+    return shop.code.map((code) => ({
+      code,
+      iso: shop.locale,
+      domain: BASE_SHOP_DOMAIN,
+      file: shop.translationFile,
+    }))
+  } else {
+    return {
+      code: shop.code,
+      iso: shop.locale,
+      domain: BASE_SHOP_DOMAIN,
+      file: shop.translationFile,
+    }
+  }
+})
 
 function getI18nStrategy(): 'prefix' | 'prefix_except_default' | 'no_prefix' {
   if (SHOP_SELECTOR_MODE === 'path') {
@@ -69,8 +87,10 @@ function getI18nStrategy(): 'prefix' | 'prefix_except_default' | 'no_prefix' {
   return 'no_prefix'
 }
 
-const i18nDefaultLocale = (shops.find((shop) => shop.isDefault) ?? shops[0])
-  .code
+const defaultShop = shops.find((shop) => shop.isDefault) ?? shops[0]
+const i18nDefaultLocale = Array.isArray(defaultShop.code)
+  ? defaultShop.code[0]
+  : defaultShop.code
 
 export default defineNuxtConfig({
   // https://nuxt.com/docs/api/nuxt-config#devtools
