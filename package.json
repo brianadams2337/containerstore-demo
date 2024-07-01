@@ -104,7 +104,7 @@
     "@storyblok/vue": "8.0.8",
     "@tailwindcss/forms": "0.5.7",
     "@tailwindcss/typography": "0.5.13",
-    "@types/google.maps": "3.55.10",
+    "@types/google.maps": "3.55.11",
     "@vercel/kv": "2.0.0",
     "@vercel/otel": "1.9.1",
     "@vuelidate/core": "2.0.3",
