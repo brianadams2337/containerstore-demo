@@ -148,7 +148,7 @@
     "node": "20.15.0"
   },
   "resolutions": {
-    "import-in-the-middle": "1.7.4",
+    "import-in-the-middle": "1.8.1",
     "@nuxt/kit": "3.11.2",
     "@nuxt/schema": "3.11.2",
     "vue": "3.4.31",
