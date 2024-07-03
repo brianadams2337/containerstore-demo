@@ -3443,14 +3443,15 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-api/-/storefront-api-17.3.0.tgz#daa3346951501463fc39eada9ae34448dcef5da8"
   integrity sha512-trw9LGlEhHjoiToBfkZslLUnqfBlnXibU3y6IuRLNZGV86vNArHplM50gqls+ev9TckixsQmrA++slUMdp7s9A==
 
-"@scayle/storefront-core@7.58.3":
-  version "7.58.3"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.58.3.tgz#c603ddec46aa06b543cd41c901f3c3c02af955e5"
-  integrity sha512-okyERhLXk/0NrGmuGE1oYfxRhfIPculE7KW3nEaKHLR4rvjoxktlIbc78dF2Dj7k5AhP9Z5v87zHh47JpCPTUQ==
+"@scayle/storefront-core@7.59.0":
+  version "7.59.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.59.0.tgz#ec376bedea3940619aef918976cf5c54acc5f1a3"
+  integrity sha512-OIGkXoeQkT6J1Mb9PwqK+P+79OZqRhK0VRxIh5ZNkvRABI99mHX9gA0zsoP17C1HuXcUELlJdNk4qGezV/QBZQ==
   dependencies:
     "@scayle/storefront-api" "17.3.0"
     crypto-js "4.2.0"
-    jose "5.5.0"
+    hookable "5.5.3"
+    jose "5.6.2"
     radash "12.1.0"
     slugify "1.6.6"
     ufo "1.5.3"
@@ -3459,20 +3460,21 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.78.1":
-  version "7.78.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.78.1.tgz#d17596f8fd1f5d503d9f4c4b643b51ab60feca78"
-  integrity sha512-4iywILaLYqOMSyifLVd8wDXkfIWf5NtSpo2UasFDqAU+TLavjfM2UHHNhEBuzf3ruvORYMSBuYifj51m2slkHA==
+"@scayle/storefront-nuxt@7.79.1":
+  version "7.79.1"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.79.1.tgz#1c58d2745a0b738e31a13628836f52ed87a0cdfe"
+  integrity sha512-NqDG0eBFAPy/nIJSgDG9Wt6vwArMapHH+LaLkCFC6TCwhBptuIV1DWsrdPiQaANk/JcvdGfxF3X0NtKO2MKQ3w==
   dependencies:
     "@nuxt/kit" "3.11.2"
     "@opentelemetry/api" "1.9.0"
     "@scayle/h3-session" "0.4.0"
-    "@scayle/storefront-core" "7.58.3"
+    "@scayle/storefront-core" "7.59.0"
     "@scayle/unstorage-compression-driver" "0.1.3"
     "@vueuse/core" "10.11.0"
     consola "3.2.3"
     core-js "3.37.1"
     defu "6.1.4"
+    hookable "5.5.3"
     jose "^5.2.0"
     knitwork "1.1.0"
     nitropack "2.9.7"
@@ -8373,7 +8375,7 @@ he@^1.2.0:
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
-hookable@^5.5.3:
+hookable@5.5.3, hookable@^5.5.3:
   version "5.5.3"
   resolved "https://registry.yarnpkg.com/hookable/-/hookable-5.5.3.tgz#6cfc358984a1ef991e2518cb9ed4a778bbd3215d"
   integrity sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==
@@ -9056,10 +9058,10 @@ jiti@^1.21.6:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.21.6.tgz#6c7f7398dd4b3142767f9a168af2f317a428d268"
   integrity sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==
 
-jose@5.5.0:
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/jose/-/jose-5.5.0.tgz#ec2a834606325d797851532733b14f1d5a40ee25"
-  integrity sha512-DUPr/1kYXbuqYpkCj9r66+B4SGCKXCLQ5ZbKCgmn4sJveJqcwNqWtAR56u4KPmpXjrmBO2uNuLdEAEiqIhFNBg==
+jose@5.6.2:
+  version "5.6.2"
+  resolved "https://registry.yarnpkg.com/jose/-/jose-5.6.2.tgz#b03628593d3a3c6486b37f4788faa6cc235cec79"
+  integrity sha512-F1t1/WZJ4JdmCE/XoMYw1dPOW5g8JF0xGm6Ox2fwaCAPlCzt+4Bh0EWP59iQuZNHHauDkCdjx+kCZSh5z/PGow==
 
 jose@^5.2.0:
   version "5.2.4"
