@@ -580,44 +580,41 @@ export default defineNuxtConfig({
     }
 
     // Vercel-specific routeRules for using ISR with Vercel CDN as page caching setup
-    if (
-      process.env.NITRO_PRESET &&
-      process.env.NITRO_PRESET.includes('vercel')
-    ) {
-      // Disable route rules for any vercel deployment
-      //
-      // Vercel Edge currently doesn't work at all with route rules,
-      // the normal Vercel Serverless function has some issues with caching + session handling
-      // so we for now need to disable caching completely.
-      return {}
-    }
+    const isVercel =
+      process.env.NITRO_PRESET && process.env.NITRO_PRESET.includes('vercel')
 
     // Page generated on-demand, revalidates in background
-    const CACHE_PAGE: NitroRouteConfig = {
-      cache: {
-        // SWR currently leads to some bugs in the Nitro caching implementation that it will continue to serve outdated data in case the SSR handler crashes
-        // We recommend to keep this disabled currently.
-        swr: false, // Disable stale-while-revalidate
-        maxAge: 10 * 60, // Default: 10min
-        staleMaxAge: 10 * 60, // Default: 10min
-        group: 'ssr', // Cache group name
-        name: 'page', // Set prefix name
+    const CACHE_PAGE: NitroRouteConfig = isVercel
+      ? {
+          isr: true,
+        }
+      : {
+          cache: {
+            // SWR currently leads to some bugs in the Nitro caching implementation that it will continue to serve outdated data in case the SSR handler crashes
+            // We recommend to keep this disabled currently.
+            swr: false, // Disable stale-while-revalidate
+            maxAge: 10 * 60, // Default: 10min
+            staleMaxAge: 10 * 60, // Default: 10min
+            group: 'ssr', // Cache group name
+            name: 'page', // Set prefix name
 
-        // Consider the host for the cache key which is required when using domain based shops
-        varies: ['host', 'x-forwarded-host'],
+            // Consider the host for the cache key which is required when using domain based shops
+            varies: ['host', 'x-forwarded-host'],
 
-        // Add the version as an integrity so we clear our cache when a new version gets deployed.
-        // If no specific version is supplied, we will generate a unique ID during the build process.
-        integrity: process.env.VERSION ?? nanoid(8),
+            // Add the version as an integrity so we clear our cache when a new version gets deployed.
+            // If no specific version is supplied, we will generate a unique ID during the build process.
+            integrity: process.env.VERSION ?? nanoid(8),
 
-        // Use storefront storage mount
-        // Depending on your configuration this might be `redis` or another database driver
-        // https://scayle.dev/en/dev/storefront-core/module-configuration#storage
-        base: 'storefront-cache',
-      },
-    }
+            // Use storefront storage mount
+            // Depending on your configuration this might be `redis` or another database driver
+            // https://scayle.dev/en/dev/storefront-core/module-configuration#storage
+            base: 'storefront-cache',
+          },
+        }
 
-    const NO_CACHE: NitroRouteConfig = { swr: false, cache: false }
+    const NO_CACHE: NitroRouteConfig = isVercel
+      ? { isr: false }
+      : { swr: false, cache: false }
 
     // Default routeRules for using SWR and `storefront-cache` storage for page caching setup
     return DOMAIN_PER_LOCALE
