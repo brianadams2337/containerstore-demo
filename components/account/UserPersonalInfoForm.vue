@@ -141,6 +141,10 @@ const genders = computed(() => [
     label: $i18n.t('form_fields.female'),
     value: 'f',
   },
+  {
+    label: $i18n.t('form_fields.diverse'),
+    value: 'd',
+  },
 ])
 
 watch(user, setPayload, { immediate: true })

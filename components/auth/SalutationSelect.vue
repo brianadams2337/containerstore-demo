@@ -40,7 +40,7 @@ const genders: { label: string; value: Gender }[] = [
     value: 'm',
   },
   {
-    label: $i18n.t('form_fields.divers'),
+    label: $i18n.t('form_fields.diverse'),
     value: 'd',
   },
 ]
