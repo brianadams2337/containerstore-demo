@@ -1798,7 +1798,7 @@
   optionalDependencies:
     ipx "^2.1.0"
 
-"@nuxt/kit@3.11.1", "@nuxt/kit@3.11.2", "@nuxt/kit@^3.10.3", "@nuxt/kit@^3.11.2", "@nuxt/kit@^3.12.1", "@nuxt/kit@^3.4.0", "@nuxt/kit@^3.5.1", "@nuxt/kit@^3.7.0":
+"@nuxt/kit@3.11.2", "@nuxt/kit@3.12.2", "@nuxt/kit@^3.10.3", "@nuxt/kit@^3.11.2", "@nuxt/kit@^3.12.1", "@nuxt/kit@^3.4.0", "@nuxt/kit@^3.5.1", "@nuxt/kit@^3.7.0":
   version "3.11.2"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.11.2.tgz#dfc43c05992691bcd6aa58c14f88cf43e3abb788"
   integrity sha512-yiYKP0ZWMW7T3TCmsv4H8+jEsB/nFriRAR8bKoSqSV9bkVYWPE36sf7JDux30dQ91jSlQG6LQkB3vCHYTS2cIg==
@@ -3421,14 +3421,14 @@
     unstorage "1.10.2"
     zod "3.23.5"
 
-"@scayle/omnichannel-nuxt@3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@scayle/omnichannel-nuxt/-/omnichannel-nuxt-3.0.2.tgz#33d94959e37b6d206a948046b0b17e2c62599adb"
-  integrity sha512-uNhf7N6r4ZjLfwThgjDAMjWkmHZ7eonWyzQM7vq1M0lOBs6ihhATl07vCFrGFfmbVY84LotJOeu7zULun1QUbw==
+"@scayle/omnichannel-nuxt@3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@scayle/omnichannel-nuxt/-/omnichannel-nuxt-3.0.3.tgz#8bdb42ce52ca33e000ca263ef51625a756783e85"
+  integrity sha512-MQBvl25w28zwrIJneWTc6kws743qvGqhHP0GEL9CwR0M13S9WgmGuGEvHPVzbGcAjWboOs3hAi63kHUrtkTQiw==
   dependencies:
-    "@nuxt/kit" "3.11.1"
+    "@nuxt/kit" "3.12.2"
     body-parser "1.20.2"
-    qs "6.12.1"
+    qs "6.12.2"
     utility-types "3.11.0"
 
 "@scayle/prettier-config-storefront@2.0.2":
@@ -11820,7 +11820,14 @@ qs@6.11.0:
   dependencies:
     side-channel "^1.0.4"
 
-qs@6.12.1, qs@^6.11.2:
+qs@6.12.2:
+  version "6.12.2"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.12.2.tgz#5443b587f3bf73ac68968de491e5b25bafe04478"
+  integrity sha512-x+NLUpx9SYrcwXtX7ob1gnkSems4i/mGZX5SlYxwIau6RrUSODO89TR/XDGGpn5RPWSYIB+aSfuSlV5+CmbTBg==
+  dependencies:
+    side-channel "^1.0.6"
+
+qs@^6.11.2:
   version "6.12.1"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.12.1.tgz#39422111ca7cbdb70425541cba20c7d7b216599a"
   integrity sha512-zWmv4RSuB9r2mYQw3zxQuHWeU+42aKi1wWig/j4ele4ygELZ7PEO6MM7rim9oAQH2A5MWfsAVf/jPvTPgCbvUQ==

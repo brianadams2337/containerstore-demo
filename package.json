@@ -98,7 +98,7 @@
     "@opentelemetry/resources": "1.25.1",
     "@opentelemetry/sdk-node": "0.52.1",
     "@opentelemetry/semantic-conventions": "1.25.1",
-    "@scayle/omnichannel-nuxt": "3.0.2",
+    "@scayle/omnichannel-nuxt": "3.0.3",
     "@scayle/storefront-nuxt": "7.79.1",
     "@storyblok/nuxt": "6.0.10",
     "@storyblok/vue": "8.0.8",
