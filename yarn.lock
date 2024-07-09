@@ -11349,10 +11349,10 @@ storyblok-js-client@6.8.0, storyblok-js-client@^6.7.1, storyblok-js-client@^6.7.
   resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-6.8.0.tgz#9adea1ffa8b8f282cfc84c39034b913a1f541a51"
   integrity sha512-uAPDbechCAUAT/NwAzICmc9cEANXmaeRdBRKJujfzjMPqQEc9fTnk1LuZ/iSSTL9j9i/fdO7JIrbsiHPH7iyTQ==
 
-storyblok@3.32.2:
-  version "3.32.2"
-  resolved "https://registry.yarnpkg.com/storyblok/-/storyblok-3.32.2.tgz#957505992010a515a459f6827e22477f2a0c1d88"
-  integrity sha512-j0YWspedMUtF8Jnt2mtf+ZqnoFd8o+IM2ClvaSutZHU6UdJP7mTbbauRmknpNtlsRl++RTtXIKzhWJE4SJhvFA==
+storyblok@3.32.3:
+  version "3.32.3"
+  resolved "https://registry.yarnpkg.com/storyblok/-/storyblok-3.32.3.tgz#15bbad70263e041115b806a7dee4a00a426a461b"
+  integrity sha512-5cFu+gzaEGHNyELvuH54mTqvV+5AF0/EAlYl3MKZQPptegI1gzX1RmTNFfbVl5Yw5xDY9Z4iAnElyUIsxVE4sg==
   dependencies:
     "@storyblok/region-helper" "^1.0.0"
     axios "^0.27.2"
