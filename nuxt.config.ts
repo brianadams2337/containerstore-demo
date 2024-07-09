@@ -613,7 +613,7 @@ export default defineNuxtConfig({
         }
 
     const NO_CACHE: NitroRouteConfig = isVercel
-      ? { isr: false }
+      ? { isr: false, cache: false }
       : { swr: false, cache: false }
 
     // Default routeRules for using SWR and `storefront-cache` storage for page caching setup
