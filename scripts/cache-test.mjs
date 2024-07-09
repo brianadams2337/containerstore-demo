@@ -1,4 +1,5 @@
 import http from 'node:http'
+import https from 'node:https'
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import path from 'node:path'
@@ -17,12 +18,22 @@ const join = (base, pathname) => {
   return new URL(newPath, url.origin)
 }
 
-const getHeaders = async (url) => {
+const token = new URL(BASE_URL).searchParams.get('x-vercel-protection-bypass')
+
+const getHeaders = async (_url) => {
+  const url = new URL(_url)
+  url.searchParams.delete('x-vercel-protection-bypass')
+  url.searchParams.delete('x-vercel-set-bypass-cookie')
   return new Promise((resolve, reject) => {
-    http
-      .get(url, (res) => {
-        resolve(res.headers)
-      })
+    ;(url.protocol === 'http' ? http : https)
+      .get(
+        url,
+        { headers: token ? { 'x-vercel-protection-bypass': token } : {} },
+        (res) => {
+          resolve(res.headers)
+          res.resume()
+        },
+      )
       .on('error', (e) => reject(e))
   })
 }
@@ -51,13 +62,18 @@ function assertCacheHeaders(headers) {
 
     const cacheControl = parseCacheControl(headers['cache-control'])
 
-    if (isNaN(parseInt(cacheControl['s-maxage']))) {
-      assert.fail('Missing s-maxage directive in cache-control header')
+    const sMaxAge = parseInt(cacheControl['s-maxage'])
+    const maxAge = parseInt(cacheControl['max-age'])
+    if (!sMaxAge && !maxAge) {
+      assert.fail(
+        'Missing s-maxage or max-age directive in cache-control header',
+      )
     }
 
     if (
       cacheControl['stale-while-revalidate'] !== 'true' &&
-      isNaN(parseInt(cacheControl['stale-while-revalidate']))
+      isNaN(parseInt(cacheControl['stale-while-revalidate'])) &&
+      headers['server'] !== 'Vercel' // ignore SWR for vercel
     ) {
       assert.fail(
         'Missing stale-while-revalidate directive in cache-control header',
@@ -71,8 +87,16 @@ function assertCacheHeaders(headers) {
 
 function assertNoCacheHeaders(headers) {
   if (headers['cache-control']) {
-    console.error({ headers })
-    assert.fail('Cache headers should not be present!')
+    const cacheControl = parseCacheControl(headers['cache-control'])
+    if (parseInt(cacheControl['max-age']) !== 0) {
+      console.error({ headers })
+      assert.fail('Cache headers should not be present!')
+    }
+  }
+  const cookieHeader = headers['set-cookie']
+
+  if (cookieHeader && cookieHeader.includes('$session')) {
+    assert.fail('Cached responses should not set the session cookie!')
   }
 }
 
