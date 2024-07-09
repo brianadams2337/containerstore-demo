@@ -29,7 +29,6 @@ export default defineNuxtModule<ModuleOptions>({
     await addComponentsDir({
       path: resolve('./runtime/components'),
       pathPrefix: false,
-      global: true, // TODO: Remove this after we move to the `explicit` imports
       prefix: options.prefix ?? 'SF',
       // Only auto import Vue components
       // Resolves:
