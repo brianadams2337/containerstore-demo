@@ -122,7 +122,6 @@ const rules = computed(() => ({
     maxLength: validationRules.maxLength(50),
   },
   birthDate: {
-    required: validationRules.required,
     date: validationRules.date,
     futureDate: validationRules.futureDate,
   },
@@ -160,7 +159,9 @@ const update = async () => {
     }
     await updateUser({
       ...payload,
-      birthDate: getPayloadDate(payload.birthDate),
+      birthDate: payload.birthDate
+        ? getPayloadDate(payload.birthDate)
+        : undefined,
     })
     toast.show($i18n.t('my_account.user.save_message'), 'CONFIRM')
   } catch {
