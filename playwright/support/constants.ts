@@ -25,3 +25,10 @@ export const TEST_ITEM_REGULAR = {
   category: 'women',
   brand: 's.Oliver',
 }
+
+export const lighthouseThresholds = {
+  performance: 80,
+  accessibility: 80,
+  seo: 80,
+  bestPractices: 80,
+}

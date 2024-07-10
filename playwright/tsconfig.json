@@ -13,7 +13,8 @@
     "./tests/**/*.ts",
     "./fixtures/**/*.ts",
     "./page-objects/**/*.ts",
-    "./playwright.config.ts"
+    "./playwright.config.ts",
+    "./support/**/*.ts"
   ],
   "exclude": ["node_modules", "playwright-report"]
 }

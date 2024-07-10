@@ -23,6 +23,8 @@ interface Fixtures {
   toastMessage: ToastMessage
 }
 
+export type OutputMode = 'json' | 'html' | 'csv'
+
 export const test = base.extend<Fixtures>({
   homePage: async ({ page }, use) => {
     const homePage = new HomePage(page)

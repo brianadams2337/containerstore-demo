@@ -17,12 +17,15 @@
     "dotenv": "16.4.5",
     "eslint": "9.6.0",
     "eslint-plugin-playwright": "1.6.2",
+    "lighthouse": "12.1.0",
     "ts-node": "10.9.2",
     "typescript": "5.5.3"
   },
   "scripts": {
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "e2e:happy": "playwright test ./tests/e2e-happy-path.spec.ts",
+    "e2e:lighthouse": "playwright test ./tests/lighthouse/*.ts --project chromium"
   },
   "author": "",
   "license": "ISC",
