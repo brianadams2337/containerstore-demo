@@ -8,7 +8,7 @@
       {{ $t('my_account.profile_menu') }}
     </SFHeadline>
     <UserPersonalInfoForm />
-    <UpdatePasswordForm />
+    <UpdatePasswordForm v-if="user?.authentication?.type !== 'idp'" />
   </AccountWrapper>
 </template>
 
@@ -19,7 +19,7 @@ import { definePageMeta } from '#imports'
 import { useNuxtApp } from '#app'
 import { useUser } from '#storefront/composables'
 
-await useUser()
+const { user } = useUser()
 
 const { $i18n } = useNuxtApp()
 
