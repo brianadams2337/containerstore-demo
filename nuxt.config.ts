@@ -579,7 +579,10 @@ export default defineNuxtConfig({
       return {}
     }
 
-    // Vercel-specific routeRules for using ISR with Vercel CDN as page caching setup
+    // Vercel deployments have a different caching set-up
+    // There we use cache headers plus Incremental Static Regeneration (ISR)
+    // https://vercel.com/docs/incremental-static-regeneration
+    // For other environments we set the cache headers and also rely on the Nitro page cache
     const CACHE_PAGE: NitroRouteConfig = isVercel
       ? {
           isr: true,
