@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, watch } from 'vue'
+import { computed, reactive } from 'vue'
 import useVuelidate from '@vuelidate/core'
 import { isString } from 'radash'
 import {
@@ -116,10 +116,6 @@ const rules = {
 }
 
 const v = useVuelidate(rules, editableUser)
-
-watch(editableUser, () => {
-  v.value.$touch()
-})
 
 const onSubmit = async () => {
   const isValid = await v.value.$validate()
