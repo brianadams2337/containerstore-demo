@@ -2,10 +2,12 @@ import { expect, test } from '../../fixtures/fixtures'
 import { runLighthouseAudit } from '../../support/lighthouseAudit'
 import { lighthouseThresholds } from '../../support/constants'
 
-test.describe.configure({ mode: 'serial' })
+test.describe.configure({ mode: 'serial', timeout: 120000 })
 
 test('Lighthouse audit for Homepage', async ({ baseURL }) => {
-  const averageScores = await runLighthouseAudit(`${baseURL}`)
+  const homepageUrl = new URL('/', baseURL)
+
+  const averageScores = await runLighthouseAudit(homepageUrl, 'homepage')
 
   expect(averageScores.performance).toBeGreaterThanOrEqual(
     lighthouseThresholds.performance / 100,

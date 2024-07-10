@@ -2,12 +2,12 @@ import { expect, test } from '../../fixtures/fixtures'
 import { runLighthouseAudit } from '../../support/lighthouseAudit'
 import { lighthouseThresholds } from '../../support/constants'
 
-test.describe.configure({ mode: 'serial' })
+test.describe.configure({ mode: 'serial', timeout: 120000 })
 
-test('Lighthouse audit for PLP', async ({ baseURL }) => {
-  const averageScores = await runLighthouseAudit(
-    `${baseURL}/p/adele-gerafftes-midikleid-1145`,
-  )
+test('Lighthouse audit for PDP', async ({ baseURL }) => {
+  const pdpUrl = new URL('/p/batist-blusentop-1099', baseURL)
+
+  const averageScores = await runLighthouseAudit(pdpUrl, 'pdp')
 
   expect(averageScores.performance).toBeGreaterThanOrEqual(
     lighthouseThresholds.performance / 100,

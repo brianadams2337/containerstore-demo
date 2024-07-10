@@ -1,10 +1,11 @@
+import fs from 'node:fs'
 import lighthouse from 'lighthouse/core/index.cjs'
 import { chromium } from 'playwright'
 import type { OutputMode } from '../fixtures/fixtures'
 
 const NUM_RUNS = 3
 
-export const runLighthouseAudit = async (url: string) => {
+export const runLighthouseAudit = async (url: URL, auditedPage: string) => {
   const scores: {
     performance: number[]
     accessibility: number[]
@@ -28,13 +29,42 @@ export const runLighthouseAudit = async (url: string) => {
         port: 9015,
         output: ['json', 'html'] as OutputMode[],
         chromeFlags: ['--incognito'],
+        extraHeaders: {
+          'x-vercel-protection-bypass':
+            process.env.VERCEL_AUTOMATION_BYPASS_SECRET ?? '',
+          'x-vercel-set-bypass-cookie': 'true',
+        },
       }
+
+      const fullAuditUrl = new URL(url)
+      fullAuditUrl.searchParams.append(
+        'x-vercel-protection-bypass',
+        process.env.VERCEL_AUTOMATION_BYPASS_SECRET || '',
+      )
+      fullAuditUrl.searchParams.append('x-vercel-set-bypass-cookie', 'true')
 
       const config = {
         extends: 'lighthouse:default',
       }
 
-      const runnerResult = await lighthouse(url, lhOptions, config)
+      const runnerResult = await lighthouse(
+        `${fullAuditUrl}`,
+        lhOptions,
+        config,
+      )
+
+      if (i === 0) {
+        try {
+          const filename = `./lighthouse-reports/lighthouse-report-${auditedPage}.json`
+
+          const cleanedResult = JSON.parse(JSON.stringify(runnerResult))
+          delete cleanedResult.artifacts
+
+          fs.writeFileSync(filename, JSON.stringify(cleanedResult, null, 2))
+        } catch (err) {
+          console.error('Error saving Lighthouse report:', err)
+        }
+      }
 
       if (runnerResult && runnerResult.lhr) {
         scores.performance.push(
