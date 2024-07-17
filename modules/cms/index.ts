@@ -43,5 +43,43 @@ export default defineNuxtModule<ModuleOptions>({
     if (isProviderContentful(options)) {
       await setupContentful(options, nuxt)
     }
+
+    // Manually adjust rollupOptions.output.manualChunks
+    // https://github.com/nuxt/nuxt/issues/22127#issuecomment-1635925362
+    nuxt.hooks.hook('vite:extendConfig', (config, { isClient }) => {
+      if (isClient) {
+        // https://rollupjs.org/configuration-options/#output-manualchunks
+        // @ts-expect-error 'config.build.rollupOptions.output' is possibly 'undefined'.ts(18048)
+        config.build.rollupOptions.output.manualChunks = function (id) {
+          // Key: chunkName, Value: dependency name
+          const chunkMap: Record<string, string[]> = {
+            axios: ['axios'],
+            contentful: [
+              'contentful',
+              '@contentful/live-preview',
+              '@contentful/rich-text-html-renderer',
+            ],
+            storyblok: [
+              '@storyblok/nuxt',
+              '@storyblok/vue',
+              'storyblok',
+              'storyblok-js-client',
+            ],
+          }
+
+          const chunks = Object.values(chunkMap).flat()
+
+          if (id.includes('/node_modules/')) {
+            const chunkName = chunks.find((chunk) => id.includes(chunk))
+            return (
+              chunkName &&
+              Object.keys(chunkMap).find((key) =>
+                chunkMap[key].includes(chunkName),
+              )
+            )
+          }
+        }
+      }
+    })
   },
 })
