@@ -89,7 +89,7 @@
   },
   "dependencies": {
     "@contentful/live-preview": "4.3.0",
-    "@contentful/rich-text-html-renderer": "16.6.4",
+    "@contentful/rich-text-html-renderer": "16.6.5",
     "@googlemaps/js-api-loader": "1.16.6",
     "@opentelemetry/api": "1.9.0",
     "@opentelemetry/auto-instrumentations-node": "0.48.0",
