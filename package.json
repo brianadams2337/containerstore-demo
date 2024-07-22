@@ -54,7 +54,7 @@
     "@typescript-eslint/scope-manager": "7.16.1",
     "@typescript-eslint/utils": "7.16.1",
     "@upstash/redis": "1.33.0",
-    "@vitest/coverage-v8": "2.0.3",
+    "@vitest/coverage-v8": "2.0.4",
     "@vue/test-utils": "2.4.6",
     "@zadigetvoltaire/nuxt-gtm": "0.0.13",
     "autoprefixer": "10.4.19",
@@ -84,7 +84,7 @@
     "unimport": "3.9.0",
     "utility-types": "3.11.0",
     "vitest-environment-nuxt": "1.0.0",
-    "vitest": "2.0.3",
+    "vitest": "2.0.4",
     "vue-tsc": "2.0.28"
   },
   "dependencies": {
