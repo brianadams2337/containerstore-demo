@@ -9,6 +9,8 @@ import { SignInPage } from '../page-objects/signinPage'
 import { CheckoutPage } from '../page-objects/checkoutPage'
 import { AccountPage } from '../page-objects/accountPage'
 import { ToastMessage } from '../page-objects/components/toastMessage'
+import { Breadcrumb } from '../page-objects/components/breadcrumb'
+import { Pagination } from '../page-objects/components/pagination'
 
 interface Fixtures {
   homePage: HomePage
@@ -21,6 +23,8 @@ interface Fixtures {
   checkoutPage: CheckoutPage
   accountPage: AccountPage
   toastMessage: ToastMessage
+  breadcrumb: Breadcrumb
+  pagination: Pagination
 }
 
 export type OutputMode = 'json' | 'html' | 'csv'
@@ -65,6 +69,14 @@ export const test = base.extend<Fixtures>({
   toastMessage: async ({ page }, use) => {
     const toastMessage = new ToastMessage(page)
     await use(toastMessage)
+  },
+  breadcrumb: async ({ page }, use) => {
+    const breadCrumb = new Breadcrumb(page)
+    await use(breadCrumb)
+  },
+  pagination: async ({ page }, use) => {
+    const pagination = new Pagination(page)
+    await use(pagination)
   },
 })
 export { expect } from '@playwright/test'

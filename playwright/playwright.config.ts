@@ -27,6 +27,7 @@ export default defineConfig({
   reporter: [
     ['junit', { outputFile: 'test-results/results.xml' }],
     ['playwright-testrail-reporter'],
+    ['list', { printSteps: true }],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
