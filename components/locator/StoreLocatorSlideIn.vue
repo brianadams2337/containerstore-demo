@@ -10,13 +10,13 @@
             >{{ $t('store_locator.headline') }}
           </SFHeadline>
           <SFButton
-            type="ghost"
+            type="raw"
             size="xs"
             data-test-id="closeCross"
             @click="toggleItem"
           >
             <template #icon="{ _class }">
-              <IconCloseBold :class="_class" />
+              <IconClose :class="_class" />
             </template>
           </SFButton>
         </div>
@@ -34,7 +34,7 @@
           <SFButton
             data-test-id="choose-store-button"
             type="primary"
-            class="ml-auto rounded border border-black p-2 text-xs !normal-case"
+            class="ml-auto"
             rounded
             :disabled="!address.length"
             @click="searchStore"

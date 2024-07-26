@@ -8,7 +8,7 @@ export class ProductListingPage {
   constructor(page: Page) {
     this.page = page
     this.wishlistButton = page.locator(
-      '[data-test-id="add-item-to-wishlist-button"]',
+      '[data-testid="add-item-to-wishlist-button"]',
     )
     this.productTile = page.locator('[id^="product-"]')
   }

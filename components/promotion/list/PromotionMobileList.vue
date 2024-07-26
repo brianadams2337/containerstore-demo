@@ -1,6 +1,6 @@
 <template>
   <div
-    ref="promotionList"
+    :ref="(element) => setBannerRef(element as HTMLElement, 'bottom')"
     class="fixed bottom-0 right-0 z-60 w-full overflow-hidden rounded-t-xl lg:hidden"
   >
     <div class="relative flex flex-col bg-primary px-4 pb-4 text-white">
@@ -8,7 +8,7 @@
         <SFHeadline tag="h2" size="lg">
           {{ $t('promotion.my_deals_label') }} ({{ items.length }})
         </SFHeadline>
-        <ClosePromotionListButton position-class="right-5 top-4" />
+        <ClosePromotionListButton position-class="right-5 top-3" />
       </div>
       <SFHorizontalItemsSlider>
         <PromotionItem
@@ -24,16 +24,17 @@
 
 <script setup lang="ts">
 import { onClickOutside } from '@vueuse/core'
-import { ref } from 'vue'
 import { useDefaultBreakpoints, usePromotionActions } from '~/composables'
 
 defineProps<{ items: Promotion[] }>()
 
-const promotionList = ref()
-
 const viewport = useDefaultBreakpoints()
 
-const { togglePromotionList: toggle } = usePromotionActions()
+const {
+  togglePromotionList: toggle,
+  setBannerRef,
+  bottomBannerRef,
+} = usePromotionActions()
 
-onClickOutside(promotionList, () => viewport.isSmaller('lg') && toggle())
+onClickOutside(bottomBannerRef, () => viewport.isSmaller('lg') && toggle())
 </script>

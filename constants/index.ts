@@ -1,7 +1,6 @@
 export * from './attributes'
 export * from './basket'
 export * from './color'
-export * from './facet'
 export * from './listingMetadata'
 export * from './mask'
 export * from './order'

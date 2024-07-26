@@ -5,7 +5,7 @@ class HomePage extends BasePage {
   baseURL = '/'
 
   pageElements = {
-    homePageContent: '[data-test-id="home-page-content"]',
+    homePageContent: '[data-testid="home-page-content"]',
     highlightsProductSlider: '[data-test-id="horizontal-product-slider"]',
     countrySwitcher: '[data-test-id="language-listbox"]',
     languageOption: '[role="option"] button',

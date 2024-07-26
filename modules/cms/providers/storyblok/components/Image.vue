@@ -3,7 +3,8 @@
     <NuxtPicture
       v-if="imageSource?.src"
       provider="storyblok"
-      class="picture picture-contain h-full bg-gray-200"
+      class="picture h-full bg-gray-200"
+      :class="isCover ? 'picture-cover' : 'picture-contain'"
       :src="imageSource?.src"
       loading="lazy"
     />
@@ -22,6 +23,7 @@ import {
 const props = withDefaults(defineProps<CMSImageProps>(), {
   preload: false,
   isTeaser: false,
+  isCover: false,
   sizes: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
 })
 

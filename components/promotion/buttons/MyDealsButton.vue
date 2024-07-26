@@ -3,12 +3,13 @@
     type="raw"
     size="sm"
     is-uppercase
-    class="h-[3.25rem] rounded-none border-l border-l-primary/25 text-xs font-semibold"
+    class="h-[3.25rem] rounded-none border-l border-l-primary/25 px-3 py-2 font-semibold text-white hover:text-white"
     :class="{ 'bg-primary/10': isPromotionListShown }"
     @click="togglePromotionList()"
   >
+    {{ $t('promotion.my_deals_label') }}
+
     <template #append-icon="{ _class }">
-      {{ $t('promotion.my_deals_label') }}
       <IconCloseSBold v-if="isPromotionListShown" :class="_class" />
       <IconEquals v-else :class="_class" />
     </template>

@@ -8,7 +8,7 @@
           (width === '2' && listingColumns === 3) || listingColumns === 1,
         'col-span-full md:col-span-8': width === '2' && listingColumns === 2,
       }"
-      v-bind="{ product, badgeLabel }"
+      v-bind="{ product, badgeLabel, multipleImages }"
       :show-add-to-cart="false"
       :loading="fetching"
       class="col-span-full"
@@ -26,6 +26,7 @@ import { useListingUiState } from '~/composables/useListingUiState'
 type CMSProductProps = {
   width?: string
   fetching?: boolean
+  multipleImages?: boolean
   product: Product
 }
 const { listingColumns } = useListingUiState()
@@ -34,15 +35,13 @@ const { $i18n } = useNuxtApp()
 const props = withDefaults(defineProps<CMSProductProps>(), {
   fetching: false,
   width: undefined,
+  multipleImages: false,
 })
 
 const emit = defineEmits(['intersect:product'])
-const badgeLabel = computed(() => {
-  if (props.product.isNew) {
-    return $i18n.t('badge_labels.new')
-  }
 
-  return undefined
+const badgeLabel = computed(() => {
+  return props.product.isNew ? $i18n.t('badge_labels.new') : undefined
 })
 
 defineOptions({ name: 'CMSProduct' })

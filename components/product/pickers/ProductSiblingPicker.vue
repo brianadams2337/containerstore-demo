@@ -23,8 +23,10 @@
             v-show="isLimiting && furtherItemsCount > 0"
             class="cursor-pointer pl-1 font-medium leading-none text-gray-600"
             @click="toggleIsLimiting"
-            >+ {{ furtherItemsCount }}</span
+            @keydown.enter="toggleIsLimiting"
           >
+            + {{ furtherItemsCount }}
+          </span>
         </slot>
       </div>
     </slot>
@@ -33,28 +35,20 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import type { PropType } from 'vue'
-import type { getProductSiblings } from '@scayle/storefront-nuxt'
-// TODO: Expose the type in SFC
-type ProductSiblings = ReturnType<typeof getProductSiblings>
+import type { ProductSibling } from '@scayle/storefront-nuxt'
 
-const props = defineProps({
-  items: {
-    type: Array as PropType<ProductSiblings>,
-    default: () => [],
-  },
-  withValues: {
-    type: Boolean,
-    default: false,
-  },
-  spacing: {
-    type: String as PropType<'default' | 'narrow'>,
-    default: 'default',
-  },
-  limit: {
-    type: Number,
-    default: 3,
-  },
+type Props = {
+  items?: ProductSibling[]
+  withValues?: boolean
+  spacing?: 'default' | 'narrow'
+  limit?: number
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  items: () => [],
+  withValues: false,
+  spacing: 'default',
+  limit: 3,
 })
 
 const isLimiting = ref(true)
@@ -64,7 +58,7 @@ const itemsToShow = computed(() => {
 })
 const furtherItemsCount = computed(() => props.items.length - props.limit)
 
-const colorLabel = computed(() => itemsToShow.value[0].colors[0]?.label || '')
+const colorLabel = computed(() => itemsToShow.value[0]?.colors[0]?.label || '')
 
 const toggleIsLimiting = () => {
   isLimiting.value = !isLimiting.value

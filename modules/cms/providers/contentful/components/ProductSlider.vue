@@ -16,7 +16,8 @@
     <SFHorizontalItemsSlider
       class="mt-4"
       with-arrows
-      data-test-id="horizontal-product-slider"
+      hide-disabled-arrows
+      data-testid="horizontal-product-slider"
     >
       <CMSProduct
         v-for="(product, index) in products"
@@ -27,25 +28,6 @@
         @click:product="trackProductClick({ product: $event, index })"
         @intersect:product="trackIntersection({ product: $event, index })"
       />
-
-      <template #prev-button="{ prev, isPrevEnabled }">
-        <button
-          class="absolute left-0 top-[40%] rounded-sm bg-black text-white disabled:hidden sm:left-14"
-          :disabled="!isPrevEnabled"
-          @click="prev(sliderOffset)"
-        >
-          <IconArrowLeft class="size-8 p-1.5" />
-        </button>
-      </template>
-      <template #next-button="{ next, isNextEnabled }">
-        <button
-          class="absolute right-0 top-[40%] rounded-sm bg-black text-white disabled:hidden sm:right-14"
-          :disabled="!isNextEnabled"
-          @click="next(sliderOffset)"
-        >
-          <IconArrowRight class="size-8 p-1.5" />
-        </button>
-      </template>
     </SFHorizontalItemsSlider>
   </div>
 </template>
@@ -85,7 +67,7 @@ const productIds = computed(() => {
   return props.blok?.fields.productIds?.split(',').map(Number).filter(Boolean)
 })
 
-const { data, fetching } = useProductsByIds({
+const { data, fetching } = await useProductsByIds({
   params: {
     ids: productIds.value || [],
     with: {
@@ -112,11 +94,6 @@ const { data, fetching } = useProductsByIds({
 
 const trackingCollector = ref<Product[]>([])
 const products = computed(() => data.value)
-const sliderOffset = computed(() =>
-  storefrontBreakpoints && storefrontBreakpoints.isGreaterOrEqual('md')
-    ? 56
-    : 20,
-)
 const columns = computed(() =>
   storefrontBreakpoints && storefrontBreakpoints.isGreaterOrEqual('md') ? 5 : 2,
 )

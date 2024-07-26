@@ -232,6 +232,7 @@ export type CMSImageProps = CMSComponentProps<
     sizes?: string
     preload?: boolean
     isTeaser?: boolean
+    isCover?: boolean
   }
 >
 

@@ -82,7 +82,9 @@ export function useWishlistItemActions(item: Ref<WishlistItem>) {
     }
 
     if (!item.value.variant?.id) {
-      toast.show($i18n.t('basket.notification.select_size'), 'CONFIRM')
+      toast.show($i18n.t('basket.notification.select_size'), {
+        action: 'CONFIRM',
+      })
       return
     }
 

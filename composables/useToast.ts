@@ -1,13 +1,20 @@
 import { refreshNuxtData } from '#app/composables/asyncData'
 import type {
   NotificationOnClickActions,
-  NotificationOptions,
+  NotificationComponent,
 } from '#storefront-ui'
 import type { RouteLocationRaw } from '#vue-router'
 import { useNotification } from '#storefront-ui'
 import { useNuxtApp } from '#app'
 
-type ToastAction = 'CONFIRM' | 'RELOAD' | 'ROUTE'
+export type ToastAction = 'CONFIRM' | 'RELOAD' | 'ROUTE'
+export type ToastType = 'INFO' | 'SUCCESS' | 'ERROR'
+export type ToastOptions = {
+  duration?: number
+  action?: ToastAction
+  type?: ToastType
+  to?: RouteLocationRaw
+}
 
 export function useToast() {
   const { $i18n } = useNuxtApp()
@@ -47,14 +54,38 @@ export function useToast() {
     return actions[action]
   }
 
-  const show = (
-    message: string,
-    action: ToastAction,
-    { to, ...options }: NotificationOptions & { to?: RouteLocationRaw } = {},
-  ) => {
+  const getType = (toastType?: ToastType): NotificationComponent => {
+    if (!toastType) {
+      return {
+        classes: 'text-white bg-black',
+      }
+    }
+
+    const type = {
+      SUCCESS: {
+        classes: 'text-emerald-500 bg-emerald-100',
+        iconComponent: 'IconCheckGreen',
+      },
+      INFO: {
+        classes: 'text-blue-600 bg-blue-100',
+        iconComponent: 'IconInfo',
+      },
+      ERROR: {
+        classes: 'text-red-600 bg-red-100',
+        iconComponent: 'IconError',
+      },
+    }
+
+    return type[toastType]
+  }
+
+  const show = (message: string, options: ToastOptions) => {
+    const { action, type, to } = options
+
     notification.show(message, {
       ...options,
-      actions: getActions(action, to),
+      actions: action && getActions(action, to),
+      type: getType(type),
     })
   }
 

@@ -4,15 +4,15 @@ import Header from './components/header'
 
 class ProductListingPage extends BasePage {
   pageElements = {
-    productItem: '[data-test-id="product-item"]',
-    productImage: '[data-test-id="product-item"] picture[class*="opacity-0"]',
-    wishListIcon: '[data-test-id="product-item"] svg',
-    price: '[data-test-id="price"]',
-    productName: '[data-test-id="product-card-product-name"]',
-    productPageHeading: '[data-test-id="headline"]',
-    paginationButtons: '[data-test-id="paginationButton"]',
+    productItem: '[data-testid="product-item"]',
+    productImage: '[data-testid="product-item"] picture[class*="opacity-0"]',
+    wishListIcon: '[data-testid="product-item"] svg',
+    price: '[data-testid="price"]',
+    productName: '[data-testid="product-card-product-name"]',
+    productPageHeading: '[data-testid="headline"]',
+    paginationButtons: '[data-testid="paginationButton"]',
     productCountButton: '[data-test-id="totalCount"] span',
-    productBadges: '[data-test-id="product-badges"]',
+    productBadges: '[data-testid="product-badges"]',
     productColor: (ID: number) => {
       return `[data-color-id="${ID}"]`
     },
@@ -22,9 +22,9 @@ class ProductListingPage extends BasePage {
     },
     filters: {
       filterButton: '[data-test-id="filter-toggle-button"]',
-      applyFilterButton: '[data-test-id="apply-filter-button"]',
-      resetFilterButton: '[data-test-id="reset-filter-button"]',
-      filterColorsCircle: '[data-test-id="filter-color-circle"]',
+      applyFilterButton: '[data-testid="apply-filter-button"]',
+      resetFilterButton: '[data-testid="reset-filter-button"]',
+      filterColorsCircle: '[data-testid="filter-color-circle"]',
       testColor: '[data-color-id="594"]',
       closeCross: '[data-test-id="closeCross"]',
     },

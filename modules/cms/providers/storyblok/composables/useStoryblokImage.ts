@@ -1,4 +1,3 @@
-import { reactive } from 'vue'
 import type { SbCmsImage } from '../types/storyblok'
 import { useDefaultBreakpoints } from '~/composables/useDefaultBreakpoints'
 
@@ -22,17 +21,18 @@ export function useStoryblokImageSanitizer() {
 }
 
 export function getTeaserImage(blok: any) {
-  const sanitizedImage: SanitizedImage = reactive({
-    src: '',
-    alt: '',
-  })
+  const sanitizedImage: SanitizedImage = { src: '', alt: '' }
+
   const desktopImageProperty = 'teaser_image'
   const mobileImageProperty = 'teaser_image_mobile'
 
   if (blok) {
-    const image = blok[isMobile() ? mobileImageProperty : desktopImageProperty]
+    const imageKey = isMobile() ? mobileImageProperty : desktopImageProperty
+    const fallbackBlok = blok[desktopImageProperty]
+    const image = blok[imageKey].filename ? blok[imageKey] : fallbackBlok
     sanitizedImage.src = image?.filename || ''
     sanitizedImage.alt = image?.alt || image?.name || ''
   }
+
   return sanitizedImage
 }

@@ -1,14 +1,14 @@
 <template>
-  <div class="mt-1 text-gray-500">
+  <div class="mt-1 !text-gray-500">
     <SFButton
       type="raw"
-      class="flex !items-start justify-between whitespace-pre-line !px-1.5 text-start text-xs font-semibold text-gray-500"
+      class="flex !items-start justify-between whitespace-pre-line !px-1.5 text-start text-xs font-semibold !text-gray-500"
       is-full-width
-      size="xs"
+      size="sm"
       @click="toggleTerms"
     >
       <span class="inline-flex items-start">
-        <IconInfoOutline class="mr-1 size-4" />
+        <IconInfoOutlineSquare class="mr-1 size-4" />
         {{ $t('promotion.terms') }}
       </span>
       <template #append-icon="{ _class }">

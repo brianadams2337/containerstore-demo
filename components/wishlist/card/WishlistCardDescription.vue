@@ -4,7 +4,7 @@
       <div
         class="mt-2 w-full justify-between py-2 text-xs font-medium text-primary opacity-50"
       >
-        <p v-if="title">{{ title }}</p>
+        <p v-if="brand">{{ brand }}</p>
         <p v-if="name">{{ name }}</p>
       </div>
       <div>
@@ -34,7 +34,8 @@
         </div>
         <SFButton
           v-if="!hasOneSizeVariantOnly && !isChangingSize"
-          data-test-id="wishlist-card-product-size"
+          data-testid="wishlist-card-product-size"
+          size="sm"
           type="secondary"
           class="mr-2 mt-4"
           @click="isChangingSize = !isChangingSize"
@@ -44,7 +45,8 @@
         <SFButton
           v-if="!isChangingSize"
           :disabled="sizeSavingId === item.product.id"
-          data-test-id="wishlist-card-add-to-cart"
+          size="sm"
+          data-testid="wishlist-card-add-to-cart"
           class="mt-4"
           @click="addItemToCart(index)"
         >
@@ -64,7 +66,7 @@ type Props = {
   index: number
   item: WishlistItem
   name?: string
-  title?: string
+  brand?: string
 }
 
 const props = defineProps<Props>()

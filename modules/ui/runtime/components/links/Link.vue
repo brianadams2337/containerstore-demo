@@ -64,10 +64,12 @@ const variantClass = computed(() => {
   return !props.raw ? [defaultClass, LinkTypeClass[props.type]] : {}
 })
 
-const activeClass = computed(() => (!props.onlyExactActive ? ACTIVE_CLASS : ''))
+const activeClass = computed(() => {
+  return !props.onlyExactActive && !props.raw ? ACTIVE_CLASS : ''
+})
 
 const exactActiveClass = computed(() => {
-  return props.onlyExactActive ? ACTIVE_CLASS : ''
+  return props.onlyExactActive && !props.raw ? ACTIVE_CLASS : ''
 })
 
 const { getLocalizedRoute } = useRouteHelpers()

@@ -2,10 +2,13 @@
   <PromotionMobileList v-if="isPromotionListShown" :items="promotions" />
   <div
     v-else
-    class="translate--y-0 fixed bottom-0 z-[80] flex max-h-32 w-full cursor-pointer flex-col items-center justify-start rounded-tr-lg bg-blue p-4 text-sm text-white transition-transform duration-300 ease-in-out lg:hidden"
+    :key="currentPromotion?.id"
+    :ref="(element) => setBannerRef(element as HTMLElement, 'bottom')"
+    class="fixed bottom-0 z-80 flex max-h-32 w-full translate-y-0 cursor-pointer flex-col items-center justify-start rounded-tr-lg bg-blue p-4 text-sm text-white transition-transform duration-300 ease-in-out lg:hidden"
     :style="backgroundColorStyle"
     :class="{ 'translate-y-full': !isPromotionBannerShown }"
     @click="togglePromotionList()"
+    @keydown.enter="togglePromotionList()"
   >
     <div class="overflow-hidden">
       <div
@@ -45,7 +48,6 @@
       />
     </div>
     <TogglePromotionBannerButton
-      v-model="isPromotionBannerShown"
       class="absolute left-0 mt-[-2.875rem] inline-flex !rounded-none !rounded-t-lg"
       is-mobile-view
     />
@@ -53,7 +55,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import {
   useCurrentPromotion,
   usePromotionActions,
@@ -62,10 +64,8 @@ import {
 
 const props = defineProps<{
   promotions: Promotion[]
-  category?: { ctaLabel: string; to: string }
+  category?: Promotion['customData']['category']
 }>()
-
-const isPromotionBannerShown = ref(true)
 
 const {
   headlineParts,
@@ -78,7 +78,12 @@ const {
 const { isFullProgress, isMOVPromotionApplied } =
   usePromotionProgress(currentPromotion)
 
-const { togglePromotionList, isPromotionListShown } = usePromotionActions()
+const {
+  togglePromotionList,
+  isPromotionListShown,
+  setBannerRef,
+  isPromotionBannerShown,
+} = usePromotionActions()
 
 const isDealsButtonShown = computed<boolean>(() => {
   return Boolean(

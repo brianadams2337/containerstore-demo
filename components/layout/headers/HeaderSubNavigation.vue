@@ -1,14 +1,11 @@
 <template>
   <div
-    data-test-id="nav-categories"
+    data-testid="nav-categories"
     class="hidden overflow-x-auto border-b border-gray-200 scrollbar-hide md:block"
   >
-    <div
-      v-if="!fetchingCategories"
-      class="container flex items-center space-x-16"
-    >
+    <div class="container flex items-center space-x-16">
       <SFLink
-        class="border-b-2 border-transparent py-2.5 font-normal hover:border-black sm:text-sm sm:font-semibold"
+        class="border-b-2 border-transparent px-1 py-2.5 font-normal hover:border-black sm:text-sm sm:font-semibold"
         :to="routeList.home"
         type="quiet"
       >
@@ -19,9 +16,9 @@
         v-for="category in rootCategories"
         :key="`nav-link-${category.id}`"
         :data-test-id="`nav-link-${category.slug}`"
-        class="border-b-2 border-transparent py-2.5 font-normal hover:border-black sm:text-sm sm:font-semibold"
+        class="border-b-2 border-transparent px-1 py-2.5 font-normal hover:border-black sm:text-sm sm:font-semibold"
         :class="{ 'text-flamingo': category.slug === 'sale' }"
-        :to="category.path"
+        :to="buildCategoryPath(category)"
         @mouseenter="openFlyoutMenu(category)"
       >
         {{ category.name }}
@@ -31,7 +28,7 @@
         <NavigationTreeItem
           v-for="item in navigationTree.items"
           :key="`navigation-tree-item-${item.id}`"
-          class="border-b-2 border-transparent py-2.5 font-normal hover:border-black sm:text-sm sm:font-semibold"
+          class="border-b-2 border-transparent px-1 py-2.5 font-normal hover:border-black sm:text-sm sm:font-semibold"
           :navigation-item="item"
           @mouseenter:navigation-item="openFlyoutMenuForNavigationTree(item)"
         />
@@ -42,14 +39,18 @@
 
 <script setup lang="ts">
 import type { NavigationTree } from '@scayle/storefront-nuxt'
-import { useFlyouts, useRootCategories } from '~/composables'
+import { useFlyouts } from '~/composables/useFlyouts'
+import { useRootCategories } from '~/composables/useRootCategories'
+import { useRouteHelpers } from '~/composables/useRouteHelpers'
 import { routeList } from '~/utils/route'
 
 withDefaults(defineProps<{ navigationTree?: NavigationTree }>(), {
   navigationTree: undefined,
 })
 
-const { rootCategories, fetchingCategories } = useRootCategories()
+const { rootCategories } = useRootCategories()
+
+const { buildCategoryPath } = useRouteHelpers()
 
 const { openFlyoutMenuForNavigationTree, openFlyoutMenu } = useFlyouts()
 </script>

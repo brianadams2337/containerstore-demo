@@ -3,18 +3,11 @@ import {
   type Offer,
   type Product,
   type WithContext,
+  type BreadcrumbList,
 } from 'schema-dts'
+import type { BreadcrumbItem } from '~/types/breadcrumbs'
 
-const CANONICAL_PARAM_WHITELIST = [
-  'page',
-  'sort',
-  'size',
-  'brand',
-  'color',
-  'minPrice',
-  'maxPrice',
-  'categoryShopFilterSizes',
-]
+const CANONICAL_PARAM_WHITELIST = ['page']
 
 // TODO: Use `UFO` for url manipulation
 
@@ -121,5 +114,23 @@ export const generateProductSchema = ({
     image: images,
     brand,
     offers,
+  }
+}
+
+export const generateCategoryBreadcrumbSchema = (
+  breadcrumbs: BreadcrumbItem[],
+): WithContext<BreadcrumbList> => {
+  const itemListElement: WithContext<BreadcrumbList>['itemListElement'] =
+    breadcrumbs.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.value,
+      item: item.to,
+    }))
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement,
   }
 }

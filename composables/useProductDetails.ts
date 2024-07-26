@@ -1,18 +1,17 @@
 import {
   type Value,
   type Variant,
-  getBreadcrumbs,
   getCategoriesByRoute,
   getPrice,
-  getProductSiblings,
   getVariantBySize,
   extendPromise,
 } from '@scayle/storefront-nuxt'
 import { computed } from 'vue'
-import { useProductBaseInfo } from './useProductBaseInfo'
 import { useImage } from '#imports'
 import { useProduct } from '#storefront/composables'
 import { getAdvancedAttributes } from '~/utils/attribute'
+import { useBreadcrumbs, useProductBaseInfo } from '~/composables'
+import { getProductSiblings } from '~/utils/product'
 import { useState } from '#app/composables/state'
 import { useRoute } from '#app/composables/router'
 import {
@@ -28,6 +27,8 @@ export function useProductDetails(key?: string) {
   }
 
   const route = useRoute()
+
+  const { getBreadcrumbsFromProductCategories } = useBreadcrumbs()
 
   const productId = computed(() => {
     const id = String(route.params.slug).split('-').pop() as string
@@ -113,7 +114,9 @@ export function useProductDetails(key?: string) {
     return product.value ? getCategoriesByRoute(product.value, null) : []
   })
 
-  const breadcrumbs = computed(() => getBreadcrumbs(categories.value))
+  const breadcrumbs = computed(() => {
+    return getBreadcrumbsFromProductCategories(categories.value)
+  })
 
   const combineWithProductIds = computed(() => {
     return product.value

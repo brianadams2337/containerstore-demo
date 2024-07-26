@@ -1,6 +1,6 @@
 <template>
   <div>
-    <dl class="grid grid-cols-2 justify-between gap-2 py-6 text-gray-800">
+    <dl class="grid grid-cols-2 justify-between gap-2 py-6 text-gray-600">
       <dt>{{ $t('osp.net_price') }}:</dt>
       <dd class="text-right">
         {{ formatCurrency(cost.withoutTax) }}

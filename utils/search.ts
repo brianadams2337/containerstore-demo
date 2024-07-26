@@ -4,23 +4,31 @@ import type {
   SearchEntity,
 } from '@scayle/storefront-nuxt'
 import { getFirstAttributeValue } from '@scayle/storefront-nuxt'
+import type { LocationQueryRaw } from '#vue-router'
 
 export type CategoryFilter =
   CategorySearchSuggestion['categorySuggestion']['filters'][0]
 
-type CategoryFilterByKey = Record<string, number[]>
-
-export const groupSearchCategoryFiltersByKey = (
+export const buildFiltersQuery = (
   filters: CategoryFilter[],
-): CategoryFilterByKey => {
-  return filters.reduce<CategoryFilterByKey>((filterMap, filter) => {
-    if (filter.type !== 'attribute') {
-      return filterMap
+): LocationQueryRaw => {
+  return filters.reduce<Record<string, string>>((query, filter) => {
+    switch (filter.type) {
+      case 'attribute':
+        return {
+          ...query,
+          [`filters[${filter.attributeFilter.group.key}]`]:
+            filter.attributeFilter.values.map((val) => val.id).join(','),
+        }
+
+      case 'boolean':
+        return {
+          ...query,
+          [`filters[${filter.booleanFilter.slug}]`]: 'true',
+        }
     }
-    const key = filter.attributeFilter.group.key
-    const normalizedValues = filter.attributeFilter.values.map(({ id }) => id)
-    filterMap[key] = normalizedValues
-    return filterMap
+
+    return query
   }, {})
 }
 
@@ -28,11 +36,17 @@ export const getSearchFilterLabels = (
   filters: CategoryFilter[] = [],
 ): string[] => {
   return filters.reduce<string[]>((labels, filter) => {
-    if (filter.type !== 'attribute') {
-      return labels
+    switch (filter.type) {
+      case 'attribute':
+        return [
+          ...labels,
+          ...filter.attributeFilter.values.map(({ label }) => label),
+        ]
+
+      case 'boolean':
+        return [...labels, filter.booleanFilter.label]
     }
-    const newLabels = filter.attributeFilter.values.map(({ label }) => label)
-    labels = [...labels, ...newLabels]
+
     return labels
   }, [])
 }

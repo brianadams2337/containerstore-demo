@@ -1,0 +1,55 @@
+import { computed, type Ref } from 'vue'
+import type { Category } from '@scayle/storefront-nuxt'
+import {
+  useAppliedFilters,
+  useProductListSort,
+  useBreadcrumbs,
+} from '~/composables'
+import { useRoute } from '#app/composables/router'
+import { prepareCanonicalURL, generateCategoryBreadcrumbSchema } from '~/utils'
+import { useNuxtApp } from '#app'
+
+export function useCategorySeoData(category: Ref<Category | undefined>) {
+  const { $i18n, $config } = useNuxtApp()
+  const route = useRoute()
+
+  const { areFiltersApplied } = useAppliedFilters()
+  const { isDefaultSortSelected } = useProductListSort()
+  const { getBreadcrumbsFromCategory } = useBreadcrumbs()
+
+  const robots = computed(() => {
+    return !areFiltersApplied.value && isDefaultSortSelected.value
+      ? 'index,follow'
+      : 'noindex,follow'
+  })
+
+  const canonicalLink = computed(() => {
+    if (robots.value?.includes('noindex')) return []
+    const url = `${$config.public.baseUrl}${route?.fullPath}`
+    const href = prepareCanonicalURL(url)
+    return [{ rel: 'canonical', key: 'canonical', href }]
+  })
+
+  const categoryName = computed(() => category.value?.name)
+
+  const metaDescription = computed(() => {
+    const category = categoryName.value?.toLowerCase()
+    return $i18n.t('plp.seo_description', { category })
+  })
+
+  const title = computed(() => `${categoryName.value} | SCAYLE`)
+
+  const categoryBreadcrumbSchema = computed(() => {
+    if (!category.value) return []
+    const items = getBreadcrumbsFromCategory(category.value, true)
+    return generateCategoryBreadcrumbSchema(items)
+  })
+
+  return {
+    title,
+    metaDescription,
+    robots,
+    canonicalLink,
+    categoryBreadcrumbSchema,
+  }
+}

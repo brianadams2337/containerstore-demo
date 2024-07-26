@@ -1,8 +1,15 @@
 <template>
   <section
     v-editable="blok"
-    class="grid auto-cols-fr py-0.5 md:grid-flow-col md:px-16"
-    :class="[marginClasses[0], containerClasses]"
+    class="grid auto-cols-fr py-0.5 md:grid-flow-col md:px-9 lg:px-4"
+    :class="[
+      marginClasses[0],
+      {
+        'lg:container': blok.is_containered_desktop,
+        'max-md:container': blok.is_containered,
+        'gap-0.5': blok.is_spaced,
+      },
+    ]"
   >
     <!-- Image is not allowed as a component so we have to rename it here -->
     <component
@@ -24,11 +31,6 @@ import { useStoryblokMargins } from '../composables/useStoryblokMargins'
 const props = defineProps<CMSGridProps>()
 const { marginClasses } = useStoryblokMargins(props.blok)
 
-const containerClasses = computed(() => ({
-  'md:container': props.blok.is_containered_desktop,
-  'max-md:container': props.blok.is_containered,
-  'gap-0.5': props.blok.is_spaced,
-}))
 const sizes = computed(() => {
   const vw = Math.ceil(100 / (props?.blok?.columns?.length || 1))
 

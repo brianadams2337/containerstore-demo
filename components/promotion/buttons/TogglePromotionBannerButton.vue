@@ -1,21 +1,23 @@
 <template>
   <SFButton
-    data-test-id="toggle-promotion-banner-button"
+    data-testid="toggle-promotion-banner-button"
     type="raw"
     size="xs"
-    class="min-h-[1.875rem] !w-fit items-center !px-2 !py-1 text-xs font-semibold leading-5 text-white"
-    :aria-expanded="modelValue.toString()"
+    class="min-h-[1.875rem] !w-fit items-center !px-2 !py-1 text-xs font-semibold leading-5 text-white hover:text-white"
+    :aria-expanded="isPromotionBannerShown.toString()"
     :style="backgroundColorStyle"
-    :class="{ [borderClass]: modelValue }"
-    @click="toggle"
+    :class="{ [borderClass]: isPromotionBannerShown }"
+    @click="togglePromotionBanner()"
   >
     <IconGift class="size-3" />
-    <span v-if="modelValue">{{ $t('promotion.hide_my_promotions') }}</span>
+    <span v-if="isPromotionBannerShown">{{
+      $t('promotion.hide_my_promotions')
+    }}</span>
     <span v-else> {{ $t('promotion.see_my_promotions') }}</span>
     <template #append-icon="{ _class }">
       <component
         :is="isMobileView ? 'IconChevronDown' : 'IconChevronUp'"
-        v-if="modelValue"
+        v-if="isPromotionBannerShown"
         :class="_class"
       />
       <component
@@ -29,22 +31,16 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useCurrentPromotion } from '~/composables'
+import { useCurrentPromotion, usePromotionActions } from '~/composables'
 
-type Props = {
-  modelValue: boolean
-  isMobileView?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), { isMobileView: false })
+const props = withDefaults(defineProps<{ isMobileView?: boolean }>(), {
+  isMobileView: false,
+})
 
 const { backgroundColorStyle } = useCurrentPromotion()
-
-const emit = defineEmits(['update:modelValue'])
+const { togglePromotionBanner, isPromotionBannerShown } = usePromotionActions()
 
 const borderClass = computed(() =>
   props.isMobileView ? '!border-b-[0.5px]' : '!border-t-[0.5px]',
 )
-
-const toggle = () => emit('update:modelValue', !props.modelValue)
 </script>

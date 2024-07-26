@@ -1,8 +1,13 @@
 <template>
   <div
-    class="absolute left-auto right-0 top-0 z-20 flex h-8 w-auto cursor-pointer p-1 md:p-3"
+    class="absolute left-auto right-1 top-1 z-20 flex h-8 w-auto cursor-pointer p-1 md:right-0 md:top-0 md:p-3"
   >
     <ClientOnly>
+      <template #fallback>
+        <IconHeartInactive
+          class="size-6 animate-pulse fill-gray-200 text-gray-200"
+        />
+      </template>
       <WishlistToggle v-bind="{ product, listingMetaData }" />
     </ClientOnly>
   </div>
@@ -14,14 +19,10 @@ import type { Product } from '@scayle/storefront-nuxt'
 
 type Props = {
   product: Product
-  wishlistRemoveIcon?: 'heart' | 'close'
   listingMetaData?: ListItem
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  wishlistRemoveIcon: 'heart',
-  listingMetaData: undefined,
-})
+const props = withDefaults(defineProps<Props>(), { listingMetaData: undefined })
 
 const product = toRef(props, 'product')
 </script>

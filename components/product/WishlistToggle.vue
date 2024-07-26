@@ -2,10 +2,10 @@
   <div class="relative">
     <SFButton
       v-bind="$attrs"
-      class="opacity-50"
-      no-padding
-      type="ghost"
-      :data-test-id="
+      size="md"
+      type="raw"
+      class="rounded-md border-none !bg-transparent !text-gray-400 transition duration-150 ease-in-out hover:scale-110 hover:!bg-gray-200"
+      :data-testid="
         isInWishlist
           ? 'remove-item-from-wishlist-button'
           : 'add-item-to-wishlist-button'
@@ -20,21 +20,10 @@
       @click="onToggleWishlist"
     >
       <template #icon="{ _class }">
-        <IconHeartFull v-if="isInWishlist" :class="_class" />
-        <IconHeart v-else :class="_class" />
+        <IconHeartActivePurple v-if="isInWishlist" :class="_class" />
+        <IconHeartInactive v-else :class="_class" />
       </template>
     </SFButton>
-    <div
-      v-if="tooltipVisible"
-      data-test-id="wishlist-toggle-tooltip"
-      class="absolute right-full top-0 z-20 whitespace-nowrap rounded border border-black bg-white px-3 py-1 text-base before:absolute before:left-full before:top-1/2 before:mt-[-6px] before:border-[6px] before:border-transparent before:border-l-black after:absolute after:left-full after:top-1/2 after:mt-[-5px] after:border-[5px] after:border-transparent after:border-l-white"
-    >
-      {{
-        isInWishlist
-          ? $t('wishlist.notification.added_to_wishlist')
-          : $t('wishlist.notification.removed_from_wishlist')
-      }}
-    </div>
   </div>
 </template>
 
@@ -46,20 +35,13 @@ import { useWishlist } from '#storefront/composables'
 
 type Props = {
   product: Product
-  wishlistRemoveIcon?: 'heart' | 'close'
   listingMetaData?: ListItem
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  wishlistRemoveIcon: 'heart',
-  listingMetaData: undefined,
-})
+const props = withDefaults(defineProps<Props>(), { listingMetaData: undefined })
 
-defineOptions({
-  inheritAttrs: false,
-})
+defineOptions({ inheritAttrs: false })
 
-const tooltipVisible = ref(false)
 const isWishlistToggling = ref(false)
 const product = toRef(props, 'product')
 const productId = computed(() => product.value.id)
@@ -79,9 +61,6 @@ const onToggleWishlist = async () => {
   isWishlistToggling.value = true
   await toggleItem({ productId: productId.value })
   isWishlistToggling.value = false
-
-  tooltipVisible.value = true
-  setTimeout(() => (tooltipVisible.value = false), 3000)
 }
 
 const isInWishlist = computed(() => {

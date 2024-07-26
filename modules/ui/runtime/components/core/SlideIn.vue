@@ -1,49 +1,58 @@
 <template>
-  <Transition
-    enter-from-class="opacity-0"
-    enter-to-class="opacity-100"
-    enter-active-class="transition ease-linear duration-200"
-    leave-active-class="transition ease-linear duration-200 delay-100"
-    leave-from-class="opacity-100"
-    leave-to-class="opacity-0"
-  >
-    <div v-show="isOpen" class="absolute inset-0 z-[100] overflow-hidden">
-      <div class="fixed inset-0 inline-block bg-primary/50" @click="toggle" />
-
-      <Transition
-        :enter-from-class="slideTypes[slideType].enterClasses"
-        :enter-to-class="slideTypes[slideType].enterToClasses"
-        enter-active-class="transform transition-all duration-200 delay-75"
-        leave-active-class="transform transition-all duration-200"
-        :leave-from-class="slideTypes[slideType].leaveClasses"
-        :leave-to-class="slideTypes[slideType].leaveToClasses"
-      >
+  <Teleport to="body">
+    <Transition
+      enter-from-class="opacity-0"
+      enter-to-class="opacity-100"
+      enter-active-class="transition ease-linear duration-200"
+      leave-active-class="transition ease-linear duration-200 delay-100"
+      leave-from-class="opacity-100"
+      leave-to-class="opacity-0"
+    >
+      <div v-show="isOpen" class="absolute inset-0 z-100 overflow-hidden">
         <div
-          v-if="isOpen"
-          class="fixed bottom-0 z-50 max-h-md w-full overflow-y-auto rounded-t-xl bg-white p-5 shadow-sm xl:right-0 xl:max-h-full xl:max-w-[22.5rem]"
-          :class="slideClass"
+          class="fixed inset-0 inline-block bg-primary/50"
+          @click="toggle"
+          @keydown.enter="toggle"
+        />
+
+        <Transition
+          :enter-from-class="slideTypes[slideType].enterClasses"
+          :enter-to-class="slideTypes[slideType].enterToClasses"
+          enter-active-class="transform transition-all duration-200 delay-75"
+          leave-active-class="transform transition-all duration-200"
+          :leave-from-class="slideTypes[slideType].leaveClasses"
+          :leave-to-class="slideTypes[slideType].leaveToClasses"
         >
-          <div class="relative flex h-full flex-col">
-            <slot v-bind="toggle" name="slide-in-content">
-              <div class="sticky -top-5 z-10 bg-white">
-                <slot name="slide-in-header" :toggle="toggle" />
-              </div>
-              <slot name="slide-in-body" />
-              <div class="sticky -bottom-5 z-10 bg-white p-5">
-                <slot name="slide-in-actions" />
-              </div>
-            </slot>
+          <div
+            v-if="isOpen"
+            class="fixed z-50 size-full overflow-y-auto bg-white md:inset-y-2 md:right-2 md:size-auto md:max-w-[25rem] md:rounded-xl"
+            :class="slideClass"
+          >
+            <div class="relative flex h-full flex-col">
+              <slot v-bind="toggle" name="slide-in-content">
+                <div
+                  class="sticky top-0 z-10 border-b border-b-gray-200 bg-white/90 px-6 py-4"
+                >
+                  <slot name="slide-in-header" :toggle="toggle" />
+                </div>
+                <slot name="slide-in-body" />
+                <div
+                  class="sticky bottom-0 z-10 mt-auto border-t border-t-gray-200 bg-white p-6"
+                >
+                  <slot name="slide-in-actions" />
+                </div>
+              </slot>
+            </div>
           </div>
-        </div>
-      </Transition>
-    </div>
-  </Transition>
+        </Transition>
+      </div>
+    </Transition>
+  </Teleport>
 </template>
 
 <script setup lang="ts">
 import { watch } from 'vue'
-import { useSlideIn } from '../../composables/useSlideIn'
-import { SlideInType } from '#storefront-ui'
+import { useSlideIn, SlideInType } from '#storefront-ui'
 
 type Props = {
   name: string
@@ -67,10 +76,10 @@ type SlideTypeClasses = Record<
 
 const slideTypes: Record<SlideInType, SlideTypeClasses> = {
   [SlideInType.DEFAULT]: {
-    enterClasses: 'translate-y-full xl:translate-y-0 xl:translate-x-full',
-    enterToClasses: 'translate-y-0 xl:translate-x-0',
-    leaveClasses: 'translate-y-0 xl:translate-x-0',
-    leaveToClasses: 'translate-y-full xl:translate-y-0 xl:translate-x-full',
+    enterClasses: 'translate-y-full md:translate-y-0 md:translate-x-full',
+    enterToClasses: 'translate-y-0 md:translate-x-0',
+    leaveClasses: 'translate-y-0 md:translate-x-0',
+    leaveToClasses: 'translate-y-full md:translate-y-0 md:translate-x-full',
   },
   [SlideInType.FROM_BOTTOM]: {
     enterClasses: 'translate-y-full',

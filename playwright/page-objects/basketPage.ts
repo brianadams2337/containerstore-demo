@@ -11,7 +11,7 @@ export class BasketPage {
     this.page = page
     this.checkoutButton = page.locator('[data-test-id="checkout-link"]')
     this.productInBasket = page.locator('[data-test-id="basket-card"]')
-    this.productImage = page.locator('[data-test-id="product-image"]')
+    this.productImage = page.locator('[data-testid="product-image"]')
     this.basketProductCard = page.locator('[data-test-id="basket-card"]')
   }
 

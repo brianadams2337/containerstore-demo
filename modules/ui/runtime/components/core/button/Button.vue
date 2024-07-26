@@ -2,14 +2,53 @@
   <component
     :is="componentName"
     v-bind="{ to, disabled, ...(to && { raw: true }) }"
-    :class="baseClasses"
-    class="group inline-flex items-center justify-center gap-2 truncate whitespace-nowrap rounded-md text-sm transition duration-100 ease-linear disabled:opacity-50"
+    :class="{
+      'h-12 px-10': !isRaw && isSize('lg'),
+      'h-11 px-10': !isRaw && isSize('md'),
+      'h-9 px-6': !isRaw && isSize('sm'),
+      'h-8 px-3': !isRaw && isSize('xs'),
+      'rounded-xl bg-primary font-semibold text-white outline-none hover:bg-accent':
+        isPrimary,
+      'rounded-xl border border-gray-300 bg-white font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-600':
+        isSecondary,
+      'rounded-xl border border-gray-400 bg-transparent font-semibold text-primary hover:bg-secondary-300 hover:text-primary-400':
+        isTertiary,
+      'text-primary hover:text-primary-400': isRaw,
+      'w-full': isFullWidth,
+      'animate-pulse cursor-not-allowed': loading,
+      '!rounded-full !p-2': fab,
+      uppercase: isUppercase,
+      'shadow-secondary': hasShadow && isSecondary,
+      'text-sm': (isSize('xs') || isSize('sm')) && !isRaw,
+      'text-md': (isSize('md') || isSize('lg')) && !isRaw,
+    }"
+    class="group inline-flex items-center justify-center gap-2 truncate whitespace-nowrap transition duration-100 ease-linear disabled:border disabled:border-secondary-600 disabled:bg-secondary-200 disabled:text-gray-400"
     @click.prevent="emit('click')"
     @click.stop="emit('click:stop')"
   >
-    <slot name="icon" :_class="iconClasses" />
+    <slot
+      name="icon"
+      :_class="{
+        'size-8': isSize('lg'),
+        'size-6': isSize('md'),
+        'size-4': isSize('sm'),
+        'size-3': isSize('xs'),
+        'size-2': isSize('4xs'),
+        'group-hover:animate-ping-small': animateIcon,
+      }"
+    />
     <slot />
-    <slot name="append-icon" :_class="iconClasses" />
+    <slot
+      name="append-icon"
+      :_class="{
+        'size-8': isSize('lg'),
+        'size-6': isSize('md'),
+        'size-4': isSize('sm'),
+        'size-3': isSize('xs'),
+        'size-2': isSize('4xs'),
+        'group-hover:animate-ping-small': animateIcon,
+      }"
+    />
     <slot name="badge" :badge="badge">
       <Transition
         enter-to-class="opacity-100"
@@ -17,7 +56,7 @@
         leave-active-class="transition ease-linear duration-200"
         leave-to-class="opacity-0"
       >
-        <span v-show="badge" :class="textColorClasses">({{ badge }})</span>
+        <span v-show="badge">({{ badge }})</span>
       </Transition>
     </slot>
   </component>
@@ -34,35 +73,32 @@ type Props = {
   size?: Size
   to?: RouteLocationRaw
   badge?: number
-  noPadding?: boolean
   disabled?: boolean
   isFullWidth?: boolean
   loading?: boolean
   animateIcon?: boolean
-  rounded?: boolean
   fab?: boolean
   isUppercase?: boolean
+  hasShadow?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   type: ButtonType.PRIMARY,
   size: Size.MD,
-  noPadding: false,
   disabled: false,
   animateIcon: false,
   isFullWidth: false,
   loading: false,
-  rounded: false,
   fab: false,
   isUppercase: false,
   badge: 0,
   to: undefined,
+  hasShadow: false,
 })
 
 const isPrimary = computed(() => props.type === ButtonType.PRIMARY)
 const isSecondary = computed(() => props.type === ButtonType.SECONDARY)
 const isTertiary = computed(() => props.type === ButtonType.TERTIARY)
-const isGhost = computed(() => props.type === ButtonType.GHOST)
 const isRaw = computed(() => props.type === ButtonType.RAW)
 
 const { isSize } = getSizeUtils(props.size)
@@ -70,39 +106,4 @@ const { isSize } = getSizeUtils(props.size)
 const componentName = computed(() => (props.to ? SFLink : 'button'))
 
 const emit = defineEmits<{ click: []; 'click:stop': [] }>()
-
-const baseClasses = computed(() => ({
-  'p-3': !props.noPadding && isSize('md'),
-  'px-3 py-2': !props.noPadding && isSize('sm'),
-  'px-3 py-1.5': !props.noPadding && isSize('xs'),
-  'px-0': isRaw.value,
-  'px-0 text-primary-400 hover:text-primary': isGhost.value,
-  'border border-primary bg-primary font-semibold text-white hover:bg-primary-400':
-    isPrimary.value,
-  'border bg-secondary-450 font-semibold text-primary hover:bg-secondary-600 hover:text-primary-400':
-    isSecondary.value,
-  'border border-gray-400 bg-transparent font-semibold text-primary hover:bg-secondary-300 hover:text-primary-400':
-    isTertiary.value,
-  'w-full': props.isFullWidth,
-  'animate-pulse cursor-not-allowed': props.loading,
-  '!rounded': props.rounded,
-  '!rounded-full': props.fab,
-  uppercase: props.isUppercase,
-}))
-
-const textColorClasses = computed(() => ({
-  'text-white': isPrimary.value,
-  'text-primary-100': isSecondary.value,
-  'text-primary': isTertiary.value || isGhost.value,
-}))
-
-const iconClasses = computed(() => [
-  {
-    'size-8': isSize('md'),
-    'size-5': isSize('sm'),
-    'size-4': isSize('xs'),
-    'group-hover:animate-ping-small': props.animateIcon,
-  },
-  textColorClasses.value,
-])
 </script>

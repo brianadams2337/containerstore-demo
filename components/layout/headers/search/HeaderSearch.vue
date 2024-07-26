@@ -25,7 +25,7 @@
         data-test-id="close-search-button"
         class="absolute right-0 flex h-full cursor-pointer items-center justify-center px-2.5 py-2"
       >
-        <IconCloseBold
+        <IconClose
           aria-hidden="true"
           class="size-4"
           @click="resetSearch"

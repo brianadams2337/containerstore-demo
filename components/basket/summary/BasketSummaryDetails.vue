@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col justify-between gap-2 text-sm font-bold text-gray-800"
+    class="flex flex-col justify-between gap-2 text-sm font-bold text-gray-600"
   >
     <div class="flex justify-between">
       <div>{{ $t('basket.subtotal') }}</div>

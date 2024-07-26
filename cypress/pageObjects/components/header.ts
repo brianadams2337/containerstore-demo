@@ -1,7 +1,7 @@
 class Header {
   pageElements = {
     mainHeader: '[data-test-id="main-header"]',
-    pageHeadline: '[data-test-id="headline"]',
+    pageHeadline: '[data-testid="headline"]',
     headerImage: '[class*="nuxt-link"]',
     headerSearchInput: 'input[id="search"]',
     navBarOverflow: 'nav[class*="overflow-y-auto"]',

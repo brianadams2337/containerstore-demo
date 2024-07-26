@@ -4,10 +4,11 @@
     :class="{ 'translate-y-[-3.25rem]': !isPromotionBannerShown }"
   >
     <div
-      :ref="(element) => setBannerRef(element as HTMLElement)"
-      data-test-id="promotion-banner"
-      class="sticky top-0 z-[80] hidden h-[3.25rem] w-full cursor-pointer items-center justify-between gap-1 overflow-hidden bg-blue py-2 pl-4 text-sm text-white lg:flex"
+      :ref="(element) => setBannerRef(element as HTMLElement, 'top')"
+      data-testid="promotion-banner"
+      class="sticky top-0 z-80 hidden h-[3.25rem] w-full cursor-pointer items-center justify-between gap-1 overflow-hidden bg-blue py-2 pl-4 text-sm text-white lg:flex"
       :style="backgroundColorStyle"
+      @keydown.enter="togglePromotionList()"
       @click="togglePromotionList()"
     >
       <div class="flex-1">
@@ -36,9 +37,7 @@
     <SFFadeInTransition>
       <TogglePromotionBannerButton
         v-if="!isPromotionListShown"
-        v-model="isPromotionBannerShown"
         class="absolute top-[3.25rem] hidden !rounded-none !rounded-b-md lg:inline-flex"
-        @update:model-value="emit('change', $event)"
       />
     </SFFadeInTransition>
   </div>
@@ -54,7 +53,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import {
   useCurrentPromotion,
   usePromotionActions,
@@ -63,10 +62,6 @@ import {
 } from '~/composables'
 
 const props = defineProps<{ promotions: Promotion[] }>()
-
-const emit = defineEmits<{ change: [isPromotionBannerShown: boolean] }>()
-
-const isPromotionBannerShown = ref(true)
 
 usePromotionChange(props.promotions)
 
@@ -79,8 +74,12 @@ const {
   currentPromotion,
 } = useCurrentPromotion()
 
-const { togglePromotionList, isPromotionListShown, setBannerRef } =
-  usePromotionActions()
+const {
+  togglePromotionList,
+  isPromotionListShown,
+  setBannerRef,
+  isPromotionBannerShown,
+} = usePromotionActions()
 
 const { isMOVPromotionApplied, isFullProgress } =
   usePromotionProgress(currentPromotion)

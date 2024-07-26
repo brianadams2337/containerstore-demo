@@ -3,12 +3,12 @@ import Header from './components/header'
 
 class BasketPage extends BasePage {
   private pageElements = {
-    headline: '[data-test-id="headline"]',
+    headline: '[data-testid="headline"]',
     productInBasket: '[data-test-id="basket-card"]',
     addToWishlistButton: '[data-test-id="basket-add-to-wishlist-button"]',
     removeFromWishlistButton:
       '[data-test-id="basket-remove-from-wishlist-button"]',
-    productImage: '[data-test-id="product-image"]',
+    productImage: '[data-testid="product-image"]',
     removeItemButton: '[data-test-id="basket-remove-item-button"]',
     removeItemConfirmationButton:
       '[data-test-id="basket-remove-item-confirm-button"]',

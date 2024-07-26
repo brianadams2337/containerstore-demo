@@ -51,7 +51,7 @@
             "
             class="mt-0.5 text-right text-sm text-gray-400"
           >
-            {{ $t('price.best_price_30d') }}
+            {{ $t('price.best_price_30d') }}**:
             {{ formatCurrency(lowestPriorPrice.withTax) }}
             ({{ lowestPriorPrice.relativeDifferenceToPrice * 100 }}%)
           </p>

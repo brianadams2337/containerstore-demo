@@ -1,18 +1,18 @@
 import {
+  type Category,
   type CategorySearchSuggestion,
   type Product,
   type SearchEntity,
   getFirstAttributeValue,
-  serializeFilters,
   slugify,
 } from '@scayle/storefront-nuxt'
 import { isString } from 'radash'
-import type { RouteLocationRaw, RouteParams } from '#vue-router'
+import type { RouteLocationRaw } from '#vue-router'
 import { type NavigateToOptions, navigateTo } from '#app/composables/router'
 import { useCurrentShop } from '#storefront/composables'
 import { useLocalePath } from '#i18n'
 import {
-  groupSearchCategoryFiltersByKey,
+  buildFiltersQuery,
   hasLocalePrefix,
   isCategorySuggestion,
   isProductSuggestion,
@@ -31,10 +31,7 @@ export function useRouteHelpers() {
     return navigateTo(getLocalizedRoute(route), options)
   }
 
-  const getProductDetailRoute = (
-    product: Product,
-    id?: number,
-  ): RouteLocationRaw => {
+  const getProductDetailRoute = (product: Product, id?: number): string => {
     const name = getFirstAttributeValue(product.attributes, 'name')?.label
     return localePath({
       name: 'p-slug',
@@ -47,45 +44,42 @@ export function useRouteHelpers() {
   const getOrderProductDetailRoute = (
     product: OrderProduct,
     id?: number,
-  ): RouteLocationRaw => {
+  ): string => {
     const name = product.attributes.name.label
     return localePath({
-      name: 'p-slug',
+      name: routeList.pdp.name,
       params: {
         slug: `${slugify(name)}-${id || product.id}`,
       },
     })
   }
 
-  const getProductDetailPath = (product: Product, id?: number) => {
-    const name = getFirstAttributeValue(product.attributes, 'name')?.label
-    return localePath(`/p/${slugify(name)}-${id || product.id}`)
-  }
-
-  const getSearchRoute = (term: string): RouteLocationRaw => {
+  const getSearchRoute = (term: string): string => {
     return localePath({
-      name: 'search',
+      name: routeList.search.name,
       query: { term },
     })
   }
 
   const buildCategorySuggestionRoute = ({
     categorySuggestion,
-  }: CategorySearchSuggestion) => {
+  }: CategorySearchSuggestion): RouteLocationRaw => {
     const { category, filters } = categorySuggestion
-    const query = filters.length
-      ? serializeFilters(groupSearchCategoryFiltersByKey(filters))
-      : undefined
-    return { path: category.path, ...(query && { query }) }
+    return {
+      path: buildCategoryPath(category),
+      query: buildFiltersQuery(filters),
+    }
   }
 
-  const getSearchSuggestionPath = (suggestion: SearchEntity) => {
+  const getSearchSuggestionPath = (
+    suggestion: SearchEntity,
+  ): string | undefined => {
     if (!suggestion?.type) {
       return
     }
 
     if (isProductSuggestion(suggestion)) {
-      return getProductDetailPath(suggestion.productSuggestion.product)
+      return getProductDetailRoute(suggestion.productSuggestion.product)
     }
 
     if (isCategorySuggestion(suggestion)) {
@@ -94,7 +88,7 @@ export function useRouteHelpers() {
     }
   }
 
-  const getOrderDetailsRoute = (id: number): RouteLocationRaw => {
+  const getOrderDetailsRoute = (id: number): string => {
     return localePath({
       name: routeList.orderDetail.name,
       params: { id },
@@ -118,12 +112,11 @@ export function useRouteHelpers() {
       : localePath(normalizedPath)
   }
 
-  const getCategoryPath = ({ category }: RouteParams): string => {
-    if (!category) {
-      return '/'
-    }
-    const path = Array.isArray(category) ? category.join('/') : category
-    return normalizePathRoute(path)
+  const buildCategoryPath = ({
+    id,
+    path,
+  }: Category | { id: number; path: string }): string => {
+    return localePath(`${routeList.category.path}${path}-${id}`)
   }
 
   return {
@@ -135,6 +128,6 @@ export function useRouteHelpers() {
     getOrderDetailsRoute,
     getLocalizedRoute,
     buildCategorySuggestionRoute,
-    getCategoryPath,
+    buildCategoryPath,
   }
 }

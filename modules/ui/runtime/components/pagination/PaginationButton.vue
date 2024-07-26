@@ -1,49 +1,31 @@
 <template>
   <SFLink
-    data-test-id="paginationButton"
-    :to="to"
+    data-testid="paginationButton"
+    :to="page.to"
     :class="{
-      'font-bold': isActive,
+      '!border-accent !text-accent': page.isActive && !disabled,
+      'pointer-events-none': page.isActive || disabled,
     }"
     raw
-    class="inline-flex items-center px-4 py-2 text-center text-sm"
+    class="inline-flex h-full w-10 items-center justify-center border-t-2 border-transparent text-center text-sm text-gray-500 hover:border-gray-400 hover:text-black"
     @click="scrollToTop"
   >
-    <slot />
+    <slot>
+      {{ page.number }}
+    </slot>
   </SFLink>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { type RouteLocationRaw, useRoute } from '#vue-router'
+import type { Page } from '#storefront-ui'
 
 type Props = {
   disabled?: boolean
-  isActive?: boolean
-  page: number
+  page: Page
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   disabled: false,
-  isActive: false,
-})
-
-const route = useRoute()
-
-const to = computed(() => {
-  const attributes: Partial<RouteLocationRaw> = {
-    path: route.path,
-    query: {
-      ...route.query,
-      page: props.page.toString(),
-    },
-  }
-
-  if (props.page === 1) {
-    delete attributes?.query?.page
-  }
-
-  return attributes
 })
 
 const scrollToTop = () => {

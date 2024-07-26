@@ -55,3 +55,11 @@ export const formattedProvidersKeys = formatter.format(
 
 export const EMAIL_REGEX_PATTERN =
   /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/
+
+// This utility is needed because of the SB/contentful cannot have page/element with the
+// empty slug and home route needs to have empty slug since home route path is "/".
+// As a workaround, we use "home" slug keyword and resolve it here to the correct path
+export const normalizeHomeLink = (link?: string): string | undefined => {
+  if (!link) return
+  return link === 'home' ? '/' : link
+}

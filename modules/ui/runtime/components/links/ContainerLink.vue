@@ -9,7 +9,7 @@
         <p>{{ header }}</p>
         <p v-if="subHeader" class="text-xs text-secondary">{{ subHeader }}</p>
       </div>
-      <IconArrowRight class="size-4" />
+      <IconChevronRight class="size-6" />
     </div>
   </SFLink>
 </template>

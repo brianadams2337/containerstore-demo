@@ -2,12 +2,13 @@ import {
   type Product,
   getFirstAttributeValue,
   getProductAndSiblingsColors,
-  getProductSiblings,
   ProductImageType,
   getImageFromList,
+  type ProductSibling,
 } from '@scayle/storefront-nuxt'
 import { type MaybeRefOrGetter, toRef, computed } from 'vue'
 import { useRouteHelpers } from './useRouteHelpers'
+import { getProductSiblings } from '~/utils/product'
 import {
   getLowestPriceBetweenVariants,
   getVariantWithLowestPrice,
@@ -20,7 +21,9 @@ export function useProductBaseInfo(
   const { getProductDetailRoute } = useRouteHelpers()
 
   const brand = computed(() => {
-    return getFirstAttributeValue(product.value?.attributes, 'brand')?.label
+    return (
+      getFirstAttributeValue(product.value?.attributes, 'brand')?.label ?? ''
+    )
   })
 
   const name = computed(() => {
@@ -62,15 +65,16 @@ export function useProductBaseInfo(
     )
   })
 
-  const siblings = computed(() => {
-    return getProductSiblings(product.value, 'color') || []
+  const siblings = computed<ProductSibling[]>(() => {
+    return getProductSiblings(product.value, 'color')
+  })
+
+  const nonSoldOutSiblings = computed<ProductSibling[]>(() => {
+    return getProductSiblings(product.value, 'color', { omitSoldOut: true })
   })
 
   const link = computed(() => {
-    if (!product.value) {
-      return
-    }
-    return getProductDetailRoute(product.value)
+    return product.value ? getProductDetailRoute(product.value) : undefined
   })
 
   return {
@@ -81,6 +85,7 @@ export function useProductBaseInfo(
     colors,
     image,
     siblings,
+    nonSoldOutSiblings,
     link,
     variantWithLowestPrice,
   }

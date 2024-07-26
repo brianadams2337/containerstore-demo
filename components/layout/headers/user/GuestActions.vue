@@ -15,7 +15,7 @@
         {{ $t('global.not_registered') }}
       </span>
       <SFButton
-        type="ghost"
+        type="raw"
         :to="routeList.signup"
         class="text-xs font-semibold leading-5 !tracking-wide"
       >

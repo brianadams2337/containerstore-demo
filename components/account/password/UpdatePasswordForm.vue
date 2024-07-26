@@ -126,7 +126,7 @@ const updateUserPassword = async () => {
   } catch (err) {
     msg = $i18n.t('my_account.user.password_update_error')
   } finally {
-    toast.show(msg, 'CONFIRM')
+    toast.show(msg, { action: 'CONFIRM' })
     isUpdating.value = false
 
     await sleep(500)

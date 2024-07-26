@@ -1,299 +1,281 @@
 import {
-  type CentAmount,
-  type TransformedFilter,
-  getActiveFilters,
-  getFilterablePriceValue,
-  getGroupedFilterableValues,
-  groupFilterableValuesByKey,
-  groupFiltersByKey,
-  transformMinAndMaxPriceToFilter,
-  transformStateToFilters,
-  transformToWhereCondition,
+  type Category,
+  extendPromise,
+  type FilterParams,
 } from '@scayle/storefront-nuxt'
-import { debounce, isEmpty, isEqual, omit } from 'radash'
-import { computed, watch } from 'vue'
-import { useQueryFilterState } from '#storefront/composables'
-import { useRoute } from '#app/composables/router'
-import { useState } from '#app/composables/state'
-import { DEFAULT_SORTING_KEY } from '~/composables/useProductListSort'
+import { computed, type Ref, ref } from 'vue'
+import type { LocationQuery } from 'vue-router'
+import { useRoute, useRouter } from '#app/composables/router'
 import {
-  type FilterContext,
-  useFilterContext,
-} from '~/composables/useFilterContext'
-import { useTrackingEvents } from '~/composables/useTrackingEvents'
-import { useSlideIn } from '~/modules/ui/runtime/composables'
-import { deepClone } from '~/utils'
-
-export const INCLUDED_QUICK_FILTERS = ['sale', 'isNew', 'styleGroup']
-
-const SUPPORTED_FILTERS = ['brand', 'size', 'color', 'prices', 'sale']
-
-export type FilterState = {
-  brand: []
-  size: []
-  color: []
-  prices: [CentAmount, CentAmount]
-  sale: boolean
-}
-
-type Options = {
-  supportedFilters?: string[]
-}
+  useTrackingEvents,
+  useAppliedFilters,
+  useProductListSort,
+  useToast,
+} from '~/composables'
+import { useFilters } from '#storefront/composables'
+import type { FilterItemWithValues } from '~/types/filter'
+import type { RangeTuple } from '#storefront-ui/components/form/RangeSlider.vue'
+import { useI18n } from '#i18n'
 
 export function useFilter(
-  defaultFilterContext?: FilterContext,
-  { supportedFilters = SUPPORTED_FILTERS }: Options = {},
-  key = 'filter',
+  currentCategory?: Ref<Category>,
+  options: { immediate?: boolean; keyPrefix?: string } = {},
 ) {
   const route = useRoute()
+  const router = useRouter()
+  const areFiltersUpdated = ref(false)
+  const areFiltersCleared = ref(false)
 
-  const filterContext = defaultFilterContext ?? useFilterContext()
+  const { immediate = true, keyPrefix = 'search' } = options
 
-  const availableFilterValues = computed(() => {
-    return (
-      filterContext?.filterableValues.value &&
-      getGroupedFilterableValues(
-        supportedFilters,
-        filterContext.filterableValues.value,
-      )
-    )
-  })
-
-  const minPrice = computed(() => {
-    return (
-      availableFilterValues.value &&
-      getFilterablePriceValue(availableFilterValues.value, 'min')
-    )
-  })
-
-  const maxPrice = computed(() => {
-    return (
-      availableFilterValues.value &&
-      getFilterablePriceValue(availableFilterValues.value, 'max')
-    )
-  })
-
-  const hasPriceRange = computed(() => minPrice.value !== maxPrice.value)
-
-  const hasActivePrices = computed(() => {
-    return !!(activeFilters.value.maxPrice || activeFilters.value.minPrice)
-  })
-
-  const initialState = useState<FilterState>(key, () => ({
-    size: [],
-    brand: [],
-    color: [],
-    prices: [minPrice.value, maxPrice.value],
-    sale: false,
-  }))
-
-  // user's selected conditions
-  const state = useState<FilterState>(`state-${key}`, () => ({
-    ...initialState.value,
-  }))
-
-  const { toggle } = useSlideIn('FilterSlideIn')
+  const { appliedFilter, appliedFiltersCount } = useAppliedFilters()
   const { trackFilterApply, trackFilterFlyout } = useTrackingEvents()
+  const { selectedSort } = useProductListSort()
+  const { t } = useI18n()
+
+  const { show } = useToast()
+  const productConditions = computed<FilterParams>(() => {
+    const page =
+      typeof route.query.page === 'string'
+        ? parseInt(route.query.page, 10)
+        : undefined
+
+    return {
+      where: appliedFilter.value,
+      page,
+      sort: selectedSort.value,
+    }
+  })
+
+  const filterData = useFilters({
+    params: () => ({
+      category: currentCategory?.value.path || '/',
+      where: {
+        ...productConditions.value.where,
+        ...(route.query.term && { term: String(route.query.term) }),
+      },
+    }),
+    options: { immediate },
+    key: `${currentCategory?.value.id || keyPrefix}-filters`,
+  })
 
   const {
-    applyFilters: _applyFilter,
-    activeFilters,
-    productConditions,
-  } = useQueryFilterState({
-    defaultSort: DEFAULT_SORTING_KEY,
-  })
+    data,
+    fetch: fetchFilters,
+    fetching: filtersFetching,
+    status: filterStatus,
+  } = filterData
 
-  const applyFilter = async (
-    preserveAttributeFilters = false,
-    quickFilters?: Record<string, any>,
-  ) => {
-    const attributeFilters: Record<string, any> =
-      route.query.value && preserveAttributeFilters
-        ? parseAndPreserveAttributeFilters()
-        : {}
-    const filters = quickFilters || prepareFilterData()
-    const combinedFilters = { ...filters, ...attributeFilters } as Record<
-      string,
-      any
-    >
-    if (!isEmpty(combinedFilters)) {
-      Object.keys(combinedFilters).forEach((key: string) => {
-        const values = Array.isArray(combinedFilters[key])
-          ? combinedFilters[key].join('|')
-          : combinedFilters[key]
-        trackFilterApply(key, values)
-      })
-    }
+  const availableFilters = computed<FilterItemWithValues[]>(
+    () =>
+      data.value?.filters.filter((filter) => {
+        if (filter.type !== 'boolean') return true
 
-    await _applyFilter(combinedFilters)
-  }
+        const trueValue = filter.values.find(
+          (value) =>
+            'name' in value && typeof value.name === 'boolean' && value.name,
+        )
 
-  // TODO: Refactor to consolidate logic and remove non-presentation logic to helpers
-  const parseAndPreserveAttributeFilters = () => {
-    // Attribute filters such as color should be preserved
-    const attributeFilters: Record<string, any> = {}
-    const keysToExclude = quickFilters.value.map((filter) => filter.key)
-    const filtersFromQueryParams = JSON.parse(
-      (route.query.value as any).filters || '{}',
-    )
-    for (const key of Object.keys(filtersFromQueryParams)) {
-      if (!keysToExclude.includes(key.toLowerCase())) {
-        attributeFilters[key] = filtersFromQueryParams[key]
-      }
-    }
-    return attributeFilters
-  }
+        if (!trueValue) return false
 
-  const quickFilters = computed(() => {
-    return filterContext?.filterableValues.value
-      ? groupFilterableValuesByKey(
-          filterContext?.filterableValues.value,
-          INCLUDED_QUICK_FILTERS,
-        ).filter((filter) => !!filter.count)
-      : []
-  })
-
-  const setActiveFiltersInState = (filters: TransformedFilter[]) => {
-    /**
-     * https://aboutyou.atlassian.net/browse/SCPF-4018
-     * Reset to initial state values (except price), then apply only the changes
-     */
-    state.value.size = []
-    state.value.brand = []
-    state.value.color = []
-    state.value.sale = false
-    const groupedActiveFilters = groupFiltersByKey(filters)
-
-    groupedActiveFilters.forEach(([key, value]: [keyof FilterState, any]) => {
-      state.value[key] =
-        typeof value[0].value === 'boolean' ? value[0].value === true : value
-    })
-  }
-
-  const setActivePriceRangeInState = (min: CentAmount, max: CentAmount) => {
-    if (min !== undefined) {
-      state.value.prices[0] = min
-    }
-
-    if (max !== undefined) {
-      state.value.prices[1] = max
-    }
-  }
-
-  const setStateFromUrlParams = () => {
-    setActiveFiltersInState(
-      getActiveFilters(availableFilterValues.value!, activeFilters.value),
-    )
-
-    if (hasActivePrices.value) {
-      return setActivePriceRangeInState(
-        // TODO: Fix types
-        parseInt(activeFilters.value.minPrice as any) as CentAmount,
-        parseInt(activeFilters.value.maxPrice as any) as CentAmount,
-      )
-    }
-    state.value.prices = [minPrice.value, maxPrice.value]
-  }
-
-  const applyFilters = async ({
-    preserveAttributeFilters = false,
-    quickFilters,
-    shouldToggle = true,
-  }: {
-    preserveAttributeFilters?: boolean
-    quickFilters?: Record<string, any>
-    shouldToggle?: boolean
-  } = {}) => {
-    await applyFilter(preserveAttributeFilters, quickFilters)
-    if (shouldToggle) {
-      toggle()
-    }
-  }
-
-  const debouncedStateChangedEvent = debounce(
-    { delay: 50 },
-    async () => await updateFilterCount(),
+        return trueValue.productCount !== 0
+      }) as FilterItemWithValues[],
   )
 
-  watch(state, () => debouncedStateChangedEvent(), { deep: true })
-
-  const prepareFilterData = () => ({
-    ...transformStateToFilters(omit(state.value, ['prices', 'sale'])),
-    ...(priceChanged.value &&
-      transformMinAndMaxPriceToFilter(state.value.prices)),
-    ...(state.value.sale && { sale: true }),
+  const unfilteredCount = computed(() => {
+    return areFiltersUpdated.value ? data.value?.unfilteredCount : 0
   })
 
-  function resetFilterStatePrice() {
-    state.value.prices = [minPrice.value, maxPrice.value]
-  }
+  const createNewAttributeQuery = (slug: string, id: number): LocationQuery => {
+    const attributeFilterQuery: LocationQuery = {}
+    const query = { ...route.query }
+    const attribute = appliedFilter.value.attributes?.find(
+      (attribute) => attribute.key === slug,
+    )
 
-  const resetFilter = (key: keyof FilterState) => {
-    // @ts-expect-error Type 'any[]' is not assignable to type 'never'.ts(2322)
-    state.value[key] = [...initialState.value[key]]
-    // TODO: Refactor filter price range so we don't need to reset it here
-    if (key === 'prices') {
-      resetFilterStatePrice()
+    const key = `filters[${slug}]`
+
+    if (!attribute) {
+      attributeFilterQuery[key] = `${id}`
+      return { ...query, ...attributeFilterQuery }
     }
+
+    if (attribute?.type !== 'attributes') {
+      return query
+    }
+
+    const values = attribute.values
+
+    const index = values.indexOf(id)
+
+    if (index === -1) {
+      values.push(id)
+    } else {
+      values.splice(index, 1)
+    }
+
+    if (values.length === 0) {
+      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+      delete query[key]
+      return query
+    }
+
+    attributeFilterQuery[key] = `${values.join(',')}`
+
+    return { ...query, ...attributeFilterQuery }
   }
 
-  const resetFilters = () => {
-    state.value = deepClone(initialState.value)
-    // TODO: Refactor filter price range so we don't need to reset it here
-    resetFilterStatePrice()
+  const createNewPriceQuery = (prices: RangeTuple): LocationQuery => {
+    const priceFilterQuery: Record<string, string> = {}
+    const query = { ...route.query }
+
+    if (appliedFilter.value.minPrice !== prices[0]) {
+      priceFilterQuery['filters[minPrice]'] = prices[0].toString()
+    }
+
+    if (appliedFilter.value.maxPrice !== prices[1]) {
+      priceFilterQuery['filters[maxPrice]'] = prices[1].toString()
+    }
+
+    return { ...query, ...priceFilterQuery }
+  }
+
+  const createNewBoolAttributeQuery = (
+    slug: string,
+    value: boolean,
+  ): LocationQuery => {
+    const booleanFilterQuery: Record<string, string> = {}
+    const query = { ...route.query }
+
+    const attribute = appliedFilter.value.attributes?.find(
+      (attribute) => attribute.key === slug,
+    )
+    const key = `filters[${slug}]`
+
+    if (!attribute) {
+      if (!value) {
+        return query
+      }
+
+      booleanFilterQuery[key] = String(value)
+      return { ...query, ...booleanFilterQuery }
+    }
+
+    if (attribute.type !== 'boolean') {
+      return query
+    }
+
+    if (!value) {
+      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+      delete query[key]
+      return query
+    }
+
+    booleanFilterQuery[key] = String(value)
+    return { ...query, ...booleanFilterQuery }
+  }
+
+  const applyAttributeFilter = async (slug: string, id: number) => {
+    const filters = createNewAttributeQuery(slug, id)
+    trackFilterApply(slug, id.toString())
+    await applyFilters(filters)
+  }
+
+  const applyBooleanFilter = async (slug: string, value: boolean) => {
+    const filters = createNewBoolAttributeQuery(slug, value)
+    trackFilterApply(slug, value.toString())
+    await applyFilters(filters)
+  }
+
+  const applyPriceFilter = async (prices: RangeTuple) => {
+    const filters = createNewPriceQuery(prices)
+    trackFilterApply('prices', prices.join(','))
+    await applyFilters(filters)
+  }
+
+  const resetFilter = async (key: string) => {
+    const query = { ...route.query }
+    const filterKey = `filters[${key}]`
+
+    if (!query[filterKey]) {
+      return
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+    delete query[filterKey]
+    await applyFilters(query)
+  }
+
+  const resetPriceFilter = async () => {
+    const query = { ...route.query }
+
+    if (!query['filters[minPrice]'] && !query['filters[maxPrice]']) {
+      return
+    }
+
+    delete query['filters[minPrice]']
+    delete query['filters[maxPrice]']
+
+    await applyFilters(query)
+  }
+
+  const resetFilters = async () => {
+    await applyFilters({})
+    areFiltersCleared.value = true
+    areFiltersUpdated.value = false
+
+    setTimeout(() => {
+      areFiltersCleared.value = false
+    }, 3000)
   }
 
   const onSlideInOpen = () => {
-    setStateFromUrlParams()
     trackFilterFlyout('open', 'true')
   }
 
-  const priceChanged = computed(() => {
-    return !isEqual(initialState.value.prices, state.value.prices)
-  })
+  const onSlideInClose = () => {
+    trackFilterFlyout('close', 'true')
 
-  const isSaleActive = computed(() => {
-    const sale = availableFilterValues.value?.sale || []
-    const saleCount = !!availableFilterValues.value?.sale[0]?.count
-    return sale.length && saleCount
-  })
-
-  const updateFilterCount = async () => {
-    const filters = prepareFilterData()
-    await filterContext?.refreshProductCount({
-      where: transformToWhereCondition(filters),
-    })
+    if (areFiltersUpdated.value) {
+      show(t('filter.updated_notification'), { type: 'SUCCESS' })
+      areFiltersUpdated.value = false
+    }
   }
 
-  const isFiltered = computed(() => {
-    return !!productConditions.value.where?.attributes?.length
-  })
+  const applyFilters = async (filter: LocationQuery, scrollToTop = true) => {
+    const newQuery = {
+      sort: route.query.sort,
+      term: route.query.term,
+      ...filter,
+    }
 
-  const filteredCount = computed(
-    () => filterContext?.productCountData.value?.count || 0,
-  )
+    // Should not apply reset all filter if appliedFilter is empty
+    if (!appliedFiltersCount.value && !Object.keys(filter).length) {
+      return
+    }
 
-  return {
+    await router.push({ query: { ...newQuery } })
+
+    areFiltersUpdated.value = true
+
+    if (scrollToTop) window.scroll({ behavior: 'smooth', top: 0 })
+  }
+
+  return extendPromise(filterData, {
     onSlideInOpen,
+    onSlideInClose,
     resetFilter,
     resetFilters,
-    applyFilters,
-    state,
-    hasActivePrices,
-    hasPriceRange,
-    priceChanged,
-    minPrice,
-    maxPrice,
-    isSaleActive,
-    quickFilters,
-    activeFilters,
-    availableFilterValues,
-    filterableValues: filterContext?.filterableValues,
+    resetPriceFilter,
+    applyAttributeFilter,
+    applyPriceFilter,
+    applyBooleanFilter,
+    availableFilters,
     trackFilterFlyout,
-    isFiltered,
-    filterStatus: filterContext?.filterStatus,
-    unfilteredCount: filterContext?.unfilteredCount,
-    filteredCount,
-    filtersFetching: filterContext?.filtersFetching,
-  }
+    filterStatus,
+    unfilteredCount,
+    filtersFetching,
+    fetchFilters,
+    areFiltersCleared,
+  })
 }

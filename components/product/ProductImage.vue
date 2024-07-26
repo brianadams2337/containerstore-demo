@@ -5,7 +5,7 @@
     :loading="imageLoading"
     :class="classes"
     provider="default"
-    data-test-id="product-image"
+    data-testid="product-image"
     class="picture block mix-blend-darken"
     @load="load"
   />

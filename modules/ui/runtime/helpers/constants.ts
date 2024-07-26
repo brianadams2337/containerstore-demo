@@ -11,7 +11,6 @@ export const Size = {
 } as const
 
 export type Size = ValuesType<typeof Size>
-
 export const HeadlineSize = {
   '4XL': '4xl',
   '2XL': '2xl',
@@ -60,7 +59,6 @@ export const ButtonType = {
   PRIMARY: 'primary',
   SECONDARY: 'secondary',
   TERTIARY: 'tertiary',
-  GHOST: 'ghost',
   RAW: 'raw',
 } as const
 

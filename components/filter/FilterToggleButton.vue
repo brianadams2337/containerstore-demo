@@ -1,0 +1,37 @@
+<template>
+  <SFButton
+    class="group relative w-full !justify-start rounded-md border border-black px-3.5 text-base font-semi-bold-variable max-md:h-11 md:w-min md:border-gray-300 md:bg-secondary-200 md:hover:bg-white"
+    data-testid="filter-toggle-button"
+    size="sm"
+    type="raw"
+    @click="toggleFilter"
+  >
+    <template #icon="{ _class }">
+      <IconFilter class="group-hover:text-accent md:hidden" :class="_class" />
+    </template>
+    {{ label }}
+    <span
+      v-if="appliedFiltersCount"
+      class="right-3 inline-flex size-5 items-center justify-center rounded bg-gray-200 text-xs text-gray-500 max-md:absolute max-md:bg-gray-900 max-md:text-white md:size-4"
+    >
+      {{ appliedFiltersCount }}
+    </span>
+
+    <template #append-icon="{ _class }">
+      <IconFilter
+        class="group-hover:text-accent max-md:hidden"
+        :class="_class"
+      />
+    </template>
+  </SFButton>
+</template>
+
+<script setup lang="ts">
+import { useAppliedFilters, useFilterSlideIn } from '~/composables'
+
+defineProps<{ label: string }>()
+
+const { appliedFiltersCount } = useAppliedFilters()
+
+const { toggle: toggleFilter } = useFilterSlideIn()
+</script>

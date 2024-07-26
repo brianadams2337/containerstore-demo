@@ -9,6 +9,7 @@
         <div
           class="relative flex w-28 shrink-0 items-center pr-3 lg:w-48 lg:p-0 lg:pr-6"
           @click.capture="selectItem"
+          @keydown.enter="selectItem"
         >
           <SFLink
             :to="getProductDetailRoute(product)"
@@ -22,7 +23,12 @@
               sizes="xl:100vw lg:100vw lg:100vw lg:100vw xs:100vw"
               class="col-start-1 col-end-1 row-start-1 row-end-1"
             />
-            <ProductBadges
+            <ProductCardBadgesHeader
+              class="absolute left-2 top-2"
+              :product="product"
+            />
+
+            <ProductCardBadgesFooter
               class="col-start-1 col-end-1 row-start-1 row-end-1 max-w-fit self-end"
               :product="product"
               :is-promotion-badge-full-width="false"
@@ -40,10 +46,12 @@
           class="flex flex-1 flex-col justify-center gap-2 overflow-hidden lg:flex-row lg:gap-0 lg:p-0"
         >
           <div class="flex grow flex-col justify-between gap-2 lg:pt-4">
-            <div @click.capture="selectItem">
+            <div>
               <SFLink
                 :to="getProductDetailRoute(product)"
                 class="block !whitespace-normal"
+                @click.capture="selectItem"
+                @keydown.enter="selectItem"
               >
                 <BasketCardDetail
                   v-if="brand && name"
@@ -63,7 +71,7 @@
               :label="$t('basket_card.color_label')"
               :value="color"
             />
-            <div v-if="!inStock" class="flex gap-2 text-gray-800">
+            <div v-if="!inStock" class="flex gap-2 text-gray-600">
               <p class="pr-3">{{ $t('global.sold_out') }}</p>
             </div>
           </div>
@@ -137,7 +145,7 @@
                 "
                 class="mt-0.5 text-sm text-gray-700"
               >
-                {{ $t('price.best_price_30d') }}
+                {{ $t('price.best_price_30d') }}**:
                 {{ formatCurrency(lowestPriorPrice.withTax) }}
                 ({{ lowestPriorPrice.relativeDifferenceToPrice * 100 }})%
               </p>
@@ -213,7 +221,7 @@ import {
   useToast,
   useTrackingEvents,
 } from '~/composables'
-import { getBackgroundColorStyle, getTextColorStyle } from '~/utils'
+import { getBackgroundColorStyle, getTextColorStyle, routeList } from '~/utils'
 import { AlphaColorMap } from '~/constants'
 
 type Props = {
@@ -323,7 +331,7 @@ const addToWishlist = async () => {
   const message = $i18n.t('wishlist.notification.add_to_wishlist', {
     productName: name.value || $i18n.t('wishlist.product'),
   })
-  toast.show(message, 'ROUTE', { to: '/wishlist' })
+  toast.show(message, { action: 'ROUTE', to: routeList.wishlist })
 }
 
 const removeFromWishlist = async () => {
@@ -350,6 +358,6 @@ const removeFromWishlist = async () => {
 
   await wishlist.removeItem(data)
 
-  toast.show(message, 'CONFIRM')
+  toast.show(message, { action: 'CONFIRM' })
 }
 </script>

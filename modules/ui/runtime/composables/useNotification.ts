@@ -5,10 +5,11 @@ import type { RouteLocationRaw } from '#vue-router'
 
 export const DEFAULT_NOTIFICATION_DURATION = 5000
 
-export type NotificationOptions = Partial<{
-  duration: number
-  actions: NotificationActionHandler[]
-}>
+export type NotificationOptions = {
+  duration?: number
+  actions?: NotificationActionHandler[]
+  type: NotificationComponent
+}
 
 export type NotificationOnClickActions = {
   close: () => void
@@ -22,11 +23,17 @@ export type NotificationActionHandler = {
   onClick?: (actions: NotificationOnClickActions) => void
 }
 
+export type NotificationComponent = {
+  classes: string
+  iconComponent?: string
+}
+
 export type StorefrontNotification = {
   id: string
   message: string
   duration: number
-  actions: NotificationActionHandler[]
+  actions?: NotificationActionHandler[]
+  type?: NotificationComponent
 }
 
 export function useNotification() {
@@ -37,13 +44,14 @@ export function useNotification() {
 
   const show = (
     message: string,
-    { duration, actions = [] }: NotificationOptions = {},
+    { duration, actions, type }: NotificationOptions,
   ) => {
     notifications.value.push({
-      id: `${nanoid()}-${Date.now()}`,
       message,
+      id: `${nanoid()}-${Date.now()}`,
       duration: duration || DEFAULT_NOTIFICATION_DURATION,
       actions,
+      type,
     })
   }
 

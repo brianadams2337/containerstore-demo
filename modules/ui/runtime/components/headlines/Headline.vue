@@ -3,9 +3,13 @@
   <component
     :is="tag"
     v-else
-    data-test-id="headline"
-    class="flex items-center gap-2 font-semibold leading-tight"
-    :class="classes"
+    data-testid="headline"
+    class="flex items-center gap-2 leading-tight"
+    :class="[
+      HeadlineClass[size],
+      isBold ? '!font-bold' : 'font-semibold',
+      { uppercase: isUppercase, 'visually-hidden': hidden },
+    ]"
   >
     <slot />
     <slot :badge="badge" name="badge">
@@ -15,7 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import { HeadlineSize, HeadlineTag } from '#storefront-ui'
 
 type Props = {
@@ -28,7 +31,7 @@ type Props = {
   tag?: HeadlineTag
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   loading: false,
   isUppercase: false,
   hidden: false,
@@ -47,13 +50,4 @@ const HeadlineClass = {
   [HeadlineSize.SM]: 'text-sm',
   [HeadlineSize.XS]: 'text-xs',
 } as Record<HeadlineSize, string>
-
-const classes = computed(() => [
-  HeadlineClass[props.size],
-  {
-    uppercase: props.isUppercase,
-    'visually-hidden': props.hidden,
-    '!font-bold': props.isBold,
-  },
-])
 </script>

@@ -5,24 +5,30 @@
     :product="item.product"
     :loading="isWishlistFetching"
     class="col-span-6 md:col-span-4 2xl:col-span-3"
-    wishlist-remove-icon="close"
     is-wishlist-card
-    @productimage:mouseover="isAddToBasketButtonShown = true"
-    @productimage:mouseleave="isAddToBasketButtonShown = false"
+    @product-image:mouseover="isAddToBasketButtonShown = true"
+    @product-image:mouseleave="isAddToBasketButtonShown = false"
   >
-    <template #badge>
-      <ProductBadges
+    <template #header-badges>
+      <ProductCardBadgesHeader
+        :product="item.product"
+        class="absolute left-3 top-3 w-full"
+      />
+    </template>
+    <template #footer-badges>
+      <ProductCardBadgesFooter
         :product="item.product"
         class="absolute bottom-0 left-0 w-full"
       />
     </template>
-    <template #header-image="{ link, image, imageLoading, name }">
+    <template #header-image="{ link, image, name }">
       <WishlistCardImage
-        v-bind="{ index, item, link, image, imageLoading, name }"
+        v-if="link"
+        v-bind="{ index, item, link, image, name }"
       />
     </template>
-    <template #description="{ title, name }">
-      <WishlistCardDescription v-bind="{ index, item, title, name }" />
+    <template #details="{ brand, name }">
+      <WishlistCardDescription v-bind="{ index, item, brand, name }" />
       <WishlistCardSlideIn :item="item" />
     </template>
   </ProductCard>

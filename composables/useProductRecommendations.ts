@@ -6,8 +6,7 @@ import {
 import { computed } from 'vue'
 import { usePageState } from '~/composables/usePageState'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
-
-import { productListingMetaData } from '~/constants/product'
+import { productListingMetaData } from '~/constants'
 import { useRoute } from '#app/composables/router'
 import { useProductsByIds } from '#storefront/composables'
 import { getDeepestCategoryForTracking } from '~/utils'

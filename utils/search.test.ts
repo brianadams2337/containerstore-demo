@@ -8,7 +8,7 @@ import { describe, expect, it } from 'vitest'
 import {
   getSearchFilterLabels,
   getSuggestionName,
-  groupSearchCategoryFiltersByKey,
+  buildFiltersQuery,
   isCategorySuggestion,
   isProductSuggestion,
   type CategoryFilter,
@@ -53,8 +53,8 @@ const getBaseProduct = (): Product => ({
   ],
 })
 
-describe('groupSearchCategoryFiltersByKey', () => {
-  it('should group category filter by key', () => {
+describe('buildFiltersQuery', () => {
+  it('should build filters queries for attribute filters', () => {
     const filters: CategoryFilter[] = [
       {
         type: 'attribute',
@@ -105,8 +105,34 @@ describe('groupSearchCategoryFiltersByKey', () => {
         },
       },
     ]
-    const groupedFiltersByKey = groupSearchCategoryFiltersByKey(filters)
-    expect(groupedFiltersByKey).toEqual({ color: [10, 13], size: [39, 37] })
+    const query = buildFiltersQuery(filters)
+    expect(query).toEqual({
+      'filters[color]': '10,13',
+      'filters[size]': '39,37',
+    })
+  })
+
+  it('should build filters queries for boolean filters', () => {
+    const filters: CategoryFilter[] = [
+      {
+        type: 'boolean',
+        booleanFilter: {
+          slug: 'sale',
+          label: 'Sale',
+          value: true,
+        },
+      },
+      {
+        type: 'boolean',
+        booleanFilter: {
+          slug: 'isNew',
+          label: 'New',
+          value: true,
+        },
+      },
+    ]
+    const query = buildFiltersQuery(filters)
+    expect(query).toEqual({ 'filters[sale]': 'true', 'filters[isNew]': 'true' })
   })
 })
 
@@ -161,10 +187,18 @@ describe('getSearchFilterLabels', () => {
           ],
         },
       },
+      {
+        type: 'boolean',
+        booleanFilter: {
+          slug: 'sale',
+          label: 'Sale',
+          value: true,
+        },
+      },
     ]
 
     const labels = getSearchFilterLabels(filters)
-    expect(labels).toEqual(['Blau', 'Rot', 'M', 'XL'])
+    expect(labels).toEqual(['Blau', 'Rot', 'M', 'XL', 'Sale'])
   })
 })
 

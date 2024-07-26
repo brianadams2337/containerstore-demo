@@ -24,7 +24,7 @@
       >
         <SFListboxOptions
           v-if="isOpen"
-          class="absolute right-0 top-0 z-60 max-h-32 w-32 overflow-y-auto bg-white shadow-md"
+          class="shadow-md absolute right-0 top-0 z-60 max-h-32 w-32 overflow-y-auto bg-white"
         >
           <SFListboxOption
             v-for="{ shopId, path, locale } in availableShops"
@@ -34,7 +34,7 @@
           >
             <SFButton
               :key="`${locale}-locale`"
-              type="ghost"
+              type="raw"
               is-full-width
               class="!justify-start rounded-none px-4 py-2 text-xs uppercase hover:bg-gray-200"
               :class="{ 'font-bold': locale === currentShop?.locale }"
@@ -104,6 +104,7 @@ const changeShop = (value?: string) => {
     throw new Error('Shop has no path configured')
   }
   trackShopChange()
-  window.location.replace(switchLocalePath(value))
+  const newLocalePath = switchLocalePath(value).split('?')[0]
+  window.location.replace(newLocalePath)
 }
 </script>

@@ -1,46 +1,43 @@
 <template>
   <label
     :for="id"
-    class="group flex cursor-pointer items-center space-x-2 text-xs font-medium"
+    class="group flex cursor-pointer items-center space-x-2 text-sm font-medium"
   >
-    <input
-      :id="id"
-      v-model="selected"
-      :value="item"
-      class="size-5 rounded border border-gray-500 text-black focus:outline-none focus:ring-0"
-      :class="{ 'group-hover:bg-gray-200': !isActive }"
-      type="checkbox"
-    />
-    <span>
-      <slot name="label">{{ label }}</slot>
+    <span class="flex size-4 items-center justify-center">
+      <input
+        :id="id"
+        v-model="model"
+        :value="item"
+        class="peer absolute size-4 cursor-pointer appearance-none rounded border border-gray-400 checked:border-2 checked:border-accent hover:border-accent"
+        type="checkbox"
+      />
+      <IconCheck
+        class="z-10 size-3 text-accent opacity-0 peer-checked:opacity-100"
+      />
     </span>
+
+    <slot name="label">
+      <span
+        v-if="label"
+        class="leading-none text-gray-400 group-checked:text-black"
+      >
+        {{ label }}
+      </span>
+    </slot>
   </label>
 </template>
 
 <script setup lang="ts" generic="T">
-import { computed } from 'vue'
+import { defineModel } from 'vue'
 
-// TODO: Refactor and improve this component
 type Props = {
-  modelValue?: T[]
   item?: T
   id: string
-  label: string
+  label?: string
 }
-const props = withDefaults(defineProps<Props>(), {
-  modelValue: () => [],
-  item: undefined,
+withDefaults(defineProps<Props>(), {
   label: undefined,
 })
 
-const emit = defineEmits<{ 'update:model-value': [T[]] }>()
-
-const selected = computed({
-  get: () => props.modelValue,
-  set: (newValue: T[]) => emit('update:model-value', newValue),
-})
-
-const isActive = computed(() => {
-  return selected.value.findIndex((i: T) => i === props.item) !== -1
-})
+const model = defineModel<T[] | boolean>()
 </script>

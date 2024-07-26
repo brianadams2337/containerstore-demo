@@ -14,6 +14,7 @@
 import { computed } from 'vue'
 import type { NavigationTreeItem } from '@scayle/storefront-nuxt'
 import type { LinkVariant } from '#storefront-ui'
+import { useRouteHelpers } from '~/composables'
 
 type Props = {
   navigationItem: NavigationTreeItem | null
@@ -27,23 +28,34 @@ const props = withDefaults(defineProps<Props>(), {
   type: undefined,
 })
 
+const { buildCategoryPath } = useRouteHelpers()
+
 const emit = defineEmits<{ 'mouseenter:navigation-item': [] }>()
 
 const pathParams = computed(() => {
   if (!props.navigationItem) {
     return
   }
-  if (props.navigationItem.type === 'category') {
-    return { path: props.navigationItem.category?.path, openInNew: false }
+  if (
+    props.navigationItem.type === 'category' &&
+    props.navigationItem.category
+  ) {
+    return {
+      path: buildCategoryPath(props.navigationItem.category),
+      openInNew: false,
+    }
   }
   if (props.navigationItem.type === 'page') {
     return { path: props.navigationItem.page, openInNew: true }
   }
 
-  return {
-    path: props.navigationItem.options?.url ?? '',
-    openInNew: props.navigationItem.options?.isOpenInNewWindows ?? false,
+  if (props.navigationItem.type === 'external') {
+    return {
+      path: props.navigationItem.options?.url ?? '',
+      openInNew: props.navigationItem.options?.isOpenInNewWindows ?? false,
+    }
   }
+  return null
 })
 const displayName = computed(() => props.navigationItem?.name)
 </script>

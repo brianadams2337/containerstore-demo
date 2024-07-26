@@ -9,9 +9,9 @@ export class ProductDetailPage {
   constructor(page: Page) {
     this.page = page
     this.productSizePickerToggle = page.locator(
-      '[data-test-id="product-size-picker-toggle"]',
+      '[data-testid="product-size-picker-toggle"]',
     )
-    this.productSizeValue = page.locator('[data-test-id="product-size"]')
+    this.productSizeValue = page.locator('[data-testid="product-size"]')
     this.addToBasketButton = page.locator(
       '[data-test-id="add-item-to-basket-button"]',
     )

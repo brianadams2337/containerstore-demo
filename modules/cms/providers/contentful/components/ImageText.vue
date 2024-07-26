@@ -33,11 +33,7 @@
         <p v-if="blok.fields.text" class="mt-3 overflow-auto text-xs md:pt-5">
           {{ blok.fields.text }}
         </p>
-        <SFButton
-          v-if="hasCta && blok.fields.ctaLink"
-          class="mt-10 shrink-0"
-          :to="blok.fields.ctaLink"
-        >
+        <SFButton v-if="resolvedLink" class="mt-10 shrink-0" :to="resolvedLink">
           {{ blok.fields.cta }}
         </SFButton>
       </div>
@@ -50,6 +46,7 @@ import { computed, defineOptions } from 'vue'
 import { useCMSAlignment } from '../composables/useCMSAlignment'
 import type { CMSImageText } from '../types'
 import { useContentfulImageSanitizer } from '../composables/useContentfulImage'
+import { normalizeHomeLink } from '../../../utils/helpers'
 
 const props = withDefaults(defineProps<CMSImageText>(), {
   sizes: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
@@ -74,8 +71,13 @@ const hasCta = computed(
   () => props.blok?.fields.cta && props.blok?.fields.ctaLink,
 )
 
+const resolvedLink = computed(() => {
+  return hasCta.value && normalizeHomeLink(props.blok?.fields.ctaLink)
+})
+
 defineOptions({ name: 'CMSImageText' })
 </script>
+
 <style lang="css" scoped>
 .gradient {
   background-image: linear-gradient(

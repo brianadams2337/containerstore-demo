@@ -52,7 +52,8 @@ export function useBasketActions() {
 
     const action = isAddedToBasket ? 'ROUTE' : 'CONFIRM'
 
-    toast.show(message, action, {
+    toast.show(message, {
+      action,
       ...(isAddedToBasket && { to: routeList.basket }),
     })
   }

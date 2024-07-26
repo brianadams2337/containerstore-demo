@@ -5,7 +5,6 @@
 <script setup lang="ts">
 import {
   defineModel,
-  defineProps,
   getCurrentInstance,
   h,
   onMounted,

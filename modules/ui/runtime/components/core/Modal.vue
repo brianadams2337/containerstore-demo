@@ -3,7 +3,7 @@
     <SFFadeInTransition>
       <div
         v-if="isOpen"
-        class="fixed right-0 top-0 z-[100] flex w-full bg-black/50"
+        class="fixed right-0 top-0 z-100 flex w-full bg-black/50"
         :class="fullScreen ? 'h-full' : 'min-h-screen'"
       >
         <div
@@ -18,7 +18,7 @@
             class="absolute right-6 top-6 z-50 cursor-pointer p-3"
             @click="close"
           >
-            <IconCloseBold class="size-5" />
+            <IconClose class="size-5" />
           </button>
           <slot />
         </div>

@@ -1,5 +1,10 @@
 <template>
   <div>
+    <!--
+      `silent` switches off error messages
+      Setting min/max at the same time as setting range causes errors.
+      This error causes no issues.
+      Source: https://github.com/NightCatSama/vue-slider-component/issues/343#issuecomment-482508771-->
     <VueSlider
       v-model="range"
       :enable-cross="false"
@@ -7,12 +12,14 @@
       :max="max"
       contained
       adsorb
-      tooltip="none"
-      tooltip-placement="bottom"
-      :interval="100"
-      @change="emit('change')"
-      @drag-start="emit('drag-start')"
-      @drag-end="emit('drag-end')"
+      drag-on-click
+      silent
+      height="2px"
+      tooltip="always"
+      tooltip-placement="top"
+      @change="emit('slider-change')"
+      @drag-start="emit('drag-start', range)"
+      @drag-end="emit('drag-end', range)"
       @dragging="emit('dragging')"
       @error="emit('error')"
     >
@@ -20,8 +27,13 @@
         <button
           class="flex size-4 cursor-pointer rounded-full bg-primary focus:outline-none"
         >
-          <div class="m-auto size-2 rounded-full bg-white" />
+          <span class="m-auto size-3 rounded-full bg-white" />
         </button>
+      </template>
+      <template #tooltip="{ value }">
+        <div class="rounded bg-gray-200 p-1 text-sm text-gray-600">
+          {{ formatCurrency(value) }}
+        </div>
       </template>
     </VueSlider>
     <div class="mt-4 flex items-center">
@@ -55,7 +67,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, defineModel } from 'vue'
 // By default vue-slider-component does not support SSR.
 // We can work around this by importing js and styles separately
 // https://nightcatsama.github.io/vue-slider-component/#/?hash=server-side-rendering-ssr
@@ -63,36 +75,64 @@ import { computed } from 'vue'
 import VueSlider from 'vue-slider-component/dist-css/vue-slider-component.umd.min.js'
 import 'vue-slider-component/dist-css/vue-slider-component.css'
 import '@/assets/css/slider/default.css'
+import { useCurrentShop } from '#storefront/composables'
 
-type RangeTuple = [start: number, end: number]
+export type RangeTuple = [start: number, end: number]
 
 type Props = {
-  modelValue?: RangeTuple
   min?: number
   max?: number
-  currencyCode: string
-  locale: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  modelValue: () => [3, 29999],
+withDefaults(defineProps<Props>(), {
   min: 0,
   max: 100000,
 })
 
-const emit = defineEmits<{
-  (e: 'update:model-value', value: RangeTuple): void
-  (e: 'change' | 'drag-start' | 'drag-end' | 'dragging' | 'error'): void
-}>()
-
-const range = computed({
-  get: (): RangeTuple => props.modelValue,
-  set: (newValue: RangeTuple) => emit('update:model-value', newValue),
+const range = defineModel<RangeTuple>({
+  required: true,
 })
+
+const currentShop = useCurrentShop()
+const locale = currentShop.value!.locale
+const currencyCode = currentShop.value!.currency
+
+const emit = defineEmits<{
+  (e: 'change' | 'slider-change' | 'dragging' | 'error'): void
+  (e: 'drag-end' | 'drag-start' | 'change', activePrice: RangeTuple): void
+}>()
 
 const changeRangeAtIndex = (newRangeValue: number, index: 0 | 1) => {
   const updatedRange = [...range.value]
   updatedRange[index] = newRangeValue
   range.value = updatedRange as RangeTuple
+  emit('change', range.value)
+}
+
+const decimalPlaces = computed(() => {
+  if (!currencyCode) {
+    return 2
+  }
+
+  const parts = new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: currencyCode,
+  }).formatToParts(0)
+
+  const fraction = parts.find((p) => p.type === 'fraction')
+
+  if (!fraction) {
+    return 0
+  }
+
+  return fraction.value.length
+})
+
+const formatCurrency = (value: number): string => {
+  return (value / 10 ** decimalPlaces.value).toLocaleString(locale, {
+    style: 'currency',
+    currency: currencyCode,
+    minimumFractionDigits: 0,
+  })
 }
 </script>

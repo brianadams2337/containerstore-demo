@@ -22,7 +22,7 @@ const props = defineProps<{ promotion: Promotion }>()
 
 const schedule = computed(() => props.promotion.schedule)
 const customData = computed(() => props.promotion.customData)
-const to = computed(() => customData.value.category?.to)
+const id = computed(() => customData.value.category?.id)
 
-const closePromotionList = () => to.value && togglePromotionList()
+const closePromotionList = () => id.value && togglePromotionList()
 </script>

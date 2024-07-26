@@ -6,18 +6,18 @@ const locale = getLocaleFile()
 
 class WishlistPage extends BasePage {
   private pageElements = {
-    headline: '[data-test-id="headline"]',
+    headline: '[data-testid="headline"]',
     productInWishlist: '[data-test-id="wishlist-card"]',
     productPrice: '[data-test-id="wishlist-product-price"]',
     productSize: '[data-test-id="wishlist-card-product-size"]',
     productSizeMobile: '[name="variant_size"]',
-    sizeMenuToggle: '[data-test-id="product-size-picker-toggle"]',
+    sizeMenuToggle: '[data-testid="product-size-picker-toggle"]',
     productSizePickerOption: '[data-test-id="product-size"]',
     wishlistCardAddToCartButton:
       '[class="hidden lg:block"] [data-test-id="wishlist-card-add-to-cart"]',
     wishlistCardAddToCartMobileButton:
       '[data-test-id="wishlist-card-add-to-cart-mobile"]',
-    removeFromListButton: '[data-test-id="remove-item-from-wishlist-button"]',
+    removeFromListButton: '[data-testid="remove-item-from-wishlist-button"]',
     continueShoppingButton: 'a[href="/de"]',
     signInButton: 'a[href*="/signin"]',
     wishlistCount: '[data-test-id="wishlist-count"]',

@@ -4,7 +4,7 @@
       <div
         v-if="isGiftSelectionShown"
         ref="sizeSelection"
-        class="fixed bottom-0 z-[100] w-full rounded-t-xl bg-white px-4 py-2"
+        class="fixed bottom-0 z-100 w-full rounded-t-xl bg-white px-4 py-2"
       >
         <div class="relative mt-2 flex items-center justify-center">
           <SFHeadline size="base" is-bold>
@@ -19,7 +19,7 @@
             @click="toggleGiftSelection()"
           >
             <template #icon="{ _class }">
-              <IconCloseBold :class="_class" class="text-black" />
+              <IconClose :class="_class" class="text-black" />
             </template>
           </SFButton>
         </div>

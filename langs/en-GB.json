@@ -92,13 +92,14 @@
     "available_soon": "Soon available again"
   },
   "badge_labels": {
-    "new": "New",
+    "new": "New in",
     "premium": "Premium",
     "sustainable": "Sustainable",
     "sold_out": "Sold out",
     "online_exclusive": "Online Exclusive",
     "campaign": "-{reduction}% EXTRA",
-    "sale": "-{reduction}%"
+    "sale": "-{reduction}%",
+    "already_in_basket": "Already in basket"
   },
   "navigation": {
     "my_account": "My Account",
@@ -297,17 +298,21 @@
   "price": {
     "starting_from": "from",
     "including_vat": "incl. VAT.",
-    "best_price_30d": "30-Tage-Bestpreis**:",
-    "best_price_hint": "**niedrigster Gesamtpreis der letzten 30 Tage vor der Preisermäßigung"
+    "best_price_30d": "30-Tage-Bestpreis"
   },
   "plp": {
     "filter": "Filter",
-    "seo_description": "Buy within the {categoryName} category online at Demo Shop. Discover the wide range in {categoryName} category",
-    "no_products": "There's no products for this category",
-    "no_results": "No results"
+    "seo_description": "Buy {category} at SCAYLE. Discover a wide range of {category}",
+    "back_navigation_button_label": "Back navigation button",
+    "no_results": {
+      "title": "No results 🫣",
+      "description": "There are sadly no products in this category or your filters doesn’t result in products.",
+      "reset_filters": "Reset filters",
+      "back_to_category": "Back to {category}"
+    }
   },
   "sorting_select": {
-    "topseller": "Recommendations",
+    "top_seller": "Recommendations",
     "date_newest": "Newest",
     "price_desc": "Price descending",
     "price_asc": "Price ascending",
@@ -315,20 +320,26 @@
     "reduction_asc": "Reduction ascending"
   },
   "filter": {
-    "title": "Filters",
+    "title": "Filter categories",
     "size": "Size",
     "brands": "Brands",
     "colors": "Colors",
     "price": "Price",
-    "only_sale": "Show sale",
+    "only_sale": "Show only sale products",
     "delete": "delete",
     "show_all": "Show all",
-    "show_results_count": "Show ({count})",
-    "reset": "Reset",
+    "show_results_count": "View {count} items",
+    "reset": "Reset filter",
     "reset_all": "Reset all",
-    "show_results": "Show Results",
+    "show_results": "View items",
     "to": "to",
-    "all_label": "All"
+    "all_label": "All",
+    "select_color": "Select color {color}",
+    "sorting": "Sorting",
+    "show_filter": "Show Filters",
+    "filters_sorting": "Filters & Sorting",
+    "cleared_notification": "All filters are cleared!",
+    "updated_notification": "Your filters are successfully applied!"
   },
   "osp": {
     "account": "Account",
@@ -493,5 +504,9 @@
     "select_size_message": "Select size to see options",
     "not_eligible_message": "The selected size is not eligible for a subscription",
     "term": "Term"
+  },
+  "image_slider": {
+    "previous_label": "previous image",
+    "next_label": "next image"
   }
 }

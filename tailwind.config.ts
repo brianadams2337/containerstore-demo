@@ -27,6 +27,7 @@ const screens = Object.entries(breakpoints).reduce(
 
 export default {
   content: ['modules/**/*.{vue,js, ts}'],
+  safelist: ['overflow-hidden'],
   theme: {
     screens,
     container: {
@@ -36,40 +37,177 @@ export default {
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
     },
+    fontWeight: {
+      light: '300',
+      normal: '400',
+      variable: '425',
+      medium: '500',
+      'semi-bold-variable': '550',
+      semibold: '600',
+      bold: '700',
+    },
+    keyframes: {
+      ping: {
+        '25%, 50%': { transform: 'scale(.8)', opacity: 10 },
+      },
+      grow: {
+        '0%': { transform: 'scale(0.5)', opacity: 0 },
+        '30%': { opacity: 0 },
+        '100%': { transform: 'scale(1)' },
+      },
+      shrink: {
+        '0%': { transform: 'scale(1)' },
+        '30%': { opacity: 0 },
+        '100%': { transform: 'scale(0)', opacity: 0 },
+      },
+    },
+    zIndex: {
+      0: '0',
+      10: '10',
+      20: '20',
+      30: '30',
+      40: '40',
+      50: '50',
+      60: '60',
+      70: '70',
+      80: '90',
+      90: '90',
+      100: '100',
+      110: '110',
+      auto: 'auto',
+    },
+    fontSize: {
+      '3xs': [
+        '0.5rem',
+        {
+          lineHeight: '0.75rem',
+          letterSpacing: '0.006rem',
+        },
+      ],
+      '2xs': [
+        '0.625rem',
+        {
+          lineHeight: '0.875rem',
+          letterSpacing: '0.006rem',
+        },
+      ],
+      xs: [
+        '0.688rem',
+        {
+          lineHeight: '0.963rem',
+          letterSpacing: '0',
+        },
+      ],
+      sm: [
+        '0.75rem',
+        {
+          lineHeight: '0.963rem',
+          letterSpacing: '-0.008rem',
+        },
+      ],
+      base: [
+        '0.813rem',
+        {
+          lineHeight: '0.975rem',
+          letterSpacing: '-0.008rem',
+        },
+      ],
+      md: [
+        '0.875rem',
+        {
+          lineHeight: '1.05rem',
+          letterSpacing: '-0.009rem',
+        },
+      ],
+      lg: [
+        '1rem',
+        {
+          lineHeight: '1.2rem',
+          letterSpacing: '-0.02rem',
+        },
+      ],
+      xl: [
+        '1.125rem',
+        {
+          lineHeight: '1.35rem',
+          letterSpacing: '0.034rem',
+        },
+      ],
+      '2xl': [
+        '1.25rem',
+        {
+          lineHeight: '1.75rem',
+          letterSpacing: '-0.025rem',
+        },
+      ],
+      '3xl': [
+        '1.75rem',
+        {
+          lineHeight: '2.1rem',
+          letterSpacing: '-0.035rem',
+        },
+      ],
+
+      '4xl': [
+        '2.25rem',
+        {
+          lineHeight: '2.75rem',
+          letterSpacing: '-0.045rem',
+        },
+      ],
+      '5xl': [
+        '2.75rem',
+        {
+          lineHeight: '3.063rem',
+          letterSpacing: '-0.055rem',
+        },
+      ],
+      '6xl': [
+        '3.25rem',
+        {
+          lineHeight: '3.625rem',
+          letterSpacing: '-0.063rem',
+        },
+      ],
+    },
+    boxShadow: {
+      secondary: '0px 6px 16px -10px rgba(0, 0, 0, 0.04)',
+    },
     extend: {
       colors: {
+        emerald: {
+          100: '#CEF5E8',
+          300: '#14ffa8',
+          400: '#00e48c',
+          500: '#0dcc8d',
+        },
+        indigo: {
+          200: '#ccbff6',
+          500: '#5328e1',
+        },
         gray: {
-          50: '#f7f7f6',
-          100: '#F2F2F2',
-          200: '#F4F4F4',
-          300: '#EAEAEA',
+          ...colors.gray,
+          50: '#fafafa',
+          100: '#f2f2f2',
+          200: '#ebebeb',
+          300: '#d9d9d9',
           350: '#E5E5E9',
-          400: '#DDDDDD',
-          500: '#CCCCCC',
-          600: '#9b9b9b',
+          400: '#a8a8a8',
+          500: '#808080',
+          600: '#666666',
           700: '#888888',
           750: '#737277',
-          800: '#666666',
+          900: '#171717',
         },
-
-        primary: {
-          100: '#404040',
-          200: '#333',
-          300: '#262626',
-          400: '#191919',
-          DEFAULT: '#1f1f21',
-        },
-
         brand: {
           DEFAULT: '#14FFA8',
         },
-
         'pink-neon': '#ff7df4',
         flamingo: '#d891a8',
         'green-neon': '#00bd14',
         red: {
           ...colors.red,
-          DEFAULT: '#f14949',
+          DEFAULT: '#e74b3a',
         },
         yellow: {
           ...colors.yellow,
@@ -90,37 +228,38 @@ export default {
           900: '#001732', // dark-20
           DEFAULT: '#0277ff',
         },
+        primary: {
+          100: '#404040',
+          200: '#333',
+          300: '#262626',
+          400: '#191919',
+          DEFAULT: '#171717',
+        },
         secondary: {
           100: '#fbfbfb',
           200: '#fafafa',
           300: '#f9f9f9',
           400: '#f8f8f8',
           450: '#f2f0f0',
-          DEFAULT: '#99989d',
           600: '#ebebeb',
           700: '#ccc',
           800: '#7f7f7f',
+          DEFAULT: '#666666',
         },
-
-        tertiary: {
-          1: {
-            500: '#00e4ff',
-          },
-          2: {
-            500: '#ff9a00',
-          },
-          3: {
-            500: '#e5ff00',
-          },
+        accent: {
+          DEFAULT: '#5328e1',
+        },
+        white: {
+          smoke: '#f6f6f6',
+          DEFAULT: '#ffffff',
         },
         status: {
-          success: 'var(--status-success)',
+          success: '#0dcc8d',
+          error: '#e74b3a',
+          info: '#ccbff6',
+          alert: '#f59e0b',
           inactive: 'var(--status-inactive)',
-          info: 'var(--status-info)',
         },
-      },
-      animation: {
-        'ping-small': 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
       },
       fontSize: {
         '2xs': '0.625rem',
@@ -141,14 +280,10 @@ export default {
         // percentage based
         '1/5': '20%',
       },
-      keyframes: {
-        ping: {
-          '25%, 50%': { transform: 'scale(.8)', opacity: 10 },
-        },
-      },
-      zIndex: {
-        50: '50',
-        60: '60',
+      animation: {
+        'ping-small': 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
+        grow: 'grow 0.3s forwards',
+        shrink: 'shrink 0.3s forwards',
       },
     },
   },
@@ -204,7 +339,6 @@ export default {
           border: '0',
         },
       }
-
       addUtilities(utilities)
     }),
   ],

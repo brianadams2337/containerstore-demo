@@ -6,11 +6,11 @@ class ProductPage extends BasePage {
     zoomGallery: '[data-test-id="zoom-gallery"]',
     productDetails: '[data-test-id="product-detail-page"]',
     tilledGallery: '[data-test-id="tilled-gallery"]',
-    productImages: '[data-test-id="product-image"]',
-    addToWishlistButton: '[data-test-id="add-item-to-wishlist-button"]',
+    productImages: '[data-testid="product-image"]',
+    addToWishlistButton: '[data-testid="add-item-to-wishlist-button"]',
     promotionCountdown: '[data-test-id="promotion-countdown"]',
     removeFromWishlistButton:
-      '[data-test-id="remove-item-from-wishlist-button"]',
+      '[data-testid="remove-item-from-wishlist-button"]',
     price: '[data-test-id="price"]',
     priceBeforeSale: '[data-test-id="initialProductPrice"]',
     category: '[data-test-id="categoryOnProductDetailPage"]',
@@ -20,9 +20,9 @@ class ProductPage extends BasePage {
     colorOption: (ID: number) => {
       return `[data-color-id="${ID}"]`
     },
-    sizeMenuToggle: '[data-test-id="product-size-picker-toggle"]',
+    sizeMenuToggle: '[data-testid="product-size-picker-toggle"]',
     quantityMenuToggle: '[data-test-id="product-quantity-picker-toggle"]',
-    size: '[data-test-id="product-size"]',
+    size: '[data-testid="product-size"]',
     backButton: '[data-test-id="back-button"]',
     shopLogo: '.max-w-full',
     siblingColorsSelector:

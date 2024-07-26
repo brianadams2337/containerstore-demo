@@ -1,56 +1,36 @@
 import type { ProductWith } from '@scayle/storefront-nuxt'
 
+export const ProductsPerRow = {
+  MOBILE: 2,
+  TABLET: 3,
+  DESKTOP: 4,
+} as const
+
+export const PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE = 8
+export const PRODUCT_CARD_SKELETON_LOADERS_SIZE = 20
+export const PRODUCT_CARD_SIBLINGS_LIMIT = 4
 export const FETCH_PRODUCTS_CACHE_TTL = 1000
-export const PRODUCTS_PER_PAGE = 24
+export const PRODUCTS_PER_PAGE = 60
 export const MINIMUM_QUANTITY_IMMEDIATE_AVAILABILITY = 5
+export const PRODUCT_IMAGE_QUALITY_MODIFIER = '75'
+
 export const PRODUCT_WITH_PARAMS: ProductWith = {
-  attributes: {
-    withKey: [
-      'color',
-      'brand',
-      'name',
-      'promotion',
-      'fastenerType',
-      'design',
-      'extras',
-      'material',
-      'print',
-      'careInstructions',
-      'fitting',
-      'upperLength',
-      'sleeveLength',
-      'shirtCut',
-      'shortsLength',
-      'trousersLength',
-      'skirtLength',
-      'neckline',
-      'trousersCut',
-    ],
-  },
-  advancedAttributes: {
-    withKey: [
-      'materialCompositionTextile',
-      'productDescription',
-      'combineWith',
-      'additionalService',
-    ],
-  },
+  attributes: 'all',
+  advancedAttributes: 'all',
   variants: {
-    attributes: {
-      withKey: ['price', 'size', 'subscriptionEligibility'],
-    },
+    attributes: 'all',
     lowestPriorPrice: true,
   },
   images: {
     attributes: {
-      withKey: ['imageType', 'imageView', 'imageBackground'],
+      withKey: ['primaryImage'],
     },
   },
   categories: 'all',
   siblings: {
     images: {
       attributes: {
-        withKey: ['imageType', 'imageView', 'imageBackground'],
+        withKey: ['primaryImage'],
       },
     },
     attributes: {
@@ -60,8 +40,6 @@ export const PRODUCT_WITH_PARAMS: ProductWith = {
   priceRange: true,
   lowestPriorPrice: true,
 }
-
-export const PRODUCT_IMAGE_QUALITY_MODIFIER = '75'
 
 export const productListingMetaData = {
   name: 'PDP',

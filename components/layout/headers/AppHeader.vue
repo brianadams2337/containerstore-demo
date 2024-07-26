@@ -7,7 +7,7 @@
         <div class="flex-1">
           <SFButton
             class="md:hidden"
-            type="ghost"
+            type="raw"
             data-test-id="side-navigation-button"
             @click="toggleSideNavigation"
           >

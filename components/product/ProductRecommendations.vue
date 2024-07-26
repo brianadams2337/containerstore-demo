@@ -3,6 +3,7 @@
     class="space-x-2"
     spaced-items
     spaced-width="sm"
+    hide-disabled-arrows
     with-arrows
   >
     <ProductCard
@@ -20,9 +21,6 @@
       :link="getProductDetailRoute(recommendation)"
       :image="getImageFromList(recommendation.images, 'model', 'front')"
       :price="getLowestPrice(recommendation.variants ?? [])"
-      :lowest-prior-price="
-        getVariantWithLowestPrice(recommendation.variants)?.lowestPriorPrice
-      "
       :show-add-to-cart="false"
       :show-add-to-wishlist="false"
       :show-available-colors="false"
@@ -46,10 +44,9 @@ import {
   useRouteHelpers,
   useTrackingEvents,
 } from '~/composables'
-import { getImageFromList } from '~/utils/image'
-import { productListingMetaData } from '~/constants/product'
+import { productListingMetaData } from '~/constants'
 import { Size } from '#storefront-ui'
-import { getVariantWithLowestPrice } from '~/utils'
+import { getImageFromList } from '~/utils'
 
 type Props = {
   combineWithProductIds: number[]

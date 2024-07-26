@@ -8,7 +8,7 @@ class Filter {
     color: (ID: number) => {
       return `[aria-label*="select color"] [data-color-id="${ID}"]`
     },
-    filterHeading: '[data-test-id="headline"]',
+    filterHeading: '[data-testid="headline"]',
   }
 
   waitForFilterDisplayed(): void {

@@ -1,13 +1,13 @@
 <template>
-  <SFLink v-if="link" :to="link" raw>
+  <SFLink :to="link" raw>
     <ProductImage
       v-if="image"
       :image="image"
-      :image-loading="imageLoading"
       :alt="name"
+      fit="cover"
       sizes="sm:100vw"
       is-centered
-      class="absolute inset-0"
+      class="absolute inset-0 h-full"
     />
   </SFLink>
   <div
@@ -40,6 +40,7 @@
       class="flex size-8 cursor-pointer items-center justify-center rounded-full border border-gray-100 bg-white"
       data-test-id="wishlist-card-add-to-cart-mobile"
       @click="showSizePicker(index)"
+      @keydown.enter="showSizePicker(index)"
     >
       <IconAddToCart class="size-5" />
     </div>
@@ -55,9 +56,8 @@ import type { RouteLocationRaw } from '#vue-router'
 type Props = {
   index: number
   item: WishlistItem
-  link?: RouteLocationRaw
+  link: RouteLocationRaw
   image?: ProductImage | null
-  imageLoading: 'lazy' | 'eager'
   name: string
 }
 

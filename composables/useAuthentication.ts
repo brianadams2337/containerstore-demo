@@ -124,7 +124,7 @@ export function useAuthentication(
 
     try {
       await session.forgetPassword({ email })
-      toast.show(successMessage.value, 'CONFIRM')
+      toast.show(successMessage.value, { action: 'CONFIRM' })
     } catch (error) {
       handleError(error)
       hasSuccess = false
@@ -196,7 +196,7 @@ export function useAuthentication(
       await redirectUser(redirectTo)
     }
 
-    toast.show(successMessage.value, 'CONFIRM')
+    toast.show(successMessage.value, { action: 'CONFIRM' })
   }
 
   const trackFailedAuthentication = async (email: string) => {
@@ -217,7 +217,7 @@ export function useAuthentication(
         const errorMessage = $i18n.t(
           `login_page.${event}.status.error.${httpErrorMessages[status]}`,
         )
-        toast.show(errorMessage, 'CONFIRM')
+        toast.show(errorMessage, { action: 'CONFIRM' })
       }
     }
     // remove user data (email, password) from the error object, before logging it

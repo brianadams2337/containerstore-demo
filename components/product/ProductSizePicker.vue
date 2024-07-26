@@ -8,8 +8,8 @@
     <SFListboxButton
       :list-name="list"
       :disabled="disabled"
-      data-test-id="product-size-picker-toggle"
-      class="flex h-12 w-full items-center justify-between rounded-md border border-gray-350 px-4 py-2 text-sm font-semibold"
+      data-testid="product-size-picker-toggle"
+      class="flex h-9 w-full items-center justify-between rounded-md border border-gray-350 px-4 py-2 text-sm font-semibold"
     >
       <span v-if="selectedSize">
         {{ selectedSize.label }}
@@ -17,7 +17,7 @@
       <span v-else>{{ $t('pdp.select_size') }}</span>
       <span>
         <IconDropdown
-          class="size-3 text-primary transition"
+          class="size-4 text-primary transition"
           :class="{ 'rotate-180': isOpen }"
         />
       </span>
@@ -30,7 +30,7 @@
       >
         <SFListboxOptions
           v-if="isOpen"
-          class="absolute inset-0 z-40 mt-2 h-fit max-h-32 overflow-y-auto overflow-x-hidden overscroll-none rounded-md border border-gray-300 bg-white shadow-lg"
+          class="absolute inset-0 z-40 mt-2 h-fit max-h-32 overflow-y-auto overflow-x-hidden overscroll-none rounded-md border border-gray-300 bg-white shadow-secondary"
         >
           <SFListboxOption
             v-for="(size, idx) in sizes"
@@ -38,13 +38,14 @@
             :key="idx"
             :list-name="list"
             :value="{ ...size, disabled: !size.isAvailable }"
-            data-test-id="product-size"
+            data-testid="product-size"
             class="cursor-pointer px-4 py-2 hover:bg-gray-200"
             :class="{ 'cursor-not-allowed': !size.isAvailable }"
           >
             <SFButton
               v-if="size"
-              type="ghost"
+              size="sm"
+              type="raw"
               class="w-full !justify-start"
               :disabled="!size.isAvailable"
               :class="{

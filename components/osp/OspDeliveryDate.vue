@@ -3,7 +3,7 @@
     <SFHeadline size="sm" tag="h2" is-uppercase class="mb-3">
       {{ $t('osp.estimated_deliver_date') }}
     </SFHeadline>
-    <div class="text-gray-800">
+    <div class="text-gray-600">
       {{ formatDate(deliveryDate.minimum) }} -
       {{ formatDate(deliveryDate.maximum) }}
     </div>

@@ -15,7 +15,7 @@
     />
 
     <div
-      class="absolute top-0 flex size-full overflow-hidden p-5 text-white md:p-[60px]"
+      class="absolute top-0 flex size-full overflow-hidden p-5 text-white xl:p-14"
     >
       <div
         class="flex h-full flex-col overflow-hidden"
@@ -30,7 +30,7 @@
         <SFHeadline
           v-if="blok.headline"
           is-uppercase
-          class="!block leading-tight md:text-[40px]"
+          class="!block leading-tight md:text-4xl"
         >
           {{ blok.headline }}
         </SFHeadline>
@@ -40,11 +40,7 @@
         >
           {{ blok.text }}
         </p>
-        <SFButton
-          v-if="hasCta && blok.cta_link"
-          class="mt-10 shrink-0"
-          :to="blok.cta_link?.cached_url"
-        >
+        <SFButton v-if="resolvedLink" class="mt-10 shrink-0" :to="resolvedLink">
           {{ blok.cta }}
         </SFButton>
       </div>
@@ -57,6 +53,7 @@ import { computed, defineOptions } from 'vue'
 import { useCMSAlignment } from '../composables/useCMSAlignment'
 import type { CMSImageTextProps } from '../types'
 import { useStoryblokImageSanitizer } from '../composables/useStoryblokImage'
+import { normalizeHomeLink } from '../../../utils/helpers'
 
 const props = withDefaults(defineProps<CMSImageTextProps>(), {
   sizes: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
@@ -76,8 +73,13 @@ const { align, justify } = useCMSAlignment(props.blok)
 
 const hasCta = computed(() => props.blok?.cta && props.blok?.cta_link)
 
+const resolvedLink = computed(() => {
+  return hasCta.value && normalizeHomeLink(props.blok.cta_link?.cached_url)
+})
+
 defineOptions({ name: 'CMSImageText' })
 </script>
+
 <style lang="css" scoped>
 .gradient {
   background-image: linear-gradient(

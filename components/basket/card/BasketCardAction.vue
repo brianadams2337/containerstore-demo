@@ -3,7 +3,7 @@
     v-bind="{ icon, disabled }"
     no-padding
     size="sm"
-    type="ghost"
+    type="raw"
     class="relative !gap-1 text-xs font-bold"
     @click="emit('click')"
   >

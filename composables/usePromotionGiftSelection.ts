@@ -104,7 +104,9 @@ export function usePromotionGiftSelection(
     }
 
     if (!activeVariant.value) {
-      toast.show($i18n.t('basket.notification.select_size'), 'CONFIRM')
+      toast.show($i18n.t('basket.notification.select_size'), {
+        action: 'CONFIRM',
+      })
       return
     }
 
@@ -133,8 +135,12 @@ export function usePromotionGiftSelection(
       }
     } catch {
       toast.show(
-        $i18n.t('basket.notification.add_to_basket_error', { productName }),
-        'CONFIRM',
+        $i18n.t('basket.notification.add_to_basket_error', {
+          productName,
+        }),
+        {
+          action: 'CONFIRM',
+        },
       )
     } finally {
       activeVariant.value = null

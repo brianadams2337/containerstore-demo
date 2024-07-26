@@ -17,7 +17,7 @@
       <SFTwoColumnList :items="childlessCategoryItems" class="mt-3">
         <template #item="{ item }">
           <SFLink
-            :to="item.path"
+            :to="buildCategoryPath(item)"
             badge-placement="top"
             badge-size="sm"
             type="quieter"
@@ -36,14 +36,18 @@
         :key="category.slug"
       >
         <SFHeadline size="sm" tag="p">
-          <SFLink :to="category.path" type="quiet" @click="forceCloseFlyout">
+          <SFLink
+            :to="buildCategoryPath(category)"
+            type="quiet"
+            @click="forceCloseFlyout"
+          >
             {{ category.name }}
           </SFLink>
         </SFHeadline>
         <SFTwoColumnList :items="category.children" class="mt-4">
           <template #item="{ item }">
             <SFLink
-              :to="item.path"
+              :to="buildCategoryPath(item)"
               badge-placement="top"
               badge-size="sm"
               type="quieter"
@@ -60,10 +64,12 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useRouteHelpers } from '~/composables/useRouteHelpers'
 import { useFlyouts } from '~/composables/useFlyouts'
 import { routeList } from '~/utils/route'
 
 const { closeFlyoutMenu, flyoutMenuCategory } = useFlyouts()
+const { buildCategoryPath } = useRouteHelpers()
 
 const childlessCategoryItems = computed(() => {
   return flyoutMenuCategory.value.children.filter((item) => {

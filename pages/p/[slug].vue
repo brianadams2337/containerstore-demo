@@ -19,7 +19,7 @@
         <div class="w-full bg-white">
           <div class="my-2 md:mt-1">
             <div class="mb-2">
-              <ProductDetailBreadcrumbs :links="breadcrumbs" />
+              <ProductDetailBreadcrumbs :breadcrumbs="breadcrumbs" />
             </div>
             <div
               class="max-w-xs text-xs font-semibold text-secondary"
@@ -150,7 +150,6 @@
                 :items="availableQuantity"
                 :disabled="!activeVariant"
                 is-large
-                class="h-full"
                 @update:model-value="quantity = $event"
               />
             </div>

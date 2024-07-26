@@ -101,7 +101,7 @@
               </SFButton>
               <div class="mt-4 flex justify-end">
                 <SFButton
-                  type="ghost"
+                  type="raw"
                   no-padding
                   size="xs"
                   :to="getProductDetailRoute(product)"

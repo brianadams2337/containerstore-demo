@@ -1,33 +1,32 @@
 <template>
   <div
-    class="flex min-h-screen flex-col overflow-hidden text-primary antialiased anchor-scrolling-none"
+    class="flex min-h-screen flex-col text-primary antialiased anchor-scrolling-none"
   >
     <PromotionBanner
       v-if="allCurrentPromotions.length"
       :promotions="allCurrentPromotions"
-      @change="updateLayout"
     />
+    <SFToastContainer />
     <div
-      class="translate--y-0 transition-transform duration-300 ease-in-out"
-      :class="{ 'lg:translate-y-[-3.25rem]': isLayoutTranslated }"
+      class="translate-y-0 transition-transform duration-300 ease-in-out"
+      :class="{ 'lg:translate-y-[-3.25rem]': !isPromotionBannerShown }"
     >
       <HeaderMetaBar />
       <AppHeader />
-      <SFToastContainer />
       <MobileSidebar />
-      <div class="mt-4 grow">
+      <div class="mt-8 grow">
         <NuxtPage />
       </div>
       <CMSAppFooterData
         class="mt-16"
-        :class="{ 'lg:translate-y-[3.25rem]': isLayoutTranslated }"
+        :class="{ 'lg:translate-y-[3.25rem]': !isPromotionBannerShown }"
       />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineOptions, onMounted, ref } from 'vue'
+import { defineOptions, onMounted } from 'vue'
 import { useHead } from '@unhead/vue'
 import { useCurrentPromotions, useWishlist } from '#storefront/composables'
 import {
@@ -41,6 +40,7 @@ import {
   useRootCategories,
   useSideNavigation,
   useTrackingEvents,
+  usePromotionActions,
 } from '~/composables'
 import { useModal } from '#storefront-ui/composables'
 
@@ -51,11 +51,7 @@ const [{ allCurrentPromotions }] = await Promise.all([
   useRootCategories(),
 ])
 
-const isLayoutTranslated = ref(false)
-
-const updateLayout = (value: boolean) => {
-  isLayoutTranslated.value = !value
-}
+const { isPromotionBannerShown } = usePromotionActions()
 
 const trackingEvents = useTrackingEvents()
 

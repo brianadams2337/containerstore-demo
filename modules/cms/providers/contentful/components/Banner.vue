@@ -44,7 +44,7 @@
               <SFButton
                 no-padding
                 size="xs"
-                type="ghost"
+                type="raw"
                 class="absolute right-6"
                 @click="close"
               >
@@ -98,9 +98,9 @@ const bindings = computed(() => {
 })
 
 const classes = computed(() => ({
-  'bg-tertiary-1-500 text-black': is('info'),
-  'bg-tertiary-2-500 text-white': is('sale'),
-  'bg-tertiary-3-500 text-black': is('highlight'),
+  'bg-cyan-500 text-black': is('info'),
+  'bg-amber-500 text-white': is('sale'),
+  'bg-lime-500 text-black': is('highlight'),
   'bg-black text-white': is('alert'),
 }))
 

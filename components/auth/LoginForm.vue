@@ -36,11 +36,11 @@
             query: { ['forgot-password']: 'true' },
           }"
           raw
-          class="group relative text-sm text-gray-800 hover:text-black"
+          class="group relative text-sm text-gray-600 hover:text-black"
         >
           <span>{{ $t('login_page.forgot_password.title') }}</span>
           <span
-            class="absolute inset-x-0 bottom-[-2px] h-px bg-gray-800 transition-all group-hover:inset-x-[-5px] group-hover:bg-black"
+            class="absolute inset-x-0 -bottom-0.5 h-px bg-gray-600 transition-all group-hover:-inset-x-1 group-hover:bg-black"
           />
         </SFLink>
       </div>

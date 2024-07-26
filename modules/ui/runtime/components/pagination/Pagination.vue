@@ -1,83 +1,92 @@
 <template>
-  <div
-    v-if="lastPage !== 1"
-    class="flex flex-row items-stretch justify-center space-x-2"
-  >
-    <slot v-bind="{ canNavigateLeft, previousPage }" name="previous-button">
-      <SFPaginationButton v-if="canNavigateLeft" :page="previousPage">
-        <IconArrowLeft class="size-3" />
-      </SFPaginationButton>
-    </slot>
-
-    <slot
-      name="first-page-button"
-      v-bind="{ canNavigateLeft, previousPage, showFirst }"
+  <div class="flex flex-row justify-center">
+    <div
+      class="mx-4 flex h-14 max-w-full flex-row items-center justify-between gap-1 rounded-md border sm:gap-2 md:w-min"
     >
-      <SFPaginationButton v-if="showFirst" :page="firstPage">
-        {{ firstPage }}
-      </SFPaginationButton>
-    </slot>
+      <slot v-bind="{ canNavigateLeft, previousPage }" name="previous-button">
+        <SFPaginationButton :disabled="!canNavigateLeft" :page="previousPage">
+          <IconChevronLeft class="size-4" />
+        </SFPaginationButton>
+      </slot>
 
-    <slot v-if="showFirstDots" name="page-dots">
-      <div class="p-3">...</div>
-    </slot>
+      <slot name="first-page" v-bind="{ firstPage }">
+        <SFPaginationButton
+          v-if="firstPage && isFirstOrLastPageButtonShown"
+          :page="firstPage"
+        />
+      </slot>
 
-    <slot name="page-buttons" v-bind="{ limitedPageNumbers, currentPage }">
-      <SFPaginationButton
-        v-for="page in limitedPageNumbers"
-        :key="page"
-        :is-active="currentPage === page"
-        :page="page"
-      >
-        {{ page }}
-      </SFPaginationButton>
-    </slot>
+      <slot name="first-dots">
+        <div
+          v-if="areFirstDotsShown"
+          class="inline-flex h-full items-center border-t-2 border-transparent text-sm font-bold leading-none text-gray-500"
+        >
+          ...
+        </div>
+      </slot>
 
-    <slot v-if="showLastDots" name="page-dots">
-      <div class="p-3">...</div>
-    </slot>
+      <slot name="page-buttons" v-bind="{ limitedPages }">
+        <template v-for="page in limitedPages" :key="page?.number">
+          <SFPaginationButton v-if="page" :page="page" />
+        </template>
+      </slot>
 
-    <slot name="last-page-button" v-bind="{ lastPage, showLast }">
-      <SFPaginationButton v-if="showLast" :page="lastPage">
-        {{ lastPage }}
-      </SFPaginationButton>
-    </slot>
+      <slot name="second-dots">
+        <div
+          v-if="areSecondDotsShown"
+          class="inline-flex h-full items-center border-t-2 border-transparent text-sm font-bold leading-none text-gray-500"
+        >
+          ...
+        </div>
+      </slot>
 
-    <slot name="next-button" v-bind="{ canNavigateRight, nextPage }">
-      <SFPaginationButton v-if="canNavigateRight" :page="nextPage">
-        <IconArrowRight class="size-3" />
-      </SFPaginationButton>
-    </slot>
+      <slot name="last-page" v-bind="{ lastPage }">
+        <SFPaginationButton
+          v-if="lastPage && isFirstOrLastPageButtonShown"
+          :page="lastPage"
+        />
+      </slot>
+
+      <slot name="next-button" v-bind="{ canNavigateRight, nextPage }">
+        <SFPaginationButton
+          v-if="nextPage"
+          :disabled="!canNavigateRight"
+          :page="nextPage"
+        >
+          <IconChevronRight class="size-4" />
+        </SFPaginationButton>
+      </slot>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { toRefs } from 'vue'
-import { usePagination } from '../../composables/usePagination'
+import { toRefs, computed } from 'vue'
+import { usePagination } from '#storefront-ui'
 
 type Props = {
-  firstPage: number
-  currentPage: number
-  lastPage: number
+  totalPageCount: number
   visible?: number
 }
-const props = withDefaults(defineProps<Props>(), { visible: 5 })
+const props = withDefaults(defineProps<Props>(), { visible: 6 })
 
-const { visible, firstPage, currentPage, lastPage } = toRefs(props)
+const { visible, totalPageCount } = toRefs(props)
 const {
-  limitedPageNumbers,
+  limitedPages,
   previousPage,
   nextPage,
-  showFirst,
-  showFirstDots,
-  showLast,
-  showLastDots,
   canNavigateLeft,
   canNavigateRight,
-} = usePagination({
+  areFirstDotsShown,
+  areSecondDotsShown,
   firstPage,
-  currentPage,
   lastPage,
-  visiblePages: visible,
+} = usePagination({
+  totalPageCount,
+  visiblePageNumbers: visible,
+})
+
+const isFirstOrLastPageButtonShown = computed(() => {
+  return props.totalPageCount !== 1 && props.totalPageCount > props.visible
 })
 </script>

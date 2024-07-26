@@ -18,7 +18,9 @@ type CustomData = PromotionCustomData &
       minQuantity: number
     }>
     category: {
+      id: number
       ctaLabel: string
+      // TODO: Remove this after panel gets configured to use ID's and PLP main branch gets merged
       to: string
     }
     headlineParts: string[]

@@ -18,7 +18,7 @@
       <div class="text-xs font-medium text-primary">
         <SFButton
           v-if="isGuest"
-          type="ghost"
+          type="raw"
           class="text-xs"
           @click="!isSubmitting && logout()"
         >

@@ -1,42 +1,80 @@
 import {
-  type Category,
-  type SortValue,
-  type SortingValueKey,
-  getSortByValue,
-  getSortingValues,
+  APISortOption,
+  APISortOrder,
+  type ProductSortConfig,
 } from '@scayle/storefront-nuxt'
-import { computed, toRef, type MaybeRefOrGetter } from 'vue'
+import { computed } from 'vue'
 import { useRoute } from '#app/composables/router'
+import { useI18n } from '#i18n'
 
-export const DEFAULT_SORTING_KEY = 'dateNewest'
+export const DEFAULT_SORTING_KEY = 'date_newest'
 
-export function useProductListSort(
-  selectedCategory?: MaybeRefOrGetter<Category | undefined>,
-) {
+const sortingOptions: Record<string, ProductSortConfig> = {
+  top_seller: {
+    by: APISortOption.Price,
+    direction: APISortOrder.Ascending,
+  },
+  date_newest: {
+    by: APISortOption.DateAdded,
+  },
+  price_desc: {
+    by: APISortOption.Price,
+    direction: APISortOrder.Descending,
+  },
+  price_asc: {
+    by: APISortOption.Price,
+    direction: APISortOrder.Ascending,
+  },
+  reduction_desc: {
+    by: APISortOption.Reduction,
+    direction: APISortOrder.Descending,
+  },
+}
+
+type SelectedSort = ProductSortConfig & { key: string; label: string }
+
+export function useProductListSort() {
   const route = useRoute()
-  const category = toRef(selectedCategory)
+  const { t } = useI18n()
 
-  const customDefaultSorting = computed(() => {
-    return category.value?.shopLevelCustomData?.defaultSorting as
-      | SortingValueKey
-      | undefined
-  })
+  const selectedSort = computed<SelectedSort>(() => {
+    const sort = route.query.sort as string
 
-  const selectedSort = computed(() => {
-    if (route.query.sort || !customDefaultSorting.value) {
-      return getSortByValue(
-        route.query.sort || '',
-        DEFAULT_SORTING_KEY,
-      ) as SortValue
+    if (!sort || !(sort in sortingOptions)) {
+      return {
+        key: DEFAULT_SORTING_KEY,
+        label: t(`sorting_select.${DEFAULT_SORTING_KEY}`),
+        ...sortingOptions[DEFAULT_SORTING_KEY],
+      }
     }
-    return getSortByValue('', customDefaultSorting.value)
+    const label = t(`sorting_select.${sort}`)
+
+    return { key: sort, label, ...sortingOptions[sort] }
   })
 
-  const sortingValues = Object.values(getSortingValues())
+  const sortLinks = computed(() => {
+    const links = []
+    for (const key in sortingOptions) {
+      links.push({
+        key,
+        ...sortingOptions[key],
+        to: {
+          path: route.path,
+          query: { ...route.query, sort: key },
+        },
+        label: t(`sorting_select.${key}`),
+      })
+    }
+    return links
+  })
+
+  const isDefaultSortSelected = computed(() => {
+    return selectedSort.value.key === DEFAULT_SORTING_KEY
+  })
 
   return {
-    customDefaultSorting,
     selectedSort,
-    sortingValues,
+    sortLinks,
+    isDefaultSortSelected,
   }
 }

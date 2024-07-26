@@ -1,18 +1,11 @@
 <template>
-  <div>
-    <slot name="relative-reductions" v-bind="{ showBadge, totalReductions }">
-      <span
-        v-if="showBadge && totalReductions"
-        class="inline-block rounded-md bg-red-500 px-2 py-1 text-sm text-white"
-      >
-        -{{ totalReductions.relative * 100 }}%
-      </span>
-    </slot>
+  <div class="flex flex-wrap items-center gap-1">
     <slot
       v-bind="{
         classes,
         showPriceFrom,
         totalReductions,
+        appliedReductions,
         isAutomaticDiscountPriceApplicable,
         isFree,
         formatCurrency,
@@ -21,48 +14,63 @@
         styles,
       }"
     >
-      <p class="leading-snug" :class="classes" data-test-id="price">
-        <template v-if="showPriceFrom">
+      <slot
+        name="relative-reductions"
+        v-bind="{
+          showBadge,
+          appliedReductions,
+          relativeReductions,
+          totalReductions,
+        }"
+      >
+        <template v-if="showBadge">
+          <span
+            v-for="relativeReduction in relativeReductions"
+            :key="`${relativeReduction}-badge`"
+            class="mr-1 inline-block rounded bg-red px-1 text-xs font-semibold text-white"
+          >
+            -{{ relativeReduction }}%
+          </span>
+        </template>
+      </slot>
+      <p class="text-gray-900" :class="classes" data-testid="price">
+        <template v-if="showPriceFrom && formattedMinPrice">
           {{ $t('price.starting_from') }}
         </template>
-        {{ totalPrice }}
-        <span
+        {{ formattedMinPrice || totalPrice }}
+        <template
           v-if="
-            totalReductions.absoluteWithTax ||
+            formattedAppliedReductions.length ||
             isAutomaticDiscountPriceApplicable ||
             isFree
           "
-          class="text-sm font-medium text-primary line-through"
-          data-test-id="initialProductPrice"
         >
-          {{ formatCurrency(price.withTax + totalReductions.absoluteWithTax) }}
-        </span>
+          <span
+            v-for="(reduction, index) in formattedAppliedReductions"
+            :key="`${reduction}-${index}`"
+            class="mr-1 font-normal text-gray-600 line-through last-of-type:mr-0"
+            data-testid="initialProductPrice"
+          >
+            {{ reduction }}
+          </span>
+        </template>
       </p>
     </slot>
 
     <slot name="tax-info">
       <div
         v-if="showTaxInfo"
-        class="text-right text-xs text-gray-700 md:text-left"
+        class="ml-1 text-right text-xs text-gray-700 md:text-left"
       >
         {{ $t('price.including_vat') }}
       </div>
     </slot>
-    <p
-      v-if="appliedReductions.length && hasLowestPriorPrice && !isFree"
-      class="mt-0.5 text-sm text-gray-700"
-    >
-      {{ $t('price.best_price_30d') }}
-      {{ formatCurrency(lowestPriorPrice.withTax ?? 0) }}
-      ({{ (lowestPriorPrice.relativeDifferenceToPrice ?? 0) * 100 }}%)
-    </p>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
 import {
-  type LowestPriorPrice,
   type Price,
   type Product,
   getTotalAppliedReductions,
@@ -77,7 +85,6 @@ import tailwindConfig from '~/tailwind.config'
 type Props = {
   product: Product
   price: Price
-  lowestPriorPrice?: LowestPriorPrice
   showTaxInfo?: boolean
   showPriceFrom?: boolean
   showAutomaticDiscount?: boolean
@@ -88,20 +95,33 @@ type Props = {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  lowestPriorPrice: () => ({
-    withTax: null,
-    relativeDifferenceToPrice: null,
-  }),
   showTaxInfo: false,
   showPriceFrom: false,
   showPriceReductionBadge: false,
   isFree: false,
-  size: Size.XL,
-  type: 'loud',
+  size: Size.MD,
+  type: 'normal',
 })
 
 const { formatCurrency } = useFormatHelpers()
-const appliedReductions = computed(() => props.price?.appliedReductions)
+const appliedReductions = computed(() => props.price?.appliedReductions || [])
+
+const formattedAppliedReductions = computed(() => {
+  return appliedReductions.value
+    .map(({ amount }) => amount.absoluteWithTax)
+    .reduce<number[]>((reductions, reduction, index) => {
+      const price = index === 0 ? props.price.withTax : reductions[index - 1]
+      reductions.push(price + reduction)
+      return reductions
+    }, [])
+    .map((reduction) => formatCurrency(reduction))
+})
+
+const relativeReductions = computed(() => {
+  return appliedReductions.value
+    .map(({ amount }) => Math.round(amount.relative * 100))
+    .reverse()
+})
 
 const { automaticDiscountPromotion, getAppliedAutomaticDiscountPrice } =
   useProductPromotions(props.product)
@@ -126,6 +146,9 @@ const isAutomaticDiscountPriceApplicable = computed(() => {
   return props.showAutomaticDiscount && isAutomaticDiscountApplied.value
 })
 
+// TODO: Re-visit this within PDP implementation if needed anymore
+const totalReductions = computed(() => getTotalAppliedReductions(props.price))
+
 const totalPrice = computed(() => {
   if (props.isFree) {
     return formatCurrency(0)
@@ -136,21 +159,17 @@ const totalPrice = computed(() => {
     : formatCurrency(props.price.withTax)
 })
 
-const totalReductions = computed(() => getTotalAppliedReductions(props.price))
-
-const showBadge = computed(() => {
-  return appliedReductions.value && props.showPriceReductionBadge
+const formattedMinPrice = computed<string | null>(() => {
+  const minPrice = props.product.priceRange?.min.withTax
+  const hasDifferentPrices = minPrice !== props.product.priceRange?.max.withTax
+  return hasDifferentPrices && minPrice ? formatCurrency(minPrice) : null
 })
 
-const hasLowestPriorPrice = computed(() => {
-  return (
-    props.lowestPriorPrice?.withTax &&
-    props.lowestPriorPrice?.relativeDifferenceToPrice
-  )
+const showBadge = computed(() => {
+  return appliedReductions.value.length && props.showPriceReductionBadge
 })
 
 const classes = computed(() => ({
-  'mt-2': showBadge.value,
   'text-xl': props.size === Size.XL,
   'text-lg': props.size === Size.LG,
   'text-sm': props.size === Size.SM,
@@ -158,7 +177,8 @@ const classes = computed(() => ({
   'text-xs': props.size === Size.XS,
   'font-bold': props.type === 'loud',
   'font-semibold': props.type === 'whisper',
-  'text-red-500':
+  'font-variable': props.type === 'normal',
+  'text-status-error':
     appliedReductions.value.length ||
     isAutomaticDiscountPriceApplicable.value ||
     props.isFree,

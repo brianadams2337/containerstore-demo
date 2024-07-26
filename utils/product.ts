@@ -2,6 +2,10 @@ import { sort } from 'radash'
 import {
   type Product,
   type Variant,
+  type ProductSibling,
+  ProductImageType,
+  getImageFromList,
+  getAttributeValueTuples,
   getAppliedReductionsByCategory,
   getFirstAttributeValue,
   getLowestPrice,
@@ -129,4 +133,35 @@ export const getApplicablePromotionsForProduct = (
   })
 
   return sort(items, (it) => it.priority)
+}
+
+export const getProductSiblingData = (
+  { id, images, attributes }: Product,
+  colorAttributeName = 'colorDetail',
+): ProductSibling => ({
+  id,
+  image: getImageFromList(images, ProductImageType.BUST, 'front'),
+  colors: getAttributeValueTuples(attributes, colorAttributeName),
+})
+
+export const getProductSiblings = (
+  product?: Product | null,
+  colorAttributeName = 'colorDetail',
+  options: { omitSoldOut?: boolean; includeCurrentProduct?: boolean } = {},
+): ProductSibling[] => {
+  if (!product) return []
+
+  const { omitSoldOut = false, includeCurrentProduct = true } = options
+  const nonSoldOutItems =
+    product?.siblings?.filter(({ isSoldOut, isActive }) => {
+      return omitSoldOut ? isActive && !isSoldOut : isActive
+    }) ?? []
+
+  const items = nonSoldOutItems.map((item) =>
+    getProductSiblingData(item, colorAttributeName),
+  )
+
+  return includeCurrentProduct
+    ? [getProductSiblingData(product, colorAttributeName), ...items]
+    : items
 }

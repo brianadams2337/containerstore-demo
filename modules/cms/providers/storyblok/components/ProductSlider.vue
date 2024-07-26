@@ -9,40 +9,20 @@
         {{ blok.cta_label }}
       </SFLink>
     </div>
-
     <SFHorizontalItemsSlider
       class="mt-4"
       with-arrows
-      data-test-id="horizontal-product-slider"
+      hide-disabled-arrows
+      data-testid="horizontal-product-slider"
     >
       <CMSProduct
         v-for="(product, index) in products"
         :key="`product-slider-item-${product.id}`"
         class="box-content w-1/2 shrink-0 snap-start snap-always px-px first:pl-5 last:pr-5 sm:w-1/5 sm:px-0.5 sm:first:pl-14 sm:last:pr-14"
-        :product="product"
-        :fetching="fetching"
+        v-bind="{ product, fetching }"
         @click:product="trackProductClick({ product: $event, index })"
         @intersect:product="trackIntersection({ product: $event, index })"
       />
-
-      <template #prev-button="{ prev, isPrevEnabled }">
-        <button
-          class="absolute left-0 top-[40%] rounded-sm bg-black text-white disabled:hidden sm:left-14"
-          :disabled="!isPrevEnabled"
-          @click="prev(sliderOffset)"
-        >
-          <IconArrowLeft class="size-8 p-1.5" />
-        </button>
-      </template>
-      <template #next-button="{ next, isNextEnabled }">
-        <button
-          class="absolute right-0 top-[40%] rounded-sm bg-black text-white disabled:hidden sm:right-14"
-          :disabled="!isNextEnabled"
-          @click="next(sliderOffset)"
-        >
-          <IconArrowRight class="size-8 p-1.5" />
-        </button>
-      </template>
     </SFHorizontalItemsSlider>
   </div>
 </template>
@@ -115,14 +95,14 @@ const isUsingReferenceKeys = computed(() => {
 })
 
 const { data, fetching } = isUsingReferenceKeys.value
-  ? useProductsByReferenceKeys({
+  ? await useProductsByReferenceKeys({
       params: {
         referenceKeys: productReferenceKeys.value || [],
         with: productSliderWithParams,
       },
       key: `productSlider-${props.blok._uid}`,
     })
-  : useProductsByIds({
+  : await useProductsByIds({
       params: {
         ids: productIds.value || [],
         with: productSliderWithParams,
@@ -144,11 +124,7 @@ const products = computed(() => {
 
   return data.value
 })
-const sliderOffset = computed(() =>
-  storefrontBreakpoints && storefrontBreakpoints.isGreaterOrEqual('md')
-    ? 56
-    : 20,
-)
+
 const columns = computed(() =>
   storefrontBreakpoints && storefrontBreakpoints.isGreaterOrEqual('md') ? 5 : 2,
 )

@@ -7,7 +7,7 @@
           class="absolute bottom-3 z-10 ml-10 text-lg sm:bottom-auto sm:top-2/4"
           @click="navigateToImage('prev')"
         >
-          <IconArrowLeft class="size-5" />
+          <IconChevronLeft class="size-6" />
         </button>
         <div
           ref="zoomGalleryRef"
@@ -36,7 +36,7 @@
           class="absolute bottom-3 right-0 z-10 mr-10 text-lg sm:bottom-auto sm:top-2/4"
           @click="navigateToImage('next')"
         >
-          <IconArrowRight class="size-5" />
+          <IconChevronRight class="size-6" />
         </button>
       </div>
 

@@ -68,7 +68,9 @@ export function useProductDetailsBasketActions(
     }
 
     if (!variantToAdd) {
-      toast.show(app.$i18n.t('basket.notification.select_size'), 'CONFIRM')
+      toast.show(app.$i18n.t('basket.notification.select_size'), {
+        action: 'CONFIRM',
+      })
       return
     }
 
@@ -86,7 +88,9 @@ export function useProductDetailsBasketActions(
             productName: name.value,
           },
         ),
-        'CONFIRM',
+        {
+          action: 'CONFIRM',
+        },
       )
       return
     }
@@ -140,7 +144,9 @@ export function useProductDetailsBasketActions(
         app.$i18n.t('basket.notification.add_to_basket_error', {
           productName: name.value,
         }),
-        'CONFIRM',
+        {
+          action: 'CONFIRM',
+        },
       )
     }
   }

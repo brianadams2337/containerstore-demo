@@ -1,5 +1,14 @@
 <template>
-  <div class="animate-pulse bg-gray-200" :class="classes" />
+  <div
+    class="animate-pulse bg-gray-200"
+    :class="{
+      'h-12 rounded-md': isButton,
+      'h-8': isHeadline,
+      'w-32 md:w-64': !fullWidth && (isHeadline || isButton),
+      'md:w-64': !fullWidth && isHeadline,
+      'w-full': fullWidth,
+    }"
+  />
 </template>
 
 <script setup lang="ts">
@@ -18,12 +27,4 @@ const props = withDefaults(defineProps<Props>(), {
 
 const isButton = computed(() => props.type === SkeletonType.BUTTON)
 const isHeadline = computed(() => props.type === SkeletonType.HEADLINE)
-
-const classes = computed(() => ({
-  'h-12 rounded-md': isButton.value,
-  'h-8': isHeadline.value,
-  'w-32 md:w-64': !props.fullWidth && (isHeadline.value || isButton.value),
-  'md:w-64': !props.fullWidth && isHeadline.value,
-  'w-full': props.fullWidth,
-}))
 </script>

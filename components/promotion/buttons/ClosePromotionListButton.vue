@@ -3,13 +3,12 @@
     type="raw"
     size="xs"
     fab
-    no-padding
-    class="absolute z-[200] bg-primary !p-1"
+    class="absolute z-100 bg-primary !p-1 !text-white"
     :class="positionClass"
     @click="togglePromotionList()"
   >
     <template #icon="{ _class }">
-      <IconCloseBold :class="_class" class="text-white" />
+      <IconClose :class="_class" />
     </template>
   </SFButton>
 </template>

@@ -163,9 +163,11 @@ const update = async () => {
         ? getPayloadDate(payload.birthDate)
         : undefined,
     })
-    toast.show($i18n.t('my_account.user.save_message'), 'CONFIRM')
+    toast.show($i18n.t('my_account.user.save_message'), {
+      action: 'CONFIRM',
+    })
   } catch {
-    toast.show(saveError, 'CONFIRM')
+    toast.show(saveError, { action: 'CONFIRM' })
   } finally {
     isUpdating.value = false
   }

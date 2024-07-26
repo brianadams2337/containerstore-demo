@@ -1,14 +1,17 @@
 <template>
   <div class="flex w-full items-center justify-between">
-    <SFHeadline size="xl" tag="p">{{ $t('filter.title') }}</SFHeadline>
+    <SFHeadline class="!font-semi-bold-variable md:text-lg" size="xl" tag="p">
+      {{ $t('filter.title') }}
+    </SFHeadline>
     <SFButton
-      type="ghost"
-      size="xs"
-      data-test-id="closeCross"
+      class="bg-gray-100 !p-3 md:bg-transparent md:!pr-0"
+      fab
+      type="raw"
+      data-testid="close-filters"
       @click="toggleItem"
     >
-      <template #icon="{ _class }">
-        <IconClose :class="_class" />
+      <template #icon>
+        <IconClose class="size-5 md:size-4 md:text-gray-400" />
       </template>
     </SFButton>
   </div>

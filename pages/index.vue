@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div data-test-id="home-page-content">
+    <div data-testid="home-page-content">
       <CMSIndexData slug="home">
         <template #default="{ data }">
           <CMSStory v-if="data" :story="data" />

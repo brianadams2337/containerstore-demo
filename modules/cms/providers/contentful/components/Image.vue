@@ -3,7 +3,8 @@
     <NuxtPicture
       v-if="imageSource.src"
       provider="contentful"
-      class="picture picture-contain h-full bg-gray-200"
+      class="picture h-full bg-gray-200"
+      :class="isCover ? 'picture-cover' : 'picture-contain'"
       :sizes="sizes"
       :src="imageSource.src"
       loading="lazy"
@@ -28,6 +29,7 @@ const props = withDefaults(defineProps<CMSImageProps>(), {
   _uid: '',
   preload: false,
   isTeaser: false,
+  isCover: false,
   sizes: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
 })
 

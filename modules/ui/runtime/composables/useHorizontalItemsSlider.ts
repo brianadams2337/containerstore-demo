@@ -1,8 +1,6 @@
-import { computed, ref } from 'vue'
-import { useState } from '#app/composables/state'
+import { computed, ref, type Ref } from 'vue'
 
-export function useHorizontalItemsSlider() {
-  const sliderRef = useState<HTMLElement>('slider-ref')
+export function useHorizontalItemsSlider(sliderRef: Ref<HTMLElement>) {
   /**
    * This is because scrollTop/scrollLeft are non-rounded
    * numbers, while scrollHeight/scrollWidth and clientHeight/clientWidth are rounded.

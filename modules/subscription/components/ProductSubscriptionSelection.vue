@@ -16,7 +16,6 @@
         size="xl"
         type="normal"
         :price="subscriptionPrice"
-        :lowest-prior-price="selectedVariant?.lowestPriorPrice"
         :applied-reductions="subscriptionPrice?.appliedReductions"
         show-tax-info
       />
@@ -36,6 +35,7 @@
             <div
               :key="JSON.stringify(item)"
               class="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 active:bg-gray-300"
+              @keydown.enter="selectItem(item)"
               @click="selectItem(item)"
             >
               {{ item.label }}
@@ -65,6 +65,7 @@
             <div
               :key="JSON.stringify(item)"
               class="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 active:bg-gray-300"
+              @keydown.enter="selectItem(item)"
               @click="selectItem(item)"
             >
               {{
@@ -119,7 +120,6 @@ defineEmits(['addItemToBasket'])
 
 const { product, variant, pricePromotionKey } = toRefs(props)
 const {
-  selectedVariant,
   subscriptionIntervals,
   selectedInterval,
   itemToAdd,

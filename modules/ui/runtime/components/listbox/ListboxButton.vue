@@ -2,7 +2,7 @@
   <SFButton
     :aria-expanded="isOpen"
     :disabled="disabled"
-    type="ghost"
+    type="raw"
     aria-haspopup="true"
     aria-controls="scayle-listbox-options"
     @click="toggle"

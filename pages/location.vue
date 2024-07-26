@@ -25,7 +25,7 @@
         <div class="mt-3 flex items-center justify-evenly">
           <SFButton
             class="mr-2 flex size-12 cursor-pointer items-center justify-center border-2 border-black"
-            type="ghost"
+            type="raw"
             :disabled="searching"
             @click="findStoresInUserLocation()"
           >
@@ -45,8 +45,7 @@
           />
           <SFButton
             type="primary"
-            class="ml-auto rounded border-4 border-black p-2 text-xs !normal-case"
-            rounded
+            class="ml-auto"
             :disabled="!searchAddress?.length || searching"
             :loading="searching"
             @click="searchForStores()"
@@ -141,7 +140,7 @@ const findStoresInUserLocation = async () => {
         e.code === GeolocationPositionError.PERMISSION_DENIED
           ? t('store_locator.geolocation.error.permission_denied')
           : t('store_locator.geolocation.error.unknown')
-      toast.show(msg, 'CONFIRM')
+      toast.show(msg, { action: 'CONFIRM' })
     }
   }
   searching.value = false

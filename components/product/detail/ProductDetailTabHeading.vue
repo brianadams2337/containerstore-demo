@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex h-full flex-1 cursor-pointer px-6 text-gray-800"
+    class="flex h-full flex-1 cursor-pointer px-6 text-gray-600"
     :class="{ '!text-black': isActive }"
     @click="emit('click:tab')"
   >

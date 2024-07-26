@@ -1,68 +1,140 @@
 import { computed, type Ref } from 'vue'
+import type { RouteLocationNamedRaw, RouteLocationRaw } from '#vue-router'
+import { useRoute } from '#app/composables/router'
 
 export type PaginationOptions = Record<
-  'firstPage' | 'currentPage' | 'lastPage' | 'visiblePages',
+  'totalPageCount' | 'visiblePageNumbers',
   Ref<number>
 >
 
+export type Page = {
+  number: number
+  to: Partial<RouteLocationRaw>
+  isActive: boolean
+}
+
 export function usePagination({
-  visiblePages,
-  firstPage,
-  currentPage,
-  lastPage,
+  visiblePageNumbers,
+  totalPageCount,
 }: PaginationOptions) {
-  const pageNumbersList = computed(() =>
-    Array.from(Array(lastPage.value), (_, i) => i + 1),
-  )
+  const route = useRoute()
+  const currentPage = computed(() => (route.query.page ? +route.query.page : 1))
 
-  const limitedPageNumbers = computed(() => {
-    // in case of very limited number
-    if (lastPage.value < visiblePages.value) {
-      return pageNumbersList.value
-    }
+  const pageList = computed<Page[]>(() => {
+    const list = Array.from({ length: totalPageCount.value }, (_, i) => i + 1)
+    return list.map((page) => {
+      const query: RouteLocationNamedRaw['query'] = {
+        ...route.query,
+        page: page.toString(),
+      }
 
-    // left side of possible range
-    if (
-      currentPage.value <
-      visiblePages.value - Math.floor(visiblePages.value / 2) + 1
-    ) {
-      return pageNumbersList.value.slice(0, visiblePages.value)
-    }
+      if (page === 1) {
+        delete query.page
+      }
 
-    // right side of possible range
-    if (
-      currentPage.value >
-      lastPage.value - Math.floor(visiblePages.value / 2)
-    ) {
-      return pageNumbersList.value.slice(lastPage.value - visiblePages.value)
-    }
+      return {
+        number: page,
+        to: {
+          path: route.path,
+          query,
+        },
+        isActive: currentPage.value === page,
+      }
+    })
+  })
 
-    // in between
-    return pageNumbersList.value.slice(
-      currentPage.value - Math.ceil(visiblePages.value / 2),
-      currentPage.value + Math.floor(visiblePages.value / 2),
+  const firstPage = computed(() => pageList.value[0])
+  const lastPage = computed(() => pageList.value?.at(-1))
+
+  const previousPage = computed(() => {
+    return (
+      pageList.value.find((page) => page.number === currentPage.value - 1) ||
+      firstPage.value
     )
   })
 
-  const firstVisiblePageNumber = computed(() => limitedPageNumbers.value[0])
-  const lastVisiblePageNumber = computed(
-    () => limitedPageNumbers.value[limitedPageNumbers.value.length - 1],
+  const nextPage = computed(() => {
+    return (
+      pageList.value.find((page) => page.number === currentPage.value + 1) ||
+      lastPage.value
+    )
+  })
+
+  const limitedPages = computed(() => {
+    if (totalPageCount.value <= visiblePageNumbers.value) {
+      return pageList.value
+    }
+
+    if (currentPage.value === 1) {
+      return [pageList.value[1], pageList.value[2]]
+    } else if (currentPage.value === totalPageCount.value) {
+      return [
+        pageList.value[pageList.value.length - 3],
+        pageList.value[pageList.value.length - 2],
+      ]
+    }
+
+    // Do not show previous/next page if its the first/last page
+    const mergedPreviousPage =
+      firstPage.value.number === previousPage.value.number
+        ? []
+        : [previousPage.value]
+    const mergedNextPage =
+      lastPage.value &&
+      nextPage.value &&
+      lastPage.value.number === nextPage.value.number
+        ? []
+        : [nextPage.value]
+
+    return [
+      ...mergedPreviousPage,
+      pageList.value[currentPage.value - 1],
+      ...mergedNextPage,
+    ]
+  })
+
+  const areFirstDotsShown = computed(() => {
+    if (totalPageCount.value <= visiblePageNumbers.value) {
+      return false
+    }
+    const firstLimitedPage = limitedPages.value[0]
+
+    if (!firstLimitedPage) {
+      return false
+    }
+
+    return firstPage.value.number < firstLimitedPage.number - 1
+  })
+
+  const areSecondDotsShown = computed(() => {
+    if (totalPageCount.value <= visiblePageNumbers.value) {
+      return false
+    }
+
+    const lastLimitedPage = limitedPages.value?.at(-1)
+
+    if (!lastLimitedPage) {
+      return false
+    }
+
+    return totalPageCount.value > lastLimitedPage.number + 1
+  })
+
+  const canNavigateLeft = computed(() => currentPage.value !== 1)
+
+  const canNavigateRight = computed(
+    () => currentPage.value !== totalPageCount.value,
   )
 
   return {
-    limitedPageNumbers,
-    pageNumbersList,
-    previousPage: computed(() => Math.max(currentPage.value - 1, 1)),
-    nextPage: computed(() => Math.min(currentPage.value + 1, lastPage.value)),
-    showFirst: computed(() => firstVisiblePageNumber.value > firstPage.value),
-    showFirstDots: computed(
-      () => firstVisiblePageNumber.value > firstPage.value + 1,
-    ),
-    showLast: computed(() => lastVisiblePageNumber.value < lastPage.value),
-    showLastDots: computed(
-      () => lastVisiblePageNumber.value < lastPage.value - 1,
-    ),
-    canNavigateLeft: computed(() => currentPage.value !== firstPage.value),
-    canNavigateRight: computed(() => currentPage.value !== lastPage.value),
+    limitedPages,
+    previousPage,
+    nextPage,
+    areFirstDotsShown,
+    areSecondDotsShown,
+    firstPage,
+    lastPage,
+    canNavigateLeft,
+    canNavigateRight,
   }
 }

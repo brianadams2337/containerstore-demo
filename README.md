@@ -18,14 +18,23 @@
 
 ## About Storefront Core and Storefront Boilerplate
 
-Storefront Core is an all-in-one starter kit for building high-performance e-commerce shops for the SCAYLE Commerce Engine. It makes it quick and easy to build a best-in-class shop frontend. The latest version of Storefront Core is based on Nuxt and Vue 3 and consists of two parts:
+Storefront Core is an all-in-one starter kit for building high-performance
+e-commerce shops for the SCAYLE Commerce Engine. It makes it quick and easy to
+build a best-in-class shop frontend. The latest version of Storefront Core is
+based on Nuxt and Vue 3 and consists of two parts:
 
-- Storefront Core (_SFC_) The headless storefront that provides design-agnostic business logic and integrations with the SCAYLE backend.
-- Storefront Boilerplate (_SFB_) A complete starter Nuxt application that includes the Storefront Core along with all features and pages that are required for a modern e-commerce frontend.
+- Storefront Core (_SFC_) The headless storefront that provides design-agnostic
+  business logic and integrations with the SCAYLE backend.
+- Storefront Boilerplate (_SFB_) A complete starter Nuxt application that includes
+  the Storefront Core along with all features and pages that are required for
+  a modern e-commerce frontend.
 
-Storefront Core is built in a way that makes it easy to change or extend the shop design. An advantage of this approach is that the effort for launching a new e-commerce shop is drastically reduced because you only have to focus on the UI and design layer.
+Storefront Core is built in a way that makes it easy to change or extend the shop design.
+An advantage of this approach is that the effort for launching a new e-commerce shop
+is drastically reduced because you only have to focus on the UI and design layer.
 
-Should you encounter any errors, please reach out to your Scayle representative or the Storefront Core team for quick support.
+Should you encounter any errors, please reach out to your Scayle representative
+or the Storefront Core team for quick support.
 
 ### Built With
 
@@ -35,7 +44,8 @@ Should you encounter any errors, please reach out to your Scayle representative 
 
 ## Getting Started
 
-The following outline should provide you with an overview of how to get your local development environment using the Storefront Boilerplate up and running.
+The following outline should provide you with an overview of how to get your
+local development environment using the Storefront Boilerplate up and running.
 For more in-depth explanations and How-to guides, please consult the [SCAYLE Resource Center](https://scayle.dev/en/dev/storefront-core/introduction).
 
 ### Prerequisites
@@ -49,14 +59,20 @@ For more in-depth explanations and How-to guides, please consult the [SCAYLE Res
 
 - `redis`
 
-  Depending on the circumstances the usage of redis `docker` image for the local setup might not be necessary or might result in degraded performance. In this case, it is sufficient to have a locally installed version of `redis` / `redis-server` available.
+  Depending on the circumstances the usage of redis `docker` image for the
+  local setup might not be necessary or might result in degraded performance.
+  In this case, it is sufficient to have a locally installed version of
+  `redis` / `redis-server` available.
 
 ### Installation
 
-1. Get the required SCAYLE credentials and API Keys via your SCAYLE Customer Success Manager. If they are not yet provided to you, please reach out to your respective SCAYLE representative.
-2. Use your provided SCAYLE credentials and API Keys to create a local `.env` file in the main directory based on the provided `.env.example` file.
+1. Get the required SCAYLE credentials and API Keys via your SCAYLE Customer Success Manager.
+   If they are not yet provided to you, please reach out to your respective SCAYLE representative.
+2. Use your provided SCAYLE credentials and API Keys to create a local `.env` file
+   in the main directory based on the provided `.env.example` file.
 
-   _For an in-depth explanation of the required environment variables, please consult the [SCAYLE Resource Center](https://scayle.dev/en/dev/storefront-core/introduction)._
+   _For an in-depth explanation of the required environment variables,_
+   _please consult the [SCAYLE Resource Center](https://scayle.dev/en/dev/storefront-core/introduction)._
 
 3. Install dependencies
 
@@ -81,7 +97,9 @@ For more in-depth explanations and How-to guides, please consult the [SCAYLE Res
 
 #### Docker Compose
 
-Suppose you don't need to develop and make changes to the application; we provide a simple docker-compose setup to run the application without installing the dependencies locally on your machine.
+Suppose you don't need to develop and make changes to the application;
+we provide a simple docker-compose setup to run the application without
+installing the dependencies locally on your machine.
 
 ```sh
 # Without SSL setup
@@ -131,12 +149,15 @@ Use <http://localhost:3000/> to open the shop
 
 Run `yarn build` to build the latest changes and followed by `yarn preview`.
 Keep in mind that a `redis-server` needs to be running.
-This will run the generated nuxt application from the `.output/` directory, similar to how the application will be deployed on a production server.
-The only difference here is that all relevant `NUXT_` runtimeConfig override values are sourced from the local `.env` file.
+This will run the generated nuxt application from the `.output/` directory,
+similar to how the application will be deployed on a production server.
+The only difference here is that all relevant `NUXT_` runtimeConfig override values
+are sourced from the local `.env` file.
 
 ## Testing
 
-For testing with Nuxt 3, we provide a [@nuxt/test-utils](https://github.com/nuxt/test-utils) integration. It allows us to use a Nuxt environment in [vitest](https://vitest.dev/).
+For testing with Nuxt 3, we provide a [@nuxt/test-utils](https://github.com/nuxt/test-utils) integration.
+It allows us to use a Nuxt environment in [vitest](https://vitest.dev/).
 For ease of use we use `.nuxt.test.ts` or `.nuxt.spec.ts` file suffix for our tests to use nuxt env.
 
 ## Viewing Storefront API calls for debugging
@@ -146,7 +167,9 @@ For this purpose it is recommended to use an interactive HTTP(S) proxy that allo
 
 ## Patches
 
-In some cases, patches to third-party packages are required. The Storefront Boilerplate uses [`patch-package`](https://www.npmjs.com/package/patch-package) to manage patching. The tool will run in `postinstall` and apply any patches present in the `patches/` directory.
+In some cases, patches to third-party packages are required. The Storefront Boilerplate
+uses [`patch-package`](https://www.npmjs.com/package/patch-package) to manage patching.
+The tool will run in `postinstall` and apply any patches present in the `patches/` directory.
 
 An overview of the currently included patches can be found [here](./patches/INFO.md).
 
@@ -154,21 +177,42 @@ An overview of the currently included patches can be found [here](./patches/INFO
 
 The Storefront Boilerplate includes an experimental integration with OpenTelemetry.
 
-To enable OpenTelemetry, set the buildtime environment variable `OTEL_ENABLED` to true. This will inject additional code into your application's entrypoint which will initialize the OpenTelemetry SDK. Automatic instrumentations as well as instrumentations from `storefront-nuxt` will be captured and exported via the OTLP protocol.
+To enable OpenTelemetry, set the buildtime environment variable `OTEL_ENABLED` to true.
+This will inject additional code into your application's entrypoint which will
+initialize the OpenTelemetry SDK. Automatic instrumentations as well as instrumentations
+from `storefront-nuxt` will be captured and exported via the OTLP protocol.
 
-Currently, Vercel and Node are the only supported platforms for the OpenTelemetry integration. Setting `OTEL_ENABLED` to true when building for other platforms will have no effect.
+Currently, Vercel and Node are the only supported platforms for the OpenTelemetry integration.
+Setting `OTEL_ENABLED` to true when building for other platforms will have no effect.
 
-You should also set the runtime variable `OTEL_SERVICE_NAME` to configure the service name used in traces. e.g. `OTEL_SERVICE_NAME=storefront-boilerplate` Note: this variable is used directly by the OpenTelemetry libraries and is not available in the Nuxt `runtimeConfiguration`.
+You should also set the runtime variable `OTEL_SERVICE_NAME` to configure the
+service name used in traces. e.g. `OTEL_SERVICE_NAME=storefront-boilerplate`
+
+Note: this variable is used directly by the OpenTelemetry libraries and is not available in the Nuxt `runtimeConfiguration`.
 
 ## Explicit Imports
 
 With the release of the SCAYLE Storefront Boilerplate `v1.2.0`, we have disabled
-the [Nuxt autoImport feature](https://nuxt.com/docs/guide/concepts/auto-imports#disabling-auto-imports) for composables, utils and other dependencies.
+the [Nuxt autoImport feature](https://nuxt.com/docs/guide/concepts/auto-imports#disabling-auto-imports)
+or composables, utils and other dependencies.
 
 With the change we have included a custom local Nuxt module `modules/eslint-auto-explicit-import`,
 based on [`antfu/nuxt-eslint-auto-explicit-import`](https://github.com/antfu/nuxt-eslint-auto-explicit-import).
 This module aims to insert more explicit import statement automatically where possible,
 based on Nuxt internal import resolution using `eslint --fix`.
+
+### Vue Compiler Macros
+
+Some functions from Vue are considered compiler macros and do not need to be imported manually,
+as they will be resolved during the component build time:
+
+- `defineProps`
+
+The following compiler macros will currently still be manually imported but might
+throw a warning during build time:
+
+- `defineOptions`
+- `defineModel`
 
 ### Manual Import Paths
 
@@ -184,3 +228,9 @@ Following some common cases that should be considered while adding manual import
   - e.g. `import { clearError, useError } from '#app/composables/error'`
 - Use `#imports` for imports within a pure server context
   - e.g server or nitro plugins (`server/plugins/*` or `modules/opentelemetry/src/runtime/nitro/plugins/*`)
+
+### Barrel file imports
+
+Even though we're providing barrel files (`index.ts`) for `~/utils` and `~/constants`,
+we recommend to make your imports as explicit as possible.
+This helps to avoid confusion in regards to import locations and potential naming collisions.

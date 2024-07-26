@@ -98,7 +98,8 @@
     "sold_out": "Ausverkauft",
     "online_exclusive": "Exklusiv online",
     "campaign": "-{reduction}% EXTRA",
-    "sale": "-{reduction}%"
+    "sale": "-{reduction}%",
+    "already_in_basket": "Bereits im Warenkorb"
   },
   "navigation": {
     "my_account": "Mein Konto",
@@ -298,17 +299,21 @@
   "price": {
     "starting_from": "von",
     "including_vat": "inkl. Mwst.",
-    "best_price_30d": "30-Tage-Bestpreis**:",
-    "best_price_hint": "**niedrigster Gesamtpreis der letzten 30 Tage vor der Preisermäßigung"
+    "best_price_30d": "30-Tage-Bestpreis"
   },
   "plp": {
     "filter": "Filter",
-    "seo_description": "Kaufen Sie in der Kategorie {categoryName} online im Demo Shop ein. Entdecken Sie das große Sortiment in der Kategorie {categoryName}",
-    "no_products": "Für diese Kategorie gibt es keine Produkte",
-    "no_results": "Keine Ergebnisse"
+    "seo_description": "Kaufen Sie {category} bei SCAYLE. Entdecken Sie eine große Auswahl an {category}",
+    "back_navigation_button_label": "Zurück",
+    "no_results": {
+      "title": "Keine Ergebnisse 🫣",
+      "description": "Leider sind in dieser Kategorie keine Produkte vorhanden oder Ihre Filterung ergibt keine Produkte.",
+      "reset_filters": "Filter zurücksetzen",
+      "back_to_category": "Zurück zu {category}"
+    }
   },
   "sorting_select": {
-    "topseller": "Empfehlungen",
+    "top_seller": "Empfehlungen",
     "date_newest": "Neuheiten",
     "price_desc": "Preis absteigend",
     "price_asc": "Preis aufsteigend",
@@ -316,20 +321,26 @@
     "reduction_asc": "Reduzierung aufsteigend"
   },
   "filter": {
-    "title": "Filter",
+    "title": "Kategoriefilter",
     "size": "Größe",
     "brands": "Marken",
     "colors": "Farben",
     "price": "Preis",
-    "only_sale": "Zeige Angebot",
+    "only_sale": "Zeige nur Artikel im Angebot",
     "delete": "Löschen",
     "show_all": "Alle anzeigen",
-    "show_results_count": "Anwenden ({count})",
+    "show_results_count": "{count} Artikel anzeigen",
     "reset": "Zurücksetzen",
-    "reset_all": "Reset all",
-    "show_results": "Anwenden",
+    "reset_all": "Alles zurücksetzen",
+    "show_results": "Artikel anzeigen",
     "to": "bis",
-    "all_label": "Alle"
+    "all_label": "Alle",
+    "select_color": "Farbe {color} gewählt",
+    "sorting": "Sortierung",
+    "show_filter": "Filter anzeigen",
+    "filters_sorting": "Filter & Sortierung",
+    "cleared_notification": "Alle Filter wurden entfernt!",
+    "updated_notification": "Deine Filter wurden erfolgreich angewendet!"
   },
   "osp": {
     "account": "Kundenkonto",
@@ -494,5 +505,9 @@
     "select_size_message": "Wählen Sie eine andere Größe für weitere Optionen",
     "not_eligible_message": "Die ausgewählte Größe ist nicht für ein Abonnement geeignet.",
     "term": "Bedingungen"
+  },
+  "image_slider": {
+    "previous_label": "Vorherigen Bild",
+    "next_label": "Nächsten Bild"
   }
 }

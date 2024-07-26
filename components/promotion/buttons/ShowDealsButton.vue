@@ -5,29 +5,34 @@
     class="pr-1 text-xs"
     @click="goToCategory()"
   >
+    {{ props.category?.ctaLabel || $t('promotion.show_deals_label') }}
     <template #append-icon="{ _class }">
-      {{ props.category?.ctaLabel || $t('promotion.show_deals_label') }}
       <IconChevronRight :class="_class" />
     </template>
   </SFButton>
 </template>
 
 <script setup lang="ts">
-import { normalizePathRoute } from '~/utils/route'
-import { usePromotionActions, useRouteHelpers } from '~/composables'
+import {
+  usePromotionActions,
+  useRouteHelpers,
+  useCurrentCategory,
+} from '~/composables'
 
 const props = defineProps<{ category: Promotion['customData']['category'] }>()
 
 const { isPromotionListShown, togglePromotionList } = usePromotionActions()
 
-const { localizedNavigateTo } = useRouteHelpers()
+const { localizedNavigateTo, buildCategoryPath } = useRouteHelpers()
+
+const id = props.category?.id
+
+const { data: categoryData } = id ? useCurrentCategory(id) : { data: null }
 
 const goToCategory = async () => {
-  if (!props.category?.to) {
-    return
-  }
+  if (!categoryData?.value) return
 
-  await localizedNavigateTo(normalizePathRoute(props.category.to))
+  await localizedNavigateTo(buildCategoryPath(categoryData.value))
 
   isPromotionListShown.value && togglePromotionList()
 }
