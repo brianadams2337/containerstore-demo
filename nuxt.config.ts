@@ -149,12 +149,13 @@ export default defineNuxtConfig({
         maxAge: 2419200, // 4 weeks in seconds | Override: NUXT_STOREFRONT_SESSION_MAX_AGE
       },
 
-      /** Storefront Core - Storefront API Client configuration
-       * NOTE: Formerly known as `backbone` or `bapi`, option will be renamed in the future!
+      /**
+       * Storefront Core - Storefront API Client configuration
+       * NOTE: Formerly known as `backbone` or `bapi`.
        * https://scayle.dev/en/dev/storefront-core/module-configuration#storefront-api */
-      bapi: {
-        host: '', // Override: NUXT_STOREFRONT_BAPI_HOST
-        token: '', // Override: NUXT_STOREFRONT_BAPI_TOKEN
+      sapi: {
+        host: '', // Override: NUXT_STOREFRONT_SAPI_HOST
+        token: '', // Override: NUXT_STOREFRONT_SAPI_TOKEN
       },
 
       /** Storefront Core - Token-based (OAuth) Authentication configurations

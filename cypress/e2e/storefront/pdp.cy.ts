@@ -139,7 +139,7 @@ describe.skip('SoldOut product', () => {
     cy.contains(getLocaleFile().availability.not_available)
   })
 
-  // ToDo: Skipped due to the BAPI issue
+  // ToDo: Skipped due to the SAPI issue
   it.skip('check that Sold Out product can be added to wishlist', () => {
     ProductPage.openProduct(TEST_ITEM_SOLDOUT.link)
     ProductPage.waitForPageToBeDisplayed()
