@@ -106,8 +106,8 @@ const props = withDefaults(defineProps<Props>(), {
 const { formatCurrency } = useFormatHelpers()
 
 const appliedReductions = computed(() => {
-  const reductions = props.price?.appliedReductions || []
-  return reductions.reverse()
+  const reductions = props.price?.appliedReductions ?? []
+  return reductions.toReversed()
 })
 
 const formattedAppliedReductions = computed(() => {
