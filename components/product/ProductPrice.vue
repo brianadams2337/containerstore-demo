@@ -104,7 +104,11 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const { formatCurrency } = useFormatHelpers()
-const appliedReductions = computed(() => props.price?.appliedReductions || [])
+
+const appliedReductions = computed(() => {
+  const reductions = props.price?.appliedReductions || []
+  return reductions.reverse()
+})
 
 const formattedAppliedReductions = computed(() => {
   return appliedReductions.value
@@ -118,9 +122,9 @@ const formattedAppliedReductions = computed(() => {
 })
 
 const relativeReductions = computed(() => {
-  return appliedReductions.value
-    .map(({ amount }) => Math.round(amount.relative * 100))
-    .reverse()
+  return appliedReductions.value.map(({ amount }) =>
+    Math.round(amount.relative * 100),
+  )
 })
 
 const { automaticDiscountPromotion, getAppliedAutomaticDiscountPrice } =
