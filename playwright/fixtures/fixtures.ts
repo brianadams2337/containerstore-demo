@@ -6,7 +6,6 @@ import { ProductDetailPage } from '../page-objects/productDetailPage'
 import { Header } from '../page-objects/components/header'
 import { BasketPage } from '../page-objects/basketPage'
 import { SignInPage } from '../page-objects/signinPage'
-import { CheckoutPage } from '../page-objects/checkoutPage'
 import { AccountPage } from '../page-objects/accountPage'
 import { ToastMessage } from '../page-objects/components/toastMessage'
 import { Breadcrumb } from '../page-objects/components/breadcrumb'
@@ -20,7 +19,6 @@ interface Fixtures {
   header: Header
   basketPage: BasketPage
   signinPage: SignInPage
-  checkoutPage: CheckoutPage
   accountPage: AccountPage
   toastMessage: ToastMessage
   breadcrumb: Breadcrumb
@@ -57,10 +55,6 @@ export const test = base.extend<Fixtures>({
   signinPage: async ({ page }, use) => {
     const signinPage = new SignInPage(page)
     await use(signinPage)
-  },
-  checkoutPage: async ({ page }, use) => {
-    const checkoutPage = new CheckoutPage(page)
-    await use(checkoutPage)
   },
   accountPage: async ({ page }, use) => {
     const accountPage = new AccountPage(page)

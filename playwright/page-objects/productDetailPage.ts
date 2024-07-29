@@ -11,7 +11,9 @@ export class ProductDetailPage {
     this.productSizePickerToggle = page.locator(
       '[data-testid="product-size-picker-toggle"]',
     )
-    this.productSizeValue = page.locator('[data-testid="product-size"]')
+    this.productSizeValue = page.locator(
+      '[data-testid="product-size"] >> button:not([disabled=""])',
+    )
     this.addToBasketButton = page.locator(
       '[data-test-id="add-item-to-basket-button"]',
     )

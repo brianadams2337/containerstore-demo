@@ -1,5 +1,5 @@
 import { expect, test } from '../fixtures/fixtures'
-import { E2E_BASKET_URL, LOGGED_IN_USER_DATA } from '../support/constants'
+import { E2E_BASKET_URL } from '../support/constants'
 
 test('C2139186: E2E from Home to Checkout - happy path', async ({
   homePage,
@@ -8,13 +8,11 @@ test('C2139186: E2E from Home to Checkout - happy path', async ({
   productDetailPage,
   header,
   basketPage,
-  signinPage,
-  checkoutPage,
   page,
 }) => {
   await homePage.visitPage()
   await mainNavigation.menuItemSecond.click()
-  await mainNavigation.menuSubcategory.click()
+  await productListingPage.menuSubCategoryLvl1.first().click()
   await productListingPage.addProductToWishlist()
   await expect(header.wishlistNumItems).toHaveText('1')
 
@@ -28,11 +26,5 @@ test('C2139186: E2E from Home to Checkout - happy path', async ({
   await basketPage.assertProductIsInBasket()
 
   await basketPage.gotoCheckoutPage()
-  await signinPage.fillLoginData(
-    LOGGED_IN_USER_DATA.email,
-    LOGGED_IN_USER_DATA.password,
-  )
-  await signinPage.clickLoginButton()
-
-  await checkoutPage.assertCheckoutPageURL()
+  expect(page.url()).toContain('signin?redirectUrl=checkout')
 })

@@ -5,7 +5,7 @@ import { lighthouseThresholds } from '../../support/constants'
 test.describe.configure({ mode: 'serial', timeout: 120000 })
 
 test('C2139576: Lighthouse audit for PDP', async ({ baseURL }) => {
-  const pdpUrl = new URL('/p/batist-blusentop-1099', baseURL)
+  const pdpUrl = new URL('/p/sweatshirt-ess-206056', baseURL)
 
   const averageScores = await runLighthouseAudit(pdpUrl, 'pdp')
 
