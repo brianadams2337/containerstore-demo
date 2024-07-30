@@ -19,7 +19,6 @@ export default defineNuxtModule<ModuleOptions>({
       unimport = ctx
     })
 
-    // @ts-expect-error Argument of type '"eslint:config:addons"' is not assignable to parameter of type 'HookKeys<NuxtHooks>'.ts(2345)
     nuxt.hook('eslint:config:addons', (addons) => {
       addons.push({
         name: 'storefront-eslint-auto-explicit-import',

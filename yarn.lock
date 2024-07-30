@@ -1483,7 +1483,7 @@
     semver "^7.3.5"
     tar "^6.1.11"
 
-"@miyaneee/rollup-plugin-json5@^1.1.2":
+"@miyaneee/rollup-plugin-json5@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@miyaneee/rollup-plugin-json5/-/rollup-plugin-json5-1.2.0.tgz#a0995e55bfcf055aea0c9c73e0b2dcac120e036e"
   integrity sha512-JjTIaXZp9WzhUHpElrqPnl1AzBi/rvRs065F71+aTmlqvTMVkdbjZ8vfFl4nRlgJy+TPBw69ZK4pwFdmOAt4aA==
@@ -1862,31 +1862,31 @@
     vite-plugin-checker "^0.6.4"
     vue-bundle-renderer "^2.0.0"
 
-"@nuxtjs/i18n@8.3.1":
-  version "8.3.1"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/i18n/-/i18n-8.3.1.tgz#bfa6c92991f842ec4df16573dd5cb210907d18be"
-  integrity sha512-VHnnjFTTep2oC5++61WY06y4c/h943NyHQh1CRUJQvjsdbGSMX3WQjMGk+X05a3pyPFN70aq0YbgtsEoEoTEjQ==
+"@nuxtjs/i18n@8.3.3":
+  version "8.3.3"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/i18n/-/i18n-8.3.3.tgz#d9fd328e527416fc91fa5c233abfc16ad4ba0477"
+  integrity sha512-R/Q7GgBf9sVKlB4Mz/2KPhlZwO7nm+YcADcJcBDGfQVoNZjGg2muDCkCXSqpqIjkm264QcERFoPP42aBR+SlgA==
   dependencies:
     "@intlify/h3" "^0.5.0"
     "@intlify/shared" "^9.9.0"
     "@intlify/unplugin-vue-i18n" "^3.0.1"
     "@intlify/utils" "^0.12.0"
-    "@miyaneee/rollup-plugin-json5" "^1.1.2"
+    "@miyaneee/rollup-plugin-json5" "^1.2.0"
     "@nuxt/kit" "^3.10.3"
     "@rollup/plugin-yaml" "^4.1.2"
-    "@vue/compiler-sfc" "^3.3.4"
-    debug "^4.3.4"
+    "@vue/compiler-sfc" "^3.4.30"
+    debug "^4.3.5"
     defu "^6.1.2"
     estree-walker "^3.0.3"
     is-https "^4.0.0"
-    knitwork "^1.0.0"
-    magic-string "^0.30.4"
-    mlly "^1.4.2"
+    knitwork "^1.1.0"
+    magic-string "^0.30.10"
+    mlly "^1.7.1"
     pathe "^1.1.1"
     scule "^1.1.1"
-    sucrase "^3.34.0"
+    sucrase "^3.35.0"
     ufo "^1.3.1"
-    unplugin "^1.5.0"
+    unplugin "^1.10.1"
     vue-i18n "^9.9.0"
     vue-router "^4.2.5"
 
@@ -3895,7 +3895,7 @@
     "@vue/compiler-core" "3.4.31"
     "@vue/shared" "3.4.31"
 
-"@vue/compiler-sfc@3.4.31", "@vue/compiler-sfc@^3.2.47", "@vue/compiler-sfc@^3.3.4", "@vue/compiler-sfc@^3.4.15", "@vue/compiler-sfc@^3.4.27":
+"@vue/compiler-sfc@3.4.31", "@vue/compiler-sfc@^3.2.47", "@vue/compiler-sfc@^3.4.15", "@vue/compiler-sfc@^3.4.27", "@vue/compiler-sfc@^3.4.30":
   version "3.4.31"
   resolved "https://registry.yarnpkg.com/@vue/compiler-sfc/-/compiler-.4.31.tgz#cc6bfccda17df8268cc5440842277f61623c591f"
   integrity sha512-einJxqEw8IIJxzmnxmJBuK2usI+lJonl53foq+9etB2HAzlPjAS/wa7r0uUpXw5ByX3/0uswVSrjNb17vJm1kQ==
@@ -11750,7 +11750,7 @@ stylehacks@^6.1.1:
     browserslist "^4.23.0"
     postcss-selector-parser "^6.0.16"
 
-sucrase@^3.20.3, sucrase@^3.32.0, sucrase@^3.34.0:
+sucrase@^3.20.3, sucrase@^3.32.0, sucrase@^3.35.0:
   version "3.35.0"
   resolved "https://registry.yarnpkg.com/sucrase/-/sucrase-3.35.0.tgz#57f17a3d7e19b36d8995f06679d121be914ae263"
   integrity sha512-8EbVDiu9iN/nESwxeSxDKe0dunta1GOlHufmSSXxMD2z2/tMZpDMpvXQGsc+ajGo8y2uYUmixaSRUc/QPoQ0GA==
