@@ -1,17 +1,8 @@
-import {
-  type Category,
-  extendPromise,
-  type FilterParams,
-} from '@scayle/storefront-nuxt'
+import { type Category, extendPromise } from '@scayle/storefront-nuxt'
 import { computed, type Ref, ref } from 'vue'
 import type { LocationQuery } from 'vue-router'
 import { useRoute, useRouter } from '#app/composables/router'
-import {
-  useTrackingEvents,
-  useAppliedFilters,
-  useProductListSort,
-  useToast,
-} from '~/composables'
+import { useTrackingEvents, useAppliedFilters, useToast } from '~/composables'
 import { useFilters } from '#storefront/composables'
 import type { FilterItemWithValues } from '~/types/filter'
 import type { RangeTuple } from '#storefront-ui/components/form/RangeSlider.vue'
@@ -30,28 +21,15 @@ export function useFilter(
 
   const { appliedFilter, appliedFiltersCount } = useAppliedFilters()
   const { trackFilterApply, trackFilterFlyout } = useTrackingEvents()
-  const { selectedSort } = useProductListSort()
   const { t } = useI18n()
 
   const { show } = useToast()
-  const productConditions = computed<FilterParams>(() => {
-    const page =
-      typeof route.query.page === 'string'
-        ? parseInt(route.query.page, 10)
-        : undefined
-
-    return {
-      where: appliedFilter.value,
-      page,
-      sort: selectedSort.value,
-    }
-  })
 
   const filterData = useFilters({
     params: () => ({
       category: currentCategory?.value.path || '/',
       where: {
-        ...productConditions.value.where,
+        ...appliedFilter.value,
         ...(route.query.term && { term: String(route.query.term) }),
       },
     }),

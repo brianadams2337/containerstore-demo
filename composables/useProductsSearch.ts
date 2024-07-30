@@ -1,7 +1,6 @@
 import {
   extendPromise,
   type FetchProductsByCategoryParams,
-  type FilterParams,
 } from '@scayle/storefront-nuxt'
 import { computed } from 'vue'
 import { useProducts } from '#storefront/composables'
@@ -30,19 +29,6 @@ export function useProductsSearch({
   const { appliedFilter } = useAppliedFilters()
   const { selectedSort } = useProductListSort()
 
-  const productConditions = computed<FilterParams>(() => {
-    const page =
-      typeof route.query.page === 'string'
-        ? parseInt(route.query.page, 10)
-        : undefined
-
-    return {
-      where: appliedFilter.value,
-      page,
-      sort: selectedSort.value,
-    }
-  })
-
   const term = String(route.query.term || '')
   const productsData = useProducts({
     params: () => ({
@@ -60,7 +46,7 @@ export function useProductsSearch({
         cacheKeyPrefix: `SEARCH:${term}`,
       },
       where: {
-        ...productConditions.value.where,
+        ...appliedFilter.value,
         term,
       },
       ...restParams,
