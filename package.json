@@ -134,7 +134,7 @@
     "schema-dts": "1.1.2",
     "storyblok-js-client": "6.8.1",
     "ufo": "1.5.4",
-    "vue": "3.4.31",
+    "vue": "3.4.35",
     "vue-slider-component": "4.1.0-beta.7",
     "yn": "5.0.0"
   },
@@ -152,11 +152,11 @@
     "import-in-the-middle": "1.8.1",
     "@nuxt/kit": "3.11.2",
     "@nuxt/schema": "3.11.2",
-    "vue": "3.4.31",
-    "@vue/compiler-dom": "3.4.31",
-    "@vue/compiler-sfc": "3.4.31",
-    "@vue/compiler-core": "3.4.31",
-    "@vue/compiler-ssr": "3.4.31",
-    "@vue/shared": "3.4.31"
+    "vue": "3.4.35",
+    "@vue/compiler-dom": "3.4.35",
+    "@vue/compiler-sfc": "3.4.35",
+    "@vue/compiler-core": "3.4.35",
+    "@vue/compiler-ssr": "3.4.35",
+    "@vue/shared": "3.4.35"
   }
 }
