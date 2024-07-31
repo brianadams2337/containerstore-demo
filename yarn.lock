@@ -3147,10 +3147,10 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.82.2":
-  version "7.82.2"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.82.2.tgz#486f90a5df8d6d83479b47717110010ef908974b"
-  integrity sha512-YNTcePxbP4ZE53DzBvl1ukw43eFUOpTmCPKLao/+ZP5o0qvqmYaSEOFrWl8Vs02Wa/BH3Oh9SZ2lFgJyJFMzSQ==
+"@scayle/storefront-nuxt@7.83.0":
+  version "7.83.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.83.0.tgz#6ac6fe2fdbaa8151545222e2c1ec12a9eb5f4978"
+  integrity sha512-MZuK9hOTDDOSMdw96BVsgWi1anygnh+bMu7+EKeWu46QETRIAu6dfgaLv03HLhGShmdyJRte/hW4R+sbXXMzZw==
   dependencies:
     "@nuxt/kit" "^3.12.2"
     "@opentelemetry/api" "^1.9.0"
