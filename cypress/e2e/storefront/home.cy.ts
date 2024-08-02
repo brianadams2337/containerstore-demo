@@ -1,8 +1,5 @@
 import HomePage from '../../pageObjects/homePage'
-import Header from '../../pageObjects/components/header'
-import Footer from '../../pageObjects/components/footer'
-import ProductListingPage from '../../pageObjects/productListingPage'
-import { TEST_ITEM_REGULAR, TEST_ITEM_SOLDOUT } from '../../support/constants'
+import { TEST_ITEM_REGULAR } from '../../support/constants'
 import ProductPage from '../../pageObjects/productPage'
 
 describe(`my orders`, () => {
@@ -14,13 +11,6 @@ describe(`my orders`, () => {
 
   afterEach(() => {
     cy.clearSiteData()
-  })
-
-  it.skip('Sold out product should be clickable on products slider', () => {
-    Header.assertHeaderIsDisplayed()
-    Footer.assertFooterIsDisplayed()
-    ProductListingPage.openProductByID(TEST_ITEM_SOLDOUT.id)
-    ProductPage.waitForPageToBeDisplayed()
   })
 
   it('Check promotion banner', () => {

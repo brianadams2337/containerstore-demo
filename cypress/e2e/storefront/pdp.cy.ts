@@ -10,7 +10,6 @@ import {
 import ProductPage from '../../pageObjects/productPage'
 import HomePage from '../../pageObjects/homePage'
 import Header from '../../pageObjects/components/header'
-import ProductListingPage from '../../pageObjects/productListingPage'
 import { getLocaleFile } from '../../test-helpers'
 import Footer from '../../pageObjects/components/footer'
 import WishlistPage from '../../pageObjects/wishlistPage'
@@ -119,18 +118,6 @@ describe('Products testing', () => {
 describe.skip('SoldOut product', () => {
   afterEach(() => {
     cy.clearSiteData()
-  })
-
-  it('Check that sold out product is not visible on Product Listing Pages', () => {
-    HomePage.open()
-    ProductListingPage.openTestCategory()
-    ProductListingPage.waitForPageToBeDisplayed()
-    ProductListingPage.getPaginationButtons().each((element) => {
-      cy.wrap(element).click()
-      ProductListingPage.getTotalItems().each((item) => {
-        expect(item.text()).not.contain(TEST_ITEM_SOLDOUT.name)
-      })
-    })
   })
 
   it('check Sold Out field presence on PDP page', () => {

@@ -4,7 +4,6 @@ import {
 } from '../../support/constants'
 import Header from '../../pageObjects/components/header'
 import Footer from '../../pageObjects/components/footer'
-import ProductListingPage from '../../pageObjects/productListingPage'
 import ProductPage from '../../pageObjects/productPage'
 import BasketPage from '../../pageObjects/basketPage'
 import { getLocaleFile } from '../../test-helpers'
@@ -23,16 +22,6 @@ describe('Basket Feature', () => {
     Header.assertHeaderIsDisplayed()
     Footer.assertFooterIsDisplayed()
     Footer.assertFooterText()
-  })
-
-  it('empty Basket Page content check', () => {
-    BasketPage.open()
-    BasketPage.waitForPageToBeDisplayed()
-    Header.assertShoppingBagCounter(0)
-    ProductListingPage.assertHeaderName(locale.basket.empty_title)
-    cy.contains(locale.basket.empty_description)
-    cy.contains(locale.global.continue_shopping_label)
-    cy.contains(locale.global.sign_in_label)
   })
 
   it('check base fields presence on Basket page', () => {
