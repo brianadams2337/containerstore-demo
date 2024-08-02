@@ -31,3 +31,12 @@ export const lighthouseThresholds = {
   seo: 80,
   bestPractices: 80,
 }
+
+export const plpFilterDeeplink = {
+  sale: true,
+  size: 2272,
+  material: 2273,
+  maxPrice: 4000,
+}
+
+export const plpPath = '/c/frauen/bekleidung-50338'

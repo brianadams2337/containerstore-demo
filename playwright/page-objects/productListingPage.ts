@@ -38,4 +38,15 @@ export class ProductListingPage {
   async openProductDetails() {
     await this.productTile.first().click()
   }
+
+  async visitPlpWithFiltersUrl(path: string, filters = {}, baseUrl: string) {
+    const formattedFilters = Object.entries(filters).map(
+      ([key, value]) => `filters[${key}]=${value}`,
+    )
+    const url =
+      baseUrl +
+      path +
+      (formattedFilters.length ? `?${formattedFilters.join('&')}` : '')
+    await this.page.goto(url)
+  }
 }
