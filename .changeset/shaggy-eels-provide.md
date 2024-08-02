@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': patch
 ---
 
-Fix: Point "More"-button of mobile search results to search page
+Fix: "More"-button of mobile search results now leads to search page

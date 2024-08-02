@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': patch
 ---
 
-Updated to `vue@3.2.23`
+Updated to `vue@3.4.35`

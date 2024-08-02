@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-Migrate from `bapi` configuration to `sapi` configuration
+Migrate configuration key `bapi` to `sapi` within `nuxt.config.ts`
