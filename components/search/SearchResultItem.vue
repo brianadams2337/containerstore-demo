@@ -5,6 +5,7 @@
     <SFLink
       class="flex w-full flex-1 items-center transition-colors duration-100 ease-in-out"
       :to="to"
+      data-testid="search-exact-product-item"
       @click="emit('click:result')"
     >
       <NuxtImg
