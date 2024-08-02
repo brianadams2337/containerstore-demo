@@ -98,6 +98,7 @@ const mocks = vi.hoisted(() => {
     selectedSort: { value: '' },
     appliedFilter: { value: {} },
     useProducts: {
+      then: vi.fn(),
       data: {
         value: {
           products: [

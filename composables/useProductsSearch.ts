@@ -68,12 +68,15 @@ export function useProductsSearch({
     return (page - 1) * perPage
   })
 
-  return extendPromise(productsData, {
-    products,
-    pagination,
-    error,
-    fetching,
-    totalProductsCount,
-    paginationOffset,
-  })
+  return extendPromise(
+    productsData.then(() => ({})),
+    {
+      products,
+      pagination,
+      error,
+      fetching,
+      totalProductsCount,
+      paginationOffset,
+    },
+  )
 }
