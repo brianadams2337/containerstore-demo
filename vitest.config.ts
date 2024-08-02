@@ -5,6 +5,7 @@ export default defineVitestConfig({
   // any custom vitest config you require
   test: {
     environment: 'happy-dom',
+    setupFiles: ['./vitest.setup.ts'],
     globals: true,
     include: ['**/*.test.?(c|m)[jt]s?(x)'],
     coverage: {

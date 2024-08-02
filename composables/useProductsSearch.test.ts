@@ -125,10 +125,6 @@ const mocks = vi.hoisted(() => {
   }
 })
 
-vi.mock('@scayle/storefront-nuxt', () => ({
-  extendPromise: vi.fn((_, value) => value),
-}))
-
 vi.mock('#storefront/composables', () => ({
   useProducts: vi.fn().mockReturnValue(mocks.useProducts),
 }))
