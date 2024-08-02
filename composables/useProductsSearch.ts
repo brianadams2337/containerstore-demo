@@ -29,7 +29,8 @@ export function useProductsSearch({
   const { appliedFilter } = useAppliedFilters()
   const { selectedSort } = useProductListSort()
 
-  const term = String(route.query.term || '')
+  const term = computed(() => String(route.query.term || ''))
+
   const productsData = useProducts({
     params: () => ({
       ...(route.query.page && { page: +route.query.page }),
@@ -47,11 +48,11 @@ export function useProductsSearch({
       },
       where: {
         ...appliedFilter.value,
-        term,
+        term: term.value,
       },
       ...restParams,
     }),
-    key: `search-products-${term}`,
+    key: `search-products-${term.value}`,
     options,
   })
 
