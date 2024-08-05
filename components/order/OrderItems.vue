@@ -31,10 +31,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { unique } from 'radash'
-import { useOrderDetails } from '~/composables/useOrderDetails'
+import type { VariantDetail } from '@scayle/storefront-api'
+import type { ListOfPackages } from '@scayle/storefront-nuxt'
 
 const props = defineProps<{
-  orderId: number
+  orderVariants: VariantDetail[]
+  orderItems: OrderItems
+  packages?: ListOfPackages
 }>()
 
 type CarrierMap = Record<
@@ -42,18 +45,14 @@ type CarrierMap = Record<
   { items: OrderItems; deliveryInfo: DeliveryInfo }
 >
 
-const { orderVariants, orderItems, packages } = useOrderDetails(
-  `order-${props.orderId}`,
-)
-
 const uniqueItems = computed(() => {
-  return unique(orderItems.value, (it) => it.variant.id)
+  return unique(props.orderItems, (it) => it.variant.id)
 })
 
 const carrierBundledItemsMap = computed<CarrierMap | undefined>(() => {
   // every item has a packageId
   // every carrier has a package id
-  return packages.value?.reduce((carrierMap: CarrierMap, pkg: Package) => {
+  return props.packages?.reduce((carrierMap: CarrierMap, pkg: Package) => {
     const items = uniqueItems.value?.filter(
       (it: OrderItem) => it.packageId === pkg.id,
     )
@@ -65,6 +64,6 @@ const carrierBundledItemsMap = computed<CarrierMap | undefined>(() => {
 })
 
 const getItemQuantity = (variantId: number | unknown): number | undefined => {
-  return orderItems?.value.filter((it) => it.variant.id === variantId).length
+  return props.orderItems?.filter((it) => it.variant.id === variantId).length
 }
 </script>

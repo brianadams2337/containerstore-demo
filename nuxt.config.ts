@@ -342,6 +342,7 @@ export default defineNuxtConfig({
           name: 'storefront-boilerplate-nuxt', // Override: NUXT_PUBLIC_STOREFRONT_LOG_NAME
           level: 'debug', // Override: NUXT_PUBLIC_STOREFRONT_LOG_LEVEL
         },
+        disableDefaultGetCachedDataOverride: true,
       },
       cms: {
         host: process.env.NUXT_PUBLIC_CMS_HOST,

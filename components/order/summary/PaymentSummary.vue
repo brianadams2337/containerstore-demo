@@ -49,16 +49,13 @@
 </template>
 
 <script setup lang="ts">
-import { useOrderDetails } from '~/composables'
 import { useFormatHelpers } from '#storefront/composables'
 
-const props = defineProps<{
-  orderId: number
+defineProps<{
+  totalAmount: number
+  deliveryCost: number
+  paymentKey?: string
 }>()
 
 const { formatCurrency } = useFormatHelpers()
-
-const { totalAmount, deliveryCost, paymentKey } = useOrderDetails(
-  `order-${props.orderId}`,
-)
 </script>

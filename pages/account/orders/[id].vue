@@ -18,8 +18,16 @@
           v-if="shippingAddress || billingAddress"
           v-bind="{ shippingAddress, billingAddress }"
         />
-        <OrderItems :order-id="paramId" />
-        <PaymentSummary :order-id="paramId" />
+        <OrderItems
+          :order-items="orderItems"
+          :order-variants="orderVariants"
+          :packages="packages"
+        />
+        <PaymentSummary
+          :payment-key="paymentKey"
+          :delivery-cost="deliveryCost"
+          :total-amount="totalAmount"
+        />
       </template>
     </div>
   </PageContent>
@@ -34,8 +42,19 @@ import { useRoute } from '#app/composables/router'
 const route = useRoute()
 const paramId = computed(() => +route.params.id)
 
-const { orderDetails, fetching, shippingAddress, billingAddress, itemCount } =
-  useOrderDetails(`order-${paramId.value}`)
+const {
+  orderDetails,
+  fetching,
+  shippingAddress,
+  billingAddress,
+  itemCount,
+  orderItems,
+  orderVariants,
+  packages,
+  paymentKey,
+  deliveryCost,
+  totalAmount,
+} = useOrderDetails(`order-${paramId.value}`)
 
 defineOptions({ name: 'OrderDetailsView' })
 definePageMeta({ pageType: 'account_area:order_id' })
