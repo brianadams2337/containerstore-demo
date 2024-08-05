@@ -100,7 +100,7 @@
     "@opentelemetry/semantic-conventions": "1.25.1",
     "@scayle/omnichannel-nuxt": "3.0.3",
     "@scayle/nuxt-opentelemetry": "0.3.0",
-    "@scayle/storefront-nuxt": "7.84.0",
+    "@scayle/storefront-nuxt": "7.84.1",
     "@storyblok/nuxt": "6.0.10",
     "@storyblok/vue": "8.0.8",
     "@tailwindcss/forms": "0.5.7",
