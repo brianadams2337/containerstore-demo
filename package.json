@@ -92,7 +92,7 @@
     "@contentful/rich-text-html-renderer": "16.6.8",
     "@googlemaps/js-api-loader": "1.16.8",
     "@opentelemetry/api": "1.9.0",
-    "@opentelemetry/auto-instrumentations-node": "0.49.0",
+    "@opentelemetry/auto-instrumentations-node": "0.49.1",
     "@opentelemetry/exporter-trace-otlp-proto": "0.52.1",
     "@opentelemetry/instrumentation": "0.52.1",
     "@opentelemetry/resources": "1.25.1",
