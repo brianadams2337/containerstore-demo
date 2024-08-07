@@ -3156,17 +3156,17 @@
   dependencies:
     prettier-config-standard "^7.0.0"
 
-"@scayle/storefront-api@17.4.2":
-  version "17.4.2"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-api/-/storefront-api-17.4.2.tgz#bfb0208bd6007312e581cd45c36005bcc3fb664a"
-  integrity sha512-CU2m5yigqxafli+pf35HsEYj4I8pfAQ50bnRDaf0BEuYlnvhEFfU+/5niQ3p96v42MDjFYwC/mOqeGHivcnvZA==
+"@scayle/storefront-api@17.4.3":
+  version "17.4.3"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-api/-/storefront-api-17.4.3.tgz#acaa15e39ddb39ae6b1de41a7901253759f02558"
+  integrity sha512-Ezp52rSNOra6Ss1MPAUb0wvWPogtFByEel8Il2JpP+hmJWWIBEpZzlI0n4PxEd3kdwG7FTcTW79QxVKdtzOwXw==
 
-"@scayle/storefront-core@^7.63.0":
-  version "7.63.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.63.0.tgz#4c4985194ee359c1b07168f620e5c120f1ed40da"
-  integrity sha512-SgbGvVKvzIDuSGKWRY/Q03zb6oFqpM8E/qvJcNnut+HhT8NhgX3OR5HDVhhC6nB02ZJiANlOdlEeDFgs/gp0fg==
+"@scayle/storefront-core@^7.63.1":
+  version "7.63.1"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.63.1.tgz#c337013a37e47503577378c1ded2fd0d2e262b55"
+  integrity sha512-DEkuwKeWH+23kjrWC7m89p7WYUO/o1zZ0psWWeoKxH8ZCqXY/jD+q6WmpUqt994LYWphGYKlkrH3TtCh0C29XA==
   dependencies:
-    "@scayle/storefront-api" "17.4.2"
+    "@scayle/storefront-api" "17.4.3"
     crypto-js "^4.2.0"
     hookable "^5.5.3"
     jose "^5.6.3"
@@ -3178,15 +3178,15 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.84.1":
-  version "7.84.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.84.1.tgz#fe4d5965eaa86962406a9926e408deed83ea7ba4"
-  integrity sha512-sQZS3oyxLRYQePRVX6XhWotFGsMMQSmOj4f53SmCOottbKhVkQs/QBY8OAzBi+gAjV8WfRpXjtyMZeEeuQ0rjg==
+"@scayle/storefront-nuxt@7.84.2":
+  version "7.84.2"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.84.2.tgz#5bffb0f4a061cc3d0ab94c256d073c7855940049"
+  integrity sha512-PgPe5G2banPy7R5dgMYXFlAoIqMHVEagV4qRfd/pmggiWhLEZGt2J8eTiy5tdxGDlXhABEPndkoIeezJUTZQOg==
   dependencies:
     "@nuxt/kit" "^3.12.2"
     "@opentelemetry/api" "^1.9.0"
     "@scayle/h3-session" "^0.4.0"
-    "@scayle/storefront-core" "^7.63.0"
+    "@scayle/storefront-core" "^7.63.1"
     "@scayle/unstorage-compression-driver" "^0.1.3"
     "@vueuse/core" "^10.11.0"
     consola "^3.2.3"
