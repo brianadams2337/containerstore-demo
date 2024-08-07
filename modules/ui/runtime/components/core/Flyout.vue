@@ -1,5 +1,5 @@
 <template>
-  <div data-test-id="flyout-menu">
+  <div>
     <SFFadeInFromBottomTransition>
       <div
         v-if="isOpen"

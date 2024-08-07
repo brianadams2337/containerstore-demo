@@ -13,6 +13,7 @@
     <span
       v-if="appliedFiltersCount"
       class="right-3 inline-flex size-5 items-center justify-center rounded bg-gray-200 text-xs text-gray-500 max-md:absolute max-md:bg-gray-900 max-md:text-white md:size-4"
+      data-testid="filter-toggle-counter"
     >
       {{ appliedFiltersCount }}
     </span>

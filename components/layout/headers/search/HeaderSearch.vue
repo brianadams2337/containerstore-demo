@@ -6,7 +6,7 @@
   >
     <label class="sr-only">{{ $t('search.placeholder') }}</label>
     <button
-      data-test-id="header-search-button"
+      data-testid="header-search-button"
       aria-label="Open search input"
       @click="inputActive = true"
     >
@@ -37,7 +37,7 @@
       ref="input"
       v-model="searchQuery"
       :placeholder="$t('search.placeholder')"
-      data-test-id="header-search-input"
+      data-testid="header-search-input"
       type="search"
       autocomplete="off"
       class="w-full appearance-none overflow-hidden rounded border border-none border-transparent py-3 pl-10 pr-4 text-sm font-medium outline-none search-decoration-none focus:ring-0"
@@ -52,6 +52,7 @@
     <SFFlyout ref="suggestionsFlyout" :is-open="isFlyoutOpened">
       <SearchResultsContainer
         v-if="showSuggestions"
+        data-testid="search-results-flyout"
         @close="closeInput"
         @click:result="trackSuggestionClickAndClose"
       />

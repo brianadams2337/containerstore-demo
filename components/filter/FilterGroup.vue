@@ -12,6 +12,7 @@
           <span
             class="inline-flex h-4 items-center justify-center rounded bg-black px-[0.325rem] text-2xs text-white opacity-0"
             :class="{ 'opacity-100': badge > 0 }"
+            data-testid="filter-group-counter"
           >
             {{ badge }}
           </span>
