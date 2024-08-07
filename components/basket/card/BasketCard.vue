@@ -23,11 +23,6 @@
               sizes="xl:100vw lg:100vw lg:100vw lg:100vw xs:100vw"
               class="col-start-1 col-end-1 row-start-1 row-end-1"
             />
-            <ProductCardBadgesHeader
-              class="absolute left-2 top-2"
-              :product="product"
-            />
-
             <ProductCardBadgesFooter
               class="col-start-1 col-end-1 row-start-1 row-end-1 max-w-fit self-end"
               :product="product"
@@ -208,7 +203,7 @@
 <script setup lang="ts">
 import { sum } from 'radash'
 import { computed, ref, toRef } from 'vue'
-import { type BasketItem } from '@scayle/storefront-nuxt'
+import type { BasketItem } from '@scayle/storefront-nuxt'
 import { useRoute } from '#app/composables/router'
 import { useNuxtApp } from '#app'
 import { useFormatHelpers, useWishlist } from '#storefront/composables'
