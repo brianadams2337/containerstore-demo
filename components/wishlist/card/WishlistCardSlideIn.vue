@@ -3,7 +3,7 @@
     class="lg:hidden"
     :name="`wishlistcard_${wishlistItem.product.id}`"
     slide-type="fromBottom"
-    slide-class="w-full xl:max-w-none h-auto xl:max-h-none top-auto left-0 p-0 pt-0"
+    slide-class="w-full xl:max-w-none h-auto xl:max-h-none top-auto left-0 p-0 pt-0 bottom-0"
   >
     <template #slide-in-content>
       <div>
@@ -23,7 +23,7 @@
             </div>
           </div>
         </div>
-        <div class="flex items-center px-5 pt-4">
+        <div class="flex max-w-full items-center overflow-x-auto px-5 py-4">
           <SFRadioItem
             v-for="size in sizes"
             :key="size.variantId"
