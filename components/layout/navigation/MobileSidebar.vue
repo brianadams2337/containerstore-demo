@@ -2,7 +2,7 @@
   <SFSlideInFromLeftTransition>
     <nav
       v-if="isSideNavigationOpen"
-      class="sticky inset-1 z-100 h-dvh overflow-hidden overflow-y-auto overscroll-none bg-white md:hidden"
+      class="sticky z-100 h-dvh overflow-hidden overflow-y-auto overscroll-none bg-white md:hidden"
       :class="{ 'animate-pulse': fetchingCategories }"
     >
       <div class="flex h-full max-h-[calc(100%-80px)] flex-col">
