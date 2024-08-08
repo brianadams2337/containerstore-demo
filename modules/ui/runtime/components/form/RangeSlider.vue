@@ -5,37 +5,39 @@
       Setting min/max at the same time as setting range causes errors.
       This error causes no issues.
       Source: https://github.com/NightCatSama/vue-slider-component/issues/343#issuecomment-482508771-->
-    <VueSlider
-      v-model="range"
-      :enable-cross="false"
-      :min="min"
-      :max="max"
-      contained
-      adsorb
-      drag-on-click
-      silent
-      height="2px"
-      tooltip="always"
-      tooltip-placement="top"
-      @change="emit('slider-change')"
-      @drag-start="emit('drag-start', range)"
-      @drag-end="emit('drag-end', range)"
-      @dragging="emit('dragging')"
-      @error="emit('error')"
-    >
-      <template #dot>
-        <button
-          class="flex size-4 cursor-pointer rounded-full bg-primary focus:outline-none"
-        >
-          <span class="m-auto size-3 rounded-full bg-white" />
-        </button>
-      </template>
-      <template #tooltip="{ value }">
-        <div class="rounded bg-gray-200 p-1 text-sm text-gray-600">
-          {{ formatCurrency(value) }}
-        </div>
-      </template>
-    </VueSlider>
+    <ClientOnly>
+      <VueSlider
+        v-model="range"
+        :enable-cross="false"
+        :min="min"
+        :max="max"
+        contained
+        adsorb
+        drag-on-click
+        silent
+        height="2px"
+        tooltip="always"
+        tooltip-placement="top"
+        @change="emit('slider-change')"
+        @drag-start="emit('drag-start', range)"
+        @drag-end="emit('drag-end', range)"
+        @dragging="emit('dragging')"
+        @error="emit('error')"
+      >
+        <template #dot>
+          <button
+            class="flex size-4 cursor-pointer rounded-full bg-primary focus:outline-none"
+          >
+            <span class="m-auto size-3 rounded-full bg-white" />
+          </button>
+        </template>
+        <template #tooltip="{ value }">
+          <div class="rounded bg-gray-200 p-1 text-sm text-gray-600">
+            {{ formatCurrency(value) }}
+          </div>
+        </template>
+      </VueSlider>
+    </ClientOnly>
     <div class="mt-4 flex items-center">
       <SFPriceInput
         :model-value="range[0]"
