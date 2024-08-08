@@ -11,6 +11,7 @@ import { ToastMessage } from '../page-objects/components/toastMessage'
 import { Breadcrumb } from '../page-objects/components/breadcrumb'
 import { Pagination } from '../page-objects/components/pagination'
 import { PlpFilters } from '../page-objects/components/plpFilters'
+import { Search } from '../page-objects/components/search'
 
 interface Fixtures {
   homePage: HomePage
@@ -25,6 +26,7 @@ interface Fixtures {
   breadcrumb: Breadcrumb
   pagination: Pagination
   plpFilters: PlpFilters
+  search: Search
 }
 
 export type OutputMode = 'json' | 'html' | 'csv'
@@ -77,6 +79,10 @@ export const test = base.extend<Fixtures>({
   plpFilters: async ({ page }, use) => {
     const plpFilters = new PlpFilters(page)
     await use(plpFilters)
+  },
+  search: async ({ page }, use) => {
+    const search = new Search(page)
+    await use(search)
   },
 })
 export { expect } from '@playwright/test'

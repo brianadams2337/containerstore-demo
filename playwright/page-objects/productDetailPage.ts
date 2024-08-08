@@ -5,6 +5,7 @@ export class ProductDetailPage {
   readonly productSizePickerToggle: Locator
   readonly productSizeValue: Locator
   readonly addToBasketButton: Locator
+  readonly productImage: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -15,6 +16,7 @@ export class ProductDetailPage {
       '[data-testid="product-size"] >> button:not([disabled=""])',
     )
     this.addToBasketButton = page.getByTestId('add-item-to-basket-button')
+    this.productImage = page.getByTestId('product-image')
   }
 
   async pickProductSize() {

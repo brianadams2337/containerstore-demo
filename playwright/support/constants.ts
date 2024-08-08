@@ -40,3 +40,14 @@ export const plpFilterDeeplink = {
 }
 
 export const plpPath = '/c/frauen/bekleidung-50338'
+
+export const searchSuggestions = {
+  searchTermNoResults: 'noresults',
+  searchTermProduct: 'kleider',
+  searchTermBrand: 'adidas',
+  plpUrl: /\/kleider/,
+  searchUrl: /\/search/,
+  searchParamUrl: 'search?term=',
+  searchExactProductID: '206140',
+  pdpUrl: '/p/sneaker-adimatic-206140',
+}
