@@ -93,18 +93,18 @@ accessible and improving its capabilities.
 #### 🏘️ devDependencies
 
 - Added `@scayle/nuxt-opentelemetry@0.3.0`
-- Updated to @contentful/live-preview": "4.5.0
-- Updated to @contentful/rich-text-html-renderer": "16.6.8
-- Updated to @googlemaps/js-api-loader": "1.16.8
-- Updated to @opentelemetry/auto-instrumentations-node": "0.49.0
-- Updated to @scayle/omnichannel-nuxt": "3.0.3
-- Updated to @scayle/storefront-nuxt": "7.84.0
-- Updated to @types/google.maps": "3.55.12
-- Updated to contentful": "10.13.1
-- Updated to redis": "4.7.0
-- Updated to storyblok-js-client": "6.8.1
-- Updated to ufo": "1.5.4
-- Updated to vue": "3.4.35
+- Updated to `@contentful/live-preview@4.5.0`
+- Updated to `@contentful/rich-text-html-renderer@16.6.8`
+- Updated to `@googlemaps/js-api-loader@1.16.8`
+- Updated to `@opentelemetry/auto-instrumentations-node@0.49.0`
+- Updated to `@scayle/omnichannel-nuxt@3.0.3`
+- Updated to `@scayle/storefront-nuxt@7.84.0`
+- Updated to `@types/google.maps@3.55.12`
+- Updated to `contentful@10.13.1`
+- Updated to `redis@4.7.0`
+- Updated to `storyblok-js-client@6.8.1`
+- Updated to `ufo@1.5.4`
+- Updated to `vue@3.4.35`
 - Removed `@opentelemetry/api`
 - Removed `@opentelemetry/auto-instrumentations-node`
 - Removed `@opentelemetry/exporter-trace-otlp-proto`
