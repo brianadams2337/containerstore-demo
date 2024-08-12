@@ -1,8 +1,8 @@
 import { computed } from 'vue'
-import {
-  type ProductSearchQuery,
-  type AttributeWithBooleanValueFilter,
-  type AttributeWithValuesFilter,
+import type {
+  ProductSearchQuery,
+  AttributeWithBooleanValueFilter,
+  AttributeWithValuesFilter,
 } from '@scayle/storefront-nuxt'
 import { useRoute } from '#app/composables/router'
 

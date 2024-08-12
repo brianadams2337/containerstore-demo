@@ -66,7 +66,7 @@
 <script setup lang="ts">
 import { sum } from 'radash'
 import { computed } from 'vue'
-import { type BasketItem } from '@scayle/storefront-nuxt'
+import type { BasketItem } from '@scayle/storefront-nuxt'
 import { useFormatHelpers } from '#storefront/composables'
 import { useBasketItem, useBasketReductions } from '~/composables'
 import { getBackgroundColorStyle, getTextColorStyle } from '~/utils'

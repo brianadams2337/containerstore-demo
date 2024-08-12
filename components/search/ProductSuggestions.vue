@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { type ProductSearchSuggestion } from '@scayle/storefront-nuxt'
+import type { ProductSearchSuggestion } from '@scayle/storefront-nuxt'
 import { getFirstModelImage } from '~/utils/image'
 import { useRouteHelpers } from '~/composables/useRouteHelpers'
 import { useFormatHelpers } from '#storefront/composables'

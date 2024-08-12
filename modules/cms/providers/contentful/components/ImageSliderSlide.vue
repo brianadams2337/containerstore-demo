@@ -52,23 +52,26 @@ const onIntersect = (_: IntersectionObserverEntry, stop: () => void) => {
   if (!props.blok?.fields?.tracking?.fields.promotion_id) {
     return
   }
-  tracking &&
+
+  if (tracking) {
     tracking.trackPromotion(
       'view_promotion',
       props.blok?.fields.tracking.fields,
     )
+  }
+
   stop()
 }
 
 const clickObserver = () => {
-  if (props.blok?.fields?.tracking?.fields.promotion_id) {
-    tracking &&
-      tracking.trackPromotion(
-        'select_promotion',
-        props.blok?.fields.tracking.fields,
-      )
+  if (props.blok?.fields?.tracking?.fields.promotion_id && tracking) {
+    tracking.trackPromotion(
+      'select_promotion',
+      props.blok?.fields.tracking.fields,
+    )
   }
 }
+
 const headlineSize = computed(() =>
   storefrontBreakpoints && storefrontBreakpoints.isSmaller('md') ? 'xl' : '2xl',
 )

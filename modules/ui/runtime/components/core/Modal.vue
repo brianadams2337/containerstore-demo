@@ -57,12 +57,19 @@ const close = () => {
 onClickOutside(modalRef, () => props.closeOnOutside && close())
 
 const handleKeyUpEvent = (event: KeyboardEvent) => {
-  event.key === 'Escape' && close()
+  if (event.key !== 'Escape') {
+    return
+  }
+
+  close()
 }
 
 const useKeyupEventListener = (shouldRemoveListener = false) => {
   const cleanup = useEventListener('keyup', handleKeyUpEvent)
-  shouldRemoveListener && cleanup()
+
+  if (shouldRemoveListener) {
+    cleanup()
+  }
 }
 
 onMounted(() => {

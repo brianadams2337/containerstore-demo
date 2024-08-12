@@ -88,6 +88,9 @@ const v = useVuelidate(
 
 const onSubmit = async () => {
   const isValid = await v.value.$validate()
-  isValid && (await guestLogin(editableUser))
+
+  if (isValid) {
+    await guestLogin(editableUser)
+  }
 }
 </script>

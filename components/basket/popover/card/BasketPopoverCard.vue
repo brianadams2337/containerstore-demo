@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { type BasketItem } from '@scayle/storefront-nuxt'
+import type { BasketItem } from '@scayle/storefront-nuxt'
 import { useBasketItem, useRouteHelpers } from '~/composables'
 
 type Props = {

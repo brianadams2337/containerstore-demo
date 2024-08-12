@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import { toRef } from 'vue'
-import { type BasketItem } from '@scayle/storefront-nuxt'
+import type { BasketItem } from '@scayle/storefront-nuxt'
 import { useBasketItemPromotion, usePromotionProgress } from '~/composables'
 
 const props = defineProps<{ basketItem: BasketItem }>()

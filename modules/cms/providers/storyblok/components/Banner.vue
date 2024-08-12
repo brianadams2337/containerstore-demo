@@ -120,8 +120,11 @@ const onIntersect = (_: IntersectionObserverEntry, stop: () => void) => {
   if (!props.blok.promotion_id) {
     return
   }
-  storefrontTracking &&
+
+  if (storefrontTracking) {
     storefrontTracking.trackPromotion('view_promotion', props.blok)
+  }
+
   stop()
 }
 

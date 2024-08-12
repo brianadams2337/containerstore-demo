@@ -25,6 +25,7 @@ const DEFAULT_APP_KEYS = {
 /** Custom type declaration for local Storefront configuration */
 type RpcMethodsStorefrontType = typeof customRpcMethods
 declare module '@scayle/storefront-nuxt' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   export interface RpcMethodsStorefront extends RpcMethodsStorefrontType {}
 
   // Extend the shop config

@@ -45,7 +45,7 @@ export const getImage: ProviderGetImage = (
       try {
         new URL(urlString, base)
         return true
-      } catch (error) {
+      } catch {
         return false
       }
     }

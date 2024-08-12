@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { type CategorySearchSuggestion } from '@scayle/storefront-nuxt'
+import type { CategorySearchSuggestion } from '@scayle/storefront-nuxt'
 import { useRouteHelpers } from '~/composables/useRouteHelpers'
 
 type Props = {

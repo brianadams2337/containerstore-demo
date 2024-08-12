@@ -1,5 +1,5 @@
 import { it, describe } from 'vitest'
-import { type ProductImage } from '@scayle/storefront-nuxt'
+import type { ProductImage } from '@scayle/storefront-nuxt'
 import { getPrimaryImage } from './image'
 
 describe('getPrimaryImage', () => {

@@ -34,6 +34,8 @@ const goToCategory = async () => {
 
   await localizedNavigateTo(buildCategoryPath(categoryData.value))
 
-  isPromotionListShown.value && togglePromotionList()
+  if (isPromotionListShown.value) {
+    togglePromotionList()
+  }
 }
 </script>

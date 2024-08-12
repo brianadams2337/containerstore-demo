@@ -1,8 +1,8 @@
-import {
-  type GuestRequest,
-  type LoginRequest,
-  type RegisterRequest,
-  type UpdatePasswordByHashRequest,
+import type {
+  GuestRequest,
+  LoginRequest,
+  RegisterRequest,
+  UpdatePasswordByHashRequest,
 } from '@scayle/storefront-nuxt'
 import { FetchError } from 'ofetch'
 import { computed, ref } from 'vue'

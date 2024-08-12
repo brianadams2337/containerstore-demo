@@ -30,9 +30,7 @@ export const sortBasketItemsByIsSoldOut = (
 export const getPartitionedBasketItems = (items: BasketItem[] = []) => {
   return items.reduce<Record<'standAlone' | 'groupedItems', BasketItem[]>>(
     (acc, item: BasketItem) => {
-      item.itemGroup?.id
-        ? acc.groupedItems.push(item)
-        : acc.standAlone.push(item)
+      ;(item.itemGroup?.id ? acc.groupedItems : acc.standAlone).push(item)
       return acc
     },
     { standAlone: [], groupedItems: [] },

@@ -1,10 +1,10 @@
-import {
-  type BasketItem,
-  type Price,
-  type Product,
-  type ShopUser,
-  type Variant,
-  type WishlistItem,
+import type {
+  BasketItem,
+  Price,
+  Product,
+  ShopUser,
+  Variant,
+  WishlistItem,
 } from '@scayle/storefront-nuxt'
 
 export {}

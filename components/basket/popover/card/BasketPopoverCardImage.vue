@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { type BasketItem } from '@scayle/storefront-nuxt'
+import type { BasketItem } from '@scayle/storefront-nuxt'
 import { useBasketItem, useBasketItemPromotion } from '~/composables'
 
 const props = defineProps<{ item: BasketItem }>()

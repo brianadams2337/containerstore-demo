@@ -1,5 +1,5 @@
 import { debounce } from 'radash'
-import { type SearchV2With } from '@scayle/storefront-nuxt'
+import type { SearchV2With } from '@scayle/storefront-nuxt'
 import { computed } from 'vue'
 import { useRouteHelpers } from '~/composables/useRouteHelpers'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'

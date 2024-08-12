@@ -44,7 +44,11 @@ const onIntersect = (_: IntersectionObserverEntry, stop: () => void) => {
   if (!props.blok.promotion_id) {
     return
   }
-  tracking && tracking.trackPromotion('view_promotion', props.blok)
+
+  if (tracking) {
+    tracking.trackPromotion('view_promotion', props.blok)
+  }
+
   stop()
 }
 

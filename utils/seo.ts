@@ -1,9 +1,9 @@
-import {
-  type Brand,
-  type Offer,
-  type Product,
-  type WithContext,
-  type BreadcrumbList,
+import type {
+  Brand,
+  Offer,
+  Product,
+  WithContext,
+  BreadcrumbList,
 } from 'schema-dts'
 import { parseURL, stringifyParsedURL, parseQuery, stringifyQuery } from 'ufo'
 import { pick } from 'radash'

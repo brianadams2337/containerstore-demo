@@ -1,5 +1,5 @@
 import { describe, it, vi, expect, beforeEach } from 'vitest'
-import { type CentAmount } from '@scayle/storefront-nuxt'
+import type { CentAmount } from '@scayle/storefront-nuxt'
 import { useFilter } from './useFilter'
 
 const mocks = vi.hoisted(() => {

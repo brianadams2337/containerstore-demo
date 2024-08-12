@@ -123,7 +123,7 @@ const updateUserPassword = async () => {
     })
     await refresh()
     resetForm()
-  } catch (err) {
+  } catch {
     msg = $i18n.t('my_account.user.password_update_error')
   } finally {
     toast.show(msg, { action: 'CONFIRM' })

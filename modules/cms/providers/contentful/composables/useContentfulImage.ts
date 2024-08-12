@@ -1,8 +1,8 @@
 import { reactive } from 'vue'
 import { useStorefrontBreakpoints } from '../../../composables/storefront/useStorefrontBreakpoints'
-import {
-  type TypeImageWithoutUnresolvableLinksResponse,
-  type TypePageWithoutUnresolvableLinksResponse,
+import type {
+  TypeImageWithoutUnresolvableLinksResponse,
+  TypePageWithoutUnresolvableLinksResponse,
 } from '../types'
 
 type CMSImage = TypeImageWithoutUnresolvableLinksResponse

@@ -1,6 +1,6 @@
-import {
-  type AddOrUpdateItemType,
-  type BasketWithOptions,
+import type {
+  AddOrUpdateItemType,
+  BasketWithOptions,
 } from '@scayle/storefront-nuxt'
 import { nanoid } from 'nanoid'
 import { toValue, type MaybeRefOrGetter } from 'vue'

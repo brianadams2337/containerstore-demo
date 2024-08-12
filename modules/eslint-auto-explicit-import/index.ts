@@ -6,7 +6,7 @@ import { defineNuxtModule, logger } from '@nuxt/kit'
 import type { Unimport } from 'unimport'
 
 // Module options TypeScript interface definition
-export interface ModuleOptions {}
+export type ModuleOptions = object
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {

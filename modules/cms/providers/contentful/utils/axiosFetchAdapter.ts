@@ -102,7 +102,7 @@ async function getResponse(request, config) {
   let stageOne
   try {
     stageOne = await fetch(request)
-  } catch (e) {
+  } catch {
     return createError('Network Error', config, 'ERR_NETWORK', request)
   }
 
@@ -225,10 +225,12 @@ export default async function fetchAdapter(config) {
   return new Promise((resolve, reject) => {
     if (data instanceof Error) {
       reject(data)
-    } else {
+    } else if (
       Object.prototype.toString.call(config.settle) === '[object Function]'
-        ? config.settle(resolve, reject, data)
-        : settle(resolve, reject, data)
+    ) {
+      config.settle(resolve, reject, data)
+    } else {
+      settle(resolve, reject, data)
     }
   })
 }

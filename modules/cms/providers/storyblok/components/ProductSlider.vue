@@ -137,26 +137,26 @@ const trackingSource = computed(() => {
 const trackProductClick = (payload: { product: Product; index: number }) => {
   const { product, index } = payload
   const category = getLatestCategory(product.categories)
-  if (!category) {
+
+  if (!category || !storefrontTracking) {
     return
   }
 
-  storefrontTracking &&
-    storefrontTracking.trackSelectItem({
-      product,
-      category: {
-        name: category?.categoryName || '',
-        id: category?.categoryId,
-      },
-      listingMetaData,
-      index,
-      source: trackingSource.value,
-      pagePayload: {
-        content_name: route.fullPath,
-        page_type: pageState.value.type,
-        page_type_id: route.params.id?.toString() || '',
-      },
-    })
+  storefrontTracking.trackSelectItem({
+    product,
+    category: {
+      name: category?.categoryName || '',
+      id: category?.categoryId,
+    },
+    listingMetaData,
+    index,
+    source: trackingSource.value,
+    pagePayload: {
+      content_name: route.fullPath,
+      page_type: pageState.value.type,
+      page_type_id: route.params.id?.toString() || '',
+    },
+  })
 }
 
 const trackIntersection = (payload: { product: Product; index: number }) => {
@@ -164,7 +164,7 @@ const trackIntersection = (payload: { product: Product; index: number }) => {
   const isTracked =
     trackingCollector.value.findIndex((p) => p.id === product.id) !== -1
   const isFirstItemInRow = isFirstIndexOfRow(index, columns.value)
-  // Threat slider as a special case of product list, track all interesected items at once
+  // Threat slider as a special case of product list, track all intersected items at once
   // But instead of checking is row tracked, check per product
   if (!isFirstItemInRow || isTracked) {
     return
@@ -174,12 +174,14 @@ const trackIntersection = (payload: { product: Product; index: number }) => {
     .slice(index, index + columns.value)
     .map((item, idx) => ({ ...item, index: index + idx }))
 
-  storefrontTracking &&
+  if (storefrontTracking) {
     storefrontTracking.trackViewItemList({
       items: itemsInSliderRow,
       listingMetaData,
       source: trackingSource.value,
     })
+  }
+
   trackingCollector.value.push(...itemsInSliderRow)
 }
 

@@ -168,7 +168,11 @@ export function useWishlistItemActions(item: Ref<WishlistItem>) {
   const showSizePicker = (index: number) => {
     const oneSize = getSize(ONE_SIZE_KEY)
 
-    oneSize ? changeSizeAndAddToBasket(product, oneSize, index) : toggleFilter()
+    if (oneSize) {
+      changeSizeAndAddToBasket(product, oneSize, index)
+    } else {
+      toggleFilter()
+    }
   }
 
   const changeSize = async (size: Value) => {

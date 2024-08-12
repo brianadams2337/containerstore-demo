@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { type ProductImage } from '@scayle/storefront-nuxt'
+import type { ProductImage } from '@scayle/storefront-nuxt'
 
 type Props = {
   image: ProductImage

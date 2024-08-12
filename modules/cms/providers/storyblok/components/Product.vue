@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { computed, defineOptions } from 'vue'
-import { type Product } from '@scayle/storefront-nuxt'
+import type { Product } from '@scayle/storefront-nuxt'
 import { useNuxtApp } from '#app'
 import { useListingUiState } from '~/composables/useListingUiState'
 

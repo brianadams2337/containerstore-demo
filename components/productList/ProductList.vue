@@ -95,7 +95,10 @@ const { collectRowIntersection } = useRowIntersection(toRef(props.products))
 
 const onProductIntersect = (index: number) => {
   const collectedRowItems = collectRowIntersection(index)
-  collectedRowItems && emit('intersect:row', collectedRowItems)
+
+  if (collectedRowItems) {
+    emit('intersect:row', collectedRowItems)
+  }
 }
 
 const emit = defineEmits<{

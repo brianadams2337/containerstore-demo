@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { type Category } from '@scayle/storefront-nuxt'
+import type { Category } from '@scayle/storefront-nuxt'
 import { type CategoryFilter, getSearchFilterLabels } from '~/utils/search'
 
 defineProps<{ category: Category; filters: CategoryFilter[] }>()

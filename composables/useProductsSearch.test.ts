@@ -1,4 +1,4 @@
-import { type Ref } from 'vue'
+import type { Ref } from 'vue'
 import type { Product, CentAmount } from '@scayle/storefront-nuxt'
 import { describe, beforeEach, it, vi, expect } from 'vitest'
 import { useProductsSearch } from './useProductsSearch'
