@@ -4,13 +4,13 @@ import {
   getProductAndSiblingsColors,
 } from '@scayle/storefront-nuxt'
 import { type MaybeRefOrGetter, toRef, computed } from 'vue'
-import { useRouteHelpers } from './useRouteHelpers'
-import { getProductSiblings } from '~/utils/product'
+import { useRouteHelpers } from '~/composables'
 import {
   getLowestPriceBetweenVariants,
   getPrimaryImage,
   getVariantWithLowestPrice,
   formatColors,
+  getProductSiblings,
 } from '~/utils'
 import { useI18n } from '#i18n'
 import type { ProductSibling } from '~/types/siblings'
