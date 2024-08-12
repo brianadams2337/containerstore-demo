@@ -10,9 +10,16 @@
 - Updated to @scayle/omnichannel-nuxt": "3.0.3
 - Updated to @scayle/storefront-nuxt": "7.84.0
 - Updated to @types/google.maps": "3.55.12
-- Updated to @vercel/otel": "1.9.1
 - Updated to contentful": "10.13.1
 - Updated to redis": "4.7.0
 - Updated to storyblok-js-client": "6.8.1
 - Updated to ufo": "1.5.4
 - Updated to vue": "3.4.35
+- Removed `@opentelemetry/api`
+- Removed `@opentelemetry/auto-instrumentations-node`
+- Removed `@opentelemetry/exporter-trace-otlp-proto`
+- Removed `@opentelemetry/instrumentation`
+- Removed `@opentelemetry/resources`
+- Removed `@opentelemetry/sdk-node`
+- Removed `@opentelemetry/semantic-conventions`
+- Removed `@vercel/otel`
