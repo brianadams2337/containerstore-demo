@@ -1,5 +1,95 @@
 # @scayle/storefront-boilerplate-nuxt
 
+## 1.2.0
+
+### Minor Changes
+
+- dda5066: Migrate configuration key `bapi` to `sapi` within `nuxt.config.ts`
+- b75b5ac: Switch to `ModuleBaseOptions.shops` and `ShopConfig.shopCampaignKeyword`
+- e155f56: - Renamed buildtime environment variable `DISABLE_PAGE_CACHE` to `PAGE_CACHE_DISABLED`
+  - Renamed buildtime environment variable `ENABLE_NUXT_DEBUGGING` to `NUXT_DEBUGGING_ENABLED`
+  - Renamed buildtime environment variable `ENABLE_CONFIG_LOG_BUILD` to `CONFIG_LOG_BUILD_ENABLED`
+  - Renamed buildtime environment variable `ENABLE_CONFIG_LOG_RUNTIME` to `CONFIG_LOG_RUNTIME_ENABLED`
+  - Renamed buildtime environment variable `ENABLE_CONFIG_LOG_PRETTIER` to `CONFIG_LOG_PRETTIER_ENABLED`
+- a7e718e: Use the newly introduced `useRpcCall` helper composable
+- d789f4d: Show IDP login buttons in `RegisterForm.vue`
+- f61793d: Disabled `imports.autoImports` in `nuxt.config.ts`. All required composables, utils and constants now need to be explicitly imported.
+- 3baeb1e: New Product Listing Page
+  This release not only introduces a fresh look and feel of the Product Listing Page but also brings enhanced functionalities to improve the user experience:
+
+  - **Advanced filtering:** Improved filters to help users easily find the products they are looking for by dynamically updating filters and displaying only relevant filter options.
+  - **Intuitive category navigation:** Navigate seamlessly between nested and root categories.
+  - **Enhanced badges:** Badges highlight features, novelty, or other product attributes. This includes the "New In" badge for newly added products, custom badges for specific attributes (e.g., sustainability), and the "Already in Basket" badge to help users avoid duplicate selections.
+    Moreover, the new page is built with a simple and easily customizable codebase, ensuring that it can be tailored to meet your specific needs.
+    To learn more about the main components, data fetching and filtering logic, and customization opportunities, please refer to our [Storefront Guide](https://scayle.dev/en/storefront-guide/developer-guide/features/pages/product-listing-page).
+
+- 7079670: Replace the internal OpenTelemetry module with the `@scayle/nuxt-opentelemetry` package
+- 6397c75: Retrieve access token for `subscription-overview` web component via `getAccessToken` RPC
+- c7418a0: Support toggling shop selection modes through a single const `SHOP_SELECTOR_MODE` in the nuxt config
+- 326b630: Re-enable caching for Vercel deployments
+
+### Patch Changes
+
+- bb9c86d: Disable global components in local `ui` module
+- 3ca923f: Add missing `diverse` option to `UserPersonalInfoForm.vue`
+- 3f20858: Use unique composable keys for `useOrderDetails` and within `usePromotionGifts`
+- 9b8d151: Remove required rule on `birthDate` field in `UserPersonalInfoForm.vue`
+- f61793d: Updated to `nuxt@3.11.2`
+- 7d5f9a3: Remove `idp` from `AdditionalShopConfig`, as it is available in the base storefront configuration
+- 6d854e0: - Added `@scayle/nuxt-opentelemetry@0.3.0`
+  - Updated to @contentful/live-preview": "4.5.0
+  - Updated to @contentful/rich-text-html-renderer": "16.6.8
+  - Updated to @googlemaps/js-api-loader": "1.16.8
+  - Updated to @opentelemetry/auto-instrumentations-node": "0.49.0
+  - Updated to @scayle/omnichannel-nuxt": "3.0.3
+  - Updated to @scayle/storefront-nuxt": "7.84.0
+  - Updated to @types/google.maps": "3.55.12
+  - Updated to contentful": "10.13.1
+  - Updated to redis": "4.7.0
+  - Updated to storyblok-js-client": "6.8.1
+  - Updated to ufo": "1.5.4
+  - Updated to vue": "3.4.35
+  - Removed `@opentelemetry/api`
+  - Removed `@opentelemetry/auto-instrumentations-node`
+  - Removed `@opentelemetry/exporter-trace-otlp-proto`
+  - Removed `@opentelemetry/instrumentation`
+  - Removed `@opentelemetry/resources`
+  - Removed `@opentelemetry/sdk-node`
+  - Removed `@opentelemetry/semantic-conventions`
+  - Removed `@vercel/otel`
+- ddd6d1a: Wait for user input completion before displaying any errors in the login form
+- 7857166: Fix: "More"-button of mobile search results now leads to search page
+- 9ff8bf2: Allow `PromotionList.vue` to scroll to make all promotions accessible on smaller desktop sizes
+- fa33225: Fix: Disable sold out sizes when adding wishlist items to the cart
+- e3390fe: Remove unnecessary `await` when using composables
+- 4fc5bc5: Add example multi-path shop
+- 6d854e0: - Updated to `@changesets/cli@2.27.7`
+  - Updated to `@nuxt/eslint@0.4.0`
+  - Updated to `@nuxt/test-utils@3.14.0`
+  - Updated to `@nuxtjs/i18n@8.3.3`
+  - Updated to `@nuxtjs/tailwindcss@6.12.1`
+  - Updated to `@scayle/eslint-config-storefront@4.3.0`
+  - Updated to `@types/node@20.14.14`
+  - Updated to `@typescript-eslint/scope-manager@8.0.0`
+  - Updated to `@typescript-eslint/utils@8.0.0`
+  - Updated to `@upstash/redis@1.34.0`
+  - Updated to `@vitest/coverage-v8@2.0.5`
+  - Updated to `eslint-plugin-vuejs-accessibility@2.4.1`
+  - Updated to `eslint@9.8.0`
+  - Updated to `nuxt-svgo@4.0.2`
+  - Updated to `nuxt@3.11.2`
+  - Updated to `postcss-custom-properties@13.3.12`
+  - Updated to `postcss@8.4.40`
+  - Updated to `storyblok@3.32.3`
+  - Updated to `tailwindcss@3.4.7`
+  - Updated to `typescript@5.5.4`
+  - Updated to `unimport@3.9.1`
+  - Updated to `vitest@2.0.5`
+  - Updated to `vue-tsc@2.0.29`
+- 799e164: Added a hook within `nuxt.config.ts` to extend the `vite` client build configuration and allow for improved manual chunking of `storyblok`, `contentful` and `axios` dependencies. This results in smaller client chunks below 500kb.
+- 3aec11f: Hide `UpdatePasswordForm.vue` for IDP user within Account Overview page
+- f61793d: Use integrated `nuxi typecheck` instead of custom `vue-tsc` typecheck script command
+
 ## 1.1.0
 
 ### 🔥 Highlights
