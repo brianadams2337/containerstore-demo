@@ -79,7 +79,7 @@
     "prettier": "3.0.3",
     "storyblok-generate-ts": "2.1.0",
     "storyblok": "3.32.3",
-    "tailwindcss": "3.4.9",
+    "tailwindcss": "3.4.10",
     "typescript": "5.5.4",
     "unimport": "3.10.0",
     "utility-types": "3.11.0",
