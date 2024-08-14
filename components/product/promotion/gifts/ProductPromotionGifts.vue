@@ -54,7 +54,7 @@ const { backgroundColorStyle, products, hasMultipleFreeGifts } =
 
 const hasScrolledToBottom = ref(false)
 
-const onScroll = (element: any) => {
+const onScroll = (element: Event) => {
   hasScrolledToBottom.value = isScrolledToBottom(element)
 }
 

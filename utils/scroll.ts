@@ -1,5 +1,5 @@
-export const isScrolledToBottom = (el: any) => {
-  const target = el.target as HTMLElement
+export const isScrolledToBottom = (event: Event) => {
+  const target = event.target as HTMLElement
   return (
     Math.ceil(target.offsetHeight + target.scrollTop) >= target.scrollHeight
   )

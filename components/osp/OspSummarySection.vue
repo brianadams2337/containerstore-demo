@@ -48,7 +48,8 @@ const orderItems = computed(() => {
 })
 
 const getItemQuantity = (variantId: number): number | undefined => {
-  const isVariant = (value: any) => value.variant.id === variantId
+  const isVariant = (value: NonNullable<Order['items']>[number]) =>
+    value.variant.id === variantId
 
   return props.orderData?.items?.filter(isVariant).length
 }

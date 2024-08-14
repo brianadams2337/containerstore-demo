@@ -31,7 +31,7 @@ type CareInfo = {
   value?: string
 }
 
-type MaterialInfo = {
+export type MaterialInfo = {
   materialGroupName: string
   values: string
 }

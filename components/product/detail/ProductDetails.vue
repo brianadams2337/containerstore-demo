@@ -65,6 +65,7 @@ import {
   getFirstAttributeValue,
   getFlattenedMaterialComposition,
 } from '@scayle/storefront-nuxt'
+import type { MaterialInfo } from '~/components/product/detail/ProductCompositionAndCare.vue'
 
 const props = defineProps({
   product: {
@@ -102,23 +103,26 @@ const fitInfos = computed(() => {
     'neckline',
   ]
 
-  const result: Record<string, any> = {}
+  const result: Record<string, string> = {}
 
   keys.forEach((key) => {
-    result[key] = getFirstAttributeValue(props.product?.attributes, key)?.label
+    const value = getFirstAttributeValue(props.product?.attributes, key)?.label
+    if (value) {
+      result[key] = value
+    }
   })
 
   return result
 })
 
-const materialInfo = computed(() => {
+const materialInfo = computed<MaterialInfo[]>(() => {
   return getFlattenedMaterialComposition(
     props.product?.advancedAttributes?.materialCompositionTextile?.values || [],
-  ).map((entry: any) => {
+  ).map((entry) => {
     return {
-      materialGroupName: entry?.materialGroupName,
-      values: entry?.values
-        .map((value: any) => `${value.value}${value.unit} ${value.material}`)
+      materialGroupName: entry?.materialGroupName ?? '',
+      values: entry.values
+        .map((value) => `${value.value}${value.unit} ${value.material}`)
         .join(', '),
     }
   })

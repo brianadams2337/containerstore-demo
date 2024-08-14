@@ -69,6 +69,7 @@ import { sort } from 'radash'
 
 import {
   type Variant,
+  type Value,
   getFirstAttributeValue,
   isVariantInStock,
 } from '@scayle/storefront-nuxt'
@@ -91,8 +92,8 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits(['select-size', 'input'])
 
-const handleBeforeInput = (value: any) =>
-  isVariantInStock(props.variants, value, 'size')
+const handleBeforeInput = (value: unknown) =>
+  isVariantInStock(props.variants, value as Value, 'size')
 const variants = toRef(props, 'variants')
 
 const getSizeFromVariant = (variant: Variant) => {

@@ -39,7 +39,7 @@ type AppError =
       statusMessage: string
       message: string
       description: string
-      data?: any
+      data?: unknown
     }
   | null
   | undefined

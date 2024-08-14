@@ -78,9 +78,9 @@ const computedAddOns = computed(() => {
   }))
 })
 
-const onSelectionChanged = (event: any, { variantId }: AddOnItem) => {
+const onSelectionChanged = (event: Event, { variantId }: AddOnItem) => {
   emit('click:service-selection', {
-    isSelected: event.target.checked,
+    isSelected: (event.target as HTMLInputElement | undefined)?.checked,
     variantId,
   })
 }

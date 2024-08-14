@@ -95,7 +95,7 @@ const removeOldMarkers = () => {
 const setMarkers = () => {
   const bounds = new google.maps.LatLngBounds()
 
-  props.stores.forEach((store: any) => {
+  props.stores.forEach((store: StoreLocation) => {
     // map marker represents an arrow on the google map
     const marker = new google.maps.marker.AdvancedMarkerElement({
       map: toRaw(map.value), // Important: If the Map is proxied, it will not work
