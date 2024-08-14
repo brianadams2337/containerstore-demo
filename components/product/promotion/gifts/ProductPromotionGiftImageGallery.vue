@@ -1,5 +1,5 @@
 <template>
-  <SFHorizontalItemsSlider
+  <SFItemsSlider
     class="flex aspect-[5/6] snap-x snap-mandatory flex-col rounded-md"
     slider-class="bg-gray-200"
     with-arrows
@@ -37,7 +37,7 @@
         </div>
       </div>
     </template>
-  </SFHorizontalItemsSlider>
+  </SFItemsSlider>
 </template>
 
 <script setup lang="ts">

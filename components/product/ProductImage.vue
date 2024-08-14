@@ -9,6 +9,7 @@
     densities="x1"
     :src="image.hash"
     :loading="imageLoading"
+    :preload="preload"
     :class="{
       'picture-contain': fit === 'contain',
       'picture-cover': fit === 'cover',
@@ -34,6 +35,7 @@ type Props = {
   fit?: 'contain' | 'cover'
   alt?: string
   imageLoading?: 'lazy' | 'eager'
+  preload?: boolean
   quality?: number
   load?: () => void
   shouldTrim?: boolean
@@ -49,6 +51,7 @@ const props = withDefaults(defineProps<Props>(), {
   isCentered: false,
   fit: 'contain',
   imageLoading: 'lazy',
+  preload: false,
   alt: undefined,
   quality: 75,
   height: undefined,

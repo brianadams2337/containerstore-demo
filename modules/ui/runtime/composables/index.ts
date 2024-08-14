@@ -1,5 +1,5 @@
 export * from './useListbox'
-export * from './useHorizontalItemsSlider'
+export * from './useItemsSlider'
 export * from './useSlideIn'
 export * from './usePagination'
 export * from './useNotification'

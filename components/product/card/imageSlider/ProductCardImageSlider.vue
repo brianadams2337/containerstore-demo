@@ -1,5 +1,5 @@
 <template>
-  <SFHorizontalItemsSlider class="size-full" :with-arrows="areArrowsShown">
+  <SFItemsSlider class="size-full" :with-arrows="areArrowsShown">
     <template #prev-button="{ prev, isPrevEnabled }">
       <ProductCardImageSliderButton
         :disabled="!isPrevEnabled"
@@ -26,11 +26,12 @@
         :image="item"
         :alt="alt"
         :image-loading="getImageLoading(imageIndex)"
+        :preload="shouldPreload(imageIndex)"
         sizes="xs:50vw sm:50vw md:40vw lg:33vw xl:320px"
         class="absolute inset-0"
       />
     </SFLink>
-  </SFHorizontalItemsSlider>
+  </SFItemsSlider>
 </template>
 
 <script setup lang="ts">
@@ -63,5 +64,11 @@ const getImageLoading = (index: number) => {
     props.productIndex < PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE
 
   return shouldEagerLoad && index === 0 ? 'eager' : 'lazy'
+}
+
+const shouldPreload = (index: number) => {
+  const shouldPreload = props.productIndex < PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE
+
+  return shouldPreload && index === 0
 }
 </script>

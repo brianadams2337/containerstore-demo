@@ -12,7 +12,7 @@
         {{ blok.fields.ctaUrl }}
       </SFLink>
     </div>
-    <SFHorizontalItemsSlider
+    <SFItemsSlider
       with-arrows
       class="mt-4 box-border flex overflow-x-auto overflow-y-hidden scrollbar-hide"
     >
@@ -24,7 +24,7 @@
         class="box-content shrink-0 snap-start snap-always px-0.5 first:pl-5 last:pr-5 sm:box-border sm:first:pl-0 sm:last:pr-0"
         :blok="entry"
       />
-    </SFHorizontalItemsSlider>
+    </SFItemsSlider>
   </div>
 </template>
 

@@ -7,7 +7,7 @@
     <div class="relative bg-primary p-5 text-white">
       <div class="overflow-x-scroll scrollbar-hide">
         <div class="mx-auto flex w-max items-start">
-          <SFHorizontalItemsSlider>
+          <SFItemsSlider>
             <PromotionItem
               v-for="item in items"
               :key="item.id"
@@ -15,7 +15,7 @@
               class="mr-4 last:mr-0"
               :data-testid="`promotion-item-${item.id}`"
             />
-          </SFHorizontalItemsSlider>
+          </SFItemsSlider>
         </div>
         <ClosePromotionListButton data-testid="close-promotion-button" />
       </div>

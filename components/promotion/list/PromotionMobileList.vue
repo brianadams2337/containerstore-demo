@@ -13,7 +13,7 @@
           data-testid="close-promotion-button-mobile"
         />
       </div>
-      <SFHorizontalItemsSlider>
+      <SFItemsSlider>
         <PromotionItem
           v-for="item in items"
           :key="item.id"
@@ -21,7 +21,7 @@
           class="mr-4 last-of-type:mr-0"
           data-testid="promotion-list-mobile"
         />
-      </SFHorizontalItemsSlider>
+      </SFItemsSlider>
     </div>
   </div>
 </template>

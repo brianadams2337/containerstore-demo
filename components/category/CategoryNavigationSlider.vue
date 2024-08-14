@@ -1,5 +1,5 @@
 <template>
-  <SFHorizontalItemsSlider
+  <SFItemsSlider
     class="w-full snap-x snap-mandatory scrollbar-hide"
     slider-class="px-4"
   >
@@ -10,7 +10,7 @@
       :is-active="category.id === currentCategory?.id"
       class="mr-2"
     />
-  </SFHorizontalItemsSlider>
+  </SFItemsSlider>
 </template>
 
 <script setup lang="ts">

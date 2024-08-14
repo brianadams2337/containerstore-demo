@@ -13,7 +13,7 @@
       </SFLink>
     </div>
 
-    <SFHorizontalItemsSlider
+    <SFItemsSlider
       class="mt-4"
       with-arrows
       hide-disabled-arrows
@@ -28,7 +28,7 @@
         @click:product="trackProductClick({ product: $event, index })"
         @intersect:product="trackIntersection({ product: $event, index })"
       />
-    </SFHorizontalItemsSlider>
+    </SFItemsSlider>
   </div>
 </template>
 
@@ -111,21 +111,23 @@ const trackProductClick = (payload: { product: Product; index: number }) => {
     return
   }
 
-  storefrontTracking.trackSelectItem({
-    product,
-    category: {
-      name: category?.categoryName || '',
-      id: category?.categoryId,
-    },
-    listingMetaData,
-    index,
-    source: trackingSource.value,
-    pagePayload: {
-      content_name: route.fullPath,
-      page_type: pageState.value.type,
-      page_type_id: route.params.id?.toString() || '',
-    },
-  })
+  if (storefrontTracking) {
+    storefrontTracking.trackSelectItem({
+      product,
+      category: {
+        name: category?.categoryName || '',
+        id: category?.categoryId,
+      },
+      listingMetaData,
+      index,
+      source: trackingSource.value,
+      pagePayload: {
+        content_name: route.fullPath,
+        page_type: pageState.value.type,
+        page_type_id: route.params.id?.toString() || '',
+      },
+    })
+  }
 }
 
 const trackIntersection = (payload: { product: Product; index: number }) => {
@@ -150,7 +152,6 @@ const trackIntersection = (payload: { product: Product; index: number }) => {
       source: trackingSource.value,
     })
   }
-
   trackingCollector.value.push(...itemsInSliderRow)
 }
 
