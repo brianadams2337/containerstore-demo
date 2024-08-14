@@ -178,7 +178,6 @@ const trackIntersection = (payload: { product: Product; index: number }) => {
     .map((item, idx) => ({ ...item, index: index + idx }))
 
   if (storefrontTracking) {
-  if (storefrontTracking) {
     storefrontTracking.trackViewItemList({
       items: itemsInSliderRow,
       listingMetaData,
