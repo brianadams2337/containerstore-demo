@@ -126,9 +126,8 @@
     "schema-dts": "1.1.2",
     "storyblok-js-client": "6.9.2",
     "ufo": "1.5.4",
-    "vue-slider-component": "4.1.0-beta.7",
     "vue": "3.4.38",
-    "yn": "5.0.0"
+    "vue-slider-component": "4.1.0-beta.7"
   },
   "lint-staged": {
     "./**/*{.js,.mjs,.cjs,.ts,.vue}\"": [
