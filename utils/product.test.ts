@@ -1,6 +1,17 @@
-import type { CentAmount, Product } from '@scayle/storefront-nuxt'
-import { it, describe } from 'vitest'
-import { getProductSiblings, getProductSiblingData } from './product'
+import type {
+  AutomaticDiscountEffect,
+  BuyXGetYEffect,
+  CentAmount,
+  Product,
+  Promotion,
+  RFC33339Date,
+} from '@scayle/storefront-nuxt'
+import { it, describe, expect } from 'vitest'
+import {
+  getProductSiblings,
+  getProductSiblingData,
+  getApplicablePromotionsForProduct,
+} from './product'
 
 // TODO: Add tests for remaining product utils
 
@@ -99,6 +110,306 @@ const getProductData = (): Omit<Product, 'id' | 'isActive' | 'isSoldOut'> => ({
 })
 
 // TODO: Cover more cases (e.g return data set check, different color attribute name etc.)
+const getCurrentPromotionsData = (): Promotion[] => [
+  {
+    id: '66951014684cc17335766006',
+    name: '10% on Jackets above 100€',
+    schedule: {
+      from: '2024-07-15T10:00:00Z' as RFC33339Date,
+      to: '2025-04-01T10:00:00Z' as RFC33339Date,
+    },
+    isActive: true,
+    effect: {
+      type: 'automatic_discount',
+      additionalData: {
+        type: 'relative',
+        value: 10,
+      },
+    } as AutomaticDiscountEffect,
+    conditions: [
+      {
+        level: 'global',
+        key: 'panels_automatic-discount_any_products_condition_e5b66afa5eacabdb6bb855c6a9344db49cc372b4',
+        condition: 'size(payload.items) \u003E= 1',
+      },
+      {
+        level: 'global',
+        key: 'panels_automatic-discount_minimum_order_amount_10000',
+        condition: 'payload.totals.withTax \u003E= 10000',
+      },
+    ],
+    customData: {
+      product: {
+        badgeLabel: 'Get -10% Off',
+        promotionId: 2476,
+      },
+      terms:
+        'The promotion applies to Jackets products. If you buy 1 or more jacket products that are worth over 100€, you will get 10% discount on your order. The promotion lasts till the end of April 1st, 2024.',
+      category: {
+        ctaLabel: 'Jacket Deals',
+        id: 50353,
+      },
+      colorHex: '#a4c639',
+      corePanel: {
+        viewType: 'automatic-discount',
+      },
+      headlineParts: [
+        'Autumn Jacket Campaign',
+        'Buy jacket(s) worth 100€ & get 10% on it',
+      ],
+      minOrderValue: 10000,
+    },
+    priority: 1,
+  },
+  {
+    id: '66951046684cc17335766008',
+    name: '20% on Everything',
+    schedule: {
+      from: '2024-07-15T10:00:00Z' as RFC33339Date,
+      to: '9999-12-30T10:00:00Z' as RFC33339Date,
+    },
+    isActive: true,
+    effect: {
+      type: 'automatic_discount',
+      additionalData: {
+        type: 'relative',
+        value: 20,
+      },
+    } as AutomaticDiscountEffect,
+    conditions: [
+      {
+        level: 'global',
+        key: 'panels_automatic-discount_any_products_condition_e5b66afa5eacabdb6bb855c6a9344db49cc372b4',
+        condition: 'size(payload.items) \u003E= 1',
+      },
+    ],
+    customData: {
+      category: {
+        ctaLabel: 'Get Everything',
+        id: 50341,
+      },
+      colorHex: '#f4c2c2',
+      corePanel: {
+        viewType: 'advanced',
+      },
+      headlineParts: ['Everything Deals', 'Buy everything  & get 20% on it'],
+      product: {
+        badgeLabel: '-20% Off',
+        promotionId: 2432,
+      },
+      terms:
+        'The promotion applies to everything. If you buy 1 or more of everything, you will get 20% discount on these products. The promotion lasts till the end of eternity.',
+    },
+    priority: 2,
+  },
+  {
+    id: '66962bd0684cc1733576601d',
+    name: 'Free Caps',
+    schedule: {
+      from: '2024-07-15T10:00:00Z' as RFC33339Date,
+      to: '2025-04-01T10:00:00Z' as RFC33339Date,
+    },
+    isActive: true,
+    effect: {
+      type: 'buy_x_get_y',
+      additionalData: {
+        maxCount: 1,
+        maxCountType: 'per_eligible_uniq_items',
+        variantIds: [
+          322665, 322666, 322667, 323197, 323198, 323199, 323205, 323206,
+          323243, 323244,
+        ],
+      },
+    } as BuyXGetYEffect,
+    conditions: [
+      {
+        level: 'global',
+        key: 'panels_buy-x-get-y_any_products_condition_e5b66afa5eacabdb6bb855c6a9344db49cc372b4',
+        condition: 'size(payload.items) \u003E= 1',
+      },
+    ],
+    customData: {
+      giftConditions: {
+        minQuantity: 1,
+      },
+      headlineParts: ['Free Gift Deal', 'Buy sneakers, and get a free cap'],
+      product: {
+        badgeLabel: 'Get a Cap',
+        promotionId: 2477,
+      },
+      terms:
+        "By buying one of the sneakers tagged with the badge 'Get a Cap', you can get a free cap. The promotion lasts till the end of March 2025.",
+      category: {
+        ctaLabel: 'Sneakers',
+        id: 50344,
+      },
+      colorHex: '#6699cc',
+      corePanel: {
+        viewType: 'buy-x-get-y',
+      },
+    },
+    priority: 3,
+  },
+]
+
+// TODO: Cover more cases (e.g return data set check, different color attribute name etc.)
+describe('getApplicablePromotionsForProduct', () => {
+  it('should get the applicable promotion for the product with single promotion', () => {
+    const product: Product = {
+      id: 1,
+      isActive: true,
+      isSoldOut: false,
+      ...getProductData(),
+    }
+    product.attributes!.promotion = {
+      id: 6102,
+      key: 'promotion',
+      label: 'Promotion',
+      type: '',
+      multiSelect: false,
+      values: {
+        id: 2432,
+        label: '20% on Everything',
+        value: '20_on_everything',
+      },
+    }
+
+    const currentPromotions: Promotion[] = getCurrentPromotionsData()
+
+    const result = getApplicablePromotionsForProduct(product, currentPromotions)
+
+    expect(result).toEqual([
+      {
+        id: '66951046684cc17335766008',
+        name: '20% on Everything',
+        schedule: {
+          from: '2024-07-15T10:00:00Z' as RFC33339Date,
+          to: '9999-12-30T10:00:00Z' as RFC33339Date,
+        },
+        isActive: true,
+        effect: {
+          type: 'automatic_discount',
+          additionalData: {
+            type: 'relative',
+            value: 20,
+          },
+        } as AutomaticDiscountEffect,
+        conditions: [
+          {
+            level: 'global',
+            key: 'panels_automatic-discount_any_products_condition_e5b66afa5eacabdb6bb855c6a9344db49cc372b4',
+            condition: 'size(payload.items) \u003E= 1',
+          },
+        ],
+        customData: {
+          category: {
+            ctaLabel: 'Get Everything',
+            id: 50341,
+          },
+          colorHex: '#f4c2c2',
+          corePanel: {
+            viewType: 'advanced',
+          },
+          headlineParts: [
+            'Everything Deals',
+            'Buy everything  & get 20% on it',
+          ],
+          product: {
+            badgeLabel: '-20% Off',
+            promotionId: 2432,
+          },
+          terms:
+            'The promotion applies to everything. If you buy 1 or more of everything, you will get 20% discount on these products. The promotion lasts till the end of eternity.',
+        },
+        priority: 2,
+      },
+    ])
+  })
+
+  it('should get the applicable priority sorted promotion for the product with multiple promotions', () => {
+    const product: Product = {
+      id: 1,
+      isActive: true,
+      isSoldOut: false,
+      ...getProductData(),
+    }
+    product.attributes!.promotion = {
+      id: 6102,
+      key: 'promotion',
+      label: 'Promotion',
+      type: '',
+      multiSelect: true,
+      values: [
+        {
+          id: 2477,
+          value: 'free_caps',
+          label: 'Free Caps',
+        },
+        {
+          id: 2432,
+          label: '20% on Everything',
+          value: '20_on_everything',
+        },
+      ],
+    }
+
+    const currentPromotions: Promotion[] = getCurrentPromotionsData()
+
+    const result = getApplicablePromotionsForProduct(product, currentPromotions)
+
+    expect(result).toEqual([
+      {
+        id: '66962bd0684cc1733576601d',
+        name: 'Free Caps',
+        schedule: {
+          from: '2024-07-15T10:00:00Z' as RFC33339Date,
+          to: '2025-04-01T10:00:00Z' as RFC33339Date,
+        },
+        isActive: true,
+        effect: {
+          type: 'buy_x_get_y',
+          additionalData: {
+            maxCount: 1,
+            maxCountType: 'per_eligible_uniq_items',
+            variantIds: [
+              322665, 322666, 322667, 323197, 323198, 323199, 323205, 323206,
+              323243, 323244,
+            ],
+          },
+        } as BuyXGetYEffect,
+        conditions: [
+          {
+            level: 'global',
+            key: 'panels_buy-x-get-y_any_products_condition_e5b66afa5eacabdb6bb855c6a9344db49cc372b4',
+            condition: 'size(payload.items) \u003E= 1',
+          },
+        ],
+        customData: {
+          giftConditions: {
+            minQuantity: 1,
+          },
+          headlineParts: ['Free Gift Deal', 'Buy sneakers, and get a free cap'],
+          product: {
+            badgeLabel: 'Get a Cap',
+            promotionId: 2477,
+          },
+          terms:
+            "By buying one of the sneakers tagged with the badge 'Get a Cap', you can get a free cap. The promotion lasts till the end of March 2025.",
+          category: {
+            ctaLabel: 'Sneakers',
+            id: 50344,
+          },
+          colorHex: '#6699cc',
+          corePanel: {
+            viewType: 'buy-x-get-y',
+          },
+        },
+        priority: 3,
+      },
+    ])
+  })
+})
+
 describe('getProductSiblings', () => {
   it('returns active, sold out and with current product included siblings by default', ({
     expect,

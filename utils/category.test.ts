@@ -91,6 +91,31 @@ describe('flattenCategoryTree', () => {
     ]
 
     const allCategories = flattenCategoryTree(categories).map((item) => item.id)
+
+    expect(allCategories).toEqual([1, 2, 3, 4])
+  })
+
+  it('returns flattened and unique category tree', ({ expect }) => {
+    const categories: Category[] = [
+      {
+        id: 1,
+        ...getBaseCategoryData(),
+        children: [
+          { id: 2, ...getBaseCategoryData() },
+          {
+            id: 3,
+            ...getBaseCategoryData(),
+            children: [{ id: 4, ...getBaseCategoryData() }],
+          },
+        ],
+      },
+      { id: 4, ...getBaseCategoryData() },
+      { id: 4, ...getBaseCategoryData() },
+      { id: 1, ...getBaseCategoryData() },
+    ]
+
+    const allCategories = flattenCategoryTree(categories).map((item) => item.id)
+
     expect(allCategories).toEqual([1, 2, 3, 4])
   })
 })
