@@ -47,7 +47,7 @@ export function useRouteHelpers() {
   ): string => {
     const name = product.attributes.name.label
     return localePath({
-      name: routeList.pdp.name,
+      name: 'p-slug',
       params: {
         slug: `${slugify(name)}-${id || product.id}`,
       },
