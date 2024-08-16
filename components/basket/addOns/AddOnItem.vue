@@ -9,7 +9,7 @@
       <NuxtImg
         v-if="imageHash"
         :src="imageHash"
-        provider="default"
+        provider="scayle"
         class="object-cover"
       />
     </div>

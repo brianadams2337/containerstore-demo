@@ -98,7 +98,7 @@ export function useProductDetails(key?: string) {
     const options = {
       sizes: 'sm:100vw md:100vw',
       modifiers: { quality: PRODUCT_IMAGE_QUALITY_MODIFIER },
-      provider: 'default',
+      provider: 'scayle',
     }
     const images = product.value?.images ?? []
     return images.map(({ hash }) => getImage(hash, options).url)

@@ -13,7 +13,7 @@
         :src="imageUrl"
         height="48"
         width="38"
-        provider="default"
+        provider="scayle"
         class="mr-3 rounded border"
       />
       <slot />

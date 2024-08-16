@@ -4,7 +4,7 @@
       <div class="w-1/5">
         <NuxtImg
           :src="imageHash"
-          provider="default"
+          provider="scayle"
           class="max-h-full max-w-full"
         />
       </div>

@@ -24,6 +24,7 @@ const DEFAULT_APP_KEYS = {
 
 /** Custom type declaration for local Storefront configuration */
 type RpcMethodsStorefrontType = typeof customRpcMethods
+
 declare module '@scayle/storefront-nuxt' {
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   export interface RpcMethodsStorefront extends RpcMethodsStorefrontType {}
@@ -499,11 +500,10 @@ export default defineNuxtConfig({
 
   // https://image.nuxt.com/get-started/configuration
   image: {
-    provider: 'default',
     providers: {
-      default: {
-        name: 'default',
-        provider: '~/providers/default',
+      scayle: {
+        name: 'scayle',
+        provider: '~/providers/scayle',
       },
     },
     intersectOptions: { rootMargin: '50px' },

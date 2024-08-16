@@ -8,7 +8,7 @@
             :alt="name"
             :title="name"
             :modifiers="{ bg: 'F8F8F8' }"
-            provider="default"
+            provider="scayle"
             class="h-full object-contain"
             sizes="xs:80px sm:112px lg:192px"
           />

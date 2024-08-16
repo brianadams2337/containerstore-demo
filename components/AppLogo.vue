@@ -1,5 +1,5 @@
 <template>
-  <SFLink :to="linkTo" raw>
+  <SFLink :to="routeList.home" raw>
     <svg
       v-bind="{ height, width }"
       fill="none"
@@ -30,22 +30,13 @@
 </template>
 
 <script setup lang="ts">
-import type { PropType } from 'vue'
 import { routeList } from '~/utils/route'
-import type { RouteLocationRaw } from '#vue-router'
 
-defineProps({
-  linkTo: {
-    type: [Object, String] as PropType<RouteLocationRaw>,
-    default: () => routeList.home,
-  },
-  width: {
-    type: Number as PropType<number>,
-    default: 92,
-  },
-  height: {
-    type: Number as PropType<number>,
-    default: 24,
-  },
-})
+withDefaults(
+  defineProps<{
+    width: number
+    height: number
+  }>(),
+  { width: 92, height: 24 },
+)
 </script>

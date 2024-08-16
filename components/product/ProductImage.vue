@@ -12,7 +12,7 @@
       'aspect-3/4': aspectRatio === '3/4',
       'aspect-video': aspectRatio === '16/9',
     }"
-    provider="default"
+    provider="scayle"
     data-testid="product-image"
     class="picture block mix-blend-darken"
     @load="load"

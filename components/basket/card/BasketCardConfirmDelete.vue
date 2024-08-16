@@ -4,7 +4,7 @@
       <NuxtImg
         :src="imageHash"
         :alt="name"
-        provider="default"
+        provider="scayle"
         class="object-cover"
         sizes="xl:100vw lg:100vw lg:100vw lg:100vw xs:100vw"
       />
