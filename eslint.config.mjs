@@ -91,9 +91,14 @@ export default withNuxt(
   },
   {
     rules: {
-      '@typescript-eslint/no-explicit-any': 'warn',
       'eslint-comments/no-unlimited-disable': 'off',
       'vue/html-self-closing': 'off',
+      '@typescript-eslint/no-empty-object-type': [
+        'error',
+        {
+          allowInterfaces: 'always',
+        },
+      ],
     },
   },
   {

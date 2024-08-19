@@ -24,8 +24,8 @@ export async function useLastLoggedInUser() {
     setUserDefault(),
     {
       serializer: {
-        read: (value: any) => (value ? JSON.parse(atob(value)) : null),
-        write: (value: any) => btoa(JSON.stringify(value)),
+        read: (value) => (value ? JSON.parse(atob(value)) : null),
+        write: (value) => btoa(JSON.stringify(value)),
       },
     },
   )

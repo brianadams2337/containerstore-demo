@@ -8,7 +8,7 @@ import IconPaymentKlarna from '@/assets/icons/payment/klarna.svg'
 import IconPaymentPaypal from '@/assets/icons/payment/paypal.svg'
 
 export type PaymentIcon = {
-  component: any
+  component: string
   width: number
 }
 

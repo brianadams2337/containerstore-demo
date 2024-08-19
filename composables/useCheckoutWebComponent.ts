@@ -3,10 +3,10 @@ import { computed } from 'vue'
 import { useCurrentShop, useRpc } from '#storefront/composables'
 
 export type Customer = {
-  authentication: { data: any; type: string }
+  authentication: { data: unknown; type: string }
   data: {
     birthDate?: string
-    customData?: any
+    customData?: unknown
     email: string
     firstName: string
     gender: string

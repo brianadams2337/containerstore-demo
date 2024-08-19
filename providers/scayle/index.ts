@@ -29,12 +29,12 @@ export const getImage: ProviderGetImage = (
   const formatter = (key: string, value: string | number) => `${key}=${value}`
 
   const operations = Object.entries(modifiers)
-    .filter(([_, value]) => typeof value !== 'undefined')
+    .filter(([_, value]) => typeof value !== 'undefined' && value in keyMap)
     .map(([key, value]) => {
-      const mappedKey = (keyMap as any)[key] ?? key
+      const mappedKey = keyMap[key as keyof typeof keyMap] ?? key
       // const mappedValue = (valueMap as any)[value] ?? value
 
-      return formatter(mappedKey, value as any)
+      return formatter(mappedKey, value)
     })
     .join('&')
 

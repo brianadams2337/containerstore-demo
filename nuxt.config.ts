@@ -26,7 +26,6 @@ const DEFAULT_APP_KEYS = {
 type RpcMethodsStorefrontType = typeof customRpcMethods
 
 declare module '@scayle/storefront-nuxt' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   export interface RpcMethodsStorefront extends RpcMethodsStorefrontType {}
 
   // Extend the shop config
@@ -43,7 +42,7 @@ declare module '@scayle/storefront-nuxt' {
 }
 
 type NitroRouteRules = Required<NuxtConfig>['routeRules']
-type NitroRouteConfig = NitroRouteRules extends Record<any, infer Value>
+type NitroRouteConfig = NitroRouteRules extends Record<string, infer Value>
   ? Value
   : never
 

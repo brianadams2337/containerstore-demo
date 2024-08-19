@@ -28,7 +28,7 @@ export default defineNitroPlugin(() => {
     'secret',
   ]
 
-  const logableConfig: Record<string, any> = purifySensitiveData(
+  const logableConfig: Record<string, unknown> = purifySensitiveData(
     runtimeConfig,
     sensitiveKeys,
   )

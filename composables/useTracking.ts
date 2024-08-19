@@ -35,10 +35,11 @@ export function useTracking() {
   const config = useRuntimeConfig()
 
   type Push = typeof gtm.push
+  type DataLayerObject = Parameters<typeof gtm.push>[0]
 
   let lastIndex = -1
 
-  const queue = useState<{ data: any; index: number }[]>(
+  const queue = useState<{ data: DataLayerObject; index: number }[]>(
     'tracking-queue',
     () => [],
   )

@@ -29,21 +29,17 @@ export function useProductDetailsAddOns(
     }
 
     const flattenedValues = addOnServiceAttribute.value.values.map((value) => {
-      const flattened = {
-        ...flattenDeep(flattenFieldSet(value.fieldSet))[0],
-        values: flattenDeep(
-          value.groupSet.map((g) => flattenFieldSet(g.fieldSet)),
-        ),
-      }
-      return (flattened as any).value
+      return flattenDeep(flattenFieldSet(value.fieldSet))[0].value
     })
 
-    return flattenedValues.map((val) => parseInt(val))
+    return flattenedValues
+      .filter((val) => val !== null && val !== undefined)
+      .map((val) => (typeof val === 'number' ? val : parseInt(val)))
   })
 
   const isAnyAddOnSelected = computed(() => {
     const anySelected = Object.keys(selectedAddOns.value).find(
-      (key) => selectedAddOns.value[key as any],
+      (key) => selectedAddOns.value[parseInt(key)],
     )
     return !!anySelected
   })

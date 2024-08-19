@@ -27,16 +27,16 @@ export const useCheckoutStepTrackingInterceptor = () => {
     pushStateNative = window.history.pushState
     replaceStateNative = window.history.replaceState
 
-    const apply = (
-      target: any,
-      thisArg: Record<string, any>,
-      argArray: any[],
+    const apply: ProxyHandler<typeof window.history.pushState>['apply'] = (
+      target,
+      thisArg,
+      argArray: Parameters<typeof target>,
     ) => {
       const clickOrigin = window.location.href.slice(
         window.location.origin.length,
       )
 
-      target.apply(thisArg, argArray as [data: any, unused: string])
+      target.apply(thisArg, argArray)
 
       const pageType = getPageType(argArray[argArray.length - 1])
       if (pageType !== lastPageType) {
