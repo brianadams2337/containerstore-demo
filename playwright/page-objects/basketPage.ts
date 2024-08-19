@@ -9,10 +9,10 @@ export class BasketPage {
 
   constructor(page: Page) {
     this.page = page
-    this.checkoutButton = page.locator('[data-test-id="checkout-link"]')
-    this.productInBasket = page.locator('[data-test-id="basket-card"]')
-    this.productImage = page.locator('[data-testid="product-image"]')
-    this.basketProductCard = page.locator('[data-test-id="basket-card"]')
+    this.checkoutButton = page.getByTestId('checkout-link')
+    this.productInBasket = page.getByTestId('basket-card')
+    this.productImage = page.getByTestId('product-image')
+    this.basketProductCard = page.getByTestId('basket-card')
   }
 
   async gotoCheckoutPage() {

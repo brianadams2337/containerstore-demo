@@ -1,6 +1,6 @@
 import { expect, test } from '../../fixtures/fixtures'
 import { runLighthouseAudit } from '../../support/lighthouseAudit'
-import { lighthouseThresholds } from '../../support/constants'
+import { LIGHTHOUSE_THRESHOLDS } from '../../support/constants'
 
 test.describe.configure({ mode: 'serial', timeout: 120000 })
 
@@ -10,15 +10,15 @@ test('C2139574: Lighthouse audit for Homepage', async ({ baseURL }) => {
   const averageScores = await runLighthouseAudit(homepageUrl, 'homepage')
 
   expect(averageScores.performance).toBeGreaterThanOrEqual(
-    lighthouseThresholds.performance / 100,
+    LIGHTHOUSE_THRESHOLDS.performance / 100,
   )
   expect(averageScores.accessibility).toBeGreaterThanOrEqual(
-    lighthouseThresholds.accessibility / 100,
+    LIGHTHOUSE_THRESHOLDS.accessibility / 100,
   )
   expect(averageScores.seo).toBeGreaterThanOrEqual(
-    lighthouseThresholds.seo / 100,
+    LIGHTHOUSE_THRESHOLDS.seo / 100,
   )
   expect(averageScores.bestPractices).toBeGreaterThanOrEqual(
-    lighthouseThresholds.bestPractices / 100,
+    LIGHTHOUSE_THRESHOLDS.bestPractices / 100,
   )
 })

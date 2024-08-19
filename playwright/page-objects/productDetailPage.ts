@@ -9,8 +9,8 @@ export class ProductDetailPage {
 
   constructor(page: Page) {
     this.page = page
-    this.productSizePickerToggle = page.locator(
-      '[data-testid="product-size-picker-toggle"]',
+    this.productSizePickerToggle = page.getByTestId(
+      'product-size-picker-toggle',
     )
     this.productSizeValue = page.locator(
       '[data-testid="product-size"] >> button:not([disabled=""])',
@@ -21,6 +21,7 @@ export class ProductDetailPage {
 
   async pickProductSize() {
     await this.productSizePickerToggle.click()
+    await this.productSizeValue.first().scrollIntoViewIfNeeded()
     await this.productSizeValue.first().click()
   }
 

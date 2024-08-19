@@ -6,7 +6,7 @@ export class ToastMessage {
 
   constructor(page: Page) {
     this.page = page
-    this.toastInfo = page.locator('data-test-id=toast-info')
+    this.toastInfo = page.getByTestId('toast-info')
   }
 
   async assertToastInfoIsVisible() {

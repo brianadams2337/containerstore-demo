@@ -10,6 +10,7 @@ export class ProductListingPage {
   readonly menuSubCategoryLvl1: Locator
   readonly menuSubCategoryLvl2: Locator
   readonly productItem: Locator
+  readonly removeFromWishlistButton: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -24,11 +25,16 @@ export class ProductListingPage {
       .getByRole('link')
     this.menuSubCategoryLvl1 = page
       .getByTestId('sub-category-0')
+      .first()
       .getByRole('link')
     this.menuSubCategoryLvl2 = page
-      .getByTestId('sub-category-0_0')
+      .getByTestId('sub-category-0')
+      .nth(1)
       .getByRole('link')
     this.productItem = page.getByTestId('product-item')
+    this.removeFromWishlistButton = page.getByTestId(
+      'remove-item-from-wishlist-button',
+    )
   }
 
   async addProductToWishlist() {
@@ -48,5 +54,14 @@ export class ProductListingPage {
       path +
       (formattedFilters.length ? `?${formattedFilters.join('&')}` : '')
     await this.page.goto(url)
+  }
+
+  async visitPlpNoFilters(path: string, baseUrl: string) {
+    const url = baseUrl + path
+    await this.page.goto(url)
+  }
+
+  async removeProductFromWishlist() {
+    await this.removeFromWishlistButton.first().click()
   }
 }

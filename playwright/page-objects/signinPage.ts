@@ -10,7 +10,7 @@ export class SignInPage {
     this.page = page
     this.emailInput = page.getByPlaceholder('E-Mail-Adresse')
     this.passwordInput = page.getByPlaceholder('Passwort')
-    this.loginButton = page.locator('[data-test-id="login-submit"]')
+    this.loginButton = page.getByTestId('login-submit')
   }
 
   async fillLoginData(email: string, password: string) {

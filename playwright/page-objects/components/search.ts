@@ -1,6 +1,6 @@
 import type { Locator, Page } from '@playwright/test'
 import { expect } from '@playwright/test'
-import { searchSuggestions } from '../../support/constants'
+import { SEARCH_SUGGESTIONS } from '../../support/constants'
 
 export class Search {
   readonly page: Page
@@ -40,7 +40,7 @@ export class Search {
   async assertSearchCategorySuggestions(searchTerm: string) {
     await expect(this.searchCategoryListItem.first()).toBeVisible()
     await this.searchCategoryListItem.first().click()
-    await this.page.waitForURL(searchSuggestions.plpUrl)
+    await this.page.waitForURL(SEARCH_SUGGESTIONS.plpUrl)
     await this.page.waitForLoadState('networkidle')
 
     const pageUrl = this.page.url()
@@ -67,6 +67,6 @@ export class Search {
 
   async assertPdpIsLoaded() {
     const pageUrl = this.page.url()
-    expect(pageUrl).toContain(searchSuggestions.pdpUrl)
+    expect(pageUrl).toContain(SEARCH_SUGGESTIONS.pdpUrl)
   }
 }

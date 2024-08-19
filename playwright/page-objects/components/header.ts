@@ -13,12 +13,10 @@ export class Header {
     this.promotionButton = page.locator(
       'data-test-id=toggle-promotion-banner-button',
     )
-    this.promotionBanner = page.locator('data-test-id=promotion-banner')
-    this.wishlistNumItems = page.locator(
-      '#header div:nth-child(1) div.flex.flex-1.justify-end div:nth-child(3) a span',
-    )
+    this.promotionBanner = page.getByTestId('promotion-banner')
+    this.wishlistNumItems = page.getByTestId('wishlist-items-badge')
 
-    this.headerBasketButton = page.locator('[data-test-id="basket-link"]')
+    this.headerBasketButton = page.getByTestId('basket-link')
     this.headerLoginButton = page.getByTestId('user-popover')
   }
 

@@ -7,7 +7,11 @@
       type="loud"
     >
       <AsyncDataWrapper :status="status">
-        <FloatingBadge v-if="count" class="-right-2 -top-2">
+        <FloatingBadge
+          v-if="count"
+          class="-right-2 -top-2"
+          data-testid="wishlist-items-badge"
+        >
           {{ count }}
         </FloatingBadge>
       </AsyncDataWrapper>

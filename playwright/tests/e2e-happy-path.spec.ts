@@ -1,5 +1,5 @@
 import { expect, test } from '../fixtures/fixtures'
-import { E2E_BASKET_URL } from '../support/constants'
+import { E2E_BASKET_URL, PLP_BASE_PATH } from '../support/constants'
 
 test('C2139186: E2E from Home to Checkout - happy path', async ({
   homePage,
@@ -12,10 +12,11 @@ test('C2139186: E2E from Home to Checkout - happy path', async ({
   signinPage,
 }) => {
   await homePage.visitPage()
-  await mainNavigation.menuItemSecond.click()
+  await mainNavigation.mainMenuCategoryClick(page)
   await productListingPage.menuSubCategoryLvl1.first().click()
+  await page.waitForURL(PLP_BASE_PATH)
   await productListingPage.addProductToWishlist()
-  await header.wishlistNumItems.waitFor({ state: 'visible' })
+  await expect(header.wishlistNumItems).toBeVisible()
   await expect(header.wishlistNumItems).toHaveText('1')
 
   await productListingPage.openProductDetails()
