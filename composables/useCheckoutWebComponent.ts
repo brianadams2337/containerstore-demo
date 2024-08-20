@@ -6,7 +6,7 @@ export type Customer = {
   authentication: { data: unknown; type: string }
   data: {
     birthDate?: string
-    customData?: unknown
+    customData?: Record<string, unknown>
     email: string
     firstName: string
     gender: string
