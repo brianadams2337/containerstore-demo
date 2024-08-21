@@ -1,5 +1,5 @@
 <template>
-  <SFModal @close="$emit('close:modal')">
+  <SFModal ref="modalRef" @close="$emit('close:modal')">
     <template #headline>
       <div>
         <SFHeadline size="xl" tag="h2" class="mb-4">
@@ -46,7 +46,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, watch } from 'vue'
+import { onMounted, reactive, ref, watch } from 'vue'
 import useVuelidate from '@vuelidate/core'
 import {
   useAuthentication,
@@ -55,6 +55,12 @@ import {
 } from '~/composables'
 
 defineEmits(['close:modal'])
+
+const modalRef = ref()
+
+onMounted(() => {
+  modalRef.value?.showModal()
+})
 
 const { forgotPassword, isSubmitting } = useAuthentication('forgot_password')
 const { lastLoggedInUser } = await useLastLoggedInUser()

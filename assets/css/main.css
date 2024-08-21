@@ -6,4 +6,11 @@
   *:focus-visible {
     @apply outline outline-offset-0 outline-indigo-200 ring-0;
   }
+
+  html {
+    scrollbar-gutter: stable;
+  }
+  body:has(dialog[open]) {
+    overflow: hidden;
+  }
 }

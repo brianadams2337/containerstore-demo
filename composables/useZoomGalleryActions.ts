@@ -1,21 +1,20 @@
-import { readonly, ref } from 'vue'
+import { useState } from '#app/composables/state'
 
 export function useZoomGalleryActions() {
-  const state = ref({
-    display: false,
-    index: -1,
-  })
+  const display = useState('zoom-gallery-display', () => false)
+  const index = useState('zoom-gallery-display-index', () => -1)
 
-  const toggle = (display: boolean, index?: number) => {
-    state.value.display = display
+  const toggle = (_display: boolean, _index?: number) => {
+    display.value = _display
 
-    if (index) {
-      state.value.index = index
+    if (_index) {
+      index.value = _index
     }
   }
 
   return {
-    state: readonly(state),
+    display,
+    index,
     toggle,
   }
 }

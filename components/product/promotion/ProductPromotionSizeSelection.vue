@@ -73,7 +73,7 @@ const {
   addItemToBasket,
   toggleGiftSelection,
   isGiftSelectionShown,
-} = usePromotionGiftSelection(props.product, props.promotedProduct)
+} = usePromotionGiftSelection(props.product)
 
 const sizeSelection = ref()
 

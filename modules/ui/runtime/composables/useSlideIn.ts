@@ -6,11 +6,15 @@ export function useSlideIn(name: string) {
 
   const toggle = () => {
     isOpen.value = !isOpen.value
-    document.body.classList.toggle('overflow-hidden')
+  }
+
+  const close = () => {
+    isOpen.value = false
   }
 
   return {
     isOpen: readonly(isOpen),
     toggle,
+    close,
   }
 }

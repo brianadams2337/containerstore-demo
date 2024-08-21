@@ -1,5 +1,5 @@
 <template>
-  <SFModal full-screen @close="emit('click:close-zoom-gallery')">
+  <SFModal ref="modalRef" full-screen @close="emit('click:close-zoom-gallery')">
     <div class="relative flex size-full flex-col">
       <!-- slides -->
       <div class="relative h-full flex-1 overflow-hidden">
@@ -57,7 +57,7 @@
 import { computed, ref, watch } from 'vue'
 import type { PropType } from 'vue'
 import type { ProductImage } from '@scayle/storefront-nuxt'
-import { useZoomGallery } from '~/composables/useZoomGallery'
+import { useZoomGallery, useZoomGalleryActions } from '~/composables'
 
 const props = defineProps({
   images: {
@@ -75,6 +75,22 @@ const emit = defineEmits<{
 }>()
 
 const currentIndex = ref(0)
+
+const modalRef = ref()
+
+const { display } = useZoomGalleryActions()
+
+watch(
+  display,
+  (isOpen) => {
+    if (isOpen) {
+      modalRef.value?.showModal()
+    } else {
+      modalRef.value?.close()
+    }
+  },
+  { immediate: true },
+)
 
 const {
   wrapAroundIndex,

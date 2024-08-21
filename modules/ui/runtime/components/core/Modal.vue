@@ -1,84 +1,67 @@
 <template>
-  <Teleport to="body">
-    <SFFadeInTransition>
+  <SFFadeInTransition>
+    <dialog
+      ref="dialog"
+      class="rounded backdrop:bg-black/50"
+      :class="fullScreen ? 'h-full' : ''"
+    >
       <div
-        v-if="isOpen"
-        class="fixed right-0 top-0 z-100 flex w-full bg-black/50"
-        :class="fullScreen ? 'h-full' : 'min-h-screen'"
+        class="relative m-auto size-full rounded-md bg-white p-8 md:w-[46.875rem]"
+        :class="{ '!h-[95%] !w-[95%]': fullScreen }"
       >
-        <div
-          ref="modalRef"
-          class="relative m-auto size-full rounded-md bg-white p-8 md:w-[46.875rem]"
-          :class="{ '!h-[95%] !w-[95%]': fullScreen }"
+        <slot name="headline" />
+        <button
+          v-if="!hideCloseButton"
+          data-testid="close-button"
+          class="absolute right-6 top-6 z-50 cursor-pointer p-3"
+          @click="close"
         >
-          <slot name="headline" />
-          <button
-            v-if="!hideCloseButton"
-            data-testid="close-button"
-            class="absolute right-6 top-6 z-50 cursor-pointer p-3"
-            @click="close"
-          >
-            <IconClose class="size-5" />
-          </button>
-          <slot />
-        </div>
+          <IconClose class="size-5" />
+        </button>
+        <slot />
       </div>
-    </SFFadeInTransition>
-  </Teleport>
+    </dialog>
+  </SFFadeInTransition>
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
-import { onClickOutside, useEventListener } from '@vueuse/core'
-import { useModal } from '#storefront-ui'
+import { ref } from 'vue'
+import { useEventListener } from '@vueuse/core'
 
 type Props = {
   hideCloseButton?: boolean
   fullScreen?: boolean
   closeOnOutside?: boolean
 }
+
 const props = withDefaults(defineProps<Props>(), {
   hideCloseButton: false,
   fullScreen: false,
   closeOnOutside: true,
 })
 
-const emit = defineEmits<{ close: [] }>()
+const dialog = ref<HTMLDialogElement | null>()
 
-const modalRef = ref()
-
-const { isOpen, toggle } = useModal()
+const showModal = () => {
+  dialog.value?.showModal()
+}
 
 const close = () => {
-  emit('close')
-  toggle(false)
+  dialog.value?.close()
 }
 
-onClickOutside(modalRef, () => props.closeOnOutside && close())
-
-const handleKeyUpEvent = (event: KeyboardEvent) => {
-  if (event.key !== 'Escape') {
-    return
+useEventListener(dialog, 'click', ({ target }) => {
+  if (
+    props.closeOnOutside &&
+    target instanceof Element &&
+    target.nodeName === 'DIALOG'
+  ) {
+    close()
   }
-
-  close()
-}
-
-const useKeyupEventListener = (shouldRemoveListener = false) => {
-  const cleanup = useEventListener('keyup', handleKeyUpEvent)
-
-  if (shouldRemoveListener) {
-    cleanup()
-  }
-}
-
-onMounted(() => {
-  toggle(true)
-  useKeyupEventListener()
 })
 
-onUnmounted(() => {
-  toggle(false)
-  useKeyupEventListener(true)
+defineExpose({
+  showModal,
+  close,
 })
 </script>

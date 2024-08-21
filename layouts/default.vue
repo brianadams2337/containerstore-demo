@@ -44,7 +44,6 @@ import {
   useUserItemsTrackingWatcher,
   useCustomerDataChangeWatcher,
 } from '~/composables'
-import { useModal } from '#storefront-ui/composables'
 
 // Initialize data
 const { allCurrentPromotions } = useBasketPromotions()
@@ -67,15 +66,12 @@ onMounted(async () => {
 
 // Meta tags
 const { isSideNavigationOpen } = useSideNavigation()
-const { isOpen: isModalOpen } = useModal()
 
 useHead({
   bodyAttrs: () => ({
     class: [
       'relative',
-      isSideNavigationOpen.value || isModalOpen.value
-        ? 'overflow-hidden h-full'
-        : '',
+      isSideNavigationOpen.value ? 'overflow-hidden h-full' : '',
     ],
   }),
 })

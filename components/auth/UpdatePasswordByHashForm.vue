@@ -1,5 +1,5 @@
 <template>
-  <SFModal hide-close-button>
+  <SFModal ref="modalRef" hide-close-button>
     <template #headline>
       <div>
         <SFHeadline size="xl" tag="h2" class="mb-4">
@@ -44,12 +44,18 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive } from 'vue'
+import { onMounted, ref, computed, reactive } from 'vue'
 import useVuelidate from '@vuelidate/core'
 import { useAuthentication, useValidationRules } from '~/composables'
 import { useRoute } from '#app/composables/router'
 
 defineEmits(['close:modal'])
+
+const modalRef = ref()
+
+onMounted(() => {
+  modalRef.value?.showModal()
+})
 
 const route = useRoute()
 const { resetPasswordByHash, isSubmitting } =

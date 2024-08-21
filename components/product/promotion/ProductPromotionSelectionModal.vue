@@ -1,5 +1,5 @@
 <template>
-  <SFModal v-if="isGiftSelectionShown" @close="close">
+  <SFModal ref="modalRef" @close="close">
     <PageContent>
       <div class="flex flex-1 flex-row items-start gap-8">
         <ProductPromotionGiftImageGallery :images="images" class="w-1/2" />
@@ -124,7 +124,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { watch, computed, ref } from 'vue'
 import { type Product, getFirstAttributeValue } from '@scayle/storefront-nuxt'
 import { getBackgroundColorStyle, getTextColorStyle } from '~/utils/promotion'
 import { AlphaColorMap } from '~/constants/color'
@@ -154,7 +154,21 @@ const {
   images,
   toggleGiftSelection,
   isGiftSelectionShown,
-} = usePromotionGiftSelection(props.product, props.promotedProduct)
+} = usePromotionGiftSelection(props.product)
+
+const modalRef = ref()
+
+watch(
+  isGiftSelectionShown,
+  (isOpen) => {
+    if (isOpen) {
+      modalRef.value?.showModal()
+    } else {
+      modalRef.value?.close()
+    }
+  },
+  { immediate: true },
+)
 
 const { data: basketData } = useBasket()
 

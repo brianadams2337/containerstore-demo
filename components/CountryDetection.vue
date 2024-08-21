@@ -1,13 +1,6 @@
 <template>
-  <dialog ref="dialog" class="relative rounded-md px-8 py-5">
-    <SFButton
-      type="raw"
-      class="absolute right-0 top-0 m-4 cursor-pointer"
-      @click="stayInShop"
-    >
-      <IconClose class="size-5" />
-    </SFButton>
-    <div class="mt-8 flex flex-col gap-4">
+  <SFModal ref="modalRef">
+    <div class="mt-8 flex flex-col items-center gap-4">
       <div>
         {{ $t('country_selection.prompt', { country: suggestedCountry }) }}
       </div>
@@ -29,7 +22,7 @@
         }}</SFButton>
       </div>
     </div>
-  </dialog>
+  </SFModal>
 </template>
 <script lang="ts" setup>
 import { computed, ref, onMounted } from 'vue'
@@ -69,9 +62,10 @@ interface ShopInfo {
 }
 
 const suggestedShops = ref<ShopInfo[]>([])
+const modalRef = ref()
 
 const switchToShop = function (shop: ShopInfo) {
-  dialog.value?.close()
+  modalRef.value?.close()
   hasPromptedUser.value = true
   trackingEvents.trackShopChange()
   if (shop.path) {
@@ -80,11 +74,9 @@ const switchToShop = function (shop: ShopInfo) {
 }
 
 const stayInShop = function () {
-  dialog.value?.close()
+  modalRef.value?.close()
   hasPromptedUser.value = true
 }
-
-const dialog = ref<HTMLDialogElement | null>(null)
 
 /**
  * Get the shops matching a region code
@@ -162,7 +154,7 @@ onMounted(async () => {
   if (otherShops.length) {
     suggestedShops.value = otherShops
     suggestedCountry.value = regionNames.of(detectedRegion)
-    dialog.value?.showModal()
+    modalRef.value?.showModal()
   }
 })
 </script>

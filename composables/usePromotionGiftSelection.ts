@@ -21,10 +21,7 @@ import { useLocalePath } from '#i18n'
 import { useBasket } from '#storefront/composables'
 import { hasOneSizeProductVariantOnly, routeList } from '~/utils'
 
-export function usePromotionGiftSelection(
-  gift: Product,
-  promotedProduct?: Product,
-) {
+export function usePromotionGiftSelection(gift: Product) {
   const { $i18n } = useNuxtApp()
   const toast = useToast()
 
@@ -36,13 +33,10 @@ export function usePromotionGiftSelection(
   const { openBasketFlyout } = useFlyouts()
 
   const activeVariant = useState<Variant | null | undefined>(
-    `active-gift-variant-${gift.id}-${promotedProduct?.id ?? ''}`,
+    `active-gift-variant-${gift.id}`,
   )
 
-  const isSelectionShown = useState(
-    `gift-selection-${gift.id}-${promotedProduct?.id ?? ''}`,
-    () => false,
-  )
+  const isSelectionShown = useState(`gift-selection-${gift.id}`, () => false)
 
   const {
     brand,

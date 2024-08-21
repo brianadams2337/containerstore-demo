@@ -8,9 +8,8 @@
         @click:image="toggleZoomGallery(true, $event)"
       />
       <ZoomGallery
-        v-if="zoomGallery.display"
         :images="product.images"
-        :active-index="zoomGallery.index"
+        :active-index="zoomGalleryIndex"
         @click:close-zoom-gallery="toggleZoomGallery(false)"
       />
       <div
@@ -304,7 +303,7 @@ const { availableAddOns, onAddOnSelected } = useProductDetailsAddOns(
   product,
 )
 
-const { state: zoomGallery, toggle: toggleZoomGallery } =
+const { index: zoomGalleryIndex, toggle: toggleZoomGallery } =
   useZoomGalleryActions()
 
 const { trackViewItem } = useTrackingEvents()

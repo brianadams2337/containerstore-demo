@@ -110,10 +110,7 @@ const { md: isGreaterThanMd } = useDefaultBreakpoints()
 const { buyXGetYPromotion: promotion, areGiftConditionsMet } =
   useProductPromotions(promotedProduct)
 
-const { toggleGiftSelection } = usePromotionGiftSelection(
-  props.product,
-  promotedProduct.value,
-)
+const { toggleGiftSelection } = usePromotionGiftSelection(props.product)
 
 const { getProductDetailRoute } = useRouteHelpers()
 

@@ -72,10 +72,7 @@ const { md: isGreaterThanMd } = useDefaultBreakpoints()
 
 const promotedProduct = computed(() => props.basketItem.product)
 
-const { toggleGiftSelection } = await usePromotionGiftSelection(
-  props.product,
-  promotedProduct.value,
-)
+const { toggleGiftSelection } = await usePromotionGiftSelection(props.product)
 
 const { giftPromotion, giftBackgroundColorStyle } = useBasketItemPromotion(
   toRef(props.basketItem),
