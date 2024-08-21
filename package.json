@@ -64,7 +64,7 @@
     "eslint-plugin-unimport": "0.0.3",
     "eslint-plugin-vuejs-accessibility": "2.4.1",
     "eslint": "9.9.0",
-    "happy-dom": "14.12.3",
+    "happy-dom": "15.0.0",
     "lint-staged": "15.2.9",
     "nuxt-svgo": "4.0.3",
     "nuxt": "3.11.2",
