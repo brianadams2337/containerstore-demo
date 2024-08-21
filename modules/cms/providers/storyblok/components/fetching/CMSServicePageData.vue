@@ -1,11 +1,6 @@
 <template>
   <div>
-    <slot
-      v-bind="{
-        data: data?.data.story,
-        pending,
-      }"
-    />
+    <slot :data="data?.data.story" :pending="pending" />
   </div>
 </template>
 

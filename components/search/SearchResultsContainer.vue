@@ -8,7 +8,9 @@
       <div v-else>
         <div v-if="resultsCount > 0" class="flex flex-col">
           <SearchResults
-            v-bind="{ products, categories, resultsCount }"
+            :products="products"
+            :categories="categories"
+            :results-count="resultsCount"
             @click:result="emit('click:result', $event)"
           />
           <SFLink

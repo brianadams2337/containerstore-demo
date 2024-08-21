@@ -16,7 +16,9 @@
         <CategorySideNavigation
           v-if="rootCategories?.length"
           class="sticky top-8 h-full max-md:hidden sm:min-w-40 md:min-w-[14.75rem] lg:min-w-[17rem]"
-          v-bind="{ rootCategories, currentCategory, fetchingCategories }"
+          :root-categories="rootCategories"
+          :current-category="currentCategory"
+          :fetching-categories="fetchingCategories"
         />
 
         <div class="w-full grow">
@@ -39,14 +41,17 @@
           </div>
           <CategoryNavigationSlider
             v-if="allCategories.length"
-            v-bind="{ allCategories, currentCategory }"
+            :all-categories="allCategories"
+            :current-category="currentCategory"
             class="my-3.5 md:hidden"
           />
           <div class="px-4 md:hidden">
             <FilterToggleButton :label="$t('filter.filters_sorting')" />
           </div>
           <ProductList
-            v-bind="{ products, pagination, currentCategory }"
+            :products="products"
+            :pagination="pagination"
+            :current-category="currentCategory"
             :loading="productsFetching"
             class="mt-8"
             @click:product="trackProductClick"

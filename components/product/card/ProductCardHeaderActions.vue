@@ -2,7 +2,7 @@
   <div
     class="absolute left-auto right-1 top-1 z-20 flex h-8 w-auto cursor-pointer p-1 md:right-0 md:top-0 md:p-3"
   >
-    <WishlistToggle v-bind="{ product, listingMetaData }" />
+    <WishlistToggle :product="product" :listing-meta-data="listingMetaData" />
   </div>
 </template>
 

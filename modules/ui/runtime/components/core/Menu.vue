@@ -2,10 +2,10 @@
   <div ref="targetClickOutside">
     <slot>
       <div>
-        <slot name="label" v-bind="{ toggle }" />
+        <slot name="label" :toggle="toggle" />
       </div>
       <div v-if="isOpen" class="absolute z-50" :class="{ 'w-full': fullWidth }">
-        <slot name="menuContent" v-bind="{ toggle, close }" />
+        <slot name="menuContent" :toggle="toggle" :close="close" />
       </div>
     </slot>
   </div>

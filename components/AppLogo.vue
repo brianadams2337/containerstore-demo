@@ -1,7 +1,8 @@
 <template>
   <SFLink :to="routeList.home" raw>
     <svg
-      v-bind="{ height, width }"
+      :height="height"
+      :width="width"
       fill="none"
       viewBox="0 0 108 28"
       xmlns="http://www.w3.org/2000/svg"

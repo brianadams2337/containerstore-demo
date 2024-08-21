@@ -17,14 +17,15 @@
         <slot
           v-for="(product, index) in products"
           name="product"
-          v-bind="{ product, loading }"
+          :loading="loading"
           :product="product"
         >
           <ProductCard
             :key="`product-${product.id}`"
             class="col-span-6 mb-5 w-full lg:col-span-4 lg:max-w-[23rem] xl:col-span-3"
             data-testid="product-item"
-            v-bind="{ index, product }"
+            :index="index"
+            :product="product"
             multiple-images
             edge-borderless
             :is-right-side-borderless="isProductPositionEven(index + 1)"

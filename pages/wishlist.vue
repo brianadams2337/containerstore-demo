@@ -27,7 +27,8 @@
         <WishlistCard
           v-for="(item, index) in orderedItems"
           :key="`product-${item.key}-${item.product}`"
-          v-bind="{ item, index }"
+          :item="item"
+          :index="index"
           data-testid="wishlist-card"
           class="mb-4"
         />

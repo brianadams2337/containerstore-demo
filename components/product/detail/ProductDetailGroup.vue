@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SFHeadline v-bind="{ tag, size }" is-uppercase>
+    <SFHeadline :tag="tag" :size="size" is-uppercase>
       <slot name="headline" />
     </SFHeadline>
     <div class="mt-3">

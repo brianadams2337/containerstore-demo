@@ -99,6 +99,13 @@ export default withNuxt(
           allowInterfaces: 'always',
         },
       ],
+      'vue/v-bind-style': [
+        'error',
+        'shorthand',
+        {
+          sameNameShorthand: 'never',
+        },
+      ],
     },
   },
   {

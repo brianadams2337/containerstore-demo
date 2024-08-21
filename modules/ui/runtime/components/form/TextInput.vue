@@ -6,7 +6,11 @@
       v-model="modelValue"
       v-maska
       :data-maska="dataMaska"
-      v-bind="{ required, readonly, type, placeholder, autocomplete }"
+      :required="required"
+      :readonly="props.readonly"
+      :type="type"
+      :placeholder="placeholder"
+      :autocomplete="autocomplete"
       class="w-full rounded border-2 p-3 text-sm font-medium placeholder:text-secondary focus:outline-none focus:ring-0"
       :class="classes"
       :maxlength="maxLength"

@@ -4,7 +4,11 @@
     class="relative w-80 min-w-xs overflow-hidden rounded-md border p-2"
     @click="closePromotionList"
   >
-    <PromotionItemContent v-bind="{ customData, schedule }" class="mb-2" />
+    <PromotionItemContent
+      :custom-data="customData"
+      :schedule="schedule"
+      class="mb-2"
+    />
     <PromotionItemTerms
       v-if="customData.terms"
       :content="customData.terms"

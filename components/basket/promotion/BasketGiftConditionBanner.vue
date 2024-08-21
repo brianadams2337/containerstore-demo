@@ -20,7 +20,9 @@
         />
       </div>
       <ProductPromotionProgressLabel
-        v-bind="{ promotion, isGiftAddedToBasket, areGiftConditionsMet }"
+        :promotion="promotion"
+        :is-gift-added-to-basket="isGiftAddedToBasket"
+        :are-gift-conditions-met="areGiftConditionsMet"
       />
     </template>
   </PromotionCard>

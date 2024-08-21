@@ -8,7 +8,9 @@
           (width === '2' && listingColumns === 3) || listingColumns === 1,
         'col-span-full md:col-span-8': width === '2' && listingColumns === 2,
       }"
-      v-bind="{ product, badgeLabel, multipleImages }"
+      :product="product"
+      :badge-label="badgeLabel"
+      :multiple-images="multipleImages"
       :show-add-to-cart="false"
       :loading="fetching"
       class="col-span-full"

@@ -10,7 +10,7 @@
     />
     <ProductPromotionFreeGiftBadge
       v-if="isFreeGift"
-      v-bind="{ backgroundColorStyle }"
+      :background-color-style="backgroundColorStyle"
       class="absolute bottom-2 left-2"
     />
   </div>

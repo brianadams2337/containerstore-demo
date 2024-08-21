@@ -32,7 +32,7 @@
         :style="itemsContainerStyle"
       >
         <template v-for="item in items">
-          <slot name="item" v-bind="{ item, selectItem }">
+          <slot name="item" :item="item" :select-item="selectItem">
             <div
               :key="`${item}`"
               class="block cursor-pointer px-4 py-2 text-base text-gray-700 hover:bg-gray-200 active:bg-gray-300"

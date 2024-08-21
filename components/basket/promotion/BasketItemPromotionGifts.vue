@@ -16,7 +16,10 @@
       />
     </div>
     <div class="p-4">
-      <BasketPromotionGiftsSlider v-bind="{ basketItem, products }" />
+      <BasketPromotionGiftsSlider
+        :basket-item="basketItem"
+        :products="products"
+      />
     </div>
   </div>
 </template>

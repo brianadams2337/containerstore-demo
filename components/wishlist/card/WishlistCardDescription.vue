@@ -10,7 +10,8 @@
       <div>
         <ProductPrice
           data-testid="wishlist-product-price"
-          v-bind="{ price, lowestPriorPrice }"
+          :price="price"
+          :lowest-prior-price="lowestPriorPrice"
           :product="item.product"
           type="whisper"
           size="sm"

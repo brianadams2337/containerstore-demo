@@ -1,12 +1,10 @@
 <template>
   <div>
     <slot
-      v-bind="{
-        content,
-        hasTeaserImage,
-        postListingContent,
-        preListingContent,
-      }"
+      :content="content"
+      :has-teaser-image="hasTeaserImage"
+      :post-listing-content="postListingContent"
+      :pre-listing-content="preListingContent"
     />
   </div>
 </template>

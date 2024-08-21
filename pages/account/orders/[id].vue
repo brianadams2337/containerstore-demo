@@ -16,7 +16,8 @@
         </template>
         <AddressSummary
           v-if="shippingAddress || billingAddress"
-          v-bind="{ shippingAddress, billingAddress }"
+          :shipping-address="shippingAddress"
+          :billing-address="billingAddress"
         />
         <OrderItems
           :order-items="orderItems"

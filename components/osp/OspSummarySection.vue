@@ -2,7 +2,7 @@
   <div class="w-full md:container md:w-1/2 md:bg-gray-100 lg:w-2/5">
     <div class="py-4 text-sm md:container md:p-10 md:px-6 xl:px-20">
       <div class="divide-y divide-gray-500">
-        <OspDeliveryDate v-if="deliveryDate" v-bind="{ deliveryDate }" />
+        <OspDeliveryDate v-if="deliveryDate" :delivery-date="deliveryDate" />
         <div class="space-y-2">
           <SFHeadline
             size="sm"
@@ -20,7 +20,9 @@
             >
               <OspProductCard
                 v-if="product.advancedAttributes"
-                v-bind="{ variant, product, price }"
+                :variant="variant"
+                :product="product"
+                :price="price"
                 :quantity="getItemQuantity(variant.id)"
               />
             </li>

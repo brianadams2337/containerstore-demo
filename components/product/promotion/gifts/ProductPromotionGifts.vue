@@ -20,7 +20,8 @@
         <ProductPromotionGiftItem
           v-for="(item, index) in products"
           :key="item.id"
-          v-bind="{ backgroundColorStyle, isProductAddedToBasket }"
+          :background-color-style="backgroundColorStyle"
+          :is-product-added-to-basket="isProductAddedToBasket"
           :eager-image-loading="index < 2"
           :product="item"
           class="mb-4 last-of-type:mb-0"

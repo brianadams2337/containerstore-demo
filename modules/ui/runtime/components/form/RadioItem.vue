@@ -4,7 +4,9 @@
   >
     <input
       v-model="selected"
-      v-bind="{ value, name, disabled }"
+      :value="value"
+      :name="name"
+      :disabled="disabled"
       type="radio"
       class="peer absolute left-0 top-0 z-0 opacity-0"
     />

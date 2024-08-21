@@ -57,7 +57,9 @@
                   v-if="price"
                   size="xl"
                   class="mt-3"
-                  v-bind="{ product, lowestPriorPrice, price }"
+                  :product="product"
+                  :lowest-prior-price="lowestPriorPrice"
+                  :price="price"
                   type="normal"
                   :show-automatic-discount="!isBuyXGetYPrioritized"
                   :show-price-from="hasSpecial"
@@ -169,11 +171,9 @@
             />
 
             <ProductBasketAndWishlistActions
-              v-bind="{
-                product,
-                activeVariant,
-                quantity,
-              }"
+              :product="product"
+              :active-variant="activeVariant"
+              :quantity="quantity"
               class="mt-4"
             />
 

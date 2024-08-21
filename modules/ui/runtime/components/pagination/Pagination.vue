@@ -3,13 +3,17 @@
     <div
       class="mx-4 flex h-14 max-w-full flex-row items-center justify-between gap-1 rounded-md border sm:gap-2 md:w-min"
     >
-      <slot v-bind="{ canNavigateLeft, previousPage }" name="previous-button">
+      <slot
+        :can-navigate-left="canNavigateLeft"
+        :previous-page="previousPage"
+        name="previous-button"
+      >
         <SFPaginationButton :disabled="!canNavigateLeft" :page="previousPage">
           <IconChevronLeft class="size-4" />
         </SFPaginationButton>
       </slot>
 
-      <slot name="first-page" v-bind="{ firstPage }">
+      <slot name="first-page" :first-page="firstPage">
         <SFPaginationButton
           v-if="firstPage && isFirstOrLastPageButtonShown"
           :page="firstPage"
@@ -25,7 +29,7 @@
         </div>
       </slot>
 
-      <slot name="page-buttons" v-bind="{ limitedPages }">
+      <slot name="page-buttons" :limited-pages="limitedPages">
         <template v-for="page in limitedPages" :key="page?.number">
           <SFPaginationButton v-if="page" :page="page" />
         </template>
@@ -40,14 +44,18 @@
         </div>
       </slot>
 
-      <slot name="last-page" v-bind="{ lastPage }">
+      <slot name="last-page" :last-page="lastPage">
         <SFPaginationButton
           v-if="lastPage && isFirstOrLastPageButtonShown"
           :page="lastPage"
         />
       </slot>
 
-      <slot name="next-button" v-bind="{ canNavigateRight, nextPage }">
+      <slot
+        name="next-button"
+        :can-navigate-right="canNavigateRight"
+        :next-page="nextPage"
+      >
         <SFPaginationButton
           v-if="nextPage"
           :disabled="!canNavigateRight"

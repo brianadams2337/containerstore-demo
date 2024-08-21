@@ -23,7 +23,8 @@
             <SearchResultSkeleton v-if="showSuggestionsLoader" />
             <SearchResults
               v-else-if="hasSearchQuery && !noSuggestions"
-              v-bind="{ categories, products }"
+              :categories="categories"
+              :products="products"
               @click:result="trackSuggestionClickAndClose"
             />
             <EmptyState

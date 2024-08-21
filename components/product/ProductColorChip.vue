@@ -3,7 +3,11 @@
     v-if="colorCode"
     :key="`color-picker-color-${color.value}`"
     :data-color-id="color.id"
-    v-bind="{ colorCode, size, isActive, rounded, to }"
+    :color-code="colorCode"
+    :size="size"
+    :is-active="isActive"
+    :rounded="rounded"
+    :to="to"
   />
 </template>
 

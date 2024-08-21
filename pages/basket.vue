@@ -37,7 +37,7 @@
               </SFFadeInTransition>
 
               <SFSwipeDelete @delete="removeItem(item)">
-                <BasketCard class="w-full" v-bind="{ item, index }" />
+                <BasketCard class="w-full" :item="item" :index="index" />
               </SFSwipeDelete>
               <SFFadeInTransition>
                 <BasketItemPromotionGifts

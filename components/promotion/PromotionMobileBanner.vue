@@ -43,7 +43,8 @@
       </div>
       <PromotionProgress
         v-if="minOrderValue"
-        v-bind="{ minOrderValue, currentPromotion }"
+        :min-order-value="minOrderValue"
+        :current-promotion="currentPromotion"
         is-full-width
       />
     </div>

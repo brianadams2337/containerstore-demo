@@ -1,6 +1,9 @@
 <template>
   <NuxtLink
-    v-bind="{ openInNewTab, activeClass, exactActiveClass, target }"
+    :open-in-new-tab="openInNewTab"
+    :active-class="activeClass"
+    :exact-active-class="exactActiveClass"
+    :target="target"
     :to="resolvedLink"
     :class="variantClass"
   >

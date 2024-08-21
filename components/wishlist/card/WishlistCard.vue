@@ -1,7 +1,8 @@
 <template>
   <ProductCard
-    v-bind="{ index, isAvailable }"
     :id="item.product.id"
+    :index="index"
+    :is-available="isAvailable"
     :product="item.product"
     :loading="isWishlistFetching"
     class="col-span-6 md:col-span-4 2xl:col-span-3"
@@ -24,11 +25,20 @@
     <template #header-image="{ link, image, name }">
       <WishlistCardImage
         v-if="link"
-        v-bind="{ index, item, link, image, name }"
+        :index="index"
+        :item="item"
+        :link="link"
+        :image="image"
+        :name="name"
       />
     </template>
     <template #details="{ brand, name }">
-      <WishlistCardDescription v-bind="{ index, item, brand, name }" />
+      <WishlistCardDescription
+        :index="index"
+        :item="item"
+        :brand="brand"
+        :name="name"
+      />
       <WishlistCardSlideIn :item="item" />
     </template>
   </ProductCard>

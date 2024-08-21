@@ -1,6 +1,6 @@
 <template>
   <section class="relative h-20">
-    <slot v-bind="{ isValid, errorMessages }" />
+    <slot :is-valid="isValid" :error-messages="errorMessages" />
     <SFFadeInFromBottomTransition>
       <p
         v-if="!isValid"

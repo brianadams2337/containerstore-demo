@@ -1,7 +1,9 @@
 <template>
   <SFLink :to="link" raw>
     <ProductImage
-      v-bind="{ image, imageLoading, alt }"
+      :image="image"
+      :image-loading="imageLoading"
+      :alt="alt"
       :class="{ 'opacity-20': !isAvailable }"
       sizes="xs:50vw sm:50vw md:40vw lg:33vw xl:320px"
       class="absolute inset-0"

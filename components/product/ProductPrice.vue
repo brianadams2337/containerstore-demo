@@ -1,27 +1,25 @@
 <template>
   <div class="flex flex-wrap items-center gap-1">
     <slot
-      v-bind="{
-        classes,
-        showPriceFrom,
-        totalReductions,
-        appliedReductions,
-        isAutomaticDiscountPriceApplicable,
-        isFree,
-        formatCurrency,
-        price,
-        totalPrice,
-        styles,
-      }"
+      :classes="classes"
+      :show-price-from="showPriceFrom"
+      :total-reductions="totalReductions"
+      :applied-reductions="appliedReductions"
+      :is-automatic-discount-price-applicable="
+        isAutomaticDiscountPriceApplicable
+      "
+      :is-free="isFree"
+      :format-currency="formatCurrency"
+      :price="price"
+      :total-price="totalPrice"
+      :styles="styles"
     >
       <slot
         name="relative-reductions"
-        v-bind="{
-          showBadge,
-          appliedReductions,
-          relativeReductions,
-          totalReductions,
-        }"
+        :show-badge="showBadge"
+        :applied-reductions="appliedReductions"
+        :relative-reductions="relativeReductions"
+        :total-reductions="totalReductions"
       >
         <template v-if="showBadge">
           <span

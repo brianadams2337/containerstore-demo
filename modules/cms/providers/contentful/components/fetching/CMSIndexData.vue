@@ -1,5 +1,5 @@
 <template>
-  <slot v-bind="{ data: resData }" />
+  <slot :data="resData" />
 </template>
 
 <script setup lang="ts">

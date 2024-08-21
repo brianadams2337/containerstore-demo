@@ -11,12 +11,14 @@
       <div v-if="isProductHovered || isSmallerThenMd" class="mt-2 md:mt-3">
         <slot name="details-actions" :siblings="siblings">
           <ProductCardSiblingsPicker
-            v-bind="{ product, siblings }"
+            :product="product"
+            :siblings="siblings"
             :limit="siblingsLimit"
             class="max-md:hidden"
           />
           <ProductCardSiblingsSlider
-            v-bind="{ product, siblings }"
+            :product="product"
+            :siblings="siblings"
             class="md:hidden"
           />
         </slot>
@@ -24,13 +26,16 @@
       <ProductCardDescription
         v-if="!isProductHovered || isSmallerThenMd"
         class="mt-3 max-md:mb-6 md:mt-5"
-        v-bind="{ name, brand }"
+        :name="name"
+        :brand="brand"
       />
     </component>
     <slot name="details-price" :price="price">
       <ProductPrice
         v-if="price"
-        v-bind="{ price, lowestPriorPrice, product }"
+        :price="price"
+        :lowest-prior-price="lowestPriorPrice"
+        :product="product"
         show-price-reduction-badge
         show-price-from
         class="absolute bottom-0 left-2 md:left-0"

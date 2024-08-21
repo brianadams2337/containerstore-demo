@@ -7,7 +7,9 @@
     >
       <BasketPromotionSliderItem
         v-if="product"
-        v-bind="{ product, index, basketItem }"
+        :product="product"
+        :index="index"
+        :basket-item="basketItem"
       />
     </div>
   </SFHorizontalItemsSlider>

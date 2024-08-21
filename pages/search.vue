@@ -13,7 +13,8 @@
       <FilterToggleButton :label="$t('filter.filters_sorting')" />
     </div>
     <ProductList
-      v-bind="{ pagination, products }"
+      :pagination="pagination"
+      :products="products"
       :loading="productsFetching"
       class="mt-8"
       @click:product="trackProductClick"

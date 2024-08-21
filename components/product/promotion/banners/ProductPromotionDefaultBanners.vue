@@ -3,7 +3,9 @@
     <ProductPromotionDefaultBannersItem
       v-for="promotion in applicablePromotions"
       :key="promotion.id"
-      v-bind="{ promotion, isGiftAddedToBasket, areGiftConditionsMet }"
+      :promotion="promotion"
+      :is-gift-added-to-basket="isGiftAddedToBasket"
+      :are-gift-conditions-met="areGiftConditionsMet"
       :is-priority-badge-shown="isHighestPriority(promotion.priority)"
       class="mb-2 w-full"
     />

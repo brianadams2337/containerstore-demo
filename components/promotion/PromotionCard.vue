@@ -4,7 +4,12 @@
     v-bind="attributes"
     :style="backgroundColor && { backgroundColor }"
   >
-    <slot v-bind="{ headlineParts, scheduledTo, customData, categoryLink }" />
+    <slot
+      :headline-parts="headlineParts"
+      :scheduled-to="scheduledTo"
+      :custom-data="customData"
+      :category-link="categoryLink"
+    />
   </component>
 </template>
 

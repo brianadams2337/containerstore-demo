@@ -1,6 +1,6 @@
 <template>
   <PromotionCard
-    v-bind="{ backgroundColor, promotion }"
+    :background-color="backgroundColor"
     :promotion="promotion"
     class="relative flex flex-col items-start rounded-md bg-blue px-4 py-3 text-white"
   >
@@ -34,7 +34,9 @@
         </template>
         <SFFadeInTransition>
           <ProductPromotionProgressLabel
-            v-bind="{ promotion, isGiftAddedToBasket, areGiftConditionsMet }"
+            :promotion="promotion"
+            :is-gift-added-to-basket="isGiftAddedToBasket"
+            :are-gift-conditions-met="areGiftConditionsMet"
           />
         </SFFadeInTransition>
       </ClientOnly>

@@ -1,7 +1,9 @@
 <template>
   <div class="bg-white">
     <AddressCards
-      v-bind="{ items, shippingAddress, billingAddress }"
+      :items="items"
+      :shipping-address="shippingAddress"
+      :billing-address="billingAddress"
       class="mb-4 max-sm:hidden"
     />
     <AddressTabs :items="items" tabs-class="-mx-5" class="mb-8 md:hidden">

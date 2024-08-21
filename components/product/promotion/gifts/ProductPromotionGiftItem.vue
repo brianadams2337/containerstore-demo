@@ -16,7 +16,7 @@
       />
 
       <ProductPromotionFreeGiftBadge
-        v-bind="{ backgroundColorStyle }"
+        :background-color-style="backgroundColorStyle"
         class="absolute bottom-2 left-2"
       />
     </SFLink>
@@ -64,11 +64,15 @@
     <template v-if="promotion && product && promotedProduct">
       <ProductPromotionSelectionModal
         v-if="isGreaterThanMd"
-        v-bind="{ product, promotion, promotedProduct }"
+        :product="product"
+        :promotion="promotion"
+        :promoted-product="promotedProduct"
       />
       <ProductPromotionSizeSelection
         v-else
-        v-bind="{ product, promotion, promotedProduct }"
+        :product="product"
+        :promotion="promotion"
+        :promoted-product="promotedProduct"
       />
     </template>
   </div>

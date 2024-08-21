@@ -24,7 +24,9 @@
                 <div class="flex flex-col">
                   <ProductPrice
                     v-if="price"
-                    v-bind="{ product, price, lowestPriorPrice }"
+                    :product="product"
+                    :price="price"
+                    :lowest-prior-price="lowestPriorPrice"
                     :is-free="areConditionsMet"
                     size="xl"
                     type="normal"

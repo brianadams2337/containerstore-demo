@@ -4,8 +4,14 @@
       <ProductCardSkeleton v-for="index in 2" :key="`osp-loading-${index}`" />
     </div>
     <div v-if="orderData" class="px-6 sm:mx-auto sm:flex sm:flex-wrap md:px-0">
-      <OspBasicDataSection v-bind="{ orderData, deliveryDate }" />
-      <OspSummarySection v-bind="{ orderData, deliveryDate }" />
+      <OspBasicDataSection
+        :order-data="orderData"
+        :delivery-date="deliveryDate"
+      />
+      <OspSummarySection
+        :order-data="orderData"
+        :delivery-date="deliveryDate"
+      />
     </div>
     <EmptyState v-else :title="$t('osp.no_order_found')" show-default-actions />
   </PageContent>

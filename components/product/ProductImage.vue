@@ -1,6 +1,11 @@
 <template>
   <NuxtPicture
-    v-bind="{ alt, quality, sizes, modifiers, height, width }"
+    :alt="alt"
+    :quality="quality"
+    :sizes="sizes"
+    :modifiers="modifiers"
+    :height="height"
+    :width="width"
     densities="x1"
     :src="image.hash"
     :loading="imageLoading"

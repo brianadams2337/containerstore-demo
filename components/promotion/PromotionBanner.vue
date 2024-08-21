@@ -47,7 +47,9 @@
   <SFOverlay v-if="isPromotionListShown" />
   <SFFadeInTransition>
     <PromotionMobileBanner
-      v-bind="{ promotions, category, isPromotionListShown }"
+      :promotions="promotions"
+      :category="category"
+      :is-promotion-list-shown="isPromotionListShown"
     />
   </SFFadeInTransition>
 </template>

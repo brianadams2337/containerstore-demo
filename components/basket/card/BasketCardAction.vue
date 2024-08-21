@@ -1,6 +1,7 @@
 <template>
   <SFButton
-    v-bind="{ icon, disabled }"
+    :icon="icon"
+    :disabled="disabled"
     no-padding
     size="sm"
     type="raw"

@@ -5,12 +5,10 @@
     </template>
     <template #slide-in-body>
       <FilterSlideInContent
-        v-bind="{
-          appliedAttributeValues,
-          appliedBooleanValues,
-          appliedFilter,
-          availableFilters,
-        }"
+        :applied-attribute-values="appliedAttributeValues"
+        :applied-boolean-values="appliedBooleanValues"
+        :applied-filter="appliedFilter"
+        :available-filters="availableFilters"
         @apply-price-filter="applyPriceFilter"
         @apply-attribute-filter="applyAttributeFilter"
         @apply-boolean-filter="applyBooleanFilter"

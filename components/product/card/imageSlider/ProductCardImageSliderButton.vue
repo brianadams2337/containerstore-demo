@@ -5,7 +5,8 @@
       '-left-2 rounded-r-full hover:translate-x-1': isLeft,
       '-right-2 rounded-l-full hover:-translate-x-1': direction === 'right',
     }"
-    v-bind="{ disabled, ariaLabel }"
+    :disabled="disabled"
+    :aria-label="ariaLabel"
   >
     <component :is="icon" class="size-4" />
   </button>

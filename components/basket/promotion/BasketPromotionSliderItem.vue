@@ -32,12 +32,14 @@
   <template v-if="giftPromotion">
     <ProductPromotionSelectionModal
       v-if="isGreaterThanMd"
-      v-bind="{ product, promotedProduct }"
+      :product="product"
+      :promoted-product="promotedProduct"
       :promotion="giftPromotion"
     />
     <ProductPromotionSizeSelection
       v-else
-      v-bind="{ product, promotedProduct }"
+      :product="product"
+      :promoted-product="promotedProduct"
       :promotion="giftPromotion"
     />
   </template>

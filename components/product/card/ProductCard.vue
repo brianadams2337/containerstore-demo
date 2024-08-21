@@ -26,7 +26,8 @@
           >
             <slot v-if="product" name="header-actions">
               <ProductCardHeaderActions
-                v-bind="{ product, listingMetaData }"
+                :product="product"
+                :listing-meta-data="listingMetaData"
                 :class="{ 'lg:opacity-0': areHeaderActionsHidden }"
                 class="opacity-100 transition"
               />
@@ -34,20 +35,30 @@
             <slot name="header-badges" />
             <slot
               name="header-image"
-              v-bind="{ image, link, isProductHovered, name }"
+              :image="image"
+              :link="link"
+              :is-product-hovered="isProductHovered"
+              v-bind="{ name }"
             >
               <slot name="button" />
               <template v-if="link && image">
                 <ProductCardImage
                   v-if="shouldShowSingleImage"
-                  v-bind="{ image, alt, link, isAvailable }"
+                  :image="image"
+                  :alt="alt"
+                  :link="link"
+                  :is-available="isAvailable"
                   :product-index="index"
                   @click.capture="$emit('click:product')"
                 />
 
                 <ProductCardImageSlider
                   v-else
-                  v-bind="{ isAvailable, image, alt, isProductHovered, link }"
+                  :image="image"
+                  :alt="alt"
+                  :link="link"
+                  :is-available="isAvailable"
+                  :is-product-hovered="isProductHovered"
                   :product-index="index"
                   :images="product.images"
                   @click.capture="$emit('click:product')"
@@ -69,7 +80,9 @@
         >
           <ProductCardDetails
             v-if="link && product"
-            v-bind="{ product, isProductHovered, link }"
+            :product="product"
+            :is-product-hovered="isProductHovered"
+            :link="link"
             @click.capture="$emit('click:product')"
           />
         </slot>

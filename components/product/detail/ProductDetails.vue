@@ -20,11 +20,14 @@
       <div class="mt-9 min-h-2xs leading-normal md:text-xs">
         <ProductDescription
           v-if="tabs[selectedIndex] === 'pdp.product_info_heading'"
-          v-bind="{ description, baseInfos, fitInfos }"
+          :description="description"
+          :base-infos="baseInfos"
+          :fit-infos="fitInfos"
         />
         <ProductCompositionAndCare
           v-if="tabs[selectedIndex] === 'pdp.composition_care_heading'"
-          v-bind="{ materialInfo, careInfo }"
+          :material-info="materialInfo"
+          :care-info="careInfo"
         />
         <ProductShippingAndReturn
           v-if="tabs[selectedIndex] === 'pdp.shipping_return_heading'"
@@ -37,12 +40,19 @@
       <div class="max-w-3xl">
         <div class="divide-y divide-gray-300">
           <ProductDetailAccordionEntry :title="$t('pdp.product_info_heading')">
-            <ProductDescription v-bind="{ description, baseInfos, fitInfos }" />
+            <ProductDescription
+              :description="description"
+              :base-infos="baseInfos"
+              :fit-infos="fitInfos"
+            />
           </ProductDetailAccordionEntry>
           <ProductDetailAccordionEntry
             :title="$t('pdp.composition_care_heading')"
           >
-            <ProductCompositionAndCare v-bind="{ materialInfo, careInfo }" />
+            <ProductCompositionAndCare
+              :material-info="materialInfo"
+              :care-info="careInfo"
+            />
           </ProductDetailAccordionEntry>
           <ProductDetailAccordionEntry
             :title="$t('pdp.shipping_return_heading')"
