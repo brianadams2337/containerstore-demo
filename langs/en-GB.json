@@ -154,6 +154,7 @@
     "change_size_label": "Change"
   },
   "basket": {
+    "add_to_basket": "Add to basket",
     "heading": "Basket",
     "empty_title": "Your shopping cart is empty.",
     "empty_description": "Your products will appear as soon as you add them to your cart.",

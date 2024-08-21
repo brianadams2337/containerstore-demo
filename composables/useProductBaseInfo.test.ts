@@ -432,4 +432,94 @@ describe('useProductBaseInfo', () => {
       expect(alt.value).toBe('product_image.alt-Test Product-Weiß & Weiß')
     })
   })
+
+  describe('longestCategoryList', () => {
+    const category1 = {
+      categoryId: 1,
+      categoryName: '1',
+      categoryUrl: '/1',
+    }
+    const category2 = {
+      categoryId: 2,
+      categoryName: '2',
+      categoryUrl: '/2',
+    }
+    const category3 = {
+      categoryId: 2,
+      categoryName: '3',
+      categoryUrl: '/3',
+    }
+    const product = {
+      id: 1,
+      isActive: true,
+      isSoldOut: false,
+      isNew: false,
+      createdAt: '2022-04-26T15:04:56+00:00',
+      updatedAt: '2022-06-21T20:02:33+00:00',
+      masterKey: 'HGO3464001000001',
+      referenceKey: '1',
+      attributes: {},
+      images: [],
+      variants: [],
+      siblings: [],
+      priceRange: {
+        min: {
+          currencyCode: 'EUR',
+          withTax: 8990 as CentAmount,
+          withoutTax: 7555 as CentAmount,
+          appliedReductions: [],
+          tax: {
+            vat: {
+              amount: 1435 as CentAmount,
+              rate: 0.19,
+            },
+          },
+        },
+        max: {
+          currencyCode: 'EUR',
+          withTax: 8990 as CentAmount,
+          withoutTax: 7555 as CentAmount,
+          appliedReductions: [],
+          tax: {
+            vat: {
+              amount: 1435 as CentAmount,
+              rate: 0.19,
+            },
+          },
+        },
+      },
+      categories: [
+        [category1, category2],
+        [category2],
+        [category1, category3, category2],
+        [category3],
+      ],
+    } as Product
+
+    it('should return longest category from product', () => {
+      const { longestCategoryList } = useProductBaseInfo(product)
+      expect(longestCategoryList.value).toStrictEqual([
+        category1,
+        category3,
+        category2,
+      ])
+    })
+
+    it('should return empty longest category if no product', () => {
+      const { longestCategoryList } = useProductBaseInfo(undefined)
+      expect(longestCategoryList.value).toStrictEqual([])
+    })
+
+    it('should return empty longest category if categories are undefined', () => {
+      product.categories = undefined
+      const { longestCategoryList } = useProductBaseInfo(product)
+      expect(longestCategoryList.value).toStrictEqual([])
+    })
+
+    it('should return empty longest category if categories are empty', () => {
+      product.categories = []
+      const { longestCategoryList } = useProductBaseInfo(product)
+      expect(longestCategoryList.value).toStrictEqual([])
+    })
+  })
 })

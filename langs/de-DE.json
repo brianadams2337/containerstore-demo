@@ -154,6 +154,7 @@
     "change_size_label": "Ändern"
   },
   "basket": {
+    "add_to_basket": "Zum Warenkorb hinzufügen",
     "heading": "Warenkorb",
     "empty_title": "Dein Warenkorb ist leer.",
     "empty_description": "Du siehst hier eine Auflistung Deiner Produkte sobald sie in deinem Warenkorb sind.",

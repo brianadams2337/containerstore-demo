@@ -5,7 +5,11 @@ import {
   PromotionEffectType,
 } from '@scayle/storefront-nuxt'
 import { hexToRGBAColor } from '~/utils/color'
+import { AlphaColorMap } from '~/constants'
 
+type PromotionStyle =
+  | { textColor: string; backgroundColor: string; color?: string }
+  | { textColor?: string; backgroundColor: string; color: string }
 export const getBackgroundColorStyle = (
   color?: string | unknown,
   alpha?: number,
@@ -29,6 +33,25 @@ export const getTextColorStyle = (color?: unknown, alpha?: number) => {
   const textColor = color ?? fallbackColor
   return {
     color: alpha !== undefined ? hexToRGBAColor(textColor, alpha) : textColor,
+  }
+}
+
+export const getPromotionStyle = (
+  promotion?: Promotion | null,
+): PromotionStyle | undefined => {
+  if (!promotion) {
+    return
+  }
+
+  return {
+    ...getBackgroundColorStyle(
+      promotion.customData?.colorHex,
+      AlphaColorMap.ALPHA_10,
+    ),
+    ...getTextColorStyle(
+      promotion.customData?.colorHex,
+      AlphaColorMap.ALPHA_100,
+    ),
   }
 }
 

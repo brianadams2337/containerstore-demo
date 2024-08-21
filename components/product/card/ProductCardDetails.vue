@@ -25,9 +25,11 @@
     </div>
     <ProductPrice
       v-if="price"
-      v-bind="{ price, lowestPriorPrice, product }"
-      show-price-reduction-badge
-      show-price-from
+      :promotion="automaticDiscountPromotion"
+      :price="price"
+      :show-price-from="
+          product.priceRange?.min.withTax !== product.priceRange?.max.withTax
+        "
       class="absolute bottom-0 left-2 md:left-0"
     />
   </div>
@@ -35,7 +37,13 @@
 
 <script setup lang="ts">
 import type { Product } from '@scayle/storefront-nuxt'
-import { useProductBaseInfo } from '~/composables'
+import { useMounted } from '@vueuse/core'
+import {
+  useProductBaseInfo,
+  useDefaultBreakpoints,
+  useProductPromotions,
+} from '~/composables'
+import { SFFadeInFromBottomGroupTransition } from '#components'
 
 const props = defineProps<{ product: Product }>()
 
@@ -43,7 +51,24 @@ const {
   brand,
   name,
   price,
-  lowestPriorPrice,
   nonSoldOutSiblings: siblings,
 } = useProductBaseInfo(props.product)
+
+const { smallerOrEqual, greater } = useDefaultBreakpoints()
+
+const isSmallerThenMd = smallerOrEqual('md')
+const isSmallerThenXl = smallerOrEqual('xl')
+const isGreaterThen2Xl = greater('2xl')
+
+const siblingsLimit = computed(() => {
+  if (isGreaterThen2Xl.value) return 4
+  return isSmallerThenXl.value ? 2 : 3
+})
+const { automaticDiscountPromotion } = useProductPromotions(props.product)
+
+const divOrTransition = computed(() => {
+  return isSmallerThenMd.value || !isMounted.value
+    ? 'div'
+    : SFFadeInFromBottomGroupTransition
+})
 </script>

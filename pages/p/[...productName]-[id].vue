@@ -23,6 +23,9 @@
         >
           {{ name }}
         </SFHeadline>
+
+        <ProductPromotionBanners :product="product" />
+
         <div class="my-3 flex space-x-4">
           <SFDropdown v-model="activeVariant" :items="product.variants ?? []">
             {{
@@ -45,16 +48,17 @@
         </div>
         <ProductPrice
           v-if="price"
-          size="xl"
+          size="lg"
           class="mt-3"
-          v-bind="{ product, lowestPriorPrice, price }"
+          :promotion="automaticDiscountPromotion"
+          :price="price"
           type="normal"
           show-tax-info
-          show-price-reduction-badge
+          :show-price-from="showFrom"
         />
-        <SFButton :disabled="!activeVariant" @click="addToBasket"
-          >Add to basket</SFButton
-        >
+        <SFButton :disabled="!activeVariant" @click="addToBasket">{{
+          $t('basket.add_to_basket')
+        }}</SFButton>
         <div class="h-screen bg-slate-400">placeholder</div>
       </div>
     </div>
@@ -66,12 +70,17 @@
 
 <script setup lang="ts">
 import { computed, defineOptions, ref } from 'vue'
-import { getFirstAttributeValue, type Variant } from '@scayle/storefront-nuxt'
+import {
+  getFirstAttributeValue,
+  type Price,
+  type Variant,
+} from '@scayle/storefront-nuxt'
 import {
   definePageMeta,
   useBasket,
   useProduct,
   useProductBaseInfo,
+  useProductPromotions,
   useRoute,
 } from '#imports'
 
@@ -98,16 +107,31 @@ const { data: product, status: productDataStatus } = useProduct({
 const activeVariant = ref<Variant>()
 const quantity = ref(1)
 
-const { name, brand, lowestPriorPrice, longestCategoryList } =
-  useProductBaseInfo(product)
+const { name, brand, longestCategoryList } = useProductBaseInfo(product)
+const { addItem, items } = useBasket()
 
-const price = computed(() =>
-  activeVariant.value
+const price = computed(() => {
+  const basketVariant = items.value?.find(
+    (basketItem) => basketItem.variant.id === activeVariant.value?.id,
+  )
+
+  const price = basketVariant
+    ? basketVariant.price.unit
+    : activeVariant.value
     ? activeVariant.value.price
-    : product.value?.priceRange?.min,
+    : product.value?.priceRange?.min
+
+  return price as Price
+})
+
+const showFrom = computed(
+  () =>
+    !activeVariant.value &&
+    product.value?.priceRange?.min.withTax !==
+      product.value?.priceRange?.max.withTax,
 )
 
-const { addItem } = useBasket()
+const { automaticDiscountPromotion } = useProductPromotions(product)
 
 const addToBasket = () => {
   if (!activeVariant.value) {
@@ -116,6 +140,7 @@ const addToBasket = () => {
   addItem({
     variantId: activeVariant.value?.id,
     quantity: quantity.value,
+    promotionId: automaticDiscountPromotion.value?.id,
   })
 }
 </script>

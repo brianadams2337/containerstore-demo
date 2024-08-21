@@ -28,25 +28,15 @@
                 <div class="flex flex-col">
                   <ProductPrice
                     v-if="price"
-                    :product="product"
+                    :promotion="automaticDiscountPromotion"
                     :price="price"
-                    :lowest-prior-price="lowestPriorPrice"
                     :is-free="areConditionsMet"
                     size="xl"
                     type="normal"
                     show-tax-info
                     class="mt-3"
                   >
-                    <template
-                      #default="{
-                        price: productPriceValue,
-                        classes,
-                        totalReductions,
-                        isAutomaticDiscountPriceApplicable,
-                        isFree,
-                        totalPrice,
-                      }"
-                    >
+                    <template #default="{ classes, totalPrice }">
                       <p
                         class="inline-flex items-end gap-1 leading-snug"
                         :class="classes"
@@ -60,22 +50,6 @@
                           :style="styles"
                         >
                           {{ totalPrice }}
-                        </span>
-                        <span
-                          v-if="
-                            totalReductions.absoluteWithTax ||
-                            isAutomaticDiscountPriceApplicable ||
-                            isFree
-                          "
-                          class="p-1 text-sm font-medium leading-5 text-primary line-through"
-                          data-testid="initialProductPrice"
-                        >
-                          {{
-                            formatCurrency(
-                              productPriceValue.withTax +
-                                totalReductions.absoluteWithTax,
-                            )
-                          }}
                         </span>
                       </p>
                     </template>
@@ -132,8 +106,12 @@ import { computed } from 'vue'
 import { type Product, getFirstAttributeValue } from '@scayle/storefront-nuxt'
 import { getBackgroundColorStyle, getTextColorStyle } from '~/utils/promotion'
 import { AlphaColorMap } from '~/constants/color'
-import { useBasket, useFormatHelpers } from '#storefront/composables'
-import { usePromotionGiftSelection, useRouteHelpers } from '~/composables'
+import { useBasket } from '#storefront/composables'
+import {
+  useProductPromotions,
+  usePromotionGiftSelection,
+  useRouteHelpers,
+} from '~/composables'
 
 const props = defineProps<{
   product: Product
@@ -142,11 +120,9 @@ const props = defineProps<{
 }>()
 
 const { getProductDetailRoute } = useRouteHelpers()
-const { formatCurrency } = useFormatHelpers()
 
 const {
   basketIdle,
-  lowestPriorPrice,
   activeVariant,
   price,
   productName,
@@ -194,6 +170,7 @@ const styles = computed(() => {
 
   return null
 })
+const { automaticDiscountPromotion } = useProductPromotions(props.product)
 
 const close = () => {
   activeVariant.value = null

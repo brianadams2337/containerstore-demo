@@ -12,7 +12,7 @@
     >
       <ProductPrice
         v-if="subscriptionPrice"
-        :product="product"
+        :promotion="automaticDiscountPromotion"
         size="xl"
         type="normal"
         :price="subscriptionPrice"
@@ -104,6 +104,7 @@ import { computed, toRefs, watch } from 'vue'
 import type { Product, Variant } from '@scayle/storefront-nuxt'
 import { useSubscription } from '../composables/useSubscription'
 import type { PreferredDeliveryDate } from '../helpers/subscription'
+import { useProductPromotions } from '~/composables'
 
 type Props = {
   product: Product
@@ -138,6 +139,7 @@ const subscriptionState = computed(() => ({
   isInitial: !props.variant,
   isEligible: !!props.variant && subscriptionVariantEligible.value,
 }))
+const { automaticDiscountPromotion } = useProductPromotions(product)
 
 watch(
   () => subscriptionIntervals.value,
