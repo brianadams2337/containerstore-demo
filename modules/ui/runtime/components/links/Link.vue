@@ -33,8 +33,9 @@ const LinkTypeClass = {
   [LinkVariant.LOUD]: 'font-bold',
   'extra-loud': 'font-bold uppercase',
   [LinkVariant.NORMAL]: 'font-semibold',
-  [LinkVariant.WHISPER]: 'text-gray-700',
-  [LinkVariant.QUIETER]: 'text-xs font-medium text-gray-750 tracking-normal',
+  [LinkVariant.WHISPER]: 'text-gray-700 fill-gray-700',
+  [LinkVariant.QUIETER]:
+    'text-xs font-medium text-gray-750 fill-gray-750 tracking-normal',
   [LinkVariant.QUIET]: 'text-sm font-semibold tracking-normal',
 } as const
 

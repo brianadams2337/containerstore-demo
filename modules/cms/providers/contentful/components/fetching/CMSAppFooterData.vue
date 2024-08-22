@@ -13,6 +13,7 @@
       >
         <CMSText :blok="footerContent.text" class="text-xs" no-margin-top />
       </div>
+
       <div
         v-for="group in footerContent?.linkGroups"
         :key="group?.sys.id"
@@ -28,6 +29,7 @@
           class="!block py-2 text-xs font-semibold text-gray-750 md:py-1"
         />
       </div>
+
       <div
         v-for="tree in navigationTreeItems"
         :key="`footer-navigation-tree-${tree.id}`"
@@ -43,20 +45,24 @@
           class="block py-2 text-xs font-semibold !leading-4 text-gray-750 md:py-1"
         />
       </div>
-    </div>
-    <div v-if="footerContent?.socialMedia" class="container pb-8">
-      <div class="flex justify-end gap-4">
-        <SFLink
-          v-for="social in footerContent.socialMedia"
-          :key="social?.sys.id"
-          :to="social?.fields.url ?? {}"
-        >
-          <component
-            :is="`IconSocial${getSocialName(social?.fields.type ?? '')}`"
-          />
-        </SFLink>
+
+      <div v-if="footerContent?.socialMedia" class="flex flex-col">
+        <div class="flex flex-wrap gap-4">
+          <SFLink
+            v-for="social in footerContent.socialMedia"
+            :key="social?.sys.id"
+            :to="social?.fields.url ?? {}"
+            open-in-new-tab
+          >
+            <component
+              :is="`IconSocial${getSocialName(social?.fields.type ?? '')}`"
+              class="size-6"
+            />
+          </SFLink>
+        </div>
       </div>
     </div>
+
     <div
       v-if="footerContent?.textBottom"
       class="bg-primary p-2 text-center text-xs text-secondary"

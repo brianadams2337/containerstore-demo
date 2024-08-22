@@ -6,7 +6,7 @@
     >
       <div
         v-if="footerContent?.text"
-        class="md:pr-16"
+        class="flex flex-col"
         :class="{
           'order-last': footerContent.align_right,
         }"
@@ -21,6 +21,7 @@
           no-margin-top
         />
       </div>
+
       <div
         v-for="group in footerContent?.link_groups"
         :key="group._uid"
@@ -36,6 +37,7 @@
           class="!block py-2 text-xs font-semibold text-gray-750 md:py-1"
         />
       </div>
+
       <div
         v-for="tree in navigationTreeItems"
         :key="`footer-navigation-tree-${tree.id}`"
@@ -51,18 +53,24 @@
           class="block py-2 text-xs font-semibold !leading-4 text-gray-750 md:py-1"
         />
       </div>
-    </div>
-    <div v-if="footerContent?.social_media" class="container pb-8">
-      <div class="flex justify-end gap-4">
-        <SFLink
-          v-for="social in footerContent.social_media"
-          :key="social?._uid"
-          :to="social?.url?.cached_url ?? {}"
-        >
-          <component :is="`IconSocial${getSocialName(social?.type ?? '')}`" />
-        </SFLink>
+
+      <div v-if="footerContent?.social_media" class="flex flex-col">
+        <div class="flex flex-wrap gap-4">
+          <SFLink
+            v-for="social in footerContent.social_media"
+            :key="social?._uid"
+            :to="social?.url?.cached_url ?? {}"
+            open-in-new-tab
+          >
+            <component
+              :is="`IconSocial${getSocialName(social?.type ?? '')}`"
+              class="size-6"
+            />
+          </SFLink>
+        </div>
       </div>
     </div>
+
     <div
       v-if="footerContent?.text_bottom"
       class="bg-primary p-2 text-center text-xs text-secondary"
