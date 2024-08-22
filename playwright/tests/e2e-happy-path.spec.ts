@@ -1,5 +1,9 @@
 import { expect, test } from '../fixtures/fixtures'
-import { E2E_BASKET_URL, PLP_BASE_PATH } from '../support/constants'
+import {
+  BASKET_TEST_DATA,
+  E2E_BASKET_URL,
+  PLP_BASE_PATH,
+} from '../support/constants'
 
 test('C2139186: E2E from Home to Checkout - happy path', async ({
   homePage,
@@ -26,10 +30,14 @@ test('C2139186: E2E from Home to Checkout - happy path', async ({
 
   await header.visitBasketPage()
   await expect(page).toHaveURL(E2E_BASKET_URL)
-  await basketPage.assertProductIsInBasket()
+  await basketPage.assertProductIsInBasket(
+    BASKET_TEST_DATA.productRegularBrand,
+    BASKET_TEST_DATA.productNameHappyPath,
+  )
 
   await basketPage.gotoCheckoutPage()
   await signinPage.loginButton.waitFor({ state: 'visible' })
 
   expect(page.url()).toContain('signin?redirectUrl=checkout')
+  await basketPage.emptyBasket(BASKET_TEST_DATA.itemKeyBasketE2E)
 })

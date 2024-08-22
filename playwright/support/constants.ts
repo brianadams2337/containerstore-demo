@@ -54,3 +54,18 @@ export const SEARCH_SUGGESTIONS = {
   searchExactProductID: '206140',
   pdpUrl: '/p/sneaker-adimatic-206140',
 }
+
+export const BASKET_TEST_DATA = {
+  emptyBasketTitleDE: 'Dein Warenkorb ist leer.',
+  emptyBasketSubtitleDE:
+    'Du siehst hier eine Auflistung Deiner Produkte sobald sie in deinem Warenkorb sind.',
+  productRegularVariantId: 320096,
+  productRegularName: `Hose 'Essentials'`,
+  productRegularBrand: 'ADIDAS ORIGINALS',
+  productNameHappyPath: `Sweatshirt 'ESS'`,
+  itemKeyHappyPath: '15e3df16a020df6b0716b0cb351132ac',
+  itemKeyBasketE2E: '7dac25e441f1472a2201cd7f493d139c',
+}
+
+export const HOMEPAGE_PATH_DE = '/de'
+export const SIGNIN_URL = '/signin'

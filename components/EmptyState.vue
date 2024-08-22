@@ -20,10 +20,18 @@
         v-if="showDefaultActions"
         class="mt-8 flex justify-center gap-4 md:justify-start"
       >
-        <SFButton v-if="!isLoggedIn" :to="routeList.signin">
+        <SFButton
+          v-if="!isLoggedIn"
+          :to="routeList.signin"
+          data-testid="button-signin"
+        >
           {{ $t('global.sign_in_label') }}
         </SFButton>
-        <SFButton :to="routeList.home" type="tertiary">
+        <SFButton
+          :to="routeList.home"
+          type="tertiary"
+          data-testid="button-continue-shopping"
+        >
           {{ $t('global.continue_shopping_label') }}
         </SFButton>
       </div>

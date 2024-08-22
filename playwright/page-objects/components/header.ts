@@ -7,6 +7,7 @@ export class Header {
   readonly wishlistNumItems: Locator
   readonly headerBasketButton: Locator
   readonly headerLoginButton: Locator
+  readonly basketNumItems: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -18,6 +19,7 @@ export class Header {
 
     this.headerBasketButton = page.getByTestId('basket-link')
     this.headerLoginButton = page.getByTestId('user-popover')
+    this.basketNumItems = page.getByTestId('floating-badge')
   }
 
   async hidePromotionBanner() {
@@ -26,6 +28,7 @@ export class Header {
 
   async visitBasketPage() {
     await this.headerBasketButton.click()
+    await this.page.waitForLoadState('domcontentloaded')
   }
 
   async clickLoginHeaderButton() {

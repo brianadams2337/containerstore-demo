@@ -1,9 +1,18 @@
 <template>
   <div :class="baseClass">
-    <div class="font-semibold opacity-50" :class="labelClass">
+    <div
+      class="font-semibold opacity-50"
+      :class="labelClass"
+      data-testid="main-label"
+    >
       {{ label }}
     </div>
-    <div v-if="value" class="font-bold" :class="valueClass">
+    <div
+      v-if="value"
+      class="font-bold"
+      :class="valueClass"
+      data-testid="sub-label"
+    >
       {{ value }}
     </div>
   </div>

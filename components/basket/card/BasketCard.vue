@@ -53,6 +53,7 @@
                   :label="brand"
                   :value="name"
                   primary
+                  data-testid="basket-product-brand"
                 />
               </SFLink>
             </div>

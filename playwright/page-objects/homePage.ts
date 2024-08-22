@@ -8,6 +8,6 @@ export class HomePage {
   }
 
   async visitPage() {
-    await this.page.goto('/')
+    await this.page.goto('/', { waitUntil: 'commit' })
   }
 }
