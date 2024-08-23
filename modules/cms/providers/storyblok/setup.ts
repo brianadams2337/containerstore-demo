@@ -14,7 +14,7 @@ import type { StoryblokModuleOptions } from './types'
 
 export async function setupStoryblok(options: ModuleOptions, nuxt: Nuxt) {
   const resolver = createResolver(import.meta.url)
-  logger.info('Setting up Storyblok provider...')
+  logger.info('Setting up Storyblok as CMS provider...')
 
   const runtimeCMS = nuxt.options.runtimeConfig?.public.cms
 
@@ -43,7 +43,6 @@ export async function setupStoryblok(options: ModuleOptions, nuxt: Nuxt) {
     },
   } as NuxtOptions['image']
 
-  logger.info('Checking up Storyblok credentials...')
   if (
     runtimeCMS.accessToken === undefined &&
     !import.meta.env.NUXT_PUBLIC_CMS_ACCESS_TOKEN
@@ -51,18 +50,15 @@ export async function setupStoryblok(options: ModuleOptions, nuxt: Nuxt) {
     logger.error('Missing Storyblok accessToken')
   }
 
-  logger.info('Loading up Storyblok plugin...')
   addPlugin(resolver.resolve('./runtime/plugin'))
 
   // TODO: Remove with fully disabling of auto import feature
-  logger.info('Loading up Storyblok composables...')
   addImportsDir(resolver.resolve('./composables'))
   addImportsDir(resolver.resolve('./composables/storefront'))
 
   nuxt.options.alias['#storefront-cms/composables'] =
     resolver.resolve('./components')
 
-  logger.info('Loading up Storyblok components...')
   await addComponentsDir({
     path: resolver.resolve('./components'),
     prefix: options.componentPrefix ?? 'CMS',
@@ -70,7 +66,6 @@ export async function setupStoryblok(options: ModuleOptions, nuxt: Nuxt) {
     global: true,
   })
 
-  logger.info('Loading up Storyblok types...')
   addTypeTemplate({
     filename: 'cms-custom.d.ts',
     src: resolver.resolve('./types/storyblok.d.ts'),

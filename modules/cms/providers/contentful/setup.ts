@@ -12,7 +12,7 @@ import type { ContentfulModuleOptions } from './types'
 
 export async function setupContentful(options: ModuleOptions, nuxt: Nuxt) {
   const resolver = createResolver(import.meta.url)
-  logger.info('Setting up Contentful provider...')
+  logger.info('Setting up Contentful as CMS provider...')
 
   const runtimeCMS = nuxt.options.runtimeConfig?.public.cms
 
@@ -28,7 +28,6 @@ export async function setupContentful(options: ModuleOptions, nuxt: Nuxt) {
     },
   } as NuxtOptions['image']
 
-  logger.info('Checking up Contentful credentials...')
   if (
     runtimeCMS.accessToken === undefined &&
     !import.meta.env.NUXT_PUBLIC_CMS_ACCESS_TOKEN
@@ -42,11 +41,9 @@ export async function setupContentful(options: ModuleOptions, nuxt: Nuxt) {
     logger.error('Missing Contentful spaceId')
   }
 
-  logger.info('Loading up Contentful plugin...')
   addPlugin(resolver.resolve('./runtime/plugin'))
 
   // TODO: Remove with fully disabling of auto import feature
-  logger.info('Loading up Contentful composables...')
   addImportsDir(resolver.resolve('./composables'))
   addImportsDir(resolver.resolve('./composables/storefront'))
 

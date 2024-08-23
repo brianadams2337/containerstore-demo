@@ -30,7 +30,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     if (!options.provider) {
       logger.error(
-        `\nYou must define a provider.\nSupported providers are: ${formattedProvidersKeys}!`,
+        `\nYou must define a CMS provider.\nSupported CMS providers are: ${formattedProvidersKeys}!`,
       )
     }
 
