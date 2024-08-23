@@ -41,7 +41,7 @@
   "devDependencies": {
     "@changesets/cli": "2.27.7",
     "@eslint/eslintrc": "3.1.0",
-    "@nuxt/eslint": "0.5.1",
+    "@nuxt/eslint": "0.5.2",
     "@nuxt/image": "1.7.0",
     "@nuxt/test-utils": "3.14.1",
     "@nuxtjs/i18n": "8.5.0",
