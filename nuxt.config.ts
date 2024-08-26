@@ -60,7 +60,7 @@ const isVercel =
 // Generate the i18n locales from the shop config
 interface LocaleConfig {
   code: string
-  iso: string
+  language: string
   domain: string
   file: string
 }
@@ -69,15 +69,15 @@ const locales: LocaleConfig[] = shops.flatMap((shop) => {
   if (Array.isArray(shop.code)) {
     return shop.code.map((code) => ({
       code,
-      iso: shop.locale,
-      domain: `${code}.localhost:3000`,
+      language: shop.locale,
+      domain: baseShopDomain(code),
       file: shop.translationFile,
     }))
   } else {
     return {
       code: shop.code,
-      iso: shop.locale,
-      domain: `${shop.code}.localhost:3000`,
+      language: shop.locale,
+      domain: baseShopDomain(shop.code),
       file: shop.translationFile,
     }
   }
