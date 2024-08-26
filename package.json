@@ -88,7 +88,7 @@
     "vue-tsc": "2.0.29"
   },
   "dependencies": {
-    "@contentful/live-preview": "4.5.2",
+    "@contentful/live-preview": "4.5.4",
     "@contentful/rich-text-html-renderer": "16.6.8",
     "@googlemaps/js-api-loader": "1.16.8",
     "@scayle/omnichannel-nuxt": "4.0.0",
