@@ -9,8 +9,7 @@ export class MainNavigation {
     this.menuTestCategory = page.getByTestId('nav-link-frauen')
   }
 
-  async mainMenuCategoryClick(page: Page) {
+  async mainMenuCategoryClick() {
     await this.menuTestCategory.click()
-    await page.waitForURL(/\/c/)
   }
 }

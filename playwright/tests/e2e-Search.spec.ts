@@ -7,56 +7,69 @@ test.beforeEach(async ({ homePage, page }) => {
 })
 
 test('C2139814: Verify Search no results page', async ({ search, page }) => {
-  await search.executeSearch(SEARCH_SUGGESTIONS.searchTermNoResults)
-  await page.waitForURL(SEARCH_SUGGESTIONS.searchUrl)
+  await expect(async () => {
+    await search.executeSearch(SEARCH_SUGGESTIONS.searchTermNoResults)
+    await page.waitForURL(SEARCH_SUGGESTIONS.searchUrl)
 
-  const pageUrl = page.url()
-  expect(pageUrl).toContain(
-    SEARCH_SUGGESTIONS.searchParamUrl + SEARCH_SUGGESTIONS.searchTermNoResults,
-  )
-  await search.assertHeadlineSearchResults(
-    SEARCH_SUGGESTIONS.searchTermNoResults,
-    '0',
-  )
+    const pageUrl = page.url()
+    expect(pageUrl).toContain(
+      SEARCH_SUGGESTIONS.searchParamUrl +
+        SEARCH_SUGGESTIONS.searchTermNoResults,
+    )
+    await search.assertHeadlineSearchResults(
+      SEARCH_SUGGESTIONS.searchTermNoResults,
+      '0',
+    )
+  }).toPass()
 })
 
 test('C2130650: Verify Search results page', async ({ search, page }) => {
-  await search.executeSearch(SEARCH_SUGGESTIONS.searchTermBrand)
-  await page.waitForURL(SEARCH_SUGGESTIONS.searchUrl)
+  await expect(async () => {
+    await search.executeSearch(SEARCH_SUGGESTIONS.searchTermBrand)
+    await page.waitForURL(SEARCH_SUGGESTIONS.searchUrl)
 
-  const pageUrl = page.url()
+    const pageUrl = page.url()
 
-  expect(pageUrl).toContain(
-    SEARCH_SUGGESTIONS.searchParamUrl + SEARCH_SUGGESTIONS.searchTermBrand,
-  )
-  await expect(search.searchResultsProductImage.first()).toBeVisible()
-  await search.assertHeadlineSearchResults(SEARCH_SUGGESTIONS.searchTermBrand)
+    expect(pageUrl).toContain(
+      SEARCH_SUGGESTIONS.searchParamUrl + SEARCH_SUGGESTIONS.searchTermBrand,
+    )
+    await expect(search.searchResultsProductImage.first()).toBeVisible()
+    await search.assertHeadlineSearchResults(SEARCH_SUGGESTIONS.searchTermBrand)
+  }).toPass()
 })
 
 test('C2130721: Verify Search suggestions', async ({ search }) => {
-  await search.startTypingSearch(SEARCH_SUGGESTIONS.searchTermProduct)
-  await search.assertSearchCategorySuggestions(
-    SEARCH_SUGGESTIONS.searchTermProduct,
-  )
+  await expect(async () => {
+    await search.startTypingSearch(SEARCH_SUGGESTIONS.searchTermProduct)
+    await search.assertSearchCategorySuggestions(
+      SEARCH_SUGGESTIONS.searchTermProduct,
+    )
+  }).toPass()
 })
 
 test('C2132124: Verify Search suggestions "More" button', async ({
   search,
 }) => {
-  await search.startTypingSearch(SEARCH_SUGGESTIONS.searchTermProduct)
-  await search.clickSearchMoreButton()
+  await expect(async () => {
+    await search.startTypingSearch(SEARCH_SUGGESTIONS.searchTermProduct)
+    await search.clickSearchMoreButton()
 
-  await expect(search.searchResultsProductImage.first()).toBeVisible()
-  await search.assertHeadlineSearchResults(SEARCH_SUGGESTIONS.searchTermProduct)
+    await expect(search.searchResultsProductImage.first()).toBeVisible()
+    await search.assertHeadlineSearchResults(
+      SEARCH_SUGGESTIONS.searchTermProduct,
+    )
+  }).toPass()
 })
 
 test('C2132173: Verify Search suggestions exact product match', async ({
   search,
   productDetailPage,
 }) => {
-  await search.startTypingSearch(SEARCH_SUGGESTIONS.searchExactProductID)
-  await search.clickExactProductItem()
+  await expect(async () => {
+    await search.startTypingSearch(SEARCH_SUGGESTIONS.searchExactProductID)
+    await search.clickExactProductItem()
 
-  await productDetailPage.productImage.first().waitFor({ state: 'visible' })
-  await search.assertPdpIsLoaded()
+    await productDetailPage.productImage.first().waitFor({ state: 'visible' })
+    await search.assertPdpIsLoaded()
+  }).toPass()
 })

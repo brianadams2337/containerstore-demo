@@ -11,6 +11,7 @@ export class PlpFilters {
   readonly filterPriceTo: Locator
   readonly filterSizeCheckbox: Locator
   readonly filterFormCheckbox: Locator
+  readonly filterGroupCounter: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -23,5 +24,6 @@ export class PlpFilters {
     this.filterPriceTo = page.getByRole('spinbutton').first()
     this.filterSizeCheckbox = page.getByTestId('checkbox-chip')
     this.filterFormCheckbox = page.getByTestId('form-checkbox')
+    this.filterGroupCounter = page.getByTestId('filter-group-counter')
   }
 }

@@ -21,13 +21,8 @@ export class ProductListingPage {
     this.productTile = page.locator('[id^="product-"]')
     this.sortDropdown = page.getByTestId('sort-dropdown')
     this.filterButton = page.getByTestId('filter-toggle-button')
-    this.menuRootCategory = page
-      .getByTestId('root-category-0')
-      .getByRole('link')
-    this.menuSubCategoryLvl1 = page
-      .getByTestId('sub-category-0')
-      .first()
-      .getByRole('link')
+    this.menuRootCategory = page.getByTestId('root-category-0')
+    this.menuSubCategoryLvl1 = page.getByTestId('sub-category-0')
     this.menuSubCategoryLvl2 = page
       .getByTestId('sub-category-0')
       .nth(1)
@@ -55,15 +50,22 @@ export class ProductListingPage {
       baseUrl +
       path +
       (formattedFilters.length ? `?${formattedFilters.join('&')}` : '')
-    await this.page.goto(url)
+    await this.page.goto(url, { waitUntil: 'load' })
   }
 
   async visitPlpNoFilters(path: string, baseUrl: string) {
     const url = baseUrl + path
-    await this.page.goto(url)
+    await this.page.goto(url, { waitUntil: 'load' })
   }
 
   async removeProductFromWishlist() {
     await this.removeFromWishlistButton.first().click()
+  }
+
+  async openTestCategoryPLP(subCategoryName: string) {
+    await this.menuRootCategory
+      .getByRole('link', { name: subCategoryName })
+      .first()
+      .click()
   }
 }
