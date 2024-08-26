@@ -9846,10 +9846,10 @@ nuxt-jsonld@2.0.8:
     pathe "^1.1.0"
     schema-dts "^1.1.2"
 
-nuxt-svgo@4.0.3:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/nuxt-svgo/-/nuxt-svgo-4.0.3.tgz#09ea82d78a519918a7f94ebe5518e191d0f4af32"
-  integrity sha512-EKcDLBqK5n9V2Xu8pXiIyAIkD7l7UMvxv1/6yIBuE/4J7XNeftd7++Yt/5EvsOFYxWloWqsGJg9cETUyWCmTYg==
+nuxt-svgo@4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/nuxt-svgo/-/nuxt-svgo-4.0.4.tgz#914fc34ea0824ccb4561e629f6e3c244127e3d08"
+  integrity sha512-RbIgXJrkRCA9OrJTmB4drO1BfJm1flUCx+3BMZt5iJW7one3kQSOVVDUfOVYRlAh0nAF9WhHv5v98gQwNMrPWQ==
   dependencies:
     "@nuxt/kit" "^3.4.0"
     mini-svg-data-uri "^1.4.4"
