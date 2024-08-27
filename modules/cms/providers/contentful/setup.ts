@@ -11,7 +11,7 @@ import type { ContentfulModuleOptions } from './types'
 
 export async function setupContentful(options: ModuleOptions, nuxt: Nuxt) {
   const resolver = createResolver(import.meta.url)
-  logger.info('Setting up Contentful as CMS provider...')
+  logger.info('Setting up Contentful as CMS provider')
 
   const runtimeCMS = nuxt.options.runtimeConfig?.public.cms
 
@@ -45,7 +45,6 @@ export async function setupContentful(options: ModuleOptions, nuxt: Nuxt) {
   nuxt.options.alias['#storefront-cms/composables'] =
     resolver.resolve('./components')
 
-  logger.info('Loading up Contentful components...')
   await addComponentsDir({
     path: resolver.resolve('./components'),
     prefix: options.componentPrefix ?? 'CMS',
@@ -53,7 +52,6 @@ export async function setupContentful(options: ModuleOptions, nuxt: Nuxt) {
     global: true,
   })
 
-  logger.info('Loading up Contentful types...')
   addTypeTemplate({
     filename: 'cms-custom.d.ts',
     src: resolver.resolve('./types/contentful-defs.d.ts'),

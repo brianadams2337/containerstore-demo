@@ -13,7 +13,7 @@ import type { StoryblokModuleOptions } from './types'
 
 export async function setupStoryblok(options: ModuleOptions, nuxt: Nuxt) {
   const resolver = createResolver(import.meta.url)
-  logger.info('Setting up Storyblok as CMS provider...')
+  logger.info('Setting up Storyblok as CMS provider')
 
   const runtimeCMS = nuxt.options.runtimeConfig?.public.cms
 
