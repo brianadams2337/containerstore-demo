@@ -13,4 +13,8 @@
   body:has(dialog[open]) {
     overflow: hidden;
   }
+  dialog {
+    max-width: 100vw;
+    max-height: 100vh;
+  }
 }

@@ -7,11 +7,7 @@
         :product="product"
         @click:image="toggleZoomGallery(true, $event)"
       />
-      <ZoomGallery
-        :images="product.images"
-        :active-index="zoomGalleryIndex"
-        @click:close-zoom-gallery="toggleZoomGallery(false)"
-      />
+      <ZoomGallery :images="product.images" :active-index="zoomGalleryIndex" />
       <div
         class="sticky right-0 top-0 mt-5 w-full md:w-1/2 md:pl-4 xl:w-1/3 xl:pl-6"
       >

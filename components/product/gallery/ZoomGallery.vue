@@ -1,5 +1,5 @@
 <template>
-  <SFModal ref="modalRef" full-screen @close="emit('click:close-zoom-gallery')">
+  <SFModal v-model:visible="zoomGalleryOpen" full-screen>
     <div class="relative flex size-full flex-col">
       <!-- slides -->
       <div class="relative h-full flex-1 overflow-hidden">
@@ -70,27 +70,9 @@ const props = defineProps({
   },
 })
 
-const emit = defineEmits<{
-  (e: 'click:close-zoom-gallery'): void
-}>()
-
 const currentIndex = ref(0)
 
-const modalRef = ref()
-
-const { display } = useZoomGalleryActions()
-
-watch(
-  display,
-  (isOpen) => {
-    if (isOpen) {
-      modalRef.value?.showModal()
-    } else {
-      modalRef.value?.close()
-    }
-  },
-  { immediate: true },
-)
+const { display: zoomGalleryOpen } = useZoomGalleryActions()
 
 const {
   wrapAroundIndex,

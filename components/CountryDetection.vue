@@ -1,5 +1,5 @@
 <template>
-  <SFModal ref="modalRef">
+  <SFModal v-model:visible="modalOpen">
     <div class="mt-8 flex flex-col items-center gap-4">
       <div>
         {{ $t('country_selection.prompt', { country: suggestedCountry }) }}
@@ -62,10 +62,10 @@ interface ShopInfo {
 }
 
 const suggestedShops = ref<ShopInfo[]>([])
-const modalRef = ref()
+const modalOpen = ref<boolean>()
 
 const switchToShop = function (shop: ShopInfo) {
-  modalRef.value?.close()
+  modalOpen.value = false
   hasPromptedUser.value = true
   trackingEvents.trackShopChange()
   if (shop.path) {
@@ -74,7 +74,7 @@ const switchToShop = function (shop: ShopInfo) {
 }
 
 const stayInShop = function () {
-  modalRef.value?.close()
+  modalOpen.value = false
   hasPromptedUser.value = true
 }
 
@@ -154,7 +154,7 @@ onMounted(async () => {
   if (otherShops.length) {
     suggestedShops.value = otherShops
     suggestedCountry.value = regionNames.of(detectedRegion)
-    modalRef.value?.showModal()
+    modalOpen.value = true
   }
 })
 </script>

@@ -1,49 +1,47 @@
 <template>
   <Transition
-    enter-from-class="opacity-0 backdrop:opacity-0"
-    enter-to-class="opacity-100 backdrop:opacity-100"
-    enter-active-class="transition ease-linear duration-200 backdrop:transition backdrop:ease-linear backdrop:duration-200"
-    leave-active-class="transition ease-linear duration-200 delay-100 backdrop:transition backdrop:ease-linear backdrop:duration-200 backdrop:delay-100"
-    leave-from-class="opacity-100 backdrop:opacity-100"
-    leave-to-class="opacity-0 backdrop:opacity-0"
+    :enter-from-class="
+      [slideTypes[slideType].enterClasses, 'backdrop:opacity-0'].join(' ')
+    "
+    :enter-to-class="
+      [slideTypes[slideType].enterToClasses, 'backdrop:opacity-100'].join(' ')
+    "
+    enter-active-class="transform transition-all duration-200 backdrop:transition backdrop:ease-linear backdrop:duration-200"
+    leave-active-class="transform transition-all duration-200 backdrop:transition backdrop:ease-linear backdrop:duration-200"
+    :leave-from-class="
+      [slideTypes[slideType].leaveClasses, 'backdrop:opacity-100'].join(' ')
+    "
+    :leave-to-class="
+      [slideTypes[slideType].leaveToClasses, 'backdrop:opacity-0'].join(' ')
+    "
   >
     <!-- eslint-disable-next-line vue/require-toggle-inside-transition  -->
     <dialog
       v-dialog.modal="isOpen"
-      class="absolute inset-0 overflow-hidden backdrop:bg-black/50"
+      class="h-full overflow-hidden transition-all backdrop:bg-black/50 max-sm:m-0 max-sm:h-screen max-sm:w-screen md:mr-0 md:rounded-xl"
       @click="onClick"
       @cancel="onCancel"
     >
-      <Transition
-        :enter-from-class="slideTypes[slideType].enterClasses"
-        :enter-to-class="slideTypes[slideType].enterToClasses"
-        enter-active-class="transform transition-all duration-200 delay-75"
-        leave-active-class="transform transition-all duration-200"
-        :leave-from-class="slideTypes[slideType].leaveClasses"
-        :leave-to-class="slideTypes[slideType].leaveToClasses"
+      <div
+        class="size-full overflow-y-auto bg-white md:inset-y-2 md:right-2 md:max-w-[25rem]"
+        :class="slideClass"
       >
-        <div
-          v-if="isOpen"
-          class="fixed z-50 size-full overflow-y-auto bg-white md:inset-y-2 md:right-2 md:size-auto md:max-w-[25rem] md:rounded-xl"
-          :class="slideClass"
-        >
-          <div class="relative flex h-full flex-col">
-            <slot v-bind="toggle" name="slide-in-content">
-              <div
-                class="sticky top-0 z-10 border-b border-b-gray-200 bg-white/90 px-6 py-4"
-              >
-                <slot name="slide-in-header" :toggle="toggle" />
-              </div>
-              <slot name="slide-in-body" />
-              <div
-                class="sticky bottom-0 z-10 mt-auto border-t border-t-gray-200 bg-white p-6"
-              >
-                <slot name="slide-in-actions" />
-              </div>
-            </slot>
-          </div>
+        <div class="relative flex h-full flex-col">
+          <slot v-bind="toggle" name="slide-in-content">
+            <div
+              class="sticky top-0 z-10 border-b border-b-gray-200 bg-white/90 px-6 py-4"
+            >
+              <slot name="slide-in-header" :toggle="toggle" />
+            </div>
+            <slot name="slide-in-body" />
+            <div
+              class="sticky bottom-0 z-10 mt-auto border-t border-t-gray-200 bg-white p-6"
+            >
+              <slot name="slide-in-actions" />
+            </div>
+          </slot>
         </div>
-      </Transition>
+      </div>
     </dialog>
   </Transition>
 </template>
