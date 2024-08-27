@@ -9,15 +9,17 @@
         :style="{ height: `${mainImageHeight}px` }"
       >
         <div
-          v-for="(img, index) in product.images"
-          :key="img.hash"
+          v-for="(productThumbnail, index) in product.images"
+          :key="productThumbnail.hash"
           :data-testid="`product-thumbnail-${index}`"
           class="my-2 aspect-3/4 w-24 shrink-0 cursor-pointer overflow-hidden rounded-md bg-gray-50 first:mt-0 last:mb-0"
-          :class="[index === activeSlide ? 'bg-[#171717]/10' : 'bg-gray-50']"
+          :class="[index === activeSlide ? 'bg-gray-900/10' : 'bg-gray-50']"
           @mouseenter="scrollImageIntoView(index)"
+          @click="isZoomModalOpen = true"
         >
           <ProductImage
-            :image="img"
+            :image="productThumbnail"
+            :alt="alt"
             sizes="xs:96px sm:96px md:96px lg:96px xl:96px"
           />
         </div>
@@ -48,20 +50,22 @@
       <SFItemsSlider
         id="image"
         ref="image"
-        v-model:active-slide="activeSlide"
         :with-arrows="product.images.length > 1"
         :slider-class="productImageSliderClass"
         data-testid="main-product-image"
+        @update:active-slide="updateActiveSlide"
       >
         <ProductImage
-          v-for="(img, index) in product.images"
-          :key="img.hash"
-          :image="img"
+          v-for="(productImage, index) in product.images"
+          :key="productImage.hash"
+          :image="productImage"
           :image-loading="index === 0 ? 'eager' : 'lazy'"
           :preload="index === 0"
+          :alt="alt"
           :data-testid="`product-image-${index}`"
           sizes="xs:100vw sm:100vw md:50vw lg:50vw xl:50vw"
-          class="min-w-full snap-start snap-always self-start overflow-hidden md:rounded-md"
+          class="min-w-full cursor-pointer snap-start snap-always self-start overflow-hidden md:rounded-md"
+          @click="isZoomModalOpen = true"
         />
         <template #arrows="{ prev, isPrevEnabled, next, isNextEnabled }">
           <div class="absolute bottom-4 right-4 flex space-x-px max-md:hidden">
@@ -81,7 +85,7 @@
             </button>
           </div>
         </template>
-        <template #thumbnails="{ activeSlide }">
+        <template #thumbnails>
           <div
             class="absolute bottom-4 left-1/2 flex -translate-x-1/2 space-x-1 md:hidden"
           >
@@ -101,17 +105,25 @@
       />
       <GoBackLink class="left-5 top-5 md:hidden" use-window-history />
     </div>
+    <LazyProductGalleryZoom
+      v-if="isZoomModalOpen"
+      :alt="alt"
+      :images="product.images"
+      :start-index="activeSlide"
+      @close="isZoomModalOpen = false"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { useElementSize } from '@vueuse/core'
 import { ref } from 'vue'
+import { useElementSize } from '@vueuse/core'
 import type { Product } from '@scayle/storefront-nuxt'
 import { SFItemsSlider } from '#components'
 import GoBackLink from '~/modules/ui/runtime/components/links/GoBackLink.vue'
+import { useProductBaseInfo } from '#imports'
 
-defineProps<{
+const props = defineProps<{
   product: Product
   productImageSliderClass?: string
 }>()
@@ -124,5 +136,12 @@ const scrollImageIntoView = (index: number) => {
 }
 
 const { height: mainImageHeight } = useElementSize(image)
-const activeSlide = ref(1)
+const activeSlide = ref(0)
+const updateActiveSlide = (newSlide: number) => {
+  activeSlide.value = Number.isFinite(newSlide) ? newSlide : 0
+}
+
+const isZoomModalOpen = ref(false)
+
+const { alt } = useProductBaseInfo(props.product)
 </script>

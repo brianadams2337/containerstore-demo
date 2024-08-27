@@ -8,17 +8,17 @@
       @cancel="onCancel"
     >
       <div
-        class="relative m-auto w-full rounded-md bg-white p-8 md:w-[46.875rem]"
-        :class="{ '!h-[95%] !w-[95%]': fullScreen }"
+        class="relative m-auto w-full rounded-md bg-white"
+        :class="{ '!h-[95%] !w-[95%]': fullScreen, 'p-8': !disablePadding, 'md:w-[46.875rem]': !fullScreen }"
       >
         <slot name="headline" />
         <button
           v-if="!hideCloseButton"
           data-testid="close-button"
-          class="absolute right-6 top-6 z-50 cursor-pointer p-3"
+          class="group absolute right-6 top-6 z-50 cursor-pointer rounded-full p-2.5 transition-colors max-md:bg-gray-100 md:hover:bg-gray-100"
           @click="onCancel"
         >
-          <IconClose class="size-5" />
+          <IconClose class="size-5 transition-colors md:fill-gray-400 md:group-hover:fill-black" />
         </button>
         <slot />
       </div>
@@ -34,12 +34,14 @@ type Props = {
   hideCloseButton?: boolean
   fullScreen?: boolean
   closeOnOutside?: boolean
+  disablePadding?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   hideCloseButton: false,
   fullScreen: false,
   closeOnOutside: true,
+  disablePadding: false,
 })
 
 const visible = defineModel<boolean>('visible', {

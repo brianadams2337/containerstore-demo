@@ -1,5 +1,6 @@
 import { debounce } from 'radash'
 import { computed, ref, type Ref } from 'vue'
+import { useMounted } from '#imports'
 
 export function useItemsSlider(
   sliderRef: Ref<HTMLElement>,
@@ -39,7 +40,7 @@ export function useItemsSlider(
   })
 
   const onScroll = () => {
-    if (import.meta.server) {
+    if (import.meta.server || !sliderRef.value) {
       return
     }
 
@@ -111,7 +112,7 @@ export function useItemsSlider(
 
   const scrollImageIntoView = (
     index: number,
-    scrollBehavior: 'smooth' | 'auto' = 'auto',
+    scrollBehavior: 'smooth' | 'instant' | 'auto' = 'auto',
   ) => {
     if (!sliderRef.value) {
       return
@@ -129,12 +130,18 @@ export function useItemsSlider(
     }
   }
 
+  const mounted = useMounted()
+
   const isNextEnabled = computed(() =>
-    mode === 'horizontal' ? !arrivedRight.value : !arrivedBottom.value,
+    mounted.value && mode === 'horizontal'
+      ? !arrivedRight.value
+      : !arrivedBottom.value,
   )
 
   const isPrevEnabled = computed(() =>
-    mode === 'horizontal' ? !arrivedLeft.value : !arrivedTop.value,
+    mounted.value && mode === 'horizontal'
+      ? !arrivedLeft.value
+      : !arrivedTop.value,
   )
 
   return {
