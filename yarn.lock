@@ -11914,12 +11914,12 @@ storyblok-generate-ts@2.1.0:
     ts-command-line-args "^2.3.1"
     tsup "^6.4.0"
 
-storyblok-js-client@6.9.0:
-  version "6.9.0"
-  resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-6.9.0.tgz#d625790236acf08cfa0edf91b6a62e71d9b9b850"
-  integrity sha512-8X+NYa9RWxX61iWCCjB32qS3aBTEdzqwBN/vthFpRpMOnwXEtBDNaBpjTz8Orrefu0gKJGXLZtdqWidVe9OV0Q==
+storyblok-js-client@6.9.1, storyblok-js-client@^6.9.1:
+  version "6.9.1"
+  resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-6.9.1.tgz#7524dcc2cdd6b8c127386e8939a144421d6b9e5b"
+  integrity sha512-mXCSNIr7tvFzH+TibM7hbq+xNAeDWnrfQwh8HS4fLskVHwQ2HaCQG9BkdbT1zWUFav3HWB+B8kqi3+KjRG1CUg==
 
-storyblok-js-client@^6.7.1, storyblok-js-client@^6.7.2:
+storyblok-js-client@^6.7.2:
   version "6.8.0"
   resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-6.8.0.tgz#9adea1ffa8b8f282cfc84c39034b913a1f541a51"
   integrity sha512-uAPDbechCAUAT/NwAzICmc9cEANXmaeRdBRKJujfzjMPqQEc9fTnk1LuZ/iSSTL9j9i/fdO7JIrbsiHPH7iyTQ==
@@ -11929,10 +11929,10 @@ storyblok-js-client@^6.8.3:
   resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-6.8.3.tgz#a2c752e5972216b264e30ae5e44143250684b013"
   integrity sha512-199ULvMM4Lm0B1SrTr0QTUgtftV0OPePA4T0uJXq9nKyFFS8ln3cdVS6iegsh89BYlrQCncfRPjufaYBzvvtPg==
 
-storyblok@3.33.0:
-  version "3.33.0"
-  resolved "https://registry.yarnpkg.com/storyblok/-/storyblok-3.33.0.tgz#f67cb46e416700cd3af4a7a7c5a89af62ff3ce9a"
-  integrity sha512-wkLWGj2S3pt6P8HogdC1iiUyiS+1vSEjO7vY5PGjRtO0LIrlkGnpiMdsJaijIQcp7N5NX8x3pHJaTo1q5px9lQ==
+storyblok@3.33.1:
+  version "3.33.1"
+  resolved "https://registry.yarnpkg.com/storyblok/-/storyblok-3.33.1.tgz#fca124b4b91fb298e35dc2286563cd2aeec797cc"
+  integrity sha512-Jth/Pf2giAPdOEs6Wa3i1bw3T3UptimJ/yQ25jYEqyXzpe0yFbxNRWw3hMdXYr8oIucANlh2fmTThipKCLfwQw==
   dependencies:
     "@storyblok/region-helper" "^1.0.0"
     axios "^0.27.2"
@@ -11953,7 +11953,7 @@ storyblok@3.33.0:
     p-series "^2.1.0"
     path "^0.12.7"
     simple-uuid "^0.0.1"
-    storyblok-js-client "^6.7.1"
+    storyblok-js-client "^6.9.1"
     update-notifier "^5.1.0"
     xml-js "^1.6.11"
 
