@@ -97,7 +97,7 @@
     "@storyblok/nuxt": "6.0.10",
     "@storyblok/vue": "8.0.9",
     "@tailwindcss/forms": "0.5.8",
-    "@tailwindcss/typography": "0.5.14",
+    "@tailwindcss/typography": "0.5.15",
     "@types/google.maps": "3.55.12",
     "@vercel/kv": "2.0.0",
     "@vuelidate/core": "2.0.3",
