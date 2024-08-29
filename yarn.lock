@@ -7748,10 +7748,10 @@ h3@^1.10.0, h3@^1.10.2, h3@^1.11.1, h3@^1.12.0:
     uncrypto "^0.1.3"
     unenv "^1.9.0"
 
-happy-dom@15.3.2:
-  version "15.3.2"
-  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-15.3.2.tgz#bb0264fa22f2391e1449a5ba859645dd8de1ac26"
-  integrity sha512-kn8DBfUFETGMurtyQSDvKvMbpjJS+HrMKSAcNK3OL0Tb0t+ziY7MJzbaFJ9SI5eYWmFbl6bEruxNhCZrkphtvA==
+happy-dom@15.4.0:
+  version "15.4.0"
+  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-15.4.0.tgz#e488052f21834f6b651a3ab8a6e9b5f23967e493"
+  integrity sha512-XODtsNmhWEFWaUWHH56JLHdsshbyJR5AB5fRtzR0pfDwr9Of3YA20h4D+Gy2trArrEvnZDRjZPyqfU8UGVVU8g==
   dependencies:
     entities "^4.5.0"
     webidl-conversions "^7.0.0"
