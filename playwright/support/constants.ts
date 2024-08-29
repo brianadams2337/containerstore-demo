@@ -55,6 +55,7 @@ export const SEARCH_SUGGESTIONS = {
   searchParamUrl: 'search?term=',
   searchExactProductID: '206140',
   pdpUrl: '/p/sneaker-adimatic-206140',
+  moreButtonLabelDE: 'Mehr',
 }
 
 export const BASKET_TEST_DATA = {

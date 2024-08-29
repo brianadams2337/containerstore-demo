@@ -35,11 +35,10 @@ export class Search {
     await this.searchInput.click({ force: true })
     await this.searchInput.fill(searchTerm)
     await expect(this.searchResultsFlyout).toBeVisible()
+    await expect(this.searchCategoryListItem.first()).toBeVisible()
   }
 
   async assertSearchCategorySuggestions(searchTerm: string) {
-    await expect(this.searchCategoryListItem.first()).toBeVisible()
-    await this.searchCategoryListItem.first().click()
     await this.page.waitForURL(SEARCH_SUGGESTIONS.plpUrl)
     await this.page.waitForLoadState('networkidle')
 
@@ -56,7 +55,7 @@ export class Search {
   }
 
   async clickSearchMoreButton() {
-    expect(this.searchMoreButton).toBeVisible()
+    this.searchMoreButton.waitFor()
     await this.searchMoreButton.click()
   }
 

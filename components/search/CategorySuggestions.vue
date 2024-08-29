@@ -7,7 +7,11 @@
     >
       {{ label }}
     </label>
-    <ul :id="`${label}-category-list`" class="space-y-2.5">
+    <ul
+      :id="`${label}-category-list`"
+      class="space-y-2.5"
+      data-testid="search-category-list"
+    >
       <SearchResultItem
         v-for="item in items"
         :key="item.categorySuggestion.category.id"

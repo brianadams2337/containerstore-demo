@@ -1,14 +1,25 @@
 import { expect, test } from '../fixtures/fixtures'
 import { SEARCH_SUGGESTIONS } from '../support/constants'
+import { isMobile } from '../support/utils'
 
 test.beforeEach(async ({ homePage, page }) => {
   await homePage.visitPage()
   await page.waitForLoadState('networkidle')
 })
 
-test('C2139814: Verify Search no results page', async ({ search, page }) => {
+test('C2139814: Verify Search no results page', async ({
+  search,
+  page,
+  mobileNavigation,
+}) => {
   await expect(async () => {
-    await search.executeSearch(SEARCH_SUGGESTIONS.searchTermNoResults)
+    if (isMobile(page)) {
+      await mobileNavigation.executeMobileSearch(
+        SEARCH_SUGGESTIONS.searchTermNoResults,
+      )
+    } else {
+      await search.executeSearch(SEARCH_SUGGESTIONS.searchTermNoResults)
+    }
     await page.waitForURL(SEARCH_SUGGESTIONS.searchUrl)
 
     const pageUrl = page.url()
@@ -23,9 +34,19 @@ test('C2139814: Verify Search no results page', async ({ search, page }) => {
   }).toPass()
 })
 
-test('C2130650: Verify Search results page', async ({ search, page }) => {
+test('C2130650: Verify Search results page', async ({
+  search,
+  page,
+  mobileNavigation,
+}) => {
   await expect(async () => {
-    await search.executeSearch(SEARCH_SUGGESTIONS.searchTermBrand)
+    if (isMobile(page)) {
+      await mobileNavigation.executeMobileSearch(
+        SEARCH_SUGGESTIONS.searchTermBrand,
+      )
+    } else {
+      await search.executeSearch(SEARCH_SUGGESTIONS.searchTermBrand)
+    }
     await page.waitForURL(SEARCH_SUGGESTIONS.searchUrl)
 
     const pageUrl = page.url()
@@ -38,9 +59,22 @@ test('C2130650: Verify Search results page', async ({ search, page }) => {
   }).toPass()
 })
 
-test('C2130721: Verify Search suggestions', async ({ search }) => {
+test('C2130721: Verify Search suggestions', async ({
+  search,
+  mobileNavigation,
+  page,
+}) => {
   await expect(async () => {
-    await search.startTypingSearch(SEARCH_SUGGESTIONS.searchTermProduct)
+    if (isMobile(page)) {
+      await mobileNavigation.startTypingMobileSearch(
+        SEARCH_SUGGESTIONS.searchTermProduct,
+        false,
+      )
+      await mobileNavigation.exactProductItem.click()
+    } else {
+      await search.startTypingSearch(SEARCH_SUGGESTIONS.searchTermProduct)
+      await search.searchCategoryListItem.first().click()
+    }
     await search.assertSearchCategorySuggestions(
       SEARCH_SUGGESTIONS.searchTermProduct,
     )
@@ -49,11 +83,20 @@ test('C2130721: Verify Search suggestions', async ({ search }) => {
 
 test('C2132124: Verify Search suggestions "More" button', async ({
   search,
+  mobileNavigation,
+  page,
 }) => {
   await expect(async () => {
-    await search.startTypingSearch(SEARCH_SUGGESTIONS.searchTermProduct)
-    await search.clickSearchMoreButton()
-
+    if (isMobile(page)) {
+      await mobileNavigation.startTypingMobileSearch(
+        SEARCH_SUGGESTIONS.searchTermProduct,
+        false,
+      )
+      await mobileNavigation.clickSearchMoreButtonMobile()
+    } else {
+      await search.startTypingSearch(SEARCH_SUGGESTIONS.searchTermProduct)
+      await search.clickSearchMoreButton()
+    }
     await expect(search.searchResultsProductImage.first()).toBeVisible()
     await search.assertHeadlineSearchResults(
       SEARCH_SUGGESTIONS.searchTermProduct,
@@ -63,13 +106,22 @@ test('C2132124: Verify Search suggestions "More" button', async ({
 
 test('C2132173: Verify Search suggestions exact product match', async ({
   search,
-  productDetailPage,
+  page,
+  mobileNavigation,
 }) => {
   await expect(async () => {
-    await search.startTypingSearch(SEARCH_SUGGESTIONS.searchExactProductID)
-    await search.clickExactProductItem()
-
-    await productDetailPage.productImage.first().waitFor({ state: 'visible' })
+    if (isMobile(page)) {
+      await mobileNavigation.startTypingMobileSearch(
+        SEARCH_SUGGESTIONS.searchExactProductID,
+        true,
+      )
+      await mobileNavigation.productListItem.click()
+      await mobileNavigation.sideNavigationButton.click()
+      await page.waitForLoadState('networkidle')
+    } else {
+      await search.startTypingSearch(SEARCH_SUGGESTIONS.searchExactProductID)
+      await search.clickExactProductItem()
+    }
     await search.assertPdpIsLoaded()
   }).toPass()
 })
