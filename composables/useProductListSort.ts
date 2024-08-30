@@ -7,15 +7,16 @@ import { computed } from 'vue'
 import { useRoute } from '#app/composables/router'
 import { useI18n } from '#i18n'
 
-export const DEFAULT_SORTING_KEY = 'date_newest'
+export const DEFAULT_SORTING_KEY = 'top_seller'
 
 const sortingOptions: Record<string, ProductSortConfig> = {
   top_seller: {
-    by: APISortOption.Price,
-    direction: APISortOrder.Ascending,
+    sortingKey: 'scayle:v1:recommended',
+    direction: APISortOrder.Descending,
   },
   date_newest: {
     by: APISortOption.DateAdded,
+    direction: APISortOrder.Descending,
   },
   price_desc: {
     by: APISortOption.Price,

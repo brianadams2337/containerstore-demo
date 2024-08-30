@@ -19,20 +19,23 @@ vi.mock('#i18n', () => ({
 
 describe('useProductListSort', () => {
   it('should return default sorting key if sort query is empty', () => {
-    const { selectedSort } = useProductListSort()
-    expect(selectedSort.value.key).toBe('date_newest')
+    const { selectedSort, isDefaultSortSelected } = useProductListSort()
+    expect(selectedSort.value.key).toBe('top_seller')
+    expect(isDefaultSortSelected.value).toBe(true)
   })
 
   it('should return selected sorting key if sort query is set correctly', () => {
     mocks.route.query.sort = 'price_asc'
-    const { selectedSort } = useProductListSort()
+    const { selectedSort, isDefaultSortSelected } = useProductListSort()
     expect(selectedSort.value.key).toBe('price_asc')
+    expect(isDefaultSortSelected.value).toBe(false)
   })
 
   it('should return default sorting key if sort query has a invalid key', () => {
     mocks.route.query.sort = 'asdf'
-    const { selectedSort } = useProductListSort()
-    expect(selectedSort.value.key).toBe('date_newest')
+    const { selectedSort, isDefaultSortSelected } = useProductListSort()
+    expect(selectedSort.value.key).toBe('top_seller')
+    expect(isDefaultSortSelected.value).toBe(true)
   })
 
   it('should generate sort links correctly', () => {
@@ -41,8 +44,8 @@ describe('useProductListSort', () => {
 
     expect(sortLinks.value[0]).toStrictEqual({
       key: 'top_seller',
-      by: 'price',
-      direction: 'asc',
+      direction: 'desc',
+      sortingKey: 'scayle:v1:recommended',
       to: { path: '/test', query: { sort: 'top_seller' } },
       label: 'sorting_select.top_seller',
     })
@@ -50,6 +53,7 @@ describe('useProductListSort', () => {
     expect(sortLinks.value[1]).toStrictEqual({
       key: 'date_newest',
       by: 'new',
+      direction: 'desc',
       to: { path: '/test', query: { sort: 'date_newest' } },
       label: 'sorting_select.date_newest',
     })
@@ -76,20 +80,6 @@ describe('useProductListSort', () => {
       direction: 'desc',
       to: { path: '/test', query: { sort: 'reduction_desc' } },
       label: 'sorting_select.reduction_desc',
-    })
-  })
-
-  describe('isDefaultSortSelected', () => {
-    it('should return "true"', () => {
-      mocks.route.query.sort = 'date_newest'
-      const { isDefaultSortSelected } = useProductListSort()
-      expect(isDefaultSortSelected.value).toEqual(true)
-    })
-
-    it('should return "false"', () => {
-      mocks.route.query.sort = 'price_desc'
-      const { isDefaultSortSelected } = useProductListSort()
-      expect(isDefaultSortSelected.value).toEqual(false)
     })
   })
 })
