@@ -348,6 +348,7 @@ export default defineNuxtConfig({
         },
         disableDefaultGetCachedDataOverride: true,
       },
+
       cms: {
         host: process.env.NUXT_PUBLIC_CMS_HOST,
         accessToken: process.env.NUXT_PUBLIC_CMS_ACCESS_TOKEN,
@@ -389,12 +390,6 @@ export default defineNuxtConfig({
       gtm: {
         id: process.env.NUXT_PUBLIC_GTM_ID ?? '', // Override: NUXT_PUBLIC_GTM_ID
         debug: false, // Override: NUXT_PUBLIC_GTM_DEBUG
-      },
-      /** Storyblok Runtime Configuration
-       * https://scayle.dev/en/dev/storefront-core/module-configuration */
-      storyblok: {
-        accessToken: '', // Override: NUXT_PUBLIC_STORYBLOK_ACCESS_TOKEN
-        bridge: true, // Override: NUXT_PUBLIC_STORYBLOK_BRIDGE
       },
 
       appEnv: process.env.APP_ENV, // Override: NUXT_PUBLIC_APP_ENV,
