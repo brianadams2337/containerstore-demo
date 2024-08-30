@@ -3114,17 +3114,17 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.85.0":
-  version "7.85.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.85.0.tgz#ae27fbf5cd151fff56f7b628a5b3aa13eb96de5f"
-  integrity sha512-frkUA19MCz6jBmr77ok7sKyN1b9fuDkqBa2LATfkLQQlz05j4GLxPG3Enig84odL4j6zK0V1+mkKr7P5ZLY2Pw==
+"@scayle/storefront-nuxt@7.85.1":
+  version "7.85.1"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.85.1.tgz#930dc28374f4ffa2f180b659a72545824b116507"
+  integrity sha512-+6pCktB+Xv1m9f9xBguFmUcXy4fCZ0/1ZdLdGYLzRv33AKfAlgyB3H8SgaP/uZWOJI4BeaiIx/KiWdFqxtE3DQ==
   dependencies:
     "@nuxt/kit" "^3.12.2"
     "@opentelemetry/api" "^1.9.0"
     "@scayle/h3-session" "^0.4.0"
     "@scayle/storefront-core" "7.64.3"
     "@scayle/unstorage-compression-driver" "^0.1.3"
-    "@vueuse/core" "^11.0.0"
+    "@vueuse/core" "11.0.3"
     consola "^3.2.3"
     core-js "^3.37.1"
     defu "^6.1.4"
@@ -4286,7 +4286,7 @@
   dependencies:
     vue-demi "^0.13.11"
 
-"@vueuse/core@11.0.3", "@vueuse/core@^11.0.0":
+"@vueuse/core@11.0.3":
   version "11.0.3"
   resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-11.0.3.tgz#e5fb5aa6580c6e505cecea43518fcb66cb56a3ef"
   integrity sha512-RENlh64+SYA9XMExmmH1a3TPqeIuJBNNB/63GT35MZI+zpru3oMRUA6cEFr9HmGqEgUisurwGwnIieF6qu3aXw==
