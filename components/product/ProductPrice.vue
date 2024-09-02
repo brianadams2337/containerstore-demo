@@ -14,7 +14,6 @@
         name="relative-reductions"
         :applied-reductions="appliedReductions"
         :relative-reductions="relativeReductions"
-
       >
         <span
           v-for="({ value, category }, index) in relativeReductions"
