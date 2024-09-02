@@ -3,7 +3,7 @@
     <dialog
       v-dialog.modal="visible"
       class="rounded backdrop:bg-black/50"
-      :class="fullScreen ? 'h-full' : ''"
+      :class="fullScreen ? 'size-full' : ''"
       @click="onClick"
       @cancel="onCancel"
     >

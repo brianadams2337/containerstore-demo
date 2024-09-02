@@ -1,5 +1,10 @@
 <template>
-  <SFModal full-screen disable-padding @close="$emit('close')">
+  <SFModal
+    v-model:visible="visible"
+    full-screen
+    disable-padding
+    @close="$emit('close')"
+  >
     <div class="h-full max-md:bg-white-smoke md:mx-auto md:aspect-3/4">
       <div class="overflow-hidden max-md:my-auto">
         <SFItemsSlider
@@ -64,7 +69,15 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onMounted, watch, ref } from 'vue'
+import {
+  defineModel,
+  computed,
+  nextTick,
+  watch,
+  ref,
+  type WatchStopHandle,
+  onScopeDispose,
+} from 'vue'
 import { usePinch, useDrag } from '@vueuse/gesture'
 import { useEventListener } from '@vueuse/core'
 import type { ProductImage } from '@scayle/storefront-core'
@@ -80,6 +93,58 @@ type Props = {
 const props = withDefaults(defineProps<Props>(), {
   startIndex: 0,
 })
+const visible = defineModel<boolean>('visible', { default: false })
+
+let pinchController: ReturnType<typeof usePinch>
+let dragController: ReturnType<typeof useDrag>
+let stopZoomElementWatch: WatchStopHandle
+
+watch(visible, (isNowVisible) => {
+  if (isNowVisible) {
+    nextTick(() => {
+      slider.value?.scrollImageIntoView(props.startIndex, 'instant')
+      pinchController = usePinch(pinchHandler, {
+        domTarget: zoomElement,
+        eventOptions: {
+          passive: true,
+        },
+      })
+      dragController = useDrag(dragHandler, {
+        domTarget: zoomElement,
+        eventOptions: {
+          passive: true,
+        },
+      })
+      stopZoomElementWatch = watch(zoomElement, () => {
+        // when the slide changes, all event listeners need to be cleaned up and assigned to the new slide
+        pinchController?.clean()
+        pinchController?.bind()
+        pinchController?.reset()
+        dragController?.clean()
+        dragController?.bind()
+        dragController?.reset()
+
+        resetOffset()
+      })
+    })
+  } else {
+    if (stopZoomElementWatch) {
+      stopZoomElementWatch()
+    }
+    pinchController?.clean()
+    pinchController?.reset()
+    dragController?.clean()
+    dragController?.reset()
+  }
+})
+
+onScopeDispose(() => {
+  if (stopZoomElementWatch) {
+    stopZoomElementWatch()
+  }
+  pinchController?.clean()
+  dragController?.clean()
+})
 
 defineEmits<{
   (e: 'close'): void
@@ -89,11 +154,6 @@ const { greaterOrEqual } = useDefaultBreakpoints()
 const isDesktop = greaterOrEqual('md')
 
 const slider = ref<InstanceType<typeof SFItemsSlider>>()
-onMounted(() => {
-  nextTick(() => {
-    slider.value?.scrollImageIntoView(props.startIndex, 'instant')
-  })
-})
 
 // Zoom
 
@@ -102,7 +162,8 @@ const imageIndex = ref(props.startIndex)
 const zoomOffsetY = ref(0)
 const zoomOffsetX = ref(0)
 const scale = ref(1)
-const isTouchSupported = 'ontouchstart' in window
+
+const isTouchSupported = import.meta.client && 'ontouchstart' in window
 const MIN_ZOOM = 1
 
 const resetOffset = () => {
@@ -239,32 +300,5 @@ useEventListener(document, 'gesturestart', (e) => {
 })
 useEventListener(document, 'gesturechange', (e) => {
   e.preventDefault()
-})
-
-onMounted(() => {
-  const pinchController = usePinch(pinchHandler, {
-    domTarget: zoomElement,
-    eventOptions: {
-      passive: true,
-    },
-  })
-  const dragController = useDrag(dragHandler, {
-    domTarget: zoomElement,
-    eventOptions: {
-      passive: true,
-    },
-  })
-
-  watch(zoomElement, () => {
-    // when the slide changes, all event listeners need to be cleaned up and assigned to the new slide
-    pinchController.clean()
-    pinchController.bind()
-    pinchController.reset()
-    dragController.clean()
-    dragController.bind()
-    dragController.reset()
-
-    resetOffset()
-  })
 })
 </script>

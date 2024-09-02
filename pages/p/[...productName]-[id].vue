@@ -1,6 +1,7 @@
 <template>
   <AsyncDataWrapper :status="productDataStatus">
     <div
+      v-if="product"
       class="flex flex-col items-start justify-between gap-8 xl:container max-md:space-y-5 md:flex-row md:space-x-4"
     >
       <ProductGallery
@@ -50,7 +51,7 @@
           :show-price-from="showFrom"
         />
         <div
-          v-if="product && product.isSoldOut"
+          v-if="product?.isSoldOut"
           class="rounded-xl bg-red-100 p-4 text-md text-red"
         >
           {{ $t('pdp.sold_out') }}

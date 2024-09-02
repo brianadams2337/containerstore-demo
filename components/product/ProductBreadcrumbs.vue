@@ -15,7 +15,7 @@
       raw
       class="px-2"
       :class="{
-        'md:border-r-1 border-r border-gray-500': showDividerTag(
+        'border-r border-gray-500 md:border-r': showDividerTag(
           index,
           productCategories.length,
         ),

@@ -84,7 +84,7 @@ import { useDefaultBreakpoints } from '~/composables'
 import { vPopover } from '../../directives/popover'
 
 type Props = {
-  items: T[]
+  items: NonNullable<T>[]
   isLarge?: boolean
   disabled?: boolean
   isFullHeight?: boolean

@@ -10,7 +10,7 @@ import {
 } from '~/utils'
 import { useImage } from '#imports'
 
-export function useProductSeoData(product: Ref<Product | null>) {
+export function useProductSeoData(product: Ref<Product | undefined | null>) {
   const { $config, $i18n } = useNuxtApp()
   const route = useRoute()
 

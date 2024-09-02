@@ -105,8 +105,8 @@
       />
       <GoBackLink class="left-5 top-5 md:hidden" use-window-history />
     </div>
-    <LazyProductGalleryZoom
-      v-if="isZoomModalOpen"
+    <ProductGalleryZoom
+      v-model:visible="isZoomModalOpen"
       :alt="alt"
       :images="product.images"
       :start-index="activeSlide"
