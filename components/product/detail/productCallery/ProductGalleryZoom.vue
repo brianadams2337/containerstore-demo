@@ -9,7 +9,7 @@
       <div class="overflow-hidden max-md:my-auto">
         <SFItemsSlider
           ref="slider"
-          :with-arrows="isDesktop"
+          with-arrows
           @update:active-slide="updateSlide"
         >
           <div
@@ -36,7 +36,7 @@
           </div>
           <template #prev-button="{ prev, isPrevEnabled }">
             <ProductCardImageSliderButton
-              class="!top-1/2 !-translate-y-1/2 !bg-gray-200"
+              class="!top-1/2 !-translate-y-1/2 !bg-gray-200 max-md:hidden"
               :disabled="!isPrevEnabled"
               direction="left"
               @click="prev()"
@@ -44,7 +44,7 @@
           </template>
           <template #next-button="{ next, isNextEnabled }">
             <ProductCardImageSliderButton
-              class="!top-1/2 !-translate-y-1/2 !bg-gray-200"
+              class="!top-1/2 !-translate-y-1/2 !bg-gray-200 max-md:hidden"
               :disabled="!isNextEnabled"
               direction="right"
               @click="next()"
@@ -81,7 +81,6 @@ import {
 import { usePinch, useDrag } from '@vueuse/gesture'
 import { useEventListener } from '@vueuse/core'
 import type { ProductImage } from '@scayle/storefront-core'
-import { useDefaultBreakpoints } from '~/composables'
 import { SFItemsSlider } from '#components'
 
 type Props = {
@@ -149,9 +148,6 @@ onScopeDispose(() => {
 defineEmits<{
   (e: 'close'): void
 }>()
-
-const { greaterOrEqual } = useDefaultBreakpoints()
-const isDesktop = greaterOrEqual('md')
 
 const slider = ref<InstanceType<typeof SFItemsSlider>>()
 
