@@ -61,7 +61,11 @@
         </div>
       </div>
       <FilterSlideIn :current-category-id="currentCategoryId" />
-      <ProductListScrollToTopButton />
+      <Teleport to="body">
+        <FloatingContainer class="right-4">
+          <ScrollToTopButton />
+        </FloatingContainer>
+      </Teleport>
     </template>
   </CMSCategoryData>
 </template>

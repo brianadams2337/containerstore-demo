@@ -170,7 +170,9 @@
       "add_to_basket_success": "{productName} wurde zum Warenkorb hinzugefügt",
       "add_to_basket_error": "{productName} konnte nicht zum Warenkorb hinzugefügt werden",
       "add_to_basket": "{productName} wurde Ihrem Warenkorb hinzugefügt",
-      "subscription_already_in_basket_error": "{productName} befindet sich bereits im Warenkorb. Ein Artikel kann nicht mehr als einmal als Abonnement in einer Bestellung enthalten sein."
+      "subscription_already_in_basket_error": "{productName} befindet sich bereits im Warenkorb. Ein Artikel kann nicht mehr als einmal als Abonnement in einer Bestellung enthalten sein.",
+      "add_to_basket_variant_out_of_stock_error": "Diese Größe ist derzeit ausverkauft",
+      "add_to_basket_max_basket_items_error": "Ups! Du hast die maximale Anzahl an Artikeln in deinem Warenkorb erreicht."
     },
     "discount": "Rabatt",
     "to_checkout": "Zur Kasse",
@@ -247,7 +249,7 @@
   },
   "pdp": {
     "color_heading": "Farbe",
-    "size_heading": "Größe",
+    "size_heading": "Größe:",
     "add_label": "In den Warenkorb",
     "product_info_heading": "Artikelinfos",
     "composition_care_heading": "Zusammensetzung und Pflege",
@@ -296,7 +298,10 @@
     "meta": {
       "title": "{productName} {'|'} SCAYLE",
       "description": "Kaufen Sie {productName} online bei SCAYLE. \nEntdecken Sie die große Auswahl weiterer Markenprodukte."
-    }
+    },
+    "store_selector_headline": "Kostenlose Abholung im Geschäft:",
+    "check_store_availability": "Verfügbarkeit prüfen",
+    "pickup_in_store": "Abholung im Geschäft:"
   },
   "price": {
     "starting_from": "von",

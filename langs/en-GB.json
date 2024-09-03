@@ -170,7 +170,9 @@
       "add_to_basket_success": "{productName} has been added to your basket",
       "add_to_basket_error": "{productName} could not be added to your basket",
       "add_to_basket": "{productName} has been added to your basket",
-      "subscription_already_in_basket_error": "{productName} is already in the basket. An item cannot be in an order more than once as a subscription."
+      "subscription_already_in_basket_error": "{productName} is already in the basket. An item cannot be in an order more than once as a subscription.",
+      "add_to_basket_variant_out_of_stock_error": "This size is currently out of stock",
+      "add_to_basket_max_basket_items_error": "Oops! You've reached the maximum number if items allowed in your basket."
     },
     "discount": "Discount",
     "to_checkout": "to checkout",
@@ -246,7 +248,7 @@
   },
   "pdp": {
     "color_heading": "Color",
-    "size_heading": "Size",
+    "size_heading": "Size:",
     "add_label": "Add to cart",
     "product_info_heading": "Product information",
     "fitting": "Fit",
@@ -295,7 +297,10 @@
     "meta": {
       "title": "{productName} {'|'} SCAYLE",
       "description": "Buy {productName} online at SCAYLE. Discover the wide selection of other branded products."
-    }
+    },
+    "store_selector_headline": "Free in-store pickup:",
+    "check_store_availability": "Check availability",
+    "pickup_in_store": "Pick up in store:"
   },
   "price": {
     "starting_from": "from",

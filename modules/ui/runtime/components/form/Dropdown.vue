@@ -12,7 +12,7 @@
           'rounded-[10px]': radius == 'lg',
           'rounded-xl': radius == 'xl',
         }"
-        @click="isDropdownVisible = !isDropdownVisible"
+        @click="isDropdownListVisible = !isDropdownListVisible"
       >
         <slot name="default">
           <span class="max-w-[80%] text-ellipsis">{{ modelValue }}</span>
@@ -20,12 +20,12 @@
         <template #append-icon="{ _class }">
           <IconDropdown
             class="transition duration-300 group-hover:text-accent"
-            :class="[{ 'rotate-180': isDropdownVisible }, _class]"
+            :class="[{ 'rotate-180': isDropdownListVisible }, _class]"
           />
         </template>
       </SFButton>
     </div>
-    <SFOverlay v-if="isDropdownVisible && isMobile" />
+    <SFOverlay v-if="isDropdownListVisible && isMobile" />
     <Transition
       enter-from-class="translate-y-full md:-translate-y-10 opacity-0"
       enter-to-class="translate-y-0 opacity-100"
@@ -35,7 +35,7 @@
       leave-to-class="translate-y-full md:-translate-y-10 opacity-0"
     >
       <div
-        v-popover="isDropdownVisible"
+        v-popover="isDropdownListVisible"
         class="absolute m-0 mt-2 w-full rounded-md bg-white p-2 shadow-secondary ring-1 ring-gray-300 focus:outline-none"
         :class="[
           {
@@ -98,20 +98,22 @@ withDefaults(defineProps<Props>(), {
   radius: 'md',
 })
 
-const isDropdownVisible = ref(false)
+const isDropdownListVisible = defineModel<boolean>('visible', {
+  default: false,
+})
 
 const modelValue = defineModel<T | undefined>('modelValue')
 
 const selectItem = (item: T) => {
   modelValue.value = item
-  isDropdownVisible.value = false
+  isDropdownListVisible.value = false
 }
 
 const dropdownOptions = ref()
 const dropdownContainer = ref()
 
 onClickOutside(dropdownContainer, () => {
-  isDropdownVisible.value = false
+  isDropdownListVisible.value = false
 })
 
 const button = ref()
@@ -142,7 +144,7 @@ const calculateDropdown = () => {
   }
 }
 
-watch(isDropdownVisible, calculateDropdown)
+watch(isDropdownListVisible, calculateDropdown)
 
 watch(() => active().value, calculateDropdown)
 

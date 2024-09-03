@@ -246,6 +246,7 @@ export default {
         },
         accent: {
           DEFAULT: '#5328e1',
+          600: '#7247ff',
         },
         white: {
           smoke: '#f6f6f6',

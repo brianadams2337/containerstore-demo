@@ -30,16 +30,6 @@
 
         <ProductPromotionBanners v-if="product" :product="product" />
 
-        <div class="my-3 flex h-12 items-center space-x-4">
-          <VariantPicker
-            v-model="activeVariant"
-            :variants="variants"
-            :automatic-discount-promotion="automaticDiscountPromotion"
-            :has-one-variant-only="hasOneVariantOnly"
-          />
-          <IconClose class="size-4 text-gray-500 max-sm:hidden" />
-          <input v-model="quantity" type="number" class="h-full w-1/3" />
-        </div>
         <ProductPrice
           v-if="price"
           size="lg"
@@ -50,16 +40,25 @@
           show-tax-info
           :show-price-from="showFrom"
         />
-        <div
-          v-if="product?.isSoldOut"
-          class="rounded-xl bg-red-100 p-4 text-md text-red"
-        >
-          {{ $t('pdp.sold_out') }}
-        </div>
-        <SFButton :disabled="!activeVariant" @click="addToBasket">{{
-          $t('basket.add_to_basket')
-        }}</SFButton>
-        <div class="h-screen bg-slate-400">placeholder</div>
+        <ProductPromotionBanners :product="product" />
+        <ProductActions
+          v-model:active-variant="activeVariant"
+          :product="product"
+          :promotion="automaticDiscountPromotion ?? undefined"
+        />
+        <SFFadeInTransition>
+          <StoreVariantAvailability
+            v-if="activeVariant?.id"
+            :selected-store-id="selectedStoreId"
+            :variant-id="activeVariant.id"
+          />
+        </SFFadeInTransition>
+        <LazyStoreLocatorSlideIn
+          v-if="activeVariant?.id"
+          v-model:selectedStoreId="selectedStoreId"
+          :variant-id="activeVariant.id"
+        />
+        <div class="h-screen bg-slate-400">placeholder adas</div>
       </div>
     </div>
     <template #loading>
@@ -69,9 +68,12 @@
 </template>
 
 <script setup lang="ts">
+import { whenever } from '@vueuse/core'
 import { useSeoMeta } from '@unhead/vue'
 import { computed, defineOptions, ref } from 'vue'
-import type { Price } from '@scayle/storefront-nuxt'
+import type { Price, Variant } from '@scayle/storefront-nuxt'
+import { useProductPromotions } from '~/composables/useProductPromotions'
+import { useFavoriteStore } from '~/composables/useFavoriteStore'
 import {
   definePageMeta,
   useBasket,
@@ -79,11 +81,11 @@ import {
   useJsonld,
   useProduct,
   useProductBaseInfo,
-  useProductPromotions,
   useProductSeoData,
   useRoute,
 } from '#imports'
 import { PRODUCT_WITH_PARAMS } from '~/constants'
+import StoreVariantAvailability from '~/components/locator/StoreVariantAvailability.vue'
 
 definePageMeta({
   validate(route) {
@@ -114,16 +116,17 @@ if (error.value) {
   throw error.value
 }
 
-const quantity = ref(1)
-
 const { name, brand, longestCategoryList, hasOneVariantOnly, variants } =
   useProductBaseInfo(product)
+// On client side we need to wait for the data to be loaded before we know if a product has only one variant
+whenever(hasOneVariantOnly, () => {
+  activeVariant.value = variants.value[0]
+})
 
-const activeVariant = ref(
-  hasOneVariantOnly.value ? variants.value[0] : undefined,
-)
+const { automaticDiscountPromotion } = useProductPromotions(product)
 
-const { addItem, items } = useBasket()
+const { items } = useBasket()
+const activeVariant = ref<Variant>()
 
 const price = computed(() => {
   const basketVariant = items.value?.find(
@@ -146,18 +149,11 @@ const showFrom = computed(
       product.value?.priceRange?.max.withTax,
 )
 
-const { automaticDiscountPromotion } = useProductPromotions(product)
-
-const addToBasket = () => {
-  if (!activeVariant.value) {
-    return
-  }
-  addItem({
-    variantId: activeVariant.value?.id,
-    quantity: quantity.value,
-    promotionId: automaticDiscountPromotion.value?.id,
-  })
-}
+// Store selector
+const favoriteStoreId = useFavoriteStore()
+const selectedStoreId = ref<number | undefined>(
+  favoriteStoreId.value ?? undefined,
+)
 
 // SEO
 const {

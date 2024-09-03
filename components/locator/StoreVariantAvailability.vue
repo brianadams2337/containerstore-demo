@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-4 flex items-center rounded border border-status-inactive p-5">
+  <div class="mt-4 flex items-center rounded border border-gray-300 p-5">
     <div v-if="!!selectedStoreData">
       <div class="flex items-start space-x-2">
         <div
@@ -33,8 +33,8 @@
     </div>
     <SFButton
       data-testid="choose-store-button"
-      type="tertiary"
-      class="ml-auto rounded border border-black p-2 text-xs !normal-case"
+      type="secondary"
+      class="ml-auto !normal-case"
       rounded
       @click="toggleStoreLocator"
     >

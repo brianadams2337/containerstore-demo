@@ -1,8 +1,9 @@
 <template>
   <SFDropdown
     v-model="activeVariant"
+    v-model:visible="isVariantListVisible"
     :items="variants"
-    class="h-full w-2/3"
+    class="h-full"
     radius="xl"
     :disabled="hasOneVariantOnly"
     data-testid="variant-picker"
@@ -53,8 +54,9 @@
 </template>
 
 <script setup lang="ts">
-import { getFirstAttributeValue, type Variant } from '@scayle/storefront-nuxt'
 import { defineModel } from 'vue'
+import { getFirstAttributeValue, type Variant } from '@scayle/storefront-nuxt'
+import SFDropdown from '~/modules/ui/runtime/components/form/Dropdown.vue'
 
 type Props = {
   variants: Variant[]
@@ -65,6 +67,8 @@ type Props = {
 withDefaults(defineProps<Props>(), {
   hasOneVariantOnly: false,
 })
+
+const isVariantListVisible = defineModel<boolean>('visible', { default: false })
 
 const activeVariant = defineModel<Variant>()
 </script>
