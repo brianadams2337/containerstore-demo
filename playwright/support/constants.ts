@@ -73,11 +73,22 @@ export const BASKET_TEST_DATA = {
 export const HOMEPAGE_PATH_DE = '/de'
 export const SIGNIN_URL = '/signin'
 
-export const USER_ACCOUNT = {
-  accountUserPath: '/account/user',
-  userFirstName: 'Aqa',
-  userLastName: 'Test',
-  userBirthDateCorrect: '30.05.1981',
-  userBirthDateIncorrect: '32.13.9999',
-  nonMatchingPassword: 'N0nMatch1ngPa55w0rd!',
+export const FOOTER = {
+  linkGroup1: {
+    about: '/de/s/about-us',
+    shipping: '/de/s/shipping',
+    philosophy: '/de',
+    imprint: '/de/s/imprint',
+  },
+  linkGroup2: {
+    customerService: '/de',
+    faq: '/de/s/faq',
+    deliveryReturns: '/de/s/returns',
+    cancelSubscription: '/de/account/subscription-cancellations',
+  },
+  linkGroup3: {
+    cookiePolicy: '/de',
+    privacyPolicy: '/de',
+    termsConditions: '/de/s/imprint',
+  },
 }

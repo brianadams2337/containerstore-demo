@@ -1,8 +1,9 @@
 <template>
-  <footer id="footer" class="w-full">
+  <footer id="footer" class="w-full" data-testid="footer">
     <FooterPromises />
     <div
       class="container flex flex-col justify-between gap-6 px-6 py-8 md:flex-row xl:gap-16"
+      data-testid="footer-columns"
     >
       <div
         v-if="footerContent?.text"
@@ -26,8 +27,13 @@
         v-for="group in footerContent?.link_groups"
         :key="group._uid"
         class="md:pr-8"
+        data-testid="footer-link-group"
       >
-        <h5 v-if="group.title" class="mb-3 text-sm font-bold">
+        <h5
+          v-if="group.title"
+          class="mb-3 text-sm font-bold"
+          data-testid="footer-group-title"
+        >
           {{ group.title }}
         </h5>
         <CMSLink

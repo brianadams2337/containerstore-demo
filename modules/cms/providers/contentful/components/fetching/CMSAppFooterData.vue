@@ -1,8 +1,9 @@
 <template>
-  <footer id="footer" class="w-full">
+  <footer id="footer" class="w-full" data-testid="footer">
     <FooterPromises />
     <div
       class="container flex flex-col justify-between gap-6 px-6 py-8 md:flex-row xl:gap-16"
+      data-testid="footer-columns"
     >
       <div
         v-if="footerContent?.text"
@@ -19,7 +20,11 @@
         :key="group?.sys.id"
         class="md:pr-8"
       >
-        <h5 v-if="group?.fields.title" class="mb-3 text-sm font-bold">
+        <h5
+          v-if="group?.fields.title"
+          class="mb-3 text-sm font-bold"
+          data-testid="footer-group-title"
+        >
           {{ group.fields.title }}
         </h5>
         <CMSLink
