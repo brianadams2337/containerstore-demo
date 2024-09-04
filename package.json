@@ -85,7 +85,7 @@
     "utility-types": "3.11.0",
     "vitest-environment-nuxt": "1.0.1",
     "vitest": "2.0.5",
-    "vue-tsc": "2.1.4"
+    "vue-tsc": "2.1.6"
   },
   "dependencies": {
     "@contentful/live-preview": "4.5.4",
