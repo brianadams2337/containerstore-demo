@@ -83,14 +83,13 @@ import type {
   TypeFooterSkeleton,
   TypeFooterWithoutUnresolvableLinksResponse,
 } from '../../types'
-import { useCMS } from '../../composables/useCMS'
+import { useCMSBySlug } from '../../composables/useCMS'
 import { useContentfulEditor } from '../../composables/useContentfulEditor'
 import CMSText from '../Text.vue'
 import CMSLink from '../Link.vue'
 import { useNavigationTreeItems } from '~/composables/useNavigationTreeItems'
 
-const { fetchBySlug } = useCMS('footer')
-const { data } = await fetchBySlug<TypeFooterSkeleton>({
+const { data } = await useCMSBySlug<TypeFooterSkeleton>('footer', {
   content_type: 'footer',
   'fields.slug[match]': 'global/footer',
 })

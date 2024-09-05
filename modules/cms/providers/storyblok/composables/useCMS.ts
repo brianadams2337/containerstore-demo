@@ -4,40 +4,40 @@ import type { SbStory } from '../types/storyblok'
 import { useDefaultStoryblokOptions } from './useDefaultStoryblokOptions'
 import { useAsyncData, type AsyncDataOptions } from '#app/composables/asyncData'
 
-export function useCMS(key: string) {
+export function useCMSBySlug<T>(
+  key: string,
+  slug: string,
+  asyncDataOption?: AsyncDataOptions<SbStory<T>>,
+) {
   const storyblokApi = useStoryblokApi()
   const storyblokOptions = useDefaultStoryblokOptions()
-  async function fetchBySlug<T>(
-    slug: string,
-    asyncDataOption?: AsyncDataOptions<SbStory<T>>,
-  ) {
-    return await useAsyncData(
-      key,
-      () =>
-        storyblokApi.get(`cdn/stories/${slug}`, {
-          ...storyblokOptions,
-        }) as unknown as Promise<SbStory<T>>,
-      asyncDataOption,
-    )
-  }
+  return useAsyncData(
+    key,
+    () =>
+      storyblokApi.get(`cdn/stories/${slug}`, {
+        ...storyblokOptions,
+      }) as unknown as Promise<SbStory<T>>,
+    asyncDataOption,
+  )
+}
 
-  async function fetchByFolder<T>(
-    folder: string,
-    params?: ISbStoriesParams,
-    asyncDataOption?: AsyncDataOptions<SbStory<T>>,
-  ) {
-    return await useAsyncData(
-      key,
-      () => {
-        return storyblokApi.getStories({
-          ...storyblokOptions,
-          starts_with: folder,
-          ...params,
-        }) as unknown as Promise<SbStory<T>>
-      },
-      asyncDataOption,
-    )
-  }
-
-  return { storyblokOptions, fetchBySlug, fetchByFolder }
+export function useCMSByFolder<T>(
+  key: string,
+  folder: string,
+  params?: ISbStoriesParams,
+  asyncDataOption?: AsyncDataOptions<SbStory<T>>,
+) {
+  const storyblokApi = useStoryblokApi()
+  const storyblokOptions = useDefaultStoryblokOptions()
+  return useAsyncData(
+    key,
+    () => {
+      return storyblokApi.getStories({
+        ...storyblokOptions,
+        starts_with: folder,
+        ...params,
+      }) as unknown as Promise<SbStory<T>>
+    },
+    asyncDataOption,
+  )
 }

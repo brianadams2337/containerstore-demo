@@ -6,15 +6,16 @@
 
 <script setup lang="ts">
 import type { SbContentPage } from '../../types'
-import { useCMS } from '../../composables/useCMS'
+import { useCMSBySlug } from '../../composables/useCMS'
 import { useStoryblokEditor } from '../../composables/useStoryblokEditor'
 
 const props = defineProps<{
   slug: string
 }>()
 
-const { fetchBySlug } = useCMS(`services-page-${props.slug}`)
-
-const { data, status } = await fetchBySlug<SbContentPage>(`s/${props.slug}`)
+const { data, status } = await useCMSBySlug<SbContentPage>(
+  `services-page-${props.slug}`,
+  `s/${props.slug}`,
+)
 useStoryblokEditor<SbContentPage>(data)
 </script>

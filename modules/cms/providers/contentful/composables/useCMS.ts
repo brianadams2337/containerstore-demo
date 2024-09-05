@@ -12,66 +12,68 @@ import { useDefaultCMSOptions } from './useDefaultCMSOptions'
 import { useContentful } from './useContentful'
 import { useAsyncData, type AsyncDataOptions } from '#app/composables/asyncData'
 
-export function useCMS(key: string) {
+export function useCMSBySlug<
+  T extends EntrySkeletonType = EntrySkeletonType,
+  Modifiers extends ChainModifiers = ChainModifiers,
+  Locale extends LocaleCode = LocaleCode,
+>(
+  key: string,
+  query?: EntriesQueries<T, Modifiers>,
+  asyncDataOption?: AsyncDataOptions<
+    Entry<T, 'WITHOUT_UNRESOLVABLE_LINKS', Locale> | undefined
+  >,
+) {
   const defaultCMSOptions = useDefaultCMSOptions()
   const contentfulClient = useContentful() as unknown as ContentfulClientApi<
     AddChainModifier<ChainModifiers, 'WITHOUT_UNRESOLVABLE_LINKS'>
   >
-  async function fetchBySlug<
-    T extends EntrySkeletonType = EntrySkeletonType,
-    Modifiers extends ChainModifiers = ChainModifiers,
-    Locale extends LocaleCode = LocaleCode,
-  >(
-    query?: EntriesQueries<T, Modifiers>,
-    asyncDataOption?: AsyncDataOptions<
-      Entry<T, 'WITHOUT_UNRESOLVABLE_LINKS', Locale> | undefined
-    >,
-  ) {
-    return await useAsyncData(
-      key,
-      () =>
-        contentfulClient
-          .getEntries<T, Locale>({
-            include: 10,
-            limit: 1,
-            ...defaultCMSOptions,
-            ...query,
-          })
-          .then((data) => {
-            return data.items.at(0)
-          }),
-      {
-        ...asyncDataOption,
-      },
-    )
-  }
-
-  async function fetchByFolder<
-    T extends EntrySkeletonType,
-    Modifiers extends ChainModifiers =
-      | 'WITH_ALL_LOCALES'
-      | 'WITHOUT_LINK_RESOLUTION'
-      | 'WITHOUT_UNRESOLVABLE_LINKS',
-    Locale extends LocaleCode = LocaleCode,
-  >(
-    folder: string,
-    query: EntriesQueries<T, Modifiers>,
-    asyncDataOption?: AsyncDataOptions<
-      EntryCollection<T, ChainModifiers, Locale>,
-      Entry<T, ChainModifiers, Locale>
-    >,
-  ) {
-    return await useAsyncData(
-      key,
-      () =>
-        contentfulClient.getEntries<T, Locale>({
+  return useAsyncData(
+    key,
+    () =>
+      contentfulClient
+        .getEntries<T, Locale>({
           include: 10,
+          limit: 1,
           ...defaultCMSOptions,
           ...query,
-        }) as unknown as Promise<EntryCollection<T, Modifiers, Locale>>,
-      asyncDataOption,
-    )
-  }
+        })
+        .then((data) => {
+          return data.items.at(0)
+        }),
+    {
+      ...asyncDataOption,
+    },
+  )
+}
 
-  return { defaultCMSOptions, fetchBySlug, fetchByFolder }
+export function useCMSByFolder<
+  T extends EntrySkeletonType,
+  Modifiers extends ChainModifiers =
+    | 'WITH_ALL_LOCALES'
+    | 'WITHOUT_LINK_RESOLUTION'
+    | 'WITHOUT_UNRESOLVABLE_LINKS',
+  Locale extends LocaleCode = LocaleCode,
+>(
+  key: string,
+  folder: string,
+  query: EntriesQueries<T, Modifiers>,
+  asyncDataOption?: AsyncDataOptions<
+    EntryCollection<T, ChainModifiers, Locale>,
+    Entry<T, ChainModifiers, Locale>
+  >,
+) {
+  const defaultCMSOptions = useDefaultCMSOptions()
+  const contentfulClient = useContentful() as unknown as ContentfulClientApi<
+    AddChainModifier<ChainModifiers, 'WITHOUT_UNRESOLVABLE_LINKS'>
+  >
+  return useAsyncData(
+    key,
+    () =>
+      contentfulClient.getEntries<T, Locale>({
+        include: 10,
+        ...defaultCMSOptions,
+        ...query,
+      }) as unknown as Promise<EntryCollection<T, Modifiers, Locale>>,
+    asyncDataOption,
+  )
 }

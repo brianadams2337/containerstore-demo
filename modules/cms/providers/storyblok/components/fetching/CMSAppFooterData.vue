@@ -89,14 +89,13 @@
 <script setup lang="ts">
 import { computed, defineOptions } from 'vue'
 import type { SbFooter } from '../../types'
-import { useCMS } from '../../composables/useCMS'
+import { useCMSBySlug } from '../../composables/useCMS'
 import CMSText from '../Text.vue'
 import CMSLink from '../Link.vue'
 import { useStoryblokEditor } from '../../composables/useStoryblokEditor'
 import { useNavigationTreeItems } from '~/composables/useNavigationTreeItems'
 
-const { fetchBySlug } = useCMS('footer')
-const { data } = await fetchBySlug<SbFooter>('global/footer')
+const { data } = await useCMSBySlug<SbFooter>('footer', 'global/footer')
 useStoryblokEditor<SbFooter>(data)
 
 const footerContent = computed(() => {

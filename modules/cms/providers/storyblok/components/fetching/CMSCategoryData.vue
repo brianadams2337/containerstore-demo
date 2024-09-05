@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import type { SbListingPage, SbCmsImage } from '../../types'
-import { useCMS } from '../../composables/useCMS'
+import { useCMSBySlug } from '../../composables/useCMS'
 import { useCMSListingContent } from '../../composables/useCMSListingContent'
 import { useStoryblokEditor } from '../../composables/useStoryblokEditor'
 import { useRoute } from '#app/composables/router'
@@ -22,14 +22,13 @@ const props = defineProps<{
 
 const route = useRoute()
 
-const { fetchBySlug } = useCMS(`ListingPage-${route.path}`)
-
 if (!props.selectedCategory) {
   console.log('No category selected')
 }
-const { data } = await fetchBySlug<SbListingPage>(
+const { data } = await useCMSBySlug<SbListingPage>(
+  `ListingPage-${route.path}`,
   // NOTE:We need to pass both the `c/` path, as well as the prefix `c-` plus
-  // the selected categoryID to the fetchBySlug composables.
+  // the selected categoryID to the useCMSBySlug composables.
   // Storyblok requires also to set `c-{selectedCategory} to be set as `Slug`
   // within the related story.
   // This allows the Storyblok Preview functionality to properly work.

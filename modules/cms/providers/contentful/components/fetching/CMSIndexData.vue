@@ -8,16 +8,14 @@ import type {
   TypePageSkeleton,
   TypePageWithoutUnresolvableLinksResponse,
 } from '../../types'
-import { useCMS } from '../../composables/useCMS'
+import { useCMSBySlug } from '../../composables/useCMS'
 import { useContentfulEditor } from '../../composables/useContentfulEditor'
 
 const props = defineProps<{
   slug: string
 }>()
 
-const { fetchBySlug } = useCMS(`${props.slug}`)
-
-const { data } = await fetchBySlug<TypePageSkeleton>({
+const { data } = await useCMSBySlug<TypePageSkeleton>(`${props.slug}`, {
   'fields.slug': props.slug,
   content_type: 'page',
 })
