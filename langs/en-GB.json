@@ -513,10 +513,11 @@
     "choose_interval": "Choose Interval",
     "follow_up_delivery": "Follow-up delivery",
     "day_of_month_selection_caption": "Ever {dayOfMonth} of the month",
-    "or": "----- or -----",
+    "or": "Or save even more:",
     "select_size_message": "Select size to see options",
     "not_eligible_message": "The selected size is not eligible for a subscription",
-    "term": "Term"
+    "term": "Term",
+    "add_to_basket": "Subscribe for {interval}"
   },
   "image_slider": {
     "previous_label": "previous image",

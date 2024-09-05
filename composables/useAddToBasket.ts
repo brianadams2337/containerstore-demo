@@ -5,15 +5,14 @@ import { getBasketToastErrorMessageKey } from '~/utils/basket'
 import { routeList } from '~/utils/route'
 import { useBasket, useLog } from '#storefront/composables'
 
+export type AddToBasketItem = AddOrUpdateItemType & { productName: string }
 export function useAddToBasket() {
   const { addItem: addItemToBasket } = useBasket()
   const { show } = useToast()
   const i18n = useI18n()
   const log = useLog()
 
-  const addItem = async (
-    item: AddOrUpdateItemType & { productName: string },
-  ) => {
+  const addItem = async (item: AddToBasketItem) => {
     try {
       await addItemToBasket(item)
       show(

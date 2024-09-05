@@ -514,10 +514,11 @@
     "choose_interval": "Interval wählen",
     "follow_up_delivery": "Folgelieferung",
     "day_of_month_selection_caption": "Jeden {dayOfMonth} des Monats",
-    "or": "----- oder -----",
+    "or": "Oder noch mehr sparen:",
     "select_size_message": "Wählen Sie eine andere Größe für weitere Optionen",
     "not_eligible_message": "Die ausgewählte Größe ist nicht für ein Abonnement geeignet.",
-    "term": "Bedingungen"
+    "term": "Bedingungen",
+    "add_to_basket": "Abonnieren für {interval}"
   },
   "image_slider": {
     "previous_label": "Vorherigen Bild",

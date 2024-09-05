@@ -9,16 +9,16 @@
           class="md:sticky md:top-8 md:w-1/2"
           product-image-slider-class="md:max-w-[528px]"
         />
-        <div class="flex w-full flex-col gap-4 max-md:px-5 md:w-1/2">
+        <div class="flex w-full flex-col gap-4 md:w-1/2">
           <ProductBreadcrumbs
             v-if="longestCategoryList"
-            class="mb-8 hidden md:block"
+            class="mb-8 hidden max-md:px-5 md:block"
             :product-categories="longestCategoryList"
           />
-          <div>
-            <span class="font-semi-bold-variable text-gray-900">{{
-              brand
-            }}</span>
+          <div class="max-md:px-5">
+            <span class="font-semi-bold-variable text-gray-900">
+              {{ brand }}
+            </span>
             <SFHeadline
               size="lg"
               class="text-md !font-normal text-gray-600 md:text-lg"
@@ -31,29 +31,23 @@
 
           <ProductPromotionBanners
             v-if="product && automaticDiscountPromotion"
+            class="max-md:px-5"
             :product="product"
           />
-          <ProductPromotionBanners v-if="product" :product="product" />
 
           <ProductPrice
             v-if="price"
             size="lg"
-            class="mt-3"
+            class="mt-3 max-md:px-5"
             :promotion="automaticDiscountPromotion"
             :price="price"
             type="normal"
             show-tax-info
             :show-price-from="showFrom"
           />
-          <div
-            v-if="product?.isSoldOut"
-            class="rounded-xl bg-red-100 p-4 text-md text-red"
-          >
-            {{ $t('pdp.sold_out') }}
-          </div>
-          <SiblingSelection :product="product" />
+          <SiblingSelection :product="product" class="max-md:px-5" />
 
-          <ProductPromotionBanners :product="product" />
+          <ProductPromotionBanners :product="product" class="max-md:px-5" />
           <ProductActions
             v-model:active-variant="activeVariant"
             :product="product"
@@ -62,6 +56,7 @@
           <SFFadeInTransition>
             <StoreVariantAvailability
               v-if="activeVariant?.id"
+              class="max-md:mx-5"
               :selected-store-id="selectedStoreId"
               :variant-id="activeVariant.id"
             />
@@ -71,7 +66,6 @@
             v-model:selectedStoreId="selectedStoreId"
             :variant-id="activeVariant.id"
           />
-          <div class="h-screen bg-slate-400">placeholder adas</div>
         </div>
       </div>
       <ProductDetails :product="product" />

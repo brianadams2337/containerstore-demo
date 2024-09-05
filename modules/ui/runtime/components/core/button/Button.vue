@@ -3,6 +3,7 @@
     :is="componentName"
     v-bind="{ to, disabled, ...(to && { raw: true }) }"
     :class="{
+      'h-[52px] px-6 py-4': !isRaw && isSize('xl'),
       'h-12 px-10': !isRaw && isSize('lg'),
       'h-11 px-10': !isRaw && isSize('md'),
       'h-9 px-6': !isRaw && isSize('sm'),
@@ -13,6 +14,8 @@
         isSecondary,
       'rounded-xl border border-gray-400 bg-transparent font-semibold text-primary hover:bg-secondary-300 hover:text-primary-400':
         isTertiary,
+      'rounded-[10px] bg-accent font-semibold text-white hover:bg-accent-600 hover:text-white':
+        isAccent,
       'text-primary hover:text-primary-400': isRaw,
       'w-full': isFullWidth,
       'animate-pulse cursor-not-allowed': loading,
@@ -20,7 +23,7 @@
       uppercase: isUppercase,
       'shadow-secondary': hasShadow && isSecondary,
       'text-sm': (isSize('xs') || isSize('sm')) && !isRaw,
-      'text-md': (isSize('md') || isSize('lg')) && !isRaw,
+      'text-md': (isSize('md') || isSize('lg') || isSize('xl')) && !isRaw,
     }"
     class="group inline-flex items-center justify-center gap-2 truncate whitespace-nowrap border border-transparent transition duration-100 ease-linear disabled:border-secondary-600 disabled:bg-secondary-200 disabled:text-gray-400"
     @click.prevent="emit('click')"
@@ -29,6 +32,7 @@
     <slot
       name="icon"
       :_class="{
+        'size-10': isSize('xl'),
         'size-8': isSize('lg'),
         'size-6': isSize('md'),
         'size-4': isSize('sm'),
@@ -41,6 +45,7 @@
     <slot
       name="append-icon"
       :_class="{
+        'size-10': isSize('xl'),
         'size-8': isSize('lg'),
         'size-6': isSize('md'),
         'size-4': isSize('sm'),
@@ -100,6 +105,7 @@ const isPrimary = computed(() => props.type === ButtonType.PRIMARY)
 const isSecondary = computed(() => props.type === ButtonType.SECONDARY)
 const isTertiary = computed(() => props.type === ButtonType.TERTIARY)
 const isRaw = computed(() => props.type === ButtonType.RAW)
+const isAccent = computed(() => props.type === ButtonType.ACCENT)
 
 const { isSize } = getSizeUtils(props.size)
 
