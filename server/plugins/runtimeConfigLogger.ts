@@ -1,4 +1,3 @@
-import yn from 'yn'
 import { purifySensitiveData } from '@scayle/storefront-nuxt'
 // NOTE: We need to import here from the Nuxt server-specific #imports to mitigate
 // unresolved dependencies in the imported composables from Nitro(nitropack).
@@ -6,6 +5,7 @@ import { purifySensitiveData } from '@scayle/storefront-nuxt'
 // import and throw an error without explicit `@ts-expect-error`
 // @ts-expect-error TS2724: '"#imports"' has no exported member named 'defineNitroPlugin'. Did you mean 'defineNuxtPlugin'?
 import { defineNitroPlugin, useRuntimeConfig } from '#imports'
+import { stringToBoolean } from '~/utils/boolean'
 
 /*
     This Nitro plugin logs the sanitized runtime configuration at startup.
@@ -13,7 +13,7 @@ import { defineNitroPlugin, useRuntimeConfig } from '#imports'
     This feature aids in development and debugging, ensuring sensitive data like tokens and passwords are not exposed in logs.
 */
 export default defineNitroPlugin(() => {
-  if (!yn(process.env.CONFIG_LOG_RUNTIME_ENABLED)) {
+  if (!stringToBoolean(process.env.CONFIG_LOG_RUNTIME_ENABLED)) {
     return
   }
 
@@ -33,7 +33,7 @@ export default defineNitroPlugin(() => {
     sensitiveKeys,
   )
 
-  const configToPrint = yn(process.env.CONFIG_LOG_PRETTIER_ENABLED)
+  const configToPrint = stringToBoolean(process.env.CONFIG_LOG_PRETTIER_ENABLED)
     ? JSON.stringify(logableConfig, null, 2)
     : JSON.stringify(logableConfig)
 

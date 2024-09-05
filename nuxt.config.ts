@@ -1,11 +1,11 @@
 import { type NuxtConfig, defineNuxtConfig } from 'nuxt/config'
-import yn from 'yn'
 import { nanoid } from 'nanoid'
 import { HashAlgorithm, type ModuleBaseOptions } from '@scayle/storefront-nuxt'
 import * as customRpcMethods from './rpcMethods'
 import withParams from './constants/withParams'
 import { shops } from './config/shops'
 import breakpoints from './config/breakpoints'
+import { stringToBoolean } from './utils/boolean'
 
 declare module '@nuxt/schema' {
   interface PublicRuntimeConfig {
@@ -106,7 +106,7 @@ export default defineNuxtConfig({
   telemetry: false,
 
   // https://nuxt.com/docs/api/nuxt-config#debug
-  debug: yn(process.env.NUXT_DEBUGGING_ENABLED),
+  debug: stringToBoolean(process.env.NUXT_DEBUGGING_ENABLED),
 
   // https://nuxt.com/blog/v3-10#bundler-module-resolution
   // Some dependencies are currently not yet compatible with `moduleResolution: bundler`:
@@ -536,7 +536,7 @@ export default defineNuxtConfig({
   },
 
   opentelemetry: {
-    enabled: yn(process.env.OTEL_ENABLED),
+    enabled: stringToBoolean(process.env.OTEL_ENABLED),
     pathBlocklist: '^(/.*)?/api/up',
     pathReplace: [`^/(${locales.map((l) => l.code).join('|')})/`, '/:locale/'],
   },
@@ -579,7 +579,7 @@ export default defineNuxtConfig({
   // https://nitro.unjs.io/guide/cache#route-rules
   routeRules: (() => {
     // Allow for disabling the SSR Cache via an environment flag
-    if (yn(process.env.PAGE_CACHE_DISABLED)) {
+    if (stringToBoolean(process.env.PAGE_CACHE_DISABLED)) {
       return {}
     }
 
@@ -690,8 +690,10 @@ export default defineNuxtConfig({
   hooks: {
     'nitro:init'(nitro) {
       // This hook enables build-time configuration logging, controlled by the feature flag CONFIG_LOG_BUILD_ENABLED.
-      if (yn(process.env.CONFIG_LOG_BUILD_ENABLED)) {
-        const configToPrint = yn(process.env.CONFIG_LOG_PRETTIER_ENABLED)
+      if (stringToBoolean(process.env.CONFIG_LOG_BUILD_ENABLED)) {
+        const configToPrint = stringToBoolean(
+          process.env.CONFIG_LOG_PRETTIER_ENABLED,
+        )
           ? JSON.stringify(nitro.options.runtimeConfig, null, 2)
           : JSON.stringify(nitro.options.runtimeConfig)
 
