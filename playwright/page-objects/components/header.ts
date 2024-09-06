@@ -8,6 +8,7 @@ export class Header {
   readonly headerBasketButton: Locator
   readonly headerLoginButton: Locator
   readonly basketNumItems: Locator
+  readonly mainHeader: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -20,6 +21,7 @@ export class Header {
     this.headerBasketButton = page.getByTestId('basket-link')
     this.headerLoginButton = page.getByTestId('user-popover')
     this.basketNumItems = page.getByTestId('floating-badge')
+    this.mainHeader = page.getByTestId('main-header')
   }
 
   async hidePromotionBanner() {
