@@ -2,18 +2,25 @@
   <div
     id="paymentHeader"
     class="rounded-t-none border border-gray-350 bg-white md:rounded-md"
+    data-testid="payment-header"
   >
     <div class="px-5 pt-5 text-xs">
       <div
         class="flex flex-col border-b border-gray-350 font-semibold text-primary"
       >
-        <div class="mb-3 flex flex-row justify-between">
+        <div
+          class="mb-3 flex flex-row justify-between"
+          data-testid="payment-order-value"
+        >
           <p class="text-secondary">
             {{ $t('my_account.orders.order_value') }}
           </p>
           <p>{{ formatCurrency(totalAmount) }}</p>
         </div>
-        <div class="mb-4 flex flex-row justify-between">
+        <div
+          class="mb-4 flex flex-row justify-between"
+          data-testid="payment-shipping-cost"
+        >
           <p class="text-secondary">{{ $t('my_account.orders.shipping') }}</p>
           <p v-if="deliveryCost > 0">{{ formatCurrency(deliveryCost) }}</p>
           <p v-else class="text-green-neon">{{ $t('basket.shipping_free') }}</p>

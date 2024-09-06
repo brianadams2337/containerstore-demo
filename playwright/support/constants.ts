@@ -92,3 +92,10 @@ export const FOOTER = {
     termsConditions: '/de/s/imprint',
   },
 }
+
+export const USER_WITHOUT_ORDERS = {
+  firstName: 'Test',
+  lastName: 'User No Orders',
+  email: 'sfb.aqa.no-orders@scayle.com',
+  password: 'N00rd3rs!',
+}

@@ -4,12 +4,14 @@
       v-for="(map, carrierId, idx) in carrierBundledItemsMap"
       :key="`delivery-block-carrier-${carrierId}`"
       class="rounded-t-md border border-gray-350 border-b-transparent bg-white md:mb-4 md:rounded-md md:border-b-gray-350"
+      data-testid="order-items"
     >
       <div v-if="orderVariants" id="imageHeader">
         <OrderStatusBar
           v-bind="map.deliveryInfo"
           :index="idx"
           class="p-5 md:border-b md:border-b-gray-350"
+          data-testid="order-status-bar"
         />
         <div
           v-for="{ key, ...data } in map.items"

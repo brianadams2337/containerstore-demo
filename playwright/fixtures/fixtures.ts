@@ -14,6 +14,7 @@ import { PlpFilters } from '../page-objects/components/plpFilters'
 import { Search } from '../page-objects/components/search'
 import { MobileNavigation } from '../page-objects/components/mobileNavigation'
 import { Footer } from '../page-objects/components/footer'
+import { OrdersPage } from '../page-objects/ordersPage'
 
 interface Fixtures {
   homePage: HomePage
@@ -31,6 +32,7 @@ interface Fixtures {
   search: Search
   mobileNavigation: MobileNavigation
   footer: Footer
+  ordersPage: OrdersPage
 }
 
 export type OutputMode = 'json' | 'html' | 'csv'
@@ -95,6 +97,10 @@ export const test = base.extend<Fixtures>({
   footer: async ({ page }, use) => {
     const footer = new Footer(page)
     await use(footer)
+  },
+  ordersPage: async ({ page }, use) => {
+    const ordersPage = new OrdersPage(page)
+    await use(ordersPage)
   },
 })
 export { expect } from '@playwright/test'

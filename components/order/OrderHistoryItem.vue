@@ -9,14 +9,17 @@
       class="flex flex-col items-baseline"
       data-testid="order-history-list-item"
     >
-      <div class="mb-2 text-sm font-bold">
+      <div class="mb-2 text-sm font-bold" data-testid="order-list-item-title">
         {{
           $t('my_account.orders.order_summary_header', {
             date: formatLocaleDate(confirmedAt),
           })
         }}
       </div>
-      <div class="text-xs font-semibold text-secondary">
+      <div
+        class="text-xs font-semibold text-secondary"
+        data-testid="order-list-item-data"
+      >
         <span>{{ shopId }} - {{ id }}</span>
         <span>{{ ' · ' }}</span>
         <span v-if="itemCount">

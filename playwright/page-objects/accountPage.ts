@@ -110,4 +110,17 @@ export class AccountPage {
       await this.passwordUpdateButton.click()
     }
   }
+
+  async userAuthentication(email: string, password: string) {
+    try {
+      await this.page.request.post('/de/api/rpc/oauthLogin', {
+        data: {
+          payload: { email, password },
+        },
+      })
+    } catch (error) {
+      console.error('Error authenticating user:', error)
+      throw error
+    }
+  }
 }

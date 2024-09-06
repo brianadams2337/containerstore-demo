@@ -19,13 +19,17 @@
               />
             </div>
             <div v-else class="bg-slate-100 p-10 text-center">
-              <div class="p-5 text-sm font-bold text-primary">
+              <div
+                class="p-5 text-sm font-bold text-primary"
+                data-testid="headline-no-orders"
+              >
                 {{ $t('my_account.no_orders_found') }}
               </div>
               <div class="border-t border-t-gray-350 bg-secondary-450 p-5">
                 <SFLink
                   :to="routeList.home"
                   class="!block w-full rounded bg-white px-4 py-2 text-center text-xs"
+                  data-testid="button-continue-shopping"
                 >
                   {{ $t('error.continue_shopping') }}
                 </SFLink>
