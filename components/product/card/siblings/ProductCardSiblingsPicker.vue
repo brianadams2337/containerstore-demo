@@ -1,10 +1,11 @@
 <template>
   <div class="flex items-center justify-start">
     <SFLink
-      v-for="{ id, name, image, colors } in itemsToShow"
+      v-for="({ id, name, image, colors }, index) in itemsToShow"
       :key="id"
       :to="getProductDetailRoute(product, id)"
       class="relative mr-2 flex size-12 items-center justify-center overflow-hidden rounded-md bg-gray-200"
+      :class="classForIndex(index)"
       data-testid="product-sibling"
     >
       <ProductImage
@@ -21,12 +22,28 @@
       />
     </SFLink>
     <SFLink
-      v-if="furtherItemsCount"
+      v-if="siblings.length > 2"
       :to="getProductDetailRoute(product)"
       raw
-      class="text-sm font-medium text-gray-500"
+      class="hidden text-sm font-medium text-gray-500 max-lg:block"
     >
-      + {{ furtherItemsCount }}
+      + {{ siblings.length - 2 }}
+    </SFLink>
+    <SFLink
+      v-if="siblings.length > 3"
+      :to="getProductDetailRoute(product)"
+      raw
+      class="hidden text-sm font-medium text-gray-500 lg:max-xl:block"
+    >
+      + {{ siblings.length - 3 }}
+    </SFLink>
+    <SFLink
+      v-if="siblings.length > 4"
+      :to="getProductDetailRoute(product)"
+      raw
+      class="hidden text-sm font-medium text-gray-500 xl:block"
+    >
+      + {{ siblings.length - 4 }}
     </SFLink>
   </div>
 </template>
@@ -42,19 +59,27 @@ import { formatColors } from '~/utils'
 type Props = {
   product: Product
   siblings: ProductSibling[]
-  limit?: number
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  limit: PRODUCT_CARD_SIBLINGS_LIMIT,
-})
+const props = defineProps<Props>()
 
 const { getProductDetailRoute } = useRouteHelpers()
 
-const itemsToShow = computed(() => props.siblings.slice(0, props.limit))
+const itemsToShow = computed(() =>
+  props.siblings.slice(0, PRODUCT_CARD_SIBLINGS_LIMIT),
+)
 
-const furtherItemsCount = computed(() => {
-  const count = props.siblings.length - props.limit
-  return count > 0 ? count : 0
-})
+// TODO: This is something that could be improved when we update to Tailwind 4
+// It would allow us to use container queries instead of viewport queries. This
+// means we could control the number of siblings based on the product card width
+// rather than the screen size. Currently cards are quite wide right before the
+// viewport breakpoint and quite narrow right after. For now, we set the limits
+// to ensure that all siblings are visible, but there is often extra space.
+const classForIndex = (index: number) => {
+  if (index === 3) {
+    return 'hidden xl:block'
+  } else if (index === 2) {
+    return 'hidden lg:block'
+  }
+}
 </script>
