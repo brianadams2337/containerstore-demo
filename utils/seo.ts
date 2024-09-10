@@ -6,9 +6,10 @@ import type {
   BreadcrumbList,
 } from 'schema-dts'
 import { parseURL, stringifyParsedURL, parseQuery, stringifyQuery } from 'ufo'
-import type { BreadcrumbItem } from '~/types/breadcrumbs'
 import { isInStock, type Variant } from '@scayle/storefront-nuxt'
+import type { BreadcrumbItem } from '~/types/breadcrumbs'
 import { divideByHundred } from '~/utils/price'
+
 const CANONICAL_PARAMS_WHITELIST = ['page']
 
 /**

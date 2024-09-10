@@ -62,7 +62,7 @@
           </SFFadeInTransition>
           <LazyStoreLocatorSlideIn
             v-if="activeVariant?.id"
-            v-model:selectedStoreId="selectedStoreId"
+            v-model:selected-store-id="selectedStoreId"
             :variant-id="activeVariant.id"
           />
         </div>

@@ -29,7 +29,7 @@ export function useRouteHelpers() {
     return navigateTo(getLocalizedRoute(route), options)
   }
 
-  const getProductDetailRoute = (id: number, name: string): string => {
+  const getProductDetailRoute = (id: number, name?: string): string => {
     return localePath({
       name: 'p-productName-id',
       params: {

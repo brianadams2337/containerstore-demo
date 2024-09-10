@@ -60,7 +60,7 @@ import SFDropdown from '~/modules/ui/runtime/components/form/Dropdown.vue'
 
 type Props = {
   variants: Variant[]
-  automaticDiscountPromotion: Promotion | null
+  automaticDiscountPromotion: Promotion | null | undefined
   hasOneVariantOnly?: boolean
 }
 
