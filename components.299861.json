@@ -701,29 +701,6 @@
       "component_group_name": "layout"
     },
     {
-      "name": "CustomerServiceInfo",
-      "display_name": null,
-      "created_at": "2024-08-07T15:17:16.469Z",
-      "updated_at": "2024-08-07T15:17:16.469Z",
-      "id": 6140613,
-      "schema": {},
-      "image": "//a.storyblok.com/f/112281/x/51923b23a2/bildschirmfoto-2021-06-07-um-14-09-18.png",
-      "preview_field": null,
-      "is_root": true,
-      "preview_tmpl": null,
-      "is_nestable": false,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "CustomerServiceInfo",
-      "component_group_uuid": "34f3a37e-e981-405f-acea-e1dcbd8bea05",
-      "color": null,
-      "icon": null,
-      "internal_tags_list": [],
-      "internal_tag_ids": [],
-      "content_type_asset_preview": null,
-      "component_group_name": "contentPageComponents"
-    },
-    {
       "name": "DetailImage",
       "display_name": null,
       "created_at": "2024-08-07T15:17:16.189Z",
@@ -839,7 +816,7 @@
       "name": "Footer",
       "display_name": "Storefront Footer",
       "created_at": "2024-08-07T15:17:15.907Z",
-      "updated_at": "2024-08-22T13:38:30.457Z",
+      "updated_at": "2024-08-28T11:50:17.205Z",
       "id": 6140583,
       "schema": {
         "text": {
@@ -866,7 +843,7 @@
         },
         "social_media": {
           "type": "bloks",
-          "display_name": "",
+          "display_name": "Social Media",
           "restrict_type": "",
           "restrict_components": true,
           "component_whitelist": ["SocialMediaLink"],
@@ -1442,76 +1419,10 @@
       "content_type_asset_preview": null
     },
     {
-      "name": "ListingDisruptor",
-      "display_name": null,
-      "created_at": "2024-08-07T15:17:16.144Z",
-      "updated_at": "2024-08-07T15:17:16.144Z",
-      "id": 6140597,
-      "schema": {
-        "content": {
-          "type": "bloks",
-          "maximum": "",
-          "restrict_components": true,
-          "component_whitelist": ["Grid", "Product", "CmsImage"]
-        },
-        "tab-8a78c5c1-719e-4503-abf0-4002d300aac6": {
-          "type": "tab",
-          "display_name": "Settings",
-          "keys": ["is_containered", "width", "insert_in_row"],
-          "pos": 0
-        },
-        "is_containered": {
-          "type": "boolean"
-        },
-        "width": {
-          "type": "option",
-          "description": "Defines the width of disruptor ",
-          "use_uuid": true,
-          "options": [
-            {
-              "value": "1",
-              "name": "1"
-            },
-            {
-              "value": "2",
-              "name": "2"
-            },
-            {
-              "value": "full",
-              "name": "full"
-            },
-            {
-              "value": "",
-              "name": ""
-            }
-          ]
-        },
-        "insert_in_row": {
-          "type": "text",
-          "description": "Defines where Disruptor begins (0 = first row)"
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": "Row: {{insert_in_row}}\n",
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "ListingDisruptor",
-      "component_group_uuid": "59169fdb-9182-465f-9119-e49ae16b4540",
-      "color": null,
-      "icon": null,
-      "internal_tags_list": [],
-      "internal_tag_ids": [],
-      "content_type_asset_preview": null,
-      "component_group_name": "components"
-    },
-    {
       "name": "ListingPage",
       "display_name": null,
       "created_at": "2024-08-07T15:17:15.949Z",
-      "updated_at": "2024-08-07T15:17:15.949Z",
+      "updated_at": "2024-09-10T12:48:05.089Z",
       "id": 6140586,
       "schema": {
         "teaser_image": {
@@ -1519,23 +1430,6 @@
           "filetypes": ["images"],
           "description": "Adds a Teaser at the beginning of the page",
           "pos": 0
-        },
-        "teaser_image_mobile": {
-          "type": "asset",
-          "pos": 1,
-          "filetypes": ["images"]
-        },
-        "pre_listing_content": {
-          "type": "bloks",
-          "description": "Possibility to add content in front of the product list ",
-          "pos": 2
-        },
-        "listing": {
-          "type": "bloks",
-          "description": "Add disruptor elements to product listing ",
-          "restrict_components": true,
-          "component_whitelist": ["ListingDisruptor"],
-          "pos": 3
         },
         "tab-ad6dab39-b1b1-41b2-98c1-6343ebc2c186": {
           "type": "tab",
@@ -1547,6 +1441,16 @@
           "type": "custom",
           "field_type": "seo-metatags",
           "options": []
+        },
+        "teaser_image_mobile": {
+          "type": "asset",
+          "pos": 1,
+          "filetypes": ["images"]
+        },
+        "pre_listing_content": {
+          "type": "bloks",
+          "description": "Possibility to add content in front of the product list ",
+          "pos": 2
         },
         "post_listing_content": {
           "type": "bloks",
@@ -1570,46 +1474,6 @@
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
       "component_group_name": "layout"
-    },
-    {
-      "name": "Mammut-ce",
-      "display_name": null,
-      "created_at": "2024-08-07T15:17:16.265Z",
-      "updated_at": "2024-08-07T15:17:16.265Z",
-      "id": 6140602,
-      "schema": {
-        "image": {
-          "type": "asset",
-          "pos": 0
-        },
-        "headline": {
-          "type": "text",
-          "pos": 2
-        },
-        "cta": {
-          "type": "text",
-          "pos": 3
-        },
-        "cta_link": {
-          "type": "multilink",
-          "pos": 4
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "Mammut-ce",
-      "component_group_uuid": "b8bbf4d3-4703-47e6-bbf5-8168c7ba8ecf",
-      "color": null,
-      "icon": null,
-      "internal_tags_list": [],
-      "internal_tag_ids": [],
-      "content_type_asset_preview": null,
-      "component_group_name": "content"
     },
     {
       "name": "NestedParagraph",
@@ -1728,38 +1592,6 @@
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
       "component_group_name": "contentPageComponents"
-    },
-    {
-      "name": "Newsletter",
-      "display_name": null,
-      "created_at": "2024-08-07T15:17:16.202Z",
-      "updated_at": "2024-08-07T15:17:16.202Z",
-      "id": 6140601,
-      "schema": {
-        "upper_text": {
-          "type": "text",
-          "translatable": true
-        },
-        "lower_text": {
-          "type": "text",
-          "translatable": true
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": true,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "Newsletter",
-      "component_group_uuid": "59169fdb-9182-465f-9119-e49ae16b4540",
-      "color": null,
-      "icon": null,
-      "internal_tags_list": [],
-      "internal_tag_ids": [],
-      "content_type_asset_preview": null,
-      "component_group_name": "components"
     },
     {
       "name": "Page",
@@ -2339,115 +2171,6 @@
       "component_group_name": "content"
     },
     {
-      "name": "Store",
-      "display_name": null,
-      "created_at": "2024-08-07T15:17:15.962Z",
-      "updated_at": "2024-08-07T15:17:15.962Z",
-      "id": 6140587,
-      "schema": {
-        "image": {
-          "type": "asset",
-          "filetypes": ["images"]
-        },
-        "city": {
-          "type": "text"
-        },
-        "name": {
-          "type": "richtext",
-          "required": true
-        },
-        "address": {
-          "type": "richtext",
-          "required": true
-        },
-        "opening_hours": {
-          "type": "richtext"
-        },
-        "contact": {
-          "type": "richtext"
-        },
-        "phone": {
-          "type": "text",
-          "required": false
-        },
-        "email": {
-          "type": "text"
-        },
-        "tab-ecfe6ee3-183d-4ed7-a843-0dcfc56c0a53": {
-          "type": "tab",
-          "display_name": "Settings",
-          "keys": ["SEO"],
-          "pos": 0
-        },
-        "SEO": {
-          "type": "custom",
-          "field_type": "seo-metatags",
-          "options": []
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": true,
-      "preview_tmpl": "{{city}-{{name}}",
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "Store",
-      "component_group_uuid": "2940ef8d-902a-44c7-860b-8f3acf4b3c53",
-      "color": null,
-      "icon": null,
-      "internal_tags_list": [],
-      "internal_tag_ids": [],
-      "content_type_asset_preview": null,
-      "component_group_name": "layout"
-    },
-    {
-      "name": "StorePage",
-      "display_name": null,
-      "created_at": "2024-08-07T15:17:15.934Z",
-      "updated_at": "2024-08-07T15:17:15.934Z",
-      "id": 6140585,
-      "schema": {
-        "teaser_image": {
-          "type": "bloks",
-          "restrict_components": true,
-          "component_whitelist": ["CmsImage"],
-          "maximum": "1",
-          "required": true
-        },
-        "contact_email": {
-          "type": "text",
-          "required": true
-        },
-        "tab-f4767fca-54d6-4f6a-8418-c2df4f399a82": {
-          "type": "tab",
-          "display_name": "Settings",
-          "keys": ["SEO"],
-          "pos": 0
-        },
-        "SEO": {
-          "type": "custom",
-          "field_type": "seo-metatags",
-          "options": []
-        }
-      },
-      "image": "//a.storyblok.com/f/112281/x/2cef640693/bildschirmfoto-2021-06-06-um-10-25-05.png",
-      "preview_field": null,
-      "is_root": true,
-      "preview_tmpl": null,
-      "is_nestable": false,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "StorePage",
-      "component_group_uuid": "2940ef8d-902a-44c7-860b-8f3acf4b3c53",
-      "color": null,
-      "icon": null,
-      "internal_tags_list": [],
-      "internal_tag_ids": [],
-      "content_type_asset_preview": null,
-      "component_group_name": "layout"
-    },
-    {
       "name": "Story",
       "display_name": null,
       "created_at": "2024-08-07T15:17:16.559Z",
@@ -2690,6 +2413,36 @@
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
       "component_group_name": "content"
+    }
+  ],
+  "component_groups": [
+    {
+      "name": "components",
+      "id": 381296,
+      "uuid": "59169fdb-9182-465f-9119-e49ae16b4540",
+      "parent_id": null,
+      "parent_uuid": null
+    },
+    {
+      "name": "content",
+      "id": 381297,
+      "uuid": "b8bbf4d3-4703-47e6-bbf5-8168c7ba8ecf",
+      "parent_id": null,
+      "parent_uuid": null
+    },
+    {
+      "name": "contentPageComponents",
+      "id": 381298,
+      "uuid": "34f3a37e-e981-405f-acea-e1dcbd8bea05",
+      "parent_id": null,
+      "parent_uuid": null
+    },
+    {
+      "name": "layout",
+      "id": 381295,
+      "uuid": "2940ef8d-902a-44c7-860b-8f3acf4b3c53",
+      "parent_id": null,
+      "parent_uuid": null
     }
   ]
 }
