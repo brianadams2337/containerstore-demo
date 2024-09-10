@@ -20,37 +20,37 @@
         </template>
       </SFButton>
     </div>
-    <Teleport to="body">
-      <div
-        ref="dropdownOptions"
-        class="absolute z-110 mt-2 w-full rounded-md bg-white p-2 shadow-secondary ring-1 ring-gray-300 focus:outline-none"
-        :class="
-          isDropdownVisible
-            ? 'animate-grow origin-top xl:origin-top-right'
-            : 'animate-shrink origin-top xl:origin-top-right'
-        "
-        :style="itemsContainerStyle"
-      >
-        <template v-for="item in items">
-          <slot name="item" :item="item" :select-item="selectItem">
-            <div
-              :key="`${item}`"
-              class="block cursor-pointer px-4 py-2 text-base text-gray-700 hover:bg-gray-200 active:bg-gray-300"
-              @keydown.enter="selectItem(item)"
-              @click="selectItem(item)"
-            >
-              {{ item }}
-            </div>
-          </slot>
-        </template>
-      </div>
-    </Teleport>
+    <div
+      ref="dropdownOptions"
+      v-popover="isDropdownVisible"
+      class="absolute m-0 mt-2 w-full rounded-md bg-white p-2 shadow-secondary ring-1 ring-gray-300 focus:outline-none"
+      :class="
+        isDropdownVisible
+          ? 'animate-grow origin-top xl:origin-top-right'
+          : 'animate-shrink origin-top xl:origin-top-right'
+      "
+      :style="itemsContainerStyle"
+    >
+      <template v-for="item in items">
+        <slot name="item" :item="item" :select-item="selectItem">
+          <div
+            :key="`${item}`"
+            class="block cursor-pointer px-4 py-2 text-base text-gray-700 hover:bg-gray-200 active:bg-gray-300"
+            @keydown.enter="selectItem(item)"
+            @click="selectItem(item)"
+          >
+            {{ item }}
+          </div>
+        </slot>
+      </template>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts" generic="T">
 import { ref, watch } from 'vue'
 import { onClickOutside } from '@vueuse/core'
+import { vPopover } from '../../directives/popover'
 
 type Props = {
   items: T[]
