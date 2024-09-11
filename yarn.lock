@@ -3122,16 +3122,15 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-api/-/storefront-api-17.6.0.tgz#479db251c7040ff63750609f3a463951a2f713fd"
   integrity sha512-Syvv/K6vZjvkpnUEz14FQJNvh1Wu5pbabS6EM+B2jfq7QDDCnKEhsJj41OoZFr98RNuBtd4tuYOB7xyarau9uQ==
 
-"@scayle/storefront-core@7.64.3":
-  version "7.64.3"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.64.3.tgz#41c3c99e6ff552db660434edff26c815a0b992f8"
-  integrity sha512-bMVhvRdvQ+N854yMzJ1/2CydAy49AJ69D3qSn5gIV6l40CrWwNf/zUGRmSSK13SjK8ga4N7ifiPg8eg4l0sjNA==
+"@scayle/storefront-core@7.64.4":
+  version "7.64.4"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.64.4.tgz#2fa949376e62d99f0e3d3e77e328d82b2d5be761"
+  integrity sha512-f0VeFEa/Z7yJUQS7D+W46mz2LZtPdNLvfxuKTRHCa+eVtoM/Xa0tRXkVM+1Khy3IOJY3OhhCWvLU2VxPF7S+tQ==
   dependencies:
     "@scayle/storefront-api" "17.6.0"
     crypto-js "^4.2.0"
     hookable "^5.5.3"
     jose "^5.6.3"
-    radash "^12.1.0"
     slugify "^1.6.6"
     ufo "^1.5.3"
     uncrypto "^0.1.3"
@@ -3139,15 +3138,15 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.85.2":
-  version "7.85.2"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.85.2.tgz#41eb6d8e19537d6329e5e58e63920e9d76df1d35"
-  integrity sha512-rhWziJQ/fMStOKDBL5W6vCqnqs/zXPDE0IE2Zvd+qUTOrg9YcQKFqDJiOB2P/WHPAVyBL1FDJXd1aJxfaiqdjQ==
+"@scayle/storefront-nuxt@7.85.3":
+  version "7.85.3"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.85.3.tgz#20d450dc300845e6b0c1d8c6df4b0092a050ff91"
+  integrity sha512-ExqkOSH81sAFyyBJopSbjpqAAo3q22F9TyyZpOO6DacHWUu4AeaPoASDpV/cLPJnchej2r9pPmb3o6ZkmcQnUg==
   dependencies:
     "@nuxt/kit" "^3.12.2"
     "@opentelemetry/api" "^1.9.0"
     "@scayle/h3-session" "^0.4.0"
-    "@scayle/storefront-core" "7.64.3"
+    "@scayle/storefront-core" "7.64.4"
     "@scayle/unstorage-compression-driver" "^0.1.3"
     "@vueuse/core" "11.0.3"
     consola "^3.2.3"
@@ -3158,12 +3157,10 @@
     knitwork "^1.1.0"
     nitropack "^2.9.7"
     ofetch "^1.3.4"
-    radash "^12.1.0"
     ufo "^1.5.3"
     uncrypto "^0.1.3"
     unstorage "^1.10.2"
     vue-router "^4.4.0"
-    yn "^5.0.0"
     zod "^3.23.8"
 
 "@scayle/unstorage-compression-driver@^0.1.3":
@@ -11122,11 +11119,6 @@ queue-tick@^1.0.1:
   resolved "https://registry.yarnpkg.com/queue-tick/-/queue-tick-1.0.1.tgz#f6f07ac82c1fd60f82e098b417a80e52f1f4c142"
   integrity sha512-kJt5qhMxoszgU/62PLP1CJytzd2NKetjSRnyuj31fDd3Rlcz3fzlFdFLD1SItunPwyqEOkca6GbV612BWfaBag==
 
-radash@^12.1.0:
-  version "12.1.0"
-  resolved "https://registry.yarnpkg.com/radash/-/radash-12.1.0.tgz#a15a5d745bfe3c3a6428148a606000aefd238560"
-  integrity sha512-b0Zcf09AhqKS83btmUeYBS8tFK7XL2e3RvLmZcm0sTdF1/UUlHSsjXdCcWNxe7yfmAlPve5ym0DmKGtTzP6kVQ==
-
 radix3@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/radix3/-/radix3-1.1.2.tgz#fd27d2af3896c6bf4bcdfab6427c69c2afc69ec0"
@@ -13614,11 +13606,6 @@ ylru@^1.2.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/ylru/-/ylru-1.4.0.tgz#0cf0aa57e9c24f8a2cbde0cc1ca2c9592ac4e0f6"
   integrity sha512-2OQsPNEmBCvXuFlIni/a+Rn+R2pHW9INm0BxXJ4hVDA8TirqMj+J/Rp9ItLatT/5pZqWwefVrTQcHpixsxnVlA==
-
-yn@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/yn/-/yn-5.0.0.tgz#63fc2e2e0056cf294397eed6ad4a3fbdf707f26f"
-  integrity sha512-+l37+9TyGEsyxGLaTg6QgYy5KnOp74ZZl4dPFLQpBWSkO99uBC5jnS0pOGwXFViPbiaEtWbParH2KrgWWF2duQ==
 
 yocto-queue@^0.1.0:
   version "0.1.0"
