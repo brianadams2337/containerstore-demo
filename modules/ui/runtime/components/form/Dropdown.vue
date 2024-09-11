@@ -25,7 +25,6 @@
         </template>
       </SFButton>
     </div>
-    <SFOverlay v-if="isDropdownListVisible && isMobile" />
     <Transition
       enter-from-class="translate-y-full md:-translate-y-10 opacity-0"
       enter-to-class="translate-y-0 opacity-100"
@@ -37,7 +36,7 @@
       <div
         v-if="isDropdownListVisible"
         v-popover="isDropdownListVisible"
-        class="absolute m-0 w-full rounded-md bg-white p-2 shadow-secondary ring-1 ring-gray-300 focus:outline-none"
+        class="absolute m-0 mt-2 w-full rounded-md bg-white p-2 shadow-secondary ring-1 ring-gray-300 focus:outline-none max-md:backdrop:bg-primary/50"
         :class="[
           {
             'rounded-t-md md:rounded-md': radius == 'md',
@@ -131,6 +130,7 @@ const calculateDropdown = () => {
     itemsContainerStyle.value = {
       left: `0`,
       bottom: `0`,
+      top: 'auto',
       width: `100%`,
       position: 'fixed',
     }
