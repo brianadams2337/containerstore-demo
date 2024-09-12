@@ -69,20 +69,24 @@
         />
         <template #arrows="{ prev, isPrevEnabled, next, isNextEnabled }">
           <div class="absolute bottom-4 right-4 flex space-x-px max-md:hidden">
-            <button
-              class="rounded-l-full bg-white p-2.5 text-gray-400 shadow-secondary transition-transform duration-300 hover:bg-white hover:text-gray-900 disabled:hover:text-gray-400"
+            <SFButton
+              class="rounded-l-full"
+              type="slider"
+              size="sm"
               :disabled="!isPrevEnabled"
               @click="prev()"
             >
               <IconChevronLeft class="size-4" />
-            </button>
-            <button
-              class="rounded-r-full bg-white p-2 text-gray-400 shadow-secondary transition-transform duration-300 hover:bg-white hover:text-gray-900 disabled:hover:text-gray-400"
+            </SFButton>
+            <SFButton
+              class="rounded-r-full"
+              type="slider"
+              size="sm"
               :disabled="!isNextEnabled"
               @click="next()"
             >
               <IconChevronRight class="size-4" />
-            </button>
+            </SFButton>
           </div>
         </template>
         <template #thumbnails>

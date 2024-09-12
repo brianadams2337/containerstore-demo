@@ -61,6 +61,7 @@ export const ButtonType = {
   TERTIARY: 'tertiary',
   RAW: 'raw',
   ACCENT: 'accent',
+  SLIDER: 'slider',
 } as const
 
 export type ButtonType = ValuesType<typeof ButtonType>

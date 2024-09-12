@@ -70,7 +70,7 @@
 
 <script setup lang="ts">
 import { ref, nextTick, computed, type Ref, watch } from 'vue'
-import { useResizeObserver, useMounted } from '@vueuse/core'
+import { useMounted } from '@vueuse/core'
 import { useItemsSlider } from '#storefront-ui'
 import { SFFadeInTransition } from '#components'
 
@@ -111,7 +111,6 @@ const divOrTransition = computed(() => {
 })
 
 nextTick(() => onScroll())
-useResizeObserver(sliderRef, () => onScroll())
 
 defineExpose({
   scrollImageIntoView,

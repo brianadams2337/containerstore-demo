@@ -5,6 +5,8 @@ import {
   getAppliedReductionsByCategory,
   getFirstAttributeValue,
   getLowestPrice,
+  type AdvancedAttribute,
+  getFlattenedAdvancedAttribute,
 } from '@scayle/storefront-nuxt'
 import { getPrimaryImage } from './image'
 import { MINIMUM_QUANTITY_IMMEDIATE_AVAILABILITY } from '~/constants/product'
@@ -180,4 +182,17 @@ export const getProductSiblings = (
   return includeCurrentProduct
     ? [getProductSiblingData(product, colorAttributeName), ...items]
     : items
+}
+
+export const getCombineWithProductIds = (attribute?: AdvancedAttribute) => {
+  if (!attribute) {
+    return []
+  }
+
+  return (
+    getFlattenedAdvancedAttribute<{ value: string }>(attribute.values)
+      ?.map((item) => item.value)
+      ?.map((value) => Number.parseInt(value))
+      ?.filter((value) => !Number.isNaN(value)) || []
+  )
 }

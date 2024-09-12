@@ -1,6 +1,6 @@
 import { debounce } from 'radash'
 import { computed, ref, type Ref } from 'vue'
-import { useMounted } from '#imports'
+import { useMounted, useResizeObserver } from '#imports'
 
 export function useItemsSlider(
   sliderRef: Ref<HTMLElement>,
@@ -143,15 +143,26 @@ export function useItemsSlider(
       ? !arrivedLeft.value
       : !arrivedTop.value,
   )
+  const scrollWidth = ref(0)
+  const clientWidth = ref(0)
+  const scrollHeight = ref(0)
+  const clientHeight = ref(0)
 
+  useResizeObserver(sliderRef, () => {
+    scrollWidth.value = sliderRef.value.scrollWidth
+    clientWidth.value = sliderRef.value.clientWidth
+    scrollHeight.value = sliderRef.value.scrollHeight
+    clientHeight.value = sliderRef.value.clientHeight
+    onScroll()
+  })
   const isScrollable = computed(() => {
     if (!sliderRef.value) {
       return
     }
 
     return mode === 'horizontal'
-      ? sliderRef.value.scrollWidth > sliderRef.value.clientWidth
-      : sliderRef.value.scrollHeight > sliderRef.value.clientHeight
+      ? scrollWidth.value > clientWidth.value
+      : scrollHeight.value > clientHeight.value
   })
 
   return {

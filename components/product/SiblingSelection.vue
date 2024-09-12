@@ -57,20 +57,20 @@
         :class="{ hidden: !isScrollable }"
       >
         <SFButton
-          class="rounded-l-full bg-gray-200 p-0.5 text-gray-500 transition-transform duration-300 hover:bg-gray-300 hover:text-gray-900 disabled:hover:text-gray-400"
+          class="!size-6 rounded-l-full first:!p-0.5"
           :disabled="!isPrevEnabled"
-          type="raw"
+          type="slider"
           @click="prev()"
         >
-          <IconChevronLeft class="size-4 w-5" />
+          <IconChevronLeft class="size-4" />
         </SFButton>
         <SFButton
-          class="rounded-r-full bg-gray-200 p-0.5 text-gray-500 transition-transform duration-300 hover:bg-gray-300 hover:text-gray-900 disabled:hover:text-gray-400"
+          class="!size-6 rounded-r-full last:!p-0.5"
           :disabled="!isNextEnabled"
-          type="raw"
+          type="slider"
           @click="next()"
         >
-          <IconChevronRight class="size-4 w-5" />
+          <IconChevronRight class="size-4" />
         </SFButton>
       </div>
     </template>

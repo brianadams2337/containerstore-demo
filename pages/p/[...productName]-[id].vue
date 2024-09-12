@@ -68,6 +68,11 @@
         </div>
       </div>
       <ProductDetails :product="product" />
+      <ProductRecommendations
+        v-if="recommendedProductIds.length"
+        :product-ids="recommendedProductIds"
+        :title="$t('global.product_recommendation')"
+      />
     </div>
     <template #loading>
       <SFSkeletonLoader />
@@ -84,6 +89,7 @@ import { useProductPromotions } from '~/composables/useProductPromotions'
 import { useFavoriteStore } from '~/composables/useFavoriteStore'
 import {
   definePageMeta,
+  getCombineWithProductIds,
   useBasket,
   useHead,
   useJsonld,
@@ -156,6 +162,12 @@ const showFrom = computed(
     product.value?.priceRange?.min.withTax !==
       product.value?.priceRange?.max.withTax,
 )
+
+const recommendedProductIds = computed(() => {
+  return getCombineWithProductIds(
+    product.value?.advancedAttributes?.['combineWith'],
+  )
+})
 
 // Store selector
 const favoriteStoreId = useFavoriteStore()

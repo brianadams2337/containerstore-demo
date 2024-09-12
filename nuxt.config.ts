@@ -708,7 +708,6 @@ export default defineNuxtConfig({
       { name: 'useOrders', argumentLength: 1 },
       { name: 'usePromotionGifts', argumentLength: 2 },
       { name: 'useSubscription', argumentLength: 4 },
-      { name: 'useProductRecommendations', argumentLength: 2 },
     ],
   },
 })

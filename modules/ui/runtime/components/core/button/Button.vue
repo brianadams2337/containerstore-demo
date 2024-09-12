@@ -16,6 +16,8 @@
         isTertiary,
       'rounded-[10px] bg-accent font-semibold text-white hover:bg-accent-600 hover:text-white':
         isAccent,
+      'aspect-square bg-white !p-2 text-gray-400 shadow-secondary transition-transform duration-300 hover:bg-white hover:text-gray-900 disabled:border-transparent disabled:hover:text-gray-400':
+        isSlider,
       'text-primary hover:text-primary-400': isRaw,
       'w-full': isFullWidth,
       'animate-pulse cursor-not-allowed': loading,
@@ -106,6 +108,7 @@ const isSecondary = computed(() => props.type === ButtonType.SECONDARY)
 const isTertiary = computed(() => props.type === ButtonType.TERTIARY)
 const isRaw = computed(() => props.type === ButtonType.RAW)
 const isAccent = computed(() => props.type === ButtonType.ACCENT)
+const isSlider = computed(() => props.type === ButtonType.SLIDER)
 
 const { isSize } = getSizeUtils(props.size)
 
