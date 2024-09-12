@@ -21,7 +21,13 @@
     >
       <template #icon="{ _class }">
         <AsyncDataWrapper :status="status">
-          <IconHeartInactive v-if="!isInWishlist" :class="_class" />
+          <IconHeartInactive
+            v-if="
+              (!isInWishlist && !isWishlistToggling) ||
+              (isInWishlist && isWishlistToggling)
+            "
+            :class="_class"
+          />
           <IconHeartActivePurple v-else :class="_class" />
           <template #loading>
             <IconHeartInactive
