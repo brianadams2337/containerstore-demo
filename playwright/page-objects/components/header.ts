@@ -8,6 +8,7 @@ export class Header {
   readonly headerBasketButton: Locator
   readonly headerLoginButton: Locator
   readonly basketNumItems: Locator
+  readonly wishlistLink: Locator
   readonly mainHeader: Locator
 
   constructor(page: Page) {
@@ -17,10 +18,10 @@ export class Header {
     )
     this.promotionBanner = page.getByTestId('promotion-banner')
     this.wishlistNumItems = page.getByTestId('wishlist-items-badge')
-
     this.headerBasketButton = page.getByTestId('basket-link')
     this.headerLoginButton = page.getByTestId('user-popover')
     this.basketNumItems = page.getByTestId('floating-badge')
+    this.wishlistLink = page.getByTestId('wishlist-link')
     this.mainHeader = page.getByTestId('main-header')
   }
 

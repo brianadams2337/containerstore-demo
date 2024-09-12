@@ -4,8 +4,8 @@
       <div
         class="mt-2 w-full justify-between py-2 text-xs font-medium text-primary opacity-50"
       >
-        <p v-if="brand">{{ brand }}</p>
-        <p v-if="name">{{ name }}</p>
+        <p v-if="brand" data-testid="product-brand">{{ brand }}</p>
+        <p v-if="name" data-testid="product-name">{{ name }}</p>
       </div>
       <div>
         <ProductPrice

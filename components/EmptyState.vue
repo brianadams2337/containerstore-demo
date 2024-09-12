@@ -1,8 +1,9 @@
 <template>
   <div
     class="flex flex-col items-center justify-center gap-10 rounded bg-gray-50 py-10 md:flex-row md:px-10 lg:py-32"
+    data-testid="empty-state"
   >
-    <div class="w-32">
+    <div class="w-32" data-testid="empty-state-icon">
       <component :is="iconComponent" class="w-full" />
     </div>
     <div class="px-8 text-center md:w-[32rem] md:px-0 md:text-start">

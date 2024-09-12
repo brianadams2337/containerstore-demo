@@ -9,6 +9,7 @@
       :disabled="disabled"
       type="radio"
       class="peer absolute left-0 top-0 z-0 opacity-0"
+      :data-testid="`radio-button-${value}`"
     />
     <div
       class="z-10 inline-flex size-5 items-center justify-center rounded-full border-2 bg-white"

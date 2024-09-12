@@ -24,6 +24,7 @@
     >
       <div
         class="size-full overflow-y-auto bg-white md:inset-y-2 md:right-2 md:max-w-[25rem]"
+        data-testid="slide-in-overflow"
         :class="slideClass"
       >
         <div class="relative flex h-full flex-col">

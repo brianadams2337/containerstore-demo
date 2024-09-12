@@ -8,6 +8,7 @@
       <article
         :id="id"
         class="group/product-card flex h-full flex-col"
+        data-testid="article"
         @mouseover="onMouseOver"
         @mouseleave="onMouseLeave"
       >

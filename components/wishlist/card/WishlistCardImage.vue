@@ -18,7 +18,7 @@
       type="secondary"
       class="w-full border-gray-350 bg-white p-3 text-xs font-semibold transition"
       :class="isAddToBasketButtonShown ? 'opacity-1' : 'opacity-0'"
-      data-testid="wishlist-card-add-to-cart"
+      data-testid="add-to-cart-image"
       @click="addItemToCart(index)"
     >
       {{ $t('pdp.add_label') }}
@@ -38,7 +38,7 @@
   >
     <div
       class="flex size-8 cursor-pointer items-center justify-center rounded-full border border-gray-100 bg-white"
-      data-testid="wishlist-card-add-to-cart-mobile"
+      data-testid="add-to-cart-image-mobile"
       @click="showSizePicker(index)"
       @keydown.enter="showSizePicker(index)"
     >

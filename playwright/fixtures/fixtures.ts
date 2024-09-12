@@ -13,6 +13,7 @@ import { Pagination } from '../page-objects/components/pagination'
 import { PlpFilters } from '../page-objects/components/plpFilters'
 import { Search } from '../page-objects/components/search'
 import { MobileNavigation } from '../page-objects/components/mobileNavigation'
+import { WishlistPage } from '../page-objects/wishlistPage'
 import { Footer } from '../page-objects/components/footer'
 import { OrdersPage } from '../page-objects/ordersPage'
 
@@ -31,6 +32,7 @@ interface Fixtures {
   plpFilters: PlpFilters
   search: Search
   mobileNavigation: MobileNavigation
+  wishlistPage: WishlistPage
   footer: Footer
   ordersPage: OrdersPage
 }
@@ -93,6 +95,10 @@ export const test = base.extend<Fixtures>({
   mobileNavigation: async ({ page }, use) => {
     const mobileNavigation = new MobileNavigation(page)
     await use(mobileNavigation)
+  },
+  wishlistPage: async ({ page }, use) => {
+    const wishlistPage = new WishlistPage(page)
+    await use(wishlistPage)
   },
   footer: async ({ page }, use) => {
     const footer = new Footer(page)

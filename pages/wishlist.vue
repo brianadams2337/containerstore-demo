@@ -23,7 +23,11 @@
       </div>
     </template>
     <template v-else>
-      <div v-if="count" class="mt-8 grid w-auto grid-cols-12 gap-2">
+      <div
+        v-if="count"
+        class="mt-8 grid w-auto grid-cols-12 gap-2"
+        data-testid="wishlist-items-wrapper"
+      >
         <WishlistCard
           v-for="(item, index) in orderedItems"
           :key="`product-${item.key}-${item.product}`"
