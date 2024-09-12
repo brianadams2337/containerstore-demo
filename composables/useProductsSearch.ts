@@ -22,7 +22,7 @@ export function useProductsSearch({
   } = {},
   options = {},
 }: Partial<{
-  params: Partial<FetchProductsByCategoryParams>
+  params: Partial<Omit<FetchProductsByCategoryParams, 'categoryId'>>
   options: Partial<{ lazy: boolean; immediate: boolean }>
 }> = {}) {
   const route = useRoute()

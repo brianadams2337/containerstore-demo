@@ -25,7 +25,10 @@ export function useProductsByCategory(
     } = {},
     options,
   }: Partial<{
-    params: Omit<Partial<FetchProductsByCategoryParams>, 'category'>
+    params: Omit<
+      Partial<FetchProductsByCategoryParams>,
+      'category' | 'categoryId'
+    >
     options: Partial<{ lazy: boolean; immediate: boolean }>
   }> = {},
 ) {
