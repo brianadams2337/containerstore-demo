@@ -124,7 +124,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineModel, computed, ref } from 'vue'
+import { defineModel, computed, ref, watch } from 'vue'
 import type { Product, Variant } from '@scayle/storefront-nuxt'
 import { isProductSubscriptionEligible } from '~/modules/subscription/helpers/subscription'
 import { useProductBaseInfo } from '~/composables/useProductBaseInfo'
@@ -149,6 +149,9 @@ const quantity = ref(1)
 const maxQuantity = computed(() =>
   Math.max(Math.min(activeVariant.value?.stock.quantity ?? 1, 9), 0),
 )
+watch(activeVariant, () => {
+  quantity.value = 1
+})
 
 const basketItem = computed<AddToBasketItem | undefined>(() => {
   if (!activeVariant.value) {
