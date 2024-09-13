@@ -102,7 +102,10 @@
           </div>
         </template>
       </SFItemsSlider>
-      <WishlistToggle class="absolute right-5 top-5" :product="product" />
+      <WishlistToggle
+        class="absolute right-5 top-5 md:hidden"
+        :product="product"
+      />
       <ProductBadges
         :product="product"
         class="absolute left-5 max-md:bottom-5 md:top-5"
