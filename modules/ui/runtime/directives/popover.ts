@@ -16,7 +16,7 @@ function togglePopover(el: HTMLElement, value: unknown): void {
 
 export const vPopover: ObjectDirective<HTMLElement> = {
   created(el) {
-    el.setAttribute('popover', 'true')
+    el.setAttribute('popover', 'manual')
   },
   beforeMount(el, { value }, { transition }) {
     if (transition && value) {

@@ -18,7 +18,7 @@ describe('v-popover directive', () => {
     HTMLElement.prototype.showPopover = vi.fn()
 
     const wrapper = mount(component)
-    expect(wrapper.attributes('popover')).toBe('true')
+    expect(wrapper.attributes('popover')).toBe('manual')
   })
 
   it('should open the dialog when the value is truthy', () => {
