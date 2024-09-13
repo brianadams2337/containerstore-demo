@@ -66,7 +66,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, toRefs } from 'vue'
+import { toRefs } from 'vue'
 import { type Ref, watch, defineOptions, computed } from 'vue'
 import { useHead } from '@unhead/vue'
 import {
@@ -108,12 +108,6 @@ const { rootCategories, fetchingCategories, allCategories } = toRefs(props)
 
 const currentCategoryId = computed(() => getCategoryId(route.params))
 
-const currentCategoryTemp = ref(
-  allCategories.value.find(
-    (category) => category.id === currentCategoryId.value,
-  ),
-)
-
 const {
   products,
   pagination,
@@ -122,27 +116,22 @@ const {
   paginationOffset,
 } = useProductsByCategory(currentCategoryId, { options: { lazy: true } })
 
-if (!currentCategoryTemp.value) {
-  const {
-    data: _currentCategory,
-    fetching: isCategoryFetching,
-    error: categoryError,
-  } = await useCurrentCategory(currentCategoryId.value)
+const {
+  data: _currentCategory,
+  fetching: isCategoryFetching,
+  error: categoryError,
+} = await useCurrentCategory(currentCategoryId.value)
 
-  if (categoryError.value) {
-    throw categoryError.value
-  }
-
-  if (!isCategoryFetching && !_currentCategory.value) {
-    throw createError({ statusCode: HttpStatusCode.NOT_FOUND, fatal: true })
-  }
-
-  // With the above checks we know the category is non-null
-  currentCategoryTemp.value = (_currentCategory as Ref<Category>).value
+if (categoryError.value) {
+  throw categoryError.value
 }
 
-// With the above checks we know the category is not null or undefined
-const currentCategory = currentCategoryTemp as Ref<Category>
+if (!isCategoryFetching && !_currentCategory.value) {
+  throw createError({ statusCode: HttpStatusCode.NOT_FOUND, fatal: true })
+}
+
+// With the above checks we know the category is non-null
+const currentCategory = _currentCategory as Ref<Category>
 
 const trackProductClick = (product: Product) => {
   trackSelectItem({
