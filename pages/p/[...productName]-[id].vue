@@ -16,16 +16,18 @@
             :product-categories="longestCategoryList"
           />
           <div class="max-md:px-5">
-            <span class="font-semi-bold-variable text-gray-900">
+            <div class="truncate font-semi-bold-variable text-gray-900">
               {{ brand }}
-            </span>
+            </div>
             <SFHeadline
               size="lg"
               class="text-md !font-normal text-gray-600 md:text-lg"
               data-testid="pdp-product-name"
               tag="h1"
             >
-              {{ name }}
+              <span class="truncate">
+                {{ name }}
+              </span>
             </SFHeadline>
           </div>
 
