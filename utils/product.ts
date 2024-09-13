@@ -162,12 +162,12 @@ export const getProductSiblings = (
     includeCurrentProduct = true,
     sortBySoldOut = false,
   } = options
-  const nonSoldOutItems =
-    product?.siblings?.filter(({ isSoldOut, isActive }) => {
-      return omitSoldOut ? isActive && !isSoldOut : isActive
+  const siblingItems =
+    product?.siblings?.filter(({ isActive }) => {
+      return omitSoldOut ? isActive : true
     }) ?? []
 
-  const items = nonSoldOutItems.map((item) =>
+  const items = siblingItems.map((item) =>
     getProductSiblingData(item, colorAttributeName),
   )
 

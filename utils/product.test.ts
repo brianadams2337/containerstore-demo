@@ -428,13 +428,13 @@ describe('getProductSiblings', () => {
         {
           id: 3,
           isActive: false,
-          isSoldOut: false,
+          isSoldOut: true,
           ...getProductData(),
         },
       ],
     }
-    const siblings = getProductSiblings(product, 'color', { omitSoldOut: true })
-    expect(siblings.map((item) => item.id)).toEqual([1, 2])
+    const siblings = getProductSiblings(product, 'color')
+    expect(siblings.map((item) => item.id)).toEqual([1, 2, 3])
   })
 
   it('returns product siblings without current product', ({ expect }) => {
@@ -453,7 +453,7 @@ describe('getProductSiblings', () => {
         {
           id: 3,
           isActive: false,
-          isSoldOut: false,
+          isSoldOut: true,
           ...getProductData(),
         },
       ],
@@ -461,7 +461,59 @@ describe('getProductSiblings', () => {
     const siblings = getProductSiblings(product, 'color', {
       includeCurrentProduct: false,
     })
-    expect(siblings.map((item) => item.id)).toEqual([2])
+    expect(siblings.map((item) => item.id)).toEqual([2, 3])
+  })
+
+  it('omits sold out siblings', ({ expect }) => {
+    const product: Product = {
+      id: 1,
+      isActive: true,
+      isSoldOut: false,
+      ...getProductData(),
+      siblings: [
+        {
+          id: 2,
+          isActive: true,
+          isSoldOut: false,
+          ...getProductData(),
+        },
+        {
+          id: 3,
+          isActive: false,
+          isSoldOut: true,
+          ...getProductData(),
+        },
+      ],
+    }
+    const siblings = getProductSiblings(product, 'color', { omitSoldOut: true })
+    expect(siblings.map((item) => item.id)).toEqual([1, 2])
+  })
+
+  it('sold out siblings are sorted to the end', ({ expect }) => {
+    const product: Product = {
+      id: 1,
+      isActive: true,
+      isSoldOut: false,
+      ...getProductData(),
+      siblings: [
+        {
+          id: 2,
+          isActive: false,
+          isSoldOut: true,
+          ...getProductData(),
+        },
+        {
+          id: 3,
+          isActive: true,
+          isSoldOut: false,
+          ...getProductData(),
+        },
+      ],
+    }
+    const siblings = getProductSiblings(product, 'color', {
+      sortBySoldOut: true,
+    })
+    expect(siblings.map((item) => item.id)).toEqual([1, 3, 2])
   })
 })
 

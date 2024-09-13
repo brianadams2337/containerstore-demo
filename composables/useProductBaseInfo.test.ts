@@ -426,7 +426,7 @@ describe('useProductBaseInfo', () => {
       product.siblings?.push({
         id: 52,
         attributes: attributes,
-        isActive: true,
+        isActive: false,
         isSoldOut: true,
         isNew: false,
         createdAt: '',
