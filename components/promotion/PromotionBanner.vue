@@ -26,12 +26,20 @@
       />
       <div class="flex h-full flex-1 justify-end">
         <PromotionProgress v-if="minOrderValue" class="mr-2.5" />
-        <ShowDealsButton
-          v-if="isDealsButtonShown"
-          data-testid="show-deals-button"
-          :category="category"
-          class="mr-3"
-        />
+        <!--
+          When we have promotions with and without ShowDealsButton, each time the promotion changes, from no button to with button
+          it will cause an http request for resolving the category url.
+          By keeping it alive, it will only cause the HTTP call once for each category.
+        -->
+        <KeepAlive>
+          <ShowDealsButton
+            v-if="isDealsButtonShown"
+            :key="`${currentPromotion?.id}-${category?.id}`"
+            data-testid="show-deals-button"
+            :category="category"
+            class="mr-3"
+          />
+        </KeepAlive>
         <MyDealsButton class="self-center" />
       </div>
     </div>

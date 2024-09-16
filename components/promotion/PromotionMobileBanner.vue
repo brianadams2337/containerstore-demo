@@ -36,11 +36,19 @@
             class="self-stretch"
             data-testid="promotion-countdown-mobile"
           />
-          <ShowDealsButton
-            v-if="isDealsButtonShown"
-            :category="category"
-            class="self-stretch text-balance"
-          />
+          <!--
+            When we have promotions with and without ShowDealsButton, each time the promotion changes, from no button to with button
+            it will cause an http request for resolving the category url.
+            By keeping it alive, it will only cause the HTTP call once for each category.
+          -->
+          <KeepAlive>
+            <ShowDealsButton
+              v-if="isDealsButtonShown"
+              :key="`${currentPromotion?.id}-${category?.id}`"
+              :category="category"
+              class="self-stretch text-balance"
+            />
+          </KeepAlive>
         </div>
       </div>
       <PromotionProgress
