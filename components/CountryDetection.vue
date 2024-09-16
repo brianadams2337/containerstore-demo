@@ -6,8 +6,9 @@
       </div>
       <div class="mt-8 flex flex-col items-center gap-3">
         <SFButton
-          v-for="shop in suggestedShops"
+          v-for="(shop, index) in suggestedShops"
           :key="shop.shopId"
+          :autofocus="index === 0"
           type="primary"
           class="w-fit"
           @click="switchToShop(shop)"
