@@ -21,7 +21,7 @@
     }"
     provider="scayle"
     data-testid="product-image"
-    class="picture block mix-blend-darken"
+    class="picture block"
     @load="load"
   />
 </template>
@@ -77,13 +77,5 @@ const modifiers = computed(() => ({ ...(props.shouldTrim && { trim: 1 }) }))
 .picture-cover img {
   object-fit: cover;
   object-position: center top;
-}
-
-.cursor-zoom-in {
-  cursor: zoom-in;
-}
-
-.cursor-zoom-out {
-  cursor: zoom-out;
 }
 </style>
