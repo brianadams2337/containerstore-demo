@@ -17,7 +17,7 @@
         },
         sliderClass,
       ]"
-      @scroll="onScroll"
+      @scroll.passive="onScroll"
     >
       <slot />
     </div>

@@ -1,6 +1,5 @@
-import { debounce } from 'radash'
 import { computed, ref, type Ref } from 'vue'
-import { useMounted, useResizeObserver } from '#imports'
+import { useMounted, useResizeObserver, useThrottleFn } from '@vueuse/core'
 
 export function useItemsSlider(
   sliderRef: Ref<HTMLElement>,
@@ -23,7 +22,7 @@ export function useItemsSlider(
 
   const activeSlide = ref(0)
 
-  const calculateActiveSlide = debounce({ delay: 20 }, () => {
+  const calculateActiveSlide = () => {
     if (mode === 'horizontal') {
       activeSlide.value = Math.abs(
         Math.round(
@@ -37,9 +36,10 @@ export function useItemsSlider(
         ),
       )
     }
-  })
+  }
 
-  const onScroll = () => {
+  // Note: Throttle onScroll callback to prevent layout thrashing. https://kellegous.com/j/2013/01/26/layout-performance/
+  const onScroll = useThrottleFn(() => {
     if (import.meta.server || !sliderRef.value) {
       return
     }
@@ -61,7 +61,7 @@ export function useItemsSlider(
     y.value = scrollTop
 
     calculateActiveSlide()
-  }
+  }, 100)
 
   const getSlideWidth = () => {
     const slideCount = sliderRef.value.children.length
