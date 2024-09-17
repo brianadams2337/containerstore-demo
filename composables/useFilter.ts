@@ -26,13 +26,13 @@ export function useFilter(
   const { show } = useToast()
 
   const filterData = useFilters({
-    params: () => ({
+    params: computed(() => ({
       categoryId: toValue(currentCategoryId),
       where: {
         ...appliedFilter.value,
         ...(route.query.term && { term: String(route.query.term) }),
       },
-    }),
+    })),
     options: { immediate },
     key: `${toValue(currentCategoryId) ?? keyPrefix}-filters`,
   })

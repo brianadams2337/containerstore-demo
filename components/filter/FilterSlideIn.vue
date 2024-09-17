@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { toRef } from 'vue'
+import { toRefs } from 'vue'
 import { useAppliedFilters, useFilter } from '~/composables'
 
 const props = defineProps<{ currentCategoryId?: number }>()
@@ -35,9 +35,7 @@ const props = defineProps<{ currentCategoryId?: number }>()
 const { appliedBooleanValues, appliedFilter, appliedAttributeValues } =
   useAppliedFilters()
 
-const currentCategoryId = props.currentCategoryId
-  ? toRef(props.currentCategoryId)
-  : undefined
+const { currentCategoryId } = toRefs(props)
 
 const {
   availableFilters,

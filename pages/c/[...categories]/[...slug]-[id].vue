@@ -60,7 +60,7 @@
           />
         </div>
       </div>
-      <FilterSlideIn :current-category="currentCategory" />
+      <FilterSlideIn :current-category-id="currentCategoryId" />
       <ProductListScrollToTopButton />
     </template>
   </CMSCategoryData>
