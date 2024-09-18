@@ -75,12 +75,14 @@
             </slot>
           </div>
         </slot>
-        <ProductCardDetails
-          v-if="link && product"
-          :product="product"
-          :link="link"
-          @click.capture="$emit('click:product')"
-        />
+        <slot name="details" v-bind="{ ...$props, name, brand, link }">
+          <ProductCardDetails
+            v-if="link && product"
+            :product="product"
+            :link="link"
+            @click.capture="$emit('click:product')"
+          />
+        </slot>
       </article>
     </Intersect>
   </div>
