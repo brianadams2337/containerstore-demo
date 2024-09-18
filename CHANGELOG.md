@@ -974,28 +974,28 @@ and the [Official Vue 3.4 Announcement Blog](https://blog.vuejs.org/posts/vue-3-
 The Promotion Engine presents the user with various promotions that have specific conditions for receiving the discount.
 The Storefront Boilerplate currently support the two types `Automatic discount` and `Buy X get Y` by default as promotions.
 
-- [SCAYLE Resource Center - Storefront Boilerplate / Promotion Engine](https://scayle.dev/en/dev/storefront-core/promotions)
+- [SCAYLE Resource Center - Storefront Boilerplate / Promotion Engine](https://scayle.dev/en/storefront-guide/developer-guide/features/promotions)
 
 #### 👥 Identity Provider support for Token-based Authentication
 
 The Storefront Boilerplate now provides support for Single-Sign-On (SSO) via multiple Identity Provider (IDP) like Okta, KeyCloak or Google.
 The IDP login / SSO flow integrates with the existing Token-based Authentication and can be used in parallel to the existing SCAYLE IDP.
 
-- [SCAYLE Resource Center - Storefront Core / Authentication](https://scayle.dev/en/dev/storefront-core/authentication)
+- [SCAYLE Resource Center - Storefront Core / Authentication](https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/authentication)
 
 #### 🔋 Introducing Page Caching with unified cache handling
 
 The distributed default configuration of the Storefront Boilerplate comes with page caching enabled and relies on the
-global `storefront-cache` storage mountpoint available via [Storefront Core - Caching](https://scayle.dev/en/dev/storefront-core/caching)
-and configured via [Storefront Core - Storage via Module Configuration](https://scayle.dev/en/dev/storefront-core/module-configuration#storage).
+global `storefront-cache` storage mountpoint available via [Storefront Core - Caching](https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/caching)
+and configured via [Storefront Core - Storage via Module Configuration](https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction#storage).
 
-- [SCAYLE Resource Center - Storefront Boilerplate / Page Caching](https://scayle.dev/en/dev/storefront-core/page-caching)
+- [SCAYLE Resource Center - Storefront Boilerplate / Page Caching](https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/caching#page-caching-in-storefront-boilerplate)
 
 #### 🛫 Introducing support for Vercel Edge deployment
 
 Storefront Boilerplate does now support deployment to Vercel Edge, besides Docker-based deployments.
 
-- [SCAYLE Resource Center - Storefront Boilerplate / Vercel Edge](https://scayle.dev/en/dev/storefront-core/vercel-edge-deployment-sfb)
+- [SCAYLE Resource Center - Storefront Boilerplate / Vercel Edge](https://scayle.dev/en/storefront-guide/developer-guide/deployments/vercel)
 
 ### 🚀 Major Changes
 
@@ -1090,7 +1090,7 @@ Storefront Boilerplate does now support deployment to Vercel Edge, besides Docke
 
 - Added `nuxi@3.10.0` as it is now a standalone project within the Nuxt ecosystem
 - Added `vue@3.4.10` as explicit dependency to avoid potential version mismatches
-- Updated to `@scayle/storefront-nuxt@7.50.1` (_For detailed changes see [SCAYLE Resources Center - Releases](https://scayle.dev/en/releases/introduction)_)
+- Updated to `@scayle/storefront-nuxt@7.50.1`
 - Updated to `@storyblok/nuxt@6.0.1`
 - Updated to `@tailwindcss/forms@0.5.7`
 - Updated to `@vueuse/core@10.7.1` and `@vueuse/nuxt@10.7.1`

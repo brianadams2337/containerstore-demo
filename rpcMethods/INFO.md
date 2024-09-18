@@ -4,4 +4,4 @@ The `rpcMethods/` directory is a dedicated space for placing custom SCAYLE Store
 
 ---
 
-For more information, check the [official SCAYLE Storefront documentation](https://new.scayle.dev/en/developer-guide/customise-and-extend/customise-storefront#write-an-rpc-method).
+For more information, check the [official SCAYLE Storefront documentation](https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/rpc-methods#writing-an-rpc-method).

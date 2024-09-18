@@ -15,7 +15,7 @@ declare module '@nuxt/schema' {
 }
 
 /** [DEFAULT VALUE] Storefront Core - Configure format for AppKey generation for baskets and wishlists
- * https://scayle.dev/en/dev/storefront-core/module-configuration#app-keys */
+ * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/authentication#app-keys */
 const DEFAULT_APP_KEYS = {
   wishlistKey: 'wishlist_{shopId}_{userId}', // Override: NUXT_STOREFRONT_SHOPS_{UNIQUE_IDENTIFIER}_APP_KEYS_WISHLIST_KEY
   basketKey: 'basket_{shopId}_{userId}', // Override: NUXT_STOREFRONT_SHOPS_{UNIQUE_IDENTIFIER}_APP_KEYS_BASKET_KEY
@@ -47,7 +47,7 @@ type NitroRouteConfig = NitroRouteRules extends Record<string, infer Value>
   : never
 
 /** [DEFAULT VALUE] Storefront Core - Shop domain if `domain` is selected as `shopSelector
- * https://scayle.dev/en/dev/storefront-core/module-configuration#path-and-domain */
+ * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction#path-and-domain */
 const baseShopDomain = (code: string | string[]) =>
   `${Array.isArray(code) ? code[0] : code}.localhost:3000`
 
@@ -57,7 +57,7 @@ const DOMAIN_PER_LOCALE = SHOP_SELECTOR_MODE === 'domain'
 const isVercel =
   process.env.NITRO_PRESET && process.env.NITRO_PRESET.includes('vercel')
 
-// Generate the i18n locales from the shop config
+// Generate the I18N locales from the shop config
 interface LocaleConfig {
   code: string
   language: string
@@ -126,30 +126,30 @@ export default defineNuxtConfig({
       accessHeader: undefined, // Override: NUXT_CHECKOUT_ACCESS_HEADER
     },
     // Configuration for the omnichannel add-on
+    // https://scayle.dev/en/extensions/omnichannel/user-guide
     omnichannel: {
       apiToken: '', // Override: NUXT_OMNICHANNEL_API_TOKEN
       apiHost: '', // Override: NUXT_OMNICHANNEL_API_HOST
     },
-    // https://scayle.dev/en/dev/storefront-core/module-configuration
+    // https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction
     storefront: {
       /** Storefront Core - Additional server-side context properties exposed to client-side
-       * https://scayle.dev/en/dev/storefront-core/module-configuration#public-shop-data */
+       * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction#public-shop-data */
       publicShopData: ['paymentProviders', 'isLowestPreviousPriceActive'], // Override: NUXT_PUBLIC_PUBLIC_SHOP_DATA
 
       /** Storefront Core - Configure format for AppKey generation for baskets and wishlists
-       * https://scayle.dev/en/dev/storefront-core/module-configuration#app-keys */
+       * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/authentication#app-keys */
       appKeys: DEFAULT_APP_KEYS,
 
       /** [OPTIONAL] Storefront Core - Fetch redirects from Storefront API set within Cloud Panel
-       * https://scayle.dev/en/dev/storefront-core/module-configuration#redirects
-       * https://scayle.dev/en/dev/storefront-core/redirects */
+       * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/redirects */
       redirects: {
         enabled: false, // Override: NUXT_STOREFRONT_REDIRECTS_ENABLED
         queryParamWhitelist: [], // Override: NUXT_STOREFRONT_REDIRECTS_QUERY_PARAM_WHITELIST
       },
 
       /** Storefront Core - Configuration of session handling and cookie
-       * https://scayle.dev/en/dev/storefront-core/module-configuration#sessions */
+       * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/sessions */
       session: {
         sameSite: 'lax', // Override: NUXT_STOREFRONT_SESSION_SAME_SITE
         maxAge: 2419200, // 4 weeks in seconds | Override: NUXT_STOREFRONT_SESSION_MAX_AGE
@@ -158,14 +158,14 @@ export default defineNuxtConfig({
       /**
        * Storefront Core - Storefront API Client configuration
        * NOTE: Formerly known as `backbone` or `bapi`.
-       * https://scayle.dev/en/dev/storefront-core/module-configuration#storefront-api */
+       * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction#storefront-api */
       sapi: {
         host: '', // Override: NUXT_STOREFRONT_SAPI_HOST
         token: '', // Override: NUXT_STOREFRONT_SAPI_TOKEN
       },
 
       /** Storefront Core - Token-based (OAuth) Authentication configurations
-       * https://scayle.dev/en/dev/storefront-core/module-configuration#authentication */
+       * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/authentication */
       oauth: {
         apiHost: '', // Override: NUXT_STOREFRONT_OAUTH_API_HOST
         clientId: '', // Override: NUXT_STOREFRONT_OAUTH_CLIENT_ID
@@ -173,7 +173,7 @@ export default defineNuxtConfig({
       },
 
       /** Storefront Core - Identity Provider support for Token-based (OAuth) Authentication
-       * https://scayle.dev/en/dev/storefront-core/authentication#support-for-identity-provider */
+       * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/authentication#identity-providers */
       idp: {
         enabled: false,
         idpKeys: [],
@@ -211,11 +211,11 @@ export default defineNuxtConfig({
             /** Storefront Core - Numeric SCAYLE ShopId (usually 5 digits) */
             shopId: shop.shopId, // Override: NUXT_STOREFRONT_SHOPS_{UNIQUE_IDENTIFIER}_SHOP_ID
             /** [CONDITIONAL] Storefront Core - Shop path if `path` is selected as `shopSelector
-             * https://scayle.dev/en/dev/storefront-core/module-configuration#path-and-domain */
+             * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction#path-and-domain */
             path: shop.code, // Override: NUXT_STOREFRONT_SHOPS_{UNIQUE_IDENTIFIER}_PATH
 
             /** [CONDITIONAL] Storefront Core - Shop domain if `domain` is selected as `shopSelector
-             * https://scayle.dev/en/dev/storefront-core/module-configuration#path-and-domain */
+             * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction#path-and-domain */
             domain: baseShopDomain(shop.code),
 
             locale: shop.locale, // Override: NUXT_STOREFRONT_SHOPS_{UNIQUE_IDENTIFIER}_LOCALE
@@ -224,7 +224,7 @@ export default defineNuxtConfig({
 
             /** Storefront Core - Shop-specific authentication configurations
              * NOTE: Currently only `resetPasswordUrl` is supported
-             * https://scayle.dev/en/dev/storefront-core/module-configuration#password-reset-url */
+             * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/authentication#password-reset-url */
             auth: {
               // Override: NUXT_STOREFRONT_SHOPS_{UNIQUE_IDENTIFIER}_AUTH_RESET_PASSWORD_URL
               resetPasswordUrl: `https://${baseShopDomain(shop.code)}/${
@@ -250,11 +250,11 @@ export default defineNuxtConfig({
             },
 
             /** Storefront Core - Configure format for AppKey generation for baskets and wishlists
-             * https://scayle.dev/en/dev/storefront-core/module-configuration#app-keys */
+             * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/authentication#app-keys */
             appKeys: DEFAULT_APP_KEYS,
 
             /** Storefront Core - Additional Shop Data for Payment providers
-             * https://scayle.dev/en/dev/storefront-core/module-configuration#additional-shop-data */
+             * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction#additional-shop-data */
             paymentProviders: [
               'lastschrift',
               'visa',
@@ -272,7 +272,7 @@ export default defineNuxtConfig({
         {},
       ),
       /** Storefront Core - Storage Configuration for `cache` and `session` mountpoints
-       * https://scayle.dev/en/dev/storefront-core/module-configuration#storage */
+       * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction#storage */
       storage: (() => {
         if (isVercel) {
           // No driver options are necessary for vercelKV
@@ -328,7 +328,7 @@ export default defineNuxtConfig({
         }
       })(),
       /** [OPTIONAL] Storefront Core - Internal cache behaviour configurations
-       * https://scayle.dev/en/dev/storefront-core/module-configuration#cache */
+       * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction#cache */
       cache: {
         auth: {
           username: 'max', // Override: NUXT_STOREFRONT_CACHE_AUTH_USERNAME
@@ -337,14 +337,14 @@ export default defineNuxtConfig({
         enabled: true, // Override: NUXT_STOREFRONT_CACHE_ENABLED
       },
       /** [OPTIONAL] Storefront Core - `with` Parameter
-       * https://scayle.dev/en/dev/storefront-core/module-configuration#with-params */
+       * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction#with-parameters */
       withParams, // Previous withParams keys are Overrideable using prefix NUXT_PUBLIC_WITH_PARAMS_
     },
     // Following keys are Overrideable using prefix NUXT_PUBLIC_
     public: {
       storefront: {
         /** Storefront Core - Internal logger configuration
-         * https://scayle.dev/en/dev/storefront-core/module-configuration#log */
+         * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction#log */
         log: {
           name: 'storefront-boilerplate-nuxt', // Override: NUXT_PUBLIC_STOREFRONT_LOG_NAME
           level: 'debug', // Override: NUXT_PUBLIC_STOREFRONT_LOG_LEVEL
@@ -443,9 +443,10 @@ export default defineNuxtConfig({
 
   // https://nuxt.com/docs/api/nuxt-config#modules-1
   modules: [
-    // https://scayle.dev/en/storefront-guide
+    // https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction
     '@scayle/storefront-nuxt/module',
-    // https://scayle.dev/en/storefront-guide/integrations/omnichannel
+    // https://scayle.dev/en/storefront-guide/developer-guide/integrations/omnichannel
+    // https://scayle.dev/en/extensions/omnichannel/user-guide
     '@scayle/omnichannel-nuxt/module',
     // https://tailwindcss.nuxtjs.org/
     '@nuxtjs/tailwindcss',
@@ -467,7 +468,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     // Based on https://github.com/antfu/nuxt-eslint-auto-explicit-import
     './modules/eslint-auto-explicit-import',
-    // https://scayle.dev/en/storefront-guide/integrations/open-telemetry
+    // https://scayle.dev/en/storefront-guide/developer-guide/integrations/open-telemetry
     '@scayle/nuxt-opentelemetry',
   ],
 
@@ -483,10 +484,10 @@ export default defineNuxtConfig({
     transpile: ['@scayle/storefront-nuxt'],
   },
 
-  // https://scayle.dev/en/dev/storefront-core/build-configuration
+  // Storefront Buildtime Config
   storefront: {
     // Storefront Core - Custom RPC Methods
-    // https://scayle.dev/en/dev/storefront-core/module-configuration#custom-rpc-methods
+    // https://scayle.dev/en/storefront-guide/developer-guide/migrations/nuxt-3/storefront-core-changes#rpcmethods-rpcdir-and-rpcmethodnames
     rpcMethodNames: Object.keys(customRpcMethods), // NOT OVERRIDABLE AT RUNTIME
 
     // RPC Methods from the Storefront Core which are overriden by the project.
@@ -616,7 +617,7 @@ export default defineNuxtConfig({
 
             // Use storefront storage mount
             // Depending on your configuration this might be `redis` or another database driver
-            // https://scayle.dev/en/dev/storefront-core/module-configuration#storage
+            // https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction#storage
             base: 'storefront-cache',
           },
         }

@@ -6,4 +6,4 @@ Most of the contained configuration files are used within the root `nuxt.config.
 
 ---
 
-For more information, check the [official SCAYLE Resource Center](https://new.scayle.dev/en/storefront-guide/getting-started/configuration).
+For more information, check the [official SCAYLE Resource Center](https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction).

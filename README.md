@@ -46,7 +46,7 @@ or the Storefront Core team for quick support.
 
 The following outline should provide you with an overview of how to get your
 local development environment using the Storefront Boilerplate up and running.
-For more in-depth explanations and How-to guides, please consult the [SCAYLE Resource Center](https://scayle.dev/en/dev/storefront-core/introduction).
+For more in-depth explanations and How-to guides, please consult the [SCAYLE Resource Center](https://scayle.dev/en/storefront-guide/developer-guide/getting-started/setup-your-storefront).
 
 ### Prerequisites
 
@@ -72,7 +72,7 @@ For more in-depth explanations and How-to guides, please consult the [SCAYLE Res
    in the main directory based on the provided `.env.example` file.
 
    _For an in-depth explanation of the required environment variables,_
-   _please consult the [SCAYLE Resource Center](https://scayle.dev/en/dev/storefront-core/introduction)._
+   _please consult the [SCAYLE Resource Center](https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction)._
 
 3. Install dependencies
 

@@ -6,6 +6,7 @@
   "engines": {
     "node": ">= 20.7.0"
   },
+  "website": "https://scayle.dev/en/storefront-guide/developer-guide/getting-started/about-storefront",
   "type": "module",
   "workspaces": [
     "./"
