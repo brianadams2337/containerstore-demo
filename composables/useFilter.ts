@@ -32,6 +32,8 @@ export function useFilter(
         ...appliedFilter.value,
         ...(route.query.term && { term: String(route.query.term) }),
       },
+      includeSellableForFree: true,
+      includeSoldOut: true,
     })),
     options: { immediate },
     key: `${toValue(currentCategoryId) ?? keyPrefix}-filters`,
