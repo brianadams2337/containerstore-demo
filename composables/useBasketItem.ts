@@ -10,6 +10,7 @@ import {
   type PublicShopConfig,
 } from '@scayle/storefront-nuxt'
 import { type Ref, computed, nextTick } from 'vue'
+import { isBuyXGetYType } from '~/utils/promotion'
 import { useBasketActions } from '~/composables/useBasketActions'
 import { useBasketItemUiState } from '~/composables/useBasketItemUiState'
 import { usePageState } from '~/composables/usePageState'
@@ -39,7 +40,7 @@ export function useBasketItem(basketItem: Ref<BasketItem>) {
   const productPromotions = useProductPromotions(product.value)
 
   const { removeItem: removeBasketItem, listingMetaData } = basketActions
-  const { highestPriorityPromotion, isBuyXGetYPrioritized } = productPromotions
+  const { promotion } = productPromotions
 
   const variant = computed(() => basketItem.value!.variant)
   const inStock = computed(() => isInStock(variant.value))
@@ -102,7 +103,7 @@ export function useBasketItem(basketItem: Ref<BasketItem>) {
       return
     }
 
-    const promotionId = highestPriorityPromotion.value?.id
+    const promotionId = promotion.value?.id
 
     if (basketItem.quantity < newQuantity) {
       trackAddToBasket({
@@ -126,7 +127,7 @@ export function useBasketItem(basketItem: Ref<BasketItem>) {
       quantity: newQuantity,
       existingItemHandling: ExistingItemHandling.ReplaceExisting,
       ...(promotionId &&
-        !isBuyXGetYPrioritized.value &&
+        !isBuyXGetYType(promotion.value) &&
         !isFreeGift.value && { promotionId }),
     })
 

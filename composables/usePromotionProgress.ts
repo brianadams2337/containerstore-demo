@@ -5,7 +5,7 @@ import { divideByHundred, getBasketTotalWithoutPromotions } from '~/utils'
 
 export function usePromotionProgress(
   promotion:
-    | ComputedRef<Promotion | null>
+    | ComputedRef<Promotion | null | undefined>
     | Ref<Promotion | null>
     | ComputedRef<BasketPromotion | undefined>,
 ) {

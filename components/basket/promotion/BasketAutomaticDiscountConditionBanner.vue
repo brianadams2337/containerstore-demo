@@ -24,6 +24,12 @@
       <ProductPromotionProgressLabel
         v-if="isMOVPromotionApplied && promotion"
         :promotion="promotion"
+        :formatted-amount-left="formattedAmountLeft"
+        :formatted-discount="formattedDiscount"
+        :is-full-progress="isFullProgress"
+        :is-m-o-v-promotion-applied="isMOVPromotionApplied"
+        :min-order-amount="minOrderAmount"
+        :progress="progress"
         class="mb-1"
       />
     </template>
@@ -41,5 +47,12 @@ const { promotion, backgroundColorStyle } = useBasketItemPromotion(
   toRef(props.basketItem),
 )
 
-const { isMOVPromotionApplied } = usePromotionProgress(promotion)
+const {
+  progress,
+  minOrderAmount,
+  isMOVPromotionApplied,
+  formattedDiscount,
+  isFullProgress,
+  formattedAmountLeft,
+} = usePromotionProgress(promotion)
 </script>

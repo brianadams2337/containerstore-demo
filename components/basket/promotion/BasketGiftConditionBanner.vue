@@ -21,8 +21,14 @@
       </div>
       <ProductPromotionProgressLabel
         :promotion="promotion"
+        :progress="progress"
+        :min-order-amount="minOrderAmount"
+        :is-m-o-v-promotion-applied="isMOVPromotionApplied"
+        :is-full-progress="isFullProgress"
         :is-gift-added-to-basket="isGiftAddedToBasket"
         :are-gift-conditions-met="areGiftConditionsMet"
+        :formatted-amount-left="formattedAmountLeft"
+        :formatted-discount="formattedDiscount"
       />
     </template>
   </PromotionCard>
@@ -31,7 +37,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { BasketItem } from '@scayle/storefront-nuxt'
-import { useBasketItemPromotion } from '~/composables'
+import { useBasketItemPromotion, usePromotionProgress } from '~/composables'
 
 const props = defineProps<{ basketItem: BasketItem }>()
 
@@ -43,4 +49,13 @@ const {
   isGiftAddedToBasket,
   areGiftConditionsMet,
 } = useBasketItemPromotion(basketItem)
+
+const {
+  progress,
+  minOrderAmount,
+  isMOVPromotionApplied,
+  formattedDiscount,
+  isFullProgress,
+  formattedAmountLeft,
+} = usePromotionProgress(promotion)
 </script>

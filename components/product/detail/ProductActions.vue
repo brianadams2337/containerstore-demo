@@ -5,19 +5,19 @@
   >
     {{ $t('pdp.sold_out') }}
   </div>
-  <div v-else>
+  <div v-else class="max-md:px-5">
     <div
-      class="mt-7 text-md font-semi-bold-variable leading-[14px] text-gray-900 max-md:px-5"
+      class="mt-7 text-md font-semi-bold-variable leading-[14px] text-gray-900"
     >
       {{ $t('pdp.size_heading') }}
     </div>
-    <div class="my-3 mt-4 flex h-12 items-center space-x-4 max-md:px-5">
+    <div class="my-3 mt-4 flex h-12 items-center space-x-4">
       <VariantPicker
         ref="variantPicker"
         v-model="activeVariant"
         v-model:visible="isVariantListVisible"
         :variants="variants"
-        :automatic-discount-promotion="promotion ?? null"
+        :promotion="promotion"
         :has-one-variant-only="hasOneVariantOnly"
         class="grow"
       />
@@ -126,6 +126,7 @@
 <script setup lang="ts">
 import { defineModel, computed, ref, watch } from 'vue'
 import type { Product, Variant } from '@scayle/storefront-nuxt'
+import { isAutomaticDiscountType } from '~/utils/promotion'
 import { isProductSubscriptionEligible } from '~/modules/subscription/helpers/subscription'
 import { useProductBaseInfo } from '~/composables/useProductBaseInfo'
 import type VariantPicker from '~/components/product/VariantPicker.vue'
@@ -157,11 +158,15 @@ const basketItem = computed<AddToBasketItem | undefined>(() => {
   if (!activeVariant.value) {
     return
   }
+  // NOTE: For Buy x Get Y promotions, the promotion Id needs to be added on the Y Item (Gift)
+  const promotionId = isAutomaticDiscountType(props.promotion)
+    ? props.promotion?.id
+    : undefined
   return {
     productName: name.value,
     variantId: activeVariant.value?.id,
     quantity: quantity.value,
-    promotionId: props.promotion?.id,
+    promotionId,
   }
 })
 

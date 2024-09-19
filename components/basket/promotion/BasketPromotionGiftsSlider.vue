@@ -19,9 +19,11 @@
 import type { BasketItem, Product } from '@scayle/storefront-nuxt'
 
 type Props = {
-  products: Product[]
+  products?: Product[]
   basketItem: BasketItem
 }
 
-defineProps<Props>()
+withDefaults(defineProps<Props>(), {
+  products: () => [],
+})
 </script>

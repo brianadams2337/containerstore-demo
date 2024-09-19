@@ -3,7 +3,20 @@
     <div class="rounded border-primary p-0 md:border md:p-6">
       <SFHeadline tag="h1" size="xl">{{ $t('basket.total') }}</SFHeadline>
       <SFFadeInTransition>
-        <PromotionHurryToSaveBanners v-if="hasAppliedPromotions" class="mt-4" />
+        <template v-if="hasAppliedPromotions">
+          <PromotionHurryToSaveBanners
+            v-for="promotion in automaticDiscountPromotions"
+            :key="promotion.id"
+            class="mt-4"
+            :promotion="promotion"
+          />
+          <PromotionHurryToSaveBanners
+            v-for="promotion in buyXGetYPromotions"
+            :key="promotion.id"
+            class="mt-4"
+            :promotion="promotion"
+          />
+        </template>
       </SFFadeInTransition>
       <div class="mt-4 space-y-4">
         <BasketSummaryDetails />
@@ -56,5 +69,9 @@ const onClickToCheckoutOrder = async () => {
   })
 }
 
-const { hasAppliedPromotions } = useBasketPromotions()
+const {
+  hasAppliedPromotions,
+  buyXGetYPromotions,
+  automaticDiscountPromotions,
+} = useBasketPromotions()
 </script>

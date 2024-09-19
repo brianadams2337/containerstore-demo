@@ -50,7 +50,8 @@
     "save_your_free_gift": "Save your free gift",
     "highest_priority": "Highest priority",
     "see_my_promotions": "See my promotions",
-    "hide_my_promotions": "Hide my promotions"
+    "hide_my_promotions": "Hide my promotions",
+    "not_available": "No promotion available"
   },
   "validation": {
     "email": "The {field} field must be a valid email",
@@ -289,6 +290,7 @@
       "cart_reached_for_gifts": "Shopping cart reached! Add promotional products to get a free gift",
       "add_free_gift_when_cart_reached": "Shopping cart reached! Add a free gift",
       "full_progress_message": "You are saving {amount} on this promotion",
+      "free_title": "Free gift",
       "free_label": "Free",
       "add_for_free_label": "Add for free",
       "select_size_label": "Select your size",

@@ -28,9 +28,12 @@
                 <div class="flex flex-col">
                   <ProductPrice
                     v-if="price"
-                    :promotion="automaticDiscountPromotion"
-                    :price="price"
-                    :is-free="areConditionsMet"
+                    :promotion="promotion"
+                    :price="
+                      areConditionsMet
+                        ? createCustomPrice(price, { withTax: 0 as CentAmount })
+                        : price
+                    "
                     size="xl"
                     type="normal"
                     show-tax-info
@@ -62,7 +65,7 @@
                 v-if="!hasOneSizeVariantOnly"
                 v-model="activeVariant"
                 :variants="product.variants ?? []"
-                :automatic-discount-promotion="automaticDiscountPromotion"
+                :promotion="promotion"
                 class="my-8 mr-2"
               />
 
@@ -102,15 +105,16 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { type Product, getFirstAttributeValue } from '@scayle/storefront-nuxt'
+import {
+  type Product,
+  getFirstAttributeValue,
+  type CentAmount,
+} from '@scayle/storefront-nuxt'
 import { getBackgroundColorStyle, getTextColorStyle } from '~/utils/promotion'
 import { AlphaColorMap } from '~/constants/color'
 import { useBasket } from '#storefront/composables'
-import {
-  useProductPromotions,
-  usePromotionGiftSelection,
-  useRouteHelpers,
-} from '~/composables'
+import { usePromotionGiftSelection, useRouteHelpers } from '~/composables'
+import { createCustomPrice } from '~/utils'
 
 const props = defineProps<{
   product: Product
@@ -167,7 +171,6 @@ const styles = computed(() => {
 
   return null
 })
-const { automaticDiscountPromotion } = useProductPromotions(props.product)
 
 const close = () => {
   activeVariant.value = undefined

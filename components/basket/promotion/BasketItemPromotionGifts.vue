@@ -17,6 +17,7 @@
     </div>
     <div class="p-4">
       <BasketPromotionGiftsSlider
+        v-if="products"
         :basket-item="basketItem"
         :products="products"
       />
@@ -38,6 +39,7 @@ const { giftPromotion, giftBackgroundColorStyle, areGiftConditionsMet } =
 
 const { products, isGiftAlreadyAdded } = usePromotionGifts(
   props.basketItem.product,
+  giftPromotion,
   'basket-item-promotion-gifts',
 )
 </script>

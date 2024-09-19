@@ -30,6 +30,6 @@ type CustomData = PromotionCustomData &
 export {}
 
 declare global {
-  type Promotion = CorePromotion & { customData: CustomData }
-  type BasketPromotion = BasketItem['promotion'] & Promotion
+  export type Promotion = CorePromotion & { customData: CustomData }
+  export type BasketPromotion = BasketItem['promotion'] & Promotion
 }

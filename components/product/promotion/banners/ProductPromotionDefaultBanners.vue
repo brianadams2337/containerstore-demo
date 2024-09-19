@@ -13,15 +13,12 @@
 </template>
 
 <script setup lang="ts">
-import type { Product } from '@scayle/storefront-nuxt'
-import { useProductPromotions } from '~/composables'
+type Props = {
+  applicablePromotions: Promotion[]
+  isHighestPriority: (priority: number) => boolean
+  isGiftAddedToBasket: boolean
+  areGiftConditionsMet: boolean
+}
 
-const props = defineProps<{ product: Product }>()
-
-const {
-  applicablePromotions,
-  isHighestPriority,
-  isGiftAddedToBasket,
-  areGiftConditionsMet,
-} = useProductPromotions(props.product)
+defineProps<Props>()
 </script>

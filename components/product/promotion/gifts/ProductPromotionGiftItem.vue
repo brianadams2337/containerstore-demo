@@ -1,105 +1,108 @@
 <template>
-  <div class="flex w-full" data-testid="product-promotion-gift-item">
-    <SFLink
-      :to="getProductDetailRoute(product.id, name)"
-      raw
-      class="relative mr-3 flex w-32 items-center rounded-md bg-gray-200"
-    >
+  <div class="flex w-full rounded-xl" data-testid="product-promotion-gift-item">
+    <div class="relative flex shrink-0 items-center rounded-xl bg-gray-200">
       <ProductImage
         v-if="image"
         :image="image"
         :alt="name"
         :image-loading="eagerImageLoading ? 'eager' : 'lazy'"
-        sizes="xl:100vw lg:100vw lg:100vw lg:100vw xs:100vw"
-        fit="cover"
-        :class="{ grayscale: !areGiftConditionsMet }"
+        sizes="92px"
+        aspect-ratio="1/1"
+        class="size-24"
+        :class="{
+          'opacity-20': disabled,
+        }"
       />
-
       <ProductPromotionFreeGiftBadge
         :background-color-style="backgroundColorStyle"
-        class="absolute bottom-2 left-2"
+        class="absolute left-0 top-0"
       />
-    </SFLink>
-    <div class="flex w-full flex-col justify-between">
-      <SFHeadline
-        size="base"
-        tag="h3"
-        class="mt-2"
-        :class="{ 'text-secondary': !areGiftConditionsMet }"
-      >
-        {{ name }}
-      </SFHeadline>
+    </div>
+    <div class="flex w-full flex-row items-center justify-between p-3">
+      <div class="flex h-full flex-col justify-between">
+        <div>
+          <div
+            class="text-sm font-semi-bold-variable"
+            :class="disabled ? 'text-gray-400' : 'text-gray-900'"
+          >
+            {{ brand }}
+          </div>
+          <SFHeadline
+            size="lg"
+            data-testid="pdp-product-name"
+            tag="h3"
+            class="text-sm !font-normal"
+            :class="disabled ? 'text-gray-400' : 'text-gray-600'"
+          >
+            {{ name }}
+          </SFHeadline>
+        </div>
+        <div class="flex flex-row items-end gap-2">
+          <ProductPrice
+            v-if="price"
+            :class="{ disabled: 'opacity-50' }"
+            :price="price"
+            :show-badges="false"
+          />
+        </div>
+      </div>
+
       <div class="flex items-end justify-between">
         <SFButton
           size="sm"
-          :disabled="!isProductAddedToBasket || !areGiftConditionsMet"
+          type="raw"
+          class="size-9 rounded-xl bg-gray-200"
+          :disabled="!areGiftConditionsMet"
           @click="toggleGiftSelection()"
         >
-          {{ $t('pdp.promotion.add_for_free_label') }}
+          <IconNewPlus class="size-6" />
         </SFButton>
-        <div class="flex flex-col items-end">
-          <span
-            v-if="variantWithLowestPrice"
-            class="text-xs text-gray-600 line-through"
-            :class="{ 'text-secondary': !areGiftConditionsMet }"
-          >
-            {{ formatCurrency(variantWithLowestPrice.price.withTax) }}
-          </span>
-          <span
-            class="inline rounded-md p-1 text-base font-bold leading-5"
-            :class="{ 'text-secondary ': !areGiftConditionsMet }"
-            :style="giftStyle"
-          >
-            {{ formatCurrency(0) }}
-          </span>
-          <span
-            class="text-xs text-gray-700"
-            :class="{ 'text-secondary': !areGiftConditionsMet }"
-          >
-            {{ $t('price.including_vat') }}
-          </span>
-        </div>
       </div>
     </div>
-    <template v-if="promotion && product && promotedProduct">
-      <ProductPromotionSelectionModal
-        v-if="isGreaterThanMd"
-        :product="product"
-        :promotion="promotion"
-        :promoted-product="promotedProduct"
-      />
-      <ProductPromotionSizeSelection
-        v-else
-        :product="product"
-        :promotion="promotion"
-        :promoted-product="promotedProduct"
-      />
-    </template>
+    <ClientOnly>
+      <template v-if="promotion && product && promotedProduct">
+        <ProductPromotionSelectionModal
+          v-if="isGreaterThanMd"
+          :product="product"
+          :promotion="promotion"
+          :promoted-product="promotedProduct"
+        />
+        <ProductPromotionSizeSelection
+          v-else
+          :product="product"
+          :promotion="promotion"
+          :promoted-product="promotedProduct"
+        />
+      </template>
+    </ClientOnly>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { Product } from '@scayle/storefront-nuxt'
-import { getBackgroundColorStyle, getTextColorStyle } from '~/utils/promotion'
-import { AlphaColorMap } from '~/constants/color'
-import { useFormatHelpers, useProduct } from '#storefront/composables'
+import type { CentAmount, Product } from '@scayle/storefront-nuxt'
+import { useProduct } from '#storefront/composables'
 import {
   useDefaultBreakpoints,
   useProductBaseInfo,
   useProductPromotions,
   usePromotionGiftSelection,
-  useRouteHelpers,
 } from '~/composables'
 import { PRODUCT_WITH_PARAMS } from '~/constants'
 import { useRoute } from '#app/composables/router'
+import { createCustomPrice } from '~/utils'
 
-const props = defineProps<{
+type Props = {
   product: Product
   backgroundColorStyle: { backgroundColor?: string }
-  isProductAddedToBasket: boolean
   eagerImageLoading: boolean
-}>()
+  disabled?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  disabled: false,
+})
+
 const route = useRoute()
 
 const productId = computed(() => {
@@ -114,44 +117,35 @@ const { data: promotedProduct } = useProduct({
   key: `product-promotion-gift-item-${productId.value}`,
 })
 
-const { formatCurrency } = useFormatHelpers()
-
 const { md: isGreaterThanMd } = useDefaultBreakpoints()
 
-const { buyXGetYPromotion: promotion, areGiftConditionsMet } =
+const { promotion, areGiftConditionsMet } =
   useProductPromotions(promotedProduct)
 
 const { toggleGiftSelection } = usePromotionGiftSelection(props.product)
 
-const { getProductDetailRoute } = useRouteHelpers()
-
-const { name, image, variantWithLowestPrice } = useProductBaseInfo(
+const { name, image, variantWithLowestPrice, brand } = useProductBaseInfo(
   props.product,
 )
 
-const giftStyle = computed(() => {
-  if (areGiftConditionsMet.value) {
-    return {
-      ...getBackgroundColorStyle(
-        promotion.value?.customData.colorHex,
-        AlphaColorMap.ALPHA_10,
-      ),
-      ...getTextColorStyle(
-        promotion.value?.customData.colorHex,
-        AlphaColorMap.ALPHA_100,
-      ),
-    }
+const price = computed(() => {
+  if (!variantWithLowestPrice.value) {
+    return
   }
 
-  return {
-    ...getBackgroundColorStyle(
-      promotion.value?.customData.colorHex,
-      AlphaColorMap.ALPHA_5,
-    ),
-    ...getTextColorStyle(
-      promotion.value?.customData.colorHex,
-      AlphaColorMap.ALPHA_20,
-    ),
-  }
+  return createCustomPrice(variantWithLowestPrice.value?.price, {
+    withTax: 0 as CentAmount,
+    appliedReductions: [
+      {
+        amount: {
+          absoluteWithTax: variantWithLowestPrice.value?.price
+            .withTax as CentAmount,
+          relative: 1,
+        },
+        type: 'relative',
+        category: 'promotion',
+      },
+    ],
+  })
 })
 </script>

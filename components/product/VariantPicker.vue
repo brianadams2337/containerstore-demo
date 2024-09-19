@@ -43,7 +43,7 @@
         <ProductPrice
           v-if="item.stock.quantity !== 0"
           size="lg"
-          :promotion="automaticDiscountPromotion"
+          :promotion="promotion"
           :price="item.price"
           type="normal"
         />
@@ -60,12 +60,13 @@ import SFDropdown from '~/modules/ui/runtime/components/form/Dropdown.vue'
 
 type Props = {
   variants: Variant[]
-  automaticDiscountPromotion: Promotion | null | undefined
+  promotion?: Promotion
   hasOneVariantOnly?: boolean
 }
 
 withDefaults(defineProps<Props>(), {
   hasOneVariantOnly: false,
+  promotion: undefined,
 })
 
 const isVariantListVisible = defineModel<boolean>('visible', { default: false })

@@ -1,14 +1,23 @@
 <template>
   <component :is="divOrTransition" class="w-full">
-    <PromotionHurryToSaveBanners
-      v-if="areHurryToSaveBannersShown"
-      :product="product"
-      class="mt-2 w-full xs:hidden md:flex"
-    />
+    <template v-if="areHurryToSaveBannersShown && isMounted">
+      <PromotionHurryToSaveBanners
+        v-for="promotion in appliedPromotions"
+        :key="promotion.id"
+        :promoted-product-id="product.id"
+        :promotion-id="productPromotionId"
+        :promotion="promotion"
+        class="mt-2 w-full md:flex"
+      />
+    </template>
     <ProductPromotionDefaultBanners
       v-else
       :product="product"
-      class="mt-2 xs:hidden md:flex"
+      :applicable-promotions="applicablePromotions"
+      :is-highest-priority="isHighestPriority"
+      :is-gift-added-to-basket="isGiftAddedToBasket"
+      :are-gift-conditions-met="areGiftConditionsMet"
+      class="mt-2 md:flex"
     />
   </component>
 </template>
@@ -17,12 +26,21 @@
 import { useMounted } from '@vueuse/core'
 import { computed } from 'vue'
 import type { Product } from '@scayle/storefront-nuxt'
+import { useBasketPromotions } from '~/composables/useBasketPromotions'
 import { useProductPromotions } from '~/composables'
 import { SFFadeInTransition } from '#components'
 
 const props = defineProps<{ product: Product }>()
 
-const { areHurryToSaveBannersShown } = useProductPromotions(props.product)
+const {
+  areHurryToSaveBannersShown,
+  applicablePromotions,
+  isHighestPriority,
+  isGiftAddedToBasket,
+  areGiftConditionsMet,
+  productPromotionId,
+} = useProductPromotions(props.product)
+const { appliedPromotions } = await useBasketPromotions()
 
 const isMounted = useMounted()
 const divOrTransition = computed(() => {

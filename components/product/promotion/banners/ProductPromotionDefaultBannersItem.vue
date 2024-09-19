@@ -37,6 +37,12 @@
             :promotion="promotion"
             :is-gift-added-to-basket="isGiftAddedToBasket"
             :are-gift-conditions-met="areGiftConditionsMet"
+            :formatted-amount-left="formattedAmountLeft"
+            :formatted-discount="formattedDiscount"
+            :is-full-progress="isFullProgress"
+            :is-m-o-v-promotion-applied="isMOVPromotionApplied"
+            :min-order-amount="minOrderAmount"
+            :progress="progress"
           />
         </SFFadeInTransition>
       </ClientOnly>
@@ -62,7 +68,14 @@ const props = withDefaults(defineProps<Props>(), {
   areGiftConditionsMet: false,
 })
 
-const { minOrderAmount } = usePromotionProgress(toRef(props.promotion))
+const {
+  progress,
+  minOrderAmount,
+  isMOVPromotionApplied,
+  formattedDiscount,
+  isFullProgress,
+  formattedAmountLeft,
+} = usePromotionProgress(toRef(props.promotion))
 
 const backgroundColor = computed(() => {
   const colorHex = props.promotion.customData.colorHex

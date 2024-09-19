@@ -30,7 +30,7 @@
       </div>
       <ProductPrice
         v-else
-        :promotion="automaticDiscountPromotion"
+        :promotion="promotion"
         size="lg"
         type="normal"
         :price="subscriptionPrice"
@@ -93,5 +93,5 @@ const {
 
 selectedPreferredDeliveryDate.value = props.preferredDeliveryDate[0]
 
-const { automaticDiscountPromotion } = useProductPromotions(product)
+const { promotion } = useProductPromotions(product)
 </script>

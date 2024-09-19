@@ -4,22 +4,33 @@ import {
   getFirstAttributeValue,
   extendPromise,
 } from '@scayle/storefront-nuxt'
-import { type MaybeRefOrGetter, toRef, computed } from 'vue'
+import { type MaybeRefOrGetter, toRef, computed, type ComputedRef } from 'vue'
 import { useBasketPromotions } from '~/composables/useBasketPromotions'
 import { useBasket, useCurrentPromotions } from '#storefront/composables'
 import {
   divideByHundred,
   getAdditionalData,
   getApplicablePromotionsForProduct,
-  getBasketTotalWithoutPromotions,
   getVariantIds,
-  isAutomaticDiscountType,
   isBuyXGetYType,
 } from '~/utils'
 
+type UseProductPromotionsReturn = {
+  promotionLabel: ComputedRef<string | undefined>
+  productPromotionId: ComputedRef<number | undefined>
+  applicablePromotions: ComputedRef<Promotion[]>
+  promotion: ComputedRef<Promotion | undefined>
+  isPromotionApplied: ComputedRef<boolean>
+  isGiftAddedToBasket: ComputedRef<boolean>
+  areGiftConditionsMet: ComputedRef<boolean>
+  areHurryToSaveBannersShown: ComputedRef<boolean>
+  isHighestPriority: (id: number) => boolean
+  getAppliedAutomaticDiscountPrice: (price: Price) => number | undefined
+}
+
 export function useProductPromotions(
   productItem?: MaybeRefOrGetter<Product | undefined | null>,
-) {
+): UseProductPromotionsReturn & Promise<UseProductPromotionsReturn> {
   const basket = useBasket()
   const basketPromotions = useBasketPromotions()
   const promotionData = useCurrentPromotions()
@@ -57,140 +68,69 @@ export function useProductPromotions(
     return items.reduce((a, b) => (a.priority < b.priority ? a : b))
   }
 
-  const buyXGetYPromotion = computed(() => {
-    const items = applicablePromotions.value.filter(isBuyXGetYType)
-    return getPromotionWithPriority(items)
-  })
-
-  const automaticDiscountPromotion = computed(() => {
-    const items = applicablePromotions.value.filter(isAutomaticDiscountType)
-    return getPromotionWithPriority(items)
-  })
-
-  const highestPriorityPromotion = computed(() => {
-    const items = applicablePromotions.value
-    return getPromotionWithPriority(items)
-  })
-
-  const addedProductBasketItem = computed(() => {
-    return basket.items.value?.find(
-      (item) => item.product.id === product.value?.id,
-    )
-  })
-
-  const giftConditions = computed(() => {
-    return buyXGetYPromotion.value?.customData?.giftConditions
-  })
-
-  const minimumOrderValueForGift = computed(() => {
-    return buyXGetYPromotion.value?.customData?.minOrderValue
-  })
-
-  const isMinOrderValueReached = computed(() => {
-    if (!minimumOrderValueForGift.value) {
-      return false
-    }
-    const basketTotal = getBasketTotalWithoutPromotions(
-      basket.data.value ?? undefined,
-    )
-    return basketTotal >= minimumOrderValueForGift.value
-  })
-
-  const minOrderValueLeft = computed(() => {
-    if (!minimumOrderValueForGift.value) {
-      return 0
-    }
-    const basketTotal = getBasketTotalWithoutPromotions(
-      basket.data.value ?? undefined,
-    )
-    const valueLeft = minimumOrderValueForGift.value - basketTotal
-    return valueLeft >= 0 ? valueLeft : 0
+  const promotion = computed(() => {
+    return getPromotionWithPriority(applicablePromotions.value) || undefined
   })
 
   const areGiftConditionsMet = computed(() => {
-    if (!isBuyXGetYPrioritized.value) {
-      return false
-    }
-
-    const minPromotionQuantity = giftConditions.value?.minQuantity
-
-    if (!minPromotionQuantity || !addedProductBasketItem.value) {
-      return false
-    }
-
-    const quantityCondition =
-      addedProductBasketItem.value?.quantity >= minPromotionQuantity
-
-    if (!minimumOrderValueForGift.value) {
-      return quantityCondition
-    }
-
-    return isMinOrderValueReached.value && quantityCondition
+    return (
+      basket.data.value?.applicablePromotions?.some(
+        (applicablePromotions) =>
+          applicablePromotions.promotion.id === promotion.value?.id,
+      ) || false
+    )
   })
 
-  const isHighestPriorityPromotionApplied = computed(() => {
-    return appliedPromotions.value.some((promotion) => {
-      const isValid = promotion.isValid
-      const isSamePromotionId =
-        promotion.id === highestPriorityPromotion.value?.id
+  const isPromotionApplied = computed(() => {
+    return appliedPromotions.value.some((currentPromotion) => {
+      const isSamePromotionId = currentPromotion.id === promotion.value?.id
 
-      if (isBuyXGetYType(promotion)) {
-        return isSamePromotionId && isValid
+      if (isBuyXGetYType(currentPromotion)) {
+        return isSamePromotionId && currentPromotion.isValid
       }
 
-      const isSameProduct = promotion.productId === product.value?.id
-      return isSamePromotionId && isSameProduct && isValid
+      const isSameProduct = currentPromotion.productId === product.value?.id
+      return isSamePromotionId && isSameProduct && currentPromotion.isValid
     })
   })
-
-  const hasMultipleApplicablePromotions = computed(() => {
-    return applicablePromotions.value.length > 1
-  })
-
-  const hasBuyXGetY = computed(() => !!buyXGetYPromotion.value)
-
-  const isBuyXGetYPrioritized = computed(() => {
-    return isBuyXGetYType(highestPriorityPromotion.value)
-  })
-
-  const isProductAddedToBasket = computed(() => !!addedProductBasketItem.value)
 
   const isGiftAddedToBasket = computed(() => {
-    if (!isBuyXGetYPrioritized.value) {
+    if (!isBuyXGetYType(promotion.value)) {
       return false
     }
-    return basket.items.value?.some(({ promotion, variant }) => {
-      const variantIds = getVariantIds(buyXGetYPromotion.value)
-      const hasVariantId = variantIds.includes(variant.id)
-      return (
-        isBuyXGetYType(promotion) &&
-        hasVariantId &&
-        buyXGetYPromotion.value?.id === promotion?.id
-      )
-    })
+    return (
+      basket.items.value?.some(({ promotion: basketPromotion, variant }) => {
+        const variantIds = getVariantIds(promotion.value)
+        const hasVariantId = variantIds.includes(variant.id)
+        return (
+          isBuyXGetYType(basketPromotion) &&
+          hasVariantId &&
+          promotion.value?.id === basketPromotion?.id
+        )
+      }) || false
+    )
   })
 
   const isHighestPriority = (priority: number): boolean => {
     return (
-      hasMultipleApplicablePromotions.value &&
-      highestPriorityPromotion.value?.priority === priority
+      applicablePromotions.value.length > 1 &&
+      promotion.value?.priority === priority
     )
   }
 
   const areHurryToSaveBannersShown = computed(() => {
-    const hasMinOrderValue =
-      highestPriorityPromotion.value?.customData.minOrderValue
+    const hasMinOrderValue = promotion.value?.customData.minOrderValue
     return (
       !hasMinOrderValue &&
-      isHighestPriorityPromotionApplied.value &&
-      (!isBuyXGetYPrioritized.value || isGiftAddedToBasket.value)
+      isPromotionApplied.value &&
+      (!isBuyXGetYType(promotion.value) || isGiftAddedToBasket.value)
     )
   })
 
   const getAppliedAutomaticDiscountPrice = (
     price: Price,
   ): number | undefined => {
-    const additionalData = getAdditionalData(automaticDiscountPromotion.value)
+    const additionalData = getAdditionalData(promotion.value)
     if (!additionalData?.value) {
       return
     }
@@ -216,23 +156,14 @@ export function useProductPromotions(
     {
       promotionLabel,
       productPromotionId,
-      automaticDiscountPromotion,
-      hasBuyXGetY,
       applicablePromotions,
-      buyXGetYPromotion,
-      getAppliedAutomaticDiscountPrice,
-      isProductAddedToBasket,
+      promotion,
+      isPromotionApplied,
       isGiftAddedToBasket,
-      highestPriorityPromotion,
-      hasMultipleApplicablePromotions,
-      isBuyXGetYPrioritized,
-      isHighestPriorityPromotionApplied,
-      isHighestPriority,
-      areHurryToSaveBannersShown,
       areGiftConditionsMet,
-      giftConditions,
-      addedProductBasketItem,
-      minOrderValueLeft,
+      areHurryToSaveBannersShown,
+      isHighestPriority,
+      getAppliedAutomaticDiscountPrice,
     },
   )
 }

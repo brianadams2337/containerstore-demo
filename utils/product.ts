@@ -1,4 +1,5 @@
 import {
+  type Price,
   type Product,
   type Variant,
   getAttributeValueTuples,
@@ -182,6 +183,16 @@ export const getProductSiblings = (
   return includeCurrentProduct
     ? [getProductSiblingData(product, colorAttributeName), ...items]
     : items
+}
+
+export const createCustomPrice = (
+  price: Price,
+  overwrite: Partial<Price>,
+): Price => {
+  return {
+    ...price,
+    ...overwrite,
+  }
 }
 
 export const getCombineWithProductIds = (attribute?: AdvancedAttribute) => {

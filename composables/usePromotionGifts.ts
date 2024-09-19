@@ -1,22 +1,20 @@
 import { type Product, extendPromise } from '@scayle/storefront-nuxt'
-import { computed } from 'vue'
-import { useProductPromotions } from '~/composables/useProductPromotions'
-import {
-  useBasket,
-  useVariant,
-  useProductsByIds,
-} from '#storefront/composables'
+import { computed, type Ref } from 'vue'
+
+import { useBasket, useRpc } from '#storefront/composables'
 import { getBackgroundColorStyle, getVariantIds, isBuyXGetYType } from '~/utils'
 
-export function usePromotionGifts(product: Product, key?: string) {
+export function usePromotionGifts(
+  product: Product,
+  buyXGetYPromotion: Ref<Promotion | null | undefined>,
+  key?: string,
+) {
   if (!key) {
     // The key is auto-added so this will only be thrown if a nullish value is passed to the function
     throw Error('missing key argument')
   }
 
   const basketData = useBasket()
-  const productPromotions = useProductPromotions(product)
-  const { buyXGetYPromotion } = productPromotions
 
   const variantIds = computed(() => getVariantIds(buyXGetYPromotion.value))
 
@@ -38,36 +36,15 @@ export function usePromotionGifts(product: Product, key?: string) {
 
   const hasMultipleFreeGifts = computed(() => variantIds.value.length > 1)
 
-  const { data: variants } = useVariant({
-    params: computed(() => ({ ids: variantIds.value })),
-    key: `promotion-variants-${product.id}-${key}`,
-  })
+  const getFreeGiftProducts = useRpc(
+    'getPromotionGiftProducts',
+    key ?? `promotion-gifts-${key}-${product.id}`,
+    () => ({ variantIds: variantIds.value }),
+  )
 
-  const { data: productsData } = useProductsByIds({
-    params: computed(() => ({
-      ids: variants.value?.map(({ productId }) => productId) ?? [],
-    })),
-    key: `promotion-products-${product.id}-${key}`,
-  })
-
-  const products = computed(() => {
-    const items = !productsData.value
-      ? []
-      : productsData.value.filter(
-          (item, index, self) =>
-            index === self.findIndex((arrayItem) => arrayItem.id === item.id),
-        )
-
-    return items.map((item) => {
-      const filteredVariants = item.variants?.filter(({ id }) => {
-        return variantIds.value.includes(id)
-      })
-      return { ...item, variants: filteredVariants }
-    })
-  })
-
+  const { data: products } = getFreeGiftProducts
   return extendPromise(
-    Promise.all([basketData, productPromotions]).then(() => ({})),
+    Promise.all([basketData, getFreeGiftProducts]).then(() => ({})),
     {
       variantIds,
       products,

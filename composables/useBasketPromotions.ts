@@ -1,9 +1,20 @@
 import { extendPromise } from '@scayle/storefront-nuxt'
-import { computed } from 'vue'
+import { computed, type ComputedRef } from 'vue'
 import { useBasket, useCurrentPromotions } from '#storefront/composables'
 import { isAutomaticDiscountType, isBuyXGetYType } from '~/utils'
 
-export function useBasketPromotions() {
+type UseBasketPromotionsReturn = {
+  appliedPromotions: ComputedRef<(BasketPromotion & { productId: number })[]>
+  buyXGetYPromotions: ComputedRef<(BasketPromotion & { productId: number })[]>
+  automaticDiscountPromotions: ComputedRef<
+    (BasketPromotion & { productId: number })[]
+  >
+  hasAppliedPromotions: ComputedRef<boolean>
+  allCurrentPromotions: ComputedRef<Promotion[]>
+}
+
+export function useBasketPromotions(): UseBasketPromotionsReturn &
+  Promise<UseBasketPromotionsReturn> {
   const basket = useBasket()
   const promotionData = useCurrentPromotions()
 

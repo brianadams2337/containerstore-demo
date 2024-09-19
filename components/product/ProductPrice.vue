@@ -4,13 +4,13 @@
       :classes="classes"
       :show-price-from="showPriceFrom"
       :applied-reductions="appliedReductions"
-      :is-free="isFree"
       :format-currency="formatCurrency"
       :price="price"
       :total-price="totalPrice"
       :promotion-style="promotionStyle"
     >
       <slot
+        v-if="showBadges"
         name="relative-reductions"
         :applied-reductions="appliedReductions"
         :relative-reductions="relativeReductions"
@@ -28,7 +28,7 @@
         <template v-if="showPriceFrom">
           {{ $t('price.starting_from') }}
         </template>
-        {{ isFree ? formatCurrency(0) : totalPrice }}
+        {{ totalPrice }}
         <span
           v-for="(reduction, index) in strikeThroughPrices"
           :key="`${reduction}-${index}`"
@@ -60,10 +60,10 @@ import { getPromotionStyle } from '~/utils'
 
 type Props = {
   price: Price
-  promotion: Promotion | null | undefined
+  promotion?: Promotion | null
   showTaxInfo?: boolean
   showPriceFrom?: boolean
-  isFree?: boolean
+  showBadges?: boolean
   size?: Size
   type?: 'normal' | 'whisper' | 'loud'
 }
@@ -71,9 +71,10 @@ type Props = {
 const props = withDefaults(defineProps<Props>(), {
   showTaxInfo: false,
   showPriceFrom: false,
-  isFree: false,
+  showBadges: true,
   size: Size.MD,
   type: 'normal',
+  promotion: undefined,
 })
 
 const { formatCurrency } = useFormatHelpers()
@@ -96,6 +97,6 @@ const classes = computed(() => ({
   'font-bold': props.type === 'loud',
   'font-semibold': props.type === 'whisper',
   'font-variable': props.type === 'normal',
-  'text-status-error': appliedReductions.value.length || props.isFree,
+  'text-status-error': appliedReductions.value.length,
 }))
 </script>

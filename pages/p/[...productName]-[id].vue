@@ -2,9 +2,10 @@
   <AsyncDataWrapper :status="productDataStatus">
     <div v-if="product" class="xl:container">
       <div
-        class="flex flex-col items-start justify-between gap-8 max-md:space-y-5 md:flex-row md:space-x-4"
+        class="flex flex-col items-start justify-between gap-8 max-md:space-y-5 md:flex-row"
       >
         <ProductGallery
+          v-if="product"
           :product="product"
           class="md:sticky md:top-8 md:w-1/2"
           product-image-slider-class="md:max-w-[528px]"
@@ -31,29 +32,33 @@
             </SFHeadline>
           </div>
 
-          <ProductPromotionBanners
-            v-if="product"
-            class="max-md:px-5"
-            :product="product"
-          />
-
-          <ProductPrice
-            v-if="price"
-            size="lg"
-            class="mt-3 max-md:px-5"
-            :promotion="automaticDiscountPromotion"
-            :price="price"
-            type="normal"
-            show-tax-info
-            :show-price-from="showFrom"
-          />
-          <SiblingSelection :product="product" class="max-md:px-5" />
-
+          <div class="flex flex-col max-md:px-5 md:flex-col-reverse">
+            <ProductPrice
+              v-if="price"
+              size="lg"
+              class="mt-3"
+              :promotion="promotion"
+              :price="price"
+              type="normal"
+              show-tax-info
+              :show-price-from="showFrom"
+            />
+            <ProductPromotionBanners :product="product" />
+          </div>
           <ProductActions
             v-model:active-variant="activeVariant"
             :product="product"
-            :promotion="automaticDiscountPromotion ?? undefined"
+            :promotion="promotion ?? undefined"
           />
+
+          <ProductPromotionGifts
+            v-if="isBuyXGetYType(promotion) && !isGiftAddedToBasket"
+            :product="product"
+            :are-gift-conditions-met="areGiftConditionsMet"
+            :buy-x-get-y-promotion="promotion"
+            class="mt-6 max-md:px-5"
+          />
+
           <SFFadeInTransition>
             <StoreVariantAvailability
               v-if="activeVariant?.id"
@@ -87,7 +92,7 @@ import { whenever } from '@vueuse/core'
 import { useSeoMeta } from '@unhead/vue'
 import { computed, defineOptions, onMounted, ref } from 'vue'
 import type { Price, Variant } from '@scayle/storefront-nuxt'
-import { useProductPromotions } from '~/composables/useProductPromotions'
+import { isBuyXGetYType } from '~/utils/promotion'
 import { useFavoriteStore } from '~/composables/useFavoriteStore'
 import {
   definePageMeta,
@@ -99,6 +104,7 @@ import {
   useProduct,
   useProductBaseInfo,
   useProductSeoData,
+  useProductPromotions,
   useRoute,
   useTrackingEvents,
 } from '#imports'
@@ -137,7 +143,8 @@ whenever(error, () => {
 const { name, brand, longestCategoryList, hasOneVariantOnly, variants } =
   useProductBaseInfo(product)
 
-const { automaticDiscountPromotion } = useProductPromotions(product)
+const { isGiftAddedToBasket, areGiftConditionsMet, promotion } =
+  useProductPromotions(product)
 
 const { items } = useBasket()
 const activeVariant = ref<Variant>()

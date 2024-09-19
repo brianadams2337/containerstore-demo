@@ -10,7 +10,7 @@
     />
     <p class="w-full text-center text-xs font-semibold">
       <template v-if="!isFullProgress">
-        {{ $t('promotion.progress_left', { amount: amountLeft }) }}
+        {{ $t('promotion.progress_left', { amount: formattedAmountLeft }) }}
       </template>
       <template v-else>
         🎉
@@ -52,29 +52,25 @@ import {
   isAutomaticDiscountType,
   isBuyXGetYType,
 } from '~/utils/promotion'
-import { usePromotionProgress } from '~/composables'
 
 type Props = {
   promotion: Promotion
   isGiftAddedToBasket?: boolean
   areGiftConditionsMet?: boolean
+  progress: number
+  minOrderAmount: number
+  isMOVPromotionApplied: boolean
+  isFullProgress: boolean
+  formattedDiscount?: string
+  formattedAmountLeft?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
   isGiftAddedToBasket: false,
   areGiftConditionsMet: false,
+  formattedDiscount: '',
+  formattedAmountLeft: '',
 })
-
-const promotion = computed(() => props.promotion)
-
-const {
-  progress,
-  minOrderAmount,
-  isMOVPromotionApplied,
-  formattedDiscount,
-  isFullProgress,
-  formattedAmountLeft: amountLeft,
-} = usePromotionProgress(promotion)
 
 const isAutomaticDiscount = computed(() =>
   isAutomaticDiscountType(props.promotion),

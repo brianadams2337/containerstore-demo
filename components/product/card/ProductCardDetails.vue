@@ -25,7 +25,7 @@
     </div>
     <ProductPrice
       v-if="price"
-      :promotion="automaticDiscountPromotion"
+      :promotion="promotion"
       :price="price"
       :show-price-from="
         product.priceRange?.min.withTax !== product.priceRange?.max.withTax
@@ -48,5 +48,5 @@ const {
   nonSoldOutSiblings: siblings,
 } = useProductBaseInfo(props.product)
 
-const { automaticDiscountPromotion } = useProductPromotions(props.product)
+const { promotion } = useProductPromotions(props.product)
 </script>
