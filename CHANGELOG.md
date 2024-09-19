@@ -43,6 +43,7 @@ We’ve updated the CMS integration of Storefront, enhancing both Storyblok and 
 - **\[Sorting\]** Introduced "Smart Sorting Keys" as new default sorting.
 
   To learn more about Smart Sorting Keys, visit the [SCAYLE Resource Center / Product Sorting](https://scayle.dev/en/developer-guide/products/product-sorting#smart-sorting-keys).
+
 - **\[E2E\]** Removed `Cypress` and finished migration to `Playwright` as End-to-End testing suite
 - **\[Country Detection\]** Added `getCurrentCountryFromTimezone` util function to determine user's country from the browser's timezone settings
 
@@ -91,11 +92,13 @@ We’ve updated the CMS integration of Storefront, enhancing both Storyblok and 
     .join('-')
     .toLowerCase()
   ```
+
 - **\[Utility Replacement\]** Replaced `radash.isEqual` with custom `isEqual` util
 
   **NOTE:** Arbitrary comparison of objects can have a exponentially negative impact
   on performance the larger the compared objects are. We recommend to compare the
   values of explicit keys between two objects.
+
 - **\[Utility Replacement\]** Replaced `radash.pascal` with native string operations:
 
   ```ts
