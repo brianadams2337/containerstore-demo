@@ -18,6 +18,7 @@
       'aspect-4/3': aspectRatio === '4/3',
       'aspect-3/4': aspectRatio === '3/4',
       'aspect-video': aspectRatio === '16/9',
+      'mix-blend-darken': withMixBlendDarken,
     }"
     provider="scayle"
     data-testid="product-image"
@@ -41,6 +42,7 @@ type Props = {
   load?: () => void
   shouldTrim?: boolean
   isCentered?: boolean
+  withMixBlendDarken?: boolean
   height?: number | string
   width?: number | string
   aspectRatio?: '16/9' | '4/3' | '3/4' | '1/1'
@@ -50,6 +52,7 @@ const props = withDefaults(defineProps<Props>(), {
   sizes: '',
   shouldTrim: false,
   isCentered: false,
+  withMixBlendDarken: true,
   fit: 'contain',
   imageLoading: 'lazy',
   preload: false,
