@@ -34,9 +34,9 @@
       leave-to-class="translate-y-full md:-translate-y-10 opacity-0"
     >
       <div
-        v-if="isDropdownListVisible"
+        v-show="isDropdownListVisible"
         v-popover="isDropdownListVisible"
-        class="absolute m-0 mt-2 w-full rounded-md bg-white p-2 shadow-secondary ring-1 ring-gray-300 focus:outline-none max-md:backdrop:bg-primary/50"
+        class="absolute m-0 w-full rounded-md bg-white p-2 shadow-secondary ring-1 ring-gray-300 focus:outline-none max-md:backdrop:bg-primary/50"
         :class="[
           {
             'rounded-t-md md:rounded-md': radius == 'md',
@@ -117,7 +117,7 @@ onClickOutside(dropdownContainer, () => {
 
 const button = ref()
 const itemsContainerStyle = ref()
-const { smaller, active } = useDefaultBreakpoints()
+const { smaller } = useDefaultBreakpoints()
 const isMobile = smaller('md')
 
 const calculateDropdown = () => {
@@ -125,7 +125,6 @@ const calculateDropdown = () => {
     return
   }
 
-  const rect = button.value.getBoundingClientRect()
   if (isMobile.value) {
     itemsContainerStyle.value = {
       left: `0`,
@@ -137,6 +136,7 @@ const calculateDropdown = () => {
     return
   }
 
+  const rect = button.value.getBoundingClientRect()
   itemsContainerStyle.value = {
     left: `${rect.left + window.scrollX}px`,
     top: `${rect.top + window.scrollY}px`,
@@ -144,9 +144,15 @@ const calculateDropdown = () => {
   }
 }
 
-watch(isDropdownListVisible, calculateDropdown)
+let cleanupResizeListener: ReturnType<typeof useEventListener> | undefined
+watch(isDropdownListVisible, (isOpen) => {
+  if (isOpen) {
+    calculateDropdown()
+    cleanupResizeListener = useEventListener('resize', calculateDropdown)
+    return
+  }
 
-watch(() => active().value, calculateDropdown)
-
-useEventListener('resize', calculateDropdown)
+  cleanupResizeListener?.()
+  cleanupResizeListener = undefined
+})
 </script>

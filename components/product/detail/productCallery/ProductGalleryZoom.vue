@@ -281,7 +281,6 @@ const dragHandler = ({
   if (!dragging || pinchActive.value) return
 
   const { maxOffsetX, maxOffsetY } = getMaxOffset(scale.value)
-  console.log('max', { maxOffsetX, maxOffsetY })
   zoomOffsetX.value = Math.min(
     Math.max(zoomOffsetX.value + x, -maxOffsetX),
     maxOffsetX,
