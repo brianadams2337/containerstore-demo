@@ -60,7 +60,7 @@ onMounted(() => {
 })
 
 const deliveryDate = computed(() => {
-  const [pkg] = orderData.value.packages || []
+  const [pkg] = orderData.value?.packages ?? []
   return pkg?.deliveryDate
 })
 
