@@ -1,72 +1,74 @@
 <template>
-  <SFModal
-    v-model:visible="visible"
-    full-screen
-    disable-padding
-    @close="$emit('close')"
-  >
-    <div class="h-full max-md:bg-white-smoke md:mx-auto md:aspect-3/4">
-      <div class="overflow-hidden max-md:my-auto">
-        <SFItemsSlider
-          ref="slider"
-          with-arrows
-          @update:active-slide="updateSlide"
-        >
-          <div
-            v-for="(productImage, index) in images"
-            ref="slides"
-            :key="productImage.hash"
-            :class="[
-              scale >= 2 && index === imageIndex
-                ? 'cursor-zoom-out'
-                : 'cursor-zoom-in',
-            ]"
-            class="flex h-dvh min-w-full grow snap-start snap-always items-center self-start overflow-hidden max-md:bg-white-smoke"
-            @click="toggleDoubleZoom"
+  <SFFadeInTransition>
+    <SFModal
+      v-model:visible="visible"
+      full-screen
+      disable-padding
+      @close="$emit('close')"
+    >
+      <div class="h-full max-md:bg-white-smoke md:mx-auto md:aspect-3/4">
+        <div class="overflow-hidden max-md:my-auto">
+          <SFItemsSlider
+            ref="slider"
+            with-arrows
+            @update:active-slide="updateSlide"
           >
-            <ProductImage
-              :image="productImage"
-              :alt="alt"
-              :data-testid="`product-image-zoom-${index}`"
-              sizes="xs:100vw sm:100vw md:100vw lg:100vw xl:100vw"
-              :style="imageIndex === index ? style : {}"
-              class="transition-transform duration-75"
-              :with-mix-blend-darken="false"
-              @mousemove="updateZoomOffset"
-            />
-          </div>
-          <template #prev-button="{ prev, isPrevEnabled }">
-            <ProductCardImageSliderButton
-              class="!top-1/2 !-translate-y-1/2 !bg-gray-200 max-md:hidden"
-              :disabled="!isPrevEnabled"
-              direction="left"
-              @click="prev()"
-            />
-          </template>
-          <template #next-button="{ next, isNextEnabled }">
-            <ProductCardImageSliderButton
-              class="!top-1/2 !-translate-y-1/2 !bg-gray-200 max-md:hidden"
-              :disabled="!isNextEnabled"
-              direction="right"
-              @click="next()"
-            />
-          </template>
-          <template v-if="images.length > 1" #thumbnails>
             <div
-              class="absolute bottom-4 left-1/2 flex -translate-x-1/2 space-x-1"
+              v-for="(productImage, index) in images"
+              ref="slides"
+              :key="productImage.hash"
+              :class="[
+                scale >= 2 && index === imageIndex
+                  ? 'cursor-zoom-out'
+                  : 'cursor-zoom-in',
+              ]"
+              class="flex h-dvh min-w-full grow snap-start snap-always items-center self-start overflow-hidden max-md:bg-white-smoke"
+              @click="toggleDoubleZoom"
             >
-              <div
-                v-for="i in images.length"
-                :key="i"
-                class="size-1 rounded-full bg-gray-300 transition-all duration-300"
-                :class="{ 'w-3 !bg-black': i - 1 === imageIndex }"
+              <ProductImage
+                :image="productImage"
+                :alt="alt"
+                :data-testid="`product-image-zoom-${index}`"
+                sizes="xs:100vw sm:100vw md:100vw lg:100vw xl:100vw"
+                :style="imageIndex === index ? style : {}"
+                class="transition-transform duration-75"
+                :with-mix-blend-darken="false"
+                @mousemove="updateZoomOffset"
               />
             </div>
-          </template>
-        </SFItemsSlider>
+            <template #prev-button="{ prev, isPrevEnabled }">
+              <ProductCardImageSliderButton
+                class="!top-1/2 !-translate-y-1/2 !bg-gray-200 max-md:hidden"
+                :disabled="!isPrevEnabled"
+                direction="left"
+                @click="prev()"
+              />
+            </template>
+            <template #next-button="{ next, isNextEnabled }">
+              <ProductCardImageSliderButton
+                class="!top-1/2 !-translate-y-1/2 !bg-gray-200 max-md:hidden"
+                :disabled="!isNextEnabled"
+                direction="right"
+                @click="next()"
+              />
+            </template>
+            <template v-if="images.length > 1" #thumbnails>
+              <div
+                class="absolute bottom-4 left-1/2 flex -translate-x-1/2 space-x-1"
+              >
+                <div
+                  v-for="i in images.length"
+                  :key="i"
+                  class="size-1 rounded-full bg-gray-300 transition-all duration-300"
+                  :class="{ 'w-3 !bg-black': i - 1 === imageIndex }"
+                />
+              </div>
+            </template>
+          </SFItemsSlider>
+        </div>
       </div>
-    </div>
-  </SFModal>
+    </SFModal>
+  </SFFadeInTransition>
 </template>
 
 <script setup lang="ts">

@@ -14,7 +14,7 @@
       />
       <ProductPromotionFreeGiftBadge
         :background-color-style="giftBackgroundColorStyle"
-        class="absolute bottom-2 left-2"
+        class="absolute left-0 top-0"
       />
     </SFLink>
     <p
@@ -31,16 +31,10 @@
   </SFButton>
   <template v-if="giftPromotion">
     <ProductPromotionSelectionModal
-      v-if="isGreaterThanMd"
       :product="product"
       :promoted-product="promotedProduct"
       :promotion="giftPromotion"
-    />
-    <ProductPromotionSizeSelection
-      v-else
-      :product="product"
-      :promoted-product="promotedProduct"
-      :promotion="giftPromotion"
+      :background-color-style="giftBackgroundColorStyle"
     />
   </template>
 </template>
@@ -51,7 +45,6 @@ import type { BasketItem, Product } from '@scayle/storefront-nuxt'
 import { useI18n } from '#i18n'
 import {
   useBasketItemPromotion,
-  useDefaultBreakpoints,
   useProductBaseInfo,
   usePromotionGiftSelection,
   useRouteHelpers,
@@ -67,8 +60,6 @@ const props = defineProps<Props>()
 
 const i18n = useI18n()
 const { getProductDetailRoute } = useRouteHelpers()
-
-const { md: isGreaterThanMd } = useDefaultBreakpoints()
 
 const promotedProduct = computed(() => props.basketItem.product)
 

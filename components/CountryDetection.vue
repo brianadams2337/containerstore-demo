@@ -1,29 +1,31 @@
 <template>
-  <SFModal v-model:visible="modalOpen">
-    <div class="mt-8 flex flex-col items-center gap-4">
-      <div>
-        {{ $t('country_selection.prompt', { country: suggestedCountry }) }}
+  <SFFadeInTransition>
+    <SFModal v-model:visible="modalOpen">
+      <div class="mt-8 flex flex-col items-center gap-4">
+        <div>
+          {{ $t('country_selection.prompt', { country: suggestedCountry }) }}
+        </div>
+        <div class="mt-8 flex flex-col items-center gap-3">
+          <SFButton
+            v-for="(shop, index) in suggestedShops"
+            :key="shop.shopId"
+            :autofocus="index === 0"
+            type="primary"
+            class="w-fit"
+            @click="switchToShop(shop)"
+            >{{
+              $t('country_selection.switch_to_shop', {
+                country: getShopCountryName(shop, suggestedShops.length > 1),
+              })
+            }}</SFButton
+          >
+          <SFButton type="secondary" class="w-fit" @click="stayInShop">{{
+            $t('country_selection.stay_in_shop', { country: currentCountry })
+          }}</SFButton>
+        </div>
       </div>
-      <div class="mt-8 flex flex-col items-center gap-3">
-        <SFButton
-          v-for="(shop, index) in suggestedShops"
-          :key="shop.shopId"
-          :autofocus="index === 0"
-          type="primary"
-          class="w-fit"
-          @click="switchToShop(shop)"
-          >{{
-            $t('country_selection.switch_to_shop', {
-              country: getShopCountryName(shop, suggestedShops.length > 1),
-            })
-          }}</SFButton
-        >
-        <SFButton type="secondary" class="w-fit" @click="stayInShop">{{
-          $t('country_selection.stay_in_shop', { country: currentCountry })
-        }}</SFButton>
-      </div>
-    </div>
-  </SFModal>
+    </SFModal>
+  </SFFadeInTransition>
 </template>
 <script lang="ts" setup>
 import { computed, ref, onMounted } from 'vue'

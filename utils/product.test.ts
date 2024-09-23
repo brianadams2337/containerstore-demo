@@ -3,6 +3,7 @@ import type {
   AutomaticDiscountEffect,
   BuyXGetYEffect,
   CentAmount,
+  Price,
   Product,
   Promotion,
   RFC33339Date,
@@ -13,6 +14,7 @@ import {
   getProductSiblingData,
   getApplicablePromotionsForProduct,
   getCombineWithProductIds,
+  createCustomPrice,
 } from './product'
 
 const CREATED_AT = '2022-04-26T15:04:56+00:00'
@@ -673,5 +675,37 @@ describe('getCombineWithProductIds', () => {
     expect(
       getCombineWithProductIds(combineWithAttributeWithInvalidData),
     ).toStrictEqual([206131, 206017, 206012])
+  })
+})
+
+describe('createCustomPrice', () => {
+  it('should replace product prices attribute with given value', () => {
+    const price: Price = {
+      currencyCode: 'EUR',
+      withTax: 8990 as CentAmount,
+      withoutTax: 7555 as CentAmount,
+      appliedReductions: [],
+      tax: {
+        vat: {
+          amount: 1435 as CentAmount,
+          rate: 0.19,
+        },
+      },
+    }
+
+    const customPrice = createCustomPrice(price, { withTax: 0 as CentAmount })
+
+    expect(customPrice).toStrictEqual({
+      currencyCode: 'EUR',
+      withTax: 0 as CentAmount,
+      withoutTax: 7555 as CentAmount,
+      appliedReductions: [],
+      tax: {
+        vat: {
+          amount: 1435 as CentAmount,
+          rate: 0.19,
+        },
+      },
+    })
   })
 })

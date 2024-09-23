@@ -52,7 +52,7 @@
           size="sm"
           type="raw"
           class="size-9 rounded-xl bg-gray-200"
-          :disabled="!areGiftConditionsMet"
+          :disabled="disabled"
           @click="toggleGiftSelection()"
         >
           <IconNewPlus class="size-6" />
@@ -60,18 +60,11 @@
       </div>
     </div>
     <ClientOnly>
-      <template v-if="promotion && product && promotedProduct">
+      <template v-if="promotion && product">
         <ProductPromotionSelectionModal
-          v-if="isGreaterThanMd"
           :product="product"
           :promotion="promotion"
-          :promoted-product="promotedProduct"
-        />
-        <ProductPromotionSizeSelection
-          v-else
-          :product="product"
-          :promotion="promotion"
-          :promoted-product="promotedProduct"
+          :background-color-style="backgroundColorStyle"
         />
       </template>
     </ClientOnly>
@@ -81,19 +74,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { CentAmount, Product } from '@scayle/storefront-nuxt'
-import { useProduct } from '#storefront/composables'
-import {
-  useDefaultBreakpoints,
-  useProductBaseInfo,
-  useProductPromotions,
-  usePromotionGiftSelection,
-} from '~/composables'
-import { PRODUCT_WITH_PARAMS } from '~/constants'
-import { useRoute } from '#app/composables/router'
+import { useProductBaseInfo, usePromotionGiftSelection } from '~/composables'
 import { createCustomPrice } from '~/utils'
 
 type Props = {
   product: Product
+  promotion: Promotion
   backgroundColorStyle: { backgroundColor?: string }
   eagerImageLoading: boolean
   disabled?: boolean
@@ -102,25 +88,6 @@ type Props = {
 const props = withDefaults(defineProps<Props>(), {
   disabled: false,
 })
-
-const route = useRoute()
-
-const productId = computed(() => {
-  return parseInt(route.params.id.toString())
-})
-
-const { data: promotedProduct } = useProduct({
-  params: {
-    id: productId.value,
-    with: PRODUCT_WITH_PARAMS,
-  },
-  key: `product-promotion-gift-item-${productId.value}`,
-})
-
-const { md: isGreaterThanMd } = useDefaultBreakpoints()
-
-const { promotion, areGiftConditionsMet } =
-  useProductPromotions(promotedProduct)
 
 const { toggleGiftSelection } = usePromotionGiftSelection(props.product)
 

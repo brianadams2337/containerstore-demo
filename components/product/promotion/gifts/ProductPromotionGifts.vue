@@ -1,6 +1,10 @@
 <template>
-  <div class="max-md:px-5" data-testid="product-promotion-gifts">
-    <div :style="backgroundColorStyle" class="rounded-t-md px-3.5 py-3">
+  <div
+    v-if="products && products.length > 0"
+    class="max-md:px-5"
+    data-testid="product-promotion-gifts"
+  >
+    <div :style="{ ...backgroundColorStyle }" class="rounded-t-md px-3.5 py-3">
       <div class="flex items-center gap-1">
         <span class="flex h-[1.125rem] w-auto items-center justify-center">
           <IconLock v-if="!areGiftConditionsMet" class="size-3 text-white" />
@@ -22,6 +26,7 @@
           :is-product-added-to-basket="isGiftAlreadyAdded"
           :eager-image-loading="index < 2"
           :product="item"
+          :promotion="promotion"
           :data-testid="`gift-item-${item.id}`"
           :disabled="!areGiftConditionsMet"
         />
@@ -39,7 +44,7 @@ import { usePromotionGifts } from '~/composables'
 const props = defineProps<{
   product: Product
   areGiftConditionsMet: boolean
-  buyXGetYPromotion?: Promotion | null
+  promotion: Promotion
 }>()
 
 const i18n = useI18n()
@@ -59,7 +64,7 @@ const promotionGiftsDescription = computed(() => {
 const { backgroundColorStyle, products, isGiftAlreadyAdded } =
   usePromotionGifts(
     props.product,
-    toRef(props.buyXGetYPromotion),
-    'product-promotion-gifts.vue',
+    toRef(props.promotion),
+    'product-promotion-gifts',
   )
 </script>

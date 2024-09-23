@@ -3,6 +3,7 @@ import {
   type Product,
   type Value,
   type Variant,
+  type CentAmount,
   getFirstAttributeValue,
   getPrice,
   getVariantBySize,
@@ -19,7 +20,11 @@ import { useNuxtApp } from '#app'
 import { useRoute } from '#app/composables/router'
 import { useLocalePath } from '#i18n'
 import { useBasket } from '#storefront/composables'
-import { hasOneSizeProductVariantOnly, routeList } from '~/utils'
+import {
+  createCustomPrice,
+  hasOneSizeProductVariantOnly,
+  routeList,
+} from '~/utils'
 
 export function usePromotionGiftSelection(gift: Product) {
   const { $i18n } = useNuxtApp()
@@ -38,11 +43,7 @@ export function usePromotionGiftSelection(gift: Product) {
 
   const isSelectionShown = useState(`gift-selection-${gift.id}`, () => false)
 
-  const {
-    brand,
-    name: productName,
-    variantWithLowestPrice,
-  } = useProductBaseInfo(gift)
+  const { brand, variantWithLowestPrice } = useProductBaseInfo(gift)
 
   const basket = useBasket()
   const basketActions = useBasketActions()
@@ -63,11 +64,29 @@ export function usePromotionGiftSelection(gift: Product) {
       gift?.lowestPriorPrice,
   )
 
-  const price = computed(() =>
-    activeVariant.value
+  const price = computed(() => {
+    const nonGiftPrice = activeVariant.value
       ? getPrice(activeVariant.value)
-      : variantWithLowestPrice.value?.price,
-  )
+      : variantWithLowestPrice.value?.price
+
+    if (!nonGiftPrice) {
+      return
+    }
+
+    return createCustomPrice(nonGiftPrice, {
+      withTax: 0 as CentAmount,
+      appliedReductions: [
+        {
+          amount: {
+            absoluteWithTax: nonGiftPrice.withTax as CentAmount,
+            relative: 1,
+          },
+          type: 'relative',
+          category: 'promotion',
+        },
+      ],
+    })
+  })
 
   const handleSelectedSize = (value: Value) => {
     if (gift.variants) {
@@ -90,8 +109,6 @@ export function usePromotionGiftSelection(gift: Product) {
     )
   })
 
-  const images = computed(() => gift.images)
-
   const addItemToBasket = async (promotionId?: string) => {
     if (hasOneSizeVariantOnly.value && gift?.variants) {
       activeVariant.value = gift.variants[0]
@@ -104,7 +121,7 @@ export function usePromotionGiftSelection(gift: Product) {
       return
     }
 
-    const productName = brand.value || $i18n.t('wishlist.product')
+    const brandName = brand.value || $i18n.t('wishlist.product')
 
     try {
       await addBasketItem({
@@ -130,7 +147,7 @@ export function usePromotionGiftSelection(gift: Product) {
     } catch {
       toast.show(
         $i18n.t('basket.notification.add_to_basket_error', {
-          productName,
+          brandName,
         }),
         {
           action: 'CONFIRM',
@@ -146,9 +163,6 @@ export function usePromotionGiftSelection(gift: Product) {
     Promise.all([basket, basketActions]).then(() => ({})),
     {
       basketIdle,
-      productName,
-      brand,
-      images,
       hasSpecial,
       addItemToBasket,
       lowestPriorPrice,

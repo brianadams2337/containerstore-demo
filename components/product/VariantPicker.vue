@@ -55,8 +55,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineModel } from 'vue'
 import { getFirstAttributeValue, type Variant } from '@scayle/storefront-nuxt'
+import { defineModel } from 'vue'
 
 type Props = {
   variants: Variant[]

@@ -52,10 +52,12 @@
           />
 
           <ProductPromotionGifts
-            v-if="isBuyXGetYType(promotion) && !isGiftAddedToBasket"
+            v-if="
+              promotion && isBuyXGetYType(promotion) && !isGiftAddedToBasket
+            "
             :product="product"
             :are-gift-conditions-met="areGiftConditionsMet"
-            :buy-x-get-y-promotion="promotion"
+            :promotion="promotion"
             class="mt-6 max-md:px-5"
           />
 
@@ -109,7 +111,6 @@ import {
   useTrackingEvents,
 } from '#imports'
 import { PRODUCT_WITH_PARAMS } from '~/constants'
-import StoreVariantAvailability from '~/components/locator/StoreVariantAvailability.vue'
 
 definePageMeta({
   validate(route) {
