@@ -14,24 +14,22 @@
         @click="next()"
       />
     </template>
-    <Intersect
+    <SFLink
       v-for="(item, imageIndex) in productImages"
       :key="item.hash"
-      :threshold="[0.5]"
+      :to="link"
+      raw
       class="relative min-w-full snap-start snap-always"
     >
-      <SFLink :to="link" raw>
-        <ProductImage
-          v-if="item"
-          :image="item"
-          :alt="alt"
-          :image-loading="getImageLoading(imageIndex)"
-          :class="{ 'opacity-20': !isAvailable }"
-          sizes="xs:50vw sm:50vw md:40vw lg:33vw xl:320px"
-          class="absolute inset-0"
-        />
-      </SFLink>
-    </Intersect>
+      <ProductImage
+        v-if="item"
+        :image="item"
+        :alt="alt"
+        :image-loading="getImageLoading(imageIndex)"
+        sizes="xs:50vw sm:50vw md:40vw lg:33vw xl:320px"
+        class="absolute inset-0"
+      />
+    </SFLink>
   </SFHorizontalItemsSlider>
 </template>
 
@@ -42,7 +40,6 @@ import { PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE } from '~/constants'
 
 type Props = {
   link: string
-  isAvailable: boolean
   isProductHovered: boolean
   image: ProductImage
   alt: string

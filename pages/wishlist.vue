@@ -28,13 +28,13 @@
         class="mt-8 grid w-auto grid-cols-12 gap-2"
         data-testid="wishlist-items-wrapper"
       >
-        <WishlistCard
-          v-for="(item, index) in orderedItems"
-          :key="`product-${item.key}-${item.product}`"
-          :item="item"
-          :index="index"
+        <ProductCard
+          v-for="({ product, key }, index) in orderedItems"
+          :id="product.id"
+          :key="`product-${key}-${product}`"
+          v-bind="{ index, product }"
           data-testid="wishlist-card"
-          class="mb-4"
+          class="col-span-6 mb-4 md:col-span-4 2xl:col-span-3"
         />
       </div>
       <div v-if="count === 0" class="mt-8 space-y-8">

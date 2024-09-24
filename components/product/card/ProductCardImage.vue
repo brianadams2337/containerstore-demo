@@ -4,7 +4,6 @@
       :image="image"
       :image-loading="imageLoading"
       :alt="alt"
-      :class="{ 'opacity-20': !isAvailable }"
       sizes="xs:50vw sm:50vw md:40vw lg:33vw xl:320px"
       class="absolute inset-0"
     />
@@ -18,7 +17,6 @@ import { PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE } from '~/constants'
 
 const props = defineProps<{
   link: string
-  isAvailable: boolean
   image: ProductImage
   alt: string
   productIndex: number

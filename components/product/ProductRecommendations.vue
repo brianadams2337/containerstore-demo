@@ -10,7 +10,6 @@
       v-for="(recommendation, idx) in sliderProducts"
       :id="recommendation.id"
       :key="`product-recommendation-${recommendation.id}`"
-      :loading="fetchingCombineWithProducts"
       :product="recommendation"
       :listing-meta-data="{
         name: 'Product Recommendation List',
@@ -64,11 +63,7 @@ const props = withDefaults(defineProps<Props>(), { size: Size.MD })
 const getName = (attributes?: Attributes) =>
   getFirstAttributeValue(attributes, 'name')?.label
 
-const {
-  sliderProducts,
-  fetchingCombineWithProducts,
-  trackRecommendationClick,
-} = useProductRecommendations(
+const { sliderProducts, trackRecommendationClick } = useProductRecommendations(
   props.combineWithProductIds,
   `product-recommendations-[${props.combineWithProductIds.join(',')}]`,
 )

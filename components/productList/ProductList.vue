@@ -27,20 +27,7 @@
           :listing-meta-data="categoryListingMetaData"
           @intersect:product="onProductIntersect(index)"
           @click:product="emit('click:product', product, index)"
-        >
-          <template #header-badges>
-            <ProductCardBadgesHeader
-              :product="product"
-              class="absolute left-3 top-3 w-full"
-            />
-          </template>
-          <template #footer-badges>
-            <ProductCardBadgesFooter
-              :product="product"
-              class="absolute bottom-0 left-0 w-full"
-            />
-          </template>
-        </ProductCard>
+        />
         <SFPagination
           v-if="isPaginationShown"
           :total-page-count="pagination?.last ?? 0"

@@ -1,7 +1,7 @@
 <template>
-  <div ref="observerElement">
+  <component :is="tag" ref="observerElement">
     <slot :stop="stop" />
-  </div>
+  </component>
 </template>
 
 <script setup lang="ts">
@@ -13,12 +13,14 @@ type Props = {
   threshold?: number[] | number
   root?: MaybeComputedElementRef
   rootMargin?: string
+  tag?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
   threshold: () => [0, 0.2],
   root: null,
   rootMargin: '0px 0px 0px 0px',
+  tag: 'div',
 })
 
 const observerElement = ref(null)

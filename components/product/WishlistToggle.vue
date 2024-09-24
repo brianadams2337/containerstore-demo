@@ -1,44 +1,42 @@
 <template>
-  <div class="relative">
-    <SFButton
-      v-bind="$attrs"
-      size="md"
-      type="raw"
-      class="rounded-md border-none !bg-transparent !text-gray-400 transition duration-150 ease-in-out hover:scale-110 hover:!bg-gray-200"
-      :data-testid="
-        isInWishlist
-          ? 'remove-item-from-wishlist-button'
-          : 'add-item-to-wishlist-button'
-      "
-      :loading="fetching"
-      :aria-label="
-        isInWishlist
-          ? $t('basket_card.remove_from_wishlist_label')
-          : $t('basket_card.add_to_wishlist_label')
-      "
-      :disabled="isWishlistToggling"
-      @click="onToggleWishlist"
-    >
-      <template #icon="{ _class }">
-        <AsyncDataWrapper :status="status">
+  <SFButton
+    v-bind="$attrs"
+    size="md"
+    type="raw"
+    class="rounded-md border-none !bg-transparent !text-gray-400 transition duration-150 ease-in-out hover:scale-110 hover:!bg-gray-200"
+    :data-testid="
+      isInWishlist
+        ? 'remove-item-from-wishlist-button'
+        : 'add-item-to-wishlist-button'
+    "
+    :loading="fetching"
+    :aria-label="
+      isInWishlist
+        ? $t('basket_card.remove_from_wishlist_label')
+        : $t('basket_card.add_to_wishlist_label')
+    "
+    :disabled="isWishlistToggling"
+    @click="onToggleWishlist"
+  >
+    <template #icon="{ _class }">
+      <AsyncDataWrapper :status="status">
+        <IconHeartInactive
+          v-if="
+            (!isInWishlist && !isWishlistToggling) ||
+            (isInWishlist && isWishlistToggling)
+          "
+          :class="_class"
+        />
+        <IconHeartActivePurple v-else :class="_class" />
+        <template #loading>
           <IconHeartInactive
-            v-if="
-              (!isInWishlist && !isWishlistToggling) ||
-              (isInWishlist && isWishlistToggling)
-            "
             :class="_class"
+            class="animate-pulse fill-gray-200 text-gray-200"
           />
-          <IconHeartActivePurple v-else :class="_class" />
-          <template #loading>
-            <IconHeartInactive
-              :class="_class"
-              class="animate-pulse fill-gray-200 text-gray-200"
-            />
-          </template>
-        </AsyncDataWrapper>
-      </template>
-    </SFButton>
-  </div>
+        </template>
+      </AsyncDataWrapper>
+    </template>
+  </SFButton>
 </template>
 
 <script setup lang="ts">
