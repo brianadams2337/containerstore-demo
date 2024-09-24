@@ -66,7 +66,7 @@ export const getBasketToastErrorMessageKey = (error: unknown) => {
   if (error instanceof FetchError) {
     if (error.response.status === HttpStatusCode.PRECONDITION_FAILED) {
       return 'basket.notification.add_to_basket_variant_out_of_stock_error'
-    } else if (error.response.status === HttpStatusCode.PAYLOAD_TOO_LARGE) {
+    } else if (error.response.status === HttpStatusCode.CONTENT_TOO_LARGE) {
       return 'basket.notification.add_to_basket_max_basket_items_error'
     }
   }
