@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 import { defineOptions, computed, defineModel } from 'vue'
-import { vMaska } from 'maska'
+import { vMaska } from 'maska/vue'
 
 type Props = {
   type?: string
