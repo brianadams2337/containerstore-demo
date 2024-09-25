@@ -6,8 +6,8 @@
         @click="open = !open"
       >
         {{ title }}
-        <IconNewPlus v-if="!open" class="size-6 text-black" />
-        <IconNewMinus v-else class="size-6 text-black" />
+        <IconPlus v-if="!open" class="size-6 text-black" />
+        <IconMinus v-else class="size-6 text-black" />
       </div>
     </div>
     <div

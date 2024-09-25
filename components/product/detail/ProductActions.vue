@@ -59,10 +59,10 @@
       </template>
 
       <div class="flex items-center">
-        <IconNewPlus
+        <IconPlus
           class="size-4 scale-x-0 text-white transition-transform duration-150 group-hover:scale-100"
         />
-        <IconNewBasket class="size-5 text-white" />
+        <IconBasket class="size-5 text-white" />
       </div>
     </SFButton>
     <WishlistToggle
@@ -113,10 +113,10 @@
           </template>
 
           <div class="flex items-center">
-            <IconNewPlus
+            <IconPlus
               class="size-4 scale-x-0 text-white transition-transform duration-150 group-hover:scale-100"
             />
-            <IconNewBasket class="size-5 text-white" />
+            <IconBasket class="size-5 text-white" />
           </div>
         </div>
       </SFButton>

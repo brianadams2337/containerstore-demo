@@ -55,7 +55,7 @@
           :disabled="disabled"
           @click="toggleGiftSelection()"
         >
-          <IconNewPlus class="size-6" />
+          <IconPlus class="size-6" />
         </SFButton>
       </div>
     </div>

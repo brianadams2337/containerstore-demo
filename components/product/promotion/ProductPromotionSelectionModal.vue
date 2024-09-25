@@ -96,7 +96,7 @@
                   {{ $t('pdp.add_label') }}
                   <template #append-icon>
                     <div class="flex items-center">
-                      <IconNewPlus class="size-6 text-white" />
+                      <IconPlus class="size-6 text-white" />
                     </div>
                   </template>
                 </SFButton>

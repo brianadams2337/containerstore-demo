@@ -8,7 +8,7 @@
       class="group !size-9 shrink-0 rounded-md border-none bg-gray-100 disabled:bg-gray-100 md:!size-8"
       @click="quantity--"
     >
-      <IconNewMinus class="size-6 fill-gray-500 group-disabled:fill-gray-300" />
+      <IconMinus class="size-6 fill-gray-500 group-disabled:fill-gray-300" />
     </SFButton>
     <input
       type="number"
@@ -23,7 +23,7 @@
       class="group !size-9 shrink-0 rounded-md border-none bg-gray-100 disabled:bg-gray-100 md:!size-8"
       @click="quantity++"
     >
-      <IconNewPlus class="size-6 fill-gray-500 group-disabled:fill-gray-300" />
+      <IconPlus class="size-6 fill-gray-500 group-disabled:fill-gray-300" />
     </SFButton>
   </div>
 </template>
