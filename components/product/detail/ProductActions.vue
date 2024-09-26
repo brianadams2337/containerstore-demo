@@ -32,29 +32,16 @@
       type="accent"
       size="xl"
       class="grow justify-between"
-      :disabled="
-        (activeVariant && activeVariant?.stock.quantity <= 0) ||
-        product.isSoldOut
-      "
+      :disabled="isSoldOutOrOutOfStock"
       @click="addItemToBasket(basketItem)"
     >
-      <span
-        v-if="
-          (!activeVariant || activeVariant?.stock.quantity > 0) &&
-          !product.isSoldOut
-        "
-      >
+      <span v-if="!isSoldOutOrOutOfStock">
         {{ $t('basket.add_to_basket') }}
         <span v-if="!activeVariant" class="font-normal max-md:hidden">
           {{ $t('pdp.select_size') }}
         </span>
       </span>
-      <template
-        v-else-if="
-          (activeVariant && activeVariant?.stock.quantity <= 0) ||
-          product.isSoldOut
-        "
-      >
+      <template v-else>
         {{ $t('global.sold_out') }}
       </template>
 
@@ -85,30 +72,17 @@
         type="accent"
         size="xl"
         class="grow"
-        :disabled="
-          (activeVariant && activeVariant?.stock.quantity <= 0) ||
-          product.isSoldOut
-        "
+        :disabled="isSoldOutOrOutOfStock"
         @click="addItemToBasket(basketItem)"
       >
         <div class="flex w-full justify-between">
-          <template
-            v-if="
-              (!activeVariant || activeVariant?.stock.quantity > 0) &&
-              !product.isSoldOut
-            "
-          >
+          <template v-if="!isSoldOutOrOutOfStock">
             {{ $t('basket.add_to_basket') }}
             <span v-if="!activeVariant" class="font-normal max-md:hidden">
               {{ $t('pdp.select_size') }}
             </span>
           </template>
-          <template
-            v-else-if="
-              (activeVariant && activeVariant?.stock.quantity <= 0) ||
-              product.isSoldOut
-            "
-          >
+          <template v-else>
             {{ $t('global.sold_out') }}
           </template>
 
@@ -181,6 +155,12 @@ const { trackAddToBasket } = useTrackingEvents()
 const isVariantPickerVisible = useElementVisibility(variantPicker, {
   threshold: 1,
 })
+
+const isSoldOutOrOutOfStock = computed(
+  () =>
+    (activeVariant.value && activeVariant.value?.stock.quantity <= 0) ||
+    props.product.isSoldOut,
+)
 
 const addItemToBasket = async (item: AddToBasketItem | undefined) => {
   if (!activeVariant.value) {
