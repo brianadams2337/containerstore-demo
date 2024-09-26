@@ -2,7 +2,7 @@
   <SFLink
     :to="buildCategoryPath(category)"
     raw
-    class="flex h-10 w-fit flex-nowrap items-center justify-center whitespace-pre rounded-[2.375rem] bg-gray-100 px-4 text-base font-medium tracking-tighter text-gray-600"
+    class="flex h-10 w-fit flex-nowrap items-center justify-center whitespace-pre rounded-[2.375rem] bg-gray-100 px-4 text-base font-medium tracking-tighter text-gray-600 focus-visible:outline-offset-[-1px]"
     :class="{
       'border-2 border-gray-900 bg-white font-semibold text-gray-900': isActive,
     }"

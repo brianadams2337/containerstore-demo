@@ -18,7 +18,7 @@
       "
     >
       <div
-        class="absolute left-auto right-1 top-1 z-20 flex h-12 w-auto cursor-pointer p-1 transition md:right-0 md:top-0 md:p-3"
+        class="absolute left-auto right-1 top-2 z-20 flex h-8 w-auto cursor-pointer p-1 transition md:right-0 md:top-0 md:h-12 md:p-3"
       >
         <WishlistToggle
           :product="product"
