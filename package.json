@@ -47,7 +47,7 @@
     "@nuxtjs/i18n": "8.5.5",
     "@nuxtjs/tailwindcss": "6.12.1",
     "@scayle/eslint-config-storefront": "4.3.0",
-    "@scayle/eslint-plugin-vue-composable": "0.2.0",
+    "@scayle/eslint-plugin-vue-composable": "0.2.1",
     "@scayle/prettier-config-storefront": "2.0.2",
     "@types/color": "3.0.6",
     "@types/node": "20.16.9",
