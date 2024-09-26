@@ -2,7 +2,10 @@
   <dialog
     v-dialog.modal="visible"
     class="rounded backdrop:bg-black/50"
-    :class="{ 'mb-0 mt-auto': appearFromBottom, 'size-full': fullScreen }"
+    :class="{
+      'm-0 mt-auto max-h-[calc(100vh-40px)]': appearFromBottom,
+      'size-full': fullScreen,
+    }"
     @click="onClick"
     @cancel="onCancel"
   >

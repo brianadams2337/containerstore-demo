@@ -3,7 +3,6 @@
     <SFSlideInFromBottomTransition>
       <SFModal
         :visible="isGiftSelectionShown"
-        :hide-close-button="!isGreaterOrEqual('md')"
         :appear-from-bottom="!isGreaterOrEqual('md')"
         disable-padding
         class="!rounded-t-xl max-sm:w-full md:!rounded-xl"
