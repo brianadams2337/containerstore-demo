@@ -3,7 +3,7 @@
     v-bind="$attrs"
     size="md"
     type="raw"
-    class="rounded-md border-none !bg-transparent !text-gray-400 transition duration-150 ease-in-out hover:scale-110 hover:!bg-gray-200"
+    class="rounded-md border-none bg-transparent !text-gray-400 transition duration-150 ease-in-out hover:scale-110 hover:bg-gray-200"
     :data-testid="
       isInWishlist
         ? 'remove-item-from-wishlist-button'
