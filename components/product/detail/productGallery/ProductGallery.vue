@@ -13,7 +13,7 @@
           :key="productThumbnail.hash"
           :data-testid="`product-thumbnail-${index}`"
           class="my-2 aspect-3/4 w-24 shrink-0 cursor-pointer overflow-hidden rounded-md bg-gray-50 first:mt-0 last:mb-0"
-          :class="[index === activeSlide ? 'bg-gray-900/10' : 'bg-gray-50']"
+          :class="index === activeSlide ? 'bg-gray-900/10' : 'bg-gray-50'"
           @mouseenter="scrollImageIntoView(index)"
           @click="isZoomModalOpen = true"
         >
@@ -90,11 +90,11 @@
             class="absolute bottom-4 left-1/2 flex -translate-x-1/2 space-x-1 md:hidden"
           >
             <div
-              v-for="i in product.images.length"
-              :key="i"
+              v-for="imageIndex in product.images.length"
+              :key="imageIndex"
               class="size-1 rounded-full bg-gray-300 transition-all duration-300"
-              :class="{ 'w-3 !bg-black': i - 1 === activeSlide }"
-            ></div>
+              :class="{ 'w-3 !bg-black': imageIndex - 1 === activeSlide }"
+            />
           </div>
         </template>
       </SFItemsSlider>

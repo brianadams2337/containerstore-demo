@@ -17,11 +17,11 @@
               v-for="(productImage, index) in images"
               ref="slides"
               :key="productImage.hash"
-              :class="[
+              :class="
                 scale >= 2 && index === imageIndex
                   ? 'cursor-zoom-out'
-                  : 'cursor-zoom-in',
-              ]"
+                  : 'cursor-zoom-in'
+              "
               class="flex h-dvh min-w-full grow snap-start snap-always items-center self-start overflow-hidden max-md:bg-white-smoke"
               @click="toggleDoubleZoom"
             >

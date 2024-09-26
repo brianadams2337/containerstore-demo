@@ -1,10 +1,7 @@
 <template>
   <SFLink :to="link" raw>
     <ProductImage
-      :image="image"
-      :image-loading="imageLoading"
-      :alt="alt"
-      :preload="preload"
+      v-bind="{ image, imageLoading, alt, preload }"
       sizes="xs:50vw sm:50vw md:40vw lg:33vw xl:320px"
       class="absolute inset-0"
     />

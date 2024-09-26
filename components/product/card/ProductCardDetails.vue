@@ -27,9 +27,7 @@
       v-if="price"
       :promotion="promotion"
       :price="price"
-      :show-price-from="
-        product.priceRange?.min.withTax !== product.priceRange?.max.withTax
-      "
+      :show-price-from="showPriceFrom"
       class="absolute bottom-0 left-2 md:left-0"
     />
   </div>
@@ -37,6 +35,7 @@
 
 <script setup lang="ts">
 import type { Product } from '@scayle/storefront-nuxt'
+import { computed } from 'vue'
 import { useProductBaseInfo, useProductPromotions } from '~/composables'
 
 const props = defineProps<{ product: Product }>()
@@ -47,6 +46,12 @@ const {
   price,
   nonSoldOutSiblings: siblings,
 } = useProductBaseInfo(props.product)
+
+const showPriceFrom = computed(
+  () =>
+    props.product.priceRange?.min.withTax !==
+    props.product.priceRange?.max.withTax,
+)
 
 const { promotion } = useProductPromotions(props.product)
 </script>

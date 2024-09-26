@@ -64,13 +64,11 @@ const areArrowsShown = computed(() => {
 const getImageLoading = (index: number) => {
   const shouldEagerLoad =
     props.productIndex < PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE
-
   return shouldEagerLoad && index === 0 ? 'eager' : 'lazy'
 }
 
 const shouldPreload = (index: number) => {
   const shouldPreload = props.productIndex < PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE
-
   return shouldPreload && index === 0
 }
 </script>

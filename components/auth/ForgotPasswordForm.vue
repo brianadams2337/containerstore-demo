@@ -1,6 +1,6 @@
 <template>
   <SFFadeInTransition>
-    <SFModal :visible="true" @update:visible="$emit('close:modal')">
+    <SFModal visible @update:visible="$emit('close:modal')">
       <template #headline>
         <div>
           <SFHeadline size="xl" tag="h2" class="mb-4">

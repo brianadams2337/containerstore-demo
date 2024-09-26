@@ -1,10 +1,6 @@
 <template>
   <SFFadeInTransition>
-    <SFModal
-      :visible="true"
-      hide-close-button
-      @update:visible="$emit('close:modal')"
-    >
+    <SFModal visible hide-close-button @update:visible="$emit('close:modal')">
       <template #headline>
         <div>
           <SFHeadline size="xl" tag="h2" class="mb-4">
