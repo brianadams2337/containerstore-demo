@@ -7,7 +7,7 @@ import { computed } from 'vue'
 import { useSeoMeta } from '@unhead/vue'
 import { WishlistListingMetadata } from '~/constants'
 import { useNuxtApp } from '#app'
-import { useBasket, useWishlist } from '#storefront/composables'
+import { useWishlist } from '#storefront/composables'
 
 export const wishlistListingMetadata = {
   id: WishlistListingMetadata.ID,
@@ -23,7 +23,6 @@ export function useWishlistPage() {
   })
 
   const wishlist = useWishlist()
-  const basket = useBasket()
 
   if (wishlist.error.value) {
     throw wishlist.error.value
@@ -48,15 +47,12 @@ export function useWishlistPage() {
       )
   })
 
-  const count = wishlist.count
-  const fetching = basket.fetching
-
   return extendPromise(
-    Promise.all([wishlist, basket]).then(() => ({})),
+    wishlist.then(() => ({})),
     {
       orderedItems,
-      count,
-      fetching,
+      count: wishlist.count,
+      fetching: wishlist.fetching,
       data: wishlist.data,
       products: wishlist.products,
     },
