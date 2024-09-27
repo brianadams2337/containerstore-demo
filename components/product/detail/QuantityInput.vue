@@ -4,7 +4,7 @@
   >
     <SFButton
       type="raw"
-      :disabled="quantity <= 1 || disabled"
+      :disabled="quantity <= 1"
       class="group !size-9 shrink-0 rounded-md border-none bg-gray-100 disabled:bg-gray-100 md:!size-8"
       @click="quantity--"
     >
@@ -13,13 +13,12 @@
     <input
       type="number"
       readonly
-      :disabled="disabled"
       :value="quantity"
       class="mx-2 min-w-[2ch] max-w-[3ch] select-none text-center text-base font-semi-bold-variable tabular-nums outline-none focus:border-transparent focus:ring-0"
     />
     <SFButton
       type="raw"
-      :disabled="quantity >= maxQuantity || disabled"
+      :disabled="quantity >= maxQuantity"
       class="group !size-9 shrink-0 rounded-md border-none bg-gray-100 disabled:bg-gray-100 md:!size-8"
       @click="quantity++"
     >
@@ -31,16 +30,12 @@
 <script setup lang="ts">
 import { defineModel } from 'vue'
 
-const quantity = defineModel<number>({ required: true })
-
 type Props = {
-  maxQuantity?: number
-  disabled?: boolean
+  maxQuantity: number
 }
-withDefaults(defineProps<Props>(), {
-  maxQuantity: Infinity,
-  disabled: false,
-})
+defineProps<Props>()
+
+const quantity = defineModel<number>({ required: true })
 </script>
 
 <style lang="css" scoped>

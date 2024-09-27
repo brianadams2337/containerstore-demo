@@ -123,9 +123,9 @@ const { hasOneVariantOnly, variants, name } = useProductBaseInfo(props.product)
 const activeVariant = defineModel<Variant>('activeVariant')
 
 const quantity = ref(1)
-const maxQuantity = computed(() =>
-  Math.max(Math.min(activeVariant.value?.stock.quantity ?? 1, 9), 0),
-)
+
+const maxQuantity = computed(() => activeVariant.value?.stock.quantity ?? 1)
+
 watch(activeVariant, () => {
   quantity.value = 1
 })
