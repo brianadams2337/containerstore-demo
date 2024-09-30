@@ -17,6 +17,7 @@
 import { computed } from 'vue'
 import { useFormatDate } from '~/composables/useFormatDate'
 import { useI18n } from '#i18n'
+import { SFHeadline } from '#storefront-ui/components'
 
 type Props = {
   orderId: number

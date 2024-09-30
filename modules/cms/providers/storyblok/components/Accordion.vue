@@ -30,6 +30,7 @@ import type { CMSAccordionProps } from '../types'
 import { getComponentName } from '../../../utils/helpers'
 import { useStoryblokMargins } from '../composables/useStoryblokMargins'
 import { useRoute } from '#app/composables/router'
+import { SFLink } from '#storefront-ui/components'
 
 const props = defineProps<CMSAccordionProps>()
 const collapseByAnchorSlug = (linkTitle: string) => {

@@ -42,8 +42,10 @@
 <script setup lang="ts">
 import { computed, defineOptions, ref, toRef } from 'vue'
 import type { Product } from '@scayle/storefront-nuxt'
+import AsyncDataWrapper from '../AsyncDataWrapper.vue'
 import { useWishlistActions } from '~/composables'
 import { useWishlist } from '#storefront/composables'
+import { SFButton } from '#storefront-ui/components'
 
 type Props = {
   product: Product

@@ -54,6 +54,10 @@ import { useTrackingEvents, wishlistListingMetadata } from '~/composables'
 import { useNuxtApp } from '#app'
 import { useUser, useWishlist } from '#storefront/composables'
 import { routeList } from '~/utils/route'
+import AccountHeader from '~/components/account/AccountHeader.vue'
+import PageContent from '~/components/layout/PageContent.vue'
+import LogoutButton from '~/components/auth/LogoutButton.vue'
+import { SFContainerLink, SFSkeletonLoader } from '#storefront-ui/components'
 
 const { user } = useUser()
 const wishlist = await useWishlist()

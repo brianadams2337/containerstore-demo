@@ -20,16 +20,14 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useCurrentShop } from '#storefront/composables'
+import { SFHeadline } from '#storefront-ui/components'
 
 type Props = {
   id: Order['id']
   customer?: Order['customer']
   confirmedAt?: Order['confirmedAt']
 }
-const props = withDefaults(defineProps<Props>(), {
-  customer: undefined,
-  confirmedAt: undefined,
-})
+const props = defineProps<Props>()
 
 const currentShop = useCurrentShop()
 

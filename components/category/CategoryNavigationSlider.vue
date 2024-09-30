@@ -16,6 +16,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { Category } from '@scayle/storefront-nuxt'
+import CategoryNavigationSliderItem from './CategoryNavigationSliderItem.vue'
+import { SFItemsSlider } from '#storefront-ui/components'
 
 const props = defineProps<{
   allCategories: Category[]

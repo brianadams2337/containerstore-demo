@@ -70,6 +70,7 @@ import { useFormatHelpers } from '#storefront/composables'
 import { useBasketItem, useBasketReductions } from '~/composables'
 import { getBackgroundColorStyle, getTextColorStyle } from '~/utils'
 import { AlphaColorMap } from '~/constants'
+import { SFHeadline } from '#storefront-ui/components'
 
 const props = defineProps<{ item: BasketItem }>()
 

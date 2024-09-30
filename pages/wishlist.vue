@@ -60,6 +60,9 @@ import {
   wishlistListingMetadata,
 } from '~/composables'
 import { useBasket } from '#storefront/composables'
+import EmptyState from '~/components/EmptyState.vue'
+import ProductCard from '~/components/product/card/ProductCard.vue'
+import { SFHeadline, SFSkeletonLoader } from '#storefront-ui/components'
 
 const { data, products, count, fetching, orderedItems } =
   await useWishlistPage()

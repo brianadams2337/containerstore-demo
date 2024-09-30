@@ -13,12 +13,14 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { ProductImage } from '@scayle/storefront-nuxt'
+import type { ProductImage as ProductImageType } from '@scayle/storefront-nuxt'
+import ProductImage from '../ProductImage.vue'
 import { PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE } from '~/constants'
+import { SFLink } from '#storefront-ui/components'
 
 const props = defineProps<{
   link: string
-  image: ProductImage
+  image: ProductImageType
   alt: string
   productIndex: number
 }>()

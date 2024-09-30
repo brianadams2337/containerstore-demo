@@ -18,8 +18,8 @@
         class="flex flex-col items-stretch justify-between rounded bg-white p-5"
         :class="{ 'shadow-[0_3px_24px_0_rgba(0,0,0,0.12)]': stores.length }"
       >
-        <SFHeadline :is-uppercase="false" size="xl" tag="p" class="mb-5"
-          >{{ $t('store_locator.modal_headline') }}
+        <SFHeadline :is-uppercase="false" size="xl" tag="p" class="mb-5">
+          {{ $t('store_locator.modal_headline') }}
         </SFHeadline>
         <p class="mb-5 text-sm">{{ $t('store_locator.subline') }}</p>
         <div class="mt-3 flex items-center justify-evenly">
@@ -71,6 +71,9 @@ import { definePageMeta } from '#imports'
 import { useStoreLocator } from '#omnichannel/composables'
 import { useRuntimeConfig } from '#app'
 import { useI18n } from '#i18n'
+import { SFHeadline, SFButton, SFTextInput } from '#storefront-ui/components'
+import StoreLocatorMap from '~/components/locator/StoreLocatorMap.vue'
+import StoreList from '~/components/locator/StoreList.vue'
 
 const { t } = useI18n()
 

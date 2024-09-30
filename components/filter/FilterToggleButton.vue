@@ -29,6 +29,7 @@
 
 <script setup lang="ts">
 import { useAppliedFilters, useFilterSlideIn } from '~/composables'
+import { SFButton } from '#storefront-ui/components'
 
 defineProps<{ label: string }>()
 

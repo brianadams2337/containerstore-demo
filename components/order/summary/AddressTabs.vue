@@ -40,18 +40,11 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { PropType } from 'vue'
 import type { SummaryItem } from './AddressSummary.vue'
+import { SFButton } from '#storefront-ui/components'
 
-defineProps({
-  items: {
-    type: Array as PropType<SummaryItem[]>,
-    required: true,
-  },
-  tabsClass: {
-    type: String,
-    default: '',
-  },
+withDefaults(defineProps<{ items: SummaryItem[]; tabsClass?: string }>(), {
+  tabsClass: '',
 })
 
 const activeTab = ref(0)

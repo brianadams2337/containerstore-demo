@@ -12,13 +12,12 @@
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
 type Props = {
   isVariantWithPriceReduction: boolean
   totalReductions?: number
 }
 
-withDefaults(defineProps<Props>(), {
-  totalReductions: undefined,
-})
+defineProps<Props>()
 </script>

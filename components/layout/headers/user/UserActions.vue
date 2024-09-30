@@ -47,6 +47,7 @@ import { computed } from 'vue'
 import { useUser } from '#storefront/composables'
 import { useAuthentication, useFlyouts } from '~/composables'
 import { routeList } from '~/utils/route'
+import { SFButton } from '#storefront-ui/components'
 
 const { closeUserFlyout } = useFlyouts()
 const { user } = useUser()

@@ -55,7 +55,7 @@
           :stores="stores"
           class="mt-5"
         />
-        <div></div>
+        <div />
       </div>
     </template>
     <template #slide-in-actions>
@@ -77,14 +77,17 @@
 <script setup lang="ts">
 import { computed, defineModel, ref } from 'vue'
 import type { StoreLocation } from '@scayle/omnichannel-nuxt'
+import StoreList from './StoreList.vue'
 import { useStoreLocator } from '#omnichannel/composables'
 import { useSlideIn } from '~/modules/ui/runtime/composables/useSlideIn'
+import {
+  SFTextInput,
+  SFHeadline,
+  SFButton,
+  SFSlideIn,
+} from '#storefront-ui/components'
 
-interface Props {
-  variantId: number
-}
-
-const props = defineProps<Props>()
+const props = defineProps<{ variantId: number }>()
 
 const { variantStoresData, refreshVariantStores } = useStoreLocator(
   'useStoreLocator',

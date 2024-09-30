@@ -26,9 +26,11 @@
 import { useMounted } from '@vueuse/core'
 import { computed } from 'vue'
 import type { Product } from '@scayle/storefront-nuxt'
+import ProductPromotionDefaultBanners from './ProductPromotionDefaultBanners.vue'
 import { useBasketPromotions } from '~/composables/useBasketPromotions'
 import { useProductPromotions } from '~/composables'
-import { SFFadeInTransition } from '#components'
+import { SFFadeInTransition } from '#storefront-ui/components'
+import PromotionHurryToSaveBanners from '~/components/promotion/PromotionHurryToSaveBanners.vue'
 
 const props = defineProps<{ product: Product }>()
 

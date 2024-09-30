@@ -19,6 +19,10 @@
 </template>
 
 <script setup lang="ts">
+import HeaderSearch from './search/HeaderSearch.vue'
+import UserPopover from './user/UserPopover.vue'
+import WishlistLink from './WishlistLink.vue'
+import BasketPopover from '~/components/basket/popover/BasketPopover.vue'
+import { SFLink } from '#storefront-ui/components'
 import { routeList } from '~/utils/route'
-import { SFLink } from '#components'
 </script>

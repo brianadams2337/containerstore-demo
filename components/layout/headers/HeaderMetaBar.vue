@@ -3,3 +3,7 @@
     <ShopSwitcher class="mr-2 bg-primary text-white" />
   </div>
 </template>
+
+<script setup lang="ts">
+import ShopSwitcher from './ShopSwitcher.vue'
+</script>

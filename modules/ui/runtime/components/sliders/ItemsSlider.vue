@@ -72,7 +72,7 @@
 import { ref, nextTick, computed, type Ref, watch } from 'vue'
 import { useMounted } from '@vueuse/core'
 import { useItemsSlider } from '#storefront-ui'
-import { SFFadeInTransition } from '#components'
+import { SFFadeInTransition } from '#storefront-ui/components'
 
 type Props = {
   container?: boolean

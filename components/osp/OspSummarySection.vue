@@ -13,13 +13,13 @@
             {{ $t('osp.order_overview') }}
           </SFHeadline>
 
-          <ul v-if="orderItems">
+          <ul v-if="orderItems.length">
             <li
-              v-for="({ variant, product, price }, idx) in orderItems"
-              :key="idx"
+              v-for="({ variant, product, price }, index) in orderItems"
+              :key="index"
             >
               <OspProductCard
-                v-if="product.advancedAttributes"
+                v-if="product?.advancedAttributes && variant"
                 :variant="variant"
                 :product="product"
                 :price="price"
@@ -36,6 +36,10 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import OspPaymentSummary from './OspPaymentSummary.vue'
+import OspDeliveryDate from './OspDeliveryDate.vue'
+import OspProductCard from './OspProductCard.vue'
+import { SFHeadline } from '#storefront-ui/components'
 
 type Props = {
   orderData: Order

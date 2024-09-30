@@ -67,10 +67,11 @@ import CMSText from './Text.vue'
 import CMSScrollableLinkList from './ScrollableLinkList.vue'
 import { useBanner } from '~/composables/useBanner'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
+import { SFButton, SFCountdown } from '#storefront-ui/components'
+// TODO: This needs to be decoupled from the CMS module as it is coming from the SFB local components
+import Intersect from '~/components/Intersect.vue'
 
-const props = withDefaults(defineProps<CMSBannerProps>(), {
-  type: '',
-})
+const props = withDefaults(defineProps<CMSBannerProps>(), { type: '' })
 
 const { close, isOpen, shouldBeVisible: _shouldBeVisible } = useBanner()
 const { trackPromotion } = useTrackingEvents()

@@ -17,6 +17,8 @@
 
 <script setup lang="ts">
 import { defineOptions } from 'vue'
+import ErrorLayout from './components/layout/ErrorLayout.vue'
+import AppLogo from './components/AppLogo.vue'
 import { clearError, useError } from '#app/composables/error'
 import { routeList } from '~/./utils/route'
 import { useCurrentShop } from '#storefront/composables'

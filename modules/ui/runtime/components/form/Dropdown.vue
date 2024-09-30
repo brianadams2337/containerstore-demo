@@ -83,6 +83,7 @@ import { defineModel, ref, watch } from 'vue'
 import { onClickOutside, useEventListener } from '@vueuse/core'
 import { vPopover } from '../../directives/popover'
 import { useDefaultBreakpoints } from '~/composables'
+import { SFButton } from '#storefront-ui/components'
 
 type Props = {
   items: NonNullable<T>[]

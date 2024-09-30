@@ -56,6 +56,7 @@ import type { OrderSummary } from '@scayle/storefront-nuxt'
 import { DeliveryProgress, OrderStatus } from '~/constants/order'
 import { useFormatDate, useRouteHelpers } from '~/composables'
 import { useRoute } from '#app/composables/router'
+import { SFLink, SFProgressBar } from '#storefront-ui/components'
 
 type Props = {
   id: OrderSummary['id']

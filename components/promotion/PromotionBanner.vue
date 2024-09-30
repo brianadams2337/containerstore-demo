@@ -65,6 +65,19 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import PromotionCountdown from './PromotionCountdown.vue'
+import PromotionHeadline from './headlines/PromotionHeadline.vue'
+import PromotionProgress from './progress/PromotionProgress.vue'
+import ShowDealsButton from './buttons/ShowDealsButton.vue'
+import MyDealsButton from './buttons/MyDealsButton.vue'
+import PromotionMobileBanner from './PromotionMobileBanner.vue'
+import PromotionList from './list/PromotionList.vue'
+import TogglePromotionBannerButton from './buttons/TogglePromotionBannerButton.vue'
+import {
+  SFFadeInTransition,
+  SFSlideInFromTopTransition,
+  SFOverlay,
+} from '#storefront-ui/components'
 import {
   useCurrentPromotion,
   usePromotionActions,

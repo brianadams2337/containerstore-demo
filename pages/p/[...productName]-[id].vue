@@ -70,7 +70,7 @@
               :variant-id="activeVariant.id"
             />
           </SFFadeInTransition>
-          <LazyStoreLocatorSlideIn
+          <LazyLocatorStoreLocatorSlideIn
             v-if="activeVariant?.id"
             v-model:selected-store-id="selectedStoreId"
             :variant-id="activeVariant.id"
@@ -112,6 +112,22 @@ import {
   useTrackingEvents,
 } from '#imports'
 import { PRODUCT_WITH_PARAMS } from '~/constants'
+import AsyncDataWrapper from '~/components/AsyncDataWrapper.vue'
+import ProductGallery from '~/components/product/detail/productGallery/ProductGallery.vue'
+import ProductBreadcrumbs from '~/components/product/ProductBreadcrumbs.vue'
+import ProductPrice from '~/components/product/ProductPrice.vue'
+import ProductPromotionBanners from '~/components/product/promotion/banners/ProductPromotionBanners.vue'
+import ProductActions from '~/components/product/detail/ProductActions.vue'
+import ProductPromotionGifts from '~/components/product/promotion/gifts/ProductPromotionGifts.vue'
+import StoreVariantAvailability from '~/components/locator/StoreVariantAvailability.vue'
+import ProductDetails from '~/components/product/ProductDetails.vue'
+import ProductRecommendations from '~/components/product/ProductRecommendations.vue'
+import { LazyLocatorStoreLocatorSlideIn } from '#components'
+import {
+  SFHeadline,
+  SFFadeInTransition,
+  SFSkeletonLoader,
+} from '#storefront-ui/components'
 
 definePageMeta({
   validate(route) {

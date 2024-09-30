@@ -40,6 +40,10 @@ import { computed, defineOptions, ref } from 'vue'
 import { useStorefrontTracking } from '../../../composables/storefront/useStorefrontTracking'
 import { useStorefrontBreakpoints } from '../../../composables/storefront/useStorefrontBreakpoints'
 import type { CMSImageSliderSlideProps } from '../types'
+import { NuxtImg } from '#components'
+import { SFLink, SFHeadline } from '#storefront-ui/components'
+// TODO: This needs to be decoupled from the CMS module as it is coming from the SFB local components
+import Intersect from '~/components/Intersect.vue'
 
 const props = defineProps<CMSImageSliderSlideProps>()
 

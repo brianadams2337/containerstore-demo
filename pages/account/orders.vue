@@ -18,6 +18,8 @@ import { useSeoMeta } from '@unhead/vue'
 import { definePageMeta } from '#imports'
 import { useNuxtApp } from '#app'
 import { useUser } from '#storefront/composables'
+import AccountWrapper from '~/components/account/AccountWrapper.vue'
+import { NuxtPage } from '#components'
 
 const { user } = useUser()
 const { $i18n } = useNuxtApp()

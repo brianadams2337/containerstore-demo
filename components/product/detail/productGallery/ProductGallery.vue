@@ -106,7 +106,7 @@
         :product="product"
         class="absolute left-5 max-md:bottom-5 md:top-5"
       />
-      <GoBackLink class="left-5 top-5 md:hidden" use-window-history />
+      <SFGoBackLink class="left-5 top-5 md:hidden" use-window-history />
     </div>
     <ProductGalleryZoom
       v-model:visible="isZoomModalOpen"
@@ -122,9 +122,17 @@
 import { ref } from 'vue'
 import { useElementSize } from '@vueuse/core'
 import type { Product } from '@scayle/storefront-nuxt'
-import { SFItemsSlider } from '#components'
-import GoBackLink from '#storefront-ui/components/links/GoBackLink.vue'
-import { useProductBaseInfo } from '#imports'
+import WishlistToggle from '../../WishlistToggle.vue'
+import ProductBadges from '../../card/ProductBadges.vue'
+import ProductImage from '../../ProductImage.vue'
+import ProductGalleryZoom from './ProductGalleryZoom.vue'
+import {
+  SFButton,
+  SFItemsSlider,
+  SFGoBackLink,
+} from '#storefront-ui/components'
+import { useProductBaseInfo } from '~/composables'
+import { ClientOnly } from '#components'
 
 const props = defineProps<{
   product: Product

@@ -37,16 +37,19 @@
 </template>
 
 <script setup lang="ts">
-import type { ProductImage } from '@scayle/storefront-nuxt'
+import type { ProductImage as ProductImageType } from '@scayle/storefront-nuxt'
 import { computed } from 'vue'
+import ProductImage from '../../ProductImage.vue'
+import ProductCardImageSliderButton from './ProductCardImageSliderButton.vue'
 import { PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE } from '~/constants'
+import { SFItemsSlider, SFLink } from '#storefront-ui/components'
 
 type Props = {
   link: string
   isProductHovered: boolean
-  image: ProductImage
+  image: ProductImageType
   alt: string
-  images: ProductImage[]
+  images: ProductImageType[]
   productIndex: number
 }
 

@@ -11,13 +11,8 @@
 </template>
 
 <script setup lang="ts">
-import type { PropType } from 'vue'
 import { formatDate } from '@scayle/storefront-nuxt'
+import { SFHeadline } from '#storefront-ui/components'
 
-defineProps({
-  deliveryDate: {
-    type: Object as PropType<DeliveryDate>,
-    required: true,
-  },
-})
+defineProps<{ deliveryDate: DeliveryDate }>()
 </script>

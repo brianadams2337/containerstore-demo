@@ -48,6 +48,10 @@ import { computed, defineOptions } from 'vue'
 import { definePageMeta } from '#imports'
 import { useRoute } from '#app/composables/router'
 import { routeList } from '~/utils'
+import { SFSkeletonLoader, SFBreadcrumbs } from '#storefront-ui/components'
+import CMSContentPageData from '#storefront-cms/components/fetching/CMSContentPageData.vue'
+import CMSStory from '#storefront-cms/components/Story.vue'
+import CMSImage from '#storefront-cms/components/Image.vue'
 
 const route = useRoute()
 const slug = computed(() =>

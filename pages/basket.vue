@@ -97,6 +97,19 @@ import {
   useTrackingEvents,
 } from '~/composables'
 import { useBasket, useWishlist } from '#storefront/composables'
+import {
+  SFHeadline,
+  SFFadeInTransition,
+  SFSkeletonLoader,
+  SFSwipeDelete,
+} from '#storefront-ui/components'
+import AsyncDataWrapper from '~/components/AsyncDataWrapper.vue'
+import BasketAutomaticDiscountConditionBanner from '~/components/basket/promotion/BasketAutomaticDiscountConditionBanner.vue'
+import BasketGiftConditionBanner from '~/components/basket/promotion/BasketGiftConditionBanner.vue'
+import BasketCard from '~/components/basket/card/BasketCard.vue'
+import BasketItemPromotionGifts from '~/components/basket/promotion/BasketItemPromotionGifts.vue'
+import BasketSummary from '~/components/basket/summary/BasketSummary.vue'
+import EmptyState from '~/components/EmptyState.vue'
 
 const basket = useBasket()
 const wishlist = useWishlist()

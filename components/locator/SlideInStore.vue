@@ -77,6 +77,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { OpeningTimes, StoreAddress } from '@scayle/omnichannel-nuxt'
+import StoreFavoriteToggle from './StoreFavoriteToggle.vue'
+import StoreOpeningTimesSummary from './StoreOpeningTimesSummary.vue'
 import { useFormatDistance } from '~/composables/useFormatDistance'
 
 interface Props {

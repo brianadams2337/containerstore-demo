@@ -16,6 +16,7 @@
 
 <script setup lang="ts">
 import type { RouteLocationRaw } from '#vue-router'
+import { SFLink } from '#storefront-ui/components'
 
 type Props = {
   to: RouteLocationRaw

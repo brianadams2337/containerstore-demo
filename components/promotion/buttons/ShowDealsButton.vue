@@ -18,6 +18,7 @@ import {
   useRouteHelpers,
   useCurrentCategory,
 } from '~/composables'
+import { SFButton } from '#storefront-ui/components'
 
 const props = defineProps<{ category: Promotion['customData']['category'] }>()
 

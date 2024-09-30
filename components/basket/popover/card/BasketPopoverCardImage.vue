@@ -19,6 +19,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { BasketItem } from '@scayle/storefront-nuxt'
+import ProductImage from '~/components/product/ProductImage.vue'
+import ProductPromotionFreeGiftBadge from '~/components/product/promotion/gifts/ProductPromotionFreeGiftBadge.vue'
 import { useBasketItem, useBasketItemPromotion } from '~/composables'
 
 const props = defineProps<{ item: BasketItem }>()

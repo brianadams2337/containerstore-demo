@@ -80,9 +80,16 @@
 import { computed, reactive } from 'vue'
 import useVuelidate from '@vuelidate/core'
 import type { Gender } from '@scayle/storefront-nuxt'
+import IDPForm from './IDPForm.vue'
+import SalutationSelect from './SalutationSelect.vue'
 import { useRoute } from '#app/composables/router'
 import { useAuthentication, useValidationRules } from '~/composables'
 import { useIDP } from '#storefront/composables'
+import {
+  SFButton,
+  SFTextInput,
+  SFValidatedInputGroup,
+} from '#storefront-ui/components'
 
 const { register, isSubmitting } = useAuthentication('sign_up')
 const validationRules = useValidationRules()

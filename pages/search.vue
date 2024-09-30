@@ -33,6 +33,12 @@ import { usePageState, useProductsSearch } from '~/composables'
 import { useNuxtApp } from '#app'
 import { useRoute } from '#app/composables/router'
 import { categoryListingMetaData } from '~/constants'
+import ProductList from '~/components/productList/ProductList.vue'
+import PageContent from '~/components/layout/PageContent.vue'
+import FilterSlideIn from '~/components/filter/FilterSlideIn.vue'
+import SortSelection from '~/components/sorting/SortSelection.vue'
+import FilterToggleButton from '~/components/filter/FilterToggleButton.vue'
+import { SFHeadline } from '#storefront-ui/components'
 
 const route = useRoute()
 

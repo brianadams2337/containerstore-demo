@@ -70,21 +70,18 @@
 
 <script setup lang="ts">
 import { computed, defineOptions } from 'vue'
-import type { PropType } from 'vue'
 import type { SbNestedParagraph } from '../types/storyblok'
 import { getComponentName } from '../../../utils/helpers'
 import CMSText from './Text.vue'
+import StoryblokLink from './StoryblokLink.vue'
+import { NuxtPicture } from '#components'
+import { SFHeadline, SFButton } from '#storefront-ui/components'
 
-const props = defineProps({
-  blok: {
-    type: Object as PropType<SbNestedParagraph>,
-    required: true,
-  },
-})
+const props = defineProps<{ blok: SbNestedParagraph }>()
 
 function trimAnchorSymbol(anchorId?: string): string | undefined {
   if (!anchorId) {
-    return undefined
+    return
   }
   return anchorId.startsWith('#') ? anchorId.substring(1) : anchorId
 }

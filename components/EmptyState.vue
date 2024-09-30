@@ -46,6 +46,7 @@ import { computed } from 'vue'
 import { useUser } from '#storefront/composables'
 import { routeList } from '~/utils/route'
 import { IconEmptyBasket, IconEmptyWishlist } from '#components'
+import { SFButton, SFHeadline } from '#storefront-ui/components'
 
 type Props = {
   title?: string

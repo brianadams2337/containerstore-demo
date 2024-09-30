@@ -18,10 +18,7 @@
 <script setup lang="ts" generic="T">
 import { defineModel } from 'vue'
 
-type Props = {
-  item: T
-}
-defineProps<Props>()
+defineProps<{ item: T }>()
 
 const model = defineModel<T[]>()
 </script>

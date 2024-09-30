@@ -52,8 +52,14 @@
 
 <script setup lang="ts">
 import { computed, toRef } from 'vue'
+import ProductPromotionProgressLabel from './ProductPromotionProgressLabel.vue'
 import { getBackgroundColorStyle } from '~/utils/promotion'
 import { usePromotionProgress } from '~/composables'
+import { ClientOnly } from '#components'
+import { SFSkeletonLoader, SFFadeInTransition } from '#storefront-ui/components'
+import PromotionCountdown from '~/components/promotion/PromotionCountdown.vue'
+import PromotionCard from '~/components/promotion/PromotionCard.vue'
+import PromotionHeadline from '~/components/promotion/headlines/PromotionHeadline.vue'
 
 type Props = {
   promotion: Promotion

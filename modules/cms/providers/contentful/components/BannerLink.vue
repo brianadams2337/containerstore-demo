@@ -18,6 +18,7 @@
 import { defineOptions } from 'vue'
 import type { CMSBannerLinkProps } from '../types'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
+import { SFLink } from '#storefront-ui/components'
 
 defineProps<CMSBannerLinkProps>()
 

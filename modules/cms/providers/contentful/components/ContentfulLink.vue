@@ -17,6 +17,7 @@ import { computed, defineOptions } from 'vue'
 import type { CMSContentfulLink } from '../types'
 import { useContentfulHelpers } from '../composables/useContentfulHelpers'
 import { type LinkList, routeList } from '~/utils/route'
+import { SFLink } from '#storefront-ui/components'
 
 const { isInEditorMode } = useContentfulHelpers()
 const props = withDefaults(defineProps<CMSContentfulLink>(), { target: '' })

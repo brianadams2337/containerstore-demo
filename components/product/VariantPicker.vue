@@ -11,13 +11,12 @@
     <span
       v-if="getFirstAttributeValue(activeVariant?.attributes, 'size')?.label"
       class="font-medium text-black"
-      >{{
-        getFirstAttributeValue(activeVariant?.attributes, 'size')?.label
-      }}</span
     >
-    <span v-else class="font-medium text-gray-500">{{
-      $t('pdp.select_size')
-    }}</span>
+      {{ getFirstAttributeValue(activeVariant?.attributes, 'size')?.label }}
+    </span>
+    <span v-else class="font-medium text-gray-500">
+      {{ $t('pdp.select_size') }}
+    </span>
     <template #item="{ item, selectItem }">
       <button
         :disabled="item.stock.quantity === 0"
@@ -57,6 +56,8 @@
 <script setup lang="ts">
 import { getFirstAttributeValue, type Variant } from '@scayle/storefront-nuxt'
 import { defineModel } from 'vue'
+import ProductPrice from './ProductPrice.vue'
+import { SFDropdown } from '#storefront-ui/components'
 
 type Props = {
   variants: Variant[]

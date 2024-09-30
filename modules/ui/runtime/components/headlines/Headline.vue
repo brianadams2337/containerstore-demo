@@ -1,6 +1,7 @@
 <template>
   <SFSkeletonLoader v-if="loading" type="headline" />
   <component
+    v-bind="$attrs"
     :is="tag"
     v-else
     data-testid="headline"
@@ -20,6 +21,7 @@
 
 <script setup lang="ts">
 import { HeadlineSize, HeadlineTag } from '#storefront-ui'
+import { SFSkeletonLoader, SFHeadlineBadge } from '#storefront-ui/components'
 
 type Props = {
   loading?: boolean

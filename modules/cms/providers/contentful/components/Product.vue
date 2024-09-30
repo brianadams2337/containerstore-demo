@@ -20,6 +20,8 @@
 import { defineOptions } from 'vue'
 import type { Product } from '@scayle/storefront-nuxt'
 import { useListingUiState } from '~/composables/useListingUiState'
+// TODO: This needs to be decoupled from the CMS module as it is coming from the SFB local components
+import ProductCard from '~/components/product/card/ProductCard.vue'
 
 type CMSProductProps = {
   width?: string

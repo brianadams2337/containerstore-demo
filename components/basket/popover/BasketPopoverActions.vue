@@ -13,6 +13,7 @@
 import { computed } from 'vue'
 import { routeList } from '~/utils/route'
 import { useUser } from '#storefront/composables'
+import { SFButton } from '#storefront-ui/components'
 
 const { isLoggedIn } = useUser()
 

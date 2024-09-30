@@ -53,6 +53,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useFlyouts } from '~/composables/useFlyouts'
+import { SFHeadline, SFTwoColumnList } from '#storefront-ui/components'
+import NavigationTreeItem from '~/components/NavigationTreeItem.vue'
 
 const { closeFlyoutMenu, flyoutNavigationItem } = useFlyouts()
 

@@ -29,6 +29,7 @@ import type { PropType } from 'vue'
 import { HttpStatusCode } from '@scayle/storefront-nuxt'
 import { useNuxtApp } from '#app'
 import type { NuxtError } from '#app'
+import { SFButton, SFHeadline } from '#storefront-ui/components'
 
 type AppError =
   | NuxtError

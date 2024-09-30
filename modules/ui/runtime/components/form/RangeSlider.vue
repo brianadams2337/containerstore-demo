@@ -81,6 +81,8 @@ import VueSlider from 'vue-slider-component/dist-css/vue-slider-component.umd.mi
 import 'vue-slider-component/dist-css/vue-slider-component.css'
 import '@/assets/css/slider/default.css'
 import { useCurrentShop } from '#storefront/composables'
+import { SFPriceInput } from '#storefront-ui/components'
+import { ClientOnly } from '#components'
 
 export type RangeTuple = [start: number, end: number]
 
@@ -89,14 +91,9 @@ type Props = {
   max?: number
 }
 
-withDefaults(defineProps<Props>(), {
-  min: 0,
-  max: 100000,
-})
+withDefaults(defineProps<Props>(), { min: 0, max: 100000 })
 
-const range = defineModel<RangeTuple>({
-  required: true,
-})
+const range = defineModel<RangeTuple>({ required: true })
 
 const currentShop = useCurrentShop()
 const locale = currentShop.value!.locale

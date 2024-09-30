@@ -16,17 +16,14 @@
 
 <script setup lang="ts" generic="Item extends { label: string; value: any }">
 import { computed } from 'vue'
+import { SFRadioItem } from '#storefront-ui/components'
 
 type Props = {
   modelValue?: string | number
   items?: Item[]
   title?: string
 }
-const props = withDefaults(defineProps<Props>(), {
-  modelValue: undefined,
-  items: undefined,
-  title: undefined,
-})
+const props = defineProps<Props>()
 
 const emit = defineEmits<{
   'update:model-value': [string | number | undefined]

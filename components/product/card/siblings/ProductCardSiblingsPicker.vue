@@ -52,10 +52,12 @@
 import { computed } from 'vue'
 import type { Product } from '@scayle/storefront-nuxt'
 import { getFirstAttributeValue } from '@scayle/storefront-nuxt'
+import ProductImage from '../../ProductImage.vue'
 import type { ProductSibling } from '~/types/siblings'
 import { useRouteHelpers } from '~/composables'
 import { PRODUCT_CARD_SIBLINGS_LIMIT } from '~/constants'
 import { formatColors } from '~/utils'
+import { SFLink } from '#storefront-ui/components'
 
 type Props = {
   product: Product

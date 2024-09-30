@@ -5,7 +5,6 @@
         v-if="lastLoggedInUser.email && !$route.query.register"
         class="mt-10 px-2"
       />
-
       <SFVerticalAccordion
         v-else
         class="mt-10 px-2"
@@ -43,10 +42,18 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import ForgotPasswordForm from './ForgotPasswordForm.vue'
+import UpdatePasswordByHashForm from './UpdatePasswordByHashForm.vue'
+import WelcomeBackLoginForm from './WelcomeBackLoginForm.vue'
+import RegisterForm from './RegisterForm.vue'
+import LoginForm from './LoginForm.vue'
+import GuestLoginForm from './GuestLoginForm.vue'
 import { routeList } from '~/utils/route'
 import { useLastLoggedInUser, useRouteHelpers } from '~/composables'
 import { useRoute } from '#app/composables/router'
 import { useNuxtApp } from '#app'
+import { SFButton, SFVerticalAccordion } from '#storefront-ui/components'
+import { ClientOnly } from '#components'
 
 const props = withDefaults(defineProps<{ showGuestLogin?: boolean }>(), {
   showGuestLogin: true,

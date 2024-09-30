@@ -24,6 +24,8 @@
 </template>
 
 <script setup lang="ts">
+import { SFFadeInFromBottomTransition } from '#storefront-ui/components'
+
 type Props = {
   isOpen?: boolean
   disablePopoverContent?: boolean

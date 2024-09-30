@@ -37,6 +37,8 @@
 </template>
 
 <script lang="ts" setup>
+import BasketSummarySale from './BasketSummarySale.vue'
+import BasketSummaryPromotions from './promotions/BasketSummaryPromotions.vue'
 import { useFormatHelpers } from '#storefront/composables'
 import { useBasketReductions } from '~/composables'
 

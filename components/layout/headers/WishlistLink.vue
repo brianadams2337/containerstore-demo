@@ -21,8 +21,11 @@
 </template>
 
 <script setup lang="ts">
+import FloatingBadge from './FloatingBadge.vue'
+import AsyncDataWrapper from '~/components/AsyncDataWrapper.vue'
 import { useWishlist } from '#storefront/composables'
 import { routeList } from '~/utils/route'
+import { SFLink } from '#storefront-ui/components'
 
 const { count, status } = useWishlist()
 </script>

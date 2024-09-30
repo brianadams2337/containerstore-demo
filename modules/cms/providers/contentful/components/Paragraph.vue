@@ -61,6 +61,8 @@ import { computed, defineOptions } from 'vue'
 import type { CMSParagraphProps } from '../types'
 import CMSText from './Text.vue'
 import CMSContentfulLink from './ContentfulLink.vue'
+import { NuxtPicture } from '#components'
+import { SFHeadline, SFButton } from '#storefront-ui/components'
 
 const props = defineProps<CMSParagraphProps>()
 

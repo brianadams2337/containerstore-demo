@@ -18,3 +18,7 @@
     />
   </div>
 </template>
+
+<script setup lang="ts">
+import { SFSkeletonLoader } from '#storefront-ui/components'
+</script>

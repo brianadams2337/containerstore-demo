@@ -35,12 +35,9 @@
 import { computed, ref } from 'vue'
 import type { OpeningTimes } from '@scayle/omnichannel-nuxt'
 import { useFirstDayOfWeek } from '~/composables/useFirstDayOfWeek'
+import { SFButton } from '#storefront-ui/components'
 
-interface Props {
-  openingTimes: OpeningTimes
-}
-
-defineProps<Props>()
+defineProps<{ openingTimes: OpeningTimes }>()
 
 const openingHoursOpen = ref(false)
 

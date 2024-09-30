@@ -28,10 +28,14 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useMounted } from '@vueuse/core'
+import UserActions from './UserActions.vue'
+import GuestActions from './GuestActions.vue'
 import { routeList } from '~/utils/route'
 import { useUser } from '#storefront/composables'
 import { useDefaultBreakpoints, useFlyouts } from '~/composables'
-import { useMounted } from '#imports'
+import { SFPopover, SFLink } from '#storefront-ui/components'
+import AsyncDataWrapper from '~/components/AsyncDataWrapper.vue'
 
 const { smaller } = useDefaultBreakpoints()
 

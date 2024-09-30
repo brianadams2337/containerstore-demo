@@ -16,6 +16,7 @@
 
 <script setup lang="ts">
 import { useScroll } from '@vueuse/core'
+import { SFFadeInTransition, SFButton } from '#storefront-ui/components'
 
 const { arrivedState } = useScroll(window)
 

@@ -5,6 +5,7 @@
 <script setup lang="ts">
 import { computed, defineOptions } from 'vue'
 import { useRoute } from '#app/composables/router'
+import IDPCallback from '~/components/auth/IDPCallback.vue'
 
 const route = useRoute()
 

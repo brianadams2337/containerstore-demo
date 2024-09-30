@@ -18,6 +18,7 @@
 
 <script setup lang="ts">
 import { usePromotionActions } from '~/composables'
+import { SFButton } from '#storefront-ui/components'
 
 const { isPromotionListShown, togglePromotionList } = usePromotionActions()
 </script>

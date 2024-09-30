@@ -48,20 +48,13 @@
 
 <script setup lang="ts">
 import { defineOptions } from 'vue'
-import type { PropType } from 'vue'
 import { useCMSAlignment } from '../composables/useCMSAlignment'
 import type { SbCmsImage, SbSlide, SbVideo } from '../types'
+import { SFLink } from '#storefront-ui/components'
 
-const props = defineProps({
-  blok: {
-    type: Object as PropType<SbSlide>,
-    required: true,
-  },
-  preload: {
-    type: Boolean,
-    default: false,
-  },
-})
+type Props = { blok: SbSlide; preload?: boolean }
+
+const props = withDefaults(defineProps<Props>(), { preload: false })
 
 const { justify, align } = useCMSAlignment(props.blok)
 

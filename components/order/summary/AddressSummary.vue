@@ -19,25 +19,23 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { PropType } from 'vue'
-import { useNuxtApp } from '#app'
+import AddressCards from './AddressCards.vue'
+import AddressTabs from './AddressTabs.vue'
+import AddressInformation from './AddressInformation.vue'
 import { isEqual } from '~/utils/object'
+import { useNuxtApp } from '#app'
 
 export type SummaryItem = {
   name: 'shipping' | 'billing'
   label: string
 }
 
-const props = defineProps({
-  shippingAddress: {
-    type: Object as PropType<OrderAddress>,
-    default: null,
-  },
-  billingAddress: {
-    type: Object as PropType<OrderAddress>,
-    default: null,
-  },
-})
+type Props = {
+  shippingAddress?: OrderAddress
+  billingAddress?: OrderAddress
+}
+
+const props = defineProps<Props>()
 
 const { $i18n } = useNuxtApp()
 

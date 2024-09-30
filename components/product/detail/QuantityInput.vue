@@ -29,11 +29,9 @@
 
 <script setup lang="ts">
 import { defineModel } from 'vue'
+import { SFButton } from '#storefront-ui/components'
 
-type Props = {
-  maxQuantity: number
-}
-defineProps<Props>()
+defineProps<{ maxQuantity: number }>()
 
 const quantity = defineModel<number>({ required: true })
 </script>

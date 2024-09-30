@@ -40,6 +40,7 @@ import { computed } from 'vue'
 import { useAuthentication, useSideNavigation } from '~/composables'
 import { useUser } from '#storefront/composables'
 import { routeList } from '~/utils/route'
+import { SFButton, SFLink } from '#storefront-ui/components'
 
 const { user } = useUser()
 const { closeSideNavigation } = useSideNavigation()

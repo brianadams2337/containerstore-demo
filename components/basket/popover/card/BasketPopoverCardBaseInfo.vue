@@ -38,15 +38,14 @@
 import { computed } from 'vue'
 import type { BasketItem } from '@scayle/storefront-nuxt'
 import { useBasketItem } from '~/composables/useBasketItem'
+import ProductBadge from '~/components/product/ProductBadge.vue'
 
 type Props = {
   item: BasketItem
   isLightVariant?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  isLightVariant: false,
-})
+const props = withDefaults(defineProps<Props>(), { isLightVariant: false })
 
 const basketItem = computed(() => props.item)
 

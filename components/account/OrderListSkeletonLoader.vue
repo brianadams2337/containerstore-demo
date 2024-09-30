@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
-  ordersPerPage: number
-}>()
+import { SFSkeletonLoader } from '#storefront-ui/components'
+
+defineProps<{ ordersPerPage: number }>()
 </script>

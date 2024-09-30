@@ -74,9 +74,15 @@
 import { computed, reactive, ref, watch } from 'vue'
 import useVuelidate from '@vuelidate/core'
 import { wait } from '@scayle/storefront-nuxt'
+import PasswordMeter from './PasswordMeter.vue'
 import { useToast, useValidationRules } from '~/composables'
 import { useNuxtApp } from '#app'
 import { useUser } from '#storefront/composables'
+import {
+  SFValidatedInputGroup,
+  SFTextInput,
+  SFButton,
+} from '#storefront-ui/components'
 
 const { updatePassword, fetch: refresh } = useUser()
 const { $i18n } = useNuxtApp()

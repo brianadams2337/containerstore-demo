@@ -55,6 +55,14 @@ import {
   useLastLoggedInUser,
   useValidationRules,
 } from '~/composables'
+import {
+  SFButton,
+  SFTextInput,
+  SFValidatedInputGroup,
+  SFModal,
+  SFHeadline,
+  SFFadeInTransition,
+} from '#storefront-ui/components'
 
 defineEmits(['close:modal'])
 

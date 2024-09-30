@@ -24,10 +24,12 @@
 </template>
 
 <script setup lang="ts">
-import type { ProductImage } from '@scayle/storefront-nuxt'
+import type { ProductImage as ProductImageType } from '@scayle/storefront-nuxt'
+// TODO: This needs to be decoupled from the UI module as it is coming from the SFB local components
+import ProductImage from '~/components/product/ProductImage.vue'
 
 type Props = {
-  images: ProductImage[]
+  images: ProductImageType[]
   activeIndex?: number
 }
 

@@ -23,6 +23,8 @@ import {
 import { useWishlist } from '#storefront/composables'
 import { useNuxtApp, useRuntimeConfig } from '#app'
 import { useRoute } from '#app/composables/router'
+import CMSIndexData from '#storefront-cms/components/fetching/CMSIndexData.vue'
+import CMSStory from '#storefront-cms/components/Story.vue'
 
 const config = useRuntimeConfig()
 const route = useRoute()

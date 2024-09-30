@@ -106,6 +106,18 @@ export default withNuxt(
           sameNameShorthand: 'never',
         },
       ],
+      'vue/no-undef-components': [
+        'error',
+        {
+          // Ignore auto-imported icons components & custom elements (web components)
+          ignorePatterns: [
+            'icon(\\-\\w+)+',
+            'scayle-checkout',
+            'subscription-overview',
+            'subscription-cancellation',
+          ],
+        },
+      ],
     },
   },
   {

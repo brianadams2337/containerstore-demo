@@ -26,6 +26,10 @@
 <script setup lang="ts">
 import { onUnmounted } from 'vue'
 import { useState } from '#app/composables/state'
+import {
+  SFButton,
+  SFFadeInFromBottomTransition,
+} from '#storefront-ui/components'
 
 const props = defineProps<{
   promotionId: Promotion['id']

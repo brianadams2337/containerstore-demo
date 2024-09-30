@@ -67,6 +67,13 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import type { Product } from '@scayle/storefront-nuxt'
+import WishlistToggle from '../WishlistToggle.vue'
+import ProductCardImage from './ProductCardImage.vue'
+import ProductCardImageSlider from './imageSlider/ProductCardImageSlider.vue'
+import ProductCardBadgesFooter from './badges/ProductCardBadgesFooter.vue'
+import ProductCardBadgesHeader from './badges/ProductCardBadgesHeader.vue'
+import ProductCardDetails from './ProductCardDetails.vue'
+import Intersect from '~/components/Intersect.vue'
 import { useProductBaseInfo } from '~/composables'
 
 type Props = {

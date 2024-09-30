@@ -71,6 +71,7 @@
 <script setup lang="ts">
 import { toRefs, computed } from 'vue'
 import { usePagination } from '#storefront-ui'
+import { SFPaginationButton } from '#storefront-ui/components'
 
 type Props = {
   totalPageCount: number

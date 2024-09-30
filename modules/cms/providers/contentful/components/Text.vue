@@ -2,9 +2,7 @@
 <template>
   <div class="prose-sm fill-current">
     <div
-      :class="{
-        '[&>p:first-child]:!mt-0': noMarginTop,
-      }"
+      :class="{ '[&>p:first-child]:!mt-0': noMarginTop }"
       v-html="content ?? ''"
     />
   </div>

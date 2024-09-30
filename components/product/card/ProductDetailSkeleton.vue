@@ -14,3 +14,8 @@
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import ProductCardSkeleton from './ProductCardSkeleton.vue'
+import { SFSkeletonLoader } from '#storefront-ui/components'
+</script>

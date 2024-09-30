@@ -1,11 +1,7 @@
 <template>
   <div v-editable="blok" class="prose-sm fill-current">
-    <div
-      :class="{
-        '[&>p:first-child]:!mt-0': noMarginTop,
-      }"
-      v-html="content"
-    />
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <div :class="{ '[&>p:first-child]:!mt-0': noMarginTop }" v-html="content" />
   </div>
 </template>
 

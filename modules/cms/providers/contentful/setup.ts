@@ -42,7 +42,7 @@ export async function setupContentful(options: ModuleOptions, nuxt: Nuxt) {
 
   addPlugin(resolver.resolve('./runtime/plugin'))
 
-  nuxt.options.alias['#storefront-cms/composables'] =
+  nuxt.options.alias['#storefront-cms/components'] =
     resolver.resolve('./components')
 
   await addComponentsDir({

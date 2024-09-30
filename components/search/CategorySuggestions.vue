@@ -27,6 +27,8 @@
 
 <script setup lang="ts">
 import type { CategorySearchSuggestion } from '@scayle/storefront-nuxt'
+import SearchResultItem from './SearchResultItem.vue'
+import CategorySuggestionContent from './CategorySuggestionContent.vue'
 import { useRouteHelpers } from '~/composables/useRouteHelpers'
 
 type Props = {

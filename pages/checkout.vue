@@ -25,7 +25,7 @@ import { useBasket, useLog, useUser } from '#storefront/composables'
 import { useNuxtApp } from '#app'
 
 const { accessToken, checkoutJwt, fetchCheckoutToken } =
-  await useCheckoutWebComponent()
+  useCheckoutWebComponent()
 const { fetch: fetchBasket, fetching } = useBasket()
 
 const { user, fetch: fetchUser } = useUser()

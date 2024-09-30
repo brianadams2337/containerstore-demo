@@ -32,14 +32,11 @@
 import { defineModel } from 'vue'
 
 type Props = {
-  item?: T
   id: string
+  item?: T
   label?: string
 }
-withDefaults(defineProps<Props>(), {
-  item: undefined,
-  label: undefined,
-})
+defineProps<Props>()
 
 const model = defineModel<T[] | boolean>()
 </script>

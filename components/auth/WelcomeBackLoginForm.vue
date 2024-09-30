@@ -18,7 +18,9 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import LoginForm from './LoginForm.vue'
 import { useLastLoggedInUser } from '~/composables'
+import { SFVerticalAccordion } from '#storefront-ui/components'
 
 const { lastLoggedInUser, removeLastLoggedInUser } = await useLastLoggedInUser()
 

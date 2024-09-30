@@ -46,6 +46,7 @@ import {
 } from '@scayle/storefront-nuxt'
 import { getPrimaryImage } from '~/utils/image'
 import { useFormatHelpers } from '#storefront/composables'
+import { NuxtImg } from '#components'
 
 type Props = {
   addOn: BasketItem

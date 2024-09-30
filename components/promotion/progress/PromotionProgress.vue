@@ -22,11 +22,13 @@
 </template>
 
 <script setup lang="ts">
+import PromotionFullProgressLabel from './PromotionFullProgressLabel.vue'
 import {
   useCurrentPromotion,
   useDefaultBreakpoints,
   usePromotionProgress,
 } from '~/composables'
+import { SFProgressBar } from '#storefront-ui/components'
 
 withDefaults(defineProps<{ isFullWidth?: boolean }>(), { isFullWidth: false })
 

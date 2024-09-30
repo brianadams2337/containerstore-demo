@@ -14,7 +14,6 @@
           {{ promotionGiftsHeadline }}
         </SFHeadline>
       </div>
-
       <p class="mt-1 text-2xs text-white">
         {{ promotionGiftsDescription }}
       </p>
@@ -39,7 +38,9 @@
 import { useI18n } from 'vue-i18n'
 import { toRef, computed } from 'vue'
 import type { Product } from '@scayle/storefront-nuxt'
+import ProductPromotionGiftItem from './ProductPromotionGiftItem.vue'
 import { usePromotionGifts } from '~/composables'
+import { SFHeadline } from '#storefront-ui/components'
 
 const props = defineProps<{
   product: Product

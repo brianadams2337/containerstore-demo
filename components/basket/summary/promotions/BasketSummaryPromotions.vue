@@ -24,8 +24,11 @@
 
 <script setup lang="ts">
 import { computed, defineModel } from 'vue'
+import BasketSummaryPromotionsDiscounts from './BasketSummaryPromotionsDiscounts.vue'
+import BasketSummaryPromotionsToggle from './BasketSummaryPromotionsToggle.vue'
 import { useFormatHelpers } from '#storefront/composables'
 import { useBasketReductions } from '~/composables'
+import { SFFadeInFromBottomTransition } from '#storefront-ui/components'
 
 const {
   hasItemsWithPromotionReductions,

@@ -22,6 +22,8 @@ import type {
   ProductSearchSuggestion,
   SearchEntity,
 } from '@scayle/storefront-nuxt'
+import CategorySuggestions from './CategorySuggestions.vue'
+import ProductSuggestions from './ProductSuggestions.vue'
 
 type Props = {
   products?: ProductSearchSuggestion[]

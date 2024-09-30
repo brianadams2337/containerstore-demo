@@ -37,6 +37,7 @@
 
 <script setup lang="ts">
 import { useTrackingEvents, useProductListSort } from '~/composables'
+import { SFDropdown, SFLink } from '#storefront-ui/components'
 
 const { selectedSort, sortLinks } = useProductListSort()
 const { trackFilterApply } = useTrackingEvents()

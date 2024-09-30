@@ -26,6 +26,8 @@
 
 <script setup lang="ts">
 import type { Category } from '@scayle/storefront-nuxt'
+import CategorySideNavigationChildren from './CategorySideNavigationChildren.vue'
+import CategorySideNavigationItem from './CategorySideNavigationItem.vue'
 import { isSaleCategory } from '~/utils'
 
 defineProps<{

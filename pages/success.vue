@@ -25,6 +25,11 @@ import { useTrackingEvents } from '~/composables/useTrackingEvents'
 import { useNuxtApp } from '#app'
 import { useOrderConfirmation, useUser } from '#storefront/composables'
 import { useRoute } from '#app/composables/router'
+import EmptyState from '~/components/EmptyState.vue'
+import ProductCardSkeleton from '~/components/product/card/ProductCardSkeleton.vue'
+import OspBasicDataSection from '~/components/osp/OspBasicDataSection.vue'
+import OspSummarySection from '~/components/osp/OspSummarySection.vue'
+import PageContent from '~/components/layout/PageContent.vue'
 
 const route = useRoute()
 const cbdToken = String(route.query.cbd)

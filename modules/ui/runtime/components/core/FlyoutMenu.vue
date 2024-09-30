@@ -10,5 +10,7 @@
 </template>
 
 <script setup lang="ts">
+import { SFFlyout } from '#storefront-ui/components'
+
 withDefaults(defineProps<{ isOpen?: boolean }>(), { isOpen: false })
 </script>

@@ -43,6 +43,14 @@ import {
   useUserItemsTrackingWatcher,
   useCustomerDataChangeWatcher,
 } from '~/composables'
+import HeaderMetaBar from '~/components/layout/headers/HeaderMetaBar.vue'
+import AppHeader from '~/components/layout/headers/AppHeader.vue'
+import MobileSidebar from '~/components/layout/navigation/MobileSidebar.vue'
+import CountryDetection from '~/components/CountryDetection.vue'
+import PromotionBanner from '~/components/promotion/PromotionBanner.vue'
+import CMSAppFooterData from '#storefront-cms/components/fetching/CMSAppFooterData.vue'
+import { SFToastContainer } from '#storefront-ui/components'
+import { NuxtPage } from '#components'
 
 // Initialize data
 const { allCurrentPromotions } = useBasketPromotions()

@@ -24,6 +24,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { Product } from '@scayle/storefront-nuxt'
+import ProductPromotionBadges from '../../promotion/ProductPromotionBadges.vue'
 import { routeList } from '~/utils'
 import { useLocalePath } from '#i18n'
 import { useRoute } from '#app/composables/router'

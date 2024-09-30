@@ -54,12 +54,12 @@ import { defineOptions } from 'vue'
 import type { Entry } from 'contentful'
 import { useCMSAlignment } from '../composables/useCMSAlignment'
 import { isTypeImage, isTypeVideo } from '../types/gen/index'
-
 import type {
   CMSSlideProps,
   TypeImageSkeleton,
   TypeVideoSkeleton,
 } from '../types'
+import { SFLink } from '#storefront-ui/components'
 
 const props = withDefaults(defineProps<CMSSlideProps>(), {
   preload: false,

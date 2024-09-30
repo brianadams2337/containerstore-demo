@@ -37,6 +37,7 @@ import type {
   NotificationActionHandler,
   StorefrontNotification,
 } from '#storefront-ui'
+import { SFLink } from '#storefront-ui/components'
 
 const props = defineProps<{ notification: StorefrontNotification }>()
 

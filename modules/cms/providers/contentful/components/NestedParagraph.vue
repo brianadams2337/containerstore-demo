@@ -82,6 +82,8 @@ import type { CMSNestedParagraphProps } from '../types/contentful-defs'
 import { EMAIL_REGEX_PATTERN, getComponentName } from '../../../utils/helpers'
 import CMSText from './Text.vue'
 import CMSContentfulLink from './ContentfulLink.vue'
+import { NuxtPicture } from '#components'
+import { SFHeadline, SFButton } from '#storefront-ui/components'
 
 const props = defineProps<CMSNestedParagraphProps>()
 

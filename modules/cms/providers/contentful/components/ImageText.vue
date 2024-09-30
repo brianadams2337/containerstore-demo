@@ -47,6 +47,8 @@ import { useCMSAlignment } from '../composables/useCMSAlignment'
 import type { CMSImageText } from '../types'
 import { useContentfulImageSanitizer } from '../composables/useContentfulImage'
 import { normalizeHomeLink } from '../../../utils/helpers'
+import { NuxtImg } from '#components'
+import { SFHeadline, SFButton } from '#storefront-ui/components'
 
 const props = withDefaults(defineProps<CMSImageText>(), {
   sizes: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',

@@ -28,7 +28,10 @@
 <script setup lang="ts">
 import { toRef } from 'vue'
 import type { BasketItem } from '@scayle/storefront-nuxt'
+import BasketPromotionGiftsSlider from './BasketPromotionGiftsSlider.vue'
 import { useBasketItemPromotion, usePromotionGifts } from '~/composables'
+import PromotionCountdown from '~/components/promotion/PromotionCountdown.vue'
+import { SFHeadline } from '#storefront-ui/components'
 
 const props = defineProps<{ basketItem: BasketItem }>()
 

@@ -46,8 +46,12 @@
 </template>
 
 <script setup lang="ts">
+import OspBasicOrderData from './OspBasicOrderData.vue'
+import OspAddressInformation from './OspAddressInformation.vue'
+import OspDeliveryDate from './OspDeliveryDate.vue'
 import { useRouteHelpers } from '~/composables/useRouteHelpers'
 import { routeList } from '~/utils/route'
+import { SFHeadline, SFButton } from '#storefront-ui/components'
 
 type Props = {
   orderData: Order

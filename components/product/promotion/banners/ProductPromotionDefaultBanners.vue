@@ -13,12 +13,12 @@
 </template>
 
 <script setup lang="ts">
-type Props = {
+import ProductPromotionDefaultBannersItem from './ProductPromotionDefaultBannersItem.vue'
+
+defineProps<{
   applicablePromotions: Promotion[]
   isHighestPriority: (priority: number) => boolean
   isGiftAddedToBasket: boolean
   areGiftConditionsMet: boolean
-}
-
-defineProps<Props>()
+}>()
 </script>

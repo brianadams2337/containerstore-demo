@@ -18,5 +18,7 @@
 </template>
 
 <script setup lang="ts">
+import { SFButton, SFHeadline } from '#storefront-ui/components'
+
 defineProps<{ toggleItem: () => void }>()
 </script>

@@ -16,6 +16,8 @@
 </template>
 
 <script setup lang="ts">
+import { SFButton } from '#storefront-ui/components'
+
 type Props = {
   icon?: string
   disabled?: boolean

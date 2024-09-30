@@ -88,6 +88,10 @@ import { useContentfulEditor } from '../../composables/useContentfulEditor'
 import CMSText from '../Text.vue'
 import CMSLink from '../Link.vue'
 import { useNavigationTreeItems } from '~/composables/useNavigationTreeItems'
+import { SFLink } from '#storefront-ui/components'
+// TODO: This needs to be decoupled from the CMS module as it is coming from the SFB local components
+import NavigationTreeItem from '~/components/NavigationTreeItem.vue'
+import FooterPromises from '~/components/layout/footer/FooterPromises.vue'
 
 const { data } = await useCMSBySlug<TypeFooterSkeleton>('footer', {
   content_type: 'footer',

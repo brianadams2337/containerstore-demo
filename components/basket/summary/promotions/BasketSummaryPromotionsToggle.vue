@@ -15,6 +15,8 @@
 </template>
 
 <script setup lang="ts">
+import { SFButton } from '#storefront-ui/components'
+
 const props = defineProps<{ modelValue: boolean }>()
 
 const emit = defineEmits(['update:modelValue'])

@@ -1,7 +1,7 @@
 import type { VueWrapper } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import { SFButton } from '#components'
+import { SFButton } from '#storefront-ui/components'
 
 const hasClass = (component: VueWrapper, className: string) => {
   return component.classes().some((name) => name.includes(className))

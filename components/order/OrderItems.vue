@@ -34,6 +34,8 @@
 import { computed } from 'vue'
 import type { VariantDetail } from '@scayle/storefront-api'
 import type { ListOfPackages } from '@scayle/storefront-nuxt'
+import OrderStatusBar from './OrderStatusBar.vue'
+import OrderItemCard from './OrderItemCard.vue'
 
 const props = defineProps<{
   orderVariants: VariantDetail[]

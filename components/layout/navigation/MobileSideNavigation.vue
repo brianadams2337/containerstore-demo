@@ -1,6 +1,6 @@
 <template>
   <div v-if="fetching" class="mt-8">
-    <SideNavigationSkeleton
+    <SFSkeletonLoader
       v-for="index in 5"
       :key="`category-loading-${index}`"
       :index="index"
@@ -67,6 +67,7 @@ import type { Category } from '@scayle/storefront-nuxt'
 import { useRoute } from '#app/composables/router'
 import { useRouteHelpers } from '~/composables/useRouteHelpers'
 import { routeList } from '~/utils/route'
+import { SFLink, SFSkeletonLoader } from '#storefront-ui/components'
 
 type Props = {
   categories?: Category[]

@@ -28,6 +28,7 @@
 <script setup lang="ts">
 import { useFlyouts } from '~/composables/useFlyouts'
 import { routeList } from '~/utils/route'
+import { SFButton } from '#storefront-ui/components'
 
 const { closeUserFlyout } = useFlyouts()
 </script>

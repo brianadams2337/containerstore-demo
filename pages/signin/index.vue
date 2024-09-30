@@ -7,6 +7,7 @@ import { defineOptions } from 'vue'
 import { useSeoMeta } from '@unhead/vue'
 import { definePageMeta } from '#imports'
 import { useNuxtApp } from '#app'
+import SignInForm from '~/components/auth/SignInForm.vue'
 
 const { $i18n } = useNuxtApp()
 

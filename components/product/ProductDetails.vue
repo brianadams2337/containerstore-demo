@@ -41,12 +41,9 @@ import { computed } from 'vue'
 import type { Product } from '@scayle/storefront-nuxt'
 import { getFilteredAttributeGroups } from '~/utils'
 import { useProductBaseInfo } from '#imports'
+import { SFAccordionEntry } from '#storefront-ui/components'
 
-type Props = {
-  product: Product
-}
-
-const props = defineProps<Props>()
+const props = defineProps<{ product: Product }>()
 
 const types = ['fit_size', 'extras', 'design']
 const { description } = useProductBaseInfo(props.product)

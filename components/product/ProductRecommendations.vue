@@ -56,6 +56,7 @@
 </template>
 <script setup lang="ts">
 import type { Product } from '@scayle/storefront-nuxt'
+import ProductCard from './card/ProductCard.vue'
 import {
   getDeepestCategoryForTracking,
   usePageState,
@@ -63,6 +64,11 @@ import {
   useTrackingEvents,
 } from '#imports'
 import { useProductsByIds } from '#storefront/composables'
+import {
+  SFButton,
+  SFSkeletonLoader,
+  SFItemsSlider,
+} from '#storefront-ui/components'
 
 type Props = {
   title: string

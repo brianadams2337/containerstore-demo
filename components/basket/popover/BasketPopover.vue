@@ -38,9 +38,14 @@
 </template>
 
 <script setup lang="ts">
+import BasketPopoverItems from './BasketPopoverItems.vue'
+import BasketPopoverActions from './BasketPopoverActions.vue'
 import { useBasket } from '#storefront/composables'
 import { useDefaultBreakpoints, useFlyouts } from '~/composables'
 import { routeList } from '~/utils/route'
+import { SFLink, SFPopover } from '#storefront-ui/components'
+import FloatingBadge from '~/components/layout/headers/FloatingBadge.vue'
+import AsyncDataWrapper from '~/components/AsyncDataWrapper.vue'
 
 const { smaller } = useDefaultBreakpoints()
 

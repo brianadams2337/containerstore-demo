@@ -20,6 +20,9 @@ import {
   useStoryblokImageSanitizer,
   hasTeaser,
 } from '../composables/useStoryblokImage'
+import { NuxtPicture } from '#components'
+// TODO: This needs to be decoupled from the CMS module as it is coming from the SFB local components
+import Intersect from '~/components/Intersect.vue'
 
 const props = withDefaults(defineProps<CMSImageProps>(), {
   preload: false,

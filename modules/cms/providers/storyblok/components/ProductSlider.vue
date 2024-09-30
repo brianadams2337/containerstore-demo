@@ -46,6 +46,7 @@ import {
 } from '#storefront/composables'
 import { usePageState } from '~/composables/usePageState'
 import { useRoute } from '#app/composables/router'
+import { SFHeadline, SFItemsSlider, SFLink } from '#storefront-ui/components'
 
 const props = defineProps<CMSProductSliderProps>()
 

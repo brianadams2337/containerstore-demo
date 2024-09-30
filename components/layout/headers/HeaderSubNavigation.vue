@@ -43,6 +43,8 @@ import { useFlyouts } from '~/composables/useFlyouts'
 import { useRootCategories } from '~/composables/useRootCategories'
 import { useRouteHelpers } from '~/composables/useRouteHelpers'
 import { routeList } from '~/utils/route'
+import { SFLink } from '#storefront-ui/components'
+import NavigationTreeItem from '~/components/NavigationTreeItem.vue'
 
 withDefaults(defineProps<{ navigationTree?: NavigationTree }>(), {
   navigationTree: undefined,

@@ -73,7 +73,7 @@
 import { computed } from 'vue'
 import { ButtonType, Size, getSizeUtils } from '#storefront-ui'
 import type { RouteLocationRaw } from '#vue-router'
-import { SFLink } from '#components'
+import { SFLink } from '#storefront-ui/components'
 
 type Props = {
   type?: ButtonType

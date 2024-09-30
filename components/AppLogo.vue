@@ -32,12 +32,10 @@
 
 <script setup lang="ts">
 import { routeList } from '~/utils/route'
+import { SFLink } from '#storefront-ui/components'
 
-withDefaults(
-  defineProps<{
-    width: number
-    height: number
-  }>(),
-  { width: 92, height: 24 },
-)
+withDefaults(defineProps<{ width: number; height: number }>(), {
+  width: 92,
+  height: 24,
+})
 </script>

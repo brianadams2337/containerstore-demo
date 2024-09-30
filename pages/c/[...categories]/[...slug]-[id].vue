@@ -98,6 +98,18 @@ import { createError } from '#app/composables/error'
 import { useRoute } from '#app/composables/router'
 import { getCategoryId } from '~/utils'
 import { categoryListingMetaData } from '~/constants'
+import CMSCategoryData from '#storefront-cms/components/fetching/CMSCategoryData.vue'
+import CMSImage from '#storefront-cms/components/Image.vue'
+import CategorySideNavigation from '~/components/category/CategorySideNavigation.vue'
+import CategoryNavigationBackButton from '~/components/category/CategoryNavigationBackButton.vue'
+import CategoryBreadcrumbs from '~/components/category/CategoryBreadcrumbs.vue'
+import SortSelection from '~/components/sorting/SortSelection.vue'
+import FilterToggleButton from '~/components/filter/FilterToggleButton.vue'
+import CategoryNavigationSlider from '~/components/category/CategoryNavigationSlider.vue'
+import ProductList from '~/components/productList/ProductList.vue'
+import FilterSlideIn from '~/components/filter/FilterSlideIn.vue'
+import FloatingContainer from '~/components/FloatingContainer.vue'
+import ScrollToTopButton from '~/components/ScrollToTopButton.vue'
 
 const route = useRoute()
 

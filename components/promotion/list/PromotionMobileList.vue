@@ -28,7 +28,10 @@
 
 <script setup lang="ts">
 import { onClickOutside } from '@vueuse/core'
+import ClosePromotionListButton from '../buttons/ClosePromotionListButton.vue'
+import PromotionItem from './PromotionItem.vue'
 import { useDefaultBreakpoints, usePromotionActions } from '~/composables'
+import { SFItemsSlider, SFHeadline } from '#storefront-ui/components'
 
 defineProps<{ items: Promotion[] }>()
 

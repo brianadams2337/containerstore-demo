@@ -13,20 +13,24 @@
             type="primary"
             class="w-fit"
             @click="switchToShop(shop)"
-            >{{
+          >
+            {{
               $t('country_selection.switch_to_shop', {
                 country: getShopCountryName(shop, suggestedShops.length > 1),
               })
-            }}</SFButton
-          >
-          <SFButton type="secondary" class="w-fit" @click="stayInShop">{{
-            $t('country_selection.stay_in_shop', { country: currentCountry })
-          }}</SFButton>
+            }}
+          </SFButton>
+          <SFButton type="secondary" class="w-fit" @click="stayInShop">
+            {{
+              $t('country_selection.stay_in_shop', { country: currentCountry })
+            }}
+          </SFButton>
         </div>
       </div>
     </SFModal>
   </SFFadeInTransition>
 </template>
+
 <script lang="ts" setup>
 import { computed, ref, onMounted } from 'vue'
 import { useSessionStorage } from '@vueuse/core'
@@ -39,6 +43,11 @@ import {
   useCurrentShop,
 } from '#storefront/composables'
 import { getCurrentCountryFromTimezone } from '~/utils'
+import {
+  SFButton,
+  SFFadeInTransition,
+  SFModal,
+} from '#storefront-ui/components'
 
 const trackingEvents = useTrackingEvents()
 const switchLocalePath = useSwitchLocalePath()

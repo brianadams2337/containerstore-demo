@@ -118,6 +118,11 @@
 
 <script setup lang="ts">
 import type { Product } from '@scayle/storefront-nuxt'
+import ProductPrice from '../ProductPrice.vue'
+import WishlistToggle from '../WishlistToggle.vue'
+import ProductImage from '../ProductImage.vue'
+import VariantPicker from '../VariantPicker.vue'
+import ProductPromotionFreeGiftBadge from './gifts/ProductPromotionFreeGiftBadge.vue'
 import {
   useDefaultBreakpoints,
   usePageState,
@@ -127,6 +132,13 @@ import {
   useTrackingEvents,
 } from '~/composables'
 import { useRoute } from '#app/composables/router'
+import { ClientOnly } from '#components'
+import {
+  SFButton,
+  SFHeadline,
+  SFSlideInFromBottomTransition,
+  SFModal,
+} from '#storefront-ui/components'
 
 const props = defineProps<{
   product: Product

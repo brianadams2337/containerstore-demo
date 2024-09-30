@@ -15,5 +15,10 @@
 </template>
 
 <script setup lang="ts">
+import {
+  SFFadeInTransition,
+  SFFadeInFromBottomTransition,
+} from '#storefront-ui/components'
+
 withDefaults(defineProps<{ isOpen?: boolean }>(), { isOpen: false })
 </script>

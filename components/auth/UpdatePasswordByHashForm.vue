@@ -53,6 +53,14 @@ import { computed, reactive } from 'vue'
 import useVuelidate from '@vuelidate/core'
 import { useAuthentication, useValidationRules } from '~/composables'
 import { useRoute } from '#app/composables/router'
+import {
+  SFButton,
+  SFTextInput,
+  SFValidatedInputGroup,
+  SFModal,
+  SFFadeInTransition,
+  SFHeadline,
+} from '#storefront-ui/components'
 
 defineEmits(['close:modal'])
 

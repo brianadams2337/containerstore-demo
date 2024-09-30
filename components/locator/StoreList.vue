@@ -24,12 +24,9 @@
 <script setup lang="ts">
 import { defineModel } from 'vue'
 import type { Store } from '@scayle/omnichannel-nuxt'
+import SlideInStore from './SlideInStore.vue'
 
-interface Props {
-  stores: Store[]
-}
-
-withDefaults(defineProps<Props>(), { stores: () => [] })
+withDefaults(defineProps<{ stores: Store[] }>(), { stores: () => [] })
 
 const selectedStoreId = defineModel<number | undefined>('selectedStoreId', {
   type: Number,

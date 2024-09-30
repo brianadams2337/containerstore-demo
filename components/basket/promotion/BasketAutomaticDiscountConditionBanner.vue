@@ -40,6 +40,10 @@
 import { toRef } from 'vue'
 import type { BasketItem } from '@scayle/storefront-nuxt'
 import { useBasketItemPromotion, usePromotionProgress } from '~/composables'
+import PromotionCard from '~/components/promotion/PromotionCard.vue'
+import PromotionHeadline from '~/components/promotion/headlines/PromotionHeadline.vue'
+import ProductPromotionProgressLabel from '~/components/product/promotion/banners/ProductPromotionProgressLabel.vue'
+import PromotionCountdown from '~/components/promotion/PromotionCountdown.vue'
 
 const props = defineProps<{ basketItem: BasketItem }>()
 

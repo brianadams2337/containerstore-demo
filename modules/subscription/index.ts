@@ -21,21 +21,23 @@ export default defineNuxtModule<ModuleOptions>({
       nuxt: '>=3.10',
     },
   },
-  async setup(option) {
-    const resolver = createResolver(import.meta.url)
+  async setup(options, nuxt) {
+    const { resolve } = createResolver(import.meta.url)
     await addComponentsDir({
-      path: resolver.resolve('./components'),
+      path: resolve('./components'),
       global: true,
     })
 
-    addImportsDir(resolver.resolve('./composables'))
-    addImportsDir(resolver.resolve('./helpers'))
+    addImportsDir(resolve('./composables'))
+    addImportsDir(resolve('./helpers'))
+
+    nuxt.options.alias['#storefront-subscription'] = resolve('./')
 
     extendPages((pages) => {
       pages.push({
         name: 'subscription-overview',
-        path: option.overviewPagePath ?? '/account/subscription',
-        file: resolver.resolve('./pages/subscription.vue'),
+        path: options.overviewPagePath ?? '/account/subscription',
+        file: resolve('./pages/subscription.vue'),
       })
     })
 
@@ -43,8 +45,8 @@ export default defineNuxtModule<ModuleOptions>({
       pages.push({
         name: 'subscription-cancellations',
         path:
-          option.cancellationPagePath ?? '/account/subscription-cancellations',
-        file: resolver.resolve('./pages/subscription-cancellations.vue'),
+          options.cancellationPagePath ?? '/account/subscription-cancellations',
+        file: resolve('./pages/subscription-cancellations.vue'),
       })
     })
   },

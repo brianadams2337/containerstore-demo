@@ -29,6 +29,9 @@ import { useSeoMeta } from '@unhead/vue'
 import { useRoute } from '#app/composables/router'
 import { definePageMeta } from '#imports'
 import { routeList } from '~/utils'
+import { SFSkeletonLoader, SFBreadcrumbs } from '#storefront-ui/components'
+import CMSServicePageData from '#storefront-cms/components/fetching/CMSServicePageData.vue'
+import CMSStory from '#storefront-cms/components/Story.vue'
 
 const route = useRoute()
 const slug = computed(() =>

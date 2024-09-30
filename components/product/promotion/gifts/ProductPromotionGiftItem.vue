@@ -9,9 +9,7 @@
         sizes="92px"
         aspect-ratio="1/1"
         class="size-24"
-        :class="{
-          'opacity-20': disabled,
-        }"
+        :class="{ 'opacity-20': disabled }"
       />
       <ProductPromotionFreeGiftBadge
         :background-color-style="backgroundColorStyle"
@@ -46,7 +44,6 @@
           />
         </div>
       </div>
-
       <div class="flex items-end justify-between">
         <SFButton
           size="sm"
@@ -74,8 +71,14 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { CentAmount, Product } from '@scayle/storefront-nuxt'
+import ProductPromotionSelectionModal from '../ProductPromotionSelectionModal.vue'
+import ProductPrice from '../../ProductPrice.vue'
+import ProductImage from '../../ProductImage.vue'
+import ProductPromotionFreeGiftBadge from './ProductPromotionFreeGiftBadge.vue'
 import { useProductBaseInfo, usePromotionGiftSelection } from '~/composables'
 import { createCustomPrice } from '~/utils'
+import { ClientOnly } from '#components'
+import { SFButton, SFHeadline } from '#storefront-ui/components'
 
 type Props = {
   product: Product

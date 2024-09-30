@@ -52,6 +52,7 @@ import {
   isAutomaticDiscountType,
   isBuyXGetYType,
 } from '~/utils/promotion'
+import { SFProgressBar } from '#storefront-ui/components'
 
 type Props = {
   promotion: Promotion

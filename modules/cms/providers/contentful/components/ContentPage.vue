@@ -21,6 +21,7 @@
 import { defineOptions } from 'vue'
 import { getComponentName } from '../../../utils/helpers'
 import type { CMSContentPageProps } from '../types'
+import { SFHeadline } from '#storefront-ui/components'
 
 defineProps<CMSContentPageProps>()
 defineOptions({ name: 'CMSContentPage' })

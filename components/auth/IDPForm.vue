@@ -23,6 +23,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { SFLink } from '#storefront-ui/components'
 
 const idpClasses: Record<string, string> = {
   google: 'bg-[#4285F4] text-white hover:bg-[#3869c1] focus:bg-[#3869c1]',

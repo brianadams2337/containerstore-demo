@@ -56,7 +56,13 @@
 import { reactive } from 'vue'
 import type { Gender } from '@scayle/storefront-nuxt'
 import useVuelidate from '@vuelidate/core'
+import SalutationSelect from './SalutationSelect.vue'
 import { useAuthentication, useValidationRules } from '~/composables'
+import {
+  SFButton,
+  SFTextInput,
+  SFValidatedInputGroup,
+} from '#storefront-ui/components'
 
 const { guestLogin, isSubmitting } = useAuthentication('guest_login')
 const validationRules = useValidationRules()

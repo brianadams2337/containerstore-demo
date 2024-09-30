@@ -8,7 +8,7 @@
             'bg-green-neon': selectedStoreData.available,
             'bg-red': !selectedStoreData.available,
           }"
-        ></div>
+        />
         <div class="flex flex-col">
           <div class="font-bold">
             {{
@@ -50,7 +50,8 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue'
 import { useStoreLocator } from '#omnichannel/composables'
-import { useSlideIn } from '~/modules/ui/runtime/composables/useSlideIn'
+import { useSlideIn } from '#storefront-ui/composables'
+import { SFButton } from '#storefront-ui/components'
 
 interface Props {
   selectedStoreId: number | undefined

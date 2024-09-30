@@ -14,6 +14,8 @@ import { defineOptions, onMounted } from 'vue'
 import useSubscriptionWebComponent from '../composables/useSubscriptionWebComponent'
 import { useCurrentShop } from '#storefront/composables'
 import { definePageMeta } from '#imports'
+// TODO: This needs to be decoupled from the Subscription module as it is coming from the SFB local components
+import PageContent from '~/components/layout/PageContent.vue'
 
 const currentShop = useCurrentShop()
 const shopId = currentShop.value.shopId

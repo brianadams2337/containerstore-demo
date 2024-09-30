@@ -210,6 +210,11 @@
 <script setup lang="ts">
 import { computed, ref, toRef } from 'vue'
 import type { BasketItem } from '@scayle/storefront-nuxt'
+import AddOnItems from '../addOns/AddOnItems.vue'
+import BasketCardDetail from './BasketCardDetail.vue'
+import BasketCardConfirmDelete from './BasketCardConfirmDelete.vue'
+import BasketCardAction from './BasketCardAction.vue'
+import ProductPromotionFreeGiftBadge from '~/components/product/promotion/gifts/ProductPromotionFreeGiftBadge.vue'
 import { useRoute } from '#app/composables/router'
 import { useNuxtApp } from '#app'
 import { useFormatHelpers, useWishlist } from '#storefront/composables'
@@ -224,6 +229,13 @@ import {
 } from '~/composables'
 import { getBackgroundColorStyle, getTextColorStyle, routeList } from '~/utils'
 import { AlphaColorMap } from '~/constants'
+import {
+  SFFadeInTransition,
+  SFLink,
+  SFDropdown,
+} from '#storefront-ui/components'
+import ProductImage from '~/components/product/ProductImage.vue'
+import ProductCardBadgesFooter from '~/components/product/card/badges/ProductCardBadgesFooter.vue'
 
 type Props = {
   index: number

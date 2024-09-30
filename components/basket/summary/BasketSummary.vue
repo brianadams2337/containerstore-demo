@@ -36,6 +36,8 @@
 </template>
 
 <script lang="ts" setup>
+import BasketSummarySellingPoints from './BasketSummarySellingPoints.vue'
+import BasketSummaryDetails from './BasketSummaryDetails.vue'
 import { routeList } from '~/utils/route'
 import { BasketListingMetadata } from '~/constants/listingMetadata'
 import {
@@ -44,6 +46,12 @@ import {
   useTrackingEvents,
 } from '~/composables'
 import { useBasket, useUser } from '#storefront/composables'
+import PromotionHurryToSaveBanners from '~/components/promotion/PromotionHurryToSaveBanners.vue'
+import {
+  SFButton,
+  SFFadeInTransition,
+  SFHeadline,
+} from '#storefront-ui/components'
 
 const basket = await useBasket()
 const { isLoggedIn } = await useUser()

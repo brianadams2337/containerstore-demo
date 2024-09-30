@@ -61,6 +61,12 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import type { OrderSummary } from '@scayle/storefront-nuxt'
+import PageContent from '../layout/PageContent.vue'
+import AsyncDataWrapper from '../AsyncDataWrapper.vue'
+import OrderOverviewHeader from '../order/OrderOverviewHeader.vue'
+import OrderHistoryItem from '../order/OrderHistoryItem.vue'
+import AccountHeader from './AccountHeader.vue'
+import OrderListSkeletonLoader from './OrderListSkeletonLoader.vue'
 import { BasketListingMetadata } from '~/constants/listingMetadata'
 import {
   useDefaultBreakpoints,
@@ -68,6 +74,7 @@ import {
   useTrackingEvents,
   wishlistListingMetadata,
 } from '~/composables'
+import { SFSimplePagination, SFLink } from '#storefront-ui/components'
 import { useBasket, useUser, useWishlist } from '#storefront/composables'
 import { useRoute } from '#app/composables/router'
 import { routeList } from '~/utils/route'

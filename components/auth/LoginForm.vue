@@ -67,6 +67,7 @@
 <script setup lang="ts">
 import { computed, reactive } from 'vue'
 import useVuelidate from '@vuelidate/core'
+import IDPForm from './IDPForm.vue'
 import {
   useAuthentication,
   useLastLoggedInUser,
@@ -75,6 +76,12 @@ import {
 import { useIDP } from '#storefront/composables'
 import { useRoute } from '#app/composables/router'
 import { routeList } from '~/utils/route'
+import {
+  SFButton,
+  SFTextInput,
+  SFValidatedInputGroup,
+  SFLink,
+} from '#storefront-ui/components'
 
 const route = useRoute()
 

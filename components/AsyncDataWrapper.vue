@@ -9,7 +9,5 @@
 <script setup lang="ts">
 import type { AsyncDataRequestStatus } from '#app'
 
-defineProps<{
-  status: AsyncDataRequestStatus
-}>()
+defineProps<{ status: AsyncDataRequestStatus }>()
 </script>

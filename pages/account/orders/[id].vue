@@ -39,6 +39,12 @@ import { computed, defineOptions } from 'vue'
 import { definePageMeta } from '#imports'
 import { useOrderDetails } from '~/composables/useOrderDetails'
 import { useRoute } from '#app/composables/router'
+import PageContent from '~/components/layout/PageContent.vue'
+import OrderLoadingState from '~/components/order/OrderLoadingState.vue'
+import AddressSummary from '~/components/order/summary/AddressSummary.vue'
+import OrderItems from '~/components/order/OrderItems.vue'
+import OrderHeader from '~/components/order/OrderHeader.vue'
+import PaymentSummary from '~/components/order/summary/PaymentSummary.vue'
 
 const route = useRoute()
 const paramId = computed(() => +route.params.id)

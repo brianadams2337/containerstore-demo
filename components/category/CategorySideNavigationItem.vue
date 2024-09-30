@@ -23,6 +23,7 @@
 <script setup lang="ts">
 import type { Category } from '@scayle/storefront-nuxt'
 import { useRouteHelpers } from '~/composables'
+import { SFLink } from '#storefront-ui/components'
 
 const props = defineProps<{
   category: Category

@@ -54,6 +54,13 @@ import { computed } from 'vue'
 import { useSwitchLocalePath } from '#i18n'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
 import { useAvailableShops, useCurrentShop } from '#storefront/composables'
+import {
+  SFButton,
+  SFListbox,
+  SFListboxOption,
+  SFListboxOptions,
+  SFListboxButton,
+} from '#storefront-ui/components'
 
 const currentShop = useCurrentShop()
 const availableShops = useAvailableShops()

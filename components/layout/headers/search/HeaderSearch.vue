@@ -65,6 +65,12 @@ import { computed, ref, watch, watchEffect } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import type { SearchEntity } from '@scayle/storefront-nuxt'
 import { useSearchData, useTrackingEvents } from '~/composables'
+import {
+  SFButton,
+  SFFlyout,
+  SFFadeInTransition,
+} from '#storefront-ui/components'
+import SearchResultsContainer from '~/components/search/SearchResultsContainer.vue'
 
 const {
   debouncedSearch,
@@ -76,8 +82,9 @@ const {
 
 const { trackSearchSuggestionClick } = useTrackingEvents()
 
-const suggestionsFlyout = ref<HTMLElement | null>(null)
-const input = ref<HTMLElement | null>(null)
+const suggestionsFlyout = ref<HTMLElement>()
+const input = ref<HTMLElement>()
+
 const showSuggestions = ref(false)
 const inputActive = ref(false)
 

@@ -13,6 +13,7 @@
 
 <script setup lang="ts">
 import { useListbox } from '#storefront-ui'
+import { SFButton } from '#storefront-ui/components'
 
 type Props = {
   listName: string

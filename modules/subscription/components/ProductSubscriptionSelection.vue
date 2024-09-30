@@ -78,6 +78,7 @@ import type { Product, Variant } from '@scayle/storefront-nuxt'
 import { useSubscription } from '../composables/useSubscription'
 import type { PreferredDeliveryDate } from '../helpers/subscription'
 import type { AddToBasketItem } from '~/composables'
+import { SFButton, SFDropdown } from '#storefront-ui/components'
 
 type Props = {
   product: Product

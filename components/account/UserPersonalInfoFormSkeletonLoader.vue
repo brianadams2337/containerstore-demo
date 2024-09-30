@@ -1,7 +1,11 @@
 <template>
   <div class="w-full space-y-6">
     <SFSkeletonLoader />
-    <SFSkeletonLoader v-for="i in formElementCount" :key="i" full-width />
+    <SFSkeletonLoader
+      v-for="index in formElementCount"
+      :key="index"
+      full-width
+    />
     <div class="flex w-full justify-center pt-4">
       <SFSkeletonLoader />
     </div>
@@ -9,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
-  formElementCount: number
-}>()
+import { SFSkeletonLoader } from '#storefront-ui/components'
+
+defineProps<{ formElementCount: number }>()
 </script>

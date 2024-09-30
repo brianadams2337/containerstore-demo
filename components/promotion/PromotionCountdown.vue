@@ -28,7 +28,12 @@
 
 <script setup lang="ts">
 import { COUNTDOWN_LOADER_UNITS } from '~/constants'
-import { SFCountdown, SFFadeInTransition, SFSkeletonLoader } from '#components'
+import {
+  SFCountdown,
+  SFFadeInTransition,
+  SFSkeletonLoader,
+} from '#storefront-ui/components'
+import { ClientOnly } from '#components'
 
 type Props = {
   timeUntil: string

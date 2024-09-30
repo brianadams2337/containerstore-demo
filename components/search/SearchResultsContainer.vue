@@ -36,7 +36,10 @@
 
 <script setup lang="ts">
 import type { SearchEntity } from '@scayle/storefront-nuxt'
+import SearchResultSkeleton from './SearchResultSkeleton.vue'
+import SearchResults from './SearchResults.vue'
 import { useRouteHelpers, useSearchData } from '~/composables'
+import { SFLink, SFFadeInTransition } from '#storefront-ui/components'
 
 const emit = defineEmits<{
   close: []

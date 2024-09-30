@@ -62,6 +62,12 @@
 <script setup lang="ts">
 import { onBeforeUnmount, watch } from 'vue'
 import type { SearchEntity } from '@scayle/storefront-nuxt'
+import MobileSearchInput from '../headers/search/MobileSearchInput.vue'
+import MobileSidebarAccountContent from './MobileSidebarAccountContent.vue'
+import MobileSideNavigation from './MobileSideNavigation.vue'
+import SearchResults from '~/components/search/SearchResults.vue'
+import EmptyState from '~/components/EmptyState.vue'
+import SearchResultSkeleton from '~/components/search/SearchResultSkeleton.vue'
 import {
   useDefaultBreakpoints,
   useMobileSearch,
@@ -71,6 +77,11 @@ import {
   useSideNavigation,
   useTrackingEvents,
 } from '~/composables'
+import {
+  SFFadeInTransition,
+  SFSlideInFromLeftTransition,
+  SFLink,
+} from '#storefront-ui/components'
 
 const { getSearchRoute } = useRouteHelpers()
 

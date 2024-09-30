@@ -69,6 +69,8 @@ import {
 } from '@scayle/storefront-nuxt'
 import { useFormatHelpers } from '#storefront/composables'
 import { useRouteHelpers } from '~/composables/useRouteHelpers'
+import { SFLink } from '#storefront-ui/components'
+import { NuxtImg } from '#components'
 
 type Props = {
   product: OrderProduct

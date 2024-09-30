@@ -52,7 +52,6 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { PropType } from 'vue'
 import {
   type AttributeGroup,
   type Attributes,
@@ -60,25 +59,16 @@ import {
   getTotalAppliedReductions,
 } from '@scayle/storefront-nuxt'
 import { useFormatHelpers } from '#storefront/composables'
+import { NuxtImg } from '#components'
 
-const props = defineProps({
-  product: {
-    type: Object as PropType<OrderProduct>,
-    default: () => ({}),
-  },
-  variant: {
-    type: Object as PropType<OrderVariant>,
-    default: null,
-  },
-  price: {
-    type: Object as PropType<OrderPrice>,
-    required: true,
-  },
-  quantity: {
-    type: Number,
-    default: 1,
-  },
-})
+type Props = {
+  product: OrderProduct
+  variant: OrderVariant
+  quantity?: number
+  price: OrderPrice
+}
+
+const props = withDefaults(defineProps<Props>(), { quantity: 1 })
 
 const { formatCurrency } = useFormatHelpers()
 

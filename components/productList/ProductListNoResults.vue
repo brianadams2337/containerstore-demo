@@ -43,6 +43,7 @@
 import { toRef } from 'vue'
 import type { Category } from '@scayle/storefront-nuxt'
 import { useRouteHelpers, useFilter, useAppliedFilters } from '~/composables'
+import { SFButton, SFHeadline } from '#storefront-ui/components'
 
 const props = withDefaults(defineProps<{ category?: Category }>(), {
   category: undefined,

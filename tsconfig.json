@@ -2,6 +2,11 @@
   "extends": "./.nuxt/tsconfig.json",
   "exclude": ["./playwright/**/*"],
   "compilerOptions": {
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "plugins": [
+      {
+        "name": "@vue/typescript-plugin"
+      }
+    ]
   }
 }

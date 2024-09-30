@@ -31,9 +31,11 @@ import {
   Navigation as SwiperNavigation,
   Pagination as SwiperPagination,
 } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/vue'
 import { useContentfulMargins } from '../composables/useContentfulMargins'
 import type { CMSSlideShowProps } from '../types'
 import CMSSlide from './Slide.vue'
+import { SFHeadline } from '#storefront-ui/components'
 
 const props = defineProps<CMSSlideShowProps>()
 

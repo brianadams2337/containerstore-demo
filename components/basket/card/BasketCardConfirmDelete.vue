@@ -47,6 +47,9 @@
 </template>
 
 <script setup lang="ts">
+import { SFButton, SFHeadline } from '#storefront-ui/components'
+import { NuxtImg } from '#components'
+
 defineProps<{ name: string; imageHash: string }>()
 
 const emit = defineEmits<{

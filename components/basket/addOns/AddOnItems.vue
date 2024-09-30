@@ -29,20 +29,18 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import type { PropType } from 'vue'
 import type { BasketItem } from '@scayle/storefront-nuxt'
+import BasketCardDetail from '../card/BasketCardDetail.vue'
+import AddOnItem from './AddOnItem.vue'
 import { useFormatHelpers } from '#storefront/composables'
+import { SFFadeInTransition } from '#storefront-ui/components'
 
-const props = defineProps({
-  items: {
-    type: Array as PropType<BasketItem[]>,
-    required: true,
-  },
-  sizeMode: {
-    type: String as PropType<'md' | 'sm'>,
-    default: 'md',
-  },
-})
+type Props = {
+  items: BasketItem[]
+  sizeMode?: 'md' | 'sm'
+}
+
+const props = withDefaults(defineProps<Props>(), { sizeMode: 'md' })
 
 const { formatCurrency } = useFormatHelpers()
 

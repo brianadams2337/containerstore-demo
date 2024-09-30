@@ -110,9 +110,13 @@
 
 <script setup lang="ts">
 import type { CentAmount, ProductSearchQuery } from '@scayle/storefront-nuxt'
+import SortSelection from '../sorting/SortSelection.vue'
+import FilterColorChip from './FilterColorChip.vue'
+import FilterGroup from './FilterGroup.vue'
 import type { FilterItemWithValues } from '~/types/filter'
 import type { RangeTuple } from '#storefront-ui/components/form/RangeSlider.vue'
 import { getColorCodeById } from '~/utils'
+import { SFCheckbox, SFChip, SFRangeSlider } from '#storefront-ui/components'
 
 type Props = {
   availableFilters: FilterItemWithValues[]

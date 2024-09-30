@@ -83,12 +83,18 @@ import {
 } from 'vue'
 import { usePinch, useDrag } from '@vueuse/gesture'
 import { useEventListener } from '@vueuse/core'
-import type { ProductImage } from '@scayle/storefront-core'
-import { SFItemsSlider } from '#components'
+import type { ProductImage as ProductImageType } from '@scayle/storefront-core'
+import ProductImage from '../../ProductImage.vue'
+import ProductCardImageSliderButton from '../../card/imageSlider/ProductCardImageSliderButton.vue'
+import {
+  SFItemsSlider,
+  SFModal,
+  SFFadeInTransition,
+} from '#storefront-ui/components'
 
 type Props = {
   alt: string
-  images: ProductImage[]
+  images: ProductImageType[]
   startIndex?: number
 }
 

@@ -16,6 +16,7 @@
 <script setup lang="ts">
 import type { ErrorObject } from '@vuelidate/core'
 import { computed } from 'vue'
+import { SFFadeInFromBottomTransition } from '#storefront-ui/components'
 
 type Errors = ErrorObject[] | string[]
 

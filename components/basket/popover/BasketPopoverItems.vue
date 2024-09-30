@@ -35,6 +35,7 @@
 <script setup lang="ts">
 import { computed, ref, watchPostEffect } from 'vue'
 import type { BasketItem } from '@scayle/storefront-nuxt'
+import BasketPopoverCard from './card/BasketPopoverCard.vue'
 import {
   bundleBasketItemsByGroup,
   getPartitionedBasketItems,

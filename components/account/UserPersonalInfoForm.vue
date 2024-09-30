@@ -83,10 +83,18 @@
 import { computed, reactive, ref, watch } from 'vue'
 import { formatDate, getPayloadDate } from '@scayle/storefront-nuxt'
 import useVuelidate from '@vuelidate/core'
+import AsyncDataWrapper from '../AsyncDataWrapper.vue'
+import UserPersonalInfoFormSkeletonLoader from './UserPersonalInfoFormSkeletonLoader.vue'
 import { dateOfBirthFormats } from '~/constants/mask'
 import { useToast, useValidationRules } from '~/composables'
 import { useCurrentShop, useUser } from '#storefront/composables'
 import { useNuxtApp } from '#app'
+import {
+  SFButton,
+  SFValidatedInputGroup,
+  SFTextInput,
+  SFRadioGroup,
+} from '#storefront-ui/components'
 
 const { user, updateUser, status } = useUser()
 

@@ -23,6 +23,8 @@
 
 <script setup lang="ts">
 import type { RouteLocationRaw } from '#vue-router'
+import { SFLink } from '#storefront-ui/components'
+import { NuxtImg } from '#components'
 
 type Props = {
   imageUrl?: string

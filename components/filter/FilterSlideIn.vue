@@ -28,7 +28,11 @@
 
 <script setup lang="ts">
 import { toRefs } from 'vue'
+import FilterSlideInContent from './FilterSlideInContent.vue'
+import FilterActions from './FilterActions.vue'
+import FilterHeader from './FilterHeader.vue'
 import { useAppliedFilters, useFilter } from '~/composables'
+import { SFSlideIn } from '#storefront-ui/components'
 
 const props = defineProps<{ currentCategoryId?: number }>()
 

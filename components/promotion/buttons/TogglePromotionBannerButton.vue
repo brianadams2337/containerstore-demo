@@ -32,6 +32,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useCurrentPromotion, usePromotionActions } from '~/composables'
+import { SFButton } from '#storefront-ui/components'
 
 const props = withDefaults(defineProps<{ isMobileView?: boolean }>(), {
   isMobileView: false,

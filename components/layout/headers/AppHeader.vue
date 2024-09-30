@@ -44,6 +44,8 @@
 </template>
 
 <script setup lang="ts">
+import CategoryFlyout from './CategoryFlyout.vue'
+import NavigationFlyout from './NavigationFlyout.vue'
 import { routeList } from '~/utils/route'
 import { useLink } from '#vue-router'
 import {
@@ -52,6 +54,10 @@ import {
   useRouteHelpers,
   useSideNavigation,
 } from '~/composables'
+import AppLogo from '~/components/AppLogo.vue'
+import HeaderMainMenu from '~/components/layout/headers/HeaderMainMenu.vue'
+import HeaderSubNavigation from '~/components/layout/headers/HeaderSubNavigation.vue'
+import { SFButton, SFFlyoutMenu } from '#storefront-ui/components'
 
 const { isFlyoutMenuOpen, closeFlyoutMenu } = useFlyouts()
 

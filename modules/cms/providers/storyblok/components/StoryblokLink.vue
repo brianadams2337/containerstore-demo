@@ -12,6 +12,7 @@ import { computed, defineOptions } from 'vue'
 import type { CMSStoryblokLink } from '../types'
 import { useStoryblokHelpers } from '../composables/useStoryblokHelpers'
 import { type LinkList, routeList } from '~/utils/route'
+import { SFLink } from '#storefront-ui/components'
 
 const props = withDefaults(defineProps<CMSStoryblokLink>(), { target: '_self' })
 

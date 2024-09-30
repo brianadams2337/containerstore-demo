@@ -25,6 +25,7 @@
 
 <script setup lang="ts">
 import { useNotification } from '#storefront-ui'
+import { SFToast } from '#storefront-ui/components'
 
 const { notifications } = useNotification()
 </script>

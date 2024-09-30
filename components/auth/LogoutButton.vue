@@ -6,6 +6,7 @@
 
 <script setup lang="ts">
 import { useAuthentication } from '~/composables/useAuthentication'
+import { SFButton } from '#storefront-ui/components'
 
 const { logout, isSubmitting } = useAuthentication('logout')
 </script>

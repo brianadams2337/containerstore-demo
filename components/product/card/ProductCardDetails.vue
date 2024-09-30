@@ -36,6 +36,8 @@
 <script setup lang="ts">
 import type { Product } from '@scayle/storefront-nuxt'
 import { computed } from 'vue'
+import ProductPrice from '../ProductPrice.vue'
+import ProductCardSiblingsPicker from './siblings/ProductCardSiblingsPicker.vue'
 import { useProductBaseInfo, useProductPromotions } from '~/composables'
 
 const props = defineProps<{ product: Product }>()

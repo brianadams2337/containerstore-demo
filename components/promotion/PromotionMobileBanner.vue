@@ -68,6 +68,14 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import PromotionMobileList from './list/PromotionMobileList.vue'
+import PromotionFullProgressLabel from './progress/PromotionFullProgressLabel.vue'
+import AutomaticDiscountMobileHeadline from './headlines/AutomaticDiscountMobileHeadline.vue'
+import PromotionHeadline from './headlines/PromotionHeadline.vue'
+import PromotionCountdown from './PromotionCountdown.vue'
+import ShowDealsButton from './buttons/ShowDealsButton.vue'
+import PromotionProgress from './progress/PromotionProgress.vue'
+import TogglePromotionBannerButton from './buttons/TogglePromotionBannerButton.vue'
 import {
   useCurrentPromotion,
   usePromotionActions,

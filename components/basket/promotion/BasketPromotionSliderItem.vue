@@ -49,6 +49,10 @@ import {
   usePromotionGiftSelection,
   useRouteHelpers,
 } from '~/composables'
+import { SFHeadline, SFButton, SFLink } from '#storefront-ui/components'
+import ProductImage from '~/components/product/ProductImage.vue'
+import ProductPromotionFreeGiftBadge from '~/components/product/promotion/gifts/ProductPromotionFreeGiftBadge.vue'
+import ProductPromotionSelectionModal from '~/components/product/promotion/ProductPromotionSelectionModal.vue'
 
 type Props = {
   product: Product

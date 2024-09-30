@@ -549,12 +549,6 @@ export default defineNuxtConfig({
     autoImport: false,
   },
 
-  // Allow auto-import for vue components
-  // https://nuxt.com/docs/api/nuxt-config#components
-  components: [
-    { path: '~/components', pathPrefix: false, extensions: ['vue'] },
-  ],
-
   // https://nuxt.com/docs/api/nuxt-config#vue-1
   vue: {
     // https://nuxt.com/docs/api/nuxt-config#compileroptions-1

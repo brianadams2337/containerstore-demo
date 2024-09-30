@@ -67,6 +67,7 @@ import { computed } from 'vue'
 import { useRouteHelpers } from '~/composables/useRouteHelpers'
 import { useFlyouts } from '~/composables/useFlyouts'
 import { routeList } from '~/utils/route'
+import { SFLink, SFHeadline, SFTwoColumnList } from '#storefront-ui/components'
 
 const { closeFlyoutMenu, flyoutMenuCategory } = useFlyouts()
 const { buildCategoryPath } = useRouteHelpers()

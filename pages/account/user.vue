@@ -18,6 +18,10 @@ import { useSeoMeta } from '@unhead/vue'
 import { definePageMeta } from '#imports'
 import { useNuxtApp } from '#app'
 import { useUser } from '#storefront/composables'
+import UserPersonalInfoForm from '~/components/account/UserPersonalInfoForm.vue'
+import UpdatePasswordForm from '~/components/account/password/UpdatePasswordForm.vue'
+import AccountWrapper from '~/components/account/AccountWrapper.vue'
+import { SFHeadline } from '#storefront-ui/components'
 
 const { user } = useUser()
 

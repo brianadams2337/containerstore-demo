@@ -50,7 +50,11 @@ import type { Category } from '@scayle/storefront-nuxt'
 import { computed } from 'vue'
 import type { BreadcrumbItem } from '~/types/breadcrumbs'
 import { useBreadcrumbs } from '~/composables'
-import { SFLink } from '#components'
+import {
+  SFLink,
+  SFFadeInTransition,
+  SFHeadline,
+} from '#storefront-ui/components'
 import { showDividerTag } from '#storefront-ui'
 
 type Props = {

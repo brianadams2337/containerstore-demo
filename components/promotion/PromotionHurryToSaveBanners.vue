@@ -50,6 +50,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import PromotionCountdown from './PromotionCountdown.vue'
 import { routeList } from '~/utils/route'
 import { useLocalePath } from '#i18n'
 import { useRoute } from '#app/composables/router'
@@ -58,6 +59,7 @@ import {
   isAutomaticDiscountType,
   isBuyXGetYType,
 } from '~/utils/promotion'
+import { SFHeadline } from '#storefront-ui/components'
 
 type Props = {
   promotedProductId?: number

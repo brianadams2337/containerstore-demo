@@ -29,15 +29,9 @@
 </template>
 
 <script setup lang="ts">
-import type { PropType } from 'vue'
 import { useFormatHelpers } from '#storefront/composables'
 
-defineProps({
-  cost: {
-    type: Object as PropType<Order['cost']>,
-    required: true,
-  },
-})
+defineProps<{ cost: Order['cost'] }>()
 
 const { formatCurrency } = useFormatHelpers()
 </script>

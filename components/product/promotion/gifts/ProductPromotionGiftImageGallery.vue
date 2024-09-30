@@ -42,11 +42,15 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { ProductImage } from '@scayle/storefront-nuxt'
+import type { ProductImage as ProductImageType } from '@scayle/storefront-nuxt'
+import ProductImage from '../../ProductImage.vue'
+import Intersect from '~/components/Intersect.vue'
+import { SFItemsSlider } from '#storefront-ui/components'
 
-defineProps<{ images: ProductImage[] }>()
+defineProps<{ images: ProductImageType[] }>()
 
 const currentIndex = ref(0)
+
 const setActiveIndex = (index: number) => {
   currentIndex.value = index
 }

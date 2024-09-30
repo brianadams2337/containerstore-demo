@@ -42,6 +42,7 @@
 import { computed } from 'vue'
 import { useNuxtApp } from '#app'
 import { useFilterSlideIn } from '~/composables'
+import { SFButton } from '#storefront-ui/components'
 
 const props = defineProps<{
   unfilteredCount: number

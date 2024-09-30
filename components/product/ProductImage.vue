@@ -30,6 +30,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { ProductImage } from '@scayle/storefront-nuxt'
+import { NuxtPicture } from '#components'
 
 type Props = {
   image: ProductImage

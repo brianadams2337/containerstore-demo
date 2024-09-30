@@ -30,6 +30,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { BasketItem } from '@scayle/storefront-nuxt'
+import AddOnItems from '../../addOns/AddOnItems.vue'
+import BasketPopoverCardImage from './BasketPopoverCardImage.vue'
+import BasketPopoverCardBaseInfo from './BasketPopoverCardBaseInfo.vue'
+import BasketPopoverCardPrice from './BasketPopoverCardPrice.vue'
+import { SFLink } from '#storefront-ui/components'
 import { useBasketItem, useRouteHelpers } from '~/composables'
 
 type Props = {

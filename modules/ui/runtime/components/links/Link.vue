@@ -16,6 +16,7 @@ import { computed } from 'vue'
 import type { RouteLocationRaw } from '#vue-router'
 import { LinkVariant } from '#storefront-ui'
 import { useRouteHelpers } from '~/composables/useRouteHelpers'
+import { NuxtLink } from '#components'
 
 const LinkTypeClass = {
   [LinkVariant.LOUD]: 'font-bold',

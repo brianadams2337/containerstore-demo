@@ -18,6 +18,7 @@ import { computed } from 'vue'
 import type { Category } from '@scayle/storefront-nuxt'
 import { useRouteHelpers } from '~/composables'
 import { routeList } from '~/utils'
+import { SFButton } from '#storefront-ui/components'
 
 const props = defineProps<{ currentCategory: Category | null }>()
 

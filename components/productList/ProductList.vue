@@ -45,11 +45,15 @@ import type {
   FetchProductsByCategoryResponse,
   Category,
 } from '@scayle/storefront-nuxt'
+import ProductCardSkeleton from '../product/card/ProductCardSkeleton.vue'
+import ProductCard from '../product/card/ProductCard.vue'
+import ProductListNoResults from './ProductListNoResults.vue'
 import { useRowIntersection } from '~/composables'
 import {
   PRODUCT_CARD_SKELETON_LOADERS_SIZE,
   categoryListingMetaData,
 } from '~/constants'
+import { SFPagination } from '#storefront-ui/components'
 
 type Props = {
   products: Product[]

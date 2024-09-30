@@ -17,6 +17,8 @@
 
 <script setup lang="ts">
 import type { BasketItem, Product } from '@scayle/storefront-nuxt'
+import BasketPromotionSliderItem from './BasketPromotionSliderItem.vue'
+import { SFItemsSlider } from '#storefront-ui/components'
 
 type Props = {
   products?: Product[]

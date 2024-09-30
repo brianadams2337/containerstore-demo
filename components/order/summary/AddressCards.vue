@@ -10,28 +10,29 @@
         {{ label }}
       </SFHeadline>
       <AddressInformation
-        :address="name === 'shipping' ? shippingAddress : billingAddress"
+        v-if="shippingAddress || billingAddress"
+        :address="getAddress(name)"
       />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { PropType } from 'vue'
 import type { SummaryItem } from './AddressSummary.vue'
+import AddressInformation from './AddressInformation.vue'
+import { SFHeadline } from '#storefront-ui/components'
 
-defineProps({
-  items: {
-    type: Array as PropType<SummaryItem[]>,
-    required: true,
-  },
-  shippingAddress: {
-    type: Object as PropType<OrderAddress>,
-    default: null,
-  },
-  billingAddress: {
-    type: Object as PropType<OrderAddress>,
-    default: null,
-  },
-})
+type Props = {
+  items: SummaryItem[]
+  shippingAddress?: OrderAddress
+  billingAddress?: OrderAddress
+}
+
+const props = defineProps<Props>()
+
+const getAddress = (name: string) => {
+  const address =
+    name === 'shipping' ? props.shippingAddress : props.billingAddress
+  return address as OrderAddress
+}
 </script>

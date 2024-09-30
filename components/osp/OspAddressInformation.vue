@@ -14,6 +14,7 @@
 
 <script setup lang="ts">
 import { getFormattedLocaleAddresses } from '~/utils'
+import { SFHeadline } from '#storefront-ui/components'
 
 defineProps<{ address: OrderAddress }>()
 </script>

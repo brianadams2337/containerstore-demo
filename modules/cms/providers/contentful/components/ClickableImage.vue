@@ -28,6 +28,10 @@ import { isStringURL } from '../../../utils/helpers'
 import type { CMSClickableImageProps } from '../types'
 import { useContentfulMargins } from '../composables/useContentfulMargins'
 import { useContentfulImageSanitizer } from '../composables/useContentfulImage'
+import { NuxtImg } from '#components'
+import { SFLink } from '#storefront-ui/components'
+// TODO: This needs to be decoupled from the CMS module as it is coming from the SFB local components
+import Intersect from '~/components/Intersect.vue'
 
 const props = withDefaults(defineProps<CMSClickableImageProps>(), {
   sizes: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',

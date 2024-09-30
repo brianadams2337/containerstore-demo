@@ -23,11 +23,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
-type Props = {
-  title: string
-}
-
-defineProps<Props>()
+defineProps<{ title: string }>()
 
 const open = ref(false)
 const content = ref<HTMLDivElement>()

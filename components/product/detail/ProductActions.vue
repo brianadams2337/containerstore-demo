@@ -103,8 +103,16 @@
 import { defineModel, computed, ref, watch } from 'vue'
 import type { Product, Variant } from '@scayle/storefront-nuxt'
 import { useElementVisibility } from '@vueuse/core'
+import SiblingSelection from '../SiblingSelection.vue'
+import VariantPicker from '../VariantPicker.vue'
+import WishlistToggle from '../WishlistToggle.vue'
+import QuantityInput from './QuantityInput.vue'
+import FloatingContainer from '~/components/FloatingContainer.vue'
+import ScrollToTopButton from '~/components/ScrollToTopButton.vue'
+import { isProductSubscriptionEligible } from '#storefront-subscription/helpers/subscription'
+import { ProductSubscription } from '#storefront-subscription/components'
+import { SFButton } from '#storefront-ui/components'
 import { isAutomaticDiscountType } from '~/utils/promotion'
-import { isProductSubscriptionEligible } from '~/modules/subscription/helpers/subscription'
 import {
   useProductBaseInfo,
   useBasketActions,

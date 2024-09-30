@@ -81,8 +81,9 @@
 <script setup lang="ts">
 import type { Product } from '@scayle/storefront-nuxt'
 import { computed, ref, defineProps } from 'vue'
+import ProductImage from './ProductImage.vue'
 import { useRoute } from '#app/composables/router'
-import { SFItemsSlider, SFLink } from '#components'
+import { SFItemsSlider, SFLink, SFButton } from '#storefront-ui/components'
 import {
   usePageState,
   useProductBaseInfo,

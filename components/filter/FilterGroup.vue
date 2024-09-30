@@ -37,6 +37,8 @@
 </template>
 
 <script setup lang="ts">
+import { SFButton, SFHeadline } from '#storefront-ui/components'
+
 type Props = {
   label?: string
   resetLabel?: string
@@ -50,5 +52,5 @@ withDefaults(defineProps<Props>(), {
   showAction: false,
 })
 
-const emit = defineEmits<{ (e: 'click:reset'): void }>()
+const emit = defineEmits<{ 'click:reset': [] }>()
 </script>

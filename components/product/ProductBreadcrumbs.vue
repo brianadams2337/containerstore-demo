@@ -6,12 +6,7 @@
       ) in productCategories"
       :key="`breadcrumb-${categoryName}`"
       :data-testid="`category-breadcrumb-${index}`"
-      :to="
-        buildCategoryPath({
-          id: categoryId,
-          path: categoryUrl,
-        })
-      "
+      :to="buildCategoryPath({ id: categoryId, path: categoryUrl })"
       raw
       class="px-2"
       :class="{
@@ -24,22 +19,20 @@
     >
       <span
         class="text-md leading-none text-gray-500 transition-all hover:text-black"
-        >{{ categoryName }}</span
       >
+        {{ categoryName }}
+      </span>
     </SFLink>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { ProductCategory } from '@scayle/storefront-nuxt'
-import { SFLink } from '#components'
+import { SFLink } from '#storefront-ui/components'
 import { useRouteHelpers } from '~/composables'
 import { showDividerTag } from '#storefront-ui'
 
-type Props = {
-  productCategories: ProductCategory[]
-}
+defineProps<{ productCategories: ProductCategory[] }>()
 
-defineProps<Props>()
 const { buildCategoryPath } = useRouteHelpers()
 </script>

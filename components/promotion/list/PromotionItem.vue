@@ -19,6 +19,9 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import PromotionCard from '../PromotionCard.vue'
+import PromotionItemContent from './PromotionItemContent.vue'
+import PromotionItemTerms from './PromotionItemTerms.vue'
 import { usePromotionActions } from '~/composables'
 
 const { togglePromotionList } = usePromotionActions()
