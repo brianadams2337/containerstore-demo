@@ -1,74 +1,23 @@
-import { type ProductImage, getAttributeValue } from '@scayle/storefront-nuxt'
-
-export const getAttribute = (
-  image: ProductImage,
-  key: string,
-): string | undefined => {
-  const values = image.attributes?.[key]?.values
-  if (!values || Array.isArray(values)) {
-    return
-  }
-  return values.value
-}
+import type { ProductImage } from '@scayle/storefront-nuxt'
 
 export const getPrimaryImage = (images: ProductImage[]) => {
-  return images.find((image) => getAttribute(image, 'primaryImage'))
+  return images.find(isPrimaryImage) ?? images[0]
 }
 
-export const getImage = (
-  images: ProductImage[],
-  imageKind: string,
-  imageView: string,
-  imageViewOptional = false,
-) => {
-  return (
-    images.find(
-      (image: ProductImage) =>
-        getAttributeValue(image.attributes, 'imageKind') === imageKind &&
-        getAttributeValue(image.attributes, 'imageView') === imageView,
-    ) ||
-    (imageViewOptional &&
-      images.find(
-        (image: ProductImage) =>
-          getAttributeValue(image.attributes, 'imageKind') === imageKind,
-      )) ||
-    undefined
-  )
+const isPrimaryImage = (image: ProductImage) => {
+  return 'primaryImage' in (image.attributes ?? {})
 }
 
-const getBreakerImage = (
-  baseImages: ProductImage[],
-): ProductImage | undefined => {
-  return (
-    baseImages.find(
-      (image: ProductImage) =>
-        getAttributeValue(image.attributes, 'image1stView') ===
-        '1st_model_image',
-    ) || getImage(baseImages, 'model_image', 'front')
-  )
-}
-
-export const getFirstModelImage = (images: ProductImage[], index = 0) => {
-  const baseImages = images.filter(
-    (image: ProductImage) =>
-      getAttributeValue(image.attributes, 'imageBackground') === 'grey',
-  )
-
-  const needsBreakerImage = (index + 1) % 5 === 0
-
-  if (needsBreakerImage) {
-    const breakerImage = getBreakerImage(baseImages)
-    if (breakerImage) {
-      return breakerImage
+export const sortProductImages = (images: ProductImage[]) => {
+  return images.toSorted((imageA, imageB) => {
+    if (isPrimaryImage(imageB)) {
+      return 1
     }
-  }
 
-  return (
-    getImage(baseImages, 'modeloutfit_image', 'front') ||
-    getImage(baseImages, 'modeloutfit_image', 'front', true) ||
-    getImage(baseImages, 'model_image', 'front', true) ||
-    getImage(baseImages, 'bust_image', 'front', true) ||
-    baseImages[0] ||
-    images[0]
-  )
+    if (isPrimaryImage(imageA)) {
+      return -1
+    }
+
+    return 0
+  })
 }

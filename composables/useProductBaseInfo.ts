@@ -7,10 +7,11 @@ import { type MaybeRefOrGetter, toRef, computed } from 'vue'
 import { useRouteHelpers } from '~/composables'
 import {
   getLowestPriceBetweenVariants,
-  getPrimaryImage,
   getVariantWithLowestPrice,
   formatColors,
   getProductSiblings,
+  sortProductImages,
+  getPrimaryImage,
 } from '~/utils'
 import { useI18n } from '#i18n'
 import type { ProductSibling } from '~/types/siblings'
@@ -62,9 +63,20 @@ export function useProductBaseInfo(
       : undefined
   })
 
+  const images = computed(() => {
+    if (!product.value) {
+      return []
+    }
+
+    return sortProductImages(product.value.images)
+  })
+
   const image = computed(() => {
-    if (!product.value) return
-    return getPrimaryImage(product.value.images) ?? product.value.images[0]
+    if (!product.value) {
+      return
+    }
+
+    return getPrimaryImage(product.value.images)
   })
 
   const siblings = computed<ProductSibling[]>(() => {
@@ -118,6 +130,7 @@ export function useProductBaseInfo(
     lowestPriorPrice,
     colors,
     image,
+    images,
     siblings,
     nonSoldOutSiblings,
     link,

@@ -17,7 +17,7 @@
       />
     </template>
     <SFLink
-      v-for="(item, imageIndex) in productImages"
+      v-for="(item, imageIndex) in images"
       :key="item.hash"
       :to="link"
       raw
@@ -47,7 +47,6 @@ import { SFItemsSlider, SFLink } from '#storefront-ui/components'
 type Props = {
   link: string
   isProductHovered: boolean
-  image: ProductImageType
   alt: string
   images: ProductImageType[]
   productIndex: number
@@ -55,13 +54,8 @@ type Props = {
 
 const props = defineProps<Props>()
 
-const productImages = computed(() => {
-  const images = props.images.filter(({ hash }) => hash !== props.image.hash)
-  return [props.image, ...images]
-})
-
 const areArrowsShown = computed(() => {
-  return props.isProductHovered && productImages.value.length > 1
+  return props.isProductHovered && props.images.length > 1
 })
 
 const getImageLoading = (index: number) => {

@@ -273,58 +273,60 @@ describe('useProductBaseInfo', () => {
       expect(colors.value).toBeUndefined()
     })
   })
-  describe('image', () => {
-    it('should return the correct default value for image', () => {
-      const { image } = useProductBaseInfo(product)
 
-      expect(image.value).toStrictEqual({
-        hash: 'test image',
-      })
-    })
+  describe('images', () => {
+    it('should return an empty array when the product is undefined', () => {
+      const { images, image } = useProductBaseInfo(undefined)
 
-    it('should return the correct primary image', () => {
-      product.images.push({
-        hash: 'primary image',
-        attributes: {
-          primaryImage: {
-            id: 1,
-            key: 'primaryImage',
-            label: 'primaryImage',
-            type: 'string',
-            multiSelect: false,
-            values: {
-              label: 'Primary Image',
-              id: 101,
-              value: 'primary-image',
-            },
-          },
-        },
-      })
-      const { image } = useProductBaseInfo(product)
-
-      expect(image.value).toStrictEqual({
-        attributes: {
-          primaryImage: {
-            id: 1,
-            key: 'primaryImage',
-            label: 'primaryImage',
-            multiSelect: false,
-            type: 'string',
-            values: {
-              id: 101,
-              label: 'Primary Image',
-              value: 'primary-image',
-            },
-          },
-        },
-        hash: 'primary image',
-      })
-    })
-
-    it('should return undefined default value for image', () => {
-      const { image } = useProductBaseInfo(undefined)
-
+      expect(images.value).toStrictEqual([])
       expect(image.value).toBeUndefined()
+    })
+
+    it('should return the sorted images and the primary image of the product', () => {
+      const { images, image } = useProductBaseInfo({
+        images: [
+          {
+            hash: 'hash1',
+          },
+          {
+            hash: 'hash2',
+            attributes: {
+              primaryImage: {
+                key: 'primaryImage',
+              },
+            },
+          },
+          {
+            hash: 'hash3',
+          },
+        ],
+      } as Product)
+
+      expect(images.value).toStrictEqual([
+        {
+          hash: 'hash2',
+          attributes: {
+            primaryImage: {
+              key: 'primaryImage',
+            },
+          },
+        },
+        {
+          hash: 'hash1',
+        },
+        {
+          hash: 'hash3',
+        },
+      ])
+
+      expect(image.value).toStrictEqual({
+        hash: 'hash2',
+        attributes: {
+          primaryImage: {
+            key: 'primaryImage',
+          },
+        },
+      })
     })
   })
 

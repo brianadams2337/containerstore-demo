@@ -1,63 +1,162 @@
-import { it, describe } from 'vitest'
-import type { ProductImage } from '@scayle/storefront-nuxt'
-import { getPrimaryImage } from './image'
+import { it, describe, expect } from 'vitest'
+import type { AttributeGroupSingle } from '@scayle/storefront-nuxt'
+import { getPrimaryImage, sortProductImages } from './image'
+
+const primaryImage: AttributeGroupSingle = {
+  id: 7061,
+  key: 'primaryImage',
+  label: 'Primary Image',
+  multiSelect: false,
+  type: '',
+  values: {
+    id: 2433,
+    label: 'true',
+    value: 'true',
+  },
+}
 
 describe('getPrimaryImage', () => {
-  it('returns primary image if there is "primaryImage" attribute', ({
-    expect,
-  }) => {
-    const images: ProductImage[] = [
+  it('returns the first primary image', () => {
+    const image = getPrimaryImage([
       {
-        hash: 'images/fe8ee645c772b98de23b00e4f600a613.png',
+        hash: 'hash1',
+      },
+      {
+        hash: 'hash2',
         attributes: {
-          primaryImage: {
-            id: 7061,
-            key: 'primaryImage',
-            label: 'Primary Image',
-            multiSelect: false,
-            type: '',
-            values: {
-              id: 2433,
-              label: 'true',
-              value: 'true',
-            },
-          },
+          primaryImage,
         },
       },
-    ]
-
-    const image = getPrimaryImage(images)
+      {
+        hash: 'hash3',
+      },
+    ])
 
     expect(image).toEqual({
-      hash: 'images/fe8ee645c772b98de23b00e4f600a613.png',
+      hash: 'hash2',
       attributes: {
-        primaryImage: {
-          id: 7061,
-          key: 'primaryImage',
-          label: 'Primary Image',
-          multiSelect: false,
-          type: '',
-          values: {
-            id: 2433,
-            label: 'true',
-            value: 'true',
-          },
-        },
+        primaryImage,
       },
     })
   })
 
-  it('returns undefined if there is no "primaryImage" attribute', ({
-    expect,
-  }) => {
-    const images: ProductImage[] = [
+  it('returns the first image if no primary image exists', () => {
+    const image = getPrimaryImage([
       {
-        hash: 'images/fe8ee645c772b98de23b00e4f600a613.png',
-        attributes: {},
+        hash: 'hash1',
       },
-    ]
+      {
+        hash: 'hash2',
+      },
+      {
+        hash: 'hash3',
+      },
+    ])
 
-    const image = getPrimaryImage(images)
-    expect(image).toEqual(undefined)
+    expect(image).toEqual({ hash: 'hash1' })
+  })
+})
+
+describe('getSortedImages', () => {
+  it('should not change the sorting if no primary image exists', () => {
+    const images = sortProductImages([
+      {
+        hash: 'hash1',
+      },
+      {
+        hash: 'hash2',
+      },
+      {
+        hash: 'hash3',
+      },
+    ])
+
+    expect(images).toStrictEqual([
+      {
+        hash: 'hash1',
+      },
+      {
+        hash: 'hash2',
+      },
+      {
+        hash: 'hash3',
+      },
+    ])
+  })
+
+  it('should sort primary images to the front', () => {
+    const images = sortProductImages([
+      {
+        hash: 'hash1',
+      },
+      {
+        hash: 'hash2',
+        attributes: {
+          primaryImage,
+        },
+      },
+      {
+        hash: 'hash3',
+      },
+    ])
+
+    expect(images).toStrictEqual([
+      {
+        hash: 'hash2',
+        attributes: {
+          primaryImage,
+        },
+      },
+      {
+        hash: 'hash1',
+      },
+      {
+        hash: 'hash3',
+      },
+    ])
+  })
+
+  it('should handle images with multiple primary images', () => {
+    const images = sortProductImages([
+      {
+        hash: 'hash1',
+      },
+      {
+        hash: 'hash2',
+        attributes: {
+          primaryImage,
+        },
+      },
+      {
+        hash: 'hash3',
+      },
+      {
+        hash: 'hash4',
+        attributes: {
+          primaryImage,
+        },
+      },
+    ])
+
+    expect(images).toStrictEqual([
+      {
+        hash: 'hash2',
+        attributes: {
+          primaryImage,
+        },
+      },
+      {
+        hash: 'hash4',
+        attributes: {
+          primaryImage,
+        },
+      },
+      {
+        hash: 'hash1',
+      },
+      {
+        hash: 'hash3',
+      },
+    ])
   })
 })

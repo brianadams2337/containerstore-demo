@@ -9,7 +9,7 @@
         :style="{ height: `${mainImageHeight}px` }"
       >
         <div
-          v-for="(productThumbnail, index) in product.images"
+          v-for="(productThumbnail, index) in images"
           :key="productThumbnail.hash"
           :data-testid="`product-thumbnail-${index}`"
           class="my-2 aspect-3/4 w-24 shrink-0 cursor-pointer overflow-hidden rounded-md bg-gray-50 first:mt-0 last:mb-0"
@@ -46,13 +46,13 @@
       <SFItemsSlider
         id="image"
         ref="image"
-        :with-arrows="product.images.length > 1"
+        :with-arrows="images.length > 1"
         :slider-class="productImageSliderClass"
         data-testid="main-product-image"
         @update:active-slide="updateActiveSlide"
       >
         <ProductImage
-          v-for="(productImage, index) in product.images"
+          v-for="(productImage, index) in images"
           :key="productImage.hash"
           :image="productImage"
           :image-loading="index === 0 ? 'eager' : 'lazy'"
@@ -90,7 +90,7 @@
             class="absolute bottom-4 left-1/2 flex -translate-x-1/2 space-x-1 md:hidden"
           >
             <div
-              v-for="imageIndex in product.images.length"
+              v-for="imageIndex in images.length"
               :key="imageIndex"
               class="size-1 rounded-full bg-gray-300 transition-all duration-300"
               :class="{ 'w-3 !bg-black': imageIndex - 1 === activeSlide }"
@@ -111,7 +111,7 @@
     <ProductGalleryZoom
       v-model:visible="isZoomModalOpen"
       :alt="alt"
-      :images="product.images"
+      :images="images"
       :start-index="activeSlide"
       @close="isZoomModalOpen = false"
     />
@@ -154,5 +154,5 @@ const updateActiveSlide = (newSlide: number) => {
 
 const isZoomModalOpen = ref(false)
 
-const { alt } = useProductBaseInfo(props.product)
+const { alt, images } = useProductBaseInfo(props.product)
 </script>

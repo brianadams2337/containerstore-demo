@@ -56,6 +56,7 @@
 </template>
 
 <script setup lang="ts">
+import PaymentIcon from '../PaymentIcon.vue'
 import { useFormatHelpers } from '#storefront/composables'
 
 defineProps<{

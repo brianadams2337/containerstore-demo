@@ -48,7 +48,7 @@
 <script setup lang="ts">
 import type { ProductSearchSuggestion } from '@scayle/storefront-nuxt'
 import SearchResultItem from './SearchResultItem.vue'
-import { getFirstModelImage } from '~/utils/image'
+import { getPrimaryImage } from '~/utils/image'
 import { useRouteHelpers } from '~/composables/useRouteHelpers'
 import { useFormatHelpers } from '#storefront/composables'
 import { getSuggestionName } from '~/utils/search'
@@ -73,7 +73,7 @@ const getCategoryName = ({ productSuggestion }: ProductSearchSuggestion) => {
 
 const getImageUrl = ({ productSuggestion }: ProductSearchSuggestion) => {
   return props.showImages
-    ? getFirstModelImage(productSuggestion.product.images).hash
+    ? getPrimaryImage(productSuggestion.product.images)?.hash
     : ''
 }
 

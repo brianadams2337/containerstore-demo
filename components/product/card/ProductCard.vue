@@ -41,12 +41,11 @@
 
         <ProductCardImageSlider
           v-else
-          :image="image"
           :alt="alt"
           :link="link"
           :is-product-hovered="isProductHovered"
           :product-index="index"
-          :images="product.images"
+          :images="images"
           @click.capture="$emit('click:product')"
         />
       </template>
@@ -105,10 +104,10 @@ const onMouseLeave = () => {
   emit('product-image:mouseleave')
 }
 
-const { alt, image, link } = useProductBaseInfo(props.product)
+const { alt, image, images, link } = useProductBaseInfo(props.product)
 
 const shouldShowSingleImage = computed(() => {
-  return !props.multipleImages || props.product.images.length === 1
+  return !props.multipleImages || images.value.length === 1
 })
 
 const id = computed(() => `product-${props.product.id}`)

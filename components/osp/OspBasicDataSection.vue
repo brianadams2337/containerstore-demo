@@ -52,6 +52,7 @@ import OspDeliveryDate from './OspDeliveryDate.vue'
 import { useRouteHelpers } from '~/composables/useRouteHelpers'
 import { routeList } from '~/utils/route'
 import { SFHeadline, SFButton } from '#storefront-ui/components'
+import PaymentIcon from '~/components/order/PaymentIcon.vue'
 
 type Props = {
   orderData: Order
