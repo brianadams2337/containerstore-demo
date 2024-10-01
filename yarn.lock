@@ -3184,10 +3184,10 @@
   resolved "https://registry.yarnpkg.com/@storyblok/region-helper/-/region-helper-1.1.0.tgz#ce7274f578e1bd428e08766662a38ceffcba06ab"
   integrity sha512-2NU/GHeaS9vFtkZJk/mNH6E5HvrV3vT3AN/Wrl44L3lwLIfcK4E0orjgCi7gvl0N3Ul5E+y6vJAVjD3bmjSZVg==
 
-"@storyblok/richtext@2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@storyblok/richtext/-/richtext-2.0.1.tgz#0e81e9defb999058e5638091a3e88c54a14dae5a"
-  integrity sha512-IuUTz82MzAWKRHHP1yJ/mITfoi0vbcR4xWeBIwGiydTyKJ+I7p2qCOFioOOyzhJnAosQgDcATd1pRR+610hIOA==
+"@storyblok/richtext@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@storyblok/richtext/-/richtext-2.1.0.tgz#460dcd321951784d6bb748430796bb18ab71a2a5"
+  integrity sha512-hQoZ+mIMuNuFOgjikY8njA29LZ3PMcqINn2Dc4CH9BB+yyYFosiQuIi51CvYoTT/IuslG58FS0/js91/635UUQ==
   dependencies:
     consola "^3.2.3"
 

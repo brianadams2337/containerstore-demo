@@ -96,7 +96,7 @@
     "@scayle/omnichannel-nuxt": "4.0.0",
     "@scayle/storefront-nuxt": "7.85.10",
     "@storyblok/nuxt": "6.0.12",
-    "@storyblok/richtext": "2.0.1",
+    "@storyblok/richtext": "2.1.0",
     "@storyblok/vue": "8.1.2",
     "@tailwindcss/forms": "0.5.9",
     "@tailwindcss/typography": "0.5.15",
