@@ -4,12 +4,11 @@
       <div
         class="flex flex-col items-start gap-8 max-md:space-y-5 md:flex-row md:justify-start"
       >
-        <ProductGallery
-          v-if="product"
-          :product="product"
-          class="md:sticky md:top-8 md:max-w-[700px] md:shrink"
-          product-image-slider-class="md:max-w-[528px]"
-        />
+        <div
+          class="flex items-start max-md:w-full md:sticky md:top-8 md:max-w-[700px] md:shrink"
+        >
+          <ProductGallery v-if="product" :product="product" />
+        </div>
         <div class="flex w-full flex-col gap-4 md:max-w-[500px] md:shrink-[4]">
           <ProductBreadcrumbs
             v-if="longestCategoryList"
@@ -87,7 +86,7 @@
       />
     </div>
     <template #loading>
-      <SFSkeletonLoader />
+      <ProductDetailPageLoadingState />
     </template>
   </AsyncDataWrapper>
 </template>
@@ -125,11 +124,8 @@ import StoreVariantAvailability from '~/components/locator/StoreVariantAvailabil
 import ProductDetails from '~/components/product/ProductDetails.vue'
 import ProductRecommendations from '~/components/product/ProductRecommendations.vue'
 import { LazyLocatorStoreLocatorSlideIn } from '#components'
-import {
-  SFHeadline,
-  SFFadeInTransition,
-  SFSkeletonLoader,
-} from '#storefront-ui/components'
+import { SFHeadline, SFFadeInTransition } from '#storefront-ui/components'
+import ProductDetailPageLoadingState from '~/components/product/detail/ProductDetailPageLoadingState.vue'
 
 definePageMeta({
   validate(route) {

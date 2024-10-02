@@ -1,47 +1,44 @@
 <template>
-  <div class="flex items-start" data-testid="product-gallery">
-    <ClientOnly>
-      <SFItemsSlider
-        with-arrows
-        mode="vertical"
-        class="mr-4 w-24 shrink-0 max-md:hidden"
-        data-testid="product-thumbnails"
-        :style="{ height: `${mainImageHeight}px` }"
+  <div
+    class="grid w-full grid-cols-[fit-content(100%)_minmax(auto,_528px)] grid-rows-[fit-content(100%)] max-md:grid-cols-1 max-md:grid-rows-1"
+    data-testid="product-gallery"
+  >
+    <SFItemsSlider
+      with-arrows
+      mode="vertical"
+      class="mr-4 w-24 shrink-0 max-md:hidden"
+      data-testid="product-thumbnails"
+    >
+      <div
+        v-for="(productThumbnail, index) in images"
+        :key="productThumbnail.hash"
+        :data-testid="`product-thumbnail-${index}`"
+        class="my-2 aspect-3/4 w-24 shrink-0 cursor-pointer overflow-hidden rounded-md bg-gray-50 first:mt-0 last:mb-0"
+        :class="index === activeSlide ? 'bg-gray-900/10' : 'bg-gray-50'"
+        @mouseenter="scrollImageIntoView(index)"
+        @click="isZoomModalOpen = true"
       >
-        <div
-          v-for="(productThumbnail, index) in images"
-          :key="productThumbnail.hash"
-          :data-testid="`product-thumbnail-${index}`"
-          class="my-2 aspect-3/4 w-24 shrink-0 cursor-pointer overflow-hidden rounded-md bg-gray-50 first:mt-0 last:mb-0"
-          :class="index === activeSlide ? 'bg-gray-900/10' : 'bg-gray-50'"
-          @mouseenter="scrollImageIntoView(index)"
-          @click="isZoomModalOpen = true"
+        <ProductImage :image="productThumbnail" :alt="alt" sizes="96px" />
+      </div>
+      <template #prev-button="{ prev, isPrevEnabled }">
+        <button
+          class="absolute left-1/2 top-2 size-8 -translate-x-1/2 rounded-md bg-white/85 p-1 text-gray-400 hover:text-gray-900 disabled:hidden"
+          :disabled="!isPrevEnabled"
+          @click="prev()"
         >
-          <ProductImage :image="productThumbnail" :alt="alt" sizes="96px" />
-        </div>
-        <template #prev-button="{ prev, isPrevEnabled }">
-          <button
-            class="absolute left-1/2 top-2 size-8 -translate-x-1/2 rounded-md bg-white/85 p-1 text-gray-400 hover:text-gray-900 disabled:hidden"
-            :disabled="!isPrevEnabled"
-            @click="prev()"
-          >
-            <IconChevronUp class="size-6 p-0.5" />
-          </button>
-        </template>
-        <template #next-button="{ next, isNextEnabled }">
-          <button
-            class="absolute bottom-2 left-1/2 size-8 -translate-x-1/2 rounded-md bg-white/85 p-1 text-gray-400 hover:text-gray-900 disabled:hidden"
-            :disabled="!isNextEnabled"
-            @click="next()"
-          >
-            <IconChevronDown class="size-6 p-0.5" />
-          </button>
-        </template>
-      </SFItemsSlider>
-      <template #fallback>
-        <div class="mr-4 w-24 shrink-0 max-md:hidden" />
+          <IconChevronUp class="size-6 p-0.5" />
+        </button>
       </template>
-    </ClientOnly>
+      <template #next-button="{ next, isNextEnabled }">
+        <button
+          class="absolute bottom-2 left-1/2 size-8 -translate-x-1/2 rounded-md bg-white/85 p-1 text-gray-400 hover:text-gray-900 disabled:hidden"
+          :disabled="!isNextEnabled"
+          @click="next()"
+        >
+          <IconChevronDown class="size-6 p-0.5" />
+        </button>
+      </template>
+    </SFItemsSlider>
     <div class="relative">
       <SFItemsSlider
         id="image"
@@ -108,19 +105,18 @@
       />
       <SFGoBackLink class="left-5 top-5 md:hidden" use-window-history />
     </div>
-    <ProductGalleryZoom
-      v-model:visible="isZoomModalOpen"
-      :alt="alt"
-      :images="images"
-      :start-index="activeSlide"
-      @close="isZoomModalOpen = false"
-    />
   </div>
+  <ProductGalleryZoom
+    v-model:visible="isZoomModalOpen"
+    :alt="alt"
+    :images="images"
+    :start-index="activeSlide"
+    @close="isZoomModalOpen = false"
+  />
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useElementSize } from '@vueuse/core'
 import type { Product } from '@scayle/storefront-nuxt'
 import WishlistToggle from '../../WishlistToggle.vue'
 import ProductBadges from '../../card/ProductBadges.vue'
@@ -132,7 +128,6 @@ import {
   SFGoBackLink,
 } from '#storefront-ui/components'
 import { useProductBaseInfo } from '~/composables'
-import { ClientOnly } from '#components'
 
 const props = defineProps<{
   product: Product
@@ -146,7 +141,6 @@ const scrollImageIntoView = (index: number) => {
   activeSlide.value = index
 }
 
-const { height: mainImageHeight } = useElementSize(image)
 const activeSlide = ref(0)
 const updateActiveSlide = (newSlide: number) => {
   activeSlide.value = Number.isFinite(newSlide) ? newSlide : 0
