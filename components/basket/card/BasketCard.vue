@@ -96,7 +96,7 @@
                   "
                 >
                   <span
-                    class="p-1 text-xs leading-[1.125rem] text-secondary line-through"
+                    class="p-1 text-xs leading-5 text-secondary line-through"
                     data-testid="basket-card-original-price"
                   >
                     {{ formatCurrency(price + reducedPrice) }}
@@ -104,13 +104,16 @@
                   <span
                     v-if="hasSaleReduction(item)"
                     class="p-1 text-base leading-5 text-red"
-                    :class="{
-                      'text-xs leading-[1.125rem] text-secondary line-through':
-                        hasPromotionReduction(item),
-                    }"
                     data-testid="basket-card-price-sale"
                   >
                     {{ formatCurrency(getItemSaleReductionPrice(item)) }}
+                  </span>
+                  <span
+                    v-else-if="hasCampaignReduction(item)"
+                    class="p-1 text-base leading-5 text-red"
+                    data-testid="basket-card-price-campaign"
+                  >
+                    {{ formatCurrency(getItemCampaignReductionPrice(item)) }}
                   </span>
                 </div>
                 <span
@@ -253,15 +256,30 @@ const getItemSaleReductionPrice = (item?: BasketItem) => {
     return 0
   }
 
-  const itemTotalSalePrice = getBasketItemSalePrice(item)
+  const itemTotalSalePrice = getBasketItemPrice(item, 'sale')
+  const totalWithReduction = price.value + (reducedPrice.value ?? 0)
+
+  return totalWithReduction + -itemTotalSalePrice
+}
+
+const getItemCampaignReductionPrice = (item?: BasketItem) => {
+  if (!item) {
+    return 0
+  }
+
+  const itemTotalSalePrice = getBasketItemPrice(item, 'campaign')
   const totalWithReduction = price.value + (reducedPrice.value ?? 0)
 
   return totalWithReduction + -itemTotalSalePrice
 }
 
 const { formatCurrency } = useFormatHelpers()
-const { hasSaleReduction, hasPromotionReduction, getBasketItemSalePrice } =
-  useBasketReductions()
+const {
+  hasSaleReduction,
+  hasPromotionReduction,
+  getBasketItemPrice,
+  hasCampaignReduction,
+} = useBasketReductions()
 const { getProductDetailRoute } = useRouteHelpers()
 const mainItem = computed(() => {
   const basketItem = props.itemsGroup

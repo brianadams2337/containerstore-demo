@@ -39,14 +39,27 @@ export function useBasketReductions() {
       return false
     }
 
-    return item.price.total.appliedReductions.some(
-      ({ category }) => category === 'promotion',
-    )
+    return item.price.total.appliedReductions.some(({ category }) => {
+      return category === 'promotion'
+    })
   }
 
-  const getBasketItemSalePrice = (item: BasketItem): number => {
+  const hasCampaignReduction = (item?: BasketItem): boolean => {
+    if (!item) {
+      return false
+    }
+
+    return item.price.total.appliedReductions.some(({ category }) => {
+      return category === 'campaign'
+    })
+  }
+
+  const getBasketItemPrice = (
+    item: BasketItem,
+    reductionCategory: 'sale' | 'campaign',
+  ): number => {
     return item.price.total.appliedReductions
-      .filter((item) => item.category === 'sale')
+      .filter((item) => item.category === reductionCategory)
       .reduce((price, current) => price + current.amount.absoluteWithTax, 0)
   }
 
@@ -74,7 +87,7 @@ export function useBasketReductions() {
     )
     const allSaleReductions = basketItemsWithSaleReductions.reduce<number[]>(
       (previous, next) => {
-        const price = getBasketItemSalePrice(next)
+        const price = getBasketItemPrice(next, 'sale')
         previous.push(price)
         return previous
       },
@@ -147,11 +160,12 @@ export function useBasketReductions() {
       totalSalesReductions,
       totalPromotionsReductions,
       getHeadlineParts,
-      getBasketItemSalePrice,
+      getBasketItemPrice,
       withNegativePrefix,
       hasSaleReduction,
       hasPromotionReduction,
       getPromotionTextColor,
+      hasCampaignReduction,
     },
   )
 }

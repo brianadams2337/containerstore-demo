@@ -83,12 +83,12 @@ function getItemSaleReductionPrice(item?: BasketItem) {
     return 0
   }
 
-  const itemTotalSalePrice = getBasketItemSalePrice(item)
+  const itemTotalSalePrice = getBasketItemPrice(item, 'sale')
   const totalWithReduction = price.value + (reducedPrice.value ?? 0)
 
   return totalWithReduction + -itemTotalSalePrice
 }
 
-const { hasSaleReduction, hasPromotionReduction, getBasketItemSalePrice } =
+const { hasSaleReduction, hasPromotionReduction, getBasketItemPrice } =
   useBasketReductions()
 </script>
