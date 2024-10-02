@@ -1,5 +1,5 @@
 export const getQuantitySelectionList = (quantity = 0, excludeZero = false) => {
-  const length = Math.max(Math.min(quantity, 9), 0)
+  const length = Math.max(Math.min(quantity, 10), 0)
 
   const quantityListWithoutZero = Array.from(
     { length },

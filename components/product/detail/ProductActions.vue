@@ -126,7 +126,10 @@ const activeVariant = defineModel<Variant>('activeVariant')
 
 const quantity = ref(1)
 
-const maxQuantity = computed(() => activeVariant.value?.stock.quantity ?? 1)
+// Note: The basket does not allow a quantity > 50, therefore we limit it to prevent errors
+const maxQuantity = computed(() =>
+  Math.max(Math.min(activeVariant.value?.stock.quantity ?? 1, 10), 0),
+)
 
 watch(activeVariant, () => {
   quantity.value = 1
