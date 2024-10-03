@@ -1,14 +1,15 @@
 <template>
   <div class="flex flex-wrap items-center gap-1">
-    <span
-      v-for="({ value, category }, index) in relativeReductions"
-      :key="`${value}-badge-${category}-${index}`"
-      class="mr-1 inline-block rounded bg-red px-1 text-xs font-semibold text-white"
-      :style="category === 'promotion' && promotionStyle"
-    >
-      -{{ value }}%
-    </span>
-
+    <template v-if="showBadges">
+      <span
+        v-for="({ value, category }, index) in relativeReductions"
+        :key="`${value}-badge-${category}-${index}`"
+        class="mr-1 inline-block rounded bg-red px-1 text-xs font-semibold text-white"
+        :style="category === 'promotion' && promotionStyle"
+      >
+        -{{ value }}%
+      </span>
+    </template>
     <p class="text-gray-900" :class="classes" data-testid="price">
       <template v-if="showPriceFrom">
         {{ $t('price.starting_from') }}
