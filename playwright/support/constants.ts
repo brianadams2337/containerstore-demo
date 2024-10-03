@@ -112,3 +112,13 @@ export const USER_WITHOUT_ORDERS = {
 }
 
 export const CHECKOUT_URL = '/checkout'
+
+export const PDP_E2E = {
+  regularProductUrl: '/p/sweatshirt-205801',
+  regularProductVariantId: '334840',
+  oneSizeProductId: '206025',
+  oneSizeProductUrl: '/p/umhangetasche-adicolor-classic-206025',
+  subscribeProductUrl: '/p/sneaker-forum-bold-206136',
+  subscribeProductVariantId: '333734',
+  subscribeNotEligibleVariantId: '333740',
+}

@@ -61,7 +61,7 @@
     </div>
     <SFButton
       type="accent"
-      data-testid="add-item-to-basket-button"
+      data-testid="add-item-to-basket-button-subscribe"
       size="xl"
       :disabled="!subscriptionState.isEligible || product.isSoldOut"
       @click="$emit('addItemToBasket', itemToAdd)"

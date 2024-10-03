@@ -27,6 +27,7 @@
     <div
       v-if="showTaxInfo"
       class="ml-1 text-right text-xs text-gray-700 md:text-left"
+      data-testid="tax-info"
     >
       {{ $t('price.including_vat') }}
     </div>

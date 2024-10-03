@@ -32,6 +32,7 @@
       type="accent"
       size="xl"
       class="grow justify-between"
+      data-testid="add-item-to-basket-button"
       :disabled="isSoldOutOrOutOfStock"
       @click="addItemToBasket(basketItem)"
     >
@@ -41,7 +42,6 @@
       <template v-else>
         {{ $t('global.sold_out') }}
       </template>
-
       <div class="flex items-center">
         <IconPlus
           class="size-4 scale-x-0 text-white transition-transform duration-150 group-hover:scale-100"
@@ -69,6 +69,7 @@
         type="accent"
         size="xl"
         class="grow"
+        data-testid="add-to-basket-button-mobile"
         :disabled="isSoldOutOrOutOfStock"
         @click="addItemToBasket(basketItem)"
       >

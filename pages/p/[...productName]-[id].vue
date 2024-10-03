@@ -16,7 +16,10 @@
             :product-categories="longestCategoryList"
           />
           <div class="max-md:px-5">
-            <div class="truncate font-semi-bold-variable text-gray-900">
+            <div
+              class="truncate font-semi-bold-variable text-gray-900"
+              data-testid="pdp-product-brand"
+            >
               {{ brand }}
             </div>
             <SFHeadline

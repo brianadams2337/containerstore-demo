@@ -1,4 +1,6 @@
 import type { Locator, Page } from '@playwright/test'
+import { isMobile } from '../support/utils'
+import { expect } from '../fixtures/fixtures'
 
 export class ProductDetailPage {
   readonly page: Page
@@ -6,6 +8,19 @@ export class ProductDetailPage {
   readonly productSizeValue: Locator
   readonly addToBasketButton: Locator
   readonly productImage: Locator
+  readonly productBrand: Locator
+  readonly productName: Locator
+  readonly priceRegular: Locator
+  readonly taxInfo: Locator
+  readonly variantPicker: Locator
+  readonly addToBasketButtonMobile: Locator
+  readonly quantityValue: Locator
+  readonly quantityMinus: Locator
+  readonly quantityPlus: Locator
+  readonly buttonAddToWishlist: Locator
+  readonly buttonRemoveFromWishlist: Locator
+  readonly subscriptionService: Locator
+  readonly addToBasketButtonSubscribe: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -17,6 +32,29 @@ export class ProductDetailPage {
     )
     this.addToBasketButton = page.getByTestId('add-item-to-basket-button')
     this.productImage = page.getByTestId('product-image')
+    this.productBrand = page.getByTestId('pdp-product-brand')
+    this.productName = page.getByTestId('pdp-product-name')
+    this.priceRegular = page.getByTestId('price')
+    this.taxInfo = page.getByTestId('tax-info')
+    this.variantPicker = page.getByTestId('variant-picker').getByRole('button')
+    this.addToBasketButtonMobile = page.getByTestId(
+      'add-to-basket-button-mobile',
+    )
+    this.quantityValue = page.getByTestId('quantity-value')
+    this.quantityMinus = page.getByTestId('quantity-minus')
+    this.quantityPlus = page.getByTestId('quantity-plus')
+    this.buttonAddToWishlist = page.getByTestId('add-item-to-wishlist-button')
+    this.buttonRemoveFromWishlist = page.getByTestId(
+      'remove-item-from-wishlist-button',
+    )
+    this.subscriptionService = page.getByTestId('subscription-service')
+    this.addToBasketButtonSubscribe = page.getByTestId(
+      'add-item-to-basket-button-subscribe',
+    )
+  }
+
+  getVariant(variant: string): Locator {
+    return this.page.getByTestId(`variant-option-${variant}`)
   }
 
   async pickProductSize() {
@@ -26,6 +64,59 @@ export class ProductDetailPage {
   }
 
   async addProductToBasket() {
-    await this.addToBasketButton.click()
+    if (isMobile(this.page)) {
+      await this.addToBasketButtonMobile.click()
+    } else {
+      await this.addToBasketButton.click()
+    }
+  }
+
+  async visitPDP(path: string, baseUrl: string) {
+    const url = baseUrl + path
+    await this.page.goto(url, { waitUntil: 'commit' })
+  }
+
+  async assertAddToWishlistIconVisibility() {
+    if (isMobile(this.page)) {
+      await this.buttonAddToWishlist.nth(0).waitFor()
+      await expect(this.buttonAddToWishlist.nth(0)).toBeVisible()
+      await expect(this.buttonAddToWishlist.nth(1)).not.toBeVisible()
+      await expect(this.buttonRemoveFromWishlist.nth(0)).not.toBeVisible()
+    } else {
+      await this.buttonAddToWishlist.nth(1).waitFor()
+      await expect(this.buttonAddToWishlist.nth(1)).toBeVisible()
+      await expect(this.buttonAddToWishlist.nth(0)).not.toBeVisible()
+      await expect(this.buttonRemoveFromWishlist.nth(1)).not.toBeVisible()
+    }
+  }
+
+  async assertRemoveFromWishlistIconVisibility() {
+    if (isMobile(this.page)) {
+      await this.buttonRemoveFromWishlist.nth(0).waitFor()
+      await expect(this.buttonRemoveFromWishlist.nth(0)).toBeVisible()
+      await expect(this.buttonRemoveFromWishlist.nth(1)).not.toBeVisible()
+      await expect(this.buttonAddToWishlist.nth(0)).not.toBeVisible()
+    } else {
+      await this.buttonRemoveFromWishlist.nth(1).waitFor()
+      await expect(this.buttonRemoveFromWishlist.nth(1)).toBeVisible()
+      await expect(this.buttonRemoveFromWishlist.nth(0)).not.toBeVisible()
+      await expect(this.buttonAddToWishlist.nth(1)).not.toBeVisible()
+    }
+  }
+
+  async addProductToWishlist() {
+    if (isMobile(this.page)) {
+      await this.buttonAddToWishlist.nth(0).click()
+    } else {
+      await this.buttonAddToWishlist.nth(1).click()
+    }
+  }
+
+  async removeProductFromWishlist() {
+    if (isMobile(this.page)) {
+      await this.buttonRemoveFromWishlist.nth(0).click()
+    } else {
+      await this.buttonRemoveFromWishlist.nth(1).click()
+    }
   }
 }
