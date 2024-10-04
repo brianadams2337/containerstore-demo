@@ -7,7 +7,7 @@
         class="flex items-start max-md:w-full md:sticky md:top-8 md:max-w-[700px] md:shrink"
       >
         <div
-          class="grid w-full grid-cols-[fit-content(100%)_minmax(auto,_528px)] grid-rows-[fit-content(100%)] max-md:grid-cols-1 max-md:grid-rows-1"
+          class="grid w-full grid-cols-[fit-content(100%)_minmax(auto,_528px)] grid-rows-[fit-content(0)] max-md:grid-cols-1 max-md:grid-rows-1"
         >
           <!-- Thumbnails -->
 
