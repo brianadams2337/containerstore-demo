@@ -1,0 +1,12 @@
+diff --git a/node_modules/@opentelemetry/sdk-node/build/src/index.js b/node_modules/@opentelemetry/sdk-node/build/src/index.js
+index 75735a1..819464c 100644
+--- a/node_modules/@opentelemetry/sdk-node/build/src/index.js
++++ b/node_modules/@opentelemetry/sdk-node/build/src/index.js
+@@ -17,7 +17,6 @@
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.NodeSDK = exports.tracing = exports.resources = exports.node = exports.metrics = exports.logs = exports.core = exports.contextBase = exports.api = void 0;
+ /* eslint no-restricted-syntax: ["warn", "ExportAllDeclaration"] --
+- * TODO: Replace export * with named exports before next major version
+  */
+ exports.api = require("@opentelemetry/api");
+ exports.contextBase = require("@opentelemetry/api");
