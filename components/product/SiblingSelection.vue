@@ -35,7 +35,7 @@
             'pointer-events-none':
               sibling.isSoldOut || sibling.id === product.id,
           }"
-          :to="getProductDetailRoute(sibling.id, name)"
+          :to="getProductDetailRoute(sibling.id, sibling.name)"
           @click="trackSiblingClick(sibling, index)"
         >
           <ProductImage
@@ -100,7 +100,7 @@ type Props = {
 const { getProductDetailRoute } = useRouteHelpers()
 
 const props = defineProps<Props>()
-const { siblings, name } = useProductBaseInfo(props.product)
+const { siblings } = useProductBaseInfo(props.product)
 
 const hoveredColorLabel = ref()
 const { t } = useI18n()
