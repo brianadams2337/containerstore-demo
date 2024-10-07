@@ -1,7 +1,7 @@
 <template>
   <SFItemsSlider with-arrows mode="horizontal">
     <template #header>
-      <div class="mb-6 px-2 text-2xl font-medium text-gray-900">
+      <div class="mb-6 text-2xl font-medium text-gray-900 md:px-2">
         {{ title }}
       </div>
     </template>
@@ -9,7 +9,7 @@
       #arrows="{ isPrevEnabled, isNextEnabled, prev, next, isScrollable }"
     >
       <div
-        class="absolute right-0 top-0 flex gap-0.5"
+        class="absolute -top-1 right-6 flex gap-0.5 md:right-2"
         :class="{ hidden: !isScrollable }"
       >
         <SFButton
@@ -37,7 +37,7 @@
         <div
           v-for="(product, index) in products || []"
           :key="product.id"
-          class="w-1/2 shrink-0 snap-start px-2 md:w-1/3 lg:w-1/4"
+          class="w-1/2 shrink-0 snap-start pr-4 md:w-1/3 lg:w-1/4"
         >
           <ProductCard
             :product="product"
