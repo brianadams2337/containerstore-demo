@@ -10,46 +10,42 @@ import {
   extendPromise,
 } from '@scayle/storefront-nuxt'
 import { computed } from 'vue'
+import { whenever } from '@vueuse/core'
 import { useBasketActions } from '~/composables/useBasketActions'
-import { useFlyouts } from '~/composables/useFlyouts'
 import { useProductBaseInfo } from '~/composables/useProductBaseInfo'
 import { useToast } from '~/composables/useToast'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
 import { useState } from '#app/composables/state'
 import { useNuxtApp } from '#app'
-import { useRoute } from '#app/composables/router'
-import { useLocalePath } from '#i18n'
 import { useBasket } from '#storefront/composables'
-import {
-  createCustomPrice,
-  hasOneSizeProductVariantOnly,
-  routeList,
-} from '~/utils'
+import { createCustomPrice, hasOneSizeProductVariantOnly } from '~/utils'
 
 export function usePromotionGiftSelection(gift: Product) {
   const { $i18n } = useNuxtApp()
   const toast = useToast()
 
-  const route = useRoute()
-
   const { trackAddToBasket } = useTrackingEvents()
-  const localePath = useLocalePath()
 
-  const { openBasketFlyout } = useFlyouts()
-
+  const { name, variantWithLowestPrice, hasOneVariantOnly } =
+    useProductBaseInfo(gift)
   const activeVariant = useState<Variant | undefined>(
     `active-gift-variant-${gift.id}`,
+  )
+  whenever(
+    hasOneVariantOnly,
+    () => {
+      activeVariant.value = gift?.variants?.[0]
+    },
+    { immediate: true, once: true },
   )
 
   const isSelectionShown = useState(`gift-selection-${gift.id}`, () => false)
 
-  const { brand, variantWithLowestPrice } = useProductBaseInfo(gift)
-
   const basket = useBasket()
   const basketActions = useBasketActions()
 
-  const { fetching: basketIdle, addItem: addBasketItem } = basket
-  const { showAddToBasketToast } = basketActions
+  const { fetching: basketIdle } = basket
+  const { addItem } = basketActions
 
   const toggleGiftSelection = () => {
     isSelectionShown.value = !isSelectionShown.value
@@ -110,10 +106,6 @@ export function usePromotionGiftSelection(gift: Product) {
   })
 
   const addItemToBasket = async (promotionId?: string) => {
-    if (hasOneSizeVariantOnly.value && gift?.variants) {
-      activeVariant.value = gift.variants[0]
-    }
-
     if (!activeVariant.value) {
       toast.show($i18n.t('basket.notification.select_size'), {
         action: 'CONFIRM',
@@ -121,42 +113,27 @@ export function usePromotionGiftSelection(gift: Product) {
       return
     }
 
-    const brandName = brand.value || $i18n.t('wishlist.product')
+    const productName = name.value || $i18n.t('wishlist.product')
 
-    try {
-      await addBasketItem({
-        variantId: activeVariant.value.id,
-        quantity: 1,
-        existingItemHandling: ExistingItemHandling.ReplaceExisting,
-        ...(promotionId && { promotionId }),
+    await addItem({
+      variantId: activeVariant.value.id,
+      productName,
+      quantity: 1,
+      existingItemHandling: ExistingItemHandling.ReplaceExisting,
+      ...(promotionId && { promotionId }),
+    })
+
+    if (gift) {
+      trackAddToBasket({
+        product: gift,
+        variant: activeVariant.value,
+        index: 1,
       })
-
-      openBasketFlyout()
-
-      if (route.path !== localePath(routeList.basket)) {
-        showAddToBasketToast(true, gift)
-      }
-
-      if (gift) {
-        trackAddToBasket({
-          product: gift,
-          variant: activeVariant.value,
-          index: 1,
-        })
-      }
-    } catch {
-      toast.show(
-        $i18n.t('basket.notification.add_to_basket_error', {
-          brandName,
-        }),
-        {
-          action: 'CONFIRM',
-        },
-      )
-    } finally {
-      activeVariant.value = undefined
-      toggleGiftSelection()
     }
+    if (!hasOneVariantOnly.value) {
+      activeVariant.value = undefined
+    }
+    toggleGiftSelection()
   }
 
   return extendPromise(

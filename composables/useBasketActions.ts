@@ -36,6 +36,7 @@ type OrderedItems<T> = {
 export type AddToBasketItem = AddOrUpdateItemType & {
   productName: string
   interval?: string
+  existingItemHandling?: ExistingItemHandling
 }
 
 export function useBasketActions() {
@@ -152,7 +153,8 @@ export function useBasketActions() {
       const hasSubscriptionData = hasSubscriptionCustomData(item.customData)
       const existingItemHandling = hasSubscriptionData
         ? ExistingItemHandling.ReplaceExisting
-        : ExistingItemHandling.AddQuantityToExisting
+        : item.existingItemHandling ||
+          ExistingItemHandling.AddQuantityToExisting
       await addItemToBasket({ ...item, existingItemHandling })
       showAddItemSuccessMessage(item, hasSubscriptionData)
     } catch (e) {

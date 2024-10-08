@@ -74,7 +74,9 @@
               </div>
               <VariantPicker
                 v-if="!hasOneSizeVariantOnly"
+                ref="variantPicker"
                 v-model="activeVariant"
+                v-model:visible="isVariantListVisible"
                 :variants="product.variants ?? []"
                 :promotion="promotion"
                 class="md:mb-4"
@@ -88,7 +90,7 @@
                   :title="product.isSoldOut ? $t('badge_labels.sold_out') : ''"
                   :loading="basketIdle"
                   class="w-full justify-between !px-4"
-                  @click="addItemToBasket(promotion?.id)"
+                  @click="addToBasket"
                 >
                   {{ $t('pdp.add_label') }}
                   <template #append-icon>
@@ -116,6 +118,8 @@
 
 <script setup lang="ts">
 import type { Product } from '@scayle/storefront-nuxt'
+import { ref } from 'vue'
+import { useElementVisibility } from '@vueuse/core'
 import ProductPrice from '../ProductPrice.vue'
 import WishlistToggle from '../WishlistToggle.vue'
 import ProductImage from '../ProductImage.vue'
@@ -169,6 +173,24 @@ const selectItem = (product: Product) => {
       page_type_id: route.params.id?.toString() || '',
     },
   })
+}
+
+const isVariantListVisible = ref(false)
+const variantPicker = ref()
+const isVariantPickerVisible = useElementVisibility(variantPicker, {
+  threshold: 1,
+})
+
+const addToBasket = () => {
+  if (!activeVariant.value) {
+    if (!isVariantPickerVisible.value) {
+      variantPicker.value?.$el.scrollIntoView({ block: 'center' })
+    }
+    isVariantListVisible.value = true
+    return
+  }
+
+  addItemToBasket(props.promotion?.id)
 }
 
 const close = () => {
