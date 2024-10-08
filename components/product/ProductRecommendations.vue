@@ -40,6 +40,7 @@
           class="w-1/2 shrink-0 snap-start pr-4 md:w-1/3 lg:w-1/4"
         >
           <ProductCard
+            hide-badges
             :product="product"
             multiple-images
             @click="trackProductCardClick(product, index)"

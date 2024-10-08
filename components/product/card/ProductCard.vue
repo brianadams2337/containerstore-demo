@@ -26,6 +26,7 @@
         />
       </div>
       <ProductCardBadgesHeader
+        v-if="!hideBadges"
         :product="product"
         class="absolute left-3 top-3 w-full"
       />
@@ -82,6 +83,7 @@ type Props = {
   edgeBorderless?: boolean
   multipleImages?: boolean
   listingMetaData?: ListItem
+  hideBadges?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -90,6 +92,7 @@ const props = withDefaults(defineProps<Props>(), {
   listingMetaData: undefined,
   isRightSideBorderless: false,
   edgeBorderless: false,
+  hideBadges: false,
 })
 
 const isProductHovered = ref(false)
