@@ -10,11 +10,18 @@ const isPrimaryImage = (image: ProductImage) => {
 
 export const sortProductImages = (images: ProductImage[]) => {
   return images.toSorted((imageA, imageB) => {
-    if (isPrimaryImage(imageB)) {
+    const isImageAPrimary = isPrimaryImage(imageA)
+    const isImageBPrimary = isPrimaryImage(imageB)
+
+    if (isImageAPrimary && isImageBPrimary) {
+      return 0
+    }
+
+    if (isImageBPrimary) {
       return 1
     }
 
-    if (isPrimaryImage(imageA)) {
+    if (isImageAPrimary) {
       return -1
     }
 
