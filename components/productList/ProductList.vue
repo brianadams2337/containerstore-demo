@@ -11,7 +11,7 @@
       <ProductListNoResults
         v-else-if="!products.length"
         :category="currentCategory?.parent"
-        class="col-span-12 max-md:mx-4 max-md:w-fit"
+        class="col-span-12 max-md:w-fit"
       />
       <template v-else>
         <ProductCard
