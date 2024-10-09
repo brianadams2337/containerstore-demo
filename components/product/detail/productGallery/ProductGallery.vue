@@ -104,7 +104,7 @@
         class="absolute left-5 max-md:bottom-5 md:top-5"
       />
       <SFGoBackLink
-        class="left-5 top-5 md:hidden"
+        class="left-1 top-1 p-4 md:hidden"
         :fallback-link="categoryLink"
       />
     </div>
