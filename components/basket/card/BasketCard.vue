@@ -104,6 +104,10 @@
                   <span
                     v-if="hasSaleReduction(item)"
                     class="p-1 text-base leading-5 text-red"
+                    :class="{
+                      'text-xs leading-[1.125rem] text-secondary line-through':
+                        hasPromotionReduction(item),
+                    }"
                     data-testid="basket-card-price-sale"
                   >
                     {{ formatCurrency(getItemSaleReductionPrice(item)) }}
@@ -111,6 +115,10 @@
                   <span
                     v-else-if="hasCampaignReduction(item)"
                     class="p-1 text-base leading-5 text-red"
+                    :class="{
+                      'text-xs leading-[1.125rem] text-secondary line-through':
+                        hasPromotionReduction(item),
+                    }"
                     data-testid="basket-card-price-campaign"
                   >
                     {{ formatCurrency(getItemCampaignReductionPrice(item)) }}
