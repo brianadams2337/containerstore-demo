@@ -2,62 +2,79 @@
 
 ## 1.4.0
 
-### Minor Changes
+### 🔥 Highlights
 
-- bab6f00: Remove boolean props on `Modal.vue` to control styling. Instead styling is done by adding styles to the `<SFModal>` and its content.
-- 47aec4e: Add skeleton loader for the product detail page.
-- 1fb4bb9: Added PDP E2E tests, first phase.
-- a1d0595: Disable auto-imports for Vue components
-- 81bf3c3: Simplify the wishlist card by utilizing the plain product card and eliminating all basket-related actions.
-- 1096e82: The basket does not allowa quantity > 50. Therefore, we limit the quanty on the PDP to 50.
-- 326860d: Replace `InputToggle` with `Switch` component
-- 81bf3c3: Enhance product card component by removing slots, simplifying the HTML structure and removing unnecessary slots.
+#### 🛍️ New Product Detail Page
 
-### Patch Changes
+This release includes a newly refreshed Product Detail Page with an improved design, better accessibilty and extendability and more test coverage.
 
-- 16df217: Fix placement of price within the `ProductCardDetails.vue`
-- - Added dependency `@vueuse/gesture@2.0.0`
-  - Added dependency `@vue/typescript-plugin@2.1.6`
-  - Updated dependency `@scayle/nuxt-opentelemetry@0.3.1` to `@scayle/nuxt-opentelemetry@0.3.2`
-  - Updated dependency `@scayle/omnichannel-nuxt@4.0.0` to `@scayle/omnichannel-nuxt@4.0.1`
-  - Updated dependency `@scayle/storefront-nuxt@7.85.7` to `@scayle/storefront-nuxt@7.85.12`
-  - Updated dependency `@storyblok/nuxt@6.0.10` to `@storyblok/nuxt@6.0.12`
-  - Updated dependency `@storyblok/richtext@2.0.0` to `@storyblok/richtext@2.1.0`
-  - Updated dependency `@storyblok/vue@8.1.0` to `@storyblok/vue@8.1.3`
-  - Updated dependency `@types/google.maps@3.58.0` to `@types/google.maps@3.58.1`
-  - Updated dependency `@vercel/kv@2.0.0` to `@vercel/kv@3.0.0`
-  - Updated dependency `axios@1.6.8` to `axios@1.7.7`
-  - Updated dependency `contentful@10.15.1` to `contentful@11.0.3`
-  - Updated dependency `contentful-export@7.19.148` to `contentful-export@7.19.155`
-  - Updated dependency `maska@2.1.11` to `maska@3.0.3`
-  - Updated dependency `nuxi@3.13.2` to `nuxi@3.14.0`
-  - Updated dependency `storyblok-js-client@6.9.2` to `storyblok-js-client@6.10.0`
-  - Updated dependency `vue@3.4.38` to `vue@3.5.11`
-  - Updated dependency `@changesets/cli@2.27.8` to `@changesets/cli@2.27.9`
-  - Updated dependency `@nuxt/image@1.7.0` to `@nuxt/image@1.8.1`
-  - Updated dependency `@nuxt/test-utils@3.14.2` to `@nuxt/test-utils@3.14.3`
-  - Updated dependency `@nuxtjs/i18n@8.5.3` to `@nuxtjs/i18n@8.5.5`
-  - Updated dependency `@scayle/eslint-plugin-vue-composable@0.2.0` to `@scayle/eslint-plugin-vue-composable@0.2.1`
-  - Updated dependency `@types/node@20.16.5` to `@types/node@20.16.11`
-  - Updated dependency `@typescript-eslint/scope-manager@8.6.0` to `@typescript-eslint/scope-manager@8.8.1`
-  - Updated dependency `@typescript-eslint/utils@8.6.0` to `@typescript-eslint/utils@8.8.1`
-  - Updated dependency `@upstash/redis@1.34.0` to `@upstash/redis@1.34.2`
-  - Updated dependency `@vitest/coverage-v8@2.1.1` to `@vitest/coverage-v8@2.1.2`
-  - Updated dependency `eslint@9.10.0` to `eslint@9.12.0`
-  - Updated dependency `nuxt@3.11.2` to `nuxt@3.13.2`
-  - Updated dependency `ofetch@1.3.4` to `ofetch@1.4.0`
-  - Updated dependency `storyblok@3.33.3` to `storyblok@3.34.0`
-  - Updated dependency `tailwindcss@3.4.12` to `tailwindcss@3.4.13`
-  - Updated dependency `unimport@3.12.0` to `unimport@3.13.1`
-  - Updated dependency `vitest@2.1.1` to `vitest@2.1.2`
-- fc0cf21: Product color is now mapped by attribute value instead of ID
-- 37a79bc: Handle possibly undefined `orderData` when calculating `deliveryDate` on Order Success page
-- 3395db6: Removes unused `useWishlistItem` and `useWishlistItemActions` from the project
-- a9f3fc4: Fixed an issue on CMS content pages with empty teaser image leading to unnecessary white space
-- 326860d: Replace getters and setters across the app with `defineModel`
-- 4d0bfc4: End-to-End and Lighthouse tests adaptions to match latest changes in Storefront Boilerplate.
-- 5c7e69d: Take campaign discounts into account when displaying prices on a product card
-- 73bba2f: Cleanup image utilities to always use `primaryImage`
+#### 🧪 PDP E2E tests
+
+In this release we've also added a new set of E2E tests to cover the product detail page.
+
+#### 📦 Removing Vue component auto imports
+
+As part of our work to remove automatic imports, in this release Vue components will no longer be auto-imported. We've also added some ESLint rules to cover unimported components.
+
+### 💅 Minor Changes
+
+- Remove boolean props on `Modal.vue` to control styling. Instead styling is done by adding styles to the `<SFModal>` and its content.
+- Add skeleton loader for the product detail page.
+- Added PDP E2E tests, first phase.
+- Disable auto-imports for Vue components
+- Simplify the wishlist card by utilizing the plain product card and eliminating all basket-related actions.
+- The basket does not allow quantity > 50. Therefore, we limit the quanty on the PDP to 50.
+- Replace `InputToggle` with `Switch` component
+- Enhance product card component by removing slots, simplifying the HTML structure and removing unnecessary slots.
+
+### 🩹 Patch Changes
+
+- Fix placement of price within the `ProductCardDetails.vue`
+- Product color is now mapped by attribute value instead of ID
+- Handle possibly undefined `orderData` when calculating `deliveryDate` on Order Success page
+- Removes unused `useWishlistItem` and `useWishlistItemActions` from the project
+- Fixed an issue on CMS content pages with empty teaser image leading to unnecessary white space
+- Replace getters and setters across the app with `defineModel`
+- End-to-End and Lighthouse tests adaptions to match latest changes in Storefront Boilerplate.
+- Take campaign discounts into account when displaying prices on a product card
+- Cleanup image utilities to always use `primaryImage`
+
+### 🏡 Dependency updates
+
+- Added dependency `@vueuse/gesture@2.0.0`
+- Added dependency `@vue/typescript-plugin@2.1.6`
+- Updated dependency `@scayle/nuxt-opentelemetry@0.3.1` to `@scayle/nuxt-opentelemetry@0.3.2`
+- Updated dependency `@scayle/omnichannel-nuxt@4.0.0` to `@scayle/omnichannel-nuxt@4.0.1`
+- Updated dependency `@scayle/storefront-nuxt@7.85.7` to `@scayle/storefront-nuxt@7.85.12`
+- Updated dependency `@storyblok/nuxt@6.0.10` to `@storyblok/nuxt@6.0.12`
+- Updated dependency `@storyblok/richtext@2.0.0` to `@storyblok/richtext@2.1.0`
+- Updated dependency `@storyblok/vue@8.1.0` to `@storyblok/vue@8.1.3`
+- Updated dependency `@types/google.maps@3.58.0` to `@types/google.maps@3.58.1`
+- Updated dependency `@vercel/kv@2.0.0` to `@vercel/kv@3.0.0`
+- Updated dependency `axios@1.6.8` to `axios@1.7.7`
+- Updated dependency `contentful@10.15.1` to `contentful@11.0.3`
+- Updated dependency `contentful-export@7.19.148` to `contentful-export@7.19.155`
+- Updated dependency `maska@2.1.11` to `maska@3.0.3`
+- Updated dependency `nuxi@3.13.2` to `nuxi@3.14.0`
+- Updated dependency `storyblok-js-client@6.9.2` to `storyblok-js-client@6.10.0`
+- Updated dependency `vue@3.4.38` to `vue@3.5.11`
+- Updated dependency `@changesets/cli@2.27.8` to `@changesets/cli@2.27.9`
+- Updated dependency `@nuxt/image@1.7.0` to `@nuxt/image@1.8.1`
+- Updated dependency `@nuxt/test-utils@3.14.2` to `@nuxt/test-utils@3.14.3`
+- Updated dependency `@nuxtjs/i18n@8.5.3` to `@nuxtjs/i18n@8.5.5`
+- Updated dependency `@scayle/eslint-plugin-vue-composable@0.2.0` to `@scayle/eslint-plugin-vue-composable@0.2.1`
+- Updated dependency `@types/node@20.16.5` to `@types/node@20.16.11`
+- Updated dependency `@typescript-eslint/scope-manager@8.6.0` to `@typescript-eslint/scope-manager@8.8.1`
+- Updated dependency `@typescript-eslint/utils@8.6.0` to `@typescript-eslint/utils@8.8.1`
+- Updated dependency `@upstash/redis@1.34.0` to `@upstash/redis@1.34.2`
+- Updated dependency `@vitest/coverage-v8@2.1.1` to `@vitest/coverage-v8@2.1.2`
+- Updated dependency `eslint@9.10.0` to `eslint@9.12.0`
+- Updated dependency `nuxt@3.11.2` to `nuxt@3.13.2`
+- Updated dependency `ofetch@1.3.4` to `ofetch@1.4.0`
+- Updated dependency `storyblok@3.33.3` to `storyblok@3.34.0`
+- Updated dependency `tailwindcss@3.4.12` to `tailwindcss@3.4.13`
+- Updated dependency `unimport@3.12.0` to `unimport@3.13.1`
+- Updated dependency `vitest@2.1.1` to `vitest@2.1.2`
 
 ## 1.3.0
 
