@@ -73,7 +73,7 @@
     "patch-package": "8.0.0",
     "pathe": "1.1.2",
     "postcss": "8.4.47",
-    "postcss-custom-properties": "14.0.1",
+    "postcss-custom-properties": "14.0.2",
     "postcss-html": "1.7.0",
     "postcss-import": "16.1.0",
     "postinstall-postinstall": "2.1.0",
