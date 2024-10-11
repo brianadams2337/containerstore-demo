@@ -2,7 +2,7 @@ import { expect, test } from '../../fixtures/fixtures'
 import { runLighthouseAudit } from '../../support/lighthouseAudit'
 import { LIGHTHOUSE_THRESHOLDS } from '../../support/constants'
 
-test.describe.configure({ mode: 'serial', timeout: 120000 })
+test.describe.configure({ mode: 'serial', timeout: 120000, retries: 0 })
 
 test('C2139574: Lighthouse audit for Homepage', async ({ baseURL }) => {
   const homepageUrl = new URL('/', baseURL)

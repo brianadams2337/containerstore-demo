@@ -5,7 +5,7 @@ import {
   LIGHTHOUSE_THRESHOLDS,
 } from '../../support/constants'
 
-test.describe.configure({ mode: 'serial', timeout: 120000 })
+test.describe.configure({ mode: 'serial', timeout: 120000, retries: 0 })
 
 test('C2139576: Lighthouse audit for PDP', async ({ baseURL }) => {
   const pdpUrl = new URL(LIGHTHOUSE_AUDIT_PATHS.pdp, baseURL)
