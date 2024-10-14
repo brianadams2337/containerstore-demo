@@ -14,8 +14,16 @@
       <div>{{ $t('basket.shipping_free') }}</div>
     </div>
 
-    <BasketSummarySale />
-
+    <BasketSummarySaleCampaign
+      v-if="hasItemsWithSaleReductions"
+      type="sale"
+      :price="aggregatedSalePrice"
+    />
+    <BasketSummarySaleCampaign
+      v-if="hasItemsWithCampaignReductions"
+      type="campaign"
+      :price="aggregatedCampaignPrice"
+    />
     <BasketSummaryPromotions />
 
     <hr class="col-span-full my-4 border border-gray-350" />
@@ -37,12 +45,19 @@
 </template>
 
 <script lang="ts" setup>
-import BasketSummarySale from './BasketSummarySale.vue'
+import BasketSummarySaleCampaign from './BasketSummarySaleCampaign.vue'
 import BasketSummaryPromotions from './promotions/BasketSummaryPromotions.vue'
 import { useFormatHelpers } from '#storefront/composables'
 import { useBasketReductions } from '~/composables'
 
 const { formatCurrency } = useFormatHelpers()
 
-const { totalCost, totalCostWithoutReductions } = useBasketReductions()
+const {
+  totalCost,
+  totalCostWithoutReductions,
+  hasItemsWithSaleReductions,
+  hasItemsWithCampaignReductions,
+  aggregatedSalePrice,
+  aggregatedCampaignPrice,
+} = useBasketReductions()
 </script>

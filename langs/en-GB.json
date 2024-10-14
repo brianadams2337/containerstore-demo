@@ -186,7 +186,8 @@
       "add_free_gift": "Add for free"
     },
     "summary": {
-      "sale": "Sale"
+      "sale": "Sale",
+      "campaign": "EXTRA"
     },
     "product": {
       "add": "Add"

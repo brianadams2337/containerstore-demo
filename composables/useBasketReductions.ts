@@ -97,6 +97,21 @@ export function useBasketReductions() {
     return allSaleReductions.reduce((acc, item) => acc + item, 0)
   })
 
+  const aggregatedCampaignPrice = computed<number>(() => {
+    const basketItemsWithCampaignReductions = (basket.items.value ?? []).filter(
+      hasCampaignReduction,
+    )
+    const allSaleReductions = basketItemsWithCampaignReductions.reduce<
+      number[]
+    >((previous, next) => {
+      const price = getBasketItemPrice(next, 'campaign')
+      previous.push(price)
+      return previous
+    }, [])
+
+    return allSaleReductions.reduce((acc, item) => acc + item, 0)
+  })
+
   const itemsWithPromotionsReductions = computed(() => {
     return (basket.items.value ?? [])
       .filter(hasPromotionReduction)
@@ -127,6 +142,10 @@ export function useBasketReductions() {
     return aggregatedSalePrice.value !== 0
   })
 
+  const hasItemsWithCampaignReductions = computed<boolean>(() => {
+    return aggregatedCampaignPrice.value !== 0
+  })
+
   const hasItemsWithPromotionReductions = computed<boolean>(() => {
     return itemsWithPromotionsReductions.value.length > 0
   })
@@ -154,7 +173,9 @@ export function useBasketReductions() {
       totalDiscount,
       hasItemsWithSaleReductions,
       hasItemsWithPromotionReductions,
+      hasItemsWithCampaignReductions,
       aggregatedSalePrice,
+      aggregatedCampaignPrice,
       itemsWithPromotionsReductions,
       totalCostWithoutReductions,
       totalSalesReductions,
