@@ -187,11 +187,15 @@ const isGiftApplicableItem = ({
   promotionId,
   isPromotionApplicableItemUnique,
 }: FilteredOrderedItem) => {
-  if (promotionId || !isPromotionApplicableItemUnique) return false
+  if (promotionId || !isPromotionApplicableItemUnique) {
+    return false
+  }
   const id = getFirstAttributeValue(product?.attributes, 'promotion')?.id
   return allCurrentPromotions.value.some((promotion) => {
     const isFreeGift = isBuyXGetYType(promotion)
-    if (!isFreeGift) return false
+    if (!isFreeGift) {
+      return false
+    }
     return promotion.customData?.product?.promotionId === id
   })
 }

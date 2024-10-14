@@ -9,9 +9,13 @@ export const hexToRGBAColor = (hex: string, alpha: number): string => {
 }
 
 export const formatColors = (colors: Value[] = []): string => {
-  if (!colors.length) return ''
+  if (!colors.length) {
+    return ''
+  }
   const colorLabels = colors.map((color) => color.label)
-  if (colorLabels.length === 1) return colorLabels[0]
+  if (colorLabels.length === 1) {
+    return colorLabels[0]
+  }
   const lastColorLabel = colorLabels.at(-1)
   const restColorLabels = colorLabels.slice(0, -1)
   return `${restColorLabels.join(', ')} & ${lastColorLabel}`

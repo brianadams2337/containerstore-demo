@@ -60,7 +60,9 @@ export const EMAIL_REGEX_PATTERN =
 // empty slug and home route needs to have empty slug since home route path is "/".
 // As a workaround, we use "home" slug keyword and resolve it here to the correct path
 export const normalizeHomeLink = (link?: string): string | undefined => {
-  if (!link) return
+  if (!link) {
+    return
+  }
   return link === 'home' ? '/' : link
 }
 

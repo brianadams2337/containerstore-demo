@@ -15,7 +15,9 @@ export const getBackgroundColorStyle = (
   alpha?: number,
 ): { backgroundColor: string } => {
   const fallbackColor = '#007aff'
-  if (typeof color !== 'string') return { backgroundColor: fallbackColor }
+  if (typeof color !== 'string') {
+    return { backgroundColor: fallbackColor }
+  }
 
   const backgroundColor = color ?? fallbackColor
 
@@ -28,7 +30,9 @@ export const getBackgroundColorStyle = (
 }
 export const getTextColorStyle = (color?: unknown, alpha?: number) => {
   const fallbackColor = '#007aff'
-  if (typeof color !== 'string') return { textColor: fallbackColor }
+  if (typeof color !== 'string') {
+    return { textColor: fallbackColor }
+  }
 
   const textColor = color ?? fallbackColor
   return {
@@ -64,7 +68,9 @@ export const isAutomaticDiscountType = (promotion?: Promotion | null) => {
 }
 
 export const getVariantIds = (promotion?: Promotion | null): number[] => {
-  if (!isBuyXGetYType(promotion) || !promotion) return []
+  if (!isBuyXGetYType(promotion) || !promotion) {
+    return []
+  }
   const { additionalData } = promotion.effect as BuyXGetYEffect
   return additionalData.variantIds
 }
@@ -72,7 +78,9 @@ export const getVariantIds = (promotion?: Promotion | null): number[] => {
 export const getAdditionalData = (
   promotion?: Promotion | null,
 ): AutomaticDiscountEffect['additionalData'] | undefined => {
-  if (!isAutomaticDiscountType(promotion) || !promotion) return
+  if (!isAutomaticDiscountType(promotion) || !promotion) {
+    return
+  }
   const { additionalData } = promotion.effect as AutomaticDiscountEffect
   return additionalData
 }

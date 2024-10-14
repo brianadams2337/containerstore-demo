@@ -43,7 +43,9 @@ const props = defineProps<{
 }>()
 
 const shouldShowChildren = ({ id, children }: Category) => {
-  if (!children?.length) return false
+  if (!children?.length) {
+    return false
+  }
   const areAncestorsActive = props.currentCategory?.rootlineIds.includes(id)
   return id === props.currentCategory?.id || areAncestorsActive
 }

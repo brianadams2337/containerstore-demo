@@ -24,7 +24,9 @@ export const sanitizeCanonicalURL = (
 ): string => {
   const parsedURL = parseURL(url)
 
-  if (!parsedURL.search) return url
+  if (!parsedURL.search) {
+    return url
+  }
 
   const parsedQuery = parseQuery(parsedURL.search)
 

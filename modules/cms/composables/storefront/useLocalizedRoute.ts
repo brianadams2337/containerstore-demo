@@ -22,7 +22,9 @@ export function useLocalizedRoute() {
       return isLocalePath ? route : localePath(route)
     }
 
-    if (isExternalLink(route)) return route
+    if (isExternalLink(route)) {
+      return route
+    }
 
     const normalizedHomeLink = normalizeHomeLink(route) as string
 

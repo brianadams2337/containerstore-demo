@@ -55,7 +55,9 @@ type Props = {
 const props = defineProps<Props>()
 
 const areArrowsShown = computed(() => {
-  if (import.meta.server) return false
+  if (import.meta.server) {
+    return false
+  }
   const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0
   return !isTouchDevice && props.isProductHovered && props.images.length > 1
 })

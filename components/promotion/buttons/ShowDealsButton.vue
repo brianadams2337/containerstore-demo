@@ -31,7 +31,9 @@ const id = props.category?.id
 const { data: categoryData } = id ? useCurrentCategory(id) : { data: null }
 
 const goToCategory = async () => {
-  if (!categoryData?.value) return
+  if (!categoryData?.value) {
+    return
+  }
 
   await localizedNavigateTo(buildCategoryPath(categoryData.value))
 

@@ -13,7 +13,9 @@ export function useContentfulEditor<T extends EntrySkeletonType>(
 
   if (isInEditorMode && import.meta.client) {
     import('@contentful/live-preview').then(({ ContentfulLivePreview }) => {
-      if (!content?.value) return
+      if (!content?.value) {
+        return
+      }
       ContentfulLivePreview.init({ locale: currentShop.value.locale })
       const unsubscribe = ContentfulLivePreview.subscribe({
         data: content.value,

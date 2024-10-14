@@ -11,11 +11,15 @@ export default defineNuxtRouteMiddleware(async ({ params, query, path }) => {
 
   const { data: category } = await useCurrentCategory(getCategoryId(params))
 
-  if (!category.value) return
+  if (!category.value) {
+    return
+  }
 
   const expectedPath = buildCategoryPath(category.value)
 
-  if (expectedPath === path) return
+  if (expectedPath === path) {
+    return
+  }
 
   return navigateTo({ path: expectedPath, query }, { redirectCode: 301 })
 })

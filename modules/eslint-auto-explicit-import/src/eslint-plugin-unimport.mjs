@@ -13,7 +13,9 @@ const createRule = ESLintUtils.RuleCreator(
 
 function betterRelative(from, to) {
   const r = relative(from, to).replace(/\.[\w]+/g, '')
-  if (r.startsWith('../')) return r
+  if (r.startsWith('../')) {
+    return r
+  }
   return `./${r}`
 }
 
@@ -49,18 +51,28 @@ function createImportsListeners(context, imports, onImportEntry) {
     return _importsMap
   }
   function checkId(node) {
-    if (typeof node.name !== 'string') return
-    if (importedNames.has(node.name)) return
+    if (typeof node.name !== 'string') {
+      return
+    }
+    if (importedNames.has(node.name)) {
+      return
+    }
 
     const importsMap = getImportsMap()
     const item = importsMap.get(node.name)
 
-    if (!item) return
-    if (item.from === context.filename) return
+    if (!item) {
+      return
+    }
+    if (item.from === context.filename) {
+      return
+    }
 
     const scopeManager = getScopeManager()
 
-    if (importedNames.has(node.name)) return
+    if (importedNames.has(node.name)) {
+      return
+    }
 
     let parent = node.parent
     let currentScope = null
@@ -68,20 +80,28 @@ function createImportsListeners(context, imports, onImportEntry) {
     while (parent && !currentScope) {
       currentScope = scopeManager.acquire(parent)
 
-      if (currentScope) break
+      if (currentScope) {
+        break
+      }
 
       parent = parent.parent
     }
 
-    if (!currentScope) currentScope = scopeManager.globalScope
+    if (!currentScope) {
+      currentScope = scopeManager.globalScope
+    }
 
     const visited = /* @__PURE__ */ new Set()
 
     while (true) {
-      if (!currentScope || visited.has(currentScope)) break
+      if (!currentScope || visited.has(currentScope)) {
+        break
+      }
 
       for (const ref of currentScope.variables) {
-        if (ref.name === node.name) return
+        if (ref.name === node.name) {
+          return
+        }
       }
 
       visited.add(currentScope)
@@ -93,13 +113,16 @@ function createImportsListeners(context, imports, onImportEntry) {
   }
   return {
     Identifier(node) {
-      if (/Declaration|Specifier|Property/.test(node.parent.type)) return
+      if (/Declaration|Specifier|Property/.test(node.parent.type)) {
+        return
+      }
 
       if (
         node.parent.type === 'MemberExpression' &&
         node.parent.object !== node
-      )
+      ) {
         return
+      }
 
       checkId(node)
     },
@@ -111,10 +134,14 @@ function createImportsListeners(context, imports, onImportEntry) {
     'Program:exit': function () {
       const vueTemplate = context.sourceCode.ast.templateBody
 
-      if (!vueTemplate) return
+      if (!vueTemplate) {
+        return
+      }
 
       function visit(node) {
-        if (!node) return
+        if (!node) {
+          return
+        }
 
         const expressionNode = node
 
@@ -127,7 +154,9 @@ function createImportsListeners(context, imports, onImportEntry) {
             return
           case 'CallExpression':
             visit(expressionNode.callee)
-            for (const arg of expressionNode.arguments) visit(arg)
+            for (const arg of expressionNode.arguments) {
+              visit(arg)
+            }
             return
           case 'ConditionalExpression':
             visit(expressionNode.test)
@@ -136,7 +165,9 @@ function createImportsListeners(context, imports, onImportEntry) {
             return
           case 'FunctionExpression':
           case 'ArrowFunctionExpression':
-            for (const param of expressionNode.params) visit(param)
+            for (const param of expressionNode.params) {
+              visit(param)
+            }
             visit(expressionNode.body)
             return
           case 'LogicalExpression':
@@ -152,8 +183,12 @@ function createImportsListeners(context, imports, onImportEntry) {
           case 'VExpressionContainer':
             return visit(node.expression)
           case 'VElement':
-            for (const attr of node.startTag.attributes) visit(attr)
-            for (const child of node.children) visit(child)
+            for (const attr of node.startTag.attributes) {
+              visit(attr)
+            }
+            for (const child of node.children) {
+              visit(child)
+            }
             return
           case 'VAttribute':
             visit(node.value)
@@ -161,7 +196,9 @@ function createImportsListeners(context, imports, onImportEntry) {
         }
 
         if ('children' in node) {
-          for (const child of node.children) visit(child)
+          for (const child of node.children) {
+            visit(child)
+          }
 
           return
         }

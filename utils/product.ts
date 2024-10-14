@@ -86,7 +86,9 @@ export function getVariantAvailability(
 }
 
 export const getPromotionIdFromProductAttributes = (product?: Product) => {
-  if (!product) return
+  if (!product) {
+    return
+  }
   return getFirstAttributeValue(product.attributes, 'promotion')?.id
 }
 
@@ -125,7 +127,9 @@ export const getProductSiblings = (
     sortBySoldOut?: boolean
   } = {},
 ): ProductSibling[] => {
-  if (!product) return []
+  if (!product) {
+    return []
+  }
 
   const {
     omitSoldOut = false,

@@ -24,7 +24,9 @@ export function useCategorySeoData(category: Ref<Category | undefined | null>) {
   })
 
   const canonicalLink = computed(() => {
-    if (robots.value?.includes('noindex')) return []
+    if (robots.value?.includes('noindex')) {
+      return []
+    }
     const url = `${$config.public.baseUrl}${route?.fullPath}`
     const href = sanitizeCanonicalURL(url)
     return [{ rel: 'canonical', key: 'canonical', href }]
@@ -40,7 +42,9 @@ export function useCategorySeoData(category: Ref<Category | undefined | null>) {
   const title = computed(() => `${categoryName.value} | SCAYLE`)
 
   const categoryBreadcrumbSchema = computed(() => {
-    if (!category.value) return []
+    if (!category.value) {
+      return []
+    }
     const items = getBreadcrumbsFromCategory(category.value, true)
     return generateCategoryBreadcrumbSchema(items)
   })

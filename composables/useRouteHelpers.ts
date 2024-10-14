@@ -103,7 +103,9 @@ export function useRouteHelpers() {
       return isLocalePath ? route : localePath(route)
     }
 
-    if (isExternalLink(route)) return route
+    if (isExternalLink(route)) {
+      return route
+    }
 
     const normalizedPath = normalizePathRoute(route)
 

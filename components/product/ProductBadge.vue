@@ -20,8 +20,12 @@ const props = defineProps<{ text: string | string[] }>()
 
 const label = computed<string | Record<'firstLabel' | 'secondLabel', string>>(
   () => {
-    if (!Array.isArray(props.text)) return props.text
-    if (props.text.length === 1) return props.text[0]
+    if (!Array.isArray(props.text)) {
+      return props.text
+    }
+    if (props.text.length === 1) {
+      return props.text[0]
+    }
     const [firstLabel, secondLabel] = props.text
     return { firstLabel, secondLabel }
   },

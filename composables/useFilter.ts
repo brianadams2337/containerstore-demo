@@ -49,14 +49,18 @@ export function useFilter(
   const availableFilters = computed<FilterItemWithValues[]>(
     () =>
       data.value?.filters.filter((filter) => {
-        if (filter.type !== 'boolean') return true
+        if (filter.type !== 'boolean') {
+          return true
+        }
 
         const trueValue = filter.values.find(
           (value) =>
             'name' in value && typeof value.name === 'boolean' && value.name,
         )
 
-        if (!trueValue) return false
+        if (!trueValue) {
+          return false
+        }
 
         return trueValue.productCount !== 0
       }) as FilterItemWithValues[],
@@ -242,7 +246,9 @@ export function useFilter(
 
     areFiltersUpdated.value = true
 
-    if (scrollToTop) window.scroll({ behavior: 'smooth', top: 0 })
+    if (scrollToTop) {
+      window.scroll({ behavior: 'smooth', top: 0 })
+    }
   }
 
   return extendPromise(filterData, {

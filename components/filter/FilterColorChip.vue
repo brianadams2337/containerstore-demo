@@ -64,7 +64,9 @@ const isBrightColor = computed(() => Color(colorCode.value).luminosity() > 0.7)
 const hasMixedColors = computed(() => Array.isArray(colorCode.value))
 
 const isNumberOfMixColorsOdd = computed<boolean>(() => {
-  if (!hasMixedColors.value || !colorCode.value) return false
+  if (!hasMixedColors.value || !colorCode.value) {
+    return false
+  }
   return colorCode.value.length % 2 !== 0
 })
 </script>

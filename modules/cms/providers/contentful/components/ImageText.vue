@@ -60,7 +60,9 @@ const { sanitize } = useContentfulImageSanitizer()
 const { getLocalizedRoute } = useLocalizedRoute()
 
 const imageSource = computed(() => {
-  if (!blok?.fields.image.length) return
+  if (!blok?.fields.image.length) {
+    return
+  }
   return sanitize(blok?.fields.image.at(0))
 })
 

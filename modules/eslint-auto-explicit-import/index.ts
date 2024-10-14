@@ -23,10 +23,11 @@ export default defineNuxtModule<ModuleOptions>({
       addons.push({
         name: 'storefront-eslint-auto-explicit-import',
         async getConfigs() {
-          if (!unimport)
+          if (!unimport) {
             logger.warn(
               'unimport is not ready for storefront-eslint-auto-explicit-import',
             )
+          }
 
           return {
             imports: [

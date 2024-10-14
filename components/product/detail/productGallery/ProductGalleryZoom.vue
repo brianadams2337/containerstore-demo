@@ -286,7 +286,9 @@ const dragHandler = ({
   dragging: boolean
   delta: [number, number]
 }) => {
-  if (!dragging || pinchActive.value) return
+  if (!dragging || pinchActive.value) {
+    return
+  }
 
   const { maxOffsetX, maxOffsetY } = getMaxOffset(scale.value)
   zoomOffsetX.value = Math.min(

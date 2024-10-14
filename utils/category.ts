@@ -4,7 +4,9 @@ export const getCategoryAncestors = (
   category: Category,
   categories: Category[] = [],
 ): Category[] => {
-  if (!category?.parent) return categories
+  if (!category?.parent) {
+    return categories
+  }
   return [...getCategoryAncestors(category.parent, categories), category.parent]
 }
 

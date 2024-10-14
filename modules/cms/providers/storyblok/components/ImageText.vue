@@ -67,7 +67,9 @@ const { getLocalizedRoute } = useLocalizedRoute()
 const { sanitize } = useStoryblokImageSanitizer()
 
 const imageSource = computed(() => {
-  if (!blok?.image.length) return
+  if (!blok?.image.length) {
+    return
+  }
   return sanitize(blok?.image?.[0])
 })
 

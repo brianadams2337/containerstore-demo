@@ -54,7 +54,9 @@ export const bundleBasketItemsByGroup = (
   return items.reduce(
     (acc, item) => {
       const groupId = item.itemGroup?.id ?? '-1'
-      if (!acc[groupId]) acc[groupId] = []
+      if (!acc[groupId]) {
+        acc[groupId] = []
+      }
       acc[groupId].push(item)
       return acc
     },
