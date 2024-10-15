@@ -16,7 +16,7 @@ export function useFilter(
   const router = useRouter()
   const areFiltersUpdated = ref(false)
   const areFiltersCleared = ref(false)
-
+  const sort = ref(route.query.sort)
   const { immediate = true, keyPrefix = 'search' } = options
 
   const { appliedFilter, appliedFiltersCount } = useAppliedFilters()
@@ -219,10 +219,18 @@ export function useFilter(
 
   const onSlideInClose = () => {
     trackFilterFlyout('close', 'true')
+    const isSortUpdated = sort.value !== route.query.sort
 
-    if (areFiltersUpdated.value) {
-      show(t('filter.updated_notification'), { type: 'SUCCESS' })
+    if (areFiltersUpdated.value && isSortUpdated) {
+      show(t('filter.updated_notification_all'), { type: 'SUCCESS' })
       areFiltersUpdated.value = false
+      sort.value = route.query.sort
+    } else if (areFiltersUpdated.value) {
+      show(t('filter.updated_notification_filter'), { type: 'SUCCESS' })
+      areFiltersUpdated.value = false
+    } else if (isSortUpdated) {
+      show(t('filter.updated_notification_sort'), { type: 'SUCCESS' })
+      sort.value = route.query.sort
     }
   }
 

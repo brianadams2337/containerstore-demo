@@ -335,7 +335,9 @@
     "show_filter": "Filter anzeigen",
     "filters_sorting": "Filter & Sortierung",
     "cleared_notification": "Alle Filter wurden entfernt!",
-    "updated_notification": "Deine Filter wurden erfolgreich angewendet!"
+    "updated_notification_filter": "Deine Filter wurden erfolgreich angewendet!",
+    "updated_notification_sort": "Deine Sortierung wurden erfolgreich angewendet!",
+    "updated_notification_all": "Deine Sortierung und Filter wurden erfolgreich angewendet!"
   },
   "osp": {
     "account": "Kundenkonto",

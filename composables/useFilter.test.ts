@@ -308,7 +308,45 @@ describe('useFilter', () => {
       await applyAttributeFilter('newAttribute', 1)
       onSlideInClose()
       expect(mocks.useToast.show).toBeCalledWith(
-        'filter.updated_notification',
+        'filter.updated_notification_filter',
+        { type: 'SUCCESS' },
+      )
+    })
+    it('should show toast message on sort applied and modal closed', async () => {
+      mocks.route.query = {
+        sort: 'price',
+      }
+
+      const { onSlideInClose } = useFilter()
+      mocks.route.query = {
+        sort: 'new',
+      }
+      onSlideInClose()
+      expect(mocks.useToast.show).toBeCalledWith(
+        'filter.updated_notification_sort',
+        { type: 'SUCCESS' },
+      )
+    })
+
+    it('should show toast message on filter and sort applied and modal closed', async () => {
+      mocks.useAppliedFilters.appliedFilter.value = {
+        attributes: [
+          { key: 'newAttribute', values: [2, 3, 4], type: 'attributes' },
+        ],
+      }
+      mocks.route.query = {
+        sort: 'price',
+      }
+
+      const { applyAttributeFilter, onSlideInClose } = useFilter()
+      mocks.route.query = {
+        ...mocks.route.query,
+        sort: 'new',
+      }
+      await applyAttributeFilter('newAttribute', 1)
+      onSlideInClose()
+      expect(mocks.useToast.show).toBeCalledWith(
+        'filter.updated_notification_all',
         { type: 'SUCCESS' },
       )
     })
