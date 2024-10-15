@@ -1,5 +1,5 @@
 <template>
-  <PageContent>
+  <SFPageContainer>
     <div class="flex w-full flex-wrap justify-between gap-4">
       <SFHeadline is-uppercase>
         {{ $t('search.result', { term, resultsCount }) }}
@@ -21,7 +21,7 @@
       @intersect:row="trackViewListing"
     />
     <FilterSlideIn />
-  </PageContent>
+  </SFPageContainer>
 </template>
 
 <script setup lang="ts">
@@ -38,11 +38,10 @@ import { useNuxtApp } from '#app'
 import { useRoute } from '#app/composables/router'
 import { categoryListingMetaData } from '~/constants'
 import ProductList from '~/components/productList/ProductList.vue'
-import PageContent from '~/components/layout/PageContent.vue'
 import FilterSlideIn from '~/components/filter/FilterSlideIn.vue'
 import SortSelection from '~/components/sorting/SortSelection.vue'
 import FilterToggleButton from '~/components/filter/FilterToggleButton.vue'
-import { SFHeadline } from '#storefront-ui/components'
+import { SFHeadline, SFPageContainer } from '#storefront-ui/components'
 
 const route = useRoute()
 

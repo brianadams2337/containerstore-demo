@@ -1,5 +1,5 @@
 <template>
-  <PageContent>
+  <SFPageContainer>
     <div v-if="fetching" class="container flex gap-2">
       <ProductCardSkeleton v-for="index in 2" :key="`osp-loading-${index}`" />
     </div>
@@ -14,7 +14,7 @@
       />
     </div>
     <EmptyState v-else :title="$t('osp.no_order_found')" show-default-actions />
-  </PageContent>
+  </SFPageContainer>
 </template>
 
 <script setup lang="ts">
@@ -29,7 +29,7 @@ import EmptyState from '~/components/EmptyState.vue'
 import ProductCardSkeleton from '~/components/product/card/ProductCardSkeleton.vue'
 import OspBasicDataSection from '~/components/osp/OspBasicDataSection.vue'
 import OspSummarySection from '~/components/osp/OspSummarySection.vue'
-import PageContent from '~/components/layout/PageContent.vue'
+import { SFPageContainer } from '#storefront-ui/components'
 
 const route = useRoute()
 const cbdToken = String(route.query.cbd)

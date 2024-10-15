@@ -1,11 +1,11 @@
 // Core
 import SFButton from './core/button/Button.vue'
 import SFBreadcrumbs from './core/Breadcrumbs.vue'
-import SFChip from './core/Chip.vue'
-import SFColorChip from './core/ColorChip.vue'
+import SFChip from './core/chip/Chip.vue'
+import SFColorChip from './core/chip/ColorChip.vue'
 import SFCountdown from './core/Countdown.vue'
-import SFFlyout from './core/Flyout.vue'
-import SFFlyoutMenu from './core/FlyoutMenu.vue'
+import SFFlyout from './core/flyout/Flyout.vue'
+import SFFlyoutMenu from './core/flyout/FlyoutMenu.vue'
 import SFHorizontalItemsDivider from './core/HorizontalItemsDivider.vue'
 import SFMenu from './core/Menu.vue'
 import SFModal from './core/Modal.vue'
@@ -14,7 +14,6 @@ import SFProgressBar from './core/ProgressBar.vue'
 import SFSkeletonLoader from './core/SkeletonLoader.vue'
 import SFSlideIn from './core/SlideIn.vue'
 import SFSwipeDelete from './core/SwipeDelete.vue'
-import SFThumbnailSlider from './core/ThumbnailSlider.vue'
 import SFTwoColumnList from './core/TwoColumnList.vue'
 import SFVerticalAccordion from './core/VerticalAccordion.vue'
 import SFPopover from './core/Popover.vue'
@@ -52,6 +51,7 @@ import SFSimplePagination from './pagination/SimplePagination.vue'
 
 // Sliders
 import SFItemsSlider from './sliders/ItemsSlider.vue'
+import SFThumbnailSlider from './sliders/ThumbnailSlider.vue'
 
 // Accordion
 import SFAccordionEntry from './accordion/AccordionEntry.vue'
@@ -59,6 +59,9 @@ import SFAccordionEntry from './accordion/AccordionEntry.vue'
 // Toast
 import SFToast from './toast/Toast.vue'
 import SFToastContainer from './toast/ToastContainer.vue'
+
+// Layout
+import SFPageContainer from './layout/PageContainer.vue'
 
 // Transitions
 import SFFadeInTransition from './transitions/FadeInTransition.vue'
@@ -119,4 +122,5 @@ export {
   SFSlideInFromTopTransition,
   SFSlideInFromLeftTransition,
   SFAccordionEntry,
+  SFPageContainer,
 }

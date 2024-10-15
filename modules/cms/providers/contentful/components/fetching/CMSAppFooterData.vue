@@ -1,6 +1,6 @@
 <template>
   <footer id="footer" class="w-full" data-testid="footer">
-    <FooterPromises />
+    <slot name="promises" />
     <div
       class="container flex flex-col justify-between gap-6 px-6 py-8 md:flex-row xl:gap-16"
       data-testid="footer-columns"
@@ -92,7 +92,6 @@ import CMSContentfulLink from '../ContentfulLink.vue'
 import { useNavigationTreeItems } from '~/composables/useNavigationTreeItems'
 // TODO: This needs to be decoupled from the CMS module as it is coming from the SFB local components
 import NavigationTreeItem from '~/components/NavigationTreeItem.vue'
-import FooterPromises from '~/components/layout/footer/FooterPromises.vue'
 
 const { data } = await useCMSBySlug<TypeFooterSkeleton>('footer', {
   content_type: 'footer',
@@ -111,7 +110,6 @@ const getSocialName = (name: string) => {
 }
 
 useContentfulEditor<TypeFooterSkeleton>(data)
-defineOptions({
-  name: 'CMSAppFooter',
-})
+
+defineOptions({ name: 'CMSAppFooter' })
 </script>

@@ -4,7 +4,7 @@
       :title="$t('navigation.my_account')"
       icon="IconUserSecondary"
     />
-    <PageContent>
+    <SFPageContainer>
       <div
         v-if="user"
         class="flex flex-col justify-center space-x-0 space-y-4 sm:flex-row sm:space-x-8 sm:space-y-0"
@@ -42,7 +42,7 @@
       <div class="mx-auto mt-12 w-fit">
         <LogoutButton data-testid="logout-button" />
       </div>
-    </PageContent>
+    </SFPageContainer>
   </div>
 </template>
 
@@ -59,9 +59,12 @@ import { useNuxtApp } from '#app'
 import { useUser, useWishlist } from '#storefront/composables'
 import { routeList } from '~/utils/route'
 import AccountHeader from '~/components/account/AccountHeader.vue'
-import PageContent from '~/components/layout/PageContent.vue'
 import LogoutButton from '~/components/auth/LogoutButton.vue'
-import { SFContainerLink, SFSkeletonLoader } from '#storefront-ui/components'
+import {
+  SFContainerLink,
+  SFPageContainer,
+  SFSkeletonLoader,
+} from '#storefront-ui/components'
 
 const { user } = useUser()
 const wishlist = await useWishlist()

@@ -1,5 +1,5 @@
 <template>
-  <PageContent class="p-0 md:mt-0">
+  <SFPageContainer class="p-0 md:mt-0">
     <div v-if="paramId">
       <OrderLoadingState v-if="fetching" />
       <template v-else-if="orderDetails && orderVariants && !fetching">
@@ -31,7 +31,7 @@
         />
       </template>
     </div>
-  </PageContent>
+  </SFPageContainer>
 </template>
 
 <script setup lang="ts">
@@ -39,12 +39,12 @@ import { computed, defineOptions } from 'vue'
 import { definePageMeta } from '#imports'
 import { useOrderDetails } from '~/composables/useOrderDetails'
 import { useRoute } from '#app/composables/router'
-import PageContent from '~/components/layout/PageContent.vue'
 import OrderLoadingState from '~/components/order/OrderLoadingState.vue'
 import AddressSummary from '~/components/order/summary/AddressSummary.vue'
 import OrderItems from '~/components/order/OrderItems.vue'
 import OrderHeader from '~/components/order/OrderHeader.vue'
 import PaymentSummary from '~/components/order/summary/PaymentSummary.vue'
+import { SFPageContainer } from '#storefront-ui/components'
 
 const route = useRoute()
 const paramId = computed(() => +route.params.id)

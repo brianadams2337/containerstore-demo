@@ -1,6 +1,6 @@
 <template>
   <footer id="footer" class="w-full" data-testid="footer">
-    <FooterPromises />
+    <slot name="promises" />
     <div
       class="container flex flex-col justify-between gap-6 px-6 py-8 md:flex-row xl:gap-16"
       data-testid="footer-columns"
@@ -8,9 +8,7 @@
       <div
         v-if="footerContent?.text"
         class="flex flex-col"
-        :class="{
-          'order-last': footerContent.align_right,
-        }"
+        :class="{ 'order-last': footerContent.align_right }"
       >
         <CMSText
           :blok="{
@@ -98,14 +96,12 @@ import CMSStoryblokLink from '../StoryblokLink.vue'
 import { useNavigationTreeItems } from '~/composables/useNavigationTreeItems'
 // TODO: This needs to be decoupled from the CMS module as it is coming from the SFB local components
 import NavigationTreeItem from '~/components/NavigationTreeItem.vue'
-import FooterPromises from '~/components/layout/footer/FooterPromises.vue'
 
 const { data } = await useCMSBySlug<SbFooter>('footer', 'global/footer')
+
 useStoryblokEditor<SbFooter>(data)
 
-const footerContent = computed(() => {
-  return data.value?.data.story.content
-})
+const footerContent = computed(() => data.value?.data.story.content)
 
 const { navigationTreeItems } = useNavigationTreeItems('footer')
 
@@ -114,7 +110,5 @@ const getSocialName = (name: string) => {
   return firstLetter.toUpperCase() + name.substring(1)
 }
 
-defineOptions({
-  name: 'CMSAppFooterData',
-})
+defineOptions({ name: 'CMSAppFooterData' })
 </script>

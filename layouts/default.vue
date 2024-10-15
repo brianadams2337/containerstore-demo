@@ -21,7 +21,11 @@
       <CMSAppFooterData
         class="mt-16"
         :class="{ 'lg:translate-y-[3.25rem]': !isPromotionBannerShown }"
-      />
+      >
+        <template #promises>
+          <FooterPromises />
+        </template>
+      </CMSAppFooterData>
     </div>
   </div>
 </template>
@@ -50,6 +54,7 @@ import CountryDetection from '~/components/CountryDetection.vue'
 import PromotionBanner from '~/components/promotion/PromotionBanner.vue'
 import CMSAppFooterData from '#storefront-cms/components/fetching/CMSAppFooterData.vue'
 import { SFToastContainer } from '#storefront-ui/components'
+import FooterPromises from '~/components/layout/footer/FooterPromises.vue'
 import { NuxtPage } from '#components'
 
 // Initialize data
