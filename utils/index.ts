@@ -1,7 +1,6 @@
 export * from './address'
 export * from './attribute'
 export * from './basket'
-export * from './careIcons'
 export * from './color'
 export * from './image'
 export * from './loading'
