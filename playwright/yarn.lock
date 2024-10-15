@@ -335,10 +335,10 @@
     unbzip2-stream "^1.4.3"
     yargs "^17.7.2"
 
-"@scayle/eslint-config-storefront@4.3.1":
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/@scayle/eslint-config-storefront/-/eslint-config-storefront-4.3.1.tgz#98510e9b798e0900fe56ab32036b0b535917ab58"
-  integrity sha512-WWp9zqDylgnPRYZE3UiDw1KD3Lil5W6XbDeSMOgZnUFwhWjvAyc93uYwp6ByyVYFk1ay9vc7etkAO/Ehn40JIQ==
+"@scayle/eslint-config-storefront@4.3.2":
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/@scayle/eslint-config-storefront/-/eslint-config-storefront-4.3.2.tgz#c96f0d8fa75114e0aecdf3684aa2b40741b0c236"
+  integrity sha512-DkIgs19P9i3ub9vMSk0jnnqbLFdu+7nATyniXEY1Le0OkbD2KAWmUxOHCLF2JWnqNP01oOUm2tLq3QMzKXrtbA==
   dependencies:
     "@antfu/eslint-config" "^3.0.0"
     "@eslint/eslintrc" "^3.1.0"
