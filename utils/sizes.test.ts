@@ -5,7 +5,7 @@ import type {
   Variant,
 } from '@scayle/storefront-nuxt'
 import { it, describe, expect } from 'vitest'
-import { getVariantSizes, hasOneSizeProductVariantOnly } from './sizes'
+import { hasOneSizeProductVariantOnly } from './sizes'
 
 const getProductData = (): Product => ({
   id: 206139,
@@ -177,39 +177,6 @@ const getProductVariantsData = (): Variant[] => [
     },
   },
 ]
-
-describe('getVariantSizes', () => {
-  it('should return a list of objects with variantId, availability, label and value, sorted by value', () => {
-    const result = getVariantSizes(getProductVariantsData())
-
-    expect(result).toEqual([
-      {
-        isAvailable: true,
-        label: '7,5',
-        value: '75',
-        variantId: 324633,
-      },
-      {
-        isAvailable: false,
-        label: '3',
-        value: '3',
-        variantId: 324634,
-      },
-      {
-        isAvailable: true,
-        label: '3,5',
-        value: '35',
-        variantId: 324635,
-      },
-      {
-        isAvailable: true,
-        label: '4',
-        value: '4',
-        variantId: 324636,
-      },
-    ])
-  })
-})
 
 describe('hasOneSizeProductVariantOnly', () => {
   it('should return false for product variant with more than one size', () => {

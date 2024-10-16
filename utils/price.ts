@@ -1,6 +1,6 @@
 import type { Order } from '@scayle/storefront-nuxt'
 
-type AppliedFees = Order['cost']['appliedFees']
+export type AppliedFees = Order['cost']['appliedFees']
 
 export const getShippingNetFee = (appliedFees: AppliedFees): number | null => {
   if (!appliedFees?.length) {

@@ -1,46 +1,5 @@
-import {
-  type Product,
-  type Variant,
-  getAttributeValue,
-  getFirstAttributeValue,
-  isInStock,
-} from '@scayle/storefront-nuxt'
+import { type Product, getAttributeValue } from '@scayle/storefront-nuxt'
 import { ONE_SIZE_KEY } from '~/constants/attributes'
-
-export type VariantSize = {
-  variantId: number
-  label: string
-  value?: string
-  isAvailable: boolean
-  [key: string]: unknown
-}
-
-export const getVariantSizes = (variants: Variant[] = []) => {
-  const variantsWithAttributes = [...variants].filter(({ attributes }) => {
-    return attributes && Object.keys(attributes).length > 0
-  })
-
-  const getSortingAttribute = (variant: Variant) => {
-    const sortAttribute = getFirstAttributeValue(variant.attributes, 'sort')
-      ?.value
-    return sortAttribute ? Number(sortAttribute) : 0
-  }
-
-  const orderedVariants = variantsWithAttributes.toSorted(
-    (a, b) => getSortingAttribute(a) - getSortingAttribute(b),
-  )
-
-  return orderedVariants.map((variant) => {
-    const size = getFirstAttributeValue(variant.attributes, 'size')!
-
-    return {
-      variantId: variant.id,
-      label: size.label,
-      value: size.value,
-      isAvailable: isInStock(variant),
-    }
-  })
-}
 
 export const hasOneSizeProductVariantOnly = ({ variants }: Product) => {
   const hasOneVariant = variants?.length === 1
