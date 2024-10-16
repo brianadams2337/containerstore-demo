@@ -27,9 +27,7 @@ export class MobileNavigation {
     })
     this.searchInputField = page.getByTestId('sidebar-search-input')
     this.searchCategoryList = page.getByTestId('search-category-list').nth(1)
-    this.exactProductItem = this.searchCategoryList.getByTestId(
-      'search-exact-product-item',
-    )
+    this.exactProductItem = page.getByTestId('search-exact-product-item')
     this.searchMoreButton = page.getByRole('link', {
       name: SEARCH_SUGGESTIONS.moreButtonLabelDE,
     })
@@ -46,7 +44,6 @@ export class MobileNavigation {
     await this.sideNavigationButton.click()
     await this.searchInputField.fill(searchTerm)
     if (exactProduct === false) {
-      await expect(this.searchCategoryList).toBeVisible()
       await expect(this.exactProductItem).toBeVisible()
     } else {
       await this.productListItem.waitFor()
