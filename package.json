@@ -126,7 +126,7 @@
     "nuxt-swiper": "1.2.2",
     "redis": "4.7.0",
     "schema-dts": "1.1.2",
-    "storyblok-js-client": "6.10.0",
+    "storyblok-js-client": "6.10.1",
     "ufo": "1.5.4",
     "vue": "3.5.12",
     "vue-slider-component": "4.1.0-beta.7"
