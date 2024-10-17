@@ -83,15 +83,6 @@
     "page_does_not_exist": "Diese Seite existiert leider nicht mehr.",
     "request_not_processed": "Deine Anfrage konnte nicht bearbeitet werden, versuch es gerne gleich nochmal."
   },
-  "availability": {
-    "available": "Sofort verfügbar",
-    "available_some": "Nur noch {quantity} verfügbar",
-    "available_from": "Voraussichtliche Lieferung ab {date}",
-    "available_asap": "Lieferung erfolgt schnellstmöglich.",
-    "not_available": "Ausverkauft",
-    "available_soon_from": "Voraussichtlich wieder verfügbar ab {date}",
-    "available_soon": "Demnächst wieder bestellbar"
-  },
   "badge_labels": {
     "new": "Neu",
     "premium": "Premium",

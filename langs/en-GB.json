@@ -83,15 +83,6 @@
     "page_does_not_exist": "Unfortunately this page no longer exists.",
     "request_not_processed": "Your request could not be processed, please try again."
   },
-  "availability": {
-    "available": "Available immediately",
-    "available_some": "Only {quantity} available",
-    "available_from": "Expected delivery from {date}",
-    "available_asap": "Delivery as quickly as possible.",
-    "not_available": "Sold out",
-    "available_soon_from": "Expected to be available again from {date}",
-    "available_soon": "Soon available again"
-  },
   "badge_labels": {
     "new": "New in",
     "premium": "Premium",

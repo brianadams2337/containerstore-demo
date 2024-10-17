@@ -1,26 +1,10 @@
 import {
-  type Product,
   type Attributes,
   getAttributeValue,
   getAttributeValueTuples,
   getFirstAttributeValue,
-  getFlattenedAdvancedAttribute,
   type AttributeGroup,
 } from '@scayle/storefront-nuxt'
-
-export const getAdvancedAttributes = <T>({
-  product,
-  property,
-}: {
-  product: Product
-  property: string
-}): Array<T> => {
-  const valueList = getFlattenedAdvancedAttribute<{ value: T }>(
-    product?.advancedAttributes?.[property]?.values || [],
-  )
-
-  return valueList.filter((entry) => entry.value).map((item) => item.value)
-}
 
 const getFormattedLabel = (attributeGroup: AttributeGroup | undefined) => {
   if (!attributeGroup) {
@@ -59,7 +43,6 @@ export const getFilteredAttributeGroups = (
 }
 
 export default {
-  getAdvancedAttributes,
   getAttributeValue,
   getAttributeValueTuples,
   getFirstAttributeValue,

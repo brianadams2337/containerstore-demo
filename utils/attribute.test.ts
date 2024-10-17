@@ -1,14 +1,7 @@
 import { it, describe, expect } from 'vitest'
 import type { Attributes } from '@scayle/storefront-nuxt'
-import {
-  getFilteredAttributeGroups,
-  getAdvancedAttributes,
-} from '~/utils/attribute'
-import {
-  advancedAttributeFactory,
-  attributeGroupFactory,
-} from '~/test/factories/attribute'
-import { productFactory } from '~/test/factories/product'
+import { getFilteredAttributeGroups } from '~/utils/attribute'
+import { attributeGroupFactory } from '~/test/factories/attribute'
 
 describe('attribute', () => {
   describe('getFilteredAttributeGroups', () => {
@@ -44,31 +37,6 @@ describe('attribute', () => {
         'Ton-in-Ton-Nähte',
         'Label-Stickerei',
       ])
-    })
-  })
-
-  describe('getAdvancedAttributes', () => {
-    const product = productFactory.build({
-      advancedAttributes: {
-        productName: advancedAttributeFactory.build({
-          key: 'productName',
-          values: [
-            {
-              fieldSet: [[{ value: "Jacke 'Premium Essentials'" }]],
-              groupSet: [],
-            },
-          ],
-        }),
-      },
-    })
-
-    it('should return correct advanced attribute', () => {
-      const advancedAttribute = getAdvancedAttributes({
-        product,
-        property: 'productName',
-      })
-
-      expect(advancedAttribute).toStrictEqual(["Jacke 'Premium Essentials'"])
     })
   })
 })

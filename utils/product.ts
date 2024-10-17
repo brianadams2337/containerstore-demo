@@ -3,25 +3,16 @@ import {
   type Product,
   type Variant,
   getAttributeValueTuples,
-  getAppliedReductionsByCategory,
   getFirstAttributeValue,
   getLowestPrice,
   type AdvancedAttribute,
   getFlattenedAdvancedAttribute,
 } from '@scayle/storefront-nuxt'
 import { getPrimaryImage } from './image'
-import { MINIMUM_QUANTITY_IMMEDIATE_AVAILABILITY } from '~/constants/product'
 import type { ProductSibling } from '~/types/siblings'
 import type { Promotion } from '~/types/promotion'
 
 export { ProductImageType } from '@scayle/storefront-nuxt'
-
-export type VariantAvailability = {
-  available: boolean
-  type: 'immediate' | 'soon' | 'unavailable'
-  text: string
-  textArgs?: unknown
-}
 
 export const getLowestPriceBetweenVariants = (product: Product) => {
   return product.variants && getLowestPrice(product.variants)
@@ -36,54 +27,6 @@ export const getVariantWithLowestPrice = (
   return variants.reduce((m: Variant, x: Variant) =>
     m.price.withoutTax < x.price.withoutTax ? m : x,
   )
-}
-
-export const getSalesRelativeAmountByCategory = (
-  product: Product,
-  category: 'sale' | 'campaign',
-) => {
-  const variantsLowestPrice = getLowestPriceBetweenVariants(product)
-  return variantsLowestPrice
-    ? getAppliedReductionsByCategory(variantsLowestPrice, category)
-    : []
-}
-
-export function getVariantAvailability(
-  variant: Variant,
-  minimumQuantityForImmediateAvailability = MINIMUM_QUANTITY_IMMEDIATE_AVAILABILITY,
-): VariantAvailability {
-  const { quantity, isSellableWithoutStock } = variant.stock
-
-  if (quantity > minimumQuantityForImmediateAvailability) {
-    return {
-      available: true,
-      type: 'immediate',
-      text: `availability.available`,
-    }
-  }
-
-  if (quantity > 0) {
-    return {
-      available: true,
-      type: 'soon',
-      text: `availability.available_some`,
-      textArgs: { quantity },
-    }
-  }
-
-  if (isSellableWithoutStock) {
-    return {
-      available: true,
-      type: 'soon',
-      text: 'availability.available_asap',
-    }
-  }
-
-  return {
-    available: false,
-    type: 'soon',
-    text: 'availability.available_soon',
-  }
 }
 
 export const getPromotionIdFromProductAttributes = (product?: Product) => {
@@ -176,8 +119,7 @@ export const getCombineWithProductIds = (attribute?: AdvancedAttribute) => {
 
   return (
     getFlattenedAdvancedAttribute<{ value: string }>(attribute.values)
-      ?.map((item) => item.value)
-      ?.map((value) => Number.parseInt(value))
+      ?.map((item) => Number.parseInt(item.value))
       ?.filter((value) => !Number.isNaN(value)) || []
   )
 }
