@@ -42,21 +42,7 @@
         />
       </div>
 
-      <div
-        v-for="tree in navigationTreeItems"
-        :key="`footer-navigation-tree-${tree.id}`"
-        class="flex flex-col"
-      >
-        <h5 class="mb-3 text-sm font-bold">
-          {{ tree.name }}
-        </h5>
-        <NavigationTreeItem
-          v-for="navTree in tree.items"
-          :key="`footer-navigation-sub-tree-${navTree.id}`"
-          :navigation-item="navTree"
-          class="block py-2 text-xs font-semibold !leading-4 text-gray-750 md:py-1"
-        />
-      </div>
+      <slot name="navigation-tree-items" />
 
       <div v-if="footerContent?.social_media" class="flex flex-col">
         <div class="flex flex-wrap gap-4">
@@ -93,17 +79,12 @@ import CMSText from '../Text.vue'
 import CMSLink from '../Link.vue'
 import { useStoryblokEditor } from '../../composables/useStoryblokEditor'
 import CMSStoryblokLink from '../StoryblokLink.vue'
-import { useNavigationTreeItems } from '~/composables/useNavigationTreeItems'
-// TODO: This needs to be decoupled from the CMS module as it is coming from the SFB local components
-import NavigationTreeItem from '~/components/NavigationTreeItem.vue'
 
 const { data } = await useCMSBySlug<SbFooter>('footer', 'global/footer')
 
 useStoryblokEditor<SbFooter>(data)
 
 const footerContent = computed(() => data.value?.data.story.content)
-
-const { navigationTreeItems } = useNavigationTreeItems('footer')
 
 const getSocialName = (name: string) => {
   const firstLetter = name.substring(0, 1)

@@ -18,14 +18,10 @@
       <div class="mt-8 grow">
         <NuxtPage />
       </div>
-      <CMSAppFooterData
+      <AppFooter
         class="mt-16"
         :class="{ 'lg:translate-y-[3.25rem]': !isPromotionBannerShown }"
-      >
-        <template #promises>
-          <FooterPromises />
-        </template>
-      </CMSAppFooterData>
+      />
     </div>
   </div>
 </template>
@@ -55,10 +51,9 @@ import CountryDetection, {
   type ShopInfo,
 } from '~/components/CountryDetection.vue'
 import PromotionBanner from '~/components/promotion/PromotionBanner.vue'
-import CMSAppFooterData from '#storefront-cms/components/fetching/CMSAppFooterData.vue'
 import { SFToastContainer } from '#storefront-ui/components'
-import FooterPromises from '~/components/layout/footer/FooterPromises.vue'
 import { NuxtPage } from '#components'
+import AppFooter from '~/components/AppFooter.vue'
 
 // Initialize data
 const { allCurrentPromotions } = useBasketPromotions()
