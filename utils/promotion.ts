@@ -1,25 +1,27 @@
 import {
   type AutomaticDiscountEffect,
-  type BasketResponseData,
   type BuyXGetYEffect,
   PromotionEffectType,
 } from '@scayle/storefront-nuxt'
+import Color from 'color'
 import { hexToRGBAColor } from '~/utils/color'
 import { AlphaColorMap } from '~/constants'
+
+const FALLBACK_COLOR = '#007aff'
 
 type PromotionStyle =
   | { textColor: string; backgroundColor: string; color?: string }
   | { textColor?: string; backgroundColor: string; color: string }
+
 export const getBackgroundColorStyle = (
   color?: string | unknown,
   alpha?: number,
 ): { backgroundColor: string } => {
-  const fallbackColor = '#007aff'
   if (typeof color !== 'string') {
-    return { backgroundColor: fallbackColor }
+    return { backgroundColor: FALLBACK_COLOR }
   }
 
-  const backgroundColor = color ?? fallbackColor
+  const backgroundColor = Color(color ?? FALLBACK_COLOR).hex()
 
   return {
     backgroundColor:
@@ -29,12 +31,11 @@ export const getBackgroundColorStyle = (
   }
 }
 export const getTextColorStyle = (color?: unknown, alpha?: number) => {
-  const fallbackColor = '#007aff'
   if (typeof color !== 'string') {
-    return { textColor: fallbackColor }
+    return { color: FALLBACK_COLOR }
   }
 
-  const textColor = color ?? fallbackColor
+  const textColor = Color(color ?? FALLBACK_COLOR).hex()
   return {
     color: alpha !== undefined ? hexToRGBAColor(textColor, alpha) : textColor,
   }
@@ -59,11 +60,13 @@ export const getPromotionStyle = (
   }
 }
 
-export const isBuyXGetYType = (promotion?: Promotion | null) => {
+export const isBuyXGetYType = (promotion?: Promotion | null): boolean => {
   return promotion?.effect?.type === PromotionEffectType.BUY_X_GET_Y
 }
 
-export const isAutomaticDiscountType = (promotion?: Promotion | null) => {
+export const isAutomaticDiscountType = (
+  promotion?: Promotion | null,
+): boolean => {
   return promotion?.effect?.type === PromotionEffectType.AUTOMATIC_DISCOUNT
 }
 
@@ -83,23 +86,4 @@ export const getAdditionalData = (
   }
   const { additionalData } = promotion.effect as AutomaticDiscountEffect
   return additionalData
-}
-
-export const getBasketTotalWithoutPromotions = (
-  basket?: BasketResponseData,
-) => {
-  if (!basket) {
-    return 0
-  }
-
-  const promotionReductionsList = basket.cost.appliedReductions
-    .filter(({ category }) => category === 'promotion')
-    .map(({ amount }) => amount.absoluteWithTax)
-
-  const promotionReductionsSum = promotionReductionsList.reduce(
-    (acc, item) => acc + item,
-    0,
-  )
-
-  return basket.cost.withTax + promotionReductionsSum
 }

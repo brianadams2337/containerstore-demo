@@ -1,5 +1,6 @@
 import {
   type BasketItem,
+  type BasketResponseData,
   FetchError,
   getFirstAttributeValue,
   HttpStatusCode,
@@ -73,4 +74,23 @@ export const getBasketToastErrorMessageKey = (error: unknown) => {
     }
   }
   return 'basket.notification.add_to_basket_error'
+}
+
+export const getBasketTotalWithoutPromotions = (
+  basket?: BasketResponseData,
+) => {
+  if (!basket) {
+    return 0
+  }
+
+  const promotionReductionsList = basket.cost.appliedReductions
+    .filter(({ category }) => category === 'promotion')
+    .map(({ amount }) => amount.absoluteWithTax)
+
+  const promotionReductionsSum = promotionReductionsList.reduce(
+    (acc, item) => acc + item,
+    0,
+  )
+
+  return basket.cost.withTax + promotionReductionsSum
 }

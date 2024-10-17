@@ -1,11 +1,14 @@
 import { it, describe, expect } from 'vitest'
 import type {
   BasketItem,
+  BasketResponseData,
   CentAmount,
   RFC33339Date,
 } from '@scayle/storefront-nuxt'
+import type { BasketKey } from '@scayle/storefront-api'
 import {
   bundleBasketItemsByGroup,
+  getBasketTotalWithoutPromotions,
   getPartitionedBasketItems,
   sortBasketItemsByIsSoldOut,
   sortBasketItemsByNameAndSize,
@@ -534,7 +537,7 @@ describe('getPartitionedBasketItems', () => {
 })
 
 describe('bundleBasketItemsByGroup', () => {
-  it('should', () => {
+  it('should return items bundled by group', () => {
     const basketItems = getBasketItemData()
 
     basketItems[0].itemGroup = {
@@ -560,5 +563,58 @@ describe('bundleBasketItemsByGroup', () => {
     expect(result['itemGroupId-1']![0].product.id).toBe(206051)
     expect(result['itemGroupId-1']![1].product.id).toBe(206042)
     expect(result['itemGroupId-2']![0].product.id).toBe(206037)
+  })
+})
+
+describe('getBasketTotalWithoutPromotions', () => {
+  it('should return total without promotions', () => {
+    const basket: BasketResponseData = {
+      key: 'basket-key' as BasketKey,
+      cost: {
+        withTax: 1000 as CentAmount,
+        withoutTax: 1200 as CentAmount,
+        appliedReductions: [
+          {
+            category: 'promotion',
+            type: 'absolute',
+            amount: {
+              relative: 500,
+              absoluteWithTax: 500 as CentAmount,
+            },
+          },
+          {
+            category: 'campaign',
+            type: 'absolute',
+            amount: {
+              relative: 200,
+              absoluteWithTax: 200 as CentAmount,
+            },
+          },
+        ],
+
+        currencyCode: 'EUR',
+      },
+      currencyCode: 'EUR',
+      items: getBasketItemData(),
+      packages: [
+        {
+          id: 1,
+          carrierKey: 'test',
+          deliveryDate: {
+            max: new Date().toISOString(),
+            min: new Date().toISOString(),
+          },
+        },
+      ],
+      applicablePromotions: [],
+    }
+
+    const totalWithoutPromotions = getBasketTotalWithoutPromotions(basket)
+
+    expect(totalWithoutPromotions).toEqual(1500)
+  })
+
+  it('should return zero if no basket data provided', () => {
+    expect(getBasketTotalWithoutPromotions()).toEqual(0)
   })
 })
