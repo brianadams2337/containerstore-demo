@@ -1,12 +1,13 @@
 import { describe, expect, it } from 'vitest'
+import { Factory } from 'fishery'
 import { getFormattedLocaleAddresses } from './address'
 import type { OrderAddress } from '~/types/order'
 
-const baseAddress: OrderAddress = {
-  city: '',
-  countryCode: '',
+const orderAddressFactory = Factory.define<OrderAddress>(() => ({
+  city: 'Weiden',
+  countryCode: 'DE',
   createdAt: '2024-04-16T11:52:23+02:00',
-  houseNumber: '',
+  houseNumber: '1',
   id: 48,
   isBillingAddress: true,
   isDefault: {
@@ -15,19 +16,18 @@ const baseAddress: OrderAddress = {
   },
   isShippingAddress: false,
   recipient: {
-    firstName: '',
-    lastName: '',
+    firstName: 'Joe',
+    lastName: 'Smith',
     type: 'personal',
   },
-  street: '',
+  street: 'Bahnhofstraße',
   updatedAt: '2024-04-16T11:52:23+02:00',
-  zipCode: '',
-}
+  zipCode: '92637',
+}))
 
 describe('getFormattedLocaleAddresses', () => {
   it('should have correct address format for US', () => {
-    const address: OrderAddress = {
-      ...baseAddress,
+    const address = orderAddressFactory.build({
       city: 'Geneva',
       countryCode: 'USA',
       houseNumber: '31',
@@ -40,7 +40,7 @@ describe('getFormattedLocaleAddresses', () => {
         lastName: 'LastName',
         type: 'personal',
       },
-    }
+    })
     const formattedUsAddress = getFormattedLocaleAddresses(address)
 
     expect(formattedUsAddress).toEqual([
@@ -51,8 +51,7 @@ describe('getFormattedLocaleAddresses', () => {
   })
 
   it('should have correct address format for UK', () => {
-    const address: OrderAddress = {
-      ...baseAddress,
+    const address = orderAddressFactory.build({
       city: 'London',
       countryCode: 'GBR',
       houseNumber: '12',
@@ -64,7 +63,7 @@ describe('getFormattedLocaleAddresses', () => {
         lastName: 'LastName',
         type: 'personal',
       },
-    }
+    })
     const formattedUkAddress = getFormattedLocaleAddresses(address)
 
     expect(formattedUkAddress).toEqual([
@@ -75,8 +74,7 @@ describe('getFormattedLocaleAddresses', () => {
   })
 
   it('should have correct address format for other countries', () => {
-    const address: OrderAddress = {
-      ...baseAddress,
+    const address = orderAddressFactory.build({
       city: 'Hamburg',
       countryCode: 'DEU',
       houseNumber: '12',
@@ -88,7 +86,7 @@ describe('getFormattedLocaleAddresses', () => {
         lastName: 'LastName',
         type: 'personal',
       },
-    }
+    })
     const formattedOtherAddress = getFormattedLocaleAddresses(address)
 
     expect(formattedOtherAddress).toEqual([
@@ -99,8 +97,7 @@ describe('getFormattedLocaleAddresses', () => {
   })
 
   it('should show additional data if set', () => {
-    const address: OrderAddress = {
-      ...baseAddress,
+    const address = orderAddressFactory.build({
       city: 'Hamburg',
       countryCode: 'DEU',
       houseNumber: '12',
@@ -113,7 +110,7 @@ describe('getFormattedLocaleAddresses', () => {
         lastName: 'LastName',
         type: 'personal',
       },
-    }
+    })
     const formattedOtherAddress = getFormattedLocaleAddresses(address)
 
     expect(formattedOtherAddress).toEqual([

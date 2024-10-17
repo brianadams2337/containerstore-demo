@@ -1,64 +1,17 @@
-import { describe, it, vi, expect, beforeEach, type Mock } from 'vitest'
-import type { Category } from '@scayle/storefront-nuxt'
+import { describe, it, vi, expect, beforeEach } from 'vitest'
+import { toRef } from 'vue'
 import { useRootCategories } from './useRootCategories'
-import type { NuxtError } from '#app'
 import { createError } from '#app/composables/error'
+import { categoryFactory } from '~/test/factories/category'
 
-function getBaseCategoryData(): Omit<Category, 'id'> {
+const { useCategories } = vi.hoisted(() => {
   return {
-    path: '/root/child/test',
-    name: 'Test',
-    slug: 'test',
-    parentId: 2048,
-    rootlineIds: [2045, 2048, 2058],
-    childrenIds: [],
-    properties: [],
-    isHidden: false,
-    depth: 3,
-    supportedFilter: ['color', 'brand', 'size'],
-    shopLevelCustomData: {},
-    countryLevelCustomData: {},
-  }
-}
-
-type RootCategoriesMockType = {
-  then: Mock
-  data: {
-    value:
-      | {
-          categories: Category[]
-          activeNode: undefined
-        }
-      | {
-          categories: Category
-          activeNode: Category
-        }
-      | undefined
-  }
-  fetching: { value: boolean }
-  error: { value: NuxtError<unknown | null> | null }
-}
-
-const mocks = vi.hoisted(() => {
-  const useCategories: RootCategoriesMockType = {
-    then: vi.fn(),
-    data: {
-      value: {
-        categories: [],
-        activeNode: undefined,
-      },
-    },
-    fetching: { value: false },
-    error: { value: null },
-  }
-
-  return {
-    useCategories,
+    useCategories: vi.fn(),
   }
 })
 
 vi.mock('#storefront/composables', () => ({
-  useCategories: vi.fn().mockReturnValue(mocks.useCategories),
+  useCategories,
 }))
 
 describe('useRootCategories', () => {
@@ -67,13 +20,18 @@ describe('useRootCategories', () => {
   })
 
   it('should return root categories and all categories with multiple categories', () => {
-    mocks.useCategories.data.value = {
-      categories: [
-        { id: 1, ...getBaseCategoryData() },
-        { id: 2, ...getBaseCategoryData() },
-      ],
-      activeNode: undefined,
-    }
+    useCategories.mockReturnValue({
+      then: vi.fn(),
+      data: toRef({
+        categories: [
+          categoryFactory.build({ id: 1 }),
+          categoryFactory.build({ id: 2 }),
+        ],
+        activeNode: undefined,
+      }),
+      fetching: toRef(false),
+      error: toRef(null),
+    })
 
     const { fetchingCategories, rootCategories, error, allCategories } =
       useRootCategories()
@@ -85,11 +43,16 @@ describe('useRootCategories', () => {
   })
 
   it('should return root categories and all categories with single categories', () => {
-    const category: Category = { id: 1, ...getBaseCategoryData() }
-    mocks.useCategories.data.value = {
-      categories: category,
-      activeNode: category,
-    }
+    const category = categoryFactory.build({ id: 1 })
+    useCategories.mockReturnValue({
+      then: vi.fn(),
+      data: toRef({
+        categories: category,
+        activeNode: category,
+      }),
+      fetching: toRef(false),
+      error: toRef(null),
+    })
 
     const { fetchingCategories, rootCategories, error, allCategories } =
       useRootCategories()
@@ -101,7 +64,12 @@ describe('useRootCategories', () => {
   })
 
   it('should handle empty categories data', () => {
-    mocks.useCategories.data.value = undefined
+    useCategories.mockReturnValue({
+      then: vi.fn(),
+      data: toRef(undefined),
+      error: toRef(null),
+      fetching: toRef(false),
+    })
 
     const { fetchingCategories, rootCategories, error, allCategories } =
       useRootCategories()
@@ -114,8 +82,13 @@ describe('useRootCategories', () => {
 
   it('should handle errors', () => {
     const mockError = createError('root categories error')
-    mocks.useCategories.data.value = undefined
-    mocks.useCategories.error.value = mockError
+
+    useCategories.mockReturnValue({
+      then: vi.fn(),
+      data: toRef(undefined),
+      error: toRef(mockError),
+      fetching: toRef(false),
+    })
 
     const { fetchingCategories, rootCategories, error, allCategories } =
       useRootCategories()

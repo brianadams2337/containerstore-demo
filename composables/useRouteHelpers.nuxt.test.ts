@@ -1,7 +1,10 @@
 import { describe, it, expect, vi } from 'vitest'
-import type { Attributes, SearchEntity } from '@scayle/storefront-nuxt'
+import type { SearchEntity } from '@scayle/storefront-nuxt'
 import { mockNuxtImport } from '@nuxt/test-utils/runtime'
 import { useRouteHelpers } from './useRouteHelpers'
+import { categoryFactory } from '~/test/factories/category'
+import { productFactory } from '~/test/factories/product'
+import { attributeGroupFactory } from '~/test/factories/attribute'
 
 vi.mock('#storefront/composables', () => ({
   useCurrentShop: () => ({
@@ -51,32 +54,20 @@ describe('useRouteHelpers', () => {
   describe('getSearchSuggestionPath', () => {
     it('should return correct product suggestion path', () => {
       const { getSearchSuggestionPath } = useRouteHelpers()
-      const attributes = {
-        name: {
-          id: 1,
-          key: 'name',
-          label: 'Suggested Product',
-          type: null,
-          multiSelect: false,
-          values: {
-            label: 'Suggested Product',
-          },
-        },
-      } as Attributes
-      const product = {
-        id: 1,
-        attributes: attributes,
-        isActive: true,
-        isSoldOut: false,
-        isNew: false,
-        createdAt: '',
-        updatedAt: '',
-        images: [],
-      }
       const suggestion = {
         type: 'product',
         productSuggestion: {
-          product,
+          product: productFactory.build({
+            id: 1,
+            attributes: {
+              name: attributeGroupFactory.build({
+                key: 'name',
+                values: {
+                  label: 'Suggested Product',
+                },
+              }),
+            },
+          }),
         },
       } as SearchEntity
 
@@ -89,28 +80,7 @@ describe('useRouteHelpers', () => {
       const sampleCategorySearchSuggestion = {
         type: 'category',
         categorySuggestion: {
-          category: {
-            id: 1,
-            path: '/category-path',
-            name: 'Sample Category',
-            slug: 'sample-category',
-            parentId: 0,
-            rootlineIds: [0, 1],
-            childrenIds: [2, 3],
-            properties: [
-              { name: 'property1', value: 'value1' },
-              { name: 'property2', value: 2 },
-            ],
-            isHidden: false,
-            depth: 1,
-            supportedFilter: ['filter1', 'filter2'],
-            shopLevelCustomData: {
-              customKey1: 'customValue1',
-            },
-            countryLevelCustomData: {
-              customKey2: 'customValue2',
-            },
-          },
+          category: categoryFactory.build({ id: 1, path: '/category-path' }),
           filters: [
             {
               type: 'attribute',

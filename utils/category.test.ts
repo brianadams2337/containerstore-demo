@@ -5,6 +5,7 @@ import {
   isSaleCategory,
   flattenCategoryTree,
 } from './category'
+import { categoryFactory } from '~/test/factories/category'
 
 const getBaseCategoryData = (): Omit<Category, 'id'> => ({
   path: '/root/child/test',
@@ -23,19 +24,14 @@ const getBaseCategoryData = (): Omit<Category, 'id'> => ({
 
 describe('getCategoryAncestors', () => {
   it('returns the correct ancestors for a given category', ({ expect }) => {
-    const category: Category = {
-      id: 1,
-      ...getBaseCategoryData(),
-      parent: {
-        id: 2048,
-        ...getBaseCategoryData(),
-        parent: {
-          id: 2045,
-          ...getBaseCategoryData(),
-        },
-      },
-    }
-    const ancestors = getCategoryAncestors(category)
+    const category2045 = categoryFactory.build({ id: 2045 })
+    const category2048 = categoryFactory.build({
+      id: 2048,
+      parent: category2045,
+    })
+    const category1 = categoryFactory.build({ id: 1, parent: category2048 })
+
+    const ancestors = getCategoryAncestors(category1)
     const ancestorIds = ancestors.map((it) => it.id)
     expect(ancestorIds).toEqual([2045, 2048])
   })
@@ -54,67 +50,62 @@ describe('getCategoryAncestors', () => {
 
 describe('isSaleCategory', () => {
   it('returns "true" if category is sale', ({ expect }) => {
-    const category: Category = {
-      id: 1,
-      ...getBaseCategoryData(),
+    const category = categoryFactory.build({
       properties: [{ name: 'sale', value: 'Sale' }],
-    }
+    })
     expect(isSaleCategory(category)).toEqual(true)
   })
 
   it('returns "false" if category is not sale', ({ expect }) => {
-    const category: Category = {
-      id: 1,
-      ...getBaseCategoryData(),
+    const category = categoryFactory.build({
       properties: [{ name: 'featured', value: 'Featured' }],
-    }
+    })
     expect(isSaleCategory(category)).toEqual(false)
   })
 })
 
 describe('flattenCategoryTree', () => {
   it('returns flattened category tree', ({ expect }) => {
-    const categories: Category[] = [
-      {
+    const categoryTree = [
+      categoryFactory.build({
         id: 1,
-        ...getBaseCategoryData(),
         children: [
-          { id: 2, ...getBaseCategoryData() },
-          {
+          categoryFactory.build({ id: 2 }),
+          categoryFactory.build({
             id: 3,
-            ...getBaseCategoryData(),
-            children: [{ id: 4, ...getBaseCategoryData() }],
-          },
+            children: [categoryFactory.build({ id: 4 })],
+          }),
         ],
-      },
-      { id: 4, ...getBaseCategoryData() },
+      }),
+      categoryFactory.build({ id: 4 }),
     ]
-
-    const allCategories = flattenCategoryTree(categories).map((item) => item.id)
+    const allCategories = flattenCategoryTree(categoryTree).map(
+      (item) => item.id,
+    )
 
     expect(allCategories).toEqual([1, 2, 3, 4])
   })
 
   it('returns flattened and unique category tree', ({ expect }) => {
-    const categories: Category[] = [
-      {
+    const categoryTree = [
+      categoryFactory.build({
         id: 1,
-        ...getBaseCategoryData(),
         children: [
-          { id: 2, ...getBaseCategoryData() },
-          {
+          categoryFactory.build({ id: 2 }),
+          categoryFactory.build({
             id: 3,
-            ...getBaseCategoryData(),
-            children: [{ id: 4, ...getBaseCategoryData() }],
-          },
+            children: [categoryFactory.build({ id: 4 })],
+          }),
         ],
-      },
-      { id: 4, ...getBaseCategoryData() },
-      { id: 4, ...getBaseCategoryData() },
-      { id: 1, ...getBaseCategoryData() },
+      }),
+      categoryFactory.build({ id: 4 }),
+      categoryFactory.build({ id: 4 }),
+      categoryFactory.build({ id: 1 }),
     ]
 
-    const allCategories = flattenCategoryTree(categories).map((item) => item.id)
+    const allCategories = flattenCategoryTree(categoryTree).map(
+      (item) => item.id,
+    )
 
     expect(allCategories).toEqual([1, 2, 3, 4])
   })

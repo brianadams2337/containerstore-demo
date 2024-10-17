@@ -1,19 +1,7 @@
 import { describe, vi, it, expect } from 'vitest'
 import type { Category, ProductCategory } from '@scayle/storefront-nuxt'
 import { useBreadcrumbs } from './useBreadcrumbs'
-
-const getBaseCategoryData = (): Omit<Category, 'id' | 'path' | 'name'> => ({
-  slug: 'test',
-  parentId: 2048,
-  rootlineIds: [2045, 2048, 2058],
-  childrenIds: [],
-  properties: [],
-  isHidden: false,
-  depth: 3,
-  supportedFilter: ['color', 'brand', 'size'],
-  shopLevelCustomData: {},
-  countryLevelCustomData: {},
-})
+import { categoryFactory } from '~/test/factories/category'
 
 vi.mock('~/composables', () => ({
   useRouteHelpers: vi.fn().mockReturnValue({
@@ -27,29 +15,27 @@ vi.mock('~/composables', () => ({
 describe('useBreadcumbs', () => {
   describe('getBreadcrumbsFromCategory', () => {
     it('should return category breadcrumbs without active category breadcrumb', () => {
-      const category: Category = {
+      const shirtCategory = categoryFactory.build({
+        id: 2045,
+        path: '/women/clothing/shirts',
+        name: 'shirts',
+      })
+      const clothingCategory = categoryFactory.build({
+        id: 2048,
+        path: '/women/clothing',
+        name: 'clothing',
+        parent: shirtCategory,
+      })
+      const womenCategory = categoryFactory.build({
         id: 1,
         path: '/women',
         name: 'women',
-        ...getBaseCategoryData(),
-        parent: {
-          id: 2048,
-          path: '/women/clothing',
-          name: 'clothing',
+        parent: clothingCategory,
+      })
 
-          ...getBaseCategoryData(),
-          parent: {
-            id: 2045,
-            path: '/women/clothing/shirts',
-            name: 'shirts',
-
-            ...getBaseCategoryData(),
-          },
-        },
-      }
       const { getBreadcrumbsFromCategory } = useBreadcrumbs()
 
-      const breadcrumbs = getBreadcrumbsFromCategory(category)
+      const breadcrumbs = getBreadcrumbsFromCategory(womenCategory)
 
       expect(breadcrumbs).toStrictEqual([
         { to: '/de/c/women/clothing/shirts-2045', value: 'shirts' },
@@ -58,29 +44,26 @@ describe('useBreadcumbs', () => {
     })
 
     it('should return category breadcrumbs with active category breadcrumb', () => {
-      const category: Category = {
+      const shirtCategory = categoryFactory.build({
+        id: 2045,
+        path: '/women/clothing/shirts',
+        name: 'shirts',
+      })
+      const clothingCategory = categoryFactory.build({
+        id: 2048,
+        path: '/women/clothing',
+        name: 'clothing',
+        parent: shirtCategory,
+      })
+      const womenCategory = categoryFactory.build({
         id: 1,
         path: '/women',
         name: 'women',
-        ...getBaseCategoryData(),
-        parent: {
-          id: 2048,
-          path: '/women/clothing',
-          name: 'clothing',
-
-          ...getBaseCategoryData(),
-          parent: {
-            id: 2045,
-            path: '/women/clothing/shirts',
-            name: 'shirts',
-
-            ...getBaseCategoryData(),
-          },
-        },
-      }
+        parent: clothingCategory,
+      })
       const { getBreadcrumbsFromCategory } = useBreadcrumbs()
 
-      const breadcrumbs = getBreadcrumbsFromCategory(category, true)
+      const breadcrumbs = getBreadcrumbsFromCategory(womenCategory, true)
 
       expect(breadcrumbs).toStrictEqual([
         { to: '/de/c/women/clothing/shirts-2045', value: 'shirts' },
@@ -123,15 +106,14 @@ describe('useBreadcumbs', () => {
 
   describe('getBreadcrumb', () => {
     it('should return single category breadcrumb', () => {
-      const category: Category = {
+      const womenCategory = categoryFactory.build({
         id: 1,
         path: '/women',
         name: 'women',
-        ...getBaseCategoryData(),
-      }
+      })
       const { getBreadcrumb } = useBreadcrumbs()
 
-      expect(getBreadcrumb(category)).toStrictEqual({
+      expect(getBreadcrumb(womenCategory)).toStrictEqual({
         to: '/de/c/women-1',
         value: 'women',
       })

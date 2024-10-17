@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 import { describe, it, expect, vi, beforeAll } from 'vitest'
 import { useCategorySeoData } from '~/composables/useCategorySeoData'
+import { categoryFactory } from '~/test/factories/category'
 
 const mocks = vi.hoisted(() => {
   return {
@@ -101,21 +102,7 @@ describe('useCategorySeoData', () => {
 
     it('metaDescription should have category name', () => {
       const { metaDescription } = useCategorySeoData(
-        ref({
-          name: 'test-category',
-          id: 1,
-          path: '/',
-          slug: 'slug',
-          parentId: 2,
-          rootlineIds: [],
-          childrenIds: [],
-          properties: [],
-          isHidden: false,
-          depth: 3,
-          supportedFilter: [],
-          shopLevelCustomData: {},
-          countryLevelCustomData: {},
-        }),
+        ref(categoryFactory.build({ name: 'test-category' })),
       )
       expect(metaDescription.value).toBe(
         'plp.seo_description {"category":"test-category"}',

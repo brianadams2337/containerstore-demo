@@ -1,10 +1,10 @@
 import { it, describe } from 'vitest'
-import type { Variant } from '@scayle/storefront-nuxt'
 import {
   sanitizeCanonicalURL,
   generateProductSchema,
   generateCategoryBreadcrumbSchema,
 } from './seo'
+import { variantFactory } from '~/test/factories/variant'
 
 describe('sanitizeCanonicalURL', () => {
   it('returns URL with stripped params except "page" by default', ({
@@ -40,24 +40,24 @@ describe('generateProductSchema', () => {
   it('return generated product schema with mandatory payload defined only', ({
     expect,
   }) => {
-    const variant = {
-      id: 1,
-      referenceKey: 'refKey',
-      price: {
-        withTax: 1050,
-        currencyCode: 'EUR',
-      },
-      stock: {
-        quantity: 0,
-      },
-    } as unknown as Variant
-
     const schema = generateProductSchema({
       productName: 'Test product',
       brandName: 'Hugo',
       description: 'product description',
       url: '/p/sweatshirt-ess-206056',
-      variants: [variant],
+      variants: [
+        variantFactory.build({
+          id: 1,
+          referenceKey: 'refKey',
+          price: {
+            withTax: 1050,
+            currencyCode: 'EUR',
+          },
+          stock: {
+            quantity: 0,
+          },
+        }),
+      ],
     })
 
     expect(schema).toEqual({
@@ -85,23 +85,23 @@ describe('generateProductSchema', () => {
   it('return generated product schema with optional payload defined', ({
     expect,
   }) => {
-    const variant = {
-      id: 1,
-      referenceKey: 'refKey',
-      price: {
-        withTax: 1050,
-        currencyCode: 'USD',
-      },
-      stock: {
-        quantity: 10,
-      },
-    } as unknown as Variant
-
     const schema = generateProductSchema({
       productName: 'Test product',
       description: 'product description',
       brandName: 'Hugo',
-      variants: [variant],
+      variants: [
+        variantFactory.build({
+          id: 1,
+          referenceKey: 'refKey',
+          price: {
+            withTax: 1050,
+            currencyCode: 'USD',
+          },
+          stock: {
+            quantity: 10,
+          },
+        }),
+      ],
       url: '/p/sweatshirt-ess-206056',
       images: ['images/fe8ee645c772b98de23b00e4f600a613.png'],
     })

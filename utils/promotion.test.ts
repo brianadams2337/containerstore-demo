@@ -1,5 +1,4 @@
 import { describe, expect, it } from 'vitest'
-import type { PromotionEffect, RFC33339Date } from '@scayle/storefront-core'
 import { PromotionEffectType } from '@scayle/storefront-api'
 import {
   getBackgroundColorStyle,
@@ -10,27 +9,7 @@ import {
   getVariantIds,
   getAdditionalData,
 } from './promotion'
-import type { Promotion } from '~/types/promotion'
-
-const getPromotionData = (effect: PromotionEffect): Promotion => ({
-  id: '645e0c241a93369ff53f26e0',
-  name: 'Christmas Promotion',
-  schedule: {
-    from: '2023-05-10T10:00:00Z' as RFC33339Date,
-    to: '2023-05-17T18:00:00Z' as RFC33339Date,
-  },
-  isActive: true,
-  effect,
-  conditions: [
-    {
-      level: 'item',
-      key: 'mov_100',
-      condition: 'test 123',
-    },
-  ],
-  customData: {},
-  priority: 1,
-})
+import { promotionFactory } from '~/test/factories/promotion'
 
 describe('getBackgroundColorStyle', () => {
   it('should return background color style object with normalized color to hex', () => {
@@ -72,16 +51,16 @@ describe('getTextColorStyle', () => {
 
 describe('getPromotionStyle', () => {
   it('should return promotion style object', () => {
-    const promotion: Promotion = {
-      ...getPromotionData({
+    const promotion = promotionFactory.build({
+      effect: {
         type: PromotionEffectType.BuyXGetY,
         additionalData: {
           variantIds: [12389244, 23985437],
           maxCount: 1,
         },
-      }),
+      },
       customData: { colorHex: '#ffffff' },
-    }
+    })
     const style = getPromotionStyle(promotion)
 
     expect(style).toEqual({
@@ -97,22 +76,26 @@ describe('getPromotionStyle', () => {
 
 describe('isBuyXGetYType', () => {
   it('should return "true" if it is "buy_x_get_y" type', () => {
-    const promotion: Promotion = getPromotionData({
-      type: PromotionEffectType.BuyXGetY,
-      additionalData: {
-        variantIds: [12389244, 23985437],
-        maxCount: 1,
+    const promotion = promotionFactory.build({
+      effect: {
+        type: PromotionEffectType.BuyXGetY,
+        additionalData: {
+          variantIds: [12389244, 23985437],
+          maxCount: 1,
+        },
       },
     })
     expect(isBuyXGetYType(promotion)).toEqual(true)
   })
 
   it('should return "false" if it is not "buy_x_get_y" type', () => {
-    const promotion: Promotion = getPromotionData({
-      type: PromotionEffectType.AutomaticDiscount,
-      additionalData: {
-        type: 'relative',
-        value: 1000,
+    const promotion = promotionFactory.build({
+      effect: {
+        type: PromotionEffectType.AutomaticDiscount,
+        additionalData: {
+          type: 'relative',
+          value: 1000,
+        },
       },
     })
     expect(isBuyXGetYType(promotion)).toEqual(false)
@@ -125,22 +108,26 @@ describe('isBuyXGetYType', () => {
 
 describe('isAutomaticDiscountType', () => {
   it('should return "true" if it is "automatic_discount" type', () => {
-    const promotion: Promotion = getPromotionData({
-      type: PromotionEffectType.AutomaticDiscount,
-      additionalData: {
-        type: 'relative',
-        value: 1000,
+    const promotion = promotionFactory.build({
+      effect: {
+        type: PromotionEffectType.AutomaticDiscount,
+        additionalData: {
+          type: 'relative',
+          value: 1000,
+        },
       },
     })
     expect(isAutomaticDiscountType(promotion)).toEqual(true)
   })
 
   it('should return "false" if it is not "automatic_discount" type', () => {
-    const promotion: Promotion = getPromotionData({
-      type: PromotionEffectType.BuyXGetY,
-      additionalData: {
-        variantIds: [12389244, 23985437],
-        maxCount: 1,
+    const promotion = promotionFactory.build({
+      effect: {
+        type: PromotionEffectType.BuyXGetY,
+        additionalData: {
+          variantIds: [12389244, 23985437],
+          maxCount: 1,
+        },
       },
     })
     expect(isAutomaticDiscountType(promotion)).toEqual(false)
@@ -153,11 +140,13 @@ describe('isAutomaticDiscountType', () => {
 
 describe('getVariantIds', () => {
   it('should return an empty array if promotion is not provided or it is not "buy_x_get_y" type', () => {
-    const promotion: Promotion = getPromotionData({
-      type: PromotionEffectType.AutomaticDiscount,
-      additionalData: {
-        type: 'relative',
-        value: 1000,
+    const promotion = promotionFactory.build({
+      effect: {
+        type: PromotionEffectType.AutomaticDiscount,
+        additionalData: {
+          type: 'relative',
+          value: 1000,
+        },
       },
     })
 
@@ -166,11 +155,13 @@ describe('getVariantIds', () => {
   })
 
   it('should return variant ids for "buy_x_get_y" promotion', () => {
-    const promotion: Promotion = getPromotionData({
-      type: PromotionEffectType.BuyXGetY,
-      additionalData: {
-        variantIds: [12389244, 23985437],
-        maxCount: 1,
+    const promotion = promotionFactory.build({
+      effect: {
+        type: PromotionEffectType.BuyXGetY,
+        additionalData: {
+          variantIds: [12389244, 23985437],
+          maxCount: 1,
+        },
       },
     })
 
@@ -180,11 +171,13 @@ describe('getVariantIds', () => {
 
 describe('getAdditionalData', () => {
   it('should return undefined if promotion is not provided or it is not "automatic_discount" type', () => {
-    const promotion: Promotion = getPromotionData({
-      type: PromotionEffectType.BuyXGetY,
-      additionalData: {
-        variantIds: [12389244, 23985437],
-        maxCount: 1,
+    const promotion = promotionFactory.build({
+      effect: {
+        type: PromotionEffectType.BuyXGetY,
+        additionalData: {
+          variantIds: [12389244, 23985437],
+          maxCount: 1,
+        },
       },
     })
 
@@ -193,11 +186,13 @@ describe('getAdditionalData', () => {
   })
 
   it('should return additional data for "automatic_discount" promotion', () => {
-    const promotion: Promotion = getPromotionData({
-      type: PromotionEffectType.AutomaticDiscount,
-      additionalData: {
-        type: 'relative',
-        value: 1000,
+    const promotion = promotionFactory.build({
+      effect: {
+        type: PromotionEffectType.AutomaticDiscount,
+        additionalData: {
+          type: 'relative',
+          value: 1000,
+        },
       },
     })
 

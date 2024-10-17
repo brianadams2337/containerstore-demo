@@ -1,7 +1,5 @@
 import type {
-  Category,
   CategorySearchSuggestion,
-  Product,
   ProductSearchSuggestion,
 } from '@scayle/storefront-nuxt'
 import { describe, expect, it } from 'vitest'
@@ -13,45 +11,9 @@ import {
   isProductSuggestion,
   type CategoryFilter,
 } from './search'
-
-const getBaseCategory = (): Category => ({
-  id: 2046,
-  path: '/men',
-  name: 'Men',
-  slug: 'men',
-  parentId: 0,
-  rootlineIds: [2046],
-  childrenIds: [2051, 2052, 2053],
-  properties: [],
-  isHidden: false,
-  depth: 1,
-  supportedFilter: ['color', 'size', 'brand'],
-  shopLevelCustomData: {},
-  countryLevelCustomData: {},
-  children: [],
-})
-
-const getBaseProduct = (): Product => ({
-  id: 1,
-  isActive: true,
-  isSoldOut: false,
-  isNew: false,
-  createdAt: '2022-03-24T10:47:18+00:00',
-  updatedAt: '2024-02-07T08:19:23+00:00',
-  masterKey: 'CAK1069004000001',
-  referenceKey: 'CAK1069004000001',
-  images: [
-    {
-      hash: 'images/cce0fde26236e20b7a7eae383f947ae7.png',
-    },
-    {
-      hash: 'images/20b25319a9f4996f6716df883b5d10e5.png',
-    },
-    {
-      hash: 'images/07f12f7108b266888f9a77318e1e7551.png',
-    },
-  ],
-})
+import { productFactory } from '~/test/factories/product'
+import { attributeGroupFactory } from '~/test/factories/attribute'
+import { categoryFactory } from '~/test/factories/category'
 
 describe('buildFiltersQuery', () => {
   it('should build filters queries for attribute filters', () => {
@@ -206,7 +168,7 @@ describe('isProductSuggestion', () => {
   it('should return "true" if its product suggestion', () => {
     const productSuggestion: ProductSearchSuggestion = {
       type: 'product',
-      productSuggestion: { product: getBaseProduct() },
+      productSuggestion: { product: productFactory.build() },
     }
     expect(isProductSuggestion(productSuggestion)).toEqual(true)
   })
@@ -214,7 +176,7 @@ describe('isProductSuggestion', () => {
   it('should return "false" if its not product suggestion', () => {
     const categorySuggestion: CategorySearchSuggestion = {
       type: 'category',
-      categorySuggestion: { category: getBaseCategory(), filters: [] },
+      categorySuggestion: { category: categoryFactory.build(), filters: [] },
     }
     expect(isProductSuggestion(categorySuggestion)).toEqual(false)
   })
@@ -224,7 +186,7 @@ describe('isCategorySuggestion', () => {
   it('should return "true" if its category suggestion', () => {
     const categorySuggestion: CategorySearchSuggestion = {
       type: 'category',
-      categorySuggestion: { category: getBaseCategory(), filters: [] },
+      categorySuggestion: { category: categoryFactory.build(), filters: [] },
     }
 
     expect(isCategorySuggestion(categorySuggestion)).toEqual(true)
@@ -232,7 +194,7 @@ describe('isCategorySuggestion', () => {
   it('should return "false" if its not category suggestion', () => {
     const productSuggestion: ProductSearchSuggestion = {
       type: 'product',
-      productSuggestion: { product: getBaseProduct() },
+      productSuggestion: { product: productFactory.build() },
     }
     expect(isCategorySuggestion(productSuggestion)).toEqual(false)
   })
@@ -247,7 +209,7 @@ describe('getSuggestionName', () => {
     const categorySuggestion: CategorySearchSuggestion = {
       type: 'category',
       categorySuggestion: {
-        category: { ...getBaseCategory(), name: 'Men' },
+        category: categoryFactory.build({ name: 'Men' }),
         filters: [],
       },
     }
@@ -258,23 +220,18 @@ describe('getSuggestionName', () => {
     const productSuggestion: ProductSearchSuggestion = {
       type: 'product',
       productSuggestion: {
-        product: {
-          ...getBaseProduct(),
+        product: productFactory.build({
           attributes: {
-            name: {
-              id: 20005,
+            name: attributeGroupFactory.build({
               key: 'name',
-              label: 'Name',
-              multiSelect: false,
-              type: '',
               values: {
                 id: 20005,
                 label: 'Calvin Klein Shirt',
                 value: 'name',
               },
-            },
+            }),
           },
-        },
+        }),
       },
     }
     expect(getSuggestionName(productSuggestion)).toEqual('Calvin Klein Shirt')

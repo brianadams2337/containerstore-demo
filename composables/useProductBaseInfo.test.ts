@@ -1,11 +1,10 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
-import type {
-  Attributes,
-  CentAmount,
-  Product,
-  RFC33339Date,
-} from '@scayle/storefront-nuxt'
+import { describe, it, expect, vi } from 'vitest'
+import type { CentAmount } from '@scayle/storefront-nuxt'
 import { useProductBaseInfo } from './useProductBaseInfo'
+import { productFactory } from '~/test/factories/product'
+import { attributeGroupFactory } from '~/test/factories/attribute'
+import { variantFactory } from '~/test/factories/variant'
+import { priceFactory } from '~/test/factories/price'
 
 vi.mock('#i18n', () => ({
   useI18n: vi.fn().mockReturnValue({
@@ -20,132 +19,31 @@ vi.mock('~/composables', () => ({
 }))
 
 describe('useProductBaseInfo', () => {
-  let attributes: Attributes
-  let product: Product
-
-  beforeEach(() => {
-    attributes = {
-      name: {
-        id: 1,
-        key: 'name',
-        label: 'Test Product',
-        type: null,
-        multiSelect: false,
-        values: {
-          label: 'Test Product',
-        },
-      },
-      brand: {
-        id: 1,
-        key: 'brand',
-        label: 'Brand',
-        type: 'string',
-        multiSelect: false,
-        values: {
-          label: 'Brand Name',
-          id: 101,
-          value: 'brand-name',
-        },
-      },
-      price: {
-        id: 1,
-        key: 'brand',
-        label: 'Brand',
-        type: 'string',
-        multiSelect: false,
-        values: {
-          label: 'Brand Name',
-          id: 101,
-          value: 'brand-name',
-        },
-      },
-      color: {
-        id: 1001,
-        key: 'color',
-        label: 'Color',
-        type: '',
-        multiSelect: false,
-        values: {
-          id: 6,
-          label: 'Weiß',
-          value: 'weiss',
-        },
-      },
-    } as Attributes
-    product = {
-      id: 1,
-      attributes: attributes,
-      isActive: true,
-      isSoldOut: false,
-      isNew: false,
-      createdAt: '',
-      updatedAt: '',
-      images: [{ hash: 'test image' }],
-      siblings: [
-        {
-          id: 5,
-          attributes: attributes,
-          isActive: true,
-          isSoldOut: false,
-          isNew: false,
-          createdAt: '',
-          updatedAt: '',
-          images: [],
-        },
-      ],
-      variants: [
-        {
-          id: 1,
-          lowestPriorPrice: {
-            withTax: 23,
-            relativeDifferenceToPrice: null,
-          },
-          stock: { warehouseId: 1, quantity: 2 },
-          createdAt: '' as RFC33339Date,
-          updatedAt: '' as RFC33339Date,
-          price: {
-            withoutTax: 10 as CentAmount,
-            withTax: 1 as CentAmount,
-            tax: {
-              vat: {
-                amount: 2 as CentAmount,
-                rate: 1,
-              },
-            },
-            appliedReductions: [],
-            currencyCode: '$',
-          },
-        },
-        {
-          id: 1,
-          stock: { warehouseId: 1, quantity: 2 },
-          createdAt: '' as RFC33339Date,
-          updatedAt: '' as RFC33339Date,
-          price: {
-            withoutTax: 20 as CentAmount,
-            withTax: 1 as CentAmount,
-            tax: {
-              vat: {
-                amount: 2 as CentAmount,
-                rate: 1,
-              },
-            },
-            appliedReductions: [],
-            currencyCode: '$',
-          },
-        },
-      ],
-    }
-  })
   describe('brand', () => {
     it('should return the correct default value for brand', () => {
+      const product = productFactory.build({
+        attributes: {
+          brand: attributeGroupFactory.build({
+            key: 'brand',
+            label: 'Brand',
+            type: 'string',
+            values: {
+              label: 'Brand Name',
+              id: 101,
+              value: 'brand-name',
+            },
+          }),
+        },
+      })
       const { brand } = useProductBaseInfo(product)
 
       expect(brand.value).toBe('Brand Name')
     })
 
     it('should return empty default value for brand', () => {
-      attributes['brand'] = undefined
+      const product = productFactory.build({
+        attributes: {},
+      })
       const { brand } = useProductBaseInfo(product)
 
       expect(brand.value).toBe('')
@@ -154,13 +52,26 @@ describe('useProductBaseInfo', () => {
 
   describe('name', () => {
     it('should return the correct default value for name', () => {
+      const product = productFactory.build({
+        attributes: {
+          name: attributeGroupFactory.build({
+            key: 'name',
+            label: 'Test Product',
+            values: {
+              label: 'Test Product',
+            },
+          }),
+        },
+      })
       const { name } = useProductBaseInfo(product)
 
       expect(name.value).toBe('Test Product')
     })
 
     it('should return empty default value for name', () => {
-      attributes['name'] = undefined
+      const product = productFactory.build({
+        attributes: {},
+      })
       const { name } = useProductBaseInfo(product)
 
       expect(name.value).toBe('')
@@ -169,6 +80,23 @@ describe('useProductBaseInfo', () => {
 
   describe('price', () => {
     it('should return the correct default value for price', () => {
+      const product = productFactory.build({
+        variants: [
+          variantFactory.build({
+            price: priceFactory.build({
+              withoutTax: 10 as CentAmount,
+              withTax: 1 as CentAmount,
+              tax: {
+                vat: {
+                  amount: 2 as CentAmount,
+                  rate: 1,
+                },
+              },
+              currencyCode: 'USD',
+            }),
+          }),
+        ],
+      })
       const { price } = useProductBaseInfo(product)
 
       expect(price.value).toStrictEqual({
@@ -181,7 +109,7 @@ describe('useProductBaseInfo', () => {
           },
         },
         appliedReductions: [],
-        currencyCode: '$',
+        currencyCode: 'USD',
       })
     })
 
@@ -194,37 +122,45 @@ describe('useProductBaseInfo', () => {
 
   describe('variantWithLowestPrice', () => {
     it('should return the correct default value for variantWithLowestPrice', () => {
+      const product = productFactory.build({
+        variants: [
+          variantFactory.build({
+            id: 1,
+            price: priceFactory.build({
+              withoutTax: 10 as CentAmount,
+              withTax: 12 as CentAmount,
+              tax: {
+                vat: {
+                  amount: 2 as CentAmount,
+                  rate: 1,
+                },
+              },
+              currencyCode: 'USD',
+            }),
+          }),
+          variantFactory.build({
+            id: 2,
+            price: priceFactory.build({
+              withoutTax: 8 as CentAmount,
+              withTax: 10 as CentAmount,
+              tax: {
+                vat: {
+                  amount: 2 as CentAmount,
+                  rate: 1,
+                },
+              },
+              currencyCode: 'USD',
+            }),
+          }),
+        ],
+      })
       const { variantWithLowestPrice } = useProductBaseInfo(product)
 
-      expect(variantWithLowestPrice.value).toStrictEqual({
-        createdAt: '',
-        id: 1,
-        lowestPriorPrice: {
-          relativeDifferenceToPrice: null,
-          withTax: 23,
-        },
-        price: {
-          appliedReductions: [],
-          currencyCode: '$',
-          tax: {
-            vat: {
-              amount: 2,
-              rate: 1,
-            },
-          },
-          withTax: 1,
-          withoutTax: 10,
-        },
-        stock: {
-          quantity: 2,
-          warehouseId: 1,
-        },
-        updatedAt: '',
-      })
+      expect(variantWithLowestPrice.value?.id).toBe(2)
     })
 
     it('should return empty default value for variantWithLowestPrice', () => {
-      product['variants'] = undefined
+      const product = productFactory.build({ variants: undefined })
       const { variantWithLowestPrice } = useProductBaseInfo(product)
 
       expect(variantWithLowestPrice.value).toBeUndefined()
@@ -233,6 +169,16 @@ describe('useProductBaseInfo', () => {
 
   describe('lowestPriorPrice', () => {
     it('should return the correct default value for lowestPriorPrice', () => {
+      const product = productFactory.build({
+        variants: [
+          variantFactory.build({
+            lowestPriorPrice: {
+              withTax: 23,
+              relativeDifferenceToPrice: null,
+            },
+          }),
+        ],
+      })
       const { lowestPriorPrice } = useProductBaseInfo(product)
 
       expect(lowestPriorPrice.value).toStrictEqual({
@@ -242,7 +188,7 @@ describe('useProductBaseInfo', () => {
     })
 
     it('should return undefined default value for lowestPriorPrice', () => {
-      product['variants'] = undefined
+      const product = productFactory.build({ variants: [] })
       const { variantWithLowestPrice } = useProductBaseInfo(product)
 
       expect(variantWithLowestPrice.value).toBeUndefined()
@@ -251,6 +197,20 @@ describe('useProductBaseInfo', () => {
 
   describe('colors', () => {
     it('should return the correct default value for colors + sibling color', () => {
+      const product = productFactory.build({
+        attributes: {
+          color: attributeGroupFactory.build({
+            key: 'color',
+            label: 'Color',
+            type: '',
+            values: {
+              id: 6,
+              label: 'Weiß',
+              value: 'weiss',
+            },
+          }),
+        },
+      })
       const { colors } = useProductBaseInfo(product)
 
       expect(colors.value).toStrictEqual([
@@ -283,7 +243,7 @@ describe('useProductBaseInfo', () => {
     })
 
     it('should return the sorted images and the primary image of the product', () => {
-      const { images, image } = useProductBaseInfo({
+      const product = productFactory.build({
         images: [
           {
             hash: 'hash1',
@@ -291,23 +251,35 @@ describe('useProductBaseInfo', () => {
           {
             hash: 'hash2',
             attributes: {
-              primaryImage: {
+              primaryImage: attributeGroupFactory.build({
                 key: 'primaryImage',
-              },
+                label: 'Primary Image',
+                values: {
+                  label: 'Primary Image',
+                },
+              }),
             },
           },
           {
             hash: 'hash3',
           },
         ],
-      } as Product)
+      })
+      const { images, image } = useProductBaseInfo(product)
 
       expect(images.value).toStrictEqual([
         {
           hash: 'hash2',
           attributes: {
             primaryImage: {
+              id: 1,
+              label: 'Primary Image',
+              multiSelect: false,
+              type: null,
               key: 'primaryImage',
+              values: {
+                label: 'Primary Image',
+              },
             },
           },
         },
@@ -324,6 +296,13 @@ describe('useProductBaseInfo', () => {
         attributes: {
           primaryImage: {
             key: 'primaryImage',
+            id: 1,
+            label: 'Primary Image',
+            multiSelect: false,
+            type: null,
+            values: {
+              label: 'Primary Image',
+            },
           },
         },
       })
@@ -332,8 +311,38 @@ describe('useProductBaseInfo', () => {
 
   describe('siblings', () => {
     it('should return the correct default value for siblings', () => {
+      const product = productFactory.build({
+        attributes: {
+          color: attributeGroupFactory.build({
+            key: 'color',
+            label: 'Color',
+            type: '',
+            values: {
+              id: 6,
+              label: 'Weiß',
+              value: 'weiss',
+            },
+          }),
+        },
+        siblings: [
+          productFactory.build({
+            id: 5,
+            attributes: {
+              color: attributeGroupFactory.build({
+                key: 'color',
+                label: 'Color',
+                type: '',
+                values: {
+                  id: 6,
+                  label: 'Weiß',
+                  value: 'weiss',
+                },
+              }),
+            },
+          }),
+        ],
+      })
       const { siblings } = useProductBaseInfo(product)
-
       expect(siblings.value).toStrictEqual([
         {
           colors: [
@@ -347,7 +356,7 @@ describe('useProductBaseInfo', () => {
           image: {
             hash: 'test image',
           },
-          name: 'Test Product',
+          name: '',
           isSoldOut: false,
         },
         {
@@ -359,23 +368,67 @@ describe('useProductBaseInfo', () => {
             },
           ],
           id: 5,
-          image: undefined,
-          name: 'Test Product',
+          image: {
+            hash: 'test image',
+          },
+          name: '',
           isSoldOut: false,
         },
       ])
     })
 
     it('should return the correct default value for siblings sorted by sold out state', () => {
-      product.siblings?.unshift({
-        id: 52,
-        attributes: attributes,
-        isActive: true,
-        isSoldOut: true,
-        isNew: false,
-        createdAt: '',
-        updatedAt: '',
-        images: [],
+      const product = productFactory.build({
+        attributes: {
+          color: attributeGroupFactory.build({
+            key: 'color',
+            label: 'Color',
+            type: '',
+            values: {
+              id: 6,
+              label: 'Weiß',
+              value: 'weiss',
+            },
+          }),
+        },
+        siblings: [
+          productFactory.build({
+            id: 52,
+            attributes: {
+              color: attributeGroupFactory.build({
+                key: 'color',
+                label: 'Color',
+                type: '',
+                values: {
+                  id: 6,
+                  label: 'Weiß',
+                  value: 'weiss',
+                },
+              }),
+            },
+            isActive: true,
+            isSoldOut: true,
+            isNew: false,
+            createdAt: '',
+            updatedAt: '',
+            images: [],
+          }),
+          productFactory.build({
+            id: 5,
+            attributes: {
+              color: attributeGroupFactory.build({
+                key: 'color',
+                label: 'Color',
+                type: '',
+                values: {
+                  id: 6,
+                  label: 'Weiß',
+                  value: 'weiss',
+                },
+              }),
+            },
+          }),
+        ],
       })
       const { siblings } = useProductBaseInfo(product)
 
@@ -392,7 +445,7 @@ describe('useProductBaseInfo', () => {
           image: {
             hash: 'test image',
           },
-          name: 'Test Product',
+          name: '',
           isSoldOut: false,
         },
         {
@@ -404,8 +457,10 @@ describe('useProductBaseInfo', () => {
             },
           ],
           id: 5,
-          image: undefined,
-          name: 'Test Product',
+          image: {
+            hash: 'test image',
+          },
+          name: '',
           isSoldOut: false,
         },
         {
@@ -419,21 +474,63 @@ describe('useProductBaseInfo', () => {
           id: 52,
           image: undefined,
           isSoldOut: true,
-          name: 'Test Product',
+          name: '',
         },
       ])
     })
 
     it('should return the non sold out sibling', () => {
-      product.siblings?.push({
-        id: 52,
-        attributes: attributes,
-        isActive: false,
-        isSoldOut: true,
-        isNew: false,
-        createdAt: '',
-        updatedAt: '',
-        images: [],
+      const product = productFactory.build({
+        attributes: {
+          color: attributeGroupFactory.build({
+            key: 'color',
+            label: 'Color',
+            type: '',
+            values: {
+              id: 6,
+              label: 'Weiß',
+              value: 'weiss',
+            },
+          }),
+        },
+        siblings: [
+          productFactory.build({
+            id: 52,
+            attributes: {
+              color: attributeGroupFactory.build({
+                key: 'color',
+                label: 'Color',
+                type: '',
+                values: {
+                  id: 6,
+                  label: 'Weiß',
+                  value: 'weiss',
+                },
+              }),
+            },
+            isActive: false,
+            isSoldOut: true,
+            isNew: false,
+            createdAt: '',
+            updatedAt: '',
+            images: [],
+          }),
+          productFactory.build({
+            id: 5,
+            attributes: {
+              color: attributeGroupFactory.build({
+                key: 'color',
+                label: 'Color',
+                type: '',
+                values: {
+                  id: 6,
+                  label: 'Weiß',
+                  value: 'weiss',
+                },
+              }),
+            },
+          }),
+        ],
       })
       const { nonSoldOutSiblings } = useProductBaseInfo(product)
 
@@ -450,7 +547,7 @@ describe('useProductBaseInfo', () => {
           image: {
             hash: 'test image',
           },
-          name: 'Test Product',
+          name: '',
           isSoldOut: false,
         },
         {
@@ -462,8 +559,10 @@ describe('useProductBaseInfo', () => {
             },
           ],
           id: 5,
-          image: undefined,
-          name: 'Test Product',
+          image: {
+            hash: 'test image',
+          },
+          name: '',
           isSoldOut: false,
         },
       ])
@@ -478,6 +577,18 @@ describe('useProductBaseInfo', () => {
 
   describe('link', () => {
     it('should return the correct default value for link', () => {
+      const product = productFactory.build({
+        id: 1,
+        attributes: {
+          name: attributeGroupFactory.build({
+            key: 'name',
+            label: 'Test Product',
+            values: {
+              label: 'Test Product',
+            },
+          }),
+        },
+      })
       const { link } = useProductBaseInfo(product)
 
       expect(link.value).toBe(1)
@@ -491,6 +602,7 @@ describe('useProductBaseInfo', () => {
   })
   describe('alt', () => {
     it('should return the correct default value for alt', () => {
+      const product = productFactory.build()
       const { alt } = useProductBaseInfo(product)
 
       expect(alt.value).toBe('product_image.alt-Test Product-Weiß & Weiß')
@@ -513,52 +625,14 @@ describe('useProductBaseInfo', () => {
       categoryName: '3',
       categoryUrl: '/3',
     }
-    const product = {
-      id: 1,
-      isActive: true,
-      isSoldOut: false,
-      isNew: false,
-      createdAt: '2022-04-26T15:04:56+00:00',
-      updatedAt: '2022-06-21T20:02:33+00:00',
-      masterKey: 'HGO3464001000001',
-      referenceKey: '1',
-      attributes: {},
-      images: [],
-      variants: [],
-      siblings: [],
-      priceRange: {
-        min: {
-          currencyCode: 'EUR',
-          withTax: 8990 as CentAmount,
-          withoutTax: 7555 as CentAmount,
-          appliedReductions: [],
-          tax: {
-            vat: {
-              amount: 1435 as CentAmount,
-              rate: 0.19,
-            },
-          },
-        },
-        max: {
-          currencyCode: 'EUR',
-          withTax: 8990 as CentAmount,
-          withoutTax: 7555 as CentAmount,
-          appliedReductions: [],
-          tax: {
-            vat: {
-              amount: 1435 as CentAmount,
-              rate: 0.19,
-            },
-          },
-        },
-      },
+    const product = productFactory.build({
       categories: [
         [category1, category2],
         [category2],
         [category1, category3, category2],
         [category3],
       ],
-    } as Product
+    })
 
     it('should return longest category from product', () => {
       const { longestCategoryList } = useProductBaseInfo(product)
