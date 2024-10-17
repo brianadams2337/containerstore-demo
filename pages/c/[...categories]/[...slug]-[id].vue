@@ -6,7 +6,7 @@
         :blok="content"
         is-teaser
         is-cover
-        class="-mb-8 h-[12.5rem] w-full sm:mb-0"
+        class="-mb-8 h-52 w-full sm:mb-0"
       />
 
       <div
