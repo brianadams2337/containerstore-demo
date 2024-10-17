@@ -21,6 +21,7 @@
 import type { SummaryItem } from './AddressSummary.vue'
 import AddressInformation from './AddressInformation.vue'
 import { SFHeadline } from '#storefront-ui/components'
+import type { OrderAddress } from '~/types/order'
 
 type Props = {
   items: SummaryItem[]

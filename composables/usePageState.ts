@@ -1,5 +1,6 @@
 import { readonly } from 'vue'
 import { useState } from '#app/composables/state'
+import type { PageType } from '~/types/tracking'
 
 export type PageState = {
   type: PageType

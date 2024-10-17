@@ -1,3 +1,5 @@
+import type { OrderAddress } from '~/types/order'
+
 export function getFormattedLocaleAddresses({
   countryCode,
   recipient,

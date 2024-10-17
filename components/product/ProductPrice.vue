@@ -37,10 +37,11 @@
 
 <script setup lang="ts">
 import { computed, toRefs } from 'vue'
-import type { Price, Promotion } from '@scayle/storefront-nuxt'
+import type { Price } from '@scayle/storefront-nuxt'
 import { Size } from '#storefront-ui'
 import { useProductPrice } from '~/composables/useProductPrice'
 import { getPromotionStyle } from '~/utils'
+import type { Promotion } from '~/types/promotion'
 
 type Props = {
   price: Price

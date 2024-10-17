@@ -1,5 +1,12 @@
 import { useRoute } from '#app/composables/router'
 import { getEmailHash, mapCustomerInfoToTrackingPayload } from '~/utils'
+import type {
+  TrackingEvent,
+  TrackingPayload,
+  AuthenticationType,
+  AuthTrackingEvent,
+  CustomerType,
+} from '~/types/tracking'
 
 export type AuthTrackingEventData = {
   customer_id?: number

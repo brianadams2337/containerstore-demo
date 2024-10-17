@@ -14,8 +14,8 @@ import {
 } from './tracking'
 import { usePageState } from '~/composables/usePageState'
 import { useTracking } from '~/composables/useTracking'
-
 import { mapProductToTrackingPayload, mapTrackingDataForEvent } from '~/utils'
+import type { TrackingEvent, TrackingPayload } from '~/types/tracking'
 
 /**
  * Higher order composable which serves as a single entry point to unify different ecommerce tracking events

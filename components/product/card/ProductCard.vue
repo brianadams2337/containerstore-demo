@@ -74,6 +74,7 @@ import ProductCardBadgesFooter from './badges/ProductCardBadgesFooter.vue'
 import ProductCardBadgesHeader from './badges/ProductCardBadgesHeader.vue'
 import ProductCardDetails from './ProductCardDetails.vue'
 import { useProductBaseInfo } from '~/composables'
+import type { ListItem } from '~/types/tracking'
 
 type Props = {
   product: Product

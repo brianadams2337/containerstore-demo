@@ -14,6 +14,7 @@
 
 <script setup lang="ts">
 import ProductPromotionDefaultBannersItem from './ProductPromotionDefaultBannersItem.vue'
+import type { Promotion } from '~/types/promotion'
 
 defineProps<{
   applicablePromotions: Promotion[]

@@ -77,6 +77,7 @@ import ProductImage from '../../ProductImage.vue'
 import ProductPromotionFreeGiftBadge from './ProductPromotionFreeGiftBadge.vue'
 import { useProductBaseInfo, usePromotionGiftSelection } from '~/composables'
 import { createCustomPrice } from '~/utils'
+import type { Promotion } from '~/types/promotion'
 import { ClientOnly } from '#components'
 import { SFButton, SFHeadline } from '#storefront-ui/components'
 

@@ -3,6 +3,15 @@ import { getFirstAttributeValue } from '@scayle/storefront-nuxt'
 import { useCurrentShop } from '#storefront/composables'
 import { useRouteHelpers } from '~/composables/useRouteHelpers'
 import { getDeepestCategoryForTracking } from '~/utils'
+import type {
+  TrackingEvent,
+  TrackingPayload,
+  ProductViewData,
+  ProductListData,
+  TrackSelectItemEventParams,
+  TrackViewItemParams,
+  TrackViewItemListEventParams,
+} from '~/types/tracking'
 
 const collectProductListItems = (
   items: Product[],

@@ -24,6 +24,7 @@ import AddressTabs from './AddressTabs.vue'
 import AddressInformation from './AddressInformation.vue'
 import { isEqual } from '~/utils/object'
 import { useNuxtApp } from '#app'
+import type { OrderAddress } from '~/types/order'
 
 export type SummaryItem = {
   name: 'shipping' | 'billing'

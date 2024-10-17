@@ -140,6 +140,7 @@ import {
   SFSlideInFromBottomTransition,
   SFModal,
 } from '#storefront-ui/components'
+import type { Promotion } from '~/types/promotion'
 
 const props = defineProps<{
   product: Product

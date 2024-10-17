@@ -19,6 +19,7 @@ import { computed } from 'vue'
 import PromotionHeadline from '../headlines/PromotionHeadline.vue'
 import PromotionCountdown from '../PromotionCountdown.vue'
 import { getBackgroundColorStyle } from '~/utils/promotion'
+import type { Promotion } from '~/types/promotion'
 
 type Props = {
   customData?: Promotion['customData']

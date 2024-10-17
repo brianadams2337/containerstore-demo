@@ -27,9 +27,5 @@ type CustomData = PromotionCustomData &
     colorHex: string
   }>
 
-export {}
-
-declare global {
-  export type Promotion = CorePromotion & { customData: CustomData }
-  export type BasketPromotion = BasketItem['promotion'] & Promotion
-}
+export type Promotion = CorePromotion & { customData: CustomData }
+export type BasketPromotion = BasketItem['promotion'] & Promotion

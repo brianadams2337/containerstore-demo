@@ -41,6 +41,7 @@ import type { Product } from '@scayle/storefront-nuxt'
 import ProductPromotionGiftItem from './ProductPromotionGiftItem.vue'
 import { usePromotionGifts } from '~/composables'
 import { SFHeadline } from '#storefront-ui/components'
+import type { Promotion } from '~/types/promotion'
 
 const props = defineProps<{
   product: Product

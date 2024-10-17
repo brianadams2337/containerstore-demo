@@ -21,6 +21,7 @@
 import { computed } from 'vue'
 import { useCurrentShop } from '#storefront/composables'
 import { SFHeadline } from '#storefront-ui/components'
+import type { Order } from '~/types/order'
 
 type Props = {
   id: Order['id']

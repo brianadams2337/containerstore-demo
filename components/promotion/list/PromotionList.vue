@@ -31,6 +31,7 @@ import ClosePromotionListButton from '../buttons/ClosePromotionListButton.vue'
 import PromotionItem from './PromotionItem.vue'
 import { useDefaultBreakpoints, usePromotionActions } from '~/composables'
 import { SFItemsSlider } from '#storefront-ui/components'
+import type { Promotion } from '~/types/promotion'
 
 defineProps<{ items: Promotion[] }>()
 

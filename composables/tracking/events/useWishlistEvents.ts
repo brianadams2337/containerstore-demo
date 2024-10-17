@@ -1,4 +1,12 @@
 import { useCurrentShop } from '#storefront/composables'
+import type {
+  TrackingEvent,
+  TrackingPayload,
+  TrackRemoveFromWishListParams,
+  TrackAddToWishListParams,
+  ProductActionData,
+  ProductListData,
+} from '~/types/tracking'
 
 const getCategoryData = (category: { id?: number; name?: string }) => {
   const { id = -1, name = '' } = category

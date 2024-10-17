@@ -1,4 +1,10 @@
 import { getEmailHash } from '~/utils'
+import type {
+  TrackingEvent,
+  TrackingPayload,
+  TrackCustomerDataParams,
+  AuthenticationType,
+} from '~/types/tracking'
 
 const useCustomerEvents = (
   track: (event: TrackingEvent, payload: TrackingPayload) => void,

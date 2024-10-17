@@ -30,6 +30,7 @@
 
 <script setup lang="ts">
 import { useFormatHelpers } from '#storefront/composables'
+import type { Order } from '~/types/order'
 
 defineProps<{ cost: Order['cost'] }>()
 

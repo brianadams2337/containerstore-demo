@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { getFormattedLocaleAddresses } from './address'
+import type { OrderAddress } from '~/types/order'
 
 const baseAddress: OrderAddress = {
   city: '',

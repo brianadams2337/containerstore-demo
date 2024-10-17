@@ -46,6 +46,7 @@ import AsyncDataWrapper from '../AsyncDataWrapper.vue'
 import { useWishlistActions } from '~/composables'
 import { useWishlist } from '#storefront/composables'
 import { SFButton } from '#storefront-ui/components'
+import type { ListItem } from '~/types/tracking'
 
 type Props = {
   product: Product

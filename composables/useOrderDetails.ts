@@ -1,6 +1,7 @@
 import { computed, type Ref } from 'vue'
 import { useOrder, useVariant } from '#storefront/composables'
 import { useRoute } from '#app/composables/router'
+import type { Order, OrderItems } from '~/types/order'
 
 export function useOrderDetails(key?: string) {
   if (!key) {

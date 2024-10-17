@@ -13,6 +13,7 @@ import {
   isAutomaticDiscountType,
   isBuyXGetYType,
 } from '~/utils'
+import type { Promotion, BasketPromotion } from '~/types/promotion'
 
 export function useBasketItemPromotion(basketItem: Ref<BasketItem>) {
   const basket = useBasket()

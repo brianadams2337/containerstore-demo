@@ -53,6 +53,7 @@ import { useRouteHelpers } from '~/composables/useRouteHelpers'
 import { routeList } from '~/utils/route'
 import { SFHeadline, SFButton } from '#storefront-ui/components'
 import PaymentIcon from '~/components/order/PaymentIcon.vue'
+import type { Order, DeliveryDate } from '~/types/order'
 
 type Props = {
   orderData: Order

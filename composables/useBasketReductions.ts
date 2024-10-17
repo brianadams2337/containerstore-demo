@@ -2,6 +2,7 @@ import { extendPromise, type BasketItem } from '@scayle/storefront-nuxt'
 import { computed } from 'vue'
 import { hexToRGBAColor } from '~/utils/color'
 import { useBasket } from '#storefront/composables'
+import type { Promotion } from '~/types/promotion'
 
 export function useBasketReductions() {
   const basket = useBasket()

@@ -17,6 +17,7 @@
 import { computed } from 'vue'
 import { SFLink } from '#storefront-ui/components'
 import { useCurrentCategory, useRouteHelpers } from '~/composables'
+import type { Promotion } from '~/types/promotion'
 
 const props = defineProps<{ promotion: Promotion; backgroundColor?: string }>()
 

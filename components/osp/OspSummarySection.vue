@@ -40,6 +40,7 @@ import OspPaymentSummary from './OspPaymentSummary.vue'
 import OspDeliveryDate from './OspDeliveryDate.vue'
 import OspProductCard from './OspProductCard.vue'
 import { SFHeadline } from '#storefront-ui/components'
+import type { Order, DeliveryDate, OrderItem } from '~/types/order'
 
 type Props = {
   orderData: Order

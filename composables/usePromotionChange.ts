@@ -1,6 +1,7 @@
 import { nextTick, onMounted, onUnmounted, ref } from 'vue'
 import { useCurrentPromotion } from '~/composables/useCurrentPromotion'
 import { PROMOTIONS_CHANGE_DELAY } from '~/constants'
+import type { Promotion } from '~/types/promotion'
 
 export function usePromotionChange(promotions: Promotion[]) {
   const { setCurrentPromotion } = useCurrentPromotion(promotions)

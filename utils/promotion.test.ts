@@ -10,6 +10,7 @@ import {
   getVariantIds,
   getAdditionalData,
 } from './promotion'
+import type { Promotion } from '~/types/promotion'
 
 const getPromotionData = (effect: PromotionEffect): Promotion => ({
   id: '645e0c241a93369ff53f26e0',

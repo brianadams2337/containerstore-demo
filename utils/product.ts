@@ -12,6 +12,7 @@ import {
 import { getPrimaryImage } from './image'
 import { MINIMUM_QUANTITY_IMMEDIATE_AVAILABILITY } from '~/constants/product'
 import type { ProductSibling } from '~/types/siblings'
+import type { Promotion } from '~/types/promotion'
 
 export { ProductImageType } from '@scayle/storefront-nuxt'
 

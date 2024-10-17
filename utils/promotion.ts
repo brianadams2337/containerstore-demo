@@ -6,6 +6,7 @@ import {
 import Color from 'color'
 import { hexToRGBAColor } from '~/utils/color'
 import { AlphaColorMap } from '~/constants'
+import type { Promotion } from '~/types/promotion'
 
 const FALLBACK_COLOR = '#007aff'
 

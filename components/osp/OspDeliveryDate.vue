@@ -13,6 +13,7 @@
 <script setup lang="ts">
 import { formatDate } from '@scayle/storefront-nuxt'
 import { SFHeadline } from '#storefront-ui/components'
+import type { DeliveryDate } from '~/types/order'
 
 defineProps<{ deliveryDate: DeliveryDate }>()
 </script>

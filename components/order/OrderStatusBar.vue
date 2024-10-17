@@ -40,6 +40,7 @@ import { computed } from 'vue'
 import { DeliveryProgress, OrderStatus } from '~/constants/order'
 import { useFormatDate } from '~/composables/useFormatDate'
 import { SFHeadline, SFProgressBar } from '#storefront-ui/components'
+import type { DeliveryInfo } from '~/types/order'
 
 type Props = {
   index: number

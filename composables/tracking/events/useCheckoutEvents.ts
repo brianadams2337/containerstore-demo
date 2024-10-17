@@ -1,4 +1,9 @@
 import type { BasketItem, Product, Variant } from '@scayle/storefront-nuxt'
+import type {
+  TrackingEvent,
+  TrackingPayload,
+  ProductListData,
+} from '~/types/tracking'
 
 const collectBasketItems = (
   items: BasketItem<Product, Variant>[] = [],

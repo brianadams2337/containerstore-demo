@@ -30,6 +30,7 @@ import {
   SFButton,
   SFFadeInFromBottomTransition,
 } from '#storefront-ui/components'
+import type { Promotion } from '~/types/promotion'
 
 const props = defineProps<{
   promotionId: Promotion['id']

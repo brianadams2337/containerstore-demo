@@ -23,6 +23,7 @@ import PromotionCard from '../PromotionCard.vue'
 import PromotionItemContent from './PromotionItemContent.vue'
 import PromotionItemTerms from './PromotionItemTerms.vue'
 import { usePromotionActions } from '~/composables'
+import type { Promotion } from '~/types/promotion'
 
 const { togglePromotionList } = usePromotionActions()
 const props = defineProps<{ promotion: Promotion }>()

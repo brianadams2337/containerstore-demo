@@ -1,4 +1,5 @@
 import type { StoryblokTrackingContent } from '~/modules/cms/providers/storyblok/types'
+import type { TrackingEvent, TrackingPayload } from '~/types/tracking'
 
 const usePromotionEvents = (
   track: (event: TrackingEvent, payload: TrackingPayload) => void,
@@ -10,16 +11,20 @@ const usePromotionEvents = (
     if (!Object.values(trackableObject).some(Boolean)) {
       return
     }
+
+    const trackingContent =
+      trackableObject as Required<StoryblokTrackingContent>
+
     track(event, {
       items: [
         {
-          item_id: trackableObject.item_id,
-          item_name: trackableObject.item_name,
-          promotion_id: trackableObject.promotion_id,
-          promotion_name: trackableObject.promotion_name,
-          creative_name: trackableObject.creative_name,
-          creative_slot: trackableObject.creative_slot,
-          location_id: trackableObject.location_id,
+          item_id: trackingContent.item_id,
+          item_name: trackingContent.item_name,
+          promotion_id: trackingContent.promotion_id,
+          promotion_name: trackingContent.promotion_name,
+          creative_name: trackingContent.creative_name,
+          creative_slot: trackingContent.creative_slot,
+          location_id: trackingContent.location_id,
           index: parseInt(`${trackableObject.index}`),
         },
       ],

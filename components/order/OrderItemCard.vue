@@ -71,6 +71,7 @@ import { useFormatHelpers } from '#storefront/composables'
 import { useRouteHelpers } from '~/composables/useRouteHelpers'
 import { SFLink } from '#storefront-ui/components'
 import { NuxtImg } from '#components'
+import type { OrderProduct, OrderVariant, OrderPrice } from '~/types/order'
 
 type Props = {
   product: OrderProduct

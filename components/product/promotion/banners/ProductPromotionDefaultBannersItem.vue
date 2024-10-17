@@ -60,6 +60,7 @@ import { SFSkeletonLoader, SFFadeInTransition } from '#storefront-ui/components'
 import PromotionCountdown from '~/components/promotion/PromotionCountdown.vue'
 import PromotionCard from '~/components/promotion/PromotionCard.vue'
 import PromotionHeadline from '~/components/promotion/headlines/PromotionHeadline.vue'
+import type { Promotion } from '~/types/promotion'
 
 type Props = {
   promotion: Promotion

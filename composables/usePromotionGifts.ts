@@ -2,6 +2,7 @@ import { type Product, extendPromise } from '@scayle/storefront-nuxt'
 import { computed, type Ref } from 'vue'
 import { useBasket, useRpc } from '#storefront/composables'
 import { getBackgroundColorStyle, getVariantIds, isBuyXGetYType } from '~/utils'
+import type { Promotion } from '~/types/promotion'
 
 export function usePromotionGifts(
   product: Product,

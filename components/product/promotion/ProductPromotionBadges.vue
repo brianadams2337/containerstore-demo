@@ -51,6 +51,7 @@ import { routeList } from '~/utils/route'
 import { useLocalePath } from '#i18n'
 import { useRoute } from '#app/composables/router'
 import { getBackgroundColorStyle } from '~/utils/promotion'
+import type { Promotion } from '~/types/promotion'
 
 type Props = {
   product: Product

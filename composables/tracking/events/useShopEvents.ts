@@ -1,5 +1,6 @@
 import { version } from '../../../package.json'
 import { useCurrentShop } from '#storefront/composables'
+import type { TrackingEvent, TrackingPayload } from '~/types/tracking'
 
 const SHOP_GENDER: 'male' | 'female' | 'other' | '' = ''
 

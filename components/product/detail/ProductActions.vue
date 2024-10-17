@@ -114,6 +114,7 @@ import {
   useTrackingEvents,
   type AddToBasketItem,
 } from '~/composables'
+import type { Promotion } from '~/types/promotion'
 
 type Props = {
   product: Product

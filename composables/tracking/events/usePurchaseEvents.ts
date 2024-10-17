@@ -21,6 +21,7 @@ import {
   sumReductionsByCategory,
   sumReductionsFromAllOrderItemsPerCategory,
 } from '~/utils'
+import type { OrderItemProduct, OrderItemVariant } from '~/types/tracking'
 
 const getItems = (orderData: Order, currency?: string) => {
   const defaultEmptyValue = ''

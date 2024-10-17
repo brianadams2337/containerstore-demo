@@ -1,5 +1,6 @@
 import { onMounted, onUnmounted } from 'vue'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
+import type { PageType } from '~/types/tracking'
 
 const getPageType = (hash: string): PageType => {
   if (hash.endsWith('#/auth')) {

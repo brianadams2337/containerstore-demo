@@ -1,4 +1,5 @@
 import type { ValuesType } from 'utility-types'
+import type { Package } from '~/types/order'
 
 type UppercaseObjectKeys<T extends string> = {
   [x in Uppercase<T>]: Lowercase<x>

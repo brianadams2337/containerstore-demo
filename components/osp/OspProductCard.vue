@@ -60,6 +60,7 @@ import {
 } from '@scayle/storefront-nuxt'
 import { useFormatHelpers } from '#storefront/composables'
 import { NuxtImg } from '#components'
+import type { OrderProduct, OrderVariant, OrderPrice } from '~/types/order'
 
 type Props = {
   product: OrderProduct

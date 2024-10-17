@@ -17,6 +17,22 @@ import {
 } from '@scayle/storefront-nuxt'
 import { isEqual } from './object'
 import { divideByHundred } from '~/utils/price'
+import type {
+  TrackingEvent,
+  ProductListData,
+  AdditionalTrackingEvent,
+  EcommerceTrackingEvent,
+  TrackingPayload,
+  MultipleActionData,
+  ProductInfo,
+  ViewInfo,
+  AdditionalInfo,
+  CustomerInfo,
+  CustomerData,
+  TrackingCategory,
+  ProductViewData,
+  ProductActionData,
+} from '~/types/tracking'
 
 /**
  * Checks if event is one of: AdditionalTrackingEvent = 'cart' | 'wishlist' | 'search' | 'filter_flyout' | 'filter_slider'
@@ -350,7 +366,6 @@ export const mapTrackingDataForEvent = (
 }
 
 /**
- *
  * @param categories
  * @returns most specific category for a product
  */

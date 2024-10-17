@@ -10,6 +10,7 @@ import { clearNuxtData } from '#app/composables/asyncData'
 import { useRouteHelpers } from '~/composables/useRouteHelpers'
 import { useToast } from '~/composables/useToast'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
+import type { AuthTrackingEvent, AuthenticationType } from '~/types/tracking'
 import { useNuxtApp } from '#app'
 import { useRoute, useRouter } from '#app/composables/router'
 import {

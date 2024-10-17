@@ -6,6 +6,7 @@ import {
   isAutomaticDiscountType,
   isBuyXGetYType,
 } from '~/utils'
+import type { Promotion } from '~/types/promotion'
 
 export function useCurrentPromotion(promotions: Promotion[] = []) {
   const promotion = useState<Promotion | null>(

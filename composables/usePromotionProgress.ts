@@ -2,6 +2,7 @@ import { extendPromise } from '@scayle/storefront-nuxt'
 import { computed, type ComputedRef, type Ref } from 'vue'
 import { useBasket, useFormatHelpers } from '#storefront/composables'
 import { divideByHundred, getBasketTotalWithoutPromotions } from '~/utils'
+import type { Promotion, BasketPromotion } from '~/types/promotion'
 
 export function usePromotionProgress(
   promotion:

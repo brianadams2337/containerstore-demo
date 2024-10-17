@@ -81,6 +81,7 @@ import {
   usePromotionActions,
   usePromotionProgress,
 } from '~/composables'
+import type { Promotion } from '~/types/promotion'
 
 const props = defineProps<{
   promotions: Promotion[]

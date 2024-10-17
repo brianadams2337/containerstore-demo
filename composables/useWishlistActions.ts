@@ -1,6 +1,7 @@
 import type { Product, Variant } from '@scayle/storefront-nuxt'
 import { usePageState } from '~/composables/usePageState'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
+import type { ListItem } from '~/types/tracking'
 
 import { useRoute } from '#app/composables/router'
 

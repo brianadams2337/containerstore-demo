@@ -60,6 +60,7 @@ import {
   isBuyXGetYType,
 } from '~/utils/promotion'
 import { SFHeadline } from '#storefront-ui/components'
+import type { Promotion } from '~/types/promotion'
 
 type Props = {
   promotedProductId?: number

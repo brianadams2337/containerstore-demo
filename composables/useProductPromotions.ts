@@ -7,6 +7,7 @@ import {
 import { type MaybeRefOrGetter, toRef, computed, type ComputedRef } from 'vue'
 import { useBasketPromotions } from '~/composables/useBasketPromotions'
 import { useBasket, useCurrentPromotions } from '#storefront/composables'
+import type { Promotion } from '~/types/promotion'
 import {
   divideByHundred,
   getAdditionalData,

@@ -30,6 +30,7 @@ import ProductCardSkeleton from '~/components/product/card/ProductCardSkeleton.v
 import OspBasicDataSection from '~/components/osp/OspBasicDataSection.vue'
 import OspSummarySection from '~/components/osp/OspSummarySection.vue'
 import { SFPageContainer } from '#storefront-ui/components'
+import type { OrderProduct, OrderVariant } from '~/types/order'
 
 const route = useRoute()
 const cbdToken = String(route.query.cbd)

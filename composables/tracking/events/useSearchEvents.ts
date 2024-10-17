@@ -1,6 +1,11 @@
 import type { SearchEntity } from '@scayle/storefront-nuxt'
 import { useRouteHelpers } from '~/composables/useRouteHelpers'
 import { getSuggestionName, isProductSuggestion } from '~/utils'
+import type {
+  TrackingEvent,
+  TrackingPayload,
+  TrackSearchEventParams,
+} from '~/types/tracking'
 
 const useSearchEvents = (
   track: (event: TrackingEvent, payload: TrackingPayload) => void,

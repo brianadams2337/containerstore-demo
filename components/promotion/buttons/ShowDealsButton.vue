@@ -19,6 +19,7 @@ import {
   useCurrentCategory,
 } from '~/composables'
 import { SFButton } from '#storefront-ui/components'
+import type { Promotion } from '~/types/promotion'
 
 const props = defineProps<{ category: Promotion['customData']['category'] }>()
 
