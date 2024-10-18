@@ -500,7 +500,11 @@
   },
   "product_image": {
     "alt": "{brand} {productName} in {colors}",
-    "alt_with_image_index": "{alt}, Image {index} of {total}"
+    "alt_with_image_index": "{alt}, Image {index} of {total}",
+    "selected": "Selected",
+    "unselected": "Unselected",
+    "alt_sibling": "{selected}, {colors}",
+    "alt_sibling_sold_out": "{selected}, {colors} (Sold-out)"
   },
   "country_selection": {
     "prompt": "Looks like you are in {country}. Which shop would you like to visit?",

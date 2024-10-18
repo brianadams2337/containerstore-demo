@@ -41,11 +41,19 @@
           <ProductImage
             v-if="sibling.image"
             :alt="
-              $t('product_image.alt', {
-                productName: sibling.name,
-                colors: sibling.colors[0].label,
-                brand: brand,
-              })
+              $t(
+                sibling.isSoldOut
+                  ? 'product_image.alt_sibling_sold_out'
+                  : 'product_image.alt_sibling',
+                {
+                  colors: sibling.colors[0].label,
+                  selected: $t(
+                    product.id === sibling.id
+                      ? 'product_image.selected'
+                      : 'product_image.unselected',
+                  ),
+                },
+              )
             "
             sizes="64px"
             :class="{
@@ -107,7 +115,7 @@ type Props = {
 const { getProductDetailRoute } = useRouteHelpers()
 
 const props = defineProps<Props>()
-const { siblings, brand } = useProductBaseInfo(props.product)
+const { siblings } = useProductBaseInfo(props.product)
 
 const hoveredColorLabel = ref()
 const { t } = useI18n()
