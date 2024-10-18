@@ -40,6 +40,13 @@
         >
           <ProductImage
             v-if="sibling.image"
+            :alt="
+              $t('product_image.alt', {
+                productName: sibling.name,
+                colors: sibling.colors[0].label,
+                brand: brand,
+              })
+            "
             sizes="64px"
             :class="{
               'opacity-20': sibling.isSoldOut && sibling.id !== product.id,
@@ -100,7 +107,7 @@ type Props = {
 const { getProductDetailRoute } = useRouteHelpers()
 
 const props = defineProps<Props>()
-const { siblings } = useProductBaseInfo(props.product)
+const { siblings, brand } = useProductBaseInfo(props.product)
 
 const hoveredColorLabel = ref()
 const { t } = useI18n()

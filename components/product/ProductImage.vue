@@ -36,7 +36,7 @@ type Props = {
   image: ProductImage
   sizes?: string
   fit?: 'contain' | 'cover'
-  alt?: string
+  alt: string
   imageLoading?: 'lazy' | 'eager'
   preload?: boolean
   quality?: number

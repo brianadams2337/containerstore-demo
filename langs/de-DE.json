@@ -500,7 +500,7 @@
     "next_label": "Nächsten Bild"
   },
   "product_image": {
-    "alt": "{productName} in {colors}"
+    "alt": "{brand} {productName} in {colors}"
   },
   "country_selection": {
     "prompt": "Es sieht so aus, als wären Sie in {country}. Welchen Shop möchten Sie besuchen?",

@@ -16,7 +16,7 @@
               <ProductImage
                 v-if="image"
                 :image="image"
-                :alt="name"
+                :alt="alt"
                 sizes="700px"
                 class="min-h-96 min-w-full"
               />
@@ -57,7 +57,7 @@
               <ProductImage
                 v-if="image"
                 :image="image"
-                :alt="name"
+                :alt="alt"
                 sizes="500px"
                 aspect-ratio="1/1"
               />
@@ -164,7 +164,7 @@ const {
   isGiftSelectionShown,
 } = usePromotionGiftSelection(props.product)
 
-const { name, brand, image, hasOneVariantOnly } = useProductBaseInfo(
+const { name, brand, image, hasOneVariantOnly, alt } = useProductBaseInfo(
   props.product,
 )
 

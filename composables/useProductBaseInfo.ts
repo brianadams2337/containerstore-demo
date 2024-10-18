@@ -97,6 +97,7 @@ export function useProductBaseInfo(
     return t('product_image.alt', {
       productName: name.value,
       colors: formatColors(colors.value),
+      brand: brand.value,
     })
   })
 

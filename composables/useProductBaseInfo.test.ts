@@ -8,8 +8,10 @@ import { priceFactory } from '~/test/factories/price'
 
 vi.mock('#i18n', () => ({
   useI18n: vi.fn().mockReturnValue({
-    t: (key: string, param: { productName: string; colors: string }) =>
-      `${key}-${param.productName}-${param.colors}`,
+    t: (
+      key: string,
+      param: { productName: string; colors: string; brand: string },
+    ) => `${key}-${param.brand}-${param.productName}-${param.colors}`,
   }),
 }))
 vi.mock('~/composables', () => ({
@@ -605,7 +607,9 @@ describe('useProductBaseInfo', () => {
       const product = productFactory.build()
       const { alt } = useProductBaseInfo(product)
 
-      expect(alt.value).toBe('product_image.alt-Test Product-Weiß & Weiß')
+      expect(alt.value).toBe(
+        'product_image.alt-Brand Name-Test Product-Weiß & Weiß',
+      )
     })
   })
 

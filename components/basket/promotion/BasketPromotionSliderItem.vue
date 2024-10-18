@@ -7,6 +7,7 @@
       <ProductImage
         v-if="image"
         :image="image"
+        :alt="alt"
         sizes="xs:100vw sm:100vw md:100vw"
         fit="cover"
         :image-loading="!index ? 'eager' : 'lazy'"
@@ -77,5 +78,5 @@ const toggleGiftSelectionLabel = computed(() => {
   return i18n.t('basket.promotion.add_free_gift')
 })
 
-const { image, brand, name } = useProductBaseInfo(props.product)
+const { image, brand, name, alt } = useProductBaseInfo(props.product)
 </script>

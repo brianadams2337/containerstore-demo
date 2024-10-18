@@ -3,7 +3,7 @@
     <ProductImage
       v-if="image"
       :image="image"
-      :alt="name"
+      :alt="alt"
       fit="cover"
       height="144"
       sizes="xl:100vw lg:100vw lg:100vw lg:100vw xs:100vw"
@@ -21,13 +21,18 @@ import { computed } from 'vue'
 import type { BasketItem } from '@scayle/storefront-nuxt'
 import ProductImage from '~/components/product/ProductImage.vue'
 import ProductPromotionFreeGiftBadge from '~/components/product/promotion/gifts/ProductPromotionFreeGiftBadge.vue'
-import { useBasketItem, useBasketItemPromotion } from '~/composables'
+import {
+  useBasketItem,
+  useBasketItemPromotion,
+  useProductBaseInfo,
+} from '~/composables'
 
 const props = defineProps<{ item: BasketItem }>()
 
 const basketItem = computed(() => props.item)
 
-const { image, name } = useBasketItem(basketItem)
+const { image, product } = useBasketItem(basketItem)
+const { alt } = useProductBaseInfo(product)
 
 const { isFreeGift, backgroundColorStyle } = useBasketItemPromotion(basketItem)
 </script>

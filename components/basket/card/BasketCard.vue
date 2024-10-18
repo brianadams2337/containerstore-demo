@@ -18,7 +18,7 @@
             <ProductImage
               v-if="image"
               :image="image"
-              :alt="name"
+              :alt="alt"
               fit="cover"
               sizes="xl:100vw lg:100vw lg:100vw lg:100vw xs:100vw"
               class="col-start-1 col-end-1 row-start-1 row-end-1"
@@ -234,6 +234,7 @@ import {
   useBasketItemPromotion,
   useBasketReductions,
   usePageState,
+  useProductBaseInfo,
   useRouteHelpers,
   useToast,
   useTrackingEvents,
@@ -317,6 +318,8 @@ const {
   selectItem,
   listingMetaData,
 } = useBasketItem(mainItem)
+
+const { alt } = useProductBaseInfo(product)
 
 const { $i18n } = useNuxtApp()
 const wishlist = useWishlist()

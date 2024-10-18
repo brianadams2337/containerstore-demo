@@ -4,7 +4,7 @@
       <ProductImage
         v-if="image"
         :image="image"
-        :alt="name"
+        :alt="alt"
         :image-loading="eagerImageLoading ? 'eager' : 'lazy'"
         sizes="92px"
         aspect-ratio="1/1"
@@ -95,7 +95,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const { toggleGiftSelection } = usePromotionGiftSelection(props.product)
 
-const { name, image, variantWithLowestPrice, brand } = useProductBaseInfo(
+const { name, image, variantWithLowestPrice, brand, alt } = useProductBaseInfo(
   props.product,
 )
 

@@ -499,7 +499,7 @@
     "next_label": "next image"
   },
   "product_image": {
-    "alt": "{productName} in {colors}"
+    "alt": "{brand} {productName} in {colors}"
   },
   "country_selection": {
     "prompt": "Looks like you are in {country}. Which shop would you like to visit?",
