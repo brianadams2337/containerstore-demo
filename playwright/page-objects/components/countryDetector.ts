@@ -11,9 +11,12 @@ export class CountryDetector {
 
   async closeModal() {
     try {
-      await this.closeButton.first().click()
-      await expect(this.closeButton.first()).not.toBeVisible()
       await this.page.waitForLoadState('networkidle')
+      if (await this.closeButton.first().isVisible()) {
+        await this.closeButton.first().click()
+        await expect(this.closeButton.first()).not.toBeVisible()
+        await this.page.waitForLoadState('networkidle')
+      }
     } catch (error) {
       console.error('Error closing modal:', error)
     }
