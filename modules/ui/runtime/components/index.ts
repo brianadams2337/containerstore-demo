@@ -51,7 +51,6 @@ import SFSimplePagination from './pagination/SimplePagination.vue'
 
 // Sliders
 import SFItemsSlider from './sliders/ItemsSlider.vue'
-import SFThumbnailSlider from './sliders/ThumbnailSlider.vue'
 
 // Accordion
 import SFAccordionEntry from './accordion/AccordionEntry.vue'
@@ -83,7 +82,6 @@ export {
   SFMenu,
   SFOverlay,
   SFProgressBar,
-  SFThumbnailSlider,
   SFVerticalAccordion,
   SFSkeletonLoader,
   SFSwipeDelete,
