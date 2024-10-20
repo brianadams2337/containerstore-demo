@@ -21,7 +21,7 @@
       <CMSProduct
         v-for="(product, index) in products"
         :key="`product-slider-item-${product.id}`"
-        class="box-content w-1/2 shrink-0 snap-start snap-always px-px first:pl-5 last:pr-5 sm:w-1/5 sm:px-0.5 sm:first:pl-14 sm:last:pr-14"
+        class="box-content w-1/2 shrink-0 snap-start snap-always px-2 first:pl-5 last:pr-5 sm:w-1/5 sm:first:pl-14 sm:last:pr-14"
         :product="product"
         :fetching="fetching"
         @click:product="trackProductClick({ product: $event, index })"
