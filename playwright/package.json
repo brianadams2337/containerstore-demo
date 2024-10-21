@@ -16,7 +16,7 @@
     "@types/node": "20.16.13",
     "dotenv": "16.4.5",
     "eslint": "9.13.0",
-    "eslint-plugin-playwright": "1.8.0",
+    "eslint-plugin-playwright": "1.8.1",
     "lighthouse": "12.2.1",
     "playwright-testrail-reporter": "1.2.1",
     "ts-node": "10.9.2",
