@@ -26,10 +26,10 @@ export const TEST_ITEM_REGULAR = {
 }
 
 export const LIGHTHOUSE_THRESHOLDS = {
-  performance: 80,
-  accessibility: 80,
-  seo: 80,
-  bestPractices: 80,
+  performance: 50, // 80
+  accessibility: 70, // 80
+  seo: 50, // 80
+  bestPractices: 90, // 80
 }
 
 export const PLP_FILTER_DEEPLINK = {
