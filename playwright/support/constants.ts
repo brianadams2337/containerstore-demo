@@ -72,6 +72,7 @@ export const BASKET_TEST_DATA = {
 }
 
 export const HOMEPAGE_PATH_DE = '/de'
+export const HOMEPAGE_PATH_EN = '/en'
 export const SIGNIN_URL = '/signin'
 export const WISHLIST_PRODUCT_ID = 205651
 export const WISHLIST_PRODUCT_ID_ONESIZE = 206042

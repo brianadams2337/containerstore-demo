@@ -13,6 +13,7 @@
             :autofocus="index === 0"
             type="primary"
             class="w-fit"
+            data-testid="button-switch-shop"
             @click="switchToShop(shop)"
           >
             {{
@@ -21,7 +22,12 @@
               })
             }}
           </SFButton>
-          <SFButton type="secondary" class="w-fit" @click="stayInShop">
+          <SFButton
+            type="secondary"
+            class="w-fit"
+            data-testid="button-stay-in-shop"
+            @click="stayInShop"
+          >
             {{
               $t('country_selection.stay_in_shop', { country: currentCountry })
             }}
