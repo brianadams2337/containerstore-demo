@@ -56,14 +56,15 @@
         'group-hover:animate-ping-small': animateIcon,
       }"
     />
-    <slot name="badge" :badge="badge">
+    <slot v-if="badge !== undefined" name="badge" :badge="badge">
       <Transition
         enter-to-class="opacity-100"
         enter-active-class="transition ease-linear duration-200"
         leave-active-class="transition ease-linear duration-200"
         leave-to-class="opacity-0"
+        appear
       >
-        <span v-show="badge">({{ badge }})</span>
+        <span>({{ badge }})</span>
       </Transition>
     </slot>
   </component>
@@ -98,7 +99,7 @@ const props = withDefaults(defineProps<Props>(), {
   loading: false,
   fab: false,
   isUppercase: false,
-  badge: 0,
+  badge: undefined,
   to: undefined,
   hasShadow: false,
 })
