@@ -38,8 +38,8 @@ export class Promotions {
   }
 
   async clickToggleButton() {
-    this.buttonToggleBanner.first().waitFor()
-    this.buttonToggleBanner.first().click()
+    await this.buttonToggleBanner.first().waitFor()
+    await this.buttonToggleBanner.first().click()
   }
 
   async isPromoBarExpanded() {

@@ -2,7 +2,7 @@ import { expect, test } from '../fixtures/fixtures'
 import { FOOTER } from '../support/constants'
 
 test.beforeEach(async ({ homePage, footer }) => {
-  homePage.visitPage()
+  await homePage.visitPage()
   await footer.footerWrapper.scrollIntoViewIfNeeded()
 })
 

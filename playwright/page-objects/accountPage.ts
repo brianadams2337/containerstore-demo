@@ -61,7 +61,7 @@ export class AccountPage {
     await this.logoutButton.click()
   }
   async assertLogoutButtonIsVisible() {
-    this.logoutButton.isVisible()
+    await this.logoutButton.isVisible()
   }
 
   async updateUserData(
@@ -81,7 +81,7 @@ export class AccountPage {
       await field.clear()
       await field.fill(value)
     }
-    this.page.waitForLoadState('domcontentloaded')
+    await this.page.waitForLoadState('domcontentloaded')
 
     if (clickSaveButton === true) {
       await this.formSaveButton.click()
@@ -104,7 +104,7 @@ export class AccountPage {
       await field.waitFor()
       await field.fill(value)
     }
-    this.page.waitForLoadState('domcontentloaded')
+    await this.page.waitForLoadState('domcontentloaded')
 
     if (clickUpdateButton === true) {
       await this.passwordUpdateButton.click()

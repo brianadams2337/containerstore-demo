@@ -55,7 +55,7 @@ export class Search {
   }
 
   async clickSearchMoreButton() {
-    this.searchMoreButton.waitFor()
+    await this.searchMoreButton.waitFor()
     await this.searchMoreButton.click()
   }
 

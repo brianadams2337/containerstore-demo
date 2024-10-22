@@ -18,7 +18,7 @@ test.describe('Test from Berlin against US shop', () => {
   }) => {
     await countryDetector.closeButton.waitFor()
     await expect(async () => {
-      countryDetector.closeModal()
+      await countryDetector.closeModal()
     }).toPass()
   })
 

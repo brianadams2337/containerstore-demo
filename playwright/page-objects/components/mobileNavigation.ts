@@ -49,7 +49,7 @@ export class MobileNavigation {
   }
 
   async clickSearchMoreButtonMobile() {
-    this.searchMoreButton.waitFor()
+    await this.searchMoreButton.waitFor()
     await this.searchMoreButton.click()
   }
 }
