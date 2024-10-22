@@ -52,7 +52,6 @@ export default withNuxt(
         // NOTE: Enable the following rules for upcoming a11y improvements
         'vuejs-accessibility/mouse-events-have-key-events': 'off',
         'vuejs-accessibility/no-static-element-interactions': 'off',
-        'vuejs-accessibility/alt-text': 'off',
         'vuejs-accessibility/anchor-has-content': 'off',
         'vuejs-accessibility/aria-props': 'off',
         'vuejs-accessibility/aria-role': 'off',

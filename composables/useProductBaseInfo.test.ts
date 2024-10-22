@@ -359,6 +359,7 @@ describe('useProductBaseInfo', () => {
             hash: 'test image',
           },
           name: '',
+          brand: '',
           isSoldOut: false,
         },
         {
@@ -374,6 +375,7 @@ describe('useProductBaseInfo', () => {
             hash: 'test image',
           },
           name: '',
+          brand: '',
           isSoldOut: false,
         },
       ])
@@ -448,6 +450,7 @@ describe('useProductBaseInfo', () => {
             hash: 'test image',
           },
           name: '',
+          brand: '',
           isSoldOut: false,
         },
         {
@@ -463,6 +466,7 @@ describe('useProductBaseInfo', () => {
             hash: 'test image',
           },
           name: '',
+          brand: '',
           isSoldOut: false,
         },
         {
@@ -477,6 +481,7 @@ describe('useProductBaseInfo', () => {
           image: undefined,
           isSoldOut: true,
           name: '',
+          brand: '',
         },
       ])
     })
@@ -550,6 +555,7 @@ describe('useProductBaseInfo', () => {
             hash: 'test image',
           },
           name: '',
+          brand: '',
           isSoldOut: false,
         },
         {
@@ -565,6 +571,7 @@ describe('useProductBaseInfo', () => {
             hash: 'test image',
           },
           name: '',
+          brand: '',
           isSoldOut: false,
         },
       ])

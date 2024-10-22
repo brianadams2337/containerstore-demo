@@ -176,6 +176,11 @@ describe('getProductSiblingData', () => {
             label: "HUGO Sweatshirt 'Dakimara'",
           },
         }),
+        brand: attributeGroupFactory.build({
+          values: {
+            label: 'HUGO',
+          },
+        }),
         color: attributeGroupFactory.build({
           values: {
             id: 6,
@@ -189,6 +194,7 @@ describe('getProductSiblingData', () => {
     expect(sibling).toStrictEqual({
       id: 1,
       name: "HUGO Sweatshirt 'Dakimara'",
+      brand: 'HUGO',
       image: {
         hash: 'images/fe8ee645c772b98de23b00e4f600a613.png',
         attributes: {},
