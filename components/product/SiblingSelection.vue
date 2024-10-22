@@ -40,21 +40,7 @@
         >
           <ProductImage
             v-if="sibling.image"
-            :alt="
-              $t(
-                sibling.isSoldOut
-                  ? 'product_image.alt_sibling_sold_out'
-                  : 'product_image.alt_sibling',
-                {
-                  colors: sibling.colors[0].label,
-                  selected: $t(
-                    product.id === sibling.id
-                      ? 'product_image.selected'
-                      : 'product_image.unselected',
-                  ),
-                },
-              )
-            "
+            :alt="siblingAltText(sibling)"
             sizes="64px"
             :class="{
               'opacity-20': sibling.isSoldOut && sibling.id !== product.id,
@@ -108,6 +94,7 @@ import {
 import type { ProductSibling } from '~/types/siblings'
 import { useI18n } from '#i18n'
 import { productListingMetaData } from '~/constants/product'
+import { formatColors } from '~/utils'
 
 type Props = {
   product: Product
@@ -139,6 +126,26 @@ const label = computed(() => {
 
   return hoveredColorLabel.value || firstSiblingColors[0].label.toLowerCase()
 })
+
+const siblingAltText = (sibling: ProductSibling) => {
+  return t(
+    sibling.isSoldOut
+      ? 'product_image.alt_sibling_sold_out'
+      : 'product_image.alt_sibling',
+    {
+      alt: t('product_image.alt', {
+        productName: sibling.name,
+        colors: formatColors(sibling.colors),
+        brand: sibling.brand,
+      }),
+      selected: t(
+        props.product.id === sibling.id
+          ? 'product_image.selected'
+          : 'product_image.unselected',
+      ),
+    },
+  )
+}
 
 const { pageState } = usePageState()
 const route = useRoute()

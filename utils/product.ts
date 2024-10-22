@@ -57,6 +57,7 @@ export const getProductSiblingData = (
 ): ProductSibling => ({
   id,
   name: getFirstAttributeValue(attributes, 'name')?.label ?? '',
+  brand: getFirstAttributeValue(attributes, 'brand')?.label ?? '',
   image: getPrimaryImage(images) ?? images[0],
   colors: getAttributeValueTuples(attributes, colorAttributeName),
   isSoldOut,
