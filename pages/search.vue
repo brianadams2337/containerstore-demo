@@ -63,9 +63,8 @@ const { trackSelectItem, trackViewItemList } = useTrackingEvents()
 
 const resultsCount = computed(() => totalProductsCount.value)
 const title = computed(() => {
-  return `${$i18n.t('search.seo_title', {
+  return `${$i18n.t('search.page_title', {
     term: term.value.toString(),
-    count: resultsCount.value?.toString(),
   })}`
 })
 
@@ -98,6 +97,7 @@ const trackViewListing = ({
 useSeoMeta({
   robots: 'index,follow',
   title,
+  titleTemplate: (pageTitle) => pageTitle ?? null,
 })
 
 defineOptions({ name: 'SearchPage' })

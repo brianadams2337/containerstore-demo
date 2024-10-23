@@ -29,6 +29,7 @@ const { $i18n } = useNuxtApp()
 
 useSeoMeta({
   robots: 'index,follow',
+  titleTemplate: (pageTitle) => pageTitle ?? null,
   title: $i18n.t('navigation.user_settings'),
 })
 

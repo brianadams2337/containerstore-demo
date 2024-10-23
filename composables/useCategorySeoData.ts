@@ -39,7 +39,13 @@ export function useCategorySeoData(category: Ref<Category | undefined | null>) {
     return $i18n.t('plp.seo_description', { category })
   })
 
-  const title = computed(() => `${categoryName.value} | SCAYLE`)
+  const title = computed(() => {
+    if (!category.value) {
+      return ''
+    }
+    const items = getBreadcrumbsFromCategory(category.value, true)
+    return items.map(({ value }) => value).join(' - ')
+  })
 
   const categoryBreadcrumbSchema = computed(() => {
     if (!category.value) {

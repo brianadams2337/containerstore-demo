@@ -1,7 +1,5 @@
 {
   "global": {
-    "title_default": "Demo Shop | Official Online Shop",
-    "title_template": "{title} | Demo Shop | Official Online Shop",
     "login_request": "Sign in now",
     "register": "Register",
     "sold_out": "Sold out",
@@ -95,11 +93,11 @@
   "navigation": {
     "my_account": "My Account",
     "my_orders": "My Orders",
-    "user_settings": "User Settings",
+    "user_settings": "Account Settings",
     "sign_in": "Sign in",
     "wishlist": "Wishlist",
     "basket": "Basket",
-    "home": "Home",
+    "home": "Storefront Core Boilerplate",
     "search": "Search",
     "checkout": "Checkout",
     "osp": "Order Confirmation",
@@ -117,7 +115,7 @@
     "product": "Produkt",
     "categories": "Kategorie",
     "more": "More",
-    "seo_title": "Your search for \"{term}\" has {count} results"
+    "page_title": "Search results for  \"{term}\""
   },
   "promises": {
     "pay_with_invoice": "Pay with invoice",
@@ -271,7 +269,6 @@
       "free_label": "Free"
     },
     "meta": {
-      "title": "{productName} {'|'} SCAYLE",
       "description": "Buy {productName} online at SCAYLE. Discover the wide selection of other branded products."
     },
     "sibling_error": "Error: This attribute is not set!",
@@ -492,7 +489,8 @@
     "select_size_message": "Select size to see options",
     "not_eligible_message": "The selected size is not eligible for a subscription",
     "term": "Term",
-    "add_to_basket": "Subscribe for {interval}"
+    "add_to_basket": "Subscribe for {interval}",
+    "page_title": "My subscriptions"
   },
   "image_slider": {
     "previous_label": "previous image",

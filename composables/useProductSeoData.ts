@@ -31,10 +31,6 @@ export function useProductSeoData(product: Ref<Product | undefined | null>) {
     longestCategoryList,
   } = useProductBaseInfo(product)
 
-  const title = computed(() => {
-    return $i18n.t('pdp.meta.title', { productName: name.value })
-  })
-
   const description = computed(() => {
     return $i18n.t('pdp.meta.description', { productName: name.value })
   })
@@ -71,7 +67,7 @@ export function useProductSeoData(product: Ref<Product | undefined | null>) {
   return {
     robots,
     canonicalLink,
-    title,
+    title: name,
     description,
     productJsonLd,
     productBreadcrumbJsonLd,

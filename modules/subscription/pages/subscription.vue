@@ -10,6 +10,8 @@
 </template>
 
 <script setup lang="ts">
+import { useHead } from '@unhead/vue'
+import { useI18n } from 'vue-i18n'
 import { defineOptions, onMounted } from 'vue'
 import useSubscriptionWebComponent from '../composables/useSubscriptionWebComponent'
 import { useCurrentShop } from '#storefront/composables'
@@ -27,6 +29,12 @@ const {
 } = useSubscriptionWebComponent()
 
 onMounted(() => loadOverviewPage())
+
+const i18n = useI18n()
+useHead({
+  titleTemplate: (pageTitle) => pageTitle ?? null,
+  title: i18n.t('subscription.page_title'),
+})
 
 definePageMeta({ pageType: 'subscription' })
 defineOptions({ name: 'SubscriptionPage' })

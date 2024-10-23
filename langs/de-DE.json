@@ -1,7 +1,5 @@
 {
   "global": {
-    "title_default": "Demo Shop | Offizieller Online Shop",
-    "title_template": "{title} | Demo Shop | Offizieller Online Shop",
     "login_request": "Melde Dich jetzt an",
     "register": "Registrieren",
     "sold_out": "Ausverkauft",
@@ -95,11 +93,11 @@
   "navigation": {
     "my_account": "Mein Konto",
     "my_orders": "Meine Bestellungen",
-    "user_settings": "Benutzereinstellungen",
+    "user_settings": "Kontoeinstellungen",
     "sign_in": "Einloggen",
     "wishlist": "Wunschliste",
     "basket": "Warenkorb",
-    "home": "Home",
+    "home": "Storefront Core Boilerplate",
     "search": "Suchen",
     "checkout": "Kasse",
     "osp": "Bestellbestätigung",
@@ -117,7 +115,7 @@
     "product": "Produkt",
     "categories": "Kategorie",
     "more": "Mehr",
-    "seo_title": "Ihre Suche nach \"{term}\" ergab {count} Ergebnisse"
+    "page_title": "Suchergebnisse fürh \"{term}\""
   },
   "promises": {
     "pay_with_invoice": "Per Rechnung bezahlen",
@@ -272,7 +270,6 @@
       "free_label": "Gratis"
     },
     "meta": {
-      "title": "{productName} {'|'} SCAYLE",
       "description": "Kaufen Sie {productName} online bei SCAYLE. \nEntdecken Sie die große Auswahl weiterer Markenprodukte."
     },
     "sibling_error": "Fehler: Dieses Attribut wurde nicht gesetzt!",
@@ -493,7 +490,8 @@
     "select_size_message": "Wählen Sie eine andere Größe für weitere Optionen",
     "not_eligible_message": "Die ausgewählte Größe ist nicht für ein Abonnement geeignet.",
     "term": "Bedingungen",
-    "add_to_basket": "Abonnieren für {interval}"
+    "add_to_basket": "Abonnieren für {interval}",
+    "page_title": "Deine Abonnements"
   },
   "image_slider": {
     "previous_label": "Vorherigen Bild",

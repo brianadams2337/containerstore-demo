@@ -29,6 +29,7 @@
 <script setup lang="ts">
 import { defineOptions, onMounted } from 'vue'
 import { useHead } from '@unhead/vue'
+import { useNuxtApp } from '#app/nuxt'
 import { useSwitchLocalePath } from '#i18n'
 import { useCurrentPromotions, useCurrentShop } from '#storefront/composables'
 import {
@@ -74,7 +75,11 @@ const currentShop = useCurrentShop()
 onMounted(async () => {
   trackingEvents.trackShopInit()
 })
-
+const {
+  $config: {
+    public: { shopName },
+  },
+} = useNuxtApp()
 // Meta tags
 useHead({
   bodyAttrs: () => ({
@@ -89,6 +94,7 @@ useHead({
       children: `document.addEventListener('DOMContentLoaded', () => { document.body.classList.add('loaded'); });`,
     },
   ],
+  titleTemplate: (title) => (title ? `${title} - ${shopName}` : `${shopName}`),
 })
 
 const switchLocalePath = useSwitchLocalePath()
