@@ -3,7 +3,6 @@ import {
   PLP_FILTER_DEEPLINK,
   PLP_PATH_SUBCATEGORY_LVL_1,
   PLP_PATH_SUBCATEGORY_LVL_2,
-  PLP_SIBLING_TEST_PRODUCT_PATH,
 } from '../support/constants'
 import { isMobile } from '../support/utils'
 
@@ -223,13 +222,14 @@ test('C2132074: Verify PLP Product siblings', async ({
   page,
 }) => {
   await productListingPage.productTile.first().hover()
-  await productListingPage.productSibling.nth(1).click()
-  await page.waitForURL(PLP_SIBLING_TEST_PRODUCT_PATH)
+  await page.waitForLoadState('domcontentloaded')
+  const productSiblingPath = (await productListingPage.productSibling
+    .first()
+    .getAttribute('href')) as string
+
+  await productListingPage.productSibling.first().click()
+  await page.waitForURL(productSiblingPath)
 
   const pageUrl = page.url()
-  const productPathString = PLP_SIBLING_TEST_PRODUCT_PATH.source.replace(
-    /\\/g,
-    '',
-  )
-  expect(pageUrl).toContain(productPathString)
+  expect(pageUrl).toContain(productSiblingPath)
 })
