@@ -23,7 +23,6 @@
         :has-one-variant-only="hasOneVariantOnly"
         class="grow"
       />
-      <IconClose class="size-4 text-gray-500 max-sm:hidden" />
       <QuantityInput v-model="quantity" :max-quantity="maxQuantity" />
     </div>
   </div>
