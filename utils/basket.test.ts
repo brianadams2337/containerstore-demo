@@ -187,6 +187,10 @@ const getBasketItemData = (): BasketItem[] => [
         },
       ],
     },
+    lowestPriorPrice: {
+      withTax: null,
+      relativeDifferenceToPrice: null,
+    },
   },
   {
     itemGroup: undefined,
@@ -335,6 +339,10 @@ const getBasketItemData = (): BasketItem[] => [
         },
       ],
     },
+    lowestPriorPrice: {
+      withTax: null,
+      relativeDifferenceToPrice: null,
+    },
   },
   {
     itemGroup: undefined,
@@ -468,6 +476,10 @@ const getBasketItemData = (): BasketItem[] => [
           },
         },
       ],
+    },
+    lowestPriorPrice: {
+      withTax: null,
+      relativeDifferenceToPrice: null,
     },
   },
 ]
