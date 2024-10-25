@@ -51,7 +51,7 @@
     "@scayle/prettier-config-storefront": "2.0.2",
     "@testing-library/jest-dom": "6.6.2",
     "@testing-library/vue": "8.1.0",
-    "@types/color": "3.0.6",
+    "@types/color": "4.2.0",
     "@types/node": "20.17.0",
     "@typescript-eslint/scope-manager": "8.11.0",
     "@typescript-eslint/utils": "8.11.0",
