@@ -473,6 +473,7 @@ export default defineNuxtConfig({
     './modules/eslint-auto-explicit-import',
     // https://scayle.dev/en/storefront-guide/developer-guide/integrations/open-telemetry
     '@scayle/nuxt-opentelemetry',
+    '@scayle/storefront-country-detection',
   ],
 
   // Storefront CMS Module (local)
