@@ -95,7 +95,7 @@
     "@contentful/live-preview": "4.5.13",
     "@contentful/rich-text-html-renderer": "16.6.10",
     "@googlemaps/js-api-loader": "1.16.8",
-    "@scayle/nuxt-opentelemetry": "0.3.6",
+    "@scayle/nuxt-opentelemetry": "0.3.7",
     "@scayle/omnichannel-nuxt": "4.0.2",
     "@scayle/storefront-country-detection": "0.1.0",
     "@scayle/storefront-nuxt": "7.87.0",
