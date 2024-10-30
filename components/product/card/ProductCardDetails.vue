@@ -27,6 +27,7 @@
       v-if="price"
       :promotion="promotion"
       :price="price"
+      :lowest-prior-price="lowestPriorPrice"
       :show-price-from="showPriceFrom"
       class="absolute bottom-0 left-2 md:left-0"
     />
@@ -46,6 +47,7 @@ const {
   brand,
   name,
   price,
+  lowestPriorPrice,
   nonSoldOutSiblings: siblings,
 } = useProductBaseInfo(props.product)
 

@@ -69,6 +69,7 @@ export default withNuxt(
         'vuejs-accessibility/no-redundant-roles': 'off',
         'vuejs-accessibility/role-has-required-aria-props': 'off',
         'vuejs-accessibility/tabindex-no-positive': 'off',
+        'test/prefer-lowercase-title': 'off',
       },
     },
   ],

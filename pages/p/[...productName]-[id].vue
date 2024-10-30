@@ -41,6 +41,7 @@
               class="mt-3"
               :promotion="promotion"
               :price="price"
+              :lowest-prior-price="lowestPriorPrice"
               type="normal"
               show-tax-info
               :show-price-from="showFrom"
@@ -182,20 +183,30 @@ onMounted(() => {
   )
 })
 
+const basketItem = computed(
+  () =>
+    items.value?.find(
+      (basketItem) => basketItem.variant.id === activeVariant.value?.id,
+    ),
+)
+
 const price = computed(() => {
-  const basketVariant = items.value?.find(
-    (basketItem) => basketItem.variant.id === activeVariant.value?.id,
-  )
-
-  const price = basketVariant
-    ? basketVariant.price.unit
-    : activeVariant.value
-    ? activeVariant.value.price
-    : product.value?.priceRange?.min
-
-  return price as Price
+  if (basketItem.value) {
+    return basketItem.value.price.unit as Price
+  } else if (activeVariant.value) {
+    return activeVariant.value.price
+  }
+  return product.value?.priceRange?.min as Price
 })
 
+const lowestPriorPrice = computed(() => {
+  if (basketItem.value) {
+    return basketItem.value.lowestPriorPrice
+  } else if (activeVariant.value) {
+    return activeVariant.value.lowestPriorPrice
+  }
+  return product.value?.lowestPriorPrice
+})
 const showFrom = computed(
   () =>
     !activeVariant.value &&

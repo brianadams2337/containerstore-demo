@@ -33,18 +33,36 @@
       {{ $t('price.including_vat') }}
     </div>
   </div>
+  <div
+    v-if="
+      lowestPriorPrice?.withTax &&
+      lowestPriorPrice?.relativeDifferenceToPrice !== null
+    "
+    class="mt-1 text-2xs text-gray-500 md:text-sm"
+    data-testid="lowest-prior-price"
+  >
+    {{ $t('price.best_price_30d') }}
+    {{ formatCurrency(lowestPriorPrice.withTax) }}
+    ({{
+      formatPercentage(lowestPriorPrice.relativeDifferenceToPrice, {
+        signDisplay: 'exceptZero',
+      })
+    }})
+  </div>
 </template>
 
 <script setup lang="ts">
 import { computed, toRefs } from 'vue'
-import type { Price } from '@scayle/storefront-nuxt'
+import type { LowestPriorPrice, Price } from '@scayle/storefront-nuxt'
 import { Size } from '#storefront-ui'
 import { useProductPrice } from '~/composables/useProductPrice'
 import { getPromotionStyle } from '~/utils'
 import type { Promotion } from '~/types/promotion'
+import { useFormatHelpers } from '#storefront/composables'
 
 type Props = {
   price: Price
+  lowestPriorPrice?: LowestPriorPrice
   promotion?: Promotion | null
   showTaxInfo?: boolean
   showPriceFrom?: boolean
@@ -60,6 +78,7 @@ const props = withDefaults(defineProps<Props>(), {
   size: Size.MD,
   type: 'normal',
   promotion: undefined,
+  lowestPriorPrice: undefined,
 })
 
 const { price } = toRefs(props)
@@ -69,6 +88,8 @@ const {
   relativeReductions,
   totalPrice,
 } = useProductPrice(price)
+
+const { formatCurrency, formatPercentage } = useFormatHelpers()
 
 const promotionStyle = computed(() => getPromotionStyle(props.promotion))
 

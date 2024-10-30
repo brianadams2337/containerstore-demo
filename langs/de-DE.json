@@ -285,7 +285,7 @@
   "price": {
     "starting_from": "von",
     "including_vat": "inkl. Mwst.",
-    "best_price_30d": "30-Tage-Bestpreis"
+    "best_price_30d": "30-Tage-Bestpreis:"
   },
   "plp": {
     "filter": "Filter",
