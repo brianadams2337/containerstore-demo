@@ -34,7 +34,6 @@
             :key="`${locale}-locale`"
             :locale="locale"
             :is-current="locale === currentShop?.locale"
-            include-flag
             :include-language="multipleShopsForCountry"
             @click="changeShop(path)"
           />
