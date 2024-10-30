@@ -64,7 +64,6 @@
             class="my-3 mt-4 flex h-12 max-w-full items-center space-x-4 max-md:mx-5"
           >
             <SFSkeletonLoader class="grow" />
-            <IconClose class="size-4 text-gray-500 max-sm:hidden" />
             <SFSkeletonLoader class="!w-32" />
           </div>
         </div>
