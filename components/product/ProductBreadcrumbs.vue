@@ -2,11 +2,11 @@
   <div>
     <SFLink
       v-for="(
-        { categoryName, categoryUrl, categoryId }, index
-      ) in productCategories"
-      :key="`breadcrumb-${categoryName}`"
+        { value: name, to }, index
+      ) in getBreadcrumbsFromProductCategories(productCategories)"
+      :key="`breadcrumb-${name}`"
       :data-testid="`category-breadcrumb-${index}`"
-      :to="buildCategoryPath({ id: categoryId, path: categoryUrl })"
+      :to="to"
       raw
       class="px-2"
       :class="{
@@ -20,7 +20,7 @@
       <span
         class="text-md leading-none text-gray-500 transition-all hover:text-black"
       >
-        {{ categoryName }}
+        {{ name }}
       </span>
     </SFLink>
   </div>
@@ -29,10 +29,10 @@
 <script setup lang="ts">
 import type { ProductCategory } from '@scayle/storefront-nuxt'
 import { SFLink } from '#storefront-ui/components'
-import { useRouteHelpers } from '~/composables'
+import { useBreadcrumbs } from '~/composables'
 import { showDividerTag } from '#storefront-ui'
 
 defineProps<{ productCategories: ProductCategory[] }>()
 
-const { buildCategoryPath } = useRouteHelpers()
+const { getBreadcrumbsFromProductCategories } = useBreadcrumbs()
 </script>
