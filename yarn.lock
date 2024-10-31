@@ -4381,20 +4381,6 @@
     muggle-string "^0.4.1"
     path-browserify "^1.0.1"
 
-"@vue/language-core@2.1.8":
-  version "2.1.8"
-  resolved "https://registry.yarnpkg.com/@vue/language-core/-/language-core-2.1.8.tgz#1bc68852021f7972649c448c44cdaeeb801c2363"
-  integrity sha512-DtPUKrIRqqzY1joGfVHxHWZoxXZbCQLmVtW+QTifuPInfcs1R/3UAdlJXDp+lpSpP9lI5m+jMYYlwDXXu3KSTg==
-  dependencies:
-    "@volar/language-core" "~2.4.8"
-    "@vue/compiler-dom" "^3.5.0"
-    "@vue/compiler-vue2" "^2.7.16"
-    "@vue/shared" "^3.5.0"
-    alien-signals "^0.2.0"
-    minimatch "^9.0.3"
-    muggle-string "^0.4.1"
-    path-browserify "^1.0.1"
-
 "@vue/reactivity@3.5.12":
   version "3.5.12"
   resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.5.12.tgz#a2815d91842ed7b9e7e7936c851923caf6b6e603"
@@ -4441,13 +4427,13 @@
     js-beautify "^1.14.9"
     vue-component-type-helpers "^2.0.0"
 
-"@vue/typescript-plugin@2.1.8":
-  version "2.1.8"
-  resolved "https://registry.yarnpkg.com/@vue/typescript-plugin/-/typescript-plugin-2.1.8.tgz#7b114cc2bf9cbe9a116d318003b90178889d6255"
-  integrity sha512-NHFRJaNkn+47WINKLvx1vuqabZOyekSEaVFSW4iM+cWLTPHWnQibXWKgMW474A5Xsqjfx8KpgT+YGmZwC+0zkg==
+"@vue/typescript-plugin@2.1.10":
+  version "2.1.10"
+  resolved "https://registry.yarnpkg.com/@vue/typescript-plugin/-/typescript-plugin-2.1.10.tgz#4fa694b978b5ca4219e977302e596bbcc1283ac9"
+  integrity sha512-NrS3BB3l5vuZHU4Vp8l9TbT5pC7VjBfwZKqc24dAXF3Z+dJyGs4mcC3zo59gUggLMQSah8mdXj8xqEfMkrps8w==
   dependencies:
     "@volar/typescript" "~2.4.8"
-    "@vue/language-core" "2.1.8"
+    "@vue/language-core" "2.1.10"
     "@vue/shared" "^3.5.0"
 
 "@vuelidate/core@2.0.3":
