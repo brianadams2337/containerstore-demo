@@ -49,7 +49,7 @@
     "@scayle/eslint-config-storefront": "4.3.2",
     "@scayle/eslint-plugin-vue-composable": "0.2.1",
     "@scayle/prettier-config-storefront": "2.0.2",
-    "@testing-library/jest-dom": "6.6.2",
+    "@testing-library/jest-dom": "6.6.3",
     "@testing-library/vue": "8.1.0",
     "@types/color": "4.2.0",
     "@types/node": "22.8.6",
