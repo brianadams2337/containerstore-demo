@@ -92,7 +92,7 @@
     "vue-tsc": "2.1.10"
   },
   "dependencies": {
-    "@contentful/live-preview": "4.5.13",
+    "@contentful/live-preview": "4.5.14",
     "@contentful/rich-text-html-renderer": "17.0.0",
     "@googlemaps/js-api-loader": "1.16.8",
     "@scayle/nuxt-opentelemetry": "0.3.7",
