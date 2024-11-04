@@ -32,22 +32,22 @@
     >
       {{ $t('price.including_vat') }}
     </div>
-  </div>
-  <div
-    v-if="
-      lowestPriorPrice?.withTax &&
-      lowestPriorPrice?.relativeDifferenceToPrice !== null
-    "
-    class="mt-1 text-2xs text-gray-500 md:text-sm"
-    data-testid="lowest-prior-price"
-  >
-    {{ $t('price.best_price_30d') }}
-    {{ formatCurrency(lowestPriorPrice.withTax) }}
-    ({{
-      formatPercentage(lowestPriorPrice.relativeDifferenceToPrice, {
-        signDisplay: 'exceptZero',
-      })
-    }})
+    <div
+      v-if="
+        lowestPriorPrice?.withTax &&
+        lowestPriorPrice?.relativeDifferenceToPrice !== null
+      "
+      class="mt-1 text-2xs text-gray-500 md:text-sm"
+      data-testid="lowest-prior-price"
+    >
+      {{ $t('price.best_price_30d') }}
+      {{ formatCurrency(lowestPriorPrice.withTax) }}
+      ({{
+        formatPercentage(lowestPriorPrice.relativeDifferenceToPrice, {
+          signDisplay: 'exceptZero',
+        })
+      }})
+    </div>
   </div>
 </template>
 
