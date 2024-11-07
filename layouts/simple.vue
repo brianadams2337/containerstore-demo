@@ -8,7 +8,7 @@
       <SFLink
         :to="routeList.home"
         raw
-        class="flex items-center gap-2 text-md font-medium text-primary"
+        class="flex items-center gap-2 rounded-md p-1 text-md font-medium text-primary hover:bg-gray-100"
       >
         <IconBack aria-hidden="true" class="size-3" />
         <div class="mr-auto hidden pt-0.5 md:block">
@@ -33,6 +33,7 @@
           v-for="navItem in headerTree?.items"
           :key="`footer-link-${navItem.id}`"
           raw
+          class="rounded-md p-1 hover:bg-gray-100"
           :navigation-item="navItem"
         />
         <span class="ml-auto" />
@@ -42,7 +43,7 @@
       <NuxtPage />
     </main>
     <footer
-      class="flex flex-col gap-4 border-t bg-gray-50 px-10 py-5 text-[13px] text-gray-600 md:flex-row md:gap-8 md:py-7 md:text-gray-900"
+      class="flex flex-col gap-4 border-t bg-gray-50 px-10 py-5 text-base text-gray-600 md:flex-row md:gap-8 md:py-7 md:text-gray-900"
     >
       <div class="mx-auto text-gray-900 md:ml-0 md:mr-auto md:text-gray-600">
         {{ $t('footer.copyright', { current_year: new Date().getFullYear() }) }}
@@ -51,6 +52,7 @@
         <NavigationTreeItem
           v-for="navItem in footerTree?.items"
           :key="`footer-link-${navItem.id}`"
+          class="rounded-md p-1 hover:bg-gray-100"
           raw
           :navigation-item="navItem"
         />
@@ -74,15 +76,19 @@ import { routeList } from '~/utils/route'
 
 const currentShop = useCurrentShop()
 
-const { data: footerTree } = useNavigationTreeByName({
-  params: { treeName: 'Simplified Footer' },
-  key: 'footer-tree',
-})
+const { data: footerTree } = useNavigationTreeByName(
+  {
+    params: { treeName: 'Simplified Footer' },
+  },
+  'footer-tree',
+)
 
-const { data: headerTree } = useNavigationTreeByName({
-  params: { treeName: 'Simplified Header' },
-  key: 'header-tree',
-})
+const { data: headerTree } = useNavigationTreeByName(
+  {
+    params: { treeName: 'Simplified Header' },
+  },
+  'header-tree',
+)
 
 const {
   $config: {
