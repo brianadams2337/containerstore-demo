@@ -2,8 +2,12 @@
   <SFButton
     type="raw"
     is-full-width
-    class="!justify-start !rounded-md px-3 py-2 text-[13px] hover:bg-gray-100"
-    :class="{ 'font-bold': isCurrent }"
+    class="!justify-start !rounded-md px-3 py-2 text-base hover:!bg-gray-100 hover:!text-gray-900"
+    :class="{
+      'font-semibold': isCurrent,
+      '!text-gray-900': isCurrent,
+      '!text-gray-600': !isCurrent,
+    }"
   >
     {{ shopName(locale) }}
   </SFButton>
