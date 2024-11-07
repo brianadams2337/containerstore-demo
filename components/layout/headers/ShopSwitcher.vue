@@ -6,7 +6,7 @@
         :aria-label="
           $t('shop_selector.aria_label', { selectedCountry, selectedLanguage })
         "
-        class="h-full gap-1.5 px-2 -outline-offset-4"
+        class="h-full gap-1.5 px-2 -outline-offset-4 hover:bg-indigo-200/10"
         :list-name="list"
         data-testid="language-listbox"
       >
