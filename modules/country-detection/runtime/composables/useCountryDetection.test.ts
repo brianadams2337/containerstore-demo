@@ -71,6 +71,14 @@ describe('useCountryDetection', () => {
     expect(wrapper.vm.suggestionActive).toBe(false)
   })
 
+  it('suggestionActive should be false if no suggested shops are found', async () => {
+    const wrapper = getTestComponentWrapper({
+      getDetectedCountryCode: () => '',
+    })
+    await flushPromises()
+    expect(wrapper.vm.suggestionActive).toBe(false)
+  })
+
   it('should respect shouldPromptUser overwrite', async () => {
     const shouldPromptUser = vi.fn().mockReturnValue(false)
     const wrapper = getTestComponentWrapper({

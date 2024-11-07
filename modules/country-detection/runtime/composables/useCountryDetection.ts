@@ -121,6 +121,10 @@ export function useCountryDetection({
         currentRegion &&
         detectedRegion.value !== currentRegion
 
+      if (suggestedShops.value.length === 0) {
+        return false
+      }
+
       if (!regionMismatch) {
         return false
       }
