@@ -3561,10 +3561,10 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-api/-/storefront-api-17.9.4.tgz#cdec601d6a1f164121e2b76920c56fe68054faa9"
   integrity sha512-oZImHfQ8vkrvcrO0ldSY665005Y/N4dvTAKEYRnx6Dm9MxTVjQsgZMqGWIZnG1jxW4KCUVNcsemsm7hM8VI1lw==
 
-"@scayle/storefront-core@7.66.2":
-  version "7.66.2"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.66.2.tgz#7bd9cbe95d918d11b311be72beeac9f00c732255"
-  integrity sha512-3xUDHU1sXveGwsnuEIsiZj3GacXLAl3++Ifqju0AGJfahzeKEWrTP0/SBRIQXUaKjf83Sads6KfHhayOMTaIhw==
+"@scayle/storefront-core@7.66.3":
+  version "7.66.3"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-7.66.3.tgz#1d08da30e9c4dabf2c4671f896434f556c35dbd5"
+  integrity sha512-9ZPpIXu9z1fDFS3iC3P5mKXmbHJ5W55qQ9TP+x4O1SSWtY81E0odpl1fEzy4CTjCVQFqMyDgM1y39LzgreE0PQ==
   dependencies:
     "@scayle/storefront-api" "17.9.4"
     crypto-js "^4.2.0"
@@ -3577,15 +3577,15 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-nuxt@7.91.0":
-  version "7.91.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.91.0.tgz#da0724f49cfa77295deb1d0c2f1bc3b2e041c647"
-  integrity sha512-nC6Ch+AcQAGfCr6AGi2FwQDuCtYAF6aNBVevU0d4yxGKWu88VDeGZf0Aq8mKIgqXKBOK7xFETUK24HmKxR5Y9w==
+"@scayle/storefront-nuxt@7.92.0":
+  version "7.92.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-7.92.0.tgz#80328605cc78a54f64a96c52c21bf2adb8dcd9a8"
+  integrity sha512-ZtoQyJ4/WV8QebLABNkuun1nzVvIN0LdV0yaBpw3kJlDkOga3u6R3SyQUfbPOZuNTM+cbxP9OYxutAilP8XBhg==
   dependencies:
     "@nuxt/kit" "^3.12.2"
     "@opentelemetry/api" "^1.9.0"
     "@scayle/h3-session" "^0.4.1"
-    "@scayle/storefront-core" "7.66.2"
+    "@scayle/storefront-core" "7.66.3"
     "@scayle/unstorage-compression-driver" "^0.1.5"
     "@vueuse/core" "11.2.0"
     consola "^3.2.3"
@@ -3594,7 +3594,6 @@
     hookable "^5.5.3"
     jose "^5.2.0"
     knitwork "^1.1.0"
-    nitropack "^2.9.7"
     ofetch "^1.3.4"
     schema-dts "1.1.2"
     ufo "^1.5.4"
