@@ -3,9 +3,9 @@
     class="flex min-h-screen flex-col text-primary antialiased anchor-scrolling-none"
   >
     <header
-      class="relative flex h-[60px] items-center justify-between border-b px-7 text-md font-medium text-gray-900"
+      class="relative flex h-15 items-center justify-between border-b px-7 text-md font-medium text-gray-900"
     >
-      <SFLink
+      <LocalizedLink
         :to="routeList.home"
         raw
         class="flex items-center gap-2 rounded-md p-1 text-md font-medium text-primary hover:bg-gray-100"
@@ -17,18 +17,18 @@
         <div class="mr-auto block pt-0.5 md:hidden">
           {{ $t('global.to-shop') }}
         </div>
-      </SFLink>
+      </LocalizedLink>
 
-      <SFLink
+      <LocalizedLink
         :to="routeList.home"
         raw
         class="absolute left-1/2 -translate-x-1/2"
         :aria-label="shopName"
       >
         <IconNewLogo class="size-7" aria-hidden="true" />
-      </SFLink>
+      </LocalizedLink>
 
-      <div class="hidden flex-row gap-4 md:flex">
+      <nav class="hidden flex-row gap-4 md:flex">
         <NavigationTreeItem
           v-for="navItem in headerTree?.items"
           :key="`footer-link-${navItem.id}`"
@@ -37,7 +37,7 @@
           :navigation-item="navItem"
         />
         <span class="ml-auto" />
-      </div>
+      </nav>
     </header>
     <main class="grow">
       <NuxtPage />
@@ -48,15 +48,18 @@
       <div class="mx-auto text-gray-900 md:ml-0 md:mr-auto md:text-gray-600">
         {{ $t('footer.copyright', { current_year: new Date().getFullYear() }) }}
       </div>
-      <div class="mx-auto flex flex-row gap-4 md:contents">
-        <NavigationTreeItem
+      <ul class="mx-auto flex flex-row gap-4 md:contents">
+        <li
           v-for="navItem in footerTree?.items"
           :key="`footer-link-${navItem.id}`"
-          class="rounded-md p-1 hover:bg-gray-100"
-          raw
-          :navigation-item="navItem"
-        />
-      </div>
+        >
+          <NavigationTreeItem
+            class="rounded-md p-1 hover:bg-gray-100"
+            raw
+            :navigation-item="navItem"
+          />
+        </li>
+      </ul>
     </footer>
   </div>
 </template>
@@ -64,12 +67,12 @@
 <script setup lang="ts">
 import { defineOptions } from 'vue'
 import { useHead } from '@unhead/vue'
+import LocalizedLink from '~/components/LocalizedLink.vue'
 import { useNuxtApp } from '#app/nuxt'
 import {
   useCurrentShop,
   useNavigationTreeByName,
 } from '#storefront/composables'
-import { SFLink } from '#storefront-ui/components'
 import { NuxtPage } from '#components'
 import NavigationTreeItem from '~/components/NavigationTreeItem.vue'
 import { routeList } from '~/utils/route'

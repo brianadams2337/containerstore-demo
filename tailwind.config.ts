@@ -173,13 +173,16 @@ export default {
         10: '10px',
       },
       height: {
-        13: '52px',
+        13: '3.25rem',
+        15: '3.75rem',
       },
       width: {
-        13: '52px',
+        13: '3.25rem',
+        15: '3.75rem',
       },
       size: {
-        13: '52px',
+        13: '3.25rem',
+        15: '3.75rem',
       },
       boxShadow: {
         secondary: '0px 6px 16px -10px rgba(0, 0, 0, 0.04)',

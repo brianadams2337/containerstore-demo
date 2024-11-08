@@ -6,7 +6,7 @@
     <div
       :ref="(element) => setBannerRef(element as HTMLElement, 'top')"
       data-testid="promotion-banner"
-      class="sticky top-0 z-80 hidden h-[3.25rem] w-full cursor-pointer items-center justify-between gap-1 overflow-hidden bg-blue py-2 pl-4 text-sm text-white lg:flex"
+      class="sticky top-0 z-80 hidden h-13 w-full cursor-pointer items-center justify-between gap-1 overflow-hidden bg-blue py-2 pl-4 text-sm text-white lg:flex"
       :style="backgroundColorStyle"
       @keydown.enter="togglePromotionList()"
       @click="togglePromotionList()"
