@@ -141,3 +141,7 @@ export const TEST_USERS = {
   testUserEmail5: process.env.TEST_USER_EMAIL5 as string,
   testUserPassword: process.env.TEST_USER_PASSWORD as string,
 }
+
+export const LIGHTHOUSE_VIEWPORT_SIZE = Number.parseInt(
+  process.env.LIGHTHOUSE_VIEWPORT_SIZE as string,
+)

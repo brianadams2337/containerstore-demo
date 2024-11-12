@@ -4,8 +4,14 @@ import { chromium } from 'playwright'
 import type { OutputMode } from '../fixtures/fixtures'
 
 const NUM_RUNS = 3
+const MOBILE_VIEWPORT_THRESHOLD = 480
+const VIEWPORT_HEIGHT = 800
 
-export const runLighthouseAudit = async (url: URL, auditedPage: string) => {
+export const runLighthouseAudit = async (
+  url: URL,
+  auditedPage: string,
+  viewportWidth: number,
+) => {
   const scores: {
     performance: number[]
     accessibility: number[]
@@ -34,6 +40,14 @@ export const runLighthouseAudit = async (url: URL, auditedPage: string) => {
             process.env.VERCEL_AUTOMATION_BYPASS_SECRET ?? '',
           'x-vercel-set-bypass-cookie': 'true',
         },
+        emulatedFormFactor:
+          viewportWidth <= MOBILE_VIEWPORT_THRESHOLD ? 'mobile' : 'desktop',
+        screenEmulation: {
+          width: viewportWidth,
+          height: VIEWPORT_HEIGHT,
+          deviceScaleFactor: 1,
+          disabled: false,
+        },
       }
 
       const fullAuditUrl = new URL(url)
@@ -43,15 +57,16 @@ export const runLighthouseAudit = async (url: URL, auditedPage: string) => {
       )
       fullAuditUrl.searchParams.append('x-vercel-set-bypass-cookie', 'true')
 
-      const config = {
-        extends: 'lighthouse:default',
-      }
+      const browserContext = await browser.newContext({
+        viewport: {
+          width: viewportWidth,
+          height: VIEWPORT_HEIGHT,
+        },
+      })
+      const page = await browserContext.newPage()
 
-      const runnerResult = await lighthouse(
-        `${fullAuditUrl}`,
-        lhOptions,
-        config,
-      )
+      await page.goto(fullAuditUrl.toString(), { waitUntil: 'commit' })
+      const runnerResult = await lighthouse(page.url(), lhOptions)
 
       if (i === 0) {
         try {
