@@ -30,16 +30,16 @@ const resData = computed(() => {
 
   return {
     ...res,
-    uuid: res.fields.uid ?? '',
-    _uid: res.fields.uid ?? '',
-    slug: res.fields.slug ?? '',
-    teaser_image: res.fields.teaserImage ?? '',
-    teaser_image_mobile: res.fields.teaserImageMobile ?? '',
-    headline: res.fields.headline ?? '',
-    subline: res.fields.subline ?? '',
-    content: res.fields.content ?? [],
-    name: res.fields.headline ?? '',
-    seo: res.fields.seo ?? {},
+    uuid: res?.fields.uid ?? '',
+    _uid: res?.fields.uid ?? '',
+    slug: res?.fields.slug ?? '',
+    teaser_image: res?.fields.teaserImage ?? '',
+    teaser_image_mobile: res?.fields.teaserImageMobile ?? '',
+    headline: res?.fields.headline ?? '',
+    subline: res?.fields.subline ?? '',
+    content: res?.fields.content ?? [],
+    name: res?.fields.headline ?? '',
+    seo: res?.fields.seo ?? {},
   }
 })
 

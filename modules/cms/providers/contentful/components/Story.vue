@@ -15,45 +15,24 @@ const props = defineProps<{
   story: Entry
 }>()
 
-const seoData = computed(() => {
-  if (!props.story?.fields?.seo) {
-    return {
-      description: '',
-      title: (props.story.fields.headline as string) ?? '',
-      twitterTitle: '',
-      twitterDescription: '',
-      twitterImage: '',
-      ogTitle: '',
-      ogDescription: '',
-      ogImage: '',
-    }
-  }
+const story = computed(
+  () => props.story as TypeContentPageWithoutUnresolvableLinksResponse,
+)
 
-  const story = props.story as TypeContentPageWithoutUnresolvableLinksResponse
-
-  return {
-    description: story.fields.seo?.fields?.description ?? '',
-    title: story.fields.seo?.fields.title ?? story.fields.headline ?? '',
-    robots: 'index,follow',
-    twitterTitle: story.fields.seo?.fields.twitterTitle ?? '',
-    twitterDescription: story.fields.seo?.fields.twitterDescription ?? '',
-    twitterImage: story.fields.seo?.fields.twitterImage?.fields.file?.url ?? '',
-    ogTitle: story.fields.seo?.fields.ogTitle ?? '',
-    ogDescription: story.fields.seo?.fields.ogDescription ?? '',
-    ogImage: story.fields.seo?.fields.ogImage?.fields.file?.url ?? '',
-  }
+const seo = computed(() => {
+  return story.value.fields?.seo?.fields
 })
 
 useSeoMeta({
-  description: seoData.value.description,
-  title: seoData.value.title,
+  description: seo.value?.description ?? '',
+  title: seo.value?.title ?? story.value.fields.headline ?? '',
   robots: 'index,follow',
-  twitterTitle: seoData.value.twitterTitle,
-  twitterDescription: seoData.value.twitterDescription,
-  twitterImage: seoData.value.twitterImage,
-  ogTitle: seoData.value.ogTitle,
-  ogDescription: seoData.value.ogDescription,
-  ogImage: seoData.value.ogImage,
+  twitterTitle: seo.value?.twitterTitle ?? '',
+  twitterDescription: seo.value?.twitterDescription ?? '',
+  twitterImage: seo.value?.twitterImage?.fields?.file?.url ?? '',
+  ogTitle: seo.value?.ogTitle ?? '',
+  ogDescription: seo.value?.ogDescription ?? '',
+  ogImage: seo.value?.ogImage?.fields?.file?.url ?? '',
 })
 
 defineOptions({ name: 'CMSStory' })
