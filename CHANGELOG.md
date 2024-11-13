@@ -1,5 +1,139 @@
 # @scayle/storefront-boilerplate-nuxt
 
+## 1.5.0
+
+### Minor Changes
+
+- b8f7500: Architecture: We've decoupled localization functionality from individual local modules, leading to a more modular and maintainable codebase.
+  This change paves the way to pass translated string directly from the primary application into the respective module code.
+- 47d654e: Header Refresh: Updated the header design with a fresh look to align with the new PLP and PDP
+- bf36683: E2E: Implemented end-to-end tests (`e2e-CountryDetector.spec.ts`) to ensure robust functionality of the Country Detector feature. These tests cover key user flows such as closing the modal window, switching to a different shop, and remaining in the initial shop.
+- b8f7500: Architecture: Introduced `LocalizedLink`, a new wrapper component built around the existing `SFLink`of the local UI module. This component simplifies the implementation of localized links across the UI, ensuring a smoother experience for international shops.
+- ebd9065: Architecture: Update default `node` version to v22
+- 893fbd6: Header Refresh: The ShopSelector component has been redesigned with an updated look and feel for a more intuitive and user-friendly experience.
+- 99baa1a: E2E: Improved the stability of our Checkout end-to-end tests when running in parallel by assigning a dedicated test user to each browser. This prevents conflicts that can occur when multiple tests interact with shared user data (like order information) simultaneously, leading to more reliable and consistent test results.
+- ff496e6: Architecture: Improved page load speed by enabling Brotli compression by default for cached data. This optimization can be customized via the `NUXT_STOREFRONT_STORAGE_CACHE_COMPRESSION` environment variable or the `storefront.storage.cache` option in `nuxt.config.ts`.
+- 79e18c6: A11y: Enhanced the accessibility of the ShopSwitcher component by adding `aria-*` attributes to provide better context and functionality for assistive technologies. Additionally, we optimized keyboard navigation to ensure a smooth and intuitive experience for all users.
+- b8f7500: i18n: Improved the localization handling within the local CMS module, ensuring accurate and efficient handling of multilingual content for a smoother user experience across all supported languages.
+
+### Patch Changes
+
+- b9ca237: CMS: Fixed inconsistent heights of teaser images on product listing pages.
+- 9a2b40e: Search: Fixed an issue causing multiple requests to the `getSearchSuggestions` endpoint for a single user query.
+  This reduces server load and improves the responsiveness of search suggestions.
+- 6c78560: PLP: Fixed price rounding in the price filter.
+- 7074145: PDP / Subscription: Improved `getVariant()` method to optionally handle exact product variant ID when the parameter is passed from the test.
+- aa04cdc: Promotion: Updated the `getPromotionGiftProducts` method to exclude sold-out promotion gift items, improving API response efficiency.
+- 470e631: PDP: Removed the unnecessary close icon between the size and quantity selectors.
+- d64d371: E2E: Made Filters deep-link test case on Product Listing Page more generic by excluding "Brand" filter.
+- - Added dependency `@vueuse/components@11.2.0`
+  - Added dependency `@vueuse/integrations@11.2.0`
+  - Added dependency `focus-trap@7.6.1`
+  - Added dependency `tabbable@6.2.0`
+  - Added dependency `@testing-library/jest-dom@6.6.3`
+  - Added dependency `@testing-library/vue@8.1.0`
+  - Added dependency `fishery@2.2.2`
+  - Updated dependency `@contentful/live-preview@4.5.6` to `@contentful/live-preview@4.5.14`
+  - Updated dependency `@contentful/rich-text-html-renderer@16.6.10` to `@contentful/rich-text-html-renderer@17.0.0`
+  - Updated dependency `@scayle/nuxt-opentelemetry@0.3.2` to `@scayle/nuxt-opentelemetry@0.4.0`
+  - Updated dependency `@scayle/omnichannel-nuxt@4.0.1` to `@scayle/omnichannel-nuxt@4.0.2`
+  - Updated dependency `@scayle/storefront-nuxt@7.85.12` to `@scayle/storefront-nuxt@7.95.0`
+  - Updated dependency `@storyblok/nuxt@6.0.12` to `@storyblok/nuxt@6.2.0`
+  - Updated dependency `@storyblok/richtext@2.1.0` to `@storyblok/richtext@3.0.0`
+  - Updated dependency `@storyblok/vue@8.1.3` to `@storyblok/vue@8.1.5`
+  - Updated dependency `@vueuse/core@11.1.0` to `@vueuse/core@11.2.0`
+  - Updated dependency `@vueuse/nuxt@11.1.0` to `@vueuse/nuxt@11.2.0`
+  - Updated dependency `contentful@11.0.3` to `contentful@11.2.1`
+  - Updated dependency `contentful-export@7.19.155` to `contentful-export@7.19.163`
+  - Updated dependency `nanoid@5.0.7` to `nanoid@5.0.8`
+  - Updated dependency `nuxi@3.14.0` to `nuxi@3.15.0`
+  - Updated dependency `storyblok-js-client@6.10.0` to `storyblok-js-client@6.10.1`
+  - Updated dependency `vue@3.5.11` to `vue@3.5.12`
+  - Updated dependency `@nuxt/eslint@0.5.7` to `@nuxt/eslint@0.6.1`
+  - Updated dependency `@nuxt/test-utils@3.14.3` to `@nuxt/test-utils@3.14.4`
+  - Updated dependency `@nuxtjs/i18n@8.5.5` to `@nuxtjs/i18n@8.5.6`
+  - Updated dependency `@nuxtjs/tailwindcss@6.12.1` to `@nuxtjs/tailwindcss@6.12.2`
+  - Updated dependency `@scayle/eslint-config-storefront@4.3.0` to `@scayle/eslint-config-storefront@4.3.2`
+  - Updated dependency `@types/color@3.0.6` to `@types/color@4.2.0`
+  - Updated dependency `@types/node@20.16.11` to `@types/node@22.9.0`
+  - Updated dependency `@typescript-eslint/scope-manager@8.8.1` to `@typescript-eslint/scope-manager@8.14.0`
+  - Updated dependency `@typescript-eslint/utils@8.8.1` to `@typescript-eslint/utils@8.14.0`
+  - Updated dependency `@upstash/redis@1.34.2` to `@upstash/redis@1.34.3`
+  - Updated dependency `@vitest/coverage-v8@2.1.2` to `@vitest/coverage-v8@2.1.4`
+  - Updated dependency `@vue/typescript-plugin@2.1.6` to `@vue/typescript-plugin@2.1.10`
+  - Updated dependency `eslint@9.12.0` to `eslint@9.14.0`
+  - Updated dependency `eslint-plugin-tailwindcss@3.17.4` to `eslint-plugin-tailwindcss@3.17.5`
+  - Updated dependency `eslint-plugin-unimport@0.1.0` to `eslint-plugin-unimport@0.1.1`
+  - Updated dependency `happy-dom@15.7.4` to `happy-dom@15.11.4`
+  - Updated dependency `nuxt-svgo@4.0.6` to `nuxt-svgo@4.0.8`
+  - Updated dependency `ofetch@1.4.0` to `ofetch@1.4.1`
+  - Updated dependency `postcss@8.4.47` to `postcss@8.4.49`
+  - Updated dependency `postcss-custom-properties@14.0.1` to `postcss-custom-properties@14.0.4`
+  - Updated dependency `storyblok@3.34.0` to `storyblok@3.35.0`
+  - Updated dependency `tailwindcss@3.4.13` to `tailwindcss@3.4.14`
+  - Updated dependency `typescript@5.6.2` to `typescript@5.6.3`
+  - Updated dependency `vitest@2.1.2` to `vitest@2.1.4`
+  - Updated dependency `vue-tsc@2.1.6` to `vue-tsc@2.1.10`
+- 6ec36b6: Clean-up: Remove unused components
+
+  - `components/addOns/AddOnsSelector.vue`
+  - `product/card/ProductDetailsSkeleton.vue`
+  - `product/promotion/gifts/ProductPromotionGiftImageGallery.vue`
+  - `modules/ui/runtime/components/ThumbnailSlider.vue`
+
+- 5fad4ec: E2E: Enhanced the happy path end-to-end test ( `e2e-happy-path.spec.ts`) to close the Country Detector modal window. This prevents potential blockages during test execution, leading to more reliable and consistent test results.
+- f5ff146: E2E: Enhanced Homepage end-to-end tests by refining how links are identified. We've transitioned from user-facing selectors (`getByRole('link')`) to a more comprehensive approach using (`page.locator('a')`). This ensures that we catch all links within the page, improving the thoroughness of our tests. We've also introduced a short delay using `page.waitForLoadState('domcontentloaded')` after each page visit within our Homepage end-to-end tests. This prevents issues that can arise when tests run faster than the page can load, leading to more stable and reliable test results.
+- 7e7e6b7: E2E: Optimized mobile search tests by streamlining the `exactProductItem` locator to be more robust and less prone to errors and removing a redundant check for search category list visibility within `mobileNavigation.ts`. The test now directly verifies if the desired list item is visible and proceeds to click it, resulting in a more efficient and stable interaction flow.
+- bb402fe: E2E: Addressed an issue affecting PDP end-to-end tests specifically within Chrome Mobile, where clicking the Variant Picker was frequently unsuccessful. While Playwright implements automatic retries for such actions, this often resulted in test timeouts. As the issue appears isolated to Chrome Mobile, we've introduced `{ force: true }` to the `variantPicker.click() `action to bypass the problematic default click behavior and ensure consistent test execution across all browser environments.
+- 14cc7bc: CMS: Fixed handling of partial story data structures in Contentful stories of content and service pages.
+- aaa535b: A11y: Added the `lang` attribute to the `<html>` tag across all pages. This enhancement explicitly defines the page's default language, improving accessibility for screen readers and other assistive technologies while also aiding search engines in properly indexing and displaying our content.
+- 1851d44: E2E: Enhanced our Playwright end-to-end testing suite by integrating two new TypeScript linting rules within the eslint.config.mjs configuration:
+
+  - `no-floating-promises`: This rule enforces the use of await for any call that returns a Promise, preventing unintentional side effects and ensuring that asynchronous operations are handled correctly within our tests.
+  - `await-thenable`: This rule complements `no-floating-promises` by specifically targeting instances where await is used unnecessarily with values that are not Promises. This helps maintain consistency and clarity within our asynchronous code.
+
+- 3eb58c3: E2E: Improved the robustness of the Country Detector shop switcher end-to-end test by incorporating the `first()` method. This ensures we consistently select the first matching shop element in cases where multiple options are present, preventing potential test ambiguities and enhancing overall reliability.
+- e632d7c: E2E: Introduced page title checks to our PLP and PDP end-to-end tests. This ensures that the correct page titles are displayed to users, contributing to a smoother and more understandable browsing experience.
+- 57bdaa8: Product: Resolved the `Extraneous non-props attributes` warning within the `ProductPrice.vue` component. This ensures better code quality, making the component more readable and maintainable.
+- fa011a9: A11y: Improved accessibility of all product images by implementing detailed alt texts. This descriptive text, which now includes the product's brand, name, color, and relevant contextual information (such as gallery index or selected state), provides valuable information to users who are visually impaired, enhancing their overall browsing experience.
+- 37dae48: Basket: Campaign discounts are now clearly displayed within the basket summary, providing users with a transparent and accurate breakdown of their potential savings.
+- ef8ac61: E2E: Improved the stability of our Basket end-to-end tests when running in parallel by assigning a dedicated test user to each browser. This prevents conflicts that can occur when multiple tests interact with shared user data, leading to more reliable and consistent test results.
+- b506fa6: UI: Removed the colons from the Countdown widget to create a cleaner and more visually appealing display.
+- 19b3759: Lighthouse: Implemented optimizations to significantly reduce the execution time of Lighthouse tests, enabling us to get quicker feedback on performance and identify areas for improvement more efficiently.
+- a4a7254: E2E: Improvements in End-to-End test suite for PLP filters
+
+  - Improved the accessibility and testability of Min and Max price input fields by adding the `data-testid` attribute.
+  - Introduced the `openFilters()` method to the `productListingPage` class, simplifying the distinction between mobile and desktop test flows.
+  - Updated the `Sale` filter switch element locator in `plpFilters` to reflect recent UI changes.
+  - Enhanced Filter tests (`e2e-Plp.spec.ts`) to handle deep links with predefined filters more reliably and added `page.waitForLoadState('domcontentloaded')` for increased stability.
+
+- 6393f4f: E2E: Implemented a standardized method for closing the Country Detector modal on page load across all relevant tests. This prevents potential conflicts and ensures a smoother, more reliable testing process.
+- 6393f4f: E2E: Improvements in End-to-End test suite for Wishlist:
+
+  - Simplified the `productBrand` locator for greater reliability.
+  - Tests related to adding products to the basket from the Wishlist have been temporarily skipped due to ongoing feature development. These tests will be reintroduced once the related functionality is fully implemented.
+
+- 6393f4f: E2E: Improvements in End-to-End test suite of the PLP
+
+  - Removed unnecessary navigation steps leading to the category page, optimizing test execution speed.
+  - Improved the stability of add / remove Wishlist tests by incorporating additional DOM element waits.
+
+- 6393f4f: E2E: Addressed an issue affecting sticky elements on scrolled pages in Mobile Safari. The solution replaces `mouse.wheel()` with `window.scrollTo()` for improved accuracy and reliability.
+- 6393f4f: E2E: Enhanced PDP end-to-end testing reliability when adding products to the basket by implementing a `networkidle` wait state, ensuring all necessary network requests are complete before proceeding with the test steps.
+- dc21810: E2E: Implemented various improvements to our end-to-end tests, making them more adaptable to data changes and reducing the likelihood of false positives. This ensures the tests remain robust and reliable even as the data evolves.
+- 048a4c7: UI: Improved code consistency and readability by replacing unnecessary, arbitrary values in Tailwind classes with their more semantic equivalents. This makes our styling easier to understand and maintain.
+- 1002217: Lighthouse: The lighthouseAudit.ts script now accepts a viewportSize parameter, allowing users to run Lighthouse audits simulating either mobile or desktop environments. This improves the accuracy of performance and accessibility assessments for different device types.
+- 9ae2044: E2E: Streamlined our Add to Basket end-to-end tests by combining the guest user and logged-in user flows. This change results in:
+
+  - Improved Stability: Reduced the potential for inter-test interference during parallel execution.
+  - Faster Execution: Eliminated redundant steps by merging separate test cases.
+  - Expanded Coverage: Added a new assertion to verify that products remain in the basket after user authentication, covering a crucial aspect of the user journey.
+
+- 6393f4f: E2E: Removed the serial execution constraint from Basket test cases, allowing them to run concurrently and further reducing overall test execution time.
+- 1e77842: Country Detection: Enhanced the `closeModal()` function within our Country Detection tests to include a check for the modal's visibility on page load. This improvement ensures greater test stability, particularly when the test suite is executed from a different time zone than the targeted shop, as it accounts for potential modal visibility differences based on location and time.
+- f9747f1: E2E: Improved the resilience of our PLP end-to-end tests by modifying the sibling product selection logic. Tests now dynamically target the first available product within a PLP category page instead of relying on a fixed product ID. This change ensures that tests remain valid even if the order or availability of products fluctuates.
+- bc23d3a: A11y: Enhanced the `useDropdownKeyboardBehavior` function to prevent potential conflicts by limiting its keydown event listeners to elements within the dropdown itself. This ensures that keyboard interactions are correctly scoped and do not unintentionally affect other page elements.
+
 ## 1.4.0
 
 ### 🔥 Highlights
