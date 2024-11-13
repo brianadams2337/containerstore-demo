@@ -34,8 +34,7 @@ export const LIGHTHOUSE_THRESHOLDS = {
 
 export const PLP_FILTER_DEEPLINK = {
   sale: true,
-  size: 22,
-  brand: 2259,
+  size: 2272,
   maxPrice: 4000,
 }
 

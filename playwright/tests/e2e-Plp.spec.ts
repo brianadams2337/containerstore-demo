@@ -177,7 +177,7 @@ test('C2139744: Verify PLP Filters deeplink', async ({
     baseURL as string,
   )
   await countryDetector.closeModal()
-  await expect(productListingPage.filterButton.first()).toContainText('4')
+  await expect(productListingPage.filterButton.first()).toContainText('3')
   await expect(async () => {
     await productListingPage.openFilters()
     await plpFilters.closeFiltersButton.waitFor()
