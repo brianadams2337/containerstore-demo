@@ -97,7 +97,7 @@ export const FOOTER = {
     faq: '/de/s/faq',
     deliveryReturns: '/de/s/returns',
     aboutStorefront:
-      'https://scayle.dev/en/storefront-guide/developer-guide/getting-started/about-storefront',
+      'https://scayle.dev/en/storefront-guide/developer-guide/getting-started/what-is-storefront',
   },
   linkGroup3: {
     cookiePolicy: '/de',
