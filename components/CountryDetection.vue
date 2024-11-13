@@ -90,12 +90,11 @@ const getShopCountryName = (shop: ShopInfo, includeLanguage: boolean) => {
     return undefined
   }
 
-  const regionOverride: string = $i18n.t(
+  const regionName = $i18n.te(
     `country_selection.override_codes.${locale.region.toUpperCase()}`,
   )
-  const regionName = regionOverride.startsWith('country_selection')
-    ? regionNames.of(locale.region)
-    : regionOverride
+    ? $i18n.t(`country_selection.override_codes.${locale.region.toUpperCase()}`)
+    : regionNames.of(locale.region)
 
   if (includeLanguage && locale.language) {
     const languageName = languageNames.of(locale.language)
