@@ -15,7 +15,7 @@
       <HeaderTopBar />
       <AppHeader />
       <MobileSidebar />
-      <div class="mt-8 grow">
+      <div class="grow">
         <NuxtPage />
       </div>
       <AppFooter
