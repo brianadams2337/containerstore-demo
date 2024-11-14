@@ -4,7 +4,7 @@
     :disabled="disabled"
     type="raw"
     aria-haspopup="true"
-    aria-controls="scayle-listbox-options"
+    :aria-controls="id"
     @click="toggle"
   >
     <slot />
@@ -18,6 +18,7 @@ import { SFButton } from '#storefront-ui/components'
 type Props = {
   listName: string
   disabled?: boolean
+  id: string
 }
 
 const props = withDefaults(defineProps<Props>(), { disabled: false })

@@ -1,7 +1,12 @@
 <template>
-  <SFListbox :value="currentShop?.path" name="language-switch" class="shrink-0">
+  <SFListbox
+    :value="currentShop?.path"
+    :name="'language-switch-' + id"
+    class="shrink-0"
+  >
     <template #default="{ isOpen, list }">
       <SFListboxButton
+        :id="id"
         ref="button"
         :aria-label="
           $t('shop_selector.aria_label', { selectedCountry, selectedLanguage })
@@ -23,6 +28,7 @@
     <template #options="{ isOpen, list }">
       <SFListboxOptions
         v-if="isOpen"
+        :id="id"
         class="absolute right-0 top-0 z-60 flex max-h-64 flex-col gap-1 overflow-y-auto rounded-10 bg-white p-2 shadow-md"
       >
         <SFListboxOption
@@ -44,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, useId } from 'vue'
 import ShopSwitcherItem from './ShopSwitcherItem.vue'
 import { useSwitchLocalePath } from '#i18n'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
@@ -62,6 +68,8 @@ const availableShops = useAvailableShops()
 const switchLocalePath = useSwitchLocalePath()
 
 const { trackShopChange } = useTrackingEvents()
+
+const id = useId()
 
 const languageTranslator = computed(() => {
   if (!currentShop.value) {
