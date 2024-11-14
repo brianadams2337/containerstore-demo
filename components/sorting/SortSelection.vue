@@ -6,7 +6,7 @@
   >
     <template #default>
       <span class="max-w-[80%] overflow-hidden text-ellipsis !text-base">
-        {{ selectedSort?.label }}
+        {{ selectedSort && $t(selectedSort.label) }}
       </span>
     </template>
     <template #item="{ item, selectItem }">
@@ -24,7 +24,7 @@
         "
       >
         <span class="flex w-full items-center justify-between">
-          {{ item.label }}
+          {{ $t(item.label) }}
           <IconCheck
             v-if="item.key === selectedSort?.key"
             class="size-4 text-accent"
