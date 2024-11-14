@@ -1,6 +1,6 @@
 <template>
   <SFLink
-    v-if="pathParams && pathParams.path"
+    v-if="pathParams && pathParams.path && !disabledLink"
     :to="pathParams.path"
     :type="type"
     :target="pathParams.openInNew ? '_blank' : '_self'"
@@ -23,6 +23,7 @@
       {{ displayName }}
     </span>
   </SFLink>
+  <span v-else>{{ displayName }}</span>
 </template>
 
 <script setup lang="ts">
@@ -36,9 +37,14 @@ import { SFLink } from '#storefront-ui/components'
 type Props = {
   navigationItem: NavigationTreeItem | null
   type?: LinkVariant
+  disabledLink?: boolean
 }
 
-const { navigationItem = null, type } = defineProps<Props>()
+const {
+  navigationItem = null,
+  type,
+  disabledLink = false,
+} = defineProps<Props>()
 
 const id = useId()
 

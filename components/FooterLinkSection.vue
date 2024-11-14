@@ -4,7 +4,9 @@
       class="flex cursor-pointer items-center p-1 text-lg font-semibold text-gray-900 md:cursor-default md:text-sm"
       @click="expanded = !expanded"
     >
-      <h2>{{ section.name }}</h2>
+      <h2>
+        <NavigationTreeItem :navigation-item="section" disabled-link />
+      </h2>
       <div class="ml-auto flex md:hidden">
         <IconPlus v-if="!expanded" class="size-6 text-black" />
         <IconMinus v-else class="size-6 text-black" />
