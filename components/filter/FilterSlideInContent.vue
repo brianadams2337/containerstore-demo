@@ -108,14 +108,14 @@
 
 <script setup lang="ts">
 import type { CentAmount, ProductSearchQuery } from '@scayle/storefront-nuxt'
-import SortSelection from '../sorting/SortSelection.vue'
-import FilterColorChip from './FilterColorChip.vue'
-import FilterGroup from './FilterGroup.vue'
 import type {
   BooleanFilterItemWithValues,
   FilterItemWithValues,
   RangeTuple,
-} from '#storefront-product-listing'
+} from '@scayle/storefront-product-listing'
+import SortSelection from '../sorting/SortSelection.vue'
+import FilterColorChip from './FilterColorChip.vue'
+import FilterGroup from './FilterGroup.vue'
 import { ProductColor } from '~/constants/product'
 import {
   SFCheckbox,
@@ -127,7 +127,7 @@ import { useI18n } from '#i18n'
 
 type Props = {
   availableFilters?: FilterItemWithValues[]
-  appliedAttributeValues: Record<string, number[]>
+  appliedAttributeValues: Record<string, (string | number)[]>
   appliedBooleanValues: Record<string, boolean>
   appliedFilter: ProductSearchQuery
 }

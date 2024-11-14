@@ -106,9 +106,7 @@ import {
   defineAsyncComponent,
 } from 'vue'
 import type { Price, Variant } from '@scayle/storefront-nuxt'
-import { useProductSeoData } from '~/composables/useProductSeoData'
 import { useJsonld } from '~/composables/useJsonld'
-import { getCombineWithProductIds } from '~/utils/product'
 import { usePageState } from '~/composables/usePageState'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
 import { useProductPromotions } from '~/composables/useProductPromotions'
@@ -116,7 +114,8 @@ import { useBasket, useProduct } from '#storefront/composables'
 import { useProductBaseInfo } from '~/composables/useProductBaseInfo'
 import { isBuyXGetYType } from '~/utils/promotion'
 import { useFavoriteStore } from '~/composables/useFavoriteStore'
-import { definePageMeta, useHead, useRoute } from '#imports'
+import { definePageMeta, useHead, useImage, useRoute } from '#imports'
+import { useI18n } from '#i18n'
 import { PRODUCT_WITH_PARAMS } from '~/constants'
 import AsyncDataWrapper from '~/components/AsyncDataWrapper.vue'
 import ProductGallery from '~/components/product/detail/productGallery/ProductGallery.vue'
@@ -130,6 +129,12 @@ import ProductDetails from '~/components/product/ProductDetails.vue'
 import ProductRecommendations from '~/components/product/ProductRecommendations.vue'
 import { SFHeadline, SFFadeInTransition } from '#storefront-ui/components'
 import ProductDetailPageLoadingState from '~/components/product/detail/ProductDetailPageLoadingState.vue'
+import {
+  getCombineWithProductIds,
+  useProductSeoData,
+} from '#storefront-product-detail'
+import { useBreadcrumbs } from '~/composables'
+import { useNuxtApp } from '#app/nuxt'
 
 const LazyStoreLocatorSlideIn = defineAsyncComponent(
   () => import('~/components/locator/StoreLocatorSlideIn.vue'),
@@ -164,8 +169,14 @@ whenever(error, () => {
   throw error.value
 })
 
-const { name, brand, longestCategoryList, hasOneVariantOnly, variants } =
-  useProductBaseInfo(product)
+const {
+  name,
+  brand,
+  description,
+  longestCategoryList,
+  hasOneVariantOnly,
+  variants,
+} = useProductBaseInfo(product)
 
 const { isGiftAddedToBasket, areGiftConditionsMet, promotion } =
   useProductPromotions(product)
@@ -226,19 +237,41 @@ const selectedStoreId = ref<number | undefined>(
   favoriteStoreId.value ?? undefined,
 )
 
+const { getBreadcrumbsFromProductCategories } = useBreadcrumbs()
+const breadcrumbs = getBreadcrumbsFromProductCategories(
+  longestCategoryList.value || [],
+)
+const { getImage } = useImage()
+const images = computed(() => {
+  const options = {
+    sizes: '100vw',
+    provider: 'scayle',
+  }
+  const images = product.value?.images ?? []
+  return images.map(({ hash }) => getImage(hash, options).url)
+})
+
+const { $config } = useNuxtApp()
+
 // SEO
-const {
-  description,
-  canonicalLink,
-  robots,
-  title,
-  productJsonLd,
-  productBreadcrumbJsonLd,
-} = useProductSeoData(product)
+const { canonicalLink, robots, title, productJsonLd, productBreadcrumbJsonLd } =
+  useProductSeoData(
+    breadcrumbs,
+    { baseUrl: $config.public.baseUrl, fullPath: route.fullPath },
+    images.value,
+    {
+      name: name.value,
+      brand: brand.value,
+      productDescription: description.value,
+      variants: variants.value,
+    },
+  )
+
+const i18n = useI18n()
 
 useSeoMeta({
   title,
-  description,
+  description: i18n.t('pdp.meta.description', { productName: name.value }),
   robots,
 })
 useHead({

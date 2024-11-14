@@ -1,18 +1,19 @@
 import { extendPromise } from '@scayle/storefront-nuxt'
 import { type MaybeRefOrGetter, readonly, ref } from 'vue'
 import type { LocationQuery } from 'vue-router'
-import { useAppliedFilters, useTrackingEvents, useToast } from '~/composables'
+import type { RangeTuple } from '@scayle/storefront-product-listing'
+import { useTrackingEvents, useToast } from '~/composables'
 import { useRoute, useRouter } from '#app/composables/router'
 import { useI18n } from '#i18n'
-import { useProductListFilter } from '#storefront-product-listing/composables'
-import type { RangeTuple } from '#storefront-product-listing'
 import {
+  useProductListFilter,
   getNewQueryFilters,
   getClearedFilterQueryByKey,
   createNewBoolAttributeQuery,
   createNewAttributeQuery,
   createNewPriceQuery,
-} from '#storefront-product-listing/utils'
+  useAppliedFilters,
+} from '#storefront-product-listing'
 
 export function useFilter(
   currentCategoryId?: MaybeRefOrGetter<number | undefined>,
@@ -102,13 +103,11 @@ export function useFilter(
       return
     }
 
-    const query = getNewQueryFilters(route, filter)
-
     // Should not apply reset all filter if appliedFilter is empty
     if (!appliedFiltersCount.value && !Object.keys(filter).length) {
       return
     }
-
+    const { page, ...query } = getNewQueryFilters(route, filter)
     await router.push({ query })
 
     areFiltersUpdated.value = true

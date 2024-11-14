@@ -4,13 +4,16 @@ import {
 } from '@scayle/storefront-nuxt'
 import { computed } from 'vue'
 import { useProducts } from '#storefront/composables'
-import { useProductListSort, useAppliedFilters } from '~/composables'
 import { useRoute } from '#app/composables/router'
 import {
   SEARCH_PRODUCTS_WITH_PARAMS,
   SEARCH_PRODUCTS_PER_PAGE,
   FETCH_PRODUCTS_CACHE_TTL,
 } from '~/constants'
+import {
+  useAppliedFilters,
+  useProductListSort,
+} from '#storefront-product-listing'
 
 export function useProductsSearch({
   params: {

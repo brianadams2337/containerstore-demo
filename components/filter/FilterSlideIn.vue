@@ -31,8 +31,9 @@ import { toRefs } from 'vue'
 import FilterSlideInContent from './FilterSlideInContent.vue'
 import FilterActions from './FilterActions.vue'
 import FilterHeader from './FilterHeader.vue'
-import { useAppliedFilters, useFilter } from '~/composables'
+import { useFilter } from '~/composables'
 import { SFSlideIn } from '#storefront-ui/components'
+import { useAppliedFilters } from '#storefront-product-listing'
 
 const props = defineProps<{ currentCategoryId?: number }>()
 

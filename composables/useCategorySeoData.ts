@@ -1,13 +1,13 @@
 import { computed, type Ref } from 'vue'
 import type { Category } from '@scayle/storefront-nuxt'
-import {
-  useAppliedFilters,
-  useProductListSort,
-  useBreadcrumbs,
-} from '~/composables'
+import { useBreadcrumbs } from '~/composables'
 import { useRoute } from '#app/composables/router'
 import { sanitizeCanonicalURL, generateCategoryBreadcrumbSchema } from '~/utils'
 import { useNuxtApp } from '#app'
+import {
+  useAppliedFilters,
+  useProductListSort,
+} from '#storefront-product-listing'
 
 export function useCategorySeoData(category: Ref<Category | undefined | null>) {
   const { $i18n, $config } = useNuxtApp()

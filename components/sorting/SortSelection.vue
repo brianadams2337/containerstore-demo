@@ -6,7 +6,7 @@
   >
     <template #default>
       <span class="max-w-[80%] overflow-hidden text-ellipsis !text-base">
-        {{ selectedSort.label }}
+        {{ selectedSort?.label }}
       </span>
     </template>
     <template #item="{ item, selectItem }">
@@ -14,7 +14,7 @@
         data-testid="sort-item"
         type="whisper"
         class="mb-1 w-full rounded p-2 !text-base !font-medium last-of-type:mb-0 hover:bg-gray-100"
-        :class="{ 'bg-gray-100 !text-black': item.key === selectedSort.key }"
+        :class="{ 'bg-gray-100 !text-black': item.key === selectedSort?.key }"
         :to="item.to"
         @click="
           () => {
@@ -26,7 +26,7 @@
         <span class="flex w-full items-center justify-between">
           {{ item.label }}
           <IconCheck
-            v-if="item.key === selectedSort.key"
+            v-if="item.key === selectedSort?.key"
             class="size-4 text-accent"
           />
         </span>
@@ -37,8 +37,9 @@
 
 <script setup lang="ts">
 import LocalizedLink from '../LocalizedLink.vue'
-import { useTrackingEvents, useProductListSort } from '~/composables'
+import { useTrackingEvents } from '~/composables'
 import { SFDropdown } from '#storefront-ui/components'
+import { useProductListSort } from '#storefront-product-listing'
 
 const { selectedSort, sortLinks } = useProductListSort()
 const { trackFilterApply } = useTrackingEvents()

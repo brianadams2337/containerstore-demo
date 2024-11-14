@@ -48,8 +48,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import Color from 'color'
+import type { AttributesFilterValue } from '@scayle/storefront-product-listing'
 import { ProductColor } from '~/constants/product'
-import type { AttributesFilterValue } from '#storefront-product-listing'
 
 type Props = {
   color: AttributesFilterValue

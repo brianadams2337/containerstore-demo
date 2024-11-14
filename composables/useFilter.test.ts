@@ -15,8 +15,7 @@ const mocks = vi.hoisted(() => {
       trackFilterApply: vi.fn(),
       trackFilterFlyout: vi.fn(),
     },
-    useFilters: { data: { value: { filters: {}, unfilteredCount: 0 } } },
-    useProductListSort: { value: '' },
+    useProductListFilter: { clearedPriceQuery: { value: {} } },
     useToast: { show: vi.fn() },
     useI18n: { t: vi.fn().mockImplementation((key) => key) },
   }
@@ -27,70 +26,27 @@ vi.mock('#app/composables/router', () => ({
   useRouter: vi.fn().mockReturnValue(mocks.router),
 }))
 
-vi.mock('#storefront/composables', () => ({
-  useFilters: vi.fn().mockReturnValue(mocks.useFilters),
-}))
-
 vi.mock('#i18n', () => ({
   useI18n: vi.fn().mockReturnValue(mocks.useI18n),
 }))
 
 vi.mock('~/composables', () => ({
-  useAppliedFilters: vi.fn().mockReturnValue(mocks.useAppliedFilters),
   useTrackingEvents: vi.fn().mockReturnValue(mocks.useTrackingEvents),
-  useProductListSort: vi
-    .fn()
-    .mockReturnValue({ selectedSort: mocks.useProductListSort }),
   useToast: vi.fn().mockReturnValue(mocks.useToast),
 }))
 
+vi.mock('#storefront-product-listing', async () => {
+  const actual = await vi.importActual('#storefront-product-listing')
+
+  return {
+    ...actual,
+    useProductListFilter: vi.fn().mockReturnValue(mocks.useProductListFilter),
+    useAppliedFilters: vi.fn().mockReturnValue(mocks.useAppliedFilters),
+  }
+})
+
 describe('useFilter', () => {
   beforeEach(() => {
-    mocks.useFilters.data.value.filters = [
-      {
-        id: 1,
-        slug: 'brand',
-        name: 'Brand',
-        values: [
-          {
-            name: 'value',
-            id: 2,
-            productCount: 10,
-            value: 123,
-          },
-        ],
-        type: 'attributes',
-      },
-      {
-        id: 12,
-        slug: 'sale',
-        name: 'Sale',
-        values: [
-          {
-            name: true,
-            productCount: 12,
-          },
-          {
-            name: false,
-            productCount: 2,
-          },
-        ],
-        type: 'boolean',
-      },
-      {
-        id: 3,
-        slug: 'prices',
-        name: 'Prices',
-        values: [
-          {
-            min: 10,
-            max: 300,
-            productCount: 30,
-          },
-        ],
-        type: 'range',
-      },
-    ]
     mocks.useAppliedFilters.appliedFilter.value = { attributes: [] }
     mocks.useAppliedFilters.appliedFiltersCount.value = 0
     mocks.route.query = {}

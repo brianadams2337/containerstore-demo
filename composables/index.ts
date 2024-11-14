@@ -2,7 +2,6 @@
 export * from './cms/useProviderContext'
 
 // Storefront Boilerplate / Composables
-export * from './useAppliedFilters'
 export * from './useAuthentication'
 export * from './useBanner'
 export * from './useBasketActions'
@@ -32,9 +31,7 @@ export * from './useNavigationTreeItems'
 export * from './useOrderDetails'
 export * from './usePageState'
 export * from './useProductBaseInfo'
-export * from './useProductListSort'
 export * from './useProductPromotions'
-export * from './useProductsByCategory'
 export * from './useProductsSearch'
 export * from './usePromotionActions'
 export * from './usePromotionChange'

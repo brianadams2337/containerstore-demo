@@ -48,6 +48,11 @@ vi.mock('~/utils', () => ({
   generateCategoryBreadcrumbSchema: vi.fn((items) => items),
 }))
 
+vi.mock('#storefront-product-listing', () => ({
+  useProductListSort: vi.fn().mockReturnValue(mocks.useProductListSort),
+  useAppliedFilters: vi.fn().mockReturnValue(mocks.useAppliedFilters),
+}))
+
 describe('useCategorySeoData', () => {
   beforeAll(() => {
     mocks.useAppliedFilters.areFiltersApplied.value = false

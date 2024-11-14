@@ -88,7 +88,6 @@ import {
 import { definePageMeta, useSeoMeta } from '#imports'
 import {
   useCurrentCategory,
-  useProductsByCategory,
   useTrackingEvents,
   usePageState,
   useCategorySeoData,
@@ -110,6 +109,7 @@ import ProductList from '~/components/productList/ProductList.vue'
 import FilterSlideIn from '~/components/filter/FilterSlideIn.vue'
 import FloatingContainer from '~/components/FloatingContainer.vue'
 import ScrollToTopButton from '~/components/ScrollToTopButton.vue'
+import { useProductsByCategory } from '#storefront-product-listing'
 
 const route = useRoute()
 
@@ -133,7 +133,9 @@ const {
   fetching: productsFetching,
   totalProductsCount,
   paginationOffset,
-} = useProductsByCategory(currentCategoryId, { options: { lazy: true } })
+} = useProductsByCategory(currentCategoryId, {
+  fetchingOptions: { lazy: true },
+})
 
 const currentCategoryPromise = useCurrentCategory(currentCategoryId.value)
 

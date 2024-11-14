@@ -5,8 +5,6 @@ import {
   getAttributeValueTuples,
   getFirstAttributeValue,
   getLowestPrice,
-  type AdvancedAttribute,
-  getFlattenedAdvancedAttribute,
 } from '@scayle/storefront-nuxt'
 import { getPrimaryImage } from './image'
 import type { ProductSibling } from '~/types/siblings'
@@ -111,16 +109,4 @@ export const createCustomPrice = (
     ...price,
     ...overwrite,
   }
-}
-
-export const getCombineWithProductIds = (attribute?: AdvancedAttribute) => {
-  if (!attribute) {
-    return []
-  }
-
-  return (
-    getFlattenedAdvancedAttribute<{ value: string }>(attribute.values)
-      ?.map((item) => Number.parseInt(item.value))
-      ?.filter((value) => !Number.isNaN(value)) || []
-  )
 }

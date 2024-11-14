@@ -40,8 +40,8 @@
 import { computed } from 'vue'
 import type { Product } from '@scayle/storefront-nuxt'
 import { useProductBaseInfo } from '~/composables/useProductBaseInfo'
-import { getFilteredAttributeGroups } from '~/utils'
 import { SFAccordionEntry } from '#storefront-ui/components'
+import { getFilteredAttributeGroups } from '#storefront-product-detail'
 
 const props = defineProps<{ product: Product }>()
 

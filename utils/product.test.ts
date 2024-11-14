@@ -4,14 +4,10 @@ import {
   getProductSiblings,
   getProductSiblingData,
   getApplicablePromotionsForProduct,
-  getCombineWithProductIds,
   createCustomPrice,
 } from './product'
 import { productFactory } from '~/test/factories/product'
-import {
-  advancedAttributeFactory,
-  attributeGroupFactory,
-} from '~/test/factories/attribute'
+import { attributeGroupFactory } from '~/test/factories/attribute'
 import { promotionFactory } from '~/test/factories/promotion'
 
 // TODO: Cover more cases (e.g return data set check, different color attribute name etc.)
@@ -208,101 +204,6 @@ describe('getProductSiblingData', () => {
       ],
       isSoldOut: false,
     })
-  })
-})
-
-describe('getCombineWithProductIds', () => {
-  it('should return productIds from data', ({ expect }) => {
-    const combineWithAttribute = advancedAttributeFactory.build({
-      key: 'combineWith',
-      label: 'Kombiniere mit',
-      values: [
-        {
-          fieldSet: [
-            [
-              {
-                value: '206131',
-              },
-            ],
-          ],
-          groupSet: [],
-        },
-        {
-          fieldSet: [
-            [
-              {
-                value: '206017',
-              },
-            ],
-          ],
-          groupSet: [],
-        },
-        {
-          fieldSet: [
-            [
-              {
-                value: '206012',
-              },
-            ],
-          ],
-          groupSet: [],
-        },
-      ],
-    })
-    expect(getCombineWithProductIds(combineWithAttribute)).toStrictEqual([
-      206131, 206017, 206012,
-    ])
-  })
-  it('should return empty array when attribute is not available', ({
-    expect,
-  }) => {
-    expect(getCombineWithProductIds(undefined)).toStrictEqual([])
-  })
-  it('should return productIds ignore invalid data', ({ expect }) => {
-    const combineWithAttributeWithInvalidData = advancedAttributeFactory.build({
-      key: 'combineWith',
-      label: 'Kombiniere mit',
-      values: [
-        {
-          fieldSet: [
-            [
-              {
-                value: '206131',
-              },
-            ],
-            [
-              {
-                value: 'TEST',
-              },
-            ],
-          ],
-          groupSet: [],
-        },
-        {
-          fieldSet: [
-            [
-              {
-                value: '206017',
-              },
-            ],
-          ],
-          groupSet: [],
-        },
-        {
-          fieldSet: [
-            [
-              {
-                value: '206012',
-              },
-            ],
-          ],
-          groupSet: [],
-        },
-      ],
-    })
-    expect(
-      getCombineWithProductIds(combineWithAttributeWithInvalidData),
-    ).toStrictEqual([206131, 206017, 206012])
   })
 })
 

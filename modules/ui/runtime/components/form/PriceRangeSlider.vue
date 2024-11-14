@@ -82,6 +82,7 @@ import { computed, defineModel } from 'vue'
 import VueSlider from 'vue-slider-component/dist-css/vue-slider-component.umd.min.js'
 import 'vue-slider-component/dist-css/vue-slider-component.css'
 import '@/assets/css/slider/default.css'
+import type { RangeTuple } from '@scayle/storefront-product-listing'
 import { useCurrentShop } from '#storefront/composables'
 import { SFPriceInput } from '#storefront-ui/components'
 import {
@@ -90,7 +91,6 @@ import {
   roundUp,
 } from '#storefront-ui/helpers/utils'
 import { ClientOnly } from '#components'
-import type { RangeTuple } from '#storefront-product-listing'
 
 type Props = {
   min?: number
