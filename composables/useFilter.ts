@@ -24,11 +24,11 @@ export function useFilter(
   const areFiltersCleared = ref(false)
   const areFiltersUpdated = ref(false)
 
-  const { appliedFiltersCount, appliedFilter } = useAppliedFilters()
+  const { appliedFiltersCount, appliedFilter } = useAppliedFilters(route)
 
   const sort = ref(route.query.sort)
 
-  const filterData = useProductListFilter(currentCategoryId, options)
+  const filterData = useProductListFilter(route, currentCategoryId, options)
 
   const { clearedPriceQuery } = filterData
 

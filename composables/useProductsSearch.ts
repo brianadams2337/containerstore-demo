@@ -29,8 +29,8 @@ export function useProductsSearch({
   options: Partial<{ lazy: boolean; immediate: boolean }>
 }> = {}) {
   const route = useRoute()
-  const { appliedFilter } = useAppliedFilters()
-  const { selectedSort } = useProductListSort()
+  const { appliedFilter } = useAppliedFilters(route)
+  const { selectedSort } = useProductListSort(route)
 
   const term = computed(() => String(route.query.term || ''))
 

@@ -40,7 +40,8 @@ import LocalizedLink from '../LocalizedLink.vue'
 import { useTrackingEvents } from '~/composables'
 import { SFDropdown } from '#storefront-ui/components'
 import { useProductListSort } from '#storefront-product-listing'
+import { useRoute } from '#app/composables/router'
 
-const { selectedSort, sortLinks } = useProductListSort()
+const { selectedSort, sortLinks } = useProductListSort(useRoute())
 const { trackFilterApply } = useTrackingEvents()
 </script>

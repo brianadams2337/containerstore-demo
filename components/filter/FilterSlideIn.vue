@@ -34,11 +34,12 @@ import FilterHeader from './FilterHeader.vue'
 import { useFilter } from '~/composables'
 import { SFSlideIn } from '#storefront-ui/components'
 import { useAppliedFilters } from '#storefront-product-listing'
+import { useRoute } from '#app/composables/router'
 
 const props = defineProps<{ currentCategoryId?: number }>()
 
 const { appliedBooleanValues, appliedFilter, appliedAttributeValues } =
-  useAppliedFilters()
+  useAppliedFilters(useRoute())
 
 const { currentCategoryId } = toRefs(props)
 

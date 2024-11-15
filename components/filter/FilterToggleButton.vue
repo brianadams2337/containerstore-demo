@@ -31,10 +31,11 @@
 import { useFilterSlideIn } from '~/composables'
 import { SFButton } from '#storefront-ui/components'
 import { useAppliedFilters } from '#storefront-product-listing'
+import { useRoute } from '#app/composables/router'
 
 defineProps<{ label: string }>()
 
-const { appliedFiltersCount } = useAppliedFilters()
+const { appliedFiltersCount } = useAppliedFilters(useRoute())
 
 const { toggle: toggleFilter } = useFilterSlideIn()
 </script>

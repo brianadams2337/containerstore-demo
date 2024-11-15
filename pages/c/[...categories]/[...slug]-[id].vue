@@ -133,7 +133,7 @@ const {
   fetching: productsFetching,
   totalProductsCount,
   paginationOffset,
-} = useProductsByCategory(currentCategoryId, {
+} = useProductsByCategory(currentCategoryId, route, {
   fetchingOptions: { lazy: true },
 })
 

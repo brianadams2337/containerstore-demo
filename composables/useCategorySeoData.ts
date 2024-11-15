@@ -13,8 +13,8 @@ export function useCategorySeoData(category: Ref<Category | undefined | null>) {
   const { $i18n, $config } = useNuxtApp()
   const route = useRoute()
 
-  const { areFiltersApplied } = useAppliedFilters()
-  const { isDefaultSortSelected } = useProductListSort()
+  const { areFiltersApplied } = useAppliedFilters(route)
+  const { isDefaultSortSelected } = useProductListSort(route)
   const { getBreadcrumbsFromCategory } = useBreadcrumbs()
 
   const robots = computed(() => {

@@ -45,6 +45,7 @@ import type { Category } from '@scayle/storefront-nuxt'
 import { useRouteHelpers, useFilter } from '~/composables'
 import { SFButton, SFHeadline } from '#storefront-ui/components'
 import { useAppliedFilters } from '#storefront-product-listing'
+import { useRoute } from '#app/composables/router'
 
 const props = withDefaults(defineProps<{ category?: Category }>(), {
   category: undefined,
@@ -58,5 +59,5 @@ const { resetFilters } = await useFilter(currentCategory?.value.id, {
   immediate: false,
 })
 
-const { areFiltersApplied } = useAppliedFilters()
+const { areFiltersApplied } = useAppliedFilters(useRoute())
 </script>
