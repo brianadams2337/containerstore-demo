@@ -20,10 +20,10 @@ export const getBackgroundColorStyle = (
 ): { backgroundColor: string } => {
   if (typeof color !== 'string') {
     return {
-      backgroundColor: hexToRGBAColor(
-        FALLBACK_COLOR,
-        alpha || AlphaColorMap.ALPHA_10,
-      ),
+      backgroundColor:
+        alpha !== undefined
+          ? hexToRGBAColor(FALLBACK_COLOR, alpha)
+          : FALLBACK_COLOR,
     }
   }
 
@@ -39,7 +39,10 @@ export const getBackgroundColorStyle = (
 export const getTextColorStyle = (color?: unknown, alpha?: number) => {
   if (typeof color !== 'string') {
     return {
-      color: hexToRGBAColor(FALLBACK_COLOR, alpha || AlphaColorMap.ALPHA_100),
+      color:
+        alpha !== undefined
+          ? hexToRGBAColor(FALLBACK_COLOR, alpha)
+          : FALLBACK_COLOR,
     }
   }
 
