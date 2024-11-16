@@ -114,6 +114,9 @@ const { suggestedShops, detectedRegion, suggestionActive, markUserAsPrompted } =
 whenever(
   suggestionActive,
   () => {
+    if (!detectedRegion.value) {
+      return
+    }
     suggestedCountry.value = regionNames.of(detectedRegion.value)
     modalOpen.value = true
   },

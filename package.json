@@ -97,7 +97,7 @@
     "@googlemaps/js-api-loader": "1.16.8",
     "@scayle/nuxt-opentelemetry": "0.4.0",
     "@scayle/omnichannel-nuxt": "4.0.2",
-    "@scayle/storefront-country-detection": "0.1.2",
+    "@scayle/storefront-country-detection": "0.2.0",
     "@scayle/storefront-nuxt": "7.95.0",
     "@scayle/storefront-product-detail": "0.2.0",
     "@scayle/storefront-product-listing": "0.1.4",

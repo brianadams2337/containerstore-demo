@@ -3392,10 +3392,10 @@
   optionalDependencies:
     redis "4"
 
-"@scayle/storefront-country-detection@0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-country-detection/-/storefront-country-detection-0.1.2.tgz#3efb86e8088c757b6ac200f549e7b33cdb26a49e"
-  integrity sha512-f4KdrdFVbO1SW0UFOgndi+Eg1BovkiCmldl6btpCRd6Qij8Qqa+2zQY+RjTjBKV/UJ9mzjG0Zom+sEVqodFstg==
+"@scayle/storefront-country-detection@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-country-detection/-/storefront-country-detection-0.2.0.tgz#63ff3d1cb67ffe0316b7075d5302a1a3870d0e6c"
+  integrity sha512-enYF05Nwp6o5CdyWOtdwK6P6U7xIFHQ/bCXYRY+s9d1BTdwG/UwJG5S6H1UEMQDVw4823mRazkga1M08kA958g==
 
 "@scayle/storefront-nuxt@7.95.0":
   version "7.95.0"
