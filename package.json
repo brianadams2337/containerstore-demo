@@ -100,7 +100,7 @@
     "@scayle/storefront-country-detection": "0.2.0",
     "@scayle/storefront-nuxt": "7.95.0",
     "@scayle/storefront-product-detail": "0.2.0",
-    "@scayle/storefront-product-listing": "0.4.0",
+    "@scayle/storefront-product-listing": "0.4.1",
     "@storyblok/nuxt": "6.2.0",
     "@storyblok/richtext": "3.0.0",
     "@storyblok/vue": "8.1.5",
