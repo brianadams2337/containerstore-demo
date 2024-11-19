@@ -2,7 +2,11 @@
   <SFPageContainer>
     <div class="flex w-full flex-wrap justify-between gap-4">
       <SFHeadline is-uppercase>
-        {{ $t('search.result', { term, resultsCount }) }}
+        {{
+          productsFetching
+            ? $t('search.result_loading', { term })
+            : $t('search.result', { term, resultsCount })
+        }}
       </SFHeadline>
       <div class="hidden gap-4 md:flex">
         <SortSelection class="max-sm:hidden" />
