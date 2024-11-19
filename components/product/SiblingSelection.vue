@@ -61,7 +61,7 @@
         <SFButton
           class="!size-6 rounded-l-full first:!p-0.5"
           :disabled="!isPrevEnabled"
-          type="slider"
+          variant="slider"
           @click="prev()"
         >
           <IconChevronLeft class="size-4" />
@@ -69,7 +69,7 @@
         <SFButton
           class="!size-6 rounded-r-full last:!p-0.5"
           :disabled="!isNextEnabled"
-          type="slider"
+          variant="slider"
           @click="next()"
         >
           <IconChevronRight class="size-4" />

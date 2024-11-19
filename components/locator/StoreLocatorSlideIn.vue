@@ -10,7 +10,7 @@
             >{{ $t('store_locator.headline') }}
           </SFHeadline>
           <SFButton
-            type="raw"
+            variant="raw"
             size="xs"
             data-testid="closeCross"
             @click="toggleItem"
@@ -33,7 +33,7 @@
           />
           <SFButton
             data-testid="choose-store-button"
-            type="primary"
+            variant="primary"
             class="ml-auto"
             rounded
             :disabled="!address.length"
@@ -61,7 +61,7 @@
     <template #slide-in-actions>
       <SFButton
         data-testid="choose-store-button"
-        type="primary"
+        variant="primary"
         is-full-width
         class="w-fit rounded border border-black p-2 text-xs !normal-case"
         rounded

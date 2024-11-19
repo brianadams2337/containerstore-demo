@@ -30,7 +30,7 @@
         </SFButton>
         <SFButton
           :to="getLocalizedRoute(routeList.home)"
-          type="tertiary"
+          variant="tertiary"
           data-testid="button-continue-shopping"
         >
           {{ $t('global.continue_shopping_label') }}

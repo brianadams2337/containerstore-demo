@@ -28,7 +28,7 @@
   </div>
   <div class="flex gap-3 max-md:hidden">
     <SFButton
-      type="accent"
+      variant="accent"
       size="xl"
       class="grow justify-between"
       data-testid="add-item-to-basket-button"
@@ -65,7 +65,7 @@
       class="!bottom-6 z-50 flex w-full items-center gap-x-3 px-3 md:hidden"
     >
       <SFButton
-        type="accent"
+        variant="accent"
         size="xl"
         class="grow"
         data-testid="add-to-basket-button-mobile"

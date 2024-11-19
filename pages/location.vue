@@ -25,7 +25,7 @@
         <div class="mt-3 flex items-center justify-evenly">
           <SFButton
             class="mr-2 flex size-12 cursor-pointer items-center justify-center border-2 border-black"
-            type="raw"
+            variant="raw"
             :disabled="searching"
             @click="findStoresInUserLocation()"
           >
@@ -44,7 +44,7 @@
             "
           />
           <SFButton
-            type="primary"
+            variant="primary"
             class="ml-auto"
             :disabled="!searchAddress?.length || searching"
             :loading="searching"

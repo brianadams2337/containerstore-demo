@@ -48,7 +48,7 @@
               <SFButton
                 no-padding
                 size="xs"
-                type="raw"
+                variant="raw"
                 class="absolute right-6"
                 @click="close"
               >

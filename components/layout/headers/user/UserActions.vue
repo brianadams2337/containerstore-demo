@@ -3,7 +3,7 @@
     <div v-if="!isGuest" class="space-y-2 p-3">
       <SFButton
         :to="getLocalizedRoute(routeList.user)"
-        type="secondary"
+        variant="secondary"
         class="w-full"
         @click="closeUserFlyout"
       >
@@ -11,7 +11,7 @@
       </SFButton>
       <SFButton
         :to="getLocalizedRoute(routeList.orders)"
-        type="secondary"
+        variant="secondary"
         class="w-full"
         @click="closeUserFlyout"
       >
@@ -19,7 +19,7 @@
       </SFButton>
       <SFButton
         :to="getLocalizedRoute(routeList.subscriptionOverview)"
-        type="secondary"
+        variant="secondary"
         class="w-full"
         @click="closeUserFlyout"
       >

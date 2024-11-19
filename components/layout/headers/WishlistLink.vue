@@ -4,7 +4,7 @@
       :to="routeList.wishlist"
       data-testid="wishlist-link"
       class="relative"
-      type="loud"
+      variant="loud"
     >
       <AsyncDataWrapper :status="status">
         <FloatingBadge

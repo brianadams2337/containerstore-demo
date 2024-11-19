@@ -21,7 +21,7 @@
 
         <template v-if="showGuestLogin" #2="{ activateTab }">
           <GuestLoginForm />
-          <SFButton type="tertiary" class="w-full" @click="activateTab(0)">
+          <SFButton variant="tertiary" class="w-full" @click="activateTab(0)">
             {{ $t('login_page.guest_login.cancel') }}
           </SFButton>
         </template>

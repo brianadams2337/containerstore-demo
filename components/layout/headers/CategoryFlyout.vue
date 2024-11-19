@@ -7,7 +7,7 @@
       <SFHeadline size="sm" tag="p">
         <SFLink
           :to="getLocalizedRoute(routeList.home)"
-          type="quiet"
+          variant="quiet"
           class="text-sm"
           @click="forceCloseFlyout"
         >
@@ -20,7 +20,7 @@
             :to="buildCategoryPath(item)"
             badge-placement="top"
             badge-size="sm"
-            type="quieter"
+            variant="quieter"
             class="text-gray-750"
             @click="forceCloseFlyout"
           >
@@ -38,7 +38,7 @@
         <SFHeadline size="sm" tag="p">
           <SFLink
             :to="buildCategoryPath(category)"
-            type="quiet"
+            variant="quiet"
             @click="forceCloseFlyout"
           >
             {{ category.name }}
@@ -50,7 +50,7 @@
               :to="buildCategoryPath(item)"
               badge-placement="top"
               badge-size="sm"
-              type="quieter"
+              variant="quieter"
               @click="forceCloseFlyout"
             >
               {{ item.name }}

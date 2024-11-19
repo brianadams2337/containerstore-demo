@@ -80,7 +80,7 @@
           <div class="absolute bottom-4 right-4 flex space-x-px max-md:hidden">
             <SFButton
               class="rounded-l-full"
-              type="slider"
+              variant="slider"
               size="sm"
               :disabled="!isPrevEnabled"
               @click="prev()"
@@ -89,7 +89,7 @@
             </SFButton>
             <SFButton
               class="rounded-r-full"
-              type="slider"
+              variant="slider"
               size="sm"
               :disabled="!isNextEnabled"
               @click="next()"

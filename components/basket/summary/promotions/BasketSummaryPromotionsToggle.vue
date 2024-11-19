@@ -1,6 +1,6 @@
 <template>
   <SFButton
-    type="raw"
+    variant="raw"
     class="flex items-center justify-between whitespace-pre-line !p-0 text-start text-sm font-semibold leading-5 text-gray-600"
     is-full-width
     size="xs"

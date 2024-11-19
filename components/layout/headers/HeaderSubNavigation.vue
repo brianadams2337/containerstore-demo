@@ -7,7 +7,7 @@
       <SFLink
         class="border-b-2 border-transparent px-1 py-2.5 font-normal hover:border-black sm:text-sm sm:font-semibold"
         :to="getLocalizedRoute(routeList.home)"
-        type="quiet"
+        variant="quiet"
       >
         {{ $t('global.home') }}
       </SFLink>

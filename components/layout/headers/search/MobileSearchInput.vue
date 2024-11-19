@@ -14,7 +14,7 @@
     <SFButton
       class="absolute right-2 top-1/2 size-4 -translate-y-1/2"
       aria-label="Clear search"
-      type="raw"
+      variant="raw"
       @click="clear"
     >
       <template #icon="{ _class }">

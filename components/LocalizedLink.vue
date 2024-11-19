@@ -13,7 +13,7 @@ import { useRouteHelpers } from '~/composables'
 type Props = {
   to: RouteLocationRaw
   onlyExactActive?: boolean
-  type?: LinkVariant
+  variant?: LinkVariant
   openInNewTab?: boolean
   raw?: boolean
   target?: '_self' | '_blank' | '_parent' | '_top'

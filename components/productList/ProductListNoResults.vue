@@ -28,7 +28,7 @@
       </SFButton>
       <SFButton
         v-if="areFiltersApplied"
-        type="secondary"
+        variant="secondary"
         size="md"
         class="max-sm:w-full"
         @click="resetFilters"

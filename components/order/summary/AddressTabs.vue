@@ -14,7 +14,7 @@
           :id="`tab-${name}-${idx}`"
           :aria-controls="`content-${name}`"
           role="tab"
-          type="raw"
+          variant="raw"
           class="!p-3.5"
           :class="activeTab === idx ? 'text-primary' : 'text-secondary'"
           @click="toggleTab(idx)"

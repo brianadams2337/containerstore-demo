@@ -3,7 +3,7 @@
     class="group relative w-full !justify-start rounded-md border border-black px-3.5 text-base font-semi-bold-variable max-md:h-11 md:w-min md:border-gray-300 md:bg-secondary-200 md:hover:bg-white"
     data-testid="filter-toggle-button"
     size="sm"
-    type="raw"
+    variant="raw"
     @click="toggleFilter"
   >
     <template #icon="{ _class }">

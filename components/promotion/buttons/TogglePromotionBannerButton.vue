@@ -1,7 +1,7 @@
 <template>
   <SFButton
     data-testid="toggle-promotion-banner-button"
-    type="raw"
+    variant="raw"
     size="xs"
     class="min-h-9 !w-fit items-center !px-2 !py-1 text-xs font-semibold leading-5 text-white hover:text-white"
     :aria-expanded="isPromotionBannerShown.toString()"

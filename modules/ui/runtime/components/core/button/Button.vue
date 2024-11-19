@@ -1,7 +1,7 @@
 <template>
   <component
     :is="componentName"
-    v-bind="{ to, disabled, ...(to && { raw: true }) }"
+    v-bind="{ to, ...(to && { raw: true }) }"
     :class="{
       'h-13 px-6 py-4': !isRaw && isSize('xl'),
       'h-12 px-10': !isRaw && isSize('lg'),
@@ -72,16 +72,15 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ButtonType, Size, getSizeUtils } from '#storefront-ui'
+import { ButtonVariant, Size, getSizeUtils } from '#storefront-ui'
 import type { RouteLocationRaw } from '#vue-router'
 import { SFLink } from '#storefront-ui/components'
 
 type Props = {
-  type?: ButtonType
+  variant?: ButtonVariant
   size?: Size
   to?: RouteLocationRaw
   badge?: number
-  disabled?: boolean
   isFullWidth?: boolean
   loading?: boolean
   animateIcon?: boolean
@@ -90,30 +89,22 @@ type Props = {
   hasShadow?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  type: ButtonType.PRIMARY,
-  size: Size.MD,
-  disabled: false,
-  animateIcon: false,
-  isFullWidth: false,
-  loading: false,
-  fab: false,
-  isUppercase: false,
-  badge: undefined,
-  to: undefined,
-  hasShadow: false,
-})
+const {
+  variant = ButtonVariant.PRIMARY,
+  size = Size.MD,
+  to,
+} = defineProps<Props>()
 
-const isPrimary = computed(() => props.type === ButtonType.PRIMARY)
-const isSecondary = computed(() => props.type === ButtonType.SECONDARY)
-const isTertiary = computed(() => props.type === ButtonType.TERTIARY)
-const isRaw = computed(() => props.type === ButtonType.RAW)
-const isAccent = computed(() => props.type === ButtonType.ACCENT)
-const isSlider = computed(() => props.type === ButtonType.SLIDER)
+const isPrimary = computed(() => variant === ButtonVariant.PRIMARY)
+const isSecondary = computed(() => variant === ButtonVariant.SECONDARY)
+const isTertiary = computed(() => variant === ButtonVariant.TERTIARY)
+const isRaw = computed(() => variant === ButtonVariant.RAW)
+const isAccent = computed(() => variant === ButtonVariant.ACCENT)
+const isSlider = computed(() => variant === ButtonVariant.SLIDER)
 
-const { isSize } = getSizeUtils(props.size)
+const { isSize } = getSizeUtils(size)
 
-const componentName = computed(() => (props.to ? SFLink : 'button'))
+const componentName = computed(() => (to ? SFLink : 'button'))
 
 const emit = defineEmits<{ click: []; 'click:stop': [] }>()
 </script>

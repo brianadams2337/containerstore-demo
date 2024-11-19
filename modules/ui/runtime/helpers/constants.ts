@@ -55,7 +55,7 @@ export const LinkVariant = {
 
 export type LinkVariant = ValuesType<typeof LinkVariant>
 
-export const ButtonType = {
+export const ButtonVariant = {
   PRIMARY: 'primary',
   SECONDARY: 'secondary',
   TERTIARY: 'tertiary',
@@ -64,7 +64,7 @@ export const ButtonType = {
   SLIDER: 'slider',
 } as const
 
-export type ButtonType = ValuesType<typeof ButtonType>
+export type ButtonVariant = ValuesType<typeof ButtonVariant>
 
 export const SlideInType = {
   DEFAULT: 'default',

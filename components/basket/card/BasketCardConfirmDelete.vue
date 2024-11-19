@@ -19,7 +19,7 @@
 
         <div class="flex space-x-4 sm:max-w-md">
           <SFButton
-            type="tertiary"
+            variant="tertiary"
             is-full-width
             data-testid="basket-remove-item-cancel-button"
             @click="emit('click:cancel')"

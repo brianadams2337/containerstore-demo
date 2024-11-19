@@ -6,7 +6,7 @@
     <SFButton
       class="my-3 -mr-2 bg-gray-100 md:bg-transparent"
       fab
-      type="raw"
+      variant="raw"
       data-testid="close-filters"
       @click="toggleItem"
     >

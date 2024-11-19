@@ -1,6 +1,6 @@
 <template>
   <SFButton
-    type="secondary"
+    variant="secondary"
     size="xs"
     class="pr-1 text-xs"
     @click="goToCategory()"

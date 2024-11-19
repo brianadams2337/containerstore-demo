@@ -11,7 +11,7 @@
             v-for="(shop, index) in suggestedShops"
             :key="shop.shopId"
             :autofocus="index === 0"
-            type="primary"
+            variant="primary"
             class="w-fit"
             data-testid="button-switch-shop"
             @click="switchToShop(shop)"
@@ -23,7 +23,7 @@
             }}
           </SFButton>
           <SFButton
-            type="secondary"
+            variant="secondary"
             class="w-fit"
             data-testid="button-stay-in-shop"
             @click="stayInShop"

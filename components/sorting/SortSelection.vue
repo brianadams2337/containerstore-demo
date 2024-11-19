@@ -12,7 +12,7 @@
     <template #item="{ item, selectItem }">
       <LocalizedLink
         data-testid="sort-item"
-        type="whisper"
+        variant="whisper"
         class="mb-1 w-full rounded p-2 !text-base !font-medium last-of-type:mb-0 hover:bg-gray-100"
         :class="{ 'bg-gray-100 !text-black': item.key === selectedSort?.key }"
         :to="item.to"

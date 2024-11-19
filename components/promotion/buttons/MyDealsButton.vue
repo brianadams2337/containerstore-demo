@@ -1,6 +1,6 @@
 <template>
   <SFButton
-    type="raw"
+    variant="raw"
     size="sm"
     is-uppercase
     class="h-13 rounded-none border-l border-l-primary/25 px-3 py-2 font-semibold text-white hover:text-white"

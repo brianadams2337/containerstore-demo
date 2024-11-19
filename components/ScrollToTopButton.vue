@@ -2,7 +2,7 @@
   <SFFadeInTransition :duration="150">
     <SFButton
       v-if="!arrivedState.top"
-      type="secondary"
+      variant="secondary"
       v-bind="$attrs"
       class="z-100 size-12 rounded-xl !p-0 !text-gray-400 transition-transform duration-150 ease-in-out md:size-9"
       @click="scrollToTop"

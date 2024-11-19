@@ -33,7 +33,7 @@
     </div>
     <SFButton
       data-testid="choose-store-button"
-      type="secondary"
+      variant="secondary"
       class="ml-auto !normal-case"
       rounded
       @click="toggleStoreLocator"

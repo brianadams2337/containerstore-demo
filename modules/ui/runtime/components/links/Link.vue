@@ -29,14 +29,14 @@ const LinkTypeClass = {
 type Props = {
   to: RouteLocationRaw
   onlyExactActive?: boolean
-  type?: LinkVariant
+  variant?: LinkVariant
   raw?: boolean
   target?: '_self' | '_blank' | '_parent' | '_top'
 }
 
 const props = withDefaults(defineProps<Props>(), {
   onlyExactActive: false,
-  type: LinkVariant.NORMAL,
+  variant: LinkVariant.NORMAL,
   openInNewTab: false,
   raw: false,
   target: '_self',
@@ -49,7 +49,7 @@ const variantClass = computed(() => {
     inline-flex items-center gap-2 whitespace-nowrap text-xs
     leading-5 tracking-wide transition duration-200 ease-linear
    `
-  return !props.raw ? [defaultClass, LinkTypeClass[props.type]] : {}
+  return !props.raw ? [defaultClass, LinkTypeClass[props.variant]] : {}
 })
 
 const activeClass = computed(() => {

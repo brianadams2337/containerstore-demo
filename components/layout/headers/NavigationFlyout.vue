@@ -7,7 +7,7 @@
       <SFHeadline size="sm" tag="p">
         <NavigationTreeItem
           :navigation-item="flyoutNavigationItem"
-          type="quiet"
+          variant="quiet"
           class="text-sm"
           @click:navigation-item="closeFlyoutMenu"
         />
@@ -16,7 +16,7 @@
         <template #item="{ item }">
           <NavigationTreeItem
             :navigation-item="item"
-            type="quieter"
+            variant="quieter"
             class="text-gray-750"
             @click:navigation-item="closeFlyoutMenu"
           />
@@ -40,7 +40,7 @@
           <template #item="{ item }">
             <NavigationTreeItem
               :navigation-item="item"
-              type="quieter"
+              variant="quieter"
               @click:navigation-item="closeFlyoutMenu"
             />
           </template>

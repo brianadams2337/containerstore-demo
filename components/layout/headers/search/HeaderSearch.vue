@@ -20,7 +20,7 @@
     <SFFadeInTransition :duration="100">
       <SFButton
         v-if="searchQuery"
-        type="raw"
+        variant="raw"
         aria-label="Close search input"
         data-testid="close-search-button"
         class="absolute right-0 flex h-full cursor-pointer items-center justify-center px-2.5 py-2"

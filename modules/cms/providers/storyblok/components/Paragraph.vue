@@ -11,7 +11,7 @@
       v-if="blok.cta?.linktype === 'email'"
       class="grid grid-cols-2 justify-items-start gap-8"
     >
-      <SFButton type="tertiary" is-full-width>{{ blok.cta.email }}</SFButton>
+      <SFButton variant="tertiary" is-full-width>{{ blok.cta.email }}</SFButton>
       <div class="max-w-lg">
         <CMSText :blok="{ ...blok, component: 'CmsText' }" />
       </div>

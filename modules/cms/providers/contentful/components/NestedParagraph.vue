@@ -16,7 +16,7 @@
       {{ blok?.fields.headline }}
     </SFHeadline>
     <div v-if="isCtaEmail" class="grid grid-cols-2 justify-items-start gap-8">
-      <SFButton type="tertiary" is-full-width>
+      <SFButton variant="tertiary" is-full-width>
         {{ blok?.fields.cta }}
       </SFButton>
       <div class="max-w-lg">

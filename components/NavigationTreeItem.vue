@@ -2,7 +2,7 @@
   <SFLink
     v-if="pathParams && pathParams.path && !disabledLink"
     :to="pathParams.path"
-    :type="type"
+    :variant="type"
     :target="pathParams.openInNew ? '_blank' : '_self'"
     class="block w-fit"
     @mouseenter="emit('mouseenter:navigation-item')"
@@ -36,13 +36,13 @@ import { SFLink } from '#storefront-ui/components'
 
 type Props = {
   navigationItem: NavigationTreeItem | null
-  type?: LinkVariant
+  variant?: LinkVariant
   disabledLink?: boolean
 }
 
 const {
   navigationItem = null,
-  type,
+  variant: type,
   disabledLink = false,
 } = defineProps<Props>()
 

@@ -2,7 +2,7 @@
   <div class="relative w-64">
     <div class="p-3">
       <SFButton
-        type="secondary"
+        variant="secondary"
         class="w-full"
         :to="getLocalizedRoute(routeList.signin)"
         @click="closeUserFlyout"
@@ -15,7 +15,7 @@
         {{ $t('global.not_registered') }}
       </span>
       <SFButton
-        type="raw"
+        variant="raw"
         :to="getLocalizedRoute(routeList.signup)"
         class="text-xs font-semibold leading-5 !tracking-wide"
       >

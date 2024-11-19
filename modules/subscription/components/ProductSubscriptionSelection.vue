@@ -60,7 +60,7 @@
       </SFDropdown>
     </div>
     <SFButton
-      type="accent"
+      variant="accent"
       data-testid="add-item-to-basket-button-subscribe"
       size="xl"
       :disabled="!subscriptionState.isEligible || product.isSoldOut"

@@ -30,7 +30,7 @@
             {{ $t('login_page.forgot_password.submit') }}
           </SFButton>
           <SFButton
-            type="tertiary"
+            variant="tertiary"
             :disabled="isSubmitting"
             :loading="isSubmitting"
             @click="$emit('close:modal')"

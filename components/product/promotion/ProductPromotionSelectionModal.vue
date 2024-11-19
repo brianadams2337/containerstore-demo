@@ -85,7 +85,7 @@
               <div class="flex justify-between gap-2">
                 <SFButton
                   data-testid="add-item-to-basket-button"
-                  type="accent"
+                  variant="accent"
                   :disabled="product.isSoldOut"
                   :title="product.isSoldOut ? $t('badge_labels.sold_out') : ''"
                   :loading="basketIdle"
@@ -100,7 +100,7 @@
                   </template>
                 </SFButton>
                 <SFButton
-                  type="tertiary"
+                  variant="tertiary"
                   :to="getProductDetailRoute(product.id, name)"
                   class="!border-gray-300"
                   @click="selectItem(product)"

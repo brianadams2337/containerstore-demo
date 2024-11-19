@@ -2,7 +2,7 @@
   <div ref="dropdownContainer" class="relative inline-block text-left">
     <div ref="button" class="h-full">
       <SFButton
-        type="raw"
+        variant="raw"
         size="sm"
         class="group inline-flex size-full justify-between gap-0 rounded-md border border-gray-300 bg-secondary-200 !px-3.5 !py-2 font-semi-bold-variable leading-5 hover:bg-white"
         :disabled="disabled"

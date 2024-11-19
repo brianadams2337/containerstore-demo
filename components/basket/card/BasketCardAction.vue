@@ -4,7 +4,7 @@
     :disabled="disabled"
     no-padding
     size="sm"
-    type="raw"
+    variant="raw"
     class="relative !gap-1 text-xs font-bold"
     @click="emit('click')"
   >

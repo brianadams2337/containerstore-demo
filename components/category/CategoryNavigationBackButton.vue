@@ -1,6 +1,6 @@
 <template>
   <SFButton
-    type="raw"
+    variant="raw"
     fab
     size="sm"
     class="size-10 border border-gray-200 text-gray-500"

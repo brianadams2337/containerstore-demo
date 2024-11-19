@@ -19,7 +19,7 @@
     </Transition>
     <SFButton
       data-testid="reset-filter-button"
-      type="tertiary"
+      variant="tertiary"
       size="lg"
       class="w-1/2"
       @click="$emit('reset')"

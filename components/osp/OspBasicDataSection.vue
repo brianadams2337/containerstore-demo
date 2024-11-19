@@ -30,12 +30,12 @@
         :delivery-date="deliveryDate"
       />
       <div class="my-8 flex space-x-4 sm:mt-12">
-        <SFButton type="tertiary" :to="getLocalizedRoute(routeList.home)">
+        <SFButton variant="tertiary" :to="getLocalizedRoute(routeList.home)">
           {{ $t('global.continue_shopping_label') }}
         </SFButton>
         <SFButton
           v-if="orderData.id"
-          type="primary"
+          variant="primary"
           :to="getOrderDetailsRoute(orderData.id)"
         >
           {{ $t('osp.order_details') }}

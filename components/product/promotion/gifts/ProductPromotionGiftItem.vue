@@ -47,7 +47,7 @@
       <div class="flex items-end justify-between">
         <SFButton
           size="sm"
-          type="raw"
+          variant="raw"
           class="size-11 rounded-xl bg-gray-200"
           :disabled="disabled"
           @click="toggleGiftSelection()"

@@ -13,7 +13,7 @@
         data-testid="basket-link"
         :to="routeList.basket"
         class="relative"
-        type="loud"
+        variant="loud"
       >
         <FloatingBadge
           v-if="!isEmpty && status === 'success'"

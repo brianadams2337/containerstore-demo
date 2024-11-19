@@ -16,7 +16,7 @@
           class="rounded-l-full"
           :disabled="!isPrevEnabled"
           size="sm"
-          type="slider"
+          variant="slider"
           @click="prev()"
         >
           <IconChevronLeft class="size-4 w-5" />
@@ -25,7 +25,7 @@
           class="rounded-r-full"
           :disabled="!isNextEnabled"
           size="sm"
-          type="slider"
+          variant="slider"
           @click="next()"
         >
           <IconChevronRight class="size-4 w-5" />

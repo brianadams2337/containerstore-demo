@@ -2,7 +2,7 @@
   <details class="mt-5 rounded bg-secondary-450 px-2" :open="openingHoursOpen">
     <summary>
       <SFButton
-        type="raw"
+        variant="raw"
         class="flex-row-reverse text-xs !normal-case"
         rounded
         @click="openingHoursOpen = !openingHoursOpen"

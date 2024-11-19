@@ -23,7 +23,7 @@
         <SFButton
           data-testid="checkout-link"
           is-full-width
-          type="primary"
+          variant="primary"
           class="!normal-case"
           @click="onClickToCheckoutOrder"
         >

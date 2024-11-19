@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-between gap-2 rounded-10 border border-gray-100 p-2">
     <SFButton
-      type="raw"
+      variant="raw"
       :disabled="quantity <= 1"
       class="group !size-9 shrink-0 rounded-md border-none bg-gray-100 disabled:bg-gray-100 md:!size-8"
       data-testid="quantity-minus"
@@ -17,7 +17,7 @@
       data-testid="quantity-value"
     />
     <SFButton
-      type="raw"
+      variant="raw"
       :disabled="quantity >= maxQuantity"
       class="group !size-9 shrink-0 rounded-md border-none bg-gray-100 disabled:bg-gray-100 md:!size-8"
       data-testid="quantity-plus"

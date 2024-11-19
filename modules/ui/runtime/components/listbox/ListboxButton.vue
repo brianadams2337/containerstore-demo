@@ -2,7 +2,7 @@
   <SFButton
     :aria-expanded="isOpen"
     :disabled="disabled"
-    type="raw"
+    variant="raw"
     aria-haspopup="true"
     :aria-controls="id"
     @click="toggle"
