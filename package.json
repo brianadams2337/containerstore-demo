@@ -71,7 +71,7 @@
     "happy-dom": "15.11.6",
     "lint-staged": "15.2.10",
     "nuxt": "3.13.2",
-    "nuxt-svgo": "4.0.8",
+    "nuxt-svgo": "4.0.9",
     "ofetch": "1.4.1",
     "patch-package": "8.0.0",
     "pathe": "1.1.2",
