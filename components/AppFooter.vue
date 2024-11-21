@@ -1,11 +1,14 @@
 <template>
   <footer class="bg-white">
-    <div class="flex flex-col gap-4 border-t px-10 py-5 md:gap-8 md:py-7">
-      <div>
-        <LocalizedLink :to="routeList.home" raw :aria-label="shopName">
-          <IconNewLogo class="size-7" aria-hidden="true" />
-        </LocalizedLink>
-      </div>
+    <div class="flex flex-col gap-5 border-t p-5 md:gap-8 md:px-10 md:py-7">
+      <LocalizedLink
+        :to="routeList.home"
+        raw
+        :aria-label="shopName"
+        class="flex w-7"
+      >
+        <IconNewLogo class="size-7" aria-hidden="true" />
+      </LocalizedLink>
 
       <div class="grid grid-cols-1 gap-y-5 text-base md:grid-cols-4">
         <FooterLinkSection
