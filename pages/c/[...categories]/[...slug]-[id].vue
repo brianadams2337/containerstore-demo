@@ -10,8 +10,7 @@
       />
 
       <div
-        class="relative mx-0 flex rounded-t-[1.25rem] bg-white xl:container md:mx-8 md:rounded-none md:pt-8 xl:m-auto"
-        :class="hasTeaserImage && 'pt-4'"
+        class="relative mx-0 flex rounded-t-2xl bg-white pt-4 xl:container md:mx-8 md:rounded-none md:pt-8 xl:m-auto"
       >
         <CategorySideNavigation
           v-if="rootCategories?.length"
