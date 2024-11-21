@@ -3330,7 +3330,7 @@
   resolved "https://registry.yarnpkg.com/@rollup/rollup-linux-s390x-gnu/-/rollup-linux-s390x-gnu-4.27.3.tgz#6b9c04d84593836f942ceb4dd90644633d5fe871"
   integrity sha512-d4wVu6SXij/jyiwPvI6C4KxdGzuZOvJ6y9VfrcleHTwo68fl8vZC5ZYHsCVPUi4tndCfMlFniWgwonQ5CUpQcA==
 
-"@rollup/rollup-linux-x64-gnu@4.27.3":
+"@rollup/rollup-linux-x64-gnu@4.27.3", "@rollup/rollup-linux-x64-gnu@^4.18.0":
   version "4.27.3"
   resolved "https://registry.yarnpkg.com/@rollup/rollup-linux-x64-gnu/-/rollup-linux-x64-gnu-4.27.3.tgz#f13effcdcd1cc14b26427e6bec8c6c9e4de3773e"
   integrity sha512-/6bn6pp1fsCGEY5n3yajmzZQAh+mW4QPItbiWxs69zskBzJuheb3tNynEjL+mKOsUSFK11X4LYF2BwwXnzWleA==
@@ -5715,16 +5715,29 @@ contentful-sdk-core@^8.3.1:
     p-throttle "^4.1.1"
     qs "^6.11.2"
 
-contentful@11.2.2, contentful@^11.1.4:
-  version "11.2.2"
-  resolved "https://registry.yarnpkg.com/contentful/-/contentful-11.2.2.tgz#d5c75363ce6af9b94650f79942e77c38049d000f"
-  integrity sha512-qWzdZJkw5/8MYs3O/HSOv+qfaz0+vXznJsEgAIX0zLE/qUQXwu6r3kThpaLZwLyBXEllhWa4M5pZpI1nXsWfIQ==
+contentful-sdk-core@^9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/contentful-sdk-core/-/contentful-sdk-core-9.0.1.tgz#13460882fe58a0e507227831f5596c6d9f27233e"
+  integrity sha512-Ao/5Y74ERPn6kjzb/8okYPuQJnikMtR+dnv0plLw8IvPomwXonLq3qom0rLSyo5KuvQkBMa9AApy1izunxW4mw==
+  dependencies:
+    fast-copy "^3.0.2"
+    lodash "^4.17.21"
+    p-throttle "^6.1.0"
+    process "^0.11.10"
+    qs "^6.12.3"
+  optionalDependencies:
+    "@rollup/rollup-linux-x64-gnu" "^4.18.0"
+
+contentful@11.2.3:
+  version "11.2.3"
+  resolved "https://registry.yarnpkg.com/contentful/-/contentful-11.2.3.tgz#b0080126f33a202c7d8964710f7cf1b1598ec738"
+  integrity sha512-g+smhHRbPg5swbbbumsgdA94yq+2MmREeoDpOtRDsdntIqHq6aFpn9e9sqWIPcuvg0vT8IB1It115fAxZdQ97Q==
   dependencies:
     "@contentful/content-source-maps" "^0.11.6"
     "@contentful/rich-text-types" "^16.6.1"
     axios "^1.7.4"
     contentful-resolve-response "^1.9.0"
-    contentful-sdk-core "^8.3.1"
+    contentful-sdk-core "^9.0.1"
     json-stringify-safe "^5.0.1"
     type-fest "^4.0.0"
 
@@ -5734,6 +5747,19 @@ contentful@^10.14.1:
   integrity sha512-JJ+qFzxDtbQ4FfPdRF01OVFagy2ZGDHKakgsLTIj2sdnCRa6sAgTMW+jmbMkDX0B8nDRbUng6A7inRLRdLxHcw==
   dependencies:
     "@contentful/content-source-maps" "^0.11.0"
+    "@contentful/rich-text-types" "^16.6.1"
+    axios "^1.7.4"
+    contentful-resolve-response "^1.9.0"
+    contentful-sdk-core "^8.3.1"
+    json-stringify-safe "^5.0.1"
+    type-fest "^4.0.0"
+
+contentful@^11.1.4:
+  version "11.2.2"
+  resolved "https://registry.yarnpkg.com/contentful/-/contentful-11.2.2.tgz#d5c75363ce6af9b94650f79942e77c38049d000f"
+  integrity sha512-qWzdZJkw5/8MYs3O/HSOv+qfaz0+vXznJsEgAIX0zLE/qUQXwu6r3kThpaLZwLyBXEllhWa4M5pZpI1nXsWfIQ==
+  dependencies:
+    "@contentful/content-source-maps" "^0.11.6"
     "@contentful/rich-text-types" "^16.6.1"
     axios "^1.7.4"
     contentful-resolve-response "^1.9.0"
@@ -7254,7 +7280,7 @@ fast-copy@^2.1.7:
   resolved "https://registry.yarnpkg.com/fast-copy/-/fast-copy-2.1.7.tgz#affc9475cb4b555fb488572b2a44231d0c9fa39e"
   integrity sha512-ozrGwyuCTAy7YgFCua8rmqmytECYk/JYAMXcswOcm0qvGoE3tPb7ivBeIHTOK2DiapBhDZgacIhzhQIKU5TCfA==
 
-fast-copy@^3.0.0:
+fast-copy@^3.0.0, fast-copy@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/fast-copy/-/fast-copy-3.0.2.tgz#59c68f59ccbcac82050ba992e0d5c389097c9d35"
   integrity sha512-dl0O9Vhju8IrcLndv2eU4ldt1ftXMqqfgN4H1cpmGV7P6jeB9FwpN9a2c8DPGE1Ys88rNUJVYDHq73CGAGOPfQ==
@@ -10864,6 +10890,11 @@ p-throttle@^4.1.1:
   resolved "https://registry.yarnpkg.com/p-throttle/-/p-throttle-4.1.1.tgz#80b1fbd358af40a8bfa1667f9dc8b72b714ad692"
   integrity sha512-TuU8Ato+pRTPJoDzYD4s7ocJYcNSEZRvlxoq3hcPI2kZDZ49IQ1Wkj7/gDJc3X7XiEAAvRGtDzdXJI0tC3IL1g==
 
+p-throttle@^6.1.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/p-throttle/-/p-throttle-6.2.0.tgz#bc75ff1f128680bec15568cbf7312ae34a9d35ed"
+  integrity sha512-NCKkOVj6PZa6NiTmfvGilDdf6vO1rFCD3KDnkHko8dTOtkpk4cSR/VTAhhLMG9aiQ7/A9HYgEDNmxzf6hxzR3g==
+
 p-try@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
@@ -11679,7 +11710,7 @@ pupa@^2.1.1:
   dependencies:
     escape-goat "^2.0.0"
 
-qs@^6.11.2, qs@^6.12.2:
+qs@^6.11.2, qs@^6.12.2, qs@^6.12.3:
   version "6.13.1"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.13.1.tgz#3ce5fc72bd3a8171b85c99b93c65dd20b7d1b16e"
   integrity sha512-EJPeIn0CYrGu+hli1xilKAPXODtJ12T0sP63Ijx2/khC2JtuaN3JyNIpvmnkmaEtha9ocbG4A4cMcr+TvqvwQg==
