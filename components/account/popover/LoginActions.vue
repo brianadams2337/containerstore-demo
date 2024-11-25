@@ -12,7 +12,7 @@
       variant="secondary"
       is-full-width
       :to="getLocalizedRoute(routeList.signup)"
-      class="text-xs font-semibold leading-5 !tracking-wide"
+      class="font-semibold"
       @click="$emit('close')"
     >
       {{ $t('global.register') }}
