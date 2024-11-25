@@ -2,7 +2,11 @@
   <div class="flex flex-col">
     <SearchInput class="mt-1" />
     <div class="flex grow flex-col p-5">
-      <MobileNavigation :is-open="isOpen" :navigation-items="navigationItems" />
+      <MobileNavigation
+        :is-open="isOpen"
+        :navigation-items="navigationItems"
+        @click-link="$emit('close')"
+      />
       <div class="mt-auto">
         <div class="p-2">
           <LocalizedLink :to="routeList.location" class="text-gray-600">
@@ -29,4 +33,5 @@ const { isOpen, navigationItems } = defineProps<{
   isOpen: boolean
   navigationItems: NavigationItems | undefined
 }>()
+defineEmits(['close'])
 </script>

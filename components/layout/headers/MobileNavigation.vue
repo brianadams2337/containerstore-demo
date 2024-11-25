@@ -13,6 +13,7 @@
             :navigation-item="item"
             :text-color="theme.colors.gray[900]"
             class="min-h-[42px] !text-2xl font-semi-bold-variable"
+            @click="$emit('clickLink')"
           />
           <SFButton
             v-if="item.children.length"
@@ -64,6 +65,7 @@
                     :navigation-item="child"
                     :text-color="theme.colors.gray[900]"
                     class="min-h-[42px] text-lg"
+                    @click="$emit('clickLink')"
                   />
                 </div>
               </div>
@@ -73,6 +75,7 @@
               :navigation-item="item"
               :text-color="theme.colors.gray[900]"
               class="min-h-[42px] !text-xl font-semi-bold-variable"
+              @click="$emit('clickLink')"
             />
           </template>
         </div>
@@ -96,6 +99,8 @@ const { isOpen, navigationItems } = defineProps<{
   isOpen: boolean
   navigationItems: NavigationItems | undefined
 }>()
+
+defineEmits(['clickLink'])
 
 const selectedItem = ref<NavigationItems[0] | undefined>(undefined)
 

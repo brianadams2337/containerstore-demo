@@ -21,6 +21,7 @@
         }"
         :is-open="isSideNavigationOpen"
         :navigation-items="mainNavigationItems"
+        @close="isSideNavigationOpen = false"
       />
     </SFSlideInFromLeftTransition>
 
@@ -47,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { watch, ref, computed } from 'vue'
+import { ref, computed } from 'vue'
 import { whenever } from '@vueuse/core'
 import UserNavigationItem from './UserNavigationItem.vue'
 import BasketNavigationItem from './BasketNavigationItem.vue'
@@ -55,7 +56,6 @@ import WishlistNavigationItem from './WishlistNavigationItem.vue'
 import SearchInput from './search/SearchInput.vue'
 import MobileSidebar from './MobileSidebar.vue'
 import HeaderNavigationItem from './HeaderNavigationItem.vue'
-import { useRoute } from '#app/composables/router'
 import { vPopover } from '~/modules/ui/runtime/directives/popover'
 import { useNuxtApp } from '#app/nuxt'
 import { routeList } from '~/utils'
@@ -80,12 +80,6 @@ const isDesktopLayout = greaterOrEqual('lg')
 whenever(isDesktopLayout, () => {
   isSideNavigationOpen.value = false
 })
-
-const route = useRoute()
-watch(
-  () => route.fullPath,
-  () => (isSideNavigationOpen.value = false),
-)
 
 const { data: navigationTree } = useNavigationTreeByName({
   params: { treeName: 'Header', params: { with: { category: true } } },
