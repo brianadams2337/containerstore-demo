@@ -47,7 +47,7 @@ describe('logged in user', () => {
     })
     const { getByText, getByRole } = await renderSuspended(UserActions)
 
-    expect(getByText('Hallo firstName lastName'))
+    expect(getByText('Hallo firstName'))
     expect(getByText('user@scayle.com'))
 
     const settingsLink = getByRole('link', { name: 'Kontoeinstellungen' })
@@ -98,7 +98,7 @@ describe('guest user', () => {
     const { getByText, queryByRole, getByRole } =
       await renderSuspended(UserActions)
 
-    expect(getByText('Hallo firstName lastName'))
+    expect(getByText('Hallo firstName'))
     expect(getByText('user@scayle.com'))
 
     const settingsLink = queryByRole('link', { name: 'Kontoeinstellungen' })

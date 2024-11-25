@@ -250,7 +250,7 @@
       "password_pattern_hint": "Erfordert einen Großbuchstaben, ein Sonderzeichen, eine Zahl und keine Leerzeichen"
     },
     "popover": {
-      "greeting": "Hallo {firstName} {lastName}"
+      "greeting": "Hallo {firstName}"
     }
   },
   "pdp": {

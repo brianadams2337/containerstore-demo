@@ -5,7 +5,6 @@
         {{
           $t('my_account.popover.greeting', {
             firstName: user?.firstName,
-            lastName: user?.lastName,
           })
         }}
       </div>

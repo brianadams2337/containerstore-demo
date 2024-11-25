@@ -249,7 +249,7 @@
       "email_change_hint": "Please contact customer service to change your email."
     },
     "popover": {
-      "greeting": "Hello {firstName} {lastName}"
+      "greeting": "Hello {firstName}"
     }
   },
   "pdp": {
