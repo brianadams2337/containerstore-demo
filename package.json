@@ -124,7 +124,7 @@
     "consola": "3.2.3",
     "contentful": "11.2.4",
     "contentful-export": "7.19.166",
-    "dompurify": "^3.2.0",
+    "dompurify": "3.2.0",
     "dotenv": "16.4.5",
     "focus-trap": "7.6.2",
     "global": "4.4.0",
