@@ -14,7 +14,7 @@
     >
       <HeaderTopBar />
       <Header />
-      <main class="mt-8 grow">
+      <main class="grow">
         <NuxtPage />
       </main>
       <Footer
