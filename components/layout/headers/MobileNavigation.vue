@@ -38,6 +38,7 @@
             class="!text-2xl font-semi-bold-variable"
             :navigation-item="selectedItem"
             :text-color="theme.colors.gray[900]"
+            disabled-link
           />
         </SFButton>
         <div class="flex flex-col gap-y-2">
