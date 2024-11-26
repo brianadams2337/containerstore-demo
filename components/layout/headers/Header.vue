@@ -5,6 +5,7 @@
     <SFButton
       variant="raw"
       class="shrink-0 lg:hidden"
+      data-testid="side-navigation-button"
       @click="isSideNavigationOpen = !isSideNavigationOpen"
     >
       <IconClose v-if="isSideNavigationOpen" class="size-7" />

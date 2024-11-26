@@ -32,8 +32,8 @@ export class Search {
   }
 
   async startTypingSearch(searchTerm: string) {
-    await this.searchInput.click({ force: true })
-    await this.searchInput.fill(searchTerm)
+    await this.searchInput.nth(1).click({ force: true })
+    await this.searchInput.nth(1).fill(searchTerm)
     await expect(this.searchResultsFlyout).toBeVisible()
     await expect(this.searchCategoryListItem.first()).toBeVisible()
   }

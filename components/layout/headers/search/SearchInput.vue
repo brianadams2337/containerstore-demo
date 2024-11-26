@@ -34,6 +34,7 @@
           type="search"
           :placeholder="$t('search.placeholder')"
           class="min-w-0 grow bg-gray-100 outline-none transition-colors placeholder-shown:truncate"
+          data-testid="header-search-input"
           :class="{
             'bg-white ': hasFocus,
             'group-hover:bg-gray-200': !hasFocus,

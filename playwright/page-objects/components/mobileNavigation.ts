@@ -25,7 +25,7 @@ export class MobileNavigation {
     this.subCategoryMenuItem = page.getByRole('link', {
       name: PLP_SUBCATEGORY_NAME_DE,
     })
-    this.searchInputField = page.getByTestId('sidebar-search-input')
+    this.searchInputField = page.getByTestId('header-search-input')
     this.searchCategoryList = page.getByTestId('search-category-list').nth(1)
     this.exactProductItem = page.getByTestId('search-exact-product-item')
     this.searchMoreButton = page.getByRole('link', {
@@ -42,7 +42,7 @@ export class MobileNavigation {
 
   async startTypingMobileSearch(searchTerm: string, exactProduct: boolean) {
     await this.sideNavigationButton.click()
-    await this.searchInputField.fill(searchTerm)
+    await this.searchInputField.first().fill(searchTerm)
     if (exactProduct === true) {
       await expect(this.exactProductItem).toBeVisible()
     }

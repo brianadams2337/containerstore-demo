@@ -17,7 +17,7 @@ export class Header {
       'data-test-id=toggle-promotion-banner-button',
     )
     this.promotionBanner = page.getByTestId('promotion-banner')
-    this.wishlistNumItems = page.getByTestId('wishlist-items-badge')
+    this.wishlistNumItems = page.getByTestId('wishlist-count')
     this.headerBasketButton = page.getByTestId('basket-link')
     this.headerLoginButton = page.getByTestId('user-popover')
     this.basketNumItems = page.getByTestId('floating-badge')

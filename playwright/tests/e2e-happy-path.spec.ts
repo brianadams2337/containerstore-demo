@@ -30,7 +30,6 @@ test('C2139186: E2E from Home to Checkout - happy path', async ({
           false,
         )
         await mobileNavigation.exactProductItem.click()
-        await mobileNavigation.sideNavigationButton.click()
         await breadcrumb.productCounter.waitFor()
       } else {
         await search.startTypingSearch(SEARCH_SUGGESTIONS.searchTermProduct)
@@ -43,6 +42,7 @@ test('C2139186: E2E from Home to Checkout - happy path', async ({
   await test.step('Add product to Wishlist from PLP', async () => {
     await expect(async () => {
       await productListingPage.addProductToWishlist()
+      await page.waitForLoadState('networkidle')
       await expect(header.wishlistNumItems).toBeVisible()
       await expect(header.wishlistNumItems).toHaveText('1')
     }).toPass()

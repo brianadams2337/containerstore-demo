@@ -52,7 +52,7 @@ export class ProductDetailPage {
   getVariant(variantId?: string): Locator {
     const selector = variantId
       ? `button[data-testid="variant-option-${variantId}"]`
-      : 'div[popover="manual"] button:not([disabled])'
+      : 'button[data-testid^="variant-option-"]:not([disabled])'
 
     return this.page.locator(selector).first()
   }
