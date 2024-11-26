@@ -5,7 +5,7 @@
     >
       <span>{{ $t('search.navigation_items') }}</span>
       <span
-        class="ml-0.5 inline-flex h-3.5 items-center rounded-full bg-gray-900 px-2 pt-0.5 text-2xs leading-4 text-white-smoke"
+        class="ml-0.5 inline-flex h-4 items-center rounded-full bg-gray-900 px-2 text-sm leading-none text-white-smoke"
       >
         {{ navigationItemSuggestions.length }}
       </span>
