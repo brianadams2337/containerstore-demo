@@ -3527,7 +3527,12 @@
   resolved "https://registry.yarnpkg.com/@storyblok/region-helper/-/region-helper-1.1.0.tgz#ce7274f578e1bd428e08766662a38ceffcba06ab"
   integrity sha512-2NU/GHeaS9vFtkZJk/mNH6E5HvrV3vT3AN/Wrl44L3lwLIfcK4E0orjgCi7gvl0N3Ul5E+y6vJAVjD3bmjSZVg==
 
-"@storyblok/richtext@3.0.0", "@storyblok/richtext@^3.0.0":
+"@storyblok/richtext@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@storyblok/richtext/-/richtext-3.0.1.tgz#ade066db582e018b1ab864ce4af7c8e24cf5e597"
+  integrity sha512-ixnz/yKuRtlyquOQdsqYxINumF35Bw8s2S4XCV2lHv8/9iAd+Ix8j3+sNtv/n92SY3vM4B0urYB8UOwT8WR9SA==
+
+"@storyblok/richtext@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@storyblok/richtext/-/richtext-3.0.0.tgz#dae218a9bbe7745d83e4d7ba191f1ffd8038c6ce"
   integrity sha512-EpqnASTkn0nLv3buxlUGNhfWqhTgUFBJx6QUdE4dW8l0Dg0c3B97ZGithUC5uxXy3dqmsm5x6pCF97CVLNC6JQ==
