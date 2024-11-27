@@ -21,7 +21,7 @@
     </div>
 
     <div
-      class="flex flex-col gap-4 border-t px-10 py-5 text-md md:flex-row md:gap-8 md:py-7"
+      class="flex flex-col gap-4 border-t p-5 text-md md:flex-row md:gap-8 md:py-7"
     >
       <BottomFooter />
     </div>
