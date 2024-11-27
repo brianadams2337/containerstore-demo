@@ -15,13 +15,13 @@
       'mr-3 block w-fit content-center rounded py-1 text-base font-normal leading-5 text-[var(--textColor)] transition-all hover:mr-0 hover:bg-[var(--backgroundColor)] hover:px-1.5':
         !raw && isLink,
       'mr-0 bg-[var(--backgroundColor)] px-1.5': isActive && !raw && isLink,
-      'w-fit py-1 text-base font-semi-bold-variable leading-5 text-[var(--textColor)]':
+      'min-h-5 w-fit py-1 text-base font-semi-bold-variable leading-5 text-[var(--textColor)]':
         !raw && !isLink,
     }"
     :style="style"
     @mouseenter="emit('mouseenter:navigation-item')"
   >
-    <div v-if="iconUrl" class="flex items-center gap-2 rounded-md leading-none">
+    <div v-if="iconUrl" class="flex items-center gap-2">
       <object
         v-if="iconUrl"
         :data="iconUrl"
