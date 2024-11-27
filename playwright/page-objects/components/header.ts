@@ -17,12 +17,12 @@ export class Header {
       'data-test-id=toggle-promotion-banner-button',
     )
     this.promotionBanner = page.getByTestId('promotion-banner')
-    this.wishlistNumItems = page.getByTestId('wishlist-count')
+    this.wishlistNumItems = page.getByTestId('header-wishlist-count')
     this.headerBasketButton = page.getByTestId('basket-link')
-    this.headerLoginButton = page.getByTestId('user-popover')
-    this.basketNumItems = page.getByTestId('floating-badge')
+    this.headerLoginButton = page.getByTestId('header-user-button')
+    this.basketNumItems = page.getByTestId('header-basket-count')
     this.wishlistLink = page.getByTestId('wishlist-link')
-    this.mainHeader = page.getByTestId('main-header')
+    this.mainHeader = page.getByTestId('header')
   }
 
   async hidePromotionBanner() {
@@ -32,9 +32,5 @@ export class Header {
   async visitBasketPage() {
     await this.headerBasketButton.click()
     await this.page.waitForLoadState('domcontentloaded')
-  }
-
-  async clickLoginHeaderButton() {
-    await this.headerLoginButton.getByRole('link').first().click()
   }
 }

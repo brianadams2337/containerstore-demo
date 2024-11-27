@@ -10,7 +10,7 @@ export class Search {
   readonly searchResultsProductImage: Locator
   readonly searchResultsHeadline: Locator
   readonly searchResultsFlyout: Locator
-  readonly searchMoreButton: Locator
+  readonly searchDisplayAllResults: Locator
   readonly searchExactProduct: Locator
 
   constructor(page: Page) {
@@ -21,14 +21,14 @@ export class Search {
     this.searchCategoryListItem = page.getByTestId('search-exact-product-item')
     this.searchResultsProductImage = page.getByTestId('product-image')
     this.searchResultsHeadline = page.getByTestId('headline')
-    this.searchMoreButton = page.getByTestId('search-more-button')
+    this.searchDisplayAllResults = page.getByTestId('display-all-results')
     this.searchExactProduct = page.getByTestId('search-exact-product-item')
   }
 
   async executeSearch(searchTerm: string) {
-    await this.searchInput.click({ force: true })
-    await this.searchInput.fill(searchTerm)
-    await this.searchInput.press('Enter')
+    await this.searchInput.nth(1).click({ force: true })
+    await this.searchInput.nth(1).fill(searchTerm)
+    await this.searchInput.nth(1).press('Enter')
   }
 
   async startTypingSearch(searchTerm: string) {
@@ -55,8 +55,8 @@ export class Search {
   }
 
   async clickSearchMoreButton() {
-    await this.searchMoreButton.waitFor()
-    await this.searchMoreButton.click()
+    await this.searchDisplayAllResults.waitFor()
+    await this.searchDisplayAllResults.click()
   }
 
   async clickExactProductItem() {

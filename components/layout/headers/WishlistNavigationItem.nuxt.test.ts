@@ -28,7 +28,7 @@ it('should render link to empty wishlist', async () => {
   const link = getByRole('link', { name: 'Wunschliste' })
   expect(link).toBeInTheDocument()
   expect(link).toHaveAttribute('href', '/de/wishlist')
-  expect(getByTestId('wishlist-count')).toBeEmptyDOMElement()
+  expect(getByTestId('header-wishlist-count')).toBeEmptyDOMElement()
 })
 
 it('should render link to wishlist with 1 item', async () => {
@@ -40,7 +40,7 @@ it('should render link to wishlist with 1 item', async () => {
   expect(link).toBeInTheDocument()
   expect(link).toHaveAttribute('href', '/de/wishlist')
 
-  const wishlistCount = getByTestId('wishlist-count')
+  const wishlistCount = getByTestId('header-wishlist-count')
   expect(wishlistCount).toBeInTheDocument()
   expect(wishlistCount).toHaveTextContent('1')
 })
@@ -54,7 +54,7 @@ it('should render link to wishlist with 2 items', async () => {
   expect(link).toBeInTheDocument()
   expect(link).toHaveAttribute('href', '/de/wishlist')
 
-  const wishlistCount = getByTestId('wishlist-count')
+  const wishlistCount = getByTestId('header-wishlist-count')
   expect(wishlistCount).toBeInTheDocument()
   expect(wishlistCount).toHaveTextContent('2')
 })

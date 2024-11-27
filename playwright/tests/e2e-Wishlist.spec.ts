@@ -30,7 +30,7 @@ test('C2132174 C2132177 Verify Wishlist empty state', async ({
   })
   await test.step('Verify logged-in user', async () => {
     await expect(async () => {
-      await header.clickLoginHeaderButton()
+      await header.headerLoginButton.click()
       await signinPage.fillLoginData(
         LOGGED_IN_USER_DATA.email,
         LOGGED_IN_USER_DATA.password,

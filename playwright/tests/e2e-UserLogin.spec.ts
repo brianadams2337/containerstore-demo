@@ -19,7 +19,7 @@ test('C2130648: Verify User login and log out', async ({
   page,
 }) => {
   await expect(async () => {
-    await header.clickLoginHeaderButton()
+    await header.headerLoginButton.click()
     await signinPage.fillLoginData(
       LOGGED_IN_USER_DATA.email,
       LOGGED_IN_USER_DATA.password,
@@ -27,14 +27,14 @@ test('C2130648: Verify User login and log out', async ({
     await signinPage.clickLoginButton()
     await page.waitForURL(HOMEPAGE_PATH_DE)
 
-    await header.clickLoginHeaderButton()
+    await header.headerLoginButton.click()
     await toastMessage.assertToastInfoIsVisible()
     await toastMessage.clickToastMessageButton()
     await toastMessage.assertToastInfoNotVisible()
     await accountPage.assertLogoutButtonIsVisible()
     await accountPage.clickLogoutButton()
 
-    await header.clickLoginHeaderButton()
+    await header.headerLoginButton.click()
     await signinPage.assertLoginButtonIsVisible()
   }).toPass()
 })
@@ -45,7 +45,7 @@ test('C2130649: Verify User login with wrong credentials', async ({
   toastMessage,
 }) => {
   await expect(async () => {
-    await header.clickLoginHeaderButton()
+    await header.headerLoginButton.click()
     await signinPage.fillLoginData(
       LOGIN_WRONG_CREDENTIALS.email,
       LOGIN_WRONG_CREDENTIALS.password,

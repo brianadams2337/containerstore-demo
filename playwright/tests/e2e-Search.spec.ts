@@ -82,7 +82,7 @@ test('C2130721: Verify Search suggestions', async ({
   }).toPass()
 })
 
-test('C2132124: Verify Search suggestions "More" button', async ({
+test('C2132124: Verify Search suggestions "See all results" button', async ({
   search,
   mobileNavigation,
   page,

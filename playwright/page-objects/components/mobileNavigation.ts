@@ -1,9 +1,6 @@
 import type { Locator, Page } from '@playwright/test'
 import { expect } from '../../fixtures/fixtures'
-import {
-  PLP_SUBCATEGORY_NAME_DE,
-  SEARCH_SUGGESTIONS,
-} from '../../support/constants'
+import { PLP_SUBCATEGORY_NAME_DE } from '../../support/constants'
 
 export class MobileNavigation {
   readonly page: Page
@@ -13,7 +10,7 @@ export class MobileNavigation {
   readonly searchInputField: Locator
   readonly exactProductItem: Locator
   readonly searchCategoryList: Locator
-  readonly searchMoreButton: Locator
+  readonly searchDisplayAllResults: Locator
   readonly productListItem: Locator
 
   constructor(page: Page) {
@@ -28,16 +25,14 @@ export class MobileNavigation {
     this.searchInputField = page.getByTestId('header-search-input')
     this.searchCategoryList = page.getByTestId('search-category-list').nth(1)
     this.exactProductItem = page.getByTestId('search-exact-product-item')
-    this.searchMoreButton = page.getByRole('link', {
-      name: SEARCH_SUGGESTIONS.moreButtonLabelDE,
-    })
+    this.searchDisplayAllResults = page.getByTestId('display-all-results')
     this.productListItem = page.getByTestId('search-exact-product-item')
   }
 
   async executeMobileSearch(searchTerm: string) {
     await this.sideNavigationButton.click()
-    await this.searchInputField.fill(searchTerm)
-    await this.searchInputField.press('Enter')
+    await this.searchInputField.first().fill(searchTerm)
+    await this.searchInputField.first().press('Enter')
   }
 
   async startTypingMobileSearch(searchTerm: string, exactProduct: boolean) {
@@ -49,7 +44,7 @@ export class MobileNavigation {
   }
 
   async clickSearchMoreButtonMobile() {
-    await this.searchMoreButton.waitFor()
-    await this.searchMoreButton.click()
+    await this.searchDisplayAllResults.waitFor()
+    await this.searchDisplayAllResults.click()
   }
 }

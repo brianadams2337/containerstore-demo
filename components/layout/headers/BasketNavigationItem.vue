@@ -14,7 +14,10 @@
         :aria-label="ariaLabel"
       >
         <IconBasket class="size-6 shrink-0" />
-        <span class="ml-1 min-w-[1ch] text-sm font-semibold leading-none">
+        <span
+          class="ml-1 min-w-[1ch] text-sm font-semibold leading-none"
+          data-testid="header-basket-count"
+        >
           <template v-if="mounted && count">
             {{ count }}
           </template>

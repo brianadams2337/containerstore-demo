@@ -58,6 +58,7 @@ test('C2132198 Verify add to Basket', async ({
   basketPage,
   countryDetector,
   signinPage,
+  page,
 }, testInfo) => {
   await test.step('Add product to Basket', async () => {
     await expect(async () => {
@@ -68,6 +69,7 @@ test('C2132198 Verify add to Basket', async ({
         1,
       )
       await header.visitBasketPage()
+      await page.waitForLoadState('domcontentloaded')
       await expect(header.basketNumItems).toHaveText('1')
     }).toPass()
   })
@@ -82,7 +84,7 @@ test('C2132198 Verify add to Basket', async ({
   })
 
   await test.step('Log in and assert the product is still in Basket', async () => {
-    await header.clickLoginHeaderButton()
+    await header.headerLoginButton.click()
     const projectName = testInfo.project.name
     const { email, password } = getUserForBrowser(projectName)
     await signinPage.fillLoginData(email, password)

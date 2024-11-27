@@ -1,6 +1,7 @@
 <template>
   <header
     class="flex h-13 items-center space-x-4 border-gray-200 px-4 lg:h-16 lg:space-x-7 lg:border-b lg:px-7"
+    data-testid="header"
   >
     <SFButton
       variant="raw"

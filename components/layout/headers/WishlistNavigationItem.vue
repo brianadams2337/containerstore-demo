@@ -3,12 +3,13 @@
     :to="routeList.wishlist"
     raw
     class="flex h-10 items-center justify-center rounded-md p-2 hover:bg-gray-100"
+    data-testid="wishlist-link"
     :aria-label="ariaLabel"
   >
     <IconHeartBold class="size-6 shrink-0" />
     <span
       class="ml-1 min-w-[1ch] text-sm font-semibold leading-none"
-      data-testid="wishlist-count"
+      data-testid="header-wishlist-count"
     >
       <template v-if="mounted && count">
         {{ count }}
