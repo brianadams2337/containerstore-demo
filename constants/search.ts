@@ -19,6 +19,9 @@ export const SEARCH_WITH_PARAMS: SearchV2With = {
     parents: 'all',
     children: 0,
   },
+  navigationItem: {
+    category: 'all',
+  },
 }
 
 export const SEARCH_PRODUCTS_WITH_PARAMS: ProductWith = {
