@@ -1,41 +1,44 @@
 <template>
-  <div class="container max-sm:max-w-none">
-    <div class="mt-8">
-      <SFHeadline size="xl" class="font-semibold text-primary">
-        {{ $t('wishlist.heading') }}
-      </SFHeadline>
-      <p
-        v-if="count !== undefined"
-        data-testid="wishlist-count"
-        class="mt-4 text-xs font-semibold text-secondary"
-      >
-        {{ $t('wishlist.products_count', count) }}
-      </p>
-    </div>
+  <main class="container mt-8 max-sm:max-w-none">
+    <SFHeadline
+      tag="h1"
+      class="mt-1.5 !font-semi-bold-variable text-gray-900 max-sm:text-2xl max-sm:leading-6 sm:mt-0"
+    >
+      {{ $t('wishlist.heading') }}
+      <SFFadeInTransition>
+        <span
+          v-if="count !== undefined && count > 0"
+          class="ml-0.5 inline-flex h-[1.125rem] items-center rounded-[1.25rem] bg-gray-900 px-2 text-xs font-semibold leading-4 text-white"
+        >
+          {{ count }}
+        </span>
+      </SFFadeInTransition>
+    </SFHeadline>
+
     <template v-if="fetching">
-      <div class="mt-8 flex flex-wrap">
-        <SFSkeletonLoader
-          v-for="index in count"
+      <div class="mt-8 grid w-auto grid-cols-12 gap-4 xl:max-2xl:grid-cols-10">
+        <ProductCardSkeleton
+          v-for="index in 12"
           :key="`product-loading-${index}`"
           type="custom"
-          class="mb-40 mr-2 h-96 w-80"
+          class="col-span-6 mb-4 sm:col-span-4 lg:col-span-3 xl:col-span-2"
         />
       </div>
     </template>
     <template v-else>
       <div
         v-if="count"
-        class="mt-8 grid w-auto grid-cols-12 gap-2"
+        class="mt-8 grid w-auto grid-cols-12 gap-4 xl:max-2xl:grid-cols-10"
         data-testid="wishlist-items-wrapper"
       >
         <ProductCard
-          v-for="({ product, key }, index) in orderedItems"
+          v-for="({ product, key }, index) in items"
           :id="product.id"
           :key="`product-${key}-${product}`"
           :index="index"
           :product="product"
           data-testid="wishlist-card"
-          class="col-span-6 mb-4 md:col-span-4 2xl:col-span-3"
+          class="col-span-6 mb-4 sm:col-span-4 lg:col-span-3 xl:col-span-2"
         />
       </div>
       <div v-if="count === 0" class="mt-8 space-y-8">
@@ -47,57 +50,42 @@
         />
       </div>
     </template>
-  </div>
+  </main>
 </template>
 
 <script setup lang="ts">
-import { defineOptions, onMounted } from 'vue'
+import { useSeoMeta } from '@unhead/vue'
+import { defineOptions } from 'vue'
+import { whenever } from '@vueuse/core'
+import ProductCardSkeleton from '~/components/product/card/ProductCardSkeleton.vue'
+import { useNuxtApp } from '#app/nuxt'
 import { definePageMeta } from '#imports'
-import { BasketListingMetadata } from '~/constants/listingMetadata'
-import {
-  useTrackingEvents,
-  useWishlistPage,
-  wishlistListingMetadata,
-} from '~/composables'
-import { useBasket } from '#storefront/composables'
+import { useWishlistTracking } from '~/composables'
+import { useWishlist } from '#storefront/composables'
 import EmptyState from '~/components/EmptyState.vue'
 import ProductCard from '~/components/product/card/ProductCard.vue'
-import { SFHeadline, SFSkeletonLoader } from '#storefront-ui/components'
+import { SFHeadline, SFFadeInTransition } from '#storefront-ui/components'
 
-const { data, products, count, fetching, orderedItems } =
-  await useWishlistPage()
-const basket = await useBasket()
+const { count, fetching, items, products } = useWishlist()
+const { $i18n } = useNuxtApp()
 
-const {
-  trackViewItemList,
-  trackWishlist,
-  collectProductListItems,
-  trackBasket,
-  collectBasketItems,
-} = useTrackingEvents()
+const { trackWishlistPage } = useWishlistTracking()
 
-onMounted(() => {
-  if (!data.value) {
-    return
-  }
-  trackWishlist(
-    collectProductListItems(products.value, {
-      listId: wishlistListingMetadata.id,
-      listName: wishlistListingMetadata.name,
-    }),
-  )
-  trackBasket(
-    collectBasketItems(basket.data.value?.items, {
-      listId: BasketListingMetadata.ID,
-      listName: BasketListingMetadata.NAME,
-    }),
-  )
+// Track the wishlist once it is loaded
+whenever(
+  () => !fetching.value,
+  () => {
+    trackWishlistPage(products.value)
+  },
+  {
+    once: true,
+    immediate: true,
+  },
+)
 
-  trackViewItemList({
-    items: products.value.map((product, index) => ({ ...product, index })),
-    listingMetaData: wishlistListingMetadata,
-    source: 'wishlist',
-  })
+useSeoMeta({
+  robots: 'noindex,follow',
+  title: $i18n.t('wishlist.meta.title'),
 })
 
 defineOptions({ name: 'WishlistPage' })

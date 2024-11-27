@@ -67,15 +67,10 @@ import OrderHistoryItem from '../order/OrderHistoryItem.vue'
 import LocalizedLink from '../LocalizedLink.vue'
 import AccountHeader from './AccountHeader.vue'
 import OrderListSkeletonLoader from './OrderListSkeletonLoader.vue'
-import { BasketListingMetadata } from '~/constants/listingMetadata'
-import {
-  useRouteHelpers,
-  useTrackingEvents,
-  wishlistListingMetadata,
-} from '~/composables'
+import { useRouteHelpers } from '~/composables'
 import { useDefaultBreakpoints } from '#storefront-ui/composables'
 import { SFSimplePagination, SFPageContainer } from '#storefront-ui/components'
-import { useBasket, useUser, useWishlist } from '#storefront/composables'
+import { useUser } from '#storefront/composables'
 import { useRoute } from '#app/composables/router'
 import { routeList } from '~/utils/route'
 
@@ -93,14 +88,6 @@ const props = withDefaults(defineProps<Props>(), {
 const ORDERS_PER_PAGE = 8
 
 const route = useRoute()
-const wishlist = useWishlist()
-const basket = useBasket()
-const {
-  trackWishlist,
-  collectProductListItems,
-  trackBasket,
-  collectBasketItems,
-} = useTrackingEvents()
 
 const { user, status } = useUser()
 
@@ -143,19 +130,6 @@ const shouldDisplayOrderOverview = computed(() => {
 // this can only happen when order data is loaded before mounting.
 // usually this means: being rendered on the server
 onMounted(async () => {
-  trackWishlist(
-    collectProductListItems(wishlist.products.value, {
-      listId: wishlistListingMetadata.id,
-      listName: wishlistListingMetadata.name,
-    }),
-  )
-  trackBasket(
-    collectBasketItems(basket.data.value?.items, {
-      listId: BasketListingMetadata.ID,
-      listName: BasketListingMetadata.NAME,
-    }),
-  )
-
   if (
     !route.params?.id &&
     !props.isAccountPage &&

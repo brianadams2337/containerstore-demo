@@ -46,7 +46,7 @@ import { computed, defineOptions, ref, toRef } from 'vue'
 import type { Product } from '@scayle/storefront-nuxt'
 import { useMounted } from '@vueuse/core'
 import AsyncDataWrapper from '../AsyncDataWrapper.vue'
-import { useWishlistActions } from '~/composables'
+import { useWishlistTracking } from '~/composables'
 import { useWishlist } from '#storefront/composables'
 import { SFButton } from '#storefront-ui/components'
 import type { ListItem } from '~/types/tracking'
@@ -67,12 +67,12 @@ const productId = computed(() => product.value.id)
 
 const { toggleItem, fetching, contains, status } = useWishlist()
 
-const { trackWishlistEvent } = useWishlistActions()
+const { trackWishlistItemEvent } = useWishlistTracking()
 
 const onToggleWishlist = async () => {
   const wasInWishlist = contains({ productId: productId.value })
 
-  trackWishlistEvent(!wasInWishlist ? 'added' : 'removed', {
+  trackWishlistItemEvent(!wasInWishlist ? 'added' : 'removed', {
     product: product.value,
     ...(props.listingMetaData && { listingMetaData: props.listingMetaData }),
   })

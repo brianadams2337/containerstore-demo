@@ -103,7 +103,6 @@
     "my_orders": "Meine Bestellungen",
     "user_settings": "Kontoeinstellungen",
     "sign_in": "Einloggen",
-    "wishlist": "Wunschliste",
     "basket": "Warenkorb",
     "home": "Storefront Core Boilerplate",
     "search": "Suchen",
@@ -138,21 +137,13 @@
     "close": "Schließen"
   },
   "wishlist": {
+    "meta": {
+      "title": "Wunschliste"
+    },
     "heading": "Wunschliste",
     "no_items_info": "Du hast noch keine Artikel auf Deiner Wunschliste.",
     "continue_shopping_info": "Jetzt unsere neuesten Artikel entdecken oder einloggen um gespeicherte Artikel anzuzeigen.",
-    "products_count": "0 Produkte | {count} Produkt | {count} Produkte",
-    "product": "Artikel",
-    "notification": {
-      "add_to_wishlist": "{productName} wurde zur Wunschliste hinzugefügt",
-      "remove_from_wishlist": "{productName} wurde von der Wunschliste entfernt",
-      "added_to_wishlist": "Zur Wunschliste hinzufügt",
-      "removed_from_wishlist": "Von Wunschliste entfernt"
-    },
-    "change_size_label": "Wähle Größe"
-  },
-  "wishlist_card": {
-    "change_size_label": "Ändern"
+    "product": "Artikel"
   },
   "basket": {
     "add_to_basket": "Zum Warenkorb hinzufügen",
@@ -197,8 +188,6 @@
     "size_label": "Größe",
     "color_label": "Farbe",
     "remove_label": "Löschen",
-    "add_to_wishlist_label": "Wunschliste",
-    "remove_from_wishlist_label": "Wunschliste",
     "confirm_remove_question": "Sind Sie sicher, dass Sie diesen Artikel entfernen möchten?",
     "cancel": "Abbrechen",
     "remove_short": "Entfernen",

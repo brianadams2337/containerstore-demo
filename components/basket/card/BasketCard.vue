@@ -168,27 +168,10 @@
         </div>
       </div>
       <div class="flex justify-end pt-4">
-        <BasketCardAction
-          :data-testid="
-            isInWishlist
-              ? 'basket-remove-from-wishlist-button'
-              : 'basket-add-to-wishlist-button'
-          "
-          :disabled="isWishlistToggling"
-          @click="toggleWishlist"
-        >
-          <template #icon="{ _class }">
-            <IconHeartFull v-if="isInWishlist" :class="_class" />
-            <IconHeart v-else :class="_class" />
-          </template>
-          <span class="max-md:hidden">
-            {{
-              isInWishlist
-                ? $t('basket_card.remove_from_wishlist_label')
-                : $t('basket_card.add_to_wishlist_label')
-            }}
-          </span>
-        </BasketCardAction>
+        <WishlistToggle
+          :product="item.product"
+          :listing-meta-data="listingMetaData"
+        />
 
         <BasketCardAction
           data-testid="basket-remove-item-button"
@@ -217,27 +200,23 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, toRef } from 'vue'
+import { computed, toRef } from 'vue'
 import type { BasketItem } from '@scayle/storefront-nuxt'
 import AddOnItems from '../addOns/AddOnItems.vue'
 import BasketCardDetail from './BasketCardDetail.vue'
 import BasketCardConfirmDelete from './BasketCardConfirmDelete.vue'
 import BasketCardAction from './BasketCardAction.vue'
 import ProductPromotionFreeGiftBadge from '~/components/product/promotion/gifts/ProductPromotionFreeGiftBadge.vue'
-import { useRoute } from '#app/composables/router'
-import { useNuxtApp } from '#app'
-import { useFormatHelpers, useWishlist } from '#storefront/composables'
+import { useFormatHelpers } from '#storefront/composables'
+import WishlistToggle from '~/components/product/WishlistToggle.vue'
 import {
   useBasketItem,
   useBasketItemPromotion,
   useBasketReductions,
-  usePageState,
   useProductBaseInfo,
   useRouteHelpers,
-  useToast,
-  useTrackingEvents,
 } from '~/composables'
-import { getBackgroundColorStyle, getTextColorStyle, routeList } from '~/utils'
+import { getBackgroundColorStyle, getTextColorStyle } from '~/utils'
 import { AlphaColorMap } from '~/constants'
 import { SFFadeInTransition, SFDropdown } from '#storefront-ui/components'
 import LocalizedLink from '~/components/LocalizedLink.vue'
@@ -284,7 +263,7 @@ const {
   getBasketItemPrice,
   hasCampaignReduction,
 } = useBasketReductions()
-const { getProductDetailRoute, getLocalizedRoute } = useRouteHelpers()
+const { getProductDetailRoute } = useRouteHelpers()
 const mainItem = computed(() => {
   const basketItem = props.itemsGroup
     ? props.itemsGroup.find((item) => item.itemGroup?.isMainItem)
@@ -311,23 +290,12 @@ const {
   lowestPriorPrice,
   reducedPrice,
   product,
-  variant,
   selectItem,
   listingMetaData,
 } = useBasketItem(mainItem)
 
 const { alt } = useProductBaseInfo(product)
 
-const { $i18n } = useNuxtApp()
-const wishlist = useWishlist()
-const { trackRemoveFromWishlist, trackAddToWishlist } = useTrackingEvents()
-
-const toast = useToast()
-
-const { pageState } = usePageState()
-const route = useRoute()
-
-const isWishlistToggling = ref(false)
 const index = toRef(props, 'index')
 
 const { isFreeGift, giftBackgroundColorStyle } =
@@ -338,69 +306,4 @@ const addOnItems = computed(() =>
     ? props.itemsGroup.filter((item) => !item.itemGroup?.isMainItem)
     : [],
 )
-
-const isInWishlist = computed(() => {
-  return wishlist.contains({ productId: product.value.id })
-})
-
-const toggleWishlist = async () => {
-  isWishlistToggling.value = true
-  await (isInWishlist.value ? removeFromWishlist() : addToWishlist())
-  isWishlistToggling.value = false
-}
-
-const addToWishlist = async () => {
-  if (!mainItem.value) {
-    return
-  }
-
-  trackAddToWishlist({
-    product: product.value,
-    variant: variant.value,
-    quantity: quantity.value,
-    listingMetaData,
-    index: index.value,
-    pagePayload: {
-      content_name: route.fullPath,
-      page_type: pageState.value.type,
-      page_type_id: route.params.id?.toString() || '',
-    },
-  })
-
-  await wishlist.addItem({ productId: product.value.id })
-  const message = $i18n.t('wishlist.notification.add_to_wishlist', {
-    productName: name.value || $i18n.t('wishlist.product'),
-  })
-  toast.show(message, {
-    action: 'ROUTE',
-    to: getLocalizedRoute(routeList.wishlist),
-  })
-}
-
-const removeFromWishlist = async () => {
-  const productName = name.value || $i18n.t('wishlist.product')
-  const message = $i18n.t('wishlist.notification.remove_from_wishlist', {
-    productName,
-  })
-  trackRemoveFromWishlist({
-    product: product.value,
-    variant: variant.value,
-    quantity: quantity.value,
-    index: index.value,
-    listingMetaData: { ...listingMetaData, index: index.value },
-    pagePayload: {
-      content_name: route.fullPath,
-      page_type: pageState.value.type,
-      page_type_id: route.params.id?.toString() || '',
-    },
-  })
-
-  const data = wishlist.findItem({ variantId: variant.value.id })
-    ? { variantId: variant.value.id }
-    : { productId: product.value.id }
-
-  await wishlist.removeItem(data)
-
-  toast.show(message, { action: 'CONFIRM' })
-}
 </script>

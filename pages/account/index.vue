@@ -48,15 +48,11 @@
 
 <script setup lang="ts">
 import { useSeoMeta } from '@unhead/vue'
-import { computed, defineOptions, onMounted } from 'vue'
+import { computed, defineOptions } from 'vue'
 import { definePageMeta } from '#imports'
-import {
-  useTrackingEvents,
-  wishlistListingMetadata,
-  useRouteHelpers,
-} from '~/composables'
+import { useRouteHelpers } from '~/composables'
 import { useNuxtApp } from '#app'
-import { useUser, useWishlist } from '#storefront/composables'
+import { useUser } from '#storefront/composables'
 import { routeList } from '~/utils/route'
 import AccountHeader from '~/components/account/AccountHeader.vue'
 import LogoutButton from '~/components/auth/LogoutButton.vue'
@@ -67,24 +63,12 @@ import {
 } from '#storefront-ui/components'
 
 const { user } = useUser()
-const wishlist = await useWishlist()
-
-const { trackWishlist, collectProductListItems } = useTrackingEvents()
 
 const { getLocalizedRoute } = useRouteHelpers()
 
 const { $i18n } = useNuxtApp()
 
 const orderCount = computed(() => user.value?.orderSummary?.length || 0)
-
-onMounted(() => {
-  trackWishlist(
-    collectProductListItems(wishlist.products.value, {
-      listId: wishlistListingMetadata.id,
-      listName: wishlistListingMetadata.name,
-    }),
-  )
-})
 
 useSeoMeta({ robots: 'index,follow', title: $i18n.t('navigation.my_account') })
 

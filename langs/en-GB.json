@@ -103,7 +103,6 @@
     "my_orders": "My Orders",
     "user_settings": "Account Settings",
     "sign_in": "Sign in",
-    "wishlist": "Wishlist",
     "basket": "Basket",
     "home": "Storefront Core Boilerplate",
     "search": "Search",
@@ -138,21 +137,13 @@
     "close": "Close"
   },
   "wishlist": {
-    "heading": "Wishlist",
-    "no_items_info": "You have no products on your wishlist.",
-    "continue_shopping_info": "Shop our newest products or sign in to see saved products.",
-    "products_count": "0 products | {count} product | {count} products",
-    "product": "Produkt",
-    "notification": {
-      "add_to_wishlist": "{productName} has been added to your wishlist",
-      "remove_from_wishlist": "{productName} has been removed from your wishlist",
-      "added_to_wishlist": "Added to wishlist",
-      "removed_from_wishlist": "Removed from wishlist"
+    "meta": {
+      "title": "Wishlist"
     },
-    "change_size_label": "Choose size"
-  },
-  "wishlist_card": {
-    "change_size_label": "Change"
+    "heading": "Wishlist",
+    "no_items_info": "You have no items in your wishlist.",
+    "continue_shopping_info": "Shop our newest products or sign in to see your saved wishlist.",
+    "product": "Produkt"
   },
   "basket": {
     "add_to_basket": "Add to basket",
@@ -197,8 +188,6 @@
     "size_label": "Size",
     "color_label": "Color",
     "remove_label": "Remove",
-    "add_to_wishlist_label": "Wishlist",
-    "remove_from_wishlist_label": "Wishlist",
     "confirm_remove_question": "Are you sure you want to remove this item?",
     "cancel": "Cancel",
     "remove_short": "Remove",
