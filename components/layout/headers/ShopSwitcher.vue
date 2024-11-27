@@ -19,7 +19,7 @@
         data-testid="language-listbox"
       >
         <IconNewGlobe class="size-5 lg:size-3.5" />
-        <div class="mt-1 text-[15px] lg:text-sm">
+        <div class="text-[15px] lg:text-sm">
           {{ getShopName(currentShop.locale, multipleShopsForCountry) }}
         </div>
         <IconChevronDown
