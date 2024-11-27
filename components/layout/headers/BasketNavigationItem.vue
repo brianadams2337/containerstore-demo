@@ -1,7 +1,7 @@
 <template>
   <SFPopover
     :is-open="isOpen && !blockPopup"
-    @mouseenter="isOpen = true"
+    @mouseenter="isOpen = !blockPopup"
     @mouseleave="isOpen = false"
   >
     <template #action>

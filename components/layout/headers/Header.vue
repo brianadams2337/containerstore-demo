@@ -43,9 +43,15 @@
     </nav>
     <SearchInput class="shrink grow max-lg:hidden" />
     <div class="flex items-center space-x-4 max-lg:grow max-lg:justify-end">
-      <UserNavigationItem :block-popup="isSideNavigationOpen" />
-      <WishlistNavigationItem />
-      <BasketNavigationItem :block-popup="isSideNavigationOpen" />
+      <UserNavigationItem
+        :block-popup="isSideNavigationOpen"
+        @click="isSideNavigationOpen = false"
+      />
+      <WishlistNavigationItem @click="isSideNavigationOpen = false" />
+      <BasketNavigationItem
+        :block-popup="isSideNavigationOpen"
+        @click="isSideNavigationOpen = false"
+      />
     </div>
   </header>
 </template>
