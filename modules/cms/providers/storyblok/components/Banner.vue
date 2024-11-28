@@ -63,7 +63,7 @@
                 @click="storefrontBanner && storefrontBanner.close"
               >
                 <template #icon="{ _class }">
-                  <IconClose :class="_class" />
+                  <IconNewClose :class="_class" />
                 </template>
               </SFButton>
             </slot>

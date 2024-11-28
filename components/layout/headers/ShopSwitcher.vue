@@ -40,7 +40,7 @@
               {{ $t('shop_selector.choose_shop') }}
             </div>
             <SFButton variant="raw" class="ml-auto" @click="close">
-              <IconClose class="size-5 text-gray-400" />
+              <IconNewClose class="size-5 text-gray-400" />
             </SFButton>
           </div>
           <div class="text-base">

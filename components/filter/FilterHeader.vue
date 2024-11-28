@@ -11,7 +11,7 @@
       @click="toggleItem"
     >
       <template #icon>
-        <IconClose class="size-5 md:size-4 md:text-gray-400" />
+        <IconNewClose class="size-5 md:size-4 md:text-gray-400" />
       </template>
     </SFButton>
   </div>

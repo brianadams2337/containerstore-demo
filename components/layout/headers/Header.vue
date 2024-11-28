@@ -9,7 +9,7 @@
       data-testid="side-navigation-button"
       @click="isSideNavigationOpen = !isSideNavigationOpen"
     >
-      <IconClose v-if="isSideNavigationOpen" class="size-7" />
+      <IconNewClose v-if="isSideNavigationOpen" class="size-7" />
       <IconBurger v-else class="size-7" />
     </SFButton>
 
