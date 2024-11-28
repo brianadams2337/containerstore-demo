@@ -52,7 +52,7 @@
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/vue": "8.1.0",
     "@types/color": "4.2.0",
-    "@types/node": "22.10.0",
+    "@types/node": "22.10.1",
     "@typescript-eslint/scope-manager": "8.16.0",
     "@typescript-eslint/utils": "8.16.0",
     "@upstash/redis": "1.34.3",
