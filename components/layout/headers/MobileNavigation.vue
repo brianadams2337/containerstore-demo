@@ -1,9 +1,19 @@
 <template>
   <div
-    class="relative mb-5 grow overflow-y-auto overflow-x-hidden scroll-shadow"
+    class="relative mb-5 flex grow overflow-y-auto overflow-x-hidden scroll-shadow"
   >
-    <SFSlideInFromLeftTransition>
-      <div v-if="!selectedItem" class="mt-2 flex flex-col gap-y-5">
+    <Transition
+      enter-from-class="-translate-x-full"
+      enter-to-class="translate-x-0"
+      leave-from-class="translate-x-0"
+      leave-to-class="-translate-x-full"
+      enter-active-class="transition-[display,transform,overlay] transition-discrete duration-200 ease-in-out"
+      leave-active-class="transition-[display,transform,overlay] transition-discrete duration-200 ease-in-out"
+    >
+      <div
+        v-if="!selectedItem"
+        class="mt-2 flex w-full shrink-0 flex-col gap-y-5"
+      >
         <div
           v-for="item in navigationItems"
           :key="item.id"
@@ -25,9 +35,16 @@
           </SFButton>
         </div>
       </div>
-    </SFSlideInFromLeftTransition>
-    <SFSlideInFromRightTransition>
-      <div v-if="selectedItem">
+    </Transition>
+    <Transition
+      enter-from-class="translate-x-0"
+      enter-to-class="-translate-x-full"
+      leave-from-class="-translate-x-full"
+      leave-to-class="translate-x-0"
+      enter-active-class="transition-[display,transform,overlay] transition-discrete duration-200 ease-in-out"
+      leave-active-class="transition-[display,transform,overlay] transition-discrete  duration-200 ease-in-out"
+    >
+      <div v-if="selectedItem" class="mt-2 inline w-full shrink-0">
         <SFButton
           variant="raw"
           class="mb-5 min-h-11"
@@ -81,18 +98,13 @@
           </template>
         </div>
       </div>
-    </SFSlideInFromRightTransition>
+    </Transition>
   </div>
 </template>
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import type { NavigationItems } from '@scayle/storefront-core'
-import {
-  SFButton,
-  SFAccordionEntry,
-  SFSlideInFromLeftTransition,
-  SFSlideInFromRightTransition,
-} from '#storefront-ui/components'
+import { SFButton, SFAccordionEntry } from '#storefront-ui/components'
 import NavigationTreeItem from '~/components/NavigationTreeItem.vue'
 import { theme } from '#tailwind-config'
 
