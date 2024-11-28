@@ -27,7 +27,12 @@
       />
     </SFSlideInFromLeftTransition>
 
-    <LocalizedLink :to="routeList.home" :aria-label="shopName" class="lg:!ml-0">
+    <LocalizedLink
+      :to="routeList.home"
+      :aria-label="shopName"
+      class="lg:!ml-0"
+      @close="isSideNavigationOpen = false"
+    >
       <IconNewLogo class="size-7" aria-hidden="true" />
     </LocalizedLink>
 
