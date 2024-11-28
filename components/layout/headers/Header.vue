@@ -42,8 +42,9 @@
       </ul>
     </nav>
     <SearchInput class="shrink grow max-lg:hidden" />
-    <div class="flex items-center space-x-4 max-lg:grow max-lg:justify-end">
+    <div class="flex items-center max-lg:grow max-lg:justify-end">
       <UserNavigationItem
+        class="mr-[1ch]"
         :block-popup="isSideNavigationOpen"
         @click="isSideNavigationOpen = false"
       />

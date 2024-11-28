@@ -8,7 +8,7 @@
       <LocalizedLink
         :to="routeList.basket"
         raw
-        class="flex h-10 items-center justify-center rounded-md p-2 hover:bg-gray-100"
+        class="flex h-11 items-center justify-center rounded-md p-2 hover:bg-gray-100"
         data-testid="basket-link"
         :class="{ 'bg-gray-100': isOpen }"
         :aria-label="ariaLabel"

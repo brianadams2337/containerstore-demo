@@ -301,6 +301,7 @@ export default {
         '1/5': '20%',
       },
       spacing: {
+        11: '2.625rem  ',
         13: '3.25rem',
       },
       animation: {
@@ -374,20 +375,20 @@ export default {
               white 30%,
               rgba(255, 255, 255, 0)
             ) center top,
-            
+
             /* Shadow Cover BOTTOM */
             linear-gradient(
-              rgba(255, 255, 255, 0), 
+              rgba(255, 255, 255, 0),
               white 70%
             ) center bottom,
-            
+
             /* Shadow TOP */
             radial-gradient(
               farthest-side at 50% 0,
               rgba(0, 0, 0, 0.2),
               rgba(0, 0, 0, 0)
             ) center top,
-            
+
             /* Shadow BOTTOM */
             radial-gradient(
               farthest-side at 50% 100%,

@@ -12,13 +12,13 @@
           <NavigationTreeItem
             :navigation-item="item"
             :text-color="theme.colors.gray[900]"
-            class="min-h-[42px] !text-2xl font-semi-bold-variable"
+            class="min-h-11 !text-2xl font-semi-bold-variable"
             @click="$emit('clickLink')"
           />
           <SFButton
             v-if="item.children.length"
             variant="accent"
-            class="ml-auto !h-auto min-h-[42px] rounded-md bg-gray-200 !p-3"
+            class="ml-auto !h-auto min-h-11 rounded-md bg-gray-200 !p-3"
             @click="selectedItem = item"
           >
             <IconChevronRight class="size-4 text-gray-600" />
@@ -30,7 +30,7 @@
       <div v-if="selectedItem">
         <SFButton
           variant="raw"
-          class="mb-5 min-h-[42px]"
+          class="mb-5 min-h-11"
           @click="selectedItem = undefined"
         >
           <IconBack class="size-4" />
@@ -50,7 +50,7 @@
             >
               <template #title>
                 <NavigationTreeItem
-                  class="min-h-[42px] content-center py-0 !text-xl font-semi-bold-variable"
+                  class="min-h-11 content-center py-0 !text-xl font-semi-bold-variable"
                   disabled-link
                   :navigation-item="item"
                   :text-color="theme.colors.gray[900]"
@@ -65,7 +65,7 @@
                   <NavigationTreeItem
                     :navigation-item="child"
                     :text-color="theme.colors.gray[900]"
-                    class="min-h-[42px] text-lg"
+                    class="min-h-11 text-lg"
                     @click="$emit('clickLink')"
                   />
                 </div>
@@ -75,7 +75,7 @@
               v-else
               :navigation-item="item"
               :text-color="theme.colors.gray[900]"
-              class="min-h-[42px] !text-xl font-semi-bold-variable"
+              class="min-h-11 !text-xl font-semi-bold-variable"
               @click="$emit('clickLink')"
             />
           </template>
