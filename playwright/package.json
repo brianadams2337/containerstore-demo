@@ -15,7 +15,7 @@
     "@scayle/eslint-config-storefront": "4.3.2",
     "@types/node": "22.10.1",
     "dotenv": "16.4.5",
-    "eslint": "9.15.0",
+    "eslint": "9.16.0",
     "eslint-plugin-playwright": "2.1.0",
     "lighthouse": "12.2.2",
     "playwright-testrail-reporter": "1.2.1",
