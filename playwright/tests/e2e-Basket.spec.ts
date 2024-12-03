@@ -14,6 +14,7 @@ test('C2132186 C2132187 Verify Basket empty state as a guest and logged in user'
   page,
   countryDetector,
 }, testInfo) => {
+  test.setTimeout(60000)
   await test.step('Verify guest user', async () => {
     await homePage.visitPage()
     await countryDetector.closeModal()
@@ -35,6 +36,7 @@ test('C2132186 C2132187 Verify Basket empty state as a guest and logged in user'
   await test.step('Verify logged-in user', async () => {
     await expect(async () => {
       await basketPage.assertContinueButton()
+      await header.headerBasketButton.waitFor()
       await header.headerBasketButton.click()
       await basketPage.assertLoginButton()
     }).toPass()

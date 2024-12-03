@@ -69,6 +69,7 @@ export class BasketPage {
 
   async assertLoginButton() {
     await expect(this.loginButton).toBeVisible()
+    await this.loginButton.waitFor()
     await this.loginButton.click()
     await this.page.waitForLoadState('networkidle')
   }

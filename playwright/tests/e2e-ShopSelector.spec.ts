@@ -50,6 +50,7 @@ test('Verify Shop Selector switch to the current shop', async ({
   await expect(async () => {
     if (isMobile(page)) {
       await mobileNavigation.sideNavigationButton.click()
+      await page.waitForTimeout(500)
       await shopSelector.openShopSelector(1)
       await shopSelector.switchShopToCurrent(1)
     } else {
@@ -63,25 +64,27 @@ test('Verify Shop Selector switch from non-Homepage', async ({
   shopSelector,
   page,
   mobileNavigation,
+  header,
+  wishlistPage,
 }) => {
   await test.step('Navigate to Wishlist page', async () => {
-    await page.goto('/wishlist', { waitUntil: 'commit' })
-    await page.waitForLoadState('networkidle')
+    await header.wishlistLink.click()
+    await page.waitForLoadState('domcontentloaded')
+    await wishlistPage.emptyState.waitFor()
   })
   await test.step('Switch the shop and assert Wishlist page is loaded in different shop', async () => {
-    await expect(async () => {
-      if (isMobile(page)) {
-        await mobileNavigation.sideNavigationButton.click()
-        await shopSelector.assertShopSelectorIsVisible(1)
-        await shopSelector.openShopSelector(1)
-        await shopSelector.switchShop(1)
-      } else {
-        await shopSelector.assertShopSelectorIsVisible(0)
-        await shopSelector.openShopSelector(0)
-        await shopSelector.switchShop(0)
-      }
-      const pageUrl = page.url()
-      expect(pageUrl).toContain('/wishlist')
-    }).toPass()
+    if (isMobile(page)) {
+      await mobileNavigation.sideNavigationButton.click()
+      await page.waitForTimeout(500)
+      await shopSelector.assertShopSelectorIsVisible(1)
+      await shopSelector.openShopSelector(1)
+      await shopSelector.switchShop(1)
+    } else {
+      await shopSelector.assertShopSelectorIsVisible(0)
+      await shopSelector.openShopSelector(0)
+      await shopSelector.switchShop(0)
+    }
+    const pageUrl = page.url()
+    expect(pageUrl).toContain('/wishlist')
   })
 })
