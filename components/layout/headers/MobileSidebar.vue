@@ -17,6 +17,7 @@
             :to="routeList.location"
             class="text-gray-600"
             data-testid="store-location-link-mobile"
+            @click="$emit('close')"
           >
             <IconLocation class="size-5" />
             <div class="mt-1 text-[15px] font-normal lg:text-sm">

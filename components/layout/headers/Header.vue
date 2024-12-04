@@ -31,7 +31,7 @@
       :to="routeList.home"
       :aria-label="shopName"
       class="lg:!ml-0"
-      @close="isSideNavigationOpen = false"
+      @click="isSideNavigationOpen = false"
     >
       <IconNewLogo class="size-7" aria-hidden="true" />
     </LocalizedLink>
