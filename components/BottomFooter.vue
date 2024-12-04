@@ -5,7 +5,7 @@
   <ul class="flex flex-row gap-4 text-gray-600 md:contents">
     <li v-for="navItem in footerTree?.items" :key="`footer-link-${navItem.id}`">
       <NavigationTreeItem
-        class="rounded-md p-1 hover:bg-gray-100"
+        class="rounded-md hover:bg-gray-100 md:p-1"
         raw
         :navigation-item="navItem"
       />
