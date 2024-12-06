@@ -27,9 +27,9 @@ test('C2130648: Verify User login and log out', async ({
     await signinPage.clickLoginButton()
     await page.waitForURL(HOMEPAGE_PATH_DE)
 
-    await header.headerLoginButton.click()
     await toastMessage.assertToastInfoIsVisible()
     await toastMessage.clickToastMessageButton()
+    await header.headerLoginButton.click()
     await toastMessage.assertToastInfoNotVisible()
     await accountPage.assertLogoutButtonIsVisible()
     await accountPage.clickLogoutButton()
