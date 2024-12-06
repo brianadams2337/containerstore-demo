@@ -3,7 +3,8 @@ import {
   type RpcContext,
   rpcMethods,
   type Product,
-} from '@scayle/storefront-core'
+  unwrap,
+} from '@scayle/storefront-nuxt'
 
 export const getPromotionGiftProducts: RpcHandler<
   { variantIds: number[] },
@@ -12,16 +13,17 @@ export const getPromotionGiftProducts: RpcHandler<
   { variantIds },
   context: RpcContext,
 ) {
-  const variantDetails = await rpcMethods.getVariantById(
-    { ids: variantIds },
-    context,
+  const variantDetails = await unwrap(
+    rpcMethods.getVariantById({ ids: variantIds }, context),
   )
 
-  const uniqueProducts = await rpcMethods.getProductsByIds(
-    {
-      ids: variantDetails.map(({ productId }) => productId),
-    },
-    context,
+  const uniqueProducts = await unwrap(
+    rpcMethods.getProductsByIds(
+      {
+        ids: variantDetails.map(({ productId }) => productId),
+      },
+      context,
+    ),
   )
 
   return uniqueProducts
