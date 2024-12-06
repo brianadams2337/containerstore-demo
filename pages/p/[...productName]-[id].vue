@@ -114,7 +114,13 @@ import { useBasket, useProduct } from '#storefront/composables'
 import { useProductBaseInfo } from '~/composables/useProductBaseInfo'
 import { isBuyXGetYType } from '~/utils/promotion'
 import { useFavoriteStore } from '~/composables/useFavoriteStore'
-import { definePageMeta, useHead, useImage, useRoute } from '#imports'
+import {
+  createError,
+  definePageMeta,
+  useHead,
+  useImage,
+  useRoute,
+} from '#imports'
 import { useI18n } from '#i18n'
 import { PRODUCT_DETAIL_WITH_PARAMS } from '~/constants'
 import AsyncDataWrapper from '~/components/AsyncDataWrapper.vue'
@@ -167,9 +173,13 @@ const {
   `PDP-${productId.value}`,
 )
 
-whenever(error, () => {
-  throw error.value
-})
+whenever(
+  error,
+  (err) => {
+    throw createError({ ...err, fatal: true })
+  },
+  { immediate: true },
+)
 
 const {
   name,
