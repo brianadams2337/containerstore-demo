@@ -1,31 +1,14 @@
 import {
   type Price,
   type Product,
-  type Variant,
   getAttributeValueTuples,
   getFirstAttributeValue,
-  getLowestPrice,
 } from '@scayle/storefront-nuxt'
 import { getPrimaryImage } from './image'
 import type { ProductSibling } from '~/types/siblings'
 import type { Promotion } from '~/types/promotion'
 
 export { ProductImageType } from '@scayle/storefront-nuxt'
-
-export const getLowestPriceBetweenVariants = (product: Product) => {
-  return product.variants && getLowestPrice(product.variants)
-}
-
-export const getVariantWithLowestPrice = (
-  variants?: Variant[],
-): Variant | undefined => {
-  if (!variants?.length) {
-    return
-  }
-  return variants.reduce((m: Variant, x: Variant) =>
-    m.price.withoutTax < x.price.withoutTax ? m : x,
-  )
-}
 
 export const getPromotionIdFromProductAttributes = (product?: Product) => {
   if (!product) {

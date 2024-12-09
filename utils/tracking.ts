@@ -9,11 +9,8 @@ import {
   type ProductCategory,
   type Variant,
   type WishlistResponseData,
-  getAppliedReductionsByCategory,
+  type CentAmount,
   getFirstAttributeValue,
-  getLowestPrice,
-  getOriginalPrice,
-  getPrice,
 } from '@scayle/storefront-nuxt'
 import { isEqual } from './object'
 import { divideByHundred } from '~/utils/price'
@@ -79,13 +76,6 @@ export const mapProductToTrackingPayload = (
   variant?: Variant,
 ): ProductInfo => {
   const price = variant ? variant.price : product.priceRange?.min
-  const getFloatedReducedPriceForCategoryOrNull = (
-    price: Price,
-    type: 'sale' | 'campaign',
-  ) =>
-    divideByHundred(
-      getAppliedReductionsByCategory(price, type)[0]?.amount.absoluteWithTax,
-    ) || 0.0
 
   const itemBrand =
     getFirstAttributeValue(product.attributes, 'brand')?.label || ''
@@ -100,11 +90,8 @@ export const mapProductToTrackingPayload = (
     ...(price
       ? {
           price: divideByHundred(price.withoutTax),
-          sale_discount: getFloatedReducedPriceForCategoryOrNull(price, 'sale'),
-          campaign_discount: getFloatedReducedPriceForCategoryOrNull(
-            price,
-            'campaign',
-          ),
+          sale_discount: getDiscount(price, 'sale'),
+          campaign_discount: getDiscount(price, 'campaign'),
           original_price: divideByHundred(getOriginalPrice(price)),
           tax: divideByHundred(getOriginalPrice(price) - price.withoutTax),
         }
@@ -260,7 +247,7 @@ export const mapTrackingDataForEvent = (
       ...(value ? { value } : { value: 0 }),
       ecommerce: {
         items: items.map((payload) => {
-          const price = getLowestPrice(payload.product.variants || [])
+          const price = payload.product.priceRange?.min
           return {
             ...(currency ? { currency } : {}),
             ...mapProductToTrackingPayload(payload.product),
@@ -276,7 +263,7 @@ export const mapTrackingDataForEvent = (
       ...(pagePayload || {}),
       ecommerce: {
         items: payload.items.map((payload) => {
-          const price = getLowestPrice(payload.product.variants || [])
+          const price = payload.product.priceRange?.min
           return {
             ...(currency ? { currency } : {}),
             ...mapProductToTrackingPayload(payload.product),
@@ -318,8 +305,8 @@ export const mapTrackingDataForEvent = (
     const currency = payload.currencyCode
     const price =
       'variant' in payload && payload.variant
-        ? getPrice(payload.variant)
-        : getLowestPrice(payload.product.variants || [])
+        ? payload.variant.price
+        : payload.product.priceRange?.min
     data = {
       ecommerce: {
         items: [
@@ -588,4 +575,22 @@ export const getEmailHash = async (email: string | undefined) => {
   return Array.from(new Uint8Array(hashBuffer))
     .map((b) => b.toString(16).padStart(2, '0'))
     .join('')
+}
+
+const getOriginalPrice = (price: Price): CentAmount =>
+  price.appliedReductions.reduce(
+    (previousPrice, appliedReduction) =>
+      (previousPrice + appliedReduction.amount.absoluteWithTax) as CentAmount,
+    price.withTax,
+  )
+
+const getDiscount = (price: Price, type: 'sale' | 'campaign') => {
+  const reduction = price.appliedReductions.find(
+    (reduction) => reduction.category === type,
+  )
+  if (!reduction) {
+    return 0
+  }
+
+  return divideByHundred(reduction.amount.absoluteWithTax)
 }
