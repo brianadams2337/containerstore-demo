@@ -97,7 +97,7 @@
 
 <script setup lang="ts">
 import { whenever } from '@vueuse/core'
-import { useSeoMeta } from '@unhead/vue'
+import { useSeoMeta, useHead } from '@unhead/vue'
 import {
   computed,
   defineOptions,
@@ -106,6 +106,8 @@ import {
   defineAsyncComponent,
 } from 'vue'
 import type { Price, Variant } from '@scayle/storefront-nuxt'
+import { createError, useRoute } from 'nuxt/app'
+import { definePageMeta, useImage } from '#imports'
 import { useJsonld } from '~/composables/useJsonld'
 import { usePageState } from '~/composables/usePageState'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
@@ -114,13 +116,6 @@ import { useBasket, useProduct } from '#storefront/composables'
 import { useProductBaseInfo } from '~/composables/useProductBaseInfo'
 import { isBuyXGetYType } from '~/utils/promotion'
 import { useFavoriteStore } from '~/composables/useFavoriteStore'
-import {
-  createError,
-  definePageMeta,
-  useHead,
-  useImage,
-  useRoute,
-} from '#imports'
 import { useI18n } from '#i18n'
 import { PRODUCT_DETAIL_WITH_PARAMS } from '~/constants'
 import AsyncDataWrapper from '~/components/AsyncDataWrapper.vue'
