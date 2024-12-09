@@ -19,7 +19,7 @@
     <template #slide-in-actions>
       <FilterActions
         :are-filters-cleared="areFiltersCleared"
-        :unfiltered-count="unfilteredCount"
+        :filtered-product-count="filteredProductCount"
         @reset="resetFilters"
       />
     </template>
@@ -53,7 +53,7 @@ const {
   resetPriceFilter,
   resetFilters,
   resetFilter,
-  unfilteredCount,
+  filteredProductCount,
   areFiltersCleared,
 } = useFilter(currentCategoryId)
 </script>

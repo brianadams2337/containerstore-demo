@@ -15,7 +15,6 @@ const mocks = vi.hoisted(() => {
       trackFilterApply: vi.fn(),
       trackFilterFlyout: vi.fn(),
     },
-    useProductListFilter: { clearedPriceQuery: { value: {} } },
     useToast: { show: vi.fn() },
     useI18n: { t: vi.fn().mockImplementation((key) => key) },
   }
@@ -40,7 +39,7 @@ vi.mock('#storefront-product-listing', async () => {
 
   return {
     ...actual,
-    useProductListFilter: vi.fn().mockReturnValue(mocks.useProductListFilter),
+    useFiltersForListing: vi.fn(),
     useAppliedFilters: vi.fn().mockReturnValue(mocks.useAppliedFilters),
   }
 })

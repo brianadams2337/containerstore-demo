@@ -120,11 +120,11 @@
 
 <script setup lang="ts">
 import type { CentAmount, ProductSearchQuery } from '@scayle/storefront-nuxt'
+import type { RangeTuple } from '@scayle/storefront-product-listing'
 import type {
   BooleanFilterItemWithValues,
   FilterItemWithValues,
-  RangeTuple,
-} from '@scayle/storefront-product-listing'
+} from '@scayle/storefront-api'
 import SortSelection from '../sorting/SortSelection.vue'
 import FilterColorChip from './FilterColorChip.vue'
 import FilterGroup from './FilterGroup.vue'

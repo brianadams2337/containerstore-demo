@@ -261,6 +261,7 @@ const productInfo = computed(() => ({
   brand: brand.value,
   productDescription: description.value,
   variants: variants.value,
+  images: images.value,
 }))
 
 // SEO
@@ -268,7 +269,6 @@ const { canonicalLink, robots, title, productJsonLd, productBreadcrumbJsonLd } =
   useProductSeoData(
     breadcrumbs,
     { baseUrl: $config.public.baseUrl, fullPath: route.fullPath },
-    images,
     productInfo,
   )
 

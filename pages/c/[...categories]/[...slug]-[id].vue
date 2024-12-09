@@ -84,18 +84,23 @@ import {
   type Product,
   type Category,
 } from '@scayle/storefront-nuxt'
+import { useI18n } from 'vue-i18n'
 import { definePageMeta, useSeoMeta } from '#imports'
 import {
   useCurrentCategory,
   useTrackingEvents,
   usePageState,
-  useCategorySeoData,
   useJsonld,
+  useBreadcrumbs,
 } from '~/composables'
 import { createError } from '#app/composables/error'
 import { useRoute } from '#app/composables/router'
 import { getCategoryId } from '~/utils'
-import { categoryListingMetaData, PRODUCT_TILE_WITH_PARAMS } from '~/constants'
+import {
+  categoryListingMetaData,
+  PRODUCT_TILE_WITH_PARAMS,
+  PRODUCTS_PER_PAGE,
+} from '~/constants'
 import CMSCategoryData from '#storefront-cms/components/fetching/CMSCategoryData.vue'
 import CMSImage from '#storefront-cms/components/Image.vue'
 import CategorySideNavigation from '~/components/category/CategorySideNavigation.vue'
@@ -108,9 +113,17 @@ import ProductList from '~/components/productList/ProductList.vue'
 import FilterSlideIn from '~/components/filter/FilterSlideIn.vue'
 import FloatingContainer from '~/components/FloatingContainer.vue'
 import ScrollToTopButton from '~/components/ScrollToTopButton.vue'
-import { useProductsByCategory } from '#storefront-product-listing'
+import {
+  useProductListingSeoData,
+  useProductsForListing,
+  useAppliedFilters,
+  useProductListSort,
+} from '#storefront-product-listing'
+import { useNuxtApp } from '#app'
 
 const route = useRoute()
+const { $config } = useNuxtApp()
+const i18n = useI18n()
 
 const { pageState, setPageState } = usePageState()
 
@@ -125,6 +138,8 @@ const props = defineProps<{
 const { rootCategories, fetchingCategories, allCategories } = toRefs(props)
 
 const currentCategoryId = computed(() => getCategoryId(route.params))
+const { selectedSort } = useProductListSort(route)
+const { appliedFilter } = useAppliedFilters(route)
 
 const {
   products,
@@ -132,9 +147,13 @@ const {
   status: productsStatus,
   totalProductsCount,
   paginationOffset,
-} = useProductsByCategory(currentCategoryId, route, {
+} = useProductsForListing({
   params: {
+    categoryId: currentCategoryId.value,
     with: PRODUCT_TILE_WITH_PARAMS,
+    sort: selectedSort.value,
+    perPage: PRODUCTS_PER_PAGE,
+    where: appliedFilter.value,
   },
   fetchingOptions: { lazy: true },
 })
@@ -192,13 +211,19 @@ watch(
   (id) => id && setPageState('typeId', String(id)),
   { immediate: true },
 )
-const {
-  title,
-  metaDescription,
-  robots,
-  canonicalLink,
-  categoryBreadcrumbSchema,
-} = useCategorySeoData(currentCategory)
+
+const { getBreadcrumbsFromCategory } = useBreadcrumbs()
+const breadcrumbs = computed(() =>
+  currentCategory.value
+    ? getBreadcrumbsFromCategory(currentCategory.value, true)
+    : [],
+)
+
+const { title, robots, canonicalLink, categoryBreadcrumbSchema } =
+  useProductListingSeoData(breadcrumbs.value, route, {
+    baseUrl: $config.public.baseUrl,
+    fullPath: route.fullPath,
+  })
 
 useJsonld(() => categoryBreadcrumbSchema.value)
 
@@ -210,7 +235,14 @@ useHead(() => {
   }
   return {
     title: title.value,
-    meta: [{ name: 'description', content: metaDescription.value }],
+    meta: [
+      {
+        name: 'description',
+        content: i18n.t('plp.seo_description', {
+          category: currentCategory.value,
+        }),
+      },
+    ],
     link: canonicalLink.value,
   }
 })

@@ -45,7 +45,7 @@ import { useFilterSlideIn } from '~/composables'
 import { SFButton } from '#storefront-ui/components'
 
 const props = defineProps<{
-  unfilteredCount: number
+  filteredProductCount: number
   areFiltersCleared: boolean
 }>()
 
@@ -56,8 +56,10 @@ const { toggle } = useFilterSlideIn()
 defineEmits(['reset'])
 
 const showResultsLabel = computed(() => {
-  return props.unfilteredCount
-    ? $i18n.t('filter.show_results_count', { count: props.unfilteredCount })
+  return props.filteredProductCount
+    ? $i18n.t('filter.show_results_count', {
+        count: props.filteredProductCount,
+      })
     : $i18n.t('filter.show_results')
 })
 </script>

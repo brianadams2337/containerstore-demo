@@ -1,13 +1,12 @@
 import { extendPromise } from '@scayle/storefront-nuxt'
-import { type MaybeRefOrGetter, readonly, ref } from 'vue'
+import { type MaybeRefOrGetter, readonly, ref, toValue } from 'vue'
 import type { LocationQuery } from 'vue-router'
 import type { RangeTuple } from '@scayle/storefront-product-listing'
 import { useTrackingEvents, useToast } from '~/composables'
 import { useRoute, useRouter } from '#app/composables/router'
 import { useI18n } from '#i18n'
 import {
-  useProductListFilter,
-  getNewQueryFilters,
+  useFiltersForListing,
   getClearedFilterQueryByKey,
   createNewBoolAttributeQuery,
   createNewAttributeQuery,
@@ -28,9 +27,14 @@ export function useFilter(
 
   const sort = ref(route.query.sort)
 
-  const filterData = useProductListFilter(route, currentCategoryId, options)
-
-  const { clearedPriceQuery } = filterData
+  const filterData = useFiltersForListing({
+    params: {
+      categoryId: toValue(currentCategoryId),
+      where: appliedFilter.value,
+      includeSellableForFree: true,
+    },
+    fetchingOptions: options,
+  })
 
   const { trackFilterApply, trackFilterFlyout } = useTrackingEvents()
   const { t } = useI18n()
@@ -81,7 +85,7 @@ export function useFilter(
   }
 
   const resetPriceFilter = async () => {
-    await applyFilters(clearedPriceQuery.value)
+    await applyFilters(getClearedFilterQueryByKey(route, 'prices'))
   }
 
   const resetFilter = async (key: string) => {
@@ -107,7 +111,16 @@ export function useFilter(
     if (!appliedFiltersCount.value && !Object.keys(filter).length) {
       return
     }
-    const { page, ...query } = getNewQueryFilters(route, filter)
+    const query = {
+      sort: route.query.sort,
+      term: route.query.term,
+      ...filter,
+    }
+
+    if ('page' in query) {
+      delete query.page
+    }
+
     await router.push({ query })
 
     areFiltersUpdated.value = true
