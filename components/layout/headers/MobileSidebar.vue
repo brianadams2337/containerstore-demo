@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col overscroll-contain">
     <SearchInput
       class="mt-1"
       @click:result="$emit('close')"
