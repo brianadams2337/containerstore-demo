@@ -5860,10 +5860,10 @@ contentful-batch-libs@^9.4.1:
     lodash.clonedeep "^4.5.0"
     uuid "^9.0.1"
 
-contentful-export@7.21.4:
-  version "7.21.4"
-  resolved "https://registry.yarnpkg.com/contentful-export/-/contentful-export-7.21.4.tgz#189c97ecdd471190ff60828e8295ee49c3f325c1"
-  integrity sha512-+9P50RelUdIgdJw35FEwYOCmAqM8P0iUvEp01bmP3ZF5I8xSnwpGJqsdIgRdA8q+jJcdjq0nJeTOhKo4Gvk/uw==
+contentful-export@7.21.5:
+  version "7.21.5"
+  resolved "https://registry.yarnpkg.com/contentful-export/-/contentful-export-7.21.5.tgz#329011cf185042f8e00e31923483dafe89524324"
+  integrity sha512-Y7Zm1dx4fgwE/FE7a+im/st71CnQCETZX/QlxUFfRjtTL9+gnigeAqEb8srQkglWJj19RB56juXloAqDZIEnIQ==
   dependencies:
     axios "^1.7.8"
     bfj "^8.0.0"
@@ -5945,10 +5945,10 @@ contentful-sdk-core@^9.0.1:
   optionalDependencies:
     "@rollup/rollup-linux-x64-gnu" "^4.18.0"
 
-contentful@11.3.0:
-  version "11.3.0"
-  resolved "https://registry.yarnpkg.com/contentful/-/contentful-11.3.0.tgz#96817cc5213d9c22095ac1c0e7a9b3b46cf0f7af"
-  integrity sha512-xzQUtvKIWffs8BDwqNxl/iVw9fpTZI/autsUUQuqfjEe4Zh7V6+dgw8k9M+OaR9X4Ys01jXbTs9BcWBn5VTmlw==
+contentful@11.3.1:
+  version "11.3.1"
+  resolved "https://registry.yarnpkg.com/contentful/-/contentful-11.3.1.tgz#c477183cbd4de7decfed5992e96f0ef7455cb52d"
+  integrity sha512-9kVP4yZPbd9bfGZyvGdmztiHQ1pzZi/sK1uscM65kAYMpQgt0XNrxfO8JyiSrHGA6D+r/wyIxWeEQaEvoyi9GQ==
   dependencies:
     "@contentful/content-source-maps" "^0.11.6"
     "@contentful/rich-text-types" "^16.6.1"
