@@ -3511,10 +3511,10 @@
     uncrypto "^0.1.3"
     utility-types "^3.11.0"
 
-"@scayle/storefront-country-detection@0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-country-detection/-/storefront-country-detection-0.3.0.tgz#ff8ddd5d346177a665abbcf47ab39b195871387d"
-  integrity sha512-xVIFeLoWz+/iSz0+SEQz3dcIK7TUzGl36aNUzQX03MWgqcZOO7lbJ5sE1L2FXSDmw/7+UKNsY1tThYv7Qpjtew==
+"@scayle/storefront-country-detection@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-country-detection/-/storefront-country-detection-1.0.0.tgz#956b3d34b869e49c9b0488b47423ea404f9b0982"
+  integrity sha512-Sn9yW5pFED1mLq0+YUcInKrLEeJNCdA1kOKkbPGHXzjeYZ3CyY8xqueTpNJX0jmCW25Gr6FclnmunTu81nPsEQ==
 
 "@scayle/storefront-nuxt@8.1.3":
   version "8.1.3"
