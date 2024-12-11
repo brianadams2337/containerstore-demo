@@ -1,5 +1,5 @@
 import { extendPromise } from '@scayle/storefront-nuxt'
-import { type MaybeRefOrGetter, readonly, ref, toValue } from 'vue'
+import { computed, type MaybeRefOrGetter, readonly, ref, toValue } from 'vue'
 import type { LocationQuery } from 'vue-router'
 import type { RangeTuple } from '@scayle/storefront-product-listing'
 import { useTrackingEvents, useToast } from '~/composables'
@@ -27,12 +27,14 @@ export function useFilter(
 
   const sort = ref(route.query.sort)
 
+  const params = computed(() => ({
+    categoryId: toValue(currentCategoryId),
+    where: appliedFilter.value,
+    includeSellableForFree: true,
+  }))
+
   const filterData = useFiltersForListing({
-    params: {
-      categoryId: toValue(currentCategoryId),
-      where: appliedFilter.value,
-      includeSellableForFree: true,
-    },
+    params,
     fetchingOptions: options,
   })
 

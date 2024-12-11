@@ -1,5 +1,6 @@
 import { describe, it, vi, expect, beforeEach } from 'vitest'
 import type { CentAmount } from '@scayle/storefront-nuxt'
+import { ref } from 'vue'
 import { useFilter } from './useFilter'
 
 const mocks = vi.hoisted(() => {
@@ -15,6 +16,7 @@ const mocks = vi.hoisted(() => {
       trackFilterApply: vi.fn(),
       trackFilterFlyout: vi.fn(),
     },
+    useFiltersForListing: vi.fn(),
     useToast: { show: vi.fn() },
     useI18n: { t: vi.fn().mockImplementation((key) => key) },
   }
@@ -39,7 +41,7 @@ vi.mock('#storefront-product-listing', async () => {
 
   return {
     ...actual,
-    useFiltersForListing: vi.fn(),
+    useFiltersForListing: mocks.useFiltersForListing,
     useAppliedFilters: vi.fn().mockReturnValue(mocks.useAppliedFilters),
   }
 })
@@ -51,6 +53,32 @@ describe('useFilter', () => {
     mocks.route.query = {}
 
     vi.clearAllMocks()
+  })
+
+  it('should call filter fetch reactive', async () => {
+    const categoryId = ref(123)
+    useFilter(categoryId)
+
+    expect(
+      mocks.useFiltersForListing.mock.calls[0][0].params.value,
+    ).toStrictEqual({
+      categoryId: 123,
+      where: {
+        attributes: [],
+      },
+      includeSellableForFree: true,
+    })
+
+    categoryId.value = 321
+    expect(
+      mocks.useFiltersForListing.mock.calls[0][0].params.value,
+    ).toStrictEqual({
+      categoryId: 321,
+      where: {
+        attributes: [],
+      },
+      includeSellableForFree: true,
+    })
   })
 
   describe('onSlideInClose', () => {

@@ -141,6 +141,15 @@ const currentCategoryId = computed(() => getCategoryId(route.params))
 const { selectedSort } = useProductListSort(route)
 const { appliedFilter } = useAppliedFilters(route)
 
+const params = computed(() => ({
+  categoryId: currentCategoryId.value,
+  with: PRODUCT_TILE_WITH_PARAMS,
+  sort: selectedSort.value,
+  perPage: PRODUCTS_PER_PAGE,
+  where: appliedFilter.value,
+  page: Number(route.query.page) || 1,
+}))
+
 const {
   products,
   pagination,
@@ -148,13 +157,7 @@ const {
   totalProductsCount,
   paginationOffset,
 } = useProductsForListing({
-  params: {
-    categoryId: currentCategoryId.value,
-    with: PRODUCT_TILE_WITH_PARAMS,
-    sort: selectedSort.value,
-    perPage: PRODUCTS_PER_PAGE,
-    where: appliedFilter.value,
-  },
+  params,
   fetchingOptions: { lazy: true },
 })
 
