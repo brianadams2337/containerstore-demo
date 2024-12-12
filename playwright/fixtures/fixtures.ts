@@ -21,6 +21,7 @@ import { CheckoutPage } from '../page-objects/checkoutPage'
 import { CountryDetector } from '../page-objects/components/countryDetector'
 import { ShopSelector } from '../page-objects/components/shopSelector'
 import { StoreLocator } from '../page-objects/components/storeLocator'
+import { Sorting } from '../page-objects/components/sorting'
 
 interface Fixtures {
   homePage: HomePage
@@ -45,6 +46,7 @@ interface Fixtures {
   countryDetector: CountryDetector
   shopSelector: ShopSelector
   storeLocator: StoreLocator
+  sorting: Sorting
 }
 
 export type OutputMode = 'json' | 'html' | 'csv'
@@ -137,6 +139,10 @@ export const test = base.extend<Fixtures>({
   storeLocator: async ({ page }, use) => {
     const storeLocator = new StoreLocator(page)
     await use(storeLocator)
+  },
+  sorting: async ({ page }, use) => {
+    const sorting = new Sorting(page)
+    await use(sorting)
   },
 })
 export { expect } from '@playwright/test'

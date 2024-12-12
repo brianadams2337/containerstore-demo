@@ -4,6 +4,7 @@ import {
   PLP_PATH_SUBCATEGORY_LVL_1,
   PLP_PATH_SUBCATEGORY_LVL_2,
   PLP_PATH_MAIN_CATEGORY,
+  SORTING,
 } from '../support/constants'
 import { isMobile } from '../support/utils'
 
@@ -21,12 +22,13 @@ test('C2130723: Verify PLP standard components', async ({
   breadcrumb,
   page,
   filters,
+  sorting,
 }) => {
   await expect(async () => {
     if (isMobile(page)) {
       await expect(filters.filterButton.nth(1)).toBeVisible()
     } else {
-      await expect(productListingPage.sortDropdown.first()).toBeVisible()
+      await expect(sorting.sortDropdown.first()).toBeVisible()
       await expect(filters.filterButton.nth(0)).toBeVisible()
     }
     await expect(breadcrumb.breadcrumbCategoryLvl0).toBeVisible()
@@ -111,8 +113,8 @@ test('C2130727: Verify PLP Filters and Product Count', async ({
       await filters.filterPriceInput.nth(1).clear()
       await filters.filterPriceInput.nth(1).fill('100')
       await filters.filterPriceInput.nth(1).press('Enter')
-      await page.waitForLoadState('domcontentloaded')
     }).toPass()
+    await page.waitForTimeout(500)
     const currentProductCount = await breadcrumb.productCounter.textContent()
     expect(currentProductCount).not.toEqual(initialProductCount)
   })
@@ -313,4 +315,49 @@ test('Verify PLP Pagination setting filters', async ({
     const pageUrl = page.url()
     expect(pageUrl).not.toContain('?page=')
   })
+})
+
+test('Verify PLP Sorting', async ({
+  productListingPage,
+  baseURL,
+  countryDetector,
+  filters,
+  page,
+  sorting,
+}) => {
+  await productListingPage.visitPlpNoFilters(
+    PLP_PATH_MAIN_CATEGORY,
+    baseURL as string,
+  )
+  await countryDetector.closeModal()
+
+  if (isMobile(page)) {
+    await filters.filterButton.nth(1).click()
+    await sorting.applySorting(SORTING.priceAsc, 1)
+    await filters.closeFiltersButton.first().click()
+  } else {
+    await sorting.applySorting(SORTING.priceAsc, 0)
+  }
+  await page.waitForTimeout(500)
+  const pageUrlPriceAsc = page.url()
+  expect(pageUrlPriceAsc).toContain(SORTING.priceAsc)
+  const productIdPriceAsc = await productListingPage.productCard
+    .first()
+    .getAttribute('id')
+
+  if (isMobile(page)) {
+    await filters.filterButton.nth(1).click()
+    await sorting.applySorting(SORTING.priceDesc, 1)
+    await filters.closeFiltersButton.first().click()
+  } else {
+    await sorting.applySorting(SORTING.priceDesc, 0)
+  }
+  await page.waitForTimeout(500)
+  const pageUrl = page.url()
+  expect(pageUrl).toContain(SORTING.priceDesc)
+  const productIdPriceDesc = await productListingPage.productCard
+    .first()
+    .getAttribute('id')
+
+  expect(productIdPriceAsc).not.toEqual(productIdPriceDesc)
 })

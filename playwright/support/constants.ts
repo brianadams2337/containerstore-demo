@@ -160,3 +160,11 @@ export const LOCATION = {
   zipCode: '20095',
   zipCodeInvalid: '000000000',
 }
+
+export const SORTING = {
+  topSeller: 'top_seller',
+  dateNewest: 'date_newest',
+  priceDesc: 'price_desc',
+  priceAsc: 'price_asc',
+  reductionDesc: 'reduction_desc',
+}

@@ -4,7 +4,6 @@ export class ProductListingPage {
   readonly page: Page
   readonly wishlistButton: Locator
   readonly productTile: Locator
-  readonly sortDropdown: Locator
   readonly menuRootCategory: Locator
   readonly menuSubCategoryLvl1: Locator
   readonly menuSubCategoryLvl2: Locator
@@ -12,6 +11,7 @@ export class ProductListingPage {
   readonly removeFromWishlistButton: Locator
   readonly productSibling: Locator
   readonly productImage: Locator
+  readonly productCard: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -19,7 +19,6 @@ export class ProductListingPage {
       '[data-testid="add-item-to-wishlist-button"]',
     )
     this.productTile = page.locator('[id^="product-"]')
-    this.sortDropdown = page.getByTestId('sort-dropdown')
     this.menuRootCategory = page.getByTestId('root-category-0')
     this.menuSubCategoryLvl1 = page.getByTestId('sub-category-0')
     this.menuSubCategoryLvl2 = page
@@ -32,6 +31,7 @@ export class ProductListingPage {
     )
     this.productSibling = page.getByTestId('product-sibling')
     this.productImage = page.getByTestId('product-image')
+    this.productCard = page.locator('article[id^="product-"]')
   }
 
   async addProductToWishlist() {
