@@ -116,7 +116,7 @@ export function useItemsSlider(
 
   const scrollImageIntoView = (
     index: number,
-    scrollBehavior: 'smooth' | 'instant' | 'auto' = 'auto',
+    scrollBehavior: ScrollBehavior = 'auto',
   ) => {
     if (!sliderRef.value) {
       return

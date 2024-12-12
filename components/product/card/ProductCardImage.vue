@@ -1,5 +1,5 @@
 <template>
-  <LocalizedLink :to="link" raw>
+  <LocalizedLink :to="link" raw tabindex="-1">
     <ProductImage
       :image="image"
       :image-loading="imageLoading"

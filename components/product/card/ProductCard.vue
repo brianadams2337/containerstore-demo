@@ -1,9 +1,11 @@
 <template>
   <article
     :id="id"
+    ref="productCard"
     v-element-visibility="onVisible"
+    tabindex="0"
     data-testid="article"
-    class="group/product-card relative flex h-full flex-col"
+    class="group/product-card relative flex h-full flex-col rounded-lg"
     @mouseover="onMouseOver"
     @mouseleave="onMouseLeave"
   >
@@ -41,6 +43,7 @@
 
         <ProductCardImageSlider
           v-else
+          ref="slider"
           :alt="alt"
           :link="link"
           :is-product-hovered="isProductHovered"
@@ -64,9 +67,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, useTemplateRef } from 'vue'
 import type { Product } from '@scayle/storefront-nuxt'
 import { vElementVisibility } from '@vueuse/components'
+import { onKeyStroke, useFocus } from '@vueuse/core'
 import WishlistToggle from '../WishlistToggle.vue'
 import ProductCardImage from './ProductCardImage.vue'
 import ProductCardImageSlider from './imageSlider/ProductCardImageSlider.vue'
@@ -131,4 +135,26 @@ const emit = defineEmits<{
   'product-image:mouseleave': []
   'click:product': []
 }>()
+
+const productCard = useTemplateRef('productCard')
+const slider = useTemplateRef('slider')
+const { focused } = useFocus(productCard)
+const imageIndex = ref(0)
+
+onKeyStroke(
+  ['ArrowLeft', 'ArrowRight'],
+  (event: KeyboardEvent) => {
+    if (!focused.value || shouldShowSingleImage.value) {
+      return
+    }
+    event.preventDefault()
+    imageIndex.value =
+      event.code === 'ArrowLeft' ? imageIndex.value - 1 : imageIndex.value + 1
+    const imageCount = images.value.length
+    slider.value?.scrollImageIntoView(
+      ((imageIndex.value % imageCount) + imageCount) % imageCount,
+    )
+  },
+  { target: productCard },
+)
 </script>

@@ -1,5 +1,11 @@
 <template>
-  <SFItemsSlider class="size-full" :with-arrows="areArrowsShown">
+  <SFItemsSlider
+    ref="productImageSlider"
+    class="size-full"
+    :with-arrows="areArrowsShown"
+    tabindex="-1"
+    disable-focus
+  >
     <template #prev-button="{ prev, isPrevEnabled }">
       <ProductCardImageSliderButton
         class="top-[40%] bg-white hover:bg-white"
@@ -22,6 +28,7 @@
       :to="link"
       raw
       class="relative min-w-full snap-start snap-always"
+      tabindex="-1"
     >
       <ProductImage
         v-if="item"
@@ -44,7 +51,7 @@
 
 <script setup lang="ts">
 import type { ProductImage as ProductImageType } from '@scayle/storefront-nuxt'
-import { computed } from 'vue'
+import { computed, useTemplateRef } from 'vue'
 import ProductImage from '../../ProductImage.vue'
 import ProductCardImageSliderButton from './ProductCardImageSliderButton.vue'
 import { PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE } from '~/constants'
@@ -59,6 +66,18 @@ type Props = {
 }
 
 const props = defineProps<Props>()
+
+const slider = useTemplateRef('productImageSlider')
+const scrollImageIntoView = (
+  index: number,
+  scrollBehavior: ScrollBehavior = 'auto',
+) => {
+  slider.value?.scrollImageIntoView(index, scrollBehavior)
+}
+
+defineExpose({
+  scrollImageIntoView,
+})
 
 const areArrowsShown = computed(() => {
   if (import.meta.server) {

@@ -17,6 +17,7 @@
         },
         sliderClass,
       ]"
+      :tabindex="disableFocus ? -1 : 0"
       @scroll.passive="onScroll"
     >
       <slot />
@@ -81,6 +82,7 @@ type Props = {
   withArrows?: boolean
   hideDisabledArrows?: boolean
   mode?: 'horizontal' | 'vertical'
+  disableFocus?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
   container: false,
@@ -88,6 +90,7 @@ const props = withDefaults(defineProps<Props>(), {
   withArrows: false,
   sliderClass: '',
   hideDisabledArrows: false,
+  disableFocus: false,
   mode: 'horizontal',
 })
 
