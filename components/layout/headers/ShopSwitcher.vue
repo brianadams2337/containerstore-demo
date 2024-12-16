@@ -73,7 +73,7 @@
             :locale="locale"
             :is-current="locale === currentShop?.locale"
             :include-language="multipleShopsForCountry"
-            @click="changeShop(path)"
+            @click="changeShop(path, locale)"
           />
         </SFListboxOption>
       </SFListboxOptions>
@@ -138,12 +138,21 @@ const multipleShopsForCountry = computed(() =>
   hasMultipleShopsForCountry(availableShops.value),
 )
 
-const changeShop = (value?: string) => {
-  if (!value) {
+/**
+ * Updates the shop's locale to the specified value.
+ * If `locale` matches the current locale, the function will exit early.
+ */
+const changeShop = (path?: string, locale?: string) => {
+  if (!path) {
     throw new Error('Shop has no path configured')
   }
+
+  if (locale === currentShop.value.locale) {
+    return
+  }
+
   trackShopChange()
-  const newLocalePath = switchLocalePath(value).split('?')[0]
+  const newLocalePath = switchLocalePath(path).split('?')[0]
   window.location.replace(newLocalePath)
 }
 </script>
