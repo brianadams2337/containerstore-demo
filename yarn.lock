@@ -3559,10 +3559,10 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-product-detail/-/storefront-product-detail-1.0.0.tgz#2bb06b853f32ed67cef46fe93b6868e4676c980a"
   integrity sha512-K3CUOtqKqZmKb1jIgY0Wbc/iZyFVL9UM2DcTrkOHPBkvXxNk/26hyzCFnVhUkceuV2HYy0B8uwsc8a2aeSzWVA==
 
-"@scayle/storefront-product-listing@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-product-listing/-/storefront-product-listing-1.0.0.tgz#263c115f79c8b76d2bf29b16bdbbf84c1836f62e"
-  integrity sha512-N/ipt9bj2ucwPv64RLjINCo/Zmhjxnw34yM2wrC6fDHcjMZyqREvnyTObHE9ngX8ouJubeR0AaJuTW32QmfQPA==
+"@scayle/storefront-product-listing@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-product-listing/-/storefront-product-listing-1.1.0.tgz#ad4d8f147205ed01ad8dd9638a7efa39db4fd691"
+  integrity sha512-fxjYD/7q8D2hPKDcQp5CuB6qtMKn3fssJw/SjqnJ1TCmzuFv2VxzN8sLqU51KRyaseg7Aphj2iev8p21S/DZCg==
 
 "@scayle/unstorage-compression-driver@^0.2.0":
   version "0.2.1"
