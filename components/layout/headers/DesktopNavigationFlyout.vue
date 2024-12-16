@@ -12,7 +12,7 @@
         <NavigationTreeItem
           :navigation-item="columnItem"
           class="mb-2.5 !font-semi-bold-variable"
-          @click="$emit('close')"
+          @click="onItemClick(columnItem)"
         />
 
         <ul
@@ -22,7 +22,7 @@
           <li v-for="rowItem in columnItem.children" :key="rowItem.id">
             <NavigationTreeItem
               :navigation-item="rowItem"
-              @click="$emit('close')"
+              @click="onItemClick(rowItem)"
             />
           </li>
         </ul>
@@ -35,8 +35,15 @@
 import type { NavigationTreeItem as NavigationTreeItemType } from '@scayle/storefront-core'
 import NavigationTreeItem from '~/components/NavigationTreeItem.vue'
 
-defineEmits(['close'])
+const emit = defineEmits(['close'])
 defineProps<{
   item: NavigationTreeItemType
 }>()
+
+const onItemClick = (item: NavigationTreeItemType) => {
+  if (item?.customData?.disabledLink) {
+    return
+  }
+  emit('close')
+}
 </script>
