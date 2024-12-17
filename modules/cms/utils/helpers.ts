@@ -54,6 +54,7 @@ export const formattedProvidersKeys = formatter.format(
 )
 
 export const EMAIL_REGEX_PATTERN =
+  // eslint-disable-next-line sonarjs/slow-regex,sonarjs/regex-complexity
   /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/
 
 // This utility is needed because of the SB/contentful cannot have page/element with the

@@ -329,8 +329,8 @@ export default defineNuxtConfig({
        * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction#cache */
       cache: {
         auth: {
-          username: 'max', // Override: NUXT_STOREFRONT_CACHE_AUTH_USERNAME
-          password: 'mustermann', // Override: NUXT_STOREFRONT_CACHE_AUTH_PASSWORD
+          username: '', // Override: NUXT_STOREFRONT_CACHE_AUTH_USERNAME
+          password: '', // Override: NUXT_STOREFRONT_CACHE_AUTH_PASSWORD
         },
         enabled: true, // Override: NUXT_STOREFRONT_CACHE_ENABLED
       },

@@ -129,7 +129,7 @@ const selectedCountry = computed(() => {
   if (!currentShop.value) {
     return
   }
-  const [_, region] = currentShop.value.locale.split('-')
+  const [, region] = currentShop.value.locale.split('-')
 
   return region ? regionTranslator.value?.of(region) : null
 })

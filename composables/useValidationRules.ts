@@ -38,12 +38,14 @@ const validateName = (value: string | undefined): boolean => {
   }
   const hasValidUnicodeLetters = /^[\p{Letter}\s'-.]+$/u.test(value)
   const hasPunctuationStreak = /['-.]{2,}/.test(value)
+  // eslint-disable-next-line sonarjs/anchor-precedence
   const hasValidBoundaries = !/^['-.].*|['.-]$/.test(value)
   return hasValidUnicodeLetters && hasValidBoundaries && !hasPunctuationStreak
 }
 
 const toSnakeCase = (stringValue: string) =>
   stringValue
+    // eslint-disable-next-line sonarjs/concise-regex,sonarjs/slow-regex,sonarjs/regex-complexity
     .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
     ?.map((x) => x.toLowerCase())
     .join('_')

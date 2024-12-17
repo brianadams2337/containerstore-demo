@@ -7,4 +7,5 @@ export type CMSModuleOptions = {
   componentPrefix?: string
 } & (StoryblokModuleOptions | ContentfulModuleOptions)
 
+// eslint-disable-next-line sonarjs/redundant-type-aliases
 export type ModuleOptions = CMSModuleOptions

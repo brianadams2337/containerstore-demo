@@ -12,10 +12,13 @@ const createRule = ESLintUtils.RuleCreator(
 )
 
 function betterRelative(from, to) {
+  // eslint-disable-next-line sonarjs/single-char-in-character-classes
   const r = relative(from, to).replace(/\.[\w]+/g, '')
+
   if (r.startsWith('../')) {
     return r
   }
+
   return `./${r}`
 }
 
@@ -50,10 +53,13 @@ function createImportsListeners(context, imports, onImportEntry) {
 
     return _importsMap
   }
+
+  // eslint-disable-next-line sonarjs/cognitive-complexity
   function checkId(node) {
     if (typeof node.name !== 'string') {
       return
     }
+
     if (importedNames.has(node.name)) {
       return
     }
@@ -64,6 +70,7 @@ function createImportsListeners(context, imports, onImportEntry) {
     if (!item) {
       return
     }
+
     if (item.from === context.filename) {
       return
     }
@@ -325,14 +332,20 @@ const autoInsert = createRule({
           fix(fixer) {
             const resolvedFrom = createImportPaths(item, context)
             const body = context.sourceCode.ast.body
-            const importName =
-              item.name === '*'
-                ? `* as ${item.as}`
-                : item.name === 'default'
-                ? item.as
-                : !item.as || item.name === item.as
-                ? `{ ${item.name} }`
-                : `{ ${item.name} as ${item.as} }`
+
+            let importName = ''
+
+            if (item.name === '*') {
+              importName = `* as ${item.as}`
+            } else if (
+              item.name === 'default' ||
+              !item.as ||
+              item.name === item.as
+            ) {
+              importName = item.as || `{ ${item.name} }`
+            } else {
+              importName = `{ ${item.name} as ${item.as} }`
+            }
 
             return fixer.insertTextBefore(
               body[0],

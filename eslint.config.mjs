@@ -84,7 +84,7 @@ export default withNuxt(
       '@scayle/vue-composable/no-computed-after-await': 'error',
     },
   }),
-  // Custom Overrides: Storefront Boilerplate rule and config
+  // Custom Overrides: Storefront Boilerplate rules and config
   {
     // https://eslint.org/docs/latest/use/configure/ignore#ignorepatterns-in-config-files
     ignores: ['**/fixtures/**/*', 'playwright/'],
@@ -140,6 +140,21 @@ export default withNuxt(
     rules: {
       'import/newline-after-import': ['error', { count: 1 }],
       'import/order': 'error',
+    },
+  },
+  {
+    files: ['**/*.test.ts'],
+    rules: {
+      'sonarjs/pseudo-random': 'off',
+      'sonarjs/no-nested-functions': 'off',
+      'sonarjs/slow-regex': 'off',
+    },
+  },
+  // Disable specific linting for auto-generated types
+  {
+    files: ['**/types/contentful-defs.d.ts', '**/types/storyblok.d.ts'],
+    rules: {
+      'sonarjs/redundant-type-aliases': 'off',
     },
   },
 )

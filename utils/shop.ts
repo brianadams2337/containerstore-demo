@@ -18,8 +18,9 @@ export function hasMultipleShopsForCountry(
 ): boolean {
   const counts = shops.reduce(
     (acc, shop) => {
-      const [_language, countryCode] = shop.locale.split('-')
+      const [, countryCode] = shop.locale.split('-')
       acc[countryCode] = (acc[countryCode] ?? 0) + 1
+
       return acc
     },
     {} as Record<string, number>,

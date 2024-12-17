@@ -390,6 +390,7 @@ export type TrackAddToWishListParams = {
   pagePayload: BasicViewData
 }
 
+// eslint-disable-next-line sonarjs/redundant-type-aliases
 export type TrackRemoveFromWishListParams = TrackAddToWishListParams
 
 export type OrderItemVariant = {

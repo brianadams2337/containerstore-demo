@@ -63,15 +63,14 @@ import CMSText from './Text.vue'
 import CMSContentfulLink from './ContentfulLink.vue'
 import { NuxtPicture } from '#components'
 import { SFHeadline, SFButton } from '#storefront-ui/components'
+import { EMAIL_REGEX_PATTERN } from '~/modules/cms/utils/helpers'
 
 const props = defineProps<CMSParagraphProps>()
 
 const isCtaEmail = computed(() => {
   return String(props.blok?.fields.cta ?? '')
     .toLowerCase()
-    .match(
-      /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
-    )
+    .match(EMAIL_REGEX_PATTERN)
 })
 
 defineOptions({ name: 'CMSParagraph' })

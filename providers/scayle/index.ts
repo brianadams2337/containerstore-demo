@@ -48,9 +48,10 @@ export const getImage: ProviderGetImage = (
       }
     }
 
+  const resolvedOperations = operations ? `?${operations}` : ''
   const url = canParse(src)
-    ? src + (operations ? `?${operations}` : '')
-    : joinURL(baseURL, src + (operations ? `?${operations}` : ''))
+    ? src + resolvedOperations
+    : joinURL(baseURL, src + resolvedOperations)
   return {
     url,
   }

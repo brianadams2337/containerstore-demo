@@ -37,7 +37,7 @@ function getFlagEmoji(countryCode: string) {
 }
 
 const shopName = (locale: string) => {
-  const [_languageCode, regionCode] = locale.split('-')
+  const [, regionCode] = locale.split('-')
   const baseName = getShopName(locale, includeLanguage)
 
   if (includeFlag) {

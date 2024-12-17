@@ -113,6 +113,7 @@ const getClientLocation = (): Promise<GeolocationPosition> =>
       reject(new Error('Geolocation is not available.'))
     }
 
+    // eslint-disable-next-line sonarjs/no-intrusive-permissions
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         resolve(pos)

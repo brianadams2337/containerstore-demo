@@ -202,6 +202,7 @@ export const mapCustomerInfoToTrackingPayload = ({
 export const mapTrackingDataForEvent = (
   event: TrackingEvent,
   payload: TrackingPayload,
+  // eslint-disable-next-line sonarjs/cognitive-complexity
 ) => {
   let data = {}
   if (isPromotionTrackingEvent(event)) {

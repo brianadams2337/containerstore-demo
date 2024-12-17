@@ -46,7 +46,7 @@
     "@nuxt/test-utils": "3.15.1",
     "@nuxtjs/i18n": "8.5.6",
     "@nuxtjs/tailwindcss": "6.12.2",
-    "@scayle/eslint-config-storefront": "4.3.2",
+    "@scayle/eslint-config-storefront": "4.4.0",
     "@scayle/eslint-plugin-vue-composable": "0.2.1",
     "@scayle/prettier-config-storefront": "2.0.2",
     "@testing-library/jest-dom": "6.6.3",
@@ -161,6 +161,7 @@
     "@vue/compiler-sfc": "3.5.13",
     "@vue/compiler-core": "3.5.13",
     "@vue/compiler-ssr": "3.5.13",
-    "@vue/shared": "3.5.13"
+    "@vue/shared": "3.5.13",
+    "globals": "^15.13.0"
   }
 }
