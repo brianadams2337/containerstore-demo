@@ -56,7 +56,6 @@
 
 <script setup lang="ts">
 import { getFirstAttributeValue, type Variant } from '@scayle/storefront-nuxt'
-import { defineModel } from 'vue'
 import ProductPrice from './ProductPrice.vue'
 import { SFDropdown } from '#storefront-ui/components'
 import type { Promotion } from '~/types/promotion'

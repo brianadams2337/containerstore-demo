@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts" generic="Item extends { label: string; value: any }">
-import { computed, defineModel } from 'vue'
+import { computed } from 'vue'
 
 type Props = {
   value?: Item['value']

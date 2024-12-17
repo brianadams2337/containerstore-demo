@@ -49,7 +49,7 @@
 import { computed } from 'vue'
 import type { NavigationTreeItem } from '@scayle/storefront-nuxt'
 import Color from 'color'
-import { useRuntimeConfig } from '#imports'
+import { useRuntimeConfig } from '#app/nuxt'
 import type { LinkVariant } from '#storefront-ui'
 import { useRouteHelpers } from '~/composables'
 import { SFLink } from '#storefront-ui/components'

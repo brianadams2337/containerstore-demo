@@ -29,8 +29,6 @@
 </template>
 
 <script setup lang="ts" generic="T">
-import { defineModel } from 'vue'
-
 type Props = {
   id: string
   item?: T

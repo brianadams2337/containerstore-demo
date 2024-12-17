@@ -4,7 +4,6 @@
 
 <script setup lang="ts">
 import {
-  defineModel,
   getCurrentInstance,
   h,
   onMounted,

@@ -80,7 +80,7 @@
 </template>
 
 <script setup lang="ts" generic="T">
-import { defineModel, ref, useTemplateRef, watch } from 'vue'
+import { ref, useTemplateRef, watch } from 'vue'
 import { useEventListener } from '@vueuse/core'
 import { vPopover } from '../../directives/popover'
 import { useDefaultBreakpoints } from '#storefront-ui/composables'

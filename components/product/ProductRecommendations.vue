@@ -64,7 +64,7 @@ import ProductCard from './card/ProductCard.vue'
 import { getDeepestCategoryForTracking } from '~/utils/tracking'
 import { usePageState } from '~/composables/usePageState'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
-import { useRoute } from '#imports'
+import { useRoute } from '#app/composables/router'
 import { useProductsByIds } from '#storefront/composables'
 import {
   SFButton,

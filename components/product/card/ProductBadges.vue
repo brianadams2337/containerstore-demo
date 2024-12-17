@@ -8,7 +8,7 @@
 import { computed } from 'vue'
 import { type Product, getFirstAttributeValue } from '@scayle/storefront-nuxt'
 import ProductBadge from '../ProductBadge.vue'
-import { useNuxtApp } from '#imports'
+import { useNuxtApp } from '#app/nuxt'
 
 const props = defineProps<{ product: Product }>()
 

@@ -16,8 +16,6 @@
 </template>
 
 <script setup lang="ts" generic="T">
-import { defineModel } from 'vue'
-
 defineProps<{ item: T }>()
 
 const model = defineModel<T[]>()

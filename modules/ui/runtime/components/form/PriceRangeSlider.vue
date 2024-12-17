@@ -74,7 +74,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineModel } from 'vue'
+import { computed } from 'vue'
 // By default vue-slider-component does not support SSR.
 // We can work around this by importing js and styles separately
 // https://nightcatsama.github.io/vue-slider-component/#/?hash=server-side-rendering-ssr

@@ -94,7 +94,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineModel, computed, ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import type { Product, Variant } from '@scayle/storefront-nuxt'
 import { useElementVisibility } from '@vueuse/core'
 import SiblingSelection from '../SiblingSelection.vue'

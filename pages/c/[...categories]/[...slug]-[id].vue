@@ -70,6 +70,7 @@
 </template>
 
 <script setup lang="ts">
+import { useSeoMeta, useHead } from '@unhead/vue'
 import {
   onMounted,
   toRefs,
@@ -78,14 +79,13 @@ import {
   defineOptions,
   computed,
 } from 'vue'
-import { useHead } from '@unhead/vue'
 import {
   HttpStatusCode,
   type Product,
   type Category,
 } from '@scayle/storefront-nuxt'
 import { useI18n } from 'vue-i18n'
-import { definePageMeta, useSeoMeta } from '#imports'
+import { definePageMeta } from '#imports'
 import {
   useCurrentCategory,
   useTrackingEvents,

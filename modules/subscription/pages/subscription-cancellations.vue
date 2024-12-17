@@ -10,8 +10,10 @@
 </template>
 
 <script setup lang="ts">
+import { useHead } from '@unhead/vue'
 import useSubscriptionWebComponent from '../composables/useSubscriptionWebComponent'
-import { definePageMeta, useHead, useI18n } from '#imports'
+import { definePageMeta } from '#imports'
+import { useI18n } from '#i18n'
 import { useCurrentShop } from '#storefront/composables'
 import { SFPageContainer } from '#storefront-ui/components'
 

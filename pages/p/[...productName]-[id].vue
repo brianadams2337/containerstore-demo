@@ -106,7 +106,9 @@ import {
   defineAsyncComponent,
 } from 'vue'
 import type { Price, Variant } from '@scayle/storefront-nuxt'
-import { createError, useRoute } from 'nuxt/app'
+import { useNuxtApp } from '#app/nuxt'
+import { createError } from '#app/composables/error'
+import { useRoute } from '#app/composables/router'
 import { definePageMeta, useImage } from '#imports'
 import { useJsonld } from '~/composables/useJsonld'
 import { usePageState } from '~/composables/usePageState'
@@ -135,7 +137,6 @@ import {
   useProductSeoData,
 } from '#storefront-product-detail'
 import { useBreadcrumbs } from '~/composables'
-import { useNuxtApp } from '#app/nuxt'
 
 const LazyStoreLocatorSlideIn = defineAsyncComponent(
   () => import('~/components/locator/StoreLocatorSlideIn.vue'),

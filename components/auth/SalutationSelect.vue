@@ -15,9 +15,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineModel } from 'vue'
 import type { Gender } from '@scayle/storefront-nuxt'
-import { useNuxtApp } from '#app'
+import { useNuxtApp } from '#app/nuxt'
 
 const model = defineModel<Gender>({
   required: true,

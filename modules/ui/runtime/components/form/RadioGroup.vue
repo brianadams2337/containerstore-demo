@@ -14,7 +14,6 @@
 </template>
 
 <script setup lang="ts" generic="Item extends { label: string; value: any }">
-import { defineModel } from 'vue'
 import { SFRadioItem } from '#storefront-ui/components'
 
 defineProps<{ items?: Item[]; title?: string }>()

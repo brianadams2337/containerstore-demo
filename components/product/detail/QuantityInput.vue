@@ -29,7 +29,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineModel } from 'vue'
 import { SFButton } from '#storefront-ui/components'
 
 defineProps<{ maxQuantity: number }>()
