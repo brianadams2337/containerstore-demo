@@ -53,7 +53,7 @@ export const SEARCH_SUGGESTIONS = {
   searchTermBrand: 'adidas',
   plpUrl: /\/kleider/,
   searchUrl: /\/search/,
-  searchParamUrl: 'search?term=',
+  searchParamUrl: 'search?filters[term]=',
   searchExactProductID: '206140',
   pdpUrl: '/p/sneaker-adimatic-206140',
   moreButtonLabelDE: 'Mehr',
