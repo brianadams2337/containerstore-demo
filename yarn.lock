@@ -11715,7 +11715,12 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha512-4jbtZXNAsfZbAHiiqjLPBiCl16dES1zI4Hpzzxw61Tk+loF+sBDBKx1ICKKKwIqQ7M0mFn1TmkN7euSncWgHiQ==
 
-nuxi@3.16.0, nuxi@^3.15.0:
+nuxi@3.17.0:
+  version "3.17.0"
+  resolved "https://registry.yarnpkg.com/nuxi/-/nuxi-3.17.0.tgz#4e098673efb4779149f27266418df51f5d0853e1"
+  integrity sha512-umfGtKSIPGFDzp0qBSNA0wsigIBXqVe/pbZ5xmk5d+DTYaoPptcTxulfOYFWqMlIwyzsLMsBLrd8a6dIxEiw1g==
+
+nuxi@^3.15.0:
   version "3.16.0"
   resolved "https://registry.yarnpkg.com/nuxi/-/nuxi-3.16.0.tgz#6773ee9b3f128ed8ec46596a84bf64f2d7fc4889"
   integrity sha512-t9m4zTq44R0/icuzQXJHEyPRM3YbgTPMpytyb6YW2LOL/3mwZ3Bmte1FIlCoigzDvxBJRbcchZGc689+Syyu8w==
