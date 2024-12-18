@@ -88,7 +88,7 @@
           </div>
         </div>
       </SFButton>
-      <ScrollToTopButton class="!size-13" />
+      <ScrollToTopButton />
     </FloatingContainer>
   </Teleport>
 </template>

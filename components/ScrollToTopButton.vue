@@ -4,11 +4,11 @@
       v-if="!arrivedState.top"
       variant="secondary"
       v-bind="$attrs"
-      class="z-100 size-12 rounded-xl !p-0 !text-gray-400 transition-transform duration-150 ease-in-out md:size-9"
+      class="z-100 !size-13 rounded-xl !p-0 !text-gray-400 transition-transform duration-150 ease-in-out"
       @click="scrollToTop"
     >
       <template #icon>
-        <IconChevronUp class="size-5 md:size-3" />
+        <IconChevronUp class="size-5" />
       </template>
     </SFButton>
   </SFFadeInTransition>
