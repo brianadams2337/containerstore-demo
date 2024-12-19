@@ -2,87 +2,43 @@
 
 ## 1.6.0
 
-### Minor Changes
+### 🔥 Highlights
 
-- 497a998: **\[Search\]** Rename the search query parameter `term` to `filters[term]` to adhere to the established filter naming convention. This alignment ensures that search results only display filters matching the available products.
+#### 🎨 Introducing the new Header & Footer
 
-  To maintain existing functionality, all instances of accessing `route.query.term` need to be updated to `route.query.['filters[term]']`.
+Enjoy a refreshed look for SCAYLE Storefront, with greater flexibility at your fingertips!
+We've revamped both the header and footer design, as well as underlying technical implementation, now leveraging the [SCAYLE Navigation](https://scayle.dev/en/user-guide/shops/storefront/navigation) as its data source.
+This change brings enhanced consistency and opens up a new world of customization possibilities through the [SCAYLE Panel](https://scayle.dev/en/user-guide/shops/storefront/navigation).
+The design refresh is aligning the included header and footer with the updated design language introduced in the past months for the Product Listing Page and Product Detail Page.
+This results in a more cohesive shopping experience across SCAYLE Storefront, and provides a modern foundation and flexible for your design customizations.
 
-  Example:
+#### 🧰 Major update to Storefront SDKs v8
 
-  ```ts
-    //Before
-    const route = useRoute()
-    console.log(route.query.term)
+SCAYLE Storefront SDK v8 (`@scayle/storefront-nuxt@8.*`) delivers substantial enhancements to data handling, consistency, and overall developer experience.
+This release introduces a revamped response structure and error handling for basket data, along with streamlined return values for RPC composables for increased predictability.
+As part of our commitment to modernization, we have removed legacy code and deprecated features, including the `disableDefaultGetCachedDataOverride` setting and support for outdated approaches like faceted search (`useFacet`).
+A [comprehensive migration guide](https://scayle.dev/en/storefront-guide/support-and-resources/upgrade-guides/migrate-to-storefront-v8) is available to ensure a smooth transition to this enhanced version, offering improved performance, stability, and a future-proof foundation for your storefront integrations.
 
-    //After
-    const route = useRoute()
-    console.log(route.query.['filters[term]'])
-  ```
+#### 🏗️ Starting transition to Storefront Feature Packages
 
-  This was done in:
+We're increasing the flexibility and scalability of SCAYLE Storefront by transitioning to a new feature package architecture.
+This means breaking down core features into independent, manageable packages, giving tenants more control over upgrades and customization.
+Going forward, you can choose to adopt updates to specific functionalities without requiring a complete overhaul of your application.
+We've already begun this transition by migrating key Product Listing functionalities into the `@scayle/storefront-product-listing` package.
+Additionally, our newly developed "Country Detection" feature is now available as the `@scayle/storefront-country-detection` package, offering immediate access to this powerful functionality.
+This is just the first step towards our new architecture, and we'll be supplementing this approach with additional tooling and documentation in the future.
 
-  - `composables/useFilter.ts`
-  - `composables/useProductsSearch.ts`
-  - `composables/useRouteHelpers.ts`
-  - `pages/search.vue`
+### 🚀 Major Changes
 
-- 6fac437: **\[Storefront v8\]** We've revamped the response structure and error handling for basket data. Expect a more organized and consistent data format.
-- 6fac437: **\[Storefront v8\]** We're aligning the return values of RPC composables by replacing `pending` with `status` and `fetch` with `refresh`.
-- af5c502: **\[Header & Footer\]** We're introducing a new simplified header and footer design, which will be now used by default for the checkout page.
-- 83c162a: **\[Consistency\]** Refactor `<Listbox />` to manage the `isOpen` state without the use of `useState`. Instead of passing a name to `<ListboxButton />` and `<ListboxOption />`, they now require a function to toggle the open state.
-
-  Example:
-
-  ```html
-  // Before
-  <SFListbox>
-    <template #default="{ isOpen, list }">
-      <SFListboxButton :id="id" ref="button" :list-name="list">
-        ...
-      </SFListboxButton>
-    </template>
-    <template #options="{ isOpen, list, close }">
-      <SFListboxOptions>
-        <SFListboxOption :list-name="list"> ... </SFListboxOption>
-      </SFListboxOptions>
-    </template>
-  </SFListbox>
-  // After
-  <SFListbox>
-    <template #default="{ isOpen, toggleListboxOpen }">
-      <SFListboxButton
-        :id="id"
-        ref="button"
-        :toggleListboxOpen="toggleListboxOpen"
-      >
-        ...
-      </SFListboxButton>
-    </template>
-    <template #options="{ isOpen, toggleListboxOpen, close }">
-      <SFListboxOptions>
-        <SFListboxOption :toggleListboxOpen="toggleListboxOpen">
-          ...
-        </SFListboxOption>
-      </SFListboxOptions>
-    </template>
-  </SFListbox>
-  ```
-
-  Affected files:
-
-  - `components/layout/headers/ShopSwitcher.vue`
-
-- 4c8e6fb: **\[E2E\]** Refined tests to guarantee the reliability and correctness of pagination on Product Listing pages.
-- 7ce7785: **\[Dependencies\]** We've updated to `nuxt/i18n@9.x`. This introduces a new directory structure for localization to align with the upcoming changes of Nuxt 4.
-
-  - `lang/` directory has been renamed to `i18n/`
-  - `i18n.config.ts` has been moved to `i18n/i18n.config.ts`
-  - `lang/{locale}.json` translation files have been moved to `i18n/locales/{locale}.json`
-  - Removed preconfigured `i18n.langDir` option in `nuxt.config.ts` to use new default directory structure
-  - Additional details can be found in the[ official `nuxt/i18n` v8 to v9 migration guide](https://i18n.nuxtjs.org/docs/guide/migrating#upgrading-from-nuxtjsi18n-v8x-to-v9x)
-
-- bf0a1a0: **\[Storefront Feature Package\]** Replace the composable `useProductsByCategory` with `useProductsForListing` from `@scayle/storefront-product-listing`.
+- **\[Header & Footer \]** We've updated the design of the page header. It now uses the [SCAYLE Navigation](https://scayle.dev/en/user-guide/shops/storefront/navigation) as its data source.
+- **\[Header & Footer \]** We've updated the design of the page footer. It now uses the [SCAYLE Navigation](https://scayle.dev/en/user-guide/shops/storefront/navigation) as its data source.
+- **\[Header & Footer\]** We're introducing a new simplified header and footer design, which will be now used by default for the checkout page.
+- **\[Storefront v8\]** We've revamped the response structure and error handling for basket data. Expect a more organized and consistent data format.
+- **\[Storefront v8\]** Removed `disableDefaultGetCachedDataOverride` setting as this behavior is now the default.
+- **\[Storefront v8\]** We're aligning the return values of RPC composables by replacing `pending` with `status` and `fetch` with `refresh`.
+- **\[Storefront Feature Packages\]** Replace the composable `useProductListFilter` with `useFiltersForListing` as has been renamed in `@scayle/storefront-product-listing`.
+  We've also removed the return value `clearedPriceQuery`. Please use the utility function `getClearedFilterQueryByKey`.
+- **\[Storefront Feature Package\]** Replace the composable `useProductsByCategory` with `useProductsForListing` from `@scayle/storefront-product-listing`.
 
   - Previous implementation:
 
@@ -125,9 +81,7 @@
     })
     ```
 
-- 485dca6: **\[Middleware\]** We've refactored the `redirectTrailingSlash.global.ts` middleware to use a `slice()`-based approach instead of a RegEx-based approach for normalizing the URL path and added some test cases to verify its intended functionality, including some performance comparision tests with the former implementation.
-- 83c162a: **\[Performance\]** To avoid hydration mismatches, `<AccordionEntry>` no longer generates id's used for accessibility features on its own. It now requires the id being passed from the the parent component.
-- bf0a1a0: **\[Storefront Feature Packages\]** Replace the composable `useCategorySeoData` with `useProductListingSeoData` from `@scayle/storefront-product-listing`.
+- **\[Storefront Feature Packages\]** Replace the composable `useCategorySeoData` with `useProductListingSeoData` from `@scayle/storefront-product-listing`.
 
   - Previous implementation:
 
@@ -160,8 +114,88 @@
       })
     ```
 
-- f630f0a: **\[Tooling\]** We've introduced `@nuxt/fonts` to streamline web font integration. This change simplifies the process of adding and managing fonts in Storefront projects while improving performance:
+### 💅 Minor Changes
 
+- **\[Search\]** Rename the search query parameter `term` to `filters[term]` to adhere to the established filter naming convention.
+  This alignment ensures that search results only display filters matching the available products.
+  To maintain existing functionality, all instances of accessing `route.query.term` need to be updated to `route.query.['filters[term]']`.
+
+  - Example:
+
+    ```ts
+      //Before
+      const route = useRoute()
+      console.log(route.query.term)
+
+      //After
+      const route = useRoute()
+      console.log(route.query.['filters[term]'])
+    ```
+
+  - This was done in:
+    - `composables/useFilter.ts`
+    - `composables/useProductsSearch.ts`
+    - `composables/useRouteHelpers.ts`
+    - `pages/search.vue`
+
+- **\[Search\]** Use new filter query parameter name (`filters[term]`) for search term when updating current route.
+- **\[UI\]** The component prop type in the `Button.vue` and `Link.vue` components has been renamed to variant. This change prevents conflicts with the native HTML type attribute, enhancing code maintainability and reducing the risk of unexpected behavior.
+- **\[UI\]** Refactor `<Listbox />` to manage the `isOpen` state without the use of `useState`. Instead of passing a name to `<ListboxButton />` and `<ListboxOption />`, they now require a function to toggle the open state.
+
+  - Example:
+
+    ```html
+    // Before
+    <SFListbox>
+      <template #default="{ isOpen, list }">
+        <SFListboxButton :id="id" ref="button" :list-name="list">
+          ...
+        </SFListboxButton>
+      </template>
+      <template #options="{ isOpen, list, close }">
+        <SFListboxOptions>
+          <SFListboxOption :list-name="list"> ... </SFListboxOption>
+        </SFListboxOptions>
+      </template>
+    </SFListbox>
+    // After
+    <SFListbox>
+      <template #default="{ isOpen, toggleListboxOpen }">
+        <SFListboxButton
+          :id="id"
+          ref="button"
+          :toggleListboxOpen="toggleListboxOpen"
+        >
+          ...
+        </SFListboxButton>
+      </template>
+      <template #options="{ isOpen, toggleListboxOpen, close }">
+        <SFListboxOptions>
+          <SFListboxOption :toggleListboxOpen="toggleListboxOpen">
+            ...
+          </SFListboxOption>
+        </SFListboxOptions>
+      </template>
+    </SFListbox>
+    ```
+
+  - Affected files:
+    - `components/layout/headers/ShopSwitcher.vue`
+
+- **\[Accessibility\]** Improved keyboard navigation for better accessibility.
+  Users can now navigate directly to a PDP from a focused `ProductCard.vue` by simply pressing the `Enter` key.
+- **\[Accessibility\]** The `SFSwitch` component now provides improved touch interaction.
+  The `<label>` is now associated with the switch control using the appropriate `id` and `for` attributes.
+  This allows users to easily toggle the switch by simply tapping on the label, making it significantly easier to interact with on touch devices.
+- **\[Dependencies\]** We've updated to `nuxt/i18n@9.x`. This introduces a new directory structure for localization to align with the upcoming changes of Nuxt 4.
+  - `lang/` directory has been renamed to `i18n/`
+  - `i18n.config.ts` has been moved to `i18n/i18n.config.ts`
+  - `lang/{locale}.json` translation files have been moved to `i18n/locales/{locale}.json`
+  - Removed preconfigured `i18n.langDir` option in `nuxt.config.ts` to use new default directory structure
+  - Additional details can be found in the [official `nuxt/i18n` v8 to v9 migration guide](https://i18n.nuxtjs.org/docs/guide/migrating#upgrading-from-nuxtjsi18n-v8x-to-v9x)
+- **\[Middleware\]** We've refactored the `redirectTrailingSlash.global.ts` middleware to use a `slice()`-based approach instead of a RegEx-based approach for normalizing the URL path and added some test cases to verify its intended functionality, including some performance comparison tests with the former implementation.
+- **\[Performance\]** To avoid hydration mismatches, `<AccordionEntry>` no longer generates id's used for accessibility features on its own. It now requires the id being passed from the the parent component.
+- **\[Tooling\]** We've introduced `@nuxt/fonts` to streamline web font integration. This change simplifies the process of adding and managing fonts in Storefront projects while improving performance:
   - Zero-config setup for popular font providers (_Google Fonts, etc._)
   - Customization options with support for custom providers
   - Seamless Tailwind CSS Integration: Easily incorporate downloaded fonts into your Tailwind configuration for streamlined styling
@@ -169,127 +203,137 @@
   - Performance benefits:
     - Automatic font metric optimization (_using [Fontaine](https://github.com/unjs/fontaine) and [Capsize](https://github.com/seek-oss/capsize)_)
     - Build-time font caching
+- **\[Shop Switcher\]** Shop switching now defaults to redirecting users to the homepage of the newly selected shop. For cases where maintaining the current path is desired, the `<ShopSwitcher />` component now accepts a `switchToHomePage` prop. Setting this prop to `false` will preserve the current path during the shop switch.
 
-- 35696c1: **\[E2E\]** Implemented end-to-end testing for search suggestion tags and integrated tag-based filtering into the search results page.
-- 122f5ae: **\[E2E\]** Implemented an end-to-end test to verify the functionality of the shop selector, ensuring users can seamlessly switch between different shops within the platform.
-- 8b9452f: **\[Shop Switcher\]** Shop switching now defaults to redirecting users to the homepage of the newly selected shop. For cases where maintaining the current path is desired, the `<ShopSwitcher />` component now accepts a `switchToHomePage` prop. Setting this prop to `false` will preserve the current path during the shop switch.
+  ```html
+  <ShopSwitcher :switch-to-home-page="false" />
+  ```
 
-      ```html
-      <ShopSwitcher :switch-to-home-page="false" />
-      ```
-
-- d4e0b0a: **\[E2E\]** Implemented end-to-end tests to ensure the accuracy and functionality of the Store Locator feature.
-- 5a14ab1: **\[Header & Footer \]** We've updated the design of the page footer.
-- d68807f: **\[E2E\]** Implemented end-to-end tests to ensure accurate and reliable sorting functionality within Product Listing Pages (PLP)
-- 93fefe9: **\[E2E\]** Ensured Search page filters work correctly by adding end-to-end tests to verify the functionality of the filters on the Search page.
-- b46b6c6: **\[Product\]** Cleanup and simplify product include handling. All relevant includes are now defined in `constants/withParams.ts` and there are only two product includes defined now:
-
+- **\[Product\]** Cleanup and simplify product include handling. All relevant includes are now defined in `constants/withParams.ts` and there are only two product includes defined now:
   - `PRODUCT_DETAIL_WITH_PARAMS` which includes all attributes and advanced attributes to be used on the PDP and Basket
   - `PRODUCT_TILE_WITH_PARAMS` a smaller subset of data to be used for the `ProductCard` component (e.g. on the Product Listing Page, in the Search or for the Wishlist)
-
-- 6fac437: **\[Storefront v8\]** Removed `disableDefaultGetCachedDataOverride` setting as this behavior is now the default.
-- 624b7e1: **\[Runtime\]** Upgrade Dockerfiles to Node 22 which is now the official LTS Version for Node.
-- c08e64d: **\[Storefront Feature Packages\]** Update `@scayle/storefront-product-listing` to version `1.1.2`. This will fix a bug where the product count in `FilterActions.vue` got outdated when changing filters.
-- b90cad5: **\[Search\]** Use new filter query parameter name (`filters[term]`) for search term when updating current route.
-- 544ea3c: **\[Wishlist\]** We overhauled the wishlist implementation and design align with the new design language of the Storefront Boilerplate
-
+- **\[Wishlist\]** We overhauled the wishlist implementation and design align with the new design language of the Storefront Boilerplate
   - Removes unnecessary tracking from other pages
   - Improves grid handling for the Wishlist
   - Updates loading view of the Wishlist
   - Updates the Wishlist Header to be aligned with the Product Listing Page
+- **\[Runtime\]** Upgrade Dockerfiles to Node 22 which is now the official LTS Version for Node.
+- **\[E2E\]** Implemented end-to-end tests to ensure the accuracy and functionality of the Store Locator feature.
+- **\[E2E\]** Implemented end-to-end tests to ensure accurate and reliable sorting functionality within Product Listing Pages (PLP)
+- **\[E2E\]** Ensured Search page filters work correctly by adding end-to-end tests to verify the functionality of the filters on the Search page.
+- **\[E2E\]** Refined tests to guarantee the reliability and correctness of pagination on Product Listing pages.
+- **\[E2E\]** Implemented end-to-end testing for search suggestion tags and integrated tag-based filtering into the search results page.
+- **\[E2E\]** Implemented an end-to-end test to verify the functionality of the shop selector, ensuring users can seamlessly switch between different shops within the platform.
 
-- 66b2481: **\[UI\]** The component prop type in the `Button.vue` and `Link.vue` components has been renamed to variant. This change prevents conflicts with the native HTML type attribute, enhancing code maintainability and reducing the risk of unexpected behavior.
-- bf0a1a0: **\[Storefront Feature Packages\]** Replace the composable `useProductListFilter` with `useFiltersForListing` as it is renamed in `@scayle/storefront-product-listing` v0.6.0. Also removed the return value `clearedPriceQuery`. Please use the utility function `getClearedFilterQueryByKey`.
+### 🩹 Patch Changes
 
-### Patch Changes
+- **\[Header & Footer\]** Standardized footer logo dimensions by setting a fixed width (`w-7` / `28px`) to improve usability and prevent accidental clicks.
+- **\[Header & Footer\]** Adjusted footer spacing on mobile for a more visually appealing and consistent browsing experience.
+- **\[Header & Footer\]** Addressed an unexpected UI behavior in the `FooterLinkSection` component where the `expanded` state persisted after navigation.
+  This fix ensures the mobile footer menu reliably collapses when navigating to a different page.
+- **\[Search\]** Enhanced the search result page user experience for users on low-bandwidth or slow connections.
+  Instead of immediately displaying "0 hits" while results load, the page title now dynamically indicates loading progress, providing a clearer indication of ongoing search activity.
+- **\[PDP\]** Adjusted layout to prevent the best price from displaying on the same line as the current price, improving price clarity for users.
+- **\[PDP\]** Improved the visual presentation of tax information next to product prices.
+  Tax details are now displayed as superscript using the `<sup>` tag for consistent alignment and improved readability.
+- **\[PLP\]** Adjusted spacing of `ProductCardDetails`and `ProductPrice` within `ProductCardDetails` for both mobile and desktop view.
+- **\[PLP\]** Fixed overlapping sales badges on top of product name within `ProductCardDetails` by adjusting `ProductPrice` positioning for mobile view.
+- **\[PLP\]** Adjusted top padding for content containers when teaser images are absent.
+  This ensures optimal spacing between the breadcrumb navigation and the top of the page, enhancing visual clarity and user experience.
+- **\[PLP\]** This change addresses an issue where the price filter would incorrectly persist when the `SFPriceRangeSlider` was returned to its original minimum and maximum values.
+  Now, an event is emitted based on whether the provided event values match these filter limits (`resetPriceFilter` or `applyPriceFilter`).
+  This ensures that the filter is properly reset in all cases, even when the slider is moved back to its initial position.
+  Previously, this scenario would result in the filter remaining active (applied), as potentially indicated by the filter counter on the `FilterToggleButton`.
+- **\[Promotions\]** Only add alpha value to promotion color when alpha value was passed to `getBackgroundColorStyle()` and `getTextColorStyle()`.
+- **\[Promotions\]** Show `<VariantPicker>` for products with only one variant within `ProductPromotionSelectionModal.vue` and remove unused `ONE_SIZE_KEY` constant.
+- **\[Basket\]** Addressed a hydration mismatch issue in the `ProductCardBadgesFooter.vue` component that occurred when a product was already present in the user's basket.
+- **\[Basket\]** Removed the redundant flag `isLowestPreviousPriceActive`.
+  Price display logic now relies on the SCAYLE Core System, ensuring consistency and accuracy across all supported countries.
+  This change simplifies our codebase and removes the need for country-specific configurations related to lowest price display.
+- **\[Accessibility\]** The `primary` variant of `SFButton` now has its outline restored to improve its visibility for impaired users.
+- **\[Utilities\]** Moved `useDefaultBreakpoints` to the UI module.
+- **\[Utilities\]** `getBackgroundColorStyle()` and `getTextColorStyle()` now set alpha values when using the default color.
+  Previously no alpha value was set, resulting in the same color for text and background of promotion prices.
+- **\[Performance\]** Local history checks inside `GoBackLink.vue` now occur after hydration to prevent potential issues.
+- **\[Tooling\]** Added all Tailwind CSS duration classes to the safe list, ensuring complete availability.
+  This addresses an issue where durations defined with the `duration-{duration}` syntax were unintentionally purged.
+  Also consistency is improved by updating transition components to exclusively accept duration values defined within the Tailwind configuration.
+- **\[Tooling\]** Added a check for the existence of the `country_selection.override_codes.<...>` translation key before resolving its translation.
+  This prevents console warnings that were previously triggered when attempting to resolve nonexistent translation keys.
+- **\[Tooling\]** Added `resolutions` for `globals@15.x` in `package.json` to resolve issues with executing `eslint`.
+- **\[UI\]** Remove hardcoded ID from `ListBox` to avoid conflicts.
+- **\[UI\]** Fixed links not opening in a new tab when they should.
+- **\[UX\]** Show a `404` error on the PDP when the product cannot be found.
+- **\[UI\]** Fix button variant of `ShopSwitcherItem.vue` after the option was renamed in `Button.vue`.
+- **\[UX\]** Resolved an issue with the ShopSwitcher where clicking the currently selected locale would unnecessarily reload the page.
+- **\[E2E\]** Optimized end-to-end test suite for user login flow to prevent potential timeouts during authentication.
+- **\[E2E\]** The footer end-to-end test was enhanced to verify correct homepage redirection and scroll-to-top functionality upon clicking the footer logo.
+- **\[E2E\]** Updated end-to-end test for shop switching to enforce redirection to the Homepage after a user switches shops, ensuring alignment with the latest product requirements.
+  Previously, tests allowed for redirects to non-Homepage destinations, which is no longer desired behavior.
+- **\[E2E\]** Implemented end-to-end test for PLP filter functionality, ensuring product counter synchronization.
+- **\[E2E\]** Updated end-to-end tests to reflect Header and Footer modifications.
+- **\[E2E\]** Updated Footer Storefront guide URL constant value to match the updated page URL.
+- **\[E2E\]** The "Verify Shop Selector switch from non-Homepage" end-to-end test `(e2e-ShopSelector.spec.ts`) is experiencing timeouts specifically on Mobile Safari during CI execution.
+  This test is temporarily skipped for Mobile Safari to maintain a green CI pipeline. Investigation into the root cause of the timeouts is ongoing.
+- **\[E2E\]** Ensured the accuracy of end-to-end tests for the new footer following recent updates.
+- **\[E2E\]** Enhanced end-to-end tests for homepage links to ensure more robust validation.
+  The tests now perform a more accurate check of response codes and status.
+  Additionally, if the initial header request (`page.request.head()`) fails, a full page visit is attempted to provide more comprehensive error detection.
+- **\[E2E\]** Updated tests to match the rename of the search query parameter `term` to `filters[term]` to adhere to the established filter naming convention.
+  This alignment ensures that search results only display filters matching the available products.
+- **\[E2E\]** Refined end-to-end test to check the PLP applied Filters counter.
+- **\[E2E\]** Updated the end-to-end test for the "Happy Path" user journey to reflect recent changes made to the Header Search component.
+  This ensures continued, comprehensive testing of core search functionality after implementation updates.
+- **\[E2E\]** Improved the stability and consistency of tests for the Basket and Shop Selector features specifically targeting mobile Safari browser.
 
-- 77a366a: **\[Utilities\]** `getBackgroundColorStyle()` and `getTextColorStyle()` now set alpha values when using the default color. Previously no alpha value was set, resulting in the same color for text and background of promotion prices.
-- c76bc6d: **\[Accessibility\]** The `primary` variant of `SFButton` now has its outline restored to improve its visibility for impaired users.
-- - Added dependency `@nuxt/fonts@0.10.3`
-  - Added dependency `@scayle/storefront-country-detection@1.0.1`
-  - Added dependency `@scayle/storefront-product-detail@1.0.1`
-  - Added dependency `@scayle/storefront-product-listing@1.1.2`
-  - Added dependency `dompurify@3.2.3`
-  - Updated dependency `@contentful/live-preview@4.5.14` to `@contentful/live-preview@4.6.3`
-  - Updated dependency `@scayle/nuxt-opentelemetry@0.4.0` to `@scayle/nuxt-opentelemetry@0.5.3`
-  - Updated dependency `@scayle/omnichannel-nuxt@4.0.2` to `@scayle/omnichannel-nuxt@4.0.3`
-  - Updated dependency `@scayle/storefront-nuxt@7.95.0` to `@scayle/storefront-nuxt@8.2.0`
-  - Updated dependency `@storyblok/richtext@3.0.0` to `@storyblok/richtext@3.0.2`
-  - Updated dependency `@storyblok/vue@8.1.5` to `@storyblok/vue@8.1.6`
-  - Updated dependency `@vueuse/components@11.2.0` to `@vueuse/components@12.0.0`
-  - Updated dependency `@vueuse/core@11.2.0` to `@vueuse/core@12.0.0`
-  - Updated dependency `@vueuse/integrations@11.2.0` to `@vueuse/integrations@12.0.0`
-  - Updated dependency `@vueuse/nuxt@11.2.0` to `@vueuse/nuxt@12.0.0`
-  - Updated dependency `axios@1.7.7` to `axios@1.7.9`
-  - Updated dependency `contentful@11.2.1` to `contentful@11.3.3`
-  - Updated dependency `contentful-export@7.19.163` to `contentful-export@7.21.7`
-  - Updated dependency `dotenv@16.4.5` to `dotenv@16.4.7`
-  - Updated dependency `focus-trap@7.6.1` to `focus-trap@7.6.2`
-  - Updated dependency `knitwork@1.1.0` to `knitwork@1.2.0`
-  - Updated dependency `maska@3.0.3` to `maska@3.0.4`
-  - Updated dependency `nanoid@5.0.8` to `nanoid@5.0.9`
-  - Updated dependency `nuxi@3.15.0` to `nuxi@3.17.0`
-  - Updated dependency `storyblok-js-client@6.10.1` to `storyblok-js-client@6.10.4`
-  - Updated dependency `vue@3.5.12` to `vue@3.5.13`
-  - Updated dependency `@changesets/cli@2.27.9` to `@changesets/cli@2.27.11`
-  - Updated dependency `@eslint/eslintrc@3.1.0` to `@eslint/eslintrc@3.2.0`
-  - Updated dependency `@nuxt/eslint@0.6.1` to `@nuxt/eslint@0.7.3`
-  - Updated dependency `@nuxt/test-utils@3.14.4` to `@nuxt/test-utils@3.15.1`
-  - Updated dependency `@nuxtjs/i18n@8.5.6` to `@nuxtjs/i18n@9.1.1`
-  - Updated dependency `@scayle/eslint-config-storefront@4.3.2` to `@scayle/eslint-config-storefront@4.4.0`
-  - Updated dependency `@types/node@22.9.0` to `@types/node@22.10.2`
-  - Updated dependency `@typescript-eslint/scope-manager@8.14.0` to `@typescript-eslint/scope-manager@8.18.1`
-  - Updated dependency `@typescript-eslint/utils@8.14.0` to `@typescript-eslint/utils@8.18.1`
-  - Updated dependency `@vitest/coverage-v8@2.1.4` to `@vitest/coverage-v8@2.1.8`
-  - Updated dependency `eslint@9.14.0` to `eslint@9.17.0`
-  - Updated dependency `eslint-plugin-unimport@0.1.1` to `eslint-plugin-unimport@0.1.2`
-  - Updated dependency `happy-dom@15.11.4` to `happy-dom@15.11.7`
-  - Updated dependency `lint-staged@15.2.10` to `lint-staged@15.2.11`
-  - Updated dependency `nuxt@3.13.2` to `nuxt@3.14.1592`
-  - Updated dependency `nuxt-svgo@4.0.8` to `nuxt-svgo@4.0.9`
-  - Updated dependency `storyblok@3.35.0` to `storyblok@3.35.2`
-  - Updated dependency `tailwindcss@3.4.14` to `tailwindcss@3.4.17`
-  - Updated dependency `unimport@3.13.1` to `unimport@3.13.4`
-  - Updated dependency `vitest@2.1.4` to `vitest@2.1.8`
-- 87c540e: **\[E2E\]** The "Verify Shop Selector switch from non-Homepage" end-to-end test `(e2e-ShopSelector.spec.ts`) is experiencing timeouts specifically on Mobile Safari during CI execution. This test is temporarily skipped for Mobile Safari to maintain a green CI pipeline. Investigation into the root cause of the timeouts is ongoing.
-- e4a3a1b: **\[Basket\]** Removed the redundant flag `isLowestPreviousPriceActive`. Price display logic now relies on the SCAYLE Core System, ensuring consistency and accuracy across all supported countries. This change simplifies our codebase and removes the need for country-specific configurations related to lowest price display.
-- 485dca6: **\[Tooling\]** Added `resolutions` for `globals@15.x` in `package.json` to resolve issues with executing `eslint`.
-- 38b55df: **\[E2E\]** Improved the stability and consistency of tests for the Basket and Shop Selector features specifically targeting mobile Safari browser.
-- 1ce49d7: **\[Header & Footer\]** Adjusted footer spacing on mobile for a more visually appealing and consistent browsing experience.
-- 0c1bfc1: **\[Accessibility\]** Improved keyboard navigation for better accessibility. Users can now navigate directly to a PDP from a focused `ProductCard.vue` by simply pressing the `Enter` key.
-- 318ecde: **\[PLP\]** Adjusted top padding for content containers when teaser images are absent. This ensures optimal spacing between the breadcrumb navigation and the top of the page, enhancing visual clarity and user experience.
-- f4f5bc6: **\[E2E\]** Ensured the accuracy of end-to-end tests for the new footer following recent updates.
-- aeeb272: **\[Promotions\]** Show `<VariantPicker>` for products with only one variant within `ProductPromotionSelectionModal.vue` and remove unused `ONE_SIZE_KEY` constant.
-- 63e0445: **\[Accessibility\]** The `SFSwitch` component now provides improved touch interaction. The `<label>` is now associated with the switch control using the appropriate `id` and `for` attributes. This allows users to easily toggle the switch by simply tapping on the label, making it significantly easier to interact with on touch devices.
-- ce0d885: **\[E2E\]** Updated the end-to-end test for the "Happy Path" user journey to reflect recent changes made to the Header Search component. This ensures continued, comprehensive testing of core search functionality after implementation updates.
-- 554ac6d: **\[Utilities\]** Moved `useDefaultBreakpoints` to the UI module.
-- 93669ab: **\[UI\]** Fix button variant of `ShopSwitcherItem.vue` after the option was renamed in `Button.vue`.
-- 68f8f52: **\[E2E\]** Refined end-to-end test to check the PLP applied Filters counter.
-- 83c162a: **\[Performance\]** Local history checks inside `GoBackLink.vue` now occur after hydration to prevent potential issues.
-- 1af3b0b: **\[Tooling\]** Added all Tailwind CSS duration classes to the safe list, ensuring complete availability. This addresses an issue where durations defined with the `duration-{duration}` syntax were unintentionally purged. Also consistency is improved by updating transition components to exclusively accept duration values defined within the Tailwind configuration.
-- 388dbf4: **\[E2E\]** Optimized end-to-end test suite for user login flow to prevent potential timeouts during authentication.
-- 204027d: **\[E2E\]** The footer end-to-end test was enhanced to verify correct homepage redirection and scroll-to-top functionality upon clicking the footer logo.
-- 2fe82e7: **\[E2E\]** Updated end-to-end test for shop switching to enforce redirection to the Homepage after a user switches shops, ensuring alignment with the latest product requirements. Previously, tests allowed for redirects to non-Homepage destinations, which is no longer desired behavior.
-- e226e0a: **\[E2E\]** Implemented end-to-end test for PLP filter functionality, ensuring product counter synchronization.
-- 959a691: **\[UX\]** Resolved an issue with the ShopSwitcher where clicking the currently selected locale would unnecessarily reload the page.
-- 669191b: **\[E2E\]** Updated end-to-end tests to reflect Header and Footer modifications.
-- edb88b4: **\[PLP\]** Adjusted spacing of `ProductCardDetails`and `ProductPrice` within `ProductCardDetails` for both mobile and desktop view.
-- edb88b4: **\[PLP\]** Fixed overlapping sales badges on top of product name within `ProductCardDetails` by adjusting `ProductPrice` positioning for mobile view.
-- 5a3cc7c: **\[PDP\]** Improved the visual presentation of tax information next to product prices. Tax details are now displayed as superscript using the `<sup>` tag for consistent alignment and improved readability.
-- 004e8f2: **\[PLP\]** This change addresses an issue where the price filter would incorrectly persist when the `SFPriceRangeSlider` was returned to its original minimum and maximum values. Now, an event is emitted based on whether the provided event values match these filter limits (`resetPriceFilter` or `applyPriceFilter`). This ensures that the filter is properly reset in all cases, even when the slider is moved back to its initial position. Previously, this scenario would result in the filter remaining active (applied), as potentially indicated by the filter counter on the `FilterToggleButton`.
-- 5124e9a: **\[Header & Footer\]** Addressed an unexpected UI behavior in the `FooterLinkSection` component where the `expanded` state persisted after navigation. This fix ensures the mobile footer menu reliably collapses when navigating to a different page.
-- 89e5bac: **\[E2E\]** Enhanced end-to-end tests for homepage links to ensure more robust validation. The tests now perform a more accurate check of response codes and status. Additionally, if the initial header request (`page.request.head()`) fails, a full page visit is attempted to provide more comprehensive error detection.
-- a868ed1: **\[Promotions\]** Only add alpha value to promotion color when alpha value was passed to `getBackgroundColorStyle()` and `getTextColorStyle()`.
-- 5a3cc7c: **\[PDP\]** Adjusted layout to prevent the best price from displaying on the same line as the current price, improving price clarity for users.
-- 5a20d3d: **\[UI\]** Remove hardcoded ID from `ListBox` to avoid conflicts.
-- d305c9e: **\[Basket\]** Addressed a hydration mismatch issue in the `ProductCardBadgesFooter.vue` component that occurred when a product was already present in the user's basket.
-- 81463bb: **\[UI\]** Fixed links not opening in a new tab when they should.
-- f4de705: **\[E2E\]** Updated end-to-end test to match the rename of the search query parameter `term` to `filters[term]` to adhere to the established filter naming convention. This alignment ensures that search results only display filters matching the available products.
-- 352994a: **\[Tooling\]** Added a check for the existence of the `country_selection.override_codes.<...>` translation key before resolving its translation. This prevents console warnings that were previously triggered when attempting to resolve nonexistent translation keys.
-- aff4e95: **\[Search\]** Enhanced the search result page user experience for users on low-bandwidth or slow connections. Instead of immediately displaying "0 hits" while results load, the page title now dynamically indicates loading progress, providing a clearer indication of ongoing search activity.
-- 1ce49d7: **\[Header & Footer\]** Standardized footer logo dimensions by setting a fixed width (`w-7` / `28px`) to improve usability and prevent accidental clicks.
-- 6c02533: **\[UX\]** Show a `404` error on the PDP when the product cannot be found.
-- e9c4b4a: **\[E2E\]** Updated Footer Storefront guide URL constant value to match the updated page URL.
+### 🏡 Dependency Updates
+
+- Added dependency `@nuxt/fonts@0.10.3`
+- Added dependency `@scayle/storefront-country-detection@1.0.1`
+- Added dependency `@scayle/storefront-product-detail@1.0.1`
+- Added dependency `@scayle/storefront-product-listing@1.1.2`
+- Added dependency `dompurify@3.2.3`
+- Updated dependency `@contentful/live-preview@4.5.14` to `@contentful/live-preview@4.6.3`
+- Updated dependency `@scayle/nuxt-opentelemetry@0.4.0` to `@scayle/nuxt-opentelemetry@0.5.3`
+- Updated dependency `@scayle/omnichannel-nuxt@4.0.2` to `@scayle/omnichannel-nuxt@4.0.3`
+- Updated dependency `@scayle/storefront-nuxt@7.95.0` to `@scayle/storefront-nuxt@8.2.0`
+- Updated dependency `@storyblok/richtext@3.0.0` to `@storyblok/richtext@3.0.2`
+- Updated dependency `@storyblok/vue@8.1.5` to `@storyblok/vue@8.1.6`
+- Updated dependency `@vueuse/components@11.2.0` to `@vueuse/components@12.0.0`
+- Updated dependency `@vueuse/core@11.2.0` to `@vueuse/core@12.0.0`
+- Updated dependency `@vueuse/integrations@11.2.0` to `@vueuse/integrations@12.0.0`
+- Updated dependency `@vueuse/nuxt@11.2.0` to `@vueuse/nuxt@12.0.0`
+- Updated dependency `axios@1.7.7` to `axios@1.7.9`
+- Updated dependency `contentful@11.2.1` to `contentful@11.3.3`
+- Updated dependency `contentful-export@7.19.163` to `contentful-export@7.21.7`
+- Updated dependency `dotenv@16.4.5` to `dotenv@16.4.7`
+- Updated dependency `focus-trap@7.6.1` to `focus-trap@7.6.2`
+- Updated dependency `knitwork@1.1.0` to `knitwork@1.2.0`
+- Updated dependency `maska@3.0.3` to `maska@3.0.4`
+- Updated dependency `nanoid@5.0.8` to `nanoid@5.0.9`
+- Updated dependency `nuxi@3.15.0` to `nuxi@3.17.0`
+- Updated dependency `storyblok-js-client@6.10.1` to `storyblok-js-client@6.10.4`
+- Updated dependency `vue@3.5.12` to `vue@3.5.13`
+- Updated dependency `@changesets/cli@2.27.9` to `@changesets/cli@2.27.11`
+- Updated dependency `@eslint/eslintrc@3.1.0` to `@eslint/eslintrc@3.2.0`
+- Updated dependency `@nuxt/eslint@0.6.1` to `@nuxt/eslint@0.7.3`
+- Updated dependency `@nuxt/test-utils@3.14.4` to `@nuxt/test-utils@3.15.1`
+- Updated dependency `@nuxtjs/i18n@8.5.6` to `@nuxtjs/i18n@9.1.1`
+- Updated dependency `@scayle/eslint-config-storefront@4.3.2` to `@scayle/eslint-config-storefront@4.4.0`
+- Updated dependency `@types/node@22.9.0` to `@types/node@22.10.2`
+- Updated dependency `@typescript-eslint/scope-manager@8.14.0` to `@typescript-eslint/scope-manager@8.18.1`
+- Updated dependency `@typescript-eslint/utils@8.14.0` to `@typescript-eslint/utils@8.18.1`
+- Updated dependency `@vitest/coverage-v8@2.1.4` to `@vitest/coverage-v8@2.1.8`
+- Updated dependency `eslint@9.14.0` to `eslint@9.17.0`
+- Updated dependency `eslint-plugin-unimport@0.1.1` to `eslint-plugin-unimport@0.1.2`
+- Updated dependency `happy-dom@15.11.4` to `happy-dom@15.11.7`
+- Updated dependency `lint-staged@15.2.10` to `lint-staged@15.2.11`
+- Updated dependency `nuxt@3.13.2` to `nuxt@3.14.1592`
+- Updated dependency `nuxt-svgo@4.0.8` to `nuxt-svgo@4.0.9`
+- Updated dependency `storyblok@3.35.0` to `storyblok@3.35.2`
+- Updated dependency `tailwindcss@3.4.14` to `tailwindcss@3.4.17`
+- Updated dependency `unimport@3.13.1` to `unimport@3.13.4`
+- Updated dependency `vitest@2.1.4` to `vitest@2.1.8`
 
 ## 1.5.0
 
