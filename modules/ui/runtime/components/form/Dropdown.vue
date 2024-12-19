@@ -49,7 +49,7 @@
         :style="itemsContainerStyle"
       >
         <div
-          class="max-h-[330px] overflow-y-auto bg-white p-2 scrollbar-hide md:p-0"
+          class="max-h-[330px] overflow-y-auto bg-white p-2 scrollbar-hide md:p-px"
           :class="{
             'rounded-md': radius == 'md',
             'rounded-10': radius == 'lg',
