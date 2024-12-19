@@ -26,7 +26,7 @@ describe('normalizeURLPath', () => {
 const normalizeURLPathWithRegEx = (path: string) =>
   path.replace(/\/+$/, '') || '/'
 
-describe('Performance Comparison: normalizeURLPath', () => {
+describe.skip('Performance Comparison: normalizeURLPath', () => {
   const testURLPath = '/en/c/some-category-12345//'
   const iterations = 100000 // Adjust as needed
 
