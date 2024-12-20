@@ -26,7 +26,7 @@
       v-if="siblings.length > 2"
       :to="productRoute"
       raw
-      class="hidden text-sm font-medium text-gray-500 max-lg:block"
+      class="hidden size-12 content-center text-sm font-medium text-gray-500 max-lg:block"
     >
       + {{ siblings.length - 2 }}
     </SFLink>
@@ -34,7 +34,7 @@
       v-if="siblings.length > 3"
       :to="productRoute"
       raw
-      class="hidden text-sm font-medium text-gray-500 lg:max-xl:block"
+      class="hidden size-12 content-center text-sm font-medium text-gray-500 lg:max-xl:block"
     >
       + {{ siblings.length - 3 }}
     </SFLink>
@@ -42,7 +42,7 @@
       v-if="siblings.length > 4"
       :to="productRoute"
       raw
-      class="hidden text-sm font-medium text-gray-500 xl:block"
+      class="hidden size-12 content-center text-sm font-medium text-gray-500 xl:block"
     >
       + {{ siblings.length - 4 }}
     </SFLink>
