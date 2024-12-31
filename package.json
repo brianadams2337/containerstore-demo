@@ -68,7 +68,7 @@
     "eslint-plugin-unimport": "0.1.2",
     "eslint-plugin-vuejs-accessibility": "2.4.1",
     "fishery": "2.2.2",
-    "happy-dom": "16.2.0",
+    "happy-dom": "16.2.6",
     "lint-staged": "15.3.0",
     "nuxt": "3.14.1592",
     "nuxt-svgo": "4.0.9",
