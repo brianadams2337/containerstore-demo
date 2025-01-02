@@ -1,6 +1,6 @@
 <template>
   <button
-    class="absolute p-2 text-gray-400 shadow-secondary transition-transform duration-300 hover:text-gray-900 disabled:hover:translate-x-0 disabled:hover:text-gray-400"
+    class="absolute p-2 text-gray-400 transition-transform duration-300 focus-within:shadow-secondary hover:text-gray-900 focus-visible:shadow-outer-solid disabled:hover:translate-x-0 disabled:hover:text-gray-400"
     :class="{
       '-left-2 rounded-r-full hover:translate-x-1': isLeft,
       '-right-2 rounded-l-full hover:-translate-x-1': !isLeft,

@@ -38,7 +38,7 @@
           </LocalizedLink>
         </div>
         <div
-          class="flex flex-1 flex-col justify-center gap-2 overflow-hidden lg:flex-row lg:gap-0 lg:p-0"
+          class="flex flex-1 flex-col justify-center gap-2 overflow-hidden !p-1 lg:flex-row lg:gap-0 lg:p-0"
         >
           <div class="flex grow flex-col justify-between gap-2 lg:pt-4">
             <div>

@@ -506,6 +506,10 @@
     "previous_label": "Vorherigen Bild",
     "next_label": "Nächsten Bild"
   },
+  "slider": {
+    "previous_label": "Vorherige",
+    "next_label": "Nächste"
+  },
   "product_image": {
     "alt": "{brand}, {productName}, {colors}",
     "alt_with_image_index": "{alt}, Bild {index} von {total}",

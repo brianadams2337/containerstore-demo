@@ -502,8 +502,12 @@
     "page_title": "My subscriptions"
   },
   "image_slider": {
-    "previous_label": "previous image",
-    "next_label": "next image"
+    "previous_label": "Previous image",
+    "next_label": "Next image"
+  },
+  "slider": {
+    "previous_label": "Previous",
+    "next_label": "Next"
   },
   "product_image": {
     "alt": "{brand}, {productName}, {colors}",

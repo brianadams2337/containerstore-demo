@@ -43,7 +43,7 @@
             v-if="allCategories.length"
             :all-categories="allCategories"
             :current-category="currentCategory"
-            class="my-3.5 md:hidden"
+            class="mb-3.5 mt-2.5 md:hidden"
           />
           <div class="px-4 md:hidden">
             <FilterToggleButton :label="$t('filter.filters_sorting')" />

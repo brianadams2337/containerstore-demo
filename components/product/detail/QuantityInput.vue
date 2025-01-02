@@ -13,7 +13,7 @@
       type="number"
       readonly
       :value="quantity"
-      class="mx-2 min-w-[2ch] max-w-[3ch] select-none text-center text-base font-semi-bold-variable tabular-nums outline-none focus:border-transparent focus:ring-0"
+      class="mx-2 min-w-[2ch] max-w-[3ch] select-none text-center text-base font-semi-bold-variable tabular-nums focus:border-transparent focus:ring-0"
       data-testid="quantity-value"
     />
     <SFButton

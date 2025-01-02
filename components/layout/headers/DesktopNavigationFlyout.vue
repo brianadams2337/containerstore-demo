@@ -11,7 +11,7 @@
       <li>
         <NavigationTreeItem
           :navigation-item="columnItem"
-          class="mb-2.5 !font-semi-bold-variable"
+          class="mb-2.5 px-1.5 !font-semi-bold-variable"
           @click="onItemClick(columnItem)"
         />
 
@@ -22,6 +22,7 @@
           <li v-for="rowItem in columnItem.children" :key="rowItem.id">
             <NavigationTreeItem
               :navigation-item="rowItem"
+              class="px-1.5"
               @click="onItemClick(rowItem)"
             />
           </li>

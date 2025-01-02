@@ -20,7 +20,7 @@
     <template #item="{ item, selectItem }">
       <button
         :disabled="item.stock.quantity === 0"
-        class="group flex w-full cursor-pointer items-center justify-between space-x-2 border-b border-gray-200 p-2 transition-all last-of-type:border-none hover:bg-gray-200"
+        class="group flex w-full cursor-pointer items-center justify-between space-x-2 border-b border-gray-200 p-2 transition-all first-of-type:rounded-t-lg last-of-type:rounded-b-lg last-of-type:border-none hover:bg-gray-200 focus-visible:shadow-inner-solid-sm"
         :data-testid="`variant-option-${item.id}`"
         @click="selectItem(item)"
       >

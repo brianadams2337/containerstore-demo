@@ -4,7 +4,7 @@
       v-for="({ id, name, image, colors }, index) in itemsToShow"
       :key="id"
       :to="getProductDetailRoute(id, name)"
-      class="relative mr-2 flex size-12 items-center justify-center overflow-hidden rounded-md bg-gray-200"
+      class="relative mr-2 flex size-12 items-center justify-center overflow-hidden rounded-md bg-gray-200 focus-visible:shadow-inner-solid-sm"
       :class="classForIndex(index)"
       data-testid="product-sibling"
     >

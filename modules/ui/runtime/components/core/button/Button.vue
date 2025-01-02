@@ -16,7 +16,7 @@
         isTertiary,
       'rounded-10 bg-accent font-semibold text-white hover:bg-accent-600 hover:text-white':
         isAccent,
-      'aspect-square bg-white !p-2 text-gray-400 shadow-secondary transition-transform duration-300 hover:bg-white hover:text-gray-900 disabled:border-transparent disabled:hover:text-gray-400':
+      'aspect-square bg-white !p-2 text-gray-400 outline-0 transition-transform duration-300 focus-within:shadow-secondary hover:bg-white hover:text-gray-900 focus-visible:shadow-inner-solid-sm disabled:border-transparent disabled:hover:text-gray-400':
         isSlider,
       'text-primary hover:text-primary-400': isRaw,
       'w-full': isFullWidth,

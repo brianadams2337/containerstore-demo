@@ -3,7 +3,7 @@
     variant="raw"
     size="sm"
     is-uppercase
-    class="h-13 rounded-none border-l border-l-primary/25 px-3 py-2 font-semibold text-white hover:text-white"
+    class="h-13 rounded-none border-l border-l-primary/25 px-3 py-2 font-semibold text-white -outline-offset-5 hover:text-white focus-visible:shadow-inner-solid"
     :class="{ 'bg-primary/10': isPromotionListShown }"
     @click="togglePromotionList()"
   >
