@@ -47,7 +47,7 @@ describe('usePagination', () => {
    */
   it.each([
     [
-      1,
+      '1',
       [
         { number: 2, to: { path: '/', query: { page: '2' } }, isActive: false },
         { number: 3, to: { path: '/', query: { page: '3' } }, isActive: false },
@@ -56,7 +56,7 @@ describe('usePagination', () => {
       true,
     ],
     [
-      2,
+      '2',
       [
         { number: 2, to: { path: '/', query: { page: '2' } }, isActive: true },
         { number: 3, to: { path: '/', query: { page: '3' } }, isActive: false },
@@ -65,7 +65,7 @@ describe('usePagination', () => {
       true,
     ],
     [
-      3,
+      '3',
       [
         { number: 2, to: { path: '/', query: { page: '2' } }, isActive: false },
         { number: 3, to: { path: '/', query: { page: '3' } }, isActive: true },
@@ -75,7 +75,7 @@ describe('usePagination', () => {
       true,
     ],
     [
-      4,
+      '4',
       [
         { number: 3, to: { path: '/', query: { page: '3' } }, isActive: false },
         { number: 4, to: { path: '/', query: { page: '4' } }, isActive: true },
@@ -85,7 +85,7 @@ describe('usePagination', () => {
       true,
     ],
     [
-      5,
+      '5',
       [
         { number: 4, to: { path: '/', query: { page: '4' } }, isActive: false },
         { number: 5, to: { path: '/', query: { page: '5' } }, isActive: true },
@@ -95,7 +95,7 @@ describe('usePagination', () => {
       true,
     ],
     [
-      6,
+      '6',
       [
         { number: 5, to: { path: '/', query: { page: '5' } }, isActive: false },
         { number: 6, to: { path: '/', query: { page: '6' } }, isActive: true },
@@ -105,7 +105,7 @@ describe('usePagination', () => {
       false,
     ],
     [
-      7,
+      '7',
       [
         { number: 6, to: { path: '/', query: { page: '6' } }, isActive: false },
         { number: 7, to: { path: '/', query: { page: '7' } }, isActive: true },
@@ -114,13 +114,22 @@ describe('usePagination', () => {
       false,
     ],
     [
-      8,
+      '8',
       [
         { number: 6, to: { path: '/', query: { page: '6' } }, isActive: false },
         { number: 7, to: { path: '/', query: { page: '7' } }, isActive: false },
       ],
       true,
       false,
+    ],
+    [
+      '2.0',
+      [
+        { number: 2, to: { path: '/', query: { page: '2' } }, isActive: true },
+        { number: 3, to: { path: '/', query: { page: '3' } }, isActive: false },
+      ],
+      false,
+      true,
     ],
   ])(
     'should show correct limited pages for page %s',
@@ -140,7 +149,7 @@ describe('usePagination', () => {
   )
 
   it('should allow navigating left', () => {
-    mocks.route.query = { page: 2 }
+    mocks.route.query = { page: '2' }
 
     const { canNavigateLeft } = usePagination({
       visiblePageNumbers: ref(6),
@@ -150,7 +159,7 @@ describe('usePagination', () => {
   })
 
   it('should not allow navigating left', () => {
-    mocks.route.query = { page: 1 }
+    mocks.route.query = { page: '1' }
 
     const { canNavigateLeft } = usePagination({
       visiblePageNumbers: ref(6),
@@ -159,7 +168,7 @@ describe('usePagination', () => {
     expect(canNavigateLeft.value).toBeFalsy()
   })
   it('should allow navigating right', () => {
-    mocks.route.query = { page: 9 }
+    mocks.route.query = { page: '9' }
 
     const { canNavigateRight } = usePagination({
       visiblePageNumbers: ref(6),
@@ -168,7 +177,7 @@ describe('usePagination', () => {
     expect(canNavigateRight.value).toBeTruthy()
   })
   it('should not allow navigating right', () => {
-    mocks.route.query = { page: 10 }
+    mocks.route.query = { page: '10' }
 
     const { canNavigateRight } = usePagination({
       visiblePageNumbers: ref(6),
@@ -178,7 +187,7 @@ describe('usePagination', () => {
   })
 
   it('should have correct next and previous page', () => {
-    mocks.route.query = { page: 8 }
+    mocks.route.query = { page: '8' }
 
     const { nextPage, previousPage } = usePagination({
       visiblePageNumbers: ref(6),
@@ -193,6 +202,49 @@ describe('usePagination', () => {
       number: 7,
       to: { path: '/', query: { page: '7' } },
       isActive: false,
+    })
+  })
+  it.each([
+    [
+      '-1',
+      [
+        { number: 2, to: { path: '/', query: { page: '2' } }, isActive: false },
+        { number: 3, to: { path: '/', query: { page: '3' } }, isActive: false },
+      ],
+    ],
+    [
+      '0',
+      [
+        { number: 2, to: { path: '/', query: { page: '2' } }, isActive: false },
+        { number: 3, to: { path: '/', query: { page: '3' } }, isActive: false },
+      ],
+    ],
+    [
+      'x',
+      [
+        { number: 2, to: { path: '/', query: { page: '2' } }, isActive: false },
+        { number: 3, to: { path: '/', query: { page: '3' } }, isActive: false },
+      ],
+    ],
+    [
+      '2.5',
+      [
+        { number: 2, to: { path: '/', query: { page: '2' } }, isActive: false },
+        { number: 3, to: { path: '/', query: { page: '3' } }, isActive: false },
+      ],
+    ],
+  ])('%s should fallback to first page', (page, expectedPages) => {
+    mocks.route.query = { page }
+
+    const { limitedPages, firstPage } = usePagination({
+      visiblePageNumbers: ref(1),
+      totalPageCount: ref(3),
+    })
+    expect(limitedPages.value).toStrictEqual(expectedPages)
+    expect(firstPage.value).toStrictEqual({
+      number: 1,
+      to: { path: '/', query: {} },
+      isActive: true,
     })
   })
 })
