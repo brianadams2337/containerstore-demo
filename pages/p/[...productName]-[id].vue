@@ -18,6 +18,7 @@
           <div class="max-md:px-5">
             <div
               class="truncate font-semi-bold-variable text-gray-900"
+              :title="brand"
               data-testid="pdp-product-brand"
             >
               {{ brand }}
@@ -28,7 +29,7 @@
               data-testid="pdp-product-name"
               tag="h1"
             >
-              <span class="truncate">
+              <span class="truncate" :title="name">
                 {{ name }}
               </span>
             </SFHeadline>
