@@ -15,7 +15,7 @@
             class="mb-8 hidden max-md:px-5 md:block"
             :product-categories="longestCategoryList"
           />
-          <div class="max-md:px-5">
+          <h1 class="max-md:px-5">
             <div
               class="truncate font-semi-bold-variable text-gray-900"
               :title="brand"
@@ -27,13 +27,12 @@
               size="lg"
               class="text-md !font-normal text-gray-600 md:text-lg"
               data-testid="pdp-product-name"
-              tag="h1"
             >
               <span class="truncate" :title="name">
                 {{ name }}
               </span>
             </SFHeadline>
-          </div>
+          </h1>
 
           <div class="flex flex-col max-md:px-5 md:flex-col-reverse">
             <ProductPrice
@@ -88,7 +87,13 @@
         class="max-md:px-5"
         :product-ids="recommendedProductIds"
         :title="$t('global.product_recommendation')"
-      />
+      >
+        <template #header="{ title: recommendationTitle }">
+          <h2 class="mb-6 text-2xl font-medium text-gray-900 md:px-2">
+            {{ recommendationTitle }}
+          </h2>
+        </template>
+      </ProductRecommendations>
     </div>
     <template #loading>
       <ProductDetailPageLoadingState />

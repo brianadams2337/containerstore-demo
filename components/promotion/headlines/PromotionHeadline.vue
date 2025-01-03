@@ -1,12 +1,12 @@
 <template>
-  <h1 class="mr-1 flex flex-wrap items-center text-white" :class="coreClasses">
+  <div class="mr-1 flex flex-wrap items-center text-white" :class="coreClasses">
     <span class="mr-2 font-bold uppercase" :class="offerTextClass">
       {{ headline.offerText }}
     </span>
     <span class="text-xs" :class="conditionTextClass">
       {{ headline.conditionText }}
     </span>
-  </h1>
+  </div>
 </template>
 
 <script setup lang="ts">

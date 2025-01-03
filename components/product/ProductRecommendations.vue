@@ -1,9 +1,11 @@
 <template>
   <SFItemsSlider with-arrows mode="horizontal">
     <template #header>
-      <div class="mb-6 text-2xl font-medium text-gray-900 md:px-2">
-        {{ title }}
-      </div>
+      <slot name="header" :title="title">
+        <div class="mb-6 text-2xl font-medium text-gray-900 md:px-2">
+          {{ title }}
+        </div>
+      </slot>
     </template>
     <template
       #arrows="{ isPrevEnabled, isNextEnabled, prev, next, isScrollable }"

@@ -4,8 +4,9 @@
     <SFPageContainer>
       <div class="flex flex-col md:flex-row">
         <aside
+          v-if="!isAccountPage"
           class="mt-6 w-full pb-10 md:mt-0 md:w-1/3 lg:w-1/4"
-          :class="{ 'hidden md:block': route.params.id || isAccountPage }"
+          :class="{ 'hidden md:block': route.params.id }"
         >
           <AsyncDataWrapper :status="status">
             <OrderOverviewHeader :orders-count="orders.length" />

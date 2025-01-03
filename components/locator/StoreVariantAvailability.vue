@@ -24,9 +24,9 @@
       </div>
     </div>
     <div v-else>
-      <p class="font-bold text-black">
+      <h2 class="font-bold text-black">
         {{ $t('store_locator.labels.store_availability') }}
-      </p>
+      </h2>
       <p class="text-xs text-primary">
         {{ $t('store_locator.labels.store_availability_subline') }}
       </p>

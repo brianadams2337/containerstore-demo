@@ -353,7 +353,8 @@
     "size": "Size",
     "tax": "19% VAT",
     "total": "Total",
-    "no_order_found": "The order information could not be found."
+    "no_order_found": "The order information could not be found.",
+    "title": "Your order"
   },
   "main_nav": {
     "back_to": "Back to \"{name}\"",

@@ -1,7 +1,7 @@
 <template>
   <SFPageContainer>
     <div class="flex w-full flex-wrap justify-between gap-4">
-      <SFHeadline is-uppercase>
+      <SFHeadline is-uppercase tag="h1">
         {{
           status === 'pending'
             ? $t('search.result_loading', { term })

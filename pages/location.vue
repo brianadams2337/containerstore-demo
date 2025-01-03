@@ -18,7 +18,7 @@
         class="flex flex-col items-stretch justify-between rounded bg-white p-5"
         :class="{ 'shadow-[0_3px_24px_0_rgba(0,0,0,0.12)]': stores.length }"
       >
-        <SFHeadline :is-uppercase="false" size="xl" tag="p" class="mb-5">
+        <SFHeadline :is-uppercase="false" size="xl" tag="h1" class="mb-5">
           {{ $t('store_locator.modal_headline') }}
         </SFHeadline>
         <p class="mb-5 text-sm">{{ $t('store_locator.subline') }}</p>
