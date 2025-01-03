@@ -16,12 +16,22 @@ export function useProductPrice(price: Ref<Price>) {
   })
 
   const strikeThroughPrices = computed(() => {
-    let currentPrice = price.value.withTax as number
-
-    return appliedReductions.value.map(({ amount }) => {
-      currentPrice += amount.absoluteWithTax
-      return formatCurrency(currentPrice)
-    })
+    return appliedReductions.value.reduce<{
+      prices: string[]
+      currentPrice: number
+    }>(
+      ({ prices, currentPrice }, { amount }) => {
+        currentPrice += amount.absoluteWithTax
+        return {
+          currentPrice,
+          prices: [...prices, formatCurrency(currentPrice)],
+        }
+      },
+      {
+        prices: [],
+        currentPrice: price.value.withTax,
+      },
+    ).prices
   })
 
   const relativeReductions = computed<RelativeReductions[]>(() =>
