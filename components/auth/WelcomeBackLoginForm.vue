@@ -1,6 +1,7 @@
 <template>
   <SFVerticalAccordion
     :tabs="[$t('login_page.welcome_back.title', { username })]"
+    tab-tag="h2"
   >
     <template #0>
       <LoginForm />

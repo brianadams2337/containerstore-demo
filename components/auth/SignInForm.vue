@@ -1,6 +1,13 @@
 <template>
   <ClientOnly>
     <div v-if="!isLoggedIn && status !== 'pending'">
+      <SFHeadline
+        class="mx-auto mt-10 max-w-[33.75rem] px-2"
+        size="xl"
+        tag="h1"
+      >
+        {{ $t('login_page.login.title') }}
+      </SFHeadline>
       <WelcomeBackLoginForm
         v-if="lastLoggedInUser.email && !$route.query.register"
         class="mt-10 px-2"
@@ -10,6 +17,7 @@
         class="mt-10 px-2"
         :initial-index="initialIndex"
         :tabs="tabs"
+        tab-tag="h2"
       >
         <template #0>
           <LoginForm />
@@ -52,7 +60,11 @@ import { routeList } from '~/utils/route'
 import { useLastLoggedInUser, useRouteHelpers } from '~/composables'
 import { useRoute } from '#app/composables/router'
 import { useNuxtApp } from '#app'
-import { SFButton, SFVerticalAccordion } from '#storefront-ui/components'
+import {
+  SFButton,
+  SFHeadline,
+  SFVerticalAccordion,
+} from '#storefront-ui/components'
 import { ClientOnly } from '#components'
 
 const props = withDefaults(defineProps<{ showGuestLogin?: boolean }>(), {

@@ -7,9 +7,13 @@
       :class="getClasses(index)"
       @click="activeIndex = index"
     >
-      <div class="text-sm" :class="{ 'font-bold': activeIndex === index }">
+      <component
+        :is="tabTag"
+        class="text-sm"
+        :class="{ 'font-bold': activeIndex === index }"
+      >
         {{ tab }}
-      </div>
+      </component>
 
       <slot
         v-if="index === activeIndex"
@@ -23,9 +27,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-type Props = { tabs: string[]; initialIndex?: number }
+type Props = {
+  tabs: string[]
+  initialIndex?: number
+  tabTag?: string
+}
 
-const props = withDefaults(defineProps<Props>(), { initialIndex: 0 })
+const props = withDefaults(defineProps<Props>(), {
+  initialIndex: 0,
+  tabTag: 'div',
+})
 
 const activeIndex = ref(props.initialIndex)
 

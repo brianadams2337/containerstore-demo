@@ -7,7 +7,7 @@
   >
     <NavigationTreeItem
       :navigation-item="item"
-      class="!mr-0 flex !h-6 items-center !px-1.5 py-1"
+      class="!mr-0 flex !h-6 items-center px-1.5 py-1"
       :class="{
         'text-primary': !item.customData?.linkColor,
       }"
@@ -16,14 +16,14 @@
         isNavigationItemCategoryActive(item, pageState.type, $route) || isOpen
       "
     >
-      <span class="text-md font-semi-bold-variable leading-10">{{
-        item.name
-      }}</span>
+      <span class="text-md font-semi-bold-variable leading-10">
+        {{ item.name }}
+      </span>
     </NavigationTreeItem>
     <SFButton
       v-if="item.children.length"
       ref="button"
-      class="pointer-events-none absolute -right-3 opacity-0 focus-within:opacity-100"
+      class="pointer-events-none absolute -right-4 z-10 opacity-0 focus-within:opacity-100"
       :aria-expanded="isOpen"
       :aria-label="item.name"
       :aria-controls="`${item.id}`"

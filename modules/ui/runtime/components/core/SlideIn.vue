@@ -27,7 +27,7 @@
         data-testid="slide-in-overflow"
         :class="slideClass"
       >
-        <div class="relative flex h-full flex-col">
+        <div class="relative flex flex-col">
           <slot v-bind="toggle" name="slide-in-content">
             <div
               class="sticky top-0 z-10 border-b border-b-gray-200 bg-white/90 px-6 py-4"

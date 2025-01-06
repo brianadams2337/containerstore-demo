@@ -4,7 +4,7 @@
     is-account-page
     class="mb-6"
   >
-    <SFHeadline class="hidden md:block" size="xl" tag="h3">
+    <SFHeadline class="hidden md:block" size="xl" tag="h1">
       {{ $t('my_account.profile_menu') }}
     </SFHeadline>
     <UserPersonalInfoForm />

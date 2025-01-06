@@ -15,7 +15,7 @@
         :time-until="giftPromotion.schedule.to"
       />
     </div>
-    <div class="p-4">
+    <div class="p-3">
       <BasketPromotionGiftsSlider
         v-if="products"
         :basket-item="basketItem"

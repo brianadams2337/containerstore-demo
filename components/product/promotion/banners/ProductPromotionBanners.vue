@@ -46,6 +46,6 @@ const { appliedPromotions } = await useBasketPromotions()
 
 const isMounted = useMounted()
 const divOrTransition = computed(() => {
-  return !isMounted.value ? 'div' : SFFadeInTransition
+  return !isMounted.value ? 'h2' : SFFadeInTransition
 })
 </script>

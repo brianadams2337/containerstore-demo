@@ -4,16 +4,18 @@
 
 @layer base {
   *:focus-visible {
-    @apply outline outline-offset-0 outline-indigo-200 ring-0;
+    @apply outline outline-2 -outline-offset-1 outline-white ring-0 shadow-outer-solid;
   }
 
   html {
     scrollbar-gutter: stable;
   }
+
   body:has(dialog[open]),
   body:has(.block-scrolling) {
     overflow: hidden;
   }
+
   dialog {
     max-width: 100vw;
     max-height: 100vh;

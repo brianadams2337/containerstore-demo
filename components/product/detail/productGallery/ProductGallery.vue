@@ -33,6 +33,7 @@
       <template #prev-button="{ prev, isPrevEnabled }">
         <button
           class="absolute left-1/2 top-2 size-8 -translate-x-1/2 rounded-md bg-white/85 p-1 text-gray-400 hover:text-gray-900 disabled:hidden"
+          :aria-label="$t('image_slider.previous_label')"
           :disabled="!isPrevEnabled"
           @click="prev()"
         >
@@ -42,6 +43,7 @@
       <template #next-button="{ next, isNextEnabled }">
         <button
           class="absolute bottom-2 left-1/2 size-8 -translate-x-1/2 rounded-md bg-white/85 p-1 text-gray-400 hover:text-gray-900 disabled:hidden"
+          :aria-label="$t('image_slider.next_label')"
           :disabled="!isNextEnabled"
           @click="next()"
         >
@@ -81,6 +83,7 @@
             <SFButton
               class="rounded-l-full"
               variant="slider"
+              :aria-label="$t('image_slider.previous_label')"
               size="sm"
               :disabled="!isPrevEnabled"
               @click="prev()"
@@ -90,6 +93,7 @@
             <SFButton
               class="rounded-r-full"
               variant="slider"
+              :aria-label="$t('image_slider.next_label')"
               size="sm"
               :disabled="!isNextEnabled"
               @click="next()"

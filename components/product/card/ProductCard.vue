@@ -25,6 +25,7 @@
         <WishlistToggle
           :product="product"
           :listing-meta-data="listingMetaData"
+          @keydown.enter.stop
         />
       </div>
       <ProductCardBadgesHeader

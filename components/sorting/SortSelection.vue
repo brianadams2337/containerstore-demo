@@ -13,7 +13,7 @@
       <LocalizedLink
         :data-testid="`sort-item-${item.key}`"
         variant="whisper"
-        class="mb-1 w-full rounded p-2 !text-base !font-medium last-of-type:mb-0 hover:bg-gray-100"
+        class="mb-1 w-full rounded p-2 !text-base !font-medium last-of-type:mb-0 hover:bg-gray-100 focus-visible:shadow-inner-solid-sm"
         :class="{ 'bg-gray-100 !text-black': item.key === selectedSort?.key }"
         :to="item.to"
         @click="

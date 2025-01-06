@@ -6,7 +6,7 @@
           data-testid="store-location-link"
           :to="routeList.location"
           raw
-          class="flex shrink-0 items-center gap-1.5 whitespace-nowrap px-2 text-white -outline-offset-4 hover:bg-indigo-200/10"
+          class="flex shrink-0 items-center gap-1.5 whitespace-nowrap px-2 text-white -outline-offset-5 hover:bg-indigo-200/10 focus-visible:shadow-inner-solid"
         >
           <IconLocationMenu class="size-3.5" />
           {{ $t('navigation.location') }}

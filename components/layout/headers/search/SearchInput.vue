@@ -33,7 +33,7 @@
           :tabindex="hasFocus ? 0 : -1"
           type="search"
           :placeholder="$t('search.placeholder')"
-          class="min-w-0 grow bg-gray-100 outline-none transition-colors placeholder-shown:truncate"
+          class="min-w-0 grow bg-gray-100 transition-colors placeholder-shown:truncate"
           data-testid="header-search-input"
           :class="{
             'bg-white ': hasFocus,
@@ -41,20 +41,17 @@
           }"
         />
       </label>
-      <button
+      <SFButton
         ref="resetButton"
         type="reset"
-        class="group/reset h-11"
+        variant="raw"
+        class="h-6 rounded px-1.5 py-1 text-sm leading-5 text-gray-600 transition duration-150 hover:bg-gray-100 focus:bg-gray-100 focus:px-1.5"
         :class="{ hidden: !hasFocus }"
         @click.stop="resetSearch"
         @keydown.enter.stop="resetSearch"
       >
-        <span
-          class="rounded px-1.5 py-1 text-sm leading-5 text-gray-600 transition-all duration-150 group-hover/reset:right-1 group-hover/reset:bg-gray-100 group-focus/reset:bg-gray-100 group-focus/reset:px-1.5"
-        >
-          {{ $t('global.cancel') }}
-        </span>
-      </button>
+        {{ $t('global.cancel') }}
+      </SFButton>
     </form>
     <SearchResultsContainer
       v-if="searchQuery.length >= 3"
@@ -78,6 +75,7 @@ import type { SearchEntity } from '@scayle/storefront-nuxt'
 import { useSearchData, useTrackingEvents } from '~/composables'
 import SearchResultsContainer from '~/components/search/SearchResultsContainer.vue'
 import { useSearchInputKeybindings } from '~/composables/useSearchInputKeybindings'
+import { SFButton } from '#storefront-ui/components'
 
 const emit = defineEmits<{
   close: []

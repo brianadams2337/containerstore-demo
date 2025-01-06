@@ -14,11 +14,11 @@
       class="space-y-5 border-y border-gray-300 px-5 pb-10 pt-11 max-md:bg-white-smoke md:rounded-lg md:border md:border-accent md:py-5"
       data-testid="subscription-service"
     >
-      <div
+      <h2
         class="text-2xl font-medium text-gray-900 md:text-md md:font-semi-bold-variable"
       >
         {{ $t('subscription.subscribe') }}
-      </div>
+      </h2>
 
       <div v-if="!subscriptionPrice" class="text-md text-gray-500">
         {{ $t('subscription.select_size_message') }}

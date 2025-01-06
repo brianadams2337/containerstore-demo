@@ -3,7 +3,7 @@
     data-testid="toggle-promotion-banner-button"
     variant="raw"
     size="xs"
-    class="min-h-9 min-w-44 items-center !px-2 !py-1 text-xs font-semibold leading-5 text-white hover:text-white"
+    class="min-h-9 min-w-44 items-center !px-2 !py-1 text-xs font-semibold leading-5 text-white -outline-offset-5 hover:text-white focus-visible:shadow-inner-solid"
     :aria-expanded="isPromotionBannerShown.toString()"
     :style="backgroundColorStyle"
     :class="{ [borderClass]: isPromotionBannerShown }"

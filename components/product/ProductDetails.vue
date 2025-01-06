@@ -7,8 +7,12 @@
         v-for="[key, values] in filteredAttributeGroups"
         :id="`${key}`"
         :key="key"
-        :title="$t('pdp.information.' + key)"
       >
+        <template #title>
+          <h2>
+            {{ $t('pdp.information.' + key) }}
+          </h2>
+        </template>
         <div class="flex flex-col gap-2">
           <div v-if="key === 'design' && description" class="mb-2">
             {{ description }}

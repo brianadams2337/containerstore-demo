@@ -41,7 +41,7 @@
         <HeaderNavigationItem
           v-for="item in mainNavigationItems"
           :key="item.id"
-          class="pl-2 first:pl-0"
+          class="pl-4 first:pl-0"
           :item="item"
         />
       </ul>

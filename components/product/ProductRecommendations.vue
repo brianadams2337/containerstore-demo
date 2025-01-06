@@ -1,9 +1,11 @@
 <template>
   <SFItemsSlider with-arrows mode="horizontal">
     <template #header>
-      <div class="mb-6 text-2xl font-medium text-gray-900 md:px-2">
-        {{ title }}
-      </div>
+      <slot name="header" :title="title">
+        <div class="mb-6 text-2xl font-medium text-gray-900 md:px-2">
+          {{ title }}
+        </div>
+      </slot>
     </template>
     <template
       #arrows="{ isPrevEnabled, isNextEnabled, prev, next, isScrollable }"
@@ -17,6 +19,7 @@
           :disabled="!isPrevEnabled"
           size="sm"
           variant="slider"
+          :aria-label="$t('slider.previous_label')"
           @click="prev()"
         >
           <IconChevronLeft class="size-4 w-5" />
@@ -24,6 +27,7 @@
         <SFButton
           class="rounded-r-full"
           :disabled="!isNextEnabled"
+          :aria-label="$t('slider.next_label')"
           size="sm"
           variant="slider"
           @click="next()"

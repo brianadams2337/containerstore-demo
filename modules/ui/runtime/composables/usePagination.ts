@@ -18,7 +18,21 @@ export function usePagination({
   totalPageCount,
 }: PaginationOptions) {
   const route = useRoute()
-  const currentPage = computed(() => (route.query.page ? +route.query.page : 1))
+  const currentPage = computed(() => {
+    if (!route.query.page) {
+      return 1
+    }
+    const isNumericString = !isNaN(Number(route.query.page?.toString()))
+
+    const numericPageValue = +route.query.page
+
+    return isNumericString &&
+      numericPageValue &&
+      Number.isInteger(numericPageValue) &&
+      numericPageValue > 0
+      ? numericPageValue
+      : 1
+  })
 
   const pageList = computed<Page[]>(() => {
     const list = Array.from({ length: totalPageCount.value }, (_, i) => i + 1)

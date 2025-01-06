@@ -1,6 +1,6 @@
 <template>
   <aside class="h-dvh pb-8">
-    <ul class="h-full overflow-y-scroll scrollbar-hide">
+    <ul class="h-full overflow-y-scroll pb-2 pl-2 scrollbar-hide">
       <li
         v-for="(category, index) in rootCategories"
         :key="`category-navigation-tree-item-${category.id}`"

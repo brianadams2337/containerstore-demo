@@ -65,6 +65,15 @@ export default {
         '25%, 50%': { transform: 'scale(.8)', opacity: 10 },
       },
     },
+    outlineOffset: {
+      0: '0',
+      1: '1px',
+      2: '2px',
+      3: '3px',
+      4: '4px',
+      5: '5px',
+      6: '6px',
+    },
     zIndex: {
       0: '0',
       10: '10',
@@ -191,7 +200,10 @@ export default {
         15: '3.75rem',
       },
       boxShadow: {
-        secondary: '0px 6px 16px -10px rgba(0, 0, 0, 0.04)',
+        secondary: '0 6px 16px -10px rgba(0, 0, 0, 0.04)',
+        'inner-solid': 'inset 0 0 0 4px #193146',
+        'inner-solid-sm': 'inset 0 0 0 2px #193146',
+        'outer-solid': '0 0 0 3px #193146',
       },
       colors: {
         emerald: {
@@ -244,6 +256,7 @@ export default {
           50: '#5da8ff', // light-10
           100: '#c6e0ff', // light-20
           800: '#004ca5', // dark-10
+          850: '#193146', // dark-15
           900: '#001732', // dark-20
           DEFAULT: '#0277ff',
         },

@@ -12,7 +12,7 @@
       :type="type"
       :placeholder="placeholder"
       :autocomplete="autocomplete"
-      class="w-full rounded border-2 p-3 text-sm font-medium placeholder:text-secondary focus:outline-none focus:ring-0"
+      class="w-full rounded border-2 p-3 text-sm font-medium placeholder:text-secondary"
       :class="classes"
       :maxlength="maxLength"
     />

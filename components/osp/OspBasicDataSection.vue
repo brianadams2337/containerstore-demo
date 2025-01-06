@@ -1,5 +1,8 @@
 <template>
   <div class="w-full md:container md:w-1/2 md:pl-0 md:pr-6 lg:w-3/5">
+    <SFHeadline class="mt-4" size="xl" tag="h1">
+      {{ $t('osp.title') }}
+    </SFHeadline>
     <div class="mt-16 space-y-2">
       <SFHeadline size="lg" is-uppercase class="flex items-center">
         <IconCheckmark class="relative top-[-2px] mr-2 size-5" />

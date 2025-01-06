@@ -3,7 +3,7 @@
     <div
       v-for="(product, index) in products"
       :key="product.id"
-      class="mr-3 flex max-h-80 w-32 flex-col justify-between last-of-type:mr-0"
+      class="mr-3 flex max-h-80 w-32 flex-col justify-between p-1 last-of-type:mr-0"
     >
       <BasketPromotionSliderItem
         v-if="product"

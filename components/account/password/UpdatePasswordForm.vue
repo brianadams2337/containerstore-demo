@@ -5,9 +5,9 @@
       class="mx-auto mt-8 flex w-full flex-col md:mx-0 lg:w-[400px]"
       data-testid="form-password-update"
     >
-      <h3 class="mb-4 text-left text-2xl font-bold">
+      <h2 class="mb-4 text-left text-2xl font-bold">
         {{ $t('my_account.password') }}
-      </h3>
+      </h2>
       <SFValidatedInputGroup
         v-slot="{ isValid }"
         :errors="v.oldPassword.$errors"

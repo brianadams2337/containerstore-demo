@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative mb-5 flex grow overflow-y-auto overflow-x-hidden scroll-shadow"
+    class="relative mb-5 flex grow overflow-y-auto overflow-x-hidden px-1 scroll-shadow"
   >
     <Transition
       enter-from-class="-translate-x-full"

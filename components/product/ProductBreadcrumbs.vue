@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="truncate">
     <SFLink
       v-for="(
         { value: name, to }, index
@@ -19,6 +19,7 @@
     >
       <span
         class="text-md leading-none text-gray-500 transition-all hover:text-black"
+        :title="name"
       >
         {{ name }}
       </span>

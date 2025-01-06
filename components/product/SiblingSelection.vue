@@ -1,5 +1,10 @@
 <template>
-  <SFItemsSlider with-arrows mode="horizontal" data-testid="product-thumbnails">
+  <SFItemsSlider
+    with-arrows
+    mode="horizontal"
+    data-testid="product-thumbnails"
+    disable-focus
+  >
     <template #header>
       <div class="mb-4 flex justify-between">
         <div class="flex gap-2 text-md">
@@ -10,46 +15,41 @@
         </div>
       </div>
     </template>
-    <div class="flex w-full gap-4">
-      <div
+    <div class="flex w-full gap-4 py-1.5">
+      <SFLink
         v-for="(sibling, index) in siblings"
         :key="sibling.id"
-        class="relative size-20 shrink-0 rounded-xl border-2 transition-all supports-hover:hover:border-black md:size-16"
+        class="relative size-20 shrink-0 rounded-xl border-2 p-2 transition-all supports-hover:hover:border-black md:size-16"
         :class="{
+          'pointer-events-none': sibling.isSoldOut || sibling.id === product.id,
           'border-transparent': sibling.id !== product.id && !sibling.isSoldOut,
-          'border-black text-black': sibling.id === product.id,
+          'border-black text-black -outline-offset-4 focus-visible:shadow-inner-solid':
+            sibling.id === product.id,
           'bg-gray-100 text-gray-300 supports-hover:hover:bg-white supports-hover:hover:text-black':
             sibling.id !== product.id,
           'border-gray-200': sibling.isSoldOut && sibling.id !== product.id,
         }"
+        :to="getProductDetailRoute(sibling.id, sibling.name)"
         @mouseenter="setHoveredLabel(sibling)"
         @mouseleave="setHoveredLabel()"
+        @click="trackSiblingClick(sibling, index)"
       >
         <div
           v-if="sibling.isSoldOut"
-          class="absolute size-full rounded-md diagonal-strikethrough"
+          class="absolute left-0 size-full rounded-md diagonal-strikethrough"
         />
-        <SFLink
-          class="p-2"
+
+        <ProductImage
+          v-if="sibling.image"
+          :alt="siblingAltText(sibling)"
+          sizes="64px"
           :class="{
-            'pointer-events-none':
-              sibling.isSoldOut || sibling.id === product.id,
+            'opacity-20': sibling.isSoldOut && sibling.id !== product.id,
           }"
-          :to="getProductDetailRoute(sibling.id, sibling.name)"
-          @click="trackSiblingClick(sibling, index)"
-        >
-          <ProductImage
-            v-if="sibling.image"
-            :alt="siblingAltText(sibling)"
-            sizes="64px"
-            :class="{
-              'opacity-20': sibling.isSoldOut && sibling.id !== product.id,
-            }"
-            :image="sibling.image"
-            aspect-ratio="1/1"
-          />
-        </SFLink>
-      </div>
+          :image="sibling.image"
+          aspect-ratio="1/1"
+        />
+      </SFLink>
     </div>
     <template
       #arrows="{ isPrevEnabled, isNextEnabled, prev, next, isScrollable }"
@@ -61,6 +61,7 @@
         <SFButton
           class="!size-6 rounded-l-full first:!p-0.5"
           :disabled="!isPrevEnabled"
+          :aria-label="$t('slider.previous_label')"
           variant="slider"
           @click="prev()"
         >
@@ -68,6 +69,7 @@
         </SFButton>
         <SFButton
           class="!size-6 rounded-r-full last:!p-0.5"
+          :aria-label="$t('slider.next_label')"
           :disabled="!isNextEnabled"
           variant="slider"
           @click="next()"
