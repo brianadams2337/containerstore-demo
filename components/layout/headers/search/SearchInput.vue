@@ -33,7 +33,7 @@
           :tabindex="hasFocus ? 0 : -1"
           type="search"
           :placeholder="$t('search.placeholder')"
-          class="min-w-0 grow bg-gray-100 transition-colors placeholder-shown:truncate"
+          class="min-w-0 grow bg-gray-100 transition-colors placeholder-shown:truncate focus-visible:shadow-none focus-visible:outline-none"
           data-testid="header-search-input"
           :class="{
             'bg-white ': hasFocus,
