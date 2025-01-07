@@ -12,7 +12,7 @@
       <div
         class="relative mx-0 flex rounded-t-2xl bg-white pt-4 xl:container md:mx-8 md:rounded-none md:pt-8 xl:m-auto"
       >
-        <CategorySideNavigation
+        <SFCategorySideNavigation
           v-if="rootCategories?.length"
           class="sticky top-8 h-full max-md:hidden sm:min-w-40 md:min-w-[14.75rem] lg:min-w-[17rem]"
           :root-categories="rootCategories"
@@ -23,11 +23,11 @@
         <div class="w-full grow">
           <div class="flex flex-wrap items-center justify-between gap-5">
             <div class="flex items-center px-4 md:px-0">
-              <CategoryNavigationBackButton
+              <SFCategoryNavigationBackButton
                 :current-category="currentCategory"
                 class="mr-2 md:hidden"
               />
-              <CategoryBreadcrumbs
+              <SFCategoryBreadcrumbs
                 v-if="currentCategory"
                 :products-fetching="productsStatus === 'pending'"
                 :category="currentCategory"
@@ -35,20 +35,20 @@
               />
             </div>
             <div class="hidden gap-4 md:flex">
-              <SortSelection class="max-sm:hidden" />
-              <FilterToggleButton :label="$t('filter.show_filter')" />
+              <SFSortSelection class="max-sm:hidden" />
+              <SFFilterToggleButton :label="$t('filter.show_filter')" />
             </div>
           </div>
-          <CategoryNavigationSlider
+          <SFCategoryNavigationSlider
             v-if="allCategories.length"
             :all-categories="allCategories"
             :current-category="currentCategory"
             class="mb-3.5 mt-2.5 md:hidden"
           />
           <div class="px-4 md:hidden">
-            <FilterToggleButton :label="$t('filter.filters_sorting')" />
+            <SFFilterToggleButton :label="$t('filter.filters_sorting')" />
           </div>
-          <ProductList
+          <SFProductList
             :products="products"
             :pagination="pagination"
             :current-category="currentCategory"
@@ -59,11 +59,11 @@
           />
         </div>
       </div>
-      <FilterSlideIn :current-category-id="currentCategoryId" />
+      <SFFilterSlideIn :current-category-id="currentCategoryId" />
       <Teleport to="#teleports">
-        <FloatingContainer class="right-4 md:bottom-16">
-          <ScrollToTopButton />
-        </FloatingContainer>
+        <SFFloatingContainer class="right-4 md:bottom-16">
+          <SFScrollToTopButton />
+        </SFFloatingContainer>
       </Teleport>
     </template>
   </CMSCategoryData>
@@ -103,16 +103,16 @@ import {
 } from '~/constants'
 import CMSCategoryData from '#storefront-cms/components/fetching/CMSCategoryData.vue'
 import CMSImage from '#storefront-cms/components/Image.vue'
-import CategorySideNavigation from '~/components/category/CategorySideNavigation.vue'
-import CategoryNavigationBackButton from '~/components/category/CategoryNavigationBackButton.vue'
-import CategoryBreadcrumbs from '~/components/category/CategoryBreadcrumbs.vue'
-import SortSelection from '~/components/sorting/SortSelection.vue'
-import FilterToggleButton from '~/components/filter/FilterToggleButton.vue'
-import CategoryNavigationSlider from '~/components/category/CategoryNavigationSlider.vue'
-import ProductList from '~/components/productList/ProductList.vue'
-import FilterSlideIn from '~/components/filter/FilterSlideIn.vue'
-import FloatingContainer from '~/components/FloatingContainer.vue'
-import ScrollToTopButton from '~/components/ScrollToTopButton.vue'
+import SFCategorySideNavigation from '~/components/category/SFCategorySideNavigation.vue'
+import SFCategoryNavigationBackButton from '~/components/category/SFCategoryNavigationBackButton.vue'
+import SFCategoryBreadcrumbs from '~/components/category/SFCategoryBreadcrumbs.vue'
+import SFSortSelection from '~/components/sorting/SFSortSelection.vue'
+import SFFilterToggleButton from '~/components/filter/SFFilterToggleButton.vue'
+import SFCategoryNavigationSlider from '~/components/category/SFCategoryNavigationSlider.vue'
+import SFProductList from '~/components/productList/SFProductList.vue'
+import SFFilterSlideIn from '~/components/filter/SFFilterSlideIn.vue'
+import SFFloatingContainer from '~/components/SFFloatingContainer.vue'
+import SFScrollToTopButton from '~/components/SFScrollToTopButton.vue'
 import {
   useProductListingSeoData,
   useProductsForListing,

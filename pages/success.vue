@@ -1,19 +1,23 @@
 <template>
   <SFPageContainer>
     <div v-if="status === 'pending'" class="container flex gap-2">
-      <ProductCardSkeleton v-for="index in 2" :key="`osp-loading-${index}`" />
+      <SFProductCardSkeleton v-for="index in 2" :key="`osp-loading-${index}`" />
     </div>
     <div v-if="orderData" class="px-6 sm:mx-auto sm:flex sm:flex-wrap md:px-0">
-      <OspBasicDataSection
+      <SFOspBasicDataSection
         :order-data="orderData"
         :delivery-date="deliveryDate"
       />
-      <OspSummarySection
+      <SFOspSummarySection
         :order-data="orderData"
         :delivery-date="deliveryDate"
       />
     </div>
-    <EmptyState v-else :title="$t('osp.no_order_found')" show-default-actions />
+    <SFEmptyState
+      v-else
+      :title="$t('osp.no_order_found')"
+      show-default-actions
+    />
   </SFPageContainer>
 </template>
 
@@ -25,10 +29,10 @@ import { useTrackingEvents } from '~/composables/useTrackingEvents'
 import { useNuxtApp } from '#app'
 import { useOrderConfirmation, useUser } from '#storefront/composables'
 import { useRoute } from '#app/composables/router'
-import EmptyState from '~/components/EmptyState.vue'
-import ProductCardSkeleton from '~/components/product/card/ProductCardSkeleton.vue'
-import OspBasicDataSection from '~/components/osp/OspBasicDataSection.vue'
-import OspSummarySection from '~/components/osp/OspSummarySection.vue'
+import SFEmptyState from '~/components/SFEmptyState.vue'
+import SFProductCardSkeleton from '~/components/product/card/SFProductCardSkeleton.vue'
+import SFOspBasicDataSection from '~/components/osp/SFOspBasicDataSection.vue'
+import SFOspSummarySection from '~/components/osp/SFOspSummarySection.vue'
 import { SFPageContainer } from '#storefront-ui/components'
 import type { OrderProduct, OrderVariant } from '~/types/order'
 

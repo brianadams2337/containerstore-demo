@@ -34,7 +34,7 @@ export default defineNuxtModule<ModuleOptions>({
         // Only auto import Vue components
         // Resolves:
         // > This module cannot be imported in the Vue part of your app.
-        // > [importing @nuxt/test-utils/runtime from modules/ui/runtime/components/core/button/Button.nuxt.test.ts]
+        // > [importing @nuxt/test-utils/runtime from modules/ui/runtime/components/core/SFButton.nuxt.test.ts]
         extensions: ['vue'],
       })
       addImportsDir(resolve('./runtime/composables'))

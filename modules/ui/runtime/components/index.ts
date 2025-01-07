@@ -1,75 +1,75 @@
 // Core
-import SFButton from './core/button/Button.vue'
-import SFBreadcrumbs from './core/Breadcrumbs.vue'
-import SFChip from './core/chip/Chip.vue'
-import SFColorChip from './core/chip/ColorChip.vue'
-import SFCountdown from './core/Countdown.vue'
-import SFFlyout from './core/flyout/Flyout.vue'
-import SFFlyoutMenu from './core/flyout/FlyoutMenu.vue'
-import SFHorizontalItemsDivider from './core/HorizontalItemsDivider.vue'
-import SFMenu from './core/Menu.vue'
-import SFModal from './core/Modal.vue'
-import SFOverlay from './core/Overlay.vue'
-import SFProgressBar from './core/ProgressBar.vue'
-import SFSkeletonLoader from './core/SkeletonLoader.vue'
-import SFSlideIn from './core/SlideIn.vue'
-import SFSwipeDelete from './core/SwipeDelete.vue'
-import SFTwoColumnList from './core/TwoColumnList.vue'
-import SFVerticalAccordion from './core/VerticalAccordion.vue'
-import SFPopover from './core/Popover.vue'
+import SFButton from './core/SFButton.vue'
+import SFBreadcrumbs from './core/SFBreadcrumbs.vue'
+import SFChip from './core/chip/SFChip.vue'
+import SFColorChip from './core/chip/SFColorChip.vue'
+import SFCountdown from './core/SFCountdown.vue'
+import SFFlyout from './core/flyout/SFFlyout.vue'
+import SFFlyoutMenu from './core/flyout/SFFlyoutMenu.vue'
+import SFHorizontalItemsDivider from './core/SFHorizontalItemsDivider.vue'
+import SFMenu from './core/SFMenu.vue'
+import SFModal from './core/SFModal.vue'
+import SFOverlay from './core/SFOverlay.vue'
+import SFProgressBar from './core/SFProgressBar.vue'
+import SFSkeletonLoader from './core/SFSkeletonLoader.vue'
+import SFSlideIn from './core/SFSlideIn.vue'
+import SFSwipeDelete from './core/SFSwipeDelete.vue'
+import SFTwoColumnList from './core/SFTwoColumnList.vue'
+import SFVerticalAccordion from './core/SFVerticalAccordion.vue'
+import SFPopover from './core/SFPopover.vue'
 
 // Form
-import SFCheckbox from './form/Checkbox.vue'
-import SFDropdown from './form/Dropdown.vue'
-import SFSwitch from './form/Switch.vue'
-import SFPriceInput from './form/PriceInput.vue'
-import SFRadioItem from './form/RadioItem.vue'
-import SFRadioGroup from './form/RadioGroup.vue'
-import SFPriceRangeSlider from './form/PriceRangeSlider.vue'
-import SFTextInput from './form/TextInput.vue'
-import SFValidatedInputGroup from './form/ValidatedInputGroup.vue'
+import SFCheckbox from './form/SFCheckbox.vue'
+import SFDropdown from './form/SFDropdown.vue'
+import SFSwitch from './form/SFSwitch.vue'
+import SFPriceInput from './form/SFPriceInput.vue'
+import SFRadioItem from './form/SFRadioItem.vue'
+import SFRadioGroup from './form/SFRadioGroup.vue'
+import SFPriceRangeSlider from './form/SFPriceRangeSlider.vue'
+import SFTextInput from './form/SFTextInput.vue'
+import SFValidatedInputGroup from './form/SFValidatedInputGroup.vue'
 
 // Headlines
-import SFHeadline from './headlines/Headline.vue'
-import SFHeadlineBadge from './headlines/HeadlineBadge.vue'
+import SFHeadline from './headlines/SFHeadline.vue'
+import SFHeadlineBadge from './headlines/SFHeadlineBadge.vue'
 
 // Links
-import SFGoBackLink from './links/GoBackLink.vue'
-import SFLink from './links/Link.vue'
-import SFContainerLink from './links/ContainerLink.vue'
+import SFGoBackLink from './links/SFGoBackLink.vue'
+import SFLink from './links/SFLink.vue'
+import SFContainerLink from './links/SFContainerLink.vue'
 
 // Listbox
-import SFListbox from './listbox/Listbox.vue'
-import SFListboxButton from './listbox/ListboxButton.vue'
-import SFListboxOption from './listbox/ListboxOption.vue'
-import SFListboxOptions from './listbox/ListboxOptions.vue'
+import SFListbox from './listbox/SFListbox.vue'
+import SFListboxButton from './listbox/SFListboxButton.vue'
+import SFListboxOption from './listbox/SFListboxOption.vue'
+import SFListboxOptions from './listbox/SFListboxOptions.vue'
 
 // Pagination
-import SFPagination from './pagination/Pagination.vue'
-import SFPaginationButton from './pagination/PaginationButton.vue'
-import SFSimplePagination from './pagination/SimplePagination.vue'
+import SFPagination from './pagination/SFPagination.vue'
+import SFPaginationButton from './pagination/SFPaginationButton.vue'
+import SFSimplePagination from './pagination/SFSimplePagination.vue'
 
 // Sliders
-import SFItemsSlider from './sliders/ItemsSlider.vue'
+import SFItemsSlider from './sliders/SFItemsSlider.vue'
 
 // Accordion
-import SFAccordionEntry from './accordion/AccordionEntry.vue'
+import SFAccordionEntry from './accordion/SFAccordionEntry.vue'
 
 // Toast
-import SFToast from './toast/Toast.vue'
-import SFToastContainer from './toast/ToastContainer.vue'
+import SFToast from './toast/SFToast.vue'
+import SFToastContainer from './toast/SFToastContainer.vue'
 
 // Layout
-import SFPageContainer from './layout/PageContainer.vue'
+import SFPageContainer from './layout/SFPageContainer.vue'
 
 // Transitions
-import SFFadeInTransition from './transitions/FadeInTransition.vue'
-import SFFadeInFromBottomTransition from './transitions/FadeInFromBottomTransition.vue'
-import SFFadeInFromBottomGroupTransition from './transitions/FadeInFromBottomGroupTransition.vue'
-import SFSlideInFromLeftTransition from './transitions/SlideInFromLeftTransition.vue'
-import SFSlideInFromRightTransition from './transitions/SlideInFromRightTransition.vue'
-import SFSlideInFromTopTransition from './transitions/SlideInFromTopTransition.vue'
-import SFSlideInFromBottomTransition from './transitions/SlideInFromBottomTransition.vue'
+import SFFadeInTransition from './transitions/SFFadeInTransition.vue'
+import SFFadeInFromBottomTransition from './transitions/SFFadeInFromBottomTransition.vue'
+import SFFadeInFromBottomGroupTransition from './transitions/SFFadeInFromBottomGroupTransition.vue'
+import SFSlideInFromLeftTransition from './transitions/SFSlideInFromLeftTransition.vue'
+import SFSlideInFromRightTransition from './transitions/SFSlideInFromRightTransition.vue'
+import SFSlideInFromTopTransition from './transitions/SFSlideInFromTopTransition.vue'
+import SFSlideInFromBottomTransition from './transitions/SFSlideInFromBottomTransition.vue'
 
 export {
   SFButton,

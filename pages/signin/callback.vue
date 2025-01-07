@@ -1,11 +1,11 @@
 <template>
-  <IDPCallback v-if="idpCode" :code="idpCode" />
+  <SFIDPCallback v-if="idpCode" :code="idpCode" />
 </template>
 
 <script setup lang="ts">
 import { computed, defineOptions } from 'vue'
 import { useRoute } from '#app/composables/router'
-import IDPCallback from '~/components/auth/IDPCallback.vue'
+import SFIDPCallback from '~/components/auth/SFIDPCallback.vue'
 
 const route = useRoute()
 

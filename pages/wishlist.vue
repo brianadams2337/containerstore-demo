@@ -17,7 +17,7 @@
 
     <template v-if="status === 'pending'">
       <div class="mt-8 grid w-auto grid-cols-12 gap-4 xl:max-2xl:grid-cols-10">
-        <ProductCardSkeleton
+        <SFProductCardSkeleton
           v-for="index in 12"
           :key="`product-loading-${index}`"
           type="custom"
@@ -31,7 +31,7 @@
         class="mt-8 grid w-auto grid-cols-12 gap-4 xl:max-2xl:grid-cols-10"
         data-testid="wishlist-items-wrapper"
       >
-        <ProductCard
+        <SFProductCard
           v-for="({ product, key }, index) in items"
           :id="product.id"
           :key="`product-${key}-${product}`"
@@ -42,7 +42,7 @@
         />
       </div>
       <div v-if="count === 0" class="mt-8 space-y-8">
-        <EmptyState
+        <SFEmptyState
           :title="$t('wishlist.no_items_info')"
           :description="$t('wishlist.continue_shopping_info')"
           icon="EmptyWishlist"
@@ -57,13 +57,13 @@
 import { useSeoMeta } from '@unhead/vue'
 import { defineOptions } from 'vue'
 import { whenever } from '@vueuse/core'
-import ProductCardSkeleton from '~/components/product/card/ProductCardSkeleton.vue'
+import SFProductCardSkeleton from '~/components/product/card/SFProductCardSkeleton.vue'
 import { useNuxtApp } from '#app/nuxt'
 import { definePageMeta } from '#imports'
 import { useWishlistTracking } from '~/composables'
 import { useWishlist } from '#storefront/composables'
-import EmptyState from '~/components/EmptyState.vue'
-import ProductCard from '~/components/product/card/ProductCard.vue'
+import SFEmptyState from '~/components/SFEmptyState.vue'
+import SFProductCard from '~/components/product/card/SFProductCard.vue'
 import { SFHeadline, SFFadeInTransition } from '#storefront-ui/components'
 
 const { count, status, items, products } = useWishlist()

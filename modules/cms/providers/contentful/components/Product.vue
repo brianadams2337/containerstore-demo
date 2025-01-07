@@ -1,5 +1,5 @@
 <template>
-  <ProductCard
+  <SFProductCard
     :key="`product-disruptor-${product.id}`"
     :product="product"
     :multiple-images="multipleImages"
@@ -12,7 +12,7 @@
 import { defineOptions } from 'vue'
 import type { Product } from '@scayle/storefront-nuxt'
 // TODO: This needs to be decoupled from the CMS module as it is coming from the SFB local components
-import ProductCard from '~/components/product/card/ProductCard.vue'
+import SFProductCard from '~/components/product/card/SFProductCard.vue'
 
 type CMSProductProps = {
   multipleImages?: boolean

@@ -1,14 +1,14 @@
 <template>
   <SFPageContainer class="p-0 md:mt-0">
     <div v-if="paramId">
-      <OrderLoadingState v-if="status === 'pending'" />
+      <SFOrderLoadingState v-if="status === 'pending'" />
       <template
         v-else-if="orderDetails && orderVariants && status === 'success'"
       >
         <template
           v-if="itemCount && orderDetails.shop?.id && orderDetails.confirmedAt"
         >
-          <OrderHeader
+          <SFOrderHeader
             class="max-sm:hidden"
             :order-id="orderDetails.id"
             :shop-id="orderDetails.shop.id"
@@ -16,17 +16,17 @@
             :order-date="orderDetails.confirmedAt"
           />
         </template>
-        <AddressSummary
+        <SFAddressSummary
           v-if="shippingAddress || billingAddress"
           :shipping-address="shippingAddress"
           :billing-address="billingAddress"
         />
-        <OrderItems
+        <SFOrderItems
           :order-items="orderItems"
           :order-variants="orderVariants"
           :packages="packages"
         />
-        <PaymentSummary
+        <SFPaymentSummary
           :payment-key="paymentKey"
           :delivery-cost="deliveryCost"
           :total-amount="totalAmount"
@@ -41,11 +41,11 @@ import { computed, defineOptions } from 'vue'
 import { definePageMeta } from '#imports'
 import { useOrderDetails } from '~/composables/useOrderDetails'
 import { useRoute } from '#app/composables/router'
-import OrderLoadingState from '~/components/order/OrderLoadingState.vue'
-import AddressSummary from '~/components/order/summary/AddressSummary.vue'
-import OrderItems from '~/components/order/OrderItems.vue'
-import OrderHeader from '~/components/order/OrderHeader.vue'
-import PaymentSummary from '~/components/order/summary/PaymentSummary.vue'
+import SFOrderLoadingState from '~/components/order/SFOrderLoadingState.vue'
+import SFAddressSummary from '~/components/order/summary/SFAddressSummary.vue'
+import SFOrderItems from '~/components/order/SFOrderItems.vue'
+import SFOrderHeader from '~/components/order/SFOrderHeader.vue'
+import SFPaymentSummary from '~/components/order/summary/SFPaymentSummary.vue'
 import { SFPageContainer } from '#storefront-ui/components'
 
 const route = useRoute()

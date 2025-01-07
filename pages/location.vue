@@ -1,7 +1,7 @@
 <template>
   <div class="relative">
     <div class="h-[calc(100vh-220px)] w-full">
-      <StoreLocatorMap
+      <SFStoreLocatorMap
         v-model:selected-store-id="selectedStoreId"
         :stores="stores"
         :api-key="googleMapsKey"
@@ -55,7 +55,7 @@
           </SFButton>
         </div>
       </div>
-      <StoreList
+      <SFStoreList
         v-if="stores.length"
         v-model:selected-store-id="selectedStoreId"
         :stores="stores"
@@ -73,8 +73,8 @@ import { useStoreLocator } from '#omnichannel/composables'
 import { useRuntimeConfig } from '#app'
 import { useI18n } from '#i18n'
 import { SFHeadline, SFButton, SFTextInput } from '#storefront-ui/components'
-import StoreLocatorMap from '~/components/locator/StoreLocatorMap.vue'
-import StoreList from '~/components/locator/StoreList.vue'
+import SFStoreLocatorMap from '~/components/locator/SFStoreLocatorMap.vue'
+import SFStoreList from '~/components/locator/SFStoreList.vue'
 
 const { t } = useI18n()
 

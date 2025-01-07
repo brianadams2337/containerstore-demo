@@ -1,9 +1,9 @@
-import ProductSubscription from './ProductSubscription.vue'
-import ProductSubscriptionHeader from './ProductSubscriptionHeader.vue'
-import ProductSubscriptionSelection from './ProductSubscriptionSelection.vue'
+import SFProductSubscription from './SFProductSubscription.vue'
+import SFProductSubscriptionHeader from './SFProductSubscriptionHeader.vue'
+import SFProductSubscriptionSelection from './SFProductSubscriptionSelection.vue'
 
 export {
-  ProductSubscription,
-  ProductSubscriptionHeader,
-  ProductSubscriptionSelection,
+  SFProductSubscription,
+  SFProductSubscriptionHeader,
+  SFProductSubscriptionSelection,
 }

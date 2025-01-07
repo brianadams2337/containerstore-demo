@@ -9,14 +9,14 @@
         }}
       </SFHeadline>
       <div class="hidden gap-4 md:flex">
-        <SortSelection class="max-sm:hidden" />
-        <FilterToggleButton :label="$t('filter.show_filter')" />
+        <SFSortSelection class="max-sm:hidden" />
+        <SFFilterToggleButton :label="$t('filter.show_filter')" />
       </div>
     </div>
     <div class="mt-2 md:hidden">
-      <FilterToggleButton :label="$t('filter.filters_sorting')" />
+      <SFFilterToggleButton :label="$t('filter.filters_sorting')" />
     </div>
-    <ProductList
+    <SFProductList
       :pagination="pagination"
       :products="products"
       :loading="status === 'pending'"
@@ -24,7 +24,7 @@
       @click:product="trackProductClick"
       @intersect:row="trackViewListing"
     />
-    <FilterSlideIn />
+    <SFFilterSlideIn />
   </SFPageContainer>
 </template>
 
@@ -41,10 +41,10 @@ import {
 import { useNuxtApp } from '#app'
 import { useRoute } from '#app/composables/router'
 import { categoryListingMetaData } from '~/constants'
-import ProductList from '~/components/productList/ProductList.vue'
-import FilterSlideIn from '~/components/filter/FilterSlideIn.vue'
-import SortSelection from '~/components/sorting/SortSelection.vue'
-import FilterToggleButton from '~/components/filter/FilterToggleButton.vue'
+import SFProductList from '~/components/productList/SFProductList.vue'
+import SFFilterSlideIn from '~/components/filter/SFFilterSlideIn.vue'
+import SFSortSelection from '~/components/sorting/SFSortSelection.vue'
+import SFFilterToggleButton from '~/components/filter/SFFilterToggleButton.vue'
 import { SFHeadline, SFPageContainer } from '#storefront-ui/components'
 
 const route = useRoute()

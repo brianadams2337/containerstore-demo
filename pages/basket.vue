@@ -3,9 +3,9 @@
     class="container max-sm:max-w-none sm:py-10"
     data-testid="basket-container"
   >
-    <AsyncDataWrapper :status="basketStatus">
+    <SFAsyncDataWrapper :status="basketStatus">
       <div v-if="isBasketEmpty" class="space-y-8">
-        <EmptyState
+        <SFEmptyState
           :title="$t('basket.empty_title')"
           :description="$t('basket.empty_description')"
           show-default-actions
@@ -23,24 +23,24 @@
               :key="item.key"
             >
               <SFFadeInTransition>
-                <BasketAutomaticDiscountConditionBanner
+                <SFBasketAutomaticDiscountConditionBanner
                   v-if="
                     isAutomaticDiscountType(item.promotion) &&
                     item.isPromotionApplicableItemUnique
                   "
                   :basket-item="item"
                 />
-                <BasketGiftConditionBanner
+                <SFBasketGiftConditionBanner
                   v-if="isGiftApplicableItem(item)"
                   :basket-item="item"
                 />
               </SFFadeInTransition>
 
               <SFSwipeDelete @delete="removeItem(item)">
-                <BasketCard class="w-full" :item="item" :index="index" />
+                <SFBasketCard class="w-full" :item="item" :index="index" />
               </SFSwipeDelete>
               <SFFadeInTransition>
-                <BasketItemPromotionGifts
+                <SFBasketItemPromotionGifts
                   v-if="isGiftApplicableItem(item)"
                   :basket-item="item"
                 />
@@ -49,7 +49,7 @@
           </template>
 
           <div>
-            <BasketCard
+            <SFBasketCard
               v-for="(groupId, index) of Object.keys(orderedItems.groupedItems)"
               :key="`basket-group-${groupId}`"
               class="my-4"
@@ -59,7 +59,7 @@
           </div>
         </div>
 
-        <BasketSummary class="w-full md:w-2/5 2xl:w-1/3" />
+        <SFBasketSummary class="w-full md:w-2/5 2xl:w-1/3" />
       </div>
       <template #loading>
         <div class="flex flex-col-reverse gap-8 md:flex-row xl:gap-16">
@@ -73,7 +73,7 @@
           />
         </div>
       </template>
-    </AsyncDataWrapper>
+    </SFAsyncDataWrapper>
   </div>
 </template>
 
@@ -103,13 +103,13 @@ import {
   SFSkeletonLoader,
   SFSwipeDelete,
 } from '#storefront-ui/components'
-import AsyncDataWrapper from '~/components/AsyncDataWrapper.vue'
-import BasketAutomaticDiscountConditionBanner from '~/components/basket/promotion/BasketAutomaticDiscountConditionBanner.vue'
-import BasketGiftConditionBanner from '~/components/basket/promotion/BasketGiftConditionBanner.vue'
-import BasketCard from '~/components/basket/card/BasketCard.vue'
-import BasketItemPromotionGifts from '~/components/basket/promotion/BasketItemPromotionGifts.vue'
-import BasketSummary from '~/components/basket/summary/BasketSummary.vue'
-import EmptyState from '~/components/EmptyState.vue'
+import SFAsyncDataWrapper from '~/components/SFAsyncDataWrapper.vue'
+import SFBasketAutomaticDiscountConditionBanner from '~/components/basket/promotion/SFBasketAutomaticDiscountConditionBanner.vue'
+import SFBasketGiftConditionBanner from '~/components/basket/promotion/SFBasketGiftConditionBanner.vue'
+import SFBasketCard from '~/components/basket/card/SFBasketCard.vue'
+import SFBasketItemPromotionGifts from '~/components/basket/promotion/SFBasketItemPromotionGifts.vue'
+import SFBasketSummary from '~/components/basket/summary/SFBasketSummary.vue'
+import SFEmptyState from '~/components/SFEmptyState.vue'
 
 const basket = useBasket()
 const wishlist = useWishlist()

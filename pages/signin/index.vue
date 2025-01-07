@@ -1,5 +1,5 @@
 <template>
-  <SignInForm />
+  <SFSignInForm />
 </template>
 
 <script setup lang="ts">
@@ -7,7 +7,7 @@ import { defineOptions } from 'vue'
 import { useSeoMeta } from '@unhead/vue'
 import { definePageMeta } from '#imports'
 import { useNuxtApp } from '#app'
-import SignInForm from '~/components/auth/SignInForm.vue'
+import SFSignInForm from '~/components/auth/SFSignInForm.vue'
 
 const { $i18n } = useNuxtApp()
 

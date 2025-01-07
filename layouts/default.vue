@@ -21,7 +21,7 @@
         {{ $t('a11y.skip_to_search') }}
       </SFButton>
     </div>
-    <PromotionBanner
+    <SFPromotionBanner
       v-if="allCurrentPromotions.length"
       :promotions="allCurrentPromotions"
     />
@@ -31,12 +31,12 @@
       class="translate-y-0 transition-transform duration-300 ease-in-out"
       :class="{ 'lg:-translate-y-13': !isPromotionBannerShown }"
     >
-      <HeaderTopBar />
-      <Header v-model:is-mobile-sidebar-open="isMobileSidebarOpen" />
+      <SFHeaderTopBar />
+      <SFHeader v-model:is-mobile-sidebar-open="isMobileSidebarOpen" />
       <main id="main-content" class="grow focus:outline-none" tabindex="-1">
         <NuxtPage />
       </main>
-      <Footer
+      <SFFooter
         class="mt-16 max-lg:mb-4"
         :class="{ 'lg:translate-y-13': !isPromotionBannerShown }"
       />
@@ -62,16 +62,16 @@ import {
   useUserItemsTrackingWatcher,
   useCustomerDataChangeWatcher,
 } from '~/composables'
-import HeaderTopBar from '~/components/layout/headers/HeaderTopBar.vue'
+import SFHeaderTopBar from '~/components/layout/headers/SFHeaderTopBar.vue'
 import CountryDetection, {
   type ShopInfo,
-} from '~/components/CountryDetection.vue'
-import PromotionBanner from '~/components/promotion/PromotionBanner.vue'
+} from '~/components/SFCountryDetection.vue'
+import SFPromotionBanner from '~/components/promotion/SFPromotionBanner.vue'
 import { useDefaultBreakpoints } from '#storefront-ui/composables'
 import { SFToastContainer, SFButton } from '#storefront-ui/components'
 import { NuxtPage } from '#components'
-import Footer from '~/components/Footer.vue'
-import Header from '~/components/layout/headers/Header.vue'
+import SFFooter from '~/components/SFFooter.vue'
+import SFHeader from '~/components/layout/headers/SFHeader.vue'
 
 // Initialize data
 const { allCurrentPromotions } = useBasketPromotions()

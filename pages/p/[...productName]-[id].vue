@@ -1,5 +1,5 @@
 <template>
-  <AsyncDataWrapper :status="productDataStatus">
+  <SFAsyncDataWrapper :status="productDataStatus">
     <div v-if="product" class="xl:container md:pt-4 md:max-xl:mx-5">
       <div
         class="flex flex-col items-start gap-8 max-md:space-y-5 md:flex-row md:justify-start"
@@ -7,10 +7,10 @@
         <div
           class="flex items-start max-md:w-full md:sticky md:top-8 md:max-w-[700px] md:shrink"
         >
-          <ProductGallery v-if="product" :product="product" />
+          <SFProductGallery v-if="product" :product="product" />
         </div>
         <div class="flex w-full flex-col gap-4 md:max-w-[500px] md:shrink-[4]">
-          <ProductBreadcrumbs
+          <SFProductBreadcrumbs
             v-if="longestCategoryList"
             class="mb-8 hidden max-md:px-5 md:block"
             :product-categories="longestCategoryList"
@@ -35,7 +35,7 @@
           </h1>
 
           <div class="flex flex-col max-md:px-5 md:flex-col-reverse">
-            <ProductPrice
+            <SFProductPrice
               v-if="price"
               size="lg"
               class="mt-3"
@@ -46,16 +46,16 @@
               show-tax-info
               :show-price-from="showFrom"
             />
-            <ProductPromotionBanners :product="product" />
+            <SFProductPromotionBanners :product="product" />
           </div>
 
-          <ProductActions
+          <SFProductActions
             v-model:active-variant="activeVariant"
             :product="product"
             :promotion="promotion ?? undefined"
           />
 
-          <ProductPromotionGifts
+          <SFProductPromotionGifts
             v-if="
               promotion && isBuyXGetYType(promotion) && !isGiftAddedToBasket
             "
@@ -66,23 +66,23 @@
           />
 
           <SFFadeInTransition>
-            <StoreVariantAvailability
+            <SFStoreVariantAvailability
               v-if="activeVariant?.id"
               class="max-md:mx-5"
               :selected-store-id="selectedStoreId"
               :variant-id="activeVariant.id"
             />
           </SFFadeInTransition>
-          <LazyStoreLocatorSlideIn
+          <SFLazyStoreLocatorSlideIn
             v-if="activeVariant?.id"
             v-model:selected-store-id="selectedStoreId"
             :variant-id="activeVariant.id"
           />
         </div>
       </div>
-      <ProductDetails :product="product" class="py-10 md:ml-24" />
+      <SFProductDetails :product="product" class="py-10 md:ml-24" />
       <hr v-if="recommendedProductIds.length" class="mb-10 md:hidden" />
-      <ProductRecommendations
+      <SFProductRecommendations
         v-if="recommendedProductIds.length"
         class="max-md:px-5"
         :product-ids="recommendedProductIds"
@@ -93,12 +93,12 @@
             {{ recommendationTitle }}
           </h2>
         </template>
-      </ProductRecommendations>
+      </SFProductRecommendations>
     </div>
     <template #loading>
-      <ProductDetailPageLoadingState />
+      <SFProductDetailPageLoadingState />
     </template>
-  </AsyncDataWrapper>
+  </SFAsyncDataWrapper>
 </template>
 
 <script setup lang="ts">
@@ -126,26 +126,26 @@ import { isBuyXGetYType } from '~/utils/promotion'
 import { useFavoriteStore } from '~/composables/useFavoriteStore'
 import { useI18n } from '#i18n'
 import { PRODUCT_DETAIL_WITH_PARAMS } from '~/constants'
-import AsyncDataWrapper from '~/components/AsyncDataWrapper.vue'
-import ProductGallery from '~/components/product/detail/productGallery/ProductGallery.vue'
-import ProductBreadcrumbs from '~/components/product/ProductBreadcrumbs.vue'
-import ProductPrice from '~/components/product/ProductPrice.vue'
-import ProductPromotionBanners from '~/components/product/promotion/banners/ProductPromotionBanners.vue'
-import ProductActions from '~/components/product/detail/ProductActions.vue'
-import ProductPromotionGifts from '~/components/product/promotion/gifts/ProductPromotionGifts.vue'
-import StoreVariantAvailability from '~/components/locator/StoreVariantAvailability.vue'
-import ProductDetails from '~/components/product/ProductDetails.vue'
-import ProductRecommendations from '~/components/product/ProductRecommendations.vue'
+import SFAsyncDataWrapper from '~/components/SFAsyncDataWrapper.vue'
+import SFProductGallery from '~/components/product/detail/productGallery/SFProductGallery.vue'
+import SFProductBreadcrumbs from '~/components/product/SFProductBreadcrumbs.vue'
+import SFProductPrice from '~/components/product/SFProductPrice.vue'
+import SFProductPromotionBanners from '~/components/product/promotion/banners/SFProductPromotionBanners.vue'
+import SFProductActions from '~/components/product/detail/SFProductActions.vue'
+import SFProductPromotionGifts from '~/components/product/promotion/gifts/SFProductPromotionGifts.vue'
+import SFStoreVariantAvailability from '~/components/locator/SFStoreVariantAvailability.vue'
+import SFProductDetails from '~/components/product/SFProductDetails.vue'
+import SFProductRecommendations from '~/components/product/SFProductRecommendations.vue'
 import { SFHeadline, SFFadeInTransition } from '#storefront-ui/components'
-import ProductDetailPageLoadingState from '~/components/product/detail/ProductDetailPageLoadingState.vue'
+import SFProductDetailPageLoadingState from '~/components/product/detail/SFProductDetailPageLoadingState.vue'
 import {
   getCombineWithProductIds,
   useProductSeoData,
 } from '#storefront-product-detail'
 import { useBreadcrumbs } from '~/composables'
 
-const LazyStoreLocatorSlideIn = defineAsyncComponent(
-  () => import('~/components/locator/StoreLocatorSlideIn.vue'),
+const SFLazyStoreLocatorSlideIn = defineAsyncComponent(
+  () => import('~/components/locator/SFStoreLocatorSlideIn.vue'),
 )
 
 definePageMeta({

@@ -1,6 +1,6 @@
 <template>
   <div class="container my-0 overflow-hidden px-0 max-sm:max-w-none">
-    <AccountHeader
+    <SFAccountHeader
       :title="$t('navigation.my_account')"
       icon="IconUserSecondary"
     />
@@ -43,7 +43,7 @@
         />
       </div>
       <div class="mx-auto mt-12 w-fit">
-        <LogoutButton data-testid="logout-button" />
+        <SFLogoutButton data-testid="logout-button" />
       </div>
     </SFPageContainer>
   </div>
@@ -57,8 +57,8 @@ import { useRouteHelpers } from '~/composables'
 import { useNuxtApp } from '#app'
 import { useUser } from '#storefront/composables'
 import { routeList } from '~/utils/route'
-import AccountHeader from '~/components/account/AccountHeader.vue'
-import LogoutButton from '~/components/auth/LogoutButton.vue'
+import SFAccountHeader from '~/components/account/SFAccountHeader.vue'
+import SFLogoutButton from '~/components/auth/SFLogoutButton.vue'
 import {
   SFContainerLink,
   SFPageContainer,
