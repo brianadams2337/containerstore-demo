@@ -3,61 +3,66 @@
     <div
       class="relative inline-flex items-center justify-center space-x-1 bg-white p-4"
     >
-      <span
+      <SFButton
         v-show="currentPage > 1"
+        variant="raw"
         class="absolute -left-6 top-1/2 inline-block -translate-y-1/2 cursor-pointer p-2"
         @click="changePage(currentPage - 1)"
       >
         <IconChevronLeft class="size-5" />
-      </span>
+      </SFButton>
 
-      <span
+      <SFButton
         v-for="page in firstOptionSet"
         :key="page"
+        variant="raw"
         class="inline-block cursor-pointer p-2 text-center"
         :class="{ 'font-bold': page === currentPage }"
         @click="changePageAndScroll(page)"
       >
         {{ page }}
-      </span>
+      </SFButton>
 
       <div v-if="firstDotsVisible" class="mt-3">...</div>
 
-      <span
+      <SFButton
         v-for="page in middleOptionSet"
         :key="page"
+        variant="raw"
         class="inline-block cursor-pointer p-2 text-center"
         :class="{ 'font-bold': page === currentPage }"
         @click="changePageAndScroll(page)"
       >
         {{ page }}
-      </span>
+      </SFButton>
 
       <div v-if="lastDotsVisible" class="mt-3">...</div>
-      <span
+      <SFButton
         v-for="page in lastOptionSet"
         :key="page"
+        variant="raw"
         class="inline-block cursor-pointer p-2 text-center"
         :class="{ 'font-bold': page === currentPage }"
         @click="changePageAndScroll(page)"
       >
         {{ page }}
-      </span>
+      </SFButton>
 
-      <span
-        v-show="currentPage && lastPage"
-        size="sm"
+      <SFButton
+        v-show="currentPage !== lastPage"
+        variant="raw"
         class="absolute -right-6 top-1/2 inline-block -translate-y-1/2 cursor-pointer p-2"
         @click="changePage(currentPage + 1)"
       >
         <IconChevronRight class="size-5" />
-      </span>
+      </SFButton>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref, toRefs, watch } from 'vue'
+import { SFButton } from '#storefront-ui/components'
 
 type Props = {
   recordCount?: number
