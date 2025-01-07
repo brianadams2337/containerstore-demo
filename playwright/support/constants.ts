@@ -11,8 +11,7 @@ export const LOGIN_WRONG_CREDENTIALS = {
   firstName: 'test',
   lastName: 'test',
   email: 'Aqa.testxx@test.com',
-  // eslint-disable-next-line sonarjs/no-hardcoded-passwords
-  password: 'Aqa-wrong-pass',
+  password: process.env.TEST_USER_WRONG_PASSWORD as string,
 }
 
 export const TEST_ITEM_REGULAR = {
@@ -121,8 +120,7 @@ export const USER_WITHOUT_ORDERS = {
   firstName: 'Test',
   lastName: 'User No Orders',
   email: 'sfb.aqa.no-orders@scayle.com',
-  // eslint-disable-next-line sonarjs/no-hardcoded-passwords
-  password: 'N00rd3rs!',
+  password: process.env.TEST_USER_NO_ORDERS_PASSWORD as string,
 }
 
 export const CHECKOUT_URL = '/checkout'

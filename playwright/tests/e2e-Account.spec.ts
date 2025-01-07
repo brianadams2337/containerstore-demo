@@ -1,26 +1,36 @@
 import { expect, test } from '../fixtures/fixtures'
+import { getUserForBrowser } from '../support/utils'
 import {
   HOMEPAGE_PATH_DE,
-  LOGGED_IN_USER_DATA,
   SIGNIN_URL,
   USER_ACCOUNT,
+  TEST_USERS,
 } from '../support/constants'
 
-test.beforeEach(async ({ signinPage, page, baseURL, countryDetector }) => {
-  await expect(async () => {
-    const url = baseURL + SIGNIN_URL
-    await page.goto(url, { waitUntil: 'load' })
-    await countryDetector.closeModal()
-    await signinPage.fillLoginData(
-      LOGGED_IN_USER_DATA.email,
-      LOGGED_IN_USER_DATA.password,
-    )
-    await signinPage.clickLoginButton()
-    await page.waitForURL(HOMEPAGE_PATH_DE)
-    await page.goto(baseURL + USER_ACCOUNT.accountUserPath)
-    await page.waitForURL(baseURL + USER_ACCOUNT.accountUserPath)
-  }).toPass()
-})
+test.beforeEach(
+  async ({ signinPage, page, baseURL, countryDetector, header }, testInfo) => {
+    await expect(async () => {
+      const url = baseURL + SIGNIN_URL
+      const projectName = testInfo.project.name
+      const { email, password } = getUserForBrowser(projectName)
+
+      await page.goto(url, { waitUntil: 'load' })
+      await countryDetector.closeModal()
+      await signinPage.fillLoginData(email, password)
+      await signinPage.clickLoginButton()
+      await page.waitForURL(HOMEPAGE_PATH_DE)
+      await header.mainHeader.waitFor()
+      await page.goto(baseURL + USER_ACCOUNT.accountUserPath, {
+        waitUntil: 'load',
+      })
+      await page.waitForTimeout(1500)
+      await page.waitForURL(baseURL + USER_ACCOUNT.accountUserPath)
+      await header.mainHeader.waitFor()
+    }).toPass()
+  },
+)
+test.setTimeout(60000)
+test.describe.configure({ mode: 'serial' })
 
 test('C2141211: Verify Account form elements', async ({ accountPage }) => {
   await expect(async () => {
@@ -68,13 +78,14 @@ test('C2132122: Verify user data update', async ({
 test('C2141212: Verify password change', async ({
   accountPage,
   toastMessage,
+  page,
 }) => {
   await test.step('Change password - correct format', async () => {
     await expect(async () => {
       await accountPage.updatePassword(
-        LOGGED_IN_USER_DATA.password,
-        LOGGED_IN_USER_DATA.password,
-        LOGGED_IN_USER_DATA.password,
+        TEST_USERS.testUserPassword,
+        TEST_USERS.testUserPassword,
+        TEST_USERS.testUserPassword,
         true,
       )
       await toastMessage.assertToastInfoIsVisible()
@@ -83,11 +94,12 @@ test('C2141212: Verify password change', async ({
   await test.step('Change password - non-matching passwords', async () => {
     await expect(async () => {
       await accountPage.updatePassword(
-        LOGGED_IN_USER_DATA.password,
-        LOGGED_IN_USER_DATA.password,
+        TEST_USERS.testUserPassword,
+        TEST_USERS.testUserPassword,
         USER_ACCOUNT.nonMatchingPassword,
         false,
       )
+      await page.waitForTimeout(1000)
       await expect(accountPage.passwordMismatchLabel).toBeVisible()
       await expect(accountPage.passwordUpdateButton).not.toBeEnabled()
     }).toPass()
