@@ -11898,10 +11898,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha512-4jbtZXNAsfZbAHiiqjLPBiCl16dES1zI4Hpzzxw61Tk+loF+sBDBKx1ICKKKwIqQ7M0mFn1TmkN7euSncWgHiQ==
 
-nuxi@3.18.2:
-  version "3.18.2"
-  resolved "https://registry.yarnpkg.com/nuxi/-/nuxi-3.18.2.tgz#44fa0d0bcca7fdcb657945ee05587f38029521df"
-  integrity sha512-JKpbXJ5suXSBJxPvosw8eqdJOniNs6RUmi91aaRQG4jmKcDCZgbZIPUBBJNdllCIcrE0jQQO40BfFLxnzx8Ipg==
+nuxi@3.19.1:
+  version "3.19.1"
+  resolved "https://registry.yarnpkg.com/nuxi/-/nuxi-3.19.1.tgz#abf77b00a865085aafe75bc28b6d7cd406705d4d"
+  integrity sha512-yjJggqwSkymaWM/f4+1nPBTW1Hg7tZ0ZQax69zlqq+Ftc6rfAnJSgGUwhAuoo7E7x3JGQ0Uzzokz11Y7PuRj6g==
 
 nuxi@^3.15.0:
   version "3.16.0"
