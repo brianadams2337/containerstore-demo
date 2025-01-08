@@ -7,7 +7,7 @@
   >
     <SFNavigationTreeItem
       :navigation-item="item"
-      class="!mr-0 flex !h-6 items-center px-1.5 py-1"
+      class="!mr-0 flex !h-6 items-center py-1"
       :class="{
         'text-primary': !item.customData?.linkColor,
       }"
