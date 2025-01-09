@@ -50,12 +50,12 @@ export function useRouteHelpers() {
 
   const buildCategorySuggestionRoute = ({
     categorySuggestion,
-  }: CategorySearchSuggestion): RouteLocationRaw => {
+  }: CategorySearchSuggestion) => {
     const { category, filters } = categorySuggestion
     return {
       path: buildCategoryPath(category),
       query: buildFiltersQuery(filters),
-    }
+    } satisfies RouteLocationRaw
   }
 
   const getSearchSuggestionPath = (

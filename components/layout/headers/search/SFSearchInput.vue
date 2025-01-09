@@ -61,7 +61,7 @@
       :navigation-items="navigationItems"
       :search-query="searchQuery"
       :show-suggestions-loader="showSuggestionsLoader"
-      @click:result="trackSuggestionClickAndClose"
+      @click:result="trackSearchClickAndClose"
       @close="closeAndReset"
     />
   </section>
@@ -72,15 +72,21 @@ import { nextTick, watch, ref } from 'vue'
 import { onClickOutside, onKeyStroke, useEventListener } from '@vueuse/core'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import type { SearchEntity } from '@scayle/storefront-nuxt'
-import { useSearchData, useTrackingEvents } from '~/composables'
+import {
+  useSearchData,
+  useTrackingEvents,
+  useRouteHelpers,
+} from '~/composables'
 import SFSearchResultsContainer from '~/components/search/SFSearchResultsContainer.vue'
 import { useSearchInputKeybindings } from '~/composables/useSearchInputKeybindings'
 import { SFButton } from '#storefront-ui/components'
 
 const emit = defineEmits<{
   close: []
-  'click:result': [event: SearchEntity]
+  'click:result': [event: SearchEntity | 'show_all']
 }>()
+
+const { getSearchRoute, localizedNavigateTo } = useRouteHelpers()
 
 const {
   searchQuery,
@@ -91,7 +97,6 @@ const {
   navigationItems,
   totalCount,
   showSuggestionsLoader,
-  resolveSearchAndRedirect,
 } = useSearchData()
 
 watch(
@@ -128,8 +133,23 @@ const closeAndReset = async () => {
   emit('close')
 }
 
-const { trackSearchSuggestionClick } = useTrackingEvents()
-const trackSuggestionClickAndClose = (suggestion: SearchEntity) => {
+const { trackSearchSuggestionClick, trackSearch } = useTrackingEvents()
+const trackSearchClickAndClose = (suggestion: SearchEntity | 'show_all') => {
+  if (suggestion === 'show_all') {
+    const route = getSearchRoute(searchQuery.value)
+    trackSearch({
+      searchTerm: searchQuery.value,
+      pagePayload: {
+        content_name: route,
+        page_type: 'search',
+        page_type_id: '',
+      },
+      suggestion: '',
+      searchAction: 'search_term',
+      searchDestination: route,
+    })
+    return
+  }
   trackSearchSuggestionClick(searchQuery.value, suggestion)
   closeAndReset()
   emit('click:result', suggestion)
@@ -139,7 +159,22 @@ const goToSearchPage = async () => {
   if (!searchQuery.value) {
     return
   }
-  await resolveSearchAndRedirect()
+  const route = getSearchRoute(searchQuery.value)
+
+  trackSearch({
+    searchTerm: searchQuery.value,
+    pagePayload: {
+      content_name: route,
+      page_type: 'search',
+      page_type_id: '',
+    },
+    suggestion: '',
+    searchAction: 'search_term',
+    searchDestination: route,
+  })
+
+  await localizedNavigateTo(route)
+
   closeAndReset()
 }
 

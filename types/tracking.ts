@@ -226,8 +226,10 @@ export type SearchAction =
   | 'history_term'
   | 'suggested_product'
   | 'suggested_category'
+  | 'suggested_page'
   | 'search_button'
   | 'search_hotkey'
+  | 'search_term'
 
 export interface SearchData {
   search_term: string
@@ -363,13 +365,9 @@ export type TrackViewItemParams = {
 export type TrackSearchEventParams = {
   searchTerm: string
   suggestion?: string
-  searchAction:
-    | 'search_button'
-    | 'suggested_product'
-    | 'suggested_category'
-    | 'search_hotkey'
-    | 'history_term'
+  searchAction: SearchAction
   searchDestination?: string
+  pagePayload?: BasicViewData
 }
 
 export type TrackContentViewEventParams = {

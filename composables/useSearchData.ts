@@ -1,8 +1,5 @@
 import { ref, computed } from 'vue'
 import { useDebounceFn } from '@vueuse/core'
-import { getFirstAttributeValue } from '@scayle/storefront-nuxt'
-import { useRouteHelpers } from '~/composables/useRouteHelpers'
-import { useTrackingEvents } from '~/composables/useTrackingEvents'
 import { useStorefrontSearch } from '#storefront/composables'
 import {
   isCategorySuggestion,
@@ -14,15 +11,6 @@ import { DEBOUNCED_SEARCH_DURATION } from '~/constants'
 export function useSearchData() {
   const key = 'storefront-search'
   const searchQuery = ref<string>('')
-
-  const {
-    getSearchRoute,
-    localizedNavigateTo,
-    getProductDetailRoute,
-    buildCategorySuggestionRoute,
-  } = useRouteHelpers()
-
-  const { trackSearchSuggestionClick } = useTrackingEvents()
 
   const { data, resolveSearch, getSearchSuggestions, status, ...searchData } =
     useStorefrontSearch(searchQuery, {}, key)
@@ -51,33 +39,6 @@ export function useSearchData() {
 
   const noSuggestions = computed(() => totalCount.value === 0)
 
-  const resolveSearchAndRedirect = async () => {
-    const resolved = await resolveSearch()
-
-    if (!resolved?.type) {
-      return await localizedNavigateTo(getSearchRoute(searchQuery.value))
-    }
-
-    trackSearchSuggestionClick(searchQuery.value, resolved)
-
-    if (isProductSuggestion(resolved)) {
-      const { product } = resolved.productSuggestion
-      return await localizedNavigateTo(
-        getProductDetailRoute(
-          product.id,
-          getFirstAttributeValue(product.attributes, 'name')?.label,
-        ),
-      )
-    }
-
-    if (isCategorySuggestion(resolved)) {
-      const route = buildCategorySuggestionRoute(resolved)
-      return await localizedNavigateTo(route)
-    }
-
-    return await localizedNavigateTo(getSearchRoute(searchQuery.value))
-  }
-
   const hasSearchQuery = computed(() => searchQuery.value?.length)
 
   const debouncedSearch = useDebounceFn(async () => {
@@ -104,7 +65,6 @@ export function useSearchData() {
     navigationItems,
     noSuggestions,
     totalCount,
-    resolveSearchAndRedirect,
     hasSearchQuery,
     debouncedSearch,
     showSuggestionsLoader,
