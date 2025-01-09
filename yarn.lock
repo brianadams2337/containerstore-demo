@@ -4297,10 +4297,10 @@
     vue-router "^4.4.0"
     zod "^3.23.8"
 
-"@scayle/storefront-product-detail@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-product-detail/-/storefront-product-detail-1.0.1.tgz#aa48bb226855ad09fa69e29f102510222c7a2bbc"
-  integrity sha512-G9z0xpAXzbdFKOZQDDjAuTAmJS6BHcgJgWMFNpsAjNg8HLUqgwQZJSoRPh92ZyOUvbY0WTAGebLVbeX1yqNHww==
+"@scayle/storefront-product-detail@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-product-detail/-/storefront-product-detail-1.0.2.tgz#0a70a65bac6eaeedbdd3fdade42fab903c13c29d"
+  integrity sha512-66MT98xmiaXVqw4AaLRAHqqkqZcF1VX0egkI3oHe+S31rvNIgQWZEWtcJ3/RjGnupJEPsnbNdJjhUMJ+4yF0uQ==
 
 "@scayle/storefront-product-listing@1.1.3":
   version "1.1.3"
