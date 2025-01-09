@@ -84,7 +84,7 @@
     "storyblok": "3.35.2",
     "storyblok-generate-ts": "2.1.0",
     "tailwindcss": "3.4.17",
-    "typescript": "5.7.2",
+    "typescript": "5.7.3",
     "unimport": "3.13.4",
     "utility-types": "3.11.0",
     "vitest": "2.1.8",
