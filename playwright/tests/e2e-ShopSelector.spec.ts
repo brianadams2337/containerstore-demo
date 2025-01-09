@@ -7,7 +7,7 @@ test.beforeEach(async ({ homePage, countryDetector, page }) => {
   await countryDetector.closeModal()
 })
 
-test('Verify Shop Selector switch to different shop', async ({
+test('C2162469: Verify Shop Selector switch to different shop', async ({
   shopSelector,
   page,
   mobileNavigation,
@@ -42,7 +42,7 @@ test('Verify Shop Selector switch to different shop', async ({
   })
 })
 
-test('Verify Shop Selector switch to the current shop', async ({
+test('C2162470: Verify Shop Selector switch to the current shop', async ({
   shopSelector,
   page,
   mobileNavigation,
@@ -60,7 +60,7 @@ test('Verify Shop Selector switch to the current shop', async ({
   }).toPass()
 })
 
-test('Verify Shop Selector switch from non-Homepage', async ({
+test('C2162471: Verify Shop Selector switch from non-Homepage', async ({
   shopSelector,
   page,
   mobileNavigation,

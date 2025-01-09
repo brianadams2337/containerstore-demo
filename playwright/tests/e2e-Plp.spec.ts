@@ -279,7 +279,7 @@ test('C2141756: Verify PLP page title', async ({ breadcrumb, page }) => {
   )
 })
 
-test('Verify PLP Pagination', async ({
+test('C2130729: Verify PLP Pagination', async ({
   productListingPage,
   baseURL,
   countryDetector,
@@ -305,7 +305,7 @@ test('Verify PLP Pagination', async ({
   })
 })
 
-test('Verify PLP Pagination setting filters', async ({
+test('C2162468: Verify PLP Pagination setting filters', async ({
   productListingPage,
   baseURL,
   countryDetector,
@@ -337,7 +337,7 @@ test('Verify PLP Pagination setting filters', async ({
   })
 })
 
-test('Verify PLP Sorting', async ({
+test('C2162411: Verify PLP Sorting', async ({
   productListingPage,
   baseURL,
   countryDetector,

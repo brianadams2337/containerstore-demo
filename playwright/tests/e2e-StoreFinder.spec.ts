@@ -8,7 +8,7 @@ test.beforeEach(async ({ homePage, countryDetector, page }) => {
   await countryDetector.closeModal()
 })
 
-test('Verify find store by city', async ({
+test('C2161318: Verify find store by city', async ({
   page,
   mobileNavigation,
   storeLocator,
@@ -21,7 +21,7 @@ test('Verify find store by city', async ({
   await storeLocator.assertStoreListIsLoaded()
 })
 
-test('Verify find store by ZIP code', async ({
+test('C2161319: Verify find store by ZIP code', async ({
   page,
   mobileNavigation,
   storeLocator,
@@ -34,7 +34,7 @@ test('Verify find store by ZIP code', async ({
   await storeLocator.assertStoreListIsLoaded()
 })
 
-test('Verify find store by invalid ZIP code', async ({
+test('C2161368: Verify find store by invalid ZIP code', async ({
   page,
   mobileNavigation,
   storeLocator,
