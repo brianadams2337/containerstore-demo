@@ -35,6 +35,7 @@
     "contentful:download": "env-cmd -f .env.contentful -x contentful-export --space-id \\$CONTENTFUL_SPACE_ID --management-token \\$CONTENTFUL_MANAGEMENT_TOKEN  --skip-webhooks --skip-roles --content-file contentful.\\$CONTENTFUL_SPACE_ID.json",
     "contentful:generate": "env-cmd -f .env.contentful -x cf-content-types-generator -X --response --typeguard ./contentful.\\$CONTENTFUL_SPACE_ID.json --out ./modules/cms/providers/contentful/types/gen && prettier --write modules/cms/providers/contentful/types/gen/** && find ./modules/cms/providers/contentful/types/gen -type f -name '*.ts' -print0 | xargs -0 sed -i '' -E \"s/Type([[:alnum:]]+)<'WITHOUT_(LINK_RESOLUTION|UNRESOLVABLE_LINKS)'>/Type\\1<'WITHOUT_\\2', LocaleCode>/g\"  ",
     "test": "vitest",
+    "test:ci": "vitest --run --coverage --reporter=default --reporter=junit --outputFile=./coverage/junit.xml",
     "test:run": "vitest run",
     "coverage": "vitest run --coverage"
   },

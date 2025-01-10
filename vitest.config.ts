@@ -13,9 +13,9 @@ export default defineVitestConfig({
     globals: true,
     include: ['**/*.test.?(c|m)[jt]s?(x)'],
     coverage: {
-      all: true,
       provider: 'v8',
-      reporter: ['text'],
+      reporter: ['text', 'cobertura'],
+      reportsDirectory: 'coverage',
     },
     environmentOptions: {
       nuxt: {
