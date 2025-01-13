@@ -5913,7 +5913,7 @@ available-typed-arrays@^1.0.7:
   dependencies:
     possible-typed-array-names "^1.0.0"
 
-axios@1.7.9, axios@^1.7.8:
+axios@1.7.9, axios@^1.7.8, axios@^1.7.9:
   version "1.7.9"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.9.tgz#d7d071380c132a24accda1b2cfc1535b79ec650a"
   integrity sha512-LhLcE7Hbiryz8oMDdDptSrWowmB4Bl6RCt6sIJKpRB4XtVf0iEgewX3au/pJqm+Py1kCASkb/FFKjxQaLtxJvw==
@@ -6941,14 +6941,14 @@ contentful-sdk-core@^9.0.1:
   optionalDependencies:
     "@rollup/rollup-linux-x64-gnu" "^4.18.0"
 
-contentful@11.4.2:
-  version "11.4.2"
-  resolved "https://registry.yarnpkg.com/contentful/-/contentful-11.4.2.tgz#88c344318372d42894bdf9c694ccb380cbca170e"
-  integrity sha512-FufJ44gubPRxOc1ciF2xaCnnIONaeTpXbLj1cLCXtSCGS9GWg0AetG2XouRT1nSEWq6Fc/1cPn9ZY3n30BdwCA==
+contentful@11.4.3:
+  version "11.4.3"
+  resolved "https://registry.yarnpkg.com/contentful/-/contentful-11.4.3.tgz#14f741e20279a18cdecdc1bb0ab0291ec0d71396"
+  integrity sha512-5RcWIXsbqlIhGkN12sYj5b28J7JbVDIm4i2IcdGeGJ9tUmMSb6Jpn64PaC9bC7ptMEe9mq/yBwh/cMrdaJgiwQ==
   dependencies:
     "@contentful/content-source-maps" "^0.11.7"
     "@contentful/rich-text-types" "^16.6.1"
-    axios "^1.7.4"
+    axios "^1.7.9"
     contentful-resolve-response "^1.9.0"
     contentful-sdk-core "^9.0.1"
     json-stringify-safe "^5.0.1"
