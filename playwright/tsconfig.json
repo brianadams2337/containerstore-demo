@@ -7,7 +7,8 @@
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     "outDir": "./dist",
-    "types": ["node", "expect-playwright"]
+    "types": ["node", "expect-playwright"],
+    "resolveJsonModule": true
   },
   "include": [
     "./tests/**/*.ts",
