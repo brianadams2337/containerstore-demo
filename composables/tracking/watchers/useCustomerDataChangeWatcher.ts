@@ -3,26 +3,21 @@ import { onNuxtReady } from '#app/composables/ready'
 import { useUser } from '#storefront/composables'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
 
-export const useCustomerDataChangeWatcher = async () => {
+export const useCustomerDataChangeWatcher = () => {
   const scope = getCurrentScope()
   const { trackCustomerData } = useTrackingEvents()
-  const { isLoggedIn, customerType, user, status } = await useUser()
+  const { isLoggedIn, customerType, user, status } = useUser()
 
-  scope?.run(() => {
-    watch(
-      () => user.value,
-      (userData) => {
-        if (!isLoggedIn.value) {
-          return
-        }
-        trackCustomerData({
-          isLoggedIn: isLoggedIn.value,
-          customerType: customerType.value,
-          user: userData,
-        })
-      },
-    )
-  })
+  watch(
+    () => user.value,
+    (userData) => {
+      trackCustomerData({
+        isLoggedIn: isLoggedIn.value,
+        customerType: customerType.value,
+        user: userData,
+      })
+    },
+  )
 
   // NOTE: Sometimes, when the user is logged in, “duplicate” `customer_data` events on page refresh will be triggered.
   // This is actually not a real "duplicate" event, as the first event will have a guest user,
