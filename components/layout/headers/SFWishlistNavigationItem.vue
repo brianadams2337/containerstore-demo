@@ -36,4 +36,3 @@ const ariaLabel = computed(() =>
   ),
 )
 </script>
-s
