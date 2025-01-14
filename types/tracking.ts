@@ -261,7 +261,7 @@ export interface CustomerData {
   bi_sc?: number
   status?: StatusType
   eh: string
-  content_name: string
+  pagePayload?: BasicViewData
 }
 
 export interface CustomerInfo {
@@ -271,12 +271,13 @@ export interface CustomerInfo {
   login_method?: string
   status?: StatusType
   eh: string
-  content_name: string
+  pagePayload?: BasicViewData
 }
 
 export interface CustomerLogoutData {
   customer_id?: number
   eh?: string
+  pagePayload?: BasicViewData
 }
 
 export type TrackingPayload =

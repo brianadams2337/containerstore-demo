@@ -7,6 +7,7 @@ import type {
   AuthTrackingEvent,
   CustomerType,
 } from '~/types/tracking'
+import { usePageState } from '~/composables/usePageState'
 
 export type AuthTrackingEventData = {
   customer_id?: number
@@ -23,6 +24,7 @@ const useUserActionEvents = (
   track: (event: TrackingEvent, payload: TrackingPayload) => void,
 ) => {
   const route = useRoute()
+  const { pageState } = usePageState()
 
   return {
     trackLogout: () => {
@@ -30,6 +32,8 @@ const useUserActionEvents = (
         customer_id: undefined,
         eh: undefined,
         content_name: route.fullPath,
+        page_type: pageState.value.type,
+        page_type_id: pageState.value.typeId,
       })
     },
 
@@ -54,7 +58,11 @@ const useUserActionEvents = (
           eh,
           customer_type: customerType, // NOTE: CO should add this to payload as well
           status,
-          content_name: route.fullPath,
+          pagePayload: {
+            content_name: route.fullPath,
+            page_type: pageState.value.type,
+            page_type_id: pageState.value.typeId,
+          },
         }),
       )
     },

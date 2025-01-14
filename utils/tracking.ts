@@ -184,13 +184,13 @@ export const mapCustomerInfoToTrackingPayload = ({
   login_method: loginMethod,
   customer_id: customerId,
   customer_type: customerType = 'new',
-  content_name: contentName,
+  pagePayload,
 }: CustomerData): CustomerInfo => {
   const mappedPayload: CustomerInfo = {
     ...(loginMethod ? { login_method: loginMethod } : { method }),
     eh: eh || '',
     customer_type: customerType,
-    content_name: contentName,
+    ...(pagePayload ?? {}),
     status,
   }
   if (customerId) {
