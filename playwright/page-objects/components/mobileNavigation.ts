@@ -47,4 +47,30 @@ export class MobileNavigation {
     await this.searchDisplayAllResults.waitFor()
     await this.searchDisplayAllResults.click()
   }
+
+  getMobileMainCategory(value: string): Locator {
+    return this.page.getByTestId(`mobile-nav-link-${value}`)
+  }
+
+  getMobileSubCategory(value: string): Locator {
+    return this.page.getByTestId('mobile-navigation-item').getByText(value)
+  }
+
+  getMobileNavAccordion(value: string): Locator {
+    return this.page.getByTestId('mobile-nav-accordion').getByText(value)
+  }
+
+  async navigateToPlpMobile(
+    mainCategory: string,
+    categoryLevel2: string,
+    categoryLevel3: string,
+  ) {
+    await this.sideNavigationButton.click()
+    await this.page.waitForLoadState('domcontentloaded')
+    await this.getMobileMainCategory(mainCategory).waitFor()
+    await this.getMobileMainCategory(mainCategory).click()
+    await this.getMobileNavAccordion(categoryLevel2).click()
+    await this.getMobileSubCategory(categoryLevel3).click()
+    await this.page.waitForLoadState('domcontentloaded')
+  }
 }

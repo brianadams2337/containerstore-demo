@@ -21,7 +21,11 @@
     :style="style"
     @mouseenter="emit('mouseenter:navigation-item')"
   >
-    <div v-if="iconUrl" class="flex items-center gap-2">
+    <div
+      v-if="iconUrl"
+      class="flex items-center gap-2"
+      data-testid="navigation-item"
+    >
       <object
         v-if="iconUrl"
         :data="iconUrl"

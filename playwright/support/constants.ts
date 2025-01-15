@@ -168,3 +168,10 @@ export const SORTING = {
   priceAsc: 'price_asc',
   reductionDesc: 'reduction_desc',
 }
+
+export const NAVIGATION_TEST_ITEMS = {
+  mainCategory: 'Frauen',
+  categoryLevel2: 'Bekleidung',
+  categoryLevel3: 'Kleider',
+  shopName: 'SCAYLE',
+}

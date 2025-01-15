@@ -18,6 +18,7 @@
           v-for="item in navigationItems"
           :key="item.id"
           class="flex cursor-pointer items-center pr-4"
+          :data-testid="`mobile-nav-link-${item.name}`"
           :aria-label="item.name"
           @click="selectItem(item)"
         >
@@ -104,6 +105,7 @@
                   v-for="child in item.children"
                   :key="child.id"
                   class="flex items-center"
+                  data-testid="mobile-navigation-item"
                 >
                   <SFNavigationTreeItem
                     :navigation-item="child"

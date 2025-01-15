@@ -2,6 +2,7 @@
   <div
     v-if="item?.children?.length"
     class="flex h-80 w-full gap-x-14 border-t border-gray-200 bg-white px-20 py-10 drop-shadow-md"
+    data-testid="desktop-navigation-flyout"
   >
     <ul
       v-for="columnItem in item.children"

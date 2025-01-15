@@ -18,6 +18,7 @@
       <summary class="list-none marker:hidden">
         <div
           class="flex w-full cursor-pointer gap-4"
+          data-testid="mobile-nav-accordion"
           :class="
             variant === 'wide'
               ? 'max-md:justify-between md:h-min md:flex-row-reverse md:justify-end items-center'
