@@ -15,7 +15,7 @@
         class="h-full gap-1.5 px-2 !text-gray-600 -outline-offset-5 hover:bg-indigo-200/10 focus-visible:shadow-inner-solid lg:!text-white"
         data-testid="language-listbox"
       >
-        <IconNewGlobe
+        <IconGlobe
           class="size-5 lg:size-3.5"
           data-testid="shop-switcher-globe-icon"
         />
@@ -45,7 +45,7 @@
               {{ $t('shop_selector.choose_shop') }}
             </div>
             <SFButton variant="raw" class="ml-auto" @click="close">
-              <IconNewClose class="size-5 text-gray-400" />
+              <IconClose class="size-5 text-gray-400" />
             </SFButton>
           </div>
           <div class="text-base">

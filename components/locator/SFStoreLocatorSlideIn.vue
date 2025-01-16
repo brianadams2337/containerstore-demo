@@ -16,7 +16,7 @@
             @click="toggleItem"
           >
             <template #icon="{ _class }">
-              <IconNewClose :class="_class" />
+              <IconClose :class="_class" />
             </template>
           </SFButton>
         </div>

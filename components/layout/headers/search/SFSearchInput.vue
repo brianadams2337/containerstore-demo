@@ -24,7 +24,7 @@
         tabindex="-1"
         class="flex items-center justify-center max-lg:size-11"
       >
-        <IconNewSearch class="size-5 shrink-0" />
+        <IconSearch class="size-5 shrink-0" />
       </button>
       <label class="flex h-full min-w-0 grow items-center gap-2">
         <input

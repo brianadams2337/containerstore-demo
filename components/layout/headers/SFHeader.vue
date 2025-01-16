@@ -9,7 +9,7 @@
       data-testid="side-navigation-button"
       @click="isSideNavigationOpen = !isSideNavigationOpen"
     >
-      <IconNewClose v-if="isSideNavigationOpen" class="size-7" />
+      <IconClose v-if="isSideNavigationOpen" class="size-7" />
       <IconBurger v-else class="size-7" />
     </SFButton>
 
@@ -33,7 +33,7 @@
       class="lg:!ml-0"
       @click="isSideNavigationOpen = false"
     >
-      <IconNewLogo class="size-7" aria-hidden="true" />
+      <IconLogo class="size-7" aria-hidden="true" />
     </SFLocalizedLink>
 
     <nav class="h-full grow max-lg:hidden" data-testid="nav-categories">

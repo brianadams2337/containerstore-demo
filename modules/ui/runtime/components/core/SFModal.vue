@@ -11,7 +11,7 @@
       class="group absolute right-6 top-6 z-50 cursor-pointer rounded-full p-2.5 transition-colors max-md:bg-gray-100 md:hover:bg-gray-100"
       @click="onCancel"
     >
-      <IconNewClose
+      <IconClose
         class="size-5 transition-colors md:fill-gray-400 md:group-hover:fill-black"
       />
     </button>

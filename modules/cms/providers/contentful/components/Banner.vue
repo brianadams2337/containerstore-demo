@@ -53,7 +53,7 @@
                 @click="close"
               >
                 <template #icon="{ _class }">
-                  <IconNewClose :class="_class" />
+                  <IconClose :class="_class" />
                 </template>
               </SFButton>
             </slot>

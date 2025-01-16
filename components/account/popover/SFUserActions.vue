@@ -19,7 +19,7 @@
       <SFAccountLink
         :to="routeList.user"
         :label="$t('my_account.profile_menu')"
-        icon="IconNewSettings"
+        icon="IconSettings"
         @click="$emit('close')"
       />
       <SFAccountLink
@@ -31,7 +31,7 @@
       <SFAccountLink
         :to="routeList.subscriptionOverview"
         :label="$t('my_account.subscriptions_menu')"
-        icon="IconNewCreditcard"
+        icon="IconCreditcard"
         @click="$emit('close')"
       />
     </div>

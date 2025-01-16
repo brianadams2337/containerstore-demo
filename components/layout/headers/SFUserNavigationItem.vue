@@ -13,7 +13,7 @@
         :class="{ 'bg-gray-100': isOpen }"
         :aria-label="$t('my_account.navigation')"
       >
-        <IconNewUser class="size-6" aria-hidden="true" />
+        <IconUser class="size-6" aria-hidden="true" />
       </SFLocalizedLink>
     </template>
     <template #content>
