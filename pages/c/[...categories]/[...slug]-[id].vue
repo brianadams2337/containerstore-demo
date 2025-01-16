@@ -87,7 +87,6 @@ import {
 import { useI18n } from 'vue-i18n'
 import { definePageMeta } from '#imports'
 import {
-  useCurrentCategory,
   useTrackingEvents,
   usePageState,
   useJsonld,
@@ -119,6 +118,7 @@ import {
   useAppliedFilters,
   useProductListSort,
 } from '#storefront-product-listing'
+import { useCategoryById } from '#storefront/composables'
 import { useNuxtApp } from '#app'
 
 const route = useRoute()
@@ -161,7 +161,16 @@ const {
   fetchingOptions: { lazy: true },
 })
 
-const currentCategoryPromise = useCurrentCategory(currentCategoryId.value)
+const currentCategoryPromise = useCategoryById(
+  {
+    params: {
+      id: currentCategoryId.value,
+      children: 0,
+      properties: { withName: ['sale'] },
+    },
+  },
+  `current-category-${currentCategoryId.value}`,
+)
 
 const {
   data: currentCategory,

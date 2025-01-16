@@ -16,7 +16,7 @@
 import {
   usePromotionActions,
   useRouteHelpers,
-  useCurrentCategory,
+  usePromotionCategory,
 } from '~/composables'
 import { SFButton } from '#storefront-ui/components'
 import type { Promotion } from '~/types/promotion'
@@ -29,7 +29,7 @@ const { localizedNavigateTo, buildCategoryPath } = useRouteHelpers()
 
 const id = props.category?.id
 
-const { data: categoryData } = id ? useCurrentCategory(id) : { data: null }
+const { data: categoryData } = id ? usePromotionCategory(id) : { data: null }
 
 const goToCategory = async () => {
   if (!categoryData?.value) {

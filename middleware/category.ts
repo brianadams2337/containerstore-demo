@@ -1,5 +1,6 @@
 import { navigateTo, defineNuxtRouteMiddleware } from '#app/composables/router'
-import { useCurrentCategory, useRouteHelpers } from '~/composables'
+import { useRouteHelpers } from '~/composables'
+import { useRpcCall } from '#storefront/composables'
 import { getCategoryId } from '~/utils/route'
 
 export default defineNuxtRouteMiddleware(async ({ params, query, path }) => {
@@ -9,13 +10,19 @@ export default defineNuxtRouteMiddleware(async ({ params, query, path }) => {
 
   const { buildCategoryPath } = useRouteHelpers()
 
-  const { data: category } = await useCurrentCategory(getCategoryId(params))
+  const getCategoryById = useRpcCall('getCategoryById')
 
-  if (!category.value) {
+  const category = await getCategoryById({
+    id: getCategoryId(params),
+    children: 0,
+    properties: { withName: ['sale'] },
+  })
+
+  if (!category) {
     return
   }
 
-  const expectedPath = buildCategoryPath(category.value)
+  const expectedPath = buildCategoryPath(category)
 
   if (expectedPath === path) {
     return

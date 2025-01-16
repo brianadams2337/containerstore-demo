@@ -1,5 +1,5 @@
 import { vi, describe, it, expect } from 'vitest'
-import { useCurrentCategory } from './useCurrentCategory'
+import { usePromotionCategory } from './usePromotionCategory'
 import { categoryFactory } from '~/test/factories/category'
 
 const mocks = vi.hoisted(() => {
@@ -17,7 +17,7 @@ vi.mock('#storefront/composables', () => ({
   useCategoryById: vi.fn().mockReturnValue(mocks.useCategoryById),
 }))
 
-describe('useCurrentCategory', () => {
+describe('usePromotionCategory', () => {
   it('returns current category for each page', () => {
     const categoryId = 1
     mocks.useCategoryById.data.value = categoryFactory.build({
@@ -35,7 +35,7 @@ describe('useCurrentCategory', () => {
       shopLevelCustomData: {},
       countryLevelCustomData: {},
     })
-    const currentCategory = useCurrentCategory(categoryId)
+    const currentCategory = usePromotionCategory(categoryId)
 
     expect(currentCategory.data.value).toStrictEqual({
       id: categoryId,

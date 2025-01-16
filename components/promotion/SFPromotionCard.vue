@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { SFLink } from '#storefront-ui/components'
-import { useCurrentCategory, useRouteHelpers } from '~/composables'
+import { usePromotionCategory, useRouteHelpers } from '~/composables'
 import type { Promotion } from '~/types/promotion'
 
 const props = defineProps<{ promotion: Promotion; backgroundColor?: string }>()
@@ -29,7 +29,7 @@ const scheduledTo = computed(() => props.promotion.schedule.to)
 
 const id = customData.value?.category?.id
 
-const { data: category } = id ? useCurrentCategory(id) : { data: null }
+const { data: category } = id ? usePromotionCategory(id) : { data: null }
 
 const categoryLink = computed(() => {
   return category?.value ? buildCategoryPath(category.value) : undefined
