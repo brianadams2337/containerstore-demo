@@ -10,11 +10,11 @@
       enter-active-class="transition-[display,transform,overlay] transition-discrete duration-200 ease-in-out"
       leave-active-class="transition-[display,transform,overlay] transition-discrete duration-200 ease-in-out"
     >
-      <div
+      <ul
         v-if="!selectedItem"
         class="mt-2 flex w-full shrink-0 flex-col gap-y-5"
       >
-        <div
+        <li
           v-for="item in navigationItems"
           :key="item.id"
           class="flex cursor-pointer items-center pr-4"
@@ -31,7 +31,6 @@
                   ? '_blank'
                   : '_self'
               "
-              @click="selectItem(item)"
             >
               <SFNavigationTreeItem
                 :navigation-item="item"
@@ -59,8 +58,8 @@
           >
             <IconChevronRight class="size-4 text-gray-600" />
           </SFButton>
-        </div>
-      </div>
+        </li>
+      </ul>
     </Transition>
     <Transition
       enter-from-class="translate-x-0"
@@ -100,8 +99,8 @@
                   :text-color="theme.colors.gray[900]"
                 />
               </template>
-              <div class="flex flex-col gap-2 pl-2">
-                <div
+              <ul class="flex flex-col gap-2 pl-2">
+                <li
                   v-for="child in item.children"
                   :key="child.id"
                   class="flex items-center"
@@ -113,8 +112,8 @@
                     class="h-11 text-lg"
                     @click="$emit('clickLink')"
                   />
-                </div>
-              </div>
+                </li>
+              </ul>
             </SFAccordionEntry>
             <SFNavigationTreeItem
               v-else
