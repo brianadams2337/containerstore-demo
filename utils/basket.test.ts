@@ -583,6 +583,12 @@ describe('getBasketTotalWithoutPromotions', () => {
     const basket: BasketResponseData = {
       key: 'basket-key' as BasketKey,
       cost: {
+        tax: {
+          vat: {
+            amount: 200 as CentAmount,
+            rate: 0.2,
+          },
+        },
         withTax: 1000 as CentAmount,
         withoutTax: 1200 as CentAmount,
         appliedReductions: [
