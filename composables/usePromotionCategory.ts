@@ -6,7 +6,6 @@ export function usePromotionCategory(id: number) {
       params: {
         id,
         children: 0,
-        properties: { withName: ['sale'] },
       },
     },
     `promotion-category-${id}`,
