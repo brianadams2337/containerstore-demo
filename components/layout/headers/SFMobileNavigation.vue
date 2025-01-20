@@ -149,12 +149,12 @@ const emit = defineEmits(['clickLink'])
 const { buildNavigationTreeItemRoute } = useRouteHelpers()
 
 const selectedItem = ref<NavigationTreeItemType | undefined>(undefined)
-const selectItem = (category: NavigationTreeItemType) => {
-  if (category.children.length === 0) {
+const selectItem = (item: NavigationTreeItemType) => {
+  if (item.children.length === 0) {
     emit('clickLink')
     return
   }
-  selectedItem.value = category
+  selectedItem.value = item
 }
 
 watch(
