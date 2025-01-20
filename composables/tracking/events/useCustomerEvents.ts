@@ -14,9 +14,11 @@ const useCustomerEvents = (
       customer_id: params.isLoggedIn ? params.user?.id : undefined,
       customer_type: params.customerType,
       login: params.isLoggedIn,
-      method: params.isLoggedIn
+      login_method: params.isLoggedIn
         ? (params.user?.authentication?.type as AuthenticationType)
         : 'none',
+      bi_sc: params.biSc,
+      bi_vp: params.biVp,
       eh: params.isLoggedIn ? await getEmailHash(params.user?.email || '') : '',
     }),
 })
