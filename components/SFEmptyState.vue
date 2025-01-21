@@ -1,34 +1,35 @@
 <template>
   <div
-    class="flex flex-col items-center justify-center gap-10 rounded bg-gray-50 py-10 md:flex-row md:px-10 lg:py-32"
+    class="flex flex-col items-center justify-center rounded py-10 md:px-10"
     data-testid="empty-state"
   >
-    <div class="w-32" data-testid="empty-state-icon">
-      <component :is="iconComponent" class="w-full" />
+    <div class="h-56 w-full" data-testid="empty-state-icon">
+      <component :is="iconComponent" class="size-full" aria-hidden="true" />
     </div>
-    <div class="px-8 text-center md:w-[32rem] md:px-0 md:text-start">
-      <SFHeadline v-if="title" class="!block" size="xl">
+    <div class="px-14 text-center md:w-128 md:px-0">
+      <SFHeadline v-if="title" tag="h1" class="!block" size="3xl">
         {{ title }}
       </SFHeadline>
-      <SFHeadline
+      <p
         v-if="description"
-        size="sm"
-        class="mt-4 !block text-gray-700"
+        class="mt-4 !block text-lg font-normal leading-5 text-gray-600"
       >
         {{ description }}
-      </SFHeadline>
+      </p>
       <div
         v-if="showDefaultActions"
-        class="mt-8 flex justify-center gap-4 md:justify-start"
+        class="mt-10 flex flex-col justify-center gap-4 sm:flex-row"
       >
         <SFButton
           v-if="!isLoggedIn"
+          size="lg"
           :to="getLocalizedRoute(routeList.signin)"
           data-testid="button-signin"
         >
           {{ $t('global.sign_in_label') }}
         </SFButton>
         <SFButton
+          size="lg"
           :to="getLocalizedRoute(routeList.home)"
           variant="tertiary"
           data-testid="button-continue-shopping"
@@ -52,15 +53,15 @@ import { useRouteHelpers } from '~/composables'
 type Props = {
   title?: string
   description?: string
-  icon?: 'EmptyWishlist' | 'EmptyBasket'
   showDefaultActions?: boolean
+  icon?: 'EmptyWishlist' | 'EmptyBasket'
 }
 
 const {
   title = '',
   description = '',
+  showDefaultActions = true,
   icon = 'EmptyBasket',
-  showDefaultActions = false,
 } = defineProps<Props>()
 
 const { isLoggedIn } = useUser()

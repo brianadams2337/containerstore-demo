@@ -3,6 +3,7 @@ import {
   useCheckoutEvents,
   useContentEvents,
   useCustomerEvents,
+  useFeatureEvents,
   useFilterEvents,
   useProductEvents,
   usePromotionEvents,
@@ -64,6 +65,7 @@ export function useTrackingEvents() {
     ...useUserActionEvents(track),
     ...useCustomerEvents(track),
     ...useContentEvents(track),
+    ...useFeatureEvents(track),
     mapProductToTrackingPayload,
   }
 }

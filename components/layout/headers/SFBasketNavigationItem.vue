@@ -26,7 +26,8 @@
     </template>
     <template #content>
       <SFAsyncDataWrapper :status="status">
-        <SFBasketPopoverItems />
+        <SFBasketHeadline v-if="count" :count="count" class="px-4 py-2" />
+        <SFBasketPopoverItems class="scroll-shadow" />
         <SFBasketPopoverActions v-if="!isEmpty" />
       </SFAsyncDataWrapper>
     </template>
@@ -44,6 +45,7 @@ import { routeList } from '~/utils'
 import SFAsyncDataWrapper from '~/components/SFAsyncDataWrapper.vue'
 import SFBasketPopoverItems from '~/components/basket/popover/SFBasketPopoverItems.vue'
 import SFBasketPopoverActions from '~/components/basket/popover/SFBasketPopoverActions.vue'
+import SFBasketHeadline from '~/components/basket/SFBasketHeadline.vue'
 
 const { count, status, isEmpty } = useBasket()
 const mounted = useMounted()
@@ -51,9 +53,7 @@ const mounted = useMounted()
 const isOpen = ref(false)
 const i18n = useI18n()
 const ariaLabel = computed(() =>
-  mounted.value
-    ? i18n.t('navigation.basket-aria-label', count.value || 0)
-    : i18n.t('navigation.basket-aria-label', 0),
+  i18n.t('basket.basket_aria_label', mounted.value ? count.value || 0 : 0),
 )
 
 defineProps<{ blockPopup?: boolean }>()

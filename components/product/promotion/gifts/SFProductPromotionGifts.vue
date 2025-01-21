@@ -6,11 +6,17 @@
   >
     <div :style="{ ...backgroundColorStyle }" class="rounded-t-md px-3.5 py-3">
       <div class="flex items-center gap-1">
-        <span class="flex h-[1.125rem] w-auto items-center justify-center">
+        <span class="flex h-4.5 w-auto items-center justify-center">
           <IconLock v-if="!areGiftConditionsMet" class="size-3 text-white" />
           <IconGift v-else class="size-3 text-white" />
         </span>
-        <SFHeadline tag="h2" size="sm" class="text-white" is-bold>
+        <SFHeadline
+          tag="h2"
+          size="sm"
+          class="text-white"
+          is-bold
+          data-testid="headline"
+        >
           {{ promotionGiftsHeadline }}
         </SFHeadline>
       </div>

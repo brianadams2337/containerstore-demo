@@ -1,193 +1,110 @@
-import { extendPromise, type BasketItem } from '@scayle/storefront-nuxt'
-import { computed } from 'vue'
-import { hexToRGBAColor } from '~/utils/color'
-import { useBasket } from '#storefront/composables'
-import type { Promotion } from '~/types/promotion'
+import type {
+  AppliedReduction,
+  BasketItem,
+  BasketTotalPrice,
+} from '@scayle/storefront-nuxt'
+import { toRef } from '@vueuse/core'
+import { computed, type ComputedRef, type MaybeRefOrGetter } from 'vue'
+import { getTotalReductionsByCategory } from '~/utils'
 
-export function useBasketReductions() {
-  const basket = useBasket()
+type PromotionReductionItem = {
+  promotion: BasketItem['promotion']
+  total: number
+}
 
-  const withNegativePrefix = (value: string): string => {
-    return value.startsWith('-') ? value : `-${value}`
-  }
+export interface UseBasketReductionsReturn {
+  /** Total amount of all sales reductions */
+  totalSaleReductions: ComputedRef<number>
+  /** Total amount of all campaign reductions  */
+  totalCampaignReductions: ComputedRef<number>
+  /** Total amount of all promotion reductions  */
+  totalPromotionReductions: ComputedRef<number>
+  /** A list of all promotions together with the total reductions ot the promotion */
+  itemsWithPromotionReductions: ComputedRef<PromotionReductionItem[]>
+  /** Boolean indicating whether there are any reductions in the basket */
+  hasReductions: ComputedRef<boolean>
+}
 
-  const getPromotionTextColor = (color: unknown): string | undefined => {
-    if (typeof color !== 'string') {
-      return
-    }
+/**
+ *
+ * @param cost - The total cost of the basket
+ * @param items - The items in the basket
+ * @returns An {@link UseBasketReductionsReturn} object containing reactive reduction data.
+ */
+export function useBasketReductions(
+  cost: MaybeRefOrGetter<BasketTotalPrice | undefined>,
+  items: MaybeRefOrGetter<BasketItem[] | undefined>,
+): UseBasketReductionsReturn {
+  const basketCost = toRef(cost)
+  const basketItems = toRef(items)
 
-    const fallbackColor = '#007aff'
-
-    return hexToRGBAColor(color ?? fallbackColor, 100)
-  }
-
-  const getHeadlineParts = (promotion: Promotion): string => {
-    return promotion.customData.headlineParts?.at(0) ?? ''
-  }
-
-  const hasSaleReduction = (item?: BasketItem): boolean => {
-    if (!item) {
-      return false
-    }
-
-    return item.price.total.appliedReductions.some(
-      ({ category }) => category === 'sale',
-    )
-  }
+  const getReductions = (category: AppliedReduction['category']) =>
+    computed<number>(() => {
+      return basketCost.value
+        ? getTotalReductionsByCategory(basketCost.value, category)
+        : 0
+    })
 
   const hasPromotionReduction = (item?: BasketItem): boolean => {
-    if (!item) {
-      return false
-    }
-
-    return item.price.total.appliedReductions.some(({ category }) => {
-      return category === 'promotion'
-    })
+    const appliedReductions = item?.price?.total?.appliedReductions ?? []
+    return appliedReductions.some(({ category }) => category === 'promotion')
   }
 
-  const hasCampaignReduction = (item?: BasketItem): boolean => {
-    if (!item) {
-      return false
-    }
-
-    return item.price.total.appliedReductions.some(({ category }) => {
-      return category === 'campaign'
-    })
-  }
-
-  const getBasketItemPrice = (
-    item: BasketItem,
-    reductionCategory: 'sale' | 'campaign',
-  ): number => {
-    return item.price.total.appliedReductions
-      .filter((item) => item.category === reductionCategory)
-      .reduce((price, current) => price + current.amount.absoluteWithTax, 0)
-  }
-
-  const totalDiscount = computed<number>(() => {
-    const discounts = (basket.data.value?.cost.appliedReductions ?? []).map(
-      ({ amount }) => amount.absoluteWithTax,
-    )
-
-    return discounts.reduce((acc, item) => acc + item, 0)
-  })
-
-  const totalCost = computed<number | undefined>(() => {
-    return basket.data.value?.cost.withTax
-  })
-
-  const totalCostWithoutReductions = computed<number>(() => {
-    const totalCostValue = totalCost.value?.valueOf() ?? 0
-
-    return totalCostValue + totalDiscount.value
-  })
-
-  const aggregatedSalePrice = computed<number>(() => {
-    const basketItemsWithSaleReductions = (basket.items.value ?? []).filter(
-      hasSaleReduction,
-    )
-    const allSaleReductions = basketItemsWithSaleReductions.reduce<number[]>(
-      (previous, next) => {
-        const price = getBasketItemPrice(next, 'sale')
-        previous.push(price)
-        return previous
+  const getTotalReductionForPromotion = (item: BasketItem): number => {
+    return item.price.total.appliedReductions.reduce<number>(
+      (price, currentItem) => {
+        return currentItem.category === 'promotion'
+          ? price + currentItem.amount.absoluteWithTax
+          : price
       },
-      [],
+      0,
     )
+  }
 
-    return allSaleReductions.reduce((acc, item) => acc + item, 0)
+  const totalSaleReductions = getReductions('sale')
+  const totalCampaignReductions = getReductions('campaign')
+  const totalPromotionReductions = getReductions('promotion')
+
+  const hasReductions = computed<boolean>(() => {
+    return !!(
+      totalPromotionReductions.value ||
+      totalCampaignReductions.value ||
+      totalSaleReductions.value
+    )
   })
 
-  const aggregatedCampaignPrice = computed<number>(() => {
-    const basketItemsWithCampaignReductions = (basket.items.value ?? []).filter(
-      hasCampaignReduction,
-    )
-    const allSaleReductions = basketItemsWithCampaignReductions.reduce<
-      number[]
-    >((previous, next) => {
-      const price = getBasketItemPrice(next, 'campaign')
-      previous.push(price)
-      return previous
-    }, [])
+  const itemsWithPromotionReductions = computed<PromotionReductionItem[]>(
+    () => {
+      return (basketItems.value ?? []).reduce<PromotionReductionItem[]>(
+        (items, basketItem) => {
+          if (!hasPromotionReduction(basketItem)) {
+            return items
+          }
 
-    return allSaleReductions.reduce((acc, item) => acc + item, 0)
-  })
-
-  const itemsWithPromotionsReductions = computed(() => {
-    return (basket.items.value ?? [])
-      .filter(hasPromotionReduction)
-      .reduce<{ promotion: BasketItem['promotion']; total: number }[]>(
-        (previous, next) => {
-          const existingPromotion = previous.find(
-            ({ promotion }) => promotion?.id === next.promotion?.id,
+          const existingPromotion = items.find(
+            ({ promotion }) => promotion?.id === basketItem.promotion?.id,
           )
-          const price = next.price.total.appliedReductions
-            .filter((item) => item.category === 'promotion')
-            .reduce((accumulator, current) => {
-              return accumulator + current.amount.absoluteWithTax
-            }, 0)
+
+          const price = getTotalReductionForPromotion(basketItem)
 
           if (existingPromotion) {
             existingPromotion.total += price
-            return previous
+          } else {
+            items.push({ promotion: basketItem.promotion, total: price })
           }
 
-          previous.push({ promotion: next.promotion, total: price })
-          return previous
+          return items
         },
         [],
       )
-  })
-
-  const hasItemsWithSaleReductions = computed<boolean>(() => {
-    return aggregatedSalePrice.value !== 0
-  })
-
-  const hasItemsWithCampaignReductions = computed<boolean>(() => {
-    return aggregatedCampaignPrice.value !== 0
-  })
-
-  const hasItemsWithPromotionReductions = computed<boolean>(() => {
-    return itemsWithPromotionsReductions.value.length > 0
-  })
-
-  const totalSalesReductions = computed<number>(() => {
-    const discounts = (basket.cost.value?.appliedReductions ?? [])
-      .filter((item) => item.category === 'sale')
-      .map(({ amount }) => amount.absoluteWithTax)
-
-    return discounts.reduce((acc, item) => acc + item, 0)
-  })
-
-  const totalPromotionsReductions = computed(() => {
-    const discounts = (basket.data.value?.cost.appliedReductions ?? [])
-      .filter((item) => item.category === 'promotion')
-      .map(({ amount }) => amount.absoluteWithTax)
-
-    return discounts.reduce((acc, item) => acc + item, 0)
-  })
-
-  return extendPromise(
-    basket.then(() => ({})),
-    {
-      totalCost,
-      totalDiscount,
-      hasItemsWithSaleReductions,
-      hasItemsWithPromotionReductions,
-      hasItemsWithCampaignReductions,
-      aggregatedSalePrice,
-      aggregatedCampaignPrice,
-      itemsWithPromotionsReductions,
-      totalCostWithoutReductions,
-      totalSalesReductions,
-      totalPromotionsReductions,
-      getHeadlineParts,
-      getBasketItemPrice,
-      withNegativePrefix,
-      hasSaleReduction,
-      hasPromotionReduction,
-      getPromotionTextColor,
-      hasCampaignReduction,
     },
   )
+
+  return {
+    totalSaleReductions,
+    totalCampaignReductions,
+    totalPromotionReductions,
+    itemsWithPromotionReductions,
+    hasReductions,
+  }
 }

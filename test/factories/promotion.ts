@@ -1,11 +1,14 @@
 import type {
   AutomaticDiscountEffect,
+  BasketItem,
   Promotion,
   RFC33339Date,
 } from '@scayle/storefront-nuxt'
 import { Factory } from 'fishery'
-
-export const promotionFactory = Factory.define<Promotion>(() => ({
+// BasketItem['promotion'] also contains a flag if the conditions are met and a list of failed conditions
+export const promotionFactory = Factory.define<
+  Promotion | Required<BasketItem>['promotion']
+>(() => ({
   id: '66951014684cc17335766006',
   name: 'Automatic discount',
   schedule: {

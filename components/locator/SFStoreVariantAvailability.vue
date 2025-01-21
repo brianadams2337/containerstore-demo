@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-4 flex items-center rounded border border-gray-300 p-5">
+  <div class="mt-4 flex items-center rounded-10 border border-gray-300 p-5">
     <div v-if="!!selectedStoreData">
       <div class="flex items-start space-x-2">
         <div

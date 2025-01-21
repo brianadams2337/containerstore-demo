@@ -1,13 +1,11 @@
 import { getCurrentScope, watch } from 'vue'
 import { useBasket, useWishlist } from '#storefront/composables'
-import { useRoute } from '#app/composables/router'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
 import { BasketListingMetadata, WishlistListingMetadata } from '~/constants'
 import { didBasketDataChange, didWishlistDataChange } from '~/utils'
 
 export const useUserItemsTrackingWatcher = async () => {
   const scope = getCurrentScope()
-  const route = useRoute()
 
   const {
     trackBasket,
@@ -23,8 +21,7 @@ export const useUserItemsTrackingWatcher = async () => {
     watch(
       () => basket.value,
       (newValues, oldValues) => {
-        const isBasketPage = route.fullPath.includes('/basket')
-        if (didBasketDataChange(oldValues, newValues) && !isBasketPage) {
+        if (didBasketDataChange(oldValues, newValues)) {
           trackBasket(
             collectBasketItems(basket.value?.items, {
               listId: BasketListingMetadata.ID,

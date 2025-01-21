@@ -175,3 +175,5 @@ export const NAVIGATION_TEST_ITEMS = {
   categoryLevel3: 'Kleider',
   shopName: 'SCAYLE',
 }
+
+export const CHECKOUT_REDIRECT_URL = 'signin?redirectUrl=/de/checkout'

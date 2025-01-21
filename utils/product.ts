@@ -1,9 +1,11 @@
 import {
   type Price,
   type Product,
+  type Variant,
   getAttributeValueTuples,
   getFirstAttributeValue,
 } from '@scayle/storefront-nuxt'
+import type { BasketItemPrice } from '@scayle/storefront-api'
 import { getPrimaryImage } from './image'
 import type { ProductSibling } from '~/types/siblings'
 import type { Promotion } from '~/types/promotion'
@@ -84,12 +86,28 @@ export const getProductSiblings = (
     : items
 }
 
-export const createCustomPrice = (
-  price: Price,
-  overwrite: Partial<Price>,
-): Price => {
+/**
+ * Creates a new price object by merging the original price with any overwrite properties.
+ *
+ * @param price - The original price object.
+ * @param overwrite - Optional overwrite properties for the price object.
+ * @returns A new price object with merged properties.
+ */
+export const createCustomPrice = <T = Price | BasketItemPrice>(
+  price: T,
+  overwrite: Partial<T>,
+): T => {
   return {
     ...price,
     ...overwrite,
   }
 }
+/**
+ * Returns the maximum allowed quantity for a variant, taking into account stock and an upper limit of 10.
+ *
+ * @param variant - The variant to get the max quantity for
+ * @returns The maximum allowed quantity
+ */
+// Note: The basket does not allow a quantity > 50, therefore we limit it to prevent errors
+export const getMaxQuantity = (variant?: Variant) =>
+  Math.max(Math.min(variant?.stock?.quantity ?? 1, 10), 0)

@@ -4,7 +4,7 @@
   >
     <SFSkipLinks v-model:is-mobile-sidebar-open="isMobileSidebarOpen" />
     <SFPromotionBanner
-      v-if="allCurrentPromotions.length"
+      v-if="shouldShowPromotionBanner"
       :promotions="allCurrentPromotions"
     />
     <SFToastContainer />
@@ -19,16 +19,20 @@
         <NuxtPage />
       </main>
       <SFFooter
-        class="mt-16 max-lg:mb-4"
-        :class="{ 'lg:translate-y-13': !isPromotionBannerShown }"
+        class="max-lg:mb-4"
+        :class="{
+          'lg:translate-y-13': !isPromotionBannerShown,
+          'mt-16': shouldShowPromotionBanner,
+        }"
       />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, defineOptions, onMounted } from 'vue'
+import { computed, defineOptions, onMounted, ref } from 'vue'
 import { useHead } from '@unhead/vue'
+import { useRoute } from '#app/composables/router'
 import { useNuxtApp } from '#app/nuxt'
 import { useSwitchLocalePath, type Locale } from '#i18n'
 import { useCurrentPromotions, useCurrentShop } from '#storefront/composables'
@@ -55,6 +59,12 @@ import { NuxtPage } from '#components'
 import SFSkipLinks from '~/components/SFSkipLinks.vue'
 import SFFooter from '~/components/SFFooter.vue'
 import SFHeader from '~/components/layout/headers/SFHeader.vue'
+import { routeList } from '~/utils'
+import { useLocalePath } from '#i18n'
+
+const route = useRoute()
+
+const localePath = useLocalePath()
 
 // Initialize data
 const { allCurrentPromotions } = useBasketPromotions()
@@ -74,9 +84,13 @@ createContext(USE_BANNER_KEY, useBanner())
 const { data: _promotionData } = useCurrentPromotions()
 const currentShop = useCurrentShop()
 
-onMounted(async () => {
-  trackingEvents.trackShopInit()
+const shouldShowPromotionBanner = computed(() => {
+  const isBasketPage = route.path === localePath(routeList.basket)
+  return allCurrentPromotions.value.length && !isBasketPage
 })
+
+onMounted(() => trackingEvents.trackShopInit())
+
 const {
   $config: {
     public: { shopName },
@@ -97,7 +111,7 @@ useHead({
       children: `document.addEventListener('DOMContentLoaded', () => { document.body.classList.add('loaded'); });`,
     },
   ],
-  titleTemplate: (title) => (title ? `${title} - ${shopName}` : `${shopName}`),
+  titleTemplate: (title) => (title ? `${title} | ${shopName}` : `${shopName}`),
 })
 
 const switchLocalePath = useSwitchLocalePath()

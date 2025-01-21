@@ -1,75 +1,29 @@
 <template>
-  <div>
-    <div
-      v-if="basketItems?.standAlone?.length"
-      class="max-h-xs overflow-y-auto overscroll-none"
-    >
-      <article v-for="item in basketItems?.standAlone" :key="item.key">
-        <SFBasketPopoverCard :items="[item]" is-light-variant />
-      </article>
-    </div>
-    <div
-      v-if="groupIds?.length"
-      class="max-h-xs overflow-y-auto overscroll-none"
-    >
-      <article v-for="groupId in groupIds" :key="groupId">
-        <SFBasketPopoverCard
-          :items="getBasketItemsFromGroup(groupId)"
-          is-light-variant
-        />
-      </article>
-    </div>
-    <div
-      v-if="!items?.length"
-      class="flex w-full flex-col items-center justify-center py-4"
-    >
-      <div class="w-2/3">
-        <p class="text-center text-sm">
-          {{ $t('basket.no_items_info') }}
-        </p>
-      </div>
-    </div>
-  </div>
+  <ul
+    v-if="items?.length"
+    class="max-h-xs overflow-y-auto overflow-x-hidden scrollbar-hide"
+    :aria-label="$t('basket.available_products')"
+  >
+    <SFBasketPopoverCard
+      v-for="item in availableItems"
+      :key="item.key"
+      :basket-item="item"
+      class="w-80 sm:w-96"
+    />
+  </ul>
+  <p v-else class="w-60 text-wrap p-3 text-center text-base text-gray-600">
+    {{ $t('basket.no_items_info') }}
+  </p>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watchPostEffect } from 'vue'
-import type { BasketItem } from '@scayle/storefront-nuxt'
-import SFBasketPopoverCard from './card/SFBasketPopoverCard.vue'
-import {
-  bundleBasketItemsByGroup,
-  getPartitionedBasketItems,
-  sortBasketItemsByIsSoldOut,
-} from '~/utils/basket'
+import { computed } from 'vue'
+import SFBasketPopoverCard from './SFBasketPopoverCard.vue'
 import { useBasket } from '#storefront/composables'
-import type { BundledBasketItems } from '~/utils/basket'
-
-type BasketItems = {
-  standAlone: BasketItem[]
-  groups: BundledBasketItems<BasketItem>
-}
 
 const { items } = useBasket()
 
-const updateBasketItems = (items: BasketItem[]) => {
-  const data = getPartitionedBasketItems(items)
-  return {
-    standAlone: sortBasketItemsByIsSoldOut(data.standAlone),
-    groups: bundleBasketItemsByGroup(
-      sortBasketItemsByIsSoldOut(data.groupedItems),
-    ),
-  }
-}
-
-const basketItems = ref<BasketItems>(updateBasketItems(items.value ?? []))
-
-const groupIds = computed(() => Object.keys(basketItems.value.groups))
-
-watchPostEffect(() => {
-  basketItems.value = updateBasketItems(items.value ?? [])
-})
-
-const getBasketItemsFromGroup = (groupId: string) => {
-  return basketItems.value.groups[groupId] as BasketItem[]
-}
+const availableItems = computed(() =>
+  (items.value ?? []).filter((item) => item.status === 'available'),
+)
 </script>

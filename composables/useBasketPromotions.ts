@@ -1,7 +1,11 @@
 import { extendPromise } from '@scayle/storefront-nuxt'
 import { computed, type ComputedRef } from 'vue'
 import { useBasket, useCurrentPromotions } from '#storefront/composables'
-import { isAutomaticDiscountType, isBuyXGetYType } from '~/utils'
+import {
+  isAutomaticDiscountType,
+  isBuyXGetYType,
+  getPromotionIdFromProductAttributes,
+} from '~/utils'
 import type { Promotion, BasketPromotion } from '~/types/promotion'
 
 type UseBasketPromotionsReturn = {
@@ -12,6 +16,7 @@ type UseBasketPromotionsReturn = {
   >
   hasAppliedPromotions: ComputedRef<boolean>
   allCurrentPromotions: ComputedRef<Promotion[]>
+  movPromotions: ComputedRef<Promotion[]>
 }
 
 export function useBasketPromotions(): UseBasketPromotionsReturn &
@@ -60,6 +65,28 @@ export function useBasketPromotions(): UseBasketPromotionsReturn &
 
   const hasAppliedPromotions = computed(() => !!appliedPromotions.value.length)
 
+  const movPromotions = computed(() => {
+    if (!allCurrentPromotions.value.length) {
+      return []
+    }
+
+    return allCurrentPromotions.value.filter((promotion) => {
+      const isPromotedBasketItem = (basketItems.value ?? []).some(
+        ({ product, status }) => {
+          if (status !== 'available') {
+            return false
+          }
+          const productPromotionId =
+            getPromotionIdFromProductAttributes(product)
+          return (
+            productPromotionId === promotion.customData.product?.promotionId
+          )
+        },
+      )
+      return !!promotion?.customData?.minOrderValue && isPromotedBasketItem
+    })
+  })
+
   return extendPromise(
     Promise.all([basket, promotionData]).then(() => ({})),
     {
@@ -68,6 +95,7 @@ export function useBasketPromotions(): UseBasketPromotionsReturn &
       automaticDiscountPromotions,
       hasAppliedPromotions,
       allCurrentPromotions,
+      movPromotions,
     },
   )
 }

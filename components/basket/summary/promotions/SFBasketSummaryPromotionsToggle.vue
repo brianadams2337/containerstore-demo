@@ -1,15 +1,14 @@
 <template>
   <SFButton
     variant="raw"
-    class="flex items-center justify-between whitespace-pre-line !p-0 text-start text-sm font-semibold leading-5 text-gray-600"
-    is-full-width
-    size="xs"
-    @click="toggle"
+    class="flex items-center !gap-1 !p-0 text-base font-semi-bold-variable leading-3.5 text-gray-600"
+    :aria-expanded="visible.toString()"
+    @click="visible = !visible"
   >
-    <span class="text-sm leading-5">{{ $t('basket.discount') }}</span>
-    <template #append-icon="{ _class }">
-      <IconChevronUp v-if="modelValue" :class="_class" />
-      <IconChevronDown v-else :class="_class" />
+    {{ $t('basket.discount') }}
+    <template #append-icon>
+      <IconChevronUp v-if="visible" class="mt-px !size-3.5" />
+      <IconChevronDown v-else class="mt-px !size-3.5" />
     </template>
   </SFButton>
 </template>
@@ -17,9 +16,5 @@
 <script setup lang="ts">
 import { SFButton } from '#storefront-ui/components'
 
-const props = defineProps<{ modelValue: boolean }>()
-
-const emit = defineEmits(['update:modelValue'])
-
-const toggle = () => emit('update:modelValue', !props.modelValue)
+const visible = defineModel('visible', { type: Boolean, default: false })
 </script>

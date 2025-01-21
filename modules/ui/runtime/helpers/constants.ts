@@ -13,6 +13,7 @@ export const Size = {
 export type Size = ValuesType<typeof Size>
 export const HeadlineSize = {
   '4XL': '4xl',
+  '3XL': '3xl',
   '2XL': '2xl',
   XL: 'xl',
   LG: 'lg',

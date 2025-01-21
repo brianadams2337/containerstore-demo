@@ -46,9 +46,9 @@ export class BasketPage {
     )
   }
 
-  async gotoCheckoutPage() {
-    await this.checkoutButton.waitFor({ state: 'visible' })
-    await this.checkoutButton.click()
+  async gotoCheckoutPage(index: number) {
+    await this.checkoutButton.nth(index).waitFor({ state: 'visible' })
+    await this.checkoutButton.nth(index).click()
   }
 
   async assertProductIsInBasket(productBrand: string, productName: string) {

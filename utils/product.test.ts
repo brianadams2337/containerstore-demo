@@ -5,10 +5,12 @@ import {
   getProductSiblingData,
   getApplicablePromotionsForProduct,
   createCustomPrice,
+  getMaxQuantity,
 } from './product'
 import { productFactory } from '~/test/factories/product'
 import { attributeGroupFactory } from '~/test/factories/attribute'
 import { promotionFactory } from '~/test/factories/promotion'
+import { variantFactory } from '~/test/factories/variant'
 
 // TODO: Cover more cases (e.g return data set check, different color attribute name etc.)
 describe('getApplicablePromotionsForProduct', () => {
@@ -236,5 +238,36 @@ describe('createCustomPrice', () => {
         },
       },
     })
+  })
+})
+
+describe('getMaxQuantity', () => {
+  it('should limit the quantity to 10', () => {
+    const maxQuantity = getMaxQuantity(
+      variantFactory.build({
+        stock: {
+          quantity: 100,
+        },
+      }),
+    )
+    expect(maxQuantity).toBe(10)
+  })
+  it('should limit the quantity to the available stock', () => {
+    const maxQuantity = getMaxQuantity(
+      variantFactory.build({
+        stock: {
+          quantity: 9,
+        },
+      }),
+    )
+    expect(maxQuantity).toBe(9)
+  })
+  it('should default to 1 when no stock is present', () => {
+    const maxQuantity = getMaxQuantity(
+      variantFactory.build({
+        stock: undefined,
+      }),
+    )
+    expect(maxQuantity).toBe(1)
   })
 })

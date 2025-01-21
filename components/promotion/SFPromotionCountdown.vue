@@ -3,7 +3,7 @@
     class="inline-flex h-6 items-center p-px"
     :class="!borderless && 'rounded border'"
   >
-    <IconClockOutline class="ml-1.5 size-5 text-white" />
+    <IconHourglass class="ml-1.5 size-2.5 stroke-white" />
     <ClientOnly>
       <template #fallback>
         <div class="mx-1 flex">

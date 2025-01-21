@@ -1,13 +1,13 @@
 import { computed, type Ref } from 'vue'
-import type { Price } from '@scayle/storefront-nuxt'
+import type { BasketItem, Price } from '@scayle/storefront-nuxt'
 import { useFormatHelpers } from '#storefront/composables'
 
 type RelativeReductions = {
   value: number
   category: 'promotion' | 'sale' | 'campaign' | 'voucher'
 }
-
-export function useProductPrice(price: Ref<Price>) {
+export type BasketItemPrice = BasketItem['price']['total']
+export function useProductPrice(price: Ref<Price | BasketItemPrice>) {
   const { formatCurrency } = useFormatHelpers()
 
   const appliedReductions = computed(() => {

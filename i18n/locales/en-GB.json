@@ -1,12 +1,7 @@
 {
   "global": {
-    "login_request": "Sign in now",
     "register": "Register",
     "sold_out": "Sold out",
-    "home": "Home",
-    "user_greeting": "Hi {name}",
-    "you_are_not_user": "Not {name}?",
-    "not_registered": "Not a customer yet?",
     "sign_in": "Log In",
     "sign_out": "Log Out",
     "product_recommendation": "Recommended pairings",
@@ -91,11 +86,7 @@
   },
   "badge_labels": {
     "new": "New in",
-    "premium": "Premium",
     "sold_out": "Sold out",
-    "online_exclusive": "Online Exclusive",
-    "campaign": "-{reduction}% EXTRA",
-    "sale": "-{reduction}%",
     "already_in_basket": "Already in basket"
   },
   "navigation": {
@@ -105,35 +96,25 @@
     "sign_in": "Sign in",
     "basket": "Basket",
     "home": "Storefront Core Boilerplate",
-    "search": "Search",
     "checkout": "Checkout",
     "osp": "Order Confirmation",
     "location": "Find a Store",
-    "wishlist-aria-label": "Wishlist | Wishlist, {count} item | Wishlist, {count} items",
-    "basket-aria-label": "Basket | Basket, {count} item | Basket, {count} items"
+    "wishlist_aria_label": "Wishlist | Wishlist, {count} item | Wishlist, {count} items"
   },
   "search": {
     "placeholder": "Search for product, category or brand",
-    "recent_searches": "Recent searches",
     "search_results": "See all {searchTerm} results",
-    "search_term_match_count": "{count} Results for  \"{term}\"",
     "result": "Your search for \"{term}\" returned {resultsCount} hits.",
     "result_loading": "Loading search results for \"{term}\"...",
-    "search_try_again": "Try again using a different term",
-    "search_try_again_description": "Search for items or brands",
     "product": "Products",
     "categories": "Categories",
     "navigation_items": "Pages",
-    "more": "More",
     "page_title": "Search results for  \"{term}\""
   },
   "promises": {
     "flexible_payment": "Flexible payment options",
     "free_shipping": "Free delivery on orders over 50 {currency}",
     "return_policy": "50 days free return policy"
-  },
-  "banner": {
-    "close": "Close"
   },
   "wishlist": {
     "meta": {
@@ -151,57 +132,57 @@
   "basket": {
     "add_to_basket": "Add to basket",
     "heading": "Basket",
+    "basket_aria_label": "Basket | Basket, {count} item | Basket, {count} items",
     "empty_title": "Your shopping cart is empty.",
     "empty_description": "Your products will appear as soon as you add them to your cart.",
-    "continue_shopping_info": "Shop our newest products or sign in to see saved products.",
     "shipping_free": "Free",
+    "delivery": "Delivery",
     "total": "Total",
     "subtotal": "Subtotal",
-    "shipping": "Shipping cost",
-    "including_vat": "incl. VAT",
+    "you_pay": "You pay",
+    "including_vat": "incl. VAT.",
+    "excluding_vat": "excl. VAT.",
     "checkout_label": "Go to Checkout",
+    "go_to_label": "Go to Basket",
     "notification": {
       "select_size": "Please select size before adding to basket",
       "add_to_basket_success": "{productName} has been added to your basket",
       "add_to_basket_error": "{productName} could not be added to your basket",
-      "add_to_basket": "{productName} has been added to your basket",
-      "subscription_already_in_basket_error": "{productName} is already in the basket. An item cannot be in an order more than once as a subscription.",
       "add_to_basket_variant_out_of_stock_error": "This size is currently out of stock",
       "add_to_basket_max_basket_items_error": "Oops! You've reached the maximum number of items allowed in your basket.",
       "add_subscription_to_basket_success": "{productName} {interval} subscription has been added to your basket",
       "add_with_reduced_quantity_error": "Sorry, there are no more items available in this size. All available stock has already been added to your basket."
     },
-    "discount": "Discount",
-    "to_checkout": "to checkout",
+    "discount": "Discounts",
     "no_items_info": "You have no products in your basket.",
     "promotion": {
-      "progress_left": "{amount} left",
-      "saved": "{amount} saved",
-      "choose_free_gift": "Choose free gift",
-      "add_free_gift": "Add for free"
+      "mov_banner_label": "View products for {name}"
     },
     "summary": {
       "sale": "Sale",
-      "campaign": "EXTRA"
+      "campaign": "Campaigns",
+      "delivery_fees": "* Delivery fees will be determined during checkout after you choose a preferred delivery option."
     },
     "product": {
       "add": "Add"
-    }
+    },
+    "available_products": "Available products",
+    "unavailable_products": "Unavailable products",
+    "meta": {
+      "description": "Review the items in your basket and proceed to checkout easily. Secure and hassle-free shopping at {shopName}."
+    },
+    "voucher_disclaimer": "Vouchers can be applied in the last step of the order."
   },
   "basket_card": {
     "size_label": "Size",
     "color_label": "Color",
-    "remove_label": "Remove",
     "confirm_remove_question": "Are you sure you want to remove this item?",
-    "cancel": "Cancel",
-    "remove_short": "Remove",
     "remove_long": "Remove item",
     "quantity_label": "Quantity"
   },
   "incl_tax": "incl. VAT.",
   "my_account": {
     "navigation": "My Account",
-    "redirecting": "Redirecting",
     "profile_menu": "Account settings",
     "password": "Password",
     "orders_menu": "Your orders",
@@ -212,15 +193,10 @@
     "subscriptions_subtitle": "Change your subscriptions",
     "orders": {
       "overview": "Order summary",
-      "back": "Back to summary",
       "order_summary_header": "Order from {date}",
-      "order_detail_header": "Order from {date}",
-      "order_select": "Please select an order",
       "paid_with": "Paid with",
       "order_value": "Order value",
       "shipping": "Shipping costs",
-      "shipping_free": "Free",
-      "subtotal": "Subtotal",
       "residual_value": "Remaining value",
       "item_count": "1 item | {count} items",
       "address_label": "Shipping and billing address",
@@ -228,7 +204,6 @@
       "billing_address_label": "Billing address",
       "expected_delivery_from": "Expected",
       "delivery": "Delivery",
-      "shipment_detail": "Shipment Detail",
       "details": "Details"
     },
     "user": {
@@ -238,7 +213,6 @@
       "update_password_label": "Update password",
       "password_update_success": "Password updated",
       "password_update_error": "The password update did not work, try again!",
-      "password_pattern_hint": "Requires an uppercase letter, a special character, a number and no spaces",
       "email_change_hint": "Please contact customer service to change your email."
     },
     "popover": {
@@ -292,7 +266,6 @@
     "best_price_30d": "30 day Best Price:"
   },
   "plp": {
-    "filter": "Filter",
     "seo_description": "Buy {category} at SCAYLE. Discover a wide range of {category}",
     "back_navigation_button_label": "Back navigation button",
     "no_results": {
@@ -312,19 +285,12 @@
   },
   "filter": {
     "title": "Filter categories",
-    "size": "Size",
-    "brands": "Brands",
-    "colors": "Colors",
-    "price": "Price",
     "only_sale": "Show only sale products",
-    "delete": "delete",
-    "show_all": "Show all",
     "show_results_count": "View {count} items",
     "reset": "Reset filter",
     "reset_all": "Reset all",
     "show_results": "View items",
     "to": "to",
-    "all_label": "All",
     "select_color": "Select color {color}",
     "sorting": "Sorting",
     "show_filter": "Show Filters",
@@ -335,7 +301,6 @@
     "updated_notification_all": "Your sorting and filters have been successfully applied!"
   },
   "osp": {
-    "account": "Account",
     "order_details": "Order details",
     "customer_id": "Customer no.",
     "deliver_costs": "Shipping costs",
@@ -355,10 +320,6 @@
     "total": "Total",
     "no_order_found": "The order information could not be found.",
     "title": "Your order"
-  },
-  "main_nav": {
-    "back_to": "Back to \"{name}\"",
-    "main_menu": "Main menu"
   },
   "login_page": {
     "forgot_password": {
@@ -413,10 +374,7 @@
         "success": "Your password has been successfully reset. Use your new password to log in."
       },
       "submit": "Submit",
-      "title": "Reset password",
-      "validation": {
-        "required": "This field is required"
-      }
+      "title": "Reset password"
     },
     "sign_up": {
       "status": {
@@ -455,7 +413,6 @@
     },
     "input_placeholder": "Enter city or zip code",
     "no_results": "No results",
-    "show_only_available": "Only available",
     "labels": {
       "available": "Available",
       "not_available": "Not available",
@@ -463,7 +420,6 @@
       "store_closed": "Closed",
       "store_open": "Open",
       "store_closes_in": "closes in {hours}h {minutes}min",
-      "later_available": "Ready for collection from {date} after ordering",
       "store_availability": "Store Availability",
       "store_availability_subline": "Please select a store"
     },
@@ -488,11 +444,9 @@
   },
   "subscription": {
     "title": "Subscription",
-    "one_time_purchase": "One-Time Purchase",
     "subscribe": "Subscribe & Save",
     "subscribe_with_reduction": "Subscribe & Save up to {percentage}%",
     "interval": "Interval",
-    "choose_interval": "Choose Interval",
     "follow_up_delivery": "Follow-up delivery",
     "day_of_month_selection_caption": "Ever {dayOfMonth} of the month",
     "or": "Or save even more:",
@@ -533,5 +487,8 @@
   "a11y": {
     "skip_to_main": "Skip to main content",
     "skip_to_search": "Skip to search"
+  },
+  "quantity": {
+    "new_value": "Change quantity to {newQuantity}"
   }
 }

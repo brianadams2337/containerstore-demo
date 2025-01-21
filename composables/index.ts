@@ -2,15 +2,15 @@
 export * from './cms/useProviderContext'
 
 // Storefront Boilerplate / Composables
+
+// Basket
+export * from './useBasketReductions'
+export * from './useBasketActions'
+export * from './useBasketPromotions'
+export * from './useBasketItem'
+
 export * from './useAuthentication'
 export * from './useBanner'
-export * from './useBasketActions'
-export * from './useBasketGroup'
-export * from './useBasketItem'
-export * from './useBasketItemPromotion'
-export * from './useBasketItemUiState'
-export * from './useBasketPromotions'
-export * from './useBasketReductions'
 export * from './useBreadcrumbs'
 export * from './useCheckoutWebComponent'
 export * from './usePromotionCategory'

@@ -1,6 +1,10 @@
 import { expect, test } from '../fixtures/fixtures'
 import { isMobile } from '../support/utils'
-import { E2E_BASKET_URL, SEARCH_SUGGESTIONS } from '../support/constants'
+import {
+  E2E_BASKET_URL,
+  SEARCH_SUGGESTIONS,
+  CHECKOUT_REDIRECT_URL,
+} from '../support/constants'
 
 test('C2139186: E2E from Home to Checkout - happy path', async ({
   homePage,
@@ -69,9 +73,13 @@ test('C2139186: E2E from Home to Checkout - happy path', async ({
 
   await test.step('Go to Checkout page', async () => {
     await expect(async () => {
-      await basketPage.gotoCheckoutPage()
+      if (isMobile(page)) {
+        await basketPage.gotoCheckoutPage(1)
+      } else {
+        await basketPage.gotoCheckoutPage(0)
+      }
       await signinPage.loginButton.waitFor({ state: 'visible' })
-      expect(page.url()).toContain('signin?redirectUrl=checkout')
+      expect(page.url()).toContain(CHECKOUT_REDIRECT_URL)
     }).toPass()
   })
 

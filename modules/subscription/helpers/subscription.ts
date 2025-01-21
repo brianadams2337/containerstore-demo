@@ -1,10 +1,13 @@
 import {
   type BasketItem,
+  type ItemGroup,
   type Product,
   type Variant,
   getAttributeValue,
   getAttributeValueTuples,
 } from '@scayle/storefront-nuxt'
+import { nanoid } from 'nanoid'
+import type { AddToBasketItem } from '~/composables'
 
 export const SUBSCRIPTION_ELIGIBILITY_ATTRIBUTE_NAME = 'subscriptionEligibility'
 export const SUBSCRIPTION_INTERVALS_ATTRIBUTE_NAME =
@@ -87,4 +90,39 @@ export const isSubscriptionAlreadyInBasket = (
       variantAlreadyInBasket &&
       hasVariantInBasketSubscriptionDefined)
   )
+}
+
+/**
+ * Gets the item group for a given item and basket items.
+ *
+ * If the item already has an item group, return that. Otherwise, find the existing
+ * subscription of the same variant in the basket and use its item group if available. If not found,
+ * create a new item group with a unique id and mark it as required.
+ *
+ * @param item - The item to get the item group for.
+ * @param basketItems - The current basket items.
+ * @returns The subscription item group.
+ */
+export const getSubscriptionItemGroup = (
+  item: AddToBasketItem,
+  basketItems: BasketItem[],
+): ItemGroup => {
+  if (item.itemGroup) {
+    return item.itemGroup
+  }
+
+  const existingSubscription = basketItems?.find((basketItem) => {
+    return (
+      basketItem.variant.id === item.variantId &&
+      hasSubscriptionCustomData(
+        basketItem.customData as Record<string, unknown>,
+      )
+    )
+  })
+
+  if (existingSubscription && existingSubscription.itemGroup) {
+    return existingSubscription.itemGroup
+  }
+
+  return { id: nanoid(8), isMainItem: true, isRequired: true }
 }

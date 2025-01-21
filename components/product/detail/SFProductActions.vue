@@ -99,7 +99,7 @@ import { useElementVisibility } from '@vueuse/core'
 import SFSiblingSelection from '../SFSiblingSelection.vue'
 import SFVariantPicker from '../SFVariantPicker.vue'
 import SFWishlistToggle from '../SFWishlistToggle.vue'
-import SFQuantityInput from './SFQuantityInput.vue'
+import SFQuantityInput from '../SFQuantityInput.vue'
 import SFFloatingContainer from '~/components/SFFloatingContainer.vue'
 import SFScrollToTopButton from '~/components/SFScrollToTopButton.vue'
 import { isProductSubscriptionEligible } from '#storefront-subscription/helpers/subscription'
@@ -113,6 +113,7 @@ import {
   type AddToBasketItem,
 } from '~/composables'
 import type { Promotion } from '~/types/promotion'
+import { getMaxQuantity } from '~/utils'
 
 type Props = {
   product: Product
@@ -126,10 +127,7 @@ const activeVariant = defineModel<Variant>('activeVariant')
 
 const quantity = ref(1)
 
-// Note: The basket does not allow a quantity > 50, therefore we limit it to prevent errors
-const maxQuantity = computed(() =>
-  Math.max(Math.min(activeVariant.value?.stock.quantity ?? 1, 10), 0),
-)
+const maxQuantity = computed(() => getMaxQuantity(activeVariant.value))
 
 watch(activeVariant, () => {
   quantity.value = 1

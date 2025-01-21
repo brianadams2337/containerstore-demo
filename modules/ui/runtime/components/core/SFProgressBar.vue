@@ -3,11 +3,7 @@
     class="relative w-full overflow-hidden"
     :class="[{ ...heightClasses, 'rounded-md': rounded }, backgroundColor]"
   >
-    <div
-      :class="[colorClasses, slantedBarClass]"
-      :style="{ width: `${progress}%` }"
-      class="h-full max-w-full"
-    />
+    <div :class="colorClasses" :style="barStyle" class="h-full max-w-full" />
   </div>
 </template>
 
@@ -19,38 +15,44 @@ type Props = {
   progress: number
   type?: ProgressType
   height?: 'xs' | 'sm' | 'md'
+  barColorStyle?: { backgroundColor: string; borderColor: string }
   backgroundColor?: string
-  fullWidth?: boolean
   rounded?: boolean
   slanted?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  type: ProgressType.SUCCESS,
-  height: 'sm',
-  backgroundColor: 'bg-secondary-450',
-  fullWidth: true,
-  rounded: false,
-  slanted: false,
-})
+const {
+  type = ProgressType.SUCCESS,
+  height = 'sm',
+  barColorStyle,
+  progress,
+  backgroundColor = 'bg-secondary-450',
+  rounded = false,
+  slanted = false,
+} = defineProps<Props>()
 
 const heightClasses = computed(() => ({
-  'h-1': props.height === 'xs',
-  'h-1.5': props.height === 'sm',
-  'h-2.5': props.height === 'md',
+  'h-1': height === 'xs',
+  'h-1.5': height === 'sm',
+  'h-2.5': height === 'md',
 }))
 
 const colorClasses = computed(() => ({
-  'bg-green-500': props.type === ProgressType.SUCCESS,
-  'bg-yellow-400': props.type === ProgressType.WARN,
-  'bg-red-500': props.type === ProgressType.DANGER,
-  'bg-white': props.type === ProgressType.NEUTRAL,
+  'bg-green-500': type === ProgressType.SUCCESS,
+  'bg-yellow-400': type === ProgressType.WARN,
+  'bg-red-500': type === ProgressType.DANGER,
+  'bg-white': type === ProgressType.NEUTRAL,
 }))
 
-const slantedBarClass = computed(() => {
-  if (props.progress > 100 || !props.slanted) {
-    return ''
-  }
-  return '!h-0 border-t-[14px] border-r-[14px] border-white border-r-transparent bg-white/0'
-})
+const barStyle = computed(() => ({
+  width: `${progress}%`,
+  ...(barColorStyle && {
+    borderTopWidth: '14px',
+    borderRightWidth: '14px',
+    borderColor: barColorStyle.borderColor,
+    backgroundColor:
+      progress >= 100 ? barColorStyle.borderColor : 'transparent',
+    ...(slanted && { height: 0, borderRightColor: 'transparent' }),
+  }),
+}))
 </script>

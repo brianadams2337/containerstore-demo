@@ -17,3 +17,8 @@ export const categoryListingMetaData = {
   id: CategoryListingMetadata.ID,
   name: CategoryListingMetadata.NAME,
 }
+
+export const basketListingMetaData = {
+  id: BasketListingMetadata.ID,
+  name: BasketListingMetadata.NAME,
+}

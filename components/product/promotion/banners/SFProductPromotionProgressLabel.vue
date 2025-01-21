@@ -5,8 +5,9 @@
       :progress="progress"
       rounded
       slanted
+      :bar-color-style="barColorStyle"
       type="neutral"
-      background-color="bg-white/20"
+      background-color="bg-white/50"
     />
     <p class="w-full text-center text-xs font-semibold">
       <template v-if="!isFullProgress">
@@ -54,6 +55,7 @@ import {
 } from '~/utils/promotion'
 import { SFProgressBar } from '#storefront-ui/components'
 import type { Promotion } from '~/types/promotion'
+import { getBackgroundColorStyle, FALLBACK_COLOR } from '~/utils'
 
 type Props = {
   promotion: Promotion
@@ -67,20 +69,26 @@ type Props = {
   formattedAmountLeft?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  isGiftAddedToBasket: false,
-  areGiftConditionsMet: false,
-  formattedDiscount: '',
-  formattedAmountLeft: '',
+const {
+  promotion,
+  isGiftAddedToBasket = false,
+  areGiftConditionsMet = false,
+  formattedDiscount = '',
+  formattedAmountLeft = '',
+} = defineProps<Props>()
+
+const color = computed(() => promotion.customData.colorHex)
+
+const barColorStyle = computed(() => {
+  if (!color.value) {
+    return { backgroundColor: FALLBACK_COLOR, borderColor: FALLBACK_COLOR }
+  }
+  return { ...getBackgroundColorStyle(color.value), borderColor: color.value }
 })
 
-const isAutomaticDiscount = computed(() =>
-  isAutomaticDiscountType(props.promotion),
-)
+const isAutomaticDiscount = computed(() => isAutomaticDiscountType(promotion))
 
-const isBuyXGetY = computed(() => isBuyXGetYType(props.promotion))
+const isBuyXGetY = computed(() => isBuyXGetYType(promotion))
 
-const automaticDiscount = computed(() => {
-  return getAdditionalData(props.promotion)?.value
-})
+const automaticDiscount = computed(() => getAdditionalData(promotion)?.value)
 </script>

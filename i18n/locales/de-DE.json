@@ -1,12 +1,7 @@
 {
   "global": {
-    "login_request": "Melde Dich jetzt an",
     "register": "Registrieren",
     "sold_out": "Ausverkauft",
-    "home": "Home",
-    "user_greeting": "Hallo {name}",
-    "you_are_not_user": "Nicht {name}?",
-    "not_registered": "Noch kein Kunde?",
     "sign_in": "Einloggen",
     "sign_out": "Ausloggen",
     "product_recommendation": "Empfohlene Kombinationen",
@@ -91,11 +86,7 @@
   },
   "badge_labels": {
     "new": "Neu",
-    "premium": "Premium",
     "sold_out": "Ausverkauft",
-    "online_exclusive": "Exklusiv online",
-    "campaign": "-{reduction}% EXTRA",
-    "sale": "-{reduction}%",
     "already_in_basket": "Bereits im Warenkorb"
   },
   "navigation": {
@@ -105,25 +96,18 @@
     "sign_in": "Einloggen",
     "basket": "Warenkorb",
     "home": "Storefront Core Boilerplate",
-    "search": "Suchen",
     "checkout": "Kasse",
     "osp": "Bestellbestätigung",
     "location": "Store Finden",
-    "wishlist-aria-label": "Wunschliste | Wunschliste, {count} Artikel | Wunschliste, {count} Artikel",
-    "basket-aria-label": "Warenkorb | Warenkorb, {count} Artikel | Warenkorb, {count} Artikel"
+    "wishlist_aria_label": "Wunschliste | Wunschliste, {count} Artikel | Wunschliste, {count} Artikel"
   },
   "search": {
     "placeholder": "Suche Produkte, Kategorien oder Marken",
-    "recent_searches": "Bisherige Suchen",
     "search_results": "Alle Ergebnisse für {searchTerm} anzeigen",
-    "search_term_match_count": "{count} Treffer für \"{term}\"",
-    "search_try_again": "Versuch es mit einem anderen Begriff",
-    "search_try_again_description": "Suche nach Artikel oder Marken",
     "result": "Deine Suche nach \"{term}\" ergab {resultsCount} Treffer.",
     "result_loading": "Lade Suchergebnisse für \"{term}\"...",
     "product": "Produkte",
     "categories": "Kategorien",
-    "more": "Mehr",
     "page_title": "Suchergebnisse für \"{term}\"",
     "navigation_items": "Seiten"
   },
@@ -131,9 +115,6 @@
     "flexible_payment": "Flexible Zahlungsmöglichkeiten",
     "free_shipping": "Kostenloser Versand bei Bestellungen über 50 {currency}",
     "return_policy": "50 Tage kostenlose Rückgabegarantie"
-  },
-  "banner": {
-    "close": "Schließen"
   },
   "wishlist": {
     "meta": {
@@ -151,57 +132,57 @@
   "basket": {
     "add_to_basket": "Zum Warenkorb hinzufügen",
     "heading": "Warenkorb",
+    "basket_aria_label": "Warenkorb | Warenkorb, {count} Artikel | Warenkorb, {count} Artikel",
     "empty_title": "Dein Warenkorb ist leer.",
-    "empty_description": "Du siehst hier eine Auflistung Deiner Produkte sobald sie in deinem Warenkorb sind.",
-    "continue_shopping_info": "Jetzt unsere neuesten Artikel entdecken oder einloggen um gespeicherte Artikel anzuzeigen.",
+    "empty_description": "Du siehst hier eine Auflistung deiner Produkte sobald sie in deinem Warenkorb sind.",
     "total": "Gesamt",
-    "shipping": "Versandkosten",
+    "delivery": "Versand",
     "shipping_free": "Kostenlos",
     "subtotal": "Zwischensumme",
-    "including_vat": "inkl. Mwst.",
+    "you_pay": "Du zahlst",
+    "including_vat": "inkl. MwSt.",
+    "excluding_vat": "zzgl. MwSt.",
     "checkout_label": "Zur Kasse",
+    "go_to_label": "Zum Warenkorb",
     "notification": {
       "select_size": "Bitte Größe wählen, um zum Warenkorb hinzuzufügen.",
       "add_to_basket_success": "{productName} wurde zum Warenkorb hinzugefügt.",
       "add_to_basket_error": "{productName} konnte nicht zum Warenkorb hinzugefügt werden.",
-      "add_to_basket": "{productName} wurde Ihrem Warenkorb hinzugefügt.",
-      "subscription_already_in_basket_error": "{productName} befindet sich bereits im Warenkorb. Ein Artikel kann nicht mehr als einmal als Abonnement in einer Bestellung enthalten sein.",
       "add_to_basket_variant_out_of_stock_error": "Diese Größe ist derzeit ausverkauft.",
       "add_to_basket_max_basket_items_error": "Ups! Du hast die maximale Anzahl an Artikeln in deinem Warenkorb erreicht.",
       "add_subscription_to_basket_success": "Das {productName} {interval} Abonnement wurde deinem Warenkorb hinzugefügt.",
       "add_with_reduced_quantity_error": "Es sind keine weiteren Artikel in dieser Größe verfügbar. Der gesamte verfügbare Bestand wurde bereits deinem Warenkorb hinzugefügt."
     },
-    "discount": "Rabatt",
-    "to_checkout": "Zur Kasse",
+    "discount": "Rabatte",
     "no_items_info": "Sie haben keine Produkte in Ihrem Warenkorb.",
     "promotion": {
-      "progress_left": "{amount} übrig",
-      "saved": "{amount} Gespart",
-      "choose_free_gift": "Wählen Sie ein kostenloses Geschenk",
-      "add_free_gift": "Hinzufügen"
+      "mov_banner_label": "Artikel für {name} anzeigen"
     },
     "summary": {
       "sale": "Sale",
-      "campaign": "EXTRA"
+      "campaign": "Aktion",
+      "delivery_fees": "* Die Versandkosten werden während des Checkouts festgelegt, nachdem Sie eine bevorzugte Lieferoption ausgewählt haben."
     },
     "product": {
       "add": "Hinzufügen"
-    }
+    },
+    "available_products": "Verfügbare Produkte",
+    "unavailable_products": "Nicht verfügbare Produkte",
+    "meta": {
+      "description": "Überprüfe die Artikel in deinem Warenkorb und gehe problemlos zur Kasse. Sicheres und unkompliziertes Einkaufen bei {shopName}."
+    },
+    "voucher_disclaimer": "Gutscheine können im letzten Schritt der Bestellung angegeben werden."
   },
   "basket_card": {
     "size_label": "Größe",
     "color_label": "Farbe",
-    "remove_label": "Löschen",
     "confirm_remove_question": "Sind Sie sicher, dass Sie diesen Artikel entfernen möchten?",
-    "cancel": "Abbrechen",
-    "remove_short": "Entfernen",
     "remove_long": "Artikel entfernen",
     "quantity_label": "Anzahl"
   },
   "incl_tax": "inkl. MwSt.",
   "my_account": {
     "navigation": "Mein Konto",
-    "redirecting": "Weiterleitung",
     "profile_menu": "Kontoeinstellungen",
     "password": "Passwort",
     "orders_menu": "Deine Bestellungen",
@@ -212,10 +193,7 @@
     "subscriptions_subtitle": "Ändere deine Abonnements",
     "orders": {
       "overview": "Bestellübersicht",
-      "back": "Zurück zur Übersicht",
       "order_summary_header": "Bestellung vom {date}",
-      "order_detail_header": "Deine Bestellung vom {date}",
-      "order_select": "Bitte wählen Sie eine Bestellung",
       "paid_with": "Bezahlt mit",
       "order_value": "Bestellwert",
       "shipping": "Versandkosten",
@@ -226,21 +204,16 @@
       "billing_address_label": "Rechnungsadresse",
       "expected_delivery_from": "Erwartet",
       "delivery": "Lieferung",
-      "shipment_detail": "Versandinformationen",
-      "details": "Sendungsverfolgung",
-      "shipping_free": "",
-      "subtotal": "Zwischensumme"
+      "details": "Sendungsverfolgung"
     },
     "user": {
       "save_message": "Ihre Daten wurden erfolgreich gespeichert.",
       "save_error": "Die Daten konnten nicht gespeichert werden.",
       "save_label": "Speichern",
       "update_password_label": "Passwort aktualisieren",
-      "password_mismatch_error": "Stimmt nicht mit dem neuen Passwort überein.",
       "password_update_success": "Passwort aktualisiert",
       "password_update_error": "Das Aktualisieren des Passworts hat nicht funktioniert. Versuchen Sie es bitte erneut!",
-      "email_change_hint": "Bitte wenden Sie sich an den Kundendienst, um Ihre E-Mail-Adresse zu ändern.",
-      "password_pattern_hint": "Erfordert einen Großbuchstaben, ein Sonderzeichen, eine Zahl und keine Leerzeichen."
+      "email_change_hint": "Bitte wenden Sie sich an den Kundendienst, um Ihre E-Mail-Adresse zu ändern."
     },
     "popover": {
       "greeting": "Hallo {firstName}"
@@ -293,7 +266,6 @@
     "best_price_30d": "30-Tage-Bestpreis:"
   },
   "plp": {
-    "filter": "Filter",
     "seo_description": "Kaufen Sie {category} bei SCAYLE. Entdecken Sie eine große Auswahl an {category}.",
     "back_navigation_button_label": "Zurück",
     "no_results": {
@@ -313,19 +285,12 @@
   },
   "filter": {
     "title": "Kategoriefilter",
-    "size": "Größe",
-    "brands": "Marken",
-    "colors": "Farben",
-    "price": "Preis",
     "only_sale": "Nur reduzierte Produkte anzeigen",
-    "delete": "Löschen",
-    "show_all": "Alle anzeigen",
     "show_results_count": "{count} Artikel anzeigen",
     "reset": "Zurücksetzen",
     "reset_all": "Alles zurücksetzen",
     "show_results": "Artikel anzeigen",
     "to": "bis",
-    "all_label": "Alle",
     "select_color": "Farbe {color} gewählt",
     "sorting": "Sortierung",
     "show_filter": "Filter anzeigen",
@@ -336,7 +301,6 @@
     "updated_notification_all": "Deine Sortierung und Filter wurden erfolgreich angewendet!"
   },
   "osp": {
-    "account": "Kundenkonto",
     "order_details": "Bestelldetails",
     "customer_id": "Kunden-Nr.",
     "deliver_costs": "Versandkosten",
@@ -356,10 +320,6 @@
     "quantity_label": "Anzahl",
     "no_order_found": "Die Bestelldaten wurden nicht gefunden.",
     "title": "Dein Bestellung"
-  },
-  "main_nav": {
-    "back_to": "Back to \"{name}\"",
-    "main_menu": "Main menu"
   },
   "login_page": {
     "forgot_password": {
@@ -414,10 +374,7 @@
         "success": "Ihr Passwort wurde erfolgreich zurückgesetzt. Verwenden Sie Ihr neues Passwort, um sich anzumelden."
       },
       "submit": "Einreichen",
-      "title": "Passwort zurücksetzen",
-      "validation": {
-        "required": "Dieses Feld ist erforderlich"
-      }
+      "title": "Passwort zurücksetzen"
     },
     "sign_up": {
       "status": {
@@ -456,7 +413,6 @@
     },
     "input_placeholder": "Ort oder PLZ eingeben",
     "no_results": "Keine Ergebnisse",
-    "show_only_available": "Sofortige Verfügbarkeit",
     "labels": {
       "available": "Verfügbar",
       "not_available": "Nicht verfügbar",
@@ -464,7 +420,6 @@
       "store_closed": "geschlossen",
       "store_open": "offen",
       "store_closes_in": "schließt in {hours}h {minutes}Min",
-      "later_available": "Nach der Bestellung ab dem {date} zur Abholung bereit",
       "store_availability": "Verfügbarkeit im Geschäft",
       "store_availability_subline": "Bitte wählen Sie einen Store aus"
     },
@@ -489,11 +444,9 @@
   },
   "subscription": {
     "title": "Abonnement",
-    "one_time_purchase": "Einmalige Lieferung",
     "subscribe": "Abonnieren & Sparen",
     "subscribe_with_reduction": "Abonnieren & Sparen bis zu {percentage}%",
     "interval": "Interval",
-    "choose_interval": "Interval wählen",
     "follow_up_delivery": "Folgelieferung",
     "day_of_month_selection_caption": "Jeden {dayOfMonth} des Monats",
     "or": "Oder noch mehr sparen:",
@@ -534,5 +487,8 @@
   "a11y": {
     "skip_to_main": "Zum Hauptinhalt springen",
     "skip_to_search": "Weiter zur Suche"
+  },
+  "quantity": {
+    "new_value": "Ändere die Menge auf {newQuantity}"
   }
 }

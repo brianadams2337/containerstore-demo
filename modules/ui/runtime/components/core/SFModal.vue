@@ -9,6 +9,7 @@
       v-if="!hideCloseButton"
       data-testid="close-button"
       class="group absolute right-6 top-6 z-50 cursor-pointer rounded-full p-2.5 transition-colors max-md:bg-gray-100 md:hover:bg-gray-100"
+      :aria-label="$t('global.cancel')"
       @click="onCancel"
     >
       <IconClose
@@ -38,9 +39,10 @@ const visible = defineModel<boolean>('visible', {
   type: Boolean,
   default: false,
 })
-
+const emit = defineEmits(['close'])
 const close = () => {
   visible.value = false
+  emit('close')
 }
 
 const onClick = (e: MouseEvent) => {

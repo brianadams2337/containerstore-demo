@@ -45,6 +45,7 @@ withDefaults(defineProps<Props>(), {
 
 const HeadlineClass = {
   [HeadlineSize['4XL']]: 'text-4xl',
+  [HeadlineSize['3XL']]: 'text-3xl',
   [HeadlineSize['2XL']]: 'text-2xl',
   [HeadlineSize.XL]: 'text-xl',
   [HeadlineSize.LG]: 'text-lg',

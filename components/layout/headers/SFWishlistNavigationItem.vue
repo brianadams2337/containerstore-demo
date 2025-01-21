@@ -31,7 +31,7 @@ const { count } = useWishlist()
 const i18n = useI18n()
 const ariaLabel = computed(() =>
   i18n.t(
-    'navigation.wishlist-aria-label',
+    'navigation.wishlist_aria_label',
     mounted.value ? count.value || 0 : 0,
   ),
 )

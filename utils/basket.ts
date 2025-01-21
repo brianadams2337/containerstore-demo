@@ -1,69 +1,16 @@
 import {
-  type BasketItem,
+  type AppliedReduction,
   type BasketResponseData,
-  getFirstAttributeValue,
+  type BasketTotalPrice,
   AddToBasketFailureKind,
 } from '@scayle/storefront-nuxt'
 
-export type BundledBasketItems<T = unknown> = Partial<Record<string, T[]>>
-
-export const sortBasketItemsByNameAndSize = (
-  items: BasketItem[],
-): BasketItem[] => {
-  const getSortingBasketItemName = (item: BasketItem) =>
-    getFirstAttributeValue(item.product.attributes, 'name')?.label ?? ''
-
-  const sortedAlphabetically = items.toSorted((a, b) =>
-    getSortingBasketItemName(a).localeCompare(getSortingBasketItemName(b)),
-  )
-
-  const getSortingBasketItemSize = (item: BasketItem) =>
-    getFirstAttributeValue(item.variant?.attributes, 'size')?.id ?? 0
-
-  return sortedAlphabetically.toSorted(
-    (a, b) => getSortingBasketItemSize(a) - getSortingBasketItemSize(b),
-  )
-}
-
-export const sortBasketItemsByIsSoldOut = (
-  items: BasketItem[],
-): BasketItem[] => {
-  const getSortingBasketItemProductAttribute = ({ product }: BasketItem) =>
-    Number(product.isSoldOut)
-
-  return items.toSorted(
-    (a, b) =>
-      getSortingBasketItemProductAttribute(a) -
-      getSortingBasketItemProductAttribute(b),
-  )
-}
-
-export const getPartitionedBasketItems = (items: BasketItem[] = []) => {
-  return items.reduce<Record<'standAlone' | 'groupedItems', BasketItem[]>>(
-    (acc, item: BasketItem) => {
-      ;(item.itemGroup?.id ? acc.groupedItems : acc.standAlone).push(item)
-      return acc
-    },
-    { standAlone: [], groupedItems: [] },
-  )
-}
-
-export const bundleBasketItemsByGroup = (
-  items: BasketItem[] = [],
-): BundledBasketItems<BasketItem> => {
-  return items.reduce(
-    (acc, item) => {
-      const groupId = item.itemGroup?.id ?? '-1'
-      if (!acc[groupId]) {
-        acc[groupId] = []
-      }
-      acc[groupId].push(item)
-      return acc
-    },
-    {} as Record<string, BasketItem[]>,
-  )
-}
-
+/**
+ * Returns a translation key for a basket error message based on the provided error.
+ *
+ * @param error - The error to determine the error message key for
+ * @returns The translation key corresponding to the error type
+ */
 export const getBasketToastErrorMessageKey = (error: unknown) => {
   if (error instanceof Error) {
     if (error.cause === AddToBasketFailureKind.ItemAddedWithReducedQuantity) {
@@ -77,6 +24,12 @@ export const getBasketToastErrorMessageKey = (error: unknown) => {
   return 'basket.notification.add_to_basket_error'
 }
 
+/**
+ * Calculates the basket total without promotions reductions applied.
+ *
+ * @param basket - The basket response data to calculate the total.
+ * @returns The basket total without promotions reductions applied.
+ */
 export const getBasketTotalWithoutPromotions = (
   basket?: BasketResponseData,
 ) => {
@@ -94,4 +47,22 @@ export const getBasketTotalWithoutPromotions = (
   )
 
   return basket.cost.withTax + promotionReductionsSum
+}
+
+/**
+ * Calculates the total reductions for a given reduction category.
+ *
+ * @param cost - The basket total price.
+ * @param reductionCategory - The category of the reductions to calculate.
+ * @returns The total value of the reductions in the specified category.
+ */
+export const getTotalReductionsByCategory = (
+  cost: BasketTotalPrice,
+  reductionCategory: AppliedReduction['category'],
+): number => {
+  return (cost.appliedReductions ?? []).reduce<number>((price, currentItem) => {
+    return currentItem.category === reductionCategory
+      ? price + currentItem.amount.absoluteWithTax
+      : price
+  }, 0)
 }

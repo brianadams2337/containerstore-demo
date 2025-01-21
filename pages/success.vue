@@ -13,11 +13,7 @@
         :delivery-date="deliveryDate"
       />
     </div>
-    <SFEmptyState
-      v-else
-      :title="$t('osp.no_order_found')"
-      show-default-actions
-    />
+    <SFEmptyState v-else :title="$t('osp.no_order_found')" />
   </SFPageContainer>
 </template>
 

@@ -1,131 +1,97 @@
 <template>
-  <div
-    class="container max-sm:max-w-none sm:py-10"
-    data-testid="basket-container"
-  >
-    <SFAsyncDataWrapper :status="basketStatus">
-      <div v-if="isBasketEmpty" class="space-y-8">
-        <SFEmptyState
-          :title="$t('basket.empty_title')"
-          :description="$t('basket.empty_description')"
-          show-default-actions
+  <SFAsyncDataWrapper :status="basketStatus">
+    <SFEmptyState
+      v-if="basketCount === 0"
+      :title="$t('basket.empty_title')"
+      :description="$t('basket.empty_description')"
+    />
+    <div
+      v-else
+      class="relative flex flex-col lg:flex-row"
+      data-testid="basket-container"
+    >
+      <div
+        class="mx-5 flex flex-col space-y-4 pb-8 pt-1.5 lg:ml-7 lg:mr-13 lg:w-3/5 lg:items-end lg:space-y-5 lg:py-8"
+      >
+        <SFBasketHeadline v-if="basketCount" :count="basketCount" />
+        <SFBasketMOVBanners />
+        <SFBasketAvailableItems
+          v-if="groupedBasketItems?.available"
+          :available-items="groupedBasketItems?.available"
+          @update:quantity="(...args) => updateItemQuantity(...args)"
+          @delete="deleteBasketItem($event)"
         />
-      </div>
-      <div v-else class="flex flex-col-reverse gap-8 md:flex-row xl:gap-16">
-        <div class="w-full flex-1 space-y-4 md:w-3/5 2xl:w-2/3">
-          <SFHeadline size="2xl" class="mb-6">
-            {{ $t('basket.heading') }} ({{ basketCount }})
+        <template v-if="groupedBasketItems?.unavailable">
+          <SFHeadline
+            tag="h2"
+            class="z-10 w-full rounded-lg border border-gray-200 bg-gray-50 px-5 py-2.5 text-md font-semi-bold-variable text-gray-500 lg:max-w-156"
+          >
+            {{ $t('basket.unavailable_products') }}:
           </SFHeadline>
-
-          <template v-if="orderedItems.standAlone">
-            <template
-              v-for="(item, index) in filteredOrderedItems"
-              :key="item.key"
-            >
-              <SFFadeInTransition>
-                <SFBasketAutomaticDiscountConditionBanner
-                  v-if="
-                    isAutomaticDiscountType(item.promotion) &&
-                    item.isPromotionApplicableItemUnique
-                  "
-                  :basket-item="item"
-                />
-                <SFBasketGiftConditionBanner
-                  v-if="isGiftApplicableItem(item)"
-                  :basket-item="item"
-                />
-              </SFFadeInTransition>
-
-              <SFSwipeDelete @delete="removeItem(item)">
-                <SFBasketCard class="w-full" :item="item" :index="index" />
-              </SFSwipeDelete>
-              <SFFadeInTransition>
-                <SFBasketItemPromotionGifts
-                  v-if="isGiftApplicableItem(item)"
-                  :basket-item="item"
-                />
-              </SFFadeInTransition>
-            </template>
-          </template>
-
-          <div>
-            <SFBasketCard
-              v-for="(groupId, index) of Object.keys(orderedItems.groupedItems)"
-              :key="`basket-group-${groupId}`"
-              class="my-4"
-              :items-group="orderedItems.groupedItems[groupId]"
-              :index="index"
-            />
-          </div>
-        </div>
-
-        <SFBasketSummary class="w-full md:w-2/5 2xl:w-1/3" />
+          <SFBasketUnavailableItems
+            :unavailable-items="groupedBasketItems?.unavailable"
+            @delete="deleteBasketItem($event)"
+          />
+        </template>
       </div>
-      <template #loading>
-        <div class="flex flex-col-reverse gap-8 md:flex-row xl:gap-16">
-          <SFSkeletonLoader
-            type="custom"
-            class="h-96 w-full space-y-4 max-md:mb-4 md:w-3/5 2xl:w-2/3"
-          />
-          <SFSkeletonLoader
-            type="custom"
-            class="h-96 w-full md:w-2/5 2xl:w-1/3"
-          />
-        </div>
-      </template>
-    </SFAsyncDataWrapper>
-  </div>
+      <div
+        class="relative hidden w-2/5 flex-col border-l border-gray-200 bg-gray-50 px-5 py-8 pl-13 pr-7 lg:flex"
+      >
+        <SFBasketSummary class="sticky top-8" />
+      </div>
+      <SFBasketSummaryMobile />
+      <SFBasketDeleteConfirmationModal
+        :visible="isDeleteConfirmationRevealed"
+        :on-confirm="confirmDeletion"
+        :on-cancel="cancelDeletion"
+      />
+    </div>
+    <template #loading>
+      <SFBasketSkeleton />
+    </template>
+  </SFAsyncDataWrapper>
 </template>
 
 <script setup lang="ts">
 import { computed, defineOptions, onMounted } from 'vue'
-import { useSeoMeta } from '@unhead/vue'
-import {
-  type BasketItem,
-  getFirstAttributeValue,
-} from '@scayle/storefront-nuxt'
+import { useHead, useSeoMeta } from '@unhead/vue'
+import type { BasketItem } from '@scayle/storefront-core'
+import { useConfirmDialog, whenever } from '@vueuse/core'
+import { sanitizeCanonicalURL } from '@scayle/storefront-nuxt'
 import { definePageMeta } from '#imports'
-import { useNuxtApp } from '#app'
+import { createError, useNuxtApp } from '#app'
 import { useRoute } from '#app/composables/router'
 import { WishlistListingMetadata } from '~/constants/listingMetadata'
-import { isAutomaticDiscountType, isBuyXGetYType } from '~/utils/promotion'
-import { getPromotionIdFromProductAttributes } from '~/utils/product'
 import {
   useBasketActions,
-  useBasketPromotions,
   usePageState,
   useTrackingEvents,
 } from '~/composables'
 import { useBasket, useWishlist } from '#storefront/composables'
-import {
-  SFHeadline,
-  SFFadeInTransition,
-  SFSkeletonLoader,
-  SFSwipeDelete,
-} from '#storefront-ui/components'
 import SFAsyncDataWrapper from '~/components/SFAsyncDataWrapper.vue'
-import SFBasketAutomaticDiscountConditionBanner from '~/components/basket/promotion/SFBasketAutomaticDiscountConditionBanner.vue'
-import SFBasketGiftConditionBanner from '~/components/basket/promotion/SFBasketGiftConditionBanner.vue'
-import SFBasketCard from '~/components/basket/card/SFBasketCard.vue'
-import SFBasketItemPromotionGifts from '~/components/basket/promotion/SFBasketItemPromotionGifts.vue'
+import { basketListingMetaData } from '~/constants'
+import SFBasketSkeleton from '~/components/basket/skeleton/SFBasketSkeleton.vue'
 import SFBasketSummary from '~/components/basket/summary/SFBasketSummary.vue'
 import SFEmptyState from '~/components/SFEmptyState.vue'
+import { SFHeadline } from '#storefront-ui/components'
+import SFBasketHeadline from '~/components/basket/SFBasketHeadline.vue'
+import SFBasketDeleteConfirmationModal from '~/components/basket/SFBasketDeleteConfirmationModal.vue'
+import SFBasketSummaryMobile from '~/components/basket/summary/SFBasketSummaryMobile.vue'
+import SFBasketAvailableItems from '~/components/basket/SFBasketAvailableItems.vue'
+import SFBasketUnavailableItems from '~/components/basket/SFBasketUnavailableItems.vue'
+import SFBasketMOVBanners from '~/components/basket/promotions/SFBasketMOVBanners.vue'
 
-const basket = useBasket()
-const wishlist = useWishlist()
-
-const { pageState } = usePageState()
 const route = useRoute()
+const { pageState } = usePageState()
 
+const wishlist = useWishlist()
 const {
-  listingMetaData,
-  orderedItems,
-  basketStatus,
-  basketItems,
-  basketCount,
-  isBasketEmpty,
-  removeItem,
-} = useBasketActions()
+  items: basketItems,
+  status: basketStatus,
+  cost: basketCost,
+  error: basketError,
+  count: basketCount,
+} = useBasket()
 
 const {
   trackViewBasket,
@@ -133,106 +99,89 @@ const {
   trackBasket,
   trackWishlist,
   collectProductListItems,
+  trackFeatureError,
 } = useTrackingEvents()
 
-const { allCurrentPromotions } = useBasketPromotions()
-
-type FilteredOrderedItem = BasketItem & {
-  isPromotionApplicableItemUnique: boolean
-}
-
-const isPromotionApplicableItemUnique = (
-  item: BasketItem,
-  items: BasketItem[],
-) => {
-  return !items.some((basketItem) => {
-    const basketProductPromotionId = getPromotionIdFromProductAttributes(
-      basketItem.product,
-    )
-    return (
-      basketProductPromotionId ===
-      basketItemPromotion(item)?.customData.product?.promotionId
-    )
-  })
-}
-
-const filteredOrderedItems = computed(() => {
-  return orderedItems.value.standAlone.reduce<FilteredOrderedItem[]>(
-    (previous, current) => {
-      previous.push({
-        ...current,
-        isPromotionApplicableItemUnique: isPromotionApplicableItemUnique(
-          current,
-          previous,
-        ),
-      })
-      return previous
-    },
-    [],
-  )
-})
-
-const basketItemPromotion = (item: BasketItem) => {
-  const currentBasketItemProductId = getPromotionIdFromProductAttributes(
-    item.product,
-  )
-
-  return allCurrentPromotions.value.find(({ customData }) => {
-    return customData?.product?.promotionId === currentBasketItemProductId
-  })
-}
-
-const isGiftApplicableItem = ({
-  product,
-  promotionId,
-  isPromotionApplicableItemUnique,
-}: FilteredOrderedItem) => {
-  if (promotionId || !isPromotionApplicableItemUnique) {
-    return false
-  }
-  const id = getFirstAttributeValue(product?.attributes, 'promotion')?.id
-  return allCurrentPromotions.value.some((promotion) => {
-    const isFreeGift = isBuyXGetYType(promotion)
-    if (!isFreeGift) {
-      return false
-    }
-    return promotion.customData?.product?.promotionId === id
-  })
-}
+whenever(
+  basketError,
+  (err) => {
+    trackFeatureError(err.message)
+    throw createError({ ...err, fatal: true })
+  },
+  { immediate: true },
+)
 
 onMounted(() => {
-  if (basketItems.value) {
-    trackViewBasket(
-      collectBasketItems(basket.items.value || [], {
-        listId: listingMetaData.id,
-        listName: listingMetaData.name,
-      }),
-      {
-        content_name: route.fullPath,
-        page_type: pageState.value.type,
-        page_type_id: route.params.id?.toString() || '',
-      },
-      basket.cost.value,
-    )
-    trackBasket(
-      collectBasketItems(basket.items.value || [], {
-        listId: listingMetaData.id,
-        listName: listingMetaData.name,
-      }),
-    )
-    trackWishlist(
-      collectProductListItems(wishlist.products.value, {
-        listId: WishlistListingMetadata.ID,
-        listName: WishlistListingMetadata.NAME,
-      }),
-    )
+  if (!basketItems.value) {
+    return
   }
+  trackViewBasket(
+    collectBasketItems(basketItems.value, {
+      listId: basketListingMetaData.id,
+      listName: basketListingMetaData.name,
+    }),
+    {
+      content_name: route.fullPath,
+      page_type: pageState.value.type,
+      page_type_id: route.params.id?.toString() || '',
+    },
+    basketCost.value,
+  )
+  trackBasket(
+    collectBasketItems(basketItems.value, {
+      listId: basketListingMetaData.id,
+      listName: basketListingMetaData.name,
+    }),
+  )
+  trackWishlist(
+    collectProductListItems(wishlist.products.value, {
+      listId: WishlistListingMetadata.ID,
+      listName: WishlistListingMetadata.NAME,
+    }),
+  )
 })
 
-const { $i18n } = useNuxtApp()
+const groupedBasketItems = computed(() =>
+  Object.groupBy(basketItems.value || [], (item) => item.status),
+)
+
+const { updateItemQuantity, removeItem } = useBasketActions()
+
+const {
+  isRevealed: isDeleteConfirmationRevealed,
+  reveal: revealDeleteConfirmation,
+  confirm: confirmDeletion,
+  cancel: cancelDeletion,
+} = useConfirmDialog<undefined, boolean, boolean>()
+const deleteBasketItem = async (item: BasketItem) => {
+  const { isCanceled } = await revealDeleteConfirmation()
+  if (isCanceled) {
+    return
+  }
+  await removeItem(item)
+}
+
+const {
+  $i18n,
+  $config: {
+    public: { shopName, baseUrl },
+  },
+} = useNuxtApp()
+
 useSeoMeta({
   title: $i18n.t('navigation.basket'),
   robots: 'noindex,follow',
+  description: $i18n.t('basket.meta.description', { shopName }),
+})
+
+useHead({
+  link: [
+    {
+      rel: 'canonical',
+      key: 'canonical',
+      href: sanitizeCanonicalURL(`${baseUrl}${route.fullPath}`),
+    },
+  ],
 })
 
 defineOptions({ name: 'BasketPage' })

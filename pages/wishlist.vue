@@ -1,5 +1,5 @@
 <template>
-  <main class="container mt-8 max-sm:max-w-none">
+  <div class="container mt-8 max-sm:max-w-none">
     <SFHeadline
       tag="h1"
       class="mt-1.5 !font-semi-bold-variable text-gray-900 max-sm:text-2xl max-sm:leading-6 sm:mt-0"
@@ -8,7 +8,7 @@
       <SFFadeInTransition>
         <span
           v-if="count !== undefined && count > 0"
-          class="ml-0.5 inline-flex h-[1.125rem] items-center rounded-[1.25rem] bg-gray-900 px-2 text-xs font-semibold leading-4 text-white"
+          class="ml-0.5 inline-flex h-4.5 items-center rounded-full bg-gray-900 px-2 text-xs font-semibold leading-4 text-white"
         >
           {{ count }}
         </span>
@@ -41,16 +41,14 @@
           class="col-span-6 mb-4 sm:col-span-4 lg:col-span-3 xl:col-span-2"
         />
       </div>
-      <div v-if="count === 0" class="mt-8 space-y-8">
-        <SFEmptyState
-          :title="$t('wishlist.no_items_info')"
-          :description="$t('wishlist.continue_shopping_info')"
-          icon="EmptyWishlist"
-          show-default-actions
-        />
-      </div>
+      <SFEmptyState
+        v-if="count === 0"
+        :title="$t('wishlist.no_items_info')"
+        :description="$t('wishlist.continue_shopping_info')"
+        icon="EmptyWishlist"
+      />
     </template>
-  </main>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -74,13 +72,8 @@ const { trackWishlistPage } = useWishlistTracking()
 // Track the wishlist once it is loaded
 whenever(
   () => status.value !== 'pending',
-  () => {
-    trackWishlistPage(products.value)
-  },
-  {
-    once: true,
-    immediate: true,
-  },
+  () => trackWishlistPage(products.value),
+  { once: true, immediate: true },
 )
 
 useSeoMeta({

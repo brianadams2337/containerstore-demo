@@ -1,19 +1,28 @@
 <template>
   <SFPromotionCard
-    :background-color="backgroundColor"
+    :background-color="
+      getBackgroundColorStyle(color, AlphaColorMap.ALPHA_20).backgroundColor
+    "
+    :style="getTextColorStyle(color)"
     :promotion="promotion"
-    class="relative flex flex-col items-start rounded-md bg-blue px-4 py-3 text-white"
+    class="relative flex flex-col items-start rounded-xl bg-blue px-4 py-3 text-white"
   >
     <template #default="{ headlineParts, scheduledTo }">
       <div class="flex w-full items-center justify-between">
         <SFPromotionHeadline
           v-if="headlineParts"
           :headline-parts="headlineParts"
+          :style="textColor"
           size="sm"
           is-column
           class="mb-2"
         />
-        <SFPromotionCountdown :time-until="scheduledTo" />
+        <SFPromotionCountdown
+          :time-until="scheduledTo"
+          :style="backgroundColorStyle"
+          borderless
+          class="min-w-30.5 justify-center rounded-xl text-white"
+        />
       </div>
       <div
         v-if="isPriorityBadgeShown"
@@ -53,7 +62,7 @@
 <script setup lang="ts">
 import { computed, toRef } from 'vue'
 import SFProductPromotionProgressLabel from './SFProductPromotionProgressLabel.vue'
-import { getBackgroundColorStyle } from '~/utils/promotion'
+import { getBackgroundColorStyle, getTextColorStyle } from '~/utils/promotion'
 import { usePromotionProgress } from '~/composables'
 import { ClientOnly } from '#components'
 import { SFSkeletonLoader, SFFadeInTransition } from '#storefront-ui/components'
@@ -61,6 +70,7 @@ import SFPromotionCountdown from '~/components/promotion/SFPromotionCountdown.vu
 import SFPromotionCard from '~/components/promotion/SFPromotionCard.vue'
 import SFPromotionHeadline from '~/components/promotion/headlines/SFPromotionHeadline.vue'
 import type { Promotion } from '~/types/promotion'
+import { AlphaColorMap } from '~/constants'
 
 type Props = {
   promotion: Promotion
@@ -69,11 +79,12 @@ type Props = {
   areGiftConditionsMet?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  isPriorityBadgeShown: false,
-  isGiftAddedToBasket: false,
-  areGiftConditionsMet: false,
-})
+const {
+  promotion,
+  isPriorityBadgeShown = false,
+  isGiftAddedToBasket = false,
+  areGiftConditionsMet = false,
+} = defineProps<Props>()
 
 const {
   progress,
@@ -82,11 +93,12 @@ const {
   formattedDiscount,
   isFullProgress,
   formattedAmountLeft,
-} = usePromotionProgress(toRef(props.promotion))
+} = usePromotionProgress(toRef(() => promotion))
 
-const backgroundColor = computed(() => {
-  const colorHex = props.promotion.customData.colorHex
+const color = computed(() => promotion.customData.colorHex)
 
-  return getBackgroundColorStyle(colorHex).backgroundColor
-})
+const textColor = computed(() => getTextColorStyle(color.value))
+const backgroundColorStyle = computed(() =>
+  getBackgroundColorStyle(color.value),
+)
 </script>

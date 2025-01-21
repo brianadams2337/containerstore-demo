@@ -1,6 +1,9 @@
 <template>
-  <div class="flex flex-wrap items-center gap-1">
-    <template v-if="showBadges">
+  <div
+    class="flex flex-wrap items-center gap-1"
+    :class="{ 'flex-col !items-end justify-end': !inline }"
+  >
+    <div v-if="showBadges" class="flex gap-1">
       <span
         v-for="({ value, category }, index) in relativeReductions"
         :key="`${value}-badge-${category}-${index}`"
@@ -9,7 +12,7 @@
       >
         -{{ value }}%
       </span>
-    </template>
+    </div>
     <p class="text-gray-900" :class="classes" data-testid="price">
       <template v-if="showPriceFrom">
         {{ $t('price.starting_from') }}
@@ -38,6 +41,7 @@
         lowestPriorPrice?.relativeDifferenceToPrice !== null
       "
       class="mt-1 w-full text-2xs text-gray-500 md:text-sm"
+      :class="{ 'text-end': !inline }"
       data-testid="lowest-prior-price"
     >
       {{ $t('price.best_price_30d') }}
@@ -55,13 +59,16 @@
 import { computed, toRefs } from 'vue'
 import type { LowestPriorPrice, Price } from '@scayle/storefront-nuxt'
 import { Size } from '#storefront-ui'
-import { useProductPrice } from '~/composables/useProductPrice'
+import {
+  useProductPrice,
+  type BasketItemPrice,
+} from '~/composables/useProductPrice'
 import { getPromotionStyle } from '~/utils'
 import type { Promotion } from '~/types/promotion'
 import { useFormatHelpers } from '#storefront/composables'
 
 type Props = {
-  price: Price
+  price: Price | BasketItemPrice
   lowestPriorPrice?: LowestPriorPrice
   promotion?: Promotion | null
   showTaxInfo?: boolean
@@ -69,6 +76,7 @@ type Props = {
   showBadges?: boolean
   size?: Size
   type?: 'normal' | 'whisper' | 'loud'
+  inline?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -79,6 +87,7 @@ const props = withDefaults(defineProps<Props>(), {
   type: 'normal',
   promotion: undefined,
   lowestPriorPrice: undefined,
+  inline: true,
 })
 
 const { price } = toRefs(props)
@@ -103,5 +112,6 @@ const classes = computed(() => ({
   'font-semibold': props.type === 'whisper',
   'font-variable': props.type === 'normal',
   'text-status-error': appliedReductions.value.length,
+  'text-end': !props.inline,
 }))
 </script>

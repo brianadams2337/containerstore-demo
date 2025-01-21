@@ -33,6 +33,7 @@ export type AdditionalTrackingEvent =
   | 'search'
   | 'filter_flyout'
   | 'filter_slider'
+  | 'feature'
 
 export type AuthTrackingEvent =
   | 'login'
@@ -217,6 +218,13 @@ export interface ShopInitData extends ShopData {
   origin: string
 }
 
+export interface FeatureData {
+  name: 'error'
+  action: 'impression'
+  label: string
+  content_name: string
+}
+
 export interface PageViewData extends BasicViewData {
   title: string
   click_origin?: string
@@ -296,6 +304,7 @@ export type TrackingPayload =
   | BasketData
   | WishlistData
   | PromotionData
+  | FeatureData
 
 export interface AdditionalItem extends AdditionalInfo {
   item_id: string

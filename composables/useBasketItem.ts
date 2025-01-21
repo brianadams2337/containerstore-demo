@@ -1,183 +1,45 @@
-import {
-  type BasketItem,
-  ExistingItemHandling,
-  getFirstAttributeValue,
-  getProductColors,
-  getSizeFromVariant,
-  getTotalAppliedReductions,
-  isInStock,
-  extendPromise,
-} from '@scayle/storefront-nuxt'
-import { type Ref, computed, nextTick } from 'vue'
-import { isBuyXGetYType } from '~/utils/promotion'
-import { useBasketActions } from '~/composables/useBasketActions'
-import { useBasketItemUiState } from '~/composables/useBasketItemUiState'
-import { usePageState } from '~/composables/usePageState'
-import { useProductBaseInfo } from '~/composables/useProductBaseInfo'
-import { useProductPromotions } from '~/composables/useProductPromotions'
-import { useTrackingEvents } from '~/composables/useTrackingEvents'
-import { useBasket } from '#storefront/composables'
-import { getQuantitySelectionList, getVariantIds } from '~/utils'
-import { useRoute } from '#app/composables/router'
+import type { BasketItem, CentAmount } from '@scayle/storefront-nuxt'
+import { type MaybeRefOrGetter, computed } from 'vue'
+import { toRef } from '@vueuse/core'
+import { isFreeGiftBasketItem, createCustomPrice } from '~/utils'
 
-export function useBasketItem(basketItem: Ref<BasketItem>) {
-  const product = computed(() => basketItem.value.product)
+/**
+ *
+ * Composable for extracting relevant data from a basket item.
+ *
+ * @param item The basket item to extract data from
+ * @returns An object containing the extracted data: isFreeGift, price, and isSoldOut
+ */
+export function useBasketItem(item: MaybeRefOrGetter<BasketItem>) {
+  const basketItem = toRef(item)
 
-  const route = useRoute()
-  const { pageState } = usePageState()
+  const isSoldOut = computed(() => basketItem.value.status !== 'available')
 
-  const { trackAddToBasket, trackRemoveFromBasket, trackSelectItem } =
-    useTrackingEvents()
+  const isFreeGift = computed(() => !!isFreeGiftBasketItem(basketItem.value))
 
-  const { setUiState, uiState } = useBasketItemUiState(basketItem.value.key)
-
-  const { name, brand, image } = useProductBaseInfo(product.value)
-
-  const basketActions = useBasketActions()
-  const basket = useBasket()
-  const productPromotions = useProductPromotions(product.value)
-
-  const { removeItem: removeBasketItem, listingMetaData } = basketActions
-  const { promotion } = productPromotions
-
-  const variant = computed(() => basketItem.value!.variant)
-  const inStock = computed(() => isInStock(variant.value))
-
-  const size = computed(() => {
-    return getSizeFromVariant(basketItem.value!.variant, 'size')?.label
-  })
-
-  const color = computed(() => {
-    return getProductColors(product.value, 'color').join('/')
-  })
-
-  const price = computed(() => basketItem.value?.price.total.withTax ?? 0)
-
-  const lowestPriorPrice = computed(() => {
-    return basketItem.value?.variant.lowestPriorPrice
-  })
-
-  const quantity = computed(() => basketItem.value?.quantity)
-
-  const isSoldOut = computed(() => basketItem.value?.product.isSoldOut)
-
-  const cupsizeLabel = computed(() => {
-    return getFirstAttributeValue(
-      basketItem.value?.variant.attributes,
-      'cupsize',
-    )?.label
-  })
-
-  const availableQuantity = computed(() => {
-    return getQuantitySelectionList(basketItem.value?.availableQuantity)
-  })
-
-  const reducedPrice = computed(() => {
-    const total = basketItem.value?.price.total
-    if (!total) {
-      return
+  const price = computed(() => {
+    if (!isFreeGift.value) {
+      return basketItem.value.price.total
     }
-    return getTotalAppliedReductions(total)?.absoluteWithTax
-  })
+    const originalPrice = basketItem.value.price.total.appliedReductions.reduce(
+      (acc, { amount }) => acc + amount.absoluteWithTax,
+      0,
+    )
 
-  const isFreeGift = computed(() => {
-    const variantIds = getVariantIds(basketItem.value.promotion)
-    return variantIds.includes(basketItem.value.variant.id)
-  })
-
-  const changeQuantity = async (newQuantity: number, index: number) => {
-    if (newQuantity === 0) {
-      return onPressDelete()
-    }
-    const basketItem = basket.findItem({ variantId: variant.value.id })
-    if (!basketItem) {
-      return
-    }
-
-    const promotionId = promotion.value?.id
-
-    if (basketItem.quantity < newQuantity) {
-      trackAddToBasket({
-        product: product.value,
-        quantity: newQuantity - basketItem.quantity,
-        variant: variant.value,
-        index,
-        list: listingMetaData,
-      })
-    } else if (basketItem.quantity > newQuantity) {
-      trackRemoveFromBasket({
-        product: product.value,
-        quantity: basketItem.quantity - newQuantity,
-        variant: variant.value,
-        index,
-      })
-    }
-
-    await basket.addItem({
-      variantId: variant.value.id,
-      quantity: newQuantity,
-      existingItemHandling: ExistingItemHandling.ReplaceExisting,
-      ...(promotionId &&
-        !isBuyXGetYType(promotion.value) &&
-        !isFreeGift.value && { promotionId }),
+    return createCustomPrice(basketItem.value.price.total, {
+      withTax: 0 as CentAmount,
+      appliedReductions: [
+        {
+          amount: {
+            absoluteWithTax: originalPrice as CentAmount,
+            relative: 1,
+          },
+          type: 'relative',
+          category: 'promotion',
+        },
+      ],
     })
+  })
 
-    await nextTick()
-  }
-
-  const trackProductClick = () => {
-    trackSelectItem({
-      product: product.value,
-      listingMetaData,
-      pagePayload: {
-        content_name: route.fullPath,
-        page_type: pageState.value.type,
-        page_type_id: route.params.id?.toString() || '',
-      },
-    })
-  }
-
-  const removeItem = () => removeBasketItem(basketItem.value)
-
-  const onPressDelete = () => setUiState('confirmDelete')
-
-  const onCancelDelete = () => setUiState('default')
-
-  const onConfirmDelete = () => {
-    setUiState('default')
-    removeItem()
-  }
-
-  const selectItem = () => trackProductClick()
-
-  return extendPromise(
-    Promise.all([basket, basketActions, productPromotions]).then(() => ({})),
-    {
-      name,
-      brand,
-      color,
-      price,
-      lowestPriorPrice,
-      quantity,
-      availableQuantity,
-      inStock,
-      changeQuantity,
-      trackProductClick,
-      removeItem,
-      uiState,
-      onCancelDelete,
-      onConfirmDelete,
-      onPressDelete,
-      size,
-      image,
-      reducedPrice,
-      product,
-      variant,
-      selectItem,
-      cupsizeLabel,
-      isSoldOut,
-      listingMetaData,
-      isFreeGift,
-    },
-  )
+  return { isFreeGift, price, isSoldOut }
 }

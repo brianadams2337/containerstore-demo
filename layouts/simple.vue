@@ -92,7 +92,7 @@ useHead({
       children: `document.addEventListener('DOMContentLoaded', () => { document.body.classList.add('loaded'); });`,
     },
   ],
-  titleTemplate: (title) => (title ? `${title} - ${shopName}` : `${shopName}`),
+  titleTemplate: (title) => (title ? `${title} | ${shopName}` : `${shopName}`),
 })
 defineOptions({ name: 'AppSimple' })
 </script>

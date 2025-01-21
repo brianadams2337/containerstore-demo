@@ -8,8 +8,11 @@ import {
   isAutomaticDiscountType,
   getVariantIds,
   getAdditionalData,
+  isFreeGiftEligible,
+  isFreeGiftBasketItem,
 } from './promotion'
 import { promotionFactory } from '~/test/factories/promotion'
+import { basketItemFactory } from '~/test/factories/basket'
 
 describe('getBackgroundColorStyle', () => {
   it('should return background color style object with normalized color to hex', () => {
@@ -208,5 +211,88 @@ describe('getAdditionalData', () => {
       type: 'relative',
       value: 1000,
     })
+  })
+})
+
+describe('isFreeGiftEligible', () => {
+  it('should be a free gift', () => {
+    const basketItem = basketItemFactory.build({
+      promotion: promotionFactory.build({
+        effect: {
+          type: PromotionEffectType.BuyXGetY,
+          additionalData: {
+            variantIds: [10],
+          },
+        },
+      }),
+      variant: {
+        id: 10,
+      },
+    })
+
+    expect(isFreeGiftEligible(basketItem)).toBe(true)
+  })
+  it('should not be a free gift', () => {
+    const basketItem = basketItemFactory.build({
+      promotion: promotionFactory.build({
+        effect: {
+          type: PromotionEffectType.BuyXGetY,
+          additionalData: {
+            variantIds: [10],
+          },
+        },
+      }),
+      variant: {
+        id: 101,
+      },
+    })
+
+    expect(isFreeGiftEligible(basketItem)).toBe(false)
+  })
+})
+describe('isFreeGiftBasketItem', () => {
+  it('return true when item is eligible and  promotion condition is valid', () => {
+    const basketItem = basketItemFactory.build({
+      promotion: promotionFactory.build({
+        effect: {
+          type: PromotionEffectType.BuyXGetY,
+          additionalData: {
+            variantIds: [10],
+          },
+        },
+        isValid: true,
+      }),
+      variant: {
+        id: 10,
+      },
+    })
+
+    expect(isFreeGiftBasketItem(basketItem)).toBe(true)
+  })
+  it('return false when item is eligible and promotion condition is not value', () => {
+    const basketItem = basketItemFactory.build({
+      promotion: promotionFactory.build({
+        effect: {
+          type: PromotionEffectType.BuyXGetY,
+          additionalData: {
+            variantIds: [10],
+          },
+        },
+        isValid: false,
+      }),
+      variant: {
+        id: 101,
+      },
+    })
+
+    expect(isFreeGiftBasketItem(basketItem)).toBe(false)
+  })
+
+  it('return false for normal basket', () => {
+    const basketItem = basketItemFactory.build({
+      promotion: undefined,
+    })
+
+    expect(isFreeGiftBasketItem(basketItem)).toBe(false)
   })
 })

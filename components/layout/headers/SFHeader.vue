@@ -55,7 +55,7 @@
       />
       <SFWishlistNavigationItem @click="isSideNavigationOpen = false" />
       <SFBasketNavigationItem
-        :block-popup="isSideNavigationOpen"
+        :block-popup="isSideNavigationOpen || isBasketPage"
         @click="isSideNavigationOpen = false"
       />
     </div>
@@ -81,6 +81,8 @@ import {
 } from '~/modules/ui/runtime/components'
 import { useNavigationTreeByName } from '#storefront/composables'
 import { useDefaultBreakpoints } from '~/modules/ui/runtime'
+import { useLocalePath } from '#i18n'
+import { useRoute } from '#app/composables/router'
 
 const isSideNavigationOpen = defineModel('isMobileSidebarOpen', {
   type: Boolean,
@@ -93,17 +95,21 @@ const {
   },
 } = useNuxtApp()
 
+const route = useRoute()
+const localePath = useLocalePath()
+
 const { greaterOrEqual } = useDefaultBreakpoints()
 const isDesktopLayout = greaterOrEqual('lg')
+
 whenever(isDesktopLayout, () => {
   isSideNavigationOpen.value = false
 })
+
+const isBasketPage = computed(() => route.path === localePath(routeList.basket))
 
 const { data: navigationTree } = useNavigationTreeByName({
   params: { treeName: 'Header', params: { with: { category: true } } },
 })
 
-const mainNavigationItems = computed(() => {
-  return navigationTree.value?.items
-})
+const mainNavigationItems = computed(() => navigationTree.value?.items)
 </script>

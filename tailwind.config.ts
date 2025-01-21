@@ -64,6 +64,10 @@ export default {
       ping: {
         '25%, 50%': { transform: 'scale(.8)', opacity: 10 },
       },
+      pulse: {
+        '0%, 100%': { opacity: 1 },
+        '50%': { opacity: 0.5 },
+      },
     },
     outlineOffset: {
       0: '0',
@@ -184,16 +188,24 @@ export default {
       ],
     },
     extend: {
+      lineHeight: {
+        '3.5': '13px',
+        '2.5': '10px',
+      },
       borderRadius: {
         10: '10px',
       },
       height: {
+        '4.5': '1.125rem',
         13: '3.25rem',
         15: '3.75rem',
       },
       width: {
         13: '3.25rem',
         15: '3.75rem',
+        88: '22rem',
+        105: '26.25rem',
+        128: defaultSizes.lg,
       },
       size: {
         13: '3.25rem',
@@ -238,7 +250,7 @@ export default {
         'green-neon': '#00bd14',
         red: {
           ...colors.red,
-          DEFAULT: '#e74b3a',
+          DEFAULT: '#d93321',
         },
         yellow: {
           ...colors.yellow,
@@ -288,7 +300,7 @@ export default {
         },
         status: {
           success: '#0dcc8d',
-          error: '#e74b3a',
+          error: '#d93321',
           info: '#ccbff6',
           alert: '#f59e0b',
           inactive: 'var(--status-inactive)',
@@ -301,6 +313,8 @@ export default {
       minHeight: { ...defaultSizes },
       maxWidth: {
         ...defaultSizes,
+        156: '39rem',
+        88: '22rem',
       },
       minWidth: {
         48: '12rem',
@@ -309,7 +323,8 @@ export default {
         md: defaultSizes.md,
         lg: defaultSizes.lg,
         xl: defaultSizes.xl,
-
+        125: '31.25rem',
+        '30.5': '7.625rem',
         // percentage based
         '1/5': '20%',
       },
