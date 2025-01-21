@@ -18,6 +18,7 @@
     <!-- eslint-disable-next-line vue/require-toggle-inside-transition  -->
     <dialog
       v-dialog.modal="isOpen"
+      :name="name"
       class="h-full overflow-hidden transition-all backdrop:bg-black/50 max-sm:m-0 max-sm:h-dvh max-sm:w-screen md:mr-0 md:rounded-xl"
       @click="onClick"
       @cancel="onCancel"
@@ -27,7 +28,7 @@
         data-testid="slide-in-overflow"
         :class="slideClass"
       >
-        <div class="relative flex flex-col">
+        <div class="relative flex max-h-full flex-col">
           <slot v-bind="toggle" name="slide-in-content">
             <div
               class="sticky top-0 z-10 border-b border-b-gray-200 bg-white/90 px-6 py-4"

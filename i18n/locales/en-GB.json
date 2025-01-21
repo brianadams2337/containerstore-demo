@@ -52,7 +52,10 @@
   "shop_selector": {
     "aria_label": "Change shop, current shop: {selectedCountry}, {selectedLanguage}",
     "choose_shop": "Choose shop",
-    "current_shop": "Current shop"
+    "current_shop": "Current shop",
+    "flyout_title": "Language and country",
+    "choose_language": "Select your language",
+    "choose_country": "Select your country"
   },
   "validation": {
     "email": "The {field} field must be a valid email",
