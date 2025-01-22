@@ -3,6 +3,7 @@ import type { BasketResponseData, CentAmount } from '@scayle/storefront-nuxt'
 import type { BasketKey } from '@scayle/storefront-api'
 import {
   getBasketTotalWithoutPromotions,
+  getTotalPriceWithoutReductions,
   getTotalReductionsByCategory,
 } from './basket'
 import { basketItemsFactory, costFactory } from '~/test/factories/basket'
@@ -124,5 +125,48 @@ describe('getTotalReductionsByCategory', () => {
       ],
     })
     expect(getTotalReductionsByCategory(cost, 'campaign')).toEqual(6000)
+  })
+})
+
+describe('getTotalPriceWithoutReductions', () => {
+  it('should return original price with applied reductions', () => {
+    const cost = costFactory.build({
+      withTax: 1000,
+      appliedReductions: [
+        {
+          category: 'sale',
+          type: 'relative',
+          amount: {
+            relative: 0.3,
+            absoluteWithTax: 1000 as CentAmount,
+          },
+        },
+        {
+          category: 'promotion',
+          type: 'relative',
+          amount: {
+            relative: 0.2,
+            absoluteWithTax: 898 as CentAmount,
+          },
+        },
+        {
+          category: 'sale',
+          type: 'relative',
+          amount: {
+            relative: 0.3,
+            absoluteWithTax: 2000 as CentAmount,
+          },
+        },
+      ],
+    })
+    expect(getTotalPriceWithoutReductions(cost)).toEqual(4898)
+  })
+
+  it('should return original price without reductions', () => {
+    const cost = costFactory.build({
+      withTax: 1000,
+      appliedReductions: [],
+    })
+    expect(getTotalPriceWithoutReductions(cost)).toEqual(1000)
   })
 })

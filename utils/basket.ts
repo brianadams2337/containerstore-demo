@@ -66,3 +66,18 @@ export const getTotalReductionsByCategory = (
       : price
   }, 0)
 }
+
+/**
+ * Calculates the total original price without reductions.
+ *
+ * @param {BasketTotalPrice} cost - The basket total price object.
+ * @returns {number} - The total original price value without reductions
+ */
+export const getTotalPriceWithoutReductions = (
+  cost: BasketTotalPrice,
+): number => {
+  return cost.appliedReductions.reduce(
+    (total, { amount }) => total + amount.absoluteWithTax,
+    +cost.withTax,
+  )
+}

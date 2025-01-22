@@ -47,6 +47,7 @@ import {
 } from '#storefront-ui/components'
 import { useFormatHelpers, useBasket } from '#storefront/composables'
 import { useBasketReductions } from '~/composables'
+import { getTotalPriceWithoutReductions } from '~/utils'
 
 const { cost, items } = await useBasket()
 
@@ -54,11 +55,7 @@ const subtotal = computed(() => {
   if (!cost.value) {
     return
   }
-  const totalReductions = cost.value.appliedReductions.reduce(
-    (total, { amount }) => total + amount.absoluteWithTax,
-    0,
-  )
-  return cost.value.withTax + totalReductions
+  return getTotalPriceWithoutReductions(cost.value)
 })
 
 const { hasReductions } = useBasketReductions(cost, items)
