@@ -3,7 +3,7 @@
     <SFModal
       v-model:visible="visible"
       full-screen
-      class="size-full !p-0"
+      class="size-full max-h-screen max-w-screen !p-0"
       @close="$emit('close')"
     >
       <div

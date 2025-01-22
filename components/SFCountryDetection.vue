@@ -2,7 +2,7 @@
 <template>
   <SFFadeInTransition>
     <SFModal v-model:visible="modalOpen" data-testid="country-detection-dialog">
-      <div class="mt-8 flex flex-col items-center gap-4">
+      <div class="mt-8 flex flex-col items-center gap-4 md:px-20">
         <div>
           {{ $t('country_selection.prompt', { country: suggestedCountry }) }}
         </div>

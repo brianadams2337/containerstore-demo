@@ -16,7 +16,7 @@
         class="size-5 transition-colors md:fill-gray-400 md:group-hover:fill-black"
       />
     </button>
-    <div class="m-auto w-full rounded-md bg-white md:min-w-[46rem]">
+    <div class="m-auto w-full rounded-md bg-white">
       <slot />
     </div>
   </dialog>

@@ -313,6 +313,7 @@ export default {
       minHeight: { ...defaultSizes },
       maxWidth: {
         ...defaultSizes,
+        screen: '100vw',
         156: '39rem',
         88: '22rem',
       },

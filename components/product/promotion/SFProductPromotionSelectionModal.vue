@@ -3,7 +3,7 @@
     <SFSlideInFromBottomTransition>
       <SFModal
         :visible="isGiftSelectionShown"
-        class="!rounded-t-xl !p-0 max-md:m-0 max-md:mt-auto max-md:max-h-[calc(100vh-40px)] max-md:w-full md:max-w-[800px] md:!rounded-xl"
+        class="!rounded-t-xl !p-0 max-md:m-0 max-md:mt-auto max-md:max-h-[calc(100vh-40px)] max-md:w-full max-md:max-w-screen md:max-w-[800px] md:!rounded-xl"
         @update:visible="(open) => open || close()"
       >
         <div class="flex">
