@@ -21,7 +21,7 @@
             @click="$emit('close')"
           >
             <IconLocation class="size-5" />
-            <div class="mt-1 text-[15px] font-normal lg:text-sm">
+            <div class="mt-1 text-lg font-normal lg:text-sm">
               {{ $t('store_locator.button') }}
             </div>
           </SFLocalizedLink>

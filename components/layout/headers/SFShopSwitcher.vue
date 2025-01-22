@@ -20,10 +20,7 @@
         class="size-5 lg:size-3.5"
         data-testid="shop-switcher-globe-icon"
       />
-      <div
-        class="text-[15px] lg:text-sm"
-        data-testid="shop-switcher-current-shop"
-      >
+      <div class="text-lg lg:text-sm" data-testid="shop-switcher-current-shop">
         {{ getShopName(currentShop.locale, multipleShopsForCountry) }}
       </div>
       <IconChevronDown
