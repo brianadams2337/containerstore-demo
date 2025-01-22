@@ -81,7 +81,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, useTemplateRef, watch, nextTick } from 'vue'
-import { useEventListener, onKeyStroke } from '@vueuse/core'
+import { onKeyStroke } from '@vueuse/core'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import { useSwitchLocalePath, useI18n } from '#i18n'
 import { SFSlideIn, SFHeadline, SFButton } from '#storefront-ui/components'
@@ -128,19 +128,23 @@ const showLanguageList = computed(() => availableLanguages.value.length > 1)
 
 const slideInRef = useTemplateRef('slideIn')
 const { activate: activateSlideInTrap, deactivate: deactivateSlideInTrap } =
-  useFocusTrap(slideInRef, { escapeDeactivates: false })
+  useFocusTrap(slideInRef, {
+    escapeDeactivates: false,
+    isKeyBackward: (keyEvent) =>
+      keyEvent.code === 'ArrowLeft' ||
+      keyEvent.code === 'ArrowUp' ||
+      (keyEvent.key === 'Tab' && keyEvent.shiftKey),
+    isKeyForward: (keyEvent) =>
+      keyEvent.code === 'ArrowRight' ||
+      keyEvent.code === 'ArrowDown' ||
+      (keyEvent.key === 'Tab' && !keyEvent.shiftKey),
+  })
+
 watch(isOpen, async (value) => {
   if (value) {
     await nextTick()
     activateSlideInTrap()
-    if (showLanguageList.value) {
-      activateLanguageList()
-    } else {
-      activateCountryList()
-    }
   } else {
-    deactivateCountryList()
-    deactivateLanguageList()
     deactivateSlideInTrap()
   }
 })
@@ -151,58 +155,6 @@ onKeyStroke(
     close()
   },
   { target: slideInRef },
-)
-
-const countryList = useTemplateRef('countryList')
-const { activate: activateCountryList, deactivate: deactivateCountryList } =
-  useFocusTrap(countryList, {
-    isKeyBackward: (keyEvent) => keyEvent.code === 'ArrowUp',
-    isKeyForward: (keyEvent) => keyEvent.code === 'ArrowDown',
-    escapeDeactivates: false,
-    allowOutsideClick: true,
-  })
-
-useEventListener(countryList, 'focusin', () => {
-  activateCountryList()
-})
-
-onKeyStroke(
-  'Tab',
-  (event) => {
-    if (showLanguageList.value) {
-      deactivateCountryList()
-      activateLanguageList()
-      event.stopPropagation()
-      event.preventDefault()
-    }
-  },
-  { target: countryList },
-)
-
-const languageList = useTemplateRef('languageList')
-const { activate: activateLanguageList, deactivate: deactivateLanguageList } =
-  useFocusTrap(languageList, {
-    isKeyBackward: (keyEvent) => keyEvent.code === 'ArrowUp',
-    isKeyForward: (keyEvent) => keyEvent.code === 'ArrowDown',
-    escapeDeactivates: false,
-    allowOutsideClick: true,
-  })
-
-useEventListener(languageList, 'focusin', () => {
-  activateLanguageList()
-})
-
-onKeyStroke(
-  'Tab',
-  () => {
-    if (showCountryList.value) {
-      deactivateLanguageList()
-      activateCountryList()
-      event.stopPropagation()
-      event.preventDefault()
-    }
-  },
-  { target: languageList },
 )
 
 const { switchToHomePage = true } = defineProps<{
