@@ -34,13 +34,13 @@
               v-for="shop in availableLanguages"
               :key="shop.id"
               :variant="
-                shop.locale.split('-')[0] === currentLanguage
+                new Intl.Locale(shop.locale).language === currentLocale.language
                   ? 'accent'
                   : 'secondary'
               "
               @click="changeShop(shop.path, shop.locale, close)"
             >
-              {{ languageTranslator.of(shop.locale.split('-')[0]) }}
+              {{ languageTranslator.of(new Intl.Locale(shop.locale).language) }}
             </SFButton>
           </div>
         </div>
@@ -59,16 +59,17 @@
               variant="secondary"
               class="!justify-start"
               @click="
-                country.code === currentRegion
+                country.code === currentLocale.region
                   ? close()
                   : changeShop(country.shop.path, country.shop.locale, close)
               "
             >
-              <span :class="{ 'font-bold': country.code === currentRegion }">{{
-                country.name
-              }}</span>
+              <span
+                :class="{ 'font-bold': country.code === currentLocale.region }"
+                >{{ country.name }}</span
+              >
               <IconCheck
-                v-if="country.code === currentRegion"
+                v-if="country.code === currentLocale.region"
                 class="ml-auto size-4 text-accent"
               />
             </SFButton>
@@ -87,6 +88,8 @@ import { SFSlideIn, SFHeadline, SFButton } from '#storefront-ui/components'
 import { useSlideIn } from '#storefront-ui/composables'
 import { useCurrentShop, useAvailableShops } from '#storefront/composables'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
+import { useCurrentShopLocale } from '~/composables/useCurrentShopLocale'
+import { useCurrentShopTranslators } from '~/composables/useCurrentShopTranslators'
 
 const { close, isOpen } = useSlideIn('ShopSwitcherSlideIn')
 const currentShop = useCurrentShop()
@@ -96,26 +99,12 @@ const switchLocalePath = useSwitchLocalePath()
 
 const { trackShopChange } = useTrackingEvents()
 
-const currentLanguage = computed(() => currentShop.value?.locale.split('-')[0])
-const currentRegion = computed(() => currentShop.value?.locale.split('-')[1])
-
-const languageTranslator = computed(() => {
-  if (!currentShop.value) {
-    return
-  }
-  return new Intl.DisplayNames([currentShop.value.locale], { type: 'language' })
-})
-
-const regionTranslator = computed(() => {
-  if (!currentShop.value) {
-    return
-  }
-  return new Intl.DisplayNames([currentShop.value.locale], { type: 'region' })
-})
+const currentLocale = useCurrentShopLocale()
+const { languageTranslator, regionTranslator } = useCurrentShopTranslators()
 
 const availableLanguages = computed(() => {
   return availableShops.value.filter((shop) =>
-    shop.locale.endsWith('-' + currentRegion.value),
+    shop.locale.endsWith('-' + currentLocale.value.region),
   )
 })
 

@@ -44,6 +44,7 @@ import SFShopSwitcherFlyout from './SFShopSwitcherFlyout.vue'
 import { useAvailableShops, useCurrentShop } from '#storefront/composables'
 import { SFButton } from '#storefront-ui/components'
 import { useSlideIn } from '~/modules/ui/runtime/composables/useSlideIn'
+import { useCurrentShopTranslators } from '~/composables/useCurrentShopTranslators'
 
 import { getShopName, hasMultipleShopsForCountry } from '~/utils'
 
@@ -52,19 +53,7 @@ const availableShops = useAvailableShops()
 
 const { isOpen, toggle } = useSlideIn('ShopSwitcherSlideIn')
 
-const languageTranslator = computed(() => {
-  if (!currentShop.value) {
-    return
-  }
-  return new Intl.DisplayNames([currentShop.value.locale], { type: 'language' })
-})
-
-const regionTranslator = computed(() => {
-  if (!currentShop.value) {
-    return
-  }
-  return new Intl.DisplayNames([currentShop.value.locale], { type: 'region' })
-})
+const { languageTranslator, regionTranslator } = useCurrentShopTranslators()
 
 const selectedLanguage = computed(() => {
   if (!currentShop.value) {
