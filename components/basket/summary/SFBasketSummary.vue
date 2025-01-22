@@ -7,7 +7,7 @@
     </SFHeadline>
     <div class="flex justify-between">
       <h2>{{ $t('basket.subtotal') }}</h2>
-      <span v-if="subtotal">
+      <span v-if="subtotal" data-testid="basket-price-subtotal">
         {{ formatCurrency(subtotal) }}
       </span>
     </div>

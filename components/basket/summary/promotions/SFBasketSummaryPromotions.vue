@@ -9,10 +9,12 @@
         id="promotion-discounts-header"
         v-model:visible="isPromotionsSummaryVisible"
         aria-controls="promotion-discounts-content"
+        data-testid="promotion-summary-toggle-button"
       />
       <span
         v-if="totalPromotionReductions"
         class="text-base font-semi-bold-variable leading-3.5"
+        data-testid="summary-total-promotion-reduction"
       >
         {{ formatCurrency(-Math.abs(totalPromotionReductions)) }}
       </span>

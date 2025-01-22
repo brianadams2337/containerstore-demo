@@ -19,7 +19,10 @@
       <span v-if="promotion?.customData">
         {{ getHeadlineParts(promotion) }}
       </span>
-      <span class="font-variable leading-2.5">
+      <span
+        class="font-variable leading-2.5"
+        data-testid="basket-discount-promotion"
+      >
         {{ formatCurrency(-Math.abs(total)) }}
       </span>
     </div>

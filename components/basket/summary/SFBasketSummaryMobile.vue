@@ -9,7 +9,7 @@
     </SFHeadline>
     <div class="flex justify-between">
       <h2>{{ $t('basket.subtotal') }}</h2>
-      <span v-if="totalCost">
+      <span v-if="totalCost" data-testid="basket-price-subtotal-mobile">
         {{ formatCurrency(totalCost) }}
       </span>
     </div>

@@ -19,6 +19,13 @@ export class BasketPage {
   readonly productName: Locator
   readonly removeItemButton: Locator
   readonly confirmRemoveItemButton: Locator
+  readonly priceSubtotal: Locator
+  readonly priceSubtotalMobile: Locator
+  readonly priceFinal: Locator
+  readonly discountSale: Locator
+  readonly discountPromotion: Locator
+  readonly promotionSummaryToggleButton: Locator
+  readonly totalPromotionDiscount: Locator
 
   constructor(page: Page, rpc: RPC) {
     this.page = page
@@ -43,6 +50,17 @@ export class BasketPage {
     this.removeItemButton = page.getByTestId('basket-remove-item-button')
     this.confirmRemoveItemButton = page.getByTestId(
       'basket-remove-item-confirm-button',
+    )
+    this.priceSubtotal = page.getByTestId('basket-price-subtotal')
+    this.priceSubtotalMobile = page.getByTestId('basket-price-subtotal-mobile')
+    this.priceFinal = page.getByTestId('basket-final-price')
+    this.discountSale = page.getByTestId('basket-discount-sale')
+    this.discountPromotion = page.getByTestId('basket-discount-promotion')
+    this.promotionSummaryToggleButton = page.getByTestId(
+      'promotion-summary-toggle-button',
+    )
+    this.totalPromotionDiscount = page.getByTestId(
+      'summary-total-promotion-reduction',
     )
   }
 
@@ -110,5 +128,43 @@ export class BasketPage {
   async removeItemFromBasket() {
     await this.removeItemButton.click()
     await this.confirmRemoveItemButton.click()
+  }
+
+  async assertBasketPriceSummary(
+    subtotalPrice: Locator,
+    finalPrice: Locator,
+    isMobile: boolean,
+    discount?: Locator,
+  ) {
+    let index: number
+    if (isMobile) {
+      index = 0
+    } else {
+      index = 1
+    }
+    const priceSubtotalLabel = await subtotalPrice.textContent()
+    const priceFinalLabel = await finalPrice.nth(index).textContent()
+    let discountValue: number
+    if (discount) {
+      const discountLabel = await discount.nth(index).textContent()
+      discountValue = parseFloat(
+        discountLabel?.replace(/[^0-9.-]+/g, '') ?? '0',
+      )
+    } else {
+      discountValue = 0
+    }
+
+    const priceSubtotalValue = parseFloat(
+      priceSubtotalLabel?.replace(/[^0-9.-]+/g, '') ?? '0',
+    )
+
+    const priceFinalValue = parseFloat(
+      priceFinalLabel?.replace(/[^0-9.-]+/g, '') ?? '0',
+    )
+
+    expect(priceFinalValue).toEqual(priceSubtotalValue + discountValue)
+    expect(priceSubtotalValue).toEqual(
+      priceFinalValue + Math.abs(discountValue),
+    )
   }
 }

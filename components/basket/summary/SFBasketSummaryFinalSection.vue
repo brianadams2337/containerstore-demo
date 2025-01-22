@@ -3,7 +3,12 @@
     <div class="flex items-start justify-between">
       <SFHeadline tag="h2" size="lg">{{ $t('basket.you_pay') }}</SFHeadline>
       <div class="mb-1 flex flex-col gap-1 text-xs font-variable text-gray-600">
-        <SFHeadline tag="span" size="lg" class="text-primary">
+        <SFHeadline
+          tag="span"
+          size="lg"
+          class="text-primary"
+          data-testid="basket-final-price"
+        >
           {{ formatCurrency(cost.withTax) }}
         </SFHeadline>
         <span v-if="tax > 0">{{ $t('basket.including_vat') }}</span>

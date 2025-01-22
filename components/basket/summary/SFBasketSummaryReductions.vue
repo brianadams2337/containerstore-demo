@@ -4,7 +4,7 @@
   >
     <div v-if="totalSaleReductions" class="flex justify-between text-red">
       <h2>{{ $t('basket.summary.sale') }}</h2>
-      <span>
+      <span data-testid="basket-discount-sale">
         {{ formatCurrency(-Math.abs(totalSaleReductions)) }}
       </span>
     </div>

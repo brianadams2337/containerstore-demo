@@ -70,6 +70,9 @@ export const BASKET_TEST_DATA = {
   productNameHappyPath: 'Jacke',
   itemKeyHappyPath: '15e3df16a020df6b0716b0cb351132ac',
   itemKeyBasketE2E: '7dac25e441f1472a2201cd7f493d139c',
+  regularPriceVariantId: 334103,
+  salePriceVariantId: 335845,
+  promotionPriceProductId: '205808',
 }
 
 export const HOMEPAGE_PATH_DE = '/de'
