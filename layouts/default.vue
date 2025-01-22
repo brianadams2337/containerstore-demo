@@ -34,7 +34,6 @@ import { computed, defineOptions, onMounted, ref } from 'vue'
 import { useHead } from '@unhead/vue'
 import { useRoute } from '#app/composables/router'
 import { useNuxtApp } from '#app/nuxt'
-import { useSwitchLocalePath, type Locale } from '#i18n'
 import { useCurrentPromotions, useCurrentShop } from '#storefront/composables'
 import {
   USE_BANNER_KEY,
@@ -60,7 +59,10 @@ import SFSkipLinks from '~/components/SFSkipLinks.vue'
 import SFFooter from '~/components/SFFooter.vue'
 import SFHeader from '~/components/layout/headers/SFHeader.vue'
 import { routeList } from '~/utils'
+import { useShopSwitcher } from '~/composables/useShopSwitcher'
 import { useLocalePath } from '#i18n'
+
+const { changeShop } = useShopSwitcher()
 
 const route = useRoute()
 
@@ -114,12 +116,8 @@ useHead({
   titleTemplate: (title) => (title ? `${title} | ${shopName}` : `${shopName}`),
 })
 
-const switchLocalePath = useSwitchLocalePath()
 const switchShop = (shop: ShopInfo) => {
-  trackingEvents.trackShopChange()
-  if (shop.path) {
-    window.location.replace(switchLocalePath(shop.path as Locale).split('?')[0])
-  }
+  changeShop(shop.path, shop.locale)
 }
 defineOptions({ name: 'AppDefault' })
 </script>
