@@ -31,16 +31,14 @@
           </div>
           <div class="grid grid-cols-2 gap-5">
             <SFButton
-              v-for="shop in availableLanguages"
+              v-for="{ shop, code, name } in availableLanguages"
               :key="shop.id"
               :variant="
-                new Intl.Locale(shop.locale).language === currentLocale.language
-                  ? 'accent'
-                  : 'secondary'
+                code === currentLocale.language ? 'accent' : 'secondary'
               "
               @click="changeShop(shop.path, shop.locale, close)"
             >
-              {{ languageTranslator.of(new Intl.Locale(shop.locale).language) }}
+              {{ name }}
             </SFButton>
           </div>
         </div>
@@ -103,9 +101,16 @@ const currentLocale = useCurrentShopLocale()
 const { languageTranslator, regionTranslator } = useCurrentShopTranslators()
 
 const availableLanguages = computed(() => {
-  return availableShops.value.filter((shop) =>
-    shop.locale.endsWith('-' + currentLocale.value.region),
-  )
+  return availableShops.value
+    .filter((shop) => shop.locale.endsWith('-' + currentLocale.value.region))
+    .map((shop) => {
+      const locale = new Intl.Locale(shop.locale)
+      return {
+        shop,
+        code: locale.language,
+        name: languageTranslator.value.of(locale.language),
+      }
+    })
 })
 
 const availableCountries = computed(() => {
