@@ -1,4 +1,5 @@
 import { type NuxtConfig, defineNuxtConfig } from 'nuxt/config'
+import type { HookResult } from '@nuxt/schema'
 import { nanoid } from 'nanoid'
 import { HashAlgorithm, type ModuleBaseOptions } from '@scayle/storefront-nuxt'
 import * as customRpcMethods from './rpcMethods'
@@ -11,6 +12,12 @@ declare module '@nuxt/schema' {
   interface PublicRuntimeConfig {
     cdnUrl: string
     googleMapsApiKey: string
+  }
+}
+
+declare module '#app' {
+  interface RuntimeNuxtHooks {
+    'shop:change': (shopInfo: { shopId: number; locale?: string }) => HookResult
   }
 }
 

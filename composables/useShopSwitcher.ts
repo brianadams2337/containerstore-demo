@@ -4,6 +4,7 @@ import { useCurrentShop, useAvailableShops } from '#storefront/composables'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
 import { useCurrentShopLocale } from '~/composables/useCurrentShopLocale'
 import { useCurrentShopTranslators } from '~/composables/useCurrentShopTranslators'
+import { useNuxtApp } from '#app'
 
 type ShopConfig = ReturnType<typeof useAvailableShops>['value'][0]
 
@@ -63,6 +64,8 @@ export function useShopSwitcher(switchToHomePage: boolean): ShopSwitcherUtils {
   const { languageTranslator, regionTranslator } = useCurrentShopTranslators()
   const i18n = useI18n()
 
+  const nuxtApp = useNuxtApp()
+
   const availableLanguages = computed(() => {
     return availableShops.value
       .filter((shop) => shop.locale.endsWith('-' + currentLocale.value?.region))
@@ -93,7 +96,7 @@ export function useShopSwitcher(switchToHomePage: boolean): ShopSwitcherUtils {
       )
   })
 
-  const changeShop = (path?: string, locale?: string) => {
+  const changeShop = async (path?: string, locale?: string) => {
     if (!path) {
       throw new Error('Shop has no path configured')
     }
@@ -101,6 +104,9 @@ export function useShopSwitcher(switchToHomePage: boolean): ShopSwitcherUtils {
     if (locale === currentShop.value.locale) {
       return
     }
+
+    const shop = availableShops.value.find((shop) => shop.locale === locale)!
+    await nuxtApp.hooks.callHook('shop:change', { locale, shopId: shop.shopId })
 
     trackShopChange()
     if (switchToHomePage) {
