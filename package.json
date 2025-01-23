@@ -99,7 +99,7 @@
     "@nuxt/fonts": "0.10.3",
     "@scayle/nuxt-opentelemetry": "0.5.6",
     "@scayle/omnichannel-nuxt": "4.0.4",
-    "@scayle/storefront-country-detection": "1.0.2",
+    "@scayle/storefront-country-detection": "1.1.0",
     "@scayle/storefront-nuxt": "8.5.1",
     "@scayle/storefront-product-detail": "1.0.2",
     "@scayle/storefront-product-listing": "1.1.3",

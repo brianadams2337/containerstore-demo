@@ -4050,10 +4050,10 @@
     uncrypto "^0.1.3"
     utility-types "^3.11.0"
 
-"@scayle/storefront-country-detection@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-country-detection/-/storefront-country-detection-1.0.2.tgz#243bfd4a794fdabe23e63f1687319ab55ac50c5d"
-  integrity sha512-ajmnytHIbZzMEW+z4Y/oS7/dEO/5agABFAh5Mufd+IsIJmjrGad27fHZnjfA/sMbP8oNx0JDym3FSR4RwN4UKA==
+"@scayle/storefront-country-detection@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-country-detection/-/storefront-country-detection-1.1.0.tgz#e62de3088a71369a811a77dccd421d7c3cfd1c6b"
+  integrity sha512-8rsp5YdpZw82374V5p/Fk1Dgk5kUKfloE8NO22sO/Y1G+lbP/cSfv33i4BFQb+bwexkpKk2+Fw2Dbzw+9URLRg==
 
 "@scayle/storefront-nuxt@8.5.1":
   version "8.5.1"
