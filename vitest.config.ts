@@ -1,5 +1,6 @@
 import { URL, fileURLToPath } from 'node:url'
 import { defineVitestConfig } from '@nuxt/test-utils/config'
+import { configDefaults } from 'vitest/config'
 
 export default defineVitestConfig({
   // any custom vitest config you require
@@ -16,6 +17,7 @@ export default defineVitestConfig({
       provider: 'v8',
       reporter: ['text', 'cobertura'],
       reportsDirectory: 'coverage',
+      exclude: [...(configDefaults.coverage.exclude || []), './playwright/**'],
     },
     environmentOptions: {
       nuxt: {
