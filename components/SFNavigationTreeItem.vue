@@ -32,6 +32,7 @@
         type="image/svg+xml"
         :aria-labelledby="`${navigationItem.id}`"
         aria-hidden="true"
+        role="presentation"
         class="pointer-events-none size-4"
         tabindex="-1"
       ></object>
