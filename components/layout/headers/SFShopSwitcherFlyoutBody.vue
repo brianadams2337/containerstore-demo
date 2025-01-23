@@ -9,7 +9,7 @@
           v-for="{ shop, code, name } in availableLanguages"
           :key="shop.id"
           :variant="code === currentLocale.language ? 'accent' : 'secondary'"
-          @click="changeShop(shop.path, shop.locale, close)"
+          @click="switchShopAndClose(shop.path, shop.locale)"
         >
           {{ name }}
         </SFButton>
@@ -35,10 +35,7 @@
               : 'shop-selector-country'
           "
           @click="
-            country.code === currentLocale.region
-              ? close()
-              : changeShop(country.shops[0].path, country.shops[0].locale) &&
-                close()
+            switchShopAndClose(country.shops[0].path, country.shops[0].locale)
           "
         >
           <span
@@ -71,4 +68,9 @@ const { switchToHomePage = true } = defineProps<{
 
 const { availableCountries, availableLanguages, changeShop } =
   useShopSwitcher(switchToHomePage)
+
+const switchShopAndClose = (path: string, locale: string) => {
+  changeShop(path, locale)
+  close()
+}
 </script>
