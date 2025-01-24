@@ -1,9 +1,11 @@
 import { toRef } from 'vue'
 import { describe, beforeEach, it, vi, expect } from 'vitest'
+import {
+  productFactory,
+  categoryFactory,
+} from '@scayle/storefront-nuxt/test/factories'
 import { useProductsSearch } from './useProductsSearch'
 import { createError } from '#app/composables/error'
-import { productFactory } from '~/test/factories/product'
-import { categoryFactory } from '~/test/factories/category'
 
 const { useProducts, useRoute, useProductListSort, useAppliedFilters } =
   vi.hoisted(() => {

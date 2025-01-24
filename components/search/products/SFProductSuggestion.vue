@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ProductSearchSuggestion } from '@scayle/storefront-core'
+import type { ProductSearchSuggestion } from '@scayle/storefront-nuxt'
 import SFSearchResultItem from '../SFSearchResultItem.vue'
 import { useProductBaseInfo, useRouteHelpers } from '~/composables'
 import { NuxtImg } from '#components'
@@ -34,6 +34,7 @@ type Props = {
   productSuggestion: ProductSearchSuggestion
 }
 const { productSuggestion } = defineProps<Props>()
+
 const emit = defineEmits<{
   (e: 'click:result', suggestion: ProductSearchSuggestion): void
 }>()

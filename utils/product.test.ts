@@ -1,15 +1,18 @@
 import type { CentAmount, Price } from '@scayle/storefront-nuxt'
 import { it, describe, expect } from 'vitest'
 import {
+  attributeGroupFactory,
+  productFactory,
+  automaticDiscountPromotionFactory,
+} from '@scayle/storefront-nuxt/test/factories'
+import {
   getProductSiblings,
   getProductSiblingData,
   getApplicablePromotionsForProduct,
   createCustomPrice,
   getMaxQuantity,
 } from './product'
-import { productFactory } from '~/test/factories/product'
-import { attributeGroupFactory } from '~/test/factories/attribute'
-import { promotionFactory } from '~/test/factories/promotion'
+import type { Promotion } from '~/types/promotion'
 
 // TODO: Cover more cases (e.g return data set check, different color attribute name etc.)
 describe('getApplicablePromotionsForProduct', () => {
@@ -27,7 +30,7 @@ describe('getApplicablePromotionsForProduct', () => {
       },
     })
     const promotions = [
-      promotionFactory.build({
+      automaticDiscountPromotionFactory.build({
         customData: {
           product: {
             badgeLabel: '-20% Off',
@@ -35,7 +38,7 @@ describe('getApplicablePromotionsForProduct', () => {
           },
         },
       }),
-      promotionFactory.build({
+      automaticDiscountPromotionFactory.build({
         customData: {
           product: {
             badgeLabel: '-20% Off',
@@ -43,7 +46,7 @@ describe('getApplicablePromotionsForProduct', () => {
           },
         },
       }),
-    ]
+    ] as Promotion[]
     const result = getApplicablePromotionsForProduct(product, promotions)
 
     expect(result).toEqual([promotions[0]])
@@ -71,7 +74,7 @@ describe('getApplicablePromotionsForProduct', () => {
       },
     })
     const promotions = [
-      promotionFactory.build({
+      automaticDiscountPromotionFactory.build({
         id: '1',
         customData: {
           product: {
@@ -81,7 +84,7 @@ describe('getApplicablePromotionsForProduct', () => {
         },
         priority: 1,
       }),
-      promotionFactory.build({
+      automaticDiscountPromotionFactory.build({
         id: '2',
         customData: {
           product: {
@@ -91,7 +94,7 @@ describe('getApplicablePromotionsForProduct', () => {
         },
         priority: 9,
       }),
-    ]
+    ] as Promotion[]
 
     const result = getApplicablePromotionsForProduct(product, promotions)
 

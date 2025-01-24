@@ -2,11 +2,14 @@ import { it, describe, expect } from 'vitest'
 import type { BasketResponseData, CentAmount } from '@scayle/storefront-nuxt'
 import type { BasketKey } from '@scayle/storefront-api'
 import {
+  costFactory,
+  basketItemsFactory,
+} from '@scayle/storefront-nuxt/test/factories'
+import {
   getBasketTotalWithoutPromotions,
   getTotalPriceWithoutReductions,
   getTotalReductionsByCategory,
 } from './basket'
-import { basketItemsFactory, costFactory } from '~/test/factories/basket'
 
 describe('getBasketTotalWithoutPromotions', () => {
   it('should return total without promotions', () => {

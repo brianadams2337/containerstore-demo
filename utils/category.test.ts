@@ -1,11 +1,11 @@
 import type { Category } from '@scayle/storefront-nuxt'
 import { it, describe } from 'vitest'
+import { categoryFactory } from '@scayle/storefront-nuxt/test/factories'
 import {
   getCategoryAncestors,
   isSaleCategory,
   flattenCategoryTree,
 } from './category'
-import { categoryFactory } from '~/test/factories/category'
 
 const getBaseCategoryData = (): Omit<Category, 'id'> => ({
   path: '/root/child/test',

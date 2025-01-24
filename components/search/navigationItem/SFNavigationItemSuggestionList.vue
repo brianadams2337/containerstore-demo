@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import type { NavigationItemSuggestion as NavigationItemSuggestionType } from '@scayle/storefront-core'
+import type { NavigationItemSuggestion as NavigationItemSuggestionType } from '@scayle/storefront-nuxt'
 import SFNavigationItemSuggestion from './SFNavigationItemSuggestion.vue'
 
 type Props = {

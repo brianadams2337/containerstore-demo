@@ -1,6 +1,6 @@
 import { vi, describe, it, expect } from 'vitest'
+import { categoryFactory } from '@scayle/storefront-nuxt/test/factories'
 import { usePromotionCategory } from './usePromotionCategory'
-import { categoryFactory } from '~/test/factories/category'
 
 const mocks = vi.hoisted(() => {
   return {

@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import type { BasketTotalPrice, BasketItem } from '@scayle/storefront-core'
+import type { BasketTotalPrice, BasketItem } from '@scayle/storefront-nuxt'
 import SFBasketSummaryPromotionsDiscounts from './SFBasketSummaryPromotionsDiscounts.vue'
 import SFBasketSummaryPromotionsToggle from './SFBasketSummaryPromotionsToggle.vue'
 import { useFormatHelpers } from '#storefront/composables'

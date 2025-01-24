@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { PromotionEffectType } from '@scayle/storefront-api'
+import {
+  basketItemFactory,
+  automaticDiscountPromotionFactory,
+  buyXgetYPromotionFactory,
+} from '@scayle/storefront-nuxt/test/factories'
 import {
   getBackgroundColorStyle,
   getTextColorStyle,
@@ -11,8 +15,6 @@ import {
   isFreeGiftEligible,
   isFreeGiftBasketItem,
 } from './promotion'
-import { promotionFactory } from '~/test/factories/promotion'
-import { basketItemFactory } from '~/test/factories/basket'
 
 describe('getBackgroundColorStyle', () => {
   it('should return background color style object with normalized color to hex', () => {
@@ -62,9 +64,8 @@ describe('getTextColorStyle', () => {
 
 describe('getPromotionStyle', () => {
   it('should return promotion style object', () => {
-    const promotion = promotionFactory.build({
+    const promotion = buyXgetYPromotionFactory.build({
       effect: {
-        type: PromotionEffectType.BuyXGetY,
         additionalData: {
           variantIds: [12389244, 23985437],
           maxCount: 1,
@@ -87,9 +88,8 @@ describe('getPromotionStyle', () => {
 
 describe('isBuyXGetYType', () => {
   it('should return "true" if it is "buy_x_get_y" type', () => {
-    const promotion = promotionFactory.build({
+    const promotion = buyXgetYPromotionFactory.build({
       effect: {
-        type: PromotionEffectType.BuyXGetY,
         additionalData: {
           variantIds: [12389244, 23985437],
           maxCount: 1,
@@ -100,9 +100,8 @@ describe('isBuyXGetYType', () => {
   })
 
   it('should return "false" if it is not "buy_x_get_y" type', () => {
-    const promotion = promotionFactory.build({
+    const promotion = automaticDiscountPromotionFactory.build({
       effect: {
-        type: PromotionEffectType.AutomaticDiscount,
         additionalData: {
           type: 'relative',
           value: 1000,
@@ -119,9 +118,8 @@ describe('isBuyXGetYType', () => {
 
 describe('isAutomaticDiscountType', () => {
   it('should return "true" if it is "automatic_discount" type', () => {
-    const promotion = promotionFactory.build({
+    const promotion = automaticDiscountPromotionFactory.build({
       effect: {
-        type: PromotionEffectType.AutomaticDiscount,
         additionalData: {
           type: 'relative',
           value: 1000,
@@ -132,9 +130,8 @@ describe('isAutomaticDiscountType', () => {
   })
 
   it('should return "false" if it is not "automatic_discount" type', () => {
-    const promotion = promotionFactory.build({
+    const promotion = buyXgetYPromotionFactory.build({
       effect: {
-        type: PromotionEffectType.BuyXGetY,
         additionalData: {
           variantIds: [12389244, 23985437],
           maxCount: 1,
@@ -151,9 +148,8 @@ describe('isAutomaticDiscountType', () => {
 
 describe('getVariantIds', () => {
   it('should return an empty array if promotion is not provided or it is not "buy_x_get_y" type', () => {
-    const promotion = promotionFactory.build({
+    const promotion = automaticDiscountPromotionFactory.build({
       effect: {
-        type: PromotionEffectType.AutomaticDiscount,
         additionalData: {
           type: 'relative',
           value: 1000,
@@ -166,9 +162,8 @@ describe('getVariantIds', () => {
   })
 
   it('should return variant ids for "buy_x_get_y" promotion', () => {
-    const promotion = promotionFactory.build({
+    const promotion = buyXgetYPromotionFactory.build({
       effect: {
-        type: PromotionEffectType.BuyXGetY,
         additionalData: {
           variantIds: [12389244, 23985437],
           maxCount: 1,
@@ -182,9 +177,8 @@ describe('getVariantIds', () => {
 
 describe('getAdditionalData', () => {
   it('should return undefined if promotion is not provided or it is not "automatic_discount" type', () => {
-    const promotion = promotionFactory.build({
+    const promotion = buyXgetYPromotionFactory.build({
       effect: {
-        type: PromotionEffectType.BuyXGetY,
         additionalData: {
           variantIds: [12389244, 23985437],
           maxCount: 1,
@@ -197,9 +191,8 @@ describe('getAdditionalData', () => {
   })
 
   it('should return additional data for "automatic_discount" promotion', () => {
-    const promotion = promotionFactory.build({
+    const promotion = automaticDiscountPromotionFactory.build({
       effect: {
-        type: PromotionEffectType.AutomaticDiscount,
         additionalData: {
           type: 'relative',
           value: 1000,
@@ -217,9 +210,8 @@ describe('getAdditionalData', () => {
 describe('isFreeGiftEligible', () => {
   it('should be a free gift', () => {
     const basketItem = basketItemFactory.build({
-      promotion: promotionFactory.build({
+      promotion: buyXgetYPromotionFactory.build({
         effect: {
-          type: PromotionEffectType.BuyXGetY,
           additionalData: {
             variantIds: [10],
           },
@@ -234,9 +226,8 @@ describe('isFreeGiftEligible', () => {
   })
   it('should not be a free gift', () => {
     const basketItem = basketItemFactory.build({
-      promotion: promotionFactory.build({
+      promotion: buyXgetYPromotionFactory.build({
         effect: {
-          type: PromotionEffectType.BuyXGetY,
           additionalData: {
             variantIds: [10],
           },
@@ -253,9 +244,8 @@ describe('isFreeGiftEligible', () => {
 describe('isFreeGiftBasketItem', () => {
   it('return true when item is eligible and  promotion condition is valid', () => {
     const basketItem = basketItemFactory.build({
-      promotion: promotionFactory.build({
+      promotion: buyXgetYPromotionFactory.build({
         effect: {
-          type: PromotionEffectType.BuyXGetY,
           additionalData: {
             variantIds: [10],
           },
@@ -271,9 +261,8 @@ describe('isFreeGiftBasketItem', () => {
   })
   it('return false when item is eligible and promotion condition is not value', () => {
     const basketItem = basketItemFactory.build({
-      promotion: promotionFactory.build({
+      promotion: buyXgetYPromotionFactory.build({
         effect: {
-          type: PromotionEffectType.BuyXGetY,
           additionalData: {
             variantIds: [10],
           },

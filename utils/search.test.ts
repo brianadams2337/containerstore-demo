@@ -4,6 +4,11 @@ import type {
 } from '@scayle/storefront-nuxt'
 import { describe, expect, it } from 'vitest'
 import {
+  attributeGroupFactory,
+  productFactory,
+  categoryFactory,
+} from '@scayle/storefront-nuxt/test/factories'
+import {
   getSearchFilterLabels,
   getSuggestionName,
   buildFiltersQuery,
@@ -11,9 +16,6 @@ import {
   isProductSuggestion,
   type CategoryFilter,
 } from './search'
-import { productFactory } from '~/test/factories/product'
-import { attributeGroupFactory } from '~/test/factories/attribute'
-import { categoryFactory } from '~/test/factories/category'
 
 describe('buildFiltersQuery', () => {
   it('should build filters queries for attribute filters', () => {

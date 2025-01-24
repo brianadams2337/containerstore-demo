@@ -2,8 +2,8 @@ import { toRef, defineComponent } from 'vue'
 import { describe, expect, it, vi } from 'vitest'
 import { ExistingItemHandling } from '@scayle/storefront-api'
 import { flushPromises, mount } from '@vue/test-utils'
+import { basketItemFactory } from '@scayle/storefront-nuxt/test/factories'
 import { useBasketActions } from './useBasketActions'
-import { basketItemFactory } from '~/test/factories/basket'
 
 const { useBasket, useTrackingEvents } = vi.hoisted(() => {
   return {

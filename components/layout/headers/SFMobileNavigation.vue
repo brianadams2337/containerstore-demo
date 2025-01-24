@@ -133,7 +133,7 @@ import { ref, watch } from 'vue'
 import type {
   NavigationItems,
   NavigationTreeItem as NavigationTreeItemType,
-} from '@scayle/storefront-core'
+} from '@scayle/storefront-nuxt'
 import { SFButton, SFAccordionEntry, SFLink } from '#storefront-ui/components'
 import SFNavigationTreeItem from '~/components/SFNavigationTreeItem.vue'
 import { theme } from '#tailwind-config'

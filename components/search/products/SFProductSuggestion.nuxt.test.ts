@@ -1,10 +1,12 @@
 import { expect, it, vi } from 'vitest'
-import type { Product } from '@scayle/storefront-core'
+import type { Product } from '@scayle/storefront-nuxt'
 import { renderSuspended } from '@nuxt/test-utils/runtime'
+import {
+  priceFactory,
+  attributeGroupFactory,
+  productFactory,
+} from '@scayle/storefront-nuxt/test/factories'
 import SFProductSuggestion from './SFProductSuggestion.vue'
-import { productFactory } from '~/test/factories/product'
-import { attributeGroupFactory } from '~/test/factories/attribute'
-import { priceFactory } from '~/test/factories/price'
 
 const { formatPercentageMock } = vi.hoisted(() => ({
   formatPercentageMock: vi.fn(),

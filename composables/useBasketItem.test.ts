@@ -1,14 +1,13 @@
 import { describe, it, expect } from 'vitest'
 import { toRef } from 'vue'
-import { PromotionEffectType } from '@scayle/storefront-api'
-import type { CentAmount } from '@scayle/storefront-core'
-import { useBasketItem } from './useBasketItem'
+import type { CentAmount } from '@scayle/storefront-nuxt'
 import {
-  basketItemFactory,
   basketItemPriceFactory,
-} from '~/test/factories/basket'
-import { promotionFactory } from '~/test/factories/promotion'
-import { variantFactory } from '~/test/factories/variant'
+  buyXgetYPromotionFactory,
+  variantFactory,
+  basketItemFactory,
+} from '@scayle/storefront-nuxt/test/factories'
+import { useBasketItem } from './useBasketItem'
 
 describe('useBasketItem', () => {
   describe('isSoldOut', () => {
@@ -27,9 +26,8 @@ describe('useBasketItem', () => {
 
   describe('isFreeGift', () => {
     it('should return "true" if basket item is free gift ', () => {
-      const promotion = promotionFactory.build({
+      const promotion = buyXgetYPromotionFactory.build({
         effect: {
-          type: PromotionEffectType.BuyXGetY,
           additionalData: {
             variantIds: [1, 2],
             maxCount: 1,
@@ -47,9 +45,8 @@ describe('useBasketItem', () => {
     })
 
     it('should return "false" if basket item is not a free gift ', () => {
-      const promotion = promotionFactory.build({
+      const promotion = buyXgetYPromotionFactory.build({
         effect: {
-          type: PromotionEffectType.BuyXGetY,
           additionalData: {
             variantIds: [1, 2],
             maxCount: 1,
@@ -68,9 +65,8 @@ describe('useBasketItem', () => {
 
   describe('price', () => {
     it('should return basket total price item is not free gift', () => {
-      const promotion = promotionFactory.build({
+      const promotion = buyXgetYPromotionFactory.build({
         effect: {
-          type: PromotionEffectType.BuyXGetY,
           additionalData: {
             variantIds: [1, 2],
             maxCount: 1,
@@ -106,9 +102,8 @@ describe('useBasketItem', () => {
     })
 
     it('should return custom price if item is free gift', () => {
-      const promotion = promotionFactory.build({
+      const promotion = buyXgetYPromotionFactory.build({
         effect: {
-          type: PromotionEffectType.BuyXGetY,
           additionalData: {
             variantIds: [1, 2],
             maxCount: 1,

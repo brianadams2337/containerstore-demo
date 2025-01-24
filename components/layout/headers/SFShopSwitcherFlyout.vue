@@ -42,11 +42,5 @@ watch(isOpen, async (value) => {
   }
 })
 
-onKeyStroke(
-  'Esc',
-  () => {
-    close()
-  },
-  { target: slideIn },
-)
+onKeyStroke('Esc', () => close(), { target: slideIn })
 </script>

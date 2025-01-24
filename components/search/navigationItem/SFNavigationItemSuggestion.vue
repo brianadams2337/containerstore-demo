@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import DOMpurify from 'dompurify'
-import type { NavigationItemSuggestion } from '@scayle/storefront-core'
+import type { NavigationItemSuggestion } from '@scayle/storefront-nuxt'
 import SFNavigationTreeItem from '~/components/SFNavigationTreeItem.vue'
 
 type Props = {

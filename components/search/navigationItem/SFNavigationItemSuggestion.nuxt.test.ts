@@ -4,11 +4,11 @@ import type {
   NavigationItemExternal,
   NavigationItemPage,
   NavigationTreeItem,
-} from '@scayle/storefront-core'
+} from '@scayle/storefront-nuxt'
 import { renderSuspended } from '@nuxt/test-utils/runtime'
 import { fireEvent, within } from '@testing-library/vue'
+import { categoryFactory } from '@scayle/storefront-nuxt/test/factories'
 import SFNavigationItemSuggestion from './SFNavigationItemSuggestion.vue'
-import { categoryFactory } from '~/test/factories/category'
 
 const getNavigationItemSuggestionComponent = (
   navigationItem: NavigationTreeItem,

@@ -1,15 +1,15 @@
 import { describe, it, expect, vi } from 'vitest'
 import type { SearchEntity } from '@scayle/storefront-nuxt'
 import { mockNuxtImport } from '@nuxt/test-utils/runtime'
-import { useRouteHelpers } from './useRouteHelpers'
-import { categoryFactory } from '~/test/factories/category'
-import { productFactory } from '~/test/factories/product'
-import { attributeGroupFactory } from '~/test/factories/attribute'
 import {
   navigationItemCategoryFactory,
   navigationItemExternalFactory,
   navigationItemPageFactory,
-} from '~/test/factories/navigationTreeItem'
+  categoryFactory,
+  productFactory,
+  attributeGroupFactory,
+} from '@scayle/storefront-nuxt/test/factories'
+import { useRouteHelpers } from './useRouteHelpers'
 
 vi.mock('#storefront/composables', () => ({
   useCurrentShop: () => ({

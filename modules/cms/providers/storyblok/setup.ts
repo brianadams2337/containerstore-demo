@@ -27,12 +27,15 @@ export async function setupStoryblok(options: ModuleOptions, nuxt: Nuxt) {
     })
   }
 
-  if (!nuxt.options.storyblok) {
-    nuxt.options.storyblok = {} as StoryblokDefaultModuleOptions
-  }
-  nuxt.options.storyblok = {
-    ...nuxt.options.storyblok,
-    componentsDir: '',
+  if ('storyblok' in nuxt.options) {
+    // Check if `nuxt.options.storyblok` exists and is falsy. If so, initialize it.
+    // Otherwise, spread existing options and override `componentsDir`.
+    nuxt.options.storyblok = nuxt.options.storyblok
+      ? {
+          ...(nuxt.options.storyblok as StoryblokDefaultModuleOptions),
+          componentsDir: '',
+        }
+      : ({} as StoryblokDefaultModuleOptions)
   }
 
   nuxt.options.image = {

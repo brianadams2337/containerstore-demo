@@ -30,7 +30,7 @@ import type {
   ProductSearchSuggestion,
   NavigationItemSuggestion as NavigationItemSuggestionType,
   SearchEntity,
-} from '@scayle/storefront-core'
+} from '@scayle/storefront-nuxt'
 import SFProductSuggestionList from './products/SFProductSuggestionList.vue'
 import SFNavigationItemSuggestionList from './navigationItem/SFNavigationItemSuggestionList.vue'
 import SFCategorySuggestionList from './categories/SFCategorySuggestionList.vue'

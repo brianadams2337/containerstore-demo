@@ -1,8 +1,10 @@
 import { it, describe, expect } from 'vitest'
 import type { CentAmount } from '@scayle/storefront-nuxt'
+import {
+  productFactory,
+  priceFactory,
+} from '@scayle/storefront-nuxt/test/factories'
 import { mapProductToTrackingPayload } from '~/utils/tracking'
-import { productFactory } from '~/test/factories/product'
-import { priceFactory } from '~/test/factories/price'
 
 describe('tracking', () => {
   it('should return without price discount', () => {

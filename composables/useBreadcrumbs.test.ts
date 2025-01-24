@@ -1,7 +1,7 @@
 import { describe, vi, it, expect } from 'vitest'
 import type { Category, ProductCategory } from '@scayle/storefront-nuxt'
+import { categoryFactory } from '@scayle/storefront-nuxt/test/factories'
 import { useBreadcrumbs } from './useBreadcrumbs'
-import { categoryFactory } from '~/test/factories/category'
 
 vi.mock('~/composables', () => ({
   useRouteHelpers: vi.fn().mockReturnValue({

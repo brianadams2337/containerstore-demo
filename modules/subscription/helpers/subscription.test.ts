@@ -1,14 +1,16 @@
 import { describe, expect, it, vi } from 'vitest'
-import type { BasketItem } from '@scayle/storefront-core'
+import type { BasketItem } from '@scayle/storefront-nuxt'
+import {
+  productFactory,
+  variantFactory,
+  basketItemFactory,
+} from '@scayle/storefront-nuxt/test/factories'
 import {
   getSubscriptionItemGroup,
   hasSubscriptionCustomData,
   isProductSubscriptionEligible,
   SUBSCRIPTION_ELIGIBILITY_ATTRIBUTE_NAME,
 } from './subscription'
-import { productFactory } from '~/test/factories/product'
-import { variantFactory } from '~/test/factories/variant'
-import { basketItemFactory } from '~/test/factories/basket'
 
 describe('hasSubscriptionCustomData', () => {
   it('should return true for when subscriptionDefinition property is present', () => {

@@ -1,8 +1,10 @@
 import { describe, it, expect, vi } from 'vitest'
 import type { CentAmount } from '@scayle/storefront-nuxt'
+import {
+  productFactory,
+  attributeGroupFactory,
+} from '@scayle/storefront-nuxt/test/factories'
 import { useProductBaseInfo } from './useProductBaseInfo'
-import { productFactory } from '~/test/factories/product'
-import { attributeGroupFactory } from '~/test/factories/attribute'
 
 vi.mock('#i18n', () => ({
   useI18n: vi.fn().mockReturnValue({

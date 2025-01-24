@@ -37,8 +37,8 @@
 </template>
 
 <script setup lang="ts">
-import type { BasketItem } from '@scayle/storefront-core'
 import {
+  type BasketItem,
   getAttributeValueTuples,
   getFirstAttributeValue,
 } from '@scayle/storefront-nuxt'

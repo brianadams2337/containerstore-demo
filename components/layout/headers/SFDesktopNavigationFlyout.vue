@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import type { NavigationTreeItem as NavigationTreeItemType } from '@scayle/storefront-core'
+import type { NavigationTreeItem as NavigationTreeItemType } from '@scayle/storefront-nuxt'
 import SFNavigationTreeItem from '~/components/SFNavigationTreeItem.vue'
 
 const emit = defineEmits(['close'])

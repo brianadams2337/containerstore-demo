@@ -1,15 +1,14 @@
 import { describe, it, expect } from 'vitest'
 import type { CentAmount } from '@scayle/storefront-nuxt'
-import { PromotionEffectType } from '@scayle/storefront-api'
 import { toRef } from 'vue'
-import { useBasketPromotionReductions } from './useBasketPromotionReductions'
 import {
   costFactory,
   basketItemsFactory,
   basketItemFactory,
-} from '~/test/factories/basket'
-import { priceFactory } from '~/test/factories/price'
-import { promotionFactory } from '~/test/factories/promotion'
+  priceFactory,
+  automaticDiscountPromotionFactory,
+} from '@scayle/storefront-nuxt/test/factories'
+import { useBasketPromotionReductions } from './useBasketPromotionReductions'
 
 describe('useBasketPromotionReductions', () => {
   describe('totalPromotionReductions', () => {
@@ -154,10 +153,9 @@ describe('useBasketPromotionReductions', () => {
             unit: priceTotalForFirstItem,
           },
           promotionId: 'promotion-id-1',
-          promotion: promotionFactory.build({
+          promotion: automaticDiscountPromotionFactory.build({
             id: 'promotion-id-1',
             effect: {
-              type: PromotionEffectType.AutomaticDiscount,
               additionalData: {
                 type: 'relative',
                 value: 20,
@@ -172,10 +170,9 @@ describe('useBasketPromotionReductions', () => {
             unit: priceTotalForSecondItem,
           },
           promotionId: 'promotion-id-2',
-          promotion: promotionFactory.build({
+          promotion: automaticDiscountPromotionFactory.build({
             id: 'promotion-id-2',
             effect: {
-              type: PromotionEffectType.AutomaticDiscount,
               additionalData: {
                 type: 'relative',
                 value: 20,

@@ -1,59 +1,34 @@
 import { expect, it } from 'vitest'
-import type { NavigationTreeItem } from '@scayle/storefront-core'
+import type { NavigationTreeItem } from '@scayle/storefront-nuxt'
 import type { RouteLocationNormalizedLoadedGeneric } from 'vue-router'
+import {
+  navigationItemCategoryFactory,
+  navigationItemExternalFactory,
+} from '@scayle/storefront-nuxt/dist/test/factories'
 import { isNavigationItemCategoryActive } from './category'
 
-const navigationItem: NavigationTreeItem = {
-  type: 'category',
-  extraFilters: {},
+const navigationItem: NavigationTreeItem = navigationItemCategoryFactory.build({
   categoryId: 1,
   id: 1,
-  name: 'Category',
-  assets: {},
-  filters: [],
-  visibleFrom: null,
-  visibleTo: null,
   children: [
-    {
-      type: 'category',
-      extraFilters: {},
+    navigationItemCategoryFactory.build({
       categoryId: 2,
       id: 1,
-      name: 'Category',
-      assets: {},
-      filters: [],
-      visibleFrom: null,
-      visibleTo: null,
       children: [
-        {
-          type: 'category',
-          extraFilters: {},
+        navigationItemCategoryFactory.build({
           categoryId: 3,
           id: 1,
-          name: 'Category',
-          filters: [],
-          assets: {},
-          visibleFrom: null,
-          visibleTo: null,
           children: [
-            {
-              type: 'category',
-              extraFilters: {},
+            navigationItemCategoryFactory.build({
               categoryId: 4,
               id: 1,
-              name: 'Category',
-              assets: {},
-              filters: [],
-              visibleFrom: null,
-              visibleTo: null,
-              children: [],
-            },
+            }),
           ],
-        },
+        }),
       ],
-    },
+    }),
   ],
-}
+})
 
 it.each([
   ['1', true],
@@ -84,16 +59,7 @@ it('should return false when the page type is not "category_page"', () => {
 
 it('should return false when the navigation item is not of type "category"', () => {
   const isActive = isNavigationItemCategoryActive(
-    {
-      type: 'individual-link',
-      id: 1,
-      name: 'Link',
-      options: { isOpenInNewWindow: false, url: '' },
-      assets: {},
-      visibleFrom: null,
-      visibleTo: null,
-      children: [],
-    },
+    navigationItemExternalFactory.build({ id: 1 }),
     'category_page',
     {
       params: {

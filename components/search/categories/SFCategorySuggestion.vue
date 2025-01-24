@@ -47,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import type { CategorySearchSuggestion } from '@scayle/storefront-core'
+import type { CategorySearchSuggestion } from '@scayle/storefront-nuxt'
 import { computed, onMounted, ref, useTemplateRef } from 'vue'
 import { useResizeObserver } from '@vueuse/core'
 import SFSearchResultItem from '../SFSearchResultItem.vue'

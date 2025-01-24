@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import { renderSuspended } from '@nuxt/test-utils/runtime'
 import { fireEvent } from '@testing-library/vue'
-import SFNavigationTreeItem from './SFNavigationTreeItem.vue'
 import {
   navigationItemCategoryFactory,
   navigationItemExternalFactory,
   navigationItemPageFactory,
-} from '~/test/factories/navigationTreeItem'
+} from '@scayle/storefront-nuxt/test/factories'
+import SFNavigationTreeItem from './SFNavigationTreeItem.vue'
 
 describe('disabled Link', () => {
   it('should render a <div> tag for disabled link', async () => {

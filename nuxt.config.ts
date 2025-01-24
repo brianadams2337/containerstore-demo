@@ -116,12 +116,6 @@ export default defineNuxtConfig({
   // https://nuxt.com/docs/api/nuxt-config#debug
   debug: stringToBoolean(process.env.NUXT_DEBUGGING_ENABLED),
 
-  // https://nuxt.com/blog/v3-10#bundler-module-resolution
-  // Some dependencies are currently not yet compatible with `moduleResolution: bundler`.
-  future: {
-    typescriptBundlerResolution: false,
-  },
-
   // Any key/value pair outside of the `public` key are private/server-side only
   // https://nuxt.com/docs/guide/going-further/runtime-config
   runtimeConfig: {

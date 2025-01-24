@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import type { NavigationItems } from '@scayle/storefront-core'
+import type { NavigationItems } from '@scayle/storefront-nuxt'
 import SFShopSwitcher from './SFShopSwitcher.vue'
 import SFMobileNavigation from './SFMobileNavigation.vue'
 import SFSearchInput from './search/SFSearchInput.vue'

@@ -88,7 +88,7 @@ import {
 } from 'vue'
 import { usePinch, useDrag } from '@vueuse/gesture'
 import { useEventListener } from '@vueuse/core'
-import type { ProductImage as ProductImageType } from '@scayle/storefront-core'
+import type { ProductImage as ProductImageType } from '@scayle/storefront-nuxt'
 import SFProductImage from '../../SFProductImage.vue'
 import SFProductCardImageSliderButton from '../../card/imageSlider/SFProductCardImageSliderButton.vue'
 import {

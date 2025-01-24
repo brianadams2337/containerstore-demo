@@ -1,9 +1,11 @@
 import { describe, it, expect, vi } from 'vitest'
 import { renderSuspended } from '@nuxt/test-utils/runtime'
-import type { CentAmount } from '@scayle/storefront-core'
+import type { CentAmount } from '@scayle/storefront-nuxt'
+import {
+  priceFactory,
+  automaticDiscountPromotionFactory,
+} from '@scayle/storefront-nuxt/test/factories'
 import SFProductPrice from './SFProductPrice.vue'
-import { priceFactory } from '~/test/factories/price'
-import { promotionFactory } from '~/test/factories/promotion'
 
 const { formatPercentageMock } = vi.hoisted(() => ({
   formatPercentageMock: vi.fn(),
@@ -166,7 +168,7 @@ describe('ProductPrice.vue', () => {
           },
         ],
       })
-      const promotion = promotionFactory.build({
+      const promotion = automaticDiscountPromotionFactory.build({
         customData: {
           colorHex: '#FFFFFF',
         },

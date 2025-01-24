@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from 'vitest'
 import { ref } from 'vue'
 import type { CentAmount } from '@scayle/storefront-nuxt'
+import { priceFactory } from '@scayle/storefront-nuxt/test/factories'
 import { useProductPrice } from './useProductPrice'
-import { priceFactory } from '~/test/factories/price'
 
 vi.mock('#storefront/composables', () => ({
   useFormatHelpers: () => ({

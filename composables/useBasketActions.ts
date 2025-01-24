@@ -5,6 +5,7 @@ import {
 } from '@scayle/storefront-nuxt'
 import { ExistingItemHandling } from '@scayle/storefront-api'
 import { useI18n } from 'vue-i18n'
+// TODO: Export this properly from `storefront-core`
 import type { BasketItemUpdateData } from '@scayle/storefront-core/dist/rpc/methods'
 import { useToast } from '~/composables/useToast'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
+import { basketItemFactory } from '@scayle/storefront-nuxt/test/factories'
 import useBasketSubscription from './useBasketSubscription'
-import { basketItemFactory } from '~/test/factories/basket'
 
 describe('useBasketSubscription', () => {
   describe('hasSubscriptionData', () => {

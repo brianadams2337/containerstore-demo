@@ -4,14 +4,14 @@ import type {
   CategorySearchSuggestion,
   NavigationItemSuggestion,
   ProductSearchSuggestion,
-} from '@scayle/storefront-core'
+} from '@scayle/storefront-nuxt'
 import { fireEvent } from '@testing-library/vue'
-import SFSearchResultsContainer from './SFSearchResultsContainer.vue'
 import {
   categorySearchSuggestionFactory,
   navigationItemSuggestionFactory,
   productSearchSuggestionFactory,
-} from '~/test/factories/searchSuggestion'
+} from '@scayle/storefront-nuxt/test/factories'
+import SFSearchResultsContainer from './SFSearchResultsContainer.vue'
 
 vi.mock('#storefront/composables', async () => {
   const actual = await vi.importActual('#storefront/composables')
@@ -75,7 +75,7 @@ it('should render suggestions', async () => {
     productSuggestion,
     navigationItemSuggestion,
   )
-  expect(await getAllByRole('option')).toHaveLength(4)
+  expect(getAllByRole('option')).toHaveLength(4)
 })
 
 it('should emit "click:result" event when suggestion was clicked', async () => {
@@ -86,7 +86,7 @@ it('should emit "click:result" event when suggestion was clicked', async () => {
     productSuggestion,
     navigationItemSuggestion,
   )
-  const options = await getAllByRole('option')
+  const options = getAllByRole('option')
   await Promise.all(options.map((option) => fireEvent.click(option)))
   expect(emitted()['click:result']).toHaveLength(4)
 })

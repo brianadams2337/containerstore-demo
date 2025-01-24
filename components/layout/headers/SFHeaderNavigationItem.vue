@@ -46,7 +46,7 @@
 
 <script setup lang="ts">
 import { computed, nextTick, ref } from 'vue'
-import type { NavigationTreeItem as NavigationTreeItemType } from '@scayle/storefront-core'
+import type { NavigationTreeItem as NavigationTreeItemType } from '@scayle/storefront-nuxt'
 import { onKeyStroke } from '@vueuse/core'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import SFDesktopNavigationFlyout from './SFDesktopNavigationFlyout.vue'

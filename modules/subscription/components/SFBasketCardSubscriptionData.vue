@@ -33,12 +33,10 @@
 </template>
 
 <script setup lang="ts">
-import type { BasketItem } from '@scayle/storefront-core'
+import type { BasketItem } from '@scayle/storefront-nuxt'
 import useBasketSubscription from '../composables/useBasketSubscription'
 
-const { basketItem } = defineProps<{
-  basketItem: BasketItem
-}>()
+const { basketItem } = defineProps<{ basketItem: BasketItem }>()
 
 const { hasSubscriptionData, subscriptionAttributes } =
   useBasketSubscription(basketItem)

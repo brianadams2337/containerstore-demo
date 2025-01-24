@@ -1,8 +1,8 @@
 import { describe, it, vi, expect, beforeEach } from 'vitest'
 import { toRef } from 'vue'
+import { categoryFactory } from '@scayle/storefront-nuxt/test/factories'
 import { useRootCategories } from './useRootCategories'
 import { createError } from '#app/composables/error'
-import { categoryFactory } from '~/test/factories/category'
 
 const { useCategories } = vi.hoisted(() => {
   return {

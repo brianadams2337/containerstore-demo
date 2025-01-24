@@ -42,7 +42,6 @@ import { useAvailableShops, useCurrentShop } from '#storefront/composables'
 import { SFButton } from '#storefront-ui/components'
 import { useSlideIn } from '~/modules/ui/runtime/composables/useSlideIn'
 import { useCurrentShopTranslators } from '~/composables/useCurrentShopTranslators'
-
 import { getShopName, hasMultipleShopsForCountry } from '~/utils'
 
 const currentShop = useCurrentShop()

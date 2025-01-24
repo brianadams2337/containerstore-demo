@@ -2,8 +2,8 @@ import { ref } from 'vue'
 import { renderSuspended } from '@nuxt/test-utils/runtime'
 import { expect, it, vi } from 'vitest'
 import { fireEvent } from '@testing-library/vue'
+import { basketItemFactory } from '@scayle/storefront-nuxt/test/factories'
 import BasketNavigationItem from './SFBasketNavigationItem.vue'
-import { basketItemFactory } from '~/test/factories/basket'
 
 const { useBasket } = vi.hoisted(() => ({
   useBasket: vi.fn(),

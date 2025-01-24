@@ -1,8 +1,8 @@
 import { renderSuspended } from '@nuxt/test-utils/runtime'
 import { expect, it } from 'vitest'
 import { fireEvent } from '@testing-library/vue'
+import { navigationItemExternalFactory } from '@scayle/storefront-nuxt/test/factories'
 import SFNavigationItemSuggestionList from './SFNavigationItemSuggestionList.vue'
-import { navigationItemExternalFactory } from '~/test/factories/navigationTreeItem'
 
 const getNavigationItemSuggestionsComponent = (searchTerm: string = '') => {
   return renderSuspended(SFNavigationItemSuggestionList, {

@@ -1,12 +1,12 @@
 import { renderSuspended } from '@nuxt/test-utils/runtime'
 import { expect, it, vi } from 'vitest'
 import { fireEvent } from '@testing-library/vue'
-import SFSearchResults from './SFSearchResults.vue'
 import {
   categorySearchSuggestionFactory,
   navigationItemSuggestionFactory,
   productSearchSuggestionFactory,
-} from '~/test/factories/searchSuggestion'
+} from '@scayle/storefront-nuxt/test/factories'
+import SFSearchResults from './SFSearchResults.vue'
 
 vi.mock('#storefront/composables', async () => {
   const actual = await vi.importActual('#storefront/composables')
@@ -36,7 +36,7 @@ it('should render all suggestions', async () => {
   const { getByText, getAllByRole, getByRole } =
     await getSearchResultsComponent()
   expect(getByRole('listbox')).toBeInTheDocument()
-  expect(await getAllByRole('option')).toHaveLength(4)
+  expect(getAllByRole('option')).toHaveLength(4)
   expect(getByText('Kategorien')).toBeInTheDocument()
   expect(getByText('Produkte')).toBeInTheDocument()
   expect(getByText('Seiten')).toBeInTheDocument()
@@ -47,7 +47,7 @@ it('should render all suggestions', async () => {
 
 it('should emit "click" result event when option was clicked', async () => {
   const { emitted, getAllByRole } = await getSearchResultsComponent()
-  const options = await getAllByRole('option')
+  const options = getAllByRole('option')
   await Promise.all(options.map((option) => fireEvent.click(option)))
   expect(emitted()['click:result']).toHaveLength(4)
 })
