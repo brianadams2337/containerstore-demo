@@ -93,8 +93,8 @@ const useSearchEvents = (
       if (isNavigationItemSuggestion(suggestion)) {
         const navigationItem =
           suggestion.navigationItemSuggestion.navigationItem
-        const route = buildNavigationTreeItemRoute(navigationItem)
-        if (route?.path) {
+        const { route } = buildNavigationTreeItemRoute(navigationItem) ?? {}
+        if (typeof route !== 'string' && route?.path) {
           const matched = router.resolve(route.path)
           trackSearch({
             ...baseInfo,

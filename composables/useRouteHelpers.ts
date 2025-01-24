@@ -88,10 +88,14 @@ export function useRouteHelpers() {
     }
 
     if (isNavigationItemSuggestion(suggestion)) {
-      const route = buildNavigationTreeItemRoute(
-        suggestion.navigationItemSuggestion.navigationItem,
-      )
-      return route ? localePath(route.path) : undefined
+      const { route } =
+        buildNavigationTreeItemRoute(
+          suggestion.navigationItemSuggestion.navigationItem,
+        ) ?? {}
+
+      return typeof route !== 'string' && route?.path
+        ? localePath(route.path)
+        : undefined
     }
   }
 
