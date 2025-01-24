@@ -132,7 +132,7 @@ test('C2167319 Verify Basket Price summary - regular product', async ({
     if (isMobile(page)) {
       await basketPage.priceFinal.nth(1).waitFor()
       await basketPage.assertBasketPriceSummary(
-        basketPage.priceSubtotal,
+        basketPage.priceSubtotalMobile,
         basketPage.priceFinal,
         true,
       )
@@ -171,7 +171,7 @@ test('C2167320 Verify Basket Price summary - sale product', async ({
     if (isMobile(page)) {
       await basketPage.priceFinal.nth(1).waitFor()
       await basketPage.assertBasketPriceSummary(
-        basketPage.priceSubtotal,
+        basketPage.priceSubtotalMobile,
         basketPage.priceFinal,
         true,
         basketPage.discountSale,
@@ -229,7 +229,7 @@ test('C2167321 Verify Basket Price summary - promotion product', async ({
     if (isMobile(page)) {
       await basketPage.promotionSummaryToggleButton.nth(1).waitFor()
       await basketPage.assertBasketPriceSummary(
-        basketPage.priceSubtotal,
+        basketPage.priceSubtotalMobile,
         basketPage.priceFinal,
         true,
         basketPage.totalPromotionDiscount,
