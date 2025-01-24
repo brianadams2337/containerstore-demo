@@ -21,23 +21,22 @@
       </span>
     </div>
   </section>
-  <template v-if="cost && cost?.appliedReductions.length > 0 && items?.length">
-    <SFBasketSummaryReductions
+  <SFBasketSummaryReductions
+    v-if="cost.appliedReductions.length > 0"
+    :cost="cost"
+    :basket-items="basketItems"
+    class="bg-gray-50 px-5 pb-4 lg:hidden"
+  />
+  <div
+    class="sticky bottom-0 z-10 flex flex-col gap-4 border-gray-200 bg-gray-50 pb-5 lg:hidden"
+  >
+    <hr class="h-px w-full border-none bg-gray-300" />
+    <SFBasketSummaryFinalSection
       :cost="cost"
-      :basket-items="items"
-      class="bg-gray-50 px-5 pb-4 lg:hidden"
+      :basket-items="basketItems"
+      class="px-5"
     />
-    <div
-      class="sticky bottom-0 z-10 flex flex-col gap-4 border-gray-200 bg-gray-50 pb-5 lg:hidden"
-    >
-      <hr class="h-px w-full border-none bg-gray-300" />
-      <SFBasketSummaryFinalSection
-        :cost="cost"
-        :basket-items="items"
-        class="px-5"
-      />
-    </div>
-  </template>
+  </div>
   <div class="bg-gray-50 px-5 pb-5 lg:hidden">
     <SFBasketSummaryVoucherDisclaimer />
   </div>
@@ -47,22 +46,18 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
+import type { BasketTotalPrice, BasketItem } from '@scayle/storefront-nuxt'
 import SFBasketSummaryFinalSection from './SFBasketSummaryFinalSection.vue'
 import SFBasketSummaryReductions from './SFBasketSummaryReductions.vue'
 import SFBasketSummaryVoucherDisclaimer from './SFBasketSummaryVoucherDisclaimer.vue'
 import { SFHeadline } from '#storefront-ui/components'
-import { useFormatHelpers, useBasket } from '#storefront/composables'
-import { getTotalPriceWithoutReductions } from '~/utils'
+import { useFormatHelpers } from '#storefront/composables'
 
-const { cost, items } = await useBasket()
-
-const subtotal = computed(() => {
-  if (!cost.value) {
-    return
-  }
-  return getTotalPriceWithoutReductions(cost.value)
-})
+const { cost, basketItems } = defineProps<{
+  cost: BasketTotalPrice
+  basketItems: BasketItem[]
+  subtotal?: number
+}>()
 
 const { formatCurrency } = useFormatHelpers()
 </script>

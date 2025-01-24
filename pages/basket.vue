@@ -34,12 +34,11 @@
           />
         </template>
       </div>
-      <div
-        class="relative hidden w-2/5 flex-col border-l border-gray-200 bg-gray-50 px-5 py-8 pl-13 pr-7 lg:flex"
-      >
-        <SFBasketSummary class="sticky top-8" />
-      </div>
-      <SFBasketSummaryMobile />
+      <SFBasketSummary
+        v-if="basketCost && basketItems?.length"
+        :cost="basketCost"
+        :basket-items="basketItems"
+      />
       <SFBasketDeleteConfirmationModal
         :visible="isDeleteConfirmationRevealed"
         :on-confirm="confirmDeletion"
@@ -76,7 +75,6 @@ import SFEmptyState from '~/components/SFEmptyState.vue'
 import { SFHeadline } from '#storefront-ui/components'
 import SFBasketHeadline from '~/components/basket/SFBasketHeadline.vue'
 import SFBasketDeleteConfirmationModal from '~/components/basket/SFBasketDeleteConfirmationModal.vue'
-import SFBasketSummaryMobile from '~/components/basket/summary/SFBasketSummaryMobile.vue'
 import SFBasketAvailableItems from '~/components/basket/SFBasketAvailableItems.vue'
 import SFBasketUnavailableItems from '~/components/basket/SFBasketUnavailableItems.vue'
 import SFBasketMOVBanners from '~/components/basket/promotions/SFBasketMOVBanners.vue'
