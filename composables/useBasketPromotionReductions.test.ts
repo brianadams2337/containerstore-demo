@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import type { CentAmount } from '@scayle/storefront-nuxt'
 import { PromotionEffectType } from '@scayle/storefront-api'
 import { toRef } from 'vue'
-import { useBasketReductions } from './useBasketReductions'
+import { useBasketPromotionReductions } from './useBasketPromotionReductions'
 import {
   costFactory,
   basketItemsFactory,
@@ -11,127 +11,7 @@ import {
 import { priceFactory } from '~/test/factories/price'
 import { promotionFactory } from '~/test/factories/promotion'
 
-describe('useBasketReductions', () => {
-  describe('totalSaleReductions', () => {
-    it('should return total sum of sale reductions', () => {
-      const cost = costFactory.build({
-        withTax: 1000,
-        appliedReductions: [
-          {
-            category: 'sale',
-            type: 'relative',
-            amount: {
-              relative: 0.3,
-              absoluteWithTax: 1000 as CentAmount,
-            },
-          },
-          {
-            category: 'promotion',
-            type: 'relative',
-            amount: {
-              relative: 0.2,
-              absoluteWithTax: 898 as CentAmount,
-            },
-          },
-          {
-            category: 'sale',
-            type: 'relative',
-            amount: {
-              relative: 0.3,
-              absoluteWithTax: 2000 as CentAmount,
-            },
-          },
-        ],
-      })
-      const { totalSaleReductions } = useBasketReductions(
-        toRef(cost),
-        toRef(basketItemsFactory.build()),
-      )
-      expect(totalSaleReductions.value).toEqual(3000)
-    })
-
-    it('should return 0 if no sale reductions', () => {
-      const cost = costFactory.build({
-        withTax: 1000,
-        appliedReductions: [
-          {
-            category: 'campaign',
-            type: 'relative',
-            amount: {
-              relative: 0.3,
-              absoluteWithTax: 2000 as CentAmount,
-            },
-          },
-        ],
-      })
-      const { totalSaleReductions } = useBasketReductions(
-        toRef(cost),
-        toRef(basketItemsFactory.build()),
-      )
-      expect(totalSaleReductions.value).toEqual(0)
-    })
-  })
-
-  describe('totalCampaignReductions', () => {
-    it('should return total sum of campaign reductions', () => {
-      const cost = costFactory.build({
-        withTax: 1000,
-        appliedReductions: [
-          {
-            category: 'campaign',
-            type: 'relative',
-            amount: {
-              relative: 0.3,
-              absoluteWithTax: 4000 as CentAmount,
-            },
-          },
-          {
-            category: 'promotion',
-            type: 'relative',
-            amount: {
-              relative: 0.2,
-              absoluteWithTax: 898 as CentAmount,
-            },
-          },
-          {
-            category: 'campaign',
-            type: 'relative',
-            amount: {
-              relative: 0.3,
-              absoluteWithTax: 2000 as CentAmount,
-            },
-          },
-        ],
-      })
-      const { totalCampaignReductions } = useBasketReductions(
-        toRef(cost),
-        toRef(basketItemsFactory.build()),
-      )
-      expect(totalCampaignReductions.value).toEqual(6000)
-    })
-
-    it('should return 0 if no campaign reductions', () => {
-      const cost = costFactory.build({
-        withTax: 1000,
-        appliedReductions: [
-          {
-            category: 'sale',
-            type: 'relative',
-            amount: {
-              relative: 0.3,
-              absoluteWithTax: 4000 as CentAmount,
-            },
-          },
-        ],
-      })
-      const { totalCampaignReductions } = useBasketReductions(
-        toRef(cost),
-        toRef(basketItemsFactory.build()),
-      )
-      expect(totalCampaignReductions.value).toEqual(0)
-    })
-  })
-
+describe('useBasketPromotionReductions', () => {
   describe('totalPromotionReductions', () => {
     it('should return total sum of promotion reductions', () => {
       const cost = costFactory.build({
@@ -163,7 +43,7 @@ describe('useBasketReductions', () => {
           },
         ],
       })
-      const { totalPromotionReductions } = useBasketReductions(
+      const { totalPromotionReductions } = useBasketPromotionReductions(
         toRef(cost),
         toRef(basketItemsFactory.build()),
       )
@@ -184,7 +64,7 @@ describe('useBasketReductions', () => {
           },
         ],
       })
-      const { totalPromotionReductions } = useBasketReductions(
+      const { totalPromotionReductions } = useBasketPromotionReductions(
         toRef(cost),
         toRef(basketItemsFactory.build()),
       )
@@ -192,7 +72,7 @@ describe('useBasketReductions', () => {
     })
   })
 
-  describe('itemsWithPromotionReductions', () => {
+  describe('basketPromotionSummaries', () => {
     it('should return promotions & total with promotion reduction basket items', () => {
       const cost = costFactory.build({
         withTax: 1000,
@@ -306,15 +186,15 @@ describe('useBasketReductions', () => {
 
         basketItemFactory.build({ key: 'basket-item-test-3' }),
       ]
-      const { itemsWithPromotionReductions } = useBasketReductions(
+      const { basketPromotionSummaries } = useBasketPromotionReductions(
         toRef(cost),
         toRef(items),
       )
 
       const [firstPromotionBasketItem, secondPromotionalBasketItem] =
-        itemsWithPromotionReductions.value
+        basketPromotionSummaries.value.values()
 
-      expect(itemsWithPromotionReductions.value.length).toBeTruthy()
+      expect(basketPromotionSummaries.value.size).toBeTruthy()
 
       expect(firstPromotionBasketItem.total).toEqual(898)
       expect(firstPromotionBasketItem?.promotion?.id).toEqual('promotion-id-1')
@@ -325,7 +205,7 @@ describe('useBasketReductions', () => {
       )
     })
 
-    it('should return an empty array for basket items with no promotions', () => {
+    it('should return an empty map for basket items with no promotions', () => {
       const cost = costFactory.build({
         withTax: 1000,
         appliedReductions: [
@@ -342,60 +222,11 @@ describe('useBasketReductions', () => {
 
       const items = [basketItemFactory.build({ key: 'basket-item-test-1' })]
 
-      const { itemsWithPromotionReductions } = useBasketReductions(
+      const { basketPromotionSummaries } = useBasketPromotionReductions(
         toRef(cost),
         toRef(items),
       )
-      expect(itemsWithPromotionReductions.value).toEqual([])
-    })
-  })
-
-  describe('hasReductions', () => {
-    it('should return "true" if there is atleast one reduction', () => {
-      const cost = costFactory.build({
-        withTax: 1000,
-        appliedReductions: [
-          {
-            category: 'sale',
-            type: 'relative',
-            amount: {
-              relative: 0.3,
-              absoluteWithTax: 1000 as CentAmount,
-            },
-          },
-          {
-            category: 'promotion',
-            type: 'relative',
-            amount: {
-              relative: 0.2,
-              absoluteWithTax: 898 as CentAmount,
-            },
-          },
-          {
-            category: 'sale',
-            type: 'relative',
-            amount: {
-              relative: 0.3,
-              absoluteWithTax: 2000 as CentAmount,
-            },
-          },
-        ],
-      })
-      const { hasReductions } = useBasketReductions(
-        toRef(cost),
-        toRef(basketItemsFactory.build()),
-      )
-      expect(hasReductions.value).toEqual(true)
-    })
-
-    it('should return "false" if there is no reductions', () => {
-      const cost = costFactory.build()
-      cost.appliedReductions = []
-      const { hasReductions } = useBasketReductions(
-        toRef(cost),
-        toRef(basketItemsFactory.build()),
-      )
-      expect(hasReductions.value).toEqual(false)
+      expect(basketPromotionSummaries.value).toEqual(new Map())
     })
   })
 })

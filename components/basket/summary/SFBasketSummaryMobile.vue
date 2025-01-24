@@ -53,7 +53,7 @@ import SFBasketSummaryVoucherDisclaimer from './SFBasketSummaryVoucherDisclaimer
 import { SFHeadline } from '#storefront-ui/components'
 import { useFormatHelpers } from '#storefront/composables'
 
-const { cost, basketItems } = defineProps<{
+const { cost, basketItems, subtotal } = defineProps<{
   cost: BasketTotalPrice
   basketItems: BasketItem[]
   subtotal?: number

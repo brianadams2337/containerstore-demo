@@ -1,5 +1,4 @@
 import {
-  type Price,
   type Product,
   getFirstAttributeValue,
   extendPromise,
@@ -9,8 +8,6 @@ import { useBasketPromotions } from '~/composables/useBasketPromotions'
 import { useBasket, useCurrentPromotions } from '#storefront/composables'
 import type { Promotion } from '~/types/promotion'
 import {
-  divideByHundred,
-  getAdditionalData,
   getApplicablePromotionsForProduct,
   getVariantIds,
   isBuyXGetYType,
@@ -26,7 +23,6 @@ type UseProductPromotionsReturn = {
   areGiftConditionsMet: ComputedRef<boolean>
   areHurryToSaveBannersShown: ComputedRef<boolean>
   isHighestPriority: (id: number) => boolean
-  getAppliedAutomaticDiscountPrice: (price: Price) => number | undefined
 }
 
 export function useProductPromotions(
@@ -128,30 +124,6 @@ export function useProductPromotions(
     )
   })
 
-  const getAppliedAutomaticDiscountPrice = (
-    price: Price,
-  ): number | undefined => {
-    const additionalData = getAdditionalData(promotion.value)
-    if (!additionalData?.value) {
-      return
-    }
-    const { type, value: discountValue } = additionalData
-    const priceWithTax = divideByHundred(price.withTax)
-
-    let priceTotal = 0
-
-    if (type === 'absolute') {
-      priceTotal = priceWithTax - divideByHundred(discountValue)
-    }
-
-    if (type === 'relative') {
-      const discount = priceWithTax * discountValue
-      priceTotal = price.withTax - discount
-    }
-
-    return priceTotal >= 0 ? priceTotal : 0
-  }
-
   return extendPromise(
     Promise.all([basket, promotionData, basketPromotions]).then(() => ({})),
     {
@@ -164,7 +136,6 @@ export function useProductPromotions(
       areGiftConditionsMet,
       areHurryToSaveBannersShown,
       isHighestPriority,
-      getAppliedAutomaticDiscountPrice,
     },
   )
 }

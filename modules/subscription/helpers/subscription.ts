@@ -7,7 +7,6 @@ import {
   getAttributeValueTuples,
 } from '@scayle/storefront-nuxt'
 import { nanoid } from 'nanoid'
-import type { AddToBasketItem } from '~/composables'
 
 export const SUBSCRIPTION_ELIGIBILITY_ATTRIBUTE_NAME = 'subscriptionEligibility'
 export const SUBSCRIPTION_INTERVALS_ATTRIBUTE_NAME =
@@ -104,16 +103,12 @@ export const isSubscriptionAlreadyInBasket = (
  * @returns The subscription item group.
  */
 export const getSubscriptionItemGroup = (
-  item: AddToBasketItem,
+  variantId: number,
   basketItems: BasketItem[],
 ): ItemGroup => {
-  if (item.itemGroup) {
-    return item.itemGroup
-  }
-
   const existingSubscription = basketItems?.find((basketItem) => {
     return (
-      basketItem.variant.id === item.variantId &&
+      basketItem.variant.id === variantId &&
       hasSubscriptionCustomData(
         basketItem.customData as Record<string, unknown>,
       )

@@ -2,18 +2,22 @@
   <section
     class="flex w-full flex-col gap-4 text-base font-semi-bold-variable leading-3.5"
   >
-    <div v-if="totalSaleReductions" class="flex justify-between text-red">
-      <h2>{{ $t('basket.summary.sale') }}</h2>
-      <span data-testid="basket-discount-sale">
-        {{ formatCurrency(-Math.abs(totalSaleReductions)) }}
-      </span>
-    </div>
-    <div v-if="totalCampaignReductions" class="flex justify-between text-red">
-      <h2>{{ $t('basket.summary.campaign') }}</h2>
-      <span>
-        {{ formatCurrency(-Math.abs(totalCampaignReductions)) }}
-      </span>
-    </div>
+    <ul>
+      <template
+        v-for="reduction in cost.appliedReductions"
+        :key="reduction.category"
+      >
+        <li
+          v-if="reduction.category !== 'promotion'"
+          class="flex justify-between text-red"
+        >
+          <h2>{{ $t(`basket.summary.${reduction.category}`) }}</h2>
+          <span :data-testid="`basket-discount-${reduction.category}`">
+            {{ formatCurrency(-Math.abs(reduction.amount.absoluteWithTax)) }}
+          </span>
+        </li>
+      </template>
+    </ul>
     <SFBasketSummaryPromotions :cost="cost" :basket-items="basketItems" />
   </section>
 </template>
@@ -22,7 +26,6 @@
 import type { BasketTotalPrice, BasketItem } from '@scayle/storefront-nuxt'
 import SFBasketSummaryPromotions from './promotions/SFBasketSummaryPromotions.vue'
 import { useFormatHelpers } from '#storefront/composables'
-import { useBasketReductions } from '~/composables'
 
 const { formatCurrency } = useFormatHelpers()
 
@@ -30,9 +33,4 @@ const { cost, basketItems } = defineProps<{
   cost: BasketTotalPrice
   basketItems: BasketItem[]
 }>()
-
-const { totalCampaignReductions, totalSaleReductions } = useBasketReductions(
-  () => cost,
-  () => basketItems,
-)
 </script>

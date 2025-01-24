@@ -97,12 +97,14 @@
     "my_orders": "My Orders",
     "user_settings": "Account Settings",
     "sign_in": "Sign in",
-    "basket": "Basket",
     "home": "Storefront Core Boilerplate",
     "checkout": "Checkout",
     "osp": "Order Confirmation",
     "location": "Find a Store",
-    "wishlist_aria_label": "Wishlist | Wishlist, {count} item | Wishlist, {count} items"
+    "wishlist_aria_label": "Wishlist | Wishlist, {count} item | Wishlist, {count} items",
+    "meta": {
+      "basket": "Basket"
+    }
   },
   "search": {
     "placeholder": "Search for product, category or brand",

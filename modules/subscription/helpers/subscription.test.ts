@@ -8,7 +8,6 @@ import {
 } from './subscription'
 import { productFactory } from '~/test/factories/product'
 import { variantFactory } from '~/test/factories/variant'
-import type { AddToBasketItem } from '~/composables'
 import { basketItemFactory } from '~/test/factories/basket'
 
 describe('hasSubscriptionCustomData', () => {
@@ -107,26 +106,7 @@ describe('isProductSubscriptionEligible', () => {
 })
 
 describe('getSubscriptionItemGroup', () => {
-  it('should return existing item group of item', () => {
-    const addToBasketItem: AddToBasketItem = {
-      productName: 'Test',
-      quantity: 1,
-      variantId: 1,
-      itemGroup: { id: 'test', isMainItem: true, isRequired: true },
-    }
-    expect(getSubscriptionItemGroup(addToBasketItem, [])).toEqual({
-      id: 'test',
-      isMainItem: true,
-      isRequired: true,
-    })
-  })
-
   it('should reuse item group of existing subscription item', () => {
-    const addToBasketItem: AddToBasketItem = {
-      productName: 'Test',
-      quantity: 1,
-      variantId: 1,
-    }
     const basketItems = [
       basketItemFactory.build({
         variant: { id: 1 },
@@ -137,7 +117,7 @@ describe('getSubscriptionItemGroup', () => {
       }),
     ]
 
-    expect(getSubscriptionItemGroup(addToBasketItem, basketItems)).toEqual({
+    expect(getSubscriptionItemGroup(1, basketItems)).toEqual({
       id: 'test',
       isMainItem: true,
       isRequired: true,
@@ -150,13 +130,9 @@ describe('getSubscriptionItemGroup', () => {
         nanoid: () => 'nanoid',
       }
     })
-    const addToBasketItem: AddToBasketItem = {
-      productName: 'Test',
-      quantity: 1,
-      variantId: 1,
-    }
+
     const basketItems: BasketItem[] = []
-    expect(getSubscriptionItemGroup(addToBasketItem, basketItems)).toEqual({
+    expect(getSubscriptionItemGroup(1, basketItems)).toEqual({
       id: 'nanoid',
       isMainItem: true,
       isRequired: true,

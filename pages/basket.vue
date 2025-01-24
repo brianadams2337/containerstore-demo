@@ -131,6 +131,7 @@ onMounted(() => {
       listName: basketListingMetaData.name,
     }),
   )
+  // Please remove wishlist tracking
   trackWishlist(
     collectProductListItems(wishlist.products.value, {
       listId: WishlistListingMetadata.ID,
@@ -167,7 +168,7 @@ const {
 } = useNuxtApp()
 
 useSeoMeta({
-  title: $i18n.t('navigation.basket'),
+  title: $i18n.t('navigation.meta.basket'),
   robots: 'noindex,follow',
   description: $i18n.t('basket.meta.description', { shopName }),
 })

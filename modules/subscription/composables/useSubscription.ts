@@ -18,9 +18,10 @@ import {
   SUBSCRIPTION_TERM,
   getOrdinalSuffix,
   getSubscriptionIntervals,
+  getSubscriptionItemGroup,
 } from '../helpers/subscription'
 import { useNuxtApp } from '#app'
-import { useProduct } from '#storefront/composables'
+import { useBasket, useProduct } from '#storefront/composables'
 import type { AddToBasketItem } from '~/composables'
 
 const selectedInterval = ref<Value | undefined>()
@@ -33,6 +34,7 @@ export function useSubscription(
   key?: string,
 ) {
   const { $i18n } = useNuxtApp()
+  const { items: basketItems } = useBasket()
   const productPromise = useProduct(
     {
       params: {
@@ -80,6 +82,7 @@ export function useSubscription(
     if (!selectedVariant.value) {
       return
     }
+
     return {
       variantId: selectedVariant.value?.id,
       quantity: 1,
@@ -88,6 +91,10 @@ export function useSubscription(
       productName:
         getFirstAttributeValue(product.value.attributes, 'name')?.label || '',
       interval: selectedInterval.value?.label,
+      itemGroup: getSubscriptionItemGroup(
+        selectedVariant.value?.id,
+        basketItems.value || [],
+      ),
     }
   })
 

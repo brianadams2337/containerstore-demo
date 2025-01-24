@@ -38,13 +38,18 @@
 
 <script setup lang="ts">
 import type { BasketItem } from '@scayle/storefront-core'
-import { getProductColors, getSizeFromVariant } from '@scayle/storefront-nuxt'
+import {
+  getAttributeValueTuples,
+  getFirstAttributeValue,
+} from '@scayle/storefront-nuxt'
 
 const { item, isQuantityShown = false } = defineProps<{
   item: BasketItem
   isQuantityShown?: boolean
 }>()
 
-const size = getSizeFromVariant(item.variant, 'size')?.label
-const color = getProductColors(item.product, 'color').join('/')
+const size = getFirstAttributeValue(item.variant.attributes, 'size')?.label
+const color = getAttributeValueTuples(item.product.attributes, 'color')
+  .map((color) => color.label)
+  .join('/')
 </script>

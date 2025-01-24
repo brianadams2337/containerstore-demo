@@ -127,7 +127,9 @@ const activeVariant = defineModel<Variant>('activeVariant')
 
 const quantity = ref(1)
 
-const maxQuantity = computed(() => getMaxQuantity(activeVariant.value))
+const maxQuantity = computed(() =>
+  getMaxQuantity(activeVariant.value?.stock?.quantity),
+)
 
 watch(activeVariant, () => {
   quantity.value = 1

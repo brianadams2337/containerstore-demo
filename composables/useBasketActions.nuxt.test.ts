@@ -55,10 +55,12 @@ const getTestComponentWrapper = async () => {
 
 describe('useBasketActions', () => {
   const addItemMock = vi.fn()
+  const updateItemMock = vi.fn()
   const removeItemMock = vi.fn()
   useBasket.mockReturnValue({
     then: vi.fn(),
     addItem: addItemMock,
+    updateItem: updateItemMock,
     removeItem: removeItemMock,
   })
 
@@ -128,118 +130,34 @@ describe('useBasketActions', () => {
         existingItemHandling: ExistingItemHandling.AddQuantityToExisting,
       })
     })
-    it('should reuse the item group of the same subscription product in basket', async () => {
-      useBasket.mockReturnValue({
-        then: vi.fn(),
-        addItem: addItemMock,
-        items: toRef([
-          basketItemFactory.build({
-            variant: { id: 1 },
-            customData: {
-              subscriptionDefinition: {},
-            },
-            itemGroup: {
-              id: 'reuse',
-              isMainItem: true,
-              isRequired: true,
-            },
-          }),
-        ]),
-      })
-
-      const { addItem } = await getTestComponentWrapper()
-
-      await addItem({
-        productName: 'Test',
-        quantity: 1,
-        variantId: 1,
-        customData: {
-          subscriptionDefinition: {},
-        },
-      })
-
-      expect(addItemMock).toBeCalledWith({
-        productName: 'Test',
-        quantity: 1,
-        variantId: 1,
-        existingItemHandling: ExistingItemHandling.AddQuantityToExisting,
-        customData: {
-          subscriptionDefinition: {},
-        },
-        itemGroup: {
-          id: 'reuse',
-          isMainItem: true,
-          isRequired: true,
-        },
-      })
-    })
-    it('should create a new item group for a new subscription product', async () => {
-      useBasket.mockReturnValue({
-        then: vi.fn(),
-        addItem: addItemMock,
-        items: toRef([]),
-      })
-
-      const { addItem } = await getTestComponentWrapper()
-
-      await addItem({
-        productName: 'Test',
-        quantity: 1,
-        variantId: 1,
-        customData: {
-          subscriptionDefinition: {},
-        },
-      })
-
-      expect(addItemMock).toBeCalledWith({
-        productName: 'Test',
-        quantity: 1,
-        variantId: 1,
-        existingItemHandling: ExistingItemHandling.AddQuantityToExisting,
-        customData: {
-          subscriptionDefinition: {},
-        },
-        itemGroup: { id: 'nanoid', isMainItem: true, isRequired: true },
-      })
-    })
   })
   describe('updateItemQuantity', () => {
-    it('should use "ExistingItemHandling.ReplaceExisting" when updating the quantity', async () => {
+    it('should call updateItem ', async () => {
       useBasket.mockReturnValue({
         then: vi.fn(),
-        addItem: addItemMock,
+        updateItem: updateItemMock,
         items: toRef([]),
       })
       const basketItem = basketItemFactory.build({
+        key: 'test',
         variant: { id: 1 },
         quantity: 1,
         customData: {
           subscriptionDefinition: {},
         },
         displayData: {},
-        itemGroup: {
-          id: 'id',
-          isMainItem: true,
-          isRequired: true,
-        },
       })
       const { updateItemQuantity } = await getTestComponentWrapper()
       await updateItemQuantity(basketItem, 2)
 
-      expect(addItemMock).toBeCalledWith({
-        productName: 'Test Product',
-        quantity: 2,
-        variantId: 1,
-        existingItemHandling: ExistingItemHandling.ReplaceExisting,
-        displayData: {},
-        itemGroup: {
-          id: 'id',
-          isMainItem: true,
-          isRequired: true,
-        },
+      expect(updateItemMock).toBeCalledWith('test', {
         customData: {
           subscriptionDefinition: {},
         },
+        displayData: {},
+        itemGroup: undefined,
+        promotionId: undefined,
+        quantity: 2,
       })
       expect(useTrackingEvents().trackAddToBasket).toBeCalledWith({
         product: basketItem.product,
@@ -252,20 +170,19 @@ describe('useBasketActions', () => {
     it('should remove the item from basket and track everything', async () => {
       const basketItem = basketItemFactory.build({
         variant: { id: 1 },
+        key: 'basketItemKey',
         quantity: 1,
       })
       useBasket.mockReturnValue({
         then: vi.fn(),
         addItem: addItemMock,
-        removeItem: removeItemMock,
+        removeItemByKey: removeItemMock,
         items: toRef([basketItem]),
       })
       const { removeItem } = await getTestComponentWrapper()
       await removeItem(basketItem)
 
-      expect(removeItemMock).toBeCalledWith({
-        variantId: basketItem.variant.id,
-      })
+      expect(removeItemMock).toBeCalledWith(basketItem.key)
       const { trackRemoveFromBasket } = useTrackingEvents()
       expect(trackRemoveFromBasket).toBeCalledWith({
         product: basketItem.product,

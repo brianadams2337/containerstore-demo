@@ -37,15 +37,15 @@
     </section>
   </div>
   <SFBasketSummaryMobile
+    :subtotal="subtotal"
     :cost="cost"
     :basket-items="basketItems"
-    :subtotal="subtotal"
   />
 </template>
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-import type { BasketTotalPrice, BasketItem } from '@scayle/storefront-nuxt'
+import type { BasketItem, BasketTotalPrice } from '@scayle/storefront-nuxt'
 import SFBasketSummaryReductions from './SFBasketSummaryReductions.vue'
 import SFBasketSummaryFinalSection from './SFBasketSummaryFinalSection.vue'
 import SFBasketSummaryVoucherDisclaimer from './SFBasketSummaryVoucherDisclaimer.vue'

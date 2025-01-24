@@ -2,24 +2,16 @@ import {
   type BasketItem,
   extendPromise,
   type AddOrUpdateItemType,
-  getFirstAttributeValue,
 } from '@scayle/storefront-nuxt'
 import { ExistingItemHandling } from '@scayle/storefront-api'
 import { useI18n } from 'vue-i18n'
+import type { BasketItemUpdateData } from '@scayle/storefront-core/dist/rpc/methods'
 import { useToast } from '~/composables/useToast'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
 import { useRouteHelpers } from '~/composables'
-import {
-  routeList,
-  getBasketToastErrorMessageKey,
-  isBuyXGetYType,
-  isFreeGiftEligible,
-} from '~/utils'
+import { routeList, getBasketToastErrorMessageKey } from '~/utils'
 import { useBasket, useLog } from '#storefront/composables'
-import {
-  hasSubscriptionCustomData,
-  getSubscriptionItemGroup,
-} from '~/modules/subscription/helpers/subscription'
+import { hasSubscriptionCustomData } from '~/modules/subscription/helpers/subscription'
 
 export type AddToBasketItem = AddOrUpdateItemType & {
   productName: string
@@ -56,14 +48,15 @@ export function useBasketActions(): UseBasketActionsReturn &
   const { getLocalizedRoute } = useRouteHelpers()
 
   const basket = useBasket()
-  const {
-    items: basketItems,
-    removeItem: removeBasketItem,
-    addItem: addItemToBasket,
-  } = basket
+  const { removeItemByKey, addItem: addItemToBasket, updateItem } = basket
 
-  const removeItem = async ({ product, variant, quantity }: BasketItem) => {
-    await removeBasketItem({ variantId: variant.id })
+  const removeItem = async ({
+    key,
+    product,
+    quantity,
+    variant,
+  }: BasketItem) => {
+    await removeItemByKey(key)
 
     trackRemoveFromBasket({ product, quantity, variant })
   }
@@ -93,12 +86,7 @@ export function useBasketActions(): UseBasketActionsReturn &
       const hasSubscriptionData = hasSubscriptionCustomData(item.customData)
       const existingItemHandling =
         item.existingItemHandling || ExistingItemHandling.AddQuantityToExisting
-
-      // The basket considers normal items and subscription items to be the same. By adding an item group to the subscription, we ensure the item to be subscribed will be unique.
-      const itemGroup = hasSubscriptionData
-        ? getSubscriptionItemGroup(item, basketItems.value || [])
-        : item.itemGroup
-      await addItemToBasket({ ...item, existingItemHandling, itemGroup })
+      await addItemToBasket({ ...item, existingItemHandling })
       showAddItemSuccessMessage(item, hasSubscriptionData)
     } catch (error) {
       log.error('Item could not be added to basket', error)
@@ -115,21 +103,12 @@ export function useBasketActions(): UseBasketActionsReturn &
     basketItem: BasketItem,
     newQuantity: number,
   ) => {
-    const promotionId = basketItem?.promotion?.id
-    await addItem({
-      variantId: basketItem.variant.id,
+    await updateItem(basketItem.key, {
       quantity: newQuantity,
-      existingItemHandling: ExistingItemHandling.ReplaceExisting,
-      customData: basketItem.customData as AddOrUpdateItemType['customData'],
-      displayData: basketItem.displayData,
-      itemGroup: basketItem.itemGroup,
-      promotionId: basketItem.promotionId,
-      productName:
-        getFirstAttributeValue(basketItem.product?.attributes, 'name')?.label ??
-        '',
-      ...(promotionId &&
-        !isBuyXGetYType(basketItem.promotion) &&
-        !isFreeGiftEligible(basketItem) && { promotionId }),
+      customData: basketItem?.customData as BasketItemUpdateData['customData'],
+      displayData: basketItem?.displayData,
+      itemGroup: basketItem?.itemGroup,
+      promotionId: basketItem?.promotionId,
     })
 
     trackAddToBasket({

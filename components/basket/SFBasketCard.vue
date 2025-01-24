@@ -42,7 +42,7 @@
           <div class="flex gap-x-2 max-lg:mt-3 lg:items-center">
             <SFQuantityInput
               :model-value="basketItem.quantity"
-              :max-quantity="getMaxQuantity(basketItem.variant)"
+              :max-quantity="getMaxQuantity(basketItem.availableQuantity)"
               :disabled="isSoldOut"
               class="max-lg:hidden"
               :class="{
@@ -86,7 +86,7 @@
     <div class="flex items-start justify-between lg:hidden">
       <SFQuantityInput
         :model-value="basketItem.quantity"
-        :max-quantity="getMaxQuantity(basketItem.variant)"
+        :max-quantity="getMaxQuantity(basketItem.availableQuantity)"
         :disabled="isSoldOut"
         :class="{
           invisible: isSoldOut,

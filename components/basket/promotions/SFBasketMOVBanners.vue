@@ -6,7 +6,9 @@
       :promotion="promotion"
       :background-color="getBackgroundColor(promotion)"
       :style="getTextColorStyle(promotion.customData.colorHex)"
-      :aria-label="getAriaLabel(promotion)"
+      :aria-label="
+        $t('basket.promotion.mov_banner_label', { name: promotion.name })
+      "
       class="mb-2 flex w-full flex-col rounded-xl px-4 py-2 last:mb-0"
     >
       <template #default="{ headlineParts, scheduledTo }">
@@ -28,22 +30,13 @@ import SFPromotionCard from '~/components/promotion/SFPromotionCard.vue'
 import { AlphaColorMap } from '~/constants'
 import { getBackgroundColorStyle, getTextColorStyle } from '~/utils'
 import type { Promotion } from '~/types/promotion'
-import { useI18n } from '#i18n'
 
-const { movPromotions } = await useBasketPromotions()
-
-const { t } = useI18n()
+const { movPromotions } = useBasketPromotions()
 
 const getBackgroundColor = (promotion: Promotion) => {
   return getBackgroundColorStyle(
     promotion.customData.colorHex,
     AlphaColorMap.ALPHA_20,
   ).backgroundColor
-}
-
-const getAriaLabel = ({ customData, name }: Promotion) => {
-  return customData?.category?.id
-    ? t('basket.promotion.mov_banner_label', name)
-    : undefined
 }
 </script>

@@ -1,7 +1,6 @@
 import {
   type Price,
   type Product,
-  type Variant,
   getAttributeValueTuples,
   getFirstAttributeValue,
 } from '@scayle/storefront-nuxt'
@@ -109,5 +108,5 @@ export const createCustomPrice = <T = Price | BasketItemPrice>(
  * @returns The maximum allowed quantity
  */
 // Note: The basket does not allow a quantity > 50, therefore we limit it to prevent errors
-export const getMaxQuantity = (variant?: Variant) =>
-  Math.max(Math.min(variant?.stock?.quantity ?? 1, 10), 0)
+export const getMaxQuantity = (stockQuantity?: number) =>
+  Math.max(Math.min(stockQuantity ?? 1, 10), 0)

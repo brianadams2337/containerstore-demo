@@ -4,7 +4,7 @@ export * from './cms/useProviderContext'
 // Storefront Boilerplate / Composables
 
 // Basket
-export * from './useBasketReductions'
+export * from './useBasketPromotionReductions'
 export * from './useBasketActions'
 export * from './useBasketPromotions'
 export * from './useBasketItem'
