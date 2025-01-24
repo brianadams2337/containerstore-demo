@@ -34,7 +34,7 @@ import type { Promotion } from '~/types/promotion'
 import { useFormatHelpers } from '#storefront/composables'
 import { getTextColorStyle, getBackgroundColorStyle } from '~/utils'
 import { AlphaColorMap } from '~/constants'
-import type { PromotionReductionItem } from '~/composables/useBasketReductions'
+import type { PromotionReductionItem } from '~/composables'
 
 const { basketPromotionSummaries } = defineProps<{
   basketPromotionSummaries: Map<string, PromotionReductionItem>

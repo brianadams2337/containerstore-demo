@@ -1,18 +1,19 @@
-import {
-  type BasketItem,
-  extendPromise,
-  type AddOrUpdateItemType,
-} from '@scayle/storefront-nuxt'
+import { extendPromise } from '@scayle/storefront-nuxt'
+import type { AddOrUpdateItemType, BasketItem } from '@scayle/storefront-nuxt'
+import type { rpcMethods } from '@scayle/storefront-core'
 import { ExistingItemHandling } from '@scayle/storefront-api'
 import { useI18n } from 'vue-i18n'
-// TODO: Export this properly from `storefront-core`
-import type { BasketItemUpdateData } from '@scayle/storefront-core/dist/rpc/methods'
 import { useToast } from '~/composables/useToast'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
 import { useRouteHelpers } from '~/composables'
 import { routeList, getBasketToastErrorMessageKey } from '~/utils'
 import { useBasket, useLog } from '#storefront/composables'
 import { hasSubscriptionCustomData } from '~/modules/subscription/helpers/subscription'
+
+// TODO: Export this properly from `storefront-core`
+type BasketItemUpdateData = Parameters<
+  typeof rpcMethods.updateBasketItem
+>[0]['update']
 
 export type AddToBasketItem = AddOrUpdateItemType & {
   productName: string
@@ -34,8 +35,7 @@ export type UseBasketActionsReturn = {
  * In addition of interacting with the basket, it also takes care of tracking and displaying toast messages.
  *
  * @returns An {@link UseBasketActionsReturn} object containing functions to add, update and remove items from the basket.
- *
- * */
+ */
 
 export function useBasketActions(): UseBasketActionsReturn &
   Promise<UseBasketActionsReturn> {

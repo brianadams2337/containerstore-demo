@@ -16,7 +16,6 @@ export interface UseBasketPromotionReductionsReturn {
 }
 
 /**
- *
  * @param cost - The total cost of the basket
  * @param items - The items in the basket
  * @returns An {@link UseBasketPromotionReductionsReturn} object containing reactive reduction data.
