@@ -4,7 +4,7 @@
     :class="{ 'lg:-translate-y-13': !isPromotionBannerShown }"
   >
     <div
-      :ref="(element) => setBannerRef(element as HTMLElement, 'top')"
+      :ref="(element) => setTopBannerRef(element as HTMLElement)"
       data-testid="promotion-banner"
       class="sticky top-0 z-80 hidden h-13 w-full cursor-pointer items-center justify-between gap-1 overflow-hidden bg-blue py-2 pl-4 text-sm text-white lg:flex"
       :style="backgroundColorStyle"
@@ -83,6 +83,7 @@ import {
   usePromotionActions,
   usePromotionChange,
   usePromotionProgress,
+  usePromotionBanner,
 } from '~/composables'
 import type { Promotion } from '~/types/promotion'
 
@@ -99,12 +100,10 @@ const {
   currentPromotion,
 } = useCurrentPromotion()
 
-const {
-  togglePromotionList,
-  isPromotionListShown,
-  setBannerRef,
-  isPromotionBannerShown,
-} = usePromotionActions()
+const { togglePromotionList, isPromotionListShown, isPromotionBannerShown } =
+  usePromotionActions()
+
+const { setTopBannerRef } = usePromotionBanner()
 
 const { isMOVPromotionApplied, isFullProgress } =
   usePromotionProgress(currentPromotion)

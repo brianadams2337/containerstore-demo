@@ -2,7 +2,7 @@
   <SFPromotionMobileList v-if="isPromotionListShown" :items="promotions" />
   <div
     v-else
-    :ref="(element) => setBannerRef(element as HTMLElement, 'bottom')"
+    ref="bottomBanner"
     class="fixed bottom-0 z-80 flex max-h-32 w-full translate-y-0 cursor-pointer flex-col items-center justify-start rounded-tr-lg bg-blue p-4 text-sm text-white transition-transform duration-300 ease-in-out lg:hidden"
     :style="backgroundColorStyle"
     :class="{ 'translate-y-full': !isPromotionBannerShown }"
@@ -66,7 +66,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, useTemplateRef, watch } from 'vue'
+import { useElementSize } from '@vueuse/core'
 import SFPromotionMobileList from './list/SFPromotionMobileList.vue'
 import SFPromotionFullProgressLabel from './progress/SFPromotionFullProgressLabel.vue'
 import SFAutomaticDiscountMobileHeadline from './headlines/SFAutomaticDiscountMobileHeadline.vue'
@@ -79,6 +80,7 @@ import {
   useCurrentPromotion,
   usePromotionActions,
   usePromotionProgress,
+  usePromotionBanner,
 } from '~/composables'
 import type { Promotion } from '~/types/promotion'
 
@@ -86,6 +88,17 @@ const props = defineProps<{
   promotions: Promotion[]
   category?: Promotion['customData']['category']
 }>()
+
+const { togglePromotionList, isPromotionListShown, isPromotionBannerShown } =
+  usePromotionActions()
+
+const { setBannerHeight } = usePromotionBanner()
+
+const bottomBannerRef = useTemplateRef('bottomBanner')
+
+const { height } = useElementSize(bottomBannerRef)
+
+watch(height, setBannerHeight)
 
 const {
   headlineParts,
@@ -97,13 +110,6 @@ const {
 
 const { isFullProgress, isMOVPromotionApplied } =
   usePromotionProgress(currentPromotion)
-
-const {
-  togglePromotionList,
-  isPromotionListShown,
-  setBannerRef,
-  isPromotionBannerShown,
-} = usePromotionActions()
 
 const isDealsButtonShown = computed<boolean>(() => {
   return Boolean(

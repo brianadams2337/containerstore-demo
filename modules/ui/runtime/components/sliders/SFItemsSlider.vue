@@ -84,15 +84,16 @@ type Props = {
   mode?: 'horizontal' | 'vertical'
   disableFocus?: boolean
 }
-const props = withDefaults(defineProps<Props>(), {
-  container: false,
-  spacedItems: false,
-  withArrows: false,
-  sliderClass: '',
-  hideDisabledArrows: false,
-  disableFocus: false,
-  mode: 'horizontal',
-})
+
+const {
+  container = false,
+  spacedItems = false,
+  withArrows = false,
+  sliderClass = '',
+  hideDisabledArrows = false,
+  disableFocus = false,
+  mode = 'horizontal',
+} = defineProps<Props>()
 
 const sliderRef = ref<HTMLElement>()
 
@@ -107,7 +108,7 @@ const {
   scrollImageIntoView,
   activeSlide,
   isScrollable,
-} = useItemsSlider(sliderRef as Ref<HTMLElement>, props.mode)
+} = useItemsSlider(sliderRef as Ref<HTMLElement>, mode)
 
 const divOrTransition = computed(() => {
   return !isMounted.value ? 'div' : SFFadeInTransition

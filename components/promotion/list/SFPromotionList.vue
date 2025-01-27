@@ -29,7 +29,7 @@ import { ref } from 'vue'
 import type { MaybeElementRef } from '@vueuse/core'
 import SFClosePromotionListButton from '../buttons/SFClosePromotionListButton.vue'
 import SFPromotionItem from './SFPromotionItem.vue'
-import { usePromotionActions } from '~/composables'
+import { usePromotionActions, usePromotionBanner } from '~/composables'
 import { SFItemsSlider } from '#storefront-ui/components'
 import type { Promotion } from '~/types/promotion'
 import { useDefaultBreakpoints } from '#storefront-ui/composables'
@@ -40,7 +40,9 @@ const promotionListRef = ref()
 
 const viewport = useDefaultBreakpoints()
 
-const { togglePromotionList: toggle, topBannerRef } = usePromotionActions()
+const { togglePromotionList: toggle } = usePromotionActions()
+
+const { topBannerRef } = usePromotionBanner()
 
 onClickOutside(
   promotionListRef,

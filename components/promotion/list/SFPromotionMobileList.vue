@@ -1,6 +1,6 @@
 <template>
   <div
-    :ref="(element) => setBannerRef(element as HTMLElement, 'bottom')"
+    ref="bottomBanner"
     class="fixed bottom-0 right-0 z-60 w-full overflow-hidden rounded-t-xl lg:hidden"
   >
     <div class="relative flex flex-col bg-primary px-4 pb-4 text-white">
@@ -28,6 +28,7 @@
 
 <script setup lang="ts">
 import { onClickOutside } from '@vueuse/core'
+import { useTemplateRef } from 'vue'
 import SFClosePromotionListButton from '../buttons/SFClosePromotionListButton.vue'
 import SFPromotionItem from './SFPromotionItem.vue'
 import { usePromotionActions } from '~/composables'
@@ -39,11 +40,9 @@ defineProps<{ items: Promotion[] }>()
 
 const viewport = useDefaultBreakpoints()
 
-const {
-  togglePromotionList: toggle,
-  setBannerRef,
-  bottomBannerRef,
-} = usePromotionActions()
+const bottomBannerRef = useTemplateRef('bottomBanner')
+
+const { togglePromotionList: toggle } = usePromotionActions()
 
 onClickOutside(bottomBannerRef, () => viewport.isSmaller('lg') && toggle())
 </script>

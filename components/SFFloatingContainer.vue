@@ -9,26 +9,24 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useMounted } from '@vueuse/core'
-import { usePromotionActions } from '~/composables'
+import { usePromotionBanner, usePromotionActions } from '~/composables'
 import { useDefaultBreakpoints } from '#storefront-ui/composables'
 import { SFFadeInTransition } from '#storefront-ui/components'
 
-const { bottomBannerRef, isPromotionBannerShown } = usePromotionActions()
+const { bannerHeight: promotionBannerHeight } = usePromotionBanner()
+const { isPromotionBannerShown } = usePromotionActions()
 
 const { greaterOrEqual } = useDefaultBreakpoints()
 const isGreaterOrEqualThanLg = greaterOrEqual('lg')
 
 const mounted = useMounted()
 
-const DEFAULT_BOTTOM_SPACE = 12
+const DEFAULT_BOTTOM_SPACE = 58
 
-const bottomSpacingStyle = computed(() => {
-  if (isGreaterOrEqualThanLg.value || !isPromotionBannerShown.value) {
-    return { transform: `translateY(-${DEFAULT_BOTTOM_SPACE}px)` }
-  }
-  const promotionBannerHeight = bottomBannerRef.value?.clientHeight ?? 0
-  return {
-    transform: `translateY(-${promotionBannerHeight + DEFAULT_BOTTOM_SPACE}px)`,
-  }
-})
+const bottomSpacingStyle = computed(() => ({
+  transform:
+    isGreaterOrEqualThanLg.value || !isPromotionBannerShown.value
+      ? 'translateY(-28px)'
+      : `translateY(-${promotionBannerHeight.value + DEFAULT_BOTTOM_SPACE}px)`,
+}))
 </script>

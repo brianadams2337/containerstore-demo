@@ -4,7 +4,6 @@ import { toRef } from '@vueuse/core'
 import { isFreeGiftBasketItem, createCustomPrice } from '~/utils'
 
 /**
- *
  * Composable for extracting relevant data from a basket item.
  *
  * @param item The basket item to extract data from
