@@ -491,7 +491,8 @@
   },
   "a11y": {
     "skip_to_main": "Zum Hauptinhalt springen",
-    "skip_to_search": "Weiter zur Suche"
+    "skip_to_search": "Weiter zur Suche",
+    "search_button": "Suche"
   },
   "quantity": {
     "new_value": "Ändere die Menge auf {newQuantity}"

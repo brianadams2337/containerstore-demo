@@ -20,12 +20,14 @@
       @click="openAndFocus"
       @submit.prevent="goToSearchPage"
     >
-      <button
+      <SFButton
+        variant="raw"
         tabindex="-1"
         class="flex items-center justify-center max-lg:size-11"
+        :aria-label="$t('a11y.search_button')"
       >
         <IconSearch class="size-5 shrink-0" />
-      </button>
+      </SFButton>
       <label class="flex h-full min-w-0 grow items-center gap-2">
         <input
           ref="input"
