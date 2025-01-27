@@ -151,7 +151,7 @@
     "./**/*{.md,.json,.css}\"": "prettier --write "
   },
   "volta": {
-    "node": "22.13.0"
+    "node": "22.13.1"
   },
   "resolutions": {
     "import-in-the-middle": "1.12.0",
