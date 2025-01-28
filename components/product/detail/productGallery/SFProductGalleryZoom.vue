@@ -208,10 +208,13 @@ const updateZoomOffset = (event: MouseEvent) => {
   }
 }
 
-const productImageStyle = computed(() => ({
-  transform: `translate3d(${zoomOffsetX.value}px, ${zoomOffsetY.value}px, 0) scale(${scale.value})`,
-  transformOrigin: `${zoomOffsetX.value}px ${zoomOffsetY.value}px`,
-}))
+const productImageStyle = computed(() => {
+  // translate did cause jitter on desktop, and transform-origin did cause jitter with touch
+  // therefore we use different approaches here
+  return isTouchSupported
+    ? `transform: scale(${scale.value}) translate(${zoomOffsetX.value}px, ${zoomOffsetY.value}px)`
+    : `transform: scale(${scale.value}); transform-origin: ${zoomOffsetX.value}px ${zoomOffsetY.value}px;`
+})
 
 // desktop zoom
 const MAX_ZOOM_DESKTOP = 1.5
