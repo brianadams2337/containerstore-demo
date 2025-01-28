@@ -13673,10 +13673,10 @@ stop-iteration-iterator@^1.0.0:
     es-errors "^1.3.0"
     internal-slot "^1.1.0"
 
-storyblok-generate-ts@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/storyblok-generate-ts/-/storyblok-generate-ts-2.1.0.tgz#e6f46a47aa3d06abc679ad6b613e62f505f3d868"
-  integrity sha512-ANjV0Nq/H9aG2jShT1UYgus/UfpUh9bVHJB1GiYDEHX4TTxD2R/FbH46LyjWRZ7hhS4NppMd7jQ5GJNH1cCMFA==
+storyblok-generate-ts@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/storyblok-generate-ts/-/storyblok-generate-ts-2.2.0.tgz#621c1041716584291a41908ac07b69985b53e1c3"
+  integrity sha512-ugnfbykj9Pu9+u1K+4eKTZ0PuWNIEL4a/7AubLt27H5LqHgIbDFD9p8ejKPkDjOIOw4lavDefqF+JWCREgiZCw==
   dependencies:
     camelcase "^6.3.0"
     json-schema-to-typescript "^11.0.1"

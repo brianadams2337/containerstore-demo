@@ -83,7 +83,7 @@
     "postinstall-postinstall": "2.1.0",
     "prettier": "3.0.3",
     "storyblok": "3.35.2",
-    "storyblok-generate-ts": "2.1.0",
+    "storyblok-generate-ts": "2.2.0",
     "tailwindcss": "3.4.17",
     "typescript": "5.7.3",
     "unimport": "4.0.0",
