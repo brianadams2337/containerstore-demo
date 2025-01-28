@@ -45,10 +45,10 @@ export class ShopSelector {
   async openShopSelector(index: number) {
     await this.shopSelectorListbox.nth(index).click()
     await this.page.waitForLoadState('domcontentloaded')
-    await this.currentCountry.nth(index).waitFor()
+    await this.currentCountry.waitFor()
   }
 
-  async switchShop(index: number) {
+  async switchShop() {
     const pageUrlInitial = this.page.url()
     const switchedShopLabel = await this.country.first().textContent()
     await this.page.waitForTimeout(500)
@@ -56,9 +56,7 @@ export class ShopSelector {
 
     await this.page.waitForLoadState('domcontentloaded')
     await this.page.waitForTimeout(500)
-    const newShopElement = this.page
-      .locator(`text="${switchedShopLabel}"`)
-      .nth(index)
+    const newShopElement = this.page.locator(`text="${switchedShopLabel}"`)
     expect(await newShopElement.textContent()).toEqual(switchedShopLabel)
 
     const pageUrlSwitched = this.page.url()

@@ -33,11 +33,7 @@ test('C2162469: Verify Shop Selector switch to different shop', async ({
   })
   await test.step('Select different shop and assert the shop is switched', async () => {
     await expect(async () => {
-      if (isMobile(page)) {
-        await shopSelector.switchShop(1)
-      } else {
-        await shopSelector.switchShop(0)
-      }
+      await shopSelector.switchShop()
     }).toPass()
   })
 })
@@ -84,11 +80,11 @@ test('C2162471: Verify Shop Selector switch from non-Homepage', async ({
       await page.waitForTimeout(500)
       await shopSelector.assertShopSelectorIsVisible(1)
       await shopSelector.openShopSelector(1)
-      await shopSelector.switchShop(1)
+      await shopSelector.switchShop()
     } else {
       await shopSelector.assertShopSelectorIsVisible(0)
       await shopSelector.openShopSelector(0)
-      await shopSelector.switchShop(0)
+      await shopSelector.switchShop()
     }
     const pageUrl = page.url()
     expect(pageUrl).not.toContain('/wishlist')
