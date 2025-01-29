@@ -1,8 +1,8 @@
 <template>
   <section
-    class="flex w-full flex-col gap-4 text-base font-semi-bold-variable leading-3.5"
+    class="flex flex-col gap-4 text-base font-semi-bold-variable leading-3.5"
   >
-    <ul>
+    <ul class="flex flex-col gap-4">
       <template
         v-for="reduction in cost.appliedReductions"
         :key="reduction.category"
