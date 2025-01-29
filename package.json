@@ -43,7 +43,7 @@
     "@changesets/cli": "2.27.12",
     "@eslint/eslintrc": "3.2.0",
     "@gtm-support/vue-gtm": "3.1.0",
-    "@nuxt/eslint": "0.7.5",
+    "@nuxt/eslint": "0.7.6",
     "@nuxt/image": "1.9.0",
     "@nuxt/test-utils": "3.15.4",
     "@nuxtjs/i18n": "9.1.1",
