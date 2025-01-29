@@ -3,7 +3,7 @@
     class="flex flex-wrap items-center gap-1"
     :class="{ 'flex-col !items-end justify-end': !inline }"
   >
-    <div v-if="showBadges" class="flex gap-1">
+    <div v-if="showBadges && relativeReductions.length" class="flex gap-1">
       <span
         v-for="({ value, category }, index) in relativeReductions"
         :key="`${value}-badge-${category}-${index}`"
