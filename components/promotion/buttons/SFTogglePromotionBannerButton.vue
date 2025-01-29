@@ -7,7 +7,7 @@
     :aria-expanded="isPromotionBannerShown.toString()"
     :style="backgroundColorStyle"
     :class="{ [borderClass]: isPromotionBannerShown }"
-    @click="togglePromotionBanner()"
+    @click.stop="togglePromotionBanner()"
   >
     <IconGift class="size-3" />
     <span v-if="isPromotionBannerShown">
