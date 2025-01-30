@@ -6,7 +6,7 @@
       @click:result="$emit('close')"
       @close="$emit('close')"
     />
-    <div class="flex grow flex-col p-5">
+    <div class="flex grow flex-col p-5 pl-4">
       <SFMobileNavigation
         :is-open="isOpen"
         :navigation-items="navigationItems"
@@ -21,7 +21,7 @@
             @click="$emit('close')"
           >
             <IconLocation class="size-5" />
-            <div class="mt-1 text-lg font-normal lg:text-sm">
+            <div class="mt-1 text-lg font-normal leading-5 lg:text-sm">
               {{ $t('store_locator.button') }}
             </div>
           </SFLocalizedLink>

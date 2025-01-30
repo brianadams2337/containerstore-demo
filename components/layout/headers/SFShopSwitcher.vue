@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="max-lg:py-2">
     <SFButton
       ref="button"
       variant="raw"

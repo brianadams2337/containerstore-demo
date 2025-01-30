@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative mb-5 flex grow overflow-y-auto overflow-x-hidden px-1 scroll-shadow"
+    class="relative mb-5 flex grow overflow-y-auto overflow-x-hidden scroll-shadow"
   >
     <Transition
       enter-from-class="-translate-x-full"
@@ -12,7 +12,7 @@
     >
       <ul
         v-if="!selectedItem"
-        class="mt-2 flex w-full shrink-0 flex-col gap-y-5"
+        class="mt-2 flex w-full shrink-0 flex-col gap-y-5 p-0"
       >
         <li
           v-for="item in navigationItems"
@@ -35,7 +35,7 @@
               <SFNavigationTreeItem
                 :navigation-item="item"
                 :text-color="theme.colors.gray[900]"
-                class="min-h-11 rounded !text-2xl font-semi-bold-variable transition-all supports-hover:hover:mr-0 supports-hover:hover:bg-[var(--backgroundColor)] supports-hover:hover:px-1.5"
+                class="min-h-11 rounded !text-2xl font-semi-bold-variable transition-all supports-hover:hover:bg-[var(--backgroundColor)]"
                 disabled-link
               />
             </SFLink>
