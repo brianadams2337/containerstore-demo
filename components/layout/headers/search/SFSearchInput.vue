@@ -75,14 +75,11 @@ import { nextTick, watch, ref } from 'vue'
 import { onClickOutside, onKeyStroke, useEventListener } from '@vueuse/core'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import type { SearchEntity } from '@scayle/storefront-nuxt'
-import {
-  useSearchData,
-  useTrackingEvents,
-  useRouteHelpers,
-} from '~/composables'
+import { useTrackingEvents, useRouteHelpers } from '~/composables'
 import SFSearchResultsContainer from '~/components/search/SFSearchResultsContainer.vue'
 import { useSearchInputKeybindings } from '~/composables/useSearchInputKeybindings'
 import { SFButton } from '#storefront-ui/components'
+import { useSearchData } from '#storefront-search/composables/useSearchData'
 
 const emit = defineEmits<{
   close: []
