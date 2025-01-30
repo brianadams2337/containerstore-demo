@@ -5,7 +5,7 @@
       class="flex !items-start justify-between whitespace-pre-line !px-1.5 text-start text-xs font-semibold !text-gray-500"
       is-full-width
       size="sm"
-      @click.stop="toggleTerms"
+      @click.stop.prevent="toggleTerms"
     >
       <span class="inline-flex items-start">
         <IconInfoOutlineSquare class="mr-1 size-4" />
