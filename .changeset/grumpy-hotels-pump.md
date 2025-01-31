@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-[Basket] Introduced new basket promotions summary reductions section.
+[Basket] Implemented a new section in the basket view that summarizes applied promotions and their corresponding reductions.

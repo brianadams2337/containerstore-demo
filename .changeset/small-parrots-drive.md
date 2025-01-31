@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-[Subscriptions] Add subscription items with different subscription definition as new basket item, instead of updating the subscription definition and quantity of the existing basket item. This rambles the add to basket flow of regular products more closely.
+[Subscriptions] Subscription items with different definitions are now added as separate items to the basket instead of updating existing items. This aligns the subscription add-to-basket flow more closely with that of regular products.

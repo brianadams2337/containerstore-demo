@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': patch
 ---
 
-[ShopSwitcher] Show the language code rather than the language in the ShopSwitcher button.
+[ShopSwitcher] Updated the `ShopSwitcher` component to display the language code instead of the full language name.

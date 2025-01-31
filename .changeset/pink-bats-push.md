@@ -2,20 +2,17 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-[Architecture] Updated Nuxt configuration (`nuxt.config.ts`) to use the recommended `bundler` module resolution (removing `future.typescriptBundlerResolution: false`) introduced with Nuxt `v3.10`. This aligns with Vite/Vue best practices and improves compatibility.
-While generally beneficial, some packages might experience issues. If so, raise an issue in the affected library's repository.
+[Architecture] Updated Nuxt configuration (`nuxt.config.ts`) to utilize the recommended `bundler` module resolution introduced in Nuxt v3.10, removing the `future.typescriptBundlerResolution: false` flag. This aligns our project with Vite/Vue best practices and improves compatibility with third-party libraries.
 
-Temporarily reverting is possible by re-adding `future.typescriptBundlerResolution: false` to `nuxt.config.ts`.
+While this change is generally beneficial, some packages might encounter issues. If you experience any problems, please report them in the affected library's repository. You can temporarily revert this change by adding `future.typescriptBundlerResolution: false` back to your `nuxt.config.ts` file.
 
-For a more detailed explanation of bundler module resolution and its benefits, refer to the ([official Nuxt blog post](https://nuxt.com/blog/v3-10#bundler-module-resolution).
+This update allows for correct imports of third-party packages with well-defined exports, such as:
 
-This change allows us to correctly import third-party packages with well-defined exports.
+      ```ts
+      import {
+        costFactory,
+        basketItemsFactory,
+      } from '@scayle/storefront-nuxt/test/factories'
+      ```
 
-The following example shows test factories being able to be imported from `@scayle/storefront-nuxt`:
-
-```ts
-import {
-  costFactory,
-  basketItemsFactory,
-} from '@scayle/storefront-nuxt/test/factories'
-```
+For further details on bundler module resolution and its advantages, refer to the [official Nuxt blog post](https://nuxt.com/blog/v3-10#bundler-module-resolution).

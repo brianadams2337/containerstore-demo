@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': patch
 ---
 
-[Tracking] Corrected `search_destination` attribute when clicking on a page suggestion.
+[Tracking] Corrected the `search_destination` attribute value that is tracked when a user clicks on a suggested page in the search results.

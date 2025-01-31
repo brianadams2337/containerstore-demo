@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': patch
 ---
 
-[Accessibility] Remove shift on hover for side navigation on product listing page.
+[Accessibility] Removed the unintended shift on hover from the side navigation on product listing pages to improve accessibility.

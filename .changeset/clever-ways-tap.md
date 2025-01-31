@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-[Performance] Fix hydration issue inside `/pages/wishlist.vue` by delaying the count badge until hydration has finished and warping the content inside `<SFAsyncDataWrapper>`.
+[Performance] Addressed a hydration mismatch issue in the wishlist page (`/pages/wishlist.vue`) that was impacting performance. The count badge update is now delayed until hydration is complete, and the content is wrapped within an `<SFAsyncDataWrapper>` to ensure proper server/client synchronization. This prevents content flickering and improves the overall loading experience.

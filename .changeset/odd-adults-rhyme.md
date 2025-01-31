@@ -2,16 +2,14 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-[E2E] Introduced a `RPC` fixture which allows calling RPCs directly from the test code.
+[E2E] Introduced an RPC fixture to streamline end-to-end testing. This fixture allows direct RPC calls from test code, enabling efficient setup of server-side state without requiring UI interaction. This significantly reduces test execution time and complexity.
 
-```ts
-test('Some description', async ({ rpc }) => {
-  const res = await rpc.call('addItemToWishlist', {
-    productId: 123,
-  })
+      ```ts
+      test('Some description', async ({ rpc }) => {
+        const res = await rpc.call('addItemToWishlist', {
+          productId: 123,
+        })
 
-  expect(res).toMatchObject({ productId: 123 })
-})
-```
-
-This can be used to prepare some server-side state and improve test efficiency since the state doesn't have to be created through UI interactions anymore.
+        expect(res).toMatchObject({ productId: 123 })
+      })
+      ```

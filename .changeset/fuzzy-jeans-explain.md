@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': patch
 ---
 
-[E2E] Simplified DOM element handling for determining the current country selection within the Shop Selector.
+[E2E] Refactored the `ShopSelector` DOM element handling for determining the currently selected country. This simplifies the logic and improves performance.

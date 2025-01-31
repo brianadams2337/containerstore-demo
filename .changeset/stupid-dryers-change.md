@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-[Types] Fix `BasketItemUpdateData` and `PromotionReductionItem` type imports.
+[Types] Corrected the import paths for the `BasketItemUpdateData` and `PromotionReductionItem` types.

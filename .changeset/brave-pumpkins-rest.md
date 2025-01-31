@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-[Basket] Moved `SFBasketSummaryMobile` within `SFBasketSummary` component to have centralized logic in one component.
+[Basket] Refactored the basket summary component to integrate `SFBasketSummaryMobile` into `SFBasketSummary` for centralized logic.

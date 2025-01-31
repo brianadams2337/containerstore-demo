@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': patch
 ---
 
-[Navigation] Use `ul`/`li` tags in lists of items.
+[Navigation] Refactored navigation lists to use semantically correct `ul` (unordered list) and `li` (list item) tags.

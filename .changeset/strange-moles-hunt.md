@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-[ShopSwitcher] Updated the design and accessibility of the ShopSwitcher component to use a Flyout instead of a Dropdown
+[ShopSwitcher] Updated the `ShopSwitcher` component to use a Flyout menu instead of a Dropdown, improving accessibility and user experience.

@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': patch
 ---
 
-PDP: Truncate excessively long titles in the breadcrumbs
+[PDP] Implemented title truncation for excessively long titles within the product page breadcrumbs.

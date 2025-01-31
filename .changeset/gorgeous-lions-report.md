@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-[Basket] - Add `getTotalPriceWithoutReductions` utility for calculating the original price without reductions.
+[Basket] Added a utility function called `getTotalPriceWithoutReductions` for calculating the total basket price before any reductions are applied.

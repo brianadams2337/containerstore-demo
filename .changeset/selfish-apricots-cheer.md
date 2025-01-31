@@ -2,12 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-[Promotions] Store the height of the bottom banner using a new `usePromotionBanner`
-composable instead of storing the entire element as a reference. The reasoning behind
-this change is to facilitate the gap calculation between the floating
-container and the bottom promotion banner. The previous implementation required
-re-rendering the bottom promotions layout to reset the bottom promotion banner
-as a dynamic reference, which also recalculated the height. This approach was suboptimal
-for several reasons, including unnecessary layout re-rendering for each promotion
-change and duplicated category API calls within the "Show deals" button due
-to `KeepAlive` not functioning properly.
+[Promotions] Refactored the handling of the bottom promotion banner height to improve performance and address several issues. Previously, the entire banner element was stored as a reference, leading to unnecessary layout re-renders and duplicated category API calls within the "Show deals" button triggered overlay due to `KeepAlive` issues. The implementation now uses a new `usePromotionBanner` composable to store only the banner's height. This simplifies gap calculations between the floating container and the banner, eliminates redundant re-renders, and resolves the API call duplication.

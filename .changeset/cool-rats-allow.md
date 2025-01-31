@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-[Accessibility] Add `aria-label` and translation to button within `SFSearchInput`.
+[Accessibility] Added `aria-label` and translation to `SFSearchInput` button.

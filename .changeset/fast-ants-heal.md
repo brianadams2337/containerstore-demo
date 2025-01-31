@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-[Performance] Addressed an issue in `SFQuantityInput` component where the `disabled` attribute might not be present in the JavaScript DOM Node object on Firefox, causing hydration warnings. `data-allow-mismatch="attribute"` was added to prevent such warnings from appearing in `/components/product/SFQuantityInput.vue`.
+[Performance] Resolved a hydration mismatch issue in the `SFQuantityInput` component specifically affecting Firefox. The disabled attribute was sometimes missing from the JavaScript DOM Node object, triggering hydration warnings. To prevent these warnings without impacting functionality, the `data-allow-mismatch="attribute"` attribute has been added. This tells the hydration process to tolerate mismatches on this specific attribute.

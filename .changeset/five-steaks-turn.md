@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-[Basket] Display voucher disclaimer on basket page.
+[Basket] Added a voucher disclaimer to the basket page.

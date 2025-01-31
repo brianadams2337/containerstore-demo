@@ -2,20 +2,14 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-Add the `SF` prefix to all local application components, including UI and subscription module components.
+[Architecture] As part of ongoing improvements to support the development and maintenance of tenant projects, all local application components (UI and subscription modules) now have the prefix `SF`. This standardized naming convention brings several benefits: improved code readability and maintainability across the codebase, and clear differentiation between Storefront Boilerplate components and custom components developed by tenants. This clear separation is crucial for the CLI, which will be responsible for managing and updating default components in tenant projects, preventing accidental overwrites and conflicts. See the example below for how this affects component imports.
 
-The reasons for this change are as follows:
+- Example:
 
-1. **Consistency Across the Codebase**: By prefixing components with `SF`, we ensure a uniform naming convention throughout our codebase, making it easier to understand and maintain.
+  ```ts
+  // Before
+  import Footer from '~/components/Footer.vue'
 
-2. **Clear Separation of Components**: The `SF` prefix helps distinguish components that are part of the Storefront Boilerplate from those custom-developed by tenants. This distinction is particularly crucial when building the CLI, which will copy new or overwrite existing "default" components in tenant projects.
-
-Example:
-
-```ts
-// Before
-import Footer from '~/components/Footer.vue'
-
-// After
-import SFFooter from '~/components/SFFooter.vue'
-```
+  // After
+  import SFFooter from '~/components/SFFooter.vue'
+  ```

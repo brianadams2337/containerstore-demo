@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': patch
 ---
 
-[E2E] Ensured continued coverage of the redesigned Shop selector.
+[E2E] Updated the end-to-end tests to cover the redesigned `ShopSelector` functionality.

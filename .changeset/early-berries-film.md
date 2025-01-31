@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-[Basket] Added SEO data for basket.
+[Basket] Added structured data and metadata to the basket page for improved SEO performance.

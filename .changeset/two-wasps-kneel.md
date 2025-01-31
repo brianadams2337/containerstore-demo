@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': patch
 ---
 
-[Tracking] Fixed missing tracking event when clicking the "Show All" button if there are other search suggestions shown.
+[Tracking] Corrected an issue where a tracking event was not being triggered when clicking the "Show All" button in search results if other suggestions were present.

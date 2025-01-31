@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': patch
 ---
 
-Fix layout shift when hovering over navigation items
+[Navigation] Corrected a layout shift that occurred when hovering over navigation items.

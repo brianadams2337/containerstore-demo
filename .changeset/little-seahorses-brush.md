@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': patch
 ---
 
-Removed the focus style from the `input` element in `SearchInput` to address a styling issue where the element displayed an unintended focus state on click.
+[Accessibility] RRemoved the focus style from the `input` element within the `SearchInput` component to address an issue where an unintended focus state was displayed on click.

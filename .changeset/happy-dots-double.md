@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': patch
 ---
 
-[Navigation] Ensure navigation list items are horizontally aligned with their header
+[Navigation] Ensured horizontal alignment between navigation list items and their corresponding header elements.

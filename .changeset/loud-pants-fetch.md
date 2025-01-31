@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-[E2E] Ensure accurate price calculations in the shopping basket, including scenarios with regular prices, sales, and promotions.
+[E2E] Enhanced end-to-end tests to ensure accurate price calculations in the shopping basket, covering scenarios with regular prices, sales, and promotions.

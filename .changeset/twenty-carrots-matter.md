@@ -2,5 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-[Architecture] Introduce modernized local `@scayle/nuxt-gtm` module to replace unmaintained `@zadigetvoltaire/nuxt-gtm` module and use recent `@gtm-support/vue-gtm` as direct dependency.
-This also allows us to drop the automated dependency patch for a included legacy version of `@gtm-support/vue-gtm`.
+[Architecture] To address the risks associated with using an unmaintained dependency and improve the long-term stability of our Google Tag Manager integration, we have replaced `@zadigetvoltaire/nuxt-gtm` with a locally maintained module, `@scayle/nuxt-gtm`. This new module incorporates the most recent version of `@gtm-support/vue-gtm`, benefiting from performance improvements, bug fixes, and ongoing maintenance. This migration also allows us to eliminate a custom patch previously required for compatibility, further simplifying our dependency management.

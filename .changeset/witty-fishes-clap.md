@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': patch
 ---
 
-E2E: Enhanced end-to-end test reliability for filter deeplinks. The test now verifies filter functionality regardless of the order returned by the backend. This eliminates false negatives caused by varying filter order and ensures consistent test results.
+[E2E] Improved the robustness of the end-to-end test for filter deeplinks. The test now validates filter functionality irrespective of the order in which filters are returned by the backend. This addresses an issue where variations in filter order could lead to false negative test results, ensuring more consistent and reliable testing.

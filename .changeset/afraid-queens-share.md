@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': patch
 ---
 
-[Subscription] Use focusable elements within dropdowns of `SFProductSubscriptionSelection.vue`.
+[Subscription] Enhanced accessibility of subscription selection dropdowns (`SFProductSubscriptionSelection`) by ensuring focusable elements are used.

@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-[Basket] Display additional title for sold out items.
+[Basket] Sold-out items in the basket now display an additional title to clearly indicate their unavailability.

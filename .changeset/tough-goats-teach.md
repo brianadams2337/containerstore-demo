@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': minor
 ---
 
-[Navigation] Support the new `filters` properties on `navigationItem`'s linked to a category page.
+[Navigation] Added support for the `filters` properties on `navigationItem`'s that link to category pages.

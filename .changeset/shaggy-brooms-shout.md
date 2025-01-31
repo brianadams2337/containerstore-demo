@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': patch
 ---
 
-[Accessibility] Add `role="presentation"` to icon of `SFNavigationTreeItem` to conform with WCAG requirements.
+[Accessibility] Added the `role="presentation"` attribute to the icon within the `SFNavigationTreeItem` component to improve accessibility and conform with WCAG requirements.

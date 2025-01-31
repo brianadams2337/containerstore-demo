@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': patch
 ---
 
-[Tracking] Removed `cart` event when removing basket items from the basket using `useBasketActions`, This event is automatically triggered whenever the basket changes via `useUserItemsTrackingWatcher`.
+[Tracking] Removed the explicit `cart` event trigger when removing basket items using `useBasketActions`. This event is already handled automatically by the `useUserItemsTrackingWatcher`.

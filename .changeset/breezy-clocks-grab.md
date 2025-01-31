@@ -2,4 +2,4 @@
 '@scayle/storefront-boilerplate-nuxt': patch
 ---
 
-[Account Page] Use correct headline translation
+[Account] Corrected the headline translation on the account page.
