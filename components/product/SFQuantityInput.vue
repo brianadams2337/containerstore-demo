@@ -17,6 +17,9 @@
       class="mx-2 min-w-[2ch] max-w-[3ch] select-none text-center text-base font-semi-bold-variable tabular-nums focus:border-transparent focus:ring-0"
       data-testid="quantity-value"
       tabindex="-1"
+      :aria-label="
+        $t('quantity.current_value', { selected_quantity: quantity })
+      "
     />
     <!--
       Sometimes on Firefox the `disabled` attribute is not present on the JS DOM Node even though its present in the HTML response.

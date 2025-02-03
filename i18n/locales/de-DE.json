@@ -496,6 +496,7 @@
     "search_button": "Suche"
   },
   "quantity": {
-    "new_value": "Ändere die Menge auf {newQuantity}"
+    "new_value": "Ändere die Menge auf {newQuantity}",
+    "current_value": "Menge: {selected_quantity}"
   }
 }

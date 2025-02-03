@@ -496,6 +496,7 @@
     "search_button": "Search"
   },
   "quantity": {
-    "new_value": "Change quantity to {newQuantity}"
+    "new_value": "Change quantity to {newQuantity}",
+    "current_value": "Quantity: {selected_quantity}"
   }
 }
