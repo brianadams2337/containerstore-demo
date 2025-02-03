@@ -114,7 +114,8 @@
     "product": "Produkte",
     "categories": "Kategorien",
     "page_title": "Suchergebnisse für \"{term}\"",
-    "navigation_items": "Seiten"
+    "navigation_items": "Seiten",
+    "a11y": "Suche"
   },
   "promises": {
     "flexible_payment": "Flexible Zahlungsmöglichkeiten",
