@@ -305,7 +305,7 @@
     "updated_notification_filter": "Deine Filter wurden erfolgreich angewendet!",
     "updated_notification_sort": "Deine Sortierung wurden erfolgreich angewendet!",
     "updated_notification_all": "Deine Sortierung und Filter wurden erfolgreich angewendet!",
-    "close-a11y": "Filter schließen",
+    "close": "Filter schließen",
     "update_price": "Preis aktualisieren",
     "minimum_price": "Mindestpreis: {price}",
     "maximum_price": "Höchstpreis: {price}",

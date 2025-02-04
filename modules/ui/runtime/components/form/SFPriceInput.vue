@@ -42,13 +42,6 @@ const root = ref<HTMLInputElement>()
 const focus = (e: FocusEvent) => {
   isActive.value = true
 
-  setTimeout(() => {
-    const el = root.value
-    if (el instanceof HTMLInputElement) {
-      el.select()
-    }
-  }, 0)
-
   emit('focus', e)
 }
 
