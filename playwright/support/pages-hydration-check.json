@@ -1,6 +1,19 @@
 {
-  "homepageDe": "/de",
-  "homepageEn": "/en",
-  "plp": "/de/c/frauen-50337",
-  "pdp": "/de/p/strickkleid-ksenia-schnaider-205649"
+  "guest": {
+    "homepageDe": "/de",
+    "homepageEn": "/en",
+    "plp": "/de/c/frauen-50337",
+    "pdp": "/de/p/strickkleid-ksenia-schnaider-205649",
+    "wishlist": "/wishlist",
+    "basket": "/basket",
+    "signIn": "/signin",
+    "location": "/location"
+  },
+  "loggedIn": {
+    "wishlist": "/wishlist",
+    "basket": "/basket",
+    "account": "/account",
+    "user": "/account/user",
+    "orders": "/account/orders/5646"
+  }
 }

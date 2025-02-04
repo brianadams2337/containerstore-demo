@@ -180,3 +180,8 @@ export const NAVIGATION_TEST_ITEMS = {
 }
 
 export const CHECKOUT_REDIRECT_URL = 'signin?redirectUrl=/de/checkout'
+
+export const HYDRATION_TEST_USER = {
+  userEmail: process.env.TEST_USER_EMAIL6 as string,
+  password: process.env.TEST_USER_PASSWORD as string,
+}
