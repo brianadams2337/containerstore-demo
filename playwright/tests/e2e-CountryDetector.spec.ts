@@ -30,6 +30,7 @@ test.describe('Test from Berlin against US shop', () => {
       await countryDetector.switchShopButton.first().waitFor()
       await countryDetector.switchShopButton.first().click()
       await page.waitForLoadState('networkidle')
+      await page.waitForTimeout(500)
       const pageUrl = page.url()
       expect(pageUrl).toContain(HOMEPAGE_PATH_DE)
       await expect(countryDetector.switchShopButton).not.toBeVisible()
