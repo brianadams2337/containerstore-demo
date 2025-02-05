@@ -41,7 +41,7 @@
             'bg-white ': hasFocus,
             'group-hover:bg-gray-200': !hasFocus,
           }"
-          :aria-label="$t('search.a11y')"
+          :aria-placeholder="$t('search.a11y')"
         />
       </label>
       <SFButton
