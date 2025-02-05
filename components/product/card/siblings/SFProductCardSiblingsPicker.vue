@@ -60,25 +60,23 @@ import { PRODUCT_CARD_SIBLINGS_LIMIT } from '~/constants'
 import { formatColors } from '~/utils'
 import { SFLink } from '#storefront-ui/components'
 
-type Props = {
+const { product, siblings } = defineProps<{
   product: Product
   siblings: ProductSibling[]
-}
+}>()
 
-const props = defineProps<Props>()
-
-const { brand } = useProductBaseInfo(props.product)
+const { brand } = useProductBaseInfo(() => product)
 
 const { getProductDetailRoute } = useRouteHelpers()
 
 const itemsToShow = computed(() =>
-  props.siblings.slice(0, PRODUCT_CARD_SIBLINGS_LIMIT),
+  siblings.slice(0, PRODUCT_CARD_SIBLINGS_LIMIT),
 )
 
 const productRoute = computed(() =>
   getProductDetailRoute(
-    props.product.id,
-    getFirstAttributeValue(props.product.attributes, 'name')?.label,
+    product.id,
+    getFirstAttributeValue(product.attributes, 'name')?.label,
   ),
 )
 

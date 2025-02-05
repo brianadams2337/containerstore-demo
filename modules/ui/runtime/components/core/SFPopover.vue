@@ -2,8 +2,8 @@
   <div
     data-testid="popoverContainer"
     class="relative h-full"
-    @mouseenter="emit('mouseenter')"
-    @mouseleave="emit('mouseleave')"
+    @mouseenter="$emit('mouseenter')"
+    @mouseleave="$emit('mouseleave')"
   >
     <div class="inline-flex size-full items-center justify-center">
       <slot name="action" />
@@ -27,17 +27,15 @@
 <script setup lang="ts">
 import { SFFadeInFromBottomTransition } from '#storefront-ui/components'
 
-type Props = {
+const {
+  isOpen = false,
+  disablePopoverContent = false,
+  contentWrapperClass = '',
+} = defineProps<{
   isOpen?: boolean
   disablePopoverContent?: boolean
   contentWrapperClass?: string | Record<string, boolean>
-}
+}>()
 
-withDefaults(defineProps<Props>(), {
-  isOpen: false,
-  disablePopoverContent: false,
-  contentWrapperClass: '',
-})
-
-const emit = defineEmits<{ mouseenter: []; mouseleave: [] }>()
+defineEmits<{ mouseenter: []; mouseleave: [] }>()
 </script>

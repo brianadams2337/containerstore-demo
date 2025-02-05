@@ -6,13 +6,11 @@
 import { onMounted } from 'vue'
 import { useAuthentication } from '~/composables/useAuthentication'
 
-const props = defineProps<{
-  code: string
-}>()
+const { code } = defineProps<{ code: string }>()
 
 const { loginIDP } = useAuthentication('login')
 
 onMounted(async () => {
-  await loginIDP(props.code)
+  await loginIDP(code)
 })
 </script>

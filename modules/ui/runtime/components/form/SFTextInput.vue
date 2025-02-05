@@ -48,16 +48,6 @@ import { vMaska } from 'maska/vue'
 
 defineOptions({ inheritAttrs: false })
 
-type Props = {
-  placeholder: string
-  mask?: string | string[]
-  required?: boolean
-  type?: HTMLInputElement['type']
-  readonly?: boolean
-  hint?: string
-  hasErrors?: boolean
-}
-
 const {
   type = 'text',
   mask = '',
@@ -68,7 +58,15 @@ const {
   // Disabling unimport/auto-insert here due misdetection of "readonly" keyword
   // eslint-disable-next-line unimport/auto-insert
   readonly = false,
-} = defineProps<Props>()
+} = defineProps<{
+  placeholder: string
+  mask?: string | string[]
+  required?: boolean
+  type?: HTMLInputElement['type']
+  readonly?: boolean
+  hint?: string
+  hasErrors?: boolean
+}>()
 
 const modelValue = defineModel<string>()
 

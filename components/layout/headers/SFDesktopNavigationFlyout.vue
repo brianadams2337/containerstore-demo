@@ -36,10 +36,9 @@
 import type { NavigationTreeItem as NavigationTreeItemType } from '@scayle/storefront-nuxt'
 import SFNavigationTreeItem from '~/components/SFNavigationTreeItem.vue'
 
+defineProps<{ item: NavigationTreeItemType }>()
+
 const emit = defineEmits(['close'])
-defineProps<{
-  item: NavigationTreeItemType
-}>()
 
 const onItemClick = (item: NavigationTreeItemType) => {
   if (item?.customData?.disabledLink) {

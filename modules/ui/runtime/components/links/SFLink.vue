@@ -26,21 +26,18 @@ const LinkTypeClass = {
   [LinkVariant.QUIET]: 'text-sm font-semibold tracking-normal',
 } as const
 
-type Props = {
+const {
+  onlyExactActive = false,
+  variant = LinkVariant.NORMAL,
+  raw = false,
+  target = '_self',
+} = defineProps<{
   to: RouteLocationRaw
   onlyExactActive?: boolean
   variant?: LinkVariant
   raw?: boolean
   target?: '_self' | '_blank' | '_parent' | '_top'
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  onlyExactActive: false,
-  variant: LinkVariant.NORMAL,
-  openInNewTab: false,
-  raw: false,
-  target: '_self',
-})
+}>()
 
 const ACTIVE_CLASS = '!font-bold'
 
@@ -49,14 +46,14 @@ const variantClass = computed(() => {
     inline-flex items-center gap-2 whitespace-nowrap text-xs
     leading-5 tracking-wide transition duration-200 ease-linear
    `
-  return !props.raw ? [defaultClass, LinkTypeClass[props.variant]] : {}
+  return !raw ? [defaultClass, LinkTypeClass[variant]] : {}
 })
 
 const activeClass = computed(() => {
-  return !props.onlyExactActive && !props.raw ? ACTIVE_CLASS : ''
+  return !onlyExactActive && !raw ? ACTIVE_CLASS : ''
 })
 
 const exactActiveClass = computed(() => {
-  return props.onlyExactActive && !props.raw ? ACTIVE_CLASS : ''
+  return onlyExactActive && !raw ? ACTIVE_CLASS : ''
 })
 </script>

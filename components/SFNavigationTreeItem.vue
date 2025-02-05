@@ -60,7 +60,14 @@ import { useRouteHelpers } from '~/composables'
 import { SFLink } from '#storefront-ui/components'
 import { theme } from '#tailwind-config'
 
-type Props = {
+const {
+  navigationItem,
+  raw = false,
+  isActive = false,
+  textColor,
+  backgroundColor,
+  disabledLink,
+} = defineProps<{
   navigationItem: NavigationTreeItem
   variant?: LinkVariant
   raw?: boolean
@@ -68,15 +75,7 @@ type Props = {
   disabledLink?: boolean
   textColor?: `#${string}`
   backgroundColor?: `#${string}`
-}
-const {
-  navigationItem,
-  raw = false,
-  isActive = false,
-  textColor,
-  backgroundColor,
-  disabledLink = undefined,
-} = defineProps<Props>()
+}>()
 
 const { buildNavigationTreeItemRoute } = useRouteHelpers()
 
@@ -100,9 +99,7 @@ const pathParams = computed(() => {
 })
 const displayName = computed(() => navigationItem.name)
 const disabled = computed<boolean>(() =>
-  disabledLink !== undefined
-    ? disabledLink
-    : !!navigationItem.customData?.disabledLink,
+  disabledLink ? disabledLink : !!navigationItem.customData?.disabledLink,
 )
 const getStyle = (
   navigationTreeItem: NavigationTreeItem,

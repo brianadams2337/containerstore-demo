@@ -26,10 +26,10 @@ import { usePromotionActions } from '~/composables'
 import type { Promotion } from '~/types/promotion'
 
 const { togglePromotionList } = usePromotionActions()
-const props = defineProps<{ promotion: Promotion }>()
+const { promotion } = defineProps<{ promotion: Promotion }>()
 
-const schedule = computed(() => props.promotion.schedule)
-const customData = computed(() => props.promotion.customData)
+const schedule = computed(() => promotion.schedule)
+const customData = computed(() => promotion.customData)
 const id = computed(() => customData.value.category?.id)
 
 const closePromotionList = () => id.value && togglePromotionList()

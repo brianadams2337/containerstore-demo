@@ -15,12 +15,10 @@ export type ContentType = NonNullable<
   SbContentPage['content'] | SbPage['content']
 >
 
-const props = defineProps<{
-  story: ISbStoryData<T>
-}>()
+const { story } = defineProps<{ story: ISbStoryData<T> }>()
 
 const seo = computed<SbSeo>(() => {
-  return (props.story.content as unknown as { seo: SbSeo }).seo
+  return (story.content as unknown as { seo: SbSeo }).seo
 })
 
 useSeoMeta({

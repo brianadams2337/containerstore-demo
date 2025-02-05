@@ -28,12 +28,12 @@ import type { CMSGridProps } from '../types'
 import { getComponentName } from '../../../utils/helpers'
 import { useStoryblokMargins } from '../composables/useStoryblokMargins'
 
-const props = defineProps<CMSGridProps>()
-const { marginClasses } = useStoryblokMargins(props.blok)
+const { blok } = defineProps<CMSGridProps>()
+
+const { marginClasses } = useStoryblokMargins(blok)
 
 const sizes = computed(() => {
-  const vw = Math.ceil(100 / (props?.blok?.columns?.length || 1))
-
+  const vw = Math.ceil(100 / (blok?.columns?.length || 1))
   return `xs:100vw sm:100vw md:100vw lg:${vw}vw  xl:${vw}vw  xxl:${vw}vw 2xl:${vw}vw `
 })
 

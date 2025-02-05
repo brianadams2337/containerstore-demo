@@ -10,11 +10,10 @@
 </template>
 
 <script setup lang="ts" generic="T extends { disabled?: boolean }">
-type Props = {
+const { value, toggleListboxOpen } = defineProps<{
   value?: T
   toggleListboxOpen: () => void
-}
-const { value = undefined, toggleListboxOpen } = defineProps<Props>()
+}>()
 
 const handleClick = () => {
   if (!value || ('disabled' in value && value?.disabled)) {

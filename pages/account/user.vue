@@ -16,8 +16,8 @@
 import { defineOptions } from 'vue'
 import { useSeoMeta } from '@unhead/vue'
 import { definePageMeta } from '#imports'
-import { useNuxtApp } from '#app'
 import { useUser } from '#storefront/composables'
+import { useI18n } from '#i18n'
 import SFUserPersonalInfoForm from '~/components/account/SFUserPersonalInfoForm.vue'
 import SFUpdatePasswordForm from '~/components/account/password/SFUpdatePasswordForm.vue'
 import SFAccountWrapper from '~/components/account/SFAccountWrapper.vue'
@@ -25,12 +25,12 @@ import { SFHeadline } from '#storefront-ui/components'
 
 const { user } = useUser()
 
-const { $i18n } = useNuxtApp()
+const { t } = useI18n()
 
 useSeoMeta({
   robots: 'index,follow',
   titleTemplate: (pageTitle) => pageTitle ?? null,
-  title: $i18n.t('navigation.user_settings'),
+  title: t('navigation.user_settings'),
 })
 
 defineOptions({ name: 'UserAccountDetailsPage' })

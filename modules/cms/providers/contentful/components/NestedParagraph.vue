@@ -85,10 +85,10 @@ import CMSContentfulLink from './ContentfulLink.vue'
 import { NuxtPicture } from '#components'
 import { SFHeadline, SFButton } from '#storefront-ui/components'
 
-const props = defineProps<CMSNestedParagraphProps>()
+const { blok } = defineProps<CMSNestedParagraphProps>()
 
 const isCtaEmail = computed(() => {
-  return String(props.blok?.fields.cta ?? '')
+  return String(blok?.fields.cta ?? '')
     .toLowerCase()
     .match(EMAIL_REGEX_PATTERN)
 })
@@ -98,8 +98,8 @@ function trimAnchorSymbol(anchorId?: string): string | undefined {
 }
 
 const style = computed(() =>
-  props.blok?.fields.backgroundColor
-    ? { backgroundColor: props.blok?.fields.backgroundColor }
+  blok?.fields.backgroundColor
+    ? { backgroundColor: blok?.fields.backgroundColor }
     : undefined,
 )
 

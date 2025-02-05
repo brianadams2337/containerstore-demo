@@ -18,17 +18,21 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
-type Props = {
+const {
+  formatOptions = null,
+  locale,
+  currencyCode,
+  min,
+  max,
+  modelValue,
+} = defineProps<{
   modelValue: number
   currencyCode: string
   locale: string
   max: number
   min: number
   formatOptions?: Intl.NumberFormatOptions | null
-}
-const props = withDefaults(defineProps<Props>(), {
-  formatOptions: null,
-})
+}>()
 
 const emit = defineEmits<{
   'update:model-value': [number]
@@ -53,13 +57,13 @@ const blur = (e: FocusEvent) => {
 }
 
 const decimalPlaces = computed(() => {
-  if (!props.currencyCode) {
+  if (!currencyCode) {
     return 2
   }
 
-  const parts = new Intl.NumberFormat(props.locale, {
+  const parts = new Intl.NumberFormat(locale, {
     style: 'currency',
-    currency: props.currencyCode,
+    currency: currencyCode,
   }).formatToParts(0)
 
   const fraction = parts.find((p) => p.type === 'fraction')
@@ -73,7 +77,7 @@ const decimalPlaces = computed(() => {
 
 const inputChange = (event: Event) => {
   const { value } = event.target as HTMLInputElement
-  if (value === props.modelValue.toString()) {
+  if (value === modelValue.toString()) {
     return
   }
 
@@ -81,7 +85,7 @@ const inputChange = (event: Event) => {
   let adjustedValue: number
 
   adjustedValue = Math.round(val) * 10 ** decimalPlaces.value
-  adjustedValue = Math.min(Math.max(props.min, adjustedValue), props.max)
+  adjustedValue = Math.min(Math.max(min, adjustedValue), max)
 
   if (!isNaN(adjustedValue)) {
     emit('update:model-value', adjustedValue)
@@ -89,10 +93,10 @@ const inputChange = (event: Event) => {
 }
 
 const formatCurrency = (value: number): string => {
-  return (value / 10 ** decimalPlaces.value).toLocaleString(props.locale, {
+  return (value / 10 ** decimalPlaces.value).toLocaleString(locale, {
     style: 'currency',
-    currency: props.currencyCode,
-    ...props.formatOptions,
+    currency: currencyCode,
+    ...formatOptions,
   })
 }
 </script>

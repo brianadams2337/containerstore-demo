@@ -30,50 +30,47 @@ import { ColorChipRoundedType, Size, getSizeUtils } from '#storefront-ui'
 import type { RouteLocationRaw } from '#vue-router'
 import { SFLink } from '#storefront-ui/components'
 
-type Props = {
+const {
+  colorCode,
+  size = Size.MD,
+  isActive = false,
+  rounded = ColorChipRoundedType.DEFAULT,
+  to,
+} = defineProps<{
   to?: RouteLocationRaw
   colorCode: string | string[]
   size?: Size
   isActive?: boolean
   rounded?: ColorChipRoundedType
-}
+}>()
 
-const props = withDefaults(defineProps<Props>(), {
-  size: Size.MD,
-  isActive: false,
-  rounded: ColorChipRoundedType.DEFAULT,
-  to: undefined,
-})
+const { isSize } = getSizeUtils(size)
 
-const { isSize } = getSizeUtils(props.size)
+const componentName = computed(() => (to ? SFLink : 'button'))
 
-const componentName = computed(() => (props.to ? SFLink : 'button'))
-
-const hasMixedColors = computed(() => Array.isArray(props.colorCode))
+const hasMixedColors = computed(() => Array.isArray(colorCode))
 
 const isNumberOfMixColorsOdd = computed<boolean>(() => {
-  if (!hasMixedColors.value || !props.colorCode) {
+  if (!hasMixedColors.value || !colorCode) {
     return false
   }
 
-  return props.colorCode.length % 2 !== 0
+  return colorCode.length % 2 !== 0
 })
 
 const isLightColor = computed(() => {
   if (hasMixedColors.value) {
     return false
   }
-  return Color(props.colorCode).isLight()
+  return Color(colorCode).isLight()
 })
 
 // Add gray border for brighter colors
 // Reference: https://www.npmjs.com/package/color#luminosity
-const hasGrayBorder = computed(() => Color(props.colorCode).luminosity() > 0.7)
+const hasGrayBorder = computed(() => Color(colorCode).luminosity() > 0.7)
 
 const backgroundColorStyle = computed(() => ({
-  backgroundColor: hasMixedColors.value
-    ? 'transparent'
-    : (props.colorCode as string),
+  backgroundColor: hasMixedColors.value ? 'transparent' : (colorCode as string),
 }))
 
 const classes = computed(() => ({
@@ -83,9 +80,9 @@ const classes = computed(() => ({
   'size-4': isSize('md'),
   'size-6': isSize('lg'),
   'size-8': isSize('xl'),
-  rounded: props.rounded === ColorChipRoundedType.DEFAULT,
-  'rounded-sm': props.rounded === ColorChipRoundedType.SM,
-  'rounded-md': props.rounded === ColorChipRoundedType.MD,
+  rounded: rounded === ColorChipRoundedType.DEFAULT,
+  'rounded-sm': rounded === ColorChipRoundedType.SM,
+  'rounded-md': rounded === ColorChipRoundedType.MD,
   '!border-black': hasMixedColors.value,
 }))
 </script>

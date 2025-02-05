@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CMSContentfulComponent :blok="props.story" />
+    <CMSContentfulComponent :blok="story" />
   </div>
 </template>
 
@@ -11,17 +11,13 @@ import type { Entry } from 'contentful'
 import type { TypeContentPageWithoutUnresolvableLinksResponse } from '../types'
 import CMSContentfulComponent from './ContentfulComponent.vue'
 
-const props = defineProps<{
-  story: Entry
-}>()
+const { story: _story } = defineProps<{ story: Entry }>()
 
 const story = computed(
-  () => props.story as TypeContentPageWithoutUnresolvableLinksResponse,
+  () => _story as TypeContentPageWithoutUnresolvableLinksResponse,
 )
 
-const seo = computed(() => {
-  return story.value.fields?.seo?.fields
-})
+const seo = computed(() => story.value.fields?.seo?.fields)
 
 useSeoMeta({
   description: seo.value?.description ?? '',

@@ -23,17 +23,14 @@ import SFAddressInformation from './SFAddressInformation.vue'
 import { SFHeadline } from '#storefront-ui/components'
 import type { OrderAddress } from '~/types/order'
 
-type Props = {
+const { shippingAddress, billingAddress } = defineProps<{
   items: SummaryItem[]
   shippingAddress?: OrderAddress
   billingAddress?: OrderAddress
-}
-
-const props = defineProps<Props>()
+}>()
 
 const getAddress = (name: string) => {
-  const address =
-    name === 'shipping' ? props.shippingAddress : props.billingAddress
+  const address = name === 'shipping' ? shippingAddress : billingAddress
   return address as OrderAddress
 }
 </script>

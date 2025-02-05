@@ -16,26 +16,25 @@
 import { computed, defineOptions } from 'vue'
 import { useSeoMeta } from '@unhead/vue'
 import { definePageMeta } from '#imports'
-import { useNuxtApp } from '#app'
+import { useI18n } from '#i18n'
 import { useUser } from '#storefront/composables'
 import SFAccountWrapper from '~/components/account/SFAccountWrapper.vue'
 import { NuxtPage } from '#components'
 
 const { user } = useUser()
-const { $i18n } = useNuxtApp()
+
+const { t } = useI18n()
 
 const orders = computed(() => user.value?.orderSummary ?? [])
 
 const getBreadcrumbTitle = (id: number) => {
   const order = orders.value.find((order) => order.id === id)
-  return order
-    ? `${order.shopId}-${order.id}`
-    : $i18n.t('my_account.orders.overview')
+  return order ? `${order.shopId}-${order.id}` : t('my_account.orders.overview')
 }
 
 useSeoMeta({
   robots: 'index,follow',
-  title: $i18n.t('navigation.my_orders'),
+  title: t('navigation.my_orders'),
 })
 
 defineOptions({ name: 'OrderHistoryPage' })

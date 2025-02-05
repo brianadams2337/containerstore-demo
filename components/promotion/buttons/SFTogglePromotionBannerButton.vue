@@ -34,14 +34,12 @@ import { computed } from 'vue'
 import { useCurrentPromotion, usePromotionActions } from '~/composables'
 import { SFButton } from '#storefront-ui/components'
 
-const props = withDefaults(defineProps<{ isMobileView?: boolean }>(), {
-  isMobileView: false,
-})
+const { isMobileView = false } = defineProps<{ isMobileView?: boolean }>()
 
 const { backgroundColorStyle } = useCurrentPromotion()
 const { togglePromotionBanner, isPromotionBannerShown } = usePromotionActions()
 
 const borderClass = computed(() =>
-  props.isMobileView ? '!border-b-[0.5px]' : '!border-t-[0.5px]',
+  isMobileView ? '!border-b-[0.5px]' : '!border-t-[0.5px]',
 )
 </script>

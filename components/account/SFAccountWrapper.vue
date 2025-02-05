@@ -75,16 +75,10 @@ import { useUser } from '#storefront/composables'
 import { useRoute } from '#app/composables/router'
 import { routeList } from '~/utils/route'
 
-type Props = {
+const { title, isAccountPage = false } = defineProps<{
   title: string
-  icon?: string
   isAccountPage?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  icon: '',
-  isAccountPage: false,
-})
+}>()
 
 const ORDERS_PER_PAGE = 8
 
@@ -133,7 +127,7 @@ const shouldDisplayOrderOverview = computed(() => {
 onMounted(async () => {
   if (
     !route.params?.id &&
-    !props.isAccountPage &&
+    !isAccountPage &&
     currentOrderId.value &&
     isGreaterOrEqual('md') // On mobile the user should first see the order list
   ) {

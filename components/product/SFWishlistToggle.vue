@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineOptions, ref, toRef } from 'vue'
+import { computed, defineOptions, ref } from 'vue'
 import type { Product } from '@scayle/storefront-nuxt'
 import { useMounted } from '@vueuse/core'
 import SFAsyncDataWrapper from '../SFAsyncDataWrapper.vue'
@@ -51,19 +51,17 @@ import { useWishlist } from '#storefront/composables'
 import { SFButton } from '#storefront-ui/components'
 import type { ListItem } from '~/types/tracking'
 
-type Props = {
+const { product, listingMetaData } = defineProps<{
   product: Product
   listingMetaData?: ListItem
-}
-
-const props = withDefaults(defineProps<Props>(), { listingMetaData: undefined })
+}>()
 
 defineOptions({ inheritAttrs: false })
 
 const mounted = useMounted()
 const isWishlistToggling = ref(false)
-const product = toRef(props, 'product')
-const productId = computed(() => product.value.id)
+
+const productId = computed(() => product.id)
 
 const { toggleItem, contains, status } = useWishlist()
 
@@ -77,8 +75,8 @@ const onToggleWishlist = async () => {
   const wasInWishlist = contains({ productId: productId.value })
 
   trackWishlistItemEvent(!wasInWishlist ? 'added' : 'removed', {
-    product: product.value,
-    ...(props.listingMetaData && { listingMetaData: props.listingMetaData }),
+    product,
+    ...(listingMetaData && { listingMetaData }),
   })
 
   isWishlistToggling.value = true

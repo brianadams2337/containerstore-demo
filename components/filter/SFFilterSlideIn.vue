@@ -27,7 +27,6 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs } from 'vue'
 import SFFilterSlideInContent from './SFFilterSlideInContent.vue'
 import SFFilterActions from './SFFilterActions.vue'
 import SFFilterHeader from './SFFilterHeader.vue'
@@ -36,12 +35,10 @@ import { SFSlideIn } from '#storefront-ui/components'
 import { useAppliedFilters } from '#storefront-product-listing'
 import { useRoute } from '#app/composables/router'
 
-const props = defineProps<{ currentCategoryId?: number }>()
+const { currentCategoryId } = defineProps<{ currentCategoryId?: number }>()
 
 const { appliedBooleanValues, appliedFilter, appliedAttributeValues } =
   useAppliedFilters(useRoute())
-
-const { currentCategoryId } = toRefs(props)
 
 const {
   availableFilters,
@@ -55,5 +52,5 @@ const {
   resetFilter,
   filteredProductCount,
   areFiltersCleared,
-} = useFilter(currentCategoryId)
+} = useFilter(() => currentCategoryId)
 </script>

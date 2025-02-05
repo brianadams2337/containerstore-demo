@@ -53,12 +53,7 @@ import { useStoreLocator } from '#omnichannel/composables'
 import { useSlideIn } from '#storefront-ui/composables'
 import { SFButton, SFHeadline } from '#storefront-ui/components'
 
-interface Props {
-  selectedStoreId: number | undefined
-  variantId: number
-}
-
-interface StoreVariantInfo {
+type StoreVariantInfo = {
   available: boolean
   storeName: string
 }
@@ -70,7 +65,10 @@ const { storeVariantData, refreshStoreVariant } = useStoreLocator(
 
 const { toggle: toggleStoreLocator } = useSlideIn('StoreLocatorSlideIn')
 
-const props = defineProps<Props>()
+const { selectedStoreId, variantId } = defineProps<{
+  selectedStoreId?: number
+  variantId: number
+}>()
 
 const selectedStoreData = computed<StoreVariantInfo | undefined>(() => {
   if (!storeVariantData.value) {
@@ -84,7 +82,7 @@ const selectedStoreData = computed<StoreVariantInfo | undefined>(() => {
 })
 
 watch(
-  [() => props.selectedStoreId, () => props.variantId],
+  [() => selectedStoreId, () => variantId],
   ([storeId, variantId]) => {
     if (variantId && storeId) {
       refreshStoreVariant(variantId, storeId)

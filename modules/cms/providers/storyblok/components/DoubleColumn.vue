@@ -28,7 +28,7 @@ import type { CMSDoubleColumnProps } from '../types'
 import { getComponentName } from '../../../utils/helpers'
 import { useStoryblokMargins } from '../composables/useStoryblokMargins'
 
-const props = defineProps<CMSDoubleColumnProps>()
+const { blok } = defineProps<CMSDoubleColumnProps>()
 
-const { marginClasses } = useStoryblokMargins(props.blok)
+const { marginClasses } = useStoryblokMargins(blok)
 </script>

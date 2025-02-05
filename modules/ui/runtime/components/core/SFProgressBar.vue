@@ -11,16 +11,6 @@
 import { computed } from 'vue'
 import { ProgressType } from '#storefront-ui'
 
-type Props = {
-  progress: number
-  type?: ProgressType
-  height?: 'xs' | 'sm' | 'md'
-  barColorStyle?: { backgroundColor: string; borderColor: string }
-  backgroundColor?: string
-  rounded?: boolean
-  slanted?: boolean
-}
-
 const {
   type = ProgressType.SUCCESS,
   height = 'sm',
@@ -29,7 +19,15 @@ const {
   backgroundColor = 'bg-secondary-450',
   rounded = false,
   slanted = false,
-} = defineProps<Props>()
+} = defineProps<{
+  progress: number
+  type?: ProgressType
+  height?: 'xs' | 'sm' | 'md'
+  barColorStyle?: { backgroundColor: string; borderColor: string }
+  backgroundColor?: string
+  rounded?: boolean
+  slanted?: boolean
+}>()
 
 const heightClasses = computed(() => ({
   'h-1': height === 'xs',

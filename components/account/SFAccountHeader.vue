@@ -18,10 +18,8 @@
 </template>
 
 <script setup lang="ts">
-type Props = {
+const { icon = '' } = defineProps<{
   title: string
   icon?: string
-}
-
-withDefaults(defineProps<Props>(), { icon: '' })
+}>()
 </script>

@@ -50,8 +50,8 @@ const SFSearchResults = defineAsyncComponent(
 )
 
 const emit = defineEmits<{
+  'click:result': [SearchEntity | 'show_all']
   close: []
-  'click:result': [event: SearchEntity | 'show_all']
 }>()
 
 const { products, categories, navigationItems } = defineProps<{

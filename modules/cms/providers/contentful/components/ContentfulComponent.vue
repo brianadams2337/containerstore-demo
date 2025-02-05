@@ -3,9 +3,7 @@ import type { Entry } from 'contentful'
 import { ref, resolveDynamicComponent } from 'vue'
 import { getComponentName } from '../../../utils/helpers'
 
-const props = defineProps<{
-  blok: Entry
-}>()
+const { blok } = defineProps<{ blok: Entry }>()
 
 const blokRef = ref()
 defineExpose({
@@ -14,12 +12,10 @@ defineExpose({
 
 const componentFound: boolean =
   typeof resolveDynamicComponent(
-    getComponentName(props.blok?.sys?.contentType?.sys?.id),
+    getComponentName(blok?.sys?.contentType?.sys?.id),
   ) !== 'string'
 const componentName = ref(
-  props.blok !== null
-    ? getComponentName(props.blok?.sys?.contentType?.sys?.id)
-    : null,
+  blok !== null ? getComponentName(blok?.sys?.contentType?.sys?.id) : null,
 )
 
 if (!componentFound) {

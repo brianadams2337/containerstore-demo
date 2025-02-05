@@ -61,7 +61,6 @@ import { defineOptions } from 'vue'
 import { whenever } from '@vueuse/core'
 import SFProductCardSkeleton from '~/components/product/card/SFProductCardSkeleton.vue'
 import SFAsyncDataWrapper from '~/components/SFAsyncDataWrapper.vue'
-import { useNuxtApp } from '#app/nuxt'
 import { definePageMeta } from '#imports'
 import { useWishlistTracking } from '~/composables'
 import { useWishlist } from '#storefront/composables'
@@ -69,9 +68,11 @@ import SFEmptyState from '~/components/SFEmptyState.vue'
 import SFProductCard from '~/components/product/card/SFProductCard.vue'
 import { SFHeadline, SFFadeInTransition } from '#storefront-ui/components'
 import { ClientOnly } from '#components'
+import { useI18n } from '#i18n'
 
 const { count, status, items, products } = useWishlist()
-const { $i18n } = useNuxtApp()
+
+const { t } = useI18n()
 
 const { trackWishlistPage } = useWishlistTracking()
 
@@ -82,10 +83,7 @@ whenever(
   { once: true, immediate: true },
 )
 
-useSeoMeta({
-  robots: 'noindex,follow',
-  title: $i18n.t('wishlist.meta.title'),
-})
+useSeoMeta({ robots: 'noindex,follow', title: t('wishlist.meta.title') })
 
 defineOptions({ name: 'WishlistPage' })
 definePageMeta({ pageType: 'wishlist_page' })

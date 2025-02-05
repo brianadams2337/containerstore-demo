@@ -51,13 +51,12 @@ import Color from 'color'
 import type { AttributesFilterValue } from '@scayle/storefront-api'
 import { ProductColor } from '~/constants/product'
 
-type Props = {
+const { isChecked = false, color } = defineProps<{
   color: AttributesFilterValue
   isChecked?: boolean
-}
-const props = withDefaults(defineProps<Props>(), { isChecked: false })
+}>()
 
-const colorCode = computed(() => ProductColor[props.color.value])
+const colorCode = computed(() => ProductColor[color.value])
 
 const isBrightColor = computed(() => Color(colorCode.value).luminosity() > 0.7)
 

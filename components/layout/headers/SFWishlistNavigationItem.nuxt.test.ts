@@ -5,11 +5,9 @@ import { fireEvent } from '@testing-library/vue'
 import SFWishlistNavigationItem from './SFWishlistNavigationItem.vue'
 import SFLoginActions from '~/components/account/popover/SFLoginActions.vue'
 
-const { useWishlist } = vi.hoisted(() => {
-  return {
-    useWishlist: vi.fn(),
-  }
-})
+const { useWishlist } = vi.hoisted(() => ({
+  useWishlist: vi.fn(),
+}))
 
 vi.mock('#storefront/composables', async () => {
   const actual = await vi.importActual('#storefront/composables')
@@ -61,7 +59,7 @@ it('should render link to wishlist with 2 items', async () => {
 
 it('should emit "close" event when link is clicked', async () => {
   const { getAllByRole, emitted } = await renderSuspended(SFLoginActions)
-  const links = await getAllByRole('link')
+  const links = getAllByRole('link')
 
   await Promise.all(links.map((link) => fireEvent.click(link)))
 

@@ -24,33 +24,33 @@ import { useTrackingEvents } from '~/composables'
 import { useDefaultBreakpoints } from '#storefront-ui/composables'
 import { useImage } from '#imports'
 
-const props = defineProps<CMSVideoProps>()
+const { blok } = defineProps<CMSVideoProps>()
 
 const { isSmaller } = useDefaultBreakpoints()
 
-const { marginClasses } = useContentfulMargins(props.blok?.fields.marginTop)
+const { marginClasses } = useContentfulMargins(blok?.fields.marginTop)
 const { trackPromotion } = useTrackingEvents()
 
 const img = useImage()
 
 const containerClasses = computed(() => ({
-  container: props.blok?.fields.is_containered,
+  container: blok?.fields.is_containered,
 }))
 
 const videoPoster = computed(() => {
-  if (!(props.blok?.fields.preview_desktop_image || props.blok)) {
+  if (!(blok?.fields.preview_desktop_image || blok)) {
     return
   }
 
   const key = isSmaller('md') ? 'preview_mobile_image' : 'preview_desktop_image'
 
-  if (!props.blok.fields[key]?.fields.file?.fileName) {
+  if (!blok.fields[key]?.fields.file?.fileName) {
     return
   }
 
   return img(
-    props.blok.fields[key]!.fields.title ??
-      props.blok.fields[key]!.fields.file?.fileName ??
+    blok.fields[key]!.fields.title ??
+      blok.fields[key]!.fields.file?.fileName ??
       '',
     {},
     { provider: 'contentful' },
@@ -62,8 +62,8 @@ const element = ref(null)
 const { stop } = useIntersectionObserver(
   element,
   ([{ isIntersecting }]) => {
-    if (isIntersecting && props.blok?.fields.tracking?.fields.promotion_id) {
-      trackPromotion('view_promotion', props.blok.fields.tracking.fields)
+    if (isIntersecting && blok?.fields.tracking?.fields.promotion_id) {
+      trackPromotion('view_promotion', blok.fields.tracking.fields)
       stop()
     }
   },
@@ -72,12 +72,9 @@ const { stop } = useIntersectionObserver(
   },
 )
 
-const clickObserver = props.blok?.fields.tracking?.fields.promotion_id
+const clickObserver = blok?.fields.tracking?.fields.promotion_id
   ? () =>
-      trackPromotion(
-        'select_promotion',
-        props.blok?.fields.tracking?.fields ?? {},
-      )
+      trackPromotion('select_promotion', blok?.fields.tracking?.fields ?? {})
   : () => {}
 
 defineOptions({ name: 'CMSVideo' })

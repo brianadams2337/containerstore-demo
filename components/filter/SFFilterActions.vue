@@ -40,26 +40,24 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useNuxtApp } from '#app'
 import { useFilterSlideIn } from '~/composables'
 import { SFButton } from '#storefront-ui/components'
+import { useI18n } from '#i18n'
 
-const props = defineProps<{
+const { filteredProductCount, areFiltersCleared } = defineProps<{
   filteredProductCount: number
   areFiltersCleared: boolean
 }>()
 
-const { $i18n } = useNuxtApp()
+const { t } = useI18n()
 
 const { toggle } = useFilterSlideIn()
 
 defineEmits(['reset'])
 
 const showResultsLabel = computed(() => {
-  return props.filteredProductCount
-    ? $i18n.t('filter.show_results_count', {
-        count: props.filteredProductCount,
-      })
-    : $i18n.t('filter.show_results')
+  return filteredProductCount
+    ? t('filter.show_results_count', { count: filteredProductCount })
+    : t('filter.show_results')
 })
 </script>

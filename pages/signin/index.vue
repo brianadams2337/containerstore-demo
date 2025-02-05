@@ -6,12 +6,12 @@
 import { defineOptions } from 'vue'
 import { useSeoMeta } from '@unhead/vue'
 import { definePageMeta } from '#imports'
-import { useNuxtApp } from '#app'
+import { useI18n } from '#i18n'
 import SFSignInForm from '~/components/auth/SFSignInForm.vue'
 
-const { $i18n } = useNuxtApp()
+const { t } = useI18n()
 
-useSeoMeta({ robots: 'index,follow', title: $i18n.t('navigation.sign_in') })
+useSeoMeta({ robots: 'index,follow', title: t('navigation.sign_in') })
 
 defineOptions({ name: 'SigninPage' })
 definePageMeta({ pageType: 'signin_page' })

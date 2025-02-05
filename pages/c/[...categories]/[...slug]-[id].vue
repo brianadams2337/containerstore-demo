@@ -73,7 +73,6 @@
 import { useSeoMeta, useHead } from '@unhead/vue'
 import {
   onMounted,
-  toRefs,
   onServerPrefetch,
   watch,
   defineOptions,
@@ -129,13 +128,11 @@ const { pageState, setPageState } = usePageState()
 
 const { trackViewItemList, trackSelectItem } = useTrackingEvents()
 
-const props = defineProps<{
+const { rootCategories, fetchingCategories, allCategories } = defineProps<{
   rootCategories: Category[]
   fetchingCategories: boolean
   allCategories: Category[]
 }>()
-
-const { rootCategories, fetchingCategories, allCategories } = toRefs(props)
 
 const currentCategoryId = computed(() => getCategoryId(route.params))
 const { selectedSort } = useProductListSort(route)

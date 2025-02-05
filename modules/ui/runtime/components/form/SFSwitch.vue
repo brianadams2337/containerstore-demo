@@ -45,15 +45,18 @@
 </template>
 
 <script setup lang="ts">
-type Props = {
+const {
+  label,
+  name,
+  disabled = false,
+  required = false,
+} = defineProps<{
   id: string
   label?: string
   name?: string
   disabled?: boolean
   required?: boolean
-}
-
-const { label, name, disabled = false, required = false } = defineProps<Props>()
+}>()
 
 const isActive = defineModel<boolean>({ default: false })
 

@@ -13,7 +13,5 @@
 <script setup lang="ts">
 import type { TransitionDuration } from '~/modules/ui/types'
 
-withDefaults(defineProps<{ duration?: TransitionDuration }>(), {
-  duration: 200,
-})
+const { duration = 200 } = defineProps<{ duration?: TransitionDuration }>()
 </script>

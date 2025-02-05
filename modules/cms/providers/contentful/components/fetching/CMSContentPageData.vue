@@ -13,15 +13,13 @@ import type {
 import { useCMSBySlug } from '../../composables/useCMS'
 import { useContentfulEditor } from '../../composables/useContentfulEditor'
 
-const props = defineProps<{
-  slug: string
-}>()
+const { slug } = defineProps<{ slug: string }>()
 
 const { data, status } = await useCMSBySlug<TypeContentPageSkeleton>(
-  `content-page-${props.slug}`,
+  `content-page-${slug}`,
   {
     content_type: 'contentPage',
-    'fields.slug[match]': `content/${props.slug}`,
+    'fields.slug[match]': `content/${slug}`,
   },
 )
 

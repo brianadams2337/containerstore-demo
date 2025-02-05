@@ -31,14 +31,10 @@ import { useLocalePath } from '#i18n'
 import { useRoute } from '#app/composables/router'
 import { useBasket } from '#storefront/composables'
 
-type Props = {
+const { isPromotionBadgeFullWidth = false, product } = defineProps<{
   product: Product
   isPromotionBadgeFullWidth?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  isPromotionBadgeFullWidth: true,
-})
+}>()
 
 const route = useRoute()
 const localePath = useLocalePath()
@@ -47,7 +43,7 @@ const { data: basketData } = useBasket()
 
 const isProductAddedToBasket = computed(() => {
   return (basketData.value?.items ?? []).some((item) => {
-    return item.product.id === props.product.id
+    return item.product.id === product.id
   })
 })
 

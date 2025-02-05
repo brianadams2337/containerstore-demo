@@ -50,14 +50,14 @@ import { usePageState } from '~/composables/usePageState'
 import { useRoute } from '#app/composables/router'
 import { SFHeadline, SFItemsSlider } from '#storefront-ui/components'
 
-const props = defineProps<CMSProductSliderProps>()
+const { blok } = defineProps<CMSProductSliderProps>()
 
 const listingMetaData = {
-  name: `ProductSlider-${props.blok?.fields.headline}`,
+  name: `ProductSlider-${blok?.fields.headline}`,
   id: 'PS',
 }
 
-const { marginClasses } = useContentfulMargins(props.blok?.fields.marginTop)
+const { marginClasses } = useContentfulMargins(blok?.fields.marginTop)
 
 const storefrontBreakpoints = useStorefrontBreakpoints()
 const route = useRoute()
@@ -66,7 +66,7 @@ const { pageState } = usePageState()
 const storefrontTracking = useStorefrontTracking()
 
 const productIds = computed(() => {
-  return props.blok?.fields.productIds?.split(',').map(Number).filter(Boolean)
+  return blok?.fields.productIds?.split(',').map(Number).filter(Boolean)
 })
 
 const { data, status } = await useProductsByIds(
@@ -93,7 +93,7 @@ const { data, status } = await useProductsByIds(
       },
     },
   },
-  `productSlider-${props.blok?.fields.uid}`,
+  `productSlider-${blok?.fields.uid}`,
 )
 
 const trackingCollector = ref<Product[]>([])
@@ -104,7 +104,7 @@ const columns = computed(() =>
 
 const trackingSource = computed(() => {
   const routePath = String(route.fullPath === '/' ? 'home' : route.name)
-  return `${routePath}|ProductSlider|${props.blok?.fields.headline}`
+  return `${routePath}|ProductSlider|${blok?.fields.headline}`
 })
 
 const trackProductClick = (payload: { product: Product; index: number }) => {

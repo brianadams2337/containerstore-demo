@@ -23,22 +23,20 @@ import { useCurrentShop } from '#storefront/composables'
 import { SFHeadline } from '#storefront-ui/components'
 import type { Order } from '~/types/order'
 
-type Props = {
+const { confirmedAt } = defineProps<{
   id: Order['id']
   customer?: Order['customer']
   confirmedAt?: Order['confirmedAt']
-}
-const props = defineProps<Props>()
+}>()
 
 const currentShop = useCurrentShop()
 
 const orderConfirmedAt = computed(() => {
-  if (!props.confirmedAt) {
+  if (!confirmedAt) {
     return
   }
-  const locale = currentShop.value?.locale?.replace('_', '-')
-  return props.confirmedAt
-    ? new Date(props.confirmedAt).toLocaleDateString(locale)
-    : null
+  return new Date(confirmedAt).toLocaleDateString(
+    currentShop.value?.locale?.replace('_', '-'),
+  )
 })
 </script>

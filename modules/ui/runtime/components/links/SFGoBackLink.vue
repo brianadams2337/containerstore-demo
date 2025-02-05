@@ -22,10 +22,10 @@ import { SFLink } from '#storefront-ui/components'
 const { fallbackLink = '/' } = defineProps<{
   fallbackLink?: RouteLocationRaw
 }>()
+
 const mounted = useMounted()
-const hasHistory = computed(() => {
-  return mounted.value && window.history.state.back
-})
+
+const hasHistory = computed(() => mounted.value && window.history.state.back)
 
 const backClickEventHandling = computed(() => {
   return hasHistory.value ? { click: goBack } : {}

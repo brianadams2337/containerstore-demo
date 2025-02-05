@@ -51,13 +51,12 @@ import { useProductBaseInfo } from '~/composables/useProductBaseInfo'
 import { SFAccordionEntry } from '#storefront-ui/components'
 import { getFilteredAttributeGroups } from '#storefront-product-detail'
 
-const props = defineProps<{ product: Product }>()
+const { product } = defineProps<{ product: Product }>()
 
 const types = ['fit_size', 'extras', 'design']
-const { description } = useProductBaseInfo(props.product)
+const { description } = useProductBaseInfo(() => product)
 const filteredAttributeGroups = computed(
   () =>
-    props.product.attributes &&
-    getFilteredAttributeGroups(props.product.attributes, types),
+    product.attributes && getFilteredAttributeGroups(product.attributes, types),
 )
 </script>

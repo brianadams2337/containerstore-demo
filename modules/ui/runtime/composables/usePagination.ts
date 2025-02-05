@@ -1,11 +1,8 @@
-import { computed, type Ref } from 'vue'
+import { computed } from 'vue'
+import type { MaybeRefOrGetter, ComputedRef } from 'vue'
+import { toRef } from '@vueuse/core'
 import type { RouteLocationNamedRaw, RouteLocationRaw } from '#vue-router'
 import { useRoute } from '#app/composables/router'
-
-export type PaginationOptions = Record<
-  'totalPageCount' | 'visiblePageNumbers',
-  Ref<number>
->
 
 export type Page = {
   number: number
@@ -13,10 +10,30 @@ export type Page = {
   isActive: boolean
 }
 
-export function usePagination({
-  visiblePageNumbers,
-  totalPageCount,
-}: PaginationOptions) {
+export interface UsePaginationReturn {
+  limitedPages: ComputedRef<(Page | undefined)[]>
+  previousPage: ComputedRef<Page>
+  nextPage: ComputedRef<Page | undefined>
+  areFirstDotsShown: ComputedRef<boolean>
+  areSecondDotsShown: ComputedRef<boolean>
+  firstPage: ComputedRef<Page>
+  lastPage: ComputedRef<Page | undefined>
+  canNavigateLeft: ComputedRef<boolean>
+  canNavigateRight: ComputedRef<boolean>
+}
+
+/**
+ * @param _visiblePageNumbers - Current visible page numbers
+ * @param _totalPageCount - Total page count
+ * @returns An {@link UsePaginationReturn} object containing reactive pagination data.
+ */
+export function usePagination(
+  _visiblePageNumbers: MaybeRefOrGetter<number>,
+  _totalPageCount: MaybeRefOrGetter<number>,
+): UsePaginationReturn {
+  const visiblePageNumbers = toRef(_visiblePageNumbers)
+  const totalPageCount = toRef(_totalPageCount)
+
   const route = useRoute()
   const currentPage = computed(() => {
     if (!route.query.page) {

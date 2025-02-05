@@ -55,10 +55,9 @@ import { isNavigationItemCategoryActive } from '#storefront-navigation/utils'
 import SFNavigationTreeItem from '~/components/SFNavigationTreeItem.vue'
 import { SFButton } from '~/modules/ui/runtime/components'
 
+const { item } = defineProps<{ item: NavigationTreeItemType }>()
+
 const { pageState } = usePageState()
-const { item } = defineProps<{
-  item: NavigationTreeItemType
-}>()
 
 const isOpen = ref(false)
 const trapFocusImmediately = ref(false)

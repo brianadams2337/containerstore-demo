@@ -138,14 +138,12 @@ import {
 } from '#storefront-ui/components'
 import { useI18n } from '#i18n'
 
-type Props = {
+const { appliedFilter } = defineProps<{
   availableFilters?: FilterItemWithValues[]
   appliedAttributeValues: Record<string, (string | number)[]>
   appliedBooleanValues: Record<string, boolean>
   appliedFilter: ProductSearchQuery
-}
-
-const props = defineProps<Props>()
+}>()
 
 const emit = defineEmits<{
   resetPriceFilter: []
@@ -179,8 +177,8 @@ const getPriceRange = (
   currentMin: CentAmount,
   currentMax: CentAmount,
 ): RangeTuple => {
-  const appliedMin = props.appliedFilter.minPrice
-  const appliedMax = props.appliedFilter.maxPrice
+  const appliedMin = appliedFilter.minPrice
+  const appliedMax = appliedFilter.maxPrice
 
   const min = Math.max(currentMin, appliedMin ?? currentMin, 0)
   const max = Math.min(currentMax, appliedMax ?? currentMax)

@@ -36,6 +36,6 @@ import { useContentfulMargins } from '../composables/useContentfulMargins'
 import CMSContentfulLink from './ContentfulLink.vue'
 import { SFItemsSlider, SFHeadline } from '#storefront-ui/components'
 
-const props = defineProps<CMSImageSliderProps>()
-const { marginClasses } = useContentfulMargins(props.blok?.fields.margin)
+const { blok } = defineProps<CMSImageSliderProps>()
+const { marginClasses } = useContentfulMargins(blok?.fields.margin)
 </script>

@@ -47,11 +47,9 @@ import { SFButton, SFHeadline } from '#storefront-ui/components'
 import { useAppliedFilters } from '#storefront-product-listing'
 import { useRoute } from '#app/composables/router'
 
-const props = withDefaults(defineProps<{ category?: Category }>(), {
-  category: undefined,
-})
+const { category } = defineProps<{ category?: Category }>()
 
-const currentCategory = props.category ? toRef(props.category) : undefined
+const currentCategory = category ? toRef(() => category) : undefined
 
 const { buildCategoryPath } = useRouteHelpers()
 

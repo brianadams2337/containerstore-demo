@@ -5,7 +5,7 @@
         :is="getSlideComponent(image)"
         v-for="image in blok?.fields.image"
         :key="image?.sys.id"
-        :preload="props.preload"
+        :preload="preload"
         :blok="image"
       />
     </template>
@@ -62,13 +62,11 @@ import type {
 } from '../types'
 import CMSContentfulLink from './ContentfulLink.vue'
 
-const props = withDefaults(defineProps<CMSSlideProps>(), {
-  preload: false,
-})
+const { blok, preload = false } = defineProps<CMSSlideProps>()
 
 const { justify, align } = useCMSAlignment({
-  align: props.blok?.fields.align,
-  justify: props.blok?.fields.justify,
+  align: blok?.fields.align,
+  justify: blok?.fields.justify,
 })
 
 function getSlideComponent(
@@ -90,5 +88,6 @@ function getSlideComponent(
     return 'CMSVideo'
   }
 }
+
 defineOptions({ name: 'CMSSlide' })
 </script>

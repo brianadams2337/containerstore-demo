@@ -24,31 +24,31 @@ import { useTrackingEvents } from '~/composables'
 import { useDefaultBreakpoints } from '#storefront-ui/composables'
 import { useImage } from '#imports'
 
-const props = defineProps<CMSVideoProps>()
+const { blok } = defineProps<CMSVideoProps>()
 
 const { isSmaller } = useDefaultBreakpoints()
 
-const { marginClasses } = useStoryblokMargins(props.blok)
+const { marginClasses } = useStoryblokMargins(blok)
 const { trackPromotion } = useTrackingEvents()
 
 const img = useImage()
 
 const containerClasses = computed(() => ({
-  container: props.blok.is_containered,
+  container: blok.is_containered,
 }))
 
 const videoPoster = computed(() => {
-  if (!(props.blok.preview_desktop_image || props.blok.preview_mobile_image)) {
+  if (!(blok.preview_desktop_image || blok.preview_mobile_image)) {
     return
   }
 
   const key = isSmaller('md') ? 'preview_mobile_image' : 'preview_desktop_image'
 
-  if (!props.blok[key]?.filename) {
+  if (!blok[key]?.filename) {
     return
   }
 
-  return img(props.blok[key]!.filename, {}, { provider: 'storyblok' })
+  return img(blok[key]!.filename, {}, { provider: 'storyblok' })
 })
 
 const element = ref(null)
@@ -56,8 +56,8 @@ const element = ref(null)
 const { stop } = useIntersectionObserver(
   element,
   ([{ isIntersecting }]) => {
-    if (isIntersecting && props.blok.promotion_id) {
-      trackPromotion('view_promotion', props.blok)
+    if (isIntersecting && blok.promotion_id) {
+      trackPromotion('view_promotion', blok)
       stop()
     }
   },
@@ -66,8 +66,8 @@ const { stop } = useIntersectionObserver(
   },
 )
 
-const clickObserver = props.blok.promotion_id
-  ? () => trackPromotion('select_promotion', props.blok)
+const clickObserver = blok.promotion_id
+  ? () => trackPromotion('select_promotion', blok)
   : () => {}
 
 defineOptions({ name: 'CMSVideo' })

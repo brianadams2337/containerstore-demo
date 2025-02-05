@@ -14,12 +14,10 @@
 <script setup lang="ts">
 import { SFButton } from '#storefront-ui/components'
 
-type Props = {
+const { disabled = false } = defineProps<{
   disabled?: boolean
   listboxButtonAriaId: string
   toggleListboxOpen: () => void
   isOpen: boolean
-}
-
-withDefaults(defineProps<Props>(), { disabled: false })
+}>()
 </script>

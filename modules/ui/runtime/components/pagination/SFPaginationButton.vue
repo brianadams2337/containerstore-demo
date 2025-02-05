@@ -20,12 +20,10 @@
 import type { Page } from '#storefront-ui'
 import { SFLink } from '#storefront-ui/components'
 
-type Props = {
+const { page, disabled = false } = defineProps<{
   disabled?: boolean
   page: Page
-}
-
-withDefaults(defineProps<Props>(), { disabled: false })
+}>()
 
 const scrollToTop = () => {
   setTimeout(() => window.scroll({ behavior: 'smooth', top: 0 }), 100)

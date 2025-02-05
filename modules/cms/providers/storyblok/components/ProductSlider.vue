@@ -51,14 +51,14 @@ import { usePageState } from '~/composables/usePageState'
 import { useRoute } from '#app/composables/router'
 import { SFHeadline, SFItemsSlider } from '#storefront-ui/components'
 
-const props = defineProps<CMSProductSliderProps>()
+const { blok } = defineProps<CMSProductSliderProps>()
 
 const listingMetaData = {
-  name: `ProductSlider-${props.blok.headline}`,
+  name: `ProductSlider-${blok.headline}`,
   id: 'PS',
 }
 
-const { marginClasses } = useStoryblokMargins(props.blok)
+const { marginClasses } = useStoryblokMargins(blok)
 
 const storefrontBreakpoints = useStorefrontBreakpoints()
 const route = useRoute()
@@ -67,11 +67,11 @@ const { pageState } = usePageState()
 const storefrontTracking = useStorefrontTracking()
 
 const productIds = computed(() => {
-  return props.blok.product_ids?.split(',').map(Number).filter(Boolean)
+  return blok.product_ids?.split(',').map(Number).filter(Boolean)
 })
 
 const productReferenceKeys = computed(() => {
-  return props.blok.products
+  return blok.products
     ?.map((product) => product.referenceKey)
     .filter(Boolean) as string[]
 })
@@ -96,7 +96,7 @@ const productSliderWithParams = {
 }
 
 const isUsingReferenceKeys = computed(() => {
-  return props.blok.products && props.blok.products.length > 0
+  return blok.products && blok.products.length > 0
 })
 
 const { data } = isUsingReferenceKeys.value
@@ -107,7 +107,7 @@ const { data } = isUsingReferenceKeys.value
           with: productSliderWithParams,
         },
       },
-      `productSlider-${props.blok._uid}`,
+      `productSlider-${blok._uid}`,
     )
   : await useProductsByIds(
       {
@@ -116,7 +116,7 @@ const { data } = isUsingReferenceKeys.value
           with: productSliderWithParams,
         },
       },
-      `productSlider-${props.blok._uid}`,
+      `productSlider-${blok._uid}`,
     )
 
 const trackingCollector = ref<Product[]>([])
@@ -140,7 +140,7 @@ const columns = computed(() =>
 
 const trackingSource = computed(() => {
   const routePath = String(route.fullPath === '/' ? 'home' : route.name)
-  return `${routePath}|ProductSlider|${props.blok.headline}`
+  return `${routePath}|ProductSlider|${blok.headline}`
 })
 
 const trackProductClick = (payload: { product: Product; index: number }) => {

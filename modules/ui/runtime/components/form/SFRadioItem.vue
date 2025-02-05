@@ -32,13 +32,17 @@
 <script setup lang="ts" generic="Item extends { label: string; value: any }">
 import { computed } from 'vue'
 
-type Props = {
+const {
+  value,
+  label,
+  name = '',
+  disabled = false,
+} = defineProps<{
   value?: Item['value']
   label?: Item['label']
   name?: string
   disabled?: boolean
-}
-const { value, label, name = '', disabled = false } = defineProps<Props>()
+}>()
 
 const selected = defineModel<string | number | undefined>()
 

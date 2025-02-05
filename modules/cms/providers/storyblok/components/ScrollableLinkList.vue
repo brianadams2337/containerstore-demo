@@ -12,10 +12,8 @@ import { defineOptions } from 'vue'
 import type { CMSScrollableLinkProps } from '../types'
 import CMSBannerLink from './BannerLink.vue'
 
-withDefaults(defineProps<CMSScrollableLinkProps>(), {
-  hasMarginTop: false,
-  fullWidth: false,
-})
+const { hasMarginTop = false, fullWidth = false } =
+  defineProps<CMSScrollableLinkProps>()
 
 defineOptions({ name: 'CMSScrollableLinkList' })
 </script>

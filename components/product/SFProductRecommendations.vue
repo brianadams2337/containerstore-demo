@@ -77,14 +77,10 @@ import {
 } from '#storefront-ui/components'
 import { PRODUCT_TILE_WITH_PARAMS } from '~/constants'
 
-type Props = {
-  title: string
-  productIds: number[]
-}
-const props = defineProps<Props>()
+const { productIds } = defineProps<{ title: string; productIds: number[] }>()
 
 const { data: products, status } = useProductsByIds({
-  params: { ids: props.productIds, with: PRODUCT_TILE_WITH_PARAMS },
+  params: { ids: productIds, with: PRODUCT_TILE_WITH_PARAMS },
 })
 
 const { trackSelectItem } = useTrackingEvents()

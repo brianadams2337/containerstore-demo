@@ -58,21 +58,14 @@ import { useFormatDate, useRouteHelpers } from '~/composables'
 import { useRoute } from '#app/composables/router'
 import { SFLink, SFProgressBar } from '#storefront-ui/components'
 
-type Props = {
+const { status, isLatestOrder = false } = defineProps<{
   id: OrderSummary['id']
   shopId: OrderSummary['shopId']
   itemCount?: OrderSummary['itemCount']
   confirmedAt?: OrderSummary['confirmedAt']
   status?: OrderSummary['status']
   isLatestOrder?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  itemCount: undefined,
-  confirmedAt: undefined,
-  status: undefined,
-  isLatestOrder: false,
-})
+}>()
 
 const route = useRoute()
 
@@ -83,12 +76,10 @@ const { getOrderDetailsRoute } = useRouteHelpers()
 
 const progressLevel = computed<number>(() => {
   // @ts-expect-error Type 'undefined' cannot be used as an index type.
-  return DeliveryProgress[props.status] || DeliveryProgress.DEFAULT
+  return DeliveryProgress[status] || DeliveryProgress.DEFAULT
 })
 
 const progressType = computed<'success' | 'warn' | 'danger'>(() => {
-  return props.status !== OrderStatus.CANCELLATION_COMPLETED
-    ? 'success'
-    : 'danger'
+  return status !== OrderStatus.CANCELLATION_COMPLETED ? 'success' : 'danger'
 })
 </script>

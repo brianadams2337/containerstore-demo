@@ -5,7 +5,7 @@
     class="pr-1 text-xs"
     @click.stop.prevent="goToCategory()"
   >
-    {{ props.category?.ctaLabel || $t('promotion.show_deals_label') }}
+    {{ category?.ctaLabel || $t('promotion.show_deals_label') }}
     <template #append-icon="{ _class }">
       <IconChevronRight :class="_class" />
     </template>
@@ -21,13 +21,15 @@ import {
 import { SFButton } from '#storefront-ui/components'
 import type { Promotion } from '~/types/promotion'
 
-const props = defineProps<{ category: Promotion['customData']['category'] }>()
+const { category } = defineProps<{
+  category: Promotion['customData']['category']
+}>()
 
 const { isPromotionListShown, togglePromotionList } = usePromotionActions()
 
 const { localizedNavigateTo, buildCategoryPath } = useRouteHelpers()
 
-const id = props.category?.id
+const id = category?.id
 
 const { data: categoryData } = id ? usePromotionCategory(id) : { data: null }
 

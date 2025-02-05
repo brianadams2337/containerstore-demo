@@ -20,13 +20,11 @@ import { SFFadeInFromBottomTransition } from '#storefront-ui/components'
 
 type Errors = ErrorObject[] | string[]
 
-const props = withDefaults(defineProps<{ errors: Errors }>(), {
-  errors: () => [],
-})
+const { errors = [] } = defineProps<{ errors: Errors }>()
 
-const isValid = computed(() => !props.errors.length)
+const isValid = computed(() => !errors.length)
 
 const errorMessages = computed(() => {
-  return props.errors.map((it) => (typeof it === 'string' ? it : it.$message))
+  return errors.map((it) => (typeof it === 'string' ? it : it.$message))
 })
 </script>

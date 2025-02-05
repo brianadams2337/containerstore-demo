@@ -74,7 +74,11 @@ import { ButtonVariant, Size, getSizeUtils } from '#storefront-ui'
 import type { RouteLocationRaw } from '#vue-router'
 import { SFLink } from '#storefront-ui/components'
 
-type Props = {
+const {
+  variant = ButtonVariant.PRIMARY,
+  size = Size.MD,
+  to,
+} = defineProps<{
   variant?: ButtonVariant
   size?: Size
   to?: RouteLocationRaw
@@ -85,13 +89,7 @@ type Props = {
   fab?: boolean
   isUppercase?: boolean
   hasShadow?: boolean
-}
-
-const {
-  variant = ButtonVariant.PRIMARY,
-  size = Size.MD,
-  to,
-} = defineProps<Props>()
+}>()
 
 const isPrimary = computed(() => variant === ButtonVariant.PRIMARY)
 const isSecondary = computed(() => variant === ButtonVariant.SECONDARY)

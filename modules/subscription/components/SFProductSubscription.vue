@@ -63,14 +63,6 @@ import type { AddToBasketItem } from '~/composables/useBasketActions'
 import { SFFadeInTransition } from '#storefront-ui/components'
 import SFProductPrice from '~/components/product/SFProductPrice.vue'
 
-type Props = {
-  product: Product
-  variant?: Variant
-  preferredDeliveryDate?: Array<PreferredDeliveryDate>
-  pricePromotionKey?: string
-  quantity: number
-}
-
 const {
   variant,
   product,
@@ -80,11 +72,15 @@ const {
     { day: 1, label: 'day_of_month_selection_caption' },
     { day: 15, label: 'day_of_month_selection_caption' },
   ],
-} = defineProps<Props>()
-
-defineEmits<{
-  (e: 'addItemToBasket', item: AddToBasketItem | undefined): void
+} = defineProps<{
+  product: Product
+  variant?: Variant
+  preferredDeliveryDate?: PreferredDeliveryDate[]
+  pricePromotionKey?: string
+  quantity: number
 }>()
+
+defineEmits<{ addItemToBasket: [item?: AddToBasketItem] }>()
 
 const {
   selectedPreferredDeliveryDate,

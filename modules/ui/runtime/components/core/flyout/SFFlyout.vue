@@ -20,5 +20,5 @@ import {
   SFFadeInFromBottomTransition,
 } from '#storefront-ui/components'
 
-withDefaults(defineProps<{ isOpen?: boolean }>(), { isOpen: false })
+const { isOpen = false } = defineProps<{ isOpen?: boolean }>()
 </script>

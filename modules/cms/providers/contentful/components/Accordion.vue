@@ -37,7 +37,7 @@ import { useContentfulMargins } from '../composables/useContentfulMargins'
 import CMSContentfulLink from './ContentfulLink.vue'
 import { useRoute } from '#app/composables/router'
 
-const props = defineProps<CMSAccordionProps>()
+const { blok } = defineProps<CMSAccordionProps>()
 
 const route = useRoute()
 
@@ -49,7 +49,7 @@ const collapseByAnchorSlug = (linkTitle: string) => {
   return `#${dashedTitle}` !== route.hash
 }
 
-const { marginClasses } = useContentfulMargins(props.blok?.fields.marginTop)
+const { marginClasses } = useContentfulMargins(blok?.fields.marginTop)
 
 defineOptions({ name: 'CMSAccordion' })
 </script>

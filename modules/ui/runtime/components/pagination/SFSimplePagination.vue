@@ -61,27 +61,22 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, toRefs, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { SFButton } from '#storefront-ui/components'
 
-type Props = {
+const {
+  perPage = 8,
+  currentPage = 1,
+  recordCount = 1,
+} = defineProps<{
   recordCount?: number
   currentPage?: number
   perPage?: number
-}
-
-const _props = withDefaults(defineProps<Props>(), {
-  recordCount: 1,
-  currentPage: 1,
-  perPage: 8,
-})
+}>()
 
 const emit = defineEmits<{ 'change:page': [number] }>()
 
-const props = toRefs(_props)
-const lastPage = computed(() => {
-  return Math.ceil(props.recordCount.value / props.perPage.value)
-})
+const lastPage = computed(() => Math.ceil(recordCount / perPage))
 
 /**
  * If the size of the dataset is less than on eequal to
@@ -91,12 +86,11 @@ const lastPage = computed(() => {
 const MAX_SIZE_FOR_ALL_OPTIONS = 5
 
 const firstDotsVisible = ref(
-  lastPage.value > MAX_SIZE_FOR_ALL_OPTIONS && props.currentPage.value > 3,
+  lastPage.value > MAX_SIZE_FOR_ALL_OPTIONS && currentPage > 3,
 )
 
 const lastDotsVisible = ref(
-  lastPage.value > MAX_SIZE_FOR_ALL_OPTIONS &&
-    props.currentPage.value < lastPage.value - 2,
+  lastPage.value > MAX_SIZE_FOR_ALL_OPTIONS && currentPage < lastPage.value - 2,
 )
 
 /**
@@ -117,7 +111,7 @@ const getFirstOptions = () => {
     }
   } else {
     options.push(1)
-    if (props.currentPage.value < 3) {
+    if (currentPage < 3) {
       options.push(2)
       options.push(3)
     }
@@ -134,13 +128,12 @@ const getMiddleOptions = () => {
   const options: number[] = []
   if (
     lastPage.value > MAX_SIZE_FOR_ALL_OPTIONS &&
-    props.currentPage.value >= 3 &&
-    props.currentPage.value < lastPage.value - 2
+    currentPage >= 3 &&
+    currentPage < lastPage.value - 2
   ) {
-    const index = props.currentPage.value
-    options.push(index - 1)
-    options.push(index)
-    options.push(index + 1)
+    options.push(currentPage - 1)
+    options.push(currentPage)
+    options.push(currentPage + 1)
   }
   return options
 }
@@ -153,7 +146,7 @@ const getMiddleOptions = () => {
 const getLastOptions = () => {
   const options: number[] = []
   if (lastPage.value > MAX_SIZE_FOR_ALL_OPTIONS) {
-    if (props.currentPage.value >= lastPage.value - 2) {
+    if (currentPage >= lastPage.value - 2) {
       const index = lastPage.value - 2
       options.push(index - 1)
       options.push(index)
@@ -168,16 +161,19 @@ const firstOptionSet = ref(getFirstOptions())
 const middleOptionSet = ref(getMiddleOptions())
 const lastOptionSet = ref(getLastOptions())
 
-watch(props.currentPage, () => {
-  firstOptionSet.value = getFirstOptions()
-  middleOptionSet.value = getMiddleOptions()
-  lastOptionSet.value = getLastOptions()
-  firstDotsVisible.value =
-    lastPage.value > MAX_SIZE_FOR_ALL_OPTIONS && props.currentPage.value > 3
-  lastDotsVisible.value =
-    lastPage.value > MAX_SIZE_FOR_ALL_OPTIONS &&
-    (!!middleOptionSet.value.length || props.currentPage.value <= 3)
-})
+watch(
+  () => currentPage,
+  () => {
+    firstOptionSet.value = getFirstOptions()
+    middleOptionSet.value = getMiddleOptions()
+    lastOptionSet.value = getLastOptions()
+    firstDotsVisible.value =
+      lastPage.value > MAX_SIZE_FOR_ALL_OPTIONS && currentPage > 3
+    lastDotsVisible.value =
+      lastPage.value > MAX_SIZE_FOR_ALL_OPTIONS &&
+      (!!middleOptionSet.value.length || currentPage <= 3)
+  },
+)
 
 const scrollToTop = () => window.scroll({ behavior: 'smooth', top: 0 })
 

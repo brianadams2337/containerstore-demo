@@ -5,7 +5,8 @@
         class="mt-2 block transition-all delay-0 duration-200 ease-in transition-discrete group-hover/product-card:block group-hover/product-card:translate-y-0 group-hover/product-card:opacity-100 group-hover/product-card:delay-100 group-hover/product-card:starting:translate-y-4 group-hover/product-card:starting:opacity-0 md:mt-3 md:hidden md:translate-y-4 md:opacity-0"
       >
         <SFProductCardSiblingsPicker
-          v-bind="{ product, siblings }"
+          :product="product"
+          :siblings="nonSoldOutSiblings"
           :limit="2"
         />
       </div>
@@ -44,21 +45,14 @@ import SFProductPrice from '../SFProductPrice.vue'
 import SFProductCardSiblingsPicker from './siblings/SFProductCardSiblingsPicker.vue'
 import { useProductBaseInfo, useProductPromotions } from '~/composables'
 
-const props = defineProps<{ product: Product }>()
+const { product } = defineProps<{ product: Product }>()
 
-const {
-  brand,
-  name,
-  price,
-  lowestPriorPrice,
-  nonSoldOutSiblings: siblings,
-} = useProductBaseInfo(props.product)
+const { brand, name, price, lowestPriorPrice, nonSoldOutSiblings } =
+  useProductBaseInfo(() => product)
 
 const showPriceFrom = computed(
-  () =>
-    props.product.priceRange?.min.withTax !==
-    props.product.priceRange?.max.withTax,
+  () => product.priceRange?.min.withTax !== product.priceRange?.max.withTax,
 )
 
-const { promotion } = useProductPromotions(props.product)
+const { promotion } = useProductPromotions(() => product)
 </script>

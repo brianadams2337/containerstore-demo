@@ -20,13 +20,11 @@ import { useCMSListingContent } from '../../composables/useCMSListingContent'
 import { useContentfulEditor } from '../../composables/useContentfulEditor'
 import { useRoute } from '#app/composables/router'
 
-const props = defineProps<{
-  selectedCategory: number | undefined
-}>()
+const { selectedCategory } = defineProps<{ selectedCategory?: number }>()
 
 const route = useRoute()
 
-if (!props.selectedCategory) {
+if (!selectedCategory) {
   console.log('No category selected')
 }
 const { data } = await useCMSBySlug<TypeListingPageSkeleton>(
@@ -38,7 +36,7 @@ const { data } = await useCMSBySlug<TypeListingPageSkeleton>(
     // Contentful requires also to set `c/c-{selectedCategory} to be set as `Slug`
     // within the related story.
     // This allows the Contentful Preview functionality to properly work.
-    'fields.slug[match]': `c/c-${props.selectedCategory}`,
+    'fields.slug[match]': `c/c-${selectedCategory}`,
   },
 )
 const { content, hasTeaserImage, postListingContent, preListingContent } =

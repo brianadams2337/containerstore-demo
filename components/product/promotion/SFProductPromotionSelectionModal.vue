@@ -142,7 +142,7 @@ import {
 } from '#storefront-ui/components'
 import type { Promotion } from '~/types/promotion'
 
-const props = defineProps<{
+const { product, promotion } = defineProps<{
   product: Product
   promotion: Promotion
   backgroundColorStyle: { backgroundColor?: string }
@@ -161,10 +161,10 @@ const {
   addItemToBasket,
   toggleGiftSelection,
   isGiftSelectionShown,
-} = usePromotionGiftSelection(props.product)
+} = usePromotionGiftSelection(product)
 
 const { name, brand, image, hasOneVariantOnly, alt } = useProductBaseInfo(
-  props.product,
+  () => product,
 )
 
 const selectItem = (product: Product) => {
@@ -193,7 +193,7 @@ const addToBasket = () => {
     return
   }
 
-  addItemToBasket(props.promotion?.id)
+  addItemToBasket(promotion?.id)
 }
 
 const close = () => {

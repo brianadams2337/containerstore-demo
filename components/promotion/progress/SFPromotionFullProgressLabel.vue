@@ -27,7 +27,7 @@
 import { computed } from 'vue'
 import { useCurrentPromotion, usePromotionProgress } from '~/composables'
 
-withDefaults(defineProps<{ isSmall?: boolean }>(), { isSmall: false })
+const { isSmall = false } = defineProps<{ isSmall?: boolean }>()
 
 const {
   automaticDiscount,

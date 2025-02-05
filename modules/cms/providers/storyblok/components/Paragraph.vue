@@ -60,11 +60,11 @@ import CMSStoryblokLink from './StoryblokLink.vue'
 import { NuxtPicture } from '#components'
 import { SFHeadline, SFButton } from '#storefront-ui/components'
 
-const props = defineProps<CMSParagraphProps>()
+const { blok } = defineProps<CMSParagraphProps>()
 
 const style = computed(() =>
-  props.blok?.background_color
-    ? { backgroundColor: props.blok?.background_color }
+  blok?.background_color
+    ? { backgroundColor: blok?.background_color }
     : undefined,
 )
 

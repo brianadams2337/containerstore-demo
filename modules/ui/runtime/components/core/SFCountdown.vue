@@ -25,24 +25,23 @@ import { DAY, HOURS, MINUTE, SECOND } from '~/constants/time'
 
 type CountdownUnit = 'days' | 'hours' | 'minutes' | 'seconds'
 
-type Props = {
+const {
+  showUnits = false,
+  unitSize = 'long',
+  timeUntil,
+} = defineProps<{
   timeUntil: string
   showUnits?: boolean
   unitSize?: 'short' | 'long'
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  showUnits: false,
-  unitSize: 'long',
-})
+}>()
 
 const emit = defineEmits<{ finished: [] }>()
 
-const timeUntil = computed(() => Date.parse(props.timeUntil))
+const until = computed(() => Date.parse(timeUntil))
 const countdown = ref<{ [k in CountdownUnit]?: number }>({})
 
 const renderUnit = (unit: string) => {
-  return props.unitSize === 'short' ? unit.substring(0, 1).toUpperCase() : unit
+  return unitSize === 'short' ? unit.substring(0, 1).toUpperCase() : unit
 }
 
 const shouldShowValue = (key: CountdownUnit, value?: number) => {
@@ -53,7 +52,7 @@ const shouldShowValue = (key: CountdownUnit, value?: number) => {
 }
 
 const start = () => {
-  const remaining = timeUntil.value - Date.now()
+  const remaining = until.value - Date.now()
 
   countdown.value = {
     days: Math.floor(remaining / (SECOND * MINUTE * HOURS * DAY)),

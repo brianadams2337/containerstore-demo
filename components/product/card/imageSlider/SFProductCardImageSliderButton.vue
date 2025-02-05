@@ -14,19 +14,22 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useNuxtApp } from '#app/nuxt'
 import { IconChevronLeft, IconChevronRight } from '#components'
+import { useI18n } from '#i18n'
 
-const props = defineProps<{ disabled: boolean; direction: 'left' | 'right' }>()
+const { direction } = defineProps<{
+  disabled: boolean
+  direction: 'left' | 'right'
+}>()
 
-const { $i18n } = useNuxtApp()
+const { t } = useI18n()
 
-const isLeft = computed(() => props.direction === 'left')
+const isLeft = computed(() => direction === 'left')
 const icon = computed(() => (isLeft.value ? IconChevronLeft : IconChevronRight))
 
 const ariaLabel = computed(() => {
   return isLeft.value
-    ? $i18n.t('image_slider.previous_label')
-    : $i18n.t('image_slider.next_label')
+    ? t('image_slider.previous_label')
+    : t('image_slider.next_label')
 })
 </script>

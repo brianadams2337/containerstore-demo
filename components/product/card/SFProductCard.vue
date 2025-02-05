@@ -83,16 +83,6 @@ import SFProductCardDetails from './SFProductCardDetails.vue'
 import { useProductBaseInfo, useRouteHelpers } from '~/composables'
 import type { ListItem } from '~/types/tracking'
 
-type Props = {
-  product: Product
-  index?: number
-  isRightSideBorderless?: boolean
-  edgeBorderless?: boolean
-  multipleImages?: boolean
-  listingMetaData?: ListItem
-  hideBadges?: boolean
-}
-
 const {
   product,
   listingMetaData,
@@ -101,7 +91,15 @@ const {
   isRightSideBorderless = false,
   edgeBorderless = false,
   hideBadges = false,
-} = defineProps<Props>()
+} = defineProps<{
+  product: Product
+  index?: number
+  isRightSideBorderless?: boolean
+  edgeBorderless?: boolean
+  multipleImages?: boolean
+  listingMetaData?: ListItem
+  hideBadges?: boolean
+}>()
 
 const hasBeenVisible = ref(false)
 
@@ -124,7 +122,7 @@ const onMouseLeave = () => {
   emit('product-image:mouseleave')
 }
 
-const { alt, image, images, link, name } = useProductBaseInfo(product)
+const { alt, image, images, link, name } = useProductBaseInfo(() => product)
 
 const shouldShowSingleImage = computed(() => {
   return !multipleImages || images.value.length === 1 || !hasBeenVisible.value

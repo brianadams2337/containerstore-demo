@@ -84,7 +84,7 @@ import {
 } from '~/composables'
 import type { Promotion } from '~/types/promotion'
 
-const props = defineProps<{
+const { category } = defineProps<{
   promotions: Promotion[]
   category?: Promotion['customData']['category']
 }>()
@@ -113,7 +113,7 @@ const { isFullProgress, isMOVPromotionApplied } =
 
 const isDealsButtonShown = computed<boolean>(() => {
   return Boolean(
-    props.category &&
+    category &&
       !isMOVPromotionApplied.value &&
       isFullProgress.value &&
       minOrderValue.value,

@@ -56,7 +56,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, toRefs } from 'vue'
+import { computed } from 'vue'
 import type { LowestPriorPrice, Price } from '@scayle/storefront-nuxt'
 import { Size } from '#storefront-ui'
 import {
@@ -67,7 +67,16 @@ import { getPromotionStyle } from '~/utils'
 import type { Promotion } from '~/types/promotion'
 import { useFormatHelpers } from '#storefront/composables'
 
-type Props = {
+const {
+  showTaxInfo = false,
+  showPriceFrom = false,
+  showBadges = true,
+  size = Size.MD,
+  type = 'normal',
+  promotion,
+  price,
+  inline = true,
+} = defineProps<{
   price: Price | BasketItemPrice
   lowestPriorPrice?: LowestPriorPrice
   promotion?: Promotion | null
@@ -77,41 +86,29 @@ type Props = {
   size?: Size
   type?: 'normal' | 'whisper' | 'loud'
   inline?: boolean
-}
+}>()
 
-const props = withDefaults(defineProps<Props>(), {
-  showTaxInfo: false,
-  showPriceFrom: false,
-  showBadges: true,
-  size: Size.MD,
-  type: 'normal',
-  promotion: undefined,
-  lowestPriorPrice: undefined,
-  inline: true,
-})
-
-const { price } = toRefs(props)
 const {
   appliedReductions,
   strikeThroughPrices,
   relativeReductions,
   totalPrice,
-} = useProductPrice(price)
+} = useProductPrice(() => price)
 
 const { formatCurrency, formatPercentage } = useFormatHelpers()
 
-const promotionStyle = computed(() => getPromotionStyle(props.promotion))
+const promotionStyle = computed(() => getPromotionStyle(promotion))
 
 const classes = computed(() => ({
-  'text-xl': props.size === Size.XL,
-  'text-lg': props.size === Size.LG,
-  'text-sm': props.size === Size.SM,
-  'text-base': props.size === Size.MD,
-  'text-xs': props.size === Size.XS,
-  'font-bold': props.type === 'loud',
-  'font-semibold': props.type === 'whisper',
-  'font-variable': props.type === 'normal',
+  'text-xl': size === Size.XL,
+  'text-lg': size === Size.LG,
+  'text-sm': size === Size.SM,
+  'text-base': size === Size.MD,
+  'text-xs': size === Size.XS,
+  'font-bold': type === 'loud',
+  'font-semibold': type === 'whisper',
+  'font-variable': type === 'normal',
   'text-status-error': appliedReductions.value.length,
-  'text-end': !props.inline,
+  'text-end': !inline,
 }))
 </script>

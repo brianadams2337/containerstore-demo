@@ -23,7 +23,15 @@
 import { HeadlineSize, HeadlineTag } from '#storefront-ui'
 import { SFSkeletonLoader, SFHeadlineBadge } from '#storefront-ui/components'
 
-type Props = {
+const {
+  loading = false,
+  isUppercase = false,
+  hidden = false,
+  badge = 0,
+  size = HeadlineSize['2XL'],
+  tag = HeadlineTag.P,
+  isBold = false,
+} = defineProps<{
   loading?: boolean
   isUppercase?: boolean
   hidden?: boolean
@@ -31,17 +39,7 @@ type Props = {
   badge?: number | string
   size?: HeadlineSize
   tag?: HeadlineTag
-}
-
-withDefaults(defineProps<Props>(), {
-  loading: false,
-  isUppercase: false,
-  hidden: false,
-  badge: 0,
-  size: HeadlineSize['2XL'],
-  tag: HeadlineTag.P,
-  isBold: false,
-})
+}>()
 
 const HeadlineClass = {
   [HeadlineSize['4XL']]: 'text-4xl',

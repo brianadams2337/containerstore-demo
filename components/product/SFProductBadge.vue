@@ -16,17 +16,17 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-const props = defineProps<{ text: string | string[] }>()
+const { text } = defineProps<{ text: string | string[] }>()
 
 const label = computed<string | Record<'firstLabel' | 'secondLabel', string>>(
   () => {
-    if (!Array.isArray(props.text)) {
-      return props.text
+    if (!Array.isArray(text)) {
+      return text
     }
-    if (props.text.length === 1) {
-      return props.text[0]
+    if (text.length === 1) {
+      return text[0]
     }
-    const [firstLabel, secondLabel] = props.text
+    const [firstLabel, secondLabel] = text
     return { firstLabel, secondLabel }
   },
 )

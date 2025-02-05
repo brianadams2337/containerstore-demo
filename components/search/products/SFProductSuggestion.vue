@@ -4,7 +4,7 @@
     raw
     class="group flex items-center space-x-4 !p-1 !pr-6"
     data-testid="search-exact-product-item"
-    @click="emit('click:result', productSuggestion)"
+    @click="$emit('click:result', productSuggestion)"
   >
     <div
       class="flex h-16 w-14 shrink-0 items-center overflow-hidden rounded-md bg-gray-100"
@@ -30,14 +30,11 @@ import { useProductBaseInfo, useRouteHelpers } from '~/composables'
 import { NuxtImg } from '#components'
 import SFProductPrice from '~/components/product/SFProductPrice.vue'
 
-type Props = {
+const { productSuggestion } = defineProps<{
   productSuggestion: ProductSearchSuggestion
-}
-const { productSuggestion } = defineProps<Props>()
-
-const emit = defineEmits<{
-  (e: 'click:result', suggestion: ProductSearchSuggestion): void
 }>()
+
+defineEmits<{ 'click:result': [ProductSearchSuggestion] }>()
 
 const product = productSuggestion.productSuggestion.product
 

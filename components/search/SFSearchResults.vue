@@ -36,16 +36,15 @@ import SFNavigationItemSuggestionList from './navigationItem/SFNavigationItemSug
 import SFCategorySuggestionList from './categories/SFCategorySuggestionList.vue'
 import SFShowAllResultsLink from './SFShowAllResultsLink.vue'
 
-type Props = {
+defineProps<{
   products: ProductSearchSuggestion[]
   categories: CategorySearchSuggestion[]
   navigationItems: NavigationItemSuggestionType[]
   searchTerm: string
-}
-defineProps<Props>()
+}>()
 
 defineEmits<{
-  (e: 'click:result', value: SearchEntity | 'show_all'): void
-  (e: 'close'): void
+  'click:result': [SearchEntity | 'show_all']
+  close: []
 }>()
 </script>

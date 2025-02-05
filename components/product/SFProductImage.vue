@@ -32,7 +32,18 @@ import { computed } from 'vue'
 import type { ProductImage } from '@scayle/storefront-nuxt'
 import { NuxtPicture } from '#components'
 
-type Props = {
+const {
+  sizes = '',
+  shouldTrim = false,
+  isCentered = false,
+  withMixBlendDarken = true,
+  fit = 'contain',
+  imageLoading = 'eager',
+  preload = false,
+  quality = 75,
+  aspectRatio = '3/4',
+  load = () => {},
+} = defineProps<{
   image: ProductImage
   sizes?: string
   fit?: 'contain' | 'cover'
@@ -47,25 +58,9 @@ type Props = {
   height?: number | string
   width?: number | string
   aspectRatio?: '16/9' | '4/3' | '3/4' | '1/1'
-}
+}>()
 
-const props = withDefaults(defineProps<Props>(), {
-  sizes: '',
-  shouldTrim: false,
-  isCentered: false,
-  withMixBlendDarken: true,
-  fit: 'contain',
-  imageLoading: 'eager',
-  preload: false,
-  alt: undefined,
-  quality: 75,
-  height: undefined,
-  width: undefined,
-  aspectRatio: '3/4',
-  load: () => {},
-})
-
-const modifiers = computed(() => ({ ...(props.shouldTrim && { trim: 1 }) }))
+const modifiers = computed(() => ({ ...(shouldTrim && { trim: 1 }) }))
 </script>
 
 <style>

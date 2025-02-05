@@ -20,16 +20,16 @@ import { getComponentName } from '../../../utils/helpers'
 import type { CMSGridProps } from '../types'
 import { useContentfulMargins } from '../composables/useContentfulMargins'
 
-const props = defineProps<CMSGridProps>()
-const { marginClasses } = useContentfulMargins(props.blok?.fields.marginTop)
+const { blok } = defineProps<CMSGridProps>()
+const { marginClasses } = useContentfulMargins(blok?.fields.marginTop)
 
 const containerClasses = computed(() => ({
-  'md:container': props.blok?.fields.isContaineredDesktop,
-  'max-md:container': props.blok?.fields.isContainered,
-  'gap-0.5': props.blok?.fields.isSpaced,
+  'md:container': blok?.fields.isContaineredDesktop,
+  'max-md:container': blok?.fields.isContainered,
+  'gap-0.5': blok?.fields.isSpaced,
 }))
 const sizes = computed(() => {
-  const vw = Math.ceil(100 / (props?.blok?.fields.columns?.length || 1))
+  const vw = Math.ceil(100 / (blok?.fields.columns?.length || 1))
   return `xs:100vw sm:100vw md:100vw lg:${vw}vw  xl:${vw}vw  xxl:${vw}vw 2xl:${vw}vw `
 })
 

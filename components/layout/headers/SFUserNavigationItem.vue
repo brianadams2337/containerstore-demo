@@ -36,13 +36,15 @@ import SFAsyncDataWrapper from '~/components/SFAsyncDataWrapper.vue'
 import SFUserActions from '~/components/account/popover/SFUserActions.vue'
 import SFLoginActions from '~/components/account/popover/SFLoginActions.vue'
 
+defineProps<{ blockPopup?: boolean }>()
+
 const { user, status } = useUser()
+
 const mounted = useMounted()
+
 const link = computed(() =>
   user.value && mounted.value ? routeList.account : routeList.signin,
 )
 
 const isOpen = ref(false)
-
-defineProps<{ blockPopup?: boolean }>()
 </script>

@@ -26,22 +26,20 @@ import SFAddressCards from './SFAddressCards.vue'
 import SFAddressTabs from './SFAddressTabs.vue'
 import SFAddressInformation from './SFAddressInformation.vue'
 import { isEqual } from '~/utils/object'
-import { useNuxtApp } from '#app'
 import type { OrderAddress } from '~/types/order'
+import { useI18n } from '#i18n'
 
 export type SummaryItem = {
   name: 'shipping' | 'billing'
   label: string
 }
 
-type Props = {
+const { shippingAddress, billingAddress } = defineProps<{
   shippingAddress?: OrderAddress
   billingAddress?: OrderAddress
-}
+}>()
 
-const props = defineProps<Props>()
-
-const { $i18n } = useNuxtApp()
+const { t } = useI18n()
 
 const pickElements = (
   objectValue: Record<string, unknown>,
@@ -54,7 +52,7 @@ const pickElements = (
   )
 
 const isShippingSameAsBillingAddress = computed(() => {
-  if (!props.shippingAddress || !props.billingAddress) {
+  if (!shippingAddress || !billingAddress) {
     return false
   }
 
@@ -75,16 +73,13 @@ const isShippingSameAsBillingAddress = computed(() => {
   ] as RecipientProps[]
 
   const shippingAddressProps = {
-    ...pickElements(props.shippingAddress, propertiesToCheck),
-    ...pickElements(
-      props.shippingAddress.recipient,
-      recipientPropertiesToCheck,
-    ),
+    ...pickElements(shippingAddress, propertiesToCheck),
+    ...pickElements(shippingAddress.recipient, recipientPropertiesToCheck),
   }
 
   const billingAddressProps = {
-    ...pickElements(props.billingAddress, propertiesToCheck),
-    ...pickElements(props.billingAddress.recipient, recipientPropertiesToCheck),
+    ...pickElements(billingAddress, propertiesToCheck),
+    ...pickElements(billingAddress.recipient, recipientPropertiesToCheck),
   }
 
   return isEqual(shippingAddressProps, billingAddressProps)
@@ -92,12 +87,12 @@ const isShippingSameAsBillingAddress = computed(() => {
 
 const items = computed<SummaryItem[]>(() => {
   if (isShippingSameAsBillingAddress.value) {
-    const label = $i18n.t('my_account.orders.address_label')
+    const label = t('my_account.orders.address_label')
     return [{ name: 'shipping', label }]
   }
 
-  const shippingLabel = $i18n.t('my_account.orders.shipping_address_label')
-  const billingLabel = $i18n.t('my_account.orders.billing_address_label')
+  const shippingLabel = t('my_account.orders.shipping_address_label')
+  const billingLabel = t('my_account.orders.billing_address_label')
 
   return [
     { name: 'shipping', label: shippingLabel },

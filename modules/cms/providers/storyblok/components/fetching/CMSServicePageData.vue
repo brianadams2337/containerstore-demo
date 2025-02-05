@@ -9,13 +9,11 @@ import type { SbContentPage } from '../../types'
 import { useCMSBySlug } from '../../composables/useCMS'
 import { useStoryblokEditor } from '../../composables/useStoryblokEditor'
 
-const props = defineProps<{
-  slug: string
-}>()
+const { slug } = defineProps<{ slug: string }>()
 
 const { data, status } = await useCMSBySlug<SbContentPage>(
-  `services-page-${props.slug}`,
-  `s/${props.slug}`,
+  `services-page-${slug}`,
+  `s/${slug}`,
 )
 useStoryblokEditor<SbContentPage>(data)
 </script>

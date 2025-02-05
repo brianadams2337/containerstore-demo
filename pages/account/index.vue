@@ -54,7 +54,6 @@ import { useSeoMeta } from '@unhead/vue'
 import { computed, defineOptions } from 'vue'
 import { definePageMeta } from '#imports'
 import { useRouteHelpers } from '~/composables'
-import { useNuxtApp } from '#app'
 import { useUser } from '#storefront/composables'
 import { routeList } from '~/utils/route'
 import SFAccountHeader from '~/components/account/SFAccountHeader.vue'
@@ -65,16 +64,17 @@ import {
   SFSkeletonLoader,
   SFHeadline,
 } from '#storefront-ui/components'
+import { useI18n } from '#i18n'
 
 const { user } = useUser()
 
 const { getLocalizedRoute } = useRouteHelpers()
 
-const { $i18n } = useNuxtApp()
+const { t } = useI18n()
 
 const orderCount = computed(() => user.value?.orderSummary?.length || 0)
 
-useSeoMeta({ robots: 'index,follow', title: $i18n.t('navigation.my_account') })
+useSeoMeta({ robots: 'index,follow', title: t('navigation.my_account') })
 
 defineOptions({ name: 'AccountOverview' })
 definePageMeta({ pageType: 'account_area' })

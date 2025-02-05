@@ -98,16 +98,14 @@ import { useI18n } from '#i18n'
 import { productListingMetaData } from '~/constants/product'
 import { formatColors } from '~/utils'
 
-type Props = {
-  product: Product
-}
-const { getProductDetailRoute } = useRouteHelpers()
+const { product } = defineProps<{ product: Product }>()
 
-const props = defineProps<Props>()
-const { siblings } = useProductBaseInfo(props.product)
+const { getProductDetailRoute } = useRouteHelpers()
+const { siblings } = useProductBaseInfo(() => product)
+
+const { t } = useI18n()
 
 const hoveredColorLabel = ref()
-const { t } = useI18n()
 
 const setHoveredLabel = (sibling?: ProductSibling) => {
   if (!sibling) {
@@ -141,7 +139,7 @@ const siblingAltText = (sibling: ProductSibling) => {
         brand: sibling.brand,
       }),
       selected: t(
-        props.product.id === sibling.id
+        product.id === sibling.id
           ? 'product_image.selected'
           : 'product_image.unselected',
       ),
@@ -152,7 +150,7 @@ const siblingAltText = (sibling: ProductSibling) => {
 const { pageState } = usePageState()
 const route = useRoute()
 const trackSiblingClick = (sibling: ProductSibling, index: number) => {
-  const siblingsProduct = props.product.siblings?.find(
+  const siblingsProduct = product.siblings?.find(
     (product) => product.id === sibling.id,
   )
   if (!siblingsProduct) {

@@ -24,7 +24,7 @@
           size="sm"
           variant="raw"
           class="rounded bg-gray-100 p-1 text-sm font-medium leading-none !text-gray-600 xl:bg-white xl:hover:translate-x-[-4px] xl:hover:bg-gray-100"
-          @click="emit('click:reset')"
+          @click="$emit('click:reset')"
         >
           {{ resetLabel ?? $t('filter.reset') }}
         </SFButton>
@@ -39,18 +39,17 @@
 <script setup lang="ts">
 import { SFButton, SFHeadline } from '#storefront-ui/components'
 
-type Props = {
+const {
+  resetLabel,
+  label = '',
+  badge = 0,
+  showAction = false,
+} = defineProps<{
   label?: string
   resetLabel?: string
   badge?: number
   showAction?: boolean
-}
-withDefaults(defineProps<Props>(), {
-  label: '',
-  resetLabel: undefined,
-  badge: 0,
-  showAction: false,
-})
+}>()
 
-const emit = defineEmits<{ 'click:reset': [] }>()
+defineEmits<{ 'click:reset': [] }>()
 </script>

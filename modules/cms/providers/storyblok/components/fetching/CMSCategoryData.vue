@@ -16,13 +16,11 @@ import { useCMSListingContent } from '../../composables/useCMSListingContent'
 import { useStoryblokEditor } from '../../composables/useStoryblokEditor'
 import { useRoute } from '#app/composables/router'
 
-const props = defineProps<{
-  selectedCategory: number | undefined
-}>()
+const { selectedCategory } = defineProps<{ selectedCategory?: number }>()
 
 const route = useRoute()
 
-if (!props.selectedCategory) {
+if (!selectedCategory) {
   console.log('No category selected')
 }
 const { data } = useCMSBySlug<SbListingPage>(
@@ -32,7 +30,7 @@ const { data } = useCMSBySlug<SbListingPage>(
   // Storyblok requires also to set `c-{selectedCategory} to be set as `Slug`
   // within the related story.
   // This allows the Storyblok Preview functionality to properly work.
-  `c/c-${props.selectedCategory}`,
+  `c/c-${selectedCategory}`,
 )
 
 useStoryblokEditor<SbListingPage>(data)

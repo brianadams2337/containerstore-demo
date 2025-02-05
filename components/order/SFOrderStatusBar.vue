@@ -42,23 +42,22 @@ import { useFormatDate } from '~/composables/useFormatDate'
 import { SFHeadline, SFProgressBar } from '#storefront-ui/components'
 import type { DeliveryInfo } from '~/types/order'
 
-type Props = {
+const { deliveryStatus } = defineProps<{
   index: number
   carrierKey: DeliveryInfo['carrierKey']
   formattedStatus: DeliveryInfo['formattedStatus']
   deliveryStatus: DeliveryInfo['deliveryStatus']
   deliveryDate: DeliveryInfo['deliveryDate']
-}
-const props = defineProps<Props>()
+}>()
 
 const { formatLocaleDate } = useFormatDate()
 
 const progressLevel = computed<number>(() => {
-  return DeliveryProgress[props.deliveryStatus] || DeliveryProgress.DEFAULT
+  return DeliveryProgress[deliveryStatus] || DeliveryProgress.DEFAULT
 })
 
 const progressType = computed<'success' | 'warn' | 'danger'>(() => {
-  return props.deliveryStatus !== OrderStatus.CANCELLATION_COMPLETED
+  return deliveryStatus !== OrderStatus.CANCELLATION_COMPLETED
     ? 'success'
     : 'danger'
 })

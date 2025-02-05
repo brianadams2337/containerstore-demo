@@ -11,12 +11,10 @@ import type {
 import { useCMSBySlug } from '../../composables/useCMS'
 import { useContentfulEditor } from '../../composables/useContentfulEditor'
 
-const props = defineProps<{
-  slug: string
-}>()
+const { slug } = defineProps<{ slug: string }>()
 
-const { data } = await useCMSBySlug<TypePageSkeleton>(`${props.slug}`, {
-  'fields.slug': props.slug,
+const { data } = await useCMSBySlug<TypePageSkeleton>(slug, {
+  'fields.slug': slug,
   content_type: 'page',
 })
 

@@ -58,12 +58,10 @@ import { SFHeadline, SFButton } from '#storefront-ui/components'
 import SFPaymentIcon from '~/components/order/SFPaymentIcon.vue'
 import type { Order, DeliveryDate } from '~/types/order'
 
-type Props = {
+defineProps<{
   orderData: Order
   deliveryDate: DeliveryDate
-}
-
-defineProps<Props>()
+}>()
 
 const { getOrderDetailsRoute, getLocalizedRoute } = useRouteHelpers()
 </script>

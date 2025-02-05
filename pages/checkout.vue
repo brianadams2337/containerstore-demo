@@ -22,7 +22,7 @@ import {
   useCheckoutStepTrackingInterceptor,
 } from '~/composables'
 import { useBasket, useLog, useUser } from '#storefront/composables'
-import { useNuxtApp } from '#app'
+import { useI18n } from '#i18n'
 
 const { accessToken, checkoutJwt, fetchCheckoutToken } =
   useCheckoutWebComponent()
@@ -30,7 +30,7 @@ const { refresh: refreshBasket, status } = useBasket()
 
 const { user, refresh: refreshUser } = useUser()
 
-const { $i18n } = useNuxtApp()
+const { t } = useI18n()
 
 const log = useLog('CheckoutPage')
 
@@ -73,10 +73,8 @@ const handleError = (payload = {}) => {
   log.error('[onCheckoutError]', loggingPayload)
 }
 
-useSeoMeta({
-  robots: 'index,follow',
-  title: $i18n.t('navigation.checkout'),
-})
+useSeoMeta({ robots: 'index,follow', title: t('navigation.checkout') })
+
 defineOptions({ name: 'CheckoutPage' })
 definePageMeta({ pageType: 'checkout', layout: 'simple' })
 </script>

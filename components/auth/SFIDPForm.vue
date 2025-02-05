@@ -33,13 +33,11 @@ const idpClasses: Record<string, string> = {
   okta: 'bg-[#0061F2] text-white hover:bg-[#004ecb] focus:bg-[#004ecb]',
 }
 
-const props = defineProps<{
-  redirects: Record<string, string>
-}>()
+const { redirects } = defineProps<{ redirects: Record<string, string> }>()
 
 const providers = computed<{ title: string; url: string; classes: string }[]>(
   () => {
-    return Object.entries(props.redirects).map(([key, url]) => {
+    return Object.entries(redirects).map(([key, url]) => {
       return {
         title: key,
         url,

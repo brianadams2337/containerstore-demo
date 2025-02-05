@@ -29,19 +29,14 @@
         </div>
         <div class="my-3 flex flex-col justify-start text-sm font-semibold">
           <p
+            v-if="originalPrice"
             class="text-right"
-            :class="{
-              'line-through': reducedPrice !== undefined,
-            }"
+            :class="{ 'line-through': reducedPrice !== undefined }"
           >
-            {{
-              formatCurrency(
-                quantity * (reducedPrice ? price + reducedPrice : price),
-              )
-            }}
+            {{ formatCurrency(originalPrice) }}
           </p>
           <p v-if="reducedPrice" class="text-right text-red-500">
-            {{ formatCurrency(quantity * price) }}
+            {{ formatCurrency(quantity * price.withTax) }}
           </p>
           <p
             v-if="
@@ -73,41 +68,52 @@ import { SFLink } from '#storefront-ui/components'
 import { NuxtImg } from '#components'
 import type { OrderProduct, OrderVariant, OrderPrice } from '~/types/order'
 
-type Props = {
+const {
+  quantity = 1,
+  product,
+  variant,
+  price,
+} = defineProps<{
   product: OrderProduct
   variant: OrderVariant
   price: OrderPrice
   deliveryStatus: string
   quantity?: number
-}
-
-const props = withDefaults(defineProps<Props>(), { quantity: 1 })
+}>()
 
 const { getProductDetailRoute } = useRouteHelpers()
 const { formatCurrency } = useFormatHelpers()
-const name = computed(() => props.product.name)
+const name = computed(() => product.name)
 
 const color = computed(
-  () => getFirstAttributeValue(props.product.attributes, 'color')?.label,
+  () => getFirstAttributeValue(product.attributes, 'color')?.label,
 )
 
 const size = computed(
-  () => getFirstAttributeValue(props.variant?.attributes, 'size')?.label,
+  () => getFirstAttributeValue(variant?.attributes, 'size')?.label,
 )
 
-const imageHash = computed(() => props.product.images[0].hash)
-
-const price = computed(() => props.price.withTax)
+const imageHash = computed(() => product.images[0].hash)
 
 const reducedPrice = computed(() => {
-  if (!props.price.appliedReductions) {
+  if (!price.appliedReductions) {
     return
   }
 
   return getTotalAppliedReductions({
-    appliedReductions: props.price.appliedReductions,
+    appliedReductions: price.appliedReductions,
   }).absoluteWithTax
 })
 
-const lowestPriorPrice = computed(() => props.variant.lowestPriorPrice)
+const originalPrice = computed(() => {
+  if (!reducedPrice.value) {
+    return
+  }
+  return (
+    quantity *
+    (reducedPrice.value ? price.withTax + reducedPrice.value : price.withTax)
+  )
+})
+
+const lowestPriorPrice = computed(() => variant.lowestPriorPrice)
 </script>

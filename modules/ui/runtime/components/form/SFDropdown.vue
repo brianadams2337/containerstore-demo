@@ -87,20 +87,16 @@ import { useDefaultBreakpoints } from '#storefront-ui/composables'
 import { SFButton } from '#storefront-ui/components'
 import { useDropdownKeyboardBehavior } from '#storefront-ui'
 
-type Props = {
+const {
+  isLarge = false,
+  disabled = false,
+  radius = 'md',
+} = defineProps<{
   items: NonNullable<T>[]
   isLarge?: boolean
   disabled?: boolean
-  isFullHeight?: boolean
   radius?: 'md' | 'lg' | 'xl'
-}
-
-withDefaults(defineProps<Props>(), {
-  isLarge: false,
-  disabled: false,
-  isFullHeight: false,
-  radius: 'md',
-})
+}>()
 
 const isDropdownListVisible = defineModel<boolean>('visible', {
   default: false,

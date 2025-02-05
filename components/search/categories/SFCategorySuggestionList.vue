@@ -19,7 +19,7 @@
         <SFCategorySuggestion
           role="option"
           :category-suggestion="suggestion"
-          @click:result="emit('click:result', suggestion)"
+          @click:result="$emit('click:result', suggestion)"
         />
       </li>
     </ul>
@@ -30,13 +30,7 @@
 import type { CategorySearchSuggestion } from '@scayle/storefront-nuxt'
 import SFCategorySuggestion from './SFCategorySuggestion.vue'
 
-type Props = {
-  categorySuggestions: CategorySearchSuggestion[]
-}
+defineProps<{ categorySuggestions: CategorySearchSuggestion[] }>()
 
-defineProps<Props>()
-
-const emit = defineEmits<{
-  (e: 'click:result', suggestion: CategorySearchSuggestion): void
-}>()
+defineEmits<{ 'click:result': [CategorySearchSuggestion] }>()
 </script>

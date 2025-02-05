@@ -51,19 +51,17 @@ import { IconEmptyBasket, IconEmptyWishlist } from '#components'
 import { SFButton, SFHeadline } from '#storefront-ui/components'
 import { useRouteHelpers } from '~/composables'
 
-type Props = {
-  title?: string
-  description?: string
-  showDefaultActions?: boolean
-  icon?: 'EmptyWishlist' | 'EmptyBasket'
-}
-
 const {
   title = '',
   description = '',
   showDefaultActions = true,
   icon = 'EmptyBasket',
-} = defineProps<Props>()
+} = defineProps<{
+  title?: string
+  description?: string
+  showDefaultActions?: boolean
+  icon?: 'EmptyWishlist' | 'EmptyBasket'
+}>()
 
 const { isLoggedIn } = useUser()
 

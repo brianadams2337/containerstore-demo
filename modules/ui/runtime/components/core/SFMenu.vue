@@ -15,7 +15,7 @@
 import { ref } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 
-withDefaults(defineProps<{ fullWidth?: boolean }>(), { fullWidth: false })
+const { fullWidth = false } = defineProps<{ fullWidth?: boolean }>()
 
 const targetClickOutside = ref(null)
 const isOpen = ref(false)

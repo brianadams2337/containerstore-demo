@@ -57,15 +57,13 @@ import SFProductCardImageSliderButton from './SFProductCardImageSliderButton.vue
 import { PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE } from '~/constants'
 import { SFItemsSlider, SFLink } from '#storefront-ui/components'
 
-type Props = {
+const { isProductHovered, images, productIndex } = defineProps<{
   link: string
   isProductHovered: boolean
   alt: string
   images: ProductImageType[]
   productIndex: number
-}
-
-const props = defineProps<Props>()
+}>()
 
 const slider = useTemplateRef('productImageSlider')
 const scrollImageIntoView = (
@@ -84,17 +82,16 @@ const areArrowsShown = computed(() => {
     return false
   }
   const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0
-  return !isTouchDevice && props.isProductHovered && props.images.length > 1
+  return !isTouchDevice && isProductHovered && images.length > 1
 })
 
 const getImageLoading = (index: number) => {
-  const shouldEagerLoad =
-    props.productIndex < PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE
+  const shouldEagerLoad = productIndex < PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE
   return shouldEagerLoad && index === 0 ? 'eager' : 'lazy'
 }
 
 const shouldPreload = (index: number) => {
-  const shouldPreload = props.productIndex < PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE
+  const shouldPreload = productIndex < PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE
   return shouldPreload && index === 0
 }
 </script>

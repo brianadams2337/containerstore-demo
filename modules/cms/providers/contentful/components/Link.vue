@@ -13,8 +13,8 @@ import { defineOptions } from 'vue'
 import type { CMSLinkTypeProps } from '../types'
 import CMSContentfulLink from './ContentfulLink.vue'
 
-const props = defineProps<CMSLinkTypeProps>()
+const { blok } = defineProps<CMSLinkTypeProps>()
 
-const url = props.blok?.fields?.ctaUrl ?? null
+const url = blok?.fields?.ctaUrl ?? null
 defineOptions({ name: 'CMSLink' })
 </script>

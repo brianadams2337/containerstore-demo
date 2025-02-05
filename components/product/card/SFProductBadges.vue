@@ -8,19 +8,19 @@
 import { computed } from 'vue'
 import { type Product, getFirstAttributeValue } from '@scayle/storefront-nuxt'
 import SFProductBadge from '../SFProductBadge.vue'
-import { useNuxtApp } from '#app/nuxt'
+import { useI18n } from '#i18n'
 
-const props = defineProps<{ product: Product }>()
+const { product } = defineProps<{ product: Product }>()
 
-const { $i18n } = useNuxtApp()
+const { t } = useI18n()
 
 const customAttributes = computed(() => {
-  return getFirstAttributeValue(props.product.attributes, 'storefrontBadge')
+  return getFirstAttributeValue(product.attributes, 'storefrontBadge')
 })
 
 const labels = computed(() => {
   return [
-    props.product.isNew ? $i18n.t('badge_labels.new') : null,
+    product.isNew ? t('badge_labels.new') : null,
     customAttributes.value?.label,
   ].filter((item): item is string => !!item)
 })

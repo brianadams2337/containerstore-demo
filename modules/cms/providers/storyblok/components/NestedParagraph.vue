@@ -77,7 +77,7 @@ import CMSStoryblokLink from './StoryblokLink.vue'
 import { NuxtPicture } from '#components'
 import { SFHeadline, SFButton } from '#storefront-ui/components'
 
-const props = defineProps<{ blok: SbNestedParagraph }>()
+const { blok } = defineProps<{ blok: SbNestedParagraph }>()
 
 function trimAnchorSymbol(anchorId?: string): string | undefined {
   if (!anchorId) {
@@ -87,8 +87,8 @@ function trimAnchorSymbol(anchorId?: string): string | undefined {
 }
 
 const style = computed(() =>
-  props.blok?.background_color
-    ? { backgroundColor: props.blok?.background_color }
+  blok?.background_color
+    ? { backgroundColor: blok?.background_color }
     : undefined,
 )
 

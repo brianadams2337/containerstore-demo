@@ -5,9 +5,7 @@ import { getComponentName } from '../../../utils/helpers'
 
 export type SbBlokKeyDataTypes = string | number | object | boolean | undefined
 
-const props = defineProps<{
-  blok: StoryblokComponentType<string>
-}>()
+const { blok } = defineProps<{ blok: StoryblokComponentType<string> }>()
 
 const blokRef = ref()
 
@@ -16,17 +14,16 @@ defineExpose({
 })
 
 const componentFound: boolean =
-  typeof resolveDynamicComponent(getComponentName(props.blok.component)) !==
-  'string'
+  typeof resolveDynamicComponent(getComponentName(blok.component)) !== 'string'
 
-const componentName = ref(getComponentName(props.blok.component))
+const componentName = ref(getComponentName(blok.component))
 if (!componentFound) {
   console.error(
     `Component could not be found for blok "${getComponentName(
-      props.blok.component,
+      blok.component,
     )}"! Is it defined in main.ts as "app.component("${getComponentName(
-      props.blok.component,
-    )}", ${getComponentName(props.blok.component)});"?`,
+      blok.component,
+    )}", ${getComponentName(blok.component)});"?`,
   )
 }
 </script>

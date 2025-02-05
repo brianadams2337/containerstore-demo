@@ -32,7 +32,7 @@ import { useProductPromotions } from '~/composables'
 import { SFFadeInTransition } from '#storefront-ui/components'
 import SFPromotionHurryToSaveBanners from '~/components/promotion/SFPromotionHurryToSaveBanners.vue'
 
-const props = defineProps<{ product: Product }>()
+const { product } = defineProps<{ product: Product }>()
 
 const {
   areHurryToSaveBannersShown,
@@ -41,10 +41,12 @@ const {
   isGiftAddedToBasket,
   areGiftConditionsMet,
   productPromotionId,
-} = useProductPromotions(props.product)
+} = useProductPromotions(() => product)
+
 const { appliedPromotions } = await useBasketPromotions()
 
 const isMounted = useMounted()
+
 const divOrTransition = computed(() => {
   return !isMounted.value ? 'h2' : SFFadeInTransition
 })

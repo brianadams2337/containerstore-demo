@@ -32,16 +32,17 @@ import { useStoryblokMargins } from '../composables/useStoryblokMargins'
 import CMSStoryblokLink from './StoryblokLink.vue'
 import { useRoute } from '#app/composables/router'
 
-const props = defineProps<CMSAccordionProps>()
-const collapseByAnchorSlug = (linkTitle: string) => {
+const { blok } = defineProps<CMSAccordionProps>()
+
+const route = useRoute()
+
+const { marginClasses } = useStoryblokMargins(blok)
+
+const collapseByAnchorSlug = (linkTitle: string): boolean => {
   return `#${prepareForUrl(linkTitle)}` !== route.hash
 }
 
-const prepareForUrl = (title: string) => {
-  return slugify(title)
-}
-const route = useRoute()
-const { marginClasses } = useStoryblokMargins(props.blok)
+const prepareForUrl = (title: string): string => slugify(title)
 
 defineOptions({ name: 'CMSAccordion' })
 </script>

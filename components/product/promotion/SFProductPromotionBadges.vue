@@ -53,22 +53,21 @@ import { useRoute } from '#app/composables/router'
 import { getBackgroundColorStyle } from '~/utils/promotion'
 import type { Promotion } from '~/types/promotion'
 
-type Props = {
+const {
+  product,
+  isPriorityLabelShown = false,
+  isFullWidth = true,
+} = defineProps<{
   product: Product
   isPriorityLabelShown?: boolean
   isFullWidth?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  isPriorityLabelShown: false,
-  isFullWidth: true,
-})
+}>()
 
 const route = useRoute()
 const localePath = useLocalePath()
 
 const { productPromotionId, applicablePromotions, isHighestPriority } =
-  useProductPromotions(props.product)
+  useProductPromotions(() => product)
 
 const isBasket = computed(() => route.path === localePath(routeList.basket))
 const isWishlist = computed(() => route.path === localePath(routeList.wishlist))

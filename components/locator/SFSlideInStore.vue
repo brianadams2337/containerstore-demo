@@ -96,18 +96,12 @@ interface Props {
   openingTimes?: OpeningTimes
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  index: 0,
-  distance: undefined,
-  quantity: undefined,
-  customData: undefined,
-  openingTimes: undefined,
-})
+const { index = 0, name } = defineProps<Props>()
 
 const formatDistance = useFormatDistance()
 
 const nameWithIndex = computed(() =>
-  props.index > 0 ? `${props.index}. ${props.name}` : `${props.name}`,
+  index > 0 ? `${index}. ${name}` : `${name}`,
 )
 
 const closesInTime = (totalMinutes: number) => {

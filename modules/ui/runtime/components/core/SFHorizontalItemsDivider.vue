@@ -26,10 +26,8 @@
 import type { RouteLocationRaw } from '#vue-router'
 import { DividerItemTag, showDividerTag } from '#storefront-ui'
 
-type Props = {
+const { tag = DividerItemTag.PARAGRAPH } = defineProps<{
   items: Item[]
   tag?: DividerItemTag
-}
-
-withDefaults(defineProps<Props>(), { tag: DividerItemTag.PARAGRAPH })
+}>()
 </script>

@@ -39,12 +39,12 @@ import {
 } from '#storefront-ui/components'
 import type { Promotion } from '~/types/promotion'
 
-const props = defineProps<{
+const { promotionId } = defineProps<{
   promotionId: Promotion['id']
   content: string
 }>()
 
-const areTermsShown = useState(`terms-${props.promotionId}`, () => false)
+const areTermsShown = useState(`terms-${promotionId}`, () => false)
 
 const toggleTerms = () => {
   areTermsShown.value = !areTermsShown.value

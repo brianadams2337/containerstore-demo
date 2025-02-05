@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-withDefaults(defineProps<{ backgroundClass?: string }>(), {
-  backgroundClass: 'bg-primary/50',
-})
+const { backgroundClass = 'bg-primary/50' } = defineProps<{
+  backgroundClass?: string
+}>()
 </script>

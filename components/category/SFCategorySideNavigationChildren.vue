@@ -35,7 +35,7 @@ import SFCategorySideNavigationChildren from './SFCategorySideNavigationChildren
 import SFCategorySideNavigationItem from './SFCategorySideNavigationItem.vue'
 import { isSaleCategory } from '~/utils'
 
-const props = defineProps<{
+const { currentCategory, parentDataTestId } = defineProps<{
   subCategories: Category[]
   currentCategory: Category | null
   isParentSale: boolean
@@ -46,13 +46,13 @@ const shouldShowChildren = ({ id, children }: Category) => {
   if (!children?.length) {
     return false
   }
-  const areAncestorsActive = props.currentCategory?.rootlineIds.includes(id)
-  return id === props.currentCategory?.id || areAncestorsActive
+  const areAncestorsActive = currentCategory?.rootlineIds.includes(id)
+  return id === currentCategory?.id || areAncestorsActive
 }
 
 const getDataTestId = (index: number) => {
-  return !props.parentDataTestId
+  return !parentDataTestId
     ? `sub-category-${index}`
-    : `${props.parentDataTestId}_${index}`
+    : `${parentDataTestId}_${index}`
 }
 </script>

@@ -91,15 +91,12 @@ import SFProductImage from '../../SFProductImage.vue'
 import SFProductCardImageSliderButton from '../../card/imageSlider/SFProductCardImageSliderButton.vue'
 import { SFItemsSlider, SFModal } from '#storefront-ui/components'
 
-type Props = {
+const { startIndex = 0 } = defineProps<{
   alt: string
   images: ProductImageType[]
   startIndex?: number
-}
+}>()
 
-const props = withDefaults(defineProps<Props>(), {
-  startIndex: 0,
-})
 const visible = defineModel<boolean>('visible', { default: false })
 
 let pinchController: ReturnType<typeof usePinch>
@@ -109,7 +106,7 @@ let stopZoomElementWatch: WatchStopHandle
 watch(visible, (isNowVisible) => {
   if (isNowVisible) {
     nextTick(() => {
-      slider.value?.scrollImageIntoView(props.startIndex, 'instant')
+      slider.value?.scrollImageIntoView(startIndex, 'instant')
       pinchController = usePinch(pinchHandler, {
         domTarget: zoomElement,
         eventOptions: {
@@ -160,7 +157,7 @@ const slider = ref<InstanceType<typeof SFItemsSlider>>()
 // Zoom
 
 // Shared
-const imageIndex = ref(props.startIndex)
+const imageIndex = ref(startIndex)
 const zoomOffsetY = ref(0)
 const zoomOffsetX = ref(0)
 const scale = ref(1)

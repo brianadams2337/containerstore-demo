@@ -19,23 +19,21 @@ import type { Category } from '@scayle/storefront-nuxt'
 import SFCategoryNavigationSliderItem from './SFCategoryNavigationSliderItem.vue'
 import { SFItemsSlider } from '#storefront-ui/components'
 
-const props = defineProps<{
+const { allCategories, currentCategory } = defineProps<{
   allCategories: Category[]
   currentCategory: Category | null
 }>()
 
 const categories = computed(() => {
-  const currentCategory = props.currentCategory
-
   // If the category is a leaf node, select all categories which have the same parent
   if (currentCategory?.childrenIds.length === 0) {
-    return props.allCategories.filter((item) => {
+    return allCategories.filter((item) => {
       return currentCategory.parentId === item.parentId
     })
   }
 
   // If the category has children, we return all categories which have our current category as a parent
-  return props.allCategories.filter((item) => {
+  return allCategories.filter((item) => {
     return currentCategory?.id === item.parentId
   })
 })

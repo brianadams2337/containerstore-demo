@@ -18,7 +18,7 @@ import SFProductImage from '../SFProductImage.vue'
 import { PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE } from '~/constants'
 import SFLocalizedLink from '~/components/SFLocalizedLink.vue'
 
-const props = defineProps<{
+const { productIndex } = defineProps<{
   link: string
   image: ProductImageType
   alt: string
@@ -26,12 +26,10 @@ const props = defineProps<{
 }>()
 
 const imageLoading = computed(() => {
-  return props.productIndex < PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE
-    ? 'eager'
-    : 'lazy'
+  return productIndex < PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE ? 'eager' : 'lazy'
 })
 
 const preload = computed(
-  () => props.productIndex < PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE,
+  () => productIndex < PRODUCT_CARD_IMAGE_EAGER_LOAD_SIZE,
 )
 </script>

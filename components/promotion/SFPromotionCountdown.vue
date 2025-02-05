@@ -35,10 +35,8 @@ import {
 } from '#storefront-ui/components'
 import { ClientOnly } from '#components'
 
-type Props = {
+const { borderless = false } = defineProps<{
   timeUntil: string
   borderless?: boolean
-}
-
-withDefaults(defineProps<Props>(), { borderless: false })
+}>()
 </script>

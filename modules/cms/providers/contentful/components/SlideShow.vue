@@ -37,13 +37,13 @@ import type { CMSSlideShowProps } from '../types'
 import CMSSlide from './Slide.vue'
 import { SFHeadline } from '#storefront-ui/components'
 
-const props = defineProps<CMSSlideShowProps>()
+const { blok } = defineProps<CMSSlideShowProps>()
 
 const sliderRef = ref()
 
 const isDark = ref(true)
 
-const { marginClasses } = useContentfulMargins(props.blok?.fields.marginTop)
+const { marginClasses } = useContentfulMargins(blok?.fields.marginTop)
 
 defineOptions({ name: 'CMSSlideShow' })
 </script>

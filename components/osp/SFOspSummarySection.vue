@@ -42,19 +42,17 @@ import SFOspProductCard from './SFOspProductCard.vue'
 import { SFHeadline } from '#storefront-ui/components'
 import type { Order, DeliveryDate, OrderItem } from '~/types/order'
 
-type Props = {
+const { orderData } = defineProps<{
   orderData: Order
   deliveryDate: DeliveryDate
-}
-
-const props = defineProps<Props>()
+}>()
 
 const orderItems = computed((): OrderItem[] => {
-  if (!props.orderData?.items) {
+  if (!orderData?.items) {
     return []
   }
 
-  return props.orderData?.items.filter(
+  return orderData?.items.filter(
     (item, index, self) =>
       index ===
       self.findIndex((arrayItem) => arrayItem.variant.id === item.variant.id),
@@ -65,6 +63,6 @@ const getItemQuantity = (variantId: number): number | undefined => {
   const isVariant = (value: NonNullable<Order['items']>[number]) =>
     value.variant.id === variantId
 
-  return props.orderData?.items?.filter(isVariant).length
+  return orderData?.items?.filter(isVariant).length
 }
 </script>

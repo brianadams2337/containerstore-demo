@@ -39,11 +39,11 @@ import type {
 } from '#storefront-ui'
 import { SFLink } from '#storefront-ui/components'
 
-const props = defineProps<{ notification: StorefrontNotification }>()
+const { notification } = defineProps<{ notification: StorefrontNotification }>()
 
 const { close: closeNotification } = useNotification()
 
-const close = () => closeNotification(props.notification.id)
+const close = () => closeNotification(notification.id)
 
 const onClick = (event: Event, action: NotificationActionHandler) => {
   if (!action?.onClick) {
@@ -54,5 +54,5 @@ const onClick = (event: Event, action: NotificationActionHandler) => {
   action?.onClick({ close })
 }
 
-useTimeoutFn(close, props.notification.duration)
+useTimeoutFn(close, notification.duration)
 </script>

@@ -29,9 +29,5 @@ type IconName = keyof {
     : never]: GlobalComponents[K]
 }
 
-defineProps<{
-  to: RouteLocationRaw
-  label: string
-  icon: IconName
-}>()
+defineProps<{ to: RouteLocationRaw; label: string; icon: IconName }>()
 </script>

@@ -86,7 +86,7 @@ import { SFButton } from '#storefront-ui/components'
 
 const emit = defineEmits<{
   close: []
-  'click:result': [event: SearchEntity | 'show_all']
+  'click:result': [SearchEntity | 'show_all']
 }>()
 
 const { getSearchRoute, localizedNavigateTo } = useRouteHelpers()
@@ -186,10 +186,8 @@ const ARROW_KEYS = ['ArrowUp', 'ArrowDown']
 
 onKeyStroke(
   ARROW_KEYS,
-  (event: KeyboardEvent) => {
-    // Prevent scrolling the page on arrow keys
-    event.preventDefault()
-  },
+  // Prevent scrolling the page on arrow keys
+  (event: KeyboardEvent) => event.preventDefault(),
   { target: root },
 )
 
@@ -206,9 +204,8 @@ const { activate, deactivate } = useFocusTrap(resultContainer, {
   allowOutsideClick: true,
   returnFocusOnDeactivate: false,
 })
-useEventListener(resultContainer, 'focusin', () => {
-  activate()
-})
+
+useEventListener(resultContainer, 'focusin', () => activate())
 
 useSearchInputKeybindings(
   input,

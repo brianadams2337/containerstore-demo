@@ -13,9 +13,5 @@
 import SFLocalizedLink from '../SFLocalizedLink.vue'
 import type { RouteLocationRaw } from '#vue-router'
 
-type Props = {
-  to: RouteLocationRaw
-}
-
-defineProps<Props>()
+defineProps<{ to: RouteLocationRaw }>()
 </script>

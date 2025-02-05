@@ -1,18 +1,43 @@
-import { type Ref, computed, ref } from 'vue'
+import { type MaybeRefOrGetter, computed, ref } from 'vue'
 import {
   type Product,
   getRowByIndex,
   isFirstIndexOfRow,
 } from '@scayle/storefront-nuxt'
+import { toRef } from '@vueuse/core'
 import { useRoute } from '#app/composables/router'
 import { useDefaultBreakpoints } from '#storefront-ui/composables'
 import { ProductsPerRow, PRODUCTS_PER_PAGE } from '~/constants'
 
-export function useRowIntersection(products: Ref<Product[]>) {
+/**
+ * Represents the data for a row intersection.
+ * It includes the row number and all product items, each with their respective index in that row.
+ */
+export type CollectedRowIntersection = {
+  row: number
+  items: (Product & { index: number })[]
+}
+
+export interface UseRowIntersectionReturn {
+  /** Collects row data on intersection. */
+  collectRowIntersection: (
+    index: number,
+  ) => CollectedRowIntersection | undefined
+}
+/**
+ * Composable for collecitng row data on intersection.
+ *
+ * @param productItems - Product items on which the row intersection will be manipulated.
+ * @returns An {@link UseRowIntersectionReturn} object containing row intersection collector function.
+ */
+export function useRowIntersection(
+  productItems: MaybeRefOrGetter<Product[]>,
+): UseRowIntersectionReturn {
   const route = useRoute()
-  const trackingCollector = ref<
-    { row: number; items: (Product & { index: number })[] }[]
-  >([])
+
+  const products = toRef(productItems)
+
+  const trackingCollector = ref<CollectedRowIntersection[]>([])
   const { greaterOrEqual } = useDefaultBreakpoints()
 
   const isGreaterOrEqualThenLg = greaterOrEqual('lg')
@@ -37,7 +62,9 @@ export function useRowIntersection(products: Ref<Product[]>) {
     })
   }
 
-  const collectRowIntersection = (index: number) => {
+  const collectRowIntersection = (
+    index: number,
+  ): CollectedRowIntersection | undefined => {
     const row = _getRowByIndex(index)
     const isFirstItemInRow = isFirstIndexOfRow(index, columns.value)
 

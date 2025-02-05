@@ -13,8 +13,9 @@ import { defineOptions } from 'vue'
 import type { CMSLinkTypeProps } from '../types'
 import CMSStoryblokLink from './StoryblokLink.vue'
 
-const props = defineProps<CMSLinkTypeProps>()
+const { blok } = defineProps<CMSLinkTypeProps>()
 
-const url = props.blok?.cta_url?.cached_url ?? null
+const url = blok?.cta_url?.cached_url ?? null
+
 defineOptions({ name: 'CMSLink' })
 </script>

@@ -87,7 +87,7 @@ import {
   SFSlideIn,
 } from '#storefront-ui/components'
 
-const props = defineProps<{ variantId: number }>()
+const { variantId } = defineProps<{ variantId: number }>()
 
 const { variantStoresData, refreshVariantStores } = useStoreLocator(
   'useStoreLocator',
@@ -106,7 +106,7 @@ const currentSelectedStoreId = ref<number | undefined>(undefined)
 
 const searchStore = async () => {
   await refreshVariantStores({
-    variantId: props.variantId,
+    variantId,
     filters: { address: address.value },
   })
 }

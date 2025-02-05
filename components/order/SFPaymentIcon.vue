@@ -21,9 +21,7 @@ import {
   IconPaymentMastercard,
 } from '#components'
 
-const props = defineProps({
-  paidWith: { type: String, required: true },
-})
+const { paidWith } = defineProps<{ paidWith: string }>()
 
 type PaymentIconType = {
   component: unknown
@@ -67,5 +65,5 @@ const paymentIconsMap: PaymentIconsMapType = {
   },
 }
 
-const icon = computed(() => paymentIconsMap[props.paidWith] ?? {})
+const icon = computed(() => paymentIconsMap[paidWith] ?? {})
 </script>

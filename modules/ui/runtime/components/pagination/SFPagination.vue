@@ -78,17 +78,15 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs, computed } from 'vue'
+import { computed } from 'vue'
 import { usePagination } from '#storefront-ui'
 import { SFPaginationButton } from '#storefront-ui/components'
 
-type Props = {
+const { visible = 6, totalPageCount } = defineProps<{
   totalPageCount: number
   visible?: number
-}
-const props = withDefaults(defineProps<Props>(), { visible: 6 })
+}>()
 
-const { visible, totalPageCount } = toRefs(props)
 const {
   limitedPages,
   previousPage,
@@ -99,12 +97,12 @@ const {
   areSecondDotsShown,
   firstPage,
   lastPage,
-} = usePagination({
-  totalPageCount,
-  visiblePageNumbers: visible,
-})
+} = usePagination(
+  () => visible,
+  () => totalPageCount,
+)
 
 const isFirstOrLastPageButtonShown = computed(() => {
-  return props.totalPageCount !== 1 && props.totalPageCount > props.visible
+  return totalPageCount !== 1 && totalPageCount > visible
 })
 </script>

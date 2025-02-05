@@ -84,20 +84,16 @@ import type { PreferredDeliveryDate } from '../helpers/subscription'
 import type { AddToBasketItem } from '~/composables'
 import { SFButton, SFDropdown } from '#storefront-ui/components'
 
-type Props = {
-  product: Product
-  variant?: Variant
-  preferredDeliveryDate: Array<PreferredDeliveryDate>
-  pricePromotionKey: string
-  quantity: number
-}
-
 const { product, variant, preferredDeliveryDate, pricePromotionKey, quantity } =
-  defineProps<Props>()
+  defineProps<{
+    product: Product
+    variant?: Variant
+    preferredDeliveryDate: PreferredDeliveryDate[]
+    pricePromotionKey: string
+    quantity: number
+  }>()
 
-defineEmits<{
-  (e: 'addItemToBasket', item: AddToBasketItem | undefined): void
-}>()
+defineEmits<{ addItemToBasket: [item?: AddToBasketItem] }>()
 
 const {
   subscriptionIntervals,

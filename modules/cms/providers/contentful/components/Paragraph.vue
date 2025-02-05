@@ -65,10 +65,10 @@ import { NuxtPicture } from '#components'
 import { SFHeadline, SFButton } from '#storefront-ui/components'
 import { EMAIL_REGEX_PATTERN } from '~/modules/cms/utils/helpers'
 
-const props = defineProps<CMSParagraphProps>()
+const { blok } = defineProps<CMSParagraphProps>()
 
 const isCtaEmail = computed(() => {
-  return String(props.blok?.fields.cta ?? '')
+  return String(blok?.fields.cta ?? '')
     .toLowerCase()
     .match(EMAIL_REGEX_PATTERN)
 })

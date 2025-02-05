@@ -20,13 +20,13 @@ import { useRouteHelpers } from '~/composables'
 import { routeList } from '~/utils'
 import { SFButton } from '#storefront-ui/components'
 
-const props = defineProps<{ currentCategory: Category | null }>()
+const { currentCategory } = defineProps<{ currentCategory: Category | null }>()
 
 const { buildCategoryPath, getLocalizedRoute } = useRouteHelpers()
 
 const link = computed(() => {
-  return props.currentCategory?.parent
-    ? buildCategoryPath(props.currentCategory.parent)
+  return currentCategory?.parent
+    ? buildCategoryPath(currentCategory.parent)
     : getLocalizedRoute(routeList.home.path)
 })
 </script>

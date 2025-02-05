@@ -21,7 +21,7 @@
           :navigation-item-suggestion="suggestion"
           :search-term="searchTerm"
           raw
-          @click:result="emit('click:result', suggestion)"
+          @click:result="$emit('click:result', suggestion)"
         />
       </li>
     </ul>
@@ -32,12 +32,10 @@
 import type { NavigationItemSuggestion as NavigationItemSuggestionType } from '@scayle/storefront-nuxt'
 import SFNavigationItemSuggestion from './SFNavigationItemSuggestion.vue'
 
-type Props = {
+defineProps<{
   navigationItemSuggestions: NavigationItemSuggestionType[]
   searchTerm: string
-}
-defineProps<Props>()
-const emit = defineEmits<{
-  (e: 'click:result', suggestion: NavigationItemSuggestionType): void
 }>()
+
+defineEmits<{ 'click:result': [NavigationItemSuggestionType] }>()
 </script>

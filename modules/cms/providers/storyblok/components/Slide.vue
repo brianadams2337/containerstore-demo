@@ -53,11 +53,12 @@ import { useCMSAlignment } from '../composables/useCMSAlignment'
 import type { SbCmsImage, SbSlide, SbVideo } from '../types'
 import CMSStoryblokLink from './StoryblokLink.vue'
 
-type Props = { blok: SbSlide; preload?: boolean }
+const { blok, preload = false } = defineProps<{
+  blok: SbSlide
+  preload?: boolean
+}>()
 
-const props = withDefaults(defineProps<Props>(), { preload: false })
-
-const { justify, align } = useCMSAlignment(props.blok)
+const { justify, align } = useCMSAlignment(blok)
 
 const getSlideComponent = (file: SbVideo | SbCmsImage) => {
   if (!file) {

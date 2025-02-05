@@ -16,14 +16,14 @@
 
 <script setup lang="ts">
 import type { Gender } from '@scayle/storefront-nuxt'
-import { useNuxtApp } from '#app/nuxt'
+import { useI18n } from '#i18n'
 
 const model = defineModel<Gender>({
   required: true,
   default: 'f',
 })
 
-const { $i18n } = useNuxtApp()
+const { t } = useI18n()
 
 const triggerInputEvent = (event: Event) => {
   model.value = (event?.target as HTMLInputElement)?.value as Gender
@@ -31,15 +31,15 @@ const triggerInputEvent = (event: Event) => {
 
 const genders: { label: string; value: Gender }[] = [
   {
-    label: $i18n.t('form_fields.female'),
+    label: t('form_fields.female'),
     value: 'f',
   },
   {
-    label: $i18n.t('form_fields.male'),
+    label: t('form_fields.male'),
     value: 'm',
   },
   {
-    label: $i18n.t('form_fields.diverse'),
+    label: t('form_fields.diverse'),
     value: 'd',
   },
 ]

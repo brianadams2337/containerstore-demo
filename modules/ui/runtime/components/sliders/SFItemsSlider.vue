@@ -75,16 +75,6 @@ import { useMounted } from '@vueuse/core'
 import { useItemsSlider } from '#storefront-ui'
 import { SFFadeInTransition } from '#storefront-ui/components'
 
-type Props = {
-  container?: boolean
-  sliderClass?: string
-  spacedItems?: boolean
-  withArrows?: boolean
-  hideDisabledArrows?: boolean
-  mode?: 'horizontal' | 'vertical'
-  sliderTabindex?: number
-}
-
 const {
   container = false,
   spacedItems = false,
@@ -92,7 +82,15 @@ const {
   sliderClass = '',
   hideDisabledArrows = false,
   mode = 'horizontal',
-} = defineProps<Props>()
+} = defineProps<{
+  container?: boolean
+  sliderClass?: string
+  spacedItems?: boolean
+  withArrows?: boolean
+  hideDisabledArrows?: boolean
+  mode?: 'horizontal' | 'vertical'
+  sliderTabindex?: number
+}>()
 
 const sliderRef = ref<HTMLElement>()
 
@@ -119,9 +117,8 @@ defineExpose({
   scrollImageIntoView,
 })
 
-const emit = defineEmits<{
-  (e: 'update:activeSlide', newActiveSlide: number): void
-}>()
+const emit = defineEmits<{ 'update:activeSlide': [number] }>()
+
 watch(activeSlide, (newActiveSlide) => {
   emit('update:activeSlide', newActiveSlide)
 })

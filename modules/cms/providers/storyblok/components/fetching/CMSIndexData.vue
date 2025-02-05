@@ -7,10 +7,9 @@ import type { SbPage } from '../../types'
 import { useCMSBySlug } from '../../composables/useCMS'
 import { useStoryblokEditor } from '../../composables/useStoryblokEditor'
 
-const props = defineProps<{
-  slug: string
-}>()
+const { slug } = defineProps<{ slug: string }>()
 
-const { data } = await useCMSBySlug<SbPage>(`${props.slug}`, `${props.slug}`)
+const { data } = await useCMSBySlug<SbPage>(slug, slug)
+
 useStoryblokEditor<SbPage>(data)
 </script>

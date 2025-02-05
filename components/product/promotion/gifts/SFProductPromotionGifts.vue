@@ -49,30 +49,30 @@ import { usePromotionGifts } from '~/composables'
 import { SFHeadline } from '#storefront-ui/components'
 import type { Promotion } from '~/types/promotion'
 
-const props = defineProps<{
+const { product, areGiftConditionsMet, promotion } = defineProps<{
   product: Product
   areGiftConditionsMet: boolean
   promotion: Promotion
 }>()
 
-const i18n = useI18n()
+const { t } = useI18n()
 
 const promotionGiftsHeadline = computed(() => {
-  return props.areGiftConditionsMet
-    ? i18n.t('pdp.promotion.free_gift_conditions_met.headline')
-    : i18n.t('pdp.promotion.free_gift_conditions_not_met.headline')
+  return areGiftConditionsMet
+    ? t('pdp.promotion.free_gift_conditions_met.headline')
+    : t('pdp.promotion.free_gift_conditions_not_met.headline')
 })
 
 const promotionGiftsDescription = computed(() => {
-  return props.areGiftConditionsMet
-    ? i18n.t('pdp.promotion.free_gift_conditions_met.description')
-    : i18n.t('pdp.promotion.free_gift_conditions_not_met.description')
+  return areGiftConditionsMet
+    ? t('pdp.promotion.free_gift_conditions_met.description')
+    : t('pdp.promotion.free_gift_conditions_not_met.description')
 })
 
 const { backgroundColorStyle, products, isGiftAlreadyAdded } =
   usePromotionGifts(
-    props.product,
-    toRef(props.promotion),
+    product,
+    toRef(() => promotion),
     'product-promotion-gifts',
   )
 </script>

@@ -27,18 +27,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-type Props = {
+const { initialIndex = 0, tabTag = 'div' } = defineProps<{
   tabs: string[]
   initialIndex?: number
   tabTag?: string
-}
+}>()
 
-const props = withDefaults(defineProps<Props>(), {
-  initialIndex: 0,
-  tabTag: 'div',
-})
-
-const activeIndex = ref(props.initialIndex)
+const activeIndex = ref(initialIndex)
 
 const changeActiveTab = (value: number) => {
   activeIndex.value = value

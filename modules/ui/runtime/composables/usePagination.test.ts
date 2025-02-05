@@ -1,5 +1,4 @@
 // @vitest-environment nuxt
-import { ref } from 'vue'
 import { describe, expect, it, vi } from 'vitest'
 import { usePagination } from '#storefront-ui'
 
@@ -15,10 +14,7 @@ vi.mock('#app/composables/router', () => ({
 
 describe('usePagination', () => {
   it('should have no limited list of pages', () => {
-    const { limitedPages } = usePagination({
-      visiblePageNumbers: ref(6),
-      totalPageCount: ref(6),
-    })
+    const { limitedPages } = usePagination(6, 6)
 
     expect(limitedPages.value).toStrictEqual([
       { number: 1, to: { path: '/', query: {} }, isActive: true },
@@ -137,10 +133,7 @@ describe('usePagination', () => {
       mocks.route.query = { page }
 
       const { limitedPages, areSecondDotsShown, areFirstDotsShown } =
-        usePagination({
-          visiblePageNumbers: ref(6),
-          totalPageCount: ref(8),
-        })
+        usePagination(6, 8)
 
       expect(areFirstDotsShown.value).toBe(expectedShowFirstDots)
       expect(areSecondDotsShown.value).toBe(expectedShowSecondDots)
@@ -151,48 +144,33 @@ describe('usePagination', () => {
   it('should allow navigating left', () => {
     mocks.route.query = { page: '2' }
 
-    const { canNavigateLeft } = usePagination({
-      visiblePageNumbers: ref(6),
-      totalPageCount: ref(10),
-    })
+    const { canNavigateLeft } = usePagination(6, 10)
     expect(canNavigateLeft.value).toBeTruthy()
   })
 
   it('should not allow navigating left', () => {
     mocks.route.query = { page: '1' }
 
-    const { canNavigateLeft } = usePagination({
-      visiblePageNumbers: ref(6),
-      totalPageCount: ref(10),
-    })
+    const { canNavigateLeft } = usePagination(6, 10)
     expect(canNavigateLeft.value).toBeFalsy()
   })
   it('should allow navigating right', () => {
     mocks.route.query = { page: '9' }
 
-    const { canNavigateRight } = usePagination({
-      visiblePageNumbers: ref(6),
-      totalPageCount: ref(10),
-    })
+    const { canNavigateRight } = usePagination(6, 10)
     expect(canNavigateRight.value).toBeTruthy()
   })
   it('should not allow navigating right', () => {
     mocks.route.query = { page: '10' }
 
-    const { canNavigateRight } = usePagination({
-      visiblePageNumbers: ref(6),
-      totalPageCount: ref(10),
-    })
+    const { canNavigateRight } = usePagination(6, 10)
     expect(canNavigateRight.value).toBeFalsy()
   })
 
   it('should have correct next and previous page', () => {
     mocks.route.query = { page: '8' }
 
-    const { nextPage, previousPage } = usePagination({
-      visiblePageNumbers: ref(6),
-      totalPageCount: ref(10),
-    })
+    const { nextPage, previousPage } = usePagination(6, 10)
     expect(nextPage.value).toStrictEqual({
       number: 9,
       to: { path: '/', query: { page: '9' } },
@@ -236,10 +214,7 @@ describe('usePagination', () => {
   ])('%s should fallback to first page', (page, expectedPages) => {
     mocks.route.query = { page }
 
-    const { limitedPages, firstPage } = usePagination({
-      visiblePageNumbers: ref(1),
-      totalPageCount: ref(3),
-    })
+    const { limitedPages, firstPage } = usePagination(1, 3)
     expect(limitedPages.value).toStrictEqual(expectedPages)
     expect(firstPage.value).toStrictEqual({
       number: 1,

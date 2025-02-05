@@ -36,8 +36,9 @@ import { useStoryblokMargins } from '../composables/useStoryblokMargins'
 import CMSStoryblokLink from './StoryblokLink.vue'
 import { SFItemsSlider, SFHeadline } from '#storefront-ui/components'
 
-const props = defineProps<CMSImageSliderProps>()
-const { marginClasses } = useStoryblokMargins(props.blok)
+const { blok } = defineProps<CMSImageSliderProps>()
+
+const { marginClasses } = useStoryblokMargins(blok)
 
 defineOptions({ name: 'CMSImageSlider' })
 </script>

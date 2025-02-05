@@ -23,7 +23,7 @@
 import { computed } from 'vue'
 import { passwordStrength } from 'check-password-strength'
 
-const props = defineProps<{ value: string }>()
+const { value } = defineProps<{ value: string }>()
 
-const strength = computed(() => passwordStrength(props.value))
+const strength = computed(() => passwordStrength(value))
 </script>

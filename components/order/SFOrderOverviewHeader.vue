@@ -12,5 +12,5 @@
 <script setup lang="ts">
 import { SFHeadline } from '#storefront-ui/components'
 
-withDefaults(defineProps<{ ordersCount: number }>(), { ordersCount: 0 })
+const { ordersCount = 0 } = defineProps<{ ordersCount: number }>()
 </script>

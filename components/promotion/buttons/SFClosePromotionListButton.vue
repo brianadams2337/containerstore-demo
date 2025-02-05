@@ -17,9 +17,9 @@
 import { usePromotionActions } from '~/composables'
 import { SFButton } from '#storefront-ui/components'
 
-withDefaults(defineProps<{ positionClass?: string }>(), {
-  positionClass: '-bottom-3 right-[50%]',
-})
+const { positionClass = '-bottom-3 right-[50%]' } = defineProps<{
+  positionClass?: string
+}>()
 
 const { togglePromotionList } = usePromotionActions()
 </script>

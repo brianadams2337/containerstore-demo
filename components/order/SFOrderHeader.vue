@@ -19,20 +19,19 @@ import { useFormatDate } from '~/composables/useFormatDate'
 import { useI18n } from '#i18n'
 import { SFHeadline } from '#storefront-ui/components'
 
-type Props = {
+const { orderDate } = defineProps<{
   orderId: number
   shopId: number
   itemCount: number
   orderDate: string
-}
-const props = defineProps<Props>()
+}>()
 
-const i18n = useI18n()
+const { t } = useI18n()
 
 const { formatLocaleDate } = useFormatDate()
 
 const headline = computed(() => {
-  const date = formatLocaleDate(props.orderDate)
-  return i18n.t('my_account.orders.order_summary_header', { date })
+  const date = formatLocaleDate(orderDate)
+  return t('my_account.orders.order_summary_header', { date })
 })
 </script>

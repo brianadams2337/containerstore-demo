@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { toRef, computed } from 'vue'
+import { computed } from 'vue'
 import type {
   Product,
   FetchProductsByCategoryResponse,
@@ -54,30 +54,29 @@ import {
   categoryListingMetaData,
 } from '~/constants'
 import { SFPagination } from '#storefront-ui/components'
+import type { CollectedRowIntersection } from '~/composables'
 
-type Props = {
+const {
+  loading = true,
+  isPaginationVisible = true,
+  currentCategory,
+  pagination,
+  products,
+} = defineProps<{
   products: Product[]
-  pagination: FetchProductsByCategoryResponse['pagination'] | undefined
+  pagination?: FetchProductsByCategoryResponse['pagination']
   loading?: boolean
   isPaginationVisible?: boolean
   currentCategory?: Category | null
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  loading: true,
-  isPaginationVisible: true,
-  currentCategory: undefined,
-})
+}>()
 
 const isProductPositionEven = (index: number) => index % 2 === 0
 
 const isPaginationShown = computed(() => {
-  return (
-    props.pagination && props.isPaginationVisible && props.pagination.last > 1
-  )
+  return pagination && isPaginationVisible && pagination.last > 1
 })
 
-const { collectRowIntersection } = useRowIntersection(toRef(props.products))
+const { collectRowIntersection } = useRowIntersection(() => products)
 
 const onProductIntersect = (index: number) => {
   const collectedRowItems = collectRowIntersection(index)
@@ -88,7 +87,7 @@ const onProductIntersect = (index: number) => {
 }
 
 const emit = defineEmits<{
-  'click:product': [Product, number]
-  'intersect:row': [{ row: number; items: (Product & { index: number })[] }]
+  (e: 'click:product', product: Product, index: number): void
+  (e: 'intersect:row', collectedRow: CollectedRowIntersection): void
 }>()
 </script>

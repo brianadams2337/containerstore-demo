@@ -10,16 +10,13 @@ import type { LinkVariant } from '#storefront-ui'
 import { SFLink } from '#storefront-ui/components'
 import { useRouteHelpers } from '~/composables'
 
-type Props = {
+const { to, ...attributes } = defineProps<{
   to: RouteLocationRaw
   onlyExactActive?: boolean
   variant?: LinkVariant
-  openInNewTab?: boolean
   raw?: boolean
   target?: '_self' | '_blank' | '_parent' | '_top'
-}
-
-const { to, ...attributes } = defineProps<Props>()
+}>()
 
 const { getLocalizedRoute } = useRouteHelpers()
 </script>

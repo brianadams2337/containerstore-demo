@@ -62,12 +62,11 @@ import {
 import { SFHeadline } from '#storefront-ui/components'
 import type { Promotion } from '~/types/promotion'
 
-type Props = {
+const { promotedProductId, promotionId } = defineProps<{
   promotedProductId?: number
   promotionId?: number
   promotion: Promotion & { productId: number }
-}
-const props = defineProps<Props>()
+}>()
 
 const route = useRoute()
 const localePath = useLocalePath()
@@ -77,10 +76,10 @@ const isBasketPage = computed(() => {
 })
 
 const shouldShowAutomaticDiscountBanner = (productId: number) => {
-  return isBasketPage.value || productId === props.promotedProductId
+  return isBasketPage.value || productId === promotedProductId
 }
 
-const shouldShowBuyXGetYBanner = (promotionId?: number) => {
-  return isBasketPage.value || promotionId === props.promotionId
+const shouldShowBuyXGetYBanner = (productPromotionId?: number) => {
+  return isBasketPage.value || productPromotionId === promotionId
 }
 </script>

@@ -3,7 +3,8 @@ import {
   getFirstAttributeValue,
   extendPromise,
 } from '@scayle/storefront-nuxt'
-import { type MaybeRefOrGetter, toRef, computed, type ComputedRef } from 'vue'
+import { type MaybeRefOrGetter, computed, type ComputedRef } from 'vue'
+import { toRef } from '@vueuse/core'
 import { useBasketPromotions } from '~/composables/useBasketPromotions'
 import { useBasket, useCurrentPromotions } from '#storefront/composables'
 import type { Promotion } from '~/types/promotion'
@@ -14,17 +15,30 @@ import {
 } from '~/utils'
 
 type UseProductPromotionsReturn = {
-  promotionLabel: ComputedRef<string | undefined>
+  /** The promotion ID within the product promotion attributes, representing the link between the product and the promotion.*/
   productPromotionId: ComputedRef<number | undefined>
+  /** All applicable promotions */
   applicablePromotions: ComputedRef<Promotion[]>
+  /** Reactive promotion data */
   promotion: ComputedRef<Promotion | undefined>
+  /** A computed ref that indicates whether a promotion is applied or not. */
   isPromotionApplied: ComputedRef<boolean>
+  /** A computed ref that indicates whether a promotion gift is added to basket or not. */
   isGiftAddedToBasket: ComputedRef<boolean>
+  /** A computed ref that indicates whether a promotion gift conditions are met or not */
   areGiftConditionsMet: ComputedRef<boolean>
+  /** A computed ref that indicates whether "Hurry to save" banners are shown or not */
   areHurryToSaveBannersShown: ComputedRef<boolean>
-  isHighestPriority: (id: number) => boolean
+  /** A function for product that has multiple promotions and determine which one has the highest priority to be shown. It accepts a priority number value. */
+  isHighestPriority: (priority: number) => boolean
 }
 
+/**
+ * Composable for extracted product promotions data.
+ *
+ * @param productItem - Product on which promotions will be extracted
+ * @returns An {@link UseProductPromotionsReturn} object containing reactive product promotion data.
+ */
 export function useProductPromotions(
   productItem?: MaybeRefOrGetter<Product | undefined | null>,
 ): UseProductPromotionsReturn & Promise<UseProductPromotionsReturn> {
@@ -38,10 +52,6 @@ export function useProductPromotions(
 
   const promotions = computed<Promotion[]>(() => {
     return promotionData.data?.value?.entities ?? []
-  })
-
-  const promotionLabel = computed(() => {
-    return getFirstAttributeValue(product.value?.attributes, 'promotion')?.label
   })
 
   const productPromotionId = computed(() => {
@@ -127,7 +137,6 @@ export function useProductPromotions(
   return extendPromise(
     Promise.all([basket, promotionData, basketPromotions]).then(() => ({})),
     {
-      promotionLabel,
       productPromotionId,
       applicablePromotions,
       promotion,

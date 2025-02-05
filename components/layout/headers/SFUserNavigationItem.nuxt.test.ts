@@ -1,14 +1,12 @@
 import { renderSuspended } from '@nuxt/test-utils/runtime'
 import { expect, it, vi } from 'vitest'
-import { fireEvent } from '@testing-library/dom'
+import { fireEvent } from '@testing-library/vue'
 import { ref } from 'vue'
 import SFUserNavigationItem from './SFUserNavigationItem.vue'
 
-const { useUser } = vi.hoisted(() => {
-  return {
-    useUser: vi.fn(),
-  }
-})
+const { useUser } = vi.hoisted(() => ({
+  useUser: vi.fn(),
+}))
 
 vi.mock('#storefront/composables', async () => {
   const actual = await vi.importActual('#storefront/composables')
@@ -60,6 +58,6 @@ it('should render logged in state', async () => {
     'href',
     '/de/account',
   )
-  expect(await getAllByRole('link')).toHaveLength(4)
+  expect(getAllByRole('link')).toHaveLength(4)
   expect(getByRole('button', { name: 'Ausloggen' })).toBeInTheDocument()
 })

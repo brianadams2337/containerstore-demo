@@ -19,13 +19,16 @@ import { SFLink } from '#storefront-ui/components'
 import { usePromotionCategory, useRouteHelpers } from '~/composables'
 import type { Promotion } from '~/types/promotion'
 
-const props = defineProps<{ promotion: Promotion; backgroundColor?: string }>()
+const { promotion } = defineProps<{
+  promotion: Promotion
+  backgroundColor?: string
+}>()
 
 const { buildCategoryPath } = useRouteHelpers()
 
-const customData = computed(() => props.promotion.customData)
+const customData = computed(() => promotion.customData)
 const headlineParts = computed(() => customData?.value.headlineParts)
-const scheduledTo = computed(() => props.promotion.schedule.to)
+const scheduledTo = computed(() => promotion.schedule.to)
 
 const id = customData.value?.category?.id
 

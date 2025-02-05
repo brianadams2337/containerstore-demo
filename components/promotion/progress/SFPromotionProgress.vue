@@ -30,7 +30,7 @@ import { useCurrentPromotion, usePromotionProgress } from '~/composables'
 import { useDefaultBreakpoints } from '#storefront-ui/composables'
 import { SFProgressBar } from '#storefront-ui/components'
 
-withDefaults(defineProps<{ isFullWidth?: boolean }>(), { isFullWidth: false })
+const { isFullWidth = false } = defineProps<{ isFullWidth?: boolean }>()
 
 const { currentPromotion } = useCurrentPromotion()
 const { progress, isFullProgress, formattedAmountLeft } =

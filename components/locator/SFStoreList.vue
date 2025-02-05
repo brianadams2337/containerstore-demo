@@ -29,7 +29,7 @@
 import type { Store } from '@scayle/omnichannel-nuxt'
 import SFSlideInStore from './SFSlideInStore.vue'
 
-withDefaults(defineProps<{ stores: Store[] }>(), { stores: () => [] })
+const { stores = [] } = defineProps<{ stores: Store[] }>()
 
 const selectedStoreId = defineModel<number | undefined>('selectedStoreId', {
   type: Number,

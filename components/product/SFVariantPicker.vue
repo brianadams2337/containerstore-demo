@@ -60,16 +60,11 @@ import SFProductPrice from './SFProductPrice.vue'
 import { SFDropdown } from '#storefront-ui/components'
 import type { Promotion } from '~/types/promotion'
 
-type Props = {
+const { hasOneVariantOnly = false } = defineProps<{
   variants: Variant[]
   promotion?: Promotion
   hasOneVariantOnly?: boolean
-}
-
-withDefaults(defineProps<Props>(), {
-  hasOneVariantOnly: false,
-  promotion: undefined,
-})
+}>()
 
 const isVariantListVisible = defineModel<boolean>('visible', { default: false })
 

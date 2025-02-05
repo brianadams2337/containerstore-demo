@@ -24,12 +24,11 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
 import { computed } from 'vue'
-import type { PropType } from 'vue'
 import { HttpStatusCode } from '@scayle/storefront-nuxt'
-import { useNuxtApp } from '#app'
 import type { NuxtError } from '#app'
 import { SFButton, SFHeadline } from '#storefront-ui/components'
 import { vSanitizedHtml } from '~/directives/sanitized-html'
+import { useI18n } from '#i18n'
 
 type AppError =
   | NuxtError
@@ -45,46 +44,43 @@ type AppError =
   | null
   | undefined
 
-const props = defineProps({
-  error: {
-    type: Object as PropType<AppError>,
-    default: undefined,
-  },
-})
+const { error } = defineProps<{
+  error: AppError
+}>()
 
 defineEmits(['clear-error'])
-const { $i18n } = useNuxtApp()
+
+const { t } = useI18n()
 
 const isNotFoundError = computed(() => {
   return (
-    props.error &&
-    'statusCode' in props.error &&
-    props.error?.statusCode === HttpStatusCode.NOT_FOUND
+    error &&
+    'statusCode' in error &&
+    error?.statusCode === HttpStatusCode.NOT_FOUND
   )
 })
 const title = computed(() => {
   return isNotFoundError.value
-    ? $i18n.t('error.not_found_code')
-    : $i18n.t('error.not_found_message')
+    ? t('error.not_found_code')
+    : t('error.not_found_message')
 })
 
 const userMessage = computed(() => {
   return isNotFoundError.value
-    ? $i18n.t('error.page_does_not_exist')
-    : $i18n.t('error.request_not_processed')
+    ? t('error.page_does_not_exist')
+    : t('error.request_not_processed')
 })
 
 const isInDevMode = import.meta.dev
-const statusCode =
-  props.error instanceof Error ? undefined : props.error?.statusCode
-const statusMessage =
-  props.error instanceof Error
-    ? props.error?.message
-    : props.error?.statusMessage
 
-const stack = props.error && 'stack' in props.error && props.error?.stack
-const errorMessage =
-  props.error && 'message' in props.error && props.error.message
+const statusCode = error instanceof Error ? undefined : error?.statusCode
+
+const statusMessage =
+  error instanceof Error ? error?.message : error?.statusMessage
+
+const stack = error && 'stack' in error && error?.stack
+
+const errorMessage = error && 'message' in error && error.message
 
 useHead({ title: title.value })
 </script>

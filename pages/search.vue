@@ -38,8 +38,8 @@ import {
   useProductsSearch,
   useTrackingEvents,
 } from '~/composables'
-import { useNuxtApp } from '#app'
 import { useRoute } from '#app/composables/router'
+import { useI18n } from '#i18n'
 import { categoryListingMetaData } from '~/constants'
 import SFProductList from '~/components/productList/SFProductList.vue'
 import SFFilterSlideIn from '~/components/filter/SFFilterSlideIn.vue'
@@ -49,7 +49,8 @@ import { SFHeadline, SFPageContainer } from '#storefront-ui/components'
 
 const route = useRoute()
 
-const { $i18n } = useNuxtApp()
+const { t } = useI18n()
+
 const term = computed(() => route.query['filters[term]'] || '')
 const { pageState } = usePageState()
 const { products, pagination, status, totalProductsCount, paginationOffset } =
@@ -62,9 +63,7 @@ const { trackSelectItem, trackViewItemList } = useTrackingEvents()
 
 const resultsCount = computed(() => totalProductsCount.value)
 const title = computed(() => {
-  return `${$i18n.t('search.page_title', {
-    term: term.value.toString(),
-  })}`
+  return `${t('search.page_title', { term: term.value.toString() })}`
 })
 
 const trackProductClick = (product: Product) => {

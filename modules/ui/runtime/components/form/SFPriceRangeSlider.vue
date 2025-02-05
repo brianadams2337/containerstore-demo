@@ -104,12 +104,10 @@ import {
 } from '#storefront-ui/helpers/utils'
 import { ClientOnly } from '#components'
 
-type Props = {
+const { min = 0, max = 100000 } = defineProps<{
   min?: number
   max?: number
-}
-
-withDefaults(defineProps<Props>(), { min: 0, max: 100000 })
+}>()
 
 const range = defineModel<RangeTuple>({ required: true })
 
@@ -118,8 +116,12 @@ const locale = currentShop.value!.locale
 const currencyCode = currentShop.value!.currency
 
 const emit = defineEmits<{
-  (e: 'change' | 'slider-change' | 'dragging' | 'error'): void
-  (e: 'drag-end' | 'drag-start' | 'change', activePrice: RangeTuple): void
+  dragging: []
+  error: []
+  'slider-change': []
+  change: [RangeTuple]
+  'drag-end': [RangeTuple]
+  'drag-start': [RangeTuple]
 }>()
 
 const changeRangeAtIndex = (newRangeValue: number, index: 0 | 1) => {

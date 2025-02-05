@@ -116,13 +116,12 @@ import {
 import type { Promotion } from '~/types/promotion'
 import { getMaxQuantity } from '~/utils'
 
-type Props = {
+const { product, promotion } = defineProps<{
   product: Product
   promotion?: Promotion
-}
-const props = defineProps<Props>()
+}>()
 
-const { hasOneVariantOnly, variants, name } = useProductBaseInfo(props.product)
+const { hasOneVariantOnly, variants, name } = useProductBaseInfo(() => product)
 
 const activeVariant = defineModel<Variant>('activeVariant')
 
@@ -141,8 +140,8 @@ const basketItem = computed<AddToBasketItem | undefined>(() => {
     return
   }
   // NOTE: For Buy x Get Y promotions, the promotion Id needs to be added on the Y Item (Gift)
-  const promotionId = isAutomaticDiscountType(props.promotion)
-    ? props.promotion?.id
+  const promotionId = isAutomaticDiscountType(promotion)
+    ? promotion?.id
     : undefined
   return {
     productName: name.value,
@@ -165,7 +164,7 @@ const isVariantPickerVisible = useElementVisibility(variantPicker, {
 const isSoldOutOrOutOfStock = computed(
   () =>
     (activeVariant.value && activeVariant.value?.stock.quantity <= 0) ||
-    props.product.isSoldOut,
+    product.isSoldOut,
 )
 
 const addItemToBasket = async (item: AddToBasketItem | undefined) => {
@@ -181,7 +180,7 @@ const addItemToBasket = async (item: AddToBasketItem | undefined) => {
   }
   await addItem(item)
   trackAddToBasket({
-    product: props.product,
+    product,
     variant: activeVariant.value,
     quantity: item.quantity,
   })

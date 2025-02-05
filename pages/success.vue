@@ -22,7 +22,6 @@ import { computed, defineOptions, onMounted, watch } from 'vue'
 import { useSeoMeta } from '@unhead/vue'
 import { definePageMeta } from '#imports'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
-import { useNuxtApp } from '#app'
 import { useOrderConfirmation, useUser } from '#storefront/composables'
 import { useRoute } from '#app/composables/router'
 import SFEmptyState from '~/components/SFEmptyState.vue'
@@ -31,6 +30,7 @@ import SFOspBasicDataSection from '~/components/osp/SFOspBasicDataSection.vue'
 import SFOspSummarySection from '~/components/osp/SFOspSummarySection.vue'
 import { SFPageContainer } from '#storefront-ui/components'
 import type { OrderProduct, OrderVariant } from '~/types/order'
+import { useI18n } from '#i18n'
 
 const route = useRoute()
 const cbdToken = String(route.query.cbd)
@@ -45,7 +45,7 @@ const { data: orderData, status } = await useOrderConfirmation<
 
 const user = await useUser()
 
-const { $i18n } = useNuxtApp()
+const { t } = useI18n()
 
 const { trackPurchaseEvent } = useTrackingEvents()
 
@@ -70,10 +70,7 @@ const deliveryDate = computed(() => {
   return pkg?.deliveryDate
 })
 
-useSeoMeta({
-  robots: 'index,follow',
-  title: $i18n.t('navigation.osp'),
-})
+useSeoMeta({ robots: 'index,follow', title: t('navigation.osp') })
 
 defineOptions({ name: 'OrderSuccessPage' })
 definePageMeta({ pageType: 'osp' })

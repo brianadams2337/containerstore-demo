@@ -15,16 +15,11 @@
 import { computed } from 'vue'
 import { SkeletonType } from '#storefront-ui'
 
-type Props = {
+const { type = SkeletonType.BUTTON, fullWidth = false } = defineProps<{
   type?: SkeletonType
   fullWidth?: boolean
-}
+}>()
 
-const props = withDefaults(defineProps<Props>(), {
-  type: SkeletonType.BUTTON,
-  fullWidth: false,
-})
-
-const isButton = computed(() => props.type === SkeletonType.BUTTON)
-const isHeadline = computed(() => props.type === SkeletonType.HEADLINE)
+const isButton = computed(() => type === SkeletonType.BUTTON)
+const isHeadline = computed(() => type === SkeletonType.HEADLINE)
 </script>

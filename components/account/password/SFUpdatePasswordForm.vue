@@ -76,16 +76,16 @@ import useVuelidate from '@vuelidate/core'
 import { wait } from '@scayle/storefront-nuxt'
 import SFPasswordMeter from './SFPasswordMeter.vue'
 import { useToast, useValidationRules } from '~/composables'
-import { useNuxtApp } from '#app'
 import { useUser } from '#storefront/composables'
 import {
   SFValidatedInputGroup,
   SFTextInput,
   SFButton,
 } from '#storefront-ui/components'
+import { useI18n } from '#i18n'
 
 const { updatePassword, refresh } = useUser()
-const { $i18n } = useNuxtApp()
+const { t } = useI18n()
 const validationRules = useValidationRules()
 
 const toast = useToast()
@@ -113,7 +113,7 @@ const rules = computed(() => ({
     required: validationRules.required,
     sameAs: validationRules.sameAs(
       computed(() => payload.newPassword),
-      $i18n.t(`form_fields.new_password`),
+      t(`form_fields.new_password`),
     ),
   },
 }))
@@ -127,7 +127,7 @@ const updateUserPassword = async () => {
   }
   isUpdating.value = true
 
-  let msg = $i18n.t('my_account.user.password_update_success')
+  let msg = t('my_account.user.password_update_success')
   try {
     await updatePassword({
       oldPassword: payload.oldPassword,
@@ -136,7 +136,7 @@ const updateUserPassword = async () => {
     await refresh()
     resetForm()
   } catch {
-    msg = $i18n.t('my_account.user.password_update_error')
+    msg = t('my_account.user.password_update_error')
   } finally {
     toast.show(msg, { action: 'CONFIRM' })
     isUpdating.value = false

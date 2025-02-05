@@ -87,9 +87,9 @@ import {
 } from '~/composables'
 import type { Promotion } from '~/types/promotion'
 
-const props = defineProps<{ promotions: Promotion[] }>()
+const { promotions } = defineProps<{ promotions: Promotion[] }>()
 
-usePromotionChange(props.promotions)
+usePromotionChange(promotions)
 
 const {
   backgroundColorStyle,

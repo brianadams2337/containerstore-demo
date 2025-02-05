@@ -54,20 +54,19 @@ import { useBreadcrumbs } from '~/composables'
 import { SFFadeInTransition, SFHeadline } from '#storefront-ui/components'
 import { showDividerTag } from '#storefront-ui'
 
-type Props = {
+const {
+  category,
+  productsCount,
+  productsFetching = false,
+} = defineProps<{
   category: Category
   productsCount?: number
   productsFetching?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  productsCount: undefined,
-  productsFetching: false,
-})
+}>()
 
 const { getBreadcrumbsFromCategory } = useBreadcrumbs()
 
 const categoryAncestors = computed<BreadcrumbItem[]>(() => {
-  return getBreadcrumbsFromCategory(props.category)
+  return getBreadcrumbsFromCategory(category)
 })
 </script>

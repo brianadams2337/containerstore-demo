@@ -88,17 +88,17 @@ import SFUserPersonalInfoFormSkeletonLoader from './SFUserPersonalInfoFormSkelet
 import { dateOfBirthFormats } from '~/constants/mask'
 import { useToast, useValidationRules } from '~/composables'
 import { useCurrentShop, useUser } from '#storefront/composables'
-import { useNuxtApp } from '#app'
 import {
   SFButton,
   SFValidatedInputGroup,
   SFTextInput,
   SFRadioGroup,
 } from '#storefront-ui/components'
+import { useI18n } from '#i18n'
 
 const { user, updateUser, status } = useUser()
 
-const { $i18n } = useNuxtApp()
+const { t } = useI18n()
 const currentShop = useCurrentShop()
 const validationRules = useValidationRules()
 
@@ -145,15 +145,15 @@ const setPayload = () => Object.assign(payload, initPayload())
 
 const genders = computed(() => [
   {
-    label: $i18n.t('form_fields.male'),
+    label: t('form_fields.male'),
     value: 'm',
   },
   {
-    label: $i18n.t('form_fields.female'),
+    label: t('form_fields.female'),
     value: 'f',
   },
   {
-    label: $i18n.t('form_fields.diverse'),
+    label: t('form_fields.diverse'),
     value: 'd',
   },
 ])
@@ -163,7 +163,7 @@ watch(user, setPayload, { immediate: true })
 const update = async () => {
   isUpdating.value = true
 
-  const saveError = $i18n.t('my_account.user.save_error')
+  const saveError = t('my_account.user.save_error')
   try {
     const isValid = await v.value.$validate()
     if (!isValid) {
@@ -175,7 +175,7 @@ const update = async () => {
         ? getPayloadDate(payload.birthDate)
         : undefined,
     })
-    toast.show($i18n.t('my_account.user.save_message'), {
+    toast.show(t('my_account.user.save_message'), {
       action: 'CONFIRM',
     })
   } catch {

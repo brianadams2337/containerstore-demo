@@ -81,19 +81,15 @@ import type { Promotion } from '~/types/promotion'
 import { ClientOnly } from '#components'
 import { SFButton, SFHeadline } from '#storefront-ui/components'
 
-type Props = {
+const { disabled = false, product } = defineProps<{
   product: Product
   promotion: Promotion
   backgroundColorStyle: { backgroundColor?: string }
   eagerImageLoading: boolean
   disabled?: boolean
-}
+}>()
 
-const props = withDefaults(defineProps<Props>(), {
-  disabled: false,
-})
-
-const { toggleGiftSelection } = usePromotionGiftSelection(props.product)
+const { toggleGiftSelection } = usePromotionGiftSelection(product)
 
 const {
   name,
@@ -101,7 +97,7 @@ const {
   price: productPrice,
   brand,
   alt,
-} = useProductBaseInfo(props.product)
+} = useProductBaseInfo(() => product)
 
 const price = computed(() => {
   if (!productPrice.value) {

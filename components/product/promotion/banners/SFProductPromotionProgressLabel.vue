@@ -57,7 +57,13 @@ import { SFProgressBar } from '#storefront-ui/components'
 import type { Promotion } from '~/types/promotion'
 import { getBackgroundColorStyle, FALLBACK_COLOR } from '~/utils'
 
-type Props = {
+const {
+  promotion,
+  isGiftAddedToBasket = false,
+  areGiftConditionsMet = false,
+  formattedDiscount = '',
+  formattedAmountLeft = '',
+} = defineProps<{
   promotion: Promotion
   isGiftAddedToBasket?: boolean
   areGiftConditionsMet?: boolean
@@ -67,15 +73,7 @@ type Props = {
   isFullProgress: boolean
   formattedDiscount?: string
   formattedAmountLeft?: string
-}
-
-const {
-  promotion,
-  isGiftAddedToBasket = false,
-  areGiftConditionsMet = false,
-  formattedDiscount = '',
-  formattedAmountLeft = '',
-} = defineProps<Props>()
+}>()
 
 const color = computed(() => promotion.customData.colorHex)
 

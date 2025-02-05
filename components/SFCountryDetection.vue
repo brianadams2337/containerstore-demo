@@ -41,7 +41,7 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import { whenever } from '@vueuse/core'
-import { useNuxtApp } from '#app'
+import { useI18n } from '#i18n'
 import { useCurrentShop } from '#storefront/composables'
 import {
   SFButton,
@@ -52,7 +52,9 @@ import { useCountryDetection } from '#storefront-country-detection'
 import { useCurrentShopTranslators } from '~/composables/useCurrentShopTranslators'
 
 const currentShop = useCurrentShop()
-const { $i18n } = useNuxtApp()
+
+const { t, te } = useI18n()
+
 const { languageTranslator, regionTranslator } = useCurrentShopTranslators()
 
 export interface ShopInfo {
@@ -85,15 +87,15 @@ const getShopCountryName = (shop: ShopInfo, includeLanguage: boolean) => {
     return undefined
   }
 
-  const regionName = $i18n.te(
+  const regionName = te(
     `country_selection.override_codes.${locale.region.toUpperCase()}`,
   )
-    ? $i18n.t(`country_selection.override_codes.${locale.region.toUpperCase()}`)
+    ? t(`country_selection.override_codes.${locale.region.toUpperCase()}`)
     : regionTranslator.value?.of(locale.region)
 
   if (includeLanguage && locale.language) {
     const languageName = languageTranslator.value?.of(locale.language)
-    return $i18n.t(`country_selection.country_with_language`, {
+    return t(`country_selection.country_with_language`, {
       country: regionName,
       language: languageName,
     })

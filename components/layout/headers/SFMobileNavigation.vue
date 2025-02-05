@@ -141,7 +141,7 @@ import { useRouteHelpers } from '~/composables'
 
 const { isOpen, navigationItems } = defineProps<{
   isOpen: boolean
-  navigationItems: NavigationItems | undefined
+  navigationItems?: NavigationItems
 }>()
 
 const emit = defineEmits(['clickLink'])
@@ -159,6 +159,8 @@ const selectItem = (item: NavigationTreeItemType) => {
 
 watch(
   () => isOpen,
-  () => (selectedItem.value = undefined),
+  () => {
+    selectedItem.value = undefined
+  },
 )
 </script>

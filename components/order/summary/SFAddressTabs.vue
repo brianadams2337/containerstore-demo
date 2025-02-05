@@ -49,9 +49,10 @@ import { ref } from 'vue'
 import type { SummaryItem } from './SFAddressSummary.vue'
 import { SFButton } from '#storefront-ui/components'
 
-withDefaults(defineProps<{ items: SummaryItem[]; tabsClass?: string }>(), {
-  tabsClass: '',
-})
+const { tabsClass = '' } = defineProps<{
+  items: SummaryItem[]
+  tabsClass?: string
+}>()
 
 const activeTab = ref(0)
 

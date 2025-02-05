@@ -20,11 +20,9 @@ import type { CMSAccordionEntryProps } from '../types'
 import CMSText from './Text.vue'
 import { SFFadeInTransition } from '#storefront-ui/components'
 
-const props = withDefaults(defineProps<CMSAccordionEntryProps>(), {
-  collapsed: false,
-})
+const { collapsed = false } = defineProps<CMSAccordionEntryProps>()
 
-const isCollapsed = ref(props.collapsed)
+const isCollapsed = ref(collapsed)
 
 function toggleCollapse() {
   isCollapsed.value = !isCollapsed.value

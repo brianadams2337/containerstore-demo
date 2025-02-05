@@ -24,6 +24,7 @@ const { searchTerm } = defineProps<{ searchTerm: string }>()
 const { getSearchRoute } = useRouteHelpers()
 
 const { t } = useI18n()
+
 const showMoreLabel = computed(() => {
   const regex = new RegExp(searchTerm.replaceAll(' ', '|'), 'gi')
   return DOMpurify.sanitize(

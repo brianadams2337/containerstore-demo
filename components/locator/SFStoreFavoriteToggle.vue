@@ -15,11 +15,9 @@
 import { computed } from 'vue'
 import { useFavoriteStore } from '~/composables/useFavoriteStore'
 
-interface Props {
-  storeId: number
-}
+const { storeId } = defineProps<{ storeId: number }>()
 
-const props = defineProps<Props>()
 const favoriteStoreId = useFavoriteStore()
-const isFavoriteStore = computed(() => favoriteStoreId.value === props.storeId)
+
+const isFavoriteStore = computed(() => favoriteStoreId.value === storeId)
 </script>

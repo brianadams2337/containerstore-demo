@@ -29,12 +29,7 @@
 </template>
 
 <script setup lang="ts" generic="T">
-type Props = {
-  id: string
-  item?: T
-  label?: string
-}
-defineProps<Props>()
+defineProps<{ id: string; item?: T; label?: string }>()
 
 const model = defineModel<T[] | boolean>()
 </script>

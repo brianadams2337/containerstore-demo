@@ -7,7 +7,7 @@
       'translate-x-1 rounded bg-gray-100 font-medium text-gray-900 transition-transform':
         isActive,
     }"
-    :to="buildCategoryPath(props.category)"
+    :to="buildCategoryPath(category)"
     raw
   >
     {{ category.name }}
@@ -25,7 +25,7 @@ import type { Category } from '@scayle/storefront-nuxt'
 import { useRouteHelpers } from '~/composables'
 import { SFLink } from '#storefront-ui/components'
 
-const props = defineProps<{
+defineProps<{
   category: Category
   isSale: boolean
   isActive: boolean

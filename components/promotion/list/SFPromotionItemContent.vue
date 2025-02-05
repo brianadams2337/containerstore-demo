@@ -1,7 +1,7 @@
 <template>
   <div
     class="relative flex flex-col items-start rounded-md bg-blue px-4 py-3 text-white"
-    :style="getBackgroundColorStyle(customData.colorHex)"
+    :style="getBackgroundColorStyle(customData?.colorHex)"
   >
     <SFPromotionHeadline
       v-if="headlineParts"
@@ -21,12 +21,10 @@ import SFPromotionCountdown from '../SFPromotionCountdown.vue'
 import { getBackgroundColorStyle } from '~/utils/promotion'
 import type { Promotion } from '~/types/promotion'
 
-type Props = {
+const { customData } = defineProps<{
   customData?: Promotion['customData']
   schedule: Promotion['schedule']
-}
+}>()
 
-const props = withDefaults(defineProps<Props>(), { customData: () => ({}) })
-
-const headlineParts = computed(() => props.customData.headlineParts)
+const headlineParts = computed(() => customData?.headlineParts)
 </script>

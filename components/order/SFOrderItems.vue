@@ -43,7 +43,7 @@ import type {
   OrderItem,
 } from '~/types/order'
 
-const props = defineProps<{
+const { orderItems, packages } = defineProps<{
   orderVariants: VariantDetail[]
   orderItems: OrderItems
   packages?: ListOfPackages
@@ -55,7 +55,7 @@ type CarrierMap = Record<
 >
 
 const uniqueItems = computed(() => {
-  return props.orderItems.filter(
+  return orderItems.filter(
     (item, index, self) =>
       index ===
       self.findIndex((arrayItem) => arrayItem.variant.id === item.variant.id),
@@ -65,7 +65,7 @@ const uniqueItems = computed(() => {
 const carrierBundledItemsMap = computed<CarrierMap | undefined>(() => {
   // every item has a packageId
   // every carrier has a package id
-  return props.packages?.reduce((carrierMap: CarrierMap, pkg: Package) => {
+  return packages?.reduce((carrierMap: CarrierMap, pkg: Package) => {
     const items = uniqueItems.value?.filter(
       (it: OrderItem) => it.packageId === pkg.id,
     )
@@ -77,6 +77,6 @@ const carrierBundledItemsMap = computed<CarrierMap | undefined>(() => {
 })
 
 const getItemQuantity = (variantId: number | unknown): number | undefined => {
-  return props.orderItems?.filter((it) => it.variant.id === variantId).length
+  return orderItems?.filter((it) => it.variant.id === variantId).length
 }
 </script>

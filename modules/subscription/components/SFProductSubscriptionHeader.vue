@@ -14,10 +14,8 @@
 </template>
 
 <script setup lang="ts">
-type Props = {
+defineProps<{
   isVariantWithPriceReduction: boolean
   totalReductions?: number
-}
-
-defineProps<Props>()
+}>()
 </script>

@@ -19,12 +19,10 @@ import SFStoreDetailsComponent from './SFStoreDetails.vue'
 
 const appContext = getCurrentInstance()?.appContext
 
-interface Props {
+const { apiKey, stores } = defineProps<{
   stores: StoreLocation[]
   apiKey: string
-}
-
-const props = defineProps<Props>()
+}>()
 
 const selectedStoreId = defineModel<number | undefined>('selectedStoreId', {
   type: Number,
@@ -56,7 +54,7 @@ const markers = ref<{
 onMounted(async () => {
   // import all required google map api classes
   await new Loader({
-    apiKey: props.apiKey,
+    apiKey,
     libraries: ['marker', 'maps', 'core'],
   }).load()
 
@@ -64,7 +62,7 @@ onMounted(async () => {
   map.value = new google.maps.Map(googleMapContainer.value!, mapSettings)
 
   watch(
-    () => props.stores,
+    () => stores,
     () => {
       if (!import.meta.server && window.google) {
         removeOldMarkers()
@@ -94,7 +92,7 @@ const removeOldMarkers = () => {
 const setMarkers = () => {
   const bounds = new google.maps.LatLngBounds()
 
-  props.stores.forEach((store: StoreLocation) => {
+  stores.forEach((store: StoreLocation) => {
     // map marker represents an arrow on the google map
     const marker = new google.maps.marker.AdvancedMarkerElement({
       map: toRaw(map.value), // Important: If the Map is proxied, it will not work

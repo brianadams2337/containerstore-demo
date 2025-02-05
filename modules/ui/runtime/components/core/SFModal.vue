@@ -25,28 +25,24 @@
 <script setup lang="ts">
 import { vDialog } from '../../directives/dialog'
 
-type Props = {
+const { hideCloseButton = false, closeOnOutside = true } = defineProps<{
   hideCloseButton?: boolean
   closeOnOutside?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  hideCloseButton: false,
-  closeOnOutside: true,
-})
+}>()
 
 const visible = defineModel<boolean>('visible', {
   type: Boolean,
   default: false,
 })
 const emit = defineEmits(['close'])
+
 const close = () => {
   visible.value = false
   emit('close')
 }
 
 const onClick = (e: MouseEvent) => {
-  if (!visible.value || !props.closeOnOutside) {
+  if (!visible.value || !closeOnOutside) {
     return
   }
 

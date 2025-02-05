@@ -59,27 +59,26 @@ import SFGuestLoginForm from './SFGuestLoginForm.vue'
 import { routeList } from '~/utils/route'
 import { useLastLoggedInUser, useRouteHelpers } from '~/composables'
 import { useRoute } from '#app/composables/router'
-import { useNuxtApp } from '#app'
 import {
   SFButton,
   SFHeadline,
   SFVerticalAccordion,
 } from '#storefront-ui/components'
 import { ClientOnly } from '#components'
+import { useI18n } from '#i18n'
 
-const props = withDefaults(defineProps<{ showGuestLogin?: boolean }>(), {
-  showGuestLogin: true,
-})
+const { showGuestLogin = true } = defineProps<{ showGuestLogin?: boolean }>()
 
-const { $i18n } = useNuxtApp()
 const { lastLoggedInUser, isLoggedIn, status } = await useLastLoggedInUser()
+
+const { t } = useI18n()
 
 const route = useRoute()
 
 const tabs = computed(() => [
-  $i18n.t('login_page.login.title'),
-  $i18n.t('login_page.sign_up.title'),
-  ...(props.showGuestLogin ? [$i18n.t('login_page.guest_login.title')] : []),
+  t('login_page.login.title'),
+  t('login_page.sign_up.title'),
+  ...(showGuestLogin ? [t('login_page.guest_login.title')] : []),
 ])
 
 const isForgotPasswordShown = computed(() => {

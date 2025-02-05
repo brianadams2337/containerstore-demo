@@ -13,12 +13,9 @@ import { computed, defineOptions } from 'vue'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import type { CMSTextProps } from '../types'
 
-const props = withDefaults(defineProps<CMSTextProps>(), {
-  noMarginTop: false,
-})
+const { blok, noMarginTop = false } = defineProps<CMSTextProps>()
 
-const content = computed(() =>
-  props.blok ? documentToHtmlString(props.blok) : null,
-)
+const content = computed(() => (blok ? documentToHtmlString(blok) : null))
+
 defineOptions({ name: 'CMSText' })
 </script>

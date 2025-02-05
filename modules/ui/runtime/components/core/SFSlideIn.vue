@@ -53,20 +53,19 @@ import { watch } from 'vue'
 import { vDialog } from '../../directives/dialog'
 import { useSlideIn, SlideInType } from '#storefront-ui'
 
-type Props = {
+const {
+  slideClass = '',
+  slideType = SlideInType.DEFAULT,
+  name,
+} = defineProps<{
   name: string
   slideClass?: string
   slideType?: SlideInType
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  slideClass: '',
-  slideType: SlideInType.DEFAULT,
-})
+}>()
 
 const emit = defineEmits<{ open: []; close: [] }>()
 
-const { isOpen, toggle, close } = useSlideIn(props.name)
+const { isOpen, toggle, close } = useSlideIn(name)
 
 type SlideTypeClasses = Record<
   'enterClasses' | 'enterToClasses' | 'leaveClasses' | 'leaveToClasses',

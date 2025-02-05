@@ -35,13 +35,13 @@ import { useStoryblokMargins } from '../composables/useStoryblokMargins'
 import CMSSlide from './Slide.vue'
 import { SFHeadline } from '#storefront-ui/components'
 
-const props = defineProps<CMSSlideShowProps>()
+const { blok } = defineProps<CMSSlideShowProps>()
 
 const sliderRef = ref()
 
 const isDark = ref(true)
 
-const { marginClasses } = useStoryblokMargins(props.blok)
+const { marginClasses } = useStoryblokMargins(blok)
 
 defineOptions({ name: 'CMSSlideShow' })
 </script>

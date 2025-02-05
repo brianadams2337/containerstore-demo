@@ -161,10 +161,11 @@ import {
 } from '#storefront-ui/components'
 import { useProductBaseInfo, useRouteHelpers } from '~/composables'
 
-const props = defineProps<{
+const { product, productImageSliderClass } = defineProps<{
   product: Product
   productImageSliderClass?: string
 }>()
+
 const { buildCategoryPath } = useRouteHelpers()
 const categoryLink = computed(() => {
   const category = longestCategoryList.value.at(-1)
@@ -192,5 +193,5 @@ const updateActiveSlide = (newSlide: number) => {
 
 const isZoomModalOpen = ref(false)
 
-const { alt, images, longestCategoryList } = useProductBaseInfo(props.product)
+const { alt, images, longestCategoryList } = useProductBaseInfo(() => product)
 </script>

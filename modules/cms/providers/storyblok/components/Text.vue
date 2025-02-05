@@ -13,14 +13,10 @@ import {
 } from '@storyblok/richtext'
 import type { CMSTextProps } from '../types'
 
-const props = withDefaults(defineProps<CMSTextProps>(), {
-  noMarginTop: false,
-})
+const { blok, noMarginTop = false } = defineProps<CMSTextProps>()
 
 const content = computed(() =>
-  richTextResolver().render(
-    props.blok.body as unknown as StoryblokRichTextNode,
-  ),
+  richTextResolver().render(blok.body as unknown as StoryblokRichTextNode),
 )
 defineOptions({ name: 'CMSText' })
 </script>

@@ -23,15 +23,15 @@
         </p>
       </div>
       <div class="flex flex-col justify-end">
-        <p class="text-right" :class="{ 'line-through': reducedPrice }">
-          {{
-            formatCurrency(
-              quantity * (reducedPrice ? price + reducedPrice : price),
-            )
-          }}
+        <p
+          v-if="originalPrice"
+          class="text-right"
+          :class="{ 'line-through': reducedPrice }"
+        >
+          {{ formatCurrency(originalPrice) }}
         </p>
         <p v-if="reducedPrice" class="text-right text-red-500">
-          {{ formatCurrency(quantity * price) }}
+          {{ formatCurrency(quantity * price.withTax) }}
         </p>
         <p
           v-if="
@@ -62,41 +62,52 @@ import { useFormatHelpers } from '#storefront/composables'
 import { NuxtImg } from '#components'
 import type { OrderProduct, OrderVariant, OrderPrice } from '~/types/order'
 
-type Props = {
+const {
+  product,
+  variant,
+  quantity = 1,
+  price,
+} = defineProps<{
   product: OrderProduct
   variant: OrderVariant
   quantity?: number
   price: OrderPrice
-}
-
-const props = withDefaults(defineProps<Props>(), { quantity: 1 })
+}>()
 
 const { formatCurrency } = useFormatHelpers()
 
-const name = computed(() => props.product.name)
+const name = computed(() => product.name)
 
 const color = computed(() => {
-  const attrs = mapAttributes(props.product.attributes)
+  const attrs = mapAttributes(product.attributes)
   return getFirstAttributeValue(attrs, 'color')?.label
 })
 
-const size = computed(() => props.variant.attributes?.size.values.label)
+const size = computed(() => variant.attributes?.size.values.label)
 
-const imageHash = computed(() => props.product.images[0].hash)
-
-const price = computed(() => props.price.withTax)
+const imageHash = computed(() => product.images[0].hash)
 
 const reducedPrice = computed(() => {
-  if (!props.price.appliedReductions) {
+  if (!price.appliedReductions) {
     return
   }
 
   return getTotalAppliedReductions({
-    appliedReductions: props.price.appliedReductions,
+    appliedReductions: price.appliedReductions,
   }).absoluteWithTax
 })
 
-const lowestPriorPrice = computed(() => props.variant.lowestPriorPrice)
+const originalPrice = computed(() => {
+  if (!reducedPrice.value) {
+    return
+  }
+  return (
+    quantity *
+    (reducedPrice.value ? price.withTax + reducedPrice.value : price.withTax)
+  )
+})
+
+const lowestPriorPrice = computed(() => variant.lowestPriorPrice)
 
 const mapAttributes = (attributes: OrderProduct['attributes']): Attributes => {
   return Object.fromEntries(

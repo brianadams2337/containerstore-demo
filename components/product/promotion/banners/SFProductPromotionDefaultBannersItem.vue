@@ -72,19 +72,17 @@ import SFPromotionHeadline from '~/components/promotion/headlines/SFPromotionHea
 import type { Promotion } from '~/types/promotion'
 import { AlphaColorMap } from '~/constants'
 
-type Props = {
-  promotion: Promotion
-  isPriorityBadgeShown?: boolean
-  isGiftAddedToBasket?: boolean
-  areGiftConditionsMet?: boolean
-}
-
 const {
   promotion,
   isPriorityBadgeShown = false,
   isGiftAddedToBasket = false,
   areGiftConditionsMet = false,
-} = defineProps<Props>()
+} = defineProps<{
+  promotion: Promotion
+  isPriorityBadgeShown?: boolean
+  isGiftAddedToBasket?: boolean
+  areGiftConditionsMet?: boolean
+}>()
 
 const {
   progress,

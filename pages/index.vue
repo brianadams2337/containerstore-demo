@@ -15,17 +15,18 @@ import { defineOptions } from 'vue'
 import { useHead, useSeoMeta } from '@unhead/vue'
 import { sanitizeCanonicalURL } from '@scayle/storefront-nuxt'
 import { definePageMeta } from '#imports'
-import { useNuxtApp, useRuntimeConfig } from '#app'
+import { useRuntimeConfig } from '#app'
 import { useRoute } from '#app/composables/router'
 import CMSIndexData from '#storefront-cms/components/fetching/CMSIndexData.vue'
 import CMSStory from '#storefront-cms/components/Story.vue'
+import { useI18n } from '#i18n'
 
 const config = useRuntimeConfig()
 const route = useRoute()
 
-const { $i18n } = useNuxtApp()
+const { t } = useI18n()
 
-useSeoMeta({ robots: 'index,follow', title: $i18n.t('navigation.home') })
+useSeoMeta({ robots: 'index,follow', title: t('navigation.home') })
 
 useHead({
   link: [
