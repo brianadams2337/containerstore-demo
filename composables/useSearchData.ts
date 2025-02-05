@@ -68,5 +68,6 @@ export function useSearchData() {
     hasSearchQuery,
     debouncedSearch,
     showSuggestionsLoader,
+    resolveSearch,
   }
 }

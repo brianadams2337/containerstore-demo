@@ -18,7 +18,7 @@
         'rounded-md bg-gray-100 pr-8 hover:bg-gray-200': !hasFocus,
       }"
       @click="openAndFocus"
-      @submit.prevent="goToSearchPage"
+      @submit.prevent="goToSearchResolutionOrSearchPage"
     >
       <SFButton
         variant="raw"
@@ -89,7 +89,8 @@ const emit = defineEmits<{
   'click:result': [SearchEntity | 'show_all']
 }>()
 
-const { getSearchRoute, localizedNavigateTo } = useRouteHelpers()
+const { getSearchRoute, localizedNavigateTo, getSearchSuggestionPath } =
+  useRouteHelpers()
 
 const {
   searchQuery,
@@ -100,6 +101,7 @@ const {
   navigationItems,
   totalCount,
   showSuggestionsLoader,
+  resolveSearch,
 } = useSearchData()
 
 watch(
@@ -159,10 +161,22 @@ const trackSearchClickAndClose = (suggestion: SearchEntity | 'show_all') => {
   emit('click:result', suggestion)
 }
 
-const goToSearchPage = async () => {
+const goToSearchResolutionOrSearchPage = async () => {
   if (!searchQuery.value) {
     return
   }
+
+  const resolved = await resolveSearch()
+  if (resolved?.type) {
+    const route = getSearchSuggestionPath(resolved)
+    if (route) {
+      trackSearchSuggestionClick(searchQuery.value, resolved)
+      await localizedNavigateTo(route)
+      closeAndReset()
+      return
+    }
+  }
+
   const route = getSearchRoute(searchQuery.value)
 
   trackSearch({

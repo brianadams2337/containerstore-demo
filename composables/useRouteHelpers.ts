@@ -93,9 +93,11 @@ export function useRouteHelpers() {
           suggestion.navigationItemSuggestion.navigationItem,
         ) ?? {}
 
-      return typeof route !== 'string' && route?.path
-        ? localePath(route.path)
-        : undefined
+      if (typeof route === 'string') {
+        return route
+      }
+
+      return route?.path ? localePath(route.path) : undefined
     }
   }
 
