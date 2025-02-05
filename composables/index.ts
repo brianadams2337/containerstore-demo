@@ -17,7 +17,11 @@ export * from './usePromotionGiftSelection'
 export * from './usePromotionProgress'
 export * from './usePromotionBanner'
 
-export * from './useAuthentication'
+// Auth
+// TODO: Remove `oldAuth` when composables gets fully migrated/adjusted
+export * from './oldAuth/useAuthentication'
+export * from './oldAuth/useLastLoggedInUser'
+
 export * from './useBanner'
 export * from './useBreadcrumbs'
 export * from './useCheckoutWebComponent'
@@ -30,7 +34,6 @@ export * from './useFirstDayOfWeek'
 export * from './useFormatDate'
 export * from './useFormatDistance'
 export * from './useJsonld'
-export * from './useLastLoggedInUser'
 export * from './useOrderDetails'
 export * from './usePageState'
 export * from './useProductBaseInfo'

@@ -187,6 +187,10 @@
     "quantity_label": "Quantity"
   },
   "incl_tax": "incl. VAT.",
+  "password": {
+    "hide": "Hide password",
+    "show": "Show password"
+  },
   "my_account": {
     "navigation": "My Account",
     "profile_menu": "Account settings",
@@ -332,7 +336,7 @@
     "no_order_found": "The order information could not be found.",
     "title": "Your order"
   },
-  "login_page": {
+  "sign_in_page": {
     "forgot_password": {
       "description": "Please enter your email address. We will send you an email so you can reset your password.",
       "cancel": "Back",
@@ -372,7 +376,7 @@
         },
         "success": "Log-In was successful"
       },
-      "title": "Sign In"
+      "title": "Login"
     },
     "reset_password": {
       "cancel": "Back",
@@ -397,12 +401,9 @@
         "success": "Yey! Registration was successful"
       },
       "submit": "Register now",
-      "title": "Create an Account"
+      "title": "Sign Up"
     },
-    "welcome_back": {
-      "not_user": "Not {username}? Log in with another user account",
-      "title": "Welcome back, {username}!"
-    },
+    "welcome_back_title": "Welcome! New here or coming back?",
     "idp": {
       "google": "Sign in with Google",
       "facebook": "Sign in with Facebook",

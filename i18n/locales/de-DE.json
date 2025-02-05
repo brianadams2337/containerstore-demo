@@ -187,6 +187,10 @@
     "quantity_label": "Anzahl"
   },
   "incl_tax": "inkl. MwSt.",
+  "password": {
+    "hide": "Passwort verbergen",
+    "show": "Passwort anzeigen"
+  },
   "my_account": {
     "navigation": "Mein Konto",
     "profile_menu": "Kontoeinstellungen",
@@ -332,7 +336,7 @@
     "no_order_found": "Die Bestelldaten wurden nicht gefunden.",
     "title": "Dein Bestellung"
   },
-  "login_page": {
+  "sign_in_page": {
     "forgot_password": {
       "description": "Geben Sie bitte Ihre Email-Adresse ein. Wir senden Ihnen eine E-Mail zu, damit Sie Ihr Passwort zurücksetzen können.",
       "cancel": "Zurück",
@@ -372,7 +376,7 @@
         },
         "success": "Die Anmeldung war erfolgreich"
       },
-      "title": "Anmelden"
+      "title": "Einloggen"
     },
     "reset_password": {
       "cancel": "Zurück",
@@ -397,12 +401,9 @@
         "success": "Ja! Die Registrierung war erfolgreich"
       },
       "submit": "Jetzt registrieren",
-      "title": "Ein Konto erstellen"
+      "title": "Registrieren"
     },
-    "welcome_back": {
-      "not_user": "Nicht {username}? Melden Sie sich mit einem anderen Benutzerkonto an",
-      "title": "Willkommen zurück, {username}!"
-    },
+    "welcome_back_title": "Willkommen! Neu hier oder bereits Kunde?",
     "idp": {
       "google": "Mit Google anmelden",
       "facebook": "Mit Facebook anmelden",

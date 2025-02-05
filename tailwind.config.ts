@@ -327,6 +327,7 @@ export default {
         screen: '100vw',
         dialog: '94vw',
         156: '39rem',
+        112: '28rem',
         88: '22rem',
       },
       minWidth: {

@@ -43,7 +43,9 @@
         />
       </div>
       <div class="mx-auto mt-12 w-fit">
-        <SFLogoutButton data-testid="logout-button" />
+        <SFButton is-full-width :disabled="isSubmitting" @click="logout()">
+          {{ $t('global.sign_out') }}
+        </SFButton>
       </div>
     </SFPageContainer>
   </div>
@@ -53,12 +55,12 @@
 import { useSeoMeta } from '@unhead/vue'
 import { computed, defineOptions } from 'vue'
 import { definePageMeta } from '#imports'
-import { useRouteHelpers } from '~/composables'
+import { useRouteHelpers, useAuthentication } from '~/composables'
 import { useUser } from '#storefront/composables'
 import { routeList } from '~/utils/route'
 import SFAccountHeader from '~/components/account/SFAccountHeader.vue'
-import SFLogoutButton from '~/components/auth/SFLogoutButton.vue'
 import {
+  SFButton,
   SFContainerLink,
   SFPageContainer,
   SFSkeletonLoader,
@@ -69,6 +71,8 @@ import { useI18n } from '#i18n'
 const { user } = useUser()
 
 const { getLocalizedRoute } = useRouteHelpers()
+
+const { logout, isSubmitting } = useAuthentication('logout')
 
 const { t } = useI18n()
 

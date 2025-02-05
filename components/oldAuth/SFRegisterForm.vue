@@ -35,7 +35,7 @@
       <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.email.$errors">
         <SFTextInput
           v-model="editableUser.email"
-          autocomplete="usernaasdme"
+          autocomplete="username"
           :placeholder="$t('form_fields.email')"
           type="email"
           :has-errors="!isValid"
@@ -46,14 +46,12 @@
       </SFValidatedInputGroup>
 
       <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.password.$errors">
-        <SFTextInput
+        <SFPasswordInput
           v-model="editableUser.password"
-          autocomplete="new-password"
+          :is-valid="isValid"
           :placeholder="$t('form_fields.password')"
-          type="password"
-          :has-errors="!isValid"
-          required
-          :readonly="isSubmitting"
+          autocomplete="new-password"
+          data-testid="new-password"
           @change="v.password.$touch()"
         />
       </SFValidatedInputGroup>
@@ -80,10 +78,11 @@
 import { computed, reactive } from 'vue'
 import useVuelidate from '@vuelidate/core'
 import type { Gender } from '@scayle/storefront-nuxt'
+import SFPasswordInput from '../auth/SFPasswordInput.vue'
 import SFIDPForm from './SFIDPForm.vue'
 import SFSalutationSelect from './SFSalutationSelect.vue'
 import { useRoute } from '#app/composables/router'
-import { useAuthentication, useValidationRules } from '~/composables'
+import { useValidationRules, useAuthentication } from '~/composables'
 import { useIDP } from '#storefront/composables'
 import {
   SFButton,

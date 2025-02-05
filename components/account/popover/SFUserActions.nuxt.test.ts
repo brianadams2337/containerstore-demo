@@ -77,7 +77,7 @@ describe('logged in user', () => {
       }),
     })
     const { emitted, getAllByRole } = await renderSuspended(SFUserActions)
-    const links = await getAllByRole('link')
+    const links = getAllByRole('link')
     await Promise.all(links.map((link) => fireEvent.click(link)))
     expect(emitted()['close']).toHaveLength(3)
   })

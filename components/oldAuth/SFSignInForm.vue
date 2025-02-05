@@ -57,7 +57,7 @@ import SFRegisterForm from './SFRegisterForm.vue'
 import SFLoginForm from './SFLoginForm.vue'
 import SFGuestLoginForm from './SFGuestLoginForm.vue'
 import { routeList } from '~/utils/route'
-import { useLastLoggedInUser, useRouteHelpers } from '~/composables'
+import { useRouteHelpers, useLastLoggedInUser } from '~/composables'
 import { useRoute } from '#app/composables/router'
 import {
   SFButton,

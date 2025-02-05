@@ -12,14 +12,12 @@
         v-slot="{ isValid }"
         :errors="v.oldPassword.$errors"
       >
-        <SFTextInput
+        <SFPasswordInput
           v-model="payload.oldPassword"
+          :is-valid="isValid"
           :placeholder="$t('form_fields.old_password')"
-          :has-errors="!isValid"
-          type="password"
           autocomplete="current-password"
           data-testid="current-password"
-          required
           @input="v.oldPassword.$touch"
         />
       </SFValidatedInputGroup>
@@ -28,14 +26,12 @@
         :errors="v.newPassword.$errors"
         class="!h-28"
       >
-        <SFTextInput
+        <SFPasswordInput
           v-model="payload.newPassword"
+          :is-valid="isValid"
           :placeholder="$t('form_fields.new_password')"
-          :has-errors="!isValid"
-          type="password"
           autocomplete="new-password"
           data-testid="new-password"
-          required
           @input="v.newPassword.$touch"
         />
         <SFPasswordMeter :value="payload.newPassword" class="mx-4 mb-2 mt-3" />
@@ -45,14 +41,12 @@
         :errors="v.repeatedPassword.$errors"
         data-testid="section-password-repeat"
       >
-        <SFTextInput
+        <SFPasswordInput
           v-model="payload.repeatedPassword"
           :placeholder="$t('form_fields.repeated_password')"
-          :has-errors="!isValid"
-          type="password"
+          :is-valid="isValid"
           autocomplete="new-password"
           data-testid="new-password-repeat"
-          required
           @input="v.repeatedPassword.$touch"
         />
       </SFValidatedInputGroup>
@@ -77,12 +71,9 @@ import { wait } from '@scayle/storefront-nuxt'
 import SFPasswordMeter from './SFPasswordMeter.vue'
 import { useToast, useValidationRules } from '~/composables'
 import { useUser } from '#storefront/composables'
-import {
-  SFValidatedInputGroup,
-  SFTextInput,
-  SFButton,
-} from '#storefront-ui/components'
+import { SFValidatedInputGroup, SFButton } from '#storefront-ui/components'
 import { useI18n } from '#i18n'
+import SFPasswordInput from '~/components/auth/SFPasswordInput.vue'
 
 const { updatePassword, refresh } = useUser()
 const { t } = useI18n()

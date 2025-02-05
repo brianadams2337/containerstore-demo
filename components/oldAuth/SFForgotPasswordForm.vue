@@ -47,9 +47,9 @@
 import { reactive, ref, watch } from 'vue'
 import useVuelidate from '@vuelidate/core'
 import {
+  useValidationRules,
   useAuthentication,
   useLastLoggedInUser,
-  useValidationRules,
 } from '~/composables'
 import {
   SFButton,

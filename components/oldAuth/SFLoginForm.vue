@@ -16,15 +16,13 @@
       </SFValidatedInputGroup>
 
       <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.password.$errors">
-        <SFTextInput
+        <SFPasswordInput
           v-model="editableUser.password"
+          :is-valid="isValid"
+          :disabled="isSubmitting"
+          data-testid="login-password"
           autocomplete="current-password"
           :placeholder="$t('form_fields.password')"
-          type="password"
-          :has-errors="!isValid"
-          required
-          :readonly="isSubmitting"
-          data-testid="login-password"
           @change="v.password.$touch()"
         />
       </SFValidatedInputGroup>
@@ -68,11 +66,12 @@
 import { computed, reactive } from 'vue'
 import useVuelidate from '@vuelidate/core'
 import SFLocalizedLink from '../SFLocalizedLink.vue'
+import SFPasswordInput from '../auth/SFPasswordInput.vue'
 import SFIDPForm from './SFIDPForm.vue'
 import {
+  useValidationRules,
   useAuthentication,
   useLastLoggedInUser,
-  useValidationRules,
 } from '~/composables'
 import { useIDP } from '#storefront/composables'
 import { useRoute } from '#app/composables/router'

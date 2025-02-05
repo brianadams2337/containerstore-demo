@@ -57,7 +57,7 @@ import { reactive } from 'vue'
 import type { Gender } from '@scayle/storefront-nuxt'
 import useVuelidate from '@vuelidate/core'
 import SFSalutationSelect from './SFSalutationSelect.vue'
-import { useAuthentication, useValidationRules } from '~/composables'
+import { useValidationRules, useAuthentication } from '~/composables'
 import {
   SFButton,
   SFTextInput,
