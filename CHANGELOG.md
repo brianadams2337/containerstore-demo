@@ -1,5 +1,12 @@
 # @scayle/storefront-boilerplate-nuxt
 
+## 1.7.1
+
+### 💅 Minor Changes
+
+- **\[Search\]** Fixed an issue where pressing enter in the search input didn't navigate to the first suggestion. Now, pressing enter will navigate to the first suggestion, or to the search results page if there are no suggestions.
+- **\[E2E\]** Added an end-to-end test to verify that the product details page loads correctly after a product ID search is performed by pressing Enter. This addresses a previous issue where the product details page might not have loaded correctly in this scenario.
+
 ## 1.7.0
 
 ### 🔥 Highlights
