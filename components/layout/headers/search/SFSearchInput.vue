@@ -31,7 +31,7 @@
       <label class="flex h-full min-w-0 grow items-center gap-2">
         <input
           ref="input"
-          v-model="searchQuery"
+          v-model.trim="searchQuery"
           :tabindex="hasFocus ? 0 : -1"
           type="search"
           :placeholder="$t('search.placeholder')"
