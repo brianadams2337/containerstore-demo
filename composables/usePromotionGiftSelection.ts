@@ -1,3 +1,4 @@
+import { computed, onScopeDispose } from 'vue'
 import {
   ExistingItemHandling,
   type Product,
@@ -5,7 +6,6 @@ import {
   type CentAmount,
   extendPromise,
 } from '@scayle/storefront-nuxt'
-import { computed } from 'vue'
 import { whenever } from '@vueuse/core'
 import { useBasketActions } from '~/composables/useBasketActions'
 import { useProductBaseInfo } from '~/composables/useProductBaseInfo'
@@ -40,6 +40,10 @@ export function usePromotionGiftSelection(gift: Product) {
   )
 
   const isSelectionShown = useState(`gift-selection-${gift.id}`, () => false)
+
+  onScopeDispose(() => {
+    isSelectionShown.value = false
+  })
 
   const basket = useBasket()
   const basketActions = useBasketActions()
