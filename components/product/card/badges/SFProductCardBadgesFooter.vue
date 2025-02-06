@@ -31,7 +31,7 @@ import { useLocalePath } from '#i18n'
 import { useRoute } from '#app/composables/router'
 import { useBasket } from '#storefront/composables'
 
-const { isPromotionBadgeFullWidth = false, product } = defineProps<{
+const { isPromotionBadgeFullWidth = true, product } = defineProps<{
   product: Product
   isPromotionBadgeFullWidth?: boolean
 }>()
