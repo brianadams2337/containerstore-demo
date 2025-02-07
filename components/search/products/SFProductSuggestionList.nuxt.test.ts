@@ -76,8 +76,8 @@ it('should render suggestions and suggestion count', async () => {
 it("should emit 'click:result' event", async () => {
   const { emitted, getByText } = await getProductSuggestionsComponent(product)
   await fireEvent.click(getByText('Test Product'))
-  expect(emitted()['click:result']).toHaveLength(1)
-  expect(emitted()['click:result'][0]).toStrictEqual([
+  expect(emitted()['clickResult']).toHaveLength(1)
+  expect(emitted()['clickResult'][0]).toStrictEqual([
     {
       type: 'product',
       productSuggestion: {

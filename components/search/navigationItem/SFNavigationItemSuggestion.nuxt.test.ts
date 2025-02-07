@@ -84,7 +84,7 @@ it('should work with page  navigation items', async () => {
   expect(link).toHaveAttribute('href', '/page')
 })
 
-it('should should emit a "click:result" event', async () => {
+it('should should emit a "clickResult" event', async () => {
   const navigationItem: NavigationItemExternal = {
     id: 5717,
     assets: {},
@@ -99,8 +99,8 @@ it('should should emit a "click:result" event', async () => {
     await getNavigationItemSuggestionComponent(navigationItem)
   const link = getByRole('link', { name: 'Home' })
   await fireEvent.click(link)
-  expect(emitted()['click:result']).toHaveLength(1)
-  expect(emitted()['click:result'][0]).toStrictEqual([
+  expect(emitted()['clickResult']).toHaveLength(1)
+  expect(emitted()['clickResult'][0]).toStrictEqual([
     {
       type: 'navigationItem',
       navigationItemSuggestion: {

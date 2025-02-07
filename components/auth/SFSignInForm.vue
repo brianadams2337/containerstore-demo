@@ -37,12 +37,12 @@
 
       <SFForgotPasswordForm
         v-if="isForgotPasswordShown"
-        @close:modal="goToSignInPage"
+        @close-modal="goToSignInPage"
       />
 
       <SFUpdatePasswordByHashForm
         v-if="isUpdatePasswordByHashShown"
-        @close:modal="goToSignInPage"
+        @close-modal="goToSignInPage"
       />
     </div>
   </ClientOnly>

@@ -4,7 +4,7 @@
     :product="product"
     :multiple-images="multipleImages"
     class="col-span-full"
-    @intersect:product="emit('intersect:product', product)"
+    @intersect-product="emit('intersectProduct', product)"
   />
 </template>
 
@@ -21,7 +21,7 @@ type CMSProductProps = {
 
 const { multipleImages = false } = defineProps<CMSProductProps>()
 
-const emit = defineEmits<{ 'intersect:product': [product: Product] }>()
+const emit = defineEmits<{ intersectProduct: [product: Product] }>()
 
 defineOptions({ name: 'CMSProduct' })
 </script>

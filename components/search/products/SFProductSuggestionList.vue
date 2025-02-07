@@ -19,7 +19,7 @@
         <SFProductSuggestion
           role="option"
           :product-suggestion="suggestion"
-          @click:result="emit('click:result', suggestion)"
+          @click-result="emit('clickResult', suggestion)"
         />
       </li>
     </ul>
@@ -33,6 +33,6 @@ import SFProductSuggestion from './SFProductSuggestion.vue'
 defineProps<{ productSuggestions: ProductSearchSuggestion[] }>()
 
 const emit = defineEmits<{
-  'click:result': [result: ProductSearchSuggestion]
+  clickResult: [result: ProductSearchSuggestion]
 }>()
 </script>

@@ -78,7 +78,7 @@ it('should render suggestions', async () => {
   expect(getAllByRole('option')).toHaveLength(4)
 })
 
-it('should emit "click:result" event when suggestion was clicked', async () => {
+it('should emit "clickResult" event when suggestion was clicked', async () => {
   const { getAllByRole, emitted } = await getSearchResultsContainerComponent(
     'Test',
     false,
@@ -88,5 +88,5 @@ it('should emit "click:result" event when suggestion was clicked', async () => {
   )
   const options = getAllByRole('option')
   await Promise.all(options.map((option) => fireEvent.click(option)))
-  expect(emitted()['click:result']).toHaveLength(4)
+  expect(emitted()['clickResult']).toHaveLength(4)
 })

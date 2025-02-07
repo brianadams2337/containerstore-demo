@@ -25,8 +25,8 @@
           edge-borderless
           :is-right-side-borderless="isProductPositionEven(index + 1)"
           :listing-meta-data="categoryListingMetaData"
-          @intersect:product="onProductIntersect(index)"
-          @click:product="emit('click:product', product, index)"
+          @intersect-product="onProductIntersect(index)"
+          @click-product="emit('clickProduct', product, index)"
         />
         <SFPagination
           v-if="isPaginationShown"
@@ -87,7 +87,7 @@ const onProductIntersect = (index: number) => {
 }
 
 const emit = defineEmits<{
-  'click:product': [product: Product, index: number]
+  clickProduct: [product: Product, index: number]
   'intersect:row': [collectedRow: CollectedRowIntersection]
 }>()
 </script>

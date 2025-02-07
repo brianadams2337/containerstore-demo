@@ -1,6 +1,6 @@
 <template>
   <SFFadeInTransition>
-    <SFModal visible @update:visible="$emit('close:modal')">
+    <SFModal visible @update:visible="$emit('closeModal')">
       <SFHeadline size="xl" tag="h2" class="mb-4">
         {{ $t('login_page.forgot_password.title') }}
       </SFHeadline>
@@ -33,7 +33,7 @@
             variant="tertiary"
             :disabled="isSubmitting"
             :loading="isSubmitting"
-            @click="$emit('close:modal')"
+            @click="$emit('closeModal')"
           >
             {{ $t('login_page.forgot_password.cancel') }}
           </SFButton>
@@ -61,7 +61,7 @@ import {
 } from '#storefront-ui/components'
 
 defineEmits<{
-  'close:modal': []
+  closeModal: []
 }>()
 
 const { forgotPassword, isSubmitting } = useAuthentication('forgot_password')

@@ -29,11 +29,11 @@ it('should render suggestions and suggestion count', async () => {
   expect(getByRole('option', { name: 'Home' })).toBeInTheDocument()
 })
 
-it("should emit 'click:result' event", async () => {
+it("should emit 'clickResult' event", async () => {
   const { emitted, getByText } = await getNavigationItemSuggestionsComponent()
   await fireEvent.click(getByText('Home'))
-  expect(emitted()['click:result']).toHaveLength(1)
-  expect(emitted()['click:result'][0]).toStrictEqual([
+  expect(emitted()['clickResult']).toHaveLength(1)
+  expect(emitted()['clickResult'][0]).toStrictEqual([
     {
       type: 'navigationItem',
       navigationItemSuggestion: {

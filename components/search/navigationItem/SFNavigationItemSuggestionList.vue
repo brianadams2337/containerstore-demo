@@ -21,7 +21,7 @@
           :navigation-item-suggestion="suggestion"
           :search-term="searchTerm"
           raw
-          @click:result="$emit('click:result', suggestion)"
+          @click-result="$emit('clickResult', suggestion)"
         />
       </li>
     </ul>
@@ -37,5 +37,5 @@ defineProps<{
   searchTerm: string
 }>()
 
-defineEmits<{ 'click:result': [result: NavigationItemSuggestionType] }>()
+defineEmits<{ clickResult: [result: NavigationItemSuggestionType] }>()
 </script>

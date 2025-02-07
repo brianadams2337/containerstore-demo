@@ -24,7 +24,7 @@
           size="sm"
           variant="raw"
           class="rounded bg-gray-100 p-1 text-sm font-medium leading-none !text-gray-600 xl:bg-white xl:hover:translate-x-[-4px] xl:hover:bg-gray-100"
-          @click="$emit('click:reset')"
+          @click="$emit('clickReset')"
         >
           {{ resetLabel ?? $t('filter.reset') }}
         </SFButton>
@@ -51,5 +51,5 @@ const {
   showAction?: boolean
 }>()
 
-defineEmits<{ 'click:reset': [] }>()
+defineEmits<{ clickReset: [] }>()
 </script>

@@ -21,7 +21,7 @@
       :products="products"
       :loading="status === 'pending'"
       class="mt-8"
-      @click:product="trackProductClick"
+      @click-product="trackProductClick"
       @intersect:row="trackViewListing"
     />
     <SFFilterSlideIn />

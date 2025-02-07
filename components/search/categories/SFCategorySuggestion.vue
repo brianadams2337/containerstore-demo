@@ -1,7 +1,7 @@
 <template>
   <SFSearchResultItem
     :to="to"
-    @click="$emit('click:result', categorySuggestion)"
+    @click="$emit('clickResult', categorySuggestion)"
   >
     <div ref="container" class="flex space-x-2 text-gray-600">
       <template v-for="({ value }, index) in breadcrumbs" :key="value">
@@ -58,7 +58,7 @@ const { categorySuggestion: category } = defineProps<{
   categorySuggestion: CategorySearchSuggestion
 }>()
 
-defineEmits<{ 'click:result': [result: CategorySearchSuggestion] }>()
+defineEmits<{ clickResult: [result: CategorySearchSuggestion] }>()
 
 const filters = computed(() => {
   return getSearchFilterLabels(category.categorySuggestion.filters)

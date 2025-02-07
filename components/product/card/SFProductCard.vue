@@ -41,7 +41,7 @@
           :alt="alt"
           :link="link"
           :product-index="index"
-          @click.capture="$emit('click:product')"
+          @click.capture="$emit('clickProduct')"
         />
 
         <SFProductCardImageSlider
@@ -52,7 +52,7 @@
           :is-product-hovered="isProductHovered"
           :product-index="index"
           :images="images"
-          @click.capture="$emit('click:product')"
+          @click.capture="$emit('clickProduct')"
         />
       </template>
       <SFProductCardBadgesFooter
@@ -64,7 +64,7 @@
       v-if="link"
       :product="product"
       :link="link"
-      @click.capture="$emit('click:product')"
+      @click.capture="$emit('clickProduct')"
     />
   </article>
 </template>
@@ -107,7 +107,7 @@ const onVisible = (state: boolean) => {
   if (!state) {
     return
   }
-  emit('intersect:product', product.id)
+  emit('intersectProduct', product.id)
   hasBeenVisible.value = true
 }
 const isProductHovered = ref(false)
@@ -131,10 +131,10 @@ const shouldShowSingleImage = computed(() => {
 const id = computed(() => `product-${product.id}`)
 
 const emit = defineEmits<{
-  'intersect:product': [productId: number]
+  intersectProduct: [productId: number]
   'product-image:mouseover': []
   'product-image:mouseleave': []
-  'click:product': []
+  clickProduct: []
 }>()
 
 const productCard = useTemplateRef('productCard')

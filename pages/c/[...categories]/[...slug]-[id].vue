@@ -54,7 +54,7 @@
             :current-category="currentCategory"
             :loading="productsStatus === 'pending'"
             class="mt-8"
-            @click:product="trackProductClick"
+            @click-product="trackProductClick"
             @intersect:row="trackViewListing"
           />
         </div>

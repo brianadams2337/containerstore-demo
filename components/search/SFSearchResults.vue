@@ -3,23 +3,23 @@
     <SFCategorySuggestionList
       v-if="categories.length"
       :category-suggestions="categories"
-      @click:result="$emit('click:result', $event)"
+      @click-result="$emit('clickResult', $event)"
     />
     <SFProductSuggestionList
       v-if="products.length"
       :product-suggestions="products"
-      @click:result="$emit('click:result', $event)"
+      @click-result="$emit('clickResult', $event)"
     />
     <SFNavigationItemSuggestionList
       v-if="navigationItems.length"
       :search-term="searchTerm"
       :navigation-item-suggestions="navigationItems"
-      @click:result="$emit('click:result', $event)"
+      @click-result="$emit('clickResult', $event)"
     />
     <SFShowAllResultsLink
       :search-term="searchTerm"
       role="option"
-      @click="$emit('click:result', 'show_all')"
+      @click="$emit('clickResult', 'show_all')"
     />
   </div>
 </template>
@@ -44,7 +44,7 @@ defineProps<{
 }>()
 
 defineEmits<{
-  'click:result': [result: SearchEntity | 'show_all']
+  clickResult: [result: SearchEntity | 'show_all']
   close: []
 }>()
 </script>

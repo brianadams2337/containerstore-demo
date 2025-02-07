@@ -42,7 +42,7 @@
                 :current-page="currentPage"
                 :per-page="ORDERS_PER_PAGE"
                 :record-count="orders.length"
-                @change:page="changePage"
+                @change-page="changePage"
               />
             </div>
 

@@ -19,7 +19,7 @@
         <SFCategorySuggestion
           role="option"
           :category-suggestion="suggestion"
-          @click:result="$emit('click:result', suggestion)"
+          @click-result="$emit('clickResult', suggestion)"
         />
       </li>
     </ul>
@@ -32,5 +32,5 @@ import SFCategorySuggestion from './SFCategorySuggestion.vue'
 
 defineProps<{ categorySuggestions: CategorySearchSuggestion[] }>()
 
-defineEmits<{ 'click:result': [result: CategorySearchSuggestion] }>()
+defineEmits<{ clickResult: [result: CategorySearchSuggestion] }>()
 </script>

@@ -15,7 +15,7 @@
           appliedFilter.maxPrice !== filter.values[0]?.max)
       "
       :class="{ 'border-t': index !== 0 }"
-      @click:reset="$emit('resetPriceFilter')"
+      @click-reset="$emit('resetPriceFilter')"
     >
       <SFPriceRangeSlider
         :model-value="getPriceRange(filter.values[0].min, filter.values[0].max)"
@@ -29,7 +29,7 @@
             filter.values[0].max,
           )
         "
-        @change="
+        @update:model-value="
           handleApplyOrResetPriceFilterEmit(
             $event,
             filter.values[0].min,
@@ -56,7 +56,7 @@
         :label="filter.name"
         :class="{ 'border-t': index !== 0 }"
         class="pb-9 xl:pb-9"
-        @click:reset="$emit('reset', filter.slug)"
+        @click-reset="$emit('reset', filter.slug)"
       >
         <div class="flex flex-wrap gap-4">
           <template v-for="item in filter.values">
@@ -80,7 +80,7 @@
         :badge="appliedAttributeValues[filter.slug]?.length"
         :label="filter.name"
         :class="{ 'border-t': index !== 0 }"
-        @click:reset="$emit('reset', filter.slug)"
+        @click-reset="$emit('reset', filter.slug)"
       >
         <div class="flex flex-wrap items-start gap-4">
           <SFChip
@@ -101,7 +101,7 @@
         :badge="appliedAttributeValues[filter.slug]?.length"
         :label="filter.name"
         :class="{ 'border-t': index !== 0 }"
-        @click:reset="$emit('reset', filter.slug)"
+        @click-reset="$emit('reset', filter.slug)"
       >
         <div class="flex flex-col gap-2">
           <SFCheckbox

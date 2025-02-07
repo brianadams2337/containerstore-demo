@@ -14,7 +14,7 @@
             :categories="categories"
             :navigation-items="navigationItems"
             :search-term="searchQuery"
-            @click:result="emit('click:result', $event)"
+            @click-result="emit('clickResult', $event)"
             @close="emit('close')"
           />
         </div>
@@ -25,7 +25,7 @@
         >
           <SFShowAllResultsLink
             :search-term="searchQuery"
-            @click="emit('click:result', 'show_all')"
+            @click="emit('clickResult', 'show_all')"
           />
         </section>
       </div>
@@ -50,7 +50,7 @@ const SFSearchResults = defineAsyncComponent(
 )
 
 const emit = defineEmits<{
-  'click:result': [result: SearchEntity | 'show_all']
+  clickResult: [result: SearchEntity | 'show_all']
   close: []
 }>()
 

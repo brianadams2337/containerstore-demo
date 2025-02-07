@@ -4,7 +4,7 @@
     raw
     class="group flex items-center space-x-4 !p-1 !pr-6"
     data-testid="search-suggestions-item"
-    @click="$emit('click:result', productSuggestion)"
+    @click="$emit('clickResult', productSuggestion)"
   >
     <div
       class="flex h-16 w-14 shrink-0 items-center overflow-hidden rounded-md bg-gray-100"
@@ -34,7 +34,7 @@ const { productSuggestion } = defineProps<{
   productSuggestion: ProductSearchSuggestion
 }>()
 
-defineEmits<{ 'click:result': [result: ProductSearchSuggestion] }>()
+defineEmits<{ clickResult: [result: ProductSearchSuggestion] }>()
 
 const product = productSuggestion.productSuggestion.product
 

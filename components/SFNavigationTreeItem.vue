@@ -19,7 +19,7 @@
         !raw && !isLink,
     }"
     :style="style"
-    @mouseenter="emit('mouseenter:navigation-item')"
+    @mouseenter="emit('mouseenterNavigationItem')"
   >
     <div
       v-if="iconUrl"
@@ -92,7 +92,7 @@ const iconUrl = computed(() => {
   return URL.parse(icon, cdnUrl)?.toString()
 })
 
-const emit = defineEmits<{ 'mouseenter:navigation-item': [] }>()
+const emit = defineEmits<{ mouseenterNavigationItem: [] }>()
 
 const pathParams = computed(() => {
   return buildNavigationTreeItemRoute(navigationItem)

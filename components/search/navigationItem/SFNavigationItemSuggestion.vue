@@ -6,7 +6,7 @@
     raw
     class="block cursor-pointer space-y-2 rounded-lg border border-gray-600 p-4 hover:border-gray-900 hover:bg-gray-100 focus:border-gray-900 focus:bg-gray-100"
     data-testid="search-suggestions-item"
-    @click="$emit('click:result', navigationItemSuggestion)"
+    @click="$emit('clickResult', navigationItemSuggestion)"
   >
     <!-- eslint-disable-next-line vue/no-v-html -->
     <div class="text-gray-600" :aria-label="navigationName" v-html="title" />
@@ -24,7 +24,7 @@ const { navigationItemSuggestion, searchTerm = '' } = defineProps<{
   searchTerm?: string
 }>()
 
-defineEmits<{ 'click:result': [result: NavigationItemSuggestion] }>()
+defineEmits<{ clickResult: [result: NavigationItemSuggestion] }>()
 
 const navigationName = computed(
   () => navigationItemSuggestion.navigationItemSuggestion.navigationItem.name,

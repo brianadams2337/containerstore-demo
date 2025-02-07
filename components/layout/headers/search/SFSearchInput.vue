@@ -64,7 +64,7 @@
       :navigation-items="navigationItems"
       :search-query="searchQuery"
       :show-suggestions-loader="showSuggestionsLoader"
-      @click:result="trackSearchClickAndClose"
+      @click-result="trackSearchClickAndClose"
       @close="closeAndReset"
     />
   </section>
@@ -86,7 +86,7 @@ import { SFButton } from '#storefront-ui/components'
 
 const emit = defineEmits<{
   close: []
-  'click:result': [result: SearchEntity | 'show_all']
+  clickResult: [result: SearchEntity | 'show_all']
 }>()
 
 const { getSearchRoute, localizedNavigateTo, getSearchSuggestionPath } =
@@ -158,7 +158,7 @@ const trackSearchClickAndClose = (suggestion: SearchEntity | 'show_all') => {
   }
   trackSearchSuggestionClick(searchQuery.value, suggestion)
   closeAndReset()
-  emit('click:result', suggestion)
+  emit('clickResult', suggestion)
 }
 
 const goToSearchResolutionOrSearchPage = async () => {

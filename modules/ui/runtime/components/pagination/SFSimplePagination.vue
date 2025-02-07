@@ -74,7 +74,7 @@ const {
   perPage?: number
 }>()
 
-const emit = defineEmits<{ 'change:page': [page: number] }>()
+const emit = defineEmits<{ changePage: [page: number] }>()
 
 const lastPage = computed(() => Math.ceil(recordCount / perPage))
 
@@ -177,7 +177,7 @@ watch(
 
 const scrollToTop = () => window.scroll({ behavior: 'smooth', top: 0 })
 
-const changePage = (page: number) => emit('change:page', page)
+const changePage = (page: number) => emit('changePage', page)
 
 const changePageAndScroll = (page: number): void => {
   changePage(page)

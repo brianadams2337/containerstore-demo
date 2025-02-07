@@ -63,7 +63,7 @@ describe('disabled Link', () => {
     expect(item).not.toHaveClass('hover:bg-[var(--backgroundColor)]')
   })
 
-  it('should not emit `mouseenter:navigation-item` event', async () => {
+  it('should not emit `mouseenterNavigationItem` event', async () => {
     const { getByText, emitted } = await renderSuspended(SFNavigationTreeItem, {
       props: {
         navigationItem: navigationItemExternalFactory.build({
@@ -75,7 +75,7 @@ describe('disabled Link', () => {
       },
     })
     await fireEvent.mouseEnter(getByText('Item'))
-    expect(emitted()).not.toHaveProperty('mouseenter:navigation-item')
+    expect(emitted()).not.toHaveProperty('mouseenterNavigationItem')
   })
 })
 
@@ -213,7 +213,7 @@ describe('active Link', () => {
     expect(item).toHaveAttribute('class', '')
   })
 
-  it('should emit `mouseenter:navigation-item` event', async () => {
+  it('should emit `mouseenterNavigationItem` event', async () => {
     const { getByRole, emitted } = await renderSuspended(SFNavigationTreeItem, {
       props: {
         navigationItem: navigationItemExternalFactory.build({
@@ -222,6 +222,6 @@ describe('active Link', () => {
       },
     })
     await fireEvent.mouseEnter(getByRole('link', { name: 'Item' }))
-    expect(emitted()['mouseenter:navigation-item']).toHaveLength(1)
+    expect(emitted()['mouseenterNavigationItem']).toHaveLength(1)
   })
 })

@@ -23,9 +23,8 @@
         tooltip-placement="top"
         :dot-attrs="{ 'aria-label': $t('filter.update_price') }"
         @update:model-value="updateRange"
-        @change="emit('slider-change')"
-        @drag-start="emit('drag-start', range)"
-        @drag-end="emit('drag-end', range)"
+        @drag-start="emit('dragStart', range)"
+        @drag-end="emit('dragEnd', range)"
         @dragging="emit('dragging')"
         @error="emit('error')"
       >
@@ -118,22 +117,18 @@ const currencyCode = currentShop.value!.currency
 const emit = defineEmits<{
   dragging: []
   error: []
-  'slider-change': []
-  change: [range: RangeTuple]
-  'drag-end': [range: RangeTuple]
-  'drag-start': [range: RangeTuple]
+  dragEnd: [range: RangeTuple]
+  dragStart: [range: RangeTuple]
 }>()
 
 const changeRangeAtIndex = (newRangeValue: number, index: 0 | 1) => {
   const updatedRange = [...range.value]
   updatedRange[index] = newRangeValue
   range.value = updatedRange as RangeTuple
-  emit('change', range.value)
 }
 
 const updateRange = (newRange: RangeTuple) => {
   range.value = newRange
-  emit('change', range.value)
 }
 
 /**

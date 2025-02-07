@@ -59,8 +59,8 @@ it("should emit 'click:result' event", async () => {
   const { emitted, getByText } = await getCategorySuggestionComponent(category)
 
   await fireEvent.click(getByText(category.name))
-  expect(emitted()['click:result']).toHaveLength(1)
-  expect(emitted()['click:result'][0]).toStrictEqual([
+  expect(emitted()['clickResult']).toHaveLength(1)
+  expect(emitted()['clickResult'][0]).toStrictEqual([
     {
       type: 'category',
       categorySuggestion: {

@@ -9,7 +9,7 @@
       </SFHeadline>
     </section>
     <section class="mt-6">
-      <SFButton @click="$emit('clear-error')">
+      <SFButton @click="$emit('clearError')">
         {{ $t('error.continue_shopping') }}
       </SFButton>
     </section>
@@ -48,7 +48,7 @@ const { error } = defineProps<{
   error: AppError
 }>()
 
-defineEmits<{ 'clear-error': [] }>()
+defineEmits<{ clearError: [] }>()
 
 const { t } = useI18n()
 

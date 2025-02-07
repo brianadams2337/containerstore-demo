@@ -3,7 +3,7 @@
     <SFSearchInput
       id="search-mobile"
       class="mt-1"
-      @click:result="$emit('close')"
+      @click-result="$emit('close')"
       @close="$emit('close')"
     />
     <div class="flex grow flex-col p-5 pl-4">
