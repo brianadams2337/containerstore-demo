@@ -22,20 +22,25 @@
     @mouseenter="emit('mouseenterNavigationItem')"
   >
     <div
-      v-if="iconUrl"
+      v-if="iconPath"
       class="flex items-center gap-2"
       data-testid="navigation-item"
     >
-      <object
-        v-if="iconUrl"
-        :data="iconUrl"
-        type="image/svg+xml"
+      <!-- NOTE: Originally a '<object>' tag was used to load the external SVG icon.
+        This allowed the icon to be modified in regards to its visual appearance (color),
+        but caused issues due to browsers`content-security-policy` settings, which resulted
+        in delayed loading of the SVG icons and layout shifts per navigation tree item with a SVG icon.
+        To mitigate this, `<NuxtImg>` with the `preload` attribute is used,
+        but SVG icon coloring is not possible anymore. -->
+      <NuxtImg
+        :src="iconPath"
+        provider="scayle"
         :aria-labelledby="`${navigationItem.id}`"
         aria-hidden="true"
-        role="presentation"
         class="pointer-events-none size-4"
         tabindex="-1"
-      ></object>
+        preload
+      />
       <span :id="`${navigationItem.id}`">
         <slot>
           {{ displayName }}
@@ -54,11 +59,11 @@
 import { computed } from 'vue'
 import type { NavigationTreeItem } from '@scayle/storefront-nuxt'
 import Color from 'color'
-import { useRuntimeConfig } from '#app/nuxt'
 import type { LinkVariant } from '#storefront-ui'
 import { useRouteHelpers } from '~/composables'
 import { SFLink } from '#storefront-ui/components'
 import { theme } from '#tailwind-config'
+import { NuxtImg } from '#components'
 
 const {
   navigationItem,
@@ -79,17 +84,18 @@ const {
 
 const { buildNavigationTreeItemRoute } = useRouteHelpers()
 
-const {
-  public: { cdnUrl },
-} = useRuntimeConfig()
-
-const iconUrl = computed(() => {
+const iconPath = computed(() => {
   const assets = Object.values(navigationItem?.assets ?? {})
   const icon = assets.find((asset) => asset.endsWith('svg'))
-  if (!cdnUrl || !icon) {
+
+  if (!icon) {
     return
   }
-  return URL.parse(icon, cdnUrl)?.toString()
+
+  // For usage with `<object>` tag within the template use the following
+  // `return URL.parse(icon, cdnUrl)?.toString()`, where
+  // `cdnUrl` can be sourced from `useRuntimeConfig().public`.
+  return icon
 })
 
 const emit = defineEmits<{ mouseenterNavigationItem: [] }>()
@@ -107,12 +113,14 @@ const getStyle = (
   fallbackTextColor: `#${string}`,
 ) => {
   const linkColor = navigationTreeItem?.customData?.linkColor
+
   if (!linkColor) {
     return {
       '--backgroundColor': Color(fallbackBackgroundColor).hex(),
       '--textColor': Color(fallbackTextColor).hex(),
     }
   }
+
   return {
     '--backgroundColor': Color(linkColor).alpha(0.1).hexa(),
     '--textColor': Color(linkColor).hex(),
@@ -122,6 +130,7 @@ const getStyle = (
 const isLink = computed(() => {
   return pathParams.value?.route && !disabled.value
 })
+
 const style = computed(() => {
   return getStyle(
     navigationItem,
