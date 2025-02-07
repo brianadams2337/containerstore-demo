@@ -101,6 +101,7 @@ const {
   navigationItems,
   totalCount,
   showSuggestionsLoader,
+  resolveSearch,
 } = useSearchData()
 
 watch(
