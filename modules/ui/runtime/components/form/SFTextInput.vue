@@ -9,9 +9,12 @@
       :data-maska="dataMaska"
       :required="required"
       :readonly="readonly"
+      :name="name"
+      :aria-required="required"
+      :aria-invalid="hasErrors"
       :type="type"
       :placeholder="placeholder"
-      class="peer h-12 w-full rounded-10 border border-gray-100 bg-gray-100 p-4 text-base font-variable text-gray-900 transition duration-100 placeholder:text-transparent hover:border-gray-300 hover:bg-white focus:border-accent focus:bg-white focus:text-accent focus:shadow-none focus:outline focus:outline-3 focus:outline-offset-0 focus:outline-indigo-200/50"
+      class="peer h-12 w-full rounded-10 border border-gray-100 bg-gray-100 p-4 text-base font-variable text-gray-900 transition duration-100 input-white-autofill placeholder:text-transparent hover:border-gray-300 hover:bg-white focus:border-accent focus:bg-white focus:text-accent focus:shadow-none focus:outline focus:outline-3 focus:outline-offset-0 focus:outline-indigo-200/50"
       :class="{
         'border-gray-300 bg-white': modelValue,
         'focus:border-gray-300 focus:text-gray-900 focus:!outline-none':
@@ -43,7 +46,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, computed, useId } from 'vue'
+import { defineOptions, computed } from 'vue'
 import { vMaska } from 'maska/vue'
 
 defineOptions({ inheritAttrs: false })
@@ -58,6 +61,7 @@ const {
   // Disabling unimport/auto-insert here due misdetection of "readonly" keyword
   // eslint-disable-next-line unimport/auto-insert
   readonly = false,
+  name = '',
 } = defineProps<{
   placeholder: string
   mask?: string | string[]
@@ -65,12 +69,20 @@ const {
   type?: HTMLInputElement['type']
   readonly?: boolean
   hint?: string
+  name?: string
   hasErrors?: boolean
 }>()
 
 const modelValue = defineModel<string>()
 
-const id = computed(() => `text-input-${useId()}`)
+// TODO: Replace the placeholder and optional name with `useId` when upgrading to Nuxt 3.15.
+// This will ensure that the generated ID is consistently persisted between the server and client.
+// https://github.com/nuxt/nuxt/pull/30343
+const id = computed(() => {
+  return name
+    ? `text-input-${placeholder}-${name}`
+    : `text-input-${placeholder}`
+})
 
 const dataMaska = computed(() => {
   // Maska don't accept array for the dynamic mask approach.

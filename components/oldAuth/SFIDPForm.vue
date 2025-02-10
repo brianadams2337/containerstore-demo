@@ -2,7 +2,7 @@
   <div class="flex flex-col gap-6">
     <div class="relative flex w-full items-center">
       <div class="h-px w-full bg-gray-300" aria-hidden="true" />
-      <span class="px-6 text-gray-900">{{ $t('global.or') }}</span>
+      <span class="px-6 text-gray-900">{{ $t('sign_up_page.or') }}</span>
       <div class="h-px w-full bg-gray-300" aria-hidden="true" />
     </div>
 

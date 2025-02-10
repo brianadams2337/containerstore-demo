@@ -1,10 +1,10 @@
 <template>
-  <div class="flex w-full items-center justify-start gap-x-3">
+  <div class="flex items-center justify-start gap-x-3">
     <SFLocalizedLink
       v-for="({ to, title }, index) in tabs"
       :key="`${title}-${index}`"
       class="inline-block w-fit rounded-md px-2 py-1.5 text-lg font-semi-bold-variable tracking-tighter text-gray-500 duration-300 ease-out hover:bg-gray-100 focus-visible:transition-none"
-      :class="{ 'rounded bg-gray-100 text-gray-900': isActive(to) }"
+      :class="{ 'bg-gray-100 text-gray-900': isActive(to) }"
       raw
       :to="to"
     >

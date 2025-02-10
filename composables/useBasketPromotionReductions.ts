@@ -16,6 +16,8 @@ export interface UseBasketPromotionReductionsReturn {
 }
 
 /**
+ * A composable for manipulating and extracting basket promotion reductions data.
+ *
  * @param cost - The total cost of the basket
  * @param items - The items in the basket
  * @returns An {@link UseBasketPromotionReductionsReturn} object containing reactive reduction data.

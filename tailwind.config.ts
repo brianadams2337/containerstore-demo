@@ -355,7 +355,19 @@ export default {
   },
   plugins: [
     plugin(({ addUtilities, addVariant, addBase }) => {
+      const autofillStyles = {
+        '-webkit-box-shadow': '0 0 0 30px #fff inset !important',
+        '-webkit-text-fill-color': '#000 !important',
+      }
       const utilities = {
+        '.input-white-autofill': {
+          '&:-webkit-autofill': {
+            ...autofillStyles,
+            '&:hover': autofillStyles,
+            '&:focus': autofillStyles,
+            '&:active': autofillStyles,
+          },
+        },
         '.top-white-shadow': {
           boxShadow: '0 -22px 10px 0 #fff',
         },

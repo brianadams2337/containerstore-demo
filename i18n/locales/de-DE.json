@@ -14,7 +14,6 @@
     "to-shop": "Zum Shop",
     "continue_shopping_label": "Weiter einkaufen",
     "sign_in_label": "Anmelden",
-    "or": "oder",
     "ordinal_suffixes": {
       "one": ".",
       "two": ".",
@@ -58,14 +57,15 @@
     "choose_country": "Land auswählen"
   },
   "validation": {
-    "email": "Das Feld {field} muss eine gültige E-Mail Adresse sein.",
-    "password": "Das {field} Feld erfordert einen Großbuchstaben, ein Sonderzeichen, eine Zahl und keine Leerzeichen.",
-    "required": "Das Feld {field} ist ein Pflichtfeld.",
-    "same_as": "Das Feld {field} muss gleich zum Feld {otherField} sein.",
-    "max_length": "Das Feld {field} muss {max} oder weniger Zeichen haben.",
-    "date": "Das Feld {field} muss ein gültiges Datum sein.",
-    "future_date": "Das Feld {field} kann kein Datum in der Zukunft sein.",
-    "name": "Das Feld {field} ist nicht korrekt formatiert."
+    "email": "Bitte gib eine gültige {field} ein.",
+    "password": "Dein {field} muss mindestens ein Sonderzeichen, einen Großbuchstaben, einen Kleinbuchstaben und eine Zahl enthalten.",
+    "required": "{field} ist ein Pflichtfeld.",
+    "same_as": "{field} muss gleich zum Feld {otherField} sein.",
+    "max_length": "{field} muss {max} oder weniger Zeichen haben.",
+    "min_length": "{field} muss mindestens {min} Zeichen lang sein.",
+    "date": "{field} muss ein gültiges Datum sein.",
+    "future_date": "{field} kann kein Datum in der Zukunft sein.",
+    "name": "{field} ist nicht korrekt formatiert."
   },
   "form_fields": {
     "first_name": "Vorname",
@@ -369,14 +369,18 @@
     "login": {
       "status": {
         "error": {
-          "400_bad_request": "Ihre Anfrage führte zu einem Fehler",
-          "401_unauthorized": "Autorisierung erforderlich",
-          "404_not_found": "Ihre E-Mail-Adresse oder Ihr Passwort sind falsch. Bitte versuche es erneut.",
+          "400_bad_request": "Ihre Anfrage konnte nicht bearbeitet werden, bitte versuchen Sie es erneut.",
+          "401_unauthorized": "Ihre Anfrage konnte nicht bearbeitet werden, bitte versuchen Sie es erneut.",
+          "403_user_deactivated": "Dieser Benutzer ist deaktiviert.",
+          "404_not_found": "Ups! Email wurde nicht gefunden.",
           "500_server_error": "Ihre Anfrage führte zu einem Fehler"
         },
-        "success": "Die Anmeldung war erfolgreich"
+        "success": "Anmeldung erfolgreich! Willkommen zurück!"
       },
-      "title": "Einloggen"
+      "title": "Einloggen",
+      "not_user_yet": "Noch kein Nutzer?",
+      "create_account": "Erstelle ein Konto.",
+      "submit": "Einloggen"
     },
     "reset_password": {
       "cancel": "Zurück",
@@ -409,7 +413,8 @@
       "facebook": "Mit Facebook anmelden",
       "apple": "Mit Apple anmelden",
       "okta": "Mit Okta anmelden"
-    }
+    },
+    "or": "Oder"
   },
   "store_locator": {
     "button": "Store finden",

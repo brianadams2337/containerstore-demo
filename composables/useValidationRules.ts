@@ -3,6 +3,7 @@ import {
   email,
   maxLength,
   required,
+  minLength,
   sameAs,
 } from '@vuelidate/validators'
 import { dateValidator, getPayloadDate } from '@scayle/storefront-nuxt'
@@ -74,5 +75,6 @@ export function useValidationRules() {
     name: withI18nMessage(validateName),
     sameAs: withI18nMessage(sameAs, { withArguments: true }),
     maxLength: withI18nMessage(maxLength, { withArguments: true }),
+    minLength: withI18nMessage(minLength, { withArguments: true }),
   }
 }

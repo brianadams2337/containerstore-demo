@@ -25,25 +25,22 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   }
 
   const user = nuxt?.ssrContext
-    ? nuxt?.ssrContext?.event?.context.$rpcContext.user
+    ? nuxt?.ssrContext?.event?.context?.$rpcContext?.user
     : userComposable.user.value
 
   const localePath = (routePath: LinkList[keyof LinkList]['path']) => {
     return getLocalePath(routePath) || routePath
   }
 
-  const isProtectedRoute = (exclude?: string) => {
+  const isProtectedRoute = (exclude?: string): boolean => {
     const routes = getProtectedRouteList(exclude)
 
-    return routes.find(
+    return routes.some(
       (protectedRoute) => localePath(protectedRoute) === to.path,
     )
   }
 
-  const isGuest = !!user?.status?.isGuestCustomer
-
-  const isProtectRouteForGuest = isGuest && isProtectedRoute('checkout')
-
+  // If the user is not logged in and attempts to access protected routes, redirect them to the signin page
   if (!user && isProtectedRoute()) {
     return navigateTo({
       path: localePath(routeList.signin.path),
@@ -52,7 +49,19 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
       },
     })
   }
-  if (user && isProtectRouteForGuest) {
+
+  const localizedSignInPath = localePath(routeList.signin.path)
+
+  // If the user is already logged in and tries to access the signin page, redirect them to the home page.
+  // "to.path" is used to cover all signin path variants (e.g ignoring "register" query param)
+  if (user && to.path === localizedSignInPath) {
+    return navigateTo({ path: localePath(routeList.home.path) })
+  }
+
+  const isGuest = !!user?.status?.isGuestCustomer
+
+  // If the user is a guest and the current page is not "checkout", navigate to the redirect URL or home page
+  if (user && isGuest && isProtectedRoute('checkout')) {
     const redirectPath =
       (to.query.redirectUrl as string) || localePath(routeList.home.path)
     return navigateTo({ path: redirectPath })

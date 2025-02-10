@@ -11,18 +11,16 @@
   >
     <template #append-icon>
       <SFButton
-        variant="raw"
-        class="size-full"
+        type="button"
         :aria-label="
           isPasswordHidden ? $t('password.show') : $t('password.hide')
         "
+        variant="raw"
+        class="size-full rounded-md *:size-3 *:text-gray-750"
         @click.prevent="togglePasswordVisibility"
       >
-        <IconPasswordHide
-          v-if="isPasswordHidden"
-          class="size-3 text-gray-750"
-        />
-        <IconPasswordShow v-else class="size-3 text-gray-750" />
+        <IconPasswordHide v-if="isPasswordHidden" aria-hidden="true" />
+        <IconPasswordShow v-else aria-hidden="true" />
       </SFButton>
     </template>
   </SFTextInput>
