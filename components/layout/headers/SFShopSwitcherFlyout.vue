@@ -1,6 +1,6 @@
 <template>
-  <SFSlideIn ref="slideIn" name="ShopSwitcherSlideIn">
-    <template #slide-in-header="">
+  <SFSlideIn name="ShopSwitcherSlideIn">
+    <template #slide-in-header>
       <SFShopSwitcherFlyoutHeader />
     </template>
     <template #slide-in-body>
@@ -9,38 +9,7 @@
   </SFSlideIn>
 </template>
 <script lang="ts" setup>
-import { useTemplateRef, watch, nextTick } from 'vue'
-import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
-import { onKeyStroke } from '@vueuse/core'
 import SFShopSwitcherFlyoutBody from './SFShopSwitcherFlyoutBody.vue'
 import SFShopSwitcherFlyoutHeader from './SFShopSwitcherFlyoutHeader.vue'
 import { SFSlideIn } from '#storefront-ui/components'
-import { useSlideIn } from '#storefront-ui/composables'
-
-const { close, isOpen } = useSlideIn('ShopSwitcherSlideIn')
-const slideIn = useTemplateRef<HTMLDialogElement>('slideIn')
-
-const { activate: activateSlideInTrap, deactivate: deactivateSlideInTrap } =
-  useFocusTrap(slideIn, {
-    escapeDeactivates: false,
-    isKeyBackward: (keyEvent) =>
-      keyEvent.code === 'ArrowLeft' ||
-      keyEvent.code === 'ArrowUp' ||
-      (keyEvent.key === 'Tab' && keyEvent.shiftKey),
-    isKeyForward: (keyEvent) =>
-      keyEvent.code === 'ArrowRight' ||
-      keyEvent.code === 'ArrowDown' ||
-      (keyEvent.key === 'Tab' && !keyEvent.shiftKey),
-  })
-
-watch(isOpen, async (value) => {
-  if (value) {
-    await nextTick()
-    activateSlideInTrap()
-  } else {
-    deactivateSlideInTrap()
-  }
-})
-
-onKeyStroke('Esc', () => close(), { target: slideIn })
 </script>

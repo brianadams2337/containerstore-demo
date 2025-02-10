@@ -17,6 +17,7 @@
   >
     <!-- eslint-disable-next-line vue/require-toggle-inside-transition  -->
     <dialog
+      ref="slideIn"
       v-dialog.modal="isOpen"
       :name="name"
       class="h-full overflow-hidden transition-all backdrop:bg-black/50 max-sm:m-0 max-sm:h-dvh max-sm:max-h-screen max-sm:w-screen max-sm:max-w-screen md:mr-0 md:rounded-xl"
@@ -49,7 +50,10 @@
 </template>
 
 <script setup lang="ts">
-import { watch } from 'vue'
+import { watch, nextTick, useTemplateRef, computed } from 'vue'
+import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
+import { onKeyStroke } from '@vueuse/core'
+import { tabbable } from 'tabbable'
 import { vDialog } from '../../directives/dialog'
 import { useSlideIn, SlideInType } from '#storefront-ui'
 
@@ -69,6 +73,8 @@ const emit = defineEmits<{
 }>()
 
 const { isOpen, toggle, close } = useSlideIn(name)
+
+const slideIn = useTemplateRef<HTMLDialogElement>('slideIn')
 
 type SlideTypeClasses = Record<
   'enterClasses' | 'enterToClasses' | 'leaveClasses' | 'leaveToClasses',
@@ -108,5 +114,32 @@ const onCancel = (e: Event) => {
   close()
 }
 
+const initialFocus = computed(() => {
+  return slideIn.value && tabbable(slideIn.value).length ? undefined : false
+})
+
+const { activate: activateSlideInTrap, deactivate: deactivateSlideInTrap } =
+  useFocusTrap(slideIn, {
+    initialFocus: () => initialFocus.value,
+    escapeDeactivates: false,
+    isKeyBackward: ({ code, key, shiftKey }) =>
+      code === 'ArrowLeft' || code === 'ArrowUp' || (key === 'Tab' && shiftKey),
+    isKeyForward: ({ code, key, shiftKey }) =>
+      code === 'ArrowRight' ||
+      code === 'ArrowDown' ||
+      (key === 'Tab' && !shiftKey),
+  })
+
+watch(isOpen, async (value) => {
+  if (value) {
+    await nextTick()
+    activateSlideInTrap()
+  } else {
+    deactivateSlideInTrap()
+  }
+})
+
 watch(isOpen, (newValue) => (newValue ? emit('open') : emit('close')))
+
+onKeyStroke('Esc', () => close(), { target: slideIn })
 </script>

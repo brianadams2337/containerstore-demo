@@ -61,7 +61,7 @@ const {
   // Disabling unimport/auto-insert here due misdetection of "readonly" keyword
   // eslint-disable-next-line unimport/auto-insert
   readonly = false,
-  name = '',
+  name,
 } = defineProps<{
   placeholder: string
   mask?: string | string[]
