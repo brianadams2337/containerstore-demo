@@ -4088,10 +4088,10 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-country-detection/-/storefront-country-detection-1.1.0.tgz#e62de3088a71369a811a77dccd421d7c3cfd1c6b"
   integrity sha512-8rsp5YdpZw82374V5p/Fk1Dgk5kUKfloE8NO22sO/Y1G+lbP/cSfv33i4BFQb+bwexkpKk2+Fw2Dbzw+9URLRg==
 
-"@scayle/storefront-nuxt@8.7.2":
-  version "8.7.2"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.7.2.tgz#ff66f289f70870da7ba558f214575a327496ffc4"
-  integrity sha512-Hn3Rb1zi9rIvMHh/RdtIQwQoycxvOY0MmTYInLNkiWz+O8fT/GNEA0kqrkPccReSm5zKgAfAJqsP1JsMSzuFWg==
+"@scayle/storefront-nuxt@8.8.0":
+  version "8.8.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.8.0.tgz#f772b5bd4341d6b9d218b8f1e5c85b4b19eaf73b"
+  integrity sha512-C3TyXBNujYCDdnr2FFeAFpSbcc1rtTEuNd5PsuVXKSjolDiVda5ruUQWbH5exLftzr5jH4PObA0zR6LK3xqk0A==
   dependencies:
     "@opentelemetry/api" "^1.9.0"
     "@scayle/h3-session" "0.6.0"
