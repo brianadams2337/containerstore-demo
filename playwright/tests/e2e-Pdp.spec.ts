@@ -1,5 +1,5 @@
 import { expect, test } from '../fixtures/fixtures'
-import { PDP_E2E } from '../support/constants'
+import { PDP_E2E, LOCATION } from '../support/constants'
 
 test('C2141594: Verify PDP name, brand and price for regular product', async ({
   productDetailPage,
@@ -152,4 +152,41 @@ test('C2141757: Verify PDP page title', async ({
   const productName = await productDetailPage.productName.textContent()
   const pageTitle = await page.title()
   expect(pageTitle).toContain(productName)
+})
+
+test('C2171081: Verify PDP Multi-size product Store selector', async ({
+  productDetailPage,
+  baseURL,
+  page,
+  countryDetector,
+}) => {
+  await test.step('Visit Multi-size product PDP and check Store selector is not visible', async () => {
+    await productDetailPage.visitPDP(
+      PDP_E2E.regularProductUrl,
+      baseURL as string,
+    )
+    await countryDetector.closeModal()
+    await productDetailPage.productName.waitFor()
+    await productDetailPage.assertStoreSelectorIsVisible(false)
+  })
+  await test.step('Choose variant and check Store selector is visible', async () => {
+    await productDetailPage.variantPicker.waitFor()
+    await productDetailPage.variantPicker.click({ force: true })
+    await productDetailPage.getVariant().click()
+    await page.waitForTimeout(500)
+    await productDetailPage.variantAvailabilityComponent.waitFor()
+    await productDetailPage.assertStoreSelectorIsVisible(true)
+  })
+  await test.step('Open Store selector flyout', async () => {
+    await productDetailPage.buttonOpenStoreFlyout.click()
+    await productDetailPage.assertStoreSelectorFlyoutIsVisible(true, 0)
+    await expect(productDetailPage.storeInput).toBeVisible()
+    await expect(productDetailPage.storeInput).toBeEnabled()
+    await expect(productDetailPage.buttonSearchStore).toBeVisible()
+    await expect(productDetailPage.buttonSearchStore).not.toBeEnabled()
+  })
+  await test.step('Enter store name', async () => {
+    await productDetailPage.typeStoreName(LOCATION.city)
+    await expect(productDetailPage.buttonSearchStore).toBeEnabled()
+  })
 })

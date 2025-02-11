@@ -20,6 +20,13 @@ export class ProductDetailPage {
   readonly buttonRemoveFromWishlist: Locator
   readonly subscriptionService: Locator
   readonly addToBasketButtonSubscribe: Locator
+  readonly variantAvailabilityComponent: Locator
+  readonly storeAvailabilityHeadline: Locator
+  readonly storeAvailabilitySubline: Locator
+  readonly buttonOpenStoreFlyout: Locator
+  readonly storeSelectorSlideIn: Locator
+  readonly storeInput: Locator
+  readonly buttonSearchStore: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -47,6 +54,19 @@ export class ProductDetailPage {
     this.addToBasketButtonSubscribe = page.getByTestId(
       'add-item-to-basket-button-subscribe',
     )
+    this.variantAvailabilityComponent = page.getByTestId(
+      'store-variant-availability-component',
+    )
+    this.storeAvailabilityHeadline = page.getByTestId(
+      'store-availability-headline',
+    )
+    this.storeAvailabilitySubline = page.getByTestId(
+      'store-availability-subline',
+    )
+    this.buttonOpenStoreFlyout = page.getByTestId('button-open-store-flyout')
+    this.storeSelectorSlideIn = page.getByTestId('slide-in-overflow')
+    this.storeInput = page.getByTestId('store-input')
+    this.buttonSearchStore = page.getByTestId('search-store-button')
   }
 
   getVariant(variantId?: string): Locator {
@@ -113,5 +133,23 @@ export class ProductDetailPage {
     } else {
       await this.buttonRemoveFromWishlist.nth(1).click()
     }
+  }
+
+  async assertStoreSelectorIsVisible(visible: boolean) {
+    await expect(this.variantAvailabilityComponent).toBeVisible({
+      visible,
+    })
+  }
+
+  async assertStoreSelectorFlyoutIsVisible(visible: boolean, index: number) {
+    await this.storeSelectorSlideIn.nth(index).waitFor()
+    await expect(this.storeSelectorSlideIn.nth(index)).toBeVisible({ visible })
+  }
+
+  async typeStoreName(store: string) {
+    await this.storeInput.waitFor()
+    await this.storeInput.focus()
+    await this.storeInput.fill(store)
+    await this.page.waitForTimeout(100)
   }
 }

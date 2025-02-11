@@ -71,18 +71,21 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, watch, ref } from 'vue'
-import { onClickOutside, onKeyStroke, useEventListener } from '@vueuse/core'
+import { computed, nextTick, watch, ref } from 'vue'
+import {
+  onClickOutside,
+  onKeyStroke,
+  useDebounceFn,
+  useEventListener,
+} from '@vueuse/core'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import type { SearchEntity } from '@scayle/storefront-nuxt'
-import {
-  useSearchData,
-  useTrackingEvents,
-  useRouteHelpers,
-} from '~/composables'
+import { useTrackingEvents, useRouteHelpers } from '~/composables'
 import SFSearchResultsContainer from '~/components/search/SFSearchResultsContainer.vue'
 import { useSearchInputKeybindings } from '~/composables/useSearchInputKeybindings'
 import { SFButton } from '#storefront-ui/components'
+import { useSearch } from '#storefront-search/composables/useSearch'
+import { DEBOUNCED_SEARCH_DURATION } from '~/constants'
 
 const emit = defineEmits<{
   close: []
@@ -94,22 +97,30 @@ const { getSearchRoute, localizedNavigateTo, getSearchSuggestionPath } =
 
 const {
   searchQuery,
-  debouncedSearch,
+  getSearchSuggestions,
   resetSearch,
   products,
   categories,
   navigationItems,
   totalCount,
-  showSuggestionsLoader,
   resolveSearch,
-} = useSearchData()
+  hasSuggestions,
+  status,
+} = useSearch()
+
+const debouncedSearch = useDebounceFn(async () => {
+  await getSearchSuggestions()
+}, DEBOUNCED_SEARCH_DURATION)
+
+const showSuggestionsLoader = computed(() => {
+  return (
+    status.value === 'pending' && (!searchQuery.value || !hasSuggestions.value)
+  )
+})
 
 watch(
   () => searchQuery.value,
-  async (query) => {
-    if (!query) {
-      return resetSearch()
-    }
+  async () => {
     await debouncedSearch()
   },
 )

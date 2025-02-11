@@ -1,5 +1,8 @@
 <template>
-  <div class="mt-4 flex items-center rounded-10 border border-gray-300 p-5">
+  <div
+    class="mt-4 flex items-center rounded-10 border border-gray-300 p-5"
+    data-testid="store-variant-availability-component"
+  >
     <div v-if="!!selectedStoreData">
       <div class="flex items-start space-x-2">
         <div
@@ -24,15 +27,18 @@
       </div>
     </div>
     <div v-else>
-      <h2 class="font-bold text-black">
+      <h2
+        class="font-bold text-black"
+        data-testid="store-availability-headline"
+      >
         {{ $t('store_locator.labels.store_availability') }}
       </h2>
-      <p class="text-xs text-primary">
+      <p class="text-xs text-primary" data-testid="store-availability-subline">
         {{ $t('store_locator.labels.store_availability_subline') }}
       </p>
     </div>
     <SFButton
-      data-testid="choose-store-button"
+      data-testid="button-open-store-flyout"
       variant="secondary"
       class="ml-auto !normal-case"
       rounded

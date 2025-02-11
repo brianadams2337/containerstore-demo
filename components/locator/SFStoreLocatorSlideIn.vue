@@ -30,9 +30,10 @@
             :placeholder="$t('store_locator.input_placeholder')"
             type="text"
             required
+            data-testid="store-input"
           />
           <SFButton
-            data-testid="choose-store-button"
+            data-testid="search-store-button"
             variant="primary"
             class="ml-auto"
             rounded

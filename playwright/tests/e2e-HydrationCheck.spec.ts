@@ -29,7 +29,7 @@ for (const userState of userStates) {
 
         await page.goto(`${baseURL}${path}`, { waitUntil: 'commit' })
         await page.waitForLoadState('networkidle')
-        await page.waitForTimeout(500)
+        await page.waitForTimeout(1500)
         if (userState === 'loggedIn') {
           await accountPage.userAuthentication(
             HYDRATION_TEST_USER.userEmail,
