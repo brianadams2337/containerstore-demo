@@ -4088,10 +4088,10 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-country-detection/-/storefront-country-detection-1.1.0.tgz#e62de3088a71369a811a77dccd421d7c3cfd1c6b"
   integrity sha512-8rsp5YdpZw82374V5p/Fk1Dgk5kUKfloE8NO22sO/Y1G+lbP/cSfv33i4BFQb+bwexkpKk2+Fw2Dbzw+9URLRg==
 
-"@scayle/storefront-nuxt@8.8.0":
-  version "8.8.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.8.0.tgz#f772b5bd4341d6b9d218b8f1e5c85b4b19eaf73b"
-  integrity sha512-C3TyXBNujYCDdnr2FFeAFpSbcc1rtTEuNd5PsuVXKSjolDiVda5ruUQWbH5exLftzr5jH4PObA0zR6LK3xqk0A==
+"@scayle/storefront-nuxt@8.8.1":
+  version "8.8.1"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.8.1.tgz#14791c506e2ffa13e797279e5f0a3802ef384b73"
+  integrity sha512-eqlqhBi3zoHTsiWu3noKjR92abcz0A7NIJn1sISC4//JwWam3e203Xacc6dT+LJ9rm1NJ4ywv4cEumAgavxvBw==
   dependencies:
     "@opentelemetry/api" "^1.9.0"
     "@scayle/h3-session" "0.6.0"
@@ -8024,10 +8024,10 @@ eslint-visitor-keys@^4.2.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-4.2.0.tgz#687bacb2af884fcdda8a6e7d65c606f46a14cd45"
   integrity sha512-UyLnSehNt62FFhSwjZlHmeokpRK59rcz29j+F1/aDgbkbRTk7wIc9XzdoasMUbRNKDM0qQt/+BJ4BrpFeABemw==
 
-eslint@9.20.0:
-  version "9.20.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-9.20.0.tgz#6244c46c1640cd5e577a31ebc460fca87838c0b7"
-  integrity sha512-aL4F8167Hg4IvsW89ejnpTwx+B/UQRzJPGgbIOl+4XqffWsahVVsLEWoZvnrVuwpWmnRd7XeXmQI1zlKcFDteA==
+eslint@9.20.1:
+  version "9.20.1"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-9.20.1.tgz#923924c078f5226832449bac86662dd7e53c91d6"
+  integrity sha512-m1mM33o6dBUjxl2qb6wv6nGNwCAsns1eKtaQ4l/NPHeTvhiUPbtdfMyktxN4B3fgHIgsYh1VT3V9txblpQHq+g==
   dependencies:
     "@eslint-community/eslint-utils" "^4.2.0"
     "@eslint-community/regexpp" "^4.12.1"
