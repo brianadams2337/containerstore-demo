@@ -33,7 +33,7 @@ import SFFooterLinkSection from './SFFooterLinkSection.vue'
 import SFLocalizedLink from './SFLocalizedLink.vue'
 import SFBottomFooter from './SFBottomFooter.vue'
 import { useNuxtApp } from '#app/nuxt'
-import { useNavigationTreeByName } from '#storefront/composables'
+import { useFooterNavigation } from '#storefront-navigation/composables'
 import { routeList } from '~/utils/route'
 
 const {
@@ -42,10 +42,5 @@ const {
   },
 } = useNuxtApp()
 
-const { data: footerLinks } = useNavigationTreeByName(
-  {
-    params: { treeName: 'Footer' },
-  },
-  'footer-tree',
-)
+const { data: footerLinks } = useFooterNavigation()
 </script>

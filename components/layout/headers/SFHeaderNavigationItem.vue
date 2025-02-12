@@ -12,9 +12,7 @@
         'text-primary': !item.customData?.linkColor,
       }"
       :data-testid="`nav-link-${item.name}`"
-      :is-active="
-        isNavigationItemCategoryActive(item, pageState.type, $route) || isOpen
-      "
+      :is-active="isActive"
     >
       <span class="text-md font-semi-bold-variable leading-10">
         {{ item.name }}
@@ -54,10 +52,12 @@ import { usePageState } from '~/composables'
 import { isNavigationItemCategoryActive } from '#storefront-navigation/utils'
 import SFNavigationTreeItem from '~/components/SFNavigationTreeItem.vue'
 import { SFButton } from '~/modules/ui/runtime/components'
+import { useRoute } from '#app/composables/router'
 
 const { item } = defineProps<{ item: NavigationTreeItemType }>()
 
 const { pageState } = usePageState()
+const route = useRoute()
 
 const isOpen = ref(false)
 const trapFocusImmediately = ref(false)
@@ -76,6 +76,16 @@ const { activate, deactivate } = useFocusTrap(flyout, {
     isOpen.value = false
   },
   initialFocus: () => (trapFocusImmediately.value ? undefined : false),
+})
+
+const isActive = computed(() => {
+  return (
+    isNavigationItemCategoryActive(
+      item,
+      pageState.value.type,
+      route.params.id as string,
+    ) || isOpen.value
+  )
 })
 
 const openFlyout = async (shouldTrapFocusImmediately: boolean) => {

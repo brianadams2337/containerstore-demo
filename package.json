@@ -102,6 +102,7 @@
     "@scayle/nuxt-opentelemetry": "0.5.9",
     "@scayle/omnichannel-nuxt": "4.0.4",
     "@scayle/storefront-country-detection": "1.1.0",
+    "@scayle/storefront-navigation": "0.1.0",
     "@scayle/storefront-nuxt": "8.8.1",
     "@scayle/storefront-product-detail": "1.0.2",
     "@scayle/storefront-product-listing": "1.1.3",

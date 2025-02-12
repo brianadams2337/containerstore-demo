@@ -55,10 +55,8 @@ import { defineOptions } from 'vue'
 import { useHead } from '@unhead/vue'
 import SFLocalizedLink from '~/components/SFLocalizedLink.vue'
 import { useNuxtApp } from '#app/nuxt'
-import {
-  useCurrentShop,
-  useNavigationTreeByName,
-} from '#storefront/composables'
+import { useCurrentShop } from '#storefront/composables'
+import { useSimpleHeaderNavigation } from '#storefront-navigation/composables'
 import { NuxtPage } from '#components'
 import SFNavigationTreeItem from '~/components/SFNavigationTreeItem.vue'
 import { routeList } from '~/utils/route'
@@ -66,12 +64,7 @@ import SFBottomFooter from '~/components/SFBottomFooter.vue'
 
 const currentShop = useCurrentShop()
 
-const { data: headerTree } = useNavigationTreeByName(
-  {
-    params: { treeName: 'Simplified Header' },
-  },
-  'header-tree',
-)
+const { data: headerTree } = useSimpleHeaderNavigation()
 
 const {
   $config: {

@@ -13,13 +13,8 @@
   </ul>
 </template>
 <script setup lang="ts">
-import { useNavigationTreeByName } from '#storefront/composables'
+import { useSimpleFooterNavigation } from '#storefront-navigation/composables'
 import SFNavigationTreeItem from '~/components/SFNavigationTreeItem.vue'
 
-const { data: footerTree } = useNavigationTreeByName(
-  {
-    params: { treeName: 'Simplified Footer' },
-  },
-  'simple-footer-tree',
-)
+const { data: footerTree } = useSimpleFooterNavigation()
 </script>

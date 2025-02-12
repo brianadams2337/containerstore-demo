@@ -474,6 +474,7 @@ export default defineNuxtConfig({
     '@scayle/storefront-product-detail',
     '@scayle/storefront-product-listing',
     '@scayle/storefront-search',
+    '@scayle/storefront-navigation',
   ],
 
   // Storefront CMS Module (local)

@@ -84,7 +84,7 @@ import {
   SFButton,
   SFSlideInFromLeftTransition,
 } from '~/modules/ui/runtime/components'
-import { useNavigationTreeByName } from '#storefront/composables'
+import { useHeaderNavigation } from '#storefront-navigation/composables'
 import { useDefaultBreakpoints } from '~/modules/ui/runtime'
 import { useLocalePath } from '#i18n'
 import { useRoute } from '#app/composables/router'
@@ -112,8 +112,8 @@ whenever(isDesktopLayout, () => {
 
 const isBasketPage = computed(() => route.path === localePath(routeList.basket))
 
-const { data: navigationTree } = useNavigationTreeByName({
-  params: { treeName: 'Header', params: { with: { category: true } } },
+const { data: navigationTree } = useHeaderNavigation({
+  with: { category: true },
 })
 
 const mainNavigationItems = computed(() => navigationTree.value?.items)
