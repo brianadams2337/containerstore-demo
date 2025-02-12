@@ -16,21 +16,43 @@
 
 <script setup lang="ts">
 import { computed, defineOptions } from 'vue'
-import { useSeoMeta } from '@unhead/vue'
+import { useSeoMeta, useHead } from '@unhead/vue'
+import { sanitizeCanonicalURL } from '@scayle/storefront-nuxt'
 import { definePageMeta, useRoute } from '#imports'
 import { useI18n } from '#i18n'
 import { SFHeadline } from '#storefront-ui/components'
 import SFAuthTabs from '~/components/auth/SFAuthTabs.vue'
 import SFAuthRegister from '~/components/auth/register/SFAuthRegister.vue'
 import SFAuthLogin from '~/components/auth/SFAuthLogin.vue'
+import { useNuxtApp } from '#app'
 
 const { t } = useI18n()
 
 const route = useRoute()
 
+const {
+  $config: {
+    public: { shopName, baseUrl },
+  },
+} = useNuxtApp()
+
 const isRegisterRoute = computed(() => route.query.register === 'true')
 
-useSeoMeta({ robots: 'index,follow', title: t('navigation.sign_in') })
+useSeoMeta({
+  robots: 'noindex,follow',
+  title: t('sign_in_page.meta.title'),
+  description: t('sign_in_page.meta.description', { shopName }),
+})
+
+useHead({
+  link: [
+    {
+      rel: 'canonical',
+      key: 'canonical',
+      href: sanitizeCanonicalURL(`${baseUrl}${route.fullPath}`),
+    },
+  ],
+})
 
 defineOptions({ name: 'SigninPage' })
 definePageMeta({ pageType: 'signin_page' })

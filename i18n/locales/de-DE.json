@@ -341,6 +341,10 @@
     "title": "Dein Bestellung"
   },
   "sign_in_page": {
+    "meta": {
+      "title": "Einloggen oder registrieren",
+      "description": "Greife auf dein Konto zu oder erstelle ein neues bei {shopName}. Erlebe ein nahtloses Einkaufserlebnis mit sicherem Login und personalisierten Optionen."
+    },
     "status": {
       "error": {
         "400_bad_request": "Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.",

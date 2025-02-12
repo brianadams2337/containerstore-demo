@@ -100,7 +100,6 @@
     "my_account": "My Account",
     "my_orders": "My Orders",
     "user_settings": "Account Settings",
-    "sign_in": "Sign in",
     "home": "Storefront Core Boilerplate",
     "checkout": "Checkout",
     "osp": "Order Confirmation",
@@ -341,6 +340,10 @@
     "title": "Your order"
   },
   "sign_in_page": {
+    "meta": {
+      "title": "Login or Register",
+      "description": "Access your account or create a new one on {shopName}. Enjoy a seamless shopping experience with secure login and personalized options."
+    },
     "status": {
       "error": {
         "400_bad_request": "Your request could not be processed, please try again.",
