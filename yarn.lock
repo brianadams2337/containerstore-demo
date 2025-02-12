@@ -3579,10 +3579,10 @@
   resolved "https://registry.yarnpkg.com/@opentelemetry/semantic-conventions/-/semantic-conventions-1.28.0.tgz#337fb2bca0453d0726696e745f50064411f646d6"
   integrity sha512-lp4qAiMTD4sNWW4DbKLBkfiMZ4jbAboJIGOQr5DvciMRI494OapieI9qiODpOt0XBr1LjIDy1xAGAnVs5supTA==
 
-"@opentelemetry/semantic-conventions@1.29.0":
-  version "1.29.0"
-  resolved "https://registry.yarnpkg.com/@opentelemetry/semantic-conventions/-/semantic-conventions-1.29.0.tgz#27abd60a1823c39b947d898425ea01da8a4ea0c8"
-  integrity sha512-KZ1JsXcP2pqunfsJBNk+py6AJ5R6ZJ3yvM5Lhhf93rHPHvdDzgfMYPS4F7GNO3j/MVDCtfbttrkcpu7sl0Wu/Q==
+"@opentelemetry/semantic-conventions@1.30.0":
+  version "1.30.0"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/semantic-conventions/-/semantic-conventions-1.30.0.tgz#3a42c4c475482f2ec87c12aad98832dc0087dc9a"
+  integrity sha512-4VlGgo32k2EQ2wcCY3vEU28A0O13aOtHz3Xt2/2U5FAh9EfhD6t6DqL5Z6yAnRCntbTFDU4YfbpyzSlHNWycPw==
 
 "@opentelemetry/sql-common@^0.40.1":
   version "0.40.1"
@@ -4031,10 +4031,10 @@
     uncrypto "^0.1.3"
     unstorage "^1.10.2"
 
-"@scayle/nuxt-opentelemetry@0.5.8":
-  version "0.5.8"
-  resolved "https://registry.yarnpkg.com/@scayle/nuxt-opentelemetry/-/nuxt-opentelemetry-0.5.8.tgz#cd739f699e6ea2051aad0e29aff03fb42330deeb"
-  integrity sha512-iDptlDWqhlRHvBqw62veeG7325C8TVsIcJBFpOA9NPq1rNYtbcYX6uN50Z6ClWX6v6Y0JOqcWB5Ht9C73gC/5Q==
+"@scayle/nuxt-opentelemetry@0.5.9":
+  version "0.5.9"
+  resolved "https://registry.yarnpkg.com/@scayle/nuxt-opentelemetry/-/nuxt-opentelemetry-0.5.9.tgz#174ac34d6d03f8b6fdacc3bd261cde96f7414baa"
+  integrity sha512-RzMCTljcGkdAmmVCeJqR6zdSh3WX5pEHl6yiEJSzxX2JCBZg05Zb9uHYdMKvJ2XEHikOturAdphk15owNvnOVA==
   dependencies:
     "@nuxt/kit" "^3.12.3"
     "@opentelemetry/api" "1.9.0"
@@ -4043,7 +4043,7 @@
     "@opentelemetry/instrumentation" "0.57.1"
     "@opentelemetry/resources" "1.30.1"
     "@opentelemetry/sdk-node" "0.52.1"
-    "@opentelemetry/semantic-conventions" "1.29.0"
+    "@opentelemetry/semantic-conventions" "1.30.0"
     "@vercel/otel" "1.10.1"
     defu "^6.1.4"
     knitwork "^1.1.0"

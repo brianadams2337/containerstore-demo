@@ -99,7 +99,7 @@
     "@contentful/rich-text-html-renderer": "17.0.0",
     "@googlemaps/js-api-loader": "1.16.8",
     "@nuxt/fonts": "0.10.3",
-    "@scayle/nuxt-opentelemetry": "0.5.8",
+    "@scayle/nuxt-opentelemetry": "0.5.9",
     "@scayle/omnichannel-nuxt": "4.0.4",
     "@scayle/storefront-country-detection": "1.1.0",
     "@scayle/storefront-nuxt": "8.8.1",
