@@ -1,8 +1,8 @@
 import { readonly } from 'vue'
 import { useState } from '#app/composables/state'
 
-export function useSlideIn(name: string) {
-  const isOpen = useState(`${name}-slide-in`, () => false)
+export function useSlideIn(name: string, isInitiallyOpened = false) {
+  const isOpen = useState(`${name}-slide-in`, () => isInitiallyOpened)
 
   const toggle = () => {
     isOpen.value = !isOpen.value

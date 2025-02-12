@@ -11,6 +11,7 @@
     <SFAuthTabs class="mb-6 border-b border-b-gray-200 pb-4" />
     <SFAuthLogin v-if="!isRegisterRoute" />
     <SFAuthRegister v-else />
+    <SFAuthResetPasswordSlideIn />
   </div>
 </template>
 
@@ -24,6 +25,7 @@ import { SFHeadline } from '#storefront-ui/components'
 import SFAuthTabs from '~/components/auth/SFAuthTabs.vue'
 import SFAuthRegister from '~/components/auth/register/SFAuthRegister.vue'
 import SFAuthLogin from '~/components/auth/SFAuthLogin.vue'
+import SFAuthResetPasswordSlideIn from '~/components/auth/resetPassword/SFAuthResetPasswordSlideIn.vue'
 import { useNuxtApp } from '#app'
 
 const { t } = useI18n()

@@ -22,7 +22,7 @@
     <SFValidatedInputGroup
       v-slot="{ isValid }"
       :errors="v.password.$errors"
-      class="h-24"
+      class="h-26 sm:h-22"
     >
       <SFPasswordInput
         v-model="userPayload.password"

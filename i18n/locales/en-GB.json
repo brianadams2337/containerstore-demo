@@ -385,12 +385,12 @@
       "submit": "Login"
     },
     "reset_password": {
-      "cancel": "Back",
       "status": {
-        "success": "Your password has been successfully reset. Use your new password to log in."
+        "success": "Your password has been successfully reset. You can now log in with your new password."
       },
-      "submit": "Submit",
-      "title": "Reset password"
+      "submit": "Save Password",
+      "title": "Set a new password",
+      "description": "Enter your new password below to secure your account."
     },
     "sign_up": {
       "status": {
