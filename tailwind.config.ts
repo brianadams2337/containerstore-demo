@@ -211,6 +211,7 @@ export default {
         13: '3.25rem',
         15: '3.75rem',
         26: '6.5rem',
+        76: '19rem',
       },
       width: {
         13: '3.25rem',

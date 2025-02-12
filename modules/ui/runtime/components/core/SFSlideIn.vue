@@ -21,6 +21,7 @@
       v-dialog.modal="isOpen"
       :name="name"
       class="h-full overflow-hidden transition-all backdrop:bg-black/50 max-sm:m-0 max-sm:h-dvh max-sm:max-h-screen max-sm:w-screen max-sm:max-w-screen md:mr-0 md:rounded-xl"
+      :class="$attrs.class"
       @click="onClick"
       @cancel="onCancel"
     >
@@ -32,13 +33,16 @@
         <div class="relative flex max-h-full flex-col">
           <slot v-bind="toggle" name="slide-in-content">
             <div
-              class="sticky top-0 z-10 border-b border-b-gray-200 bg-white/90 px-6 py-4"
+              class="sticky top-0 z-10 bg-white/90 px-6 py-4"
+              :class="{ 'border-b border-b-gray-200': !borderless }"
             >
               <slot name="slide-in-header" :toggle="toggle" />
             </div>
             <slot name="slide-in-body" />
             <div
-              class="sticky bottom-0 z-10 mt-auto border-t border-t-gray-200 bg-white p-6"
+              v-if="$slots['slide-in-actions']"
+              class="sticky bottom-0 z-10 mt-auto bg-white p-6"
+              :class="{ 'border-t border-t-gray-200': !borderless }"
             >
               <slot name="slide-in-actions" />
             </div>
@@ -60,11 +64,13 @@ import { useSlideIn, SlideInType } from '#storefront-ui'
 const {
   slideClass = '',
   slideType = SlideInType.DEFAULT,
+  borderless = false,
   name,
 } = defineProps<{
   name: string
   slideClass?: string
   slideType?: SlideInType
+  borderless?: boolean
 }>()
 
 const emit = defineEmits<{

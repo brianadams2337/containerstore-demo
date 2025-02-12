@@ -165,7 +165,7 @@ export function useAuthentication(
 
     try {
       await session.forgetPassword({ email })
-      toast.show(successMessage.value, { action: 'CONFIRM' })
+      toast.show(successMessage.value, { action: 'CONFIRM', type: 'INFO' })
     } catch (error) {
       handleError(error)
       hasSuccess = false

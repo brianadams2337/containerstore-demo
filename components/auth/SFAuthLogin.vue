@@ -8,7 +8,7 @@
     <SFValidatedInputGroup v-slot="{ isValid }" :errors="v.email.$errors">
       <SFTextInput
         v-model="userPayload.email"
-        autocomplete="username"
+        autocomplete="email"
         :placeholder="$t('form_fields.email')"
         type="email"
         name="login-email"
@@ -66,7 +66,7 @@ import { ref } from 'vue'
 import useVuelidate from '@vuelidate/core'
 import SFLocalizedLink from '../SFLocalizedLink.vue'
 import SFAuthErrorMessageContainer from './SFAuthErrorMessageContainer.vue'
-import SFAuthForgotPassword from './SFAuthForgotPassword.vue'
+import SFAuthForgotPassword from './forgotPassword/SFAuthForgotPassword.vue'
 import SFPasswordInput from './SFPasswordInput.vue'
 import { useValidationRules, useAuthentication } from '~/composables'
 import {

@@ -347,20 +347,20 @@
         "401_unauthorized": "Your request could not be processed, please try again.",
         "403_user_deactivated": "This user is deactivated.",
         "404_not_found": "Oops! E-Mail not found.",
-        "406_token_expired": "The token has already been used or has expired. Please request a new password reset email.",
+        "406_token_expired": "Your token has been already used or has expired. Please request a new password reset email.",
         "409_already_exists": "This account already exists.",
         "422_unprocessable_entity": "Your request could not be processed, please try again.",
         "500_server_error": "Your request resulted in an error"
       }
     },
     "forgot_password": {
-      "description": "Please enter your email address. We will send you an email so you can reset your password.",
-      "cancel": "Back",
       "status": {
-        "success": "An email was sent to reset your password"
+        "success": "A password reset link has been sent to your email."
       },
-      "submit": "Submit",
-      "title": "Forgotten your password?"
+      "submit": "Get reset link",
+      "back_to_login": "Back to Login",
+      "title": " Reset your password",
+      "description": "Enter the email address linked to your account, and we’ll send you a reset link."
     },
     "guest_login": {
       "status": {

@@ -354,13 +354,13 @@
       }
     },
     "forgot_password": {
-      "description": "Gib bitte deine Email-Adresse ein. Wir senden dich eine E-Mail zu, damit du dein Passwort zurücksetzen kannst.",
-      "cancel": "Zurück",
       "status": {
-        "success": "Es wurde eine E-Mail gesendet, um Ihr Passwort zurückzusetzen."
+        "success": "Ein Link zum Zurücksetzen des Passworts wurde an deine E-Mail gesendet."
       },
-      "submit": "Einreichen",
-      "title": "Passwort vergessen?"
+      "submit": "Zurücksetzen-Link erhalten",
+      "back_to_login": "Zurück zum Login",
+      "title": "Setze dein Passwort zurück",
+      "description": "Gib die mit deinem Konto verknüpfte E-Mail-Adresse ein, und wir senden dir einen Link zum Zurücksetzen."
     },
     "guest_login": {
       "status": {
