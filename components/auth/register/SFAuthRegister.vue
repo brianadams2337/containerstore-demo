@@ -1,5 +1,11 @@
 <template>
-  <form v-if="v" class="flex flex-col" @submit.prevent="onSubmit">
+  <form
+    v-if="v"
+    ref="registerForm"
+    class="flex flex-col"
+    @submit.prevent="onSubmit"
+    @keydown.enter.prevent="onEnter"
+  >
     <SFAuthErrorMessageContainer
       data-testid="register-error-message-container"
       :message="errorMessage"
@@ -66,9 +72,9 @@
       <SFButton
         :disabled="isSubmitting"
         :loading="isSubmitting"
-        type="submit"
         data-testid="register-submit"
         class="w-1/2"
+        type="submit"
       >
         {{ $t('sign_in_page.sign_up.submit') }}
       </SFButton>
@@ -99,7 +105,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, useTemplateRef } from 'vue'
 import useVuelidate from '@vuelidate/core'
 import type { Gender } from '@scayle/storefront-nuxt'
 import type { Required } from 'utility-types'
@@ -144,6 +150,30 @@ const userPayload = ref<UserPayload>({
   email: '',
   password: '',
 })
+
+const registerForm = useTemplateRef('registerForm')
+
+const onEnter = (event: KeyboardEvent) => {
+  const formElements = Array.from(
+    registerForm?.value?.elements ?? [],
+  ) as HTMLElement[]
+  const currentIndex = formElements.indexOf(event.target as HTMLElement)
+  const nextElement = formElements[currentIndex + 1]
+
+  const currentElement = formElements[currentIndex]
+
+  const isCurrentElementButton = currentElement.tagName === 'BUTTON'
+
+  if (isCurrentElementButton) {
+    return currentElement.click()
+  }
+
+  if (nextElement) {
+    return nextElement.focus()
+  }
+
+  onSubmit()
+}
 
 const validateForm = async (): Promise<boolean> => {
   await v.value.$validate()
