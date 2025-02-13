@@ -4065,10 +4065,10 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-api/-/storefront-api-17.18.0.tgz#8f7e0c2d13d266ff7634469ddf6af0bcfaf11e47"
   integrity sha512-8kPNXoTcjJH4MhFBdKNfcA3syuYKLNKhsWh+/tVqUJRnbmaaORnyFdcZWSY21d6U+Ll4FNJQ0590JHedf/dzlg==
 
-"@scayle/storefront-core@8.4.0":
-  version "8.4.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-8.4.0.tgz#8a3184e1d320fc6e35d36de09afc9e302a8dca2b"
-  integrity sha512-hCpiGsmAMli4vraP7rIu9ROusfPtgGP7CFihPIYguDj3AZMExY91xP6Kj7TBVKP5M12cQ5vpyxMBj6HIAhGs6w==
+"@scayle/storefront-core@8.5.0":
+  version "8.5.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-8.5.0.tgz#7b16ffeb076c7c513fb6c089b7a7d71382b7f05c"
+  integrity sha512-j9PFTfEblG6HBOT9SSbIGN0lEOVv4VdjZe8Yqib6stc0YmCeSOF5gQUonuNHAUnBb3HbToIMkF8ndjrDqegwkw==
   dependencies:
     "@scayle/storefront-api" "17.18.0"
     crypto-js "^4.2.0"
@@ -4089,14 +4089,14 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-navigation/-/storefront-navigation-0.1.0.tgz#c622f02e05de26fcbd4121356e1ab2ef67066b9c"
   integrity sha512-6XIoK2fgAUFoaqC37zXRuudnK83OeQhT056Ow9OhJIZPj/KGyPQjYfZm0Gxg8JSa6Emct4KvQteROg/FI0yesQ==
 
-"@scayle/storefront-nuxt@8.8.1":
-  version "8.8.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.8.1.tgz#14791c506e2ffa13e797279e5f0a3802ef384b73"
-  integrity sha512-eqlqhBi3zoHTsiWu3noKjR92abcz0A7NIJn1sISC4//JwWam3e203Xacc6dT+LJ9rm1NJ4ywv4cEumAgavxvBw==
+"@scayle/storefront-nuxt@8.8.2":
+  version "8.8.2"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.8.2.tgz#4c370e387a712155d796fab3a56746e291b5a20f"
+  integrity sha512-69qSFT4MHp8wVuQC2Q3Qx57//ZLZtqm4N2nhemOdFvSVEhSxWskODxl/SVpN5MFsIl+hYxTMsn+w4Ka3TmluaA==
   dependencies:
     "@opentelemetry/api" "^1.9.0"
     "@scayle/h3-session" "0.6.0"
-    "@scayle/storefront-core" "8.4.0"
+    "@scayle/storefront-core" "8.5.0"
     "@scayle/unstorage-compression-driver" "^0.2.3"
     "@vueuse/core" "12.5.0"
     consola "^3.2.3"
