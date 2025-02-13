@@ -124,7 +124,7 @@ export function usePromotionGiftSelection(gift: Product) {
       variantId: activeVariant.value.id,
       productName,
       quantity: 1,
-      existingItemHandling: ExistingItemHandling.ReplaceExisting,
+      existingItemHandling: ExistingItemHandling.REPLACE_EXISTING,
       ...(promotionId && { promotionId }),
     })
 

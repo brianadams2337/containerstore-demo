@@ -1,7 +1,6 @@
-import { extendPromise } from '@scayle/storefront-nuxt'
+import { extendPromise, ExistingItemHandling } from '@scayle/storefront-nuxt'
 import type { AddOrUpdateItemType, BasketItem } from '@scayle/storefront-nuxt'
 import type { rpcMethods } from '@scayle/storefront-core'
-import { ExistingItemHandling } from '@scayle/storefront-api'
 import { useI18n } from 'vue-i18n'
 import { useToast } from '~/composables/useToast'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
@@ -86,7 +85,8 @@ export function useBasketActions(): UseBasketActionsReturn &
     try {
       const hasSubscriptionData = hasSubscriptionCustomData(item.customData)
       const existingItemHandling =
-        item.existingItemHandling || ExistingItemHandling.AddQuantityToExisting
+        item.existingItemHandling ||
+        ExistingItemHandling.ADD_QUANTITY_TO_EXISTING
       await addItemToBasket({ ...item, existingItemHandling })
       showAddItemSuccessMessage(item, hasSubscriptionData)
     } catch (error) {

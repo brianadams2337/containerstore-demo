@@ -13,11 +13,15 @@ import {
  */
 export const getBasketToastErrorMessageKey = (error: unknown) => {
   if (error instanceof Error) {
-    if (error.cause === AddToBasketFailureKind.ItemAddedWithReducedQuantity) {
+    if (
+      error.cause === AddToBasketFailureKind.ITEM_ADDED_WITH_REDUCED_QUANTITY
+    ) {
       return 'basket.notification.add_with_reduced_quantity_error'
-    } else if (error.cause === AddToBasketFailureKind.ItemUnvailable) {
+    } else if (error.cause === AddToBasketFailureKind.ITEM_UNAVAILABLE) {
       return 'basket.notification.add_to_basket_variant_out_of_stock_error'
-    } else if (error.cause === AddToBasketFailureKind.MaximumItemCountReached) {
+    } else if (
+      error.cause === AddToBasketFailureKind.MAXIMUM_ITEM_COUNT_REACHED
+    ) {
       return 'basket.notification.add_to_basket_max_basket_items_error'
     }
   }

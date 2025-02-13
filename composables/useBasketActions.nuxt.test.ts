@@ -1,6 +1,6 @@
 import { toRef, defineComponent } from 'vue'
 import { describe, expect, it, vi } from 'vitest'
-import { ExistingItemHandling } from '@scayle/storefront-api'
+import { ExistingItemHandling } from '@scayle/storefront-nuxt'
 import { flushPromises, mount } from '@vue/test-utils'
 import { basketItemFactory } from '@scayle/storefront-nuxt/test/factories'
 import { useBasketActions } from './useBasketActions'
@@ -72,7 +72,7 @@ describe('useBasketActions', () => {
         quantity: 1,
         variantId: 1,
         existingItemHandling:
-          ExistingItemHandling.ReplaceExistingWithCombinedQuantity,
+          ExistingItemHandling.REPLACE_EXISTING_WITH_COMBINED_QUANTITY,
       })
 
       expect(addItemMock).toBeCalledWith({
@@ -80,7 +80,7 @@ describe('useBasketActions', () => {
         quantity: 1,
         variantId: 1,
         existingItemHandling:
-          ExistingItemHandling.ReplaceExistingWithCombinedQuantity,
+          ExistingItemHandling.REPLACE_EXISTING_WITH_COMBINED_QUANTITY,
       })
     })
     it('should use "ExistingItemHandling.AddQuantityToExisting" when existingItemHandling was not specified', async () => {
@@ -95,7 +95,7 @@ describe('useBasketActions', () => {
         productName: 'Test',
         quantity: 1,
         variantId: 1,
-        existingItemHandling: ExistingItemHandling.AddQuantityToExisting,
+        existingItemHandling: ExistingItemHandling.ADD_QUANTITY_TO_EXISTING,
       })
     })
     it('should keep the passed item group', async () => {
@@ -111,7 +111,7 @@ describe('useBasketActions', () => {
         productName: 'Test',
         quantity: 1,
         variantId: 1,
-        existingItemHandling: ExistingItemHandling.AddQuantityToExisting,
+        existingItemHandling: ExistingItemHandling.ADD_QUANTITY_TO_EXISTING,
         itemGroup: { id: 'id', isMainItem: true, isRequired: true },
       })
     })
@@ -127,7 +127,7 @@ describe('useBasketActions', () => {
         productName: 'Test',
         quantity: 1,
         variantId: 1,
-        existingItemHandling: ExistingItemHandling.AddQuantityToExisting,
+        existingItemHandling: ExistingItemHandling.ADD_QUANTITY_TO_EXISTING,
       })
     })
   })
