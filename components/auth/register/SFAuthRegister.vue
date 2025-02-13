@@ -78,12 +78,15 @@
     </div>
   </form>
   <SFAuthRegisterPrivacyDisclaimer class="mt-5" />
-  <SFAuthSeparator class="my-8 lg:my-10" />
+  <SFAuthSeparator v-if="externalIDPRedirects" class="my-8 lg:my-10" />
   <SFAuthIDPRedirects
     v-if="externalIDPRedirects"
     :redirects="externalIDPRedirects"
   />
-  <p class="text-start text-base text-gray-600">
+  <p
+    class="text-start text-base text-gray-600"
+    :class="{ 'mt-8': !externalIDPRedirects }"
+  >
     {{ $t('sign_in_page.sign_up.not_new_user') }}
     <SFLocalizedLink
       :to="routeList.signin"

@@ -50,12 +50,15 @@
       />
     </div>
   </form>
-  <SFAuthSeparator class="my-8 lg:my-10" />
+  <SFAuthSeparator v-if="externalIDPRedirects" class="my-8 lg:my-10" />
   <SFAuthIDPRedirects
     v-if="externalIDPRedirects"
     :redirects="externalIDPRedirects"
   />
-  <p class="text-start text-base text-gray-600">
+  <p
+    class="text-start text-base text-gray-600"
+    :class="{ 'mt-8': !externalIDPRedirects }"
+  >
     {{ $t('sign_in_page.login.not_user_yet') }}
     <SFLocalizedLink
       :to="routeList.signup"

@@ -54,7 +54,7 @@ const idpParams = computed(() => ({
 const idp = useIDP(idpParams)
 
 const externalIDPRedirects = computed(() => {
-  return idp.data && Object.keys(idp.data).length > 0
+  return idp.data.value && Object.keys(idp.data.value).length > 0
     ? (idp.data.value as Record<string, string>)
     : undefined
 })
