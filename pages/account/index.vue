@@ -43,7 +43,12 @@
         />
       </div>
       <div class="mx-auto mt-12 w-fit">
-        <SFButton is-full-width :disabled="isSubmitting" @click="logout()">
+        <SFButton
+          is-full-width
+          :disabled="isSubmitting"
+          data-testid="logout-button"
+          @click="logout()"
+        >
           {{ $t('global.sign_out') }}
         </SFButton>
       </div>

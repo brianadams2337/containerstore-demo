@@ -5,12 +5,16 @@ export class SignInPage {
   emailInput: Locator
   passwordInput: Locator
   loginButton: Locator
+  loginErrorMessageContainer: Locator
 
   constructor(page: Page) {
     this.page = page
     this.emailInput = page.getByPlaceholder('E-Mail-Adresse')
     this.passwordInput = page.getByPlaceholder('Passwort')
     this.loginButton = page.getByTestId('login-submit')
+    this.loginErrorMessageContainer = page.getByTestId(
+      'login-error-message-container',
+    )
   }
 
   async fillLoginData(email: string, password: string) {

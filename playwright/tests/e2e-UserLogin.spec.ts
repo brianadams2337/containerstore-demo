@@ -42,7 +42,6 @@ test('C2130648: Verify User login and log out', async ({
 test('C2130649: Verify User login with wrong credentials', async ({
   signinPage,
   header,
-  toastMessage,
 }) => {
   await expect(async () => {
     await header.headerLoginButton.click()
@@ -52,9 +51,7 @@ test('C2130649: Verify User login with wrong credentials', async ({
     )
 
     await signinPage.clickLoginButton()
-    await toastMessage.assertToastInfoIsVisible()
-    await toastMessage.clickToastMessageButton()
-    await toastMessage.assertToastInfoNotVisible()
-    await signinPage.assertLoginButtonIsVisible()
+    await signinPage.loginErrorMessageContainer.waitFor()
+    await expect(signinPage.loginErrorMessageContainer).toBeVisible()
   }).toPass()
 })
