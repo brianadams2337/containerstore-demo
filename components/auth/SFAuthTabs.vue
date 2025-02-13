@@ -24,18 +24,31 @@ import { useI18n } from '#i18n'
 
 const { t } = useI18n()
 
-const tabs = computed(() => [
-  {
-    to: routeList.signin,
-    title: t('sign_in_page.login.title'),
-  },
-  {
-    to: routeList.signup,
-    title: t('sign_in_page.sign_up.title'),
-  },
-])
-
 const route = useRoute()
+
+const redirectUrl = computed(() => route.query.redirectUrl)
+
+const tabs = computed(() => {
+  const items = [
+    {
+      to: routeList.signin,
+      title: t('sign_in_page.login.title'),
+    },
+    {
+      to: routeList.signup,
+      title: t('sign_in_page.sign_up.title'),
+    },
+  ]
+
+  return items.map((item) => {
+    const query = {
+      ...item.to.query,
+      // Attach redirect URL (checkout route) if exists when changing the tabs
+      ...(redirectUrl.value && { redirectUrl: redirectUrl.value as string }),
+    }
+    return { ...item, to: { ...item.to, query } }
+  })
+})
 
 const { getLocalizedRoute } = useRouteHelpers()
 
