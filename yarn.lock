@@ -2671,6 +2671,13 @@
   dependencies:
     "@opentelemetry/api" "^1.3.0"
 
+"@opentelemetry/api-logs@0.57.2":
+  version "0.57.2"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/api-logs/-/api-logs-0.57.2.tgz#d4001b9aa3580367b40fe889f3540014f766cc87"
+  integrity sha512-uIX52NnTM0iBh84MShlpouI7UKqkZ7MrUszTmaypHBu4r7NofznSnQRfJ+uUeDtQDj6w8eFGg5KBLDAwAPz1+A==
+  dependencies:
+    "@opentelemetry/api" "^1.3.0"
+
 "@opentelemetry/api@1.9.0", "@opentelemetry/api@^1.0.0", "@opentelemetry/api@^1.3.0", "@opentelemetry/api@^1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@opentelemetry/api/-/api-1.9.0.tgz#d03eba68273dc0f7509e2a3d5cba21eae10379fe"
@@ -2899,6 +2906,17 @@
     "@opentelemetry/core" "1.30.1"
     "@opentelemetry/otlp-exporter-base" "0.57.1"
     "@opentelemetry/otlp-transformer" "0.57.1"
+    "@opentelemetry/resources" "1.30.1"
+    "@opentelemetry/sdk-trace-base" "1.30.1"
+
+"@opentelemetry/exporter-trace-otlp-proto@0.57.2":
+  version "0.57.2"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/exporter-trace-otlp-proto/-/exporter-trace-otlp-proto-0.57.2.tgz#ffaed12c2f57ae1e50a458f641ea271e19b54ded"
+  integrity sha512-awDdNRMIwDvUtoRYxRhja5QYH6+McBLtoz1q9BeEsskhZcrGmH/V1fWpGx8n+Rc+542e8pJA6y+aullbIzQmlw==
+  dependencies:
+    "@opentelemetry/core" "1.30.1"
+    "@opentelemetry/otlp-exporter-base" "0.57.2"
+    "@opentelemetry/otlp-transformer" "0.57.2"
     "@opentelemetry/resources" "1.30.1"
     "@opentelemetry/sdk-trace-base" "1.30.1"
 
@@ -3281,6 +3299,18 @@
     semver "^7.5.2"
     shimmer "^1.2.1"
 
+"@opentelemetry/instrumentation@0.57.2":
+  version "0.57.2"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/instrumentation/-/instrumentation-0.57.2.tgz#8924549d7941ba1b5c6f04d5529cf48330456d1d"
+  integrity sha512-BdBGhQBh8IjZ2oIIX6F2/Q3LKm/FDDKi6ccYKcBTeilh6SNdNKveDOLk73BkSJjQLJk6qe4Yh+hHw1UPhCDdrg==
+  dependencies:
+    "@opentelemetry/api-logs" "0.57.2"
+    "@types/shimmer" "^1.2.0"
+    import-in-the-middle "^1.8.1"
+    require-in-the-middle "^7.1.1"
+    semver "^7.5.2"
+    shimmer "^1.2.1"
+
 "@opentelemetry/otlp-exporter-base@0.52.1":
   version "0.52.1"
   resolved "https://registry.yarnpkg.com/@opentelemetry/otlp-exporter-base/-/otlp-exporter-base-0.52.1.tgz#657d9b27c55bd42ab6a8bb181006b57f9c84b91d"
@@ -3296,6 +3326,14 @@
   dependencies:
     "@opentelemetry/core" "1.30.1"
     "@opentelemetry/otlp-transformer" "0.57.1"
+
+"@opentelemetry/otlp-exporter-base@0.57.2":
+  version "0.57.2"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/otlp-exporter-base/-/otlp-exporter-base-0.57.2.tgz#10636c8d0e377f3311e55741b0550b06f32a3e98"
+  integrity sha512-XdxEzL23Urhidyebg5E6jZoaiW5ygP/mRjxLHixogbqwDy2Faduzb5N0o/Oi+XTIJu+iyxXdVORjXax+Qgfxag==
+  dependencies:
+    "@opentelemetry/core" "1.30.1"
+    "@opentelemetry/otlp-transformer" "0.57.2"
 
 "@opentelemetry/otlp-grpc-exporter-base@0.52.1":
   version "0.52.1"
@@ -3339,6 +3377,19 @@
     "@opentelemetry/core" "1.30.1"
     "@opentelemetry/resources" "1.30.1"
     "@opentelemetry/sdk-logs" "0.57.1"
+    "@opentelemetry/sdk-metrics" "1.30.1"
+    "@opentelemetry/sdk-trace-base" "1.30.1"
+    protobufjs "^7.3.0"
+
+"@opentelemetry/otlp-transformer@0.57.2":
+  version "0.57.2"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/otlp-transformer/-/otlp-transformer-0.57.2.tgz#a3bdd2c82ddd6fd87f513860fb4f6260e555d2c0"
+  integrity sha512-48IIRj49gbQVK52jYsw70+Jv+JbahT8BqT2Th7C4H7RCM9d0gZ5sgNPoMpWldmfjvIsSgiGJtjfk9MeZvjhoig==
+  dependencies:
+    "@opentelemetry/api-logs" "0.57.2"
+    "@opentelemetry/core" "1.30.1"
+    "@opentelemetry/resources" "1.30.1"
+    "@opentelemetry/sdk-logs" "0.57.2"
     "@opentelemetry/sdk-metrics" "1.30.1"
     "@opentelemetry/sdk-trace-base" "1.30.1"
     protobufjs "^7.3.0"
@@ -3458,6 +3509,15 @@
   integrity sha512-jGdObb/BGWu6Peo3cL3skx/Rl1Ak/wDDO3vpPrrThGbqE7isvkCsX6uE+OAt8Ayjm9YC8UGkohWbLR09JmM0FA==
   dependencies:
     "@opentelemetry/api-logs" "0.57.1"
+    "@opentelemetry/core" "1.30.1"
+    "@opentelemetry/resources" "1.30.1"
+
+"@opentelemetry/sdk-logs@0.57.2":
+  version "0.57.2"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/sdk-logs/-/sdk-logs-0.57.2.tgz#ddc9d1e2b86052b4b6bb954dd90fa3878bed8a23"
+  integrity sha512-TXFHJ5c+BKggWbdEQ/inpgIzEmS2BGQowLE9UhsMd7YYlUfBQJ4uax0VF/B5NYigdM/75OoJGhAV3upEhK+3gg==
+  dependencies:
+    "@opentelemetry/api-logs" "0.57.2"
     "@opentelemetry/core" "1.30.1"
     "@opentelemetry/resources" "1.30.1"
 
@@ -4027,16 +4087,16 @@
     uncrypto "^0.1.3"
     unstorage "^1.10.2"
 
-"@scayle/nuxt-opentelemetry@0.5.9":
-  version "0.5.9"
-  resolved "https://registry.yarnpkg.com/@scayle/nuxt-opentelemetry/-/nuxt-opentelemetry-0.5.9.tgz#174ac34d6d03f8b6fdacc3bd261cde96f7414baa"
-  integrity sha512-RzMCTljcGkdAmmVCeJqR6zdSh3WX5pEHl6yiEJSzxX2JCBZg05Zb9uHYdMKvJ2XEHikOturAdphk15owNvnOVA==
+"@scayle/nuxt-opentelemetry@0.5.10":
+  version "0.5.10"
+  resolved "https://registry.yarnpkg.com/@scayle/nuxt-opentelemetry/-/nuxt-opentelemetry-0.5.10.tgz#75b516c6b0c8b977a91130a5080035753f854321"
+  integrity sha512-IdXNp2Ui7ZCQC8VByVFTy8gRjivOiU/glJRSXnZW7coGkU2gROK9L7F/6qMK0M3O1qSuYpMYuXER/G9tKh8EFw==
   dependencies:
     "@nuxt/kit" "^3.12.3"
     "@opentelemetry/api" "1.9.0"
     "@opentelemetry/auto-instrumentations-node" "0.56.0"
-    "@opentelemetry/exporter-trace-otlp-proto" "0.57.1"
-    "@opentelemetry/instrumentation" "0.57.1"
+    "@opentelemetry/exporter-trace-otlp-proto" "0.57.2"
+    "@opentelemetry/instrumentation" "0.57.2"
     "@opentelemetry/resources" "1.30.1"
     "@opentelemetry/sdk-node" "0.52.1"
     "@opentelemetry/semantic-conventions" "1.30.0"
@@ -4067,10 +4127,10 @@
   dependencies:
     utility-types "3.11.0"
 
-"@scayle/storefront-core@8.6.0":
-  version "8.6.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-8.6.0.tgz#00b2895dd5542b6056b0b0db4d063cdc42d90453"
-  integrity sha512-wkfAqdExNGqnbY5Y6aDoQhNCZ+MgKwTNT7dNVzmNXfM0NuzAbtYoyIC97AhcXTBoDvgcgWRD8kEhVwaA7S2hVA==
+"@scayle/storefront-core@8.6.1":
+  version "8.6.1"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-8.6.1.tgz#5395f538c13e42b066a7db08573699ea0ee617ab"
+  integrity sha512-xm8HmoTjEDkAg/UNgsN9U5GDeLcGZG6Ky6D/ogtTHlbzpYmsFhbxol9wH1vWwzmb2duRRzHDEBdewNuj4SFXVw==
   dependencies:
     "@scayle/storefront-api" "18.0.0"
     crypto-js "^4.2.0"
@@ -4091,16 +4151,16 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-navigation/-/storefront-navigation-0.1.0.tgz#c622f02e05de26fcbd4121356e1ab2ef67066b9c"
   integrity sha512-6XIoK2fgAUFoaqC37zXRuudnK83OeQhT056Ow9OhJIZPj/KGyPQjYfZm0Gxg8JSa6Emct4KvQteROg/FI0yesQ==
 
-"@scayle/storefront-nuxt@8.9.0":
-  version "8.9.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.9.0.tgz#cb37d9f20828021be0bd8b1e1665843034d2d0a5"
-  integrity sha512-yiPHik9qp6mAz4zx03pDHagGoiNh4rGTz1ysSqlR+ThHfBWpffMRvlU1uxwq+Zesa7ybD/CZcCIsMBcIJcJlTA==
+"@scayle/storefront-nuxt@8.9.1":
+  version "8.9.1"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.9.1.tgz#ca2f59a11281da310b28d8bd84ce3969f73243da"
+  integrity sha512-Ablr1/XKtfOKmVfjXdg2qon9Njr4oVKi1n9fXKeVx2AqiAKYZqe5NAEv5TSP76bgX0c2Jf7jhEKdmXbwutpbAA==
   dependencies:
     "@opentelemetry/api" "^1.9.0"
     "@scayle/h3-session" "0.6.0"
-    "@scayle/storefront-core" "8.6.0"
+    "@scayle/storefront-core" "8.6.1"
     "@scayle/unstorage-compression-driver" "^0.2.3"
-    "@vueuse/core" "12.5.0"
+    "@vueuse/core" "12.6.1"
     consola "^3.2.3"
     core-js "^3.37.1"
     defu "^6.1.4"
@@ -5044,16 +5104,6 @@
     "@vueuse/shared" "12.6.1"
     vue "^3.5.13"
 
-"@vueuse/core@12.5.0":
-  version "12.5.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-12.5.0.tgz#1321c75132c4f20f223e6313587ebeeec79957f2"
-  integrity sha512-GVyH1iYqNANwcahAx8JBm6awaNgvR/SwZ1fjr10b8l1HIgDp82ngNbfzJUgOgWEoxjL+URAggnlilAEXwCOZtg==
-  dependencies:
-    "@types/web-bluetooth" "^0.0.20"
-    "@vueuse/metadata" "12.5.0"
-    "@vueuse/shared" "12.5.0"
-    vue "^3.5.13"
-
 "@vueuse/core@12.6.1":
   version "12.6.1"
   resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-12.6.1.tgz#f61d8cbf603c0a774377d73941519e605a8fa81a"
@@ -5083,32 +5133,20 @@
     "@vueuse/shared" "12.6.1"
     vue "^3.5.13"
 
-"@vueuse/metadata@12.5.0":
-  version "12.5.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-12.5.0.tgz#8f1778a2894bdda2bf458054377a379d40276306"
-  integrity sha512-Ui7Lo2a7AxrMAXRF+fAp9QsXuwTeeZ8fIB9wsLHqzq9MQk+2gMYE2IGJW48VMJ8ecvCB3z3GsGLKLbSasQ5Qlg==
-
 "@vueuse/metadata@12.6.1":
   version "12.6.1"
   resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-12.6.1.tgz#782b91d1993bc098cccde4a316e71c1140beff80"
   integrity sha512-2094HNXGdsU3aqRbad0vmlRgGncMC4u2f6nFdW1mUn7b7ym4hORrDZfyeq8G5BfGvX4y0zZynWfCdtB2WwpyVw==
 
-"@vueuse/nuxt@12.5.0":
-  version "12.5.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/nuxt/-/nuxt-12.5.0.tgz#c8d5bf3883007650a1d7da083e6013288a774d68"
-  integrity sha512-daqSOlXv5ilAiT5GlRBtfqdkYjeMO9P6n50OpbEVm9hXmfXmZoXK3YMND8l5n5KcscD4pnD66IrYPqqOW5eH1Q==
+"@vueuse/nuxt@12.6.1":
+  version "12.6.1"
+  resolved "https://registry.yarnpkg.com/@vueuse/nuxt/-/nuxt-12.6.1.tgz#6c8ed9007646272a65e32a3a40c5638894b19e1f"
+  integrity sha512-QGLha38pMT8LQMlqMFzdtNMtGT3BNJQcb/tvufEdfvhy7nxoRV8m9mGE2cqrsV6xHQ3yo+mbaGKFe7OxG0w88w==
   dependencies:
-    "@nuxt/kit" "^3.15.1"
-    "@vueuse/core" "12.5.0"
-    "@vueuse/metadata" "12.5.0"
+    "@nuxt/kit" "^3.15.4"
+    "@vueuse/core" "12.6.1"
+    "@vueuse/metadata" "12.6.1"
     local-pkg "^1.0.0"
-    vue "^3.5.13"
-
-"@vueuse/shared@12.5.0":
-  version "12.5.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-12.5.0.tgz#b93af7ab0fd6a8d879808c9bf37d540dac01da13"
-  integrity sha512-vMpcL1lStUU6O+kdj6YdHDixh0odjPAUM15uJ9f7MY781jcYkIwFA4iv2EfoIPO6vBmvutI1HxxAwmf0cx5ISQ==
-  dependencies:
     vue "^3.5.13"
 
 "@vueuse/shared@12.6.1":
