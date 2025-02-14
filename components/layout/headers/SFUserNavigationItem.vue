@@ -51,9 +51,16 @@ const link = computed(() => {
   if (user.value && mounted.value) {
     return routeList.account
   }
-  return route.path !== getLocalizedRoute(routeList.signin)
-    ? routeList.signin
-    : route.fullPath
+  const localizedSignInPath = getLocalizedRoute(routeList.signin) as string
+
+  if (route.path !== localizedSignInPath) {
+    return routeList.signin
+  }
+
+  if (route.path === localizedSignInPath) {
+    return route.fullPath
+  }
+  return {}
 })
 
 const isOpen = ref(false)
