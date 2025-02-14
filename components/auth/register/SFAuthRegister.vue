@@ -61,6 +61,7 @@
       <SFPasswordInput
         v-model="userPayload.password"
         :is-valid="isValid"
+        :name="PASSWORD_FIELD_NAME"
         :placeholder="$t('form_fields.password')"
         autocomplete="new-password"
         data-testid="new-password"
@@ -130,6 +131,8 @@ defineProps<{ externalIDPRedirects?: Record<string, string> }>()
 
 const isGuestFlowEnabled = ref(false)
 
+const PASSWORD_FIELD_NAME = 'register-password'
+
 const { register, isSubmitting, guestLogin, errorMessage } = useAuthentication(
   isGuestFlowEnabled.value ? 'sign_up' : 'guest_login',
 )
@@ -158,15 +161,23 @@ const onEnter = (event: KeyboardEvent) => {
     registerForm?.value?.elements ?? [],
   ) as HTMLElement[]
   const currentIndex = formElements.indexOf(event.target as HTMLElement)
-
   const currentElement = formElements[currentIndex]
-
   const nextElement = formElements[currentIndex + 1]
 
   const isCurrentElementButton = currentElement.tagName === 'BUTTON'
 
   if (isCurrentElementButton) {
     return currentElement.click()
+  }
+
+  // Check if currrent element is password field and that it has toggle
+  // visibility button in it. If yes, skip it, end focus element after
+  if (
+    (currentElement as HTMLInputElement).name === PASSWORD_FIELD_NAME &&
+    nextElement.firstElementChild?.localName === 'svg'
+  ) {
+    const nextSecondElement = formElements[currentIndex + 2]
+    return nextSecondElement.focus()
   }
 
   if (nextElement) {
