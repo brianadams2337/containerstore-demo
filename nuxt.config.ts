@@ -304,6 +304,7 @@ export default defineNuxtConfig({
             ttl: 10 * 60,
             // Required to resolve connection issues with AWS ElastiCache
             checkServerIdentity: undefined, // Override: NUXT_STOREFRONT_STORAGE_CACHE_CHECK_SERVER_INTEGRITY,
+            maxRetriesPerRequest: 1, // Override: NUXT_STOREFRONT_STORAGE_CACHE_MAX_RETRIES_PER_REQUEST,
           },
           session: {
             // Redis Options: https://redis.github.io/ioredis/index.html#RedisOptions
@@ -317,6 +318,7 @@ export default defineNuxtConfig({
             tls: false, // Override: NUXT_STOREFRONT_STORAGE_SESSION_TLS,
             // Required to resolve connection issues with AWS ElastiCache
             checkServerIdentity: undefined, // Override: NUXT_STOREFRONT_STORAGE_SESSION_CHECK_SERVER_INTEGRITY,
+            maxRetriesPerRequest: 3, // Override: NUXT_STOREFRONT_STORAGE_SESSION_MAX_RETRIES_PER_REQUEST,
           },
         }
       })(),
