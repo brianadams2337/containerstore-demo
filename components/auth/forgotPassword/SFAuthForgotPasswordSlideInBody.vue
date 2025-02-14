@@ -39,8 +39,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import useVuelidate from '@vuelidate/core'
+import { watchImmediate } from '@vueuse/core'
 import SFAuthErrorMessageContainer from '../SFAuthErrorMessageContainer.vue'
 import {
   useValidationRules,
@@ -91,11 +92,10 @@ const emailRules = {
 
 const v = useVuelidate({ email: emailRules }, { email })
 
-watch(
+watchImmediate(
   () => prefilledEmail,
   (value) => {
     email.value = value
   },
-  { immediate: true, once: true },
 )
 </script>
