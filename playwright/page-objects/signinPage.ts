@@ -16,6 +16,8 @@ export class SignInPage {
   readonly registerTab: Locator
   readonly registerForm: Locator
   readonly registerErrorMessageContainer: Locator
+  readonly passwordToggleShow: Locator
+  readonly passwordToggleHide: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -37,6 +39,8 @@ export class SignInPage {
     this.registerErrorMessageContainer = page.getByTestId(
       'register-error-message-container',
     )
+    this.passwordToggleShow = page.getByTestId('password-toggle-show')
+    this.passwordToggleHide = page.getByTestId('password-toggle-hide')
   }
 
   async fillLoginData(email: string, password: string) {

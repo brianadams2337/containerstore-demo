@@ -17,6 +17,9 @@
         "
         variant="raw"
         class="size-full rounded-md *:size-3 *:text-gray-750"
+        :data-testid="
+          isPasswordHidden ? 'password-toggle-show' : 'password-toggle-hide'
+        "
         @click.prevent="togglePasswordVisibility"
       >
         <IconPasswordHide v-if="isPasswordHidden" aria-hidden="true" />

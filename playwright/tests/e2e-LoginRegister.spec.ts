@@ -85,3 +85,28 @@ test('C2171373 Verify User registration with already registered user account', a
     await signinPage.assertLoginButtonIsVisible()
   })
 })
+
+test('C2171375 Verify User registration password toggle button', async ({
+  signinPage,
+  header,
+}) => {
+  await header.headerLoginButton.waitFor()
+  await header.headerLoginButton.click()
+  await signinPage.registerTab.waitFor()
+  await signinPage.registerTab.click()
+  await signinPage.registerForm.waitFor()
+
+  await signinPage.passwordInput.focus()
+  await signinPage.passwordInput.fill(REGISTERED_TEST_USER.password)
+  await expect(signinPage.passwordToggleShow).toBeVisible()
+  await expect(signinPage.passwordToggleHide).not.toBeVisible()
+  await expect(signinPage.passwordInput).toHaveAttribute('type', 'password')
+
+  await signinPage.passwordToggleShow.click()
+  await expect(signinPage.passwordToggleShow).not.toBeVisible()
+  await expect(signinPage.passwordToggleHide).toBeVisible()
+  await expect(signinPage.passwordInput).toHaveValue(
+    REGISTERED_TEST_USER.password,
+  )
+  await expect(signinPage.passwordInput).toHaveAttribute('type', 'text')
+})
