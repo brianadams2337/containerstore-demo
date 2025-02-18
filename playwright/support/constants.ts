@@ -75,12 +75,12 @@ export const BASKET_TEST_DATA = {
   itemKeyHappyPath: '15e3df16a020df6b0716b0cb351132ac',
   itemKeyBasketE2E: '7dac25e441f1472a2201cd7f493d139c',
   regularPriceVariantId: 334103,
-  salePriceVariantId: 335845,
+  salePriceVariantId: 332871,
   promotionPriceProductId: '205808',
   soldOutProductUser: process.env.TEST_USER_EMAIL7 as string,
   soldOutProductPassword: process.env.TEST_USER_PASSWORD as string,
   productAvailableLessThanTen: 319859,
-  productAvailableMoreThanTen: 333230,
+  productAvailableMoreThanTen: 333231,
 }
 
 export const HOMEPAGE_PATH_DE = '/de'
