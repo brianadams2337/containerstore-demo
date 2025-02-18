@@ -18,11 +18,19 @@ export class SignInPage {
   readonly registerErrorMessageContainer: Locator
   readonly passwordToggleShow: Locator
   readonly passwordToggleHide: Locator
+  readonly resetPasswordButton: Locator
+  readonly closePasswordResetFlyoutButton: Locator
+  readonly resetPasswordFlyout: Locator
+  readonly resetPasswordEmailInput: Locator
+  readonly resetPasswordBackToLoginButton: Locator
+  readonly resetPasswordGetResetLinkButton: Locator
+  readonly resetPasswordHeadline: Locator
+  readonly resetPasswordErrorMessageContainer: Locator
 
   constructor(page: Page) {
     this.page = page
-    this.emailInput = page.getByPlaceholder('E-Mail-Adresse')
-    this.passwordInput = page.getByPlaceholder('Passwort')
+    this.emailInput = page.getByTestId('login-email')
+    this.passwordInput = page.getByTestId('login-password')
     this.loginButton = page.getByTestId('login-submit')
     this.loginErrorMessageContainer = page.getByTestId(
       'login-error-message-container',
@@ -41,6 +49,22 @@ export class SignInPage {
     )
     this.passwordToggleShow = page.getByTestId('password-toggle-show')
     this.passwordToggleHide = page.getByTestId('password-toggle-hide')
+    this.resetPasswordButton = page.getByTestId('reset-password-button')
+    this.closePasswordResetFlyoutButton = page.getByTestId(
+      'close-forgot-password-slide-in',
+    )
+    this.resetPasswordFlyout = page.getByTestId('reset-password-flyout')
+    this.resetPasswordEmailInput = page.getByTestId('forgot-password-email')
+    this.resetPasswordBackToLoginButton = page.getByTestId(
+      'back-to-login-button',
+    )
+    this.resetPasswordGetResetLinkButton = page.getByTestId(
+      'get-reset-password-link-button',
+    )
+    this.resetPasswordHeadline = page.getByTestId('reset-password-headline')
+    this.resetPasswordErrorMessageContainer = page.getByTestId(
+      'forgot-password-error-message-container',
+    )
   }
 
   async fillLoginData(email: string, password: string) {

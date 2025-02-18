@@ -1,4 +1,5 @@
 import { expect, test } from '../fixtures/fixtures'
+import { isMobile } from '../support/utils'
 import {
   HOMEPAGE_PATH_DE,
   LOGGED_IN_USER_DATA,
@@ -109,4 +110,79 @@ test('C2171375 Verify User registration password toggle button', async ({
     REGISTERED_TEST_USER.password,
   )
   await expect(signinPage.passwordInput).toHaveAttribute('type', 'text')
+})
+
+test('C2171379 Verify User login reset password flow', async ({
+  signinPage,
+  header,
+  page,
+  toastMessage,
+}, testInfo) => {
+  await test.step('Visit Login page and open Reset password flyout', async () => {
+    await header.headerLoginButton.click()
+    await signinPage.resetPasswordButton.waitFor()
+    await signinPage.resetPasswordButton.click()
+    await signinPage.resetPasswordHeadline.waitFor()
+    await expect(signinPage.resetPasswordHeadline).toBeVisible()
+    await expect(signinPage.resetPasswordEmailInput).toHaveValue('')
+  })
+  await test.step('Click Get Reset Link button while e-mail address input is empty', async () => {
+    await signinPage.resetPasswordGetResetLinkButton.click()
+    await expect(signinPage.resetPasswordEmailInput).toBeFocused()
+    await expect(signinPage.resetPasswordHeadline).toBeVisible()
+  })
+  await test.step('Click Back to Login button and assert Flyout is closed', async () => {
+    await signinPage.resetPasswordBackToLoginButton.waitFor()
+    await signinPage.resetPasswordBackToLoginButton.focus()
+    await signinPage.resetPasswordBackToLoginButton.click()
+    await expect(signinPage.resetPasswordHeadline).not.toBeVisible()
+  })
+  await test.step('Enter incorrect format e-mail, open the Flyout and assert e-mail input is empty', async () => {
+    await signinPage.emailInput.waitFor()
+    await signinPage.emailInput.focus()
+    await signinPage.emailInput.fill(LOGIN_WRONG_CREDENTIALS.emailInvalidFormat)
+    await signinPage.resetPasswordButton.click()
+    await signinPage.resetPasswordHeadline.waitFor()
+    await expect(signinPage.resetPasswordEmailInput).toHaveValue('')
+  })
+  await test.step('Enter correct format non-existing e-mail and click Get Reset Link', async () => {
+    await signinPage.resetPasswordEmailInput.clear()
+    await signinPage.resetPasswordEmailInput.focus()
+    await signinPage.resetPasswordEmailInput.fill(LOGIN_WRONG_CREDENTIALS.email)
+    await signinPage.resetPasswordGetResetLinkButton.click()
+    await page.waitForTimeout(500)
+    await expect(signinPage.resetPasswordErrorMessageContainer).toBeVisible()
+  })
+  if (testInfo.project.name === 'firefox') {
+    await signinPage.closePasswordResetFlyoutButton.click()
+    console.warn(
+      'Skipping this step in Firefox due to the potential Firefox specific error - Target page, context or browser has been closed',
+    )
+  } else {
+    await test.step('Enter correct format existing e-mail and click Get Reset Link', async () => {
+      await signinPage.resetPasswordEmailInput.clear()
+      await page.waitForTimeout(300)
+      await signinPage.resetPasswordEmailInput.focus()
+      await signinPage.resetPasswordEmailInput.fill(LOGGED_IN_USER_DATA.email)
+      await signinPage.resetPasswordGetResetLinkButton.click()
+      await signinPage.emailInput.waitFor()
+      await page.waitForLoadState('networkidle')
+      await toastMessage.toastInfo.waitFor()
+      await expect(toastMessage.toastInfo).toBeVisible()
+      await expect(signinPage.resetPasswordHeadline).not.toBeVisible()
+    })
+  }
+  await test.step('Open the Flyout and assert Close button', async () => {
+    if (isMobile(page)) {
+      console.warn(
+        'Skipping assert Flyout close button because it is not used on mobile devices',
+      )
+    } else {
+      await signinPage.resetPasswordButton.click()
+      await signinPage.closePasswordResetFlyoutButton.waitFor()
+      await signinPage.closePasswordResetFlyoutButton.click()
+      await page.waitForTimeout(500)
+      await expect(signinPage.resetPasswordHeadline).not.toBeVisible()
+    }
+  })
 })

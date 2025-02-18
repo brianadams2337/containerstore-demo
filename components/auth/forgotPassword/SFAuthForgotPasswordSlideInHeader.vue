@@ -2,6 +2,7 @@
   <div class="flex w-full items-center justify-between">
     <SFHeadline
       class="my-2 !font-semi-bold-variable md:text-lg"
+      data-testid="reset-password-headline"
       size="xl"
       tag="h3"
     >

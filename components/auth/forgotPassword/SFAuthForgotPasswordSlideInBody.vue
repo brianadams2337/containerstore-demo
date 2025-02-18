@@ -26,12 +26,18 @@
         variant="raw"
         :disabled="isSubmitting"
         class="mr-7 h-6 rounded-md px-1.5 text-base font-semibold !text-gray-600 hover:bg-gray-100"
+        data-testid="back-to-login-button"
         @click.prevent="backToLogin"
       >
         <IconChevronLeft class="size-4" aria-hidden="true" />
         {{ $t('sign_in_page.forgot_password.back_to_login') }}
       </SFButton>
-      <SFButton :disabled="isSubmitting" type="submit" class="grow">
+      <SFButton
+        :disabled="isSubmitting"
+        type="submit"
+        class="grow"
+        data-testid="get-reset-password-link-button"
+      >
         {{ $t('sign_in_page.forgot_password.submit') }}
       </SFButton>
     </div>

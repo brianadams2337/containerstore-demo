@@ -12,6 +12,7 @@ export const LOGIN_WRONG_CREDENTIALS = {
   lastName: 'test',
   email: 'Aqa.testxx@test.com',
   password: process.env.TEST_USER_WRONG_PASSWORD as string,
+  emailInvalidFormat: 'test@test',
 }
 
 export const TEST_ITEM_REGULAR = {
