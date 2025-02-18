@@ -24,12 +24,7 @@
         $t('quantity.current_value', { selected_quantity: quantity })
       "
     />
-    <!--
-      Sometimes on Firefox the `disabled` attribute is not present on the JS DOM Node even though its present in the HTML response.
-      This leads to a hydration issue. We therefore set `data-allow-mismatch="attribute"` to disable the warning for mismatching attributes.
-     -->
     <SFButton
-      data-allow-mismatch="attribute"
       variant="raw"
       :disabled="quantity >= maxQuantity || disabled"
       class="group !size-9 shrink-0 rounded-md border-none bg-gray-100 disabled:bg-gray-100 md:!size-8"

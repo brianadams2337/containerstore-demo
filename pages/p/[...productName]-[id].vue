@@ -50,9 +50,10 @@
           </div>
 
           <SFProductActions
-            v-model:active-variant="activeVariant"
+            :active-variant="activeVariant"
             :product="product"
             :promotion="promotion ?? undefined"
+            @update:active-variant="updateActiveVariant"
           />
 
           <SFProductPromotionGifts
@@ -114,7 +115,7 @@ import {
 import type { Price, Variant } from '@scayle/storefront-nuxt'
 import { useNuxtApp } from '#app/nuxt'
 import { createError } from '#app/composables/error'
-import { useRoute } from '#app/composables/router'
+import { useRoute, useRouter } from '#app/composables/router'
 import { definePageMeta, useImage } from '#imports'
 import { useJsonld } from '~/composables/useJsonld'
 import { usePageState } from '~/composables/usePageState'
@@ -166,11 +167,14 @@ const {
   data: product,
   status: productDataStatus,
   error,
-} = useProduct(
+} = await useProduct(
   {
     params: {
       id: productId.value,
       with: PRODUCT_DETAIL_WITH_PARAMS,
+    },
+    options: {
+      lazy: true,
     },
   },
   `PDP-${productId.value}`,
@@ -183,7 +187,6 @@ whenever(
   },
   { immediate: true },
 )
-
 const {
   name,
   brand,
@@ -197,17 +200,30 @@ const { isGiftAddedToBasket, areGiftConditionsMet, promotion } =
   useProductPromotions(product)
 
 const { items } = useBasket()
-const activeVariant = ref<Variant>()
-// On client side we need to wait for the data to be loaded before we know if a product has only one variant
-onMounted(() => {
-  whenever(
-    hasOneVariantOnly,
-    () => {
-      activeVariant.value = variants.value[0]
-    },
-    { immediate: true, once: true },
-  )
+const variantIdQueryParam = computed(() =>
+  route.query.variantId
+    ? parseInt(route.query.variantId?.toString())
+    : undefined,
+)
+
+const activeVariant = computed<Variant | undefined>(() => {
+  if (hasOneVariantOnly.value) {
+    return variants.value[0]
+  } else if (variantIdQueryParam.value) {
+    return variants.value?.find(({ id }) => id === variantIdQueryParam.value)
+  }
+  return undefined
 })
+
+const router = useRouter()
+const updateActiveVariant = async (newVariant: Variant) => {
+  await router.replace({
+    query: {
+      ...route.query,
+      variantId: newVariant?.id.toString(),
+    },
+  })
+}
 
 const basketItem = computed(
   () =>

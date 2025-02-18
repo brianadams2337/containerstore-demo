@@ -45,7 +45,7 @@
       @click="toggleStoreLocator"
     >
       {{
-        selectedStoreId
+        mounted && selectedStoreId
           ? $t('store_locator.buttons.change_store')
           : $t('store_locator.buttons.choose_store')
       }}
@@ -55,6 +55,7 @@
 
 <script setup lang="ts">
 import { computed, watch } from 'vue'
+import { useMounted } from '@vueuse/core'
 import { useStoreLocator } from '#omnichannel/composables'
 import { useSlideIn } from '#storefront-ui/composables'
 import { SFButton, SFHeadline } from '#storefront-ui/components'
@@ -63,7 +64,7 @@ type StoreVariantInfo = {
   available: boolean
   storeName: string
 }
-
+const mounted = useMounted()
 const { storeVariantData, refreshStoreVariant } = useStoreLocator(
   'useStoreLocator',
   ['openingTimes'],
