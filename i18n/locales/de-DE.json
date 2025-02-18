@@ -350,7 +350,7 @@
         "400_bad_request": "Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.",
         "401_unauthorized": "Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.",
         "403_user_deactivated": "Dieser Benutzer ist deaktiviert.",
-        "404_not_found": "Ups! Email wurde nicht gefunden.",
+        "404_not_found": "Deine E-Mail-Adresse oder dein Passwort ist falsch. Bitte versuche es erneut.",
         "406_token_expired": "Der Token wurde bereits verwendet oder ist abgelaufen. Bitte fordere eine neue E-Mail zum Zurücksetzen des Passworts an.",
         "409_already_exists": "Dieser Account existiert bereits.",
         "422_unprocessable_entity": "Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.",

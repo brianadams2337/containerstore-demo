@@ -147,7 +147,7 @@ describe('useAuthentication', () => {
       400: 'Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.',
       401: 'Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.',
       403: 'Dieser Benutzer ist deaktiviert.',
-      404: 'Ups! Email wurde nicht gefunden.',
+      404: 'Deine E-Mail-Adresse oder dein Passwort ist falsch. Bitte versuche es erneut.',
       500: 'Die Anfrage führte zu einem Fehler',
     }
 

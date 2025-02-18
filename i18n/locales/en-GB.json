@@ -349,7 +349,7 @@
         "400_bad_request": "Your request could not be processed, please try again.",
         "401_unauthorized": "Your request could not be processed, please try again.",
         "403_user_deactivated": "This user is deactivated.",
-        "404_not_found": "Oops! E-Mail not found.",
+        "404_not_found": "Your email or password is incorrect. Please try again.",
         "406_token_expired": "Your token has been already used or has expired. Please request a new password reset email.",
         "409_already_exists": "This account already exists.",
         "422_unprocessable_entity": "Your request could not be processed, please try again.",
