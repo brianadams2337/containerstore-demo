@@ -1,9 +1,9 @@
 <template>
-  <SFPageContainer>
+  <div class="-mb-16 max-lg:border-t">
     <div v-if="status === 'pending'" class="container flex gap-2">
       <SFProductCardSkeleton v-for="index in 2" :key="`osp-loading-${index}`" />
     </div>
-    <div v-if="orderData" class="px-6 sm:mx-auto sm:flex sm:flex-wrap md:px-0">
+    <div v-if="orderData" class="relative flex flex-col md:flex-row">
       <SFOspBasicDataSection
         :order-data="orderData"
         :delivery-date="deliveryDate"
@@ -12,9 +12,13 @@
         :order-data="orderData"
         :delivery-date="deliveryDate"
       />
+      <SFOspCtaButtons
+        :order-data="orderData"
+        class="bg-gray-50 px-5 py-4 md:hidden"
+      />
     </div>
     <SFEmptyState v-else :title="$t('osp.no_order_found')" />
-  </SFPageContainer>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -28,7 +32,7 @@ import SFEmptyState from '~/components/SFEmptyState.vue'
 import SFProductCardSkeleton from '~/components/product/card/SFProductCardSkeleton.vue'
 import SFOspBasicDataSection from '~/components/osp/SFOspBasicDataSection.vue'
 import SFOspSummarySection from '~/components/osp/SFOspSummarySection.vue'
-import { SFPageContainer } from '#storefront-ui/components'
+import SFOspCtaButtons from '~/components/osp/SFOspCtaButtons.vue'
 import type { OrderProduct, OrderVariant } from '~/types/order'
 import { useI18n } from '#i18n'
 

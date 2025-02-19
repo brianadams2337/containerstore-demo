@@ -1,18 +1,14 @@
 <template>
-  <div class="w-full md:container md:w-1/2 md:bg-gray-100 lg:w-2/5">
-    <div class="py-4 text-sm md:container md:p-10 md:px-6 xl:px-20">
-      <div class="divide-y divide-gray-500">
+  <div
+    class="flex w-full flex-col border-gray-200 bg-gray-50 px-5 py-8 md:border-l lg:w-2/5 lg:items-start lg:pl-13 lg:pr-7"
+  >
+    <div class="text-sm">
+      <SFHeadline size="xl" tag="h2">
+        {{ $t('osp.order_number', { orderNumber: orderData.id }) }}
+      </SFHeadline>
+      <div>
         <SFOspDeliveryDate v-if="deliveryDate" :delivery-date="deliveryDate" />
         <div class="space-y-2">
-          <SFHeadline
-            size="sm"
-            tag="h2"
-            is-uppercase
-            class="mb-3 mt-8 block sm:hidden"
-          >
-            {{ $t('osp.order_overview') }}
-          </SFHeadline>
-
           <ul v-if="orderItems.length">
             <li
               v-for="({ variant, product, price }, index) in orderItems"

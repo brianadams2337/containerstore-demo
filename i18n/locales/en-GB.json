@@ -102,7 +102,7 @@
     "user_settings": "Account Settings",
     "home": "Storefront Core Boilerplate",
     "checkout": "Checkout",
-    "osp": "Order Confirmation",
+    "osp": "Your order overview",
     "location": "Find a Store",
     "wishlist_aria_label": "Wishlist | Wishlist, {count} item | Wishlist, {count} items",
     "meta": {
@@ -331,13 +331,14 @@
     "order_date": "Date",
     "order_nr": "Order no.",
     "order_overview": "Order overview",
+    "order_number": "Order #{orderNumber}",
     "payment": "Payment method",
     "quantity_label": "Quantity",
     "size": "Size",
     "tax": "19% VAT",
     "total": "Total",
     "no_order_found": "The order information could not be found.",
-    "title": "Your order"
+    "title": "Your order overview"
   },
   "sign_in_page": {
     "meta": {

@@ -103,7 +103,7 @@
     "sign_in": "Einloggen",
     "home": "Storefront Core Boilerplate",
     "checkout": "Kasse",
-    "osp": "Bestellbestätigung",
+    "osp": "Deine Bestellübersicht",
     "location": "Store Finden",
     "wishlist_aria_label": "Wunschliste | Wunschliste, {count} Artikel | Wunschliste, {count} Artikel",
     "meta": {
@@ -332,13 +332,14 @@
     "order_date": "Datum",
     "order_nr": "Order-Nr.",
     "order_overview": "Bestellübersicht",
+    "order_number": "Bestellung Nr. {orderNumber}",
     "payment": "Zahlungsmethode",
     "size": "Größe",
     "tax": "19% MwSt.",
     "total": "Summe",
     "quantity_label": "Anzahl",
     "no_order_found": "Die Bestelldaten wurden nicht gefunden.",
-    "title": "Dein Bestellung"
+    "title": "Deine Bestellübersicht"
   },
   "sign_in_page": {
     "meta": {
