@@ -25,7 +25,8 @@
         {
           'ml-1 -translate-y-6 bg-white !px-1.5 text-xs !shadow-input-label':
             activeGenderValue,
-          'text-status-error after:text-status-error': !isValid,
+          '!text-status-error after:text-status-error group-focus:!text-status-error group-focus:after:!text-status-error':
+            !isValid,
         },
       ]"
     >

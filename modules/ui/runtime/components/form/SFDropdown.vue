@@ -18,7 +18,7 @@
             'rounded-md': radius == 'md',
             'rounded-10': radius == 'lg',
             'rounded-xl': radius == 'xl',
-            'border-2 !border-status-error !bg-white !text-status-error shadow-none !outline-0 *:!text-status-error hover:border-status-error focus:border-status-error':
+            '!border-2 !border-status-error !bg-white !text-status-error shadow-none !outline-0 *:!text-status-error hover:!border-status-error focus:!border-status-error':
               hasErrors,
           },
         ]"
