@@ -191,6 +191,7 @@
     "quantity_label": "Anzahl"
   },
   "incl_tax": "inkl. MwSt.",
+  "excl_tax": "zzgl. MwSt.",
   "password": {
     "hide": "Passwort verbergen",
     "show": "Passwort anzeigen"
@@ -322,12 +323,12 @@
   "osp": {
     "order_details": "Bestelldetails",
     "customer_id": "Kunden-Nr.",
-    "deliver_costs": "Versandkosten",
+    "shipping_costs": "Versandkosten",
     "deliver_address": "Lieferadresse",
     "email_send": "Die Bestellbestätigung wurde an die von dir angegebene E-Mail-Adresse gesendet.",
     "estimated_deliver_date": "Voraussichtliche Lieferung",
     "intro": "Vielen Dank für deine Bestellung!",
-    "net_price": "Nettowarenwert",
+    "subtotal": "Zwischensumme",
     "order_data": "Bestelldaten",
     "order_date": "Datum",
     "order_nr": "Order-Nr.",
@@ -336,7 +337,7 @@
     "payment": "Zahlungsmethode",
     "size": "Größe",
     "tax": "19% MwSt.",
-    "total": "Summe",
+    "total": "Gesamt",
     "quantity_label": "Anzahl",
     "no_order_found": "Die Bestelldaten wurden nicht gefunden.",
     "title": "Deine Bestellübersicht"

@@ -190,6 +190,7 @@
     "quantity_label": "Quantity"
   },
   "incl_tax": "incl. VAT.",
+  "excl_tax": "excl. VAT.",
   "password": {
     "hide": "Hide password",
     "show": "Show password"
@@ -321,12 +322,12 @@
   "osp": {
     "order_details": "Order details",
     "customer_id": "Customer no.",
-    "deliver_costs": "Shipping costs",
+    "shipping_costs": "Shipping costs",
     "deliver_address": "Delivery address",
     "email_send": "The order confirmation has been sent to the email address you provided.",
     "estimated_deliver_date": "Estimated delivery",
     "intro": "Thank you for your purchase!",
-    "net_price": "Total",
+    "subtotal": "Subtotal",
     "order_data": "Order data",
     "order_date": "Date",
     "order_nr": "Order no.",

@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest'
-import { getShippingNetFee, divideByHundred, type AppliedFees } from './price'
+import { getShippingCost, divideByHundred, type AppliedFees } from './price'
 
-describe('getShippingNetFee', () => {
-  it('should return shipping net fee', () => {
+describe('getShippingCost', () => {
+  it('should return shipping net fee excluding tax', () => {
     const appliedFees: AppliedFees = [
       {
         amount: {
@@ -50,12 +50,64 @@ describe('getShippingNetFee', () => {
         },
       },
     ]
-    const fees = getShippingNetFee(appliedFees)
+    const fees = getShippingCost(appliedFees)
     expect(fees).toEqual(1000)
   })
 
-  it('should return null if applied fees are empty', () => {
-    expect(getShippingNetFee([])).toEqual(null)
+  it('should return the total cost of delivery, including tax', () => {
+    const appliedFees: AppliedFees = [
+      {
+        amount: {
+          withoutTax: 500,
+          withTax: 700,
+        },
+        category: 'delivery',
+        key: 'test-key',
+        option: 'test-option',
+        tax: {
+          vat: {
+            amount: 500,
+            rate: 1,
+          },
+        },
+      },
+      {
+        amount: {
+          withoutTax: 500,
+          withTax: 700,
+        },
+        category: 'delivery',
+        key: 'test-key',
+        option: 'test-option',
+        tax: {
+          vat: {
+            amount: 500,
+            rate: 1,
+          },
+        },
+      },
+      {
+        amount: {
+          withoutTax: 500,
+          withTax: 700,
+        },
+        category: 'payment',
+        key: 'test-key',
+        option: 'test-option',
+        tax: {
+          vat: {
+            amount: 500,
+            rate: 1,
+          },
+        },
+      },
+    ]
+    const fees = getShippingCost(appliedFees, { includeTax: true })
+    expect(fees).toEqual(1400)
+  })
+
+  it('should return 0 if applied fees are empty', () => {
+    expect(getShippingCost([])).toEqual(0)
   })
 })
 

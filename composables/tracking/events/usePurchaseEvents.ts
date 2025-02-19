@@ -17,7 +17,7 @@ import {
   getCouponReductionWithTax,
   getDeepestCategoryForTracking,
   getGiftcardAmount,
-  getShippingNetFee,
+  getShippingCost,
   sumReductionsByCategory,
   sumReductionsFromAllOrderItemsPerCategory,
 } from '~/utils'
@@ -94,9 +94,7 @@ const usePurchaseEvents = (): {
 
     const items = getItems(orderData, currency)
 
-    const shippingNetFee = orderData.cost.appliedFees
-      ? getShippingNetFee(orderData.cost.appliedFees)
-      : null
+    const shippingNetFee = getShippingCost(orderData.cost.appliedFees)
 
     const ecommerce = {
       transaction_id: String(orderData.id),

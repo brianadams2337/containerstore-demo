@@ -24,7 +24,10 @@
             </li>
           </ul>
         </div>
-        <SFOspPaymentSummary :cost="orderData.cost" />
+        <!-- eslint-disable-next-line tailwindcss/no-custom-classname -->
+        <div class="grid grid-cols-1 md:grid-cols-[minmax(auto,400px)]">
+          <SFOspPaymentSummary :cost="orderData.cost" />
+        </div>
       </div>
     </div>
   </div>

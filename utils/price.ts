@@ -2,9 +2,12 @@ import type { Order } from '@scayle/storefront-nuxt'
 
 export type AppliedFees = Order['cost']['appliedFees']
 
-export const getShippingNetFee = (appliedFees: AppliedFees): number | null => {
+export const getShippingCost = (
+  appliedFees?: AppliedFees,
+  options: { includeTax: boolean } = { includeTax: false },
+): number => {
   if (!appliedFees?.length) {
-    return null
+    return 0
   }
 
   const shippingNetFees = appliedFees?.filter((fee) => {
@@ -12,8 +15,9 @@ export const getShippingNetFee = (appliedFees: AppliedFees): number | null => {
   })
 
   return shippingNetFees.reduce((total, fee) => {
-    total += fee.amount.withoutTax
-    return total
+    return (
+      total + (options.includeTax ? fee.amount.withTax : fee.amount.withoutTax)
+    )
   }, 0)
 }
 

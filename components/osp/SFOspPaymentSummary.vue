@@ -1,38 +1,48 @@
 <template>
-  <div>
-    <dl class="grid grid-cols-2 justify-between gap-2 py-6 text-gray-600">
-      <dt>{{ $t('osp.net_price') }}:</dt>
-      <dd class="text-right">
-        {{ formatCurrency(cost.withoutTax) }}
+  <div class="flex flex-col gap-3 border-t pt-4">
+    <dl class="grid grid-cols-2 justify-between gap-2 text-base text-gray-900">
+      <dt class="font-semi-bold-variable">{{ $t('osp.subtotal') }}</dt>
+      <dd class="text-right font-semi-bold-variable">
+        {{ formatCurrency(subtotal) }}
       </dd>
 
-      <dt>{{ $t('osp.tax') }}:</dt>
-      <dd v-if="cost.tax.vat" class="text-right">
-        {{ formatCurrency(cost.tax.vat.amount) }}
-      </dd>
-
-      <dt>{{ $t('osp.deliver_costs') }}:</dt>
-      <dd class="text-right">{{ formatCurrency(0) }}</dd>
+      <dt>{{ $t('osp.shipping_costs') }}:</dt>
+      <dd class="text-right">{{ formatCurrency(shippingCost) }}</dd>
     </dl>
 
-    <dl class="grid grid-cols-2 justify-between gap-0 py-6">
+    <dl
+      class="grid grid-cols-2 justify-between gap-0 text-lg font-semi-bold-variable"
+    >
       <dt class="text-lg">{{ $t('osp.total') }}:</dt>
-      <dd class="text-right text-xl font-bold">
+      <dd class="text-right text-xl">
         {{ formatCurrency(cost.withTax) }}
       </dd>
-      <dt />
-      <dt class="flex items-end justify-end text-sm text-gray-700">
-        {{ $t('incl_tax') }}
+      <dt class="text-xs text-gray-500">
+        {{ includesTax ? $t('incl_tax') : $t('excl_tax') }}
       </dt>
     </dl>
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useFormatHelpers } from '#storefront/composables'
 import type { Order } from '~/types/order'
+import { getShippingCost } from '~/utils/price'
 
-defineProps<{ cost: Order['cost'] }>()
+const { cost } = defineProps<{ cost: Order['cost'] }>()
 
 const { formatCurrency } = useFormatHelpers()
+
+const shippingCost = computed(() => {
+  return getShippingCost(cost.appliedFees, { includeTax: true })
+})
+
+const subtotal = computed(() => {
+  return cost.withTax - shippingCost.value
+})
+
+const includesTax = computed(() => {
+  return !!cost.tax.vat?.amount
+})
 </script>
