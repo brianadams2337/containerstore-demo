@@ -17,6 +17,8 @@ interface ShopAndLocaleConfig {
   isDefault: boolean
   /** The file with the translations to load for the shop/locale (relative to /langs) */
   translationFile: string
+  /** The country code for the shop region */
+  countryCode: string
 }
 
 /**
@@ -30,6 +32,7 @@ export const shops: ShopAndLocaleConfig[] = [
     currency: 'EUR',
     isDefault: true,
     translationFile: 'de-DE.json',
+    countryCode: 'DE',
   },
   {
     locale: 'en-US',
@@ -38,6 +41,7 @@ export const shops: ShopAndLocaleConfig[] = [
     currency: 'USD',
     isDefault: false,
     translationFile: 'en-GB.json',
+    countryCode: 'US',
   },
   {
     locale: 'de-CH',
@@ -46,6 +50,7 @@ export const shops: ShopAndLocaleConfig[] = [
     currency: 'CHF',
     isDefault: false,
     translationFile: 'de-DE.json',
+    countryCode: 'CH',
   },
   {
     locale: 'de-AT',
@@ -54,6 +59,7 @@ export const shops: ShopAndLocaleConfig[] = [
     currency: 'EUR',
     isDefault: false,
     translationFile: 'de-DE.json',
+    countryCode: 'AT',
   },
   {
     locale: 'en-DE',
@@ -62,5 +68,6 @@ export const shops: ShopAndLocaleConfig[] = [
     currency: 'EUR',
     isDefault: false,
     translationFile: 'en-GB.json',
+    countryCode: 'DE',
   },
 ]

@@ -35,9 +35,26 @@ declare module '@scayle/storefront-nuxt' {
     paymentProviders: string[]
     appKeys: typeof DEFAULT_APP_KEYS
   }
-  // Extend PublicShopConfig to make types available on currentShop
+  /**
+   * Represents the public configuration of a shop.
+   *
+   * This interface extends the shop configuration to make additional properties
+   * available on `currentShop`, ensuring proper regional and payment settings.
+   *
+   * @typedef PublicShopConfig
+   *
+   * @property paymentProviders - List of payment providers available for the shop.
+   *
+   * @property countryCode - The country code used to determine the shop's region.
+   *
+   * This property is necessary for distinguishing shops in different languages within the same country.
+   * For example, Germany may have two shops: one in German (`de_DE`) and another in English (`en_US`).
+   * Since the `locale` attribute only represents language and not the region, `countryCode` ensures
+   * correct regional detection.
+   */
   export interface PublicShopConfig {
     paymentProviders: string[]
+    countryCode: string
   }
 }
 
@@ -128,7 +145,7 @@ export default defineNuxtConfig({
     storefront: {
       /** Storefront Core - Additional server-side context properties exposed to client-side
        * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction#public-shop-data */
-      publicShopData: ['paymentProviders'], // Override: NUXT_PUBLIC_PUBLIC_SHOP_DATA
+      publicShopData: ['paymentProviders', 'countryCode'], // Override: NUXT_PUBLIC_PUBLIC_SHOP_DATA
 
       /** Storefront Core - Configure format for AppKey generation for baskets and wishlists
        * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/authentication#app-keys */
@@ -212,6 +229,9 @@ export default defineNuxtConfig({
             domain: baseShopDomain(shop.code),
 
             locale: shop.locale, // Override: NUXT_STOREFRONT_SHOPS_{UNIQUE_IDENTIFIER}_LOCALE
+
+            /** Storefront Core -  Country code used to determine the shop's region. */
+            countryCode: shop.countryCode,
 
             /** Storefront Core - Shop-specific authentication configurations
              * NOTE: Currently only `resetPasswordUrl` is supported

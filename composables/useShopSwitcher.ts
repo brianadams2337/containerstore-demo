@@ -70,7 +70,7 @@ export function useShopSwitcher(
 
   const availableLanguages = computed(() => {
     return availableShops.value
-      .filter((shop) => shop.locale.endsWith('-' + currentLocale.value?.region))
+      .filter((shop) => shop.countryCode === currentLocale.value?.region)
       .map((shop) => {
         const locale = new Intl.Locale(shop.locale)
         return {
@@ -84,7 +84,7 @@ export function useShopSwitcher(
   const availableCountries = computed(() => {
     const grouped = Object.groupBy(
       availableShops.value,
-      (shop) => shop.locale.split('-')[1],
+      (shop) => shop.countryCode,
     )
 
     return Object.entries(grouped)
