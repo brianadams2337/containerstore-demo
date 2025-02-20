@@ -25,7 +25,12 @@ export class SignInPage {
   readonly resetPasswordBackToLoginButton: Locator
   readonly resetPasswordGetResetLinkButton: Locator
   readonly resetPasswordHeadline: Locator
+  readonly forgotPasswordErrorMessageContainer: Locator
+  readonly closeSetNewPasswordButton: Locator
+  readonly newPasswordInput: Locator
+  readonly validationErrorText: Locator
   readonly resetPasswordErrorMessageContainer: Locator
+  readonly submitNewPasswordButton: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -62,9 +67,18 @@ export class SignInPage {
       'get-reset-password-link-button',
     )
     this.resetPasswordHeadline = page.getByTestId('reset-password-headline')
-    this.resetPasswordErrorMessageContainer = page.getByTestId(
+    this.forgotPasswordErrorMessageContainer = page.getByTestId(
       'forgot-password-error-message-container',
     )
+    this.closeSetNewPasswordButton = page.getByTestId(
+      'close-reset-password-slide-in',
+    )
+    this.newPasswordInput = page.getByTestId('new-password')
+    this.validationErrorText = page.getByTestId('validation-error-text')
+    this.resetPasswordErrorMessageContainer = page.getByTestId(
+      'reset-password-error-message-container',
+    )
+    this.submitNewPasswordButton = page.getByTestId('submit-new-password')
   }
 
   async fillLoginData(email: string, password: string) {

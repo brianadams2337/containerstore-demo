@@ -19,7 +19,13 @@
         @input="v.password.$touch()"
       />
     </SFValidatedInputGroup>
-    <SFButton :disabled="isSubmitting" type="submit" class="grow" is-full-width>
+    <SFButton
+      :disabled="isSubmitting"
+      type="submit"
+      class="grow"
+      is-full-width
+      data-testid="submit-new-password"
+    >
       {{ $t('sign_in_page.reset_password.submit') }}
     </SFButton>
   </form>

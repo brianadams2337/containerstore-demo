@@ -151,7 +151,7 @@ test('C2171379 Verify User login reset password flow', async ({
     await signinPage.resetPasswordEmailInput.fill(LOGIN_WRONG_CREDENTIALS.email)
     await signinPage.resetPasswordGetResetLinkButton.click()
     await page.waitForTimeout(500)
-    await expect(signinPage.resetPasswordErrorMessageContainer).toBeVisible()
+    await expect(signinPage.forgotPasswordErrorMessageContainer).toBeVisible()
   })
   if (testInfo.project.name === 'firefox') {
     await signinPage.closePasswordResetFlyoutButton.click()
@@ -184,5 +184,30 @@ test('C2171379 Verify User login reset password flow', async ({
       await page.waitForTimeout(500)
       await expect(signinPage.resetPasswordHeadline).not.toBeVisible()
     }
+  })
+})
+
+test('C2171786 Verify setting the new password', async ({
+  signinPage,
+  page,
+}) => {
+  await test.step('Open new password flyout and enter incorrectly formatted password', async () => {
+    // Any hash can be used for the testing purposes to verify that the new password flyout loads correctly.
+    await page.goto('/signin?hash=testhash')
+    await page.waitForTimeout(500)
+    await signinPage.newPasswordInput.waitFor()
+    await signinPage.newPasswordInput.focus()
+    await signinPage.newPasswordInput.fill('test')
+    await expect(signinPage.validationErrorText).toBeVisible()
+  })
+  await test.step('Enter correctly formatted password', async () => {
+    // Error message is expected because the test hash is used.
+    await signinPage.newPasswordInput.clear()
+    await signinPage.newPasswordInput.focus()
+    await signinPage.newPasswordInput.fill(LOGGED_IN_USER_DATA.password)
+    await signinPage.submitNewPasswordButton.click()
+    await page.waitForTimeout(500)
+    await expect(signinPage.validationErrorText).not.toBeVisible()
+    await expect(signinPage.resetPasswordErrorMessageContainer).toBeVisible()
   })
 })
