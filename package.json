@@ -166,6 +166,6 @@
     "@vue/compiler-core": "3.5.13",
     "@vue/compiler-ssr": "3.5.13",
     "@vue/shared": "3.5.13",
-    "globals": "15.15.0"
+    "globals": "16.0.0"
   }
 }
