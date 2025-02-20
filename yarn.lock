@@ -11840,10 +11840,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha512-4jbtZXNAsfZbAHiiqjLPBiCl16dES1zI4Hpzzxw61Tk+loF+sBDBKx1ICKKKwIqQ7M0mFn1TmkN7euSncWgHiQ==
 
-nuxi@3.22.1:
-  version "3.22.1"
-  resolved "https://registry.yarnpkg.com/nuxi/-/nuxi-3.22.1.tgz#54346e6158f3e1e30ce8a5ad367496af9d6eef0b"
-  integrity sha512-JL3N91fLV482BZdb1EJh63ZhsYo1Qd5oC808WAhE4mtpopFY2RcS5DQumP1mp+tnvpxV+BD+yTx8bfv4TV/jqg==
+nuxi@3.22.2:
+  version "3.22.2"
+  resolved "https://registry.yarnpkg.com/nuxi/-/nuxi-3.22.2.tgz#2499e6357c467800fa7abb53eb060babc31529e9"
+  integrity sha512-QaxSecieGbh6aTrKC6czb73Lgb/OyV4Y+nXmrS1oAD/e2o2vWQ20uv9fSCBuHjwnAMADLdbKuhAK9EmJpLi0Ag==
 
 nuxi@^3.15.0:
   version "3.21.1"
