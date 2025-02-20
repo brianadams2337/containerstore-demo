@@ -198,31 +198,27 @@ test('C2167321 Verify Basket Price summary - promotion product', async ({
   productDetailPage,
 }) => {
   await test.step('Add promotion product to Basket', async () => {
-    await expect(async () => {
-      await homePage.visitPage()
-      await countryDetector.closeModal()
-      if (isMobile(page)) {
-        await mobileNavigation.startTypingMobileSearch(
-          BASKET_TEST_DATA.promotionPriceProductId,
-          true,
-        )
-        await mobileNavigation.searchSuggestionsItem.click()
-        await mobileNavigation.sideNavigationButton.click()
-        await page.waitForLoadState('networkidle')
-      } else {
-        await search.startTypingSearch(BASKET_TEST_DATA.promotionPriceProductId)
-        await search.clickExactProductItem()
-      }
-      await expect(async () => {
-        await productDetailPage.variantPicker.waitFor()
-        await productDetailPage.variantPicker.click({ force: true })
-        await productDetailPage.getVariant().click()
-        await productDetailPage.addProductToBasket()
-      }).toPass()
-      await header.visitBasketPage()
-      await page.waitForLoadState('domcontentloaded')
-      await expect(header.basketNumItems).toHaveText('1')
-    }).toPass()
+    await homePage.visitPage()
+    await countryDetector.closeModal()
+    if (isMobile(page)) {
+      await mobileNavigation.startTypingMobileSearch(
+        BASKET_TEST_DATA.promotionPriceProductId,
+        true,
+      )
+      await mobileNavigation.searchSuggestionsItem.click()
+      await page.waitForLoadState('networkidle')
+    } else {
+      await search.startTypingSearch(BASKET_TEST_DATA.promotionPriceProductId)
+      await search.clickExactProductItem()
+    }
+
+    await productDetailPage.variantPicker.waitFor()
+    await productDetailPage.variantPicker.click({ force: true })
+    await productDetailPage.getVariant().click()
+    await productDetailPage.addProductToBasket()
+    await header.visitBasketPage()
+    await page.waitForLoadState('domcontentloaded')
+    await expect(header.basketNumItems).toHaveText('1')
   })
   await test.step('Check promotion product price summary', async () => {
     if (isMobile(page)) {

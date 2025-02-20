@@ -40,6 +40,7 @@ export class Search {
   async startTypingSearch(searchTerm: string) {
     await this.searchInput.nth(1).click({ force: true })
     await this.searchInput.nth(1).fill(searchTerm)
+    await this.searchResultsFlyout.waitFor()
     await expect(this.searchResultsFlyout).toBeVisible()
     await expect(this.searchSuggestionsItem.first()).toBeVisible()
   }
