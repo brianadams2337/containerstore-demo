@@ -135,44 +135,56 @@ test('C2140718: Verify Search results page Filters ', async ({
   filters,
 }) => {
   await test.step('Search for a term and check Filter initial state', async () => {
-    await expect(async () => {
-      if (isMobile(page)) {
-        await mobileNavigation.executeMobileSearch(
-          SEARCH_SUGGESTIONS.searchTermBrand,
-        )
-      } else {
-        await search.executeSearch(SEARCH_SUGGESTIONS.searchTermBrand)
-      }
-      await page.waitForURL(SEARCH_SUGGESTIONS.searchUrl)
-      await expect(filters.filterToggleCounter).not.toBeVisible()
-    }).toPass()
+    if (isMobile(page)) {
+      await mobileNavigation.executeMobileSearch(
+        SEARCH_SUGGESTIONS.searchTermBrand,
+      )
+    } else {
+      await search.executeSearch(SEARCH_SUGGESTIONS.searchTermBrand)
+    }
+    await page.waitForURL(SEARCH_SUGGESTIONS.searchUrl)
+    await expect(filters.filterToggleCounter).not.toBeVisible()
   })
-
-  await test.step('Apply filters and check filter counter', async () => {
-    await page.waitForTimeout(1500)
-    await expect(async () => {
-      await filters.openFilters()
-      await expect(filters.closeFiltersButton).toBeVisible()
-      await filters.filterPriceInput.nth(1).clear()
-      await filters.filterPriceInput.nth(1).fill('100')
-      await filters.filterPriceInput.nth(1).press('Enter')
-      await filters.filterColorChip.first().scrollIntoViewIfNeeded()
-      await page.waitForLoadState('domcontentloaded')
-      await filters.filterColorChip.first().setChecked(true)
-      await filters.filterApplyButton.scrollIntoViewIfNeeded()
-      await filters.filterApplyButton.click()
-      await page.waitForTimeout(1500)
-      await expect(filters.filterToggleCounter.first()).toHaveText('2')
-    }).toPass()
+  await test.step('Apply price filter and check filter counter', async () => {
+    await filters.openFilters()
+    await page.waitForTimeout(500)
+    await filters.closeFiltersButton.waitFor()
+    await expect(filters.closeFiltersButton).toBeVisible()
+    await filters.filterPriceInput.nth(1).focus()
+    await filters.filterPriceInput.nth(1).clear()
+    await filters.filterPriceInput.nth(1).fill('100')
+    await filters.filterPriceInput.nth(1).press('Enter')
+    await page.waitForTimeout(500)
+    await filters.filterApplyButton.click()
+    await page.waitForTimeout(500)
+    await expect(filters.filterToggleCounter.first()).toHaveText('1')
   })
-
+  await test.step('Apply color filter and check filter counter', async () => {
+    await filters.openFilters()
+    await page.waitForTimeout(500)
+    await filters.filterColorChip.first().scrollIntoViewIfNeeded()
+    await page.waitForLoadState('domcontentloaded')
+    await filters.filterColorChip.first().setChecked(true)
+    await page.waitForTimeout(1000)
+    await filters.filterApplyButton.scrollIntoViewIfNeeded()
+    await filters.filterApplyButton.click()
+    await page.waitForTimeout(1000)
+    if (isMobile(page)) {
+      await expect(filters.filterToggleCounter.nth(1)).toBeVisible()
+    } else {
+      await expect(filters.filterToggleCounter.nth(0)).toBeVisible()
+    }
+    await expect(filters.filterToggleCounter.first()).toHaveText('2')
+  })
   await test.step('Reset filters and check filter counter', async () => {
-    await expect(async () => {
-      await filters.openFilters()
-      await filters.filterResetButton.click()
-      await page.waitForLoadState('domcontentloaded')
-      await expect(filters.filterToggleCounter.first()).not.toBeVisible()
-    }).toPass()
+    await filters.openFilters()
+    await page.waitForTimeout(1000)
+    await filters.filterResetButton.scrollIntoViewIfNeeded()
+    await filters.filterResetButton.click()
+    await page.waitForLoadState('domcontentloaded')
+    await filters.closeFiltersButton.click()
+    await page.waitForTimeout(1000)
+    await expect(filters.filterToggleCounter.first()).not.toBeVisible()
   })
 })
 

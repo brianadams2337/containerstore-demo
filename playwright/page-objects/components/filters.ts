@@ -41,9 +41,11 @@ export class Filters {
 
   async openFilters() {
     if (isMobile(this.page)) {
+      await this.filterButton.nth(1).waitFor({ timeout: 2000 })
       await expect(this.filterButton.nth(1)).toBeVisible()
       await this.filterButton.nth(1).click()
     } else {
+      await this.filterButton.nth(0).waitFor({ timeout: 2000 })
       await expect(this.filterButton.first()).toBeVisible()
       await this.filterButton.first().click()
     }
