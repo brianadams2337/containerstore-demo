@@ -3,6 +3,11 @@ import type { Category, ProductCategory } from '@scayle/storefront-nuxt'
 import { categoryFactory } from '@scayle/storefront-nuxt/test/factories'
 import { useBreadcrumbs } from './useBreadcrumbs'
 
+vi.mock('#app', () => ({
+  useNuxtApp: vi.fn().mockReturnValue({
+    $config: { public: { baseUrl: 'https://example.com' } },
+  }),
+}))
 vi.mock('~/composables', () => ({
   useRouteHelpers: vi.fn().mockReturnValue({
     buildCategoryPath: ({
@@ -38,8 +43,14 @@ describe('useBreadcumbs', () => {
       const breadcrumbs = getBreadcrumbsFromCategory(womenCategory)
 
       expect(breadcrumbs).toStrictEqual([
-        { to: '/de/c/women/clothing/shirts-2045', value: 'shirts' },
-        { to: '/de/c/women/clothing-2048', value: 'clothing' },
+        {
+          to: 'https://example.com/de/c/women/clothing/shirts-2045',
+          value: 'shirts',
+        },
+        {
+          to: 'https://example.com/de/c/women/clothing-2048',
+          value: 'clothing',
+        },
       ])
     })
 
@@ -66,9 +77,15 @@ describe('useBreadcumbs', () => {
       const breadcrumbs = getBreadcrumbsFromCategory(womenCategory, true)
 
       expect(breadcrumbs).toStrictEqual([
-        { to: '/de/c/women/clothing/shirts-2045', value: 'shirts' },
-        { to: '/de/c/women/clothing-2048', value: 'clothing' },
-        { to: '/de/c/women-1', value: 'women' },
+        {
+          to: 'https://example.com/de/c/women/clothing/shirts-2045',
+          value: 'shirts',
+        },
+        {
+          to: 'https://example.com/de/c/women/clothing-2048',
+          value: 'clothing',
+        },
+        { to: 'https://example.com/de/c/women-1', value: 'women' },
       ])
     })
   })
@@ -97,9 +114,15 @@ describe('useBreadcumbs', () => {
       const breadcrumbs = getBreadcrumbsFromProductCategories(categories)
 
       expect(breadcrumbs).toStrictEqual([
-        { to: '/de/c/women-1', value: 'women' },
-        { to: '/de/c/women/clothing-2048', value: 'clothing' },
-        { to: '/de/c/women/clothing/shirts-2045', value: 'shirts' },
+        { to: 'https://example.com/de/c/women-1', value: 'women' },
+        {
+          to: 'https://example.com/de/c/women/clothing-2048',
+          value: 'clothing',
+        },
+        {
+          to: 'https://example.com/de/c/women/clothing/shirts-2045',
+          value: 'shirts',
+        },
       ])
     })
   })
@@ -114,7 +137,7 @@ describe('useBreadcumbs', () => {
       const { getBreadcrumb } = useBreadcrumbs()
 
       expect(getBreadcrumb(womenCategory)).toStrictEqual({
-        to: '/de/c/women-1',
+        to: 'https://example.com/de/c/women-1',
         value: 'women',
       })
     })
