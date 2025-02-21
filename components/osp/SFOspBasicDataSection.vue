@@ -7,7 +7,7 @@
         {{ $t('osp.title') }}
       </SFHeadline>
       <SFOspGreetingBox :order-data="orderData" class="mt-4" />
-      <div class="text-sm sm:grid">
+      <div class="text-base sm:grid">
         <div class="mt-4 grid w-full grid-cols-1 gap-4 md:grid-cols-2">
           <SFOspBasicOrderData :order-data="orderData" />
           <SFOspPaymentData

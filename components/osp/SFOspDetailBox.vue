@@ -3,9 +3,7 @@
     <SFHeadline size="base" tag="h2" class="font-semi-bold-variable">
       {{ title }}
     </SFHeadline>
-    <div>
-      <slot></slot>
-    </div>
+    <slot></slot>
   </div>
 </template>
 

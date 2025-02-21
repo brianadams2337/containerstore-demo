@@ -8,29 +8,33 @@
       "
       :class="{ 'col-span-full': isSingleAddress }"
     >
-      <p
-        v-for="(formattedAddress, index) in getFormattedLocaleAddresses(
-          address.shipping,
-        )"
-        :key="`${formattedAddress}-${index}`"
-        class="text-gray-600"
-      >
-        {{ formattedAddress }}
-      </p>
+      <div class="flex flex-col gap-1">
+        <p
+          v-for="(formattedAddress, index) in getFormattedLocaleAddresses(
+            address.shipping,
+          )"
+          :key="`${formattedAddress}-${index}`"
+          class="text-gray-600"
+        >
+          {{ formattedAddress }}
+        </p>
+      </div>
     </SFOspDetailBox>
     <SFOspDetailBox
       v-if="address.billing && !isSingleAddress"
       :title="$t('osp.billing_address')"
     >
-      <p
-        v-for="(formattedAddress, index) in getFormattedLocaleAddresses(
-          address.billing,
-        )"
-        :key="`${formattedAddress}-${index}`"
-        class="text-gray-600"
-      >
-        {{ formattedAddress }}
-      </p>
+      <div class="flex flex-col gap-1">
+        <p
+          v-for="(formattedAddress, index) in getFormattedLocaleAddresses(
+            address.billing,
+          )"
+          :key="`${formattedAddress}-${index}`"
+          class="text-gray-600"
+        >
+          {{ formattedAddress }}
+        </p>
+      </div>
     </SFOspDetailBox>
   </div>
 </template>
