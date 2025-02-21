@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "2.28.1",
-    "@eslint/eslintrc": "3.2.0",
+    "@eslint/eslintrc": "3.3.0",
     "@gtm-support/vue-gtm": "3.1.0",
     "@nuxt/eslint": "1.1.0",
     "@nuxt/image": "1.9.0",
