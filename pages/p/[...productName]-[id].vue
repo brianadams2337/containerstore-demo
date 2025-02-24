@@ -112,7 +112,11 @@ import {
   ref,
   defineAsyncComponent,
 } from 'vue'
-import type { Price, Variant } from '@scayle/storefront-nuxt'
+import {
+  getFirstAttributeValue,
+  type Price,
+  type Variant,
+} from '@scayle/storefront-nuxt'
 import { useNuxtApp } from '#app/nuxt'
 import { createError } from '#app/composables/error'
 import { useRoute, useRouter } from '#app/composables/router'
@@ -145,6 +149,8 @@ import {
 } from '#storefront-product-detail'
 import { useBreadcrumbs } from '~/composables'
 import { hasSubscriptionCustomData } from '#storefront-subscription/helpers/subscription'
+import { formatColors } from '~/utils'
+import { generateProductSchema } from '#storefront-product-detail/utils/seo'
 
 const SFLazyStoreLocatorSlideIn = defineAsyncComponent(
   () => import('~/components/locator/SFStoreLocatorSlideIn.vue'),
@@ -194,6 +200,7 @@ const {
   longestCategoryList,
   hasOneVariantOnly,
   variants,
+  colors,
 } = useProductBaseInfo(product)
 
 const { isGiftAddedToBasket, areGiftConditionsMet, promotion } =
@@ -293,8 +300,19 @@ const productInfo = computed(() => ({
   name: name.value,
   brand: brand.value,
   productDescription: description.value,
-  variants: variants.value,
+  variants: variants.value.map((variant) => {
+    const size = getFirstAttributeValue(variant.attributes, 'size')?.label || ''
+    return generateProductSchema({
+      productName: `${name.value}, ${formatColors(colors.value)}`,
+      variant,
+      url: `${$config.public.baseUrl}${route.fullPath}`,
+      size,
+    })
+  }),
   images: images.value,
+  productId: product.value?.id || 0,
+  color: formatColors(colors.value),
+  variesBy: variants.value.length > 1 ? ['https://schema.org/size'] : undefined,
 }))
 
 // SEO

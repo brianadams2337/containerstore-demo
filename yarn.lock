@@ -4212,10 +4212,10 @@
     vue-router "^4.4.0"
     zod "^3.23.8"
 
-"@scayle/storefront-product-detail@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-product-detail/-/storefront-product-detail-1.0.2.tgz#0a70a65bac6eaeedbdd3fdade42fab903c13c29d"
-  integrity sha512-66MT98xmiaXVqw4AaLRAHqqkqZcF1VX0egkI3oHe+S31rvNIgQWZEWtcJ3/RjGnupJEPsnbNdJjhUMJ+4yF0uQ==
+"@scayle/storefront-product-detail@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-product-detail/-/storefront-product-detail-1.1.1.tgz#7931c6466a6d55a969e5a124b75142e7da503abc"
+  integrity sha512-HTQZqKfXHjJc3Q6N46VqBI+Ao4LP5jkFS1VmDbSFJS+3kDo5icbQdDk6IHLuASfMbUyGiXkjg7bliQLo2tz5nA==
 
 "@scayle/storefront-product-listing@1.2.0":
   version "1.2.0"
