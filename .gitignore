@@ -92,3 +92,7 @@ storybook-static
 # Redis
 *.rdb
 .vercel
+
+
+#Scayle CLI
+.scayle
