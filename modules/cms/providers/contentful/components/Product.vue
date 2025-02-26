@@ -1,5 +1,6 @@
 <template>
   <SFProductCard
+    v-if="product"
     :key="`product-disruptor-${product.id}`"
     :product="product"
     :multiple-images="multipleImages"
@@ -16,7 +17,7 @@ import SFProductCard from '~/components/product/card/SFProductCard.vue'
 
 type CMSProductProps = {
   multipleImages?: boolean
-  product: Product
+  product?: Product
 }
 
 const { multipleImages = false } = defineProps<CMSProductProps>()
