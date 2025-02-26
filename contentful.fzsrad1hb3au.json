@@ -23050,271 +23050,6 @@
             "id": "fzsrad1hb3au"
           }
         },
-        "id": "3IVnpAJ0Bt7K2yFgdCu8kY",
-        "type": "Entry",
-        "createdAt": "2025-02-26T12:12:49.090Z",
-        "updatedAt": "2025-02-26T12:13:27.149Z",
-        "environment": {
-          "sys": {
-            "id": "master",
-            "type": "Link",
-            "linkType": "Environment"
-          }
-        },
-        "publishedVersion": 3,
-        "publishedAt": "2025-02-26T12:13:27.149Z",
-        "firstPublishedAt": "2025-02-26T12:13:27.149Z",
-        "createdBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "2k1Ca1RBt0P197rq5RX8oB"
-          }
-        },
-        "updatedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "2k1Ca1RBt0P197rq5RX8oB"
-          }
-        },
-        "publishedCounter": 1,
-        "version": 4,
-        "publishedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "2k1Ca1RBt0P197rq5RX8oB"
-          }
-        },
-        "fieldStatus": {
-          "*": {
-            "de-AT": "published",
-            "de-CH": "published",
-            "de-DE": "published",
-            "en-US": "published"
-          }
-        },
-        "automationTags": [],
-        "contentType": {
-          "sys": {
-            "type": "Link",
-            "linkType": "ContentType",
-            "id": "product"
-          }
-        },
-        "urn": "crn:contentful:::content:spaces/fzsrad1hb3au/environments/master/entries/3IVnpAJ0Bt7K2yFgdCu8kY"
-      },
-      "fields": {
-        "uid": {
-          "en-US": "[CMS Showcase] Product (ID: 205673)"
-        },
-        "productId": {
-          "en-US": "205673"
-        }
-      }
-    },
-    {
-      "metadata": {
-        "tags": [],
-        "concepts": []
-      },
-      "sys": {
-        "space": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Space",
-            "id": "fzsrad1hb3au"
-          }
-        },
-        "id": "5Xu4x9DW7xgPPBQOposVWZ",
-        "type": "Entry",
-        "createdAt": "2025-02-26T12:13:37.341Z",
-        "updatedAt": "2025-02-26T12:16:15.785Z",
-        "environment": {
-          "sys": {
-            "id": "master",
-            "type": "Link",
-            "linkType": "Environment"
-          }
-        },
-        "publishedVersion": 8,
-        "publishedAt": "2025-02-26T12:16:15.785Z",
-        "firstPublishedAt": "2025-02-26T12:16:15.785Z",
-        "createdBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "2k1Ca1RBt0P197rq5RX8oB"
-          }
-        },
-        "updatedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "2k1Ca1RBt0P197rq5RX8oB"
-          }
-        },
-        "publishedCounter": 1,
-        "version": 9,
-        "publishedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "2k1Ca1RBt0P197rq5RX8oB"
-          }
-        },
-        "fieldStatus": {
-          "*": {
-            "de-AT": "published",
-            "de-CH": "published",
-            "de-DE": "published",
-            "en-US": "published"
-          }
-        },
-        "automationTags": [],
-        "contentType": {
-          "sys": {
-            "type": "Link",
-            "linkType": "ContentType",
-            "id": "shopableImage"
-          }
-        },
-        "urn": "crn:contentful:::content:spaces/fzsrad1hb3au/environments/master/entries/5Xu4x9DW7xgPPBQOposVWZ"
-      },
-      "fields": {
-        "uid": {
-          "en-US": "[CMS Showcase] Shopable Image"
-        },
-        "image": {
-          "en-US": [
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "6jEIOymjdb5kP0mcvWDggQ"
-              }
-            }
-          ]
-        },
-        "detailImage": {
-          "en-US": [
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "kUTcqc82a9828x4HVjQBD"
-              }
-            }
-          ]
-        },
-        "title": {
-          "en-US": "[CMS Showcase] Shopable Image"
-        },
-        "productIds": {
-          "en-US": "205673"
-        }
-      }
-    },
-    {
-      "metadata": {
-        "tags": [],
-        "concepts": []
-      },
-      "sys": {
-        "space": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Space",
-            "id": "fzsrad1hb3au"
-          }
-        },
-        "id": "kUTcqc82a9828x4HVjQBD",
-        "type": "Entry",
-        "createdAt": "2025-02-26T12:14:42.653Z",
-        "updatedAt": "2025-02-26T12:15:08.592Z",
-        "environment": {
-          "sys": {
-            "id": "master",
-            "type": "Link",
-            "linkType": "Environment"
-          }
-        },
-        "publishedVersion": 4,
-        "publishedAt": "2025-02-26T12:15:08.592Z",
-        "firstPublishedAt": "2025-02-26T12:15:08.592Z",
-        "createdBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "2k1Ca1RBt0P197rq5RX8oB"
-          }
-        },
-        "updatedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "2k1Ca1RBt0P197rq5RX8oB"
-          }
-        },
-        "publishedCounter": 1,
-        "version": 5,
-        "publishedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "2k1Ca1RBt0P197rq5RX8oB"
-          }
-        },
-        "fieldStatus": {
-          "*": {
-            "de-AT": "published",
-            "de-CH": "published",
-            "de-DE": "published",
-            "en-US": "published"
-          }
-        },
-        "automationTags": [],
-        "contentType": {
-          "sys": {
-            "type": "Link",
-            "linkType": "ContentType",
-            "id": "detailImage"
-          }
-        },
-        "urn": "crn:contentful:::content:spaces/fzsrad1hb3au/environments/master/entries/kUTcqc82a9828x4HVjQBD"
-      },
-      "fields": {
-        "uid": {
-          "en-US": "[CMS Showcase] DetailImage"
-        },
-        "image": {
-          "en-US": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Asset",
-              "id": "4dFIKfiKHbTHxU0waz8fMo"
-            }
-          }
-        },
-        "productIds": {
-          "en-US": "205673"
-        }
-      }
-    },
-    {
-      "metadata": {
-        "tags": [],
-        "concepts": []
-      },
-      "sys": {
-        "space": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Space",
-            "id": "fzsrad1hb3au"
-          }
-        },
         "id": "6jEIOymjdb5kP0mcvWDggQ",
         "type": "Entry",
         "createdAt": "2025-02-26T12:15:42.460Z",
@@ -23410,7 +23145,7 @@
         "id": "17n1TjbB28IfLZZvEbYxB2",
         "type": "Entry",
         "createdAt": "2025-02-26T12:20:25.593Z",
-        "updatedAt": "2025-02-26T12:20:36.446Z",
+        "updatedAt": "2025-02-26T13:19:04.399Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -23418,8 +23153,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 2,
-        "publishedAt": "2025-02-26T12:20:36.446Z",
+        "publishedVersion": 4,
+        "publishedAt": "2025-02-26T13:19:04.399Z",
         "firstPublishedAt": "2025-02-26T12:20:36.446Z",
         "createdBy": {
           "sys": {
@@ -23435,8 +23170,8 @@
             "id": "2k1Ca1RBt0P197rq5RX8oB"
           }
         },
-        "publishedCounter": 1,
-        "version": 3,
+        "publishedCounter": 2,
+        "version": 5,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -23473,20 +23208,6 @@
                 "type": "Link",
                 "linkType": "Entry",
                 "id": "5NWhbvddaAO8DXOL2XCAXd"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "3IVnpAJ0Bt7K2yFgdCu8kY"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "5Xu4x9DW7xgPPBQOposVWZ"
               }
             }
           ]
