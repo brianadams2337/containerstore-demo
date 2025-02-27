@@ -1,5 +1,5 @@
 import { createConsola } from 'consola'
-import { CMSProvidersMap } from './config'
+import { CMSProvider } from './config'
 
 export const moduleName = '@scayle/storefront-cms'
 export const logger = createConsola({
@@ -47,7 +47,7 @@ export const formatter = new Intl.ListFormat('en', {
 })
 
 export const formattedProvidersKeys = formatter.format(
-  Object.values(CMSProvidersMap),
+  Object.values(CMSProvider),
 )
 
 export const EMAIL_REGEX_PATTERN =

@@ -1,4 +1,4 @@
-import { addImportsDir, createResolver, defineNuxtModule } from '@nuxt/kit'
+import { defineNuxtModule } from '@nuxt/kit'
 import {
   isProviderStoryblok,
   setupStoryblok,
@@ -7,8 +7,9 @@ import {
   isProviderContentful,
   setupContentful,
 } from './providers/contentful/setup'
-import { formattedProvidersKeys, logger, moduleName } from './utils/helpers'
+import { moduleName, logger, formattedProvidersKeys } from './utils/helpers'
 import type { ModuleOptions } from './types'
+import { isProviderScayle, setupScayle } from './providers/scayle/setup'
 
 export type { ModuleOptions }
 
@@ -23,18 +24,19 @@ export default defineNuxtModule<ModuleOptions>({
     },
   },
   defaults: {
-    provider: 'storyblok',
+    provider: 'scayle',
   },
   async setup(options, nuxt) {
-    const resolver = createResolver(import.meta.url)
-
     if (!options.provider) {
       logger.error(
         `\nYou must define a CMS provider.\nSupported CMS providers are: ${formattedProvidersKeys}!`,
       )
     }
 
-    addImportsDir(resolver.resolve('./composables'))
+    if (isProviderScayle(options)) {
+      // Early return to prevent unnecessary chunk optimizations, which are specific to contentful and storyblok
+      return await setupScayle(options, nuxt)
+    }
 
     if (isProviderStoryblok(options)) {
       await setupStoryblok(options, nuxt)

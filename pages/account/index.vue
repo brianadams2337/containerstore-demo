@@ -36,10 +36,10 @@
         class="flex flex-col justify-center space-x-0 space-y-4 sm:flex-row sm:space-x-8 sm:space-y-0"
       >
         <SFSkeletonLoader
-          v-for="i in 3"
-          :key="i"
+          v-for="n in 3"
+          :key="`account-container-link-loader-${n}`"
           full-width
-          class="mt-2.5 h-20"
+          class="h-20"
         />
       </div>
       <div class="mx-auto mt-12 w-fit">

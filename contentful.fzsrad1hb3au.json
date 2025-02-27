@@ -3043,7 +3043,7 @@
         "id": "contentPage",
         "type": "ContentType",
         "createdAt": "2024-08-22T15:02:01.273Z",
-        "updatedAt": "2025-02-26T07:58:01.826Z",
+        "updatedAt": "2025-02-26T13:38:52.149Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -3051,8 +3051,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 21,
-        "publishedAt": "2025-02-26T07:58:01.826Z",
+        "publishedVersion": 23,
+        "publishedAt": "2025-02-26T13:38:52.149Z",
         "firstPublishedAt": "2024-08-22T15:02:18.784Z",
         "createdBy": {
           "sys": {
@@ -3068,8 +3068,8 @@
             "id": "2k1Ca1RBt0P197rq5RX8oB"
           }
         },
-        "publishedCounter": 11,
-        "version": 22,
+        "publishedCounter": 12,
+        "version": 24,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -3189,7 +3189,6 @@
                   "imageSlider",
                   "productSlider",
                   "slideShow",
-                  "socialMediaLink",
                   "video",
                   "nestedParagraph"
                 ]
@@ -6285,7 +6284,7 @@
             "linkType": "Space"
           }
         },
-        "version": 22,
+        "version": 24,
         "createdAt": "2024-08-22T15:02:18.984Z",
         "createdBy": {
           "sys": {
@@ -6294,7 +6293,7 @@
             "linkType": "User"
           }
         },
-        "updatedAt": "2025-02-26T07:58:02.398Z",
+        "updatedAt": "2025-02-26T13:38:52.735Z",
         "updatedBy": {
           "sys": {
             "id": "2k1Ca1RBt0P197rq5RX8oB",

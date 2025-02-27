@@ -193,6 +193,12 @@ export default {
           letterSpacing: '-0.063rem',
         },
       ],
+      '7xl': [
+        '4.5rem',
+        {
+          lineHeight: '1',
+        },
+      ],
     },
     extend: {
       lineHeight: {
@@ -218,6 +224,7 @@ export default {
         13: '3.25rem',
         15: '3.75rem',
         88: '22rem',
+        348: '87rem',
         105: '26.25rem',
         128: defaultSizes.lg,
       },
@@ -333,6 +340,7 @@ export default {
         ...defaultSizes,
         screen: '100vw',
         dialog: '94vw',
+        '187.5': '46.875rem',
         156: '39rem',
         112: '28rem',
         88: '22rem',

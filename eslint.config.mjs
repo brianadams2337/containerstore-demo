@@ -22,6 +22,7 @@ export default withNuxt(
           'error',
           {
             whitelist: [
+              'bg-lined-grid',
               'picture',
               'cms\\-picture',
               'picture\\-contain',
