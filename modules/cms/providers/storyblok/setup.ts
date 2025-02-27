@@ -1,4 +1,5 @@
 import {
+  addComponentsDir,
   addPlugin,
   addTypeTemplate,
   createResolver,
@@ -11,7 +12,7 @@ import type { ModuleOptions } from '../../types'
 import { CMSProvider } from '../../utils/config'
 import type { StoryblokModuleOptions } from './types'
 
-export async function setupStoryblok(_options: ModuleOptions, nuxt: Nuxt) {
+export async function setupStoryblok(options: ModuleOptions, nuxt: Nuxt) {
   const resolver = createResolver(import.meta.url)
   logger.info('Using Storyblok as Storefront CMS provider')
 
@@ -62,6 +63,13 @@ export async function setupStoryblok(_options: ModuleOptions, nuxt: Nuxt) {
 
   nuxt.options.alias['#storefront-cms/components'] =
     resolver.resolve('./components')
+
+  await addComponentsDir({
+    path: resolver.resolve('./components'),
+    prefix: options.componentPrefix ?? 'CMS',
+    pathPrefix: false,
+    global: true,
+  })
 
   addTypeTemplate({
     filename: 'cms-custom.d.ts',

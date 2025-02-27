@@ -1,11 +1,16 @@
-import { addPlugin, addTypeTemplate, createResolver } from '@nuxt/kit'
+import {
+  addComponentsDir,
+  addPlugin,
+  addTypeTemplate,
+  createResolver,
+} from '@nuxt/kit'
 import type { Nuxt, NuxtOptions } from 'nuxt/schema'
 import { CMSProvider } from '../../utils/config'
 import { logger } from '../../utils/helpers'
 import type { ModuleOptions } from '../../types'
 import type { ContentfulModuleOptions } from './types'
 
-export async function setupContentful(_options: ModuleOptions, nuxt: Nuxt) {
+export async function setupContentful(options: ModuleOptions, nuxt: Nuxt) {
   const resolver = createResolver(import.meta.url)
   logger.info('Using Contentful as Storefront CMS provider')
 
@@ -40,6 +45,12 @@ export async function setupContentful(_options: ModuleOptions, nuxt: Nuxt) {
 
   nuxt.options.alias['#storefront-cms/components'] =
     resolver.resolve('./components')
+  await addComponentsDir({
+    path: resolver.resolve('./components'),
+    prefix: options.componentPrefix ?? 'CMS',
+    pathPrefix: false,
+    global: true,
+  })
 
   addTypeTemplate({
     filename: 'cms-custom.d.ts',
