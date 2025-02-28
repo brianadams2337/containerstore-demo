@@ -45,7 +45,7 @@
           />
           <SFButton
             variant="primary"
-            class="ml-2"
+            class="ml-2 max-w-28"
             data-testid="location-search-button"
             :disabled="!searchAddress?.length || searching"
             :loading="searching"

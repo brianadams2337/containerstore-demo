@@ -35,7 +35,7 @@
           <SFButton
             data-testid="search-store-button"
             variant="primary"
-            class="ml-auto"
+            class="max-w-28"
             rounded
             :disabled="!address.length"
             @click="searchStore"
