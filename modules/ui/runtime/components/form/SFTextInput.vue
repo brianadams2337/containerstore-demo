@@ -14,7 +14,7 @@
       :aria-invalid="hasErrors"
       :type="type"
       :placeholder="placeholder"
-      class="peer h-12 w-full rounded-10 border border-gray-100 bg-gray-100 p-4 text-base font-variable text-gray-900 transition duration-100 input-white-autofill placeholder:text-transparent hover:border-gray-300 hover:bg-white focus:border-accent focus:bg-white focus:text-accent focus:shadow-none focus:outline focus:outline-3 focus:outline-offset-0 focus:outline-indigo-200/50"
+      class="peer h-12 w-full rounded-10 border border-gray-100 bg-gray-100 py-4 pl-4 pr-2 text-base font-variable text-gray-900 transition duration-100 input-white-autofill placeholder:text-transparent hover:border-gray-300 hover:bg-white focus:border-accent focus:bg-white focus:text-accent focus:shadow-none focus:outline focus:outline-3 focus:outline-offset-0 focus:outline-indigo-200/50"
       :class="{
         'border-gray-300 bg-white': modelValue,
         'focus:border-gray-300 focus:text-gray-900 focus:!outline-none':
@@ -25,12 +25,13 @@
     />
     <label
       :for="id"
-      class="absolute left-2 top-4 px-2.5 text-sm text-gray-600 duration-100 ease-linear placeholder-shown:bg-gray-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-600 peer-focus:ml-1 peer-focus:-translate-y-6 peer-focus:bg-white peer-focus:px-1.5 peer-focus:text-xs peer-focus:text-accent peer-focus:shadow-input-label after:peer-focus:text-accent"
+      class="absolute left-2 top-4 w-full truncate pl-2.5 text-sm text-gray-600 duration-100 ease-linear placeholder-shown:bg-gray-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-600 peer-focus:ml-1 peer-focus:w-fit peer-focus:-translate-y-6 peer-focus:bg-white peer-focus:px-1.5 peer-focus:text-xs peer-focus:text-accent peer-focus:shadow-input-label after:peer-focus:text-accent"
+      :style="{ maxWidth: `${inputWidth}px` }"
       :class="{
         [`after:ml-0.5 after:text-gray-600 after:content-['*']`]: required,
         '!text-gray-600 transition-none peer-focus:after:text-gray-600':
           readonly,
-        'ml-1 -translate-y-6 bg-white !px-1.5 text-xs !shadow-input-label':
+        'ml-1 !w-fit -translate-y-6 bg-white !px-1.5 text-xs !shadow-input-label':
           modelValue,
         '!text-status-error after:text-status-error peer-focus:after:text-status-error':
           hasErrors,
@@ -39,15 +40,19 @@
       {{ placeholder }}
     </label>
     <p v-if="hint" class="mt-1 text-xs">{{ hint }}</p>
-    <div class="absolute right-2 top-1/2 h-full w-10 -translate-y-1/2 py-1.5">
+    <div
+      v-if="$slots['append-icon']"
+      class="absolute right-2 top-1/2 h-full w-10 -translate-y-1/2 py-1.5"
+    >
       <slot name="append-icon" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineOptions, computed } from 'vue'
+import { defineOptions, computed, useTemplateRef } from 'vue'
 import { vMaska } from 'maska/vue'
+import { useElementSize } from '@vueuse/core'
 
 defineOptions({ inheritAttrs: false })
 
@@ -74,6 +79,9 @@ const {
 }>()
 
 const modelValue = defineModel<string>()
+
+const input = useTemplateRef('input')
+const { width: inputWidth } = useElementSize(input)
 
 // TODO: Replace the placeholder and optional name with `useId` when upgrading to Nuxt 3.15.
 // This will ensure that the generated ID is consistently persisted between the server and client.
