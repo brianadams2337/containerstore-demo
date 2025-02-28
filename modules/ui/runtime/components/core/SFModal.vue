@@ -1,5 +1,6 @@
 <template>
   <dialog
+    ref="modal"
     v-dialog.modal="visible"
     class="max-h-dialog max-w-dialog rounded p-8 backdrop:bg-black/50"
     @click="onClick"
@@ -23,6 +24,9 @@
 </template>
 
 <script setup lang="ts">
+import { watch, nextTick, useTemplateRef } from 'vue'
+import { tabbable } from 'tabbable'
+import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import { vDialog } from '../../directives/dialog'
 
 const { hideCloseButton = false, closeOnOutside = true } = defineProps<{
@@ -58,4 +62,25 @@ const onCancel = (e: Event) => {
   e.preventDefault()
   close()
 }
+
+const modal = useTemplateRef<HTMLDialogElement>('modal')
+
+// Adding a focus trap will make sure you can still interact with the modal
+// when there is an active focus trap in the content below the modal.
+const { activate: activateModalTrap, deactivate: deactivateModalTrap } =
+  useFocusTrap(modal, {
+    initialFocus: () =>
+      modal.value && tabbable(modal.value).length ? undefined : false,
+    escapeDeactivates: false,
+    immediate: visible.value,
+  })
+
+watch(visible, async (value) => {
+  if (value) {
+    await nextTick()
+    activateModalTrap()
+  } else {
+    deactivateModalTrap()
+  }
+})
 </script>
