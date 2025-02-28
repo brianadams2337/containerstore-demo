@@ -37,6 +37,8 @@ export class BasketPage {
   readonly quantityValue: Locator
   readonly buttonQuantityDecrease: Locator
   readonly buttonQuantityIncrease: Locator
+  readonly initialProductPrice: Locator
+  readonly productPrice: Locator
 
   constructor(page: Page, rpc: RPC) {
     this.page = page
@@ -89,6 +91,8 @@ export class BasketPage {
     this.quantityValue = page.getByTestId('quantity-value')
     this.buttonQuantityDecrease = page.getByTestId('quantity-minus')
     this.buttonQuantityIncrease = page.getByTestId('quantity-plus')
+    this.initialProductPrice = page.getByTestId('initialProductPrice')
+    this.productPrice = page.getByTestId('price')
   }
 
   async gotoCheckoutPage(index: number) {
@@ -245,6 +249,35 @@ export class BasketPage {
       await expect(this.buttonQuantityDecrease.nth(index)).toBeEnabled({
         enabled,
       })
+    }
+  }
+
+  async assertInitialPriceVisibility(visible: boolean) {
+    if (isMobile(this.page)) {
+      await expect(this.initialProductPrice.nth(1)).toBeVisible({
+        visible,
+      })
+    } else {
+      await expect(this.initialProductPrice.nth(0)).toBeVisible({
+        visible,
+      })
+    }
+  }
+
+  async assertFinalProductPrice(priceValue: string, containsValue: boolean) {
+    const shouldContain = containsValue
+    if (shouldContain) {
+      if (isMobile(this.page)) {
+        await expect(this.productPrice.nth(1)).toContainText(priceValue)
+      } else {
+        await expect(this.productPrice.nth(0)).toContainText(priceValue)
+      }
+    } else {
+      if (isMobile(this.page)) {
+        await expect(this.productPrice.nth(1)).not.toHaveText(priceValue)
+      } else {
+        await expect(this.productPrice.nth(0)).not.toHaveText(priceValue)
+      }
     }
   }
 }

@@ -353,3 +353,58 @@ test('C2170821 Verify Basket Quantity Selector available quantity more than 10',
     await expect(header.basketNumItems).toHaveText('9')
   })
 })
+
+test('C2167368 Verify Basket increasing free product quantity', async ({
+  homePage,
+  header,
+  basketPage,
+  countryDetector,
+  page,
+  freeProductList,
+  freeProductModal,
+  productDetailPage,
+}) => {
+  test.setTimeout(45000)
+  await test.step('Add promotional paid product to Basket', async () => {
+    await homePage.visitPage()
+    await countryDetector.closeModal()
+    await basketPage.addProductToBasket(BASKET_TEST_DATA.promoPaidProduct, 1)
+    await header.visitBasketPage()
+    await page.waitForURL(E2E_BASKET_URL)
+    await page.reload()
+    await basketPage.basketProductCard.waitFor()
+    await page.waitForLoadState('domcontentloaded')
+    await expect(header.basketNumItems).toHaveText('1')
+  })
+  await test.step('Add promotional free product to Basket and assert free product price', async () => {
+    await freeProductList.freeProductsSelection.waitFor()
+    await freeProductList.addFreeProductButton.first().click()
+    await freeProductModal.freeProductModalWindow.first().waitFor()
+    await expect(
+      freeProductModal.freeProductModalWindow.first(),
+    ).toHaveAttribute('open')
+    await page.waitForTimeout(500)
+    await freeProductModal.variantPicker.first().click({ force: true })
+    await productDetailPage.getVariant().click()
+    await freeProductModal.addItemToBasketButton.first().click()
+    await expect(freeProductList.freeProductsSelection).not.toBeVisible()
+    await basketPage.assertInitialPriceVisibility(true)
+    await basketPage.assertFinalProductPrice(
+      BASKET_TEST_DATA.freeProductPriceLabel,
+      true,
+    )
+  })
+  await test.step('Increase the quantity of free product to 2', async () => {
+    await basketPage.updateProductQuantity('plus')
+    await basketPage.assertInitialPriceVisibility(false)
+    await basketPage.assertFinalProductPrice(
+      BASKET_TEST_DATA.freeProductPriceLabel,
+      false,
+    )
+  })
+  await test.step('Decrease the quantity of free product back to 1', async () => {
+    await basketPage.updateProductQuantity('minus')
+    await basketPage.assertInitialPriceVisibility(true)
+    await expect(header.basketNumItems).toHaveText('2')
+  })
+})

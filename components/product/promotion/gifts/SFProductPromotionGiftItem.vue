@@ -49,6 +49,7 @@
           size="sm"
           variant="raw"
           class="size-11 rounded-xl bg-gray-200"
+          data-testid="add-free-product-button"
           :disabled="disabled"
           @click="toggleGiftSelection()"
         >

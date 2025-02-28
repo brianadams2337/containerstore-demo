@@ -81,6 +81,9 @@ export const BASKET_TEST_DATA = {
   soldOutProductPassword: process.env.TEST_USER_PASSWORD as string,
   productAvailableLessThanTen: 319859,
   productAvailableMoreThanTen: 333231,
+  promoPaidProduct: 333618,
+  promoFreeProduct: 336349,
+  freeProductPriceLabel: ' 0,00 € ',
 }
 
 export const HOMEPAGE_PATH_DE = '/de'

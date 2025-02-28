@@ -23,6 +23,8 @@ import { ShopSelector } from '../page-objects/components/shopSelector'
 import { StoreLocator } from '../page-objects/components/storeLocator'
 import { Sorting } from '../page-objects/components/sorting'
 import { RPC } from '../page-objects/components/rpc'
+import { FreeProductList } from '../page-objects/components/freeProductList'
+import { FreeProductModal } from '../page-objects/components/freeProductModal'
 
 interface Fixtures {
   rpc: RPC
@@ -49,6 +51,8 @@ interface Fixtures {
   shopSelector: ShopSelector
   storeLocator: StoreLocator
   sorting: Sorting
+  freeProductList: FreeProductList
+  freeProductModal: FreeProductModal
 }
 
 export type OutputMode = 'json' | 'html' | 'csv'
@@ -148,6 +152,14 @@ export const test = base.extend<Fixtures>({
   sorting: async ({ page }, use) => {
     const sorting = new Sorting(page)
     await use(sorting)
+  },
+  freeProductList: async ({ page }, use) => {
+    const freeProductList = new FreeProductList(page)
+    await use(freeProductList)
+  },
+  freeProductModal: async ({ page }, use) => {
+    const freeProductModal = new FreeProductModal(page)
+    await use(freeProductModal)
   },
 })
 export { expect } from '@playwright/test'
