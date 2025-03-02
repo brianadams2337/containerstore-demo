@@ -4454,20 +4454,6 @@
   dependencies:
     rfdc "^1.4.1"
 
-"@vue/language-core@2.2.4":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@vue/language-core/-/language-core-2.2.4.tgz#5cad43a4cd6f388bebc3e8c6f303df489f5e8829"
-  integrity sha512-eGGdw7eWUwdIn9Fy/irJ7uavCGfgemuHQABgJ/hU1UgZFnbTg9VWeXvHQdhY+2SPQZWJqWXvRWIg67t4iWEa+Q==
-  dependencies:
-    "@volar/language-core" "~2.4.11"
-    "@vue/compiler-dom" "^3.5.0"
-    "@vue/compiler-vue2" "^2.7.16"
-    "@vue/shared" "^3.5.0"
-    alien-signals "^1.0.3"
-    minimatch "^9.0.3"
-    muggle-string "^0.4.1"
-    path-browserify "^1.0.1"
-
 "@vue/language-core@2.2.8":
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/@vue/language-core/-/language-core-2.2.8.tgz#05befa390399fbd4409bc703ee0520b8ac1b7088"
@@ -4528,13 +4514,13 @@
     js-beautify "^1.14.9"
     vue-component-type-helpers "^2.0.0"
 
-"@vue/typescript-plugin@2.2.4":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@vue/typescript-plugin/-/typescript-plugin-2.2.4.tgz#4f4511bece33d3d45db910f9b49a6885bc51620e"
-  integrity sha512-bwklUVy7TZu0Nn9d+oII0KA10eYSgqarf47/E1QvkoHS8EP5SJzPKvOhMPGJMyxwHtHE4aOu8jdWZcJ25X5eiQ==
+"@vue/typescript-plugin@2.2.8":
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/@vue/typescript-plugin/-/typescript-plugin-2.2.8.tgz#f47018d6aeb4a7f6665be7391b56ef4e5de09a40"
+  integrity sha512-9fzhFYrzIsPm5Qylv6yBmV1tISqkUhE1PD5uBwkeLCxIwNUjIbnGBdN8HszDa1ZWFWuBsbQpx7FxmV7vQincDw==
   dependencies:
     "@volar/typescript" "~2.4.11"
-    "@vue/language-core" "2.2.4"
+    "@vue/language-core" "2.2.8"
     "@vue/shared" "^3.5.0"
 
 "@vuelidate/core@2.0.3":
