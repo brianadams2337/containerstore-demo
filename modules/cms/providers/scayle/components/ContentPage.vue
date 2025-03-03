@@ -10,19 +10,24 @@
           Storefront
         </h1>
         <p class="mb-10 max-w-187.5 leading-8 lg:pr-12">
-          Storefront Boilerplate is an all-in-one starter kit for building
-          high-performance e-commerce shops for the SCAYLE Commerce Engine. It
-          makes it quick and easy to build a best-in-class shop frontend. The
-          latest version of Storefront Boilerplate is based on Nuxt and Vue 3.
+          Storefront is an all-in-one starter kit for building high-performance
+          e-commerce shops for the SCAYLE Commerce Engine. It makes it quick and
+          easy to build a best-in-class shop frontend. The latest version of
+          Storefront is based on Nuxt and Vue 3.
         </p>
         <div class="flex flex-wrap gap-4 text-xl md:mb-24">
-          <SFButton to="https://scayle.dev/en/storefront" class="!px-6">
+          <SFButton
+            to="https://scayle.dev/en/storefront"
+            class="!px-6"
+            target="_blank"
+          >
             SCAYLE Resource Center
           </SFButton>
           <SFButton
             to="https://scayle.dev/en/storefront-guide/developer-guide/integrations/cms/"
             variant="tertiary"
             class="!px-6"
+            target="_blank"
           >
             Setup a CMS for Storefront
           </SFButton>
