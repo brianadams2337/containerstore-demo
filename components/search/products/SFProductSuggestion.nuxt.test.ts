@@ -68,5 +68,8 @@ it('should render only category name"', async () => {
   expect(
     getByRole('link', { name: 'Test Brand Test Product 1€' }),
   ).toHaveAttribute('href', '/de/p/test-product-1')
-  expect(getByRole('img')).toHaveAttribute('src', '/hash?width=60&height=80')
+  expect(getByRole('img')).toHaveAttribute(
+    'src',
+    'https://cdn-test.url/hash?width=60&height=80',
+  )
 })

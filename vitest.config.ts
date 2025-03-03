@@ -27,6 +27,7 @@ export default defineVitestConfig({
               gtm: {
                 id: 'GTM-123',
               },
+              cdnUrl: 'https://cdn-test.url',
             },
           },
         },
