@@ -586,6 +586,9 @@ export default defineNuxtConfig({
 
   experimental: {
     cookieStore: true,
+    // Use parcel instead of chokidar to avoid watcher issues
+    // https://github.com/nuxt/nuxt/issues/30481
+    watcher: 'parcel',
   },
 
   // https://i18n.nuxtjs.org/docs/getting-started
@@ -777,6 +780,17 @@ export default defineNuxtConfig({
   },
 
   hooks: {
+    'nitro:config'(nitroConfig) {
+      // Override the root devStorage to use the fs-lite driver which does not depend on chokidar
+      // This is a workaround to avoid excessive file handlers
+      // https://github.com/nuxt/nuxt/issues/30481
+      nitroConfig.devStorage ??= {}
+      nitroConfig.devStorage['root'] = {
+        driver: 'fs-lite',
+        readOnly: true,
+        base: nitroConfig.rootDir,
+      }
+    },
     'nitro:init'(nitro) {
       // This hook enables build-time configuration logging, controlled by the feature flag CONFIG_LOG_BUILD_ENABLED.
       if (stringToBoolean(process.env.CONFIG_LOG_BUILD_ENABLED)) {
