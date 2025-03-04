@@ -50,4 +50,19 @@ test.describe('Test from Berlin against US shop', () => {
       await expect(countryDetector.stayInShopButton).not.toBeVisible()
     }).toPass()
   })
+
+  test('C2179744 Verify Country Detector modal with open flyout', async ({
+    countryDetector,
+    page,
+  }) => {
+    // and hash parameter value can be used for testing purposes, to open the reset password flyout
+    await page.goto('/en/signin?hash=hash', { waitUntil: 'load' })
+    await countryDetector.switchShopButton.first().waitFor()
+    await countryDetector.switchShopButton.first().click()
+    await page.waitForLoadState('networkidle')
+    await page.waitForTimeout(500)
+    const pageUrl = page.url()
+    expect(pageUrl).toContain(HOMEPAGE_PATH_DE)
+    await expect(countryDetector.switchShopButton).not.toBeVisible()
+  })
 })
