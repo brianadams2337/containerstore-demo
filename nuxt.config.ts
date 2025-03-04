@@ -310,35 +310,17 @@ export default defineNuxtConfig({
 
         return {
           cache: {
-            // Redis Options: https://redis.github.io/ioredis/index.html#RedisOptions
-            driver: 'redis', // Override: NUXT_STOREFRONT_STORAGE_CACHE_PROVIDER
+            driver: 'scayleKv', // Override: NUXT_STOREFRONT_STORAGE_CACHE_PROVIDER
             compression: 'brotli', // Override: NUXT_STOREFRONT_STORAGE_CACHE_COMPRESSION
-            host: 'localhost', // Override: NUXT_STOREFRONT_STORAGE_CACHE_HOST
-            port: 6379, // Override: NUXT_STOREFRONT_STORAGE_CACHE_PORT
-            username: '', // Override: NUXT_STOREFRONT_STORAGE_CACHE_USERNAME
-            password: '', // Override: NUXT_STOREFRONT_STORAGE_CACHE_PASSWORD
-            tls: false, // Override: NUXT_STOREFRONT_STORAGE_CACHE_TLS,
             // Default TTL of 10 minutes for the cache. This is required so that the SSR cache also expires at some point.
             //
             // Override: NUXT_STOREFRONT_STORAGE_CACHE_TTL
             ttl: 10 * 60,
-            // Required to resolve connection issues with AWS ElastiCache
-            checkServerIdentity: undefined, // Override: NUXT_STOREFRONT_STORAGE_CACHE_CHECK_SERVER_INTEGRITY,
-            maxRetriesPerRequest: 1, // Override: NUXT_STOREFRONT_STORAGE_CACHE_MAX_RETRIES_PER_REQUEST,
+            disableClusterMode: false, // Override: NUXT_STOREFRONT_STORAGE_CACHE_DISABLE_CLUSTER_MODE
           },
           session: {
-            // Redis Options: https://redis.github.io/ioredis/index.html#RedisOptions
-            driver: 'redis', // Override: NUXT_STOREFRONT_STORAGE_SESSION_PROVIDER
-            host: 'localhost', // Override: NUXT_STOREFRONT_STORAGE_SESSION_HOST
-
-            port: 6379, // Override: NUXT_STOREFRONT_STORAGE_SESSION_PORT
-            db: 1, // Override: NUXT_STOREFRONT_STORAGE_SESSION_DB
-            username: '', // Override: NUXT_STOREFRONT_STORAGE_SESSION_USERNAME
-            password: '', // Override: NUXT_STOREFRONT_STORAGE_SESSION_PASSWORD
-            tls: false, // Override: NUXT_STOREFRONT_STORAGE_SESSION_TLS,
-            // Required to resolve connection issues with AWS ElastiCache
-            checkServerIdentity: undefined, // Override: NUXT_STOREFRONT_STORAGE_SESSION_CHECK_SERVER_INTEGRITY,
-            maxRetriesPerRequest: 3, // Override: NUXT_STOREFRONT_STORAGE_SESSION_MAX_RETRIES_PER_REQUEST,
+            driver: 'scayleKv', // Override: NUXT_STOREFRONT_STORAGE_SESSION_PROVIDER
+            disableClusterMode: false, // Override: NUXT_STOREFRONT_STORAGE_SESSION_DISABLE_CLUSTER_MODE
           },
         }
       })(),

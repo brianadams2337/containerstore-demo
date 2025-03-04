@@ -12,11 +12,6 @@ type CustomData = PromotionCustomData &
       promotionId: number
       badgeLabel: string
     }
-    // This should match the `itemConditions`/`globalConditions` when creating or updating the  promotion
-    giftConditions: Partial<{
-      productId: number
-      minQuantity: number
-    }>
     category: {
       id: number
       ctaLabel: string
