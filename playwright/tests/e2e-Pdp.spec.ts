@@ -200,3 +200,19 @@ test('C2171081: Verify PDP Multi-size product Store selector', async ({
     await productDetailPage.assertStoreSelectorFlyoutIsVisible(false, 0)
   })
 })
+
+test('C2171109: Verify PDP One-size product Store selector', async ({
+  productDetailPage,
+  baseURL,
+  countryDetector,
+}) => {
+  await test.step('Visit One-size product PDP and check Store selector is visible by default', async () => {
+    await productDetailPage.visitPDP(
+      PDP_E2E.oneSizeProductUrl,
+      baseURL as string,
+    )
+    await countryDetector.closeModal()
+    await productDetailPage.productName.waitFor()
+    await productDetailPage.assertStoreSelectorIsVisible(true)
+  })
+})
