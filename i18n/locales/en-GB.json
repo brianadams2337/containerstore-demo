@@ -327,7 +327,8 @@
     "billing_address": "Billing Address",
     "delivery_and_billing_address": "Delivery & Billing Address",
     "email_send": "The order confirmation has been sent to the email address you provided.",
-    "estimated_deliver_date": "Estimated delivery",
+    "estimated_delivery_date": "Expected delivery",
+    "delivered_by": "Shipped by",
     "intro": "Thank you for your purchase!",
     "subtotal": "Subtotal",
     "order_date": "Order Date",
@@ -345,6 +346,9 @@
     "payment_key": {
       "default": "Credit Card",
       "accounting": "Accounting Payment"
+    },
+    "carrier_key": {
+      "DEFAULT": "UPS"
     },
     "meta": {
       "title": "Order confirmed %separator Thank you for your purchase",

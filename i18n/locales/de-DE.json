@@ -328,7 +328,8 @@
     "billing_address": "Rechnungsadresse",
     "delivery_and_billing_address": "Liefer- & Rechnungsadresse",
     "email_send": "Die Bestellbestätigung wurde an die von dir angegebene E-Mail-Adresse gesendet.",
-    "estimated_deliver_date": "Voraussichtliche Lieferung",
+    "estimated_delivery_date": "Voraussichtliche Zustellung",
+    "delivered_by": "Versandt durch",
     "intro": "Vielen Dank für deine Bestellung!",
     "subtotal": "Zwischensumme",
     "order_date": "Bestelldatum",
@@ -346,6 +347,9 @@
     "payment_key": {
       "default": "Kreditkarte",
       "accounting": "Buchhaltungszahlung"
+    },
+    "carrier_key": {
+      "DEFAULT": "DHL"
     },
     "meta": {
       "title": "Bestellung bestätigt %separator Vielen Dank für deinen Einkauf",

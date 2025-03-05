@@ -19,11 +19,6 @@
             :address="orderData.address"
           />
         </div>
-        <SFOspDeliveryDate
-          v-if="deliveryDate"
-          class="sm:hidden"
-          :delivery-date="deliveryDate"
-        />
         <SFOspCtaButtons
           :order-data="orderData"
           class="mt-4 w-full max-md:hidden"
@@ -36,7 +31,6 @@
 <script setup lang="ts">
 import SFOspBasicOrderData from './SFOspBasicOrderData.vue'
 import SFOspAddressInformation from './SFOspAddressInformation.vue'
-import SFOspDeliveryDate from './SFOspDeliveryDate.vue'
 import SFOspCtaButtons from './SFOspCtaButtons.vue'
 import SFOspPaymentData from './SFOspPaymentData.vue'
 import { SFHeadline } from '#storefront-ui/components'
