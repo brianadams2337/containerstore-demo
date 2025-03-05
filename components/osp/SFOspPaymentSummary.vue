@@ -6,14 +6,14 @@
         {{ formatCurrency(subtotal) }}
       </dd>
 
-      <dt>{{ $t('osp.shipping_costs') }}:</dt>
+      <dt>{{ $t('osp.shipping_costs') }}</dt>
       <dd class="text-right">{{ formatCurrency(shippingCost) }}</dd>
     </dl>
 
     <dl
       class="grid grid-cols-2 justify-between gap-0 text-lg font-semi-bold-variable"
     >
-      <dt class="text-lg">{{ $t('osp.total') }}:</dt>
+      <dt class="text-lg">{{ $t('osp.total') }}</dt>
       <dd class="text-right text-xl">
         {{ formatCurrency(cost.withTax) }}
       </dd>
