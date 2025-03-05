@@ -5,6 +5,7 @@ import {
   LOGGED_IN_USER_DATA,
   LOGIN_WRONG_CREDENTIALS,
   REGISTERED_TEST_USER,
+  GUEST_TEST_USER,
 } from '../support/constants'
 
 test.beforeEach(async ({ homePage, page, countryDetector }) => {
@@ -209,5 +210,49 @@ test('C2171786 Verify setting the new password', async ({
     await page.waitForTimeout(500)
     await expect(signinPage.validationErrorText).not.toBeVisible()
     await expect(signinPage.resetPasswordErrorMessageContainer).toBeVisible()
+  })
+})
+
+test('C2171374 Verify User registration guest flow', async ({
+  signinPage,
+  page,
+  header,
+  toastMessage,
+}) => {
+  await test.step('Open Registration page and assert Password input is visible', async () => {
+    await header.headerLoginButton.waitFor()
+    await header.headerLoginButton.click()
+    await signinPage.registerTab.waitFor()
+    await signinPage.registerTab.click()
+    await signinPage.registerForm.waitFor()
+    await expect(signinPage.regInputPassword).toBeVisible()
+  })
+  await test.step('Enter correctly formatted user data', async () => {
+    await signinPage.selectGender('m')
+    await signinPage.fillRegistrationData(
+      GUEST_TEST_USER.firstName,
+      GUEST_TEST_USER.lastName,
+      GUEST_TEST_USER.emailAddress,
+      GUEST_TEST_USER.password,
+    )
+    await expect(signinPage.registerGuestInfo).not.toBeVisible()
+  })
+  await test.step('Click Continue as Guest toggle and assert guest info box is displayed', async () => {
+    await signinPage.registerGuestSwitch.click()
+    await page.waitForLoadState('domcontentloaded')
+    await expect(signinPage.passwordInput).not.toBeVisible()
+    await expect(signinPage.registerGuestInfo).toBeVisible()
+  })
+  await test.step('Click Register button and assert guest user is logged in', async () => {
+    await signinPage.registerButton.click()
+    await expect(toastMessage.toastInfo).toBeVisible()
+    if (!isMobile(page)) {
+      await page.waitForLoadState('domcontentloaded')
+      await header.headerLoginButton.hover()
+      await page.waitForLoadState('domcontentloaded')
+      await expect(signinPage.greetingUserFirstName).toBeVisible()
+      await expect(signinPage.userPopoverEmail).toBeVisible()
+      await expect(signinPage.userPopoverLogoutButton).toBeVisible()
+    }
   })
 })

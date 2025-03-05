@@ -3,6 +3,7 @@
     <button
       :id="id"
       class="relative inline-block h-6 w-11 rounded-full opacity-100 outline-2 outline-offset-2 focus-visible:shadow-none focus-visible:outline-blue-850"
+      data-testid="register-guest-switch"
       :class="isActive ? 'bg-accent' : 'bg-secondary-600'"
       role="switch"
       type="button"

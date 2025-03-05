@@ -207,3 +207,10 @@ export const ROUTES = {
   wishlist: '/wishlist',
   basket: '/basket',
 }
+
+export const GUEST_TEST_USER = {
+  firstName: 'Guest',
+  lastName: 'User',
+  emailAddress: process.env.TEST_USER_GUEST as string,
+  password: process.env.TEST_USER_PASSWORD as string,
+}

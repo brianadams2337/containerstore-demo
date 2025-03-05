@@ -31,6 +31,11 @@ export class SignInPage {
   readonly validationErrorText: Locator
   readonly resetPasswordErrorMessageContainer: Locator
   readonly submitNewPasswordButton: Locator
+  readonly registerGuestSwitch: Locator
+  readonly registerGuestInfo: Locator
+  readonly greetingUserFirstName: Locator
+  readonly userPopoverEmail: Locator
+  readonly userPopoverLogoutButton: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -79,6 +84,13 @@ export class SignInPage {
       'reset-password-error-message-container',
     )
     this.submitNewPasswordButton = page.getByTestId('submit-new-password')
+    this.registerGuestSwitch = page.getByTestId('register-guest-switch')
+    this.registerGuestInfo = page.getByTestId('register-guest-info')
+    this.greetingUserFirstName = page.getByTestId('greeting-user-firstname')
+    this.userPopoverEmail = page.getByTestId('user-popover-email')
+    this.userPopoverLogoutButton = page.getByTestId(
+      'user-popover-logout-button',
+    )
   }
 
   async fillLoginData(email: string, password: string) {

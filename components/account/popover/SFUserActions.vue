@@ -1,7 +1,10 @@
 <template>
   <div class="w-64">
     <div class="space-y-1 border-b border-gray-300 p-5">
-      <div class="text-base font-semi-bold-variable">
+      <div
+        class="text-base font-semi-bold-variable"
+        data-testid="greeting-user-firstname"
+      >
         {{
           $t('my_account.popover.greeting', {
             firstName: user?.firstName,
@@ -11,6 +14,7 @@
       <div
         v-if="user?.email"
         class="text-sm font-variable leading-5 text-gray-600"
+        data-testid="user-popover-email"
       >
         {{ user?.email }}
       </div>
@@ -40,6 +44,7 @@
         variant="raw"
         :disabled="isSubmitting"
         class="group flex w-full items-center !justify-start space-x-3 rounded-md px-3 py-2.5 hover:bg-gray-100 disabled:border-none disabled:!bg-white"
+        data-testid="user-popover-logout-button"
         @click="handleLogout"
       >
         <span

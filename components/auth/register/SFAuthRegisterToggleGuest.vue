@@ -12,6 +12,7 @@
     <div
       v-if="isGuestEnabled"
       class="flex items-center justify-between gap-2 rounded-lg bg-gray-100 px-3 py-2.5"
+      data-testid="register-guest-info"
     >
       <span class="text-xs font-variable text-gray-600">
         {{ $t('sign_in_page.guest_login.activation_hint') }}
