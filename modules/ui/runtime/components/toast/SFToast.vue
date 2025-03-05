@@ -22,6 +22,7 @@
         :key="action.text"
         :class="action.class"
         class="underline"
+        data-testid="toast-info-button"
         @click="onClick($event, action)"
       >
         {{ action.text }}

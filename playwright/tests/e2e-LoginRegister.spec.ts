@@ -246,6 +246,8 @@ test('C2171374 Verify User registration guest flow', async ({
   await test.step('Click Register button and assert guest user is logged in', async () => {
     await signinPage.registerButton.click()
     await expect(toastMessage.toastInfo).toBeVisible()
+    await toastMessage.toastInfoButton.click()
+    await expect(toastMessage.toastInfo).not.toBeVisible()
     if (!isMobile(page)) {
       await page.waitForLoadState('domcontentloaded')
       await header.headerLoginButton.hover()
