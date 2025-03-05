@@ -346,6 +346,10 @@
     "payment_key": {
       "default": "Kreditkarte",
       "accounting": "Buchhaltungszahlung"
+    },
+    "meta": {
+      "title": "Bestellung bestätigt %separator Vielen Dank für deinen Einkauf",
+      "description": "Vielen Dank für deine Bestellung! Dein Kauf wurde bestätigt. Überprüfe deine E-Mails für die Bestelldetails."
     }
   },
   "sign_in_page": {

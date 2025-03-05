@@ -74,7 +74,11 @@ const deliveryDate = computed(() => {
   return pkg?.deliveryDate
 })
 
-useSeoMeta({ robots: 'index,follow', title: t('navigation.osp') })
+useSeoMeta({
+  robots: 'noindex,nofollow',
+  title: t('osp.meta.title'),
+  description: t('osp.meta.description'),
+})
 
 defineOptions({ name: 'OrderSuccessPage' })
 definePageMeta({ pageType: 'osp' })

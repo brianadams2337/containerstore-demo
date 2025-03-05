@@ -345,6 +345,10 @@
     "payment_key": {
       "default": "Credit Card",
       "accounting": "Accounting Payment"
+    },
+    "meta": {
+      "title": "Order confirmed %separator Thank you for your purchase",
+      "description": "Thank you for your order! Your purchase is confirmed. Check your email for the order details."
     }
   },
   "sign_in_page": {
