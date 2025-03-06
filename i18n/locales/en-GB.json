@@ -354,6 +354,20 @@
     "meta": {
       "title": "Order confirmed %separator Thank you for your purchase",
       "description": "Thank you for your order! Your purchase is confirmed. Check your email for the order details."
+    },
+    "subscription": {
+      "title": "Subscription",
+      "interval": "Interval",
+      "follow_up_delivery": "Follow-up delivery",
+      "interval_keys": {
+        "1_months_1": "1 month",
+        "2_months": "2 months",
+        "3_months": "3 months"
+      },
+      "delivery_keys": {
+        "1": "Every 1st of the month",
+        "15": "Every 15th of the month"
+      }
     }
   },
   "sign_in_page": {

@@ -355,6 +355,20 @@
     "meta": {
       "title": "Bestellung bestätigt %separator Vielen Dank für deinen Einkauf",
       "description": "Vielen Dank für deine Bestellung! Dein Kauf wurde bestätigt. Überprüfe deine E-Mails für die Bestelldetails."
+    },
+    "subscription": {
+      "title": "Abonnement",
+      "interval": "Interval",
+      "follow_up_delivery": "Folgelieferung",
+      "interval_keys": {
+        "1_months_1": "1 Monat",
+        "2_months": "2 Monate",
+        "3_months": "3 Monate"
+      },
+      "delivery_keys": {
+        "1": "Jeden 1. des Monats",
+        "15": "Jeden 15. des Monats"
+      }
     }
   },
   "sign_in_page": {

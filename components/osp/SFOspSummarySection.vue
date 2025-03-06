@@ -22,7 +22,7 @@
             class="mb-3 flex flex-col gap-3 divide-y *:pt-3"
           >
             <li
-              v-for="{ variant, product, price, id } in items"
+              v-for="{ variant, product, price, id, customData } in items"
               :key="id"
               class="pt-3"
             >
@@ -31,6 +31,9 @@
                 :variant="variant"
                 :product="product"
                 :price="price"
+                :subscription="
+                  customData?.subscriptionDefinition as Record<string, string>
+                "
               />
             </li>
           </ul>

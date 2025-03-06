@@ -21,20 +21,47 @@
         </div>
         <ul class="flex flex-col gap-2 text-sm text-gray-600">
           <li v-if="color" class="flex gap-1">
-            <span class="font-medium">{{ $t('osp.color') }}:</span
-            ><span>{{ color }}</span>
+            <span class="font-medium">{{ $t('osp.color') }}:</span>
+            <span>{{ color }}</span>
           </li>
 
           <li v-if="size" class="flex gap-1">
-            <span class="font-medium">{{ $t('osp.size') }}:</span
-            ><span>{{ size }}</span>
+            <span class="font-medium">{{ $t('osp.size') }}:</span>
+            <span>{{ size }}</span>
           </li>
 
           <li class="flex gap-1">
-            <span class="font-medium">{{ $t('osp.quantity_label') }}:</span
-            ><span>{{ quantity }}</span>
+            <span class="font-medium">{{ $t('osp.quantity_label') }}:</span>
+            <span>{{ quantity }}</span>
           </li>
         </ul>
+        <div v-if="subscription" class="flex flex-col gap-2">
+          <div class="text-sm font-semi-bold-variable text-gray-900">
+            {{ $t('osp.subscription.title') }}
+          </div>
+          <ul class="flex flex-col gap-2 text-sm text-gray-600">
+            <li class="flex gap-1">
+              <span class="font-medium"
+                >{{ $t('osp.subscription.interval') }}:</span
+              ><span>{{
+                $t(
+                  'osp.subscription.interval_keys.' +
+                    subscription.subscriptionInterval,
+                )
+              }}</span>
+            </li>
+            <li class="flex gap-1">
+              <span class="font-medium"
+                >{{ $t('osp.subscription.follow_up_delivery') }}:</span
+              ><span>{{
+                $t(
+                  'osp.subscription.delivery_keys.' +
+                    subscription.subscriptionDeliveryDate,
+                )
+              }}</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
     <div class="flex flex-col justify-end">
@@ -76,6 +103,7 @@ const {
   variant: OrderVariant
   quantity?: number
   price: OrderPrice
+  subscription?: Record<string, string>
 }>()
 
 const { getProductDetailRoute } = useRouteHelpers()
