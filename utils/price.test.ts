@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+import type { CentAmount } from '@scayle/storefront-nuxt'
 import { getShippingCost, divideByHundred, type AppliedFees } from './price'
 
 describe('getShippingCost', () => {
@@ -6,8 +7,8 @@ describe('getShippingCost', () => {
     const appliedFees: AppliedFees = [
       {
         amount: {
-          withoutTax: 500,
-          withTax: 700,
+          withoutTax: 500 as CentAmount,
+          withTax: 700 as CentAmount,
         },
         category: 'delivery',
         key: 'test-key',
@@ -21,8 +22,8 @@ describe('getShippingCost', () => {
       },
       {
         amount: {
-          withoutTax: 500,
-          withTax: 700,
+          withoutTax: 500 as CentAmount,
+          withTax: 700 as CentAmount,
         },
         category: 'delivery',
         key: 'test-key',
@@ -36,8 +37,8 @@ describe('getShippingCost', () => {
       },
       {
         amount: {
-          withoutTax: 500,
-          withTax: 700,
+          withoutTax: 500 as CentAmount,
+          withTax: 700 as CentAmount,
         },
         category: 'payment',
         key: 'test-key',
@@ -58,8 +59,8 @@ describe('getShippingCost', () => {
     const appliedFees: AppliedFees = [
       {
         amount: {
-          withoutTax: 500,
-          withTax: 700,
+          withoutTax: 500 as CentAmount,
+          withTax: 700 as CentAmount,
         },
         category: 'delivery',
         key: 'test-key',
@@ -73,8 +74,8 @@ describe('getShippingCost', () => {
       },
       {
         amount: {
-          withoutTax: 500,
-          withTax: 700,
+          withoutTax: 500 as CentAmount,
+          withTax: 700 as CentAmount,
         },
         category: 'delivery',
         key: 'test-key',
@@ -88,8 +89,8 @@ describe('getShippingCost', () => {
       },
       {
         amount: {
-          withoutTax: 500,
-          withTax: 700,
+          withoutTax: 500 as CentAmount,
+          withTax: 700 as CentAmount,
         },
         category: 'payment',
         key: 'test-key',
