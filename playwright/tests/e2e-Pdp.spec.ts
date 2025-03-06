@@ -1,5 +1,5 @@
 import { expect, test } from '../fixtures/fixtures'
-import { PDP_E2E, LOCATION } from '../support/constants'
+import { PDP_E2E, LOCATION, PDP_TEST_VARIANT_ID } from '../support/constants'
 
 test('C2141594: Verify PDP name, brand and price for regular product', async ({
   productDetailPage,
@@ -214,5 +214,53 @@ test('C2171109: Verify PDP One-size product Store selector', async ({
     await countryDetector.closeModal()
     await productDetailPage.productName.waitFor()
     await productDetailPage.assertStoreSelectorIsVisible(true)
+  })
+})
+
+test('C2181798: Verify PDP URL Variant ID parameter for multi-size available variant', async ({
+  productDetailPage,
+  baseURL,
+  countryDetector,
+  page,
+}) => {
+  await test.step('Visit multi-size product PDP with available variants', async () => {
+    await productDetailPage.visitPDP(
+      PDP_TEST_VARIANT_ID.multiSizeProductUrl,
+      baseURL as string,
+    )
+    await countryDetector.closeModal()
+    await productDetailPage.variantPicker.waitFor()
+    expect(page.url()).not.toContain('variantId')
+  })
+  await test.step('Choose available variant and assert page URL parameter', async () => {
+    await productDetailPage.variantPicker.click({ force: true })
+    await productDetailPage
+      .getVariant(PDP_TEST_VARIANT_ID.availableVariantId)
+      .click()
+    await page.waitForTimeout(500)
+    expect(page.url()).toContain(
+      `variantId=${PDP_TEST_VARIANT_ID.availableVariantId}`,
+    )
+    await expect(productDetailPage.variantPicker).toContainText(
+      PDP_TEST_VARIANT_ID.availableSize,
+    )
+  })
+  await test.step('Choose another available variant and assert page URL parameter', async () => {
+    await productDetailPage.variantPicker.click({ force: true })
+    await page.waitForLoadState('domcontentloaded')
+    await productDetailPage
+      .getVariant(PDP_TEST_VARIANT_ID.availableVariantId2 as string)
+      .focus()
+    await productDetailPage
+      .getVariant(PDP_TEST_VARIANT_ID.availableVariantId2 as string)
+      .click()
+    await page.waitForTimeout(500)
+    await page.waitForLoadState('domcontentloaded')
+    expect(page.url()).toContain(
+      `variantId=${PDP_TEST_VARIANT_ID.availableVariantId2}`,
+    )
+    await expect(productDetailPage.variantPicker).toContainText(
+      PDP_TEST_VARIANT_ID.availableSize2,
+    )
   })
 })

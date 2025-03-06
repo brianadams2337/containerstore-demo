@@ -214,3 +214,11 @@ export const GUEST_TEST_USER = {
   emailAddress: process.env.TEST_USER_GUEST as string,
   password: process.env.TEST_USER_PASSWORD as string,
 }
+
+export const PDP_TEST_VARIANT_ID = {
+  multiSizeProductUrl: '/p/between-season-jacket-premium-205632',
+  availableVariantId: '334990',
+  availableVariantId2: '334992',
+  availableSize: '32',
+  availableSize2: '36',
+}
