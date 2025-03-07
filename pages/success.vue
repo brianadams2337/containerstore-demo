@@ -4,17 +4,19 @@
       <SFProductCardSkeleton v-for="index in 2" :key="`osp-loading-${index}`" />
     </div>
     <div v-if="orderData" class="relative flex flex-col md:flex-row">
-      <SFOspBasicDataSection
-        :order-data="orderData"
-        :delivery-date="deliveryDate"
-      />
       <SFOspSummarySection
         :order-data="orderData"
         :delivery-date="deliveryDate"
+        class="order-2"
+      />
+      <SFOspBasicDataSection
+        :order-data="orderData"
+        :delivery-date="deliveryDate"
+        class="order-1"
       />
       <SFOspCtaButtons
         :order-data="orderData"
-        class="bg-gray-50 px-5 py-4 md:hidden"
+        class="order-3 bg-gray-50 px-5 py-4 md:hidden"
       />
     </div>
     <SFEmptyState v-else :title="$t('osp.no_order_found')" />
