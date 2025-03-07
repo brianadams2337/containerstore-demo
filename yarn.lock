@@ -11254,10 +11254,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha512-4jbtZXNAsfZbAHiiqjLPBiCl16dES1zI4Hpzzxw61Tk+loF+sBDBKx1ICKKKwIqQ7M0mFn1TmkN7euSncWgHiQ==
 
-nuxi@3.22.4:
-  version "3.22.4"
-  resolved "https://registry.yarnpkg.com/nuxi/-/nuxi-3.22.4.tgz#b2bd0763b294dea1248ce62dc730a9e33eeeb146"
-  integrity sha512-rpVECiC1bNhbU/OI/Oj/HrI0wSq98SUnBPkoCS2qXUCtz70hCz9fD+KVSveJi9uKgBYhYTkbrKzACycsHQF4zw==
+nuxi@3.22.5:
+  version "3.22.5"
+  resolved "https://registry.yarnpkg.com/nuxi/-/nuxi-3.22.5.tgz#3194e23d1370a310a30048b93ac02ce375e3ef4c"
+  integrity sha512-fYEA7FDWQAVxGclBA/HHD+I4OurKuGBgxr/IGI6a78vjIg91AIhOPAzVcEkMtCSb0RWOnju3U1XO4ENnHMCq5Q==
 
 nuxt-svgo@4.0.14:
   version "4.0.14"
