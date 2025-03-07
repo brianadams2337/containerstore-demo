@@ -19,7 +19,7 @@
           <div class="text-base font-semi-bold-variable">{{ brand }}</div>
           <div class="text-sm">{{ name }}</div>
         </div>
-        <ul class="flex flex-col gap-2 text-sm text-gray-600">
+        <ul class="flex flex-col gap-1 text-sm text-gray-600">
           <li v-if="color" class="flex gap-1">
             <span class="font-medium">{{ $t('osp.color') }}:</span>
             <span>{{ color }}</span>
@@ -30,7 +30,7 @@
             <span>{{ size }}</span>
           </li>
 
-          <li class="flex gap-1">
+          <li v-if="!subscription" class="flex gap-1">
             <span class="font-medium">{{ $t('osp.quantity_label') }}:</span>
             <span>{{ quantity }}</span>
           </li>
@@ -39,7 +39,7 @@
           <div class="text-sm font-semi-bold-variable text-gray-900">
             {{ $t('osp.subscription.title') }}
           </div>
-          <ul class="flex flex-col gap-2 text-sm text-gray-600">
+          <ul class="flex flex-col gap-1 text-sm text-gray-600">
             <li class="flex gap-1">
               <span class="font-medium"
                 >{{ $t('osp.subscription.interval') }}:</span
