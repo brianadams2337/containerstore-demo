@@ -342,7 +342,10 @@
     "color": "Color",
     "tax": "19% VAT",
     "total": "Total",
-    "no_order_found": "The order information could not be found.",
+    "no_order_found": {
+      "title": "The order information could not be found.",
+      "description": "Your order details could not be retrieved. The link may have expired or is invalid. Please check your email for the correct link or contact support for assistance."
+    },
     "title": "Your order overview",
     "payment_key": {
       "default": "Credit Card",

@@ -343,7 +343,10 @@
     "tax": "19% MwSt.",
     "total": "Gesamt",
     "quantity_label": "Anzahl",
-    "no_order_found": "Die Bestelldaten wurden nicht gefunden.",
+    "no_order_found": {
+      "title": "Die Bestelldaten wurden nicht gefunden.",
+      "description": "Deine Bestelldaten konnten nicht abgerufen werden. Der Link ist möglicherweise abgelaufen oder ungültig. Bitte überprüfe deine E-Mails auf den richtigen Link oder kontaktiere den Support für Hilfe."
+    },
     "title": "Deine Bestellübersicht",
     "payment_key": {
       "default": "Kreditkarte",
