@@ -1,5 +1,6 @@
 import { expect, test } from '../fixtures/fixtures'
 import { PDP_E2E, LOCATION, PDP_TEST_VARIANT_ID } from '../support/constants'
+import { isMobile } from '../support/utils'
 
 test('C2141594: Verify PDP name, brand and price for regular product', async ({
   productDetailPage,
@@ -263,4 +264,61 @@ test('C2181798: Verify PDP URL Variant ID parameter for multi-size available var
       PDP_TEST_VARIANT_ID.availableSize2,
     )
   })
+})
+
+test('C2181801: Verify PDP URL Variant ID parameter for one-size product', async ({
+  productDetailPage,
+  baseURL,
+  countryDetector,
+  page,
+  search,
+  mobileNavigation,
+}) => {
+  await test.step('Visit one-size available product PDP and check URL parameter', async () => {
+    await productDetailPage.visitPDP(
+      PDP_TEST_VARIANT_ID.oneSizeProductUrl,
+      baseURL as string,
+    )
+    await countryDetector.closeModal()
+    await productDetailPage.variantPicker.waitFor()
+    expect(page.url()).not.toContain('variantId')
+  })
+  await test.step('Search for exact variant ID and check PDP URL parameter', async () => {
+    if (isMobile(page)) {
+      await mobileNavigation.startTypingMobileSearch(
+        PDP_TEST_VARIANT_ID.oneSizeVariantId,
+        true,
+      )
+      await mobileNavigation.searchInputField.nth(0).press('Enter')
+      await mobileNavigation.sideNavigationButton.click()
+      await page.waitForLoadState('networkidle')
+    } else {
+      await search.startTypingSearch(PDP_TEST_VARIANT_ID.oneSizeVariantId)
+      await search.searchInput.nth(1).press('Enter')
+      await page.waitForLoadState('networkidle')
+    }
+    await page.waitForTimeout(500)
+    await productDetailPage.variantPicker.waitFor()
+    await search.assertUrlIsLoaded(PDP_TEST_VARIANT_ID.oneSizeProductUrl2)
+    expect(page.url()).not.toContain('variantId')
+  })
+})
+
+test('C2181799: Verify PDP URL Variant ID parameter for multi-size sold-out variant', async ({
+  productDetailPage,
+  baseURL,
+  countryDetector,
+  page,
+}) => {
+  await productDetailPage.visitPDP(
+    PDP_TEST_VARIANT_ID.soldOutVariantUrl,
+    baseURL as string,
+  )
+  await countryDetector.closeModal()
+  await productDetailPage.variantPicker.waitFor()
+  expect(page.url()).toContain('variantId')
+  await expect(productDetailPage.addToBasketButton).toBeDisabled()
+  await expect(productDetailPage.variantPicker).toContainText(
+    PDP_TEST_VARIANT_ID.soldOutVariantSize,
+  )
 })

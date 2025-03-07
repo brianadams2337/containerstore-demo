@@ -221,4 +221,9 @@ export const PDP_TEST_VARIANT_ID = {
   availableVariantId2: '334992',
   availableSize: '32',
   availableSize2: '36',
+  oneSizeProductUrl: '/p/umhangetasche-adicolor-classic-206008',
+  oneSizeProductUrl2: '/p/umhangetasche-adicolor-classic-206025',
+  oneSizeVariantId: '333316',
+  soldOutVariantUrl: '/p/between-season-jacket-premium-205632?variantId=334988',
+  soldOutVariantSize: '28',
 }
