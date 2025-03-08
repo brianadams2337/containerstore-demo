@@ -8585,10 +8585,10 @@ h3@^1.10.0, h3@^1.12.0, h3@^1.13.0, h3@^1.13.1, h3@^1.14.0, h3@^1.15.0, h3@^1.15
     ufo "^1.5.4"
     uncrypto "^0.1.3"
 
-happy-dom@17.3.0:
-  version "17.3.0"
-  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-17.3.0.tgz#d9020b3759a5e2802df2afd16d681db144b964b2"
-  integrity sha512-dTwlpUHrhE0usQOd1Df9k461SOYQUWNl0G31mXCDj+N9//oPcDb+cchrSJzrXN6qxZ5sZSrLf5AfY702Zvddfw==
+happy-dom@17.4.0:
+  version "17.4.0"
+  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-17.4.0.tgz#f80494ee00ad76b94f8f596a7b5c9103dca86248"
+  integrity sha512-LN2BIuvdFZ8snmF6LtQB2vYBzRmgCx+uqlFX9JpKVRHQ44NODNnOchB4ZW8404djHhdbQgEHRAkXCZ0zGOyzew==
   dependencies:
     webidl-conversions "^7.0.0"
     whatwg-mimetype "^3.0.0"
