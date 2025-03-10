@@ -28,7 +28,7 @@ export interface StoryblokTrackingContent {
   index?: string
 }
 
-interface Margins {
+export interface Margins {
   margin_top: MarginKey
 }
 

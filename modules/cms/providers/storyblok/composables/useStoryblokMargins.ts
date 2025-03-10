@@ -1,9 +1,7 @@
 import { computed } from 'vue'
-import type { MarginKey } from '../types/storyblok'
+import type { MarginKey, Margins } from '../types/storyblok'
 
-export function useStoryblokMargins(
-  content: Partial<{ margin_top: MarginKey }>,
-) {
+export function useStoryblokMargins(content: Partial<Margins>) {
   const margins: Record<MarginKey, string> = {
     '': '',
     xs: 'mt-2',
