@@ -1731,7 +1731,7 @@
   resolved "https://registry.yarnpkg.com/@nuxt/devalue/-/devalue-2.0.2.tgz#5749f04df13bda4c863338d8dabaf370f45ef7c7"
   integrity sha512-GBzP8zOc7CGWyFQS6dv1lQz8VVpz5C2yRszbXufwG/9zhStTIH50EtD87NmWbTMwXDvZLNg8GIpb1UFdH93JCA==
 
-"@nuxt/devtools-kit@1.7.0", "@nuxt/devtools-kit@^1.6.3":
+"@nuxt/devtools-kit@1.7.0":
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/@nuxt/devtools-kit/-/devtools-kit-1.7.0.tgz#a9820f9431016386643f92b26bedb53f858c4c94"
   integrity sha512-+NgZ2uP5BuneqvQbe7EdOEaFEDy8762c99pLABtn7/Ur0ExEsQJMP7pYjjoTfKubhBqecr5Vo9yHkPBj1eHulQ==
@@ -1861,31 +1861,31 @@
     pathe "^2.0.3"
     unimport "^4.1.2"
 
-"@nuxt/fonts@0.10.3":
-  version "0.10.3"
-  resolved "https://registry.yarnpkg.com/@nuxt/fonts/-/fonts-0.10.3.tgz#acc092fbea47054c78a3e7bc6a1854fcd0051a59"
-  integrity sha512-wLCQ+olKZtClVmMEgjsNNDfcNCmyhIv8eujcWYYoFiv1Csy1ySqjI2+1Kq7wwaJhWl4sU83KQC2lLdiMuEeHCw==
+"@nuxt/fonts@0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@nuxt/fonts/-/fonts-0.11.0.tgz#a9ae5d3467f29cb3c863b1c4f8c1f0a20388fc3e"
+  integrity sha512-YdQqJDm+B9A6hyhralFcUXMCLdQZTKuqHPpAeD6Gb3uYLxfVYVyKKxc5Ch0n656u1mp9CaPaeK4CkDAQDgxAbQ==
   dependencies:
-    "@nuxt/devtools-kit" "^1.6.3"
-    "@nuxt/kit" "^3.14.1592"
-    chalk "^5.3.0"
-    css-tree "^3.0.1"
+    "@nuxt/devtools-kit" "^2.2.1"
+    "@nuxt/kit" "^3.16.0"
+    consola "^3.4.0"
+    css-tree "^3.1.0"
     defu "^6.1.4"
-    esbuild "^0.24.0"
+    esbuild "^0.25.0"
     fontaine "^0.5.0"
-    h3 "^1.13.0"
-    jiti "^2.4.1"
+    h3 "^1.15.1"
+    jiti "^2.4.2"
     magic-regexp "^0.8.0"
-    magic-string "^0.30.14"
-    node-fetch-native "^1.6.4"
-    ohash "^1.1.4"
-    pathe "^1.1.2"
-    sirv "^3.0.0"
-    tinyglobby "^0.2.10"
+    magic-string "^0.30.17"
+    node-fetch-native "^1.6.6"
+    ohash "^2.0.11"
+    pathe "^2.0.3"
+    sirv "^3.0.1"
+    tinyglobby "^0.2.12"
     ufo "^1.5.4"
-    unifont "^0.1.6"
-    unplugin "^2.0.0"
-    unstorage "^1.13.1"
+    unifont "^0.1.7"
+    unplugin "^2.2.0"
+    unstorage "^1.15.0"
 
 "@nuxt/image@1.9.0":
   version "1.9.0"
@@ -1904,7 +1904,7 @@
   optionalDependencies:
     ipx "^2.1.0"
 
-"@nuxt/kit@3.15.4", "@nuxt/kit@^3.12.2", "@nuxt/kit@^3.12.3", "@nuxt/kit@^3.14.0", "@nuxt/kit@^3.14.1592", "@nuxt/kit@^3.15.0", "@nuxt/kit@^3.15.1", "@nuxt/kit@^3.15.4", "@nuxt/kit@^3.16.0", "@nuxt/kit@^3.4.0", "@nuxt/kit@^3.7.0":
+"@nuxt/kit@3.15.4", "@nuxt/kit@^3.12.2", "@nuxt/kit@^3.12.3", "@nuxt/kit@^3.14.0", "@nuxt/kit@^3.15.0", "@nuxt/kit@^3.15.1", "@nuxt/kit@^3.15.4", "@nuxt/kit@^3.16.0", "@nuxt/kit@^3.4.0", "@nuxt/kit@^3.7.0":
   version "3.15.4"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.15.4.tgz#122f511e518573320a035b5e24adf0118d51485d"
   integrity sha512-dr7I7eZOoRLl4uxdxeL2dQsH0OrbEiVPIyBHnBpA4co24CBnoJoF+JINuP9l3PAM3IhUzc5JIVq3/YY3lEc3Hw==
@@ -5643,7 +5643,7 @@ chalk@^4.0.0, chalk@^4.0.2, chalk@^4.1.0, chalk@^4.1.1, chalk@^4.1.2:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chalk@^5.3.0, chalk@^5.4.1:
+chalk@^5.4.1:
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.4.1.tgz#1b48bf0963ec158dce2aacf69c093ae2dd2092d8"
   integrity sha512-zgVZuo2WcZgfUEmsn6eO3kINexW8RAE4maiQ8QNs8CtpPCSyMiYsULR3HQYkm3w8FIA3SberyMJMSldGsW+U3w==
@@ -6377,7 +6377,7 @@ css-tree@^2.2.1, css-tree@^2.3.1:
     mdn-data "2.0.30"
     source-map-js "^1.0.1"
 
-css-tree@^3.0.0, css-tree@^3.0.1:
+css-tree@^3.0.0, css-tree@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/css-tree/-/css-tree-3.1.0.tgz#7aabc035f4e66b5c86f54570d55e05b1346eb0fd"
   integrity sha512-0eW44TGN5SQXU1mWSkKwFstI/22X2bG1nYzZTYMAWjylYURhse752YgbE4Cx46AC+bAvI+/dYTPRk1LqSUnu6w==
@@ -11616,6 +11616,11 @@ ohash@^1.1.4:
   resolved "https://registry.yarnpkg.com/ohash/-/ohash-1.1.5.tgz#4358eb72929901a85ffffa12d6d899532b126237"
   integrity sha512-AtXrG/lMFjPBWj3uhWYFwYVZQqutPYRsv6nnPLTipnC+gJuMFc+WFzf/jx+94Ebray1vxfQfEFDtpIpppOe4xQ==
 
+ohash@^2.0.11:
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/ohash/-/ohash-2.0.11.tgz#60b11e8cff62ca9dee88d13747a5baa145f5900b"
+  integrity sha512-RdR9FQrFwNBNXAr4GixM8YaRZRJ5PUWbKYbE5eOsrwAjJW0q2REGcf79oYPsLyskQCZG1PLN+S/K1V00joZAoQ==
+
 ohash@^2.0.4, ohash@^2.0.5:
   version "2.0.9"
   resolved "https://registry.yarnpkg.com/ohash/-/ohash-2.0.9.tgz#0e579dfcbf16172c2ddf33a3d3c6b2c945ccdc48"
@@ -13474,7 +13479,7 @@ simple-uuid@^0.0.1:
   resolved "https://registry.yarnpkg.com/simple-uuid/-/simple-uuid-0.0.1.tgz#bd3edd78f9e55f07093adb9fba6fed87fb8e2a75"
   integrity sha512-ntM3nHmSaNrSfRL1M9xhnjS5dj9897VsNu4tIzrIk5+ESXPS9SIbwu20zcK+SrMllpcXW4qR4KhX0LXggox1AQ==
 
-sirv@^3.0.0:
+sirv@^3.0.0, sirv@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/sirv/-/sirv-3.0.1.tgz#32a844794655b727f9e2867b777e0060fbe07bf3"
   integrity sha512-FoqMu0NCGBLCcAkS1qA+XJIQTR6/JHfQXl+uGteNCQ76T91DMUjPa9xfmeqMY3z80nLSg9yQmNjK0Px6RWsH/A==
@@ -14664,7 +14669,7 @@ unicorn-magic@^0.3.0:
   resolved "https://registry.yarnpkg.com/unicorn-magic/-/unicorn-magic-0.3.0.tgz#4efd45c85a69e0dd576d25532fbfa22aa5c8a104"
   integrity sha512-+QBBXBCvifc56fsbuxZQ6Sic3wqqc3WWaqxs58gvJrcOuN83HGTCwz3oS5phzU9LthRNE9VrJCFCLUgHeeFnfA==
 
-unifont@^0.1.6:
+unifont@^0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/unifont/-/unifont-0.1.7.tgz#17b09cc6c98c10660a13b7d8fa582097ba2c20c7"
   integrity sha512-UyN6r/TUyl69iW/jhXaCtuwA6bP9ZSLhVViwgP8LH9EHRGk5FyIMDxvClqD5z2BV6MI9GMATzd0dyLqFxKkUmQ==
@@ -14832,7 +14837,7 @@ unplugin@^1.1.0, unplugin@^1.10.0, unplugin@^1.10.1, unplugin@^1.14.1, unplugin@
     acorn "^8.14.0"
     webpack-virtual-modules "^0.6.2"
 
-unplugin@^2.0.0, unplugin@^2.1.0, unplugin@^2.1.2, unplugin@^2.2.0:
+unplugin@^2.1.0, unplugin@^2.1.2, unplugin@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-2.2.0.tgz#2659dee5c6b3de9b7ea671228c18263886ae58b6"
   integrity sha512-m1ekpSwuOT5hxkJeZGRxO7gXbXT3gF26NjQ7GdVHoLoF8/nopLcd/QfPigpCy7i51oFHiRJg/CyHhj4vs2+KGw==
@@ -14840,7 +14845,7 @@ unplugin@^2.0.0, unplugin@^2.1.0, unplugin@^2.1.2, unplugin@^2.2.0:
     acorn "^8.14.0"
     webpack-virtual-modules "^0.6.2"
 
-unstorage@1.15.0, unstorage@^1.10.1, unstorage@^1.10.2, unstorage@^1.13.1, unstorage@^1.14.4:
+unstorage@1.15.0, unstorage@^1.10.1, unstorage@^1.10.2, unstorage@^1.13.1, unstorage@^1.14.4, unstorage@^1.15.0:
   version "1.15.0"
   resolved "https://registry.yarnpkg.com/unstorage/-/unstorage-1.15.0.tgz#d1f23cba0901c5317d15a751a299e50fbb637674"
   integrity sha512-m40eHdGY/gA6xAPqo8eaxqXgBuzQTlAKfmB1iF7oCKXE1HfwHwzDJBywK+qQGn52dta+bPlZluPF7++yR3p/bg==
