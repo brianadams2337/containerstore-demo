@@ -1,6 +1,7 @@
 import type { Locator, Page } from '@playwright/test'
+import { expect } from '../fixtures/fixtures'
 
-export class OrdersPage {
+export class OrderSuccessPage {
   readonly page: Page
   readonly ospGreetingBox: Locator
   readonly ospGreetingBoxHeadline: Locator
@@ -22,6 +23,7 @@ export class OrdersPage {
   readonly ospSubtotal: Locator
   readonly ospShippingCost: Locator
   readonly ospTotal: Locator
+  readonly ospProductPrice: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -47,5 +49,28 @@ export class OrdersPage {
     this.ospSubtotal = page.getByTestId('osp-subtotal')
     this.ospShippingCost = page.getByTestId('osp-shipping-cost')
     this.ospTotal = page.getByTestId('osp-total')
+    this.ospProductPrice = page.getByTestId('price')
+  }
+
+  async assertOspPriceSummary(
+    subtotalPrice: Locator,
+    shippingCost: Locator,
+    totalPrice: Locator,
+  ) {
+    const subtotalPriceLabel = await subtotalPrice.textContent()
+    const shippingCostLabel = await shippingCost.textContent()
+    const totalPriceLabel = await totalPrice.textContent()
+
+    const subtotalPriceValue = parseFloat(
+      subtotalPriceLabel?.replace(/[^0-9.-]+/g, '') ?? '0',
+    )
+    const shippingCostValue = parseFloat(
+      shippingCostLabel?.replace(/[^0-9.-]+/g, '') ?? '0',
+    )
+    const totalPriceValue = parseFloat(
+      totalPriceLabel?.replace(/[^0-9.-]+/g, '') ?? '0',
+    )
+
+    expect(totalPriceValue).toEqual(subtotalPriceValue + shippingCostValue)
   }
 }

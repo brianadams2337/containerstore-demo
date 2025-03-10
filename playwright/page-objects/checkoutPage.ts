@@ -15,6 +15,8 @@ export class CheckoutPage {
   readonly itemQuantityPlus: Locator
   readonly itemPrice: Locator
   readonly buttonItemRemove: Locator
+  readonly checkboxAcceptTerms: Locator
+  readonly ctaPayButton: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -41,5 +43,9 @@ export class CheckoutPage {
     this.itemQuantityPlus = page.locator('[data-test-id="item-quantity-plus"]')
     this.itemPrice = page.locator('[data-test-id="item-price"]')
     this.buttonItemRemove = page.locator('[data-test-id="item-remove"]')
+    this.checkboxAcceptTerms = page.locator(
+      '[data-test-id="paymentBelowMobileBasket-termsAndPrivacy-checkbox"]',
+    )
+    this.ctaPayButton = page.locator('[data-test-id="navigation-next-step"]')
   }
 }

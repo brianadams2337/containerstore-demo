@@ -227,3 +227,8 @@ export const PDP_TEST_VARIANT_ID = {
   soldOutVariantUrl: '/p/between-season-jacket-premium-205632?variantId=334988',
   soldOutVariantSize: '28',
 }
+
+export const OSP_TEST_DATA = {
+  regularProductVariantId: 335088,
+  ordersUrl: '/orders',
+}

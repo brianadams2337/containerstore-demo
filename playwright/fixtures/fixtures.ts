@@ -25,6 +25,7 @@ import { Sorting } from '../page-objects/components/sorting'
 import { RPC } from '../page-objects/components/rpc'
 import { FreeProductList } from '../page-objects/components/freeProductList'
 import { FreeProductModal } from '../page-objects/components/freeProductModal'
+import { OrderSuccessPage } from '../page-objects/orderSuccessPage'
 
 interface Fixtures {
   rpc: RPC
@@ -53,6 +54,7 @@ interface Fixtures {
   sorting: Sorting
   freeProductList: FreeProductList
   freeProductModal: FreeProductModal
+  orderSuccessPage: OrderSuccessPage
 }
 
 export type OutputMode = 'json' | 'html' | 'csv'
@@ -160,6 +162,10 @@ export const test = base.extend<Fixtures>({
   freeProductModal: async ({ page }, use) => {
     const freeProductModal = new FreeProductModal(page)
     await use(freeProductModal)
+  },
+  orderSuccessPage: async ({ page }, use) => {
+    const orderSucessPage = new OrderSuccessPage(page)
+    await use(orderSucessPage)
   },
 })
 export { expect } from '@playwright/test'
