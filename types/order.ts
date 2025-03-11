@@ -4,6 +4,7 @@ import type {
   AttributeGroupSingle,
   Attributes,
   Order as BaseOrder,
+  OrderItem as BaseOrderItem,
   ListOfPackages,
   LowestPriorPrice,
   OrderAddress as BaseOrderAddress,
@@ -19,9 +20,11 @@ interface OrderCategory {
 
 export type OrderAdvancedAttribute = Omit<AdvancedAttribute, 'id' | 'type'>
 
-export type DeliveryDate = ListOfPackages[0]['deliveryDate']
+export type Package = ListOfPackages[0]
 
-export type OrderPrice = Exclude<BaseOrder['items'], undefined>[0]['price']
+export type DeliveryDate = Package['deliveryDate']
+
+export type DeliveryInfo = Package & { formattedStatus: string }
 
 // The product and variant data returned in the order payload varies by tenant
 // We define it here to get strict typing
@@ -71,20 +74,12 @@ export interface OrderVariant {
   updatedAt: string
 }
 
-export type OrderItem = Exclude<
-  Exclude<BaseOrder['items'], undefined>[number],
-  'product' | 'variant'
-> & {
-  product: OrderProduct
-  variant: OrderVariant
-}
+export type Order = BaseOrder<OrderProduct, OrderVariant>
 
-export type Order = BaseOrder & { items?: OrderItem[] }
+export type OrderItem = BaseOrderItem<OrderProduct, OrderVariant>
 
 export type OrderItems = OrderItem[]
 
+export type OrderPrice = OrderItem['price']
+
 export type OrderAddress = BaseOrderAddress
-
-export type Package = ListOfPackages[0]
-
-export type DeliveryInfo = Package & { formattedStatus: string }

@@ -1,16 +1,14 @@
 import {
-  type Order,
   type Price,
   type Product,
   type ProductCategory,
   type Value,
-  getItemQuantityFromOrder,
   getTotalAppliedReductions,
-  getUniqueItemsFromOrder,
 } from '@scayle/storefront-nuxt'
 import { useCurrentShop } from '#storefront/composables'
 import { usePageState } from '~/composables/usePageState'
 import { useTracking } from '~/composables/useTracking'
+import type { Order } from '~/types/order'
 import {
   divideByHundred,
   getCarrier,
@@ -22,6 +20,20 @@ import {
   sumReductionsFromAllOrderItemsPerCategory,
 } from '~/utils'
 import type { OrderItemProduct, OrderItemVariant } from '~/types/tracking'
+
+const getUniqueItemsFromOrder = (order: Order) => {
+  const uniqueItems = new Set()
+  return order.items?.filter((item) => {
+    return !uniqueItems.has(item.variant.id) && uniqueItems.add(item.variant.id)
+  })
+}
+
+const getItemQuantityFromOrder = (
+  order: Order,
+  variantId: number,
+): number | undefined => {
+  return order.items?.filter(({ variant }) => variant.id === variantId).length
+}
 
 const getItems = (orderData: Order, currency?: string) => {
   const defaultEmptyValue = ''

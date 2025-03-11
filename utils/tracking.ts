@@ -2,7 +2,6 @@ import {
   type AppliedReduction,
   type BasketResponseData,
   type ListOfPackages,
-  type Order,
   type PackageReference,
   type Price,
   type Product,
@@ -14,6 +13,7 @@ import {
 } from '@scayle/storefront-nuxt'
 import { isEqual } from './object'
 import { divideByHundred } from '~/utils/price'
+import type { Order } from '~/types/order'
 import type {
   TrackingEvent,
   ProductListData,

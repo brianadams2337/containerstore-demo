@@ -1,7 +1,7 @@
-import { computed, type Ref } from 'vue'
+import { computed } from 'vue'
 import { useOrder, useVariant } from '#storefront/composables'
 import { useRoute } from '#app/composables/router'
-import type { Order, OrderItems } from '~/types/order'
+import type { OrderProduct, OrderVariant } from '~/types/order'
 
 export function useOrderDetails(key?: string) {
   if (!key) {
@@ -11,25 +11,19 @@ export function useOrderDetails(key?: string) {
   const route = useRoute()
   const paramId = computed(() => +route.params.id)
 
-  const { data, status } = useOrder(
+  const { data: orderDetails, status } = useOrder<OrderProduct, OrderVariant>(
     {
       params: computed(() => ({ orderId: paramId.value })),
     },
     `orderId-${key}`,
   )
 
-  // NOTE: Explicitly casting returned data from useOrder to mitigate returned any data type
-  const orderDetails = data as Ref<Order>
-
-  const totalAmount = computed(() => orderDetails.value?.cost.withTax ?? 0)
-
   const deliveryCost = computed(() => {
-    return (
-      (orderDetails as Ref<Order>).value?.cost.appliedFees
-        ?.filter(({ category }) => category === 'delivery')
-        ?.reduce((acc, fee) => {
-          return acc + fee.amount.withTax
-        }, 0) || 0
+    return (orderDetails.value?.cost?.appliedFees ?? []).reduce(
+      (total, { category, amount }) => {
+        return category === 'delivery' ? total + amount.withTax : total
+      },
+      0,
     )
   })
 
@@ -41,18 +35,14 @@ export function useOrderDetails(key?: string) {
     return orderDetails.value?.address?.billing
   })
 
-  const itemCount = computed(() => orderDetails.value?.items?.length || 0)
-  const packages = computed(() => orderDetails.value?.packages)
-  const orderItems = computed(() => orderDetails.value.items as OrderItems)
-  const paymentKey = computed(() => {
-    return orderDetails.value.payment && orderDetails.value.payment[0].key
-  })
+  const totalAmount = computed(() => orderDetails.value?.cost.withTax ?? 0)
+  const itemCount = computed(() => orderDetails.value?.items?.length ?? 0)
+  const packages = computed(() => orderDetails.value?.packages ?? [])
+  const orderItems = computed(() => orderDetails.value?.items ?? [])
+  const paymentKey = computed(() => orderDetails.value?.payment?.[0]?.key)
 
   const variantIds = computed(() => {
-    const ids =
-      orderDetails.value?.items?.map((it) => it.variant.id as number) ?? []
-
-    return [...new Map(ids.map((id) => [id, id])).values()]
+    return [...new Set(orderItems.value.map((item) => item.variant.id))]
   })
 
   const { data: orderVariants } = useVariant(
