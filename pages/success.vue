@@ -94,8 +94,14 @@ const deliveryDate = computed(() => {
 
 useSeoMeta({
   robots: 'noindex,nofollow',
-  title: t('osp.meta.title'),
-  description: t('osp.meta.description'),
+  title: () =>
+    status.value === 'error'
+      ? t('osp.no_order_found.title')
+      : t('osp.meta.title'),
+  description: () =>
+    status.value === 'error'
+      ? t('osp.no_order_found.description')
+      : t('osp.meta.description'),
 })
 
 defineOptions({ name: 'OrderSuccessPage' })
