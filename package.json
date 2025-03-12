@@ -124,7 +124,7 @@
     "@vueuse/gesture": "2.0.0",
     "@vueuse/integrations": "13.0.0",
     "@vueuse/nuxt": "13.0.0",
-    "axios": "1.8.2",
+    "axios": "1.8.3",
     "cf-content-types-generator": "2.15.5",
     "check-password-strength": "3.0.0",
     "citty": "0.1.6",
