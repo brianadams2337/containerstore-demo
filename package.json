@@ -12,7 +12,6 @@
   "website": "https://scayle.dev/en/storefront-guide/developer-guide/getting-started/about-storefront",
   "type": "module",
   "scripts": {
-    "assert-mandatory-env-vars": "echo 'skipped'",
     "build": "nuxt build",
     "contentful:download": "env-cmd -f .env.contentful -x contentful-export --space-id \\$CONTENTFUL_SPACE_ID --management-token \\$CONTENTFUL_MANAGEMENT_TOKEN  --skip-webhooks --skip-roles --content-file contentful.\\$CONTENTFUL_SPACE_ID.json",
     "contentful:generate": "env-cmd -f .env.contentful -x cf-content-types-generator -X --response --typeguard ./contentful.\\$CONTENTFUL_SPACE_ID.json --out ./modules/cms/providers/contentful/types/gen && prettier --write modules/cms/providers/contentful/types/gen/** && find ./modules/cms/providers/contentful/types/gen -type f -name '*.ts' -print0 | xargs -0 sed -i '' -E \"s/Type([[:alnum:]]+)<'WITHOUT_(LINK_RESOLUTION|UNRESOLVABLE_LINKS)'>/Type\\1<'WITHOUT_\\2', LocaleCode>/g\"  ",
