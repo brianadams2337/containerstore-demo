@@ -8,7 +8,7 @@
         {{ $t('search.page.heading', { term }) }}
         <SFFadeInTransition>
           <span
-            v-if="totalProductsCount > 0"
+            v-if="totalProductsCount > 0 && status === 'success'"
             class="rounded-full bg-gray-900 px-2 py-0.5 text-xs font-semibold leading-4 text-white"
           >
             {{ totalProductsCount }}
