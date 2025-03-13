@@ -56,12 +56,13 @@
 </template>
 
 <script setup lang="ts">
-import { useSeoMeta } from '@unhead/vue'
+import { useHead, useSeoMeta } from '@unhead/vue'
 import { defineOptions } from 'vue'
 import { whenever } from '@vueuse/core'
+import { sanitizeCanonicalURL } from '@scayle/storefront-nuxt'
 import SFProductCardSkeleton from '~/components/product/card/SFProductCardSkeleton.vue'
 import SFAsyncDataWrapper from '~/components/SFAsyncDataWrapper.vue'
-import { definePageMeta } from '#imports'
+import { definePageMeta, useNuxtApp, useRoute } from '#imports'
 import { useWishlistTracking } from '~/composables'
 import { useWishlist } from '#storefront/composables'
 import SFEmptyState from '~/components/SFEmptyState.vue'
@@ -83,8 +84,27 @@ whenever(
   { once: true, immediate: true },
 )
 
-useSeoMeta({ robots: 'noindex,follow', title: t('wishlist.meta.title') })
+const {
+  $config: {
+    public: { baseUrl },
+  },
+} = useNuxtApp()
+useSeoMeta({
+  robots: 'noindex, nofollow',
+  title: t('wishlist.meta.title'),
+  description: t('wishlist.meta.description'),
+})
 
+const route = useRoute()
+useHead({
+  link: [
+    {
+      rel: 'canonical',
+      key: 'canonical',
+      href: sanitizeCanonicalURL(`${baseUrl}${route?.fullPath}`),
+    },
+  ],
+})
 defineOptions({ name: 'WishlistPage' })
 definePageMeta({ pageType: 'wishlist_page' })
 </script>

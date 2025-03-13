@@ -130,7 +130,8 @@
   },
   "wishlist": {
     "meta": {
-      "title": "Wishlist"
+      "title": "Your Wishlist",
+      "description": "Save your favorite products and keep track of your must-haves."
     },
     "heading": "Wishlist",
     "no_items_info": "You have no items in your wishlist.",

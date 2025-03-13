@@ -131,7 +131,8 @@
   },
   "wishlist": {
     "meta": {
-      "title": "Wunschliste"
+      "title": "Deine Wunschliste",
+      "description": "Speichere deine Lieblingsprodukte und behalte den Überblick über deine Favoriten."
     },
     "heading": "Wunschliste",
     "no_items_info": "Du hast noch keine Artikel auf Deiner Wunschliste.",
