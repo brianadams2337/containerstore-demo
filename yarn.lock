@@ -3539,10 +3539,10 @@
     uncrypto "^0.1.3"
     unstorage "^1.10.2"
 
-"@scayle/nuxt-image-provider@0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@scayle/nuxt-image-provider/-/nuxt-image-provider-0.2.2.tgz#b5aad5bf2f2164f9a1fb00140e80f30deb1e23bc"
-  integrity sha512-tCRCMlKyhZPuxsrCgDIcd5Cs6ZMOqTtr6Jn7e2gD9d1dAE+L68KvfNGROiDcHgXMxdZPzpbiuzmLXKjFh1qc8g==
+"@scayle/nuxt-image-provider@0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@scayle/nuxt-image-provider/-/nuxt-image-provider-0.2.3.tgz#f838ba18c8eb6503e28d0eefbb46bc17f5709bc9"
+  integrity sha512-FASEL1/NzGbugPrPcY17V9ViHKJE40A+L+QFFp7MhJOAa/pl37A53H9AiRaDW03E6kGGuYkXJZ+ftV1LUFasXw==
 
 "@scayle/nuxt-opentelemetry@0.7.0":
   version "0.7.0"
