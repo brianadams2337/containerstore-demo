@@ -43,6 +43,7 @@
           v-if="sibling.image"
           :alt="siblingAltText(sibling)"
           sizes="64px"
+          class="h-full"
           :class="{
             'opacity-20': sibling.isSoldOut && sibling.id !== product.id,
           }"
