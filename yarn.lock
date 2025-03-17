@@ -2065,19 +2065,20 @@
     vue-i18n "^10.0.3"
     vue-router "^4.5.0"
 
-"@nuxtjs/tailwindcss@6.13.2":
-  version "6.13.2"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/tailwindcss/-/tailwindcss-6.13.2.tgz#116e4896b592b5d8e40d1095f0df2c5753779539"
-  integrity sha512-knCmVe1I0div4tWj6f9GRaHX97zqD257gOeG4JIcWsC0yRfoiT34GBAyqK8Sc15qiKKMB/lZK6Z3skQRYRk/1Q==
+"@nuxtjs/tailwindcss@6.13.1":
+  version "6.13.1"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/tailwindcss/-/tailwindcss-6.13.1.tgz#9c4dfc71c4fcb8382af78c8a4fa63eaba62d4ea9"
+  integrity sha512-atL2SaPsxLfMTlXUQvr1UpDYdz6ocNOhH35H+t7M++g4r79QiQScJ7XuyyMR9AyBN19lkPA3nw7NXxazXmYxlA==
   dependencies:
+    "@nuxt/kit" "^3.15.1"
     autoprefixer "^10.4.20"
-    c12 "^3.0.2"
-    consola "^3.4.0"
+    c12 "^2.0.1"
+    consola "^3.3.3"
     defu "^6.1.4"
-    h3 "^1.15.1"
+    h3 "^1.13.1"
     klona "^2.0.6"
-    pathe "^2.0.3"
-    postcss "^8.5.3"
+    pathe "^2.0.1"
+    postcss "^8.4.49"
     postcss-nesting "^13.0.1"
     tailwind-config-viewer "^2.0.4"
     tailwindcss "~3.4.17"
@@ -8543,7 +8544,7 @@ gzip-size@^7.0.0:
   dependencies:
     duplexer "^0.1.2"
 
-h3@^1.10.0, h3@^1.12.0, h3@^1.13.0, h3@^1.14.0, h3@^1.15.0, h3@^1.15.1:
+h3@^1.10.0, h3@^1.12.0, h3@^1.13.0, h3@^1.13.1, h3@^1.14.0, h3@^1.15.0, h3@^1.15.1:
   version "1.15.1"
   resolved "https://registry.yarnpkg.com/h3/-/h3-1.15.1.tgz#59d6f70d7ef619fad74ecdf465a08fff898033bb"
   integrity sha512-+ORaOBttdUm1E2Uu/obAyCguiI7MbBvsLTndc3gyK3zU+SYLoZXlyCP9Xgy0gikkGufFLTZXCXD6+4BsufnmHA==
@@ -12373,7 +12374,7 @@ postcss-value-parser@^4.0.0, postcss-value-parser@^4.2.0:
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz#723c09920836ba6d3e5af019f92bc0971c02e514"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
-postcss@8.5.3, postcss@^8.4.4, postcss@^8.4.43, postcss@^8.4.47, postcss@^8.4.48, postcss@^8.5.0, postcss@^8.5.1, postcss@^8.5.3:
+postcss@8.5.3, postcss@^8.4.4, postcss@^8.4.43, postcss@^8.4.47, postcss@^8.4.48, postcss@^8.4.49, postcss@^8.5.0, postcss@^8.5.1, postcss@^8.5.3:
   version "8.5.3"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.5.3.tgz#1463b6f1c7fb16fe258736cba29a2de35237eafb"
   integrity sha512-dle9A3yYxlBSrt8Fu+IpjGT8SY8hN0mlaA6GY8t0P5PjIOZemULz/E2Bnm/2dcUOena75OTNkHI76uZBNUUq3A==

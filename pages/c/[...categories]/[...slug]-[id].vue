@@ -5,7 +5,9 @@
       class="-mb-8 !h-52 w-full sm:mb-0"
     />
 
-    <div class="container flex overflow-hidden pt-4 max-sm:max-w-none md:pt-8">
+    <div
+      class="container flex overflow-hidden rounded-t-2xl bg-white pt-4 max-sm:max-w-none md:rounded-none md:pt-8"
+    >
       <SFCategorySideNavigation
         v-if="rootCategories?.length"
         class="sticky top-8 h-full max-md:hidden sm:min-w-40 md:min-w-[14.75rem] lg:min-w-[17rem]"
