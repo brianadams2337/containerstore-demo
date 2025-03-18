@@ -96,6 +96,7 @@
   />
   <p
     class="text-start text-base text-gray-600"
+    data-testid="existing-account-label"
     :class="{ 'mt-8': !externalIDPRedirects }"
   >
     {{ $t('sign_in_page.sign_up.not_new_user') }}
@@ -103,6 +104,7 @@
       :to="routeList.signin"
       raw
       class="rounded-md p-1 py-0.5 font-semibold hover:bg-gray-100"
+      data-testid="login-page-link"
     >
       {{ $t('sign_in_page.sign_up.go_to_login') }} </SFLocalizedLink
     >.

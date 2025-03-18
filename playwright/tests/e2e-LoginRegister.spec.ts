@@ -288,3 +288,35 @@ test('C2171377 Verify User login and registration SEO data', async ({
   await expect(signinPage.h1).toBeAttached()
   await expect(signinPage.h1).toHaveText(pageTitle)
 })
+
+test('C2171381 C2171376 Verify User Login and Register page links', async ({
+  signinPage,
+  header,
+  page,
+}) => {
+  await test.step('Verify Login page links', async () => {
+    await header.headerLoginButton.click()
+    await signinPage.createAccountLabel.waitFor()
+    await signinPage.signinPageLink.click()
+    await signinPage.registerForm.waitFor()
+    await expect(signinPage.registerButton).toBeVisible()
+    await expect(signinPage.createAccountLabel).not.toBeVisible()
+    expect(page.url()).toContain(LOGIN_REGISTRATION.regUrlParam)
+  })
+  await test.step('Verify Registration page links', async () => {
+    await signinPage.privacyDisclaimerInfo.waitFor()
+    await expect(signinPage.privacyDisclaimerInfo).toBeVisible()
+    await expect(signinPage.termsOfServiceLink).toHaveAttribute(
+      'target',
+      '_blank',
+    )
+    await expect(signinPage.privacyPolicyLink).toHaveAttribute(
+      'target',
+      '_blank',
+    )
+    await signinPage.loginPageLink.click()
+    await signinPage.loginForm.waitFor()
+    await expect(signinPage.loginButton).toBeVisible()
+    expect(page.url()).not.toContain(LOGIN_REGISTRATION.regUrlParam)
+  })
+})

@@ -38,6 +38,14 @@ export class SignInPage {
   readonly userPopoverLogoutButton: Locator
   readonly h1: Locator
   readonly pageTitle: Locator
+  readonly createAccountLabel: Locator
+  readonly signinPageLink: Locator
+  readonly privacyDisclaimerInfo: Locator
+  readonly termsOfServiceLink: Locator
+  readonly privacyPolicyLink: Locator
+  readonly existingAccountLabel: Locator
+  readonly loginPageLink: Locator
+  readonly loginForm: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -95,6 +103,14 @@ export class SignInPage {
     )
     this.h1 = page.locator('h1')
     this.pageTitle = page.getByTestId('headline')
+    this.createAccountLabel = page.getByTestId('create-account-label')
+    this.signinPageLink = page.getByTestId('signin-page-link')
+    this.privacyDisclaimerInfo = page.getByTestId('privacy-disclaimer-info')
+    this.termsOfServiceLink = page.getByTestId('terms-of-service-link')
+    this.privacyPolicyLink = page.getByTestId('privacy-policy-link')
+    this.existingAccountLabel = page.getByTestId('existing-account-label')
+    this.loginPageLink = page.getByTestId('login-page-link')
+    this.loginForm = page.getByTestId('login-form')
   }
 
   async fillLoginData(email: string, password: string) {

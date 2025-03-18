@@ -252,6 +252,7 @@ export const LOGIN_REGISTRATION = {
   seoDescription:
     'Greife auf dein Konto zu oder erstelle ein neues bei SCAYLE. Erlebe ein nahtloses Einkaufserlebnis mit sicherem Login und personalisierten Optionen.',
   seoRobots: 'noindex,follow',
+  regUrlParam: 'register=true',
 }
 
 export const PLP_TEST_DATA = {

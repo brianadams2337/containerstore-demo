@@ -1,5 +1,10 @@
 <template>
-  <form v-if="v" class="flex flex-col" @submit.prevent="onSubmit">
+  <form
+    v-if="v"
+    class="flex flex-col"
+    data-testid="login-form"
+    @submit.prevent="onSubmit"
+  >
     <SFAuthErrorMessageContainer
       data-testid="login-error-message-container"
       :message="errorMessage"
@@ -57,6 +62,7 @@
   />
   <p
     class="text-start text-base text-gray-600"
+    data-testid="create-account-label"
     :class="{ 'mt-8': !externalIDPRedirects }"
   >
     {{ $t('sign_in_page.login.not_user_yet') }}
@@ -64,6 +70,7 @@
       :to="routeList.signup"
       raw
       class="rounded-md px-1.5 py-0.5 font-semibold hover:bg-gray-100"
+      data-testid="signin-page-link"
     >
       {{ $t('sign_in_page.login.create_account') }}
     </SFLocalizedLink>
