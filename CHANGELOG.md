@@ -2,14 +2,30 @@
 
 ## 1.8.0
 
-### Minor Changes
+### 🔥 Highlights
 
-- 17b40ae: **\[Accessibility\]** Improved accessibility for screen readers on the search button (`SFSearchInput` component).
-  Using `aria-hidden=true` now correctly conveys the button's function to assistive technologies.
-- a1c74fd: **\[E2E\]** Implemented E2E tests covering the resolution of matched pages and result accuracy in the Search feature when searching by product reference key.
-  This ensures that searches using product reference keys consistently return the expected results.
-- 2f6462c: **\[E2E\]** Implemented end-to-end tests to verify the accuracy of SEO data on the Product Details, Basket, and Wishlist pages.
-- 81ed270: **\[CMS\]** The `CMSCategoryData` fetching component has been removed and
+#### ✨ Streamlined CMS Integration in SCAYLE Storefront
+
+We've streamlined our CMS integration to simplify setup, boost performance, and focus on content pages. A new static placeholder CMS provider (`scayle`) makes initial setup for development purposes a breeze . Content fetching and display are also improved with new components like `CMSProductListingPageTeaser` and `CMSContentPage`, replacing older, less efficient methods. We've also removed service page support from the Storyblok and Contentful integrations, concentrating our efforts on content pages for a more streamlined experience.
+
+#### 🔑 Revamped Login & Registration
+
+We've completely overhauled our login and registration process for a smoother, more user-friendly experience. Enjoy a cleaner login interface with simplified customization options for tenants. The redesigned registration flow now includes guest registration and support for IDP registration, along with prominent links to privacy and terms. Password resets are also streamlined with a new UI and improved security. Finally, we've boosted performance with server-side rendering and simplified data handling. These enhancements provide a more accessible and efficient login and registration journey for all users.
+
+#### 🛍️ Order Success Page Refresh
+
+We've polished the Order Success Page (OSP) to provide a more enjoyable and informative post-purchase experience. Improvements include a visually refreshed greeting box, a redesigned order information section for improved clarity, and a simplified cost summary for easier understanding. These updates create a cleaner, more user-friendly OSP.
+
+#### 🔍 Optimized Search Results Page
+
+We've redesigned the Search Results Page for a smoother, more consistent browsing experience. Leveraging existing components, it now shares the same structure and styling as the Product Listing Page. We've also streamlined filtering, dynamically hiding filter options when no results are found. Sorting is now automatic by relevance, simplifying the interface and prioritizing the most pertinent results. These changes create a cleaner, more user-friendly search experience.
+
+### 🚀 Major Changes
+
+- **\[CMS\]** Introducing a new static CMS placeholder provider `scayle`, that simplifies the initial setup process for Storefront applications.
+  The `scayle` static CMS placeholder delivers a single CMS page as static content, eliminating the need for access tokens, tenant space IDs, and other configuration typically required when setting up a Storefront applications and CMS.
+  This new provider is intended for development purposes only and should not be used in production environments.
+- **\[CMS\]** The `CMSCategoryData` fetching component has been removed and
   replaced by the newly introduced `CMSProductListingPageTeaser` component.
   This new component is designed to handle the rendering of teaser images and manage
   the associated data fetching for each CMS provided.
@@ -24,22 +40,9 @@
     </template>
     ```
 
-- 9808eef: **\[Orders\]** The `Order` type is improved by introducing a new generic `Order<Product, Variant>`
-  type. The related order helpers are now part of the Storefront Boilerplate and are used within `usePurchaseEvents`, where the `useOrder` generic is now ensuring correct order detail types.
-- 0a4d463: **\[SEO\]** Modified `/pages/p/[...productName]-[id].vue` to utilize the [ProductGroup JSON-LD schema](https://schema.org/ProductGroup).
-- 5b90706: **\[Accessibility\]** The `SFProductCard` component now has a role of `"link"` and the `SFProductImage`component within the `SFProductGallery` component now has a role of `"button"`.
-  This improves how these elements are interpreted by screen readers and other assistive devices.
-- c0ed48d: **\[SEO\]** Added missing meta data to the wishlist page.
-- 68671f6: **\[Login & Registration\]** The forgot password process has been redesigned with a new user interface.
-  A `"forgot password"` button on the login page now opens a slide-in form for requesting a password reset link.
-  The reset link directs users to the sign-in page, where another slide-in form allows them to set a new password.
-  Email validation and other improvements ensure a smooth and secure password reset experience.
-- 8fcce7c: **\[CMS\]** The `CMSAppFooterData` component has been removed from all CMS providers.
-  This component was previously used to fetch and render footer links, but this approach has been replaced by a more efficient and centralized method.
-  Footer content is now managed through dedicated composables from the `@scayle/storefront-nuxt` package and configured using [SCAYLE Navigation](https://scayle.dev/en/user-guide/shops/storefront/navigation) in the Panel.
-  This change reduces code duplication and simplifies maintenance while providing a more consistent and flexible approach to managing footer links.
-- 0d98946: **\[E2E\]** Expanded the promotions end-to-end test suite with scenarios covering the display and hiding of terms and conditions within the promotion tile, ensuring correct functionality.
-- dda7ba2: The `CMSPage` component has been removed from the Storefront Boilerplate and replaced with the new `CMSContentPage` component.
+- **\[CMS\]** The `CMSServicePageData`component, responsible for fetching content data for service pages (`/pages/s/[slug].vue`), has been removed from all CMS providers.
+  Going forwards the Storefront Boilerplate CMS integration for Storyblok and Contentful are only supporting content pages (`/pages/content/[slug].vue`).
+- **\[CMS\]** The `CMSPage` component has been removed from the Storefront Boilerplate and replaced with the new `CMSContentPage` component.
   This change aligns the homepage structure with the refactored CMS content types in Storyblok and Contentful.
   The `CMSContentPage` component directly renders the `CMSStory` component, eliminating the overhead of custom dynamic component loading.
   Additionally, the introduction of status-specific slots within `CMSContentPage` simplifies data fetching and handling by providing a more structured and predictable approach compared to the previous awaited fetching method in CMSPage.
@@ -58,109 +61,39 @@
     </template>
     ```
 
-- 4d40fd2: **\[SEO\]** Implemented an optional `variantId` query parameter for PDP URLs. When this parameter is present and contains a valid variant ID, the corresponding product variant will be preselected on page load.
-  This improvement enables deep linking to specific product variations and enhances user experience.
-- ad7fd61: **\[Code Style\]** Improved clarity and consistency of `ExistingItemHandling` value names within `/composables/usePromotionGiftSelection.ts`, `/composables/useBasketActions.ts`, and `/composables/useBasketActions.nuxt.test.ts`
-- f90c3b1: **\[CMS\]** The `CMSServicePageData`component, responsible for fetching content data for service pages (`/pages/s/[slug].vue`), has been removed from all CMS providers.
-  Going forwards the Storefront Boilerplate CMS integration for Storyblok and Contentful are only supporting content pages (`/pages/content/[slug].vue`).
-- a362087: **\[E2E\]** Implemented end-to-end tests for the Order Success page, covering the following key components: Greeting box, Payment details, Order details, Delivery address, Product card, Price summary, and CTA buttons.
-  These tests ensure that the page renders correctly and all interactive elements function as expected after a user completes an order.
-- dd68dca: **\[E2E\]** Expanded E2E test coverage to verify default Store Locator visibility on PDPs for one-sized products.
-- 6b0648c: **\[E2E\]** Implemented end-to-end tests to validate the accuracy of SEO data on the PLP for default views, filtered results, and sorted listings.
-- f5789e6: **\[Search\]** The Search Results Page has undergone a redesign to create a more consistent and user-friendly experience.
-  By leveraging composables from `@scayle/storefront-product-listing`, the page now shares the same underlying structure and styling as the Product Listing Page, providing a unified browsing experience.
-  The filtering functionality has been streamlined; the filters button is now dynamically hidden when no search results are returned, reducing visual clutter.
-  Additionally, the sorting button has been removed as search results are now automatically sorted by relevance, simplifying the user interface and prioritizing the most relevant results.
-  This redesign enhances usability and improves the overall search experience.
-- ebee225: **\[E2E\]** Implemented an end-to-end test to verify the display of product variant availability information on the Product Details Page (PDP).
-- 40f7e46: **\[E2E\]** Implemented end-to-end tests to verify the behavior of updating product quantities in the basket, considering different maximum available quantity thresholds.
-- a29a231: **\[Architecture\]** Improved the reactivity of several key composables (`useSubscription`, `useProductBaseInfo`, `useRowIntersection`, useProductPromotions, `useProductPrice`, `usePagination`, and `useBasketPromotionReductions`) by optimizing how getter values are passed and explicitly using `toRef` where needed.
-  This ensures consistent and predictable reactivity throughout the application. For more details, see the [Vue documentation on prop passing]((https://vuejs.org/guide/components/props.html#passing-destructured-props-into-functions).
-- 8cf0d6b: **\[E2E\]** Implemented additional step in Order Success Page end-to-end test to verify page SEO data.
-- 9af8abb: **\[Architecture\]** Integrated the `@scayle/nuxt-image-provider` Nuxt module to optimize image delivery and leverage the full capabilities of the SCAYLE CDN.
-  This module introduces a dedicated provider for ´@nuxt/image`, enabling support for SCAYLE-specific image modifiers that provide greater control over image transformations and optimizations.
-The module also includes the `ScayleImg`and`ScaylePicture` components, which offer a simplified way to integrate images optimized for SCAYLE CDN within your application.
-  This enhancement improves image performance, reduces bandwidth consumption, and simplifies image management.
-- 639d7b9: **\[E2E\]** Implemented an end-to-end test to verify the display of sold-out products in the user's basket.
-- d3a44cc: **\[Architecture\]** Enforced consistent `defineEmits` [`type-literal`](https://eslint.vuejs.org/rules/define-emits-declaration.html#type-literal) syntax using the [`vue/define-emits-declaration`](https://eslint.vuejs.org/rules/define-emits-declaration.html#vue-define-emits-declaration) ESLint rule.
-
-  - Before:
-    ```vue
-    <script setup lang="ts">
-    const props = defineProps(['foo', 'bar'])
-    // or
-    const emit = defineEmits<{
-      (e: 'foo', id: number): void
-      (e: 'bar', value: string): void
-    }>()
-    </script>
-    ```
-  - After:
-    ```vue
-    <script setup lang="ts">
-    const emit = defineEmits<{
-      foo: [id: number]
-      bar: [value: string]
-    }>()
-    </script>
-    ```
-
-- 6450187: **\[Tooling\]** Updated the OpenTelemetry configuration to capture common headers in span attributes.
-- 09bf68d: **\[Login & Registration\]** The user registration process has been completely redesigned for a more intuitive and streamlined experience.
+- **\[Login & Registration\]** The login user interface has been enhanced to provide a cleaner, more user-friendly experience and greater flexibility for tenant customization.
+  The updated user interface features a standard login form with email and password fields, providing a familiar and intuitive login process.
+  Existing integrations with external Identity Providers (IDPs) like Google remain unaffected by these changes.
+  A key improvement in this update is the removal of IDP-specific styles that were previously embedded in the login user interface.
+  This change simplifies the UI and empowers tenants to fully customize the styling and branding of their login experience, ensuring seamless integration with their overall website design.
+- **\[Login & Registration\]** The user registration process has been completely redesigned for a more intuitive and streamlined experience.
   The new flow features a redesigned registration form with fields for gender, first name, last name, email, and password.
   A guest registration option simplifies the process for users who prefer not to create an account, omitting the password field.
   Support for IDP registration has been integrated, offering a secure and convenient way to sign up using existing identity providers.
   This implementation maintains a consistent and clean style, mirroring the design of the login page.
   Furthermore, prominent links to the privacy policy and terms of service are now displayed during registration, ensuring user awareness and compliance.
-- dd67706: **\[CMS\]** Introducing a new static CMS placeholder provider `scayle`, that simplifies the initial setup process for Storefront applications.
-  The `scayle` static CMS placeholder delivers a single CMS page as static content, eliminating the need for access tokens, tenant space IDs, and other configuration typically required when setting up a Storefront applications and CMS.
-  This new provider is intended for development purposes only and should not be used in production environments.
-- 8e8a775: **\[Login & Registration\]** Enhanced the `404` error message to provide clearer and more user-friendly guidance.
-- b2d82c4: **\[E2E\]** Expanded E2E test coverage to include validation of the `variantId` URL parameter on PDPs for products with multiple sizes and available variants.
-- 2222feb: **\[UI\]** Use [color](https://github.com/Qix-/color) for RGBA manipulation and replacing the redundant `hexToRGBAColor` utility.
-- eb65b63: **\[UI\]** Input labels are now truncated when their text content exceeds the width of the corresponding input field.
-  This prevents labels from overflowing and overlapping other UI elements, maintaining a clean and organized interface.
-- 93ee6b5: **\[Accessibility\]** Improved the accessibility of the side navigation open button by providing an `aria-label`.
-- 8d4adf4: **\[E2E\]** Added Guest User Registration E2E Test: A new end-to-end test has been implemented to cover the complete guest user registration process.
-  This test validates the functionality and user flow of registering as a guest, ensuring a smooth and error-free experience.
-- 91c2a29: **\[Search\]** Migrated from useSearchData to useSearch from @scayle/storefront-search, providing improved updatability and feature updates.
-- a29a231: **\[Architecture\]** Improved the Storefront application's internationalization (i18n) implementation by switching to direct usage of the `useI18n` composable within the `setup` script blocsk.
-  This approach offers several advantages over accessing i18n through `useNuxtApp`:
+- **\[Login & Registration\]** The forgot password process has been redesigned with a new user interface.
+  A `"forgot password"` button on the login page now opens a slide-in form for requesting a password reset link.
+  The reset link directs users to the sign-in page, where another slide-in form allows them to set a new password.
+  Email validation and other improvements ensure a smooth and secure password reset experience.
+- **\[Login & Registration\]** Users will experience a smoother and more accessible login process.
+  The login/registration flow has been redesigned with a focus on simplicity and accessibility.
+  Changes include:
+  - **UI/UX:** Simplified layout, updated styling for text input fields and gender selection, and enhanced accessibility features (improved semantics and keyboard navigation).
+  - **Functionality:** Standardized handling of `redirectUrl` to ensure users are redirected to their intended destination after login. Improved form validation and more informative error messages displayed in a dedicated error container. Successful logins are now confirmed with a toast notification.
+  - **Performance:** Implemented SSR for the signin page, resulting in faster initial load times. Removed client-side handling of the last logged in user information, eliminating the need for local storage management and further improving performance.
+- **\[OSP\]** Improved the look and feel of the greeting box.
+- **\[OSP\]** The order information section has been redesigned for a clearer and more user-friendly experience.
+- **\[OSP\]** The cost summary on the Order Success Page has been simplified to improve clarity and user experience.
+- **\[Search\]** The Search Results Page has undergone a redesign to create a more consistent and user-friendly experience.
+  By leveraging composables from `@scayle/storefront-product-listing`, the page now shares the same underlying structure and styling as the Product Listing Page, providing a unified browsing experience.
+  The filtering functionality has been streamlined; the filters button is now dynamically hidden when no search results are returned, reducing visual clutter.
+  Additionally, the sorting button has been removed as search results are now automatically sorted by relevance, simplifying the user interface and prioritizing the most relevant results.
+  This redesign enhances usability and improves the overall search experience.
 
-  - **Simplicity**: Directly using `useI18n` is simpler and more intuitive, reducing the complexity of code.
-  - **Performance**: Accessing `useI18n` directly can be more performant as it avoids the additional overhead of going through `useNuxtApp`.
-  - **Type Safety**: Direct usage often provides better TypeScript support, ensuring type safety and better developer experience.
-  - **Readability**: It makes the code more readable and maintainable by clearly indicating the use of i18n functionalities.
+### 💅 Minor Changes
 
-  However, it's important to note that this change introduces a constraint: `useI18n` must now be called directly within the `setup` script.
-  Attempting to use it within other composables that are not called within setup will result in an error.
-  This trade-off is considered acceptable given the overall benefits of this optimization.
-
-- 3319e97: **\[Authentication\]** A redirect fallback to the homepage has been added for authentication flows.
-  If no redirect URL is present in the query parameters, users will now be redirected to the homepage after authentication.
-  This provides a smoother experience and prevents potential redirect errors.
-- fd4b137: **\[Accessibility\]** Enhanced the accessibility of the `SFQuantityInput` component by adding an `aria-label` attribute to the input field.
-- a1e8646: **\[E2E\]** Implemented an end-to-end test to verify the handling of registration attempts with an existing email address.
-- 093acbd: **\[E2E\]** Implemented an end-to-end test to verify the password reset process.
-- 40e81c8: **\[Login & Registration\]** The gender selection dropdown on the login and registration pages has been visually enhanced to seamlessly integrate with the design of the text input fields.
-  This change creates a more cohesive and user-friendly form experience.
-- 32e435b: **\[E2E\]** Implemented an end-to-end test to verify the functionality of the password visibility toggle on the Registration page.
-- cf9947e: **\[E2E\]** Implemented an end-to-end test to verify the Order Success Page behavior when accessed with an incorrect CBD token.
-- a690bb6: **\[UI\]** The `SFBasketPopoverItems` component now displays sold-out items, providing users with a clearer view of all items in their basket, regardless of availability.
-- fe063d2: **\[Accessibility\]** Refactored the keyboard interaction logic for the `SFSlideIn` component within the local `storefront-ui` module.
-  The core keyboard behavior, including focus trapping, tab order management, and 'Esc' key functionality, is now centralized within the `SFSlideIn` component.
-  This change eliminates redundant code in individual slide-in instances (e.g., `SFFilterSlideIn.vue`) and ensures consistent accessibility features across all slide-in components.
-- 174d8fe: **\[E2E\]** Implemented end-to-end tests to verify the complete password reset process, including both successful resets and error handling.
-- 7a28c6f: **\[E2E\]** Implemented end-to-end tests to verify the `variantId` URL parameter behavior on Product Detail Pages (PDPs) for both available one-size products and sold-out variants of multi-size products.
-- 3cab736: **\[E2E\]** Implemented an end-to-end test to ensure the Country Detection modal operates correctly, even when another flyout is already open.
-- 93ee6b5: **\[Accessibility\]** Enhanced filter accessibility by adding `aria-label` attributes tofilter elements, including the price range slider, size selection checkboxes, and the close button.
-  This improvement makes filtering more accessible for users of assistive technologies such as screen readers.
-- 09bf68d: **\[Login & Registration\]** The login user interface has been enhanced to provide a cleaner, more user-friendly experience and greater flexibility for tenant customization.
-  The updated user interface features a standard login form with email and password fields, providing a familiar and intuitive login process.
-  Existing integrations with external Identity Providers (IDPs) like Google remain unaffected by these changes.
-  A key improvement in this update is the removal of IDP-specific styles that were previously embedded in the login user interface.
-  This change simplifies the UI and empowers tenants to fully customize the styling and branding of their login experience, ensuring seamless integration with their overall website design.
-- a29a231: **\[Architecture\]** Simplified component prop declarations by leveraging [Vue's reactive destructuring](https://vuejs.org/guide/components/props.html#reactive-props-destructure).
+- **\[Architecture\]** Simplified component prop declarations by leveraging [Vue's reactive destructuring](https://vuejs.org/guide/components/props.html#reactive-props-destructure).
   This allows for more concise and readable prop definitions, reducing boilerplate code.
 
   - Example:
@@ -175,144 +108,233 @@ The module also includes the `ScayleImg`and`ScaylePicture` components, which off
     </script>
     ```
 
-- b8952d0: **\[E2E\]** Implemented end-to-end tests to cover the functionality of increasing and decreasing the quantity of free promotional items within the basket.
-- ffff7d1: **\[Authentication\]** Strengthened application security by centralizing route access control using route names within the global authentication guard (`/middleware/authGuard.global.ts`).
+- **\[Architecture\]** Improved the Storefront application's internationalization (i18n) implementation by switching to direct usage of the `useI18n` composable within the `setup` script blocks.
+  This approach offers several advantages over accessing i18n through `useNuxtApp`:
+
+  - **Simplicity**: Directly using `useI18n` is simpler and more intuitive, reducing the complexity of code.
+  - **Performance**: Accessing `useI18n` directly can be more performant as it avoids the additional overhead of going through `useNuxtApp`.
+  - **Type Safety**: Direct usage often provides better TypeScript support, ensuring type safety and better developer experience.
+  - **Readability**: It makes the code more readable and maintainable by clearly indicating the use of i18n functionalities.
+
+  However, it's important to note that this change introduces a constraint: `useI18n` must now be called directly within the `setup` script.
+  Attempting to use it within other composables that are not called within setup will result in an error.
+  This trade-off is considered acceptable given the overall benefits of this optimization.
+
+- **\[Architecture\]** Improved the reactivity of several key composables (`useSubscription`, `useProductBaseInfo`, `useRowIntersection`, useProductPromotions, `useProductPrice`, `usePagination`, and `useBasketPromotionReductions`) by optimizing how getter values are passed and explicitly using `toRef` where needed.
+  This ensures consistent and predictable reactivity throughout the application. For more details, see the [Vue documentation on prop passing](https://vuejs.org/guide/components/props.html#passing-destructured-props-into-functions).
+- **\[Architecture\]** Integrated the `@scayle/nuxt-image-provider` Nuxt module to optimize image delivery and leverage the full capabilities of the SCAYLE CDN.
+  This module introduces a dedicated provider for `@nuxt/image`, enabling support for SCAYLE-specific image modifiers that provide greater control over image transformations and optimizations.
+  The module also includes the `ScayleImg` and `ScaylePicture` components, which offer a simplified way to integrate images optimized for SCAYLE CDN within your application.
+  This enhancement improves image performance, reduces bandwidth consumption, and simplifies image management.
+- **\[Architecture\]** Enforced consistent `defineEmits` [`type-literal`](https://eslint.vuejs.org/rules/define-emits-declaration.html#type-literal) syntax using the [`vue/define-emits-declaration`](https://eslint.vuejs.org/rules/define-emits-declaration.html#vue-define-emits-declaration) ESLint rule.
+
+  - Before:
+
+    ```vue
+    <script setup lang="ts">
+    const props = defineProps(['foo', 'bar'])
+    // or
+    const emit = defineEmits<{
+      (e: 'foo', id: number): void
+      (e: 'bar', value: string): void
+    }>()
+    </script>
+    ```
+
+  - After:
+
+    ```vue
+    <script setup lang="ts">
+    const emit = defineEmits<{
+      foo: [id: number]
+      bar: [value: string]
+    }>()
+    </script>
+    ```
+
+- **\[Accessibility\]** The `SFProductCard` component now has a role of `"link"` and the `SFProductImage`component within the `SFProductGallery` component now has a role of `"button"`.
+  This improves how these elements are interpreted by screen readers and other assistive devices.
+- **\[Accessibility\]** Improved the accessibility of the side navigation open button by providing an `aria-label`.
+- **\[Accessibility\]** Refactored the keyboard interaction logic for the `SFSlideIn` component within the local `storefront-ui` module.
+  The core keyboard behavior, including focus trapping, tab order management, and 'Esc' key functionality, is now centralized within the `SFSlideIn` component.
+  This change eliminates redundant code in individual slide-in instances (e.g., `SFFilterSlideIn.vue`) and ensures consistent accessibility features across all slide-in components.
+- **\[Accessibility\]** Improved the accessibility of the `SFSearchInput` component by adding an `aria-placeholder` attribute to the input field, providing better support for assistive technologies.
+- **\[Accessibility\]** Enhanced the accessibility of the `SFQuantityInput` component by adding an `aria-label` attribute to the input field.
+- **\[Accessibility\]** Enhanced filter accessibility by adding `aria-label` attributes to filter elements, including the price range slider, size selection checkboxes, and the close button.
+  This improvement makes filtering more accessible for users of assistive technologies such as screen readers.
+- **\[Accessibility\]** Improved accessibility for screen readers on the search button (`SFSearchInput` component).
+  Using `aria-hidden=true` now correctly conveys the button's function to assistive technologies.
+- **\[Authentication\]** Refactored `/middleware/authGuard.global.ts` to conditionally fetch user data, skipping the process when an unprotected route is accessed.
+  This optimization reduces the number of network requests and improves page load times.
+- **\[Authentication\]** Strengthened application security by centralizing route access control using route names within the global authentication guard (`/middleware/authGuard.global.ts`).
   The list of available routes (`/utils/route.ts`) has been updated to contain all available routes to support this enhancement.
-- 239b54c: **\[Accessibility\]** Improved the accessibility of the `SFSearchInput` component by adding an `aria-placeholder` attribute to the input field, providing better support for assistive technologies.
-- 54ef59c: **\[E2E\]** Implemented E2E tests to verify the SEO data on the Login and Registration pages.
-- 09bf68d: - **\[Login & Registration\]** Users will experience a smoother and more accessible login process.
-  The login/registration flow has been redesigned with a focus on simplicity and accessibility.
-  Changes include:
-  - **UI/UX:** Simplified layout, updated styling for text input fields and gender selection, and enhanced accessibility features (improved semantics and keyboard navigation).
-  - **Functionality:** Standardized handling of `redirectUrl` to ensure users are redirected to their intended destination after login. Improved form validation and more informative error messages displayed in a dedicated error container. Successful logins are now confirmed with a toast notification.
-  - **Performance:** Implemented SSR for the signin page, resulting in faster initial load times. Removed client-side handling of the last logged in user information, eliminating the need for local storage management and further improving performance.
-- 30703d8: **\[Config\]** Extended the `PublicShopConfig` interface with a new property: `countryCode`.
-  This addition addresses the need to distinguish shops based on region, especially in cases where the locale (language) is the same but the target country is different.
-  This allows for proper identification of shops in scenarios like Germany having both `de_DE` (German) and en_US (English) storefronts, where the locale alone is insufficient.
-- 20b327f: **\[SEO\]** Add redirect to correct PDP URL when the PDP URL does not match the expected format.
-- d69eb49: **\[Search\]** Migrated to search utilities from `@scayle/storefront-search` and `@scayle/storefront-product-listing`, replacing the existing implementation and allowing for improved updatability and feature updates.
-- 848e1b6: **\[SEO\]** Added [OnlineStore](https://schema.org/OnlineStore) schema to homepage.
-
-### Patch Changes
-
-- b79bff9: **\[Tooling\]** Introducing [license-checker](https://github.com/davglass/license-checker) to generate a license overview file (`node-licenses.csv`) of used project dependencies.
-  This is crucial for managing legal compliance and risk, ensuring that all used dependencies' licenses are compatible
-  with the projects commercial software's licensing model. This automated overview simplifies audits,
-  minimizes potential legal issues, and streamlines the process of addressing license conflicts.
-- 0f2c705: **\[UI\]** The `SFPriceInput` component now only emits the `update:model-value` event when the input value actually changes, preventing unnecessary updates.
-- dea5cee: **\[SEO\]** Improved SEO by switching the [BreadcrumbList JSON-LD schema-based markup](https://schema.org/BreadcrumbList) to use absolute URLs.
-  This change ensures search engines can correctly interpret the website's structure.
-- bd4966f: **\[OSP\]** Fixed an edge case within the `SFOspProductCard` component where the OSP would throw an error if a product variant was missing a size attribute.
-  This scenario is rare but could occur under specific circumstances. The issue stemmed from a missing optional chaining operator when accessing the size attribute.
-  This has been corrected by adding the necessary optional chaining operator (`?.`) to the size attribute accessor.
-- - Added dependency `@scayle/nuxt-image-provider@0.2.4`
-  - Added dependency `@scayle/storefront-navigation@0.1.0`
-  - Added dependency `@scayle/storefront-search@0.2.1`
-  - Added dependency `jiti@2.4.2`
-  - Added dependency `license-checker@25.0.1`
-  - Removed dependency `globby@14.0.2`
-  - Updated dependency `@contentful/live-preview@4.6.5` to `@contentful/live-preview@4.6.11`
-  - Updated dependency `@nuxt/fonts@0.10.3` to `@nuxt/fonts@0.11.0`
-  - Updated dependency `@scayle/nuxt-opentelemetry@0.5.7` to `@scayle/nuxt-opentelemetry@0.7.1`
-  - Updated dependency `@scayle/omnichannel-nuxt@4.0.4` to `@scayle/omnichannel-nuxt@4.2.0`
-  - Updated dependency `@scayle/storefront-country-detection@1.1.0` to `@scayle/storefront-country-detection@1.1.1`
-  - Updated dependency `@scayle/storefront-nuxt@8.6.0` to `@scayle/storefront-nuxt@8.12.1`
-  - Updated dependency `@scayle/storefront-product-detail@1.0.2` to `@scayle/storefront-product-detail@1.1.3`
-  - Updated dependency `@scayle/storefront-product-listing@1.1.3` to `@scayle/storefront-product-listing@1.3.1`
-  - Updated dependency `@storyblok/nuxt@6.2.2` to `@storyblok/nuxt@6.2.3`
-  - Updated dependency `@storyblok/vue@8.1.10` to `@storyblok/vue@8.1.11`
-  - Updated dependency `@vueuse/components@12.5.0` to `@vueuse/components@13.0.0`
-  - Updated dependency `@vueuse/core@12.5.0` to `@vueuse/core@13.0.0`
-  - Updated dependency `@vueuse/integrations@12.5.0` to `@vueuse/integrations@13.0.0`
-  - Updated dependency `@vueuse/nuxt@12.5.0` to `@vueuse/nuxt@13.0.0`
-  - Updated dependency `axios@1.7.9` to `axios@1.8.3`
-  - Updated dependency `color@4.2.3` to `color@5.0.0`
-  - Updated dependency `consola@3.4.0` to `consola@3.4.1`
-  - Updated dependency `contentful@11.4.4` to `contentful@11.5.8`
-  - Updated dependency `contentful-export@7.21.20` to `contentful-export@7.21.32`
-  - Updated dependency `maska@3.0.4` to `maska@3.1.0`
-  - Updated dependency `nanoid@5.0.9` to `nanoid@5.1.4`
-  - Updated dependency `nuxi@3.21.1` to `nuxi@3.23.0`
-  - Updated dependency `schema-dts@1.1.2` to `schema-dts@1.1.5`
-  - Updated dependency `storyblok-js-client@6.10.7` to `storyblok-js-client@6.10.10`
-  - Updated dependency `@changesets/cli@2.27.12` to `@changesets/cli@2.28.1`
-  - Updated dependency `@eslint/eslintrc@3.2.0` to `@eslint/eslintrc@3.3.0`
-  - Updated dependency `@nuxt/eslint@1.0.0` to `@nuxt/eslint@1.2.0`
-  - Updated dependency `@nuxt/test-utils@3.15.4` to `@nuxt/test-utils@3.17.2`
-  - Updated dependency `@types/node@22.12.0` to `@types/node@22.13.10`
-  - Updated dependency `@typescript-eslint/scope-manager@8.22.0` to `@typescript-eslint/scope-manager@8.26.1`
-  - Updated dependency `@typescript-eslint/utils@8.22.0` to `@typescript-eslint/utils@8.26.1`
-  - Updated dependency `@upstash/redis@1.34.3` to `@upstash/redis@1.34.5`
-  - Updated dependency `@vitest/coverage-v8@2.1.8` to `@vitest/coverage-v8@2.1.9`
-  - Updated dependency `@vue/typescript-plugin@2.2.0` to `@vue/typescript-plugin@2.2.8`
-  - Updated dependency `autoprefixer@10.4.20` to `autoprefixer@10.4.21`
-  - Updated dependency `eslint@9.19.0` to `eslint@9.22.0`
-  - Updated dependency `fishery@2.2.2` to `fishery@2.2.3`
-  - Updated dependency `happy-dom@16.7.3` to `happy-dom@17.4.4`
-  - Updated dependency `lint-staged@15.4.3` to `lint-staged@15.5.0`
-  - Updated dependency `nuxt@3.14.1592` to `nuxt@3.15.4`
-  - Updated dependency `nuxt-svgo@4.0.14` to `nuxt-svgo@4.0.15`
-  - Updated dependency `pathe@2.0.2` to `pathe@2.0.3`
-  - Updated dependency `postcss@8.5.1` to `postcss@8.5.3`
-  - Updated dependency `typescript@5.7.3` to `typescript@5.8.2`
-  - Updated dependency `unimport@4.0.0` to `unimport@4.1.2`
-  - Updated dependency `vitest@2.1.8` to `vitest@2.1.9`
-  - Updated dependency `vue-tsc@2.2.0` to `vue-tsc@2.2.8`
-- 46f72fa: **\[CMS\]** Fixed missing product data in `CmsProduct` click event.
-  The `clickProduct` event in the `CmsProduct` component was not correctly emitting product data.
-  This issue has been resolved, and the event now includes the necessary product information when triggered.
-
-  - Related Components:
-    - Storyblok: `/modules/cms/providers/storyblok/components/Product.vue`
-    - Contentful: `/modules/cms/providers/contentful/components/Product.vue`
-
-- c1cde66: **\[Account Area\]** Modified the `pickElements` function within the `SFAddressSummary` component to support the new `OrderAddress` type from `@scayle/storefront-nuxt@8.10`.
-  This update narrows and clarifies the supported types.
-- 6a51b00: **\[E2E\]** Adapted the Search results page E2E tests to account for the updated design, specifically for scenarios with no search results.
-- 4d40fd2: **\[PDP\]** Product data is now loaded lazily by setting the `lazy` option of to `true`.
-  This change allows for variant preselection during Server-Side Rendering (SSR) and ensures that an appropriate HTTP error status code is returned if product data fetching fails.
-- 09df425: **\[E2E\]** Improved stability of guest user registration E2E test by handling Toast message and User popover overlap.
-- 6b66c6c: **\[Config\]** Improved Redis connection stabilit by adding `maxRetriesPerRequest` to prevent indefinite hangs.
-- e305874: **\[Search\]** The search result counter is now hidden while loading results.
-- 026599b: **\[UI\]** The `isGiftSelectionShown` property in `SFProductPromotionSelectionModal` is now reset when the component is unmounted,
-  preventing the modal from persisting across page navigations.
-- cc42ee1: **\[Navigation\]** The Navigation's `SFNavigationTreeItem` now uses [`<ScayleImg>`](https://www.npmjs.com/package/@scayle/nuxt-image-provider) for rendering and loading SVG icons, replacing the previous `<object>` method.
+- **\[Authentication\]** A redirect fallback to the homepage has been added for authentication flows.
+  If no redirect URL is present in the query parameters, users will now be redirected to the homepage after authentication.
+  This provides a smoother experience and prevents potential redirect errors.
+- **\[Build\]** The file watcher has been configured to ignore files that are not relevant to the build process.
+  This optimization reduces the workload on the watcher and improves overall build times during local development.
+- **\[CMS\]** The `CMSAppFooterData` component has been removed from all CMS providers.
+  This component was previously used to fetch and render footer links, but this approach has been replaced by a more efficient and centralized method.
+  Footer content is now managed through dedicated composables from the `@scayle/storefront-nuxt` package and configured using [SCAYLE Navigation](https://scayle.dev/en/user-guide/shops/storefront/navigation) in the Panel.
+  This change reduces code duplication and simplifies maintenance while providing a more consistent and flexible approach to managing footer links.
+- **\[Login & Registration\]** Enhanced the `404` error message to provide clearer and more user-friendly guidance.
+- **\[Login & Registration\]** The gender selection dropdown on the login and registration pages has been visually enhanced to seamlessly integrate with the design of the text input fields.
+  This change creates a more cohesive and user-friendly form experience.
+- **\[E2E\]** Expanded the promotions end-to-end test suite with scenarios covering the display and hiding of terms and conditions within the promotion tile, ensuring correct functionality.
+- **\[E2E\]** Implemented E2E tests covering the resolution of matched pages and result accuracy in the Search feature when searching by product reference key.
+  This ensures that searches using product reference keys consistently return the expected results.
+- **\[E2E\]** Implemented end-to-end tests to verify the accuracy of SEO data on the Product Details, Basket, and Wishlist pages.
+- **\[E2E\]** Expanded E2E test coverage to include validation of the `variantId` URL parameter on PDPs for products with multiple sizes and available variants.
+- **\[E2E\]** Added Guest User Registration E2E Test: A new end-to-end test has been implemented to cover the complete guest user registration process.
+  This test validates the functionality and user flow of registering as a guest, ensuring a smooth and error-free experience.
+- **\[E2E\]** Implemented an end-to-end test to verify the display of product variant availability information on the Product Details Page (PDP).
+- **\[E2E\]** Implemented end-to-end tests to verify the behavior of updating product quantities in the basket, considering different maximum available quantity thresholds.
+- **\[E2E\]** Implemented additional step in Order Success Page end-to-end test to verify page SEO data.
+- **\[E2E\]** Implemented an end-to-end test to verify the display of sold-out products in the user's basket.
+- **\[E2E\]** Implemented end-to-end tests for the Order Success page, covering the following key components:
+  Greeting box, Payment details, Order details, Delivery address, Product card, Price summary, and CTA buttons.
+  These tests ensure that the page renders correctly and all interactive elements function as expected after a user completes an order.
+- **\[E2E\]** Expanded E2E test coverage to verify default Store Locator visibility on PDPs for one-sized products.
+- **\[E2E\]** Implemented end-to-end tests to validate the accuracy of SEO data on the PLP for default views, filtered results, and sorted listings.
+- **\[E2E\]** Implemented an end-to-end test to verify the handling of registration attempts with an existing email address.
+- **\[E2E\]** Implemented an end-to-end test to verify the password reset process.
+- **\[E2E\]** Implemented an end-to-end test to verify the functionality of the password visibility toggle on the Registration page.
+- **\[E2E\]** Implemented an end-to-end test to verify the Order Success Page behavior when accessed with an incorrect CBD token.
+- **\[E2E\]** Implemented end-to-end tests to verify the complete password reset process, including both successful resets and error handling.
+- **\[E2E\]** Implemented end-to-end tests to verify the `variantId` URL parameter behavior on Product Detail Pages (PDPs) for both available one-size products and sold-out variants of multi-size products.
+- **\[E2E\]** Implemented an end-to-end test to ensure the Country Detection modal operates correctly, even when another flyout is already open.
+- **\[E2E\]** Implemented end-to-end tests to cover the functionality of increasing and decreasing the quantity of free promotional items within the basket.
+- **\[E2E\]** Implemented E2E tests to verify the SEO data on the Login and Registration pages.
+- **\[Orders\]** The `Order` type is improved by introducing a new generic `Order<Product, Variant>`
+  type. The related order helpers are now part of the Storefront Boilerplate and are used within `usePurchaseEvents`, where the `useOrder` generic is now ensuring correct order detail types.
+- **\[Search\]** Migrated to search utilities from `@scayle/storefront-search` and `@scayle/storefront-product-listing`, replacing the existing implementation and allowing for improved upgradability and feature updates.
+- **\[Search\]** Migrated from `useSearchData` to `useSearch` from `@scayle/storefront-search`, providing improved upgradability and feature updates.
+- **\[SEO\]** Add redirect to correct PDP URL when the PDP URL does not match the expected format.
+- **\[SEO\]** Added [OnlineStore](https://schema.org/OnlineStore) schema to homepage.
+- **\[SEO\]** Added missing meta data to the wishlist page.
+- **\[SEO\]** Modified `/pages/p/[...productName]-[id].vue` to utilize the [ProductGroup JSON-LD schema](https://schema.org/ProductGroup).
+- **\[SEO\]** Implemented an optional `variantId` query parameter for PDP URLs. When this parameter is present and contains a valid variant ID, the corresponding product variant will be preselected on page load.
+  This improvement enables deep linking to specific product variations and enhances user experience.
+- **\[Navigation\]** The Navigation's `SFNavigationTreeItem` now uses [`<ScayleImg>`](https://www.npmjs.com/package/@scayle/nuxt-image-provider) for rendering and loading SVG icons, replacing the previous `<object>` method.
   This addresses layout shifts that occurred due to delayed SVG loading and resolves console errors encountered in certain browsers stemming from `content-security-policy` discrepancies.
   All SVG icons loaded within the NavigationTree items also now use the `preload` attribute for enhanced loading performance.
   The initial approach with the `<object>` tag was intended to enable modifications to the icon's visual appearance, such as color,
   but caused issues with browser `content-security-policy` settings, leading to delayed SVG loading and layout shifts for each navigation tree item displaying an SVG icon.
   The `<object>`-based implementation can be easily reinstated if needed.
-- 0b64c66: Update `@scayle/nuxt-image-provider` to `v0.2.4` and fix image alignment in `/components/product/SFSiblingSelection.vue`.
-- 71f3b92: **\[OSP\]** The cost summary on the Order Success Page has been simplified to improve clarity and user experience.
-- 3ec6186: **\[E2E\]** Enhanced the stability of end-to-end tests for PLP Filters and Pagination across all browsers during parallel test runs.
-- 2dc8cf9: **\[UI\]** After refactoring to use prop destructuring in the `SFProductCardBadgesFooter` component, the default value of the `isPromotionBadgeFullWidth` prop was not being applied correctly.
-  This has been fixed, restoring the intended default behavior.
-- e8f798a: **\[UI\]** Implemented a focus trap in the `SFModal` component to maintain responsiveness when a `SFSlideIn` is also open.
-- e2200b8: **\[E2E\]** Enhanced the reliability of end-to-end tests covering Search page Filters, ensuring consistent execution across all browsers when running in parallel.
-- 5e53094: **\[UI\]** Removed arrow key handling from the focus change logic in the following components to align with [WCAG accessibility guidelines for keyboard navigation](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#fundamentalkeyboardnavigationconventions).
+- **\[Tooling\]** Updated the OpenTelemetry configuration to capture common headers in span attributes.
+- **\[Tooling\]** Introducing [license-checker](https://github.com/davglass/license-checker) to generate a license overview file (`node-licenses.csv`) of used project dependencies.
+  This is crucial for managing legal compliance and risk, ensuring that all used dependencies' licenses are compatible
+  with the projects commercial software's licensing model. This automated overview simplifies audits,
+  minimizes potential legal issues, and streamlines the process of addressing license conflicts.
 
+### 🩹 Patch Changes
+
+- **\[Accessibility\]** Removed arrow key handling from the focus change logic in the following components to align with [WCAG accessibility guidelines for keyboard navigation](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#fundamentalkeyboardnavigationconventions).
   - Removed all arrow key navigation in `/modules/ui/runtime/components/core/SFSlideIn.vue`
   - Removed left and right arrow key navigation in `/components/layout/headers/SFHeaderNavigationItem.vue`
   - Removed left and right arrow key navigation in `/modules/ui/runtime/composables/useDropdownKeyboardBehavior.ts`
-
-- dea7cf2: **\[E2E\]** Increased the reliability of logged-in user hydration tests by adding timeout waits to mitigate potential RPC issues.
-- f541425: **\[OSP\]** The order information section has been redesigned for a clearer and more user-friendly experience.
-- a2fe3f1: **\[E2E\]** Improved the hydration error tests by differentiating between guest and logged-in user contexts. Guest user tests now validate empty states for pages like Wishlist and Basket, while logged-in user tests verify pre-populated states. The scope of hydration testing has been expanded to include additional URLs defined in `/playwright/support/pages-hydration-check.json`. Error reporting has also been enhanced to provide more specific arguments and context for improved debugging.
-- d25bcb0: **\[E2E\]** Enhanced the stability of end-to-end tests for basket summary price verification with promotion products, specifically for mobile browser execution.
-- 0cfd58c: **\[E2E\]** Enhanced the "Verify PDP Multi-size product Store selector" end-to-end test to ensure the store selector flyout closes after store selection.
-- e6e8d44: **\[Build\]** The file watcher has been configured to ignore files that are not relevant to the build process.
-  This optimization reduces the workload on the watcher and improves overall build times during local development.
-- 2bf9cf9: **\[E2E\]** Adapted existing end-to-end tests to accommodate the recent design changes to the Login and Registration pages.
-- fd3ed9d: **\[Search\]** The search functionality now handles whitespace-only search queries more effectively.
-  Instead of performing a search, these queries are now ignored, preventing unnecessary API calls and providing a smoother user experience.
-- a6dd7c8: **\[E2E\]** Enhanced the reliability of the Country Detector end-to-end test in CI environments by addressing Safari-specific performance characteristics.
-- 332148a: ** \[UI\]** Fix sticky behavior of category side navigation in `/pages/c/[...categories]/[...slug]-[id].vue`.
-- 96b1a5f: **\[E2E\]** Updated end-to-end tests for the Account, Wishlist, and Basket features to accommodate the recent changes to login redirection.
+- **\[Account Area\]** Modified the `pickElements` function within the `SFAddressSummary` component to support the new `OrderAddress` type from `@scayle/storefront-nuxt@8.10`.
+  This update narrows and clarifies the supported types.
+- **\[CMS\]** Fixed missing product data in `CmsProduct` click event.
+  The `clickProduct` event in the `CmsProduct` component was not correctly emitting product data.
+  This issue has been resolved, and the event now includes the necessary product information when triggered.
+  - Related Components:
+    - Storyblok: `/modules/cms/providers/storyblok/components/Product.vue`
+    - Contentful: `/modules/cms/providers/contentful/components/Product.vue`
+- **\[Code Style\]** Improved clarity and consistency of `ExistingItemHandling` value names within `/composables/usePromotionGiftSelection.ts`, `/composables/useBasketActions.ts`, and `/composables/useBasketActions.nuxt.test.ts`
+- **\[Config\]** Improved Redis connection stability by adding `maxRetriesPerRequest` to prevent indefinite hangs.
+- **\[Config\]** Extended the `PublicShopConfig` interface with a new property: `countryCode`.
+  This addition addresses the need to distinguish shops based on region, especially in cases where the locale (language) is the same but the target country is different.
+  This allows for proper identification of shops in scenarios like Germany having both `de_DE` (German) and en_US (English) storefronts, where the locale alone is insufficient.
+- **\[E2E\]** Adapted the Search results page E2E tests to account for the updated design, specifically for scenarios with no search results.
+- **\[E2E\]** Improved stability of guest user registration E2E test by handling Toast message and User popover overlap.
+- **\[E2E\]** Enhanced the stability of end-to-end tests for PLP Filters and Pagination across all browsers during parallel test runs.
+- **\[E2E\]** Enhanced the reliability of end-to-end tests covering Search page Filters, ensuring consistent execution across all browsers when running in parallel.
+- **\[E2E\]** Increased the reliability of logged-in user hydration tests by adding timeout waits to mitigate potential RPC issues.
+- **\[E2E\]** Improved the hydration error tests by differentiating between guest and logged-in user contexts. Guest user tests now validate empty states for pages like Wishlist and Basket, while logged-in user tests verify pre-populated states. The scope of hydration testing has been expanded to include additional URLs defined in `/playwright/support/pages-hydration-check.json`. Error reporting has also been enhanced to provide more specific arguments and context for improved debugging.
+- **\[E2E\]** Enhanced the stability of end-to-end tests for basket summary price verification with promotion products, specifically for mobile browser execution.
+- **\[E2E\]** Enhanced the "Verify PDP Multi-size product Store selector" end-to-end test to ensure the store selector flyout closes after store selection.
+- **\[E2E\]** Adapted existing end-to-end tests to accommodate the recent design changes to the Login and Registration pages.
+- **\[E2E\]** Enhanced the reliability of the Country Detector end-to-end test in CI environments by addressing Safari-specific performance characteristics.
+- **\[E2E\]** Updated end-to-end tests for the Account, Wishlist, and Basket features to accommodate the recent changes to login redirection.
   Tests now verify correct redirection after successful login.
-- 5251e31: **\[Authentication\]** Refactored `/middleware/authGuard.global.ts` to conditionally fetch user data, skipping the process when an unprotected route is accessed.
-  This optimization reduces the number of network requests and improves page load times.
-- 377fc5f: **\[OSP\]** Improved the look and feel of the greeting box.
-- ee62088: **\[UI\]** Resolved a layout issue with the filter button within the `/pages/c/[...categories]/[...slug]-[id].vue` component.
+- **\[OSP\]** Fixed an edge case within the `SFOspProductCard` component where the OSP would throw an error if a product variant was missing a size attribute.
+  This scenario is rare but could occur under specific circumstances. The issue stemmed from a missing optional chaining operator when accessing the size attribute.
+  This has been corrected by adding the necessary optional chaining operator (`?.`) to the size attribute accessor.
+- **\[PDP\]** Product data is now loaded lazily by setting the `lazy` option of to `true`.
+  This change allows for variant preselection during Server-Side Rendering (SSR) and ensures that an appropriate HTTP error status code is returned if product data fetching fails.
+- **\[Search\]** The search result counter is now hidden while loading results.
+- **\[Search\]** The search functionality now handles whitespace-only search queries more effectively.
+  Instead of performing a search, these queries are now ignored, preventing unnecessary API calls and providing a smoother user experience.
+- **\[SEO\]** Improved SEO by switching the [BreadcrumbList JSON-LD schema-based markup](https://schema.org/BreadcrumbList) to use absolute URLs.
+  This change ensures search engines can correctly interpret the website's structure.
+- **\[UI\]** Use [color](https://github.com/Qix-/color) for RGBA manipulation and replacing the redundant `hexToRGBAColor` utility.
+- **\[UI\]** Input labels are now truncated when their text content exceeds the width of the corresponding input field.
+  This prevents labels from overflowing and overlapping other UI elements, maintaining a clean and organized interface.
+- **\[UI\]** The `SFBasketPopoverItems` component now displays sold-out items, providing users with a clearer view of all items in their basket, regardless of availability.
+- **\[UI\]** After refactoring to use prop destructuring in the `SFProductCardBadgesFooter` component, the default value of the `isPromotionBadgeFullWidth` prop was not being applied correctly.
+  This has been fixed, restoring the intended default behavior.
+- **\[UI\]** Implemented a focus trap in the `SFModal` component to maintain responsiveness when a `SFSlideIn` is also open.
+- **\[UI\]** The `isGiftSelectionShown` property in `SFProductPromotionSelectionModal` is now reset when the component is unmounted, preventing the modal from persisting across page navigations.
+- **\[UI\]** The `SFPriceInput` component now only emits the `update:model-value` event when the input value actually changes, preventing unnecessary updates.
+- **\[UI\]** Resolved a layout issue with the filter button within the `/pages/c/[...categories]/[...slug]-[id].vue` component.
+- **\[UI\]** Fix sticky behavior of category side navigation in `/pages/c/[...categories]/[...slug]-[id].vue`.
+
+### 🏡 Dependency Updates
+
+- Added dependency `@scayle/nuxt-image-provider@0.2.4`
+- Added dependency `@scayle/storefront-navigation@0.1.0`
+- Added dependency `@scayle/storefront-search@0.2.1`
+- Added dependency `jiti@2.4.2`
+- Added dependency `license-checker@25.0.1`
+- Removed dependency `globby@14.0.2`
+- Updated dependency `@contentful/live-preview@4.6.5` to `@contentful/live-preview@4.6.11`
+- Updated dependency `@nuxt/fonts@0.10.3` to `@nuxt/fonts@0.11.0`
+- Updated dependency `@scayle/nuxt-opentelemetry@0.5.7` to `@scayle/nuxt-opentelemetry@0.7.1`
+- Updated dependency `@scayle/omnichannel-nuxt@4.0.4` to `@scayle/omnichannel-nuxt@4.2.0`
+- Updated dependency `@scayle/storefront-country-detection@1.1.0` to `@scayle/storefront-country-detection@1.1.1`
+- Updated dependency `@scayle/storefront-nuxt@8.6.0` to `@scayle/storefront-nuxt@8.12.1`
+- Updated dependency `@scayle/storefront-product-detail@1.0.2` to `@scayle/storefront-product-detail@1.1.3`
+- Updated dependency `@scayle/storefront-product-listing@1.1.3` to `@scayle/storefront-product-listing@1.3.1`
+- Updated dependency `@storyblok/nuxt@6.2.2` to `@storyblok/nuxt@6.2.3`
+- Updated dependency `@storyblok/vue@8.1.10` to `@storyblok/vue@8.1.11`
+- Updated dependency `@vueuse/components@12.5.0` to `@vueuse/components@13.0.0`
+- Updated dependency `@vueuse/core@12.5.0` to `@vueuse/core@13.0.0`
+- Updated dependency `@vueuse/integrations@12.5.0` to `@vueuse/integrations@13.0.0`
+- Updated dependency `@vueuse/nuxt@12.5.0` to `@vueuse/nuxt@13.0.0`
+- Updated dependency `axios@1.7.9` to `axios@1.8.3`
+- Updated dependency `color@4.2.3` to `color@5.0.0`
+- Updated dependency `consola@3.4.0` to `consola@3.4.1`
+- Updated dependency `contentful@11.4.4` to `contentful@11.5.8`
+- Updated dependency `contentful-export@7.21.20` to `contentful-export@7.21.32`
+- Updated dependency `maska@3.0.4` to `maska@3.1.0`
+- Updated dependency `nanoid@5.0.9` to `nanoid@5.1.4`
+- Updated dependency `nuxi@3.21.1` to `nuxi@3.23.0`
+- Updated dependency `schema-dts@1.1.2` to `schema-dts@1.1.5`
+- Updated dependency `storyblok-js-client@6.10.7` to `storyblok-js-client@6.10.10`
+- Updated dependency `@changesets/cli@2.27.12` to `@changesets/cli@2.28.1`
+- Updated dependency `@eslint/eslintrc@3.2.0` to `@eslint/eslintrc@3.3.0`
+- Updated dependency `@nuxt/eslint@1.0.0` to `@nuxt/eslint@1.2.0`
+- Updated dependency `@nuxt/test-utils@3.15.4` to `@nuxt/test-utils@3.17.2`
+- Updated dependency `@types/node@22.12.0` to `@types/node@22.13.10`
+- Updated dependency `@typescript-eslint/scope-manager@8.22.0` to `@typescript-eslint/scope-manager@8.26.1`
+- Updated dependency `@typescript-eslint/utils@8.22.0` to `@typescript-eslint/utils@8.26.1`
+- Updated dependency `@upstash/redis@1.34.3` to `@upstash/redis@1.34.5`
+- Updated dependency `@vitest/coverage-v8@2.1.8` to `@vitest/coverage-v8@2.1.9`
+- Updated dependency `@vue/typescript-plugin@2.2.0` to `@vue/typescript-plugin@2.2.8`
+- Updated dependency `autoprefixer@10.4.20` to `autoprefixer@10.4.21`
+- Updated dependency `eslint@9.19.0` to `eslint@9.22.0`
+- Updated dependency `fishery@2.2.2` to `fishery@2.2.3`
+- Updated dependency `happy-dom@16.7.3` to `happy-dom@17.4.4`
+- Updated dependency `lint-staged@15.4.3` to `lint-staged@15.5.0`
+- Updated dependency `nuxt@3.14.1592` to `nuxt@3.15.4`
+- Updated dependency `nuxt-svgo@4.0.14` to `nuxt-svgo@4.0.15`
+- Updated dependency `pathe@2.0.2` to `pathe@2.0.3`
+- Updated dependency `postcss@8.5.1` to `postcss@8.5.3`
+- Updated dependency `typescript@5.7.3` to `typescript@5.8.2`
+- Updated dependency `unimport@4.0.0` to `unimport@4.1.2`
+- Updated dependency `vitest@2.1.8` to `vitest@2.1.9`
+- Updated dependency `vue-tsc@2.2.0` to `vue-tsc@2.2.8`
 
 ## 1.7.1
 
