@@ -11316,10 +11316,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha512-4jbtZXNAsfZbAHiiqjLPBiCl16dES1zI4Hpzzxw61Tk+loF+sBDBKx1ICKKKwIqQ7M0mFn1TmkN7euSncWgHiQ==
 
-nuxi@3.23.0:
-  version "3.23.0"
-  resolved "https://registry.yarnpkg.com/nuxi/-/nuxi-3.23.0.tgz#4572d6553e51e585d9196e77a9871f064b2c7f8a"
-  integrity sha512-CflueMTjA0iKA+avZ1lPsdr3HF09WABJAqNDullaoBjhiI+pGSV8TUmRtuX3CpChAAavIfjAJYsH7lA9hIdMww==
+nuxi@3.23.1:
+  version "3.23.1"
+  resolved "https://registry.yarnpkg.com/nuxi/-/nuxi-3.23.1.tgz#c09b1eacfc1b2763c69aa2555935a6ba2b7eaa0f"
+  integrity sha512-l5FJQRpI1qjoRvZBsSSur0Tr5KtRnffEUQLZNjL1aDyAEoXb/lshPdaiL4aEgcJmRK+lys/IATzIFNHzZJ9qsg==
 
 nuxt-svgo@4.0.15:
   version "4.0.15"
