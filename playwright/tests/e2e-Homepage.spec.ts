@@ -1,5 +1,5 @@
 import { expect, test } from '../fixtures/fixtures'
-import { getAllLinksFromPage } from '../support/utils'
+import { getAllLinksFromPage, isMobile } from '../support/utils'
 
 test.beforeEach(async ({ homePage, countryDetector, page }) => {
   await homePage.visitPage()
@@ -46,4 +46,41 @@ test('C2141228 Verify Homepage links', async ({ page, context }) => {
       }
     })
   }
+})
+
+test('C2167297 Verify Homepage Skip Links', async ({
+  homePage,
+  skipLinks,
+  page,
+  search,
+  mobileNavigation,
+}) => {
+  await test.step('Verify Skip to Main Content', async () => {
+    await homePage.homepageContent.press('Tab')
+    await skipLinks.buttonSkipToMain.waitFor()
+    await expect(skipLinks.buttonSkipToMain).toBeVisible()
+    await skipLinks.buttonSkipToMain.focus()
+    await skipLinks.buttonSkipToMain.press('Enter')
+    await expect(homePage.homepageMainContent).toBeFocused()
+  })
+  await test.step('Verify Skip to Search', async () => {
+    await page.reload()
+    await page.waitForLoadState('domcontentloaded')
+    await homePage.homepageContent.press('Tab')
+    await skipLinks.buttonSkipToSearch.waitFor()
+    await skipLinks.buttonSkipToSearch.focus()
+    await page.waitForLoadState('networkidle')
+    await skipLinks.buttonSkipToSearch.press('Enter')
+    if (isMobile(page)) {
+      await mobileNavigation.mobileSidebar.waitFor()
+      await expect(mobileNavigation.mobileSidebar).toBeAttached()
+      await mobileNavigation.searchForm.nth(0).waitFor()
+      await expect(mobileNavigation.searchForm.nth(0)).toBeVisible()
+    } else {
+      await search.searchForm.nth(1).waitFor()
+      await search.searchForm.nth(1).press('Enter')
+      await search.searchResetButton.nth(1).waitFor()
+      await expect(search.searchResetButton.nth(1)).toBeVisible()
+    }
+  })
 })

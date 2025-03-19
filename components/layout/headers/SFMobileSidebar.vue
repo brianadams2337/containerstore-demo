@@ -1,7 +1,8 @@
 <template>
-  <aside class="flex flex-col overscroll-contain">
+  <aside class="flex flex-col overscroll-contain" data-testid="mobile-sidebar">
     <SFSearchInput
       id="search-mobile"
+      data-testid="search-mobile"
       class="mt-1"
       @click-result="$emit('close')"
       @close="$emit('close')"

@@ -13,6 +13,7 @@
       aria-haspopup="listbox"
       :tabindex="hasFocus ? -1 : 0"
       class="group flex h-11 cursor-pointer items-center gap-2 overflow-hidden border border-gray-100 px-3 transition-all duration-150 max-lg:grow lg:h-10"
+      data-testid="search-form"
       :class="{
         'bg-white lg:rounded-md': hasFocus,
         'rounded-md bg-gray-100 pr-8 hover:bg-gray-200': !hasFocus,
@@ -49,6 +50,7 @@
         type="reset"
         variant="raw"
         class="h-6 rounded px-1.5 py-1 text-sm leading-5 text-gray-600 transition duration-150 hover:bg-gray-100 focus:bg-gray-100 focus:px-1.5"
+        data-testid="search-reset-button"
         :class="{ hidden: !hasFocus }"
         @click.stop="resetSearch"
         @keydown.enter.stop="resetSearch"

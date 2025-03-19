@@ -11,6 +11,9 @@ export class MobileNavigation {
   readonly searchSuggestionsItem: Locator
   readonly searchCategoryList: Locator
   readonly searchDisplayAllResults: Locator
+  readonly searchMobile: Locator
+  readonly searchForm: Locator
+  readonly mobileSidebar: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -25,6 +28,9 @@ export class MobileNavigation {
     this.searchCategoryList = page.getByTestId('search-category-list').nth(1)
     this.searchSuggestionsItem = page.getByTestId('search-suggestions-item')
     this.searchDisplayAllResults = page.getByTestId('display-all-results')
+    this.searchMobile = page.getByTestId('search-mobile')
+    this.searchForm = page.getByTestId('search-form')
+    this.mobileSidebar = page.getByTestId('mobile-sidebar')
   }
 
   async executeMobileSearch(searchTerm: string) {

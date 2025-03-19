@@ -5,6 +5,7 @@
   >
     <SFButton
       variant="secondary"
+      data-testid="button-skip-to-main"
       :aria-label="$t('a11y.skip_to_main')"
       @click="focusMainContent"
     >
@@ -12,6 +13,7 @@
     </SFButton>
     <SFButton
       variant="secondary"
+      data-testid="button-skip-to-search"
       :aria-label="$t('a11y.skip_to_search')"
       @click="focusSearch"
     >

@@ -12,6 +12,9 @@ export class Search {
   readonly searchDisplayAllResults: Locator
   readonly searchSuggestionsTagGroup: Locator
   readonly searchSuggestionsItem: Locator
+  readonly searchDesktop: Locator
+  readonly searchForm: Locator
+  readonly searchResetButton: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -25,6 +28,9 @@ export class Search {
       'search-suggestion-tag-group',
     )
     this.searchSuggestionsItem = page.getByTestId('search-suggestions-item')
+    this.searchDesktop = page.getByTestId('search-desktop')
+    this.searchForm = page.getByTestId('search-form')
+    this.searchResetButton = page.getByTestId('search-reset-button')
   }
 
   searchSuggestionTag(suggestionTag: string): Locator {

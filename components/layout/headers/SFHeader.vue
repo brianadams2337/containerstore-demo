@@ -51,7 +51,11 @@
         />
       </ul>
     </nav>
-    <SFSearchInput id="search-desktop" class="shrink grow max-lg:hidden" />
+    <SFSearchInput
+      id="search-desktop"
+      class="shrink grow max-lg:hidden"
+      data-testid="search-desktop"
+    />
     <div class="flex items-center max-lg:grow max-lg:justify-end">
       <SFUserNavigationItem
         class="mr-[1ch]"

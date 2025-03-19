@@ -26,6 +26,7 @@ import { RPC } from '../page-objects/components/rpc'
 import { FreeProductList } from '../page-objects/components/freeProductList'
 import { FreeProductModal } from '../page-objects/components/freeProductModal'
 import { OrderSuccessPage } from '../page-objects/orderSuccessPage'
+import { SkipLinks } from '../page-objects/components/skipLinks'
 
 interface Fixtures {
   rpc: RPC
@@ -55,6 +56,7 @@ interface Fixtures {
   freeProductList: FreeProductList
   freeProductModal: FreeProductModal
   orderSuccessPage: OrderSuccessPage
+  skipLinks: SkipLinks
 }
 
 export type OutputMode = 'json' | 'html' | 'csv'
@@ -166,6 +168,10 @@ export const test = base.extend<Fixtures>({
   orderSuccessPage: async ({ page }, use) => {
     const orderSucessPage = new OrderSuccessPage(page)
     await use(orderSucessPage)
+  },
+  skipLinks: async ({ page }, use) => {
+    const skipLinks = new SkipLinks(page)
+    await use(skipLinks)
   },
 })
 export { expect } from '@playwright/test'
