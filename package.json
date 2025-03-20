@@ -1,5 +1,5 @@
 {
-  "name": "@scayle/storefront-boilerplate-nuxt",
+  "name": "@scayle/storefront-application-nuxt",
   "description": "SCAYLE Storefront demo shop application based on Nuxt 3",
   "version": "1.8.0",
   "private": true,
