@@ -5,7 +5,7 @@
         currentPromotion?.customData.product?.badgeLabel ?? headline.offerText
       }}
     </span>
-    <h1
+    <h2
       class="inline-flex flex-wrap gap-x-[0.75ch] break-all text-xs font-medium"
     >
       {{ $t('promotion.automatic_discount_headline.add_label') }}
@@ -24,7 +24,7 @@
         }}
       </span>
       <IconInfoOutline class="size-4" />
-    </h1>
+    </h2>
   </div>
 </template>
 
