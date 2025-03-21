@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "2.28.1",
-    "@eslint/eslintrc": "3.3.0",
+    "@eslint/eslintrc": "3.3.1",
     "@gtm-support/vue-gtm": "3.1.0",
     "@nuxt/eslint": "1.2.0",
     "@nuxt/image": "1.10.0",
@@ -68,7 +68,7 @@
     "eslint-plugin-tailwindcss": "3.18.0",
     "eslint-plugin-unimport": "0.1.2",
     "eslint-plugin-vuejs-accessibility": "2.4.1",
-    "eslint": "9.22.0",
+    "eslint": "9.23.0",
     "fishery": "2.2.3",
     "happy-dom": "17.4.4",
     "jiti": "2.4.2",
