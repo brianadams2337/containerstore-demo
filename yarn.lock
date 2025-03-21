@@ -3587,19 +3587,19 @@
   dependencies:
     prettier-config-standard "^7.0.0"
 
-"@scayle/storefront-api@18.1.0":
-  version "18.1.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-api/-/storefront-api-18.1.0.tgz#c012ee53428f1887fa5972747f807715f7f6403b"
-  integrity sha512-FTrScQwLvrvLLudvuQt/vvDt1KnWnauY62hHp7ON7lQ+hVmCCea5+FmME8sA8l01gkN8Ac5Z6Gemlkhmdlr8rA==
+"@scayle/storefront-api@18.1.1":
+  version "18.1.1"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-api/-/storefront-api-18.1.1.tgz#9fd3026989597a12bcf19945fdceeddb04447260"
+  integrity sha512-2ed5dsaUHpRhCMHnDqnG5MtABcjYI3zB2+voIL134X8xV8r4Lxh05Vmo13ie3/C08W5/XKXRj/wIF/kUtyowwQ==
   dependencies:
     utility-types "3.11.0"
 
-"@scayle/storefront-core@8.14.1":
-  version "8.14.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-8.14.1.tgz#465254e6dcec155130bcfe36b58bbe8381842be3"
-  integrity sha512-Ee980dP1jLFsfLmm0RX0EWPHDRXGcOkrMe18mRTSZXvb+anJz7Zc8OEpC+9jLJEPlllaPBXa6r1UhyYeS1qRXg==
+"@scayle/storefront-core@8.14.2":
+  version "8.14.2"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-8.14.2.tgz#072c384fcef2cdcba8eae6f3d1aa3f5325bbbc89"
+  integrity sha512-r0LLhEPLbjhJakYIWLv2zfmjPoODujlGCW+ojH7YErahv5zqrAhmw2MO7R6VeOn9U52wAr9MWTGfZAA5jVjsYQ==
   dependencies:
-    "@scayle/storefront-api" "18.1.0"
+    "@scayle/storefront-api" "18.1.1"
     "@scayle/unstorage-scayle-kv-driver" "0.1.1"
     crypto-js "^4.2.0"
     hookable "^5.5.3"
@@ -3619,14 +3619,14 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-navigation/-/storefront-navigation-0.1.0.tgz#c622f02e05de26fcbd4121356e1ab2ef67066b9c"
   integrity sha512-6XIoK2fgAUFoaqC37zXRuudnK83OeQhT056Ow9OhJIZPj/KGyPQjYfZm0Gxg8JSa6Emct4KvQteROg/FI0yesQ==
 
-"@scayle/storefront-nuxt@8.12.1":
-  version "8.12.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.12.1.tgz#477e773a76fc68d57ee80ee6e690823de79c31d0"
-  integrity sha512-ZjhYYZh48k4k4B2HqVK0bKHaz7/W7abVxTnE7YOyLHAWwBDM8y3ZpUoTjTrXhpzF72Gj4up/XTiqHeb5h7TYIQ==
+"@scayle/storefront-nuxt@8.12.2":
+  version "8.12.2"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.12.2.tgz#af8fa06959bd92048d74139402953da1d082fb31"
+  integrity sha512-26mqNQGe+MM792DgdKDl+IixSc+t3r4IM4svBDGYDyb5UjZKin+fKb35xE7K/p2uaFMdSQlfLXEjkGsTjcOqGA==
   dependencies:
     "@opentelemetry/api" "^1.9.0"
     "@scayle/h3-session" "0.6.0"
-    "@scayle/storefront-core" "8.14.1"
+    "@scayle/storefront-core" "8.14.2"
     "@scayle/unstorage-compression-driver" "^0.2.4"
     "@vercel/nft" "0.29.2"
     "@vueuse/core" "13.0.0"
