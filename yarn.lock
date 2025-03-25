@@ -3434,10 +3434,10 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-navigation/-/storefront-navigation-0.1.0.tgz#c622f02e05de26fcbd4121356e1ab2ef67066b9c"
   integrity sha512-6XIoK2fgAUFoaqC37zXRuudnK83OeQhT056Ow9OhJIZPj/KGyPQjYfZm0Gxg8JSa6Emct4KvQteROg/FI0yesQ==
 
-"@scayle/storefront-nuxt@8.12.2":
-  version "8.12.2"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.12.2.tgz#af8fa06959bd92048d74139402953da1d082fb31"
-  integrity sha512-26mqNQGe+MM792DgdKDl+IixSc+t3r4IM4svBDGYDyb5UjZKin+fKb35xE7K/p2uaFMdSQlfLXEjkGsTjcOqGA==
+"@scayle/storefront-nuxt@8.12.3":
+  version "8.12.3"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.12.3.tgz#e8851b1e683bdf30936e42350b75f062ddb53343"
+  integrity sha512-jdo1BF4jnCwstC5yBeFLVt4i3M424SWH5Aie8uajrt5Fb5ONK/IdP9j6dqVgX8FcicMz9aod/FV9qbAuxBgBcA==
   dependencies:
     "@opentelemetry/api" "^1.9.0"
     "@scayle/h3-session" "0.6.0"
