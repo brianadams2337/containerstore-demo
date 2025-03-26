@@ -1,0 +1,10 @@
+config:
+  target: https://nuxt3-demo-latest.storefront.scayle.cloud/de
+  engines:
+    playwright: {}
+  processor: './testScripts.ts'
+  phases:
+    - name: rampUp
+      duration: 30
+      arrivalRate: 2
+      rampTo: 10

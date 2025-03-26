@@ -20,5 +20,5 @@ export default eslintConfigStorefront({ isNuxt: false }).append({
     'ts/no-floating-promises': 'error',
     'ts/await-thenable': 'error',
   },
-  ignores: ['playwright-report/', 'test-results/'],
+  ignores: ['playwright-report/', 'test-results/', 'tests/artillery/**'],
 })
