@@ -3369,17 +3369,19 @@
   resolved "https://registry.yarnpkg.com/@scayle/nuxt-image-provider/-/nuxt-image-provider-0.2.5.tgz#5f9855cd3c004108dba8d2915e2a4cd1fa85db39"
   integrity sha512-POxKTF2CpfJsiW9NFc2VXI8WGf3P4mR7PDQGUQhkbqVqH2rgn1nff9zfqJLRomISqvoyIsGcW8RbvcMNoZW+xA==
 
-"@scayle/nuxt-opentelemetry@0.8.0":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@scayle/nuxt-opentelemetry/-/nuxt-opentelemetry-0.8.0.tgz#01c8aab9b92cf5b016151e4a9919747610ac4ded"
-  integrity sha512-CxiclQ0c+ISxQjOBwH7hib4svw7dERyfmWWqOw0sPpT2PLmXBXCEKuf6GiiYSdIkZBKB4rfmoZx0YCfFddgd7g==
+"@scayle/nuxt-opentelemetry@0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@scayle/nuxt-opentelemetry/-/nuxt-opentelemetry-0.9.0.tgz#3f313e9aa53ec4798783539167158105a1d549b1"
+  integrity sha512-j6aX4YB+snUj540Vrp+lg2ZiqgjIWQ8P9B6oe8lKUZL7ARoKwOPqXQDf3RI4hpZYvohqmOLvPHTDpmWV7/DHoA==
   dependencies:
     "@nuxt/kit" "^3.12.3"
     "@opentelemetry/api" "1.9.0"
     "@opentelemetry/auto-instrumentations-node" "0.57.0"
     "@opentelemetry/core" "2.0.0"
+    "@opentelemetry/exporter-metrics-otlp-proto" "0.200.0"
     "@opentelemetry/exporter-trace-otlp-proto" "0.200.0"
     "@opentelemetry/instrumentation" "0.200.0"
+    "@opentelemetry/sdk-metrics" "2.0.0"
     "@opentelemetry/sdk-node" "0.200.0"
     "@opentelemetry/semantic-conventions" "1.30.0"
     "@vercel/otel" "1.10.4"
