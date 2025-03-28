@@ -28,6 +28,16 @@
           </SFLocalizedLink>
         </div>
         <SFShopSwitcher listbox-button-aria-id="mobile-shop-switcher" />
+        <SFButton
+          v-if="user"
+          variant="raw"
+          data-testid="logout-button"
+          class="ml-px p-2 px-2.5 text-lg font-normal leading-5 !text-gray-600 lg:text-sm"
+          @click="handleLogout"
+        >
+          <IconLogout class="mr-1 size-4" />
+          {{ $t('global.sign_out') }}
+        </SFButton>
       </div>
     </div>
   </aside>
@@ -38,13 +48,24 @@ import type { NavigationItems } from '@scayle/storefront-nuxt'
 import SFShopSwitcher from './SFShopSwitcher.vue'
 import SFMobileNavigation from './SFMobileNavigation.vue'
 import SFSearchInput from './search/SFSearchInput.vue'
+import { SFButton } from '#storefront-ui/components'
 import { routeList } from '~/utils'
 import SFLocalizedLink from '~/components/SFLocalizedLink.vue'
+import { useAuthentication } from '~/composables'
+import { useUser } from '#storefront/composables'
 
 const { isOpen, navigationItems } = defineProps<{
   isOpen: boolean
   navigationItems?: NavigationItems
 }>()
 
-defineEmits<{ close: [] }>()
+const emit = defineEmits<{ close: [] }>()
+
+const { user } = useUser()
+const { logout } = useAuthentication('logout')
+
+const handleLogout = async () => {
+  await logout()
+  emit('close')
+}
 </script>
