@@ -1,7 +1,7 @@
 <template>
   <div v-if="blok && status !== 'pending'" :class="marginClasses">
     <div class="flex w-full justify-between px-5 sm:px-14">
-      <SFHeadline v-if="blok?.fields.headline" tag="p" size="base" is-uppercase>
+      <SFHeadline v-if="blok?.fields.headline" tag="p" size="md" is-uppercase>
         {{ blok.fields.headline }}
       </SFHeadline>
 

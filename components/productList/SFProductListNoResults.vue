@@ -9,7 +9,7 @@
     >
       {{ $t('plp.no_results.title') }}
     </SFHeadline>
-    <SFHeadline class="mb-10 !font-normal text-gray-600" size="base">
+    <SFHeadline class="mb-10 !font-normal text-gray-600" size="md">
       {{ $t('plp.no_results.description') }}
     </SFHeadline>
     <div

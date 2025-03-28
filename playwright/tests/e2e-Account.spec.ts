@@ -8,100 +8,115 @@ import {
 } from '../support/constants'
 
 test.beforeEach(
-  async ({ signinPage, page, baseURL, countryDetector, header }, testInfo) => {
-    await expect(async () => {
-      const url = `${baseURL + SIGNIN_URL}?redirectUrl=${HOMEPAGE_PATH_DE}`
-      const projectName = testInfo.project.name
-      const { email, password } = getUserForBrowser(projectName)
+  async (
+    { signinPage, page, baseURL, countryDetector, header, toastMessage },
+    testInfo,
+  ) => {
+    const url = `${baseURL + SIGNIN_URL}?redirectUrl=${HOMEPAGE_PATH_DE}`
+    const projectName = testInfo.project.name
+    const { email, password } = getUserForBrowser(projectName)
 
-      await page.goto(url, { waitUntil: 'load' })
-      await countryDetector.closeModal()
-      await signinPage.fillLoginData(email, password)
-      await signinPage.clickLoginButton()
-      await page.waitForURL(HOMEPAGE_PATH_DE)
-      await header.mainHeader.waitFor()
-      await page.goto(baseURL + USER_ACCOUNT.accountUserPath, {
-        waitUntil: 'load',
-      })
-      await page.waitForTimeout(1500)
-      await page.waitForURL(baseURL + USER_ACCOUNT.accountUserPath)
-      await header.mainHeader.waitFor()
-    }).toPass()
+    await page.goto(url, { waitUntil: 'load' })
+    await countryDetector.closeModal()
+    await signinPage.fillLoginData(email, password)
+    await signinPage.clickLoginButton()
+    await toastMessage.toastInfo.waitFor()
+    await toastMessage.clickToastMessageButton()
+    await page.waitForURL(HOMEPAGE_PATH_DE)
+    await header.mainHeader.waitFor()
+    await header.headerLoginButton.click()
+    await page.waitForLoadState('domcontentloaded')
   },
 )
-test.setTimeout(60000)
-test.describe.configure({ mode: 'serial' })
 
-test('C2141211: Verify Account form elements', async ({ accountPage }) => {
-  await expect(async () => {
-    await expect(accountPage.genderButtonGroup).toBeVisible()
-    await Promise.all([
-      expect(accountPage.genderRadioButton('m')).toBeVisible(),
-      expect(accountPage.genderRadioButton('f')).toBeVisible(),
-      expect(accountPage.genderRadioButton('d')).toBeVisible(),
-    ])
-    await expect(accountPage.userFirstName).toBeVisible()
-    await expect(accountPage.userLastName).toBeVisible()
-    await expect(accountPage.userBirthDate).toBeVisible()
-    await expect(accountPage.userEmailAddress).toBeVisible()
-  }).toPass()
-})
-
-test('C2132122: Verify user data update', async ({
+test('C2188614 C2188628 Verify Account area landing page', async ({
   accountPage,
-  toastMessage,
+  page,
 }) => {
-  await test.step('Update user data - correct format', async () => {
-    await expect(async () => {
-      await accountPage.updateUserData(
-        USER_ACCOUNT.userFirstName,
-        USER_ACCOUNT.userLastName,
-        USER_ACCOUNT.userBirthDateCorrect,
-        true,
-      )
-      await toastMessage.assertToastInfoIsVisible()
-    }).toPass()
+  await test.step('Verify Orders tab is loaded by default', async () => {
+    await accountPage.accountTabOrders.waitFor()
+    await expect(accountPage.accountTabOrders).toHaveAttribute(
+      'aria-current',
+      'page',
+    )
+    expect(page.url()).toContain(USER_ACCOUNT.routeOrders)
   })
-  await test.step('Update user data - incorrect birth date', async () => {
-    await expect(async () => {
-      await accountPage.updateUserData(
-        USER_ACCOUNT.userFirstName,
-        USER_ACCOUNT.userLastName,
-        USER_ACCOUNT.userBirthDateIncorrect,
-        false,
-      )
-      await expect(accountPage.birthdateValidationLabel).toBeVisible()
-    }).toPass()
+  await test.step('Verify Subscription page is loaded', async () => {
+    await accountPage.accountTabSubscriptions.click()
+    await page.waitForLoadState('domcontentloaded')
+    await expect(accountPage.accountTabSubscriptions).toHaveAttribute(
+      'aria-current',
+      'page',
+    )
+    expect(page.url()).toContain(USER_ACCOUNT.routeSubscriptions)
+  })
+  await test.step('Verify Profile page is loaded', async () => {
+    await accountPage.accountTabProfile.click()
+    await page.waitForLoadState('domcontentloaded')
+    await expect(accountPage.accountTabProfile).toHaveAttribute(
+      'aria-current',
+      'page',
+    )
+    expect(page.url()).toContain(USER_ACCOUNT.routeProfile)
+    await expect(accountPage.userProfileHeadline).toBeVisible()
+    await expect(accountPage.accountInfoHeadline).toBeVisible()
+    await expect(accountPage.personalInfoHeadline).toBeVisible()
+    await expect(accountPage.passwordHeadline).toBeVisible()
   })
 })
 
-test('C2141212: Verify password change', async ({
+test('C2190952 Verify Account user data update', async ({
   accountPage,
   toastMessage,
   page,
 }) => {
-  await test.step('Change password - correct format', async () => {
-    await expect(async () => {
-      await accountPage.updatePassword(
-        TEST_USERS.testUserPassword,
-        TEST_USERS.testUserPassword,
-        TEST_USERS.testUserPassword,
-        true,
-      )
-      await toastMessage.assertToastInfoIsVisible()
-    }).toPass()
+  await test.step('Update user data - correct input format', async () => {
+    await accountPage.accountTabProfile.click()
+    await page.waitForLoadState('domcontentloaded')
+    await accountPage.selectGender('f')
+    await accountPage.updateUserData(
+      USER_ACCOUNT.userFirstName,
+      USER_ACCOUNT.userLastName,
+      USER_ACCOUNT.userBirthDateCorrect,
+      true,
+    )
+    await toastMessage.assertToastInfoIsVisible()
   })
-  await test.step('Change password - non-matching passwords', async () => {
-    await expect(async () => {
-      await accountPage.updatePassword(
-        TEST_USERS.testUserPassword,
-        TEST_USERS.testUserPassword,
-        USER_ACCOUNT.nonMatchingPassword,
-        false,
-      )
-      await page.waitForTimeout(1000)
-      await expect(accountPage.passwordMismatchLabel).toBeVisible()
-      await expect(accountPage.passwordUpdateButton).not.toBeEnabled()
-    }).toPass()
+  await test.step('Update user data - incorrect birth date input format', async () => {
+    await accountPage.updateUserData(
+      USER_ACCOUNT.userFirstName,
+      USER_ACCOUNT.userLastName,
+      USER_ACCOUNT.userBirthDateIncorrect,
+      false,
+    )
+    await expect(accountPage.birthdateValidationLabel).toBeVisible()
+    await expect(accountPage.formSaveButton).not.toBeEnabled()
+  })
+})
+
+test('C2188629 Verify Account password update', async ({
+  accountPage,
+  toastMessage,
+  page,
+}) => {
+  await test.step('Update password - correct format and matching passwords', async () => {
+    await accountPage.accountTabProfile.click()
+    await page.waitForLoadState('domcontentloaded')
+    await accountPage.updatePassword(
+      TEST_USERS.testUserPassword,
+      TEST_USERS.testUserPassword,
+      true,
+    )
+    await toastMessage.assertToastInfoIsVisible()
+    await toastMessage.clickToastMessageButton()
+  })
+  await test.step('Update password - incorrect current password', async () => {
+    await accountPage.updatePassword(
+      USER_ACCOUNT.nonMatchingPassword,
+      TEST_USERS.testUserPassword,
+      true,
+    )
+    await accountPage.passwordErrorMessage.waitFor()
+    await expect(accountPage.passwordErrorMessage).toBeVisible()
   })
 })

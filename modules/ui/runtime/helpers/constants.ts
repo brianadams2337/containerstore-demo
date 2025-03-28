@@ -17,7 +17,8 @@ export const HeadlineSize = {
   '2XL': '2xl',
   XL: 'xl',
   LG: 'lg',
-  MD: 'base',
+  MD: 'md',
+  BASE: 'base',
   SM: 'sm',
   XS: 'xs',
 } as const

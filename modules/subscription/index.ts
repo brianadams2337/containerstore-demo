@@ -1,15 +1,9 @@
-import {
-  addComponentsDir,
-  addImportsDir,
-  createResolver,
-  defineNuxtModule,
-  extendPages,
-} from '@nuxt/kit'
+import { createResolver, defineNuxtModule, extendPages } from '@nuxt/kit'
+import type { NuxtPage } from 'nuxt/schema'
 
 type ModuleOptions = {
   overviewPagePath?: string
   cancellationPagePath?: string
-  autoImports?: boolean
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -25,20 +19,19 @@ export default defineNuxtModule<ModuleOptions>({
   async setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
 
-    if (options.autoImports) {
-      await addComponentsDir({
-        path: resolve('./components'),
-        // Only auto import Vue components
-        extensions: ['vue'],
-      })
-      addImportsDir(resolve('./composables'))
-      addImportsDir(resolve('./helpers'))
-    }
-
     nuxt.options.alias['#storefront-subscription'] = resolve('./')
 
+    const getAccountPage = (pages: NuxtPage[]) => {
+      const accountPage = pages.find(({ name }) => name === 'account')
+      if (!accountPage) {
+        console.error(`"account" page does not exist.`)
+        return
+      }
+      return accountPage
+    }
+
     extendPages((pages) => {
-      pages.push({
+      getAccountPage(pages)?.children?.push({
         name: 'subscription-overview',
         path: options.overviewPagePath ?? '/account/subscription',
         file: resolve('./pages/subscription.vue'),
@@ -46,7 +39,7 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     extendPages((pages) => {
-      pages.push({
+      getAccountPage(pages)?.children?.push({
         name: 'subscription-cancellations',
         path:
           options.cancellationPagePath ?? '/account/subscription-cancellations',

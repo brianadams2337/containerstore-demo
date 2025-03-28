@@ -8,7 +8,9 @@
       </SFHeadline>
       <div>
         <div
-          v-for="({ items, shipment }, packageId) in deliveries"
+          v-for="({ items, shipment }, packageId) in getOrderDeliveries(
+            orderData,
+          )"
           :key="packageId"
           class="grid grid-cols-1 md:grid-cols-[minmax(auto,400px)]"
         >
@@ -26,7 +28,7 @@
               :key="id"
               class="pt-3"
             >
-              <SFOspProductCard
+              <SFOrderDetailProductCard
                 v-if="product?.advancedAttributes && variant"
                 :variant="variant"
                 :product="product"
@@ -38,10 +40,8 @@
             </li>
           </ul>
         </div>
-
-        <!-- eslint-disable-next-line tailwindcss/no-custom-classname -->
         <div class="grid grid-cols-1 md:grid-cols-[minmax(auto,400px)]">
-          <SFOspPaymentSummary :cost="orderData.cost" />
+          <SFOrderDetailPaymentSummary :cost="orderData.cost" />
         </div>
       </div>
     </div>
@@ -49,29 +49,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import SFOspPaymentSummary from './SFOspPaymentSummary.vue'
+import SFOrderDetailProductCard from '../order/detail/SFOrderDetailProductCard.vue'
+import SFOrderDetailPaymentSummary from '../order/detail/SFOrderDetailPaymentSummary.vue'
 import SFOspDeliveryDate from './SFOspDeliveryDate.vue'
-import SFOspProductCard from './SFOspProductCard.vue'
 import { SFHeadline } from '#storefront-ui/components'
-import type { Order, OrderItem, Package } from '~/types/order'
+import type { Order } from '~/types/order'
+import { getOrderDeliveries } from '~/utils'
 
-const { orderData } = defineProps<{
-  orderData: Order
-}>()
-
-const deliveries = computed(() => {
-  return (orderData?.items ?? []).reduce<
-    Record<number, { items: OrderItem[]; shipment: Package }>
-  >((group, item: OrderItem) => {
-    const key = item.packageId
-    const shipment = orderData.packages?.find(({ id }) => id === key)
-    if (!shipment) {
-      return group
-    }
-    group[key] ??= { items: [], shipment }
-    group[key].items.push(item)
-    return group
-  }, {})
-})
+const { orderData } = defineProps<{ orderData: Order }>()
 </script>

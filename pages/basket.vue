@@ -168,8 +168,8 @@ const {
 } = useNuxtApp()
 
 useSeoMeta({
-  title: $i18n.t('navigation.meta.basket'),
   robots: 'noindex,follow',
+  title: $i18n.t('basket.meta.title'),
   description: $i18n.t('basket.meta.description', { shopName }),
 })
 

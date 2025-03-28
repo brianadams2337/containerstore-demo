@@ -13,7 +13,7 @@
     "wishlist": "/wishlist",
     "basket": "/basket",
     "account": "/account",
-    "user": "/account/user",
+    "user": "/account/profile",
     "orders": "/account/orders/5646"
   }
 }

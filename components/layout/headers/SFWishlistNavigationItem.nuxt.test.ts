@@ -3,7 +3,7 @@ import { renderSuspended } from '@nuxt/test-utils/runtime'
 import { expect, it, vi } from 'vitest'
 import { fireEvent } from '@testing-library/vue'
 import SFWishlistNavigationItem from './SFWishlistNavigationItem.vue'
-import SFLoginActions from '~/components/account/popover/SFLoginActions.vue'
+import SFLoginActions from './account/SFLoginActions.vue'
 
 const { useWishlist } = vi.hoisted(() => ({
   useWishlist: vi.fn(),

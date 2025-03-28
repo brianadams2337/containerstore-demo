@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="onSubmit">
-    <SFAuthErrorMessageContainer
+    <SFErrorMessageContainer
       data-testid="forgot-password-error-message-container"
       :message="errorMessage"
       class="mb-8"
@@ -48,7 +48,7 @@
 import { ref } from 'vue'
 import useVuelidate from '@vuelidate/core'
 import { watchImmediate } from '@vueuse/core'
-import SFAuthErrorMessageContainer from '../SFAuthErrorMessageContainer.vue'
+import SFErrorMessageContainer from '../../SFErrorMessageContainer.vue'
 import {
   useValidationRules,
   useAuthentication,

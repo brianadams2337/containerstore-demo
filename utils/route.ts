@@ -29,7 +29,7 @@ type Link =
   | 'signin'
   | 'signinCallback'
   | 'signup'
-  | 'user'
+  | 'profile'
   | 'orders'
   | 'account'
   | 'pdp'
@@ -65,7 +65,11 @@ export const routeList: LinkList = {
   signinCallback: { name: 'signin-callback', path: '/signin/callback' },
   signup: { name: 'signin', path: '/signin', query: { register: 'true' } },
   checkout: { name: 'checkout', path: '/checkout', isProtected: true },
-  user: { name: 'account-user', path: '/account/user', isProtected: true },
+  profile: {
+    name: 'account-profile',
+    path: '/account/profile',
+    isProtected: true,
+  },
   account: { name: 'account', path: '/account', isProtected: true },
   orders: {
     name: 'account-orders',

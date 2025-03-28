@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="onSubmit">
-    <SFAuthErrorMessageContainer
+    <SFErrorMessageContainer
       data-testid="reset-password-error-message-container"
       :message="errorMessage"
       class="mb-8"
@@ -34,8 +34,8 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import useVuelidate from '@vuelidate/core'
-import SFAuthErrorMessageContainer from '../SFAuthErrorMessageContainer.vue'
-import SFPasswordInput from '../SFPasswordInput.vue'
+import SFErrorMessageContainer from '../../SFErrorMessageContainer.vue'
+import SFPasswordInput from '../../form/SFPasswordInput.vue'
 import { useValidationRules, useAuthentication } from '~/composables'
 import { SFButton, SFValidatedInputGroup } from '#storefront-ui/components'
 import { PASSWORD_MIN_LENGTH } from '~/constants/password'

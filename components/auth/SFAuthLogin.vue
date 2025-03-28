@@ -5,7 +5,7 @@
     data-testid="login-form"
     @submit.prevent="onSubmit"
   >
-    <SFAuthErrorMessageContainer
+    <SFErrorMessageContainer
       data-testid="login-error-message-container"
       :message="errorMessage"
       class="mb-8"
@@ -78,13 +78,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { reactive, computed } from 'vue'
 import useVuelidate from '@vuelidate/core'
 import SFLocalizedLink from '../SFLocalizedLink.vue'
+import SFErrorMessageContainer from '../SFErrorMessageContainer.vue'
+import SFPasswordInput from '../form/SFPasswordInput.vue'
 import SFAuthIDPRedirects from './SFAuthIDPRedirects.vue'
-import SFAuthErrorMessageContainer from './SFAuthErrorMessageContainer.vue'
 import SFAuthForgotPassword from './forgotPassword/SFAuthForgotPassword.vue'
-import SFPasswordInput from './SFPasswordInput.vue'
 import { useValidationRules, useAuthentication } from '~/composables'
 import {
   SFButton,
@@ -97,7 +97,11 @@ import { PASSWORD_MIN_LENGTH } from '~/constants/password'
 
 defineProps<{ externalIDPRedirects?: Record<string, string> }>()
 
-const userPayload = ref<Record<'email' | 'password', string>>({
+// Using `reactive` instead of `ref` for forms with multiple inputs.
+// While both `ref` and `reactive` can achieve reactivity with objects, `reactive`
+// is specifically optimized for managing collections of reactive properties,
+// making it a more natural and efficient choice for complex forms.
+const userPayload = reactive<Record<'email' | 'password', string>>({
   email: '',
   password: '',
 })
@@ -106,7 +110,7 @@ const { login, isSubmitting, errorMessage } = useAuthentication('login')
 const validationRules = useValidationRules()
 
 const prefilledEmailForForgotPassword = computed(() => {
-  return v.value.email.$invalid ? '' : userPayload.value.email
+  return v.value.email.$invalid ? '' : userPayload.email
 })
 
 const rules = {
@@ -121,7 +125,7 @@ const rules = {
   },
 }
 
-const v = useVuelidate(rules, userPayload.value)
+const v = useVuelidate(rules, userPayload)
 
 const onSubmit = async () => {
   const isValid = await v.value.$validate()
@@ -129,6 +133,6 @@ const onSubmit = async () => {
     return
   }
 
-  await login(userPayload.value)
+  await login(userPayload)
 }
 </script>

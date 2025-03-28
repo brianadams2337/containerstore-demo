@@ -28,13 +28,13 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useMounted } from '@vueuse/core'
+import SFUserActions from './account/SFUserActions.vue'
+import SFLoginActions from './account/SFLoginActions.vue'
 import { useUser } from '#storefront/composables'
 import SFLocalizedLink from '~/components/SFLocalizedLink.vue'
 import { SFPopover } from '~/modules/ui/runtime/components'
 import { routeList } from '~/utils'
 import SFAsyncDataWrapper from '~/components/SFAsyncDataWrapper.vue'
-import SFUserActions from '~/components/account/popover/SFUserActions.vue'
-import SFLoginActions from '~/components/account/popover/SFLoginActions.vue'
 import { useRoute } from '#app/composables/router'
 import { useRouteHelpers } from '~/composables'
 

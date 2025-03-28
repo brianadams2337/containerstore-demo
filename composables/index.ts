@@ -20,6 +20,9 @@ export * from './usePromotionBanner'
 // Auth
 export * from './useAuthentication'
 
+// Order
+export * from './useOrderProductDetails'
+
 export * from './useBanner'
 export * from './useBreadcrumbs'
 export * from './useCheckoutWebComponent'
@@ -32,7 +35,6 @@ export * from './useFirstDayOfWeek'
 export * from './useFormatDate'
 export * from './useFormatDistance'
 export * from './useJsonld'
-export * from './useOrderDetails'
 export * from './usePageState'
 export * from './useProductBaseInfo'
 export * from './useProductPromotions'

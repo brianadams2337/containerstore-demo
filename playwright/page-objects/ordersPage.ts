@@ -17,6 +17,11 @@ export class OrdersPage {
   readonly headlineNoOrders: Locator
   readonly buttonContinueShopping: Locator
   readonly addressMobile: Locator
+  readonly ordersHeadline: Locator
+  readonly orderItemHeadline: Locator
+  readonly orderDetailsBackButton: Locator
+  readonly orderDetailsHeadline: Locator
+  readonly emptyState: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -33,6 +38,11 @@ export class OrdersPage {
     this.headlineNoOrders = page.getByTestId('headline-no-orders')
     this.buttonContinueShopping = page.getByTestId('button-continue-shopping')
     this.addressMobile = page.getByTestId('address-card-mobile')
+    this.ordersHeadline = page.getByTestId('orders-headline')
+    this.orderItemHeadline = page.getByTestId('order-item-headline')
+    this.orderDetailsBackButton = page.getByTestId('back-to-order-list')
+    this.orderDetailsHeadline = page.getByTestId('order-detail-headline')
+    this.emptyState = page.getByTestId('empty-state')
   }
 
   async visitOrdersPage(path: string, baseUrl: string) {
@@ -62,5 +72,23 @@ export class OrdersPage {
     await this.paymentHeader.waitFor()
     await expect(this.paymentOrderValue).toBeVisible()
     await expect(this.paymentShippingCost).toBeVisible()
+  }
+
+  orderDetailsButton(order: string): Locator {
+    return this.page.getByTestId(`go-to-order-detail-${order}`)
+  }
+
+  ordersPageButton(page: string): Locator {
+    return this.page.getByTestId(`paginationButton-${page}`)
+  }
+
+  async selectOrder(order: string) {
+    await this.orderDetailsButton(order).waitFor()
+    await this.orderDetailsButton(order).click()
+  }
+
+  async selectPage(page: string) {
+    await this.ordersPageButton(page).waitFor()
+    await this.ordersPageButton(page).click()
   }
 }

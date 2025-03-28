@@ -5,7 +5,6 @@ export class AccountPage {
   readonly page: Page
   readonly rpc: RPC
   readonly logoutButton: Locator
-  readonly genderButtonGroup: Locator
   readonly userFirstName: Locator
   readonly userLastName: Locator
   readonly userBirthDate: Locator
@@ -22,17 +21,25 @@ export class AccountPage {
   readonly sectionBirthdate: Locator
   readonly sectionPasswordRepeat: Locator
   readonly birthdateValidationLabel: Locator
+  readonly accountTabOrders: Locator
+  readonly accountTabSubscriptions: Locator
+  readonly accountTabProfile: Locator
+  readonly passwordErrorMessage: Locator
+  readonly userProfileHeadline: Locator
+  readonly accountInfoHeadline: Locator
+  readonly personalInfoHeadline: Locator
+  readonly passwordHeadline: Locator
+  readonly genderSelection: Locator
 
   constructor(page: Page, rpc: RPC) {
     this.page = page
     this.rpc = rpc
     this.logoutButton = page.getByTestId('logout-button')
-    this.genderButtonGroup = page.getByTestId('radio-group-gender')
     this.userFirstName = page.getByTestId('user-first-name')
     this.userLastName = page.getByTestId('user-last-name')
     this.userBirthDate = page.getByTestId('user-birthdate')
     this.userEmailAddress = page.getByTestId('user-email-address')
-    this.formSaveButton = page.getByTestId('save-button')
+    this.formSaveButton = page.getByTestId('personal-info-submit')
     this.passwordCurrent = page.locator(
       '[data-testid="current-password"][type="password"]',
     )
@@ -42,7 +49,7 @@ export class AccountPage {
     this.passwordNewRepeat = page.locator(
       '[data-testid="new-password-repeat"][type="password"]',
     )
-    this.passwordUpdateButton = page.getByTestId('update-password-button')
+    this.passwordUpdateButton = page.getByTestId('update-password-submit')
     this.formPasswordUpdate = page.getByTestId('form-password-update')
     this.formValidationErrorLabel = page.getByTestId('validation-error-text')
     this.sectionPasswordRepeat = page.getByTestId('section-password-repeat')
@@ -54,10 +61,21 @@ export class AccountPage {
     this.birthdateValidationLabel = this.sectionBirthdate.getByTestId(
       'validation-error-text',
     )
-  }
-
-  genderRadioButton(gender: string): Locator {
-    return this.genderButtonGroup.getByTestId(`radio-button-${gender}`)
+    this.accountTabOrders = page.getByTestId('account-area-tab-0')
+    this.accountTabSubscriptions = page.getByTestId('account-area-tab-1')
+    this.accountTabProfile = page.getByTestId('account-area-tab-2')
+    this.passwordErrorMessage = page.getByTestId(
+      'password-error-message-container',
+    )
+    this.userProfileHeadline = page.getByTestId('user-profile-headline')
+    this.accountInfoHeadline = page.getByTestId(
+      'profile-account-information-headline',
+    )
+    this.personalInfoHeadline = page.getByTestId(
+      'profile-personal-information-headline',
+    )
+    this.passwordHeadline = page.getByTestId('profile-password-headline')
+    this.genderSelection = page.getByTestId('gender-selection')
   }
 
   async clickLogoutButton() {
@@ -94,13 +112,11 @@ export class AccountPage {
   async updatePassword(
     currentPassword: string,
     newPassword: string,
-    newPasswordRepeat: string,
     clickUpdateButton: boolean,
   ) {
     const passwordFields = [
       { field: this.passwordCurrent, value: currentPassword },
       { field: this.passwordNew, value: newPassword },
-      { field: this.passwordNewRepeat, value: newPasswordRepeat },
     ]
 
     for (const { field, value } of passwordFields) {
@@ -124,5 +140,16 @@ export class AccountPage {
       console.error('Error authenticating user:', error)
       throw error
     }
+  }
+
+  genderOption(gender: string): Locator {
+    return this.page.getByTestId(`gender-option-${gender}`)
+  }
+
+  async selectGender(gender: string) {
+    await this.genderSelection.waitFor()
+    await this.genderSelection.click()
+    await this.genderOption(gender).waitFor()
+    await this.genderOption(gender).click()
   }
 }

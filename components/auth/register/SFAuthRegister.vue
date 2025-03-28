@@ -7,7 +7,7 @@
     @submit.prevent="onSubmit"
     @keydown.enter.prevent="onEnter"
   >
-    <SFAuthErrorMessageContainer
+    <SFErrorMessageContainer
       data-testid="register-error-message-container"
       :message="errorMessage"
       class="mb-8"
@@ -112,13 +112,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, useTemplateRef } from 'vue'
+import { ref, useTemplateRef, reactive } from 'vue'
 import useVuelidate from '@vuelidate/core'
 import type { Gender } from '@scayle/storefront-nuxt'
 import type { Required } from 'utility-types'
-import SFPasswordInput from '../SFPasswordInput.vue'
-import SFGenderSelection from '../SFGenderSelection.vue'
-import SFAuthErrorMessageContainer from '../SFAuthErrorMessageContainer.vue'
+import SFPasswordInput from '../../form/SFPasswordInput.vue'
+import SFGenderSelection from '../../form/SFGenderSelection.vue'
+import SFErrorMessageContainer from '../../SFErrorMessageContainer.vue'
 import SFAuthIDPRedirects from '../SFAuthIDPRedirects.vue'
 import SFAuthRegisterPrivacyDisclaimer from './SFAuthRegisterPrivacyDisclaimer.vue'
 import SFAuthRegisterToggleGuest from './SFAuthRegisterToggleGuest.vue'
@@ -152,7 +152,11 @@ type UserPayload = {
   password: string
 }
 
-const userPayload = ref<UserPayload>({
+// Using `reactive` instead of `ref` for forms with multiple inputs.
+// While both `ref` and `reactive` can achieve reactivity with objects, `reactive`
+// is specifically optimized for managing collections of reactive properties,
+// making it a more natural and efficient choice for complex forms.
+const userPayload = reactive<UserPayload>({
   gender: undefined,
   first_name: '',
   last_name: '',
@@ -208,7 +212,7 @@ const onSubmit = async () => {
     return
   }
 
-  const { password, ...payload } = userPayload.value
+  const { password, ...payload } = userPayload
 
   if (isGuestFlowEnabled.value) {
     await guestLogin(payload as Required<Omit<UserPayload, 'password'>>)
@@ -240,6 +244,6 @@ const v = useVuelidate(
       minLength: validationRules.minLength(PASSWORD_MIN_LENGTH),
     },
   },
-  userPayload.value as Required<UserPayload>,
+  userPayload as Required<UserPayload>,
 )
 </script>

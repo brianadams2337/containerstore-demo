@@ -97,17 +97,10 @@
     "already_in_basket": "Already in basket"
   },
   "navigation": {
-    "my_account": "My Account",
-    "my_orders": "My Orders",
-    "user_settings": "Account Settings",
     "home": "Storefront Core Boilerplate",
     "checkout": "Checkout",
-    "osp": "Your order overview",
     "location": "Find a Store",
-    "wishlist_aria_label": "Wishlist | Wishlist, {count} item | Wishlist, {count} items",
-    "meta": {
-      "basket": "Basket"
-    }
+    "wishlist_aria_label": "Wishlist | Wishlist, {count} item | Wishlist, {count} items"
   },
   "search": {
     "page": {
@@ -182,6 +175,7 @@
     "available_products": "Available products",
     "unavailable_products": "Unavailable products",
     "meta": {
+      "title": "Basket",
       "description": "Review the items in your basket and proceed to checkout easily. Secure and hassle-free shopping at {shopName}."
     },
     "voucher_disclaimer": "Vouchers can be applied in the last step of the order."
@@ -200,38 +194,87 @@
     "show": "Show password"
   },
   "my_account": {
-    "navigation": "My Account",
-    "profile_menu": "Account settings",
-    "password": "Password",
-    "orders_menu": "Your orders",
-    "orders_count": "0 Orders | 1 Order | {count} Orders",
-    "personal_data_title": "Change your personal data",
-    "no_orders_found": "No orders found",
-    "subscriptions_menu": "Your subscriptions",
-    "subscriptions_subtitle": "Change your subscriptions",
-    "orders": {
-      "overview": "Order summary",
-      "order_summary_header": "Order from {date}",
-      "paid_with": "Paid with",
-      "order_value": "Order value",
-      "shipping": "Shipping costs",
-      "residual_value": "Remaining value",
-      "item_count": "1 item | {count} items",
-      "address_label": "Shipping and billing address",
-      "shipping_address_label": "Shipping address",
-      "billing_address_label": "Billing address",
-      "expected_delivery_from": "Expected",
-      "delivery": "Delivery",
-      "details": "Details"
+    "meta": {
+      "title": "Your Account",
+      "description": "Manage your profile, orders, and subscriptions in one place."
     },
-    "user": {
-      "save_message": "Your information has been succesfully saved",
-      "save_label": "Save",
-      "save_error": "The information could not be saved",
-      "update_password_label": "Update password",
-      "password_update_success": "Password updated",
-      "password_update_error": "The password update did not work, try again!",
-      "email_change_hint": "Please contact customer service to change your email."
+    "tabs": {
+      "orders": "Orders",
+      "profile": "Profile",
+      "subscriptions": "Subscriptions"
+    },
+    "title": "Your Account",
+    "subscriptions_menu": "Your subscriptions",
+    "navigation": "My Account",
+    "orders": {
+      "title": "Your Orders",
+      "meta": {
+        "title": "Your Orders",
+        "description": "Track your past and current orders with status updates."
+      },
+      "no_results": {
+        "title": "You haven’t placed any orders yet.",
+        "description": "Once you make a purchase, your order details will appear here."
+      },
+      "menu": "Your orders",
+      "order_date": "Order Date",
+      "items_count": "Items",
+      "detail": {
+        "title": "Order #{id}",
+        "meta": {
+          "title": "Order #{id}",
+          "description": "View details and status of your order #{id}."
+        },
+        "back": "Back",
+        "order_details": "Order Details",
+        "go_to_order": "Open to order detail",
+        "order_date": "Order Date",
+        "payment_details": "Payment Details",
+        "payment_method": "Payment Method",
+        "delivery_and_billing_address": "Delivery & Billing Address",
+        "delivery_address": "Delivery Address",
+        "billing_address": "Billing Address",
+        "size": "Size",
+        "color": "Color",
+        "quantity_label": "Quantity",
+        "total": "Total",
+        "subtotal": "Subtotal",
+        "shipping_costs": "Shipping"
+      }
+    },
+    "profile": {
+      "title": "Manage your Account",
+      "meta": {
+        "title": "Account Settings",
+        "description": "Update your personal information, email, and password here."
+      },
+      "menu": "Account settings",
+      "greeting": "Welcome, {firstName}!",
+      "description": "Manage your personal details and keep your account secure.",
+      "account_information": {
+        "title": "Account Information",
+        "customer_number": "Customer number:",
+        "email": "Registered email:",
+        "disclaimer": "Email changes are not supported. If you need assistance, please contact support."
+      },
+      "personal_information": {
+        "title": "Personal Information",
+        "description": "Update your personal details to keep your account up to date.",
+        "success_message": "Your data has been successfully updated.",
+        "error_message": "The information couldn’t be saved. Please try again."
+      },
+      "password": {
+        "title": "Password Management",
+        "description": "Keep your account secure by updating your password regularly.",
+        "idp_description": "Your account is secured through an external login provider, so changing your password here isn’t necessary. To update your password, please visit your login provider’s settings.",
+        "success_message": "Your password has been successfully updated.",
+        "error": {
+          "400_bad_request": "Your request could not be processed, please try again.",
+          "401_unauthorized": "Your request could not be processed, please try again.",
+          "403_forbidden": "Your password couldn’t be updated. Please check your current password and try again."
+        }
+      },
+      "save_label": "Save"
     },
     "popover": {
       "greeting": "Hello {firstName}"
@@ -326,7 +369,6 @@
   "osp": {
     "order_details": "Order details",
     "customer_id": "Customer Number",
-    "shipping_costs": "Shipping",
     "delivery_address": "Delivery Address",
     "billing_address": "Billing Address",
     "delivery_and_billing_address": "Delivery & Billing Address",
@@ -334,18 +376,11 @@
     "estimated_delivery_date": "Expected delivery",
     "delivered_by": "Shipped by",
     "intro": "Thank you for your purchase!",
-    "subtotal": "Subtotal",
     "order_date": "Order Date",
     "order_nr": "Order Number ",
-    "order_overview": "Order overview",
     "order_number": "Order #{orderNumber}",
     "payment_details": "Payment Details",
     "payment_method": "Payment method",
-    "quantity_label": "Quantity",
-    "size": "Size",
-    "color": "Color",
-    "tax": "19% VAT",
-    "total": "Total",
     "no_order_found": {
       "title": "The order information could not be found.",
       "description": "Your order details could not be retrieved. The link may have expired or is invalid. Please check your email for the correct link or contact support for assistance."
@@ -361,20 +396,6 @@
     "meta": {
       "title": "Order confirmed %separator Thank you for your purchase",
       "description": "Thank you for your order! Your purchase is confirmed. Check your email for the order details."
-    },
-    "subscription": {
-      "title": "Subscription",
-      "interval": "Interval",
-      "follow_up_delivery": "Follow-up delivery",
-      "interval_keys": {
-        "1_months_1": "1 month",
-        "2_months": "2 months",
-        "3_months": "3 months"
-      },
-      "delivery_keys": {
-        "1": "Every 1st of the month",
-        "15": "Every 15th of the month"
-      }
     }
   },
   "sign_in_page": {
@@ -499,6 +520,11 @@
   },
   "subscription": {
     "title": "Subscription",
+    "headline": "Manage your subscriptions",
+    "meta": {
+      "title": "Your Subscriptions",
+      "description": "Manage your active and past subscriptions effortlessly."
+    },
     "subscribe": "Subscribe & Save",
     "subscribe_with_reduction": "Subscribe & Save up to {percentage}%",
     "interval": "Interval",
@@ -509,7 +535,19 @@
     "not_eligible_message": "The selected size is not eligible for a subscription",
     "term": "Term",
     "add_to_basket": "Subscribe for {interval}",
-    "page_title": "My subscriptions"
+    "order": {
+      "interval": "Interval",
+      "follow_up_delivery": "Follow-up delivery",
+      "interval_keys": {
+        "1_months_1": "1 month",
+        "2_months": "2 months",
+        "3_months": "3 months"
+      },
+      "delivery_keys": {
+        "1": "Every 1st of the month",
+        "15": "Every 15th of the month"
+      }
+    }
   },
   "image_slider": {
     "previous_label": "Previous image",

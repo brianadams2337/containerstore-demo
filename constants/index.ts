@@ -1,6 +1,5 @@
 export * from './listingMetadata'
 export * from './mask'
-export * from './order'
 export * from './product'
 export * from './promotion'
 export * from './search'

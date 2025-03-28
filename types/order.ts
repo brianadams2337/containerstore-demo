@@ -10,7 +10,7 @@ import type {
   OrderAddress as BaseOrderAddress,
 } from '@scayle/storefront-nuxt'
 
-interface OrderCategory {
+export interface OrderCategory {
   categoryHidden: boolean
   categoryId: number
   categoryName: string

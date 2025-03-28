@@ -154,7 +154,7 @@ export default {
         '1.125rem',
         {
           lineHeight: '1.35rem',
-          letterSpacing: '0.034rem',
+          letterSpacing: '0',
         },
       ],
       '2xl': [
@@ -211,6 +211,9 @@ export default {
       borderRadius: {
         base: '4px',
         10: '10px',
+      },
+      padding: {
+        '4.5': '1.125rem',
       },
       height: {
         '4.5': '1.125rem',
@@ -344,6 +347,7 @@ export default {
         156: '39rem',
         112: '28rem',
         88: '22rem',
+        200: '50rem',
       },
       minWidth: {
         48: '12rem',

@@ -1,115 +1,46 @@
 <template>
-  <SFLink :to="getProductDetailRoute(product.id, name)" class="w-full">
-    <div class="w-full divide-y divide-gray-500">
-      <div class="flex h-28 justify-between space-x-4 md:space-x-0">
-        <div class="mr-2 w-1/5 flex-none">
-          <SFProductImage
-            :image="product.images[0]"
-            :alt="name"
-            :title="name"
-            class="h-full"
-            sizes="xs:80px sm:112px lg:192px"
-          />
-        </div>
-        <div class="my-3 flex w-3/5 grow flex-col space-y-0.5">
-          <p class="whitespace-normal text-sm font-semibold">
-            {{ name }}
-            <span v-if="color" class="sm:hidden"> - {{ color }}</span>
-          </p>
-
-          <p v-if="size" class="text-sm">
-            {{ $t('osp.size') }}: <b>{{ size }}</b>
-          </p>
-
-          <p class="text-sm">
-            {{ $t('osp.quantity_label') }}: <b>{{ quantity }}</b>
-          </p>
-        </div>
-        <div class="my-3 flex flex-col justify-start text-sm font-semibold">
-          <p
-            v-if="originalPrice"
-            class="text-right"
-            :class="{ 'line-through': reducedPrice !== undefined }"
-          >
-            {{ formatCurrency(originalPrice) }}
-          </p>
-          <p v-if="reducedPrice" class="text-right text-red-500">
-            {{ formatCurrency(quantity * price.withTax) }}
-          </p>
-          <p
-            v-if="
-              reducedPrice &&
-              lowestPriorPrice?.withTax &&
-              lowestPriorPrice?.relativeDifferenceToPrice
-            "
-            class="mt-0.5 text-right text-sm text-gray-400"
-          >
-            {{ $t('price.best_price_30d') }}**:
-            {{ formatCurrency(lowestPriorPrice.withTax) }}
-            ({{ lowestPriorPrice.relativeDifferenceToPrice * 100 }}%)
-          </p>
-        </div>
-      </div>
+  <div
+    class="flex items-center justify-between rounded-xl border border-gray-300 bg-white p-5"
+  >
+    <div class="flex flex-col text-base text-gray-600">
+      <SFHeadline
+        class="mb-3 !font-semi-bold-variable text-gray-900"
+        data-testid="order-item-headline"
+        size="md"
+        tag="h3"
+      >
+        {{ $t('my_account.orders.detail.title', { id }) }}
+      </SFHeadline>
+      <span v-if="confirmedAt" class="mb-1">
+        {{ $t('my_account.orders.order_date') }}:
+        {{ formatLocaleDate(confirmedAt) }}
+      </span>
+      <span v-if="itemCount">
+        {{ $t('my_account.orders.items_count') }}: {{ itemCount }}
+      </span>
     </div>
-  </SFLink>
+    <SFButton
+      :to="getOrderDetailsRoute(id)"
+      :data-testid="`go-to-order-detail-${id}`"
+      :aria-label="$t('my_account.orders.detail.go_to_order')"
+      variant="tertiary"
+      class="mr-0.5 !size-10 !p-0"
+    >
+      <IconChevronRight aria-hidden="true" class="size-4" />
+    </SFButton>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import {
-  getFirstAttributeValue,
-  getTotalAppliedReductions,
-} from '@scayle/storefront-nuxt'
-import SFProductImage from '~/components/product/SFProductImage.vue'
-import { useFormatHelpers } from '#storefront/composables'
-import { useRouteHelpers } from '~/composables/useRouteHelpers'
-import { SFLink } from '#storefront-ui/components'
-import type { OrderProduct, OrderVariant, OrderPrice } from '~/types/order'
+import { SFHeadline, SFButton } from '#storefront-ui/components'
+import { useFormatDate, useRouteHelpers } from '~/composables'
 
-const {
-  quantity = 1,
-  product,
-  variant,
-  price,
-} = defineProps<{
-  product: OrderProduct
-  variant: OrderVariant
-  price: OrderPrice
-  deliveryStatus: string
-  quantity?: number
+const { formatLocaleDate } = useFormatDate()
+const { getOrderDetailsRoute } = useRouteHelpers()
+
+const { id, confirmedAt, itemCount } = defineProps<{
+  id: number
+  confirmedAt?: string
+  itemCount?: number
 }>()
-
-const { getProductDetailRoute } = useRouteHelpers()
-const { formatCurrency } = useFormatHelpers()
-const name = computed(() => product.name)
-
-const color = computed(
-  () => getFirstAttributeValue(product.attributes, 'color')?.label,
-)
-
-const size = computed(
-  () => getFirstAttributeValue(variant?.attributes, 'size')?.label,
-)
-
-const reducedPrice = computed(() => {
-  if (!price.appliedReductions) {
-    return
-  }
-
-  return getTotalAppliedReductions({
-    appliedReductions: price.appliedReductions,
-  }).absoluteWithTax
-})
-
-const originalPrice = computed(() => {
-  if (!reducedPrice.value) {
-    return
-  }
-  return (
-    quantity *
-    (reducedPrice.value ? price.withTax + reducedPrice.value : price.withTax)
-  )
-})
-
-const lowestPriorPrice = computed(() => variant.lowestPriorPrice)
 </script>

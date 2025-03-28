@@ -97,18 +97,10 @@
     "already_in_basket": "Bereits im Warenkorb"
   },
   "navigation": {
-    "my_account": "Mein Konto",
-    "my_orders": "Meine Bestellungen",
-    "user_settings": "Kontoeinstellungen",
-    "sign_in": "Einloggen",
     "home": "Storefront Core Boilerplate",
     "checkout": "Kasse",
-    "osp": "Deine Bestellübersicht",
     "location": "Store Finden",
-    "wishlist_aria_label": "Wunschliste | Wunschliste, {count} Artikel | Wunschliste, {count} Artikel",
-    "meta": {
-      "basket": "Warenkorb"
-    }
+    "wishlist_aria_label": "Wunschliste | Wunschliste, {count} Artikel | Wunschliste, {count} Artikel"
   },
   "search": {
     "page": {
@@ -183,6 +175,7 @@
     "available_products": "Verfügbare Produkte",
     "unavailable_products": "Nicht verfügbare Produkte",
     "meta": {
+      "title": "Warenkorb",
       "description": "Überprüfe die Artikel in deinem Warenkorb und gehe problemlos zur Kasse. Sicheres und unkompliziertes Einkaufen bei {shopName}."
     },
     "voucher_disclaimer": "Gutscheine können im letzten Schritt der Bestellung angegeben werden."
@@ -201,38 +194,87 @@
     "show": "Passwort anzeigen"
   },
   "my_account": {
-    "navigation": "Mein Konto",
-    "profile_menu": "Kontoeinstellungen",
-    "password": "Passwort",
-    "orders_menu": "Deine Bestellungen",
-    "orders_count": "0 Bestellungen | 1 Bestellung | {count} Bestellungen",
-    "personal_data_title": "Ändere deine persönlichen Daten",
-    "no_orders_found": "Keine Bestellungen gefunden",
-    "subscriptions_menu": "Deine Abonnements",
-    "subscriptions_subtitle": "Ändere deine Abonnements",
-    "orders": {
-      "overview": "Bestellübersicht",
-      "order_summary_header": "Bestellung vom {date}",
-      "paid_with": "Bezahlt mit",
-      "order_value": "Bestellwert",
-      "shipping": "Versandkosten",
-      "residual_value": "Restwert",
-      "item_count": "{count} Artikel",
-      "address_label": "Versand und Rechnungsadresse",
-      "shipping_address_label": "Versandadresse",
-      "billing_address_label": "Rechnungsadresse",
-      "expected_delivery_from": "Erwartet",
-      "delivery": "Lieferung",
-      "details": "Sendungsverfolgung"
+    "meta": {
+      "title": "Dein Konto",
+      "description": "Verwalte dein Profil, deine Bestellungen und Abonnements an einem Ort."
     },
-    "user": {
-      "save_message": "Ihre Daten wurden erfolgreich gespeichert.",
-      "save_error": "Die Daten konnten nicht gespeichert werden.",
-      "save_label": "Speichern",
-      "update_password_label": "Passwort aktualisieren",
-      "password_update_success": "Passwort aktualisiert",
-      "password_update_error": "Das Aktualisieren des Passworts hat nicht funktioniert. Versuchen Sie es bitte erneut!",
-      "email_change_hint": "Bitte wenden Sie sich an den Kundendienst, um Ihre E-Mail-Adresse zu ändern."
+    "tabs": {
+      "orders": "Bestellungen",
+      "profile": "Profil",
+      "subscriptions": "Abonnements"
+    },
+    "title": "Dein Konto",
+    "navigation": "Mein Konto",
+    "subscriptions_menu": "Deine Abonnements",
+    "orders": {
+      "title": "Deine Bestellungen",
+      "meta": {
+        "title": "Deine Bestellungen",
+        "description": "Verfolge deine vergangenen und aktuellen Bestellungen mit Status-Updates."
+      },
+      "no_results": {
+        "title": "Du hast noch keine Bestellungen.",
+        "description": "Deine Bestelldetails werden hier angezeigt, sobald du etwas gekauft hast."
+      },
+      "menu": "Deine Bestellungen",
+      "order_date": "Bestelldatum",
+      "items_count": "Artikel",
+      "detail": {
+        "title": "Bestellnummer: {id}",
+        "meta": {
+          "title": "Bestellung #{id}",
+          "description": "Sieh dir die Details und den Status deiner Bestellung #{id} an."
+        },
+        "back": "Zurück",
+        "go_to_order": "Offen für Bestelldetails",
+        "order_details": "Bestelldetails",
+        "order_date": "Bestelldatum",
+        "payment_details": "Zahlungsdetails",
+        "payment_method": "Zahlungsart",
+        "delivery_and_billing_address": "Liefer- & Rechnungsadresse",
+        "delivery_address": "Lieferadresse",
+        "billing_address": "Rechnungsadresse",
+        "size": "Größe",
+        "color": "Farbe",
+        "quantity_label": "Anzahl",
+        "total": "Gesamt",
+        "shipping_costs": "Versand",
+        "subtotal": "Zwischensumme"
+      }
+    },
+    "profile": {
+      "title": "Verwalte dein Konto",
+      "meta": {
+        "title": "Kontoeinstellungen",
+        "description": "Aktualisiere hier deine persönlichen Daten, E-Mail und dein Passwort."
+      },
+      "menu": "Kontoeinstellungen",
+      "greeting": "Willkommen, {firstName}!",
+      "description": "Verwalte deine persönlichen Daten und sichere dein Konto.",
+      "account_information": {
+        "title": "Kontoinformationen",
+        "customer_number": "Kundennummer:",
+        "email": "Registrierte E-Mail:",
+        "disclaimer": "E-Mail-Änderungen sind nicht möglich. Wenn du Hilfe benötigst, kontaktiere bitte den Support."
+      },
+      "personal_information": {
+        "title": "Persönliche Daten",
+        "description": "Aktualisiere deine persönlichen Daten, um dein Konto auf dem neuesten Stand zu halten.",
+        "success_message": "Deine Daten wurden erfolgreich aktualisiert.",
+        "error_message": "Deine Informationen konnten nicht gespeichert werden. Bitte versuche es erneut."
+      },
+      "password": {
+        "title": "Passwortverwaltung",
+        "description": "Halte dein Konto sicher, indem du dein Passwort regelmäßig aktualisierst.",
+        "idp_description": "Dein Konto ist über einen externen Login-Anbieter gesichert, daher ist eine Passwortänderung hier nicht erforderlich. Um dein Passwort zu aktualisieren, besuche bitte die Einstellungen deines Login-Anbieters.",
+        "success_message": "Dein Passwort wurde erfolgreich aktualisiert.",
+        "error": {
+          "400_bad_request": "Deine Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.",
+          "401_unauthorized": "Deine Anfrage konnte nicht bearbeitet werden, bitte versuchen es erneut.",
+          "403_forbidden": "Dein Passwort konnte nicht aktualisiert werden. Bitte überprüfe dein aktuelles Passwort und versuche es erneut."
+        }
+      },
+      "save_label": "Speichern"
     },
     "popover": {
       "greeting": "Hallo {firstName}"
@@ -327,7 +369,6 @@
   "osp": {
     "order_details": "Bestelldetails",
     "customer_id": "Kundennummer",
-    "shipping_costs": "Versand",
     "delivery_address": "Lieferadresse",
     "billing_address": "Rechnungsadresse",
     "delivery_and_billing_address": "Liefer- & Rechnungsadresse",
@@ -335,18 +376,11 @@
     "estimated_delivery_date": "Voraussichtliche Zustellung",
     "delivered_by": "Versandt durch",
     "intro": "Vielen Dank für deine Bestellung!",
-    "subtotal": "Zwischensumme",
     "order_date": "Bestelldatum",
     "order_nr": "Bestellnummer",
-    "order_overview": "Bestellübersicht",
     "order_number": "Bestellung Nr. {orderNumber}",
     "payment_details": "Zahlungsdaten",
     "payment_method": "Zahlungsart",
-    "size": "Größe",
-    "color": "Farbe",
-    "tax": "19% MwSt.",
-    "total": "Gesamt",
-    "quantity_label": "Anzahl",
     "no_order_found": {
       "title": "Die Bestelldaten wurden nicht gefunden.",
       "description": "Deine Bestelldaten konnten nicht abgerufen werden. Der Link ist möglicherweise abgelaufen oder ungültig. Bitte überprüfe deine E-Mails auf den richtigen Link oder kontaktiere den Support für Hilfe."
@@ -362,20 +396,6 @@
     "meta": {
       "title": "Bestellung bestätigt %separator Vielen Dank für deinen Einkauf",
       "description": "Vielen Dank für deine Bestellung! Dein Kauf wurde bestätigt. Überprüfe deine E-Mails für die Bestelldetails."
-    },
-    "subscription": {
-      "title": "Abonnement",
-      "interval": "Interval",
-      "follow_up_delivery": "Folgelieferung",
-      "interval_keys": {
-        "1_months_1": "1 Monat",
-        "2_months": "2 Monate",
-        "3_months": "3 Monate"
-      },
-      "delivery_keys": {
-        "1": "Jeden 1. des Monats",
-        "15": "Jeden 15. des Monats"
-      }
     }
   },
   "sign_in_page": {
@@ -501,6 +521,11 @@
   },
   "subscription": {
     "title": "Abonnement",
+    "headline": "Verwalte deine Abonnements",
+    "meta": {
+      "title": "Deine Abonnements",
+      "description": "Verwalte deine aktiven und vergangenen Abonnements mühelos."
+    },
     "subscribe": "Abonnieren & Sparen",
     "subscribe_with_reduction": "Abonnieren & Sparen bis zu {percentage}%",
     "interval": "Interval",
@@ -511,7 +536,19 @@
     "not_eligible_message": "Die ausgewählte Größe ist nicht für ein Abonnement geeignet.",
     "term": "Bedingungen",
     "add_to_basket": "Abonnieren für {interval}",
-    "page_title": "Deine Abonnements"
+    "order": {
+      "interval": "Interval",
+      "follow_up_delivery": "Folgelieferung",
+      "interval_keys": {
+        "1_months_1": "1 Monat",
+        "2_months": "2 Monate",
+        "3_months": "3 Monate"
+      },
+      "delivery_keys": {
+        "1": "Jeden 1. des Monats",
+        "15": "Jeden 15. des Monats"
+      }
+    }
   },
   "image_slider": {
     "previous_label": "Vorherigen Bild",

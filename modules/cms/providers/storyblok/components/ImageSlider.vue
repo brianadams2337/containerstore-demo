@@ -1,7 +1,7 @@
 <template>
   <div v-editable="blok" class="sm:mx-14" :class="marginClasses">
     <div class="flex w-full justify-between px-6 sm:px-0">
-      <SFHeadline v-if="blok.headline" tag="p" size="base" is-uppercase>
+      <SFHeadline v-if="blok.headline" tag="p" size="md" is-uppercase>
         {{ blok.headline }}
       </SFHeadline>
       <CMSStoryblokLink

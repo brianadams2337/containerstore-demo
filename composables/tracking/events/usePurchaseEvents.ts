@@ -5,10 +5,10 @@ import {
   type Value,
   getTotalAppliedReductions,
 } from '@scayle/storefront-nuxt'
+import type { Order, OrderItem } from '~/types/order'
 import { useCurrentShop } from '#storefront/composables'
 import { usePageState } from '~/composables/usePageState'
 import { useTracking } from '~/composables/useTracking'
-import type { Order } from '~/types/order'
 import {
   divideByHundred,
   getCarrier,
@@ -21,18 +21,44 @@ import {
 } from '~/utils'
 import type { OrderItemProduct, OrderItemVariant } from '~/types/tracking'
 
-const getUniqueItemsFromOrder = (order: Order) => {
-  const uniqueItems = new Set()
-  return order.items?.filter((item) => {
-    return !uniqueItems.has(item.variant.id) && uniqueItems.add(item.variant.id)
-  })
+/**
+ * Retrieves unique items from an order based on their variant ID.
+ * If there are two items with the same variant ID, first one will be retrieved.
+ *
+ * @param {Order} order - The order containing items.
+ * @returns {OrderItem[]} - The unique items from the order.
+ */
+const getUniqueItemsFromOrder = (order: Order): OrderItem[] => {
+  if (!order.items?.length) {
+    return []
+  }
+
+  const uniqueItems = new Map<number | string, OrderItem>()
+
+  for (const item of order.items) {
+    const variantId = item.variant.id
+    if (!uniqueItems.has(variantId)) {
+      uniqueItems.set(variantId, item)
+    }
+  }
+
+  return Array.from(uniqueItems.values())
 }
 
+/**
+ * Gets the quantity of a specific item variant from an order.
+ *
+ * @param {Order} order - The order containing items.
+ * @param {number} variantId - The ID of the item variant.
+ * @returns {number | undefined} - The quantity of the specified item variant in the order.
+ */
 const getItemQuantityFromOrder = (
   order: Order,
   variantId: number,
 ): number | undefined => {
-  return order.items?.filter(({ variant }) => variant.id === variantId).length
+  return order.items?.reduce((count, { variant }) => {
+    return count + (variant.id === variantId ? 1 : 0)
+  }, 0)
 }
 
 const getItems = (orderData: Order, currency?: string) => {

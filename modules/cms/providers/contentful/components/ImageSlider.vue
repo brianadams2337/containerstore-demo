@@ -1,7 +1,7 @@
 <template>
   <div class="sm:mx-14" :class="marginClasses">
     <div class="flex w-full justify-between px-6 sm:px-0">
-      <SFHeadline v-if="blok?.fields.headline" tag="p" size="base" is-uppercase>
+      <SFHeadline v-if="blok?.fields.headline" tag="p" size="md" is-uppercase>
         {{ blok.fields.headline }}
       </SFHeadline>
 

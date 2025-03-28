@@ -47,7 +47,8 @@ const HeadlineClass = {
   [HeadlineSize['2XL']]: 'text-2xl',
   [HeadlineSize.XL]: 'text-xl',
   [HeadlineSize.LG]: 'text-lg',
-  [HeadlineSize.MD]: 'text-base',
+  [HeadlineSize.MD]: 'text-md',
+  [HeadlineSize.BASE]: 'text-base',
   [HeadlineSize.SM]: 'text-sm',
   [HeadlineSize.XS]: 'text-xs',
 } as Record<HeadlineSize, string>

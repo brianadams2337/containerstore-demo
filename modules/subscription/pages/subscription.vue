@@ -1,22 +1,29 @@
 <template>
-  <SFPageContainer>
+  <div>
+    <SFHeadline
+      class="mb-5 !font-semi-bold-variable xl:mb-7"
+      tag="h2"
+      data-testid="subscriptions-headline"
+    >
+      {{ $t('subscription.headline') }}
+    </SFHeadline>
     <subscription-overview
       v-if="isSubscriptionOverviewWebComponentLoaded && accessToken"
       :base-url="apiUrl"
       :customer-token="accessToken"
       :shop-id="shopId"
     />
-  </SFPageContainer>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { useHead } from '@unhead/vue'
+import { useSeoMeta } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import { defineOptions, onMounted } from 'vue'
 import useSubscriptionWebComponent from '../composables/useSubscriptionWebComponent'
 import { useCurrentShop } from '#storefront/composables'
 import { definePageMeta } from '#imports'
-import { SFPageContainer } from '#storefront-ui/components'
+import { SFHeadline } from '#storefront-ui/components'
 
 const currentShop = useCurrentShop()
 const shopId = currentShop.value.shopId
@@ -30,10 +37,12 @@ const {
 
 onMounted(() => loadOverviewPage())
 
-const i18n = useI18n()
-useHead({
-  titleTemplate: (pageTitle) => pageTitle ?? null,
-  title: i18n.t('subscription.page_title'),
+const { t } = useI18n()
+
+useSeoMeta({
+  robots: 'noindex, nofollow',
+  title: t('subscription.meta.title'),
+  description: t('subscription.meta.description'),
 })
 
 definePageMeta({ pageType: 'subscription' })
