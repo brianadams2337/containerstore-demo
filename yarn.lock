@@ -3375,10 +3375,10 @@
   resolved "https://registry.yarnpkg.com/@scayle/nuxt-image-provider/-/nuxt-image-provider-0.2.5.tgz#5f9855cd3c004108dba8d2915e2a4cd1fa85db39"
   integrity sha512-POxKTF2CpfJsiW9NFc2VXI8WGf3P4mR7PDQGUQhkbqVqH2rgn1nff9zfqJLRomISqvoyIsGcW8RbvcMNoZW+xA==
 
-"@scayle/nuxt-opentelemetry@0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@scayle/nuxt-opentelemetry/-/nuxt-opentelemetry-0.9.0.tgz#3f313e9aa53ec4798783539167158105a1d549b1"
-  integrity sha512-j6aX4YB+snUj540Vrp+lg2ZiqgjIWQ8P9B6oe8lKUZL7ARoKwOPqXQDf3RI4hpZYvohqmOLvPHTDpmWV7/DHoA==
+"@scayle/nuxt-opentelemetry@0.9.1":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@scayle/nuxt-opentelemetry/-/nuxt-opentelemetry-0.9.1.tgz#833a279adcad629728868e9917b494657fde8504"
+  integrity sha512-jyHKpWqOcofoT+8QQlpCzdcvJ8m8XtcGFAnduNwmxIYZ+aN7PIOmYp7VMiopdJWXcmbbBlYBcCfE4LZmd6Wnng==
   dependencies:
     "@nuxt/kit" "^3.12.3"
     "@opentelemetry/api" "1.9.0"
@@ -3389,9 +3389,12 @@
     "@opentelemetry/instrumentation" "0.200.0"
     "@opentelemetry/sdk-metrics" "2.0.0"
     "@opentelemetry/sdk-node" "0.200.0"
+    "@opentelemetry/sdk-trace-base" "2.0.0"
+    "@opentelemetry/sdk-trace-node" "2.0.0"
     "@opentelemetry/semantic-conventions" "1.30.0"
     "@vercel/otel" "1.10.4"
     defu "^6.1.4"
+    import-in-the-middle "1.13.1"
     knitwork "^1.1.0"
 
 "@scayle/omnichannel-nuxt@4.2.0":

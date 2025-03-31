@@ -101,7 +101,7 @@
     "@googlemaps/js-api-loader": "1.16.8",
     "@nuxt/fonts": "0.11.0",
     "@scayle/nuxt-image-provider": "0.2.5",
-    "@scayle/nuxt-opentelemetry": "0.9.0",
+    "@scayle/nuxt-opentelemetry": "0.9.1",
     "@scayle/omnichannel-nuxt": "4.2.0",
     "@scayle/storefront-country-detection": "1.1.1",
     "@scayle/storefront-navigation": "0.1.0",
