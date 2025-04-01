@@ -1,7 +1,8 @@
 import type { CentAmount, Price } from '@scayle/storefront-nuxt'
 import { it, describe, expect } from 'vitest'
 import {
-  attributeGroupFactory,
+  attributeGroupSingleFactory,
+  attributeGroupMultiFactory,
   productFactory,
   automaticDiscountPromotionFactory,
 } from '@scayle/storefront-nuxt/test/factories'
@@ -19,7 +20,7 @@ describe('getApplicablePromotionsForProduct', () => {
   it('should get the applicable promotion for the product with single promotion', () => {
     const product = productFactory.build({
       attributes: {
-        promotion: attributeGroupFactory.build({
+        promotion: attributeGroupSingleFactory.build({
           key: 'promotion',
           values: {
             id: 2432,
@@ -55,9 +56,8 @@ describe('getApplicablePromotionsForProduct', () => {
   it('should get the applicable priority sorted promotion for the product with multiple promotions', () => {
     const product = productFactory.build({
       attributes: {
-        promotion: attributeGroupFactory.build({
+        promotion: attributeGroupMultiFactory.build({
           key: 'promotion',
-          multiSelect: true,
           values: [
             {
               id: 2477,
@@ -171,17 +171,17 @@ describe('getProductSiblingData', () => {
       isActive: true,
       isSoldOut: false,
       attributes: {
-        name: attributeGroupFactory.build({
+        name: attributeGroupSingleFactory.build({
           values: {
             label: "HUGO Sweatshirt 'Dakimara'",
           },
         }),
-        brand: attributeGroupFactory.build({
+        brand: attributeGroupSingleFactory.build({
           values: {
             label: 'HUGO',
           },
         }),
-        color: attributeGroupFactory.build({
+        color: attributeGroupSingleFactory.build({
           values: {
             id: 6,
             label: 'Weiß',

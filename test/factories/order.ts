@@ -1,9 +1,9 @@
 import { Factory } from 'fishery'
-import type { CentAmount } from '@scayle/storefront-core'
-import type {
-  AttributeGroupSingle,
-  AttributeGroupMulti,
-} from '@scayle/storefront-nuxt'
+import {
+  attributeGroupMultiFactory,
+  attributeGroupSingleFactory,
+} from '@scayle/storefront-nuxt/test/factories'
+import type { CentAmount } from '@scayle/storefront-nuxt'
 import type {
   OrderVariant,
   OrderProduct,
@@ -21,35 +21,6 @@ export const orderCategoryFactory = Factory.define<OrderCategory>(() => ({
   categoryUrl: '/frauen',
   categorySlug: 'frauen',
 }))
-
-// TODO: Extract attribute factories within this file to the `storefront-api`
-export const attributeSingleGroupFactory = Factory.define<AttributeGroupSingle>(
-  () => ({
-    id: 1,
-    key: 'name',
-    label: 'Test Attribute',
-    type: null,
-    multiSelect: false,
-    values: {
-      label: 'Test Attribute',
-    },
-  }),
-)
-
-export const attributeMultiGroupFactory = Factory.define<AttributeGroupMulti>(
-  () => ({
-    id: 1,
-    key: 'name',
-    label: 'Test Attribute',
-    type: null,
-    multiSelect: true,
-    values: [
-      {
-        label: 'Test Attribute',
-      },
-    ],
-  }),
-)
 
 export const orderAdvancedAttributeFactory =
   Factory.define<OrderAdvancedAttribute>(() => ({
@@ -89,13 +60,13 @@ export const orderProductFactory = Factory.define<OrderProduct>(() => ({
     }),
   },
   attributes: {
-    brand: attributeSingleGroupFactory.build({ key: 'brand' }),
-    brandLogo: attributeSingleGroupFactory.build({ key: 'brandLogo' }),
-    category: attributeMultiGroupFactory.build({ key: 'category' }),
-    color: attributeSingleGroupFactory.build({ key: 'color' }),
-    colorHex: attributeSingleGroupFactory.build({ key: 'colorHex' }),
-    name: attributeSingleGroupFactory.build({ key: 'name' }),
-    description: attributeSingleGroupFactory.build({
+    brand: attributeGroupSingleFactory.build({ key: 'brand' }),
+    brandLogo: attributeGroupSingleFactory.build({ key: 'brandLogo' }),
+    category: attributeGroupMultiFactory.build({ key: 'category' }),
+    color: attributeGroupSingleFactory.build({ key: 'color' }),
+    colorHex: attributeGroupSingleFactory.build({ key: 'colorHex' }),
+    name: attributeGroupSingleFactory.build({ key: 'name' }),
+    description: attributeGroupSingleFactory.build({
       key: 'description',
     }),
   },
@@ -114,7 +85,7 @@ export const orderProductFactory = Factory.define<OrderProduct>(() => ({
 export const orderVariantFactory = Factory.define<OrderVariant>(() => ({
   id: 1,
   attributes: {
-    size: attributeSingleGroupFactory.build({ key: 'size' }),
+    size: attributeGroupSingleFactory.build({ key: 'size' }),
   },
   images: [
     {

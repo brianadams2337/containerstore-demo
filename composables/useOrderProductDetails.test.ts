@@ -1,9 +1,9 @@
 import { describe, it, expect, vi } from 'vitest'
+import { attributeGroupSingleFactory } from '@scayle/storefront-nuxt/test/factories'
 import { useOrderProductDetails } from './useOrderProductDetails'
 import {
   orderProductFactory,
   orderVariantFactory,
-  attributeSingleGroupFactory,
 } from '~/test/factories/order'
 
 vi.mock('#i18n', () => ({
@@ -26,7 +26,7 @@ describe('useOrderProductDetails', () => {
     it('should return the correct value for brand', () => {
       const product = orderProductFactory.build({
         attributes: {
-          brand: attributeSingleGroupFactory.build({
+          brand: attributeGroupSingleFactory.build({
             key: 'brand',
             label: 'Brand',
             type: 'string',
@@ -49,7 +49,7 @@ describe('useOrderProductDetails', () => {
     it('should return empty value for brand', () => {
       const product = orderProductFactory.build({
         attributes: {
-          brand: attributeSingleGroupFactory.build({
+          brand: attributeGroupSingleFactory.build({
             values: undefined,
           }),
         },
@@ -110,7 +110,7 @@ describe('useOrderProductDetails', () => {
     it('should return the correct color value', () => {
       const product = orderProductFactory.build({
         attributes: {
-          color: attributeSingleGroupFactory.build({
+          color: attributeGroupSingleFactory.build({
             key: 'color',
             label: 'Color',
             type: '',
@@ -133,7 +133,7 @@ describe('useOrderProductDetails', () => {
     it('should return undefined value for color', () => {
       const product = orderProductFactory.build({
         attributes: {
-          color: attributeSingleGroupFactory.build({
+          color: attributeGroupSingleFactory.build({
             values: undefined,
           }),
         },
@@ -183,7 +183,7 @@ describe('useOrderProductDetails', () => {
       const product = orderProductFactory.build({
         name: 'Test Product',
         attributes: {
-          brand: attributeSingleGroupFactory.build({
+          brand: attributeGroupSingleFactory.build({
             key: 'brand',
             label: 'Brand',
             type: 'string',
@@ -193,7 +193,7 @@ describe('useOrderProductDetails', () => {
               value: 'brand-name',
             },
           }),
-          color: attributeSingleGroupFactory.build({
+          color: attributeGroupSingleFactory.build({
             key: 'color',
             label: 'Color',
             type: '',

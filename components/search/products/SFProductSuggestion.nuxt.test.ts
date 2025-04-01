@@ -3,7 +3,7 @@ import type { Product } from '@scayle/storefront-nuxt'
 import { renderSuspended } from '@nuxt/test-utils/runtime'
 import {
   priceFactory,
-  attributeGroupFactory,
+  attributeGroupSingleFactory,
   productFactory,
 } from '@scayle/storefront-nuxt/test/factories'
 import SFProductSuggestion from './SFProductSuggestion.vue'
@@ -41,14 +41,14 @@ it('should render only category name"', async () => {
   const product = productFactory.build({
     id: 1,
     attributes: {
-      name: attributeGroupFactory.build({
+      name: attributeGroupSingleFactory.build({
         key: 'name',
         label: 'Test Product',
         values: {
           label: 'Test Product',
         },
       }),
-      brand: attributeGroupFactory.build({
+      brand: attributeGroupSingleFactory.build({
         key: 'name',
         label: 'Test Brand',
         values: {

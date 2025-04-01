@@ -7,7 +7,7 @@ import {
   navigationItemPageFactory,
   categoryFactory,
   productFactory,
-  attributeGroupFactory,
+  attributeGroupSingleFactory,
 } from '@scayle/storefront-nuxt/test/factories'
 import { useRouteHelpers } from './useRouteHelpers'
 
@@ -65,7 +65,7 @@ describe('useRouteHelpers', () => {
           product: productFactory.build({
             id: 1,
             attributes: {
-              name: attributeGroupFactory.build({
+              name: attributeGroupSingleFactory.build({
                 key: 'name',
                 values: {
                   label: 'Suggested Product',

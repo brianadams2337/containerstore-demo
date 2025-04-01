@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest'
 import type { CentAmount } from '@scayle/storefront-nuxt'
 import {
   productFactory,
-  attributeGroupFactory,
+  attributeGroupSingleFactory,
 } from '@scayle/storefront-nuxt/test/factories'
 import { useProductBaseInfo } from './useProductBaseInfo'
 
@@ -25,7 +25,7 @@ describe('useProductBaseInfo', () => {
     it('should return the correct default value for brand', () => {
       const product = productFactory.build({
         attributes: {
-          brand: attributeGroupFactory.build({
+          brand: attributeGroupSingleFactory.build({
             key: 'brand',
             label: 'Brand',
             type: 'string',
@@ -56,7 +56,7 @@ describe('useProductBaseInfo', () => {
     it('should return the correct default value for name', () => {
       const product = productFactory.build({
         attributes: {
-          name: attributeGroupFactory.build({
+          name: attributeGroupSingleFactory.build({
             key: 'name',
             label: 'Test Product',
             values: {
@@ -148,7 +148,7 @@ describe('useProductBaseInfo', () => {
     it('should return the correct default value for colors + sibling color', () => {
       const product = productFactory.build({
         attributes: {
-          color: attributeGroupFactory.build({
+          color: attributeGroupSingleFactory.build({
             key: 'color',
             label: 'Color',
             type: '',
@@ -200,7 +200,7 @@ describe('useProductBaseInfo', () => {
           {
             hash: 'hash2',
             attributes: {
-              primaryImage: attributeGroupFactory.build({
+              primaryImage: attributeGroupSingleFactory.build({
                 key: 'primaryImage',
                 label: 'Primary Image',
                 values: {
@@ -262,7 +262,7 @@ describe('useProductBaseInfo', () => {
     it('should return the correct default value for siblings', () => {
       const product = productFactory.build({
         attributes: {
-          color: attributeGroupFactory.build({
+          color: attributeGroupSingleFactory.build({
             key: 'color',
             label: 'Color',
             type: '',
@@ -277,7 +277,7 @@ describe('useProductBaseInfo', () => {
           productFactory.build({
             id: 5,
             attributes: {
-              color: attributeGroupFactory.build({
+              color: attributeGroupSingleFactory.build({
                 key: 'color',
                 label: 'Color',
                 type: '',
@@ -331,7 +331,7 @@ describe('useProductBaseInfo', () => {
     it('should return the correct default value for siblings sorted by sold out state', () => {
       const product = productFactory.build({
         attributes: {
-          color: attributeGroupFactory.build({
+          color: attributeGroupSingleFactory.build({
             key: 'color',
             label: 'Color',
             type: '',
@@ -346,7 +346,7 @@ describe('useProductBaseInfo', () => {
           productFactory.build({
             id: 52,
             attributes: {
-              color: attributeGroupFactory.build({
+              color: attributeGroupSingleFactory.build({
                 key: 'color',
                 label: 'Color',
                 type: '',
@@ -367,7 +367,7 @@ describe('useProductBaseInfo', () => {
           productFactory.build({
             id: 5,
             attributes: {
-              color: attributeGroupFactory.build({
+              color: attributeGroupSingleFactory.build({
                 key: 'color',
                 label: 'Color',
                 type: '',
@@ -436,7 +436,7 @@ describe('useProductBaseInfo', () => {
     it('should return the non sold out sibling', () => {
       const product = productFactory.build({
         attributes: {
-          color: attributeGroupFactory.build({
+          color: attributeGroupSingleFactory.build({
             key: 'color',
             label: 'Color',
             type: '',
@@ -451,7 +451,7 @@ describe('useProductBaseInfo', () => {
           productFactory.build({
             id: 52,
             attributes: {
-              color: attributeGroupFactory.build({
+              color: attributeGroupSingleFactory.build({
                 key: 'color',
                 label: 'Color',
                 type: '',
@@ -472,7 +472,7 @@ describe('useProductBaseInfo', () => {
           productFactory.build({
             id: 5,
             attributes: {
-              color: attributeGroupFactory.build({
+              color: attributeGroupSingleFactory.build({
                 key: 'color',
                 label: 'Color',
                 type: '',
@@ -536,7 +536,7 @@ describe('useProductBaseInfo', () => {
       const product = productFactory.build({
         id: 1,
         attributes: {
-          name: attributeGroupFactory.build({
+          name: attributeGroupSingleFactory.build({
             key: 'name',
             label: 'Test Product',
             values: {

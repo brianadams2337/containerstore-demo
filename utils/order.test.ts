@@ -1,13 +1,15 @@
 import { describe, expect, it } from 'vitest'
-import type { CentAmount } from '@scayle/storefront-core'
+import type { CentAmount } from '@scayle/storefront-nuxt'
+import {
+  attributeGroupMultiFactory,
+  attributeGroupSingleFactory,
+} from '@scayle/storefront-nuxt/test/factories'
 import { getOrderDeliveries, mapAttributes } from './order'
 import type { OrderItems, Package } from '~/types/order'
 import {
   orderFactory,
   orderCategoryFactory,
-  attributeMultiGroupFactory,
   orderAdvancedAttributeFactory,
-  attributeSingleGroupFactory,
 } from '~/test/factories/order'
 
 describe('getOrderDeliveries', () => {
@@ -62,13 +64,13 @@ describe('getOrderDeliveries', () => {
             }),
           },
           attributes: {
-            brand: attributeSingleGroupFactory.build({ key: 'brand' }),
-            brandLogo: attributeSingleGroupFactory.build({ key: 'brandLogo' }),
-            category: attributeMultiGroupFactory.build({ key: 'category' }),
-            color: attributeSingleGroupFactory.build({ key: 'color' }),
-            colorHex: attributeSingleGroupFactory.build({ key: 'colorHex' }),
-            name: attributeSingleGroupFactory.build({ key: 'name' }),
-            description: attributeSingleGroupFactory.build({
+            brand: attributeGroupSingleFactory.build({ key: 'brand' }),
+            brandLogo: attributeGroupSingleFactory.build({ key: 'brandLogo' }),
+            category: attributeGroupMultiFactory.build({ key: 'category' }),
+            color: attributeGroupSingleFactory.build({ key: 'color' }),
+            colorHex: attributeGroupSingleFactory.build({ key: 'colorHex' }),
+            name: attributeGroupSingleFactory.build({ key: 'name' }),
+            description: attributeGroupSingleFactory.build({
               key: 'description',
             }),
           },
@@ -88,7 +90,7 @@ describe('getOrderDeliveries', () => {
         variant: {
           id: 1,
           attributes: {
-            size: attributeSingleGroupFactory.build({ key: 'size' }),
+            size: attributeGroupSingleFactory.build({ key: 'size' }),
           },
           images: [
             {
@@ -144,13 +146,13 @@ describe('getOrderDeliveries', () => {
 describe('mapAttributes', () => {
   it('should map attributes for order product', () => {
     const attributes = mapAttributes({
-      brand: attributeSingleGroupFactory.build({ key: 'brand' }),
-      brandLogo: attributeSingleGroupFactory.build({ key: 'brandLogo' }),
-      category: attributeMultiGroupFactory.build({ key: 'category' }),
-      color: attributeSingleGroupFactory.build({ key: 'color' }),
-      colorHex: attributeSingleGroupFactory.build({ key: 'colorHex' }),
-      name: attributeSingleGroupFactory.build({ key: 'name' }),
-      description: attributeSingleGroupFactory.build({
+      brand: attributeGroupSingleFactory.build({ key: 'brand' }),
+      brandLogo: attributeGroupSingleFactory.build({ key: 'brandLogo' }),
+      category: attributeGroupMultiFactory.build({ key: 'category' }),
+      color: attributeGroupSingleFactory.build({ key: 'color' }),
+      colorHex: attributeGroupSingleFactory.build({ key: 'colorHex' }),
+      name: attributeGroupSingleFactory.build({ key: 'name' }),
+      description: attributeGroupSingleFactory.build({
         key: 'description',
       }),
     })
