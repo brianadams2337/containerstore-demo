@@ -70,4 +70,13 @@ export const shops: ShopAndLocaleConfig[] = [
     translationFile: 'en-GB.json',
     countryCode: 'DE',
   },
+  {
+    locale: 'hr-HR',
+    code: 'hr',
+    shopId: 2002,
+    currency: 'EUR',
+    isDefault: false,
+    translationFile: 'en-GB.json',
+    countryCode: 'HR',
+  },
 ]
