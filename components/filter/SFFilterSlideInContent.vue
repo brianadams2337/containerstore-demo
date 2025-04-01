@@ -33,7 +33,7 @@
             filter.values[0].max,
           )
         "
-        @update:model-value="
+        @input-field-update="
           handleApplyOrResetPriceFilterEmit(
             $event,
             filter.values[0].min,

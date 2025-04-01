@@ -59,6 +59,7 @@
           })
         "
         @update:model-value="changeRangeAtIndex(roundDownPrice($event), 0)"
+        @change="emit('inputFieldUpdate', range)"
       />
       <div class="mx-auto text-center text-xs font-semibold text-secondary">
         {{ $t('filter.to') }}
@@ -78,6 +79,7 @@
           })
         "
         @update:model-value="changeRangeAtIndex(roundUpPrice($event), 1)"
+        @change="emit('inputFieldUpdate', range)"
       />
     </div>
   </div>
@@ -127,6 +129,7 @@ const emit = defineEmits<{
   error: []
   dragEnd: [range: RangeTuple]
   dragStart: [range: RangeTuple]
+  inputFieldUpdate: [range: RangeTuple]
 }>()
 
 const changeRangeAtIndex = (newRangeValue: number, index: 0 | 1) => {
