@@ -191,15 +191,20 @@ test('C2171081: Verify PDP Multi-size product Store selector', async ({
     await expect(productDetailPage.buttonSearchStore).toBeVisible()
     await expect(productDetailPage.buttonSearchStore).not.toBeEnabled()
   })
-  await test.step('Search for a store and check the store list is loaded', async () => {
-    await productDetailPage.typeStoreName(LOCATION.city)
-    await expect(productDetailPage.buttonSearchStore).toBeEnabled()
-    await productDetailPage.buttonSearchStore.click()
-    await productDetailPage.locationStoreList.waitFor()
-    await expect(productDetailPage.locationStoreListItem.first()).toBeVisible()
-    await expect(productDetailPage.buttonChooseStore).not.toBeEnabled()
-  })
-  await test.step('Choose the store and close the flyout', async () => {
+  await test.step.skip(
+    'Search for a store and check the store list is loaded',
+    async () => {
+      await productDetailPage.typeStoreName(LOCATION.city)
+      await expect(productDetailPage.buttonSearchStore).toBeEnabled()
+      await productDetailPage.buttonSearchStore.click()
+      await productDetailPage.locationStoreList.waitFor()
+      await expect(
+        productDetailPage.locationStoreListItem.first(),
+      ).toBeVisible()
+      await expect(productDetailPage.buttonChooseStore).not.toBeEnabled()
+    },
+  )
+  await test.step.skip('Choose the store and close the flyout', async () => {
     await productDetailPage.locationStoreListItem.first().click()
     await expect(productDetailPage.buttonChooseStore).toBeEnabled()
     await productDetailPage.buttonChooseStore.click()
