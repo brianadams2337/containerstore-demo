@@ -8,7 +8,7 @@ export default defineVitestConfig({
     environment: 'happy-dom',
     setupFiles: [
       './test/vitest-setup/jest-dom.ts',
-      './test/vitest-setup/storefront-nuxt.ts',
+      './test/vitest-setup/storefront.ts',
       './test/vitest-setup/i18n.ts',
     ],
     globals: true,
@@ -28,6 +28,13 @@ export default defineVitestConfig({
                 id: 'GTM-123',
               },
               cdnUrl: 'https://cdn-test.url',
+              storefront: {
+                /** Storefront Core - Internal logger configuration
+                 * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction#log */
+                log: {
+                  level: 'error',
+                },
+              },
             },
           },
         },
