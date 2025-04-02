@@ -30,8 +30,8 @@
 import type { ProductSearchSuggestion } from '@scayle/storefront-nuxt'
 import SFProductSuggestion from './SFProductSuggestion.vue'
 
-const props = defineProps<{ productSuggestions: ProductSearchSuggestion[] }>()
-console.log(props.productSuggestions)
+defineProps<{ productSuggestions: ProductSearchSuggestion[] }>()
+
 const emit = defineEmits<{
   clickResult: [result: ProductSearchSuggestion]
 }>()

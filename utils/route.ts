@@ -83,7 +83,7 @@ export const routeList: LinkList = {
   },
   subscriptionOverview: {
     name: 'subscription-overview',
-    path: '/account/subscription',
+    path: '/account/subscriptions',
     isProtected: true,
   },
   subscriptionCancellations: {

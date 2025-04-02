@@ -60,7 +60,10 @@ describe('logged in user', () => {
 
     const subscriptionLink = getByRole('link', { name: 'Deine Abonnements' })
     expect(subscriptionLink).toBeInTheDocument()
-    expect(subscriptionLink).toHaveAttribute('href', '/de/account/subscription')
+    expect(subscriptionLink).toHaveAttribute(
+      'href',
+      '/de/account/subscriptions',
+    )
 
     expect(getByRole('button', { name: 'Ausloggen' })).toBeInTheDocument()
   })

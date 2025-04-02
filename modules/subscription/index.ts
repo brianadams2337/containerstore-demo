@@ -33,8 +33,8 @@ export default defineNuxtModule<ModuleOptions>({
     extendPages((pages) => {
       getAccountPage(pages)?.children?.push({
         name: 'subscription-overview',
-        path: options.overviewPagePath ?? '/account/subscription',
-        file: resolve('./pages/subscription.vue'),
+        path: options.overviewPagePath ?? '/account/subscriptions',
+        file: resolve('./pages/subscriptions.vue'),
       })
     })
 
