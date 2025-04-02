@@ -5,7 +5,7 @@ import { useBreadcrumbs } from './useBreadcrumbs'
 
 vi.mock('#app', () => ({
   useNuxtApp: vi.fn().mockReturnValue({
-    $config: { public: { baseUrl: 'https://example.com' } },
+    $config: { public: { baseUrl: '' } },
   }),
 }))
 vi.mock('~/composables', () => ({
@@ -44,11 +44,11 @@ describe('useBreadcumbs', () => {
 
       expect(breadcrumbs).toStrictEqual([
         {
-          to: 'https://example.com/de/c/women/clothing/shirts-2045',
+          to: '/de/c/women/clothing/shirts-2045',
           value: 'shirts',
         },
         {
-          to: 'https://example.com/de/c/women/clothing-2048',
+          to: '/de/c/women/clothing-2048',
           value: 'clothing',
         },
       ])
@@ -78,14 +78,14 @@ describe('useBreadcumbs', () => {
 
       expect(breadcrumbs).toStrictEqual([
         {
-          to: 'https://example.com/de/c/women/clothing/shirts-2045',
+          to: '/de/c/women/clothing/shirts-2045',
           value: 'shirts',
         },
         {
-          to: 'https://example.com/de/c/women/clothing-2048',
+          to: '/de/c/women/clothing-2048',
           value: 'clothing',
         },
-        { to: 'https://example.com/de/c/women-1', value: 'women' },
+        { to: '/de/c/women-1', value: 'women' },
       ])
     })
   })
@@ -114,13 +114,13 @@ describe('useBreadcumbs', () => {
       const breadcrumbs = getBreadcrumbsFromProductCategories(categories)
 
       expect(breadcrumbs).toStrictEqual([
-        { to: 'https://example.com/de/c/women-1', value: 'women' },
+        { to: '/de/c/women-1', value: 'women' },
         {
-          to: 'https://example.com/de/c/women/clothing-2048',
+          to: '/de/c/women/clothing-2048',
           value: 'clothing',
         },
         {
-          to: 'https://example.com/de/c/women/clothing/shirts-2045',
+          to: '/de/c/women/clothing/shirts-2045',
           value: 'shirts',
         },
       ])
@@ -137,7 +137,7 @@ describe('useBreadcumbs', () => {
       const { getBreadcrumb } = useBreadcrumbs()
 
       expect(getBreadcrumb(womenCategory)).toStrictEqual({
-        to: 'https://example.com/de/c/women-1',
+        to: '/de/c/women-1',
         value: 'women',
       })
     })

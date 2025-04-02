@@ -1,34 +1,25 @@
 import type { Category, ProductCategory } from '@scayle/storefront-nuxt'
 import { useRouteHelpers } from '.'
-import { useNuxtApp } from '#app'
 import type { BreadcrumbItem } from '~/types/breadcrumbs'
 import { getCategoryAncestors } from '~/utils/category'
 
 export function useBreadcrumbs() {
   const { buildCategoryPath } = useRouteHelpers()
-  const {
-    $config: {
-      public: { baseUrl },
-    },
-  } = useNuxtApp()
 
   const getBreadcrumbsFromProductCategories = (
     categories: ProductCategory[],
   ): BreadcrumbItem[] => {
     return categories.map((category) => ({
       value: category.categoryName,
-      to: new URL(
-        buildCategoryPath({
-          id: category.categoryId,
-          path: category.categoryUrl,
-        }),
-        baseUrl,
-      ).href,
+      to: buildCategoryPath({
+        id: category.categoryId,
+        path: category.categoryUrl,
+      }),
     }))
   }
 
   const getBreadcrumb = (category: Category) => ({
-    to: new URL(buildCategoryPath(category), baseUrl).href,
+    to: buildCategoryPath(category),
     value: category.name,
   })
 
