@@ -61,8 +61,8 @@
     @add-item-to-basket="addItemToBasket($event)"
   />
   <Teleport to="#teleports">
-    <SFFloatingContainer
-      class="!bottom-6 z-50 flex w-full items-center gap-x-3 px-3 md:hidden"
+    <div
+      class="fixed bottom-6 z-50 flex w-full items-center gap-x-3 px-3 md:hidden"
     >
       <SFButton
         variant="accent"
@@ -89,31 +89,28 @@
         </div>
       </SFButton>
       <SFScrollToTopButton />
-    </SFFloatingContainer>
+    </div>
   </Teleport>
 </template>
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import type { Product, Variant } from '@scayle/storefront-nuxt'
+import type { Product, Variant, Promotion } from '@scayle/storefront-nuxt'
 import { useElementVisibility } from '@vueuse/core'
 import SFSiblingSelection from '../SFSiblingSelection.vue'
 import SFVariantPicker from '../SFVariantPicker.vue'
 import SFWishlistToggle from '../SFWishlistToggle.vue'
 import SFQuantityInput from '../SFQuantityInput.vue'
-import SFFloatingContainer from '~/components/SFFloatingContainer.vue'
 import SFScrollToTopButton from '~/components/SFScrollToTopButton.vue'
 import { isProductSubscriptionEligible } from '#storefront-subscription/helpers/subscription'
 import { SFProductSubscription } from '#storefront-subscription/components'
 import { SFButton } from '#storefront-ui/components'
-import { isAutomaticDiscountType } from '~/utils/promotion'
 import {
   useProductBaseInfo,
   useBasketActions,
   useTrackingEvents,
   type AddToBasketItem,
 } from '~/composables'
-import type { Promotion } from '~/types/promotion'
 import { getMaxQuantity } from '~/utils'
 
 const { product, promotion } = defineProps<{
@@ -139,15 +136,10 @@ const basketItem = computed<AddToBasketItem | undefined>(() => {
   if (!activeVariant.value) {
     return
   }
-  // NOTE: For Buy x Get Y promotions, the promotion Id needs to be added on the Y Item (Gift)
-  const promotionId = isAutomaticDiscountType(promotion)
-    ? promotion?.id
-    : undefined
   return {
     productName: name.value,
     variantId: activeVariant.value?.id,
     quantity: quantity.value,
-    promotionId,
   }
 })
 

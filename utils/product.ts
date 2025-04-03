@@ -1,4 +1,5 @@
 import {
+  type Promotion,
   type Price,
   type Product,
   getAttributeValueTuples,
@@ -7,7 +8,7 @@ import {
 import type { BasketItemPrice } from '@scayle/storefront-api'
 import { getPrimaryImage } from './image'
 import type { ProductSibling } from '~/types/siblings'
-import type { Promotion } from '~/types/promotion'
+import { sortPromotionsByPriority } from '#storefront-promotions/utils'
 
 export { ProductImageType } from '@scayle/storefront-nuxt'
 
@@ -18,19 +19,19 @@ export const getPromotionIdFromProductAttributes = (product?: Product) => {
   return getFirstAttributeValue(product.attributes, 'promotion')?.id
 }
 
-export const getApplicablePromotionsForProduct = (
+export const getPromotionForProduct = (
   product: Product,
   promotions: Promotion[],
 ) => {
   const productPromotionId = getPromotionIdFromProductAttributes(product)
   const items = promotions.filter(({ customData }) => {
-    if (!productPromotionId || !customData.product?.promotionId) {
+    if (!productPromotionId || !customData.product?.attributeId) {
       return false
     }
-    return customData.product?.promotionId === productPromotionId
+    return customData.product?.attributeId === productPromotionId
   })
 
-  return items.toSorted((a, b) => a.priority - b.priority)
+  return items.toSorted(sortPromotionsByPriority)?.[0]
 }
 
 export const getProductSiblingData = (

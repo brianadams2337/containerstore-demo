@@ -10,7 +10,7 @@
         >
           {{ label }}
           <span
-            class="inline-flex h-4 items-center justify-center rounded bg-black px-1.5 text-2xs text-white opacity-0"
+            class="inline-flex h-4 items-center justify-center rounded-full bg-black px-1.5 text-xs text-white opacity-0"
             :class="{ 'opacity-100': badge > 0 }"
             data-testid="filter-group-counter"
           >

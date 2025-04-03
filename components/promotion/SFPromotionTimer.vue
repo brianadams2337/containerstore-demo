@@ -1,9 +1,6 @@
 <template>
-  <div
-    class="inline-flex h-6 items-center p-px"
-    :class="!borderless && 'rounded border'"
-  >
-    <IconHourglass class="ml-1.5 size-2.5 stroke-white" />
+  <div class="inline-flex h-6 items-center rounded border p-px" :style="style">
+    <IconHourglass class="ml-1.5 size-2.5" />
     <ClientOnly>
       <template #fallback>
         <div class="mx-1 flex">
@@ -27,6 +24,7 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { COUNTDOWN_LOADER_UNITS } from '~/constants'
 import {
   SFCountdown,
@@ -34,9 +32,16 @@ import {
   SFSkeletonLoader,
 } from '#storefront-ui/components'
 import { ClientOnly } from '#components'
+import type { PromotionStyle } from '~/utils'
 
-const { borderless = false } = defineProps<{
+const { colorStyle } = defineProps<{
   timeUntil: string
-  borderless?: boolean
+  colorStyle: PromotionStyle
 }>()
+
+const style = computed(() => ({
+  ...colorStyle,
+  borderColor: colorStyle.color,
+  stroke: colorStyle.color,
+}))
 </script>

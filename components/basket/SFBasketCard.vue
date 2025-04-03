@@ -104,27 +104,11 @@
       />
     </div>
   </li>
-  <SFProductPromotionGifts
-    v-if="
-      showFreeGiftSelection &&
-      !isSoldOut &&
-      promotion &&
-      isBuyXGetYType(promotion) &&
-      !isGiftAddedToBasket &&
-      areGiftConditionsMet
-    "
-    v-bind="$attrs"
-    :product="basketItem.product"
-    :are-gift-conditions-met="areGiftConditionsMet"
-    :promotion="promotion"
-    class="border border-gray-200 p-3 max-lg:border-x-0 max-lg:!px-0 lg:last:rounded-b-xl"
-  />
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { BasketItem } from '@scayle/storefront-nuxt'
-import SFProductPromotionGifts from '../product/promotion/gifts/SFProductPromotionGifts.vue'
 import SFBasketCardDetails from './SFBasketCardDetails.vue'
 import SFBasketCardImage from './SFBasketCardImage.vue'
 import SFBasketCardSoldOutTitle from './SFBasketCardSoldOutTitle.vue'
@@ -134,20 +118,19 @@ import SFProductPrice from '~/components/product/SFProductPrice.vue'
 import SFLocalizedLink from '~/components/SFLocalizedLink.vue'
 import {
   useProductBaseInfo,
-  useProductPromotions,
   useRouteHelpers,
   useTrackingEvents,
   useBasketItem,
 } from '~/composables'
 import SFButton from '~/modules/ui/runtime/components/core/SFButton.vue'
-import { getMaxQuantity, isBuyXGetYType } from '~/utils'
+import { getMaxQuantity } from '~/utils'
 import type { TrackSelectItemEventParams } from '~/types/tracking'
 import { basketListingMetaData } from '~/constants'
 import { useRoute } from '#app'
 
 defineOptions({ inheritAttrs: false })
 
-const { basketItem, showFreeGiftSelection = false } = defineProps<{
+const { basketItem } = defineProps<{
   basketItem: BasketItem
   showFreeGiftSelection?: boolean
 }>()
@@ -157,9 +140,6 @@ const route = useRoute()
 const { alt, brand, name, link } = useProductBaseInfo(basketItem.product)
 
 const { isSoldOut, isFreeGift, price } = useBasketItem(() => basketItem)
-
-const { areGiftConditionsMet, isGiftAddedToBasket, promotion } =
-  useProductPromotions(basketItem.product)
 
 const { trackSelectItem } = useTrackingEvents()
 

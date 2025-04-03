@@ -1,11 +1,5 @@
-import {
-  type AutomaticDiscountEffect,
-  type BasketItem,
-  type BuyXGetYEffect,
-  PromotionEffectType,
-} from '@scayle/storefront-nuxt'
+import type { Promotion } from '@scayle/storefront-nuxt'
 import Color from 'color'
-import type { Promotion } from '~/types/promotion'
 
 const getRGBAValue = (color: string, alpha: AlphaValue) =>
   Color(color)
@@ -13,13 +7,26 @@ const getRGBAValue = (color: string, alpha: AlphaValue) =>
     .rgb()
     .string()
 
-export const FALLBACK_COLOR = '#007aff'
+export const FALLBACK_COLOR = '#0038FF'
+
+export const FALLBACK_PROMOTION_COLORS = {
+  background: FALLBACK_COLOR,
+  text: '#fff',
+}
 
 type AlphaValue = 0 | 5 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100
 
-type PromotionStyle =
-  | { textColor: string; backgroundColor: string; color?: string }
-  | { textColor?: string; backgroundColor: string; color: string }
+export type PromotionStyle =
+  | {
+      textColor: string
+      backgroundColor: string
+      color?: string
+    }
+  | {
+      textColor?: string
+      backgroundColor: string
+      color: string
+    }
 
 /**
  * Returns a style object with a background color based on the provided color and alpha values.
@@ -67,80 +74,18 @@ export const getTextColorStyle = (
  */
 export const getPromotionStyle = (
   promotion?: Promotion | null,
-): PromotionStyle | undefined => {
+): PromotionStyle => {
   if (!promotion) {
-    return
+    return {
+      backgroundColor: FALLBACK_PROMOTION_COLORS.background,
+      color: FALLBACK_PROMOTION_COLORS.text,
+    }
   }
 
   return {
-    ...getBackgroundColorStyle(promotion.customData?.colorHex, 10),
-    ...getTextColorStyle(promotion.customData?.colorHex, 100),
+    backgroundColor:
+      promotion.customData?.color?.background ||
+      FALLBACK_PROMOTION_COLORS.background,
+    color: promotion.customData?.color?.text || FALLBACK_PROMOTION_COLORS.text,
   }
 }
-/**
- * Checks if the given promotion is of type BuyXGetY.
- *
- * @param promotion - The promotion to check.
- * @returns True if the promotion is a BuyXGetY type, false otherwise.
- */
-export const isBuyXGetYType = (promotion?: Promotion | null): boolean => {
-  return promotion?.effect?.type === PromotionEffectType.BUY_X_GET_Y
-}
-
-/**
- * Checks if the given promotion is of type AutomaticDiscountEffect.
- *
- * @param promotion - The promotion to check.
- * @returns True if the promotion is an AutomaticDiscount type, false otherwise.
- */
-export const isAutomaticDiscountType = (
-  promotion?: Promotion | null,
-): boolean => {
-  return promotion?.effect?.type === PromotionEffectType.AUTOMATIC_DISCOUNT
-}
-
-/**
- * Returns an array of variant IDs of the Buy X Get Y promotion. The returned variant IDs are eligible as a free gift.
- *
- * @param promotion - The promotion object.
- * @returns An array of variant IDs.
- */
-export const getVariantIds = (promotion?: Promotion | null): number[] => {
-  if (!isBuyXGetYType(promotion) || !promotion) {
-    return []
-  }
-  const { additionalData } = promotion.effect as BuyXGetYEffect
-  return additionalData.variantIds
-}
-
-/**
- * Checks if a free gift is eligible in the current basket.
- *
- * A promotion is considered eligible if its variants are included in the basket item.
- *
- * @param basketItem - The basket item to check eligibility for.
- * @returns Whether the promotion is eligible as a free gift.
- */
-export const isFreeGiftEligible = (basketItem: BasketItem) => {
-  const variantIds = getVariantIds(basketItem.promotion)
-  return variantIds.includes(basketItem.variant.id)
-}
-
-export const getAdditionalData = (
-  promotion?: Promotion | null,
-): AutomaticDiscountEffect['additionalData'] | undefined => {
-  if (!isAutomaticDiscountType(promotion) || !promotion) {
-    return
-  }
-  const { additionalData } = promotion.effect as AutomaticDiscountEffect
-  return additionalData
-}
-
-/**
- * Checks if the passed basket item is a gift or not.
- *
- * @param basketItem - The basket item to check.
- * @returns Whether the basket item is a gift.
- */
-export const isFreeGiftBasketItem = (basketItem: BasketItem) =>
-  isFreeGiftEligible(basketItem) && basketItem.promotion?.isValid

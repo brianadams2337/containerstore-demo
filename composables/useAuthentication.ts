@@ -21,6 +21,7 @@ import {
   useWishlist,
 } from '#storefront/composables'
 import { routeList } from '~/utils'
+import { useApplyPromotions } from '#storefront-promotions/composables/useApplyPromotions'
 
 export interface UseAuthenticationReturn {
   /** An async function that handles the authentication process for a regular user */
@@ -91,11 +92,15 @@ export function useAuthentication(
   })
 
   const { refresh: refreshWishlist } = useWishlist()
-  const { refresh: refreshBasket } = useBasket()
+  const { refresh: refreshBasket, data: basketData } = useBasket()
   const { user, refresh: refreshUser, customerType } = useUser()
+  const { applyPromotions } = useApplyPromotions()
 
   const refresh = async (): Promise<void> => {
     await Promise.all([refreshUser(), refreshWishlist(), refreshBasket()])
+    // After the a user logs in the "logged out" basket gets merged with the users basket.
+    // The users basket could contain items where a promotion can be applied.
+    await applyPromotions(basketData)
   }
 
   const login = async (data: Omit<LoginRequest, 'shop_id'>): Promise<void> => {

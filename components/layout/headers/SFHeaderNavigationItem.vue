@@ -1,11 +1,12 @@
 <template>
   <li
     ref="root"
-    class="relative flex h-full items-center"
+    class="relative flex h-full items-center pl-4 first:pl-0"
     @mouseenter="openFlyout(false)"
     @mouseleave="closeFlyout()"
   >
     <SFNavigationTreeItem
+      ref="trigger"
       :navigation-item="item"
       class="!mr-0 flex !h-6 items-center py-1"
       :class="{
@@ -35,7 +36,8 @@
         v-if="showFlyout"
         ref="flyout"
         :item="item"
-        class="fixed left-0 top-[99px] z-100 w-full"
+        class="absolute inset-x-0 top-[63px] z-100 w-screen"
+        :style="flyoutTransform"
         @close="closeFlyout"
       />
     </div>
@@ -45,7 +47,7 @@
 <script setup lang="ts">
 import { computed, nextTick, ref } from 'vue'
 import type { NavigationTreeItem as NavigationTreeItemType } from '@scayle/storefront-nuxt'
-import { onKeyStroke } from '@vueuse/core'
+import { onKeyStroke, useElementBounding } from '@vueuse/core'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import SFDesktopNavigationFlyout from './SFDesktopNavigationFlyout.vue'
 import { usePageState } from '~/composables'
@@ -106,4 +108,17 @@ onKeyStroke(
   },
   { target: flyout },
 )
+
+const trigger = ref()
+const NAVIGATION_ITEM_SPACE_BETWEEN_IN_PX = 16
+const { x } = useElementBounding(trigger, {
+  windowScroll: false,
+})
+const flyoutTransform = computed(() => {
+  return {
+    transform: `translateX(-${
+      x.value - NAVIGATION_ITEM_SPACE_BETWEEN_IN_PX
+    }px)`,
+  }
+})
 </script>

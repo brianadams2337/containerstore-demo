@@ -11,7 +11,7 @@
           <div class="hidden p-3 md:block">
             <div class="relative overflow-hidden rounded-xl bg-gray-200">
               <SFProductPromotionFreeGiftBadge
-                :background-color-style="backgroundColorStyle"
+                :color-style="colorStyle"
                 class="absolute left-0 top-0"
               />
               <ProductImage
@@ -52,7 +52,7 @@
               class="relative mb-8 overflow-hidden rounded-xl bg-gray-200 md:hidden"
             >
               <SFProductPromotionFreeGiftBadge
-                :background-color-style="backgroundColorStyle"
+                :color-style="colorStyle"
                 class="absolute left-0 top-0"
               />
               <ProductImage
@@ -88,12 +88,20 @@
                   data-testid="add-item-to-basket-button"
                   variant="accent"
                   :disabled="product.isSoldOut"
-                  :title="product.isSoldOut ? $t('badge_labels.sold_out') : ''"
+                  :title="
+                    product.isSoldOut
+                      ? $t('badge_labels.sold_out')
+                      : $t('pdp.add_label')
+                  "
                   :loading="status === 'pending'"
                   class="w-full justify-between !px-4"
                   @click="addToBasket"
                 >
-                  {{ $t('pdp.add_label') }}
+                  {{
+                    product.isSoldOut
+                      ? $t('badge_labels.sold_out')
+                      : $t('pdp.add_label')
+                  }}
                   <template #append-icon>
                     <div class="flex items-center">
                       <IconPlus class="size-6 text-white" />
@@ -118,7 +126,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Product } from '@scayle/storefront-nuxt'
+import type { Product, Promotion } from '@scayle/storefront-nuxt'
 import { ref } from 'vue'
 import { useElementVisibility } from '@vueuse/core'
 import SFProductPrice from '../SFProductPrice.vue'
@@ -141,12 +149,12 @@ import {
   SFSlideInFromBottomTransition,
   SFModal,
 } from '#storefront-ui/components'
-import type { Promotion } from '~/types/promotion'
+import type { PromotionStyle } from '~/utils'
 
 const { product, promotion } = defineProps<{
   product: Product
   promotion: Promotion
-  backgroundColorStyle: { backgroundColor?: string }
+  colorStyle: PromotionStyle
 }>()
 
 const { getProductDetailRoute } = useRouteHelpers()
@@ -194,7 +202,7 @@ const addToBasket = () => {
     return
   }
 
-  addItemToBasket(promotion?.id)
+  addItemToBasket(promotion.id)
 }
 
 const close = () => {

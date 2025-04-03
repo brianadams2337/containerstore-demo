@@ -58,9 +58,9 @@
     </div>
     <SFFilterSlideIn :current-category-id="currentCategoryId" />
     <Teleport to="#teleports">
-      <SFFloatingContainer class="right-4 md:bottom-16">
+      <div class="fixed bottom-8 right-4 md:bottom-24">
         <SFScrollToTopButton />
-      </SFFloatingContainer>
+      </div>
     </Teleport>
   </div>
 </template>
@@ -104,7 +104,6 @@ import SFFilterToggleButton from '~/components/filter/SFFilterToggleButton.vue'
 import SFCategoryNavigationSlider from '~/components/category/SFCategoryNavigationSlider.vue'
 import SFProductList from '~/components/productList/SFProductList.vue'
 import SFFilterSlideIn from '~/components/filter/SFFilterSlideIn.vue'
-import SFFloatingContainer from '~/components/SFFloatingContainer.vue'
 import SFScrollToTopButton from '~/components/SFScrollToTopButton.vue'
 import {
   useProductListingSeoData,

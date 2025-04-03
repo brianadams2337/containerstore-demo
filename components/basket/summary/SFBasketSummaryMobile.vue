@@ -22,9 +22,8 @@
     </div>
   </section>
   <SFBasketSummaryReductions
-    v-if="cost.appliedReductions.length > 0"
-    :cost="cost"
-    :basket-items="basketItems"
+    v-if="basket.cost.appliedReductions.length > 0"
+    :basket="basket"
     class="bg-gray-50 px-5 pb-4 lg:hidden"
   />
   <div
@@ -32,8 +31,8 @@
   >
     <hr class="h-px w-full border-none bg-gray-300" />
     <SFBasketSummaryFinalSection
-      :cost="cost"
-      :basket-items="basketItems"
+      :cost="basket.cost"
+      :basket-items="basket.items"
       class="px-5"
     />
   </div>
@@ -46,16 +45,15 @@
 </template>
 
 <script lang="ts" setup>
-import type { BasketTotalPrice, BasketItem } from '@scayle/storefront-nuxt'
+import type { BasketResponseData } from '@scayle/storefront-nuxt'
 import SFBasketSummaryFinalSection from './SFBasketSummaryFinalSection.vue'
 import SFBasketSummaryReductions from './SFBasketSummaryReductions.vue'
 import SFBasketSummaryVoucherDisclaimer from './SFBasketSummaryVoucherDisclaimer.vue'
 import { SFHeadline } from '#storefront-ui/components'
 import { useFormatHelpers } from '#storefront/composables'
 
-const { cost, basketItems, subtotal } = defineProps<{
-  cost: BasketTotalPrice
-  basketItems: BasketItem[]
+const { basket, subtotal } = defineProps<{
+  basket: BasketResponseData
   subtotal?: number
 }>()
 

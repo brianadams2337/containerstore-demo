@@ -56,10 +56,13 @@
 </template>
 
 <script setup lang="ts">
-import { getFirstAttributeValue, type Variant } from '@scayle/storefront-nuxt'
+import {
+  type Promotion,
+  getFirstAttributeValue,
+  type Variant,
+} from '@scayle/storefront-nuxt'
 import SFProductPrice from './SFProductPrice.vue'
 import { SFDropdown } from '#storefront-ui/components'
-import type { Promotion } from '~/types/promotion'
 
 const { hasOneVariantOnly = false } = defineProps<{
   variants: Variant[]

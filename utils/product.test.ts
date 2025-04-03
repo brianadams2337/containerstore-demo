@@ -1,4 +1,4 @@
-import type { CentAmount, Price } from '@scayle/storefront-nuxt'
+import type { CentAmount, Price, Promotion } from '@scayle/storefront-nuxt'
 import { it, describe, expect } from 'vitest'
 import {
   attributeGroupSingleFactory,
@@ -9,14 +9,13 @@ import {
 import {
   getProductSiblings,
   getProductSiblingData,
-  getApplicablePromotionsForProduct,
+  getPromotionForProduct,
   createCustomPrice,
   getMaxQuantity,
 } from './product'
-import type { Promotion } from '~/types/promotion'
 
 // TODO: Cover more cases (e.g return data set check, different color attribute name etc.)
-describe('getApplicablePromotionsForProduct', () => {
+describe('getPromotionForProduct', () => {
   it('should get the applicable promotion for the product with single promotion', () => {
     const product = productFactory.build({
       attributes: {
@@ -35,7 +34,7 @@ describe('getApplicablePromotionsForProduct', () => {
         customData: {
           product: {
             badgeLabel: '-20% Off',
-            promotionId: 2432,
+            attributeId: 2432,
           },
         },
       }),
@@ -43,14 +42,14 @@ describe('getApplicablePromotionsForProduct', () => {
         customData: {
           product: {
             badgeLabel: '-20% Off',
-            promotionId: 9999,
+            attributeId: 9999,
           },
         },
       }),
     ] as Promotion[]
-    const result = getApplicablePromotionsForProduct(product, promotions)
+    const result = getPromotionForProduct(product, promotions)
 
-    expect(result).toEqual([promotions[0]])
+    expect(result).toEqual(promotions[0])
   })
 
   it('should get the applicable priority sorted promotion for the product with multiple promotions', () => {
@@ -79,7 +78,7 @@ describe('getApplicablePromotionsForProduct', () => {
         customData: {
           product: {
             badgeLabel: '-20% Off',
-            promotionId: 2432,
+            attributeId: 2432,
           },
         },
         priority: 1,
@@ -89,16 +88,16 @@ describe('getApplicablePromotionsForProduct', () => {
         customData: {
           product: {
             badgeLabel: 'Free Caps',
-            promotionId: 2477,
+            attributeId: 2477,
           },
         },
         priority: 9,
       }),
     ] as Promotion[]
 
-    const result = getApplicablePromotionsForProduct(product, promotions)
+    const result = getPromotionForProduct(product, promotions)
 
-    expect(result).toEqual([promotions[1]])
+    expect(result).toEqual(promotions[1])
   })
 })
 

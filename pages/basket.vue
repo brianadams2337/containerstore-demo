@@ -11,10 +11,27 @@
       data-testid="basket-container"
     >
       <div
-        class="mx-5 flex flex-col space-y-4 pb-8 pt-1.5 lg:ml-7 lg:mr-13 lg:w-3/5 lg:items-end lg:space-y-5 lg:py-8"
+        class="mx-5 flex flex-col space-y-4 pb-8 pt-1.5 lg:ml-7 lg:mr-13 lg:w-3/5 lg:items-end lg:space-y-8 lg:py-8"
       >
         <SFBasketHeadline v-if="basketCount" :count="basketCount" />
-        <SFBasketMOVBanners />
+        <SFProductPromotionBanner
+          v-for="promotion in movPromotions"
+          :key="promotion.id"
+          :promotion="promotion"
+          class="w-full lg:max-w-156"
+        />
+        <template
+          v-for="promotion in basketData?.applicablePromotions"
+          :key="promotion.promotion.id"
+        >
+          <SFProductPromotionGifts
+            v-if="isBuyXGetYType(promotion.promotion)"
+            are-gift-conditions-met
+            :promotion="promotion.promotion"
+            class="w-full lg:min-w-125 lg:max-w-156"
+          />
+        </template>
+
         <SFBasketAvailableItems
           v-if="groupedBasketItems?.available"
           :available-items="groupedBasketItems?.available"
@@ -35,11 +52,7 @@
           />
         </template>
       </div>
-      <SFBasketSummary
-        v-if="basketCost && basketItems?.length"
-        :cost="basketCost"
-        :basket-items="basketItems"
-      />
+      <SFBasketSummary v-if="basketData" :basket="basketData" />
       <SFBasketDeleteConfirmationModal
         :visible="isDeleteConfirmationRevealed"
         :on-confirm="confirmDeletion"
@@ -63,6 +76,7 @@ import { useRoute } from '#app/composables/router'
 import { WishlistListingMetadata } from '~/constants/listingMetadata'
 import {
   useBasketActions,
+  useMovPromotions,
   usePageState,
   useTrackingEvents,
 } from '~/composables'
@@ -77,13 +91,16 @@ import SFBasketHeadline from '~/components/basket/SFBasketHeadline.vue'
 import SFBasketDeleteConfirmationModal from '~/components/basket/SFBasketDeleteConfirmationModal.vue'
 import SFBasketAvailableItems from '~/components/basket/SFBasketAvailableItems.vue'
 import SFBasketUnavailableItems from '~/components/basket/SFBasketUnavailableItems.vue'
-import SFBasketMOVBanners from '~/components/basket/promotions/SFBasketMOVBanners.vue'
+import SFProductPromotionBanner from '~/components/product/promotion/banners/SFProductPromotionBanner.vue'
+import SFProductPromotionGifts from '~/components/product/promotion/gifts/SFProductPromotionGifts.vue'
+import { isBuyXGetYType } from '#storefront-promotions/utils'
 
 const route = useRoute()
 const { pageState } = usePageState()
 
 const wishlist = useWishlist()
 const {
+  data: basketData,
   items: basketItems,
   status: basketStatus,
   cost: basketCost,
@@ -108,6 +125,7 @@ whenever(
   },
   { immediate: true },
 )
+const { movPromotions } = useMovPromotions()
 
 onMounted(() => {
   if (!basketItems.value) {

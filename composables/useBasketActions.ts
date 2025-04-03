@@ -11,6 +11,7 @@ import { useRouteHelpers } from '~/composables'
 import { routeList, getBasketToastErrorMessageKey } from '~/utils'
 import { useBasket, useLog } from '#storefront/composables'
 import { hasSubscriptionCustomData } from '~/modules/subscription/helpers/subscription'
+import { useApplyPromotions } from '#storefront-promotions/composables/useApplyPromotions'
 
 export type AddToBasketItem = AddOrUpdateItemType & {
   productName: string
@@ -45,6 +46,8 @@ export function useBasketActions(): UseBasketActionsReturn &
 
   const { getLocalizedRoute } = useRouteHelpers()
 
+  const { applyPromotions } = useApplyPromotions()
+
   const basket = useBasket()
   const { removeItemByKey, addItem: addItemToBasket, updateItem } = basket
 
@@ -55,7 +58,7 @@ export function useBasketActions(): UseBasketActionsReturn &
     variant,
   }: BasketItem) => {
     await removeItemByKey(key)
-
+    await applyPromotions(basket.data)
     trackRemoveFromBasket({ product, quantity, variant })
   }
 
@@ -86,6 +89,7 @@ export function useBasketActions(): UseBasketActionsReturn &
         item.existingItemHandling ||
         ExistingItemHandling.ADD_QUANTITY_TO_EXISTING
       await addItemToBasket({ ...item, existingItemHandling })
+      await applyPromotions(basket.data)
       showAddItemSuccessMessage(item, hasSubscriptionData)
     } catch (error) {
       log.error('Item could not be added to basket', error)
@@ -109,6 +113,7 @@ export function useBasketActions(): UseBasketActionsReturn &
       itemGroup: basketItem?.itemGroup,
       promotionId: basketItem?.promotionId,
     })
+    await applyPromotions(basket.data)
 
     trackAddToBasket({
       product: basketItem.product,

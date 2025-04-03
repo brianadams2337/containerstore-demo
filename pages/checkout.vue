@@ -23,10 +23,12 @@ import {
 } from '~/composables'
 import { useBasket, useLog, useUser } from '#storefront/composables'
 import { useI18n } from '#i18n'
+import { useApplyPromotions } from '#storefront-promotions/composables/useApplyPromotions'
 
 const { accessToken, checkoutJwt, fetchCheckoutToken } =
   useCheckoutWebComponent()
-const { refresh: refreshBasket, status } = useBasket()
+const { refresh: refreshBasket, status, data: basket } = useBasket()
+const { applyPromotions } = useApplyPromotions()
 
 const { user, refresh: refreshUser } = useUser()
 
@@ -51,6 +53,8 @@ const onCheckoutUpdate = async (
 
     if (actionType === 'add_to_cart' || actionType === 'remove_from_cart') {
       await fetchCallback()
+      // Update promotions in case some got applicable after the cart was updated
+      await applyPromotions(basket)
     }
   }
 }
@@ -62,6 +66,7 @@ useEventListener('message', (event) =>
 
 onBeforeMount(async () => {
   await Promise.all([refreshBasket(), refreshUser(), fetchCheckoutToken()])
+  await applyPromotions(basket)
 })
 
 const handleError = (payload = {}) => {

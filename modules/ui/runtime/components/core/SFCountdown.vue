@@ -7,7 +7,7 @@
     >
       <div v-if="shouldShowValue(key, value)" class="inline-flex">
         <span v-if="value !== undefined" class="tabular-nums">
-          {{ value }}
+          {{ value.toString().padStart(2, '0') }}
         </span>
         <span v-if="showUnits">
           <span>{{ renderUnit($t(`global.${key}`)) }}</span>

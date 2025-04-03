@@ -1,6 +1,6 @@
 <template>
-  <div class="flex w-full rounded-xl" data-testid="product-promotion-gift-item">
-    <div class="relative flex shrink-0 items-center rounded-xl bg-gray-200">
+  <div class="flex w-full p-3" data-testid="product-promotion-gift-item">
+    <div class="relative flex shrink-0 items-center rounded-lg bg-gray-200">
       <SFProductImage
         v-if="image"
         :image="image"
@@ -12,7 +12,7 @@
         :class="{ 'opacity-20': disabled }"
       />
       <SFProductPromotionFreeGiftBadge
-        :background-color-style="backgroundColorStyle"
+        :color-style="!disabled ? colorStyle : getDisabledColor(colorStyle)"
         class="absolute left-0 top-0"
       />
     </div>
@@ -30,18 +30,21 @@
             data-testid="pdp-product-name"
             tag="h3"
             class="text-sm !font-normal"
-            :class="disabled ? 'text-gray-400' : 'text-gray-600'"
+            :class="disabled ? 'text-gray-400' : 'text-gray-900'"
           >
             {{ name }}
           </SFHeadline>
         </div>
-        <div class="flex flex-row items-end gap-2">
+        <div v-if="!product.isSoldOut" class="flex flex-row items-end gap-2">
           <SFProductPrice
             v-if="price"
             :class="{ disabled: 'opacity-50' }"
             :price="price"
             :show-badges="false"
           />
+        </div>
+        <div v-else class="text-sm text-status-error">
+          {{ $t('global.sold_out') }}
         </div>
       </div>
       <div class="flex items-end justify-between">
@@ -62,7 +65,7 @@
         <SFProductPromotionSelectionModal
           :product="product"
           :promotion="promotion"
-          :background-color-style="backgroundColorStyle"
+          :color-style="colorStyle"
         />
       </template>
     </ClientOnly>
@@ -71,21 +74,21 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { CentAmount, Product } from '@scayle/storefront-nuxt'
+import type { CentAmount, Product, Promotion } from '@scayle/storefront-nuxt'
+import Color from 'color'
 import SFProductPromotionSelectionModal from '../SFProductPromotionSelectionModal.vue'
 import SFProductPrice from '../../SFProductPrice.vue'
 import SFProductImage from '../../SFProductImage.vue'
 import SFProductPromotionFreeGiftBadge from './SFProductPromotionFreeGiftBadge.vue'
 import { useProductBaseInfo, usePromotionGiftSelection } from '~/composables'
-import { createCustomPrice } from '~/utils'
-import type { Promotion } from '~/types/promotion'
+import { createCustomPrice, type PromotionStyle } from '~/utils'
 import { ClientOnly } from '#components'
 import { SFButton, SFHeadline } from '#storefront-ui/components'
 
 const { disabled = false, product } = defineProps<{
   product: Product
   promotion: Promotion
-  backgroundColorStyle: { backgroundColor?: string }
+  colorStyle: PromotionStyle
   eagerImageLoading: boolean
   disabled?: boolean
 }>()
@@ -99,6 +102,16 @@ const {
   brand,
   alt,
 } = useProductBaseInfo(() => product)
+
+const getDisabledColor = (colorStyle: PromotionStyle) => {
+  return {
+    backgroundColor: Color(colorStyle.backgroundColor)
+      .desaturate(1)
+      .alpha(0.5)
+      .string(),
+    color: Color(colorStyle.color).lighten(1).string(),
+  }
+}
 
 const price = computed(() => {
   if (!productPrice.value) {

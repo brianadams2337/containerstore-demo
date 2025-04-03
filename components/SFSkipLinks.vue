@@ -1,10 +1,11 @@
 <template>
   <div
     id="a11y-skip-links"
-    class="flex h-0 items-center justify-center gap-4 opacity-0 focus-within:h-20 focus-within:opacity-100"
+    class="group flex h-0 items-center justify-center gap-4 opacity-0 focus-within:h-20 focus-within:opacity-100"
   >
     <SFButton
       variant="secondary"
+      class="pointer-events-none group-focus-within:pointer-events-auto"
       data-testid="button-skip-to-main"
       :aria-label="$t('a11y.skip_to_main')"
       @click="focusMainContent"
@@ -13,6 +14,7 @@
     </SFButton>
     <SFButton
       variant="secondary"
+      class="pointer-events-none group-focus-within:pointer-events-auto"
       data-testid="button-skip-to-search"
       :aria-label="$t('a11y.skip_to_search')"
       @click="focusSearch"

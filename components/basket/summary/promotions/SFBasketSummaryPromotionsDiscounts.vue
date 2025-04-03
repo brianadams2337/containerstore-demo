@@ -1,14 +1,11 @@
 <template>
   <ul class="flex flex-col gap-1 text-sm font-medium leading-3.5">
     <li
-      v-for="{ promotion, total } in basketPromotionSummaries.values() || []"
+      v-for="{ promotion, total } in validPromotions"
       :key="promotion?.id"
       class="flex h-7 items-center justify-between gap-1.5 rounded-md px-2"
       data-testid="basket-summary-promotion-item"
-      :style="{
-        ...getBackgroundColorStyle(promotion?.customData.colorHex, 10),
-        ...getTextColorStyle(promotion?.customData.colorHex, 100),
-      }"
+      :style="getPromotionStyle(promotion)"
     >
       <span v-if="promotion?.customData">
         {{ getHeadlineParts(promotion) }}
@@ -24,17 +21,17 @@
 </template>
 
 <script setup lang="ts">
-import type { Promotion } from '~/types/promotion'
+import type { Promotion } from '@scayle/storefront-nuxt'
 import { useFormatHelpers } from '#storefront/composables'
-import { getTextColorStyle, getBackgroundColorStyle } from '~/utils'
-import type { PromotionReductionItem } from '~/composables'
+import { getPromotionStyle } from '~/utils'
+import type { PromotionReductionItem } from '#storefront-promotions/composables'
 
-const { basketPromotionSummaries } = defineProps<{
-  basketPromotionSummaries: Map<string, PromotionReductionItem>
+const { validPromotions: validPromotions = [] } = defineProps<{
+  validPromotions?: PromotionReductionItem[]
 }>()
 
 const getHeadlineParts = (promotion: Promotion): string => {
-  return promotion.customData.headlineParts?.at(0) ?? ''
+  return promotion.customData.headline || promotion.name
 }
 
 const { formatCurrency } = useFormatHelpers()

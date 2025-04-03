@@ -1,39 +1,33 @@
 <template>
-  <div
-    v-if="products && products.length > 0"
-    class="max-md:px-5"
-    data-testid="product-promotion-gifts"
-  >
-    <div :style="{ ...backgroundColorStyle }" class="rounded-t-md px-3.5 py-3">
-      <div class="flex items-center gap-1">
-        <span class="flex h-4.5 w-auto items-center justify-center">
-          <IconLock v-if="!areGiftConditionsMet" class="size-3 text-white" />
-          <IconGift v-else class="size-3 text-white" />
-        </span>
-        <SFHeadline
-          tag="h2"
-          size="sm"
-          class="text-white"
-          is-bold
-          data-testid="headline"
-        >
+  <div class="rounded-xl border">
+    <div
+      class="mb-3 rounded-xl px-5 py-3"
+      :style="{
+        ...colorStyle,
+        stroke: colorStyle.color,
+      }"
+    >
+      <div class="flex gap-1">
+        <IconGift class="size-4" />
+        <SFHeadline tag="h2" size="base" is-bold data-testid="headline">
           {{ promotionGiftsHeadline }}
         </SFHeadline>
       </div>
-      <p class="mt-1 text-2xs text-white">
+
+      <p class="mt-1 text-sm">
         {{ promotionGiftsDescription }}
       </p>
     </div>
-    <div class="flex flex-col divide-y rounded-b-xl border border-gray-300">
-      <div v-for="(item, index) in products" :key="item.id" class="p-4">
+    <div class="flex flex-col">
+      <div v-for="(item, index) in products" :key="item.id">
         <SFProductPromotionGiftItem
-          :background-color-style="backgroundColorStyle"
-          :is-product-added-to-basket="isGiftAlreadyAdded"
+          :color-style="colorStyle"
           :eager-image-loading="index < 2"
           :product="item"
           :promotion="promotion"
           :data-testid="`gift-item-${item.id}`"
-          :disabled="!areGiftConditionsMet"
+          :disabled="!areGiftConditionsMet || item.isSoldOut"
+          :class="{ 'border-t': index !== 0 }"
         />
       </div>
     </div>
@@ -41,20 +35,19 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-import { toRef, computed } from 'vue'
-import type { Product } from '@scayle/storefront-nuxt'
-import SFProductPromotionGiftItem from './SFProductPromotionGiftItem.vue'
-import { usePromotionGifts } from '~/composables'
+import type { Promotion } from '@scayle/storefront-nuxt'
+import { computed } from 'vue'
+import SFProductPromotionGiftItem from './SFProductPromotionGiftItems.vue'
+import { useI18n } from '#imports'
 import { SFHeadline } from '#storefront-ui/components'
-import type { Promotion } from '~/types/promotion'
+import { IconGift } from '#components'
+import { usePromotionGifts } from '#storefront-promotions/composables'
+import { usePromotionCustomData } from '~/composables'
 
-const { product, areGiftConditionsMet, promotion } = defineProps<{
-  product: Product
+const { areGiftConditionsMet, promotion } = defineProps<{
   areGiftConditionsMet: boolean
   promotion: Promotion
 }>()
-
 const { t } = useI18n()
 
 const promotionGiftsHeadline = computed(() => {
@@ -69,10 +62,6 @@ const promotionGiftsDescription = computed(() => {
     : t('pdp.promotion.free_gift_conditions_not_met.description')
 })
 
-const { backgroundColorStyle, products, isGiftAlreadyAdded } =
-  usePromotionGifts(
-    product,
-    toRef(() => promotion),
-    'product-promotion-gifts',
-  )
+const { products } = usePromotionGifts(promotion, 'product-promotion-gifts')
+const { colorStyle } = usePromotionCustomData(promotion)
 </script>

@@ -60,17 +60,20 @@ import { onKeyStroke } from '@vueuse/core'
 import { tabbable } from 'tabbable'
 import { vDialog } from '../../directives/dialog'
 import { useSlideIn, SlideInType } from '#storefront-ui'
+import { onBeforeRouteLeave } from '#app/composables/router'
 
 const {
   slideClass = '',
   slideType = SlideInType.DEFAULT,
   borderless = false,
   name,
+  closeOnRouteChange = true,
 } = defineProps<{
   name: string
   slideClass?: string
   slideType?: SlideInType
   borderless?: boolean
+  closeOnRouteChange?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -143,4 +146,12 @@ watch(isOpen, async (value) => {
 watch(isOpen, (newValue) => (newValue ? emit('open') : emit('close')))
 
 onKeyStroke('Esc', () => close(), { target: slideIn })
+
+// Whenever the route chances, we want to make sure that the slide-in is closed when `closeOnRouteChange` is `true`.
+onBeforeRouteLeave((to, from, next) => {
+  if (closeOnRouteChange && isOpen.value) {
+    close()
+  }
+  next()
+})
 </script>

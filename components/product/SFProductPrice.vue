@@ -57,14 +57,17 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { LowestPriorPrice, Price } from '@scayle/storefront-nuxt'
+import type {
+  LowestPriorPrice,
+  Price,
+  Promotion,
+} from '@scayle/storefront-nuxt'
 import { Size } from '#storefront-ui'
 import {
   useProductPrice,
   type BasketItemPrice,
 } from '~/composables/useProductPrice'
 import { getPromotionStyle } from '~/utils'
-import type { Promotion } from '~/types/promotion'
 import { useFormatHelpers } from '#storefront/composables'
 import type { OrderPrice } from '~/types/order'
 

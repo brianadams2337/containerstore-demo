@@ -31,13 +31,6 @@ export function usePromotionGiftSelection(gift: Product) {
   const activeVariant = useState<Variant | undefined>(
     `active-gift-variant-${gift.id}`,
   )
-  whenever(
-    hasOneVariantOnly,
-    () => {
-      activeVariant.value = gift?.variants?.[0]
-    },
-    { immediate: true, once: true },
-  )
 
   const isSelectionShown = useState(`gift-selection-${gift.id}`, () => false)
 
@@ -110,7 +103,17 @@ export function usePromotionGiftSelection(gift: Product) {
     )
   })
 
-  const addItemToBasket = async (promotionId?: string) => {
+  // Weh only want preselect the active variant when `hasOneVariantOnly.value` is truthy.
+  // `whenever()` is a shorthand for watching the value to be truthy.
+  whenever(
+    hasOneVariantOnly,
+    () => {
+      activeVariant.value = giftVariants.value?.[0]
+    },
+    { immediate: true, once: true },
+  )
+
+  const addItemToBasket = async (promotionId: string) => {
     if (!activeVariant.value) {
       toast.show($i18n.t('basket.notification.select_size'), {
         action: 'CONFIRM',
@@ -125,7 +128,7 @@ export function usePromotionGiftSelection(gift: Product) {
       productName,
       quantity: 1,
       existingItemHandling: ExistingItemHandling.REPLACE_EXISTING,
-      ...(promotionId && { promotionId }),
+      promotionId,
     })
 
     if (gift) {
@@ -138,6 +141,7 @@ export function usePromotionGiftSelection(gift: Product) {
     if (!hasOneVariantOnly.value) {
       activeVariant.value = undefined
     }
+    toggleGiftSelection()
   }
 
   return extendPromise(

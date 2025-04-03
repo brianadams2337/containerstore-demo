@@ -49,9 +49,15 @@
           @click.capture="$emit('clickProduct')"
         />
       </template>
-      <SFProductCardBadgesFooter
+      <SFPromotionBadge
+        v-if="productPromotion"
+        :text="productPromotion?.customData?.product?.badgeLabel"
+        :style="getPromotionStyle(productPromotion)"
+        class="absolute bottom-5 left-1"
+      />
+      <SFProductCardInBasketBadge
+        class="absolute bottom-0 right-0"
         :product="product"
-        class="absolute bottom-0 left-0 w-full"
       />
     </div>
     <SFProductCardDetails
@@ -71,11 +77,14 @@ import { onKeyStroke, useFocus } from '@vueuse/core'
 import SFWishlistToggle from '../SFWishlistToggle.vue'
 import SFProductCardImage from './SFProductCardImage.vue'
 import SFProductCardImageSlider from './imageSlider/SFProductCardImageSlider.vue'
-import SFProductCardBadgesFooter from './badges/SFProductCardBadgesFooter.vue'
 import SFProductCardBadgesHeader from './badges/SFProductCardBadgesHeader.vue'
 import SFProductCardDetails from './SFProductCardDetails.vue'
+import SFProductCardInBasketBadge from './badges/SFProductCardInBasketBadge.vue'
 import { useProductBaseInfo, useRouteHelpers } from '~/composables'
 import type { ListItem } from '~/types/tracking'
+import { useCurrentPromotions } from '#storefront/composables'
+import SFPromotionBadge from '~/components/promotion/SFPromotionBadge.vue'
+import { getPromotionStyle, getPromotionForProduct } from '~/utils'
 
 const {
   product,
@@ -160,4 +169,9 @@ onKeyStroke(
     target: productCard,
   },
 )
+
+const { data: promotions } = useCurrentPromotions()
+const productPromotion = computed(() => {
+  return getPromotionForProduct(product, promotions.value?.entities || [])
+})
 </script>

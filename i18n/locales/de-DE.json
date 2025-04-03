@@ -28,13 +28,13 @@
     "loaded_again": "Erneut laden"
   },
   "promotion": {
-    "progress_left": "{amount} übrig",
+    "progress_left": "Dein Deal wartet auf dich! Gib noch {amount} aus, um diese Aktion zu aktivieren.",
     "terms": "Allgemeine Geschäftsbedingungen für Werbeaktionen",
     "show_deals_label": "Deal-Artikel anzeigen",
     "my_deals_label": "Meine Angebote",
     "cart_reached": "Warenkorb erreicht! Fügen Sie Aktionsprodukte hinzu und erhalten Sie {discount}% Rabatt darauf",
     "cart_reached_for_gifts": "Warenkorb erreicht! Fügen Sie Aktionsprodukte hinzu, um ein kostenloses Geschenk zu erhalten",
-    "full_progress_message": "Sie sparen {amount} bei Ihrer Bestellung",
+    "full_progress_message": "Glückwunsch! Du hast dieses Angebot freigeschaltet und {amount} gespart.",
     "automatic_discount_headline": {
       "add_label": "Fügen Sie",
       "another_label": "weitere",
@@ -46,7 +46,16 @@
     "highest_priority": "Höchste Priorität",
     "see_my_promotions": "Zeigen meine Angebote an",
     "hide_my_promotions": "Verstecke meine Angebote",
-    "not_available": "Keine Angebote verfügbar"
+    "not_available": "Keine Angebote verfügbar",
+    "deal": "Deal",
+    "overlay": "Deine Angebote",
+    "overlay_active": "Deine Angebote – {total} aktive Aktionen",
+    "slide_in_headline": "Deine Angebote",
+    "slide_in_subline": "Finde vergünstigte Produkte, indem du auf eine Aktion klickst. Entdecke ständig wechselnde Angebote auf ausgewählte Produkte.",
+    "slide_in_active": "Aktuelle Angebote {total}",
+    "slide_in_no_active_headline": "Keine aktiven Angeboten",
+    "slide_in_no_active_subline": "Du hast derzeit keine aktiven Aktionen. Schau später wieder vorbei, um neue Angebote und Specials zu entdecken!",
+    "close": "Flyout schließen"
   },
   "shop_selector": {
     "aria_label": "Shop ändern, aktueller Shop: {selectedCountry}, {selectedLanguage}",
@@ -297,6 +306,7 @@
       "return_information": "Falls das Rücksendeetikett in Ihrer Lieferung fehlt, können Sie jederzeit ein neues bei unserem Kundenservice anfordern."
     },
     "promotion": {
+      "condition": "Konditionen",
       "free_gift_conditions_met": {
         "headline": "Lösen Sie Ihr kostenloses Geschenk ein.",
         "description": "Sie haben die Bedingung erfüllt. Wählen Sie gerne ein kostenloses Geschenk aus."
@@ -305,10 +315,10 @@
         "headline": "Schalten Sie Ihr kostenloses Geschenk frei",
         "description": "Erfüllen Sie die Aktionsbedingungen, um ein kostenloses Geschenk auszuwählen."
       },
-      "cart_reached": "Warenkorb erreicht! Fügen Sie Aktionsprodukte hinzu und erhalten Sie {discount}% Rabatt darauf.",
+      "cart_reached": "Du hast ein spezielles Angebot freigeschaltet! Füge berechtigte Produkte zu deinem Warenkorb hinzu, um die Vorteile zu nutzen.",
       "cart_reached_for_gifts": "Warenkorb erreicht! Fügen Sie Werbeartikel hinzu, um ein kostenloses Geschenk zu erhalten.",
       "add_free_gift_when_cart_reached": "Warenkorb erreicht! Wählen Sie ein kostenloses Geschenk aus.",
-      "full_progress_message": "Sie sparen {amount} bei diesem Angebot",
+      "full_progress_message": "Glückwunsch! Du hast dieses Angebot freigeschaltet und {amount} gespart.",
       "free_label": "Gratis"
     },
     "meta": {

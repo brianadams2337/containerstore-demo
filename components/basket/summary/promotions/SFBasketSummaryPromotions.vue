@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="basketPromotionSummaries.size"
+    v-if="validPromotions.length"
     data-testid="basket-summary-promotions"
     class="flex flex-col justify-between gap-3"
   >
@@ -25,32 +25,27 @@
         id="promotion-discounts-content"
         role="region"
         aria-labelledby="promotion-discounts-header"
-        :basket-promotion-summaries="basketPromotionSummaries"
+        :valid-promotions="validPromotions"
       />
     </SFFadeInFromBottomTransition>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { BasketTotalPrice, BasketItem } from '@scayle/storefront-nuxt'
+import type { BasketResponseData } from '@scayle/storefront-nuxt'
 import SFBasketSummaryPromotionsDiscounts from './SFBasketSummaryPromotionsDiscounts.vue'
 import SFBasketSummaryPromotionsToggle from './SFBasketSummaryPromotionsToggle.vue'
 import { useFormatHelpers } from '#storefront/composables'
-import { useBasketPromotionReductions } from '~/composables/useBasketPromotionReductions'
 import { SFFadeInFromBottomTransition } from '#storefront-ui/components'
+import { useBasketPromotions } from '#storefront-promotions/composables'
 
-const { cost, basketItems } = defineProps<{
-  cost: BasketTotalPrice
-  basketItems: BasketItem[]
-}>()
+const { basket } = defineProps<{ basket: BasketResponseData }>()
 
-const { basketPromotionSummaries, totalPromotionReductions } =
-  useBasketPromotionReductions(
-    // We need to pass destructured props as a getter in order to keep reactivity:
-    // https://vuejs.org/guide/components/props.html#passing-destructured-props-into-functions
-    () => cost,
-    () => basketItems,
-  )
+const { validPromotions, totalPromotionReductions } = useBasketPromotions(
+  // We need to pass destructured props as a getter in order to keep reactivity:
+  // https://vuejs.org/guide/components/props.html#passing-destructured-props-into-functions
+  () => basket,
+)
 
 const isPromotionsSummaryVisible = defineModel<boolean>('visible', {
   default: false,

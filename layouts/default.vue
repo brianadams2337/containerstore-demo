@@ -3,16 +3,14 @@
     class="flex min-h-screen flex-col text-primary antialiased anchor-scrolling-none"
   >
     <SFSkipLinks v-model:is-mobile-sidebar-open="isMobileSidebarOpen" />
-    <SFPromotionBanner
-      v-if="shouldShowPromotionBanner"
-      :promotions="allCurrentPromotions"
-    />
+
     <SFToastContainer />
     <CountryDetection @switch-shop="switchShop" />
-    <div
-      class="translate-y-0 transition-transform duration-300 ease-in-out"
-      :class="{ 'lg:-translate-y-13': !isPromotionBannerShown }"
-    >
+    <div>
+      <SFPromotionRibbon
+        v-if="promotions?.entities.length && shouldShowPromotionRibbon"
+        :promotions="promotions.entities"
+      />
       <SFHeaderTopBar />
       <SFHeader v-model:is-mobile-sidebar-open="isMobileSidebarOpen" />
       <main
@@ -23,14 +21,9 @@
       >
         <NuxtPage />
       </main>
-      <SFFooter
-        class="max-lg:mb-4"
-        :class="{
-          'lg:translate-y-13': !isPromotionBannerShown,
-          'mt-16': shouldShowPromotionBanner,
-        }"
-      />
+      <SFFooter class="mt-16 max-lg:mb-4" />
     </div>
+    <SFPromotionSlideIn />
     <SFShopSwitcherFlyout />
   </div>
 </template>
@@ -38,18 +31,21 @@
 <script setup lang="ts">
 import { computed, defineOptions, onMounted, ref } from 'vue'
 import { useHead } from '@unhead/vue'
+import { whenever } from '@vueuse/core'
 import { useRoute } from '#app/composables/router'
 import { useNuxtApp } from '#app/nuxt'
-import { useCurrentPromotions, useCurrentShop } from '#storefront/composables'
+import {
+  useCurrentPromotions,
+  useCurrentShop,
+  useBasket,
+} from '#storefront/composables'
 import {
   USE_BANNER_KEY,
   USE_DEFAULT_BREAKPOINTS_KEY,
   USE_TRACKING_EVENTS_KEY,
   createContext,
   useBanner,
-  useBasketPromotions,
   useTrackingEvents,
-  usePromotionActions,
   useUserItemsTrackingWatcher,
   useCustomerDataChangeWatcher,
 } from '~/composables'
@@ -57,7 +53,6 @@ import SFHeaderTopBar from '~/components/layout/headers/SFHeaderTopBar.vue'
 import CountryDetection, {
   type ShopInfo,
 } from '~/components/SFCountryDetection.vue'
-import SFPromotionBanner from '~/components/promotion/SFPromotionBanner.vue'
 import { useDefaultBreakpoints } from '#storefront-ui/composables'
 import { SFToastContainer } from '#storefront-ui/components'
 import { NuxtPage } from '#components'
@@ -68,6 +63,9 @@ import { routeList } from '~/utils'
 import { useShopSwitcher } from '~/composables/useShopSwitcher'
 import { useLocalePath } from '#i18n'
 import SFShopSwitcherFlyout from '~/components/layout/headers/SFShopSwitcherFlyout.vue'
+import SFPromotionRibbon from '~/components/promotion/SFPromotionRibbon.vue'
+import { useApplyPromotions } from '#storefront-promotions/composables/useApplyPromotions'
+import SFPromotionSlideIn from '~/components/promotion/modal/SFPromotionSlideIn.vue'
 
 const { changeShop } = useShopSwitcher()
 
@@ -76,11 +74,9 @@ const route = useRoute()
 const localePath = useLocalePath()
 
 // Initialize data
-const { allCurrentPromotions } = useBasketPromotions()
+const { data: promotions } = useCurrentPromotions()
 
 const isMobileSidebarOpen = ref(false)
-
-const { isPromotionBannerShown } = usePromotionActions()
 
 const trackingEvents = useTrackingEvents()
 useUserItemsTrackingWatcher()
@@ -93,10 +89,24 @@ createContext(USE_BANNER_KEY, useBanner())
 const { data: _promotionData } = useCurrentPromotions()
 const currentShop = useCurrentShop()
 
-const shouldShowPromotionBanner = computed(() => {
+const shouldShowPromotionRibbon = computed(() => {
   const isBasketPage = route.path === localePath(routeList.basket)
-  return allCurrentPromotions.value.length && !isBasketPage
+  const isOSP = route.path === localePath(routeList.osp)
+  return promotions.value?.entities.length && !isBasketPage && !isOSP
 })
+
+const { data: basketData } = useBasket()
+const { applyPromotions } = useApplyPromotions()
+
+// Update promotions in case a user with items in the basket returned to the shop.
+// While the user was gone, new promotions might have been added that could be added to the basket items.
+whenever(
+  basketData,
+  () => {
+    applyPromotions(basketData)
+  },
+  { once: true },
+)
 
 onMounted(() => trackingEvents.trackShopInit())
 

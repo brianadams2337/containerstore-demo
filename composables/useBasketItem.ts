@@ -1,7 +1,8 @@
 import type { BasketItem, CentAmount } from '@scayle/storefront-nuxt'
 import { type MaybeRefOrGetter, computed } from 'vue'
 import { toRef } from '@vueuse/core'
-import { isFreeGiftBasketItem, createCustomPrice } from '~/utils'
+import { createCustomPrice } from '~/utils'
+import { isFreeGiftBasketItem } from '#storefront-promotions/utils'
 
 /**
  * Composable for extracting relevant data from a basket item.

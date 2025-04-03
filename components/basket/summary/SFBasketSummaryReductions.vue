@@ -4,7 +4,7 @@
   >
     <ul class="flex flex-col gap-4">
       <template
-        v-for="reduction in cost.appliedReductions"
+        v-for="reduction in basket.cost.appliedReductions"
         :key="reduction.category"
       >
         <li
@@ -18,19 +18,16 @@
         </li>
       </template>
     </ul>
-    <SFBasketSummaryPromotions :cost="cost" :basket-items="basketItems" />
+    <SFBasketSummaryPromotions :basket="basket" />
   </section>
 </template>
 
 <script lang="ts" setup>
-import type { BasketTotalPrice, BasketItem } from '@scayle/storefront-nuxt'
+import type { BasketResponseData } from '@scayle/storefront-nuxt'
 import SFBasketSummaryPromotions from './promotions/SFBasketSummaryPromotions.vue'
 import { useFormatHelpers } from '#storefront/composables'
 
 const { formatCurrency } = useFormatHelpers()
 
-const { cost, basketItems } = defineProps<{
-  cost: BasketTotalPrice
-  basketItems: BasketItem[]
-}>()
+const { basket } = defineProps<{ basket: BasketResponseData }>()
 </script>

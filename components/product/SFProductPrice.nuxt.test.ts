@@ -170,7 +170,10 @@ describe('ProductPrice.vue', () => {
       })
       const promotion = automaticDiscountPromotionFactory.build({
         customData: {
-          colorHex: '#FFFFFF',
+          color: {
+            background: '#FFFFFF',
+            text: '#EEEEEE',
+          },
         },
       })
       const { getByTestId, getByText } = await renderSuspended(SFProductPrice, {
@@ -180,8 +183,8 @@ describe('ProductPrice.vue', () => {
       const badge = getByText('-10%')
       expect(badge).toBeVisible()
       expect(badge).toHaveStyle({
-        'background-color': 'rgba(255, 255, 255, 0.1)',
-        color: 'rgb(255, 255, 255)',
+        'background-color': '#FFFFFF',
+        color: '#EEEEEE',
       })
       const strikeThroughPrice = getByTestId('initialProductPrice')
       expect(strikeThroughPrice).toHaveTextContent('1.1€')

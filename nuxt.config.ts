@@ -505,6 +505,7 @@ export default defineNuxtConfig({
     '@scayle/storefront-country-detection',
     '@scayle/storefront-product-detail',
     '@scayle/storefront-product-listing',
+    '@scayle/storefront-promotions',
     '@scayle/storefront-search',
     '@scayle/storefront-navigation',
     '@scayle/nuxt-image-provider',

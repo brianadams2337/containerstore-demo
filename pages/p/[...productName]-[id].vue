@@ -15,7 +15,7 @@
             class="mb-8 hidden max-md:px-5 md:block"
             :product-categories="longestCategoryList"
           />
-          <h1 class="max-md:px-5">
+          <h1 class="max-md:px-5 md:mb-2">
             <div
               class="truncate font-semi-bold-variable text-gray-900"
               :title="brand"
@@ -34,7 +34,7 @@
             </SFHeadline>
           </h1>
 
-          <div class="flex flex-col max-md:px-5 md:flex-col-reverse">
+          <div class="flex flex-col gap-4 max-md:px-5 md:flex-col-reverse">
             <SFProductPrice
               v-if="price"
               size="lg"
@@ -46,7 +46,12 @@
               show-tax-info
               :show-price-from="showFrom"
             />
-            <SFProductPromotionBanners :product="product" />
+            <SFProductPromotionBanner
+              v-if="promotion"
+              :promotion="promotion"
+              :are-gift-conditions-met="areGiftConditionsMet"
+              :is-gift-added-to-basket="isGiftAddedToBasket"
+            />
           </div>
 
           <SFProductActions
@@ -57,13 +62,10 @@
           />
 
           <SFProductPromotionGifts
-            v-if="
-              promotion && isBuyXGetYType(promotion) && !isGiftAddedToBasket
-            "
-            :product="product"
-            :are-gift-conditions-met="areGiftConditionsMet"
+            v-if="promotion && isBuyXGetYType(promotion)"
             :promotion="promotion"
-            class="mt-6 max-md:px-5"
+            class="max-md:mx-5"
+            :are-gift-conditions-met="areGiftConditionsMet"
           />
 
           <SFFadeInTransition>
@@ -127,7 +129,7 @@ import { useTrackingEvents } from '~/composables/useTrackingEvents'
 import { useProductPromotions } from '~/composables/useProductPromotions'
 import { useBasket, useProduct } from '#storefront/composables'
 import { useProductBaseInfo } from '~/composables/useProductBaseInfo'
-import { isBuyXGetYType } from '~/utils/promotion'
+import { isBuyXGetYType } from '#storefront-promotions/utils'
 import { useFavoriteStore } from '~/composables/useFavoriteStore'
 import { useI18n } from '#i18n'
 import { PRODUCT_DETAIL_WITH_PARAMS } from '~/constants'
@@ -135,9 +137,8 @@ import SFAsyncDataWrapper from '~/components/SFAsyncDataWrapper.vue'
 import SFProductGallery from '~/components/product/detail/productGallery/SFProductGallery.vue'
 import SFProductBreadcrumbs from '~/components/product/SFProductBreadcrumbs.vue'
 import SFProductPrice from '~/components/product/SFProductPrice.vue'
-import SFProductPromotionBanners from '~/components/product/promotion/banners/SFProductPromotionBanners.vue'
+import SFProductPromotionBanner from '~/components/product/promotion/banners/SFProductPromotionBanner.vue'
 import SFProductActions from '~/components/product/detail/SFProductActions.vue'
-import SFProductPromotionGifts from '~/components/product/promotion/gifts/SFProductPromotionGifts.vue'
 import SFStoreVariantAvailability from '~/components/locator/SFStoreVariantAvailability.vue'
 import SFProductDetails from '~/components/product/SFProductDetails.vue'
 import SFProductRecommendations from '~/components/product/SFProductRecommendations.vue'
@@ -151,6 +152,7 @@ import { useBreadcrumbs } from '~/composables'
 import { hasSubscriptionCustomData } from '#storefront-subscription/helpers/subscription'
 import { formatColors } from '~/utils'
 import { generateProductSchema } from '#storefront-product-detail/utils/seo'
+import SFProductPromotionGifts from '~/components/product/promotion/gifts/SFProductPromotionGifts.vue'
 
 const SFLazyStoreLocatorSlideIn = defineAsyncComponent(
   () => import('~/components/locator/SFStoreLocatorSlideIn.vue'),
@@ -203,9 +205,6 @@ const {
   colors,
 } = useProductBaseInfo(product)
 
-const { isGiftAddedToBasket, areGiftConditionsMet, promotion } =
-  useProductPromotions(product)
-
 const { items } = useBasket()
 const variantIdQueryParam = computed(() =>
   route.query.variantId
@@ -246,6 +245,17 @@ const basketItem = computed(
         ),
     ),
 )
+const {
+  isGiftAddedToBasket,
+  areGiftConditionsMet,
+  promotion: productPromotion,
+} = useProductPromotions(product)
+const promotion = computed(() => {
+  if (basketItem.value?.promotion) {
+    return basketItem.value?.promotion
+  }
+  return productPromotion.value
+})
 
 const price = computed(() => {
   if (basketItem.value) {

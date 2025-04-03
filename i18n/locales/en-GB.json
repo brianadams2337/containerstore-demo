@@ -28,13 +28,13 @@
     "loaded_again": "Loaded again"
   },
   "promotion": {
-    "progress_left": "{amount} left",
+    "progress_left": "Unlock Your Deal! Spend {amount} more to activate this promotion.",
     "terms": "Promotion Terms & Conditions",
     "show_deals_label": "Show deal items",
     "my_deals_label": "My deals",
     "cart_reached": "Shopping cart reached! Add promotional products and get {discount}% discount on them",
     "cart_reached_for_gifts": "Shopping cart reached! Add promotional products to get a free gift",
-    "full_progress_message": "You are saving {amount} on your order",
+    "full_progress_message": "Congratulations! You’ve unlocked this deal and saved {amount}.",
     "automatic_discount_headline": {
       "add_label": "Add",
       "another_label": "another",
@@ -46,7 +46,16 @@
     "highest_priority": "Highest priority",
     "see_my_promotions": "See my promotions",
     "hide_my_promotions": "Hide my promotions",
-    "not_available": "No promotion available"
+    "not_available": "No promotion available",
+    "deal": "Deal",
+    "overlay": "Your Deals",
+    "overlay_active": "Your Deals – {total} Active Promotions",
+    "slide_in_headline": "Your Deals",
+    "slide_in_subline": "Find discounted products by clicking on any promotion. Discover constantly changing deals on selected items.",
+    "slide_in_active": "Active promotions {total}",
+    "slide_in_no_active_headline": "No active promotions",
+    "slide_in_no_active_subline": "You currently have no active promotions. Check back later for new deals and special offers!",
+    "close": "Close flyout"
   },
   "shop_selector": {
     "aria_label": "Change shop, current shop: {selectedCountry}, {selectedLanguage}",
@@ -297,15 +306,16 @@
       "return_information": "If the return label is missing from your delivery, you can request a new one from our customer service at any time."
     },
     "promotion": {
+      "condition": "Condition",
       "free_gift_conditions_met": {
         "headline": "Redeem your free gift",
-        "description": "You fulfilled the condition. Feel free to choose a free gift."
+        "description": "You have met the condition. Choose your free gift now:"
       },
       "free_gift_conditions_not_met": {
         "headline": "Unlock your free gift",
         "description": "Fulfill the promotion conditions to choose a free gift."
       },
-      "cart_reached": "Shopping cart reached! Add promotional products and get {discount}% discount on them",
+      "cart_reached": "You've unlocked a special offer! Add eligible products to your cart to enjoy the benefits.",
       "cart_reached_for_gifts": "Shopping cart reached! Add promotional products to get a free gift",
       "add_free_gift_when_cart_reached": "Shopping cart reached! Add a free gift",
       "full_progress_message": "You are saving {amount} on this promotion",

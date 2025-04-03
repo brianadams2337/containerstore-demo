@@ -46,7 +46,6 @@
         <SFHeaderNavigationItem
           v-for="item in mainNavigationItems"
           :key="item.id"
-          class="pl-4 first:pl-0"
           :item="item"
         />
       </ul>
@@ -61,6 +60,9 @@
         class="mr-[1ch]"
         :block-popup="isSideNavigationOpen"
         @click="isSideNavigationOpen = false"
+      />
+      <SFPromotionModalButton
+        :promotion-count="promotionData.data?.value?.entities.length"
       />
       <SFWishlistNavigationItem @click="isSideNavigationOpen = false" />
       <SFBasketNavigationItem
@@ -80,6 +82,7 @@ import SFWishlistNavigationItem from './SFWishlistNavigationItem.vue'
 import SFSearchInput from './search/SFSearchInput.vue'
 import SFMobileSidebar from './SFMobileSidebar.vue'
 import SFHeaderNavigationItem from './SFHeaderNavigationItem.vue'
+import SFPromotionModalButton from './SFPromotionModalButton.vue'
 import { vPopover } from '~/modules/ui/runtime/directives/popover'
 import { useNuxtApp } from '#app/nuxt'
 import { routeList } from '~/utils'
@@ -92,6 +95,7 @@ import { useHeaderNavigation } from '#storefront-navigation/composables'
 import { useDefaultBreakpoints } from '~/modules/ui/runtime'
 import { useLocalePath } from '#i18n'
 import { useRoute } from '#app/composables/router'
+import { useCurrentPromotions } from '#storefront/composables'
 
 const isSideNavigationOpen = defineModel('isMobileSidebarOpen', {
   type: Boolean,
@@ -121,4 +125,6 @@ const { data: navigationTree } = useHeaderNavigation({
 })
 
 const mainNavigationItems = computed(() => navigationTree.value?.items)
+
+const promotionData = useCurrentPromotions()
 </script>

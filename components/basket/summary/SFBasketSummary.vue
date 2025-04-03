@@ -23,29 +23,27 @@
       </div>
       <SFFadeInFromBottomTransition>
         <SFBasketSummaryReductions
-          v-if="cost.appliedReductions.length > 0"
-          :cost="cost"
-          :basket-items="basketItems"
+          v-if="basket.cost.appliedReductions.length > 0"
+          :basket="basket"
         />
       </SFFadeInFromBottomTransition>
       <hr class="h-px border-none bg-gray-300" />
-      <SFBasketSummaryFinalSection :cost="cost" :basket-items="basketItems" />
+      <SFBasketSummaryFinalSection
+        :cost="basket.cost"
+        :basket-items="basket.items"
+      />
       <SFBasketSummaryVoucherDisclaimer />
       <p class="text-xs text-secondary">
         {{ $t('basket.summary.delivery_fees') }}
       </p>
     </section>
   </div>
-  <SFBasketSummaryMobile
-    :subtotal="subtotal"
-    :cost="cost"
-    :basket-items="basketItems"
-  />
+  <SFBasketSummaryMobile :subtotal="subtotal" :basket="basket" />
 </template>
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-import type { BasketItem, BasketTotalPrice } from '@scayle/storefront-nuxt'
+import type { BasketResponseData } from '@scayle/storefront-nuxt'
 import SFBasketSummaryReductions from './SFBasketSummaryReductions.vue'
 import SFBasketSummaryFinalSection from './SFBasketSummaryFinalSection.vue'
 import SFBasketSummaryVoucherDisclaimer from './SFBasketSummaryVoucherDisclaimer.vue'
@@ -57,12 +55,9 @@ import {
 import { useFormatHelpers } from '#storefront/composables'
 import { getTotalPriceWithoutReductions } from '~/utils'
 
-const { cost, basketItems } = defineProps<{
-  cost: BasketTotalPrice
-  basketItems: BasketItem[]
-}>()
+const { basket } = defineProps<{ basket: BasketResponseData }>()
 
-const subtotal = computed(() => getTotalPriceWithoutReductions(cost))
+const subtotal = computed(() => getTotalPriceWithoutReductions(basket.cost))
 
 const { formatCurrency } = useFormatHelpers()
 </script>

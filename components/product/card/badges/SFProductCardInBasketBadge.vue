@@ -1,23 +1,14 @@
 <template>
+  <!--
+   We need to wait until the component is mounted to avoid hydration issues,
+   because the basket could be loaded on the client before hydration is finished
+  -->
   <div
-    data-testid="product-card-footer-badges"
-    class="z-10 flex flex-col"
-    :class="
-      isPromotionBadgeFullWidth ? 'bottom-0 max-w-full ' : 'items-start w-full'
-    "
+    v-if="isProductAddedToBasket && !isBasketPage && mounted"
+    class="h-4 w-fit self-end rounded-tl-md bg-gray-600 px-2 text-xs font-medium text-gray-100"
+    v-bind:="$attrs"
   >
-    <div
-      v-if="isProductAddedToBasket && !isBasketPage && mounted"
-      class="h-4 w-fit self-end rounded-tl-md bg-gray-600 px-2 text-xs font-medium text-gray-100"
-    >
-      {{ $t('badge_labels.already_in_basket') }}
-    </div>
-    <SFProductPromotionBadges
-      :product="product"
-      :is-full-width="isPromotionBadgeFullWidth"
-      class="mt-px"
-      :class="{ '!max-w-full': isBasketPage }"
-    />
+    {{ $t('badge_labels.already_in_basket') }}
   </div>
 </template>
 
@@ -25,15 +16,13 @@
 import { computed } from 'vue'
 import type { Product } from '@scayle/storefront-nuxt'
 import { useMounted } from '@vueuse/core'
-import SFProductPromotionBadges from '../../promotion/SFProductPromotionBadges.vue'
 import { routeList } from '~/utils'
 import { useLocalePath } from '#i18n'
 import { useRoute } from '#app/composables/router'
 import { useBasket } from '#storefront/composables'
 
-const { isPromotionBadgeFullWidth = true, product } = defineProps<{
+const { product } = defineProps<{
   product: Product
-  isPromotionBadgeFullWidth?: boolean
 }>()
 
 const route = useRoute()
