@@ -1,5 +1,10 @@
 <template>
-  <SFSlideIn name="FilterSlideIn" @open="onSlideInOpen" @close="onSlideInClose">
+  <SFSlideIn
+    name="FilterSlideIn"
+    :close-on-route-change="false"
+    @open="onSlideInOpen"
+    @close="onSlideInClose"
+  >
     <template #slide-in-header="{ toggle: toggleItem }">
       <SFFilterHeader :toggle-item="toggleItem" />
     </template>
