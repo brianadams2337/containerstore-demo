@@ -2,6 +2,7 @@
   <SFButton
     variant="raw"
     class="rounded-md p-2 hover:bg-gray-100"
+    data-testid="promotion-header-button"
     :aria-label="
       promotionCount
         ? $t('promotion.overlay_active', { total: promotionCount })

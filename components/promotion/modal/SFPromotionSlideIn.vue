@@ -44,7 +44,11 @@
           {{ $t('promotion.slide_in_no_active_subline') }}
         </div>
         <ul v-else class="flex flex-col gap-6">
-          <li v-for="promotion in first10Promotions" :key="promotion.id">
+          <li
+            v-for="promotion in first10Promotions"
+            :key="promotion.id"
+            data-testid="promotion-card"
+          >
             <SFProductPromotionBanner :promotion="promotion" show-condition />
           </li>
         </ul>

@@ -4,13 +4,19 @@
     v-bind="attributes"
     v-if="highestPriorityPromotion"
     class="flex justify-between px-4 lg:justify-around lg:px-7"
+    data-testid="promotion-ribbon"
     :style="colorStyle"
   >
     <div class="flex items-center justify-between space-x-4 py-3 max-lg:w-full">
       <div class="flex flex-col lg:flex-row lg:divide-x">
-        <span class="text-md font-semibold lg:pr-1">{{ headline }}</span>
+        <span
+          class="text-md font-semibold lg:pr-1"
+          data-testid="promotion-ribbon-headline"
+          >{{ headline }}</span
+        >
         <span
           clasS="text-sm font-normal leading-none lg:pl-1 lg:text-md lg:font-medium"
+          data-testid="promotion-ribbon-subheadline"
           :style="{ borderColor: colorStyle.color }"
         >
           {{ subline }}
@@ -20,6 +26,7 @@
         v-if="!hideCountdown"
         :time-until="expirationDate"
         :color-style="colorStyle"
+        data-testid="promotion-ribbon-timer"
       />
     </div>
   </component>

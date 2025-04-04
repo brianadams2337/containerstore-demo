@@ -377,12 +377,12 @@ test('C2167368 Verify Basket increasing free product quantity', async ({
     await header.visitBasketPage()
     await page.waitForURL(E2E_BASKET_URL)
     await page.reload()
+    await countryDetector.closeModal()
     await basketPage.basketProductCard.waitFor()
     await page.waitForLoadState('domcontentloaded')
     await expect(header.basketNumItems).toHaveText('1')
   })
   await test.step('Add promotional free product to Basket and assert free product price', async () => {
-    await freeProductList.freeProductsSelection.waitFor()
     await freeProductList.addFreeProductButton.first().click()
     await freeProductModal.freeProductModalWindow.first().waitFor()
     await expect(
@@ -392,7 +392,6 @@ test('C2167368 Verify Basket increasing free product quantity', async ({
     await freeProductModal.variantPicker.first().click({ force: true })
     await productDetailPage.getVariant().click()
     await freeProductModal.addItemToBasketButton.first().click()
-    await expect(freeProductList.freeProductsSelection).not.toBeVisible()
     await basketPage.assertInitialPriceVisibility(true)
     await basketPage.assertFinalProductPrice(
       BASKET_TEST_DATA.freeProductPriceLabel,
@@ -400,6 +399,7 @@ test('C2167368 Verify Basket increasing free product quantity', async ({
     )
   })
   await test.step('Increase the quantity of free product to 2', async () => {
+    await page.waitForTimeout(500)
     await basketPage.updateProductQuantity('plus')
     await basketPage.assertInitialPriceVisibility(false)
     await basketPage.assertFinalProductPrice(

@@ -2,7 +2,6 @@ import type { Locator, Page } from '@playwright/test'
 
 export class Header {
   readonly page: Page
-  readonly promotionButton: Locator
   readonly promotionBanner: Locator
   readonly wishlistNumItems: Locator
   readonly headerBasketButton: Locator
@@ -10,12 +9,10 @@ export class Header {
   readonly basketNumItems: Locator
   readonly wishlistLink: Locator
   readonly mainHeader: Locator
+  readonly promotionsButton: Locator
 
   constructor(page: Page) {
     this.page = page
-    this.promotionButton = page.locator(
-      'data-test-id=toggle-promotion-banner-button',
-    )
     this.promotionBanner = page.getByTestId('promotion-banner')
     this.wishlistNumItems = page.getByTestId('header-wishlist-count')
     this.headerBasketButton = page.getByTestId('basket-link')
@@ -23,10 +20,7 @@ export class Header {
     this.basketNumItems = page.getByTestId('header-basket-count')
     this.wishlistLink = page.getByTestId('wishlist-link')
     this.mainHeader = page.getByTestId('header')
-  }
-
-  async hidePromotionBanner() {
-    await this.promotionButton.first().click({ force: true })
+    this.promotionsButton = page.getByTestId('promotion-header-button')
   }
 
   async visitBasketPage() {

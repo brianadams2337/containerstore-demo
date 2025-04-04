@@ -5,48 +5,43 @@ test.beforeEach(async ({ homePage, countryDetector }) => {
   await countryDetector.closeModal()
 })
 
-test('C2140757 Verify Promotion bar shown and hidden state', async ({
+test('C2185235 Verify Promotion Ribbon', async ({
   promotions,
+  page,
+  basketPage,
+  header,
 }) => {
-  await test.step('Verify open state', async () => {
-    await expect(async () => {
-      await promotions.assertPromoBarOpen()
-    }).toPass()
+  await test.step('Check the Ribbon is visible and contains promotion data', async () => {
+    await promotions.promotionRibbon.waitFor()
+    await expect(promotions.promotionRibbon).toBeVisible()
+    await expect(promotions.promotionRibbonTimer).toBeVisible()
+    await expect(promotions.promotionRibbonHeadline).toBeVisible()
+    await expect(promotions.promotionRibbonSubheadline).toBeVisible()
   })
-  await test.step('Verify closed state', async () => {
-    await expect(async () => {
-      await promotions.assertPromoBarClosed()
-    }).toPass()
+  await test.step('Check Ribbon scrolled state', async () => {
+    await page.evaluate(() => {
+      window.scrollTo(0, document.body.scrollHeight)
+    })
+    await expect(promotions.promotionRibbon).toBeVisible()
+  })
+  await test.step('Check Ribbon not visible on Basket page', async () => {
+    await header.visitBasketPage()
+    await basketPage.emptyState.waitFor()
+    await expect(promotions.promotionRibbon).not.toBeVisible()
   })
 })
 
-test('C2140759 C2140758 Verify Promotion bar expanded state features', async ({
+test('C2185240 C2185241 Verify Promotion Flyout', async ({
   promotions,
-  page,
+  header,
 }) => {
-  await test.step('Expand the promotion bar', async () => {
-    await promotions.expandPromotionBar()
-    await promotions.assertPromotionBarExpanded()
+  await test.step('Check the Promotion flyout button', async () => {
+    await header.promotionsButton.waitFor()
+    await header.promotionsButton.click()
   })
-  await test.step('Expand the terms and conditions area', async () => {
-    await promotions.clickPromotionTermsButton()
-    await page.waitForTimeout(500)
-    await promotions.assertTermsContentIsVisible(true)
-  })
-  await test.step('Close the terms and conditions area', async () => {
-    await promotions.clickPromotionTermsButton()
-    await page.waitForTimeout(500)
-    await promotions.assertTermsContentIsVisible(false)
-  })
-  await test.step('Close promotion bar', async () => {
-    await promotions.closePromotionBar()
-  })
-  await test.step('Scroll to bottom and check sticky behavior', async () => {
-    await expect(async () => {
-      await page.evaluate(() => {
-        window.scrollTo(0, document.body.scrollHeight)
-      })
-      await promotions.assertScrollBehavior()
-    }).toPass()
+  await test.step('Check the Promotion flyout open state', async () => {
+    await promotions.closeFlyoutButton.waitFor()
+    await expect(promotions.promotionsCounter).toBeVisible()
+    await expect(promotions.promotionCard.first()).toBeVisible()
   })
 })

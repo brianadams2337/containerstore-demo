@@ -10,12 +10,16 @@ export class FreeProductModal {
 
   constructor(page: Page) {
     this.page = page
-    this.freeProductModalWindow = page.getByTestId(
-      'promo-product-selection-modal',
+    this.freeProductModalWindow = page.locator(
+      '[data-testid="promo-product-selection-modal"][open]',
     )
     this.addToBasketButton = page.getByTestId('add-item-to-basket-button')
-    this.variantPicker = page.getByTestId('variant-picker')
-    this.addItemToBasketButton = page.getByTestId('add-item-to-basket-button')
-    this.productName = page.getByTestId('pdp-product-name')
+    this.variantPicker =
+      this.freeProductModalWindow.getByTestId('variant-picker')
+    this.addItemToBasketButton = this.freeProductModalWindow.getByTestId(
+      'add-item-to-basket-button',
+    )
+    this.productName =
+      this.freeProductModalWindow.getByTestId('pdp-product-name')
   }
 }
