@@ -4,6 +4,8 @@
     :type="inputType"
     class="h-10 w-[100px] rounded border bg-secondary-450 text-center text-sm font-semibold text-primary"
     data-testid="price-input"
+    :min="min / 100"
+    :max="max / 100"
     :value="
       inputType === 'text'
         ? formatCurrency(modelValue)
