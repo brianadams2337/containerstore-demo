@@ -3536,10 +3536,10 @@
   dependencies:
     utility-types "3.11.0"
 
-"@scayle/storefront-core@8.16.0":
-  version "8.16.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-8.16.0.tgz#376218a6b30dc84ca2e67c0a3fe04732a244a57e"
-  integrity sha512-IqNrYgHglaP3PqptIHL75Bo2t11SNX896lGkZYBrIVpuzYQ1B8mreMsGnNqaifk25EGt2XI/rOGakhPfp0EyDQ==
+"@scayle/storefront-core@8.17.0":
+  version "8.17.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-8.17.0.tgz#d95639df5a15d0cc993c14615cf790017cd42719"
+  integrity sha512-yhAPh16XIKfK9ti+Yv68a+biP0sWI+j03Gh6eLFx81o8S/YD2Vyhffcx/xYDFFEVZUhmGdUVmX/wrIOlrNO6og==
   dependencies:
     "@scayle/storefront-api" "18.2.1"
     "@scayle/unstorage-scayle-kv-driver" "0.1.1"
@@ -3561,15 +3561,15 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-navigation/-/storefront-navigation-0.1.0.tgz#c622f02e05de26fcbd4121356e1ab2ef67066b9c"
   integrity sha512-6XIoK2fgAUFoaqC37zXRuudnK83OeQhT056Ow9OhJIZPj/KGyPQjYfZm0Gxg8JSa6Emct4KvQteROg/FI0yesQ==
 
-"@scayle/storefront-nuxt@8.16.0":
-  version "8.16.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.16.0.tgz#b3945c0f04ec6e8e7fa03e05fd6dd52979dea401"
-  integrity sha512-IlMI3TRIaWMD60wKjuhAzOwtSInWtgJzTZBD78lkKBJxjAubTE2q4ht3yBUAXr0tM8TjyT8Pm59mHb46tniHvA==
+"@scayle/storefront-nuxt@8.17.0":
+  version "8.17.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.17.0.tgz#a14e8e159fb1e19e13213506b22cc4341abfce81"
+  integrity sha512-BRUKtsz4PGsPM+O4m9642Ii3ntf7UuFFmUK45Zz3reVSYxgemgDxN5I/Hrbu1ED9ICXTj4MGuiP9Lld8jpz6QA==
   dependencies:
     "@opentelemetry/api" "^1.9.0"
     "@scayle/h3-session" "0.6.0"
-    "@scayle/storefront-core" "8.16.0"
-    "@scayle/unstorage-compression-driver" "^0.2.4"
+    "@scayle/storefront-core" "8.17.0"
+    "@scayle/unstorage-compression-driver" "^0.2.5"
     "@vercel/nft" "0.29.2"
     "@vueuse/core" "13.0.0"
     consola "^3.2.3"
@@ -3606,12 +3606,12 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-search/-/storefront-search-0.2.1.tgz#dd26b62fbb9f3f70f5de43d11c3594fdd3df45ef"
   integrity sha512-4FGjNp34v3EoRHgr4myaWCYgrRHZyRs9ufKoBrOo+pLFnbgxUlcs5dfKJTI9xONy70U94LJXEp76Dj4+x/+E7Q==
 
-"@scayle/unstorage-compression-driver@^0.2.4":
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/@scayle/unstorage-compression-driver/-/unstorage-compression-driver-0.2.4.tgz#9490d23281e6fd82e51142d1cab7e58172fe3b5b"
-  integrity sha512-ZAqxqrNSF6e2bcrWq2vX3gL1N9Strfp9X1z4+LC8Dc81XFbDWDj9Q8WMtUkuqJ6x8f/nswdj9bUKeRVKTALkOg==
+"@scayle/unstorage-compression-driver@^0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@scayle/unstorage-compression-driver/-/unstorage-compression-driver-0.2.5.tgz#dd4767db32bfb3e7f99c0b4e65002085bbf804e6"
+  integrity sha512-idGP0Go7JYYYGoGG0hR76f2jurqQGz+ENtIAZxymgVtA4NlNbOTWpqXbOTJccZq2217TfdH6o13JcbuDzMwxYA==
   dependencies:
-    destr "2.0.3"
+    destr "2.0.5"
     unstorage "1.15.0"
 
 "@scayle/unstorage-scayle-kv-driver@0.1.1":
@@ -6731,7 +6731,12 @@ dequal@^2.0.0:
   resolved "https://registry.yarnpkg.com/dequal/-/dequal-2.0.3.tgz#2644214f1997d39ed0ee0ece72335490a7ac67be"
   integrity sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==
 
-destr@2.0.3, destr@^2.0.2, destr@^2.0.3:
+destr@2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/destr/-/destr-2.0.5.tgz#7d112ff1b925fb8d2079fac5bdb4a90973b51fdb"
+  integrity sha512-ugFTXCtDZunbzasqBxrK93Ik/DRYsO6S/fedkWEMKqt04xZ4csmnmwGDBAb07QWNaGMAmnTIemsYZCksjATwsA==
+
+destr@^2.0.2, destr@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/destr/-/destr-2.0.3.tgz#7f9e97cb3d16dbdca7be52aca1644ce402cfe449"
   integrity sha512-2N3BOUU4gYMpTP24s5rF5iP7BDr7uNTCs4ozw3kf/eKfvWSIu93GEBi5m427YoyJoeOzQ5smuu4nNAPGb8idSQ==
