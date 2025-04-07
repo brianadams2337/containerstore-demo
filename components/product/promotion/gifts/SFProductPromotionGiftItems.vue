@@ -54,35 +54,24 @@
           class="size-11 rounded-xl bg-gray-200"
           data-testid="add-free-product-button"
           :disabled="disabled"
-          @click="toggleGiftSelection()"
+          @click="$emit('selectGift', product)"
         >
           <IconPlus class="size-6" />
         </SFButton>
       </div>
     </div>
-    <ClientOnly>
-      <template v-if="promotion && product">
-        <SFProductPromotionSelectionModal
-          :product="product"
-          :promotion="promotion"
-          :color-style="colorStyle"
-        />
-      </template>
-    </ClientOnly>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, defineEmits } from 'vue'
 import type { CentAmount, Product, Promotion } from '@scayle/storefront-nuxt'
 import Color from 'color'
-import SFProductPromotionSelectionModal from '../SFProductPromotionSelectionModal.vue'
 import SFProductPrice from '../../SFProductPrice.vue'
 import SFProductImage from '../../SFProductImage.vue'
 import SFProductPromotionFreeGiftBadge from './SFProductPromotionFreeGiftBadge.vue'
-import { useProductBaseInfo, usePromotionGiftSelection } from '~/composables'
+import { useProductBaseInfo } from '~/composables'
 import { createCustomPrice, type PromotionStyle } from '~/utils'
-import { ClientOnly } from '#components'
 import { SFButton, SFHeadline } from '#storefront-ui/components'
 
 const { disabled = false, product } = defineProps<{
@@ -93,7 +82,9 @@ const { disabled = false, product } = defineProps<{
   disabled?: boolean
 }>()
 
-const { toggleGiftSelection } = usePromotionGiftSelection(product)
+defineEmits<{
+  selectGift: [product: Product]
+}>()
 
 const {
   name,

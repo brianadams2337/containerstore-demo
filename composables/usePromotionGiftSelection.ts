@@ -1,4 +1,4 @@
-import { computed, onScopeDispose } from 'vue'
+import { computed, ref, toRef, type MaybeRefOrGetter } from 'vue'
 import {
   ExistingItemHandling,
   type Product,
@@ -11,14 +11,16 @@ import { useBasketActions } from '~/composables/useBasketActions'
 import { useProductBaseInfo } from '~/composables/useProductBaseInfo'
 import { useToast } from '~/composables/useToast'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
-import { useState } from '#app/composables/state'
 import { useNuxtApp } from '#app'
 import { useBasket } from '#storefront/composables'
 import { createCustomPrice } from '~/utils'
 
-export function usePromotionGiftSelection(gift: Product) {
+export function usePromotionGiftSelection(
+  giftProduct: MaybeRefOrGetter<Product | undefined>,
+) {
   const { $i18n } = useNuxtApp()
   const toast = useToast()
+  const gift = toRef(giftProduct)
 
   const { trackAddToBasket } = useTrackingEvents()
 
@@ -28,27 +30,13 @@ export function usePromotionGiftSelection(gift: Product) {
     lowestPriorPrice: productLowestPriorPrice,
     hasOneVariantOnly,
   } = useProductBaseInfo(gift)
-  const activeVariant = useState<Variant | undefined>(
-    `active-gift-variant-${gift.id}`,
-  )
-
-  const isSelectionShown = useState(`gift-selection-${gift.id}`, () => false)
-
-  onScopeDispose(() => {
-    isSelectionShown.value = false
-  })
+  const activeVariant = ref<Variant | undefined>()
 
   const basket = useBasket()
   const basketActions = useBasketActions()
 
   const { status } = basket
   const { addItem } = basketActions
-
-  const toggleGiftSelection = () => {
-    isSelectionShown.value = !isSelectionShown.value
-  }
-
-  const isGiftSelectionShown = computed(() => isSelectionShown.value)
 
   const lowestPriorPrice = computed(() =>
     activeVariant.value ? activeVariant.value : productLowestPriorPrice.value,
@@ -81,7 +69,7 @@ export function usePromotionGiftSelection(gift: Product) {
 
   const giftVariants = computed<Variant[]>(() => {
     return (
-      gift.variants?.map((variant) => {
+      gift.value?.variants?.map((variant) => {
         const price = createCustomPrice(variant.price, {
           withTax: 0 as CentAmount,
           appliedReductions: [
@@ -110,7 +98,7 @@ export function usePromotionGiftSelection(gift: Product) {
     () => {
       activeVariant.value = giftVariants.value?.[0]
     },
-    { immediate: true, once: true },
+    { immediate: true },
   )
 
   const addItemToBasket = async (promotionId: string) => {
@@ -133,7 +121,7 @@ export function usePromotionGiftSelection(gift: Product) {
 
     if (gift) {
       trackAddToBasket({
-        product: gift,
+        product: gift.value,
         variant: activeVariant.value,
         index: 1,
       })
@@ -141,7 +129,6 @@ export function usePromotionGiftSelection(gift: Product) {
     if (!hasOneVariantOnly.value) {
       activeVariant.value = undefined
     }
-    toggleGiftSelection()
   }
 
   return extendPromise(
@@ -153,8 +140,6 @@ export function usePromotionGiftSelection(gift: Product) {
       price,
       activeVariant,
       giftVariants,
-      isGiftSelectionShown,
-      toggleGiftSelection,
     },
   )
 }

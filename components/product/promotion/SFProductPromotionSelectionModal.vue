@@ -1,6 +1,6 @@
 <template>
-  <ClientOnly>
-    <SFSlideInFromBottomTransition>
+  <ClientOnly v-if="product">
+    <SFSlideInFromBottomTransition appear>
       <SFModal
         :visible="isGiftSelectionShown"
         class="!rounded-t-xl !p-0 max-md:m-0 max-md:mt-auto max-md:max-h-[calc(100vh-40px)] max-md:w-full max-md:max-w-screen md:max-w-[800px] md:!rounded-xl"
@@ -126,8 +126,8 @@
 </template>
 
 <script setup lang="ts">
-import type { Product, Promotion } from '@scayle/storefront-nuxt'
 import { ref } from 'vue'
+import type { Product, Promotion } from '@scayle/storefront-nuxt'
 import { useElementVisibility } from '@vueuse/core'
 import SFProductPrice from '../SFProductPrice.vue'
 import SFWishlistToggle from '../SFWishlistToggle.vue'
@@ -152,25 +152,23 @@ import {
 import type { PromotionStyle } from '~/utils'
 
 const { product, promotion } = defineProps<{
-  product: Product
+  product?: Product
   promotion: Promotion
   colorStyle: PromotionStyle
 }>()
+
+const isGiftSelectionShown = defineModel('visible', {
+  type: Boolean,
+  default: false,
+})
 
 const { getProductDetailRoute } = useRouteHelpers()
 const { trackSelectItem } = useTrackingEvents()
 const route = useRoute()
 const { pageState } = usePageState()
 
-const {
-  status,
-  activeVariant,
-  giftVariants,
-  price,
-  addItemToBasket,
-  toggleGiftSelection,
-  isGiftSelectionShown,
-} = usePromotionGiftSelection(product)
+const { status, activeVariant, giftVariants, price, addItemToBasket } =
+  usePromotionGiftSelection(() => product)
 
 const { name, brand, image, hasOneVariantOnly, alt } = useProductBaseInfo(
   () => product,
@@ -193,7 +191,7 @@ const isVariantPickerVisible = useElementVisibility(variantPicker, {
   threshold: 1,
 })
 
-const addToBasket = () => {
+const addToBasket = async () => {
   if (!activeVariant.value) {
     if (!isVariantPickerVisible.value) {
       variantPicker.value?.$el.scrollIntoView({ block: 'center' })
@@ -201,14 +199,14 @@ const addToBasket = () => {
     isVariantListVisible.value = true
     return
   }
-
-  addItemToBasket(promotion.id)
+  isGiftSelectionShown.value = false
+  await addItemToBasket(promotion.id)
 }
 
 const close = () => {
   if (!hasOneVariantOnly.value) {
     activeVariant.value = undefined
   }
-  toggleGiftSelection()
+  isGiftSelectionShown.value = false
 }
 </script>

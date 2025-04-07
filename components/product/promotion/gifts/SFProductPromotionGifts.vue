@@ -28,15 +28,24 @@
           :data-testid="`gift-item-${item.id}`"
           :disabled="!areGiftConditionsMet || item.isSoldOut"
           :class="{ 'border-t': index !== 0 }"
+          @select-gift="onSelectGift"
         />
       </div>
     </div>
+    <SFProductPromotionSelectionModal
+      :visible="isModalOpen"
+      :product="giftProduct"
+      :promotion="promotion"
+      :color-style="colorStyle"
+      @update:visible="onSelectionModalVisibilityChange"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import type { Promotion } from '@scayle/storefront-nuxt'
-import { computed } from 'vue'
+import { ref, computed, nextTick } from 'vue'
+import type { Product, Promotion } from '@scayle/storefront-nuxt'
+import SFProductPromotionSelectionModal from '../SFProductPromotionSelectionModal.vue'
 import SFProductPromotionGiftItem from './SFProductPromotionGiftItems.vue'
 import { useI18n } from '#imports'
 import { SFHeadline } from '#storefront-ui/components'
@@ -49,6 +58,19 @@ const { areGiftConditionsMet, promotion } = defineProps<{
   promotion: Promotion
 }>()
 const { t } = useI18n()
+
+const giftProduct = ref<Product>()
+const isModalOpen = ref(false)
+
+const onSelectGift = async (gift: Product) => {
+  giftProduct.value = gift
+  // wait until the next tick to avoid showing an previous gift initially
+  await nextTick()
+  isModalOpen.value = true
+}
+const onSelectionModalVisibilityChange = (isVisible: boolean) => {
+  isModalOpen.value = isVisible
+}
 
 const promotionGiftsHeadline = computed(() => {
   return areGiftConditionsMet
