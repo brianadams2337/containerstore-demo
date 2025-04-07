@@ -1,4 +1,5 @@
-<!-- PROJECT LOGO -->
+# scayle/storefront-application-nuxt
+
 <br />
 <div align="center">
   <a href="https://scayle.dev/en/storefront">
@@ -14,27 +15,23 @@
     <br />
 </div>
 
-<!-- ABOUT THE PROJECT -->
+## About SCAYLE Storefront
 
-## About Storefront Core and Storefront Boilerplate
+SCAYLE Storefront application is an all-in-one starter kit for building
+high-performance e-commerce shops for the SCAYLE Commerce Engine. It makes it
+quick and easy to build a best-in-class shop frontend. The latest version of the
+Storefront application is based on Nuxt and Vue 3 and consists of two parts:
 
-Storefront Core is an all-in-one starter kit for building high-performance
-e-commerce shops for the SCAYLE Commerce Engine. It makes it quick and easy to
-build a best-in-class shop frontend. The latest version of Storefront Core is
-based on Nuxt and Vue 3 and consists of two parts:
+- Storefront SDKs: the headless storefront that provides design-agnostic business logic,
+  feature packages, composables, and several helpers and utilities to simplify
+  the development of Nuxt-based e-commerce applications on top of the SCAYLE Commerce Engine.
+- Storefront Application: This is the complete starter Nuxt application, which
+  includes the Storefront SDKs along with all the features and pages required
+  for a modern e-commerce frontend.
 
-- Storefront Core (_SFC_) The headless storefront that provides design-agnostic
-  business logic and integrations with the SCAYLE backend.
-- Storefront Boilerplate (_SFB_) A complete starter Nuxt application that includes
-  the Storefront Core along with all features and pages that are required for
-  a modern e-commerce frontend.
-
-Storefront Core is built in a way that makes it easy to change or extend the shop design.
-An advantage of this approach is that the effort for launching a new e-commerce shop
-is drastically reduced because you only have to focus on the UI and design layer.
-
-Should you encounter any errors, please reach out to your Scayle representative
-or the Storefront Core team for quick support.
+The Storefront application is built to make it easy to change or extend the shop design.
+This approach drastically reduces the effort required to launch a new e-commerce shop,
+as you only have to focus on customizing the UI and design layer to your specific needs.
 
 ### Built With
 
@@ -48,52 +45,15 @@ The following outline should provide you with an overview of how to get your
 local development environment using the Storefront Boilerplate up and running.
 For more in-depth explanations and How-to guides, please consult the [SCAYLE Resource Center](https://scayle.dev/en/storefront-guide/developer-guide/getting-started/setup-your-storefront).
 
+This guide provides instructions to set up your local development environment using SCAYLE Storefront.
+
+For more details, consult the [SCAYLE Resource Center](https://scayle.dev/en/storefront-guide/developer-guide/technical-foundation/configuration).
+
 ### Prerequisites
 
-- `node` >= 20.7.0
-- `yarn` (v1)
-
-  ```sh
-  npm install --global yarn
-  ```
-
-- `redis`
-
-  Depending on the circumstances the usage of redis `docker` image for the
-  local setup might not be necessary or might result in degraded performance.
-  In this case, it is sufficient to have a locally installed version of
-  `redis` / `redis-server` available.
-
-### Installation
-
-1. Get the required SCAYLE credentials and API Keys via your SCAYLE Customer Success Manager.
-   If they are not yet provided to you, please reach out to your respective SCAYLE representative.
-2. Use your provided SCAYLE credentials and API Keys to create a local `.env` file
-   in the main directory based on the provided `.env.example` file.
-
-   _For an in-depth explanation of the required environment variables,_
-   _please consult the [SCAYLE Resource Center](https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction)._
-
-3. Install dependencies
-
-   ```sh
-     yarn install
-   ```
-
-4. Create a local HTTPS certificate, as features like Checkout will require a working HTTPS connection
-
-   _Check [How to turn on local HTTPS](#how-to-turn-on-local-https) for detailed instructions._
-
-### Usage
-
-1. Start a local `redis-server` instance
-2. Start the local dev server of Storefront Boilerplate / Nuxt 3
-
-   ```sh
-     yarn dev
-   ```
-
-3. Open the Storefront Boilerplate running under <http://localhost:3000/>
+For a proper local setup of SCAYLE Storefront, ensure to follow the latest
+["Setup your Storefront"-Guide](https://scayle.dev/en/storefront-guide/developer-guide/getting-started/setup-your-storefront)
+in the SCAYLE Resource Center.
 
 #### Docker Compose
 
