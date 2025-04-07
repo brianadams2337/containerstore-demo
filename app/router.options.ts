@@ -2,7 +2,7 @@ import type { RouterConfig } from 'nuxt/schema'
 import { wait } from '@scayle/storefront-nuxt'
 import { useNuxtApp } from '#app'
 
-export default <RouterConfig>{
+export default {
   scrollBehaviorType: 'smooth',
   scrollBehavior: (to, from, savedPosition) => {
     const nuxtApp = useNuxtApp()
@@ -36,4 +36,4 @@ export default <RouterConfig>{
       })
     })
   },
-}
+} satisfies RouterConfig

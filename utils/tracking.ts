@@ -37,7 +37,7 @@ import type {
 export const isAdditionalTrackingEvent = (
   event: TrackingEvent,
 ): event is AdditionalTrackingEvent => {
-  return ['cart', 'wishlist'].includes(<AdditionalTrackingEvent>event)
+  return ['cart', 'wishlist'].includes(event as AdditionalTrackingEvent)
 }
 
 /**
@@ -52,7 +52,7 @@ export const isEcommerceTrackingEvent = (event: TrackingEvent): boolean => {
 export const isViewCartEvent = (
   event: TrackingEvent,
 ): event is EcommerceTrackingEvent => {
-  return ['view_cart'].includes(<EcommerceTrackingEvent>event)
+  return ['view_cart'].includes(event as EcommerceTrackingEvent)
 }
 
 /**
@@ -68,7 +68,7 @@ export const isPromotionTrackingEvent = (event: TrackingEvent): boolean => {
 export const isProductImpressionsData = (
   data: TrackingPayload | MultipleActionData,
 ): data is MultipleActionData => {
-  return !!(<MultipleActionData>data).items
+  return !!(data as MultipleActionData).items
 }
 
 export const mapProductToTrackingPayload = (
