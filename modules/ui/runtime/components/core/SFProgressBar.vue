@@ -36,9 +36,9 @@ const heightClasses = computed(() => ({
 }))
 
 const colorClasses = computed(() => ({
-  'bg-green-500': type === ProgressType.SUCCESS,
-  'bg-yellow-400': type === ProgressType.WARN,
-  'bg-red-500': type === ProgressType.DANGER,
+  'bg-status-success': type === ProgressType.SUCCESS,
+  'bg-status-alert': type === ProgressType.WARN,
+  'bg-status-error': type === ProgressType.DANGER,
   'bg-white': type === ProgressType.NEUTRAL,
 }))
 

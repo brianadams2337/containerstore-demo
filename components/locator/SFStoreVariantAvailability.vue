@@ -7,10 +7,11 @@
       <div class="flex items-start space-x-2">
         <div
           class="mt-2 size-2 rounded-full"
-          :class="{
-            'bg-green-neon': selectedStoreData.available,
-            'bg-red': !selectedStoreData.available,
-          }"
+          :class="
+            selectedStoreData.available
+              ? 'bg-status-success'
+              : 'bg-status-error'
+          "
         />
         <div class="flex flex-col">
           <SFHeadline size="lg" tag="h2" is-bold class="leading-6">

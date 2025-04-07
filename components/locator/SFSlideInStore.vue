@@ -19,9 +19,9 @@
             class="w-fit rounded-full px-2 py-1"
             data-testid="item-status"
             :class="{
-              'bg-green-neon': quantity >= 5,
-              'bg-red': quantity <= 0,
-              'bg-yellow': quantity < 5,
+              'bg-status-success': quantity >= 5,
+              'bg-status-error': quantity <= 0,
+              'bg-status-alert': quantity < 5,
             }"
           >
             {{

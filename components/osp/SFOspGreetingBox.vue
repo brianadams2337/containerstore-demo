@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col items-center gap-2 rounded-xl bg-emerald-100 p-5"
+    class="flex flex-col items-center gap-2 rounded-xl bg-status-success-light p-5"
     data-testid="osp-greeting-box"
   >
     <div
@@ -23,7 +23,5 @@
 import type { Order } from '~/types/order'
 import { SFHeadline } from '#storefront-ui/components'
 
-defineProps<{
-  orderData: Order
-}>()
+defineProps<{ orderData: Order }>()
 </script>

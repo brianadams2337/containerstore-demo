@@ -8,7 +8,7 @@
     :has-errors="!isValid"
     :aria-label="$t('form_fields.gender')"
     :button-class="[
-      'group transition duration-100 hover:bg-white focus:border-accent focus:!bg-white focus:shadow-none focus:!outline focus:outline-3 focus:outline-offset-0 focus:!border-accent focus:border focus:outline-indigo-200/50 focus:!text-accent',
+      'group transition duration-100 hover:bg-white focus:border-accent focus:!bg-white focus:shadow-none focus:!outline focus:outline-3 focus:outline-offset-0 focus:!border-accent focus:border focus:outline-status-info/50 focus:!text-accent',
       activeGenderValue ? 'bg-white' : '!bg-gray-100 !border-gray-100',
     ]"
     class="h-12 w-full bg-white"

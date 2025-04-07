@@ -7,7 +7,7 @@
       <span
         v-for="({ value, category }, index) in relativeReductions"
         :key="`${value}-badge-${category}-${index}`"
-        class="mr-1 inline-block rounded bg-red px-1 text-xs font-semibold text-white"
+        class="mr-1 inline-block rounded bg-product-sale px-1 text-xs font-semibold text-white"
         :style="category === 'promotion' && promotionStyle"
       >
         -{{ value }}%
@@ -112,7 +112,7 @@ const classes = computed(() => ({
   'font-bold': type === 'loud',
   'font-semibold': type === 'whisper',
   'font-variable': type === 'normal',
-  'text-status-error': appliedReductions.value.length,
+  'text-product-sale': appliedReductions.value.length,
   'text-end': !inline,
 }))
 </script>

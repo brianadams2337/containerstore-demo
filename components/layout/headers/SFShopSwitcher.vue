@@ -12,7 +12,7 @@
       "
       aria-haspopup="true"
       :aria-expanded="isOpen"
-      class="h-full gap-1.5 px-2 !text-gray-600 -outline-offset-5 hover:bg-indigo-200/10 focus-visible:shadow-inner-solid lg:!text-white"
+      class="h-full gap-1.5 px-2 !text-gray-600 -outline-offset-5 hover:bg-status-info/10 focus-visible:shadow-inner-solid lg:!text-white"
       data-testid="language-listbox"
       @click="toggle"
     >

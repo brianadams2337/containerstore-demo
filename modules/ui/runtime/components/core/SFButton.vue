@@ -14,7 +14,7 @@
         isSecondary,
       'rounded-xl border border-gray-400 bg-transparent font-semibold text-primary hover:bg-secondary-300 hover:text-primary-400':
         isTertiary,
-      'rounded-10 bg-accent font-semibold text-white hover:bg-accent-600 hover:text-white':
+      'rounded-10 bg-accent font-semibold text-white hover:bg-accent/75 hover:text-white':
         isAccent,
       'aspect-square bg-white !p-2 text-gray-400 outline-0 transition-transform duration-300 focus-within:shadow-secondary hover:bg-white hover:text-gray-900 focus-visible:shadow-inner-solid-sm disabled:border-transparent disabled:hover:text-gray-400':
         isSlider,

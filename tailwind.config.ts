@@ -1,5 +1,4 @@
 import plugin from 'tailwindcss/plugin'
-import colors from 'tailwindcss/colors'
 import breakpoints from './config/breakpoints'
 
 const defaultSizes = {
@@ -42,6 +41,62 @@ export default {
     },
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
+    },
+    colors: {
+      inherit: 'inherit',
+      transparent: 'transparent',
+      current: 'currentColor',
+      black: '#000000',
+      white: {
+        smoke: '#f6f6f6',
+        DEFAULT: '#ffffff',
+      },
+      gray: {
+        50: '#fafafa',
+        100: '#f2f2f2',
+        200: '#ebebeb',
+        300: '#d9d9d9',
+        350: '#e5e5e9',
+        400: '#a8a8a8',
+        500: '#808080',
+        600: '#666666',
+        700: '#888888',
+        750: '#737277',
+        900: '#171717',
+      },
+      focus: '#193146',
+      primary: {
+        400: '#191919',
+        DEFAULT: '#171717',
+      },
+      secondary: {
+        100: '#fbfbfb',
+        200: '#fafafa',
+        300: '#f9f9f9',
+        400: '#f8f8f8',
+        450: '#f2f0f0',
+        600: '#ebebeb',
+        700: '#ccc',
+        800: '#7f7f7f',
+        DEFAULT: '#666666',
+      },
+      product: {
+        sale: '#d93321',
+        'sold-out': '#d93321',
+      },
+      accent: '#5328e1',
+      status: {
+        success: {
+          light: '#cef5e8',
+          DEFAULT: '#0dcc8d',
+        },
+        error: {
+          light: '#fadbd8',
+          DEFAULT: '#e74b3a',
+        },
+        info: '#ccbff6',
+        alert: '#f59e0b',
+      },
     },
     aspectRatio: {
       '4/3': '4 / 3',
@@ -241,95 +296,6 @@ export default {
         'inner-solid-sm': 'inset 0 0 0 2px #193146',
         'outer-solid': '0 0 0 3px #193146',
         'input-label': 'inset 0 2px 8px -10px #ccc, inset 0 2px 8px -10px #ccc',
-      },
-      colors: {
-        emerald: {
-          100: '#CEF5E8',
-          300: '#14ffa8',
-          400: '#00e48c',
-          500: '#0dcc8d',
-        },
-        indigo: {
-          200: '#ccbff6',
-          500: '#5328e1',
-        },
-        gray: {
-          ...colors.gray,
-          50: '#fafafa',
-          100: '#f2f2f2',
-          200: '#ebebeb',
-          300: '#d9d9d9',
-          350: '#E5E5E9',
-          400: '#a8a8a8',
-          500: '#808080',
-          600: '#666666',
-          700: '#888888',
-          750: '#737277',
-          900: '#171717',
-        },
-        brand: {
-          DEFAULT: '#14FFA8',
-        },
-        'pink-neon': '#ff7df4',
-        flamingo: '#d891a8',
-        'green-neon': '#00bd14',
-        red: {
-          ...colors.red,
-          DEFAULT: '#d93321',
-        },
-        yellow: {
-          ...colors.yellow,
-          DEFAULT: '#ffd343',
-        },
-        pink: {
-          ...colors.pink,
-          DEFAULT: '#ff7df4',
-        },
-        purple: {
-          ...colors.purple,
-          DEFAULT: '#811fff',
-        },
-        blue: {
-          50: '#5da8ff', // light-10
-          100: '#c6e0ff', // light-20
-          800: '#004ca5', // dark-10
-          850: '#193146', // dark-15
-          900: '#001732', // dark-20
-          DEFAULT: '#0277ff',
-        },
-        primary: {
-          100: '#404040',
-          200: '#333',
-          300: '#262626',
-          400: '#191919',
-          DEFAULT: '#171717',
-        },
-        secondary: {
-          100: '#fbfbfb',
-          200: '#fafafa',
-          300: '#f9f9f9',
-          400: '#f8f8f8',
-          450: '#f2f0f0',
-          600: '#ebebeb',
-          700: '#ccc',
-          800: '#7f7f7f',
-          DEFAULT: '#666666',
-        },
-        accent: {
-          DEFAULT: '#5328e1',
-          600: '#7247ff',
-        },
-        white: {
-          smoke: '#f6f6f6',
-          DEFAULT: '#ffffff',
-        },
-        status: {
-          success: '#0dcc8d',
-          error: '#d93321',
-          info: '#ccbff6',
-          alert: '#f59e0b',
-          inactive: 'var(--status-inactive)',
-        },
       },
       fontSize: {
         '2xs': '0.625rem',

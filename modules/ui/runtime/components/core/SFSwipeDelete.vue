@@ -13,7 +13,7 @@
     </div>
     <div
       v-show="isSwiping"
-      class="absolute right-0 flex h-full items-center justify-center bg-red-500"
+      class="absolute right-0 flex h-full items-center justify-center bg-status-error"
       :style="{ width: actionWidth, opacity }"
     >
       <IconTrash class="size-5" />

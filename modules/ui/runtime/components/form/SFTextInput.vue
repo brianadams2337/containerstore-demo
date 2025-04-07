@@ -14,7 +14,7 @@
       :aria-invalid="hasErrors"
       :type="type"
       :placeholder="placeholder"
-      class="peer h-12 w-full rounded-10 border border-gray-100 bg-gray-100 py-4 pl-4 pr-2 text-base font-variable text-gray-900 transition duration-100 input-white-autofill placeholder:text-transparent hover:border-gray-300 hover:bg-white focus:border-accent focus:bg-white focus:text-accent focus:shadow-none focus:outline focus:outline-3 focus:outline-offset-0 focus:outline-indigo-200/50"
+      class="peer h-12 w-full rounded-10 border border-gray-100 bg-gray-100 py-4 pl-4 pr-2 text-base font-variable text-gray-900 transition duration-100 input-white-autofill placeholder:text-transparent hover:border-gray-300 hover:bg-white focus:border-accent focus:bg-white focus:text-accent focus:shadow-none focus:outline focus:outline-3 focus:outline-offset-0 focus:outline-status-info/50"
       :class="{
         'border-gray-300 bg-white': modelValue,
         'focus:border-gray-300 focus:text-gray-900 focus:!outline-none':

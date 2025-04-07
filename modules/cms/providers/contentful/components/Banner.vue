@@ -17,9 +17,9 @@
           v-element-visibility="[onVisible, { threshold: 0.5 }]"
           class="relative z-50 flex w-full items-center"
           :class="{
-            'bg-cyan-500 text-black': is('info'),
-            'bg-amber-500 text-white': is('sale'),
-            'bg-lime-500 text-black': is('highlight'),
+            'bg-status-info text-black': is('info'),
+            'bg-status-error text-white': is('sale'),
+            'bg-status-success text-black': is('highlight'),
             'bg-black text-white': is('alert'),
           }"
         >

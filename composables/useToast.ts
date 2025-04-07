@@ -63,15 +63,15 @@ export function useToast() {
 
     const type = {
       SUCCESS: {
-        classes: 'text-emerald-500 bg-emerald-100',
+        classes: 'text-status-success bg-status-success-light',
         iconComponent: 'IconCheckGreen',
       },
       INFO: {
-        classes: 'text-blue-600 bg-blue-100',
+        classes: 'text-accent bg-status-info',
         iconComponent: 'IconInfo',
       },
       ERROR: {
-        classes: 'text-red-600 bg-red-100',
+        classes: 'text-status-error bg-status-error-light',
         iconComponent: 'IconError',
       },
     }

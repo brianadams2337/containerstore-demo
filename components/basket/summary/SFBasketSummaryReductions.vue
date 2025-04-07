@@ -9,7 +9,7 @@
       >
         <li
           v-if="reduction.category !== 'promotion'"
-          class="flex justify-between text-red"
+          class="flex justify-between text-product-sale"
         >
           <h2>{{ $t(`basket.summary.${reduction.category}`) }}</h2>
           <span :data-testid="`basket-discount-${reduction.category}`">
