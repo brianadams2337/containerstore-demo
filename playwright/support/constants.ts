@@ -75,7 +75,7 @@ export const BASKET_TEST_DATA = {
   itemKeyHappyPath: '15e3df16a020df6b0716b0cb351132ac',
   itemKeyBasketE2E: '7dac25e441f1472a2201cd7f493d139c',
   regularPriceVariantId: 334103,
-  salePriceVariantId: 332871,
+  salePriceVariantId: 336068,
   promotionPriceProductId: '205808',
   soldOutProductUser: process.env.TEST_USER_EMAIL7 as string,
   soldOutProductPassword: process.env.TEST_USER_PASSWORD as string,
@@ -241,7 +241,7 @@ export const PDP_TEST_VARIANT_ID = {
 }
 
 export const OSP_TEST_DATA = {
-  regularProductVariantId: 335162,
+  regularProductVariantId: 336460,
   ordersUrl: '/orders',
   incorrectCbdUrl:
     '/success?cbd=eyJzdGF0dXNTg1NTI3Y2I3NjY0NWQ3NA==&login=1&pmm=b2b',

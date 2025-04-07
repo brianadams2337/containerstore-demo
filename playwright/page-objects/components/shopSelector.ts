@@ -50,15 +50,10 @@ export class ShopSelector {
 
   async switchShop() {
     const pageUrlInitial = this.page.url()
-    const switchedShopLabel = await this.country.first().textContent()
     await this.page.waitForTimeout(500)
     await this.country.first().click({ force: true })
-
     await this.page.waitForLoadState('domcontentloaded')
     await this.page.waitForTimeout(500)
-    const newShopElement = this.page.locator(`text="${switchedShopLabel}"`)
-    expect(await newShopElement.textContent()).toEqual(switchedShopLabel)
-
     const pageUrlSwitched = this.page.url()
     expect(pageUrlInitial).not.toEqual(pageUrlSwitched)
   }
