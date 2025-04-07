@@ -8,7 +8,11 @@
     <CountryDetection @switch-shop="switchShop" />
     <div>
       <SFPromotionRibbon
-        v-if="promotions?.entities.length && shouldShowPromotionRibbon"
+        v-if="
+          promotions?.entities.length &&
+          shouldShowPromotionRibbon &&
+          !isMobileSidebarOpen
+        "
         :promotions="promotions.entities"
       />
       <SFHeaderTopBar />
