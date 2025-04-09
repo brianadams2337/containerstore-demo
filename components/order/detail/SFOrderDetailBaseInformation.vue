@@ -15,8 +15,8 @@
         <span class="font-medium">
           {{ $t('my_account.orders.detail.payment_method') }}:
         </span>
-        <span class="capitalize">
-          {{ paymentKey }}
+        <span>
+          {{ $t('global.payment_key.' + paymentKey) }}
         </span>
       </div>
     </SFOrderDetailBox>

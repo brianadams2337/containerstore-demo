@@ -20,7 +20,11 @@
       "few": ".",
       "other": "."
     },
-    "cancel": "Abbrechen"
+    "cancel": "Abbrechen",
+    "payment_key": {
+      "default": "Kreditkarte",
+      "accounting": "Rechnungszahlung"
+    }
   },
   "notification": {
     "ok": "OK",
@@ -392,10 +396,6 @@
       "description": "Deine Bestelldaten konnten nicht abgerufen werden. Der Link ist möglicherweise abgelaufen oder ungültig. Bitte überprüfe deine E-Mails auf den richtigen Link oder kontaktiere den Support für Hilfe."
     },
     "title": "Deine Bestellübersicht",
-    "payment_key": {
-      "default": "Kreditkarte",
-      "accounting": "Buchhaltungszahlung"
-    },
     "carrier_key": {
       "DEFAULT": "DHL"
     },

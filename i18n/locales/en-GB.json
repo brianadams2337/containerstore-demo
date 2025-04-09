@@ -20,7 +20,11 @@
       "few": "rd",
       "other": "th"
     },
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "payment_key": {
+      "default": "Credit Card",
+      "accounting": "Invoice Payment"
+    }
   },
   "notification": {
     "ok": "OK",
@@ -392,10 +396,6 @@
       "description": "Your order details could not be retrieved. The link may have expired or is invalid. Please check your email for the correct link or contact support for assistance."
     },
     "title": "Your order overview",
-    "payment_key": {
-      "default": "Credit Card",
-      "accounting": "Accounting Payment"
-    },
     "carrier_key": {
       "DEFAULT": "UPS"
     },
