@@ -17,11 +17,15 @@ export default {
         })
       })
     }
+
     // Scroll to heading on click
     if (!to.hash) {
+      if (to.path === from.path) {
+        return
+      }
       return { top: 0 }
     }
-
+    
     const el = document.querySelector(to.hash)
     return new Promise((resolve) => {
       if (to.path === from.path) {
