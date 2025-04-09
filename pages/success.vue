@@ -17,6 +17,7 @@
           class="order-3 bg-gray-50 px-5 py-4 md:hidden"
         />
       </div>
+      <!-- This is for the case that we have a successful request but an empty orderData. -->
       <SFEmptyState
         v-else
         :title="$t('osp.no_order_found.title')"
@@ -31,6 +32,21 @@
           {{ $t('global.continue_shopping_label') }}
         </SFButton>
       </SFEmptyState>
+      <template #error>
+        <SFEmptyState
+          :title="$t('osp.no_order_found.title')"
+          :description="$t('osp.no_order_found.description')"
+          :show-default-actions="false"
+        >
+          <SFButton
+            variant="tertiary"
+            :to="getLocalizedRoute(routeList.home)"
+            class="mt-10"
+          >
+            {{ $t('global.continue_shopping_label') }}
+          </SFButton>
+        </SFEmptyState>
+      </template>
       <template #loading>
         <SFOspSkeleton />
       </template>
@@ -42,6 +58,7 @@
 import { computed, defineOptions, onMounted, watch } from 'vue'
 import { useSeoMeta } from '@unhead/vue'
 import { whenever } from '@vueuse/core'
+import { HttpStatusCode } from '@scayle/storefront-nuxt'
 import { definePageMeta } from '#imports'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
 import { useOrderConfirmation, useUser } from '#storefront/composables'
@@ -115,6 +132,9 @@ useSeoMeta({
 whenever(
   error,
   (err) => {
+    if (err.statusCode === HttpStatusCode.BAD_REQUEST) {
+      return
+    }
     throw createError({ ...err, fatal: true })
   },
   { immediate: true },
