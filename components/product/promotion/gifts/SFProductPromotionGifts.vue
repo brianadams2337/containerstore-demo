@@ -10,12 +10,12 @@
       <div class="flex gap-1">
         <IconGift class="size-4" />
         <SFHeadline tag="h2" size="base" is-bold data-testid="headline">
-          {{ promotionGiftsHeadline }}
+          {{ $t('pdp.promotion.free_gift_conditions_met.headline') }}
         </SFHeadline>
       </div>
 
       <p class="mt-1 text-sm">
-        {{ promotionGiftsDescription }}
+        {{ $t('pdp.promotion.free_gift_conditions_met.description') }}
       </p>
     </div>
     <div class="flex flex-col">
@@ -26,7 +26,7 @@
           :product="item"
           :promotion="promotion"
           :data-testid="`gift-item-${item.id}`"
-          :disabled="!areGiftConditionsMet || item.isSoldOut"
+          :disabled="item.isSoldOut"
           :class="{ 'border-t': index !== 0 }"
           @select-gift="onSelectGift"
         />
@@ -43,21 +43,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, nextTick } from 'vue'
+import { ref, nextTick } from 'vue'
 import type { Product, Promotion } from '@scayle/storefront-nuxt'
 import SFProductPromotionSelectionModal from '../SFProductPromotionSelectionModal.client.vue'
 import SFProductPromotionGiftItem from './SFProductPromotionGiftItems.vue'
-import { useI18n } from '#imports'
 import { SFHeadline } from '#storefront-ui/components'
 import { IconGift } from '#components'
 import { usePromotionGifts } from '#storefront-promotions/composables'
 import { usePromotionCustomData } from '~/composables'
 
-const { areGiftConditionsMet, promotion } = defineProps<{
-  areGiftConditionsMet: boolean
+const { promotion } = defineProps<{
   promotion: Promotion
 }>()
-const { t } = useI18n()
 
 const giftProduct = ref<Product>()
 const isModalOpen = ref(false)
@@ -71,18 +68,6 @@ const onSelectGift = async (gift: Product) => {
 const onSelectionModalVisibilityChange = (isVisible: boolean) => {
   isModalOpen.value = isVisible
 }
-
-const promotionGiftsHeadline = computed(() => {
-  return areGiftConditionsMet
-    ? t('pdp.promotion.free_gift_conditions_met.headline')
-    : t('pdp.promotion.free_gift_conditions_not_met.headline')
-})
-
-const promotionGiftsDescription = computed(() => {
-  return areGiftConditionsMet
-    ? t('pdp.promotion.free_gift_conditions_met.description')
-    : t('pdp.promotion.free_gift_conditions_not_met.description')
-})
 
 const { products } = usePromotionGifts(promotion, 'product-promotion-gifts')
 const { colorStyle } = usePromotionCustomData(promotion)

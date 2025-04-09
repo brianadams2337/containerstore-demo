@@ -311,10 +311,6 @@
         "headline": "Lösen Sie Ihr kostenloses Geschenk ein.",
         "description": "Sie haben die Bedingung erfüllt. Wählen Sie gerne ein kostenloses Geschenk aus."
       },
-      "free_gift_conditions_not_met": {
-        "headline": "Schalten Sie Ihr kostenloses Geschenk frei",
-        "description": "Erfüllen Sie die Aktionsbedingungen, um ein kostenloses Geschenk auszuwählen."
-      },
       "cart_reached": "Du hast ein spezielles Angebot freigeschaltet! Füge berechtigte Produkte zu deinem Warenkorb hinzu, um die Vorteile zu nutzen.",
       "cart_reached_for_gifts": "Warenkorb erreicht! Fügen Sie Werbeartikel hinzu, um ein kostenloses Geschenk zu erhalten.",
       "add_free_gift_when_cart_reached": "Warenkorb erreicht! Wählen Sie ein kostenloses Geschenk aus.",

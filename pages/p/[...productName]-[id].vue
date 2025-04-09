@@ -62,10 +62,11 @@
           />
 
           <SFProductPromotionGifts
-            v-if="promotion && isBuyXGetYType(promotion)"
+            v-if="
+              promotion && isBuyXGetYType(promotion) && areGiftConditionsMet
+            "
             :promotion="promotion"
             class="max-md:mx-5"
-            :are-gift-conditions-met="areGiftConditionsMet"
           />
 
           <SFFadeInTransition>

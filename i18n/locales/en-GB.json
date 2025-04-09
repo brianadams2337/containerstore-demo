@@ -311,10 +311,6 @@
         "headline": "Redeem your free gift",
         "description": "You have met the condition. Choose your free gift now:"
       },
-      "free_gift_conditions_not_met": {
-        "headline": "Unlock your free gift",
-        "description": "Fulfill the promotion conditions to choose a free gift."
-      },
       "cart_reached": "You've unlocked a special offer! Add eligible products to your cart to enjoy the benefits.",
       "cart_reached_for_gifts": "Shopping cart reached! Add promotional products to get a free gift",
       "add_free_gift_when_cart_reached": "Shopping cart reached! Add a free gift",
