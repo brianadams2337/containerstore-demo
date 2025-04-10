@@ -69,7 +69,7 @@ const handleLogout = async () => {
   await logout()
   emit('close')
 }
-console.log('Asdas')
+
 // Whenever the route changes, we want to make sure that the mobile sidebar is closed.
 onBeforeRouteLeave((_to, _from, next) => {
   emit('close')
