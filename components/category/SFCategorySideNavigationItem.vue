@@ -1,6 +1,6 @@
 <template>
   <SFLink
-    class="inline-block w-fit rounded px-1 py-px text-base tracking-tighter text-gray-600 duration-300 ease-out hover:bg-gray-100"
+    class="inline-block w-fit rounded px-1 py-px text-md tracking-tighter text-gray-600 duration-300 ease-out hover:bg-gray-100"
     :class="{
       'text-product-sale hover:bg-product-sale/10': isSale,
       'bg-product-sale/10': isSale && isActive,

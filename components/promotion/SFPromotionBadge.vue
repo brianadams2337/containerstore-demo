@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-min max-w-[70%] truncate rounded-sm p-1 text-xs leading-none"
+    class="w-min max-w-[70%] truncate rounded-sm p-1 text-sm leading-none"
     :style="style"
   >
     {{ text ? text : $t('promotion.deal') }}
