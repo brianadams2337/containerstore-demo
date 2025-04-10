@@ -1,11 +1,14 @@
 import type { RouterConfig } from 'nuxt/schema'
 import { wait } from '@scayle/storefront-nuxt'
 import { useNuxtApp } from '#app'
+import { useRouteBaseName } from '#imports'
+import { routeList } from '~/utils'
 
 export default {
   scrollBehaviorType: 'smooth',
   scrollBehavior: (to, from, savedPosition) => {
     const nuxtApp = useNuxtApp()
+    const baseName = useRouteBaseName()
 
     // If history back
     if (savedPosition) {
@@ -20,7 +23,7 @@ export default {
 
     // Scroll to heading on click
     if (!to.hash) {
-      if (to.path === from.path) {
+      if (to.path === from.path && baseName(to) !== routeList.home.name) {
         return
       }
       return { top: 0 }
