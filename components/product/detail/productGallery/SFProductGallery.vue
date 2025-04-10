@@ -132,17 +132,13 @@
       />
     </div>
   </div>
-  <ClientOnly>
-    <SFFadeInTransition>
-      <SFProductGalleryZoom
-        v-model:visible="isZoomModalOpen"
-        :alt="alt"
-        :images="images"
-        :start-index="activeSlide"
-        @close="isZoomModalOpen = false"
-      />
-    </SFFadeInTransition>
-  </ClientOnly>
+  <SFProductGalleryZoom
+    v-model:visible="isZoomModalOpen"
+    :alt="alt"
+    :images="images"
+    :start-index="activeSlide"
+    @close="isZoomModalOpen = false"
+  />
 </template>
 
 <script setup lang="ts">
@@ -152,13 +148,12 @@ import SFWishlistToggle from '../../SFWishlistToggle.vue'
 import SFProductBadges from '../../card/SFProductBadges.vue'
 import SFProductImage from '../../SFProductImage.vue'
 import SFProductGalleryZoom from './SFProductGalleryZoom.vue'
-import { ClientOnly } from '#components'
 import {
   SFButton,
   SFItemsSlider,
   SFGoBackLink,
-  SFFadeInTransition,
 } from '#storefront-ui/components'
+
 import { useProductBaseInfo, useRouteHelpers } from '~/composables'
 
 const { product, productImageSliderClass } = defineProps<{

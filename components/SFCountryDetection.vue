@@ -1,41 +1,39 @@
 <!-- NOTE: Related to @scayle/storefront-country-detection -->
 <template>
-  <SFFadeInTransition>
-    <SFModal v-model:visible="modalOpen" data-testid="country-detection-dialog">
-      <div class="mt-8 flex flex-col items-center gap-4 md:px-20">
-        <div>
-          {{ $t('country_selection.prompt', { country: suggestedCountry }) }}
-        </div>
-        <div class="mt-8 flex flex-col items-center gap-3">
-          <SFButton
-            v-for="(shop, index) in suggestedShops"
-            :key="shop.shopId"
-            :autofocus="index === 0"
-            variant="primary"
-            class="w-fit"
-            data-testid="button-switch-shop"
-            @click="switchToShop(shop)"
-          >
-            {{
-              $t('country_selection.switch_to_shop', {
-                country: getShopCountryName(shop, suggestedShops.length > 1),
-              })
-            }}
-          </SFButton>
-          <SFButton
-            variant="secondary"
-            class="w-fit"
-            data-testid="button-stay-in-shop"
-            @click="stayInShop"
-          >
-            {{
-              $t('country_selection.stay_in_shop', { country: currentCountry })
-            }}
-          </SFButton>
-        </div>
+  <SFModal v-model:visible="modalOpen" data-testid="country-detection-dialog">
+    <div class="mt-8 flex flex-col items-center gap-4 md:px-20">
+      <div>
+        {{ $t('country_selection.prompt', { country: suggestedCountry }) }}
       </div>
-    </SFModal>
-  </SFFadeInTransition>
+      <div class="mt-8 flex flex-col items-center gap-3">
+        <SFButton
+          v-for="(shop, index) in suggestedShops"
+          :key="shop.shopId"
+          :autofocus="index === 0"
+          variant="primary"
+          class="w-fit"
+          data-testid="button-switch-shop"
+          @click="switchToShop(shop)"
+        >
+          {{
+            $t('country_selection.switch_to_shop', {
+              country: getShopCountryName(shop, suggestedShops.length > 1),
+            })
+          }}
+        </SFButton>
+        <SFButton
+          variant="secondary"
+          class="w-fit"
+          data-testid="button-stay-in-shop"
+          @click="stayInShop"
+        >
+          {{
+            $t('country_selection.stay_in_shop', { country: currentCountry })
+          }}
+        </SFButton>
+      </div>
+    </div>
+  </SFModal>
 </template>
 
 <script lang="ts" setup>
@@ -43,11 +41,7 @@ import { computed, ref } from 'vue'
 import { whenever } from '@vueuse/core'
 import { useI18n } from '#i18n'
 import { useCurrentShop } from '#storefront/composables'
-import {
-  SFButton,
-  SFFadeInTransition,
-  SFModal,
-} from '#storefront-ui/components'
+import { SFButton, SFModal } from '#storefront-ui/components'
 import { useCountryDetection } from '#storefront-country-detection'
 import { useCurrentShopTranslators } from '~/composables/useCurrentShopTranslators'
 

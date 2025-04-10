@@ -5,42 +5,52 @@ https://nuxt.com/docs/guide/directory-structure/components#client-components
 
 Therefore, to ensure it's also not rendered on the server, it must be wrapped in a ClientOnly block in the template.  -->
   <ClientOnly>
-    <dialog
-      ref="modal"
-      v-dialog.modal="visible"
-      class="max-h-dialog max-w-dialog rounded p-8 backdrop:bg-black/50"
-      v-bind="$attrs"
-      @click="onClick"
-      @cancel="onCancel"
-    >
-      <button
-        v-if="!hideCloseButton"
-        data-testid="close-button"
-        class="group absolute right-6 top-6 z-50 cursor-pointer rounded-full p-2.5 transition-colors max-md:bg-gray-100 md:hover:bg-gray-100"
-        :aria-label="$t('global.cancel')"
-        @click="onCancel"
+    <component :is="transitionComponent" :appear="appear">
+      <dialog
+        ref="modal"
+        v-dialog.modal="visible"
+        class="max-h-dialog max-w-dialog rounded p-8 backdrop:bg-black/50"
+        v-bind="$attrs"
+        @click="onClick"
+        @cancel="onCancel"
       >
-        <IconClose
-          class="size-5 transition-colors md:fill-gray-400 md:group-hover:fill-black"
-        />
-      </button>
-      <div class="m-auto w-full rounded-md bg-white">
-        <slot />
-      </div>
-    </dialog>
+        <button
+          v-if="!hideCloseButton"
+          data-testid="close-button"
+          class="group absolute right-6 top-6 z-50 cursor-pointer rounded-full p-2.5 transition-colors max-md:bg-gray-100 md:hover:bg-gray-100"
+          :aria-label="$t('global.cancel')"
+          @click="onCancel"
+        >
+          <IconClose
+            class="size-5 transition-colors md:fill-gray-400 md:group-hover:fill-black"
+            aria-hidden="true"
+          />
+        </button>
+        <div class="m-auto w-full rounded-md bg-white">
+          <slot />
+        </div>
+      </dialog>
+    </component>
   </ClientOnly>
 </template>
 
 <script setup lang="ts">
-import { watch, nextTick, useTemplateRef } from 'vue'
+import { watch, nextTick, useTemplateRef, type Component } from 'vue'
 import { tabbable } from 'tabbable'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import { vDialog } from '../../directives/dialog'
 import { ClientOnly } from '#components'
+import { SFFadeInTransition } from '#storefront-ui/components'
 
-const { hideCloseButton = false, closeOnOutside = true } = defineProps<{
+const {
+  hideCloseButton = false,
+  closeOnOutside = true,
+  transitionComponent = SFFadeInTransition,
+} = defineProps<{
   hideCloseButton?: boolean
   closeOnOutside?: boolean
+  transitionComponent?: Component
+  appear?: boolean
 }>()
 
 const visible = defineModel<boolean>('visible', {

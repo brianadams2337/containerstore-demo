@@ -1,128 +1,120 @@
 <template>
-  <ClientOnly v-if="product">
-    <SFSlideInFromBottomTransition appear>
-      <SFModal
-        :visible="isGiftSelectionShown"
-        class="!rounded-t-xl !p-0 max-md:m-0 max-md:mt-auto max-md:max-h-[calc(100vh-40px)] max-md:w-full max-md:max-w-screen md:max-w-[800px] md:!rounded-xl"
-        data-testid="promo-product-selection-modal"
-        @update:visible="(open) => open || close()"
-      >
-        <div class="flex">
-          <div class="hidden p-3 md:block">
-            <div class="relative overflow-hidden rounded-xl bg-gray-200">
-              <SFProductPromotionFreeGiftBadge
-                :color-style="colorStyle"
-                class="absolute left-0 top-0"
-              />
-              <ProductImage
-                v-if="image"
-                :image="image"
-                :alt="alt"
-                sizes="700px"
-                class="min-h-96 min-w-full"
-              />
-              <SFWishlistToggle
-                class="absolute right-5 top-5"
-                :product="product"
-              />
-            </div>
+  <SFModal
+    :visible="isGiftSelectionShown"
+    class="!rounded-t-xl !p-0 max-md:m-0 max-md:mt-auto max-md:max-h-[calc(100vh-40px)] max-md:w-full max-md:max-w-screen md:max-w-[800px] md:!rounded-xl"
+    data-testid="promo-product-selection-modal"
+    :transition-component="SFSlideInFromBottomTransition"
+    appear
+    @update:visible="(open) => open || close()"
+  >
+    <div class="flex">
+      <div class="hidden p-3 md:block">
+        <div class="relative overflow-hidden rounded-xl bg-gray-200">
+          <SFProductPromotionFreeGiftBadge
+            :color-style="colorStyle"
+            class="absolute left-0 top-0"
+          />
+          <ProductImage
+            v-if="image"
+            :image="image"
+            :alt="alt"
+            sizes="700px"
+            class="min-h-96 min-w-full"
+          />
+          <SFWishlistToggle class="absolute right-5 top-5" :product="product" />
+        </div>
+      </div>
+      <div class="flex w-full flex-col justify-center p-6 md:p-8 md:py-14">
+        <div class="mb-4 md:mb-auto">
+          <span class="font-semi-bold-variable text-gray-900">
+            {{ brand }}
+          </span>
+          <SFHeadline
+            data-testid="pdp-product-name"
+            tag="h3"
+            class="mb-4 text-md !font-normal text-gray-600"
+          >
+            {{ name }}
+          </SFHeadline>
+          <SFProductPrice
+            v-if="price"
+            :promotion="promotion"
+            :price="price"
+            size="xl"
+            type="normal"
+            :show-badges="false"
+          />
+        </div>
+        <div
+          class="relative mb-8 overflow-hidden rounded-xl bg-gray-200 md:hidden"
+        >
+          <SFProductPromotionFreeGiftBadge
+            :color-style="colorStyle"
+            class="absolute left-0 top-0"
+          />
+          <ProductImage
+            v-if="image"
+            :image="image"
+            :alt="alt"
+            sizes="500px"
+            :aspect-ratio="[1, 1]"
+          />
+          <SFWishlistToggle class="absolute right-5 top-5" :product="product" />
+        </div>
+        <div class="flex flex-col gap-4">
+          <div
+            class="mt-7 text-md font-semi-bold-variable leading-[14px] text-gray-900"
+          >
+            {{ $t('pdp.size_heading') }}
           </div>
-          <div class="flex w-full flex-col justify-center p-6 md:p-8 md:py-14">
-            <div class="mb-4 md:mb-auto">
-              <span class="font-semi-bold-variable text-gray-900">
-                {{ brand }}
-              </span>
-              <SFHeadline
-                data-testid="pdp-product-name"
-                tag="h3"
-                class="mb-4 text-md !font-normal text-gray-600"
-              >
-                {{ name }}
-              </SFHeadline>
-              <SFProductPrice
-                v-if="price"
-                :promotion="promotion"
-                :price="price"
-                size="xl"
-                type="normal"
-                :show-badges="false"
-              />
-            </div>
-            <div
-              class="relative mb-8 overflow-hidden rounded-xl bg-gray-200 md:hidden"
-            >
-              <SFProductPromotionFreeGiftBadge
-                :color-style="colorStyle"
-                class="absolute left-0 top-0"
-              />
-              <ProductImage
-                v-if="image"
-                :image="image"
-                :alt="alt"
-                sizes="500px"
-                :aspect-ratio="[1, 1]"
-              />
-              <SFWishlistToggle
-                class="absolute right-5 top-5"
-                :product="product"
-              />
-            </div>
-            <div class="flex flex-col gap-4">
-              <div
-                class="mt-7 text-md font-semi-bold-variable leading-[14px] text-gray-900"
-              >
-                {{ $t('pdp.size_heading') }}
-              </div>
-              <SFVariantPicker
-                ref="variantPicker"
-                v-model="activeVariant"
-                v-model:visible="isVariantListVisible"
-                :has-one-variant-only="hasOneVariantOnly"
-                :variants="giftVariants"
-                :promotion="promotion"
-                class="md:mb-4"
-              />
+          <SFVariantPicker
+            ref="variantPicker"
+            v-model="activeVariant"
+            v-model:visible="isVariantListVisible"
+            :has-one-variant-only="hasOneVariantOnly"
+            :variants="giftVariants"
+            :promotion="promotion"
+            class="md:mb-4"
+          />
 
-              <div class="flex justify-between gap-2">
-                <SFButton
-                  data-testid="add-item-to-basket-button"
-                  variant="accent"
-                  :disabled="product.isSoldOut"
-                  :title="
-                    product.isSoldOut
-                      ? $t('badge_labels.sold_out')
-                      : $t('pdp.add_label')
-                  "
-                  :loading="status === 'pending'"
-                  class="w-full justify-between !px-4"
-                  @click="addToBasket"
-                >
-                  {{
-                    product.isSoldOut
-                      ? $t('badge_labels.sold_out')
-                      : $t('pdp.add_label')
-                  }}
-                  <template #append-icon>
-                    <div class="flex items-center">
-                      <IconPlus class="size-6 text-white" />
-                    </div>
-                  </template>
-                </SFButton>
-                <SFButton
-                  variant="tertiary"
-                  :to="getProductDetailRoute(product.id, name)"
-                  class="!border-gray-300"
-                  @click="selectItem(product)"
-                >
-                  {{ $t('pdp.details_label') }}
-                </SFButton>
-              </div>
-            </div>
+          <div class="flex justify-between gap-2">
+            <SFButton
+              data-testid="add-item-to-basket-button"
+              variant="accent"
+              :disabled="product.isSoldOut"
+              :title="
+                product.isSoldOut
+                  ? $t('badge_labels.sold_out')
+                  : $t('pdp.add_label')
+              "
+              :loading="status === 'pending'"
+              class="w-full justify-between !px-4"
+              @click="addToBasket"
+            >
+              {{
+                product.isSoldOut
+                  ? $t('badge_labels.sold_out')
+                  : $t('pdp.add_label')
+              }}
+              <template #append-icon>
+                <div class="flex items-center">
+                  <IconPlus class="size-6 text-white" />
+                </div>
+              </template>
+            </SFButton>
+            <SFButton
+              variant="tertiary"
+              :to="getProductDetailRoute(product.id, name)"
+              class="!border-gray-300"
+              @click="selectItem(product)"
+            >
+              {{ $t('pdp.details_label') }}
+            </SFButton>
           </div>
         </div>
-      </SFModal>
-    </SFSlideInFromBottomTransition>
-  </ClientOnly>
+      </div>
+    </div>
+  </SFModal>
 </template>
 
 <script setup lang="ts">
@@ -145,14 +137,13 @@ import { useRoute } from '#app/composables/router'
 import {
   SFButton,
   SFHeadline,
-  SFSlideInFromBottomTransition,
   SFModal,
+  SFSlideInFromBottomTransition,
 } from '#storefront-ui/components'
 import type { PromotionStyle } from '~/utils'
-import { ClientOnly } from '#components'
 
 const { product, promotion } = defineProps<{
-  product?: Product
+  product: Product
   promotion: Promotion
   colorStyle: PromotionStyle
 }>()

@@ -33,6 +33,7 @@
       </div>
     </div>
     <SFProductPromotionSelectionModal
+      v-if="giftProduct"
       :visible="isModalOpen"
       :product="giftProduct"
       :promotion="promotion"
