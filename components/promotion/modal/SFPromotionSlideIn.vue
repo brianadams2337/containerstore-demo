@@ -26,26 +26,26 @@
       <div class="p-6">
         <div class="mb-2 flex items-center gap-2 font-semi-bold-variable">
           {{
-            first10Promotions.length
+            promotionsSortedByPriority.length
               ? $t('promotion.slide_in_active')
               : $t('promotion.slide_in_no_active_headline')
           }}
           <span
-            v-if="first10Promotions.length"
+            v-if="promotionsSortedByPriority.length"
             class="inline-flex h-4 items-center justify-center rounded-full bg-black px-1.5 text-xs text-white"
             data-testid="promotion-counter"
           >
-            {{ first10Promotions.length }}
+            {{ promotionsSortedByPriority.length }}
           </span>
         </div>
         <div class="mb-8 text-md">{{ $t('promotion.slide_in_subline') }}</div>
 
-        <div v-if="!first10Promotions.length">
+        <div v-if="!promotionsSortedByPriority.length">
           {{ $t('promotion.slide_in_no_active_subline') }}
         </div>
         <ul v-else class="flex flex-col gap-6">
           <li
-            v-for="promotion in first10Promotions"
+            v-for="promotion in promotionsSortedByPriority"
             :key="promotion.id"
             data-testid="promotion-card"
           >
@@ -59,17 +59,16 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import type { Promotion } from '@scayle/storefront-nuxt'
 import { SFSlideIn, SFButton, SFHeadline } from '#storefront-ui/components'
-import { useCurrentPromotions } from '#storefront/composables'
 import SFProductPromotionBanner from '~/components/product/promotion/banners/SFProductPromotionBanner.vue'
 import { sortPromotionsByPriority } from '#storefront-promotions/utils'
 
-const { data } = useCurrentPromotions(
-  undefined,
-  'promotion-slide-in',
-)
+const { promotions } = defineProps<{
+  promotions?: Promotion[]
+}>()
 
-const first10Promotions = computed(() =>
-  (data?.value?.entities || []).toSorted(sortPromotionsByPriority),
+const promotionsSortedByPriority = computed(() =>
+  (promotions || []).toSorted(sortPromotionsByPriority),
 )
 </script>
