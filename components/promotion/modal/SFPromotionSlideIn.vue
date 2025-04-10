@@ -64,11 +64,11 @@ import { SFSlideIn, SFButton, SFHeadline } from '#storefront-ui/components'
 import SFProductPromotionBanner from '~/components/product/promotion/banners/SFProductPromotionBanner.vue'
 import { sortPromotionsByPriority } from '#storefront-promotions/utils'
 
-const { promotions } = defineProps<{
+const { promotions = [] } = defineProps<{
   promotions?: Promotion[]
 }>()
 
 const promotionsSortedByPriority = computed(() =>
-  (promotions || []).toSorted(sortPromotionsByPriority),
+  promotions.toSorted(sortPromotionsByPriority),
 )
 </script>

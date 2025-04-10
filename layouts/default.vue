@@ -27,7 +27,7 @@
       </main>
       <SFFooter class="mt-16 max-lg:mb-4" />
     </div>
-    <SFPromotionSlideIn :promotions="promotions?.entities"/>
+    <SFPromotionSlideIn :promotions="promotions?.entities" />
     <SFShopSwitcherFlyout />
   </div>
 </template>
