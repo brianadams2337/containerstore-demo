@@ -1,6 +1,6 @@
 <template>
   <ul
-    class="flex w-full -translate-y-6 flex-col items-end pt-px lg:min-w-125 lg:max-w-156"
+    class="flex w-full flex-col items-end pt-px lg:min-w-125 lg:max-w-156 lg:-translate-y-10"
     data-testid="unavailable-product-list"
     :aria-label="$t('basket.unavailable_products')"
   >
@@ -8,7 +8,7 @@
       v-for="item in unavailableItems"
       :key="item.key"
       :basket-item="item"
-      class="-mt-px w-full focus-within:z-10 lg:first:!rounded-t-none lg:first:!border-t-0"
+      class="-mt-px w-full focus-within:z-10 max-lg:first:border-t-0 lg:first:!rounded-t-none lg:first:!border-t-0 lg:first:pt-6"
       @delete="$emit('delete', item)"
     />
   </ul>
