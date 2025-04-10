@@ -132,13 +132,15 @@
       />
     </div>
   </div>
-  <SFProductGalleryZoom
-    v-model:visible="isZoomModalOpen"
-    :alt="alt"
-    :images="images"
-    :start-index="activeSlide"
-    @close="isZoomModalOpen = false"
-  />
+  <ClientOnly>
+    <SFProductGalleryZoom
+      v-model:visible="isZoomModalOpen"
+      :alt="alt"
+      :images="images"
+      :start-index="activeSlide"
+      @close="isZoomModalOpen = false"
+    />
+  </ClientOnly>
 </template>
 
 <script setup lang="ts">
@@ -154,6 +156,7 @@ import {
   SFItemsSlider,
   SFGoBackLink,
 } from '#storefront-ui/components'
+import { ClientOnly } from '#components'
 
 import { useProductBaseInfo, useRouteHelpers } from '~/composables'
 
