@@ -26,7 +26,12 @@ export default {
       if (to.path === from.path && baseName(to) !== routeList.home.name) {
         return
       }
-      return { top: 0 }
+
+      return new Promise((resolve) => {
+        nuxtApp.hooks.hookOnce('page:finish', async () => {
+          resolve({ top: 0, behavior: 'smooth' })
+        })
+      })
     }
 
     const el = document.querySelector(to.hash)
