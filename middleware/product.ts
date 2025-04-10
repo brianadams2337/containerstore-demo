@@ -1,33 +1,48 @@
 import { getFirstAttributeValue } from '@scayle/storefront-nuxt'
 import { navigateTo, defineNuxtRouteMiddleware } from '#app/composables/router'
 import { useRouteHelpers } from '~/composables'
-import { useRpcCall } from '#storefront/composables'
+import { useProduct } from '#storefront/composables'
 import { getProductId } from '~/utils/route'
+import { PRODUCT_DETAIL_WITH_PARAMS } from '~/constants'
+import { globalGetCachedData } from '~/utils/useRpc'
 
-export default defineNuxtRouteMiddleware(async ({ params, query, path }) => {
-  if (import.meta.client) {
-    return
-  }
+export default defineNuxtRouteMiddleware(
+  async ({ params, query, path, hash }) => {
+    const { getProductDetailRoute } = useRouteHelpers()
+    const productId = getProductId(params)
 
-  const { getProductDetailRoute } = useRouteHelpers()
-  const getProductById = useRpcCall('getProductById')
+    // We use the same option as on the PDP together with `globalGetCachedData` in order to share data between this middleware and the PDP.
+    // This helps reducing network requests on client navigation.
+    const { data: product } = await useProduct(
+      {
+        params: {
+          id: productId,
+          with: PRODUCT_DETAIL_WITH_PARAMS,
+        },
+        options: {
+          dedupe: 'defer',
+          getCachedData: globalGetCachedData,
+        },
+      },
+      `PDP-${productId}`,
+    )
 
-  const product = await getProductById({
-    id: getProductId(params),
-  }).catch(() => null)
+    if (!product.value) {
+      return
+    }
 
-  if (!product) {
-    return
-  }
+    const expectedPath = getProductDetailRoute(
+      product.value.id,
+      getFirstAttributeValue(product.value?.attributes, 'name')?.label,
+    )
 
-  const expectedPath = getProductDetailRoute(
-    product.id,
-    getFirstAttributeValue(product?.attributes, 'name')?.label,
-  )
+    if (expectedPath === path) {
+      return
+    }
 
-  if (expectedPath === path) {
-    return
-  }
-
-  return navigateTo({ path: expectedPath, query }, { redirectCode: 301 })
-})
+    return navigateTo(
+      { path: expectedPath, query, hash },
+      { redirectCode: 301 },
+    )
+  },
+)

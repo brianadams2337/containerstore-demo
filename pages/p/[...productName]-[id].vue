@@ -154,6 +154,7 @@ import { hasSubscriptionCustomData } from '#storefront-subscription/helpers/subs
 import { formatColors } from '~/utils'
 import { generateProductSchema } from '#storefront-product-detail/utils/seo'
 import SFProductPromotionGifts from '~/components/product/promotion/gifts/SFProductPromotionGifts.vue'
+import { globalGetCachedData } from '~/utils/useRpc'
 
 const SFLazyStoreLocatorSlideIn = defineAsyncComponent(
   () => import('~/components/locator/SFStoreLocatorSlideIn.vue'),
@@ -172,6 +173,8 @@ const productId = computed(() => {
   return parseInt(route.params.id.toString())
 })
 
+// We use the same option as in the `product` middleware together with `globalGetCachedData` in order to share data between this page and the middleware.
+// This helps reducing network requests on client navigation.
 const {
   data: product,
   status: productDataStatus,
@@ -184,6 +187,8 @@ const {
     },
     options: {
       lazy: true,
+      dedupe: 'defer',
+      getCachedData: globalGetCachedData,
     },
   },
   `PDP-${productId.value}`,

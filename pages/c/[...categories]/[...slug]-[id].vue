@@ -66,7 +66,6 @@
 </template>
 
 <script setup lang="ts">
-import { useSeoMeta, useHead } from '@unhead/vue'
 import {
   onMounted,
   onServerPrefetch,
@@ -74,12 +73,15 @@ import {
   defineOptions,
   computed,
 } from 'vue'
+import { useSeoMeta, useHead } from '@unhead/vue'
 import {
   HttpStatusCode,
   type Product,
   type Category,
 } from '@scayle/storefront-nuxt'
 import { useI18n } from 'vue-i18n'
+import { useRoute } from '#app/composables/router'
+import { useNuxtApp } from '#app/nuxt'
 import { definePageMeta } from '#imports'
 import {
   useTrackingEvents,
@@ -88,7 +90,6 @@ import {
   useBreadcrumbs,
 } from '~/composables'
 import { createError } from '#app/composables/error'
-import { useRoute } from '#app/composables/router'
 import { getCategoryId } from '~/utils'
 import {
   categoryListingMetaData,
@@ -112,7 +113,7 @@ import {
   useProductListSort,
 } from '#storefront-product-listing'
 import { useCategoryById } from '#storefront/composables'
-import { useNuxtApp } from '#app'
+import { globalGetCachedData } from '~/utils/useRpc'
 
 const route = useRoute()
 const { $config } = useNuxtApp()
@@ -152,12 +153,18 @@ const {
   fetchingOptions: { lazy: true },
 })
 
+// We use the same option as in the `category` middleware together with `globalGetCachedData` in order to share data between this page and the middleware.
+// This helps reducing network requests on client navigation.
 const currentCategoryPromise = useCategoryById(
   {
     params: {
       id: currentCategoryId.value,
       children: 0,
       properties: { withName: ['sale'] },
+    },
+    options: {
+      dedupe: 'defer',
+      getCachedData: globalGetCachedData,
     },
   },
   `current-category-${currentCategoryId.value}`,

@@ -1,31 +1,44 @@
 import { navigateTo, defineNuxtRouteMiddleware } from '#app/composables/router'
 import { useRouteHelpers } from '~/composables'
-import { useRpcCall } from '#storefront/composables'
+import { useCategoryById } from '#storefront/composables'
 import { getCategoryId } from '~/utils/route'
+import { globalGetCachedData } from '~/utils/useRpc'
 
-export default defineNuxtRouteMiddleware(async ({ params, query, path }) => {
-  if (import.meta.client) {
-    return
-  }
+export default defineNuxtRouteMiddleware(
+  async ({ params, query, path, hash }) => {
+    const { buildCategoryPath } = useRouteHelpers()
+    const categoryId = getCategoryId(params)
 
-  const { buildCategoryPath } = useRouteHelpers()
-  const getCategoryById = useRpcCall('getCategoryById')
+    // We use the same option as on the PLP together with `globalGetCachedData` in order to share data between this middleware and the PLP.
+    // This helps reducing network requests on client navigation.
+    const { data: category } = await useCategoryById(
+      {
+        params: {
+          id: categoryId,
+          children: 0,
+          properties: { withName: ['sale'] },
+        },
+        options: {
+          dedupe: 'defer',
+          getCachedData: globalGetCachedData,
+        },
+      },
+      `current-category-${categoryId}`,
+    )
 
-  const category = await getCategoryById({
-    id: getCategoryId(params),
-    children: 0,
-    properties: { withName: ['sale'] },
-  }).catch(() => null)
+    if (!category.value) {
+      return
+    }
 
-  if (!category) {
-    return
-  }
+    const expectedPath = buildCategoryPath(category.value)
 
-  const expectedPath = buildCategoryPath(category)
+    if (expectedPath === path) {
+      return
+    }
 
-  if (expectedPath === path) {
-    return
-  }
-
-  return navigateTo({ path: expectedPath, query }, { redirectCode: 301 })
-})
+    return navigateTo(
+      { path: expectedPath, query, hash },
+      { redirectCode: 301 },
+    )
+  },
+)
