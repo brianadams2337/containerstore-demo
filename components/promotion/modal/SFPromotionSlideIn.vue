@@ -62,11 +62,10 @@ import { computed } from 'vue'
 import { SFSlideIn, SFButton, SFHeadline } from '#storefront-ui/components'
 import { useCurrentPromotions } from '#storefront/composables'
 import SFProductPromotionBanner from '~/components/product/promotion/banners/SFProductPromotionBanner.vue'
-import { PROMOTION_SLIDE_IN_LIMIT } from '~/constants'
 import { sortPromotionsByPriority } from '#storefront-promotions/utils'
 
 const { data } = useCurrentPromotions(
-  { params: { pagination: { perPage: PROMOTION_SLIDE_IN_LIMIT } } },
+  undefined,
   'promotion-slide-in',
 )
 
