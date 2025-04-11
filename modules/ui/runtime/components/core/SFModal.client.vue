@@ -5,6 +5,7 @@ https://nuxt.com/docs/guide/directory-structure/components#client-components
 
 Therefore, to ensure it's also not rendered on the server, it must be wrapped in a ClientOnly block in the template.  -->
   <ClientOnly>
+    <template #fallback />
     <component :is="transitionComponent" :appear="appear">
       <dialog
         ref="modal"
