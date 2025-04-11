@@ -132,7 +132,7 @@
     "contentful": "11.5.13",
     "contentful-export": "7.21.42",
     "dompurify": "3.2.5",
-    "dotenv": "16.4.7",
+    "dotenv": "16.5.0",
     "focus-trap": "7.6.4",
     "global": "4.4.0",
     "knitwork": "1.2.0",
