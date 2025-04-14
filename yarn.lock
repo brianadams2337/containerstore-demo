@@ -8102,7 +8102,7 @@ git-clone@^0.2.0:
   resolved "https://registry.yarnpkg.com/git-clone/-/git-clone-0.2.0.tgz#9dce00facbab227d2562150052cd4a3a7ec15c41"
   integrity sha512-1UAkEPIFbyjHaddljUKvPhhLRnrKaImT71T7rdvSvWLXw95nLdhdi6Qmlx0KOWoV1qqvHGLq5lMLJEZM0JXk8A==
 
-git-up@^8.0.0:
+git-up@^8.1.0:
   version "8.1.1"
   resolved "https://registry.yarnpkg.com/git-up/-/git-up-8.1.1.tgz#06262adadb89a4a614d2922d803a0eda054be8c5"
   integrity sha512-FDenSF3fVqBYSaJoYy1KSc2wosx0gCvKP+c+PRBht7cAaiCeQlBtfBDX9vgnNOHmdePlSFITVcn4pFfcgNvx3g==
@@ -8111,11 +8111,11 @@ git-up@^8.0.0:
     parse-url "^9.2.0"
 
 git-url-parse@^16.0.1:
-  version "16.0.1"
-  resolved "https://registry.yarnpkg.com/git-url-parse/-/git-url-parse-16.0.1.tgz#8a2b15ceafd29342e42a3d056a771fb9007bf5ae"
-  integrity sha512-mcD36GrhAzX5JVOsIO52qNpgRyFzYWRbU1VSRFCvJt1IJvqfvH427wWw/CFqkWvjVPtdG5VTx4MKUeC5GeFPDQ==
+  version "16.0.2"
+  resolved "https://registry.yarnpkg.com/git-url-parse/-/git-url-parse-16.0.2.tgz#27f3478d0c4ef46aeb31f9a6307dfbc9984556ae"
+  integrity sha512-Q+G3aB2nqvnM30BS+fR/fLNOK79k03+ii/UIS33F0ScHVTLWV+OKc/Yl9w+8o6V2Hf1xfhaYldh1y0M6cFY1YQ==
   dependencies:
-    git-up "^8.0.0"
+    git-up "^8.1.0"
 
 github-from-package@0.0.0:
   version "0.0.0"
