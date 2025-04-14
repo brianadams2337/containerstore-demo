@@ -1,7 +1,7 @@
 {
   "name": "@scayle/storefront-application-nuxt",
   "description": "SCAYLE Storefront demo shop application based on Nuxt 3",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "private": true,
   "workspaces": [
     "./"

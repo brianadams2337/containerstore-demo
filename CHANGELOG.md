@@ -1,5 +1,189 @@
 # @scayle/storefront-application-nuxt
 
+## 1.9.0
+
+### Minor Changes
+
+- 1983ee4: **\[E2E\]** Introduced a new end-to-end test suite for the password change functionality.
+  Coverage includes both successful password updates and expected failure scenarios (e.g., incorrect old password, policy violations).
+- 5c58274: **\[UI\]** Prevented the filter panel (`SFFilterSlideIn.vue`) from automatically closing when the page route changes.
+  This allows the panel to stay open when filters are applied, as filter application modifies the route via URL parameters.
+- 543f526: **\[UI\]** Refined the Product Card's skeleton loader (`SFProductCardSkeleton.vue`) to better resemble the final `SFProductCard.vue` layout.
+  This ensures a smoother visual transition as content loads and reducing layout shifts.
+- dd55df0: **\[Navigation\]** Improved the navigation experience by ensuring the sidebar (`SFMobileSidebar.vue`) consistently closes itself before transitioning the user to the selected page.
+- dc309d9: **\[Accessibility\]** Corrected the behavior of skip links to ensure they are only visible and interactive when receiving keyboard focus (e.g., via the Tab key).
+  This prevents accidental activation by mouse users.
+- dc309d9: **\[Promotions\]** Added the `@scayle/storefront-promotions` module.
+  Developers can now leverage the `useApplyPromotions` composable to integrate logic that automatically updates promotions on basket items during any basket change event (add, remove, update quantity).
+
+  - Example Usage
+
+        ```ts
+        import { useApplyPromotions } from '#storefront-promotions/composables/useApplyPromotions'
+
+        const { data: basket, addItem  } = await useBasket()
+        const { applyPromotions } = useApplyPromotions()
+
+        await applyPromotions(basket)
+
+        await addItem({...})
+        await applyPromotions(basket)
+        ```
+
+- 1983ee4: **\[Account Area\]** Introduced a redesigned profile page enabling users to easily manage their information.
+  Key features include viewing consolidated account details, updating personal information (first/last name, gender, birth date),
+  and changing their password, all within clearly defined sections.
+- cefa223: **\[UI\]** The user navigation popover now automatically closes when it loses focus (e.g., when the user clicks outside of it or tabs away with the keyboard).
+- 1983ee4: **\[E2E\]** Implemented new end-to-end tests to ensure the reliability of the User Account Area.
+  Test cases validate page load, navigation through its tabs, the data update process,
+  and crucial input validations such as birth date format checking.
+- 93201d6: **\[Subscriptions\]** Renamed the URL route for the subscriptions section from `/subscription` to `/subscriptions`.
+- c03178a: **\[Account Area\]** Items displayed using the `SFOrderItemCard` (e.g., in order details) are now clickable links, allowing users to easily navigate to the corresponding product page.
+- 1983ee4: **\[Account Area\]** Introduced a fully redesigned "My Orders" page.
+  The new layout presents a comprehensive list of the user's past orders, displaying key details for each entry and including a direct link to the specific Order Detail page for more information.
+- 49426db: **\[UI\]** Applied `min` and `max` attributes to the underlying HTML input element within the price input component (`SFPriceInput.vue`).
+  This introduces browser-level validation to restrict input to the specified range.
+- 8bf9d89: **\[E2E\]** Added automated tests to confirm that the skip links functionality works as expected for keyboard users, specifically validating navigation to the "Main content" and "Search" targets.
+- 1983ee4: **\[Account Area\]** Introduced a unified main Account page that seamlessly integrates sub-sections for Profile Management, Subscription Details, and Order History into a single, cohesive interface.
+- 1983ee4: **\[Account Area\]** Updated the visual styling of the Subscriptions page title to align consistently with the presentation of other pages within the Account Area.
+  The page's core functionality and integrated subscription component remain unchanged.
+- bf2d29e: **\[Performance\]** Modified the `useBreadcrumbs()` composable to generate relative URLs instead of absolute URLs.
+  This prevents Nuxt from treating breadcrumb links as external, which previously caused unnecessary full page reloads.
+  Navigation via breadcrumbs now uses client-side routing.
+- 79bba37: **\[Accessibility\]** Added `orderId` to the order detail button's `aria-label` on order cards for better screen reader context (via translation key update).
+- f1825f8: **\[UI\]** Implemented a dedicated logout button within the mobile sidebar, enabling users to properly log out of their accounts directly from mobile devices.
+- 5f6ffed: **\[Accessibility\]** Enhanced accessibility by enabling the user menu in the header to be opened via the keyboard.
+  This ensures keyboard-only users can access account-related actions like Profile or Logout.
+- a3114c8: **\[OSP\]** Adopted the `SFASyncDataWrapper` component to manage and display UI states related to asynchronous data fetching, improving consistency and reliability.
+- 059774d: **\[E2E\]** Added end-to-end tests for the Login and Registration user flows.
+  Key checks include ensuring the tab-based switching between forms works correctly and that mandatory links like the Privacy Disclaimer launch in a separate browser tab as required.
+- 1983ee4: **\[Account Area\]** Introduced a completely redesigned Order Detail page, structured for clarity and comprehensive information.
+  The page is thoughtfully organized into sections, including:
+
+  - **Order Details**: Displays key information about the order.
+  - **Payment Details**: Provides a breakdown of payment methods.
+  - **Delivery/Billing Address**: Highlights the addresses associated with the order.
+
+  Additionally, the page features a detailed list of all ordered products, complete with in-depth information about each item.
+  At the bottom, a **Payment Summary** section presents a clear breakdown of the subtotal, shipping costs, and the final total.
+
+- bc2a2d2: **\[Promotions\]** Promotions presented in the promotion slide-in panel (`SFPromotionSlideIn.vue`) are now ordered according to priority, ensuring higher-priority promotions are listed first.
+- 78f537e: **\[Promotions\]** The `SFProductPromotionGifts` component is now shown conditionally on the Product Detail Page, appearing only when its gift promotion criteria are met.
+- dc309d9: **\[Promotions\]** Revised the data structure for custom data associated with promotions.
+  Refer to the `PromotionCustomData` TypeScript interface for the new schema details (including fields like `headline`, `product`, `color`, `link`, etc.).
+  The `SFBasketSummaryPromotions.vue` component has been updated to work with this new structure.
+
+  - New `PromotionCustomData` Interface:
+    `ts
+interface PromotionCustomData {
+  product?: {
+    attributeId: number
+    badgeLabel: string
+  }
+  headline?: string
+  subline?: string
+  conditions?: string
+  minimumOrderValue?: CentAmount
+  color?: {
+    background: string
+    text: string
+  }
+  hideCountdown?: boolean
+  link?: string
+}
+`
+
+- 5f6ffed: **\[Account Area\]** Improved the navigation flow from the order detail page. The "Back" button now provides a more seamless experience by returning the user to the `/orders` list page, unless they were just on that page, in which case it functions as a standard browser back action.
+- 60da8d9: **\[SEO\]** Enhanced URL handling for Product Detail and List Pages during client-side navigation.
+  The application now automatically ensures the user lands on the SEO-optimized URL, redirecting from any non-canonical versions if necessary.
+- befb502: **\[E2E\]** Added specific end-to-end test steps to validate the simplified footer shown during the checkout flow. The tests confirm both its visual rendering accuracy and that all embedded links correctly utilize `target="_blank"` (open in new tab).
+- 1846482: **\[Performance\]** Optimized the `SFModal` and `SFSlideIn` components by designating them as client-only.
+  Since their functionality is entirely based on client-side user interaction, this prevents unnecessary server-side rendering and can improve initial page load performance.
+- 526b25f: **\[UI\]** Refactored the handling of the gift selection modal (`SFProductPromotionSelectionModal`).
+  Firstly, its visibility state is now managed locally within this component instead of using global `useState`, resolving an issue where the modal incorrectly remained open after page navigation.
+  Secondly, the implementation now utilizes a single, reusable modal instance for all gift options, optimizing component usage.
+- d08d54b: **\[Architecture\]** Standardized date presentation by updating the `formatLocaleDate` utility.
+  It now consistently outputs dates in a short numeric format and is being reused across various parts of the application.
+  The function's signature has changed: it now requires a `Date` object as input, with date string parsing delegated to the calling code.
+
+### Patch Changes
+
+- 63af918: **\[Order Success Page\]** Improved error handling for cases where an order cannot be found. The correct empty state page is now displayed as intended.
+- 76cef2a: **\[Order Success Page\]** Implemented error handling for failed attempts to fetch order data.
+  In case of failure (e.g., network or server error during fetch), the user is now directed to the standard Nuxt error page.
+- f135ea8: **\[E2E\]** Store Locator E2E tests are now skipped by default in automated/scheduled test runs to save resources.
+  To execute them manually, remove the `.skip` suffix from the tests in `playwright/tests/e2e-StoreFinder.spec.ts` and relevant steps in `playwright/tests/e2e-Pdp.spec.ts`.
+- - Added dependency `@scayle/storefront-promotions@0.1.1`
+  - Added dependency `defu@6.1.4`
+  - Added dependency `swiper@11.2.6`
+  - Added dependency `@contentful/rich-text-types@17.0.0`
+  - Added dependency `debug@4.4.0`
+  - Removed dependency `check-password-strength@3.0.0`
+  - Removed dependency `nuxt-swiper@1.2.2`
+  - Updated dependency `@contentful/live-preview@4.6.11` to `@contentful/live-preview@4.6.12`
+  - Updated dependency `@nuxt/fonts@0.11.0` to `@nuxt/fonts@0.11.1`
+  - Updated dependency `@scayle/nuxt-image-provider@0.2.4` to `@scayle/nuxt-image-provider@0.2.5`
+  - Updated dependency `@scayle/nuxt-opentelemetry@0.7.1` to `@scayle/nuxt-opentelemetry@0.9.4`
+  - Updated dependency `@scayle/storefront-nuxt@8.12.1` to `@scayle/storefront-nuxt@8.21.0`
+  - Updated dependency `@scayle/storefront-product-detail@1.1.3` to `@scayle/storefront-product-detail@1.1.4`
+  - Updated dependency `@scayle/storefront-product-listing@1.3.1` to `@scayle/storefront-product-listing@1.3.2`
+  - Updated dependency `@storyblok/nuxt@6.2.3` to `@storyblok/nuxt@6.2.4`
+  - Updated dependency `@storyblok/richtext@3.0.2` to `@storyblok/richtext@3.2.0`
+  - Updated dependency `@storyblok/vue@8.1.11` to `@storyblok/vue@8.2.2`
+  - Updated dependency `@vueuse/components@13.0.0` to `@vueuse/components@13.1.0`
+  - Updated dependency `@vueuse/core@13.0.0` to `@vueuse/core@13.1.0`
+  - Updated dependency `@vueuse/integrations@13.0.0` to `@vueuse/integrations@13.1.0`
+  - Updated dependency `@vueuse/nuxt@13.0.0` to `@vueuse/nuxt@13.1.0`
+  - Updated dependency `axios@1.8.3` to `axios@1.8.4`
+  - Updated dependency `consola@3.4.1` to `consola@3.4.2`
+  - Updated dependency `contentful@11.5.8` to `contentful@11.5.13`
+  - Updated dependency `contentful-export@7.21.32` to `contentful-export@7.21.42`
+  - Updated dependency `dompurify@3.2.4` to `dompurify@3.2.5`
+  - Updated dependency `dotenv@16.4.7` to `dotenv@16.5.0`
+  - Updated dependency `maska@3.1.0` to `maska@3.1.1`
+  - Updated dependency `nanoid@5.1.4` to `nanoid@5.1.5`
+  - Updated dependency `nuxi@3.23.0` to `nuxi@3.24.1`
+  - Updated dependency `storyblok-js-client@6.10.10` to `storyblok-js-client@6.10.11`
+  - Updated dependency `ufo@1.5.4` to `ufo@1.6.1`
+  - Updated dependency `@changesets/cli@2.28.1` to `@changesets/cli@2.29.0`
+  - Updated dependency `@eslint/eslintrc@3.3.0` to `@eslint/eslintrc@3.3.1`
+  - Updated dependency `@nuxt/eslint@1.2.0` to `@nuxt/eslint@1.3.0`
+  - Updated dependency `@nuxt/image@1.9.0` to `@nuxt/image@1.10.0`
+  - Updated dependency `@scayle/eslint-config-storefront@4.4.1` to `@scayle/eslint-config-storefront@4.5.0`
+  - Updated dependency `@types/node@22.13.10` to `@types/node@22.14.1`
+  - Updated dependency `@typescript-eslint/scope-manager@8.26.1` to `@typescript-eslint/scope-manager@8.29.1`
+  - Updated dependency `@typescript-eslint/utils@8.26.1` to `@typescript-eslint/utils@8.29.1`
+  - Updated dependency `@upstash/redis@1.34.5` to `@upstash/redis@1.34.7`
+  - Updated dependency `eslint@9.22.0` to `eslint@9.24.0`
+  - Updated dependency `nuxt-svgo@4.0.15` to `nuxt-svgo@4.0.17`
+  - Updated dependency `storyblok@3.35.2` to `storyblok@3.36.0`
+  - Updated dependency `typescript@5.8.2` to `typescript@5.8.3`
+  - Updated dependency `unimport@4.1.2` to `unimport@4.2.0`
+- ce6d335: **\[Product Detail Page\]** Resolved a hydration mismatch error related to product subscriptions.
+  The fix ensures that product subscription data is fetched and included during server-side rendering (SSR),
+  preventing inconsistencies between the server-generated HTML and the client-side render.
+- 3703ad7: **\[Unit Testing\]** Updated unit tests to import and use `buyXGetYPromotionFactory` with the correct casing from the `@scayle/storefront-nuxt` package, replacing the previously used incorrect `buyXgetYPromotionFactory`.
+- 3dc62da: **\[E2E\]** Aligned the end-to-end test for gift product quantity handling in the basket with recent updates to the promotion system. The test now correctly validates quantity increments based on the current promotion rules.
+- 1983ee4: **\[E2E\]** Expanded end-to-end test coverage for the Orders page.
+  Tests now verify the page's appearance and functionality for both users who have an order history and users who have no orders (empty state).
+- 546c082: **\[Product Detail Page\]** Corrected visual inconsistencies in the skeleton loader's appearance across different screen widths. The loader now maintains proper alignment and styling at all relevant breakpoints.
+- 5f04371: **\[UI\]** Resolved a layout issue where the wishlist toggle button on product cards could overlap and obstruct the global "Scroll to Top" button, ensuring both elements remain clickable.
+- 475d976: **\[E2E\]** Aligned the login and logout end-to-end test flows with recent application updates.
+  Specifically, tests were modified to accommodate changes within the User Profile section and the new logout interaction path on mobile.
+- 461dda8: **\[E2E\]** Modified the end-to-end test to validate country selection in a language-agnostic way.
+  The test no longer checks the visible country label (which varies with language settings) and instead confirms the selection using a stable, non-display mechanism.
+- 257dea7: **\[E2E\]** Aligned end-to-end test scenarios with the latest Promotion feature updates.
+  Tests covering the Promotion Ribbon and Promotions Flyout components have been modified to match the new expected behaviors and appearances.
+- 4d43b2a: **\[Unit Testing\]** Added a global `vi.mock()` for the `routeChangeTrackingObserver.global.ts` middleware.
+  This intercepts the middleware import during tests and provides a dummy function (`vi.fn()`) instead.
+  This is necessary because the original middleware's `setTimeout` could attempt to access the DOM (document) after happy-dom was destroyed, causing errors.
+  Global mocks are now managed in the renamed `test/vitest-setup/storefront.ts`.
+
+  - Renamed `templates/nuxt/test/vitest-setup/storefront-nuxt.ts` to `templates/nuxt/test/vitest-setup/storefront.ts` to define global mocks.
+
+- 3bd031a: **\[Performance\]** Optimized the price range filter by removing the `@update:model-value` event listener from the `SFPriceRangeSlider` component.
+  This eliminates redundant API calls that were previously triggered during the slider adjustment process.
+
 ## 1.8.0
 
 ### 🔥 Highlights
