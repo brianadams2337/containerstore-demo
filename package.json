@@ -146,6 +146,7 @@
     "schema-dts": "1.1.5",
     "storyblok-js-client": "6.10.11",
     "swiper": "11.2.6",
+    "nuxt-swiper": "1.2.2",
     "tabbable": "6.2.0",
     "ufo": "1.6.1",
     "vue": "3.5.13",
