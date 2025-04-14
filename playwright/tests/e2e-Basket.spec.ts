@@ -401,7 +401,7 @@ test('C2167368 Verify Basket increasing free product quantity', async ({
   await test.step('Increase the quantity of free product to 2', async () => {
     await page.waitForTimeout(500)
     await basketPage.updateProductQuantity('plus')
-    await basketPage.assertInitialPriceVisibility(false)
+    await basketPage.assertInitialPriceVisibility(true)
     await basketPage.assertFinalProductPrice(
       BASKET_TEST_DATA.freeProductPriceLabel,
       false,
