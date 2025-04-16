@@ -47,7 +47,7 @@
     "@nuxt/eslint": "1.3.0",
     "@nuxt/image": "1.10.0",
     "@nuxt/test-utils": "3.17.2",
-    "@nuxtjs/i18n": "9.1.1",
+    "@nuxtjs/i18n": "9.5.3",
     "@nuxtjs/tailwindcss": "6.13.1",
     "@scayle/eslint-config-storefront": "4.5.0",
     "@scayle/eslint-plugin-vue-composable": "0.2.1",
@@ -164,8 +164,6 @@
   },
   "resolutions": {
     "import-in-the-middle": "1.13.1",
-    "@nuxt/kit": "3.15.4",
-    "@nuxt/schema": "3.15.4",
     "vue": "3.5.13",
     "@vue/compiler-dom": "3.5.13",
     "@vue/compiler-sfc": "3.5.13",

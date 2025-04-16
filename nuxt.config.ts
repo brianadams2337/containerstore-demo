@@ -76,6 +76,7 @@ const isVercel =
 
 // Generate the I18N locales from the shop config
 interface LocaleConfig {
+  [k: string]: unknown
   code: string
   language: string
   domain: string
