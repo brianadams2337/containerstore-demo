@@ -1,5 +1,5 @@
 <template>
-  <div class="truncate">
+  <div class="-ml-1 truncate">
     <SFLink
       v-for="(
         { value: name, to }, index
@@ -8,7 +8,7 @@
       :data-testid="`category-breadcrumb-${index}`"
       :to="to"
       raw
-      class="px-2"
+      class="ml-1 px-2"
       :class="{
         'border-r border-gray-500 md:border-r': showDividerTag(
           index,
