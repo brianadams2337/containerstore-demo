@@ -18,7 +18,7 @@
             :key="JSON.stringify(item)"
             variant="raw"
             is-full-width
-            class="inline cursor-pointer !justify-start px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 active:bg-gray-300"
+            class="inline !justify-start px-4 py-2 text-sm text-gray-700 first-of-type:rounded-t-lg last-of-type:rounded-b-lg hover:bg-gray-200 focus-visible:shadow-inner-solid-sm active:bg-gray-300"
             @keydown.enter="selectItem(item)"
             @click="selectItem(item)"
           >
@@ -51,7 +51,7 @@
             :key="JSON.stringify(item)"
             variant="raw"
             is-full-width
-            class="block cursor-pointer !justify-start px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 active:bg-gray-300"
+            class="block cursor-pointer !justify-start px-4 py-2 text-sm text-gray-700 first-of-type:rounded-t-lg last-of-type:rounded-b-lg hover:bg-gray-200 focus-visible:shadow-inner-solid-sm active:bg-gray-300"
             @keydown.enter="selectItem(item)"
             @click="selectItem(item)"
           >
