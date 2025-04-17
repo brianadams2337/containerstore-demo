@@ -330,7 +330,8 @@
       "fit_size": "Fit & Size",
       "extras": "Extra",
       "design": "Design"
-    }
+    },
+    "size_a11y": "Select size {size_label}"
   },
   "price": {
     "starting_from": "from",

@@ -330,7 +330,8 @@
       "fit_size": "Passform & Größe",
       "extras": "Extra",
       "design": "Design"
-    }
+    },
+    "size_a11y": "Größe {size_label} auswählen"
   },
   "price": {
     "starting_from": "ab",
