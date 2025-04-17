@@ -449,7 +449,7 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { hid: 'description', name: 'description', content: '' },
+        { name: 'description', content: '' },
       ],
       htmlAttrs: {
         style: 'scroll-behavior: smooth;', // Used for adding smooth scrolling to every page

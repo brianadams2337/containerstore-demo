@@ -71,18 +71,19 @@ const {
     public: { shopName },
   },
 } = useNuxtApp()
+
 // Meta tags
 useHead({
-  bodyAttrs: () => ({
+  bodyAttrs: {
     class: ['relative'],
-  }),
-  htmlAttrs: () => ({
-    lang: new Intl.Locale(currentShop.value.locale).language,
-  }),
+  },
+  htmlAttrs: {
+    lang: () => new Intl.Locale(currentShop.value.locale).language,
+  },
   script: [
     {
       // Add loaded class to body after DOMContentLoaded
-      children: `document.addEventListener('DOMContentLoaded', () => { document.body.classList.add('loaded'); });`,
+      innerHTML: `document.addEventListener('DOMContentLoaded', () => { document.body.classList.add('loaded'); });`,
     },
   ],
   titleTemplate: (title) => (title ? `${title} | ${shopName}` : `${shopName}`),
