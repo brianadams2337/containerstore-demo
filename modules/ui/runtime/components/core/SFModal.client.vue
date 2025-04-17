@@ -24,7 +24,6 @@ Therefore, to ensure it's also not rendered on the server, it must be wrapped in
         >
           <IconClose
             class="size-5 transition-colors md:fill-gray-400 md:group-hover:fill-black"
-            aria-hidden="true"
           />
         </button>
         <div class="m-auto w-full rounded-md bg-white">

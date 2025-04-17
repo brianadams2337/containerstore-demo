@@ -10,7 +10,7 @@
         raw
         class="flex items-center gap-2 rounded-md p-1 text-md font-medium text-primary hover:bg-gray-100"
       >
-        <IconBack aria-hidden="true" class="size-3" />
+        <IconBack class="size-3" />
         <div class="mr-auto hidden pt-0.5 md:block">
           {{ $t('global.back-to-shop') }}
         </div>
@@ -25,7 +25,7 @@
         class="absolute left-1/2 -translate-x-1/2"
         :aria-label="shopName"
       >
-        <IconLogo class="size-7" aria-hidden="true" />
+        <IconLogo class="size-7" />
       </SFLocalizedLink>
 
       <nav class="hidden flex-row gap-4 md:flex">

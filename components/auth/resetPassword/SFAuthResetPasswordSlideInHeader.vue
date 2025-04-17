@@ -15,10 +15,7 @@
       @click.prevent="$emit('close')"
     >
       <template #icon>
-        <IconClose
-          class="size-4 text-gray-400 group-hover:text-gray-900"
-          aria-hidden="true"
-        />
+        <IconClose class="size-4 text-gray-400 group-hover:text-gray-900" />
       </template>
     </SFButton>
   </div>

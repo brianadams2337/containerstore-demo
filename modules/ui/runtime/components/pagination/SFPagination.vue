@@ -14,7 +14,7 @@
           data-testid="paginationButton-previousPage"
           :aria-label="$t('a11y.pagination_previous')"
         >
-          <IconChevronLeft aria-hidden="true" class="size-4" />
+          <IconChevronLeft class="size-4" />
         </SFPaginationButton>
       </slot>
 
@@ -70,7 +70,7 @@
           data-testid="paginationButton-nextPage"
           :aria-label="$t('a11y.pagination_next')"
         >
-          <IconChevronRight aria-hidden="true" class="size-4" />
+          <IconChevronRight class="size-4" />
         </SFPaginationButton>
       </slot>
     </div>

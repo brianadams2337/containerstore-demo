@@ -319,7 +319,8 @@
       "cart_reached_for_gifts": "Shopping cart reached! Add promotional products to get a free gift",
       "add_free_gift_when_cart_reached": "Shopping cart reached! Add a free gift",
       "full_progress_message": "You are saving {amount} on this promotion",
-      "free_label": "Free"
+      "free_label": "Free",
+      "gift_a11y": "Add your free product {name}"
     },
     "meta": {
       "description": "Buy {productName} online at SCAYLE. Discover the wide selection of other branded products."

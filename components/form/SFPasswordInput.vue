@@ -22,8 +22,8 @@
         "
         @click.prevent="togglePasswordVisibility"
       >
-        <IconPasswordHide v-if="isPasswordHidden" aria-hidden="true" />
-        <IconPasswordShow v-else aria-hidden="true" />
+        <IconPasswordHide v-if="isPasswordHidden" />
+        <IconPasswordShow v-else />
       </SFButton>
     </template>
   </SFTextInput>

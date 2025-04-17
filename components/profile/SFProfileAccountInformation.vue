@@ -28,7 +28,7 @@
       <span class="flex-1 text-xs font-variable">
         {{ $t('my_account.profile.account_information.disclaimer') }}
       </span>
-      <IconInfoOutlineSquare class="size-3" aria-hidden="true" />
+      <IconInfoOutlineSquare class="size-3" />
     </div>
   </div>
 </template>

@@ -4,7 +4,7 @@
     data-testid="empty-state"
   >
     <div class="h-56 w-full" data-testid="empty-state-icon">
-      <component :is="iconComponent" class="size-full" aria-hidden="true" />
+      <component :is="iconComponent" class="size-full" />
     </div>
     <div class="px-14 text-center md:w-128 md:px-0">
       <SFHeadline

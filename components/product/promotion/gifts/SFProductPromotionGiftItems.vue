@@ -54,6 +54,7 @@
           class="size-11 rounded-xl bg-gray-200"
           data-testid="add-free-product-button"
           :disabled="disabled"
+          :aria-label="$t('pdp.promotion.gift_a11y', { name })"
           @click="$emit('selectGift', product)"
         >
           <IconPlus class="size-6" />

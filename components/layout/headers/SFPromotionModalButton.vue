@@ -11,7 +11,7 @@
     @click="toggle"
   >
     <template #icon>
-      <IconPromotion class="size-6 shrink-0" aria-hidden="true" />
+      <IconPromotion class="size-6 shrink-0" />
     </template>
     <span class="-ml-1 min-w-[1ch] text-sm font-semibold leading-none">
       <template v-if="promotionCount">

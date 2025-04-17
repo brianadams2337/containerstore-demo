@@ -29,7 +29,7 @@
         data-testid="back-to-login-button"
         @click.prevent="backToLogin"
       >
-        <IconChevronLeft class="size-4" aria-hidden="true" />
+        <IconChevronLeft class="size-4" />
         {{ $t('sign_in_page.forgot_password.back_to_login') }}
       </SFButton>
       <SFButton

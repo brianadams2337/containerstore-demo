@@ -34,7 +34,7 @@
       variant="tertiary"
       class="mr-0.5 !size-10 !p-0"
     >
-      <IconChevronRight aria-hidden="true" class="size-4" />
+      <IconChevronRight class="size-4" />
     </SFButton>
   </SFLocalizedLink>
 </template>

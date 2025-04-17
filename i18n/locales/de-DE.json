@@ -319,7 +319,8 @@
       "cart_reached_for_gifts": "Warenkorb erreicht! Fügen Sie Werbeartikel hinzu, um ein kostenloses Geschenk zu erhalten.",
       "add_free_gift_when_cart_reached": "Warenkorb erreicht! Wählen Sie ein kostenloses Geschenk aus.",
       "full_progress_message": "Glückwunsch! Du hast dieses Angebot freigeschaltet und {amount} gespart.",
-      "free_label": "Gratis"
+      "free_label": "Gratis",
+      "gift_a11y": "Füge dein kostenloses Produkt hinzu {name}"
     },
     "meta": {
       "description": "Kaufen Sie {productName} online bei SCAYLE. \nEntdecken Sie die große Auswahl weiterer Markenprodukte."

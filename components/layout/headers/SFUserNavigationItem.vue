@@ -16,7 +16,7 @@
         :aria-label="$t('my_account.navigation')"
         @keydown.space.prevent="isOpen = true"
       >
-        <IconUser class="size-6" aria-hidden="true" />
+        <IconUser class="size-6" />
       </SFLocalizedLink>
     </template>
     <template #content>

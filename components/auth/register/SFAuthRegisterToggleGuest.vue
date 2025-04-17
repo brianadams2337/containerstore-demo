@@ -17,7 +17,7 @@
       <span class="text-xs font-variable text-gray-600">
         {{ $t('sign_in_page.guest_login.activation_hint') }}
       </span>
-      <IconInfoOutlineSquare class="size-4 text-gray-500" aria-hidden="true" />
+      <IconInfoOutlineSquare class="size-4 text-gray-500" />
     </div>
   </div>
 </template>

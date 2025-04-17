@@ -10,12 +10,8 @@
       :aria-label="$t('a11y.side_navigation')"
       @click="isSideNavigationOpen = !isSideNavigationOpen"
     >
-      <IconClose
-        v-if="isSideNavigationOpen"
-        aria-hidden="true"
-        class="size-7"
-      />
-      <IconBurger v-else aria-hidden="true" class="size-7" />
+      <IconClose v-if="isSideNavigationOpen" class="size-7" />
+      <IconBurger v-else class="size-7" />
     </SFButton>
 
     <SFSlideInFromLeftTransition>
@@ -38,7 +34,7 @@
       class="lg:!ml-0"
       @click="isSideNavigationOpen = false"
     >
-      <IconLogo class="size-7" aria-hidden="true" />
+      <IconLogo class="size-7" />
     </SFLocalizedLink>
 
     <nav class="h-full grow max-lg:hidden" data-testid="nav-categories">

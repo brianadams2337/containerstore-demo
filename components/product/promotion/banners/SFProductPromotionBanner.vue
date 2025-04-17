@@ -42,7 +42,7 @@
           >
             <div class="flex flex-col gap-2">
               <div class="flex items-center gap-1">
-                <IconInfoOutlineSquare class="size-4" aria-hidden="true" />
+                <IconInfoOutlineSquare class="size-4" />
                 {{ $t('pdp.promotion.condition') }}
               </div>
               <div class="whitespace-break-spaces text-sm">

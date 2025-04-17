@@ -57,7 +57,7 @@
               :aria-label="$t('basket_card.remove_long')"
               @click="$emit('delete')"
             >
-              <IconTrash class="size-4 shrink-0 stroke-2" aria-hidden="true" />
+              <IconTrash class="size-4 shrink-0 stroke-2" />
             </SFButton>
           </div>
         </div>

@@ -9,7 +9,7 @@
       :aria-label="$t('my_account.orders.detail.back')"
       :to="link"
     >
-      <IconChevronLeft aria-hidden="true" class="size-4 text-gray-500" />
+      <IconChevronLeft class="size-4 text-gray-500" />
     </SFButton>
     <SFHeadline tag="h2" data-testid="order-detail-headline">
       {{ $t('my_account.orders.detail.title', { id }) }}

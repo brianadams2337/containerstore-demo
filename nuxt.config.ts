@@ -550,6 +550,16 @@ export default defineNuxtConfig({
     autoImportPath: './assets/icons',
     defaultImport: 'component',
     componentPrefix: 'Icon',
+    svgoConfig: {
+      plugins: [
+        {
+          name: 'addAttributesToSVGElement',
+          params: {
+            attributes: [{ 'aria-hidden': 'true' }],
+          },
+        },
+      ],
+    },
   },
 
   // https://fonts.nuxt.com/get-started/configuration

@@ -8,7 +8,7 @@
         data-testid="footer-logo"
         class="flex w-7"
       >
-        <IconLogo class="size-7" aria-hidden="true" />
+        <IconLogo class="size-7" />
       </SFLocalizedLink>
 
       <div class="grid grid-cols-1 gap-y-5 text-base md:grid-cols-4">
