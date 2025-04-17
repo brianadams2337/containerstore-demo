@@ -1,0 +1,597 @@
+{
+  "global": {
+    "register": "Regisztráljon",
+    "sold_out": "Elkelt",
+    "sign_in": "Bejelentkezés",
+    "sign_out": "Kijelentkezés",
+    "product_recommendation": "Ajánlott párosítások",
+    "seconds": "másodperc | másodperc",
+    "minutes": "perc | minutes",
+    "hours": "óra | óra",
+    "days": "day | days",
+    "back": "Vissza",
+    "back-to-shop": "Vissza a boltba",
+    "to-shop": "To shop",
+    "continue_shopping_label": "Vásárlás folytatása",
+    "sign_in_label": "Bejelentkezés",
+    "ordinal_suffixes": {
+      "one": "st",
+      "two": "nd",
+      "few": "rd",
+      "other": "th"
+    },
+    "cancel": "Cancel",
+    "payment_key": {
+      "default": "Hitelkártya",
+      "accounting": "Számlafizetés"
+    }
+  },
+  "notification": {
+    "ok": "OK",
+    "view": "Megtekintés",
+    "loaded_again": "Újra betöltve"
+  },
+  "promotion": {
+    "progress_left": "Oldja fel az üzletet! A promóció aktiválásához költsön többet {amount}.",
+    "terms": "Promóciós feltételek",
+    "show_deals_label": "Ajánlatelemek megjelenítése",
+    "my_deals_label": "Az én ajánlataim",
+    "cart_reached": "A kosarat elértük! Adjon hozzá promóciós termékeket, és kapjon rájuk {discount}% kedvezményt.",
+    "cart_reached_for_gifts": "A kosár elérte a bevásárlókosarat! Promóciós termékek hozzáadása ingyenes ajándékhoz",
+    "full_progress_message": "Gratulálunk! Ön feloldotta ezt az üzletet, és megtakarította a {amount}.",
+    "automatic_discount_headline": {
+      "add_label": "Add",
+      "another_label": "another",
+      "save_indicator_label": "a mentéshez",
+      "offer": "{discount}% extra"
+    },
+    "hurry_to_save": "Hurry to save",
+    "save_your_free_gift": "Mentsd el az ingyenes ajándékodat",
+    "highest_priority": "Legmagasabb prioritás",
+    "see_my_promotions": "Lásd az akcióimat",
+    "hide_my_promotions": "Promócióim elrejtése",
+    "not_available": "Nincs elérhető promóció",
+    "deal": "Deal",
+    "overlay": "Az Ön ajánlatai",
+    "overlay_active": "Az Ön ajánlatai - {total} Aktív promóciók",
+    "slide_in_headline": "Az Ön ajánlatai",
+    "slide_in_subline": "Kedvezményes termékek keresése bármely promócióra kattintva. Fedezze fel a folyamatosan változó ajánlatokat a kiválasztott termékekre.",
+    "slide_in_active": "Aktív promóciók {total}",
+    "slide_in_no_active_headline": "Nincs aktív promóció",
+    "slide_in_no_active_subline": "Jelenleg nincs aktív promóciója. Nézzen vissza később az új ajánlatokért és különleges ajánlatokért!",
+    "close": "Close flyout"
+  },
+  "shop_selector": {
+    "aria_label": "Bolt módosítása, jelenlegi bolt: {selectedCountry}, {selectedLanguage}",
+    "choose_shop": "Bolt kiválasztása",
+    "current_shop": "Jelenlegi üzlet",
+    "flyout_title": "Nyelv és ország",
+    "choose_language": "Válassza ki a nyelvet",
+    "choose_country": "Válassza ki az országot"
+  },
+  "validation": {
+    "email": "Kérjük, adjon meg egy érvényes e-mail címet.",
+    "password": "A {field} címnek legalább egy speciális karaktert, egy nagybetűt, egy kisbetűt és egy számot kell tartalmaznia.",
+    "required": "{field} szükséges.",
+    "same_as": "{field} azonosnak kell lennie a {otherField} mezővel.",
+    "max_length": "{field} a {max} vagy annál kisebb kell, hogy legyen.",
+    "min_length": "{field} legalább {min} karakter hosszúságúnak kell lennie.",
+    "date": "{field} egy érvényes dátumnak kell lennie.",
+    "future_date": "{field} nem lehet olyan dátum, amely a jövőben van.",
+    "name": "{field} nem megfelelően van formázva."
+  },
+  "form_fields": {
+    "first_name": "Keresztnév",
+    "last_name": "Utónév",
+    "birth_date": "Születési dátum",
+    "email": "Email cím",
+    "old_password": "Jelenlegi jelszó",
+    "new_password": "Új jelszó",
+    "repeated_password": "Jelszó megerősítése",
+    "password": "Jelszó",
+    "gender": "Gender"
+  },
+  "gender": {
+    "male": "Férfi",
+    "female": "Női",
+    "diverse": "Diverse",
+    "none": "Inkább ne mondd"
+  },
+  "error": {
+    "continue_shopping": "Vásárlás folytatása",
+    "not_found_code": "Oh - 404",
+    "not_found_message": "Oh - valami rosszul sült el",
+    "page_does_not_exist": "Sajnos ez az oldal már nem létezik.",
+    "request_not_processed": "A kérését nem sikerült feldolgozni, kérjük, próbálja meg újra."
+  },
+  "badge_labels": {
+    "new": "Új a",
+    "sold_out": "Elkelt",
+    "already_in_basket": "Már a kosárban"
+  },
+  "navigation": {
+    "home": "Storefront Core Boilerplate",
+    "checkout": "Pénztár",
+    "location": "Bolt keresése",
+    "wishlist_aria_label": "Kívánságlista | Kívánságlista, {count} tétel | Kívánságlista, {count} tételek"
+  },
+  "search": {
+    "page": {
+      "heading": "Termékek a \"{term}\"",
+      "meta": {
+        "title": "Termékek a \"{term}\""
+      }
+    },
+    "placeholder": "Termék, kategória vagy márka keresése",
+    "search_results": "Lásd az összes {searchTerm} eredményt",
+    "product": "Termékek",
+    "categories": "Kategóriák",
+    "navigation_items": "Oldalak",
+    "a11y": "Keresés"
+  },
+  "promises": {
+    "flexible_payment": "Rugalmas fizetési lehetőségek",
+    "free_shipping": "Ingyenes szállítás 50 feletti rendelés esetén {currency}",
+    "return_policy": "50 napos ingyenes visszatérítési politika"
+  },
+  "wishlist": {
+    "meta": {
+      "title": "Az Ön kívánságlistája",
+      "description": "Mentsd el kedvenc termékeidet, és tartsd számon a must-have-jeidet."
+    },
+    "heading": "Kívánságlista",
+    "no_items_info": "Nincsenek tételek a kívánságlistán.",
+    "continue_shopping_info": "Vásárolja meg legújabb termékeinket, vagy jelentkezzen be, hogy láthassa elmentett kívánságlistáját.",
+    "product": "Produkt",
+    "toggle": {
+      "remove_from_wishlist_label": "Remove from wishlist",
+      "add_to_wishlist_label": "Hozzáadás a kívánságlistához"
+    }
+  },
+  "basket": {
+    "add_to_basket": "Kosárba helyezés",
+    "heading": "Kosár",
+    "basket_aria_label": "Kosár | Kosár, {count} item | Kosár, {count} items",
+    "empty_title": "A kosár üres.",
+    "empty_description": "A termékek megjelennek, amint a kosárba helyezi őket.",
+    "shipping_free": "Ingyenes",
+    "delivery": "Szállítás",
+    "total": "Total",
+    "subtotal": "Részösszeg",
+    "you_pay": "You pay",
+    "including_vat": "HÉA-val együtt.",
+    "excluding_vat": "áfa nélkül.",
+    "checkout_label": "Tovább a Pénztárhoz",
+    "go_to_label": "Go to Basket",
+    "notification": {
+      "select_size": "Kérjük, válassza ki a méretet a kosárba helyezés előtt",
+      "add_to_basket_success": "{productName} a termék hozzá lett adva a kosárhoz",
+      "add_to_basket_error": "{productName} nem sikerült a kosárba helyezni",
+      "add_to_basket_variant_out_of_stock_error": "Ez a méret jelenleg nincs raktáron",
+      "add_to_basket_max_basket_items_error": "Hoppá! Elérte a kosárban megengedett maximális elemszámot.",
+      "add_subscription_to_basket_success": "{productName} {interval} az előfizetés hozzá lett adva a kosarához",
+      "add_with_reduced_quantity_error": "Sajnálom, ebben a méretben már nem áll rendelkezésre több termék. Az összes rendelkezésre álló készlet már hozzá lett adva a kosarához."
+    },
+    "discount": "Kedvezmények",
+    "no_items_info": "Nincsenek termékek a kosarában.",
+    "promotion": {
+      "mov_banner_label": "Termékek megtekintése {name}"
+    },
+    "summary": {
+      "sale": "Eladó",
+      "campaign": "Kampányok",
+      "delivery_fees": "* A szállítási díjakat a pénztárnál határozzuk meg, miután kiválasztotta a kívánt szállítási opciót."
+    },
+    "product": {
+      "add": "Add"
+    },
+    "available_products": "Elérhető termékek",
+    "unavailable_products": "Nem elérhető termékek",
+    "meta": {
+      "title": "Kosár",
+      "description": "Tekintse át a kosárban lévő tételeket, és lépjen tovább a pénztárhoz könnyedén. Biztonságos és problémamentes vásárlás a {shopName} oldalon."
+    },
+    "voucher_disclaimer": "Az utalványok a megrendelés utolsó lépésében alkalmazhatók."
+  },
+  "basket_card": {
+    "size_label": "Méret",
+    "color_label": "Színes",
+    "confirm_remove_question": "Biztos, hogy el akarja távolítani ezt a terméket?",
+    "remove_long": "Tétel eltávolítása",
+    "quantity_label": "Mennyiség"
+  },
+  "incl_tax": "inkl. ÁFA.",
+  "excl_tax": "HÉA nélkül.",
+  "password": {
+    "hide": "Jelszó elrejtése",
+    "show": "Jelszó megjelenítése"
+  },
+  "my_account": {
+    "meta": {
+      "title": "Az Ön fiókja",
+      "description": "Kezelje profilját, megrendeléseit és előfizetéseit egy helyen."
+    },
+    "tabs": {
+      "orders": "Megrendelések",
+      "profile": "Profil",
+      "subscriptions": "Előfizetések"
+    },
+    "title": "Az Ön fiókja",
+    "subscriptions_menu": "Az Ön előfizetései",
+    "navigation": "Az én fiókom",
+    "orders": {
+      "title": "Az Ön megrendelései",
+      "meta": {
+        "title": "Az Ön megrendelései",
+        "description": "Nyomon követheti korábbi és jelenlegi megrendeléseit állapotfrissítésekkel."
+      },
+      "no_results": {
+        "title": "Ön még nem adott le rendelést.",
+        "description": "Miután vásárolt, a rendelés adatai itt fognak megjelenni."
+      },
+      "menu": "Az Ön megrendelései",
+      "order_date": "Megrendelés dátuma",
+      "items_count": "Items",
+      "detail": {
+        "title": "Rendelés #{id}",
+        "meta": {
+          "title": "Rendelés #{id}",
+          "description": "A rendelés részleteinek és állapotának megtekintése #{id}."
+        },
+        "back": "Vissza",
+        "order_details": "Rendelés részletei",
+        "go_to_order": "Megrendelés megtekintése {orderNumber}",
+        "order_date": "Rendelés dátuma",
+        "payment_details": "Fizetési részletek",
+        "payment_method": "Fizetési mód",
+        "delivery_and_billing_address": "Szállítási és számlázási cím",
+        "delivery_address": "Szállítási cím",
+        "billing_address": "Számlázási cím",
+        "size": "Méret",
+        "color": "Szín",
+        "quantity_label": "Mennyiség",
+        "total": "Total",
+        "subtotal": "Részösszeg",
+        "shipping_costs": "Szállítás"
+      }
+    },
+    "profile": {
+      "title": "Fiókjának kezelése",
+      "meta": {
+        "title": "Fiókbeállítások",
+        "description": "Frissítse személyes adatait, e-mail címét és jelszavát itt."
+      },
+      "menu": "Fiókbeállítások",
+      "greeting": "Üdvözöljük, {firstName}!",
+      "description": "Kezelje személyes adatait és tartsa fiókját biztonságban.",
+      "account_information": {
+        "title": "Fiókinformáció",
+        "customer_number": "Ügyfélszám:",
+        "email": "Regisztrált e-mail:",
+        "disclaimer": "Az e-mail módosítások nem támogatottak. Ha segítségre van szüksége, kérjük, forduljon az ügyfélszolgálathoz."
+      },
+      "personal_information": {
+        "title": "Személyes információk",
+        "description": "Frissítse személyes adatait, hogy fiókja naprakész maradjon.",
+        "success_message": "Az Ön adatai sikeresen frissültek.",
+        "error_message": "Az információt nem sikerült elmenteni. Kérjük, próbálja meg újra."
+      },
+      "password": {
+        "title": "Jelszókezelés",
+        "description": "Tartsa fiókját biztonságban a jelszó rendszeres frissítésével.",
+        "idp_description": "A fiókja egy külső bejelentkezési szolgáltatón keresztül van biztosítva, így a jelszó megváltoztatása itt nem szükséges. Jelszavának frissítéséhez kérjük, látogasson el a bejelentkezési szolgáltató beállításaihoz.",
+        "success_message": "A jelszava sikeresen frissült.",
+        "error": {
+          "400_bad_request": "A kérését nem sikerült feldolgozni, kérjük, próbálja meg újra.",
+          "401_unauthorized": "A kérését nem sikerült feldolgozni, kérjük, próbálja meg újra.",
+          "403_forbidden": "A jelszavát nem sikerült frissíteni. Kérjük, ellenőrizze jelenlegi jelszavát, és próbálja meg újra."
+        }
+      },
+      "save_label": "Save"
+    },
+    "popover": {
+      "greeting": "Hello {firstName}"
+    }
+  },
+  "pdp": {
+    "color_heading": "Színes",
+    "size_heading": "Méret:",
+    "add_label": "Kosárba helyezés",
+    "select_size": "Select Size (Méret kiválasztása)",
+    "shipping_return_heading": "Szállítás és visszaküldés",
+    "details_label": "Részletek",
+    "sold_out": "Jelenleg online elkelt.",
+    "shipping": {
+      "general_info": "A cikkek szállításának és visszaküldésének postaköltségét, valamint a csomagolás költségeit a SCAYLE fedezi. A több terméket tartalmazó megrendelések részleges szállítást eredményezhetnek.",
+      "dhl_headline": "DHL Standard szállítás - 0,00 EUR",
+      "dhl_paragraph": "Az azonnal rendelkezésre álló termékeket a DHL általában 1-3 munkanapon belül szállítja ki.",
+      "hermes_headline": "Hermes - 0,00 EUR",
+      "hermes_paragraph": "Az azonnal elérhető termékeket a Hermes általában 1-3 munkanapon belül szállítja ki.",
+      "return_information": "Ha a visszaküldési címke hiányzik a szállítmányból, bármikor kérhet újat az ügyfélszolgálatunktól."
+    },
+    "promotion": {
+      "condition": "Feltétel",
+      "free_gift_conditions_met": {
+        "headline": "Váltsa be az ingyenes ajándékot",
+        "description": "A feltétel teljesült. Válassza ki az ingyenes ajándékot most:"
+      },
+      "cart_reached": "Feloldottál egy különleges ajánlatot! Tegye a jogosult termékeket a kosárba, hogy élvezhesse az előnyöket.",
+      "cart_reached_for_gifts": "A kosár elérte a bevásárlókosarat! Promóciós termékek hozzáadása ingyenes ajándékhoz",
+      "add_free_gift_when_cart_reached": "A bevásárlókosár elérte! Ingyenes ajándék hozzáadása",
+      "full_progress_message": "Megtakarítás: {amount} ezen a promóción",
+      "free_label": "Ingyenes"
+    },
+    "meta": {
+      "description": "Vásároljon {productName} online a SCAYLE-nál. Fedezze fel a többi márkás termék széles választékát."
+    },
+    "sibling_error": "Hiba: Ez az attribútum nincs beállítva!",
+    "information": {
+      "fit_size": "Fit &amp; Size",
+      "extras": "Extra",
+      "design": "Tervezés"
+    }
+  },
+  "price": {
+    "starting_from": "from",
+    "including_vat": "áfával együtt.",
+    "best_price_30d": "30 napos legjobb ár:"
+  },
+  "plp": {
+    "seo_description": "Vásárolja meg a {category} weboldalt a SCAYLE-nál. Fedezze fel a következő termékek széles választékát {category}",
+    "back_navigation_button_label": "Vissza navigációs gomb",
+    "no_results": {
+      "title": "Nincsenek eredmények 🫣",
+      "description": "Ebben a kategóriában sajnos nincsenek termékek, vagy a szűrők nem eredményeznek termékeket.",
+      "reset_filters": "Szűrők visszaállítása",
+      "back_to_category": "Vissza a {category}"
+    }
+  },
+  "sorting_select": {
+    "top_seller": "Ajánlások",
+    "date_newest": "Legújabb",
+    "price_desc": "Ár csökkenő",
+    "price_asc": "Ár növekvő",
+    "reduction_desc": "Csökkentés csökkenő",
+    "reduction_asc": "Csökkentés növekvő"
+  },
+  "filter": {
+    "title": "Kategóriák szűrése",
+    "only_sale": "Csak az eladó termékek megjelenítése",
+    "show_results_count": "A {count} tételek megtekintése",
+    "reset": "Szűrő visszaállítása",
+    "reset_all": "Mindent visszaállítani",
+    "show_results": "Elemek megtekintése",
+    "to": "to",
+    "select_color": "Szín kiválasztása {color}",
+    "sorting": "Rendezés",
+    "show_filter": "Szűrők megjelenítése",
+    "filters_sorting": "Szűrők és rendezés",
+    "cleared_notification": "Minden szűrő kiürült!",
+    "updated_notification_filter": "A szűrők sikeresen alkalmazásra kerültek!",
+    "updated_notification_sort": "A válogatás sikeresen alkalmazásra került!",
+    "updated_notification_all": "A válogatás és a szűrők sikeresen alkalmazásra kerültek!",
+    "close": "Szűrők bezárása",
+    "update_price": "Ár frissítése",
+    "minimum_price": "Minimális ár: {price}",
+    "maximum_price": "Maximális ár: {price}",
+    "size": "Méret: {size}"
+  },
+  "osp": {
+    "order_details": "Megrendelés részletei",
+    "customer_id": "Ügyfél száma",
+    "delivery_address": "Szállítási cím",
+    "billing_address": "Számlázási cím",
+    "delivery_and_billing_address": "Szállítási és számlázási cím",
+    "email_send": "A rendelés visszaigazolása elküldésre került az Ön által megadott e-mail címre.",
+    "estimated_delivery_date": "Várható szállítási határidő",
+    "delivered_by": "Szállító:",
+    "intro": "Köszönjük a vásárlást!",
+    "order_date": "Megrendelés dátuma",
+    "order_nr": "Megrendelés száma ",
+    "order_number": "Rendelés #{orderNumber}",
+    "payment_details": "Fizetési részletek",
+    "payment_method": "Fizetési mód",
+    "no_order_found": {
+      "title": "A rendelési információt nem sikerült megtalálni.",
+      "description": "A rendelés adatait nem sikerült lekérdezni. A link lehet, hogy lejárt vagy érvénytelen. Kérjük, ellenőrizze e-mailjét a helyes linkért, vagy forduljon az ügyfélszolgálathoz segítségért."
+    },
+    "title": "A megrendelés áttekintése",
+    "carrier_key": {
+      "DEFAULT": "UPS"
+    },
+    "meta": {
+      "title": "Megrendelés megerősítve %szeparátor Köszönjük a vásárlást.",
+      "description": "Köszönjük megrendelését! A vásárlását megerősítettük. Ellenőrizze az e-mailjét a rendelés részleteiért."
+    }
+  },
+  "sign_in_page": {
+    "meta": {
+      "title": "Bejelentkezés vagy regisztráció",
+      "description": "Lépjen be fiókjába vagy hozzon létre egy újat a {shopName} oldalon. Élvezze a zökkenőmentes vásárlási élményt biztonságos bejelentkezéssel és személyre szabott lehetőségekkel."
+    },
+    "status": {
+      "error": {
+        "400_bad_request": "A kérését nem sikerült feldolgozni, kérjük, próbálja meg újra.",
+        "401_unauthorized": "A kérését nem sikerült feldolgozni, kérjük, próbálja meg újra.",
+        "403_user_deactivated": "Ez a felhasználó deaktiválva van.",
+        "404_not_found": "Az Ön e-mail címe vagy jelszava hibás. Kérjük, próbálja meg újra.",
+        "406_token_expired": "A tokenje már felhasználásra került vagy lejárt. Kérjük, kérjen új jelszó-visszaállítási e-mailt.",
+        "409_already_exists": "Ez a fiók már létezik.",
+        "422_unprocessable_entity": "A kérését nem sikerült feldolgozni, kérjük, próbálja meg újra.",
+        "500_server_error": "A kérése hibát eredményezett"
+      }
+    },
+    "forgot_password": {
+      "status": {
+        "success": "A jelszó-visszaállítási linket elküldtük az Ön e-mail címére."
+      },
+      "submit": "Visszaállítási link beszerzése",
+      "back_to_login": "Vissza a bejelentkezéshez",
+      "title": "Jelszó visszaállítása",
+      "description": "Adja meg a fiókjához kapcsolódó e-mail címet, és mi elküldjük Önnek a visszaállítási linket."
+    },
+    "guest_login": {
+      "status": {
+        "error": {
+          "409_already_exists": "Ez egy regisztrált fiók. Kérjük, a bejelentkezéshez használja a megfelelő jelszót."
+        },
+        "success": "Az Ön fiókját létrehoztuk! Most már folytathatja a megrendelést."
+      },
+      "activation_hint": "Nem fog létrehozni egy fiókot. A rendelés nyomon követéséhez használja a megadott e-mail címet.",
+      "label": "Vendégként folytatódik"
+    },
+    "login": {
+      "status": {
+        "success": "Bejelentkezés sikeres! Üdvözöljük újra!"
+      },
+      "title": "Bejelentkezés",
+      "not_user_yet": "Még nem felhasználó?",
+      "create_account": "Fiók létrehozása.",
+      "submit": "Bejelentkezés"
+    },
+    "reset_password": {
+      "status": {
+        "success": "A jelszavát sikeresen visszaállították. Most már bejelentkezhet az új jelszóval."
+      },
+      "submit": "Jelszó mentése",
+      "title": "Új jelszó beállítása",
+      "description": "Adja meg az új jelszavát az alábbiakban, hogy biztosítsa fiókját."
+    },
+    "sign_up": {
+      "status": {
+        "success": "A fiókját sikeresen létrehoztuk!"
+      },
+      "mandatory_info": "* Kötelező mező",
+      "submit": "Feliratkozás",
+      "title": "Feliratkozás",
+      "not_new_user": "Már van fiókja?",
+      "go_to_login": "Bejelentkezés itt",
+      "privacy_disclaimer": "A fiók létrehozásával Ön elfogadja a {terms} és tudomásul veszi a {policy}.",
+      "terms": "Szolgáltatási feltételek",
+      "policy": "Adatvédelmi szabályzat"
+    },
+    "welcome_back_title": "Üdvözöljük! Új itt vagy visszatér?",
+    "idp": {
+      "login": {
+        "google": "Bejelentkezés a Google segítségével"
+      },
+      "register": {
+        "google": "Regisztráció a Google-nál"
+      }
+    },
+    "or": "Vagy"
+  },
+  "store_locator": {
+    "button": "Bolt keresése",
+    "headline": "Válassza ki a boltot",
+    "modal_headline": "Keressen egy üzletet az Ön közelében",
+    "subline": "Kérjük, adja meg irányítószámát vagy városát, hogy láthassa az Önhöz közeli üzleteket.",
+    "buttons": {
+      "choose_store": "Válasszon áruházat",
+      "change_store": "Áruház módosítása",
+      "select_store": "Bolt kiválasztása",
+      "search": "Keresés",
+      "opening_hours": "Nyitvatartási idő"
+    },
+    "input_placeholder": "Adja meg a várost vagy az irányítószámot",
+    "no_results": "Nincsenek eredmények",
+    "labels": {
+      "available": "Elérhető",
+      "not_available": "Nem elérhető",
+      "low_stock": "Alacsony készlet",
+      "store_closed": "Zárva",
+      "store_open": "Nyissa meg a",
+      "store_closes_in": "bezár {hours}h {minutes}min",
+      "store_availability": "Store Availability",
+      "store_availability_subline": "Kérjük, válasszon ki egy áruházat"
+    },
+    "opening_times": {
+      "mon": "Hétfő",
+      "tue": "Kedd",
+      "wed": "Szerda",
+      "thu": "Csütörtök",
+      "fri": "Péntek",
+      "sat": "Szombat",
+      "sun": "Vasárnap"
+    },
+    "geolocation": {
+      "error": {
+        "permission_denied": "Felhasználó megtagadta a geolokációs kérést",
+        "unknown": "Nem sikerült meghatározni a földrajzi elhelyezkedést"
+      }
+    }
+  },
+  "intl": {
+    "firstDay": "1"
+  },
+  "subscription": {
+    "title": "Előfizetés",
+    "headline": "Az előfizetések kezelése",
+    "meta": {
+      "title": "Az Ön előfizetései",
+      "description": "Kezelje aktív és korábbi előfizetéseit könnyedén."
+    },
+    "subscribe": "Subscribe &amp; Save",
+    "subscribe_with_reduction": "Subscribe &amp; Save up to {percentage}%",
+    "interval": "Intervallum",
+    "follow_up_delivery": "Follow-up delivery",
+    "day_of_month_selection_caption": "Minden {dayOfMonth} a hónap minden napján",
+    "or": "Vagy még többet takaríthat meg:",
+    "select_size_message": "Válassza ki a méretet a lehetőségek megtekintéséhez",
+    "not_eligible_message": "A kiválasztott méret nem alkalmas az előfizetésre",
+    "term": "Term",
+    "add_to_basket": "Feliratkozás {interval}",
+    "order": {
+      "interval": "Intervallum",
+      "follow_up_delivery": "Follow-up delivery (nyomon követéses szállítás)",
+      "interval_keys": {
+        "1_months_1": "1 hónap",
+        "2_months": "2 hónap",
+        "3_months": "3 hónap"
+      },
+      "delivery_keys": {
+        "1": "Minden hónap 1-jén",
+        "15": "Minden hónap 15. napján"
+      }
+    }
+  },
+  "image_slider": {
+    "previous_label": "Előző kép",
+    "next_label": "Következő kép"
+  },
+  "slider": {
+    "previous_label": "Előző",
+    "next_label": "Következő"
+  },
+  "product_image": {
+    "alt": "{brand}, {productName}, {colors}",
+    "alt_with_image_index": "{alt}, Image {index} of {total}",
+    "selected": "Kiválasztott",
+    "unselected": "Unselected",
+    "alt_sibling": "{selected}, {alt}",
+    "alt_sibling_sold_out": "{selected}, {alt} (Elkelt)"
+  },
+  "country_selection": {
+    "prompt": "Úgy néz ki, hogy a {country} oldalon van. Melyik üzletet szeretné meglátogatni?",
+    "switch_to_shop": "Váltás a {country} webáruházra",
+    "stay_in_shop": "Maradjon a {country} boltban",
+    "override_codes": {
+      "ZZ": "Nemzetközi"
+    },
+    "country_with_language": "{country} ({language})"
+  },
+  "footer": {
+    "copyright": "© {current_year} SCAYLE, Minden jog fenntartva."
+  },
+  "a11y": {
+    "skip_to_main": "Ugrás a fő tartalomra",
+    "skip_to_search": "Skip to search",
+    "side_navigation": "Oldalnavigáció megnyitása",
+    "pagination_previous": "Az előző oldalra való áttérés",
+    "pagination_next": "Tovább a következő oldalra"
+  },
+  "quantity": {
+    "new_value": "A mennyiség módosítása a következőre {newQuantity}",
+    "current_value": "Mennyiség: {selected_quantity}"
+  }
+}

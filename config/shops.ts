@@ -31,7 +31,7 @@ export const shops: ShopAndLocaleConfig[] = [
     shopId: 1918,
     currency: 'EUR',
     isDefault: true,
-    translationFile: 'de-DE.json',
+    translationFile: 'de_DE.json',
     countryCode: 'DE',
   },
   {
@@ -40,7 +40,7 @@ export const shops: ShopAndLocaleConfig[] = [
     shopId: 1919,
     currency: 'USD',
     isDefault: false,
-    translationFile: 'en-GB.json',
+    translationFile: 'en_GB.json',
     countryCode: 'US',
   },
   {
@@ -49,7 +49,7 @@ export const shops: ShopAndLocaleConfig[] = [
     shopId: 1920,
     currency: 'CHF',
     isDefault: false,
-    translationFile: 'de-DE.json',
+    translationFile: 'de_DE.json',
     countryCode: 'CH',
   },
   {
@@ -58,7 +58,7 @@ export const shops: ShopAndLocaleConfig[] = [
     shopId: 1921,
     currency: 'EUR',
     isDefault: false,
-    translationFile: 'de-DE.json',
+    translationFile: 'de_DE.json',
     countryCode: 'AT',
   },
   {
@@ -67,7 +67,7 @@ export const shops: ShopAndLocaleConfig[] = [
     shopId: 1965,
     currency: 'EUR',
     isDefault: false,
-    translationFile: 'en-GB.json',
+    translationFile: 'en_GB.json',
     countryCode: 'DE',
   },
   {
@@ -76,7 +76,7 @@ export const shops: ShopAndLocaleConfig[] = [
     shopId: 2002,
     currency: 'EUR',
     isDefault: false,
-    translationFile: 'en-GB.json',
+    translationFile: 'en_GB.json',
     countryCode: 'HR',
   },
 ]
