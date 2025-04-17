@@ -38,7 +38,7 @@ export default defineNitroPlugin(() => {
     : JSON.stringify(logableConfig)
 
   console.log(
-    '[storefront-boilerplate] runtimeConfig after startup:',
+    '[storefront-application] runtimeConfig after startup:',
     configToPrint,
   )
 })

@@ -1,7 +1,7 @@
 version: '3'
 
 networks:
-  storefront-boilerplate: {}
+  storefront-application: {}
 
 services:
   redis:
@@ -10,7 +10,7 @@ services:
       - '6379:6379'
     restart: always
     networks:
-      - storefront-boilerplate
+      - storefront-application
 
   node:
     build:
@@ -33,7 +33,7 @@ services:
     volumes:
       - ./.env:/app/.env
     networks:
-      - storefront-boilerplate
+      - storefront-application
 
   bun:
     build:
@@ -56,4 +56,4 @@ services:
     volumes:
       - ./.env:/app/.env
     networks:
-      - storefront-boilerplate
+      - storefront-application
