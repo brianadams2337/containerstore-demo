@@ -110,7 +110,7 @@
     "@scayle/storefront-nuxt": "8.24.1",
     "@scayle/storefront-product-detail": "1.2.0",
     "@scayle/storefront-product-listing": "1.4.0",
-    "@scayle/storefront-promotions": "0.1.1",
+    "@scayle/storefront-promotions": "0.3.0",
     "@scayle/storefront-search": "0.2.1",
     "@storyblok/nuxt": "6.2.4",
     "@storyblok/richtext": "3.2.0",

@@ -3460,10 +3460,10 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-product-listing/-/storefront-product-listing-1.4.0.tgz#9c3a48a5b532407d12e81736a720375bbbffdf69"
   integrity sha512-48H/ZtZkE0lmIgzqqPeeciRQ4bO9vqWfTLwm1AR1/HYgQZE7AYeLpL9Yohu0wQpvs5jnugnft4gKYt4cxu0fRA==
 
-"@scayle/storefront-promotions@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-promotions/-/storefront-promotions-0.1.1.tgz#cfd975cb4eedd744f173123322cf2f2370db8d97"
-  integrity sha512-zsTKtLOhr8ynqKWG/0KgzvX8uRRkvAGuKCOnqZOdvm/wdK4zX1mSJIXP0lZJ1cfMoLYoeLLDGSX5RQXS/i5IoQ==
+"@scayle/storefront-promotions@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-promotions/-/storefront-promotions-0.3.0.tgz#d02323fd5f50782f91d5e96610846b15e645dc01"
+  integrity sha512-5DXaleKV7r7oHQPJtWErlJbiU2rsRl28qQXYsXsrJdleThb0zrkb+4qd4yMP2fjgELwPxVitXALq0+kh3WVOSw==
 
 "@scayle/storefront-search@0.2.1":
   version "0.2.1"
