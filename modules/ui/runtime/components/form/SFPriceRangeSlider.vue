@@ -21,7 +21,7 @@
         height="2px"
         tooltip="always"
         tooltip-placement="top"
-        :dot-attrs="{ 'aria-label': $t('filter.update_price') }"
+        :dot-attrs="{ tabindex: -1 }"
         @update:model-value="updateRange"
         @drag-start="emit('dragStart', range)"
         @drag-end="emit('dragEnd', range)"
@@ -59,7 +59,6 @@
           })
         "
         @update:model-value="changeRangeAtIndex(roundDownPrice($event), 0)"
-        @change="emit('inputFieldUpdate', range)"
       />
       <div class="mx-auto text-center text-xs font-semibold text-secondary">
         {{ $t('filter.to') }}
@@ -79,7 +78,6 @@
           })
         "
         @update:model-value="changeRangeAtIndex(roundUpPrice($event), 1)"
-        @change="emit('inputFieldUpdate', range)"
       />
     </div>
   </div>
@@ -136,6 +134,8 @@ const changeRangeAtIndex = (newRangeValue: number, index: 0 | 1) => {
   const updatedRange = [...range.value]
   updatedRange[index] = newRangeValue
   range.value = updatedRange as RangeTuple
+
+  emit('inputFieldUpdate', range.value)
 }
 
 const updateRange = (newRange: RangeTuple) => {
