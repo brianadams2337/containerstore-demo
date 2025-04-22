@@ -104,7 +104,7 @@
     "@nuxt/fonts": "0.11.1",
     "@scayle/nuxt-image-provider": "0.3.0",
     "@scayle/nuxt-opentelemetry": "0.10.1",
-    "@scayle/omnichannel-nuxt": "4.2.0",
+    "@scayle/omnichannel-nuxt": "4.3.1",
     "@scayle/storefront-country-detection": "1.2.0",
     "@scayle/storefront-navigation": "0.2.0",
     "@scayle/storefront-nuxt": "8.24.1",

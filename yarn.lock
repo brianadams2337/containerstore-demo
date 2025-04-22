@@ -3623,10 +3623,10 @@
     import-in-the-middle "1.13.1"
     knitwork "^1.1.0"
 
-"@scayle/omnichannel-nuxt@4.2.0":
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/@scayle/omnichannel-nuxt/-/omnichannel-nuxt-4.2.0.tgz#b5a658bf6a645ff995cde5a1a5687f095deb77eb"
-  integrity sha512-fUYEYJBqp6b6qvtw25tR7nzaKuaiidi5KSdCsd/Ax05cCnCqCjBgRrXcc/fXJfYKfODiP5zVpJAFAiXEmNaCew==
+"@scayle/omnichannel-nuxt@4.3.1":
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/@scayle/omnichannel-nuxt/-/omnichannel-nuxt-4.3.1.tgz#f265d8e5e55158ef6a330877bc0b28a4c2f657db"
+  integrity sha512-jrY5Ut9twNitC4eoopXK9rVZpGqCr0xMq0C/OEzd+gp2SGSIY/XwagaaS2mdq+WDyh8yUY9bLtaUEwOU65DjjQ==
   dependencies:
     "@nuxt/kit" "^3.12.2"
     qs "^6.12.2"
