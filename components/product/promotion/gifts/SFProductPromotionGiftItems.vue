@@ -43,7 +43,7 @@
             :show-badges="false"
           />
         </div>
-        <div v-else class="text-sm text-status-error">
+        <div v-else class="text-sm text-product-sold-out">
           {{ $t('global.sold_out') }}
         </div>
       </div>
