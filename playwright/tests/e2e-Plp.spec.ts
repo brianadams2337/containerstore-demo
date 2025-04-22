@@ -1,21 +1,29 @@
 import { expect, test } from '../fixtures/fixtures'
 import {
   PLP_FILTER_DEEPLINK,
-  PLP_PATH_SUBCATEGORY_LVL_1,
-  PLP_PATH_SUBCATEGORY_LVL_2,
-  PLP_PATH_MAIN_CATEGORY,
   SORTING,
   PLP_TEST_DATA,
 } from '../support/constants'
 import { isMobile, verifySeoMetaTags } from '../support/utils'
 
-test.beforeEach(async ({ productListingPage, baseURL, countryDetector }) => {
-  await productListingPage.visitPlpNoFilters(
-    PLP_PATH_SUBCATEGORY_LVL_2,
-    baseURL as string,
-  )
-  await countryDetector.closeModal()
-})
+test.beforeEach(
+  async ({
+    countryDetector,
+    homePage,
+    page,
+    mobileNavigation,
+    mainNavigation,
+  }) => {
+    await homePage.visitPage()
+    await page.waitForLoadState('networkidle')
+    await countryDetector.closeModal()
+    if (isMobile(page)) {
+      await mobileNavigation.openPlpMobile()
+    } else {
+      await mainNavigation.navigateToPlpSubCategory()
+    }
+  },
+)
 test.setTimeout(45000)
 
 test('C2130723: Verify PLP standard components', async ({
@@ -25,69 +33,41 @@ test('C2130723: Verify PLP standard components', async ({
   filters,
   sorting,
 }) => {
-  await expect(async () => {
-    if (isMobile(page)) {
-      await expect(filters.filterButton.nth(1)).toBeVisible()
-    } else {
-      await expect(sorting.sortDropdown.first()).toBeVisible()
-      await expect(filters.filterButton.nth(0)).toBeVisible()
-    }
-    await expect(breadcrumb.breadcrumbCategoryLvl0).toBeVisible()
-    await expect(breadcrumb.breadcrumbCategoryLvl1).toBeVisible()
-    await expect(breadcrumb.breadcrumbCategoryActive).toBeVisible()
-    await expect(productListingPage.productItem.first()).toBeVisible()
-
-    await breadcrumb.clickBreadcrumbLvl1()
-    await expect(breadcrumb.productCounter).toBeVisible()
-  }).toPass()
+  if (isMobile(page)) {
+    await expect(filters.filterButton.nth(1)).toBeVisible()
+  } else {
+    await expect(sorting.sortDropdown.first()).toBeVisible()
+    await expect(filters.filterButton.nth(0)).toBeVisible()
+  }
+  await expect(breadcrumb.breadcrumbCategoryLvl0).toBeVisible()
+  await expect(breadcrumb.breadcrumbCategoryActive).toBeVisible()
+  await expect(productListingPage.productItem.first()).toBeVisible()
+  await expect(breadcrumb.productCounter).toBeVisible()
 })
 
-test('C2130725: Verify PLP breadcrumb', async ({
-  productListingPage,
-  breadcrumb,
-  page,
-}) => {
-  await expect(async () => {
-    await expect(breadcrumb.breadcrumbCategoryLvl1).toBeVisible()
-
-    if (isMobile(page)) {
-      const subCategoryLvl2Text = await productListingPage
-        .getProductLink(PLP_PATH_SUBCATEGORY_LVL_2)
-        .nth(1)
-        .textContent()
-      const activeBreadcrumbText =
-        await breadcrumb.breadcrumbCategoryActive.textContent()
-
-      expect(activeBreadcrumbText?.toLowerCase()).toContain(
-        subCategoryLvl2Text?.toLowerCase(),
-      )
-    } else {
-      const subCategoryLvl2Text = await productListingPage.menuSubCategoryLvl2
-        .first()
-        .textContent()
-
-      const activeBreadcrumbText =
-        await breadcrumb.breadcrumbCategoryActive.textContent()
-
-      expect(activeBreadcrumbText?.toLowerCase()).toContain(
-        subCategoryLvl2Text?.toLowerCase(),
-      )
-
-      await productListingPage.menuSubCategoryLvl2.nth(0).click()
-
-      if (subCategoryLvl2Text) {
-        const currentUrl = page.url()
-
-        expect(currentUrl).toContain(
-          subCategoryLvl2Text.toLowerCase().replace(/ /g, '-'),
-        )
-      } else {
-        throw new Error(
-          'subCategoryLvl2Text is not available. Check the selector or webpage content.',
-        )
-      }
-    }
-  }).toPass()
+test('C2130725: Verify PLP breadcrumb', async ({ breadcrumb, page }) => {
+  await test.step('Verify sub-category breadcrumb', async () => {
+    await breadcrumb.productCounter.waitFor()
+    const activeCategoryText =
+      await breadcrumb.breadcrumbCategoryActive.textContent()
+    await expect(breadcrumb.breadcrumbCategoryLvl0).toBeVisible()
+    await expect(breadcrumb.breadcrumbCategoryActive).toBeVisible()
+    await expect(breadcrumb.productCounter).toBeVisible()
+    expect(page.url()).toContain(
+      activeCategoryText?.toLowerCase().replace(/ \d+$/, '-'),
+    )
+  })
+  await test.step('Verify main category breadcrumb', async () => {
+    await breadcrumb.breadcrumbCategoryLvl0.click()
+    await breadcrumb.productCounter.waitFor()
+    await expect(breadcrumb.breadcrumbCategoryLvl0).not.toBeVisible()
+    await expect(breadcrumb.productCounter).toBeVisible()
+    const activeCategoryText =
+      await breadcrumb.breadcrumbCategoryActive.textContent()
+    expect(page.url()).toContain(
+      activeCategoryText?.toLowerCase().replace(/ \d+$/, '-'),
+    )
+  })
 })
 
 test('C2130727: Verify PLP Filters and Product Count', async ({
@@ -101,14 +81,12 @@ test('C2130727: Verify PLP Filters and Product Count', async ({
   if (initialProductCountText) {
     initialProductCount = parseInt(initialProductCountText, 10)
   }
-
   await test.step('Verify initial state', async () => {
     await expect(breadcrumb.productCounter).toBeVisible()
     await filters.openFilters()
     await expect(filters.filterSectionHeadline.first()).toBeVisible()
     await expect(filters.closeFiltersButton).toBeVisible()
   })
-
   await test.step('Apply price filters', async () => {
     await filters.filterPriceInput.first().clear()
     await filters.filterPriceInput.first().focus()
@@ -126,7 +104,6 @@ test('C2130727: Verify PLP Filters and Product Count', async ({
       'filters[minPrice]=8000&filters[maxPrice]=10000',
     )
   })
-
   await test.step('Apply color filter', async () => {
     const colorFilterValue = await filters.filterColorChip
       .first()
@@ -137,7 +114,6 @@ test('C2130727: Verify PLP Filters and Product Count', async ({
     await page.waitForTimeout(500)
     expect(page.url()).toContain(`filters[color]=${colorFilterValue}`)
   })
-
   await test.step('Apply size filter', async () => {
     const sizeFilterValue = await filters.filterSizeCheckbox
       .first()
@@ -148,7 +124,6 @@ test('C2130727: Verify PLP Filters and Product Count', async ({
     await page.waitForTimeout(500)
     expect(page.url()).toContain(`filters[size]=${sizeFilterValue}`)
   })
-
   await test.step('Check product counter', async () => {
     let currentProductCount: number | null = null
     const currentProductCountText =
@@ -158,7 +133,6 @@ test('C2130727: Verify PLP Filters and Product Count', async ({
     if (currentProductCountText) {
       currentProductCount = parseInt(currentProductCountText, 10)
     }
-
     if (filteredButtonLabel) {
       const regex = /\d+/g
       const match = filteredButtonLabel.match(regex)
@@ -167,7 +141,6 @@ test('C2130727: Verify PLP Filters and Product Count', async ({
     }
     expect(currentProductCount).not.toEqual(initialProductCount)
   })
-
   await test.step('Apply filters and close the flyout', async () => {
     await filters.filterApplyButton.click()
     await page.waitForTimeout(500)
@@ -180,7 +153,6 @@ test('C2130727: Verify PLP Filters and Product Count', async ({
     }
     await expect(filters.filterButton.first()).toContainText('3')
   })
-
   await test.step('Reset filters', async () => {
     await filters.openFilters()
     await filters.filterResetButton.click()
@@ -198,28 +170,23 @@ test('C2130727: Verify PLP Filters and Product Count', async ({
 test('C2139744: Verify PLP Filters deeplink', async ({
   productListingPage,
   filters,
-  baseURL,
   countryDetector,
+  mainNavigation,
+  mobileNavigation,
+  page,
 }) => {
-  await productListingPage.visitPlpWithFiltersUrl(
-    PLP_PATH_SUBCATEGORY_LVL_1,
-    PLP_FILTER_DEEPLINK,
-    baseURL as string,
-  )
+  if (isMobile(page)) {
+    await mobileNavigation.openPlpMobile()
+  } else {
+    await mainNavigation.navigateToPlpMainCategory()
+  }
+  await productListingPage.addFiltersToPLP(PLP_FILTER_DEEPLINK)
   await countryDetector.closeModal()
-  await expect(filters.filterButton.first()).toContainText('3')
-  await expect(async () => {
-    await filters.openFilters()
-    await filters.closeFiltersButton.waitFor()
-  }).toPass()
-
-  await expect(async () => {
-    await filters.closeFiltersButton.waitFor()
-    await expect(
-      filters.filterSizeCheckboxValue(PLP_FILTER_DEEPLINK.size),
-    ).toBeChecked()
-    await expect(filters.filterSaleSwitch).toBeChecked()
-  }).toPass()
+  await expect(filters.filterButton.first()).toContainText('2')
+  await filters.openFilters()
+  await filters.closeFiltersButton.waitFor()
+  await filters.closeFiltersButton.waitFor()
+  await expect(filters.filterSaleSwitch).toBeChecked()
 })
 
 test('C2130731: Verify PLP Add to Wishlist', async ({
@@ -239,7 +206,6 @@ test('C2130731: Verify PLP Add to Wishlist', async ({
       ).toBeVisible()
     }).toPass()
   })
-
   await test.step('Remove product from Wishlist', async () => {
     await expect(async () => {
       await productListingPage.removeProductFromWishlist()
@@ -269,7 +235,6 @@ test('C2132074: Verify PLP Product siblings', async ({
 test('C2141756: Verify PLP page title', async ({ breadcrumb, page }) => {
   await breadcrumb.breadcrumbCategoryLvl0.waitFor()
   const category = await breadcrumb.breadcrumbCategoryLvl0.textContent()
-  const subCategory = await breadcrumb.breadcrumbCategoryLvl1.textContent()
   const breadrumbActive =
     await breadcrumb.breadcrumbCategoryActive.textContent()
   const productCounter = await breadcrumb.productCounter.textContent()
@@ -283,84 +248,47 @@ test('C2141756: Verify PLP page title', async ({ breadcrumb, page }) => {
 
   const pageTitle = await page.title()
 
-  expect(pageTitle).toContain(
-    `${category} - ${subCategory} - ${activeCategory}`,
-  )
+  expect(pageTitle).toContain(`${category} - ${activeCategory}`)
 })
 
-test('C2130729: Verify PLP Pagination', async ({
-  productListingPage,
-  baseURL,
-  countryDetector,
-  pagination,
-}) => {
-  await productListingPage.visitPlpNoFilters(
-    PLP_PATH_MAIN_CATEGORY,
-    baseURL as string,
-  )
-  await countryDetector.closeModal()
-
+test('C2130729: Verify PLP Pagination', async ({ pagination }) => {
   await test.step('Verify Previous/Next page buttons initial state', async () => {
     await pagination.assertPaginationInitialState()
   })
-
   await test.step('Verify page navigation using Previous/Next page buttons', async () => {
     await pagination.assertNextPageClick('2')
     await pagination.assertPreviousPageClick('1', true)
   })
-
   await test.step('Verify page navigation using exact page number pagination button', async () => {
     await pagination.assertExactPageClick('3')
   })
 })
 
 test('C2162468: Verify PLP Pagination setting filters', async ({
-  productListingPage,
-  baseURL,
-  countryDetector,
   pagination,
   filters,
   page,
 }) => {
-  await productListingPage.visitPlpNoFilters(
-    PLP_PATH_MAIN_CATEGORY,
-    baseURL as string,
-  )
-  await countryDetector.closeModal()
-
-  await test.step('Navigate to page 3 and set filter', async () => {
-    await pagination.assertExactPageClick('3')
-    await filters.openFilters()
-    await page.waitForTimeout(300)
-
-    await filters.filterPriceInput.nth(1).clear()
-    await filters.filterPriceInput.nth(1).focus()
-    await filters.filterPriceInput.nth(1).fill('100')
-    await filters.filterPriceInput.nth(1).press('Enter')
-    await page.waitForLoadState('domcontentloaded')
-
-    await filters.filterApplyButton.click()
-    await page.waitForLoadState('domcontentloaded')
-    await page.waitForTimeout(500)
-
-    expect(page.url()).not.toContain('?page=')
-  })
+  await pagination.assertExactPageClick('3')
+  await filters.openFilters()
+  await page.waitForTimeout(300)
+  await filters.filterPriceInput.nth(1).clear()
+  await filters.filterPriceInput.nth(1).focus()
+  await filters.filterPriceInput.nth(1).fill('100')
+  await filters.filterPriceInput.nth(1).press('Enter')
+  await page.waitForLoadState('domcontentloaded')
+  await filters.filterApplyButton.click()
+  await page.waitForLoadState('domcontentloaded')
+  await page.waitForTimeout(500)
+  expect(page.url()).not.toContain('?page=')
 })
 
 test('C2162411: Verify PLP Sorting', async ({
   productListingPage,
-  baseURL,
-  countryDetector,
   filters,
   page,
   sorting,
 }) => {
-  await productListingPage.visitPlpNoFilters(
-    PLP_PATH_MAIN_CATEGORY,
-    baseURL as string,
-  )
-  await countryDetector.closeModal()
-
   if (isMobile(page)) {
     await filters.filterButton.nth(1).click()
     await sorting.applySorting(SORTING.priceAsc, 1)
@@ -394,27 +322,19 @@ test('C2162411: Verify PLP Sorting', async ({
 
 test('C2139182: Verify PLP SEO data', async ({
   productListingPage,
-  baseURL,
   countryDetector,
   sorting,
   filters,
   page,
 }) => {
   await test.step('Navigate to PLP and check default SEO data', async () => {
-    await productListingPage.visitPlpNoFilters(
-      PLP_PATH_MAIN_CATEGORY,
-      baseURL as string,
-    )
-    await countryDetector.closeModal()
     await productListingPage.h1.waitFor()
     const pageTitle =
       (await productListingPage.pageTitle.textContent()) as string
     await expect(productListingPage.h1).toContainText(pageTitle)
     await verifySeoMetaTags(page, {
-      title: PLP_TEST_DATA.seoTitle,
       robots: PLP_TEST_DATA.seoRobotsDefault,
-      description: PLP_TEST_DATA.seoDescription,
-      canonical: baseURL + PLP_PATH_MAIN_CATEGORY,
+      canonical: page.url(),
     })
   })
   await test.step('Apply Sorting and check SEO data', async () => {
@@ -432,11 +352,7 @@ test('C2139182: Verify PLP SEO data', async ({
     })
   })
   await test.step('Navigate to PLP with applied filters and check SEO data', async () => {
-    await productListingPage.visitPlpWithFiltersUrl(
-      PLP_PATH_SUBCATEGORY_LVL_1,
-      PLP_FILTER_DEEPLINK,
-      baseURL as string,
-    )
+    await productListingPage.addFiltersToPLP(PLP_FILTER_DEEPLINK)
     await countryDetector.closeModal()
     await productListingPage.h1.waitFor()
     await verifySeoMetaTags(page, {

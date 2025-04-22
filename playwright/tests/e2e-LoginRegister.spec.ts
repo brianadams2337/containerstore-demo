@@ -202,11 +202,13 @@ test('C2171379 Verify User login reset password flow', async ({
 test('C2171786 Verify setting the new password', async ({
   signinPage,
   page,
+  countryDetector,
 }) => {
   await test.step('Open new password flyout and enter incorrectly formatted password', async () => {
     // Any hash can be used for the testing purposes to verify that the new password flyout loads correctly.
     await page.goto('/signin?hash=testhash')
     await page.waitForTimeout(500)
+    await countryDetector.closeModal()
     await signinPage.newPasswordInput.waitFor()
     await signinPage.newPasswordInput.focus()
     await signinPage.newPasswordInput.fill('test')

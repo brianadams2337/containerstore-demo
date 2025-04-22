@@ -18,7 +18,7 @@
           v-for="item in navigationItems"
           :key="item.id"
           class="flex cursor-pointer items-center pr-4"
-          :data-testid="`mobile-nav-link-${item.name}`"
+          data-testid="mobile-nav-link-main"
           :aria-label="item.name"
           @click="selectItem(item)"
         >

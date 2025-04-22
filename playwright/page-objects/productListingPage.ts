@@ -42,34 +42,18 @@ export class ProductListingPage {
     await this.wishlistButton.first().click()
   }
 
-  async visitPlpWithFiltersUrl(path: string, filters = {}, baseUrl: string) {
-    const formattedFilters = Object.entries(filters).map(
-      ([key, value]) => `filters[${key}]=${value}`,
-    )
-    const url =
-      baseUrl +
-      path +
-      (formattedFilters.length ? `?${formattedFilters.join('&')}` : '')
-    await this.page.goto(url, { waitUntil: 'load' })
-  }
-
-  async visitPlpNoFilters(path: string, baseUrl: string) {
-    const url = baseUrl + path
-    await this.page.goto(url, { waitUntil: 'load' })
-  }
-
   async removeProductFromWishlist() {
     await this.removeFromWishlistButton.first().click()
   }
 
-  async openTestCategoryPLP(subCategoryName: string) {
-    await this.menuRootCategory
-      .getByRole('link', { name: subCategoryName })
-      .first()
-      .click()
-  }
-
-  getProductLink(productPath: string): Locator {
-    return this.page.locator(`a[href="${productPath}"]`)
+  async addFiltersToPLP(filters = {}) {
+    const pageUrl = this.page.url()
+    const formattedFilters = Object.entries(filters).map(
+      ([key, value]) => `filters[${key}]=${value}`,
+    )
+    const url =
+      pageUrl +
+      (formattedFilters.length ? `?${formattedFilters.join('&')}` : '')
+    await this.page.goto(url, { waitUntil: 'load' })
   }
 }

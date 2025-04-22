@@ -65,45 +65,39 @@ test('C2132198 Verify add to Basket', async ({
   countryDetector,
   signinPage,
   page,
+  mobileNavigation,
+  mainNavigation,
+  productListingPage,
+  productDetailPage,
 }, testInfo) => {
-  await test.step('Add product to Basket', async () => {
-    await expect(async () => {
-      await homePage.visitPage()
-      await countryDetector.closeModal()
-      await basketPage.addProductToBasket(
-        BASKET_TEST_DATA.productRegularVariantId,
-        1,
-      )
-      await header.visitBasketPage()
-      await page.waitForLoadState('domcontentloaded')
-      await expect(header.basketNumItems).toHaveText('1')
-    }).toPass()
-  })
-
-  await test.step('Assert product is in Basket', async () => {
-    await expect(async () => {
-      await basketPage.assertProductIsInBasket(
-        BASKET_TEST_DATA.productRegularBrand,
-        BASKET_TEST_DATA.productRegularName,
-      )
-    }).toPass()
-  })
-
-  await test.step('Log in and assert the product is still in Basket', async () => {
+  await test.step('Add product to Basket, log in and assert the product is still in Basket', async () => {
+    await homePage.visitPage()
+    await countryDetector.closeModal()
+    if (isMobile(page)) {
+      await mobileNavigation.openPlpMobile()
+    } else {
+      await mainNavigation.navigateToPlpMainCategory()
+    }
+    await productListingPage.productImage.first().click()
+    await productDetailPage.variantPicker.waitFor()
+    const productBrand =
+      (await productDetailPage.productBrand.textContent()) as string
+    const productName =
+      (await productDetailPage.productName.textContent()) as string
+    await productDetailPage.variantPicker.click({ force: true })
+    await productDetailPage.getVariant().click()
+    await productDetailPage.addProductToBasket()
+    await header.visitBasketPage()
+    await page.waitForLoadState('domcontentloaded')
+    await expect(header.basketNumItems).toHaveText('1')
+    await basketPage.assertProductIsInBasket(productBrand, productName)
     await header.headerLoginButton.click()
     const projectName = testInfo.project.name
     const { email, password } = getUserForBrowser(projectName)
     await signinPage.fillLoginData(email, password)
     await header.visitBasketPage()
-
-    await expect(async () => {
-      await basketPage.assertProductIsInBasket(
-        BASKET_TEST_DATA.productRegularBrand,
-        BASKET_TEST_DATA.productRegularName,
-      )
-    }).toPass()
+    await basketPage.assertProductIsInBasket(productBrand, productName)
   })
-
   await test.step('Remove product from Basket', async () => {
     await expect(async () => {
       await basketPage.removeItemFromBasket()
@@ -297,6 +291,7 @@ test('C2162487 Verify Basket Quantity Selector available quantity less than 10',
     await header.visitBasketPage()
     await page.waitForTimeout(500)
     await page.reload()
+    await countryDetector.closeModal()
     await page.waitForLoadState('domcontentloaded')
     await basketPage.basketProductCard.first().waitFor()
     await expect(header.basketNumItems).toHaveText('1')
@@ -336,6 +331,7 @@ test('C2170821 Verify Basket Quantity Selector available quantity more than 10',
     await header.visitBasketPage()
     await page.waitForTimeout(500)
     await page.reload()
+    await countryDetector.closeModal()
     await page.waitForLoadState('domcontentloaded')
     await basketPage.basketProductCard.first().waitFor()
     await expect(header.basketNumItems).toHaveText('9')
@@ -421,12 +417,24 @@ test('C2162476 Verify Basket SEO', async ({
   countryDetector,
   page,
   baseURL,
+  productListingPage,
+  productDetailPage,
+  mobileNavigation,
+  mainNavigation,
 }) => {
   await homePage.visitPage()
   await countryDetector.closeModal()
-  await basketPage.addProductToBasket(BASKET_TEST_DATA.regularPriceVariantId, 1)
+  if (isMobile(page)) {
+    await mobileNavigation.openPlpMobile()
+  } else {
+    await mainNavigation.navigateToPlpMainCategory()
+  }
+  await productListingPage.productImage.first().click()
+  await productDetailPage.variantPicker.waitFor()
+  await productDetailPage.variantPicker.click({ force: true })
+  await productDetailPage.getVariant().click()
+  await productDetailPage.addProductToBasket()
   await header.visitBasketPage()
-  await page.reload()
   await page.waitForLoadState('domcontentloaded')
   await page.waitForTimeout(500)
   await basketPage.h1.waitFor()

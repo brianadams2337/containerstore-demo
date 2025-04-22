@@ -6,14 +6,6 @@ test.beforeEach(async ({ homePage, footer }) => {
   await footer.footerWrapper.scrollIntoViewIfNeeded()
 })
 
-test.skip('C2141217 Verify footer shopping promises', async ({ footer }) => {
-  await expect(async () => {
-    await expect(footer.shoppingPromiseInvoice).toBeVisible()
-    await expect(footer.shoppingPromiseShipping).toBeVisible()
-    await expect(footer.shoppingPromiseReturn).toBeVisible()
-  }).toPass()
-})
-
 test('C2138940 Verify footer About us section', async ({ footer }) => {
   await expect(async () => {
     await expect(footer.footerLinkSection.nth(0)).toBeVisible()

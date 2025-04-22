@@ -6,29 +6,44 @@ import {
 } from '../support/utils'
 import { CHECKOUT_URL, OSP_TEST_DATA } from '../support/constants'
 
-test.beforeEach(async ({ accountPage, homePage, page }, testInfo) => {
-  const projectName = testInfo.project.name
-  const { email, password } = getUserForBrowser(projectName)
-  await homePage.visitPage()
-  await page.waitForLoadState('networkidle')
-  await accountPage.userAuthentication(email, password)
-})
+test.beforeEach(
+  async ({ accountPage, homePage, page, countryDetector }, testInfo) => {
+    const projectName = testInfo.project.name
+    const { email, password } = getUserForBrowser(projectName)
+    await homePage.visitPage()
+    await page.waitForLoadState('networkidle')
+    await countryDetector.closeModal()
+    await accountPage.userAuthentication(email, password)
+  },
+)
 
 test('C2173505 C2173506 C2173507 C2173508 C2181795 C2182370 C2181791 Verify OSP', async ({
   checkoutPage,
-  basketPage,
   page,
   orderSuccessPage,
   homePage,
+  mainNavigation,
+  mobileNavigation,
+  productListingPage,
+  productDetailPage,
+  countryDetector,
 }) => {
   await test.step('Add product to Basket', async () => {
-    await basketPage.addProductToBasket(
-      OSP_TEST_DATA.regularProductVariantId,
-      1,
-    )
+    if (isMobile(page)) {
+      await mobileNavigation.openPlpMobile()
+    } else {
+      await mainNavigation.navigateToPlpMainCategory()
+    }
+    await productListingPage.productCard.first().waitFor()
+    await productListingPage.productCard.first().click()
+    await page.waitForLoadState('domcontentloaded')
+    await productDetailPage.variantPicker.click()
+    await productDetailPage.getVariant().click()
+    await productDetailPage.addProductToBasket()
   })
   await test.step('Visit Checkout page and continue with order', async () => {
     await page.goto(CHECKOUT_URL, { waitUntil: 'commit' })
+    await checkoutPage.basketContainer.waitFor()
     const pageUrl = page.url()
     expect(pageUrl).toContain(CHECKOUT_URL)
     await checkoutPage.basketContainer.waitFor()
@@ -37,6 +52,7 @@ test('C2173505 C2173506 C2173507 C2173508 C2181795 C2182370 C2181791 Verify OSP'
   })
   await test.step('Verify OSP Order overview', async () => {
     await orderSuccessPage.ospGreetingBox.waitFor()
+    await countryDetector.closeModal()
     await expect(orderSuccessPage.ospGreetingBox).toBeVisible()
     await expect(orderSuccessPage.ospGreetingBoxHeadline).toBeVisible()
     await expect(orderSuccessPage.ospOrderData).toBeVisible()

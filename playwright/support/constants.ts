@@ -15,17 +15,6 @@ export const LOGIN_WRONG_CREDENTIALS = {
   emailInvalidFormat: 'test@test',
 }
 
-export const TEST_ITEM_REGULAR = {
-  link: 'p/batist-blusentop-1099',
-  id: 1099,
-  colorOptionPink: 62,
-  name: 'Batist-Blusentop',
-  price: '34,00',
-  initialPrice: null,
-  category: 'women',
-  brand: 's.Oliver',
-}
-
 export const LIGHTHOUSE_THRESHOLDS = {
   performance: 50, // 80
   accessibility: 70, // 80
@@ -35,17 +24,8 @@ export const LIGHTHOUSE_THRESHOLDS = {
 
 export const PLP_FILTER_DEEPLINK = {
   sale: true,
-  size: 2272,
   maxPrice: 4000,
 }
-
-export const PLP_PATH_MAIN_CATEGORY = '/de/c/frauen-50337'
-export const PLP_PATH_SUBCATEGORY_LVL_1 = '/de/c/frauen/bekleidung-50338'
-export const PLP_PATH_SUBCATEGORY_LVL_2 =
-  '/de/c/frauen/sneaker/sneaker-low-50347'
-export const PLP_BASE_PATH = /\/c/
-export const PLP_SIBLING_TEST_PRODUCT_PATH = /\/p\/sneaker-gazelle-bold-206062/
-export const PLP_SUBCATEGORY_NAME_DE = 'Bekleidung'
 
 export const SEARCH_SUGGESTIONS = {
   searchTermNoResults: 'noresults',
@@ -193,13 +173,6 @@ export const SORTING = {
   reductionDesc: 'reduction_desc',
 }
 
-export const NAVIGATION_TEST_ITEMS = {
-  mainCategory: 'Frauen',
-  categoryLevel2: 'Bekleidung',
-  categoryLevel3: 'Kleider',
-  shopName: 'SCAYLE',
-}
-
 export const CHECKOUT_REDIRECT_URL = 'signin?redirectUrl=/de/checkout'
 
 export const HYDRATION_TEST_USER = {
@@ -241,7 +214,6 @@ export const PDP_TEST_VARIANT_ID = {
 }
 
 export const OSP_TEST_DATA = {
-  regularProductVariantId: 336460,
   ordersUrl: '/orders',
   incorrectCbdUrl:
     '/success?cbd=eyJzdGF0dXNTg1NTI3Y2I3NjY0NWQ3NA==&login=1&pmm=b2b',
@@ -260,9 +232,6 @@ export const LOGIN_REGISTRATION = {
 }
 
 export const PLP_TEST_DATA = {
-  seoTitle: 'Frauen | SCAYLE',
-  seoDescription:
-    'Kaufen Sie Frauen bei SCAYLE. Entdecken Sie eine große Auswahl an Frauen.',
   seoRobotsDefault: 'index,follow',
   seoRobotsFiltersSorting: 'noindex,follow',
 }

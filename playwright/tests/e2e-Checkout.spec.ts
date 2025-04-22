@@ -1,26 +1,38 @@
 import { expect, test } from '../fixtures/fixtures'
-import { getUserForBrowser } from '../support/utils'
-import { BASKET_TEST_DATA, CHECKOUT_URL } from '../support/constants'
+import { getUserForBrowser, isMobile } from '../support/utils'
+import { CHECKOUT_URL } from '../support/constants'
 
-test.beforeEach(async ({ accountPage, homePage, page }, testInfo) => {
-  const projectName = testInfo.project.name
-  const { email, password } = getUserForBrowser(projectName)
-  await homePage.visitPage()
-  await page.waitForLoadState('networkidle')
-  await accountPage.userAuthentication(email, password)
-})
+test.beforeEach(
+  async ({ accountPage, homePage, page, countryDetector }, testInfo) => {
+    const projectName = testInfo.project.name
+    const { email, password } = getUserForBrowser(projectName)
+    await homePage.visitPage()
+    await page.waitForLoadState('networkidle')
+    await countryDetector.closeModal()
+    await accountPage.userAuthentication(email, password)
+  },
+)
 
 test('C2132536 C2144177 Verify Checkout order overview', async ({
   checkoutPage,
-  basketPage,
   page,
   footer,
+  mainNavigation,
+  mobileNavigation,
+  productListingPage,
+  productDetailPage,
 }) => {
   await test.step('Adding product to Basket', async () => {
-    await basketPage.addProductToBasket(
-      BASKET_TEST_DATA.productRegularVariantId,
-      1,
-    )
+    if (isMobile(page)) {
+      await mobileNavigation.openPlpMobile()
+    } else {
+      await mainNavigation.navigateToPlpMainCategory()
+    }
+    await productListingPage.productImage.first().click()
+    await productDetailPage.variantPicker.waitFor()
+    await productDetailPage.variantPicker.click({ force: true })
+    await productDetailPage.getVariant().click()
+    await productDetailPage.addProductToBasket()
     await page.goto(CHECKOUT_URL, { waitUntil: 'commit' })
   })
   await test.step('Visit Checkout page and check Items', async () => {

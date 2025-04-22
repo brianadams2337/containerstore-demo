@@ -12,7 +12,7 @@
       :class="{
         'text-primary': !item.customData?.linkColor,
       }"
-      :data-testid="`nav-link-${item.name}`"
+      data-testid="nav-link-main"
       :is-active="isActive"
     >
       <span class="text-md font-semi-bold-variable leading-10">

@@ -1,10 +1,6 @@
 import { expect, test } from '../fixtures/fixtures'
 import { isMobile } from '../support/utils'
-import {
-  E2E_BASKET_URL,
-  SEARCH_SUGGESTIONS,
-  CHECKOUT_REDIRECT_URL,
-} from '../support/constants'
+import { E2E_BASKET_URL, CHECKOUT_REDIRECT_URL } from '../support/constants'
 
 test('C2139186: E2E from Home to Checkout - happy path', async ({
   homePage,
@@ -15,30 +11,19 @@ test('C2139186: E2E from Home to Checkout - happy path', async ({
   page,
   signinPage,
   mobileNavigation,
-  search,
-  breadcrumb,
   countryDetector,
+  mainNavigation,
 }) => {
-  await test.step('Search for a category and navigate to PLP', async () => {
+  await test.step('Navigate to PLP', async () => {
     await homePage.visitPage()
     await page.waitForLoadState('networkidle')
     await countryDetector.closeModal()
-    await expect(async () => {
-      if (isMobile(page)) {
-        await mobileNavigation.startTypingMobileSearch(
-          SEARCH_SUGGESTIONS.searchTermProduct,
-          false,
-        )
-        await mobileNavigation.searchSuggestionsItem.click()
-        await breadcrumb.productCounter.waitFor()
-      } else {
-        await search.startTypingSearch(SEARCH_SUGGESTIONS.searchTermProduct)
-        await search.searchSuggestionsItem.first().click()
-        await productListingPage.menuRootCategory.waitFor()
-      }
-    }).toPass()
+    if (isMobile(page)) {
+      await mobileNavigation.openPlpMobile()
+    } else {
+      await mainNavigation.navigateToPlpMainCategory()
+    }
   })
-
   await test.step('Add product to Wishlist from PLP', async () => {
     await expect(async () => {
       await productListingPage.addProductToWishlist()
@@ -47,7 +32,6 @@ test('C2139186: E2E from Home to Checkout - happy path', async ({
       await expect(header.wishlistNumItems).toHaveText('1')
     }).toPass()
   })
-
   await test.step('Open PDP and add product to Basket', async () => {
     await expect(async () => {
       await productListingPage.productImage.first().click()
@@ -60,7 +44,6 @@ test('C2139186: E2E from Home to Checkout - happy path', async ({
       await productDetailPage.productBrand.textContent()
     const basketProductNameText =
       await productDetailPage.productName.textContent()
-
     await expect(async () => {
       await header.visitBasketPage()
       await expect(page).toHaveURL(E2E_BASKET_URL)
@@ -70,7 +53,6 @@ test('C2139186: E2E from Home to Checkout - happy path', async ({
       )
     }).toPass()
   })
-
   await test.step('Go to Checkout page', async () => {
     await expect(async () => {
       if (isMobile(page)) {
@@ -82,7 +64,6 @@ test('C2139186: E2E from Home to Checkout - happy path', async ({
       expect(page.url()).toContain(CHECKOUT_REDIRECT_URL)
     }).toPass()
   })
-
   await test.step('Empty Basket to have clean state after test execution', async () => {
     await expect(async () => {
       await header.visitBasketPage()

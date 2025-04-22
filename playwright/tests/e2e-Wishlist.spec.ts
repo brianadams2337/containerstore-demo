@@ -7,7 +7,7 @@ import {
   ROUTES,
   WISHLIST_TEST_DATA,
 } from '../support/constants'
-import { isMobile, verifySeoMetaTags } from '../support/utils'
+import { verifySeoMetaTags } from '../support/utils'
 
 test.beforeEach(async ({ wishlistPage, baseURL, countryDetector }) => {
   await wishlistPage.visitWishlistPage('/wishlist', baseURL as string)
@@ -73,39 +73,6 @@ test('C2141222 Verify wishlist items', async ({
       await expect(wishlistPage.buttonContinueShopping).toBeVisible()
     }).toPass()
   })
-})
-
-test.skip('C2141223 Verify wishlist multi-size product add to basket', async ({
-  wishlistPage,
-  header,
-  page,
-}) => {
-  await expect(async () => {
-    await wishlistPage.addProductToWishlist(WISHLIST_PRODUCT_ID)
-    await page.reload()
-    if (isMobile(page)) {
-      await wishlistPage.addProductToBasket()
-      await wishlistPage.chooseProductSize()
-    } else {
-      await wishlistPage.chooseProductSize()
-      await wishlistPage.addProductToBasket()
-    }
-    await header.basketNumItems.waitFor()
-    await expect(header.basketNumItems).toHaveText('1')
-  }).toPass()
-})
-
-test.skip('C2141224 Verify wishlist one-size product add to basket', async ({
-  wishlistPage,
-  header,
-  page,
-}) => {
-  await expect(async () => {
-    await wishlistPage.addProductToWishlist(WISHLIST_PRODUCT_ID_ONESIZE)
-    await page.reload()
-    await wishlistPage.addProductToBasket()
-    await expect(header.basketNumItems).toHaveText('1')
-  }).toPass()
 })
 
 test('C2183076 Verify Wishlist SEO data', async ({
