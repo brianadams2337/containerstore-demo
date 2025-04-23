@@ -174,12 +174,14 @@ test('C2139744: Verify PLP Filters deeplink', async ({
   mainNavigation,
   mobileNavigation,
   page,
+  breadcrumb,
 }) => {
   if (isMobile(page)) {
     await mobileNavigation.openPlpMobile()
   } else {
     await mainNavigation.navigateToPlpMainCategory()
   }
+  await breadcrumb.breadcrumbCategoryActive.waitFor()
   await productListingPage.addFiltersToPLP(PLP_FILTER_DEEPLINK)
   await countryDetector.closeModal()
   await expect(filters.filterButton.first()).toContainText('2')

@@ -69,6 +69,7 @@ test('C2132198 Verify add to Basket', async ({
   mainNavigation,
   productListingPage,
   productDetailPage,
+  breadcrumb,
 }, testInfo) => {
   await test.step('Add product to Basket, log in and assert the product is still in Basket', async () => {
     await homePage.visitPage()
@@ -78,6 +79,7 @@ test('C2132198 Verify add to Basket', async ({
     } else {
       await mainNavigation.navigateToPlpMainCategory()
     }
+    await breadcrumb.breadcrumbCategoryActive.waitFor()
     await productListingPage.productImage.first().click()
     await productDetailPage.variantPicker.waitFor()
     const productBrand =
@@ -421,6 +423,7 @@ test('C2162476 Verify Basket SEO', async ({
   productDetailPage,
   mobileNavigation,
   mainNavigation,
+  breadcrumb,
 }) => {
   await homePage.visitPage()
   await countryDetector.closeModal()
@@ -429,6 +432,8 @@ test('C2162476 Verify Basket SEO', async ({
   } else {
     await mainNavigation.navigateToPlpMainCategory()
   }
+  await page.waitForTimeout(500)
+  await breadcrumb.breadcrumbCategoryActive.waitFor()
   await productListingPage.productImage.first().click()
   await productDetailPage.variantPicker.waitFor()
   await productDetailPage.variantPicker.click({ force: true })

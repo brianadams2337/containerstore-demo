@@ -34,6 +34,7 @@ test('C2130722 C2143633 C2143634 Verify Main Navigation Flyout and navigating to
     })
     await test.step('Desktop - navigate to main category PLP', async () => {
       await mainNavigation.navigateToPlpMainCategory()
+      await breadcrumb.breadcrumbCategoryActive.waitFor()
       await page.mouse.move(0, 0)
       const activeCategoryLabel =
         (await breadcrumb.breadcrumbCategoryActive.textContent()) as string

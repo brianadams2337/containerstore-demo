@@ -27,6 +27,7 @@ test('C2173505 C2173506 C2173507 C2173508 C2181795 C2182370 C2181791 Verify OSP'
   productListingPage,
   productDetailPage,
   countryDetector,
+  breadcrumb,
 }) => {
   await test.step('Add product to Basket', async () => {
     if (isMobile(page)) {
@@ -34,6 +35,7 @@ test('C2173505 C2173506 C2173507 C2173508 C2181795 C2182370 C2181791 Verify OSP'
     } else {
       await mainNavigation.navigateToPlpMainCategory()
     }
+    await breadcrumb.breadcrumbCategoryActive.waitFor()
     await productListingPage.productCard.first().waitFor()
     await productListingPage.productCard.first().click()
     await page.waitForLoadState('domcontentloaded')

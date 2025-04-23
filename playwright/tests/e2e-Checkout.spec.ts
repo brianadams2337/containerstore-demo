@@ -21,6 +21,7 @@ test('C2132536 C2144177 Verify Checkout order overview', async ({
   mobileNavigation,
   productListingPage,
   productDetailPage,
+  breadcrumb,
 }) => {
   await test.step('Adding product to Basket', async () => {
     if (isMobile(page)) {
@@ -28,6 +29,7 @@ test('C2132536 C2144177 Verify Checkout order overview', async ({
     } else {
       await mainNavigation.navigateToPlpMainCategory()
     }
+    await breadcrumb.breadcrumbCategoryActive.waitFor()
     await productListingPage.productImage.first().click()
     await productDetailPage.variantPicker.waitFor()
     await productDetailPage.variantPicker.click({ force: true })

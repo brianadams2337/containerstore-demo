@@ -13,6 +13,7 @@ test('C2139186: E2E from Home to Checkout - happy path', async ({
   mobileNavigation,
   countryDetector,
   mainNavigation,
+  breadcrumb,
 }) => {
   await test.step('Navigate to PLP', async () => {
     await homePage.visitPage()
@@ -23,6 +24,7 @@ test('C2139186: E2E from Home to Checkout - happy path', async ({
     } else {
       await mainNavigation.navigateToPlpMainCategory()
     }
+    await breadcrumb.breadcrumbCategoryActive.waitFor()
   })
   await test.step('Add product to Wishlist from PLP', async () => {
     await expect(async () => {
