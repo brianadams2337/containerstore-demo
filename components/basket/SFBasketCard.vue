@@ -130,10 +130,7 @@ import { useRoute } from '#app'
 
 defineOptions({ inheritAttrs: false })
 
-const { basketItem } = defineProps<{
-  basketItem: BasketItem
-  showFreeGiftSelection?: boolean
-}>()
+const { basketItem } = defineProps<{ basketItem: BasketItem }>()
 
 const route = useRoute()
 
