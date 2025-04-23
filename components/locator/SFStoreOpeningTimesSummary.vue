@@ -1,14 +1,11 @@
 <template>
-  <details class="mt-5 rounded bg-secondary-450 px-2" :open="openingHoursOpen">
-    <summary>
-      <SFButton
-        variant="raw"
-        class="flex-row-reverse text-xs !normal-case"
-        rounded
-        @click="openingHoursOpen = !openingHoursOpen"
-      >
-        {{ $t('store_locator.buttons.opening_hours') }}
-      </SFButton>
+  <details class="mt-5 rounded bg-secondary-450 px-2">
+    <summary
+      class="flex-row-reverse text-xs !normal-case"
+      @click.stop
+      @keydown.enter.stop
+    >
+      {{ $t('store_locator.buttons.opening_hours') }}
     </summary>
     <div class="pb-2">
       <div v-for="day in daysOfWeek" :key="day" class="mb-1">
@@ -32,14 +29,11 @@
   </details>
 </template>
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import type { OpeningTimes } from '@scayle/omnichannel-nuxt'
 import { useFirstDayOfWeek } from '~/composables/useFirstDayOfWeek'
-import { SFButton } from '#storefront-ui/components'
 
 defineProps<{ openingTimes: OpeningTimes }>()
-
-const openingHoursOpen = ref(false)
 
 const firstDay = useFirstDayOfWeek()
 

@@ -16,10 +16,12 @@
         }"
       >
         <SFSlideInStore
+          tabindex="0"
           v-bind="store"
           :index="index + 1"
           :opening-times="store.openingTimes"
           @click.prevent="clickStore(store.id)"
+          @keydown.enter.prevent="clickStore(store.id)"
         />
       </div>
     </div>
