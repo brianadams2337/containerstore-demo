@@ -66,13 +66,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  onMounted,
-  onServerPrefetch,
-  watch,
-  defineOptions,
-  computed,
-} from 'vue'
+import { onServerPrefetch, watch, defineOptions, computed } from 'vue'
 import {
   HttpStatusCode,
   type Product,
@@ -153,15 +147,17 @@ const {
   fetchingOptions: { lazy: true },
 })
 
+const categoryParams = computed(() => ({
+  id: currentCategoryId.value,
+  children: 0,
+  properties: { withName: ['sale'] },
+}))
+
 // We use the same option as in the `category` middleware together with `globalGetCachedData` in order to share data between this page and the middleware.
 // This helps reducing network requests on client navigation.
 const currentCategoryPromise = useCategoryById(
   {
-    params: {
-      id: currentCategoryId.value,
-      children: 0,
-      properties: { withName: ['sale'] },
-    },
+    params: categoryParams,
     options: {
       dedupe: 'defer',
       getCachedData: (key, nuxtApp) =>
@@ -189,7 +185,6 @@ const validateCategoryExists = async () => {
 }
 
 onServerPrefetch(validateCategoryExists)
-onMounted(validateCategoryExists)
 
 const trackProductClick = (product: Product) => {
   trackSelectItem({
@@ -218,8 +213,11 @@ const trackViewListing = ({
 }
 
 watch(
-  () => currentCategoryId.value,
-  (id) => id && setPageState('typeId', String(id)),
+  currentCategoryId,
+  async (id) => {
+    await validateCategoryExists()
+    setPageState('typeId', String(id))
+  },
   { immediate: true },
 )
 
@@ -259,5 +257,13 @@ useHead(() => {
 })
 
 defineOptions({ name: 'CategoryPage' })
-definePageMeta({ pageType: 'category_page', middleware: ['category'] })
+
+// The 'key' is required to preserve component state across PLP navigation.
+// Without it, components like 'SFCategorySideNavigation' are re-rendered on every route change,
+// leading to focus loss and unnecessary performance overhead.
+definePageMeta({
+  pageType: 'category_page',
+  middleware: ['category'],
+  key: 'PLP',
+})
 </script>
