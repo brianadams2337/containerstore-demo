@@ -4,7 +4,7 @@
   >
     <div class="mb-5 flex items-center justify-between lg:mb-7">
       <SFHeadline class="!leading-6 text-gray-900 max-lg:!text-xl" tag="h1">
-        {{ $t('sign_in_page.welcome_back_title') }}
+        {{ $t('sign_in_page.title') }}
       </SFHeadline>
       <IconScreenClick class="size-9 max-lg:hidden" />
     </div>

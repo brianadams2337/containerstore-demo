@@ -56,7 +56,7 @@ describe('useBasketSubscription', () => {
       const { subscriptionAttributes } = useBasketSubscription(basketItem)
       expect(subscriptionAttributes.value).toStrictEqual([
         {
-          label: 'Interval',
+          label: 'Intervall',
           value: '3 Months',
         },
       ])

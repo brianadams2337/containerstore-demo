@@ -31,8 +31,8 @@
           <span class="font-bold capitalize">
             {{
               store.openingTimes?.currentlyOpen
-                ? $t('store_locator.labels.store_open')
-                : $t('store_locator.labels.store_closed')
+                ? $t('store_locator.store_information.store_open')
+                : $t('store_locator.store_information.store_closed')
             }}
           </span>
         </div>

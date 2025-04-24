@@ -13,7 +13,7 @@
         class="flex size-11 items-center justify-center rounded-md p-2 hover:bg-gray-100"
         data-testid="header-user-button"
         :class="{ 'bg-gray-100': isOpen }"
-        :aria-label="$t('my_account.navigation')"
+        :aria-label="$t('user_navigation_item.a11y.title')"
         @keydown.space.prevent="isOpen = true"
       >
         <IconUser class="size-6" />

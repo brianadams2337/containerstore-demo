@@ -1,6 +1,6 @@
 <template>
   <I18nT
-    keypath="sign_in_page.sign_up.privacy_disclaimer"
+    keypath="auth_register_privacy_disclaimer.privacy_disclaimer"
     tag="p"
     scope="global"
     class="text-sm leading-5 text-gray-600"
@@ -14,7 +14,7 @@
         class="rounded-base font-semibold hover:bg-gray-100 hover:outline hover:outline-2 hover:outline-gray-100"
         data-testid="terms-of-service-link"
       >
-        {{ $t('sign_in_page.sign_up.terms') }}
+        {{ $t('auth_register_privacy_disclaimer.go_to_terms_of_service') }}
       </SFLink>
     </template>
     <template #policy>
@@ -25,7 +25,7 @@
         class="mr-0.5 rounded-base font-semibold hover:bg-gray-100 hover:outline hover:outline-2 hover:outline-gray-100"
         data-testid="privacy-policy-link"
       >
-        {{ $t('sign_in_page.sign_up.policy') }}
+        {{ $t('auth_register_privacy_disclaimer.go_to_privacy_policy') }}
       </SFLink>
     </template>
   </I18nT>

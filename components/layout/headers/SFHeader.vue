@@ -7,7 +7,7 @@
       variant="raw"
       class="shrink-0 lg:hidden"
       data-testid="side-navigation-button"
-      :aria-label="$t('a11y.side_navigation')"
+      :aria-label="$t('navigation.a11ly.side_navigation')"
       @click="isSideNavigationOpen = !isSideNavigationOpen"
     >
       <IconClose v-if="isSideNavigationOpen" class="size-7" />

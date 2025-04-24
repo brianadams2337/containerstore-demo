@@ -142,7 +142,7 @@ export function useSubscription(
     return {
       'attribute-1': {
         key: 'subscriptionDefinition',
-        label: i18n.t('subscription.title'),
+        label: i18n.t('subscription.subscription'),
         value: `${intervalValue} | ${deliveryValue} | ${term}`,
       },
     }

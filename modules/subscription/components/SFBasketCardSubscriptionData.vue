@@ -7,7 +7,7 @@
       class="border-gray-200 px-4 py-2.5 text-base font-semi-bold-variable text-gray-900 max-lg:border-b max-lg:bg-gray-50 lg:pl-0 lg:text-sm"
       data-testid="main-label"
     >
-      {{ $t('subscription.title') }}:
+      {{ $t('subscription.subscription') }}:
     </div>
     <div class="space-y-2 px-4 py-2.5 lg:pl-0 lg:pt-0">
       <div

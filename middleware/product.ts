@@ -1,10 +1,11 @@
-import { getFirstAttributeValue } from '@scayle/storefront-nuxt'
+import { getFirstAttributeValue, type Product } from '@scayle/storefront-nuxt'
 import { navigateTo, defineNuxtRouteMiddleware } from '#app/composables/router'
 import { useRouteHelpers } from '~/composables'
 import { useProduct } from '#storefront/composables'
 import { getProductId } from '~/utils/route'
 import { PRODUCT_DETAIL_WITH_PARAMS } from '~/constants'
 import { globalGetCachedData } from '~/utils/useRpc'
+import type { NuxtApp } from '#app'
 
 export default defineNuxtRouteMiddleware(
   async ({ params, query, path, hash }) => {
@@ -21,7 +22,8 @@ export default defineNuxtRouteMiddleware(
         },
         options: {
           dedupe: 'defer',
-          getCachedData: globalGetCachedData,
+          getCachedData: (key, nuxtApp) =>
+            globalGetCachedData<Product>(key, nuxtApp as NuxtApp),
         },
       },
       `PDP-${productId}`,

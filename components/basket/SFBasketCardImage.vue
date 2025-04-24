@@ -64,7 +64,7 @@ const isGift = computed(() => {
 
 const text = computed(() => {
   if (isGift.value) {
-    return t('pdp.promotion.free_label')
+    return t('promotion.free_label')
   }
 
   return productPromotion.value?.customData?.product?.badgeLabel

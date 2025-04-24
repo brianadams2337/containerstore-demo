@@ -6,7 +6,7 @@
         data-testid="greeting-user-firstname"
       >
         {{
-          $t('my_account.popover.greeting', {
+          $t('user_navigation_item.greeting', {
             firstName: user?.firstName,
           })
         }}
@@ -22,19 +22,19 @@
     <div v-if="!isGuest" class="border-b border-gray-300 p-2">
       <SFAccountLink
         :to="routeList.profile"
-        :label="$t('my_account.profile.menu')"
+        :label="$t('user_navigation_item.menu_items.profile')"
         icon="IconSettings"
         @click="$emit('close')"
       />
       <SFAccountLink
         :to="routeList.orders"
-        :label="$t('my_account.orders.menu')"
+        :label="$t('user_navigation_item.menu_items.orders')"
         icon="IconBasket"
         @click="$emit('close')"
       />
       <SFAccountLink
         :to="routeList.subscriptionOverview"
-        :label="$t('my_account.subscriptions_menu')"
+        :label="$t('user_navigation_item.menu_items.subscriptions')"
         icon="IconCreditcard"
         @click="$emit('close')"
       />

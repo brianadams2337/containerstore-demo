@@ -9,7 +9,7 @@
       <div class="mb-4 flex justify-between">
         <div class="flex gap-2 text-md">
           <span class="font-semi-bold-variable">
-            {{ $t('pdp.color_heading') }}:
+            {{ $t('product_attribute.color') }}:
           </span>
           <span>{{ label }}</span>
         </div>
@@ -62,7 +62,7 @@
         <SFButton
           class="!size-6 rounded-l-full first:!p-0.5"
           :disabled="!isPrevEnabled"
-          :aria-label="$t('slider.previous_label')"
+          :aria-label="$t('slider.got_to_previous_item')"
           variant="slider"
           @click="prev()"
         >
@@ -70,7 +70,7 @@
         </SFButton>
         <SFButton
           class="!size-6 rounded-r-full last:!p-0.5"
-          :aria-label="$t('slider.next_label')"
+          :aria-label="$t('slider.got_to_next_item')"
           :disabled="!isNextEnabled"
           variant="slider"
           @click="next()"
@@ -115,37 +115,35 @@ const setHoveredLabel = (sibling?: ProductSibling) => {
   }
 
   hoveredColorLabel.value =
-    sibling.colors?.[0]?.label?.toLowerCase() || t('pdp.sibling_error')
+    sibling.colors?.[0]?.label?.toLowerCase() ||
+    t('sibling_selection.sibling_error')
 }
 
 const label = computed(() => {
   const firstSiblingColors = siblings.value[0]?.colors
 
   if (!firstSiblingColors?.length) {
-    return t('pdp.sibling_error')
+    return t('sibling_selection.sibling_error')
   }
 
   return hoveredColorLabel.value || firstSiblingColors[0].label.toLowerCase()
 })
 
 const siblingAltText = (sibling: ProductSibling) => {
-  return t(
-    sibling.isSoldOut
-      ? 'product_image.alt_sibling_sold_out'
-      : 'product_image.alt_sibling',
-    {
-      alt: t('product_image.alt', {
-        productName: sibling.name,
-        colors: formatColors(sibling.colors),
-        brand: sibling.brand,
-      }),
-      selected: t(
-        product.id === sibling.id
-          ? 'product_image.selected'
-          : 'product_image.unselected',
-      ),
-    },
-  )
+  const placeholder = {
+    alt: t('product_image.alt', {
+      productName: sibling.name,
+      colors: formatColors(sibling.colors),
+      brand: sibling.brand,
+    }),
+    selected:
+      product.id === sibling.id
+        ? t('sibling_selection.selected')
+        : t('sibling_selection.unselected'),
+  }
+  return sibling.isSoldOut
+    ? t('sibling_selection.a11ly.sold_out_alt_text', placeholder)
+    : t('sibling_selection.a11ly.alt_text', placeholder)
 }
 
 const { pageState } = usePageState()

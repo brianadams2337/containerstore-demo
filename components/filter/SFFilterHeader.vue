@@ -1,14 +1,14 @@
 <template>
   <div class="flex w-full items-center justify-between">
     <SFHeadline class="!font-semi-bold-variable md:text-lg" size="xl" tag="p">
-      {{ $t('filter.title') }}
+      {{ $t('filter_header.title') }}
     </SFHeadline>
     <SFButton
       class="group my-3 -mr-2 bg-gray-100 md:bg-transparent hover:md:bg-gray-100"
       fab
       variant="raw"
       data-testid="close-filters"
-      :aria-label="$t('filter.close')"
+      :aria-label="$t('filter_header.close')"
       @click="toggleItem"
     >
       <template #icon>

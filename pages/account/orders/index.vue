@@ -2,8 +2,8 @@
   <SFAsyncDataWrapper :status="status">
     <SFEmptyState
       v-if="ordersCount === 0"
-      :title="$t('my_account.orders.no_results.title')"
-      :description="$t('my_account.orders.no_results.description')"
+      :title="$t('order_list.no_orders.title')"
+      :description="$t('order_list.no_orders.description')"
     />
     <div v-else>
       <SFHeadline
@@ -11,7 +11,7 @@
         data-testid="orders-headline"
         class="mb-5 !font-semi-bold-variable xl:mb-7"
       >
-        {{ $t('my_account.orders.title') }}
+        {{ $t('orders_page.title') }}
         <span
           v-if="ordersCount"
           class="ml-1 inline-flex h-4.5 items-center rounded-full bg-gray-900 px-2 text-xs font-semibold leading-4 text-white"
@@ -50,8 +50,8 @@ const ordersCount = computed(() => orders.value.length)
 
 useSeoMeta({
   robots: 'noindex, nofollow',
-  title: t('my_account.orders.meta.title'),
-  description: t('my_account.orders.meta.description'),
+  title: t('orders_page.meta.title'),
+  description: t('orders_page.meta.description'),
 })
 
 defineOptions({ name: 'OrderHistoryPage' })

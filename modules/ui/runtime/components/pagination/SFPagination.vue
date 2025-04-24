@@ -12,7 +12,7 @@
           :disabled="!canNavigateLeft"
           :page="previousPage"
           data-testid="paginationButton-previousPage"
-          :aria-label="$t('a11y.pagination_previous')"
+          :aria-label="$t('pagination.a11y.go_to_previous_page')"
         >
           <IconChevronLeft class="size-4" />
         </SFPaginationButton>
@@ -68,7 +68,7 @@
           :disabled="!canNavigateRight"
           :page="nextPage"
           data-testid="paginationButton-nextPage"
-          :aria-label="$t('a11y.pagination_next')"
+          :aria-label="$t('pagination.a11y.go_to_pnext_page')"
         >
           <IconChevronRight class="size-4" />
         </SFPaginationButton>

@@ -7,19 +7,19 @@
       variant="secondary"
       class="pointer-events-none group-focus-within:pointer-events-auto"
       data-testid="button-skip-to-main"
-      :aria-label="$t('a11y.skip_to_main')"
+      :aria-label="$t('skip_links.jump_to_main')"
       @click="focusMainContent"
     >
-      {{ $t('a11y.skip_to_main') }}
+      {{ $t('skip_links.jump_to_main') }}
     </SFButton>
     <SFButton
       variant="secondary"
       class="pointer-events-none group-focus-within:pointer-events-auto"
       data-testid="button-skip-to-search"
-      :aria-label="$t('a11y.skip_to_search')"
+      :aria-label="$t('skip_links.jump_to_search')"
       @click="focusSearch"
     >
-      {{ $t('a11y.skip_to_search') }}
+      {{ $t('skip_links.jump_to_search') }}
     </SFButton>
   </div>
 </template>

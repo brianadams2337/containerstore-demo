@@ -65,7 +65,7 @@
           <div
             class="mt-7 text-md font-semi-bold-variable leading-[14px] text-gray-900"
           >
-            {{ $t('pdp.size_heading') }}
+            {{ $t('product_attribute.size') }}:
           </div>
           <SFVariantPicker
             ref="variantPicker"
@@ -84,8 +84,8 @@
               :disabled="product.isSoldOut"
               :title="
                 product.isSoldOut
-                  ? $t('badge_labels.sold_out')
-                  : $t('pdp.add_label')
+                  ? $t('global.sold_out')
+                  : $t('add_to_basket.add_to_basket')
               "
               :loading="status === 'pending'"
               class="w-full justify-between !px-4"
@@ -93,8 +93,8 @@
             >
               {{
                 product.isSoldOut
-                  ? $t('badge_labels.sold_out')
-                  : $t('pdp.add_label')
+                  ? $t('global.sold_out')
+                  : $t('add_to_basket.add_to_basket')
               }}
               <template #append-icon>
                 <div class="flex items-center">
@@ -108,7 +108,7 @@
               class="!border-gray-300"
               @click="selectItem(product)"
             >
-              {{ $t('pdp.details_label') }}
+              {{ $t('product_promotion_selection_modal.details') }}
             </SFButton>
           </div>
         </div>

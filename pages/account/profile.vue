@@ -6,14 +6,14 @@
         tag="h2"
         data-testid="user-profile-headline"
       >
-        {{ $t('my_account.profile.title') }}
+        {{ $t('profile_page.title') }}
       </SFHeadline>
       <div class="mb-6 flex flex-col gap-2 text-md text-gray-600">
         <span class="font-semibold">
-          {{ $t('my_account.profile.greeting', { firstName: user.firstName }) }}
+          {{ $t('profile_page.greeting', { firstName: user.firstName }) }}
         </span>
         <p>
-          {{ $t('my_account.profile.description') }}
+          {{ $t('profile_page.description') }}
         </p>
       </div>
       <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
@@ -46,8 +46,8 @@ const { status, user } = useUser()
 
 useSeoMeta({
   robots: 'noindex, nofollow',
-  title: t('my_account.profile.meta.title'),
-  description: t('my_account.profile.meta.description'),
+  title: t('profile_page.meta.title'),
+  description: t('profile_page.meta.description'),
 })
 
 defineOptions({ name: 'UserAccountDetailsPage' })

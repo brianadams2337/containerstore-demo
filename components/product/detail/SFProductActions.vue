@@ -3,14 +3,14 @@
     v-if="product.isSoldOut"
     class="rounded-xl bg-product-sold-out/10 p-4 text-md text-product-sold-out max-md:mx-5"
   >
-    {{ $t('pdp.sold_out') }}
+    {{ $t('global.sold_out_long') }}
   </div>
   <div v-else class="max-md:px-5">
     <SFSiblingSelection :product="product" />
     <div
       class="mt-7 text-md font-semi-bold-variable leading-[14px] text-gray-900"
     >
-      {{ $t('pdp.size_heading') }}
+      {{ $t('product_attribute.size') }}:
     </div>
     <div class="my-3 mt-4 flex h-12 items-center space-x-4">
       <SFVariantPicker
@@ -35,7 +35,7 @@
       @click="addItemToBasket(basketItem)"
     >
       <template v-if="!isSoldOutOrOutOfStock">
-        {{ $t('basket.add_to_basket') }}
+        {{ $t('add_to_basket.add_to_basket') }}
       </template>
       <template v-else>
         {{ $t('global.sold_out') }}
@@ -74,7 +74,7 @@
       >
         <div class="flex w-full justify-between">
           <template v-if="!isSoldOutOrOutOfStock">
-            {{ $t('basket.add_to_basket') }}
+            {{ $t('add_to_basket.add_to_basket') }}
           </template>
           <template v-else>
             {{ $t('global.sold_out') }}

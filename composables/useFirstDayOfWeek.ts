@@ -10,5 +10,5 @@ export const useFirstDayOfWeek = function () {
   const locale = new Intl.Locale(currentShop.value.locale)
   return 'getWeekInfo' in locale && typeof locale.getWeekInfo === 'function'
     ? locale.getWeekInfo().firstDay
-    : parseInt(i18n.t('intl.firstDay')) ?? 1
+    : parseInt(i18n.t('intl.first_day')) ?? 1
 }

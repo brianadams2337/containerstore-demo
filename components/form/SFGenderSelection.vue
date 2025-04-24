@@ -72,10 +72,10 @@ const activeGenderValue = defineModel<Gender | undefined>()
 const { t } = useI18n()
 
 const genderMap = computed<Record<Gender, string>>(() => ({
-  m: t('gender.male'),
-  f: t('gender.female'),
-  d: t('gender.diverse'),
-  n: t('gender.none'),
+  m: t('form_fields.gender_options.male'),
+  f: t('form_fields.gender_options.female'),
+  d: t('form_fields.gender_options.diverse'),
+  n: t('form_fields.gender_options.none'),
 }))
 
 const items = computed<Gender[]>(() => Object.keys(genderMap.value) as Gender[])

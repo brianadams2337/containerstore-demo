@@ -74,14 +74,16 @@ export function useFilter(
     const isSortUpdated = sort.value !== route.query.sort
 
     if (areFiltersUpdated.value && isSortUpdated) {
-      show(t('filter.updated_notification_all'), { type: 'SUCCESS' })
+      show(t('filter.notification.filter_and_sort_updated'), {
+        type: 'SUCCESS',
+      })
       areFiltersUpdated.value = false
       sort.value = route.query.sort
     } else if (areFiltersUpdated.value) {
-      show(t('filter.updated_notification_filter'), { type: 'SUCCESS' })
+      show(t('filter.notification.filter_updated'), { type: 'SUCCESS' })
       areFiltersUpdated.value = false
     } else if (isSortUpdated) {
-      show(t('filter.updated_notification_sort'), { type: 'SUCCESS' })
+      show(t('filter.notification.sort_updated'), { type: 'SUCCESS' })
       sort.value = route.query.sort
     }
   }

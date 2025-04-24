@@ -6,7 +6,7 @@
       class="flex-1"
       data-testid="osp-continue-shopping-button"
     >
-      {{ $t('global.continue_shopping_label') }}
+      {{ $t('global.continue_shopping') }}
     </SFButton>
     <SFButton
       v-if="orderData.id"
@@ -15,7 +15,7 @@
       data-testid="osp-order-details-button"
       :to="getOrderDetailsRoute(orderData.id)"
     >
-      {{ $t('osp.order_details') }}
+      {{ $t('order_success_page.go_to_order_details') }}
     </SFButton>
   </div>
 </template>

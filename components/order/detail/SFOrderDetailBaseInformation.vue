@@ -2,18 +2,18 @@
   <div
     class="grid grid-cols-1 gap-4 text-base font-normal text-gray-600 lg:grid-cols-2"
   >
-    <SFOrderDetailBox :title="$t('my_account.orders.detail.order_details')">
+    <SFOrderDetailBox :title="$t('order_information.order_details.title')">
       <div v-if="orderDetails.confirmedAt" class="flex items-center gap-1">
         <span class="font-medium">
-          {{ $t('my_account.orders.detail.order_date') }}:
+          {{ $t('order_information.order_details.order_date') }}:
         </span>
         {{ formatLocaleDate(new Date(orderDetails.confirmedAt)) }}
       </div>
     </SFOrderDetailBox>
-    <SFOrderDetailBox :title="$t('my_account.orders.detail.payment_details')">
+    <SFOrderDetailBox :title="$t('order_information.payment_details.title')">
       <div class="flex items-center gap-1">
         <span class="font-medium">
-          {{ $t('my_account.orders.detail.payment_method') }}:
+          {{ $t('order_information.payment_details.payment_method') }}:
         </span>
         <span>
           {{ $t('global.payment_key.' + paymentKey) }}
@@ -28,7 +28,7 @@
     <SFOrderDetailAddressBox
       v-if="!areSameAddresses"
       :address="address?.billing"
-      :title="$t('my_account.orders.detail.billing_address')"
+      :title="$t('order_information.address_details.billing_address')"
     />
   </div>
 </template>
@@ -55,9 +55,9 @@ const areSameAddresses = computed(() => {
 
 const shippingAddressTitle = computed(() => {
   return areSameAddresses.value
-    ? t('my_account.orders.detail.delivery_and_billing_address')
-    : t('my_account.orders.detail.delivery_address')
+    ? t('order_information.address_details.delivery_and_billing_address')
+    : t('order_information.address_details.delivery_address')
 })
-
+// TODO: translation return translated text instead of key
 const paymentKey = computed(() => orderDetails.payment?.[0]?.key)
 </script>

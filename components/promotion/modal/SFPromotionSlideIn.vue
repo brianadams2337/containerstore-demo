@@ -3,14 +3,14 @@
     <template #slide-in-header="{ toggle: toggleItem }">
       <div class="flex w-full items-center justify-between">
         <SFHeadline size="2xl" tag="p">
-          {{ $t('promotion.slide_in_headline') }}
+          {{ $t('promotion_slide_in.headline') }}
         </SFHeadline>
         <SFButton
           class="group my-3 -mr-2 bg-gray-100 md:bg-transparent hover:md:bg-gray-100"
           fab
           variant="raw"
           data-testid="close-promotions"
-          :aria-label="$t('promotion.close')"
+          :aria-label="$t('global.close')"
           @click="toggleItem"
         >
           <template #icon>
@@ -26,8 +26,8 @@
         <div class="mb-2 flex items-center gap-2 font-semi-bold-variable">
           {{
             promotionsSortedByPriority.length
-              ? $t('promotion.slide_in_active')
-              : $t('promotion.slide_in_no_active_headline')
+              ? $t('promotion_slide_in.active_promotions')
+              : $t('promotion_slide_in.no_active_promotions')
           }}
           <span
             v-if="promotionsSortedByPriority.length"
@@ -37,10 +37,10 @@
             {{ promotionsSortedByPriority.length }}
           </span>
         </div>
-        <div class="mb-8 text-md">{{ $t('promotion.slide_in_subline') }}</div>
+        <div class="mb-8 text-md">{{ $t('promotion_slide_in.subline') }}</div>
 
         <div v-if="!promotionsSortedByPriority.length">
-          {{ $t('promotion.slide_in_no_active_subline') }}
+          {{ $t('promotion_slide_in.no_active_subline') }}
         </div>
         <ul v-else class="flex flex-col gap-6">
           <li

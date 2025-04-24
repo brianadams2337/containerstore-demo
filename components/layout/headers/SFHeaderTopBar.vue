@@ -9,7 +9,7 @@
           class="flex shrink-0 items-center gap-1.5 whitespace-nowrap px-2 text-white -outline-offset-5 hover:bg-status-info/10 focus-visible:shadow-inner-solid"
         >
           <IconLocationMenu class="size-3.5" />
-          {{ $t('navigation.location') }}
+          {{ $t('navigation.find_a_store') }}
         </SFLocalizedLink>
         <SFShopSwitcher listbox-button-aria-id="desktop-shop-switcher" />
       </div>

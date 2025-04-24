@@ -373,7 +373,7 @@ export default defineNuxtConfig({
     },
     // Following keys are Overrideable using prefix NUXT_PUBLIC_
     public: {
-      shopName: 'SCAYLE',
+      shopName: 'SCAYLE Storefront',
       storefront: {
         /** Storefront Core - Internal logger configuration
          * https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction#log */

@@ -3,7 +3,11 @@
   <SFModal v-model:visible="modalOpen" data-testid="country-detection-dialog">
     <div class="mt-8 flex flex-col items-center gap-4 md:px-20">
       <div>
-        {{ $t('country_selection.prompt', { country: suggestedCountry }) }}
+        {{
+          $t('country_detection.switch_country_prompt', {
+            country: suggestedCountry,
+          })
+        }}
       </div>
       <div class="mt-8 flex flex-col items-center gap-3">
         <SFButton
@@ -16,7 +20,7 @@
           @click="switchToShop(shop)"
         >
           {{
-            $t('country_selection.switch_to_shop', {
+            $t('country_detection.switch_to_shop', {
               country: getShopCountryName(shop, suggestedShops.length > 1),
             })
           }}
@@ -28,7 +32,7 @@
           @click="stayInShop"
         >
           {{
-            $t('country_selection.stay_in_shop', { country: currentCountry })
+            $t('country_detection.stay_in_shop', { country: currentCountry })
           }}
         </SFButton>
       </div>
@@ -82,14 +86,14 @@ const getShopCountryName = (shop: ShopInfo, includeLanguage: boolean) => {
   }
 
   const regionName = te(
-    `country_selection.override_codes.${locale.region.toUpperCase()}`,
+    `country_detection.override_codes.${locale.region.toUpperCase()}`,
   )
-    ? t(`country_selection.override_codes.${locale.region.toUpperCase()}`)
+    ? t(`country_detection.override_codes.${locale.region.toUpperCase()}`)
     : regionTranslator.value?.of(locale.region)
 
   if (includeLanguage && locale.language) {
     const languageName = languageTranslator.value?.of(locale.language)
-    return t(`country_selection.country_with_language`, {
+    return t('country_detection.country_with_language', {
       country: regionName,
       language: languageName,
     })

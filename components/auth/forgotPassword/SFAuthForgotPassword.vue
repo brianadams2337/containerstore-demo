@@ -5,7 +5,7 @@
     variant="raw"
     @click.prevent="toggle"
   >
-    {{ $t('sign_in_page.forgot_password.title') }}
+    {{ $t('auth_forgot_password.title') }}
   </SFButton>
   <SFSlideIn
     :name="SLIDE_IN_KEY"

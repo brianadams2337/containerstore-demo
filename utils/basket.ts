@@ -1,32 +1,8 @@
-import {
-  type AppliedReduction,
-  type BasketResponseData,
-  type BasketTotalPrice,
-  AddToBasketFailureKind,
+import type {
+  AppliedReduction,
+  BasketResponseData,
+  BasketTotalPrice,
 } from '@scayle/storefront-nuxt'
-
-/**
- * Returns a translation key for a basket error message based on the provided error.
- *
- * @param error - The error to determine the error message key for
- * @returns The translation key corresponding to the error type
- */
-export const getBasketToastErrorMessageKey = (error: unknown) => {
-  if (error instanceof Error) {
-    if (
-      error.cause === AddToBasketFailureKind.ITEM_ADDED_WITH_REDUCED_QUANTITY
-    ) {
-      return 'basket.notification.add_with_reduced_quantity_error'
-    } else if (error.cause === AddToBasketFailureKind.ITEM_UNAVAILABLE) {
-      return 'basket.notification.add_to_basket_variant_out_of_stock_error'
-    } else if (
-      error.cause === AddToBasketFailureKind.MAXIMUM_ITEM_COUNT_REACHED
-    ) {
-      return 'basket.notification.add_to_basket_max_basket_items_error'
-    }
-  }
-  return 'basket.notification.add_to_basket_error'
-}
 
 /**
  * Calculates the basket total without promotions reductions applied.

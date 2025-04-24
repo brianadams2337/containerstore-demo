@@ -30,7 +30,7 @@ it('should render logged out sate', async () => {
     'href',
     '/de/signin',
   )
-  const loginLink = getByRole('link', { name: 'Einloggen' })
+  const loginLink = getByRole('link', { name: 'Anmelden' })
   expect(loginLink).toBeInTheDocument()
 
   const registerLink = getByRole('link', { name: 'Registrieren' })
@@ -59,5 +59,5 @@ it('should render logged in state', async () => {
     '/de/account',
   )
   expect(getAllByRole('link')).toHaveLength(4)
-  expect(getByRole('button', { name: 'Ausloggen' })).toBeInTheDocument()
+  expect(getByRole('button', { name: 'Abmelden' })).toBeInTheDocument()
 })

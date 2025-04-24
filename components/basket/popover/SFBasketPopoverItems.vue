@@ -12,7 +12,7 @@
     />
   </ul>
   <p v-else class="w-60 text-wrap p-3 text-center text-base text-gray-600">
-    {{ $t('basket.no_items_info') }}
+    {{ $t('basket_popover_items.no_items_info') }}
   </p>
 </template>
 

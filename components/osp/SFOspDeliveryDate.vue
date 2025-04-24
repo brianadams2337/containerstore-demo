@@ -5,14 +5,15 @@
       data-testid="osp-delivery-date"
     >
       <div class="text-base text-gray-500">
-        {{ $t('osp.estimated_delivery_date') }}:
+        {{ $t('order_information.order_details.estimated_delivery_date') }}:
         {{ formatLocaleDate(new Date(Date.parse(deliveryDate.minimum))) }} -
         {{ formatLocaleDate(new Date(Date.parse(deliveryDate.maximum))) }}
       </div>
     </div>
     <div class="p-2 text-xs text-gray-600" data-testid="osp-carrier">
-      {{ $t('osp.delivered_by') }}
-      {{ $t('osp.carrier_key.' + sender) }}
+      {{ $t('order_information.order_details.delivered_by') }}
+      <!--TODO do not use dynamic translation key -->
+      {{ $t('global.carrier_key.' + sender) }}
     </div>
   </div>
 </template>

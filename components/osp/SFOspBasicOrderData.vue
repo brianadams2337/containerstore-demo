@@ -1,16 +1,25 @@
 <template>
-  <SFOspDetailBox :title="$t('osp.order_details')" data-testid="osp-order-data">
+  <SFOspDetailBox
+    :title="$t('order_information.order_details.title')"
+    data-testid="osp-order-data"
+  >
     <ul class="flex flex-col gap-1 text-gray-600">
       <li v-if="orderConfirmedAt">
-        <span class="font-medium">{{ $t('osp.order_date') }}:</span>
+        <span class="font-medium"
+          >{{ $t('order_information.order_details.order_date') }}:</span
+        >
         {{ orderConfirmedAt }}
       </li>
       <li v-if="orderData.id">
-        <span class="font-medium">{{ $t('osp.order_nr') }}:</span>
+        <span class="font-medium"
+          >{{ $t('order_information.order_details.order_number') }}:</span
+        >
         {{ orderData.id }}
       </li>
       <li v-if="orderData.customer">
-        <span class="font-medium">{{ $t('osp.customer_id') }}:</span>
+        <span class="font-medium"
+          >{{ $t('order_information.order_details.customer_id') }}:</span
+        >
         {{ orderData.customer.id }}
       </li>
     </ul>

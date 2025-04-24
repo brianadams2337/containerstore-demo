@@ -77,7 +77,7 @@ const handleError = (payload = {}) => {
   log.error('[onCheckoutError]', loggingPayload)
 }
 
-useSeoMeta({ robots: 'index,follow', title: t('navigation.checkout') })
+useSeoMeta({ robots: 'index,follow', title: t('checkout_page.title') })
 
 defineOptions({ name: 'CheckoutPage' })
 definePageMeta({ pageType: 'checkout', layout: 'simple' })

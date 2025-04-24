@@ -79,7 +79,9 @@
       @click="$emit('addItemToBasket', itemToAdd)"
     >
       {{
-        $t('subscription.add_to_basket', { interval: selectedInterval?.label })
+        $t('product_subscription.add_to_basket', {
+          interval: selectedInterval?.label,
+        })
       }}
     </SFButton>
   </div>

@@ -13,9 +13,11 @@
       class="flex items-center"
       data-testid="osp-greeting-box-headline"
     >
-      {{ $t('osp.intro') }}
+      {{ $t('order_success_page_greeting.title') }}
     </SFHeadline>
-    <p class="text-sm text-gray-600">{{ $t('osp.email_send') }}</p>
+    <p class="text-sm text-gray-600">
+      {{ $t('order_success_page_greeting.email_confirmation') }}
+    </p>
   </div>
 </template>
 

@@ -14,16 +14,13 @@ import { useHead, useSeoMeta, definePageMeta } from '#imports'
 import { useNuxtApp, useRuntimeConfig } from '#app'
 import { useRoute } from '#app/composables/router'
 import CMSContentPage from '#storefront-cms/components/ContentPage.vue'
-import { useI18n } from '#i18n'
 import { useJsonld } from '~/composables/useJsonld'
 import SFContentPageSkeletonLoader from '~/components/SFContentPageSkeletonLoader.vue'
 
 const config = useRuntimeConfig()
 const route = useRoute()
 
-const { t } = useI18n()
-
-useSeoMeta({ robots: 'index,follow', title: t('navigation.home') })
+useSeoMeta({ robots: 'index,follow' })
 
 useHead({
   link: [

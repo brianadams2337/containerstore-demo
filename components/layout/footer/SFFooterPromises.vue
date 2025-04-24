@@ -12,21 +12,25 @@
         data-testid="shopping-promise-invoice"
       >
         <IconInvoice class="size-4 md:size-6" />
-        {{ $t('promises.flexible_payment') }}
+        {{ $t('footer_promises.payment_options') }}
       </p>
       <p
         class="inline-flex items-center gap-2 text-xs md:gap-4"
         data-testid="shopping-promise-shipping"
       >
         <IconDelivery class="size-4 md:size-6" />
-        {{ $t('promises.free_shipping', { currency: currentShop.currency }) }}
+        {{
+          $t('footer_promises.free_shipping', {
+            currency: currentShop.currency,
+          })
+        }}
       </p>
       <p
         class="inline-flex items-center gap-2 text-xs md:gap-4"
         data-testid="shopping-promise-return"
       >
         <IconReturn class="size-4 md:size-6" />
-        {{ $t('promises.return_policy') }}
+        {{ $t('footer_promises.return_policy') }}
       </p>
     </div>
   </div>

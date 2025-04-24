@@ -59,6 +59,7 @@ const getTestComponent = (event: AuthTrackingEvent) => {
   return mount(
     defineComponent({
       template: '<div />',
+
       setup() {
         return useAuthentication(event)
       },
@@ -144,11 +145,11 @@ describe('useAuthentication', () => {
       )
     })
     const httpErrorMessages = {
-      400: 'Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.',
-      401: 'Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.',
+      400: "Deine Anfrage konnte nicht bearbeitet werden, versuch's nochmal.",
+      401: "Deine Anfrage konnte nicht bearbeitet werden, versuch's nochmal.",
       403: 'Dieser Benutzer ist deaktiviert.',
-      404: 'Deine E-Mail-Adresse oder dein Passwort ist falsch. Bitte versuche es erneut.',
-      500: 'Die Anfrage führte zu einem Fehler',
+      404: "Deine E-Mail-Adresse oder dein Passwort stimmt nicht. Bitte versuch's nochmal.",
+      500: 'Bei deiner Anfrage ist ein Fehler aufgetreten.',
     }
 
     it.each(Object.entries(httpErrorMessages))(
@@ -160,7 +161,7 @@ describe('useAuthentication', () => {
           user: toRef(undefined),
         })
         const error = new FetchError('Fetch Error')
-        Object.assign(error, { response: { status: statusCode } })
+        Object.assign(error, { response: { status: Number(statusCode) } })
 
         const component = getTestComponent(loginEvent)
 
@@ -310,10 +311,10 @@ describe('useAuthentication', () => {
     })
 
     const httpErrorMessages = {
-      400: 'Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.',
-      401: 'Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.',
-      409: 'Dies ist ein registriertes Konto. Bitte verwende das richtige Passwort, um dich anzumelden.',
-      500: 'Die Anfrage führte zu einem Fehler',
+      400: "Deine Anfrage konnte nicht bearbeitet werden, versuch's nochmal.",
+      401: "Deine Anfrage konnte nicht bearbeitet werden, versuch's nochmal.",
+      409: 'Das ist ein registrierter Account. Bitte gib das richtige Passwort ein, um dich anzumelden.',
+      500: 'Bei deiner Anfrage ist ein Fehler aufgetreten.',
     }
 
     it.each(Object.entries(httpErrorMessages))(
@@ -324,7 +325,7 @@ describe('useAuthentication', () => {
           user: toRef(undefined),
         })
         const error = new FetchError('Fetch Error')
-        Object.assign(error, { response: { status: statusCode } })
+        Object.assign(error, { response: { status: Number(statusCode) } })
 
         const component = getTestComponent(guestEvent)
 
@@ -418,12 +419,12 @@ describe('useAuthentication', () => {
     })
 
     const httpErrorMessages = {
-      400: 'Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.',
-      401: 'Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.',
+      400: "Deine Anfrage konnte nicht bearbeitet werden, versuch's nochmal.",
+      401: "Deine Anfrage konnte nicht bearbeitet werden, versuch's nochmal.",
 
-      409: 'Dieser Account existiert bereits.',
-      422: 'Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.',
-      500: 'Die Anfrage führte zu einem Fehler',
+      409: "Dieses Konto gibt's schon.",
+      422: "Deine Anfrage konnte nicht bearbeitet werden, versuch's nochmal.",
+      500: 'Bei deiner Anfrage ist ein Fehler aufgetreten.',
     }
 
     it.each(Object.entries(httpErrorMessages))(
@@ -434,7 +435,7 @@ describe('useAuthentication', () => {
           user: toRef(undefined),
         })
         const error = new FetchError('Fetch Error')
-        Object.assign(error, { response: { status: statusCode } })
+        Object.assign(error, { response: { status: Number(statusCode) } })
 
         const component = getTestComponent(registerEvent)
 
@@ -480,7 +481,7 @@ describe('useAuthentication', () => {
       expect(forgotPasswordMock).toBeCalledWith({ email: 'user@example.org' })
 
       expect(useToast().show).toBeCalledWith(
-        'Ein Link zum Zurücksetzen des Passworts wurde an deine E-Mail gesendet.',
+        'Ein Link zum Zurücksetzen deines Passworts wurde an deine E-Mail-Adresse geschickt.',
         { action: 'CONFIRM', type: 'INFO' },
       )
 
@@ -488,14 +489,14 @@ describe('useAuthentication', () => {
     })
 
     const httpErrorMessages = {
-      400: 'Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.',
-      401: 'Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.',
+      400: "Deine Anfrage konnte nicht bearbeitet werden, versuch's nochmal.",
+      401: "Deine Anfrage konnte nicht bearbeitet werden, versuch's nochmal.",
 
       403: 'Dieser Benutzer ist deaktiviert.',
-      406: 'Der Token wurde bereits verwendet oder ist abgelaufen. Bitte fordere eine neue E-Mail zum Zurücksetzen des Passworts an.',
-      409: 'Dieser Account existiert bereits.',
-      422: 'Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.',
-      500: 'Die Anfrage führte zu einem Fehler',
+      406: 'Dein Token wurde schon benutzt oder ist abgelaufen. Bitte frag eine neue E-Mail zum Zurücksetzen des Passworts an.',
+      409: "Dieses Konto gibt's schon.",
+      422: "Deine Anfrage konnte nicht bearbeitet werden, versuch's nochmal.",
+      500: 'Bei deiner Anfrage ist ein Fehler aufgetreten.',
     }
 
     it.each(Object.entries(httpErrorMessages))(
@@ -506,7 +507,7 @@ describe('useAuthentication', () => {
           user: undefined,
         })
         const error = new FetchError('Fetch Error')
-        Object.assign(error, { response: { status: statusCode } })
+        Object.assign(error, { response: { status: Number(statusCode) } })
 
         const component = getTestComponent(forgotPasswordEvent)
 
@@ -588,9 +589,9 @@ describe('useAuthentication', () => {
     })
 
     const httpErrorMessages = {
-      400: 'Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.',
-      401: 'Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.',
-      500: 'Die Anfrage führte zu einem Fehler',
+      400: "Deine Anfrage konnte nicht bearbeitet werden, versuch's nochmal.",
+      401: "Deine Anfrage konnte nicht bearbeitet werden, versuch's nochmal.",
+      500: 'Bei deiner Anfrage ist ein Fehler aufgetreten.',
     }
 
     it.each(Object.entries(httpErrorMessages))(
@@ -602,7 +603,7 @@ describe('useAuthentication', () => {
           user: toRef(userFactory.build({ id: 1, email: 'user@example.org' })),
         })
         const error = new FetchError('Fetch Error')
-        Object.assign(error, { response: { status: statusCode } })
+        Object.assign(error, { response: { status: Number(statusCode) } })
 
         const component = getTestComponent(resetPasswordEvent)
 
@@ -646,8 +647,8 @@ describe('useAuthentication', () => {
     })
 
     const httpErrorMessages = {
-      400: 'Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.',
-      422: 'Die Anfrage konnte nicht bearbeitet werden, bitte versuche es erneut.',
+      400: "Deine Anfrage konnte nicht bearbeitet werden, versuch's nochmal.",
+      422: "Deine Anfrage konnte nicht bearbeitet werden, versuch's nochmal.",
     }
 
     it.each(Object.entries(httpErrorMessages))(
@@ -659,7 +660,7 @@ describe('useAuthentication', () => {
           user: toRef(userFactory.build({ id: 1, email: 'user@example.org' })),
         })
         const error = new FetchError('Fetch Error')
-        Object.assign(error, { response: { status: statusCode } })
+        Object.assign(error, { response: { status: Number(statusCode) } })
 
         const component = getTestComponent(logoutEvent)
 

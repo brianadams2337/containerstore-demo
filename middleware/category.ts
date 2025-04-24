@@ -1,8 +1,10 @@
+import type { Category } from '@scayle/storefront-nuxt'
 import { navigateTo, defineNuxtRouteMiddleware } from '#app/composables/router'
 import { useRouteHelpers } from '~/composables'
 import { useCategoryById } from '#storefront/composables'
 import { getCategoryId } from '~/utils/route'
 import { globalGetCachedData } from '~/utils/useRpc'
+import type { NuxtApp } from '#app'
 
 export default defineNuxtRouteMiddleware(
   async ({ params, query, path, hash }) => {
@@ -20,7 +22,8 @@ export default defineNuxtRouteMiddleware(
         },
         options: {
           dedupe: 'defer',
-          getCachedData: globalGetCachedData,
+          getCachedData: (key, nuxtApp) =>
+            globalGetCachedData<Category>(key, nuxtApp as NuxtApp),
         },
       },
       `current-category-${categoryId}`,

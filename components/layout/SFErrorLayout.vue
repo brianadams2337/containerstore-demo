@@ -10,7 +10,7 @@
     </section>
     <section class="mt-6">
       <SFButton @click="$emit('clearError')">
-        {{ $t('error.continue_shopping') }}
+        {{ $t('global.continue_shopping') }}
       </SFButton>
     </section>
     <div v-if="isInDevMode" class="max-w-full overflow-auto">
@@ -61,14 +61,14 @@ const isNotFoundError = computed(() => {
 })
 const title = computed(() => {
   return isNotFoundError.value
-    ? t('error.not_found_code')
-    : t('error.not_found_message')
+    ? t('error.page_not_found_title')
+    : t('error.unknown_error_title')
 })
 
 const userMessage = computed(() => {
   return isNotFoundError.value
-    ? t('error.page_does_not_exist')
-    : t('error.request_not_processed')
+    ? t('error.page_not_found_message')
+    : t('error.unknown_error_message')
 })
 
 const isInDevMode = import.meta.dev

@@ -48,7 +48,7 @@
         data-testid="login-submit"
         class="w-1/2"
       >
-        {{ $t('sign_in_page.login.submit') }}
+        {{ $t('auth_login.submit_login') }}
       </SFButton>
       <SFAuthForgotPassword
         :prefilled-email="prefilledEmailForForgotPassword"
@@ -65,14 +65,14 @@
     data-testid="create-account-label"
     :class="{ 'mt-8': !externalIDPRedirects }"
   >
-    {{ $t('sign_in_page.login.not_user_yet') }}
+    {{ $t('auth_login.not_registered_question') }}
     <SFLocalizedLink
       :to="routeList.signup"
       raw
       class="rounded-md px-1.5 py-0.5 font-semibold hover:bg-gray-100"
       data-testid="signin-page-link"
     >
-      {{ $t('sign_in_page.login.create_account') }}
+      {{ $t('auth_login.create_account') }}
     </SFLocalizedLink>
   </p>
 </template>

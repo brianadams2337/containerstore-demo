@@ -8,7 +8,7 @@
       size="lg"
       data-testid="profile-password-headline"
     >
-      {{ $t('my_account.profile.password.title') }}
+      {{ $t('profile_password_management.title') }}
     </SFHeadline>
     <p class="mb-6 text-md">{{ description }}</p>
     <form
@@ -59,7 +59,7 @@
         type="submit"
         class="self-start"
       >
-        {{ $t('my_account.profile.save_label') }}
+        {{ $t('global.save') }}
       </SFButton>
     </form>
   </div>
@@ -98,7 +98,7 @@ const initPayload = () => ({
 // making it a more natural and efficient choice for complex forms.
 const payload = reactive(initPayload())
 const isUpdating = ref(false)
-const errorMessage = ref<string | null>(null)
+const errorMessage = ref<string | undefined>(undefined)
 
 const isIDPUser = computed(
   () => user.value?.authentication?.type !== 'password',
@@ -106,8 +106,8 @@ const isIDPUser = computed(
 
 const description = computed(() => {
   return isIDPUser.value
-    ? t('my_account.profile.password.idp_description')
-    : t('my_account.profile.password.description')
+    ? t('profile_password_management.idp_description')
+    : t('profile_password_management.description')
 })
 
 const rules = computed(() => ({
@@ -134,7 +134,7 @@ const onSubmit = async () => {
     await updatePassword(payload)
     resetForm()
 
-    toast.show(t('my_account.profile.password.success_message'), {
+    toast.show(t('profile_password_management.success_message'), {
       type: 'SUCCESS',
       action: 'CONFIRM',
     })
@@ -146,27 +146,39 @@ const onSubmit = async () => {
 }
 
 const handleError = (error: unknown) => {
-  const HttpErrorMessages: Readonly<Record<number, string>> = {
-    400: '400_bad_request',
-    401: '401_unauthorized',
-    403: '403_forbidden',
-  }
   if (!(error instanceof FetchError)) {
     return
   }
 
   const status = error.response?.status
 
-  if (status && Object.hasOwn(HttpErrorMessages, status)) {
-    errorMessage.value = t(
-      `my_account.profile.password.error.${HttpErrorMessages[status]}`,
-    )
+  if (status) {
+    switch (status) {
+      case 400:
+        errorMessage.value = t(
+          'profile_password_management.error.400_bad_request',
+        )
+        break
+      case 401:
+        errorMessage.value = t(
+          'profile_password_management.error.401_unauthorized',
+        )
+        break
+      case 403:
+        errorMessage.value = t(
+          'profile_password_management.error.403_forbidden',
+        )
+        break
+      default:
+        errorMessage.value = undefined
+        break
+    }
   }
 }
 
 const resetForm = () => {
   Object.assign(payload, initPayload())
-  errorMessage.value = null
+  errorMessage.value = undefined
   v.value.$reset()
 }
 </script>

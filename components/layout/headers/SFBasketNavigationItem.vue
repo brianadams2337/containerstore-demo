@@ -53,7 +53,7 @@ const mounted = useMounted()
 const isOpen = ref(false)
 const i18n = useI18n()
 const ariaLabel = computed(() =>
-  i18n.t('basket.basket_aria_label', mounted.value ? count.value || 0 : 0),
+  i18n.t('basket_page.a11y.title', mounted.value ? count.value || 0 : 0),
 )
 
 defineProps<{ blockPopup?: boolean }>()

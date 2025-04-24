@@ -5,7 +5,7 @@
       class="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-2 text-sm font-variable text-gray-500"
       aria-hidden="true"
     >
-      {{ $t('sign_in_page.or') }}:
+      {{ $t('auth_separator.separation_text') }}:
     </span>
   </div>
 </template>

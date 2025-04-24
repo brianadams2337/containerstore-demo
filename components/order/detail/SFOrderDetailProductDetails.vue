@@ -14,19 +14,19 @@
   <ul class="flex flex-col gap-1 text-sm text-gray-600">
     <li v-if="color" class="flex gap-1">
       <span class="font-medium" data-testid="order-detail-product-color">
-        {{ $t('my_account.orders.detail.color') }}:
+        {{ $t('product_attribute.color') }}:
       </span>
       <span>{{ color }}</span>
     </li>
     <li class="flex gap-1">
       <span class="font-medium" data-testid="order-detail-product-size">
-        {{ $t('my_account.orders.detail.size') }}:
+        {{ $t('product_attribute.size') }}:
       </span>
       <span>{{ size }}</span>
     </li>
     <li class="flex gap-1">
       <span class="font-medium" data-testid="order-detail-product-quantity">
-        {{ $t('my_account.orders.detail.quantity_label') }}:
+        {{ $t('global.quantity') }}:
       </span>
       <span>{{ quantity }}</span>
     </li>

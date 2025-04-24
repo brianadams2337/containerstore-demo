@@ -1,33 +1,21 @@
 <template>
   <div class="flex flex-col gap-2">
     <div class="text-sm font-semi-bold-variable text-gray-900">
-      {{ $t('subscription.title') }}
+      {{ $t('subscription.subscription') }}
     </div>
     <ul class="flex flex-col gap-1 text-sm text-gray-600">
       <li class="flex gap-1">
-        <span class="font-medium">
-          {{ $t('subscription.order.interval') }}:
-        </span>
+        <span class="font-medium"> {{ $t('subscription.interval') }}: </span>
         <span>
-          {{
-            $t(
-              'subscription.order.interval_keys.' +
-                subscription.subscriptionInterval,
-            )
-          }}
+          {{ getSubscriptionInterval() }}
         </span>
       </li>
       <li class="flex gap-1">
         <span class="font-medium">
-          {{ $t('subscription.order.follow_up_delivery') }}:
+          {{ $t('subscription.follow_up_delivery') }}:
         </span>
         <span>
-          {{
-            $t(
-              'subscription.order.delivery_keys.' +
-                subscription.subscriptionDeliveryDate,
-            )
-          }}
+          {{ getSubscriptionDeliveryDate() }}
         </span>
       </li>
     </ul>
@@ -35,5 +23,27 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{ subscription: Record<string, string> }>()
+import { useI18n } from '#i18n'
+
+const { subscription } = defineProps<{ subscription: Record<string, string> }>()
+
+const { t } = useI18n()
+const getSubscriptionInterval = () => {
+  switch (subscription.subscriptionInterval) {
+    case '1_months_1':
+      return t('order_detail_product_subscription.interval_keys.1_months_1')
+    case '2_months':
+      return t('order_detail_product_subscription.interval_keys.2_months')
+    case '3_months':
+      return t('order_detail_product_subscription.interval_keys.3_months')
+  }
+}
+const getSubscriptionDeliveryDate = () => {
+  switch (subscription.subscriptionDeliveryDate) {
+    case '1':
+      return t('order_detail_product_subscription.delivery_keys.1')
+    case '15':
+      return t('order_detail_product_subscription.delivery_keys.15')
+  }
+}
 </script>

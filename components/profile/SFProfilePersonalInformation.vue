@@ -8,10 +8,10 @@
       size="lg"
       data-testid="profile-personal-information-headline"
     >
-      {{ $t('my_account.profile.personal_information.title') }}
+      {{ $t('profile_personal_information.title') }}
     </SFHeadline>
     <p class="mb-6 text-md">
-      {{ $t('my_account.profile.personal_information.description') }}
+      {{ $t('profile_personal_information.description') }}
     </p>
     <form
       v-if="v"
@@ -78,7 +78,7 @@
         type="submit"
         class="self-start"
       >
-        {{ $t('my_account.profile.save_label') }}
+        {{ $t('global.save') }}
       </SFButton>
     </form>
   </div>
@@ -214,15 +214,13 @@ const onSubmit = async () => {
         ? `${thirdPart}-${secondPart}-${firstPart}`
         : undefined,
     })
-    toast.show(t('my_account.profile.personal_information.success_message'), {
+    toast.show(t('profile_personal_information.success_message'), {
       type: 'SUCCESS',
       action: 'CONFIRM',
     })
     errorMessage.value = null
   } catch {
-    errorMessage.value = t(
-      'my_account.profile.personal_information.error_message',
-    )
+    errorMessage.value = t('profile_personal_information.error_message')
   } finally {
     isUpdating.value = false
   }

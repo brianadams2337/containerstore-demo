@@ -65,7 +65,7 @@ describe('logged in user', () => {
       '/de/account/subscriptions',
     )
 
-    expect(getByRole('button', { name: 'Ausloggen' })).toBeInTheDocument()
+    expect(getByRole('button', { name: 'Abmelden' })).toBeInTheDocument()
   })
 
   it('should emit "close" event when link is clicked', async () => {
@@ -113,7 +113,7 @@ describe('guest user', () => {
     const subscriptionLink = queryByRole('link', { name: 'Deine Abonnements' })
     expect(subscriptionLink).not.toBeInTheDocument()
 
-    expect(getByRole('button', { name: 'Ausloggen' })).toBeInTheDocument()
+    expect(getByRole('button', { name: 'Abmelden' })).toBeInTheDocument()
   })
 })
 
@@ -130,7 +130,7 @@ it('should trigger an logout and emit "close" event when logout is clicked', asy
   })
 
   const { emitted, getByRole } = await renderSuspended(SFUserActions)
-  const logoutButton = getByRole('button', { name: 'Ausloggen' })
+  const logoutButton = getByRole('button', { name: 'Abmelden' })
   await fireEvent.click(logoutButton)
   expect(logoutMock).toBeCalledTimes(1)
   expect(emitted()['close']).toHaveLength(1)

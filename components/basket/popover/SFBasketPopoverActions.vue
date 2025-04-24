@@ -6,7 +6,7 @@
       :to="getLocalizedRoute(routeList.checkout)"
       class="w-full"
     >
-      {{ $t('basket.checkout_label') }}
+      {{ $t('basket.go_to_checkout') }}
     </SFButton>
     <SFButton
       variant="secondary"
@@ -14,7 +14,7 @@
       :to="getLocalizedRoute(routeList.basket)"
       class="w-full"
     >
-      {{ $t('basket.go_to_label') }}
+      {{ $t('basket_popover_actions.go_to_basket') }}
     </SFButton>
   </div>
 </template>

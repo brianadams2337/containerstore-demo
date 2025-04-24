@@ -33,7 +33,7 @@
       class="ml-1 text-right text-xs text-gray-700 md:text-left"
       data-testid="tax-info"
     >
-      {{ $t('price.including_vat') }}
+      {{ $t('global.including_vat') }}
     </sup>
     <div
       v-if="
@@ -44,7 +44,7 @@
       :class="{ 'text-end': !inline }"
       data-testid="lowest-prior-price"
     >
-      {{ $t('price.best_price_30d') }}
+      {{ $t('price.30_day_best_price') }}
       {{ formatCurrency(lowestPriorPrice.withTax) }}
       ({{
         formatPercentage(lowestPriorPrice.relativeDifferenceToPrice, {

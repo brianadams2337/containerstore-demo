@@ -33,11 +33,11 @@ const tabs = computed(() => {
   const items = [
     {
       to: routeList.signin,
-      title: t('sign_in_page.login.title'),
+      title: t('global.sign_in'),
     },
     {
       to: routeList.signup,
-      title: t('sign_in_page.sign_up.title'),
+      title: t('global.sign_up'),
     },
   ]
 

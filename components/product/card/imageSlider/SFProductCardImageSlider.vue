@@ -9,7 +9,7 @@
     <template #prev-button="{ prev, isPrevEnabled }">
       <SFSliderArrowButton
         class="absolute top-[40%] bg-white hover:bg-white"
-        :aria-label="$t('image_slider.previous_label')"
+        :aria-label="$t('image_slider.a11ly.go_to_previous_image')"
         :disabled="!isPrevEnabled"
         direction="left"
         translate-on-hover
@@ -19,7 +19,7 @@
     <template #next-button="{ next, isNextEnabled }">
       <SFSliderArrowButton
         class="absolute top-[40%] bg-white hover:bg-white"
-        :aria-label="$t('image_slider.next_label')"
+        :aria-label="$t('image_slider.a11ly.go_to_next_image')"
         :disabled="!isNextEnabled"
         direction="right"
         translate-on-hover

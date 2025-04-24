@@ -23,7 +23,7 @@
           >
             <IconLocation class="size-5" />
             <div class="mt-1 text-lg font-normal leading-5 lg:text-sm">
-              {{ $t('store_locator.button') }}
+              {{ $t('navigation.find_a_store') }}
             </div>
           </SFLocalizedLink>
         </div>

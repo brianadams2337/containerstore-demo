@@ -13,7 +13,9 @@
       <SFButton
         type="button"
         :aria-label="
-          isPasswordHidden ? $t('password.show') : $t('password.hide')
+          isPasswordHidden
+            ? $t('password_input.show')
+            : $t('password_input.hide')
         "
         variant="raw"
         class="size-full rounded-md *:size-3 *:text-gray-750"

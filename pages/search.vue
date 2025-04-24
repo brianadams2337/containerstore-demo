@@ -5,7 +5,7 @@
         tag="h1"
         class="mt-1.5 line-clamp-2 !font-semi-bold-variable text-gray-900 max-sm:text-2xl max-sm:leading-6 sm:mt-0"
       >
-        {{ $t('search.page.heading', { term }) }}
+        {{ $t('search_page.title', { term }) }}
         <SFFadeInTransition>
           <span
             v-if="totalProductsCount > 0 && status === 'success'"
@@ -87,7 +87,7 @@ const showFiltersButton = computed(() => {
 
 useSeoMeta({
   robots: 'noindex,follow',
-  title: () => $i18n.t('search.page.meta.title', { term: term.value }),
+  title: () => $i18n.t('search_page.meta.title', { term: term.value }),
 })
 
 defineOptions({ name: 'SearchPage' })

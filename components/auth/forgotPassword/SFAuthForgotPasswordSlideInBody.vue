@@ -30,7 +30,7 @@
         @click.prevent="backToLogin"
       >
         <IconChevronLeft class="size-4" />
-        {{ $t('sign_in_page.forgot_password.back_to_login') }}
+        {{ $t('auth_forgot_password.back_to_login') }}
       </SFButton>
       <SFButton
         :disabled="isSubmitting"
@@ -38,7 +38,7 @@
         class="grow"
         data-testid="get-reset-password-link-button"
       >
-        {{ $t('sign_in_page.forgot_password.submit') }}
+        {{ $t('auth_forgot_password.submit') }}
       </SFButton>
     </div>
   </form>

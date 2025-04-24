@@ -59,7 +59,7 @@ const { formatCurrency } = useFormatHelpers()
 const text = computed(() => {
   if (!minimumOrderValueReached.value) {
     return remaining.value
-      ? t('promotion.progress_left', {
+      ? t('promotion_progress_wrapper.remaining_minimum_order_value', {
           amount: formatCurrency(remaining.value),
         })
       : undefined
@@ -69,7 +69,7 @@ const text = computed(() => {
     isMOVPromotionApplied.value &&
     ((isBuyXGetY.value && areGiftConditionsMet) || isAutomaticDiscount.value)
   ) {
-    return t('pdp.promotion.full_progress_message', {
+    return t('promotion_progress_wrapper.reached_minimum_order_value', {
       amount: formatCurrency(discount.value),
     })
   }
@@ -78,11 +78,11 @@ const text = computed(() => {
     isAutomaticDiscount.value ||
     (!isGiftAddedToBasket && areGiftConditionsMet)
   ) {
-    return t('pdp.promotion.cart_reached')
+    return t('promotion_progress_wrapper.fulfilled_promotion_condition')
   }
 
   return isGiftAddedToBasket && areGiftConditionsMet
-    ? t('pdp.promotion.add_free_gift_when_cart_reached')
+    ? t('promotion_progress_wrapper.fulfilled_gift_condition')
     : undefined
 })
 </script>

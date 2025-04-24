@@ -5,7 +5,7 @@
       tag="h2"
       data-testid="subscriptions-headline"
     >
-      {{ $t('subscription.headline') }}
+      {{ $t('subscription_page.headline') }}
     </SFHeadline>
     <subscription-overview
       v-if="isSubscriptionOverviewWebComponentLoaded && accessToken"
@@ -40,8 +40,8 @@ const { t } = useI18n()
 
 useSeoMeta({
   robots: 'noindex, nofollow',
-  title: t('subscription.meta.title'),
-  description: t('subscription.meta.description'),
+  title: t('subscription_page.meta.title'),
+  description: t('subscription_page.meta.description'),
 })
 
 definePageMeta({ pageType: 'subscription' })

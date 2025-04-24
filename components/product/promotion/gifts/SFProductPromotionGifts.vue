@@ -10,12 +10,12 @@
       <div class="flex gap-1">
         <IconGift class="size-4" />
         <SFHeadline tag="h2" size="base" is-bold data-testid="headline">
-          {{ $t('pdp.promotion.free_gift_conditions_met.headline') }}
+          {{ $t('product_promotion_gifts.headline') }}
         </SFHeadline>
       </div>
 
       <p class="mt-1 text-sm">
-        {{ $t('pdp.promotion.free_gift_conditions_met.description') }}
+        {{ $t('product_promotion_gifts.description') }}
       </p>
     </div>
     <div class="flex flex-col">

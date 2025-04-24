@@ -54,14 +54,14 @@
           minimumFractionDigits: 0,
         }"
         :aria-label="
-          $t('filter.minimum_price', {
+          $t('price_range_slider.minimum_price', {
             price: formatCurrency(range[0]),
           })
         "
         @update:model-value="changeRangeAtIndex(roundDownPrice($event), 0)"
       />
       <div class="mx-auto text-center text-xs font-semibold text-secondary">
-        {{ $t('filter.to') }}
+        {{ $t('price_range_slider.to') }}
       </div>
       <SFPriceInput
         :model-value="range[1]"
@@ -73,7 +73,7 @@
           minimumFractionDigits: 0,
         }"
         :aria-label="
-          $t('filter.maximum_price', {
+          $t('price_range_slider.maximum_price', {
             price: formatCurrency(range[1]),
           })
         "

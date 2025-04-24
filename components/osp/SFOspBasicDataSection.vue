@@ -4,7 +4,7 @@
   >
     <div>
       <SFHeadline size="xl" tag="h1">
-        {{ $t('osp.title') }}
+        {{ $t('order_success_page.title') }}
       </SFHeadline>
       <SFOspGreetingBox :order-data="orderData" class="mt-4" />
       <div class="text-base sm:grid">

@@ -12,8 +12,8 @@
     :loading="mounted && status === 'pending'"
     :aria-label="
       isInWishlist
-        ? $t('wishlist.toggle.remove_from_wishlist_label')
-        : $t('wishlist.toggle.add_to_wishlist_label')
+        ? $t('wishlist_toggle.remove_from_wishlist')
+        : $t('wishlist_toggle.add_to_wishlist')
     "
     :aria-busy="mounted && status === 'pending'"
     aria-live="off"

@@ -26,7 +26,7 @@
       is-full-width
       data-testid="submit-new-password"
     >
-      {{ $t('sign_in_page.reset_password.submit') }}
+      {{ $t('auth_reset_password_slide_in_body.submit_password_reset') }}
     </SFButton>
   </form>
 </template>

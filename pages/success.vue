@@ -20,8 +20,8 @@
       <!-- This is for the case that we have a successful request but an empty orderData. -->
       <SFEmptyState
         v-else
-        :title="$t('osp.no_order_found.title')"
-        :description="$t('osp.no_order_found.description')"
+        :title="$t('order_success_page.no_order_found.title')"
+        :description="$t('order_success_page.no_order_found.description')"
         :show-default-actions="false"
       >
         <SFButton
@@ -29,13 +29,13 @@
           :to="getLocalizedRoute(routeList.home)"
           class="mt-10"
         >
-          {{ $t('global.continue_shopping_label') }}
+          {{ $t('global.continue_shopping') }}
         </SFButton>
       </SFEmptyState>
       <template #error>
         <SFEmptyState
-          :title="$t('osp.no_order_found.title')"
-          :description="$t('osp.no_order_found.description')"
+          :title="$t('order_success_page.no_order_found.title')"
+          :description="$t('order_success_page.no_order_found.description')"
           :show-default-actions="false"
         >
           <SFButton
@@ -43,7 +43,7 @@
             :to="getLocalizedRoute(routeList.home)"
             class="mt-10"
           >
-            {{ $t('global.continue_shopping_label') }}
+            {{ $t('global.continue_shopping') }}
           </SFButton>
         </SFEmptyState>
       </template>
@@ -120,12 +120,12 @@ useSeoMeta({
   robots: 'noindex,nofollow',
   title: () =>
     status.value === 'error'
-      ? t('osp.no_order_found.title')
-      : t('osp.meta.title'),
+      ? t('order_success_page.no_order_found.title')
+      : t('order_success_page.meta.title'),
   description: () =>
     status.value === 'error'
-      ? t('osp.no_order_found.description')
-      : t('osp.meta.description'),
+      ? t('order_success_page.no_order_found.description')
+      : t('order_success_page.meta.description'),
 })
 
 whenever(

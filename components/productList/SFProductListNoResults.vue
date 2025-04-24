@@ -7,10 +7,10 @@
       size="lg"
       class="mb-4 !font-semi-bold-variable text-gray-900"
     >
-      {{ $t('plp.no_results.title') }}
+      {{ $t('product_list_no_results.title') }}
     </SFHeadline>
     <SFHeadline class="mb-10 !font-normal text-gray-600" size="md">
-      {{ $t('plp.no_results.description') }}
+      {{ $t('product_list_no_results.description') }}
     </SFHeadline>
     <div
       class="flex flex-wrap items-center justify-start gap-4 max-sm:flex-col"
@@ -24,7 +24,11 @@
         <template #icon>
           <IconChevronLeft class="size-3.5" />
         </template>
-        {{ $t('plp.no_results.back_to_category', { category: category.name }) }}
+        {{
+          $t('product_list_no_results.back_to_category', {
+            category: category.name,
+          })
+        }}
       </SFButton>
       <SFButton
         v-if="areFiltersApplied"
@@ -33,7 +37,7 @@
         class="max-sm:w-full"
         @click="resetFilters"
       >
-        {{ $t('plp.no_results.reset_filters') }}
+        {{ $t('product_list_no_results.reset_filters') }}
       </SFButton>
     </div>
   </div>

@@ -6,13 +6,13 @@
       size="sm"
       class="size-10 border border-gray-200"
       data-testid="back-to-order-list"
-      :aria-label="$t('my_account.orders.detail.back')"
+      :aria-label="$t('global.back')"
       :to="link"
     >
       <IconChevronLeft class="size-4 text-gray-500" />
     </SFButton>
     <SFHeadline tag="h2" data-testid="order-detail-headline">
-      {{ $t('my_account.orders.detail.title', { id }) }}
+      {{ $t('order_detail_page.title', { id }) }}
     </SFHeadline>
   </div>
 </template>

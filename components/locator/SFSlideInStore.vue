@@ -26,8 +26,8 @@
           >
             {{
               quantity < 5
-                ? $t('store_locator.labels.low_stock')
-                : $t('store_locator.labels.available')
+                ? $t('store_locator.availability.low_stock')
+                : $t('store_locator.availability.available')
             }}
           </div>
         </div>
@@ -56,15 +56,15 @@
           <span class="font-bold">
             {{
               openingTimes.currentlyOpen
-                ? $t('store_locator.labels.store_open')
-                : $t('store_locator.labels.store_closed')
+                ? $t('store_locator.store_information.store_open')
+                : $t('store_locator.store_information.store_closed')
             }}
           </span>
           <span v-if="openingTimes.currentlyOpen">
             {{
               ' ' +
               $t(
-                'store_locator.labels.store_closes_in',
+                'store_locator.store_information.remaining_open_time',
                 closesInTime(openingTimes.minutesUntilClosed),
               )
             }}

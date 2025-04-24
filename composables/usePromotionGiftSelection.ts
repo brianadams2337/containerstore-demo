@@ -103,13 +103,14 @@ export function usePromotionGiftSelection(
 
   const addItemToBasket = async (promotionId: string) => {
     if (!activeVariant.value) {
-      toast.show($i18n.t('basket.notification.select_size'), {
+      toast.show($i18n.t('add_to_basket.notification.select_size'), {
         action: 'CONFIRM',
       })
       return
     }
 
-    const productName = name.value || $i18n.t('wishlist.product')
+    const productName =
+      name.value || $i18n.t('add_to_basket.product_name_fallback')
 
     await addItem({
       variantId: activeVariant.value.id,

@@ -35,14 +35,14 @@
           v-model.trim="searchQuery"
           :tabindex="hasFocus ? 0 : -1"
           type="search"
-          :placeholder="$t('search.placeholder')"
+          :placeholder="$t('search_input.placeholder')"
           class="min-w-0 grow bg-gray-100 transition-colors placeholder-shown:truncate focus-visible:shadow-none focus-visible:outline-none"
           data-testid="header-search-input"
           :class="{
             'bg-white ': hasFocus,
             'group-hover:bg-gray-200': !hasFocus,
           }"
-          :aria-placeholder="$t('search.a11y')"
+          :aria-placeholder="$t('global.search')"
         />
       </label>
       <SFButton

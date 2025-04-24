@@ -7,6 +7,9 @@ import type { NuxtApp } from '#app'
  * @param nuxtApp - The current instance of the Nuxt application.
  * @returns Cached data if available, otherwise `undefined`.
  */
-export const globalGetCachedData = <T>(key: string, nuxtApp: NuxtApp) => {
-  return (toValue(nuxtApp._asyncData[key]?.data) as T) ?? undefined
+export const globalGetCachedData = <T>(
+  key: string,
+  nuxtApp: NuxtApp,
+): T | undefined => {
+  return (toValue(nuxtApp._asyncData[key]?.data) as T) || undefined
 }

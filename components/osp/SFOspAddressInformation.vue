@@ -3,8 +3,8 @@
     <SFOspDetailBox
       :title="
         isSingleAddress
-          ? $t('osp.delivery_and_billing_address')
-          : $t('osp.delivery_address')
+          ? $t('order_information.address_details.delivery_and_billing_address')
+          : $t('order_information.address_details.delivery_address')
       "
       :class="{ 'col-span-full': isSingleAddress }"
       data-testid="osp-delivery-address"
@@ -23,7 +23,7 @@
     </SFOspDetailBox>
     <SFOspDetailBox
       v-if="address.billing && !isSingleAddress"
-      :title="$t('osp.billing_address')"
+      :title="$t('order_information.address_details.billing_address')"
       data-testid="osp-billing-address"
     >
       <div class="flex flex-col gap-1">

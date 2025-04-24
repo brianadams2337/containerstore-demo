@@ -4,7 +4,11 @@
   >
     <div class="text-sm">
       <SFHeadline size="xl" tag="h2" class="mb-4">
-        {{ $t('osp.order_number', { orderNumber: orderData.id }) }}
+        {{
+          $t('order_information.order_details.order_number_value', {
+            orderNumber: orderData.id,
+          })
+        }}
       </SFHeadline>
       <div>
         <div

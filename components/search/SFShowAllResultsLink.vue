@@ -28,7 +28,7 @@ const { t } = useI18n()
 const showMoreLabel = computed(() => {
   const regex = new RegExp(searchTerm.replaceAll(' ', '|'), 'gi')
   return DOMpurify.sanitize(
-    t('search.search_results', { searchTerm }).replace(
+    t('show_all_results_link.open_on_search_page', { searchTerm }).replace(
       regex,
       '<span class="font-semibold">$&</span>',
     ),
@@ -38,6 +38,8 @@ const showMoreLabel = computed(() => {
   )
 })
 const showMoreAriaLabel = computed(() => {
-  return DOMpurify.sanitize(t('search.search_results', { searchTerm }))
+  return DOMpurify.sanitize(
+    t('show_all_results_link.open_on_search_page', { searchTerm }),
+  )
 })
 </script>

@@ -3,7 +3,7 @@
     <div
       class="flex items-center space-x-1 text-md font-semibold text-gray-900"
     >
-      <span>{{ $t('search.categories') }}</span>
+      <span>{{ $t('category_suggestion_list.title') }}</span>
       <span
         class="ml-0.5 inline-flex h-4 items-center rounded-full bg-gray-900 px-2 text-sm leading-none text-white-smoke"
       >

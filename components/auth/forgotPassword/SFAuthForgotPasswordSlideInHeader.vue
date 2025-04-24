@@ -6,7 +6,7 @@
       size="xl"
       tag="h3"
     >
-      {{ $t('sign_in_page.forgot_password.title') }}
+      {{ $t('auth_forgot_password.title') }}
     </SFHeadline>
     <SFButton
       class="group my-2 -mr-2 hover:bg-gray-100 max-lg:hidden md:bg-transparent"
@@ -21,7 +21,7 @@
     </SFButton>
   </div>
   <p class="text-md text-gray-500">
-    {{ $t('sign_in_page.forgot_password.description') }}
+    {{ $t('auth_forgot_password.description') }}
   </p>
 </template>
 

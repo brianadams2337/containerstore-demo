@@ -17,8 +17,8 @@
           <SFHeadline size="lg" tag="h2" is-bold class="leading-6">
             {{
               selectedStoreData.available
-                ? $t('store_locator.labels.available')
-                : $t('store_locator.labels.not_available')
+                ? $t('store_locator.availability.available')
+                : $t('store_locator.availability.not_available')
             }}
           </SFHeadline>
           <div class="text-xs">
@@ -32,10 +32,10 @@
         class="font-bold text-black"
         data-testid="store-availability-headline"
       >
-        {{ $t('store_locator.labels.store_availability') }}
+        {{ $t('store_variant_availability.store_availability') }}
       </h2>
       <p class="text-xs text-primary" data-testid="store-availability-subline">
-        {{ $t('store_locator.labels.store_availability_subline') }}
+        {{ $t('store_variant_availability.store_availability_subline') }}
       </p>
     </div>
     <SFButton
@@ -47,8 +47,8 @@
     >
       {{
         mounted && selectedStoreId
-          ? $t('store_locator.buttons.change_store')
-          : $t('store_locator.buttons.choose_store')
+          ? $t('store_variant_availability.change_store')
+          : $t('store_variant_availability.choose_store')
       }}
     </SFButton>
   </div>

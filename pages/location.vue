@@ -19,9 +19,9 @@
         :class="{ 'shadow-[0_3px_24px_0_rgba(0,0,0,0.12)]': stores.length }"
       >
         <SFHeadline :is-uppercase="false" size="xl" tag="h1" class="mb-5">
-          {{ $t('store_locator.modal_headline') }}
+          {{ $t('location_page.title') }}
         </SFHeadline>
-        <p class="mb-5 text-sm">{{ $t('store_locator.subline') }}</p>
+        <p class="mb-5 text-sm">{{ $t('location_page.subline') }}</p>
         <div class="mt-3 flex items-center justify-evenly">
           <SFButton
             class="mr-2 flex size-12 cursor-pointer items-center justify-center border-2 border-black"
@@ -38,7 +38,7 @@
             type="text"
             required
             :readonly="searching"
-            :placeholder="$t('store_locator.input_placeholder')"
+            :placeholder="$t('store_locator.search_store_input_placeholder')"
             @keydown.enter="
               !searching && searchAddress.length && searchForStores()
             "
@@ -51,7 +51,7 @@
             :loading="searching"
             @click="searchForStores()"
           >
-            {{ $t('store_locator.buttons.search') }}
+            {{ $t('global.search') }}
           </SFButton>
         </div>
       </div>
@@ -142,15 +142,15 @@ const findStoresInUserLocation = async () => {
     if (e instanceof GeolocationPositionError) {
       const msg =
         e.code === GeolocationPositionError.PERMISSION_DENIED
-          ? t('store_locator.geolocation.error.permission_denied')
-          : t('store_locator.geolocation.error.unknown')
+          ? t('location_page.geolocation.error.permission_denied')
+          : t('location_page.geolocation.error.unknown')
       toast.show(msg, { action: 'CONFIRM' })
     }
   }
   searching.value = false
 }
 
-useSeoMeta({ robots: 'index,follow', title: t('navigation.location') })
+useSeoMeta({ robots: 'index,follow', title: t('location_page.title') })
 
 defineOptions({ name: 'LocationPage' })
 definePageMeta({ pageType: 'location_page' })

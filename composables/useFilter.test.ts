@@ -93,7 +93,7 @@ describe('useFilter', () => {
       await applyAttributeFilter('newAttribute', 1)
       onSlideInClose()
       expect(mocks.useToast.show).toBeCalledWith(
-        'filter.updated_notification_filter',
+        'filter.notification.filter_updated',
         { type: 'SUCCESS' },
       )
     })
@@ -108,7 +108,7 @@ describe('useFilter', () => {
       }
       onSlideInClose()
       expect(mocks.useToast.show).toBeCalledWith(
-        'filter.updated_notification_sort',
+        'filter.notification.sort_updated',
         { type: 'SUCCESS' },
       )
     })
@@ -131,7 +131,7 @@ describe('useFilter', () => {
       await applyAttributeFilter('newAttribute', 1)
       onSlideInClose()
       expect(mocks.useToast.show).toBeCalledWith(
-        'filter.updated_notification_all',
+        'filter.notification.filter_and_sort_updated',
         { type: 'SUCCESS' },
       )
     })

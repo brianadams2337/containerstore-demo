@@ -56,9 +56,8 @@ onMounted(validateOrderExists)
 
 useSeoMeta({
   robots: 'noindex, nofollow',
-  title: () => t('my_account.orders.detail.meta.title', { id: id.value }),
-  description: () =>
-    t('my_account.orders.detail.meta.description', { id: id.value }),
+  title: () => t('order_detail_page.meta.title', { id: id.value }),
+  description: () => t('order_detail_page.meta.description', { id: id.value }),
 })
 
 defineOptions({ name: 'OrderDetailsView' })

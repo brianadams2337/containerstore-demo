@@ -5,7 +5,7 @@
         class="font-semi-bold-variable text-gray-600"
         data-testid="main-label"
       >
-        {{ $t('basket_card.size_label') }}:
+        {{ $t('product_attribute.size') }}:
       </span>
       <span class="font-normal text-gray-600" data-testid="sub-label">
         {{ size }}
@@ -16,7 +16,7 @@
         class="font-semi-bold-variable text-gray-600"
         data-testid="main-label"
       >
-        {{ $t('basket_card.color_label') }}:
+        {{ $t('product_attribute.color') }}:
       </span>
       <span class="font-normal text-gray-600" data-testid="sub-label">
         {{ color }}
@@ -27,7 +27,7 @@
         class="font-semi-bold-variable text-gray-600"
         data-testid="main-label"
       >
-        {{ $t('basket_card.quantity_label') }}:
+        {{ $t('global.quantity') }}:
       </span>
       <span class="font-normal text-gray-600" data-testid="sub-label">
         {{ item.quantity }}

@@ -5,7 +5,7 @@
     >
       <div class="h-px w-full bg-gray-300 max-md:hidden" />
       <span class="shrink-0 px-5 max-md:py-1 md:px-3">
-        {{ $t('subscription.or') }}
+        {{ $t('product_subscription.separation_text') }}
       </span>
       <div class="h-px w-full bg-gray-300 max-md:hidden" />
     </div>
@@ -17,17 +17,17 @@
       <h2
         class="text-2xl font-medium text-gray-900 md:text-md md:font-semi-bold-variable"
       >
-        {{ $t('subscription.subscribe') }}
+        {{ $t('product_subscription.subscribe') }}
       </h2>
 
       <div v-if="!subscriptionPrice" class="text-md text-gray-500">
-        {{ $t('subscription.select_size_message') }}
+        {{ $t('product_subscription.select_size') }}
       </div>
       <div
         v-else-if="subscriptionPrice && !subscriptionVariantEligible"
         class="text-md text-gray-500"
       >
-        {{ $t('subscription.not_eligible_message') }}
+        {{ $t('product_subscription.not_eligible_for_subscription_message') }}
       </div>
       <SFProductPrice
         v-else

@@ -30,7 +30,7 @@ loadCancellationPage()
 const i18n = useI18n()
 useHead({
   titleTemplate: (pageTitle) => pageTitle ?? null,
-  title: i18n.t('subscription.page_title'),
+  title: i18n.t('subscription_page.headline'),
 })
 
 definePageMeta({ pageType: 'subscription-cancellation' })

@@ -5,7 +5,7 @@
     :aria-expanded="visible.toString()"
     @click="visible = !visible"
   >
-    {{ $t('basket.discount') }}
+    {{ $t('basket_summary.discount') }}
     <template #append-icon>
       <IconChevronUp v-if="visible" class="mt-px !size-3.5" />
       <IconChevronDown v-else class="mt-px !size-3.5" />

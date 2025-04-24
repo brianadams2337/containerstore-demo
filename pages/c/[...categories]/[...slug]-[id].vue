@@ -43,7 +43,7 @@
         />
         <SFFilterToggleButton
           class="md:hidden"
-          :label="$t('filter.filters_sorting')"
+          :label="$t('filter.show_filter_and_sorting')"
         />
         <SFProductList
           :products="products"
@@ -113,6 +113,7 @@ import {
 } from '#storefront-product-listing'
 import { useCategoryById } from '#storefront/composables'
 import { globalGetCachedData } from '~/utils/useRpc'
+import type { NuxtApp } from '#app'
 
 const route = useRoute()
 const { $config } = useNuxtApp()
@@ -163,7 +164,8 @@ const currentCategoryPromise = useCategoryById(
     },
     options: {
       dedupe: 'defer',
-      getCachedData: globalGetCachedData,
+      getCachedData: (key, nuxtApp) =>
+        globalGetCachedData<Category>(key, nuxtApp as NuxtApp),
     },
   },
   `current-category-${currentCategoryId.value}`,
@@ -243,8 +245,9 @@ useSeoMeta({
     if (!currentCategory.value) {
       return null
     }
-    return i18n.t('plp.seo_description', {
+    return i18n.t('product_list_page.meta.description', {
       category: currentCategory.value.name,
+      shopName: $config.public.shopName,
     })
   },
 })

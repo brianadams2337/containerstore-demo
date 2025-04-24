@@ -8,7 +8,9 @@
       :disabled="quantity <= 1 || disabled"
       class="group !size-9 shrink-0 rounded-md border-none bg-gray-100 disabled:bg-gray-100 md:!size-8"
       data-testid="quantity-minus"
-      :aria-label="$t('quantity.new_value', { newQuantity: quantity - 1 })"
+      :aria-label="
+        $t('quantity_input.change_value_to', { newQuantity: quantity - 1 })
+      "
       @click="quantity--"
     >
       <IconMinus class="size-6 fill-gray-500 group-disabled:fill-gray-300" />
@@ -21,7 +23,7 @@
       data-testid="quantity-value"
       tabindex="-1"
       :aria-label="
-        $t('quantity.current_value', { selected_quantity: quantity })
+        $t('quantity_input.current_value', { currentQuantity: quantity })
       "
     />
     <SFButton
@@ -29,7 +31,9 @@
       :disabled="quantity >= maxQuantity || disabled"
       class="group !size-9 shrink-0 rounded-md border-none bg-gray-100 disabled:bg-gray-100 md:!size-8"
       data-testid="quantity-plus"
-      :aria-label="$t('quantity.new_value', { newQuantity: quantity + 1 })"
+      :aria-label="
+        $t('quantity_input.change_value_to', { newQuantity: quantity + 1 })
+      "
       @click="quantity++"
     >
       <IconPlus class="size-6 fill-gray-500 group-disabled:fill-gray-300" />

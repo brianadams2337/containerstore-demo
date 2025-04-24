@@ -2,7 +2,7 @@
   <SFFilterGroup
     v-if="!hideSorting"
     class="md:hidden"
-    :label="$t('filter.sorting')"
+    :label="$t('filter_slide_in_content.sorting')"
   >
     <SFSortSelection />
   </SFFilterGroup>
@@ -93,7 +93,9 @@
             :model-value="appliedAttributeValues[filter.slug]"
             :item="item.id"
             :label="item.name"
-            :input-aria-label="$t('filter.size', { size: item.name })"
+            :input-aria-label="
+              $t('filter_slide_in_content.size_option', { size: item.name })
+            "
             @change="$emit('applyAttributeFilter', filter.slug, item.id)"
           >
             {{ item.name }}
@@ -193,6 +195,6 @@ const getPriceRange = (
 }
 
 const getBooleanFilterLabel = ({ name, slug }: BooleanFilterItemWithValues) => {
-  return slug !== 'sale' ? name : $t('filter.only_sale')
+  return slug !== 'sale' ? name : $t('filter_slide_in_content.only_sale_option')
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="mr-auto text-gray-900" data-testid="footer-copyright">
-    {{ $t('footer.copyright', { current_year: new Date().getFullYear() }) }}
+    {{ $t('footer.copyright', { currentYear: new Date().getFullYear() }) }}
   </div>
   <ul class="flex flex-row gap-4 text-gray-600 md:contents">
     <li v-for="navItem in footerTree?.items" :key="`footer-link-${navItem.id}`">

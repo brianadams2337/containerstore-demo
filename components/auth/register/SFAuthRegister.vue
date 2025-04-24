@@ -81,10 +81,10 @@
         class="w-1/2"
         type="submit"
       >
-        {{ $t('sign_in_page.sign_up.submit') }}
+        {{ $t('auth_register.submit_sign_up') }}
       </SFButton>
       <span class="text-xs text-gray-500">
-        {{ $t('sign_in_page.sign_up.mandatory_info') }}
+        {{ $t('auth_register.mandatory_info_legend') }}
       </span>
     </div>
   </form>
@@ -99,14 +99,14 @@
     data-testid="existing-account-label"
     :class="{ 'mt-8': !externalIDPRedirects }"
   >
-    {{ $t('sign_in_page.sign_up.not_new_user') }}
+    {{ $t('auth_register.already_signed_up_question') }}
     <SFLocalizedLink
       :to="routeList.signin"
       raw
       class="rounded-md p-1 py-0.5 font-semibold hover:bg-gray-100"
       data-testid="login-page-link"
     >
-      {{ $t('sign_in_page.sign_up.go_to_login') }} </SFLocalizedLink
+      {{ $t('auth_register.go_to_login') }} </SFLocalizedLink
     >.
   </p>
 </template>

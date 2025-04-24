@@ -12,10 +12,10 @@
       >
         <IconBack class="size-3" />
         <div class="mr-auto hidden pt-0.5 md:block">
-          {{ $t('global.back-to-shop') }}
+          {{ $t('global.back_to_shop') }}
         </div>
         <div class="mr-auto block pt-0.5 md:hidden">
-          {{ $t('global.to-shop') }}
+          {{ $t('global.to_shop') }}
         </div>
       </SFLocalizedLink>
 

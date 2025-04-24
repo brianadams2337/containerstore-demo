@@ -39,7 +39,7 @@ it('should render SFBasketNavigationItem with empty basket', async () => {
   expect(basketLink).toBeInTheDocument()
   expect(basketLink).toHaveAttribute('href', '/de/basket')
   expect(
-    getByText('Sie haben keine Produkte in Ihrem Warenkorb.'),
+    getByText('Du hast keine Produkte in deinem Warenkorb.'),
   ).toBeInTheDocument()
 })
 

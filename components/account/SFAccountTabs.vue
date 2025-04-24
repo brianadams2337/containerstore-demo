@@ -32,17 +32,17 @@ const tabs = computed(() => [
   {
     to: routeList.orders,
     active: route.fullPath.includes(routeList.orders.path),
-    title: t('my_account.tabs.orders'),
+    title: t('account_tabs.orders'),
   },
   {
     to: routeList.subscriptionOverview,
     active: isActive(routeList.subscriptionOverview),
-    title: t('my_account.tabs.subscriptions'),
+    title: t('account_tabs.subscriptions'),
   },
   {
     to: routeList.profile,
     active: isActive(routeList.profile),
-    title: t('my_account.tabs.profile'),
+    title: t('account_tabs.profile'),
   },
 ])
 

@@ -5,7 +5,7 @@
       size="xl"
       tag="h3"
     >
-      {{ $t('sign_in_page.reset_password.title') }}
+      {{ $t('auth_reset_password_slide_in_header.title') }}
     </SFHeadline>
     <SFButton
       class="group my-2 -mr-2 hover:bg-gray-100 max-lg:hidden md:bg-transparent"
@@ -20,7 +20,7 @@
     </SFButton>
   </div>
   <p class="text-md text-gray-500">
-    {{ $t('sign_in_page.reset_password.description') }}
+    {{ $t('auth_reset_password_slide_in_header.description') }}
   </p>
 </template>
 

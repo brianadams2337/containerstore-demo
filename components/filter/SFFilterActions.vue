@@ -13,7 +13,7 @@
           class="flex h-full items-center space-x-2 rounded-xl bg-status-success-light p-3 px-4 font-semi-bold-variable leading-none text-status-success"
         >
           <IconCheckGreen class="my-auto size-4" />
-          <span>{{ $t('filter.cleared_notification') }}</span>
+          <span>{{ $t('filter.notification.all_filters_cleared') }}</span>
         </div>
       </div>
     </Transition>
@@ -24,7 +24,7 @@
       class="w-1/2"
       @click="$emit('reset')"
     >
-      {{ $t('filter.reset_all') }}
+      {{ $t('filter_actions.reset_all_filter') }}
     </SFButton>
     <SFButton
       autofocus
@@ -59,7 +59,9 @@ defineEmits<{
 
 const showResultsLabel = computed(() => {
   return filteredProductCount
-    ? t('filter.show_results_count', { count: filteredProductCount })
-    : t('filter.show_results')
+    ? t('filter_actions.show_results_with_count', {
+        count: filteredProductCount,
+      })
+    : t('filter_actions.show_results')
 })
 </script>

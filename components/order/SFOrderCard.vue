@@ -2,9 +2,7 @@
   <SFLocalizedLink
     :to="getOrderDetailsRoute(id)"
     :data-testid="`order-detail-card-${id}`"
-    :aria-label="
-      $t('my_account.orders.detail.go_to_order', { orderNumber: id })
-    "
+    :aria-label="$t('order_card.go_to_order', { orderNumber: id })"
     raw
     class="flex items-center justify-between rounded-xl border border-gray-300 bg-white p-5"
   >
@@ -15,22 +13,20 @@
         size="md"
         tag="h3"
       >
-        {{ $t('my_account.orders.detail.title', { id }) }}
+        {{ $t('order_card.title', { id }) }}
       </SFHeadline>
       <span v-if="confirmedAt" class="mb-1">
-        {{ $t('my_account.orders.order_date') }}:
+        {{ $t('order_card.order_date') }}:
         {{ formatLocaleDate(new Date(confirmedAt)) }}
       </span>
       <span v-if="itemCount">
-        {{ $t('my_account.orders.items_count') }}: {{ itemCount }}
+        {{ $t('order_card.items') }}: {{ itemCount }}
       </span>
     </div>
     <SFButton
       :to="getOrderDetailsRoute(id)"
       :data-testid="`go-to-order-detail-${id}`"
-      :aria-label="
-        $t('my_account.orders.detail.go_to_order', { orderNumber: id })
-      "
+      :aria-label="$t('order_card.go_to_order', { orderNumber: id })"
       variant="tertiary"
       class="mr-0.5 !size-10 !p-0"
     >

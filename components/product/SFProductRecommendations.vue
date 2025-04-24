@@ -19,7 +19,7 @@
           :disabled="!isPrevEnabled"
           size="sm"
           variant="slider"
-          :aria-label="$t('slider.previous_label')"
+          :aria-label="$t('slider.got_to_previous_item')"
           @click="prev()"
         >
           <IconChevronLeft class="size-4 w-5" />
@@ -27,7 +27,7 @@
         <SFButton
           class="rounded-r-full"
           :disabled="!isNextEnabled"
-          :aria-label="$t('slider.next_label')"
+          :aria-label="$t('slider.got_to_next_item')"
           size="sm"
           variant="slider"
           @click="next()"

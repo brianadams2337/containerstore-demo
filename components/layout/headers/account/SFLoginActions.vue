@@ -15,7 +15,7 @@
       class="font-semibold"
       @click="$emit('close')"
     >
-      {{ $t('global.register') }}
+      {{ $t('global.sign_up') }}
     </SFButton>
   </div>
 </template>

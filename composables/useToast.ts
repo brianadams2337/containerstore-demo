@@ -26,7 +26,7 @@ export function useToast() {
       CONFIRM: [
         {
           class: classes,
-          text: $i18n.t('notification.ok'),
+          text: $i18n.t('notification.confirm'),
           onClick: (actions: NotificationOnClickActions) => actions.close(),
         },
       ],
@@ -40,7 +40,7 @@ export function useToast() {
       RELOAD: [
         {
           class: classes,
-          text: $i18n.t('notification.loaded_again'),
+          text: $i18n.t('notification.reload_page'),
           onClick: (actions: NotificationOnClickActions) => actions.close(),
         },
         {

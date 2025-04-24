@@ -4,7 +4,7 @@
     fab
     size="sm"
     class="size-10 border border-gray-200 text-gray-500"
-    :aria-label="$t('plp.back_navigation_button_label')"
+    :aria-label="$t('global.back')"
     :to="link"
   >
     <template #append-icon="{ _class }">

@@ -26,7 +26,7 @@
           class="rounded bg-gray-100 p-1 text-sm font-medium leading-none !text-gray-600 xl:bg-white xl:hover:translate-x-[-4px] xl:hover:bg-gray-100"
           @click="$emit('clickReset')"
         >
-          {{ resetLabel ?? $t('filter.reset') }}
+          {{ resetLabel ?? $t('filter_group.reset') }}
         </SFButton>
       </slot>
     </div>

@@ -117,6 +117,7 @@ import {
 import {
   getFirstAttributeValue,
   type Price,
+  type Product,
   type Variant,
 } from '@scayle/storefront-nuxt'
 import { useSeoMeta, useHead, definePageMeta, useImage } from '#imports'
@@ -154,6 +155,7 @@ import { formatColors } from '~/utils'
 import { generateProductSchema } from '#storefront-product-detail/utils/seo'
 import SFProductPromotionGifts from '~/components/product/promotion/gifts/SFProductPromotionGifts.vue'
 import { globalGetCachedData } from '~/utils/useRpc'
+import type { NuxtApp } from '#app'
 
 const SFLazyStoreLocatorSlideIn = defineAsyncComponent(
   () => import('~/components/locator/SFStoreLocatorSlideIn.vue'),
@@ -187,7 +189,8 @@ const {
     options: {
       lazy: true,
       dedupe: 'defer',
-      getCachedData: globalGetCachedData,
+      getCachedData: (key, nuxtApp) =>
+        globalGetCachedData<Product>(key, nuxtApp as NuxtApp),
     },
   },
   `PDP-${productId.value}`,
@@ -346,7 +349,10 @@ const i18n = useI18n()
 
 useSeoMeta({
   title,
-  description: i18n.t('pdp.meta.description', { productName: name.value }),
+  description: i18n.t('product_detail_page.meta.description', {
+    productName: name.value,
+    shopName: $config.public.shopName,
+  }),
   robots,
 })
 useHead({

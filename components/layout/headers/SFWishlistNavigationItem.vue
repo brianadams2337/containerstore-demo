@@ -30,9 +30,6 @@ const mounted = useMounted()
 const { count } = useWishlist()
 const i18n = useI18n()
 const ariaLabel = computed(() =>
-  i18n.t(
-    'navigation.wishlist_aria_label',
-    mounted.value ? count.value || 0 : 0,
-  ),
+  i18n.t('navigation.wishlist', mounted.value ? count.value || 0 : 0),
 )
 </script>

@@ -10,7 +10,7 @@
       >
         <template #title>
           <h2>
-            {{ $t('pdp.information.' + key) }}
+            {{ $t('product_details.information.' + key) }}
           </h2>
         </template>
         <div class="flex flex-col gap-2">
@@ -27,18 +27,26 @@
       </SFAccordionEntry>
       <SFAccordionEntry
         id="product-details-shipping"
-        :title="$t('pdp.shipping_return_heading')"
+        :title="$t('product_details.shipping_return_heading.title')"
       >
-        <div class="mb-8">{{ $t('pdp.shipping.general_info') }}</div>
-        <div class="mb-1 font-semi-bold-variable">
-          {{ $t('pdp.shipping.dhl_headline') }}
+        <div class="mb-8">
+          {{ $t('product_details.shipping_return_heading.general_info') }}
         </div>
-        <div class="mb-8">{{ $t('pdp.shipping.dhl_paragraph') }}</div>
         <div class="mb-1 font-semi-bold-variable">
-          {{ $t('pdp.shipping.hermes_headline') }}
+          {{ $t('product_details.shipping_return_heading.dhl_headline') }}
         </div>
-        <div class="mb-8">{{ $t('pdp.shipping.hermes_paragraph') }}</div>
-        <div>{{ $t('pdp.shipping.return_information') }}</div>
+        <div class="mb-8">
+          {{ $t('product_details.shipping_return_heading.dhl_paragraph') }}
+        </div>
+        <div class="mb-1 font-semi-bold-variable">
+          {{ $t('product_details.shipping_return_heading.hermes_headline') }}
+        </div>
+        <div class="mb-8">
+          {{ $t('product_details.shipping_return_heading.hermes_paragraph') }}
+        </div>
+        <div>
+          {{ $t('product_details.shipping_return_heading.return_information') }}
+        </div>
       </SFAccordionEntry>
     </div>
   </div>

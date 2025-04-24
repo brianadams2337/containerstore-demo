@@ -8,7 +8,7 @@
       tag="h1"
       data-testid="account-headline"
     >
-      {{ t('my_account.title') }}
+      {{ t('account_page.title') }}
     </SFHeadline>
     <SFAccountTabs />
     <hr class="mb-6 mt-4 h-px bg-gray-200" aria-hidden="true" />
@@ -30,8 +30,8 @@ const { t } = useI18n()
 
 useSeoMeta({
   robots: 'noindex, nofollow',
-  title: t('my_account.meta.title'),
-  description: t('my_account.meta.description'),
+  title: t('account_page.meta.title'),
+  description: t('account_page.meta.description'),
 })
 
 defineOptions({ name: 'AccountArea' })

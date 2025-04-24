@@ -1,14 +1,18 @@
-import { extendPromise, ExistingItemHandling } from '@scayle/storefront-nuxt'
+import {
+  extendPromise,
+  ExistingItemHandling,
+  AddToBasketFailureKind,
+} from '@scayle/storefront-nuxt'
 import type {
   AddOrUpdateItemType,
   BasketItem,
   BasketItemUpdateData,
 } from '@scayle/storefront-nuxt'
-import { useI18n } from '#i18n'
+import { useI18n, type Composer } from '#i18n'
 import { useToast } from '~/composables/useToast'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
 import { useRouteHelpers } from '~/composables'
-import { routeList, getBasketToastErrorMessageKey } from '~/utils'
+import { routeList } from '~/utils'
 import { useBasket, useLog } from '#storefront/composables'
 import { hasSubscriptionCustomData } from '~/modules/subscription/helpers/subscription'
 import { useApplyPromotions } from '#storefront-promotions/composables/useApplyPromotions'
@@ -26,6 +30,41 @@ export type UseBasketActionsReturn = {
   removeItem: (item: BasketItem) => Promise<void>
   /** A function which updates the quantity of the passed basket item and shows a success or error toast. It also triggers a `add_to_basket` tracking event.  */
   updateItemQuantity: (item: BasketItem, newQuantity: number) => Promise<void>
+}
+
+/**
+ * Returns a translation key for a basket error message based on the provided error.
+ *
+ * @param error - The error to determine the error message key for
+ * @returns The translation key corresponding to the error type
+ */
+export const getBasketToastErrorMessage = (
+  error: unknown,
+  i18n: Composer,
+  productName?: string,
+) => {
+  if (error instanceof Error) {
+    if (
+      error.cause === AddToBasketFailureKind.ITEM_ADDED_WITH_REDUCED_QUANTITY
+    ) {
+      return i18n.t(
+        'add_to_basket.notification.add_with_reduced_quantity_error',
+      )
+    } else if (error.cause === AddToBasketFailureKind.ITEM_UNAVAILABLE) {
+      return i18n.t(
+        'add_to_basket.notification.add_to_basket_variant_out_of_stock_error',
+      )
+    } else if (
+      error.cause === AddToBasketFailureKind.MAXIMUM_ITEM_COUNT_REACHED
+    ) {
+      return i18n.t(
+        'add_to_basket.notification.add_to_basket_max_basket_items_error',
+      )
+    }
+  }
+  return i18n.t('add_to_basket.notification.add_to_basket_error', {
+    productName,
+  })
 }
 
 /**
@@ -67,11 +106,14 @@ export function useBasketActions(): UseBasketActionsReturn &
     hasSubscriptionData: boolean,
   ) => {
     const message = hasSubscriptionData
-      ? i18n.t('basket.notification.add_subscription_to_basket_success', {
-          productName: item.productName,
-          interval: item.interval,
-        })
-      : i18n.t('basket.notification.add_to_basket_success', {
+      ? i18n.t(
+          'add_to_basket.notification.add_subscription_to_basket_success',
+          {
+            productName: item.productName,
+            interval: item.interval,
+          },
+        )
+      : i18n.t('add_to_basket.notification.add_to_basket_success', {
           productName: item.productName,
         })
 
@@ -94,7 +136,7 @@ export function useBasketActions(): UseBasketActionsReturn &
     } catch (error) {
       log.error('Item could not be added to basket', error)
       show(
-        i18n.t(getBasketToastErrorMessageKey(error), {
+        i18n.t(getBasketToastErrorMessage(error, i18n), {
           productName: item.productName,
         }),
         { type: 'ERROR', action: 'CONFIRM' },

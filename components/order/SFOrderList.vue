@@ -6,7 +6,7 @@
         :key="id"
         class="mb-6 last-of-type:mb-0"
       >
-        <SFOrderItemCard
+        <SFOrderCard
           :id="id"
           :confirmed-at="confirmedAt"
           :status="status"
@@ -22,15 +22,15 @@
   </div>
   <SFEmptyState
     v-else
-    :title="$t('my_account.orders.no_results.title')"
-    :description="$t('my_account.orders.no_results.description')"
+    :title="$t('order_list.no_orders.title')"
+    :description="$t('order_list.no_orders.description')"
   />
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { OrderSummary } from '@scayle/storefront-nuxt'
-import SFOrderItemCard from '~/components/order/SFOrderItemCard.vue'
+import SFOrderCard from '~/components/order/SFOrderCard.vue'
 import { SFPagination } from '#storefront-ui/components'
 import { useRoute } from '#app/composables/router'
 import SFEmptyState from '~/components/SFEmptyState.vue'

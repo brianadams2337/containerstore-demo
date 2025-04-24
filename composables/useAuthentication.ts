@@ -48,17 +48,6 @@ export interface UseAuthenticationReturn {
   clearErrorMessage: () => void
 }
 
-const HttpErrorMessages: Record<number, string> = {
-  400: '400_bad_request',
-  401: '401_unauthorized',
-  403: '403_user_deactivated',
-  404: '404_not_found',
-  406: '406_token_expired',
-  409: '409_already_exists',
-  422: '422_unprocessable_entity',
-  500: '500_server_error',
-} as const
-
 /**
  * A composable for authentication actions and data manipulation.
  * In addition of interacting with the authentication, it also takes care of tracking,
@@ -88,7 +77,7 @@ export function useAuthentication(
   const isSubmitting = ref(false)
 
   const successMessage = computed<string>(() => {
-    return $i18n.t(`sign_in_page.${event}.status.success`)
+    return $i18n.t(`authentication.notification.success.${event}`)
   })
 
   const { refresh: refreshWishlist } = useWishlist()
@@ -261,16 +250,39 @@ export function useAuthentication(
     )
   }
 
+  const getGenericErrorMessage = (status: number): string => {
+    switch (status) {
+      case 400:
+        return $i18n.t('authentication.notification.error.generic.400')
+      case 401:
+        return $i18n.t('authentication.notification.error.generic.401')
+      case 403:
+        return $i18n.t('authentication.notification.error.generic.403')
+      case 404:
+        return $i18n.t('authentication.notification.error.generic.404')
+      case 406:
+        return $i18n.t('authentication.notification.error.generic.406')
+      case 409:
+        return $i18n.t('authentication.notification.error.generic.409')
+      case 422:
+        return $i18n.t('authentication.notification.error.generic.422')
+      case 500:
+        return $i18n.t('authentication.notification.error.generic.500')
+      default:
+        return $i18n.t('authentication.notification.error.generic.500')
+    }
+  }
+
   const handleError = (error: unknown): void => {
     if (error instanceof FetchError) {
       const status = error.response?.status
-      if (status && Object.hasOwn(HttpErrorMessages, status)) {
-        const authFlowSpecificPath = `sign_in_page.${event}.status.error.${HttpErrorMessages[status]}`
+      if (status) {
+        const authFlowSpecificPath = `authentication.notification.error.${event}.${status}`
         // Prioritize specific translations for certain flows (e.g., guest login error 409).
         // If a specific translation is not available, fall back to the general sign-in error message translations.
         errorMessage.value = $i18n.te(authFlowSpecificPath)
           ? $i18n.t(authFlowSpecificPath)
-          : $i18n.t(`sign_in_page.status.error.${HttpErrorMessages[status]}`)
+          : getGenericErrorMessage(status)
       }
     }
     // remove user data (email, password) from the error object, before logging it

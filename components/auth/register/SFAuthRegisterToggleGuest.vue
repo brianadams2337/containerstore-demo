@@ -6,7 +6,7 @@
     <SFSwitch
       id="guest-switch"
       v-model="isGuestEnabled"
-      :label="$t('sign_in_page.guest_login.label')"
+      :label="$t('auth_register_toggle_guest.label')"
       class="mb-4"
     />
     <div
@@ -15,7 +15,7 @@
       data-testid="register-guest-info"
     >
       <span class="text-xs font-variable text-gray-600">
-        {{ $t('sign_in_page.guest_login.activation_hint') }}
+        {{ $t('auth_register_toggle_guest.activation_hint') }}
       </span>
       <IconInfoOutlineSquare class="size-4 text-gray-500" />
     </div>

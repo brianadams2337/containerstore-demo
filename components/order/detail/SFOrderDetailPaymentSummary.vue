@@ -2,7 +2,7 @@
   <div class="flex flex-col gap-4 border-t pt-4">
     <dl class="grid grid-cols-2 justify-between gap-2 text-base text-gray-900">
       <dt class="font-semi-bold-variable">
-        {{ $t('my_account.orders.detail.subtotal') }}
+        {{ $t('order_detail_payment_summary.subtotal') }}
       </dt>
       <dd
         class="text-right font-semi-bold-variable"
@@ -11,7 +11,7 @@
         {{ formatCurrency(subtotal) }}
       </dd>
 
-      <dt>{{ $t('my_account.orders.detail.shipping_costs') }}</dt>
+      <dt>{{ $t('order_detail_payment_summary.shipping_costs') }}</dt>
       <dd class="text-right" data-testid="order-detail-shipping-cost">
         {{ formatCurrency(shippingCost) }}
       </dd>
@@ -20,12 +20,14 @@
     <dl
       class="grid grid-cols-2 justify-between gap-0 text-lg font-semi-bold-variable"
     >
-      <dt class="text-lg">{{ $t('my_account.orders.detail.total') }}</dt>
+      <dt class="text-lg">{{ $t('order_detail_payment_summary.total') }}</dt>
       <dd class="text-right text-xl" data-testid="order-detail-total">
         {{ formatCurrency(cost.withTax) }}
       </dd>
       <dt class="text-xs text-gray-500">
-        {{ includesTax ? $t('incl_tax') : $t('excl_tax') }}
+        {{
+          includesTax ? $t('global.including_vat') : $t('global.excluding_vat')
+        }}
       </dt>
     </dl>
   </div>

@@ -5,7 +5,7 @@
   >
     <IconErrorHexagon class="size-4 text-product-sold-out" />
     <span>
-      {{ $t('pdp.sold_out') }}
+      {{ $t('global.sold_out_long') }}
     </span>
   </div>
 </template>

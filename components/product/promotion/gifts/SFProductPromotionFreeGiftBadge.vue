@@ -3,7 +3,7 @@
     class="rounded-br-lg rounded-tl-lg p-0.5 px-1.5 text-2xs font-semibold uppercase"
     :style="colorStyle"
   >
-    {{ $t('pdp.promotion.free_label') }}
+    {{ $t('promotion.free_label') }}
   </div>
 </template>
 

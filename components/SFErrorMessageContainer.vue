@@ -13,5 +13,5 @@
 <script lang="ts" setup>
 import { SFFadeInTransition } from '#storefront-ui/components'
 
-defineProps<{ message: string | null }>()
+defineProps<{ message: string | null | undefined }>()
 </script>

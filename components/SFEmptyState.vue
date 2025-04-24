@@ -33,7 +33,7 @@
           :to="getLocalizedRoute(routeList.signin)"
           data-testid="button-signin"
         >
-          {{ $t('global.sign_in_label') }}
+          {{ $t('global.sign_in') }}
         </SFButton>
         <SFButton
           size="lg"
@@ -41,7 +41,7 @@
           variant="tertiary"
           data-testid="button-continue-shopping"
         >
-          {{ $t('global.continue_shopping_label') }}
+          {{ $t('global.continue_shopping') }}
         </SFButton>
       </div>
       <slot />

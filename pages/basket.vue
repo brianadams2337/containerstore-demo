@@ -2,8 +2,8 @@
   <SFAsyncDataWrapper :status="basketStatus">
     <SFEmptyState
       v-if="basketCount === 0"
-      :title="$t('basket.empty_title')"
-      :description="$t('basket.empty_description')"
+      :title="$t('basket_page.empty_basket_title')"
+      :description="$t('basket_page.empty_basket_description')"
     />
     <div
       v-else
@@ -186,8 +186,8 @@ const {
 
 useSeoMeta({
   robots: 'noindex,follow',
-  title: $i18n.t('basket.meta.title'),
-  description: $i18n.t('basket.meta.description', { shopName }),
+  title: $i18n.t('basket_page.meta.title'),
+  description: $i18n.t('basket_page.meta.description', { shopName }),
 })
 
 useHead({

@@ -5,17 +5,17 @@
       @click.stop
       @keydown.enter.stop
     >
-      {{ $t('store_locator.buttons.opening_hours') }}
+      {{ $t('store_locator.store_information.opening_hours') }}
     </summary>
     <div class="pb-2">
       <div v-for="day in daysOfWeek" :key="day" class="mb-1">
         <div class="flex items-center justify-between">
-          <div class="grow">
-            {{ $t(`store_locator.opening_times.${day}`) }}
+          <div class="grow capitalize">
+            {{ getWeekdayName(day) }}
           </div>
           <div class="flex w-24 flex-col text-justify">
             <div v-if="!openingTimes[day].length">
-              {{ $t('store_locator.labels.store_closed') }}
+              {{ $t('store_locator.store_information.store_closed') }}
             </div>
             <div v-else>
               <div v-for="(time, idx) in openingTimes[day]" :key="idx">
@@ -32,6 +32,7 @@
 import { computed } from 'vue'
 import type { OpeningTimes } from '@scayle/omnichannel-nuxt'
 import { useFirstDayOfWeek } from '~/composables/useFirstDayOfWeek'
+import { useCurrentShopLocale } from '~/composables/useCurrentShopLocale'
 
 defineProps<{ openingTimes: OpeningTimes }>()
 
@@ -40,6 +41,12 @@ const firstDay = useFirstDayOfWeek()
 type DayOfWeek = 'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat' | 'sun'
 
 const DAYS: DayOfWeek[] = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+
+const locale = useCurrentShopLocale()
+const dateFormatter = Intl.DateTimeFormat(locale.value, { weekday: 'long' })
+const getWeekdayName = (day: DayOfWeek) => {
+  return dateFormatter.format(new Date(2025, 3, DAYS.indexOf(day)))
+}
 
 const daysOfWeek = computed<DayOfWeek[]>(() => {
   const result = DAYS.slice()

@@ -7,7 +7,7 @@
       <div class="bg-white p-5 shadow-[0_3px_24px_0_rgba(0,0,0,0.12)]">
         <div class="flex items-center justify-between">
           <SFHeadline :is-uppercase="false" size="lg" tag="p"
-            >{{ $t('store_locator.headline') }}
+            >{{ $t('store_locator_slide_in.headline') }}
           </SFHeadline>
           <SFButton
             variant="raw"
@@ -21,13 +21,13 @@
           </SFButton>
         </div>
         <div>
-          <p class="mt-5 text-xs">{{ $t('store_locator.subline') }}</p>
+          <p class="mt-5 text-xs">{{ $t('location_page.subline') }}</p>
         </div>
         <div class="mt-3 flex items-center justify-center gap-4">
           <SFTextInput
             v-model="address"
             autocomplete="off"
-            :placeholder="$t('store_locator.input_placeholder')"
+            :placeholder="$t('store_locator.search_store_input_placeholder')"
             type="text"
             required
             data-testid="store-input"
@@ -40,7 +40,7 @@
             :disabled="!address.length"
             @click="searchStore"
           >
-            {{ $t('store_locator.buttons.search') }}
+            {{ $t('global.search') }}
           </SFButton>
         </div>
       </div>
@@ -48,7 +48,7 @@
     <template #slide-in-body>
       <div class="max-h-[calc(100%-250px)] overflow-y-auto scrollbar-hide">
         <div v-if="!stores.length" class="p-5">
-          {{ $t('store_locator.no_results') }}
+          {{ $t('store_locator_slide_in.no_results') }}
         </div>
         <SFStoreList
           v-else
@@ -69,7 +69,7 @@
         :disabled="stores.length === 0 || currentSelectedStoreId === undefined"
         @click="selectStore"
       >
-        {{ $t('store_locator.buttons.select_store') }}
+        {{ $t('store_locator_slide_in.select_store') }}
       </SFButton>
     </template>
   </SFSlideIn>

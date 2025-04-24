@@ -5,8 +5,10 @@
     data-testid="promotion-header-button"
     :aria-label="
       promotionCount
-        ? $t('promotion.overlay_active', { total: promotionCount })
-        : $t('promotion.overlay')
+        ? $t('promotion_slide_in.open_button.active_promotions_title', {
+            total: promotionCount,
+          })
+        : $t('promotion_slide_in.open_button.no_active_promotions_title')
     "
     @click="toggle"
   >

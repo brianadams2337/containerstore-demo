@@ -6,16 +6,16 @@
       class="sticky top-8 flex max-w-88 flex-col gap-4 text-base font-variable leading-3.5"
     >
       <SFHeadline tag="h2" data-testid="headline">
-        {{ $t('basket.total') }}
+        {{ $t('basket_summary.total') }}
       </SFHeadline>
       <div class="flex justify-between">
-        <h2>{{ $t('basket.subtotal') }}</h2>
+        <h2>{{ $t('basket_summary.subtotal') }}</h2>
         <span v-if="subtotal" data-testid="basket-price-subtotal">
           {{ formatCurrency(subtotal) }}
         </span>
       </div>
       <div class="flex justify-between">
-        <h2>{{ $t('basket.delivery') }}</h2>
+        <h2>{{ $t('basket_summary.delivery') }}</h2>
         <span>
           {{ $t('price.starting_from') }}
           {{ formatCurrency(0) }}*
@@ -34,7 +34,7 @@
       />
       <SFBasketSummaryVoucherDisclaimer />
       <p class="text-xs text-secondary">
-        {{ $t('basket.summary.delivery_fees') }}
+        {{ $t('basket_summary.delivery_fees') }}
       </p>
     </section>
   </div>

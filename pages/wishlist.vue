@@ -4,7 +4,7 @@
       tag="h1"
       class="mt-1.5 !font-semi-bold-variable text-gray-900 max-sm:text-2xl max-sm:leading-6 sm:mt-0"
     >
-      {{ $t('wishlist.heading') }}
+      {{ $t('wishlist_page.title') }}
       <ClientOnly>
         <SFFadeInTransition v-if="count !== undefined && count > 0" appear>
           <span
@@ -34,8 +34,8 @@
       </div>
       <SFEmptyState
         v-if="count === 0"
-        :title="$t('wishlist.no_items_info')"
-        :description="$t('wishlist.continue_shopping_info')"
+        :title="$t('wishlist_page.empty_wishlist_title')"
+        :description="$t('wishlist_page.empty_wishlist_description')"
         icon="EmptyWishlist"
       />
 
@@ -96,8 +96,8 @@ const {
 } = useNuxtApp()
 useSeoMeta({
   robots: 'noindex, nofollow',
-  title: t('wishlist.meta.title'),
-  description: t('wishlist.meta.description'),
+  title: t('wishlist_page.meta.title'),
+  description: t('wishlist_page.meta.description'),
 })
 
 const route = useRoute()

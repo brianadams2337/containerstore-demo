@@ -27,6 +27,6 @@ const isRegisterRoute = computed(() => route.query.register === 'true')
 
 const getLabel = (provider: string): string => {
   const registerOrLoginKey = isRegisterRoute.value ? 'register' : 'login'
-  return t(`sign_in_page.idp.${registerOrLoginKey}.${provider}`)
+  return t(`auth_idp_redirects.${registerOrLoginKey}.${provider}`)
 }
 </script>

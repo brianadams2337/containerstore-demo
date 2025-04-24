@@ -2,7 +2,9 @@
   <div class="relative flex w-10 flex-col items-center gap-2">
     <div class="group relative">
       <input
-        :aria-label="$t('filter.select_color', { color: color.name })"
+        :aria-label="
+          $t('filter_color_chip.select_color', { color: color.name })
+        "
         :data-color-id="color.id"
         :value="color"
         class="absolute z-20 size-full cursor-pointer appearance-none rounded-lg"
