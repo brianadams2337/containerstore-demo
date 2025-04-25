@@ -2040,10 +2040,10 @@
     vue-i18n "^10.0.7"
     vue-router "^4.5.0"
 
-"@nuxtjs/tailwindcss@6.14.0-20250424-101458-103b18d":
-  version "6.14.0-20250424-101458-103b18d"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/tailwindcss/-/tailwindcss-6.14.0-20250424-101458-103b18d.tgz#3b14212298f04b7bd83bfaf4f8fa8a192fd5f675"
-  integrity sha512-UK3qDT4PH5Lgiz25YY+1m404nQfH4QpsucXT0j5vjlsJqBSfmuHgfm0Xg4QyjQR986/Di1JWIMGaUaMz1BlL/Q==
+"@nuxtjs/tailwindcss@6.14.0-20250425-132432-680246d":
+  version "6.14.0-20250425-132432-680246d"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/tailwindcss/-/tailwindcss-6.14.0-20250425-132432-680246d.tgz#41e931cdf1481ed8c942fc772b4c3cf966f3bdef"
+  integrity sha512-3DIMtgqMsdkj5Pby0v0q5eblbp+2lyp1VZwd0YsvdYRTf3cjjMYRyHhtYYnl+usqcqv3VET+BxAmLKJ6zl5hvg==
   dependencies:
     "@nuxt/kit" "^3.16.0"
     autoprefixer "^10.4.20"
