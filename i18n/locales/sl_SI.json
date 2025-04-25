@@ -33,7 +33,8 @@
     "excluding_vat": "brez DDV.",
     "save": "Shrani",
     "search": "Iskanje",
-    "quantity": "Količina"
+    "quantity": "Količina",
+    "scroll_to_top_label": "Pomaknite se na vrh"
   },
   "notification": {
     "confirm": "V REDU",

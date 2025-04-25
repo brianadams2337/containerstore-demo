@@ -33,7 +33,8 @@
     "excluding_vat": "be PVM.",
     "save": "Išsaugoti",
     "search": "Paieška",
-    "quantity": "Kiekis"
+    "quantity": "Kiekis",
+    "scroll_to_top_label": "Slinkti į viršų"
   },
   "notification": {
     "confirm": "GERAI",

@@ -33,7 +33,8 @@
     "excluding_vat": "excl. btw.",
     "save": "Opslaan",
     "search": "Zoeken",
-    "quantity": "Hoeveelheid"
+    "quantity": "Hoeveelheid",
+    "scroll_to_top_label": "Scroll naar boven"
   },
   "notification": {
     "confirm": "OK",

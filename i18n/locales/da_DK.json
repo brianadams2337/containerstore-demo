@@ -33,7 +33,8 @@
     "excluding_vat": "ekskl. moms.",
     "save": "Gem",
     "search": "Søg",
-    "quantity": "Mængde"
+    "quantity": "Mængde",
+    "scroll_to_top_label": "Rul til toppen"
   },
   "notification": {
     "confirm": "OK",

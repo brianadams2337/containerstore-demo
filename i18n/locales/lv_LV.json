@@ -33,7 +33,8 @@
     "excluding_vat": "bez PVN.",
     "save": "Saglabāt",
     "search": "Meklēt",
-    "quantity": "Daudzums"
+    "quantity": "Daudzums",
+    "scroll_to_top_label": "Ritināt uz augšu"
   },
   "notification": {
     "confirm": "LABI",

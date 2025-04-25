@@ -33,7 +33,8 @@
     "excluding_vat": "bez DPH.",
     "save": "Uložiť",
     "search": "Vyhľadávanie",
-    "quantity": "Množstvo"
+    "quantity": "Množstvo",
+    "scroll_to_top_label": "Posunúť na začiatok"
   },
   "notification": {
     "confirm": "OK",

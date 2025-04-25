@@ -33,7 +33,8 @@
     "excluding_vat": "excl. VAT.",
     "save": "Запазване",
     "search": "Търсене",
-    "quantity": "Количество"
+    "quantity": "Количество",
+    "scroll_to_top_label": "Превъртете към върха"
   },
   "notification": {
     "confirm": "OK",

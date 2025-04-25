@@ -33,7 +33,8 @@
     "excluding_vat": "excl. VAT.",
     "save": "Save",
     "search": "Search",
-    "quantity": "Quantity"
+    "quantity": "Quantity",
+    "scroll_to_top_label": "Scroll to top"
   },
   "notification": {
     "confirm": "OK",

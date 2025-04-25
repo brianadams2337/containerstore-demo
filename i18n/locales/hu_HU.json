@@ -33,7 +33,8 @@
     "excluding_vat": "áfa nélkül.",
     "save": "Mentés",
     "search": "Keresés",
-    "quantity": "Mennyiség"
+    "quantity": "Mennyiség",
+    "scroll_to_top_label": "Scroll to top"
   },
   "notification": {
     "confirm": "OK",

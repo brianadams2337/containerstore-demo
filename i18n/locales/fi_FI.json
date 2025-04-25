@@ -33,7 +33,8 @@
     "excluding_vat": "ilman arvonlisäveroa.",
     "save": "Tallenna",
     "search": "Haku",
-    "quantity": "Määrä"
+    "quantity": "Määrä",
+    "scroll_to_top_label": "Vieritä ylöspäin"
   },
   "notification": {
     "confirm": "OK",

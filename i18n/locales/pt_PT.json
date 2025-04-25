@@ -33,7 +33,8 @@
     "excluding_vat": "exclui IVA.",
     "save": "Guarda",
     "search": "Procura",
-    "quantity": "Quantidade"
+    "quantity": "Quantidade",
+    "scroll_to_top_label": "Rola para o topo"
   },
   "notification": {
     "confirm": "OK",

@@ -33,7 +33,8 @@
     "excluding_vat": "fără TVA.",
     "save": "Salvare",
     "search": "Căutare",
-    "quantity": "cantitate"
+    "quantity": "cantitate",
+    "scroll_to_top_label": "Derulați în partea de sus"
   },
   "notification": {
     "confirm": "OK",

@@ -33,7 +33,8 @@
     "excluding_vat": "excl. VAT.",
     "save": "Save",
     "search": "Search",
-    "quantity": "Quantity"
+    "quantity": "Quantity",
+    "scroll_to_top_label": "Scroll to top"
   },
   "notification": {
     "confirm": "OK",
@@ -160,7 +161,6 @@
     },
     "empty_basket_title": "Your shopping cart is empty.",
     "empty_basket_description": "Your products will appear as soon as you add them to your cart.",
-
     "meta": {
       "title": "Basket",
       "description": "Review the items in your basket and proceed to checkout easily. Secure and hassle-free shopping at {shopName}."
@@ -192,7 +192,6 @@
     "promotion": "Promotion",
     "voucher": "Voucher"
   },
-
   "add_to_basket": {
     "add_to_basket": "Add to basket",
     "product_name_fallback": "Product",
@@ -547,7 +546,6 @@
       "available": "Available",
       "low_stock": "Low stock"
     },
-
     "search_store_input_placeholder": "Enter city or zip code"
   },
   "store_locator_slide_in": {

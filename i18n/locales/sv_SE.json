@@ -33,7 +33,8 @@
     "excluding_vat": "exklusive moms.",
     "save": "spara",
     "search": "sökning",
-    "quantity": "Kvantitet"
+    "quantity": "Kvantitet",
+    "scroll_to_top_label": "Scrolla till toppen"
   },
   "notification": {
     "confirm": "OK",

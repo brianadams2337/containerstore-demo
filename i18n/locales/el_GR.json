@@ -33,7 +33,8 @@
     "excluding_vat": "χωρίς ΦΠΑ.",
     "save": "Αποθήκευση",
     "search": "Αναζήτηση",
-    "quantity": "Ποσότητα"
+    "quantity": "Ποσότητα",
+    "scroll_to_top_label": "Κύλιση προς τα πάνω"
   },
   "notification": {
     "confirm": "OK",

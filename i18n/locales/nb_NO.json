@@ -33,7 +33,8 @@
     "excluding_vat": "ekskl. mva.",
     "save": "Lagre",
     "search": "Søk",
-    "quantity": "antall"
+    "quantity": "antall",
+    "scroll_to_top_label": "Rull til toppen"
   },
   "notification": {
     "confirm": "OK",

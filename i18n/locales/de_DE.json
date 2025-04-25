@@ -33,7 +33,8 @@
     "excluding_vat": "ohne MwSt.",
     "save": "Speichern",
     "search": "Suche",
-    "quantity": "Anzahl"
+    "quantity": "Anzahl",
+    "scroll_to_top_label": "Nach oben scrollen"
   },
   "notification": {
     "confirm": "OK",

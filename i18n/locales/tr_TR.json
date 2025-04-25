@@ -33,7 +33,8 @@
     "excluding_vat": "KDV hariç.",
     "save": "Kaydet",
     "search": "Arama",
-    "quantity": "Miktar"
+    "quantity": "Miktar",
+    "scroll_to_top_label": "Yukarı kaydır"
   },
   "notification": {
     "confirm": "TAMAM.",

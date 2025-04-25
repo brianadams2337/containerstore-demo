@@ -33,7 +33,8 @@
     "excluding_vat": "ilma käibemaksuta.",
     "save": "Salvesta",
     "search": "Otsi",
-    "quantity": "Kogus"
+    "quantity": "Kogus",
+    "scroll_to_top_label": "Scroll to top"
   },
   "notification": {
     "confirm": "OK",
