@@ -34,15 +34,14 @@ Therefore, to ensure it's also not rendered on the server, it must be wrapped in
         <div
           class="size-full overflow-y-auto bg-white md:inset-y-2 md:right-2 md:max-w-[25rem]"
           data-testid="slide-in-overflow"
-          :class="slideClass"
+          :class="[
+            slideClass,
+            {
+              'scroll-pb-24': scrollPaddingReady,
+            },
+          ]"
         >
-          <div
-            class="relative flex max-h-full flex-col"
-            :class="{
-              '[&_button]:scroll-mb-14 [&_input]:scroll-mb-14 [&_select]:scroll-mb-14 ':
-                scrollMarginReady,
-            }"
-          >
+          <div class="relative flex max-h-full flex-col">
             <slot v-bind="toggle" name="slide-in-content">
               <div
                 class="sticky top-0 z-10 bg-white/90 px-6 py-4"
@@ -96,12 +95,12 @@ const emit = defineEmits<{
 }>()
 
 const { isOpen, toggle, close } = useSlideIn(name)
-const scrollMarginReady = ref(false)
+const scrollPaddingReady = ref(false)
 const slideIn = useTemplateRef<HTMLDialogElement>('slideIn')
 
 // Syncs both refs after nextTick
 // Reason: Appyling scroll-margin directly causes a pre-scrolled slide in.
-syncRefs(isOpen, scrollMarginReady, { flush: 'post' })
+syncRefs(isOpen, scrollPaddingReady, { flush: 'post' })
 
 type SlideTypeClasses = Record<
   'enterClasses' | 'enterToClasses' | 'leaveClasses' | 'leaveToClasses',
