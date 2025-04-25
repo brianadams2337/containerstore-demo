@@ -631,5 +631,6 @@
   "product_attribute": {
     "size": "Suurus",
     "color": "Värv"
-  }
+  },
+  "auth_close_password_modal": "Sulge parooli modaal"
 }

@@ -631,5 +631,6 @@
   "product_attribute": {
     "size": "Koko",
     "color": "Väri"
-  }
+  },
+  "auth_close_password_modal": "Sulje salasanan modaali"
 }

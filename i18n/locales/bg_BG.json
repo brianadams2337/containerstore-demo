@@ -631,5 +631,6 @@
   "product_attribute": {
     "size": "Размер",
     "color": "Цвят"
-  }
+  },
+  "auth_close_password_modal": "Затваряне на модален прозорец за парола"
 }

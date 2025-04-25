@@ -631,5 +631,6 @@
   "product_attribute": {
     "size": "Méret",
     "color": "Szín"
-  }
+  },
+  "auth_close_password_modal": "Jelszó-modál bezárása"
 }

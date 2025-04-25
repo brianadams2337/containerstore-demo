@@ -631,5 +631,6 @@
   "product_attribute": {
     "size": "Dydis",
     "color": "Spalva"
-  }
+  },
+  "auth_close_password_modal": "Uždaryti slaptažodžio modalą"
 }

@@ -631,5 +631,6 @@
   "product_attribute": {
     "size": "størrelse",
     "color": "farge"
-  }
+  },
+  "auth_close_password_modal": "Lukk passordmodal"
 }

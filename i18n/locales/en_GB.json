@@ -481,6 +481,7 @@
   "auth_reset_password_slide_in_body": {
     "submit_password_reset": "Save Password"
   },
+  "auth_close_password_modal": "Close password modal",
   "auth_separator": {
     "separation_text": "Or"
   },

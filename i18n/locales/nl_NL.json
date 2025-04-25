@@ -631,5 +631,6 @@
   "product_attribute": {
     "size": "Grootte",
     "color": "Kleur"
-  }
+  },
+  "auth_close_password_modal": "Wachtwoord modal sluiten"
 }

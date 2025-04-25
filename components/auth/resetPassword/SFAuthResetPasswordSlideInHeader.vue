@@ -11,6 +11,7 @@
       class="group my-2 -mr-2 hover:bg-gray-100 max-lg:hidden md:bg-transparent"
       fab
       variant="raw"
+      :aria-label="$t('auth_close_password_modal')"
       data-testid="close-reset-password-slide-in"
       @click.prevent="$emit('close')"
     >

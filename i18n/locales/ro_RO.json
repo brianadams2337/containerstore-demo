@@ -631,5 +631,6 @@
   "product_attribute": {
     "size": "Mărime",
     "color": "Culoare"
-  }
+  },
+  "auth_close_password_modal": "Modul de închidere a parolei"
 }

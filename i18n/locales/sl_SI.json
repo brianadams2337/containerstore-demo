@@ -631,5 +631,6 @@
   "product_attribute": {
     "size": "Velikost",
     "color": "Barva"
-  }
+  },
+  "auth_close_password_modal": "Zapri geslo modalno okno"
 }

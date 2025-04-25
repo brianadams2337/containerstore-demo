@@ -631,5 +631,6 @@
   "product_attribute": {
     "size": "Dimensioni",
     "color": "Colore"
-  }
+  },
+  "auth_close_password_modal": "Chiudi finestra modale password"
 }

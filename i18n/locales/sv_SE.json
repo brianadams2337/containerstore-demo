@@ -631,5 +631,6 @@
   "product_attribute": {
     "size": "storlek",
     "color": "färg"
-  }
+  },
+  "auth_close_password_modal": "Stäng lösenord modal"
 }

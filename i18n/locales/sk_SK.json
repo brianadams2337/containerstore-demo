@@ -631,5 +631,6 @@
   "product_attribute": {
     "size": "Veľkosť",
     "color": "Farba"
-  }
+  },
+  "auth_close_password_modal": "Zatvoriť modálne okno s heslom"
 }

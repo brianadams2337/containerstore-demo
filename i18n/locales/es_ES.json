@@ -631,5 +631,6 @@
   "product_attribute": {
     "size": "Talla",
     "color": "Color"
-  }
+  },
+  "auth_close_password_modal": "Cerrar ventana modal de contraseña"
 }

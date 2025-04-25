@@ -631,5 +631,6 @@
   "product_attribute": {
     "size": "Μέγεθος",
     "color": "Χρώμα"
-  }
+  },
+  "auth_close_password_modal": "Κλείσιμο κωδικού πρόσβασης modal"
 }

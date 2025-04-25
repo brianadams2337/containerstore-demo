@@ -631,5 +631,6 @@
   "product_attribute": {
     "size": "Izmērs",
     "color": "Krāsa"
-  }
+  },
+  "auth_close_password_modal": "Aizvērt paroles modālu"
 }
