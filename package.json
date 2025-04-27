@@ -48,7 +48,7 @@
     "@nuxt/image": "1.10.0",
     "@nuxt/test-utils": "3.17.2",
     "@nuxtjs/i18n": "9.5.3",
-    "@nuxtjs/tailwindcss": "6.14.0-20250425-132432-680246d",
+    "@nuxtjs/tailwindcss": "6.14.0",
     "@scayle/eslint-config-storefront": "4.5.0",
     "@scayle/eslint-plugin-vue-composable": "0.2.1",
     "@scayle/prettier-config-storefront": "2.0.2",
