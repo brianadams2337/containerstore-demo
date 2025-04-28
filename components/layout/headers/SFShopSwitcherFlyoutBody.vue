@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col overflow-hidden p-5 lg:w-96" role="menu">
+  <div class="flex flex-col overflow-hidden p-5 lg:w-96">
     <div v-if="availableLanguages.length > 1" ref="languageList" class="mb-5">
       <div class="mb-4 text-md font-semi-bold-variable">
         {{ $t('shop_selector.choose_language') }}
