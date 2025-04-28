@@ -6,6 +6,7 @@
     tabindex="0"
     :alt="alt"
     v-bind="$attrs"
+    role="link"
     @keydown.enter.self="goToPDP"
   >
     <SFBasketCardSoldOutTitle

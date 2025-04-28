@@ -11,54 +11,59 @@
     <form
       ref="searchBox"
       aria-haspopup="listbox"
-      :tabindex="hasFocus ? -1 : 0"
-      class="group flex h-11 cursor-pointer items-center gap-2 overflow-hidden border border-gray-100 px-3 transition-all duration-150 max-lg:grow lg:h-10"
       data-testid="search-form"
-      :class="{
-        'bg-white lg:rounded-md': hasFocus,
-        'rounded-md bg-gray-100 pr-8 hover:bg-gray-200': !hasFocus,
-      }"
-      @click="openAndFocus"
+      role="search"
       @submit.prevent="goToSearchResolutionOrSearchPage"
     >
-      <SFButton
-        variant="raw"
-        tabindex="-1"
-        class="flex items-center justify-center max-lg:size-11"
-        aria-hidden="true"
+      <div
+        class="group flex h-11 cursor-pointer items-center gap-2 overflow-hidden border border-gray-100 px-3 transition-all duration-150 max-lg:grow lg:h-10"
+        :class="{
+          'bg-white lg:rounded-md': hasFocus,
+          'rounded-md bg-gray-100 pr-8 hover:bg-gray-200': !hasFocus,
+        }"
+        :tabindex="hasFocus ? -1 : 0"
+        @click="openAndFocus"
       >
-        <IconSearch class="size-5 shrink-0" />
-      </SFButton>
-      <div class="flex h-full min-w-0 grow items-center gap-2">
-        <label :for="id" class="hidden">{{ $t('global.search') }}</label>
-        <input
-          :id="id"
-          ref="input"
-          v-model.trim="searchQuery"
-          :tabindex="hasFocus ? 0 : -1"
-          type="search"
-          :placeholder="$t('search_input.placeholder')"
-          class="min-w-0 grow bg-gray-100 transition-colors placeholder-shown:truncate focus-visible:shadow-none focus-visible:outline-none"
-          data-testid="header-search-input"
-          :class="{
-            'bg-white ': hasFocus,
-            'group-hover:bg-gray-200': !hasFocus,
-          }"
-          :aria-placeholder="$t('global.search')"
-        />
+        <SFButton
+          role="button"
+          variant="raw"
+          tabindex="-1"
+          class="flex items-center justify-center max-lg:size-11"
+          aria-hidden="true"
+        >
+          <IconSearch class="size-5 shrink-0" />
+        </SFButton>
+        <div class="flex h-full min-w-0 grow items-center gap-2">
+          <label :for="id" class="hidden">{{ $t('global.search') }}</label>
+          <input
+            :id="id"
+            ref="input"
+            v-model.trim="searchQuery"
+            :tabindex="hasFocus ? 0 : -1"
+            type="search"
+            :placeholder="$t('search_input.placeholder')"
+            class="min-w-0 grow bg-gray-100 transition-colors placeholder-shown:truncate focus-visible:shadow-none focus-visible:outline-none"
+            data-testid="header-search-input"
+            :class="{
+              'bg-white ': hasFocus,
+              'group-hover:bg-gray-200': !hasFocus,
+            }"
+            :aria-placeholder="$t('global.search')"
+          />
+        </div>
+        <SFButton
+          ref="resetButton"
+          type="reset"
+          variant="raw"
+          class="h-6 rounded px-1.5 py-1 text-sm leading-5 text-gray-600 transition duration-150 hover:bg-gray-100 focus:bg-gray-100 focus:px-1.5"
+          data-testid="search-reset-button"
+          :class="{ hidden: !hasFocus }"
+          @click.stop="resetSearch"
+          @keydown.enter.stop="resetSearch"
+        >
+          {{ $t('global.cancel') }}
+        </SFButton>
       </div>
-      <SFButton
-        ref="resetButton"
-        type="reset"
-        variant="raw"
-        class="h-6 rounded px-1.5 py-1 text-sm leading-5 text-gray-600 transition duration-150 hover:bg-gray-100 focus:bg-gray-100 focus:px-1.5"
-        data-testid="search-reset-button"
-        :class="{ hidden: !hasFocus }"
-        @click.stop="resetSearch"
-        @keydown.enter.stop="resetSearch"
-      >
-        {{ $t('global.cancel') }}
-      </SFButton>
     </form>
     <SFSearchResultsContainer
       v-if="searchQuery.length >= 3"
