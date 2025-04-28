@@ -23,7 +23,7 @@
         :class="{
           'pointer-events-none': sibling.isSoldOut || sibling.id === product.id,
           'border-transparent': sibling.id !== product.id && !sibling.isSoldOut,
-          'border-black text-black -outline-offset-4 focus-visible:shadow-inner-solid':
+          'border-accent text-black -outline-offset-4 focus-visible:shadow-inner-solid':
             sibling.id === product.id,
           'bg-gray-100 text-gray-300 supports-hover:hover:bg-white supports-hover:hover:text-black':
             sibling.id !== product.id,
