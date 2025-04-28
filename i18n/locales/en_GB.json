@@ -67,7 +67,8 @@
     "aria_label": "Change shop, current shop: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Language and country",
     "choose_language": "Select your language",
-    "choose_country": "Select your country"
+    "choose_country": "Select your country",
+    "close_flyout": "Close shop selection modal"
   },
   "validation": {
     "email": "Please enter a valid email address.",

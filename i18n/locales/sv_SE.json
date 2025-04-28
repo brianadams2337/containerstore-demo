@@ -67,7 +67,8 @@
     "aria_label": "Byt butik, nuvarande butik: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Språk och land",
     "choose_language": "Välj ditt språk",
-    "choose_country": "Välj ditt land"
+    "choose_country": "Välj ditt land",
+    "close_flyout": "Stäng butiksvalmodal"
   },
   "validation": {
     "email": "Vänligen ange en giltig e-postadress.",

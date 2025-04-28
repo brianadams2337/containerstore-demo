@@ -67,7 +67,8 @@
     "aria_label": "Cambiar tienda, tienda actual: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Idioma y país",
     "choose_language": "Elige tu idioma",
-    "choose_country": "Elige tu país"
+    "choose_country": "Elige tu país",
+    "close_flyout": "Cerrar modal de selección de tienda"
   },
   "validation": {
     "email": "Por favor, pon una dirección de correo electrónico que funcione.",

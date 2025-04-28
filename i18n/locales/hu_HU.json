@@ -67,7 +67,8 @@
     "aria_label": "Bolt módosítása, jelenlegi bolt: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Nyelv és ország",
     "choose_language": "Válassza ki a nyelvet",
-    "choose_country": "Válassza ki az országot"
+    "choose_country": "Válassza ki az országot",
+    "close_flyout": "Zárás boltválasztó modál"
   },
   "validation": {
     "email": "Kérjük, adjon meg egy érvényes e-mail címet.",

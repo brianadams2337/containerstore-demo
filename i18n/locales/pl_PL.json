@@ -67,7 +67,8 @@
     "aria_label": "Zmień sklep, bieżący sklep: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Język i kraj",
     "choose_language": "Wybierz swój język",
-    "choose_country": "Wybierz swój kraj"
+    "choose_country": "Wybierz swój kraj",
+    "close_flyout": "Zamknij okno wyboru sklepu"
   },
   "validation": {
     "email": "Wprowadź prawidłowy adres e-mail.",

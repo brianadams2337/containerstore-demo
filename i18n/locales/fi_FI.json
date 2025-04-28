@@ -67,7 +67,8 @@
     "aria_label": "Vaihda kauppa, nykyinen kauppa: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Kieli ja maa",
     "choose_language": "Valitse kieli",
-    "choose_country": "Valitse maa"
+    "choose_country": "Valitse maa",
+    "close_flyout": "Sulje kaupan valinta-ikkuna"
   },
   "validation": {
     "email": "Syötä voimassa oleva sähköpostiosoite.",

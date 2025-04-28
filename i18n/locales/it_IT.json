@@ -67,7 +67,8 @@
     "aria_label": "Cambia negozio, negozio attuale: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Lingua e paese",
     "choose_language": "Scegli la tua lingua",
-    "choose_country": "Scegli il tuo paese"
+    "choose_country": "Scegli il tuo paese",
+    "close_flyout": "Chiudi finestra di selezione negozio"
   },
   "validation": {
     "email": "Inserisci un indirizzo email che funziona.",

@@ -67,7 +67,8 @@
     "aria_label": "Keisti parduotuvę, dabartinę parduotuvę: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Kalba ir šalis",
     "choose_language": "Pasirinkite kalbą",
-    "choose_country": "Pasirinkite šalį"
+    "choose_country": "Pasirinkite šalį",
+    "close_flyout": "Uždaryti parduotuvės pasirinkimo langą"
   },
   "validation": {
     "email": "Įveskite galiojantį el. pašto adresą.",

@@ -67,7 +67,8 @@
     "aria_label": "Spremeni trgovino, trenutna trgovina: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Jezik in država",
     "choose_language": "Izberite svoj jezik",
-    "choose_country": "Izberite državo"
+    "choose_country": "Izberite državo",
+    "close_flyout": "Zapri modalno okno za izbiro trgovine"
   },
   "validation": {
     "email": "Vnesite veljaven e-poštni naslov.",

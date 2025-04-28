@@ -9,6 +9,7 @@
       fab
       variant="raw"
       data-testid="close-shopswitcher"
+      :aria-label="$t('shop_selector.close_flyout')"
       @click="close"
     >
       <template #icon>

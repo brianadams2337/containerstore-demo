@@ -67,7 +67,8 @@
     "aria_label": "Schimbă magazinul, magazinul actual: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Limba și țara",
     "choose_language": "Selectați limba dvs.",
-    "choose_country": "Selectați țara dvs."
+    "choose_country": "Selectați țara dvs.",
+    "close_flyout": "Închide fereastra modală de selecție a magazinului"
   },
   "validation": {
     "email": "Vă rugăm să introduceți o adresă de e-mail validă.",

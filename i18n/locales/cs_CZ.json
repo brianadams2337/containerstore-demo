@@ -67,7 +67,8 @@
     "aria_label": "Změna obchodu, aktuální obchod: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Jazyk a země",
     "choose_language": "Vyberte jazyk",
-    "choose_country": "Vyberte zemi"
+    "choose_country": "Vyberte zemi",
+    "close_flyout": "Zavřít modální okno výběru obchodu"
   },
   "validation": {
     "email": "Zadejte prosím platnou e-mailovou adresu.",

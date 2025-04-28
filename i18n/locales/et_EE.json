@@ -67,7 +67,8 @@
     "aria_label": "Muuda poodi, praegune pood: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Keel ja riik",
     "choose_language": "Valige oma keel",
-    "choose_country": "Valige oma riik"
+    "choose_country": "Valige oma riik",
+    "close_flyout": "Sulge poe valiku modaal"
   },
   "validation": {
     "email": "Palun sisestage kehtiv e-posti aadress.",

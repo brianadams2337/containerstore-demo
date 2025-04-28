@@ -67,7 +67,8 @@
     "aria_label": "Skift butik, nuværende butik: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Sprog og land",
     "choose_language": "Vælg dit sprog",
-    "choose_country": "Vælg dit land"
+    "choose_country": "Vælg dit land",
+    "close_flyout": "Luk modal for butiksvalg"
   },
   "validation": {
     "email": "Indtast venligst en gyldig e-mailadresse.",

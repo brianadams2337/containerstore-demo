@@ -67,7 +67,8 @@
     "aria_label": "Mainīt veikalu, pašreizējais veikals: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Valoda un valsts",
     "choose_language": "Izvēlieties valodu",
-    "choose_country": "Izvēlieties savu valsti"
+    "choose_country": "Izvēlieties savu valsti",
+    "close_flyout": "Aizvērt veikala izvēles logu"
   },
   "validation": {
     "email": "Lūdzu, ievadiet derīgu e-pasta adresi.",

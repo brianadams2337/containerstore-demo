@@ -67,7 +67,8 @@
     "aria_label": "Endre butikk, nåværende butikk: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Språk og land",
     "choose_language": "Velg ditt språk",
-    "choose_country": "Velg ditt land"
+    "choose_country": "Velg ditt land",
+    "close_flyout": "Lukk butikkvalgmodal"
   },
   "validation": {
     "email": "Vennligst skriv inn en gyldig e-postadresse.",

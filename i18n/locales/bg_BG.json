@@ -67,7 +67,8 @@
     "aria_label": "Промяна на магазина, текущ магазин: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Език и държава",
     "choose_language": "Изберете езика си",
-    "choose_country": "Изберете страната си"
+    "choose_country": "Изберете страната си",
+    "close_flyout": "Затвори модалния прозорец за избор на магазин"
   },
   "validation": {
     "email": "Моля, въведете валиден имейл адрес.",

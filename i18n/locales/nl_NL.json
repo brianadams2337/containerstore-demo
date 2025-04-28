@@ -67,7 +67,8 @@
     "aria_label": "Winkel wijzigen, huidige winkel: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Taal en land",
     "choose_language": "Selecteer je taal",
-    "choose_country": "Selecteer je land"
+    "choose_country": "Selecteer je land",
+    "close_flyout": "Modaal venster met winkelselectie sluiten"
   },
   "validation": {
     "email": "Voer een geldig e-mailadres in.",

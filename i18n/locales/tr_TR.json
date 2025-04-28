@@ -67,7 +67,8 @@
     "aria_label": "Dükkanı değiştir, mevcut dükkan: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Dil ve ülke",
     "choose_language": "Dilinizi seçin",
-    "choose_country": "Ülkenizi seçin"
+    "choose_country": "Ülkenizi seçin",
+    "close_flyout": "Mağaza seçimi modunu kapat"
   },
   "validation": {
     "email": "Lütfen geçerli bir e-posta adresi girin.",
