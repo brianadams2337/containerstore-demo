@@ -547,6 +547,7 @@
       "available": "Verfügbar",
       "low_stock": "Geringer Lagerbestand"
     },
+    "detect_location_label": "Meinen Standort finden",
     "search_store_input_placeholder": "Gib die Stadt oder die Postleitzahl ein."
   },
   "store_locator_slide_in": {

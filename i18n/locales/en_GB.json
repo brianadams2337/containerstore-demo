@@ -548,6 +548,7 @@
       "available": "Available",
       "low_stock": "Low stock"
     },
+    "detect_location_label": "Detect my location",
     "search_store_input_placeholder": "Enter city or zip code"
   },
   "store_locator_slide_in": {

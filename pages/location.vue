@@ -27,6 +27,7 @@
             class="mr-2 flex size-12 cursor-pointer items-center justify-center border-2 border-black"
             variant="raw"
             :disabled="searching"
+            :aria-label="$t('store_locator.detect_location_label')"
             @click="findStoresInUserLocation()"
           >
             <IconLocation class="size-8" />
