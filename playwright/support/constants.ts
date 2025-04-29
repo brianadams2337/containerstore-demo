@@ -27,21 +27,27 @@ export const PLP_FILTER_DEEPLINK = {
   maxPrice: 4000,
 }
 
-export const SEARCH_SUGGESTIONS = {
-  searchTermNoResults: 'noresults',
-  searchTermProduct: 'kleider',
-  searchTermBrand: 'adidas',
-  plpUrl: /\/kleider/,
-  searchUrl: /\/search/,
+/**
+ * SEARCH constant object defines various search-related constants used in end-to-end tests.
+ * This object centralizes search terms and URL parameters to ensure consistency
+ * and easier configuration across different test scenarios. Using environment
+ * variables allows for flexible test data management across various environments.
+ */
+export const SEARCH = {
+  /** Product search term, e.g. product brand or name that doesn't match a category or page name, so the search suggestions are not displayed */
+  searchTermProduct: process.env.E2E_SEARCH_TERM_PRODUCT,
+  /** Category suggestion search term that partially or fully matches category name, e.g. "shirt" or "shirts". */
+  searchTermCategorySuggestion: process.env.E2E_SEARCH_TERM_CATEGORY_SUGGESTION,
+  /** Product ID search term that matches exact product ID in stock, e.g. 123456. */
+  searchExactProductID: process.env.E2E_SEARCH_EXACT_PRODUCT_ID,
+  /** Suggestion tags search term that describes the product and returns its descriptive tags, e.g. "Black shoes size 44". */
+  searchTermTags: process.env.E2E_SEARCH_TAGS,
+  /** Page name search term that fully or partially matches a content page, e.g. "faq" or "support". */
+  searchTermPage: process.env.E2E_SEARCH_PAGE,
+  /** Reference Key search term that matches exact product Reference Key in stock, e.g. "123-ref-key". */
+  searchReferenceKey: process.env.E2E_SEARCH_REFERENCE_KEY,
+  /** The base URL parameter used for search queries. It doesn't require any setup via environment variable. */
   searchParamUrl: 'search?filters[term]=',
-  searchExactProductID: '206140',
-  pdpUrl: '/p/sneaker-adimatic-206140',
-  moreButtonLabelDE: 'Mehr',
-  searchTermTags: 'sneaker size 40',
-  searchTestTagValue: '40',
-  searchTermPage: 'terms',
-  faqPageUrl: '/content/terms-and-conditions',
-  searchReferenceKey: 'NJW11-BetterScarlet-CloudWhite-CoreBlack',
 }
 
 export const BASKET_TEST_DATA = {

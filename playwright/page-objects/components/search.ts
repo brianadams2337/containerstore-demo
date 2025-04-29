@@ -1,10 +1,8 @@
 import type { Locator, Page } from '@playwright/test'
 import { expect } from '@playwright/test'
-import { SEARCH_SUGGESTIONS } from '../../support/constants'
 
 export class Search {
   readonly page: Page
-  readonly searchButton: Locator
   readonly searchInput: Locator
   readonly searchResultsProductImage: Locator
   readonly searchResultsHeadline: Locator
@@ -12,13 +10,12 @@ export class Search {
   readonly searchDisplayAllResults: Locator
   readonly searchSuggestionsTagGroup: Locator
   readonly searchSuggestionsItem: Locator
-  readonly searchDesktop: Locator
   readonly searchForm: Locator
   readonly searchResetButton: Locator
+  readonly h1: Locator
 
   constructor(page: Page) {
     this.page = page
-    this.searchButton = page.getByTestId('header-search-button')
     this.searchInput = page.getByTestId('header-search-input')
     this.searchResultsFlyout = page.getByTestId('search-results-flyout')
     this.searchResultsProductImage = page.getByTestId('product-image')
@@ -28,13 +25,9 @@ export class Search {
       'search-suggestion-tag-group',
     )
     this.searchSuggestionsItem = page.getByTestId('search-suggestions-item')
-    this.searchDesktop = page.getByTestId('search-desktop')
     this.searchForm = page.getByTestId('search-form')
     this.searchResetButton = page.getByTestId('search-reset-button')
-  }
-
-  searchSuggestionTag(suggestionTag: string): Locator {
-    return this.page.getByTestId(`search-suggestion-tag-${suggestionTag}`)
+    this.h1 = page.locator('h1')
   }
 
   async executeSearch(searchTerm: string) {
@@ -49,14 +42,6 @@ export class Search {
     await this.searchResultsFlyout.waitFor()
     await expect(this.searchResultsFlyout).toBeVisible()
     await expect(this.searchSuggestionsItem.first()).toBeVisible()
-  }
-
-  async assertSearchCategorySuggestions(searchTerm: string) {
-    await this.page.waitForURL(SEARCH_SUGGESTIONS.plpUrl)
-    await this.page.waitForLoadState('networkidle')
-
-    const pageUrl = this.page.url()
-    expect(pageUrl).toContain(searchTerm)
   }
 
   async assertHeadlineSearchResults(searchTerm: string) {
