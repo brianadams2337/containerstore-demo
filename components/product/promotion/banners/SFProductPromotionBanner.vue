@@ -2,7 +2,7 @@
   <component
     :is="componentName"
     v-bind="attributes"
-    :aria-label="headline"
+    :aria-label="componentName === SFLink ? headline : undefined"
     class="relative block w-full rounded-xl border text-white"
     :style="{ borderColor: colorStyle.backgroundColor }"
     @click="track"
