@@ -3571,13 +3571,6 @@
     destr "2.0.5"
     unstorage "1.16.0"
 
-"@scayle/unstorage-scayle-kv-driver@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@scayle/unstorage-scayle-kv-driver/-/unstorage-scayle-kv-driver-0.1.1.tgz#9fc9d5f95585df26f9f61d0a203fd29665114699"
-  integrity sha512-TfEjHwVSeiQ1fj5udkLUdD5wC2Rj9wcOq5G9IfvQ8RbmEeZ0sV2tTRpIy/ipG/QEm4HTFh8iKCaSEltvGyAbJA==
-  dependencies:
-    unstorage "1.15.0"
-
 "@scayle/unstorage-scayle-kv-driver@0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@scayle/unstorage-scayle-kv-driver/-/unstorage-scayle-kv-driver-0.1.2.tgz#a3af8a26b94e8701258dea995a86eff433538c52"
@@ -15207,20 +15200,6 @@ unrs-resolver@^1.6.0:
     "@unrs/resolver-binding-win32-ia32-msvc" "1.7.0"
     "@unrs/resolver-binding-win32-x64-msvc" "1.7.0"
 
-unstorage@1.15.0, unstorage@^1.10.1, unstorage@^1.10.2, unstorage@^1.15.0:
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/unstorage/-/unstorage-1.15.0.tgz#d1f23cba0901c5317d15a751a299e50fbb637674"
-  integrity sha512-m40eHdGY/gA6xAPqo8eaxqXgBuzQTlAKfmB1iF7oCKXE1HfwHwzDJBywK+qQGn52dta+bPlZluPF7++yR3p/bg==
-  dependencies:
-    anymatch "^3.1.3"
-    chokidar "^4.0.3"
-    destr "^2.0.3"
-    h3 "^1.15.0"
-    lru-cache "^10.4.3"
-    node-fetch-native "^1.6.6"
-    ofetch "^1.4.1"
-    ufo "^1.5.4"
-
 unstorage@1.16.0:
   version "1.16.0"
   resolved "https://registry.yarnpkg.com/unstorage/-/unstorage-1.16.0.tgz#686e23d459532e0eccc32e15eb3b415d8f309431"
@@ -15234,6 +15213,20 @@ unstorage@1.16.0:
     node-fetch-native "^1.6.6"
     ofetch "^1.4.1"
     ufo "^1.6.1"
+
+unstorage@^1.10.1, unstorage@^1.10.2, unstorage@^1.15.0:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/unstorage/-/unstorage-1.15.0.tgz#d1f23cba0901c5317d15a751a299e50fbb637674"
+  integrity sha512-m40eHdGY/gA6xAPqo8eaxqXgBuzQTlAKfmB1iF7oCKXE1HfwHwzDJBywK+qQGn52dta+bPlZluPF7++yR3p/bg==
+  dependencies:
+    anymatch "^3.1.3"
+    chokidar "^4.0.3"
+    destr "^2.0.3"
+    h3 "^1.15.0"
+    lru-cache "^10.4.3"
+    node-fetch-native "^1.6.6"
+    ofetch "^1.4.1"
+    ufo "^1.5.4"
 
 untun@^0.1.3:
   version "0.1.3"
