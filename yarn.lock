@@ -3448,10 +3448,10 @@
   resolved "https://registry.yarnpkg.com/@scayle/nuxt-image-provider/-/nuxt-image-provider-0.3.1.tgz#fe55b0f1b0ee918a80d51eeecf55f8a4bda59c1f"
   integrity sha512-x/TC3yy8eaqXCePpXkYlPUcZ2pD6K70FRkbSzjUgTrfcpPEKETLRiYICgov2GC17vOeUIlCA4L9waJEoDwnDmA==
 
-"@scayle/nuxt-opentelemetry@0.10.1":
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/@scayle/nuxt-opentelemetry/-/nuxt-opentelemetry-0.10.1.tgz#031e8e3b4b45d67fece3273b8efc12bbdbfb1629"
-  integrity sha512-F8gh0qHo2pPjyWriN4A7rVxyAIb/77beSjPPcmy7o5/gwCcSa69iZOs6O7ogDKKULUT+YbiSnVSuNUOMjpGpAA==
+"@scayle/nuxt-opentelemetry@0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@scayle/nuxt-opentelemetry/-/nuxt-opentelemetry-0.11.0.tgz#392d6628a340a7314b9059fcccc69be8c902d8f2"
+  integrity sha512-9jeQ5ZeLSxk/84wRG9YvR7FNuDuHJt5ZSAZZ9OhOfsOBSqZYe7eWG0kCYCYltHyXuBo0Pgb3GLJDS/SaUl9wjA==
   dependencies:
     "@nuxt/kit" "^3.12.3"
     "@opentelemetry/api" "1.9.0"
