@@ -354,7 +354,7 @@
   },
   "product_details": {
     "information": {
-      "fit_size": "Fit &amp; Size",
+      "fit_size": "Fit & Size",
       "extras": "Extra",
       "design": "Σχεδιασμός"
     },
@@ -565,7 +565,7 @@
     }
   },
   "product_subscription": {
-    "subscribe": "Εγγραφή &amp; Αποθήκευση",
+    "subscribe": "Εγγραφή & Αποθήκευση",
     "separation_text": "Ή εξοικονομήστε ακόμη περισσότερα:",
     "select_size": "Επιλέξτε μέγεθος για να δείτε τις επιλογές",
     "not_eligible_for_subscription_message": "Το επιλεγμένο μέγεθος δεν είναι επιλέξιμο για συνδρομή",

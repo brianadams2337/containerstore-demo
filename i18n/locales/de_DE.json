@@ -566,7 +566,7 @@
     }
   },
   "product_subscription": {
-    "subscribe": "Abonnieren &amp; Sparen",
+    "subscribe": "Abonnieren & Sparen",
     "separation_text": "Oder spar noch mehr:",
     "select_size": "Wähle die Größe aus, um die Optionen zu sehen.",
     "not_eligible_for_subscription_message": "Die ausgewählte Größe kann nicht abonniert werden.",

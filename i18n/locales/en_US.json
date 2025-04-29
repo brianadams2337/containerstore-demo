@@ -310,7 +310,7 @@
       "payment_method": "Payment Method"
     },
     "address_details": {
-      "delivery_and_billing_address": "Delivery &amp; Billing Address",
+      "delivery_and_billing_address": "Delivery & Billing Address",
       "delivery_address": "Delivery Address",
       "billing_address": "Billing Address"
     }
@@ -354,7 +354,7 @@
   },
   "product_details": {
     "information": {
-      "fit_size": "Fit &amp; Size",
+      "fit_size": "Fit & Size",
       "extras": "Extra",
       "design": "Design"
     },
@@ -424,7 +424,7 @@
       "filter_and_sort_updated": "Your sorting and filters have been successfully applied!"
     },
     "show_filter": "Show Filters",
-    "show_filter_and_sorting": "Show Filters &amp; Sorting"
+    "show_filter_and_sorting": "Show Filters & Sorting"
   },
   "order_success_page": {
     "title": "Your order overview",
@@ -565,7 +565,7 @@
     }
   },
   "product_subscription": {
-    "subscribe": "Subscribe &amp; Save",
+    "subscribe": "Subscribe & Save",
     "separation_text": "Or save even more:",
     "select_size": "Select size to see options",
     "not_eligible_for_subscription_message": "The selected size is not eligible for a subscription",

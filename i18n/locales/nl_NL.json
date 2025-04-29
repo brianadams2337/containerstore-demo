@@ -354,7 +354,7 @@
   },
   "product_details": {
     "information": {
-      "fit_size": "Pasvorm &amp; maat",
+      "fit_size": "Pasvorm & maat",
       "extras": "Extra",
       "design": "Ontwerp"
     },
@@ -565,7 +565,7 @@
     }
   },
   "product_subscription": {
-    "subscribe": "Abonneren &amp; besparen",
+    "subscribe": "Abonneren & besparen",
     "separation_text": "Of bespaar nog meer:",
     "select_size": "Selecteer maat om opties te zien",
     "not_eligible_for_subscription_message": "De geselecteerde maat komt niet in aanmerking voor een abonnement",
