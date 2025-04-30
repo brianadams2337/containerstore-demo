@@ -5,6 +5,8 @@
 @layer base {
   *:focus-visible {
     @apply outline outline-2 -outline-offset-1 outline-white ring-0 shadow-outer-solid;
+    /* Ensure focus outline is visible for adjacent elements */
+    z-index: 1;
   }
 
   html {
