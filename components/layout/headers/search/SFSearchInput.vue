@@ -16,6 +16,7 @@
       @submit.prevent="goToSearchResolutionOrSearchPage"
     >
       <div
+        role="button"
         class="group flex h-11 cursor-pointer items-center gap-2 overflow-hidden border border-gray-100 px-3 transition-all duration-150 max-lg:grow lg:h-10"
         :class="{
           'bg-white lg:rounded-md': hasFocus,
@@ -25,7 +26,6 @@
         @click="openAndFocus"
       >
         <SFButton
-          role="button"
           variant="raw"
           tabindex="-1"
           class="flex items-center justify-center max-lg:size-11"
