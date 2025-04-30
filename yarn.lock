@@ -5117,10 +5117,10 @@ axios@1.9.0:
     form-data "^4.0.0"
     proxy-from-env "^1.1.0"
 
-axios@^0.29.0:
-  version "0.29.0"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.29.0.tgz#5eed1a0bc4c0ffe060624eb7900aff66b7881eeb"
-  integrity sha512-Kjsq1xisgO5DjjNQwZFsy0gpcU1P2j36dZeQDXVhpIU26GVgkDUnROaHLSuluhMqtDE7aKA2hbKXG5yu5DN8Tg==
+axios@^0.30.0:
+  version "0.30.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.30.0.tgz#026ae2c0ae6ac35d564056690683fb77c991d0d3"
+  integrity sha512-Z4F3LjCgfjZz8BMYalWdMgAQUnEtKDmpwNHjh/C8pQZWde32TF64cqnSeyL3xD/aTIASRU30RHTNzRiV/NpGMg==
   dependencies:
     follow-redirects "^1.15.4"
     form-data "^4.0.0"
@@ -14030,13 +14030,13 @@ storyblok-js-client@6.10.3:
   resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-6.10.3.tgz#db5dd9fe46e35e8d034eaf611168a41461914558"
   integrity sha512-q6YK/f+F8PAJLsKR7jzlTRO9yIUXWLON2Fy02QjywYaSYwyS9ETzIuOtmCSstLrDAP5I+Vnw9PzEU30roxS15g==
 
-storyblok@3.36.0:
-  version "3.36.0"
-  resolved "https://registry.yarnpkg.com/storyblok/-/storyblok-3.36.0.tgz#7c76a7b889f16c8e9d9e90589cdc826ba2cd16d9"
-  integrity sha512-tXorWLx6IcrYhG86GfIjZfNwLMvn3wjmvK4I0c6rVkUfQr206a0QCc7T9qoUxzHknjViOO/Id24YrrDa6kw0tg==
+storyblok@3.36.1:
+  version "3.36.1"
+  resolved "https://registry.yarnpkg.com/storyblok/-/storyblok-3.36.1.tgz#ad4ed0ba312285c480e08c84918d6b3253c25204"
+  integrity sha512-njWhjXUMlQnP/7fE5KBybK5zyk6ITDeMLfJA/rI+JDt5I+cavl692g1NkoR1cIEGlpaokWESEWJbPStlZ+f6lg==
   dependencies:
     "@storyblok/region-helper" "^1.0.0"
-    axios "^0.29.0"
+    axios "^0.30.0"
     chalk "^4.1.0"
     clear "0.1.0"
     commander "^5.1.0"
