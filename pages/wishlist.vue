@@ -1,24 +1,29 @@
 <template>
-  <div class="container mt-8 max-sm:max-w-none">
-    <SFHeadline
-      tag="h1"
-      class="mt-1.5 !font-semi-bold-variable text-gray-900 max-sm:text-2xl max-sm:leading-6 sm:mt-0"
-    >
-      {{ $t('wishlist_page.title') }}
-      <ClientOnly>
-        <SFFadeInTransition v-if="count !== undefined && count > 0" appear>
-          <span
-            class="ml-0.5 inline-flex h-4.5 items-center rounded-full bg-gray-900 px-2 text-xs font-semibold leading-4 text-white"
-          >
-            {{ count }}
-          </span>
-        </SFFadeInTransition>
-      </ClientOnly>
-    </SFHeadline>
+  <SFAsyncDataWrapper :status="status">
+    <SFEmptyState
+      v-if="!count"
+      :title="$t('wishlist_page.empty_wishlist_title')"
+      :description="$t('wishlist_page.empty_wishlist_description')"
+      icon="EmptyWishlist"
+    />
+    <div v-else>
+      <SFHeadline
+        tag="h1"
+        class="mt-1.5 !font-semi-bold-variable text-gray-900 max-sm:text-2xl max-sm:leading-6 sm:mt-0"
+      >
+        {{ $t('wishlist_page.title') }}
+        <ClientOnly>
+          <SFFadeInTransition v-if="count !== undefined && count > 0" appear>
+            <span
+              class="ml-0.5 inline-flex h-4.5 items-center rounded-full bg-gray-900 px-2 text-xs font-semibold leading-4 text-white"
+            >
+              {{ count }}
+            </span>
+          </SFFadeInTransition>
+        </ClientOnly>
+      </SFHeadline>
 
-    <SFAsyncDataWrapper :status="status">
       <div
-        v-if="count"
         class="mt-8 grid w-auto grid-cols-12 gap-4 xl:max-2xl:grid-cols-10"
         data-testid="wishlist-items-wrapper"
       >
@@ -32,27 +37,19 @@
           class="col-span-6 mb-4 sm:col-span-4 lg:col-span-3 xl:col-span-2"
         />
       </div>
-      <SFEmptyState
-        v-if="count === 0"
-        :title="$t('wishlist_page.empty_wishlist_title')"
-        :description="$t('wishlist_page.empty_wishlist_description')"
-        icon="EmptyWishlist"
-      />
+    </div>
 
-      <template #loading>
-        <div
-          class="mt-8 grid w-auto grid-cols-12 gap-4 xl:max-2xl:grid-cols-10"
-        >
-          <SFProductCardSkeleton
-            v-for="index in 12"
-            :key="`product-loading-${index}`"
-            type="custom"
-            class="col-span-6 mb-4 sm:col-span-4 lg:col-span-3 xl:col-span-2"
-          />
-        </div>
-      </template>
-    </SFAsyncDataWrapper>
-  </div>
+    <template #loading>
+      <div class="mt-8 grid w-auto grid-cols-12 gap-4 xl:max-2xl:grid-cols-10">
+        <SFProductCardSkeleton
+          v-for="index in 12"
+          :key="`product-loading-${index}`"
+          type="custom"
+          class="col-span-6 mb-4 sm:col-span-4 lg:col-span-3 xl:col-span-2"
+        />
+      </div>
+    </template>
+  </SFAsyncDataWrapper>
 </template>
 
 <script setup lang="ts">

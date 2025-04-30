@@ -3,7 +3,7 @@
     class="flex w-full flex-col items-start rounded-xl border border-gray-200 p-8"
   >
     <SFHeadline
-      tag="h1"
+      tag="h2"
       size="lg"
       class="mb-4 !font-semi-bold-variable text-gray-900"
     >

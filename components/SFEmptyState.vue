@@ -3,8 +3,8 @@
     class="flex flex-col items-center justify-center rounded py-10 md:px-10"
     data-testid="empty-state"
   >
-    <div class="h-56 w-full" data-testid="empty-state-icon">
-      <component :is="iconComponent" class="size-full" />
+    <div class="flex h-56 w-full justify-center" data-testid="empty-state-icon">
+      <component :is="iconComponent" />
     </div>
     <div class="px-14 text-center md:w-128 md:px-0">
       <SFHeadline
