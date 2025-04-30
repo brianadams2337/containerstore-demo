@@ -37,9 +37,9 @@ test('C2173505 C2173506 C2173507 C2173508 C2181795 C2182370 C2181791 Verify OSP'
     }
     await breadcrumb.breadcrumbCategoryActive.waitFor()
     await productListingPage.productCard.first().waitFor()
-    await productListingPage.productCard.first().click()
+    await productListingPage.productImage.first().click()
     await page.waitForLoadState('domcontentloaded')
-    await productDetailPage.variantPicker.click()
+    await productDetailPage.variantPicker.first().click({ force: true })
     await productDetailPage.getVariant().click()
     await productDetailPage.addProductToBasket()
   })
