@@ -1,6 +1,7 @@
 import scayleKvDriver from '@scayle/unstorage-scayle-kv-driver'
 import compressionDriver from '@scayle/unstorage-compression-driver'
 import vercelKV from 'unstorage/drivers/vercel-kv'
+import { stringToBoolean } from '../../utils/boolean'
 // NOTE: We need to import here from the Nuxt server-specific #imports to mitigate
 // unresolved dependencies in the imported composables from Nitro(nitropack).
 // This results in `nuxi typecheck` not being able to properly infer the correct
@@ -33,7 +34,9 @@ export default defineNitroPlugin(() => {
   storage.mount(
     'storefront-session',
     scayleKvDriver({
-      disableClusterMode: import.meta.dev,
+      disableClusterMode: stringToBoolean(
+        process.env.NUXT_STOREFRONT_STORAGE_SESSION_DISABLE_CLUSTER_MODE,
+      ),
     }),
   )
 
@@ -42,7 +45,9 @@ export default defineNitroPlugin(() => {
     compressionDriver({
       encoding: 'brotli',
       passthroughDriver: scayleKvDriver({
-        disableClusterMode: import.meta.dev,
+        disableClusterMode: stringToBoolean(
+          process.env.NUXT_STOREFRONT_STORAGE_CACHE_DISABLE_CLUSTER_MODE,
+        ),
         ttl: 10 * 60,
       }),
     }),
