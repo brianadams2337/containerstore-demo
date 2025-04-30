@@ -15,7 +15,7 @@
     >
       {{ getFirstAttributeValue(activeVariant?.attributes, 'size')?.label }}
     </span>
-    <span v-else class="font-medium text-gray-500">
+    <span v-else class="font-medium text-gray-600">
       {{ $t('variant_picker.select_size') }}
     </span>
     <template #item="{ item, selectItem }">
