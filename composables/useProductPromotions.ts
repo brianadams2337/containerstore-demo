@@ -7,7 +7,6 @@ import { type MaybeRefOrGetter, computed, type ComputedRef } from 'vue'
 import { toRef } from '@vueuse/core'
 import { useBasket, useCurrentPromotions } from '#storefront/composables'
 import {
-  getVariantIds,
   isBuyXGetYType,
   isGiftConditionMet,
 } from '#storefront-promotions/utils'
@@ -64,7 +63,9 @@ export function useProductPromotions(
     }
     return (
       basket.items.value?.some(({ promotion: basketPromotion, variant }) => {
-        const variantIds = getVariantIds(promotion.value)
+        const variantIds = isBuyXGetYType(promotion.value)
+          ? promotion.value?.effect.additionalData.variantIds ?? []
+          : []
         const hasVariantId = variantIds.includes(variant.id)
         return (
           isBuyXGetYType(basketPromotion) &&
