@@ -11850,10 +11850,10 @@ nuxi@3.25.0:
   resolved "https://registry.yarnpkg.com/nuxi/-/nuxi-3.25.0.tgz#22aaec286c8aa02bbfbbc4c842ef7ac176511544"
   integrity sha512-gNWVOCB73aZHFNWCeiYeZwl7K3m5580iphKllwrzXMAHgHnUpiwy6zjpvpEFnc08bG5KPcPby64yAGeoSWVtMw==
 
-nuxt-svgo@4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/nuxt-svgo/-/nuxt-svgo-4.1.0.tgz#c478ec180f75cd5a92a8a69c7ff80429c4234680"
-  integrity sha512-WevxmwmEBLk3VLC+7TVKtDyszVq5TqRHMC0VpziuYDGhsK/WPyGCg0xOkxGoc4qysZkKW41YL8SU1rJceFEBUQ==
+nuxt-svgo@4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/nuxt-svgo/-/nuxt-svgo-4.1.1.tgz#d2ac7b9991359c98174497ca683a9be8b707d640"
+  integrity sha512-pVBxvcX+HR0A+snqr5Y4RgPb287r88XH5lIpmspU7HJ8GlFH2EjdBvQuJBMnSgTM4AXibF80kBQsyPkrghV4ZQ==
   dependencies:
     "@nuxt/kit" "^3.4.0"
     mini-svg-data-uri "^1.4.4"
