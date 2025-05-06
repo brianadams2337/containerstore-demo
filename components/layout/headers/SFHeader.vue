@@ -10,8 +10,10 @@
       :aria-label="$t('navigation.a11ly.side_navigation')"
       @click="isSideNavigationOpen = !isSideNavigationOpen"
     >
-      <IconClose v-if="isSideNavigationOpen" class="size-7" />
-      <IconBurger v-else class="size-7" />
+      <template #icon>
+        <IconClose v-if="isSideNavigationOpen" class="size-7" />
+        <IconBurger v-else class="size-7" />
+      </template>
     </SFButton>
 
     <SFSlideInFromLeftTransition>
@@ -28,14 +30,11 @@
       />
     </SFSlideInFromLeftTransition>
 
-    <SFLocalizedLink
-      :to="routeList.home"
-      :aria-label="shopName"
+    <SFLogoLink
+      data-testid="header-logo"
       class="lg:!ml-0"
       @click="isSideNavigationOpen = false"
-    >
-      <IconLogo class="size-7" />
-    </SFLocalizedLink>
+    />
 
     <nav class="h-full grow max-lg:hidden" data-testid="nav-categories">
       <ul class="flex h-full grow-[2]">
@@ -72,6 +71,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { whenever } from '@vueuse/core'
+import SFLogoLink from '../../SFLogoLink.vue'
 import SFUserNavigationItem from './SFUserNavigationItem.vue'
 import SFBasketNavigationItem from './SFBasketNavigationItem.vue'
 import SFWishlistNavigationItem from './SFWishlistNavigationItem.vue'
@@ -80,9 +80,7 @@ import SFMobileSidebar from './SFMobileSidebar.vue'
 import SFHeaderNavigationItem from './SFHeaderNavigationItem.vue'
 import SFPromotionModalButton from './SFPromotionModalButton.vue'
 import { vPopover } from '~/modules/ui/runtime/directives/popover'
-import { useNuxtApp } from '#app/nuxt'
 import { routeList } from '~/utils'
-import SFLocalizedLink from '~/components/SFLocalizedLink.vue'
 import {
   SFButton,
   SFSlideInFromLeftTransition,
@@ -97,12 +95,6 @@ const isSideNavigationOpen = defineModel('isMobileSidebarOpen', {
   type: Boolean,
   default: false,
 })
-
-const {
-  $config: {
-    public: { shopName },
-  },
-} = useNuxtApp()
 
 const route = useRoute()
 const localePath = useLocalePath()
