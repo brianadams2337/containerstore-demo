@@ -6,7 +6,7 @@
       :description="$t('wishlist_page.empty_wishlist_description')"
       icon="EmptyWishlist"
     />
-    <div v-else>
+    <div v-else class="container mt-8 max-sm:max-w-none">
       <SFHeadline
         tag="h1"
         class="mt-1.5 !font-semi-bold-variable text-gray-900 max-sm:text-2xl max-sm:leading-6 sm:mt-0"
