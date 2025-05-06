@@ -1,5 +1,5 @@
 <template>
-  <SFAsyncDataWrapper :status="productDataStatus">
+  <SFAsyncDataWrapper :status="productDataStatus" :loaded="!!product">
     <div v-if="product" class="xl:container md:pt-4 md:max-xl:mx-5">
       <div
         class="flex flex-col items-start gap-8 max-md:space-y-5 md:flex-row md:justify-start"
@@ -106,24 +106,25 @@
 </template>
 
 <script setup lang="ts">
-import { whenever } from '@vueuse/core'
 import {
+  watch,
   computed,
   defineOptions,
   onMounted,
   ref,
   defineAsyncComponent,
 } from 'vue'
+import { whenever } from '@vueuse/core'
 import {
   getFirstAttributeValue,
   type Price,
   type Product,
   type Variant,
 } from '@scayle/storefront-nuxt'
+import { useRoute, navigateTo, useRouter } from '#app/composables/router'
 import { useSeoMeta, useHead, definePageMeta, useImage } from '#imports'
 import { useNuxtApp } from '#app/nuxt'
 import { createError } from '#app/composables/error'
-import { useRoute, useRouter } from '#app/composables/router'
 import { useJsonld } from '~/composables/useJsonld'
 import { usePageState } from '~/composables/usePageState'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
@@ -149,13 +150,11 @@ import {
   getCombineWithProductIds,
   useProductSeoData,
 } from '#storefront-product-detail'
-import { useBreadcrumbs } from '~/composables'
+import { useBreadcrumbs, useRouteHelpers } from '~/composables'
 import { hasSubscriptionCustomData } from '#storefront-subscription/helpers/subscription'
 import { formatColors } from '~/utils'
 import { generateProductSchema } from '#storefront-product-detail/utils/seo'
 import SFProductPromotionGifts from '~/components/product/promotion/gifts/SFProductPromotionGifts.vue'
-import { globalGetCachedData } from '~/utils/useRpc'
-import type { NuxtApp } from '#app'
 
 const SFLazyStoreLocatorSlideIn = defineAsyncComponent(
   () => import('~/components/locator/SFStoreLocatorSlideIn.vue'),
@@ -174,26 +173,22 @@ const productId = computed(() => {
   return parseInt(route.params.id.toString())
 })
 
-// We use the same option as in the `product` middleware together with `globalGetCachedData` in order to share data between this page and the middleware.
-// This helps reducing network requests on client navigation.
 const {
   data: product,
   status: productDataStatus,
   error,
 } = await useProduct(
   {
-    params: {
+    params: computed(() => ({
       id: productId.value,
       with: PRODUCT_DETAIL_WITH_PARAMS,
-    },
+    })),
     options: {
       lazy: true,
       dedupe: 'defer',
-      getCachedData: (key, nuxtApp) =>
-        globalGetCachedData<Product>(key, nuxtApp as NuxtApp),
     },
   },
-  `PDP-${productId.value}`,
+  `PDP-currentProduct`,
 )
 
 whenever(
@@ -356,11 +351,40 @@ useHead({
   link: canonicalLink,
 })
 useJsonld(() => [productBreadcrumbJsonLd.value, productJsonLd.value])
-definePageMeta({ pageType: 'product_detail_page', middleware: ['product'] })
+definePageMeta({ pageType: 'product_detail_page', key: 'PDP' })
+
+const { getProductDetailRoute } = useRouteHelpers()
+
+function redirectProductIfNecessary(product: Product) {
+  const expectedPath = getProductDetailRoute(
+    product.id,
+    getFirstAttributeValue(product.attributes, 'name')?.label,
+  )
+
+  if (expectedPath === route.path) {
+    return
+  }
+
+  return navigateTo(
+    { path: expectedPath, query: route.query, hash: route.hash },
+    { redirectCode: 301 },
+  )
+}
+
+const { setPageState } = usePageState()
+watch(
+  product,
+  (product) => {
+    if (product) {
+      redirectProductIfNecessary(product)
+      setPageState('typeId', String(product.id))
+    }
+  },
+  { immediate: true },
+)
 
 // Tracking
 onMounted(async () => {
-  usePageState().setPageState('typeId', String(productId.value))
   // Wait for the product to be loaded
   whenever(
     product,

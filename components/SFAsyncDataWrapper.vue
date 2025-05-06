@@ -1,5 +1,5 @@
 <template>
-  <slot v-if="status === 'success'" />
+  <slot v-if="status === 'success' || (loaded && status !== 'error')" />
   <slot v-else-if="status === 'pending' || status === 'idle'" name="loading" />
   <slot v-else-if="status === 'error'" name="error">
     <slot name="loading" />
@@ -9,5 +9,8 @@
 <script setup lang="ts">
 import type { AsyncDataRequestStatus } from '#app'
 
-defineProps<{ status: AsyncDataRequestStatus }>()
+const { loaded = false } = defineProps<{
+  status: AsyncDataRequestStatus
+  loaded?: boolean
+}>()
 </script>
