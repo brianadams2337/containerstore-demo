@@ -10,6 +10,7 @@
   >
     <form
       ref="searchBox"
+      class="w-full"
       aria-haspopup="listbox"
       data-testid="search-form"
       role="search"
