@@ -18,7 +18,7 @@
         <h2>{{ $t('basket_summary.delivery') }}</h2>
         <span>
           {{ $t('price.starting_from') }}
-          {{ formatCurrency(0) }}*
+          {{ formatCurrency(deliveryCostsValue) }}*
         </span>
       </div>
       <SFFadeInFromBottomTransition>
@@ -34,7 +34,7 @@
       />
       <SFBasketSummaryVoucherDisclaimer />
       <p class="text-xs text-secondary">
-        {{ $t('basket_summary.delivery_fees') }}
+        {{ deliveryCostsDisclaimer }}
       </p>
     </section>
   </div>
@@ -54,10 +54,14 @@ import {
 } from '#storefront-ui/components'
 import { useFormatHelpers } from '#storefront/composables'
 import { getTotalPriceWithoutReductions } from '~/utils'
+import { useShopConfigCustomData } from '~/composables'
 
 const { basket } = defineProps<{ basket: BasketResponseData }>()
 
 const subtotal = computed(() => getTotalPriceWithoutReductions(basket.cost))
 
 const { formatCurrency } = useFormatHelpers()
+
+const { deliveryCostsValue, deliveryCostsDisclaimer } =
+  useShopConfigCustomData()
 </script>

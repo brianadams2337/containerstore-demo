@@ -17,7 +17,7 @@
       <h2>{{ $t('basket_summary.delivery') }}</h2>
       <span>
         {{ $t('price.starting_from') }}
-        {{ formatCurrency(0) }}*
+        {{ formatCurrency(deliveryCostsValue) }}*
       </span>
     </div>
   </section>
@@ -40,7 +40,7 @@
     <SFBasketSummaryVoucherDisclaimer />
   </div>
   <p class="bg-gray-50 px-5 pb-8 text-xs text-secondary lg:hidden">
-    {{ $t('basket_summary.delivery_fees') }}
+    {{ deliveryCostsDisclaimer }}
   </p>
 </template>
 
@@ -51,6 +51,7 @@ import SFBasketSummaryReductions from './SFBasketSummaryReductions.vue'
 import SFBasketSummaryVoucherDisclaimer from './SFBasketSummaryVoucherDisclaimer.vue'
 import { SFHeadline } from '#storefront-ui/components'
 import { useFormatHelpers } from '#storefront/composables'
+import { useShopConfigCustomData } from '~/composables'
 
 const { basket, subtotal } = defineProps<{
   basket: BasketResponseData
@@ -58,4 +59,6 @@ const { basket, subtotal } = defineProps<{
 }>()
 
 const { formatCurrency } = useFormatHelpers()
+const { deliveryCostsValue, deliveryCostsDisclaimer } =
+  useShopConfigCustomData()
 </script>
