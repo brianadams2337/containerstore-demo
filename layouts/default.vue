@@ -19,7 +19,7 @@
       <SFHeader v-model:is-mobile-sidebar-open="isMobileSidebarOpen" />
       <main
         id="main-content"
-        class="grow focus:outline-none"
+        class="grow focus:shadow-none focus:outline-none"
         tabindex="-1"
         data-testid="main-content"
       >
