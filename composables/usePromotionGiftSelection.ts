@@ -1,4 +1,4 @@
-import { computed, ref, toRef, type MaybeRefOrGetter } from 'vue'
+import { computed, ref, toRef, type MaybeRefOrGetter, watch } from 'vue'
 import {
   ExistingItemHandling,
   type Product,
@@ -6,7 +6,6 @@ import {
   type CentAmount,
   extendPromise,
 } from '@scayle/storefront-nuxt'
-import { whenever } from '@vueuse/core'
 import { useBasketActions } from '~/composables/useBasketActions'
 import { useProductBaseInfo } from '~/composables/useProductBaseInfo'
 import { useToast } from '~/composables/useToast'
@@ -91,12 +90,14 @@ export function usePromotionGiftSelection(
     )
   })
 
-  // Weh only want preselect the active variant when `hasOneVariantOnly.value` is truthy.
-  // `whenever()` is a shorthand for watching the value to be truthy.
-  whenever(
-    hasOneVariantOnly,
-    () => {
-      activeVariant.value = giftVariants.value?.[0]
+  // We want to preselect the active variant when the product only has one active variant
+  watch(
+    gift,
+    (giftProduct) => {
+      activeVariant.value =
+        giftProduct?.variants?.length === 1
+          ? giftVariants.value?.[0]
+          : undefined
     },
     { immediate: true },
   )
