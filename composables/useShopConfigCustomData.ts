@@ -33,7 +33,7 @@ export function useShopConfigCustomData() {
 
   const deliveryCostsDisclaimer = computed(() => {
     if (!deliveryCosts.value) {
-      return t('basket.summary.delivery_fees')
+      return t('basket_summary.delivery_fees')
     }
 
     return deliveryCosts.value.disclaimer
