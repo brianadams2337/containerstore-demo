@@ -1,6 +1,6 @@
 <template>
   <div class="-mb-16 max-lg:border-t">
-    <SFAsyncDataWrapper :status="status">
+    <SFAsyncDataWrapper :async-data="orderConfirmation">
       <div v-if="orderData" class="relative flex flex-col md:flex-row">
         <SFOspSummarySection
           :order-data="orderData"
@@ -17,21 +17,6 @@
           class="order-3 bg-gray-50 px-5 py-4 md:hidden"
         />
       </div>
-      <!-- This is for the case that we have a successful request but an empty orderData. -->
-      <SFEmptyState
-        v-else
-        :title="$t('order_success_page.no_order_found.title')"
-        :description="$t('order_success_page.no_order_found.description')"
-        :show-default-actions="false"
-      >
-        <SFButton
-          variant="tertiary"
-          :to="getLocalizedRoute(routeList.home)"
-          class="mt-10"
-        >
-          {{ $t('global.continue_shopping') }}
-        </SFButton>
-      </SFEmptyState>
       <template #error>
         <SFEmptyState
           :title="$t('order_success_page.no_order_found.title')"
@@ -80,14 +65,15 @@ const { getLocalizedRoute } = useRouteHelpers()
 const route = useRoute()
 const cbdToken = String(route.query.cbd)
 
-const {
-  data: orderData,
-  status,
-  error,
-} = await useOrderConfirmation<OrderProduct, OrderVariant>({
+const orderConfirmation = await useOrderConfirmation<
+  OrderProduct,
+  OrderVariant
+>({
   params: { cbdToken },
   options: { lazy: true },
 })
+
+const { data: orderData, status, error } = orderConfirmation
 
 const user = await useUser()
 

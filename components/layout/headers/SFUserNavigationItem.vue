@@ -20,10 +20,10 @@
       </SFLocalizedLink>
     </template>
     <template #content>
-      <SFAsyncDataWrapper :status="status">
+      <SFAsyncStatusWrapper :status="status">
         <SFUserActions v-if="user" @close="isOpen = false" />
         <SFLoginActions v-else @close="isOpen = false" />
-      </SFAsyncDataWrapper>
+      </SFAsyncStatusWrapper>
     </template>
   </SFPopover>
 </template>
@@ -37,7 +37,7 @@ import { useUser } from '#storefront/composables'
 import SFLocalizedLink from '~/components/SFLocalizedLink.vue'
 import { SFPopover } from '~/modules/ui/runtime/components'
 import { routeList } from '~/utils'
-import SFAsyncDataWrapper from '~/components/SFAsyncDataWrapper.vue'
+import SFAsyncStatusWrapper from '~/components/SFAsyncStatusWrapper.vue'
 import { useRoute } from '#app/composables/router'
 import { useRouteHelpers } from '~/composables'
 

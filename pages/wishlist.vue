@@ -1,5 +1,5 @@
 <template>
-  <SFAsyncDataWrapper :status="status">
+  <SFAsyncStatusWrapper :status="status">
     <SFEmptyState
       v-if="!count"
       :title="$t('wishlist_page.empty_wishlist_title')"
@@ -49,7 +49,7 @@
         />
       </div>
     </template>
-  </SFAsyncDataWrapper>
+  </SFAsyncStatusWrapper>
 </template>
 
 <script setup lang="ts">
@@ -64,7 +64,7 @@ import {
   useRoute,
 } from '#imports'
 import SFProductCardSkeleton from '~/components/product/card/SFProductCardSkeleton.vue'
-import SFAsyncDataWrapper from '~/components/SFAsyncDataWrapper.vue'
+import SFAsyncStatusWrapper from '~/components/SFAsyncStatusWrapper.vue'
 import { useWishlistTracking } from '~/composables'
 import { useWishlist } from '#storefront/composables'
 import SFEmptyState from '~/components/SFEmptyState.vue'

@@ -1,5 +1,5 @@
 <template>
-  <SFAsyncDataWrapper :status="productDataStatus" :loaded="!!product">
+  <SFAsyncDataWrapper :async-data="productAsyncData">
     <div v-if="product" class="xl:container md:pt-4 md:max-xl:mx-5">
       <div
         class="flex flex-col items-start gap-8 max-md:space-y-5 md:flex-row md:justify-start"
@@ -107,12 +107,12 @@
 
 <script setup lang="ts">
 import {
-  watch,
   computed,
   defineOptions,
   onMounted,
   ref,
   defineAsyncComponent,
+  onUnmounted,
 } from 'vue'
 import { whenever } from '@vueuse/core'
 import {
@@ -121,6 +121,7 @@ import {
   type Product,
   type Variant,
 } from '@scayle/storefront-nuxt'
+import { clearNuxtData } from '#app/composables/asyncData'
 import { useRoute, navigateTo, useRouter } from '#app/composables/router'
 import { useSeoMeta, useHead, definePageMeta, useImage } from '#imports'
 import { useNuxtApp } from '#app/nuxt'
@@ -160,6 +161,8 @@ const SFLazyStoreLocatorSlideIn = defineAsyncComponent(
   () => import('~/components/locator/SFStoreLocatorSlideIn.vue'),
 )
 
+const CURRENT_PRODUCT_DATA_KEY = 'PDP-currentProduct'
+
 definePageMeta({
   validate(route) {
     return typeof route.params.id === 'string' && /^\d+$/.test(route.params.id)
@@ -173,11 +176,7 @@ const productId = computed(() => {
   return parseInt(route.params.id.toString())
 })
 
-const {
-  data: product,
-  status: productDataStatus,
-  error,
-} = await useProduct(
+const productAsyncData = await useProduct(
   {
     params: computed(() => ({
       id: productId.value,
@@ -188,8 +187,10 @@ const {
       dedupe: 'defer',
     },
   },
-  `PDP-currentProduct`,
+  CURRENT_PRODUCT_DATA_KEY,
 )
+
+const { data: product, error } = productAsyncData
 
 whenever(
   error,
@@ -372,13 +373,11 @@ function redirectProductIfNecessary(product: Product) {
 }
 
 const { setPageState } = usePageState()
-watch(
+whenever(
   product,
   (product) => {
-    if (product) {
-      redirectProductIfNecessary(product)
-      setPageState('typeId', String(product.id))
-    }
+    redirectProductIfNecessary(product)
+    setPageState('typeId', String(product.id))
   },
   { immediate: true },
 )
@@ -393,5 +392,10 @@ onMounted(async () => {
     },
     { immediate: true, once: true },
   )
+})
+
+// Clear the data when leaving the page
+onUnmounted(() => {
+  clearNuxtData(CURRENT_PRODUCT_DATA_KEY)
 })
 </script>

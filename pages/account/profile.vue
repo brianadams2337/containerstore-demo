@@ -1,5 +1,5 @@
 <template>
-  <SFAsyncDataWrapper :status="status">
+  <SFAsyncStatusWrapper :status="status">
     <template v-if="user">
       <SFHeadline
         class="mb-6 !font-semi-bold-variable"
@@ -25,7 +25,7 @@
     <template #loading>
       <SFProfileSkeletonLoader />
     </template>
-  </SFAsyncDataWrapper>
+  </SFAsyncStatusWrapper>
 </template>
 
 <script setup lang="ts">
@@ -34,7 +34,7 @@ import { useSeoMeta, definePageMeta } from '#imports'
 import { useUser } from '#storefront/composables'
 import { useI18n } from '#i18n'
 import { SFHeadline } from '#storefront-ui/components'
-import SFAsyncDataWrapper from '~/components/SFAsyncDataWrapper.vue'
+import SFAsyncStatusWrapper from '~/components/SFAsyncStatusWrapper.vue'
 import SFProfileSkeletonLoader from '~/components/profile/SFProfileSkeletonLoader.vue'
 import SFProfileAccountInformation from '~/components/profile/SFProfileAccountInformation.vue'
 import SFProfilePersonalInformation from '~/components/profile/SFProfilePersonalInformation.vue'

@@ -21,7 +21,7 @@
     @click="onToggleWishlist"
   >
     <template #icon="{ _class }">
-      <SFAsyncDataWrapper :status="wishlistStatus">
+      <SFAsyncStatusWrapper :status="wishlistStatus">
         <IconHeartInactive
           v-if="
             (!isInWishlist && !isWishlistToggling) ||
@@ -36,7 +36,7 @@
             class="animate-pulse fill-gray-200 text-gray-200"
           />
         </template>
-      </SFAsyncDataWrapper>
+      </SFAsyncStatusWrapper>
     </template>
   </SFButton>
 </template>
@@ -45,7 +45,7 @@
 import { computed, defineOptions, ref } from 'vue'
 import type { Product } from '@scayle/storefront-nuxt'
 import { useMounted } from '@vueuse/core'
-import SFAsyncDataWrapper from '../SFAsyncDataWrapper.vue'
+import SFAsyncStatusWrapper from '../SFAsyncStatusWrapper.vue'
 import { useWishlistTracking } from '~/composables'
 import { useWishlist } from '#storefront/composables'
 import { SFButton } from '#storefront-ui/components'

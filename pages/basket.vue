@@ -1,5 +1,5 @@
 <template>
-  <SFAsyncDataWrapper :status="basketStatus">
+  <SFAsyncStatusWrapper :status="basketStatus">
     <SFEmptyState
       v-if="basketCount === 0"
       :title="$t('basket_page.empty_basket_title')"
@@ -62,7 +62,7 @@
     <template #loading>
       <SFBasketSkeleton />
     </template>
-  </SFAsyncDataWrapper>
+  </SFAsyncStatusWrapper>
 </template>
 
 <script setup lang="ts">
@@ -80,7 +80,7 @@ import {
   useTrackingEvents,
 } from '~/composables'
 import { useBasket, useWishlist } from '#storefront/composables'
-import SFAsyncDataWrapper from '~/components/SFAsyncDataWrapper.vue'
+import SFAsyncStatusWrapper from '~/components/SFAsyncStatusWrapper.vue'
 import { basketListingMetaData } from '~/constants'
 import SFBasketSkeleton from '~/components/basket/skeleton/SFBasketSkeleton.vue'
 import SFBasketSummary from '~/components/basket/summary/SFBasketSummary.vue'

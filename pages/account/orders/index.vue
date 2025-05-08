@@ -1,5 +1,5 @@
 <template>
-  <SFAsyncDataWrapper :status="status">
+  <SFAsyncStatusWrapper :status="status">
     <SFEmptyState
       v-if="ordersCount === 0"
       :title="$t('order_list.no_orders.title')"
@@ -25,7 +25,7 @@
     <template #loading>
       <SFOrderSkeletonLoader />
     </template>
-  </SFAsyncDataWrapper>
+  </SFAsyncStatusWrapper>
 </template>
 
 <script setup lang="ts">
@@ -36,7 +36,7 @@ import { useI18n } from '#i18n'
 import { NuxtPage } from '#components'
 import { useUser } from '#storefront/composables'
 import SFOrderSkeletonLoader from '~/components/order/SFOrderSkeletonLoader.vue'
-import SFAsyncDataWrapper from '~/components/SFAsyncDataWrapper.vue'
+import SFAsyncStatusWrapper from '~/components/SFAsyncStatusWrapper.vue'
 import SFOrderList from '~/components/order/SFOrderList.vue'
 import { SFHeadline } from '#storefront-ui/components'
 

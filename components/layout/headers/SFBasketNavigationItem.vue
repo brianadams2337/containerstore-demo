@@ -25,11 +25,11 @@
       </SFLocalizedLink>
     </template>
     <template #content>
-      <SFAsyncDataWrapper :status="status">
+      <SFAsyncStatusWrapper :status="status">
         <SFBasketHeadline v-if="count" :count="count" class="px-4 py-2" />
         <SFBasketPopoverItems class="scroll-shadow" />
         <SFBasketPopoverActions v-if="count" />
-      </SFAsyncDataWrapper>
+      </SFAsyncStatusWrapper>
     </template>
   </SFPopover>
 </template>
@@ -42,7 +42,7 @@ import { useBasket } from '#storefront/composables'
 import SFLocalizedLink from '~/components/SFLocalizedLink.vue'
 import { SFPopover } from '~/modules/ui/runtime/components'
 import { routeList } from '~/utils'
-import SFAsyncDataWrapper from '~/components/SFAsyncDataWrapper.vue'
+import SFAsyncStatusWrapper from '~/components/SFAsyncStatusWrapper.vue'
 import SFBasketPopoverItems from '~/components/basket/popover/SFBasketPopoverItems.vue'
 import SFBasketPopoverActions from '~/components/basket/popover/SFBasketPopoverActions.vue'
 import SFBasketHeadline from '~/components/basket/SFBasketHeadline.vue'

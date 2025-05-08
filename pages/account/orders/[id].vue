@@ -1,13 +1,10 @@
 <template>
-  <SFAsyncDataWrapper :status="status">
-    <SFOrderDetailHeadline :id="id" class="mb-5 xl:mb-7" />
-    <template v-if="orderDetails">
-      <SFOrderDetailBaseInformation
-        :order-details="orderDetails"
-        class="mb-4"
-      />
-      <SFOrderDetailProductList :order-details="orderDetails" />
-      <SFOrderDetailPaymentSummary :cost="orderDetails.cost" />
+  <SFAsyncDataWrapper :async-data="orderPromise">
+    <template #default="{ data }">
+      <SFOrderDetailHeadline :id="id" class="mb-5 xl:mb-7" />
+      <SFOrderDetailBaseInformation :order-details="data" class="mb-4" />
+      <SFOrderDetailProductList :order-details="data" />
+      <SFOrderDetailPaymentSummary :cost="data.cost" />
     </template>
     <template #loading>
       <SFOrderDetailSkeletonLoader />
