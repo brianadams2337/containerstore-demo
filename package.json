@@ -111,7 +111,7 @@
     "@scayle/storefront-nuxt": "8.25.3",
     "@scayle/storefront-product-detail": "1.2.0",
     "@scayle/storefront-product-listing": "1.4.0",
-    "@scayle/storefront-promotions": "0.3.0",
+    "@scayle/storefront-promotions": "1.0.0",
     "@scayle/storefront-search": "0.3.0",
     "@scayle/unstorage-compression-driver": "0.2.7",
     "@scayle/unstorage-scayle-kv-driver": "0.1.2",
