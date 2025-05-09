@@ -2968,7 +2968,12 @@
     "@opentelemetry/core" "2.0.0"
     "@opentelemetry/sdk-trace-base" "2.0.0"
 
-"@opentelemetry/semantic-conventions@1.32.0", "@opentelemetry/semantic-conventions@^1.27.0", "@opentelemetry/semantic-conventions@^1.29.0", "@opentelemetry/semantic-conventions@^1.30.0":
+"@opentelemetry/semantic-conventions@1.33.0":
+  version "1.33.0"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/semantic-conventions/-/semantic-conventions-1.33.0.tgz#ec8ebd2ac768ab366aff94e0e7f27e8ae24fa49f"
+  integrity sha512-TIpZvE8fiEILFfTlfPnltpBaD3d9/+uQHVCyC3vfdh6WfCXKhNFzoP5RyDDIndfvZC5GrA4pyEDNyjPloJud+w==
+
+"@opentelemetry/semantic-conventions@^1.27.0", "@opentelemetry/semantic-conventions@^1.29.0", "@opentelemetry/semantic-conventions@^1.30.0":
   version "1.32.0"
   resolved "https://registry.yarnpkg.com/@opentelemetry/semantic-conventions/-/semantic-conventions-1.32.0.tgz#a15e8f78f32388a7e4655e7f539570e40958ca3f"
   integrity sha512-s0OpmpQFSfMrmedAn9Lhg4KWJELHCU6uU9dtIJ28N8UGhf9Y55im5X8fEzwhwDwiSqN+ZPSNrDJF7ivf/AuRPQ==
@@ -3513,10 +3518,10 @@
   resolved "https://registry.yarnpkg.com/@scayle/nuxt-image-provider/-/nuxt-image-provider-0.3.1.tgz#fe55b0f1b0ee918a80d51eeecf55f8a4bda59c1f"
   integrity sha512-x/TC3yy8eaqXCePpXkYlPUcZ2pD6K70FRkbSzjUgTrfcpPEKETLRiYICgov2GC17vOeUIlCA4L9waJEoDwnDmA==
 
-"@scayle/nuxt-opentelemetry@0.12.1":
-  version "0.12.1"
-  resolved "https://registry.yarnpkg.com/@scayle/nuxt-opentelemetry/-/nuxt-opentelemetry-0.12.1.tgz#507581de72e4f4d93dc0409cc2cc74701004dcb4"
-  integrity sha512-zZNu6dq8TY/YCCSm2mAiHJFMSDHpLnVhQU6Y8aTf6cEvln7Z1yzzu3fjY6eaUC3kLyYWr3LlSnVUYqWxEPLIBQ==
+"@scayle/nuxt-opentelemetry@0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@scayle/nuxt-opentelemetry/-/nuxt-opentelemetry-0.13.0.tgz#6d8be69a4d6380ad84b31ae85c066665c71984dd"
+  integrity sha512-u5iKJWT8T/nwauXVkpa+sd1J3+4VGYIERHjI1hJ7zOgUkekA6WeFkhA5IZPT3j4g5OjXPBy7ktdHmqNtANHXww==
   dependencies:
     "@nuxt/kit" "^3.12.3"
     "@opentelemetry/api" "1.9.0"
@@ -3529,8 +3534,8 @@
     "@opentelemetry/sdk-node" "0.200.0"
     "@opentelemetry/sdk-trace-base" "2.0.0"
     "@opentelemetry/sdk-trace-node" "2.0.0"
-    "@opentelemetry/semantic-conventions" "1.32.0"
-    "@vercel/otel" "1.11.0"
+    "@opentelemetry/semantic-conventions" "1.33.0"
+    "@vercel/otel" "1.12.0"
     defu "^6.1.4"
     import-in-the-middle "1.13.1"
     knitwork "^1.1.0"
@@ -4341,10 +4346,10 @@
     picomatch "^4.0.2"
     resolve-from "^5.0.0"
 
-"@vercel/otel@1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@vercel/otel/-/otel-1.11.0.tgz#e2e4312d0ceb72f01e83f0e796567c56674c309e"
-  integrity sha512-cS+Yq2qfkkGyoRKhdKd81J5pVPo7ulLnqeQsISITJVynRNuun8+1FfY+DHcPT2drj9Bl/7LpG0BosULrv7yyqg==
+"@vercel/otel@1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@vercel/otel/-/otel-1.12.0.tgz#f42c1cbce6a261da284c4e305192d7164db8c43d"
+  integrity sha512-KiTlMvJf6tjxcJUlpU1u7o1YpTddhx+aLhJ6Obn9dExr3ykVp5Lzi4ACET029TCzJ63NBzcF641rGMZly6x4aw==
 
 "@vercel/stega@^0.1.2":
   version "0.1.2"
