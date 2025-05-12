@@ -40,6 +40,9 @@ const DAYS: DayOfWeek[] = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 const locale = useCurrentShopLocale()
 const dateFormatter = Intl.DateTimeFormat(locale.value, { weekday: 'long' })
 const getWeekdayName = (day: DayOfWeek) => {
-  return dateFormatter.format(new Date(2025, 3, DAYS.indexOf(day)))
+  // July 2024 starts with a Monday.
+  // Using this date we can use the index of day + 1 to access the correct workday.
+  // The formatter will then only return the weekday name.
+  return dateFormatter.format(new Date(2024, 6, DAYS.indexOf(day) + 1))
 }
 </script>
