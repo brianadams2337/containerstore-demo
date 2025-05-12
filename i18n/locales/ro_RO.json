@@ -554,9 +554,7 @@
     "select_store": "Selectați magazinul",
     "no_results": "Fără rezultate"
   },
-  "intl": {
-    "first_day": "1"
-  },
+  "intl": {},
   "subscription_page": {
     "headline": "Gestionați-vă abonamentele",
     "meta": {

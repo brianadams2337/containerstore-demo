@@ -554,9 +554,7 @@
     "select_store": "Изберете магазин",
     "no_results": "Няма резултати"
   },
-  "intl": {
-    "first_day": "1"
-  },
+  "intl": {},
   "subscription_page": {
     "headline": "Управление на вашите абонаменти",
     "meta": {

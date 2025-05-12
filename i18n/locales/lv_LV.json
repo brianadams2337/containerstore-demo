@@ -554,9 +554,7 @@
     "select_store": "Izvēlieties veikalu",
     "no_results": "Nav rezultātu"
   },
-  "intl": {
-    "first_day": "1"
-  },
+  "intl": {},
   "subscription_page": {
     "headline": "Pārvaldiet savus abonementus",
     "meta": {

@@ -554,9 +554,7 @@
     "select_store": "Valige pood",
     "no_results": "No results"
   },
-  "intl": {
-    "first_day": "1"
-  },
+  "intl": {},
   "subscription_page": {
     "headline": "Tellimuste haldamine",
     "meta": {

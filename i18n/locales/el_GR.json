@@ -554,9 +554,7 @@
     "select_store": "Επιλογή καταστήματος",
     "no_results": "Δεν υπάρχουν αποτελέσματα"
   },
-  "intl": {
-    "first_day": "1"
-  },
+  "intl": {},
   "subscription_page": {
     "headline": "Διαχειριστείτε τις συνδρομές σας",
     "meta": {

@@ -554,9 +554,7 @@
     "select_store": "Choisir un magasin",
     "no_results": "Aucun résultat"
   },
-  "intl": {
-    "first_day": "1"
-  },
+  "intl": {},
   "subscription_page": {
     "headline": "Gérer vos abonnements",
     "meta": {

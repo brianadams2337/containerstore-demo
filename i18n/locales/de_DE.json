@@ -555,9 +555,7 @@
     "select_store": "Store auswählen",
     "no_results": "Keine Ergebnisse"
   },
-  "intl": {
-    "first_day": "1"
-  },
+  "intl": {},
   "subscription_page": {
     "headline": "Verwalte deine Abonnements",
     "meta": {

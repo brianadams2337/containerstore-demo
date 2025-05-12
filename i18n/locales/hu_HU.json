@@ -554,9 +554,7 @@
     "select_store": "Bolt kiválasztása",
     "no_results": "Nincsenek eredmények"
   },
-  "intl": {
-    "first_day": "1"
-  },
+  "intl": {},
   "subscription_page": {
     "headline": "Az előfizetések kezelése",
     "meta": {

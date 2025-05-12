@@ -554,9 +554,7 @@
     "select_store": "Vybrat obchod",
     "no_results": "Žádné výsledky"
   },
-  "intl": {
-    "first_day": "1"
-  },
+  "intl": {},
   "subscription_page": {
     "headline": "Správa předplatného",
     "meta": {

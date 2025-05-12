@@ -554,9 +554,7 @@
     "select_store": "Scegli il negozio",
     "no_results": "Nessun risultato"
   },
-  "intl": {
-    "first_day": "1"
-  },
+  "intl": {},
   "subscription_page": {
     "headline": "Gestisci i tuoi abbonamenti",
     "meta": {

@@ -554,9 +554,7 @@
     "select_store": "Vælg butik",
     "no_results": "Ingen resultater"
   },
-  "intl": {
-    "first_day": "1"
-  },
+  "intl": {},
   "subscription_page": {
     "headline": "Administrer dine abonnementer",
     "meta": {

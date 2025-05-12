@@ -554,9 +554,7 @@
     "select_store": "Winkel selecteren",
     "no_results": "Geen resultaten"
   },
-  "intl": {
-    "first_day": "1"
-  },
+  "intl": {},
   "subscription_page": {
     "headline": "Beheer je abonnementen",
     "meta": {

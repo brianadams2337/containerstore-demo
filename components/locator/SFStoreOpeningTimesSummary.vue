@@ -8,7 +8,7 @@
       {{ $t('store_locator.store_information.opening_hours') }}
     </summary>
     <div class="pb-2">
-      <div v-for="day in daysOfWeek" :key="day" class="mb-1">
+      <div v-for="day in DAYS" :key="day" class="mb-1">
         <div class="flex items-center justify-between">
           <div class="grow capitalize">
             {{ getWeekdayName(day) }}
@@ -29,17 +29,12 @@
   </details>
 </template>
 <script setup lang="ts">
-import { computed } from 'vue'
 import type { OpeningTimes } from '@scayle/omnichannel-nuxt'
-import { useFirstDayOfWeek } from '~/composables/useFirstDayOfWeek'
 import { useCurrentShopLocale } from '~/composables/useCurrentShopLocale'
 
 defineProps<{ openingTimes: OpeningTimes }>()
 
-const firstDay = useFirstDayOfWeek()
-
 type DayOfWeek = 'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat' | 'sun'
-
 const DAYS: DayOfWeek[] = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 
 const locale = useCurrentShopLocale()
@@ -47,12 +42,4 @@ const dateFormatter = Intl.DateTimeFormat(locale.value, { weekday: 'long' })
 const getWeekdayName = (day: DayOfWeek) => {
   return dateFormatter.format(new Date(2025, 3, DAYS.indexOf(day)))
 }
-
-const daysOfWeek = computed<DayOfWeek[]>(() => {
-  const result = DAYS.slice()
-  const begin = result.slice(firstDay - 1)
-  result.splice(firstDay - 1)
-  result.unshift(...begin)
-  return result
-})
 </script>

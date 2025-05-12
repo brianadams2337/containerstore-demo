@@ -556,9 +556,7 @@
     "select_store": "Select store",
     "no_results": "No results"
   },
-  "intl": {
-    "first_day": "1"
-  },
+  "intl": {},
   "subscription_page": {
     "headline": "Manage your subscriptions",
     "meta": {

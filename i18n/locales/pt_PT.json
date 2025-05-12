@@ -554,9 +554,7 @@
     "select_store": "Seleciona a loja",
     "no_results": "Sem resultados"
   },
-  "intl": {
-    "first_day": "1"
-  },
+  "intl": {},
   "subscription_page": {
     "headline": "Gere as tuas subscrições",
     "meta": {
