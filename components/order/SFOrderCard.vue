@@ -17,7 +17,7 @@
       </SFHeadline>
       <span v-if="confirmedAt" class="mb-1">
         {{ $t('order_card.order_date') }}:
-        {{ formatLocaleDate(new Date(confirmedAt)) }}
+        {{ formatDate(new Date(confirmedAt)) }}
       </span>
       <span v-if="itemCount">
         {{ $t('order_card.items') }}: {{ itemCount }}
@@ -38,9 +38,9 @@
 <script setup lang="ts">
 import SFLocalizedLink from '../SFLocalizedLink.vue'
 import { SFHeadline, SFButton } from '#storefront-ui/components'
-import { useFormatDate, useRouteHelpers } from '~/composables'
+import { useFormat, useRouteHelpers } from '~/composables'
 
-const { formatLocaleDate } = useFormatDate()
+const { formatDate } = useFormat()
 const { getOrderDetailsRoute } = useRouteHelpers()
 
 const { id, confirmedAt, itemCount } = defineProps<{

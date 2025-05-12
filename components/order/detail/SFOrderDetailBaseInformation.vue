@@ -7,7 +7,7 @@
         <span class="font-medium">
           {{ $t('order_information.order_details.order_date') }}:
         </span>
-        {{ formatLocaleDate(new Date(orderDetails.confirmedAt)) }}
+        {{ formatDate(new Date(orderDetails.confirmedAt)) }}
       </div>
     </SFOrderDetailBox>
     <SFOrderDetailBox :title="$t('order_information.payment_details.title')">
@@ -38,12 +38,12 @@ import { computed } from 'vue'
 import SFOrderDetailBox from './SFOrderDetailBox.vue'
 import SFOrderDetailAddressBox from './SFOrderDetailAddressBox.vue'
 import type { Order } from '~/types/order'
-import { useFormatDate } from '~/composables'
+import { useFormat } from '~/composables'
 import { useI18n } from '#i18n'
 
 const { t } = useI18n()
 
-const { formatLocaleDate } = useFormatDate()
+const { formatDate } = useFormat()
 
 const { orderDetails } = defineProps<{ orderDetails: Order }>()
 

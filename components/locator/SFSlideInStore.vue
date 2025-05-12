@@ -84,7 +84,7 @@ import { computed } from 'vue'
 import type { OpeningTimes, StoreAddress } from '@scayle/omnichannel-nuxt'
 import SFStoreFavoriteToggle from './SFStoreFavoriteToggle.vue'
 import SFStoreOpeningTimesSummary from './SFStoreOpeningTimesSummary.vue'
-import { useFormatDistance } from '~/composables/useFormatDistance'
+import { useFormat } from '~/composables/useFormat'
 
 interface Props {
   id: number
@@ -99,7 +99,7 @@ interface Props {
 
 const { index = 0, name } = defineProps<Props>()
 
-const formatDistance = useFormatDistance()
+const { formatDistance } = useFormat()
 
 const nameWithIndex = computed(() =>
   index > 0 ? `${index}. ${name}` : `${name}`,

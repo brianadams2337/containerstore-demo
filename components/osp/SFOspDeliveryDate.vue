@@ -6,8 +6,8 @@
     >
       <div class="text-base text-gray-500">
         {{ $t('order_information.order_details.estimated_delivery_date') }}:
-        {{ formatLocaleDate(new Date(Date.parse(deliveryDate.minimum))) }} -
-        {{ formatLocaleDate(new Date(Date.parse(deliveryDate.maximum))) }}
+        {{ formatDate(new Date(Date.parse(deliveryDate.minimum))) }} -
+        {{ formatDate(new Date(Date.parse(deliveryDate.maximum))) }}
       </div>
     </div>
     <div class="p-2 text-xs text-gray-600" data-testid="osp-carrier">
@@ -20,9 +20,9 @@
 
 <script setup lang="ts">
 import type { DeliveryDate } from '~/types/order'
-import { useFormatDate } from '~/composables'
+import { useFormat } from '~/composables'
 
 defineProps<{ deliveryDate: DeliveryDate; sender: string }>()
 
-const { formatLocaleDate } = useFormatDate()
+const { formatDate } = useFormat()
 </script>

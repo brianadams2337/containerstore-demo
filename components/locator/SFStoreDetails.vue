@@ -43,9 +43,9 @@
 
 <script setup lang="ts">
 import type { StoreLocation } from '@scayle/omnichannel-nuxt'
-import { useFormatDistance } from '~/composables/useFormatDistance'
+import { useFormat } from '~/composables/useFormat'
 
 defineProps<{ store: StoreLocation }>()
 
-const formatDistance = useFormatDistance()
+const { formatDistance } = useFormat()
 </script>
