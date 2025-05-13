@@ -153,7 +153,6 @@ import {
 } from '#storefront-product-detail'
 import { useBreadcrumbs, useRouteHelpers } from '~/composables'
 import { hasSubscriptionCustomData } from '#storefront-subscription/helpers/subscription'
-import { formatColors } from '~/utils'
 import { generateProductSchema } from '#storefront-product-detail/utils/seo'
 import SFProductPromotionGifts from '~/components/product/promotion/gifts/SFProductPromotionGifts.vue'
 
@@ -206,8 +205,8 @@ const {
   longestCategoryList,
   hasOneVariantOnly,
   variants,
-  colors,
   image,
+  color,
 } = useProductBaseInfo(product)
 
 const { items } = useBasket()
@@ -313,7 +312,7 @@ const productInfo = computed(() => ({
   variants: variants.value.map((variant) => {
     const size = getFirstAttributeValue(variant.attributes, 'size')?.label || ''
     return generateProductSchema({
-      productName: `${name.value}, ${formatColors(colors.value)}`,
+      productName: `${name.value}, ${color.value}`,
       variant,
       url: `${$config.public.baseUrl}${route.fullPath}`,
       size,
@@ -326,7 +325,7 @@ const productInfo = computed(() => ({
     })
   }),
   productId: product.value?.id || 0,
-  color: formatColors(colors.value),
+  color: color.value,
   variesBy: variants.value.length > 1 ? ['https://schema.org/size'] : undefined,
 }))
 

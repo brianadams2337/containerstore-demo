@@ -144,7 +144,7 @@ describe('useProductBaseInfo', () => {
     })
   })
 
-  describe('colors', () => {
+  describe('color', () => {
     it('should return the correct default value for colors + sibling color', () => {
       const product = productFactory.build({
         attributes: {
@@ -160,26 +160,15 @@ describe('useProductBaseInfo', () => {
           }),
         },
       })
-      const { colors } = useProductBaseInfo(product)
+      const { color } = useProductBaseInfo(product)
 
-      expect(colors.value).toStrictEqual([
-        {
-          id: 6,
-          label: 'Weiß',
-          value: 'weiss',
-        },
-        {
-          id: 6,
-          label: 'Weiß',
-          value: 'weiss',
-        },
-      ])
+      expect(color.value).toStrictEqual('Weiß')
     })
 
     it('should return undefined default value for colors', () => {
-      const { colors } = useProductBaseInfo(undefined)
+      const { color } = useProductBaseInfo(undefined)
 
-      expect(colors.value).toBeUndefined()
+      expect(color.value).toBe('')
     })
   })
 

@@ -2,7 +2,6 @@ import {
   type Product,
   getAttributeValueTuples,
   getFirstAttributeValue,
-  getProductAndSiblingsColors,
 } from '@scayle/storefront-nuxt'
 import { type MaybeRefOrGetter, toRef, computed } from 'vue'
 import { useRouteHelpers } from '~/composables'
@@ -50,10 +49,10 @@ export function useProductBaseInfo(
     return product.value ? product.value.lowestPriorPrice : undefined
   })
 
-  const colors = computed(() => {
-    return product.value
-      ? getProductAndSiblingsColors(product.value, 'color')
-      : undefined
+  const color = computed(() => {
+    return formatColors(
+      getAttributeValueTuples(product.value?.attributes, 'color'),
+    )
   })
 
   const images = computed(() => {
@@ -89,9 +88,7 @@ export function useProductBaseInfo(
   const alt = computed(() => {
     return t('product_image.alt', {
       productName: name.value,
-      colors: formatColors(
-        getAttributeValueTuples(product.value?.attributes, 'color'),
-      ),
+      colors: color.value,
       brand: brand.value,
     })
   })
@@ -124,7 +121,7 @@ export function useProductBaseInfo(
     description,
     price,
     lowestPriorPrice,
-    colors,
+    color,
     image,
     images,
     siblings,
