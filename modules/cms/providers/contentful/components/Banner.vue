@@ -68,9 +68,9 @@
 import { computed, ref, defineOptions, resolveComponent } from 'vue'
 import { vElementVisibility } from '@vueuse/components'
 import type { CMSBannerProps } from '../types'
+import { useBanner } from '../../../composables/useBanner'
 import CMSText from './Text.vue'
 import CMSScrollableLinkList from './ScrollableLinkList.vue'
-import { useBanner } from '~/composables/useBanner'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
 import { SFButton, SFCountdown } from '#storefront-ui/components'
 

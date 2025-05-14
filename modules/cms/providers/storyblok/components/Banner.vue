@@ -77,15 +77,15 @@
 <script setup lang="ts">
 import { computed, ref, defineOptions, resolveComponent } from 'vue'
 import { useStorefrontTracking } from '../../../composables/storefront/useStorefrontTracking'
-import { useStorefrontBanner } from '../../../composables/storefront/useStorefrontBanner'
 import type { CMSBannerProps } from '../types'
+import { useBanner } from '../../../composables/useBanner'
 import CMSText from './Text.vue'
 import CMSScrollableLinkList from './ScrollableLinkList.vue'
 import { SFButton, SFCountdown } from '#storefront-ui/components'
 
 const { type = '', blok, publishedAt } = defineProps<CMSBannerProps>()
 
-const storefrontBanner = useStorefrontBanner()
+const storefrontBanner = useBanner()
 const storefrontTracking = useStorefrontTracking()
 const hasBeenVisible = ref(false)
 

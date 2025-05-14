@@ -16,7 +16,6 @@ export * from './usePromotionGiftSelection'
 // Auth
 export * from './useAuthentication'
 
-export * from './useBanner'
 export * from './useBreadcrumbs'
 export * from './useCheckoutWebComponent'
 export * from './useFavoriteStore'

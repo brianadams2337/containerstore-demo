@@ -1,6 +1,5 @@
 import { inject, provide, type InjectionKey } from 'vue'
 import type { usePromotionEvents } from '../tracking'
-import type { useBanner } from '~/composables/useBanner'
 import type { useDefaultBreakpoints } from '#storefront-ui/composables'
 import type { useTrackingEvents } from '~/composables/useTrackingEvents'
 
@@ -24,12 +23,6 @@ export const USE_TRACKING_EVENTS_KEY: InjectionKey<UseTrackingEvents> = Symbol(
 type UseDefaultBreakpoints = ReturnType<typeof useDefaultBreakpoints>
 export const USE_DEFAULT_BREAKPOINTS_KEY: InjectionKey<UseDefaultBreakpoints> =
   Symbol('useDefaultBreakpointsInjectionKey')
-
-// useBanner
-type UseBanner = ReturnType<typeof useBanner>
-export const USE_BANNER_KEY: InjectionKey<UseBanner> = Symbol(
-  'useBannerInjectionKey',
-)
 
 type UsePromotionEvents = ReturnType<typeof usePromotionEvents>
 export const USE_PROMOTION_EVENTS_KEY: InjectionKey<UsePromotionEvents> =
