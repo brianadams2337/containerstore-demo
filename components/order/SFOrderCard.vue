@@ -7,14 +7,17 @@
     class="flex items-center justify-between rounded-xl border border-gray-300 bg-white p-5"
   >
     <div class="flex flex-col text-base text-gray-600">
-      <SFHeadline
-        class="mb-3 !font-semi-bold-variable text-gray-900"
-        data-testid="order-item-headline"
-        size="md"
-        tag="h3"
-      >
-        {{ $t('order_card.title', { id }) }}
-      </SFHeadline>
+      <div class="mb-3 flex items-center gap-2.5">
+        <SFHeadline
+          class="!font-semi-bold-variable text-gray-900"
+          data-testid="order-item-headline"
+          size="md"
+          tag="h3"
+        >
+          {{ $t('order_card.title', { id }) }}
+        </SFHeadline>
+        <SFOrderStatus v-if="status" :status="status" />
+      </div>
       <span v-if="confirmedAt" class="mb-1">
         {{ $t('order_card.order_date') }}:
         {{ formatDate(new Date(confirmedAt)) }}
@@ -36,15 +39,18 @@
 </template>
 
 <script setup lang="ts">
+import type { OrderStatus } from '@scayle/storefront-nuxt'
 import SFLocalizedLink from '../SFLocalizedLink.vue'
+import SFOrderStatus from './SFOrderStatus.vue'
 import { SFHeadline, SFButton } from '#storefront-ui/components'
 import { useFormat, useRouteHelpers } from '~/composables'
 
 const { formatDate } = useFormat()
 const { getOrderDetailsRoute } = useRouteHelpers()
 
-const { id, confirmedAt, itemCount } = defineProps<{
+const { id, confirmedAt, itemCount, status } = defineProps<{
   id: number
+  status?: OrderStatus
   confirmedAt?: string
   itemCount?: number
 }>()

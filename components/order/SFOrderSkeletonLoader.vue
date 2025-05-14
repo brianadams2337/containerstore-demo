@@ -8,7 +8,7 @@
       v-for="n in 8"
       :key="`order-item-loader-${n}`"
       type="custom"
-      class="mb-6 h-26 w-full rounded-b-lg rounded-t-xl pb-0.5"
+      class="mb-6 h-26 w-full rounded-b-lg rounded-t-xl pb-1"
     />
   </div>
 </template>

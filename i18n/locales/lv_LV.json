@@ -547,14 +547,14 @@
       "available": "Pieejams",
       "low_stock": "Mazs noliktavas krājums"
     },
-    "search_store_input_placeholder": "Ievadiet pilsētu vai pasta indeksu"
+    "search_store_input_placeholder": "Ievadiet pilsētu vai pasta indeksu",
+    "detect_location_label": "Atklāt manu atrašanās vietu"
   },
   "store_locator_slide_in": {
     "headline": "Izvēlieties veikalu",
     "select_store": "Izvēlieties veikalu",
     "no_results": "Nav rezultātu"
   },
-  "intl": {},
   "subscription_page": {
     "headline": "Pārvaldiet savus abonementus",
     "meta": {
@@ -631,5 +631,11 @@
     "size": "Izmērs",
     "color": "Krāsa"
   },
-  "auth_close_password_modal": "Aizvērt paroles modālu"
+  "auth_close_password_modal": "Aizvērt paroles modālu",
+  "order_status": {
+    "open": "Atvērts",
+    "shipped": "Nosūtīts",
+    "cancelled": "Atcelts",
+    "confirmed": "Apstiprināts"
+  }
 }

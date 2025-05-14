@@ -92,10 +92,13 @@ export default {
         },
         error: {
           light: '#fadbd8',
-          DEFAULT: '#D1000A',
+          DEFAULT: '#d1000a',
         },
         info: '#ccbff6',
-        alert: '#f59e0b',
+        alert: {
+          light: '#fdecce',
+          DEFAULT: '#f59e0b',
+        },
       },
     },
     aspectRatio: {

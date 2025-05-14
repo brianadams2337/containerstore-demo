@@ -547,14 +547,14 @@
       "available": "Turima",
       "low_stock": "Mažai atsargų"
     },
-    "search_store_input_placeholder": "Įveskite miestą arba pašto kodą"
+    "search_store_input_placeholder": "Įveskite miestą arba pašto kodą",
+    "detect_location_label": "Aptikti mano buvimo vietą"
   },
   "store_locator_slide_in": {
     "headline": "Pasirinkite parduotuvę",
     "select_store": "Pasirinkite parduotuvę",
     "no_results": "Nėra rezultatų"
   },
-  "intl": {},
   "subscription_page": {
     "headline": "Tvarkykite savo prenumeratas",
     "meta": {
@@ -631,5 +631,11 @@
     "size": "Dydis",
     "color": "Spalva"
   },
-  "auth_close_password_modal": "Uždaryti slaptažodžio modalą"
+  "auth_close_password_modal": "Uždaryti slaptažodžio modalą",
+  "order_status": {
+    "open": "Atidaryta",
+    "shipped": "Išsiųsta",
+    "cancelled": "Atšauktas",
+    "confirmed": "Patvirtinta"
+  }
 }

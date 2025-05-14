@@ -315,6 +315,12 @@
       "billing_address": "Billing Address"
     }
   },
+  "order_status": {
+    "open": "Open",
+    "shipped": "Shipped",
+    "cancelled": "Cancelled",
+    "confirmed": "Confirmed"
+  },
   "order_detail_payment_summary": {
     "total": "Total",
     "subtotal": "Subtotal",

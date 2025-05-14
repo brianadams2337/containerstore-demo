@@ -547,14 +547,14 @@
       "available": "Saatavilla",
       "low_stock": "Alhainen varasto"
     },
-    "search_store_input_placeholder": "Syötä kaupunki tai postinumero"
+    "search_store_input_placeholder": "Syötä kaupunki tai postinumero",
+    "detect_location_label": "Tunnista sijaintini"
   },
   "store_locator_slide_in": {
     "headline": "Valitse myymälä",
     "select_store": "Valitse myymälä",
     "no_results": "Ei tuloksia"
   },
-  "intl": {},
   "subscription_page": {
     "headline": "Hallitse tilauksiasi",
     "meta": {
@@ -631,5 +631,11 @@
     "size": "Koko",
     "color": "Väri"
   },
-  "auth_close_password_modal": "Sulje salasanan modaali"
+  "auth_close_password_modal": "Sulje salasanan modaali",
+  "order_status": {
+    "open": "Avoin",
+    "shipped": "Lähetetty",
+    "cancelled": "Peruutettu",
+    "confirmed": "Vahvistettu"
+  }
 }

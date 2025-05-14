@@ -547,14 +547,14 @@
       "available": "Tilgjengelig",
       "low_stock": "Lavt lager"
     },
-    "search_store_input_placeholder": "Skriv inn by eller postnummer"
+    "search_store_input_placeholder": "Skriv inn by eller postnummer",
+    "detect_location_label": "Finn min posisjon"
   },
   "store_locator_slide_in": {
     "headline": "Velg butikk",
     "select_store": "Velg butikk",
     "no_results": "Ingen resultater"
   },
-  "intl": {},
   "subscription_page": {
     "headline": "Administrer abonnementene dine",
     "meta": {
@@ -631,5 +631,11 @@
     "size": "størrelse",
     "color": "farge"
   },
-  "auth_close_password_modal": "Lukk passordmodal"
+  "auth_close_password_modal": "Lukk passordmodal",
+  "order_status": {
+    "open": "Åpen",
+    "shipped": "Sendt",
+    "cancelled": "Avbestilt",
+    "confirmed": "Bekreftet"
+  }
 }

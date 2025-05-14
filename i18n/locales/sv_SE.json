@@ -547,14 +547,14 @@
       "available": "Tillgänglig",
       "low_stock": "Lågt lager"
     },
-    "search_store_input_placeholder": "Ange stad eller postnummer"
+    "search_store_input_placeholder": "Ange stad eller postnummer",
+    "detect_location_label": "Upptäck min plats"
   },
   "store_locator_slide_in": {
     "headline": "Välj butik",
     "select_store": "Välj butik",
     "no_results": "Inga resultat"
   },
-  "intl": {},
   "subscription_page": {
     "headline": "Hantera dina prenumerationer",
     "meta": {
@@ -631,5 +631,11 @@
     "size": "storlek",
     "color": "färg"
   },
-  "auth_close_password_modal": "Stäng lösenord modal"
+  "auth_close_password_modal": "Stäng lösenord modal",
+  "order_status": {
+    "open": "Öppen",
+    "shipped": "Levererad",
+    "cancelled": "Avbeställd",
+    "confirmed": "Bekräftad"
+  }
 }

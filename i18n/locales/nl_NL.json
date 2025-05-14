@@ -547,14 +547,14 @@
       "available": "Beschikbaar",
       "low_stock": "Lage voorraad"
     },
-    "search_store_input_placeholder": "Voer stad of postcode in"
+    "search_store_input_placeholder": "Voer stad of postcode in",
+    "detect_location_label": "Mijn locatie vinden"
   },
   "store_locator_slide_in": {
     "headline": "Kies winkel",
     "select_store": "Winkel selecteren",
     "no_results": "Geen resultaten"
   },
-  "intl": {},
   "subscription_page": {
     "headline": "Beheer je abonnementen",
     "meta": {
@@ -631,5 +631,11 @@
     "size": "Grootte",
     "color": "Kleur"
   },
-  "auth_close_password_modal": "Wachtwoord modal sluiten"
+  "auth_close_password_modal": "Wachtwoord modal sluiten",
+  "order_status": {
+    "open": "Open",
+    "shipped": "Verzonden",
+    "cancelled": "Geannuleerd",
+    "confirmed": "Bevestigd"
+  }
 }

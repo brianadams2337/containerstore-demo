@@ -555,7 +555,6 @@
     "select_store": "Store auswählen",
     "no_results": "Keine Ergebnisse"
   },
-  "intl": {},
   "subscription_page": {
     "headline": "Verwalte deine Abonnements",
     "meta": {
@@ -632,5 +631,11 @@
     "size": "Größe",
     "color": "Farbe"
   },
-  "auth_close_password_modal": "Passwort-Modal schließen"
+  "auth_close_password_modal": "Passwort-Modal schließen",
+  "order_status": {
+    "open": "Offen",
+    "shipped": "Versandt",
+    "cancelled": "Storniert",
+    "confirmed": "Bestätigt"
+  }
 }

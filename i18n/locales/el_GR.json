@@ -547,14 +547,14 @@
       "available": "Διαθέσιμο",
       "low_stock": "Χαμηλό απόθεμα"
     },
-    "search_store_input_placeholder": "Εισάγετε την πόλη ή τον ταχυδρομικό κώδικα"
+    "search_store_input_placeholder": "Εισάγετε την πόλη ή τον ταχυδρομικό κώδικα",
+    "detect_location_label": "Εντοπισμός της τοποθεσίας μου"
   },
   "store_locator_slide_in": {
     "headline": "Επιλέξτε κατάστημα",
     "select_store": "Επιλογή καταστήματος",
     "no_results": "Δεν υπάρχουν αποτελέσματα"
   },
-  "intl": {},
   "subscription_page": {
     "headline": "Διαχειριστείτε τις συνδρομές σας",
     "meta": {
@@ -631,5 +631,11 @@
     "size": "Μέγεθος",
     "color": "Χρώμα"
   },
-  "auth_close_password_modal": "Κλείσιμο κωδικού πρόσβασης modal"
+  "auth_close_password_modal": "Κλείσιμο κωδικού πρόσβασης modal",
+  "order_status": {
+    "open": "Ανοιχτή",
+    "shipped": "Αποστολή",
+    "cancelled": "Ακυρώθηκε",
+    "confirmed": "Επιβεβαιωμένη"
+  }
 }

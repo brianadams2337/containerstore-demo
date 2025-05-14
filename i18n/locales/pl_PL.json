@@ -547,14 +547,14 @@
       "available": "Dostępny",
       "low_stock": "Niski stan magazynowy"
     },
-    "search_store_input_placeholder": "Wprowadź miasto lub kod pocztowy"
+    "search_store_input_placeholder": "Wprowadź miasto lub kod pocztowy",
+    "detect_location_label": "Wykryj moją lokalizację"
   },
   "store_locator_slide_in": {
     "headline": "Wybierz sklep",
     "select_store": "Wybierz sklep",
     "no_results": "Brak wyników"
   },
-  "intl": {},
   "subscription_page": {
     "headline": "Zarządzaj swoimi subskrypcjami",
     "meta": {
@@ -631,5 +631,11 @@
     "size": "Rozmiar",
     "color": "Kolor"
   },
-  "auth_close_password_modal": "Zamknij modalne hasło"
+  "auth_close_password_modal": "Zamknij modalne hasło",
+  "order_status": {
+    "open": "Otwarte",
+    "shipped": "Wysłane",
+    "cancelled": "Anulowane",
+    "confirmed": "Potwierdzone"
+  }
 }

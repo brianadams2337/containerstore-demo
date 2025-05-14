@@ -547,14 +547,14 @@
       "available": "Na voljo",
       "low_stock": "Nizka zaloga"
     },
-    "search_store_input_placeholder": "Vnesite mesto ali poštno številko"
+    "search_store_input_placeholder": "Vnesite mesto ali poštno številko",
+    "detect_location_label": "Zaznaj mojo lokacijo"
   },
   "store_locator_slide_in": {
     "headline": "Izberite trgovino",
     "select_store": "Izberite trgovino",
     "no_results": "Ni rezultatov"
   },
-  "intl": {},
   "subscription_page": {
     "headline": "Upravljanje naročnin",
     "meta": {
@@ -631,5 +631,11 @@
     "size": "Velikost",
     "color": "Barva"
   },
-  "auth_close_password_modal": "Zapri geslo modalno okno"
+  "auth_close_password_modal": "Zapri geslo modalno okno",
+  "order_status": {
+    "open": "Odprto",
+    "shipped": "Odeslano",
+    "cancelled": "Preklicano",
+    "confirmed": "Potrjeno"
+  }
 }

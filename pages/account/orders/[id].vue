@@ -1,7 +1,11 @@
 <template>
   <SFAsyncDataWrapper :async-data="orderPromise">
     <template #default="{ data }">
-      <SFOrderDetailHeadline :id="id" class="mb-5 xl:mb-7" />
+      <SFOrderDetailHeadline
+        :id="id"
+        :status="data.status"
+        class="mb-5 xl:mb-7"
+      />
       <SFOrderDetailBaseInformation :order-details="data" class="mb-4" />
       <SFOrderDetailProductList :order-details="data" />
       <SFOrderDetailPaymentSummary :cost="data.cost" />

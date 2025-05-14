@@ -547,14 +547,14 @@
       "available": "Dostupné",
       "low_stock": "Nízká skladová zásoba"
     },
-    "search_store_input_placeholder": "Zadejte město nebo poštovní směrovací číslo"
+    "search_store_input_placeholder": "Zadejte město nebo poštovní směrovací číslo",
+    "detect_location_label": "Detekovat moji polohu"
   },
   "store_locator_slide_in": {
     "headline": "Vyberte obchod",
     "select_store": "Vybrat obchod",
     "no_results": "Žádné výsledky"
   },
-  "intl": {},
   "subscription_page": {
     "headline": "Správa předplatného",
     "meta": {
@@ -631,5 +631,11 @@
     "size": "Velikost",
     "color": "Barva"
   },
-  "auth_close_password_modal": "Zavřít modální okno pro zadání hesla"
+  "auth_close_password_modal": "Zavřít modální okno pro zadání hesla",
+  "order_status": {
+    "open": "Otevřeno",
+    "shipped": "Odesláno",
+    "cancelled": "Zrušeno",
+    "confirmed": "Potvrzeno"
+  }
 }

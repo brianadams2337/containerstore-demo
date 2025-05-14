@@ -547,14 +547,14 @@
       "available": "Disponível",
       "low_stock": "Estoque baixo"
     },
-    "search_store_input_placeholder": "Introduzir cidade ou código postal"
+    "search_store_input_placeholder": "Introduzir cidade ou código postal",
+    "detect_location_label": "Detectar a minha localização"
   },
   "store_locator_slide_in": {
     "headline": "Escolhe a loja",
     "select_store": "Seleciona a loja",
     "no_results": "Sem resultados"
   },
-  "intl": {},
   "subscription_page": {
     "headline": "Gere as tuas subscrições",
     "meta": {
@@ -631,5 +631,11 @@
     "size": "Tamanho",
     "color": "Cor"
   },
-  "auth_close_password_modal": "Fecha o modal da palavra-passe"
+  "auth_close_password_modal": "Fecha o modal da palavra-passe",
+  "order_status": {
+    "open": "Aberto",
+    "shipped": "Enviado",
+    "cancelled": "Cancelado",
+    "confirmed": "Confirmado"
+  }
 }

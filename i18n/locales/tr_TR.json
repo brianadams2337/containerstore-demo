@@ -547,14 +547,14 @@
       "available": "Mevcut",
       "low_stock": "Düşük stok"
     },
-    "search_store_input_placeholder": "Şehir veya posta kodunu girin"
+    "search_store_input_placeholder": "Şehir veya posta kodunu girin",
+    "detect_location_label": "Konumumu algıla"
   },
   "store_locator_slide_in": {
     "headline": "Mağaza seçin",
     "select_store": "Mağaza seçiniz",
     "no_results": "Sonuç yok"
   },
-  "intl": {},
   "subscription_page": {
     "headline": "Aboneliklerinizi yönetin",
     "meta": {
@@ -631,5 +631,11 @@
     "size": "Boyut",
     "color": "Renk"
   },
-  "auth_close_password_modal": "Parola modalini kapat"
+  "auth_close_password_modal": "Parola modalini kapat",
+  "order_status": {
+    "open": "Açık",
+    "shipped": "Gönderildi",
+    "cancelled": "İptal",
+    "confirmed": "Onaylandı"
+  }
 }

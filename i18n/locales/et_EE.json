@@ -547,14 +547,14 @@
       "available": "Available",
       "low_stock": "Madal varu"
     },
-    "search_store_input_placeholder": "Sisestage linn või postiindeks"
+    "search_store_input_placeholder": "Sisestage linn või postiindeks",
+    "detect_location_label": "Määra mu asukoht"
   },
   "store_locator_slide_in": {
     "headline": "Vali pood",
     "select_store": "Valige pood",
     "no_results": "No results"
   },
-  "intl": {},
   "subscription_page": {
     "headline": "Tellimuste haldamine",
     "meta": {
@@ -631,5 +631,11 @@
     "size": "Suurus",
     "color": "Värv"
   },
-  "auth_close_password_modal": "Sulge parooli modaal"
+  "auth_close_password_modal": "Sulge parooli modaal",
+  "order_status": {
+    "open": "Avatud",
+    "shipped": "Saadetud",
+    "cancelled": "Tühistatud",
+    "confirmed": "Kinnitatud"
+  }
 }

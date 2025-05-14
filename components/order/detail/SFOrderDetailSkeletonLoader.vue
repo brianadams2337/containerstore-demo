@@ -1,9 +1,12 @@
 <template>
   <div>
-    <div class="mb-5 flex items-center gap-2 xl:mb-7">
-      <SFSkeletonLoader type="custom" class="size-10 rounded-full" />
-      <SFSkeletonLoader type="custom" class="h-6 w-28 rounded-md" />
-      <SFSkeletonLoader type="custom" class="h-6 w-14 rounded-md" />
+    <div class="mb-5 flex items-center justify-between xl:mb-7">
+      <div class="flex items-center gap-2">
+        <SFSkeletonLoader type="custom" class="size-10 rounded-full" />
+        <SFSkeletonLoader type="custom" class="h-6 w-28 rounded-md" />
+        <SFSkeletonLoader type="custom" class="h-6 w-14 rounded-md" />
+      </div>
+      <SFSkeletonLoader type="custom" class="h-5 w-20 rounded-base" />
     </div>
     <div class="grid grid-cols-1 gap-4 *:rounded-lg lg:grid-cols-2">
       <SFSkeletonLoader type="custom" class="h-20 pb-1" />

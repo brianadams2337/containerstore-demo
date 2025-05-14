@@ -547,14 +547,14 @@
       "available": "Disponibil",
       "low_stock": "Stoc scăzut"
     },
-    "search_store_input_placeholder": "Introduceți orașul sau codul poștal"
+    "search_store_input_placeholder": "Introduceți orașul sau codul poștal",
+    "detect_location_label": "Detectează locația mea"
   },
   "store_locator_slide_in": {
     "headline": "Alegeți magazinul",
     "select_store": "Selectați magazinul",
     "no_results": "Fără rezultate"
   },
-  "intl": {},
   "subscription_page": {
     "headline": "Gestionați-vă abonamentele",
     "meta": {
@@ -631,5 +631,11 @@
     "size": "Mărime",
     "color": "Culoare"
   },
-  "auth_close_password_modal": "Modul de închidere a parolei"
+  "auth_close_password_modal": "Modul de închidere a parolei",
+  "order_status": {
+    "open": "Deschis",
+    "shipped": "Expediat",
+    "cancelled": "Anulat",
+    "confirmed": "Confirmat"
+  }
 }

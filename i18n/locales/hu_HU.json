@@ -547,14 +547,14 @@
       "available": "Elérhető",
       "low_stock": "Alacsony készlet"
     },
-    "search_store_input_placeholder": "Adja meg a várost vagy az irányítószámot"
+    "search_store_input_placeholder": "Adja meg a várost vagy az irányítószámot",
+    "detect_location_label": "Helyem meghatározása"
   },
   "store_locator_slide_in": {
     "headline": "Válassza ki a boltot",
     "select_store": "Bolt kiválasztása",
     "no_results": "Nincsenek eredmények"
   },
-  "intl": {},
   "subscription_page": {
     "headline": "Az előfizetések kezelése",
     "meta": {
@@ -631,5 +631,11 @@
     "size": "Méret",
     "color": "Szín"
   },
-  "auth_close_password_modal": "Jelszó-modál bezárása"
+  "auth_close_password_modal": "Jelszó-modál bezárása",
+  "order_status": {
+    "open": "Nyitva",
+    "shipped": "Szállítva",
+    "cancelled": "Törölve",
+    "confirmed": "Megerősítve"
+  }
 }

@@ -547,14 +547,14 @@
       "available": "Наличен",
       "low_stock": "Low stock"
     },
-    "search_store_input_placeholder": "Въведете град или пощенски код"
+    "search_store_input_placeholder": "Въведете град или пощенски код",
+    "detect_location_label": "Открий местоположението ми"
   },
   "store_locator_slide_in": {
     "headline": "Изберете магазин",
     "select_store": "Изберете магазин",
     "no_results": "Няма резултати"
   },
-  "intl": {},
   "subscription_page": {
     "headline": "Управление на вашите абонаменти",
     "meta": {
@@ -631,5 +631,11 @@
     "size": "Размер",
     "color": "Цвят"
   },
-  "auth_close_password_modal": "Затваряне на модален прозорец за парола"
+  "auth_close_password_modal": "Затваряне на модален прозорец за парола",
+  "order_status": {
+    "open": "Отворен",
+    "shipped": "Изпратено",
+    "cancelled": "Отменена",
+    "confirmed": "Потвърдено"
+  }
 }
