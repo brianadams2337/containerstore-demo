@@ -2002,13 +2002,13 @@
     pathe "^2.0.3"
     unimport "^5.0.1"
 
-"@nuxt/fonts@0.11.3":
-  version "0.11.3"
-  resolved "https://registry.yarnpkg.com/@nuxt/fonts/-/fonts-0.11.3.tgz#91e1c2a7d18c69785f3d18993f68d949c41b0a3f"
-  integrity sha512-IRlzEoxeza1RgUiXKynLlo98MsAYIclM0iDaG51sWoGAisDwMw+DAhbklJkIWIFWHZ4VVSHFQSzLfjRJTkk7cQ==
+"@nuxt/fonts@0.11.4":
+  version "0.11.4"
+  resolved "https://registry.yarnpkg.com/@nuxt/fonts/-/fonts-0.11.4.tgz#21c0ef65cc841a33610cd2abe16e6f551c013d37"
+  integrity sha512-GbLavsC+9FejVwY+KU4/wonJsKhcwOZx/eo4EuV57C4osnF/AtEmev8xqI0DNlebMEhEGZbu1MGwDDDYbeR7Bw==
   dependencies:
     "@nuxt/devtools-kit" "^2.4.0"
-    "@nuxt/kit" "^3.17.1"
+    "@nuxt/kit" "^3.17.3"
     consola "^3.4.2"
     css-tree "^3.1.0"
     defu "^6.1.4"
@@ -2024,8 +2024,8 @@
     sirv "^3.0.1"
     tinyglobby "^0.2.13"
     ufo "^1.6.1"
-    unifont "^0.5.0"
-    unplugin "^2.3.2"
+    unifont "^0.4.1"
+    unplugin "^2.3.3"
     unstorage "^1.16.0"
 
 "@nuxt/image@1.10.0":
@@ -15829,10 +15829,10 @@ unicorn-magic@0.2.0, unicorn-magic@^0.1.0, unicorn-magic@^0.3.0:
   resolved "https://registry.yarnpkg.com/unicorn-magic/-/unicorn-magic-0.2.0.tgz#623c1d38a296aac5e1c4bde4618c4c93a6f4741d"
   integrity sha512-q83y+/QtXrbKX1jYY+bdQROAbZj6EeSP+Plv0cYZBMPfirSaEvnnhMwRk2WH4n5XkNCQHygAiwTVNpvw3I1dCg==
 
-unifont@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/unifont/-/unifont-0.5.0.tgz#1c995b64cf6748468a5fa8431183f6bf10f23204"
-  integrity sha512-4DueXMP5Hy4n607sh+vJ+rajoLu778aU3GzqeTCqsD/EaUcvqZT9wPC8kgK6Vjh22ZskrxyRCR71FwNOaYn6jA==
+unifont@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/unifont/-/unifont-0.4.1.tgz#b434984e11c8490929daa6a70c84c95d5459a004"
+  integrity sha512-zKSY9qO8svWYns+FGKjyVdLvpGPwqmsCjeJLN1xndMiqxHWBAhoWDMYMG960MxeV48clBmG+fDP59dHY1VoZvg==
   dependencies:
     css-tree "^3.0.0"
     ohash "^2.0.0"
@@ -16018,6 +16018,15 @@ unplugin@^2.0.0, unplugin@^2.1.0, unplugin@^2.2.0, unplugin@^2.2.2, unplugin@^2.
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-2.3.2.tgz#36c93a1662b70c97a2e2fc45c0e78fa09f7a4984"
   integrity sha512-3n7YA46rROb3zSj8fFxtxC/PqoyvYQ0llwz9wtUPUutr9ig09C8gGo5CWCwHrUzlqC1LLR43kxp5vEIyH1ac1w==
+  dependencies:
+    acorn "^8.14.1"
+    picomatch "^4.0.2"
+    webpack-virtual-modules "^0.6.2"
+
+unplugin@^2.3.3:
+  version "2.3.4"
+  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-2.3.4.tgz#f3cf35f36656404cb9078be59f993941d649d87c"
+  integrity sha512-m4PjxTurwpWfpMomp8AptjD5yj8qEZN5uQjjGM3TAs9MWWD2tXSSNNj6jGR2FoVGod4293ytyV6SwBbertfyJg==
   dependencies:
     acorn "^8.14.1"
     picomatch "^4.0.2"
