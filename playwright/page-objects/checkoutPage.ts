@@ -43,8 +43,8 @@ export class CheckoutPage {
     this.itemQuantityPlus = page.locator('[data-test-id="item-quantity-plus"]')
     this.itemPrice = page.locator('[data-test-id="item-price"]')
     this.buttonItemRemove = page.locator('[data-test-id="item-remove"]')
-    this.checkboxAcceptTerms = page.locator(
-      '[data-test-id="paymentBelowMobileBasket-termsAndPrivacy-checkbox"]',
+    this.checkboxAcceptTerms = page.getByTestId(
+      'paymentBelowMobileBasket-termsAndPrivacy-checkbox',
     )
     this.ctaPayButton = page.locator('[data-test-id="navigation-next-step"]')
   }

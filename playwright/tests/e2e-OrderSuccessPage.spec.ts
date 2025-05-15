@@ -78,7 +78,8 @@ test('C2173505 C2173506 C2173507 C2173508 C2181795 C2182370 C2181791 Verify OSP'
     const pageUrl = page.url()
     expect(pageUrl).toContain(ROUTES.checkout)
     await checkoutPage.basketContainer.waitFor()
-    await checkoutPage.checkboxAcceptTerms.click()
+    await checkoutPage.checkboxAcceptTerms.scrollIntoViewIfNeeded()
+    await checkoutPage.checkboxAcceptTerms.check()
     await checkoutPage.ctaPayButton.click()
   })
   await test.step('Verify OSP Order overview', async () => {

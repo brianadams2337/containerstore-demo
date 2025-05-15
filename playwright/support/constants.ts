@@ -44,7 +44,7 @@ export const SEARCH = {
 }
 
 export const BASKET_TEST_DATA = {
-  regularPriceVariantId: 334103,
+  regularPriceVariantId: 335323,
   salePriceVariantId: 336068,
   promotionPriceProductId: '205808',
   soldOutProductUser: process.env.TEST_USER_EMAIL7 as string,
