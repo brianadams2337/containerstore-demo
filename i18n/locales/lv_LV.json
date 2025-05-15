@@ -3,25 +3,25 @@
     "sold_out": "Izpārdots",
     "sold_out_long": "Pašlaik izpārdots tiešsaistē.",
     "sign_up": "Reģistrēties",
-    "sign_in": "Pierakstīties",
-    "sign_out": "Izrakstīties",
-    "product_recommendation": "Ieteicamie pārīši",
-    "seconds": "second | seconds",
+    "sign_in": "Pieslēgties",
+    "sign_out": "Atslēgties",
+    "product_recommendation": "Ieteiktās kombinācijas",
+    "seconds": "sekunde | sekundes",
     "minutes": "minūte | minūtes",
     "hours": "stunda | stundas",
     "days": "diena | dienas",
     "back": "Atpakaļ",
-    "continue_shopping": "Turpināt iepirkšanos",
+    "continue_shopping": "Turpināt iepirkties",
     "ordinal_suffixes": {
-      "one": "st",
-      "two": "nd",
-      "few": "rd",
-      "other": "th"
+      "one": "",
+      "two": "",
+      "few": "",
+      "other": ""
     },
     "cancel": "Atcelt",
     "payment_key": {
       "default": "Kredītkarte",
-      "accounting": "Rēķina apmaksa"
+      "accounting": "Rēķins"
     },
     "carrier_key": {
       "DEFAULT": "UPS"
@@ -29,8 +29,8 @@
     "back_to_shop": "Atpakaļ uz veikalu",
     "to_shop": "Uz veikalu",
     "close": "Aizvērt",
-    "including_vat": "ar PVN.",
-    "excluding_vat": "bez PVN.",
+    "including_vat": "ar PVN",
+    "excluding_vat": "bez PVN",
     "save": "Saglabāt",
     "search": "Meklēt",
     "quantity": "Daudzums",
@@ -42,41 +42,41 @@
     "reload_page": "Pārlādēt"
   },
   "promotion": {
-    "deal": "Darījums",
+    "deal": "Piedāvājums",
     "free_label": "Bezmaksas",
     "condition": "Nosacījums"
   },
   "promotion_progress_wrapper": {
-    "remaining_minimum_order_value": "Atbloķējiet savu darījumu! Lai aktivizētu šo akciju, iztērējiet vairāk {amount}.",
-    "reached_minimum_order_value": "Apsveicam! Jūs esat atbloķējis šo piedāvājumu un ietaupījis {amount}.",
-    "fulfilled_promotion_condition": "Jūs esat atbloķējis īpašo piedāvājumu! Pievienojiet atbilstošos produktus grozā, lai izmantotu priekšrocības.",
-    "fulfilled_gift_condition": "Iepirkumu grozs sasniegts! Pievienot bezmaksas dāvanu"
+    "remaining_minimum_order_value": "Izmanto savu piedāvājumu! Iztērē vēl {amount}, lai to aktivizētu.",
+    "reached_minimum_order_value": "Apsveicam! Tu aktivizēji šo piedāvājumu un ietaupīji {amount}.",
+    "fulfilled_promotion_condition": "Tu aktivizēji īpašu piedāvājumu! Pievieno atbilstošos produktus savam iepirkumu grozam, lai izbaudītu priekšrocības.",
+    "fulfilled_gift_condition": "Iepirkumu groza vērtība sasniegta! Pievieno bezmaksas dāvanu."
   },
   "promotion_slide_in": {
     "open_button": {
-      "no_active_promotions_title": "Jūsu piedāvājumi",
-      "active_promotions_title": "Jūsu piedāvājumi - {total} Aktīvās akcijas"
+      "no_active_promotions_title": "Tavi piedāvājumi",
+      "active_promotions_title": "Tavi piedāvājumi - {total} aktīvās akcijas"
     },
-    "headline": "Jūsu piedāvājumi",
-    "subline": "Atrast produktus ar atlaidi, noklikšķinot uz jebkuras akcijas. Atklājiet pastāvīgi mainīgos piedāvājumus izvēlētajām precēm.",
+    "headline": "Tavi piedāvājumi",
+    "subline": "Atrodi preces ar atlaidi, klikšķinot uz jebkuras akcijas. Atklāj regulāri mainīgus piedāvājumus atlasītām precēm.",
     "active_promotions": "Aktīvās akcijas {total}",
     "no_active_promotions": "Nav aktīvu akciju",
-    "no_active_subline": "Pašlaik jums nav aktīvu akciju. Pārbaudiet vēlāk, lai uzzinātu par jauniem piedāvājumiem un īpašiem piedāvājumiem!"
+    "no_active_subline": "Pašlaik tev nav aktīvu akciju. Atgriezies vēlāk, lai uzzinātu par jaunām akcijām un īpašiem piedāvājumiem!"
   },
   "shop_selector": {
     "aria_label": "Mainīt veikalu, pašreizējais veikals: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Valoda un valsts",
-    "choose_language": "Izvēlieties valodu",
-    "choose_country": "Izvēlieties savu valsti",
+    "choose_language": "Izvēlies valodu",
+    "choose_country": "Izvēlies savu valsti",
     "close_flyout": "Aizvērt veikala izvēles logu"
   },
   "validation": {
-    "email": "Lūdzu, ievadiet derīgu e-pasta adresi.",
-    "password": "Jūsu {field} jāietver vismaz viena speciālā rakstzīme, lielais burts, mazais burts un cipars.",
-    "required": "{field} ir obligāts.",
+    "email": "Lūdzu, ievadi derīgu e-pasta adresi.",
+    "password": "{field} jāiekļauj vismaz viena speciālā rakstzīme, lielais burts, mazais burts un skaitlis.",
+    "required": "{field} ir nepieciešams.",
     "same_as": "{field} jābūt tādam pašam kā {otherField} laukam.",
     "max_length": "{field} jābūt {max} vai mazāk.",
-    "min_length": "{field} jābūt vismaz {min} rakstzīmju garai.",
+    "min_length": "{field} jābūt vismaz {min} rakstzīmju garam",
     "date": "{field} jābūt derīgam datumam.",
     "future_date": "{field} nevar būt datums, kas ir nākotnē.",
     "name": "{field} nav pareizi formatēts."
@@ -91,42 +91,42 @@
     "gender": "Dzimums",
     "gender_options": {
       "male": "Vīrietis",
-      "female": "Sievietes",
-      "diverse": "Diverse",
+      "female": "Sieviete",
+      "diverse": "Cits",
       "none": "Vēlams nenorādīt"
     }
   },
   "error": {
     "page_not_found_title": "Ak - 404",
     "page_not_found_message": "Diemžēl šī lapa vairs nepastāv.",
-    "unknown_error_title": "Ak - kaut kas ir noticis nepareizi",
-    "unknown_error_message": "Jūsu pieprasījumu nevar apstrādāt, lūdzu, mēģiniet vēlreiz."
+    "unknown_error_title": "Ak - kaut kas nogāja greizi",
+    "unknown_error_message": "Tavu pieprasījumu nevar apstrādāt, lūdzu, mēģini vēlreiz."
   },
   "badge_labels": {
-    "new": "Jaunums",
+    "new": "Jaunumi",
     "already_in_basket": "Jau grozā"
   },
   "navigation": {
     "find_a_store": "Atrast veikalu",
-    "wishlist": "Vēlmju saraksts | Vēlmju saraksts, {count} items | Vēlmju saraksts, {count} items",
+    "wishlist": "Vēlmju saraksts | Vēlmju saraksts, {count} preces | Vēlmju saraksts, {count} preces",
     "a11ly": {
-      "side_navigation": "Atvērt sānu navigāciju"
+      "side_navigation": "Atvērt sānu izvēlni"
     }
   },
   "checkout_page": {
-    "title": "Checkout"
+    "title": "Norēķināšanās"
   },
   "search_page": {
-    "title": "Produkti \"{term}\"",
+    "title": "Atrastās preces mekējumam \"{term}\"",
     "meta": {
-      "title": "Produkti \"{term}\""
+      "title": "Atrastās preces mekējumam \"{term}\""
     }
   },
   "show_all_results_link": {
     "open_on_search_page": "Skatīt visus {searchTerm} rezultātus"
   },
   "product_suggestion_list": {
-    "title": "Produkti"
+    "title": "Preces"
   },
   "category_suggestion_list": {
     "title": "Kategorijas"
@@ -135,93 +135,93 @@
     "title": "Lapas"
   },
   "search_input": {
-    "placeholder": "Produkta, kategorijas vai zīmola meklēšana"
+    "placeholder": "Preces, kategorijas vai zīmola meklēšana"
   },
   "footer_promises": {
-    "payment_options": "Elastīgas maksājumu iespējas",
+    "payment_options": "Elastīgas apmaksas iespējas",
     "free_shipping": "Bezmaksas piegāde pasūtījumiem virs 50 {currency}",
-    "return_policy": "50 dienu bezmaksas atgriešanas politika"
+    "return_policy": "50 dienu bezmaksas atgriešanas tiesības"
   },
   "wishlist_page": {
     "meta": {
-      "title": "Jūsu vēlmju saraksts",
-      "description": "Saglabājiet savus iecienītākos produktus un sekojiet līdzi tam, kas jums ir obligāti jāiegādājas."
+      "title": "Tavs vēlmju saraksts",
+      "description": "Saglabā savas mīļākās preces un seko līdzi saviem vēlamajiem izstrādājumiem."
     },
     "title": "Vēlmju saraksts",
-    "empty_wishlist_title": "Jūsu vēlmju sarakstā nav nevienas preces.",
-    "empty_wishlist_description": "Iegādājieties mūsu jaunākos produktus vai pierakstieties, lai redzētu savu saglabāto vēlmju sarakstu."
+    "empty_wishlist_title": "Tavā vēlmju sarakstā nav nevienas preces.",
+    "empty_wishlist_description": "Iegādājies mūsu jaunākās preces vai pieslēdzies, lai redzētu savu saglabāto vēlmju sarakstu."
   },
   "wishlist_toggle": {
     "remove_from_wishlist": "Noņemt no vēlmju saraksta",
     "add_to_wishlist": "Pievienot vēlmju sarakstam"
   },
   "basket_page": {
-    "title": "Grozs",
+    "title": "Iepirkumu grozs",
     "a11y": {
-      "title": "Grozs | Basket, {count} items | Basket, {count} items"
+      "title": "Iepirkumu grozs| Iepirkumu grozs, {count} preces| Iepirkumu grozs, {count} preces"
     },
-    "empty_basket_title": "Jūsu iepirkumu grozs ir tukšs.",
-    "empty_basket_description": "Jūsu produkti tiks parādīti, tiklīdz tos pievienosiet grozā.",
+    "empty_basket_title": "Tavs iepirkumu grozs ir tukšs.",
+    "empty_basket_description": "Tavas preces tiks parādītās, tiklīdz pievienosi tās savam grozam.",
     "meta": {
-      "title": "Grozs",
-      "description": "Apskatiet preces, kas atrodas jūsu grozā, un viegli pāriet pie kases. Droša un ērta iepirkšanās vietnē {shopName}."
+      "title": "Iepirkumu grozs",
+      "description": "Apskati preces savā iepirkumu grozā, un vienkārši dodies uz kasi. Droša un ērta iepirkšanās vietnē {shopName}."
     }
   },
   "basket": {
-    "go_to_checkout": "Iet pie kases",
-    "available_products": "Pieejamie produkti",
-    "unavailable_products": "Nepiedejami produkti"
+    "go_to_checkout": "Doties uz kasi",
+    "available_products": "Pieejamās preces",
+    "unavailable_products": "Nepieejamās preces"
   },
   "basket_popover_items": {
-    "no_items_info": "Jūsu grozā nav produktu."
+    "no_items_info": "Tavā iepirkumu grozā nav preču"
   },
   "basket_popover_actions": {
-    "go_to_basket": "Iet uz grozu"
+    "go_to_basket": "Iet uz iepirkumu grozu"
   },
   "basket_summary": {
-    "delivery_fees": "* Piegādes maksa tiks noteikta izrakstīšanās laikā pēc tam, kad izvēlēsieties vēlamo piegādes iespēju.",
+    "delivery_fees": "*Piegādes maksa tiks noteikta norēķinu laikā, izvēloties vēlamo piegādes opciju.",
     "total": "Kopā",
     "subtotal": "Starpsumma",
-    "you_pay": "Jūs maksājat",
+    "you_pay": "Tu maksā",
     "discount": "Atlaides",
     "delivery": "Piegāde",
-    "voucher_disclaimer": "Kuponus var piemērot pēdējā pasūtījuma posmā."
+    "voucher_disclaimer": "Atlaides kodus var piemērot pēdējā pasūtījuma posmā."
   },
   "basket_summary_reduction": {
-    "sale": "Pārdošana",
+    "sale": "Izpārdošana",
     "campaign": "Kampaņas",
     "promotion": "Akcija",
-    "voucher": "Voucher"
+    "voucher": "Atlaides kods"
   },
   "add_to_basket": {
-    "add_to_basket": "Pievienot grozam",
-    "product_name_fallback": "Produkts",
+    "add_to_basket": "Pievienot iepirkumu grozam",
+    "product_name_fallback": "Prece",
     "notification": {
-      "select_size": "Lūdzu, izvēlieties izmēru pirms pievienošanas grozam",
+      "select_size": "Lūdzu, izvēlies izmēru pirms pievienošanas grozam",
       "add_to_basket_success": "{productName} ir pievienots grozam",
       "add_to_basket_error": "{productName} nav iespējams pievienot grozam",
-      "add_to_basket_variant_out_of_stock_error": "Šis izmērs pašlaik nav noliktavā",
-      "add_to_basket_max_basket_items_error": "Oops! Jūs esat sasniedzis maksimālo atļauto preču skaitu savā grozā.",
+      "add_to_basket_variant_out_of_stock_error": "Šis izmērs šobrīd nav pieejams",
+      "add_to_basket_max_basket_items_error": "Ups! Tu sasniedzi maksimālo atļauto preču skaitu savā grozā.",
       "add_subscription_to_basket_success": "{productName} {interval} abonements ir pievienots grozam",
-      "add_with_reduced_quantity_error": "Atvainojiet, šajā izmērā vairs nav pieejamas preces. Visi pieejamie krājumi jau ir pievienoti jūsu grozam."
+      "add_with_reduced_quantity_error": "Diemžēl šajā izmērā vairs nav pieejamu preču. Viss pieejamais krājums jau ir pievienots tavā grozā."
     }
   },
   "basket_card": {
-    "remove_from_basket_confirmation": "Vai esat pārliecināts, ka vēlaties izņemt šo preci?",
-    "confirm_removal": "Noņemt preci"
+    "remove_from_basket_confirmation": "Vai esi pārliecināts, ka vēlies izņemt šo preci?",
+    "confirm_removal": "Izņemt preci"
   },
   "password_input": {
     "hide": "Paslēpt paroli",
     "show": "Rādīt paroli"
   },
   "user_navigation_item": {
-    "greeting": "Sveiki {firstName}",
+    "greeting": "Sveiki, {firstName}",
     "a11y": {
       "title": "Mans konts"
     },
     "menu_items": {
-      "subscriptions": "Jūsu abonementi",
-      "orders": "Jūsu pasūtījumi",
+      "subscriptions": "Tavi abonementi",
+      "orders": "Tavi pasūtījumi",
       "profile": "Konta iestatījumi"
     }
   },
@@ -229,30 +229,30 @@
     "title": "Informācija par kontu",
     "customer_number": "Klienta numurs:",
     "email": "Reģistrētais e-pasts:",
-    "disclaimer": "E-pasta izmaiņas netiek atbalstītas. Ja jums nepieciešama palīdzība, lūdzu, sazinieties ar atbalsta dienestu."
+    "disclaimer": "E-pasta adreses maiņa nav atbalstīta. Ja tev ir nepieciešama palīdzība, lūdzu, sazinies ar klientu apkalpošanas centru."
   },
   "profile_personal_information": {
-    "title": "Personal Information",
-    "description": "Atjauniniet savu personisko informāciju, lai atjauninātu savu kontu.",
-    "success_message": "Jūsu dati ir veiksmīgi atjaunināti.",
-    "error_message": "Informāciju neizdevās saglabāt. Lūdzu, mēģiniet vēlreiz."
+    "title": "Personīgā informācija",
+    "description": "Atjauno savu personīgo informāciju, lai tava konta dati būtu pareizi.",
+    "success_message": "Tavi dati ir veiksmīgi atjaunināti.",
+    "error_message": "Informāciju neizdevās saglabāt. Lūdzu, mēģini vēlreiz."
   },
   "profile_password_management": {
     "title": "Paroļu pārvaldība",
-    "description": "Uzturiet savu kontu drošu, regulāri atjauninot paroli.",
-    "idp_description": "Jūsu konts ir nodrošināts, izmantojot ārējo pieteikšanās pakalpojumu sniedzēju, tāpēc paroles maiņa šeit nav nepieciešama. Lai atjauninātu paroli, lūdzu, apmeklējiet sava pieteikšanās pakalpojumu sniedzēja iestatījumus.",
-    "success_message": "Jūsu parole ir veiksmīgi atjaunināta.",
+    "description": "Parūpējies par sava konta drošību, regulāri atjauninot paroli",
+    "idp_description": "Tavs konts ir aizsargāts, izmantojot ārējo pierakstīšanās pakalpojumu, tāpēc parole nav jāmaina šeit. Lai atjaunotu paroli, lūdzu, apmeklē sava pierakstīšanās pakalpojuma iestatījumus.",
+    "success_message": "Tava parole ir veiksmīgi atjaunināta.",
     "error": {
-      "400_bad_request": "Jūsu pieprasījumu nevar apstrādāt, lūdzu, mēģiniet vēlreiz.",
-      "401_unauthorized": "Jūsu pieprasījumu nevar apstrādāt, lūdzu, mēģiniet vēlreiz.",
-      "403_forbidden": "Jūsu paroli nevarēja atjaunināt. Lūdzu, pārbaudiet savu pašreizējo paroli un mēģiniet vēlreiz."
+      "400_bad_request": "Tavu pieprasījumu nevar apstrādāt, lūdzu, mēģini vēlreiz.",
+      "401_unauthorized": "Tavu pieprasījumu nevar apstrādāt, lūdzu, mēģini vēlreiz.",
+      "403_forbidden": "Tavu paroli nevarēja atjaunināt. Lūdzu, pārbaudi savu pašreizējo paroli un mēģini vēlreiz."
     }
   },
   "account_page": {
-    "title": "Jūsu konts",
+    "title": "Tavs konts",
     "meta": {
-      "title": "Jūsu konts",
-      "description": "Pārvaldiet savu profilu, pasūtījumus un abonementus vienuviet."
+      "title": "Tavs konts",
+      "description": "Pārvaldi savu profilu, pasūtījumus un abonementus vienuviet."
     }
   },
   "account_tabs": {
@@ -261,13 +261,13 @@
     "subscriptions": "Abonementi"
   },
   "profile_page": {
-    "title": "Pārvaldiet savu kontu",
+    "title": "Pārvaldi savu kontu",
     "meta": {
       "title": "Konta iestatījumi",
-      "description": "Šeit atjauniniet savu personisko informāciju, e-pastu un paroli."
+      "description": "Šeit vari atjaunināt savu personisko informāciju, e-pastu un paroli."
     },
     "greeting": "Laipni lūdzam, {firstName}!",
-    "description": "Pārvaldiet savu personisko informāciju un nodrošiniet konta drošību."
+    "description": "Pārvaldi savu personisko informāciju un rūpējies par konta drošību."
   },
   "order_card": {
     "order_date": "Pasūtījuma datums",
@@ -276,15 +276,15 @@
     "go_to_order": "Skatīt pasūtījumu {orderNumber}"
   },
   "orders_page": {
-    "title": "Jūsu pasūtījumi",
+    "title": "Tavi pasūtījumi",
     "meta": {
-      "title": "Jūsu pasūtījumi",
-      "description": "Sekojiet līdzi saviem iepriekšējiem un pašreizējiem pasūtījumiem ar statusa atjauninājumiem."
+      "title": "Tavi pasūtījumi",
+      "description": "Seko līdzi saviem iepriekšējiem un pašreizējiem pasūtījumiem ar statusa atjauninājumiem."
     }
   },
   "order_list": {
     "no_orders": {
-      "title": "Jūs vēl neesat veicis nevienu pasūtījumu.",
+      "title": "Vēl nav veikti pasūtījumi.",
       "description": "Pēc pirkuma veikšanas šeit parādīsies pasūtījuma informācija."
     }
   },
@@ -310,7 +310,7 @@
       "payment_method": "Maksājuma metode"
     },
     "address_details": {
-      "delivery_and_billing_address": "Piegādes un rēķinu izrakstīšanas adrese",
+      "delivery_and_billing_address": "Piegādes un norēķinu adrese",
       "delivery_address": "Piegādes adrese",
       "billing_address": "Norēķinu adrese"
     }
@@ -322,27 +322,27 @@
   },
   "product_promotion_gifts": {
     "headline": "Izmantot savu bezmaksas dāvanu",
-    "description": "Jūs esat izpildījis nosacījumu. Izvēlieties savu bezmaksas dāvanu tagad:"
+    "description": "Tu izpildīji nosacījumu. Izvēlies savu bezmaksas dāvanu tagad:"
   },
   "product_promotion_gifts_item": {
     "a11y": {
-      "add_gift": "Pievienot savu bezmaksas produktu {name}"
+      "add_gift": "Pievieno savu bezmaksas preci {name}"
     }
   },
   "product_detail_page": {
     "meta": {
-      "description": "Pirkt {productName} tiešsaistē vietnē {shopName}. Atklājiet plašu citu zīmola produktu klāstu."
+      "description": "Pērc {productName} tiešsaistē vietnē {shopName}. Atklāj plašu zīmolu preču klāstu."
     }
   },
   "variant_picker": {
-    "select_size": "Select Size",
+    "select_size": "Izvēlies izmēru",
     "option": {
-      "select_option": "Izvēlēties lielumu {option}"
+      "select_option": "Izvēlies izmēru {option}"
     }
   },
   "sibling_selection": {
-    "sibling_error": "Kļūda: Šis atribūts nav iestatīts!",
-    "selected": "Atlasīts",
+    "sibling_error": "Kļūda: šis atribūts nav iestatīts!",
+    "selected": "Izvēlēts",
     "unselected": "Neizvēlēts",
     "a11ly": {
       "alt_text": "{selected}, {alt}",
@@ -350,22 +350,22 @@
     }
   },
   "product_promotion_selection_modal": {
-    "details": "Details"
+    "details": "Detaļas"
   },
   "product_details": {
     "information": {
-      "fit_size": "Fit & izmērs",
-      "extras": "Papildus",
+      "fit_size": "Piegriezums un izmērs",
+      "extras": "Papildu",
       "design": "Dizains"
     },
     "shipping_return_heading": {
       "title": "Piegāde un atgriešana",
-      "general_info": "Preču nosūtīšanas un atgriešanas pasta izdevumus, kā arī iepakojuma izmaksas sedz SCAYLE. Pasūtījumi ar vairākiem izstrādājumiem var tikt piegādāti daļēji.",
+      "general_info": "Preču nosūtīšanas un atgriešanas izmaksas, kā arī iepakojuma izmaksas sedz SCAYLE. Pasūtījumi ar vairākiem izstrādājumiem var tikt piegādāti ar daļēju piegādi.",
       "dhl_headline": "DHL standarta piegāde - 0,00 EUR",
       "dhl_paragraph": "Tūlīt pieejamas preces parasti tiek piegādātas ar DHL 1-3 darba dienu laikā.",
       "hermes_headline": "Hermes - 0,00 EUR",
       "hermes_paragraph": "Tūlīt pieejamas preces Hermes parasti piegādā 1-3 darba dienu laikā.",
-      "return_information": "Ja jūsu sūtījumā trūkst atgriešanas etiķetes, jūs jebkurā laikā varat pieprasīt jaunu etiķeti no mūsu klientu apkalpošanas dienesta."
+      "return_information": "Ja tavā sūtījumā trūkst atgriešanas etiķetes, tu jebkurā laikā vari pieprasīt jaunu etiķeti mūsu klientu apkalpošanas centram."
     }
   },
   "price": {
@@ -374,22 +374,22 @@
   },
   "product_list_page": {
     "meta": {
-      "description": "Pirkt {category} vietnē {shopName}. Atklājiet plašu {category}"
+      "description": "Pērc {category} vietnē {shopName}. Atklāj plašu {category} piedāvājumu"
     }
   },
   "product_list_no_results": {
     "title": "Nav rezultātu 🫣",
-    "description": "Diemžēl šajā kategorijā nav produktu vai jūsu filtri nerada produktus.",
+    "description": "Diemžēl šajā kategorijā nav pieejamu preču vai arī tavi filtri neatbilst nevienai precei.",
     "reset_filters": "Atiestatīt filtrus",
     "back_to_category": "Atpakaļ uz {category}"
   },
   "sorting_select": {
     "top_seller": "Ieteikumi",
-    "date_newest": "Jaunākais",
+    "date_newest": "Jaunākās preces",
     "price_desc": "Cena dilstošā secībā",
     "price_asc": "Cenas augošā secībā",
-    "reduction_desc": "Samazināšana dilstošā secībā",
-    "reduction_asc": "Samazināšana augošā secībā"
+    "reduction_desc": "Atlaide dilstošā secībā",
+    "reduction_asc": "Atlaide augošā secībā"
   },
   "filter_header": {
     "title": "Filtrēt kategorijas",
@@ -401,14 +401,14 @@
     "reset_all_filter": "Atiestatīt visus"
   },
   "price_range_slider": {
-    "to": "to",
+    "to": "uz",
     "minimum_price": "Minimālā cena: {price}",
     "maximum_price": "Maksimālā cena: {price}"
   },
   "filter_slide_in_content": {
     "sorting": "Šķirošana",
     "size_option": "Izmērs: {size}",
-    "only_sale_option": "Rādīt tikai izpārdošanas produktus"
+    "only_sale_option": "Rādīt tikai izpārdošanas preces"
   },
   "filter_group": {
     "reset": "Atiestatīt filtru"
@@ -419,65 +419,65 @@
   "filter": {
     "notification": {
       "all_filters_cleared": "Visi filtri ir notīrīti!",
-      "filter_updated": "Jūsu filtri ir veiksmīgi piemēroti!",
-      "sort_updated": "Jūsu šķirošana ir veiksmīgi piemērota!",
-      "filter_and_sort_updated": "Jūsu šķirošana un filtri ir veiksmīgi piemēroti!"
+      "filter_updated": "Tavi filtri ir veiksmīgi piemēroti!",
+      "sort_updated": "Tava šķirošana bija veiksmīga!",
+      "filter_and_sort_updated": "Tava šķirošana un filtri ir veiksmīgi piemēroti!"
     },
     "show_filter": "Rādīt filtrus",
     "show_filter_and_sorting": "Rādīt filtrus un šķirošanu"
   },
   "order_success_page": {
-    "title": "Jūsu pasūtījuma pārskats",
+    "title": "Tava pasūtījuma pārskats",
     "meta": {
       "title": "Pasūtījums apstiprināts! Paldies par pirkumu",
-      "description": "Paldies par pasūtījumu! Jūsu pirkums ir apstiprināts. Pārbaudiet savu e-pastu, lai saņemtu pasūtījuma informāciju."
+      "description": "Paldies par pasūtījumu! Tavs pirkums ir apstiprināts. Pārbaudi savu e-pastu, lai saņemtu pasūtījuma informāciju."
     },
     "no_order_found": {
       "title": "Informācija par pasūtījumu nav atrasta.",
-      "description": "Jūsu pasūtījuma informāciju nevar iegūt. Iespējams, saites derīguma termiņš ir beidzies vai tā ir nederīga. Lūdzu, pārbaudiet savu e-pastu, lai atrastu pareizo saiti, vai sazinieties ar atbalsta dienestu, lai saņemtu palīdzību."
+      "description": "Tava pasūtījuma detaļas nevarēja iegūt. Iespējams saite ir nederīga. Lūdzu, pārbaudi savu e-pastu, lai iegūtu pareizo saiti, vai sazinies ar klientu apkalpošanas centru."
     },
     "go_to_order_details": "Pasūtījuma informācija"
   },
   "order_success_page_greeting": {
     "title": "Paldies par pirkumu!",
-    "email_confirmation": "Pasūtījuma apstiprinājums ir nosūtīts uz jūsu norādīto e-pasta adresi."
+    "email_confirmation": "Pasūtījuma apstiprinājums ir nosūtīts uz tavu norādīto e-pasta adresi."
   },
   "sign_in_page": {
-    "title": "Laipni lūdzam! Esat šeit jauns vai atgriežaties?",
+    "title": "Laipni lūdzam! Vai apmeklē mūs pirmo reizi vai arī biji šeit jau iepriekš?",
     "meta": {
-      "title": "Pieteikties vai reģistrēties",
-      "description": "Piekļūstiet savam kontam vai izveidojiet jaunu kontu vietnē {shopName}. Izbaudiet nevainojamu iepirkšanās pieredzi ar drošu pieteikšanos un personalizētām iespējām."
+      "title": "PIeslēgties vai reģistrēties",
+      "description": "Pieslēdzies savam kontam vai izveido jaunu kontu {shopName}. Izbaudi nevainojamu iepirkšanās pieredzi ar drošu pieteikšanos un personalizētām iespējām."
     }
   },
   "authentication": {
     "notification": {
       "success": {
-        "login": "Veiksmīga pieteikšanās! Laipni lūgti atpakaļ!",
-        "sign_up": "Jūsu konts ir veiksmīgi izveidots!",
-        "forgot_password": "Uz jūsu e-pastu ir nosūtīta paroles atjaunošanas saite.",
-        "reset_password": "Jūsu parole ir veiksmīgi atiestatīta. Tagad varat pieteikties ar jauno paroli.",
-        "guest_login": "Jūsu konts ir izveidots! Tagad jūs varat turpināt veikt pasūtījumu."
+        "login": "Veiksmīga pieslēgšanās! Laipni lūdzam atpakaļ!",
+        "sign_up": "Tavs konts ir veiksmīgi izveidots!",
+        "forgot_password": "Uz tavu e-pastu ir nosūtīta paroles atjaunošanas saite.",
+        "reset_password": "Tava parole ir veiksmīgi atiestatīta. Tagad vari pieslēgties ar jauno paroli.",
+        "guest_login": "Tavs konts ir izveidots! Tagad tu vari veikt pasūtījumu."
       },
       "error": {
         "guest_login": {
-          "409": "Tas ir reģistrēts konts. Lai pieteiktos, lūdzu, izmantojiet pareizu paroli."
+          "409": "Šis ir reģistrēts konts. Lai pieslēgtos, lūdzu, izmanto pareizu paroli."
         },
         "generic": {
-          "400": "Jūsu pieprasījumu nevar apstrādāt, lūdzu, mēģiniet vēlreiz.",
-          "401": "Jūsu pieprasījumu nevar apstrādāt, lūdzu, mēģiniet vēlreiz.",
+          "400": "Tavu pieprasījumu nevar apstrādāt, lūdzu, mēģini vēlreiz.",
+          "401": "Tavu pieprasījumu nevar apstrādāt, lūdzu, mēģini vēlreiz.",
           "403": "Šis lietotājs ir deaktivizēts.",
-          "404": "Jūsu e-pasta adrese vai parole ir nepareiza. Lūdzu, mēģiniet vēlreiz.",
-          "406": "Jūsu žetons jau ir izmantots vai tā derīguma termiņš ir beidzies. Lūdzu, pieprasiet jaunu paroles atjaunošanas e-pastu.",
+          "404": "Tava e-pasta adrese vai parole ir nepareiza. Lūdzu, mēģini vēlreiz.",
+          "406": "Tavs tokens jau ir izmantots vai ir beidzies. Lūdzu, pieprasi jaunu paroles atiestatīšanas e-pastu.",
           "409": "Šis konts jau pastāv.",
-          "422": "Jūsu pieprasījumu nevar apstrādāt, lūdzu, mēģiniet vēlreiz.",
-          "500": "Jūsu pieprasījums izraisīja kļūdu"
+          "422": "Tavu pieprasījumu nevar apstrādāt, lūdzu, mēģini vēlreiz.",
+          "500": "Tavs pieprasījums radīja kļūdu."
         }
       }
     }
   },
   "auth_reset_password_slide_in_header": {
     "title": "Jaunas paroles iestatīšana",
-    "description": "Tālāk ievadiet savu jauno paroli, lai aizsargātu savu kontu."
+    "description": "Tālāk ievadi savu jauno paroli, lai aizsargātu savu kontu."
   },
   "auth_reset_password_slide_in_body": {
     "submit_password_reset": "Saglabāt paroli"
@@ -486,45 +486,45 @@
     "separation_text": "Vai"
   },
   "auth_register": {
-    "mandatory_info_legend": "* Obligātais lauks",
-    "submit_sign_up": "Pierakstīties",
-    "already_signed_up_question": "Vai jums jau ir konts?",
-    "go_to_login": "Piesakieties šeit"
+    "mandatory_info_legend": "*Obligātais lauks",
+    "submit_sign_up": "Reģistrēties",
+    "already_signed_up_question": "Vai tev jau ir konts?",
+    "go_to_login": "Pieslēdzies šeit"
   },
   "auth_register_privacy_disclaimer": {
-    "privacy_disclaimer": "Izveidojot kontu, jūs piekrītat mūsu {terms} un atzīstat mūsu {policy}.",
+    "privacy_disclaimer": "Izveidojot kontu, tu piekrīti mūsu {terms} un apstiprini mūsu {policy}.",
     "go_to_terms_of_service": "Pakalpojumu sniegšanas noteikumi",
-    "go_to_privacy_policy": "Privātuma politika"
+    "go_to_privacy_policy": "Datu aizsardzība"
   },
   "auth_login": {
-    "not_registered_question": "Vēl neesat reģistrējies kā lietotājs?",
+    "not_registered_question": "Vēl neesi lietotājs?",
     "create_account": "Izveidot kontu.",
-    "submit_login": "Pieteikšanās"
+    "submit_login": "Pieslēgties"
   },
   "auth_register_toggle_guest": {
-    "activation_hint": "Konts netiks izveidots. Lai izsekotu savu pasūtījumu, izmantojiet norādīto e-pasta adresi.",
+    "activation_hint": "Konts netiks izveidots. Lai izsekotu savu pasūtījumu, izmanto norādīto e-pasta adresi.",
     "label": "Turpināt kā viesis"
   },
   "auth_forgot_password": {
-    "title": "Atjaunot paroli",
-    "submit": "Saņemt atiestatīšanas saiti",
-    "back_to_login": "Atgriezties pie pieteikšanās",
-    "description": "Ievadiet e-pasta adresi, kas saistīta ar jūsu kontu, un mēs jums nosūtīsim atiestatīšanas saiti."
+    "title": "Atjauno paroli",
+    "submit": "Saņem atiestatīšanas saiti",
+    "back_to_login": "Atgriezties uz pieslēgšanos",
+    "description": "Ievadi e-pasta adresi, kas saistīta ar tavu kontu, un mēs tev nosūtīsim atiestatīšanas saiti."
   },
   "auth_idp_redirects": {
     "login": {
-      "google": "Piesakieties, izmantojot Google"
+      "google": "Pieslēgties ar Google"
     },
     "register": {
-      "google": "Reģistrējieties pakalpojumā Google"
+      "google": "Reģistrēties ar Google"
     }
   },
   "location_page": {
-    "title": "Atrodiet veikalu savā tuvumā",
-    "subline": "Lūdzu, ievadiet savu pasta indeksu vai pilsētu, lai redzētu veikalus jūsu tuvumā.",
+    "title": "Atrodi veikalu savā tuvumā",
+    "subline": "Lūdzu, ievadi savu pasta indeksu vai pilsētu, lai redzētu tuvu esošos veikalus.",
     "geolocation": {
       "error": {
-        "permission_denied": "Lietotājam liegts ģeolokalizācijas pieprasījums",
+        "permission_denied": "Lietotājs noraidījis ģeolokācijas pieprasījumu.",
         "unknown": "Nevar noteikt ģeogrāfisko atrašanās vietu"
       }
     }
@@ -532,22 +532,22 @@
   "store_variant_availability": {
     "choose_store": "Izvēlēties veikalu",
     "change_store": "Mainīt veikalu",
-    "store_availability_subline": "Lūdzu, izvēlieties veikalu",
+    "store_availability_subline": "Lūdzu, izvēlies veikalu",
     "store_availability": "Veikala pieejamība"
   },
   "store_locator": {
     "store_information": {
       "store_closed": "Slēgts",
-      "store_open": "Atvērt",
+      "store_open": "Atvērts",
       "remaining_open_time": "aizveras {hours}h {minutes}min",
       "opening_hours": "Darba laiks"
     },
     "availability": {
       "not_available": "Nav pieejams",
       "available": "Pieejams",
-      "low_stock": "Mazs noliktavas krājums"
+      "low_stock": "Zems krājumu daudzums"
     },
-    "search_store_input_placeholder": "Ievadiet pilsētu vai pasta indeksu",
+    "search_store_input_placeholder": "Ievadi pilsētu vai pasta indeksu",
     "detect_location_label": "Atklāt manu atrašanās vietu"
   },
   "store_locator_slide_in": {
@@ -556,25 +556,25 @@
     "no_results": "Nav rezultātu"
   },
   "subscription_page": {
-    "headline": "Pārvaldiet savus abonementus",
+    "headline": "Pārvaldi savus abonementus",
     "meta": {
-      "title": "Jūsu abonēšana",
-      "description": "Viegli pārvaldiet savus aktīvos un iepriekšējos abonementus."
+      "title": "Tavi abonementi",
+      "description": "Viegli pārvaldi savus aktīvos un iepriekš aktīvos abonementus."
     }
   },
   "product_subscription": {
     "subscribe": "Abonēt un saglabāt",
-    "separation_text": "Vai ietaupiet vēl vairāk:",
-    "select_size": "Izvēlieties izmēru, lai redzētu opcijas",
+    "separation_text": "Vai ietaupi vēl vairāk:",
+    "select_size": "Izvēlies izmēru, lai redzētu opcijas",
     "not_eligible_for_subscription_message": "Izvēlētais izmērs nav piemērots abonēšanai",
     "add_to_basket": "Abonēt {interval}"
   },
   "subscription": {
     "subscription": "Abonēšana",
-    "interval": "Intervals",
-    "follow_up_delivery": "Turpmāka piegāde",
+    "interval": "Intervāls",
+    "follow_up_delivery": "Gaidāmā piegāde",
     "day_of_month_selection_caption": "Katru {dayOfMonth} mēneša dienu",
-    "term": "Termins"
+    "term": "Termiņš"
   },
   "order_detail_product_subscription": {
     "interval_keys": {
@@ -602,11 +602,11 @@
     "alt_with_image_index": "{alt}, Attēls {index} no {total}"
   },
   "country_detection": {
-    "switch_country_prompt": "Izskatās, ka atrodaties {country}. Kuru veikalu vēlaties apmeklēt?",
+    "switch_country_prompt": "Izskatās, ka atrodies {country}. Kuru veikalu vēlies apmeklēt?",
     "switch_to_shop": "Pārslēgties uz {country} veikalu",
-    "stay_in_shop": "Palikšana {country} veikalā",
+    "stay_in_shop": "Palikt {country} veikalā",
     "override_codes": {
-      "ZZ": "Starptautiskais"
+      "ZZ": "Starptautisks"
     },
     "country_with_language": "{country} ({language})"
   },
@@ -615,8 +615,8 @@
   },
   "pagination": {
     "a11y": {
-      "go_to_previous_page": "Pāreja uz iepriekšējo lapu",
-      "go_to_pnext_page": "Pāreja uz nākamo lapu"
+      "go_to_previous_page": "Pāriet uz iepriekšējo lapu",
+      "go_to_pnext_page": "Pāriet uz nākamo lapu"
     }
   },
   "quantity_input": {

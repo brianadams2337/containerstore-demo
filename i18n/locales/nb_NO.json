@@ -123,7 +123,7 @@
     }
   },
   "show_all_results_link": {
-    "open_on_search_page": "Se alle resultatene på {searchTerm} "
+    "open_on_search_page": "Se alle resultatene på {searchTerm}"
   },
   "product_suggestion_list": {
     "title": "Produkter"
@@ -603,8 +603,8 @@
   },
   "country_detection": {
     "switch_country_prompt": "Ser ut som du er i {country}. Hvilken butikk ønsker du å besøke?",
-    "switch_to_shop": "Bytt til nettbutikken {country} ",
-    "stay_in_shop": "Bli i butikken {country} ",
+    "switch_to_shop": "Bytt til nettbutikken {country}",
+    "stay_in_shop": "Bli i butikken {country}",
     "override_codes": {
       "ZZ": "Internasjonal"
     },

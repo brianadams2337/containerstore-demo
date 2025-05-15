@@ -37,18 +37,18 @@
     "scroll_to_top_label": "Yukarı kaydır"
   },
   "notification": {
-    "confirm": "TAMAM.",
+    "confirm": "Tamam",
     "view": "Görünüm",
     "reload_page": "Yeniden Yükle"
   },
   "promotion": {
-    "deal": "Anlaşma",
+    "deal": "Fırsat",
     "free_label": "Ücretsiz",
-    "condition": "Durum"
+    "condition": "Koşul"
   },
   "promotion_progress_wrapper": {
-    "remaining_minimum_order_value": "Fırsatınızın Kilidini Açın! Bu promosyonu etkinleştirmek için {amount} adresinden daha fazla harcayın.",
-    "reached_minimum_order_value": "Tebrikler! Bu fırsatın kilidini açtınız ve {amount} adresinden tasarruf ettiniz.",
+    "remaining_minimum_order_value": "Fırsatınızın kilidini açın! Bu promosyonu etkinleştirmek için {amount} daha harcayın.",
+    "reached_minimum_order_value": "Tebrikler! Bu fırsatın kilidini açtınız ve {amount} tasarruf ettiniz.",
     "fulfilled_promotion_condition": "Özel bir teklifin kilidini açtınız! Avantajlardan yararlanmak için uygun ürünleri sepetinize ekleyin.",
     "fulfilled_gift_condition": "Alışveriş sepetine ulaşıldı! Ücretsiz bir hediye ekleyin"
   },
@@ -82,8 +82,8 @@
     "name": "{field} doğru biçimlendirilmemiştir."
   },
   "form_fields": {
-    "first_name": "İlk isim",
-    "last_name": "Soyadı",
+    "first_name": "Ad",
+    "last_name": "Soyad",
     "email": "E-posta adresi",
     "old_password": "Geçerli şifre",
     "new_password": "Yeni Şifre",
@@ -573,7 +573,7 @@
     "subscription": "Abonelik",
     "interval": "Aralık",
     "follow_up_delivery": "Takip teslimatı",
-    "day_of_month_selection_caption": "Ayın her günü {dayOfMonth} ",
+    "day_of_month_selection_caption": "Ayın her günü {dayOfMonth}",
     "term": "Dönem"
   },
   "order_detail_product_subscription": {

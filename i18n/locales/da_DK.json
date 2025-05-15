@@ -21,13 +21,13 @@
     "cancel": "Annuller",
     "payment_key": {
       "default": "Kreditkort",
-      "accounting": "Betaling af faktura"
+      "accounting": "Betaling med faktura"
     },
     "carrier_key": {
       "DEFAULT": "UPS"
     },
-    "back_to_shop": "Tilbage til butik",
-    "to_shop": "Til butik",
+    "back_to_shop": "Tilbage til shop",
+    "to_shop": "Til shop",
     "close": "Luk",
     "including_vat": "inkl. moms.",
     "excluding_vat": "ekskl. moms.",
@@ -39,32 +39,32 @@
   "notification": {
     "confirm": "OK",
     "view": "Visning",
-    "reload_page": "Genindlæsning"
+    "reload_page": "Genindlæs"
   },
   "promotion": {
-    "deal": "Tilbud",
+    "deal": "Deal",
     "free_label": "Gratis",
     "condition": "Betingelse"
   },
   "promotion_progress_wrapper": {
-    "remaining_minimum_order_value": "Lås op for din aftale! Brug {amount} mere for at aktivere denne kampagne.",
-    "reached_minimum_order_value": "Tillykke med det hele! Du har låst op for dette tilbud og sparet {amount}.",
+    "remaining_minimum_order_value": "Lås op for din deal! Brug {amount} mere for at aktivere denne kampagne.",
+    "reached_minimum_order_value": "Tillykke med det hele! Du har låst op for denne deal og sparet {amount}.",
     "fulfilled_promotion_condition": "Du har låst op for et særligt tilbud! Læg kvalificerede produkter i din indkøbskurv for at nyde godt af fordelene.",
     "fulfilled_gift_condition": "Indkøbskurven er nået! Tilføj en gratis gave"
   },
   "promotion_slide_in": {
     "open_button": {
-      "no_active_promotions_title": "Dine tilbud",
-      "active_promotions_title": "Dine tilbud - {total} Aktive kampagner"
+      "no_active_promotions_title": "Dine deals",
+      "active_promotions_title": "Dine deals- {total} Aktive kampagner"
     },
-    "headline": "Dine tilbud",
+    "headline": "Dine deals",
     "subline": "Find nedsatte produkter ved at klikke på en kampagne. Oplev konstant skiftende tilbud på udvalgte varer.",
     "active_promotions": "Aktive kampagner {total}",
     "no_active_promotions": "Ingen aktive kampagner",
     "no_active_subline": "Du har i øjeblikket ingen aktive kampagner. Kom tilbage senere for nye tilbud og særtilbud!"
   },
   "shop_selector": {
-    "aria_label": "Skift butik, nuværende butik: {selectedCountry}, {selectedLanguage}",
+    "aria_label": "Skift shop, nuværende shop: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Sprog og land",
     "choose_language": "Vælg dit sprog",
     "choose_country": "Vælg dit land",
@@ -103,11 +103,11 @@
     "unknown_error_message": "Din anmodning kunne ikke behandles, prøv venligst igen."
   },
   "badge_labels": {
-    "new": "Ny i",
+    "new": "Nyheder",
     "already_in_basket": "Allerede i kurven"
   },
   "navigation": {
-    "find_a_store": "Find en butik",
+    "find_a_store": "Find en shop",
     "wishlist": "Ønskeliste | Ønskeliste, {count} vare | Ønskeliste, {count} varer",
     "a11ly": {
       "side_navigation": "Åben side-navigation"
@@ -123,7 +123,7 @@
     }
   },
   "show_all_results_link": {
-    "open_on_search_page": "Se alle resultater på {searchTerm} "
+    "open_on_search_page": "Se alle resultater på {searchTerm}"
   },
   "product_suggestion_list": {
     "title": "Produkter"
@@ -185,7 +185,7 @@
     "you_pay": "Du betaler",
     "discount": "Rabatter",
     "delivery": "Levering",
-    "voucher_disclaimer": "Vouchers kan anvendes i det sidste trin af ordren."
+    "voucher_disclaimer": "Rabtkoder kan anvendes i det sidste trin af ordren."
   },
   "basket_summary_reduction": {
     "sale": "Salg",
@@ -299,7 +299,7 @@
     "order_details": {
       "title": "Detaljer om ordren",
       "order_date": "Bestillingsdato",
-      "customer_id": "Kundens nummer",
+      "customer_id": "Kundenummer",
       "order_number": "Ordrenummer",
       "estimated_delivery_date": "Forventet levering",
       "delivered_by": "Afsendt af",
@@ -520,8 +520,8 @@
     }
   },
   "location_page": {
-    "title": "Find en butik i nærheden af dig",
-    "subline": "Indtast dit postnummer eller din by for at se butikker i nærheden af dig.",
+    "title": "Find en shop i nærheden af dig",
+    "subline": "Indtast dit postnummer eller din by for at se shops i nærheden af dig.",
     "geolocation": {
       "error": {
         "permission_denied": "Bruger nægtet geolokaliseringsprompt",
@@ -530,16 +530,16 @@
     }
   },
   "store_variant_availability": {
-    "choose_store": "Vælg butik",
-    "change_store": "Skift butik",
-    "store_availability_subline": "Vælg venligst en butik",
-    "store_availability": "Butikstilgængelighed"
+    "choose_store": "Vælg shop",
+    "change_store": "Skift shop",
+    "store_availability_subline": "Vælg venligst en shop",
+    "store_availability": "Shop-tilgængelighed"
   },
   "store_locator": {
     "store_information": {
       "store_closed": "Lukket",
       "store_open": "Åben",
-      "remaining_open_time": "lukker om {hours}h {minutes}min",
+      "remaining_open_time": "lukker om {hours}t {minutes}min",
       "opening_hours": "Åbningstider"
     },
     "availability": {
@@ -551,8 +551,8 @@
     "detect_location_label": "Find min placering"
   },
   "store_locator_slide_in": {
-    "headline": "Vælg butik",
-    "select_store": "Vælg butik",
+    "headline": "Vælg shop",
+    "select_store": "Vælg shop",
     "no_results": "Ingen resultater"
   },
   "subscription_page": {
@@ -602,9 +602,9 @@
     "alt_with_image_index": "{alt}, Billede {index} af {total}"
   },
   "country_detection": {
-    "switch_country_prompt": "Det ser ud til, at du er i {country}. Hvilken butik vil du gerne besøge?",
-    "switch_to_shop": "Skift til butikken {country} ",
-    "stay_in_shop": "Bliv i butikken på {country} ",
+    "switch_country_prompt": "Det ser ud til, at du er i {country}. Hvilken shop vil du gerne besøge?",
+    "switch_to_shop": "Skift til shop {country}",
+    "stay_in_shop": "Bliv i shop {country}",
     "override_codes": {
       "ZZ": "International"
     },

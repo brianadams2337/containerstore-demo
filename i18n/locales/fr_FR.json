@@ -3,9 +3,9 @@
     "sold_out": "Épuisé",
     "sold_out_long": "Actuellement en rupture de stock en ligne.",
     "sign_up": "S'inscrire",
-    "sign_in": "Connexion",
+    "sign_in": "Se connecter",
     "sign_out": "Se déconnecter",
-    "product_recommendation": "Accords recommandés",
+    "product_recommendation": "Associations recommandés",
     "seconds": "seconde | secondes",
     "minutes": "minute | minutes",
     "hours": "heure | heures",
@@ -29,7 +29,7 @@
     "back_to_shop": "Retour à la boutique",
     "to_shop": "Pour faire des achats",
     "close": "Fermer",
-    "including_vat": "TVA comprise.",
+    "including_vat": "TVA incluse.",
     "excluding_vat": "hors TVA.",
     "save": "Enregistrer",
     "search": "Recherche",
@@ -39,7 +39,7 @@
   "notification": {
     "confirm": "OK",
     "view": "Afficher",
-    "reload_page": "Recharger"
+    "reload_page": "Réactualiser"
   },
   "promotion": {
     "deal": "Offre",
@@ -48,26 +48,26 @@
   },
   "promotion_progress_wrapper": {
     "remaining_minimum_order_value": "Débloquez votre offre ! Dépensez {amount} de plus pour activer cette promo.",
-    "reached_minimum_order_value": "Félicitations ! Tu as débloqué cette offre et économisé {amount}.",
-    "fulfilled_promotion_condition": "Tu as débloqué une offre spéciale ! Ajoute les produits éligibles à ton panier pour profiter des avantages.",
-    "fulfilled_gift_condition": "Panier atteint ! Ajoute un cadeau gratuit"
+    "reached_minimum_order_value": "Félicitations ! Vous avez débloqué cette offre et économisé {amount}.",
+    "fulfilled_promotion_condition": "Vous avez débloqué une offre spéciale ! Ajoutez les produits éligibles à votre panier pour profiter des avantages.",
+    "fulfilled_gift_condition": "Niveau requis du panier atteint ! Ajoutez un cadeau gratuit"
   },
   "promotion_slide_in": {
     "open_button": {
-      "no_active_promotions_title": "Tes offres",
-      "active_promotions_title": "Tes offres – {total} Promotions actives"
+      "no_active_promotions_title": "Vos offres",
+      "active_promotions_title": "Vos offres – {total} Promotions actives"
     },
-    "headline": "Tes offres",
-    "subline": "Trouve des produits en promo en cliquant sur n'importe quelle promotion. Découvre des offres qui changent tout le temps sur des articles sélectionnés.",
+    "headline": "Vos offres",
+    "subline": "Trouvez des produits en promo en cliquant sur n'importe quelle promotion. Découvrez des offres qui changent tout le temps sur des articles sélectionnés.",
     "active_promotions": "Promotions actives {total}",
     "no_active_promotions": "Aucune promo en cours",
-    "no_active_subline": "Tu n'as pas de promos actives pour le moment. Reviens plus tard pour découvrir les nouvelles offres et promotions spéciales !"
+    "no_active_subline": "Vous n'avez pas de promos actives pour le moment. Revenez plus tard pour découvrir les nouvelles offres et promotions spéciales !"
   },
   "shop_selector": {
     "aria_label": "Changer de boutique, boutique actuelle : {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Langue et pays",
-    "choose_language": "Choisis ta langue",
-    "choose_country": "Choisis ton pays",
+    "choose_language": "Choisissez votre langue",
+    "choose_country": "Choisissez votre pays",
     "close_flyout": "Fermer la fenêtre modale de sélection de boutique"
   },
   "validation": {
@@ -100,7 +100,7 @@
     "page_not_found_title": "Oh - 404",
     "page_not_found_message": "Désolé, cette page n'existe plus.",
     "unknown_error_title": "Oh, un problème est survenu.",
-    "unknown_error_message": "On n'a pas pu traiter ta demande, essaie encore."
+    "unknown_error_message": "On n'a pas pu traiter votre demande, veuillez réessayer."
   },
   "badge_labels": {
     "new": "Nouveau dans",
@@ -108,7 +108,7 @@
   },
   "navigation": {
     "find_a_store": "Trouver un magasin",
-    "wishlist": "{count} {count} Wishlist | Liste de souhaits, article de la liste de souhaits | Wishlist, articles de la liste de souhaits",
+    "wishlist": "{count} {count} Wishlist | Liste d'envies, article de la liste d'envies | Wishlist, articles de la liste d'envie",
     "a11ly": {
       "side_navigation": "Ouvrir la navigation latérale"
     }
@@ -123,7 +123,7 @@
     }
   },
   "show_all_results_link": {
-    "open_on_search_page": "Voir tous les résultats de l'{searchTerm} "
+    "open_on_search_page": "Voir tous les résultats de l'{searchTerm}"
   },
   "product_suggestion_list": {
     "title": "Produits"
@@ -144,16 +144,16 @@
   },
   "wishlist_page": {
     "meta": {
-      "title": "Votre liste de souhaits",
-      "description": "Enregistre tes produits préférés et garde une trace de ceux que tu veux absolument avoir."
+      "title": "Votre liste d'envies",
+      "description": "Enregistrez vos articles préférés et sauvegardez vos articles préférés."
     },
-    "title": "Liste de souhaits",
-    "empty_wishlist_title": "Tu n'as aucun article dans ta liste de souhaits.",
-    "empty_wishlist_description": "Découvrez nos derniers produits ou connectez-vous pour voir votre liste de souhaits enregistrée."
+    "title": "Liste d'envies",
+    "empty_wishlist_title": "Vous n'avez aucun article dans votre liste d'envies.",
+    "empty_wishlist_description": "Découvrez nos derniers produits ou connectez-vous pour voir votre liste d'envies enregistrée."
   },
   "wishlist_toggle": {
-    "remove_from_wishlist": "Supprimer de la liste de souhaits",
-    "add_to_wishlist": "Ajouter à la liste de souhaits"
+    "remove_from_wishlist": "Supprimer de la liste d'envies",
+    "add_to_wishlist": "Ajouter à la liste d'envies"
   },
   "basket_page": {
     "title": "Panier",
@@ -161,25 +161,25 @@
       "title": "Panier | Panier, {count} article | Panier, {count} articles"
     },
     "empty_basket_title": "Votre panier est vide.",
-    "empty_basket_description": "Tes produits apparaîtront dès que tu les auras ajoutés à ton panier.",
+    "empty_basket_description": "Vos produits apparaîtront dès que vous les aurez ajoutés à votre panier.",
     "meta": {
       "title": "Panier",
-      "description": "Vérifie les articles dans ton panier et passe facilement à la caisse. Achats sécurisés et sans souci sur {shopName}."
+      "description": "Vérifiez les articles dans votre panier et passez facilement commande. Achats sécurisés et sans souci sur {shopName}."
     }
   },
   "basket": {
-    "go_to_checkout": "Aller à la caisse",
+    "go_to_checkout": "Passer la commande",
     "available_products": "Produits disponibles",
     "unavailable_products": "Produits indisponibles"
   },
   "basket_popover_items": {
-    "no_items_info": "Tu n'as aucun produit dans ton panier."
+    "no_items_info": "Vous n'aurez aucun produit dans votre panier."
   },
   "basket_popover_actions": {
     "go_to_basket": "Aller au panier"
   },
   "basket_summary": {
-    "delivery_fees": "* Les frais de livraison seront calculés lors du paiement, une fois que tu auras choisi ton mode de livraison.",
+    "delivery_fees": "* Les frais de livraison seront calculés lors du paiement, une fois que vous aurez choisi votre mode de livraison.",
     "total": "Total",
     "subtotal": "Sous-total",
     "you_pay": "Vous payez",
@@ -197,17 +197,17 @@
     "add_to_basket": "Ajouter au panier",
     "product_name_fallback": "Produit",
     "notification": {
-      "select_size": "Choisis la taille avant d'ajouter le produit au panier.",
+      "select_size": "Choisissez la taille avant d'ajouter le produit au panier.",
       "add_to_basket_success": "{productName} a été ajouté à votre panier",
       "add_to_basket_error": "{productName} Impossible d'ajouter cet article à votre panier.",
       "add_to_basket_variant_out_of_stock_error": "Cette taille est actuellement en rupture de stock.",
-      "add_to_basket_max_basket_items_error": "Oups ! Tu as atteint le nombre maximum d'articles autorisés dans ton panier.",
-      "add_subscription_to_basket_success": "{productName} {interval} L'abonnement a été ajouté à ton panier.",
-      "add_with_reduced_quantity_error": "Désolé, il n'y a plus d'articles disponibles dans cette taille. Tout le stock disponible a déjà été ajouté à ton panier."
+      "add_to_basket_max_basket_items_error": "Oups ! Vous avez atteint le nombre maximum d'articles autorisés dans votre panier.",
+      "add_subscription_to_basket_success": "{productName} {interval} L'abonnement a été ajouté à votre panier.",
+      "add_with_reduced_quantity_error": "Désolé, il n'y a plus d'articles disponibles dans cette taille. Tout le stock disponible a déjà été ajouté à votre panier."
     }
   },
   "basket_card": {
-    "remove_from_basket_confirmation": "Tu es sûr de vouloir supprimer cet article ?",
+    "remove_from_basket_confirmation": "Êtes-vous sûr(e) de vouloir supprimer cet article ?",
     "confirm_removal": "Supprimer l'article"
   },
   "password_input": {
@@ -215,13 +215,13 @@
     "show": "Afficher le mot de passe"
   },
   "user_navigation_item": {
-    "greeting": "Salut {firstName}",
+    "greeting": "Bonjour {firstName}",
     "a11y": {
       "title": "Mon compte"
     },
     "menu_items": {
-      "subscriptions": "Tes abonnements",
-      "orders": "Tes commandes",
+      "subscriptions": "Vos abonnements",
+      "orders": "Vos commandes",
       "profile": "Paramètres du compte"
     }
   },
@@ -229,30 +229,30 @@
     "title": "Infos sur le compte",
     "customer_number": "Numéro de client :",
     "email": "Adresse e-mail enregistrée :",
-    "disclaimer": "Les changements d'adresse e-mail ne sont pas pris en charge. Si t'as besoin d'aide, contacte le service d'assistance."
+    "disclaimer": "Les changements d'adresse e-mail n'ont pas été pris en compte. Si vous avez besoin d'aide, veuillez contacter le service d'assistance."
   },
   "profile_personal_information": {
     "title": "Informations personnelles",
     "description": "Mettez à jour vos informations personnelles pour que votre compte reste à jour.",
-    "success_message": "Tes données ont été mises à jour.",
-    "error_message": "Les infos n'ont pas pu être enregistrées. Essaie encore."
+    "success_message": "Vos données ont été mises à jour.",
+    "error_message": "Les infos n'ont pas pu être enregistrées. Veuillez réessayer."
   },
   "profile_password_management": {
     "title": "Gestion des mots de passe",
-    "description": "Garde ton compte en sécurité en changeant ton mot de passe régulièrement.",
-    "idp_description": "Ton compte est sécurisé par un fournisseur de connexion externe, donc pas besoin de changer ton mot de passe ici. Pour mettre à jour ton mot de passe, va dans les paramètres de ton fournisseur de connexion.",
-    "success_message": "Ton mot de passe a bien été mis à jour.",
+    "description": "Gardez votre compte en sécurité en changeant votre mot de passe régulièrement.",
+    "idp_description": "Votre compte est sécurisé par un fournisseur de connexion externe, donc pas besoin de changer votre mot de passe ici. Pour mettre à jour votre mot de passe, accédez aux paramètres de votre fournisseur de connexion.",
+    "success_message": "Votre mot de passe a bien été mis à jour.",
     "error": {
-      "400_bad_request": "On n'a pas pu traiter ta demande, essaie encore.",
-      "401_unauthorized": "On n'a pas pu traiter ta demande, essaie encore.",
-      "403_forbidden": "Ton mot de passe n'a pas pu être mis à jour. Vérifie ton mot de passe actuel et réessaie."
+      "400_bad_request": "Nous n'avons pas pu traiter votre demande, veuillez réessayer.",
+      "401_unauthorized": "Nous n'avons pas pu traiter votre demande, veuillez réessayer.",
+      "403_forbidden": "Votre mot de passe n'a pas pu être mis à jour. Veuillez vérifier votre mot de passe actuel et réessayer."
     }
   },
   "account_page": {
     "title": "Votre compte",
     "meta": {
       "title": "Votre compte",
-      "description": "Gère ton profil, tes commandes et tes abonnements au même endroit."
+      "description": "Géréz votre profil, vos commandes et vos abonnements au même endroit."
     }
   },
   "account_tabs": {
@@ -261,13 +261,13 @@
     "subscriptions": "Abonnements"
   },
   "profile_page": {
-    "title": "Gérer ton compte",
+    "title": "Gérer votre compte",
     "meta": {
       "title": "Paramètres du compte",
-      "description": "Mets à jour tes infos perso, ton e-mail et ton mot de passe ici."
+      "description": "Mettez à jour vos infos perso, votre e-mail et votre mot de passe ici."
     },
     "greeting": "Bienvenue, {firstName}!",
-    "description": "Gère tes infos perso et protège ton compte."
+    "description": "Gérez vos infos perso et protégez votre compte."
   },
   "order_card": {
     "order_date": "Date de la commande",
@@ -278,14 +278,14 @@
   "orders_page": {
     "title": "Vos commandes",
     "meta": {
-      "title": "Tes commandes",
+      "title": "Vos commandes",
       "description": "Suivez vos commandes passées et en cours avec des mises à jour de statut."
     }
   },
   "order_list": {
     "no_orders": {
-      "title": "Tu n'as encore passé aucune commande.",
-      "description": "Une fois que tu as fait un achat, les détails de ta commande apparaissent ici."
+      "title": "Vous n'avez encore passé aucune commande.",
+      "description": "Une fois que vous avez effectué un achat, les détails de votre commande apparaissent ici."
     }
   },
   "order_detail_page": {
@@ -322,11 +322,11 @@
   },
   "product_promotion_gifts": {
     "headline": "Profitez de votre cadeau gratuit",
-    "description": "Tu remplis les conditions. Choisis ton cadeau gratuit maintenant :"
+    "description": "Vous remplissez les conditions. Choisissez votre cadeau gratuit maintenant :"
   },
   "product_promotion_gifts_item": {
     "a11y": {
-      "add_gift": "Ajoute ton produit gratuit {name}"
+      "add_gift": "Ajoutez votre produit gratuit {name}"
     }
   },
   "product_detail_page": {
@@ -337,7 +337,7 @@
   "variant_picker": {
     "select_size": "Choisir la taille",
     "option": {
-      "select_option": "Choisis la taille {option}"
+      "select_option": "Choisissez la taille {option}"
     }
   },
   "sibling_selection": {
@@ -365,7 +365,7 @@
       "dhl_paragraph": "Les articles disponibles tout de suite sont généralement livrés par DHL en 1 à 3 jours ouvrés.",
       "hermes_headline": "Hermes – 0,00 EUR",
       "hermes_paragraph": "Les articles disponibles tout de suite sont généralement livrés par Hermes en 1 à 3 jours ouvrés.",
-      "return_information": "Si l'étiquette de retour n'est pas jointe à ta livraison, tu peux en demander une nouvelle à tout moment à notre service client."
+      "return_information": "Si l'étiquette de retour n'est pas jointe à votre livraison, vous pouvez en demander une nouvelle à tout moment à notre service clients."
     }
   },
   "price": {
@@ -374,12 +374,12 @@
   },
   "product_list_page": {
     "meta": {
-      "description": "Achetez {category} chez {shopName}. Découvrez une large gamme de {category}"
+      "description": "Shoppez {category} chez {shopName}. Découvrez une large gamme de {category}"
     }
   },
   "product_list_no_results": {
     "title": "Aucun résultat 🫣",
-    "description": "Malheureusement, il n'y a aucun produit dans cette catégorie ou tes filtres ne donnent aucun résultat.",
+    "description": "Malheureusement, il n'y a aucun produit dans cette catégorie ou vos filtres ne donnent aucun résultat.",
     "reset_filters": "Réinitialiser les filtres",
     "back_to_category": "Retour à {category}"
   },
@@ -396,12 +396,12 @@
     "close": "Fermer les filtres"
   },
   "filter_actions": {
-    "show_results_with_count": "Afficher les éléments d'{count} ",
+    "show_results_with_count": "Afficher les éléments d'{count}",
     "show_results": "Voir les articles",
     "reset_all_filter": "Tout réinitialiser"
   },
   "price_range_slider": {
-    "to": "to",
+    "to": "",
     "minimum_price": "Prix minimum : {price}",
     "maximum_price": "Prix maximum : {price}"
   },
@@ -414,36 +414,36 @@
     "reset": "Réinitialiser le filtre"
   },
   "filter_color_chip": {
-    "select_color": "Choisis une couleur {color}"
+    "select_color": "Choisissez une couleur {color}"
   },
   "filter": {
     "notification": {
       "all_filters_cleared": "Tous les filtres ont été effacés !",
-      "filter_updated": "Tes filtres ont été appliqués avec succès !",
-      "sort_updated": "Ton tri a bien été appliqué !",
-      "filter_and_sort_updated": "Tes filtres et ton tri ont bien été appliqués !"
+      "filter_updated": "Vos filtres ont été appliqués avec succès !",
+      "sort_updated": "Votre tri a bien été appliqué !",
+      "filter_and_sort_updated": "Vos filtres et votre tri ont bien été appliqués !"
     },
     "show_filter": "Afficher les filtres",
     "show_filter_and_sorting": "Afficher les filtres et le tri"
   },
   "order_success_page": {
-    "title": "Aperçu de ta commande",
+    "title": "Aperçu de votre commande",
     "meta": {
-      "title": "Commande validée %séparateur Merci pour ton achat",
-      "description": "Merci pour ta commande ! Ton achat est confirmé. Vérifie ton e-mail pour les détails de la commande."
+      "title": "Commande validée ! Merci pour votre achat",
+      "description": "Merci pour votre commande ! Votre achat est confirmé. Vérifiez votre e-mail pour les détails de la commande."
     },
     "no_order_found": {
       "title": "Les infos sur la commande n'ont pas pu être trouvées.",
-      "description": "On n'a pas pu trouver les détails de ta commande. Le lien a peut-être expiré ou n'est pas valide. Vérifie ton e-mail pour trouver le bon lien ou contacte le service client si tu as besoin d'aide."
+      "description": "On n'a pas pu trouver les détails de votre commande. Le lien a peut-être expiré ou n'est pas valide. Vérifiez votre e-mail pour trouver le bon lien ou contactez le service client si vous avez besoin d'aide."
     },
     "go_to_order_details": "Détails de la commande"
   },
   "order_success_page_greeting": {
-    "title": "Merci pour ton achat !",
-    "email_confirmation": "La confirmation de commande a été envoyée à l'adresse e-mail que tu as fournie."
+    "title": "Merci pour votre achat !",
+    "email_confirmation": "La confirmation de commande a été envoyée à l'adresse e-mail que vous avez fournie."
   },
   "sign_in_page": {
-    "title": "Salut ! Tu es nouveau ici ou tu es déjà venu ?",
+    "title": "Salut ! nouveau ici ou déjà venu ?",
     "meta": {
       "title": "Connexion ou Inscription",
       "description": "Accédez à votre compte ou créez-en un nouveau sur {shopName}. Profitez d'une expérience d'achat fluide avec une connexion sécurisée et des options personnalisées."
@@ -454,30 +454,30 @@
       "success": {
         "login": "Connexion réussie ! Bienvenue !",
         "sign_up": "Votre compte a été créé avec succès !",
-        "forgot_password": "Un lien pour réinitialiser ton mot de passe a été envoyé à ton adresse e-mail.",
-        "reset_password": "Ton mot de passe a été réinitialisé. Tu peux maintenant te connecter avec ton nouveau mot de passe.",
-        "guest_login": "Ton compte a été créé ! Tu peux maintenant passer ta commande."
+        "forgot_password": "Un lien pour réinitialiser votre mot de passe a été envoyé à votre adresse e-mail.",
+        "reset_password": "Votre mot de passe a été réinitialisé. Vous pouvez maintenant vous connecter avec votre nouveau mot de passe.",
+        "guest_login": "Votre compte a été créé ! Vous pouvez maintenant passer votre commande."
       },
       "error": {
         "guest_login": {
-          "409": "C'est un compte enregistré. Utilise le bon mot de passe pour te connecter."
+          "409": "C'est un compte enregistré. Utilisez le bon mot de passe pour vous connecter."
         },
         "generic": {
-          "400": "On n'a pas pu traiter ta demande, essaie encore.",
-          "401": "On n'a pas pu traiter ta demande, essaie encore.",
+          "400": "On n'a pas pu traiter votre demande, essayez encore.",
+          "401": "On n'a pas pu traiter votre demande, essayez encore.",
           "403": "Cet utilisateur est désactivé.",
-          "404": "Ton adresse e-mail ou ton mot de passe est incorrect. Essaie encore.",
-          "406": "Ton jeton a déjà été utilisé ou a expiré. Demande un nouvel e-mail pour réinitialiser ton mot de passe.",
+          "404": "Votrr adresse e-mail ou votre mot de passe est incorrect. Essayez encore.",
+          "406": "Votre jeton a déjà été utilisé ou a expiré. Demandez un nouvel e-mail pour réinitialiser votre mot de passe.",
           "409": "Ce compte existe déjà.",
-          "422": "On n'a pas pu traiter ta demande, essaie encore.",
-          "500": "Ta demande a généré une erreur."
+          "422": "On n'a pas pu traiter votre demande, veuillez reessayer.",
+          "500": "Votre demande a généré une erreur."
         }
       }
     }
   },
   "auth_reset_password_slide_in_header": {
     "title": "Définir un nouveau mot de passe",
-    "description": "Mets ton nouveau mot de passe ci-dessous pour sécuriser ton compte."
+    "description": "Écrivez votre nouveau mot de passe ci-dessous pour sécuriser votre compte."
   },
   "auth_reset_password_slide_in_body": {
     "submit_password_reset": "Enregistrer le mot de passe"
@@ -488,40 +488,40 @@
   "auth_register": {
     "mandatory_info_legend": "* Champ obligatoire",
     "submit_sign_up": "S'inscrire",
-    "already_signed_up_question": "Tu as déjà un compte ?",
-    "go_to_login": "Connecte-toi ici"
+    "already_signed_up_question": "Vous avez déjà un compte ?",
+    "go_to_login": "Connectez-vous ici"
   },
   "auth_register_privacy_disclaimer": {
-    "privacy_disclaimer": "En créant un compte, tu acceptes notre politique de confidentialité {terms} et tu reconnais notre politique d'utilisation {policy}.",
+    "privacy_disclaimer": "En créant un compte, vous acceptez notre politique de confidentialité {terms} et vous reconnaissez notre politique d'utilisation {policy}.",
     "go_to_terms_of_service": "Conditions d'utilisation",
     "go_to_privacy_policy": "Politique de confidentialité"
   },
   "auth_login": {
-    "not_registered_question": "Tu n'es pas encore utilisateur ?",
+    "not_registered_question": "Pas encore utilisateur ?",
     "create_account": "Créer un compte.",
     "submit_login": "Connexion"
   },
   "auth_register_toggle_guest": {
-    "activation_hint": "Tu ne vas pas créer de compte. Pour suivre ta commande, utilise l'adresse e-mail que tu as fournie.",
-    "label": "Continuer en tant qu'invité"
+    "activation_hint": "Vous n'allez pas créer de compte. Pour suivre votre commande, utilisez l'adresse e-mail que vous avez fournie.",
+    "label": "Continuer en tant qu'invité(e)"
   },
   "auth_forgot_password": {
-    "title": "Réinitialiser ton mot de passe",
+    "title": "Réinitialiser votre mot de passe",
     "submit": "Obtenir le lien de réinitialisation",
     "back_to_login": "Retour à la connexion",
-    "description": "Mets l'adresse e-mail liée à ton compte, et on t'enverra un lien pour réinitialiser ton mot de passe."
+    "description": "Mettez l'adresse e-mail liée à votre compte, et on vous enverra un lien pour réinitialiser votre mot de passe."
   },
   "auth_idp_redirects": {
     "login": {
-      "google": "Connecte-toi avec Google"
+      "google": "Connectez-vous avec Google"
     },
     "register": {
-      "google": "Inscris-toi avec Google"
+      "google": "Inscrivez-vous avec Google"
     }
   },
   "location_page": {
-    "title": "Trouve un magasin près de chez toi",
-    "subline": "Mets ton code postal ou ta ville pour voir les magasins près de chez toi.",
+    "title": "Trouvez un magasin près de chez vous",
+    "subline": "Mettez votre code postal ou votre ville pour voir les magasins près de chez vous.",
     "geolocation": {
       "error": {
         "permission_denied": "L'utilisateur a refusé la géolocalisation",
@@ -532,7 +532,7 @@
   "store_variant_availability": {
     "choose_store": "Choisir le magasin",
     "change_store": "Changer de boutique",
-    "store_availability_subline": "Choisis un magasin",
+    "store_availability_subline": "Choisissez un magasin",
     "store_availability": "Disponibilité en magasin"
   },
   "store_locator": {
@@ -559,13 +559,13 @@
     "headline": "Gérer vos abonnements",
     "meta": {
       "title": "Vos abonnements",
-      "description": "Gère facilement tes abonnements actifs et passés."
+      "description": "Gérez facilement vos abonnements actifs et passés."
     }
   },
   "product_subscription": {
     "subscribe": "Abonnez-vous et économisez",
     "separation_text": "Ou économisez encore plus :",
-    "select_size": "Choisis la taille pour voir les options",
+    "select_size": "Choisissez la taille pour voir les options",
     "not_eligible_for_subscription_message": "La taille choisie ne peut pas être souscrite à un abonnement.",
     "add_to_basket": "S'abonner à {interval}"
   },
@@ -602,9 +602,9 @@
     "alt_with_image_index": "{alt}, Image {index} of {total}"
   },
   "country_detection": {
-    "switch_country_prompt": "On dirait que t'es en {country}. Quelle boutique tu veux visiter ?",
-    "switch_to_shop": "Passer à la boutique {country} ",
-    "stay_in_shop": "Rester dans la boutique en {country} ",
+    "switch_country_prompt": "On dirait que vous etes en {country}. Quelle boutique vous voulez visiter ?",
+    "switch_to_shop": "Passer à la boutique {country}",
+    "stay_in_shop": "Rester dans la boutique en {country}",
     "override_codes": {
       "ZZ": "International"
     },

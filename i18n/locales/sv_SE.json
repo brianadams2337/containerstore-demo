@@ -1,11 +1,11 @@
 {
   "global": {
-    "sold_out": "Utsåld",
+    "sold_out": "Slutsåld",
     "sold_out_long": "För närvarande slutsåld online.",
-    "sign_up": "Registrera dig",
+    "sign_up": "Registrera",
     "sign_in": "Logga in",
     "sign_out": "Logga ut",
-    "product_recommendation": "Rekommenderade parningar",
+    "product_recommendation": "Rekommenderade kombinationer",
     "seconds": "sekund | sekunder",
     "minutes": "minut | minuter",
     "hours": "timme | timmar",
@@ -13,10 +13,10 @@
     "back": "tillbaka",
     "continue_shopping": "Fortsätt shoppa",
     "ordinal_suffixes": {
-      "one": "st",
-      "two": "nd",
-      "few": "rd",
-      "other": "th"
+      "one": ".",
+      "two": ".",
+      "few": ".",
+      "other": "."
     },
     "cancel": "Avbryt",
     "payment_key": {
@@ -27,18 +27,18 @@
       "DEFAULT": "UPS"
     },
     "back_to_shop": "Tillbaka till butiken",
-    "to_shop": "Till butik",
+    "to_shop": "Till butiken",
     "close": "Stäng",
-    "including_vat": "inklusive moms.",
-    "excluding_vat": "exklusive moms.",
+    "including_vat": "Inkl. moms.",
+    "excluding_vat": "Exkl. moms.",
     "save": "spara",
-    "search": "sökning",
-    "quantity": "Kvantitet",
+    "search": "sök",
+    "quantity": "Antal",
     "scroll_to_top_label": "Scrolla till toppen"
   },
   "notification": {
     "confirm": "OK",
-    "view": "vy",
+    "view": "visa",
     "reload_page": "Ladda om"
   },
   "promotion": {
@@ -47,24 +47,24 @@
     "condition": "Villkor"
   },
   "promotion_progress_wrapper": {
-    "remaining_minimum_order_value": "Lås upp din deal! Handla för {amount} mer för att aktivera denna kampanj.",
-    "reached_minimum_order_value": "Gratulerar till din kampanj! Du har låst upp den här affären och sparat {amount}.",
-    "fulfilled_promotion_condition": "Du har låst upp ett specialerbjudande! Lägg till berättigade produkter i din kundvagn för att dra nytta av fördelarna.",
-    "fulfilled_gift_condition": "Kundvagnen är nådd! Lägg till en gratis gåva"
+    "remaining_minimum_order_value": "Lås upp din deal! Handla för {amount} mer för att aktivera kampanjen.",
+    "reached_minimum_order_value": "Grattis! Du har låst upp detta erbjudande och sparat {amount}.",
+    "fulfilled_promotion_condition": "Du har låst upp ett specialerbjudande! Lägg till kvalificerade produkter i din varukorg för att ta del av förmånerna.",
+    "fulfilled_gift_condition": "Varukorgen är full! Lägg till en gratisgåva"
   },
   "promotion_slide_in": {
     "open_button": {
       "no_active_promotions_title": "Dina erbjudanden",
-      "active_promotions_title": "Dina erbjudanden - {total} Aktiva kampanjer"
+      "active_promotions_title": "Dina erbjudanden – {total} aktiva kampanjer"
     },
     "headline": "Dina erbjudanden",
-    "subline": "Hitta rabatterade produkter genom att klicka på en kampanj. Upptäck ständigt föränderliga erbjudanden på utvalda artiklar.",
+    "subline": "Hitta rabatterade produkter genom att klicka på en kampanj. Upptäck ständigt varierande erbjudanden på utvalda varor.",
     "active_promotions": "Aktiva kampanjer {total}",
     "no_active_promotions": "Inga aktiva kampanjer",
     "no_active_subline": "Du har för närvarande inga aktiva kampanjer. Kom tillbaka senare för nya erbjudanden och specialerbjudanden!"
   },
   "shop_selector": {
-    "aria_label": "Byt butik, nuvarande butik: {selectedCountry}, {selectedLanguage}",
+    "aria_label": "Ändra butik, nuvarande butik: {selectedCountry}, {selectedLanguage}",
     "flyout_title": "Språk och land",
     "choose_language": "Välj ditt språk",
     "choose_country": "Välj ditt land",
@@ -74,47 +74,47 @@
     "email": "Vänligen ange en giltig e-postadress.",
     "password": "Din {field} måste innehålla minst ett specialtecken, en stor bokstav, en liten bokstav och en siffra.",
     "required": "{field} är obligatoriskt.",
-    "same_as": "{field} måste vara samma som {otherField} fält.",
+    "same_as": "{field} måste vara samma som fältet {otherField}.",
     "max_length": "{field} måste vara {max} eller mindre.",
     "min_length": "{field} måste vara minst {min} tecken lång.",
     "date": "{field} måste vara ett giltigt datum.",
-    "future_date": "{field} kan inte ha ett datum som ligger i framtiden.",
+    "future_date": "{field} kan inte ha ett framtida datum.",
     "name": "{field} är inte korrekt formaterat."
   },
   "form_fields": {
     "first_name": "Förnamn",
     "last_name": "Efternamn",
-    "email": "E-post adress",
+    "email": "E-postadress",
     "old_password": "Nuvarande lösenord",
     "new_password": "Nytt lösenord",
     "password": "Lösenord",
     "gender": "kön",
     "gender_options": {
-      "male": "manlig",
-      "female": "kvinnlig",
-      "diverse": "Olika",
-      "none": "Föredrar att inte säga"
+      "male": "Man",
+      "female": "Kvinna",
+      "diverse": "Icke-binär",
+      "none": "Föredrar att inte uppge"
     }
   },
   "error": {
-    "page_not_found_title": "Åh - 404",
+    "page_not_found_title": "Hoppsan – 404",
     "page_not_found_message": "Tyvärr finns inte den här sidan längre.",
-    "unknown_error_title": "Åh - något gick fel",
-    "unknown_error_message": "Din begäran kunde inte behandlas, försök igen."
+    "unknown_error_title": "Hoppsan – något gick fel",
+    "unknown_error_message": "Din begäran kunde inte behandlas, vänligen försök igen."
   },
   "badge_labels": {
-    "new": "Ny i",
-    "already_in_basket": "Redan i korgen"
+    "new": "Nyheter",
+    "already_in_basket": "Redan i varukorgen"
   },
   "navigation": {
     "find_a_store": "Hitta en butik",
     "wishlist": "önskelista | önskelista, {count} artikel | önskelista, {count} artiklar",
     "a11ly": {
-      "side_navigation": "Öppen sidonavigering"
+      "side_navigation": "Öppna sidonavigeringen"
     }
   },
   "checkout_page": {
-    "title": "Kassan"
+    "title": "Kassa"
   },
   "search_page": {
     "title": "Produkter för \"{term}\"",
@@ -123,7 +123,7 @@
     }
   },
   "show_all_results_link": {
-    "open_on_search_page": "Se alla resultat för {searchTerm} "
+    "open_on_search_page": "Se alla resultat för {searchTerm}"
   },
   "product_suggestion_list": {
     "title": "Produkter"
@@ -139,13 +139,13 @@
   },
   "footer_promises": {
     "payment_options": "Flexibla betalningsalternativ",
-    "free_shipping": "Fri leverans på beställningar över 50 {currency}",
+    "free_shipping": "Fri frakt vid beställningar över 50 {currency}",
     "return_policy": "50 dagar gratis returpolicy"
   },
   "wishlist_page": {
     "meta": {
       "title": "Din önskelista",
-      "description": "Spara dina favoritprodukter och håll koll på dina måste-ha."
+      "description": "Spara dina favoritprodukter och håll koll på dem."
     },
     "title": "Önskelista",
     "empty_wishlist_title": "Du har inga artiklar i din önskelista.",
@@ -156,15 +156,15 @@
     "add_to_wishlist": "Lägg till i önskelistan"
   },
   "basket_page": {
-    "title": "Korg",
+    "title": "Varukorg",
     "a11y": {
-      "title": "Korg | Korg, {count} artikel | Korg, {count} artiklar"
+      "title": "Varukorg | Varukorg, {count} artikel | Varukorg, {count} artiklar"
     },
-    "empty_basket_title": "Din kundvagn är tom.",
+    "empty_basket_title": "Din varukorg är tom.",
     "empty_basket_description": "Dina produkter kommer att visas så snart du lägger dem i din varukorg.",
     "meta": {
-      "title": "Korg",
-      "description": "Granska varorna i din korg och gå enkelt vidare till kassan. Säker och problemfri shopping på {shopName}."
+      "title": "Varukorg",
+      "description": "Granska varorna i din varukorg och fortsätt enkelt till kassan. Säker och problemfri shopping hos {shopName}."
     }
   },
   "basket": {
@@ -173,37 +173,37 @@
     "unavailable_products": "Otillgängliga produkter"
   },
   "basket_popover_items": {
-    "no_items_info": "Du har inga produkter i din korg."
+    "no_items_info": "Du har inga produkter i din varukorg."
   },
   "basket_popover_actions": {
-    "go_to_basket": "Gå till korgen"
+    "go_to_basket": "Gå till varukorgen"
   },
   "basket_summary": {
-    "delivery_fees": "* Leveransavgifterna fastställs i kassan efter att du har valt ett önskat leveransalternativ.",
+    "delivery_fees": "* Fraktkostnaden beräknas i kassan efter att du har valt ett fraktalternativ.",
     "total": "Totalt",
     "subtotal": "Delsumma",
     "you_pay": "Du betalar",
     "discount": "Rabatter",
-    "delivery": "leverans",
-    "voucher_disclaimer": "Vouchers kan tillämpas i det sista steget i beställningen."
+    "delivery": "Frakt",
+    "voucher_disclaimer": "Värdekoder kan lösas in i det sista steget av beställningen."
   },
   "basket_summary_reduction": {
-    "sale": "Försäljning",
+    "sale": "Rea",
     "campaign": "Kampanjer",
-    "promotion": "Kampanj",
-    "voucher": "Voucher (kupong)"
+    "promotion": "Erbjudande",
+    "voucher": "Värdekod (kupong)"
   },
   "add_to_basket": {
-    "add_to_basket": "Lägg till i korgen",
+    "add_to_basket": "Lägg till i varukorgen",
     "product_name_fallback": "Produkt",
     "notification": {
-      "select_size": "Vänligen välj storlek innan du lägger till i korgen",
-      "add_to_basket_success": "{productName} har lagts till i din korg",
-      "add_to_basket_error": "{productName} kunde inte läggas till i din korg",
+      "select_size": "Vänligen välj storlek innan du lägger till i varukorgen",
+      "add_to_basket_success": "{productName} har lagts till i din varukorg",
+      "add_to_basket_error": "{productName} kunde inte läggas till i din varukorg",
       "add_to_basket_variant_out_of_stock_error": "Denna storlek är för närvarande slut i lager",
-      "add_to_basket_max_basket_items_error": "Oj, oj! Du har nått det maximala antalet artiklar som tillåts i din korg.",
-      "add_subscription_to_basket_success": "{productName} {interval} prenumerationen har lagts till i din korg",
-      "add_with_reduced_quantity_error": "Tyvärr, det finns inga fler varor i den här storleken. Allt tillgängligt lager har redan lagts till i din korg."
+      "add_to_basket_max_basket_items_error": "Hoppsan! Du har nått maxantalet tillåtna artiklar i din varukorg.",
+      "add_subscription_to_basket_success": "{productName} {interval}-prenumeration har lagts till i din varukorg",
+      "add_with_reduced_quantity_error": "Tyvärr finns det inga fler artiklar i den här storleken. Allt tillgängligt lager har redan lagts till i din varukorg."
     }
   },
   "basket_card": {
@@ -222,30 +222,30 @@
     "menu_items": {
       "subscriptions": "Dina prenumerationer",
       "orders": "Dina beställningar",
-      "profile": "Inställningar för konto"
+      "profile": "Kontoinställningar"
     }
   },
   "profile_account_information": {
-    "title": "Information om konto",
-    "customer_number": "Kundens nummer:",
+    "title": "Kontoinformation",
+    "customer_number": "Kundnummer:",
     "email": "Registrerad e-postadress:",
-    "disclaimer": "E-poständringar stöds inte. Kontakta support om du behöver hjälp."
+    "disclaimer": "Ändringar av e-postadress stöds inte. Kontakta kundtjänst om du behöver hjälp."
   },
   "profile_personal_information": {
     "title": "Personlig information",
-    "description": "Uppdatera dina personliga uppgifter för att hålla ditt konto uppdaterat.",
-    "success_message": "Dina uppgifter har uppdaterats framgångsrikt.",
+    "description": "Uppdatera dina personuppgifter för att hålla ditt konto aktuellt.",
+    "success_message": "Dina uppgifter har uppdaterats.",
     "error_message": "Informationen kunde inte sparas. Vänligen försök igen."
   },
   "profile_password_management": {
-    "title": "Lösenordshantering",
+    "title": "Hantering av lösenord",
     "description": "Håll ditt konto säkert genom att uppdatera ditt lösenord regelbundet.",
     "idp_description": "Ditt konto är säkrat via en extern inloggningsleverantör, så det är inte nödvändigt att ändra ditt lösenord här. För att uppdatera ditt lösenord, besök din inloggningsleverantörs inställningar.",
-    "success_message": "Ditt lösenord har uppdaterats framgångsrikt.",
+    "success_message": "Ditt lösenord har uppdaterats.",
     "error": {
-      "400_bad_request": "Din begäran kunde inte behandlas, försök igen.",
+      "400_bad_request": "Din begäran kunde inte behandlas, vänligen försök igen.",
       "401_unauthorized": "Din begäran kunde inte behandlas, vänligen försök igen.",
-      "403_forbidden": "Ditt lösenord kunde inte uppdateras. Kontrollera ditt nuvarande lösenord och försök igen."
+      "403_forbidden": "Ditt lösenord kunde inte uppdateras. Vänligen kontrollera ditt nuvarande lösenord och försök igen."
     }
   },
   "account_page": {
@@ -263,14 +263,14 @@
   "profile_page": {
     "title": "Hantera ditt konto",
     "meta": {
-      "title": "Inställningar för konto",
+      "title": "Kontoinställningar",
       "description": "Uppdatera din personliga information, e-post och lösenord här."
     },
     "greeting": "Välkommen, {firstName}!",
     "description": "Hantera dina personliga uppgifter och håll ditt konto säkert."
   },
   "order_card": {
-    "order_date": "Datum för beställning",
+    "order_date": "Beställningsdatum",
     "items": "artiklar",
     "title": "Beställning #{id}",
     "go_to_order": "Visa beställning {orderNumber}"
@@ -279,7 +279,7 @@
     "title": "Dina beställningar",
     "meta": {
       "title": "Dina beställningar",
-      "description": "Spåra dina tidigare och nuvarande beställningar med statusuppdateringar."
+      "description": "Följ dina tidigare och nuvarande beställningar med statusuppdateringar."
     }
   },
   "order_list": {
@@ -297,16 +297,16 @@
   },
   "order_information": {
     "order_details": {
-      "title": "Detaljer om beställningen",
-      "order_date": "Datum för beställning",
-      "customer_id": "Kundens nummer",
-      "order_number": "Beställningsnummer",
+      "title": "Beställningsdetaljer",
+      "order_date": "Beställningsdatum",
+      "customer_id": "Kundnummer",
+      "order_number": "Ordernummer",
       "estimated_delivery_date": "Förväntad leverans",
-      "delivered_by": "Levereras av",
+      "delivered_by": "Skickas av",
       "order_number_value": "Beställning #{orderNumber}"
     },
     "payment_details": {
-      "title": "Detaljer om betalning",
+      "title": "Betalningsinformation",
       "payment_method": "Betalningsmetod"
     },
     "address_details": {
@@ -316,12 +316,12 @@
     }
   },
   "order_detail_payment_summary": {
-    "total": "summa",
+    "total": "Totalt",
     "subtotal": "Delsumma",
     "shipping_costs": "Frakt"
   },
   "product_promotion_gifts": {
-    "headline": "Lös in din gratis gåva",
+    "headline": "Hämta din gratisgåva",
     "description": "Du har uppfyllt villkoret. Välj din gratisgåva nu:"
   },
   "product_promotion_gifts_item": {
@@ -341,7 +341,7 @@
     }
   },
   "sibling_selection": {
-    "sibling_error": "Felmeddelande: Detta attribut är inte inställt!",
+    "sibling_error": "Fel: Denna attribut är inte inställd!",
     "selected": "vald",
     "unselected": "Ej vald",
     "a11ly": {
@@ -356,15 +356,15 @@
     "information": {
       "fit_size": "Passform och storlek",
       "extras": "extra",
-      "design": "Utformning"
+      "design": "Design"
     },
     "shipping_return_heading": {
       "title": "Frakt och retur",
-      "general_info": "Portot för frakt och retur av artiklar samt förpackningskostnaderna täcks av SCAYLE. Beställningar med flera produkter kan resultera i delleveranser.",
+      "general_info": "Portokostnaden för frakt och retur av artiklar, samt kostnaden för emballage, står SCAYLE för. Beställningar med flera produkter kan resultera i delleveranser.",
       "dhl_headline": "DHL Standardfrakt - 0,00 EUR",
-      "dhl_paragraph": "Omedelbart tillgängliga artiklar levereras vanligtvis med DHL inom 1-3 arbetsdagar.",
+      "dhl_paragraph": "Direkt tillgängliga varor levereras vanligtvis av DHL inom 1-3 arbetsdagar.",
       "hermes_headline": "Hermes - 0,00 EUR",
-      "hermes_paragraph": "Omedelbart tillgängliga artiklar levereras vanligtvis av Hermes inom 1-3 arbetsdagar.",
+      "hermes_paragraph": "Direkt tillgängliga varor levereras vanligtvis av Hermes inom 1-3 arbetsdagar.",
       "return_information": "Om returetiketten saknas i din leverans kan du när som helst begära en ny från vår kundtjänst."
     }
   },
@@ -374,12 +374,12 @@
   },
   "product_list_page": {
     "meta": {
-      "description": "Köp {category} på {shopName}. Upptäck ett brett utbud av {category}"
+      "description": "Köp {category} hos {shopName}. Upptäck ett brett utbud av {category}"
     }
   },
   "product_list_no_results": {
     "title": "Inga resultat 🫣",
-    "description": "Det finns tyvärr inga produkter i den här kategorin eller så resulterar dina filter inte i produkter.",
+    "description": "Tyvärr finns det inga produkter i den här kategorin eller så ger dina filter inga resultat.",
     "reset_filters": "Återställ filter",
     "back_to_category": "Tillbaka till {category}"
   },
@@ -388,8 +388,8 @@
     "date_newest": "Nyaste",
     "price_desc": "Pris fallande",
     "price_asc": "Pris stigande",
-    "reduction_desc": "Reduktion i fallande ordning",
-    "reduction_asc": "Reduktion stigande"
+    "reduction_desc": "Rabatt fallande",
+    "reduction_asc": "Rabatt stigande"
   },
   "filter_header": {
     "title": "Filtrera kategorier",
@@ -408,7 +408,7 @@
   "filter_slide_in_content": {
     "sorting": "Sortering",
     "size_option": "storlek: {size}",
-    "only_sale_option": "Visa endast rea-produkter"
+    "only_sale_option": "Visa endast reaprodukter"
   },
   "filter_group": {
     "reset": "Återställ filter"
@@ -418,10 +418,10 @@
   },
   "filter": {
     "notification": {
-      "all_filters_cleared": "Alla filter är rensade!",
-      "filter_updated": "Dina filter har tillämpats framgångsrikt!",
-      "sort_updated": "Din sortering har tillämpats framgångsrikt!",
-      "filter_and_sort_updated": "Din sortering och dina filter har tillämpats framgångsrikt!"
+      "all_filters_cleared": "Alla filter har rensats!",
+      "filter_updated": "Dina filter har tillämpats!",
+      "sort_updated": "Din sortering har tillämpats!",
+      "filter_and_sort_updated": "Din sortering och dina filter har tillämpats!"
     },
     "show_filter": "Visa filter",
     "show_filter_and_sorting": "Visa filter och sortering"
@@ -434,16 +434,16 @@
     },
     "no_order_found": {
       "title": "Beställningsinformationen kunde inte hittas.",
-      "description": "Din orderinformation kunde inte hämtas. Länken kan ha gått ut eller är ogiltig. Kontrollera om du har fått rätt länk i ditt e-postmeddelande eller kontakta supporten för hjälp."
+      "description": "Dina orderdetaljer kunde inte hämtas. Länken kan ha löpt ut eller är ogiltig. Vänligen kontrollera din e-post för rätt länk eller kontakta kundtjänst för hjälp."
     },
-    "go_to_order_details": "Detaljer om beställningen"
+    "go_to_order_details": "Orderdetaljer"
   },
   "order_success_page_greeting": {
     "title": "Tack så mycket för ditt köp!",
     "email_confirmation": "Orderbekräftelsen har skickats till den e-postadress som du angav."
   },
   "sign_in_page": {
-    "title": "Välkommen till oss! Ny här eller kommer du tillbaka?",
+    "title": "Välkommen! Ny här eller återkommande besökare?",
     "meta": {
       "title": "Logga in eller registrera dig",
       "description": "Få tillgång till ditt konto eller skapa ett nytt på {shopName}. Njut av en sömlös shoppingupplevelse med säker inloggning och personliga alternativ."
@@ -453,19 +453,19 @@
     "notification": {
       "success": {
         "login": "Inloggningen lyckades! Välkommen tillbaka!",
-        "sign_up": "Ditt konto har skapats framgångsrikt!",
-        "forgot_password": "En länk för återställning av lösenord har skickats till din e-post.",
-        "reset_password": "Ditt lösenord har framgångsrikt återställts. Du kan nu logga in med ditt nya lösenord.",
-        "guest_login": "Ditt konto har skapats! Du kan nu gå vidare med din beställning."
+        "sign_up": "Ditt konto har skapats!",
+        "forgot_password": "En länk för att återställa ditt lösenord har skickats till din e-postadress.",
+        "reset_password": "Ditt lösenord har återställts. Du kan nu logga in med ditt nya lösenord.",
+        "guest_login": "Ditt konto har skapats! Du kan nu fortsätta med din beställning."
       },
       "error": {
         "guest_login": {
-          "409": "Detta är ett registrerat konto. Vänligen använd korrekt lösenord för att logga in."
+          "409": "Detta är ett registrerat konto. Vänligen använd rätt lösenord för att logga in."
         },
         "generic": {
           "400": "Din begäran kunde inte behandlas, vänligen försök igen.",
           "401": "Din begäran kunde inte behandlas, vänligen försök igen.",
-          "403": "Den här användaren är avaktiverad.",
+          "403": "Den här användaren är inaktiverad.",
           "404": "Din e-postadress eller ditt lösenord är felaktigt. Vänligen försök igen.",
           "406": "Din token har redan använts eller har löpt ut. Vänligen begär ett nytt e-postmeddelande för återställning av lösenord.",
           "409": "Det här kontot finns redan.",
@@ -493,13 +493,13 @@
   },
   "auth_register_privacy_disclaimer": {
     "privacy_disclaimer": "Genom att skapa ett konto accepterar du vår {terms} och bekräftar vår {policy}.",
-    "go_to_terms_of_service": "Villkor för tjänsten",
-    "go_to_privacy_policy": "Sekretesspolicy"
+    "go_to_terms_of_service": "Användarvillkor",
+    "go_to_privacy_policy": "Integritetspolicy"
   },
   "auth_login": {
     "not_registered_question": "Är du inte användare än?",
     "create_account": "Skapa ett konto.",
-    "submit_login": "Inloggning"
+    "submit_login": "Logga in"
   },
   "auth_register_toggle_guest": {
     "activation_hint": "Du kommer inte att skapa ett konto. För att spåra din beställning använder du den e-postadress du anger.",
@@ -507,7 +507,7 @@
   },
   "auth_forgot_password": {
     "title": "Återställ ditt lösenord",
-    "submit": "Hämta återställningslänk",
+    "submit": "Skicka återställningslänk",
     "back_to_login": "Tillbaka till inloggning",
     "description": "Ange den e-postadress som är kopplad till ditt konto så skickar vi en återställningslänk till dig."
   },
@@ -524,8 +524,8 @@
     "subline": "Ange ditt postnummer eller din stad för att se butiker nära dig.",
     "geolocation": {
       "error": {
-        "permission_denied": "Användaren nekades geolokaliseringsprompt",
-        "unknown": "Det gick inte att fastställa geolokalisering"
+        "permission_denied": "Användaren nekade begäran om platsinformation",
+        "unknown": "Kunde inte fastställa platsinformation"
       }
     }
   },
@@ -533,19 +533,19 @@
     "choose_store": "Välj butik",
     "change_store": "Ändra butik",
     "store_availability_subline": "Vänligen välj en butik",
-    "store_availability": "Butikens tillgänglighet"
+    "store_availability": "Butikstillgänglighet"
   },
   "store_locator": {
     "store_information": {
       "store_closed": "Stängd",
-      "store_open": "Öppen",
-      "remaining_open_time": "stänger i {hours}h {minutes}min",
+      "store_open": "Öppet",
+      "remaining_open_time": "stänger om {hours}h {minutes}min",
       "opening_hours": "Öppettider"
     },
     "availability": {
-      "not_available": "Ej tillgänglig",
-      "available": "Tillgänglig",
-      "low_stock": "Lågt lager"
+      "not_available": "Ej tillgängligt",
+      "available": "Tillgängligt",
+      "low_stock": "Få i lager"
     },
     "search_store_input_placeholder": "Ange stad eller postnummer",
     "detect_location_label": "Upptäck min plats"
@@ -559,22 +559,22 @@
     "headline": "Hantera dina prenumerationer",
     "meta": {
       "title": "Dina prenumerationer",
-      "description": "Hantera dina aktiva och tidigare prenumerationer på ett enkelt sätt."
+      "description": "Hantera dina aktiva och tidigare prenumerationer enkelt."
     }
   },
   "product_subscription": {
     "subscribe": "Prenumerera och spara",
     "separation_text": "Eller spara ännu mer:",
     "select_size": "Välj storlek för att se alternativ",
-    "not_eligible_for_subscription_message": "Den valda storleken är inte berättigad till en prenumeration",
+    "not_eligible_for_subscription_message": "Den valda storleken är inte tillgänglig för prenumeration",
     "add_to_basket": "Prenumerera på {interval}"
   },
   "subscription": {
     "subscription": "Prenumeration",
     "interval": "Intervall",
-    "follow_up_delivery": "Uppföljningsleverans",
+    "follow_up_delivery": "Efterföljande leverans",
     "day_of_month_selection_caption": "Varje {dayOfMonth} i månaden",
-    "term": "Villkor"
+    "term": "Period"
   },
   "order_detail_product_subscription": {
     "interval_keys": {
@@ -603,8 +603,8 @@
   },
   "country_detection": {
     "switch_country_prompt": "Det verkar som om du är i {country}. Vilken butik skulle du vilja besöka?",
-    "switch_to_shop": "Byt till butiken {country} ",
-    "stay_in_shop": "Stanna kvar i butiken på {country} ",
+    "switch_to_shop": "Byt till butiken {country}",
+    "stay_in_shop": "Stanna i {country}-butiken",
     "override_codes": {
       "ZZ": "Internationell"
     },
@@ -620,12 +620,12 @@
     }
   },
   "quantity_input": {
-    "change_value_to": "Ändra kvantitet till {newQuantity}",
-    "current_value": "Kvantitet: {currentQuantity}"
+    "change_value_to": "Ändra antal till {newQuantity}",
+    "current_value": "Antal: {currentQuantity}"
   },
   "skip_links": {
     "jump_to_main": "Hoppa till huvudinnehållet",
-    "jump_to_search": "Hoppa till sökning"
+    "jump_to_search": "Hoppa till sökningen"
   },
   "product_attribute": {
     "size": "storlek",

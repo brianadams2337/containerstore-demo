@@ -1,24 +1,24 @@
 {
   "global": {
-    "sold_out": "Myyty loppuun",
-    "sold_out_long": "Tällä hetkellä loppuunmyyty verkossa.",
+    "sold_out": "Loppuunmyyty",
+    "sold_out_long": "Tällä hetkellä loppu verkkokaupasta.",
     "sign_up": "Rekisteröidy",
     "sign_in": "Kirjaudu sisään",
-    "sign_out": "Sign Out",
+    "sign_out": "Kirjaudu ulos",
     "product_recommendation": "Suositellut parit",
-    "seconds": "second | seconds",
-    "minutes": "minuutti | minutes",
-    "hours": "hour | hours",
-    "days": "day | days",
+    "seconds": "sekunti | sekuntia",
+    "minutes": "minuutti | minuuttia",
+    "hours": "tunti | tuntia",
+    "days": "päivä | päivää",
     "back": "Takaisin",
     "continue_shopping": "Jatka ostoksia",
     "ordinal_suffixes": {
-      "one": "st",
-      "two": "nd",
-      "few": "rd",
-      "other": "th"
+      "one": ".",
+      "two": ".",
+      "few": ".",
+      "other": "."
     },
-    "cancel": "Cancel",
+    "cancel": "Peruuta",
     "payment_key": {
       "default": "Luottokortti",
       "accounting": "Laskun maksu"
@@ -26,11 +26,11 @@
     "carrier_key": {
       "DEFAULT": "UPS"
     },
-    "back_to_shop": "Takaisin kauppaan",
-    "to_shop": "Myymälään",
+    "back_to_shop": "Takaisin verkkokauppaan",
+    "to_shop": "Verkkokauppaan",
     "close": "Sulje",
-    "including_vat": "sis. alv.",
-    "excluding_vat": "ilman arvonlisäveroa.",
+    "including_vat": "sis. ALV:n",
+    "excluding_vat": "ilman ALV:tä",
     "save": "Tallenna",
     "search": "Haku",
     "quantity": "Määrä",
@@ -39,27 +39,27 @@
   "notification": {
     "confirm": "OK",
     "view": "Näytä",
-    "reload_page": "Reload"
+    "reload_page": "Lataa uudelleen"
   },
   "promotion": {
-    "deal": "Deal",
-    "free_label": "Free",
+    "deal": "Diili",
+    "free_label": "Ilmainen",
     "condition": "Ehto"
   },
   "promotion_progress_wrapper": {
-    "remaining_minimum_order_value": "Unlock Your Deal! Kuluta {amount} enemmän aktivoidaksesi tämän kampanjan.",
-    "reached_minimum_order_value": "Onnittelut! Olet avannut tämän tarjouksen ja säästänyt {amount}.",
-    "fulfilled_promotion_condition": "Olet avannut erikoistarjouksen! Lisää vaatimukset täyttäviä tuotteita ostoskoriin nauttiaksesi eduista.",
+    "remaining_minimum_order_value": "Aktivoi tarjouksesi! Käytä vielä {amount} aktivoidaksesi tämän kampanjan.",
+    "reached_minimum_order_value": "Onnittelut! Olet aktivoinut tämän tarjouksen ja säästät {amount}.",
+    "fulfilled_promotion_condition": "Olet aktivoinut erikoistarjouksen! Lisää vaatimukset täyttäviä tuotteita ostoskoriin nauttiaksesi eduista.",
     "fulfilled_gift_condition": "Ostoskori on saavutettu! Lisää ilmainen lahja"
   },
   "promotion_slide_in": {
     "open_button": {
-      "no_active_promotions_title": "Sinun tarjouksesi",
-      "active_promotions_title": "Sinun tarjouksesi - {total} Aktiiviset kampanjat"
+      "no_active_promotions_title": "Tarjouksesi",
+      "active_promotions_title": "Tarjouksesi - {total} aktiivista kampanjaa"
     },
-    "headline": "Sinun tarjouksesi",
-    "subline": "Löydä alennetut tuotteet klikkaamalla mitä tahansa kampanjaa. Tutustu jatkuvasti vaihtuviin tarjouksiin valituista tuotteista.",
-    "active_promotions": "Aktiiviset myynninedistämistoimet {total}",
+    "headline": "Tarjouksesi",
+    "subline": "Löydä alennuksessa olevat tuotteet klikkaamalla mitä tahansa kampanjaa. Tutustu jatkuvasti vaihtuviin tarjouksiin valituista tuotteista.",
+    "active_promotions": "Aktiiviset kampanjat {total}",
     "no_active_promotions": "Ei aktiivisia kampanjoita",
     "no_active_subline": "Sinulla ei ole tällä hetkellä aktiivisia kampanjoita. Tarkista myöhemmin uudet tarjoukset ja erikoistarjoukset!"
   },
@@ -74,11 +74,11 @@
     "email": "Syötä voimassa oleva sähköpostiosoite.",
     "password": "Osoitteessa {field} on oltava vähintään yksi erikoismerkki, iso kirjain, pieni kirjain ja numero.",
     "required": "{field} vaaditaan.",
-    "same_as": "{field} on oltava sama kuin {otherField} -kenttä.",
-    "max_length": "{field} on oltava {max} tai vähemmän.",
+    "same_as": "{field} on oltava sama kuin kenttä {otherField}.",
+    "max_length": "{field} saa olla enintään {max}.",
     "min_length": "{field} on oltava vähintään {min} merkkiä pitkä.",
-    "date": "{field} on oltava voimassa oleva päivämäärä.",
-    "future_date": "{field} ei voi olla päivämäärä, joka on tulevaisuudessa.",
+    "date": "{field} on oltava kelvollinen päivämäärä.",
+    "future_date": "{field} ei voi sisältää tulevaa päivämäärää.",
     "name": "{field} ei ole oikein muotoiltu."
   },
   "form_fields": {
@@ -92,118 +92,118 @@
     "gender_options": {
       "male": "Mies",
       "female": "Nainen",
-      "diverse": "Diverse",
-      "none": "Mieluummin ei sanota"
+      "diverse": "Muu",
+      "none": "En halua sanoa"
     }
   },
   "error": {
-    "page_not_found_title": "Oh - 404",
+    "page_not_found_title": "Voi ei - 404",
     "page_not_found_message": "Valitettavasti tätä sivua ei enää ole olemassa.",
-    "unknown_error_title": "Oh - jokin meni pieleen",
+    "unknown_error_title": "Voi ei - jokin meni pieleen",
     "unknown_error_message": "Pyyntöäsi ei voitu käsitellä, yritä uudelleen."
   },
   "badge_labels": {
-    "new": "Uusi osoitteessa",
-    "already_in_basket": "Jo korissa"
+    "new": "Uutta",
+    "already_in_basket": "Jo ostoskorissa"
   },
   "navigation": {
     "find_a_store": "Etsi myymälä",
-    "wishlist": "Toivomuslista | Wishlist, {count} item | Wishlist, {count} items.",
+    "wishlist": "Toivelista | Toivelista, {count} tuote | Toivelista, {count} tuotetta",
     "a11ly": {
-      "side_navigation": "Avaa sivusuunnittelu"
+      "side_navigation": "Avaa sivunavigointi"
     }
   },
   "checkout_page": {
     "title": "Kassa"
   },
   "search_page": {
-    "title": "Tuotteet tuotteelle \"{term}\"",
+    "title": "Tuotteita haulla \"{term}\"",
     "meta": {
-      "title": "Tuotteet tuotteelle \"{term}\""
+      "title": "Tuotteita haulla \"{term}\""
     }
   },
   "show_all_results_link": {
-    "open_on_search_page": "Katso kaikki tulokset {searchTerm} "
+    "open_on_search_page": "Katso kaikki tulokset haulla {searchTerm}"
   },
   "product_suggestion_list": {
     "title": "Tuotteet"
   },
   "category_suggestion_list": {
-    "title": "Luokat"
+    "title": "Kategoriat"
   },
   "navigation_item_suggestion_list": {
     "title": "Sivut"
   },
   "search_input": {
-    "placeholder": "Tuotteen, kategorian tai tuotemerkin haku"
+    "placeholder": "Etsi tuotetta, kategoriaa tai tuotemerkkiä"
   },
   "footer_promises": {
     "payment_options": "Joustavat maksuvaihtoehdot",
-    "free_shipping": "Ilmainen toimitus yli 50 euron tilauksille {currency}",
+    "free_shipping": "Ilmainen toimitus yli 50 {currency} tilauksiin",
     "return_policy": "50 päivän ilmainen palautusoikeus"
   },
   "wishlist_page": {
     "meta": {
       "title": "Toivelistasi",
-      "description": "Tallenna suosikkituotteesi ja pidä kirjaa pakollisista tuotteistasi."
+      "description": "Lisää lempituotteesi toivelistalle ja pysy kärryillä suosikeistasi."
     },
-    "title": "Wishlist",
-    "empty_wishlist_title": "Toivomuslistallasi ei ole kohteita.",
-    "empty_wishlist_description": "Osta uusimmat tuotteemme tai kirjaudu sisään nähdäksesi tallennetun toivelistasi."
+    "title": "Toivelista",
+    "empty_wishlist_title": "Toivelistasi on tyhjä.",
+    "empty_wishlist_description": "Tutustu uusimpiin tuotteisiimme tai kirjaudu sisään nähdäksesi tallennetun toivelistasi."
   },
   "wishlist_toggle": {
     "remove_from_wishlist": "Poista toivelistalta",
     "add_to_wishlist": "Lisää toivelistalle"
   },
   "basket_page": {
-    "title": "Basket",
+    "title": "Ostoskori",
     "a11y": {
-      "title": "Basket | Basket, {count} item | Basket, {count} items"
+      "title": "Ostoskori | Ostoskori, {count} tuote | Ostoskori, {count} tuotetta"
     },
     "empty_basket_title": "Ostoskorisi on tyhjä.",
     "empty_basket_description": "Tuotteet näkyvät heti, kun lisäät ne ostoskoriin.",
     "meta": {
-      "title": "Basket",
-      "description": "Tarkastele korissa olevia tuotteita ja siirry helposti kassalle. Turvallinen ja vaivaton ostosten tekeminen osoitteessa {shopName}."
+      "title": "Ostoskori",
+      "description": "Tarkista ostoskorisi tuotteet ja siirry helposti kassalle. Turvallista ja vaivatonta shoppailua verkkokaupassa {shopName}."
     }
   },
   "basket": {
-    "go_to_checkout": "Go to Checkout",
+    "go_to_checkout": "Siirry kassalle",
     "available_products": "Saatavilla olevat tuotteet",
-    "unavailable_products": "Saatavilla olevat tuotteet"
+    "unavailable_products": "Ei saatavilla olevat tuotteet"
   },
   "basket_popover_items": {
-    "no_items_info": "Sinulla ei ole tuotteita korissasi."
+    "no_items_info": "Sinulla ei ole tuotteita ostoskorissasi."
   },
   "basket_popover_actions": {
-    "go_to_basket": "Go to Basket"
+    "go_to_basket": "Siirry ostoskoriin"
   },
   "basket_summary": {
-    "delivery_fees": "* Toimitusmaksut määritetään kassalla, kun olet valinnut haluamasi toimitusvaihtoehdon.",
-    "total": "Total",
+    "delivery_fees": "* Toimituskulut määritetään kassalla, kun olet valinnut haluamasi toimitustavan.",
+    "total": "Kokonaissumma",
     "subtotal": "Välisumma",
     "you_pay": "Sinä maksat",
     "discount": "Alennukset",
     "delivery": "Toimitus",
-    "voucher_disclaimer": "Tositteita voidaan soveltaa tilauksen viimeisessä vaiheessa."
+    "voucher_disclaimer": "Alennuskoodit voidaan lisätä tilauksen viimeisessä vaiheessa."
   },
   "basket_summary_reduction": {
-    "sale": "Sale",
+    "sale": "Ale",
     "campaign": "Kampanjat",
-    "promotion": "Promotion",
-    "voucher": "Voucher"
+    "promotion": "Tarjoukset",
+    "voucher": "Alennuskoodi"
   },
   "add_to_basket": {
-    "add_to_basket": "Lisää koriin",
+    "add_to_basket": "Lisää ostoskoriin",
     "product_name_fallback": "Tuote",
     "notification": {
-      "select_size": "Valitse koko ennen koriin lisäämistä",
+      "select_size": "Valitse koko ennen ostoskoriin lisäämistä",
       "add_to_basket_success": "{productName} on lisätty ostoskoriin",
-      "add_to_basket_error": "{productName} tuotetta ei voitu lisätä ostoskoriin",
+      "add_to_basket_error": "Tuotetta {productName} ei voitu lisätä ostoskoriin",
       "add_to_basket_variant_out_of_stock_error": "Tämä koko on tällä hetkellä loppu varastosta",
-      "add_to_basket_max_basket_items_error": "Hups! Olet saavuttanut korissasi sallitun enimmäismäärän.",
-      "add_subscription_to_basket_success": "{productName} {interval} tilaus on lisätty ostoskoriin",
-      "add_with_reduced_quantity_error": "Valitettavasti tässä koossa ei ole enää tuotteita saatavilla. Kaikki saatavilla olevat varastot on jo lisätty ostoskoriin."
+      "add_to_basket_max_basket_items_error": "Hups! Olet saavuttanut ostoskorin sallitun enimmäismäärän tuotteita.",
+      "add_subscription_to_basket_success": "Tuotteen {productName} {interval} -tilaus on lisätty ostoskoriisi",
+      "add_with_reduced_quantity_error": "Valitettavasti tässä koossa ei ole enempää tuotteita saatavilla. Kaikki saatavilla oleva varasto on jo lisätty ostoskoriisi."
     }
   },
   "basket_card": {
@@ -240,7 +240,7 @@
   "profile_password_management": {
     "title": "Salasanan hallinta",
     "description": "Pidä tilisi turvassa päivittämällä salasanasi säännöllisesti.",
-    "idp_description": "Tilisi on suojattu ulkoisen kirjautumistoimittajan kautta, joten salasanan vaihtaminen täällä ei ole tarpeen. Jos haluat päivittää salasanasi, käy kirjautumistarjoajan asetuksissa.",
+    "idp_description": "Tilisi on suojattu ulkoisen kirjautumispalvelun kautta, joten salasanan vaihtaminen täällä ei ole tarpeen. Päivittääksesi salasanasi, ole hyvä ja siirry kirjautumispalvelusi asetuksiin.",
     "success_message": "Salasanasi on päivitetty onnistuneesti.",
     "error": {
       "400_bad_request": "Pyyntöäsi ei voitu käsitellä, yritä uudelleen.",
@@ -252,13 +252,13 @@
     "title": "Tilisi",
     "meta": {
       "title": "Tilisi",
-      "description": "Hallitse profiiliasi, tilauksiasi ja tilauksiasi yhdessä paikassa."
+      "description": "Hallitse profiiliasi, tilauksiasi ja jäsenyyksiäsi yhdessä paikassa."
     }
   },
   "account_tabs": {
     "orders": "Tilaukset",
     "profile": "Profiili",
-    "subscriptions": "Tilaukset"
+    "subscriptions": "Jäsenyydet"
   },
   "profile_page": {
     "title": "Hallitse tiliäsi",
@@ -266,12 +266,12 @@
       "title": "Tilin asetukset",
       "description": "Päivitä henkilökohtaiset tietosi, sähköpostiosoitteesi ja salasanasi täällä."
     },
-    "greeting": "Tervetuloa, {firstName}!",
+    "greeting": "Tervetuloa {firstName}!",
     "description": "Hallitse henkilökohtaisia tietojasi ja pidä tilisi turvassa."
   },
   "order_card": {
     "order_date": "Tilauspäivä",
-    "items": "Items",
+    "items": "Tuotteet",
     "title": "Tilaus #{id}",
     "go_to_order": "Näytä tilaus {orderNumber}"
   },
@@ -279,7 +279,7 @@
     "title": "Tilauksesi",
     "meta": {
       "title": "Tilauksesi",
-      "description": "Seuraa aiempia ja nykyisiä tilauksia tilapäivityksillä."
+      "description": "Seuraa aiempia ja nykyisiä tilauksiasi tilapäivitysten avulla."
     }
   },
   "order_list": {
@@ -292,17 +292,17 @@
     "title": "Tilaus #{id}",
     "meta": {
       "title": "Tilaus #{id}",
-      "description": "Näytä tilauksesi tiedot ja tilauksen tila #{id}."
+      "description": "Näytä tilauksen tiedot ja tilauksen #{id} tila."
     }
   },
   "order_information": {
     "order_details": {
       "title": "Tilauksen tiedot",
       "order_date": "Tilauspäivä",
-      "customer_id": "Asiakkaan numero",
+      "customer_id": "Asiakasnumero",
       "order_number": "Tilausnumero",
       "estimated_delivery_date": "Odotettu toimituspäivä",
-      "delivered_by": "Shipped by",
+      "delivered_by": "Lähettäjä",
       "order_number_value": "Tilaus #{orderNumber}"
     },
     "payment_details": {
@@ -316,7 +316,7 @@
     }
   },
   "order_detail_payment_summary": {
-    "total": "Total",
+    "total": "Kokonaissumma",
     "subtotal": "Välisumma",
     "shipping_costs": "Toimitus"
   },
@@ -331,7 +331,7 @@
   },
   "product_detail_page": {
     "meta": {
-      "description": "Osta {productName} verkossa osoitteessa {shopName}. Tutustu laajaan valikoimaan muita merkkituotteita."
+      "description": "Osta {productName} verkkokaupasta {shopName}. Tutustu laajaan valikoimaan muita merkkituotteita."
     }
   },
   "variant_picker": {
@@ -341,74 +341,74 @@
     }
   },
   "sibling_selection": {
-    "sibling_error": "Virhe: Tätä attribuuttia ei ole asetettu!",
+    "sibling_error": "Virhe: tätä ominaisuutta ei ole asetettu!",
     "selected": "Valittu",
-    "unselected": "Unselected",
+    "unselected": "Valitsematon",
     "a11ly": {
       "alt_text": "{selected}, {alt}",
-      "sold_out_alt_text": "{selected}, {alt} (Myyty loppuun)"
+      "sold_out_alt_text": "{selected}, {alt} (loppuunmyyty)"
     }
   },
   "product_promotion_selection_modal": {
-    "details": "Details"
+    "details": "Yksityiskohdat"
   },
   "product_details": {
     "information": {
-      "fit_size": "Fit & Size",
-      "extras": "Extra",
-      "design": "Suunnittelu"
+      "fit_size": "Istuvuus & koko",
+      "extras": "Ekstra",
+      "design": "Malli"
     },
     "shipping_return_heading": {
       "title": "Toimitus ja palautus",
-      "general_info": "SCAYLE maksaa postimaksut ja pakkauskustannukset sekä artikkelien palautuksen postitus- ja palautuskulut. Tilaukset, joissa on useita tuotteita, voivat johtaa osatoimituksiin.",
-      "dhl_headline": "DHL Standard Shipping - 0,00 EUR",
-      "dhl_paragraph": "Heti saatavilla olevat tuotteet toimitetaan yleensä DHL:llä 1-3 arkipäivän kuluessa.",
+      "general_info": "SCAYLE vastaa lähetys- ja palautuskuluista sekä pakkauskuluista. Useita tuotteita sisältävät tilaukset voidaan toimittaa osatoimituksina.",
+      "dhl_headline": "DHL vakiotoimitus - 0,00 EUR",
+      "dhl_paragraph": "DHL toimittaa heti saatavilla olevat tuotteet yleensä 1-3 arkipäivän kuluessa.",
       "hermes_headline": "Hermes - 0,00 EUR",
-      "hermes_paragraph": "Hermes toimittaa välittömästi saatavilla olevat tuotteet yleensä 1-3 arkipäivän kuluessa.",
-      "return_information": "Jos palautusetiketti puuttuu toimituksestasi, voit pyytää uuden etiketin asiakaspalvelustamme milloin tahansa."
+      "hermes_paragraph": "Hermes toimittaa heti saatavilla olevat tuotteet yleensä 1-3 arkipäivän kuluessa.",
+      "return_information": "Jos toimituksesta puuttuu palautusosoitetarra, voit milloin tahansa pyytää uuden asiakaspalvelustamme."
     }
   },
   "price": {
-    "starting_from": "osoitteesta",
+    "starting_from": "alk.",
     "30_day_best_price": "30 päivän paras hinta:"
   },
   "product_list_page": {
     "meta": {
-      "description": "Osta {category} osoitteessa {shopName}. Tutustu laajaan valikoimaan {category}"
+      "description": "Osta {category} osoitteesta {shopName}. Tutustu laajaan {category} valikoimaan."
     }
   },
   "product_list_no_results": {
     "title": "Ei tuloksia 🫣",
-    "description": "Valitettavasti tässä kategoriassa ei ole tuotteita tai suodattimesi ei tuota tuotteita.",
+    "description": "Valitettavasti tässä kategoriassa ei ole tuotteita tai suodattimesi eivät tuottaneet tuloksia.",
     "reset_filters": "Nollaa suodattimet",
-    "back_to_category": "Takaisin {category}"
+    "back_to_category": "Takaisin kategoriaan {category}"
   },
   "sorting_select": {
     "top_seller": "Suositukset",
     "date_newest": "Uusin",
     "price_desc": "Hinta laskeva",
     "price_asc": "Hinta nouseva",
-    "reduction_desc": "Vähentäminen laskevasti",
-    "reduction_asc": "Vähennys nouseva"
+    "reduction_desc": "Alennus laskeva",
+    "reduction_asc": "Alennus nouseva"
   },
   "filter_header": {
-    "title": "Suodata luokat",
+    "title": "Suodata kategoriat",
     "close": "Sulje suodattimet"
   },
   "filter_actions": {
-    "show_results_with_count": "Näytä {count} kohteet",
-    "show_results": "Näytä kohteet",
+    "show_results_with_count": "Näytä {count} tuotetta",
+    "show_results": "Näytä tuotteet",
     "reset_all_filter": "Nollaa kaikki"
   },
   "price_range_slider": {
-    "to": "to",
+    "to": "",
     "minimum_price": "Vähimmäishinta: {price}",
     "maximum_price": "Enimmäishinta: {price}"
   },
   "filter_slide_in_content": {
     "sorting": "Lajittelu",
     "size_option": "Koko: {size}",
-    "only_sale_option": "Näytä vain myyntituotteet"
+    "only_sale_option": "Näytä vain aletuotteet"
   },
   "filter_group": {
     "reset": "Nollaa suodatin"
@@ -418,7 +418,7 @@
   },
   "filter": {
     "notification": {
-      "all_filters_cleared": "Kaikki suodattimet on tyhjennetty!",
+      "all_filters_cleared": "Kaikki suodattimet on poistettu!",
       "filter_updated": "Suodattimesi on otettu onnistuneesti käyttöön!",
       "sort_updated": "Lajittelu on onnistunut!",
       "filter_and_sort_updated": "Lajittelu ja suodattimet on otettu onnistuneesti käyttöön!"
@@ -446,7 +446,7 @@
     "title": "Tervetuloa! Oletko uusi täällä vai tulossa takaisin?",
     "meta": {
       "title": "Kirjaudu sisään tai rekisteröidy",
-      "description": "Kirjaudu tilillesi tai luo uusi tili osoitteessa {shopName}. Nauti saumattomasta ostokokemuksesta turvallisen kirjautumisen ja henkilökohtaisten vaihtoehtojen avulla."
+      "description": "Kirjaudu tilillesi tai luo uusi tili verkkokaupassa {shopName}. Nauti saumattomasta ostokokemuksesta turvallisen kirjautumisen ja yksilöllisten asetusten avulla."
     }
   },
   "authentication": {
@@ -477,7 +477,7 @@
   },
   "auth_reset_password_slide_in_header": {
     "title": "Aseta uusi salasana",
-    "description": "Kirjoita uusi salasanasi alla olevan mukaisesti tilisi turvaamiseksi."
+    "description": "Syötä uusi salasanasi alle suojataksesi tilisi."
   },
   "auth_reset_password_slide_in_body": {
     "submit_password_reset": "Tallenna salasana"
@@ -492,9 +492,9 @@
     "go_to_login": "Kirjaudu sisään täällä"
   },
   "auth_register_privacy_disclaimer": {
-    "privacy_disclaimer": "Luomalla tilin hyväksyt osoitteemme {terms} ja tunnustat osoitteemme {policy}.",
-    "go_to_terms_of_service": "Palveluehdot",
-    "go_to_privacy_policy": "Yksityisyydensuoja"
+    "privacy_disclaimer": "Luomalla tilin hyväksyt {terms} -ehtomme ja vahvistat lukeneesi {policy} -käytäntömme.",
+    "go_to_terms_of_service": "Käyttöehdot",
+    "go_to_privacy_policy": "Tietosuojakäytäntö"
   },
   "auth_login": {
     "not_registered_question": "Etkö ole vielä käyttäjä?",
@@ -513,33 +513,33 @@
   },
   "auth_idp_redirects": {
     "login": {
-      "google": "Kirjautuminen sisään Googlen avulla"
+      "google": "Kirjaudu sisään Googlella"
     },
     "register": {
-      "google": "Rekisteröidy Googlen kanssa"
+      "google": "Rekisteröidy Googlella"
     }
   },
   "location_page": {
     "title": "Etsi myymälä lähelläsi",
-    "subline": "Anna postinumerosi tai kaupunkisi nähdäksesi myymälät lähelläsi.",
+    "subline": "Syötä postinumerosi tai kaupunkisi nähdäksesi lähelläsi olevat myymälät.",
     "geolocation": {
       "error": {
-        "permission_denied": "User denied geolocation prompt",
-        "unknown": "Ei pystytä määrittämään maantieteellistä sijaintia"
+        "permission_denied": "Käyttäjä hylkäsi sijaintipyynnön",
+        "unknown": "Sijaintia ei voitu määrittää"
       }
     }
   },
   "store_variant_availability": {
     "choose_store": "Valitse myymälä",
     "change_store": "Muuta myymälää",
-    "store_availability_subline": "Valitse myymälä",
+    "store_availability_subline": "Ole hyvä ja valitse myymälä",
     "store_availability": "Myymälän saatavuus"
   },
   "store_locator": {
     "store_information": {
       "store_closed": "Suljettu",
       "store_open": "Avaa",
-      "remaining_open_time": "sulkeutuu {hours}h {minutes}min",
+      "remaining_open_time": "sulkeutuu {hours} t {minutes} min",
       "opening_hours": "Aukioloajat"
     },
     "availability": {
@@ -559,22 +559,22 @@
     "headline": "Hallitse tilauksiasi",
     "meta": {
       "title": "Tilauksesi",
-      "description": "Hallitse aktiivisia ja aiempia tilauksia vaivattomasti."
+      "description": "Hallitse aktiivisia ja päättyneitä tilauksiasi vaivattomasti."
     }
   },
   "product_subscription": {
     "subscribe": "Tilaa ja säästä",
     "separation_text": "Tai säästä vielä enemmän:",
     "select_size": "Valitse koko nähdäksesi vaihtoehdot",
-    "not_eligible_for_subscription_message": "Valittu koko ei kelpaa tilaukseen",
+    "not_eligible_for_subscription_message": "Valittu koko ei ole saatavilla tilaukselle",
     "add_to_basket": "Tilaa {interval}"
   },
   "subscription": {
     "subscription": "Tilaus",
-    "interval": "Interval",
+    "interval": "Aikaväli",
     "follow_up_delivery": "Seurantatoimitus",
-    "day_of_month_selection_caption": "Kuukauden jokaisena päivänä {dayOfMonth} ",
-    "term": "Termi"
+    "day_of_month_selection_caption": "Kuukauden {dayOfMonth}. päivänä",
+    "term": "Ehto"
   },
   "order_detail_product_subscription": {
     "interval_keys": {
@@ -599,19 +599,19 @@
   },
   "product_image": {
     "alt": "{brand}, {productName}, {colors}",
-    "alt_with_image_index": "{alt}, Kuva {index} of {total}"
+    "alt_with_image_index": "{alt}, Kuva {index}/{total}"
   },
   "country_detection": {
-    "switch_country_prompt": "Näyttää siltä, että olet osoitteessa {country}. Missä kaupassa haluaisit käydä?",
-    "switch_to_shop": "Siirry kauppaan {country} ",
-    "stay_in_shop": "Pysy kaupassa {country} ",
+    "switch_country_prompt": "Näyttää siltä, että olet maassa {country}. Missä myymälässä haluaisit vierailla?",
+    "switch_to_shop": "Vaihda myymälään {country}",
+    "stay_in_shop": "Pysy myymälässä {country}",
     "override_codes": {
       "ZZ": "Kansainvälinen"
     },
     "country_with_language": "{country} ({language})"
   },
   "footer": {
-    "copyright": "© {currentYear} SCAYLE, Kaikki oikeudet pidätetään."
+    "copyright": "© {currentYear} SCAYLE, Kaikki oikeudet pidätetään"
   },
   "pagination": {
     "a11y": {
@@ -620,12 +620,12 @@
     }
   },
   "quantity_input": {
-    "change_value_to": "Muuta määrä seuraavasti {newQuantity}",
+    "change_value_to": "Muuta määräksi {newQuantity}",
     "current_value": "Määrä: {currentQuantity}"
   },
   "skip_links": {
-    "jump_to_main": "Hyppää pääsisältöön",
-    "jump_to_search": "Hyppää hakuun"
+    "jump_to_main": "Siirry pääsisältöön",
+    "jump_to_search": "Siirry hakuun"
   },
   "product_attribute": {
     "size": "Koko",
