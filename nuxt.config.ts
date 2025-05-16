@@ -433,6 +433,7 @@ export default defineNuxtConfig({
     '@scayle/storefront-product-listing',
     '@scayle/storefront-promotions',
     '@scayle/storefront-search',
+    '@scayle/storefront-basket',
     '@scayle/storefront-navigation',
     '@scayle/nuxt-image-provider',
   ],

@@ -53,7 +53,7 @@ import {
   SFFadeInFromBottomTransition,
 } from '#storefront-ui/components'
 import { useFormatHelpers } from '#storefront/composables'
-import { getTotalPriceWithoutReductions } from '~/utils'
+import { getTotalPriceWithoutReductions } from '#storefront-basket/utils/basket'
 import { useShopConfigCustomData } from '~/composables'
 
 const { basket } = defineProps<{ basket: BasketResponseData }>()

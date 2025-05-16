@@ -3718,6 +3718,11 @@
   dependencies:
     utility-types "3.11.0"
 
+"@scayle/storefront-basket@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-basket/-/storefront-basket-0.3.0.tgz#a77d08f2ac0946d0a42a81f7d4fe68324a6afe3b"
+  integrity sha512-XV7a/nygUpq5GPOOr5GRQ2+akmGrCjSuKsW5yN7YS9MWn7GOJzhSDPhN6Lhiw3arAWYFrMXu2RMeaWF64HAt2A==
+
 "@scayle/storefront-core@8.25.6":
   version "8.25.6"
   resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-8.25.6.tgz#98c058fdd3f4c01aadc5a1ad426467f801f82fce"
