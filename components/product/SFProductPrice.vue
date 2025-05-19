@@ -17,14 +17,14 @@
       <template v-if="showPriceFrom">
         {{ $t('price.starting_from') }}
       </template>
-      {{ totalPrice }}
+      {{ formatCurrency(totalPrice) }}
       <span
         v-for="(reduction, index) in strikeThroughPrices"
         :key="`${reduction}-${index}`"
         class="mr-1 font-normal text-gray-600 line-through last-of-type:mr-0"
         data-testid="initialProductPrice"
       >
-        {{ reduction }}
+        {{ formatCurrency(reduction) }}
       </span>
     </p>
 
@@ -63,12 +63,12 @@ import type {
   Promotion,
 } from '@scayle/storefront-nuxt'
 import { Size } from '#storefront-ui'
+import { getPromotionStyle } from '~/utils'
 import {
+  useFormatHelpers,
   useProductPrice,
   type BasketItemPrice,
-} from '~/composables/useProductPrice'
-import { getPromotionStyle } from '~/utils'
-import { useFormatHelpers } from '#storefront/composables'
+} from '#storefront/composables'
 import type { OrderPrice } from '~/types/order'
 
 const {
@@ -77,9 +77,10 @@ const {
   showBadges = true,
   size = Size.MD,
   type = 'normal',
-  promotion,
+  promotion = undefined,
   price,
   inline = true,
+  lowestPriorPrice = undefined,
 } = defineProps<{
   price: Price | BasketItemPrice | OrderPrice
   lowestPriorPrice?: LowestPriorPrice

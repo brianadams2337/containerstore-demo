@@ -5,9 +5,9 @@ import {
   getAttributeValueTuples,
   getFirstAttributeValue,
 } from '@scayle/storefront-nuxt'
+import type { BasketItemPrice } from '@scayle/storefront-nuxt/composables'
 import { getPrimaryImage } from './image'
 import type { ProductSibling } from '~/types/siblings'
-import type { BasketItemPrice } from '~/composables/useProductPrice'
 import { sortPromotionsByPriority } from '#storefront-promotions/utils'
 
 export { ProductImageType } from '@scayle/storefront-nuxt'
