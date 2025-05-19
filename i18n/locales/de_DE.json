@@ -24,7 +24,7 @@
       "accounting": "Rechnung"
     },
     "carrier_key": {
-      "DEFAULT": "UPS"
+      "DEFAULT": "DHL"
     },
     "back_to_shop": "Zurück zum Shop",
     "to_shop": "Zum Shop",
