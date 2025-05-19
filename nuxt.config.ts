@@ -488,11 +488,14 @@ export default defineNuxtConfig({
     },
   },
 
-  // https://fonts.nuxt.com/get-started/configuration
+  // https://fonts.nuxt.com/get-started/installation#configuration
   fonts: {
     assets: {
       // The baseURL where font files are served.
       prefix: '/_fonts/',
+    },
+    defaults: {
+      weights: [300, 400, 425, 500, 550, 600, 700],
     },
   },
 
