@@ -52,6 +52,25 @@ describe('getPromotionForProduct', () => {
     expect(result).toEqual(promotions[0])
   })
 
+  it('should return undefined for no promotions', () => {
+    const product = productFactory.build({
+      attributes: {
+        promotion: attributeGroupSingleFactory.build({
+          key: 'promotion',
+          values: {
+            id: 2432,
+            label: '20% on Everything',
+            value: '20_on_everything',
+          },
+        }),
+      },
+    })
+
+    const result = getPromotionForProduct(product, [])
+
+    expect(result).toBeUndefined()
+  })
+
   it('should get the applicable priority sorted promotion for the product with multiple promotions', () => {
     const product = productFactory.build({
       attributes: {

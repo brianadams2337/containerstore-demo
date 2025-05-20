@@ -43,7 +43,9 @@ import type { Product } from '@scayle/storefront-nuxt'
 import { computed } from 'vue'
 import SFProductPrice from '../SFProductPrice.vue'
 import SFProductCardSiblingsPicker from './siblings/SFProductCardSiblingsPicker.vue'
-import { useProductBaseInfo, useProductPromotions } from '~/composables'
+import { useProductBaseInfo } from '~/composables'
+import { getPromotionForProduct } from '~/utils'
+import { useCurrentPromotions } from '#storefront/composables'
 
 const { product } = defineProps<{ product: Product }>()
 
@@ -54,5 +56,12 @@ const showPriceFrom = computed(
   () => product.priceRange?.min.withTax !== product.priceRange?.max.withTax,
 )
 
-const { promotion } = useProductPromotions(() => product)
+const promotionData = useCurrentPromotions()
+
+const promotion = computed(() => {
+  return getPromotionForProduct(
+    product,
+    promotionData.data?.value?.entities ?? [],
+  )
+})
 </script>

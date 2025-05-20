@@ -19,10 +19,17 @@ export const getPromotionIdFromProductAttributes = (product?: Product) => {
   return getFirstAttributeValue(product.attributes, 'promotion')?.id
 }
 
+/**
+ * Retrieves the highest-priority promotion applicable to a given product.
+ *
+ * @param {Product} product - The product for which to find a promotion.
+ * @param {Promotion[]} promotions - A list of available promotions.
+ * @returns {Promotion | undefined} - The highest-priority promotion for the product, or undefined if none match.
+ */
 export const getPromotionForProduct = (
   product: Product,
   promotions: Promotion[],
-) => {
+): Promotion | undefined => {
   const productPromotionId = getPromotionIdFromProductAttributes(product)
   const items = promotions.filter(({ customData }) => {
     if (!productPromotionId || !customData.product?.attributeId) {
@@ -31,7 +38,7 @@ export const getPromotionForProduct = (
     return customData.product?.attributeId === productPromotionId
   })
 
-  return items.toSorted(sortPromotionsByPriority)?.[0]
+  return items.toSorted(sortPromotionsByPriority)[0]
 }
 
 export const getProductSiblingData = (

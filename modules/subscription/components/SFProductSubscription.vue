@@ -54,11 +54,13 @@
 </template>
 <script setup lang="ts">
 import type { Product, Variant } from '@scayle/storefront-nuxt'
+import { computed } from 'vue'
 import { useSubscription } from '../composables/useSubscription'
 import type { PreferredDeliveryDate } from '../helpers/subscription'
 import { SFProductSubscriptionSelection } from '#storefront-subscription/components'
-import { useProductPromotions } from '~/composables/useProductPromotions'
 import type { AddToBasketItem } from '~/composables/useBasketActions'
+import { useCurrentPromotions } from '#storefront/composables'
+import { getPromotionForProduct } from '~/utils'
 import { SFFadeInTransition } from '#storefront-ui/components'
 import SFProductPrice from '~/components/product/SFProductPrice.vue'
 
@@ -95,5 +97,12 @@ const {
 
 selectedPreferredDeliveryDate.value = preferredDeliveryDate[0]
 
-const { promotion } = useProductPromotions(product)
+const promotionData = useCurrentPromotions()
+
+const promotion = computed(() => {
+  return getPromotionForProduct(
+    product,
+    promotionData.data?.value?.entities ?? [],
+  )
+})
 </script>

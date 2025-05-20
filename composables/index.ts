@@ -10,7 +10,6 @@ export * from './useBasketActions'
 export * from './usePromotionGiftSelection'
 export * from './usePromotionCustomData'
 export * from './useMovPromotions'
-export * from './useProductPromotions'
 export * from './usePromotionGiftSelection'
 
 // Auth

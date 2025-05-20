@@ -123,9 +123,13 @@ import { useNuxtApp } from '#app/nuxt'
 import { createError } from '#app/composables/error'
 import { useJsonld } from '~/composables/useJsonld'
 import { usePageState } from '~/composables/usePageState'
+import {
+  useCurrentPromotions,
+  useBasket,
+  useProduct,
+} from '#storefront/composables'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
-import { useProductPromotions } from '~/composables/useProductPromotions'
-import { useBasket, useProduct } from '#storefront/composables'
+import { getPromotionForProduct } from '~/utils'
 import { useProductBaseInfo } from '~/composables/useProductBaseInfo'
 import { useFavoriteStore } from '~/composables/useFavoriteStore'
 import { useI18n } from '#i18n'
@@ -245,25 +249,29 @@ const basketItem = computed(() => {
   )
 })
 
-const { promotion: productPromotion } = useProductPromotions(product)
+const promotionData = useCurrentPromotions()
 
 const areGiftConditionsMet = computed(() => {
-  if (
-    !productPromotion.value ||
-    !basketData.value?.applicablePromotions?.length
-  ) {
+  if (!promotion.value || !basketData.value?.applicablePromotions?.length) {
     return false
   }
   return isGiftConditionMet(
-    productPromotion.value,
+    promotion.value,
     basketData.value?.applicablePromotions,
   )
 })
 
 const promotion = computed(() => {
-  return basketItem.value?.promotion
-    ? basketItem.value?.promotion
-    : productPromotion.value
+  if (basketItem.value?.promotion) {
+    return basketItem.value?.promotion
+  }
+  if (!product.value) {
+    return
+  }
+  return getPromotionForProduct(
+    product.value,
+    promotionData.data?.value?.entities ?? [],
+  )
 })
 
 const price = computed(() => {
