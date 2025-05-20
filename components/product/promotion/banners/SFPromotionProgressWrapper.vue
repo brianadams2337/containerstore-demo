@@ -23,14 +23,11 @@ import { usePromotionCustomData } from '~/composables'
 import {
   isAutomaticDiscountType,
   isBuyXGetYType,
+  isGiftConditionMet,
 } from '#storefront-promotions/utils'
-import { useFormatHelpers } from '#storefront/composables'
+import { useFormatHelpers, useBasket } from '#storefront/composables'
 
-const { promotion, isGiftAddedToBasket, areGiftConditionsMet } = defineProps<{
-  promotion: Promotion
-  isGiftAddedToBasket?: boolean
-  areGiftConditionsMet?: boolean
-}>()
+const { promotion } = defineProps<{ promotion: Promotion }>()
 
 const { t } = useI18n()
 
@@ -44,6 +41,34 @@ const {
   promotion,
   promotion.customData.minimumOrderValue || (0 as CentAmount),
 )
+
+const { data: basketData, items: basketItems } = useBasket()
+
+const areGiftConditionsMet = computed(() => {
+  if (!basketData.value?.applicablePromotions?.length) {
+    return false
+  }
+  return isGiftConditionMet(promotion, basketData.value?.applicablePromotions)
+})
+
+const isGiftAddedToBasket = computed(() => {
+  if (!isBuyXGetYType(promotion)) {
+    return false
+  }
+  return (
+    basketItems.value?.some(({ promotion: basketPromotion, variant }) => {
+      const variantIds = isBuyXGetYType(promotion)
+        ? promotion.effect.additionalData.variantIds ?? []
+        : []
+      const hasVariantId = variantIds.includes(variant.id)
+      return (
+        isBuyXGetYType(basketPromotion) &&
+        hasVariantId &&
+        promotion.id === basketPromotion?.id
+      )
+    }) || false
+  )
+})
 
 const { colorStyle } = usePromotionCustomData(promotion)
 
@@ -67,7 +92,8 @@ const text = computed(() => {
 
   if (
     isMOVPromotionApplied.value &&
-    ((isBuyXGetY.value && areGiftConditionsMet) || isAutomaticDiscount.value)
+    ((isBuyXGetY.value && areGiftConditionsMet.value) ||
+      isAutomaticDiscount.value)
   ) {
     return t('promotion_progress_wrapper.reached_minimum_order_value', {
       amount: formatCurrency(discount.value),
@@ -76,12 +102,12 @@ const text = computed(() => {
 
   if (
     isAutomaticDiscount.value ||
-    (!isGiftAddedToBasket && areGiftConditionsMet)
+    (!isGiftAddedToBasket.value && areGiftConditionsMet.value)
   ) {
     return t('promotion_progress_wrapper.fulfilled_promotion_condition')
   }
 
-  return isGiftAddedToBasket && areGiftConditionsMet
+  return isGiftAddedToBasket.value && areGiftConditionsMet.value
     ? t('promotion_progress_wrapper.fulfilled_gift_condition')
     : undefined
 })

@@ -46,12 +46,7 @@
               show-tax-info
               :show-price-from="showFrom"
             />
-            <SFProductPromotionBanner
-              v-if="promotion"
-              :promotion="promotion"
-              :are-gift-conditions-met="areGiftConditionsMet"
-              :is-gift-added-to-basket="isGiftAddedToBasket"
-            />
+            <SFProductPromotionBanner v-if="promotion" :promotion="promotion" />
           </div>
 
           <SFProductActions
@@ -132,7 +127,6 @@ import { useTrackingEvents } from '~/composables/useTrackingEvents'
 import { useProductPromotions } from '~/composables/useProductPromotions'
 import { useBasket, useProduct } from '#storefront/composables'
 import { useProductBaseInfo } from '~/composables/useProductBaseInfo'
-import { isBuyXGetYType } from '#storefront-promotions/utils'
 import { useFavoriteStore } from '~/composables/useFavoriteStore'
 import { useI18n } from '#i18n'
 import { PRODUCT_DETAIL_WITH_PARAMS } from '~/constants'
@@ -155,6 +149,10 @@ import { useBreadcrumbs, useRouteHelpers } from '~/composables'
 import { hasSubscriptionCustomData } from '#storefront-subscription/helpers/subscription'
 import { generateProductSchema } from '#storefront-product-detail/utils/seo'
 import SFProductPromotionGifts from '~/components/product/promotion/gifts/SFProductPromotionGifts.vue'
+import {
+  isBuyXGetYType,
+  isGiftConditionMet,
+} from '#storefront-promotions/utils'
 
 const SFLazyStoreLocatorSlideIn = defineAsyncComponent(
   () => import('~/components/locator/SFStoreLocatorSlideIn.vue'),
@@ -209,7 +207,7 @@ const {
   color,
 } = useProductBaseInfo(product)
 
-const { items } = useBasket()
+const { items: basketItems, data: basketData } = useBasket()
 const variantIdQueryParam = computed(() =>
   route.query.variantId
     ? parseInt(route.query.variantId?.toString())
@@ -239,26 +237,33 @@ const updateActiveVariant = async (newVariant?: Variant) => {
   })
 }
 
-const basketItem = computed(
-  () =>
-    items.value?.find(
-      (basketItem) =>
-        basketItem.variant.id === activeVariant.value?.id &&
-        !hasSubscriptionCustomData(
-          basketItem.customData as Record<string, unknown>,
-        ),
-    ),
-)
-const {
-  isGiftAddedToBasket,
-  areGiftConditionsMet,
-  promotion: productPromotion,
-} = useProductPromotions(product)
-const promotion = computed(() => {
-  if (basketItem.value?.promotion) {
-    return basketItem.value?.promotion
+const basketItem = computed(() => {
+  return basketItems.value?.find(
+    ({ variant, customData }) =>
+      variant.id === activeVariant.value?.id &&
+      !hasSubscriptionCustomData(customData as Record<string, unknown>),
+  )
+})
+
+const { promotion: productPromotion } = useProductPromotions(product)
+
+const areGiftConditionsMet = computed(() => {
+  if (
+    !productPromotion.value ||
+    !basketData.value?.applicablePromotions?.length
+  ) {
+    return false
   }
-  return productPromotion.value
+  return isGiftConditionMet(
+    productPromotion.value,
+    basketData.value?.applicablePromotions,
+  )
+})
+
+const promotion = computed(() => {
+  return basketItem.value?.promotion
+    ? basketItem.value?.promotion
+    : productPromotion.value
 })
 
 const price = computed(() => {

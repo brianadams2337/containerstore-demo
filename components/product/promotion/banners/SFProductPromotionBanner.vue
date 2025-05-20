@@ -31,11 +31,7 @@
       </template>
       <SFFadeInTransition>
         <div>
-          <SFPromotionProgressWrapper
-            :promotion="promotion"
-            :are-gift-conditions-met="areGiftConditionsMet"
-            :is-gift-added-to-basket="isGiftAddedToBasket"
-          />
+          <SFPromotionProgressWrapper :promotion="promotion" />
           <div
             v-if="conditions && showCondition"
             class="flex flex-col px-6 py-4 text-md text-gray-600"
@@ -68,8 +64,6 @@ import { useTrackingEvents, usePromotionCustomData } from '~/composables'
 
 const { promotion, showCondition = false } = defineProps<{
   promotion: Promotion
-  isGiftAddedToBasket?: boolean
-  areGiftConditionsMet?: boolean
   showCondition?: boolean
 }>()
 
