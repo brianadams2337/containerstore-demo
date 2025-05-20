@@ -24,6 +24,7 @@
           'rounded-md bg-gray-100 pr-8 hover:bg-gray-200': !hasFocus,
         }"
         :tabindex="hasFocus ? -1 : 0"
+        :aria-label="$t('global.search')"
         @click="openAndFocus"
       >
         <SFButton
