@@ -1,11 +1,12 @@
 import { computed } from 'vue'
 import type { ShopCountryCustomData } from '@scayle/storefront-nuxt'
-import { useShopConfiguration } from '#storefront/composables'
+import { useFormatHelpers, useShopConfiguration } from '#storefront/composables'
 import { useI18n } from '#imports'
 
 export function useShopConfigCustomData() {
   const { data } = useShopConfiguration()
   const { t } = useI18n()
+  const { formatCurrency } = useFormatHelpers()
 
   const customData = computed(() => data.value?.customData)
 
@@ -27,8 +28,12 @@ export function useShopConfigCustomData() {
   })
 
   const deliveryCostsValue = computed(() => {
-    const num = Number(deliveryCosts.value?.value)
-    return isNaN(num) ? 0 : num
+    if (!deliveryCosts.value?.value) {
+      const price = formatCurrency(0)
+      return `${t('price.starting_from')} ${price}`
+    }
+
+    return deliveryCosts.value.value
   })
 
   const deliveryCostsDisclaimer = computed(() => {

@@ -16,8 +16,7 @@
     <div class="flex justify-between">
       <h2>{{ $t('basket_summary.delivery') }}</h2>
       <span>
-        {{ $t('price.starting_from') }}
-        {{ formatCurrency(deliveryCostsValue) }}*
+        {{ deliveryCostsValue }}
       </span>
     </div>
   </section>
