@@ -3095,7 +3095,12 @@
     "@opentelemetry/core" "2.0.1"
     "@opentelemetry/sdk-trace-base" "2.0.1"
 
-"@opentelemetry/semantic-conventions@1.33.0", "@opentelemetry/semantic-conventions@^1.27.0", "@opentelemetry/semantic-conventions@^1.29.0", "@opentelemetry/semantic-conventions@^1.30.0", "@opentelemetry/semantic-conventions@^1.31.0":
+"@opentelemetry/semantic-conventions@1.33.1":
+  version "1.33.1"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/semantic-conventions/-/semantic-conventions-1.33.1.tgz#da06fa4387329286ac380df52a93b1494ff0727d"
+  integrity sha512-tBco+nVMoGqJ0LHPKOWlN9o1PX2AA9zxDMgvL210YYXlG9UkMXpiXhsWvvQriZrjOzTXXEpH6jleCgAuVGg3EQ==
+
+"@opentelemetry/semantic-conventions@^1.27.0", "@opentelemetry/semantic-conventions@^1.29.0", "@opentelemetry/semantic-conventions@^1.30.0", "@opentelemetry/semantic-conventions@^1.31.0":
   version "1.33.0"
   resolved "https://registry.yarnpkg.com/@opentelemetry/semantic-conventions/-/semantic-conventions-1.33.0.tgz#ec8ebd2ac768ab366aff94e0e7f27e8ae24fa49f"
   integrity sha512-TIpZvE8fiEILFfTlfPnltpBaD3d9/+uQHVCyC3vfdh6WfCXKhNFzoP5RyDDIndfvZC5GrA4pyEDNyjPloJud+w==
@@ -3641,10 +3646,10 @@
   resolved "https://registry.yarnpkg.com/@scayle/nuxt-image-provider/-/nuxt-image-provider-0.3.1.tgz#fe55b0f1b0ee918a80d51eeecf55f8a4bda59c1f"
   integrity sha512-x/TC3yy8eaqXCePpXkYlPUcZ2pD6K70FRkbSzjUgTrfcpPEKETLRiYICgov2GC17vOeUIlCA4L9waJEoDwnDmA==
 
-"@scayle/nuxt-opentelemetry@0.13.3":
-  version "0.13.3"
-  resolved "https://registry.yarnpkg.com/@scayle/nuxt-opentelemetry/-/nuxt-opentelemetry-0.13.3.tgz#a1bdc85d8f65f79c186e31647ac4fd6e4ec9c917"
-  integrity sha512-qBWNrN/rzAZIpmTubu2Qwz5DuIxfD6mis4pyG11D6MOQEC0fG+IgDt5p7h5BAo2LwlVuwH4+qJIEfrovbcMxSg==
+"@scayle/nuxt-opentelemetry@0.13.4":
+  version "0.13.4"
+  resolved "https://registry.yarnpkg.com/@scayle/nuxt-opentelemetry/-/nuxt-opentelemetry-0.13.4.tgz#d64676a76787d9c0bf267ce92fd551096fc4df0b"
+  integrity sha512-6bjzlIwvFckgYGz7gVucJ2se2GneLOG3LZF4mah+mKNUbbodMruYgxPOwnp2XUGwHMcMyciVO87WgbSiD6EfXw==
   dependencies:
     "@nuxt/kit" "^3.12.3"
     "@opentelemetry/api" "1.9.0"
@@ -3657,7 +3662,7 @@
     "@opentelemetry/sdk-node" "0.200.0"
     "@opentelemetry/sdk-trace-base" "2.0.1"
     "@opentelemetry/sdk-trace-node" "2.0.1"
-    "@opentelemetry/semantic-conventions" "1.33.0"
+    "@opentelemetry/semantic-conventions" "1.33.1"
     "@vercel/otel" "1.12.0"
     defu "^6.1.4"
     import-in-the-middle "1.13.2"
