@@ -94,7 +94,8 @@
       "female": "Femme",
       "diverse": "Divers",
       "none": "Je préfère ne pas le dire"
-    }
+    },
+    "birth_date": "Date de naissance"
   },
   "error": {
     "unknown_error_title": "Oh, un problème est survenu.",

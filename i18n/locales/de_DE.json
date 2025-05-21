@@ -94,7 +94,8 @@
       "female": "Weiblich",
       "diverse": "Divers",
       "none": "Keine Angabe"
-    }
+    },
+    "birth_date": "Geburtstag"
   },
   "error": {
     "unknown_error_title": "Oh – da ist was schiefgelaufen",

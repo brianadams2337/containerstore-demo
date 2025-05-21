@@ -94,7 +94,8 @@
       "female": "Kvinde",
       "diverse": "Diverse",
       "none": "Foretrækker ikke at sige"
-    }
+    },
+    "birth_date": "Fødselsdag"
   },
   "error": {
     "unknown_error_title": "Åh - noget gik galt",

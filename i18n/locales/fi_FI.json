@@ -94,7 +94,8 @@
       "female": "Nainen",
       "diverse": "Muu",
       "none": "En halua sanoa"
-    }
+    },
+    "birth_date": "Syntymäpäivä"
   },
   "error": {
     "unknown_error_title": "Voi ei - jokin meni pieleen",

@@ -94,7 +94,8 @@
       "female": "Sieviete",
       "diverse": "Cits",
       "none": "Vēlams nenorādīt"
-    }
+    },
+    "birth_date": "Dzimšanas diena"
   },
   "error": {
     "unknown_error_title": "Ak - kaut kas nogāja greizi",

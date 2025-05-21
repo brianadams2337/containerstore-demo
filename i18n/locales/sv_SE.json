@@ -94,7 +94,8 @@
       "female": "Kvinna",
       "diverse": "Icke-binär",
       "none": "Föredrar att inte uppge"
-    }
+    },
+    "birth_date": "Födelsedag"
   },
   "error": {
     "unknown_error_title": "Hoppsan – något gick fel",

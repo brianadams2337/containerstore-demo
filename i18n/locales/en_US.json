@@ -94,7 +94,8 @@
       "female": "Female",
       "diverse": "Diverse",
       "none": "Prefer not to say"
-    }
+    },
+    "birth_date": "Birthday"
   },
   "error": {
     "page_not_found_title": "Page not found",

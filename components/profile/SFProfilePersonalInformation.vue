@@ -68,6 +68,7 @@
           :placeholder="$t('form_fields.birth_date')"
           type="date"
           :max="new Date().toISOString().split('T')[0]"
+          :min="new Date(1900, 0, 1).toISOString().split('T')[0]"
           data-testid="user-birthdate"
           @change="v.birthDate.$touch()"
         />

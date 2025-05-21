@@ -94,7 +94,8 @@
       "female": "Naine",
       "diverse": "Mitmekesine",
       "none": "Eelistab mitte öelda"
-    }
+    },
+    "birth_date": "Sünnipäev"
   },
   "error": {
     "unknown_error_title": "Oh - midagi läks valesti",

@@ -94,7 +94,8 @@
       "female": "Feminin",
       "diverse": "Divers",
       "none": "Prefer să nu spun"
-    }
+    },
+    "birth_date": "Data nașterii"
   },
   "error": {
     "unknown_error_title": "Oh - ceva nu a mers bine",

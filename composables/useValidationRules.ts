@@ -95,14 +95,41 @@ export function useValidationRules() {
   })
 
   return {
+    /**
+     * Validates that a value is required.
+     */
     required: withI18nMessage(required),
+    /**
+     * Validates that a value is a valid email address.
+     */
     email: withI18nMessage(email),
+    /**
+     * Validates that a value is a valid date after 1.1.1900.
+     */
     date: withI18nMessage(validateDate),
+    /**
+     * Validates that a password has at least 8 characters, a special, an uppercase.
+     */
     password: withI18nMessage(validatePassword),
+    /**
+     * Validates that a date is in the past.
+     */
     pastDate: withI18nMessage(validatePastDate),
+    /**
+     * Validates that a value only contains valid unicode letters, spaces, and punctuation.
+     */
     name: withI18nMessage(validateName),
+    /**
+     * Validates that a value is the same as another value.
+     */
     sameAs: withI18nMessage(sameAs, { withArguments: true }),
+    /**
+     * Validates that a value has a maximum length.
+     */
     maxLength: withI18nMessage(maxLength, { withArguments: true }),
+    /**
+     * Validates that a value has a minimum length.
+     */
     minLength: withI18nMessage(minLength, { withArguments: true }),
   }
 }

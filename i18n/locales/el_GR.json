@@ -94,7 +94,8 @@
       "female": "Γυναίκα",
       "diverse": "Diverse",
       "none": "Προτιμώ να μην αναφέρω"
-    }
+    },
+    "birth_date": "Ημερομηνία γέννησης"
   },
   "error": {
     "unknown_error_title": "Ωχ - κάτι πήγε στραβά",

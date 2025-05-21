@@ -94,7 +94,8 @@
       "female": "Moteris",
       "diverse": "Kita",
       "none": "Pageidaju neatskeisti"
-    }
+    },
+    "birth_date": "Gimtadienis"
   },
   "error": {
     "unknown_error_title": "Oops! Kažkas nutiko ne taip",

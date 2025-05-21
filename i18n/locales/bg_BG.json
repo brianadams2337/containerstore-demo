@@ -94,7 +94,8 @@
       "female": "Жена",
       "diverse": "Друг",
       "none": "Предпочитам да не казвам"
-    }
+    },
+    "birth_date": "Рожден ден"
   },
   "error": {
     "unknown_error_title": "О - нещо се обърка",

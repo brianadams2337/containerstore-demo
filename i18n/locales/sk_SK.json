@@ -94,7 +94,8 @@
       "female": "Žena",
       "diverse": "Iné",
       "none": "Radšej neuvádzať"
-    }
+    },
+    "birth_date": "Dátum narodenia"
   },
   "error": {
     "unknown_error_title": "Ups – niečo sa pokazilo.",

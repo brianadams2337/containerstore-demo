@@ -94,7 +94,8 @@
       "female": "Femenino",
       "diverse": "Diverso",
       "none": "Prefiero no decirlo"
-    }
+    },
+    "birth_date": "Fecha de nacimiento"
   },
   "error": {
     "unknown_error_title": "Oh, algo salió mal.",

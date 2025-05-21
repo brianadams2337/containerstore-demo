@@ -94,7 +94,8 @@
       "female": "Vrouwelijk",
       "diverse": "Divers",
       "none": "Zeg ik liever niet"
-    }
+    },
+    "birth_date": "Verjaardag"
   },
   "error": {
     "unknown_error_title": "Oh - er ging iets mis",

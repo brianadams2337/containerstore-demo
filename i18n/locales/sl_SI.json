@@ -94,7 +94,8 @@
       "female": "Ženska",
       "diverse": "Drugo",
       "none": "Ne želim povedati"
-    }
+    },
+    "birth_date": "Rojstni dan"
   },
   "error": {
     "unknown_error_title": "Oh - nekaj je šlo narobe",

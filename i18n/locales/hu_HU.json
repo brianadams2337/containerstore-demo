@@ -94,7 +94,8 @@
       "female": "Nő",
       "diverse": "Más",
       "none": "Nem kívánom pontosítani"
-    }
+    },
+    "birth_date": "Születésnap"
   },
   "error": {
     "unknown_error_title": "Oh - valami rosszul sült el",

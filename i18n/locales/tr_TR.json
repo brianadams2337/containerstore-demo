@@ -94,7 +94,8 @@
       "female": "Kadın",
       "diverse": "Çeşitli",
       "none": "Söylememeyi tercih ederim"
-    }
+    },
+    "birth_date": "Doğum"
   },
   "error": {
     "unknown_error_title": "Oh - bir şeyler ters gitti",

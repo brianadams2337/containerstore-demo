@@ -94,7 +94,8 @@
       "female": "Kobieta",
       "diverse": "Inne",
       "none": "Wolę nie podawać"
-    }
+    },
+    "birth_date": "Data urodzenia"
   },
   "error": {
     "unknown_error_title": "Coś poszło nie tak",

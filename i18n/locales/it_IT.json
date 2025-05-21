@@ -94,7 +94,8 @@
       "female": "Donna",
       "diverse": "Altro",
       "none": "Preferisco non specificare"
-    }
+    },
+    "birth_date": "Data di nascita"
   },
   "error": {
     "unknown_error_title": "Oh, qualcosa è andato storto",
