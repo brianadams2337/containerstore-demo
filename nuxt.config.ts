@@ -2,6 +2,7 @@ import { type NuxtConfig, defineNuxtConfig } from 'nuxt/config'
 import type { HookResult } from '@nuxt/schema'
 import { nanoid } from 'nanoid'
 import { HashAlgorithm, type ModuleBaseOptions } from '@scayle/storefront-nuxt'
+import { defaultSvgoConfig } from 'nuxt-svgo'
 import * as customRpcMethods from './rpcMethods'
 import withParams from './constants/withParams'
 import { shops } from './config/shops'
@@ -478,6 +479,7 @@ export default defineNuxtConfig({
     componentPrefix: 'Icon',
     svgoConfig: {
       plugins: [
+        ...(defaultSvgoConfig!.plugins || []),
         {
           name: 'addAttributesToSVGElement',
           params: {
