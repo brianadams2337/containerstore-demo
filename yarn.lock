@@ -3746,10 +3746,10 @@
     vue-router "^4.4.0"
     zod "^3.23.8"
 
-"@scayle/storefront-product-detail@1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-product-detail/-/storefront-product-detail-1.3.0.tgz#8def023ee73ecb105dfd44227e4f0225ee529c93"
-  integrity sha512-LKYvgIh6TOHEEjR+DgaO0V6h7oTR7BNT4wP/dfIpRyvIrHZYzGMI87vbQX6dF+j8fnN3b7jlPJEv/snj8847WA==
+"@scayle/storefront-product-detail@1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-product-detail/-/storefront-product-detail-1.4.2.tgz#c68b5db45566b54bf35d5f3c2bc7583a159c47ea"
+  integrity sha512-zI5SaHPGA/ZT0Qu7jvf5LjCP9USY/EwkUztl80dwI5z9ubKzMraqTlQg6mv1wz3L3nwv+pvQhCTxnXyIfd+zOA==
 
 "@scayle/storefront-product-listing@1.6.2":
   version "1.6.2"
