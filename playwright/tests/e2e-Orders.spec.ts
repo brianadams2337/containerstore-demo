@@ -37,6 +37,7 @@ test('C2132533 Verify Orders for user that has orders', async ({
     await ordersPage.visitOrdersPage('/account/orders', baseURL as string)
     await ordersPage.ordersHeadline.waitFor()
     await expect(ordersPage.ordersHeadline).toBeVisible()
+    await expect(ordersPage.orderStatus.first()).toBeVisible()
   })
   await test.step('Open the first order and check order details', async () => {
     const orderHeadlineText = (await ordersPage.orderItemHeadline
@@ -47,6 +48,7 @@ test('C2132533 Verify Orders for user that has orders', async ({
     await ordersPage.orderDetailsHeadline.waitFor()
     await expect(ordersPage.orderDetailsHeadline).toContainText(orderNumber)
     expect(page.url()).toContain(orderNumber)
+    await expect(ordersPage.orderStatus).toBeVisible()
   })
   await test.step('Go back to orders list', async () => {
     await ordersPage.orderDetailsBackButton.click()

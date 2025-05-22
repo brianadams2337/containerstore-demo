@@ -22,6 +22,7 @@ export class OrdersPage {
   readonly orderDetailsBackButton: Locator
   readonly orderDetailsHeadline: Locator
   readonly emptyState: Locator
+  readonly orderStatus: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -43,6 +44,7 @@ export class OrdersPage {
     this.orderDetailsBackButton = page.getByTestId('back-to-order-list')
     this.orderDetailsHeadline = page.getByTestId('order-detail-headline')
     this.emptyState = page.getByTestId('empty-state')
+    this.orderStatus = page.getByTestId('order-status')
   }
 
   async visitOrdersPage(path: string, baseUrl: string) {

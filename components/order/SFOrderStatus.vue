@@ -1,6 +1,7 @@
 <template>
   <div
     class="flex h-5 items-center gap-1 rounded-base px-1.5 text-sm font-medium text-gray-900"
+    data-testid="order-status"
     :class="StatusMap[status].lightColor"
   >
     <div
