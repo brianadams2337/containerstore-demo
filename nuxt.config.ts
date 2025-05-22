@@ -479,7 +479,7 @@ export default defineNuxtConfig({
     componentPrefix: 'Icon',
     svgoConfig: {
       plugins: [
-        ...(defaultSvgoConfig!.plugins || []),
+        ...(defaultSvgoConfig!.plugins ?? []),
         {
           name: 'addAttributesToSVGElement',
           params: {
