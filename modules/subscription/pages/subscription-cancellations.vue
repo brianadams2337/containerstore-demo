@@ -1,12 +1,12 @@
 <template>
-  <SFPageContainer>
+  <section class="container my-10 overflow-hidden py-2 max-sm:max-w-none">
     <!-- eslint-disable-next-line vue/no-undef-components -->
     <subscription-cancellation
       v-if="isSubscriptionCancellationWebComponentLoaded"
       :base-url="apiUrl"
       :shop-id="shopId"
     />
-  </SFPageContainer>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -14,7 +14,6 @@ import useSubscriptionWebComponent from '../composables/useSubscriptionWebCompon
 import { useHead, definePageMeta } from '#imports'
 import { useI18n } from '#i18n'
 import { useCurrentShop } from '#storefront/composables'
-import { SFPageContainer } from '#storefront-ui/components'
 
 const currentShop = useCurrentShop()
 const shopId = currentShop.value.shopId
