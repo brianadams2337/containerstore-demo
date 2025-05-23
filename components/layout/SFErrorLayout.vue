@@ -36,7 +36,6 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import { HttpStatusCode } from '@scayle/storefront-nuxt'
 import { useHead } from '#imports'
 import type { NuxtError } from '#app'
@@ -66,25 +65,18 @@ defineEmits<{ clearError: [] }>()
 
 const { t } = useI18n()
 
-const isNotFoundError = computed(() => {
-  return (
-    error &&
-    'statusCode' in error &&
-    error?.statusCode === HttpStatusCode.NOT_FOUND
-  )
-})
+const isNotFoundError =
+  error &&
+  'statusCode' in error &&
+  error?.statusCode === HttpStatusCode.NOT_FOUND
 
-const title = computed(() => {
-  return isNotFoundError.value
-    ? t('error.page_not_found_title')
-    : t('error.unknown_error_title')
-})
+const title = isNotFoundError
+  ? t('error.page_not_found_title')
+  : t('error.unknown_error_title')
 
-const userMessage = computed(() => {
-  return isNotFoundError.value
-    ? t('error.page_not_found_message')
-    : t('error.unknown_error_message')
-})
+const userMessage = isNotFoundError
+  ? t('error.page_not_found_message')
+  : t('error.unknown_error_message')
 
 const isInDevMode = import.meta.dev
 
@@ -97,5 +89,5 @@ const stack = error && 'stack' in error && error?.stack
 
 const errorMessage = error && 'message' in error && error.message
 
-useHead({ title: title.value })
+useHead({ title: title })
 </script>
