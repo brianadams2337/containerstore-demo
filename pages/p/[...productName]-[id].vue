@@ -108,6 +108,7 @@ import {
   ref,
   defineAsyncComponent,
   onUnmounted,
+  watch,
 } from 'vue'
 import { whenever } from '@vueuse/core'
 import {
@@ -418,9 +419,12 @@ function redirectProductIfNecessary(product: Product) {
 }
 
 const { setPageState } = usePageState()
-whenever(
-  product,
-  (product) => {
+watch(
+  [product, () => route.path],
+  ([product]) => {
+    if (!product) {
+      return
+    }
     redirectProductIfNecessary(product)
     setPageState('typeId', String(product.id))
   },

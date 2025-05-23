@@ -226,8 +226,8 @@ const { data: categoriesForAllShops } = useAllShopCategoriesForId({
 })
 
 watch(
-  currentCategory,
-  async (category) => {
+  [currentCategory, () => route.path],
+  async ([category]) => {
     await validateCategoryExistsAndRedirect()
     setPageState('typeId', String(category?.id))
   },
