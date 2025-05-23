@@ -47,10 +47,12 @@
     "condition": "Condition"
   },
   "promotion_progress_wrapper": {
-    "remaining_minimum_order_value": "Unlock Your Deal! Spend {amount} more to activate this promotion.",
-    "reached_minimum_order_value": "Congratulations! You’ve unlocked this deal and saved {amount}.",
-    "fulfilled_promotion_condition": "You've unlocked a special offer! Add eligible products to your cart to enjoy the benefits.",
-    "fulfilled_gift_condition": "Shopping cart reached! Add a free gift"
+    "remaining_minimum_order_value": "Unlock your next deal! Spend {amount} more to activate this offer.",
+    "partial_savings": "Nice work! You've unlocked a deal and saved {amount}. Keep shopping to unlock even more.",
+    "full_savings": "Great job! You’ve unlocked the full deal and saved {amount}.",
+    "fulfilled_promotion_condition": "Almost there! You’ve met the minimum spend—now just add eligible products to your cart to enjoy the offer.",
+    "free_gift_unlocked": "Great job! You’ve unlocked a free gift.",
+    "free_gift": "Free gift"
   },
   "promotion_slide_in": {
     "open_button": {

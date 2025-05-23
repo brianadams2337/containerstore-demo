@@ -1,55 +1,66 @@
 <template>
   <div
-    v-if="isMovPromotion && (progress || text)"
-    class="flex flex-col px-6 pt-4 text-md text-gray-600"
+    v-if="isTieredDiscount && (progress || text)"
+    class="flex flex-col px-8 pt-4 text-md text-gray-600"
   >
     <SFProgressBar
       v-if="progress !== undefined"
       class="mb-2"
       :progress="progress * 100"
       :color="colorStyle.backgroundColor"
+      :milestones="milestones"
     />
     <div v-if="text" class="mb-4">{{ text }}</div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { Promotion, CentAmount } from '@scayle/storefront-nuxt'
+import type { Promotion, PromotionEffect } from '@scayle/storefront-nuxt'
 import { computed } from 'vue'
 import { useI18n } from '#imports'
 import SFProgressBar from '~/components/promotion/SFProgressBar.vue'
-import { usePromotionMOVProgress } from '#storefront-promotions/composables'
+import { usePromotionTierProgress } from '#storefront-promotions/composables'
 import { usePromotionCustomData } from '~/composables'
-import {
-  isAutomaticDiscountType,
-  isBuyXGetYType,
-  isGiftConditionMet,
-} from '#storefront-promotions/utils'
+import { isBuyXGetYType } from '#storefront-promotions/utils'
 import { useFormatHelpers, useBasket } from '#storefront/composables'
 
 const { promotion } = defineProps<{ promotion: Promotion }>()
 
 const { t } = useI18n()
 
-const {
-  progress,
-  isMOVPromotionApplied,
-  discount,
-  remaining,
-  minimumOrderValueReached,
-} = usePromotionMOVProgress(
-  promotion,
-  promotion.customData.minimumOrderValue || (0 as CentAmount),
-)
-
-const { data: basketData, items: basketItems } = useBasket()
-
-const areGiftConditionsMet = computed(() => {
-  if (!basketData.value?.applicablePromotions?.length) {
-    return false
+function asTieredPromotion(
+  promo: Promotion,
+): Promotion & Required<Pick<Promotion, 'tiers'>> {
+  if (promo.tiers?.length) {
+    return promo as Promotion & Required<Pick<Promotion, 'tiers'>>
+  } else if (promo.customData.minimumOrderValue) {
+    return {
+      ...promo,
+      tiers: [
+        {
+          effect: promo.effect,
+          id: 1,
+          name: 'mov',
+          mov: promo.customData.minimumOrderValue,
+        },
+      ],
+    }
+  } else {
+    return {
+      ...promo,
+      tiers: [],
+    }
   }
-  return isGiftConditionMet(promotion, basketData.value?.applicablePromotions)
+}
+
+const isTieredDiscount = computed(() => {
+  return !!asTieredPromotion(promotion).tiers.length
 })
+
+const { progress, discount, tiers, isPromotionApplied, remaining, complete } =
+  usePromotionTierProgress(asTieredPromotion(promotion))
+
+const { items: basketItems } = useBasket()
 
 const isGiftAddedToBasket = computed(() => {
   if (!isBuyXGetYType(promotion)) {
@@ -72,43 +83,57 @@ const isGiftAddedToBasket = computed(() => {
 
 const { colorStyle } = usePromotionCustomData(promotion)
 
-const isAutomaticDiscount = computed(() => isAutomaticDiscountType(promotion))
+const { formatCurrency, formatPercentage } = useFormatHelpers()
 
-const isBuyXGetY = computed(() => isBuyXGetYType(promotion))
-
-const isMovPromotion = computed(() => {
-  return !!promotion.customData.minimumOrderValue
-})
-
-const { formatCurrency } = useFormatHelpers()
-const text = computed(() => {
-  if (!minimumOrderValueReached.value) {
-    return remaining.value
-      ? t('promotion_progress_wrapper.remaining_minimum_order_value', {
-          amount: formatCurrency(remaining.value),
-        })
-      : undefined
+const formatEffect = (effect: PromotionEffect): string => {
+  if (effect.type === 'automatic_discount') {
+    if (effect.additionalData.type === 'relative') {
+      return formatPercentage((effect.additionalData.value * -1) / 100)
+    } else {
+      return formatCurrency(effect.additionalData.value, {
+        currencyFractionDigits: 0,
+      })
+    }
+  } else {
+    return t('promotion_progress_wrapper.free_gift')
   }
+}
 
-  if (
-    isMOVPromotionApplied.value &&
-    ((isBuyXGetY.value && areGiftConditionsMet.value) ||
-      isAutomaticDiscount.value)
-  ) {
-    return t('promotion_progress_wrapper.reached_minimum_order_value', {
+const milestones = computed(() =>
+  tiers.value.map((tier) => ({
+    percent: tier.percent,
+    title: formatCurrency(tier.mov, { currencyFractionDigits: 0 }),
+    subtitle: formatEffect(tier.effect),
+  })),
+)
+
+const text = computed(() => {
+  const hasReachedFirstTier = tiers.value.some((tier) => tier.progress >= 1)
+
+  if (!hasReachedFirstTier) {
+    return t('promotion_progress_wrapper.remaining_minimum_order_value', {
+      amount: formatCurrency(remaining.value),
+    })
+  } else {
+    if (!isPromotionApplied.value) {
+      return t('promotion_progress_wrapper.fulfilled_promotion_condition')
+    }
+
+    if (isBuyXGetYType(promotion) && isGiftAddedToBasket.value) {
+      return t('promotion_progress_wrapper.free_gift_unlocked')
+    }
+
+    // Last tier savings messaging
+    if (complete.value) {
+      return t('promotion_progress_wrapper.full_savings', {
+        amount: formatCurrency(discount.value),
+      })
+    }
+
+    // Earlier tier messaging
+    return t('promotion_progress_wrapper.partial_savings', {
       amount: formatCurrency(discount.value),
     })
   }
-
-  if (
-    isAutomaticDiscount.value ||
-    (!isGiftAddedToBasket.value && areGiftConditionsMet.value)
-  ) {
-    return t('promotion_progress_wrapper.fulfilled_promotion_condition')
-  }
-
-  return isGiftAddedToBasket.value && areGiftConditionsMet.value
-    ? t('promotion_progress_wrapper.fulfilled_gift_condition')
-    : undefined
 })
 </script>

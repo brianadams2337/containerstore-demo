@@ -63,6 +63,7 @@ const backgroundColor = (percent: number) => {
 <style scoped lang="css">
 progress::-moz-progress-bar {
   background-color: v-bind(color);
+  transition: width 0.3s ease-in-out;
 }
 
 progress::-webkit-progress-bar {
@@ -71,5 +72,6 @@ progress::-webkit-progress-bar {
 
 progress::-webkit-progress-value {
   background-color: v-bind(color);
+  transition: width 0.3s ease-in-out;
 }
 </style>
