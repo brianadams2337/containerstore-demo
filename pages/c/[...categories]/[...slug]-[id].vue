@@ -36,8 +36,8 @@
           </div>
         </div>
         <SFCategoryNavigationSlider
-          v-if="allCategories.length"
-          :all-categories="allCategories"
+          v-if="rootCategories.length"
+          :all-categories="flattenCategoryTree(rootCategories)"
           :current-category="currentCategory"
           class="mb-3.5 mt-2.5 md:hidden"
         />
@@ -107,6 +107,7 @@ import {
   useProductListSort,
   useAllShopCategoriesForId,
   generateProductListingHreflangLinks,
+  flattenCategoryTree,
 } from '#storefront-product-listing'
 import { useCategoryById } from '#storefront/composables'
 
@@ -119,10 +120,9 @@ const { pageState, setPageState } = usePageState()
 
 const { trackViewItemList, trackSelectItem } = useTrackingEvents()
 
-const { rootCategories, fetchingCategories, allCategories } = defineProps<{
+const { rootCategories, fetchingCategories } = defineProps<{
   rootCategories: Category[]
   fetchingCategories: boolean
-  allCategories: Category[]
 }>()
 
 const currentCategoryId = computed(() => getCategoryId(route.params))
