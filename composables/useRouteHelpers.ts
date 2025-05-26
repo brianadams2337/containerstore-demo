@@ -249,7 +249,7 @@ export function useRouteHelpers() {
   /**
    * Gets the full URL for a given locale and pathname.
    *
-   * @note `@nuxtjs/i18n` does call `useNuxtApp` when resolving domains for a given locale. `getLocalizedHref` can therefor only be called within a nuxt context.
+   * @note `@nuxtjs/i18n` calls `useNuxtApp` when resolving domains for a given locale. `getLocalizedHref` can therefore only be called within a nuxt context.
    *
    * @param locale - The locale to get the href for.
    * @param pathname - The pathname to get the href for.
