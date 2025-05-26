@@ -3,11 +3,12 @@
     class="container mt-24 flex flex-col items-center justify-center text-primary"
   >
     <section class="flex flex-col items-center space-y-2">
-      <IconLogo class="mb-6 size-24" />
+      <IconLogo class="mb-6 size-24" data-testid="error-page-logo" />
 
       <div
         v-if="statusCode"
         class="!mb-6 rounded-full bg-accent/10 px-3 py-0.5 text-sm font-variable slashed-zero leading-5 text-accent"
+        data-testid="error-page-code"
       >
         {{ $t('error.error_code_label') }} {{ statusCode }}
       </div>
@@ -23,7 +24,11 @@
       </SFHeadline>
     </section>
     <section class="mt-12">
-      <SFButton variant="tertiary" @click="$emit('clearError')">
+      <SFButton
+        variant="tertiary"
+        data-testid="error-page-button-continue"
+        @click="$emit('clearError')"
+      >
         {{ $t('global.continue_shopping') }}
       </SFButton>
     </section>

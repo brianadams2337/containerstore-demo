@@ -1,5 +1,6 @@
 import { expect, test } from '../fixtures/fixtures'
 import { getAllLinksFromPage, isMobile } from '../support/utils'
+import { ROUTES } from '../support/constants'
 
 /**
  * @file Contains end-to-end tests for the homepage, verifying its basic structure,
@@ -110,5 +111,29 @@ test('C2167297 Verify Homepage Skip Links', async ({
       await search.searchResetButton.nth(1).waitFor()
       await expect(search.searchResetButton.nth(1)).toBeVisible()
     }
+  })
+})
+
+/**
+ * Verifies that the error page is loaded if user visits non-existing route.
+ * Verifies that the redirection to Homepage is done when Continue shopping button is clicked.
+ */
+test('C2216651 Verify 404 error page', async ({
+  homePage,
+  page,
+  countryDetector,
+  errorPage,
+  baseURL,
+}) => {
+  await test.step('Visit non-existing page and verify the page is loaded', async () => {
+    await page.goto('/non-existing-route', { waitUntil: 'commit' })
+    await countryDetector.closeModal()
+    await expect(errorPage.errorPageLogo).toBeVisible()
+    await expect(errorPage.errorPageCode).toContainText('404')
+  })
+  await test.step('Click Continue shopping button and verify Homepage is loaded', async () => {
+    await errorPage.errorPageButtonContinue.click()
+    await homePage.homepageContent.waitFor()
+    expect(page.url()).toEqual(baseURL + ROUTES.homepageDefault)
   })
 })
