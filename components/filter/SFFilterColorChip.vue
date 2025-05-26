@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex w-10 flex-col items-center gap-2">
+  <div class="relative flex w-13 flex-col items-center gap-2">
     <div class="group relative">
       <input
         :aria-label="

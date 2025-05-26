@@ -62,7 +62,7 @@
         class="pb-9 xl:pb-9"
         @click-reset="$emit('reset', filter.slug)"
       >
-        <div class="flex flex-wrap gap-4">
+        <div class="flex flex-wrap gap-y-4">
           <template v-for="item in filter.values">
             <SFFilterColorChip
               v-if="ProductColor[item.value]"
