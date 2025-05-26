@@ -3795,10 +3795,10 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-country-detection/-/storefront-country-detection-1.2.0.tgz#20f1418585ff6d24be73e09e025f805b8e209695"
   integrity sha512-yUJ0PdG9WpvWfIn+Mx1tgLVwjIu8upqYut+dbUL6Uk578T/l3yn3XKBaOLjJeE0e3Z43yVUF52qUu7I3H7Mu6g==
 
-"@scayle/storefront-navigation@0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-navigation/-/storefront-navigation-0.2.0.tgz#80f70a478e1270233dd08391481af5bd2595358c"
-  integrity sha512-nscBd5Uy3sk9/lY7MTDB2CUIOO5M720L7hl860dWzgrMsiiXHaA0bgfeDbbuIV5F81OY1JyQsJ2wcB9yyJZhxg==
+"@scayle/storefront-navigation@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-navigation/-/storefront-navigation-0.3.0.tgz#0ea9261fbb8dd5fd69d8bc5787c126bb0b927e17"
+  integrity sha512-cSBEibsw2DxlpLoyKSdUqfCOjnNbjule3o7dy4wurggwhzTcZ6PmUx+i7rdSTV77OcqzVO/8e0VcYHFtdh6Vhw==
 
 "@scayle/storefront-nuxt@8.28.1":
   version "8.28.1"
