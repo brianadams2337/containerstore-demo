@@ -25,12 +25,24 @@ import {
 import { buildQueryFromCategoryFilters } from '#storefront-product-listing'
 import { useNuxtApp } from '#app/nuxt'
 
+/**
+ * A collection of helpers for building and working with routes.
+ *
+ * @returns A collection of helpers for building and working with routes.
+ */
 export function useRouteHelpers() {
   const localePath = useLocalePath()
   const currentShop = useCurrentShop()
   const switchLocalePath = useSwitchLocalePath()
   const { $config, $i18n } = useNuxtApp()
 
+  /**
+   * Localized a route and navigates to it.
+   *
+   * @param route - The route to localize and navigate to.
+   * @param options - The options to navigate to.
+   * @returns The result of the navigation.
+   */
   const localizedNavigateTo = (
     route: RouteLocationRaw,
     options?: NavigateToOptions,
@@ -38,6 +50,14 @@ export function useRouteHelpers() {
     return navigateTo(getLocalizedRoute(route), options)
   }
 
+  /**
+   * Gets a route for a product detail page.
+   *
+   * @param id - The id of the product.
+   * @param name - The name of the product.
+   * @param locale - The locale to get the route for.
+   * @returns The route for the product detail page.
+   */
   const getProductDetailRoute = (
     id: number,
     name?: string,
@@ -55,6 +75,12 @@ export function useRouteHelpers() {
     )
   }
 
+  /**
+   * Gets a route for a search page.
+   *
+   * @param term - The search term to get a route for.
+   * @returns The route for the search page.
+   */
   const getSearchRoute = (term: string): string => {
     return localePath({
       name: routeList.search.name,
@@ -62,6 +88,12 @@ export function useRouteHelpers() {
     })
   }
 
+  /**
+   * Builds a route for a category suggestion.
+   *
+   * @param categorySuggestion - The category suggestion to build a route for.
+   * @returns The route for the category suggestion.
+   */
   const buildCategorySuggestionRoute = ({
     categorySuggestion,
   }: CategorySearchSuggestion) => {
@@ -72,6 +104,12 @@ export function useRouteHelpers() {
     } satisfies RouteLocationRaw
   }
 
+  /**
+   * Gets a path for a search suggestion.
+   *
+   * @param suggestion - The search suggestion entity to get a path for.
+   * @returns The path for the search suggestion.
+   */
   const getSearchSuggestionPath = (
     suggestion: SearchEntity,
   ): string | undefined => {
@@ -114,6 +152,12 @@ export function useRouteHelpers() {
     }
   }
 
+  /**
+   * Gets a order details route for a given order id.
+   *
+   * @param id - The id of the order.
+   * @returns The route for the order details page.
+   */
   const getOrderDetailsRoute = (id: number): string => {
     return localePath({
       name: routeList.orderDetail.name,
@@ -121,6 +165,12 @@ export function useRouteHelpers() {
     })
   }
 
+  /**
+   * Gets a localized route.
+   *
+   * @param route - The route to get a localized route for.
+   * @returns The localized route.
+   */
   const getLocalizedRoute = (route: RouteLocationRaw) => {
     if (typeof route !== 'string') {
       const isLocalePath =
@@ -142,6 +192,12 @@ export function useRouteHelpers() {
       : localePath(normalizedPath)
   }
 
+  /**
+   * Builds a path for a category.
+   *
+   * @param category - The category to build a path for.
+   * @returns The path for the category.
+   */
   const buildCategoryPath = (
     { id, path }: Category | { id: number; path: string },
     locale?: Locale,
@@ -149,6 +205,12 @@ export function useRouteHelpers() {
     return localePath(`${routeList.category.path}${path}-${id}`, locale)
   }
 
+  /**
+   * Builds a route for a navigation item.
+   *
+   * @param navigationItem - The navigation item to build a route for.
+   * @returns The route for the navigation item.
+   */
   const buildNavigationTreeItemRoute = (
     navigationItem: NavigationTreeItem,
   ): { route: RouteLocationRaw; openInNew: boolean } | undefined => {
@@ -184,6 +246,15 @@ export function useRouteHelpers() {
     }
   }
 
+  /**
+   * Gets the full URL for a given locale and pathname.
+   *
+   * @note `@nuxtjs/i18n` does call `useNuxtApp` when resolving domains for a given locale. `getLocalizedHref` can therefor only be called within a nuxt context.
+   *
+   * @param locale - The locale to get the href for.
+   * @param pathname - The pathname to get the href for.
+   * @returns The full URL for the given locale and pathname.
+   */
   const getLocalizedHref = (locale: Locale, pathname: string) => {
     const isAbsolute = pathname.startsWith('http')
     const baseUrlPrefix = $config.app.baseURL

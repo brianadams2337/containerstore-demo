@@ -263,22 +263,21 @@ useSeoMeta({
   },
 })
 
-const hreflangLinks = computed(() =>
-  generateProductListingHreflangLinks(
-    (categoriesForAllShops.value ?? []).map(({ category, path, locale }) => {
-      const localizedCategoryPath = buildCategoryPath(category, path as Locale)
-      const href = getLocalizedHref(path as Locale, localizedCategoryPath)
-      return {
-        categoryHref: href,
-        path,
-        locale,
-      }
-    }),
-    i18n.defaultLocale,
-  ),
+const hreflangLinks = generateProductListingHreflangLinks(
+  (categoriesForAllShops.value ?? []).map(({ category, path, locale }) => {
+    const localizedCategoryPath = buildCategoryPath(category, path as Locale)
+    const href = getLocalizedHref(path as Locale, localizedCategoryPath)
+    return {
+      categoryHref: href,
+      path,
+      locale,
+    }
+  }),
+  i18n.defaultLocale,
 )
+
 useHead(() => ({
-  link: [...canonicalLink.value, ...hreflangLinks.value],
+  link: [...canonicalLink.value, ...hreflangLinks],
 }))
 
 defineOptions({ name: 'CategoryPage' })

@@ -375,28 +375,26 @@ const { data: productsForAllShops } = useAllShopProductsForId({
 
 const { getProductDetailRoute, getLocalizedHref } = useRouteHelpers()
 
-const hreflangLinks = computed(() =>
-  generateProductHreflangLinks(
-    (productsForAllShops.value ?? []).map(({ product, path, locale }) => {
-      const productPath = getProductDetailRoute(
-        product.id,
-        getFirstAttributeValue(product.attributes, 'name')?.label,
-        path as Locale,
-      )
+const hreflangLinks = generateProductHreflangLinks(
+  (productsForAllShops.value ?? []).map(({ product, path, locale }) => {
+    const productPath = getProductDetailRoute(
+      product.id,
+      getFirstAttributeValue(product.attributes, 'name')?.label,
+      path as Locale,
+    )
 
-      const productHref = getLocalizedHref(path as Locale, productPath)
-      return {
-        productHref,
-        path,
-        locale,
-      }
-    }),
-    i18n.defaultLocale,
-  ),
+    const productHref = getLocalizedHref(path as Locale, productPath)
+    return {
+      productHref,
+      path,
+      locale,
+    }
+  }),
+  i18n.defaultLocale,
 )
 
 useHead(() => ({
-  link: [...canonicalLink.value, ...hreflangLinks.value],
+  link: [...canonicalLink.value, ...hreflangLinks],
 }))
 
 useJsonld(() => [productBreadcrumbJsonLd.value, productJsonLd.value])
