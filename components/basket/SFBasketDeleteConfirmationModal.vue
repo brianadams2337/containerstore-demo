@@ -26,7 +26,7 @@
 <script setup lang="ts">
 import { SFModal, SFButton } from '#storefront-ui/components'
 
-defineModel<boolean>('visible')
+const visible = defineModel<boolean>('visible')
 defineProps<{
   onConfirm: () => void
   onCancel: () => void
