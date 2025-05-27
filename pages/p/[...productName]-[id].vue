@@ -357,10 +357,13 @@ const i18n = useI18n()
 
 useSeoMeta({
   title,
-  description: i18n.t('product_detail_page.meta.description', {
-    productName: name.value,
-    shopName: $config.public.shopName,
-  }),
+  description: () =>
+    product.value
+      ? i18n.t('product_detail_page.meta.description', {
+          productName: name.value,
+          shopName: $config.public.shopName,
+        })
+      : undefined,
   robots,
 })
 
