@@ -3808,10 +3808,10 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-basket/-/storefront-basket-0.3.0.tgz#a77d08f2ac0946d0a42a81f7d4fe68324a6afe3b"
   integrity sha512-XV7a/nygUpq5GPOOr5GRQ2+akmGrCjSuKsW5yN7YS9MWn7GOJzhSDPhN6Lhiw3arAWYFrMXu2RMeaWF64HAt2A==
 
-"@scayle/storefront-core@8.28.2":
-  version "8.28.2"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-8.28.2.tgz#9bc9e4672207d290291775048da56b0d26a7db07"
-  integrity sha512-AlIWpGvytoNwyX9by3viwq0THMfFoSHGpemAPzSG/yBAHo3xuTuiquLsB/b7Mf38Fb+6WhPbGRq4uDPavGE5Ww==
+"@scayle/storefront-core@8.28.3":
+  version "8.28.3"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-8.28.3.tgz#4a782ddfee0e987b8a59619aa7c55a8f2917a991"
+  integrity sha512-d/DIjE9J33LSEoicEypW4u67+2nxUTSyVnVmyLHcm8sNsu5qpT69fRrDjN6FEIqX8V9JZ3OdoJ4NN7W8XY5SqA==
   dependencies:
     "@scayle/storefront-api" "18.8.0"
     "@scayle/unstorage-scayle-kv-driver" "0.1.2"
@@ -3833,14 +3833,14 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-navigation/-/storefront-navigation-0.3.0.tgz#0ea9261fbb8dd5fd69d8bc5787c126bb0b927e17"
   integrity sha512-cSBEibsw2DxlpLoyKSdUqfCOjnNbjule3o7dy4wurggwhzTcZ6PmUx+i7rdSTV77OcqzVO/8e0VcYHFtdh6Vhw==
 
-"@scayle/storefront-nuxt@8.28.2":
-  version "8.28.2"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.28.2.tgz#4e0320b7c7ef6094f0a86bf9a811eef0f2d7477b"
-  integrity sha512-CvyaMRHMLlvQ6pT/dPJHvVxTvHaSGPInqCYgsGPLBdbumMZ6BQTMnf8AbYhDQd5CZeAr8FTbX33qxO9De/8SKA==
+"@scayle/storefront-nuxt@8.28.3":
+  version "8.28.3"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.28.3.tgz#6aae0159a905290da4aed3371a9caa8ad3b3b1e8"
+  integrity sha512-0BGwKhTbYvz4ZgxNWyreRcCt7J+EyZOZ5bZ+Wogve5x2Ys5jvIQw2hudBioffjwAX5eSMgRZahlOUbtsmztjJA==
   dependencies:
     "@opentelemetry/api" "^1.9.0"
     "@scayle/h3-session" "0.6.1"
-    "@scayle/storefront-core" "8.28.2"
+    "@scayle/storefront-core" "8.28.3"
     "@scayle/unstorage-compression-driver" "^0.2.7"
     "@vercel/nft" "0.29.3"
     "@vueuse/core" "13.3.0"
