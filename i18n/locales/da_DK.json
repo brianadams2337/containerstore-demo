@@ -50,7 +50,11 @@
     "remaining_minimum_order_value": "Lås op for din deal! Brug {amount} mere for at aktivere denne kampagne.",
     "reached_minimum_order_value": "Tillykke med det hele! Du har låst op for denne deal og sparet {amount}.",
     "fulfilled_promotion_condition": "Du har låst op for et særligt tilbud! Læg kvalificerede produkter i din indkøbskurv for at nyde godt af fordelene.",
-    "fulfilled_gift_condition": "Indkøbskurven er nået! Tilføj en gratis gave"
+    "fulfilled_gift_condition": "Indkøbskurven er nået! Tilføj en gratis gave",
+    "partial_savings": "Godt gået! Du har låst en aftale op og sparet {amount}. Fortsæt med at shoppe for at låse endnu mere op.",
+    "full_savings": "Godt gået! Du har låst op for hele tilbuddet og sparet {amount}.",
+    "free_gift_unlocked": "Godt gået! Du har låst en gratis gave op.",
+    "free_gift": "Gratis gave"
   },
   "promotion_slide_in": {
     "open_button": {

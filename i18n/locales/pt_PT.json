@@ -50,7 +50,11 @@
     "remaining_minimum_order_value": "Desbloqueia a tua oferta! Gasta mais {amount} para ativares esta promoção.",
     "reached_minimum_order_value": "Parabéns! Desbloqueaste esta oferta e poupaste {amount}.",
     "fulfilled_promotion_condition": "Desbloqueaste uma oferta especial! Adiciona produtos elegíveis ao carrinho para aproveitares os benefícios.",
-    "fulfilled_gift_condition": "Carrinho completo! Adiciona um presente gratuito"
+    "fulfilled_gift_condition": "Carrinho completo! Adiciona um presente gratuito",
+    "partial_savings": "Bom trabalho! Desbloqueaste uma oferta e poupaste {amount}. Continua a comprar para desbloquear ainda mais.",
+    "full_savings": "Ótimo trabalho! Desbloqueaste a oferta completa e poupaste {amount}.",
+    "free_gift_unlocked": "Ótimo trabalho! Desbloqueaste um presente grátis.",
+    "free_gift": "Brinde"
   },
   "promotion_slide_in": {
     "open_button": {

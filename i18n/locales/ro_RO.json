@@ -50,7 +50,11 @@
     "remaining_minimum_order_value": "Deblochează oferta! Cheltuie {amount} în plus, pentru a activa această ofertă.",
     "reached_minimum_order_value": "Felicitări! Ai deblocat această ofertă și ai economisit {amount}.",
     "fulfilled_promotion_condition": "Ai deblocat o ofertă specială! Adaugă în coș produsele eligibile, pentru a te bucura de beneficii.",
-    "fulfilled_gift_condition": "Valoarea coșului de cumpărături a fost atinsă! Adaugă un cadou gratuit"
+    "fulfilled_gift_condition": "Valoarea coșului de cumpărături a fost atinsă! Adaugă un cadou gratuit",
+    "partial_savings": "Bună treabă! Ai deblocat o ofertă și ai economisit {amount}. Continuă să faci cumpărături pentru a debloca și mai multe.",
+    "full_savings": "Bravo! Ai deblocat oferta completă și ai economisit {amount}.",
+    "free_gift_unlocked": "Bravo! Ai deblocat un cadou gratuit.",
+    "free_gift": "Cadou gratuit"
   },
   "promotion_slide_in": {
     "open_button": {

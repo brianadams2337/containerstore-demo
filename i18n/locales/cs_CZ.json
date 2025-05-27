@@ -50,7 +50,11 @@
     "remaining_minimum_order_value": "Odemkni svou nabídku! Pro aktivaci této nabídky zbývá utratit ještě {amount}.",
     "reached_minimum_order_value": "Gratulujeme! Tato nabídka je aktivovaná a ušetříš {amount}.",
     "fulfilled_promotion_condition": "Speciální nabídka je aktivovaná! Přidej vybrané produkty do košíku a užij si výhody.",
-    "fulfilled_gift_condition": "Hodnota nákupního košíku dosažena! Přidat dárek zdarma"
+    "fulfilled_gift_condition": "Hodnota nákupního košíku dosažena! Přidat dárek zdarma",
+    "partial_savings": "Skvělá práce! Odemkli jste nabídku a ušetřili jste {amount}. Pokračujte v nakupování a odemkněte ještě více.",
+    "full_savings": "Skvělá práce! Odemkli jste celou nabídku a ušetřili jste {amount}.",
+    "free_gift_unlocked": "Skvělá práce! Odemkli jste si dárek zdarma.",
+    "free_gift": "Dárek zdarma"
   },
   "promotion_slide_in": {
     "open_button": {

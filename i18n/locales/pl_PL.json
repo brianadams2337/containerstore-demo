@@ -50,7 +50,11 @@
     "remaining_minimum_order_value": "Odblokuj swoją ofertę! Wydaj {amount} więcej, aby aktywować tę promocję.",
     "reached_minimum_order_value": "Gratulacje! Udało Ci się odblokować ofertę i zaoszczędzić {amount}.",
     "fulfilled_promotion_condition": "Udało Ci się odblokować ofertę specjalną! Dodaj dostępne produkty do koszyka, aby cieszyć się korzyściami.",
-    "fulfilled_gift_condition": "Udało Ci się osiągnąć wystarczającą wartość koszyka! Dodaj darmowy prezent"
+    "fulfilled_gift_condition": "Udało Ci się osiągnąć wystarczającą wartość koszyka! Dodaj darmowy prezent",
+    "partial_savings": "Świetna robota! Odblokowałeś ofertę i zaoszczędziłeś {amount}. Kontynuuj zakupy, aby odblokować jeszcze więcej.",
+    "full_savings": "Świetna robota! Odblokowałeś pełną ofertę i zaoszczędziłeś {amount}.",
+    "free_gift_unlocked": "Świetna robota! Odblokowałeś darmowy prezent.",
+    "free_gift": "Darmowy prezent"
   },
   "promotion_slide_in": {
     "open_button": {

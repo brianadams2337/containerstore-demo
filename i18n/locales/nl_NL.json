@@ -50,7 +50,11 @@
     "remaining_minimum_order_value": "Ontgrendel! Besteed {amount} meer om deze promotie te activeren.",
     "reached_minimum_order_value": "Gefeliciteerd! Je hebt deze deal ontgrendeld en {amount} bespaard.",
     "fulfilled_promotion_condition": "Je hebt een speciale aanbieding ontgrendeld! Voeg producten die in aanmerking komen toe aan je winkelmandje om te profiteren van de voordelen.",
-    "fulfilled_gift_condition": "Winkelmandje bereikt! Voeg een gratis cadeau toe"
+    "fulfilled_gift_condition": "Winkelmandje bereikt! Voeg een gratis cadeau toe",
+    "partial_savings": "Goed gedaan! Je hebt een deal ontgrendeld en {amount} bespaard. Blijf shoppen om nog meer te ontgrendelen.",
+    "full_savings": "Goed gedaan! Je hebt de volledige deal ontgrendeld en {amount} opgespaard.",
+    "free_gift_unlocked": "Goed gedaan! Je hebt een gratis cadeau vrijgespeeld.",
+    "free_gift": "Gratis cadeau"
   },
   "promotion_slide_in": {
     "open_button": {

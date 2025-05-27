@@ -50,7 +50,11 @@
     "remaining_minimum_order_value": "Fırsatınızın kilidini açın! Bu promosyonu etkinleştirmek için {amount} daha harcayın.",
     "reached_minimum_order_value": "Tebrikler! Bu fırsatın kilidini açtınız ve {amount} tasarruf ettiniz.",
     "fulfilled_promotion_condition": "Özel bir teklifin kilidini açtınız! Avantajlardan yararlanmak için uygun ürünleri sepetinize ekleyin.",
-    "fulfilled_gift_condition": "Alışveriş sepetine ulaşıldı! Ücretsiz bir hediye ekleyin"
+    "fulfilled_gift_condition": "Alışveriş sepetine ulaşıldı! Ücretsiz bir hediye ekleyin",
+    "partial_savings": "Aferin! Bir fırsatın kilidini açtın ve {amount} tasarruf ettin. Daha fazlasını açmak için alışverişine devam et.",
+    "full_savings": "Harika iş çıkardınız! Tam paketin kilidini açtınız ve {amount} adresinde tasarruf ettiniz.",
+    "free_gift_unlocked": "Harika iş çıkardınız! Ücretsiz hediyenizin kilidini açtınız.",
+    "free_gift": "Ücretsiz hediye"
   },
   "promotion_slide_in": {
     "open_button": {
