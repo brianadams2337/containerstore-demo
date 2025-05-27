@@ -3763,10 +3763,10 @@
   dependencies:
     prettier-config-standard "^7.0.0"
 
-"@scayle/storefront-api@18.7.0":
-  version "18.7.0"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-api/-/storefront-api-18.7.0.tgz#fb8e54f66afc814027bb81375a4e01ba03165f87"
-  integrity sha512-zDfi+Q6FqrKPCC1m5DYR6Yhng+3MQrlyvCGZZZm+0f/fT+4pJ/giWI1s6ttOl7C7iWZXXlSmime+IRpWt2T8yA==
+"@scayle/storefront-api@18.8.0":
+  version "18.8.0"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-api/-/storefront-api-18.8.0.tgz#01426e6e5f9980c3551013a3f521d675c5c83452"
+  integrity sha512-hAY1WJ7VSWtoC8Tvfbzozp/WOK/OseKZfpdXVNH9Jbv7dSFMd05CZXw4ALQWVDBLDo6b49mdrwwX8K4GeKNrug==
   dependencies:
     utility-types "3.11.0"
 
@@ -3775,12 +3775,12 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-basket/-/storefront-basket-0.3.0.tgz#a77d08f2ac0946d0a42a81f7d4fe68324a6afe3b"
   integrity sha512-XV7a/nygUpq5GPOOr5GRQ2+akmGrCjSuKsW5yN7YS9MWn7GOJzhSDPhN6Lhiw3arAWYFrMXu2RMeaWF64HAt2A==
 
-"@scayle/storefront-core@8.28.1":
-  version "8.28.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-8.28.1.tgz#e92a73ca782a88ce2001185143c6d456e8a3a5db"
-  integrity sha512-n0Ro+qdHHe0G5HcDXu1r1cMlmsJ0M5auGehjulX8rvzxLmruKQfW5TU1wP6Wo18Oa5hzqK/8565h/N4o/0cZeg==
+"@scayle/storefront-core@8.28.2":
+  version "8.28.2"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-8.28.2.tgz#9bc9e4672207d290291775048da56b0d26a7db07"
+  integrity sha512-AlIWpGvytoNwyX9by3viwq0THMfFoSHGpemAPzSG/yBAHo3xuTuiquLsB/b7Mf38Fb+6WhPbGRq4uDPavGE5Ww==
   dependencies:
-    "@scayle/storefront-api" "18.7.0"
+    "@scayle/storefront-api" "18.8.0"
     "@scayle/unstorage-scayle-kv-driver" "0.1.2"
     crypto-js "^4.2.0"
     hookable "^5.5.3"
@@ -3800,17 +3800,17 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-navigation/-/storefront-navigation-0.3.0.tgz#0ea9261fbb8dd5fd69d8bc5787c126bb0b927e17"
   integrity sha512-cSBEibsw2DxlpLoyKSdUqfCOjnNbjule3o7dy4wurggwhzTcZ6PmUx+i7rdSTV77OcqzVO/8e0VcYHFtdh6Vhw==
 
-"@scayle/storefront-nuxt@8.28.1":
-  version "8.28.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.28.1.tgz#61666147292feb8649d7ea532f46d06b61222697"
-  integrity sha512-uhZZkUlZZNxGz/HiNDKtDcLgx5/4lU8qf7Xu1iTDhBrumO3Kt6hn52+euzAyCYKav2ktl5GUUddjn+gW2bJdAw==
+"@scayle/storefront-nuxt@8.28.2":
+  version "8.28.2"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.28.2.tgz#4e0320b7c7ef6094f0a86bf9a811eef0f2d7477b"
+  integrity sha512-CvyaMRHMLlvQ6pT/dPJHvVxTvHaSGPInqCYgsGPLBdbumMZ6BQTMnf8AbYhDQd5CZeAr8FTbX33qxO9De/8SKA==
   dependencies:
     "@opentelemetry/api" "^1.9.0"
     "@scayle/h3-session" "0.6.1"
-    "@scayle/storefront-core" "8.28.1"
+    "@scayle/storefront-core" "8.28.2"
     "@scayle/unstorage-compression-driver" "^0.2.7"
     "@vercel/nft" "0.29.3"
-    "@vueuse/core" "13.2.0"
+    "@vueuse/core" "13.3.0"
     consola "^3.2.3"
     core-js "^3.37.1"
     defu "^6.1.4"
@@ -4869,6 +4869,15 @@
     "@vueuse/metadata" "13.2.0"
     "@vueuse/shared" "13.2.0"
 
+"@vueuse/core@13.3.0":
+  version "13.3.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-13.3.0.tgz#9932afcd5d83f4b25f73313b91a94f3aef57c479"
+  integrity sha512-uYRz5oEfebHCoRhK4moXFM3NSCd5vu2XMLOq/Riz5FdqZMy2RvBtazdtL3gEcmDyqkztDe9ZP/zymObMIbiYSg==
+  dependencies:
+    "@types/web-bluetooth" "^0.0.21"
+    "@vueuse/metadata" "13.3.0"
+    "@vueuse/shared" "13.3.0"
+
 "@vueuse/gesture@2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@vueuse/gesture/-/gesture-2.0.0.tgz#1dcead0a2748f9b32f586f559d291c70a11a492c"
@@ -4892,6 +4901,11 @@
   resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-13.2.0.tgz#a839028d43c3206b674dd1d59a77b9c80f4d9d5f"
   integrity sha512-kPpzuQCU0+D8DZCzK0iPpIcXI+6ufWSgwnjJ6//GNpEn+SHViaCtR+XurzORChSgvpHO9YC8gGM97Y1kB+UabA==
 
+"@vueuse/metadata@13.3.0":
+  version "13.3.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-13.3.0.tgz#b75185e304f3301e449ebcd55298db54a276b4fa"
+  integrity sha512-42IzJIOYCKIb0Yjv1JfaKpx8JlCiTmtCWrPxt7Ja6Wzoq0h79+YVXmBV03N966KEmDEESTbp5R/qO3AB5BDnGw==
+
 "@vueuse/nuxt@13.2.0":
   version "13.2.0"
   resolved "https://registry.yarnpkg.com/@vueuse/nuxt/-/nuxt-13.2.0.tgz#9f34b5e160ca68bd345828f04579af3db123a9c6"
@@ -4906,6 +4920,11 @@
   version "13.2.0"
   resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-13.2.0.tgz#26d89103201bafc7daa4dfc5bc92b512526b788b"
   integrity sha512-vx9ZPDF5HcU9up3Jgt3G62dMUfZEdk6tLyBAHYAG4F4n73vpaA7J5hdncDI/lS9Vm7GA/FPlbOmh9TrDZROTpg==
+
+"@vueuse/shared@13.3.0":
+  version "13.3.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-13.3.0.tgz#b74f796d584cd1e62547bedb29bbbcf06e434671"
+  integrity sha512-L1QKsF0Eg9tiZSFXTgodYnu0Rsa2P0En2LuLrIs/jgrkyiDuJSsPZK+tx+wU0mMsYHUYEjNsuE41uqqkuR8VhA==
 
 "@whatwg-node/disposablestack@^0.0.6":
   version "0.0.6"
