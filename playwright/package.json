@@ -24,7 +24,6 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "lint:ci": "eslint . --format gitlab",
     "lint:fix": "eslint . --fix",
     "e2e:happy": "playwright test ./tests/e2e-happy-path.spec.ts",
     "e2e:lighthouse": "playwright test ./tests/lighthouse/*.ts --project chromium",

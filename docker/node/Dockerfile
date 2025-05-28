@@ -1,39 +1,37 @@
 # SCAYLE Storefront Application Dockerfile for Node runtime
 
 # Build
-FROM node:22.11.0-alpine3.20@sha256:b64ced2e7cd0a4816699fe308ce6e8a08ccba463c757c00c14cd372e3d2c763e AS build
+FROM node:22.16.0-alpine3.20@sha256:2289fb1fba0f4633b08ec47b94a89c7e20b829fc5679f9b7b298eaa2f1ed8b7e AS build
 
 ARG VERSION
 ARG CMS_PROVIDER
 ARG GIT_REPOSITORY_URL
 ARG GIT_COMMIT_SHA
 
-ENV VERSION=${VERSION}
-ENV OTEL_RESOURCE_ATTRIBUTES=git.commit.sha=${GIT_COMMIT_SHA},git.repository_url=${GIT_REPOSITORY_URL}
-
 WORKDIR /app
 
-COPY package.json /app
-COPY yarn.lock /app
-COPY patches /app/patches
+COPY package.json yarn.lock patches/ ./
+
+ENV VERSION=${VERSION} \
+    CMS_PROVIDER=${CMS_PROVIDER} \
+    OTEL_ENABLED=true \
+    OTEL_RESOURCE_ATTRIBUTES=git.commit.sha=${GIT_COMMIT_SHA},git.repository_url=${GIT_REPOSITORY_URL}
 
 RUN yarn install --frozen-lockfile
 
-COPY . /app
-
-ENV CMS_PROVIDER=$CMS_PROVIDER
-ENV OTEL_ENABLED=true
+COPY . .
 
 RUN yarn nuxt build
 
 # Run
-FROM node:22.11.0-alpine3.20@sha256:b64ced2e7cd0a4816699fe308ce6e8a08ccba463c757c00c14cd372e3d2c763e
+FROM node:22.16.0-alpine3.20@sha256:2289fb1fba0f4633b08ec47b94a89c7e20b829fc5679f9b7b298eaa2f1ed8b7e
 
 WORKDIR /app
 
 COPY --from=build /app/.output /app/.output
 
-RUN apk add --no-cache jq bash
+# Deleting potentially cached temporary data from apk
+RUN apk add --no-cache jq bash && rm -rf /var/cache/apk/*
 COPY ./docker/node/entrypoint.sh /
 
 ENTRYPOINT ["/entrypoint.sh"]

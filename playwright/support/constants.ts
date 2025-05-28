@@ -94,8 +94,8 @@ export const LIGHTHOUSE_AUDIT_PATHS = {
  */
 export const TEST_USERS = {
   /**
-   Dedicated test user for Chromium in tests that are prone to conflicts (e.g. adding product to Basket in parallel for all browsers). 
-  This user is also used as a default test user accross the Storefront Boilerplate end-to-end tests suite.
+   Dedicated test user for Chromium in tests that are prone to conflicts (e.g. adding product to Basket in parallel for all browsers).
+  This user is also used as a default test user across the Storefront Boilerplate end-to-end tests suite.
    */
   testUserEmail1: process.env.TEST_USER_EMAIL1 as string,
   /** Dedicated test user for desktop Firefox. */

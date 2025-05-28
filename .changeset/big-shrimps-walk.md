@@ -8,7 +8,7 @@ This enhancement was achieved by setting a fixed key in the PLP using:
 
 ```typescript
 definePageMeta({
-  //...
+  // ...
   key: 'PLP',
 })
 ```

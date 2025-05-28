@@ -1,6 +1,6 @@
 # Storefront Boilerplate / End-to-End Testing with Playwright
 
-- [Official Playwright Documentation ](https://playwright.dev/docs/intro)
+- [Official Playwright Documentation](https://playwright.dev/docs/intro)
 
 ## In a nutshell
 
@@ -18,7 +18,7 @@
 
 > Playwright key features are:
 >
-> - **Cross-browser:** Playwright supports all modern renedering engines including Chromium, Firefox and WebKit, using single API.
+> - **Cross-browser:** Playwright supports all modern rendering engines including Chromium, Firefox and WebKit, using single API.
 > - **Cross-platform:** Test on Windows, Linux or MacOS, locally or on CI, in headless or headed mode.
 > - **Cross-language:** Use the Playwright API in TypeScript, JavaScript, Python, .Net or Java.
 > - **Test Mobile Web:** Native mobile emulation of Google Chrome for Android and Mobile Safari for iOS.

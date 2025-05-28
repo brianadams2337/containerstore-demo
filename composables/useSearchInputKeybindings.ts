@@ -110,7 +110,7 @@ export function useSearchInputKeybindings(
     { target: input },
   )
 
-  //SearchResults
+  // SearchResults
   // Allow continuing typing when option is focused
   onKeyStroke(
     (event) => {
