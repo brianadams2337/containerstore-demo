@@ -48,9 +48,7 @@
   },
   "promotion_progress_wrapper": {
     "remaining_minimum_order_value": "Oldd fel az ajánlatod! Vásárolj még {amount} értékben, hogy aktiváld ezt a promóciót.",
-    "reached_minimum_order_value": "Gratulálunk! Feloldottad az ajánlatot, és {amount} összeget spóroltál meg.",
     "fulfilled_promotion_condition": "Egy exkluzív ajánlatot oldottál fel! Add hozzá a megfelelő termékeket a kosaradhoz, és élvezd az előnyöket.",
-    "fulfilled_gift_condition": "Elérted a szükséges kosárértéket! Válassz egy ingyenes ajándékot",
     "partial_savings": "Szép munka! Feloldott egy ajánlatot és {amount} megtakarított. Folytassa a vásárlást, hogy még többet feloldhasson.",
     "full_savings": "Remek munka! Feloldottad a teljes ajánlatot és megtakarítottál {amount}.",
     "free_gift_unlocked": "Szép munka! Feloldott egy ingyenes ajándékot.",

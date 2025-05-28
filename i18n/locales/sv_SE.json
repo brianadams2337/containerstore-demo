@@ -48,9 +48,7 @@
   },
   "promotion_progress_wrapper": {
     "remaining_minimum_order_value": "Lås upp din deal! Handla för {amount} mer för att aktivera kampanjen.",
-    "reached_minimum_order_value": "Grattis! Du har låst upp detta erbjudande och sparat {amount}.",
     "fulfilled_promotion_condition": "Du har låst upp ett specialerbjudande! Lägg till kvalificerade produkter i din varukorg för att ta del av förmånerna.",
-    "fulfilled_gift_condition": "Varukorgen är full! Lägg till en gratisgåva",
     "partial_savings": "Bra jobbat! Du har låst upp ett erbjudande och sparat {amount}. Fortsätt handla för att låsa upp ännu fler erbjudanden.",
     "full_savings": "Bra jobbat! Du har låst upp hela erbjudandet och sparat {amount}.",
     "free_gift_unlocked": "Bra jobbat! Du har låst upp en gratis present.",

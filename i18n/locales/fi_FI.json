@@ -48,9 +48,7 @@
   },
   "promotion_progress_wrapper": {
     "remaining_minimum_order_value": "Aktivoi tarjouksesi! Käytä vielä {amount} aktivoidaksesi tämän kampanjan.",
-    "reached_minimum_order_value": "Onnittelut! Olet aktivoinut tämän tarjouksen ja säästät {amount}.",
     "fulfilled_promotion_condition": "Olet aktivoinut erikoistarjouksen! Lisää vaatimukset täyttäviä tuotteita ostoskoriin nauttiaksesi eduista.",
-    "fulfilled_gift_condition": "Ostoskori on saavutettu! Lisää ilmainen lahja",
     "partial_savings": "Hienoa! Olet avannut tarjouksen ja säästänyt {amount}. Jatka ostoksia avataksesi lisää tarjouksia.",
     "full_savings": "Hienoa! Olet avannut koko tarjouksen ja säästänyt {amount}.",
     "free_gift_unlocked": "Hienoa! Olet avannut ilmaisen lahjan.",

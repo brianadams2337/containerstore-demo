@@ -48,9 +48,7 @@
   },
   "promotion_progress_wrapper": {
     "remaining_minimum_order_value": "Débloquez votre offre ! Dépensez {amount} de plus pour activer cette promo.",
-    "reached_minimum_order_value": "Félicitations ! Vous avez débloqué cette offre et économisé {amount}.",
     "fulfilled_promotion_condition": "Vous avez débloqué une offre spéciale ! Ajoutez les produits éligibles à votre panier pour profiter des avantages.",
-    "fulfilled_gift_condition": "Niveau requis du panier atteint ! Ajoutez un cadeau gratuit",
     "partial_savings": "Bravo ! Tu as débloqué une offre et économisé {amount}. Continue tes achats pour débloquer encore plus d'offres.",
     "full_savings": "Bravo ! Tu as débloqué l'offre complète et économisé {amount}.",
     "free_gift_unlocked": "Bravo ! Tu as débloqué un cadeau gratuit.",

@@ -48,9 +48,7 @@
   },
   "promotion_progress_wrapper": {
     "remaining_minimum_order_value": "Pasinaudok pasiūlymu! Įsigyk dar už {amount}, kad aktyvuotum šią akciją.",
-    "reached_minimum_order_value": "Sveikiname! Pasinaudojai šiuo pasiūlymu ir sutaupei {amount}.",
     "fulfilled_promotion_condition": "Tu atrakinai specialų pasiūlymą! Į krepšelį pridėk reikalavimus atitinkančių produktų, kad galėtum pasinaudoti jo privalumais.",
-    "fulfilled_gift_condition": "Pirkinių krepšelis pasiektas! Pridėk nemokamą dovaną",
     "partial_savings": "Puikus darbas! Jūs atrakino pasiūlymą ir sutaupėte {amount}. Tęskite apsipirkimą, kad atrakintumėte dar daugiau.",
     "full_savings": "Puikus darbas! Jūs atrakino visą pasiūlymą ir sutaupėte {amount}.",
     "free_gift_unlocked": "Puikus darbas! Jūs atrakino nemokamą dovaną.",

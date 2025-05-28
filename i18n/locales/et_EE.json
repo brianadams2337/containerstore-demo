@@ -48,9 +48,7 @@
   },
   "promotion_progress_wrapper": {
     "remaining_minimum_order_value": "Ava oma eripakkumine! Selle kampaania aktiveerimiseks kulutage veel {amount}.",
-    "reached_minimum_order_value": "Palju õnne! Te olete selle tehingu lahti lukustanud ja salvestanud {amount}.",
     "fulfilled_promotion_condition": "Olete avanud eripakkumise! Lisage sobilikud tooted ostukorvi, et kasutada pakkumist.",
-    "fulfilled_gift_condition": "Ostukorv täidetud! Lisa tasuta kingitus",
     "partial_savings": "Hea töö! Oled avanud soodushinnaga toote ja säästnud {amount}. Jätka ostlemist, et avada veelgi rohkem soodushinnaga tooteid.",
     "full_savings": "Suurepärane töö! Oled avanud kogu pakkumise ja säästnud {amount}.",
     "free_gift_unlocked": "Suurepärane töö! Oled avanud tasuta kingituse.",

@@ -48,9 +48,7 @@
   },
   "promotion_progress_wrapper": {
     "remaining_minimum_order_value": "Odkleni svojo ponudbo! Za aktivacijo te ponudbe porabuješ še {amount}.",
-    "reached_minimum_order_value": "Čestitamo! Ponudba je odklenjena in prihranjeno je {amount}.",
     "fulfilled_promotion_condition": "Osebna ponudba je odklenjena! V košarico dodaj izdelke, ki izpolnjujejo pogoje, in uživaj v ugodnostih.",
-    "fulfilled_gift_condition": "Košarica je polna! Dodaj brezplačno darilo.",
     "partial_savings": "Dobra dela! Odklenili ste ponudbo in prihranili {amount}. Nadaljujte z nakupovanjem, da odklenete še več.",
     "full_savings": "Odlično delo! Odklenili ste celoten paket in prihranili {amount}.",
     "free_gift_unlocked": "Odlično delo! Odklenili ste brezplačno darilo.",

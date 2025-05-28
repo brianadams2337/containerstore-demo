@@ -48,9 +48,7 @@
   },
   "promotion_progress_wrapper": {
     "remaining_minimum_order_value": "Hol dir dein Angebot! Gib noch {amount} mehr aus, um diese Aktion freizuschalten.",
-    "reached_minimum_order_value": "Herzlichen Glückwunsch! Du hast dieses Angebot freigeschaltet und {amount} gespart.",
     "fulfilled_promotion_condition": "Du hast ein Sonderangebot freigeschaltet! Lege alle Produkte, für die das Angebot gilt, in deinen Warenkorb, um die Vorteile zu nutzen.",
-    "fulfilled_gift_condition": "Warenkorbwert erreicht! Füge ein Gratisgeschenk hinzu",
     "partial_savings": "Toll gemacht! Du hast ein Angebot freigeschaltet und {amount} gespart. Mach weiter mit dem Shoppen, um noch mehr freizuschalten.",
     "full_savings": "Super gemacht! Du hast das komplette Angebot freigeschaltet und {amount} gespart.",
     "free_gift_unlocked": "Super gemacht! Du hast ein Gratisgeschenk freigeschaltet.",

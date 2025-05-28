@@ -48,9 +48,7 @@
   },
   "promotion_progress_wrapper": {
     "remaining_minimum_order_value": "Izmanto savu piedāvājumu! Iztērē vēl {amount}, lai to aktivizētu.",
-    "reached_minimum_order_value": "Apsveicam! Tu aktivizēji šo piedāvājumu un ietaupīji {amount}.",
     "fulfilled_promotion_condition": "Tu aktivizēji īpašu piedāvājumu! Pievieno atbilstošos produktus savam iepirkumu grozam, lai izbaudītu priekšrocības.",
-    "fulfilled_gift_condition": "Iepirkumu groza vērtība sasniegta! Pievieno bezmaksas dāvanu.",
     "partial_savings": "Labi padarīts! Jūs esat atbloķējis piedāvājumu un ietaupījis {amount}. Turpiniet iepirkties, lai atbloķētu vēl vairāk.",
     "full_savings": "Lieliski! Jūs esat atbloķējis pilnu piedāvājumu un ietaupījis {amount}.",
     "free_gift_unlocked": "Lieliski! Jūs esat atbloķējis bezmaksas dāvanu.",
