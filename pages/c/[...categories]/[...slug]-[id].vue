@@ -36,7 +36,7 @@
           </div>
         </div>
         <SFCategoryNavigationSlider
-          v-if="rootCategories.length"
+          v-if="rootCategories?.length"
           :all-categories="flattenCategoryTree(rootCategories)"
           :current-category="currentCategory"
           class="mb-3.5 mt-2.5 md:hidden"
