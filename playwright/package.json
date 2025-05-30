@@ -13,7 +13,7 @@
   "devDependencies": {
     "@playwright/test": "1.52.0",
     "@scayle/eslint-config-storefront": "4.5.3",
-    "@types/node": "22.15.27",
+    "@types/node": "22.15.28",
     "dotenv": "16.5.0",
     "eslint": "9.27.0",
     "eslint-plugin-playwright": "2.2.0",
