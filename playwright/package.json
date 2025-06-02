@@ -1,7 +1,8 @@
 {
   "name": "playwright",
+  "author": "SCAYLE Commerce Engine",
+  "description": "End-to-End test suite for the SCAYLE Storefront Application.",
   "version": "1.0.0",
-  "main": "index.js",
   "directories": {
     "test": "tests"
   },
@@ -29,8 +30,5 @@
     "e2e:lighthouse": "playwright test ./tests/lighthouse/*.ts --project chromium",
     "e2e:test": "playwright test ./tests/e2e*.spec.ts",
     "e2e:ui": "playwright test --ui"
-  },
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  }
 }
