@@ -38,7 +38,7 @@ export function useSubscription(
 
   const productPromise = useProduct(
     {
-      params: {
+      params: () => ({
         id: toValue(product).id,
         with: {
           variants: {
@@ -54,7 +54,7 @@ export function useSubscription(
           },
         },
         pricePromotionKey: toValue(pricePromotionKey),
-      },
+      }),
       options: {
         lazy: true,
       },
