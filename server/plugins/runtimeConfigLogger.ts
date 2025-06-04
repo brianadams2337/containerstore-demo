@@ -1,7 +1,7 @@
 import { purifySensitiveData } from '@scayle/storefront-nuxt'
 // NOTE: We need to import here from the Nuxt server-specific #imports to mitigate
 // unresolved dependencies in the imported composables from Nitro(nitropack).
-// This results in `nuxi typecheck` not being able to properly infer the correct
+// This results in `nuxt typecheck` not being able to properly infer the correct
 // import and throw an error without explicit `@ts-expect-error`
 // @ts-expect-error TS2724: '"#imports"' has no exported member named 'defineNitroPlugin'. Did you mean 'defineNuxtPlugin'?
 import { defineNitroPlugin, useRuntimeConfig } from '#imports'

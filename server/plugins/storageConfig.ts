@@ -4,7 +4,7 @@ import vercelKV from 'unstorage/drivers/vercel-kv'
 import { stringToBoolean } from '../../utils/boolean'
 // NOTE: We need to import here from the Nuxt server-specific #imports to mitigate
 // unresolved dependencies in the imported composables from Nitro(nitropack).
-// This results in `nuxi typecheck` not being able to properly infer the correct
+// This results in `nuxt typecheck` not being able to properly infer the correct
 // import and throw an error without explicit `@ts-expect-error`
 // @ts-expect-error: TS2578 Cand find defineNitroPlugin and useStorage as exported members of '#imports'
 import { defineNitroPlugin, useStorage } from '#imports'
