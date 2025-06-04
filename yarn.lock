@@ -3944,7 +3944,15 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-search/-/storefront-search-0.3.0.tgz#92ff5172fa5f0ab0524330d4471160587a3ed1c4"
   integrity sha512-XDXztwewYlZhKNaodybzyeTs+F27hLIApZ+BDlU34gWtX6FrsYXgy7cTC4a5P0ll7YUY3IhKjNNcy3JS6+0wlg==
 
-"@scayle/unstorage-compression-driver@0.2.7", "@scayle/unstorage-compression-driver@^0.2.7":
+"@scayle/unstorage-compression-driver@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@scayle/unstorage-compression-driver/-/unstorage-compression-driver-1.0.0.tgz#18d0683bf8d27087c15217b41fc2a61fcb249faa"
+  integrity sha512-A5/oEKQ2C6UCpElNxgbATKoc4BmnjQs+vEK89e/4P2P4pCJKL8RgKwIJmPgNUXRsrBECY1fThN9uyJxRuEpSFA==
+  dependencies:
+    destr "2.0.5"
+    unstorage "1.16.0"
+
+"@scayle/unstorage-compression-driver@^0.2.7":
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/@scayle/unstorage-compression-driver/-/unstorage-compression-driver-0.2.7.tgz#248f2eea71f795993a340ccfcdecdca5c47f87dc"
   integrity sha512-CLqNI9owKI1zApT5Cnx++IbH6llqQu+2Qb+MghXjSYb0wsC7o43Z39l/IsHiXm9riTvWyblbI3gakHPQzBmtGA==
