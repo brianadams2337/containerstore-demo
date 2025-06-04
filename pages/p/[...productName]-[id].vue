@@ -88,7 +88,9 @@
         :title="$t('global.product_recommendation')"
       >
         <template #header="{ title: recommendationTitle }">
-          <h2 class="mb-6 text-2xl font-medium text-gray-900 md:px-2">
+          <h2
+            class="mb-6 truncate pr-20 text-2xl font-medium text-gray-900 md:px-2"
+          >
             {{ recommendationTitle }}
           </h2>
         </template>

@@ -15,7 +15,7 @@
         :class="{ hidden: !isScrollable }"
       >
         <SFButton
-          class="rounded-l-full"
+          class="rounded-l-full border-none !p-2"
           :disabled="!isPrevEnabled"
           size="sm"
           variant="slider"
@@ -25,7 +25,7 @@
           <IconChevronLeft class="size-4 w-5" />
         </SFButton>
         <SFButton
-          class="rounded-r-full"
+          class="rounded-r-full border-none !p-2"
           :disabled="!isNextEnabled"
           :aria-label="$t('slider.got_to_next_item')"
           size="sm"
