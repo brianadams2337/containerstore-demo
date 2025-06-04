@@ -4007,6 +4007,11 @@
   resolved "https://registry.yarnpkg.com/@storyblok/richtext/-/richtext-3.2.0.tgz#6eee61aba593943113b067eb29f3d210f0ce77b8"
   integrity sha512-koVGDv1HtiI5vymE5fzRB1VO1PNguj+RSfHI4zCy2+90pRoqZbsUCR8V2TaNl7Pg8R1oOkFZnbAxdt9Z4xoxDg==
 
+"@storyblok/richtext@3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@storyblok/richtext/-/richtext-3.3.0.tgz#f8e9b6ac10655019ce8788950e777e091578375d"
+  integrity sha512-YUwwKVW1dYyx1/Sa389TIkGbtBj7/GZI+TBVdTAjTsccUq/BoIALFVwMInI81mM9ZboaFoiukCuqGMMuDOVQBw==
+
 "@storyblok/vue@9.0.0", "@storyblok/vue@^9.0.0":
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/@storyblok/vue/-/vue-9.0.0.tgz#5c0c90e000e2c2ab1260c4e5f7957cdeaac0f537"
