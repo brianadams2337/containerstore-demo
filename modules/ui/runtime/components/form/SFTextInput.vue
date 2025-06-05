@@ -21,6 +21,8 @@
           readonly,
         'border-2 border-status-error bg-white !text-status-error shadow-none !outline-0 hover:border-status-error focus:border-status-error':
           hasErrors,
+        'appearance-none [&::-webkit-date-and-time-value]:text-left':
+          type === 'date',
       }"
     />
     <label
