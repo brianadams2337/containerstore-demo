@@ -6,16 +6,16 @@ export const LIGHTHOUSE_THRESHOLDS = {
 }
 
 /**
- * Predefined filter parameters for testing PLP deeplinks.
+ * Predefined filter parameters for testing PLP deep links.
  * Currently configured with "sale": true and "maxPrice": 4000 for testing purposes.
- * This object is used in tests like "C2139744: Verify PLP Filters deeplink"
+ * This object is used in tests like "C2139744: Verify PLP Filters deep link"
  * within `/playwright/tests/e2e-Plp.spec.ts`. Extend this object to include
- * other filter keys (e.g., color, size) to broaden deeplink filter testing.
+ * other filter keys (e.g., color, size) to broaden deep link filter testing.
  *
- * Note: if this object is extended with additional filters, the test "C2139744: Verify PLP Filters deeplink"
+ * Note: if this object is extended with additional filters, the test "C2139744: Verify PLP Filters deep link"
  * should be adjusted accordingly.
  */
-export const PLP_FILTER_DEEPLINK = {
+export const PLP_FILTER_DEEP_LINK = {
   sale: true,
   maxPrice: 4000,
 }

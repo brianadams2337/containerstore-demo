@@ -1,4 +1,4 @@
-import { test as base } from '@playwright/test'
+import { test as baseTest } from '@playwright/test'
 import { HomePage } from '../page-objects/homePage'
 import { MainNavigation } from '../page-objects/components/mainNavigation'
 import { ProductListingPage } from '../page-objects/productListingPage'
@@ -63,7 +63,7 @@ interface Fixtures {
 
 export type OutputMode = 'json' | 'html' | 'csv'
 
-export const test = base.extend<Fixtures>({
+export const test = baseTest.extend<Fixtures>({
   rpc: async ({ page }, use) => {
     await use(new RPC(page))
   },
@@ -168,8 +168,8 @@ export const test = base.extend<Fixtures>({
     await use(freeProductModal)
   },
   orderSuccessPage: async ({ page }, use) => {
-    const orderSucessPage = new OrderSuccessPage(page)
-    await use(orderSucessPage)
+    const orderSuccessPage = new OrderSuccessPage(page)
+    await use(orderSuccessPage)
   },
   skipLinks: async ({ page }, use) => {
     const skipLinks = new SkipLinks(page)
@@ -180,4 +180,5 @@ export const test = base.extend<Fixtures>({
     await use(errorPage)
   },
 })
+
 export { expect } from '@playwright/test'

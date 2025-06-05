@@ -12,7 +12,7 @@ export default defineVitestConfig({
       './test/vitest-setup/i18n.ts',
     ],
     globals: true,
-    include: ['**/*.test.?(c|m)[jt]s?(x)'],
+    exclude: [...configDefaults.exclude, '**/playwright/**'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'cobertura'],
