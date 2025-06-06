@@ -1,6 +1,6 @@
 import { expect, test } from '../fixtures/fixtures'
 import {
-  PLP_FILTER_DEEPLINK,
+  PLP_FILTER_DEEP_LINK,
   SORTING,
   PLP_TEST_DATA,
 } from '../support/constants'
@@ -209,7 +209,7 @@ test('C2139744: Verify PLP Filters deeplink', async ({
     await mainNavigation.navigateToPlpMainCategory()
   }
   await breadcrumb.breadcrumbCategoryActive.waitFor()
-  await productListingPage.addFiltersToPLP(PLP_FILTER_DEEPLINK)
+  await productListingPage.addFiltersToPLP(PLP_FILTER_DEEP_LINK)
   await countryDetector.closeModal()
   await expect(filters.filterButton.first()).toContainText('2')
   await filters.openFilters()
@@ -432,7 +432,7 @@ test('C2139182: Verify PLP SEO data', async ({
     })
   })
   await test.step('Navigate to PLP with applied filters and check SEO data', async () => {
-    await productListingPage.addFiltersToPLP(PLP_FILTER_DEEPLINK)
+    await productListingPage.addFiltersToPLP(PLP_FILTER_DEEP_LINK)
     await countryDetector.closeModal()
     await productListingPage.h1.waitFor()
     await verifySeoMetaTags(page, {
