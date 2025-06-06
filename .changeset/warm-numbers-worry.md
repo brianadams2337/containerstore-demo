@@ -2,4 +2,4 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[UI\]** Fix broken close button modal UI within `SFFilterHeader` and `SFStoreLocatorSlideIn` components.
+**\[UI\]** Resolved a styling issue that caused a broken appearance for the close button within the `SFFilterHeader` and `SFStoreLocatorSlideIn` components.

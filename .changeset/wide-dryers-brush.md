@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[E2E\]** Increased Reliability of end-to-end tests using navigation to PLP. To further stabilize them, an additional wait for PLP Breadcrumb DOM element is added. This prevents tests from failing due to timing issues and ensures consistent execution.
+**\[E2E\]** To further improve the stability of end-to-end tests that navigate to the Product Listing Page, an additional wait condition has been added.
+Tests will now explicitly wait for the PLP breadcrumb element to be visible, preventing failures caused by race conditions or slow page loads.

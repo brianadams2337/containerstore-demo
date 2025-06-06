@@ -2,4 +2,4 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Basket\]** Removed the `useBasketItem` composable as it no longer contained any functionality.
+**\[Basket\]** To improve code maintainability, the empty and unused `useBasketItem` composable has been removed from the codebase.

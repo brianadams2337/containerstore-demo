@@ -2,7 +2,8 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Build\]** Extended the `.dockerignore` file to avoid copying irrelevant files.
+**\[Build\]** To optimize the final Docker image size and build speed, the `.dockerignore` file has been extended.
+This prevents development files, such as the Playwright test suite, documentation, and local environment configurations, from being unnecessarily copied into the build context.
 
 - `/playwright`
 - `README.md`

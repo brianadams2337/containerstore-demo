@@ -2,4 +2,4 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Accessibility\]** Add a hidden label to the search input.
+**\[Accessibility\]** To improve screen reader support, a visually hidden but accessible label has been added to the main search input.

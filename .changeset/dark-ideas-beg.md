@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[UI\]** Resolved a rendering issue with the empty state icon on the wishlist page. The root cause was conflicting SVG ID attributes, which have now been made unique to prevent DOM collisions.
+**\[UI\]** Resolved a DOM collision issue by ensuring the SVG ID attribute for the empty state icon is unique.
+This fixes a consequential bug where the icon failed to render correctly.

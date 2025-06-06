@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[E2E\]** Implemented 404 Error Page test. Added an end-to-end test within `e2e_Homepage.spec.ts` to verify the functionality of the "Page Not Found" (404) error page. Test opens the Homepage, navigates to non-existing route (`/non-existing-route`) and verifies that the proper error page is loaded. The page should contain the correct error code (404) and "Continue shopping" button.
+**\[E2E\]** Added an automated test to validate the behavior of our 404 "Page Not Found" error handling.
+The test simulates a user navigating to an invalid URL and asserts that the correct error page is displayed with the proper 404 code and a "Continue shopping" button.

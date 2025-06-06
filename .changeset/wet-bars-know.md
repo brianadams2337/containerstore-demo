@@ -2,5 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Architecture\]** Removed the `useFilterSlideIn` composable wrapper to simplify the codebase,
-as it introduced an unnecessary layer of abstraction without adding significant value.
+**\[Architecture\]** To simplify the codebase, the `useFilterSlideIn` composable has been removed.
+Its logic was inlined, as the wrapper was an unnecessary layer of abstraction.

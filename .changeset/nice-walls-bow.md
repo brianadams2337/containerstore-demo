@@ -2,4 +2,4 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Promotions\]** Removed price details from the promotion gift selection modal.
+**\[Promotions\]** The promotional gift selection modal has been streamlined by removing price details from the available gift options.

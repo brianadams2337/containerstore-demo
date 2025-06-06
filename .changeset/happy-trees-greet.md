@@ -2,6 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Orders\]** Added the `SFOrderStatus` component, designed to elegantly display
-order statuses with corresponding labels and colors. This enhancement improves
-clarity and consistency across both the order list and order detail pages.
+**\[Orders\]** To improve clarity for users, the new `SFOrderStatus` component now displays order statuses with consistent, color-coded labels.
+This enhancement is applied to both the order list and order detail views.

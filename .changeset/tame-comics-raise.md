@@ -2,4 +2,4 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Product Detail Page\]** Fixed the cut-off focus border on the breadcrumbs.
+**\[PDP\]** Resolved a styling issue where the focus outline on the breadcrumb links was being partially obscured or cut off.

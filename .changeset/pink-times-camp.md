@@ -2,4 +2,4 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[PLP\]** Added `sale` property to category fetch parameters to restore custom styling for sale categories in the side navigation.
+**\[PLP\]** Restored custom styling for "Sale" categories in the side navigation by adding a `sale` property to the category fetch request, ensuring the necessary data is available for styling hooks.

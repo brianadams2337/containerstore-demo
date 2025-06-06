@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Translations\]** Established new guidelines for managing translations to improve consistency. Following this, a full update was performed across all translation resource files to ensure compliance with the new structure and rules.
+**\[Translations\]** We've performed a comprehensive overhaul of all translation files to align them with a newly introduced i18n guideline.
+This change ensures a consistent structure and adherence to best practices across all languages.

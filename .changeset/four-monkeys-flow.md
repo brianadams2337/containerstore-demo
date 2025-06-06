@@ -2,9 +2,8 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[E2E\]** Improved Search Test versatility via Environment Variable Configuration: The end-to-end search test suite has been refactored to consume test data from environment variables. This design enables streamlined execution in diverse environments by requiring only the definition of specific search term values as environment variables.
-
-As a prerequisite to successfully run the Search end-to-end tests, the following environment variables should be set:
+**\[E2E\]** To improve maintainability, the Search end-to-end tests have been updated to use environment variables for test data.
+To run these tests successfully, you must now set the required environment variables to provide appropriate search terms for your specific test environment:
 
 - `E2E_SEARCH_TERM_PRODUCT`: Search term that doesn't match any category name, so the search suggestions are not shown, e.g. some product brand.
 - `E2E_SEARCH_TERM_CATEGORY_SUGGESTION`: Search term that fully or partially matches category name, e.g. "shirt" or "shirts".

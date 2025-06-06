@@ -2,4 +2,6 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Architecture\]** Resolved an issue where category navigation on the Product Listing Page (PLP) was unresponsive. Since the PLP was made a fixed page, navigating to a new category no longer triggered a page reload, causing a reactivity issue with category data. Category data is now exclusively fetched within the PLP, eliminating the need for the category middleware. The middleware's logic has been integrated into the PLP page itself.
+**\[Architecture\]** Resolved an issue where navigating between categories on the Product Listing Page (PLP) was unresponsive.
+This was caused by a reactivity problem after a recent change prevented the page from fully reloading.
+The fix moves all category data fetching logic from the now-removed middleware directly into the PLP component, ensuring data updates correctly on navigation.

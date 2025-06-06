@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Accessibility\]** Replaced `scroll-margin` with `scroll-padding` in `SFSlideIn.client.vue` to ensure consistent behavior across browsers, particularly addressing inconsistencies in Chrome's handling of `scroll-margin`.
+**\[Accessibility\]** Addressed an issue where Chrome's handling of `scroll-margin` caused inconsistent scroll behavior in the `SFSlideIn.client.vue` component.
+The implementation has been switched to use `scroll-padding` for more reliable cross-browser results.

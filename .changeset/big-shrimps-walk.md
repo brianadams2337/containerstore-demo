@@ -2,9 +2,9 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Accessibility\]** Improved keyboard navigation in the side navigation on the PLP. Focus is now retained when navigating between categories.
-
-This enhancement was achieved by setting a fixed key in the PLP using:
+**\[Accessibility\]** Improved keyboard navigation and focus management on the Product List Page.
+When navigating between categories using the side navigation, focus is now correctly retained within the navigation panel.
+This was achieved by preventing the PLP from re-rendering on category changes via setting a fixed key in `definePageMeta`:
 
 ```typescript
 definePageMeta({
@@ -13,5 +13,5 @@ definePageMeta({
 })
 ```
 
-With this change, the PLP is no longer re-rendered when switching categories — components remain mounted, ensuring a smoother and more accessible user experience.
-Additionally, since the PLP is no longer remounted on category changes, any logic previously placed in onMounted() will no longer run automatically on navigation. Such code should now be triggered explicitly when the category changes — for example, by watching the category state or route params.
+Because the PLP component no longer re-mounts when changing categories, any logic previously in an `onMounted()` hook will not run again on navigation.
+This logic must be moved to a watcher (e.g., watching `route.params` or category state) to ensure it executes correctly.

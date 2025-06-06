@@ -2,4 +2,4 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Accessibility\]** Added missing `aria-label` to the close button in `SFShopSwitcherFlyoutHeader.vue` to improve accessibility.
+**\[Accessibility\]** Improved screen reader support by adding a descriptive `aria-label` to the 'close' button within the `SFShopSwitcherFlyoutHeader.vue` component.

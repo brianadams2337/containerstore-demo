@@ -2,4 +2,4 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Utilities\]** Use `useProductPrice` from `@scayle/storefront-nuxt` instead of custom implementation.
+**\[Utilities\]** To standardize how product prices are handled, the custom price logic has been replaced with the official `useProductPrice` composable provided by `@scayle/storefront-nuxt`.

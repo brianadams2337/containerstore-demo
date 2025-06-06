@@ -2,4 +2,4 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[UI\]** Add missing shadows on arrow buttons within product card and zoom gallery components.
+**\[UI\]** To improve visual consistency and depth, shadows have been added to the arrow buttons used in the product card slider and the image zoom gallery.

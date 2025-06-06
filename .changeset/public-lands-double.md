@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Config\]** Implement the server plugin (`./server/plugins/storageConfig.ts`) to offer preconfigured storage for `@scayle/storefront-nuxt`, enabling the use of any unstorage driver.
+**\[Config\]** Enhanced storage flexibility by implementing a new server plugin (`./server/plugins/storageConfig.ts`).
+This provides preconfigured storage for `@scayle/storefront-nuxt`, allowing developers to easily integrate any unstorage driver (e.g., Redis, Vercel KV).

@@ -2,7 +2,9 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-[UI] The `useFirstDayOfWeek` composable and `intl.first_day` translation key have been removed. As a result, `SFStoreOpeningTimesSummary.vue` will consistently display opening hours beginning with Mondays regardless of the locale, simplifying its implementation. If you need localized behavior, you can re-add the following composable to your Storefront Application.
+**\[UI\]** To provide a more consistent and predictable user experience, the `SFStoreOpeningTimesSummary.vue` component will now always display the week starting on Monday.
+We've removed the locale-specific `useFirstDayOfWeek` composable and the corresponding `intl.first_day` translation key to achieve this.
+If your project requires a localized start day, you can re-implement this functionality using the composable below.
 
 ```ts
 const useFirstDayOfWeek = function () {

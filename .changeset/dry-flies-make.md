@@ -2,11 +2,11 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-Replaced `useRootCategories` with `useCategoryTree` for optimized category tree retrieval. This reduces custom implementation complexity in SCAYLE Storefront by leveraging functionality provided by `@scayle/storefront-nuxt`.
-
-`useCategoryTree` always returns a `Category[]` list removing the need to check the returned value and mapping it if necessary.
+**\[Architecture\]** To reduce code and complexity when fetching categories, `useRootCategories` has been removed in favor of `useCategoryTree`.
+The new method is more efficient and guarantees a consistent `Category[]` return value.
 
 ```ts
+// BEFORE
 const { data: rootCategoriesData, status, error } = useRootCategories()
 
 const rootCategories = computed<Category[]>(() => {
@@ -18,8 +18,7 @@ const rootCategories = computed<Category[]>(() => {
     : [rootCategoriesData.value.categories]
 })
 
-// will become
-
+// AFTER
 const { data: rootCategoriesData, status, error } = useCategoryTree()
 
 const rootCategories = computed<Category[]>(() => {

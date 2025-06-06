@@ -2,25 +2,20 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-Consolidated `useFormatDate` and `useFormatDistance` into a single `useFormat` composable.
-
-Before:
+**\[Utilities\]** To simplify usage and improve consistency, the `useFormatDate` and `useFormatDistance` composables have been consolidated into a single, unified `useFormat` composable.
+As part of this change, `formatLocaleDate has been renamed to the simpler`formatDate, and it now returns undefined (instead of `null`) when no locale is available, aligning with our standard patterns.
 
 ```typescript
+// BEFORE
 const { formateLocaleDate } = useFormatDate()
 const formatDistance = useFormatDistance()
 
 formatDate(new Date())
 formatDistance(100)
-```
 
-After:
-
-```typescript
+// AFTER
 const { formatDate, formatDistance } = useFormat()
 
 formatDate(new Date())
 formatDistance(100)
 ```
-
-Additionally, the `formatLocaleDate` has been renamed to simply `formatDate` and it now returns `undefined` rather than `null` when no locale is availble. This conforms to the standard pattern for missing values within SCAYLE Storefront.

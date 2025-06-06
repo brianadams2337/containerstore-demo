@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[CMS\]** Updated `useCMSBySlug` to accept `MaybeRefOrGetter` for the slug. This allows for the provided slug to be reactive. When the reactive slug changes, the data will be refreshed.
+**\[CMS\]** The `useCMSBySlug` composable has been enhanced to be fully reactive.
+It now automatically re-fetches CMS data whenever the provided slug changes, ensuring the content stays in sync with the state.

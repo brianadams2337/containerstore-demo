@@ -2,5 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[UX\]** Introduced the `SFLogoLink` component, enabling seamless scroll-to-top functionality when clicked on the home page.
-This component unifies scrolling logic, shared across the `SFHeader` and `SFFooter` components, ensuring consistency and reusability throughout the application.
+**\[UX\]** To improve code reuse and consistency, logic for the site logo has been extracted into a new `SFLogoLink` component.
+Shared across the `SFHeader` and `SFFooter`, it implements a "scroll-to-top" function when the logo is clicked on the home page.

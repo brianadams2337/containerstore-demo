@@ -2,5 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Accessibility\]** Removed `role="menu"` from the `<div>` wrapper in `SFShopSwitcherFlyoutBody.vue` selector to fix broken ARIA behavior.
-The ARIA role `menu` did not contain at least one element with `role="menuitem"`, `role="menuitemcheckbox"`, or `role="menuitemradio"`.
+**\[Accessibility\]** Corrected an invalid ARIA implementation in `SFShopSwitcherFlyoutBody.vue` by removing a `role="menu"` attribute from a `<div>` wrapper.
+This resolves an accessibility issue where the element failed to meet the requirement of containing appropriate child roles (e.g., `menuitem`).

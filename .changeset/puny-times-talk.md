@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Accessibility\]** Resolved an issue where the skip link for search was not working by using the correct selector in `SFSkipLinks.vue`.
+**\[Accessibility\]** Fixed the "skip to search" link, which was previously not functioning.
+The correct element selector is now being used in `SFSkipLinks.vue` to ensure it works reliably for keyboard users.

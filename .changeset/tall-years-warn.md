@@ -2,7 +2,8 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[OTEL\]** Added support for enriching OpenTelemetry data with Git repository information. The following build arguments can now be passed when building the Docker image to include the Git commit SHA and repository URL:
+**\[Build\]** OpenTelemetry data can now be automatically enriched with Git repository information for improved observability.
+To include the commit SHA and repository URL in your telemetry, pass the corresponding build arguments when creating the Docker image:
 
 ```sh
 docker build ./docker/node \

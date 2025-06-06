@@ -2,6 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[UI\]** Streamlined animations and keyframes by removing unused styles:
-`ping`, `ping-small`, `grow`, and `shrink`.
-Additionally, the `animateIcon` prop in `SFButton` has been deprecated due to lack of usage.
+**\[UI\]** To improve code quality and reduce bundle size, several unused animation styles (`ping`, `ping-small`, `grow`, `shrink`) and their associated keyframes have been removed.
+The unused `animateIcon` prop in `SFButton` has also been deprecated as part of this cleanup.

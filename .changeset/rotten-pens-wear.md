@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**[\UI\]** Fixed slider button sizing in `<SFProductRecommendations />` component and added title truncation to prevent slider buttons from overlapping with the title.
+**[\UI\]** Resolved a layout issue in the `SFProductRecommendations` component where slider buttons could overlap the section title.
+This was corrected by adjusting the button sizes and implementing title truncation.

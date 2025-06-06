@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Accessibility\]** Changed the color of the active sibling element in the `SFSiblingSelection.vue` from black to accent to differentiate it from the focus state, which also used black.
+**\[Accessibility\]** Improved visual clarity in the `SFSiblingSelection.vue` component by changing the active item's color from black to the accent color.
+This helps users better differentiate the currently selected item from a keyboard-focused item.

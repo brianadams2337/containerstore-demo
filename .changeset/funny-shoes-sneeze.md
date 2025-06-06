@@ -2,4 +2,4 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Accessibility\]** Added missing ARIA label in `location.vue` to improve accessibility.
+**\[Accessibility\]** Improved screen reader support in the `location.vue` component by adding a required `aria-label` to a previously unlabeled element.

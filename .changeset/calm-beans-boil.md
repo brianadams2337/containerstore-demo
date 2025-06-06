@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Basket\]** Removed the custom promotion badge label for free gift items in `SFBasketCardImage.vue`. Additionally, the promotion badge is now based on the basket item rather than the product. These changes ensure that the promotions are driven according to the promotion configuration rather than specific code in the Storefront Application.
+**\[Promotions\]** Corrected an issue where promotion badges for free gifts in the basket (`SFBasketCardImage.vue`) used custom frontend logic.
+The implementation has been changed to remove this custom label and derive the badge from the basket item's data, ensuring it reflects the actual promotion configuration.

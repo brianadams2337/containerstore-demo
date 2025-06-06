@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[E2E\]** Enhanced Mobile Order Success Page test reliability. Refactored the end-to-end test to navigate to the PDP via product image click on the PLP. Implemented `{force: true}` for size selection on the PDP to mitigate potential timeout issues during CI execution that occurred with standard `.click()`.
+**\[E2E\]** Improved the reliability of the mobile Order Success Page test.
+The test was refactored to navigate from the PLP to the PDP by clicking the product image, and size selection now uses a forced click (`{force: true}`) to prevent CI-related timeouts.

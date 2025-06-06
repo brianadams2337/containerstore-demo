@@ -2,8 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[E2E\]** Enhanced maintainability and clarity of end-to-end tests:
-
-- Refactored the constants objects in `playwright/support/constants.ts` for better organization and reduced redundancy.
-- Implemented JSDoc comments in test specification files (`/playwright/tests/*.spec.ts`) to document test objectives and environment setup requirements (e.g., environment variables, test users).
-- Standardized test code by promoting the reuse of constants across relevant test cases.
+**\[E2E\]** To improve the developer experience when working with the end-to-end test suite, a significant refactoring has been completed.
+This includes reorganizing shared constants, adding detailed JSDoc comments to explain the purpose and setup for each test, and ensuring consistent use of constants across the suite, making tests easier to read, run, and maintain.

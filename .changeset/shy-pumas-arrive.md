@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Utils\]** Return the `color` of the current product from 'useProductBaseInfo' instead of a list of available `colors`.
+**\[Utilities\]** The return value of the `useProductBaseInfo` composable has been updated.
+It now returns the specific `color` of the current product, rather than an array of all available `colors`.

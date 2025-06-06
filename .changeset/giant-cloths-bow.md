@@ -2,4 +2,4 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Accessibility\]** Added `aria-label` to `SFVariantPicker.vue` items.
+**\[Accessibility\]** Improved screen reader support for the variant picker (`SFVariantPicker.vue`) by adding a descriptive `aria-label` to each individual variant option.

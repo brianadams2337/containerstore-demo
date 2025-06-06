@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[UI\]** Resolved mobile styling issue in `SFSearchInput.vue` by ensuring the input field spans full width. Previously, it caused layout issues on smaller screens.
+**\[UI\]** Fixed a layout issue on smaller screens where the `SFSearchInput.vue` component was not taking up the full available width.
+The input field is now correctly styled to span the full width on mobile devices.

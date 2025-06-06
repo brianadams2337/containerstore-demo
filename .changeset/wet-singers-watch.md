@@ -2,6 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[SEO\]** Added `hrefLangLinks` for the Home, Product Listing, and Product Detail pages.
-
-For both the Product Detail Page and Product Listing Page, we now fetch category/product data from other shops to verify availability. For each shop in which the product or category is available, a corresponding `hrefLangLink` will be created.
+**\[SEO\]** To improve international SEO and search engine indexing, `hrefLang` links have been implemented for the Home, Product Listing, and Product Detail pages.
+For PLPs and PDPs, the system now intelligently checks for the product or category's availability in other shops before generating the corresponding `hreflang` link, ensuring accurate page version mapping.

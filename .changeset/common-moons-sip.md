@@ -2,9 +2,11 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[E2E\]** Enhanced maintainability and clarity of User Authentication Tests: Refactored constant objects related to logged-in user and registration end-to-end tests. Comprehensive JSDoc documentation has been added, explaining the required environment variable setup for dedicated test users. Inline comments now explicitly outline the prerequisites, including the creation of specific test users via environment variables.
+**\[E2E\]** The end-to-end tests for user authentication have been refactored to improve maintainability and clarity.
+The constant objects related to logged-in user and registration tests have been updated, and comprehensive JSDoc documentation has been added to explain the required environment variable setup for dedicated test users.
+Inline comments now outline the prerequisites, including the creation of specific test users via environment variables.
 
-- `TEST_USER_EMAIL1=`: Dedicated test user for Chromium and default test user accross end-to-end tests.
+- `TEST_USER_EMAIL1=`: Dedicated test user for Chromium and default test user across end-to-end tests.
 - `TEST_USER_EMAIL2`: Dedicated test user for desktop Firefox.
 - `TEST_USER_EMAIL3`: Dedicated test user for desktop Webkit (Safari).
 - `TEST_USER_EMAIL4`: Dedicated test user for mobile Chrome.

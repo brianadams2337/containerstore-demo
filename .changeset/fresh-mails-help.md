@@ -2,4 +2,4 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[UI\]** Improved the mobile menu by enlarging the overlay close button to match the size and style of header icons for consistency.
+**\[UI\]** For improved visual consistency, the mobile menu's overlay 'close' button has been restyled and enlarged to match the appearance of other icons in the header.

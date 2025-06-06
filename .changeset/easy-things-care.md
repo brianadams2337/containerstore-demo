@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[SEO\]** Made the PDP meta description reactive to ensure proper product name insertion in the description after client-side navigation.
+**\[SEO\]** To improve search engine accuracy and user experience, the Product Detail Page's `meta` description is now fully reactive.
+This ensures dynamic content like the product name is always correctly updated, even when navigating between products on the client side.

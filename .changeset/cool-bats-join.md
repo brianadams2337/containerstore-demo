@@ -2,4 +2,4 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Accessibility\]** Improved keyboard handling in the store selector. It is now possible to open opening hours with the enter key.
+**\[Accessibility\]** Users navigating the store selector via keyboard can now easily view a store's opening hours by focusing on the store and pressing the Enter key.

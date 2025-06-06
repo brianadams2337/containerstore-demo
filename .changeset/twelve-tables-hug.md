@@ -2,4 +2,4 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Accessibility\]** Add a hidden label to the email field in the `SFProfilePasswordManagement` component on password change.
+**\[Accessibility\]** To improve screen reader support during a password change, a visually hidden but accessible label has been added to the email field within the `SFProfilePasswordManagement` component.

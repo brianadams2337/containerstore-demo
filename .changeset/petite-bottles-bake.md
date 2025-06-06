@@ -2,6 +2,4 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[UI\]** Updated sold out UI indicator within `SFProductPromotionGiftItems.vue`
-to use the `product-sold-out` color class, ensuring a consistent color usage and semantically
-accurate naming convention across the application.
+**\[UI\]** To improve design consistency, the 'sold out' indicator in `SFProductPromotionGiftItems.vue` now uses the shared `product-sold-out` color class, aligning its appearance with other `sold-out` indicators across the application.

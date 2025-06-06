@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[E2E\]** Added additional check in Orders end-to-end test `/playwright/tests/e2e-Orders.spec.ts` to verify that the order status is visible on Orders list and Order details page.
+**\[E2E\]** Expanded end-to-end test coverage for the Orders page.
+The test (`e2e-Orders.spec.ts`) now also verifies that the order status is correctly displayed on both the main order list and the individual order detail pages.

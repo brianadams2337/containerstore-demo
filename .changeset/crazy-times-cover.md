@@ -2,5 +2,4 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Accessibility\]** Add missing `aria-label` on close modal button within
-`SFAuthResetPasswordSlideInHeader` and `SFAuthForgotPasswordSlideInHeader` components.
+**\[Accessibility\]** Improved screen reader support by adding a descriptive `aria-label` to the 'close' button in both the `SFAuthResetPasswordSlideInHeader` and `SFAuthForgotPasswordSlideInHeader` components.

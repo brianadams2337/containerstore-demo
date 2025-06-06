@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Architecture\]** Replaced calls to `isFirstIndexOfRow` and `getRowByIndex` with the function’s inline logic directly, since the helper is deprecated and no longer needed.
+**\[Architecture\]** Removed the usage of deprecated helper functions `isFirstIndexOfRow` and `getRowByIndex`.
+Their logic has been moved directly into the components where it was used, simplifying the codebase.

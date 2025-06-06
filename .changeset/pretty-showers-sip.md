@@ -2,4 +2,6 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-Updated to `nuxt@3.16.2`. This release of Nuxt includes `unhead@2.x` which requires some small changes to the `nuxt.config.ts` and usage of the `useHead` composable. More details are available on the [Nuxt blog](https://nuxt.com/blog/v3-16).
+**\[Architecture \]** Updated Nuxt to version `3.16.2`.
+The primary change in this release is the upgrade to `unhead@2.x`, which necessitates small adjustments to both `nuxt.config.ts` and the usage of the `useHead` composable.
+More details can be found on the Nuxt blog. [Nuxt blog](https://nuxt.com/blog/v3-16).
