@@ -1,5 +1,459 @@
 # @scayle/storefront-application-nuxt
 
+## 1.10.0
+
+### Minor Changes
+
+- 9d6ba34: **\[Promotions\]** Refactored the approach for handling product promotions by removing the `useProductPromotions` composable abstraction.
+  Consuming components are now responsible for their own promotion logic and data handling.
+- 8242e6b: **\[Architecture\]** Removed the now-redundant `router.options.ts` file.
+  This custom configuration for preserving scroll position on navigation is no longer needed as this behavior works now out of the box in Nuxt 3.
+- 636365e: **\[Promotions\]** Corrected an issue where promotion badges for free gifts in the basket (`SFBasketCardImage.vue`) used custom frontend logic.
+  The implementation has been changed to remove this custom label and derive the badge from the basket item's data, ensuring it reflects the actual promotion configuration.
+- 3f2157f: **\[Promotions\]** Refactored how promotion conditions are checked within the `SFPromotionProgressWrapper` component.
+  The `areGiftConditionsMet` and `isGiftAddedToBasket` computed functions have been inlined directly into the component, removing their dependency on the `useProductPromotions` composable for this specific logic.
+- 0d8483e: **\[Accessibility\]** Improved screen reader support by adding a descriptive `aria-label` to the 'close' button in both the `SFAuthResetPasswordSlideInHeader` and `SFAuthForgotPasswordSlideInHeader` components.
+- 18c4c8a: **\[UX\]** To improve code reuse and consistency, logic for the site logo has been extracted into a new `SFLogoLink` component.
+  Shared across the `SFHeader` and `SFFooter`, it implements a "scroll-to-top" function when the logo is clicked on the home page.
+- 7dacfad: **\[E2E\]** Improved the end-to-end test suite for greater reliability and easier maintenance. Key changes include:
+
+  - Product Independence: Core tests (Basket, Checkout, OSP) now select the first available product variant instead of relying on hardcoded IDs.
+  - Category Independence: Navigation tests now dynamically traverse menus and categories, removing dependency on a fixed site structure.
+  - Test Suite Cleanup: Removed obsolete tests and their associated data to streamline the test suite.
+
+- 57c2121: **\[Basket\]** The display of delivery costs and their descriptions is now configurable directly within the SCAYLE Panel.
+  This allows for easier management of shipping information without requiring code changes.
+  Developers can access this configuration in the storefront using the useShopConfigCustomData.ts composable.
+  For full implementation details, see the [SCAYLE Resource Center](https://scayle.dev/en/storefront-guide/developer-guide/features/pages/basket#delivery-costs).
+- 6dec9fd: **\[Architecture\]** The `SFAsyncDataWrapper` has been split into two more specific components for handling async states:
+
+  1. `SFAsyncStatusWrapper`: Renders content based on a status prop.
+     This wrapper component accepts an `AsyncDataRequestStatus` as a prop.
+     When the status is `success` it will render the default slot and when the `status` is `error` it will render an error slot.
+     When the `status` is `pending` or `idle` it will render a loading slot.
+
+     ```html
+     <SFAsyncStatusWrapper :status="status">
+       <MyPage />
+       <template #loading>
+         <MyLoadingState />
+       </template>
+       <template #loading>
+         <MyErrorState />
+       </template>
+     </SFAsyncStatusWrapper>
+     ```
+
+  2. `SFAsyncDataWrapper`: Renders content based on an AsyncData object and provides the fetched data to its default slot.
+     This wrapper component accepts an `AsyncData` object as a prop.
+     When data has been loaded it will render the default slot and pass the data as `data` slot prop.
+     When there is no data loaded, it will render the error slot when the status is `error` and the `loading` slot when the status is `pending` or `idle`.
+
+     ```html
+     <SFAsyncDataWrapper :async-data="asyncData">
+       <template #default="{ data }">
+         <MyPage :data="data" />
+       </template>
+       <MyPage />
+       <template #loading>
+         <MyLoadingState />
+       </template>
+       <template #loading>
+         <MyErrorState />
+       </template>
+     </SFAsyncDataWrapper>
+     ```
+
+- e4bfffe: **\[Architecture\]** Removed the usage of deprecated helper functions `isFirstIndexOfRow` and `getRowByIndex`.
+  Their logic has been moved directly into the components where it was used, simplifying the codebase.
+- f806c3e: **\[E2E\]** Added an automated test to validate the behavior of our 404 "Page Not Found" error handling.
+  The test simulates a user navigating to an invalid URL and asserts that the correct error page is displayed with the proper 404 code and a "Continue shopping" button.
+- 7553cc5: **\[Accessibility\]** Improved the accessibility of the "Scroll to Top" button by adding a descriptive `aria-label` to the `SFScrollToTopButton` component.
+- 2d3f658: **\[Build\]** To support updated dependencies and features, the minimum required Node.js version has been set to `22.15.0`.
+  Please ensure your development and build environments meet this new requirement.
+- eb7d384: **\[Utilities\]** To simplify usage and improve consistency, the `useFormatDate` and `useFormatDistance` composables have been consolidated into a single, unified `useFormat` composable.
+  As part of this change, `formatLocaleDate has been renamed to the simpler`formatDate, and it now returns undefined (instead of `null`) when no locale is available, aligning with our standard patterns.
+
+  ```typescript
+  // BEFORE
+  const { formateLocaleDate } = useFormatDate()
+  const formatDistance = useFormatDistance()
+
+  formatDate(new Date())
+  formatDistance(100)
+
+  // AFTER
+  const { formatDate, formatDistance } = useFormat()
+
+  formatDate(new Date())
+  formatDistance(100)
+  ```
+
+- 16e5d58: **\[Architecture\]** Refactored slider arrow controls by replacing `SFProductCardImageSliderButton` and custom `SFButton` implementations with the new `SFSliderArrowButton` component.
+  This change centralizes logic and styling for a more maintainable and consistent codebase.
+- b1d452d: **\[SEO\]** Resolved a redirect loop issue affecting the Product List Page (PLP) and Product Detail Page (PDP).
+  This issue was caused by a conflict with the `key` option in `definePageMeta`, which has now been addressed.
+- b9140ab: **\[Basket\]** To improve code maintainability, the empty and unused `useBasketItem` composable has been removed from the codebase.
+- 18c4c8a: **\[UI\]** For improved visual consistency, the mobile menu's overlay 'close' button has been restyled and enlarged to match the appearance of other icons in the header.
+- b5c9f7e: **\[CMS\]** To improve code organization and encapsulation, the `useBanner` composable has been moved from the global application context and is now properly integrated within the dedicated local `cms` module.
+- 6073aa7: **\[Translations\]** We've performed a comprehensive overhaul of all translation files to align them with a newly introduced i18n guideline.
+  This change ensures a consistent structure and adherence to best practices across all languages.
+- 8052fa3: **\[Orders\]** To improve clarity for users, the new `SFOrderStatus` component now displays order statuses with consistent, color-coded labels.
+  This enhancement is applied to both the order list and order detail views.
+- f4036b7: **\[Architecture\]** The Product Detail Page's architecture has been enhanced by assigning it a static page key, which prevents full page reloads when toggling between variants and siblings.
+  This change also allowed us to simplify the codebase by removing a page-specific middleware and merging its URL correction logic directly into the PDP component.
+- b1c5e80: **\[Architecture\]** Updated the `svgoConfig` implementation to merge with the default settings rather than completely replacing them.
+  This prevents unintended side effects, such as icon alignment issues, caused by an incomplete configuration.
+- 40ec4a6: **\[Promotions\]** The promotional gift selection modal has been streamlined by removing price details from the available gift options.
+- 2d3f658: **\[Build\]** To optimize the final Docker image size and build speed, the `.dockerignore` file has been extended.
+  This prevents development files, such as the Playwright test suite, documentation, and local environment configurations, from being unnecessarily copied into the build context.
+
+  - `/playwright`
+  - `README.md`
+  - `CHANGELOG.md`
+  - `CHANGELOG-RC.md`
+  - `docker-compose.yml`
+  - `vitest.config.ts`
+  - `.prettierrc`
+  - `.prettierrc.cjs`
+  - `.prettierignore`
+  - `.eslintrc.js`
+  - `.eslintignore`
+  - `.gitignore`
+  - `.dockerignore`
+  - `.nvmrc`
+
+- 93f7d47: **\[UI\]** To improve design consistency, the 'sold out' indicator in `SFProductPromotionGiftItems.vue` now uses the shared `product-sold-out` color class, aligning its appearance with other `sold-out` indicators across the application.
+- a0d7320: **\[Utilities\]** To improve how product details are retrieved on the order detail page, `SFOrderDetailProductCard.vue` now uses the `useProductBaseInfo` composable for a more standardized approach.
+- 891f4cf: **\[UI\]** To improve maintainability and reduce the overall codebase size, unused components have been deleted.
+  Components with very limited usage have also been inlined directly where they were needed.
+
+  - `modules/ui/runtime/components/core/SFBreadcrumbs.vue`
+  - `modules/ui/runtime/components/core/SFHorizontalItemsDivider.vue`
+  - `modules/ui/runtime/components/core/SFMenu.vue`
+  - `modules/ui/runtime/components/core/SFOverlay.vue`
+  - `modules/ui/runtime/components/core/SFSwipeDelete.vue`
+  - `modules/ui/runtime/components/core/SFTwoColumnList.vue`
+  - `modules/ui/runtime/components/core/SFVerticalAccordion.vue`
+  - `modules/ui/runtime/components/core/chip/SFColorChip.vue`
+  - `modules/ui/runtime/components/core/flyout/SFFlyout.vue`
+  - `modules/ui/runtime/components/core/flyout/SFFlyoutMenu.vue`
+  - `modules/ui/runtime/components/form/SFRadioGroup.vue`
+  - `modules/ui/runtime/components/form/SFRadioItem.vue`
+  - `modules/ui/runtime/components/layout/SFPageContainer.vue`
+  - `modules/ui/runtime/components/links/SFContainerLink.vue`
+  - `modules/ui/runtime/components/listbox/SFListbox.vue`
+  - `modules/ui/runtime/components/listbox/SFListboxButton.vue`
+  - `modules/ui/runtime/components/listbox/SFListboxOption.vue`
+  - `modules/ui/runtime/components/listbox/SFListboxOptions.vue`
+  - `modules/ui/runtime/components/pagination/SFSimplePagination.vue`
+  - `modules/ui/runtime/components/transitions/SFFadeInFromBottomGroupTransition.vue`
+  - `modules/ui/runtime/components/transitions/SFSlideInFromRightTransition.vue`
+  - `modules/ui/runtime/components/transitions/SFSlideInFromTopTransition.vue`
+
+- 215312e: **\[UI\]** To improve code maintainability and reduce bundle size, several unused Tailwind plugins and their associated custom styles have been removed.
+
+  - `.top-white-shadow`: Custom box-shadow.
+  - `.search-decoration-none`: Removes default search input decorations.
+  - Base styles for search inputs: Resets WebKit-specific search input decorations.
+
+- 7115438: **\[Architecture \]** Updated Nuxt to version `3.16.2`.
+  The primary change in this release is the upgrade to `unhead@2.x`, which necessitates small adjustments to both `nuxt.config.ts` and the usage of the `useHead` composable.
+  More details can be found on the Nuxt blog. [Nuxt blog](https://nuxt.com/blog/v3-16).
+- f4fe07f: **\[Config\]** Enhanced storage flexibility by implementing a new server plugin (`./server/plugins/storageConfig.ts`).
+  This provides preconfigured storage for `@scayle/storefront-nuxt`, allowing developers to easily integrate any unstorage driver (e.g., Redis, Vercel KV).
+- 6816b4a: **\[UI\]** The `SFProgressBar` component has been enhanced to visually display milestone ticks along the progress bar.
+  This feature is enabled via the new milestones prop.
+- 192f182: **\[UI\]** To provide a more consistent and predictable user experience, the `SFStoreOpeningTimesSummary.vue` component will now always display the week starting on Monday.
+  We've removed the locale-specific `useFirstDayOfWeek` composable and the corresponding `intl.first_day` translation key to achieve this.
+  If your project requires a localized start day, you can re-implement this functionality using the composable below.
+
+  ```ts
+  const useFirstDayOfWeek = function () {
+    const currentShop = useCurrentShop()
+    const i18n = useI18n()
+    const locale = new Intl.Locale(currentShop.value.locale)
+    return 'getWeekInfo' in locale && typeof locale.getWeekInfo === 'function'
+      ? locale.getWeekInfo().firstDay
+      : parseInt(i18n.t('intl.first_day')) ?? 1
+  }
+  ```
+
+- d2ee401: **\[Utilities\]** To centralize reusable code, the specific logic for date validation has been transferred to the Storefront Application codebase.
+  Additionally, the local `useValidationRules()` composable has been enhanced with JSDoc comments for better documentation and clarity.
+- 6e89920: **\[UI\]** To improve visual consistency and depth, shadows have been added to the arrow buttons used in the product card slider and the image zoom gallery.
+- 6713d27: **\[Basket\]** To standardize basket-related logic, the Storefront Application codebase now incorporates the new `@scayle/storefront-basket` package.
+  Custom utility functions have been replaced with the officially provided utils from this new dependency.
+- 8335f4e: **\[UI\]** To improve code quality and reduce bundle size, several unused animation styles (`ping`, `ping-small`, `grow`, `shrink`) and their associated keyframes have been removed.
+  The unused `animateIcon` prop in `SFButton` has also been deprecated as part of this cleanup.
+- c748950: **\[Utilities\]** The return value of the `useProductBaseInfo` composable has been updated.
+  It now returns the specific `color` of the current product, rather than an array of all available `colors`.
+- 39310b2: **\[Build\]** OpenTelemetry data can now be automatically enriched with Git repository information for improved observability.
+  To include the commit SHA and repository URL in your telemetry, pass the corresponding build arguments when creating the Docker image:
+
+  ```sh
+  docker build ./docker/node \
+  --build-arg GIT_REPOSITORY_URL=$(git config --get remote.origin.url) \
+  --build-arg GIT_COMMIT_SHA=$(git rev-parse HEAD)
+  ```
+
+- 7ab1ff9: **\[UI\]** Addressed a Safari-specific rendering bug where an unwanted shadow would appear on the main content area after closing the filter slide-in.
+  This was resolved by adding a `focus:shadow-none` utility class to the `default` layout's `main` tag.
+- 3b2fefa: **\[Promotions\]** The `SFPromotionProgressWrapper.vue` component has been enhanced to support tiered promotions.
+  It now displays a progress bar with milestones, showing customers how close they are to unlocking different promotion tiers.
+  This new UI is also used for minimum-order-value promotions, which are now treated as a single-tier promotion for a consistent experience.
+- aa281be: **\[UI\]** Resolved a styling issue that caused a broken appearance for the close button within the `SFFilterHeader` and `SFStoreLocatorSlideIn` components.
+- 7db5c9c: **\[Architecture\]** To simplify the codebase, the `useFilterSlideIn` composable has been removed.
+  Its logic was inlined, as the wrapper was an unnecessary layer of abstraction.
+- ee3d09a: **\[SEO\]** To improve international SEO and search engine indexing, `hrefLang` links have been implemented for the Home, Product Listing, and Product Detail pages.
+  For PLPs and PDPs, the system now intelligently checks for the product or category's availability in other shops before generating the corresponding `hreflang` link, ensuring accurate page version mapping.
+
+### Patch Changes
+
+- 42f828e: **\[Accessibility\]** Improved keyboard navigation and focus management on the Product List Page.
+  When navigating between categories using the side navigation, focus is now correctly retained within the navigation panel.
+  This was achieved by preventing the PLP from re-rendering on category changes via setting a fixed key in `definePageMeta`:
+
+  ```typescript
+  definePageMeta({
+    // ...
+    key: 'PLP',
+  })
+  ```
+
+  Because the PLP component no longer re-mounts when changing categories, any logic previously in an `onMounted()` hook will not run again on navigation.
+  This logic must be moved to a watcher (e.g., watching `route.params` or category state) to ensure it executes correctly.
+
+- c6fafdd: **\[Architecture\]** Addressed a potential build failure related to a sub-dependency of the `@nuxtjs/tailwindcss` module.
+  The package `unicorn-magic` is now pinned to `v0.2.0` as a resolution, mitigating a potential fatal build error.
+  See https://github.com/nuxt-modules/tailwindcss/issues/954 for more details.
+- 9a2d6ea: **\[E2E\]** Addressed a potential test failure by updating the locator for the "accept terms and conditions" checkbox on the Checkout page.
+  This change was required to adapt our Order Success Page (OSP) test suite to recent modifications in the checkout UI.
+- c0733f5: **\[Architecture\]** Added new linting rules for i18n using `@intlify/eslint-plugin-vue-i18n`.
+  Developers will now see warnings or errors for improperly formatted or missing translation keys directly in their IDE.
+- 89d951b: **\[E2E\]** The end-to-end tests for user authentication have been refactored to improve maintainability and clarity.
+  The constant objects related to logged-in user and registration tests have been updated, and comprehensive JSDoc documentation has been added to explain the required environment variable setup for dedicated test users.
+  Inline comments now outline the prerequisites, including the creation of specific test users via environment variables.
+
+  - `TEST_USER_EMAIL1=`: Dedicated test user for Chromium and default test user across end-to-end tests.
+  - `TEST_USER_EMAIL2`: Dedicated test user for desktop Firefox.
+  - `TEST_USER_EMAIL3`: Dedicated test user for desktop Webkit (Safari).
+  - `TEST_USER_EMAIL4`: Dedicated test user for mobile Chrome.
+  - `TEST_USER_EMAIL5`: Dedicated test user for mobile Webkit (Safari).
+  - `TEST_USER_NO_ORDERS`: Test user with no orders placed. Used to verify Orders page empty state.
+  - `TEST_USER_PASSWORD=`: Password (the same for all test users listed above).
+  - `TEST_USER_WRONG_PASSWORD`: Password used for test that verifies user authentication with wrong credentials.
+  - `TEST_USER_GUEST`: Test user used to verify Registration process for guest user.
+
+- d1dc0ba: **\[Accessibility\]** Users navigating the store selector via keyboard can now easily view a store's opening hours by focusing on the store and pressing the Enter key.
+- 0b38c91: **\[Accessibility\]** Addressed an issue where Chrome's handling of `scroll-margin` caused inconsistent scroll behavior in the `SFSlideIn.client.vue` component.
+  The implementation has been switched to use `scroll-padding` for more reliable cross-browser results.
+- 6e2f7c9: **\[Accessibility\]** Improved screen reader support by adding a descriptive `aria-label` to the 'close' button within the `SFShopSwitcherFlyoutHeader.vue` component.
+- a835acb: **\[Accessibility\]** Improved visual clarity in the `SFSiblingSelection.vue` component by changing the active item's color from black to the accent color.
+  This helps users better differentiate the currently selected item from a keyboard-focused item.
+- 473c62f: **\[Directives\]** Enhanced the `v-dialog` directive to be more robust.
+  It now correctly handles cases where a modifier might be `undefined`, preventing potential runtime errors.
+- 4bf7fe0: **\[UI\]** Resolved a DOM collision issue by ensuring the SVG ID attribute for the empty state icon is unique.
+  This fixes a consequential bug where the icon failed to render correctly.
+- facb6ae: **\[Accessibility\]** Resolved an issue where the focus outline for the slider arrow buttons (`SFSliderArrowButton.vue`) was cut off.
+  Styling adjustments within `SFProductGallery.vue` now ensure the full outline is visible, improving keyboard navigation feedback.
+- faeb6c0: **\[E2E\]** Improved the robustness of product variant selection in end-to-end tests.
+  A new method, `chooseProductVariant()`, now intelligently checks if the variant picker is disabled (for single-variant products) or enabled (for multi-variant products), ensuring tests can reliably handle different product types.
+- - Added dependency `@scayle/storefront-basket@0.3.0`
+  - Added dependency `@scayle/unstorage-compression-driver@1.0.0`
+  - Added dependency `@scayle/unstorage-scayle-kv-driver@1.0.0`
+  - Added dependency `unstorage@1.16.0`
+  - Added dependency `@intlify/eslint-plugin-vue-i18n@4.0.1`
+  - Added dependency `@parcel/watcher@2.5.1`
+  - Removed dependency `nuxi@3.24.1`
+  - Removed dependency `redis@4.7.0`
+  - Updated dependency `@contentful/live-preview@4.6.12` to `@contentful/live-preview@4.6.20`
+  - Updated dependency `@nuxt/fonts@0.11.1` to `@nuxt/fonts@0.11.4`
+  - Updated dependency `@scayle/nuxt-image-provider@0.2.5` to `@scayle/nuxt-image-provider@0.3.1`
+  - Updated dependency `@scayle/nuxt-opentelemetry@0.9.4` to `@scayle/nuxt-opentelemetry@0.13.7`
+  - Updated dependency `@scayle/omnichannel-nuxt@4.2.0` to `@scayle/omnichannel-nuxt@4.3.2`
+  - Updated dependency `@scayle/storefront-country-detection@1.1.1` to `@scayle/storefront-country-detection@2.0.0`
+  - Updated dependency `@scayle/storefront-navigation@0.1.0` to `@scayle/storefront-navigation@0.3.0`
+  - Updated dependency `@scayle/storefront-nuxt@8.21.0` to `@scayle/storefront-nuxt@8.28.6`
+  - Updated dependency `@scayle/storefront-product-detail@1.1.4` to `@scayle/storefront-product-detail@1.4.2`
+  - Updated dependency `@scayle/storefront-product-listing@1.3.2` to `@scayle/storefront-product-listing@1.6.2`
+  - Updated dependency `@scayle/storefront-promotions@0.1.1` to `@scayle/storefront-promotions@2.2.0`
+  - Updated dependency `@scayle/storefront-search@0.2.1` to `@scayle/storefront-search@0.3.0`
+  - Updated dependency `@storyblok/nuxt@6.2.4` to `@storyblok/nuxt@7.0.1`
+  - Updated dependency `@storyblok/richtext@3.2.0` to `@storyblok/richtext@3.3.0`
+  - Updated dependency `@storyblok/vue@8.2.2` to `@storyblok/vue@9.0.0`
+  - Updated dependency `@vueuse/components@13.1.0` to `@vueuse/components@13.3.0`
+  - Updated dependency `@vueuse/core@13.1.0` to `@vueuse/core@13.3.0`
+  - Updated dependency `@vueuse/integrations@13.1.0` to `@vueuse/integrations@13.3.0`
+  - Updated dependency `@vueuse/nuxt@13.1.0` to `@vueuse/nuxt@13.3.0`
+  - Updated dependency `axios@1.8.4` to `axios@1.9.0`
+  - Updated dependency `cf-content-types-generator@2.15.5` to `cf-content-types-generator@2.16.0`
+  - Updated dependency `contentful@11.5.13` to `contentful@11.7.0`
+  - Updated dependency `contentful-export@7.21.42` to `contentful-export@7.21.57`
+  - Updated dependency `dompurify@3.2.5` to `dompurify@3.2.6`
+  - Updated dependency `focus-trap@7.6.4` to `focus-trap@7.6.5`
+  - Updated dependency `storyblok-js-client@6.10.11` to `storyblok-js-client@7.0.0`
+  - Updated dependency `swiper@11.2.6` to `swiper@11.2.8`
+  - Updated dependency `vue@3.5.13` to `vue@3.5.16`
+  - Updated dependency `@changesets/cli@2.29.0` to `@changesets/cli@2.29.4`
+  - Updated dependency `@nuxt/eslint@1.3.0` to `@nuxt/eslint@1.4.1`
+  - Updated dependency `@nuxt/test-utils@3.17.2` to `@nuxt/test-utils@3.18.0`
+  - Updated dependency `@nuxtjs/i18n@9.1.1` to `@nuxtjs/i18n@9.5.5`
+  - Updated dependency `@nuxtjs/tailwindcss@6.13.1` to `@nuxtjs/tailwindcss@6.14.0`
+  - Updated dependency `@scayle/eslint-config-storefront@4.5.0` to `@scayle/eslint-config-storefront@4.5.4`
+  - Updated dependency `@types/node@22.14.1` to `@types/node@22.15.30`
+  - Updated dependency `@typescript-eslint/scope-manager@8.30.0` to `@typescript-eslint/scope-manager@8.33.1`
+  - Updated dependency `@typescript-eslint/utils@8.30.0` to `@typescript-eslint/utils@8.33.1`
+  - Updated dependency `@upstash/redis@1.34.7` to `@upstash/redis@1.35.0`
+  - Updated dependency `@vitest/coverage-v8@2.1.9` to `@vitest/coverage-v8@3.2.2`
+  - Updated dependency `@vue/typescript-plugin@2.2.8` to `@vue/typescript-plugin@2.2.10`
+  - Updated dependency `debug@4.4.0` to `debug@4.4.1`
+  - Updated dependency `eslint@9.24.0` to `eslint@9.28.0`
+  - Updated dependency `eslint-formatter-gitlab@5.1.0` to `eslint-formatter-gitlab@6.0.0`
+  - Updated dependency `fishery@2.2.3` to `fishery@2.3.1`
+  - Updated dependency `happy-dom@17.4.4` to `happy-dom@17.6.3`
+  - Updated dependency `lint-staged@15.5.1` to `lint-staged@16.1.0`
+  - Updated dependency `nuxt@3.15.4` to `nuxt@3.16.2`
+  - Updated dependency `nuxt-svgo@4.0.17` to `nuxt-svgo@4.2.1`
+  - Updated dependency `postcss@8.5.3` to `postcss@8.5.4`
+  - Updated dependency `postcss-custom-properties@14.0.4` to `postcss-custom-properties@14.0.6`
+  - Updated dependency `storyblok@3.36.0` to `storyblok@3.36.1`
+  - Updated dependency `unimport@4.2.0` to `unimport@5.0.1`
+  - Updated dependency `vitest@2.1.9` to `vitest@3.2.2`
+  - Updated dependency `vue-tsc@2.2.8` to `vue-tsc@2.2.10`
+- f3cfd4b: **\[E2E\]** Improved the reliability of the mobile Order Success Page test.
+  The test was refactored to navigate from the PLP to the PDP by clicking the product image, and size selection now uses a forced click (`{force: true}`) to prevent CI-related timeouts.
+- 7dc76a4: **\[Architecture\]** To reduce code and complexity when fetching categories, `useRootCategories` has been removed in favor of `useCategoryTree`.
+  The new method is more efficient and guarantees a consistent `Category[]` return value.
+
+  ```ts
+  // BEFORE
+  const { data: rootCategoriesData, status, error } = useRootCategories()
+
+  const rootCategories = computed<Category[]>(() => {
+    if (!rootCategoriesData.value) {
+      return []
+    }
+    return Array.isArray(rootCategoriesData.value.categories)
+      ? rootCategoriesData.value.categories
+      : [rootCategoriesData.value.categories]
+  })
+
+  // AFTER
+  const { data: rootCategoriesData, status, error } = useCategoryTree()
+
+  const rootCategories = computed<Category[]>(() => {
+    return rootCategoriesData.value ?? []
+  })
+  ```
+
+- 3ae2ca6: **\[Basket\]** Resolved a bug in `SFBasketDeleteConfirmationModal` component by assigning its return value to the `visible` constant.
+  This resolves an issue where the modal's visibility state was not being properly managed.
+- 29d39b4: **\[SEO\]** To improve search engine accuracy and user experience, the Product Detail Page's `meta` description is now fully reactive.
+  This ensures dynamic content like the product name is always correctly updated, even when navigating between products on the client side.
+- 5c495ad: **\[E2E\]** Aligned the Orders page end-to-end test (`e2e-Orders.spec.ts`) with a recent UI update.
+  The test now correctly verifies the new order number display format, which uses a `#` separator instead of a `:`.
+- 64a7760: **\[UI\]** Fixed a layout issue on smaller screens where the `SFSearchInput.vue` component was not taking up the full available width.
+  The input field is now correctly styled to span the full width on mobile devices.
+- 6ce1bb0: **\[Accessibility\]** To prevent unintended filter updates in `SFPriceRangeSlider.vue`, the `@change` event handler has been removed from the price input field.
+  This stops a filter action from being triggered simply by blurring the input.
+- cdfdefa: **\[E2E\]** To improve maintainability, the Search end-to-end tests have been updated to use environment variables for test data.
+  To run these tests successfully, you must now set the required environment variables to provide appropriate search terms for your specific test environment:
+
+  - `E2E_SEARCH_TERM_PRODUCT`: Search term that doesn't match any category name, so the search suggestions are not shown, e.g. some product brand.
+  - `E2E_SEARCH_TERM_CATEGORY_SUGGESTION`: Search term that fully or partially matches category name, e.g. "shirt" or "shirts".
+  - `E2E_SEARCH_EXACT_PRODUCT_ID`: Search term that matches exact product ID, e.g. 123456.
+  - `E2E_SEARCH_TAGS`: Descriptive search term that returns search suggestion tags in search suggestions list, e.g. "Black shoes size 44".
+  - `E2E_SEARCH_PAGE`: Search term that fully or partially matches a (content) page, e.g. "faq" or "support".
+  - `E2E_SEARCH_REFERENCE_KEY`: Search term that matches the exact product reference key, e.g. "123-ref-key".
+
+- 4787e57: **\[E2E\]** The end-to-end test suite has been enhanced to be more robust and adaptable across different environments.
+  We have reduced dependencies on hardcoded product IDs and static URLs, leading to more reliable test runs.
+
+  - `e2e-Account.spec.ts`: Tests now navigate to the User Profile via the Homepage, eliminating the use of hardcoded profile URLs.
+  - `e2e-Footer.spec.ts`: Footer link verification has been consolidated into `e2e-Homepage.spec.ts`, and the dedicated Footer links test has been streamlined.
+  - `e2e-Orders.spec.ts`: Introduced an environment variable to provision test users with no prior orders.
+  - `e2e-OrderSuccessPage.spec.ts`: Exact page title and description are no longer the part of SEO checks.
+  - `e2e-Pdp.spec.ts`: Product information (name, brand, price) and Wishlist interactions are now generalized, removing the need for specific Product ID.
+  - `e2e-Wishlist.spec.ts`: Verification of Wishlist contents and SEO elements is now independent of specific Product ID.
+
+- aa25f46: **\[Basket\]** Corrected the state handling for promotional gifts to enable the addition of multiple gift products.
+  Previously, the `variantId` of the initial gift was not being cleared, which blocked subsequent gift additions.
+- 3f59e5c: **\[Accessibility\]** Improved screen reader support in the `location.vue` component by adding a required `aria-label` to a previously unlabeled element.
+- 486ad9d: **\[Accessibility\]** Improved screen reader support for the variant picker (`SFVariantPicker.vue`) by adding a descriptive `aria-label` to each individual variant option.
+- ac65606: **\[E2E\]** To simplify the process of running and understanding our end-to-end tests, all test files have been updated with detailed JSDoc documentation.
+  Developers can now find the purpose, scope, and all necessary prerequisites—including required environment variables for test users and specific setup notes—directly within each test file, streamlining the testing workflow:
+
+  - `e2e-CountryDetector.spec.ts`: Explanation of timezone forcing for Country Detector modal testing.
+  - `e2e-Footer.spec.ts`: Description of the test suite's scope.
+  - `e2e-Orders.spec.ts`: Details on environment variable setup for test user credentials.
+  - `e2e-OrderSuccessPage.spec.ts`: Prerequisites regarding product availability for successful order completion.
+  - `e2e-Wishlist.spec.ts`: Scope and environment variable requirements for test user credentials.
+
+- 3ff0173: **\[E2E\]** To enhance test robustness, key end-to-end tests have been updated to reduce their dependency on specific content and product data.
+  SEO verification on the PDP, Wishlist, Login, and Basket pages now performs more generalized checks instead of asserting exact text.
+  Additionally, the Basket empty state test has been simplified to be independent of specific labels, ensuring greater stability.
+- 6ce1bb0: **\[Accessibility\]** Streamlined keyboard navigation in the `SFPriceRangeSlider.vue` filter modal.
+  The slider bar itself is no longer a focusable element, allowing users to interact more efficiently and directly with the price input fields to set the desired range.
+- d4d91c8: **\[Accessibility\]** Corrected an invalid ARIA implementation in `SFShopSwitcherFlyoutBody.vue` by removing a `role="menu"` attribute from a `<div>` wrapper.
+  This resolves an accessibility issue where the element failed to meet the requirement of containing appropriate child roles (e.g., `menuitem`).
+- 6dfaaf6: **\[Accessibility\]** To meet higher contrast ratio standards, core application colors have been updated.
+  This includes adjusting the primary red and a key gray value to improve readability, as well as unifying various text colors for a more consistent and accessible experience.
+
+  - Updated the primary red (`#E74B3A` → `#D1000A`).
+  - Adjusted a key gray (`#080808` → `#757575`).
+  - Unified text colors to use `text-gray-500`.
+  - Updated the 'Scroll to Top' button's border to `border-gray-500`.
+
+- 8ef3844: **\[E2E\]** The end-to-end test for the Basket's empty state (`e2e-Basket.spec.ts`) has been made more stable.
+  A new step now automatically clears any pre-existing items from the logged-in user's basket, ensuring the test is reliable and independent of prior user activity.
+- 3edd445: **\[PLP\]** Restored custom styling for "Sale" categories in the side navigation by adding a `sale` property to the category fetch request, ensuring the necessary data is available for styling hooks.
+- a694c1f: **\[UI\]** To improve the layout of color filters, the `SFFilterColorChip` component now truncates long color names, preventing them from overflowing or wrapping awkwardly.
+- 7b1583c: **\[Accessibility\]** Corrected the ARIA implementation in `SFProductPromotionBanner.vue`.
+  The `aria-label` is now conditionally applied only when the component is rendered as a link, ensuring proper accessibility without affecting non-interactive instances.
+- 38786e1: **\[Accessibility\]** Fixed the "skip to search" link, which was previously not functioning.
+  The correct element selector is now being used in `SFSkipLinks.vue` to ensure it works reliably for keyboard users.
+- c165b57: **\[Accessibility\]** Enhanced readability in the `SFVariantPicker.vue` component by increasing the color contrast between the placeholder text and its background, ensuring it meets accessibility standards.
+- 1bc7375: **\[E2E\]** The end-to-end test for user data updates has been adapted to accommodate recent UI changes.
+  The `updateUserData()` method now uses the new, required birth date format to ensure the test remains stable and accurate.
+- cf10f15: **[\UI\]** Resolved a layout issue in the `SFProductRecommendations` component where slider buttons could overlap the section title.
+  This was corrected by adjusting the button sizes and implementing title truncation.
+- 8701d47: **\[E2E\]** To improve the developer experience when working with the end-to-end test suite, a significant refactoring has been completed.
+  This includes reorganizing shared constants, adding detailed JSDoc comments to explain the purpose and setup for each test, and ensuring consistent use of constants across the suite, making tests easier to read, run, and maintain.
+- 4469226: **\[UI\]** To improve design consistency across form elements, the styling for the date input (`<SFTextInput type="date" />`) has been updated to match the appearance of other text input types.
+- 9ca186f: **\[Accessibility\]** Improved accessibility across the application by adding a descriptive `aria-label` to the promotional gift item button and by applying `aria-hidden="true"` to all purely decorative icons, preventing them from being announced by screen readers.
+- 4bf7fe0: **\[Accessibility\]** To ensure proper page structure and improve SEO, a duplicate `<h1>` tag has been removed from the Product Listing Page.
+  The headline within the `SFProductListNoResults.vue` component is now correctly set to an `<h2>`.
+- 4bf7fe0: **\[Accessibility\]** To ensure proper page structure, the headline on the empty wishlist page has been removed, resolving an issue with a duplicate `<h1>` tag.
+  This change also visually aligns the page with the empty basket view.
+- 23f3f84: **\[Utilities\]** To standardize how product prices are handled, the custom price logic has been replaced with the official `useProductPrice` composable provided by `@scayle/storefront-nuxt`.
+- 6e93684: **\[Accessibility\]** To improve screen reader support, a visually hidden but accessible label has been added to the main search input.
+- 108bd54: **\[Accessibility\]** To ensure proper keyboard interaction, the search input trigger has been assigned `role="button"`.
+  This correctly identifies it as an interactive element for assistive technologies and resolves the "Non-active element in tab order" issue.
+- 8205dc5: **\[E2E\]** To improve test suite maintainability, the page object model (`playwright/page-objects/`) has been cleaned up.
+  Outdated and unused DOM locators and methods were removed, resulting in a leaner and more manageable codebase.
+- 5be9995: **\[Subscription\]** Resolved a styling issue on the Product Detail Page where the focus outline for the subscription dropdown was being partially obscured or cut off.
+- 9b35c03: **\[PDP\]** Resolved a styling issue where the focus outline on the breadcrumb links was being partially obscured or cut off.
+- 99575e5: **\[E2E\]** Expanded end-to-end test coverage for the Orders page.
+  The test (`e2e-Orders.spec.ts`) now also verifies that the order status is correctly displayed on both the main order list and the individual order detail pages.
+- 6f10dee: **\[E2E\]** To speed up test execution in non-Vercel environments, Vercel-specific HTTP headers are now applied conditionally.
+  This is controlled by the `isTargetingVercel` environment variable in the Playwright configuration, preventing unnecessary overhead.
+- d97672c: **\[CMS\]** The `useCMSBySlug` composable has been enhanced to be fully reactive.
+  It now automatically re-fetches CMS data whenever the provided slug changes, ensuring the content stays in sync with the state.
+- eb3c712: **\[Accessibility\]** To ensure proper keyboard interaction and screen reader support, required ARIA roles have been added to interactive elements within the `SFBasketCard.vue` and `SFSearchInput.vue` components.
+- 8234272: **\[Promotions\]** To improve maintainability and reduce the codebase size, the unused `SFPromotionHeadline.vue` component has been removed.
+- 6ab5842: **\[Accessibility\]** To improve screen reader support during a password change, a visually hidden but accessible label has been added to the email field within the `SFProfilePasswordManagement` component.
+- b20a962: **\[Accessibility\]** To prevent focusable elements from being hidden by the sticky action bar, a scroll margin has been added to all focusable items within the `SFSlideIn.client.vue` component.
+- 565a9a3: **\[Subscriptions\]** The `useSubscriptions` composable is now fully reactive.
+  It will automatically re-fetch and update subscription data when the provided product `ref` changes, ensuring information always stays in sync.
+- 6441ceb: **\[E2E\]** To further improve the stability of end-to-end tests that navigate to the Product Listing Page, an additional wait condition has been added.
+  Tests will now explicitly wait for the PLP breadcrumb element to be visible, preventing failures caused by race conditions or slow page loads.
+- 395c6c8: **\[Architecture\]** Resolved an issue where navigating between categories on the Product Listing Page (PLP) was unresponsive.
+  This was caused by a reactivity problem after a recent change prevented the page from fully reloading.
+  The fix moves all category data fetching logic from the now-removed middleware directly into the PLP component, ensuring data updates correctly on navigation.
+- 28c4cc6: **\[Promotions\]** To improve code quality and maintainability, obsolete code related to inline gift selection has been removed.
+  This includes the isLastItemWithPromotions function in `SFBasketAvailableItems.vue` and the `show-free-gift-selection` prop in `SFBasketCard.vue`, both of which have been unused since Storefront Application `v1.9.0`.
+
 ## 1.9.1
 
 ### 🩹 Patch Changes
