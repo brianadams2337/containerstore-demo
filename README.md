@@ -6,10 +6,10 @@
     <img src="docs/images/scayle.svg" alt="Logo" height="80">
   </a>
 
-  <h3 align="center">SCAYLE Storefront Boilerplate Nuxt</h3>
+<h3 align="center">SCAYLE Storefront Boilerplate Nuxt</h3>
 
-  <p align="center">
-    A <a href="https://nuxt.com/docs/getting-started/introduction" target="_blank" >Nuxt 3</a>-based Boilerplate to kick-start your SCAYLE Storefront application development.
+<p align="center">
+    A <a href="https://nuxt.com/docs/getting-started/introduction" target="_blank" >Nuxt 3</a>-based Boilerplate to kick-start your SCAYLE Storefront Application development.
     <br />
     <a href="https://scayle.dev/en/storefront"><strong>Explore the docs »</strong></a>
     <br />
@@ -17,10 +17,10 @@
 
 ## About SCAYLE Storefront
 
-SCAYLE Storefront application is an all-in-one starter kit for building
+SCAYLE Storefront Application is an all-in-one starter kit for building
 high-performance e-commerce shops for the SCAYLE Commerce Engine. It makes it
 quick and easy to build a best-in-class shop frontend. The latest version of the
-Storefront application is based on Nuxt and Vue 3 and consists of two parts:
+Storefront Application is based on Nuxt and Vue 3 and consists of two parts:
 
 - Storefront SDKs: the headless storefront that provides design-agnostic business logic,
   feature packages, composables, and several helpers and utilities to simplify
@@ -29,7 +29,7 @@ Storefront application is based on Nuxt and Vue 3 and consists of two parts:
   includes the Storefront SDKs along with all the features and pages required
   for a modern e-commerce frontend.
 
-The Storefront application is built to make it easy to change or extend the shop design.
+The Storefront Application is built to make it easy to change or extend the shop design.
 This approach drastically reduces the effort required to launch a new e-commerce shop,
 as you only have to focus on customizing the UI and design layer to your specific needs.
 

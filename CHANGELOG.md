@@ -486,13 +486,13 @@ shifting towards more backend-driven logic, and making Storefront integration ea
 
 Key highlights include:
 
-- **Easier Integration:** A new `@scayle/storefront-promotions` module with a `useApplyPromotions` composable greatly simplifies the developer effort needed to ensure promotions are accurately applied to the basket in within any Storefront application.
+- **Easier Integration:** A new `@scayle/storefront-promotions` module with a `useApplyPromotions` composable greatly simplifies the developer effort needed to ensure promotions are accurately applied to the basket in within any Storefront Application.
 - **Smarter Promotion Display:** Reflecting more refined backend logic, information about promotional gifts on Product Detail Pages (using the `SFProductPromotionGifts` component) now only appears when specific conditions are met, and promotions listed in the slide-in panel are now correctly sorted by priority.
 - **Flexible Backend Control:** The underlying structure for promotion custom data has been revised, providing enhanced flexibility for backend configuration of promotion presentation details like headlines, colors, and links. Components like the basket summary promotions display have been updated to utilize this structure.
 
 #### 👤 Redesigned Account Area
 
-The Account Area of the Storefront application has received a significant overhaul, focusing on improved usability and a more unified experience!
+The Account Area of the Storefront Application has received a significant overhaul, focusing on improved usability and a more unified experience!
 
 - **Unified Account:** Access your Profile, Orders, and Subscriptions from a newly redesigned central account page.
 - **Redesigned Profile & Orders:** Enjoy completely revamped Profile, Orders list, and Order Detail pages with clearer layouts,
@@ -503,7 +503,7 @@ The Account Area of the Storefront application has received a significant overha
 
 #### 🔧 UI Refinements, Accessibility Improvements & Performance Optimizations
 
-This update introduces a variety of enhancements across the Storefront application, focusing on improving accessibility, refining the user interface, and boosting performance:
+This update introduces a variety of enhancements across the Storefront Application, focusing on improving accessibility, refining the user interface, and boosting performance:
 
 - **Accessibility:** Keyboard navigation has been significantly improved, ensuring skip links and the header user menu are fully accessible. Screen reader support is also enhanced, notably providing clearer context for order detail links in the account area.
 - **UI Refinements:** Experience a smoother interface with visually improved skeleton loaders that reduce layout shifts, more predictable behavior for filter panels (staying open when applying filters) and user popovers (closing automatically), and fixes for modals that previously stayed open incorrectly during navigation. Additionally, a logout button is now available in the mobile sidebar, and price inputs better restrict values to valid ranges.
@@ -727,8 +727,8 @@ We've redesigned the Search Results Page for a smoother, more consistent browsin
 
 ### 🚀 Major Changes
 
-- **\[CMS\]** Introducing a new static CMS placeholder provider `scayle`, that simplifies the initial setup process for Storefront applications.
-  The `scayle` static CMS placeholder delivers a single CMS page as static content, eliminating the need for access tokens, tenant space IDs, and other configuration typically required when setting up a Storefront applications and CMS.
+- **\[CMS\]** Introducing a new static CMS placeholder provider `scayle`, that simplifies the initial setup process for Storefront Applications.
+  The `scayle` static CMS placeholder delivers a single CMS page as static content, eliminating the need for access tokens, tenant space IDs, and other configuration typically required when setting up a Storefront Applications and CMS.
   This new provider is intended for development purposes only and should not be used in production environments.
 - **\[CMS\]** The `CMSCategoryData` fetching component has been removed and
   replaced by the newly introduced `CMSProductListingPageTeaser` component.
@@ -813,7 +813,7 @@ We've redesigned the Search Results Page for a smoother, more consistent browsin
     </script>
     ```
 
-- **\[Architecture\]** Improved the Storefront application's internationalization (i18n) implementation by switching to direct usage of the `useI18n` composable within the `setup` script blocks.
+- **\[Architecture\]** Improved the Storefront Application's internationalization (i18n) implementation by switching to direct usage of the `useI18n` composable within the `setup` script blocks.
   This approach offers several advantages over accessing i18n through `useNuxtApp`:
 
   - **Simplicity**: Directly using `useI18n` is simpler and more intuitive, reducing the complexity of code.
@@ -2286,7 +2286,7 @@ accessible and improving its capabilities.
 
 We have integrated proper Live Preview support for Storyblok and Contentful.
 This allows to edit the CMS content elements within the respective CMS provider
-web interface and show the changes immediately in the context of the Storefront application.
+web interface and show the changes immediately in the context of the Storefront Application.
 
 - [Storyblok: Editor Guides - Visual Editor](https://www.storyblok.com/docs/editor-guides/visual-editor)
 - [Contentful: Developer Docs - Live preview](https://www.contentful.com/developers/docs/tutorials/general/live-preview/)

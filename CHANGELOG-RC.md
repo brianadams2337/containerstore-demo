@@ -1,6 +1,6 @@
 # @scayle/storefront-application-nuxt (RC)
 
-Changelogs of past Release Candidates (prior to v1.0.0) of the SCAYLE Storefront application.
+Changelogs of past Release Candidates (prior to v1.0.0) of the SCAYLE Storefront Application.
 
 ## 1.0.0-rc.10
 
@@ -437,7 +437,7 @@ and the [Official Vue 3.4.19 Changelogs](https://github.com/vuejs/core/blob/main
 
 #### 🧪 Modularization: Extracting Cypress into dedicated sub-package
 
-The Cypress testing solution has been extracted into a dedicated child package located at `cypress/`. This decouples the Dependencies from the main Storefront application. To install all relevant Cypress Dependencies, execute `yarn install` within the `cypress/` directory.
+The Cypress testing solution has been extracted into a dedicated child package located at `cypress/`. This decouples the Dependencies from the main Storefront Application. To install all relevant Cypress Dependencies, execute `yarn install` within the `cypress/` directory.
 By default the current Cypress integration does not rely anymore on the commercial Cypress Dashboard integration.
 Please check the dedicated Readme file located at `cypress/README.md` for more details.
 
