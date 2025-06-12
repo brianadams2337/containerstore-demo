@@ -25,7 +25,7 @@
       <SFButton
         variant="raw"
         :disabled="isSubmitting"
-        class="mr-7 h-6 rounded-md px-1.5 text-base font-semibold !text-gray-600 hover:bg-gray-100"
+        class="mr-7 h-6 rounded-md px-1.5 text-md font-semibold !text-secondary hover:bg-gray-200"
         data-testid="back-to-login-button"
         @click.prevent="backToLogin"
       >

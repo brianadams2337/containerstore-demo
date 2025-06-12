@@ -2,14 +2,16 @@
   <section class="-mb-16 overflow-hidden text-clip px-7 md:px-20">
     <div class="mx-auto flex w-full flex-col lg:flex-row">
       <div
-        class="bg-lined-grid shrink-0 py-4 text-gray-500 lg:w-1/2 lg:py-10 lg:pr-12"
+        class="bg-lined-grid shrink-0 py-4 text-secondary lg:w-1/2 lg:py-10 lg:pr-12"
         style="--lined-grid-gradient-start: calc(100% - 12rem)"
       >
         <p class="mb-4 font-medium">Progressive Technology</p>
-        <h1 class="mb-8 text-6xl font-bold text-black md:text-7xl">
+        <h1
+          class="mb-8 text-[3.25rem] font-bold leading-[3.625rem] text-black md:text-[4.5rem] md:leading-none"
+        >
           Storefront
         </h1>
-        <p class="mb-10 max-w-187.5 leading-8 lg:pr-12">
+        <p class="mb-10 max-w-[46.875rem] leading-8 lg:pr-12">
           Storefront is an all-in-one starter kit for building high-performance
           e-commerce shops for the SCAYLE Commerce Engine. It makes it quick and
           easy to build a best-in-class shop frontend. The latest version of
@@ -35,7 +37,7 @@
       </div>
       <div class="self-end">
         <img
-          class="lg:-ml-12 lg:w-348 lg:max-w-none"
+          class="lg:-ml-12 lg:w-[87rem] lg:max-w-none"
           src="../assets/images/hero.webp"
           alt="Storefront Boilerplate"
         />

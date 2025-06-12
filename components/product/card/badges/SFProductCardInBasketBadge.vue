@@ -5,7 +5,7 @@
   -->
   <div
     v-if="isProductAddedToBasket && !isBasketPage && mounted"
-    class="h-4 w-fit self-end rounded-tl-md bg-gray-600 px-2 text-xs font-medium text-gray-100"
+    class="h-4 w-fit self-end rounded-tl-md bg-secondary px-2 text-xs font-medium text-gray-200"
     v-bind:="$attrs"
   >
     {{ $t('badge_labels.already_in_basket') }}

@@ -8,7 +8,7 @@
         :id="id"
         v-model="model"
         :value="item"
-        class="peer absolute size-4 cursor-pointer appearance-none rounded border border-gray-400 checked:border-2 checked:border-accent hover:border-accent"
+        class="peer absolute size-4 cursor-pointer appearance-none rounded border border-gray-500 checked:border-2 checked:border-accent hover:border-accent"
         type="checkbox"
         data-testid="form-checkbox"
       />
@@ -20,7 +20,7 @@
     <slot name="label">
       <span
         v-if="label"
-        class="leading-none text-gray-500 group-checked:text-black"
+        class="leading-none text-secondary group-checked:text-black"
       >
         {{ label }}
       </span>

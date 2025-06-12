@@ -12,10 +12,10 @@
         : {}
     "
     :class="{
-      'mr-3 block w-fit content-center rounded p-1 text-base font-normal leading-5 text-[var(--textColor)] transition-all supports-hover:hover:bg-[var(--backgroundColor)]':
+      'mr-3 block w-fit content-center rounded p-1 text-md font-normal leading-5 text-[var(--textColor)] transition-all supports-hover:hover:bg-[var(--backgroundColor)]':
         !raw && isLink,
       'mr-0 bg-[var(--backgroundColor)]': isActive && !raw && isLink,
-      'min-h-5 w-fit p-1 text-base font-semi-bold-variable leading-5 text-[var(--textColor)]':
+      'min-h-5 w-fit p-1 text-md font-semibold leading-5 text-[var(--textColor)]':
         !raw && !isLink,
     }"
     :style="style"
@@ -133,9 +133,8 @@ const isLink = computed(() => {
 const style = computed(() => {
   return getStyle(
     navigationItem,
-    backgroundColor ?? theme.colors.gray[100],
-    textColor ??
-      (isLink.value ? theme.colors.gray[600] : theme.colors.gray[900]),
+    backgroundColor ?? theme.colors.gray[200],
+    textColor ?? (isLink.value ? theme.colors.secondary : theme.colors.primary),
   )
 })
 </script>

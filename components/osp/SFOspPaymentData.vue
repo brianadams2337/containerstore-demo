@@ -4,7 +4,7 @@
     :title="$t('order_information.payment_details.title')"
     data-testid="osp-payment-data"
   >
-    <ul class="flex flex-col gap-1 text-gray-600">
+    <ul class="flex flex-col gap-1 text-secondary">
       <li>
         <span class="font-medium"
           >{{ $t('order_information.payment_details.payment_method') }}:</span

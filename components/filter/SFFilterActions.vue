@@ -10,7 +10,7 @@
     >
       <div v-if="areFiltersCleared" class="absolute size-full">
         <div
-          class="flex h-full items-center space-x-2 rounded-xl bg-status-success-light p-3 px-4 font-semi-bold-variable leading-none text-status-success"
+          class="flex h-full items-center space-x-2 rounded-xl bg-status-success-light p-3 px-4 font-semibold leading-none text-status-success"
         >
           <IconCheckGreen class="my-auto size-4" />
           <span>{{ $t('filter.notification.all_filters_cleared') }}</span>

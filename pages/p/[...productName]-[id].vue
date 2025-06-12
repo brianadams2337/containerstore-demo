@@ -17,7 +17,7 @@
           />
           <h1 class="max-md:px-5 md:mb-2">
             <div
-              class="truncate font-semi-bold-variable text-gray-900"
+              class="truncate font-semibold text-primary"
               :title="brand"
               data-testid="pdp-product-brand"
             >
@@ -25,7 +25,7 @@
             </div>
             <SFHeadline
               size="lg"
-              class="text-md !font-normal text-gray-600 md:text-lg"
+              class="text-md !font-normal text-secondary md:text-lg"
               data-testid="pdp-product-name"
             >
               <span class="truncate" :title="name">
@@ -89,7 +89,7 @@
       >
         <template #header="{ title: recommendationTitle }">
           <h2
-            class="mb-6 truncate pr-20 text-2xl font-medium text-gray-900 md:px-2"
+            class="mb-6 truncate pr-20 text-2xl font-medium text-primary md:px-2"
           >
             {{ recommendationTitle }}
           </h2>

@@ -1,10 +1,10 @@
 <template>
   <div class="flex w-full items-center justify-between">
-    <SFHeadline class="!font-semi-bold-variable md:text-lg" size="xl" tag="p">
+    <SFHeadline class="md:text-lg" size="xl" tag="p">
       {{ $t('filter_header.title') }}
     </SFHeadline>
     <SFButton
-      class="group my-3 -mr-2 bg-gray-100 md:bg-transparent hover:md:bg-gray-100"
+      class="group my-3 -mr-2 bg-gray-200 md:bg-transparent hover:md:bg-gray-200"
       fab
       variant="raw"
       data-testid="close-filters"
@@ -13,7 +13,7 @@
     >
       <template #icon>
         <IconClose
-          class="size-4 md:text-gray-500 group-hover:md:text-gray-900"
+          class="size-4 md:text-secondary group-hover:md:text-primary"
         />
       </template>
     </SFButton>

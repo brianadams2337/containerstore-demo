@@ -2,7 +2,7 @@
   <SFLocalizedLink
     :to="to"
     raw
-    class="block cursor-pointer space-y-2 rounded-lg border border-gray-600 p-4 hover:border-gray-900 hover:bg-gray-100 focus:border-gray-900 focus:bg-gray-100"
+    class="block cursor-pointer space-y-2 rounded-lg border border-secondary p-4 hover:border-primary hover:bg-gray-200 focus:border-primary focus:bg-gray-200"
     data-testid="search-suggestions-item"
   >
     <slot />

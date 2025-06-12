@@ -2,13 +2,14 @@
   <SFLocalizedLink
     raw
     :to="to"
-    class="group flex items-center space-x-3 rounded-md px-3 py-2.5 hover:bg-gray-100"
+    class="group flex items-center space-x-3 rounded-md px-3 py-2.5 hover:bg-gray-200"
     :aria-label="label"
   >
-    <component :is="icon" class="size-4 text-gray-600 group-hover:text-black" />
-    <span
-      class="text-base font-variable leading-5 text-gray-600 group-hover:text-black"
-    >
+    <component
+      :is="icon"
+      class="size-4 text-secondary group-hover:text-black"
+    />
+    <span class="text-md leading-5 text-secondary group-hover:text-black">
       {{ label }}
     </span>
   </SFLocalizedLink>

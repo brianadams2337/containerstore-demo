@@ -3,12 +3,12 @@
     class="flex min-h-screen flex-col text-primary antialiased anchor-scrolling-none"
   >
     <header
-      class="relative flex h-15 items-center justify-between border-b px-7 text-md font-medium text-gray-900"
+      class="relative flex h-15 items-center justify-between border-b px-7 text-md font-medium text-primary"
     >
       <SFLocalizedLink
         :to="routeList.home"
         raw
-        class="flex items-center gap-2 rounded-md p-1 text-md font-medium text-primary hover:bg-gray-100"
+        class="flex items-center gap-2 rounded-md p-1 text-md font-medium text-primary hover:bg-gray-200"
       >
         <IconBack class="size-3" />
         <div class="mr-auto hidden pt-0.5 md:block">
@@ -33,7 +33,7 @@
           v-for="navItem in headerTree?.items"
           :key="`footer-link-${navItem.id}`"
           raw
-          class="rounded-md p-1 hover:bg-gray-100"
+          class="rounded-md p-1 hover:bg-gray-200"
           :navigation-item="navItem"
         />
         <span class="ml-auto" />
@@ -43,7 +43,7 @@
       <NuxtPage />
     </main>
     <footer
-      class="flex flex-col gap-4 border-t bg-gray-50 px-10 py-5 text-base text-gray-600 md:flex-row md:gap-8 md:py-7 md:text-gray-900"
+      class="flex flex-col gap-4 border-t bg-gray-100 px-10 py-5 text-md text-secondary md:flex-row md:gap-8 md:py-7 md:text-primary"
     >
       <SFBottomFooter />
     </footer>

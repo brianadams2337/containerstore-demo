@@ -7,25 +7,22 @@
       'h-12 px-10': !isRaw && isSize('lg'),
       'h-11 px-10': !isRaw && isSize('md'),
       'h-9 px-6': !isRaw && isSize('sm'),
-      'h-8 px-3': !isRaw && isSize('xs'),
       'rounded-xl bg-primary font-semibold text-white hover:bg-accent':
         isPrimary,
-      'rounded-xl border border-gray-300 bg-white font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-600':
+      'rounded-xl border border-gray-400 bg-white font-medium text-secondary hover:bg-gray-200 hover:text-secondary':
         isSecondary,
-      'rounded-xl border border-gray-400 bg-transparent font-semibold text-primary hover:bg-secondary-300 hover:text-primary-400':
+      'rounded-xl border border-gray-500 bg-transparent font-semibold text-primary hover:bg-gray-100 hover:text-primary':
         isTertiary,
-      'rounded-10 bg-accent font-semibold text-white hover:bg-accent/75 hover:text-white':
+      'rounded-lg bg-accent font-semibold text-white hover:bg-accent/75 hover:text-white':
         isAccent,
-      'text-primary hover:text-primary-400': isRaw,
+      'text-primary hover:text-primary': isRaw,
       'w-full': isFullWidth,
       'animate-pulse cursor-not-allowed': loading,
       '!rounded-full !p-2': fab,
-      uppercase: isUppercase,
-      'shadow-secondary': hasShadow && isSecondary,
-      'text-sm': (isSize('xs') || isSize('sm')) && !isRaw,
+      'text-sm': isSize('sm') && !isRaw,
       'text-md': (isSize('md') || isSize('lg') || isSize('xl')) && !isRaw,
     }"
-    class="group inline-flex items-center justify-center gap-2 truncate whitespace-nowrap transition duration-100 ease-linear disabled:border disabled:border-secondary-600 disabled:bg-secondary-200 disabled:text-gray-500"
+    class="group inline-flex items-center justify-center gap-2 truncate whitespace-nowrap transition duration-100 ease-linear disabled:border disabled:border-gray-300 disabled:bg-gray-100 disabled:text-secondary"
   >
     <slot
       name="icon"
@@ -34,8 +31,6 @@
         'size-8': isSize('lg'),
         'size-6': isSize('md'),
         'size-4': isSize('sm'),
-        'size-3': isSize('xs'),
-        'size-2': isSize('4xs'),
       }"
     />
     <slot />
@@ -46,44 +41,29 @@
         'size-8': isSize('lg'),
         'size-6': isSize('md'),
         'size-4': isSize('sm'),
-        'size-3': isSize('xs'),
-        'size-2': isSize('4xs'),
       }"
     />
-    <slot v-if="badge !== undefined" name="badge" :badge="badge">
-      <Transition
-        enter-to-class="opacity-100"
-        enter-active-class="transition ease-linear duration-200"
-        leave-active-class="transition ease-linear duration-200"
-        leave-to-class="opacity-0"
-        appear
-      >
-        <span>({{ badge }})</span>
-      </Transition>
-    </slot>
   </component>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ButtonVariant, Size, getSizeUtils } from '#storefront-ui'
+import { ButtonVariant, Size } from '#storefront-ui'
 import type { RouteLocationRaw } from '#vue-router'
 import { SFLink } from '#storefront-ui/components'
 
 const {
   variant = ButtonVariant.PRIMARY,
-  size = Size.MD,
+  size: currentSize = Size.MD,
+  fab = false,
   to,
 } = defineProps<{
   variant?: ButtonVariant
   size?: Size
   to?: RouteLocationRaw
-  badge?: number
+  fab?: boolean
   isFullWidth?: boolean
   loading?: boolean
-  fab?: boolean
-  isUppercase?: boolean
-  hasShadow?: boolean
 }>()
 
 const isPrimary = computed(() => variant === ButtonVariant.PRIMARY)
@@ -92,7 +72,7 @@ const isTertiary = computed(() => variant === ButtonVariant.TERTIARY)
 const isRaw = computed(() => variant === ButtonVariant.RAW)
 const isAccent = computed(() => variant === ButtonVariant.ACCENT)
 
-const { isSize } = getSizeUtils(size)
+const isSize = (size?: Size): boolean => size === currentSize
 
 const componentName = computed(() => (to ? SFLink : 'button'))
 </script>

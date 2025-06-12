@@ -2,7 +2,7 @@
   <SFItemsSlider with-arrows mode="horizontal">
     <template #header>
       <slot name="header" :title="title">
-        <div class="mb-6 text-2xl font-medium text-gray-900 md:px-2">
+        <div class="mb-6 text-2xl font-medium text-primary md:px-2">
           {{ title }}
         </div>
       </slot>

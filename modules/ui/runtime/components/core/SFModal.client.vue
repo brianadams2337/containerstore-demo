@@ -18,12 +18,12 @@ Therefore, to ensure it's also not rendered on the server, it must be wrapped in
         <button
           v-if="!hideCloseButton"
           data-testid="close-button"
-          class="group absolute right-6 top-6 z-50 cursor-pointer rounded-full p-2.5 transition-colors max-md:bg-gray-100 md:hover:bg-gray-100"
+          class="group absolute right-6 top-6 z-20 cursor-pointer rounded-full p-2.5 transition-colors max-md:bg-gray-200 md:hover:bg-gray-200"
           :aria-label="$t('global.cancel')"
           @click="onCancel"
         >
           <IconClose
-            class="size-5 transition-colors md:fill-gray-400 md:group-hover:fill-black"
+            class="size-5 transition-colors md:fill-gray-100 md:group-hover:fill-black"
           />
         </button>
         <div class="m-auto w-full rounded-md bg-white">
@@ -42,16 +42,12 @@ import { vDialog } from '../../directives/dialog'
 import SFFadeInTransition from '#storefront-ui/components/transitions/SFFadeInTransition.vue'
 import { ClientOnly } from '#components'
 
-const {
-  hideCloseButton = false,
-  closeOnOutside = true,
-  transitionComponent = SFFadeInTransition,
-} = defineProps<{
-  hideCloseButton?: boolean
-  closeOnOutside?: boolean
-  transitionComponent?: Component
-  appear?: boolean
-}>()
+const { hideCloseButton = false, transitionComponent = SFFadeInTransition } =
+  defineProps<{
+    hideCloseButton?: boolean
+    transitionComponent?: Component
+    appear?: boolean
+  }>()
 
 const visible = defineModel<boolean>('visible', {
   type: Boolean,
@@ -65,7 +61,7 @@ const close = () => {
 }
 
 const onClick = (e: MouseEvent) => {
-  if (!visible.value || !closeOnOutside) {
+  if (!visible.value) {
     return
   }
 

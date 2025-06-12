@@ -1,5 +1,6 @@
 import type { Promotion } from '@scayle/storefront-nuxt'
 import Color from 'color'
+import { theme } from '#tailwind-config'
 
 const getRGBAValue = (color: string, alpha: AlphaValue) =>
   Color(color)
@@ -7,11 +8,11 @@ const getRGBAValue = (color: string, alpha: AlphaValue) =>
     .rgb()
     .string()
 
-export const FALLBACK_COLOR = '#0038FF'
+export const FALLBACK_COLOR = theme.colors.promotion
 
 export const FALLBACK_PROMOTION_COLORS = {
   background: FALLBACK_COLOR,
-  text: '#fff',
+  text: theme.colors.white,
 }
 
 type AlphaValue = 0 | 5 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100

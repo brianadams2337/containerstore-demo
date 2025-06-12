@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col gap-5" data-testid="footer-link-section">
     <div
-      class="flex cursor-pointer items-center text-lg font-semibold text-gray-900 md:cursor-default md:text-sm"
+      class="flex cursor-pointer items-center text-lg font-semibold text-primary md:cursor-default md:text-sm"
       data-testid="footer-link-section-title"
       @click="expanded = !expanded"
     >

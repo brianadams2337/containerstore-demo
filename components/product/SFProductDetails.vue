@@ -32,13 +32,13 @@
         <div class="mb-8">
           {{ $t('product_details.shipping_return_heading.general_info') }}
         </div>
-        <div class="mb-1 font-semi-bold-variable">
+        <div class="mb-1 font-semibold">
           {{ $t('product_details.shipping_return_heading.dhl_headline') }}
         </div>
         <div class="mb-8">
           {{ $t('product_details.shipping_return_heading.dhl_paragraph') }}
         </div>
-        <div class="mb-1 font-semi-bold-variable">
+        <div class="mb-1 font-semibold">
           {{ $t('product_details.shipping_return_heading.hermes_headline') }}
         </div>
         <div class="mb-8">

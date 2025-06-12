@@ -1,6 +1,6 @@
 <template>
   <button
-    class="flex items-center justify-center p-2 text-gray-500 shadow-sm transition-transform duration-300 focus-within:shadow-secondary hover:text-gray-900 focus-visible:shadow-outer-solid disabled:hover:translate-x-0 disabled:hover:text-gray-500"
+    class="flex items-center justify-center p-2 text-secondary shadow transition-transform duration-300 focus-within:shadow-secondary hover:text-primary focus-visible:shadow-outer-solid disabled:hover:translate-x-0 disabled:hover:text-secondary"
     :class="{
       '-left-2 hover:translate-x-1': isLeft && translateOnHover,
       '-right-2 hover:-translate-x-1': !isLeft && translateOnHover,

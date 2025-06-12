@@ -10,7 +10,7 @@
       raw
       class="ml-1 px-2"
       :class="{
-        'border-r border-gray-500 md:border-r': showDividerTag(
+        'border-r border-secondary md:border-r': showDividerTag(
           index,
           productCategories.length,
         ),
@@ -18,7 +18,7 @@
       }"
     >
       <span
-        class="text-md leading-none text-gray-500 transition-all hover:text-black"
+        class="text-md leading-none text-secondary transition-all hover:text-black"
         :title="name"
       >
         {{ name }}

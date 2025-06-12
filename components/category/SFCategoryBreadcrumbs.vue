@@ -3,7 +3,7 @@
     <div
       class="inline-flex flex-wrap"
       :class="{
-        'border-r border-gray-500 max-sm:border-none md:border-r-2':
+        'border-r border-secondary max-sm:border-none md:border-r-2':
           categoryAncestors.length,
       }"
     >
@@ -13,9 +13,9 @@
         :data-testid="`category-breadcrumb-${index}`"
         :to="to"
         raw
-        class="flex items-center px-2 text-lg font-medium text-gray-500 sm:text-2xl"
+        class="flex items-center px-2 text-lg font-medium text-secondary sm:text-2xl"
         :class="{
-          'border-r border-gray-500 md:border-r-2': showDividerTag(
+          'border-r border-secondary md:border-r-2': showDividerTag(
             index,
             categoryAncestors.length,
           ),
@@ -28,14 +28,14 @@
     <SFHeadline
       tag="h1"
       data-testid="active-category-breadcrumb"
-      class="mt-1.5 !font-semi-bold-variable text-gray-900 max-sm:text-2xl max-sm:leading-6 sm:mt-0"
+      class="mt-1.5 text-primary max-sm:text-2xl max-sm:leading-6 sm:mt-0"
       :class="{ 'pl-2 max-sm:pl-0': categoryAncestors.length }"
     >
       {{ category.name }}
       <SFFadeInTransition>
         <span
           v-if="!productsFetching && productsCount !== undefined"
-          class="ml-0.5 inline-flex h-4.5 items-center rounded-full bg-gray-900 px-2 text-xs font-semibold leading-4 text-white"
+          class="ml-0.5 inline-flex h-4.5 items-center rounded-full bg-primary px-2 text-xs font-semibold leading-4 text-white"
           data-testid="breadcrumb-product-counter"
         >
           {{ productsCount }}

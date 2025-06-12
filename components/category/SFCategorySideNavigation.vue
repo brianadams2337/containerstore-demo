@@ -11,7 +11,7 @@
           :category="category"
           :is-active="category.id === currentCategory?.id"
           :is-sale="isSaleCategory(category)"
-          class="font-semi-bold-variable text-gray-900"
+          class="font-semibold !text-primary"
         />
         <SFCategorySideNavigationChildren
           v-if="category.children?.length"

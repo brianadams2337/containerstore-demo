@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid grid-cols-1 gap-4 text-base font-normal text-gray-600 lg:grid-cols-2"
+    class="grid grid-cols-1 gap-4 text-md font-normal text-secondary lg:grid-cols-2"
   >
     <SFOrderDetailBox :title="$t('order_information.order_details.title')">
       <div v-if="orderDetails.confirmedAt" class="flex items-center gap-1">

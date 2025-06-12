@@ -2,7 +2,7 @@
   <!-- Mobile needs to be implemented as Vue fragments in order to enable sticky
       behavior for basket summary final price and checkout button. -->
   <section
-    class="flex w-full flex-col gap-4 border-t border-gray-200 bg-gray-50 px-5 pb-4 pt-8 text-base font-variable leading-3.5 lg:hidden"
+    class="flex w-full flex-col gap-4 border-t border-gray-300 bg-gray-100 px-5 pb-4 pt-8 text-md leading-4 lg:hidden"
   >
     <SFHeadline tag="h2" data-testid="headline">
       {{ $t('basket_summary.total') }}
@@ -23,22 +23,22 @@
   <SFBasketSummaryReductions
     v-if="basket.cost.appliedReductions.length > 0"
     :basket="basket"
-    class="bg-gray-50 px-5 pb-4 lg:hidden"
+    class="bg-gray-100 px-5 pb-4 lg:hidden"
   />
   <div
-    class="sticky bottom-0 z-10 flex flex-col gap-4 border-gray-200 bg-gray-50 pb-5 lg:hidden"
+    class="sticky bottom-0 z-10 flex flex-col gap-4 border-gray-300 bg-gray-100 pb-5 lg:hidden"
   >
-    <hr class="h-px w-full border-none bg-gray-300" />
+    <hr class="h-px w-full border-none bg-gray-400" />
     <SFBasketSummaryFinalSection
       :cost="basket.cost"
       :basket-items="basket.items"
       class="px-5"
     />
   </div>
-  <div class="bg-gray-50 px-5 pb-5 lg:hidden">
+  <div class="bg-gray-100 px-5 pb-5 lg:hidden">
     <SFBasketSummaryVoucherDisclaimer />
   </div>
-  <p class="bg-gray-50 px-5 pb-8 text-xs text-secondary lg:hidden">
+  <p class="bg-gray-100 px-5 pb-8 text-xs text-secondary lg:hidden">
     {{ deliveryCostsDisclaimer }}
   </p>
 </template>

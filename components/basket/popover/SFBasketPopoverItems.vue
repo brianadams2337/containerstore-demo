@@ -11,7 +11,7 @@
       class="w-80 sm:w-96"
     />
   </ul>
-  <p v-else class="w-60 text-wrap p-3 text-center text-base text-gray-600">
+  <p v-else class="w-60 text-wrap p-3 text-center text-md text-secondary">
     {{ $t('basket_popover_items.no_items_info') }}
   </p>
 </template>

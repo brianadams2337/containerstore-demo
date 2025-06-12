@@ -13,7 +13,7 @@
         :is-sale="!isParentSale && isSaleCategory(category)"
         class="!leading-5"
         :class="{
-          '!text-base': category.depth === 2,
+          '!text-md': category.depth === 2,
           '!text-sm': category.depth > 2,
         }"
       />

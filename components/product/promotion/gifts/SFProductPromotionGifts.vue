@@ -9,7 +9,7 @@
     >
       <div class="flex gap-1">
         <IconGift class="size-4" />
-        <SFHeadline tag="h2" size="base" is-bold data-testid="headline">
+        <SFHeadline tag="h2" size="md" is-bold data-testid="headline">
           {{ $t('product_promotion_gifts.headline') }}
         </SFHeadline>
       </div>

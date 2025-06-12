@@ -3,7 +3,7 @@
     v-bind="$attrs"
     size="md"
     variant="raw"
-    class="rounded-md border-none bg-transparent !text-gray-500 transition duration-150 ease-in-out hover:scale-110 hover:bg-gray-200"
+    class="rounded-md border-none bg-transparent !text-secondary transition duration-150 ease-in-out hover:scale-110 hover:bg-gray-300"
     :data-testid="
       isInWishlist
         ? 'remove-item-from-wishlist-button'
@@ -33,7 +33,7 @@
         <template #loading>
           <IconHeartInactive
             :class="_class"
-            class="animate-pulse fill-gray-200 text-gray-200"
+            class="animate-pulse fill-gray-300 text-gray-300"
           />
         </template>
       </SFAsyncStatusWrapper>

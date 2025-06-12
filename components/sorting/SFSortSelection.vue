@@ -6,7 +6,7 @@
     :items="sortLinks"
   >
     <template #default>
-      <span class="max-w-[80%] overflow-hidden text-ellipsis !text-base">
+      <span class="max-w-[80%] overflow-hidden text-ellipsis !text-md">
         {{ selectedSort && $t(selectedSort.label) }}
       </span>
     </template>
@@ -14,8 +14,8 @@
       <SFLocalizedLink
         :data-testid="`sort-item-${item.key}`"
         variant="whisper"
-        class="mb-1 w-full rounded p-2 !text-base !font-medium last-of-type:mb-0 hover:bg-gray-100 focus-visible:shadow-inner-solid-sm"
-        :class="{ 'bg-gray-100 !text-black': item.key === selectedSort?.key }"
+        class="mb-1 w-full rounded p-2 !text-md !font-medium last-of-type:mb-0 hover:bg-gray-200 focus-visible:shadow-inner-solid-sm"
+        :class="{ 'bg-gray-200 !text-black': item.key === selectedSort?.key }"
         :to="item.to"
         @click="
           () => {

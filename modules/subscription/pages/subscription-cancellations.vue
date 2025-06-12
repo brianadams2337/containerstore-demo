@@ -1,5 +1,5 @@
 <template>
-  <section class="container my-10 overflow-hidden py-2 max-sm:max-w-none">
+  <section class="container my-10 overflow-hidden py-2 max-md:max-w-none">
     <!-- eslint-disable-next-line vue/no-undef-components -->
     <subscription-cancellation
       v-if="isSubscriptionCancellationWebComponentLoaded"

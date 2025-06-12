@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col overflow-hidden p-5 lg:w-96">
     <div v-if="availableLanguages.length > 1" ref="languageList" class="mb-5">
-      <div class="mb-4 text-md font-semi-bold-variable">
+      <div class="mb-4 text-md font-semibold">
         {{ $t('shop_selector.choose_language') }}
       </div>
       <div class="grid grid-cols-2 gap-5">
@@ -20,7 +20,7 @@
       ref="countryList"
       class="flex flex-col overflow-hidden"
     >
-      <div class="mb-4 text-md font-semi-bold-variable">
+      <div class="mb-4 text-md font-semibold">
         {{ $t('shop_selector.choose_country') }}
       </div>
       <div class="grid grid-cols-1 gap-2 overflow-auto p-1">

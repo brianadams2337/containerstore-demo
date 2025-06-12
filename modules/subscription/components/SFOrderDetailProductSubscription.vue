@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col gap-2">
-    <div class="text-sm font-semi-bold-variable text-gray-900">
+    <div class="text-sm font-semibold text-primary">
       {{ $t('subscription.subscription') }}
     </div>
-    <ul class="flex flex-col gap-1 text-sm text-gray-600">
+    <ul class="flex flex-col gap-1 text-sm text-secondary">
       <li class="flex gap-1">
         <span class="font-medium"> {{ $t('subscription.interval') }}: </span>
         <span>

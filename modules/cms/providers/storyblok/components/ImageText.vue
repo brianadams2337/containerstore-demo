@@ -22,14 +22,14 @@
       >
         <div
           v-if="blok.topline"
-          class="text-xs font-semibold leading-loose md:text-base"
+          class="text-xs font-semibold leading-loose md:text-md"
         >
           {{ blok.topline }}
         </div>
         <SFHeadline
           v-if="blok.headline"
           is-uppercase
-          class="!block leading-tight md:text-4xl"
+          class="!block leading-tight md:text-3xl"
         >
           {{ blok.headline }}
         </SFHeadline>
@@ -56,10 +56,8 @@ import { useLocalizedRoute } from '../../../composables/storefront/useLocalizedR
 import { NuxtImg } from '#components'
 import { SFHeadline, SFButton } from '#storefront-ui/components'
 
-const {
-  blok,
-  sizes = 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
-} = defineProps<CMSImageTextProps>()
+const { blok, sizes = 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw' } =
+  defineProps<CMSImageTextProps>()
 
 const { getLocalizedRoute } = useLocalizedRoute()
 

@@ -6,7 +6,7 @@
     <div class="flex h-56 w-full justify-center" data-testid="empty-state-icon">
       <component :is="iconComponent" />
     </div>
-    <div class="px-14 text-center md:w-128 md:px-0">
+    <div class="px-14 text-center md:w-lg md:px-0">
       <SFHeadline
         v-if="title"
         tag="h1"
@@ -18,7 +18,7 @@
       </SFHeadline>
       <p
         v-if="description"
-        class="mt-4 !block text-lg font-normal leading-5 text-gray-600"
+        class="mt-4 !block text-lg font-normal leading-5 text-secondary"
         data-testid="empty-state-subheadline"
       >
         {{ description }}

@@ -6,11 +6,11 @@
     />
 
     <div
-      class="container relative flex rounded-t-2xl bg-white pt-4 max-sm:max-w-none md:rounded-none md:pt-8"
+      class="container relative flex rounded-t-xl bg-white pt-4 max-sm:max-w-none md:rounded-none md:pt-8"
     >
       <SFCategorySideNavigation
         v-if="rootCategories?.length"
-        class="sticky top-8 h-full max-md:hidden sm:min-w-40 md:min-w-[14.75rem] lg:min-w-[17rem]"
+        class="sticky top-8 h-full max-md:hidden sm:min-w-40 md:min-w-60 lg:min-w-64"
         :root-categories="rootCategories"
         :current-category="currentCategory"
         :fetching-categories="fetchingCategories"

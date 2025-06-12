@@ -15,7 +15,7 @@
         <div
           v-if="isOpen"
           v-element-visibility="[onVisible, { threshold: 0.5 }]"
-          class="relative z-50 flex w-full items-center"
+          class="relative z-20 flex w-full items-center"
           :class="{
             'bg-status-info text-black': is('info'),
             'bg-status-error text-white': is('sale'),
@@ -46,8 +46,7 @@
 
             <slot name="action" :close="close">
               <SFButton
-                no-padding
-                size="xs"
+                size="sm"
                 variant="raw"
                 class="absolute right-6"
                 @click="close"

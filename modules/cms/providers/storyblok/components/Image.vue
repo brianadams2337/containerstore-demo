@@ -4,7 +4,7 @@
     v-element-visibility="onVisible"
     v-editable="blok"
     provider="storyblok"
-    class="picture h-full bg-gray-200"
+    class="picture h-full bg-gray-300"
     :preload="preload"
     :sizes="sizes"
     :class="isCover ? 'picture-cover' : 'picture-contain'"
@@ -29,7 +29,7 @@ const {
   preload,
   isTeaser = false,
   isCover = false,
-  sizes = 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
+  sizes = 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw',
 } = defineProps<CMSImageProps>()
 
 const tracking = useStorefrontTracking()

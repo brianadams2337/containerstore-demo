@@ -28,10 +28,8 @@ import { useStoryblokImageSanitizer } from '../composables/useStoryblokImage'
 import CMSStoryblokLink from './StoryblokLink.vue'
 import { NuxtImg } from '#components'
 
-const {
-  sizes = 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
-  blok,
-} = defineProps<CMSClickableImageProps>()
+const { sizes = 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw', blok } =
+  defineProps<CMSClickableImageProps>()
 
 const { marginClasses } = useStoryblokMargins(blok)
 const tracking = useStorefrontTracking()

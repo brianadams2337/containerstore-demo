@@ -5,7 +5,7 @@
       :key="sort.key"
       :to="sort.to"
       raw
-      class="mr-2 flex h-10 w-fit items-center justify-center whitespace-pre rounded-full border-2 border-transparent bg-gray-100 px-4 text-base font-semibold text-gray-600 transition-none"
+      class="mr-2 flex h-10 w-fit items-center justify-center whitespace-pre rounded-full border-2 border-transparent bg-gray-100 px-4 text-md font-semibold text-secondary transition-none"
       :class="{
         '!border-accent bg-white !text-accent': sort.key === selectedSort?.key,
       }"

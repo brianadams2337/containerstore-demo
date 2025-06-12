@@ -1,9 +1,9 @@
 <template>
   <div
-    class="flex flex-col items-start gap-1 rounded-xl border border-gray-300 bg-white px-4 py-5 text-gray-600"
+    class="flex flex-col items-start gap-1 rounded-xl border border-gray-400 bg-white px-4 py-5 text-secondary"
   >
     <SFHeadline
-      class="mb-2 !font-semi-bold-variable text-primary"
+      class="mb-2 text-primary"
       tag="h3"
       size="lg"
       data-testid="profile-password-headline"
@@ -14,7 +14,7 @@
     <form
       v-if="v && !isIDPUser"
       ref="passwordUpdateForm"
-      class="flex w-full flex-col"
+      class="flex w-full flex-col gap-0.5"
       data-testid="password-update-form"
       @submit.prevent="onSubmit"
     >
@@ -50,7 +50,7 @@
       <SFValidatedInputGroup
         v-slot="{ isValid }"
         :errors="v.newPassword.$errors"
-        class="h-26 lg:h-24"
+        class="h-28"
       >
         <SFPasswordInput
           v-model="payload.newPassword"

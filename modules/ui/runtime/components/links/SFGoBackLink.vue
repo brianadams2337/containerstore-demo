@@ -5,7 +5,7 @@
     "
     :is="componentName"
     data-testid="back-button"
-    class="absolute z-20 flex items-center gap-2 text-primary"
+    class="absolute flex items-center gap-2 text-primary"
     v-on="backClickEventHandling"
   >
     <IconBack class="size-4" />

@@ -34,7 +34,7 @@
           <SFPromotionProgressWrapper :promotion="promotion" />
           <div
             v-if="conditions && showCondition"
-            class="flex flex-col px-6 py-4 text-md text-gray-600"
+            class="flex flex-col px-6 py-4 text-md text-secondary"
           >
             <div class="flex flex-col gap-2">
               <div class="flex items-center gap-1">

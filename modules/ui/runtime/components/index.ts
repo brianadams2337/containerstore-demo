@@ -3,7 +3,6 @@ import SFButton from './core/SFButton.vue'
 import SFChip from './core/SFChip.vue'
 import SFCountdown from './core/SFCountdown.vue'
 import SFModal from './core/SFModal.client.vue'
-import SFProgressBar from './core/SFProgressBar.vue'
 import SFSkeletonLoader from './core/SFSkeletonLoader.vue'
 import SFSlideIn from './core/SFSlideIn.client.vue'
 import SFPopover from './core/SFPopover.vue'
@@ -19,7 +18,6 @@ import SFValidatedInputGroup from './form/SFValidatedInputGroup.vue'
 
 // Headlines
 import SFHeadline from './headlines/SFHeadline.vue'
-import SFHeadlineBadge from './headlines/SFHeadlineBadge.vue'
 
 // Links
 import SFGoBackLink from './links/SFGoBackLink.vue'
@@ -49,7 +47,6 @@ export {
   SFButton,
   SFChip,
   SFCountdown,
-  SFProgressBar,
   SFSkeletonLoader,
   SFSlideIn,
   SFModal,
@@ -62,7 +59,6 @@ export {
   SFPriceRangeSlider,
   SFValidatedInputGroup,
   SFHeadline,
-  SFHeadlineBadge,
   SFGoBackLink,
   SFLink,
   SFPagination,

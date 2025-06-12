@@ -1,6 +1,6 @@
 <template>
   <li
-    class="border border-x-0 border-b-0 p-1 first-of-type:border-t-0 hover:bg-secondary-450"
+    class="border border-x-0 border-b-0 p-1 first-of-type:border-t-0 hover:bg-gray-200"
   >
     <SFLocalizedLink
       :to="getProductDetailRoute(basketItem.product.id, name)"
@@ -17,12 +17,12 @@
         />
         <div class="flex flex-col items-start space-x-1">
           <span
-            class="mt-2 block truncate px-1 text-base font-medium leading-none text-gray-900"
+            class="mt-2 block truncate px-1 text-md font-medium leading-none text-primary"
           >
             {{ brand }}
           </span>
           <span
-            class="mb-2 mt-1 block truncate rounded py-px text-base font-normal text-gray-900"
+            class="mb-2 mt-1 block truncate rounded py-px text-md font-normal text-primary"
           >
             {{ name }}
           </span>

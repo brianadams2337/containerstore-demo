@@ -1,13 +1,13 @@
 <template>
   <div
-    class="z-10 inline-flex h-6 w-max items-center overflow-hidden rounded-3xl bg-white px-2.5 text-sm font-variable capitalize text-gray-900"
+    class="z-10 inline-flex h-6 w-max items-center overflow-hidden rounded-xl bg-white px-2.5 text-sm font-normal capitalize text-primary"
   >
     <template v-if="typeof label === 'string'">
       {{ label }}
     </template>
     <template v-else>
       {{ label.firstLabel }}
-      <span class="mx-1 h-full text-3xl font-[100] text-gray-100">|</span>
+      <span class="mx-1 h-full border-r border-gray-200" />
       {{ label.secondLabel }}
     </template>
   </div>

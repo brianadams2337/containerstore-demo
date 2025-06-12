@@ -1,7 +1,5 @@
 <template>
-  <section
-    class="flex flex-col gap-4 text-base font-semi-bold-variable leading-3.5"
-  >
+  <section class="flex flex-col gap-4 text-md font-semibold leading-4">
     <ul class="flex flex-col gap-4">
       <template
         v-for="reduction in basket.cost.appliedReductions"

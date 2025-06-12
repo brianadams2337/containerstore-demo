@@ -13,7 +13,7 @@
         -{{ value }}%
       </span>
     </div>
-    <p class="text-gray-900" :class="classes" data-testid="price">
+    <p class="text-primary" :class="classes" data-testid="price">
       <template v-if="showPriceFrom">
         {{ $t('price.starting_from') }}
       </template>
@@ -21,7 +21,7 @@
       <span
         v-for="(reduction, index) in strikeThroughPrices"
         :key="`${reduction}-${index}`"
-        class="mr-1 font-normal text-gray-600 line-through last-of-type:mr-0"
+        class="mr-1 font-normal text-secondary line-through last-of-type:mr-0"
         data-testid="initialProductPrice"
       >
         {{ formatCurrency(reduction) }}
@@ -30,7 +30,7 @@
 
     <sup
       v-if="showTaxInfo"
-      class="ml-1 text-right text-xs text-gray-500 md:text-left"
+      class="ml-1 text-right text-xs text-secondary md:text-left"
       data-testid="tax-info"
     >
       {{ $t('global.including_vat') }}
@@ -40,7 +40,7 @@
         lowestPriorPrice?.withTax &&
         lowestPriorPrice?.relativeDifferenceToPrice !== null
       "
-      class="mt-1 w-full text-2xs text-gray-500 md:text-sm"
+      class="mt-1 w-full text-xs text-secondary md:text-sm"
       :class="{ 'text-end': !inline }"
       data-testid="lowest-prior-price"
     >
@@ -108,11 +108,11 @@ const classes = computed(() => ({
   'text-xl': size === Size.XL,
   'text-lg': size === Size.LG,
   'text-sm': size === Size.SM,
-  'text-base': size === Size.MD,
+  'text-md': size === Size.MD,
   'text-xs': size === Size.XS,
   'font-bold': type === 'loud',
   'font-semibold': type === 'whisper',
-  'font-variable': type === 'normal',
+  'font-normal': type === 'normal',
   'text-product-sale': appliedReductions.value.length,
   'text-end': !inline,
 }))

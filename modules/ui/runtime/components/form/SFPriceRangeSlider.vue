@@ -37,7 +37,7 @@
           </button>
         </template>
         <template #tooltip="{ value }">
-          <div class="rounded bg-gray-200 p-1 text-sm text-gray-600">
+          <div class="rounded bg-gray-300 p-1 text-sm text-secondary">
             {{ formatCurrency(value) }}
           </div>
         </template>

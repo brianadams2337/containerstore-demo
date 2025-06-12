@@ -3,9 +3,7 @@
     class="flex flex-col items-center gap-2 rounded-xl bg-status-success-light p-5"
     data-testid="osp-greeting-box"
   >
-    <div
-      class="mb-2 w-fit rounded-full border-2 border-gray-900 bg-white p-1.5"
-    >
+    <div class="mb-2 w-fit rounded-full border-2 border-primary bg-white p-1.5">
       <IconCheckmark class="size-6" />
     </div>
     <SFHeadline
@@ -15,7 +13,7 @@
     >
       {{ $t('order_success_page_greeting.title') }}
     </SFHeadline>
-    <p class="text-sm text-gray-600">
+    <p class="text-sm text-secondary">
       {{ $t('order_success_page_greeting.email_confirmation') }}
     </p>
   </div>

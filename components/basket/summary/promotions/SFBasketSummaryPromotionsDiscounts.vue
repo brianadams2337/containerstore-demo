@@ -1,5 +1,5 @@
 <template>
-  <ul class="flex flex-col gap-1 text-sm font-medium leading-3.5">
+  <ul class="flex flex-col gap-1 text-sm font-medium leading-4">
     <li
       v-for="{ promotion, total } in validPromotions"
       :key="promotion?.id"
@@ -10,10 +10,7 @@
       <span v-if="promotion?.customData">
         {{ getHeadlineParts(promotion) }}
       </span>
-      <span
-        class="font-variable leading-2.5"
-        data-testid="basket-discount-promotion"
-      >
+      <span class="leading-3" data-testid="basket-discount-promotion">
         {{ formatCurrency(-Math.abs(total)) }}
       </span>
     </li>

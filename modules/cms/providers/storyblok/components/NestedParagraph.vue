@@ -62,7 +62,7 @@
         />
       </div>
     </div>
-    <div class="max-w-lg text-sm text-gray-500">
+    <div class="max-w-lg text-sm text-secondary">
       {{ blok.sub_title }}
     </div>
   </div>
@@ -102,7 +102,7 @@ function getHeadlineSize(size?: string) {
     case 'h3':
       return 'lg'
     case 'h4':
-      return 'base'
+      return 'md'
     case 'h5':
       return 'sm'
     default:

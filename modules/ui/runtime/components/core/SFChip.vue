@@ -9,7 +9,7 @@
       :aria-label="inputAriaLabel"
     />
     <div
-      class="flex h-10 items-center justify-center rounded-lg px-4 text-sm font-medium text-gray-500 outline outline-1 outline-gray-400 group-hover:outline-2 group-hover:outline-accent peer-checked:bg-accent peer-checked:text-white peer-checked:outline-accent"
+      class="flex h-10 items-center justify-center rounded-lg px-4 text-sm font-medium text-secondary outline outline-1 outline-gray-500 group-hover:outline-2 group-hover:outline-accent peer-checked:bg-accent peer-checked:text-white peer-checked:outline-accent"
     >
       <slot />
     </div>

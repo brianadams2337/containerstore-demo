@@ -2,11 +2,11 @@
   <SFSlideIn name="PromotionSlideIn">
     <template #slide-in-header="{ toggle: toggleItem }">
       <div class="flex w-full items-center justify-between">
-        <SFHeadline size="2xl" tag="p">
+        <SFHeadline tag="p">
           {{ $t('promotion_slide_in.headline') }}
         </SFHeadline>
         <SFButton
-          class="group my-3 -mr-2 bg-gray-100 md:bg-transparent hover:md:bg-gray-100"
+          class="group my-3 -mr-2 bg-gray-200 md:bg-transparent hover:md:bg-gray-200"
           fab
           variant="raw"
           data-testid="close-promotions"
@@ -15,7 +15,7 @@
         >
           <template #icon>
             <IconClose
-              class="size-5 md:size-4 md:text-gray-500 group-hover:md:text-gray-900"
+              class="size-5 md:size-4 md:text-secondary group-hover:md:text-primary"
             />
           </template>
         </SFButton>
@@ -23,7 +23,7 @@
     </template>
     <template #slide-in-body>
       <div class="p-6">
-        <div class="mb-2 flex items-center gap-2 font-semi-bold-variable">
+        <div class="mb-2 flex items-center gap-2 font-semibold">
           {{
             promotionsSortedByPriority.length
               ? $t('promotion_slide_in.active_promotions')

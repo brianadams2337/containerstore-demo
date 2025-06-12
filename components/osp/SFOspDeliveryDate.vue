@@ -1,16 +1,13 @@
 <template>
-  <div class="rounded-lg border bg-gray-200 font-semi-bold-variable">
-    <div
-      class="rounded-lg border-0 bg-white p-2"
-      data-testid="osp-delivery-date"
-    >
-      <div class="text-base text-gray-500">
+  <div class="rounded-lg border bg-gray-300 font-semibold">
+    <div class="rounded-lg bg-white p-2" data-testid="osp-delivery-date">
+      <div class="text-md text-secondary">
         {{ $t('order_information.order_details.estimated_delivery_date') }}:
         {{ formatDate(new Date(Date.parse(deliveryDate.minimum))) }} -
         {{ formatDate(new Date(Date.parse(deliveryDate.maximum))) }}
       </div>
     </div>
-    <div class="p-2 text-xs text-gray-600" data-testid="osp-carrier">
+    <div class="p-2 text-xs text-secondary" data-testid="osp-carrier">
       {{ $t('order_information.order_details.delivered_by') }}
       <!--TODO do not use dynamic translation key -->
       {{ $t('global.carrier_key.' + sender) }}

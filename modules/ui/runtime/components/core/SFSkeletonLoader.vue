@@ -1,6 +1,6 @@
 <template>
   <div
-    class="animate-pulse bg-gray-200"
+    class="animate-pulse bg-gray-300"
     :class="{
       'h-12 rounded-md': isButton,
       'h-8': isHeadline,

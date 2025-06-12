@@ -1,6 +1,6 @@
 <template>
   <div class="flex w-full p-3" data-testid="product-promotion-gift-item">
-    <div class="relative flex shrink-0 items-center rounded-lg bg-gray-200">
+    <div class="relative flex shrink-0 items-center rounded-lg bg-gray-300">
       <SFProductImage
         v-if="image"
         :image="image"
@@ -20,8 +20,8 @@
       <div class="flex h-full flex-col justify-between">
         <div>
           <div
-            class="text-sm font-semi-bold-variable"
-            :class="disabled ? 'text-gray-500' : 'text-gray-900'"
+            class="text-sm font-semibold"
+            :class="disabled ? 'text-secondary' : 'text-primary'"
           >
             {{ brand }}
           </div>
@@ -30,7 +30,7 @@
             data-testid="pdp-product-name"
             tag="h3"
             class="text-sm !font-normal"
-            :class="disabled ? 'text-gray-500' : 'text-gray-900'"
+            :class="disabled ? 'text-secondary' : 'text-primary'"
           >
             {{ name }}
           </SFHeadline>
@@ -51,7 +51,7 @@
         <SFButton
           size="sm"
           variant="raw"
-          class="size-11 rounded-xl bg-gray-200"
+          class="size-11 rounded-xl bg-gray-300"
           data-testid="add-free-product-button"
           :disabled="disabled"
           :aria-label="

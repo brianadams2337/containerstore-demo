@@ -4,13 +4,13 @@
       v-if="isInViewport"
       v-element-visibility="onVisible"
       :src="blok?.fields.image?.fields.file?.url"
-      sizes="xs:80vw sm:25vw md:25vw lg:25vw xl:25vw xxl:25vw 2xl:25vw"
+      sizes="xs:80vw sm:25vw md:25vw lg:25vw xl:25vw"
       provider="contentful"
-      class="aspect-[3/4] w-full"
+      class="aspect-3/4 w-full"
     />
     <div class="mt-4 flex flex-col">
       <div
-        class="pb-1 text-2xs font-bold leading-4 sm:pb-0 sm:text-xs sm:leading-6"
+        class="pb-1 text-xs font-bold leading-4 md:pb-0 md:text-xs md:leading-6"
       >
         {{ blok?.fields.topline || '&nbsp;' }}
       </div>
@@ -25,7 +25,7 @@
 
       <CMSContentfulLink
         v-if="blok?.fields.ctaUrl"
-        class="mt-5 text-base font-bold underline"
+        class="mt-5 text-md font-bold underline"
         :to="blok?.fields.ctaUrl"
         :raw="false"
         @click="clickObserver"

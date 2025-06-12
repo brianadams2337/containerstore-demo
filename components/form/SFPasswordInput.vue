@@ -18,7 +18,7 @@
             : $t('password_input.hide')
         "
         variant="raw"
-        class="size-full rounded-md *:size-3 *:text-gray-750"
+        class="size-full rounded-md *:size-3 *:text-secondary"
         :data-testid="
           isPasswordHidden ? 'password-toggle-show' : 'password-toggle-hide'
         "

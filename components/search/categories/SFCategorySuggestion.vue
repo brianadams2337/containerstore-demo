@@ -3,7 +3,7 @@
     :to="to"
     @click="$emit('clickResult', categorySuggestion)"
   >
-    <div ref="container" class="flex space-x-2 text-gray-600">
+    <div ref="container" class="flex space-x-2 text-secondary">
       <template v-for="({ value }, index) in breadcrumbs" :key="value">
         <span
           :class="{
@@ -25,7 +25,7 @@
         <span>...</span>
         <span>|</span>
       </template>
-      <span class="shrink-0 font-semi-bold-variable">
+      <span class="shrink-0 font-semibold">
         {{ category.categorySuggestion.category.name }}
       </span>
     </div>
@@ -37,7 +37,7 @@
       <div
         v-for="label in filters"
         :key="label"
-        class="flex h-5 items-center rounded-md bg-gray-200 p-1 text-2xs leading-none text-gray-600"
+        class="flex h-5 items-center rounded-md bg-gray-300 p-1 text-xs leading-none text-secondary"
         :data-testid="`search-suggestion-tag-${label}`"
       >
         {{ label }}

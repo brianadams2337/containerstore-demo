@@ -46,7 +46,7 @@
         />
       </div>
     </div>
-    <div class="max-w-lg text-sm text-gray-500">
+    <div class="max-w-lg text-sm text-secondary">
       {{ blok.sub_title }}
     </div>
   </div>

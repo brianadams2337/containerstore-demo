@@ -9,7 +9,7 @@
   >
     <div class="flex">
       <div class="hidden p-3 md:block">
-        <div class="relative overflow-hidden rounded-xl bg-gray-200">
+        <div class="relative overflow-hidden rounded-xl bg-gray-300">
           <SFProductPromotionFreeGiftBadge
             :color-style="colorStyle"
             class="absolute left-0 top-0"
@@ -26,19 +26,19 @@
       </div>
       <div class="flex w-full flex-col justify-center p-6 md:p-8 md:py-14">
         <div class="mb-4 md:mb-auto">
-          <span class="font-semi-bold-variable text-gray-900">
+          <span class="font-semibold text-primary">
             {{ brand }}
           </span>
           <SFHeadline
             data-testid="pdp-product-name"
             tag="h3"
-            class="mb-4 text-md !font-normal text-gray-600"
+            class="mb-4 text-md !font-normal text-secondary"
           >
             {{ name }}
           </SFHeadline>
         </div>
         <div
-          class="relative mb-8 overflow-hidden rounded-xl bg-gray-200 md:hidden"
+          class="relative mb-8 overflow-hidden rounded-xl bg-gray-300 md:hidden"
         >
           <SFProductPromotionFreeGiftBadge
             :color-style="colorStyle"
@@ -54,9 +54,7 @@
           <SFWishlistToggle class="absolute right-5 top-5" :product="product" />
         </div>
         <div class="flex flex-col gap-4">
-          <div
-            class="mt-7 text-md font-semi-bold-variable leading-[14px] text-gray-900"
-          >
+          <div class="mt-7 text-md font-semibold leading-[14px] text-primary">
             {{ $t('product_attribute.size') }}:
           </div>
           <SFVariantPicker
@@ -98,7 +96,7 @@
             <SFButton
               variant="tertiary"
               :to="getProductDetailRoute(product.id, name)"
-              class="!border-gray-300"
+              class="!border-gray-400"
               @click="selectItem(product)"
             >
               {{ $t('product_promotion_selection_modal.details') }}

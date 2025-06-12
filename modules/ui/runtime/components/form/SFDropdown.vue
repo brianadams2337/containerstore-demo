@@ -4,7 +4,7 @@
       <SFButton
         variant="raw"
         size="sm"
-        class="group inline-flex size-full justify-between gap-0 rounded-md border border-gray-300 bg-secondary-200 !px-3.5 !py-2 font-semi-bold-variable leading-5 hover:bg-white"
+        class="group inline-flex size-full justify-between gap-0 rounded-md border border-gray-400 bg-gray-100 !px-3.5 !py-2 font-semibold leading-5 hover:bg-white"
         :disabled="disabled"
         :aria-label="ariaLabel"
         :aria-expanded="isDropdownListVisible"
@@ -14,9 +14,7 @@
         :class="[
           ...buttonClasses,
           {
-            'py-3.5': isLarge,
             'rounded-md': radius == 'md',
-            'rounded-10': radius == 'lg',
             'rounded-xl': radius == 'xl',
             '!border-2 !border-status-error !bg-white !text-status-error shadow-none !outline-0 *:!text-status-error hover:!border-status-error focus:!border-status-error':
               hasErrors,
@@ -48,11 +46,10 @@
         :id="id"
         ref="options"
         v-popover="isDropdownListVisible"
-        class="absolute m-0 w-full rounded-md bg-white p-2 shadow-secondary ring-1 ring-gray-300 focus:outline-none max-md:backdrop:bg-primary/50"
+        class="absolute m-0 w-full rounded-md bg-white p-2 shadow-secondary ring-1 ring-gray-400 focus:outline-none max-md:backdrop:bg-primary/50"
         :class="[
           {
             'rounded-t-md md:rounded-md': radius == 'md',
-            'rounded-t-10 md:rounded-10': radius == 'lg',
             'rounded-t-xl md:rounded-xl': radius == 'xl',
             'block-scrolling': isDropdownListVisible && isMobile,
           },
@@ -63,17 +60,15 @@
           class="max-h-[330px] overflow-y-auto bg-white p-2 scrollbar-hide md:p-px"
           :class="{
             'rounded-md': radius == 'md',
-            'rounded-10': radius == 'lg',
             'rounded-xl': radius == 'xl',
           }"
         >
           <li v-for="item in items" :key="`${item}`">
             <slot name="item" v-bind="{ item, selectItem }">
               <div
-                class="flex w-full cursor-pointer items-center justify-between space-x-2 p-2 transition-all hover:bg-gray-200"
+                class="flex w-full cursor-pointer items-center justify-between space-x-2 p-2 transition-all hover:bg-gray-300"
                 :class="{
                   'rounded-md': radius == 'md',
-                  'rounded-10': radius == 'lg',
                   'rounded-xl': radius == 'xl',
                 }"
                 @keydown.enter="selectItem(item)"
@@ -98,7 +93,6 @@ import { SFButton } from '#storefront-ui/components'
 import { useDropdownKeyboardBehavior } from '#storefront-ui'
 
 const {
-  isLarge = false,
   disabled = false,
   hasErrors = false,
   radius = 'md',
@@ -108,10 +102,9 @@ const {
   buttonClass?: string[] | string
   id: string
   hasErrors?: boolean
-  isLarge?: boolean
   disabled?: boolean
   ariaLabel?: string
-  radius?: 'md' | 'lg' | 'xl'
+  radius?: 'md' | 'xl'
 }>()
 
 const isDropdownListVisible = defineModel<boolean>('visible', {

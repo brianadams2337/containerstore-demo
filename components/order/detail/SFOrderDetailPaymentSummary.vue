@@ -1,13 +1,10 @@
 <template>
   <div class="flex flex-col gap-4 border-t pt-4">
-    <dl class="grid grid-cols-2 justify-between gap-2 text-base text-gray-900">
-      <dt class="font-semi-bold-variable">
+    <dl class="grid grid-cols-2 justify-between gap-2 text-md text-primary">
+      <dt class="font-semibold">
         {{ $t('order_detail_payment_summary.subtotal') }}
       </dt>
-      <dd
-        class="text-right font-semi-bold-variable"
-        data-testid="order-detail-subtotal"
-      >
+      <dd class="text-right font-semibold" data-testid="order-detail-subtotal">
         {{ formatCurrency(subtotal) }}
       </dd>
 
@@ -17,14 +14,12 @@
       </dd>
     </dl>
 
-    <dl
-      class="grid grid-cols-2 justify-between gap-0 text-lg font-semi-bold-variable"
-    >
+    <dl class="grid grid-cols-2 justify-between gap-0 text-lg font-semibold">
       <dt class="text-lg">{{ $t('order_detail_payment_summary.total') }}</dt>
       <dd class="text-right text-xl" data-testid="order-detail-total">
         {{ formatCurrency(cost.withTax) }}
       </dd>
-      <dt class="text-xs text-gray-500">
+      <dt class="text-xs text-secondary">
         {{
           includesTax ? $t('global.including_vat') : $t('global.excluding_vat')
         }}

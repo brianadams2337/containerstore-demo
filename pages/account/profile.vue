@@ -1,14 +1,10 @@
 <template>
   <SFAsyncStatusWrapper :status="status">
     <template v-if="user">
-      <SFHeadline
-        class="mb-6 !font-semi-bold-variable"
-        tag="h2"
-        data-testid="user-profile-headline"
-      >
+      <SFHeadline class="mb-6" tag="h2" data-testid="user-profile-headline">
         {{ $t('profile_page.title') }}
       </SFHeadline>
-      <div class="mb-6 flex flex-col gap-2 text-md text-gray-600">
+      <div class="mb-6 flex flex-col gap-2 text-md text-secondary">
         <span class="font-semibold">
           {{ $t('profile_page.greeting', { firstName: user.firstName }) }}
         </span>

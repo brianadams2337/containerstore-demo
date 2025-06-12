@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative shrink-0 overflow-hidden rounded-lg bg-white-smoke"
+    class="relative shrink-0 overflow-hidden rounded-lg bg-gray-100"
     :class="isSmallSize ? 'w-28 h-36' : 'h-48 w-36'"
   >
     <SFLocalizedLink v-if="link" :to="link" raw tabindex="-1">

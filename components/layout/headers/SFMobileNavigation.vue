@@ -34,8 +34,8 @@
             >
               <SFNavigationTreeItem
                 :navigation-item="item"
-                :text-color="theme.colors.gray[900]"
-                class="min-h-11 rounded !text-2xl font-semi-bold-variable transition-all supports-hover:hover:bg-[var(--backgroundColor)]"
+                :text-color="theme.colors.primary"
+                class="min-h-11 rounded !text-2xl font-semibold transition-all supports-hover:hover:bg-[var(--backgroundColor)]"
                 disabled-link
               />
             </SFLink>
@@ -43,8 +43,8 @@
           <template v-else>
             <SFNavigationTreeItem
               :navigation-item="item"
-              :text-color="theme.colors.gray[900]"
-              class="min-h-11 !text-2xl font-semi-bold-variable"
+              :text-color="theme.colors.primary"
+              class="min-h-11 !text-2xl font-semibold"
               role="button"
               disabled-link
             />
@@ -52,11 +52,11 @@
           <SFButton
             v-if="item.children.length"
             variant="accent"
-            class="ml-auto !h-auto min-h-11 rounded-md bg-gray-200 !p-3 hover:!bg-gray-200"
+            class="ml-auto !h-auto min-h-11 rounded-md bg-gray-300 !p-3 hover:!bg-gray-300"
             aria-hidden="true"
             @click="selectItem(item)"
           >
-            <IconChevronRight class="size-4 text-gray-600" />
+            <IconChevronRight class="size-4 text-secondary" />
           </SFButton>
         </li>
       </ul>
@@ -77,9 +77,9 @@
         >
           <IconBack class="size-4" />
           <SFNavigationTreeItem
-            class="!text-2xl font-semi-bold-variable"
+            class="!text-2xl font-semibold"
             :navigation-item="selectedItem"
-            :text-color="theme.colors.gray[900]"
+            :text-color="theme.colors.primary"
             disabled-link
           />
         </SFButton>
@@ -93,10 +93,10 @@
             >
               <template #title>
                 <SFNavigationTreeItem
-                  class="h-11 content-center py-0 !text-xl font-semi-bold-variable"
+                  class="h-11 content-center py-0 !text-xl font-semibold"
                   disabled-link
                   :navigation-item="item"
-                  :text-color="theme.colors.gray[900]"
+                  :text-color="theme.colors.primary"
                 />
               </template>
               <ul class="flex flex-col gap-2 pl-2">
@@ -108,7 +108,7 @@
                 >
                   <SFNavigationTreeItem
                     :navigation-item="child"
-                    :text-color="theme.colors.gray[900]"
+                    :text-color="theme.colors.primary"
                     class="h-11 text-lg"
                     @click="$emit('clickLink')"
                   />
@@ -118,8 +118,8 @@
             <SFNavigationTreeItem
               v-else
               :navigation-item="item"
-              :text-color="theme.colors.gray[900]"
-              class="min-h-11 !text-xl font-semi-bold-variable"
+              :text-color="theme.colors.primary"
+              class="min-h-11 !text-xl font-semibold"
               @click="$emit('clickLink')"
             />
           </template>

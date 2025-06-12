@@ -1,7 +1,7 @@
 <template>
   <li
     ref="basketCard"
-    class="group space-y-2 border border-gray-200 p-3 max-lg:border-x-0 max-lg:px-0 max-lg:last:border-b-0 lg:first:rounded-t-xl lg:last:rounded-b-xl"
+    class="group space-y-2 border border-gray-300 p-3 max-lg:border-x-0 max-lg:px-0 max-lg:last:border-b-0 lg:first:rounded-t-xl lg:last:rounded-b-xl"
     data-testid="basket-card"
     tabindex="0"
     :alt="alt"
@@ -23,7 +23,7 @@
         <div class="ml-5 flex justify-between gap-1">
           <div data-testid="basket-product-brand" class="overflow-hidden">
             <div
-              class="mt-3.5 truncate px-1 text-base font-medium leading-none text-gray-900"
+              class="mt-3.5 truncate px-1 text-md font-medium leading-none text-primary"
               data-testid="main-label"
             >
               {{ brand }}
@@ -33,7 +33,7 @@
               :to="link"
               raw
               tabindex="-1"
-              class="mt-1 block truncate rounded px-1 py-px text-base font-normal text-gray-900 duration-300 hover:bg-gray-100"
+              class="mt-1 block truncate rounded px-1 py-px text-md font-normal text-primary duration-300 hover:bg-gray-200"
               data-testid="sub-label"
               @click="trackSelectItem(trackingItem)"
             >
@@ -53,7 +53,7 @@
             />
             <SFButton
               variant="raw"
-              class="size-11 rounded-lg outline-offset-0 hover:bg-gray-200 focus-visible:shadow-inner-solid-sm max-lg:bg-gray-200 lg:size-8"
+              class="size-11 rounded-lg outline-offset-0 hover:bg-gray-300 focus-visible:shadow-inner-solid-sm max-lg:bg-gray-300 lg:size-8"
               data-testid="basket-remove-item-button"
               :aria-label="$t('basket_card.confirm_removal')"
               @click="$emit('delete')"

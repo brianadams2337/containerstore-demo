@@ -1,6 +1,6 @@
 <template>
   <ul
-    class="flex w-full flex-col items-end pt-px lg:min-w-125 lg:max-w-156 lg:-translate-y-10"
+    class="flex w-full flex-col items-end pt-px lg:min-w-md lg:max-w-2xl lg:-translate-y-10"
     data-testid="unavailable-product-list"
     :aria-label="$t('basket.unavailable_products')"
   >

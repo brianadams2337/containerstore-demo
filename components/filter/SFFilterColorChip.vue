@@ -7,7 +7,7 @@
         "
         :data-color-id="color.id"
         :value="color"
-        class="absolute z-20 size-full cursor-pointer appearance-none rounded-lg"
+        class="absolute z-10 size-full cursor-pointer appearance-none rounded-lg"
         type="checkbox"
         data-testid="filter-color-chip"
       />
@@ -22,7 +22,7 @@
             :style="{ backgroundColor: hex }"
             :class="{
               'last-of-type:col-span-full': isNumberOfMixColorsOdd,
-              'border border-gray-400': isBrightColor,
+              'border border-gray-500': isBrightColor,
             }"
             class="size-full"
           />
@@ -31,18 +31,18 @@
           v-else
           :style="{ backgroundColor: `${colorCode}` }"
           class="absolute size-full rounded-lg lg:group-hover:border lg:group-hover:border-black lg:group-hover:outline lg:group-hover:outline-2 lg:group-hover:outline-offset-[-3px] lg:group-hover:outline-white"
-          :class="{ 'border border-gray-400': isBrightColor }"
+          :class="{ 'border border-gray-500': isBrightColor }"
         />
 
         <IconCheck
-          class="z-10 size-5 text-white opacity-0 lg:group-hover:opacity-100"
+          class="z-0 size-5 text-white opacity-0 lg:group-hover:opacity-100"
           :class="{ '!text-black': isBrightColor, 'opacity-100': isChecked }"
         />
       </div>
     </div>
 
     <div
-      class="max-w-full truncate text-center text-sm font-medium text-gray-500"
+      class="max-w-full truncate text-center text-sm font-medium text-secondary"
     >
       <slot />
     </div>

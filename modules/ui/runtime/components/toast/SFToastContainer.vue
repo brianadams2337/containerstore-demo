@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="md:container md:fixed md:right-8 md:top-48 md:w-min"
-    :class="notifications.length ? 'z-110' : 'z-0'"
-  >
+  <div class="z-30 md:container md:fixed md:right-8 md:top-48 md:w-min">
     <TransitionGroup
       name="notification"
       tag="div"

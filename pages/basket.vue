@@ -18,7 +18,7 @@
           v-for="promotion in progressPromotions"
           :key="promotion.id"
           :promotion="promotion"
-          class="w-full lg:max-w-156"
+          class="w-full lg:max-w-2xl"
         />
         <template
           v-for="promotion in basketData?.applicablePromotions"
@@ -28,7 +28,7 @@
             v-if="isBuyXGetYType(promotion.promotion)"
             are-gift-conditions-met
             :promotion="promotion.promotion"
-            class="w-full lg:min-w-125 lg:max-w-156"
+            class="w-full lg:min-w-md lg:max-w-2xl"
           />
         </template>
 
@@ -41,7 +41,7 @@
         <template v-if="groupedBasketItems?.unavailable">
           <SFHeadline
             tag="h2"
-            class="z-10 w-full rounded-lg border border-gray-200 bg-gray-50 px-5 py-2.5 text-md font-semi-bold-variable text-gray-500 lg:max-w-156"
+            class="z-10 w-full rounded-lg border border-gray-300 bg-gray-100 px-5 py-2.5 text-md font-semibold text-secondary lg:max-w-2xl"
             data-testid="headline-unavailable-products"
           >
             {{ $t('basket.unavailable_products') }}:

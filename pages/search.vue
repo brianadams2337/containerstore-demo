@@ -1,15 +1,15 @@
 <template>
-  <section class="container overflow-hidden pt-4 max-sm:max-w-none md:pt-8">
+  <section class="container overflow-hidden pt-4 max-md:max-w-none md:pt-8">
     <div class="flex w-full flex-wrap justify-between gap-4">
       <SFHeadline
         tag="h1"
-        class="mt-1.5 line-clamp-2 !font-semi-bold-variable text-gray-900 max-sm:text-2xl max-sm:leading-6 sm:mt-0"
+        class="mt-1.5 line-clamp-2 text-primary max-sm:text-2xl max-sm:leading-6 sm:mt-0"
       >
         {{ $t('search_page.title', { term }) }}
         <SFFadeInTransition>
           <span
             v-if="totalProductsCount > 0 && status === 'success'"
-            class="rounded-full bg-gray-900 px-2 py-0.5 text-xs font-semibold leading-4 text-white"
+            class="rounded-full bg-primary px-2 py-0.5 text-xs font-semibold leading-4 text-white"
           >
             {{ totalProductsCount }}
           </span>

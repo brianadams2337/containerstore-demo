@@ -6,7 +6,7 @@
     @close="$emit('close')"
   >
     <div
-      class="h-dvh overflow-hidden max-md:my-auto max-md:bg-white-smoke md:mx-auto md:aspect-3/4"
+      class="h-dvh overflow-hidden max-md:my-auto max-md:bg-gray-100 md:mx-auto md:aspect-3/4"
     >
       <SFItemsSlider
         ref="slider"
@@ -22,7 +22,7 @@
               ? 'cursor-zoom-out'
               : 'cursor-zoom-in'
           "
-          class="flex h-dvh min-w-full grow snap-start snap-always items-center self-start overflow-hidden max-md:bg-white-smoke"
+          class="flex h-dvh min-w-full grow snap-start snap-always items-center self-start overflow-hidden max-md:bg-gray-100"
           @click="toggleDoubleZoom"
         >
           <SFProductImage
@@ -44,7 +44,7 @@
         </div>
         <template #prev-button="{ prev, isPrevEnabled }">
           <SFSliderArrowButton
-            class="absolute top-1/2 -translate-y-1/2 bg-gray-200 max-md:hidden"
+            class="absolute top-1/2 -translate-y-1/2 bg-gray-300 max-md:hidden"
             :aria-label="$t('image_slider.a11ly.go_to_previous_image')"
             :disabled="!isPrevEnabled"
             direction="left"
@@ -54,7 +54,7 @@
         </template>
         <template #next-button="{ next, isNextEnabled }">
           <SFSliderArrowButton
-            class="absolute top-1/2 -translate-y-1/2 bg-gray-200 max-md:hidden"
+            class="absolute top-1/2 -translate-y-1/2 bg-gray-300 max-md:hidden"
             :aria-label="$t('image_slider.a11ly.go_to_next_image')"
             :disabled="!isNextEnabled"
             direction="right"
@@ -69,7 +69,7 @@
             <div
               v-for="i in images.length"
               :key="i"
-              class="size-1 rounded-full bg-gray-300 transition-all duration-300"
+              class="size-1 rounded-full bg-gray-400 transition-all duration-300"
               :class="{ 'w-3 !bg-black': i - 1 === imageIndex }"
             />
           </div>

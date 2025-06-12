@@ -1,5 +1,5 @@
 <template>
-  <details class="mt-5 rounded bg-secondary-450 px-2">
+  <details class="mt-5 rounded bg-gray-200 px-2">
     <summary
       class="flex-row-reverse text-xs !normal-case"
       @click.stop

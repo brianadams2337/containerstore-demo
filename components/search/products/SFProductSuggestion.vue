@@ -7,15 +7,15 @@
     @click="$emit('clickResult', productSuggestion)"
   >
     <div
-      class="flex h-16 w-14 shrink-0 items-center overflow-hidden rounded-md bg-gray-100"
+      class="flex h-16 w-14 shrink-0 items-center overflow-hidden rounded-md bg-gray-200"
     >
       <ScayleImg v-if="image" :src="image?.hash" width="60px" />
     </div>
-    <div class="grow overflow-hidden text-gray-600">
-      <div class="truncate text-base font-semi-bold-variable">
+    <div class="grow overflow-hidden text-secondary">
+      <div class="truncate text-md font-semibold">
         {{ brand }}
       </div>
-      <div class="truncate text-base">
+      <div class="truncate text-md">
         {{ name }}
       </div>
     </div>

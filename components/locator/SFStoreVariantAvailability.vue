@@ -1,6 +1,6 @@
 <template>
   <div
-    class="mt-4 flex items-center rounded-10 border border-gray-300 p-5"
+    class="mt-4 flex items-center rounded-lg border border-gray-400 p-5"
     data-testid="store-variant-availability-component"
   >
     <div v-if="!!selectedStoreData">

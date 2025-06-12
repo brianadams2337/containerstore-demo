@@ -1,6 +1,6 @@
 <template>
   <div v-editable="blok" :class="marginClasses">
-    <div class="flex w-full justify-between px-5 sm:px-14">
+    <div class="flex w-full justify-between px-5 md:px-14">
       <SFHeadline v-if="blok.headline" tag="p" size="md" is-uppercase>
         {{ blok.headline }}
       </SFHeadline>

@@ -1,7 +1,7 @@
 <template>
   <form
     v-if="v"
-    class="flex flex-col"
+    class="flex flex-col gap-0.5"
     data-testid="login-form"
     @submit.prevent="onSubmit"
   >
@@ -27,7 +27,7 @@
     <SFValidatedInputGroup
       v-slot="{ isValid }"
       :errors="v.password.$errors"
-      class="h-26 sm:h-22"
+      class="h-28 sm:h-24"
     >
       <SFPasswordInput
         v-model="userPayload.password"
@@ -61,7 +61,7 @@
     :redirects="externalIDPRedirects"
   />
   <p
-    class="text-start text-base text-gray-600"
+    class="text-start text-md text-secondary"
     data-testid="create-account-label"
     :class="{ 'mt-8': !externalIDPRedirects }"
   >
@@ -69,7 +69,7 @@
     <SFLocalizedLink
       :to="routeList.signup"
       raw
-      class="rounded-md px-1.5 py-0.5 font-semibold hover:bg-gray-100"
+      class="rounded-md px-1.5 py-0.5 font-semibold hover:bg-gray-200"
       data-testid="signin-page-link"
     >
       {{ $t('auth_login.create_account') }}

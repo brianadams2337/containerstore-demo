@@ -8,10 +8,7 @@
         class="flex grow basis-1/2 flex-row flex-nowrap items-center justify-between text-xs font-bold"
       >
         <div class="flex flex-col gap-2">
-          <div
-            v-if="distance"
-            class="w-fit rounded-full bg-secondary-400 px-2 py-1"
-          >
+          <div v-if="distance" class="w-fit rounded-full bg-gray-100 px-2 py-1">
             {{ formatDistance(distance) }}
           </div>
           <div

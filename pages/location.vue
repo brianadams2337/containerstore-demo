@@ -11,12 +11,12 @@
       class="absolute inset-0 w-[480px] max-w-screen overflow-auto md:inset-10 md:rounded"
       :class="{
         'm-auto h-[230px]': !stores.length,
-        'bg-secondary-400': stores.length,
+        'bg-gray-100': stores.length,
       }"
     >
       <div
         class="flex flex-col items-stretch justify-between rounded bg-white p-5"
-        :class="{ 'shadow-[0_3px_24px_0_rgba(0,0,0,0.12)]': stores.length }"
+        :class="{ shadow: stores.length }"
       >
         <SFHeadline :is-uppercase="false" size="xl" tag="h1" class="mb-5">
           {{ $t('location_page.title') }}

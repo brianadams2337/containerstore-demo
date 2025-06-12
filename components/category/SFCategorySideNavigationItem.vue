@@ -1,10 +1,10 @@
 <template>
   <SFLink
-    class="inline-block w-fit rounded px-1 py-px text-md tracking-tighter text-gray-600 duration-300 ease-out hover:bg-gray-100"
+    class="inline-block w-fit rounded px-1 py-px text-md tracking-tighter text-secondary duration-300 ease-out hover:bg-gray-200"
     :class="{
-      'text-product-sale hover:bg-product-sale/10': isSale,
+      '!text-product-sale hover:bg-product-sale/10': isSale,
       'bg-product-sale/10': isSale && isActive,
-      'translate-x-1 rounded bg-gray-100 font-medium text-gray-900 transition-transform':
+      'translate-x-1 rounded bg-gray-200 font-medium !text-primary transition-transform':
         isActive,
     }"
     :to="buildCategoryPath(category)"
@@ -13,7 +13,7 @@
     {{ category.name }}
     <span
       v-if="isSale"
-      class="inline-block -translate-y-1 text-3xs text-product-sale"
+      class="inline-block -translate-y-0.5 text-xs text-product-sale"
     >
       %
     </span>

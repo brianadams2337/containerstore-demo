@@ -2,7 +2,7 @@
   <footer class="bg-white" data-testid="footer">
     <div class="flex flex-col gap-5 border-t p-5 md:gap-8 md:px-10 md:py-7">
       <SFLogoLink data-testid="footer-logo" class="flex w-7" />
-      <div class="grid grid-cols-1 gap-y-5 text-base md:grid-cols-4">
+      <div class="grid grid-cols-1 gap-y-5 text-md md:grid-cols-4">
         <SFFooterLinkSection
           v-for="section in footerLinks?.items"
           :key="section.id"

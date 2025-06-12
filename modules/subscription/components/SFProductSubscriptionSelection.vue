@@ -1,7 +1,7 @@
 <template>
   <div class="flex w-full flex-col space-y-5 py-2">
     <div>
-      <div class="mb-1.5 text-sm font-variable text-gray-500">
+      <div class="mb-1.5 text-sm text-secondary">
         {{ $t('subscription.interval') }}
       </div>
       <SFDropdown
@@ -18,7 +18,7 @@
             :key="JSON.stringify(item)"
             variant="raw"
             is-full-width
-            class="inline !justify-start px-4 py-2 text-sm text-gray-500 first-of-type:rounded-t-lg last-of-type:rounded-b-lg hover:bg-gray-200 focus-visible:shadow-inner-solid-sm active:bg-gray-300"
+            class="inline !justify-start px-4 py-2 text-sm text-secondary first-of-type:rounded-t-lg last-of-type:rounded-b-lg hover:bg-gray-300 focus-visible:shadow-inner-solid-sm active:bg-gray-400"
             @keydown.enter="selectItem(item)"
             @click="selectItem(item)"
           >
@@ -28,7 +28,7 @@
       </SFDropdown>
     </div>
     <div>
-      <div class="mb-1.5 text-sm font-variable text-gray-500">
+      <div class="mb-1.5 text-sm text-secondary">
         {{ $t('subscription.follow_up_delivery') }}
       </div>
       <SFDropdown
@@ -51,7 +51,7 @@
             :key="JSON.stringify(item)"
             variant="raw"
             is-full-width
-            class="block cursor-pointer !justify-start px-4 py-2 text-sm text-gray-500 first-of-type:rounded-t-lg last-of-type:rounded-b-lg hover:bg-gray-200 focus-visible:shadow-inner-solid-sm active:bg-gray-300"
+            class="block cursor-pointer !justify-start px-4 py-2 text-sm text-secondary first-of-type:rounded-t-lg last-of-type:rounded-b-lg hover:bg-gray-300 focus-visible:shadow-inner-solid-sm active:bg-gray-400"
             @keydown.enter="selectItem(item)"
             @click="selectItem(item)"
           >

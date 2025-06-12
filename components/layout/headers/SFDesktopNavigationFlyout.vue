@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="item?.children?.length"
-    class="flex h-80 w-full gap-x-14 border-t border-gray-200 bg-white px-20 py-10 drop-shadow-md"
+    class="flex h-80 w-full gap-x-14 border-t border-gray-300 bg-white px-20 py-10 drop-shadow"
     data-testid="desktop-navigation-flyout"
   >
     <ul
@@ -12,7 +12,7 @@
       <li>
         <SFNavigationTreeItem
           :navigation-item="columnItem"
-          class="mb-2.5 !font-semi-bold-variable"
+          class="mb-2.5 !font-semibold"
           @click="onItemClick(columnItem)"
         />
 

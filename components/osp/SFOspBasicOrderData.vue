@@ -3,7 +3,7 @@
     :title="$t('order_information.order_details.title')"
     data-testid="osp-order-data"
   >
-    <ul class="flex flex-col gap-1 text-gray-600">
+    <ul class="flex flex-col gap-1 text-secondary">
       <li v-if="orderConfirmedAt">
         <span class="font-medium"
           >{{ $t('order_information.order_details.order_date') }}:</span

@@ -13,7 +13,7 @@
       />
       <span
         v-if="totalPromotionReductions"
-        class="text-base font-semi-bold-variable leading-3.5"
+        class="text-md font-semibold leading-4"
         data-testid="summary-total-promotion-reduction"
       >
         {{ formatCurrency(-Math.abs(totalPromotionReductions)) }}

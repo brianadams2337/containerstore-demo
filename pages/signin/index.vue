@@ -1,14 +1,14 @@
 <template>
   <div
-    class="m-auto flex max-w-112 flex-col items-start justify-center pt-6 *:w-full max-lg:px-4 lg:pt-10"
+    class="m-auto flex max-w-md flex-col items-start justify-center pt-6 *:w-full max-lg:px-4 lg:pt-10"
   >
     <div class="mb-5 flex items-center justify-between lg:mb-7">
-      <SFHeadline class="!leading-6 text-gray-900 max-lg:!text-xl" tag="h1">
+      <SFHeadline class="!leading-6 text-primary max-lg:!text-xl" tag="h1">
         {{ $t('sign_in_page.title') }}
       </SFHeadline>
       <IconScreenClick class="size-9 max-lg:hidden" />
     </div>
-    <SFAuthTabs class="mb-6 border-b border-b-gray-200 pb-4" />
+    <SFAuthTabs class="mb-6 border-b border-b-gray-300 pb-4" />
     <SFAuthLogin
       v-if="!isRegisterRoute"
       :external-i-d-p-redirects="externalIDPRedirects"

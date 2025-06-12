@@ -1,6 +1,6 @@
 <template>
   <SFButton
-    class="inline-block w-fit rounded-md p-1 text-sm !text-gray-500 duration-300 ease-out hover:bg-gray-100 focus-visible:transition-none"
+    class="inline-block w-fit rounded-md p-1 text-sm !text-secondary duration-300 ease-out hover:bg-gray-200 focus-visible:transition-none"
     data-testid="reset-password-button"
     variant="raw"
     @click.prevent="toggle"

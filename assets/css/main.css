@@ -22,4 +22,10 @@
     max-width: 100vw;
     max-height: 100vh;
   }
+
+  :root {
+    --color-shadow-navy: 25 49 70;
+    --color-shadow-gray: 204 204 204;
+    --color-shadow-white-smoke: 0, 0, 0, 0.1;
+  }
 }

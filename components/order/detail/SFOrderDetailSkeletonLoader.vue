@@ -6,7 +6,7 @@
         <SFSkeletonLoader type="custom" class="h-6 w-28 rounded-md" />
         <SFSkeletonLoader type="custom" class="h-6 w-14 rounded-md" />
       </div>
-      <SFSkeletonLoader type="custom" class="h-5 w-20 rounded-base" />
+      <SFSkeletonLoader type="custom" class="h-5 w-20 rounded-md" />
     </div>
     <div class="grid grid-cols-1 gap-4 *:rounded-lg lg:grid-cols-2">
       <SFSkeletonLoader type="custom" class="h-20 pb-1" />
@@ -34,7 +34,7 @@
         <SFSkeletonLoader type="custom" class="h-3.5 w-13 rounded-sm" />
       </div>
     </div>
-    <hr class="my-6 h-px bg-gray-200" aria-hidden="true" />
+    <hr class="my-6 h-px bg-gray-300" aria-hidden="true" />
     <div class="flex justify-between">
       <div class="*:rounded-sm">
         <SFSkeletonLoader type="custom" class="mb-2.5 h-3.5 w-20" />

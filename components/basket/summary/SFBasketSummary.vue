@@ -1,9 +1,9 @@
 <template>
   <div
-    class="relative hidden w-2/5 border-l border-gray-200 bg-gray-50 px-5 py-8 pl-13 pr-7 lg:block"
+    class="relative hidden w-2/5 border-l border-gray-300 bg-gray-100 px-5 py-8 pl-13 pr-7 lg:block"
   >
     <section
-      class="sticky top-8 flex max-w-88 flex-col gap-4 text-base font-variable leading-3.5"
+      class="sticky top-8 flex max-w-96 flex-col gap-4 text-md leading-4"
     >
       <SFHeadline tag="h2" data-testid="headline">
         {{ $t('basket_summary.total') }}
@@ -26,7 +26,7 @@
           :basket="basket"
         />
       </SFFadeInFromBottomTransition>
-      <hr class="h-px border-none bg-gray-300" />
+      <hr class="h-px border-none bg-gray-400" />
       <SFBasketSummaryFinalSection
         :cost="basket.cost"
         :basket-items="basket.items"

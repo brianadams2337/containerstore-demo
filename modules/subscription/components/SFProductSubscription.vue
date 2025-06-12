@@ -1,31 +1,29 @@
 <template>
   <div class="relative max-md:pt-1.5">
     <div
-      class="text-center text-gray-500 max-md:absolute max-md:left-1/2 max-md:z-10 max-md:-translate-x-1/2 max-md:-translate-y-1/2 max-md:rounded-full max-md:border max-md:border-gray-300 max-md:bg-white max-md:text-sm md:mb-5 md:flex md:w-full md:items-center md:space-x-3"
+      class="text-center text-secondary max-md:absolute max-md:left-1/2 max-md:z-10 max-md:-translate-x-1/2 max-md:-translate-y-1/2 max-md:rounded-full max-md:border max-md:border-gray-400 max-md:bg-white max-md:text-sm md:mb-5 md:flex md:w-full md:items-center md:space-x-3"
     >
-      <div class="h-px w-full bg-gray-300 max-md:hidden" />
+      <div class="h-px w-full bg-gray-400 max-md:hidden" />
       <span class="shrink-0 px-5 max-md:py-1 md:px-3">
         {{ $t('product_subscription.separation_text') }}
       </span>
-      <div class="h-px w-full bg-gray-300 max-md:hidden" />
+      <div class="h-px w-full bg-gray-400 max-md:hidden" />
     </div>
 
     <div
-      class="space-y-5 border-y border-gray-300 px-5 pb-10 pt-11 max-md:bg-white-smoke md:rounded-lg md:border md:border-accent md:py-5"
+      class="space-y-5 border-y border-gray-400 px-5 pb-10 pt-11 max-md:bg-gray-100 md:rounded-lg md:border md:border-accent md:py-5"
       data-testid="subscription-service"
     >
-      <h2
-        class="text-2xl font-medium text-gray-900 md:text-md md:font-semi-bold-variable"
-      >
+      <h2 class="text-2xl font-medium text-primary md:text-md md:font-semibold">
         {{ $t('product_subscription.subscribe') }}
       </h2>
 
-      <div v-if="!subscriptionPrice" class="text-md text-gray-500">
+      <div v-if="!subscriptionPrice" class="text-md text-secondary">
         {{ $t('product_subscription.select_size') }}
       </div>
       <div
         v-else-if="subscriptionPrice && !subscriptionVariantEligible"
-        class="text-md text-gray-500"
+        class="text-md text-secondary"
       >
         {{ $t('product_subscription.not_eligible_for_subscription_message') }}
       </div>

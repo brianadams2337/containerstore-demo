@@ -1,7 +1,7 @@
 <template>
   <div>
     <SFHeadline
-      class="mb-5 !font-semi-bold-variable xl:mb-7"
+      class="mb-5 xl:mb-7"
       tag="h2"
       data-testid="subscriptions-headline"
     >

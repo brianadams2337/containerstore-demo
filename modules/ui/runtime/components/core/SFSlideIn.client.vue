@@ -6,27 +6,19 @@ https://nuxt.com/docs/guide/directory-structure/components#client-components
 Therefore, to ensure it's also not rendered on the server, it must be wrapped in a ClientOnly block in the template.  -->
   <ClientOnly>
     <Transition
-      :enter-from-class="
-        [slideTypes[slideType].enterClasses, 'backdrop:opacity-0'].join(' ')
-      "
-      :enter-to-class="
-        [slideTypes[slideType].enterToClasses, 'backdrop:opacity-100'].join(' ')
-      "
+      enter-from-class="translate-y-full md:translate-y-0 md:translate-x-full backdrop:opacity-0"
+      enter-to-class="translate-y-0 md:translate-x-0 backdrop:opacity-100"
       enter-active-class="transform transition-all duration-200 backdrop:transition backdrop:ease-linear backdrop:duration-200"
       leave-active-class="transform transition-all duration-200 backdrop:transition backdrop:ease-linear backdrop:duration-200"
-      :leave-from-class="
-        [slideTypes[slideType].leaveClasses, 'backdrop:opacity-100'].join(' ')
-      "
-      :leave-to-class="
-        [slideTypes[slideType].leaveToClasses, 'backdrop:opacity-0'].join(' ')
-      "
+      leave-from-class="translate-y-0 md:translate-x-0 backdrop:opacity-100"
+      leave-to-class="translate-y-full md:translate-y-0 md:translate-x-full backdrop:opacity-0"
     >
       <!-- eslint-disable-next-line vue/require-toggle-inside-transition  -->
       <dialog
         ref="slideIn"
         v-dialog.modal="isOpen"
         :name="name"
-        class="h-full overflow-hidden transition-all backdrop:bg-black/50 max-sm:m-0 max-sm:h-dvh max-sm:max-h-screen max-sm:w-screen max-sm:max-w-screen md:mr-0 md:rounded-xl"
+        class="z-20 h-full overflow-hidden transition-all backdrop:bg-black/50 max-sm:m-0 max-sm:h-dvh max-sm:max-h-screen max-sm:w-screen max-sm:max-w-screen md:mr-0 md:rounded-xl"
         :class="$attrs.class"
         @click="onClick"
         @cancel="onCancel"
@@ -45,7 +37,7 @@ Therefore, to ensure it's also not rendered on the server, it must be wrapped in
             <slot v-bind="toggle" name="slide-in-content">
               <div
                 class="sticky top-0 z-10 bg-white/90 px-6 py-4"
-                :class="{ 'border-b border-b-gray-200': !borderless }"
+                :class="{ 'border-b border-b-gray-300': !borderless }"
               >
                 <slot name="slide-in-header" :toggle="toggle" />
               </div>
@@ -53,7 +45,7 @@ Therefore, to ensure it's also not rendered on the server, it must be wrapped in
               <div
                 v-if="$slots['slide-in-actions']"
                 class="sticky bottom-0 z-10 mt-auto bg-white p-6"
-                :class="{ 'border-t border-t-gray-200': !borderless }"
+                :class="{ 'border-t border-t-gray-300': !borderless }"
               >
                 <slot name="slide-in-actions" />
               </div>
@@ -71,20 +63,18 @@ import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import { onKeyStroke, syncRefs } from '@vueuse/core'
 import { tabbable } from 'tabbable'
 import { vDialog } from '../../directives/dialog'
-import { useSlideIn, SlideInType } from '#storefront-ui'
+import { useSlideIn } from '#storefront-ui'
 import { onBeforeRouteUpdate } from '#app/composables/router'
 import { ClientOnly } from '#components'
 
 const {
   slideClass = '',
-  slideType = SlideInType.DEFAULT,
   borderless = false,
   name,
   closeOnRouteChange = true,
 } = defineProps<{
   name: string
   slideClass?: string
-  slideType?: SlideInType
   borderless?: boolean
   closeOnRouteChange?: boolean
 }>()
@@ -101,26 +91,6 @@ const slideIn = useTemplateRef<HTMLDialogElement>('slideIn')
 // Syncs both refs after nextTick
 // Reason: Appyling scroll-margin directly causes a pre-scrolled slide in.
 syncRefs(isOpen, scrollPaddingReady, { flush: 'post' })
-
-type SlideTypeClasses = Record<
-  'enterClasses' | 'enterToClasses' | 'leaveClasses' | 'leaveToClasses',
-  string
->
-
-const slideTypes: Record<SlideInType, SlideTypeClasses> = {
-  [SlideInType.DEFAULT]: {
-    enterClasses: 'translate-y-full md:translate-y-0 md:translate-x-full',
-    enterToClasses: 'translate-y-0 md:translate-x-0',
-    leaveClasses: 'translate-y-0 md:translate-x-0',
-    leaveToClasses: 'translate-y-full md:translate-y-0 md:translate-x-full',
-  },
-  [SlideInType.FROM_BOTTOM]: {
-    enterClasses: 'translate-y-full',
-    enterToClasses: 'translate-y-0',
-    leaveClasses: 'translate-y-0',
-    leaveToClasses: 'translate-y-full',
-  },
-}
 
 const onClick = (e: MouseEvent) => {
   if (!isOpen.value) {

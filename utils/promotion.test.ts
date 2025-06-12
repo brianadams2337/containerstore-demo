@@ -82,8 +82,8 @@ describe('getPromotionStyle', () => {
 
   it('should return default if promotion is not provided', () => {
     expect(getPromotionStyle()).toStrictEqual({
-      backgroundColor: '#0038FF',
-      color: '#fff',
+      backgroundColor: '#0038ff',
+      color: '#ffffff',
     })
   })
 })

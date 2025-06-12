@@ -6,13 +6,13 @@
       <div class="w-[400px]">
         <SFSkeletonLoader
           type="custom"
-          class="h-8 max-w-[200px] rounded-lg bg-gray-200"
+          class="h-8 max-w-[200px] rounded-lg bg-gray-300"
         />
         <SFSkeletonLoader
           type="custom"
           class="mt-4 h-[100px] w-full rounded-lg"
         />
-        <div class="text-base sm:grid">
+        <div class="text-md sm:grid">
           <div class="mt-4 grid w-full grid-cols-1 gap-4 md:grid-cols-2">
             <SFSkeletonLoader
               v-for="index in 4"
@@ -25,12 +25,12 @@
       </div>
     </div>
     <div
-      class="flex w-full flex-col border-gray-200 bg-gray-50 px-5 py-8 md:border-l lg:w-2/5 lg:items-start lg:pl-13 lg:pr-7"
+      class="flex w-full flex-col border-gray-300 bg-gray-100 px-5 py-8 md:border-l lg:w-2/5 lg:items-start lg:pl-13 lg:pr-7"
     >
       <div class="w-full">
         <SFSkeletonLoader
           type="custom"
-          class="h-5 max-w-[12.875rem] rounded-lg bg-gray-200"
+          class="h-5 max-w-[12.875rem] rounded-lg bg-gray-300"
         />
         <ul class="mb-3 flex flex-col gap-3 divide-y *:pt-3">
           <div
@@ -40,20 +40,20 @@
           >
             <SFSkeletonLoader
               type="custom"
-              class="size-20 rounded-lg bg-gray-200"
+              class="size-20 rounded-lg bg-gray-300"
             />
             <div class="flex flex-1 flex-col">
               <SFSkeletonLoader
                 type="custom"
-                class="mb-1 h-3 max-w-[6.5rem] rounded-lg bg-gray-200"
+                class="mb-1 h-3 max-w-26 rounded-lg bg-gray-300"
               />
               <SFSkeletonLoader
                 type="custom"
-                class="mb-5 h-3 max-w-[12.875rem] rounded-lg bg-gray-200"
+                class="mb-5 h-3 max-w-[12.875rem] rounded-lg bg-gray-300"
               />
               <SFSkeletonLoader
                 type="custom"
-                class="h-4 max-w-20 rounded-lg bg-gray-200"
+                class="h-4 max-w-20 rounded-lg bg-gray-300"
               />
             </div>
           </div>

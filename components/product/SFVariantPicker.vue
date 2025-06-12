@@ -15,13 +15,13 @@
     >
       {{ getFirstAttributeValue(activeVariant?.attributes, 'size')?.label }}
     </span>
-    <span v-else class="font-medium text-gray-600">
+    <span v-else class="font-medium text-secondary">
       {{ $t('variant_picker.select_size') }}
     </span>
     <template #item="{ item, selectItem }">
       <button
         :disabled="item.stock.quantity === 0"
-        class="group flex w-full items-center justify-between space-x-2 border-b border-gray-200 p-2 transition-all first-of-type:rounded-t-lg last-of-type:rounded-b-lg last-of-type:border-none hover:bg-gray-200 focus-visible:shadow-inner-solid-sm"
+        class="group flex w-full items-center justify-between space-x-2 border-b border-gray-300 p-2 transition-all first-of-type:rounded-t-lg last-of-type:rounded-b-lg last-of-type:border-none hover:bg-gray-300 focus-visible:shadow-inner-solid-sm"
         :data-testid="`variant-option-${item.id}`"
         :aria-label="
           $t('variant_picker.option.select_option', {
@@ -32,15 +32,15 @@
       >
         <span class="flex items-center gap-3">
           <span
-            class="size-4 rounded-full border border-gray-500 bg-white"
+            class="size-4 rounded-full border border-secondary bg-white"
             :class="{
-              'border-5 !border-accent': item.id === activeVariant?.id,
+              'border-4 !border-accent': item.id === activeVariant?.id,
             }"
           />
           <span
             class="group-disabled:line-through"
             :class="
-              item.id === activeVariant?.id ? 'text-black' : 'text-gray-500'
+              item.id === activeVariant?.id ? 'text-black' : 'text-secondary'
             "
           >
             {{ getFirstAttributeValue(item.attributes, 'size')?.label }}

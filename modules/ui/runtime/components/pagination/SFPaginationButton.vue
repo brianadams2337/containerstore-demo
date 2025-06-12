@@ -7,7 +7,7 @@
       'pointer-events-none': page.isActive || disabled,
     }"
     raw
-    class="inline-flex h-full w-10 items-center justify-center border-t-2 border-transparent text-center text-sm text-gray-500 hover:border-gray-400 hover:text-black"
+    class="inline-flex h-full w-10 items-center justify-center border-t-2 border-transparent text-center text-sm text-secondary hover:border-gray-100 hover:text-black"
     @click="scrollToTop"
   >
     <slot>

@@ -4,7 +4,7 @@
       v-if="!arrivedState.top"
       variant="secondary"
       v-bind="$attrs"
-      class="z-100 !size-13 rounded-xl !border-gray-500 !p-0 !text-gray-400 transition-transform duration-150 ease-in-out"
+      class="z-20 !size-13 rounded-xl !border-secondary !p-0 !text-gray-500 transition-transform duration-150 ease-in-out"
       :aria-label="$t('global.scroll_to_top_label')"
       @click="scrollToTop"
     >

@@ -28,10 +28,8 @@ import type { CMSGridTileProps } from '../types'
 import { getComponentName } from '../../../utils/helpers'
 import CMSStoryblokLink from './StoryblokLink.vue'
 
-const {
-  blok,
-  sizes = 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw 2xl:100vw',
-} = defineProps<CMSGridTileProps>()
+const { blok, sizes = 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw' } =
+  defineProps<CMSGridTileProps>()
 
 const content = computed(() => blok?.content?.[0])
 const hasCta = computed(() => blok?.cta && blok?.cta_link)

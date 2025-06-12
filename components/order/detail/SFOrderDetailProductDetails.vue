@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-col text-gray-900">
+  <div class="flex flex-col text-primary">
     <span
       v-if="brand"
-      class="text-base font-semi-bold-variable"
+      class="text-md font-semibold"
       data-testid="order-detail-product-brand"
     >
       {{ brand }}
@@ -11,7 +11,7 @@
       {{ name }}
     </span>
   </div>
-  <ul class="flex flex-col gap-1 text-sm text-gray-600">
+  <ul class="flex flex-col gap-1 text-sm text-secondary">
     <li v-if="color" class="flex gap-1">
       <span class="font-medium" data-testid="order-detail-product-color">
         {{ $t('product_attribute.color') }}:

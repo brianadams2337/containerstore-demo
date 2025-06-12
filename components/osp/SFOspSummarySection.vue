@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex w-full flex-col border-gray-200 bg-gray-50 px-5 py-8 md:border-l lg:w-2/5 lg:items-start lg:pl-13 lg:pr-7"
+    class="flex w-full flex-col border-gray-300 bg-gray-100 px-5 py-8 md:border-l lg:w-2/5 lg:items-start lg:pl-13 lg:pr-7"
   >
     <div class="text-sm">
       <SFHeadline size="xl" tag="h2" class="mb-4">

@@ -3,7 +3,7 @@
     <span class="ml-2">
       {{ store.name }}
     </span>
-    <span class="ml-4 inline-block rounded-3xl bg-gray-100 px-3 py-2">
+    <span class="ml-4 inline-block rounded-xl bg-gray-200 px-3 py-2">
       {{ formatDistance(store.distance) }}
     </span>
     <div class="mt-5 flex flex-col space-y-2 text-xs">

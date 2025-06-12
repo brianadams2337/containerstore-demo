@@ -3,9 +3,9 @@
     <SFLocalizedLink
       v-for="({ to, title, active }, index) in tabs"
       :key="`${title}-${index}`"
-      class="inline-block w-fit rounded-md px-2 py-1.5 text-lg font-semi-bold-variable tracking-tighter text-gray-500 duration-300 ease-out hover:bg-gray-100 focus-visible:transition-none"
+      class="inline-block w-fit rounded-md px-2 py-1.5 text-lg font-semibold tracking-tighter text-secondary duration-300 ease-out hover:bg-gray-200 focus-visible:transition-none"
       :data-testid="`account-area-tab-${index}`"
-      :class="{ 'bg-gray-100 text-gray-900': active }"
+      :class="{ 'bg-gray-200 text-primary': active }"
       :to="to"
       raw
     >

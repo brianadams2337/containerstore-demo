@@ -1,10 +1,10 @@
 <template>
   <SFSlideIn
     name="StoreLocatorSlideIn"
-    slide-class="border-t border-l border-primary xl:inset-y-0 !p-0 bg-secondary-50"
+    slide-class="border-t border-l border-primary xl:inset-y-0 !p-0 bg-gray-100"
   >
     <template #slide-in-header="{ toggle: toggleItem }">
-      <div class="bg-white p-5 shadow-[0_3px_24px_0_rgba(0,0,0,0.12)]">
+      <div class="bg-white p-5 shadow">
         <div class="flex items-center justify-between">
           <SFHeadline :is-uppercase="false" size="lg" tag="p">
             {{ $t('store_locator_slide_in.headline') }}

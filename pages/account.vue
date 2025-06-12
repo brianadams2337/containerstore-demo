@@ -1,9 +1,9 @@
 <template>
   <div
-    class="m-auto flex max-w-200 flex-col items-start justify-center pt-6 *:w-full max-lg:px-4 lg:pt-10"
+    class="m-auto flex max-w-3xl flex-col items-start justify-center pt-6 *:w-full max-lg:px-4 lg:pt-10"
   >
     <SFHeadline
-      class="mb-5 text-gray-900 lg:mb-7"
+      class="mb-5 text-primary lg:mb-7"
       size="xl"
       tag="h1"
       data-testid="account-headline"
@@ -11,7 +11,7 @@
       {{ t('account_page.title') }}
     </SFHeadline>
     <SFAccountTabs />
-    <hr class="mb-6 mt-4 h-px bg-gray-200" aria-hidden="true" />
+    <hr class="mb-6 mt-4 h-px bg-gray-300" aria-hidden="true" />
     <NuxtPage />
   </div>
 </template>

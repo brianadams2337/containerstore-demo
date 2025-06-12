@@ -15,7 +15,7 @@
             address.shipping,
           )"
           :key="`${formattedAddress}-${index}`"
-          class="text-gray-600"
+          class="text-secondary"
         >
           {{ formattedAddress }}
         </p>
@@ -32,7 +32,7 @@
             address.billing,
           )"
           :key="`${formattedAddress}-${index}`"
-          class="text-gray-600"
+          class="text-secondary"
         >
           {{ formattedAddress }}
         </p>

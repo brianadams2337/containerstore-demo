@@ -1,15 +1,11 @@
 <template>
   <div
-    class="flex w-full flex-col items-start rounded-xl border border-gray-200 p-8"
+    class="flex w-full flex-col items-start rounded-xl border border-gray-300 p-8"
   >
-    <SFHeadline
-      tag="h2"
-      size="lg"
-      class="mb-4 !font-semi-bold-variable text-gray-900"
-    >
+    <SFHeadline tag="h2" size="lg" class="mb-4 text-primary">
       {{ $t('product_list_no_results.title') }}
     </SFHeadline>
-    <SFHeadline class="mb-10 !font-normal text-gray-600" size="md">
+    <SFHeadline class="mb-10 !font-normal text-secondary" size="md">
       {{ $t('product_list_no_results.description') }}
     </SFHeadline>
     <div

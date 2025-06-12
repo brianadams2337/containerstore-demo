@@ -14,7 +14,7 @@
         />
         <SFOspCtaButtons
           :order-data="orderData"
-          class="order-3 bg-gray-50 px-5 py-4 md:hidden"
+          class="order-3 bg-gray-100 px-5 py-4 md:hidden"
         />
       </div>
       <template #error>

@@ -15,7 +15,7 @@
       data-testid="nav-link-main"
       :is-active="isActive"
     >
-      <span class="text-md font-semi-bold-variable leading-10">
+      <span class="text-md font-semibold leading-10">
         {{ item.name }}
       </span>
     </SFNavigationTreeItem>
@@ -36,7 +36,7 @@
         v-if="showFlyout"
         ref="flyout"
         :item="item"
-        class="absolute inset-x-0 top-[63px] z-100 w-screen"
+        class="absolute inset-x-0 top-[63px] z-20 w-screen"
         :style="flyoutTransform"
         @close="closeFlyout"
       />

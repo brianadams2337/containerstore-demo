@@ -8,7 +8,7 @@
     <template #header>
       <div class="mb-4 flex justify-between">
         <div class="flex gap-2 text-md">
-          <span class="font-semi-bold-variable">
+          <span class="font-semibold">
             {{ $t('product_attribute.color') }}:
           </span>
           <span>{{ label }}</span>
@@ -25,9 +25,9 @@
           'border-transparent': sibling.id !== product.id && !sibling.isSoldOut,
           'border-accent text-black -outline-offset-4 focus-visible:shadow-inner-solid':
             sibling.id === product.id,
-          'bg-gray-100 text-gray-300 supports-hover:hover:bg-white supports-hover:hover:text-black':
+          'bg-gray-200 text-gray-400 supports-hover:hover:bg-white supports-hover:hover:text-black':
             sibling.id !== product.id,
-          'border-gray-200': sibling.isSoldOut && sibling.id !== product.id,
+          'border-gray-300': sibling.isSoldOut && sibling.id !== product.id,
         }"
         :to="getProductDetailRoute(sibling.id, sibling.name)"
         @mouseenter="setHoveredLabel(sibling)"

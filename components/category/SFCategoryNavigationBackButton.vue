@@ -3,7 +3,7 @@
     variant="raw"
     fab
     size="sm"
-    class="size-10 border border-gray-200 text-gray-500"
+    class="size-10 border border-gray-300 text-secondary"
     :aria-label="$t('global.back')"
     :to="link"
   >

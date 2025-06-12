@@ -17,7 +17,7 @@
         <div class="p-2">
           <SFLocalizedLink
             :to="routeList.location"
-            class="text-gray-600"
+            class="text-secondary"
             data-testid="store-location-link-mobile"
             @click="$emit('close')"
           >
@@ -32,7 +32,7 @@
           v-if="user"
           variant="raw"
           data-testid="logout-button"
-          class="ml-px p-2 px-2.5 text-lg font-normal leading-5 !text-gray-600 lg:text-sm"
+          class="ml-px p-2 px-2.5 text-lg font-normal leading-5 !text-secondary lg:text-sm"
           @click="handleLogout"
         >
           <IconLogout class="mr-1 size-4" />

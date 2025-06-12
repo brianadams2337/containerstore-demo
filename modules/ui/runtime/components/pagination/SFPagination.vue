@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-row justify-center">
     <div
-      class="mx-4 flex h-14 max-w-full flex-row items-center justify-between gap-1 rounded-md border sm:gap-2 md:w-min"
+      class="mx-4 flex h-14 max-w-full flex-row items-center justify-between gap-1 rounded-md border md:w-min md:gap-2"
     >
       <slot
         :can-navigate-left="canNavigateLeft"
@@ -29,7 +29,7 @@
       <slot name="first-dots">
         <div
           v-if="areFirstDotsShown"
-          class="inline-flex h-full items-center border-t-2 border-transparent text-sm font-bold leading-none text-gray-500"
+          class="inline-flex h-full items-center border-t-2 border-transparent text-sm font-bold leading-none text-secondary"
         >
           ...
         </div>
@@ -44,7 +44,7 @@
       <slot name="second-dots">
         <div
           v-if="areSecondDotsShown"
-          class="inline-flex h-full items-center border-t-2 border-transparent text-sm font-bold leading-none text-gray-500"
+          class="inline-flex h-full items-center border-t-2 border-transparent text-sm font-bold leading-none text-secondary"
         >
           ...
         </div>

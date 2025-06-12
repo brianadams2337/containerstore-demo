@@ -2,7 +2,7 @@
   <SFOrderDetailBox :title="title">
     <div
       v-if="address"
-      class="flex flex-col gap-1 text-base font-normal text-gray-600"
+      class="flex flex-col gap-1 text-md font-normal text-secondary"
     >
       <span
         v-for="(formattedAddress, index) in getFormattedLocaleAddresses(

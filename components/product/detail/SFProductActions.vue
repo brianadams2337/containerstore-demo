@@ -7,9 +7,7 @@
   </div>
   <div v-else class="max-md:px-5">
     <SFSiblingSelection :product="product" />
-    <div
-      class="mt-7 text-md font-semi-bold-variable leading-[14px] text-gray-900"
-    >
+    <div class="mt-7 text-md font-semibold leading-[14px] text-primary">
       {{ $t('product_attribute.size') }}:
     </div>
     <div class="my-3 mt-4 flex h-12 items-center space-x-4">
@@ -49,7 +47,7 @@
     </SFButton>
     <SFWishlistToggle
       :product="product"
-      class="!size-13 !bg-gray-100 hover:!scale-100 hover:!bg-gray-200 hover:!text-black"
+      class="!size-13 !bg-gray-200 hover:!scale-100 hover:!bg-gray-300 hover:!text-black"
     />
   </div>
   <SFProductSubscription
@@ -62,7 +60,7 @@
   />
   <Teleport to="#teleports">
     <div
-      class="fixed bottom-6 z-50 flex w-full items-center gap-x-3 px-3 md:hidden"
+      class="fixed bottom-6 z-20 flex w-full items-center gap-x-3 px-3 md:hidden"
     >
       <SFButton
         variant="accent"

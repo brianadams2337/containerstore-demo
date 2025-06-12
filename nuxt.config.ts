@@ -468,7 +468,6 @@ export default defineNuxtConfig({
       md: breakpoints.md,
       lg: breakpoints.lg,
       xl: breakpoints.xl,
-      xxl: breakpoints['2xl'],
     },
   },
 
@@ -497,7 +496,7 @@ export default defineNuxtConfig({
       prefix: '/_fonts/',
     },
     defaults: {
-      weights: [300, 400, 425, 500, 550, 600, 700],
+      weights: [400, 500, 600, 700],
     },
   },
 
@@ -511,7 +510,6 @@ export default defineNuxtConfig({
     },
     screens: {
       ...breakpoints,
-      xxl: breakpoints['2xl'],
     },
   },
 

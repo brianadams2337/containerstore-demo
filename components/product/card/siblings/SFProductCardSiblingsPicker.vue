@@ -4,7 +4,7 @@
       v-for="({ id, name, image, colors }, index) in itemsToShow"
       :key="id"
       :to="getProductDetailRoute(id, name)"
-      class="relative mr-2 flex size-12 items-center justify-center overflow-hidden rounded-md bg-gray-200 focus-visible:shadow-inner-solid-sm"
+      class="relative mr-2 flex size-12 items-center justify-center overflow-hidden rounded-md bg-gray-300 focus-visible:shadow-inner-solid-sm"
       :class="classForIndex(index)"
       data-testid="product-sibling"
     >
@@ -26,7 +26,7 @@
       v-if="siblings.length > 2"
       :to="productRoute"
       raw
-      class="hidden size-12 content-center text-sm font-medium text-gray-500 max-lg:block"
+      class="hidden size-12 content-center text-sm font-medium text-secondary max-lg:block"
     >
       + {{ siblings.length - 2 }}
     </SFLink>
@@ -34,7 +34,7 @@
       v-if="siblings.length > 3"
       :to="productRoute"
       raw
-      class="hidden size-12 content-center text-sm font-medium text-gray-500 lg:max-xl:block"
+      class="hidden size-12 content-center text-sm font-medium text-secondary lg:max-xl:block"
     >
       + {{ siblings.length - 3 }}
     </SFLink>
@@ -42,7 +42,7 @@
       v-if="siblings.length > 4"
       :to="productRoute"
       raw
-      class="hidden size-12 content-center text-sm font-medium text-gray-500 xl:block"
+      class="hidden size-12 content-center text-sm font-medium text-secondary xl:block"
     >
       + {{ siblings.length - 4 }}
     </SFLink>

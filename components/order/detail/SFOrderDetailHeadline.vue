@@ -5,12 +5,12 @@
         variant="raw"
         fab
         size="sm"
-        class="size-10 border border-gray-200"
+        class="size-10 border border-gray-300"
         data-testid="back-to-order-list"
         :aria-label="$t('global.back')"
         :to="link"
       >
-        <IconChevronLeft class="size-4 text-gray-500" />
+        <IconChevronLeft class="size-4 text-secondary" />
       </SFButton>
       <SFHeadline tag="h2" data-testid="order-detail-headline">
         {{ $t('order_detail_page.title', { id }) }}

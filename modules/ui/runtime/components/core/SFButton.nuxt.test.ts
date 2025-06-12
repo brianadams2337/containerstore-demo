@@ -46,27 +46,6 @@ describe('button', () => {
     expect(hasClass(button, 'disabled')).toEqual(true)
   })
 
-  it('should render fab button', async () => {
-    const button = await mountSuspended(SFButton, { props: { fab: true } })
-
-    expect(hasClass(button, 'rounded-full')).toEqual(true)
-  })
-
-  it('should render uppercased button text', async () => {
-    const button = await mountSuspended(SFButton, {
-      props: { isUppercase: true },
-      slots: { default: () => 'uppercase' },
-    })
-
-    expect(hasClass(button, 'uppercase')).toEqual(true)
-  })
-
-  it('should render badge within the button', async () => {
-    const button = await mountSuspended(SFButton, { props: { badge: 5 } })
-
-    expect(button.text()).toContain('(5)')
-  })
-
   it('should render full width button', async () => {
     const button = await mountSuspended(SFButton, {
       props: { isFullWidth: true },

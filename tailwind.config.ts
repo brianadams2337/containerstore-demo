@@ -11,9 +11,9 @@ const defaultSizes = {
   md: '28rem',
   lg: '32rem',
   xl: '36rem',
+  '2xl': '40rem',
   '3xl': '48rem',
 }
-
 type Breakpoints = keyof typeof breakpoints
 
 const screens = Object.entries(breakpoints).reduce(
@@ -42,44 +42,23 @@ export default {
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
     },
+
     colors: {
       inherit: 'inherit',
       transparent: 'transparent',
       current: 'currentColor',
       black: '#000000',
-      white: {
-        smoke: '#f6f6f6',
-        DEFAULT: '#ffffff',
-      },
+      white: '#ffffff',
       gray: {
-        50: '#fafafa',
-        100: '#f2f2f2',
-        200: '#ebebeb',
-        300: '#d9d9d9',
-        350: '#e5e5e9',
-        400: '#a8a8a8',
-        500: '#757575',
-        600: '#666666',
-        700: '#888888',
-        750: '#737277',
-        900: '#171717',
+        100: '#fafafa',
+        200: '#f2f2f2',
+        300: '#ebebeb',
+        400: '#d9d9d9',
+        500: '#a8a8a8',
       },
-      focus: '#193146',
-      primary: {
-        400: '#191919',
-        DEFAULT: '#171717',
-      },
-      secondary: {
-        100: '#fbfbfb',
-        200: '#fafafa',
-        300: '#f9f9f9',
-        400: '#f8f8f8',
-        450: '#f2f0f0',
-        600: '#ebebeb',
-        700: '#ccc',
-        800: '#7f7f7f',
-        DEFAULT: '#666666',
-      },
+      primary: '#171717',
+      secondary: '#666666',
+      promotion: '#0038ff',
       product: {
         sale: '#d93321',
         'sold-out': '#d93321',
@@ -102,19 +81,13 @@ export default {
       },
     },
     aspectRatio: {
-      '4/3': '4 / 3',
       '3/4': '3 / 4',
       '9/4': '9 / 4',
-      video: '16 / 9',
       square: '1/1',
-      auto: 'auto',
     },
     fontWeight: {
-      light: '300',
       normal: '400',
-      variable: '425',
       medium: '500',
-      'semi-bold-variable': '550',
       semibold: '600',
       bold: '700',
     },
@@ -132,207 +105,91 @@ export default {
       1: '1px',
       2: '2px',
       3: '3px',
-      4: '4px',
     },
     outlineOffset: {
       0: '0',
       1: '1px',
       2: '2px',
-      3: '3px',
       4: '4px',
       5: '5px',
-      6: '6px',
     },
-    zIndex: {
-      0: '0',
-      10: '10',
-      20: '20',
-      30: '30',
-      40: '40',
-      50: '50',
-      60: '60',
-      70: '70',
-      80: '90',
-      90: '90',
-      100: '100',
-      110: '110',
-      auto: 'auto',
+    boxShadow: {
+      none: 'none',
+      DEFAULT:
+        '0 4px 6px -1px rgba(var(--color-shadow-white-smoke)), 0 2px 4px -2px rgba(var(--color-shadow-white-smoke))',
+      'inner-solid': 'inset 0 0 0 4px rgb(var(--color-shadow-navy))',
+      'inner-solid-sm': 'inset 0 0 0 2px rgb(var(--color-shadow-navy))',
+      'outer-solid': '0 0 0 3px rgb(var(--color-shadow-navy))',
+      'input-label':
+        'inset 0 2px 8px -10px rgb(var(--color-shadow-gray)), inset 0 2px 8px -10px rgb(var(--color-shadow-gray))',
     },
     fontSize: {
-      '3xs': [
-        '0.5rem',
-        {
-          lineHeight: '0.75rem',
-          letterSpacing: '0.006rem',
-        },
-      ],
-      '2xs': [
-        '0.625rem',
+      xs: [
+        '0.625rem', // 10px
         {
           lineHeight: '0.875rem',
-          letterSpacing: '0.006rem',
-        },
-      ],
-      xs: [
-        '0.688rem',
-        {
-          lineHeight: '0.963rem',
-          letterSpacing: '0',
+          letterSpacing: '0.09px',
         },
       ],
       sm: [
-        '0.75rem',
+        '0.75rem', // 12px
         {
-          lineHeight: '0.963rem',
-          letterSpacing: '-0.008rem',
-        },
-      ],
-      base: [
-        '0.813rem',
-        {
-          lineHeight: '0.975rem',
-          letterSpacing: '-0.008rem',
+          lineHeight: '1rem',
+          letterSpacing: '-0.13px',
         },
       ],
       md: [
-        '0.875rem',
+        '0.875rem', // 14px
         {
-          lineHeight: '1.05rem',
-          letterSpacing: '-0.009rem',
+          lineHeight: '1.125rem',
+          letterSpacing: '-0.14px',
         },
       ],
       lg: [
-        '1rem',
+        '1rem', // 16px
         {
-          lineHeight: '1.2rem',
-          letterSpacing: '-0.02rem',
+          lineHeight: '1.25rem',
+          letterSpacing: '-0.32px',
         },
       ],
       xl: [
-        '1.125rem',
+        '1.125rem', // 18px
         {
-          lineHeight: '1.35rem',
+          lineHeight: '1.375rem',
           letterSpacing: '0',
         },
       ],
       '2xl': [
-        '1.25rem',
+        '1.25rem', // 20px
         {
           lineHeight: '1.75rem',
-          letterSpacing: '-0.025rem',
+          letterSpacing: '-0.4px',
         },
       ],
       '3xl': [
-        '1.75rem',
+        '1.75rem', // 28px
         {
-          lineHeight: '2.1rem',
-          letterSpacing: '-0.035rem',
-        },
-      ],
-
-      '4xl': [
-        '2.25rem',
-        {
-          lineHeight: '2.75rem',
-          letterSpacing: '-0.045rem',
-        },
-      ],
-      '5xl': [
-        '2.75rem',
-        {
-          lineHeight: '3.063rem',
-          letterSpacing: '-0.055rem',
-        },
-      ],
-      '6xl': [
-        '3.25rem',
-        {
-          lineHeight: '3.625rem',
-          letterSpacing: '-0.063rem',
-        },
-      ],
-      '7xl': [
-        '4.5rem',
-        {
-          lineHeight: '1',
+          lineHeight: '2rem',
+          letterSpacing: '-0.5px',
         },
       ],
     },
     extend: {
-      lineHeight: {
-        '3.5': '13px',
-        '2.5': '10px',
+      maxHeight: {
+        dialog: '94vh',
       },
-      borderWidth: {
-        5: '5px',
+      maxWidth: {
+        screen: '100vw',
+        dialog: '94vw',
       },
-      borderRadius: {
-        base: '4px',
-        10: '10px',
-      },
-      padding: {
+      spacing: {
+        ...defaultSizes,
         '4.5': '1.125rem',
-      },
-      height: {
-        '4.5': '1.125rem',
+        11: '2.625rem',
         13: '3.25rem',
         15: '3.75rem',
         22: '5.5rem',
         26: '6.5rem',
-        76: '19rem',
-      },
-      width: {
-        13: '3.25rem',
-        15: '3.75rem',
-        88: '22rem',
-        348: '87rem',
-        105: '26.25rem',
-        128: defaultSizes.lg,
-      },
-      size: {
-        13: '3.25rem',
-        15: '3.75rem',
-      },
-      boxShadow: {
-        secondary: '0 6px 16px -10px rgba(0, 0, 0, 0.04)',
-        'inner-solid': 'inset 0 0 0 4px #193146',
-        'inner-solid-sm': 'inset 0 0 0 2px #193146',
-        'outer-solid': '0 0 0 3px #193146',
-        'input-label': 'inset 0 2px 8px -10px #ccc, inset 0 2px 8px -10px #ccc',
-      },
-      fontSize: {
-        '2xs': '0.625rem',
-      },
-      maxHeight: {
-        ...defaultSizes,
-        dialog: '94vh',
-      },
-      minHeight: { ...defaultSizes },
-      maxWidth: {
-        ...defaultSizes,
-        screen: '100vw',
-        dialog: '94vw',
-        '187.5': '46.875rem',
-        156: '39rem',
-        112: '28rem',
-        88: '22rem',
-        200: '50rem',
-      },
-      minWidth: {
-        48: '12rem',
-        '4xs': defaultSizes['4xs'],
-        xs: defaultSizes.xs,
-        md: defaultSizes.md,
-        lg: defaultSizes.lg,
-        xl: defaultSizes.xl,
-        125: '31.25rem',
-        '30.5': '7.625rem',
-        // percentage based
-        '1/5': '20%',
-      },
-      spacing: {
-        11: '2.625rem  ',
-        13: '3.25rem',
       },
     },
   },
@@ -361,16 +218,6 @@ export default {
           '&::-webkit-scrollbar': {
             display: 'none',
           },
-        },
-        '.visually-hidden': {
-          position: 'absolute',
-          clip: 'rect(1px, 1px, 1px, 1px)',
-          clipPath: 'inset(0 0 99.9% 99.9%)',
-          overflow: 'hidden',
-          height: '1px',
-          width: '1px',
-          padding: '0',
-          border: '0',
         },
         '.transition-discrete': {
           'transition-behavior': 'allow-discrete',

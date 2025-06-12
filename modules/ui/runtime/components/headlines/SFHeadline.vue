@@ -1,40 +1,37 @@
 <template>
-  <SFSkeletonLoader v-if="loading" type="headline" />
   <component
-    v-bind="$attrs"
     :is="tag"
-    v-else
     data-testid="headline"
     class="flex items-center gap-2 leading-tight"
     :class="[
       HeadlineClass[size],
-      isBold ? '!font-bold' : 'font-semibold',
-      { uppercase: isUppercase, 'visually-hidden': hidden },
+      isBold ? 'font-bold' : 'font-semibold',
+      { uppercase: isUppercase },
     ]"
   >
     <slot />
     <slot :badge="badge" name="badge">
-      <SFHeadlineBadge v-if="badge" :badge="badge" />
+      <span
+        v-if="badge"
+        class="rounded-full bg-secondary p-1 px-3 text-sm text-gray-300"
+      >
+        {{ badge }}
+      </span>
     </slot>
   </component>
 </template>
 
 <script setup lang="ts">
 import { HeadlineSize, HeadlineTag } from '#storefront-ui'
-import { SFSkeletonLoader, SFHeadlineBadge } from '#storefront-ui/components'
 
 const {
-  loading = false,
   isUppercase = false,
-  hidden = false,
   badge = 0,
   size = HeadlineSize['2XL'],
   tag = HeadlineTag.P,
   isBold = false,
 } = defineProps<{
-  loading?: boolean
   isUppercase?: boolean
-  hidden?: boolean
   isBold?: boolean
   badge?: number | string
   size?: HeadlineSize
@@ -42,15 +39,11 @@ const {
 }>()
 
 const HeadlineClass = {
-  [HeadlineSize['6XL']]: 'text-6xl',
-  [HeadlineSize['5XL']]: 'text-5xl',
-  [HeadlineSize['4XL']]: 'text-4xl',
   [HeadlineSize['3XL']]: 'text-3xl',
   [HeadlineSize['2XL']]: 'text-2xl',
   [HeadlineSize.XL]: 'text-xl',
   [HeadlineSize.LG]: 'text-lg',
   [HeadlineSize.MD]: 'text-md',
-  [HeadlineSize.BASE]: 'text-base',
   [HeadlineSize.SM]: 'text-sm',
   [HeadlineSize.XS]: 'text-xs',
 } as Record<HeadlineSize, string>

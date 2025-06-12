@@ -11,7 +11,7 @@
       </ul>
       <hr class="mt-8" />
     </div>
-    <div class="divide-y divide-gray-300" :class="{ marginClasses }">
+    <div class="divide-y divide-gray-400" :class="{ marginClasses }">
       <component
         :is="getComponentName(entry.component) ?? 'CMSAccordionEntry'"
         v-for="entry in blok.entries"

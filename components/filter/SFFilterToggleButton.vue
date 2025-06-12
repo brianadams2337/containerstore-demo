@@ -1,6 +1,6 @@
 <template>
   <SFButton
-    class="group relative w-full !justify-start rounded-md border border-black !px-3.5 !py-2 text-base font-semi-bold-variable max-md:h-11 md:w-min md:border-gray-300 md:bg-secondary-200 md:hover:bg-white"
+    class="group relative w-full !justify-start rounded-md border border-black !px-3.5 !py-2 text-md font-semibold max-md:h-11 md:w-min md:border-gray-400 md:bg-gray-100 md:hover:bg-white"
     data-testid="filter-toggle-button"
     size="sm"
     variant="raw"
@@ -12,7 +12,7 @@
     {{ label }}
     <span
       v-if="appliedFiltersCount"
-      class="right-3 inline-flex size-5 items-center justify-center rounded bg-gray-200 text-xs text-gray-500 max-md:absolute max-md:bg-gray-900 max-md:text-white md:size-4"
+      class="right-3 inline-flex size-5 items-center justify-center rounded bg-gray-300 text-xs text-secondary max-md:absolute max-md:bg-primary max-md:text-white md:size-4"
       data-testid="filter-toggle-counter"
     >
       {{ appliedFiltersCount }}

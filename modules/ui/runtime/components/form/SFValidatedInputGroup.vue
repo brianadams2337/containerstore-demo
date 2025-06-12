@@ -6,7 +6,7 @@
         v-if="!isValid"
         aria-live="assertive"
         data-testid="validation-error-text"
-        class="ml-1 mt-1 text-start text-xs font-normal text-status-error"
+        class="ml-1 mt-1 text-start text-sm font-normal text-status-error"
       >
         {{ errorMessages[0] }}
       </p>

@@ -1,7 +1,7 @@
 <template>
   <SFButton
     variant="raw"
-    class="rounded-md p-2 hover:bg-gray-100"
+    class="rounded-md p-2 hover:bg-gray-200"
     data-testid="promotion-header-button"
     :aria-label="
       promotionCount

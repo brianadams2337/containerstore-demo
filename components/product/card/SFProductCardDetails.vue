@@ -15,13 +15,13 @@
       >
         <p
           data-testid="product-card-product-brand"
-          class="mb-2.5 truncate text-base font-semi-bold-variable text-gray-900"
+          class="mb-2.5 truncate text-md font-semibold text-primary"
         >
           {{ brand }}
         </p>
         <p
           data-testid="product-card-product-name"
-          class="truncate text-sm text-gray-600"
+          class="truncate text-sm text-secondary"
         >
           {{ name }}
         </p>

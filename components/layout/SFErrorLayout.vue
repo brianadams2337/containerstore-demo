@@ -7,7 +7,7 @@
 
       <div
         v-if="statusCode"
-        class="!mb-6 rounded-full bg-accent/10 px-3 py-0.5 text-sm font-variable slashed-zero leading-5 text-accent"
+        class="!mb-6 rounded-full bg-accent/10 px-3 py-0.5 text-sm slashed-zero leading-5 text-accent"
         data-testid="error-page-code"
       >
         {{ $t('error.error_code_label') }} {{ statusCode }}
@@ -16,7 +16,7 @@
       <SFHeadline size="3xl" class="text-center">{{ title }}</SFHeadline>
 
       <SFHeadline
-        class="mt-4 text-center !font-normal leading-5 text-gray-600"
+        class="mt-4 text-center !font-normal leading-5 text-secondary"
         size="lg"
         tag="h2"
       >

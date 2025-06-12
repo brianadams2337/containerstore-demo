@@ -10,9 +10,9 @@
       <SFLocalizedLink
         :to="link"
         raw
-        class="flex size-11 items-center justify-center rounded-md p-2 hover:bg-gray-100"
+        class="flex size-11 items-center justify-center rounded-md p-2 hover:bg-gray-200"
         data-testid="header-user-button"
-        :class="{ 'bg-gray-100': isOpen }"
+        :class="{ 'bg-gray-200': isOpen }"
         :aria-label="$t('user_navigation_item.a11y.title')"
         @keydown.space.prevent="isOpen = true"
       >

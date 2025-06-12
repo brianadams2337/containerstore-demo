@@ -1,7 +1,7 @@
 <template>
   <SFButton
     variant="raw"
-    class="flex items-center !gap-1 !p-0 text-base font-semi-bold-variable leading-3.5 text-gray-600"
+    class="flex items-center !gap-1 !p-0 text-md font-semibold leading-4 text-secondary"
     :aria-expanded="visible.toString()"
     @click="visible = !visible"
   >

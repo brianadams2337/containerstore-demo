@@ -7,16 +7,11 @@
     <div
       ref="sliderRef"
       class="flex size-full shrink-0 snap-mandatory scrollbar-hide"
-      :class="[
-        {
-          container,
-          'space-x-4': spacedItems,
-          'snap-y flex-col overflow-x-hidden overflow-y-scroll':
-            mode === 'vertical',
-          'snap-x overflow-x-auto overflow-y-hidden': mode === 'horizontal',
-        },
-        sliderClass,
-      ]"
+      :class="{
+        'snap-y flex-col overflow-x-hidden overflow-y-scroll':
+          mode === 'vertical',
+        'snap-x overflow-x-auto overflow-y-hidden': mode === 'horizontal',
+      }"
       :tabindex="sliderTabindex"
       @scroll.passive="onScroll"
     >
@@ -76,15 +71,10 @@ import { useItemsSlider } from '#storefront-ui'
 import { SFFadeInTransition } from '#storefront-ui/components'
 
 const {
-  container = false,
-  spacedItems = false,
   withArrows = false,
-  sliderClass = '',
   hideDisabledArrows = false,
   mode = 'horizontal',
 } = defineProps<{
-  container?: boolean
-  sliderClass?: string
   spacedItems?: boolean
   withArrows?: boolean
   hideDisabledArrows?: boolean

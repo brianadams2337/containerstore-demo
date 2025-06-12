@@ -4,10 +4,10 @@
     data-testid="display-all-results"
     :to="getSearchRoute(searchTerm)"
     :aria-label="showMoreAriaLabel"
-    class="h-11 rounded transition-all duration-150 hover:right-1 hover:bg-gray-100 hover:px-1.5 focus:bg-gray-100 focus:px-1.5 lg:h-5"
+    class="h-11 rounded transition-all duration-150 hover:right-1 hover:bg-gray-200 hover:px-1.5 focus:bg-gray-200 focus:px-1.5 lg:h-5"
   >
     <span
-      class="text-md font-normal leading-5 text-gray-600 max-lg:py-3 lg:text-base"
+      class="text-md font-normal leading-5 text-secondary max-lg:py-3 lg:text-md"
       v-html="showMoreLabel"
     />
   </SFLocalizedLink>

@@ -1,7 +1,7 @@
 <template>
   <div
     id="shopping-promises"
-    class="border-y border-gray-200 py-8"
+    class="border-y border-gray-300 py-8"
     data-testid="shopping-promises"
   >
     <div

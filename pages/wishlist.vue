@@ -9,13 +9,13 @@
     <div v-else class="container mt-8 max-sm:max-w-none">
       <SFHeadline
         tag="h1"
-        class="mt-1.5 !font-semi-bold-variable text-gray-900 max-sm:text-2xl max-sm:leading-6 sm:mt-0"
+        class="mt-1.5 text-primary max-sm:text-2xl max-sm:leading-6 sm:mt-0"
       >
         {{ $t('wishlist_page.title') }}
         <ClientOnly>
           <SFFadeInTransition v-if="count !== undefined && count > 0" appear>
             <span
-              class="ml-0.5 inline-flex h-4.5 items-center rounded-full bg-gray-900 px-2 text-xs font-semibold leading-4 text-white"
+              class="ml-0.5 inline-flex h-4.5 items-center rounded-full bg-primary px-2 text-xs font-semibold leading-4 text-white"
             >
               {{ count }}
             </span>
@@ -24,7 +24,7 @@
       </SFHeadline>
 
       <div
-        class="mt-8 grid w-auto grid-cols-12 gap-4 xl:max-2xl:grid-cols-10"
+        class="mt-8 grid w-auto grid-cols-12 gap-4 xl:max-xl:grid-cols-10"
         data-testid="wishlist-items-wrapper"
       >
         <SFProductCard
@@ -40,7 +40,7 @@
     </div>
 
     <template #loading>
-      <div class="mt-8 grid w-auto grid-cols-12 gap-4 xl:max-2xl:grid-cols-10">
+      <div class="mt-8 grid w-auto grid-cols-12 gap-4 xl:max-xl:grid-cols-10">
         <SFProductCardSkeleton
           v-for="index in 12"
           :key="`product-loading-${index}`"

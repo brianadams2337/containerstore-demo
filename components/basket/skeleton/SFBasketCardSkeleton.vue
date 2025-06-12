@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex w-full border border-gray-200 p-3 max-lg:border-x-0 max-lg:px-0 lg:first:rounded-t-xl lg:last:rounded-b-xl"
+    class="flex w-full border border-gray-300 p-3 max-lg:border-x-0 max-lg:px-0 lg:first:rounded-t-xl lg:last:rounded-b-xl"
   >
     <div>
       <SFSkeletonLoader type="custom" class="h-48 w-36 shrink-0 rounded-lg" />

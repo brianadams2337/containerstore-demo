@@ -2,7 +2,6 @@ import type { ValuesType } from 'utility-types'
 
 /* intentionally naming the variables the same as the type */
 export const Size = {
-  '4XS': '4xs',
   XS: 'xs',
   SM: 'sm',
   MD: 'md',
@@ -12,15 +11,11 @@ export const Size = {
 
 export type Size = ValuesType<typeof Size>
 export const HeadlineSize = {
-  '6XL': '6xl',
-  '5XL': '5xl',
-  '4XL': '4xl',
   '3XL': '3xl',
   '2XL': '2xl',
   XL: 'xl',
   LG: 'lg',
   MD: 'md',
-  BASE: 'base',
   SM: 'sm',
   XS: 'xs',
 } as const
@@ -53,7 +48,6 @@ export const LinkVariant = {
   LOUD: 'loud',
   NORMAL: 'normal',
   WHISPER: 'whisper',
-  QUIETER: 'quieter',
   QUIET: 'quiet',
 } as const
 
@@ -69,13 +63,6 @@ export const ButtonVariant = {
 } as const
 
 export type ButtonVariant = ValuesType<typeof ButtonVariant>
-
-export const SlideInType = {
-  DEFAULT: 'default',
-  FROM_BOTTOM: 'fromBottom',
-} as const
-
-export type SlideInType = ValuesType<typeof SlideInType>
 
 export const DividerItemTag = {
   LINK: 'SFLink',

@@ -12,7 +12,7 @@
         data-testid="location-store-list-item"
         :class="{
           'border-primary': selectedStoreId === store.id,
-          'border-gray-350': selectedStoreId !== store.id,
+          'border-gray-400': selectedStoreId !== store.id,
         }"
       >
         <SFSlideInStore

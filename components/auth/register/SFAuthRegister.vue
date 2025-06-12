@@ -2,7 +2,7 @@
   <form
     v-if="v"
     ref="registerForm"
-    class="flex flex-col"
+    class="flex flex-col gap-0.5"
     data-testid="register-form"
     @submit.prevent="onSubmit"
     @keydown.enter.prevent="onEnter"
@@ -59,7 +59,7 @@
     <SFValidatedInputGroup
       v-if="!isGuestFlowEnabled"
       v-slot="{ isValid }"
-      class="h-26 sm:h-20"
+      class="h-26 sm:h-22"
       :errors="v.password.$errors"
     >
       <SFPasswordInput
@@ -83,7 +83,7 @@
       >
         {{ $t('auth_register.submit_sign_up') }}
       </SFButton>
-      <span class="text-xs text-gray-500">
+      <span class="text-xs text-secondary">
         {{ $t('auth_register.mandatory_info_legend') }}
       </span>
     </div>
@@ -95,7 +95,7 @@
     :redirects="externalIDPRedirects"
   />
   <p
-    class="text-start text-base text-gray-600"
+    class="text-start text-md text-secondary"
     data-testid="existing-account-label"
     :class="{ 'mt-8': !externalIDPRedirects }"
   >
@@ -103,7 +103,7 @@
     <SFLocalizedLink
       :to="routeList.signin"
       raw
-      class="rounded-md p-1 py-0.5 font-semibold hover:bg-gray-100"
+      class="rounded-md p-1 py-0.5 font-semibold hover:bg-gray-200"
       data-testid="login-page-link"
     >
       {{ $t('auth_register.go_to_login') }} </SFLocalizedLink

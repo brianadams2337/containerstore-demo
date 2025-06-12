@@ -2,7 +2,7 @@
   <section
     ref="root"
     role="search"
-    class="relative z-20 transition-all duration-150 max-lg:flex"
+    class="relative transition-all duration-150 max-lg:flex"
     :class="{
       'max-lg:px-0 lg:max-w-[475px]': hasFocus,
       'max-lg:px-3 lg:max-w-64': !hasFocus,
@@ -18,10 +18,10 @@
     >
       <div
         role="button"
-        class="group flex h-11 cursor-pointer items-center gap-2 overflow-hidden border border-gray-100 px-3 transition-all duration-150 max-lg:grow lg:h-10"
+        class="group flex h-11 cursor-pointer items-center gap-2 overflow-hidden border border-gray-200 px-3 transition-all duration-150 max-lg:grow lg:h-10"
         :class="{
           'bg-white lg:rounded-md': hasFocus,
-          'rounded-md bg-gray-100 pr-8 hover:bg-gray-200': !hasFocus,
+          'rounded-md bg-gray-200 pr-8 hover:bg-gray-300': !hasFocus,
         }"
         :tabindex="hasFocus ? -1 : 0"
         :aria-label="$t('global.search')"
@@ -44,11 +44,11 @@
             :tabindex="hasFocus ? 0 : -1"
             type="search"
             :placeholder="$t('search_input.placeholder')"
-            class="min-w-0 grow bg-gray-100 transition-colors placeholder-shown:truncate focus-visible:shadow-none focus-visible:outline-none"
+            class="min-w-0 grow bg-gray-200 transition-colors placeholder:text-gray-500 placeholder-shown:truncate focus-visible:shadow-none focus-visible:outline-none"
             data-testid="header-search-input"
             :class="{
               'bg-white ': hasFocus,
-              'group-hover:bg-gray-200': !hasFocus,
+              'group-hover:bg-gray-300': !hasFocus,
             }"
             :aria-placeholder="$t('global.search')"
           />
@@ -57,7 +57,7 @@
           ref="resetButton"
           type="reset"
           variant="raw"
-          class="h-6 rounded px-1.5 py-1 text-sm leading-5 text-gray-600 transition duration-150 hover:bg-gray-100 focus:bg-gray-100 focus:px-1.5"
+          class="h-6 rounded px-1.5 py-1 text-sm leading-5 text-secondary transition duration-150 hover:bg-gray-200 focus:bg-gray-200 focus:px-1.5"
           data-testid="search-reset-button"
           :class="{ hidden: !hasFocus }"
           @click.stop="resetSearch"
