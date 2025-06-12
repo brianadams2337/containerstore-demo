@@ -608,13 +608,13 @@ export default defineNuxtConfig({
       return {}
     }
 
-    // Vercel deployments have a different caching set-up
-    // There we use cache headers plus Incremental Static Regeneration (ISR)
-    // https://vercel.com/docs/incremental-static-regeneration
-    // For other environments we set the cache headers and also rely on the Nitro page cache
+    // ISR currently leads to some bugs in the Nitro caching implementation
+    // On server-side, the query params are not passed.
+    // Thats why some pages will have hydration errors on initially set query params in the URL.
+    // https://github.com/nitrojs/nitro/issues/1880
     const CACHE_PAGE: NitroRouteConfig = isVercel
       ? {
-          isr: true,
+          isr: false,
           cache: {
             maxAge: 10 * 60, // Default: 10min
             staleMaxAge: 10 * 60, // Default: 10min
