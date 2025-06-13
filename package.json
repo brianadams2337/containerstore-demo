@@ -112,7 +112,7 @@
     "@scayle/storefront-navigation": "0.3.0",
     "@scayle/storefront-nuxt": "8.28.7",
     "@scayle/storefront-product-detail": "1.4.2",
-    "@scayle/storefront-product-listing": "1.6.2",
+    "@scayle/storefront-product-listing": "1.6.3",
     "@scayle/storefront-promotions": "2.2.0",
     "@scayle/storefront-search": "0.3.0",
     "@scayle/unstorage-compression-driver": "1.0.0",
