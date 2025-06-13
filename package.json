@@ -166,7 +166,7 @@
     "node": "22.16.0"
   },
   "resolutions": {
-    "import-in-the-middle": "1.14.0",
+    "import-in-the-middle": "1.14.2",
     "unicorn-magic": "0.2.0",
     "vue": "3.5.16",
     "@vue/compiler-dom": "3.5.16",
