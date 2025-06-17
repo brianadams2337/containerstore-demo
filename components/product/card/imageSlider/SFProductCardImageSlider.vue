@@ -13,6 +13,7 @@
         :disabled="!isPrevEnabled"
         direction="left"
         translate-on-hover
+        data-testid="image-slider-prev-button"
         @click="prev()"
       />
     </template>
@@ -23,6 +24,7 @@
         :disabled="!isNextEnabled"
         direction="right"
         translate-on-hover
+        data-testid="image-slider-next-button"
         @click="next()"
       />
     </template>

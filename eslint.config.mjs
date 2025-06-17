@@ -1,6 +1,7 @@
 import eslintConfigStorefront from '@scayle/eslint-config-storefront'
 import tailwind from 'eslint-plugin-tailwindcss'
 import pluginVueA11y from 'eslint-plugin-vuejs-accessibility'
+import storybook from 'eslint-plugin-storybook'
 // Workaround for flat config not being supported yet by eslint-plugin-tailwindcss
 // https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/280
 import { FlatCompat } from '@eslint/eslintrc'
@@ -45,6 +46,9 @@ export default withNuxt(
         },
       },
     },
+    // https://github.com/storybookjs/eslint-plugin-storybook
+    // This plugin will only be applied to files following the .stories. or .story. pattern.
+    ...storybook.configs['flat/recommended'],
   ],
   [
     // https://vue-a11y.github.io/eslint-plugin-vuejs-accessibility/rule-overview/

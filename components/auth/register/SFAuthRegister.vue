@@ -137,6 +137,7 @@ defineProps<{ externalIDPRedirects?: Record<string, string> }>()
 
 const isGuestFlowEnabled = ref(false)
 
+// eslint-disable-next-line sonarjs/no-hardcoded-passwords
 const PASSWORD_FIELD_NAME = 'register-password'
 
 const { register, isSubmitting, guestLogin, errorMessage } = useAuthentication(

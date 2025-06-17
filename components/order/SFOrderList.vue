@@ -39,7 +39,16 @@ const ORDERS_PER_PAGE = 8
 
 const route = useRoute()
 
-const { items, count } = defineProps<{ items: OrderSummary[]; count: number }>()
+const { items, count } = defineProps<{
+  /**
+   * Array of order objects containing order details like ID, date, status, and item count.
+   */
+  items: OrderSummary[]
+  /**
+   * Total number of orders available. Used for pagination calculations.
+   */
+  count: number
+}>()
 
 const currentPage = computed(() => Number(route.query.page) || 1)
 

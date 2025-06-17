@@ -76,6 +76,7 @@ package-lock.json
 .nuxt-storybook
 storybook-static
 /static/storybook
+/public/storybook
 
 # https
 *.pub.key
@@ -96,3 +97,5 @@ storybook-static
 
 #Scayle CLI
 .scayle
+
+*storybook.log

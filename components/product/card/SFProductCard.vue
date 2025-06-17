@@ -93,10 +93,25 @@ const {
   multipleImages = false,
   hideBadges = false,
 } = defineProps<{
+  /**
+   * The product object containing all product details including images, pricing, and attributes.
+   */
   product: Product
+  /**
+   * The index of the product.
+   */
   index?: number
+  /**
+   * Enables multiple image support with hover interaction. When true, users can hover to see additional product images.
+   */
   multipleImages?: boolean
+  /**
+   * The metadata for the product.
+   */
   listingMetaData?: ListItem
+  /**
+   * Whether to hide the badges.
+   */
   hideBadges?: boolean
 }>()
 

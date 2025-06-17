@@ -467,6 +467,7 @@ describe('useAuthentication', () => {
   })
 
   describe('forgotPassword', () => {
+    // eslint-disable-next-line sonarjs/no-hardcoded-passwords
     const forgotPasswordEvent = 'forgot_password'
     it('should successfully initiate forgot password flow', async () => {
       useUser.mockReturnValue({
@@ -530,6 +531,7 @@ describe('useAuthentication', () => {
   })
 
   describe('resetPasswordByHash', () => {
+    // eslint-disable-next-line sonarjs/no-hardcoded-passwords
     const resetPasswordEvent = 'reset_password'
     const resetPasswordPayload = {
       hash: '55c3818fbd3d162afff6425118a55099bbf6e8f7c8923fb791e32598abb5cd55',

@@ -58,11 +58,29 @@ const {
   fab = false,
   to,
 } = defineProps<{
+  /**
+   * Determines the visual style and emphasis of the button. Primary is used for main actions, while other variants provide different levels of emphasis.
+   */
   variant?: ButtonVariant
+  /**
+   * Controls the button's dimensions and padding.
+   */
   size?: Size
+  /**
+   * When provided, the button behaves as a router link. Useful for navigation actions within the application.
+   */
   to?: RouteLocationRaw
+  /**
+   * Whether the button is a fab.
+   */
   fab?: boolean
+  /**
+   * Whether the button is full width.
+   */
   isFullWidth?: boolean
+  /**
+   * Shows a loading spinner and disables the button. Use during async operations to prevent multiple submissions.
+   */
   loading?: boolean
 }>()
 

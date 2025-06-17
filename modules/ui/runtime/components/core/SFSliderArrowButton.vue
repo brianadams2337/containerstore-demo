@@ -18,9 +18,22 @@ import { computed } from 'vue'
 import { IconChevronLeft, IconChevronRight } from '#components'
 
 const { direction, invertedRadius = false } = defineProps<{
+  /**
+   * Disables the button when navigation is not possible (e.g., at the start or end of a slider).
+   * @default false
+   */
   disabled: boolean
+  /**
+   * Determines the arrow direction. Use "left" for previous navigation and "right" for next navigation..
+   */
   direction: 'left' | 'right'
+  /**
+   * Applies an inverted border radius style. Useful for buttons that need to align with specific container shapes.
+   */
   invertedRadius?: boolean
+  /**
+   * Enables a translation effect on hover. Adds a subtle movement to improve user interaction feedback.
+   */
   translateOnHover?: boolean
 }>()
 

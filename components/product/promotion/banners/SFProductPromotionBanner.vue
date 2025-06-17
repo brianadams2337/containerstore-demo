@@ -63,7 +63,13 @@ import { SFSkeletonLoader, SFFadeInTransition } from '#storefront-ui/components'
 import { useTrackingEvents, usePromotionCustomData } from '~/composables'
 
 const { promotion, showCondition = false } = defineProps<{
+  /**
+   * The promotion object containing all details about the offer, including type, conditions, and custom data.
+   */
   promotion: Promotion
+  /**
+   * Controls the visibility of promotion conditions.
+   */
   showCondition?: boolean
 }>()
 

@@ -437,6 +437,7 @@ export default defineNuxtConfig({
     '@scayle/storefront-basket',
     '@scayle/storefront-navigation',
     '@scayle/nuxt-image-provider',
+    '@nuxtjs/storybook',
   ],
 
   // Storefront CMS Module (local)
