@@ -3775,16 +3775,15 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@scayle/eslint-config-storefront@4.5.7":
-  version "4.5.7"
-  resolved "https://registry.yarnpkg.com/@scayle/eslint-config-storefront/-/eslint-config-storefront-4.5.7.tgz#1509e4cd23ab6b78345b644feba11b3c3d3b5a32"
-  integrity sha512-krS/VS0e4Z6HLWaWAN4GzeDxOI+lH4X1tdz3W1r3LZKB84kA9ClbqAs1NX+cj3UejeNEDAmawebm6zTuZVwxrg==
+"@scayle/eslint-config-storefront@4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@scayle/eslint-config-storefront/-/eslint-config-storefront-4.5.9.tgz#452601e5f8886618d2f8f3ac56a9226eac8c49d7"
+  integrity sha512-pwKjWW8f9PBBzpdV3mb7SRpc+cGSaNV445uRPWsbROLmwb/YrXPyZhvHP0XTbbUBHeRGHYisYQuZUkCka7VPKg==
   dependencies:
     "@antfu/eslint-config" "^4.0.0"
     "@eslint/eslintrc" "^3.2.0"
     eslint-config-flat-gitignore "^2.0.0"
     eslint-flat-config-utils "^2.0.0"
-    eslint-plugin-import-x "^4.15.2"
     eslint-plugin-no-unsanitized "^4.1.2"
     eslint-plugin-promise "^7.2.1"
     eslint-plugin-sonarjs "^3.0.1"
@@ -3860,10 +3859,10 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-basket/-/storefront-basket-0.3.0.tgz#a77d08f2ac0946d0a42a81f7d4fe68324a6afe3b"
   integrity sha512-XV7a/nygUpq5GPOOr5GRQ2+akmGrCjSuKsW5yN7YS9MWn7GOJzhSDPhN6Lhiw3arAWYFrMXu2RMeaWF64HAt2A==
 
-"@scayle/storefront-core@8.30.1":
-  version "8.30.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-8.30.1.tgz#4284383b0a1552a171ea6c1fb4c11f8acc67a1f2"
-  integrity sha512-Ao2q+o/MTmjjNl/YoIX9euRvXWVQpEwxLFY2DrCJjR5d/FXsI7s/MtrUc/8SIuNJkVoxoMH6BEE6QRx9rj0Stg==
+"@scayle/storefront-core@8.30.2":
+  version "8.30.2"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-core/-/storefront-core-8.30.2.tgz#98f8f664abf60eccf18fd9491a5314b3b3776060"
+  integrity sha512-nPhSCRK2eP0aJSoYUKcpErkIGaaakPyRVZLBKJXxYSsq7asIyZri0RhNlUA+4MMXUp+wv0+3SPQ+MxbJpaEtGA==
   dependencies:
     "@scayle/storefront-api" "18.9.0"
     "@scayle/unstorage-scayle-kv-driver" "1.0.2"
@@ -3885,14 +3884,14 @@
   resolved "https://registry.yarnpkg.com/@scayle/storefront-navigation/-/storefront-navigation-0.3.0.tgz#0ea9261fbb8dd5fd69d8bc5787c126bb0b927e17"
   integrity sha512-cSBEibsw2DxlpLoyKSdUqfCOjnNbjule3o7dy4wurggwhzTcZ6PmUx+i7rdSTV77OcqzVO/8e0VcYHFtdh6Vhw==
 
-"@scayle/storefront-nuxt@8.30.1":
-  version "8.30.1"
-  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.30.1.tgz#a39315ae3c33dcd2c0a3db02f991c34e64fd18c9"
-  integrity sha512-u+DPua5Q5Kb2yN7QR/WcQsTYZ4E7DJ1jMF/NdhaM2JBf8NFEmYwQimBl0qBK/csMs5gYs93gMDOkMx2i9NklNg==
+"@scayle/storefront-nuxt@8.30.2":
+  version "8.30.2"
+  resolved "https://registry.yarnpkg.com/@scayle/storefront-nuxt/-/storefront-nuxt-8.30.2.tgz#5dbc28e400eac6396fbd50285587e79e4eac9c12"
+  integrity sha512-94vAyLPmMJpnyy3OgjPJphGNMJpJKBfGzkR+ige6tdzkyiqUaWyehBd1kP8fB8hZdeonolj5+ae2beuZVj+hMw==
   dependencies:
     "@opentelemetry/api" "^1.9.0"
     "@scayle/h3-session" "0.6.1"
-    "@scayle/storefront-core" "8.30.1"
+    "@scayle/storefront-core" "8.30.2"
     "@scayle/unstorage-compression-driver" "^1.0.0"
     "@vercel/nft" "0.29.4"
     "@vueuse/core" "13.3.0"
@@ -8149,7 +8148,7 @@ eslint-plugin-es-x@^7.8.0:
     "@eslint-community/regexpp" "^4.11.0"
     eslint-compat-utils "^0.5.1"
 
-eslint-plugin-import-x@^4.12.2, eslint-plugin-import-x@^4.15.2:
+eslint-plugin-import-x@^4.12.2:
   version "4.15.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import-x/-/eslint-plugin-import-x-4.15.2.tgz#9d0728736d6dc88ead54397c931159dc138af206"
   integrity sha512-J5gx7sN6DTm0LRT//eP3rVVQ2Yi4hrX0B+DbWxa5er8PZ6JjLo9GUBwogIFvEDdwJaSqZplpQT+haK/cXhb7VQ==
