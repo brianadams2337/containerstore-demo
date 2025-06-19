@@ -7,12 +7,12 @@
     "test": "tests"
   },
   "dependencies": {
-    "playwright": "1.53.0",
-    "playwright-core": "1.53.0",
+    "playwright": "1.53.1",
+    "playwright-core": "1.53.1",
     "undici-types": "7.10.0"
   },
   "devDependencies": {
-    "@playwright/test": "1.53.0",
+    "@playwright/test": "1.53.1",
     "@scayle/eslint-config-storefront": "4.5.7",
     "@types/node": "22.15.32",
     "dotenv": "16.5.0",
