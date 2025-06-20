@@ -4,10 +4,18 @@
     v-element-visibility="onVisible"
     v-editable="blok"
     provider="storyblok"
-    class="picture h-full bg-gray-300"
+    class="bg-gray-300"
     :preload="preload"
     :sizes="sizes"
-    :class="isCover ? 'picture-cover' : 'picture-contain'"
+    :img-attrs="{
+      class: [
+        'w-full h-full',
+        {
+          'object-contain': !isCover,
+          'object-cover object-center': isCover,
+        },
+      ],
+    }"
     :src="imageSource?.src"
   />
 </template>

@@ -13,7 +13,7 @@
         v-for="(productThumbnail, index) in images"
         :key="productThumbnail.hash"
         :data-testid="`product-thumbnail-${index}`"
-        class="my-2 aspect-3/4 w-24 shrink-0 cursor-pointer overflow-hidden rounded-md bg-gray-100 first:mt-0 last:mb-0"
+        class="my-2 w-24 shrink-0 cursor-pointer overflow-hidden rounded-md bg-gray-100 first:mt-0 last:mb-0"
         :class="index === activeSlide ? 'bg-primary/10' : 'bg-gray-100'"
         tabindex="-1"
         @mouseenter="scrollImageIntoView(index)"

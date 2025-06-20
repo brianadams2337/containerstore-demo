@@ -18,7 +18,7 @@
               v-for="i in 4"
               :key="i"
               type="custom"
-              class="my-2 aspect-3/4 w-24 shrink-0 cursor-pointer overflow-hidden rounded-md first:mt-0 last:mb-0"
+              class="my-2 aspect-product w-24 shrink-0 cursor-pointer overflow-hidden rounded-md first:mt-0 last:mb-0"
             />
           </div>
           <!-- Main image -->
@@ -26,7 +26,7 @@
             <SFSkeletonLoader
               ref="image"
               type="custom"
-              class="aspect-3/4 min-w-full self-start overflow-hidden md:rounded-md"
+              class="aspect-product min-w-full self-start overflow-hidden md:rounded-md"
             />
           </div>
         </div>

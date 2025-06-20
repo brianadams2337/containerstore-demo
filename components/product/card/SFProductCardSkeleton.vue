@@ -2,7 +2,7 @@
   <div class="col-span-6 mb-5 w-full lg:col-span-4 xl:col-span-3">
     <SFSkeletonLoader
       type="custom"
-      class="mb-2 aspect-3/4 rounded-lg bg-gray-300 md:mb-3"
+      class="mb-2 aspect-product rounded-lg bg-gray-300 md:mb-3"
     />
 
     <SFSkeletonLoader type="custom" class="mb-3 size-12 rounded-md md:hidden" />

@@ -5,8 +5,9 @@
     class="size-full !max-h-screen !max-w-screen !p-0"
     @close="$emit('close')"
   >
+    <!-- NOTE: The tailwind class `aspect-product` is defined via the `tailwind.config.ts` and uses the `PRODUCT_IMAGE_ASPECT_RATIO` value from `config/ui.ts`. -->
     <div
-      class="h-dvh overflow-hidden max-md:my-auto max-md:bg-gray-100 md:mx-auto md:aspect-3/4"
+      class="h-dvh overflow-hidden max-md:my-auto max-md:bg-gray-100 md:mx-auto md:aspect-product"
     >
       <SFItemsSlider
         ref="slider"

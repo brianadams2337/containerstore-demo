@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="relative shrink-0 overflow-hidden rounded-lg bg-gray-100"
-    :class="isSmallSize ? 'w-28 h-36' : 'h-48 w-36'"
-  >
+  <div class="relative shrink-0 overflow-hidden rounded-lg bg-gray-100">
     <SFLocalizedLink v-if="link" :to="link" raw tabindex="-1">
       <SFProductImage
         v-if="image"
@@ -10,10 +7,10 @@
         :alt="alt"
         :sizes="isSmallSize ? '112px' : '144px'"
         class="overflow-hidden rounded-lg"
-        :class="[
-          { 'opacity-60': isSoldOut },
-          isSmallSize ? 'h-36 w-28' : 'h-48 w-36',
-        ]"
+        :class="[{ 'opacity-60': isSoldOut }]"
+        :aspect-ratio="
+          BASKET_IMAGE_ASPECT_RATIO[isSmallSize ? 'SMALL' : 'REGULAR']
+        "
       />
       <SFPromotionBadge
         v-if="basketItem.promotion"
@@ -39,6 +36,7 @@ import SFProductImage from '~/components/product/SFProductImage.vue'
 import SFWishlistToggle from '~/components/product/SFWishlistToggle.vue'
 import { useProductBaseInfo } from '~/composables'
 import { getPromotionStyle } from '~/utils'
+import { BASKET_IMAGE_ASPECT_RATIO } from '~/config/ui'
 
 const {
   basketItem,

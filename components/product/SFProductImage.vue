@@ -12,10 +12,17 @@
     :preload="preload"
     :aspect-ratio="aspectRatio"
     :class="{
-      'picture-contain': fit === 'contain',
-      'picture-cover': fit === 'cover',
       'm-auto h-[90%]': isCentered,
       'mix-blend-darken': withMixBlendDarken,
+    }"
+    :img-attrs="{
+      class: [
+        'w-full h-full',
+        {
+          'object-contain': fit === 'contain',
+          'object-cover object-center': fit === 'cover',
+        },
+      ],
     }"
     data-testid="product-image"
     class="picture block"
@@ -26,6 +33,7 @@
 <script setup lang="ts">
 import type { ProductImage } from '@scayle/storefront-nuxt'
 import { ScaylePicture } from '#components'
+import { PRODUCT_IMAGE_ASPECT_RATIO } from '~/config/ui'
 
 const {
   sizes = '',
@@ -36,7 +44,7 @@ const {
   imageLoading = 'eager',
   preload = false,
   quality = 75,
-  aspectRatio = [3, 4],
+  aspectRatio = PRODUCT_IMAGE_ASPECT_RATIO,
   load = () => {},
 } = defineProps<{
   image: ProductImage
@@ -55,19 +63,3 @@ const {
   aspectRatio?: [number, number]
 }>()
 </script>
-
-<style>
-.picture img {
-  height: 100%;
-  width: 100%;
-}
-
-.picture-contain img {
-  object-fit: contain;
-}
-
-.picture-cover img {
-  object-fit: cover;
-  object-position: center top;
-}
-</style>

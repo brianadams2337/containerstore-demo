@@ -1,5 +1,5 @@
 import plugin from 'tailwindcss/plugin'
-import breakpoints from './config/breakpoints'
+import { BREAKPOINTS, PRODUCT_IMAGE_ASPECT_RATIO } from './config/ui'
 
 const defaultSizes = {
   '6xs': '2rem',
@@ -14,9 +14,9 @@ const defaultSizes = {
   '2xl': '40rem',
   '3xl': '48rem',
 }
-type Breakpoints = keyof typeof breakpoints
+type Breakpoints = keyof typeof BREAKPOINTS
 
-const screens = Object.entries(breakpoints).reduce(
+const screens = Object.entries(BREAKPOINTS).reduce(
   (acc, [breakpointName, size]) => {
     Object.assign(acc, { [breakpointName]: `${size}px` })
     return acc
@@ -84,6 +84,7 @@ export default {
       '3/4': '3 / 4',
       '9/4': '9 / 4',
       square: '1/1',
+      product: PRODUCT_IMAGE_ASPECT_RATIO.join('/'),
     },
     fontWeight: {
       normal: '400',

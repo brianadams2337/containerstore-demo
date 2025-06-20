@@ -19,7 +19,7 @@
       <SFLink
         v-for="(sibling, index) in siblings"
         :key="sibling.id"
-        class="relative size-20 shrink-0 rounded-xl border-2 p-2 transition-all supports-hover:hover:border-black md:size-16"
+        class="relative size-20 shrink-0 rounded-xl border-2 transition-all supports-hover:hover:border-black md:size-16"
         :class="{
           'pointer-events-none': sibling.isSoldOut || sibling.id === product.id,
           'border-transparent': sibling.id !== product.id && !sibling.isSoldOut,

@@ -6,7 +6,7 @@ import { defaultSvgoConfig } from 'nuxt-svgo'
 import * as customRpcMethods from './rpcMethods'
 import withParams from './constants/withParams'
 import { shops } from './config/shops'
-import breakpoints from './config/breakpoints'
+import { BREAKPOINTS } from './config/ui'
 import { stringToBoolean } from './utils/boolean'
 
 declare module '@nuxt/schema' {
@@ -464,11 +464,11 @@ export default defineNuxtConfig({
 
   'storefront-ui': {
     breakpoints: {
-      xs: breakpoints.xs,
-      sm: breakpoints.sm,
-      md: breakpoints.md,
-      lg: breakpoints.lg,
-      xl: breakpoints.xl,
+      xs: BREAKPOINTS.xs,
+      sm: BREAKPOINTS.sm,
+      md: BREAKPOINTS.md,
+      lg: BREAKPOINTS.lg,
+      xl: BREAKPOINTS.xl,
     },
   },
 
@@ -510,7 +510,7 @@ export default defineNuxtConfig({
       },
     },
     screens: {
-      ...breakpoints,
+      ...BREAKPOINTS,
     },
   },
 

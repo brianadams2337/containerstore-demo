@@ -6,7 +6,6 @@
       :alt="alt"
       :preload="preload"
       sizes="xs:50vw sm:50vw md:40vw lg:33vw xl:320px"
-      class="absolute inset-0"
     />
   </SFLocalizedLink>
 </template>

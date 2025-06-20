@@ -3,12 +3,20 @@
     v-if="blok && imageSource.src"
     v-element-visibility="onVisible"
     provider="contentful"
-    class="picture h-full bg-gray-300"
-    :class="isCover ? 'picture-cover' : 'picture-contain'"
+    class="h-full bg-gray-300"
     :sizes="sizes"
     :src="imageSource.src"
     :preload="preload"
     :alt="imageSource.alt"
+    :img-attrs="{
+      class: [
+        'w-full h-full',
+        {
+          'object-contain': !isCover,
+          'object-cover object-center': isCover,
+        },
+      ],
+    }"
   />
 </template>
 
