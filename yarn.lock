@@ -14837,6 +14837,11 @@ storyblok-js-client@7.0.0:
   resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-7.0.0.tgz#b0d0bface4868cd7497d535bc6a8bf187a8fb85b"
   integrity sha512-00zWW3jscL4W1kek9QCrInq1jw4xwjeM0jXuKg4sa/bCT8QuLGaGU9Wn3hat/hkvZLRFC09fV4sJRxDqwsFaKQ==
 
+storyblok-js-client@7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-7.0.1.tgz#9a8cdc599412d0271471b3ba5564c321ef236982"
+  integrity sha512-U3qB7+MpKfWG7w7BD7nbdLz3JH985Q/sAxb4lVPZMRB9P5mW0lQelbLdehgQQVcaiNEy/3Oi9iQKojIPr0nEsg==
+
 storyblok@3.36.1:
   version "3.36.1"
   resolved "https://registry.yarnpkg.com/storyblok/-/storyblok-3.36.1.tgz#ad4ed0ba312285c480e08c84918d6b3253c25204"
