@@ -115,7 +115,7 @@
     "vue-tsc": "2.2.10"
   },
   "dependencies": {
-    "@contentful/live-preview": "4.6.22",
+    "@contentful/live-preview": "4.6.23",
     "@contentful/rich-text-html-renderer": "17.0.1",
     "@googlemaps/js-api-loader": "1.16.8",
     "@nuxt/fonts": "0.11.4",
