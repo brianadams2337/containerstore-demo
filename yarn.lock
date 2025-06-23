@@ -3775,10 +3775,10 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@scayle/eslint-config-storefront@4.5.9":
-  version "4.5.9"
-  resolved "https://registry.yarnpkg.com/@scayle/eslint-config-storefront/-/eslint-config-storefront-4.5.9.tgz#452601e5f8886618d2f8f3ac56a9226eac8c49d7"
-  integrity sha512-pwKjWW8f9PBBzpdV3mb7SRpc+cGSaNV445uRPWsbROLmwb/YrXPyZhvHP0XTbbUBHeRGHYisYQuZUkCka7VPKg==
+"@scayle/eslint-config-storefront@4.5.10":
+  version "4.5.10"
+  resolved "https://registry.yarnpkg.com/@scayle/eslint-config-storefront/-/eslint-config-storefront-4.5.10.tgz#a4656fc84c13524dcf7b6824066ff27f0b1ac38c"
+  integrity sha512-tcbAqrHK5m7yuTauj9EI+CMsbfFE9bQyj/ylsmui9AZhLWWCx4P53+pXGqQ7O5bZ+a2YzLNBKiHq2Ne/PZZKSA==
   dependencies:
     "@antfu/eslint-config" "^4.0.0"
     "@eslint/eslintrc" "^3.2.0"
