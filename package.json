@@ -187,7 +187,7 @@
       "@vue/compiler-sfc": "3.5.17",
       "@vue/compiler-ssr": "3.5.17",
       "@vue/shared": "3.5.17",
-      "esbuild": "0.25.3",
+      "esbuild": "0.25.5",
       "globals": "16.2.0",
       "import-in-the-middle": "1.14.2",
       "unicorn-magic": "0.2.0",
