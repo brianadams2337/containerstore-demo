@@ -575,17 +575,6 @@
     "day_of_month_selection_caption": "Varje {dayOfMonth} i månaden",
     "term": "Period"
   },
-  "order_detail_product_subscription": {
-    "interval_keys": {
-      "1_months_1": "1 månad",
-      "2_months": "2 månader",
-      "3_months": "3 månader"
-    },
-    "delivery_keys": {
-      "1": "Varje den 1:a i månaden",
-      "15": "Varje 15:e i månaden"
-    }
-  },
   "image_slider": {
     "a11ly": {
       "go_to_previous_image": "Föregående bild",

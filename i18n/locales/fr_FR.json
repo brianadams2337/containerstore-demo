@@ -575,17 +575,6 @@
     "day_of_month_selection_caption": "Chaque {dayOfMonth} du mois",
     "term": "Terme"
   },
-  "order_detail_product_subscription": {
-    "interval_keys": {
-      "1_months_1": "1 mois",
-      "2_months": "2 mois",
-      "3_months": "3 mois"
-    },
-    "delivery_keys": {
-      "1": "Chaque 1er du mois",
-      "15": "Tous les 15 du mois"
-    }
-  },
   "image_slider": {
     "a11ly": {
       "go_to_previous_image": "Image précédente",

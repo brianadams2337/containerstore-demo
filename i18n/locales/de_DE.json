@@ -575,17 +575,6 @@
     "day_of_month_selection_caption": "Jeden {dayOfMonth} des Monats",
     "term": "Begriff"
   },
-  "order_detail_product_subscription": {
-    "interval_keys": {
-      "1_months_1": "1 Monat",
-      "2_months": "2 Monate",
-      "3_months": "3 Monate"
-    },
-    "delivery_keys": {
-      "1": "Jeden 1. des Monats",
-      "15": "Jeden 15. des Monats"
-    }
-  },
   "image_slider": {
     "a11ly": {
       "go_to_previous_image": "Vorheriges Bild",

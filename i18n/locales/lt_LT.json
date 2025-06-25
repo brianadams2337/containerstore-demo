@@ -575,17 +575,6 @@
     "day_of_month_selection_caption": "Kiekvieną {dayOfMonth} mėnesio dieną",
     "term": "Terminas"
   },
-  "order_detail_product_subscription": {
-    "interval_keys": {
-      "1_months_1": "1 mėnuo",
-      "2_months": "2 mėnesiai",
-      "3_months": "3 mėnesiai"
-    },
-    "delivery_keys": {
-      "1": "Kiekvieno mėnesio 1 d.",
-      "15": "Kiekvieno mėnesio 15 d."
-    }
-  },
   "image_slider": {
     "a11ly": {
       "go_to_previous_image": "Ankstesnis vaizdas",

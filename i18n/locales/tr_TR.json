@@ -575,17 +575,6 @@
     "day_of_month_selection_caption": "Ayın her günü {dayOfMonth}",
     "term": "Dönem"
   },
-  "order_detail_product_subscription": {
-    "interval_keys": {
-      "1_months_1": "1 ay",
-      "2_months": "2 ay",
-      "3_months": "3 ay"
-    },
-    "delivery_keys": {
-      "1": "Her ayın 1'inde",
-      "15": "Her ayın 15'inde"
-    }
-  },
   "image_slider": {
     "a11ly": {
       "go_to_previous_image": "Önceki resim",

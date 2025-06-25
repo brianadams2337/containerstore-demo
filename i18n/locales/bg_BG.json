@@ -575,17 +575,6 @@
     "day_of_month_selection_caption": "Всеки {dayOfMonth} от месеца",
     "term": "Срок"
   },
-  "order_detail_product_subscription": {
-    "interval_keys": {
-      "1_months_1": "1 месец",
-      "2_months": "2 месеца",
-      "3_months": "3 месеца"
-    },
-    "delivery_keys": {
-      "1": "Всяко 1-во число на месеца",
-      "15": "Всеки 15-ти ден от месеца"
-    }
-  },
   "image_slider": {
     "a11ly": {
       "go_to_previous_image": "Предишно изображение",

@@ -575,17 +575,6 @@
     "day_of_month_selection_caption": "Každý {dayOfMonth} den v měsíci",
     "term": "Termín"
   },
-  "order_detail_product_subscription": {
-    "interval_keys": {
-      "1_months_1": "1 měsíc",
-      "2_months": "2 měsíce",
-      "3_months": "3 měsíce"
-    },
-    "delivery_keys": {
-      "1": "Každého 1. dne v měsíci",
-      "15": "Každého 15. dne v měsíci"
-    }
-  },
   "image_slider": {
     "a11ly": {
       "go_to_previous_image": "Předchozí obrázek",

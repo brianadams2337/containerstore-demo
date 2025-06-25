@@ -575,17 +575,6 @@
     "day_of_month_selection_caption": "Iga kuu {dayOfMonth}",
     "term": "Termin"
   },
-  "order_detail_product_subscription": {
-    "interval_keys": {
-      "1_months_1": "1 kuu",
-      "2_months": "2 kuud",
-      "3_months": "3 kuud"
-    },
-    "delivery_keys": {
-      "1": "Iga kuu 1. kuupäev",
-      "15": "Iga kuu 15. kuupäev"
-    }
-  },
   "image_slider": {
     "a11ly": {
       "go_to_previous_image": "Eelmine pilt",

@@ -6,20 +6,8 @@
       class="grid grid-cols-1"
     >
       <ul v-if="items.length" class="mb-3 flex flex-col gap-3 divide-y *:pt-3">
-        <li
-          v-for="{ variant, product, price, id, customData } in items"
-          :key="id"
-          class="pt-3"
-        >
-          <SFOrderDetailProductCard
-            v-if="product?.advancedAttributes && variant"
-            :variant="variant"
-            :product="product"
-            :price="price"
-            :subscription="
-              customData?.subscriptionDefinition as Record<string, string>
-            "
-          />
+        <li v-for="item in items" :key="item.id" class="pt-3">
+          <SFOrderDetailProductCard :order-item="item" />
         </li>
       </ul>
     </div>

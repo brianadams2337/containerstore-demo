@@ -575,17 +575,6 @@
     "day_of_month_selection_caption": "Kuukauden {dayOfMonth}. päivänä",
     "term": "Ehto"
   },
-  "order_detail_product_subscription": {
-    "interval_keys": {
-      "1_months_1": "1 kuukausi",
-      "2_months": "2 kuukautta",
-      "3_months": "3 kuukautta"
-    },
-    "delivery_keys": {
-      "1": "Joka kuukauden 1. päivä",
-      "15": "Joka kuukauden 15. päivä"
-    }
-  },
   "image_slider": {
     "a11ly": {
       "go_to_previous_image": "Edellinen kuva",

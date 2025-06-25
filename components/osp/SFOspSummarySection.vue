@@ -27,19 +27,12 @@
             v-if="items.length"
             class="mb-3 flex flex-col gap-3 divide-y *:pt-3"
           >
-            <li
-              v-for="{ variant, product, price, id, customData } in items"
-              :key="id"
-              class="pt-3"
-            >
+            <li v-for="orderItem in items" :key="orderItem.id" class="pt-3">
               <SFOrderDetailProductCard
-                v-if="product?.advancedAttributes && variant"
-                :variant="variant"
-                :product="product"
-                :price="price"
-                :subscription="
-                  customData?.subscriptionDefinition as Record<string, string>
+                v-if="
+                  orderItem.product?.advancedAttributes && orderItem.variant
                 "
+                :order-item="orderItem"
               />
             </li>
           </ul>

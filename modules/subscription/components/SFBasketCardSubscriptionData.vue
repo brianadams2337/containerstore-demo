@@ -34,10 +34,10 @@
 
 <script setup lang="ts">
 import type { BasketItem } from '@scayle/storefront-nuxt'
-import useBasketSubscription from '../composables/useBasketSubscription'
+import useSubscriptionAttributes from '../composables/useSubscriptionAttributes'
 
 const { basketItem } = defineProps<{ basketItem: BasketItem }>()
 
 const { hasSubscriptionData, subscriptionAttributes } =
-  useBasketSubscription(basketItem)
+  useSubscriptionAttributes(basketItem)
 </script>

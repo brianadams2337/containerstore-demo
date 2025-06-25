@@ -24,15 +24,12 @@
           :color="color"
           :quantity="quantity"
         />
-        <SFOrderDetailProductSubscription
-          v-if="subscription"
-          :subscription="subscription"
-        />
+        <SFOrderDetailProductSubscription :order-item="orderItem" />
       </div>
     </div>
     <div class="flex flex-col justify-end">
       <SFProductPrice
-        :price="price"
+        :price="orderItem.price"
         class="ml-auto"
         data-testid="order-product-card-prices"
         :inline="false"
@@ -49,28 +46,21 @@ import SFOrderDetailProductDetails from './SFOrderDetailProductDetails.vue'
 import { SFOrderDetailProductSubscription } from '#storefront-subscription/components'
 import SFProductPrice from '~/components/product/SFProductPrice.vue'
 import SFLocalizedLink from '~/components/SFLocalizedLink.vue'
-import type { OrderProduct, OrderVariant, OrderPrice } from '~/types/order'
+import type { OrderItem } from '~/types/order'
 import SFProductImage from '~/components/product/SFProductImage.vue'
 import { useProductBaseInfo } from '~/composables'
 
-const {
-  product,
-  variant,
-  quantity = 1,
-  price,
-} = defineProps<{
-  product: OrderProduct
-  variant: OrderVariant
+const { orderItem, quantity = 1 } = defineProps<{
+  orderItem: OrderItem
   quantity?: number
-  price: OrderPrice
-  subscription?: Record<string, string>
 }>()
 
 const { name, brand, link, image, alt, color } = useProductBaseInfo(
-  product as unknown as Product,
+  orderItem.product as unknown as Product,
 )
 
 const size = computed(
-  () => getFirstAttributeValue(variant.attributes, 'size')?.label ?? '',
+  () =>
+    getFirstAttributeValue(orderItem.variant.attributes, 'size')?.label ?? '',
 )
 </script>

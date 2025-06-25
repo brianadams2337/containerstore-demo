@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { basketItemFactory } from '@scayle/storefront-nuxt/test/factories'
-import useBasketSubscription from './useBasketSubscription'
+import useSubscriptionAttributes from './useSubscriptionAttributes'
 
-describe('useBasketSubscription', () => {
+describe('useSubscriptionAttributes', () => {
   describe('hasSubscriptionData', () => {
     it('hasSubscriptionData should be true when subscription data present', () => {
       const basketItem = basketItemFactory.build({
@@ -10,14 +10,14 @@ describe('useBasketSubscription', () => {
           subscriptionDefinition: {},
         },
       })
-      const { hasSubscriptionData } = useBasketSubscription(basketItem)
+      const { hasSubscriptionData } = useSubscriptionAttributes(basketItem)
       expect(hasSubscriptionData.value).toBe(true)
     })
     it('hasSubscriptionData should be false when subscription data present', () => {
       const basketItem = basketItemFactory.build({
         customData: {},
       })
-      const { hasSubscriptionData } = useBasketSubscription(basketItem)
+      const { hasSubscriptionData } = useSubscriptionAttributes(basketItem)
       expect(hasSubscriptionData.value).toBe(false)
     })
   })
@@ -53,7 +53,7 @@ describe('useBasketSubscription', () => {
           },
         },
       })
-      const { subscriptionAttributes } = useBasketSubscription(basketItem)
+      const { subscriptionAttributes } = useSubscriptionAttributes(basketItem)
       expect(subscriptionAttributes.value).toStrictEqual([
         {
           label: 'Intervall',
@@ -90,7 +90,7 @@ describe('useBasketSubscription', () => {
           },
         },
       })
-      const { subscriptionAttributes } = useBasketSubscription(basketItem)
+      const { subscriptionAttributes } = useSubscriptionAttributes(basketItem)
       expect(subscriptionAttributes.value).toStrictEqual([])
     })
 
@@ -102,7 +102,7 @@ describe('useBasketSubscription', () => {
           },
         },
       })
-      const { subscriptionAttributes } = useBasketSubscription(basketItem)
+      const { subscriptionAttributes } = useSubscriptionAttributes(basketItem)
       expect(subscriptionAttributes.value).toStrictEqual([
         {
           label: 'Folgelieferung',
@@ -117,7 +117,7 @@ describe('useBasketSubscription', () => {
           subscriptionDefinition: {},
         },
       })
-      const { subscriptionAttributes } = useBasketSubscription(basketItem)
+      const { subscriptionAttributes } = useSubscriptionAttributes(basketItem)
       expect(subscriptionAttributes.value).toStrictEqual([])
     })
   })

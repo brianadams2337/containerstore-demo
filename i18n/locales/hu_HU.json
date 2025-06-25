@@ -575,17 +575,6 @@
     "day_of_month_selection_caption": "Minden {dayOfMonth}-án a hónapban",
     "term": "Időtartam"
   },
-  "order_detail_product_subscription": {
-    "interval_keys": {
-      "1_months_1": "1 hónap",
-      "2_months": "2 hónap",
-      "3_months": "3 hónap"
-    },
-    "delivery_keys": {
-      "1": "Minden hónap 1-jén",
-      "15": "Minden hónap 15. napján"
-    }
-  },
   "image_slider": {
     "a11ly": {
       "go_to_previous_image": "Előző kép",

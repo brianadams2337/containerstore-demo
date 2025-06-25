@@ -575,17 +575,6 @@
     "day_of_month_selection_caption": "Elke {dayOfMonth} van de maand",
     "term": "Termijn"
   },
-  "order_detail_product_subscription": {
-    "interval_keys": {
-      "1_months_1": "1 maand",
-      "2_months": "2 maanden",
-      "3_months": "3 maanden"
-    },
-    "delivery_keys": {
-      "1": "Elke 1e van de maand",
-      "15": "Elke 15e van de maand"
-    }
-  },
   "image_slider": {
     "a11ly": {
       "go_to_previous_image": "Vorige afbeelding",

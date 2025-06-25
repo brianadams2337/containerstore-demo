@@ -1,21 +1,17 @@
 <template>
-  <div class="flex flex-col gap-2">
+  <div v-if="hasSubscriptionData" class="flex flex-col gap-2">
     <div class="text-sm font-semibold text-primary">
       {{ $t('subscription.subscription') }}
     </div>
     <ul class="flex flex-col gap-1 text-sm text-secondary">
-      <li class="flex gap-1">
-        <span class="font-medium"> {{ $t('subscription.interval') }}: </span>
+      <li
+        v-for="attribute in subscriptionAttributes"
+        :key="attribute.label"
+        class="flex gap-1"
+      >
+        <span class="font-medium"> {{ attribute.label }}: </span>
         <span>
-          {{ getSubscriptionInterval() }}
-        </span>
-      </li>
-      <li class="flex gap-1">
-        <span class="font-medium">
-          {{ $t('subscription.follow_up_delivery') }}:
-        </span>
-        <span>
-          {{ getSubscriptionDeliveryDate() }}
+          {{ attribute.value }}
         </span>
       </li>
     </ul>
@@ -23,27 +19,11 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from '#i18n'
+import useSubscriptionAttributes from '../composables/useSubscriptionAttributes'
+import type { OrderItem } from '~/types/order'
 
-const { subscription } = defineProps<{ subscription: Record<string, string> }>()
+const { orderItem } = defineProps<{ orderItem: OrderItem }>()
 
-const { t } = useI18n()
-const getSubscriptionInterval = () => {
-  switch (subscription.subscriptionInterval) {
-    case '1_months_1':
-      return t('order_detail_product_subscription.interval_keys.1_months_1')
-    case '2_months':
-      return t('order_detail_product_subscription.interval_keys.2_months')
-    case '3_months':
-      return t('order_detail_product_subscription.interval_keys.3_months')
-  }
-}
-const getSubscriptionDeliveryDate = () => {
-  switch (subscription.subscriptionDeliveryDate) {
-    case '1':
-      return t('order_detail_product_subscription.delivery_keys.1')
-    case '15':
-      return t('order_detail_product_subscription.delivery_keys.15')
-  }
-}
+const { subscriptionAttributes, hasSubscriptionData } =
+  useSubscriptionAttributes(orderItem)
 </script>

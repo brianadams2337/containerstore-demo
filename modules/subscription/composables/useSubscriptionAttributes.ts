@@ -6,16 +6,17 @@ import {
   hasSubscriptionCustomData,
 } from '../helpers/subscription'
 import { useNuxtApp } from '#app'
+import type { OrderItem } from '~/types/order'
 
 /**
- * Computes subscription attributes for a basket item.
+ * Computes subscription attributes for a basket or order item.
  *
- * @param basketItem - The basket item to extract subscription data from
+ * @param basketItem - The basket or order item to extract subscription data from
  */
-export default (basketItem: BasketItem) => {
+export default (item: BasketItem | OrderItem) => {
   const { $i18n } = useNuxtApp()
   const customData = computed(
-    () => (basketItem?.customData || {}) as Record<string, unknown>,
+    () => (item?.customData || {}) as Record<string, unknown>,
   )
   const hasSubscriptionData = computed(() =>
     hasSubscriptionCustomData(customData.value),
@@ -31,7 +32,7 @@ export default (basketItem: BasketItem) => {
     attributeName: string,
     attributeValue: string,
   ) =>
-    getAttributeValueTuples(basketItem.variant.attributes, attributeName).find(
+    getAttributeValueTuples(item.variant.attributes, attributeName).find(
       (value) => value.value === attributeValue,
     )?.label
 

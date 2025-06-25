@@ -575,17 +575,6 @@
     "day_of_month_selection_caption": "Ogni {dayOfMonth} del mese",
     "term": "Termine"
   },
-  "order_detail_product_subscription": {
-    "interval_keys": {
-      "1_months_1": "1 mese",
-      "2_months": "2 mesi",
-      "3_months": "3 mesi"
-    },
-    "delivery_keys": {
-      "1": "Ogni 1° del mese",
-      "15": "Ogni 15 del mese"
-    }
-  },
   "image_slider": {
     "a11ly": {
       "go_to_previous_image": "Immagine precedente",
