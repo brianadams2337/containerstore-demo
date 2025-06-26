@@ -73,14 +73,32 @@ const {
   name,
   closeOnRouteChange = true,
 } = defineProps<{
+  /**
+   * Unique identifier for the slide-in panel. Used for state management and focus handling.
+   */
   name: string
+  /**
+   * Additional CSS classes to apply to the slide-in container.
+   */
   slideClass?: string
+  /**
+   * Whether to remove borders from header and action sections.
+   */
   borderless?: boolean
+  /**
+   * Whether to automatically close the slide-in when the route changes.
+   */
   closeOnRouteChange?: boolean
 }>()
 
 const emit = defineEmits<{
+  /**
+   * Event emitted when the slide-in opens.
+   */
   open: []
+  /**
+   * Event emitted when the slide-in closes.
+   */
   close: []
 }>()
 

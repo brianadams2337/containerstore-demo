@@ -25,7 +25,12 @@
 <script setup lang="ts">
 import { SFFadeInFromBottomTransition } from '#storefront-ui/components'
 
-const { isOpen = false } = defineProps<{ isOpen?: boolean }>()
+const { isOpen = false } = defineProps<{
+  /**
+   * Controls the visibility of the popover content. Use this for programmatic control.
+   */
+  isOpen?: boolean
+}>()
 
 defineEmits<{ mouseenter: []; mouseleave: [] }>()
 </script>
