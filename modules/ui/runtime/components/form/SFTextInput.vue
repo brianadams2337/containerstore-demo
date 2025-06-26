@@ -67,11 +67,17 @@ const {
   readonly = false,
   name,
 } = defineProps<{
+  /** Placeholder text that becomes the floating label when the input has a value. */
   placeholder: string
+  /** When true, adds required validation and visual indicator (asterisk). */
   required?: boolean
+  /** HTML input type that determines the input behavior and validation. */
   type?: HTMLInputElement['type']
+  /** When true, the input is read-only and cannot be edited. */
   readonly?: boolean
+  /** Name attribute for the input element, used in form submission. */
   name?: string
+  /** When true, applies error styling and indicates validation issues. */
   hasErrors?: boolean
 }>()
 

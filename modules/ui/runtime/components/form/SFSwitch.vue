@@ -43,9 +43,16 @@
 </template>
 
 <script setup lang="ts">
-const { label, disabled = false } = defineProps<{
+const {
+  label,
+  disabled = false,
+  id,
+} = defineProps<{
+  /** Unique identifier for the switch. Required for accessibility and form handling. */
   id: string
+  /** Text label displayed next to the switch. Can also be provided via the label slot. */
   label?: string
+  /** When true, the switch is disabled and cannot be toggled. */
   disabled?: boolean
 }>()
 
