@@ -75,10 +75,17 @@ const {
   hideDisabledArrows = false,
   mode = 'horizontal',
 } = defineProps<{
+  /** When true, adds spacing between items. */
   spacedItems?: boolean
+  /** When true, the slider is scrollable. */
+  scrollable?: boolean
+  /** When true, displays navigation arrows for scrolling. */
   withArrows?: boolean
+  /** When true, hides arrows when they are disabled (at start/end). */
   hideDisabledArrows?: boolean
+  /** Scroll direction - horizontal or vertical. */
   mode?: 'horizontal' | 'vertical'
+  /** Tab index for keyboard navigation. */
   sliderTabindex?: number
 }>()
 
@@ -110,6 +117,40 @@ defineExpose({
 const emit = defineEmits<{
   'update:activeSlide': [newActiveSlide: number]
 }>()
+
+defineSlots<{
+  /** Default slot for slider items */
+  default: () => unknown
+  /** Header content displayed above the slider */
+  header: () => unknown
+  /** Custom navigation arrows container with slider state */
+  arrows: (props: {
+    prev: (offset?: number) => void
+    isPrevEnabled: boolean
+    next: (offset?: number) => void
+    isNextEnabled: boolean
+    isScrollable: boolean | undefined
+  }) => unknown
+  /** Custom previous button with navigation state */
+  'prev-button': (props: {
+    prev: (offset?: number) => void
+    isPrevEnabled: boolean
+  }) => unknown
+  /** Custom next button with navigation state */
+  'next-button': (props: {
+    next: (offset?: number) => void
+    isNextEnabled: boolean
+  }) => unknown
+  /** Thumbnail navigation with scroll and active slide state */
+  thumbnails: (props: {
+    scrollImageIntoView: (
+      index: number,
+      scrollBehavior?: ScrollBehavior,
+    ) => void
+    activeSlide: number
+  }) => unknown
+}>()
+
 watch(activeSlide, (newActiveSlide) => {
   emit('update:activeSlide', newActiveSlide)
 })

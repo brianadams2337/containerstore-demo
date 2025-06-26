@@ -79,11 +79,13 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { usePagination } from '#storefront-ui'
+import { usePagination, type Page } from '#storefront-ui'
 import { SFPaginationButton } from '#storefront-ui/components'
 
 const { visible = 6, totalPageCount } = defineProps<{
+  /** Total number of pages available for navigation. */
   totalPageCount: number
+  /** Number of page buttons to display at once (default: 6). */
   visible?: number
 }>()
 
@@ -105,4 +107,27 @@ const {
 const isFirstOrLastPageButtonShown = computed(() => {
   return totalPageCount !== 1 && totalPageCount > visible
 })
+
+defineSlots<{
+  /** Custom previous button with navigation state */
+  'previous-button': (props: {
+    canNavigateLeft: boolean
+    previousPage: Page
+  }) => unknown
+  /** Custom first page button */
+  'first-page': (props: { firstPage: Page }) => unknown
+  /** Custom first dots indicator */
+  'first-dots': () => unknown
+  /** Custom page buttons with limited pages */
+  'page-buttons': (props: { limitedPages: (Page | undefined)[] }) => unknown
+  /** Custom second dots indicator */
+  'second-dots': () => unknown
+  /** Custom last page button */
+  'last-page': (props: { lastPage: Page | undefined }) => unknown
+  /** Custom next button with navigation state */
+  'next-button': (props: {
+    canNavigateRight: boolean
+    nextPage: Page | undefined
+  }) => unknown
+}>()
 </script>

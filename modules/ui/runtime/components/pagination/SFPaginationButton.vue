@@ -21,7 +21,9 @@ import type { Page } from '#storefront-ui'
 import { SFLink } from '#storefront-ui/components'
 
 const { page, disabled = false } = defineProps<{
+  /** When true, the button is disabled and cannot be clicked. */
   disabled?: boolean
+  /** Page object containing number, to (route), and isActive state. */
   page: Page
 }>()
 
