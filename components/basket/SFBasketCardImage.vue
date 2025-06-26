@@ -11,9 +11,6 @@
         :sizes="isSmallSize ? '112px' : '144px'"
         class="overflow-hidden rounded-lg"
         :class="[{ 'opacity-60': isSoldOut }]"
-        :aspect-ratio="
-          BASKET_IMAGE_ASPECT_RATIO[isSmallSize ? 'SMALL' : 'REGULAR']
-        "
       />
       <SFPromotionBadge
         v-if="basketItem.promotion"
@@ -39,7 +36,6 @@ import SFProductImage from '~/components/product/SFProductImage.vue'
 import SFWishlistToggle from '~/components/product/SFWishlistToggle.vue'
 import { useProductBaseInfo } from '~/composables'
 import { getPromotionStyle } from '~/utils'
-import { BASKET_IMAGE_ASPECT_RATIO } from '~/config/ui'
 
 const {
   basketItem,
