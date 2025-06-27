@@ -108,8 +108,11 @@ const {
   max = 100000,
   filterSlug,
 } = defineProps<{
+  /** Determines the type of filtering and formatting. "prices" for currency, "max_savings_percentage" for discount percentages. */
   filterSlug: 'prices' | 'max_savings_percentage'
+  /** Minimum value for the range slider. For prices, this should be in minor units (e.g., cents). */
   min?: number
+  /** Maximum value for the range slider. For prices, this should be in minor units (e.g., cents). */
   max?: number
 }>()
 
@@ -122,6 +125,7 @@ const range = defineModel<RangeTuple>({
     return [roundDownPrice(min), roundUpPrice(max)]
   },
 })
+console.log('filterSlug', range)
 
 const currentShop = useCurrentShop()
 const locale = currentShop.value!.locale

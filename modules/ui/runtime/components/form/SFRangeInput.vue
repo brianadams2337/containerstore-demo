@@ -14,8 +14,8 @@
 </template>
 
 <script setup lang="ts">
-import { useFormatHelpers } from '@scayle/storefront-nuxt/composables'
 import { computed, ref } from 'vue'
+import { useFormatHelpers } from '#storefront/composables'
 
 const { variant, locale, currencyCode, min, max, modelValue, formatOptions } =
   defineProps<{

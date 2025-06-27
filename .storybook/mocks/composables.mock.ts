@@ -47,10 +47,16 @@ export function useCurrentShop() {
   })
 }
 
+// We mock the `useFormatHelpers` composable to isolate this component for Storybook.
+// This mock provides a simple implementation that returns formatted values (like currency and percentages)
+// to ensure the story accurately represents the component's appearance with formatted data.
 export function useFormatHelpers() {
   return {
     formatCurrency: (value: number) => `€${(value / 100).toFixed(2)}`,
-    formatPercentage: (value: number) => `${value}%`,
+    formatPercentage: (value: number) =>
+      value.toLocaleString('en-US', {
+        style: 'percent',
+      }),
   }
 }
 

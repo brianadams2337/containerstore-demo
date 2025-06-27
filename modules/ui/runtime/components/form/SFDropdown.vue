@@ -98,12 +98,19 @@ const {
   radius = 'md',
   buttonClass,
 } = defineProps<{
+  /** Array of items to display in the dropdown. Can be strings, numbers, or objects. */
   items: NonNullable<T>[]
+  /** Class(es) to apply to the dropdown button. */
   buttonClass?: string[] | string
+  /** Unique identifier for the dropdown. Required for accessibility and form handling. */
   id: string
+  /** When true, applies error styling to indicate validation issues. */
   hasErrors?: boolean
+  /** When true, the dropdown is disabled and cannot be interacted with. */
   disabled?: boolean
+  /** Accessibility label for screen readers. */
   ariaLabel?: string
+  /** Controls the border radius of the dropdown button and list. */
   radius?: 'md' | 'xl'
 }>()
 

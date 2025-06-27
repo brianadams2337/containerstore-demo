@@ -29,7 +29,14 @@
 </template>
 
 <script setup lang="ts" generic="T">
-defineProps<{ id: string; item?: T; label?: string }>()
+defineProps<{
+  /** Unique identifier for the checkbox input. Required for accessibility and form handling. */
+  id: string
+  /** The value associated with this checkbox when used in multiple selection mode. */
+  item?: T
+  /** Text label displayed next to the checkbox. Can also be provided via the label slot. */
+  label?: string
+}>()
 
 const model = defineModel<T[] | boolean>()
 </script>
