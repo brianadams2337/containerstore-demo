@@ -30,18 +30,6 @@ export default {
       description:
         'Controls the visibility of the modal. Use v-model for two-way binding.',
     },
-    hideCloseButton: {
-      control: 'boolean',
-      description: 'Whether to hide the close button in the top-right corner.',
-    },
-    transitionComponent: {
-      control: 'object',
-      description: 'Vue component to use for the modal transition animation.',
-    },
-    appear: {
-      control: 'boolean',
-      description: 'Whether to apply transition on initial render.',
-    },
   },
   render: (args: ComponentPropsAndSlots<typeof SFModal>) => ({
     components: { SFModal },

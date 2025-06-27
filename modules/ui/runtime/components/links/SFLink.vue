@@ -29,9 +29,21 @@ const {
   raw = false,
   target = '_self',
 } = defineProps<{
+  /**
+   * The target location for the link. Accepts a Vue Router location object.
+   */
   to: RouteLocationRaw
+  /**
+   * The visual style variant of the link.
+   */
   variant?: LinkVariant
+  /**
+   * If true, disables the default styling and renders the link as raw HTML.
+   */
   raw?: boolean
+  /**
+   * Specifies where to open the linked document.
+   */
   target?: '_self' | '_blank' | '_parent' | '_top'
 }>()
 

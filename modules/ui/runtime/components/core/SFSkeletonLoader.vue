@@ -15,7 +15,13 @@ import { computed } from 'vue'
 import { SkeletonType } from '#storefront-ui'
 
 const { type = SkeletonType.BUTTON, fullWidth = false } = defineProps<{
+  /**
+   * The type of skeleton to display. Each type has predefined dimensions and styling.
+   */
   type?: SkeletonType
+  /**
+   * Whether the skeleton should take the full width of its container.
+   */
   fullWidth?: boolean
 }>()
 

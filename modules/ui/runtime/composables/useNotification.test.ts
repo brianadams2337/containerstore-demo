@@ -14,16 +14,16 @@ describe('useNotification', () => {
     const { show, notifications } = useNotification()
     show('route notification', {
       duration: 2000,
-      actions: [{ text: 'VIEW', href: '/' }],
+      action: { text: 'VIEW', href: '/' },
       type: {
         classes: 'text-white bg-black',
       },
     })
-    const { id, actions, ...payload } = notifications.value[0]
+    const { id, action, ...payload } = notifications.value[0]
 
     expect(id).toBeTruthy()
 
-    expect({ href: actions?.[0].href, text: actions?.[0].text }).toEqual({
+    expect({ href: action?.href, text: action?.text }).toEqual({
       href: '/',
       text: 'VIEW',
     })
@@ -39,7 +39,7 @@ describe('useNotification', () => {
   it('should close notification', () => {
     const { show, close, notifications } = useNotification()
     show('confirm notification', {
-      actions: [{ text: 'OK' }],
+      action: { text: 'OK' },
       type: {
         classes: 'text-white bg-black',
       },

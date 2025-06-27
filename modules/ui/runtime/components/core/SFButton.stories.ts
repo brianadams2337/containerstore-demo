@@ -21,28 +21,15 @@ export default {
     variant: {
       control: { type: 'select' },
       options: Object.values(ButtonVariant),
-      description:
-        'Determines the visual style and emphasis of the button. Primary is used for main actions, while other variants provide different levels of emphasis.',
     },
     size: {
       control: { type: 'select' },
       options: Object.values(Size),
-      description:
-        "Controls the button's dimensions and padding. Choose based on the context and importance of the action.",
-    },
-    to: {
-      control: 'text',
-      description:
-        'When provided, the button behaves as a router link. Useful for navigation actions within the application.',
     },
     onClick: {
       action: 'clicked',
       description:
         'Event handler for button clicks. Use this for handling user interactions and triggering actions.',
-    },
-    loading: {
-      description:
-        'Shows a loading spinner and disables the button. Use during async operations to prevent multiple submissions.',
     },
   },
   render: (args: ComponentPropsAndSlots<typeof SFButton>) => ({

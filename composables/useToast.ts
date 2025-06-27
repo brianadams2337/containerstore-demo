@@ -1,4 +1,3 @@
-import { refreshNuxtData } from '#app/composables/asyncData'
 import type {
   NotificationOnClickActions,
   NotificationComponent,
@@ -7,7 +6,7 @@ import type { RouteLocationRaw } from '#vue-router'
 import { useNotification } from '#storefront-ui'
 import { useNuxtApp } from '#app'
 
-export type ToastAction = 'CONFIRM' | 'RELOAD' | 'ROUTE'
+export type ToastAction = 'CONFIRM' | 'ROUTE'
 export type ToastType = 'INFO' | 'SUCCESS' | 'ERROR'
 export type ToastOptions = {
   duration?: number
@@ -20,35 +19,19 @@ export function useToast() {
   const { $i18n } = useNuxtApp()
   const notification = useNotification()
 
-  const getActions = (action: ToastAction, to?: RouteLocationRaw) => {
+  const getAction = (action: ToastAction, to?: RouteLocationRaw) => {
     const classes = 'font-normal text-transform-unset'
     const actions = {
-      CONFIRM: [
-        {
-          class: classes,
-          text: $i18n.t('notification.confirm'),
-          onClick: (actions: NotificationOnClickActions) => actions.close(),
-        },
-      ],
-      ROUTE: [
-        {
-          class: classes,
-          text: $i18n.t('notification.view'),
-          href: to,
-        },
-      ],
-      RELOAD: [
-        {
-          class: classes,
-          text: $i18n.t('notification.reload_page'),
-          onClick: (actions: NotificationOnClickActions) => actions.close(),
-        },
-        {
-          class: classes,
-          text: 'X',
-          onClick: () => Promise.resolve(refreshNuxtData()),
-        },
-      ],
+      CONFIRM: {
+        class: classes,
+        text: $i18n.t('notification.confirm'),
+        onClick: (actions: NotificationOnClickActions) => actions.close(),
+      },
+      ROUTE: {
+        class: classes,
+        text: $i18n.t('notification.view'),
+        href: to,
+      },
     }
 
     return actions[action]
@@ -84,7 +67,7 @@ export function useToast() {
 
     notification.show(message, {
       ...options,
-      actions: action && getActions(action, to),
+      action: action && getAction(action, to),
       type: getType(type),
     })
   }

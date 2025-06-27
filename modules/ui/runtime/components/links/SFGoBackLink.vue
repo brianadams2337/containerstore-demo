@@ -20,6 +20,10 @@ import type { RouteLocationRaw } from '#vue-router'
 import { SFLink } from '#storefront-ui/components'
 
 const { fallbackLink = '/' } = defineProps<{
+  /**
+   * The fallback route to navigate to when there is no browser history available.
+   * Accepts a Vue Router raw location object.
+   */
   fallbackLink?: RouteLocationRaw
 }>()
 

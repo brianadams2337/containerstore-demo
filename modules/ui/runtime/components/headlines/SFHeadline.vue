@@ -26,15 +26,30 @@ import { HeadlineSize, HeadlineTag } from '#storefront-ui'
 
 const {
   isUppercase = false,
-  badge = 0,
   size = HeadlineSize['2XL'],
   tag = HeadlineTag.P,
   isBold = false,
 } = defineProps<{
+  /**
+   * Determines whether the headline text should be displayed in uppercase.
+   */
   isUppercase?: boolean
+  /**
+   * Controls whether the headline text should be bold.
+   */
   isBold?: boolean
-  badge?: number | string
+  /**
+   * The badge text to display alongside the headline.
+   * If not provided, no badge will be rendered.
+   */
+  badge?: string
+  /**
+   * Specifies the size of the headline.
+   */
   size?: HeadlineSize
+  /**
+   * Specifies the HTML tag to use for the headline.
+   */
   tag?: HeadlineTag
 }>()
 

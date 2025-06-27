@@ -22,13 +22,6 @@ export default {
     type: {
       control: { type: 'select' },
       options: Object.values(SkeletonType),
-      description:
-        'The type of skeleton to display. Each type has predefined dimensions and styling.',
-    },
-    fullWidth: {
-      control: 'boolean',
-      description:
-        'Whether the skeleton should take the full width of its container.',
     },
   },
   render: (args: ComponentPropsAndSlots<typeof SFSkeletonLoader>) => ({
@@ -81,16 +74,16 @@ export const ProductCard = {
       <div class="space-y-3">
         <!-- Product image skeleton -->
         <SFSkeletonLoader :type="SkeletonType.CUSTOM" class="h-48 w-full rounded" />
-        
+
         <!-- Product title skeleton -->
         <SFSkeletonLoader :type="SkeletonType.HEADLINE" />
-        
+
         <!-- Product description skeleton -->
         <div class="space-y-1">
           <SFSkeletonLoader :type="SkeletonType.CUSTOM" class="h-3 w-full" />
           <SFSkeletonLoader :type="SkeletonType.CUSTOM" class="h-3 w-3/4" />
         </div>
-        
+
         <!-- Price and button skeleton -->
         <div class="flex justify-between items-center">
           <SFSkeletonLoader :type="SkeletonType.CUSTOM" class="h-6 w-16" />

@@ -7,7 +7,7 @@ export const DEFAULT_NOTIFICATION_DURATION = 5000
 
 export type NotificationOptions = {
   duration?: number
-  actions?: NotificationActionHandler[]
+  action?: NotificationActionHandler
   type: NotificationComponent
 }
 
@@ -32,7 +32,7 @@ export type StorefrontNotification = {
   id: string
   message: string
   duration: number
-  actions?: NotificationActionHandler[]
+  action?: NotificationActionHandler
   type?: NotificationComponent
 }
 
@@ -44,13 +44,13 @@ export function useNotification() {
 
   const show = (
     message: string,
-    { duration, actions, type }: NotificationOptions,
+    { duration, action, type }: NotificationOptions,
   ) => {
     notifications.value.push({
       message,
       id: `${nanoid()}-${Date.now()}`,
       duration: duration || DEFAULT_NOTIFICATION_DURATION,
-      actions,
+      action,
       type,
     })
   }

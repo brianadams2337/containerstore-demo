@@ -18,7 +18,7 @@ export default {
     template: `
     <SFValidatedInputGroup v-bind="args">
       <template #default="{ isValid }">
-        <SFTextInput 
+        <SFTextInput
           placeholder="Enter your email"
           :has-errors="!isValid"
           model-value=""
@@ -52,7 +52,7 @@ export const CustomErrorTypes = {
     <div class="space-y-4">
       <SFValidatedInputGroup :errors="['This field is required']">
         <template #default="{ isValid }">
-          <SFTextInput 
+          <SFTextInput
             placeholder="Required field"
             :has-errors="!isValid"
             required
@@ -60,10 +60,10 @@ export const CustomErrorTypes = {
           />
         </template>
       </SFValidatedInputGroup>
-      
+
       <SFValidatedInputGroup :errors="['Please enter a valid phone number']">
         <template #default="{ isValid }">
-          <SFTextInput 
+          <SFTextInput
             placeholder="Phone number"
             type="tel"
             :has-errors="!isValid"
@@ -71,10 +71,10 @@ export const CustomErrorTypes = {
           />
         </template>
       </SFValidatedInputGroup>
-      
+
       <SFValidatedInputGroup :errors="['URL must start with http:// or https://']">
         <template #default="{ isValid }">
-          <SFTextInput 
+          <SFTextInput
             placeholder="Website URL"
             type="url"
             :has-errors="!isValid"
