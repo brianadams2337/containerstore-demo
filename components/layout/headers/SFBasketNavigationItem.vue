@@ -1,7 +1,7 @@
 <template>
   <SFPopover
     :is-open="isOpen && !blockPopup"
-    @mouseenter="isOpen = !blockPopup"
+    @mouseenter="isOpen = true"
     @mouseleave="isOpen = false"
   >
     <template #action>
@@ -37,6 +37,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useMounted } from '@vueuse/core'
+import { onBeforeRouteUpdate } from '#app/composables/router'
 import { useI18n } from '#i18n'
 import { useBasket } from '#storefront/composables'
 import SFLocalizedLink from '~/components/SFLocalizedLink.vue'
@@ -57,4 +58,9 @@ const ariaLabel = computed(() =>
 )
 
 defineProps<{ blockPopup?: boolean }>()
+
+onBeforeRouteUpdate((to, from, next) => {
+  isOpen.value = false
+  next()
+})
 </script>
