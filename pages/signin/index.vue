@@ -21,10 +21,11 @@
 <script setup lang="ts">
 import { computed, defineOptions } from 'vue'
 import { sanitizeCanonicalURL } from '@scayle/storefront-nuxt'
+import { join } from 'pathe'
 import { useSeoMeta, useHead, definePageMeta, useRoute } from '#imports'
 import { useI18n } from '#i18n'
 import { useIDP } from '#storefront/composables'
-import { useNuxtApp } from '#app'
+import { useNuxtApp, useRequestURL } from '#app'
 import { SFHeadline } from '#storefront-ui/components'
 import SFAuthTabs from '~/components/auth/SFAuthTabs.vue'
 import SFAuthRegister from '~/components/auth/register/SFAuthRegister.vue'
@@ -35,9 +36,12 @@ const { t } = useI18n()
 
 const route = useRoute()
 
+const { origin } = useRequestURL()
+
 const {
   $config: {
-    public: { shopName, baseUrl },
+    public: { shopName },
+    app: { baseURL },
   },
 } = useNuxtApp()
 
@@ -69,7 +73,7 @@ useHead({
     {
       rel: 'canonical',
       key: 'canonical',
-      href: sanitizeCanonicalURL(`${baseUrl}${route.fullPath}`),
+      href: sanitizeCanonicalURL(`${origin}${join(baseURL, route.fullPath)}`),
     },
   ],
 })
