@@ -59,8 +59,8 @@ importers:
         specifier: 1.4.2
         version: 1.4.2(8b3bd0e2f2e9dd257f7eaa125ebce1e3)
       '@scayle/storefront-product-listing':
-        specifier: 1.8.0
-        version: 1.8.0(6b17f826d2f9fc866f408d9901b99b0f)
+        specifier: 1.8.1
+        version: 1.8.1(6b17f826d2f9fc866f408d9901b99b0f)
       '@scayle/storefront-promotions':
         specifier: 2.2.0
         version: 2.2.0(@nuxt/kit@3.16.2(magicast@0.3.5))(@scayle/storefront-nuxt@8.31.0(@netlify/blobs@8.2.0)(@nuxt/kit@3.16.2(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.0)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.11.13(@netlify/blobs@8.2.0)(@upstash/redis@1.35.0)(@vercel/kv@3.0.0))(nuxt@3.16.2(@netlify/blobs@8.2.0)(@parcel/watcher@2.5.1)(@types/node@22.15.33)(@upstash/redis@1.35.0)(@vercel/kv@3.0.0)(db0@0.3.2)(eslint@9.29.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.44.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.0(@types/node@22.15.33)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@2.2.10(typescript@5.8.3))(yaml@2.8.0))(rollup@4.44.1)(unstorage@1.16.0(@netlify/blobs@8.2.0)(@upstash/redis@1.35.0)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))
@@ -2623,8 +2623,8 @@ packages:
       vue: 3.5.17
       vue-router: ^4.5.0
 
-  '@scayle/storefront-product-listing@1.8.0':
-    resolution: {integrity: sha512-6jmzNlzGVG+cdPsqQKNO7Z/Sv8jSAlT2Ne8UFA7MtCUT5dtj/WLkzCU0jXdI3PdryjMWlQZxVdNKydvHJ81r7w==}
+  '@scayle/storefront-product-listing@1.8.1':
+    resolution: {integrity: sha512-Ne0JprNbjN6rFD2opYjMe6x0cdFe8+fNaIK1pVkD96tS/CxM93UXmhIlrdqzwIvQ+sg0bDT+ciXkrY2xpkzEUQ==}
     peerDependencies:
       '@nuxt/kit': 3.16.2
       '@scayle/storefront-core': ^8.0.0
@@ -12986,7 +12986,7 @@ snapshots:
       vue: 3.5.17(typescript@5.8.3)
       vue-router: 4.5.1(vue@3.5.17(typescript@5.8.3))
 
-  '@scayle/storefront-product-listing@1.8.0(6b17f826d2f9fc866f408d9901b99b0f)':
+  '@scayle/storefront-product-listing@1.8.1(6b17f826d2f9fc866f408d9901b99b0f)':
     dependencies:
       '@nuxt/kit': 3.16.2(magicast@0.3.5)
       '@scayle/storefront-core': 8.31.0(fishery@2.3.1)(unstorage@1.16.0(@netlify/blobs@8.2.0)(@upstash/redis@1.35.0)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))
