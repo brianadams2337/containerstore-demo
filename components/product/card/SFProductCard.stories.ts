@@ -1,4 +1,4 @@
-import { userEvent, within } from '@storybook/test'
+import { userEvent, within } from 'storybook/test'
 import type { StoryObj, ComponentPropsAndSlots } from '@storybook-vue/nuxt'
 import type { CentAmount } from '@scayle/storefront-nuxt'
 import { productFactory } from '@scayle/storefront-nuxt/dist/test/factories'

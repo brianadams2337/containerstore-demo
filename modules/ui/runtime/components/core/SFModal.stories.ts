@@ -1,6 +1,6 @@
 import type { ComponentPropsAndSlots, Meta } from '@storybook-vue/nuxt'
 import { ref } from 'vue'
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import SFModal from './SFModal.client.vue'
 import SFButton from './SFButton.vue'
 

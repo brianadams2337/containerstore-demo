@@ -1,5 +1,5 @@
 import type { ComponentPropsAndSlots, Meta } from '@storybook-vue/nuxt'
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import SFHeadline from '../headlines/SFHeadline.vue'
 import { useSlideIn } from '../../composables'
 import SFButton from './SFButton.vue'

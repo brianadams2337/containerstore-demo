@@ -13,11 +13,7 @@ const config: StorybookConfig = {
     disableTelemetry: true,
   },
   // https://storybook.js.org/docs/api/main-config/main-config-addons
-  addons: [
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@storybook/addon-a11y',
-  ],
+  addons: ['@storybook/addon-a11y', '@storybook/addon-docs'],
   // https://storybook.js.org/docs/api/main-config/main-config-framework
   framework: {
     name: '@storybook-vue/nuxt',
@@ -45,5 +41,9 @@ const config: StorybookConfig = {
 
     return config
   },
+  // We need to add the assets directory to the staticDirs to be able to use the images in the stories and docs.
+  // As we build storybook in `public` directory, its not possible to add it to the `staticDirs`.
+  // https://storybook.js.org/docs/api/main-config/main-config-static-dirs
+  staticDirs: ['assets'],
 }
 export default config
