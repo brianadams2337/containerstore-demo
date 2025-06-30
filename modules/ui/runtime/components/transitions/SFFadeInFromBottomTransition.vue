@@ -14,5 +14,10 @@
 <script setup lang="ts">
 import type { TransitionDuration } from '~/modules/ui/types'
 
-const { duration = 200 } = defineProps<{ duration?: TransitionDuration }>()
+const { duration = 200 } = defineProps<{
+  /**
+   * Controls the duration of the fade and slide transition in milliseconds. The subtle movement works well with shorter durations.
+   */
+  duration?: TransitionDuration
+}>()
 </script>
