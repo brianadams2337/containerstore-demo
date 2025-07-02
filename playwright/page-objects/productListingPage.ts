@@ -12,6 +12,7 @@ export class ProductListingPage {
   readonly productCard: Locator
   readonly h1: Locator
   readonly pageTitle: Locator
+  readonly sideNavigation: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -29,6 +30,7 @@ export class ProductListingPage {
     this.productCard = page.locator('article[id^="product-"]')
     this.h1 = page.locator('h1')
     this.pageTitle = page.getByTestId('active-category-breadcrumb')
+    this.sideNavigation = page.getByTestId('side-navigation')
   }
 
   async addProductToWishlist() {
