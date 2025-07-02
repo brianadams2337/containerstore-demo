@@ -270,8 +270,8 @@ importers:
         specifier: 2.4.6
         version: 2.4.6
       '@vue/typescript-plugin':
-        specifier: 2.2.10
-        version: 2.2.10(typescript@5.8.3)
+        specifier: 3.0.1
+        version: 3.0.1(typescript@5.8.3)
       autoprefixer:
         specifier: 10.4.21
         version: 10.4.21(postcss@8.5.6)
@@ -3303,8 +3303,8 @@ packages:
   '@vue/test-utils@2.4.6':
     resolution: {integrity: sha512-FMxEjOpYNYiFe0GkaHsnJPXFHxQ6m4t8vI/ElPGpMWxZKpmRvQ33OIrvRXemy6yha03RxhOlQuy+gZMC3CQSow==}
 
-  '@vue/typescript-plugin@2.2.10':
-    resolution: {integrity: sha512-niKMM8rvDep6AsZ+8FBnv5BjhkUFnxSkyVrihXkSKITGiz3UMLIvPBKRfgvWGtMdc+2a3yW7GEIo+eFJK+91ZA==}
+  '@vue/typescript-plugin@3.0.1':
+    resolution: {integrity: sha512-uumf1v6TxseOl3n5Zp+aFCFoBEEpu96r2acPO4chFJAKia8be8kTgomP4tWZDOMn/YwFF7L9rk3bNle8cFqSEw==}
 
   '@vuelidate/core@2.0.3':
     resolution: {integrity: sha512-AN6l7KF7+mEfyWG0doT96z+47ljwPpZfi9/JrNMkOGLFv27XVZvKzRLXlmDPQjPl/wOB1GNnHuc54jlCLRNqGA==}
@@ -13706,11 +13706,12 @@ snapshots:
       js-beautify: 1.15.4
       vue-component-type-helpers: 2.2.10
 
-  '@vue/typescript-plugin@2.2.10(typescript@5.8.3)':
+  '@vue/typescript-plugin@3.0.1(typescript@5.8.3)':
     dependencies:
       '@volar/typescript': 2.4.17
-      '@vue/language-core': 2.2.10(typescript@5.8.3)
+      '@vue/language-core': 3.0.1(typescript@5.8.3)
       '@vue/shared': 3.5.17
+      path-browserify: 1.0.1
     transitivePeerDependencies:
       - typescript
 
