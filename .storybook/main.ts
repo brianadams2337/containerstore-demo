@@ -1,6 +1,13 @@
 import type { StorybookConfig } from '@storybook-vue/nuxt'
 import { resolve } from 'pathe'
 
+/*
+  There are currently several issues in the Browser console.
+  Both are known issues but does currently not have a workaround.
+  https://github.com/nuxt-modules/storybook/issues/753
+  https://github.com/storybookjs/storybook/issues/31010
+*/
+
 const config: StorybookConfig = {
   // https://storybook.js.org/docs/api/main-config/main-config-stories
   stories: [
@@ -45,5 +52,8 @@ const config: StorybookConfig = {
   // As we build storybook in `public` directory, its not possible to add it to the `staticDirs`.
   // https://storybook.js.org/docs/api/main-config/main-config-static-dirs
   staticDirs: ['assets'],
+  docs: {
+    defaultName: 'Overview',
+  },
 }
 export default config

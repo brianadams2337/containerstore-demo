@@ -30,9 +30,13 @@ const {
 } = defineProps<{
   /** The current price value in minor currency units (e.g., cents). This is the actual value used by the application. */
   modelValue: number
-  /** ISO currency code (e.g., "USD", "EUR") used for formatting the displayed value. */
+  /** ISO currency code (e.g., "USD", "EUR") used for formatting the displayed value.
+   * Change the currency code would require to change the locale as well.
+   */
   currencyCode: string
-  /** Locale string (e.g., "en-US", "de-DE") used for currency formatting. */
+  /** Locale string (e.g., "en-US", "de-DE") used for currency formatting.
+   * Change the locale would require to change the currency code as well.
+   */
   locale: string
   /** Maximum allowed value in minor currency units. */
   max: number

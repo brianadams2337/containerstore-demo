@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import SFTextInput from './SFTextInput.vue'
 
 /**
- * SFTextInput is a comprehensive text input component with floating labels and validation support.
+ * SFTextInput is a comprehensive text input component with floating labels.
  * It automatically handles label positioning, focus states, and error display.
  * The component supports various input types and includes append icon slots for additional functionality.
  */

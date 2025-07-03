@@ -34,21 +34,3 @@ export const Default: Story = {
     fallbackLink: '/',
   },
 }
-
-/**
- * Story showcasing the SFGoBackLink with a custom fallback link
- */
-export const CustomFallbackLink: Story = {
-  args: {
-    fallbackLink: '/custom-path',
-  },
-}
-
-/**
- * Story showcasing the SFGoBackLink with a fallback link for no history
- */
-export const NoHistory: Story = {
-  args: {
-    fallbackLink: '/no-history',
-  },
-}

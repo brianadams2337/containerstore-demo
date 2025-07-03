@@ -31,7 +31,7 @@ export default {
     template: `
     <div class="p-8 w-96 h-56 relative">
         <SFSlideInFromLeftTransition v-bind="args">
-          <div v-if="visible" class="bg-purple-500 p-6 rounded-lg shadow-lg max-w-sm">
+          <div v-if="visible" class="border border-black p-6 rounded-lg shadow-lg max-w-sm">
             <h3 class="text-lg font-semibold mb-2">Slide In From Left</h3>
             <p>This content slides in from the left edge with a ${
               args.duration || 200

@@ -33,7 +33,7 @@ export const Default = {
       return { args, isOpen }
     },
     template: `
-    <div class="p-8">
+    <div style="padding: 16px 16px 120px 16px">
       <SFPopover v-model:is-open="isOpen" v-bind="args" @mouseenter="isOpen = true" @mouseleave="isOpen = false">
         <template #action>
           <SFButton variant="secondary">Hover for Details</SFButton>

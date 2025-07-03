@@ -26,6 +26,12 @@ export default {
     onOpen: fn(),
     onClose: fn(),
   },
+  argTypes: {
+    slideClass: {
+      control: 'select',
+      options: ['p-4', 'p-6', 'p-8'],
+    },
+  },
 }
 
 /**
@@ -66,28 +72,28 @@ export const Default = {
           <div class="p-6 space-y-6">
             <div>
               <h3 class="font-semibold mb-3">Categories</h3>
-              <div class="space-y-2">
-                <label class="flex items-center">
+              <div class="divide-y">
+                <label class="flex items-center py-4">
                   <input type="checkbox" class="mr-2"> Clothing
                 </label>
-                <label class="flex items-center">
+                <label class="flex items-center py-4">
                   <input type="checkbox" class="mr-2"> Electronics
                 </label>
-                <label class="flex items-center">
+                <label class="flex items-center py-4">
                   <input type="checkbox" class="mr-2"> Home & Garden
                 </label>
               </div>
             </div>
             <div>
               <h3 class="font-semibold mb-3">Price Range</h3>
-              <div class="space-y-2">
-                <label class="flex items-center">
+              <div class="divide-y">
+                <label class="flex items-center py-4">
                   <input type="radio" name="price" class="mr-2"> Under $50
                 </label>
-                <label class="flex items-center">
+                <label class="flex items-center py-4">
                   <input type="radio" name="price" class="mr-2"> $50 - $100
                 </label>
-                <label class="flex items-center">
+                <label class="flex items-center py-4">
                   <input type="radio" name="price" class="mr-2"> Over $100
                 </label>
               </div>

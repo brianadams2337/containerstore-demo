@@ -63,15 +63,22 @@ const shouldShowValue = (key: CountdownUnit, value?: number) => {
 const start = () => {
   const remaining = until.value - Date.now()
 
+  if (remaining <= 0) {
+    countdown.value = {
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+    }
+    emit('finished')
+    return
+  }
+
   countdown.value = {
     days: Math.floor(remaining / (SECOND * MINUTE * HOURS * DAY)),
     hours: Math.floor((remaining / (SECOND * MINUTE * HOURS)) % DAY),
     minutes: Math.floor((remaining / SECOND / MINUTE) % HOURS),
     seconds: Math.floor((remaining / SECOND) % MINUTE),
-  }
-
-  if (remaining <= 0) {
-    emit('finished')
   }
 }
 

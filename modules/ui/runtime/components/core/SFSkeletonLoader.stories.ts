@@ -33,6 +33,16 @@ export default {
   }),
 }
 
+export const Default = {
+  render: (args) => ({
+    components: { SFSkeletonLoader },
+    setup() {
+      return { args }
+    },
+    template: `<SFSkeletonLoader v-bind="args" />`,
+  }),
+} satisfies Meta<typeof SFSkeletonLoader>
+
 /**
  * Multiple skeleton elements in a layout. Shows how to combine
  * different skeleton types to create realistic loading states
@@ -85,7 +95,7 @@ export const ProductCard = {
         </div>
 
         <!-- Price and button skeleton -->
-        <div class="flex justify-between items-center">
+        <div class="flex justify-between items-center gap-8">
           <SFSkeletonLoader :type="SkeletonType.CUSTOM" class="h-6 w-16" />
           <SFSkeletonLoader :type="SkeletonType.BUTTON" />
         </div>

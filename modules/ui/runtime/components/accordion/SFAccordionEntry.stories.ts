@@ -22,7 +22,7 @@ export default {
     },
     template: `
     <SFAccordionEntry v-bind="args">
-      <p class="text-secondary">
+      <p class="text-secondary border border-black p-2">
         This is the accordion content that appears when the section is expanded.
       </p>
     </SFAccordionEntry>`,
@@ -52,7 +52,7 @@ export const ComplexContent = {
     },
     template: `
     <SFAccordionEntry v-bind="args">
-      <div class="space-y-4">
+      <div class="space-y-4 border border-black p-2">
         <div class="flex items-center justify-between">
           <h4 class="font-semibold">Size Guide</h4>
           <button class="text-sm text-accent underline">Download PDF</button>
@@ -96,19 +96,19 @@ export const AccordionGroup = {
     template: `
     <div class="space-y-2">
       <SFAccordionEntry title="Shipping & Returns" id="shipping">
-        <p class="text-secondary">
+        <p class="text-secondary border border-black p-2">
           Free shipping on orders over $50. Returns accepted within 30 days.
         </p>
       </SFAccordionEntry>
       
       <SFAccordionEntry title="Product Care" id="care">
-        <p class="text-secondary">
+        <p class="text-secondary border border-black p-2">
           Machine wash cold, tumble dry low. Do not bleach or iron.
         </p>
       </SFAccordionEntry>
       
       <SFAccordionEntry title="Customer Reviews" id="reviews">
-        <p class="text-secondary">
+        <p class="text-secondary border border-black p-2">
           Read what our customers are saying about this product.
         </p>
       </SFAccordionEntry>

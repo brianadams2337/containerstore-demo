@@ -8,7 +8,7 @@ import SFChip from './SFChip.vue'
  * users need to choose from a set of options with clear visual feedback.
  *
  * Key features:
- * - Checkbox functionality with v-model support for arrays
+ * - Checkbox functionality with `v-model` support for arrays
  * - Hover and selected state visual feedback
  * - Accessible with proper ARIA labels
  * - Generic type support for flexible data handling
@@ -21,7 +21,7 @@ export default {
     modelValue: {
       control: 'object',
       description:
-        'The array of selected values. Use v-model to bind to this prop for two-way data binding.',
+        'The array of selected values. Use `v-model` to bind to this prop for two-way data binding.',
     },
   },
   render: (args: ComponentPropsAndSlots<typeof SFChip>) => ({

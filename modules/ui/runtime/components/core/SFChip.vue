@@ -19,7 +19,15 @@
 <script setup lang="ts" generic="T">
 defineProps<{
   /**
-   * The value associated with this chip. This will be included in the v-model array when selected.
+   * The value associated with this chip. This will be included in the `v-model` array when selected.
+   * The type is a generic `T` which can be any value type (string, number, object, etc.).
+   * Common use cases include:
+   * - String values for filter options (e.g., "red", "blue", "large")
+   * - Object values with additional metadata (e.g., { id: 1, name: "Red", count: 5 })
+   * - Numeric values for size or price ranges (e.g., 10, 20, 30)
+   *
+   * The same type `T` should be used consistently across all chips in a group to ensure
+   * proper type safety in the `v-model` array.
    */
   item: T
   /**

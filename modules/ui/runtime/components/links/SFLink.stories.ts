@@ -17,13 +17,14 @@ export default {
   component: SFLink,
   argTypes: {
     variant: {
-      control: { type: 'select', options: Object.values(LinkVariant) },
+      control: { type: 'select' },
+      options: Object.values(LinkVariant),
     },
     target: {
       control: {
         type: 'select',
-        options: ['_self', '_blank', '_parent', '_top'],
       },
+      options: ['_self', '_blank', '_parent', '_top'],
     },
   },
   render: (args: ComponentPropsAndSlots<typeof SFLink>) => ({

@@ -61,6 +61,7 @@ export const Raw = {
   args: {
     variant: ButtonVariant.RAW,
     size: Size.MD,
+    default: 'Raw',
   },
 }
 
@@ -69,6 +70,9 @@ export const Raw = {
  * Icons can be placed before the text to indicate the action type or provide visual context.
  */
 export const ButtonWithIcon = {
+  args: {
+    default: 'Button with Icon',
+  },
   render: (args) => ({
     components: { SFButton },
     setup() {
@@ -89,6 +93,9 @@ export const ButtonWithIcon = {
  * that indicate direction or additional information (like dropdowns or external links).
  */
 export const ButtonWithAppendedIcon = {
+  args: {
+    default: 'Appended Icon',
+  },
   render: (args) => ({
     components: { SFButton },
     setup() {
@@ -113,5 +120,6 @@ export const Loading = {
     variant: ButtonVariant.PRIMARY,
     size: Size.MD,
     loading: true,
+    default: 'Loading',
   },
 }

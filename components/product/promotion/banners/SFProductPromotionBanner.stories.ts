@@ -22,7 +22,6 @@ type StoryProps = ComponentPropsAndSlots<typeof SFProductPromotionBanner> & {
 export default {
   title: 'Product/SFProductPromotionBanner',
   component: SFProductPromotionBanner,
-  tags: ['autodocs'],
   argTypes: {
     textColor: {
       control: 'color',

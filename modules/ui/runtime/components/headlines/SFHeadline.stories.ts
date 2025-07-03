@@ -152,6 +152,7 @@ export const Tags: Story = {
           :tag="tag"
         >
           {{ title }}
+          <{{ tag }}>
         </SFHeadline>
       </div>
     `,

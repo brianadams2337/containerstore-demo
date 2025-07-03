@@ -30,7 +30,7 @@ export default {
     template: `
     <div class="p-8 w-96 h-56 relative">
       <SFFadeInTransition v-bind="args">
-        <div v-if="visible" class="bg-blue-500 p-6 rounded-lg shadow-lg">
+        <div v-if="visible" class="border border-black p-6 rounded-lg shadow-lg">
           <h3 class="text-lg font-semibold mb-2">Fade In Content</h3>
           <p>This content fades in and out smoothly with a ${
             args.duration || 200

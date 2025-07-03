@@ -19,9 +19,16 @@ export default {
   render: (args: ComponentPropsAndSlots<typeof SFDropdown>) => ({
     components: { SFDropdown },
     setup() {
-      return { args }
+      const selectedItem = ref(args.items[0])
+      return { args, selectedItem }
     },
-    template: `<SFDropdown v-bind="args" />`,
+    template: `<SFDropdown v-bind="args">
+      <template #default>
+        <span class="max-w-[80%] overflow-hidden text-ellipsis !text-md">
+          {{ selectedItem }}
+        </span>
+      </template>
+    </SFDropdown>`,
   }),
 }
 
@@ -50,7 +57,7 @@ export const CustomItems = {
     },
     template: `
     <SFDropdown v-bind="args" v-model="selectedItem">
-      <span class="text-secondary">{{ selectedItem.name }}</span>
+      <span class="text-secondary !text-md">{{ selectedItem.name }}</span>
       <template #item="{ item, selectItem }">
         <div 
           class="flex items-center justify-between gap-4 p-2 hover:bg-gray-100 cursor-pointer"

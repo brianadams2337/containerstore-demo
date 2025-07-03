@@ -75,8 +75,6 @@ const {
   hideDisabledArrows = false,
   mode = 'horizontal',
 } = defineProps<{
-  /** When true, adds spacing between items. */
-  spacedItems?: boolean
   /** When true, displays navigation arrows for scrolling. */
   withArrows?: boolean
   /** When true, hides arrows when they are disabled (at start/end). */

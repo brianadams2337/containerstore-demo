@@ -31,7 +31,7 @@ export default {
     template: `
     <div class="p-8 w-96 h-56 relative">
       <SFFadeInFromBottomTransition v-bind="args">
-        <div v-if="visible" class="bg-green-500 p-6 rounded-lg shadow-lg w-96 h-96">
+        <div v-if="visible" class="border border-black p-6 rounded-lg shadow-lg w-96">
           <h3 class="text-lg font-semibold mb-2">Fade In From Bottom</h3>
           <p>This content fades in while sliding up from below with a ${
             args.duration || 200

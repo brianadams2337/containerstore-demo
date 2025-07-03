@@ -1,5 +1,6 @@
 import type { ComponentPropsAndSlots, Meta } from '@storybook-vue/nuxt'
 import SFPagination from './SFPagination.vue'
+import { useRoute } from '#app'
 
 /**
  * SFPagination is a comprehensive pagination component that displays page navigation controls.
@@ -38,6 +39,15 @@ export const ManyPages = {
     totalPageCount: 15,
     visible: 6,
   },
+  render: (args: ComponentPropsAndSlots<typeof SFPagination>) => ({
+    components: { SFPagination },
+    setup() {
+      const route = useRoute()
+      route.query.page = '5'
+      return { args }
+    },
+    template: `<SFPagination v-bind="args" />`,
+  }),
 }
 
 /**

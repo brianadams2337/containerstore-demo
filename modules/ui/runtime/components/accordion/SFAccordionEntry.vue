@@ -52,7 +52,7 @@ import { useEventListener } from '@vueuse/core'
 const { variant = 'wide' } = defineProps<{
   /** The title text displayed in the accordion header. */
   title?: string
-  /** Layout variant that affects spacing and responsive behavior. */
+  /** Layout variant that affects spacing and responsive behavior. `narrow` is used for mobile, `wide` is used for desktop. */
   variant?: 'narrow' | 'wide'
   /** Unique identifier for the accordion entry. Used for aria-details to associate the trigger with its content for screen readers. */
   id: string

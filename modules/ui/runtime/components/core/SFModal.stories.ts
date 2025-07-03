@@ -27,7 +27,7 @@ export default {
     visible: {
       control: 'boolean',
       description:
-        'Controls the visibility of the modal. Use v-model for two-way binding.',
+        'Controls the visibility of the modal. Use `v-model` for two-way binding.',
     },
   },
   render: (args: ComponentPropsAndSlots<typeof SFModal>) => ({

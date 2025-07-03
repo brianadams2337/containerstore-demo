@@ -16,6 +16,14 @@ export default {
       description:
         'The current price value in minor currency units (e.g., cents). This is the actual value used by the application.',
     },
+    currencyCode: {
+      control: 'select',
+      options: ['USD', 'EUR', 'GBP'],
+    },
+    locale: {
+      control: 'select',
+      options: ['en-US', 'de-DE', 'en-GB'],
+    },
   },
   render: (args: ComponentPropsAndSlots<typeof SFPriceInput>) => ({
     components: { SFPriceInput },

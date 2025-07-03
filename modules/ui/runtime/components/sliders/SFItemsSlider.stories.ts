@@ -23,17 +23,17 @@ export default {
     },
     template: `
     <SFItemsSlider
-      class="size-full"
       v-bind="args"
+      style="width: 800px; height: 300px;"
     >
       <div class="relative min-w-full snap-start snap-always">
-        <div class="w-full h-32 bg-gray-200 rounded flex items-center justify-center">Slide 1</div>
+        <div class="w-full h-full bg-gray-200 rounded flex items-center justify-center">Slide 1</div>
       </div>
       <div class="relative min-w-full snap-start snap-always">
-        <div class="w-full h-32 bg-gray-200 rounded flex items-center justify-center">Slide 2</div>
+        <div class="w-full h-full bg-gray-200 rounded flex items-center justify-center">Slide 2</div>
       </div>
       <div class="relative min-w-full snap-start snap-always">
-        <div class="w-full h-32 bg-gray-200 rounded flex items-center justify-center">Slide 3</div>
+        <div class="w-full h-full bg-gray-200 rounded flex items-center justify-center">Slide 3</div>
       </div>
     </SFItemsSlider>`,
   }),
@@ -109,6 +109,7 @@ export const CustomArrows = {
           class="absolute top-[40%] bg-white hover:bg-white"
           :disabled="!isPrevEnabled"
           direction="left"
+          inverted-radius
           translate-on-hover
           @click="prev()"
         />
@@ -119,6 +120,7 @@ export const CustomArrows = {
           :disabled="!isNextEnabled"
           direction="right"
           translate-on-hover
+          inverted-radius
           @click="next()"
         />
       </template>

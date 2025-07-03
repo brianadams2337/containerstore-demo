@@ -71,7 +71,7 @@ const {
    */
   to?: RouteLocationRaw
   /**
-   * Whether the button is a fab.
+   * Whether the button is a fab. If set to true, the button will have a circular shape and a fixed size with padding.
    */
   fab?: boolean
   /**
@@ -79,7 +79,7 @@ const {
    */
   isFullWidth?: boolean
   /**
-   * Shows a loading spinner and disables the button. Use during async operations to prevent multiple submissions.
+   * Shows a loading state of the button and disables the button. Use during async operations to prevent multiple submissions.
    */
   loading?: boolean
 }>()

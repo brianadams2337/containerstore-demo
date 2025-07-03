@@ -31,7 +31,7 @@ export default {
     template: `
     <div class="p-8 w-96 h-56 relative">
         <SFSlideInFromBottomTransition v-bind="args">
-          <div v-if="visible" class="bg-orange-500 p-6 rounded-lg shadow-lg">
+          <div v-if="visible" class="border border-black p-6 rounded-lg shadow-lg">
             <h3 class="text-lg font-semibold mb-2">Slide In From Bottom</h3>
             <p>This content slides up from the bottom edge with a ${
               args.duration || 500

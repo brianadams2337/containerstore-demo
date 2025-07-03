@@ -35,7 +35,7 @@ const {
    */
   isUppercase?: boolean
   /**
-   * Controls whether the headline text should be bold.
+   * Controls whether the headline text should be bold. Switches between `font-bold` and `font-semibold`. Depending on the used font, the difference might not be noticable on certain screens.
    */
   isBold?: boolean
   /**

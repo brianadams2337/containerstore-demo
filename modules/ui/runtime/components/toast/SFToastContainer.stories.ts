@@ -35,10 +35,12 @@ export const Show = {
       return { args, notifications, showToast }
     },
     template: `
+    <div style="padding-bottom: 100px;">
        <SFToastContainer />
        <SFButton @click="showToast">
          Show Toast
        </SFButton>
+    </div>
      `,
   }),
 } satisfies Meta<typeof SFToastContainer>
