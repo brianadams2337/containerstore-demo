@@ -2,7 +2,7 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Performance\]** Updated `routeRules` in `nuxt.config.ts` to use `Cache-Control` headers instead of internal Redis caching. This change enables external CDNs like Cloudflare to handle response caching more efficiently.
+**\[Performance\]** Updated `routeRules` in `nuxt.config.ts` to disable internal Redis page caching and rely solely on `Cache-Control` headers which can be handled efficiently by external CDNs like Cloudflare.
 
 ```ts
 // Before
