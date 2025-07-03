@@ -1,53 +1,52 @@
 <template>
   <li
     ref="root"
-    class="relative flex h-full items-center pl-4 first:pl-0"
+    class="flex h-full items-center pl-4 first:pl-0"
     @mouseenter="openFlyout(false)"
     @mouseleave="closeFlyout()"
   >
-    <SFNavigationTreeItem
-      ref="trigger"
-      :navigation-item="item"
-      class="!mr-0 flex !h-6 items-center py-1"
-      :class="{
-        'text-primary': !item.customData?.linkColor,
-      }"
-      data-testid="nav-link-main"
-      :is-active="isActive"
-    >
-      <span class="text-md font-semibold leading-10">
-        {{ item.name }}
-      </span>
-    </SFNavigationTreeItem>
-    <SFButton
-      v-if="item.children.length"
-      ref="button"
-      class="pointer-events-none absolute -right-4 z-10 opacity-0 focus-within:opacity-100"
-      :aria-expanded="isOpen"
-      :aria-label="item.name"
-      :aria-controls="`${item.id}`"
-      variant="raw"
-      @click="openFlyout(true)"
-    >
-      <IconChevronDown class="size-4" />
-    </SFButton>
-    <div :id="`${item.id}`">
-      <SFDesktopNavigationFlyout
-        v-if="showFlyout"
-        ref="flyout"
-        :item="item"
-        class="absolute inset-x-0 top-[63px] z-20 w-screen"
-        :style="flyoutTransform"
-        @close="closeFlyout"
-      />
+    <div class="relative flex items-center">
+      <SFNavigationTreeItem
+        :navigation-item="item"
+        class="!mr-0 flex !h-6 items-center py-1"
+        :class="{
+          'text-primary': !item.customData?.linkColor,
+        }"
+        data-testid="nav-link-main"
+        :is-active="isActive"
+      >
+        <span class="text-md font-semibold leading-10">
+          {{ item.name }}
+        </span>
+      </SFNavigationTreeItem>
+      <SFButton
+        v-if="item.children.length"
+        ref="button"
+        class="pointer-events-none absolute -right-4 z-10 opacity-0 focus-within:opacity-100"
+        :aria-expanded="isOpen"
+        :aria-label="item.name"
+        :aria-controls="`${item.id}`"
+        variant="raw"
+        @click="openFlyout(true)"
+      >
+        <IconChevronDown class="size-4" />
+      </SFButton>
     </div>
+    <SFDesktopNavigationFlyout
+      v-if="showFlyout"
+      :id="item.id"
+      ref="flyout"
+      :item="item"
+      class="absolute inset-x-0 top-[63px] z-20 !m-0"
+      @close="closeFlyout"
+    />
   </li>
 </template>
 
 <script setup lang="ts">
 import { computed, nextTick, ref } from 'vue'
 import type { NavigationTreeItem as NavigationTreeItemType } from '@scayle/storefront-nuxt'
-import { onKeyStroke, useElementBounding } from '@vueuse/core'
+import { onKeyStroke } from '@vueuse/core'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import SFDesktopNavigationFlyout from './SFDesktopNavigationFlyout.vue'
 import { usePageState } from '~/composables'
@@ -108,17 +107,4 @@ onKeyStroke(
   },
   { target: flyout },
 )
-
-const trigger = ref()
-const NAVIGATION_ITEM_SPACE_BETWEEN_IN_PX = 16
-const { x } = useElementBounding(trigger, {
-  windowScroll: false,
-})
-const flyoutTransform = computed(() => {
-  return {
-    transform: `translateX(-${
-      x.value - NAVIGATION_ITEM_SPACE_BETWEEN_IN_PX
-    }px)`,
-  }
-})
 </script>

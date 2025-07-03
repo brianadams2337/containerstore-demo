@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="item?.children?.length"
-    class="flex h-80 w-full gap-x-14 border-t border-gray-300 bg-white px-20 py-10 drop-shadow"
+    class="flex h-80 gap-x-14 border-t border-gray-300 bg-white px-20 py-10 drop-shadow"
     data-testid="desktop-navigation-flyout"
   >
     <ul
