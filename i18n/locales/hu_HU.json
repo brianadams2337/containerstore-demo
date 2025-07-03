@@ -638,5 +638,15 @@
   },
   "recentlyViewedProductsSlider": {
     "title": "Legutóbb megtekintett"
+  },
+  "basket_promotion_codes": {
+    "headline": "Promóciós kódok",
+    "add_code": "Hozzáadás",
+    "remove_code": "Eltávolítás {code}",
+    "input_placeholder": "Kód",
+    "input_label": "Promóciós kód",
+    "add_success": "A kód sikeresen alkalmazásra került.",
+    "add_error": "Sajnos a promóciós kód hozzáadása nem sikerült.",
+    "remove_error": "Sajnos a promóciós kód eltávolítása nem sikerült."
   }
 }

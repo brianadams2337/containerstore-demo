@@ -638,5 +638,15 @@
   },
   "recentlyViewedProductsSlider": {
     "title": "Πρόσφατα προβολή"
+  },
+  "basket_promotion_codes": {
+    "headline": "Κωδικοί προώθησης",
+    "add_code": "Προσθήκη",
+    "remove_code": "Κατάργηση {code}",
+    "input_placeholder": "Κωδικός",
+    "input_label": "Κωδικός προσφοράς",
+    "add_success": "Ο κωδικός σας έχει εφαρμοστεί με επιτυχία.",
+    "add_error": "Δυστυχώς, η προσθήκη του κωδικού προσφοράς απέτυχε.",
+    "remove_error": "Δυστυχώς, η κατάργηση του κωδικού προσφοράς απέτυχε."
   }
 }

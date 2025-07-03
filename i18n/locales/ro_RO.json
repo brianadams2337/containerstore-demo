@@ -638,5 +638,15 @@
   },
   "recentlyViewedProductsSlider": {
     "title": "Vizualizate recent"
+  },
+  "basket_promotion_codes": {
+    "headline": "Coduri promoționale",
+    "add_code": "Adăugați",
+    "remove_code": "Eliminare {code}",
+    "input_placeholder": "Cod",
+    "input_label": "Cod promoțional",
+    "add_success": "Codul dvs. a fost aplicat cu succes.",
+    "add_error": "Din păcate, adăugarea codului promoțional a eșuat.",
+    "remove_error": "Din păcate, eliminarea codului promoțional nu a reușit."
   }
 }

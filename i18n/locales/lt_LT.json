@@ -638,5 +638,15 @@
   },
   "recentlyViewedProductsSlider": {
     "title": "Neseniai peržiūrėti"
+  },
+  "basket_promotion_codes": {
+    "headline": "Reklaminiai kodai",
+    "add_code": "Pridėti",
+    "remove_code": "Pašalinti {code}",
+    "input_placeholder": "Kodas",
+    "input_label": "Reklamos kodas",
+    "add_success": "Jūsų kodas buvo sėkmingai pritaikytas.",
+    "add_error": "Deja, nepavyko pridėti reklaminio kodo.",
+    "remove_error": "Deja, nepavyko pašalinti reklaminio kodo."
   }
 }

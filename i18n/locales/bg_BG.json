@@ -638,5 +638,15 @@
   },
   "recentlyViewedProductsSlider": {
     "title": "Наскоро разгледани"
+  },
+  "basket_promotion_codes": {
+    "headline": "Промоционални кодове",
+    "add_code": "Добави",
+    "remove_code": "Премахване {code}",
+    "input_placeholder": "Код",
+    "input_label": "Промо код",
+    "add_success": "Вашият код е приложен успешно.",
+    "add_error": "За съжаление, добавянето на промоционалния код не успя.",
+    "remove_error": "За съжаление, премахването на промоционалния код не успя."
   }
 }

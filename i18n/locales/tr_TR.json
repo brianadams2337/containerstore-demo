@@ -638,5 +638,15 @@
   },
   "recentlyViewedProductsSlider": {
     "title": "Son Görüntülenenler"
+  },
+  "basket_promotion_codes": {
+    "headline": "Promosyon Kodları",
+    "add_code": "Ekle",
+    "remove_code": "Kaldır {code}",
+    "input_placeholder": "Kod",
+    "input_label": "Promosyon kodu",
+    "add_success": "Kodunuz başarıyla uygulanmıştır.",
+    "add_error": "Maalesef, promosyon kodu eklenemedi.",
+    "remove_error": "Maalesef, promosyon kodunun kaldırılması başarısız oldu."
   }
 }

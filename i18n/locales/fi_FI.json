@@ -638,5 +638,15 @@
   },
   "recentlyViewedProductsSlider": {
     "title": "Äskettäin katsotut"
+  },
+  "basket_promotion_codes": {
+    "headline": "Tarjouskoodit",
+    "add_code": "Lisää",
+    "remove_code": "Poista {code}",
+    "input_placeholder": "Koodi",
+    "input_label": "Tarjouskoodi",
+    "add_success": "Koodisi on lisätty onnistuneesti.",
+    "add_error": "Valitettavasti tarjouskoodin lisääminen epäonnistui.",
+    "remove_error": "Valitettavasti tarjouskoodin poistaminen epäonnistui."
   }
 }

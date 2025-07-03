@@ -638,5 +638,15 @@
   },
   "recentlyViewedProductsSlider": {
     "title": "Nedávno zobrazené"
+  },
+  "basket_promotion_codes": {
+    "headline": "Propagační kódy",
+    "add_code": "Přidat",
+    "remove_code": "Odebrat {code}",
+    "input_placeholder": "Kód",
+    "input_label": "Propagační kód",
+    "add_success": "Váš kód byl úspěšně použit.",
+    "add_error": "Přidání propagačního kódu se bohužel nezdařilo.",
+    "remove_error": "Bohužel se odstranění propagačního kódu nezdařilo."
   }
 }

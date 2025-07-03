@@ -638,5 +638,15 @@
   },
   "recentlyViewedProductsSlider": {
     "title": "Zuletzt angesehen"
+  },
+  "basket_promotion_codes": {
+    "headline": "Aktionscodes",
+    "add_code": "Hinzufügen",
+    "remove_code": "Entfernen {code}",
+    "input_placeholder": "Code",
+    "input_label": "Aktionscode",
+    "add_success": "Dein Code wurde erfolgreich angewendet.",
+    "add_error": "Leider hat das Hinzufügen des Aktionscodes nicht geklappt.",
+    "remove_error": "Leider konnte der Aktionscode nicht gelöscht werden."
   }
 }

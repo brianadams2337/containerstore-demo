@@ -638,5 +638,15 @@
   },
   "recentlyViewedProductsSlider": {
     "title": "Recent bekeken"
+  },
+  "basket_promotion_codes": {
+    "headline": "Promotiecodes",
+    "add_code": "Toevoegen",
+    "remove_code": "Verwijderen {code}",
+    "input_placeholder": "Code",
+    "input_label": "Promotiecode",
+    "add_success": "Je code is goed toegevoegd.",
+    "add_error": "Helaas is het toevoegen van de promotiecode mislukt.",
+    "remove_error": "Helaas is het verwijderen van de promotiecode mislukt."
   }
 }

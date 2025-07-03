@@ -638,5 +638,15 @@
   },
   "recentlyViewedProductsSlider": {
     "title": "Nylig viste"
+  },
+  "basket_promotion_codes": {
+    "headline": "Kampanjekoder",
+    "add_code": "Legg til",
+    "remove_code": "Fjern {code}",
+    "input_placeholder": "Kode",
+    "input_label": "Kampanjekode",
+    "add_success": "Koden din er brukt.",
+    "add_error": "Dessverre mislyktes det å legge til kampanjekoden.",
+    "remove_error": "Dessverre mislyktes fjerningen av kampanjekoden."
   }
 }

@@ -638,5 +638,15 @@
   },
   "recentlyViewedProductsSlider": {
     "title": "Nesen skatītie"
+  },
+  "basket_promotion_codes": {
+    "headline": "Reklāmas kodi",
+    "add_code": "Pievienot",
+    "remove_code": "Noņemt {code}",
+    "input_placeholder": "Kods",
+    "input_label": "Akcijas kods",
+    "add_success": "Jūsu kods ir veiksmīgi piemērots.",
+    "add_error": "Diemžēl akcijas koda pievienošana neizdevās.",
+    "remove_error": "Diemžēl akcijas koda dzēšana neizdevās."
   }
 }

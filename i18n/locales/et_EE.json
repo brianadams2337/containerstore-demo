@@ -638,5 +638,15 @@
   },
   "recentlyViewedProductsSlider": {
     "title": "Hiljuti vaadatud"
+  },
+  "basket_promotion_codes": {
+    "headline": "Sooduskoodid",
+    "add_code": "Lisa",
+    "remove_code": "Eemalda {code}",
+    "input_placeholder": "Kood",
+    "input_label": "Sooduskood",
+    "add_success": "Teie kood on edukalt rakendatud.",
+    "add_error": "Kahjuks ei õnnestunud sooduskoodi lisamine.",
+    "remove_error": "Kahjuks ei õnnestunud sooduskoodi eemaldamine."
   }
 }

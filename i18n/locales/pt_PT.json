@@ -638,5 +638,15 @@
   },
   "recentlyViewedProductsSlider": {
     "title": "Recentemente visualizados"
+  },
+  "basket_promotion_codes": {
+    "headline": "Códigos promocionais",
+    "add_code": "Adicionar",
+    "remove_code": "Remover {code}",
+    "input_placeholder": "Código",
+    "input_label": "Código promocional",
+    "add_success": "O teu código foi aplicado com sucesso.",
+    "add_error": "Infelizmente, não foi possível adicionar o código promocional.",
+    "remove_error": "Infelizmente, não foi possível remover o código promocional."
   }
 }

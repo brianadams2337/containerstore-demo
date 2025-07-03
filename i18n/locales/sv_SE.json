@@ -638,5 +638,15 @@
   },
   "recentlyViewedProductsSlider": {
     "title": "Senast visade"
+  },
+  "basket_promotion_codes": {
+    "headline": "Kampanjkoder",
+    "add_code": "Lägg till",
+    "remove_code": "Ta bort {code}",
+    "input_placeholder": "Kod",
+    "input_label": "Kampanjkod",
+    "add_success": "Din kod har tillämpats.",
+    "add_error": "Tyvärr gick det inte att lägga till kampanjkoden.",
+    "remove_error": "Tyvärr gick det inte att ta bort kampanjkoden."
   }
 }

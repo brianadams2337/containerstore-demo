@@ -638,5 +638,15 @@
   },
   "recentlyViewedProductsSlider": {
     "title": "Nedavno ogledano"
+  },
+  "basket_promotion_codes": {
+    "headline": "Promocijske kode",
+    "add_code": "Dodaj",
+    "remove_code": "Odstrani {code}",
+    "input_placeholder": "Koda",
+    "input_label": "Promocijska koda",
+    "add_success": "Vaša koda je bila uspešno uporabljena.",
+    "add_error": "Na žalost dodajanje promocijske kode ni uspelo.",
+    "remove_error": "Na žalost odstranitev promocijske kode ni uspela."
   }
 }
