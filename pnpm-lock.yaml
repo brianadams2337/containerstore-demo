@@ -74,8 +74,8 @@ importers:
         specifier: 1.0.2
         version: 1.0.2(unstorage@1.16.0(@netlify/blobs@8.2.0)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))
       '@storyblok/nuxt':
-        specifier: 7.1.1
-        version: 7.1.1(vue@3.5.17(typescript@5.8.3))
+        specifier: 7.1.2
+        version: 7.1.2(vue@3.5.17(typescript@5.8.3))
       '@storyblok/richtext':
         specifier: 3.4.0
         version: 3.4.0
@@ -2664,8 +2664,8 @@ packages:
   '@storyblok/js@4.1.1':
     resolution: {integrity: sha512-bDwyaPRiPiUVpYjk91OVH7GYQ4zdxHTcdf9ah8AtstkKIOokLq1lZKb2CMqcOpOfBM8U4NiT5kKZEBnJtAJ3EA==}
 
-  '@storyblok/nuxt@7.1.1':
-    resolution: {integrity: sha512-kugbmi25tmGQk/FhPwzeFVgbTNSCR5PCyc/Zb3Io0/FAu7UrQdptmxlWHZR8tlJ9rUnrgaBk67OIr0plgnkyoA==}
+  '@storyblok/nuxt@7.1.2':
+    resolution: {integrity: sha512-bHbe2h24R/iweOeT390ypeAuU5pf/px8c1AGqqxJdIrlpvs0n5isIF+pCBFAUCGJw2q7lVUYvA0KsCXoNEjYxA==}
 
   '@storyblok/region-helper@1.2.0':
     resolution: {integrity: sha512-Ew6okkK7vQvkk/jdjaM7f6szJXYtcBmPJXhl3zzh/rW9QdAaHKOodiIbvdkpvkcOrSNmUpXcx5d2gxYL5HRIzg==}
@@ -12864,7 +12864,7 @@ snapshots:
       '@storyblok/richtext': 3.4.0
       storyblok-js-client: 7.0.2
 
-  '@storyblok/nuxt@7.1.1(vue@3.5.17(typescript@5.8.3))':
+  '@storyblok/nuxt@7.1.2(vue@3.5.17(typescript@5.8.3))':
     dependencies:
       '@storyblok/vue': 9.1.1(vue@3.5.17(typescript@5.8.3))
     transitivePeerDependencies:
