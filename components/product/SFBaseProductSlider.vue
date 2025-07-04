@@ -14,26 +14,22 @@
         class="absolute -top-1 right-6 flex gap-0.5 md:right-2"
         :class="{ hidden: !isScrollable }"
       >
-        <SFButton
-          class="rounded-l-full border-none !p-2"
+        <SFSliderArrowButton
+          tabindex="-1"
           :disabled="!isPrevEnabled"
-          size="sm"
-          variant="slider"
+          direction="left"
+          inverted-radius
           :aria-label="$t('slider.got_to_previous_item')"
           @click="prev()"
-        >
-          <IconChevronLeft class="size-4 w-5" />
-        </SFButton>
-        <SFButton
-          class="rounded-r-full border-none !p-2"
+        />
+        <SFSliderArrowButton
+          tabindex="-1"
           :disabled="!isNextEnabled"
+          direction="right"
+          inverted-radius
           :aria-label="$t('slider.got_to_next_item')"
-          size="sm"
-          variant="slider"
           @click="next()"
-        >
-          <IconChevronRight class="size-4 w-5" />
-        </SFButton>
+        />
       </div>
     </template>
     <template #default>
@@ -41,12 +37,13 @@
         <div
           v-for="(product, index) in products || []"
           :key="product.id"
-          class="w-1/2 shrink-0 snap-start pr-4 md:w-1/3 lg:w-1/4"
+          class="my-1 w-1/2 shrink-0 snap-start pr-4 md:w-1/3 lg:w-1/4"
         >
           <SFProductCard
             hide-badges
             :product="product"
             multiple-images
+            class="mx-1"
             @click="trackProductCardClick(product, index)"
           />
         </div>
@@ -70,12 +67,9 @@ import { getDeepestCategoryForTracking } from '~/utils/tracking'
 import { usePageState } from '~/composables/usePageState'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'
 import { useRoute } from '#app/composables/router'
-import {
-  SFButton,
-  SFSkeletonLoader,
-  SFItemsSlider,
-} from '#storefront-ui/components'
+import { SFSkeletonLoader, SFItemsSlider } from '#storefront-ui/components'
 import type { AsyncDataRequestStatus } from '#app'
+import SFSliderArrowButton from '~/modules/ui/runtime/components/core/SFSliderArrowButton.vue'
 
 const { products, title, status } = defineProps<{
   title: string

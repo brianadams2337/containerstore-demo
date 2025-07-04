@@ -95,7 +95,7 @@
           </h2>
         </template>
       </SFProductRecommendations>
-      <SFRecentlyViewedProductsSlider class="max-md:px-5" />
+      <SFRecentlyViewedProductsSlider class="mt-10 max-md:px-5" />
     </div>
     <template #loading>
       <SFProductDetailPageLoadingState />

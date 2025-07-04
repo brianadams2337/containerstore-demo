@@ -5,6 +5,7 @@
     :products="products"
     :title="$t('recentlyViewedProductsSlider.title')"
     :status="status"
+    slider-tabindex="-1"
   />
 </template>
 <script setup lang="ts">
