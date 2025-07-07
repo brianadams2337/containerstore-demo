@@ -9,7 +9,7 @@
         <SFFadeInTransition>
           <span
             v-if="totalProductsCount > 0 && status === 'success'"
-            class="rounded-full bg-primary px-2 py-0.5 text-xs font-semibold leading-4 text-white"
+            class="rounded-full bg-primary px-2 py-0.5 text-sm font-semibold leading-4 text-white"
           >
             {{ totalProductsCount }}
           </span>

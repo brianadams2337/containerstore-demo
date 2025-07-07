@@ -62,7 +62,7 @@
         :aria-label="minLabel"
         @update:model-value="changeRangeAtIndex(roundDownPrice($event), 0)"
       />
-      <div class="mx-auto text-center text-xs font-semibold text-secondary">
+      <div class="mx-auto text-center text-sm font-semibold text-secondary">
         {{ $t('filter_range_slider.to') }}
       </div>
       <SFRangeInput

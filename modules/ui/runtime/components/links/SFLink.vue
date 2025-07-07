@@ -49,7 +49,7 @@ const {
 
 const variantClass = computed(() => {
   const defaultClass = `
-    inline-flex items-center gap-2 whitespace-nowrap text-xs
+    inline-flex items-center gap-2 whitespace-nowrap text-sm
     leading-5 tracking-wide transition duration-200 ease-linear
    `
   return !raw ? [defaultClass, LinkTypeClass[variant]] : {}

@@ -1,6 +1,6 @@
 <template>
   <div class="prose mb-10 flex w-full flex-col">
-    <SFHeadline size="xs" tag="h3">
+    <SFHeadline size="sm" tag="h3">
       {{ blok?.fields.headline }}
     </SFHeadline>
     <div v-if="isCtaEmail" class="grid grid-cols-2 justify-items-start gap-8">

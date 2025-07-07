@@ -18,7 +18,7 @@
       >
         <div
           v-if="blok.fields.topline"
-          class="text-xs font-semibold leading-loose md:text-md"
+          class="text-sm font-semibold leading-loose md:text-md"
         >
           {{ blok.fields.topline }}
         </div>
@@ -29,7 +29,7 @@
         >
           {{ blok.fields.headline }}
         </SFHeadline>
-        <p v-if="blok.fields.text" class="mt-3 overflow-auto text-xs md:pt-5">
+        <p v-if="blok.fields.text" class="mt-3 overflow-auto text-sm md:pt-5">
           {{ blok.fields.text }}
         </p>
         <SFButton v-if="resolvedLink" class="mt-10 shrink-0" :to="resolvedLink">

@@ -25,7 +25,7 @@
     <div
       class="mt-3 flex w-full items-center justify-between rounded-lg bg-gray-200 px-3 py-4.5"
     >
-      <span class="flex-1 text-xs">
+      <span class="flex-1 text-sm">
         {{ $t('profile_account_information.disclaimer') }}
       </span>
       <IconInfoOutlineSquare class="size-3" />

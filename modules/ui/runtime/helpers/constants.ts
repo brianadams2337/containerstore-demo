@@ -2,7 +2,6 @@ import type { ValuesType } from 'utility-types'
 
 /* intentionally naming the variables the same as the type */
 export const Size = {
-  XS: 'xs',
   SM: 'sm',
   MD: 'md',
   LG: 'lg',
@@ -17,7 +16,6 @@ export const HeadlineSize = {
   LG: 'lg',
   MD: 'md',
   SM: 'sm',
-  XS: 'xs',
 } as const
 
 export type HeadlineSize = ValuesType<typeof HeadlineSize>

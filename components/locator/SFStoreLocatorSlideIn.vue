@@ -21,7 +21,7 @@
           </SFButton>
         </div>
         <div>
-          <p class="mt-5 text-xs">{{ $t('location_page.subline') }}</p>
+          <p class="mt-5 text-sm">{{ $t('location_page.subline') }}</p>
         </div>
         <div class="mt-3 flex items-center justify-center gap-4">
           <SFTextInput
@@ -64,7 +64,7 @@
         data-testid="choose-store-button"
         variant="primary"
         is-full-width
-        class="w-fit rounded border border-black p-2 text-xs !normal-case"
+        class="w-fit rounded border border-black p-2 text-sm !normal-case"
         rounded
         :disabled="stores.length === 0 || currentSelectedStoreId === undefined"
         @click="selectStore"

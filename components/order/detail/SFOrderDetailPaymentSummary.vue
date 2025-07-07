@@ -19,7 +19,7 @@
       <dd class="text-right text-xl" data-testid="order-detail-total">
         {{ formatCurrency(cost.withTax) }}
       </dd>
-      <dt class="text-xs text-secondary">
+      <dt class="text-sm text-secondary">
         {{
           includesTax ? $t('global.including_vat') : $t('global.excluding_vat')
         }}

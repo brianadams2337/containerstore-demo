@@ -9,7 +9,7 @@
     v-on="backClickEventHandling"
   >
     <IconBack class="size-4" />
-    <span class="text-xs font-semibold">{{ $t('global.back') }}</span>
+    <span class="text-sm font-semibold">{{ $t('global.back') }}</span>
   </component>
 </template>
 

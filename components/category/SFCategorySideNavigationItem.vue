@@ -13,7 +13,7 @@
     {{ category.name }}
     <span
       v-if="isSale"
-      class="inline-block -translate-y-0.5 text-xs text-product-sale"
+      class="inline-block -translate-y-0.5 text-sm text-product-sale"
     >
       %
     </span>

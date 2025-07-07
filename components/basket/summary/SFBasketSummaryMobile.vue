@@ -38,7 +38,7 @@
   <div class="bg-gray-100 px-5 pb-5 lg:hidden">
     <SFBasketPromotionCodes />
   </div>
-  <p class="bg-gray-100 px-5 pb-8 text-xs text-secondary lg:hidden">
+  <p class="bg-gray-100 px-5 pb-8 text-sm text-secondary lg:hidden">
     {{ deliveryCostsDisclaimer }}
   </p>
 </template>

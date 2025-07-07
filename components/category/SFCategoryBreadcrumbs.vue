@@ -35,7 +35,7 @@
       <SFFadeInTransition>
         <span
           v-if="!productsFetching && productsCount !== undefined"
-          class="ml-0.5 inline-flex h-4.5 items-center rounded-full bg-primary px-2 text-xs font-semibold leading-4 text-white"
+          class="ml-0.5 inline-flex h-4.5 items-center rounded-full bg-primary px-2 text-sm font-semibold leading-4 text-white"
           data-testid="breadcrumb-product-counter"
         >
           {{ productsCount }}

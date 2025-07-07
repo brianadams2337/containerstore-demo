@@ -22,7 +22,7 @@
       >
         <div
           v-if="blok.topline"
-          class="text-xs font-semibold leading-loose md:text-md"
+          class="text-sm font-semibold leading-loose md:text-md"
         >
           {{ blok.topline }}
         </div>
@@ -35,7 +35,7 @@
         </SFHeadline>
         <p
           v-if="blok.text"
-          class="mt-3 overflow-auto text-xs scrollbar-hide md:pt-5"
+          class="mt-3 overflow-auto text-sm scrollbar-hide md:pt-5"
         >
           {{ blok.text }}
         </p>

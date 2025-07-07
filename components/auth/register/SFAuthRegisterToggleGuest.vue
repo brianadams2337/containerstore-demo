@@ -14,7 +14,7 @@
       class="flex items-center justify-between gap-2 rounded-lg bg-gray-200 px-3 py-2.5"
       data-testid="register-guest-info"
     >
-      <span class="text-xs text-secondary">
+      <span class="text-sm text-secondary">
         {{ $t('auth_register_toggle_guest.activation_hint') }}
       </span>
       <IconInfoOutlineSquare class="size-4 text-secondary" />

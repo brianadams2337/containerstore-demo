@@ -4,7 +4,7 @@
       <SFHeadline tag="h2" size="lg">{{
         $t('basket_summary.you_pay')
       }}</SFHeadline>
-      <div class="mb-1 flex flex-col gap-1 text-xs text-secondary">
+      <div class="mb-1 flex flex-col gap-1 text-sm text-secondary">
         <SFHeadline
           tag="span"
           size="lg"

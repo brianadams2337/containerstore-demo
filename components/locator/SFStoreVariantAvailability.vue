@@ -21,7 +21,7 @@
                 : $t('store_locator.availability.not_available')
             }}
           </SFHeadline>
-          <div class="text-xs">
+          <div class="text-sm">
             {{ selectedStoreData.storeName }}
           </div>
         </div>
@@ -34,7 +34,7 @@
       >
         {{ $t('store_variant_availability.store_availability') }}
       </h2>
-      <p class="text-xs text-primary" data-testid="store-availability-subline">
+      <p class="text-sm text-primary" data-testid="store-availability-subline">
         {{ $t('store_variant_availability.store_availability_subline') }}
       </p>
     </div>

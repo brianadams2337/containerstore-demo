@@ -83,7 +83,7 @@
       >
         {{ $t('auth_register.submit_sign_up') }}
       </SFButton>
-      <span class="text-xs text-secondary">
+      <span class="text-sm text-secondary">
         {{ $t('auth_register.mandatory_info_legend') }}
       </span>
     </div>

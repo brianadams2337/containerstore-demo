@@ -37,7 +37,7 @@
       <div
         v-for="label in filters"
         :key="label"
-        class="flex h-5 items-center rounded-md bg-gray-300 p-1 text-xs leading-none text-secondary"
+        class="flex h-5 items-center rounded-md bg-gray-300 p-1 text-sm leading-none text-secondary"
         :data-testid="`search-suggestion-tag-${label}`"
       >
         {{ label }}

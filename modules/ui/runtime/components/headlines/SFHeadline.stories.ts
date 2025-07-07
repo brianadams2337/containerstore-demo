@@ -197,11 +197,6 @@ export const Sizes: Story = {
           tag: HeadlineTag.H6,
           title: 'SM Headline',
         },
-        {
-          size: HeadlineSize.XS,
-          tag: HeadlineTag.P,
-          title: 'XS Headline',
-        },
       ]
       return { args, headlines }
     },

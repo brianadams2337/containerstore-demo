@@ -26,17 +26,17 @@
     <label
       v-if="placeholder"
       :for="id"
-      class="absolute left-2 top-4 w-full truncate pl-2.5 text-sm text-secondary duration-100 ease-linear placeholder-shown:bg-gray-200 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:text-md peer-placeholder-shown:text-secondary peer-focus:ml-1 peer-focus:w-fit peer-focus:-translate-y-6 peer-focus:bg-white peer-focus:px-1.5 peer-focus:text-xs peer-focus:text-accent peer-focus:shadow-input-label after:peer-focus:text-accent"
+      class="absolute left-2 top-4 w-full truncate pl-2.5 text-sm text-secondary duration-100 ease-linear placeholder-shown:bg-gray-200 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:text-md peer-placeholder-shown:text-secondary peer-focus:ml-1 peer-focus:w-fit peer-focus:-translate-y-6 peer-focus:bg-white peer-focus:px-1.5 peer-focus:text-sm peer-focus:text-accent peer-focus:shadow-input-label after:peer-focus:text-accent"
       :style="{ maxWidth: `${inputWidth}px` }"
       :class="{
         [`after:ml-0.5 after:text-secondary after:content-['*']`]: required,
         '!text-secondary transition-none peer-focus:after:text-secondary':
           readonly,
-        'ml-1 !w-fit -translate-y-6 bg-white !px-1.5 text-xs !shadow-input-label':
+        'ml-1 !w-fit -translate-y-6 bg-white !px-1.5 text-sm !shadow-input-label':
           modelValue,
         '!text-status-error after:text-status-error peer-focus:after:text-status-error':
           hasErrors,
-        'ml-1 w-min -translate-y-6 bg-white px-1.5 text-xs text-accent shadow-input-label after:text-accent':
+        'ml-1 w-min -translate-y-6 bg-white px-1.5 text-sm text-accent shadow-input-label after:text-accent':
           type === 'date',
       }"
     >

@@ -6,7 +6,7 @@
     :class="{ 'scroll-mt-8': blok.anchor_id }"
     :style="style"
   >
-    <SFHeadline size="xs" tag="h3">{{ blok.headline }}</SFHeadline>
+    <SFHeadline size="sm" tag="h3">{{ blok.headline }}</SFHeadline>
     <div
       v-if="blok.cta?.linktype === 'email'"
       class="grid grid-cols-2 justify-items-start gap-8"

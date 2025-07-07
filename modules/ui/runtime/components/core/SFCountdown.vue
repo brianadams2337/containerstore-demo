@@ -1,5 +1,5 @@
 <template>
-  <div class="flex px-1.5 text-xs">
+  <div class="flex px-1.5 text-sm">
     <div
       v-for="(value, key) in countdown"
       :key="key"

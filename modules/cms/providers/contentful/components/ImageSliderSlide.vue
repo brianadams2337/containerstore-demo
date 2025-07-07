@@ -9,9 +9,7 @@
       class="aspect-3/4 w-full"
     />
     <div class="mt-4 flex flex-col">
-      <div
-        class="pb-1 text-xs font-bold leading-4 md:pb-0 md:text-xs md:leading-6"
-      >
+      <div class="pb-1 text-sm font-bold leading-4 md:pb-0 md:leading-6">
         {{ blok?.fields.topline || '&nbsp;' }}
       </div>
       <SFHeadline

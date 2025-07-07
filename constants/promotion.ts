@@ -5,7 +5,6 @@ import type { ValuesType } from 'utility-types'
 export const PromotionHeadlineSize = {
   BASE: 'base',
   SM: 'sm',
-  XS: 'xs',
 } as const
 
 export type PromotionHeadlineSize = ValuesType<typeof PromotionHeadlineSize>

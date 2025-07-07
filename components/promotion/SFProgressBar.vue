@@ -26,8 +26,8 @@
           :style="{ background: backgroundColor(percent) }"
         ></div>
       </div>
-      <div class="overflow-hidden truncate text-xs font-bold">{{ title }}</div>
-      <div class="overflow-hidden truncate text-xs">{{ subtitle }}</div>
+      <div class="overflow-hidden truncate text-sm font-bold">{{ title }}</div>
+      <div class="overflow-hidden truncate text-sm">{{ subtitle }}</div>
     </div>
   </div>
 </template>

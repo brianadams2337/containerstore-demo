@@ -60,6 +60,5 @@ const HeadlineClass = {
   [HeadlineSize.LG]: 'text-lg',
   [HeadlineSize.MD]: 'text-md',
   [HeadlineSize.SM]: 'text-sm',
-  [HeadlineSize.XS]: 'text-xs',
 } as Record<HeadlineSize, string>
 </script>

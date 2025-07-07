@@ -7,7 +7,7 @@
         {{ formatDate(new Date(Date.parse(deliveryDate.maximum))) }}
       </div>
     </div>
-    <div class="p-2 text-xs text-secondary" data-testid="osp-carrier">
+    <div class="p-2 text-sm text-secondary" data-testid="osp-carrier">
       {{ $t('order_information.order_details.delivered_by') }}
       <!--TODO do not use dynamic translation key -->
       {{ $t('global.carrier_key.' + sender) }}

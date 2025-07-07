@@ -31,7 +31,7 @@
           }}
           <span
             v-if="promotionsSortedByPriority.length"
-            class="inline-flex h-4 items-center justify-center rounded-full bg-black px-1.5 text-xs text-white"
+            class="inline-flex h-4 items-center justify-center rounded-full bg-black px-1.5 text-sm text-white"
             data-testid="promotion-counter"
           >
             {{ promotionsSortedByPriority.length }}

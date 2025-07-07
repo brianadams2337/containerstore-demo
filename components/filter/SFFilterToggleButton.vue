@@ -12,7 +12,7 @@
     {{ label }}
     <span
       v-if="appliedFiltersCount"
-      class="right-3 inline-flex size-5 items-center justify-center rounded bg-gray-300 text-xs text-secondary max-md:absolute max-md:bg-primary max-md:text-white md:size-4"
+      class="right-3 inline-flex size-5 items-center justify-center rounded bg-gray-300 text-sm text-secondary max-md:absolute max-md:bg-primary max-md:text-white md:size-4"
       data-testid="filter-toggle-counter"
     >
       {{ appliedFiltersCount }}

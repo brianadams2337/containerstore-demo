@@ -23,7 +23,7 @@
       :class="[
         `after:ml-0.5 after:text-secondary after:content-['*']`,
         {
-          'ml-1 -translate-y-6 bg-white !px-1.5 text-xs !shadow-input-label':
+          'ml-1 -translate-y-6 bg-white !px-1.5 text-sm !shadow-input-label':
             activeGenderValue,
           '!text-status-error after:text-status-error group-focus:!text-status-error group-focus:after:!text-status-error':
             !isValid,

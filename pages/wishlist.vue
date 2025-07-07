@@ -15,7 +15,7 @@
         <ClientOnly>
           <SFFadeInTransition v-if="count !== undefined && count > 0" appear>
             <span
-              class="ml-0.5 inline-flex h-4.5 items-center rounded-full bg-primary px-2 text-xs font-semibold leading-4 text-white"
+              class="ml-0.5 inline-flex h-4.5 items-center rounded-full bg-primary px-2 text-sm font-semibold leading-4 text-white"
             >
               {{ count }}
             </span>

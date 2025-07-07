@@ -42,7 +42,7 @@ export const Default = {
           <div class="p-4 min-w-48">
             <h3 class="font-semibold mb-2">Product Information</h3>
             <p class="text-sm text-gray-600 mb-2">This product is available in multiple sizes and colors.</p>
-            <div class="text-xs text-gray-500">
+            <div class="text-sm text-gray-500">
               <p>• Free shipping on orders over $50</p>
               <p>• 30-day return policy</p>
               <p>• Customer support available</p>

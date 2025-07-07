@@ -125,13 +125,6 @@ export default {
         'inset 0 2px 8px -10px rgb(var(--color-shadow-gray)), inset 0 2px 8px -10px rgb(var(--color-shadow-gray))',
     },
     fontSize: {
-      xs: [
-        '0.625rem', // 10px
-        {
-          lineHeight: '0.875rem',
-          letterSpacing: '0.09px',
-        },
-      ],
       sm: [
         '0.75rem', // 12px
         {

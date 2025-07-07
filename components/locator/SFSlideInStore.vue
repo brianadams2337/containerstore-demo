@@ -5,7 +5,7 @@
         {{ nameWithIndex }}
       </p>
       <div
-        class="flex grow basis-1/2 flex-row flex-nowrap items-center justify-between text-xs font-bold"
+        class="flex grow basis-1/2 flex-row flex-nowrap items-center justify-between text-sm font-bold"
       >
         <div class="flex flex-col gap-2">
           <div v-if="distance" class="w-fit rounded-full bg-gray-100 px-2 py-1">
@@ -31,7 +31,7 @@
         <SFStoreFavoriteToggle :store-id="id" />
       </div>
     </div>
-    <div class="mt-5 flex flex-col space-y-2 text-xs">
+    <div class="mt-5 flex flex-col space-y-2 text-sm">
       <div class="flex items-center justify-start">
         <div class="mr-2 size-4"><IconLocation /></div>
         <div>

@@ -32,7 +32,7 @@
         :basket-items="basket.items"
       />
       <SFBasketPromotionCodes />
-      <p class="text-xs text-secondary">
+      <p class="text-sm text-secondary">
         {{ deliveryCostsDisclaimer }}
       </p>
     </section>

@@ -5,7 +5,7 @@
         <SFHeadline v-if="label" tag="h4" size="lg" class="leading-normal">
           {{ label }}
           <span
-            class="inline-flex h-4 items-center justify-center rounded-full bg-black px-1.5 text-xs leading-4 text-white opacity-0"
+            class="inline-flex h-4 items-center justify-center rounded-full bg-black px-1.5 text-sm leading-4 text-white opacity-0"
             :class="{ 'opacity-100': badge > 0 }"
             data-testid="filter-group-counter"
           >

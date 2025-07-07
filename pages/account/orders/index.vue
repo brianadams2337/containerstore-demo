@@ -10,7 +10,7 @@
         {{ $t('orders_page.title') }}
         <span
           v-if="ordersCount"
-          class="ml-1 inline-flex h-4.5 items-center rounded-full bg-primary px-2 text-xs font-semibold leading-4 text-white"
+          class="ml-1 inline-flex h-4.5 items-center rounded-full bg-primary px-2 text-sm font-semibold leading-4 text-white"
         >
           {{ ordersCount }}
         </span>

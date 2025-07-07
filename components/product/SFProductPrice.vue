@@ -7,7 +7,7 @@
       <span
         v-for="({ value, category }, index) in relativeReductions"
         :key="`${value}-badge-${category}-${index}`"
-        class="mr-1 inline-block rounded bg-product-sale px-1 text-xs font-semibold text-white"
+        class="mr-1 inline-block rounded bg-product-sale px-1 text-sm font-semibold text-white"
         :style="category === 'promotion' && promotionStyle"
       >
         -{{ value }}%
@@ -30,7 +30,7 @@
 
     <sup
       v-if="showTaxInfo"
-      class="ml-1 text-right text-xs text-secondary md:text-left"
+      class="ml-1 text-right text-sm text-secondary md:text-left"
       data-testid="tax-info"
     >
       {{ $t('global.including_vat') }}
@@ -40,7 +40,7 @@
         lowestPriorPrice?.withTax &&
         lowestPriorPrice?.relativeDifferenceToPrice !== null
       "
-      class="mt-1 w-full text-xs text-secondary md:text-sm"
+      class="mt-1 w-full text-sm text-secondary"
       :class="{ 'text-end': !inline }"
       data-testid="lowest-prior-price"
     >
@@ -109,7 +109,6 @@ const classes = computed(() => ({
   'text-lg': size === Size.LG,
   'text-sm': size === Size.SM,
   'text-md': size === Size.MD,
-  'text-xs': size === Size.XS,
   'font-bold': type === 'loud',
   'font-semibold': type === 'whisper',
   'font-normal': type === 'normal',

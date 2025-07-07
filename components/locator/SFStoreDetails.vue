@@ -6,7 +6,7 @@
     <span class="ml-4 inline-block rounded-xl bg-gray-200 px-3 py-2">
       {{ formatDistance(store.distance) }}
     </span>
-    <div class="mt-5 flex flex-col space-y-2 text-xs">
+    <div class="mt-5 flex flex-col space-y-2 text-sm">
       <div class="flex items-center justify-start">
         <div class="mr-2 size-4"><IconLocation /></div>
         <div>
