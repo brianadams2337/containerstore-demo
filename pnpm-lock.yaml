@@ -23,8 +23,8 @@ importers:
   .:
     dependencies:
       '@contentful/live-preview':
-        specifier: 4.6.25
-        version: 4.6.25(graphql@16.10.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: 4.6.26
+        version: 4.6.26(graphql@16.10.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@contentful/rich-text-html-renderer':
         specifier: 17.0.1
         version: 17.0.1
@@ -661,11 +661,11 @@ packages:
     resolution: {integrity: sha512-Ir+AOibqzrIsL6ajt3Rz3LskB7OiMVHqltZmspbW/TJuTVuyOMirVqAkjfY6JISiLHgyNqicAC8AyHHGzNd/dA==}
     engines: {node: '>=0.1.90'}
 
-  '@contentful/content-source-maps@0.11.23':
-    resolution: {integrity: sha512-jAI9NqrdY8oPAnWDocosXQNtUrl+kkNxx/DC0xUS5Kb4gbdGUchkGlASAoWFgOi7W5pJXeIJt5yan0WdOv0NYw==}
+  '@contentful/content-source-maps@0.11.24':
+    resolution: {integrity: sha512-2LiSuZglKs85d3pJYxGppL9RiUJ2KpV7n35ZCZCTlw3XVKMn5wj31xsEM4/4nuOX1J48n1XwnYtK83BfbMYXfA==}
 
-  '@contentful/live-preview@4.6.25':
-    resolution: {integrity: sha512-neFrhg7TjDAmhhAPIwpwsQ1a5npPDAeMMWibht2Mb5rWCb67XWwkgSGra9celM/Agywnik7cMCIFwFBdj6Yt8Q==}
+  '@contentful/live-preview@4.6.26':
+    resolution: {integrity: sha512-fq4euleF6bQ+rLIuarzz91SMKOgykF9+RPdZPmsuurggUZT3ZlI4bBXmCml2BRdVL4jB5T0rJrbDvNMbJw0ccA==}
     peerDependencies:
       react: ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -10087,14 +10087,14 @@ snapshots:
 
   '@colors/colors@1.6.0': {}
 
-  '@contentful/content-source-maps@0.11.23':
+  '@contentful/content-source-maps@0.11.24':
     dependencies:
       '@vercel/stega': 0.1.2
       json-pointer: 0.6.2
 
-  '@contentful/live-preview@4.6.25(graphql@16.10.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@contentful/live-preview@4.6.26(graphql@16.10.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
-      '@contentful/content-source-maps': 0.11.23
+      '@contentful/content-source-maps': 0.11.24
       '@contentful/rich-text-types': 17.0.1
       flatted: 3.3.3
       graphql-tag: 2.12.6(graphql@16.10.0)
@@ -14677,7 +14677,7 @@ snapshots:
 
   contentful@10.15.1(debug@4.4.1):
     dependencies:
-      '@contentful/content-source-maps': 0.11.23
+      '@contentful/content-source-maps': 0.11.24
       '@contentful/rich-text-types': 16.8.5
       axios: 1.10.0(debug@4.4.1)
       contentful-resolve-response: 1.9.3
@@ -14689,7 +14689,7 @@ snapshots:
 
   contentful@11.7.5(debug@4.4.1):
     dependencies:
-      '@contentful/content-source-maps': 0.11.23
+      '@contentful/content-source-maps': 0.11.24
       '@contentful/rich-text-types': 16.8.5
       axios: 1.10.0(debug@4.4.1)
       contentful-resolve-response: 1.9.3
