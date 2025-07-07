@@ -2,6 +2,7 @@
   <div v-editable="blok" class="relative">
     <component
       :is="getComponentName(content.component)"
+      v-if="content"
       :key="blok._uid"
       :blok="content"
       :sizes="sizes"

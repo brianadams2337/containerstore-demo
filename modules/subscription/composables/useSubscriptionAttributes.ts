@@ -6,7 +6,7 @@ import {
   hasSubscriptionCustomData,
 } from '../helpers/subscription'
 import { useNuxtApp } from '#app'
-import type { OrderItem } from '~/types/order'
+import type { OrderItem } from '~~/types/order'
 
 /**
  * Computes subscription attributes for a basket or order item.

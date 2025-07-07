@@ -9,6 +9,7 @@
         name="previous-button"
       >
         <SFPaginationButton
+          v-if="previousPage"
           :disabled="!canNavigateLeft"
           :page="previousPage"
           data-testid="paginationButton-previousPage"
@@ -112,10 +113,10 @@ defineSlots<{
   /** Custom previous button with navigation state */
   'previous-button': (props: {
     canNavigateLeft: boolean
-    previousPage: Page
+    previousPage: Page | undefined
   }) => unknown
   /** Custom first page button */
-  'first-page': (props: { firstPage: Page }) => unknown
+  'first-page': (props: { firstPage: Page | undefined }) => unknown
   /** Custom first dots indicator */
   'first-dots': () => unknown
   /** Custom page buttons with limited pages */

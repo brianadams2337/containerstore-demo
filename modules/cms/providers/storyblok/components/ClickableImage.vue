@@ -1,5 +1,5 @@
 <template>
-  <div v-if="blok && imageSource.src" v-editable="blok" :class="marginClasses">
+  <div v-if="blok && imageSource?.src" v-editable="blok" :class="marginClasses">
     <CMSStoryblokLink
       v-if="blok.cta_url.cached_url"
       :target="isLinkTypeUrl ? '_blank' : '_self'"
@@ -35,7 +35,13 @@ const { marginClasses } = useStoryblokMargins(blok)
 const tracking = useStorefrontTracking()
 const image = computed(() => blok?.image[0])
 const { sanitize } = useStoryblokImageSanitizer()
-const imageSource = computed(() => sanitize(image.value))
+const imageSource = computed(() => {
+  if (!image.value) {
+    return
+  }
+  return sanitize(image.value)
+})
+
 const hasBeenVisible = ref(false)
 
 const isLinkTypeUrl = computed(() => blok.cta_url.linktype === 'url')
@@ -52,8 +58,8 @@ const onVisible = (state: boolean) => {
   }
 }
 
-const clickObserver = image.value.promotion_id
-  ? () => tracking && tracking.trackPromotion('select_promotion', image.value)
+const clickObserver = image.value?.promotion_id
+  ? () => tracking && tracking.trackPromotion('select_promotion', image.value!)
   : () => {}
 
 defineOptions({ name: 'CMSClickableImage' })

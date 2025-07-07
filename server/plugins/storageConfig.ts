@@ -1,7 +1,7 @@
 import scayleKvDriver from '@scayle/unstorage-scayle-kv-driver'
 import compressionDriver from '@scayle/unstorage-compression-driver'
 import vercelKV from 'unstorage/drivers/vercel-kv'
-import { stringToBoolean } from '../../utils/boolean'
+import { stringToBoolean } from '~~/server/utils/boolean'
 // NOTE: We need to import here from the Nuxt server-specific #imports to mitigate
 // unresolved dependencies in the imported composables from Nitro(nitropack).
 // This results in `nuxt typecheck` not being able to properly infer the correct

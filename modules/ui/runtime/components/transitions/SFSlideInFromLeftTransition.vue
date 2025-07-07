@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import type { TransitionDuration } from '~/modules/ui/types'
+import type { TransitionDuration } from '~~/modules/ui/types'
 
 const { duration = 200 } = defineProps<{
   /**

@@ -12,7 +12,7 @@ const config: StorybookConfig = {
   // https://storybook.js.org/docs/api/main-config/main-config-stories
   stories: [
     './content/GettingStarted.mdx',
-    '../components/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+    '../app/components/**/*.stories.@(js|jsx|ts|tsx|mdx)',
     '../modules/**/*.stories.@(js|jsx|ts|tsx|mdx)',
   ],
   // https://storybook.js.org/docs/api/main-config/main-config-core

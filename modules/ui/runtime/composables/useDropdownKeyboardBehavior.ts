@@ -58,9 +58,9 @@ export function useDropdownKeyboardBehavior(
       if (direction === undefined || index === -1) {
         button.focus()
       } else if (direction === 'next' && tabbables[index + 1]) {
-        tabbables[index + 1].focus()
+        tabbables[index + 1]!.focus()
       } else if (direction === 'previous' && tabbables[index - 1]) {
-        tabbables[index - 1].focus()
+        tabbables[index - 1]!.focus()
       }
     }, 0)
   }

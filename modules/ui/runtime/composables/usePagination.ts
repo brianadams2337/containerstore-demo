@@ -12,11 +12,11 @@ export type Page = {
 
 export interface UsePaginationReturn {
   limitedPages: ComputedRef<(Page | undefined)[]>
-  previousPage: ComputedRef<Page>
+  previousPage: ComputedRef<Page | undefined>
   nextPage: ComputedRef<Page | undefined>
   areFirstDotsShown: ComputedRef<boolean>
   areSecondDotsShown: ComputedRef<boolean>
-  firstPage: ComputedRef<Page>
+  firstPage: ComputedRef<Page | undefined>
   lastPage: ComputedRef<Page | undefined>
   canNavigateLeft: ComputedRef<boolean>
   canNavigateRight: ComputedRef<boolean>
@@ -107,7 +107,7 @@ export function usePagination(
 
     // Do not show previous/next page if its the first/last page
     const mergedPreviousPage =
-      firstPage.value.number === previousPage.value.number
+      firstPage.value?.number === previousPage.value?.number
         ? []
         : [previousPage.value]
     const mergedNextPage =
@@ -131,6 +131,9 @@ export function usePagination(
     const firstLimitedPage = limitedPages.value[0]
 
     if (!firstLimitedPage) {
+      return false
+    }
+    if (!firstPage.value) {
       return false
     }
 

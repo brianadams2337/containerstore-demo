@@ -5,7 +5,7 @@ import { purifySensitiveData } from '@scayle/storefront-nuxt'
 // import and throw an error without explicit `@ts-expect-error`
 // @ts-expect-error TS2724: '"#imports"' has no exported member named 'defineNitroPlugin'. Did you mean 'defineNuxtPlugin'?
 import { defineNitroPlugin, useRuntimeConfig } from '#imports'
-import { stringToBoolean } from '~/utils/boolean'
+import { stringToBoolean } from '~~/server/utils/boolean'
 
 /*
     This Nitro plugin logs the sanitized runtime configuration at startup.

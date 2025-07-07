@@ -30,6 +30,7 @@ export default withNuxt(
               'picture\\-contain',
               'picture\\-cover',
               'card',
+              'block-scrolling',
               '',
             ],
           },

@@ -19,7 +19,7 @@ describe('useNotification', () => {
         classes: 'text-white bg-black',
       },
     })
-    const { id, action, ...payload } = notifications.value[0]
+    const { id, action, ...payload } = notifications.value[0]!
 
     expect(id).toBeTruthy()
 
@@ -44,7 +44,7 @@ describe('useNotification', () => {
         classes: 'text-white bg-black',
       },
     })
-    const notification = notifications.value[0]
+    const notification = notifications.value[0]!
     close(notification.id)
     expect(notifications.value).toEqual([])
   })

@@ -78,8 +78,8 @@ export default defineNuxtModule<ModuleOptions>({
             const chunkName = chunks.find((chunk) => id.includes(chunk))
             return (
               chunkName &&
-              Object.keys(chunkMap).find((key) =>
-                chunkMap[key].includes(chunkName),
+              Object.keys(chunkMap).find((key: keyof typeof chunkMap) =>
+                chunkMap[key]!.includes(chunkName),
               )
             )
           }

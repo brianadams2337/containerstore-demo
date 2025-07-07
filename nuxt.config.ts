@@ -3,10 +3,10 @@ import type { HookResult } from '@nuxt/schema'
 import { HashAlgorithm, type ModuleBaseOptions } from '@scayle/storefront-nuxt'
 import { defaultSvgoConfig } from 'nuxt-svgo'
 import * as customRpcMethods from './rpcMethods'
-import withParams from './constants/withParams'
+import withParams from './shared/constants/withParams'
 import { shops } from './config/shops'
 import { BREAKPOINTS } from './config/ui'
-import { stringToBoolean } from './utils/boolean'
+import { stringToBoolean } from './server/utils/boolean'
 
 declare module '@nuxt/schema' {
   interface PublicRuntimeConfig {
@@ -120,6 +120,9 @@ export default defineNuxtConfig({
   // https://nuxt.com/docs/api/nuxt-config#compatibilitydate
   compatibilityDate: '2024-09-03',
 
+  future: {
+    compatibilityVersion: 4,
+  },
   // https://nuxt.com/docs/api/nuxt-config#devtools
   devtools: { enabled: true },
 
@@ -380,7 +383,7 @@ export default defineNuxtConfig({
   },
 
   // https://nuxt.com/docs/api/nuxt-config#css
-  css: ['~/assets/css/main.css'],
+  css: ['~~/app/assets/css/main.css'],
 
   // https://nuxt.com/docs/api/nuxt-config#postcss
   postcss: {
@@ -391,7 +394,7 @@ export default defineNuxtConfig({
   },
 
   tailwindcss: {
-    cssPath: '~/assets/css/main.css',
+    cssPath: '~~/app/assets/css/main.css',
     exposeConfig: true,
   },
 

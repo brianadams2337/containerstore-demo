@@ -134,7 +134,7 @@ export default defineNuxtConfig({
 Now you have access to `useCMS` composables and fetch data from Contentful in your SFB. `useCMS` accepts a string as an argument that will be used for caching purposes and returns a `fetchBySlug` function that you can use to fetch data by slug. `fetchBySlug` is a wrapper around Nuxt's `useAsyncData` and accepts a generic type that you can use to define the shape of the data you are fetching. Here is and example of how you can use this feature:
 
 ```ts
-import type { TypeListingPageSkeleton } from '~/modules/cms/providers/contentful/types/contentful-defs'
+import type { TypeListingPageSkeleton } from '~~/modules/cms/providers/contentful/types/contentful-defs'
 
 const props = defineProps<{
   selectedCategory: number | undefined

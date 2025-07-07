@@ -61,9 +61,15 @@ const element = ref(null)
 
 const { stop } = useIntersectionObserver(
   element,
-  ([{ isIntersecting }]) => {
-    if (isIntersecting && blok?.fields.tracking?.fields.promotion_id) {
-      trackPromotion('view_promotion', blok.fields.tracking.fields)
+  (entries) => {
+    if (!entries[0]) {
+      return
+    }
+    if (
+      entries[0]!.isIntersecting &&
+      blok?.fields.tracking?.fields?.promotion_id
+    ) {
+      trackPromotion('view_promotion', blok.fields.tracking.fields!)
       stop()
     }
   },

@@ -1,10 +1,5 @@
 <template>
-  <CMSImage
-    v-if="hasTeaserImage"
-    :blok="content as SbCmsImage"
-    is-teaser
-    is-cover
-  />
+  <CMSImage v-if="hasTeaserImage" :blok="content" is-teaser is-cover />
 </template>
 
 <script setup lang="ts">
@@ -27,7 +22,9 @@ const { data } = useCMSBySlug<SbListingPage>(`listing-page-teaser`, slug)
 
 useStoryblokEditor<SbListingPage>(data)
 
-const content = computed(() => data.value?.data.story.content || {})
+const content = computed(
+  () => (data.value?.data.story.content || {}) as SbCmsImage,
+)
 
 const hasTeaserImage = computed(() => {
   return !!data.value?.data.story.content.teaser_image?.filename

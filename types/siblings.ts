@@ -4,7 +4,7 @@ export type ProductSibling = {
   id: number
   name: string
   brand: string
-  image: ProductImage | null
+  image: ProductImage | null | undefined
   colors: Value[]
   isSoldOut: boolean
 }

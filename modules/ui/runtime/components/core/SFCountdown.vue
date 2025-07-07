@@ -21,7 +21,7 @@
 <script setup lang="ts">
 import { useIntervalFn } from '@vueuse/core'
 import { computed, ref } from 'vue'
-import { DAY, HOURS, MINUTE, SECOND } from '~/constants/time'
+import { DAY, HOURS, MINUTE, SECOND } from '~~/shared/constants/time'
 
 type CountdownUnit = 'days' | 'hours' | 'minutes' | 'seconds'
 

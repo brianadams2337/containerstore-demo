@@ -32,7 +32,7 @@ export default defineNuxtModule<ModuleOptions>({
           return {
             imports: [
               {
-                from: '~/modules/eslint-auto-explicit-import/src/eslint-plugin-unimport.mjs',
+                from: '~~/modules/eslint-auto-explicit-import/src/eslint-plugin-unimport.mjs',
                 name: 'createAutoInsert',
               },
             ],

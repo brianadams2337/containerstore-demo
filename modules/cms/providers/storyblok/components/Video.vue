@@ -55,8 +55,11 @@ const element = ref(null)
 
 const { stop } = useIntersectionObserver(
   element,
-  ([{ isIntersecting }]) => {
-    if (isIntersecting && blok.promotion_id) {
+  (entries) => {
+    if (!entries[0]) {
+      return
+    }
+    if (entries[0].isIntersecting && blok.promotion_id) {
       trackPromotion('view_promotion', blok)
       stop()
     }

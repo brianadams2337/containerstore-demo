@@ -63,7 +63,7 @@ import CMSText from './Text.vue'
 import CMSContentfulLink from './ContentfulLink.vue'
 import { NuxtPicture } from '#components'
 import { SFHeadline, SFButton } from '#storefront-ui/components'
-import { EMAIL_REGEX_PATTERN } from '~/modules/cms/utils/helpers'
+import { EMAIL_REGEX_PATTERN } from '~~/modules/cms/utils/helpers'
 
 const { blok } = defineProps<CMSParagraphProps>()
 

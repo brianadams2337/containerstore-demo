@@ -64,10 +64,10 @@ const { getLocalizedRoute } = useLocalizedRoute()
 const { sanitize } = useStoryblokImageSanitizer()
 
 const imageSource = computed(() => {
-  if (!blok?.image.length) {
+  if (!blok?.image?.[0]) {
     return
   }
-  return sanitize(blok?.image?.[0])
+  return sanitize(blok.image[0])
 })
 
 const { align, justify } = useCMSAlignment(blok)

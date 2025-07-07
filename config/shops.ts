@@ -24,7 +24,7 @@ interface ShopAndLocaleConfig {
 /**
  * List of configurations to be used to define the `shops` list for `storefront-nuxt` and `locales` for `nuxt-i18n`
  */
-export const shops: ShopAndLocaleConfig[] = [
+export const shops: [ShopAndLocaleConfig, ...ShopAndLocaleConfig[]] = [
   {
     locale: 'de-DE',
     code: 'de',

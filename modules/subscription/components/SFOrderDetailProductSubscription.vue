@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import useSubscriptionAttributes from '../composables/useSubscriptionAttributes'
-import type { OrderItem } from '~/types/order'
+import type { OrderItem } from '~~/types/order'
 
 const { orderItem } = defineProps<{ orderItem: OrderItem }>()
 
