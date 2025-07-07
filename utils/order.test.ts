@@ -1,16 +1,14 @@
 import { describe, expect, it } from 'vitest'
-import type { CentAmount } from '@scayle/storefront-nuxt'
+import type { CentAmount, OrderItem } from '@scayle/storefront-nuxt'
 import {
   attributeGroupMultiFactory,
   attributeGroupSingleFactory,
-} from '@scayle/storefront-nuxt/test/factories'
-import { getOrderDeliveries, mapAttributes } from './order'
-import type { OrderItems, Package } from '~/types/order'
-import {
   orderFactory,
   orderCategoryFactory,
   orderAdvancedAttributeFactory,
-} from '~/test/factories/order'
+} from '@scayle/storefront-nuxt/test/factories'
+import { getOrderDeliveries, mapAttributes } from './order'
+import type { Order, Package } from '~/types/order'
 
 describe('getOrderDeliveries', () => {
   it('should get order deliveries with items and shipment data', () => {
@@ -114,7 +112,7 @@ describe('getOrderDeliveries', () => {
         createdAt: '2018-01-20T09:30:15+00:00',
         updatedAt: '2018-01-20T09:30:15+00:00',
       },
-    ] as OrderItems
+    ] as OrderItem<Record<string, unknown>, Record<string, unknown>>[]
 
     const shipment: Package = {
       id: packageId,
@@ -128,7 +126,7 @@ describe('getOrderDeliveries', () => {
       items,
       packages: [shipment],
     })
-    const deliveries = getOrderDeliveries(order)
+    const deliveries = getOrderDeliveries(order as unknown as Order)
 
     expect(deliveries).toStrictEqual({
       '1': { items, shipment },
@@ -137,7 +135,7 @@ describe('getOrderDeliveries', () => {
 
   it('should receive an empty object if no order items', () => {
     const deliveries = getOrderDeliveries(
-      orderFactory.build({ items: undefined }),
+      orderFactory.build({ items: undefined }) as unknown as Order,
     )
     expect(deliveries).toStrictEqual({})
   })
