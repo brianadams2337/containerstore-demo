@@ -131,8 +131,8 @@ importers:
         specifier: 3.4.2
         version: 3.4.2
       contentful:
-        specifier: 11.7.5
-        version: 11.7.5(debug@4.4.1)
+        specifier: 11.7.6
+        version: 11.7.6(debug@4.4.1)
       contentful-export:
         specifier: 7.21.64
         version: 7.21.64(debug@4.4.1)
@@ -4255,8 +4255,8 @@ packages:
     resolution: {integrity: sha512-vPgQvpzqWHauroXrhPOW03iz/ZVqZrv6BX2Fk/vMOlMMB7a+zrhUWAuUjY9WFDVMRcAwPhZF2Lvey6Nvyyd6sQ==}
     engines: {node: '>=18'}
 
-  contentful@11.7.5:
-    resolution: {integrity: sha512-aOK1JMOVZAwnIsmmAvXOSgqbuzrGl34uRDT9DYIDXydawkpeatf7ofOKozTShZXKYbqurkecvKMChfehhZ4qJA==}
+  contentful@11.7.6:
+    resolution: {integrity: sha512-EPwDZkMWEnUE3YkIzX0HgYzGnXuvw8R2ee260hJU323uDpa5XkqABB2F3ae7mdV6wkq/0Dv6go0FK1Z9pQHhgw==}
     engines: {node: '>=18'}
 
   convert-source-map@2.0.0:
@@ -14625,7 +14625,7 @@ snapshots:
       bfj: 8.0.0
       bluebird: 3.7.2
       cli-table3: 0.6.5
-      contentful: 11.7.5(debug@4.4.1)
+      contentful: 11.7.6(debug@4.4.1)
       contentful-batch-libs: 9.7.0
       contentful-management: 11.54.0(debug@4.4.1)
       date-fns: 4.1.0
@@ -14687,7 +14687,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  contentful@11.7.5(debug@4.4.1):
+  contentful@11.7.6(debug@4.4.1):
     dependencies:
       '@contentful/content-source-maps': 0.11.24
       '@contentful/rich-text-types': 16.8.5
