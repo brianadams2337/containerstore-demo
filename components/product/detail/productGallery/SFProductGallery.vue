@@ -82,7 +82,9 @@
           @click="isZoomModalOpen = true"
         />
         <template #arrows="{ prev, isPrevEnabled, next, isNextEnabled }">
-          <div class="absolute bottom-4 right-4 flex space-x-px max-md:hidden">
+          <div
+            class="absolute bottom-4 right-4 z-10 flex space-x-px max-md:hidden"
+          >
             <SFSliderArrowButton
               class="aspect-square h-9 bg-white focus-visible:shadow-inner-solid-sm disabled:bg-gray-100 disabled:text-secondary"
               :aria-label="$t('image_slider.a11ly.go_to_previous_image')"
@@ -115,7 +117,7 @@
         </template>
       </SFItemsSlider>
       <SFWishlistToggle
-        class="absolute right-5 top-5 md:hidden"
+        class="absolute right-5 top-5 z-10 md:hidden"
         :product="product"
       />
       <SFProductBadges
@@ -123,7 +125,7 @@
         class="absolute left-5 max-md:bottom-5 md:top-5"
       />
       <SFGoBackLink
-        class="left-1 top-1 p-4 md:hidden"
+        class="left-1 top-1 z-10 p-4 md:hidden"
         :fallback-link="categoryLink"
       />
     </div>
