@@ -28,15 +28,17 @@
         :key="promotionCode"
         variant="raw"
         :style="getPromotionStyle(promotion)"
-        class="flex items-center gap-2 rounded-md px-3 py-1 text-sm leading-5"
+        class="flex items-center gap-2 overflow-hidden rounded-md px-3 py-1 text-sm leading-5"
       >
-        {{ promotionCode }}
+        <span :title="promotionCode" class="overflow-hidden text-ellipsis">{{
+          promotionCode
+        }}</span>
         <SFButton
           variant="raw"
           :aria-label="
             $t('basket_promotion_codes.remove_code', { promotionCode })
           "
-          class="flex"
+          class="flex shrink-0"
           @click="removePromotionCode(promotion.id)"
         >
           <IconClose
