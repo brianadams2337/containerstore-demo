@@ -27,6 +27,7 @@
         :disabled="isSubmitting"
         class="mr-7 h-6 rounded-md px-1.5 text-md font-semibold !text-secondary hover:bg-gray-200"
         data-testid="back-to-login-button"
+        type="button"
         @click.prevent="backToLogin"
       >
         <IconChevronLeft class="size-4" />
