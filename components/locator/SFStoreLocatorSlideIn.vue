@@ -23,7 +23,10 @@
         <div>
           <p class="mt-5 text-sm">{{ $t('location_page.subline') }}</p>
         </div>
-        <div class="mt-3 flex items-center justify-center gap-4">
+        <form
+          class="mt-3 flex items-center justify-center gap-4"
+          @submit.prevent="searchStore"
+        >
           <SFTextInput
             v-model="address"
             autocomplete="off"
@@ -38,11 +41,11 @@
             class="max-w-28"
             rounded
             :disabled="!address.length"
-            @click="searchStore"
+            type="submit"
           >
             {{ $t('global.search') }}
           </SFButton>
-        </div>
+        </form>
       </div>
     </template>
     <template #slide-in-body>
