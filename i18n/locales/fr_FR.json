@@ -469,6 +469,12 @@
           "409": "Ce compte existe déjà.",
           "422": "On n'a pas pu traiter votre demande, veuillez reessayer.",
           "500": "Votre demande a généré une erreur."
+        },
+        "forgot_password": {
+          "404": "Ton adresse e-mail est incorrecte. Essaie encore."
+        },
+        "reset_password": {
+          "404": "Ton adresse e-mail est incorrecte. Essaie encore."
         }
       }
     }

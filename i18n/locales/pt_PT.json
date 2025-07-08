@@ -469,6 +469,12 @@
           "409": "Esta conta já existe.",
           "422": "O teu pedido não pôde ser processado, por favor tenta novamente.",
           "500": "O teu pedido deu origem a um erro"
+        },
+        "forgot_password": {
+          "404": "O teu e-mail está errado. Tenta de novo."
+        },
+        "reset_password": {
+          "404": "O teu e-mail está errado. Tenta de novo."
         }
       }
     }

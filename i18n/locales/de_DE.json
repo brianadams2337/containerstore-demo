@@ -469,6 +469,12 @@
           "409": "Dieses Konto gibt's schon.",
           "422": "Deine Anfrage konnte nicht bearbeitet werden, versuch's nochmal.",
           "500": "Bei deiner Anfrage ist ein Fehler aufgetreten."
+        },
+        "forgot_password": {
+          "404": "Deine E-Mail-Adresse ist falsch. Bitte versuch's nochmal."
+        },
+        "reset_password": {
+          "404": "Deine E-Mail-Adresse ist falsch. Bitte versuch's nochmal."
         }
       }
     }

@@ -469,6 +469,12 @@
           "409": "Ez a fiók már létezik.",
           "422": "A kérésedet nem sikerült feldolgozni, kérjük, próbáld meg újra.",
           "500": "A kérésed hibát eredményezett."
+        },
+        "forgot_password": {
+          "404": "Az e-mail címe helytelen. Kérjük, próbálja meg újra."
+        },
+        "reset_password": {
+          "404": "Az e-mail címe helytelen. Kérjük, próbálja meg újra."
         }
       }
     }

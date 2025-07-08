@@ -469,6 +469,12 @@
           "409": "Šis konts jau pastāv.",
           "422": "Tavu pieprasījumu nevar apstrādāt, lūdzu, mēģini vēlreiz.",
           "500": "Tavs pieprasījums radīja kļūdu."
+        },
+        "forgot_password": {
+          "404": "Jūsu e-pasts ir nepareizs. Lūdzu, mēģiniet vēlreiz."
+        },
+        "reset_password": {
+          "404": "Jūsu e-pasts ir nepareizs. Lūdzu, mēģiniet vēlreiz."
         }
       }
     }

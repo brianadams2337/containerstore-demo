@@ -469,6 +469,12 @@
           "409": "Tämä tili on jo olemassa.",
           "422": "Pyyntöäsi ei voitu käsitellä, yritä uudelleen.",
           "500": "Pyyntösi johti virheeseen"
+        },
+        "forgot_password": {
+          "404": "Sähköpostiosoitteesi on virheellinen. Yritä uudelleen."
+        },
+        "reset_password": {
+          "404": "Sähköpostiosoitteesi on virheellinen. Yritä uudelleen."
         }
       }
     }

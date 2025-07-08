@@ -469,6 +469,12 @@
           "409": "Questo account esiste già.",
           "422": "Non è stato possibile elaborare la tua richiesta, riprova più tardi.",
           "500": "La tua richiesta ha generato un errore."
+        },
+        "forgot_password": {
+          "404": "La tua email non è giusta. Prova di nuovo."
+        },
+        "reset_password": {
+          "404": "La tua email non è giusta. Prova di nuovo."
         }
       }
     }

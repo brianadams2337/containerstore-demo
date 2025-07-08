@@ -469,6 +469,12 @@
           "409": "To konto już istnieje.",
           "422": "Twoje żądanie nie mogło zostać przetworzone, spróbuj ponownie.",
           "500": "Twoje żądanie spowodowało błąd"
+        },
+        "forgot_password": {
+          "404": "Twój adres e-mail jest nieprawidłowy. Spróbuj ponownie."
+        },
+        "reset_password": {
+          "404": "Twój adres e-mail jest nieprawidłowy. Spróbuj ponownie."
         }
       }
     }

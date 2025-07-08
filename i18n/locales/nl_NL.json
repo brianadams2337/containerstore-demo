@@ -469,6 +469,12 @@
           "409": "Dit account bestaat al.",
           "422": "Je verzoek kon niet worden verwerkt, probeer het opnieuw.",
           "500": "Je verzoek heeft geresulteerd in een fout"
+        },
+        "forgot_password": {
+          "404": "Je e-mailadres klopt niet. Probeer het nog eens."
+        },
+        "reset_password": {
+          "404": "Je e-mailadres klopt niet. Probeer het nog eens."
         }
       }
     }

@@ -469,6 +469,12 @@
           "409": "See konto on juba olemas.",
           "422": "Teie taotlust ei õnnestunud töödelda, palun proovige uuesti.",
           "500": "Teie päringu tulemuseks oli viga"
+        },
+        "forgot_password": {
+          "404": "Teie e-posti aadress on vale. Palun proovige uuesti."
+        },
+        "reset_password": {
+          "404": "Teie e-posti aadress on vale. Palun proovige uuesti."
         }
       }
     }

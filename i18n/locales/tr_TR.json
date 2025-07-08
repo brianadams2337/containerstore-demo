@@ -469,6 +469,12 @@
           "409": "Bu hesap zaten mevcut.",
           "422": "Talebiniz işleme alınamadı, lütfen tekrar deneyin.",
           "500": "İsteğiniz bir hatayla sonuçlandı"
+        },
+        "forgot_password": {
+          "404": "E-posta adresiniz yanlış. Lütfen tekrar deneyin."
+        },
+        "reset_password": {
+          "404": "E-posta adresiniz yanlış. Lütfen tekrar deneyin."
         }
       }
     }

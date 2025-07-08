@@ -469,6 +469,12 @@
           "409": "Denne konto findes allerede.",
           "422": "Din anmodning kunne ikke behandles, prøv venligst igen.",
           "500": "Din anmodning resulterede i en fejl"
+        },
+        "forgot_password": {
+          "404": "Din e-mailadresse er forkert. Prøv igen."
+        },
+        "reset_password": {
+          "404": "Din e-mailadresse er forkert. Prøv igen."
         }
       }
     }

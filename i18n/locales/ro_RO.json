@@ -469,6 +469,12 @@
           "409": "Acest cont există deja.",
           "422": "Cererea ta nu a putut fi procesată, te rugăm să încerci din nou.",
           "500": "Cererea ta a generat o eroare"
+        },
+        "forgot_password": {
+          "404": "Adresa dvs. de e-mail este incorectă. Vă rugăm să încercați din nou."
+        },
+        "reset_password": {
+          "404": "Adresa dvs. de e-mail este incorectă. Vă rugăm să încercați din nou."
         }
       }
     }

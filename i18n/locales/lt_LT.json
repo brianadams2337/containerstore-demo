@@ -469,6 +469,12 @@
           "409": "Ši paskyra jau egzistuoja.",
           "422": "Tavo užklausos nepavyko apdoroti, bandyk dar kartą.",
           "500": "Tavo užklausa baigėsi klaida."
+        },
+        "forgot_password": {
+          "404": "Jūsų el. pašto adresas neteisingas. Bandykite dar kartą."
+        },
+        "reset_password": {
+          "404": "Jūsų el. pašto adresas yra neteisingas. Bandykite dar kartą."
         }
       }
     }

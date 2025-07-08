@@ -469,6 +469,12 @@
           "409": "Ta račun že obstaja.",
           "422": "Tvoje zahteve ni bilo mogoče obdelati, poskusi znova.",
           "500": "Tvoja zahteva je povzročila napako"
+        },
+        "forgot_password": {
+          "404": "Vaš e-naslov je napačen. Poskusite znova."
+        },
+        "reset_password": {
+          "404": "Vaš e-naslov je napačen. Poskusite znova."
         }
       }
     }

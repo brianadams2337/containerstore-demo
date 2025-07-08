@@ -469,6 +469,12 @@
           "409": "Esta cuenta ya existe.",
           "422": "Algo falló, prueba de nuevo.",
           "500": "Algo ha fallado con tu solicitud."
+        },
+        "forgot_password": {
+          "404": "Tu correo electrónico es incorrecto. Inténtalo de nuevo."
+        },
+        "reset_password": {
+          "404": "Tu correo electrónico es incorrecto. Inténtalo de nuevo."
         }
       }
     }

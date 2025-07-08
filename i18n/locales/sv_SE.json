@@ -469,6 +469,12 @@
           "409": "Det här kontot finns redan.",
           "422": "Din begäran kunde inte behandlas, vänligen försök igen.",
           "500": "Din begäran resulterade i ett fel"
+        },
+        "forgot_password": {
+          "404": "Din e-postadress är felaktig. Försök igen."
+        },
+        "reset_password": {
+          "404": "Din e-postadress är felaktig. Försök igen."
         }
       }
     }

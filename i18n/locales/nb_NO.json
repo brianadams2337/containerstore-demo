@@ -469,6 +469,12 @@
           "409": "Denne kontoen finnes allerede.",
           "422": "Forespørselen din kunne ikke behandles, vennligst prøv igjen.",
           "500": "Forespørselen din resulterte i en feil"
+        },
+        "forgot_password": {
+          "404": "E-postadressen din er feil. Prøv igjen."
+        },
+        "reset_password": {
+          "404": "E-postadressen din er feil. Prøv igjen."
         }
       }
     }

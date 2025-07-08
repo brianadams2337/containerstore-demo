@@ -469,6 +469,12 @@
           "409": "Tento účet už existuje.",
           "422": "Tvoja požiadavka nemohla byť spracovaná, skús to, prosím, znova.",
           "500": "Tvoja požiadavka viedla k chybe."
+        },
+        "forgot_password": {
+          "404": "Vaša e-mailová adresa je nesprávna. Skúste to znovu."
+        },
+        "reset_password": {
+          "404": "Vaša e-mailová adresa je nesprávna. Skúste to znovu."
         }
       }
     }

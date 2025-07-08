@@ -469,6 +469,12 @@
           "409": "This account already exists.",
           "422": "Your request could not be processed, please try again.",
           "500": "Your request resulted in an error"
+        },
+        "forgot_password": {
+          "404": "Your email is incorrect. Please try again."
+        },
+        "reset_password": {
+          "404": "Your email is incorrect. Please try again."
         }
       }
     }
