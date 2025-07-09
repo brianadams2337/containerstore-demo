@@ -2,443 +2,116 @@
 
 ## 1.11.0
 
-### Minor Changes
+### 🔥 Highlights
 
-- 80feb28: **\[Architecture\]** To improve performance and dependency management, we have migrated from Yarn v1 to PNPM.
+#### ✨ Smarter Product Discovery and a Modern Mobile Sorting Experience
+
+Finding the right products is now faster and more intuitive than ever.
+We've completely overhauled the Product Listing Page by automatically hiding empty categories for a cleaner navigation experience and introducing a powerful new sorting mechanism, including custom and smart sorting.
+For mobile users, we've replaced the cumbersome sorting dropdown with a sleek and user-friendly slider, making it significantly easier to reorder products on the go.
+
+#### 🏷️ Drive Conversion with "Recently Viewed" and In-Basket Promo Codes
+
+We're introducing two powerful new features designed to enhance the customer journey and increase conversion.
+A "Recently Viewed Products" slider now appears on the Product Detail Page, making it easy for shoppers to revisit items they're interested in.
+Furthermore, customers can now apply promotion codes directly in the shopping basket to see their final, discounted price before even starting the checkout process, reducing friction and cart abandonment.
+
+#### 🎨 A More Consistent and Scalable Storefront with Storybook and a Unified Design System
+
+To ensure the highest quality and consistency across every part of your storefront, we've introduced Storybook, a professional-grade component library that documents our UI elements in isolation.
+Alongside this, we have performed a comprehensive overhaul of our entire design system, unifying our approach to colors, spacing, fonts, and responsive breakpoints.
+This foundational upgrade results in a more polished, professional, and visually consistent shopping experience that is easier to scale and maintain.
+
+### 🚀 Major Changes
+
+- **\[Architecture\]** To improve performance and dependency management, we have migrated from Yarn v1 to PNPM.
   This results in faster installation times and more efficient use of disk space due to PNPM's unique approach to handling `node_modules`.
   Instead of running command via `yarn some:command`, they will now be executed via `pnpm some:command`, e.g. `pnpm install` or `pnpm dev`.
 
   For more details on how to use PNPM and its extended features, check the [official PNPM documentation](https://pnpm.io/motivation).
 
-- 205ce7b: **\[UI\]** To simplify responsive design and improve maintainability, the application's breakpoints have been streamlined.
-  The `2xl` breakpoint has been removed to focus on a more essential set of screen sizes.
-  Developers should now target the `xl` breakpoint as the largest available size for any screen-specific styling.
-
-  - Available Breakpoints:
-
-    ```ts
-    // config/ui.ts
-    export const BREAKPOINTS = {
-      xs: 320,
-      sm: 640,
-      md: 768,
-      lg: 1024,
-      xl: 1280,
-    }
-    ```
-
-- 60a9fcc: **\[PLP\]** To improve performance and create a single source of truth, the product listing logic has been refactored as part of the upgrade to `@scayle/storefront-product-listing@2.0.0`.
-
-  - **Sorting Logic:** The `useProductListSort` composable is now centralized at the page level to act as a single source of truth.
-  - **SEO Data:** The `useProductListingSeoData` composable now requires an additional isDefaultSortSelected boolean parameter.
-  - **UI Labels:** The `label` for the selected sort option is now a direct string and should no longer be passed through the translation function (`$t(label)`).
-
-- 1f597bd: **\[PLP\]** The range filter functionality has been enhanced to support filtering by both price and discount percentage.
-  To reflect this broader use case, `SFPriceRangeSlider.vue` and `SFPriceInput.vue` have been renamed to the more generic `SFFilterRangeSlider.vue` and `SFRangeInput.vue`.
-  This refactoring was done as part of adding support for discount filters (e.g., `max_savings_percentage`) in the filter slide-in.
-- 205ce7b: **\[UI\]** To improve code quality and reduce dependency bloat, the unused `mask` package has been removed from the project's dependencies.
-- ea5a14e: **\[E2E\]** Expanded end-to-end test coverage for the Wishlist page.
-  A new test in `e2e-Wishlist.spec.ts` now verifies that clicking a product card correctly navigates the user to the corresponding Product Detail Page.
-- 6594305: **\[UI\]** Improved aspect ratio configuration for `SFProductImage.vue`
-
-  The product image aspect ratio is now defined in a single source of truth: `config/ui.ts`.
-  There's no longer a need to apply additional styling on the parent element to achieve the desired aspect ratio.
-
-  This change enhances maintainability and makes it easier to adjust the aspect ratio in the future.
-
-  Before:
-
-  ```vue
-  <div
-    class="aspect-3/4"
-  > <!-- Before we had to apply aspect ratio on the parent element even though the image was already in the correct aspect ratio -->
-      <SFProductImage
-        :image="image"
-        :image-loading="imageLoading"
-        :alt="alt"
-        :preload="preload"
-        :aspect-ratio="[3, 4]"
-        sizes="xs:50vw sm:50vw md:40vw lg:33vw xl:320px"
-      />
-    </div>
-  ```
-
-  After:
-
-  ```vue
-  <template>
-    <div>
-      <SFProductImage
-        :image="image"
-        :image-loading="imageLoading"
-        :alt="alt"
-        :preload="preload"
-        :aspect-ratio="PRODUCT_IMAGE_ASPECT_RATIO" <!-- Setting the aspect ratio directly on the image is now sufficient. -->
-        sizes="xs:50vw sm:50vw md:40vw lg:33vw xl:320px"
-      />
-    </div>
-  </template>
-
-  <script setup lang="ts">
-  import { PRODUCT_IMAGE_ASPECT_RATIO } from '~/config/ui' // Additionally we have a single configuration to configure the aspect ratio for all product images.
-  </script>
-  ```
-
-- a61992a: **\[Architecture\]** Addressed an issue where `$config.public.baseUrl` provided an incorrect base URL for domain-based shops.
-  This deprecated property has been removed, and we now use `useRequestURL().origin` to reliably get the correct base URL.
-- 205ce7b: **\[UI\]** The `SFHeadline` component has been refactored.
-  The `loading` prop and its associated skeleton loader are no longer part of the component;
-  developers are now responsible for handling the loading state externally (e.g., with a wrapper component).
-  The `hidden` prop and the custom `visually-hidden` class have also been removed to streamline the component's API.
-- 205ce7b: **\[UI\]** The color palette has been streamlined and unified
-  within the Tailwind configuration for improved consistency and simplicity.
-
-  The most notable refinements are in the `gray` and `secondary` color variants,
-  which have been thoughtfully reduced to enhance usability and clarity.
-  New gray and secondary color definitions are as follows:
-
-  ```ts
-  {
-    gray: {
-      100: '#fafafa',
-      200: '#f2f2f2',
-      300: '#ebebeb',
-      400: '#d9d9d9',
-      500: '#a8a8a8',
-    },
-    secondary: '#666666',
-  }
-  ```
-
-  Furthermore, `white-smoke`, `focus`, and `primary-400` colors has been removed,
-  replacing them with carefully selected alternatives that align with the updated design system.
-
-- 205ce7b: **\[UI\]** Enhanced and simplified Tailwind configuration for `font-sizes` and `line heights`.
-
-  Key Changes:
-
-  The font size scale has been refined for better usability and consistency. The following font sizes have been removed:
-  `3xs`, `2xs`, `base`, `4xl`, `5xl`, `6xl`, `7xl`.
-
-  - **New Progression:** The font size scale now aligns closely with Tailwind's default numerical progression.
-    - `3xs` and `2xs` are replaced with `xs`.
-    - `base` is replaced with `md`.
-
-  Line heights have also been streamlined:
-
-  - The `2.5` and `3.5` values has been removed.
-  - The configuration retains Tailwind's default line heights, ensuring compatibility across the application.
-
-  Updated Configuration:
-
-  ```ts
-  export default {
-    theme: {
-      fontSize: {
-        xs: [
-          '0.625rem', // 10px
-          {
-            lineHeight: '0.875rem',
-            letterSpacing: '0.09px',
-          },
-        ],
-        sm: [
-          '0.75rem', // 12px
-          {
-            lineHeight: '1rem',
-            letterSpacing: '-0.13px',
-          },
-        ],
-        md: [
-          '0.875rem', // 14px
-          {
-            lineHeight: '1.125rem',
-            letterSpacing: '-0.14px',
-          },
-        ],
-        lg: [
-          '1rem', // 16px
-          {
-            lineHeight: '1.25rem',
-            letterSpacing: '-0.32px',
-          },
-        ],
-        xl: [
-          '1.125rem', // 18px
-          {
-            lineHeight: '1.375rem',
-            letterSpacing: '0',
-          },
-        ],
-        '2xl': [
-          '1.25rem', // 20px
-          {
-            lineHeight: '1.75rem',
-            letterSpacing: '-0.4px',
-          },
-        ],
-        '3xl': [
-          '1.75rem', // 28px
-          {
-            lineHeight: '2rem',
-            letterSpacing: '-0.5px',
-          },
-        ],
-      },
-    },
-  }
-  ```
-
-  These updates make the configuration more intuitive, future-proof, and adaptable
-  to evolving design needs. By aligning with Tailwind's default progression,
-  the setup ensures consistency while maintaining flexibility for creative designs.
-
-- 205ce7b: **\[UI\]** The Tailwind CSS configuration has been simplified by removing custom `z-index` values (from `60` to `110`).
-  We now rely on Tailwind's default `z-index` scale, leading to a cleaner and more maintainable styling implementation.
-- 2ec506a: **\[Product List Page\]** Implemented a smart and custom sorting mechanism for the `top_seller` sorting option (commonly referred to as "Recommendations").
-  If there are no sorting keys defined for a specific category, the `top_seller` sorting option will default to its original behavior.
-  Here's the main logic for implementing smart and custom sorting keys:
-
-  ```ts
-  import {
-    defaultSortingOptions,
-    DEFAULT_SORTING_KEY,
-    useProductListSort,
-  } from '#storefront-product-listing'
-
-  const sortingOptions = computed(() => {
-    const smartSortingKey =
-      currentCategory.value?.productSorting?.smartSortingKey
-    const customSortingKey =
-      currentCategory.value?.productSorting?.customSortingKey
-
-    if (!smartSortingKey && !customSortingKey) {
-      return defaultSortingOptions
-    }
-    return defaultSortingOptions.map((option) => {
-      const sortingKey = [smartSortingKey, customSortingKey].filter(
-        (item): item is string => !!item,
-      )
-      return option.key === DEFAULT_SORTING_KEY
-        ? { ...option, sortingKey }
-        : option
-    })
-  })
-
-  const { selectedSort } = useProductListSort(route, {
-    sortingOptions: sortingOptions.value,
-  })
-  ```
-
-- 205ce7b: **\[UI\]** Enhanced and simplified Tailwind configuration for `box-shadows`.
-
-  Extracted CSS variables within `main.css`:
-
-  ```css
-  @layer base {
-    :root {
-      --color-shadow-navy: 25 49 70;
-      --color-shadow-gray: 204 204 204;
-      --color-shadow-white-smoke: 0, 0, 0, 0.1;
-    }
-  }
-  ```
-
-  Tailwind Configuration:
-
-  ```ts
-  export default {
-    theme: {
-      boxShadow: {
-        none: 'none',
-        DEFAULT:
-          '0 4px 6px -1px rgba(var(--color-shadow-white-smoke)), 0 2px 4px -2px rgba(var(--color-shadow-white-smoke))',
-        'inner-solid': 'inset 0 0 0 4px rgb(var(--color-shadow-navy))',
-        'inner-solid-sm': 'inset 0 0 0 2px rgb(var(--color-shadow-navy))',
-        'outer-solid': '0 0 0 3px rgb(var(--color-shadow-navy))',
-        'input-label':
-          'inset 0 2px 8px -10px rgb(var(--color-shadow-gray)), inset 0 2px 8px -10px rgb(var(--color-shadow-gray))',
-      },
-    },
-  }
-  ```
-
-- 17d854e: **\[Promotions\]** Users can now apply and remove promotion codes directly in the shopping basket.
-  A new `SFBasketPromotionCodes.vue` component has been added, allowing customers to see their discounts applied without having to proceed to the checkout page first.
-  This replaces the current disclaimer on the basket page with a new `SFBasketPromotionCodes.vue` component.
-  This component builds on the latest enhancements to `@scayle/storefront-promotions@2.2.0` and enables users to add and remove promotion codes without necessitating entering checkout first.
-- c0c400c: **\[PDP\]** A new "Recently Viewed Products" recommendation slider has been added to the Product Detail Page, allowing customers to easily navigate back to products they have previously viewed.
-- 205ce7b: **\[UI\]** Streamlined and polished the UI module components by removing outdated and redundant props.
-  Here’s what’s been tidied up:
-
-  - `SFModal.client`: Simplified by removing the `closeOnOutside` property.
-  - `SFPopover`: Decluttered with the removal of `disablePopoverContent` and `contentWrapperClass` properties.
-  - `SFSlideIn.client`: Transitioned to a single `default` slide type (X-axis) by removing the `slideType` property.
-  - `SFDropdown`: Refined by eliminating the `isLarge` property.
-  - `SFSwitch`: Lightened up with the removal of `name` and `required` properties.
-  - `SFTextInput`: Enhanced by dropping the `hint` and `mask` properties.
-  - `SFLink`: Unified `active` and `exactActive` classes, saying goodbye to `onlyExactActive`.
-  - `SFItemsSlider`: Simplified by removing `container` and `sliderClass` properties.
-  - `SFModal`: Removed the `hideCloseButton` prop, which was no longer in use.
-  - `SFItemsSlider`: Removed the `scrollable` prop, which was no longer in use.
-
-- 205ce7b: **\[UI\]** Streamlined the Tailwind font weight configuration for a cleaner and more consistent design.
-
-  Here’s the updated font weight setup:
-
-  ```ts
-  {
-    normal: '400',
-    medium: '500',
-    semibold: '600',
-    bold: '700',
-  }
-  ```
-
-- 0b4a7c0: **\[Unit Testing\]** To standardize test data generation, our unit tests now use the official order factories provided by the `@scayle/storefront-nuxt` package, replacing our previous custom implementations.
-  This change simplifies our test setup and improves maintainability.
-- 205ce7b: **\[UI\]** Removed `SFProgressBar` as it is not used.
-- 373f9bf: **\[Architecture\]** Introduced Storybook for UI component development and documentation.
-
+- **\[Architecture\]** Introduced Storybook for UI component development and documentation.
   Storybook is an open-source tool for building and documenting UI components in isolation. It allows developers and designers to visually develop, test, and review components outside the main application, improving design consistency and development speed.
-
   In this project, Storybook has been integrated as a development dependency, configured specifically for Nuxt 3 and our component architecture.
   It serves as a living component library and a central place to showcase UI patterns, aiding both internal teams and external stakeholders in understanding and reusing shared components.
-
   Initial example stories have been added for key UI components to demonstrate usage and recommended best practices.
 
-  To run Storybook locally:
+  - To run Storybook locally:
 
-  ```bash
-  pnpm storybook
-  ```
+    ```bash
+    pnpm storybook
+    ```
 
-  This starts a development server at [http://localhost:6006](http://localhost:6006).
+    This starts a development server at [http://localhost:6006](http://localhost:6006).
 
-  To generate a static Storybook build, use:
+  - To generate a static Storybook build, use:
 
-  ```bash
-  pnpm storybook:build
-  ```
+    ```bash
+    pnpm storybook:build
+    ```
 
-  The output will be placed in the `public/storybook` directory and can be accessed at [http://localhost:3000/storybook](http://localhost:3000/storybook).
+    The output will be placed in the `public/storybook` directory and can be accessed at [http://localhost:3000/storybook](http://localhost:3000/storybook).
 
-  Further information can be found in the official [Storybook documentation](https://storybook.js.org/docs/vue/get-started/introduction) and the [Nuxt Storybook guide](https://storybook.nuxtjs.org/getting-started/setup).
+  - Further information can be found in the official [Storybook documentation](https://storybook.js.org/docs/vue/get-started/introduction) and the [Nuxt Storybook guide](https://storybook.nuxtjs.org/getting-started/setup).
+  - The following components are now available within Storybook:
+    - Order
+      - `SFOrderList`
+    - Product
+      - `SFProductCard`
+      - `SFProductPromotionBanner`
+    - Base Components
+      - `SFAccordionEntry`
+      - `SFButton`
+      - `SFChip`
+      - `SFCountdown`
+      - `SFModal`
+      - `SFPopover`
+      - `SFSkeletonLoader`
+      - `SFSliderIn`
+      - `SFSliderArrowButton`
+      - `SFCheckbox`
+      - `SFDropdown`
+      - `SFFilterRangeSlider`
+      - `SFPriceInput`
+      - `SFSwitch`
+      - `SFTextInput`
+      - `SFValidatedInputGroup`
+      - `SFHeadline`
+      - `SFGoBackLink`
+      - `SFLink`
+      - `SFPagination`
+      - `SFItemsSlider`
+      - `SFToast`
+      - `SFToastContainer`
+    - Base Components / Transitions
+      - `SFSlideInFromBottomTransition`
+      - `SFSlideInFromLeftTransition`
+      - `SFFadeInFromBottomTransition`
+      - `SFFadeInTransition`
 
-  The following components are now available within Storybook:
+- **\[Architecture\]** Refactored `useAuthentication` to longer be tied to a specific authentication action.
+  This simplifies the usage of the composable and prevents possible unexpected behavior if there is a mismatch between the authentication string passed to the composable and the authentication method which is called.
 
-  - Order
-    - `SFOrderList`
-  - Product
-    - `SFProductCard`
-    - `SFProductPromotionBanner`
-  - Base Components
-    - `SFAccordionEntry`
-    - `SFButton`
-    - `SFChip`
-    - `SFCountdown`
-    - `SFModal`
-    - `SFPopover`
-    - `SFSkeletonLoader`
-    - `SFSliderIn`
-    - `SFSliderArrowButton`
-    - `SFCheckbox`
-    - `SFDropdown`
-    - `SFFilterRangeSlider`
-    - `SFPriceInput`
-    - `SFSwitch`
-    - `SFTextInput`
-    - `SFValidatedInputGroup`
-    - `SFHeadline`
-    - `SFGoBackLink`
-    - `SFLink`
-    - `SFPagination`
-    - `SFItemsSlider`
-    - `SFToast`
-    - `SFToastContainer`
-  - Base Components / Transitions
-    - `SFSlideInFromBottomTransition`
-    - `SFSlideInFromLeftTransition`
-    - `SFFadeInFromBottomTransition`
-    - `SFFadeInTransition`
+  - **Before**
 
-- 205ce7b: **\[UI\]** Enhanced Tailwind configuration for `spacing` and `sizes`.
+    ```ts
+    const { login, logout } = useAuthentication('login')
 
-  Configuration is refined for `width`, `minWidth`, `maxWidth`, `height`, `minHeight`, `maxHeight`, `spacing`, and `padding`.
-  These updates ensure a consistent and scalable design system.
+    login({ username, password }) // 'login' success or error message and 'login' event tracked
+    logout() // 'login' success or error message and 'login' event tracked
+    ```
 
-  Key Changes:
+  - **After**
 
-  The `spacing` scale now serves as the foundation for multiple core plugins, including
-  margin, gap, inset, space, translate, scrollMargin, and scrollPadding.
-  To maintain uniformity, all values are centralized within the `spacing` property,
-  which incorporates `defaultSizes` defined at the top of the Tailwind config file.
+    ```ts
+    const { login, logout } = useAuthentication()
 
-  Additionally, `spacing` and other sizing values (`maxHeight` and `maxWidth`)
-  are extended within the `theme.extend` property, leveraging the
-  [default Tailwind spacing scale](https://v3.tailwindcss.com/docs/customizing-spacing#default-spacing-scale).
+    login({ username, password }) // 'login' success message shown and 'login' event tracked
+    logout() // 'logout' success or error message and 'logout' event tracked
+    ```
 
-  Updated Configuration:
-
-  ```ts
-  const defaultSizes = {
-    '6xs': '2rem',
-    '5xs': '4rem',
-    '4xs': '8rem',
-    '3xs': '12rem',
-    '2xs': '16rem',
-    xs: '20rem',
-    md: '28rem',
-    lg: '32rem',
-    xl: '36rem',
-    '2xl': '40rem',
-    '3xl': '48rem',
-  }
-
-  export default {
-    theme: {
-      extend: {
-        maxHeight: {
-          dialog: '94vh',
-        },
-        maxWidth: {
-          screen: '100vw',
-          dialog: '94vw',
-        },
-        spacing: {
-          ...defaultSizes,
-          '4.5': '1.125rem',
-          11: '2.625rem',
-          13: '3.25rem',
-          15: '3.75rem',
-          22: '5.5rem',
-          26: '6.5rem',
-        },
-      },
-    },
-  }
-  ```
-
-  These improvements streamline the configuration, making it more intuitive and adaptable for future design needs.
-
-- 205ce7b: **\[UI\]** Streamlined the Tailwind aspect ratio configuration.
-  Here’s the updated aspect ratio setup:
-
-  ```ts
-  {
-    '3/4': '3 / 4',
-    '9/4': '9 / 4',
-     square: '1/1',
-  }
-  ```
-
-- 205ce7b: **\[UI\]** To standardize the styling of promotional elements, a dedicated `promotion` color has been added to the Tailwind color palette.
-  This provides a consistent, themeable fallback color for all promotional banners and labels.
-- fd4ba26: **\[PLP\]** To enhance mobile usability, the new `SFMobileSortSelection.vue` component has been introduced.
-  It implements a slider-and-chip interface and replaces the former dropdown-based sorting logic within SFFilterSlideInContent.vue.
-  The previous dropdown implementation for sort selection on mobile devices was not optimal for touch interactions and required multiple taps to change sort options.
-  The new slider interface with chips provides better touch targets for mobile users, offers immediate visual feedback and reduces the number of interactions needed to change sort order.
-- bc2965d: **\[Performance\]** Updated `routeRules` in `nuxt.config.ts` to disable internal Redis page caching and rely solely on `Cache-Control` headers which can be handled efficiently by external CDNs like Cloudflare.
+- **\[Performance\]** Updated `routeRules` in `nuxt.config.ts` to disable internal Redis page caching.
+  The Storefront Application now relies solely on `Cache-Control` headers which can be handled efficiently by external CDNs like Cloudflare.
 
   ```ts
   // Before
@@ -488,128 +161,8 @@
   }
   ```
 
-- 205ce7b: **\[UI\]** Enhanced Tailwind configuration for `outline`, `outline-offset`, `border-width`, and `border-radius`.
-
-  Key Changes:
-
-  - Simplified `outline` and `outline-offset` configuration by removing redundant values.
-  - Removed custom [border-radius](https://v3.tailwindcss.com/docs/border-radius) and [border-width](https://v3.tailwindcss.com/docs/border-width) values to align with Tailwind's default values for consistency and maintainability.
-
-  Updated Configuration for Outline Values:
-
-  ```ts
-  export default {
-    theme: {
-      extend: {
-        outlineWidth: {
-          0: '0',
-          1: '1px',
-          2: '2px',
-          3: '3px',
-        },
-        outlineOffset: {
-          0: '0',
-          1: '1px',
-          2: '2px',
-          4: '4px',
-          5: '5px',
-        },
-      },
-    },
-  }
-  ```
-
-- 205ce7b: **\[Architecture\]** As part of a code quality improvement, the `SFHeadlineBadge` component was refactored.
-  Its logic has been inlined into the `SFHeadline` badge slot, removing an unnecessary component.
-
-### Patch Changes
-
-- cf2f0e9: **\[Promotions\]** Resolved an issue where the promotion badge was displayed in the `SFBasketCardImage` component even if the promotion was not applied anymore.
-
-  The promotion badge is now displayed if the promotion exists and is valid.
-
-- cd4dbe6: **\[Account\]** Improved the user experience in the "Forgot Password" modal by ensuring that old error messages are cleared when the modal is closed. Users will no longer see a stale error message when reopening the form.
-
-  The `errorMessage` is now correctly reset to `null` when the modal is dismissed.
-
-- d74b102: **\[UI\]** Addressed a positioning bug where the flyout in `SFHeaderNavigationItem` would appear in the wrong place.
-  The issue, caused by dynamic `translateX` positioning, has been resolved by anchoring the flyout's position relative to the main header.
-- d19405b: **\[Accessibility\]** Addressed an issue where focus would incorrectly return to a `SFHeaderNavigationItem` after a `mouseleave` event and subsequent page navigation
-  The fix involves deactivating the focus trap without returning focus (`returnFocus: false`) when the interaction is mouse-driven, preventing the unwanted focus jump.
-- - Added dependency `@nuxt/kit@3.16.2`
-  - Added dependency `@nuxt/schema@3.16.2`
-  - Added dependency `@nuxtjs/storybook@8.4.1`
-  - Added dependency `@storybook-vue/nuxt@8.4.1`
-  - Added dependency `@storybook/addon-a11y@9.0.5`
-  - Added dependency `@storybook/addon-docs@9.0.5`
-  - Added dependency `eslint-plugin-storybook@0.12.0`
-  - Added dependency `storybook@9.0.5`
-  - Removed dependency `global@4.4.0`
-  - Removed dependency `maska@3.1.1`
-  - Removed dependency `patch-package@8.0.0`
-  - Updated dependency `@contentful/live-preview@4.6.20` to `@contentful/live-preview@4.6.27`
-  - Updated dependency `@contentful/rich-text-html-renderer@17.0.0` to `@contentful/rich-text-html-renderer@17.0.1`
-  - Updated dependency `@scayle/nuxt-opentelemetry@0.13.7` to `@scayle/nuxt-opentelemetry@0.13.10`
-  - Updated dependency `@scayle/storefront-nuxt@8.28.6` to `@scayle/storefront-nuxt@8.33.2`
-  - Updated dependency `@scayle/storefront-product-detail@1.4.2` to `@scayle/storefront-product-detail@1.5.0`
-  - Updated dependency `@scayle/storefront-product-listing@1.6.2` to `@scayle/storefront-product-listing@2.0.0`
-  - Updated dependency `@scayle/unstorage-scayle-kv-driver@1.0.0` to `@scayle/unstorage-scayle-kv-driver@1.0.2`
-  - Updated dependency `@storyblok/nuxt@7.0.1` to `@storyblok/nuxt@7.1.3`
-  - Updated dependency `@storyblok/richtext@3.3.0` to `@storyblok/richtext@3.4.0`
-  - Updated dependency `@storyblok/vue@9.0.0` to `@storyblok/vue@9.1.2`
-  - Updated dependency `@vueuse/components@13.3.0` to `@vueuse/components@13.5.0`
-  - Updated dependency `@vueuse/core@13.3.0` to `@vueuse/core@13.5.0`
-  - Updated dependency `@vueuse/integrations@13.3.0` to `@vueuse/integrations@13.5.0`
-  - Updated dependency `@vueuse/nuxt@13.3.0` to `@vueuse/nuxt@13.5.0`
-  - Updated dependency `axios@1.9.0` to `axios@1.10.0`
-  - Updated dependency `contentful@11.7.0` to `contentful@11.7.6`
-  - Updated dependency `contentful-export@7.21.57` to `contentful-export@7.21.64`
-  - Updated dependency `dotenv@16.5.0` to `dotenv@16.6.1`
-  - Updated dependency `storyblok-js-client@7.0.0` to `storyblok-js-client@7.0.2`
-  - Updated dependency `swiper@11.2.8` to `swiper@11.2.10`
-  - Updated dependency `vue@3.5.16` to `vue@3.5.17`
-  - Updated dependency `@changesets/cli@2.29.4` to `@changesets/cli@2.29.5`
-  - Updated dependency `@contentful/rich-text-types@17.0.0` to `@contentful/rich-text-types@17.0.1`
-  - Updated dependency `@nuxt/test-utils@3.18.0` to `@nuxt/test-utils@3.19.2`
-  - Updated dependency `@nuxtjs/i18n@9.5.5` to `@nuxtjs/i18n@9.5.6`
-  - Updated dependency `@scayle/eslint-config-storefront@4.5.4` to `@scayle/eslint-config-storefront@4.5.12`
-  - Updated dependency `@types/node@22.15.30` to `@types/node@22.16.2`
-  - Updated dependency `@typescript-eslint/scope-manager@8.33.1` to `@typescript-eslint/scope-manager@8.36.0`
-  - Updated dependency `@typescript-eslint/utils@8.33.1` to `@typescript-eslint/utils@8.36.0`
-  - Updated dependency `@upstash/redis@1.35.0` to `@upstash/redis@1.35.1`
-  - Updated dependency `@vitest/coverage-v8@3.2.2` to `@vitest/coverage-v8@3.2.4`
-  - Updated dependency `@vue/typescript-plugin@2.2.10` to `@vue/typescript-plugin@3.0.1`
-  - Updated dependency `eslint@9.28.0` to `eslint@9.30.1`
-  - Updated dependency `eslint-formatter-gitlab@6.0.0` to `eslint-formatter-gitlab@6.0.1`
-  - Updated dependency `happy-dom@17.6.3` to `happy-dom@18.0.1`
-  - Updated dependency `lint-staged@16.1.0` to `lint-staged@16.1.2`
-  - Updated dependency `nuxt-svgo@4.2.1` to `nuxt-svgo@4.2.3`
-  - Updated dependency `postcss@8.5.4` to `postcss@8.5.6`
-  - Updated dependency `postcss-import@16.1.0` to `postcss-import@16.1.1`
-  - Updated dependency `unimport@5.0.1` to `unimport@5.1.0`
-  - Updated dependency `vitest@3.2.2` to `vitest@3.2.4`
-  - Updated dependency `vue-tsc@2.2.10` to `vue-tsc@3.0.1`
-- a4f987d: **\[UI\]** Addressed an issue where using margins to position the `SFPopover.vue` content created a gap that would cause the hover state to flicker.
-  The component now uses transparent borders instead, which closes the gap and provides a stable hover experience.
-- 5750ddf: **\[Subscriptions\]** Addressed a bug where subscription attribute values were not displaying correctly on the Order Detail and Order Success pages.
-  The `SFOrderDetailProductSubscription` component has been corrected to ensure this information is always shown accurately.
-- e657a38: **\[E2E\]** Aligned the PLP sorting test with recent mobile UI enhancements.
-  The test logic has been updated to use the new sorting slider with chips instead of the previous dropdown, ensuring our tests accurately reflect the current user experience.
-- 839b04b: **\[UX\]** Improved the user experience in the `SFStoreLocatorSlideIn` component.
-  Users can now trigger a search by pressing the Enter key in the text input, thanks to the input being properly wrapped in a `<form> `element.
-- f3543ad: **\[Accessibility\]** Streamlined keyboard navigation within product sliders (`SFBaseProductSlider`).
-  The arrow buttons are no longer focusable, allowing users to tab directly between products more efficiently.
-  Additionally, the focus indicator on products is now always fully visible.
-- ba8dd1b: **\[Search\]** To prevent text overflow in smaller containers, the `SFShowAllResultsLink.vue` component now truncates its label.
-  This change ensures a clean and consistent UI layout.
-- 3d8393c: **\[PDP\]** Fixed issue where controls of the `<SFProductGallery />` were not usable after the `<SFProductGalleryZoom />` was opened. Adding `z-index: 10` ensures the controls can always be clicked.
-- d0f5530: **\[Accessibility\]** To ensure all text is easily readable and meets accessibility standards, the extra-small (`xs`) font size option has been removed.
-  The smallest available font size is now `12px`, guaranteeing a more legible experience for all users.
-- 822b409: **\[SEO\]** Addressed an issue where hreflang links were missing for PLPs and PDPs during server-side rendering.
-  The data required to check product/category availability in other shops (`useAllShopCategoriesForId`, `useAllShopProductsForId`) was not yet available when the links were being generated.
-  The application now awaits these data-fetching functions, guaranteeing the availability data is present and allowing `hreflang` links to be generated reliably.
-- f3543ad: **\[UI\]** To standardize the appearance of all product sliders, the `SFProductRecommendations` and `SFRecentlyViewedProductsSlider` components have been updated to use the shared `SFSliderArrowButton`.
-- 5f6a38b: **\[PLP\]** The category fetching logic has been updated to exclude categories that contain no products.
+- **\[PDP\]** A new "Recently Viewed Products" recommendation slider has been added to the Product Detail Page, allowing customers to easily navigate back to products they have previously viewed.
+- **\[PLP\]** The category fetching logic has been updated to exclude categories that contain no products.
   This change automatically removes them from the PLP side navigation for a cleaner interface.
 
   ```ts
@@ -639,54 +192,498 @@
   )
   ```
 
-- ac660a0: **\[Architecture\]** Refactored `useAuthentication` to longer be tied to a specific authentication action. This simplifies the usage of the composable and prevents possible unexpected behavior if there is a mismatch between the authentication string passed to the composable and the authentication method which is called.
+- **\[PLP\]** To improve performance and create a single source of truth, the product listing logic has been refactored as part of the upgrade to `@scayle/storefront-product-listing@2.0.0`.
+  - **Sorting Logic:** The `useProductListSort` composable is now centralized at the page level to act as a single source of truth.
+  - **SEO Data:** The `useProductListingSeoData` composable now requires an additional isDefaultSortSelected boolean parameter.
+  - **UI Labels:** The `label` for the selected sort option is now a direct string and should no longer be passed through the translation function (`$t(label)`).
+- **\[PLP\]** Implemented a smart and custom sorting mechanism for the `top_seller` sorting option (commonly referred to as "Recommendations").
+  If there are no sorting keys defined for a specific category, the `top_seller` sorting option will default to its original behavior.
+  Here's the main logic for implementing smart and custom sorting keys:
 
-  - **Before**
+  ```ts
+  import {
+    defaultSortingOptions,
+    DEFAULT_SORTING_KEY,
+    useProductListSort,
+  } from '#storefront-product-listing'
+
+  const sortingOptions = computed(() => {
+    const smartSortingKey =
+      currentCategory.value?.productSorting?.smartSortingKey
+    const customSortingKey =
+      currentCategory.value?.productSorting?.customSortingKey
+
+    if (!smartSortingKey && !customSortingKey) {
+      return defaultSortingOptions
+    }
+    return defaultSortingOptions.map((option) => {
+      const sortingKey = [smartSortingKey, customSortingKey].filter(
+        (item): item is string => !!item,
+      )
+      return option.key === DEFAULT_SORTING_KEY
+        ? { ...option, sortingKey }
+        : option
+    })
+  })
+
+  const { selectedSort } = useProductListSort(route, {
+    sortingOptions: sortingOptions.value,
+  })
+  ```
+
+- **\[PLP\]** To enhance mobile usability, the new `SFMobileSortSelection.vue` component has been introduced.
+  It implements a slider-and-chip interface and replaces the former dropdown-based sorting logic within SFFilterSlideInContent.vue.
+  The previous dropdown implementation for sort selection on mobile devices was not optimal for touch interactions and required multiple taps to change sort options.
+  The new slider interface with chips provides better touch targets for mobile users, offers immediate visual feedback and reduces the number of interactions needed to change sort order.
+- **\[Promotions\]** Users can now apply and remove promotion codes directly in the shopping basket.
+  A new `SFBasketPromotionCodes.vue` component has been added, allowing customers to see their discounts applied without having to proceed to the checkout page first.
+  This replaces the current disclaimer on the basket page with a new `SFBasketPromotionCodes.vue` component.
+  This component builds on the latest enhancements to `@scayle/storefront-promotions@2.2.0` and enables users to add and remove promotion codes without necessitating entering checkout first.
+- **\[UI\]** To simplify responsive design and improve maintainability, the application's breakpoints have been streamlined.
+  The `2xl` breakpoint has been removed to focus on a more essential set of screen sizes.
+  Developers should now target the `xl` breakpoint as the largest available size for any screen-specific styling.
+
+  - Available Breakpoints:
 
     ```ts
-    const { login, logout } = useAuthentication('login')
-
-    login({ username, password }) // 'login' success or error message and 'login' event tracked
-    logout() // 'login' success or error message and 'login' event tracked
+    // config/ui.ts
+    export const BREAKPOINTS = {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+    }
     ```
 
-  - **After**
+- **\[UI\]** The Tailwind CSS configuration has been simplified by removing custom `z-index` values (from `60` to `110`).
+  We now rely on Tailwind's default `z-index` scale, leading to a cleaner and more maintainable styling implementation.
+- **\[UI\]** Enhanced Tailwind configuration for `spacing` and `sizes`.
+  Configuration is refined for `width`, `minWidth`, `maxWidth`, `height`, `minHeight`, `maxHeight`, `spacing`, and `padding`.
+  These updates ensure a consistent and scalable design system.
+
+  - Key changes:
+    - The `spacing` scale now serves as the foundation for multiple core plugins, including margin, gap, inset, space, translate, scrollMargin, and scrollPadding.
+    - To maintain uniformity, all values are centralized within the `spacing` property, which incorporates `defaultSizes` defined at the top of the Tailwind config file.
+    - Additionally, `spacing` and other sizing values (`maxHeight` and `maxWidth`) are extended within the `theme.extend` property, leveraging the [default Tailwind spacing scale](https://v3.tailwindcss.com/docs/customizing-spacing#default-spacing-scale).
+  - Updated configuration:
 
     ```ts
-    const { login, logout } = useAuthentication()
+    // tailwind.config.ts
+    const defaultSizes = {
+      '6xs': '2rem',
+      '5xs': '4rem',
+      '4xs': '8rem',
+      '3xs': '12rem',
+      '2xs': '16rem',
+      xs: '20rem',
+      md: '28rem',
+      lg: '32rem',
+      xl: '36rem',
+      '2xl': '40rem',
+      '3xl': '48rem',
+    }
 
-    login({ username, password }) // 'login' success message shown and 'login' event tracked
-    logout() // 'logout' success or error message and 'logout' event tracked
+    export default {
+      theme: {
+        extend: {
+          maxHeight: {
+            dialog: '94vh',
+          },
+          maxWidth: {
+            screen: '100vw',
+            dialog: '94vw',
+          },
+          spacing: {
+            ...defaultSizes,
+            '4.5': '1.125rem',
+            11: '2.625rem',
+            13: '3.25rem',
+            15: '3.75rem',
+            22: '5.5rem',
+            26: '6.5rem',
+          },
+        },
+      },
+    }
     ```
 
-- 56560a2: **\[UI\]** Added `supports-hover` condition to `SFButton` hover transparency so the style will only be applied on devices which support hover.
-- c0c400c: **\[Performance\]** Fixed a bug where navigating between product detail pages caused multiple executions of `redirectProductIfNecessary`, potentially creating a redirect loop.
-  The function now checks if the product status is `pending` before executing, ensuring it only runs once per navigation.
-- b493eb4: **\[Images\]** To improve visual consistency in the basket popover, the alignment of product images has been fixed.
-  Images will now appear correctly aligned regardless of their original aspect ratio.
-- 5656cff: **\[UI\]** Resoved an issue where the promotion count in the `SFPromotionSlideIn` and filter count in the `SFFilterGroup` were not aligend properly.
+- **\[UI\]** Streamlined the Tailwind font weight configuration for a cleaner and more consistent design.
 
-  There is now a new `SFBadge` UI component that can be used to display a badge with a count. This will align the styling of the badge within the Storefront Application.
+  - Updated font weight setup:
 
-- b493eb4: **\[Images\]** To improve visual consistency on the Wishlist page, the alignment of product images has been fixed.
-  Images will now appear correctly aligned regardless of their original aspect ratio.
-- b41413c: **\[UI\]** To improve usability, the mobile sorting selection (`SFMobileSortSelection.vue`) now displays all available options at once.
-  This eliminates the need for scrolling and makes it easier for users to see the currently active sort order.
-- 7138a86: **\[Account\]** Improved the clarity of the error message shown when a non-existent email is entered in the "Forgot Password" and "Reset Password" forms.
-  The message now correctly refers only to the email address, removing a confusing mention of the password.
-- 9e3e65d: **\[Architecture\]** To prevent hydration errors related to URL query parameters, Incremental Static Regeneration (ISR) has been disabled for all Vercel deployments.
-  This change is a necessary workaround for a known issue where query params were not correctly handled during server-side rendering with ISR.
-  More details are available in [this Nitro issue](https://github.com/nitrojs/nitro/issues/1880).
-- c790770: **\[E2E\]** Aligned the mobile sorting test with recent UI enhancements.
+    ```ts
+    {
+      normal: '400',
+      medium: '500',
+      semibold: '600',
+      bold: '700',
+    }
+    ```
+
+- **\[UI\]** Enhanced and simplified Tailwind configuration for `font-sizes` and `line heights`.
+
+  - Key changes:
+    - The font size scale has been refined for better usability and consistency.
+      The following font sizes have been removed: `3xs`, `2xs`, `base`, `4xl`, `5xl`, `6xl`, `7xl`.
+    - **New Progression:** The font size scale now aligns closely with Tailwind's default numerical progression.
+      - `3xs` and `2xs` are replaced with `xs`.
+      - `base` is replaced with `md`.
+    - Line heights have also been streamlined:
+      - The `2.5` and `3.5` values has been removed.
+      - The configuration retains Tailwind's default line heights, ensuring compatibility across the application.
+  - Updated configuration:
+
+    ```ts
+    // tailwind.config.ts
+    export default {
+      theme: {
+        fontSize: {
+          xs: [
+            '0.625rem', // 10px
+            {
+              lineHeight: '0.875rem',
+              letterSpacing: '0.09px',
+            },
+          ],
+          sm: [
+            '0.75rem', // 12px
+            {
+              lineHeight: '1rem',
+              letterSpacing: '-0.13px',
+            },
+          ],
+          md: [
+            '0.875rem', // 14px
+            {
+              lineHeight: '1.125rem',
+              letterSpacing: '-0.14px',
+            },
+          ],
+          lg: [
+            '1rem', // 16px
+            {
+              lineHeight: '1.25rem',
+              letterSpacing: '-0.32px',
+            },
+          ],
+          xl: [
+            '1.125rem', // 18px
+            {
+              lineHeight: '1.375rem',
+              letterSpacing: '0',
+            },
+          ],
+          '2xl': [
+            '1.25rem', // 20px
+            {
+              lineHeight: '1.75rem',
+              letterSpacing: '-0.4px',
+            },
+          ],
+          '3xl': [
+            '1.75rem', // 28px
+            {
+              lineHeight: '2rem',
+              letterSpacing: '-0.5px',
+            },
+          ],
+        },
+      },
+    }
+    ```
+
+  These updates make the configuration more intuitive, future-proof, and adaptable
+  to evolving design needs. By aligning with Tailwind's default progression,
+  the setup ensures consistency while maintaining flexibility for creative designs.
+
+- **\[UI\]** Enhanced Tailwind configuration for `outline`, `outline-offset`, `border-width`, and `border-radius`.
+
+  - Key changes include:
+    - Simplified `outline` and `outline-offset` configuration by removing redundant values.
+    - Removed custom [border-radius](https://v3.tailwindcss.com/docs/border-radius) and [border-width](https://v3.tailwindcss.com/docs/border-width) values to align with Tailwind's default values for consistency and maintainability.
+  - Updated configuration for outline values:
+
+    ```ts
+    // tailwind.config.ts
+    export default {
+      theme: {
+        extend: {
+          outlineWidth: {
+            0: '0',
+            1: '1px',
+            2: '2px',
+            3: '3px',
+          },
+          outlineOffset: {
+            0: '0',
+            1: '1px',
+            2: '2px',
+            4: '4px',
+            5: '5px',
+          },
+        },
+      },
+    }
+    ```
+
+- **\[UI\]** Streamlined the Tailwind aspect ratio configuration.
+
+  - Updated aspect ratio setup:
+
+    ```ts
+    // tailwind.config.ts
+    {
+      '3/4': '3 / 4',
+      '9/4': '9 / 4',
+      square: '1/1',
+    }
+    ```
+
+- **\[UI\]** The color palette has been streamlined and unified
+  within the Tailwind configuration for improved consistency and simplicity.
+  The most notable refinements are in the `gray` and `secondary` color variants,
+  which have been thoughtfully reduced to enhance usability and clarity.
+  New gray and secondary color definitions are as follows:
+
+  ```ts
+  {
+    gray: {
+      100: '#fafafa',
+      200: '#f2f2f2',
+      300: '#ebebeb',
+      400: '#d9d9d9',
+      500: '#a8a8a8',
+    },
+    secondary: '#666666',
+  }
+  ```
+
+  Furthermore, `white-smoke`, `focus`, and `primary-400` colors has been removed,
+  replacing them with carefully selected alternatives that align with the updated design system.
+
+- **\[UI\]** Enhanced and simplified Tailwind configuration for `box-shadows`.
+
+  - Extracted CSS variables within `main.css`:
+
+    ```css
+    @layer base {
+      :root {
+        --color-shadow-navy: 25 49 70;
+        --color-shadow-gray: 204 204 204;
+        --color-shadow-white-smoke: 0, 0, 0, 0.1;
+      }
+    }
+    ```
+
+  - Tailwind configuration:
+
+    ```ts
+    // tailwind.config.ts
+    export default {
+      theme: {
+        boxShadow: {
+          none: 'none',
+          DEFAULT:
+            '0 4px 6px -1px rgba(var(--color-shadow-white-smoke)), 0 2px 4px -2px rgba(var(--color-shadow-white-smoke))',
+          'inner-solid': 'inset 0 0 0 4px rgb(var(--color-shadow-navy))',
+          'inner-solid-sm': 'inset 0 0 0 2px rgb(var(--color-shadow-navy))',
+          'outer-solid': '0 0 0 3px rgb(var(--color-shadow-navy))',
+          'input-label':
+            'inset 0 2px 8px -10px rgb(var(--color-shadow-gray)), inset 0 2px 8px -10px rgb(var(--color-shadow-gray))',
+        },
+      },
+    }
+    ```
+
+- **\[Unit Testing\]** To standardize test data generation, our unit tests now use the official order factories provided by the `@scayle/storefront-nuxt` package, replacing our previous custom implementations.
+  This change simplifies our test setup and improves maintainability.
+
+### 💅 Minor Changes
+
+- **\[Architecture\]** Addressed an issue where `$config.public.baseUrl` provided an incorrect base URL for domain-based shops.
+  This deprecated property has been removed, and we now use `useRequestURL().origin` to reliably get the correct base URL.
+- **\[PLP\]** The range filter functionality has been enhanced to support filtering by both price and discount percentage.
+  To reflect this broader use case, `SFPriceRangeSlider.vue` and `SFPriceInput.vue` have been renamed to the more generic `SFFilterRangeSlider.vue` and `SFRangeInput.vue`.
+  This refactoring was done as part of adding support for discount filters (e.g., `max_savings_percentage`) in the filter slide-in.
+- **\[UI\]** Improved aspect ratio configuration for `SFProductImage.vue`
+  The product image aspect ratio is now defined in a single source of truth: `config/ui.ts`.
+  There's no longer a need to apply additional styling on the parent element to achieve the desired aspect ratio.
+  This change enhances maintainability and makes it easier to adjust the aspect ratio in the future.
+
+  - Before:
+
+    ```vue
+    <div
+      class="aspect-3/4"
+    > <!-- Before we had to apply aspect ratio on the parent element even though the image was already in the correct aspect ratio -->
+        <SFProductImage
+          :image="image"
+          :image-loading="imageLoading"
+          :alt="alt"
+          :preload="preload"
+          :aspect-ratio="[3, 4]"
+          sizes="xs:50vw sm:50vw md:40vw lg:33vw xl:320px"
+        />
+      </div>
+    ```
+
+  - After:
+
+    ```vue
+    <template>
+      <div>
+        <SFProductImage
+          :image="image"
+          :image-loading="imageLoading"
+          :alt="alt"
+          :preload="preload"
+          :aspect-ratio="PRODUCT_IMAGE_ASPECT_RATIO" <!-- Setting the aspect ratio directly on the image is now sufficient. -->
+          sizes="xs:50vw sm:50vw md:40vw lg:33vw xl:320px"
+        />
+      </div>
+    </template>
+
+    <script setup lang="ts">
+    import { PRODUCT_IMAGE_ASPECT_RATIO } from '~/config/ui'
+    // Additionally we have a single configuration to configure the aspect ratio for all product images.
+    </script>
+    ```
+
+- **\[E2E\]** Expanded end-to-end test coverage for the Wishlist page.
+  A new test in `e2e-Wishlist.spec.ts` now verifies that clicking a product card correctly navigates the user to the corresponding Product Detail Page.
+- **\[E2E\]** Aligned the PLP sorting test with recent mobile UI enhancements.
+  The test logic has been updated to use the new sorting slider with chips instead of the previous dropdown, ensuring our tests accurately reflect the current user experience.
+- **\[E2E\]** Aligned the mobile sorting test with recent UI enhancements.
   The test locator in `playwright/page-objects/components/sorting.ts` has been updated to reflect the new design where all sort options are visible simultaneously, ensuring accurate validation of the user experience.
-- 927e8fe: **\[UI\]** Addressed a visual bug in `SFSiblingSelection.vue` that caused image corners to overflow their container.
-  The component's styling has been updated to hide overflow, ensuring a clean and contained appearance.
-- 46dff06: **\[Account\]** Improved the behavior of the "Forgot Password" form.
+- **\[UI\]** Streamlined and polished the UI module components by removing outdated and redundant props:
+  - `SFModal.client`: Simplified by removing the `closeOnOutside` property.
+  - `SFPopover`: Decluttered with the removal of `disablePopoverContent` and `contentWrapperClass` properties.
+  - `SFSlideIn.client`: Transitioned to a single `default` slide type (X-axis) by removing the `slideType` property.
+  - `SFDropdown`: Refined by eliminating the `isLarge` property.
+  - `SFSwitch`: Lightened up with the removal of `name` and `required` properties.
+  - `SFTextInput`: Enhanced by dropping the `hint` and `mask` properties.
+  - `SFLink`: Unified `active` and `exactActive` classes, saying goodbye to `onlyExactActive`.
+  - `SFItemsSlider`: Simplified by removing `container` and `sliderClass` properties.
+  - `SFModal`: Removed the `hideCloseButton` prop, which was no longer in use.
+  - `SFItemsSlider`: Removed the `scrollable` prop, which was no longer in use.
+- **\[UI\]** As part of a code quality improvement, the `SFHeadlineBadge` component was refactored.
+  Its logic has been inlined into the `SFHeadline` badge slot, removing an unnecessary component.
+- **\[UI\]** To standardize the styling of promotional elements, a dedicated `promotion` color has been added to the Tailwind color palette.
+  This provides a consistent, themeable fallback color for all promotional banners and labels.
+- **\[UI\]** Removed `SFProgressBar` as it is not used.
+- **\[UI\]** The `SFHeadline` component has been refactored.
+  The `loading` prop and its associated skeleton loader are no longer part of the component;
+  developers are now responsible for handling the loading state externally (e.g., with a wrapper component).
+  The `hidden` prop and the custom `visually-hidden` class have also been removed to streamline the component's API.
+
+### 🩹 Patch Changes
+
+- **\[Accessibility\]** To ensure all text is easily readable and meets accessibility standards, the extra-small (`xs`) font size option has been removed.
+  The smallest available font size is now `12px`, guaranteeing a more legible experience for all users.
+- **\[Accessibility\]** Streamlined keyboard navigation within product sliders (`SFBaseProductSlider`).
+  The arrow buttons are no longer focusable, allowing users to tab directly between products more efficiently.
+  Additionally, the focus indicator on products is now always fully visible.
+- **\[Accessibility\]** Addressed an issue where focus would incorrectly return to a `SFHeaderNavigationItem` after a `mouseleave` event and subsequent page navigation
+  The fix involves deactivating the focus trap without returning focus (`returnFocus: false`) when the interaction is mouse-driven, preventing the unwanted focus jump.
+- **\[Account\]** Improved the behavior of the "Forgot Password" form.
   Submitting the form by pressing the Enter key now correctly validates the input instead of unexpectedly closing the modal.
   This was resolved by explicitly setting the non-submit button's type to button, ensuring the correct button is triggered on form submission.
-- 7182718: **\[Login & Registration\]** Refactored the error handling strategy in the useAuthentication composable.
+- **\[Account\]** Improved the user experience in the "Forgot Password" modal by ensuring that old error messages are cleared when the modal is closed. Users will no longer see a stale error message when reopening the form.
+  The `errorMessage` is now correctly reset to `null` when the modal is dismissed.
+- **\[Account\]** Improved the clarity of the error message shown when a non-existent email is entered in the "Forgot Password" and "Reset Password" forms.
+  The message now correctly refers only to the email address, removing a confusing mention of the password.
+- **\[Architecture\]** To prevent hydration errors related to URL query parameters, Incremental Static Regeneration (ISR) has been disabled for all Vercel deployments.
+  This change is a necessary workaround for a known issue where query params were not correctly handled during server-side rendering with ISR.
+  More details are available in [this Nitro issue](https://github.com/nitrojs/nitro/issues/1880).
+- **\[Images\]** To improve visual consistency in the basket popover, the alignment of product images has been fixed.
+  Images will now appear correctly aligned regardless of their original aspect ratio.
+- **\[Login & Registration\]** Refactored the error handling strategy in the useAuthentication composable.
   Authentication methods (`login`, `guestLogin`, `logout`, `register`, `forgotPassword`, `resetPasswordByHash`) now throw exceptions instead of internally caching them.
   This creates a more predictable and standard error handling pattern, requiring consuming components to handle failures explicitly.
+- **\[PDP\]** Fixed issue where controls of the `<SFProductGallery />` were not usable after the `<SFProductGalleryZoom />` was opened. Adding `z-index: 10` ensures the controls can always be clicked.
+- **\[Performance\]** Fixed a bug where navigating between product detail pages caused multiple executions of `redirectProductIfNecessary`, potentially creating a redirect loop.
+  The function now checks if the product status is `pending` before executing, ensuring it only runs once per navigation.
+- **\[Promotions\]** Resolved an issue where the promotion badge was displayed in the `SFBasketCardImage` component even if the promotion was not applied anymore.
+  The promotion badge is now displayed if the promotion exists and is valid.
+- **\[SEO\]** Addressed an issue where hreflang links were missing for PLPs and PDPs during server-side rendering.
+  The data required to check product/category availability in other shops (`useAllShopCategoriesForId`, `useAllShopProductsForId`) was not yet available when the links were being generated.
+  The application now awaits these data-fetching functions, guaranteeing the availability data is present and allowing `hreflang` links to be generated reliably.
+- **\[Search\]** To prevent text overflow in smaller containers, the `SFShowAllResultsLink.vue` component now truncates its label.
+  This change ensures a clean and consistent UI layout.
+- **\[Subscriptions\]** Addressed a bug where subscription attribute values were not displaying correctly on the Order Detail and Order Success pages.
+  The `SFOrderDetailProductSubscription` component has been corrected to ensure this information is always shown accurately.
+- **\[UI\]** Resolved an issue where the promotion count in the `SFPromotionSlideIn` and filter count in the `SFFilterGroup` were not aligned properly.
+  There is now a new `SFBadge` UI component that can be used to display a badge with a count. This will align the styling of the badge within the Storefront Application.
+- **\[UI\]** Added `supports-hover` condition to `SFButton` hover transparency so the style will only be applied on devices which support hover.
+- **\[UI\]** To improve code quality and reduce dependency bloat, the unused `mask` package has been removed from the project's dependencies.
+- **\[UI\]** To standardize the appearance of all product sliders, the `SFProductRecommendations` and `SFRecentlyViewedProductsSlider` components have been updated to use the shared `SFSliderArrowButton`.
+- **\[UI\]** To improve usability, the mobile sorting selection (`SFMobileSortSelection.vue`) now displays all available options at once.
+  This eliminates the need for scrolling and makes it easier for users to see the currently active sort order.
+- **\[UI\]** Addressed a visual bug in `SFSiblingSelection.vue` that caused image corners to overflow their container.
+  The component's styling has been updated to hide overflow, ensuring a clean and contained appearance.
+- **\[UI\]** Addressed an issue where using margins to position the `SFPopover.vue` content created a gap that would cause the hover state to flicker.
+  The component now uses transparent borders instead, which closes the gap and provides a stable hover experience.
+- **\[UI\]** Addressed a positioning bug where the flyout in `SFHeaderNavigationItem` would appear in the wrong place.
+  The issue, caused by dynamic `translateX` positioning, has been resolved by anchoring the flyout's position relative to the main header.
+- **\[UX\]** Improved the user experience in the `SFStoreLocatorSlideIn` component.
+  Users can now trigger a search by pressing the Enter key in the text input, thanks to the input being properly wrapped in a `<form>`element.
+
+### 🏡 Dependency Updates
+
+- Added dependency `@nuxt/kit@3.16.2`
+- Added dependency `@nuxt/schema@3.16.2`
+- Added dependency `@nuxtjs/storybook@8.4.1`
+- Added dependency `@storybook-vue/nuxt@8.4.1`
+- Added dependency `@storybook/addon-a11y@9.0.5`
+- Added dependency `@storybook/addon-docs@9.0.5`
+- Added dependency `eslint-plugin-storybook@0.12.0`
+- Added dependency `storybook@9.0.5`
+- Removed dependency `global@4.4.0`
+- Removed dependency `maska@3.1.1`
+- Removed dependency `patch-package@8.0.0`
+- Updated dependency `@contentful/live-preview@4.6.20` to `@contentful/live-preview@4.6.27`
+- Updated dependency `@contentful/rich-text-html-renderer@17.0.0` to `@contentful/rich-text-html-renderer@17.0.1`
+- Updated dependency `@scayle/nuxt-opentelemetry@0.13.7` to `@scayle/nuxt-opentelemetry@0.13.10`
+- Updated dependency `@scayle/storefront-nuxt@8.28.6` to `@scayle/storefront-nuxt@8.33.2`
+- Updated dependency `@scayle/storefront-product-detail@1.4.2` to `@scayle/storefront-product-detail@1.5.0`
+- Updated dependency `@scayle/storefront-product-listing@1.6.2` to `@scayle/storefront-product-listing@2.0.0`
+- Updated dependency `@scayle/unstorage-scayle-kv-driver@1.0.0` to `@scayle/unstorage-scayle-kv-driver@1.0.2`
+- Updated dependency `@storyblok/nuxt@7.0.1` to `@storyblok/nuxt@7.1.3`
+- Updated dependency `@storyblok/richtext@3.3.0` to `@storyblok/richtext@3.4.0`
+- Updated dependency `@storyblok/vue@9.0.0` to `@storyblok/vue@9.1.2`
+- Updated dependency `@vueuse/components@13.3.0` to `@vueuse/components@13.5.0`
+- Updated dependency `@vueuse/core@13.3.0` to `@vueuse/core@13.5.0`
+- Updated dependency `@vueuse/integrations@13.3.0` to `@vueuse/integrations@13.5.0`
+- Updated dependency `@vueuse/nuxt@13.3.0` to `@vueuse/nuxt@13.5.0`
+- Updated dependency `axios@1.9.0` to `axios@1.10.0`
+- Updated dependency `contentful@11.7.0` to `contentful@11.7.6`
+- Updated dependency `contentful-export@7.21.57` to `contentful-export@7.21.64`
+- Updated dependency `dotenv@16.5.0` to `dotenv@16.6.1`
+- Updated dependency `storyblok-js-client@7.0.0` to `storyblok-js-client@7.0.2`
+- Updated dependency `swiper@11.2.8` to `swiper@11.2.10`
+- Updated dependency `vue@3.5.16` to `vue@3.5.17`
+- Updated dependency `@changesets/cli@2.29.4` to `@changesets/cli@2.29.5`
+- Updated dependency `@contentful/rich-text-types@17.0.0` to `@contentful/rich-text-types@17.0.1`
+- Updated dependency `@nuxt/test-utils@3.18.0` to `@nuxt/test-utils@3.19.2`
+- Updated dependency `@nuxtjs/i18n@9.5.5` to `@nuxtjs/i18n@9.5.6`
+- Updated dependency `@scayle/eslint-config-storefront@4.5.4` to `@scayle/eslint-config-storefront@4.5.12`
+- Updated dependency `@types/node@22.15.30` to `@types/node@22.16.2`
+- Updated dependency `@typescript-eslint/scope-manager@8.33.1` to `@typescript-eslint/scope-manager@8.36.0`
+- Updated dependency `@typescript-eslint/utils@8.33.1` to `@typescript-eslint/utils@8.36.0`
+- Updated dependency `@upstash/redis@1.35.0` to `@upstash/redis@1.35.1`
+- Updated dependency `@vitest/coverage-v8@3.2.2` to `@vitest/coverage-v8@3.2.4`
+- Updated dependency `@vue/typescript-plugin@2.2.10` to `@vue/typescript-plugin@3.0.1`
+- Updated dependency `eslint@9.28.0` to `eslint@9.30.1`
+- Updated dependency `eslint-formatter-gitlab@6.0.0` to `eslint-formatter-gitlab@6.0.1`
+- Updated dependency `happy-dom@17.6.3` to `happy-dom@18.0.1`
+- Updated dependency `lint-staged@16.1.0` to `lint-staged@16.1.2`
+- Updated dependency `nuxt-svgo@4.2.1` to `nuxt-svgo@4.2.3`
+- Updated dependency `postcss@8.5.4` to `postcss@8.5.6`
+- Updated dependency `postcss-import@16.1.0` to `postcss-import@16.1.1`
+- Updated dependency `unimport@5.0.1` to `unimport@5.1.0`
+- Updated dependency `vitest@3.2.2` to `vitest@3.2.4`
+- Updated dependency `vue-tsc@2.2.10` to `vue-tsc@3.0.1`
 
 ## 1.10.0
 
