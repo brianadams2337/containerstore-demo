@@ -13,6 +13,7 @@
     data-testid="reset-password-flyout"
     slide-class="!max-w-none"
     borderless
+    @close="errorMessage = null"
   >
     <template #slide-in-header>
       <SFAuthForgotPasswordSlideInHeader @close="closeAndClear" />
@@ -50,6 +51,7 @@ const { toggle, close, isOpen } = useSlideIn(SLIDE_IN_KEY)
 const { forgotPassword } = useAuthentication()
 
 const closeAndClear = () => {
+  errorMessage.value = null
   close()
 }
 const errorMessage = ref<string | null>(null)
