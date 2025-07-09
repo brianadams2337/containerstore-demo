@@ -2,11 +2,7 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[PLP\]** Enhanced mobile sort selection UX with a more intuitive slider interface.
-
-Created new `SFMobileSortSelection.vue` component and replaced dropdown-based sort selection in `SFFilterSlideInContent.vue` with a slider interface.
-The previous dropdown implementation for sort selection on mobile devices was not optimal for touch interactions and required multiple taps to change sort options. The new slider interface with chips:
-
-- Provides better touch targets for mobile users
-- Offers immediate visual feedback
-- Reduces the number of interactions needed to change sort order
+**\[PLP\]** To enhance mobile usability, the new `SFMobileSortSelection.vue` component has been introduced.
+It implements a slider-and-chip interface and replaces the former dropdown-based sorting logic within SFFilterSlideInContent.vue.
+The previous dropdown implementation for sort selection on mobile devices was not optimal for touch interactions and required multiple taps to change sort options.
+The new slider interface with chips provides better touch targets for mobile users, offers immediate visual feedback and reduces the number of interactions needed to change sort order.

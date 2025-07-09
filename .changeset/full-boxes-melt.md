@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[E2E\]** The end-to-end test for Product Listing Page (PLP) sorting has been updated to align with the recently introduced mobile UI. We've adjusted the test to interact with the new sorting slider with option chips, replacing the previous dropdown mechanism, ensuring accurate verification of mobile sorting functionality.
+**\[E2E\]** Aligned the PLP sorting test with recent mobile UI enhancements.
+The test logic has been updated to use the new sorting slider with chips instead of the previous dropdown, ensuring our tests accurately reflect the current user experience.

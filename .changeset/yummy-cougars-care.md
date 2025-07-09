@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Architecture\]** Removed `SFHeadlineBadge` component and inlined logic within the `SFHeadline` badge slot.
+**\[Architecture\]** As part of a code quality improvement, the `SFHeadlineBadge` component was refactored.
+Its logic has been inlined into the `SFHeadline` badge slot, removing an unnecessary component.

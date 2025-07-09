@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Accessibility\]** Removed the `xs` font size option to ensure all text content meets minimum accessibility standards for readability. The lowest supported font size is now `12px`
+**\[Accessibility\]** To ensure all text is easily readable and meets accessibility standards, the extra-small (`xs`) font size option has been removed.
+The smallest available font size is now `12px`, guaranteeing a more legible experience for all users.

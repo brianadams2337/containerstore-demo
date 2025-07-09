@@ -2,8 +2,8 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[PLP\]** Updated to `@scayle/storefront-product-listing@2.0.0` and applied the necessary usage changes to `useProductListSort` and `useProductListingSeoData`.
+**\[PLP\]** To improve performance and create a single source of truth, the product listing logic has been refactored as part of the upgrade to `@scayle/storefront-product-listing@2.0.0`.
 
-- There is now only one call to `useProductListSort`, from the page component. In this page the sort options are constructed based on the selected category. The returned properties of the composable are passed as props to components which require them.
-- `useProductListingSeoData` now receives the `isDefaultSortSelected` boolean as its final parameter.
-- The `label` property of a `SelectedSort` is understood as an actual label rather than a translation key. This means that we render this label directly in the UI, instead of calling `$t(label)`.
+- **Sorting Logic:** The `useProductListSort` composable is now centralized at the page level to act as a single source of truth.
+- **SEO Data:** The `useProductListingSeoData` composable now requires an additional isDefaultSortSelected boolean parameter.
+- **UI Labels:** The `label` for the selected sort option is now a direct string and should no longer be passed through the translation function (`$t(label)`).

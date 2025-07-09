@@ -2,4 +2,6 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[PLP\]** Renamed and enhanced the `SFPriceRangeSlider.vue` and `SFPriceInput.vue` components to support both price and discount filters. These components have been renamed to `SFFilterRangeSlider.vue` and `SFRangeInput.vue` to reflect their broader functionality. Additionally, `SFFilterSlideInContent.vue` now supports the `max_savings_percentage` filter using the updated range slider component.
+**\[PLP\]** The range filter functionality has been enhanced to support filtering by both price and discount percentage.
+To reflect this broader use case, `SFPriceRangeSlider.vue` and `SFPriceInput.vue` have been renamed to the more generic `SFFilterRangeSlider.vue` and `SFRangeInput.vue`.
+This refactoring was done as part of adding support for discount filters (e.g., `max_savings_percentage`) in the filter slide-in.

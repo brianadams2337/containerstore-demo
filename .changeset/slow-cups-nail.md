@@ -2,6 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Images\]** Resolved an issue with the image aspect ratio in the wishlist page.
-
-Images heigth were not aligned correctly on different aspect ratios.
+**\[Images\]** To improve visual consistency on the Wishlist page, the alignment of product images has been fixed.
+Images will now appear correctly aligned regardless of their original aspect ratio.

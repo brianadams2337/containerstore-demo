@@ -2,6 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[UI\]** Resolved an issue in `SFHeaderNavigationItem` where the flyout was not being positioned correctly.
-
-The dynamic positioning of the flyout with `translateX` is now removed and the flyout is now positioned relative to the header.
+**\[UI\]** Addressed a positioning bug where the flyout in `SFHeaderNavigationItem` would appear in the wrong place.
+The issue, caused by dynamic `translateX` positioning, has been resolved by anchoring the flyout's position relative to the main header.

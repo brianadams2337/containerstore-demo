@@ -2,4 +2,6 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Login & Registration\]** Updated authentication methods (`login`, `guestLogin`, `logout`, `register`, `forgotPassword`, `resetPasswordByHash`) in the `useAuthentication` composable to throw errors instead of caching them and storing them within its state. This change improves error handling clarity for authentication actions. The usage of these methods has also been adjusted to properly handle thrown errors.
+**\[Login & Registration\]** Refactored the error handling strategy in the useAuthentication composable.
+Authentication methods (`login`, `guestLogin`, `logout`, `register`, `forgotPassword`, `resetPasswordByHash`) now throw exceptions instead of internally caching them.
+This creates a more predictable and standard error handling pattern, requiring consuming components to handle failures explicitly.

@@ -2,4 +2,4 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[PDP\]** Added a `recently viewed products` recommendation slider to the PDP, enabling customers to easily revisit their previously viewed products.
+**\[PDP\]** A new "Recently Viewed Products" recommendation slider has been added to the Product Detail Page, allowing customers to easily navigate back to products they have previously viewed.

@@ -2,7 +2,7 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[UI\]** Refactored the `SFHeadline` component by eliminating the `loading`
-feature and its skeleton loader, delegating this responsibility to external handling.
-Additionally, removed the `hidden` property and the `visually-hidden` custom Tailwind class,
-as their usage was redundant within this context.
+**\[UI\]** The `SFHeadline` component has been refactored.
+The `loading` prop and its associated skeleton loader are no longer part of the component;
+developers are now responsible for handling the loading state externally (e.g., with a wrapper component).
+The `hidden` prop and the custom `visually-hidden` class have also been removed to streamline the component's API.

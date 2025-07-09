@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Search\]** Updated `SFShowAllResultsLink.vue` to fit into smaller containers by truncating its label. This prevents text overflow and maintains consistent UI layout.
+**\[Search\]** To prevent text overflow in smaller containers, the `SFShowAllResultsLink.vue` component now truncates its label.
+This change ensures a clean and consistent UI layout.

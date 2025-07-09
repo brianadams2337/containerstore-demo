@@ -2,4 +2,6 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Accessibility\]** Improved keyboard navigation by disabling tabindex for slider buttons in `<SFBaseProductSlider />` and enhanced visual focus indicators for products to ensure full visibility.
+**\[Accessibility\]** Streamlined keyboard navigation within product sliders (`SFBaseProductSlider`).
+The arrow buttons are no longer focusable, allowing users to tab directly between products more efficiently.
+Additionally, the focus indicator on products is now always fully visible.

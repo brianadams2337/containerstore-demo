@@ -2,7 +2,6 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Account\]** Resoved an issue where the modal in `SFAuthForgotPassword` component was closing unexpectedly when submitting the form with the enter key.
-
-The form used the first button instead of the submit button when the enter key was pressed. This was causing the modal to close instead of validating the form.
-The non-submit button is now changed to `type="button"`.
+**\[Account\]** Improved the behavior of the "Forgot Password" form.
+Submitting the form by pressing the Enter key now correctly validates the input instead of unexpectedly closing the modal.
+This was resolved by explicitly setting the non-submit button's type to button, ensuring the correct button is triggered on form submission.

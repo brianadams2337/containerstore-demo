@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[UI\]** Updated `SFPopover.vue` component to use transparent borders instead of margins for positioning the popover content. This prevents the hover state from flickering when moving the cursor between the trigger element and the popover content.
+**\[UI\]** Addressed an issue where using margins to position the `SFPopover.vue` content created a gap that would cause the hover state to flicker.
+The component now uses transparent borders instead, which closes the gap and provides a stable hover experience.

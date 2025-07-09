@@ -2,7 +2,8 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[PLP\]** Fetching of categories without products has been disabled. This eliminates the need to manually disable empty categories in the panel and automatically removes unnecessary categories from the PLP side navigation, resulting in a clearer and more streamlined interface.
+**\[PLP\]** The category fetching logic has been updated to exclude categories that contain no products.
+This change automatically removes them from the PLP side navigation for a cleaner interface.
 
 ```ts
 // /pages/c.vue

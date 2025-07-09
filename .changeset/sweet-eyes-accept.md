@@ -2,6 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Account\]** Resolved an issue where the error message for not existing email in the forgot password and reset password modal was not worded correctly.
-
-The message refers now to just the email address instead of email address and password.
+**\[Account\]** Improved the clarity of the error message shown when a non-existent email is entered in the "Forgot Password" and "Reset Password" forms.
+The message now correctly refers only to the email address, removing a confusing mention of the password.

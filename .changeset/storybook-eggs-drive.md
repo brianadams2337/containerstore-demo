@@ -28,3 +28,40 @@ pnpm storybook:build
 The output will be placed in the `public/storybook` directory and can be accessed at [http://localhost:3000/storybook](http://localhost:3000/storybook).
 
 Further information can be found in the official [Storybook documentation](https://storybook.js.org/docs/vue/get-started/introduction) and the [Nuxt Storybook guide](https://storybook.nuxtjs.org/getting-started/setup).
+
+The following components are now available within Storybook:
+
+- Order
+  - `SFOrderList`
+- Product
+  - `SFProductCard`
+  - `SFProductPromotionBanner`
+- Base Components
+  - `SFAccordionEntry`
+  - `SFButton`
+  - `SFChip`
+  - `SFCountdown`
+  - `SFModal`
+  - `SFPopover`
+  - `SFSkeletonLoader`
+  - `SFSliderIn`
+  - `SFSliderArrowButton`
+  - `SFCheckbox`
+  - `SFDropdown`
+  - `SFFilterRangeSlider`
+  - `SFPriceInput`
+  - `SFSwitch`
+  - `SFTextInput`
+  - `SFValidatedInputGroup`
+  - `SFHeadline`
+  - `SFGoBackLink`
+  - `SFLink`
+  - `SFPagination`
+  - `SFItemsSlider`
+  - `SFToast`
+  - `SFToastContainer`
+- Base Components / Transitions
+  - `SFSlideInFromBottomTransition`
+  - `SFSlideInFromLeftTransition`
+  - `SFFadeInFromBottomTransition`
+  - `SFFadeInTransition`

@@ -2,6 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Architecture\]** Removed the deprecated `$config.public.baseUrl`, which also did not provide the correct base URL for domain-based shops.
-
-We now use the origin property from the `useRequestURL` composable to reliably obtain the correct base URL for the current shop.
+**\[Architecture\]** Addressed an issue where `$config.public.baseUrl` provided an incorrect base URL for domain-based shops.
+This deprecated property has been removed, and we now use `useRequestURL().origin` to reliably get the correct base URL.

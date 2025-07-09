@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[E2E\]** Added an end-to-end test to `/playwright/tests/e2e-Wishlist.spec.ts` that confirms seamless navigation from a Wishlist product card to its Product Detail Page (PDP) upon click. This ensures consistent user experience when interacting with saved items.
+**\[E2E\]** Expanded end-to-end test coverage for the Wishlist page.
+A new test in `e2e-Wishlist.spec.ts` now verifies that clicking a product card correctly navigates the user to the corresponding Product Detail Page.

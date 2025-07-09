@@ -2,4 +2,4 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[UI\]** Updated `<SFProductRecommendations />` and `<SFRecentlyViewedProductsSlider />` components to use `<SFSliderArrowButton />` for improved styling and visual consistency.
+**\[UI\]** To standardize the appearance of all product sliders, the `SFProductRecommendations` and `SFRecentlyViewedProductsSlider` components have been updated to use the shared `SFSliderArrowButton`.

@@ -2,6 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Unit Testing\]** Replaced order factories with the newly provided ones from the `@scayle/storefront-nuxt` package.
-
-This will reduce the code complexity in the Storefront Application and make it easier to maintain.
+**\[Unit Testing\]** To standardize test data generation, our unit tests now use the official order factories provided by the `@scayle/storefront-nuxt` package, replacing our previous custom implementations.
+This change simplifies our test setup and improves maintainability.

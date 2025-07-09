@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[UI\]** Updated `SFMobileSortSelection.vue` so that all sorting options are visible at once. This ensures users can easily identify the active sorting without scrolling.
+**\[UI\]** To improve usability, the mobile sorting selection (`SFMobileSortSelection.vue`) now displays all available options at once.
+This eliminates the need for scrolling and makes it easier for users to see the currently active sort order.

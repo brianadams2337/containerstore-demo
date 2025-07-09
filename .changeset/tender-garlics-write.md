@@ -2,9 +2,6 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Architecture\]** Resolved hydration errors on initially set query params in the URL.
-
-ISR for Vercel deployment is now disabled.
-If set to true, the query params are not passed on server-side which leads to hydration errors.
-
-See: https://github.com/nitrojs/nitro/issues/1880
+**\[Architecture\]** To prevent hydration errors related to URL query parameters, Incremental Static Regeneration (ISR) has been disabled for all Vercel deployments.
+This change is a necessary workaround for a known issue where query params were not correctly handled during server-side rendering with ISR.
+More details are available in [this Nitro issue](https://github.com/nitrojs/nitro/issues/1880).
