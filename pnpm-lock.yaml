@@ -23,8 +23,8 @@ importers:
   .:
     dependencies:
       '@contentful/live-preview':
-        specifier: 4.6.26
-        version: 4.6.26(graphql@16.10.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: 4.6.27
+        version: 4.6.27(graphql@16.10.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@contentful/rich-text-html-renderer':
         specifier: 17.0.1
         version: 17.0.1
@@ -664,8 +664,8 @@ packages:
   '@contentful/content-source-maps@0.11.24':
     resolution: {integrity: sha512-2LiSuZglKs85d3pJYxGppL9RiUJ2KpV7n35ZCZCTlw3XVKMn5wj31xsEM4/4nuOX1J48n1XwnYtK83BfbMYXfA==}
 
-  '@contentful/live-preview@4.6.26':
-    resolution: {integrity: sha512-fq4euleF6bQ+rLIuarzz91SMKOgykF9+RPdZPmsuurggUZT3ZlI4bBXmCml2BRdVL4jB5T0rJrbDvNMbJw0ccA==}
+  '@contentful/live-preview@4.6.27':
+    resolution: {integrity: sha512-8t1hju15eilVqjIovmoUYr9yuhKWI0ulTlNqyleugjiutKxpngHfwSHQRQLDvdpiV29LnXbz9fwwgivYXgM1Tw==}
     peerDependencies:
       react: ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -10127,7 +10127,7 @@ snapshots:
       '@vercel/stega': 0.1.2
       json-pointer: 0.6.2
 
-  '@contentful/live-preview@4.6.26(graphql@16.10.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@contentful/live-preview@4.6.27(graphql@16.10.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@contentful/content-source-maps': 0.11.24
       '@contentful/rich-text-types': 17.0.1
