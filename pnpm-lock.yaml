@@ -74,14 +74,14 @@ importers:
         specifier: 1.0.2
         version: 1.0.2(unstorage@1.16.0(@netlify/blobs@8.2.0)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))
       '@storyblok/nuxt':
-        specifier: 7.1.3
-        version: 7.1.3(vue@3.5.17(typescript@5.8.3))
+        specifier: 7.2.0
+        version: 7.2.0(vue@3.5.17(typescript@5.8.3))
       '@storyblok/richtext':
-        specifier: 3.4.0
-        version: 3.4.0
+        specifier: 3.5.0
+        version: 3.5.0
       '@storyblok/vue':
-        specifier: 9.1.2
-        version: 9.1.2(vue@3.5.17(typescript@5.8.3))
+        specifier: 9.2.0
+        version: 9.2.0(vue@3.5.17(typescript@5.8.3))
       '@tailwindcss/forms':
         specifier: 0.5.10
         version: 0.5.10(tailwindcss@3.4.17)
@@ -161,8 +161,8 @@ importers:
         specifier: 1.1.5
         version: 1.1.5
       storyblok-js-client:
-        specifier: 7.0.2
-        version: 7.0.2
+        specifier: 7.1.0
+        version: 7.1.0
       swiper:
         specifier: 11.2.10
         version: 11.2.10
@@ -1777,6 +1777,7 @@ packages:
   '@opentelemetry/instrumentation-redis-4@0.49.0':
     resolution: {integrity: sha512-i+Wsl7M2LXEDA2yXouNJ3fttSzzb5AhlehvSBVRIFuinY51XrrKSH66biO0eox+pYQMwAlPxJ778XcMQffN78A==}
     engines: {node: ^18.19.0 || >=20.6.0}
+    deprecated: Use "@opentelemetry/instrumentation-redis", which (as of v0.50.0) includes support for instrumenting redis v4.
     peerDependencies:
       '@opentelemetry/api': ^1.3.0
 
@@ -2667,20 +2668,20 @@ packages:
   '@speed-highlight/core@1.2.7':
     resolution: {integrity: sha512-0dxmVj4gxg3Jg879kvFS/msl4s9F3T9UXC1InxgOf7t5NvcPD97u/WTA5vL/IxWHMn7qSxBozqrnnE2wvl1m8g==}
 
-  '@storyblok/js@4.1.2':
-    resolution: {integrity: sha512-WaEoY/yVYe9eHL76M99eiZuyMw6RZHc+IVAw9Dp9g5ttSo4qypxkzD2Zv4s8WoFnShK80XZ2Yfh3Q2CQcTmWUA==}
+  '@storyblok/js@4.2.0':
+    resolution: {integrity: sha512-mZcnpwn36ZWf60Jrn1ArLYvDNfPa2EeKsmrF59za8rk1/CDnzBusvnGB+blPIe1xPBjVd8np3MxkY/KKP++QJQ==}
 
-  '@storyblok/nuxt@7.1.3':
-    resolution: {integrity: sha512-Ws6HR5n0h7RV5ESJVpVCW+sgbVZz6kgXNrfmidWRbdvDCq1R1rLfZXGCQdBemguYc4w0xYVhEa1pPtxbRbdH3w==}
+  '@storyblok/nuxt@7.2.0':
+    resolution: {integrity: sha512-uYaQlqf8sQnsjZWEFDe2TMBzrQombxN1bY+ukDA8Ngxs0lskfyuXi0mjZFFsJtM6AqQl9zbMZthwnOP1fLB+uw==}
 
   '@storyblok/region-helper@1.2.0':
     resolution: {integrity: sha512-Ew6okkK7vQvkk/jdjaM7f6szJXYtcBmPJXhl3zzh/rW9QdAaHKOodiIbvdkpvkcOrSNmUpXcx5d2gxYL5HRIzg==}
 
-  '@storyblok/richtext@3.4.0':
-    resolution: {integrity: sha512-C1XoQjIL9vv1p2MeKVsIMlowpaQbNlBrPys6A/f6RnWqcjs3Nlk1J1FCq8W6rForFpcYS88/tN6vPSnhDuC6BQ==}
+  '@storyblok/richtext@3.5.0':
+    resolution: {integrity: sha512-uHYmoC0ytQHDPs02JYHE98Lt3cwokPkCtOvE68ArJNtDvh9O+3UlSyytKZy+uhnrhajvF4BJzkbHwo6wOuunog==}
 
-  '@storyblok/vue@9.1.2':
-    resolution: {integrity: sha512-e9503sB7CMXUXf+zALv/gGm7B9l5tvpn1SZPliXy/0Z6T6gZLlGw1DM4SqYseddLwcTJ1yw+qmS5nJvwfgXtHg==}
+  '@storyblok/vue@9.2.0':
+    resolution: {integrity: sha512-VjKQ1+bI3Tj1+cKjGbbDDd58rZ5FZUMMJZzcElKeXUW41UxUHUUEuLZdsf2E8vk6CFc64QxEgDzFaNUm6tiWTw==}
     peerDependencies:
       vue: 3.5.17
 
@@ -8465,8 +8466,8 @@ packages:
   storyblok-js-client@6.10.3:
     resolution: {integrity: sha512-q6YK/f+F8PAJLsKR7jzlTRO9yIUXWLON2Fy02QjywYaSYwyS9ETzIuOtmCSstLrDAP5I+Vnw9PzEU30roxS15g==}
 
-  storyblok-js-client@7.0.2:
-    resolution: {integrity: sha512-ye1PBoIjoBJJEtAgwP+9exMuGutknY46Ez/JZHrbIkJp+9j3sdyCXIMepjeK/uJBuqUQpmTocxifCdVOJBsnLw==}
+  storyblok-js-client@7.1.0:
+    resolution: {integrity: sha512-nOCzlVbAsfUDJJBNWiiqDo1q+tUldHoMh6Lqgger/KLaq2m+2haw9S/ad+Ru8/UU5izxzSLwc083cycdNk9Gdg==}
 
   storyblok@3.36.1:
     resolution: {integrity: sha512-njWhjXUMlQnP/7fE5KBybK5zyk6ITDeMLfJA/rI+JDt5I+cavl692g1NkoR1cIEGlpaokWESEWJbPStlZ+f6lg==}
@@ -12892,24 +12893,24 @@ snapshots:
 
   '@speed-highlight/core@1.2.7': {}
 
-  '@storyblok/js@4.1.2':
+  '@storyblok/js@4.2.0':
     dependencies:
-      '@storyblok/richtext': 3.4.0
-      storyblok-js-client: 7.0.2
+      '@storyblok/richtext': 3.5.0
+      storyblok-js-client: 7.1.0
 
-  '@storyblok/nuxt@7.1.3(vue@3.5.17(typescript@5.8.3))':
+  '@storyblok/nuxt@7.2.0(vue@3.5.17(typescript@5.8.3))':
     dependencies:
-      '@storyblok/vue': 9.1.2(vue@3.5.17(typescript@5.8.3))
+      '@storyblok/vue': 9.2.0(vue@3.5.17(typescript@5.8.3))
     transitivePeerDependencies:
       - vue
 
   '@storyblok/region-helper@1.2.0': {}
 
-  '@storyblok/richtext@3.4.0': {}
+  '@storyblok/richtext@3.5.0': {}
 
-  '@storyblok/vue@9.1.2(vue@3.5.17(typescript@5.8.3))':
+  '@storyblok/vue@9.2.0(vue@3.5.17(typescript@5.8.3))':
     dependencies:
-      '@storyblok/js': 4.1.2
+      '@storyblok/js': 4.2.0
       vue: 3.5.17(typescript@5.8.3)
 
   '@storybook-vue/nuxt@8.4.1(@types/node@22.16.2)(eslint@9.30.1(jiti@2.4.2))(magicast@0.3.5)(nuxt@3.16.2(@netlify/blobs@8.2.0)(@parcel/watcher@2.5.1)(@types/node@22.16.2)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(eslint@9.30.1(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.44.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.0(@types/node@22.16.2)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.1(typescript@5.8.3))(yaml@2.8.0))(optionator@0.9.4)(rollup@4.44.1)(storybook@9.0.5(@testing-library/dom@10.4.0)(prettier@3.0.3))(terser@5.43.1)(typescript@5.8.3)(vite@7.0.0(@types/node@22.16.2)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.1(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))(yaml@2.8.0)':
@@ -19775,7 +19776,7 @@ snapshots:
 
   storyblok-js-client@6.10.3: {}
 
-  storyblok-js-client@7.0.2: {}
+  storyblok-js-client@7.1.0: {}
 
   storyblok@3.36.1(debug@4.4.1):
     dependencies:
