@@ -153,7 +153,7 @@ const {
   data: currentCategory,
   status: categoryStatus,
   error: categoryError,
-} = useCategoryById(
+} = await useCategoryById(
   {
     params: categoryParams,
     options: {
@@ -218,13 +218,14 @@ const { selectedSort, sortLinks, isDefaultSortSelected } = useProductListSort(
 )
 const { appliedFilter } = useAppliedFilters(route)
 
+const pageNumber = computed(() => Number(route.query.page) || 1)
 const params = computed(() => ({
-  categoryId: currentCategoryId.value,
+  categoryId: currentCategory.value?.id,
   with: PRODUCT_TILE_WITH_PARAMS,
   sort: selectedSort.value,
   perPage: PRODUCTS_PER_PAGE,
   where: appliedFilter.value,
-  page: Number(route.query.page) || 1,
+  page: pageNumber.value,
 }))
 
 const {
