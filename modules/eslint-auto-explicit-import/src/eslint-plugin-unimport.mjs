@@ -337,13 +337,14 @@ const autoInsert = createRule({
 
             if (item.name === '*') {
               importName = `* as ${item.as}`
-            } else if (
-              item.name === 'default' ||
-              !item.as ||
-              item.name === item.as
-            ) {
-              importName = item.as || `{ ${item.name} }`
+            } else if (item.name === 'default') {
+              // Default exports should be imported without curly braces
+              importName = item.as || item.name
+            } else if (!item.as || item.name === item.as) {
+              // Named exports should be imported with curly braces
+              importName = `{ ${item.name} }`
             } else {
+              // Named exports with aliases should be imported with curly braces
               importName = `{ ${item.name} as ${item.as} }`
             }
 
