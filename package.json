@@ -54,6 +54,7 @@
     "@nuxtjs/storybook": "8.4.1",
     "@nuxtjs/tailwindcss": "6.14.0",
     "@parcel/watcher": "2.5.1",
+    "@scayle/eslint-auto-explicit-import": "^0.2.0",
     "@scayle/eslint-config-storefront": "4.5.14",
     "@scayle/eslint-plugin-vue-composable": "0.2.1",
     "@scayle/prettier-config-storefront": "2.0.2",

@@ -224,6 +224,9 @@ importers:
       '@parcel/watcher':
         specifier: 2.5.1
         version: 2.5.1
+      '@scayle/eslint-auto-explicit-import':
+        specifier: ^0.2.0
+        version: 0.2.0(@nuxt/kit@3.16.2(magicast@0.3.5))
       '@scayle/eslint-config-storefront':
         specifier: 4.5.14
         version: 4.5.14(@vue/compiler-sfc@3.5.17)(eslint-plugin-vuejs-accessibility@2.4.1(eslint@9.31.0(jiti@2.4.2)))(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.16.3)(happy-dom@18.0.1)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))
@@ -2513,6 +2516,12 @@ packages:
         optional: true
       zen-observable:
         optional: true
+
+  '@scayle/eslint-auto-explicit-import@0.2.0':
+    resolution: {integrity: sha512-LGVvL637qwQ/4R3SRTqtgGcWn12CrD4gRWEeDBGA/P6Pqi4R9+S5DQlhAnDgASpTt3USzienbgNj1MC6E3ibsw==}
+    engines: {node: '>= 20.0.0'}
+    peerDependencies:
+      '@nuxt/kit': 3.16.2
 
   '@scayle/eslint-config-storefront@4.5.14':
     resolution: {integrity: sha512-d2VXR8gCnGbBh4FUcyCVBddqL8DCTaA2tFPoABl6APVGnRjyKTrRSN988foCJQhLIsnzEu7/NlNDjvuul0nCSw==}
@@ -12604,6 +12613,14 @@ snapshots:
       rxjs: 6.6.7
     transitivePeerDependencies:
       - zenObservable
+
+  '@scayle/eslint-auto-explicit-import@0.2.0(@nuxt/kit@3.16.2(magicast@0.3.5))':
+    dependencies:
+      '@nuxt/kit': 3.16.2(magicast@0.3.5)
+      debug: 4.4.1(supports-color@8.1.1)
+      pathe: 2.0.3
+    transitivePeerDependencies:
+      - supports-color
 
   '@scayle/eslint-config-storefront@4.5.14(@vue/compiler-sfc@3.5.17)(eslint-plugin-vuejs-accessibility@2.4.1(eslint@9.31.0(jiti@2.4.2)))(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.16.3)(happy-dom@18.0.1)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))':
     dependencies:

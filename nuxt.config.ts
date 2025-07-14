@@ -424,7 +424,7 @@ export default defineNuxtConfig({
     // https://eslint.nuxt.com/packages/module
     '@nuxt/eslint',
     // Based on https://github.com/antfu/nuxt-eslint-auto-explicit-import
-    './modules/eslint-auto-explicit-import',
+    '@scayle/eslint-auto-explicit-import',
     // https://scayle.dev/en/storefront-guide/developer-guide/integrations/open-telemetry
     '@scayle/nuxt-opentelemetry',
     // SCAYLE Storefront Feature Packages
