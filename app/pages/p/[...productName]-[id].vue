@@ -423,13 +423,6 @@ useHead(() => ({
 }))
 
 useJsonld(() => [productBreadcrumbJsonLd.value, productJsonLd.value])
-definePageMeta({
-  pageType: 'product_detail_page',
-  key: 'PDP',
-  validate(route) {
-    return typeof route.params.id === 'string' && /^\d+$/.test(route.params.id!)
-  },
-})
 
 function redirectProductIfNecessary(product: Product) {
   if (status.value == 'pending') {

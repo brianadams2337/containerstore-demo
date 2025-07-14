@@ -101,4 +101,8 @@ watch(visible, async (value) => {
     deactivateModalTrap()
   }
 })
+
+defineOptions({
+  inheritAttrs: false,
+})
 </script>
