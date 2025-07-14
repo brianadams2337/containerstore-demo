@@ -180,6 +180,8 @@ const SFLazyStoreLocatorSlideIn = defineAsyncComponent(
 const CURRENT_PRODUCT_DATA_KEY = 'PDP-currentProduct'
 
 definePageMeta({
+  pageType: 'product_detail_page',
+  key: 'PDP',
   validate(route) {
     return typeof route.params.id === 'string' && /^\d+$/.test(route.params.id)
   },
