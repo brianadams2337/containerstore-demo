@@ -11,7 +11,7 @@ ARG GIT_COMMIT_SHA
 
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml patches/ ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml patches/ .npmrc ./
 
 ENV VERSION=${VERSION} \
     CMS_PROVIDER=${CMS_PROVIDER} \
