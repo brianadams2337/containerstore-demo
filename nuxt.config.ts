@@ -685,6 +685,9 @@ export default defineNuxtConfig({
     resolve: {
       preserveSymlinks: true,
     },
+    // This is a workaround to avoid the issue: https://github.com/nuxt/nuxt/issues/32581
+    // This issue is only present when running the dev server with the CMS provider `contentful`.
+    ssr: { noExternal: true },
   },
 
   hooks: {
