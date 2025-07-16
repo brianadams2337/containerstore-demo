@@ -180,5 +180,3 @@ export const test = baseTest.extend<Fixtures>({
     await use(errorPage)
   },
 })
-
-export { expect } from '@playwright/test'

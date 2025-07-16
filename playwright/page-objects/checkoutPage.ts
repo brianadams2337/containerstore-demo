@@ -1,14 +1,27 @@
 import type { Locator, Page } from '@playwright/test'
 
+/**
+ * Page Object Model for the Checkout Page.
+ * Encapsulates locators for interacting with the checkout flow's
+ * order overview, terms acceptance, and payment initiation steps.
+ */
 export class CheckoutPage {
-  readonly page: Page
+  private readonly page: Page
+
+  // --- Basket/Item Overview Locators ---
   readonly basketContainer: Locator
   readonly deliveryEstimate: Locator
   readonly itemQuantity: Locator
   readonly buttonItemRemove: Locator
+
+  // --- Payment/Terms Locators ---
   readonly checkboxAcceptTerms: Locator
   readonly ctaPayButton: Locator
 
+  /**
+   * Initializes the CheckoutPage Page Object.
+   * @param page - The Playwright Page object.
+   */
   constructor(page: Page) {
     this.page = page
     this.basketContainer = page.locator('[data-test-id="basket-container"]')

@@ -1,19 +1,34 @@
 import type { Locator, Page } from '@playwright/test'
 
+/**
+ * Page Object Model for the Product Listing Page (PLP).
+ * Encapsulates locators and methods for interacting with and asserting states on
+ * product listing pages, including product cards, wishlist actions, filters, and sorting.
+ */
 export class ProductListingPage {
-  readonly page: Page
-  readonly wishlistButton: Locator
-  readonly productTile: Locator
-  readonly menuRootCategory: Locator
-  readonly productItem: Locator
-  readonly removeFromWishlistButton: Locator
-  readonly productSibling: Locator
-  readonly productImage: Locator
+  private readonly page: Page
+
+  // --- Product Card & Item Locators ---
   readonly productCard: Locator
+  readonly productItem: Locator
+  readonly productImage: Locator
+  readonly productTile: Locator
+  readonly productSibling: Locator
+
+  // --- Wishlist Action Locators ---
+  readonly wishlistButton: Locator
+  readonly removeFromWishlistButton: Locator
+
+  // --- Navigation & Page Structure Locators ---
+  readonly menuRootCategory: Locator
   readonly h1: Locator
   readonly pageTitle: Locator
   readonly sideNavigation: Locator
 
+  /**
+   * Initializes the ProductListingPage Page Object.
+   * @param page - The Playwright Page object.
+   */
   constructor(page: Page) {
     this.page = page
     this.wishlistButton = page.locator(
@@ -33,22 +48,39 @@ export class ProductListingPage {
     this.sideNavigation = page.getByTestId('side-navigation')
   }
 
+  // --- Action Methods ---
+
+  /**
+   * Adds the first product on the PLP to the wishlist.
+   * Assumes the wishlist button for the first product is present and clickable.
+   */
   async addProductToWishlist() {
     await this.wishlistButton.first().click()
   }
 
+  /**
+   * Removes the first product from the wishlist from the PLP (if already added).
+   * Assumes the remove button for the first product is present and clickable.
+   */
   async removeProductFromWishlist() {
     await this.removeFromWishlistButton.first().click()
   }
 
-  async addFiltersToPLP(filters = {}) {
+  /**
+   * Navigates to the current PLP URL with additional filter parameters applied as a deeplink.
+   * @param filters - An object where keys are filter names and values are filter values (e.g., `{ sale: true, maxPrice: 4000 }`).
+   */
+  async addFiltersToPLP(
+    filters: Record<string, string | boolean | number> = {},
+  ) {
     const pageUrl = this.page.url()
     const formattedFilters = Object.entries(filters).map(
-      ([key, value]) => `filters[${key}]=${value}`,
+      ([key, value]) => `filters[${key}]=${encodeURIComponent(String(value))}`,
     )
     const url =
       pageUrl +
       (formattedFilters.length ? `?${formattedFilters.join('&')}` : '')
+
     await this.page.goto(url, { waitUntil: 'load' })
   }
 }

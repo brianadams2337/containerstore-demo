@@ -1,4 +1,5 @@
-import { expect, test } from '../../fixtures/fixtures'
+import { test } from '../../fixtures/fixtures'
+import { expect } from '@playwright/test'
 import { runLighthouseAudit } from '../../support/lighthouseAudit'
 import {
   LIGHTHOUSE_AUDIT_PATHS,

@@ -1,6 +1,7 @@
-import { expect, test } from '../fixtures/fixtures'
-import { SEARCH } from '../support/constants'
-import { isMobile } from '../support/utils'
+import { test } from '../../fixtures/fixtures'
+import { expect } from '@playwright/test'
+import { SEARCH } from '../../support/constants'
+import { isMobile } from '../../support/utils'
 
 test.beforeEach(async ({ homePage, page, countryDetector }) => {
   await homePage.visitPage()
@@ -24,6 +25,7 @@ test('C2139814: Verify Search no results page', async ({
     } else {
       await search.executeSearch('noresultstest')
     }
+
     await page.waitForLoadState('domcontentloaded')
     await search.h1.first().waitFor()
 
@@ -46,18 +48,16 @@ test('C2130650: Verify Search results page', async ({
 }) => {
   await expect(async () => {
     if (isMobile(page)) {
-      await mobileNavigation.executeMobileSearch(
-        SEARCH.searchTermProduct as string,
-      )
+      await mobileNavigation.executeMobileSearch(SEARCH.searchTermProduct)
     } else {
-      await search.executeSearch(SEARCH.searchTermProduct as string)
+      await search.executeSearch(SEARCH.searchTermProduct)
     }
     await search.h1.first().waitFor()
     expect(page.url()).toContain(
       SEARCH.searchParamUrl + SEARCH.searchTermProduct,
     )
     await expect(search.searchResultsProductImage.first()).toBeVisible()
-    await search.assertHeadlineSearchResults(SEARCH.searchTermProduct as string)
+    await search.assertHeadlineSearchResults(SEARCH.searchTermProduct)
   }).toPass()
 })
 
@@ -77,14 +77,11 @@ test('C2130721: Verify Search suggestions', async ({
   await expect(async () => {
     if (isMobile(page)) {
       await mobileNavigation.startTypingMobileSearch(
-        SEARCH.searchTermCategorySuggestion as string,
-        false,
+        SEARCH.searchTermCategorySuggestion,
       )
       await mobileNavigation.searchSuggestionsItem.first().click()
     } else {
-      await search.startTypingSearch(
-        SEARCH.searchTermCategorySuggestion as string,
-      )
+      await search.startTypingSearch(SEARCH.searchTermCategorySuggestion)
       await search.searchSuggestionsItem.first().click()
     }
     await productListingPage.h1.waitFor()
@@ -108,19 +105,16 @@ test('C2132124: Verify Search suggestions "See all results" button', async ({
   await expect(async () => {
     if (isMobile(page)) {
       await mobileNavigation.startTypingMobileSearch(
-        SEARCH.searchTermCategorySuggestion as string,
-        false,
+        SEARCH.searchTermCategorySuggestion,
       )
       await mobileNavigation.clickSearchMoreButtonMobile()
     } else {
-      await search.startTypingSearch(
-        SEARCH.searchTermCategorySuggestion as string,
-      )
+      await search.startTypingSearch(SEARCH.searchTermCategorySuggestion)
       await search.clickSearchMoreButton()
     }
     await expect(search.searchResultsProductImage.first()).toBeVisible()
     await search.assertHeadlineSearchResults(
-      SEARCH.searchTermCategorySuggestion as string,
+      SEARCH.searchTermCategorySuggestion,
     )
   }).toPass()
 })
@@ -139,18 +133,17 @@ test('C2132173: Verify Search suggestions exact product match', async ({
   await expect(async () => {
     if (isMobile(page)) {
       await mobileNavigation.startTypingMobileSearch(
-        SEARCH.searchExactProductID as string,
-        true,
+        SEARCH.searchExactProductID,
       )
       await mobileNavigation.searchSuggestionsItem.click()
       await mobileNavigation.sideNavigationButton.click()
       await page.waitForLoadState('networkidle')
     } else {
-      await search.startTypingSearch(SEARCH.searchExactProductID as string)
+      await search.startTypingSearch(SEARCH.searchExactProductID)
       await search.clickExactProductItem()
     }
     await page.waitForTimeout(500)
-    await search.assertUrlIsLoaded(SEARCH.searchExactProductID as string)
+    await search.assertUrlIsLoaded(SEARCH.searchExactProductID)
   }).toPass()
 })
 
@@ -171,11 +164,9 @@ test('C2140718: Verify Search results page Filters ', async ({
 }) => {
   await test.step('Search for a term and check Filter initial state', async () => {
     if (isMobile(page)) {
-      await mobileNavigation.executeMobileSearch(
-        SEARCH.searchTermProduct as string,
-      )
+      await mobileNavigation.executeMobileSearch(SEARCH.searchTermProduct)
     } else {
-      await search.executeSearch(SEARCH.searchTermProduct as string)
+      await search.executeSearch(SEARCH.searchTermProduct)
     }
     await productListingPage.h1.waitFor()
     await expect(filters.filterToggleCounter).not.toBeVisible()
@@ -239,13 +230,10 @@ test('C2162007: Verify Search suggestions tags', async ({
 }) => {
   await expect(async () => {
     if (isMobile(page)) {
-      await mobileNavigation.startTypingMobileSearch(
-        SEARCH.searchTermTags as string,
-        false,
-      )
+      await mobileNavigation.startTypingMobileSearch(SEARCH.searchTermTags)
       await page.waitForLoadState('networkidle')
     } else {
-      await search.startTypingSearch(SEARCH.searchTermTags as string)
+      await search.startTypingSearch(SEARCH.searchTermTags)
     }
     await expect(search.searchSuggestionsTagGroup.first()).toBeVisible()
     await search.searchSuggestionsItem.first().click()
@@ -270,20 +258,19 @@ test('C2170825 Verify Search returns PDP on exact product ID pressing Enter', as
   await expect(async () => {
     if (isMobile(page)) {
       await mobileNavigation.startTypingMobileSearch(
-        SEARCH.searchExactProductID as string,
-        true,
+        SEARCH.searchExactProductID,
       )
       await mobileNavigation.searchInputField.nth(0).press('Enter')
       await mobileNavigation.sideNavigationButton.click()
       await page.waitForLoadState('networkidle')
     } else {
-      await search.startTypingSearch(SEARCH.searchExactProductID as string)
+      await search.startTypingSearch(SEARCH.searchExactProductID)
       await search.searchInput.nth(1).press('Enter')
       await page.waitForLoadState('networkidle')
       await page.waitForTimeout(500)
     }
     await productListingPage.h1.waitFor()
-    await search.assertUrlIsLoaded(SEARCH.searchExactProductID as string)
+    await search.assertUrlIsLoaded(SEARCH.searchExactProductID)
   }).toPass()
 })
 
@@ -301,20 +288,17 @@ test('C2171030 Verify Search returns matching page', async ({
 }) => {
   await expect(async () => {
     if (isMobile(page)) {
-      await mobileNavigation.startTypingMobileSearch(
-        SEARCH.searchTermPage as string,
-        false,
-      )
+      await mobileNavigation.startTypingMobileSearch(SEARCH.searchTermPage)
       await mobileNavigation.searchInputField.nth(0).press('Enter')
       await mobileNavigation.sideNavigationButton.click()
       await page.waitForLoadState('networkidle')
     } else {
-      await search.startTypingSearch(SEARCH.searchTermPage as string)
+      await search.startTypingSearch(SEARCH.searchTermPage)
       await search.searchInput.nth(1).press('Enter')
       await page.waitForLoadState('networkidle')
       await page.waitForTimeout(500)
     }
-    await search.assertUrlIsLoaded(SEARCH.searchTermPage as string)
+    await search.assertUrlIsLoaded(SEARCH.searchTermPage)
   }).toPass()
 })
 
@@ -332,15 +316,12 @@ test('C2171031 Verify Search returns product for matching Reference Key', async 
 }) => {
   await expect(async () => {
     if (isMobile(page)) {
-      await mobileNavigation.startTypingMobileSearch(
-        SEARCH.searchReferenceKey as string,
-        true,
-      )
+      await mobileNavigation.startTypingMobileSearch(SEARCH.searchReferenceKey)
       await mobileNavigation.searchInputField.nth(0).press('Enter')
       await mobileNavigation.sideNavigationButton.click()
       await page.waitForLoadState('networkidle')
     } else {
-      await search.startTypingSearch(SEARCH.searchReferenceKey as string)
+      await search.startTypingSearch(SEARCH.searchReferenceKey)
       await search.searchInput.nth(1).press('Enter')
       await page.waitForLoadState('networkidle')
       await page.waitForTimeout(500)

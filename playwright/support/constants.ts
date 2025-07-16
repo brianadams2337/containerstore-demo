@@ -1,3 +1,5 @@
+import { getRequiredEnv } from './utils'
+
 export const LIGHTHOUSE_THRESHOLDS = {
   performance: 50, // 80
   accessibility: 70, // 80
@@ -28,17 +30,19 @@ export const PLP_FILTER_DEEP_LINK = {
  */
 export const SEARCH = {
   /** Product search term, e.g. product brand or name that doesn't match a category or page name, so the search suggestions are not displayed */
-  searchTermProduct: process.env.E2E_SEARCH_TERM_PRODUCT,
+  searchTermProduct: getRequiredEnv('E2E_SEARCH_TERM_PRODUCT'),
   /** Category suggestion search term that partially or fully matches category name, e.g. "shirt" or "shirts". */
-  searchTermCategorySuggestion: process.env.E2E_SEARCH_TERM_CATEGORY_SUGGESTION,
+  searchTermCategorySuggestion: getRequiredEnv(
+    'E2E_SEARCH_TERM_CATEGORY_SUGGESTION',
+  ),
   /** Product ID search term that matches exact product ID in stock, e.g. 123456. */
-  searchExactProductID: process.env.E2E_SEARCH_EXACT_PRODUCT_ID,
+  searchExactProductID: getRequiredEnv('E2E_SEARCH_EXACT_PRODUCT_ID'),
   /** Suggestion tags search term that describes the product and returns its descriptive tags, e.g. "Black shoes size 44". */
-  searchTermTags: process.env.E2E_SEARCH_TAGS,
+  searchTermTags: getRequiredEnv('E2E_SEARCH_TAGS'),
   /** Page name search term that fully or partially matches a content page, e.g. "faq" or "support". */
-  searchTermPage: process.env.E2E_SEARCH_PAGE,
+  searchTermPage: getRequiredEnv('E2E_SEARCH_PAGE'),
   /** Reference Key search term that matches exact product Reference Key in stock, e.g. "123-ref-key". */
-  searchReferenceKey: process.env.E2E_SEARCH_REFERENCE_KEY,
+  searchReferenceKey: getRequiredEnv('E2E_SEARCH_REFERENCE_KEY'),
   /** The base URL parameter used for search queries. It doesn't require any setup via environment variable. */
   searchParamUrl: 'search?filters[term]=',
 }
@@ -60,6 +64,7 @@ export const USER_ACCOUNT = {
   userLastName: 'Test',
   userBirthDateCorrect: '01-01-1981',
   userBirthDateIncorrect: '32-13-9999',
+  // eslint-disable-next-line sonarjs/no-hardcoded-passwords
   nonMatchingPassword: 'N0nMatch1ngPa55w0rd!',
   routeOrders: '/account/orders',
   routeSubscriptions: '/account/subscription',
@@ -140,6 +145,7 @@ export const ROUTES = {
   homepageDefault: '/de',
   homepage1: '/en',
   checkout: '/checkout',
+  signin: '/signin',
 }
 
 /**
@@ -174,3 +180,12 @@ export const WISHLIST_TEST_DATA = {
   seoTitle: 'Deine Wunschliste | SCAYLE',
   seoRobots: 'noindex, nofollow',
 }
+
+/**
+ * Regular expression to match and remove any characters that are not
+ * digits (0-9), periods (.), or hyphens (-). Useful for parsing numeric values like prices.
+ */
+export const NON_NUMERIC_PRICE_CHARS_REGEX = /[^0-9.-]+/g
+
+// eslint-disable-next-line sonarjs/no-hardcoded-passwords
+export const TEST_PASSWORD_RESET_HASH = '?hash=testhash'

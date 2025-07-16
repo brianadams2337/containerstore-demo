@@ -1,5 +1,5 @@
 import type { Page } from 'playwright-core'
-import { expect } from '../fixtures/fixtures'
+import { expect } from '@playwright/test'
 import { TEST_USERS } from './constants'
 
 import { BREAKPOINTS } from '../../config/ui'
@@ -20,6 +20,7 @@ interface SeoOptions {
  */
 export const isMobile = (page: Page): boolean => {
   const viewportSize = page.viewportSize()
+
   return !!viewportSize && viewportSize.width < BREAKPOINTS.md
 }
 
@@ -89,6 +90,15 @@ export const getUserForBrowser = (
   }
 }
 
+/**
+ * Verifies various SEO (Search Engine Optimization) meta tags and attributes on a given page.
+ * This function checks for the presence and correctness of the page title, meta description,
+ * robots tag, and canonical link based on the provided options.
+ *
+ * @param page - The Playwright Page object representing the current web page.
+ * @param options - An object containing the SEO properties to verify.
+ * Only properties explicitly defined in this object will be checked.
+ */
 export async function verifySeoMetaTags(page: Page, options: SeoOptions) {
   if (options.title) {
     await expect(page).toHaveTitle(options.title)
@@ -114,4 +124,47 @@ export async function verifySeoMetaTags(page: Page, options: SeoOptions) {
       options.canonical,
     )
   }
+}
+
+/**
+ * Cleans a navigation item label by removing all digits and trimming whitespace.
+ * This is typically used to extract the pure category name from a label that
+ * might include a product counter (e.g., "Dresses 123" becomes "Dresses").
+ *
+ * @param stringValue - The raw string value of the navigation item label.
+ * @returns The cleaned string value without digits and leading/trailing whitespace.
+ */
+export const navigationItemLabel = (stringValue: string) =>
+  stringValue.replace(/\d/g, '').trim()
+
+/**
+ * Formats an active category breadcrumb label into a URL-friendly segment.
+ * It converts the string to lowercase and replaces a trailing product counter
+ * (e.g., " 123") with a hyphen "-".
+ * Example: "Bekleidung 123" becomes "bekleidung-"
+ *
+ * @param activeCategoryText - The text content of the active category breadcrumb.
+ * @returns The URL-formatted string.
+ */
+export const formatCategoryUrlSegment = (activeCategoryText: string | null) => {
+  const lowercasedText = activeCategoryText?.toLowerCase() ?? ''
+  return lowercasedText.replace(/ \d+$/, '-')
+}
+
+/**
+ * Retrieves a required environment variable, throwing an error if it is not set.
+ * @param key The name of the environment variable.
+ * @returns The value of the environment variable (guaranteed string).
+ * @throws {Error} If the environment variable is not set.
+ */
+export function getRequiredEnv(key: string): string {
+  const value = process.env[key]
+
+  if (value === undefined) {
+    throw new Error(
+      `Environment variable '${key}' is required but not set. Please check your .env file or CI/CD configuration.`,
+    )
+  }
+
+  return value
 }

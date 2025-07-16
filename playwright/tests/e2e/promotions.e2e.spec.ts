@@ -1,4 +1,5 @@
-import { expect, test } from '../fixtures/fixtures'
+import { test } from '../../fixtures/fixtures'
+import { expect } from '@playwright/test'
 
 /**
  * @file Contains end-to-end tests for verifying the functionality and
@@ -33,12 +34,14 @@ test('C2185235 Verify Promotion Ribbon', async ({
     await expect(promotions.promotionRibbonHeadline).toBeVisible()
     await expect(promotions.promotionRibbonSubheadline).toBeVisible()
   })
+
   await test.step('Check Ribbon scrolled state', async () => {
     await page.evaluate(() => {
       window.scrollTo(0, document.body.scrollHeight)
     })
     await expect(promotions.promotionRibbon).toBeVisible()
   })
+
   await test.step('Check Ribbon not visible on Basket page', async () => {
     await header.visitBasketPage()
     await basketPage.emptyState.waitFor()
@@ -59,6 +62,7 @@ test('C2185240 C2185241 Verify Promotion Flyout', async ({
     await header.promotionsButton.waitFor()
     await header.promotionsButton.click()
   })
+
   await test.step('Check the Promotion flyout open state', async () => {
     await promotions.closeFlyoutButton.waitFor()
     await expect(promotions.promotionsCounter).toBeVisible()

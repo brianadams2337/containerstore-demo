@@ -1,15 +1,31 @@
 import type { Locator, Page } from '@playwright/test'
 
+/**
+ * Page Object Model for the website Header component.
+ * Encapsulates locators and methods for interacting with and asserting states of
+ * common header elements like navigation buttons, user login, basket, and wishlist counters.
+ */
 export class Header {
-  readonly page: Page
-  readonly wishlistNumItems: Locator
+  private readonly page: Page
+
+  // --- Main Header Elements ---
+  /** Locator for the main header container. */
+  readonly mainHeader: Locator
+
+  // --- Navigation Buttons ---
   readonly headerBasketButton: Locator
   readonly headerLoginButton: Locator
-  readonly basketNumItems: Locator
   readonly wishlistLink: Locator
-  readonly mainHeader: Locator
   readonly promotionsButton: Locator
 
+  // --- Counter Badges ---
+  readonly wishlistNumItems: Locator
+  readonly basketNumItems: Locator
+
+  /**
+   * Initializes the Header Page Object.
+   * @param page - The Playwright Page object.
+   */
   constructor(page: Page) {
     this.page = page
     this.wishlistNumItems = page.getByTestId('header-wishlist-count')
@@ -21,6 +37,12 @@ export class Header {
     this.promotionsButton = page.getByTestId('promotion-header-button')
   }
 
+  // --- Action Methods ---
+
+  /**
+   * Clicks the basket button in the header to navigate to the Basket page.
+   * Waits for the page to load content.
+   */
   async visitBasketPage() {
     await this.headerBasketButton.click()
     await this.page.waitForLoadState('domcontentloaded')

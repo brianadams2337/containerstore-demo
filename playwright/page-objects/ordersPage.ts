@@ -1,29 +1,45 @@
 import type { Locator, Page } from '@playwright/test'
-import { expect } from '../fixtures/fixtures'
-import { isMobile } from '../support/utils'
+import { expect } from '@playwright/test'
 
+/**
+ * Page Object Model for the User's Orders Page.
+ * Encapsulates locators and methods for viewing order history,
+ * inspecting order details, and interacting with pagination.
+ */
 export class OrdersPage {
-  readonly page: Page
+  private readonly page: Page
+
+  // --- Order List Locators ---
   readonly orderListItem: Locator
   readonly orderListItemTitle: Locator
   readonly orderListItemData: Locator
+  readonly ordersHeadline: Locator
+
+  // --- Order Details Locators ---
+  readonly orderDetailsHeadline: Locator
+  readonly orderDetailsBackButton: Locator
   readonly addressCard: Locator
-  readonly orderItems: Locator
+  readonly addressMobile: Locator
   readonly orderStatusBar: Locator
+  readonly orderStatus: Locator
   readonly orderItemCard: Locator
+  readonly orderItems: Locator
+  readonly orderItemHeadline: Locator
+
+  // --- Payment Summary Locators ---
   readonly paymentHeader: Locator
   readonly paymentOrderValue: Locator
   readonly paymentShippingCost: Locator
+
+  // --- Empty State Locators ---
+  readonly emptyState: Locator
   readonly headlineNoOrders: Locator
   readonly buttonContinueShopping: Locator
-  readonly addressMobile: Locator
-  readonly ordersHeadline: Locator
-  readonly orderItemHeadline: Locator
-  readonly orderDetailsBackButton: Locator
-  readonly orderDetailsHeadline: Locator
-  readonly emptyState: Locator
-  readonly orderStatus: Locator
 
+  /**
+   * Initializes the OrdersPage Page Object.
+   * @param page - The Playwright Page object.
+   */
   constructor(page: Page) {
     this.page = page
     this.orderListItem = page.getByTestId('order-history-list-item')
@@ -47,50 +63,54 @@ export class OrdersPage {
     this.orderStatus = page.getByTestId('order-status')
   }
 
-  async visitOrdersPage(path: string, baseUrl: string) {
-    const url = baseUrl + path
-    await this.page.goto(url, { waitUntil: 'load' })
-  }
+  // --- Private Helper Locators & Methods ---
 
-  async assertOrderListItem() {
-    await this.orderListItem.first().waitFor()
-    await expect(this.orderListItemTitle.first()).toBeVisible()
-    await expect(this.orderListItemData.first()).toBeVisible()
-  }
-
-  async assertOrderItem() {
-    await this.orderListItem.first().click()
-    await this.orderItems.waitFor()
-    if (isMobile(this.page)) {
-      await expect(this.addressMobile.first()).toBeVisible()
-    } else {
-      await expect(this.addressCard.first()).toBeVisible()
-    }
-    await expect(this.orderStatusBar).toBeVisible()
-    await expect(this.orderItemCard).toBeVisible()
-  }
-
-  async assertPaymentArea() {
-    await this.paymentHeader.waitFor()
-    await expect(this.paymentOrderValue).toBeVisible()
-    await expect(this.paymentShippingCost).toBeVisible()
-  }
-
-  orderDetailsButton(order: string): Locator {
+  /**
+   * Returns a locator for a specific "Go to Order Detail" button, identified by order number.
+   * @param order - The order number as a string.
+   * @returns A Playwright Locator for the order details button.
+   */
+  private orderDetailsButton(order: string): Locator {
     return this.page.getByTestId(`go-to-order-detail-${order}`)
   }
 
-  ordersPageButton(page: string): Locator {
-    return this.page.getByTestId(`paginationButton-${page}`)
+  /**
+   * Returns a locator for a specific pagination button, identified by page number.
+   * @param pageNum - The page number as a string.
+   * @returns A Playwright Locator for the pagination button.
+   */
+  private ordersPageButton(pageNum: string): Locator {
+    return this.page.getByTestId(`paginationButton-${pageNum}`)
   }
 
+  // --- Action Methods ---
+
+  /**
+   * Selects and navigates to the details page of a specific order.
+   * @param order - The order number as a string.
+   */
   async selectOrder(order: string) {
     await this.orderDetailsButton(order).waitFor()
     await this.orderDetailsButton(order).click()
   }
 
-  async selectPage(page: string) {
-    await this.ordersPageButton(page).waitFor()
-    await this.ordersPageButton(page).click()
+  /**
+   * Navigates to a specific page within the order history pagination.
+   * @param pageNum - The page number to navigate to as a string.
+   */
+  async selectPage(pageNum: string) {
+    await this.ordersPageButton(pageNum).waitFor()
+    await this.ordersPageButton(pageNum).click()
+  }
+
+  // --- Assertion Methods ---
+
+  /**
+   * Asserts that at least one order list item is visible and contains its title and data.
+   */
+  async assertOrderListItem() {
+    await this.orderListItem.first().waitFor()
+    await expect(this.orderListItemTitle.first()).toBeVisible()
+    await expect(this.orderListItemData.first()).toBeVisible()
   }
 }

@@ -1,5 +1,6 @@
-import { expect, test } from '../fixtures/fixtures'
-import { ROUTES, TEST_USERS } from '../support/constants'
+import { test } from '../../fixtures/fixtures'
+import { expect } from '@playwright/test'
+import { ROUTES, TEST_USERS } from '../../support/constants'
 
 /**
  * @file Contains end-to-end tests for the user's Orders page, verifying
@@ -23,38 +24,48 @@ import { ROUTES, TEST_USERS } from '../support/constants'
 test('C2132533 Verify Orders for user that has orders', async ({
   ordersPage,
   homePage,
-  accountPage,
-  baseURL,
   page,
+  countryDetector,
+  header,
+  signinPage,
+  toastMessage,
 }) => {
   await test.step('Visit Orders page and assert the page is loaded', async () => {
     await homePage.visitPage()
     await page.waitForLoadState('networkidle')
-    await accountPage.userAuthentication(
+    await countryDetector.closeModal()
+    await header.headerLoginButton.click()
+    await signinPage.fillLoginData(
       TEST_USERS.testUserEmail1,
       TEST_USERS.testUserPassword,
     )
-    await ordersPage.visitOrdersPage('/account/orders', baseURL as string)
+    await signinPage.clickLoginButton()
+    await toastMessage.clickToastMessageButton()
+    await header.headerLoginButton.click()
     await ordersPage.ordersHeadline.waitFor()
     await expect(ordersPage.ordersHeadline).toBeVisible()
     await expect(ordersPage.orderStatus.first()).toBeVisible()
   })
+
   await test.step('Open the first order and check order details', async () => {
     const orderHeadlineText = (await ordersPage.orderItemHeadline
       .nth(0)
       .textContent()) as string
     const orderNumber = orderHeadlineText.split('#')[1]
+
     await ordersPage.selectOrder(orderNumber)
     await ordersPage.orderDetailsHeadline.waitFor()
     await expect(ordersPage.orderDetailsHeadline).toContainText(orderNumber)
     expect(page.url()).toContain(orderNumber)
     await expect(ordersPage.orderStatus).toBeVisible()
   })
+
   await test.step('Go back to orders list', async () => {
     await ordersPage.orderDetailsBackButton.click()
     await ordersPage.ordersHeadline.waitFor()
     expect(page.url()).toContain(ROUTES.orders)
   })
+
   await test.step('Check the pagination', async () => {})
   await ordersPage.selectPage('2')
   await page.waitForTimeout(500)
@@ -75,17 +86,23 @@ test('C2132533 Verify Orders for user that has orders', async ({
 test('C2132126 Verify Orders page - user without orders', async ({
   ordersPage,
   homePage,
-  accountPage,
-  baseURL,
   page,
+  countryDetector,
+  header,
+  signinPage,
+  toastMessage,
 }) => {
   await homePage.visitPage()
+  await countryDetector.closeModal()
   await page.waitForLoadState('networkidle')
-  await accountPage.userAuthentication(
+  await header.headerLoginButton.click()
+  await signinPage.fillLoginData(
     TEST_USERS.testUserNoOrders,
     TEST_USERS.testUserPassword,
   )
-  await ordersPage.visitOrdersPage('/account/orders', baseURL as string)
+  await signinPage.clickLoginButton()
+  await toastMessage.clickToastMessageButton()
+  await header.headerLoginButton.click()
   await expect(ordersPage.emptyState).toBeVisible()
   await expect(ordersPage.buttonContinueShopping).toBeVisible()
 })

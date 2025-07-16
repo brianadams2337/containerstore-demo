@@ -1,4 +1,5 @@
-import { expect, test } from '../fixtures/fixtures'
+import { test } from '../fixtures/fixtures'
+import { expect } from '@playwright/test'
 import { isMobile } from '../support/utils'
 import { ROUTES } from '../support/constants'
 
@@ -33,6 +34,7 @@ test('C2139186: E2E from Home to Checkout - happy path', async ({
     }
     await breadcrumb.breadcrumbCategoryActive.waitFor()
   })
+
   await test.step('Add product to Wishlist from PLP', async () => {
     await expect(async () => {
       await productListingPage.addProductToWishlist()
@@ -41,6 +43,7 @@ test('C2139186: E2E from Home to Checkout - happy path', async ({
       await expect(header.wishlistNumItems).toHaveText('1')
     }).toPass()
   })
+
   await test.step('Open PDP and add product to Basket', async () => {
     await expect(async () => {
       await productListingPage.productImage.first().click()
@@ -52,6 +55,7 @@ test('C2139186: E2E from Home to Checkout - happy path', async ({
       await productDetailPage.productBrand.textContent()
     const basketProductNameText =
       await productDetailPage.productName.textContent()
+
     await expect(async () => {
       await header.visitBasketPage()
       await basketPage.basketProductCard.first().waitFor()
@@ -61,17 +65,15 @@ test('C2139186: E2E from Home to Checkout - happy path', async ({
       )
     }).toPass()
   })
+
   await test.step('Go to Checkout page', async () => {
     await expect(async () => {
-      if (isMobile(page)) {
-        await basketPage.gotoCheckoutPage(1)
-      } else {
-        await basketPage.gotoCheckoutPage(0)
-      }
+      await basketPage.gotoCheckoutPage()
       await signinPage.loginButton.waitFor({ state: 'visible' })
       expect(page.url()).toContain(ROUTES.homepageDefault + ROUTES.checkout)
     }).toPass()
   })
+
   await test.step('Empty Basket to have clean state after test execution', async () => {
     await expect(async () => {
       await header.visitBasketPage()

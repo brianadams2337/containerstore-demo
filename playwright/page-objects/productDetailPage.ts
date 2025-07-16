@@ -1,24 +1,45 @@
 import type { Locator, Page } from '@playwright/test'
 import { isMobile } from '../support/utils'
-import { expect } from '../fixtures/fixtures'
+import { expect } from '@playwright/test'
 
+/**
+ * Page Object Model for the Product Detail Page (PDP).
+ * Encapsulates locators and methods for interacting with and asserting states on
+ * individual product pages, including variant selection, basket/wishlist actions,
+ * and store availability.
+ */
 export class ProductDetailPage {
-  readonly page: Page
-  readonly addToBasketButton: Locator
+  private readonly page: Page
+
+  // --- Core Product Information Locators ---
   readonly productImage: Locator
   readonly productBrand: Locator
   readonly productName: Locator
   readonly priceRegular: Locator
   readonly taxInfo: Locator
+  readonly h1: Locator
+  readonly pageTitle: Locator
+
+  // --- Variant Selection Locators ---
   readonly variantPicker: Locator
-  readonly addToBasketButtonMobile: Locator
+  readonly itemStatus: Locator
+
+  // --- Quantity Selector Locators ---
   readonly quantityValue: Locator
   readonly quantityMinus: Locator
   readonly quantityPlus: Locator
+
+  // --- Basket / Wishlist Actions Locators ---
+  readonly addToBasketButton: Locator
+  readonly addToBasketButtonMobile: Locator
   readonly buttonAddToWishlist: Locator
   readonly buttonRemoveFromWishlist: Locator
+
+  // --- Subscription Service Locators ---
   readonly subscriptionService: Locator
   readonly addToBasketButtonSubscribe: Locator
+
+  // --- Store Availability / Store Selector Locators ---
   readonly variantAvailabilityComponent: Locator
   readonly storeAvailabilityHeadline: Locator
   readonly storeAvailabilitySubline: Locator
@@ -30,33 +51,49 @@ export class ProductDetailPage {
   readonly locationStoreListItem: Locator
   readonly buttonChooseStore: Locator
   readonly storeName: Locator
-  readonly itemStatus: Locator
-  readonly h1: Locator
-  readonly pageTitle: Locator
 
+  /**
+   * Initializes the ProductDetailPage Page Object.
+   * @param page - The Playwright Page object.
+   */
   constructor(page: Page) {
     this.page = page
+
+    // Core Product Information
     this.addToBasketButton = page.getByTestId('add-item-to-basket-button')
     this.productImage = page.getByTestId('product-image')
     this.productBrand = page.getByTestId('pdp-product-brand')
     this.productName = page.getByTestId('pdp-product-name')
     this.priceRegular = page.getByTestId('price')
     this.taxInfo = page.getByTestId('tax-info')
+    this.h1 = page.locator('h1')
+    this.pageTitle = page.getByTestId('pdp-product-brand')
+
+    // Variant Selection
     this.variantPicker = page.getByTestId('variant-picker').getByRole('button')
-    this.addToBasketButtonMobile = page.getByTestId(
-      'add-to-basket-button-mobile',
-    )
+    this.itemStatus = page.getByTestId('item-status')
+
+    // Quantity Selector
     this.quantityValue = page.getByTestId('quantity-value')
     this.quantityMinus = page.getByTestId('quantity-minus')
     this.quantityPlus = page.getByTestId('quantity-plus')
+
+    // Basket / Wishlist Actions
+    this.addToBasketButtonMobile = page.getByTestId(
+      'add-to-basket-button-mobile',
+    )
     this.buttonAddToWishlist = page.getByTestId('add-item-to-wishlist-button')
     this.buttonRemoveFromWishlist = page.getByTestId(
       'remove-item-from-wishlist-button',
     )
+
+    // Subscription Service
     this.subscriptionService = page.getByTestId('subscription-service')
     this.addToBasketButtonSubscribe = page.getByTestId(
       'add-item-to-basket-button-subscribe',
     )
+
+    // Store Availability / Store Selector
     this.variantAvailabilityComponent = page.getByTestId(
       'store-variant-availability-component',
     )
@@ -74,11 +111,16 @@ export class ProductDetailPage {
     this.locationStoreListItem = page.getByTestId('location-store-list-item')
     this.buttonChooseStore = page.getByTestId('choose-store-button')
     this.storeName = page.getByTestId('store-name')
-    this.itemStatus = page.getByTestId('item-status')
-    this.h1 = page.locator('h1')
-    this.pageTitle = page.getByTestId('pdp-product-brand')
   }
 
+  // --- Private Helper Methods ---
+
+  /**
+   * Returns a Locator for a specific product variant option (e.g., a size).
+   * @param variantId - Optional: The data-testid of the specific variant option (e.g., 'variant-option-123').
+   * If not provided, selects the first non-disabled variant option.
+   * @returns A Playwright Locator for the product variant option.
+   */
   getVariant(variantId?: string): Locator {
     const selector = variantId
       ? `button[data-testid="variant-option-${variantId}"]`
@@ -87,77 +129,70 @@ export class ProductDetailPage {
     return this.page.locator(selector).first()
   }
 
-  async addProductToBasket() {
-    if (isMobile(this.page)) {
-      await this.addToBasketButtonMobile.waitFor()
-      await this.addToBasketButtonMobile.click()
-    } else {
-      await this.page.waitForLoadState('networkidle')
-      await this.addToBasketButton.waitFor()
-      await this.addToBasketButton.click()
-    }
+  /**
+   * Returns the correct "Add to Wishlist" button Locator based on device type.
+   * @returns A Playwright Locator for the Add to Wishlist button.
+   */
+  private getAddToWishlistButton(): Locator {
+    return isMobile(this.page)
+      ? this.buttonAddToWishlist.nth(0)
+      : this.buttonAddToWishlist.nth(1)
   }
 
+  /**
+   * Returns the correct "Remove from Wishlist" button Locator based on device type.
+   * @returns A Playwright Locator for the Remove from Wishlist button.
+   */
+  private getRemoveFromWishlistButton(): Locator {
+    return isMobile(this.page)
+      ? this.buttonRemoveFromWishlist.nth(0)
+      : this.buttonRemoveFromWishlist.nth(1)
+  }
+
+  // --- Action Methods ---
+
+  /**
+   * Adds the currently displayed product to the basket via UI interaction.
+   * Chooses the appropriate "Add to Basket" button based on device type.
+   */
+  async addProductToBasket() {
+    const targetButton = isMobile(this.page)
+      ? this.addToBasketButtonMobile
+      : this.addToBasketButton
+
+    await targetButton.waitFor()
+    await targetButton.click()
+  }
+
+  /**
+   * Navigates directly to a Product Detail Page (PDP).
+   * @param path - The specific path to the PDP (e.g., '/p/my-product-slug-123').
+   * @param baseUrl - The base URL of the application.
+   */
   async visitPDP(path: string, baseUrl: string) {
     const url = baseUrl + path
+
     await this.page.goto(url, { waitUntil: 'commit' })
   }
 
-  async assertAddToWishlistIconVisibility() {
-    if (isMobile(this.page)) {
-      await this.buttonAddToWishlist.nth(0).waitFor()
-      await expect(this.buttonAddToWishlist.nth(0)).toBeVisible()
-      await expect(this.buttonAddToWishlist.nth(1)).not.toBeVisible()
-      await expect(this.buttonRemoveFromWishlist.nth(0)).not.toBeVisible()
-    } else {
-      await this.buttonAddToWishlist.nth(1).waitFor()
-      await expect(this.buttonAddToWishlist.nth(1)).toBeVisible()
-      await expect(this.buttonAddToWishlist.nth(0)).not.toBeVisible()
-      await expect(this.buttonRemoveFromWishlist.nth(1)).not.toBeVisible()
-    }
-  }
-
-  async assertRemoveFromWishlistIconVisibility() {
-    if (isMobile(this.page)) {
-      await this.buttonRemoveFromWishlist.nth(0).waitFor()
-      await expect(this.buttonRemoveFromWishlist.nth(0)).toBeVisible()
-      await expect(this.buttonRemoveFromWishlist.nth(1)).not.toBeVisible()
-      await expect(this.buttonAddToWishlist.nth(0)).not.toBeVisible()
-    } else {
-      await this.buttonRemoveFromWishlist.nth(1).waitFor()
-      await expect(this.buttonRemoveFromWishlist.nth(1)).toBeVisible()
-      await expect(this.buttonRemoveFromWishlist.nth(0)).not.toBeVisible()
-      await expect(this.buttonAddToWishlist.nth(1)).not.toBeVisible()
-    }
-  }
-
+  /**
+   * Adds the current product to the wishlist.
+   */
   async addProductToWishlist() {
-    if (isMobile(this.page)) {
-      await this.buttonAddToWishlist.nth(0).click()
-    } else {
-      await this.buttonAddToWishlist.nth(1).click()
-    }
+    await this.getAddToWishlistButton().click()
   }
 
+  /**
+   * Removes the current product from the wishlist.
+   */
   async removeProductFromWishlist() {
-    if (isMobile(this.page)) {
-      await this.buttonRemoveFromWishlist.nth(0).click()
-    } else {
-      await this.buttonRemoveFromWishlist.nth(1).click()
-    }
+    await this.getRemoveFromWishlistButton().click()
   }
 
-  async assertStoreSelectorIsVisible(visible: boolean) {
-    await expect(this.variantAvailabilityComponent).toBeVisible({
-      visible,
-    })
-  }
-
-  async assertStoreSelectorFlyoutIsVisible(visible: boolean, index: number) {
-    await this.storeSelectorSlideIn.nth(index).waitFor()
-    await expect(this.storeSelectorSlideIn.nth(index)).toBeVisible({ visible })
-  }
-
+  /**
+   * Types a store name into the store search input field within the store selector flyout.
+   * @param store - The name of the store to type.
+   */
   async typeStoreName(store: string) {
     await this.storeInput.waitFor()
     await this.storeInput.focus()
@@ -166,18 +201,62 @@ export class ProductDetailPage {
   }
 
   /**
-   * Determines product variant selection behavior based on the state of the variant picker.
-   * If the variant picker DOM element is in a disabled state, it indicates that a single
-   * variant (e.g., one-size) is pre-selected and no further interaction is required.
-   * Conversely, if the variant picker is enabled, it signifies the presence of multiple
-   * variants. In this case, the method will trigger a click on the picker to expose
-   * the variant options dropdown and subsequently select the first available variant.
+   * Determines and selects a product variant based on the state of the variant picker.
+   * If the variant picker is disabled (implying a single, pre-selected variant like one-size),
+   * no action is taken. If it's enabled, the method clicks the picker to open the dropdown
+   * and selects the first available (non-disabled) product variant.
    */
   async chooseProductVariant() {
     const isVariantPickerDisabled = await this.variantPicker.isDisabled()
+
     if (!isVariantPickerDisabled) {
       await this.variantPicker.click({ force: true })
       await this.getVariant().click()
     }
+  }
+
+  // --- Assertion Methods ---
+
+  /**
+   * Asserts the visibility of the "Add to Wishlist" icon and the non-visibility
+   * of the "Remove from Wishlist" icon, based on device type.
+   */
+  async assertAddToWishlistIconVisibility() {
+    const targetAddButton = this.getAddToWishlistButton()
+    const targetRemoveButton = this.getRemoveFromWishlistButton()
+
+    await targetAddButton.waitFor()
+    await expect(targetAddButton).toBeVisible()
+    await expect(targetRemoveButton).not.toBeVisible()
+  }
+
+  /**
+   * Asserts the visibility of the "Remove from Wishlist" icon and the non-visibility
+   * of the "Add to Wishlist" icon, based on device type.
+   */
+  async assertRemoveFromWishlistIconVisibility() {
+    const targetRemoveButton = this.getRemoveFromWishlistButton()
+    const targetAddButton = this.getAddToWishlistButton()
+
+    await targetRemoveButton.waitFor()
+    await expect(targetRemoveButton).toBeVisible()
+    await expect(targetAddButton).not.toBeVisible()
+  }
+
+  /**
+   * Asserts the visibility of the main store selector component.
+   * @param visible - True if the component is expected to be visible, false otherwise.
+   */
+  async assertStoreSelectorIsVisible(visible: boolean) {
+    await expect(this.variantAvailabilityComponent).toBeVisible({ visible })
+  }
+
+  /**
+   * Asserts the visibility of the store selector flyout/slide-in panel.
+   * @param visible - True if the flyout is expected to be visible, false otherwise.
+   */
+  async assertStoreSelectorFlyoutIsVisible(visible: boolean) {
+    await this.storeSelectorSlideIn.first().waitFor()
+    await expect(this.storeSelectorSlideIn.first()).toBeVisible({ visible })
   }
 }

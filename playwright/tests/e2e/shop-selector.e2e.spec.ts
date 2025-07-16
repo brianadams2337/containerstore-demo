@@ -1,5 +1,6 @@
-import { expect, test } from '../fixtures/fixtures'
-import { isMobile } from '../support/utils'
+import { test } from '../../fixtures/fixtures'
+import { expect } from '@playwright/test'
+import { isMobile } from '../../support/utils'
 
 /**
  * @file Contains end-to-end tests for the Shop Selector functionality,
@@ -27,23 +28,27 @@ test('C2162469: Verify Shop Selector switch to different shop', async ({
       if (isMobile(page)) {
         await mobileNavigation.sideNavigationButton.click()
         await shopSelector.assertShopSelectorIsVisible(1)
-      } else {
-        await shopSelector.assertShopSelectorIsVisible(0)
+        return
       }
+
+      await shopSelector.assertShopSelectorIsVisible(0)
     }).toPass()
   })
+
   await test.step('Click Shop Selector toggle button and assert open state', async () => {
     await expect(async () => {
-      if (isMobile(page)) {
-        await shopSelector.openShopSelector(1)
-      } else {
-        await shopSelector.openShopSelector(0)
-      }
+      const index = isMobile(page) ? 1 : 0
+
+      await shopSelector.openShopSelector(index)
     }).toPass()
   })
+
   await test.step('Select different shop and assert the shop is switched', async () => {
     await expect(async () => {
-      await shopSelector.switchShop()
+      const initialUrl = page.url()
+
+      await shopSelector.clickSwitchShop()
+      await shopSelector.assertUrlHasChanged(initialUrl)
     }).toPass()
   })
 })
@@ -59,15 +64,18 @@ test('C2162470: Verify Shop Selector switch to the current shop', async ({
   mobileNavigation,
 }) => {
   await expect(async () => {
+    const initialUrl = page.url()
+
     if (isMobile(page)) {
       await mobileNavigation.sideNavigationButton.click()
       await page.waitForTimeout(500)
       await shopSelector.openShopSelector(1)
-      await shopSelector.switchShopToCurrent(1)
+      await shopSelector.clickSwitchShopToCurrent()
     } else {
       await shopSelector.openShopSelector(0)
-      await shopSelector.switchShopToCurrent(0)
+      await shopSelector.clickSwitchShopToCurrent()
     }
+    await shopSelector.assertUrlHasNotChanged(initialUrl)
   }).toPass()
 })
 
@@ -90,24 +98,28 @@ test('C2162471: Verify Shop Selector switch from non-Homepage', async ({
     testInfo.project.name === 'mobile-safari',
     'Potential Gitlab CI execution issues in Mobile Safari',
   )
+
   await test.step('Navigate to Wishlist page', async () => {
     await header.wishlistLink.click()
     await page.waitForLoadState('domcontentloaded')
     await wishlistPage.emptyState.waitFor()
   })
+
   await test.step('Switch the shop and assert Wishlist page is loaded in different shop', async () => {
     if (isMobile(page)) {
       await mobileNavigation.sideNavigationButton.click()
       await page.waitForTimeout(500)
       await shopSelector.assertShopSelectorIsVisible(1)
       await shopSelector.openShopSelector(1)
-      await shopSelector.switchShop()
+      await shopSelector.clickSwitchShop()
     } else {
       await shopSelector.assertShopSelectorIsVisible(0)
       await shopSelector.openShopSelector(0)
-      await shopSelector.switchShop()
+      await shopSelector.clickSwitchShop()
     }
+
     const pageUrl = page.url()
+
     expect(pageUrl).not.toContain('/wishlist')
   })
 })

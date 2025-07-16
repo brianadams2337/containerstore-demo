@@ -1,12 +1,16 @@
-import { expect, test } from '../fixtures/fixtures'
+import { test } from '../../fixtures/fixtures'
+import { expect } from '@playwright/test'
 import {
   getUserForBrowser,
   isMobile,
   verifySeoMetaTags,
-} from '../support/utils'
-import { BASKET_TEST_DATA, ROUTES } from '../support/constants'
+} from '../../support/utils'
+import { BASKET_TEST_DATA, ROUTES } from '../../support/constants'
 
-/** @file Contains end-to-end tests for the basket page. */
+/**
+ * @file Contains end-to-end tests for the shopping basket page functionality.
+ * This suite covers empty states, adding/removing products, and SEO verification.
+ */
 
 /**
  * Verifies that when a guest user navigates to the basket page,
@@ -15,7 +19,7 @@ import { BASKET_TEST_DATA, ROUTES } from '../support/constants'
  * to the basket page, the empty basket state is displayed, and the user has
  * the option to continue shopping.
  *
- * Prerequisites for this test:
+ * Prerequisite for this test:
  * To avoid conflicts between browsers in empty and non-empty states, every browser should use its own dedicated test user.
  * Five test users should be registered in the system and their e-mail addresses and password should match the values of
  * environment variables, as follows:
@@ -34,7 +38,6 @@ test('C2132186 C2132187 Verify Basket empty state as a guest and logged in user'
   page,
   countryDetector,
 }, testInfo) => {
-  test.setTimeout(60000)
   await test.step('Verify guest user', async () => {
     await homePage.visitPage()
     await countryDetector.closeModal()
@@ -52,8 +55,10 @@ test('C2132186 C2132187 Verify Basket empty state as a guest and logged in user'
     await header.headerBasketButton.click()
     await page.waitForTimeout(1000)
     await basketPage.assertLoginButton()
+
     const projectName = testInfo.project.name
     const { email, password } = getUserForBrowser(projectName)
+
     await signinPage.fillLoginData(email, password)
     await signinPage.clickLoginButton()
     expect(page.url()).toContain(ROUTES.basket)
@@ -108,10 +113,12 @@ test('C2132198 C2162476 Verify add to Basket', async ({
     await breadcrumb.breadcrumbCategoryActive.waitFor()
     await productListingPage.productImage.first().click()
     await productDetailPage.variantPicker.waitFor()
+
     const productBrand =
       (await productDetailPage.productBrand.textContent()) as string
     const productName =
       (await productDetailPage.productName.textContent()) as string
+
     await productDetailPage.chooseProductVariant()
     await productDetailPage.addProductToBasket()
     await header.visitBasketPage()
@@ -119,18 +126,28 @@ test('C2132198 C2162476 Verify add to Basket', async ({
     await expect(header.basketNumItems).toHaveText('1')
     await basketPage.assertProductIsInBasket(productBrand, productName)
     await header.headerLoginButton.click()
+
     const projectName = testInfo.project.name
     const { email, password } = getUserForBrowser(projectName)
+
     await signinPage.fillLoginData(email, password)
     await header.visitBasketPage()
     await basketPage.assertProductIsInBasket(productBrand, productName)
   })
+
+  /**
+   * As a part of verifying Basket functionailities, this step verifies Basket SEO data.
+   * Since the product is in Basket, the page is loaded and user is logged-in,
+   * this step eliminates the need to repeat adding to basket and logging in in a separated test.
+   */
   await test.step('Check Basket SEO data', async () => {
     await expect(async () => {
       await basketPage.h1.waitFor()
+
       const pageTitle = (await basketPage.pageTitle
         .nth(0)
         .textContent()) as string
+
       await verifySeoMetaTags(page, {
         robots: BASKET_TEST_DATA.seoRobots,
         canonical: page.url(),

@@ -1,6 +1,7 @@
-import { expect, test } from '../fixtures/fixtures'
-import { PDP_E2E } from '../support/constants'
-import { isMobile, verifySeoMetaTags } from '../support/utils'
+import { test } from '../../fixtures/fixtures'
+import { expect } from '@playwright/test'
+import { PDP_E2E } from '../../support/constants'
+import { isMobile, verifySeoMetaTags } from '../../support/utils'
 
 /**
  * @file Contains end-to-end tests for the Product Detail Page (PDP),
@@ -25,11 +26,13 @@ test('C2141594: Verify PDP name, brand and price', async ({
   await homePage.visitPage()
   await page.waitForLoadState('networkidle')
   await countryDetector.closeModal()
+
   if (isMobile(page)) {
     await mobileNavigation.openPlpMobile()
   } else {
     await mainNavigation.navigateToPlpMainCategory()
   }
+
   await breadcrumb.breadcrumbCategoryActive.waitFor()
   await expect(async () => {
     await productListingPage.productImage.first().click()
@@ -63,15 +66,18 @@ test('C2141598: Verify PDP add and remove to/from Wishlist', async ({
   await homePage.visitPage()
   await page.waitForLoadState('networkidle')
   await countryDetector.closeModal()
+
   if (isMobile(page)) {
     await mobileNavigation.openPlpMobile()
   } else {
     await mainNavigation.navigateToPlpMainCategory()
   }
+
   await breadcrumb.breadcrumbCategoryActive.waitFor()
   await productListingPage.productImage.first().click()
   await page.waitForLoadState('domcontentloaded')
   await productDetailPage.h1.waitFor()
+
   await test.step('Adding product to Wishlist', async () => {
     await productDetailPage.assertAddToWishlistIconVisibility()
     await page.waitForLoadState('networkidle')
@@ -79,6 +85,7 @@ test('C2141598: Verify PDP add and remove to/from Wishlist', async ({
     await productDetailPage.assertRemoveFromWishlistIconVisibility()
     await expect(header.wishlistNumItems).toHaveText('1')
   })
+
   await test.step('Removing product from Wishlist', async () => {
     await productDetailPage.removeProductFromWishlist()
     await expect(header.wishlistNumItems).not.toBeVisible()
@@ -104,14 +111,17 @@ test('C2141150 C2141757 Verify PDP SEO data', async ({
   await homePage.visitPage()
   await page.waitForLoadState('networkidle')
   await countryDetector.closeModal()
+
   if (isMobile(page)) {
     await mobileNavigation.openPlpMobile()
   } else {
     await mainNavigation.navigateToPlpMainCategory()
   }
+
   await breadcrumb.breadcrumbCategoryActive.waitFor()
   await productListingPage.productImage.first().click()
   await productDetailPage.h1.waitFor()
+
   const pageTitle = (await productDetailPage.pageTitle.textContent()) as string
   const pageTitleSEO = await page.title()
   const productName = await productDetailPage.productName.textContent()

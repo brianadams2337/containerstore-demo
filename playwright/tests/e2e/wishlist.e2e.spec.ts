@@ -1,6 +1,7 @@
-import { expect, test } from '../fixtures/fixtures'
-import { TEST_USERS, WISHLIST_TEST_DATA } from '../support/constants'
-import { verifySeoMetaTags, isMobile } from '../support/utils'
+import { test } from '../../fixtures/fixtures'
+import { expect } from '@playwright/test'
+import { TEST_USERS, WISHLIST_TEST_DATA } from '../../support/constants'
+import { verifySeoMetaTags, isMobile } from '../../support/utils'
 
 /**
  * @file Contains end-to-end tests for the user's Wishlist page, verifying
@@ -41,6 +42,7 @@ test('C2132174 C2132177 Verify Wishlist empty state', async ({
       await expect(wishlistPage.emptyStateSubheadline).toBeVisible()
     }).toPass()
   })
+
   await test.step('Verify logged-in user', async () => {
     await expect(async () => {
       await header.headerLoginButton.click()
@@ -100,6 +102,7 @@ test('C2141222 C2183076 Verify Wishlist non-empty state', async ({
     const pageTitle = (await wishlistPage.pageTitle
       .nth(0)
       .textContent()) as string
+
     await verifySeoMetaTags(page, {
       robots: WISHLIST_TEST_DATA.seoRobots,
       canonical: page.url(),
@@ -151,9 +154,11 @@ test('C2228716 Verify Wishlist product click redirects to PDP', async ({
       await wishlistPage.wishlistCard.waitFor()
     }).toPass()
   })
+
   await test.step('Click the product card and verify PDP is loaded', async () => {
     await wishlistPage.productImage.first().hover()
     await page.waitForLoadState('domcontentloaded')
+
     const productUrl = (await wishlistPage.productUrl
       .first()
       .getAttribute('href')) as string

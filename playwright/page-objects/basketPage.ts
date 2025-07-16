@@ -1,45 +1,58 @@
+import { expect } from '@playwright/test'
 import type { Locator, Page } from '@playwright/test'
-import { ROUTES } from '../support/constants'
-import { expect } from '../fixtures/fixtures'
+import { ROUTES, NON_NUMERIC_PRICE_CHARS_REGEX } from '../support/constants'
 import type { RPC } from './components/rpc'
 import { isMobile } from '../support/utils'
 
 export class BasketPage {
-  readonly page: Page
-  readonly rpc: RPC
-  readonly checkoutButton: Locator
-  readonly productImage: Locator
+  private readonly page: Page
+  private readonly rpc: RPC
+
+  // --- Core Basket UI Elements ---
   readonly basketProductCard: Locator
+  readonly productImage: Locator
+  readonly productBrand: Locator
+  readonly productName: Locator
+  readonly quantitySelector: Locator
+  readonly quantityValue: Locator
+  readonly buttonQuantityDecrease: Locator
+  readonly buttonQuantityIncrease
+  readonly removeItemButton: Locator
+  readonly confirmRemoveItemButton: Locator
+
+  // --- Price Summary Elements ---
+  readonly priceSubtotal: Locator
+  readonly priceSubtotalMobile: Locator
+  readonly priceFinal: Locator
+  readonly initialProductPrice: Locator
+  readonly productPrice: Locator
+  readonly discountSale: Locator
+  readonly discountPromotion: Locator
+  readonly promotionSummaryToggleButton: Locator
+  readonly totalPromotionDiscount: Locator
+
+  // --- Basket State Elements ---
   readonly emptyState: Locator
   readonly basketEmptyStateTitle: Locator
   readonly basketEmptyStateSubTitle: Locator
   readonly loginButton: Locator
   readonly continueButton: Locator
-  readonly productBrand: Locator
-  readonly productName: Locator
-  readonly removeItemButton: Locator
-  readonly confirmRemoveItemButton: Locator
-  readonly priceSubtotal: Locator
-  readonly priceSubtotalMobile: Locator
-  readonly priceFinal: Locator
-  readonly discountSale: Locator
-  readonly discountPromotion: Locator
-  readonly promotionSummaryToggleButton: Locator
-  readonly totalPromotionDiscount: Locator
   readonly headlineUnavailableProducts: Locator
   readonly soldOutTitle: Locator
   readonly unavailableProductList: Locator
-  readonly quantitySelector: Locator
   readonly soldOutQuantitySelector: Locator
   readonly soldOutDeleteButton: Locator
-  readonly quantityValue: Locator
-  readonly buttonQuantityDecrease: Locator
-  readonly buttonQuantityIncrease: Locator
-  readonly initialProductPrice: Locator
-  readonly productPrice: Locator
+
+  // --- Page Navigation/Generic Elements ---
+  readonly checkoutButton: Locator
   readonly h1: Locator
   readonly pageTitle: Locator
 
+  /**
+   * Initializes the BasketPage Page Object.
+   * @param page - The Playwright Page object.
+   * @param rpc - The RPC (Remote Procedure Call) Page Object for direct API interactions.
+   */
   constructor(page: Page, rpc: RPC) {
     this.page = page
     this.rpc = rpc
@@ -98,37 +111,26 @@ export class BasketPage {
     this.pageTitle = page.getByTestId('headline')
   }
 
-  async gotoCheckoutPage(index: number) {
+  // --- Action Methods ---
+
+  /**
+   * Navigates to the Checkout page from the Basket.
+   * Clicks the checkout button based on its position for mobile/desktop.
+   */
+  async gotoCheckoutPage() {
+    const index = isMobile(this.page) ? 1 : 0
+
     await this.checkoutButton.nth(index).waitFor({ state: 'visible' })
     await this.checkoutButton.nth(index).click()
   }
 
-  async assertProductIsInBasket(productBrand: string, productName: string) {
-    const basketProductBrandText = await this.productBrand.textContent()
-    const basketProductNameText = await this.productName.textContent()
-
-    await expect(this.basketProductCard).toBeVisible()
-    await expect(this.productImage).toBeVisible()
-    expect(basketProductBrandText).toEqual(productBrand)
-    expect(basketProductNameText).toEqual(productName)
-  }
-
-  async assertContinueButton() {
-    await expect(this.continueButton).toBeVisible()
-    await this.continueButton.click()
-    await this.page.waitForTimeout(500)
-    await this.page.waitForURL(ROUTES.homepageDefault)
-    const pageUrl = this.page.url()
-    expect(pageUrl).toContain(ROUTES.homepageDefault)
-  }
-
-  async assertLoginButton() {
-    await expect(this.loginButton).toBeVisible()
-    await this.loginButton.waitFor()
-    await this.loginButton.click()
-    await this.page.waitForLoadState('networkidle')
-  }
-
+  /**
+   * Adds a product to the basket using an RPC (Remote Procedure Call) to the backend.
+   * This bypasses UI interaction for faster test setup.
+   * It can be also used to add product to basket in case this is not possible via UI, e.g. to test sold-out product.
+   * @param variantId - The ID of the product variant to add.
+   * @param quantity - The quantity of the product to add.
+   */
   async addProductToBasket(variantId: number, quantity: number) {
     try {
       await this.rpc.call('addItemToBasket', {
@@ -141,13 +143,11 @@ export class BasketPage {
     }
   }
 
-  async assertProductNotInBasket() {
-    await expect(this.basketProductCard).not.toBeVisible()
-    await expect(this.productImage).not.toBeVisible()
-    await expect(this.loginButton).toBeVisible()
-    await expect(this.continueButton).toBeVisible()
-  }
-
+  /**
+   * Empties the basket for a specific item using an RPC (Remote Procedure Call) to the backend.
+   * This bypasses UI interaction for faster test cleanup.
+   * @param itemKey - The unique key of the item to remove from the basket.
+   */
   async emptyBasket(itemKey: string) {
     try {
       await this.rpc.call('removeItemFromBasket', {
@@ -159,129 +159,214 @@ export class BasketPage {
     }
   }
 
+  /**
+   * Removes the first visible item from the basket via UI interaction.
+   * Clicks the remove button and confirms the action.
+   */
   async removeItemFromBasket() {
     await this.removeItemButton.first().scrollIntoViewIfNeeded()
     await this.removeItemButton.first().click()
     await this.confirmRemoveItemButton.click()
   }
 
-  async assertBasketPriceSummary(
-    subtotalPrice: Locator,
-    finalPrice: Locator,
-    isMobile: boolean,
-    discount?: Locator,
-  ) {
-    let index: number
-    if (isMobile) {
-      index = 0
-    } else {
-      index = 1
+  /**
+   * Updates the quantity of a product in the basket via UI interaction.
+   * @param action - The action to perform: 'plus' to increase, 'minus' to decrease.
+   * @throws {Error} If an invalid action is provided.
+   */
+  async updateProductQuantity(action: string) {
+    const index = isMobile(this.page) ? 1 : 0
+    let targetButtonLocator
+
+    switch (action) {
+      case 'plus':
+        targetButtonLocator = this.buttonQuantityIncrease.nth(index)
+        break
+      case 'minus':
+        targetButtonLocator = this.buttonQuantityDecrease.nth(index)
+        break
+      default:
+        throw new Error(
+          `Invalid quantity update action: '${action}'. Expected 'plus' or 'minus'.`,
+        )
     }
-    const priceSubtotalLabel = await subtotalPrice.textContent()
-    const priceFinalLabel = await finalPrice.nth(index).textContent()
-    let discountValue: number
-    if (discount) {
-      const discountLabel = await discount.nth(index).textContent()
-      discountValue = parseFloat(
-        discountLabel?.replace(/[^0-9.-]+/g, '') ?? '0',
+
+    await targetButtonLocator.click()
+    await this.page.waitForLoadState('networkidle')
+  }
+
+  // --- Assertion Methods ---
+
+  /**
+   * Asserts that a specific product is visible within the basket.
+   * Checks for the presence of the product card, image, brand, and name.
+   * @param productBrand - The expected brand name of the product.
+   * @param productName - The expected name of the product.
+   */
+  async assertProductIsInBasket(productBrand: string, productName: string) {
+    const basketProductBrandText = await this.productBrand.textContent()
+    const basketProductNameText = await this.productName.textContent()
+
+    await expect(this.basketProductCard).toBeVisible()
+    await expect(this.productImage).toBeVisible()
+    expect(basketProductBrandText).toEqual(productBrand)
+    expect(basketProductNameText).toEqual(productName)
+  }
+
+  /**
+   * Asserts that the "Continue Shopping" button is visible and functional.
+   * Clicks the button and verifies navigation to the homepage.
+   */
+  async assertContinueButton() {
+    await expect(this.continueButton).toBeVisible()
+    await this.continueButton.click()
+    await this.page.waitForTimeout(500)
+    await this.page.waitForURL(ROUTES.homepageDefault)
+
+    const pageUrl = this.page.url()
+
+    expect(pageUrl).toContain(ROUTES.homepageDefault)
+  }
+
+  /**
+   * Asserts that the "Login" button is visible within the basket context and clicks it.
+   * Verifies that the login process is initiated.
+   */
+  async assertLoginButton() {
+    await expect(this.loginButton).toBeVisible()
+    await this.loginButton.waitFor()
+    await this.loginButton.click()
+    await this.page.waitForLoadState('networkidle')
+  }
+
+  /**
+   * Asserts that the basket is empty (no product cards or images visible).
+   * Also asserts that the Login and Continue Shopping buttons are visible, as expected in an empty state.
+   */
+  async assertProductNotInBasket() {
+    await expect(this.basketProductCard).not.toBeVisible()
+    await expect(this.productImage).not.toBeVisible()
+    await expect(this.loginButton).toBeVisible()
+    await expect(this.continueButton).toBeVisible()
+  }
+
+  /**
+   * Asserts the correctness of the basket's price summary.
+   * Compares the final price against the subtotal and an optional discount.
+   * @param discountType - Optional: 'sale' or 'promotion' if a discount is expected.
+   * @throws {Error} If an invalid discountType is provided.
+   */
+  async assertBasketPriceSummary(discountType?: 'sale' | 'promotion') {
+    const extractPrice = async (locator: Locator): Promise<number> => {
+      const text = await locator.textContent()
+      return parseFloat(text?.replace(NON_NUMERIC_PRICE_CHARS_REGEX, '') ?? '0')
+    }
+
+    const targetSubtotalPriceLocator = isMobile(this.page)
+      ? this.priceSubtotalMobile
+      : this.priceSubtotal
+
+    const priceSubtotalValue = await extractPrice(targetSubtotalPriceLocator)
+    const priceFinalValue = await extractPrice(this.priceFinal.first())
+
+    let discountValue = 0
+
+    if (discountType === 'sale') {
+      discountValue = await extractPrice(this.discountSale.first())
+    } else if (discountType === 'promotion') {
+      discountValue = await extractPrice(this.discountPromotion.first())
+    } else if (discountType !== undefined) {
+      throw new Error(
+        `Invalid discountType: '${discountType}'. Expected 'sale', 'promotion', or undefined.`,
       )
-    } else {
-      discountValue = 0
     }
 
-    const priceSubtotalValue = parseFloat(
-      priceSubtotalLabel?.replace(/[^0-9.-]+/g, '') ?? '0',
+    expect(priceFinalValue).toEqual(
+      priceSubtotalValue - Math.abs(discountValue),
     )
-
-    const priceFinalValue = parseFloat(
-      priceFinalLabel?.replace(/[^0-9.-]+/g, '') ?? '0',
-    )
-
-    expect(priceFinalValue).toEqual(priceSubtotalValue + discountValue)
     expect(priceSubtotalValue).toEqual(
       priceFinalValue + Math.abs(discountValue),
     )
   }
 
+  /**
+   * Asserts the opacity of the product image for sold-out items in the basket.
+   * Used to verify visual state of unavailable products.
+   * @param opacity - The expected opacity value as a string (e.g., '0.5').
+   */
   async assertSoldOutImageOpacity(opacity: string) {
     const productImageOpacity = await this.page.$eval(
       '[data-testid="unavailable-product-list"] >> [data-testid="product-image"]',
       (el) => String(window.getComputedStyle(el).opacity).trim(),
     )
+
     expect(productImageOpacity).toBe(opacity)
   }
 
+  /**
+   * Asserts the displayed quantity value in the quantity selector.
+   * @param value - The expected quantity value as a string.
+   */
   async assertQuantityValue(value: string) {
-    let index: number
-    if (isMobile(this.page)) {
-      index = 1
-    } else {
-      index = 0
-    }
+    const index = isMobile(this.page) ? 1 : 0
+
     await expect(this.quantityValue.nth(index)).toHaveValue(value)
   }
 
-  async updateProductQuantity(action: string) {
-    let index: number
-    if (isMobile(this.page)) {
-      index = 1
-    } else {
-      index = 0
-    }
-    if (action === 'plus') {
-      await this.buttonQuantityIncrease.nth(index).click()
-    }
-    if (action === 'minus') {
-      await this.buttonQuantityDecrease.nth(index).click()
-    }
-    await this.page.waitForLoadState('networkidle')
-  }
-
+  /**
+   * Asserts the enabled/disabled state of the quantity increase or decrease buttons.
+   * @param buttonType - The type of button to check: 'plus' for increase, 'minus' for decrease.
+   * @param enabled - True if the button is expected to be enabled, false if disabled.
+   * @throws {Error} If an invalid buttonType is provided.
+   */
   async assertQuantityButtonState(buttonType: string, enabled: boolean) {
-    let index: number
-    if (isMobile(this.page)) {
-      index = 1
-    } else {
-      index = 0
+    const index = isMobile(this.page) ? 1 : 0
+
+    let targetButtonLocator
+
+    switch (buttonType) {
+      case 'plus':
+        targetButtonLocator = this.buttonQuantityIncrease.nth(index)
+        break
+      case 'minus':
+        targetButtonLocator = this.buttonQuantityDecrease.nth(index)
+        break
+      default:
+        throw new Error(
+          `Invalid buttonType: ${buttonType}. Expected 'plus' or 'minus'.`,
+        )
     }
-    if (buttonType === 'plus') {
-      await expect(this.buttonQuantityIncrease.nth(index)).toBeEnabled({
-        enabled,
-      })
-    }
-    if (buttonType === 'minus') {
-      await expect(this.buttonQuantityDecrease.nth(index)).toBeEnabled({
-        enabled,
-      })
-    }
+
+    await expect(targetButtonLocator).toBeEnabled({ enabled })
   }
 
+  /**
+   * Asserts the visibility of the initial (strikethrough) product price.
+   * @param visible - True if the price is expected to be visible, false otherwise.
+   */
   async assertInitialPriceVisibility(visible: boolean) {
-    if (isMobile(this.page)) {
-      await expect(this.initialProductPrice.nth(1)).toBeVisible({
-        visible,
-      })
-    } else {
-      await expect(this.initialProductPrice.nth(0)).toBeVisible({
-        visible,
-      })
-    }
+    const targetPriceElement = isMobile(this.page)
+      ? this.initialProductPrice.nth(1)
+      : this.initialProductPrice.nth(0)
+
+    await expect(targetPriceElement).toBeVisible({ visible })
   }
 
+  /**
+   * Asserts the final product price displayed in the basket.
+   * @param priceValue - The expected price value (as a string, e.g., "49.99 €").
+   * @param containsValue - True if the element's text is expected to contain `priceValue`, false if not.
+   */
   async assertFinalProductPrice(priceValue: string, containsValue: boolean) {
-    const shouldContain = containsValue
-    if (shouldContain) {
-      if (isMobile(this.page)) {
-        await expect(this.productPrice.nth(1)).toContainText(priceValue)
-      } else {
-        await expect(this.productPrice.nth(0)).toContainText(priceValue)
-      }
-    } else {
-      if (isMobile(this.page)) {
-        await expect(this.productPrice.nth(1)).not.toHaveText(priceValue)
-      } else {
-        await expect(this.productPrice.nth(0)).not.toHaveText(priceValue)
-      }
+    const targetPriceElement = isMobile(this.page)
+      ? this.productPrice.nth(1)
+      : this.productPrice.nth(0)
+
+    if (!containsValue) {
+      await expect(targetPriceElement).not.toHaveText(priceValue)
+      return
     }
+
+    await expect(targetPriceElement).toContainText(priceValue)
   }
 }

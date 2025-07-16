@@ -1,12 +1,14 @@
-import { expect, test } from '../fixtures/fixtures'
-import { isMobile, verifySeoMetaTags } from '../support/utils'
+import { test } from '../../fixtures/fixtures'
+import { expect } from '@playwright/test'
+import { isMobile, verifySeoMetaTags } from '../../support/utils'
 import {
   TEST_USERS,
   LOGIN_REGISTRATION,
   SIGNIN_URL,
   USER_ACCOUNT,
   ROUTES,
-} from '../support/constants'
+  TEST_PASSWORD_RESET_HASH,
+} from '../../support/constants'
 
 /**
  * @file Contains end-to-end tests related to user login and registration functionality.
@@ -17,7 +19,6 @@ import {
  * It navigates to the homepage, waits for the network to be idle,
  * and closes the country detector modal if present.
  */
-
 test.beforeEach(async ({ homePage, page, countryDetector }) => {
   await homePage.visitPage()
   await page.waitForLoadState('networkidle')
@@ -67,6 +68,7 @@ test('C2130648 C2171377 Verify User login and log out', async ({
       await header.headerLoginButton.press('Space')
       await signinPage.userPopoverLogoutButton.click()
     }
+
     await page.waitForLoadState('domcontentloaded')
   })
 })
@@ -113,6 +115,7 @@ test('C2130649 Verify User login with wrong credentials', async ({
 test('C2171373 Verify User registration with already registered user account', async ({
   signinPage,
   header,
+  page,
 }) => {
   await test.step('Open Signin page and switch to Register tab', async () => {
     await header.headerLoginButton.waitFor()
@@ -134,8 +137,9 @@ test('C2171373 Verify User registration with already registered user account', a
   await test.step('Assert error banner is visible and user is not logged in', async () => {
     await signinPage.registerErrorMessageContainer.waitFor()
     await expect(signinPage.registerErrorMessageContainer).toBeVisible()
-    await header.headerLoginButton.click()
-    await signinPage.assertLoginButtonIsVisible()
+    await page.waitForLoadState('networkidle')
+    await signinPage.loginTab.click()
+    await expect(signinPage.loginButton).toBeVisible()
   })
 })
 
@@ -199,17 +203,20 @@ test('C2171379 Verify User login reset password flow', async ({
     await expect(signinPage.resetPasswordHeadline).toBeVisible()
     await expect(signinPage.resetPasswordEmailInput).toHaveValue('')
   })
+
   await test.step('Click Get Reset Link button while e-mail address input is empty', async () => {
     await signinPage.resetPasswordGetResetLinkButton.click()
     await expect(signinPage.resetPasswordEmailInput).toBeFocused()
     await expect(signinPage.resetPasswordHeadline).toBeVisible()
   })
+
   await test.step('Click Back to Login button and assert Flyout is closed', async () => {
     await signinPage.resetPasswordBackToLoginButton.waitFor()
     await signinPage.resetPasswordBackToLoginButton.focus()
     await signinPage.resetPasswordBackToLoginButton.click()
     await expect(signinPage.resetPasswordHeadline).not.toBeVisible()
   })
+
   await test.step('Enter incorrect format e-mail, open the Flyout and assert e-mail input is empty', async () => {
     await signinPage.emailInput.waitFor()
     await signinPage.emailInput.focus()
@@ -218,6 +225,7 @@ test('C2171379 Verify User login reset password flow', async ({
     await signinPage.resetPasswordHeadline.waitFor()
     await expect(signinPage.resetPasswordEmailInput).toHaveValue('')
   })
+
   await test.step('Enter correct format non-existing e-mail and click Get Reset Link', async () => {
     await signinPage.resetPasswordEmailInput.clear()
     await signinPage.resetPasswordEmailInput.focus()
@@ -226,6 +234,7 @@ test('C2171379 Verify User login reset password flow', async ({
     await page.waitForTimeout(500)
     await expect(signinPage.forgotPasswordErrorMessageContainer).toBeVisible()
   })
+
   if (testInfo.project.name === 'firefox') {
     await signinPage.closePasswordResetFlyoutButton.click()
     console.warn(
@@ -245,18 +254,20 @@ test('C2171379 Verify User login reset password flow', async ({
       await expect(signinPage.resetPasswordHeadline).not.toBeVisible()
     })
   }
+
   await test.step('Open the Flyout and assert Close button', async () => {
     if (isMobile(page)) {
       console.warn(
         'Skipping assert Flyout close button because it is not used on mobile devices',
       )
-    } else {
-      await signinPage.resetPasswordButton.click()
-      await signinPage.closePasswordResetFlyoutButton.waitFor()
-      await signinPage.closePasswordResetFlyoutButton.click()
-      await page.waitForTimeout(500)
-      await expect(signinPage.resetPasswordHeadline).not.toBeVisible()
+      return
     }
+
+    await signinPage.resetPasswordButton.click()
+    await signinPage.closePasswordResetFlyoutButton.waitFor()
+    await signinPage.closePasswordResetFlyoutButton.click()
+    await page.waitForTimeout(500)
+    await expect(signinPage.resetPasswordHeadline).not.toBeVisible()
   })
 })
 
@@ -264,8 +275,7 @@ test('C2171379 Verify User login reset password flow', async ({
  * Verifies the process of setting a new password, including
  * handling incorrectly formatted passwords and successfully submitting
  * a correctly formatted password (even though the test hash might lead to an error).
- * Any hash can be used for the testing purposes to verify that the new password flyout loads correctly,
- * so '/signin?hash=testhash' is used.
+ * Any hash can be used for the testing purposes to verify that the new password flyout loads correctly.
  *
  * Prerequisites for this test:
  * - The password for this user must be defined via `TEST_USER_PASSWORD` environment variable.
@@ -278,7 +288,7 @@ test('C2171786 Verify setting the new password', async ({
   countryDetector,
 }) => {
   await test.step('Open new password flyout and enter incorrectly formatted password', async () => {
-    await page.goto('/signin?hash=testhash')
+    await page.goto(ROUTES.signin + TEST_PASSWORD_RESET_HASH)
     await page.waitForTimeout(500)
     await countryDetector.closeModal()
     await signinPage.newPasswordInput.waitFor()
@@ -286,6 +296,7 @@ test('C2171786 Verify setting the new password', async ({
     await signinPage.newPasswordInput.fill('test')
     await expect(signinPage.validationErrorText).toBeVisible()
   })
+
   await test.step('Enter correctly formatted password', async () => {
     // Error message is expected because the test hash is used.
     await signinPage.newPasswordInput.clear()

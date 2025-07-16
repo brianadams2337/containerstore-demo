@@ -1,6 +1,7 @@
-import { expect, test } from '../fixtures/fixtures'
-import { getUserForBrowser, isMobile } from '../support/utils'
-import { ROUTES } from '../support/constants'
+import { test } from '../../fixtures/fixtures'
+import { expect } from '@playwright/test'
+import { getUserForBrowser, isMobile } from '../../support/utils'
+import { ROUTES } from '../../support/constants'
 
 /**
  * @file Contains end-to-end tests for verifying the order overview page during the checkout process.
@@ -24,6 +25,7 @@ test.beforeEach(
   async ({ accountPage, homePage, page, countryDetector }, testInfo) => {
     const projectName = testInfo.project.name
     const { email, password } = getUserForBrowser(projectName)
+
     await homePage.visitPage()
     await page.waitForLoadState('networkidle')
     await countryDetector.closeModal()
@@ -56,6 +58,7 @@ test('C2132536 C2144177 Verify Checkout order overview', async ({
     } else {
       await mainNavigation.navigateToPlpMainCategory()
     }
+
     await breadcrumb.breadcrumbCategoryActive.waitFor()
     await productListingPage.productImage.first().click()
     await productDetailPage.variantPicker.waitFor()
@@ -65,6 +68,7 @@ test('C2132536 C2144177 Verify Checkout order overview', async ({
   })
   await test.step('Visit Checkout page and check Items', async () => {
     const pageUrl = page.url()
+
     expect(pageUrl).toContain(ROUTES.checkout)
     await expect(async () => {
       await checkoutPage.basketContainer.waitFor()
@@ -73,15 +77,19 @@ test('C2132536 C2144177 Verify Checkout order overview', async ({
       await expect(checkoutPage.deliveryEstimate).toBeVisible()
     }).toPass()
   })
+
   await test.step('Verify simplified Footer in Checkout', async () => {
     await expect(footer.footerCopyright).toBeVisible()
+
     const count = await footer.simpleFooterLink.count()
+
     for (let i = 0; i < count; i++) {
       const link = footer.simpleFooterLink.nth(i)
       const href = await link.getAttribute('href')
       if (href) {
         try {
           const response = await page.request.head(href)
+
           expect(response.status()).toBeLessThan(400)
         } catch (error) {
           console.error(`Error checking link ${href}:`, error)

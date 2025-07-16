@@ -1,5 +1,6 @@
-import { expect, test } from '../fixtures/fixtures'
-import { ROUTES } from '../support/constants'
+import { test } from '../../fixtures/fixtures'
+import { expect } from '@playwright/test'
+import { ROUTES, TEST_PASSWORD_RESET_HASH } from '../../support/constants'
 
 /**
  * @file Contains end-to-end tests for the Country Detector modal, verifying
@@ -50,8 +51,8 @@ test.describe('Test from Berlin against US shop', () => {
       await page.waitForTimeout(500)
 
       const pageUrl = page.url()
-      expect(pageUrl).toContain(ROUTES.homepageDefault)
 
+      expect(pageUrl).toContain(ROUTES.homepageDefault)
       await expect(countryDetector.switchShopButton).not.toBeVisible()
     }).toPass()
   })
@@ -65,8 +66,8 @@ test.describe('Test from Berlin against US shop', () => {
       await countryDetector.stayInShopButton.click()
 
       const pageUrl = page.url()
-      expect(pageUrl).toContain(ROUTES.homepage1)
 
+      expect(pageUrl).toContain(ROUTES.homepage1)
       await expect(countryDetector.stayInShopButton).not.toBeVisible()
     }).toPass()
   })
@@ -75,16 +76,19 @@ test.describe('Test from Berlin against US shop', () => {
     countryDetector,
     page,
   }) => {
-    // and hash parameter value can be used for testing purposes, to open the reset password flyout
-    await page.goto('/en/signin?hash=hash', { waitUntil: 'load' })
+    // any hash parameter value can be used for testing purposes, to open the reset password flyout
+    await page.goto(
+      ROUTES.homepage1 + ROUTES.signin + TEST_PASSWORD_RESET_HASH,
+      { waitUntil: 'load' },
+    )
     await countryDetector.switchShopButton.first().waitFor()
     await countryDetector.switchShopButton.first().click()
     await page.waitForLoadState('networkidle')
     await page.waitForTimeout(500)
 
     const pageUrl = page.url()
-    expect(pageUrl).toContain(ROUTES.homepageDefault)
 
+    expect(pageUrl).toContain(ROUTES.homepageDefault)
     await expect(countryDetector.switchShopButton).not.toBeVisible()
   })
 })

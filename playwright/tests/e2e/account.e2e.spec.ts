@@ -1,22 +1,33 @@
-import { expect, test } from '../fixtures/fixtures'
-import { getUserForBrowser } from '../support/utils'
-import { USER_ACCOUNT, TEST_USERS } from '../support/constants'
+import { test } from '../../fixtures/fixtures'
+import { expect } from '@playwright/test'
+import { getUserForBrowser } from '../../support/utils'
+import { USER_ACCOUNT, TEST_USERS } from '../../support/constants'
 
-/** @file Contains end-to-end tests for the user account page. */
+/**
+ * @file Contains end-to-end tests for the user account area functionality.
+ * This suite verifies account page navigation, user data updates, and password management.
+ */
 
+/**
+ * Global setup hook for the Account E2E test suite.
+ * Performs user authentication before each test to ensure a logged-in state.
+ * To avoid conflicts in parallel execution, each browser project is assigned a dedicated test user.
+ * Check `/playwright/support/utils.ts` to get the details on how the test users are defined.
+ *
+ * @description
+ * The login process involves visiting the homepage, closing any country detector modals,
+ * navigating to the login form, filling in credentials obtained from environment variables
+ * (mapped per browser project), submitting the form, dismissing the toast message,
+ * and finally opening the user account popover/menu.
+ */
 test.beforeEach(
   async (
     { signinPage, page, countryDetector, header, toastMessage, homePage },
     testInfo,
   ) => {
     const projectName = testInfo.project.name
-    /**
-     * User authentication is done before executing each test.
-     * This is the prerequisite to run all the tests from Account end-to-end test suite.
-     * To avoid possible conflicts in parallel tests execution, each browser has its dedicated test user.
-     * Check `/playwright/support/utils.ts` to get the details on how the test users are defined.
-     */
     const { email, password } = getUserForBrowser(projectName)
+
     await homePage.visitPage()
     await countryDetector.closeModal()
     await header.headerLoginButton.click()
@@ -31,30 +42,40 @@ test.beforeEach(
   },
 )
 
+/**
+ * Verifies that the Orders tab is loaded by default upon navigating to the Account area.
+ * Verifies that the Orders tab has the 'aria-current' attribute set to 'page' and that the URL contains the orders route.
+ * It then proceeds to verify the loading of the Subscriptions and Profile pages by clicking their respective tabs.
+ */
 test('C2188614 C2188628 Verify Account area landing page', async ({
   accountPage,
   page,
 }) => {
   await test.step('Verify Orders tab is loaded by default', async () => {
     await accountPage.accountTabOrders.waitFor()
+
     await expect(accountPage.accountTabOrders).toHaveAttribute(
       'aria-current',
       'page',
     )
     expect(page.url()).toContain(USER_ACCOUNT.routeOrders)
   })
+
   await test.step('Verify Subscription page is loaded', async () => {
     await accountPage.accountTabSubscriptions.click()
     await page.waitForLoadState('domcontentloaded')
+
     await expect(accountPage.accountTabSubscriptions).toHaveAttribute(
       'aria-current',
       'page',
     )
     expect(page.url()).toContain(USER_ACCOUNT.routeSubscriptions)
   })
+
   await test.step('Verify Profile page is loaded', async () => {
     await accountPage.accountTabProfile.click()
     await page.waitForLoadState('domcontentloaded')
+
     await expect(accountPage.accountTabProfile).toHaveAttribute(
       'aria-current',
       'page',
@@ -67,6 +88,11 @@ test('C2188614 C2188628 Verify Account area landing page', async ({
   })
 })
 
+/**
+ * Verifies the process of updating user personal data with both
+ * correct and incorrect input formats for the birth date, asserting
+ * success messages or validation errors accordingly.
+ */
 test('C2190952 Verify Account user data update', async ({
   accountPage,
   toastMessage,
@@ -96,6 +122,11 @@ test('C2190952 Verify Account user data update', async ({
   })
 })
 
+/**
+ * Verifies the password update process, including successful updates
+ * with correct credentials and the display of error messages for incorrect
+ * current passwords.
+ */
 test('C2188629 Verify Account password update', async ({
   accountPage,
   toastMessage,

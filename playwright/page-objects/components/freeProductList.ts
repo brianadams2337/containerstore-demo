@@ -1,9 +1,17 @@
 import type { Locator, Page } from '@playwright/test'
 
+/**
+ * Page Object Model for the Free Product List component.
+ * Encapsulates locators for a list of free products that can be added (e.g., during a promotion).
+ */
 export class FreeProductList {
-  readonly page: Page
+  private readonly page: Page
   readonly addFreeProductButton: Locator
 
+  /**
+   * Initializes the FreeProductList Page Object.
+   * @param page - The Playwright Page object.
+   */
   constructor(page: Page) {
     this.page = page
     this.addFreeProductButton = page.locator(

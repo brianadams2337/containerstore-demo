@@ -1,30 +1,26 @@
 import type { Locator, Page } from '@playwright/test'
-import { expect } from '../../fixtures/fixtures'
 
+/**
+ * Page Object Model for the website Footer component.
+ * Encapsulates locators and methods for interacting with and asserting states of
+ * the global footer, including its logo, copyright, and various links.
+ */
 export class Footer {
-  readonly page: Page
+  private readonly page: Page
   readonly footerWrapper: Locator
   readonly footerLogo: Locator
   readonly footerCopyright: Locator
   readonly simpleFooterLink: Locator
 
+  /**
+   * Initializes the Footer Page Object.
+   * @param page - The Playwright Page object.
+   */
   constructor(page: Page) {
     this.page = page
     this.footerWrapper = page.getByTestId('footer')
     this.footerLogo = page.getByTestId('footer-logo')
     this.footerCopyright = page.getByTestId('footer-copyright')
     this.simpleFooterLink = page.getByTestId('simple-footer-link')
-  }
-
-  async verifyFooterLinks(linksGroup: { [key: string]: string }) {
-    await expect(async () => {
-      for (const linkKey in linksGroup) {
-        const typedLinkKey = linkKey as keyof typeof linksGroup
-        const linkUrl = linksGroup[typedLinkKey]
-
-        const linkElement = await this.page.$(`a[href="${linkUrl}"]`)
-        expect(linkElement).toBeTruthy()
-      }
-    }).toPass()
   }
 }

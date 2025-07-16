@@ -1,6 +1,7 @@
-# Storefront Boilerplate / End-to-End Testing with Playwright
+# Storefront Application / End-to-End Testing with Playwright
 
 - [Official Playwright Documentation](https://playwright.dev/docs/intro)
+- [SCAYLE Storefront Application end-to-end testing documentation](https://scayle.dev/en/storefront-guide/developer-guide/testing/end-to-end-testing)
 
 ## In a nutshell
 

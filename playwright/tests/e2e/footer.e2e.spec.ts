@@ -1,5 +1,6 @@
-import { expect, test } from '../fixtures/fixtures'
-import { ROUTES } from '../support/constants'
+import { test } from '../../fixtures/fixtures'
+import { expect } from '@playwright/test'
+import { ROUTES } from '../../support/constants'
 
 /**
  * @file Contains end-to-end tests for the website footer, specifically
@@ -28,12 +29,17 @@ test('C2143605 Verify footer logo', async ({
   await test.step('Verify logo click from Homepage', async () => {
     await expect(async () => {
       await expect(footer.footerLogo).toBeVisible()
+
       const pageUrl = page.url()
+
       await footer.footerLogo.click()
       expect(page.url()).toEqual(pageUrl)
       await page.waitForTimeout(1000)
+
       await expect(header.mainHeader).toBeInViewport()
+
       const scrollPosition = await page.evaluate(() => window.scrollY)
+
       expect(scrollPosition).toBe(0)
     }).toPass()
   })

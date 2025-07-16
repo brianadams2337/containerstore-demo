@@ -27,9 +27,9 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test:e2e:happy-path": "playwright test ./tests/e2e-happy-path.spec.ts",
+    "test:e2e:happy-path": "playwright test ./tests/happy-path.e2e.spec.ts",
     "test:e2e:lighthouse": "playwright test ./tests/lighthouse/*.ts --project chromium",
-    "test:e2e": "playwright test ./tests/e2e*.spec.ts",
+    "test:e2e": "playwright test ./tests/e2e/*.e2e.spec.ts",
     "test:e2e:ui": "playwright test --ui"
   }
 }
