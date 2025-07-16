@@ -519,6 +519,8 @@ export default defineNuxtConfig({
     // Use parcel instead of chokidar to avoid watcher issues
     // https://github.com/nuxt/nuxt/issues/30481
     watcher: 'parcel',
+    // @scayle/storefront-nuxt still expects the old cached data behavior. Until this is updated, we need to disable it to maintain the existing behavior.
+    granularCachedData: false,
   },
 
   // https://i18n.nuxtjs.org/docs/getting-started
