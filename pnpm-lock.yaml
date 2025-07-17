@@ -225,7 +225,7 @@ importers:
         specifier: 2.5.1
         version: 2.5.1
       '@scayle/changelog-formatter':
-        specifier: ^1.1.0
+        specifier: 1.1.0
         version: 1.1.0
       '@scayle/eslint-auto-explicit-import':
         specifier: 0.2.0
