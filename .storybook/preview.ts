@@ -17,6 +17,30 @@ const preview: Preview = {
       // This is needed to ignore errors for the interaction addon. If not set the addon will shown an error for missing assertions in the interaction.
       dangerouslyIgnoreUnhandledErrors: true,
     },
+    options: {
+      // https://storybook.js.org/docs/writing-stories/naming-components-and-hierarchy#sorting-stories
+      storySort: (a, b) => {
+        // If both stories have the same title, they are equal
+        if (a.title === b.title) {
+          return 0
+        }
+
+        // Check if either story title contains "Base Components/"
+        const aIsBaseComponent = a.title.includes('Base Components/')
+        const bIsBaseComponent = b.title.includes('Base Components/')
+
+        // If only one is a base component, prioritize it
+        if (aIsBaseComponent && !bIsBaseComponent) {
+          return -1
+        }
+        if (!aIsBaseComponent && bIsBaseComponent) {
+          return 1
+        }
+
+        // For all other cases, use default sorting
+        return a.title.localeCompare(b.title)
+      },
+    },
   },
   tags: ['autodocs'],
   decorators: [
