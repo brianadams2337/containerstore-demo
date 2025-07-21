@@ -1,13 +1,12 @@
 import type { Locator, Page } from '@playwright/test'
+import { Base } from '../base/base'
 
 /**
  * Page Object Model for the Main Navigation component for desktop browsers.
  * Encapsulates locators and methods for interacting with the main navigation links,
  * opening the desktop flyout, and navigating to Product Listing Pages (PLPs).
  */
-export class MainNavigation {
-  private readonly page: Page
-
+export class MainNavigation extends Base {
   // --- Main Navigation Locators ---
   readonly desktopNavigationFlyout: Locator
   readonly navigationItem: Locator
@@ -18,7 +17,8 @@ export class MainNavigation {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
+
     this.desktopNavigationFlyout = page.getByTestId('desktop-navigation-flyout')
     this.navigationItem = page.getByTestId('navigation-item')
     this.navigationLinkMain = page.getByTestId('nav-link-main')

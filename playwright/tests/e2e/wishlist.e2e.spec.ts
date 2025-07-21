@@ -1,6 +1,6 @@
 import { test } from '../../fixtures/fixtures'
 import { expect } from '@playwright/test'
-import { TEST_USERS, WISHLIST_TEST_DATA } from '../../support/constants'
+import { TEST_USERS, WISHLIST_TEST_DATA, ROUTES } from '../../support/constants'
 import { verifySeoMetaTags, isMobile } from '../../support/utils'
 
 /**
@@ -8,8 +8,8 @@ import { verifySeoMetaTags, isMobile } from '../../support/utils'
  * both the empty and non-empty states, as well as SEO data and item removal.
  */
 
-test.beforeEach(async ({ wishlistPage, baseURL, countryDetector }) => {
-  await wishlistPage.visitWishlistPage('/wishlist', baseURL as string)
+test.beforeEach(async ({ wishlistPage, page, countryDetector }) => {
+  await wishlistPage.navigate(page, ROUTES.wishlist, 'networkidle')
   await countryDetector.closeModal()
 })
 
@@ -71,7 +71,6 @@ test('C2141222 C2183076 Verify Wishlist non-empty state', async ({
   header,
   page,
   countryDetector,
-  homePage,
   mobileNavigation,
   mainNavigation,
   breadcrumb,
@@ -79,7 +78,7 @@ test('C2141222 C2183076 Verify Wishlist non-empty state', async ({
 }) => {
   await test.step('Add item to wishlist and verify product card', async () => {
     await expect(async () => {
-      await homePage.visitPage()
+      await wishlistPage.navigate(page, '/', 'networkidle')
       await page.waitForLoadState('networkidle')
       await countryDetector.closeModal()
       if (isMobile(page)) {
@@ -127,7 +126,6 @@ test('C2228716 Verify Wishlist product click redirects to PDP', async ({
   header,
   page,
   countryDetector,
-  homePage,
   mobileNavigation,
   mainNavigation,
   breadcrumb,
@@ -136,7 +134,7 @@ test('C2228716 Verify Wishlist product click redirects to PDP', async ({
 }) => {
   await test.step('Add item to wishlist', async () => {
     await expect(async () => {
-      await homePage.visitPage()
+      await wishlistPage.navigate(page, '/', 'networkidle')
       await page.waitForLoadState('networkidle')
       await countryDetector.closeModal()
       if (isMobile(page)) {

@@ -1,15 +1,13 @@
 import type { Locator, Page } from '@playwright/test'
-import { isMobile } from '../../support/utils'
 import { expect } from '@playwright/test'
+import { Base } from '../base/base'
 
 /**
  * Page Object Model for the Store Locator functionality.
  * Encapsulates locators and methods for navigating to the store locator page,
  * searching for locations, and interacting with the list of stores.
  */
-export class StoreLocator {
-  private readonly page: Page
-
+export class StoreLocator extends Base {
   // --- Store Locator Navigation Links ---
   readonly storeLocatorLink: Locator
   readonly storeLocatorLinkMobile: Locator
@@ -27,7 +25,8 @@ export class StoreLocator {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
+
     this.storeLocatorLink = page.getByTestId('store-location-link')
     this.storeLocatorLinkMobile = page.getByTestId('store-location-link-mobile')
     this.locationTextInput = page.getByTestId('location-text-input')
@@ -43,13 +42,14 @@ export class StoreLocator {
    * Chooses between mobile and desktop links based on the current device.
    */
   async openLocationPage() {
-    if (isMobile(this.page)) {
+    if (this.isMobileViewport) {
       await this.storeLocatorLinkMobile.waitFor()
       await this.storeLocatorLinkMobile.scrollIntoViewIfNeeded()
       await this.storeLocatorLinkMobile.click()
     } else {
       await this.storeLocatorLink.click()
     }
+
     await this.page.waitForLoadState('networkidle')
   }
 

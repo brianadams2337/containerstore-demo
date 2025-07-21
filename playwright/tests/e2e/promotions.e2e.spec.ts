@@ -10,8 +10,8 @@ import { expect } from '@playwright/test'
  * Once when promotions are set and activated, the tests can be activated again.
  */
 
-test.beforeEach(async ({ homePage, countryDetector }) => {
-  await homePage.visitPage()
+test.beforeEach(async ({ homePage, countryDetector, page }) => {
+  await homePage.navigate(page, '/', 'networkidle')
   await countryDetector.closeModal()
 })
 

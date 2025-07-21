@@ -28,7 +28,7 @@ test.beforeEach(
     const projectName = testInfo.project.name
     const { email, password } = getUserForBrowser(projectName)
 
-    await homePage.visitPage()
+    await homePage.navigate(page, '/', 'networkidle')
     await countryDetector.closeModal()
     await header.headerLoginButton.click()
     await signinPage.h1.waitFor()

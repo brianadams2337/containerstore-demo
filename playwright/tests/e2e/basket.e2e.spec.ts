@@ -2,8 +2,8 @@ import { test } from '../../fixtures/fixtures'
 import { expect } from '@playwright/test'
 import {
   getUserForBrowser,
-  isMobile,
   verifySeoMetaTags,
+  navigateToPlp,
 } from '../../support/utils'
 import { BASKET_TEST_DATA, ROUTES } from '../../support/constants'
 
@@ -31,7 +31,6 @@ import { BASKET_TEST_DATA, ROUTES } from '../../support/constants'
  * - The password for all test users is the same, and must be defined via `TEST_USER_PASSWORD` environment variable.
  */
 test('C2132186 C2132187 Verify Basket empty state as a guest and logged in user', async ({
-  homePage,
   header,
   basketPage,
   signinPage,
@@ -39,7 +38,7 @@ test('C2132186 C2132187 Verify Basket empty state as a guest and logged in user'
   countryDetector,
 }, testInfo) => {
   await test.step('Verify guest user', async () => {
-    await homePage.visitPage()
+    await basketPage.navigate(page, '/', 'networkidle')
     await countryDetector.closeModal()
     await header.headerBasketButton.click()
     await page.waitForLoadState('domcontentloaded')
@@ -90,7 +89,6 @@ test('C2132186 C2132187 Verify Basket empty state as a guest and logged in user'
  * This test is using the same dedicated test users per browser, defined via environment variables.
  */
 test('C2132198 C2162476 Verify add to Basket', async ({
-  homePage,
   header,
   basketPage,
   countryDetector,
@@ -103,13 +101,10 @@ test('C2132198 C2162476 Verify add to Basket', async ({
   breadcrumb,
 }, testInfo) => {
   await test.step('Add product to Basket, log in and assert the product is still in Basket', async () => {
-    await homePage.visitPage()
+    await basketPage.navigate(page, '/', 'networkidle')
     await countryDetector.closeModal()
-    if (isMobile(page)) {
-      await mobileNavigation.openPlpMobile()
-    } else {
-      await mainNavigation.navigateToPlpMainCategory()
-    }
+
+    await navigateToPlp(page, mobileNavigation, mainNavigation)
     await breadcrumb.breadcrumbCategoryActive.waitFor()
     await productListingPage.productImage.first().click()
     await productDetailPage.variantPicker.waitFor()

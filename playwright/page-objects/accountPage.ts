@@ -1,13 +1,13 @@
 import type { Locator, Page } from '@playwright/test'
 import type { RPC } from './components/rpc'
+import { Base } from './base/base'
 
 /**
  * Page Object Model for the User Account Area.
  * Encapsulates locators and methods for interacting with and asserting states on user profile,
  * personal information, and password management sections within the account area.
  */
-export class AccountPage {
-  private readonly page: Page
+export class AccountPage extends Base {
   private readonly rpc: RPC
 
   // --- Profile & Personal Information Locators ---
@@ -44,7 +44,8 @@ export class AccountPage {
    * @param rpc - The RPC (Remote Procedure Call) Page Object for direct API interactions.
    */
   constructor(page: Page, rpc: RPC) {
-    this.page = page
+    super(page)
+
     this.rpc = rpc
     this.userFirstName = page.getByTestId('user-first-name')
     this.userLastName = page.getByTestId('user-last-name')

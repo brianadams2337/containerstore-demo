@@ -10,6 +10,10 @@ import {
   verifySeoMetaTags,
   navigationItemLabel,
   formatCategoryUrlSegment,
+  assertFilterAndSortButtons,
+  assertFilterCounter,
+  navigateToPlp,
+  applySorting,
 } from '../../support/utils'
 
 /**
@@ -26,7 +30,7 @@ test.beforeEach(
     mobileNavigation,
     mainNavigation,
   }) => {
-    await homePage.visitPage()
+    await homePage.navigate(page, '/', 'networkidle')
     await page.waitForLoadState('networkidle')
     await countryDetector.closeModal()
 
@@ -51,13 +55,7 @@ test('C2130723: Verify PLP standard components', async ({
   filters,
   sorting,
 }) => {
-  if (isMobile(page)) {
-    await expect(filters.filterButton.nth(1)).toBeVisible()
-  } else {
-    await expect(sorting.sortDropdown.first()).toBeVisible()
-    await expect(filters.filterButton.nth(0)).toBeVisible()
-  }
-
+  await assertFilterAndSortButtons(page, filters, sorting)
   await expect(breadcrumb.breadcrumbCategoryLvl0).toBeVisible()
   await expect(breadcrumb.breadcrumbCategoryActive).toBeVisible()
   await expect(productListingPage.productItem.first()).toBeVisible()
@@ -192,11 +190,7 @@ test('C2130727: Verify PLP Filters and Product Count', async ({
     await page.waitForTimeout(500)
     await toastMessage.assertToastInfoIsVisible()
     await expect(filters.closeFiltersButton).not.toBeVisible()
-    if (isMobile(page)) {
-      await expect(filters.filterToggleCounter.nth(1)).toBeVisible()
-    } else {
-      await expect(filters.filterToggleCounter.nth(0)).toBeVisible()
-    }
+    await assertFilterCounter(filters, true)
     await expect(filters.filterButton.first()).toContainText('3')
   })
 
@@ -206,12 +200,7 @@ test('C2130727: Verify PLP Filters and Product Count', async ({
     await filters.closeFiltersButton.click()
     await page.waitForTimeout(500)
     await expect(filters.filterButton.first()).not.toContainText('3')
-
-    const targetFilterToggleCounter = isMobile(page)
-      ? filters.filterToggleCounter.nth(1)
-      : filters.filterToggleCounter.nth(0)
-
-    await expect(targetFilterToggleCounter).not.toBeVisible()
+    await assertFilterCounter(filters, false)
   })
 })
 
@@ -229,11 +218,7 @@ test('C2139744: Verify PLP Filters deep-link', async ({
   page,
   breadcrumb,
 }) => {
-  if (isMobile(page)) {
-    await mobileNavigation.openPlpMobile()
-  } else {
-    await mainNavigation.navigateToPlpMainCategory()
-  }
+  await navigateToPlp(page, mobileNavigation, mainNavigation)
   await breadcrumb.breadcrumbCategoryActive.waitFor()
   await productListingPage.addFiltersToPLP(PLP_FILTER_DEEP_LINK)
   await countryDetector.closeModal()
@@ -389,13 +374,13 @@ test('C2162411 C2229455 Verify PLP Sorting', async ({
   page,
   sorting,
 }) => {
-  if (isMobile(page)) {
-    await filters.filterButton.nth(1).click()
-    await sorting.applySortingMobile(SORTING.priceAsc)
-    await filters.closeFiltersButton.first().click()
-  } else {
-    await sorting.applySorting(SORTING.priceAsc, 0)
-  }
+  await applySorting(
+    page,
+    filters,
+    sorting,
+    productListingPage,
+    SORTING.priceAsc,
+  )
   await page.waitForTimeout(1000)
 
   const pageUrlPriceAsc = page.url()
@@ -406,13 +391,13 @@ test('C2162411 C2229455 Verify PLP Sorting', async ({
     .first()
     .getAttribute('id')
 
-  if (isMobile(page)) {
-    await filters.filterButton.nth(1).click()
-    await sorting.applySortingMobile(SORTING.priceDesc)
-    await filters.closeFiltersButton.first().click()
-  } else {
-    await sorting.applySorting(SORTING.priceDesc, 0)
-  }
+  await applySorting(
+    page,
+    filters,
+    sorting,
+    productListingPage,
+    SORTING.priceDesc,
+  )
   await page.waitForTimeout(1000)
 
   const pageUrl = page.url()
@@ -452,13 +437,13 @@ test('C2139182: Verify PLP SEO data', async ({
     })
   })
   await test.step('Apply Sorting and check SEO data', async () => {
-    if (isMobile(page)) {
-      await filters.filterButton.nth(1).click()
-      await sorting.applySortingMobile(SORTING.priceDesc)
-      await filters.closeFiltersButton.first().click()
-    } else {
-      await sorting.applySorting(SORTING.priceAsc, 0)
-    }
+    await applySorting(
+      page,
+      filters,
+      sorting,
+      productListingPage,
+      SORTING.priceDesc,
+    )
     await page.waitForTimeout(500)
     await page.waitForLoadState('domcontentloaded')
     await verifySeoMetaTags(page, {

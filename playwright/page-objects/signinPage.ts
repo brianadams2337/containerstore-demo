@@ -1,13 +1,12 @@
 import type { Locator, Page } from '@playwright/test'
+import { Base } from './base/base'
 
 /**
  * Page Object Model for the Sign-In and Registration Page.
  * Encapsulates locators and methods for interacting with user login,
  * new user registration, and password reset functionalities.
  */
-export class SignInPage {
-  private readonly page: Page
-
+export class SignInPage extends Base {
   // --- Login Form Locators ---
   readonly emailInput: Locator
   readonly passwordInput: Locator
@@ -66,7 +65,7 @@ export class SignInPage {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
 
     // Login Form
     this.emailInput = page.getByTestId('login-email')

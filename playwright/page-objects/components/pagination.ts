@@ -1,14 +1,13 @@
 import type { Locator, Page } from '@playwright/test'
 import { expect } from '@playwright/test'
+import { Base } from '../base/base'
 
 /**
  * Page Object Model for the Pagination component.
  * Encapsulates locators and methods for interacting with and asserting states of
  * pagination controls (Previous/Next buttons, page number buttons).
  */
-export class Pagination {
-  private readonly page: Page
-
+export class Pagination extends Base {
   // --- Pagination Button Locators ---
   readonly paginationButtonPrevPage: Locator
   readonly paginationButtonNextPage: Locator
@@ -18,7 +17,8 @@ export class Pagination {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
+
     this.paginationButtonPrevPage = page.getByTestId(
       'paginationButton-previousPage',
     )

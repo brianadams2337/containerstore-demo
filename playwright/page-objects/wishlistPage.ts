@@ -1,13 +1,13 @@
 import type { Locator, Page } from '@playwright/test'
 import type { RPC } from './components/rpc'
+import { Base } from './base/base'
 
 /**
  * Page Object Model for the User's Wishlist Page.
  * Encapsulates locators and methods for interacting with and asserting states on
  * the wishlist page, including empty/non-empty states and managing wishlist items.
  */
-export class WishlistPage {
-  private readonly page: Page
+export class WishlistPage extends Base {
   private readonly rpc: RPC
 
   // --- Empty State Locators ---
@@ -37,7 +37,7 @@ export class WishlistPage {
    * @param rpc - The RPC (Remote Procedure Call) Page Object for direct API interactions.
    */
   constructor(page: Page, rpc: RPC) {
-    this.page = page
+    super(page)
     this.rpc = rpc
 
     // Empty State Locators
@@ -83,17 +83,6 @@ export class WishlistPage {
   }
 
   // --- Action Methods ---
-
-  /**
-   * Navigates directly to the user's Wishlist page.
-   * @param path - The path to the wishlist page (e.g., '/wishlist').
-   * @param baseUrl - The base URL of the application.
-   */
-  async visitWishlistPage(path: string, baseUrl: string) {
-    const url = baseUrl + path
-
-    await this.page.goto(url, { waitUntil: 'commit' })
-  }
 
   /**
    * Adds a product to the wishlist using an RPC (Remote Procedure Call) to the backend.

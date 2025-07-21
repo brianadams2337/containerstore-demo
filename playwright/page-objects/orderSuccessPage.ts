@@ -1,15 +1,14 @@
 import type { Locator, Page } from '@playwright/test'
 import { expect } from '@playwright/test'
 import { NON_NUMERIC_PRICE_CHARS_REGEX } from '../support/constants'
+import { Base } from './base/base'
 
 /**
  * Page Object Model for the Order Success Page (OSP).
  * Encapsulates locators and methods for verifying the successful order confirmation,
  * displaying order details, and handling OSP error states.
  */
-export class OrderSuccessPage {
-  private readonly page: Page
-
+export class OrderSuccessPage extends Base {
   // --- Order Summary & User Greeting Locators ---
   readonly ospGreetingBox: Locator
   readonly ospGreetingBoxHeadline: Locator
@@ -50,7 +49,7 @@ export class OrderSuccessPage {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
 
     // Order Summary & User Greeting
     this.ospGreetingBox = page.getByTestId('osp-greeting-box')

@@ -1,11 +1,11 @@
 import type { Locator, Page } from '@playwright/test'
+import { Base } from './base/base'
 
 /**
  * Page Object Model for generic Error Pages (e.g., 404 Not Found, general error screens).
  * Encapsulates locators for interacting with elements on error pages.
  */
-export class ErrorPage {
-  private readonly page: Page
+export class ErrorPage extends Base {
   readonly errorPageLogo: Locator
   readonly errorPageCode: Locator
   readonly errorPageButtonContinue: Locator
@@ -15,7 +15,8 @@ export class ErrorPage {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
+
     this.errorPageLogo = page.getByTestId('error-page-logo')
     this.errorPageCode = page.getByTestId('error-page-code')
     this.errorPageButtonContinue = page.getByTestId(

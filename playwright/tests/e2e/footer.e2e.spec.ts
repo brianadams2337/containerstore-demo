@@ -7,8 +7,8 @@ import { ROUTES } from '../../support/constants'
  * verifying the functionality of the footer logo.
  */
 
-test.beforeEach(async ({ homePage, footer, countryDetector }) => {
-  await homePage.visitPage()
+test.beforeEach(async ({ footer, countryDetector, page }) => {
+  await footer.navigate(page, '/', 'networkidle')
   await countryDetector.closeModal()
   await footer.footerWrapper.scrollIntoViewIfNeeded()
 })
@@ -45,7 +45,7 @@ test('C2143605 Verify footer logo', async ({
   })
   await test.step('Verify logo click from non-Homepage', async () => {
     await expect(async () => {
-      await page.goto('/basket', { waitUntil: 'commit' })
+      await footer.navigate(page, ROUTES.basket, 'networkidle')
       await countryDetector.closeModal()
       await expect(footer.footerLogo).toBeVisible()
       await footer.footerLogo.click()

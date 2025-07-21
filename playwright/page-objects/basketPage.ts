@@ -2,10 +2,9 @@ import { expect } from '@playwright/test'
 import type { Locator, Page } from '@playwright/test'
 import { ROUTES, NON_NUMERIC_PRICE_CHARS_REGEX } from '../support/constants'
 import type { RPC } from './components/rpc'
-import { isMobile } from '../support/utils'
+import { Base } from './base/base'
 
-export class BasketPage {
-  private readonly page: Page
+export class BasketPage extends Base {
   private readonly rpc: RPC
 
   // --- Core Basket UI Elements ---
@@ -54,7 +53,7 @@ export class BasketPage {
    * @param rpc - The RPC (Remote Procedure Call) Page Object for direct API interactions.
    */
   constructor(page: Page, rpc: RPC) {
-    this.page = page
+    super(page)
     this.rpc = rpc
     this.checkoutButton = page.getByTestId('checkout-link')
     this.productImage = page
@@ -118,10 +117,10 @@ export class BasketPage {
    * Clicks the checkout button based on its position for mobile/desktop.
    */
   async gotoCheckoutPage() {
-    const index = isMobile(this.page) ? 1 : 0
-
-    await this.checkoutButton.nth(index).waitFor({ state: 'visible' })
-    await this.checkoutButton.nth(index).click()
+    await this.checkoutButton
+      .nth(this.responsiveElementIndex)
+      .waitFor({ state: 'visible' })
+    await this.checkoutButton.nth(this.responsiveElementIndex).click()
   }
 
   /**
@@ -175,7 +174,7 @@ export class BasketPage {
    * @throws {Error} If an invalid action is provided.
    */
   async updateProductQuantity(action: string) {
-    const index = isMobile(this.page) ? 1 : 0
+    const index = this.responsiveElementIndex
     let targetButtonLocator
 
     switch (action) {
@@ -262,7 +261,7 @@ export class BasketPage {
       return parseFloat(text?.replace(NON_NUMERIC_PRICE_CHARS_REGEX, '') ?? '0')
     }
 
-    const targetSubtotalPriceLocator = isMobile(this.page)
+    const targetSubtotalPriceLocator = this.isMobileViewport
       ? this.priceSubtotalMobile
       : this.priceSubtotal
 
@@ -308,7 +307,7 @@ export class BasketPage {
    * @param value - The expected quantity value as a string.
    */
   async assertQuantityValue(value: string) {
-    const index = isMobile(this.page) ? 1 : 0
+    const index = this.responsiveElementIndex
 
     await expect(this.quantityValue.nth(index)).toHaveValue(value)
   }
@@ -320,7 +319,7 @@ export class BasketPage {
    * @throws {Error} If an invalid buttonType is provided.
    */
   async assertQuantityButtonState(buttonType: string, enabled: boolean) {
-    const index = isMobile(this.page) ? 1 : 0
+    const index = this.responsiveElementIndex
 
     let targetButtonLocator
 
@@ -345,9 +344,9 @@ export class BasketPage {
    * @param visible - True if the price is expected to be visible, false otherwise.
    */
   async assertInitialPriceVisibility(visible: boolean) {
-    const targetPriceElement = isMobile(this.page)
-      ? this.initialProductPrice.nth(1)
-      : this.initialProductPrice.nth(0)
+    const targetPriceElement = this.initialProductPrice.nth(
+      this.responsiveElementIndex,
+    )
 
     await expect(targetPriceElement).toBeVisible({ visible })
   }
@@ -358,9 +357,9 @@ export class BasketPage {
    * @param containsValue - True if the element's text is expected to contain `priceValue`, false if not.
    */
   async assertFinalProductPrice(priceValue: string, containsValue: boolean) {
-    const targetPriceElement = isMobile(this.page)
-      ? this.productPrice.nth(1)
-      : this.productPrice.nth(0)
+    const targetPriceElement = this.initialProductPrice.nth(
+      this.responsiveElementIndex,
+    )
 
     if (!containsValue) {
       await expect(targetPriceElement).not.toHaveText(priceValue)

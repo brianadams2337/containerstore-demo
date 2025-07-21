@@ -23,7 +23,6 @@ import { ROUTES, TEST_USERS } from '../../support/constants'
  */
 test('C2132533 Verify Orders for user that has orders', async ({
   ordersPage,
-  homePage,
   page,
   countryDetector,
   header,
@@ -31,7 +30,7 @@ test('C2132533 Verify Orders for user that has orders', async ({
   toastMessage,
 }) => {
   await test.step('Visit Orders page and assert the page is loaded', async () => {
-    await homePage.visitPage()
+    await ordersPage.navigate(page, '/', 'networkidle')
     await page.waitForLoadState('networkidle')
     await countryDetector.closeModal()
     await header.headerLoginButton.click()
@@ -85,14 +84,13 @@ test('C2132533 Verify Orders for user that has orders', async ({
  */
 test('C2132126 Verify Orders page - user without orders', async ({
   ordersPage,
-  homePage,
   page,
   countryDetector,
   header,
   signinPage,
   toastMessage,
 }) => {
-  await homePage.visitPage()
+  await ordersPage.navigate(page, '/', 'networkidle')
   await countryDetector.closeModal()
   await page.waitForLoadState('networkidle')
   await header.headerLoginButton.click()

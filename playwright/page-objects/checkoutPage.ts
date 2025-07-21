@@ -1,13 +1,12 @@
 import type { Locator, Page } from '@playwright/test'
+import { Base } from './base/base'
 
 /**
  * Page Object Model for the Checkout Page.
  * Encapsulates locators for interacting with the checkout flow's
  * order overview, terms acceptance, and payment initiation steps.
  */
-export class CheckoutPage {
-  private readonly page: Page
-
+export class CheckoutPage extends Base {
   // --- Basket/Item Overview Locators ---
   readonly basketContainer: Locator
   readonly deliveryEstimate: Locator
@@ -23,7 +22,8 @@ export class CheckoutPage {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
+
     this.basketContainer = page.locator('[data-test-id="basket-container"]')
     this.deliveryEstimate = page.locator('[data-test-id="delivery-estimate"]')
     this.itemQuantity = page.locator('[data-test-id="item-quantity"]')

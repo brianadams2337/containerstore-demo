@@ -1,13 +1,12 @@
 import type { Locator, Page } from '@playwright/test'
+import { Base } from '../base/base'
 
 /**
  * Page Object Model for the website Header component.
  * Encapsulates locators and methods for interacting with and asserting states of
  * common header elements like navigation buttons, user login, basket, and wishlist counters.
  */
-export class Header {
-  private readonly page: Page
-
+export class Header extends Base {
   // --- Main Header Elements ---
   /** Locator for the main header container. */
   readonly mainHeader: Locator
@@ -27,7 +26,8 @@ export class Header {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
+
     this.wishlistNumItems = page.getByTestId('header-wishlist-count')
     this.headerBasketButton = page.getByTestId('basket-link')
     this.headerLoginButton = page.getByTestId('header-user-button')

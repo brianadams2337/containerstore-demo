@@ -1,14 +1,13 @@
 import type { Locator, Page } from '@playwright/test'
 import { expect } from '@playwright/test'
+import { Base } from '../base/base'
 
 /**
  * Page Object Model for Toast/Info Messages.
  * Encapsulates locators and methods for interacting with and asserting the state of
  * transient information or success messages displayed to the user (e.g., after an action).
  */
-export class ToastMessage {
-  private readonly page: Page
-
+export class ToastMessage extends Base {
   // --- Toast Message Locators ---
   readonly toastInfo: Locator
   readonly toastInfoButton: Locator
@@ -18,7 +17,8 @@ export class ToastMessage {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
+
     this.toastInfo = page.getByTestId('toast-info')
     this.toastInfoButton = page.getByTestId('toast-info-button')
   }

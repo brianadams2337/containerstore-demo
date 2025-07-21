@@ -1,13 +1,12 @@
 import type { Locator, Page } from '@playwright/test'
+import { Base } from './base/base'
 
 /**
  * Page Object Model for the Product Listing Page (PLP).
  * Encapsulates locators and methods for interacting with and asserting states on
  * product listing pages, including product cards, wishlist actions, filters, and sorting.
  */
-export class ProductListingPage {
-  private readonly page: Page
-
+export class ProductListingPage extends Base {
   // --- Product Card & Item Locators ---
   readonly productCard: Locator
   readonly productItem: Locator
@@ -30,7 +29,8 @@ export class ProductListingPage {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
+
     this.wishlistButton = page.locator(
       '[data-testid="add-item-to-wishlist-button"]',
     )
@@ -81,6 +81,6 @@ export class ProductListingPage {
       pageUrl +
       (formattedFilters.length ? `?${formattedFilters.join('&')}` : '')
 
-    await this.page.goto(url, { waitUntil: 'load' })
+    await this.navigate(this.page, url, 'networkidle')
   }
 }

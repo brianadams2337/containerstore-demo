@@ -1,6 +1,6 @@
 import { test } from '../fixtures/fixtures'
 import { expect } from '@playwright/test'
-import { isMobile } from '../support/utils'
+import { navigateToPlp } from '../support/utils'
 import { ROUTES } from '../support/constants'
 
 /**
@@ -24,14 +24,10 @@ test('C2139186: E2E from Home to Checkout - happy path', async ({
   breadcrumb,
 }) => {
   await test.step('Navigate to PLP', async () => {
-    await homePage.visitPage()
+    await homePage.navigate(page, '/', 'networkidle')
     await page.waitForLoadState('networkidle')
     await countryDetector.closeModal()
-    if (isMobile(page)) {
-      await mobileNavigation.openPlpMobile()
-    } else {
-      await mainNavigation.navigateToPlpMainCategory()
-    }
+    await navigateToPlp(page, mobileNavigation, mainNavigation)
     await breadcrumb.breadcrumbCategoryActive.waitFor()
   })
 

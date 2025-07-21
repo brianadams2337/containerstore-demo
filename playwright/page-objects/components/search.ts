@@ -1,14 +1,13 @@
 import type { Locator, Page } from '@playwright/test'
 import { expect } from '@playwright/test'
+import { Base } from '../base/base'
 
 /**
  * Page Object Model for the Search functionality.
  * Encapsulates locators and methods for interacting with search inputs,
  * managing search results, and verifying search suggestions and pages.
  */
-export class Search {
-  private readonly page: Page
-
+export class Search extends Base {
   // --- Search Input & Form Locators ---
   /**
    * Locator for the main search input field (e.g., in the header or a flyout).
@@ -34,7 +33,8 @@ export class Search {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
+
     this.searchInput = page.getByTestId('header-search-input')
     this.searchResultsFlyout = page.getByTestId('search-results-flyout')
     this.searchResultsProductImage = page.getByTestId('product-image')
@@ -56,10 +56,30 @@ export class Search {
    * @param searchTerm - The term to search for.
    * @note This method hardcodes interaction with the second search input (`.nth(1)`), likely the desktop header search.
    */
-  async executeSearch(searchTerm: string) {
+  async executeSearchDesktop(
+    searchTerm: string,
+    action: 'enter' | 'clickSuggestion' | 'typeOnly' | 'clickMoreResults',
+  ) {
     await this.searchInput.nth(1).click({ force: true })
     await this.searchInput.nth(1).fill(searchTerm)
-    await this.searchInput.nth(1).press('Enter')
+
+    switch (action) {
+      case 'enter':
+        await this.searchInput.nth(this.responsiveElementIndex).press('Enter')
+        break
+      case 'clickSuggestion':
+        await this.searchSuggestionsItem.first().waitFor()
+        await this.searchSuggestionsItem.first().click()
+        break
+      case 'clickMoreResults':
+        await this.searchDisplayAllResults.waitFor()
+        await this.searchDisplayAllResults.click()
+        break
+      case 'typeOnly':
+        break
+      default:
+        throw new Error(`Unsupported desktop search action: ${action}`)
+    }
   }
 
   /**
@@ -67,7 +87,12 @@ export class Search {
    * This is typically used to trigger search suggestions or a search flyout.
    * @param searchTerm - The term to type into the search input.
    */
-  async startTypingSearch(searchTerm: string) {
+  async startTypingSearchDesktop(searchTerm: string) {
+    await this.searchInput.nth(1).click({ force: true })
+    await this.searchInput.nth(1).fill(searchTerm)
+  }
+
+  async fillSearchTermDesktop(searchTerm: string) {
     await this.searchInput.nth(1).click({ force: true })
     await this.searchInput.nth(1).fill(searchTerm)
   }

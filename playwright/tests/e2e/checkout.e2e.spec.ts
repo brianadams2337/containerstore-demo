@@ -1,6 +1,6 @@
 import { test } from '../../fixtures/fixtures'
 import { expect } from '@playwright/test'
-import { getUserForBrowser, isMobile } from '../../support/utils'
+import { getUserForBrowser, navigateToPlp } from '../../support/utils'
 import { ROUTES } from '../../support/constants'
 
 /**
@@ -26,7 +26,7 @@ test.beforeEach(
     const projectName = testInfo.project.name
     const { email, password } = getUserForBrowser(projectName)
 
-    await homePage.visitPage()
+    await homePage.navigate(page, '/', 'networkidle')
     await page.waitForLoadState('networkidle')
     await countryDetector.closeModal()
     await accountPage.userAuthentication(email, password)
@@ -53,18 +53,13 @@ test('C2132536 C2144177 Verify Checkout order overview', async ({
   breadcrumb,
 }) => {
   await test.step('Adding product to Basket', async () => {
-    if (isMobile(page)) {
-      await mobileNavigation.openPlpMobile()
-    } else {
-      await mainNavigation.navigateToPlpMainCategory()
-    }
-
+    await navigateToPlp(page, mobileNavigation, mainNavigation)
     await breadcrumb.breadcrumbCategoryActive.waitFor()
     await productListingPage.productImage.first().click()
     await productDetailPage.variantPicker.waitFor()
     await productDetailPage.chooseProductVariant()
     await productDetailPage.addProductToBasket()
-    await page.goto(ROUTES.checkout, { waitUntil: 'commit' })
+    await productDetailPage.navigate(page, ROUTES.checkout, 'networkidle')
   })
   await test.step('Visit Checkout page and check Items', async () => {
     const pageUrl = page.url()

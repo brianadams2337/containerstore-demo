@@ -8,7 +8,7 @@ import { ROUTES } from '../../support/constants'
  */
 
 test.beforeEach(async ({ homePage, countryDetector, page }) => {
-  await homePage.visitPage()
+  await homePage.navigate(page, '/', 'networkidle')
   await page.waitForLoadState('domcontentloaded')
   await countryDetector.closeModal()
 })
@@ -71,7 +71,7 @@ test('C2216651 Verify 404 error page', async ({
   baseURL,
 }) => {
   await test.step('Visit non-existing page and verify the page is loaded', async () => {
-    await page.goto('/non-existing-route', { waitUntil: 'commit' })
+    await homePage.navigate(page, '/non-existing-route', 'networkidle')
     await countryDetector.closeModal()
     await expect(errorPage.errorPageLogo).toBeVisible()
     await expect(errorPage.errorPageCode).toContainText('404')

@@ -8,7 +8,7 @@ import { isMobile, navigationItemLabel } from '../../support/utils'
  * Listing Pages (PLPs) from the main navigation.
  */
 test.beforeEach(async ({ homePage, countryDetector, page }) => {
-  await homePage.visitPage()
+  await homePage.navigate(page, '/', 'networkidle')
   await page.waitForLoadState('domcontentloaded')
   await countryDetector.closeModal()
 })

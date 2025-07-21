@@ -1,7 +1,7 @@
 import { test } from '../../fixtures/fixtures'
 import { expect } from '@playwright/test'
 import { PDP_E2E } from '../../support/constants'
-import { isMobile, verifySeoMetaTags } from '../../support/utils'
+import { verifySeoMetaTags, navigateToPlp } from '../../support/utils'
 
 /**
  * @file Contains end-to-end tests for the Product Detail Page (PDP),
@@ -16,23 +16,16 @@ import { isMobile, verifySeoMetaTags } from '../../support/utils'
 test('C2141594: Verify PDP name, brand and price', async ({
   productDetailPage,
   countryDetector,
-  homePage,
   page,
   mobileNavigation,
   mainNavigation,
   breadcrumb,
   productListingPage,
 }) => {
-  await homePage.visitPage()
+  await productDetailPage.navigate(page, '/', 'networkidle')
   await page.waitForLoadState('networkidle')
   await countryDetector.closeModal()
-
-  if (isMobile(page)) {
-    await mobileNavigation.openPlpMobile()
-  } else {
-    await mainNavigation.navigateToPlpMainCategory()
-  }
-
+  await navigateToPlp(page, mobileNavigation, mainNavigation)
   await breadcrumb.breadcrumbCategoryActive.waitFor()
   await expect(async () => {
     await productListingPage.productImage.first().click()
@@ -57,22 +50,15 @@ test('C2141598: Verify PDP add and remove to/from Wishlist', async ({
   header,
   page,
   countryDetector,
-  homePage,
   mobileNavigation,
   mainNavigation,
   breadcrumb,
   productListingPage,
 }) => {
-  await homePage.visitPage()
+  await productDetailPage.navigate(page, '/', 'networkidle')
   await page.waitForLoadState('networkidle')
   await countryDetector.closeModal()
-
-  if (isMobile(page)) {
-    await mobileNavigation.openPlpMobile()
-  } else {
-    await mainNavigation.navigateToPlpMainCategory()
-  }
-
+  await navigateToPlp(page, mobileNavigation, mainNavigation)
   await breadcrumb.breadcrumbCategoryActive.waitFor()
   await productListingPage.productImage.first().click()
   await page.waitForLoadState('domcontentloaded')
@@ -104,20 +90,13 @@ test('C2141150 C2141757 Verify PDP SEO data', async ({
   page,
   mobileNavigation,
   mainNavigation,
-  homePage,
   breadcrumb,
   productListingPage,
 }) => {
-  await homePage.visitPage()
+  await productDetailPage.navigate(page, '/', 'networkidle')
   await page.waitForLoadState('networkidle')
   await countryDetector.closeModal()
-
-  if (isMobile(page)) {
-    await mobileNavigation.openPlpMobile()
-  } else {
-    await mainNavigation.navigateToPlpMainCategory()
-  }
-
+  await navigateToPlp(page, mobileNavigation, mainNavigation)
   await breadcrumb.breadcrumbCategoryActive.waitFor()
   await productListingPage.productImage.first().click()
   await productDetailPage.h1.waitFor()

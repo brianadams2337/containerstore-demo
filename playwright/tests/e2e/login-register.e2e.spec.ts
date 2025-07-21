@@ -20,7 +20,7 @@ import {
  * and closes the country detector modal if present.
  */
 test.beforeEach(async ({ homePage, page, countryDetector }) => {
-  await homePage.visitPage()
+  await homePage.navigate(page, '/', 'networkidle')
   await page.waitForLoadState('networkidle')
   await countryDetector.closeModal()
 })
@@ -288,8 +288,11 @@ test('C2171786 Verify setting the new password', async ({
   countryDetector,
 }) => {
   await test.step('Open new password flyout and enter incorrectly formatted password', async () => {
-    await page.goto(ROUTES.signin + TEST_PASSWORD_RESET_HASH)
-    await page.waitForTimeout(500)
+    await signinPage.navigate(
+      page,
+      ROUTES.signin + TEST_PASSWORD_RESET_HASH,
+      'networkidle',
+    )
     await countryDetector.closeModal()
     await signinPage.newPasswordInput.waitFor()
     await signinPage.newPasswordInput.focus()

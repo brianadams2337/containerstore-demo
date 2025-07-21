@@ -1,12 +1,12 @@
 import type { Locator, Page } from '@playwright/test'
+import { Base } from '../base/base'
 
 /**
  * Page Object Model for the website Footer component.
  * Encapsulates locators and methods for interacting with and asserting states of
  * the global footer, including its logo, copyright, and various links.
  */
-export class Footer {
-  private readonly page: Page
+export class Footer extends Base {
   readonly footerWrapper: Locator
   readonly footerLogo: Locator
   readonly footerCopyright: Locator
@@ -17,7 +17,8 @@ export class Footer {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
+
     this.footerWrapper = page.getByTestId('footer')
     this.footerLogo = page.getByTestId('footer-logo')
     this.footerCopyright = page.getByTestId('footer-copyright')

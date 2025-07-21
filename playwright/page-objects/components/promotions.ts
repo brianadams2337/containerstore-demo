@@ -1,12 +1,11 @@
 import type { Locator, Page } from '@playwright/test'
+import { Base } from '../base/base'
 
 /**
  * Page Object Model for various Promotion components (e.g., ribbon, flyout).
  * Encapsulates locators for elements related to displaying and interacting with promotions.
  */
-export class Promotions {
-  private readonly page: Page
-
+export class Promotions extends Base {
   // --- Promotion Ribbon Locators ---
   readonly promotionRibbon: Locator
   readonly promotionRibbonTimer: Locator
@@ -23,7 +22,8 @@ export class Promotions {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
+
     // Promotion Ribbon Locators
     this.promotionRibbon = page.getByTestId('promotion-ribbon')
     this.promotionRibbonTimer = page.getByTestId('promotion-ribbon-timer')

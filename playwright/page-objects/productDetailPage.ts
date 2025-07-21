@@ -1,6 +1,6 @@
 import type { Locator, Page } from '@playwright/test'
-import { isMobile } from '../support/utils'
 import { expect } from '@playwright/test'
+import { Base } from './base/base'
 
 /**
  * Page Object Model for the Product Detail Page (PDP).
@@ -8,9 +8,7 @@ import { expect } from '@playwright/test'
  * individual product pages, including variant selection, basket/wishlist actions,
  * and store availability.
  */
-export class ProductDetailPage {
-  private readonly page: Page
-
+export class ProductDetailPage extends Base {
   // --- Core Product Information Locators ---
   readonly productImage: Locator
   readonly productBrand: Locator
@@ -57,7 +55,7 @@ export class ProductDetailPage {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
 
     // Core Product Information
     this.addToBasketButton = page.getByTestId('add-item-to-basket-button')
@@ -134,9 +132,8 @@ export class ProductDetailPage {
    * @returns A Playwright Locator for the Add to Wishlist button.
    */
   private getAddToWishlistButton(): Locator {
-    return isMobile(this.page)
-      ? this.buttonAddToWishlist.nth(0)
-      : this.buttonAddToWishlist.nth(1)
+    const index = this.responsiveElementIndex === 1 ? 0 : 1
+    return this.buttonAddToWishlist.nth(index)
   }
 
   /**
@@ -144,9 +141,8 @@ export class ProductDetailPage {
    * @returns A Playwright Locator for the Remove from Wishlist button.
    */
   private getRemoveFromWishlistButton(): Locator {
-    return isMobile(this.page)
-      ? this.buttonRemoveFromWishlist.nth(0)
-      : this.buttonRemoveFromWishlist.nth(1)
+    const index = this.responsiveElementIndex === 1 ? 0 : 1
+    return this.buttonRemoveFromWishlist.nth(index)
   }
 
   // --- Action Methods ---
@@ -156,23 +152,12 @@ export class ProductDetailPage {
    * Chooses the appropriate "Add to Basket" button based on device type.
    */
   async addProductToBasket() {
-    const targetButton = isMobile(this.page)
+    const targetButton = this.isMobileViewport
       ? this.addToBasketButtonMobile
       : this.addToBasketButton
 
     await targetButton.waitFor()
     await targetButton.click()
-  }
-
-  /**
-   * Navigates directly to a Product Detail Page (PDP).
-   * @param path - The specific path to the PDP (e.g., '/p/my-product-slug-123').
-   * @param baseUrl - The base URL of the application.
-   */
-  async visitPDP(path: string, baseUrl: string) {
-    const url = baseUrl + path
-
-    await this.page.goto(url, { waitUntil: 'commit' })
   }
 
   /**

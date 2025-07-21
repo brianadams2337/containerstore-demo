@@ -1,14 +1,12 @@
 import type { Locator, Page } from '@playwright/test'
-import { isMobile } from '../../support/utils'
+import { Base } from '../base/base'
 
 /**
  * Page Object Model for the Filters component on Product Listing Pages (PLP).
  * Encapsulates locators and methods for interacting with various filter options
  * like price, color, size, and applying/resetting filters.
  */
-export class Filters {
-  private readonly page: Page
-
+export class Filters extends Base {
   // --- Filter Control & State Locators ---
   readonly filterButton: Locator
   readonly filterToggleCounter: Locator
@@ -28,7 +26,8 @@ export class Filters {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
+
     // Filter Controls
     this.closeFiltersButton = page.getByTestId('close-filters')
     this.filterApplyButton = page.getByTestId('apply-filter-button')
@@ -65,9 +64,9 @@ export class Filters {
    * Handles selection of the correct button for mobile or desktop.
    */
   async openFilters() {
-    const targetFilterButton = isMobile(this.page)
-      ? this.filterButton.nth(1)
-      : this.filterButton.nth(0)
+    const targetFilterButton = this.filterButton.nth(
+      this.responsiveElementIndex,
+    )
 
     await targetFilterButton.waitFor({ timeout: 2000 })
     await targetFilterButton.click()

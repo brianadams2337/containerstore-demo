@@ -2,8 +2,8 @@ import { test } from '../../fixtures/fixtures'
 import { expect } from '@playwright/test'
 import {
   getUserForBrowser,
-  isMobile,
   verifySeoMetaTags,
+  navigateToPlp,
 } from '../../support/utils'
 import { ROUTES, OSP_TEST_DATA } from '../../support/constants'
 
@@ -30,7 +30,7 @@ test.beforeEach(
     const projectName = testInfo.project.name
     const { email, password } = getUserForBrowser(projectName)
 
-    await homePage.visitPage()
+    await homePage.navigate(page, '/', 'networkidle')
     await page.waitForLoadState('networkidle')
     await countryDetector.closeModal()
     await accountPage.userAuthentication(email, password)
@@ -62,11 +62,7 @@ test('C2173505 C2173506 C2173507 C2173508 C2181795 C2182370 C2181791 Verify OSP'
   breadcrumb,
 }) => {
   await test.step('Add product to Basket', async () => {
-    if (isMobile(page)) {
-      await mobileNavigation.openPlpMobile()
-    } else {
-      await mainNavigation.navigateToPlpMainCategory()
-    }
+    await navigateToPlp(page, mobileNavigation, mainNavigation)
 
     await breadcrumb.breadcrumbCategoryActive.waitFor()
     await productListingPage.productCard.first().waitFor()
@@ -77,7 +73,7 @@ test('C2173505 C2173506 C2173507 C2173508 C2181795 C2182370 C2181791 Verify OSP'
   })
 
   await test.step('Visit Checkout page and continue with order', async () => {
-    await page.goto(ROUTES.checkout, { waitUntil: 'commit' })
+    await orderSuccessPage.navigate(page, ROUTES.checkout, 'networkidle')
     await checkoutPage.basketContainer.waitFor()
 
     const pageUrl = page.url()
@@ -123,20 +119,20 @@ test('C2173505 C2173506 C2173507 C2173508 C2181795 C2182370 C2181791 Verify OSP'
   })
 
   await test.step('Verify OSP CTA buttons', async () => {
-    const continueShoppingButton = isMobile(page)
-      ? orderSuccessPage.ospContinueShoppingButton.nth(1)
-      : orderSuccessPage.ospContinueShoppingButton.nth(0)
+    const continueShoppingButton =
+      orderSuccessPage.ospContinueShoppingButton.nth(
+        orderSuccessPage.responsiveElementIndex,
+      )
 
     await continueShoppingButton.click()
-
     await homePage.homepageContent.waitFor()
     await expect(homePage.homepageContent).toBeAttached()
     await page.goBack()
     await page.waitForLoadState('networkidle')
 
-    const orderDetailsButton = isMobile(page)
-      ? orderSuccessPage.ospOrderDetailsButton.nth(1)
-      : orderSuccessPage.ospOrderDetailsButton.nth(0)
+    const orderDetailsButton = orderSuccessPage.ospOrderDetailsButton.nth(
+      orderSuccessPage.responsiveElementIndex,
+    )
 
     await orderDetailsButton.waitFor()
     await orderDetailsButton.click()
@@ -159,7 +155,11 @@ test('C2182954 Verify OSP Error page', async ({
   homePage,
 }) => {
   await test.step('Visit OSP with incorrect token and assert page elements', async () => {
-    await page.goto(OSP_TEST_DATA.incorrectCbdUrl, { waitUntil: 'commit' })
+    await orderSuccessPage.navigate(
+      page,
+      OSP_TEST_DATA.incorrectCbdUrl,
+      'networkidle',
+    )
     await orderSuccessPage.ospEmptyStateContainer.waitFor()
 
     await expect(orderSuccessPage.ospEmptyStateHeadline).toBeVisible()

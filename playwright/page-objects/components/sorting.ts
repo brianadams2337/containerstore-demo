@@ -1,13 +1,12 @@
 import type { Locator, Page } from '@playwright/test'
+import { Base } from '../base/base'
 
 /**
  * Page Object Model for the Sorting component on Product Listing Pages (PLP).
  * Encapsulates locators and methods for interacting with sorting controls
  * for both desktop (dropdown) and mobile (slider/chips) views.
  */
-export class Sorting {
-  private readonly page: Page
-
+export class Sorting extends Base {
   // --- General Sorting Controls (e.g., Desktop Dropdown) ---
   readonly sortDropdown: Locator
 
@@ -19,7 +18,8 @@ export class Sorting {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
+
     this.sortDropdown = page.getByTestId('sort-dropdown')
     this.mobileSortWrapper = page.getByTestId('mobile-sort-wrapper')
   }
@@ -43,7 +43,7 @@ export class Sorting {
    * @param sortingOption - The sorting parameter (e.g., 'price_asc', 'price_desc').
    * @param index - The index of the sort dropdown if multiple exist (0 for desktop, 1 for mobile).
    */
-  async applySorting(sortingOption: string, index: number) {
+  async applySortingDesktop(sortingOption: string, index: number) {
     await this.sortDropdown.nth(index).click()
     await this.sortOptionItem(sortingOption).nth(index).click()
     await this.page.waitForLoadState('domcontentloaded')

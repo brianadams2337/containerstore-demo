@@ -8,7 +8,7 @@ import { isMobile } from '../../support/utils'
  */
 
 test.beforeEach(async ({ homePage, countryDetector, page }) => {
-  await homePage.visitPage()
+  await homePage.navigate(page, '/', 'networkidle')
   await page.waitForLoadState('domcontentloaded')
   await countryDetector.closeModal()
 })

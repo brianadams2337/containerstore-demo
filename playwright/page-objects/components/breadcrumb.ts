@@ -1,12 +1,11 @@
 import type { Locator, Page } from '@playwright/test'
+import { Base } from '../base/base'
 
 /**
  * Page Object Model for the Breadcrumb component.
  * Encapsulates locators for the hierarchical navigation path on pages like PLPs.
  */
-export class Breadcrumb {
-  private readonly page: Page
-
+export class Breadcrumb extends Base {
   // --- Breadcrumb Elements ---
   readonly breadcrumbCategoryLvl0: Locator
   readonly breadcrumbCategoryActive: Locator
@@ -17,7 +16,8 @@ export class Breadcrumb {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
+
     this.breadcrumbCategoryLvl0 = page.getByTestId('category-breadcrumb-0')
     this.breadcrumbCategoryActive = page.getByTestId(
       'active-category-breadcrumb',

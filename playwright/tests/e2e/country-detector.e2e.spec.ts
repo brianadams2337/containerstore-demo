@@ -12,11 +12,11 @@ import { ROUTES, TEST_PASSWORD_RESET_HASH } from '../../support/constants'
  * Performs setup before each test case within this file.
  * It initially navigates to the English version of the homepage.
  */
-test.beforeEach(async ({ page, baseURL }) => {
+test.beforeEach(async ({ page, baseURL, countryDetector }) => {
   await expect(async () => {
     const pageUrl = `${baseURL}/en`
 
-    await page.goto(pageUrl, { waitUntil: 'load' })
+    await countryDetector.navigate(page, pageUrl, 'networkidle')
   }).toPass()
 })
 
@@ -76,10 +76,10 @@ test.describe('Test from Berlin against US shop', () => {
     countryDetector,
     page,
   }) => {
-    // any hash parameter value can be used for testing purposes, to open the reset password flyout
-    await page.goto(
+    await countryDetector.navigate(
+      page,
       ROUTES.homepage1 + ROUTES.signin + TEST_PASSWORD_RESET_HASH,
-      { waitUntil: 'load' },
+      'networkidle',
     )
     await countryDetector.switchShopButton.first().waitFor()
     await countryDetector.switchShopButton.first().click()

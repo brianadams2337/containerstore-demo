@@ -1,14 +1,13 @@
 import type { Locator, Page } from '@playwright/test'
 import { expect } from '@playwright/test'
+import { Base } from '../base/base'
 
 /**
  * Page Object Model for the Shop Selector component.
  * Encapsulates locators and methods for interacting with the shop/country switcher,
  * verifying its states, and asserting shop changes.
  */
-export class ShopSelector {
-  private readonly page: Page
-
+export class ShopSelector extends Base {
   // --- Core Shop Selector Elements ---
   readonly shopSelectorListbox: Locator
   readonly globeIcon: Locator
@@ -30,7 +29,8 @@ export class ShopSelector {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
+
     this.shopSelectorListbox = page.getByTestId('language-listbox')
     this.globeIcon = page.getByTestId('shop-switcher-globe-icon')
     this.currentShop = page.getByTestId('shop-switcher-current-shop')

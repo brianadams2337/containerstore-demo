@@ -1,13 +1,12 @@
 import type { Locator, Page } from '@playwright/test'
+import { Base } from '../base/base'
 
 /**
  * Page Object Model for the Mobile Navigation (Sidebar/Drawer).
  * Encapsulates locators and methods for interacting with mobile-specific navigation elements,
  * including opening the side navigation, performing searches, and navigating through categories.
  */
-export class MobileNavigation {
-  private readonly page: Page
-
+export class MobileNavigation extends Base {
   // --- General Mobile Navigation Elements ---
   readonly sideNavigationButton: Locator
   readonly mobileSidebar: Locator
@@ -29,7 +28,8 @@ export class MobileNavigation {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
+
     this.sideNavigationButton = page.getByTestId('side-navigation-button')
     this.searchInputField = page.getByTestId('header-search-input')
     this.searchSuggestionsItem = page.getByTestId('search-suggestions-item')
@@ -80,10 +80,30 @@ export class MobileNavigation {
    * Performs a mobile search by opening the side navigation, filling the search input, and pressing Enter.
    * @param searchTerm - The term to search for.
    */
-  async executeMobileSearch(searchTerm: string) {
+  async executeSearchMobile(
+    searchTerm: string,
+    action: 'enter' | 'clickSuggestion' | 'typeOnly' | 'clickMoreResults',
+  ) {
     await this.sideNavigationButton.click()
     await this.searchInputField.first().fill(searchTerm)
-    await this.searchInputField.first().press('Enter')
+
+    switch (action) {
+      case 'enter':
+        await this.searchInputField.first().press('Enter')
+        break
+      case 'clickSuggestion':
+        await this.searchSuggestionsItem.first().waitFor()
+        await this.searchSuggestionsItem.first().click()
+        break
+      case 'clickMoreResults':
+        await this.searchDisplayAllResults.waitFor()
+        await this.searchDisplayAllResults.click()
+        break
+      case 'typeOnly':
+        break
+      default:
+        throw new Error(`Unsupported mobile search action: ${action}`)
+    }
   }
 
   /**
@@ -91,7 +111,12 @@ export class MobileNavigation {
    * Does NOT press Enter, allowing for search suggestions to appear.
    * @param searchTerm - The term to type into the search input.
    */
-  async startTypingMobileSearch(searchTerm: string) {
+  async startTypingSearchMobile(searchTerm: string) {
+    await this.sideNavigationButton.click()
+    await this.searchInputField.first().fill(searchTerm)
+  }
+
+  async fillSearchTermMobile(searchTerm: string) {
     await this.sideNavigationButton.click()
     await this.searchInputField.first().fill(searchTerm)
   }

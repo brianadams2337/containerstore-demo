@@ -1,14 +1,42 @@
 import type { Page } from 'playwright-core'
 import { expect } from '@playwright/test'
 import { TEST_USERS } from './constants'
-
 import { BREAKPOINTS } from '../../config/ui'
+import type { MobileNavigation } from '../page-objects/components/mobileNavigation'
+import type { MainNavigation } from '../page-objects/components/mainNavigation'
+import type { Filters } from '../page-objects/components/filters'
+import type { Sorting } from '../page-objects/components/sorting'
+import type { ProductListingPage } from '../page-objects/productListingPage'
+import type { Search } from '../page-objects/components/search'
 
+// --- Interfaces ---
+/**
+ * Defines the structure for SEO options that can be verified.
+ */
 interface SeoOptions {
   title?: string
   description?: string
   robots?: string
   canonical?: string
+}
+
+// --- Environment & Core Helpers ---
+
+/**
+ * Retrieves a required environment variable, throwing an error if it is not set.
+ * @param key The name of the environment variable.
+ * @returns The value of the environment variable (guaranteed string).
+ * @throws {Error} If the environment variable is not set.
+ */
+export function getRequiredEnv(key: string): string {
+  const value = process.env[key]
+
+  if (value === undefined) {
+    throw new Error(
+      `Environment variable '${key}' is required but not set. Please check your .env file or CI/CD configuration.`,
+    )
+  }
+  return value
 }
 
 /**
@@ -23,6 +51,68 @@ export const isMobile = (page: Page): boolean => {
 
   return !!viewportSize && viewportSize.width < BREAKPOINTS.md
 }
+
+/**
+ * Returns test user e-mail address and password.
+ * To avoid conflicts in parallel test execution, each browser has dedicated test user.
+ * Test user email and password keys are stored in constant object `USER_ACCOUNT` within `/playwright/support/constants.ts`.
+ * Their values should be defined via environment variables.
+ */
+export const getUserForBrowser = (
+  browserName: string,
+): { email: string; password: string } => {
+  const browserUserMap: Record<string, string> = {
+    /** Should be defined via environment variable `TEST_USER_EMAIL1` */
+    chromium: 'testUserEmail1',
+    /** Should be defined via environment variable `TEST_USER_EMAIL2` */
+    firefox: 'testUserEmail2',
+    /** Should be defined via environment variable `TEST_USER_EMAIL3` */
+    webkit: 'testUserEmail3',
+    /** Should be defined via environment variable `TEST_USER_EMAIL4` */
+    'mobile-chrome': 'testUserEmail4',
+    /** Should be defined via environment variable `TEST_USER_EMAIL5` */
+    'mobile-safari': 'testUserEmail5',
+    /** Default fallback is testUserEmail1, but it is strongly recommended to define dedicated test user for every browser. */
+    default: 'testUserEmail1',
+  }
+
+  const userEmailKey = browserUserMap[browserName] || browserUserMap.default
+
+  return {
+    email: TEST_USERS[userEmailKey as keyof typeof TEST_USERS],
+    /** Password should be defined via environment variable TEST_USER_PASSWORD */
+    password: TEST_USERS.testUserPassword,
+  }
+}
+
+// --- String Manipulation & Formatting Helpers ---
+
+/**
+ * Cleans a navigation item label by removing all digits and trimming whitespace.
+ * This is typically used to extract the pure category name from a label that
+ * might include a product counter (e.g., "Dresses 123" becomes "Dresses").
+ *
+ * @param stringValue - The raw string value of the navigation item label.
+ * @returns The cleaned string value without digits and leading/trailing whitespace.
+ */
+export const navigationItemLabel = (stringValue: string) =>
+  stringValue.replace(/\d/g, '').trim()
+
+/**
+ * Formats an active category breadcrumb label into a URL-friendly segment.
+ * It converts the string to lowercase and replaces a trailing product counter
+ * (e.g., " 123") with a hyphen "-".
+ * Example: "Bekleidung 123" becomes "bekleidung-"
+ *
+ * @param activeCategoryText - The text content of the active category breadcrumb.
+ * @returns The URL-formatted string.
+ */
+export const formatCategoryUrlSegment = (activeCategoryText: string | null) => {
+  const lowercasedText = activeCategoryText?.toLowerCase() ?? ''
+  return lowercasedText.replace(/ \d+$/, '-')
+}
+
+// --- Test-Specific Helpers (Actions) ---
 
 /**
  * Extracts all unique, absolute, non-mailto, non-hash links from the page.
@@ -58,37 +148,86 @@ export async function getAllLinksFromPage(page: Page): Promise<Set<string>> {
 }
 
 /**
- * Returns test user e-mail address and password.
- * To avoid conflicts in parallel test execution, each browser has dedicated test user.
- * Test user email and password keys are stored in constant object `USER_ACCOUNT` within `/playwright/support/constants.ts`.
- * Their values should be defined via environment variables.
+ * Navigates to a Product Listing Page (PLP) based on the current device (mobile or desktop).
+ * This function encapsulates the device-specific navigation flow.
+ *
+ * @param page - The Playwright Page object.
+ * @param mobileNavigation - The MobileNavigation Page Object.
+ * @param mainNavigation - The MainNavigation Page Object.
  */
-export const getUserForBrowser = (
-  browserName: string,
-): { email: string; password: string } => {
-  const browserUserMap: Record<string, string> = {
-    /** Should be defined via environment variable `TEST_USER_EMAIL1` */
-    chromium: 'testUserEmail1',
-    /** Should be defined via environment variable `TEST_USER_EMAIL2` */
-    firefox: 'testUserEmail2',
-    /** Should be defined via environment variable `TEST_USER_EMAIL3` */
-    webkit: 'testUserEmail3',
-    /** Should be defined via environment variable `TEST_USER_EMAIL4` */
-    'mobile-chrome': 'testUserEmail4',
-    /** Should be defined via environment variable `TEST_USER_EMAIL5` */
-    'mobile-safari': 'testUserEmail5',
-    /** Default fallback is testUserEmail1, but it is strongly recommended to define dedicated test user for every browser. */
-    default: 'testUserEmail1',
-  }
-
-  const userEmailKey = browserUserMap[browserName] || browserUserMap.default
-
-  return {
-    email: TEST_USERS[userEmailKey as keyof typeof TEST_USERS],
-    /** Password should be defined via environment variable TEST_USER_PASSWORD */
-    password: TEST_USERS.testUserPassword,
+export async function navigateToPlp(
+  page: Page,
+  mobileNavigation: MobileNavigation,
+  mainNavigation: MainNavigation,
+) {
+  if (isMobile(page)) {
+    await mobileNavigation.openPlpMobile()
+  } else {
+    await mainNavigation.navigateToPlpMainCategory()
   }
 }
+
+/**
+ * Applies a sorting option on a Product Listing Page (PLP), adapting the interaction
+ * based on whether the current context is mobile or desktop.
+ * This function encapsulates the device-specific sorting flow.
+ *
+ * @param page - The Playwright Page object.
+ * @param filters - The Filters Page Object (must extend Base to have responsiveIndex).
+ * @param sorting - The Sorting Page Object (must extend Base).
+ * @param plp - The ProductListingPage Page Object (must extend Base, used for responsiveIndex).
+ * @param sortingOption - The specific sorting parameter to apply (e.g., 'price_desc', 'price_asc').
+ */
+export async function applySorting(
+  page: Page,
+  filters: Filters,
+  sorting: Sorting,
+  plp: ProductListingPage,
+  sortingOption: string,
+) {
+  if (isMobile(page)) {
+    await filters.filterButton.nth(plp.responsiveElementIndex).click()
+    await sorting.applySortingMobile(sortingOption)
+    await filters.closeFiltersButton.first().click()
+  } else {
+    await sorting.applySortingDesktop(sortingOption, 0)
+  }
+}
+
+/**
+ * Executes a search operation based on the current device (mobile or desktop).
+ * This function encapsulates the device-specific search execution flow and handles
+ * different post-typing actions (e.g., pressing Enter, clicking a suggestion).
+ *
+ * @param page - The Playwright Page object.
+ * @param mobileNavigation - The MobileNavigation Page Object.
+ * @param search - The Search Page Object.
+ * @param searchTerm - The term to search for.
+ * @param action - Optional. Defines how the search is completed.
+ * 'enter': (Default) Submits by pressing Enter.
+ * 'clickSuggestion': Clicks the first search suggestion.
+ * 'typeOnly': Only types the search term, no submission.
+ * 'clickMoreResults': Clicks "See all results" button.
+ */
+export async function executeSearch(
+  page: Page,
+  mobileNavigation: MobileNavigation,
+  search: Search,
+  searchTerm: string,
+  action:
+    | 'enter'
+    | 'clickSuggestion'
+    | 'typeOnly'
+    | 'clickMoreResults' = 'enter',
+) {
+  if (isMobile(page)) {
+    await mobileNavigation.executeSearchMobile(searchTerm, action)
+  } else {
+    await search.executeSearchDesktop(searchTerm, action)
+  }
+}
+
+// --- Test-Specific Helpers (Assertions) ---
 
 /**
  * Verifies various SEO (Search Engine Optimization) meta tags and attributes on a given page.
@@ -127,44 +266,45 @@ export async function verifySeoMetaTags(page: Page, options: SeoOptions) {
 }
 
 /**
- * Cleans a navigation item label by removing all digits and trimming whitespace.
- * This is typically used to extract the pure category name from a label that
- * might include a product counter (e.g., "Dresses 123" becomes "Dresses").
+ * Asserts the visibility of filter and sort buttons on a Product Listing Page (PLP),
+ * adapting assertions based on whether the device is mobile or desktop.
  *
- * @param stringValue - The raw string value of the navigation item label.
- * @returns The cleaned string value without digits and leading/trailing whitespace.
+ * @param page - The Playwright Page object.
+ * @param filters - The Filters Page Object.
+ * @param sorting - The Sorting Page Object.
  */
-export const navigationItemLabel = (stringValue: string) =>
-  stringValue.replace(/\d/g, '').trim()
-
-/**
- * Formats an active category breadcrumb label into a URL-friendly segment.
- * It converts the string to lowercase and replaces a trailing product counter
- * (e.g., " 123") with a hyphen "-".
- * Example: "Bekleidung 123" becomes "bekleidung-"
- *
- * @param activeCategoryText - The text content of the active category breadcrumb.
- * @returns The URL-formatted string.
- */
-export const formatCategoryUrlSegment = (activeCategoryText: string | null) => {
-  const lowercasedText = activeCategoryText?.toLowerCase() ?? ''
-  return lowercasedText.replace(/ \d+$/, '-')
+export async function assertFilterAndSortButtons(
+  page: Page,
+  filters: Filters,
+  sorting: Sorting,
+) {
+  if (isMobile(page)) {
+    await expect(
+      filters.filterButton.nth(filters.responsiveElementIndex),
+    ).toBeVisible()
+  } else {
+    await expect(
+      sorting.sortDropdown.nth(filters.responsiveElementIndex),
+    ).toBeVisible()
+    await expect(
+      filters.filterButton.nth(filters.responsiveElementIndex),
+    ).toBeVisible()
+  }
 }
 
 /**
- * Retrieves a required environment variable, throwing an error if it is not set.
- * @param key The name of the environment variable.
- * @returns The value of the environment variable (guaranteed string).
- * @throws {Error} If the environment variable is not set.
+ * Asserts the visibility of the filter counter, adapting to mobile or desktop specific locators.
+ *
+ * @param filters - The Filters Page Object (must extend Base to have responsiveIndex).
+ * @param expectedVisibility - True if the filter counter is expected to be visible, false otherwise.
  */
-export function getRequiredEnv(key: string): string {
-  const value = process.env[key]
+export async function assertFilterCounter(
+  filters: Filters,
+  expectedVisibility: boolean = true,
+) {
+  const targetFilterCounter = filters.filterToggleCounter.nth(
+    filters.responsiveElementIndex,
+  )
 
-  if (value === undefined) {
-    throw new Error(
-      `Environment variable '${key}' is required but not set. Please check your .env file or CI/CD configuration.`,
-    )
-  }
-
-  return value
+  await expect(targetFilterCounter).toBeVisible({ visible: expectedVisibility })
 }

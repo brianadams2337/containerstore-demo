@@ -1,14 +1,13 @@
 import type { Locator, Page } from '@playwright/test'
 import { expect } from '@playwright/test'
+import { Base } from './base/base'
 
 /**
  * Page Object Model for the User's Orders Page.
  * Encapsulates locators and methods for viewing order history,
  * inspecting order details, and interacting with pagination.
  */
-export class OrdersPage {
-  private readonly page: Page
-
+export class OrdersPage extends Base {
   // --- Order List Locators ---
   readonly orderListItem: Locator
   readonly orderListItemTitle: Locator
@@ -41,7 +40,8 @@ export class OrdersPage {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
+
     this.orderListItem = page.getByTestId('order-history-list-item')
     this.orderListItemTitle = page.getByTestId('order-list-item-title')
     this.orderListItemData = page.getByTestId('order-list-item-data')

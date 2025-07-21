@@ -1,14 +1,13 @@
 import type { Locator, Page } from '@playwright/test'
 import { expect } from '@playwright/test'
+import { Base } from '../base/base'
 
 /**
  * Page Object Model for the Country Detector modal.
  * Encapsulates locators and methods for interacting with and asserting states of
  * the country/shop selection popup that might appear on first visit.
  */
-export class CountryDetector {
-  private readonly page: Page
-
+export class CountryDetector extends Base {
   // --- Country Detector Elements ---
   readonly closeButton: Locator
   readonly switchShopButton: Locator
@@ -19,7 +18,8 @@ export class CountryDetector {
    * @param page - The Playwright Page object.
    */
   constructor(page: Page) {
-    this.page = page
+    super(page)
+
     this.closeButton = page.getByTestId('close-button')
     this.switchShopButton = page.getByTestId('button-switch-shop')
     this.stayInShopButton = page.getByTestId('button-stay-in-shop')
