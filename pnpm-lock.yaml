@@ -315,7 +315,7 @@ importers:
         specifier: 2.4.2
         version: 2.4.2
       license-checker-rseidelsohn:
-        specifier: ^4.4.2
+        specifier: 4.4.2
         version: 4.4.2
       lint-staged:
         specifier: 16.1.2
