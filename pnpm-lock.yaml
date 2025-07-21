@@ -42,31 +42,31 @@ importers:
         version: 0.13.10(@opentelemetry/api-logs@0.203.0)(@opentelemetry/resources@2.0.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-logs@0.203.0(@opentelemetry/api@1.9.0))(h3@1.15.3)(magicast@0.3.5)
       '@scayle/omnichannel-nuxt':
         specifier: 4.3.2
-        version: 4.3.2(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(magicast@0.3.5)
+        version: 4.3.2(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(magicast@0.3.5)
       '@scayle/storefront-basket':
         specifier: 0.3.0
-        version: 0.3.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))
+        version: 0.3.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))
       '@scayle/storefront-country-detection':
         specifier: 2.0.0
-        version: 2.0.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(@vueuse/core@13.5.0(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+        version: 2.0.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(@vueuse/core@13.5.0(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
       '@scayle/storefront-navigation':
         specifier: 0.3.0
-        version: 0.3.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))
+        version: 0.3.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))
       '@scayle/storefront-nuxt':
         specifier: 8.33.2
-        version: 8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))
+        version: 8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))
       '@scayle/storefront-product-detail':
         specifier: 1.5.0
-        version: 1.5.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(@vue/test-utils@2.4.6)(@vueuse/core@13.5.0(vue@3.5.17(typescript@5.8.3)))(schema-dts@1.1.5)(vue-router@4.5.1(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+        version: 1.5.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(@vue/test-utils@2.4.6)(@vueuse/core@13.5.0(vue@3.5.17(typescript@5.8.3)))(schema-dts@1.1.5)(vue-router@4.5.1(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
       '@scayle/storefront-product-listing':
         specifier: 2.0.1
-        version: 2.0.1(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(@vueuse/core@13.5.0(vue@3.5.17(typescript@5.8.3)))(fishery@2.3.1)(vue-router@4.5.1(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+        version: 2.0.1(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(@vueuse/core@13.5.0(vue@3.5.17(typescript@5.8.3)))(fishery@2.3.1)(vue-router@4.5.1(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
       '@scayle/storefront-promotions':
         specifier: 2.2.0
-        version: 2.2.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))
+        version: 2.2.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))
       '@scayle/storefront-search':
         specifier: 0.3.0
-        version: 0.3.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
+        version: 0.3.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
       '@scayle/unstorage-compression-driver':
         specifier: 1.0.0
         version: 1.0.0(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))
@@ -114,7 +114,7 @@ importers:
         version: 13.5.0(axios@1.10.0(debug@4.4.1))(change-case@5.4.4)(focus-trap@7.6.5)(fuse.js@7.1.0)(jwt-decode@4.0.0)(vue@3.5.17(typescript@5.8.3))
       '@vueuse/nuxt':
         specifier: 13.5.0
-        version: 13.5.0(magicast@0.3.5)(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(vue@3.5.17(typescript@5.8.3))
+        version: 13.5.0(magicast@0.3.5)(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(vue@3.5.17(typescript@5.8.3))
       axios:
         specifier: 1.10.0
         version: 1.10.0(debug@4.4.1)
@@ -217,7 +217,7 @@ importers:
         version: 9.5.6(@vue/compiler-dom@3.5.17)(eslint@9.31.0(jiti@2.4.2))(magicast@0.3.5)(rollup@4.45.1)(vue@3.5.17(typescript@5.8.3))
       '@nuxtjs/storybook':
         specifier: 8.4.1
-        version: 8.4.1(@types/node@22.16.4)(eslint@9.31.0(jiti@2.4.2))(magicast@0.3.5)(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(optionator@0.9.4)(rollup@4.45.1)(storybook@9.0.5(@testing-library/dom@9.3.4)(prettier@3.0.3))(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))(yaml@2.8.0)
+        version: 8.4.1(@types/node@22.16.4)(eslint@9.31.0(jiti@2.4.2))(magicast@0.3.5)(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(optionator@0.9.4)(rollup@4.45.1)(storybook@9.0.5(@testing-library/dom@9.3.4)(prettier@3.0.3))(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))(yaml@2.8.0)
       '@nuxtjs/tailwindcss':
         specifier: 6.14.0
         version: 6.14.0(magicast@0.3.5)(ts-node@10.9.2(@types/node@22.16.4)(typescript@5.8.3))
@@ -241,7 +241,7 @@ importers:
         version: 2.0.2(prettier@3.0.3)
       '@storybook-vue/nuxt':
         specifier: 8.4.1
-        version: 8.4.1(@types/node@22.16.4)(eslint@9.31.0(jiti@2.4.2))(magicast@0.3.5)(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(optionator@0.9.4)(rollup@4.45.1)(storybook@9.0.5(@testing-library/dom@9.3.4)(prettier@3.0.3))(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))(yaml@2.8.0)
+        version: 8.4.1(@types/node@22.16.4)(eslint@9.31.0(jiti@2.4.2))(magicast@0.3.5)(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(optionator@0.9.4)(rollup@4.45.1)(storybook@9.0.5(@testing-library/dom@9.3.4)(prettier@3.0.3))(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))(yaml@2.8.0)
       '@storybook/addon-a11y':
         specifier: 9.0.5
         version: 9.0.5(storybook@9.0.5(@testing-library/dom@9.3.4)(prettier@3.0.3))
@@ -322,7 +322,7 @@ importers:
         version: 16.1.2
       nuxt:
         specifier: 3.17.7
-        version: 3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0)
+        version: 3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0)
       nuxt-svgo:
         specifier: 4.2.4
         version: 4.2.4(magicast@0.3.5)(vue@3.5.17(typescript@5.8.3))
@@ -378,8 +378,8 @@ importers:
         specifier: 1.0.1
         version: 1.0.1(@testing-library/vue@8.1.0(@vue/compiler-sfc@3.5.17)(vue@3.5.17(typescript@5.8.3)))(@vue/test-utils@2.4.6)(happy-dom@18.0.1)(magicast@0.3.5)(typescript@5.8.3)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.16.4)(happy-dom@18.0.1)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))
       vue-tsc:
-        specifier: 3.0.2
-        version: 3.0.2(typescript@5.8.3)
+        specifier: 3.0.3
+        version: 3.0.3(typescript@5.8.3)
 
 packages:
 
@@ -3321,26 +3321,17 @@ packages:
   '@volar/language-core@2.4.15':
     resolution: {integrity: sha512-3VHw+QZU0ZG9IuQmzT68IyN4hZNd9GchGPhbD9+pa8CVv7rnoOZwo7T8weIbrRmihqy3ATpdfXFnqRrfPVK6CA==}
 
-  '@volar/language-core@2.4.19':
-    resolution: {integrity: sha512-i0aLpNA8DYZ2uG05t5K47nUWe+zvvrN9tfz16zS5pCJV9td8F0u+rVAOVSQ1ypufDLUD+ej9BH2/lmug4+lawQ==}
-
   '@volar/language-core@2.4.20':
     resolution: {integrity: sha512-dRDF1G33xaAIDqR6+mXUIjXYdu9vzSxlMGfMEwBxQsfY/JMUEXSpLTR057oTKlUQ2nIvCmP9k94A8h8z2VrNSA==}
 
   '@volar/source-map@2.4.15':
     resolution: {integrity: sha512-CPbMWlUN6hVZJYGcU/GSoHu4EnCHiLaXI9n8c9la6RaI9W5JHX+NqG+GSQcB0JdC2FIBLdZJwGsfKyBB71VlTg==}
 
-  '@volar/source-map@2.4.19':
-    resolution: {integrity: sha512-ttWmO/Ld7r3ebIPPAYvAuSLrlJ96ZALPka44mD4sWA8bw2n9u7TGnMcaTUkiF0GLG8bq/K09beWmEAB1mqMy/A==}
-
   '@volar/source-map@2.4.20':
     resolution: {integrity: sha512-mVjmFQH8mC+nUaVwmbxoYUy8cww+abaO8dWzqPUjilsavjxH0jCJ3Mp8HFuHsdewZs2c+SP+EO7hCd8Z92whJg==}
 
   '@volar/typescript@2.4.15':
     resolution: {integrity: sha512-2aZ8i0cqPGjXb4BhkMsPYDkkuc2ZQ6yOpqwAuNwUoncELqoy5fRgOQtLR9gB0g902iS0NAkvpIzs27geVyVdPg==}
-
-  '@volar/typescript@2.4.19':
-    resolution: {integrity: sha512-Xgo4QLuqusu2fqw4LCeoOY57d5UCn+fNUWZTg4PFubw07jBFFCSJIuJ7BDrRM3EZHDjCqq1RmUO9wkYihnM+8Q==}
 
   '@volar/typescript@2.4.20':
     resolution: {integrity: sha512-Oc4DczPwQyXcVbd+5RsNEqX6ia0+w3p+klwdZQ6ZKhFjWoBP9PCPQYlKYRi/tDemWphW93P/Vv13vcE9I9D2GQ==}
@@ -3410,14 +3401,6 @@ packages:
 
   '@vue/language-core@2.2.12':
     resolution: {integrity: sha512-IsGljWbKGU1MZpBPN+BvPAdr55YPkj2nB/TBNGNC32Vy2qLG25DYu/NBN2vNtZqdRbTRjaoYrahLrToim2NanA==}
-    peerDependencies:
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-
-  '@vue/language-core@3.0.2':
-    resolution: {integrity: sha512-+UfQNLLbb0XbwqNjYOUphDVo6vtjtkWHncfZz92TfGNc5OXgNKFhygMuT8PvyZk4e8rjzrsSYay3d5HfjG3ipQ==}
     peerDependencies:
       typescript: '*'
     peerDependenciesMeta:
@@ -9640,8 +9623,8 @@ packages:
   vue-slider-component@4.1.0-beta.7:
     resolution: {integrity: sha512-Qb7K920ZG7PoQswoF6Ias+i3W2rd3k4fpk04JUl82kEUcN86Yg6et7bVSKWt/7VpQe8a5IT3BqCKSCOZ7AJgCA==}
 
-  vue-tsc@3.0.2:
-    resolution: {integrity: sha512-DLdFSqY28f9i32XUqASldO4VxPccQbLovlglnaWUtkQ/yzl+IJprEhy/N1T4cbcEhR31G4CDE7FRLdwsT/2Qeg==}
+  vue-tsc@3.0.3:
+    resolution: {integrity: sha512-uU1OMSzWE8/y0+kDTc0iEIu9v82bmFkGyJpAO/x3wQqBkkHkButKgtygREyOkxL4E/xtcf/ExvgNhhjdzonldw==}
     hasBin: true
     peerDependencies:
       typescript: '>=5.0.0'
@@ -11312,7 +11295,7 @@ snapshots:
       - magicast
       - typescript
 
-  '@nuxt/vite-builder@3.17.7(@types/node@22.16.4)(eslint@9.31.0(jiti@2.4.2))(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vue-tsc@3.0.2(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))(yaml@2.8.0)':
+  '@nuxt/vite-builder@3.17.7(@types/node@22.16.4)(eslint@9.31.0(jiti@2.4.2))(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vue-tsc@3.0.3(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))(yaml@2.8.0)':
     dependencies:
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
       '@rollup/plugin-replace': 6.0.2(rollup@4.45.1)
@@ -11344,7 +11327,7 @@ snapshots:
       unenv: 2.0.0-rc.18
       vite: 6.3.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0)
       vite-node: 3.2.4(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0)
-      vite-plugin-checker: 0.10.0(eslint@9.31.0(jiti@2.4.2))(optionator@0.9.4)(typescript@5.8.3)(vite@6.3.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))
+      vite-plugin-checker: 0.10.0(eslint@9.31.0(jiti@2.4.2))(optionator@0.9.4)(typescript@5.8.3)(vite@6.3.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))
       vue: 3.5.17(typescript@5.8.3)
       vue-bundle-renderer: 2.1.1
     transitivePeerDependencies:
@@ -11408,11 +11391,11 @@ snapshots:
       - supports-color
       - vue
 
-  '@nuxtjs/storybook@8.4.1(@types/node@22.16.4)(eslint@9.31.0(jiti@2.4.2))(magicast@0.3.5)(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(optionator@0.9.4)(rollup@4.45.1)(storybook@9.0.5(@testing-library/dom@9.3.4)(prettier@3.0.3))(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))(yaml@2.8.0)':
+  '@nuxtjs/storybook@8.4.1(@types/node@22.16.4)(eslint@9.31.0(jiti@2.4.2))(magicast@0.3.5)(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(optionator@0.9.4)(rollup@4.45.1)(storybook@9.0.5(@testing-library/dom@9.3.4)(prettier@3.0.3))(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))(yaml@2.8.0)':
     dependencies:
       '@nuxt/devtools-kit': 2.6.2(magicast@0.3.5)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
-      '@storybook-vue/nuxt': 8.4.1(@types/node@22.16.4)(eslint@9.31.0(jiti@2.4.2))(magicast@0.3.5)(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(optionator@0.9.4)(rollup@4.45.1)(storybook@9.0.5(@testing-library/dom@9.3.4)(prettier@3.0.3))(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))(yaml@2.8.0)
+      '@storybook-vue/nuxt': 8.4.1(@types/node@22.16.4)(eslint@9.31.0(jiti@2.4.2))(magicast@0.3.5)(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(optionator@0.9.4)(rollup@4.45.1)(storybook@9.0.5(@testing-library/dom@9.3.4)(prettier@3.0.3))(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))(yaml@2.8.0)
       chalk: 5.4.1
       consola: 3.4.2
       defu: 6.1.4
@@ -12907,10 +12890,10 @@ snapshots:
       - magicast
       - supports-color
 
-  '@scayle/omnichannel-nuxt@4.3.2(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(magicast@0.3.5)':
+  '@scayle/omnichannel-nuxt@4.3.2(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(magicast@0.3.5)':
     dependencies:
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
-      '@scayle/storefront-nuxt': 8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))
+      '@scayle/storefront-nuxt': 8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))
       qs: 6.14.0
       utility-types: 3.11.0
     transitivePeerDependencies:
@@ -12927,10 +12910,10 @@ snapshots:
     optionalDependencies:
       fishery: 2.3.1
 
-  '@scayle/storefront-basket@0.3.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))':
+  '@scayle/storefront-basket@0.3.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))':
     dependencies:
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
-      '@scayle/storefront-nuxt': 8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))
+      '@scayle/storefront-nuxt': 8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))
 
   '@scayle/storefront-core@8.33.2(fishery@2.3.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))':
     dependencies:
@@ -12947,19 +12930,19 @@ snapshots:
     transitivePeerDependencies:
       - unstorage
 
-  '@scayle/storefront-country-detection@2.0.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(@vueuse/core@13.5.0(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))':
+  '@scayle/storefront-country-detection@2.0.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(@vueuse/core@13.5.0(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))':
     dependencies:
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
-      '@scayle/storefront-nuxt': 8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))
+      '@scayle/storefront-nuxt': 8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))
       '@vueuse/core': 13.5.0(vue@3.5.17(typescript@5.8.3))
       vue: 3.5.17(typescript@5.8.3)
 
-  '@scayle/storefront-navigation@0.3.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))':
+  '@scayle/storefront-navigation@0.3.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))':
     dependencies:
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
-      '@scayle/storefront-nuxt': 8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))
+      '@scayle/storefront-nuxt': 8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))
 
-  '@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))':
+  '@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))':
     dependencies:
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
       '@opentelemetry/api': 1.9.0
@@ -12978,7 +12961,7 @@ snapshots:
       jose: 6.0.12
       knitwork: 1.2.0
       nitropack: 2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)
-      nuxt: 3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0)
+      nuxt: 3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0)
       ofetch: 1.4.1
       schema-dts: 1.1.5
       ufo: 1.6.1
@@ -13011,34 +12994,34 @@ snapshots:
       - supports-color
       - uploadthing
 
-  '@scayle/storefront-product-detail@1.5.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(@vue/test-utils@2.4.6)(@vueuse/core@13.5.0(vue@3.5.17(typescript@5.8.3)))(schema-dts@1.1.5)(vue-router@4.5.1(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))':
+  '@scayle/storefront-product-detail@1.5.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(@vue/test-utils@2.4.6)(@vueuse/core@13.5.0(vue@3.5.17(typescript@5.8.3)))(schema-dts@1.1.5)(vue-router@4.5.1(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))':
     dependencies:
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
-      '@scayle/storefront-nuxt': 8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))
+      '@scayle/storefront-nuxt': 8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))
       '@vue/test-utils': 2.4.6
       '@vueuse/core': 13.5.0(vue@3.5.17(typescript@5.8.3))
       schema-dts: 1.1.5
       vue: 3.5.17(typescript@5.8.3)
       vue-router: 4.5.1(vue@3.5.17(typescript@5.8.3))
 
-  '@scayle/storefront-product-listing@2.0.1(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(@vueuse/core@13.5.0(vue@3.5.17(typescript@5.8.3)))(fishery@2.3.1)(vue-router@4.5.1(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))':
+  '@scayle/storefront-product-listing@2.0.1(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(@vueuse/core@13.5.0(vue@3.5.17(typescript@5.8.3)))(fishery@2.3.1)(vue-router@4.5.1(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))':
     dependencies:
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
-      '@scayle/storefront-nuxt': 8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))
+      '@scayle/storefront-nuxt': 8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))
       '@vueuse/core': 13.5.0(vue@3.5.17(typescript@5.8.3))
       fishery: 2.3.1
       vue: 3.5.17(typescript@5.8.3)
       vue-router: 4.5.1(vue@3.5.17(typescript@5.8.3))
 
-  '@scayle/storefront-promotions@2.2.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))':
+  '@scayle/storefront-promotions@2.2.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))':
     dependencies:
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
-      '@scayle/storefront-nuxt': 8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))
+      '@scayle/storefront-nuxt': 8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))
 
-  '@scayle/storefront-search@0.3.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))':
+  '@scayle/storefront-search@0.3.0(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-nuxt@8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))':
     dependencies:
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
-      '@scayle/storefront-nuxt': 8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))
+      '@scayle/storefront-nuxt': 8.33.2(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.9.0(fishery@2.3.1))(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.2(@upstash/redis@1.35.1)(@vercel/kv@3.0.0))(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.17(typescript@5.8.3))
       vue: 3.5.17(typescript@5.8.3)
 
   '@scayle/unstorage-compression-driver@1.0.0(unstorage@1.16.0(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))':
@@ -13080,18 +13063,18 @@ snapshots:
       '@storyblok/js': 4.2.0
       vue: 3.5.17(typescript@5.8.3)
 
-  '@storybook-vue/nuxt@8.4.1(@types/node@22.16.4)(eslint@9.31.0(jiti@2.4.2))(magicast@0.3.5)(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(optionator@0.9.4)(rollup@4.45.1)(storybook@9.0.5(@testing-library/dom@9.3.4)(prettier@3.0.3))(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))(yaml@2.8.0)':
+  '@storybook-vue/nuxt@8.4.1(@types/node@22.16.4)(eslint@9.31.0(jiti@2.4.2))(magicast@0.3.5)(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(optionator@0.9.4)(rollup@4.45.1)(storybook@9.0.5(@testing-library/dom@9.3.4)(prettier@3.0.3))(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))(yaml@2.8.0)':
     dependencies:
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
       '@nuxt/schema': 3.17.7
-      '@nuxt/vite-builder': 3.17.7(@types/node@22.16.4)(eslint@9.31.0(jiti@2.4.2))(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vue-tsc@3.0.2(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))(yaml@2.8.0)
+      '@nuxt/vite-builder': 3.17.7(@types/node@22.16.4)(eslint@9.31.0(jiti@2.4.2))(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vue-tsc@3.0.3(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))(yaml@2.8.0)
       '@rollup/plugin-replace': 6.0.2(rollup@4.45.1)
       '@storybook/builder-vite': 9.0.5(storybook@9.0.5(@testing-library/dom@9.3.4)(prettier@3.0.3))(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))
       '@storybook/vue3': 9.0.5(storybook@9.0.5(@testing-library/dom@9.3.4)(prettier@3.0.3))(vue@3.5.17(typescript@5.8.3))
       '@storybook/vue3-vite': 9.0.5(storybook@9.0.5(@testing-library/dom@9.3.4)(prettier@3.0.3))(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue@3.5.17(typescript@5.8.3))
       json-stable-stringify: 1.3.0
       mlly: 1.7.4
-      nuxt: 3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0)
+      nuxt: 3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0)
       ofetch: 1.4.1
       pathe: 2.0.3
       storybook: 9.0.5(@testing-library/dom@9.3.4)(prettier@3.0.3)
@@ -13828,29 +13811,17 @@ snapshots:
     dependencies:
       '@volar/source-map': 2.4.15
 
-  '@volar/language-core@2.4.19':
-    dependencies:
-      '@volar/source-map': 2.4.19
-
   '@volar/language-core@2.4.20':
     dependencies:
       '@volar/source-map': 2.4.20
 
   '@volar/source-map@2.4.15': {}
 
-  '@volar/source-map@2.4.19': {}
-
   '@volar/source-map@2.4.20': {}
 
   '@volar/typescript@2.4.15':
     dependencies:
       '@volar/language-core': 2.4.15
-      path-browserify: 1.0.1
-      vscode-uri: 3.1.0
-
-  '@volar/typescript@2.4.19':
-    dependencies:
-      '@volar/language-core': 2.4.19
       path-browserify: 1.0.1
       vscode-uri: 3.1.0
 
@@ -13986,19 +13957,6 @@ snapshots:
     optionalDependencies:
       typescript: 5.8.3
 
-  '@vue/language-core@3.0.2(typescript@5.8.3)':
-    dependencies:
-      '@volar/language-core': 2.4.19
-      '@vue/compiler-dom': 3.5.17
-      '@vue/compiler-vue2': 2.7.16
-      '@vue/shared': 3.5.17
-      alien-signals: 2.0.5
-      muggle-string: 0.4.1
-      path-browserify: 1.0.1
-      picomatch: 4.0.3
-    optionalDependencies:
-      typescript: 5.8.3
-
   '@vue/language-core@3.0.3(typescript@5.8.3)':
     dependencies:
       '@volar/language-core': 2.4.20
@@ -14095,13 +14053,13 @@ snapshots:
 
   '@vueuse/metadata@13.5.0': {}
 
-  '@vueuse/nuxt@13.5.0(magicast@0.3.5)(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0))(vue@3.5.17(typescript@5.8.3))':
+  '@vueuse/nuxt@13.5.0(magicast@0.3.5)(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(vue@3.5.17(typescript@5.8.3))':
     dependencies:
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
       '@vueuse/core': 13.5.0(vue@3.5.17(typescript@5.8.3))
       '@vueuse/metadata': 13.5.0
       local-pkg: 1.1.1
-      nuxt: 3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0)
+      nuxt: 3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0)
       vue: 3.5.17(typescript@5.8.3)
     transitivePeerDependencies:
       - magicast
@@ -18440,7 +18398,7 @@ snapshots:
     transitivePeerDependencies:
       - magicast
 
-  nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3))(yaml@2.8.0):
+  nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.4)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0):
     dependencies:
       '@nuxt/cli': 3.26.2(magicast@0.3.5)
       '@nuxt/devalue': 2.0.2
@@ -18448,7 +18406,7 @@ snapshots:
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
       '@nuxt/schema': 3.17.7
       '@nuxt/telemetry': 2.6.6(magicast@0.3.5)
-      '@nuxt/vite-builder': 3.17.7(@types/node@22.16.4)(eslint@9.31.0(jiti@2.4.2))(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vue-tsc@3.0.2(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))(yaml@2.8.0)
+      '@nuxt/vite-builder': 3.17.7(@types/node@22.16.4)(eslint@9.31.0(jiti@2.4.2))(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vue-tsc@3.0.3(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))(yaml@2.8.0)
       '@unhead/vue': 2.0.12(vue@3.5.17(typescript@5.8.3))
       '@vue/shared': 3.5.17
       c12: 3.1.0(magicast@0.3.5)
@@ -20969,7 +20927,7 @@ snapshots:
       - tsx
       - yaml
 
-  vite-plugin-checker@0.10.0(eslint@9.31.0(jiti@2.4.2))(optionator@0.9.4)(typescript@5.8.3)(vite@6.3.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.2(typescript@5.8.3)):
+  vite-plugin-checker@0.10.0(eslint@9.31.0(jiti@2.4.2))(optionator@0.9.4)(typescript@5.8.3)(vite@6.3.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3)):
     dependencies:
       '@babel/code-frame': 7.27.1
       chokidar: 4.0.3
@@ -20985,7 +20943,7 @@ snapshots:
       eslint: 9.31.0(jiti@2.4.2)
       optionator: 0.9.4
       typescript: 5.8.3
-      vue-tsc: 3.0.2(typescript@5.8.3)
+      vue-tsc: 3.0.3(typescript@5.8.3)
 
   vite-plugin-inspect@11.3.0(@nuxt/kit@3.17.7(magicast@0.3.5))(vite@7.0.5(@types/node@22.16.4)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0)):
     dependencies:
@@ -21194,10 +21152,10 @@ snapshots:
 
   vue-slider-component@4.1.0-beta.7: {}
 
-  vue-tsc@3.0.2(typescript@5.8.3):
+  vue-tsc@3.0.3(typescript@5.8.3):
     dependencies:
-      '@volar/typescript': 2.4.19
-      '@vue/language-core': 3.0.2(typescript@5.8.3)
+      '@volar/typescript': 2.4.20
+      '@vue/language-core': 3.0.3(typescript@5.8.3)
       typescript: 5.8.3
 
   vue@3.5.17(typescript@5.8.3):
