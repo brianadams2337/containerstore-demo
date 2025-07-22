@@ -131,7 +131,7 @@ test('C2132198 C2162476 Verify add to Basket', async ({
   })
 
   /**
-   * As a part of verifying Basket functionailities, this step verifies Basket SEO data.
+   * As a part of verifying Basket functionalities, this step verifies Basket SEO data.
    * Since the product is in Basket, the page is loaded and user is logged-in,
    * this step eliminates the need to repeat adding to basket and logging in in a separated test.
    */

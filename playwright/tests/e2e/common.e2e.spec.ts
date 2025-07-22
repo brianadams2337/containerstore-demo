@@ -4,7 +4,7 @@ import { isMobile } from '../../support/utils'
 import { ROUTES } from '../../support/constants'
 
 /**
- * @file Contains end-to-end common to all pages accross Storefront Application.
+ * @file Contains end-to-end common to all pages across Storefront Application.
  */
 
 test.beforeEach(async ({ homePage, countryDetector, page }) => {
