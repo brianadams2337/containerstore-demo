@@ -80,8 +80,8 @@ importers:
         specifier: 3.5.0
         version: 3.5.0
       '@storyblok/vue':
-        specifier: 9.2.0
-        version: 9.2.0(vue@3.5.17(typescript@5.8.3))
+        specifier: 9.2.1
+        version: 9.2.1(vue@3.5.17(typescript@5.8.3))
       '@tailwindcss/forms':
         specifier: 0.5.10
         version: 0.5.10(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.16.5)(typescript@5.8.3)))
@@ -2714,6 +2714,9 @@ packages:
   '@storyblok/js@4.2.0':
     resolution: {integrity: sha512-mZcnpwn36ZWf60Jrn1ArLYvDNfPa2EeKsmrF59za8rk1/CDnzBusvnGB+blPIe1xPBjVd8np3MxkY/KKP++QJQ==}
 
+  '@storyblok/js@4.2.1':
+    resolution: {integrity: sha512-bq1OQunS2C8YSse2BaazH/c8FNBhOh6LO47tCBB3xEQRz2B54/jxFBo2dgJyKrRiUqkqnIN4bVRHDvaBdtFqOQ==}
+
   '@storyblok/nuxt@7.2.0':
     resolution: {integrity: sha512-uYaQlqf8sQnsjZWEFDe2TMBzrQombxN1bY+ukDA8Ngxs0lskfyuXi0mjZFFsJtM6AqQl9zbMZthwnOP1fLB+uw==}
 
@@ -2725,6 +2728,11 @@ packages:
 
   '@storyblok/vue@9.2.0':
     resolution: {integrity: sha512-VjKQ1+bI3Tj1+cKjGbbDDd58rZ5FZUMMJZzcElKeXUW41UxUHUUEuLZdsf2E8vk6CFc64QxEgDzFaNUm6tiWTw==}
+    peerDependencies:
+      vue: 3.5.17
+
+  '@storyblok/vue@9.2.1':
+    resolution: {integrity: sha512-ZuEb/UJTzk48asyqB3+HfcUjTXtz7mjRX7Ch2pyaY9L9Sny17tr2Xme7XBK4gFSXwoGls8QyHMnI8iLwmrf6vg==}
     peerDependencies:
       vue: 3.5.17
 
@@ -8539,6 +8547,9 @@ packages:
   storyblok-js-client@7.1.0:
     resolution: {integrity: sha512-nOCzlVbAsfUDJJBNWiiqDo1q+tUldHoMh6Lqgger/KLaq2m+2haw9S/ad+Ru8/UU5izxzSLwc083cycdNk9Gdg==}
 
+  storyblok-js-client@7.1.1:
+    resolution: {integrity: sha512-Z1ZQR3cIkRpfgD7Zv/0TSxfttfYN3xcj1iiJ3sgsun721pqKFQLROYAy1WsuVXawE/JVYH63zYNMzqDJBLmsJw==}
+
   storyblok@3.36.1:
     resolution: {integrity: sha512-njWhjXUMlQnP/7fE5KBybK5zyk6ITDeMLfJA/rI+JDt5I+cavl692g1NkoR1cIEGlpaokWESEWJbPStlZ+f6lg==}
     engines: {node: '>=18.0.0'}
@@ -13059,6 +13070,11 @@ snapshots:
       '@storyblok/richtext': 3.5.0
       storyblok-js-client: 7.1.0
 
+  '@storyblok/js@4.2.1':
+    dependencies:
+      '@storyblok/richtext': 3.5.0
+      storyblok-js-client: 7.1.1
+
   '@storyblok/nuxt@7.2.0(vue@3.5.17(typescript@5.8.3))':
     dependencies:
       '@storyblok/vue': 9.2.0(vue@3.5.17(typescript@5.8.3))
@@ -13072,6 +13088,11 @@ snapshots:
   '@storyblok/vue@9.2.0(vue@3.5.17(typescript@5.8.3))':
     dependencies:
       '@storyblok/js': 4.2.0
+      vue: 3.5.17(typescript@5.8.3)
+
+  '@storyblok/vue@9.2.1(vue@3.5.17(typescript@5.8.3))':
+    dependencies:
+      '@storyblok/js': 4.2.1
       vue: 3.5.17(typescript@5.8.3)
 
   '@storybook-vue/nuxt@8.4.1(@types/node@22.16.5)(eslint@9.31.0(jiti@2.4.2))(magicast@0.3.5)(nuxt@3.17.7(@parcel/watcher@2.5.1)(@types/node@22.16.5)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.5)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(yaml@2.8.0))(optionator@0.9.4)(rollup@4.45.1)(storybook@9.0.5(@testing-library/dom@9.3.4)(prettier@3.0.3))(terser@5.43.1)(typescript@5.8.3)(vite@7.0.5(@types/node@22.16.5)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.3(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))(yaml@2.8.0)':
@@ -19970,6 +19991,8 @@ snapshots:
   storyblok-js-client@6.10.3: {}
 
   storyblok-js-client@7.1.0: {}
+
+  storyblok-js-client@7.1.1: {}
 
   storyblok@3.36.1(debug@4.4.1):
     dependencies:
