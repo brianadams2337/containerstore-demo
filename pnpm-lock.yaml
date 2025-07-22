@@ -161,8 +161,8 @@ importers:
         specifier: 1.1.5
         version: 1.1.5
       storyblok-js-client:
-        specifier: 7.1.0
-        version: 7.1.0
+        specifier: 7.1.1
+        version: 7.1.1
       swiper:
         specifier: 11.2.10
         version: 11.2.10
