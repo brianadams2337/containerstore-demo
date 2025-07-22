@@ -70,8 +70,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, useTemplateRef } from 'vue'
-import type { Product } from '@scayle/storefront-nuxt'
+import { nextTick, computed, ref, useTemplateRef, watch } from 'vue'
+import type { Product, Value } from '@scayle/storefront-nuxt'
 import { vElementVisibility } from '@vueuse/components'
 import { onKeyStroke, useFocus } from '@vueuse/core'
 import SFWishlistToggle from '../SFWishlistToggle.vue'
@@ -92,6 +92,7 @@ const {
   index = -1,
   multipleImages = false,
   hideBadges = false,
+  preferredPrimaryImageType,
 } = defineProps<{
   /**
    * The product object containing all product details including images, pricing, and attributes.
@@ -113,6 +114,10 @@ const {
    * Whether to hide the badges.
    */
   hideBadges?: boolean
+  /**
+   * The preferred primary image type.
+   */
+  preferredPrimaryImageType?: Value
 }>()
 
 const hasBeenVisible = ref(false)
@@ -136,7 +141,15 @@ const onMouseLeave = () => {
   emit('product-image:mouseleave')
 }
 
-const { alt, image, images, link, name } = useProductBaseInfo(() => product)
+const { alt, image, images, link, name } = useProductBaseInfo(
+  () => product,
+  () => preferredPrimaryImageType,
+)
+
+watch([images], async () => {
+  await nextTick()
+  slider.value?.scrollImageIntoView(0, 'instant')
+})
 
 const shouldShowSingleImage = computed(() => {
   return !multipleImages || images.value.length === 1 || !hasBeenVisible.value

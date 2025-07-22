@@ -50,6 +50,7 @@
           :label="$t('filter.show_filter_and_sorting')"
         />
         <SFProductList
+          :preferred-primary-image-type="primaryImageType"
           :products="products"
           :pagination="pagination"
           :current-category="currentCategory"
@@ -61,9 +62,11 @@
       </div>
     </div>
     <SFFilterSlideIn
+      :selected-primary-image-type="primaryImageType"
       :current-category-id="currentCategoryId"
       :selected-sort="selectedSort"
       :sort-links="sortLinks"
+      :primary-image-type-options="imageTypeOptions"
     />
     <Teleport to="#teleports">
       <div class="fixed bottom-8 right-4 md:bottom-24">
@@ -79,6 +82,10 @@ import {
   HttpStatusCode,
   type Product,
   type Category,
+  type Value,
+  getFirstAttributeValue,
+  type ProductImage,
+  type Product as ProductType,
 } from '@scayle/storefront-nuxt'
 import { join } from 'pathe'
 import type { SelectedSort } from '@scayle/storefront-product-listing'
@@ -125,6 +132,7 @@ import {
   SORT_REDUCTION_DESC,
 } from '#storefront-product-listing'
 import { useCategoryById } from '#storefront/composables'
+import { usePrimaryImageType } from '~/composables/usePrimaryImageType'
 
 const route = useRoute()
 const { $config } = useNuxtApp()
@@ -217,6 +225,26 @@ const { selectedSort, sortLinks, isDefaultSortSelected } = useProductListSort(
   },
 )
 const { appliedFilter } = useAppliedFilters(route)
+
+const imageTypeOptions = computed<Value[]>(() => {
+  return Array.from(
+    products.value
+      .flatMap((product: ProductType) => {
+        return product.images.filter((img: ProductImage) => {
+          return !!img.attributes?.primaryImageType
+        })
+      })
+      .reduce<Map<number, Value>>((acc, img) => {
+        const value = getFirstAttributeValue(img.attributes, 'primaryImageType')
+        if (value && value.id) {
+          acc.set(value.id, value)
+        }
+        return acc
+      }, new Map<number, Value>())
+      .values(),
+  )
+})
+const { primaryImageType } = usePrimaryImageType(() => imageTypeOptions.value)
 
 const pageNumber = computed(() => Number(route.query.page) || 1)
 const params = computed(() => ({

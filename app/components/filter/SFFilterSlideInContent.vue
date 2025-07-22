@@ -9,6 +9,17 @@
       :sort-links="sortLinks"
     />
   </SFFilterGroup>
+
+  <SFFilterGroup
+    v-if="primaryImageTypeOptions?.length"
+    class="max-md:border-t"
+    :label="$t('filter_slide_in_content.product_image_view')"
+  >
+    <SFPreferredPrimaryImageTypeToggle
+      v-model:selected-primary-image-type="selectedPrimaryImageType"
+      :primary-image-type-options="primaryImageTypeOptions"
+    />
+  </SFFilterGroup>
   <template v-for="(filter, index) in availableFilters" :key="filter.slug">
     <template
       v-if="
@@ -24,7 +35,7 @@
           (appliedFilter.minPrice !== filter.values[0]?.min ||
             appliedFilter.maxPrice !== filter.values[0]?.max)
         "
-        :class="{ 'border-t': index !== 0 }"
+        :class="{ 'border-t': index !== 0 || primaryImageTypeOptions?.length }"
         @click-reset="$emit('resetPriceFilter')"
       >
         <SFFilterRangeSlider
@@ -59,7 +70,7 @@
           (appliedFilter.minReduction !== filter.values[0]?.min ||
             appliedFilter.maxReduction !== filter.values[0]?.max)
         "
-        :class="{ 'border-t': index !== 0 }"
+        :class="{ 'border-t': index !== 0 || primaryImageTypeOptions?.length }"
         @click-reset="$emit('resetReductionFilter')"
       >
         <SFFilterRangeSlider
@@ -89,7 +100,7 @@
     </template>
     <SFFilterGroup
       v-if="filter.type === 'boolean'"
-      :class="{ 'border-t': index !== 0 }"
+      :class="{ 'border-t': index !== 0 || primaryImageTypeOptions?.length }"
     >
       <SFSwitch
         :id="filter.slug"
@@ -103,7 +114,7 @@
         v-if="filter.slug === 'color'"
         :badge="appliedAttributeValues[filter.slug]?.length"
         :label="filter.name"
-        :class="{ 'border-t': index !== 0 }"
+        :class="{ 'border-t': index !== 0 || primaryImageTypeOptions?.length }"
         class="pb-9 xl:pb-9"
         @click-reset="$emit('reset', filter.slug)"
       >
@@ -128,7 +139,7 @@
         v-else-if="filter.slug === 'size'"
         :badge="appliedAttributeValues[filter.slug]?.length"
         :label="filter.name"
-        :class="{ 'border-t': index !== 0 }"
+        :class="{ 'border-t': index !== 0 || primaryImageTypeOptions?.length }"
         @click-reset="$emit('reset', filter.slug)"
       >
         <div class="flex flex-wrap items-start gap-4">
@@ -151,7 +162,7 @@
         v-else
         :badge="appliedAttributeValues[filter.slug]?.length"
         :label="filter.name"
-        :class="{ 'border-t': index !== 0 }"
+        :class="{ 'border-t': index !== 0 || primaryImageTypeOptions?.length }"
         @click-reset="$emit('reset', filter.slug)"
       >
         <div class="flex flex-col gap-2">
@@ -176,6 +187,7 @@ import type {
   ProductSearchQuery,
   BooleanFilterItemWithValues,
   FilterItemWithValues,
+  Value,
 } from '@scayle/storefront-nuxt'
 import type {
   RangeTuple,
@@ -185,6 +197,7 @@ import type {
 import SFMobileSortSelection from '../sorting/SFMobileSortSelection.vue'
 import SFFilterColorChip from './SFFilterColorChip.vue'
 import SFFilterGroup from './SFFilterGroup.vue'
+import SFPreferredPrimaryImageTypeToggle from './SFPreferredPrimaryImageTypeToggle.vue'
 import { ProductColor } from '~~/shared/constants/product'
 import {
   SFCheckbox,
@@ -202,7 +215,10 @@ const { appliedFilter } = defineProps<{
   hideSorting: boolean
   selectedSort?: SelectedSort
   sortLinks: SortLink[]
+  primaryImageTypeOptions?: Value[]
 }>()
+
+const selectedPrimaryImageType = defineModel<Value>('selectedPrimaryImageType')
 
 const emit = defineEmits<{
   resetPriceFilter: []

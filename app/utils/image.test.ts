@@ -55,6 +55,83 @@ describe('getPrimaryImage', () => {
 
     expect(image).toEqual({ hash: 'hash1' })
   })
+
+  it('should return the first image with matching primaryImageType', () => {
+    const image = getPrimaryImage(
+      [
+        {
+          hash: 'hash1',
+        },
+        {
+          hash: 'hash2',
+          attributes: {
+            primaryImage,
+          },
+        },
+        {
+          hash: 'hash3',
+          attributes: {
+            primaryImageType: {
+              id: 1,
+              key: 'primaryImageType',
+              label: 'Primary Image Type',
+              multiSelect: false,
+              type: '',
+              values: {
+                label: 'Primary',
+                value: 'primary',
+              },
+            },
+          },
+        },
+      ],
+      'primary',
+    )
+
+    expect(image).toStrictEqual(
+      expect.objectContaining({
+        hash: 'hash3',
+      }),
+    )
+  })
+  it('should return use the primary image when the preferredPrimaryImageType is not found', () => {
+    const image = getPrimaryImage(
+      [
+        {
+          hash: 'hash1',
+        },
+        {
+          hash: 'hash2',
+          attributes: {
+            primaryImage,
+          },
+        },
+        {
+          hash: 'hash3',
+          attributes: {
+            primaryImageType: {
+              id: 1,
+              key: 'primaryImageType',
+              label: 'Primary Image Type',
+              multiSelect: false,
+              type: '',
+              values: {
+                label: 'Primary',
+                value: 'primary',
+              },
+            },
+          },
+        },
+      ],
+      'test',
+    )
+
+    expect(image).toStrictEqual(
+      expect.objectContaining({
+        hash: 'hash2',
+      }),
+    )
+  })
 })
 
 describe('getSortedImages', () => {
@@ -157,6 +234,86 @@ describe('getSortedImages', () => {
       {
         hash: 'hash3',
       },
+    ])
+  })
+
+  it('should sort images by type if primaryImageType is provided', () => {
+    const images = sortProductImages(
+      [
+        {
+          hash: 'hash1',
+        },
+        {
+          hash: 'hash2',
+          attributes: {
+            primaryImageType: {
+              id: 1,
+              key: 'primaryImageType',
+              label: 'Primary Image Type',
+              multiSelect: false,
+              type: '',
+              values: {
+                label: 'Primary',
+                value: 'primary',
+              },
+            },
+          },
+        },
+      ],
+      'primary',
+    )
+
+    expect(images).toStrictEqual([
+      expect.objectContaining({
+        hash: 'hash2',
+      }),
+      expect.objectContaining({
+        hash: 'hash1',
+      }),
+    ])
+  })
+  it('should sort the primary image to the front if preferredPrimaryImageType not found', () => {
+    const images = sortProductImages(
+      [
+        {
+          hash: 'hash1',
+          attributes: {
+            primaryImageType: {
+              id: 1,
+              key: 'primaryImageType',
+              label: 'Primary Image Type',
+              multiSelect: false,
+              type: '',
+              values: {
+                label: 'Primary',
+                value: 'primary',
+              },
+            },
+          },
+        },
+        {
+          hash: 'hash2',
+          attributes: {
+            primaryImage,
+          },
+        },
+        {
+          hash: 'hash3',
+        },
+      ],
+      'test',
+    )
+
+    expect(images).toStrictEqual([
+      expect.objectContaining({
+        hash: 'hash2',
+      }),
+      expect.objectContaining({
+        hash: 'hash1',
+      }),
+      expect.objectContaining({
+        hash: 'hash3',
+      }),
     ])
   })
 })

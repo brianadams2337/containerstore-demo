@@ -10,6 +10,7 @@
     </template>
     <template #slide-in-body>
       <SFFilterSlideInContent
+        :selected-primary-image-type="selectedPrimaryImageType"
         :hide-sorting="hideSorting"
         :applied-attribute-values="appliedAttributeValues"
         :applied-boolean-values="appliedBooleanValues"
@@ -17,12 +18,14 @@
         :available-filters="availableFilters"
         :selected-sort="selectedSort"
         :sort-links="sortLinks"
+        :primary-image-type-options="primaryImageTypeOptions"
         @apply-price-filter="applyPriceFilter"
         @apply-attribute-filter="applyAttributeFilter"
         @apply-boolean-filter="applyBooleanFilter"
         @reset-price-filter="resetPriceFilter"
         @reset-reduction-filter="resetReductionFilter"
         @apply-reduction-filter="applyReductionFilter"
+        @update:selected-primary-image-type="applyPrimaryImageType"
         @reset="resetFilter"
       />
     </template>
@@ -38,6 +41,7 @@
 
 <script setup lang="ts">
 import type { SortLink, SelectedSort } from '@scayle/storefront-product-listing'
+import type { Value } from '@scayle/storefront-nuxt'
 import SFFilterSlideInContent from './SFFilterSlideInContent.vue'
 import SFFilterActions from './SFFilterActions.vue'
 import SFFilterHeader from './SFFilterHeader.vue'
@@ -45,18 +49,23 @@ import { useFilter } from '~/composables'
 import { SFSlideIn } from '#storefront-ui/components'
 import { useAppliedFilters } from '#storefront-product-listing'
 import { useRoute } from '#app/composables/router'
+import { usePrimaryImageType } from '~/composables/usePrimaryImageType'
 
 const {
   currentCategoryId,
   hideSorting = false,
   selectedSort = undefined,
   sortLinks = [],
+  primaryImageTypeOptions = [],
 } = defineProps<{
   currentCategoryId?: number
   hideSorting?: boolean
   selectedSort?: SelectedSort
   sortLinks?: SortLink[]
+  primaryImageTypeOptions?: Value[]
 }>()
+
+const selectedPrimaryImageType = defineModel<Value>('selectedPrimaryImageType')
 
 const { appliedBooleanValues, appliedFilter, appliedAttributeValues } =
   useAppliedFilters(useRoute())
@@ -76,4 +85,8 @@ const {
   filteredProductCount,
   areFiltersCleared,
 } = useFilter(() => currentCategoryId)
+
+const { applyPrimaryImageType } = usePrimaryImageType(
+  () => primaryImageTypeOptions,
+)
 </script>

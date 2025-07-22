@@ -20,6 +20,7 @@
         data-testid="product-item"
         :index="index"
         :product="product"
+        :preferred-primary-image-type="preferredPrimaryImageType"
         multiple-images
         :listing-meta-data="categoryListingMetaData"
         @intersect:product="onProductIntersect(index)"
@@ -40,6 +41,7 @@ import type {
   Product,
   FetchProductsByCategoryResponse,
   Category,
+  Value,
 } from '@scayle/storefront-nuxt'
 import SFProductCardSkeleton from '../product/card/SFProductCardSkeleton.vue'
 import SFProductCard from '../product/card/SFProductCard.vue'
@@ -64,6 +66,7 @@ const {
   loading?: boolean
   isPaginationVisible?: boolean
   currentCategory?: Category | null
+  preferredPrimaryImageType?: Value
 }>()
 
 const isPaginationShown = computed(() => {

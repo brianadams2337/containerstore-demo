@@ -1,5 +1,7 @@
+import { toValue } from 'vue'
 import {
   type Product,
+  type Value,
   getAttributeValueTuples,
   getFirstAttributeValue,
 } from '@scayle/storefront-nuxt'
@@ -16,6 +18,7 @@ import type { ProductSibling } from '~~/types/siblings'
 
 export function useProductBaseInfo(
   productItem: MaybeRefOrGetter<Product | undefined | null>,
+  preferredPrimaryImageType?: MaybeRefOrGetter<Value | undefined>,
 ) {
   const product = toRef(productItem)
   const { getProductDetailRoute } = useRouteHelpers()
@@ -59,16 +62,20 @@ export function useProductBaseInfo(
     if (!product.value) {
       return []
     }
-
-    return sortProductImages(product.value.images)
+    return sortProductImages(
+      product.value.images,
+      toValue(preferredPrimaryImageType)?.value,
+    )
   })
 
   const image = computed(() => {
     if (!product.value) {
       return
     }
-
-    return getPrimaryImage(product.value.images)
+    return getPrimaryImage(
+      product.value.images,
+      toValue(preferredPrimaryImageType)?.value,
+    )
   })
 
   const siblings = computed<ProductSibling[]>(() => {

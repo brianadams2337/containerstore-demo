@@ -40,7 +40,7 @@ export const PRODUCT_TILE_WITH_PARAMS = {
   },
   images: {
     attributes: {
-      withKey: ['primaryImage'],
+      withKey: ['primaryImage', 'primaryImageType'],
     },
   },
   categories: 'all',
