@@ -16,6 +16,9 @@
 <script setup lang="ts">
 import { useSimpleFooterNavigation } from '#storefront-navigation/composables'
 import SFNavigationTreeItem from '~/components/SFNavigationTreeItem.vue'
+import { createCacheFriendlyTimestamp } from '~/utils'
 
-const { data: footerTree } = useSimpleFooterNavigation()
+const { data: footerTree } = useSimpleFooterNavigation({
+  visibleAt: createCacheFriendlyTimestamp(),
+})
 </script>

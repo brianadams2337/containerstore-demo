@@ -80,7 +80,7 @@ import SFMobileSidebar from './SFMobileSidebar.vue'
 import SFHeaderNavigationItem from './SFHeaderNavigationItem.vue'
 import SFPromotionModalButton from './SFPromotionModalButton.vue'
 import { vPopover } from '~~/modules/ui/runtime/directives/popover'
-import { routeList } from '~/utils'
+import { routeList, createCacheFriendlyTimestamp } from '~/utils'
 import {
   SFButton,
   SFSlideInFromLeftTransition,
@@ -110,6 +110,7 @@ const isBasketPage = computed(() => route.path === localePath(routeList.basket))
 
 const { data: navigationTree } = useHeaderNavigation({
   with: { category: true },
+  visibleAt: createCacheFriendlyTimestamp(),
 })
 
 const mainNavigationItems = computed(() => navigationTree.value?.items)

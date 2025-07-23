@@ -61,10 +61,13 @@ import { NuxtPage } from '#components'
 import SFNavigationTreeItem from '~/components/SFNavigationTreeItem.vue'
 import { routeList } from '~/utils/route'
 import SFBottomFooter from '~/components/SFBottomFooter.vue'
+import { createCacheFriendlyTimestamp } from '~/utils'
 
 const currentShop = useCurrentShop()
 
-const { data: headerTree } = useSimpleHeaderNavigation()
+const { data: headerTree } = useSimpleHeaderNavigation({
+  visibleAt: createCacheFriendlyTimestamp(),
+})
 
 const {
   $config: {

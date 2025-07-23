@@ -23,6 +23,9 @@ import SFFooterLinkSection from './SFFooterLinkSection.vue'
 import SFBottomFooter from './SFBottomFooter.vue'
 import SFLogoLink from './SFLogoLink.vue'
 import { useFooterNavigation } from '#storefront-navigation/composables'
+import { createCacheFriendlyTimestamp } from '~/utils'
 
-const { data: footerLinks } = useFooterNavigation()
+const { data: footerLinks } = useFooterNavigation({
+  visibleAt: createCacheFriendlyTimestamp(),
+})
 </script>
