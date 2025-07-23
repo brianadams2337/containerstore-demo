@@ -1,16 +1,48 @@
 <template>
   <div class="flex px-1.5 text-sm">
-    <div
-      v-for="(value, key) in countdown"
-      :key="key"
-      class="flex text-center font-semibold"
-    >
-      <div v-if="shouldShowValue(key, value)" class="inline-flex">
-        <span v-if="value !== undefined" class="tabular-nums">
-          {{ value.toString().padStart(2, '0') }}
+    <div v-if="days" class="flex text-center font-semibold">
+      <div class="inline-flex">
+        <span class="tabular-nums">
+          {{ days.toString().padStart(2, '0') }}
         </span>
         <span v-if="showUnits">
-          <span>{{ renderUnit($t(`global.${key}`)) }}</span>
+          <span>{{ renderUnit($t(`global.days`)) }}</span>
+        </span>
+        &nbsp;
+      </div>
+    </div>
+
+    <div class="flex text-center font-semibold">
+      <div class="inline-flex">
+        <span class="tabular-nums">
+          {{ hours.toString().padStart(2, '0') }}
+        </span>
+        <span v-if="showUnits">
+          <span>{{ renderUnit($t(`global.hours`)) }}</span>
+        </span>
+        &nbsp;
+      </div>
+    </div>
+
+    <div class="flex text-center font-semibold">
+      <div class="inline-flex">
+        <span class="tabular-nums">
+          {{ minutes.toString().padStart(2, '0') }}
+        </span>
+        <span v-if="showUnits">
+          <span>{{ renderUnit($t(`global.minutes`)) }}</span>
+        </span>
+        &nbsp;
+      </div>
+    </div>
+
+    <div v-if="days === 0" class="flex text-center font-semibold">
+      <div class="inline-flex">
+        <span class="tabular-nums">
+          {{ seconds.toString().padStart(2, '0') }}
+        </span>
+        <span v-if="showUnits">
+          <span>{{ renderUnit($t(`global.seconds`)) }}</span>
         </span>
         &nbsp;
       </div>
@@ -22,8 +54,6 @@
 import { useIntervalFn } from '@vueuse/core'
 import { computed, ref } from 'vue'
 import { DAY, HOURS, MINUTE, SECOND } from '~~/shared/constants/time'
-
-type CountdownUnit = 'days' | 'hours' | 'minutes' | 'seconds'
 
 const {
   showUnits = false,
@@ -47,40 +77,34 @@ const {
 const emit = defineEmits<{ finished: [] }>()
 
 const until = computed(() => Date.parse(timeUntil))
-const countdown = ref<{ [k in CountdownUnit]?: number }>({})
 
 const renderUnit = (unit: string) => {
   return unitSize === 'short' ? unit.substring(0, 1).toUpperCase() : unit
 }
 
-const shouldShowValue = (key: CountdownUnit, value?: number) => {
-  if (value === 0 && key === 'days') {
-    return false
-  }
-  return !(key === 'seconds' && countdown.value.days !== 0)
+const remaining = ref(until.value - Date.now())
+const updateRemaining = () => {
+  remaining.value = until.value - Date.now()
 }
-
-const start = () => {
-  const remaining = until.value - Date.now()
-
-  if (remaining <= 0) {
-    countdown.value = {
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
+const { pause } = useIntervalFn(
+  () => {
+    updateRemaining()
+    if (remaining.value <= 0) {
+      emit('finished')
+      pause()
     }
-    emit('finished')
-    return
-  }
-
-  countdown.value = {
-    days: Math.floor(remaining / (SECOND * MINUTE * HOURS * DAY)),
-    hours: Math.floor((remaining / (SECOND * MINUTE * HOURS)) % DAY),
-    minutes: Math.floor((remaining / SECOND / MINUTE) % HOURS),
-    seconds: Math.floor((remaining / SECOND) % MINUTE),
-  }
-}
-
-useIntervalFn(start, SECOND, { immediateCallback: true })
+  },
+  SECOND,
+  { immediateCallback: true },
+)
+const days = computed(() =>
+  Math.floor(remaining.value / (SECOND * MINUTE * HOURS * DAY)),
+)
+const hours = computed(() =>
+  Math.floor((remaining.value / (SECOND * MINUTE * HOURS)) % DAY),
+)
+const minutes = computed(() =>
+  Math.floor((remaining.value / SECOND / MINUTE) % HOURS),
+)
+const seconds = computed(() => Math.floor((remaining.value / SECOND) % MINUTE))
 </script>
