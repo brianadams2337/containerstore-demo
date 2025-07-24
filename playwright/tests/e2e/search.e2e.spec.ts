@@ -1,5 +1,5 @@
-import { test } from '../../fixtures/fixtures'
 import { expect } from '@playwright/test'
+import { test } from '../../fixtures/fixtures'
 import { SEARCH } from '../../support/constants'
 import { assertFilterCounter, executeSearch } from '../../support/utils'
 
@@ -151,7 +151,7 @@ test('C2132173: Verify Search suggestions exact product match', async ({
  * and it should contain the value that doesn't match any category name, so the search suggestions are not shown.
  * Recommended search term value for this test case is some product brand.
  */
-test('C2140718: Verify Search results page Filters ', async ({
+test('C2140718: Verify Search results page Filters', async ({
   search,
   page,
   mobileNavigation,

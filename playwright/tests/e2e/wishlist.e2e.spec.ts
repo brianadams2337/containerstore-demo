@@ -1,5 +1,5 @@
-import { test } from '../../fixtures/fixtures'
 import { expect } from '@playwright/test'
+import { test } from '../../fixtures/fixtures'
 import { TEST_USERS, WISHLIST_TEST_DATA, ROUTES } from '../../support/constants'
 import { verifySeoMetaTags, isMobile } from '../../support/utils'
 

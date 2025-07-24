@@ -38,7 +38,7 @@ export class CountryDetector extends Base {
 
       if (await this.closeButton.first().isVisible()) {
         await this.closeButton.first().click()
-        await expect(this.closeButton.first()).not.toBeVisible()
+        await expect(this.closeButton.first()).toBeHidden()
         await this.page.waitForLoadState('networkidle')
       }
     } catch (error) {

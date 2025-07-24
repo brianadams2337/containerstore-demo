@@ -1,5 +1,5 @@
-import { test } from '../../fixtures/fixtures'
 import { expect } from '@playwright/test'
+import { test } from '../../fixtures/fixtures'
 import { ROUTES, TEST_PASSWORD_RESET_HASH } from '../../support/constants'
 
 /**

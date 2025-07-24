@@ -1,5 +1,5 @@
-import { test } from '../../fixtures/fixtures'
 import { expect } from '@playwright/test'
+import { test } from '../../fixtures/fixtures'
 import { PDP_E2E } from '../../support/constants'
 import { verifySeoMetaTags, navigateToPlp } from '../../support/utils'
 

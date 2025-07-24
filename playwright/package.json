@@ -15,18 +15,13 @@
   },
   "devDependencies": {
     "@playwright/test": "1.54.0",
-    "@scayle/eslint-config-storefront": "4.5.14",
     "@types/node": "22.16.5",
     "dotenv": "16.6.1",
-    "eslint": "9.31.0",
-    "eslint-plugin-playwright": "2.2.0",
     "lighthouse": "12.7.1",
     "ts-node": "10.9.2",
     "typescript": "5.8.3"
   },
   "scripts": {
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
     "test:e2e:happy-path": "playwright test ./tests/happy-path.e2e.spec.ts",
     "test:e2e:lighthouse": "playwright test ./tests/lighthouse/*.ts --project chromium",
     "test:e2e": "playwright test ./tests/e2e/*.e2e.spec.ts",

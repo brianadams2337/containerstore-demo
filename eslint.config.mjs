@@ -2,6 +2,7 @@ import eslintConfigStorefront from '@scayle/eslint-config-storefront'
 import tailwind from 'eslint-plugin-tailwindcss'
 import pluginVueA11y from 'eslint-plugin-vuejs-accessibility'
 import storybook from 'eslint-plugin-storybook'
+import playwright from 'eslint-plugin-playwright'
 // Workaround for flat config not being supported yet by eslint-plugin-tailwindcss
 // https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/280
 import { FlatCompat } from '@eslint/eslintrc'
@@ -113,7 +114,7 @@ export default withNuxt(
   // Custom Overrides: Storefront Boilerplate rules and config
   {
     // https://eslint.org/docs/latest/use/configure/ignore#ignorepatterns-in-config-files
-    ignores: ['**/fixtures/**/*', 'playwright/'],
+    ignores: ['**/fixtures/**/*', '**/playwright-report/', '**/test-results/'],
   },
   {
     rules: {
@@ -186,6 +187,21 @@ export default withNuxt(
     files: ['**/types/contentful-defs.d.ts', '**/types/storyblok.d.ts'],
     rules: {
       'sonarjs/redundant-type-aliases': 'off',
+    },
+  },
+  {
+    ...playwright.configs['flat/recommended'],
+    files: [
+      '**/playwright/page-objects/**',
+      '**/playwright/fixtures/**',
+      '**/playwright/tests/**',
+    ],
+    rules: {
+      ...playwright.configs['flat/recommended'].rules,
+      'playwright/no-networkidle': 'off',
+      // NOTE: The following rules have been disabled to not interfere with the E2E testing suite
+      // and need to be handled via a refactoring before being enabled again!
+      'playwright/no-useless-not': 'off',
     },
   },
 )

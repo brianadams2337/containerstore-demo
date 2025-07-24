@@ -203,13 +203,10 @@ export class BasketPage extends Base {
    * @param productName - The expected name of the product.
    */
   async assertProductIsInBasket(productBrand: string, productName: string) {
-    const basketProductBrandText = await this.productBrand.textContent()
-    const basketProductNameText = await this.productName.textContent()
-
     await expect(this.basketProductCard).toBeVisible()
     await expect(this.productImage).toBeVisible()
-    expect(basketProductBrandText).toEqual(productBrand)
-    expect(basketProductNameText).toEqual(productName)
+    await expect(this.productBrand).toHaveText(productBrand)
+    await expect(this.productName).toHaveText(productName)
   }
 
   /**
@@ -243,8 +240,8 @@ export class BasketPage extends Base {
    * Also asserts that the Login and Continue Shopping buttons are visible, as expected in an empty state.
    */
   async assertProductNotInBasket() {
-    await expect(this.basketProductCard).not.toBeVisible()
-    await expect(this.productImage).not.toBeVisible()
+    await expect(this.basketProductCard).toBeHidden()
+    await expect(this.productImage).toBeHidden()
     await expect(this.loginButton).toBeVisible()
     await expect(this.continueButton).toBeVisible()
   }
@@ -294,9 +291,10 @@ export class BasketPage extends Base {
    * @param opacity - The expected opacity value as a string (e.g., '0.5').
    */
   async assertSoldOutImageOpacity(opacity: string) {
-    const productImageOpacity = await this.page.$eval(
-      '[data-testid="unavailable-product-list"] >> [data-testid="product-image"]',
-      (el) => String(window.getComputedStyle(el).opacity).trim(),
+    const productImage =
+      this.unavailableProductList.getByTestId('product-image')
+    const productImageOpacity = await productImage.evaluate((el) =>
+      String(window.getComputedStyle(el).opacity).trim(),
     )
 
     expect(productImageOpacity).toBe(opacity)

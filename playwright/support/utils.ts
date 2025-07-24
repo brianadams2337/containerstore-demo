@@ -1,6 +1,5 @@
 import type { Page } from 'playwright-core'
 import { expect } from '@playwright/test'
-import { TEST_USERS } from './constants'
 import { BREAKPOINTS } from '../../config/ui'
 import type { MobileNavigation } from '../page-objects/components/mobileNavigation'
 import type { MainNavigation } from '../page-objects/components/mainNavigation'
@@ -8,6 +7,7 @@ import type { Filters } from '../page-objects/components/filters'
 import type { Sorting } from '../page-objects/components/sorting'
 import type { ProductListingPage } from '../page-objects/productListingPage'
 import type { Search } from '../page-objects/components/search'
+import { TEST_USERS } from './constants'
 
 // --- Interfaces ---
 /**

@@ -1,5 +1,5 @@
-import { test } from '../fixtures/fixtures'
 import { expect } from '@playwright/test'
+import { test } from '../fixtures/fixtures'
 import { navigateToPlp } from '../support/utils'
 import { ROUTES } from '../support/constants'
 

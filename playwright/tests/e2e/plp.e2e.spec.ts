@@ -1,5 +1,5 @@
-import { test } from '../../fixtures/fixtures'
 import { expect } from '@playwright/test'
+import { test } from '../../fixtures/fixtures'
 import {
   PLP_FILTER_DEEP_LINK,
   SORTING,
@@ -134,9 +134,9 @@ test('C2130727: Verify PLP Filters and Product Count', async ({
     await filters.filterPriceInput.nth(1).press('Enter')
     await page.waitForTimeout(500)
 
-    const currentProductCount = await breadcrumb.productCounter.textContent()
+    const currentProductCount = breadcrumb.productCounter
 
-    expect(currentProductCount).not.toEqual(initialProductCount)
+    await expect(currentProductCount).not.toHaveText(initialProductCount)
     expect(page.url()).toContain(
       `filters[minPrice]=${MIN_PRICE_URL}&filters[maxPrice]=${MAX_PRICE_URL}`,
     )
@@ -387,9 +387,7 @@ test('C2162411 C2229455 Verify PLP Sorting', async ({
 
   expect(pageUrlPriceAsc).toContain(SORTING.priceAsc)
 
-  const productIdPriceAsc = await productListingPage.productCard
-    .first()
-    .getAttribute('id')
+  const productIdPriceAsc = productListingPage.productCard.first()
 
   await applySorting(
     page,
@@ -408,7 +406,7 @@ test('C2162411 C2229455 Verify PLP Sorting', async ({
     .first()
     .getAttribute('id')
 
-  expect(productIdPriceAsc).not.toEqual(productIdPriceDesc)
+  await expect(productIdPriceAsc).not.toHaveAttribute('id', productIdPriceDesc)
 })
 
 /**
