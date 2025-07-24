@@ -131,11 +131,11 @@ importers:
         specifier: 3.4.2
         version: 3.4.2
       contentful:
-        specifier: 11.7.10
-        version: 11.7.10(debug@4.4.1)
+        specifier: 11.7.11
+        version: 11.7.11(debug@4.4.1)
       contentful-export:
-        specifier: 7.21.70
-        version: 7.21.70(debug@4.4.1)
+        specifier: 7.21.73
+        version: 7.21.73(debug@4.4.1)
       defu:
         specifier: 6.1.4
         version: 6.1.4
@@ -4355,8 +4355,8 @@ packages:
     resolution: {integrity: sha512-nNAycOJIvo2arHbXIgsF1I8xXXJtnTooGJaHwfamFeuXbyp1q5NlNbHYGqWVR5vQjLJsuk48VExLbpa26T9C9g==}
     engines: {node: '>=18'}
 
-  contentful-export@7.21.70:
-    resolution: {integrity: sha512-e0orTYD9q+gVnZvXx2UnNTRL0bZs2FlfiVvD//4iCMauiJSkqTKuTzW6r/nVlyTl7qTnf3/NjoOxq7y6iM9eEg==}
+  contentful-export@7.21.73:
+    resolution: {integrity: sha512-AqkKXttKCgE5YfyPRDnYTXjmTaVavT+GuujsUBmQjM3lGhYDBTPwFSkT0gAzEtKs8laSE55p0iu1+6FEGgLogw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -4380,8 +4380,8 @@ packages:
     resolution: {integrity: sha512-vPgQvpzqWHauroXrhPOW03iz/ZVqZrv6BX2Fk/vMOlMMB7a+zrhUWAuUjY9WFDVMRcAwPhZF2Lvey6Nvyyd6sQ==}
     engines: {node: '>=18'}
 
-  contentful@11.7.10:
-    resolution: {integrity: sha512-U9Em8WFkMTEqtH57LkjfGR5p+6gEJgSk4vGoNKZzmjXr41aZ1fkGB3iFtYWU/eH7G8HLWhlD1lNQwZjG6rJxqQ==}
+  contentful@11.7.11:
+    resolution: {integrity: sha512-3K7alu5lg/0YCtpeaEHxqh0zxxu0+ujOQkcBjeCS45eUWtbtmH+bRV/PtkGIln4etSITTOs78hEzSEkJiYcCfw==}
     engines: {node: '>=18'}
 
   convert-source-map@2.0.0:
@@ -14588,7 +14588,7 @@ snapshots:
       '@oclif/core': 3.27.0
       '@oclif/plugin-help': 6.2.31
       contentful: 10.15.1(debug@4.4.1)
-      contentful-export: 7.21.70(debug@4.4.1)
+      contentful-export: 7.21.73(debug@4.4.1)
       contentful-management: 11.54.2(debug@4.4.1)
       fs-extra: 11.3.0
       lodash: 4.17.21
@@ -14916,13 +14916,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  contentful-export@7.21.70(debug@4.4.1):
+  contentful-export@7.21.73(debug@4.4.1):
     dependencies:
       axios: 1.10.0(debug@4.4.1)
       bfj: 8.0.0
       bluebird: 3.7.2
       cli-table3: 0.6.5
-      contentful: 11.7.10(debug@4.4.1)
+      contentful: 11.7.11(debug@4.4.1)
       contentful-batch-libs: 9.7.0
       contentful-management: 11.54.2(debug@4.4.1)
       date-fns: 4.1.0
@@ -14984,7 +14984,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  contentful@11.7.10(debug@4.4.1):
+  contentful@11.7.11(debug@4.4.1):
     dependencies:
       '@contentful/content-source-maps': 0.11.28
       '@contentful/rich-text-types': 16.8.5
