@@ -211,10 +211,20 @@ export function useFilter(
     if (!appliedFiltersCount.value && !Object.keys(filter).length) {
       return
     }
+
+    const nonFilterQueryParams = Object.entries(
+      route.query,
+    ).reduce<LocationQuery>((acc, [key, value]) => {
+      if (!key.startsWith('filters')) {
+        acc[key] = value
+      }
+      return acc
+    }, {})
+
     const query = {
-      sort: route.query.sort,
       'filters[term]': route.query['filters[term]'],
       ...filter,
+      ...nonFilterQueryParams,
     }
 
     if ('page' in query) {

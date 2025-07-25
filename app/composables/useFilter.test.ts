@@ -375,5 +375,23 @@ describe('useFilter', () => {
         query: {},
       })
     })
+
+    it('should keep query params unrelated to filters', () => {
+      mocks.useAppliedFilters.appliedFiltersCount.value = 4
+      mocks.route.query = {
+        unrelated: 'test',
+        'filters[minPrice]': '1',
+        'filters[maxPrice]': '12',
+        'filters[attribute]': '[1,2,3,4,]',
+        'filters[sale]': true,
+      }
+      const { resetFilters } = useFilter()
+      resetFilters()
+      expect(mocks.router.push).toBeCalledWith({
+        query: {
+          unrelated: 'test',
+        },
+      })
+    })
   })
 })
