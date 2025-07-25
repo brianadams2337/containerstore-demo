@@ -213,8 +213,8 @@ importers:
         specifier: 3.19.2
         version: 3.19.2(@testing-library/vue@8.1.0(@vue/compiler-sfc@3.5.17)(vue@3.5.17(typescript@5.8.3)))(@vue/test-utils@2.4.6)(happy-dom@18.0.1)(magicast@0.3.5)(typescript@5.8.3)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@22.16.5)(happy-dom@18.0.1)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))
       '@nuxtjs/i18n':
-        specifier: 10.0.2
-        version: 10.0.2(@netlify/blobs@9.1.2)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-dom@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(rollup@4.45.1)(vue@3.5.17(typescript@5.8.3))
+        specifier: 10.0.3
+        version: 10.0.3(@netlify/blobs@9.1.2)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-dom@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(rollup@4.45.1)(vue@3.5.17(typescript@5.8.3))
       '@nuxtjs/storybook':
         specifier: 8.4.1
         version: 8.4.1(@types/node@22.16.5)(eslint@9.31.0(jiti@2.4.2))(magicast@0.3.5)(nuxt@3.17.7(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.1)(@types/node@22.16.5)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.6(@types/node@22.16.5)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.4(typescript@5.8.3))(yaml@2.8.0))(optionator@0.9.4)(rollup@4.45.1)(storybook@9.0.5(@testing-library/dom@9.3.4)(prettier@3.0.3))(terser@5.43.1)(typescript@5.8.3)(vite@7.0.6(@types/node@22.16.5)(jiti@2.4.2)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.4(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))(yaml@2.8.0)
@@ -1358,8 +1358,8 @@ packages:
     peerDependencies:
       vue: 3.5.17
 
-  '@nuxtjs/i18n@10.0.2':
-    resolution: {integrity: sha512-feDUXlFBEFzRCBRG5ouEwWcdOZw2DtwV/p1LAExlXXuMMmg/hpKUNSofwLlRW94UlVOWfQb+HJZVWyqdVi2ifg==}
+  '@nuxtjs/i18n@10.0.3':
+    resolution: {integrity: sha512-3ifgZc0BQ+xUlmMBAahM9TCXbwVySVr4cv1FyrmsZlCaWb3LKN5kCr8ccFUvGBjBT5bhR46Ki2fMUqlHJr9wow==}
     engines: {node: '>=20.11.1'}
 
   '@nuxtjs/storybook@8.4.1':
@@ -11247,7 +11247,7 @@ snapshots:
       - vue-tsc
       - yaml
 
-  '@nuxtjs/i18n@10.0.2(@netlify/blobs@9.1.2)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-dom@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(rollup@4.45.1)(vue@3.5.17(typescript@5.8.3))':
+  '@nuxtjs/i18n@10.0.3(@netlify/blobs@9.1.2)(@upstash/redis@1.35.1)(@vercel/kv@3.0.0)(@vue/compiler-dom@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(rollup@4.45.1)(vue@3.5.17(typescript@5.8.3))':
     dependencies:
       '@intlify/core': 11.1.11
       '@intlify/h3': 0.7.1
