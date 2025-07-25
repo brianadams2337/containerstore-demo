@@ -159,7 +159,7 @@
     "tabbable": "6.2.0",
     "ufo": "1.6.1",
     "unstorage": "1.16.1",
-    "vue": "3.5.17",
+    "vue": "3.5.18",
     "vue-slider-component": "4.1.0-beta.7"
   },
   "lint-staged": {
@@ -177,16 +177,16 @@
     "overrides": {
       "@nuxt/kit": "3.17.7",
       "@nuxt/schema": "3.17.7",
-      "@vue/compiler-core": "3.5.17",
-      "@vue/compiler-dom": "3.5.17",
-      "@vue/compiler-sfc": "3.5.17",
-      "@vue/compiler-ssr": "3.5.17",
-      "@vue/shared": "3.5.17",
+      "@vue/compiler-core": "3.5.18",
+      "@vue/compiler-dom": "3.5.18",
+      "@vue/compiler-sfc": "3.5.18",
+      "@vue/compiler-ssr": "3.5.18",
+      "@vue/shared": "3.5.18",
       "esbuild": "0.25.8",
       "globals": "16.3.0",
       "import-in-the-middle": "1.14.2",
       "unicorn-magic": "0.2.0",
-      "vue": "3.5.17"
+      "vue": "3.5.18"
     },
     "onlyBuiltDependencies": [
       "postinstall-postinstall"
