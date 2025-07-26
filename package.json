@@ -62,7 +62,7 @@
     "@storybook-vue/nuxt": "8.4.1",
     "@storybook/addon-a11y": "9.0.5",
     "@storybook/addon-docs": "9.0.5",
-    "@testing-library/jest-dom": "6.6.3",
+    "@testing-library/jest-dom": "6.6.4",
     "@testing-library/vue": "8.1.0",
     "@types/color": "4.2.0",
     "@types/node": "22.16.5",
