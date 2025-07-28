@@ -131,11 +131,11 @@ importers:
         specifier: 3.4.2
         version: 3.4.2
       contentful:
-        specifier: 11.7.12
-        version: 11.7.12(debug@4.4.1)
+        specifier: 11.7.14
+        version: 11.7.14(debug@4.4.1)
       contentful-export:
-        specifier: 7.21.74
-        version: 7.21.74(debug@4.4.1)
+        specifier: 7.21.75
+        version: 7.21.75(debug@4.4.1)
       defu:
         specifier: 6.1.4
         version: 6.1.4
@@ -3804,6 +3804,9 @@ packages:
   axios@1.10.0:
     resolution: {integrity: sha512-/1xYAC4MP/HEG+3duIhFr4ZQXR4sQXOIe+o6sdqzeykGLx6Upp/1p8MHqhINOvGeP7xyNHe7tsiJByc4SSVUxw==}
 
+  axios@1.11.0:
+    resolution: {integrity: sha512-1Lx3WLFQWm3ooKDYZD1eXmoGO9fxYQjrycfHFC8P0sCfQVXyROp0p9PFWBehewBOdCwHc+f/b8I0fMto5eSfwA==}
+
   b4a@1.6.7:
     resolution: {integrity: sha512-OnAYlL5b7LEkALw87fUVafQw5rVR9RjwGd4KUwNQ6DrrNmaVaUCgLipfVlzrPQ4tWOR9P0IXGNOx50jYCCdSJg==}
 
@@ -4335,8 +4338,8 @@ packages:
     resolution: {integrity: sha512-nNAycOJIvo2arHbXIgsF1I8xXXJtnTooGJaHwfamFeuXbyp1q5NlNbHYGqWVR5vQjLJsuk48VExLbpa26T9C9g==}
     engines: {node: '>=18'}
 
-  contentful-export@7.21.74:
-    resolution: {integrity: sha512-d3u+Y6DtBTJ7JxNxdmxMxelhnpzO0a6KfdIkMs9YLjVg15EnhPYBpFnqsma/dOvDWNnbDiXAsdbPgB2eCpVn3Q==}
+  contentful-export@7.21.75:
+    resolution: {integrity: sha512-j4OrehD0PpbVAwdMm5noO4v7W/cJTmT3QZHAxlEYN2qlq0enpiKehK1VWI7nHKBewCcJJMhAM6eqm/Ggv3xLuA==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -4360,8 +4363,8 @@ packages:
     resolution: {integrity: sha512-vPgQvpzqWHauroXrhPOW03iz/ZVqZrv6BX2Fk/vMOlMMB7a+zrhUWAuUjY9WFDVMRcAwPhZF2Lvey6Nvyyd6sQ==}
     engines: {node: '>=18'}
 
-  contentful@11.7.12:
-    resolution: {integrity: sha512-54i0Ms6+oI/Pr4/dy1TbnmDIPVqicvwYxgERYcIFY9dBRFAQrzlTb3Dy6hvhEjd47V73aOSWqFLeIOSp2HePzA==}
+  contentful@11.7.14:
+    resolution: {integrity: sha512-AJlksM5NE/8LcELuzB46WKQEnFFMX+cURuaIzuObElV/Eq8vGAf/UtAFe377q+f5gs/xaUGmtM/C2SHWXZFkHQ==}
     engines: {node: '>=18'}
 
   convert-source-map@2.0.0:
@@ -14250,6 +14253,14 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
+  axios@1.11.0(debug@4.4.1):
+    dependencies:
+      follow-redirects: 1.15.9(debug@4.4.1)
+      form-data: 4.0.4
+      proxy-from-env: 1.1.0
+    transitivePeerDependencies:
+      - debug
+
   b4a@1.6.7: {}
 
   babel-walk@3.0.0-canary-5:
@@ -14480,7 +14491,7 @@ snapshots:
       '@oclif/core': 3.27.0
       '@oclif/plugin-help': 6.2.31
       contentful: 10.15.1(debug@4.4.1)
-      contentful-export: 7.21.74(debug@4.4.1)
+      contentful-export: 7.21.75(debug@4.4.1)
       contentful-management: 11.54.3(debug@4.4.1)
       fs-extra: 11.3.0
       lodash: 4.17.21
@@ -14808,13 +14819,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  contentful-export@7.21.74(debug@4.4.1):
+  contentful-export@7.21.75(debug@4.4.1):
     dependencies:
       axios: 1.10.0(debug@4.4.1)
       bfj: 8.0.0
       bluebird: 3.7.2
       cli-table3: 0.6.5
-      contentful: 11.7.12(debug@4.4.1)
+      contentful: 11.7.14(debug@4.4.1)
       contentful-batch-libs: 9.7.0
       contentful-management: 11.54.3(debug@4.4.1)
       date-fns: 4.1.0
@@ -14876,11 +14887,11 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  contentful@11.7.12(debug@4.4.1):
+  contentful@11.7.14(debug@4.4.1):
     dependencies:
       '@contentful/content-source-maps': 0.11.29
       '@contentful/rich-text-types': 16.8.5
-      axios: 1.10.0(debug@4.4.1)
+      axios: 1.11.0(debug@4.4.1)
       contentful-resolve-response: 1.9.3
       contentful-sdk-core: 9.2.0
       json-stringify-safe: 5.0.1
