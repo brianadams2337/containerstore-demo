@@ -56,7 +56,7 @@
     "@parcel/watcher": "2.5.1",
     "@scayle/changelog-formatter": "1.1.0",
     "@scayle/eslint-auto-explicit-import": "0.2.0",
-    "@scayle/eslint-config-storefront": "4.7.0",
+    "@scayle/eslint-config-storefront": "4.7.1",
     "@scayle/eslint-plugin-vue-composable": "0.2.1",
     "@scayle/prettier-config-storefront": "2.0.2",
     "@storybook-vue/nuxt": "8.4.1",
