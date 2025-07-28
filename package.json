@@ -119,7 +119,7 @@
     "@scayle/storefront-basket": "0.3.0",
     "@scayle/storefront-country-detection": "2.0.0",
     "@scayle/storefront-navigation": "0.3.0",
-    "@scayle/storefront-nuxt": "8.36.0",
+    "@scayle/storefront-nuxt": "8.38.2",
     "@scayle/storefront-product-detail": "1.5.0",
     "@scayle/storefront-product-listing": "2.0.2",
     "@scayle/storefront-promotions": "2.2.0",
