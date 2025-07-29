@@ -22,8 +22,8 @@ importers:
         specifier: 1.54.1
         version: 1.54.1
       '@types/node':
-        specifier: 22.16.5
-        version: 22.16.5
+        specifier: 22.17.0
+        version: 22.17.0
       eslint:
         specifier: 9.32.0
         version: 9.32.0
@@ -35,7 +35,7 @@ importers:
         version: 12.8.0
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@types/node@22.16.5)(typescript@5.8.3)
+        version: 10.9.2(@types/node@22.17.0)(typescript@5.8.3)
       typescript:
         specifier: 5.8.3
         version: 5.8.3
@@ -392,8 +392,8 @@ packages:
   '@types/mysql@2.15.26':
     resolution: {integrity: sha512-DSLCOXhkvfS5WNNPbfn2KdICAmk8lLc+/PNvnPnF7gOdMZCxopXduqv0OQ13y/yA/zXTSikZZqVgybUxOEg6YQ==}
 
-  '@types/node@22.16.5':
-    resolution: {integrity: sha512-bJFoMATwIGaxxx8VJPeM8TonI8t579oRvgAuT8zFugJsJZgzqv0Fu8Mhp68iecjzG7cnN3mO2dJQ5uUM2EFrgQ==}
+  '@types/node@22.17.0':
+    resolution: {integrity: sha512-bbAKTCqX5aNVryi7qXVMi+OkB3w/OyblodicMbvE38blyAz7GxXf6XYhklokijuPwwVg9sDLKRxt0ZHXQwZVfQ==}
 
   '@types/pg-pool@2.0.6':
     resolution: {integrity: sha512-TaAUE5rq2VQYxab5Ts7WZhKNmuN78Q6PiFonTDdpbx8a1H0M1vhy3rhiMjl+e2iHmogyMw7jZF4FrE6eJUy5HQ==}
@@ -1709,7 +1709,7 @@ snapshots:
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
 
   '@types/estree@1.0.8': {}
 
@@ -1717,9 +1717,9 @@ snapshots:
 
   '@types/mysql@2.15.26':
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
 
-  '@types/node@22.16.5':
+  '@types/node@22.17.0':
     dependencies:
       undici-types: 6.21.0
 
@@ -1729,7 +1729,7 @@ snapshots:
 
   '@types/pg@8.6.1':
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
       pg-protocol: 1.10.3
       pg-types: 2.2.0
 
@@ -1737,11 +1737,11 @@ snapshots:
 
   '@types/tedious@4.0.14':
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
 
   '@types/yauzl@2.10.3':
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
     optional: true
 
   acorn-import-attributes@1.9.5(acorn@8.15.0):
@@ -1841,7 +1841,7 @@ snapshots:
 
   chrome-launcher@1.2.0:
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 2.0.2
@@ -2444,7 +2444,7 @@ snapshots:
 
   speedline-core@1.4.3:
     dependencies:
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
       image-ssim: 0.2.0
       jpeg-js: 0.4.4
 
@@ -2505,14 +2505,14 @@ snapshots:
     dependencies:
       tldts-core: 6.1.86
 
-  ts-node@10.9.2(@types/node@22.16.5)(typescript@5.8.3):
+  ts-node@10.9.2(@types/node@22.17.0)(typescript@5.8.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 22.16.5
+      '@types/node': 22.17.0
       acorn: 8.15.0
       acorn-walk: 8.3.4
       arg: 4.1.3
