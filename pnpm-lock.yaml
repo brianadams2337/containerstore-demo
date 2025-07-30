@@ -56,8 +56,8 @@ importers:
         specifier: 8.38.3
         version: 8.38.3(@netlify/blobs@9.1.2)(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.12.0(fishery@2.3.1))(@upstash/redis@1.35.2)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.4(@netlify/blobs@9.1.2)(@upstash/redis@1.35.2)(@vercel/kv@3.0.0))(nuxt@3.17.7(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.1)(@types/node@22.17.0)(@upstash/redis@1.35.2)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.18)(db0@0.3.2)(eslint@9.32.0(jiti@2.5.1))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.6(@types/node@22.17.0)(jiti@2.5.1)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.4(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.1(@netlify/blobs@9.1.2)(@upstash/redis@1.35.2)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.18(typescript@5.8.3))
       '@scayle/storefront-product-detail':
-        specifier: 1.5.0
-        version: 1.5.0(9fbb0cc1e504fb2e065909d3715372cc)
+        specifier: 1.5.1
+        version: 1.5.1(26ce1d61d324a44865f4d2ceb0611710)
       '@scayle/storefront-product-listing':
         specifier: 2.0.2
         version: 2.0.2(7182c3dfb0c13d12c3965b3fa9576809)
@@ -2602,12 +2602,11 @@ packages:
       unstorage: ^1.10.1
       vue: 3.5.18
 
-  '@scayle/storefront-product-detail@1.5.0':
-    resolution: {integrity: sha512-itvlo22BcD+gBhS60vgFFhSz8O6PffUPVuxUJlDbcyQYYnWxP+UrbASweRF5JKMt5QczSjJLRLbl8Kvp7rIvdw==}
+  '@scayle/storefront-product-detail@1.5.1':
+    resolution: {integrity: sha512-Op+z/v0GORNjJTU+CY3eILRgR3+stEaL/eKqyc2g+xoP0piiKXyaKh0c2K7kZ9/04/N2Ig5JSWaA581cKAhQkQ==}
     peerDependencies:
       '@nuxt/kit': 3.17.7
       '@scayle/storefront-nuxt': ^8.0.0
-      '@vue/test-utils': ^2.4.6
       '@vueuse/core': ^12.8.2 || ^13.0.0
       schema-dts: ^1.1.5
       vue: 3.5.18
@@ -12808,11 +12807,10 @@ snapshots:
       - supports-color
       - uploadthing
 
-  '@scayle/storefront-product-detail@1.5.0(9fbb0cc1e504fb2e065909d3715372cc)':
+  '@scayle/storefront-product-detail@1.5.1(26ce1d61d324a44865f4d2ceb0611710)':
     dependencies:
       '@nuxt/kit': 3.17.7(magicast@0.3.5)
       '@scayle/storefront-nuxt': 8.38.3(@netlify/blobs@9.1.2)(@nuxt/kit@3.17.7(magicast@0.3.5))(@scayle/storefront-api@18.12.0(fishery@2.3.1))(@upstash/redis@1.35.2)(@vercel/kv@3.0.0)(db0@0.3.2)(fishery@2.3.1)(h3@1.15.3)(ioredis@5.6.1)(nitropack@2.12.4(@netlify/blobs@9.1.2)(@upstash/redis@1.35.2)(@vercel/kv@3.0.0))(nuxt@3.17.7(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.1)(@types/node@22.17.0)(@upstash/redis@1.35.2)(@vercel/kv@3.0.0)(@vue/compiler-sfc@3.5.18)(db0@0.3.2)(eslint@9.32.0(jiti@2.5.1))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.43.1)(typescript@5.8.3)(vite@7.0.6(@types/node@22.17.0)(jiti@2.5.1)(terser@5.43.1)(yaml@2.8.0))(vue-tsc@3.0.4(typescript@5.8.3))(yaml@2.8.0))(rollup@4.45.1)(unstorage@1.16.1(@netlify/blobs@9.1.2)(@upstash/redis@1.35.2)(@vercel/kv@3.0.0)(db0@0.3.2)(ioredis@5.6.1))(vue@3.5.18(typescript@5.8.3))
-      '@vue/test-utils': 2.4.6
       '@vueuse/core': 13.6.0(vue@3.5.18(typescript@5.8.3))
       schema-dts: 1.1.5
       vue: 3.5.18(typescript@5.8.3)
