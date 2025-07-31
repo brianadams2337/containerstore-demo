@@ -11,7 +11,7 @@
   "dependencies": {
     "playwright": "1.54.1",
     "playwright-core": "1.54.1",
-    "undici-types": "7.12.0"
+    "undici-types": "7.13.0"
   },
   "devDependencies": {
     "@playwright/test": "1.54.1",
