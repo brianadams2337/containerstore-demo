@@ -28,8 +28,8 @@ importers:
         specifier: 9.32.0
         version: 9.32.0
       eslint-plugin-playwright:
-        specifier: 2.2.1
-        version: 2.2.1(eslint@9.32.0)
+        specifier: 2.2.2
+        version: 2.2.2(eslint@9.32.0)
       lighthouse:
         specifier: 12.8.0
         version: 12.8.0
@@ -627,8 +627,8 @@ packages:
     engines: {node: '>=6.0'}
     hasBin: true
 
-  eslint-plugin-playwright@2.2.1:
-    resolution: {integrity: sha512-vYGKs9Y0H2A7tvvuKBF11w2aJa7diS9JRJbo/3Y5nU12RRgZummSUKvfZbickRdNVmt65R4lSrWn8Nyali2a3w==}
+  eslint-plugin-playwright@2.2.2:
+    resolution: {integrity: sha512-j0jKpndIPOXRRP9uMkwb9l/nSmModOU3452nrFdgFJoEv/435J1onk8+aITzjDW8DfypxgmVaDMdmVIa6F7I0w==}
     engines: {node: '>=16.6.0'}
     peerDependencies:
       eslint: '>=8.40.0'
@@ -1938,7 +1938,7 @@ snapshots:
     optionalDependencies:
       source-map: 0.6.1
 
-  eslint-plugin-playwright@2.2.1(eslint@9.32.0):
+  eslint-plugin-playwright@2.2.2(eslint@9.32.0):
     dependencies:
       eslint: 9.32.0
       globals: 13.24.0
