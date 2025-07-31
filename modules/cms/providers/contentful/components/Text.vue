@@ -11,11 +11,28 @@
 <script lang="ts" setup>
 import { computed, defineOptions } from 'vue'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
-import type { CMSTextProps } from '../types'
+import { BLOCKS } from '@contentful/rich-text-types'
+import type { CMSParagraphProps, CMSTextProps } from '../types'
 
-const { blok, noMarginTop = false } = defineProps<CMSTextProps>()
+const { blok, noMarginTop = false } = defineProps<
+  | CMSTextProps
+  | (CMSParagraphProps & {
+      noMarginTop?: boolean
+    })
+>()
 
-const content = computed(() => (blok ? documentToHtmlString(blok) : null))
+const content = computed(() => {
+  if (!blok) {
+    return null
+  }
+  if ('nodeType' in blok && blok.nodeType === BLOCKS.DOCUMENT) {
+    return documentToHtmlString(blok)
+  }
+  if ('fields' in blok && blok.fields?.body?.nodeType === BLOCKS.DOCUMENT) {
+    return documentToHtmlString(blok.fields.body)
+  }
+  return null
+})
 
 defineOptions({ name: 'CMSText' })
 </script>
