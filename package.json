@@ -7,7 +7,7 @@
     "node": ">= 22.15.0",
     "pnpm": ">= 10.12.0"
   },
-  "packageManager": "pnpm@10.13.1",
+  "packageManager": "pnpm@10.14.0",
   "website": "https://scayle.dev/en/storefront-guide/developer-guide/getting-started/about-storefront",
   "type": "module",
   "scripts": {
@@ -172,7 +172,7 @@
   },
   "volta": {
     "node": "22.17.1",
-    "pnpm": "10.13.1"
+    "pnpm": "10.14.0"
   },
   "pnpm": {
     "overrides": {

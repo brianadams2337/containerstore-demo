@@ -4,7 +4,7 @@
   "author": "SCAYLE Commerce Engine",
   "description": "End-to-End test suite for the SCAYLE Storefront Application.",
   "version": "1.0.0",
-  "packageManager": "pnpm@10.13.1",
+  "packageManager": "pnpm@10.14.0",
   "directories": {
     "test": "tests"
   },
