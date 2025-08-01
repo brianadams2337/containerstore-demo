@@ -53,7 +53,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineOptions } from 'vue'
+import { computed } from 'vue'
 import type { CMSParagraphProps } from '../types/storyblok'
 import CMSText from './Text.vue'
 import CMSStoryblokLink from './StoryblokLink.vue'

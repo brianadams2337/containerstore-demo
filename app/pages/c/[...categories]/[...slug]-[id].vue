@@ -77,7 +77,7 @@
 </template>
 
 <script setup lang="ts">
-import { onServerPrefetch, watch, defineOptions, computed } from 'vue'
+import { onServerPrefetch, watch, computed } from 'vue'
 import {
   HttpStatusCode,
   type Product,

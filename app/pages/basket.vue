@@ -86,7 +86,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineOptions, onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useConfirmDialog, whenever } from '@vueuse/core'
 import { sanitizeCanonicalURL, type BasketItem } from '@scayle/storefront-nuxt'
 import { join } from 'pathe'

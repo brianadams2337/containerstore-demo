@@ -30,7 +30,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions } from 'vue'
 import type { CMSAccordionProps } from '../types'
 import { getComponentName } from '../../../utils/helpers'
 import { useContentfulMargins } from '../composables/useContentfulMargins'

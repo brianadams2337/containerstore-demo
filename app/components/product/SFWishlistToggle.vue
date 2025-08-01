@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineOptions, ref } from 'vue'
+import { computed, ref } from 'vue'
 import type { Product } from '@scayle/storefront-nuxt'
 import { useMounted } from '@vueuse/core'
 import SFAsyncStatusWrapper from '../SFAsyncStatusWrapper.vue'

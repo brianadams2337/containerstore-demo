@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineOptions } from 'vue'
+import { computed } from 'vue'
 import type { Entry } from 'contentful'
 import type { TypeContentPageWithoutUnresolvableLinksResponse } from '../types'
 import { getComponentName } from '../../../utils/helpers'

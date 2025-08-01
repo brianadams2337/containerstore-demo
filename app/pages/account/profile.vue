@@ -25,7 +25,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions } from 'vue'
 import { useSeoMeta, definePageMeta } from '#imports'
 import { useUser } from '#storefront/composables'
 import { useI18n } from '#i18n'

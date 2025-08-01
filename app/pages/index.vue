@@ -7,7 +7,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions } from 'vue'
 import { sanitizeCanonicalURL } from '@scayle/storefront-nuxt'
 import { useAvailableShops } from '@scayle/storefront-nuxt/composables'
 import type { OnlineStore, WithContext } from 'schema-dts'

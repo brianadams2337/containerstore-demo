@@ -12,7 +12,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions } from 'vue'
 import type { CMSScrollableLinkProps } from '../types'
 import CMSBannerLink from './BannerLink.vue'
 

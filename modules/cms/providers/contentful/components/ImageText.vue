@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineOptions } from 'vue'
+import { computed } from 'vue'
 import { useCMSAlignment } from '../composables/useCMSAlignment'
 import type { CMSImageText } from '../types'
 import { useContentfulImageSanitizer } from '../composables/useContentfulImage'

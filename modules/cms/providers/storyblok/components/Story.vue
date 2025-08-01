@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts" generic="T extends SbContentPage">
-import { computed, defineOptions } from 'vue'
+import { computed } from 'vue'
 import type { ISbStoryData } from '@storyblok/vue'
 import type { SbContentPage } from '../types'
 import { getComponentName } from '../../../utils/helpers'

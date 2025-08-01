@@ -13,7 +13,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineOptions } from 'vue'
 import type { CMSStoryblokLink } from '../types'
 import { useStoryblokHelpers } from '../composables/useStoryblokHelpers'
 import { useLocalizedRoute } from '../../../composables/storefront/useLocalizedRoute'

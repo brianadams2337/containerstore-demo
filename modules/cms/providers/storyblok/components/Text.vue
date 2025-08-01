@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, defineOptions } from 'vue'
+import { computed } from 'vue'
 import {
   richTextResolver,
   type StoryblokRichTextNode,

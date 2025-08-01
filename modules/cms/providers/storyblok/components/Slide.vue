@@ -48,7 +48,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions } from 'vue'
 import { useCMSAlignment } from '../composables/useCMSAlignment'
 import type { SbCmsImage, SbSlide, SbVideo } from '../types'
 import CMSStoryblokLink from './StoryblokLink.vue'

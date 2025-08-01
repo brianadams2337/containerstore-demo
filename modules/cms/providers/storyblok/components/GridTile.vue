@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineOptions } from 'vue'
+import { computed } from 'vue'
 import type { CMSGridTileProps } from '../types'
 import { getComponentName } from '../../../utils/helpers'
 import CMSStoryblokLink from './StoryblokLink.vue'

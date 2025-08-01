@@ -74,7 +74,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, defineOptions, resolveComponent } from 'vue'
+import { computed, ref, resolveComponent } from 'vue'
 import { useStorefrontTracking } from '../../../composables/storefront/useStorefrontTracking'
 import type { CMSBannerProps } from '../types'
 import { useBanner } from '../../../composables/useBanner'

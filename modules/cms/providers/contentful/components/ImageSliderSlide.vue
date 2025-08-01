@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineOptions, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { vElementVisibility } from '@vueuse/components'
 import { useStorefrontTracking } from '../../../composables/storefront/useStorefrontTracking'
 import { useStorefrontBreakpoints } from '../../../composables/storefront/useStorefrontBreakpoints'

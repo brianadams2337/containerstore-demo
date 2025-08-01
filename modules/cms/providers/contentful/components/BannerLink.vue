@@ -14,7 +14,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions } from 'vue'
 import type { CMSBannerLinkProps } from '../types'
 import CMSContentfulLink from './ContentfulLink.vue'
 import { useTrackingEvents } from '~/composables/useTrackingEvents'

@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, ref } from 'vue'
+import { ref } from 'vue'
 import type { CMSAccordionEntryProps } from '../types'
 import CMSText from './Text.vue'
 import { SFFadeInTransition } from '#storefront-ui/components'

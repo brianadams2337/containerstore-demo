@@ -52,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, computed, useTemplateRef, useId } from 'vue'
+import { computed, useTemplateRef, useId } from 'vue'
 import { useElementSize } from '@vueuse/core'
 
 defineOptions({ inheritAttrs: false })

@@ -122,7 +122,6 @@
 <script setup lang="ts">
 import {
   computed,
-  defineOptions,
   onMounted,
   ref,
   defineAsyncComponent,

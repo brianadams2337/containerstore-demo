@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineOptions } from 'vue'
+import { computed } from 'vue'
 import { useSeoMeta, definePageMeta } from '#imports'
 import { useRoute } from '#app/composables/router'
 import CMSContentPage from '#storefront-cms/components/ContentPage.vue'

@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, onMounted, watch } from 'vue'
+import { onMounted, watch } from 'vue'
 import { whenever } from '@vueuse/core'
 import { HttpStatusCode } from '@scayle/storefront-nuxt'
 import { useSeoMeta, definePageMeta } from '#imports'

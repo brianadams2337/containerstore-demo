@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, defineOptions } from 'vue'
+import { computed } from 'vue'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
 import type { CMSParagraphProps, CMSTextProps } from '../types'

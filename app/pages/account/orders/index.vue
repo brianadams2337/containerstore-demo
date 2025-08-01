@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineOptions } from 'vue'
+import { computed } from 'vue'
 import { useSeoMeta, definePageMeta } from '#imports'
 import SFEmptyState from '~/components/SFEmptyState.vue'
 import { useI18n } from '#i18n'

@@ -11,7 +11,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions } from 'vue'
 import type { Product } from '@scayle/storefront-nuxt'
 // TODO: This needs to be decoupled from the CMS module as it is coming from the SFB local components
 import SFProductCard from '~/components/product/card/SFProductCard.vue'

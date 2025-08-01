@@ -52,7 +52,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions } from 'vue'
 import { whenever } from '@vueuse/core'
 import { sanitizeCanonicalURL } from '@scayle/storefront-nuxt'
 import { join } from 'pathe'

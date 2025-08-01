@@ -16,7 +16,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions } from 'vue'
 import type { CMSDetailImageProps } from '../types'
 import CMSContentfulLink from './ContentfulLink.vue'
 import { useRoute } from '#app/composables/router'

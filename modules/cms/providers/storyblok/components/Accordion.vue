@@ -24,7 +24,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions } from 'vue'
 import { slugify } from '@scayle/storefront-nuxt'
 import type { CMSAccordionProps } from '../types'
 import { getComponentName } from '../../../utils/helpers'

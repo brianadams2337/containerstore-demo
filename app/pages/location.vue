@@ -66,7 +66,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineOptions, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useSeoMeta, definePageMeta } from '#imports'
 import { useToast } from '~/composables/useToast'
 import { useStoreLocator } from '#omnichannel/composables'

@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineOptions } from 'vue'
+import { computed } from 'vue'
 import { getComponentName } from '../../../utils/helpers'
 import type { CMSGridProps } from '../types'
 import { useContentfulMargins } from '../composables/useContentfulMargins'

@@ -29,7 +29,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions } from 'vue'
 import { getComponentName } from '../../../utils/helpers'
 import type { CMSImageSliderProps } from '../types'
 import { useStoryblokMargins } from '../composables/useStoryblokMargins'

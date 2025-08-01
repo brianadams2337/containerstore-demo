@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineOptions } from 'vue'
+import { computed } from 'vue'
 import { sanitizeCanonicalURL } from '@scayle/storefront-nuxt'
 import { join } from 'pathe'
 import { useSeoMeta, useHead, definePageMeta, useRoute } from '#imports'

@@ -30,7 +30,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions } from 'vue'
 import { getComponentName } from '../../../utils/helpers'
 import type { CMSDoubleColumnProps } from '../types'
 import { useContentfulMargins } from '../composables/useContentfulMargins'

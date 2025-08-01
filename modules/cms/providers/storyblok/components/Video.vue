@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineOptions, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useIntersectionObserver } from '@vueuse/core'
 import type { CMSVideoProps } from '../types'
 import { useStoryblokMargins } from '../composables/useStoryblokMargins'

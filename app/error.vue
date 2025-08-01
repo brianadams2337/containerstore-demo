@@ -9,7 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions } from 'vue'
 import SFErrorLayout from '~/components/layout/SFErrorLayout.vue'
 import { clearError, useError } from '#app/composables/error'
 import { routeList } from '~/utils/route'

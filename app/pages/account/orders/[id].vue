@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineOptions, onMounted, onServerPrefetch } from 'vue'
+import { computed, onMounted, onServerPrefetch } from 'vue'
 import { HttpStatusCode } from '@scayle/storefront-nuxt'
 import { useSeoMeta, definePageMeta } from '#imports'
 import { useRoute } from '#app/composables/router'

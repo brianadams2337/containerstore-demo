@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, defineOptions } from 'vue'
+import { computed, ref } from 'vue'
 import { vElementVisibility } from '@vueuse/components'
 import { useStorefrontTracking } from '../../../composables/storefront/useStorefrontTracking'
 import type { CMSImageProps } from '../types'

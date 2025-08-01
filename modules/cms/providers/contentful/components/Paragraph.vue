@@ -57,7 +57,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineOptions } from 'vue'
+import { computed } from 'vue'
 import type { CMSParagraphProps } from '../types'
 import CMSText from './Text.vue'
 import CMSContentfulLink from './ContentfulLink.vue'

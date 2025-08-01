@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, defineOptions } from 'vue'
+import { ref, computed } from 'vue'
 import { vElementVisibility } from '@vueuse/components'
 import { useStorefrontTracking } from '../../../composables/storefront/useStorefrontTracking'
 import { isStringURL } from '../../../utils/helpers'

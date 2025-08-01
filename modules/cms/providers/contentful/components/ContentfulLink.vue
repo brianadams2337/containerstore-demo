@@ -14,7 +14,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineOptions } from 'vue'
 import type { CMSContentfulLink } from '../types'
 import { useContentfulHelpers } from '../composables/useContentfulHelpers'
 import { useLocalizedRoute } from '../../../composables/storefront/useLocalizedRoute'

@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineOptions, onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useRoute } from '#app/composables/router'
 import { useAuthentication } from '~/composables'
 import { useLog } from '#storefront/composables'

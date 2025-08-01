@@ -17,7 +17,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions } from 'vue'
 import { useSeoMeta, definePageMeta } from '#imports'
 import { useI18n } from '#i18n'
 import { NuxtPage } from '#components'

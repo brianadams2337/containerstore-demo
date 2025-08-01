@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import useSubscriptionWebComponent from '../composables/useSubscriptionWebComponent'
 import { useI18n } from '#i18n'
 import { useSeoMeta, definePageMeta } from '#imports'
