@@ -20,7 +20,7 @@
     "eslint-plugin-playwright": "2.2.2",
     "lighthouse": "12.8.0",
     "ts-node": "10.9.2",
-    "typescript": "5.8.3"
+    "typescript": "5.9.2"
   },
   "scripts": {
     "test:e2e:happy-path": "playwright test ./tests/happy-path.e2e.spec.ts",
