@@ -51,7 +51,7 @@
       </template>
       <div
         v-if="campaign || productPromotion"
-        class="absolute bottom-2.5 ml-1 flex w-full flex-col gap-1"
+        class="absolute bottom-6 ml-1 flex w-full flex-col gap-1"
       >
         <SFDealBadge
           v-if="campaign && hasCampaignReduction(price)"
