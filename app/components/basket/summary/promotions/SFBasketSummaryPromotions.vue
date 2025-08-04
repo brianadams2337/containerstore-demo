@@ -16,7 +16,7 @@
         class="text-md font-semibold leading-4"
         data-testid="summary-total-promotion-reduction"
       >
-        {{ formatCurrency(-Math.abs(totalPromotionReductions)) }}
+        {{ formatCurrency(-Math.abs(totalReduction)) }}
       </span>
     </div>
     <SFFadeInFromBottomTransition>
@@ -35,6 +35,7 @@
 
 <script setup lang="ts">
 import type { BasketResponseData, Campaign } from '@scayle/storefront-nuxt'
+import { computed } from 'vue'
 import SFBasketSummaryPromotionsDiscounts from './SFBasketSummaryPromotionsDiscounts.vue'
 import SFBasketSummaryPromotionsToggle from './SFBasketSummaryPromotionsToggle.vue'
 import { useFormatHelpers } from '#storefront/composables'
@@ -51,6 +52,16 @@ const { validPromotions, totalPromotionReductions } = useBasketPromotions(
   // https://vuejs.org/guide/components/props.html#passing-destructured-props-into-functions
   () => basket,
 )
+
+const totalReduction = computed(() => {
+  const campaignReduction = basket.cost.appliedReductions.find(
+    (reduction) => reduction.category === 'campaign',
+  )
+  return (
+    totalPromotionReductions.value +
+    (campaignReduction?.amount.absoluteWithTax || 0)
+  )
+})
 
 const isPromotionsSummaryVisible = defineModel<boolean>('visible', {
   default: false,
