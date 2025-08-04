@@ -7,7 +7,7 @@
       class="relative flex w-full flex-wrap rounded-xl p-3 text-sm text-primary"
       :class="{ 'opacity-60': isSoldOut }"
     >
-      <div class="mr-5 flex flex-1">
+      <div class="flex flex-1 overflow-hidden">
         <SFBasketCardImage
           :basket-item="basketItem"
           :is-sold-out="isSoldOut"
@@ -16,9 +16,9 @@
           class="mr-3"
           :campaign="campaign"
         />
-        <div class="flex flex-col items-start space-x-1">
+        <div class="min-w-0">
           <span
-            class="mt-2 block truncate px-1 text-md font-medium leading-none text-primary"
+            class="mt-2 block truncate text-md font-medium leading-none text-primary"
           >
             {{ brand }}
           </span>
