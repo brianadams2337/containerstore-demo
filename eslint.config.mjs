@@ -85,6 +85,7 @@ export default withNuxt(
     ...vueI18n.configs['flat/base'],
     {
       rules: {
+        '@intlify/vue-i18n/valid-message-syntax': 'error',
         '@intlify/vue-i18n/no-missing-keys': 'error',
         '@intlify/vue-i18n/no-missing-keys-in-other-locales': process.env.CI
           ? 'error'
