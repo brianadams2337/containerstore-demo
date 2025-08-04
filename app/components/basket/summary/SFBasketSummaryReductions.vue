@@ -6,13 +6,11 @@
         :key="reduction.category"
       >
         <li
-          v-if="reduction.category !== 'promotion'"
-          class="flex justify-between text-product-sale"
-          :style="
-            reduction.category === 'campaign'
-              ? `color: ${getCampaignStyle(campaign).backgroundColor}`
-              : undefined
+          v-if="
+            reduction.category !== 'promotion' &&
+            reduction.category !== 'campaign'
           "
+          class="flex justify-between text-product-sale"
         >
           <h2>{{ getReductionCategory(reduction) }}</h2>
           <span :data-testid="`basket-discount-${reduction.category}`">
@@ -21,7 +19,7 @@
         </li>
       </template>
     </ul>
-    <SFBasketSummaryPromotions :basket="basket" />
+    <SFBasketSummaryPromotions :basket="basket" :campaign="campaign" />
   </section>
 </template>
 
@@ -34,7 +32,6 @@ import type {
 import SFBasketSummaryPromotions from './promotions/SFBasketSummaryPromotions.vue'
 import { useI18n } from '#i18n'
 import { useFormatHelpers } from '#storefront/composables'
-import { getCampaignStyle } from '~/utils'
 
 const { formatCurrency } = useFormatHelpers()
 
@@ -47,16 +44,8 @@ const { t } = useI18n()
 
 const getReductionCategory = (reduction: AppliedReduction) => {
   switch (reduction.category) {
-    case 'promotion':
-      return t('basket_summary_reduction.promotion')
     case 'voucher':
       return t('basket_summary_reduction.voucher')
-    case 'campaign':
-      return (
-        campaign?.headline ||
-        campaign?.name ||
-        t('basket_summary_reduction.campaign')
-      )
     case 'sale':
       return t('basket_summary_reduction.sale')
   }

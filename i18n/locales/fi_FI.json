@@ -190,8 +190,6 @@
   },
   "basket_summary_reduction": {
     "sale": "Ale",
-    "campaign": "Kampanjat",
-    "promotion": "Tarjoukset",
     "voucher": "Alennuskoodi"
   },
   "add_to_basket": {

@@ -193,8 +193,6 @@
   },
   "basket_summary_reduction": {
     "sale": "Sale",
-    "campaign": "Kampagnen",
-    "promotion": "Sonderangebot",
     "voucher": "Gutschein"
   },
   "add_to_basket": {

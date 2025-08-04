@@ -193,8 +193,6 @@
   },
   "basket_summary_reduction": {
     "sale": "Sale",
-    "campaign": "Campaigns",
-    "promotion": "Promotion",
     "voucher": "Voucher"
   },
   "add_to_basket": {
