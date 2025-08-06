@@ -2,48 +2,60 @@
 
 ## 1.12.0
 
-### Minor Changes
+### 🔥 Highlights
+
+#### 🏷️ Introducing Campaigns: A Unified Display for All Deals
+
+We're excited to introduce Campaigns, a powerful new way to highlight offers.
+To create a seamless experience for your customers, Campaigns are now fully integrated into the same UI components previously used for promotions.
+This means key areas throughout the shopping journey—from product cards and price displays to banners and the basket summary—will now clearly show details from both Campaigns and Promotions.
+As part of this unification, several components have been renamed to be more generic (e.g., SFPromotionRibbon is now SFDealRibbon), reflecting their new ability to display any kind of deal.
+
+#### 🚀 Introducing Express Checkout
+
+To significantly speed up the purchasing process, Express Checkout is now available directly on the basket page.
+This powerful feature, powered by the `<scayle-express-checkout />` web component, allows all users—including guests—to complete their purchase with just a few clicks.
+To support this seamless experience, we've refactored the basket summary into a single, responsive component and modernized how checkout scripts are loaded, ensuring a more robust and reliable integration.
+
+#### 🏗️ Future-Proofing Our Nuxt Architecture
+
+To ensure our platform remains fast, stable, and ready for future innovation, we have made significant upgrades to our core architecture.
+The Storefront Application has been upgraded to a newer version of Nuxt (`v3.17.7`), bringing immediate performance and routing enhancements.
+As part of this process, we've also proactively reorganized our project to align with the upcoming Nuxt 4, ensuring a smooth transition to the next generation of the framework.
+Additionally, we've introduced more powerful configuration options for internationalization, allowing you to easily define your shop's routing behavior via a new environment variable.
+
+### 🚀 Major Changes
 
 - **\[Header & Footer\]** We've introduced scheduled visibility for navigation items directly from the SCAYLE Panel.
   The `useHeaderNavigation`, `useFooterNavigation`, `useSimpleHeaderNavigation` and `useSimpleFooterNavigation` composables now support a `visibleAt` parameter, allowing you to display or hide specific navigation links based on a set date and time.
-
   For more details, see the [SCAYLE Resource Center Documentation](https://scayle.dev/en/developer-guide/shops/shop-navigation#time-schedule-visibility-of-navigation-items).
-
 - **\[Architecture\]** To prepare for future development, the project has been made compatible with Nuxt 4, and the project's directory structure has been updated accordingly.
   Developers should familiarize themselves with the [new Nuxt 4 directory structure](https://nuxt.com/docs/getting-started/upgrade#new-directory-structure) to locate files in their new locations.
-- **\[Promotions\]** The following components have been enhanced to display both promotion and campaign information, such as campaign badge labels and reduction amounts:
-  `SFProductPrice`, `SFBasketSummaryReductions`, `SFBasketCardImage`, and `SFProductCard`.
-  Additionally, the `SFPromotionBadge` component has been renamed to the more accurate `SFDealBadge`.
-- **\[Translations\]** To improve the reliability and maintainability of our translation files, we have refactored the codebase to use static translation keys where possible.
-  A new ESLint rule (`@intlify/vue-i18n/no-unused-keys`) has been enabled to flag unused keys as errors, ensuring our translation files remain clean and accurate.
-  A few dynamic keys are intentionally ignored where necessary for code readability.
-- **\[Code Style\]** The project's ESLint configuration has been streamlined by removing the redundant `eslint-plugin-nuxt` package.
-- **\[Architecture\]** The application's shop selector mode is now configurable via the `SHOP_SELECTOR_MODE` environment variable.
-  Set this variable before building your application to define the desired routing behavior for your international shops.
-  Please refer to the [documentation](<](https://scayle.dev/en/storefront-guide/developer-guide/features/internationalization/configuration#routing-configuration)>) for available modes.
-- **\[Architecture\]** The custom logic for loading checkout web components has been replaced.
-  We now use the official `@nuxt/scripts` module, aligning with Nuxt best practices and simplifying script management.
-- **\[E2E\]** To improve the overall quality of the end-to-end test suite, significant code improvements have been applied to both test files and Page Objects, making them more robust and efficient.
-  Additionally, JSDoc comments have been added to further clarify test scenarios.
-- **\[Basket\]** Express Checkout is now available on the basket page.
-  This feature, powered by the `<scayle-express-checkout />` web component, allows all users—including guests—to quickly proceed to checkout.
-  The authentication guard (`/app/middleware/authGuard.global.ts` and `/app/pages/checkout.vue`) has been updated to permit guest access when an express checkout `transactionId` is present in the URL query parameter.
-  For more details, see the [Express Checkout documentation](https://scayle.dev/en/checkout-guide/integration/express-checkout).
 - **\[Architecture\]** The Storefront Application has been upgraded to `nuxt@3.17.7`, which brings router enhancements and performance improvements.
   While this Nuxt release has no breaking changes, the update revealed two pre-existing issues in our application that have now been resolved:
   A duplicated `definePageMeta` on the Product Listing Page and a missing `inheritAttrs: false` on the `SFModal` component.
   We had been inadvertently relying on a Nuxt bug which caused attributes to not be inherited through `ClientOnly`.
   For more details on the Nuxt release, see the [official blog post](https://nuxt.com/blog/v3-17).
-- **\[CMS\]** Addressed an issue where the `<CMSText />` component would fail if not nested within a paragraph from Contentful.
-  The component now correctly checks the node type and can render standalone text content.
-- **\[Code Style\]** To standardize our development tooling, the local `eslint-auto-explicit-import` module has been replaced with the official `@scayle/eslint-auto-explicit-import` package.
-  This ESLint module automatically adds necessary imports as you code, replacing our previous local implementation and streamlining the development process.
-- **\[Config\]** You can now enable a Shared Basket and Wishlist across your multi-language shops.
-  This optional feature provides a seamless experience for users navigating between different language versions of your store.
-  For implementation details, please refer to [our guide on integrating a Shared Basket](https://scayle.dev/en/checkout-guide/how-tos/how-to-integrate-a-shared-basket-for-multi-language-shop-countries) within the SCAYLE Resource Center.
+- **\[Architecture\]** The application's shop selector mode is now configurable via the `SHOP_SELECTOR_MODE` environment variable.
+  Set this variable before building your application to define the desired routing behavior for your international shops.
+  Please refer to the [documentation](](https://scayle.dev/en/storefront-guide/developer-guide/features/internationalization/configuration#routing-configuration)) for available modes.
+- **\[Architecture\]** The custom logic for loading checkout web components has been replaced.
+  We now use the official `@nuxt/scripts` module, aligning with Nuxt best practices and simplifying script management.
 - **\[Basket\]** Merged `SFBasketSummaryMobile.vue` and `SFBasketSummary.vue` into a single `SFBasketSummary.vue` component.
   This eliminates duplicated code and DOM elements, and ensures that only one instance of `SFExpressCheckout.client.vue` is mounted.
   This change addresses limitations of the `<scayle-express-checkout />` web component, which requires a single instance.
+- **\[Basket\]** Express Checkout is now available on the basket page.
+  This feature, powered by the `<scayle-express-checkout />` web component, allows all users—including guests—to quickly proceed to checkout.
+  The authentication guard (`/app/middleware/authGuard.global.ts` and `/app/pages/checkout.vue`) has been updated to permit guest access when an express checkout `transactionId` is present in the URL query parameter.
+  For more details, see the [Express Checkout documentation](https://scayle.dev/en/checkout-guide/integration/express-checkout).
+- **\[E2E\]** To improve the overall quality of the end-to-end test suite, significant code improvements have been applied to both test files and Page Objects, making them more robust and efficient.
+  Additionally, JSDoc comments have been added to further clarify test scenarios.
+- **\[Config\]** You can now enable a Shared Basket and Wishlist across your multi-language shops.
+  This optional feature provides a seamless experience for users navigating between different language versions of your store.
+  For implementation details, please refer to [our guide on integrating a Shared Basket](https://scayle.dev/en/checkout-guide/how-tos/how-to-integrate-a-shared-basket-for-multi-language-shop-countries) within the SCAYLE Resource Center.
+- **\[Promotions\]** The following components have been enhanced to display both promotion and campaign information, such as campaign badge labels and reduction amounts:
+  `SFProductPrice`, `SFBasketSummaryReductions`, `SFBasketCardImage`, and `SFProductCard`.
+  Additionally, the `SFPromotionBadge` component has been renamed to the more accurate `SFDealBadge`.
 - **\[Promotions\]** To provide a unified experience for all types of offers, we've integrated Campaigns into our existing promotion components.
   Components like the `SFDealRibbon`, `SFPromotionSlideIn` and `SFDealBanner` now display both promotions and campaigns, using new utility functions (`getCampaignDisplayData`, `getPromotionDisplayData`) to handle the display logic.
 
@@ -79,10 +91,25 @@
     />
     ```
 
+- **\[Translations\]** To improve the reliability and maintainability of our translation files, we have refactored the codebase to use static translation keys where possible.
+  A new ESLint rule (`@intlify/vue-i18n/no-unused-keys`) has been enabled to flag unused keys as errors, ensuring our translation files remain clean and accurate.
+  A few dynamic keys are intentionally ignored where necessary for code readability.
+
+### 💅 Minor Changes
+
+- **\[CMS\]** Addressed an issue where the `<CMSText />` component would fail if not nested within a paragraph from Contentful.
+  The component now correctly checks the node type and can render standalone text content.
+- **\[Code Style\]** The project's ESLint configuration has been streamlined by removing the redundant `eslint-plugin-nuxt` package.
+- **\[Code Style\]** To standardize our development tooling, the local `eslint-auto-explicit-import` module has been replaced with the official `@scayle/eslint-auto-explicit-import` package.
+  This ESLint module automatically adds necessary imports as you code, replacing our previous local implementation and streamlining the development process.
 - **\[UI\]** To improve usability and provide a larger touch target, especially on mobile devices, the `SFCheckbox` component has been enlarged.
   The checkbox itself is now `size-6` (`24px`), and its label has been increased to `text-md` (`14px`).
+- **\[UI\]** The `<SFPopover />` component has been updated to render its `content` slot only on the client side.
+  This change was necessary to fix a hydration mismatch caused by using transitions with the `appear` attribute that are not safe for server-side rendering.
+- **\[ShopSwitcher\]** Resolved a routing issue where the `useShopSwitcher` composable would generate an incorrect base path when switching to the default shop in `path_or_default` mode.
+  It now correctly uses the `useLocalePath()` composable to ensure proper navigation.
 
-### Patch Changes
+### 🩹 Patch Changes
 
 - **\[Code Style\]** To align with Vue best practices, explicit imports for the `defineOptions` compiler macro have been removed.
   These imports are unnecessary as Vue handles them automatically during compilation.
@@ -90,6 +117,22 @@
   This utility more reliably extracts numbers from UI elements, ensuring that assertions for the product count and card data are correct after filtering or sorting.
 - **\[PLP\]** Addressed an issue where resetting filters would incorrectly remove all URL query parameters, not just those related to filtering.
   The fix ensures that only parameters prefixed with `filters` are removed, preserving the rest of the page state.
+- **\[E2E\]** The end-to-end test framework has been refactored to be more modular and maintainable.
+  A new abstract `Base` class now centralizes common logic for all Page Objects, and a suite of reusable helper functions has been introduced to streamline common test automation tasks like navigation and filtering.
+- **\[UI\]** Resolved a layout issue in the basket popover card (`SFBasketPopoverCard`) where long product or brand names would cause the product image to shrink and the text to overflow.
+  The text now truncates correctly, ensuring a consistent and clean layout, by setting `min-w-0` and `overflow-hidden` classes correctly solved both issues.
+- **\[Product Listing\]** To improve consistency across all filter types, the special `aria-label` translation for the size filter has been removed.
+  It now uses the same labeling pattern as other attribute filters.
+- **\[E2E\]** To improve maintainability, our end-to-end tests have been simplified.
+  We've removed the outdated `priceSubtotalMobile` locator and simplified the checkout navigation logic, as the UI now uses a single, responsive component.
+- **\[PLP\]** Resolved a race condition where products could be loaded before their category-specific sorting configuration was applied.
+  The application now correctly awaits the category data (`useCategoryById`) before fetching the product list (`getProductsByCategory`) to ensure the proper sort order is always used.
+- **\[Types\]** To improve code quality and maintainability, the obsolete module declaration for the removed `shop:change` hook has been deleted.
+- **\[Promotions\]** Updated dependency `@scayle/storefront-promotions` to `2.2.2`.
+  This release resolves issue with promotion code not being removed from basket.
+
+### 🏡 Dependency Updates
+
 - Added dependency `@nuxt/scripts@0.11.10`
 - Added dependency `@scayle/changelog-formatter@1.1.0`
 - Added dependency `@scayle/eslint-auto-explicit-import@0.2.0`
@@ -145,25 +188,6 @@
 - Updated dependency `typescript@5.8.3` to `typescript@5.9.2`
 - Updated dependency `unimport@5.1.0` to `unimport@5.2.0`
 - Updated dependency `vue-tsc@3.0.1` to `vue-tsc@3.0.5`
-- **\[E2E\]** The end-to-end test framework has been refactored to be more modular and maintainable.
-  A new abstract `Base` class now centralizes common logic for all Page Objects, and a suite of reusable helper functions has been introduced to streamline common test automation tasks like navigation and filtering.
-- **\[UI\]** Resolved a layout issue in the basket popover card (`SFBasketPopoverCard`) where long product or brand names would cause the product image to shrink and the text to overflow.
-  The text now truncates correctly, ensuring a consistent and clean layout, by setting `min-w-0` and `overflow-hidden` classes correctly solved both issues.
-- **\[Product Listing\]** To improve consistency across all filter types, the special `aria-label` translation for the size filter has been removed.
-  It now uses the same labeling pattern as other attribute filters.
-- **\[E2E\]** To improve maintainability, our end-to-end tests have been simplified.
-  We've removed the outdated `priceSubtotalMobile` locator and simplified the checkout navigation logic, as the UI now uses a single, responsive component.
-- **\[PLP\]** Resolved a race condition where products could be loaded before their category-specific sorting configuration was applied.
-  The application now correctly awaits the category data (`useCategoryById`) before fetching the product list (`getProductsByCategory`) to ensure the proper sort order is always used.
-- **\[Types\]** To improve code quality and maintainability, the obsolete module declaration for the removed `shop:change` hook has been deleted.
-- **\[Promotions\]** Updated dependency `@scayle/storefront-promotions` to `2.2.2`.
-
-  This release resolves issue with promotion code not being removed from basket.
-
-- **\[UI\]** The `<SFPopover />` component has been updated to render its `content` slot only on the client side.
-  This change was necessary to fix a hydration mismatch caused by using transitions with the `appear` attribute that are not safe for server-side rendering.
-- **\[ShopSwitcher\]** Resolved a routing issue where the `useShopSwitcher` composable would generate an incorrect base path when switching to the default shop in `path_or_default` mode.
-  It now correctly uses the `useLocalePath()` composable to ensure proper navigation.
 
 ## 1.11.0
 
@@ -282,36 +306,36 @@ This foundational upgrade results in a more polished, professional, and visually
   // Before
   const CACHE_PAGE: NitroRouteConfig = isVercel
     ? {
-        isr: false,
-        cache: {
-          maxAge: 10 * 60, // Default: 10min
-          staleMaxAge: 10 * 60, // Default: 10min
-          headersOnly: true,
-        },
-      }
+      isr: false,
+      cache: {
+        maxAge: 10 * 60, // Default: 10min
+        staleMaxAge: 10 * 60, // Default: 10min
+        headersOnly: true,
+      },
+    }
     : {
-        cache: {
-          // SWR currently leads to some bugs in the Nitro caching implementation that it will continue to serve outdated data in case the SSR handler crashes
-          // We recommend to keep this disabled currently.
-          swr: false, // Disable stale-while-revalidate
-          maxAge: 10 * 60, // Default: 10min
-          staleMaxAge: 10 * 60, // Default: 10min
-          group: 'ssr', // Cache group name
-          name: 'page', // Set prefix name
+      cache: {
+        // SWR currently leads to some bugs in the Nitro caching implementation that it will continue to serve outdated data in case the SSR handler crashes
+        // We recommend to keep this disabled currently.
+        swr: false, // Disable stale-while-revalidate
+        maxAge: 10 * 60, // Default: 10min
+        staleMaxAge: 10 * 60, // Default: 10min
+        group: 'ssr', // Cache group name
+        name: 'page', // Set prefix name
 
-          // Consider the host for the cache key which is required when using domain based shops
-          varies: ['host', 'x-forwarded-host'],
+        // Consider the host for the cache key which is required when using domain based shops
+        varies: ['host', 'x-forwarded-host'],
 
-          // Add the version as an integrity so we clear our cache when a new version gets deployed.
-          // If no specific version is supplied, we will generate a unique ID during the build process.
-          integrity: process.env.VERSION ?? nanoid(8),
+        // Add the version as an integrity so we clear our cache when a new version gets deployed.
+        // If no specific version is supplied, we will generate a unique ID during the build process.
+        integrity: process.env.VERSION ?? nanoid(8),
 
-          // Use storefront storage mount
-          // Depending on your configuration this might be `redis` or another database driver
-          // https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction#storage
-          base: 'storefront-cache',
-        },
-      }
+        // Use storefront storage mount
+        // Depending on your configuration this might be `redis` or another database driver
+        // https://scayle.dev/en/storefront-guide/developer-guide/basic-setup/introduction#storage
+        base: 'storefront-cache',
+      },
+    }
   ```
 
   ```ts
@@ -373,10 +397,10 @@ This foundational upgrade results in a more polished, professional, and visually
   } from '#storefront-product-listing'
 
   const sortingOptions = computed(() => {
-    const smartSortingKey =
-      currentCategory.value?.productSorting?.smartSortingKey
-    const customSortingKey =
-      currentCategory.value?.productSorting?.customSortingKey
+    const smartSortingKey = currentCategory.value?.productSorting
+      ?.smartSortingKey
+    const customSortingKey = currentCategory.value?.productSorting
+      ?.customSortingKey
 
     if (!smartSortingKey && !customSortingKey) {
       return defaultSortingOptions
@@ -2215,7 +2239,7 @@ This is just the first step towards our new architecture, and we'll be supplemen
     const breadcrumbs = computed(() =>
       currentCategory.value
         ? getBreadcrumbsFromCategory(currentCategory.value, true)
-        : [],
+        : []
     )
 
     const { title, robots, canonicalLink, categoryBreadcrumbSchema } =
@@ -2793,7 +2817,7 @@ We’ve updated the CMS integration of Storefront, enhancing both Storyblok and 
   // Output: { numberValue: 2 }
   const getValueForComparison = (objectValue) => objectValue.numberValue
   array.reduce((a, b) =>
-    getValueForComparison(a) < getValueForComparison(b) ? a : b,
+    getValueForComparison(a) < getValueForComparison(b) ? a : b
   )
   ```
 
