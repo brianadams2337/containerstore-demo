@@ -56,10 +56,15 @@ export const isViewCartEvent = (
 }
 
 /**
- * Checks if event is one of: 'view_promotion', 'select_promotion'
+ * Checks if event is one of: 'view_promotion', 'select_promotion', 'view_campaign', 'select_campaign'
  */
-export const isPromotionTrackingEvent = (event: TrackingEvent): boolean => {
-  return ['view_promotion', 'select_promotion'].includes(event)
+export const isDealTrackingEvent = (event: TrackingEvent): boolean => {
+  return [
+    'view_promotion',
+    'select_promotion',
+    'view_campaign',
+    'select_campaign',
+  ].includes(event)
 }
 
 /**
@@ -205,7 +210,7 @@ export const mapTrackingDataForEvent = (
   // eslint-disable-next-line sonarjs/cognitive-complexity
 ) => {
   let data = {}
-  if (isPromotionTrackingEvent(event)) {
+  if (isDealTrackingEvent(event)) {
     data = {
       ecommerce: payload,
     }
