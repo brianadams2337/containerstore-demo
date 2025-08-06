@@ -2,6 +2,6 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Architecture\]** Enabled configuration of the [shop selector mode](https://scayle.dev/en/storefront-guide/developer-guide/features/internationalization/configuration#routing-configuration) via the `SHOP_SELECTOR_MODE` environment variable.
-
-**Note:** Any changes to the shop selector mode will only be applied after rebuilding the application.
+**\[Architecture\]** The application's shop selector mode is now configurable via the `SHOP_SELECTOR_MODE` environment variable.
+Set this variable before building your application to define the desired routing behavior for your international shops.
+Please refer to the [documentation](<](https://scayle.dev/en/storefront-guide/developer-guide/features/internationalization/configuration#routing-configuration)>) for available modes.

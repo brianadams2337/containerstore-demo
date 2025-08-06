@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[Code Style\]** Removed explicit imports of `defineOptions`. This is a Vue compiler macro and does not need to be manuall imported.
+**\[Code Style\]** To align with Vue best practices, explicit imports for the `defineOptions` compiler macro have been removed.
+These imports are unnecessary as Vue handles them automatically during compilation.

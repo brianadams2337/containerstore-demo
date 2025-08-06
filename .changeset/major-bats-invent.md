@@ -2,6 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[E2E\]** Strengthened end-to-end tests code quality and documentation.
-Applied code improvements to both test specification files and Page Objects, making them more robust and efficient.
-Integrated additional JSDoc documentation to clarify test scenarios and Page Object functionalities.
+**\[E2E\]** To improve the overall quality of the end-to-end test suite, significant code improvements have been applied to both test files and Page Objects, making them more robust and efficient.
+Additionally, JSDoc comments have been added to further clarify test scenarios.

@@ -2,6 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Code Style\]** Replaced local `eslint-auto-explicit-import` module with newly released `@scayle/eslint-auto-explicit-import`.
-
-This eslint nuxt module is based on [nuxt-eslint-auto-explicit-import](https://github.com/antfu/nuxt-eslint-auto-explicit-import) and will automatically add explicit imports to the top of the file.
+**\[Code Style\]** To standardize our development tooling, the local `eslint-auto-explicit-import` module has been replaced with the official `@scayle/eslint-auto-explicit-import` package.
+This ESLint module automatically adds necessary imports as you code, replacing our previous local implementation and streamlining the development process.

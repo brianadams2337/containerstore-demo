@@ -2,4 +2,5 @@
 '@scayle/storefront-application-nuxt': patch
 ---
 
-**\[PLP\]** Fixed an issue where resetting all filters would remove unrelated query parameters. Now, only query parameters starting with `filters` are removed when resetting filters.
+**\[PLP\]** Addressed an issue where resetting filters would incorrectly remove all URL query parameters, not just those related to filtering.
+The fix ensures that only parameters prefixed with `filters` are removed, preserving the rest of the page state.

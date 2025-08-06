@@ -2,4 +2,4 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Code Style\]** Removed redudant eslint plugin `eslint-plugin-nuxt`
+**\[Code Style\]** The project's ESLint configuration has been streamlined by removing the redundant `eslint-plugin-nuxt` package.

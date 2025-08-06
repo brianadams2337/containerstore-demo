@@ -2,40 +2,37 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Promotions\]** Integrated newly introduced campaigns into the `SFDealRibbon` and `SFPromotionSlideIn` for `SFDealBanner` components.
+**\[Promotions\]** To provide a unified experience for all types of offers, we've integrated Campaigns into our existing promotion components.
+Components like the `SFDealRibbon`, `SFPromotionSlideIn` and `SFDealBanner` now display both promotions and campaigns, using new utility functions (`getCampaignDisplayData`, `getPromotionDisplayData`) to handle the display logic.
 
-In the process the components were refactored to simply display the related data and to avoid handling the specific promotion logic.
-For that we introduced the `getCampaignDisplayData` and `getPromotionDisplayData` utilities which are used to get the display data for the promotion or campaign.
-This reduces the complexity of the components and allows campaigns to be displayed within the same components.
+To better reflect this broader purpose, several components have been renamed from `SFProductPromotionBanner` to `SFDealBanner`, `SFPromotionRibbon` to `SFDealRibbon` and `SFPromotionTimer` to `SFDealTimer`.
 
-Additionally we renamed the `SFProductPromotionBanner` to `SFDealBanner`, `SFPromotionRibbon` to `SFDealRibbon` and `SFPromotionTimer` to `SFDealTimer` to better reflect the purpose of the components.
+- Before:
 
-Before:
+  ```html
+  <SFProductPromotionBanner :promotion="promotion" show-condition />
 
-```html
-<SFProductPromotionBanner :promotion="promotion" show-condition />
+  <SFPromotionRibbon :promotion="promotion" />
+  ```
 
-<SFPromotionRibbon :promotion="promotion" />
-```
+- After:
 
-After:
+  ```html
+  <script setup lang="ts">
+    import {
+      getPromotionDisplayData,
+      getCampaignDisplayData,
+    } from '~/utils/promotion'
+  </script>
 
-```html
-<script setup lang="ts">
-  import {
-    getPromotionDisplayData,
-    getCampaignDisplayData,
-  } from '~/utils/promotion'
-</script>
+  <SFDealBanner
+    :display-data="getPromotionDisplayData(promotion)"
+    show-condition
+    track-event="select_promotion"
+  />
 
-<SFDealBanner
-  :display-data="getPromotionDisplayData(promotion)"
-  show-condition
-  track-event="select_promotion"
-/>
-
-<SFDealRibbon
-  :display-data="getCampaignDisplayData(campaign)"
-  track-event="view_campaign"
-/>
-```
+  <SFDealRibbon
+    :display-data="getCampaignDisplayData(campaign)"
+    track-event="view_campaign"
+  />
+  ```

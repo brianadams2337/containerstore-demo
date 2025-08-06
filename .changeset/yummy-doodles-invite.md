@@ -2,6 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[UI\]** Updated the size of the `SFCheckbox` component from `size-4` (16px) to `size-6` (24px) and its label from `text-sm` (12px) to `text-md` (14px).
-
-This will improve the the clickable area of the checkbox, especially on mobile devices.
+**\[UI\]** To improve usability and provide a larger touch target, especially on mobile devices, the `SFCheckbox` component has been enlarged.
+The checkbox itself is now `size-6` (`24px`), and its label has been increased to `text-md` (`14px`).

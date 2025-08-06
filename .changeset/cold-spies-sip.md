@@ -2,6 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Architecture\]** Enable Nuxt 4 compatibility and reorganize the project structure to align with the new Nuxt 4 directory structure.
-
-For more details, see the [Nuxt 4 Directory Structure documentation](https://nuxt.com/docs/getting-started/upgrade#new-directory-structure).
+**\[Architecture\]** To prepare for future development, the project has been made compatible with Nuxt 4, and the project's directory structure has been updated accordingly.
+Developers should familiarize themselves with the [new Nuxt 4 directory structure](https://nuxt.com/docs/getting-started/upgrade#new-directory-structure) to locate files in their new locations.

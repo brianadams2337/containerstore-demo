@@ -78,7 +78,7 @@
     "eslint": "9.32.0",
     "eslint-formatter-gitlab": "6.0.1",
     "eslint-plugin-playwright": "2.2.2",
-    "eslint-plugin-storybook": "9.1.1",
+    "eslint-plugin-storybook": "9.0.5",
     "eslint-plugin-tailwindcss": "3.18.2",
     "eslint-plugin-unimport": "0.1.2",
     "eslint-plugin-vuejs-accessibility": "2.4.1",

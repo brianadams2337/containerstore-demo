@@ -2,6 +2,5 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Architecture\]**
-
-Introduced [`@nuxt/scripts`](https://scripts.nuxt.com/) to handle loading of the checkout web components.
+**\[Architecture\]** The custom logic for loading checkout web components has been replaced.
+We now use the official `@nuxt/scripts` module, aligning with Nuxt best practices and simplifying script management.

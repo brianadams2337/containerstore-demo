@@ -2,9 +2,7 @@
 '@scayle/storefront-application-nuxt': minor
 ---
 
-**\[Header & Footer\]** Added `visibleAt` parameter to the composables `useSimpleHeaderNavigation`, `useSimpleFooterNavigation`, `useFooterNavigation` and `useHeaderNavigation`.
+**\[Header & Footer\]** We've introduced scheduled visibility for navigation items directly from the SCAYLE Panel.
+The `useHeaderNavigation`, `useFooterNavigation`, `useSimpleHeaderNavigation` and `useSimpleFooterNavigation` composables now support a `visibleAt` parameter, allowing you to display or hide specific navigation links based on a set date and time.
 
-This allows to filter navigation items that should be visible at the specified date and time.
-These time schedules can be set in the Panel.
-
-See: [Time schedule visibility of navigation items](https://scayle.dev/en/developer-guide/shops/shop-navigation#time-schedule-visibility-of-navigation-items)
+For more details, see the [SCAYLE Resource Center Documentation](https://scayle.dev/en/developer-guide/shops/shop-navigation#time-schedule-visibility-of-navigation-items).

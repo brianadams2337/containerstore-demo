@@ -64,8 +64,8 @@ const baseShopDomain = (code: string | string[]) =>
   `${Array.isArray(code) ? code[0] : code}.localhost:3000`
 
 const SHOP_SELECTOR_MODE = (process.env.SHOP_SELECTOR_MODE ??
-  'path') as ModuleBaseOptions['shopSelector']
-const DOMAIN_PER_LOCALE = SHOP_SELECTOR_MODE === 'domain'
+  'path') as ModuleBaseOptions['shopSelector'] // Build time only configuration
+const DOMAIN_PER_LOCALE = SHOP_SELECTOR_MODE === 'domain' // Build time only configuration
 
 const isVercel =
   process.env.NITRO_PRESET && process.env.NITRO_PRESET.includes('vercel')
