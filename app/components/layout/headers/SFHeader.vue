@@ -35,16 +35,6 @@
       class="lg:!ml-0"
       @click="isSideNavigationOpen = false"
     />
-
-    <nav class="h-full grow max-lg:hidden" data-testid="nav-categories">
-      <ul class="flex h-full grow-[2]">
-        <SFHeaderNavigationItem
-          v-for="item in mainNavigationItems"
-          :key="item.id"
-          :item="item"
-        />
-      </ul>
-    </nav>
     <SFSearchInput
       id="search-desktop"
       class="shrink grow max-lg:hidden"
@@ -64,6 +54,21 @@
       />
     </div>
   </header>
+  <header
+    class="flex h-13 items-center space-x-4 border-gray-300 px-4 lg:relative lg:h-16 lg:space-x-7 lg:border-b lg:px-7"
+    data-testid="header"
+  >
+    <nav class="h-full grow max-lg:hidden" data-testid="nav-categories">
+      <ul class="flex h-full grow-[2]">
+        <SFHeaderNavigationItem
+          v-for="item in mainNavigationItems"
+          :key="item.id"
+          :item="item"
+        />
+      </ul>
+    </nav>
+  </header>
+
 </template>
 
 <script setup lang="ts">
