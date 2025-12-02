@@ -1,7 +1,7 @@
 <template>
   <section class="-mb-16 overflow-hidden text-clip px-7 md:px-20">
     <div class="mx-auto flex w-full flex-col lg:flex-row">
-      <div
+      <!-- <div
         class="bg-lined-grid shrink-0 py-4 text-secondary lg:w-1/2 lg:py-10 lg:pr-12"
         style="--lined-grid-gradient-start: calc(100% - 12rem)"
       >
@@ -34,11 +34,11 @@
             Setup a CMS for Storefront
           </SFButton>
         </div>
-      </div>
+      </div> -->
       <div class="self-end">
         <img
           class="lg:-ml-12 lg:w-[87rem] lg:max-w-none"
-          src="../assets/images/hero.webp"
+          src="../assets/images/hero-tcs.png"
           alt="Storefront Boilerplate"
         />
       </div>
