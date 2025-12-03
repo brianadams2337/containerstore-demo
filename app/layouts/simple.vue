@@ -25,7 +25,7 @@
         class="absolute left-1/2 -translate-x-1/2"
         :aria-label="shopName"
       >
-        <IconLogo class="size-7" />
+        <IconLogo class="size-7" style="width: 25rem;" />
       </SFLocalizedLink>
 
       <nav class="hidden flex-row gap-4 md:flex">
