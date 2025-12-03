@@ -27,9 +27,8 @@
               size="lg"
               class="text-md !font-normal text-secondary md:text-lg"
               data-testid="pdp-product-name"
-              style="font-size: 21px; font-weight: bold !important; line-height: 2;;"
             >
-              <span class="truncate" :title="name">
+              <span class="truncate" :title="name" style="font-size: 21px; font-weight: bold !important; line-height: normal;">
                 {{ name }}
               </span>
             </SFHeadline>
