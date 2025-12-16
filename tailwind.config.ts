@@ -64,7 +64,7 @@ export default {
         sale: '#d93321',
         'sold-out': '#d93321',
       },
-      accent: '#005DAB',
+      accent: '#d50032',
       status: {
         success: {
           light: '#cef5e8',

@@ -38,7 +38,7 @@
       <div class="self-end">
         <img
           class="lg:-ml-12 lg:w-[87rem] lg:max-w-none"
-          src="../assets/images/hero-tcs.png"
+          src="../assets/images/hero-ff.png"
           alt="Storefront Boilerplate"
         />
       </div>
